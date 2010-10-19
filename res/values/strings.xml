@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FDroid</string>
+	<string name="about_title">About FDroid</string>
+	<string name="about_desc">Based on Aptoide.\nReleased under the GNU GPL v2 license.</string>
+	<string name="about_site">Home: </string>
+	<string name="about_mail">e-Mail: </string>
+	<string name="about_website">Web Site</string>
+
+	<string name="no_found">No application found!</string>
+	<string name="no_repo">You have no repositories configured!\n\nA repository is a source of applications. To add one, press the MENU button now and enter the URL.\n\nA repository URL looks something like this: http://f-droid.org/repo</string>
+
+	<string name="not_inst">Not Installed</string>
+	<string name="installed">Installed - Ver.:</string>
+	<string name="installed_update">Update possible - Ver.:</string>
+
+	
+	
+
+	
+	
+	
+
+	<string name="error">Error</string>
+	<string name="ok">Ok</string>
+
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
+	<string name="repo_add_title">Add new repository</string>
+	<string name="repo_add_add">Add</string>
+	
+	<string name="cancel">Cancel</string>
+	<string name="repo_delete_title">Chose repository to remove</string>
+	<string name="url_website">http://f-droid.org</string>
+	<string name="server_connection_error">Could not connect to server!</string>
+	
+	<string name="repo_update_title">Update repositories</string>
+	<string name="tab_installed">Installed</string>
+	<string name="tab_noninstalled">Available</string>
+	<string name="tab_updates">Updates</string>
+	<string name="update_available">Updates available</string>
+	<string name="process_wait_title">Please Wait</string>
+	<string name="process_update_msg">Updating application list...</string>
+	<string name="connection_error">Could not connect to the network.</string>
+	<string name="connection_timeout">Timeout</string>
+	<string name="connection_error_msg">Could not connect to server!</string>
+	<string name="download">Download</string>
+	<string name="download_server">Getting application from</string>
+	<string name="apk_market_view">Market</string>
+	<string name="apk_version_new"> available v </string>
+<string name="settings_sort_title">Sort application list by:</string>
+<string name="settings_sort_abc">Alphabetically</string>
+<string name="settings_sort_installed">Installed / Not Installed</string>
+<string name="settings_sort_recent">Most recent first</string>
+<string name="settings_sort_rating">Rating</string>
+<string name="settings_filter_title">Show applications:</string>
+<string name="settings_filter_category">By category</string>
+<string name="settings_filter_all">All applications</string>
+<string name="settings_save">Save</string>
+<string name="repo_add_url">Repository URL</string>
+</resources>

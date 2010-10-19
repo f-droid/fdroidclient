@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/vw1" android:layout_width="fill_parent"
+	android:layout_height="wrap_content" android:orientation="vertical">
+
+	<LinearLayout android:id="@+id/vw2" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:orientation="horizontal">
+
+		<ImageView android:id="@+id/icon" android:cropToPadding="true"
+			android:padding="4px" android:scaleType="centerInside"
+			android:layout_height="50px" android:layout_width="50px" />
+
+		<RelativeLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:orientation="vertical">
+
+			<TextView android:id="@+id/name" android:textStyle="bold"
+				android:singleLine="true" android:ellipsize="marquee"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:textSize="18sp" />
+
+			<TextView android:id="@+id/license" android:textSize="12sp"
+				android:layout_below="@id/name" android:layout_alignParentRight="true"
+				android:layout_height="wrap_content" android:layout_width="wrap_content" />
+
+			<TextView android:id="@+id/status" android:layout_toLeftOf="@id/license"
+				android:layout_below="@id/name" android:layout_alignParentLeft="true"
+				android:textSize="12sp" android:layout_height="wrap_content"
+				android:layout_width="fill_parent" />
+
+
+		</RelativeLayout>
+
+	</LinearLayout>
+
+	<TextView android:id="@+id/summary" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" />
+
+</LinearLayout>
+	

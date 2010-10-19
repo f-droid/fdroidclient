@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/vw1" android:layout_width="fill_parent"
+	android:layout_height="wrap_content" android:orientation="horizontal">
+
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:orientation="vertical">
+
+		<TextView android:id="@+id/version" android:textStyle="bold"
+			android:singleLine="true" android:ellipsize="marquee"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textSize="18sp" />
+
+		<TextView android:id="@+id/status" android:textSize="12sp"
+			android:layout_below="@id/version" android:layout_alignParentRight="false"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" />
+
+	</RelativeLayout>
+
+</LinearLayout>
