@@ -271,7 +271,7 @@ public class AppDetails extends ListActivity {
             download_handler.sendMessage(msg);
 
             BufferedInputStream getit = new BufferedInputStream(new URL(
-                    remotefile).openStream());
+                    remotefile).openStream(), 8192);
 
             FileOutputStream saveit = new FileOutputStream(localfile);
             BufferedOutputStream bout = new BufferedOutputStream(saveit, 1024);

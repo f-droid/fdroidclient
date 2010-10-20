@@ -434,7 +434,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         try {
             SAXParser sp = spf.newSAXParser();
             XMLReader xr = sp.getXMLReader();
-            RepoXMLHandler handler = new RepoXMLHandler(this, srv);
+            RepoXMLHandler handler = new RepoXMLHandler(this, srv, db);
             xr.setContentHandler(handler);
 
             InputStreamReader isr = new FileReader(new File(XML_PATH));

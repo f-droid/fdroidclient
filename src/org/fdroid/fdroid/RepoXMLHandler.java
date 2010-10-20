@@ -39,24 +39,16 @@ public class RepoXMLHandler extends DefaultHandler {
     Context mctx;
     String mserver;
 
-    private DB db = null;
+    private DB db;
 
     private DB.App curapp = null;
     private DB.Apk curapk = null;
     private String curel = null;
 
-    public RepoXMLHandler(Context ctx, String srv) {
+    public RepoXMLHandler(Context ctx, String srv,DB db) {
         mctx = ctx;
         mserver = srv;
-        db = new DB(mctx);
-        db.beginUpdate();
-    }
-
-    @Override
-    public void endDocument() throws SAXException {
-        super.endDocument();
-        db.endUpdate();
-        db.close();
+        this.db = db;
     }
 
     @Override

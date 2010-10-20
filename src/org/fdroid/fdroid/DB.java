@@ -133,10 +133,10 @@ public class DB {
         Cursor c = db.rawQuery(
                 "SELECT name FROM sqlite_master WHERE type='table' AND name= '"
                         + TABLE_REPO + "'", null);
-        if (c.getCount() == 0) {
-            reset();
-        }
+        boolean newinst = (c.getCount() == 0);
         c.close();
+        if(newinst)
+            reset();
 
         mPm = ctx.getPackageManager();
     }
@@ -209,6 +209,7 @@ public class DB {
                     app.apks.add(apk);
                     c2.moveToNext();
                 }
+                c2.close();
 
                 result.add(app);
                 c.moveToNext();
@@ -262,6 +263,10 @@ public class DB {
 
     // Called before a repo update starts.
     public void beginUpdate() {
+        // Get a list of all apps. All the apps and apks in this list will
+        // have 'updated' set to false at this point, and we will only set
+        // it to true when we see the app/apk in a repository. Thus, at the
+        // end, any that are still false can be removed.
         updateApps = getApps(null, null, true);
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps before starting.");
@@ -275,14 +280,20 @@ public class DB {
             if (!app.updated) {
                 // The application hasn't been updated, so it's no longer
                 // in the repos.
+                Log.d("FDroid", "AppUpdate: " + app.name
+                        + " is no longer in any repository - removing");
                 db.delete(TABLE_APP, "id = '" + app.id + "'", null);
+                db.delete(TABLE_APK, "id = '" + app.id + "'", null);
             } else {
                 for (Apk apk : app.apks) {
                     if (!apk.updated) {
                         // The package hasn't been updated, so this is a
                         // version that's no longer available.
+                        Log.d("FDroid", "AppUpdate: Package " + apk.id + "/"
+                                + apk.version
+                                + " is no longer in any repository - removing");
                         db.delete(TABLE_APK, "id = '" + app.id
-                                + " and version ='" + apk.version + "'", null);
+                                + "' and version ='" + apk.version + "'", null);
                     }
                 }
             }
@@ -328,6 +339,7 @@ public class DB {
                         app.hasUpdates = true;
                     }
                 }
+                break;
             }
         }
         if (!found) {
@@ -338,6 +350,7 @@ public class DB {
             updateAppIfDifferent(null, upapp);
             for (Apk upapk : upapp.apks) {
                 updateApkIfDifferent(null, upapk);
+                upapk.updated = true;
             }
             upapp.updated = true;
             updateApps.add(upapp);
@@ -406,7 +419,7 @@ public class DB {
             c = db.rawQuery("select address, inuse, priority from "
                     + TABLE_REPO + " order by priority", null);
             c.moveToFirst();
-            while(!c.isAfterLast()) {
+            while (!c.isAfterLast()) {
                 Repo repo = new Repo();
                 repo.address = c.getString(0);
                 repo.inuse = (c.getInt(1) == 1);
