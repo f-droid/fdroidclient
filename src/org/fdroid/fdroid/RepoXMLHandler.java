@@ -61,7 +61,7 @@ public class RepoXMLHandler extends DefaultHandler {
         if (curapk != null && curel != null) {
             if (curel == "version")
                 curapk.version = str;
-            if (curel == "vercode") {
+            if (curel == "versioncode") {
                 try {
                     curapk.vercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
