@@ -59,18 +59,19 @@ public class RepoXMLHandler extends DefaultHandler {
 
         String str = new String(ch).substring(start, start + length);
         if (curapk != null && curel != null) {
-            if (curel == "version")
+            if (curel == "version") {
                 curapk.version = str;
-            if (curel == "versioncode") {
+            } else if (curel == "versioncode") {
                 try {
                     curapk.vercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
                     curapk.vercode = 0;
                 }
-            } else if (curel == "hash")
+            } else if (curel == "hash") {
                 curapk.hash = str;
-            else if (curel == "apkname")
+            } else if (curel == "apkname") {
                 curapk.apkName = str;
+            }
         } else if (curapp != null && curel != null) {
             if (curel == "id")
                 curapp.id = str;

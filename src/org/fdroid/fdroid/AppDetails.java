@@ -246,14 +246,14 @@ public class AppDetails extends ListActivity {
     private void install() {
         new Thread() {
             public void run() {
-                String apk_pkg = downloadFile(app, curapk);
-                if (apk_pkg == null) {
+                String apk_file = downloadFile(app, curapk);
+                if (apk_file == null) {
                     Message msg = new Message();
                     msg.arg1 = 1;
                     download_handler.sendMessage(msg);
                     download_error_handler.sendEmptyMessage(0);
                 } else {
-                    installApk(apk_pkg);
+                    installApk(apk_file);
                 }
             }
         }.start();
