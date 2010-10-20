@@ -48,6 +48,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -103,6 +105,13 @@ public class AppDetails extends ListActivity {
             return v;
         }
     }
+
+    private static final int INSTALL = Menu.FIRST;
+    private static final int UNINSTALL = Menu.FIRST + 1;
+    private static final int WEBSITE = Menu.FIRST + 2;
+    private static final int ISSUES = Menu.FIRST + 3;
+    private static final int SOURCE = Menu.FIRST + 4;
+    private static final int MARKET = Menu.FIRST + 5;
 
     private DB db;
     private DB.App app;
@@ -215,42 +224,105 @@ public class AppDetails extends ListActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             p.dismiss();
-                            new Thread() {
-                                public void run() {
-                                    String apk_pkg = downloadFile(app, curapk);
-                                    if (apk_pkg == null) {
-                                        Message msg = new Message();
-                                        msg.arg1 = 1;
-                                        download_handler.sendMessage(msg);
-                                        download_error_handler
-                                                .sendEmptyMessage(0);
-                                    } else {
-                                        installApk(apk_pkg);
-                                    }
-                                }
-                            }.start();
+                            install();
                         }
                     });
         }
-
-        p.setButton3(getString(R.string.apk_market_view),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                                .parse("market://search?q=pname:" + app.id)));
-                    }
-                });
-
-        if (!caninstall) {
-            p.setButton2(getString(R.string.rem),
+        else {
+            p.setButton2(getString(R.string.uninstall),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            p.dismiss();
                             removeApk(app.id);
                         }
-                    });
+                    });            
         }
+            
 
         p.show();
+    }
+
+    // Install the version of this app denoted by 'curapk'.
+    private void install() {
+        new Thread() {
+            public void run() {
+                String apk_pkg = downloadFile(app, curapk);
+                if (apk_pkg == null) {
+                    Message msg = new Message();
+                    msg.arg1 = 1;
+                    download_handler.sendMessage(msg);
+                    download_error_handler.sendEmptyMessage(0);
+                } else {
+                    installApk(apk_pkg);
+                }
+            }
+        }.start();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        super.onCreateOptionsMenu(menu);
+        menu.clear();
+        if (app.installedVersion == null && app.getCurrentVersion() != null) {
+            menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
+                    android.R.drawable.ic_menu_add);
+        } else {
+            menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
+                    android.R.drawable.ic_menu_delete);
+        }
+        if (app.webURL.length() > 0) {
+            menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
+                    android.R.drawable.ic_menu_view);
+        }
+        if (app.trackerURL.length() > 0) {
+            menu.add(Menu.NONE, ISSUES, 3, R.string.menu_issues).setIcon(
+                    android.R.drawable.ic_menu_view);
+        }
+        if (app.sourceURL.length() > 0) {
+            menu.add(Menu.NONE, SOURCE, 4, R.string.menu_source).setIcon(
+                    android.R.drawable.ic_menu_view);
+        }
+        menu.add(Menu.NONE, MARKET, 5, R.string.menu_market).setIcon(
+                android.R.drawable.ic_menu_view);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+        case INSTALL:
+            curapk = app.getCurrentVersion();
+            install();
+            return true;
+
+        case UNINSTALL:
+            removeApk(app.id);
+            return true;
+
+        case WEBSITE:
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.webURL)));
+            return true;
+
+        case ISSUES:
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri
+                    .parse(app.trackerURL)));
+            return true;
+
+        case SOURCE:
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri
+                    .parse(app.sourceURL)));
+            return true;
+
+        case MARKET:
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri
+                    .parse("market://search?q=pname:" + app.id)));
+            return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // Download the requested apk file, given the DB.App and DB.Apk

@@ -5,7 +5,7 @@
     <string name="isinst">Installed: </string>
     <string name="instver">Installed version: </string>
     <string name="install">Install </string>
-    <string name="rem">Uninstall </string>
+    <string name="uninstall">Uninstall </string>
     <string name="update">Update!</string>
     
     <string name="update_alrt">There updates available for some installed applications.\nDo you wish to see them?</string>

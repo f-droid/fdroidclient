@@ -56,6 +56,10 @@ public class DB {
             summary = "Unknown application";
             icon = "noicon.png";
             id = "unknown";
+            license = "Unknown";
+            trackerURL = "";
+            sourceURL = "";
+            webURL = "";
             hasUpdates = false;
             updated = false;
             apks = new Vector<Apk>();
@@ -80,6 +84,26 @@ public class DB {
         public boolean updated;
 
         public Vector<Apk> apks;
+
+        // Get the current version - this will be one of the Apks from 'apks'.
+        // Can return null if there are no available versions.
+        // This should be the 'current' version, as in the most recent stable
+        // one, that most users would want by default. It might not be the
+        // most recent, if for example there are betas etc.
+        public Apk getCurrentVersion() {
+            // But, notwithstanding the above comment, FOR NOW, it's the
+            // most recent...
+            int latestcode = -1;
+            Apk latestapk = null;
+            for (Apk apk : apks) {
+                if (apk.vercode > latestcode) {
+                    latestapk = apk;
+                    latestcode = apk.vercode;
+                }
+            }
+            return latestapk;
+        }
+
     }
 
     // The TABLE_APK table stores details of all the application versions we
@@ -90,7 +114,8 @@ public class DB {
     private static final String CREATE_TABLE_APK = "create table " + TABLE_APK
             + "( " + "id text not null, " + "version text not null, "
             + "server text not null, " + "hash text not null, "
-            + "apkName text not null, " + "primary key(id,version));";
+            + "vercode int not null," + "apkName text not null, "
+            + "primary key(id,version));";
 
     public static class Apk {
 
@@ -100,6 +125,7 @@ public class DB {
 
         public String id;
         public String version;
+        public int vercode;
         public String server;
         public String hash;
         public String apkName;
@@ -135,7 +161,7 @@ public class DB {
                         + TABLE_REPO + "'", null);
         boolean newinst = (c.getCount() == 0);
         c.close();
-        if(newinst)
+        if (newinst)
             reset();
 
         mPm = ctx.getPackageManager();
@@ -197,12 +223,13 @@ public class DB {
                 app.hasUpdates = c.getInt(c.getColumnIndex("hasUpdates")) == 1;
 
                 c2 = db.rawQuery("select * from " + TABLE_APK + " where "
-                        + "id = '" + app.id + "'", null);
+                        + "id = '" + app.id + "' order by vercode desc", null);
                 c2.moveToFirst();
                 while (!c2.isAfterLast()) {
                     Apk apk = new Apk();
                     apk.id = app.id;
                     apk.version = c2.getString(c2.getColumnIndex("version"));
+                    apk.vercode = c2.getInt(c2.getColumnIndex("vercode"));
                     apk.server = c2.getString(c2.getColumnIndex("server"));
                     apk.hash = c2.getString(c2.getColumnIndex("hash"));
                     apk.apkName = c2.getString(c2.getColumnIndex("apkName"));
@@ -394,6 +421,7 @@ public class DB {
         ContentValues values = new ContentValues();
         values.put("id", upapk.id);
         values.put("version", upapk.version);
+        values.put("vercode", upapk.vercode);
         values.put("server", upapk.server);
         values.put("hash", upapk.hash);
         values.put("apkName", upapk.apkName);

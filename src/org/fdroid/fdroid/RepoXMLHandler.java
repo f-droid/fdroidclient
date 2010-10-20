@@ -45,7 +45,7 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private String curel = null;
 
-    public RepoXMLHandler(Context ctx, String srv,DB db) {
+    public RepoXMLHandler(Context ctx, String srv, DB db) {
         mctx = ctx;
         mserver = srv;
         this.db = db;
@@ -61,7 +61,13 @@ public class RepoXMLHandler extends DefaultHandler {
         if (curapk != null && curel != null) {
             if (curel == "version")
                 curapk.version = str;
-            else if (curel == "hash")
+            if (curel == "vercode") {
+                try {
+                    curapk.vercode = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.vercode = 0;
+                }
+            } else if (curel == "hash")
                 curapk.hash = str;
             else if (curel == "apkname")
                 curapk.apkName = str;

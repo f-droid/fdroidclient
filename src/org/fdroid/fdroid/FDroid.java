@@ -222,9 +222,9 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 android.R.drawable.ic_menu_rotate);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
-        menu.add(Menu.NONE, RESET_DB, 4, "Reset DB").setIcon(
+        menu.add(Menu.NONE, RESET_DB, 3, "Reset DB").setIcon(
                 android.R.drawable.ic_menu_revert);
-        menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
+        menu.add(Menu.NONE, ABOUT, 4, R.string.menu_about).setIcon(
                 android.R.drawable.ic_menu_help);
         return true;
     }

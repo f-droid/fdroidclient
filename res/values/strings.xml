@@ -46,7 +46,7 @@
 	<string name="connection_error_msg">Could not connect to server!</string>
 	<string name="download">Download</string>
 	<string name="download_server">Getting application from</string>
-	<string name="apk_market_view">Market</string>
+	
 	<string name="apk_version_new"> available v </string>
 <string name="settings_sort_title">Sort application list by:</string>
 <string name="settings_sort_abc">Alphabetically</string>
