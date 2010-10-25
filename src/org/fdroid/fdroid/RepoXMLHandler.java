@@ -137,12 +137,12 @@ public class RepoXMLHandler extends DefaultHandler {
         try {
 
             String destpath = mctx.getString(R.string.icons_path) + app.icon;
-            BufferedInputStream getit = new BufferedInputStream(new URL(mserver
-                    + "/icons/" + app.icon).openStream());
             File f = new File(destpath);
             if (f.exists())
-                f.delete();
+                return;
 
+            BufferedInputStream getit = new BufferedInputStream(new URL(mserver
+                    + "/icons/" + app.icon).openStream());
             FileOutputStream saveit = new FileOutputStream(destpath);
             BufferedOutputStream bout = new BufferedOutputStream(saveit, 1024);
             byte data[] = new byte[1024];
