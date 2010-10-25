@@ -77,7 +77,8 @@ public class DB {
         public String installedVersion;
 
         // True if there are new versions (apks) that the user hasn't
-        // explicitly ignored.
+        // explicitly ignored. (We're currently not using the database
+        // field for this - we make the decision on the fly in getApps(). 
         public boolean hasUpdates;
 
         // Used internally for tracking during repo updates.
@@ -220,7 +221,7 @@ public class DB {
                 app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
                 app.installedVersion = c.getString(c
                         .getColumnIndex("installedVersion"));
-                app.hasUpdates = c.getInt(c.getColumnIndex("hasUpdates")) == 1;
+                app.hasUpdates = false;
 
                 c2 = db.rawQuery("select * from " + TABLE_APK + " where "
                         + "id = '" + app.id + "' order by vercode desc", null);
@@ -258,6 +259,14 @@ public class DB {
             getUpdates(result);
         }
 
+        // We'll say an application has updates if it's installed and the
+        // installed version is not the 'current' one.
+        for(App app : result) {
+            if(app.installedVersion != null && !app.installedVersion.equals(app.getCurrentVersion().version)) {
+                app.hasUpdates=true;
+            }
+        }
+        
         return result;
     }
 
