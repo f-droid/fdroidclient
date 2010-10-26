@@ -15,6 +15,10 @@
 			android:layout_below="@id/version" android:layout_alignParentRight="false"
 			android:layout_height="wrap_content" android:layout_width="wrap_content" />
 
+		<TextView android:id="@+id/size" android:textSize="12sp"
+			android:layout_below="@id/version" android:layout_alignParentRight="true"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" />
+
 	</RelativeLayout>
 
 </LinearLayout>

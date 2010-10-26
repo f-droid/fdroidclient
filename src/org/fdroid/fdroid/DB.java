@@ -38,6 +38,12 @@ public class DB {
 
     private SQLiteDatabase db;
 
+    // The TABLE_VERSION table tracks the database version.
+    private static final String TABLE_VERSION = "fdroid_version";
+    private static final String CREATE_TABLE_VERSION = "create table "
+            + TABLE_VERSION + "( version int not null); insert into "
+            + TABLE_VERSION + "(version) values (1);";
+
     // The TABLE_APP table stores details of all the applications we know about.
     // This information is retrieved from the repositories.
     private static final String TABLE_APP = "fdroid_app";
@@ -78,7 +84,7 @@ public class DB {
 
         // True if there are new versions (apks) that the user hasn't
         // explicitly ignored. (We're currently not using the database
-        // field for this - we make the decision on the fly in getApps(). 
+        // field for this - we make the decision on the fly in getApps().
         public boolean hasUpdates;
 
         // Used internally for tracking during repo updates.
@@ -116,17 +122,19 @@ public class DB {
             + "( " + "id text not null, " + "version text not null, "
             + "server text not null, " + "hash text not null, "
             + "vercode int not null," + "apkName text not null, "
-            + "primary key(id,version));";
+            + "size int not null," + "primary key(id,version));";
 
     public static class Apk {
 
         public Apk() {
             updated = false;
+            size = 0;
         }
 
         public String id;
         public String version;
         public int vercode;
+        public int size; // Size in bytes - 0 means we don't know!
         public String server;
         public String hash;
         public String apkName;
@@ -159,7 +167,7 @@ public class DB {
 
         Cursor c = db.rawQuery(
                 "SELECT name FROM sqlite_master WHERE type='table' AND name= '"
-                        + TABLE_REPO + "'", null);
+                        + TABLE_VERSION + "'", null);
         boolean newinst = (c.getCount() == 0);
         c.close();
         if (newinst)
@@ -171,9 +179,11 @@ public class DB {
     // Reset the database, i.e. (re-)create all the tables from scratch and
     // populate any initial data.
     public void reset() {
+        db.execSQL("drop table if exists " + TABLE_VERSION);
         db.execSQL("drop table if exists " + TABLE_REPO);
         db.execSQL("drop table if exists " + TABLE_APP);
         db.execSQL("drop table if exists " + TABLE_APK);
+        db.execSQL(CREATE_TABLE_VERSION);
         db.execSQL(CREATE_TABLE_REPO);
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL(CREATE_TABLE_APK);
@@ -233,6 +243,7 @@ public class DB {
                     apk.vercode = c2.getInt(c2.getColumnIndex("vercode"));
                     apk.server = c2.getString(c2.getColumnIndex("server"));
                     apk.hash = c2.getString(c2.getColumnIndex("hash"));
+                    apk.size = c2.getInt(c2.getColumnIndex("size"));
                     apk.apkName = c2.getString(c2.getColumnIndex("apkName"));
                     app.apks.add(apk);
                     c2.moveToNext();
@@ -261,12 +272,14 @@ public class DB {
 
         // We'll say an application has updates if it's installed and the
         // installed version is not the 'current' one.
-        for(App app : result) {
-            if(app.installedVersion != null && !app.installedVersion.equals(app.getCurrentVersion().version)) {
-                app.hasUpdates=true;
+        for (App app : result) {
+            if (app.installedVersion != null
+                    && !app.installedVersion
+                            .equals(app.getCurrentVersion().version)) {
+                app.hasUpdates = true;
             }
         }
-        
+
         return result;
     }
 
@@ -433,6 +446,7 @@ public class DB {
         values.put("vercode", upapk.vercode);
         values.put("server", upapk.server);
         values.put("hash", upapk.hash);
+        values.put("size", upapk.size);
         values.put("apkName", upapk.apkName);
         if (oldapk != null) {
             db.update(TABLE_APK, values, "id = '" + oldapk.id

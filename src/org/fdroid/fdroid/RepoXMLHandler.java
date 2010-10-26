@@ -67,6 +67,12 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapk.vercode = 0;
                 }
+            } else if (curel == "size") {
+                try {
+                    curapk.size = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.size = 0;
+                }
             } else if (curel == "hash") {
                 curapk.hash = str;
             } else if (curel == "apkname") {

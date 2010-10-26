@@ -102,10 +102,30 @@ public class AppDetails extends ListActivity {
                 status.setText("Installed");
             else
                 status.setText("Not installed");
+            TextView size = (TextView) v.findViewById(R.id.size);
+            if(apk.size==0) {
+                size.setText("");
+            } else {
+                size.setText(getFriendlySize(apk.size));
+            }   
             return v;
         }
     }
 
+    private static String getFriendlySize(int size)
+    {
+        double s=size;
+        String[] format=new String[] {"%fb","%.0fK","%.1fM","%.2fG"};
+        int i=0;
+        while(i<format.length-1 && s>=1024)
+        {
+           s=(100*s/1024)/100.0;
+           i++;
+        }
+        return String.format(format[i],s);
+    }
+    
+    
     private static final int INSTALL = Menu.FIRST;
     private static final int UNINSTALL = Menu.FIRST + 1;
     private static final int WEBSITE = Menu.FIRST + 2;
