@@ -160,6 +160,10 @@ public class DB {
         public int priority;
     }
 
+    public static String getIconsPath() {
+        return "/sdcard/.fdroid/icons/";
+    }
+    
     private PackageManager mPm;
 
     public DB(Context ctx) {

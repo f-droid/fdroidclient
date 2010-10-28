@@ -7,21 +7,14 @@
 	<string name="about_mail">e-Mail: </string>
 	<string name="about_website">Web Site</string>
 
-	<string name="no_found">No application found!</string>
+	
 	<string name="no_repo">You have no repositories configured!\n\nA repository is a source of applications. To add one, press the MENU button now and enter the URL.\n\nA repository URL looks something like this: http://f-droid.org/repo</string>
 
 	<string name="not_inst">Not Installed</string>
-	<string name="installed">Installed - Ver.:</string>
+	
 	<string name="installed_update">Update possible - Ver.:</string>
 
 	
-	
-
-	
-	
-	
-
-	<string name="error">Error</string>
 	<string name="ok">Ok</string>
 
 	<string name="yes">Yes</string>
@@ -30,8 +23,8 @@
 	<string name="repo_add_add">Add</string>
 	
 	<string name="cancel">Cancel</string>
-	<string name="repo_delete_title">Chose repository to remove</string>
-	<string name="url_website">http://f-droid.org</string>
+	<string name="repo_delete_title">Choose repository to remove</string>
+	
 	<string name="server_connection_error">Could not connect to server!</string>
 	
 	<string name="repo_update_title">Update repositories</string>
@@ -47,15 +40,54 @@
 	<string name="download">Download</string>
 	<string name="download_server">Getting application from</string>
 	
-	<string name="apk_version_new"> available v </string>
-<string name="settings_sort_title">Sort application list by:</string>
-<string name="settings_sort_abc">Alphabetically</string>
-<string name="settings_sort_installed">Installed / Not Installed</string>
-<string name="settings_sort_recent">Most recent first</string>
-<string name="settings_sort_rating">Rating</string>
-<string name="settings_filter_title">Show applications:</string>
-<string name="settings_filter_category">By category</string>
-<string name="settings_filter_all">All applications</string>
-<string name="settings_save">Save</string>
+	
+
+
+
+
+
+
+
+
+
 <string name="repo_add_url">Repository URL</string>
+
+    
+    
+    <string name="isinst">Installed: </string>
+    
+    <string name="install">Install </string>
+    <string name="uninstall">Uninstall </string>
+    <string name="update">Update!</string>
+    
+    <string name="update_alrt">There updates available for some installed applications.\nDo you wish to see them?</string>
+    <string name="repo_alrt">The list of repositories in use has been changed.\nDo you wish to update them?</string>
+  
+    <string name="error_download_alrt">Could not connect to server or apk file is corrupt!</string>
+    <string name="download_alrt">Getting application from:\n </string>
+
+    <string name="menu_update_repo">Update</string>
+    <string name="menu_manage">Manage Repos</string>
+    
+    
+    <string name="menu_about">About</string>
+    
+    
+    
+    <string name="menu_add_repo">New Repository</string>
+    <string name="menu_rem_repo">Remove Repository</string>
+    
+    
+    
+<string name="menu_install">Install</string>
+<string name="menu_uninstall">Uninstall</string>
+<string name="menu_website">Web Site</string>
+<string name="menu_issues">Issues</string>
+<string name="menu_source">Source Code</string>
+<string name="menu_market">Market</string>
+<string name="menu_update">Update</string>
+
+<string name="details_installed">Version %s installed</string>
+<string name="details_notinstalled">Not installed (%d available)</string>
+<string name="inst">Installed</string>
 </resources>

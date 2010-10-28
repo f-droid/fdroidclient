@@ -29,8 +29,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import org.fdroid.fdroid.R;
-
 import android.content.Context;
 import android.util.Log;
 
@@ -142,7 +140,7 @@ public class RepoXMLHandler extends DefaultHandler {
     private void getIcon(DB.App app) {
         try {
 
-            String destpath = mctx.getString(R.string.icons_path) + app.icon;
+            String destpath = DB.getIconsPath() + app.icon;
             File f = new File(destpath);
             if (f.exists())
                 return;

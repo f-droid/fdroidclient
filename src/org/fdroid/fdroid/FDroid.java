@@ -130,9 +130,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             summary.setText(app.summary);
 
             ImageView icon = (ImageView) v.findViewById(R.id.icon);
-            String iconpath = new String(FDroid.this
-                    .getString(R.string.icons_path)
-                    + app.icon);
+            String iconpath = new String(DB.getIconsPath() + app.icon);
             File icn = new File(iconpath);
             if (icn.exists() && icn.length() > 0) {
                 new Uri.Builder().build();
@@ -190,7 +188,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         if (!local_path.exists())
             local_path.mkdir();
 
-        File icon_path = new File(this.getString(R.string.icons_path));
+        File icon_path = new File(DB.getIconsPath());
         if (!icon_path.exists())
             icon_path.mkdir();
 
@@ -261,11 +259,11 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             Uri uri = Uri
-                                    .parse(getString(R.string.url_website));
+                                    .parse("http://f-droid.org");
                             startActivity(new Intent(Intent.ACTION_VIEW, uri));
                         }
                     });
-            alrt.setButton(AlertDialog.BUTTON_NEGATIVE, "Ok",
+            alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {

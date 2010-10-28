@@ -99,9 +99,9 @@ public class AppDetails extends ListActivity {
             version.setText("Version " + apk.version);
             TextView status = (TextView) v.findViewById(R.id.status);
             if (apk.version.equals(app.installedVersion))
-                status.setText("Installed");
+                status.setText(getString(R.string.inst));
             else
-                status.setText("Not installed");
+                status.setText(getString(R.string.not_inst));
             TextView size = (TextView) v.findViewById(R.id.size);
             if(apk.size==0) {
                 size.setText("");
@@ -174,7 +174,7 @@ public class AppDetails extends ListActivity {
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        String icon_path = this.getString(R.string.icons_path) + app.icon;
+        String icon_path = DB.getIconsPath() + app.icon;
         File test_icon = new File(icon_path);
         if (test_icon.exists()) {
             iv.setImageDrawable(new BitmapDrawable(icon_path));
@@ -189,9 +189,10 @@ public class AppDetails extends ListActivity {
         tv.setText(app.license);
         tv = (TextView) findViewById(R.id.status);
         int vnum = app.apks.size();
-        String v = vnum == 1 ? "version" : "versions";
-        tv.setText("" + vnum + " " + v + ", "
-                + (app.installedVersion == null ? "not" : "1") + " installed");
+        if(app.installedVersion == null)
+            tv.setText(String.format(getString(R.string.details_notinstalled),vnum));
+        else
+            tv.setText(String.format(getString(R.string.details_installed), app.installedVersion));
         tv = (TextView) findViewById(R.id.description);
         tv.setText(app.description);
 
@@ -211,7 +212,7 @@ public class AppDetails extends ListActivity {
         curapk = app.apks.get(position);
 
         // Set the title and icon...
-        String icon_path = this.getString(R.string.icons_path) + app.icon;
+        String icon_path = DB.getIconsPath() + app.icon;
         File test_icon = new File(icon_path);
         if (test_icon.exists()) {
             p.setIcon(new BitmapDrawable(icon_path));
@@ -227,7 +228,7 @@ public class AppDetails extends ListActivity {
                 installed = getString(R.string.yes);
                 caninstall = false;
             } else {
-                installed += " - " + app.installedVersion;
+                installed = app.installedVersion;
             }
         }
         p.setMessage(getString(R.string.isinst) + " " + installed);
