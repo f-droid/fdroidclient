@@ -1,0 +1,298 @@
+# Translations template for PROJECT.
+# Copyright (C) 2010 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2010-10-28 13:22+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.8.0\n"
+"Generated-By: Babel 1.0dev\n"
+
+msgctxt "app_name"
+msgid "FDroid"
+msgstr ""
+
+msgctxt "about_title"
+msgid "About FDroid"
+msgstr ""
+
+msgctxt "about_desc"
+msgid ""
+"Based on Aptoide.\n"
+"Released under the GNU GPL v2 license."
+msgstr ""
+
+msgctxt "about_site"
+msgid "Home:"
+msgstr ""
+
+msgctxt "about_mail"
+msgid "e-Mail:"
+msgstr ""
+
+msgctxt "about_website"
+msgid "Web Site"
+msgstr ""
+
+msgctxt "no_found"
+msgid "No application found!"
+msgstr ""
+
+msgctxt "no_repo"
+msgid ""
+"You have no repositories configured!\n"
+"\n"
+"A repository is a source of applications. To add one, press the MENU "
+"button now and enter the URL.\n"
+"\n"
+"A repository URL looks something like this: http://f-droid.org/repo"
+msgstr ""
+
+msgctxt "not_inst"
+msgid "Not Installed"
+msgstr ""
+
+msgctxt "installed"
+msgid "Installed - Ver.:"
+msgstr ""
+
+msgctxt "installed_update"
+msgid "Update possible - Ver.:"
+msgstr ""
+
+msgctxt "error"
+msgid "Error"
+msgstr ""
+
+msgctxt "ok"
+msgid "Ok"
+msgstr ""
+
+msgctxt "yes"
+msgid "Yes"
+msgstr ""
+
+msgctxt "no"
+msgid "No"
+msgstr ""
+
+msgctxt "repo_add_title"
+msgid "Add new repository"
+msgstr ""
+
+msgctxt "repo_add_add"
+msgid "Add"
+msgstr ""
+
+msgctxt "cancel"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "repo_delete_title"
+msgid "Chose repository to remove"
+msgstr ""
+
+msgctxt "url_website"
+msgid "http://f-droid.org"
+msgstr ""
+
+msgctxt "server_connection_error"
+msgid "Could not connect to server!"
+msgstr ""
+
+msgctxt "repo_update_title"
+msgid "Update repositories"
+msgstr ""
+
+msgctxt "tab_installed"
+msgid "Installed"
+msgstr ""
+
+msgctxt "tab_noninstalled"
+msgid "Available"
+msgstr ""
+
+msgctxt "tab_updates"
+msgid "Updates"
+msgstr ""
+
+msgctxt "update_available"
+msgid "Updates available"
+msgstr ""
+
+msgctxt "process_wait_title"
+msgid "Please Wait"
+msgstr ""
+
+msgctxt "process_update_msg"
+msgid "Updating application list..."
+msgstr ""
+
+msgctxt "connection_error"
+msgid "Could not connect to the network."
+msgstr ""
+
+msgctxt "connection_timeout"
+msgid "Timeout"
+msgstr ""
+
+msgctxt "connection_error_msg"
+msgid "Could not connect to server!"
+msgstr ""
+
+msgctxt "download"
+msgid "Download"
+msgstr ""
+
+msgctxt "download_server"
+msgid "Getting application from"
+msgstr ""
+
+msgctxt "apk_version_new"
+msgid "available v"
+msgstr ""
+
+msgctxt "settings_sort_title"
+msgid "Sort application list by:"
+msgstr ""
+
+msgctxt "settings_sort_abc"
+msgid "Alphabetically"
+msgstr ""
+
+msgctxt "settings_sort_installed"
+msgid "Installed / Not Installed"
+msgstr ""
+
+msgctxt "settings_sort_recent"
+msgid "Most recent first"
+msgstr ""
+
+msgctxt "settings_sort_rating"
+msgid "Rating"
+msgstr ""
+
+msgctxt "settings_filter_title"
+msgid "Show applications:"
+msgstr ""
+
+msgctxt "settings_filter_category"
+msgid "By category"
+msgstr ""
+
+msgctxt "settings_filter_all"
+msgid "All applications"
+msgstr ""
+
+msgctxt "settings_save"
+msgid "Save"
+msgstr ""
+
+msgctxt "repo_add_url"
+msgid "Repository URL"
+msgstr ""
+
+msgctxt "up_server"
+msgid "Servers:"
+msgstr ""
+
+msgctxt "lstver"
+msgid "Server version:"
+msgstr ""
+
+msgctxt "isinst"
+msgid "Installed:"
+msgstr ""
+
+msgctxt "instver"
+msgid "Installed version:"
+msgstr ""
+
+msgctxt "install"
+msgid "Install"
+msgstr ""
+
+msgctxt "uninstall"
+msgid "Uninstall"
+msgstr ""
+
+msgctxt "update"
+msgid "Update!"
+msgstr ""
+
+msgctxt "update_alrt"
+msgid ""
+"There updates available for some installed applications.\n"
+"Do you wish to see them?"
+msgstr ""
+
+msgctxt "repo_alrt"
+msgid ""
+"The list of repositories in use has been changed.\n"
+"Do you wish to update them?"
+msgstr ""
+
+msgctxt "error_download_alrt"
+msgid "Could not connect to server or apk file is corrupt!"
+msgstr ""
+
+msgctxt "download_alrt"
+msgid "Getting application from:\n"
+msgstr ""
+
+msgctxt "menu_update_repo"
+msgid "Update"
+msgstr ""
+
+msgctxt "menu_manage"
+msgid "Manage Repos"
+msgstr ""
+
+msgctxt "menu_about"
+msgid "About"
+msgstr ""
+
+msgctxt "menu_add_repo"
+msgid "New Repository"
+msgstr ""
+
+msgctxt "menu_rem_repo"
+msgid "Remove Repository"
+msgstr ""
+
+msgctxt "menu_install"
+msgid "Install"
+msgstr ""
+
+msgctxt "menu_uninstall"
+msgid "Uninstall"
+msgstr ""
+
+msgctxt "menu_website"
+msgid "Web Site"
+msgstr ""
+
+msgctxt "menu_issues"
+msgid "Issues"
+msgstr ""
+
+msgctxt "menu_source"
+msgid "Source Code"
+msgstr ""
+
+msgctxt "menu_market"
+msgid "Market"
+msgstr ""
+
+msgctxt "menu_update"
+msgid "Update"
+msgstr ""
