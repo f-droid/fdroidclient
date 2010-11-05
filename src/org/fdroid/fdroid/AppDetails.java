@@ -284,17 +284,17 @@ public class AppDetails extends ListActivity {
         super.onCreateOptionsMenu(menu);
         menu.clear();
         DB.Apk curver = app.getCurrentVersion();
+        if (app.installedVersion != null
+                && !app.installedVersion.equals(curver.version)) {
+            menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
+                    android.R.drawable.ic_menu_add);
+        }
         if (app.installedVersion == null && curver != null) {
             menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
                     android.R.drawable.ic_menu_add);
         } else {
             menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
                     android.R.drawable.ic_menu_delete);
-        }
-        if (app.installedVersion != null
-                && !app.installedVersion.equals(curver.version)) {
-            menu.add(Menu.NONE, INSTALL, 1, R.string.menu_update).setIcon(
-                    android.R.drawable.ic_menu_add);
         }
         if (app.webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
