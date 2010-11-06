@@ -32,6 +32,12 @@ public class Md5Handler {
             byte[] md5sum = digest.digest();
             BigInteger bigInt = new BigInteger(1, md5sum);
             md5hash = bigInt.toString(16);
+
+            // We need 32 hex digits - add leading zeros in an inefficient and
+            // brute-force manner...
+            while (md5hash.length() < 32)
+                md5hash = "0" + md5hash;
+
         } catch (Exception e) {
         }
 
