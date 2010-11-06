@@ -37,18 +37,18 @@ public class DB {
     private static final String DATABASE_NAME = "fdroid_db";
 
     private SQLiteDatabase db;
+    private Context mctx;
 
     // The TABLE_VERSION table tracks the database version.
     private static final String TABLE_VERSION = "fdroid_version";
     private static final String CREATE_TABLE_VERSION = "create table "
-            + TABLE_VERSION + "(version int not null); insert into "
-            + TABLE_VERSION + "(version) values (1);";
+            + TABLE_VERSION + " (version int not null);";
 
     // The TABLE_APP table stores details of all the applications we know about.
     // This information is retrieved from the repositories.
     private static final String TABLE_APP = "fdroid_app";
     private static final String CREATE_TABLE_APP = "create table " + TABLE_APP
-            + "( " + "id text not null, " + "name text not null, "
+            + " ( " + "id text not null, " + "name text not null, "
             + "summary text not null, " + "icon text, "
             + "description text not null, " + "license text not null, "
             + "webURL text, " + "trackerURL text, " + "sourceURL text, "
@@ -100,15 +100,15 @@ public class DB {
         // one, that most users would want by default. It might not be the
         // most recent, if for example there are betas etc.
         public Apk getCurrentVersion() {
-            
+
             // Try and return the version that's in Google's market first...
-            if(marketVersion!=null && marketVercode>0) {
-                for(Apk apk : apks) {
-                    if(apk.vercode == marketVercode)
+            if (marketVersion != null && marketVercode > 0) {
+                for (Apk apk : apks) {
+                    if (apk.vercode == marketVercode)
                         return apk;
                 }
             }
-            
+
             // If we don't know the market version, or we don't have it, we
             // return the most recent version we have...
             int latestcode = -1;
@@ -130,7 +130,7 @@ public class DB {
     // This information is retrieved from the repositories.
     private static final String TABLE_APK = "fdroid_apk";
     private static final String CREATE_TABLE_APK = "create table " + TABLE_APK
-            + "( " + "id text not null, " + "version text not null, "
+            + " ( " + "id text not null, " + "version text not null, "
             + "server text not null, " + "hash text not null, "
             + "vercode int not null," + "apkName text not null, "
             + "size int not null," + "primary key(id,version));";
@@ -186,11 +186,12 @@ public class DB {
     // * The current version is tracked by an entry in the TABLE_VERSION
     // table.
     //
-    private static final String[] DB_UPGRADES = {
+    private static final String[][] DB_UPGRADES = {
 
-    // Version 2...
-    "alter table " + TABLE_APK + " add marketVersion text; " + "alter table "
-            + TABLE_APK + " add marketVercode integer; "
+        // Version 2...
+        {"alter table " + TABLE_APP + " add marketVersion text",
+          "alter table "+ TABLE_APP + " add marketVercode integer"
+        }
 
     };
 
@@ -201,6 +202,7 @@ public class DB {
     private PackageManager mPm;
 
     public DB(Context ctx) {
+        mctx = ctx;
         db = ctx.openOrCreateDatabase(DATABASE_NAME, 0, null);
 
         // Check if we already have a database and create or upgrade as
@@ -228,6 +230,8 @@ public class DB {
             db.execSQL("drop table if exists " + TABLE_APP);
             db.execSQL("drop table if exists " + TABLE_APK);
             db.execSQL(CREATE_TABLE_VERSION);
+            db.execSQL("insert into " + TABLE_VERSION
+                    + " (version) values (1);");
             db.execSQL(CREATE_TABLE_REPO);
             db.execSQL(CREATE_TABLE_APP);
             db.execSQL(CREATE_TABLE_APK);
@@ -238,16 +242,35 @@ public class DB {
             Cursor c = db
                     .rawQuery("SELECT version from " + TABLE_VERSION, null);
             c.moveToFirst();
-            version = c.getInt(0);
-            c.close();
+            if (c.isAfterLast()) {
+                c.close();
+                Log.d("FDroid", "Missing version record - assuming 1");
+                db.execSQL("INSERT into " + TABLE_VERSION
+                        + " (version) values (1);");
+                version = 1;
+            } else {
+                version = c.getInt(0);
+                c.close();
+            }
         }
 
         // Run upgrade scripts if necessary...
+        boolean modified = false;
         while (version < DB_UPGRADES.length + 1) {
-            db.execSQL(DB_UPGRADES[version - 1]);
+            for(int i=0;i<DB_UPGRADES[version -1].length;i++)
+                db.execSQL(DB_UPGRADES[version - 1][i]);
             version++;
             db.execSQL("update " + TABLE_VERSION + " set version = " + version
                     + ";");
+            modified = true;
+        }
+
+        if (modified || reset) {
+            // Close and reopen to ensure underlying prepared statements are
+            // dropped, otherwise
+            // they will fail to execute.
+            db.close();
+            db = mctx.openOrCreateDatabase(DATABASE_NAME, 0, null);
         }
 
     }
@@ -293,10 +316,9 @@ public class DB {
                 app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
                 app.installedVersion = c.getString(c
                         .getColumnIndex("installedVersion"));
-                app.marketVersion = c2.getString(c2
+                app.marketVersion = c.getString(c
                         .getColumnIndex("marketVersion"));
-                app.marketVercode = c2.getInt(c2
-                        .getColumnIndex("marketVercode"));
+                app.marketVercode = c.getInt(c.getColumnIndex("marketVercode"));
                 app.hasUpdates = false;
 
                 c2 = db.rawQuery("select * from " + TABLE_APK + " where "
@@ -322,7 +344,7 @@ public class DB {
 
         } catch (Exception e) {
             Log.d("FDroid", "Exception during database reading - "
-                    + e.getMessage());
+                    + e.getMessage() + " ... " + e.toString());
         } finally {
             if (c != null) {
                 c.close();

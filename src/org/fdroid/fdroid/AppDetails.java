@@ -386,13 +386,15 @@ public class AppDetails extends ListActivity {
                     saveit.close();
                     File f = new File(localfile);
                     Md5Handler hash = new Md5Handler();
-
-                    if (curapk.hash.equalsIgnoreCase(hash.md5Calc(f))) {
+                    String calcedhash = hash.md5Calc(f);
+                    if (curapk.hash.equalsIgnoreCase(calcedhash)) {
                         apk_file = localfile;
                     } else {
                         msg = new Message();
                         msg.obj = getString(R.string.corrupt_download);
                         download_error_handler.sendMessage(msg);
+                        Log.d("FDroid", "Downloaded file hash of " + calcedhash
+                                + " did not match repo's " + curapk.hash);
                     }
 
                 } catch (Exception e) {
