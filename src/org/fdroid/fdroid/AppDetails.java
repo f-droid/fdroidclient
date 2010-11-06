@@ -103,29 +103,26 @@ public class AppDetails extends ListActivity {
             else
                 status.setText(getString(R.string.not_inst));
             TextView size = (TextView) v.findViewById(R.id.size);
-            if(apk.size==0) {
+            if (apk.size == 0) {
                 size.setText("");
             } else {
                 size.setText(getFriendlySize(apk.size));
-            }   
+            }
             return v;
         }
     }
 
-    private static String getFriendlySize(int size)
-    {
-        double s=size;
-        String[] format=new String[] {"%fb","%.0fK","%.1fM","%.2fG"};
-        int i=0;
-        while(i<format.length-1 && s>=1024)
-        {
-           s=(100*s/1024)/100.0;
-           i++;
+    private static String getFriendlySize(int size) {
+        double s = size;
+        String[] format = new String[] { "%fb", "%.0fK", "%.1fM", "%.2fG" };
+        int i = 0;
+        while (i < format.length - 1 && s >= 1024) {
+            s = (100 * s / 1024) / 100.0;
+            i++;
         }
-        return String.format(format[i],s);
+        return String.format(format[i], s);
     }
-    
-    
+
     private static final int INSTALL = Menu.FIRST;
     private static final int UNINSTALL = Menu.FIRST + 1;
     private static final int WEBSITE = Menu.FIRST + 2;
@@ -189,10 +186,12 @@ public class AppDetails extends ListActivity {
         tv.setText(app.license);
         tv = (TextView) findViewById(R.id.status);
         int vnum = app.apks.size();
-        if(app.installedVersion == null)
-            tv.setText(String.format(getString(R.string.details_notinstalled),vnum));
+        if (app.installedVersion == null)
+            tv.setText(String.format(getString(R.string.details_notinstalled),
+                    vnum));
         else
-            tv.setText(String.format(getString(R.string.details_installed), app.installedVersion));
+            tv.setText(String.format(getString(R.string.details_installed),
+                    app.installedVersion));
         tv = (TextView) findViewById(R.id.description);
         tv.setText(app.description);
 
@@ -259,23 +258,6 @@ public class AppDetails extends ListActivity {
         }
 
         p.show();
-    }
-
-    // Install the version of this app denoted by 'curapk'.
-    private void install() {
-        new Thread() {
-            public void run() {
-                String apk_file = downloadFile(app, curapk);
-                if (apk_file == null) {
-                    Message msg = new Message();
-                    msg.arg1 = 1;
-                    download_handler.sendMessage(msg);
-                    download_error_handler.sendEmptyMessage(0);
-                } else {
-                    installApk(apk_file);
-                }
-            }
-        }.start();
     }
 
     @Override
@@ -351,61 +333,96 @@ public class AppDetails extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Download the requested apk file, given the DB.App and DB.Apk
-    // that refer to it. Returns the path to the downloaded file, or
-    // null if the download was not successful.
-    private String downloadFile(DB.App app, DB.Apk apk) {
-        try {
+    // Install the version of this app denoted by 'curapk'.
+    private void install() {
 
-            String apkname = apk.apkName;
-            String localfile = new String(LOCAL_PATH + "/" + apkname);
-            String remotefile = apk.server + "/" + apkname.replace(" ", "%20");
+        pd = new ProgressDialog(this);
+        pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        pd.setMessage(getString(R.string.download_server));
 
-            Log.d("FDroid", "Downloading apk from " + remotefile);
+        new Thread() {
+            public void run() {
 
-            Message msg = new Message();
-            msg.arg1 = 0;
-            msg.obj = new String(remotefile);
-            download_handler.sendMessage(msg);
+                // Download the apk file from the repository...
+                String apk_file = null;
+                try {
 
-            BufferedInputStream getit = new BufferedInputStream(new URL(
-                    remotefile).openStream(), 8192);
+                    String apkname = curapk.apkName;
+                    String localfile = new String(LOCAL_PATH + "/" + apkname);
+                    String remotefile = curapk.server + "/"
+                            + apkname.replace(" ", "%20");
 
-            FileOutputStream saveit = new FileOutputStream(localfile);
-            BufferedOutputStream bout = new BufferedOutputStream(saveit, 1024);
-            byte data[] = new byte[1024];
+                    Log.d("FDroid", "Downloading apk from " + remotefile);
 
-            int readed = getit.read(data, 0, 1024);
-            while (readed != -1) {
-                bout.write(data, 0, readed);
-                readed = getit.read(data, 0, 1024);
+                    Message msg = new Message();
+                    msg.arg1 = 0;
+                    msg.arg2 = curapk.size;
+                    msg.obj = new String(remotefile);
+                    download_handler.sendMessage(msg);
+
+                    BufferedInputStream getit = new BufferedInputStream(
+                            new URL(remotefile).openStream(), 8192);
+
+                    FileOutputStream saveit = new FileOutputStream(localfile);
+                    BufferedOutputStream bout = new BufferedOutputStream(
+                            saveit, 1024);
+                    byte data[] = new byte[1024];
+
+                    int totalRead = 0;
+                    int bytesRead = getit.read(data, 0, 1024);
+                    while (bytesRead != -1) {
+                        bout.write(data, 0, bytesRead);
+                        totalRead += bytesRead;
+                        msg = new Message();
+                        msg.arg1 = totalRead;
+                        download_handler.sendMessage(msg);
+                        bytesRead = getit.read(data, 0, 1024);
+                    }
+                    bout.close();
+                    getit.close();
+                    saveit.close();
+                    File f = new File(localfile);
+                    Md5Handler hash = new Md5Handler();
+
+                    if (curapk.hash.equalsIgnoreCase(hash.md5Calc(f))) {
+                        apk_file = localfile;
+                    } else {
+                        msg = new Message();
+                        msg.obj = getString(R.string.corrupt_download);
+                        download_error_handler.sendMessage(msg);
+                    }
+
+                } catch (Exception e) {
+                    Log.d("FDroid", "Download failed - " + e.getMessage());
+                    Message msg = new Message();
+                    msg.obj = e.getMessage();
+                    download_error_handler.sendMessage(msg);
+                }
+
+                if (apk_file != null) {
+                    Message msg = new Message();
+                    msg.obj = apk_file;
+                    download_complete_handler.sendMessage(msg);
+                }
             }
-            bout.close();
-            getit.close();
-            saveit.close();
-            File f = new File(localfile);
-            Md5Handler hash = new Md5Handler();
+        }.start();
 
-            if (apk.hash.equalsIgnoreCase(hash.md5Calc(f))) {
-                return localfile;
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            Log.d("FDroid", "Download failed - " + e.getMessage());
-            return null;
-        }
+        pd.show();
+
     }
 
+    // Handler used to update the progress dialog while downloading. The
+    // message contains the progress (bytes read) in arg1. If this is 0,
+    // the message also contains the total bytes to read in arg2, and the
+    // message in obj.
     private Handler download_handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            pd.setProgress(msg.arg1);
             if (msg.arg1 == 0) {
-                pd = ProgressDialog.show(mctx, getString(R.string.download),
-                        getString(R.string.download_server) + ":\n "
-                                + msg.obj.toString(), true);
-            } else {
-                pd.dismiss();
+                pd.setMessage(getString(R.string.download_server) + ":\n "
+                        + msg.obj.toString());
+                pd.setMax(msg.arg2);
             }
         }
     };
@@ -413,8 +430,18 @@ public class AppDetails extends ListActivity {
     private Handler download_error_handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Toast.makeText(mctx, getString(R.string.connection_error_msg),
+            pd.dismiss();
+            Toast.makeText(mctx, (String)msg.obj,
                     Toast.LENGTH_LONG).show();
+        }
+    };
+
+    private Handler download_complete_handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            String apk_file = (String) msg.obj;
+            installApk(apk_file);
+            pd.dismiss();
         }
     };
 
