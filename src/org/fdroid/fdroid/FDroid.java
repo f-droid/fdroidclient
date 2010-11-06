@@ -242,7 +242,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             return true;
 
         case RESET_DB:
-            db.reset();
+            db.upgrade(true);
             populateLists(true);
             return true;
 
@@ -258,8 +258,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            Uri uri = Uri
-                                    .parse("http://f-droid.org");
+                            Uri uri = Uri.parse("http://f-droid.org");
                             startActivity(new Intent(Intent.ACTION_VIEW, uri));
                         }
                     });

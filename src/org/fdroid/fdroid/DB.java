@@ -41,7 +41,7 @@ public class DB {
     // The TABLE_VERSION table tracks the database version.
     private static final String TABLE_VERSION = "fdroid_version";
     private static final String CREATE_TABLE_VERSION = "create table "
-            + TABLE_VERSION + "( version int not null); insert into "
+            + TABLE_VERSION + "(version int not null); insert into "
             + TABLE_VERSION + "(version) values (1);";
 
     // The TABLE_APP table stores details of all the applications we know about.
@@ -81,6 +81,8 @@ public class DB {
         public String trackerURL;
         public String sourceURL;
         public String installedVersion;
+        public String marketVersion;
+        public int marketVercode;
 
         // True if there are new versions (apks) that the user hasn't
         // explicitly ignored. (We're currently not using the database
@@ -98,8 +100,17 @@ public class DB {
         // one, that most users would want by default. It might not be the
         // most recent, if for example there are betas etc.
         public Apk getCurrentVersion() {
-            // But, notwithstanding the above comment, FOR NOW, it's the
-            // most recent...
+            
+            // Try and return the version that's in Google's market first...
+            if(marketVersion!=null && marketVercode>0) {
+                for(Apk apk : apks) {
+                    if(apk.vercode == marketVercode)
+                        return apk;
+                }
+            }
+            
+            // If we don't know the market version, or we don't have it, we
+            // return the most recent version we have...
             int latestcode = -1;
             Apk latestapk = null;
             for (Apk apk : apks) {
@@ -160,38 +171,85 @@ public class DB {
         public int priority;
     }
 
+    // SQL to update the database to versions beyond the first. Here is
+    // how the database works:
+    //
+    // * The SQL to create the database tables always creates version
+    // 1. This SQL will never be altered.
+    // * In the array below there is SQL for each subsequent version
+    // from 2 onwards.
+    // * For a new install, the database is always initialised to version
+    // 1.
+    // * Then, whether it's a new install or not, all the upgrade SQL in
+    // the array below is executed in order to bring the database up to
+    // the latest version.
+    // * The current version is tracked by an entry in the TABLE_VERSION
+    // table.
+    //
+    private static final String[] DB_UPGRADES = {
+
+    // Version 2...
+    "alter table " + TABLE_APK + " add marketVersion text; " + "alter table "
+            + TABLE_APK + " add marketVercode integer; "
+
+    };
+
     public static String getIconsPath() {
         return "/sdcard/.fdroid/icons/";
     }
-    
+
     private PackageManager mPm;
 
     public DB(Context ctx) {
         db = ctx.openOrCreateDatabase(DATABASE_NAME, 0, null);
 
+        // Check if we already have a database and create or upgrade as
+        // appropriate...
         Cursor c = db.rawQuery(
                 "SELECT name FROM sqlite_master WHERE type='table' AND name= '"
                         + TABLE_VERSION + "'", null);
         boolean newinst = (c.getCount() == 0);
         c.close();
-        if (newinst)
-            reset();
+        upgrade(newinst);
 
         mPm = ctx.getPackageManager();
     }
 
-    // Reset the database, i.e. (re-)create all the tables from scratch and
+    // Upgrade the database to the latest version. (Or, if 'reset' is true,
+    // completely reset it, i.e. (re-)create all the tables from scratch and
     // populate any initial data.
-    public void reset() {
-        db.execSQL("drop table if exists " + TABLE_VERSION);
-        db.execSQL("drop table if exists " + TABLE_REPO);
-        db.execSQL("drop table if exists " + TABLE_APP);
-        db.execSQL("drop table if exists " + TABLE_APK);
-        db.execSQL(CREATE_TABLE_VERSION);
-        db.execSQL(CREATE_TABLE_REPO);
-        db.execSQL(CREATE_TABLE_APP);
-        db.execSQL(CREATE_TABLE_APK);
-        addServer("http://f-droid.org/repo", 10);
+    public void upgrade(boolean reset) {
+
+        int version;
+
+        if (reset) {
+            db.execSQL("drop table if exists " + TABLE_VERSION);
+            db.execSQL("drop table if exists " + TABLE_REPO);
+            db.execSQL("drop table if exists " + TABLE_APP);
+            db.execSQL("drop table if exists " + TABLE_APK);
+            db.execSQL(CREATE_TABLE_VERSION);
+            db.execSQL(CREATE_TABLE_REPO);
+            db.execSQL(CREATE_TABLE_APP);
+            db.execSQL(CREATE_TABLE_APK);
+            addServer("http://f-droid.org/repo", 10);
+            version = 1;
+        } else {
+            // See what database version we have...
+            Cursor c = db
+                    .rawQuery("SELECT version from " + TABLE_VERSION, null);
+            c.moveToFirst();
+            version = c.getInt(0);
+            c.close();
+        }
+
+        // Run upgrade scripts if necessary...
+        while (version < DB_UPGRADES.length + 1) {
+            db.execSQL(DB_UPGRADES[version - 1]);
+            version++;
+            db.execSQL("update " + TABLE_VERSION + " set version = " + version
+                    + ";");
+        }
+
     }
 
     public void close() {
@@ -235,6 +293,10 @@ public class DB {
                 app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
                 app.installedVersion = c.getString(c
                         .getColumnIndex("installedVersion"));
+                app.marketVersion = c2.getString(c2
+                        .getColumnIndex("marketVersion"));
+                app.marketVercode = c2.getInt(c2
+                        .getColumnIndex("marketVercode"));
                 app.hasUpdates = false;
 
                 c2 = db.rawQuery("select * from " + TABLE_APK + " where "
@@ -429,6 +491,8 @@ public class DB {
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
         values.put("installedVersion", upapp.installedVersion);
+        values.put("marketVersion", upapp.marketVersion);
+        values.put("marketVercode", upapp.marketVercode);
         values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = '" + oldapp.id + "'", null);

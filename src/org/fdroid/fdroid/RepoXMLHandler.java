@@ -77,24 +77,33 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.apkName = str;
             }
         } else if (curapp != null && curel != null) {
-            if (curel == "id")
+            if (curel == "id") {
                 curapp.id = str;
-            else if (curel == "name")
+            } else if (curel == "name") {
                 curapp.name = str;
-            else if (curel == "icon")
+            } else if (curel == "icon") {
                 curapp.icon = str;
-            else if (curel == "description")
+            } else if (curel == "description") {
                 curapp.description = str;
-            else if (curel == "summary")
+            } else if (curel == "summary") {
                 curapp.summary = str;
-            else if (curel == "license")
+            } else if (curel == "license") {
                 curapp.license = str;
-            else if (curel == "source")
+            } else if (curel == "source") {
                 curapp.sourceURL = str;
-            else if (curel == "web")
+            } else if (curel == "web") {
                 curapp.webURL = str;
-            else if (curel == "tracker")
+            } else if (curel == "tracker") {
                 curapp.trackerURL = str;
+            } else if (curel == "marketversion") {
+                curapp.marketVersion = str;
+            } else if (curel == "marketvercode") {
+                try {
+                    curapp.marketVercode = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapp.marketVercode = 0;
+                }
+            }
         }
     }
 

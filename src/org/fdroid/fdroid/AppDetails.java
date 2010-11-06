@@ -96,7 +96,8 @@ public class AppDetails extends ListActivity {
             }
             DB.Apk apk = items.get(position);
             TextView version = (TextView) v.findViewById(R.id.version);
-            version.setText("Version " + apk.version);
+            boolean iscurrent = apk.vercode == app_currentvercode;
+            version.setText("Version " + apk.version + (iscurrent ? "*" : ""));
             TextView status = (TextView) v.findViewById(R.id.status);
             if (apk.version.equals(app.installedVersion))
                 status.setText(getString(R.string.inst));
@@ -132,6 +133,7 @@ public class AppDetails extends ListActivity {
 
     private DB db;
     private DB.App app;
+    private int app_currentvercode;
     private DB.Apk curapk;
     private String appid;
     private PackageManager mPm;
@@ -168,6 +170,7 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = db.getApps(appid, null, update).get(0);
+        app_currentvercode = app.getCurrentVersion().vercode;
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
@@ -431,8 +434,7 @@ public class AppDetails extends ListActivity {
         @Override
         public void handleMessage(Message msg) {
             pd.dismiss();
-            Toast.makeText(mctx, (String)msg.obj,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(mctx, (String) msg.obj, Toast.LENGTH_LONG).show();
         }
     };
 
