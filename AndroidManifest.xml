@@ -14,6 +14,7 @@
 		<activity android:name="ManageRepo" />
 		<activity android:name="Settings" />
 		<activity android:name="AppDetails" />
+		<activity android:name="Preferences" />
 	</application>
 
 	<uses-permission android:name="android.permission.INTERNET" />

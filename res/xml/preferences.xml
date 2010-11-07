@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="Storage">
+		<CheckBoxPreference android:title="Cache downloaded apps"
+			android:defaultValue="false" android:summary="Keep downloaded apk files on SD card"
+			android:key="cacheDownloaded" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Updates">
+		<ListPreference android:title="Automatic repo scan"
+			android:summary="Update apps list from repositories automatically"
+			android:key="updateInterval" android:defaultValue="0"
+			android:entries="@array/updateIntervalNames" android:entryValues="@array/updateIntervalValues" />
+		<CheckBoxPreference android:title="Notify"
+			android:defaultValue="false" android:summary="Notify when new updates are available"
+			android:key="updateNotify" />
+	</PreferenceCategory>
+</PreferenceScreen>

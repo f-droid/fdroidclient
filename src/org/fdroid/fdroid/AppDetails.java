@@ -36,6 +36,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -161,6 +163,18 @@ public class AppDetails extends ListActivity {
 
         reset(false);
 
+    }
+
+    private boolean pref_cacheDownloaded;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Get the preferences we're going to use in this Activity...
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", true);
     }
 
     // Reset the display and list contents. Used when entering the activity, and
@@ -347,61 +361,99 @@ public class AppDetails extends ListActivity {
             public void run() {
 
                 // Download the apk file from the repository...
+                File f;
                 String apk_file = null;
+                String apkname = curapk.apkName;
+                String localfile = new String(LOCAL_PATH + "/" + apkname);
                 try {
 
-                    String apkname = curapk.apkName;
-                    String localfile = new String(LOCAL_PATH + "/" + apkname);
-                    String remotefile = curapk.server + "/"
-                            + apkname.replace(" ", "%20");
+                    // See if we already have this apk cached...
+                    f = new File(localfile);
+                    if (f.exists()) {
+                        // We do - if its hash matches, we'll use it...
+                        Md5Handler hash = new Md5Handler();
+                        String calcedhash = hash.md5Calc(f);
+                        if (curapk.hash.equalsIgnoreCase(calcedhash)) {
+                            apk_file = localfile;
+                            Log.d("FDroid", "Using cached apk at " + localfile);
+                            Message msg = new Message();
+                            msg.arg1 = 0;
+                            msg.arg2 = 1;
+                            msg.obj = new String(localfile);
+                            download_handler.sendMessage(msg);
+                            msg=new Message();
+                            msg.arg1 = 1;
+                            download_handler.sendMessage(msg);
+                        } else {
+                            Log.d("FDroid", "Not using cached apk at "
+                                    + localfile);
+                            f.delete();
+                        }
+                    }
 
-                    Log.d("FDroid", "Downloading apk from " + remotefile);
+                    // If we haven't got the apk locally, we'll have to download
+                    // it...
+                    if (apk_file == null) {
 
-                    Message msg = new Message();
-                    msg.arg1 = 0;
-                    msg.arg2 = curapk.size;
-                    msg.obj = new String(remotefile);
-                    download_handler.sendMessage(msg);
+                        String remotefile = curapk.server + "/"
+                                + apkname.replace(" ", "%20");
+                        Log.d("FDroid", "Downloading apk from " + remotefile);
 
-                    BufferedInputStream getit = new BufferedInputStream(
-                            new URL(remotefile).openStream(), 8192);
-
-                    FileOutputStream saveit = new FileOutputStream(localfile);
-                    BufferedOutputStream bout = new BufferedOutputStream(
-                            saveit, 1024);
-                    byte data[] = new byte[1024];
-
-                    int totalRead = 0;
-                    int bytesRead = getit.read(data, 0, 1024);
-                    while (bytesRead != -1) {
-                        bout.write(data, 0, bytesRead);
-                        totalRead += bytesRead;
-                        msg = new Message();
-                        msg.arg1 = totalRead;
+                        Message msg = new Message();
+                        msg.arg1 = 0;
+                        msg.arg2 = curapk.size;
+                        msg.obj = new String(remotefile);
                         download_handler.sendMessage(msg);
-                        bytesRead = getit.read(data, 0, 1024);
-                    }
-                    bout.close();
-                    getit.close();
-                    saveit.close();
-                    File f = new File(localfile);
-                    Md5Handler hash = new Md5Handler();
-                    String calcedhash = hash.md5Calc(f);
-                    if (curapk.hash.equalsIgnoreCase(calcedhash)) {
-                        apk_file = localfile;
-                    } else {
-                        msg = new Message();
-                        msg.obj = getString(R.string.corrupt_download);
-                        download_error_handler.sendMessage(msg);
-                        Log.d("FDroid", "Downloaded file hash of " + calcedhash
-                                + " did not match repo's " + curapk.hash);
-                    }
 
+                        BufferedInputStream getit = new BufferedInputStream(
+                                new URL(remotefile).openStream(), 8192);
+
+                        FileOutputStream saveit = new FileOutputStream(
+                                localfile);
+                        BufferedOutputStream bout = new BufferedOutputStream(
+                                saveit, 1024);
+                        byte data[] = new byte[1024];
+
+                        int totalRead = 0;
+                        int bytesRead = getit.read(data, 0, 1024);
+                        while (bytesRead != -1) {
+                            bout.write(data, 0, bytesRead);
+                            totalRead += bytesRead;
+                            msg = new Message();
+                            msg.arg1 = totalRead;
+                            download_handler.sendMessage(msg);
+                            bytesRead = getit.read(data, 0, 1024);
+                        }
+                        bout.close();
+                        getit.close();
+                        saveit.close();
+                        f = new File(localfile);
+                        Md5Handler hash = new Md5Handler();
+                        String calcedhash = hash.md5Calc(f);
+                        if (curapk.hash.equalsIgnoreCase(calcedhash)) {
+                            apk_file = localfile;
+                        } else {
+                            msg = new Message();
+                            msg.obj = getString(R.string.corrupt_download);
+                            download_error_handler.sendMessage(msg);
+                            Log.d("FDroid", "Downloaded file hash of "
+                                    + calcedhash + " did not match repo's "
+                                    + curapk.hash);
+                            // No point keeping a bad file, whether we're
+                            // caching or
+                            // not.
+                            f = new File(localfile);
+                            f.delete();
+                        }
+                    }
                 } catch (Exception e) {
                     Log.d("FDroid", "Download failed - " + e.getMessage());
                     Message msg = new Message();
                     msg.obj = e.getMessage();
                     download_error_handler.sendMessage(msg);
+                    // Get rid of any partial download...
+                    f = new File(localfile);
+                    f.delete();
                 }
 
                 if (apk_file != null) {
@@ -445,6 +497,7 @@ public class AppDetails extends ListActivity {
         public void handleMessage(Message msg) {
             String apk_file = (String) msg.obj;
             installApk(apk_file);
+
             pd.dismiss();
         }
     };
@@ -462,21 +515,29 @@ public class AppDetails extends ListActivity {
         startActivityForResult(intent, REQUEST_UNINSTALL);
     }
 
-    private void installApk(String id) {
+    private void installApk(String file) {
         Intent intent = new Intent();
         intent.setAction(android.content.Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse("file://" + id),
+        intent.setDataAndType(Uri.parse("file://" + file),
                 "application/vnd.android.package-archive");
-
-        Message msg = new Message();
-        msg.arg1 = 1;
-        download_handler.sendMessage(msg);
 
         startActivityForResult(intent, REQUEST_INSTALL);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==REQUEST_INSTALL) {
+            // If we're not meant to be caching, delete the apk file we just 
+            // installed (or maybe the user cancelled the install - doesn't matter)
+            // from the SD card...
+            if (!pref_cacheDownloaded) {
+                String apkname = curapk.apkName;
+                String apk_file = new String(LOCAL_PATH + "/" + apkname);
+                File file = new File(apk_file);
+                file.delete();
+            }
+        }
+
         reset(true);
     }
 
