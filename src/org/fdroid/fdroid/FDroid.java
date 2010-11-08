@@ -131,6 +131,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
 
     private static final int REQUEST_APPDETAILS = 0;
     private static final int REQUEST_MANAGEREPOS = 1;
+    private static final int REQUEST_PREFS = 2;
 
     private static final int UPDATE_REPO = Menu.FIRST;
     private static final int MANAGE_REPO = Menu.FIRST + 1;
@@ -232,7 +233,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
 
         case PREFERENCES:
             Intent prefs = new Intent(getBaseContext(), Preferences.class);
-            startActivity(prefs);
+            startActivityForResult(prefs,REQUEST_PREFS);
             return true;
 
         case ABOUT:
@@ -293,6 +294,12 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 AlertDialog alert = ask_alrt.create();
                 alert.show();
             }
+            break;
+        case REQUEST_PREFS:
+            // The automatic update settings may have changed, so reschedule (or unschedule) the
+            // service accordingly. It's cheap, so no need to check if the particular setting has
+            // actually been changed.
+            UpdateService.schedule(getBaseContext());
             break;
 
         }

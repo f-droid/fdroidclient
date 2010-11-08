@@ -437,6 +437,8 @@ public class DB {
                 }
             }
         }
+        Log.d("FDroid", "AppUpdate: " + updateApps.size()
+                + " apps on completion.");
         updateApps = null;
     }
 
