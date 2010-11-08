@@ -170,11 +170,17 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        ((FDroidApp) getApplication()).inActivity++;
         // Get the preferences we're going to use in this Activity...
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", true);
+    }
+
+    @Override
+    protected void onStop() {
+        ((FDroidApp) getApplication()).inActivity--;
+        super.onStop();
     }
 
     // Reset the display and list contents. Used when entering the activity, and
@@ -381,7 +387,7 @@ public class AppDetails extends ListActivity {
                             msg.arg2 = 1;
                             msg.obj = new String(localfile);
                             download_handler.sendMessage(msg);
-                            msg=new Message();
+                            msg = new Message();
                             msg.arg1 = 1;
                             download_handler.sendMessage(msg);
                         } else {
@@ -526,9 +532,10 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==REQUEST_INSTALL) {
-            // If we're not meant to be caching, delete the apk file we just 
-            // installed (or maybe the user cancelled the install - doesn't matter)
+        if (requestCode == REQUEST_INSTALL) {
+            // If we're not meant to be caching, delete the apk file we just
+            // installed (or maybe the user cancelled the install - doesn't
+            // matter)
             // from the SD card...
             if (!pref_cacheDownloaded) {
                 String apkname = curapk.apkName;

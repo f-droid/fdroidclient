@@ -76,6 +76,12 @@ public class UpdateService extends Service {
         new Thread() {
             public void run() {
 
+                // If we're in one of our list activities, we don't want
+                // to run an update because the database will be out of
+                // sync with the display.
+                if (((FDroidApp) getApplication()).inActivity != 0)
+                    return;
+
                 // See if it's time to actually do anything yet...
                 SharedPreferences prefs = PreferenceManager
                         .getDefaultSharedPreferences(getBaseContext());
@@ -99,8 +105,9 @@ public class UpdateService extends Service {
                 try {
                     db = new DB(getBaseContext());
                     RepoXMLHandler.doUpdates(db);
-                } catch(Exception e) {
-                    Log.d("FDroid","Exception during handleCommand() - " + e.getMessage());
+                } catch (Exception e) {
+                    Log.d("FDroid", "Exception during handleCommand() - "
+                            + e.getMessage());
                 } finally {
                     if (db != null)
                         db.close();

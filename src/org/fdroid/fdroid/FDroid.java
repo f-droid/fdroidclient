@@ -192,7 +192,14 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     @Override
     protected void onStart() {
         super.onStart();
+        ((FDroidApp) getApplication()).inActivity++;
         populateLists(true);
+    }
+
+    @Override
+    protected void onStop() {
+        ((FDroidApp) getApplication()).inActivity--;
+        super.onStop();
     }
 
     @Override
@@ -300,6 +307,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             // service accordingly. It's cheap, so no need to check if the particular setting has
             // actually been changed.
             UpdateService.schedule(getBaseContext());
+            populateLists(false);
             break;
 
         }
