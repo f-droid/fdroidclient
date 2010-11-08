@@ -19,26 +19,10 @@
 
 package org.fdroid.fdroid;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 
 import org.fdroid.fdroid.R;
 
@@ -144,7 +128,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     }
 
     private String LOCAL_PATH = "/sdcard/.fdroid";
-    private String XML_PATH = LOCAL_PATH + "/remapklst.xml";
 
     private static final int REQUEST_APPDETAILS = 0;
     private static final int REQUEST_MANAGEREPOS = 1;
@@ -167,8 +150,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     private AppListAdapter apps_up = new AppListAdapter(this);
 
     private ProgressDialog pd;
-
-    private Context mctx = this;
 
     private static final String TAB_IN = "INST";
     private static final String TAB_UN = "UNIN";
@@ -405,20 +386,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 || netstate.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED) {
             new Thread() {
                 public void run() {
-                    try {
-                        db.beginUpdate();
-                        Vector<DB.Repo> repos = db.getRepos();
-                        for (DB.Repo repo : repos) {
-                            if (repo.inuse) {
-                                downloadRepoIndex(repo.address);
-                                xmlPass(repo.address);
-                            }
-                        }
-                        db.endUpdate();
-                    } catch (Exception e) {
-                        Log.d("FDroid", "Exception while updating - "
-                                + e.getMessage());
-                    }
+                    RepoXMLHandler.doUpdates(db);
                     update_handler.sendEmptyMessage(0);
                 }
             }.start();
@@ -431,60 +399,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         }
     }
 
-    /*
-     * Pass XML info to BD a xml file must exists...
-     */
-    private void xmlPass(String srv) {
-        SAXParserFactory spf = SAXParserFactory.newInstance();
-        try {
-            SAXParser sp = spf.newSAXParser();
-            XMLReader xr = sp.getXMLReader();
-            RepoXMLHandler handler = new RepoXMLHandler(this, srv, db);
-            xr.setContentHandler(handler);
-
-            InputStreamReader isr = new FileReader(new File(XML_PATH));
-            InputSource is = new InputSource(isr);
-            xr.parse(is);
-            File xml_file = new File(XML_PATH);
-            xml_file.delete();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Download a repo index to a temporary file on the SD card.
-    private void downloadRepoIndex(String srv) {
-        try {
-            BufferedInputStream getit = new BufferedInputStream(new URL(srv
-                    + "/index.xml").openStream());
-
-            File file_teste = new File(XML_PATH);
-            if (file_teste.exists())
-                file_teste.delete();
-
-            FileOutputStream saveit = new FileOutputStream(XML_PATH);
-            BufferedOutputStream bout = new BufferedOutputStream(saveit, 1024);
-            byte data[] = new byte[1024];
-
-            int readed = getit.read(data, 0, 1024);
-            while (readed != -1) {
-                bout.write(data, 0, readed);
-                readed = getit.read(data, 0, 1024);
-            }
-            bout.close();
-            getit.close();
-            saveit.close();
-        } catch (UnknownHostException e) {
-            Message msg = new Message();
-            msg.obj = new String(srv);
-            error_handler.sendMessage(msg);
-        } catch (Exception e) {
-        }
-    }
 
     /*
      * Handlers for thread functions that need to access GUI
@@ -498,25 +412,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         }
     };
 
-    private Handler error_handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (pd.isShowing())
-                pd.dismiss();
-            AlertDialog p = new AlertDialog.Builder(mctx).create();
-            p.setTitle(getString(R.string.connection_timeout));
-            p.setIcon(android.R.drawable.ic_dialog_alert);
-            p.setMessage(getString(R.string.connection_error_msg) + ": < "
-                    + msg.obj.toString() + " >");
-            p.setButton(getString(R.string.ok),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            return;
-                        }
-                    });
-            p.show();
-        }
-    };
 
     // Handler for a click on one of the items in an application list. Pops
     // up a dialog that shows the details of the application and all its

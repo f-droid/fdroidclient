@@ -23,18 +23,24 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Vector;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
-import android.content.Context;
 import android.util.Log;
 
 public class RepoXMLHandler extends DefaultHandler {
 
-    Context mctx;
     String mserver;
 
     private DB db;
@@ -43,8 +49,7 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private String curel = null;
 
-    public RepoXMLHandler(Context ctx, String srv, DB db) {
-        mctx = ctx;
+    public RepoXMLHandler(String srv, DB db) {
         mserver = srv;
         this.db = db;
     }
@@ -171,6 +176,63 @@ public class RepoXMLHandler extends DefaultHandler {
         } catch (Exception e) {
 
         }
+    }
+
+    private static String LOCAL_PATH = "/sdcard/.fdroid";
+    private static String XML_PATH = LOCAL_PATH + "/repotemp.xml";
+
+    public static void doUpdates(DB db) {
+        db.beginUpdate();
+        Vector<DB.Repo> repos = db.getRepos();
+        for (DB.Repo repo : repos) {
+            if (repo.inuse) {
+
+                try {
+
+                    File f = new File(XML_PATH);
+                    if (f.exists())
+                        f.delete();
+
+                    // Download the index file from the repo...
+                    BufferedInputStream getit = new BufferedInputStream(
+                            new URL(repo.address + "/index.xml").openStream());
+
+                    FileOutputStream saveit = new FileOutputStream(XML_PATH);
+                    BufferedOutputStream bout = new BufferedOutputStream(
+                            saveit, 1024);
+                    byte data[] = new byte[1024];
+
+                    int readed = getit.read(data, 0, 1024);
+                    while (readed != -1) {
+                        bout.write(data, 0, readed);
+                        readed = getit.read(data, 0, 1024);
+                    }
+                    bout.close();
+                    getit.close();
+                    saveit.close();
+
+                    // Process the index...
+                    SAXParserFactory spf = SAXParserFactory.newInstance();
+                    SAXParser sp = spf.newSAXParser();
+                    XMLReader xr = sp.getXMLReader();
+                    RepoXMLHandler handler = new RepoXMLHandler(repo.address, db);
+                    xr.setContentHandler(handler);
+
+                    InputStreamReader isr = new FileReader(new File(XML_PATH));
+                    InputSource is = new InputSource(isr);
+                    xr.parse(is);
+                    File xml_file = new File(XML_PATH);
+                    xml_file.delete();
+
+                } catch (Exception e) {
+                    Log.d("FDroid", "Exception updating from " + repo.address
+                            + " - " + e.getMessage());
+                }
+
+            }
+        }
+        db.endUpdate();
+
     }
 
 }

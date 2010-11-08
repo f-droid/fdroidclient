@@ -18,15 +18,15 @@
 
 package org.fdroid.fdroid;
 
-import android.os.Bundle;
-import android.preference.PreferenceActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class Preferences extends PreferenceActivity {
+public class StartupReceiver extends BroadcastReceiver {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.preferences);
+    public void onReceive(Context ctx, Intent intent) {
+        UpdateService.schedule(ctx);
     }
 
 }

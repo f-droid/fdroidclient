@@ -404,6 +404,8 @@ public class DB {
         // have 'updated' set to false at this point, and we will only set
         // it to true when we see the app/apk in a repository. Thus, at the
         // end, any that are still false can be removed.
+        // TODO: Need to ensure that UI and UpdateService can't both be doing
+        // an update at the same time.
         updateApps = getApps(null, null, true);
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps before starting.");
