@@ -375,7 +375,9 @@ public class DB {
     private void getUpdates(Vector<DB.App> apps) {
         List<PackageInfo> installedPackages = mPm.getInstalledPackages(0);
         Map<String, PackageInfo> systemApks = new HashMap<String, PackageInfo>();
+        Log.d("FDroid", "Reading installed packages");
         for (PackageInfo appInfo : installedPackages) {
+            Log.d("FDroid", "... " + appInfo.packageName);
             systemApks.put(appInfo.packageName, appInfo);
         }
 
