@@ -47,7 +47,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private DB.App curapp = null;
     private DB.Apk curapk = null;
-    private String curel = null;
+    private String curchars = null;
 
     public RepoXMLHandler(String srv, DB db) {
         mserver = srv;
@@ -61,7 +61,30 @@ public class RepoXMLHandler extends DefaultHandler {
         super.characters(ch, start, length);
 
         String str = new String(ch).substring(start, start + length);
-        if (curapk != null && curel != null) {
+        if(curchars == null)
+            curchars = str;
+        else
+            curchars += str;
+    }
+
+    @Override
+    public void endElement(String uri, String localName, String qName)
+            throws SAXException {
+
+        super.endElement(uri, localName, qName);
+        String curel = localName;
+        String str = curchars;
+
+        if (curel == "application" && curapp != null) {
+            Log.d("FDroid", "Repo: Updating application " + curapp.id);
+            db.updateApplication(curapp);
+            getIcon(curapp);
+            curapp = null;
+        } else if (curel == "package" && curapk != null && curapp != null) {
+            Log.d("FDroid", "Repo: Package added (" + curapk.version + ")");
+            curapp.apks.add(curapk);
+            curapk = null;
+        } else if (curapk != null && str!= null) {
             if (curel == "version") {
                 curapk.version = str;
             } else if (curel == "versioncode") {
@@ -81,8 +104,9 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel == "apkname") {
                 curapk.apkName = str;
             }
-        } else if (curapp != null && curel != null) {
+        } else if (curapp != null && str != null) {
             if (curel == "id") {
+                Log.d("FDroid","App id is " + str);
                 curapp.id = str;
             } else if (curel == "name") {
                 curapp.name = str;
@@ -110,26 +134,6 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             }
         }
-    }
-
-    @Override
-    public void endElement(String uri, String localName, String qName)
-            throws SAXException {
-
-        super.endElement(uri, localName, qName);
-
-        if (localName == "application" && curapp != null) {
-            Log.d("FDroid", "Repo: Updating application " + curapp.id);
-            db.updateApplication(curapp);
-            getIcon(curapp);
-            curapp = null;
-        } else if (localName == "package" && curapk != null && curapp != null) {
-            Log.d("FDroid", "Repo: Package added (" + curapk.version + ")");
-            curapp.apks.add(curapk);
-            curapk = null;
-        } else {
-            curel = null;
-        }
 
     }
 
@@ -146,9 +150,8 @@ public class RepoXMLHandler extends DefaultHandler {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
             curapk.server = mserver;
-        } else {
-            curel = localName;
         }
+        curchars = null;
     }
 
     private void getIcon(DB.App app) {
