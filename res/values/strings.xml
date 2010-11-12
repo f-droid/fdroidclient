@@ -2,10 +2,11 @@
 <resources>
 	<string name="app_name">FDroid</string>
 	<string name="about_title">About FDroid</string>
-	<string name="about_desc">Based on Aptoide.\nReleased under the GNU GPL v2
+	<string name="about_desc">Originally based on Aptoide.\nReleased under the GNU GPL v2
 		license.</string>
 	<string name="about_site">Home: </string>
-	<string name="about_mail">e-Mail: </string>
+	<string name="about_mail">Email: </string>
+	<string name="about_version">Version: </string>
 	<string name="about_website">Web Site</string>
 
 
@@ -44,19 +45,7 @@
 	<string name="download">Download</string>
 	<string name="download_server">Getting application from</string>
 
-
-
-
-
-
-
-
-
-
-
 	<string name="repo_add_url">Repository URL</string>
-
-
 
 	<string name="isinst">Installed: </string>
 

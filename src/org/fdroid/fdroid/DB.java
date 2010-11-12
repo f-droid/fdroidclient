@@ -88,7 +88,7 @@ public class DB {
         // explicitly ignored. (We're currently not using the database
         // field for this - we make the decision on the fly in getApps().
         public boolean hasUpdates;
-
+        
         // Used internally for tracking during repo updates.
         public boolean updated;
 
@@ -399,6 +399,7 @@ public class DB {
     }
 
     private Vector<App> updateApps = null;
+    private int updateNewUpdates;
 
     // Called before a repo update starts.
     public void beginUpdate() {
@@ -409,6 +410,7 @@ public class DB {
         // TODO: Need to ensure that UI and UpdateService can't both be doing
         // an update at the same time.
         updateApps = getApps(null, null, true);
+        updateNewUpdates = 0;
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps before starting.");
     }
@@ -416,7 +418,9 @@ public class DB {
     // Called when a repo update ends. Any applications that have not been
     // updated (by a call to updateApplication) are assumed to be no longer
     // in the repos.
-    public void endUpdate() {
+    // Returns the number of new updates (installed applications for which
+    // there is a new version available)
+    public int endUpdate() {
         for (App app : updateApps) {
             if (!app.updated) {
                 // The application hasn't been updated, so it's no longer
@@ -442,10 +446,12 @@ public class DB {
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps on completion.");
         updateApps = null;
+        return updateNewUpdates;
     }
 
     // Called during update to supply new details for an application (or
-    // details of a completely new one).
+    // details of a completely new one). Calls to this must be wrapped by
+    // a call to beginUpdate and a call to endUpdate.
     public void updateApplication(App upapp) {
 
         if (updateApps == null) {
@@ -479,6 +485,8 @@ public class DB {
                         updateApkIfDifferent(null, upapk);
                         upapk.updated = true;
                         app.apks.add(upapk);
+                        if(!app.hasUpdates)
+                            updateNewUpdates++;
                         app.hasUpdates = true;
                     }
                 }

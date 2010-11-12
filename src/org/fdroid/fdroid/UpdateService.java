@@ -19,6 +19,8 @@
 package org.fdroid.fdroid;
 
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -104,7 +106,28 @@ public class UpdateService extends Service {
                 DB db = null;
                 try {
                     db = new DB(getBaseContext());
-                    RepoXMLHandler.doUpdates(db);
+                    int updateNum = RepoXMLHandler.doUpdates(db);
+
+                    if (updateNum != 0) {
+                        // We have updates.
+                        if (prefs.getBoolean("updateNotify", false)) {
+                            // And the user wants to know.
+                            NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                            Notification notification = new Notification(
+                                    R.drawable.icon,
+                                    "FDroid Updates Available", System
+                                            .currentTimeMillis());
+                            Context context = getApplicationContext();
+                            CharSequence contentTitle = "FDroid";
+                            CharSequence contentText = "Updates are available.";
+                            Intent notificationIntent = new Intent(UpdateService.this, FDroid.class);
+                            PendingIntent contentIntent = PendingIntent.getActivity(UpdateService.this, 0, notificationIntent, 0);
+                            notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+                            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+                            n.notify(1, notification);
+                        }
+                    }
+
                 } catch (Exception e) {
                     Log.d("FDroid", "Exception during handleCommand() - "
                             + e.getMessage());

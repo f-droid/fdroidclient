@@ -184,7 +184,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private static String LOCAL_PATH = "/sdcard/.fdroid";
     private static String XML_PATH = LOCAL_PATH + "/repotemp.xml";
 
-    public static void doUpdates(DB db) {
+    // Returns the number of applications with updates.
+    public static int doUpdates(DB db) {
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
@@ -234,7 +235,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
             }
         }
-        db.endUpdate();
+        return db.endUpdate();
 
     }
 

@@ -34,6 +34,8 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -240,12 +242,24 @@ public class FDroid extends TabActivity implements OnItemClickListener {
 
         case PREFERENCES:
             Intent prefs = new Intent(getBaseContext(), Preferences.class);
-            startActivityForResult(prefs,REQUEST_PREFS);
+            startActivityForResult(prefs, REQUEST_PREFS);
             return true;
 
         case ABOUT:
             LayoutInflater li = LayoutInflater.from(this);
             View view = li.inflate(R.layout.about, null);
+
+            // Fill in the version...
+            TextView tv = (TextView) view.findViewById(R.id.version);
+            PackageManager pm = getPackageManager();
+            PackageInfo pi;
+            try {
+                pi = pm.getPackageInfo(
+                        getApplicationContext().getPackageName(), 0);
+                tv.setText(pi.versionName);
+            } catch (Exception e) {
+            }
+
             Builder p = new AlertDialog.Builder(this).setView(view);
             final AlertDialog alrt = p.create();
             alrt.setIcon(R.drawable.icon);
@@ -303,8 +317,10 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             }
             break;
         case REQUEST_PREFS:
-            // The automatic update settings may have changed, so reschedule (or unschedule) the
-            // service accordingly. It's cheap, so no need to check if the particular setting has
+            // The automatic update settings may have changed, so reschedule (or
+            // unschedule) the
+            // service accordingly. It's cheap, so no need to check if the
+            // particular setting has
             // actually been changed.
             UpdateService.schedule(getBaseContext());
             populateLists(false);
@@ -414,7 +430,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         }
     }
 
-
     /*
      * Handlers for thread functions that need to access GUI
      */
@@ -426,7 +441,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 pd.dismiss();
         }
     };
-
 
     // Handler for a click on one of the items in an application list. Pops
     // up a dialog that shows the details of the application and all its
