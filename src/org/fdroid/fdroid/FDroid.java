@@ -189,6 +189,12 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         }
 
     }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
+    }
 
     @Override
     protected void onStart() {

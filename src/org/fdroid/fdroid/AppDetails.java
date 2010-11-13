@@ -165,6 +165,12 @@ public class AppDetails extends ListActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
+    }    
+    
     private boolean pref_cacheDownloaded;
 
     @Override
