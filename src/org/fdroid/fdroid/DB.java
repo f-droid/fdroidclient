@@ -485,7 +485,7 @@ public class DB {
                         updateApkIfDifferent(null, upapk);
                         upapk.updated = true;
                         app.apks.add(upapk);
-                        if(!app.hasUpdates)
+                        if(!app.hasUpdates && app.installedVersion != null)
                             updateNewUpdates++;
                         app.hasUpdates = true;
                     }
