@@ -14,4 +14,10 @@
 			android:defaultValue="false" android:summary="Notify when new updates are available"
 			android:key="updateNotify" />
 	</PreferenceCategory>
+	<PreferenceCategory android:title="Maintenance">
+	        <Preference
+                android:title="Reset"
+                android:summary="Clear all cached data"
+                android:key="reset" />
+	</PreferenceCategory>	
 </PreferenceScreen>

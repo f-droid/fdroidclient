@@ -137,9 +137,8 @@ public class FDroid extends TabActivity implements OnItemClickListener {
 
     private static final int UPDATE_REPO = Menu.FIRST;
     private static final int MANAGE_REPO = Menu.FIRST + 1;
-    private static final int RESET_DB = Menu.FIRST + 2;
-    private static final int PREFERENCES = Menu.FIRST + 3;
-    private static final int ABOUT = Menu.FIRST + 4;
+    private static final int PREFERENCES = Menu.FIRST + 2;
+    private static final int ABOUT = Menu.FIRST + 3;
 
     private DB db = null;
 
@@ -212,11 +211,9 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 android.R.drawable.ic_menu_rotate);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
-        menu.add(Menu.NONE, RESET_DB, 3, "Reset DB").setIcon(
-                android.R.drawable.ic_menu_revert);
-        menu.add(Menu.NONE, PREFERENCES, 4, R.string.menu_preferences).setIcon(
+        menu.add(Menu.NONE, PREFERENCES, 3, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
-        menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
+        menu.add(Menu.NONE, ABOUT, 4, R.string.menu_about).setIcon(
                 android.R.drawable.ic_menu_help);
         return true;
     }
@@ -235,14 +232,10 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             startActivityForResult(i, REQUEST_MANAGEREPOS);
             return true;
 
-        case RESET_DB:
-            db.upgrade(true);
-            populateLists(true);
-            return true;
-
         case PREFERENCES:
             Intent prefs = new Intent(getBaseContext(), Preferences.class);
             startActivityForResult(prefs, REQUEST_PREFS);
+            populateLists(true);
             return true;
 
         case ABOUT:

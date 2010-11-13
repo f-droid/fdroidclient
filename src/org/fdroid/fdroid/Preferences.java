@@ -19,7 +19,10 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.Preference.OnPreferenceClickListener;
+import android.widget.Toast;
 
 public class Preferences extends PreferenceActivity {
 
@@ -27,6 +30,23 @@ public class Preferences extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
+
+        Preference r = (Preference) findPreference("reset");
+        r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+
+            public boolean onPreferenceClick(Preference preference) {
+                DB db = new DB(Preferences.this);
+                db.upgrade(true);
+                // TODO: Clear cached apks and icons too.
+                Toast
+                        .makeText(getBaseContext(),
+                                "Local cached data has been cleared",
+                                Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+        });
+
     }
 
 }
