@@ -410,7 +410,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 || netstate.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED) {
             new Thread() {
                 public void run() {
-                    RepoXMLHandler.doUpdates(db);
+                    RepoXMLHandler.doUpdates(FDroid.this, db);
                     update_handler.sendEmptyMessage(0);
                 }
             }.start();

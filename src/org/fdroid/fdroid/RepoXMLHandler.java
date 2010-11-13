@@ -37,6 +37,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
+import android.content.Context;
 import android.util.Log;
 
 public class RepoXMLHandler extends DefaultHandler {
@@ -61,7 +62,7 @@ public class RepoXMLHandler extends DefaultHandler {
         super.characters(ch, start, length);
 
         String str = new String(ch).substring(start, start + length);
-        if(curchars == null)
+        if (curchars == null)
             curchars = str;
         else
             curchars += str;
@@ -84,7 +85,7 @@ public class RepoXMLHandler extends DefaultHandler {
             Log.d("FDroid", "Repo: Package added (" + curapk.version + ")");
             curapp.apks.add(curapk);
             curapk = null;
-        } else if (curapk != null && str!= null) {
+        } else if (curapk != null && str != null) {
             if (curel == "version") {
                 curapk.version = str;
             } else if (curel == "versioncode") {
@@ -106,7 +107,7 @@ public class RepoXMLHandler extends DefaultHandler {
             }
         } else if (curapp != null && str != null) {
             if (curel == "id") {
-                Log.d("FDroid","App id is " + str);
+                Log.d("FDroid", "App id is " + str);
                 curapp.id = str;
             } else if (curel == "name") {
                 curapp.name = str;
@@ -181,11 +182,8 @@ public class RepoXMLHandler extends DefaultHandler {
         }
     }
 
-    private static String LOCAL_PATH = "/sdcard/.fdroid";
-    private static String XML_PATH = LOCAL_PATH + "/repotemp.xml";
-
     // Returns the number of applications with updates.
-    public static int doUpdates(DB db) {
+    public static int doUpdates(Context ctx, DB db) {
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
@@ -193,17 +191,15 @@ public class RepoXMLHandler extends DefaultHandler {
 
                 try {
 
-                    File f = new File(XML_PATH);
-                    if (f.exists())
-                        f.delete();
+                    FileOutputStream f = ctx.openFileOutput(
+                            "tempindex.xml", Context.MODE_PRIVATE);
 
                     // Download the index file from the repo...
                     BufferedInputStream getit = new BufferedInputStream(
                             new URL(repo.address + "/index.xml").openStream());
 
-                    FileOutputStream saveit = new FileOutputStream(XML_PATH);
-                    BufferedOutputStream bout = new BufferedOutputStream(
-                            saveit, 1024);
+                    BufferedOutputStream bout = new BufferedOutputStream(f,
+                            1024);
                     byte data[] = new byte[1024];
 
                     int readed = getit.read(data, 0, 1024);
@@ -213,24 +209,27 @@ public class RepoXMLHandler extends DefaultHandler {
                     }
                     bout.close();
                     getit.close();
-                    saveit.close();
+                    f.close();
 
                     // Process the index...
                     SAXParserFactory spf = SAXParserFactory.newInstance();
                     SAXParser sp = spf.newSAXParser();
                     XMLReader xr = sp.getXMLReader();
-                    RepoXMLHandler handler = new RepoXMLHandler(repo.address, db);
+                    RepoXMLHandler handler = new RepoXMLHandler(repo.address,
+                            db);
                     xr.setContentHandler(handler);
 
-                    InputStreamReader isr = new FileReader(new File(XML_PATH));
+                    InputStreamReader isr = new FileReader(new File(ctx
+                            .getFilesDir()
+                            + "/tempindex.xml"));
                     InputSource is = new InputSource(isr);
                     xr.parse(is);
-                    File xml_file = new File(XML_PATH);
-                    xml_file.delete();
 
                 } catch (Exception e) {
                     Log.d("FDroid", "Exception updating from " + repo.address
                             + " - " + e.getMessage());
+                } finally {
+                    ctx.deleteFile("tempindex.xml");
                 }
 
             }

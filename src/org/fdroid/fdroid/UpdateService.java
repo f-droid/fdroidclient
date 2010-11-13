@@ -106,7 +106,8 @@ public class UpdateService extends Service {
                 DB db = null;
                 try {
                     db = new DB(getBaseContext());
-                    int updateNum = RepoXMLHandler.doUpdates(db);
+                    int updateNum = RepoXMLHandler.doUpdates(getBaseContext(),
+                            db);
 
                     if (updateNum != 0) {
                         // We have updates.
@@ -120,9 +121,13 @@ public class UpdateService extends Service {
                             Context context = getApplicationContext();
                             CharSequence contentTitle = "FDroid";
                             CharSequence contentText = "Updates are available.";
-                            Intent notificationIntent = new Intent(UpdateService.this, FDroid.class);
-                            PendingIntent contentIntent = PendingIntent.getActivity(UpdateService.this, 0, notificationIntent, 0);
-                            notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+                            Intent notificationIntent = new Intent(
+                                    UpdateService.this, FDroid.class);
+                            PendingIntent contentIntent = PendingIntent
+                                    .getActivity(UpdateService.this, 0,
+                                            notificationIntent, 0);
+                            notification.setLatestEventInfo(context,
+                                    contentTitle, contentText, contentIntent);
                             notification.flags |= Notification.FLAG_AUTO_CANCEL;
                             n.notify(1, notification);
                         }
