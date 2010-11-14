@@ -102,12 +102,14 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             TextView name = (TextView) v.findViewById(R.id.name);
             name.setText(app.name);
 
-            String vs = " versions available";
+            String vs;
             int numav = app.apks.size();
             if (numav == 1)
-                vs = " version available";
+                vs = getString(R.string.n_version_available);
+            else
+                vs = getString(R.string.n_versions_available);
             TextView status = (TextView) v.findViewById(R.id.status);
-            status.setText(numav + vs);
+            status.setText(String.format(vs, numav));
 
             TextView license = (TextView) v.findViewById(R.id.license);
             license.setText(app.license);

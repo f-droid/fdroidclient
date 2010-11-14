@@ -99,7 +99,7 @@ public class AppDetails extends ListActivity {
             DB.Apk apk = items.get(position);
             TextView version = (TextView) v.findViewById(R.id.version);
             boolean iscurrent = apk.vercode == app_currentvercode;
-            version.setText("Version " + apk.version + (iscurrent ? "*" : ""));
+            version.setText(R.string.version + " " + apk.version + (iscurrent ? "*" : ""));
             TextView status = (TextView) v.findViewById(R.id.status);
             if (apk.version.equals(app.installedVersion))
                 status.setText(getString(R.string.inst));

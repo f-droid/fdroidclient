@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="version">Version</string>
+    <string name="n_versions_available">%d versions available</string>
+    <string name="n_version_available">%d version available</string>
+    <string name="notify">Notify</string>
+    <string name="storage">Storage</string>
+    <string name="cache_downloaded">Cache downloaded apps</string>
+    <string name="keep_downloaded">Keep downloaded apk files on SD card</string>
+    <string name="updates">Updates</string>
+    <string name="clear_all_cached_data">Clear all cached data</string>
+    <string name="reset">Reset</string>
+    <string name="maintenance">Maintenance</string>
+    <string name="notify_updates_available">Notify when new updates are available</string>
+    <string name="update_apps_list">Update apps list from repositories automatically</string>
+    <string name="automatic_repo_scan">Automatic repo scan</string>
 	<string name="app_name">FDroid</string>
 	<string name="about_title">About FDroid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the GNU GPL v2

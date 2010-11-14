@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:title="Storage">
-		<CheckBoxPreference android:title="Cache downloaded apps"
-			android:defaultValue="false" android:summary="Keep downloaded apk files on SD card"
+	<PreferenceCategory android:title="@string/storage">
+		<CheckBoxPreference android:title="@string/cache_downloaded"
+			android:defaultValue="false" android:summary="@string/keep_downloaded"
 			android:key="cacheDownloaded" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="Updates">
-		<ListPreference android:title="Automatic repo scan"
-			android:summary="Update apps list from repositories automatically"
+	<PreferenceCategory android:title="@string/updates">
+		<ListPreference android:title="@string/automatic_repo_scan"
+			android:summary="@string/update_apps_list"
 			android:key="updateInterval" android:defaultValue="0"
 			android:entries="@array/updateIntervalNames" android:entryValues="@array/updateIntervalValues" />
-		<CheckBoxPreference android:title="Notify"
-			android:defaultValue="false" android:summary="Notify when new updates are available"
+		<CheckBoxPreference android:title="@string/notify"
+			android:defaultValue="false" android:summary="@string/notify_updates_available"
 			android:key="updateNotify" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="Maintenance">
+	<PreferenceCategory android:title="@string/maintenance">
 	        <Preference
-                android:title="Reset"
-                android:summary="Clear all cached data"
+                android:title="@string/reset"
+                android:summary="@string/clear_all_cached_data"
                 android:key="reset" />
 	</PreferenceCategory>	
 </PreferenceScreen>
