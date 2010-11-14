@@ -176,8 +176,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         if (!icon_path.exists())
             icon_path.mkdir();
 
-        db = new DB(this);
-
         tabHost = getTabHost();
         createTabs();
 
@@ -189,22 +187,18 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         }
 
     }
-    
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        db.close();
-    }
 
     @Override
     protected void onStart() {
         super.onStart();
         ((FDroidApp) getApplication()).inActivity++;
+        db = new DB(this);
         populateLists(true);
     }
 
     @Override
     protected void onStop() {
+        db.close();
         ((FDroidApp) getApplication()).inActivity--;
         super.onStop();
     }
@@ -241,7 +235,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         case PREFERENCES:
             Intent prefs = new Intent(getBaseContext(), Preferences.class);
             startActivityForResult(prefs, REQUEST_PREFS);
-            populateLists(true);
             return true;
 
         case ABOUT:
@@ -289,7 +282,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
 
         switch (requestCode) {
         case REQUEST_APPDETAILS:
-            populateLists(false);
             break;
         case REQUEST_MANAGEREPOS:
             if (data.hasExtra("update")) {
@@ -322,7 +314,6 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             // particular setting has
             // actually been changed.
             UpdateService.schedule(getBaseContext());
-            populateLists(false);
             break;
 
         }
@@ -382,6 +373,13 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     private void populateLists(boolean update) {
 
         Vector<DB.App> apps = db.getApps(null, null, update);
+        if(apps.isEmpty()) {
+            // If there are no apps, update from the repos - it must be a
+            // new installation.
+            Log.d("FDroid", "Empty app list forces repo update");
+            updateRepos();
+            return;
+        }
         Log.d("FDroid", "Updating lists - " + apps.size() + " apps in total");
 
         apps_in.clear();

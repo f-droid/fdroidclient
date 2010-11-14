@@ -35,8 +35,7 @@ public class Preferences extends PreferenceActivity {
         r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
             public boolean onPreferenceClick(Preference preference) {
-                DB db = new DB(Preferences.this);
-                db.upgrade(true);
+                DB.delete(getApplicationContext());
                 // TODO: Clear cached apks and icons too.
                 Toast
                         .makeText(getBaseContext(),

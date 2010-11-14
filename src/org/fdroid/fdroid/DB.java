@@ -30,19 +30,15 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
 public class DB {
 
-    private static final String DATABASE_NAME = "fdroid_db";
+    private static final String DATABASE_NAME = "fdroid";
 
     private SQLiteDatabase db;
-    private Context mctx;
-
-    // The TABLE_VERSION table tracks the database version.
-    private static final String TABLE_VERSION = "fdroid_version";
-    private static final String CREATE_TABLE_VERSION = "create table "
-            + TABLE_VERSION + " (version int not null);";
 
     // The TABLE_APP table stores details of all the applications we know about.
     // This information is retrieved from the repositories.
@@ -88,7 +84,7 @@ public class DB {
         // explicitly ignored. (We're currently not using the database
         // field for this - we make the decision on the fly in getApps().
         public boolean hasUpdates;
-        
+
         // Used internally for tracking during repo updates.
         public boolean updated;
 
@@ -188,12 +184,39 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-        // Version 2...
-        {"alter table " + TABLE_APP + " add marketVersion text",
-          "alter table "+ TABLE_APP + " add marketVercode integer"
-        }
+    // Version 2...
+    { "alter table " + TABLE_APP + " add marketVersion text",
+            "alter table " + TABLE_APP + " add marketVercode integer" }
 
     };
+
+    private class DBHelper extends SQLiteOpenHelper {
+
+        public DBHelper(Context context) {
+            super(context, DATABASE_NAME, null, DB_UPGRADES.length + 1);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            db.execSQL(CREATE_TABLE_REPO);
+            db.execSQL(CREATE_TABLE_APP);
+            db.execSQL(CREATE_TABLE_APK);
+            ContentValues values = new ContentValues();
+            values.put("address", "http://f-droid.org/repo");
+            values.put("inuse", 1);
+            values.put("priority", 10);
+            db.insert(TABLE_REPO, null, values);
+            onUpgrade(db, 1, DB_UPGRADES.length + 1);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            for(int v=oldVersion+1;v<=newVersion;v++)
+                for (int i = 0; i < DB_UPGRADES[v - 2].length; i++)
+                    db.execSQL(DB_UPGRADES[v - 2][i]);
+        }
+
+    }
 
     public static String getIconsPath() {
         return "/sdcard/.fdroid/icons/";
@@ -202,77 +225,10 @@ public class DB {
     private PackageManager mPm;
 
     public DB(Context ctx) {
-        mctx = ctx;
-        db = ctx.openOrCreateDatabase(DATABASE_NAME, 0, null);
 
-        // Check if we already have a database and create or upgrade as
-        // appropriate...
-        Cursor c = db.rawQuery(
-                "SELECT name FROM sqlite_master WHERE type='table' AND name= '"
-                        + TABLE_VERSION + "'", null);
-        boolean newinst = (c.getCount() == 0);
-        c.close();
-        upgrade(newinst);
-
+        DBHelper h=new DBHelper(ctx);
+        db = h.getWritableDatabase();
         mPm = ctx.getPackageManager();
-    }
-
-    // Upgrade the database to the latest version. (Or, if 'reset' is true,
-    // completely reset it, i.e. (re-)create all the tables from scratch and
-    // populate any initial data.
-    public void upgrade(boolean reset) {
-
-        int version;
-
-        if (reset) {
-            db.execSQL("drop table if exists " + TABLE_VERSION);
-            db.execSQL("drop table if exists " + TABLE_REPO);
-            db.execSQL("drop table if exists " + TABLE_APP);
-            db.execSQL("drop table if exists " + TABLE_APK);
-            db.execSQL(CREATE_TABLE_VERSION);
-            db.execSQL("insert into " + TABLE_VERSION
-                    + " (version) values (1);");
-            db.execSQL(CREATE_TABLE_REPO);
-            db.execSQL(CREATE_TABLE_APP);
-            db.execSQL(CREATE_TABLE_APK);
-            addServer("http://f-droid.org/repo", 10);
-            version = 1;
-        } else {
-            // See what database version we have...
-            Cursor c = db
-                    .rawQuery("SELECT version from " + TABLE_VERSION, null);
-            c.moveToFirst();
-            if (c.isAfterLast()) {
-                c.close();
-                Log.d("FDroid", "Missing version record - assuming 1");
-                db.execSQL("INSERT into " + TABLE_VERSION
-                        + " (version) values (1);");
-                version = 1;
-            } else {
-                version = c.getInt(0);
-                c.close();
-            }
-        }
-
-        // Run upgrade scripts if necessary...
-        boolean modified = false;
-        while (version < DB_UPGRADES.length + 1) {
-            for(int i=0;i<DB_UPGRADES[version -1].length;i++)
-                db.execSQL(DB_UPGRADES[version - 1][i]);
-            version++;
-            db.execSQL("update " + TABLE_VERSION + " set version = " + version
-                    + ";");
-            modified = true;
-        }
-
-        if (modified || reset) {
-            // Close and reopen to ensure underlying prepared statements are
-            // dropped, otherwise
-            // they will fail to execute.
-            db.close();
-            db = mctx.openOrCreateDatabase(DATABASE_NAME, 0, null);
-        }
-
     }
 
     public void close() {
@@ -280,6 +236,18 @@ public class DB {
         db = null;
     }
 
+    // Delete the database, which should cause it to be re-created next time it's
+    // used.
+    public static void delete(Context ctx) {
+        try {
+            ctx.deleteDatabase(DATABASE_NAME);
+            // Also try and delete the old one, from versions 0.13 and earlier.
+            ctx.deleteDatabase("fdroid_db");
+        } catch(Exception ex) {
+            Log.d("FDroid","Exception in DB.delete: "+ex.getMessage());
+        }
+    }
+    
     // Return a list of apps matching the given criteria.
     // 'appid' - specific app id to retrieve, or null
     // 'filter' - search text to filter on.
@@ -421,6 +389,8 @@ public class DB {
     // Returns the number of new updates (installed applications for which
     // there is a new version available)
     public int endUpdate() {
+        if (updateApps == null)
+            return 0;
         for (App app : updateApps) {
             if (!app.updated) {
                 // The application hasn't been updated, so it's no longer
@@ -485,7 +455,7 @@ public class DB {
                         updateApkIfDifferent(null, upapk);
                         upapk.updated = true;
                         app.apks.add(upapk);
-                        if(!app.hasUpdates && app.installedVersion != null)
+                        if (!app.hasUpdates && app.installedVersion != null)
                             updateNewUpdates++;
                         app.hasUpdates = true;
                     }

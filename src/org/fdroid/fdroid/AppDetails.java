@@ -150,9 +150,6 @@ public class AppDetails extends ListActivity {
 
         setContentView(R.layout.appdetails);
 
-        db = new DB(this);
-        mPm = getPackageManager();
-
         Intent i = getIntent();
         appid = "";
         if (!i.hasExtra("appid")) {
@@ -161,30 +158,27 @@ public class AppDetails extends ListActivity {
             appid = i.getStringExtra("appid");
         }
 
-        reset(false);
-
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        db.close();
-    }    
     
     private boolean pref_cacheDownloaded;
 
     @Override
     protected void onStart() {
         super.onStart();
+        db = new DB(this);
+        mPm = getPackageManager();
         ((FDroidApp) getApplication()).inActivity++;
         // Get the preferences we're going to use in this Activity...
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", true);
+
+        reset(false);
     }
 
     @Override
     protected void onStop() {
+        db.close();
         ((FDroidApp) getApplication()).inActivity--;
         super.onStop();
     }
