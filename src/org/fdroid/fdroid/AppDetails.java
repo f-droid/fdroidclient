@@ -159,7 +159,7 @@ public class AppDetails extends ListActivity {
         }
 
     }
-    
+
     private boolean pref_cacheDownloaded;
 
     @Override
@@ -401,8 +401,13 @@ public class AppDetails extends ListActivity {
                     // it...
                     if (apk_file == null) {
 
-                        String remotefile = curapk.server + "/"
-                                + apkname.replace(" ", "%20");
+                        String remotefile;
+                        if (curapk.apkSource == null) {
+                            remotefile = curapk.server + "/"
+                                    + apkname.replace(" ", "%20");
+                        } else {
+                            remotefile = curapk.apkSource;
+                        }
                         Log.d("FDroid", "Downloading apk from " + remotefile);
 
                         Message msg = new Message();

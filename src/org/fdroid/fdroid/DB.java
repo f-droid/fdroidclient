@@ -31,7 +31,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
 public class DB {
@@ -121,8 +120,7 @@ public class DB {
     }
 
     // The TABLE_APK table stores details of all the application versions we
-    // know
-    // about. Each relates directly back to an entry in TABLE_APP.
+    // know about. Each relates directly back to an entry in TABLE_APP.
     // This information is retrieved from the repositories.
     private static final String TABLE_APK = "fdroid_apk";
     private static final String CREATE_TABLE_APK = "create table " + TABLE_APK
@@ -136,6 +134,7 @@ public class DB {
         public Apk() {
             updated = false;
             size = 0;
+            apkSource = null;
         }
 
         public String id;
@@ -145,6 +144,11 @@ public class DB {
         public String server;
         public String hash;
         public String apkName;
+
+        // If null, the apk comes from the same server as the repo index.
+        // Otherwise
+        // this is the complete URL to download the apk from.
+        public String apkSource;
 
         // Used internally for tracking during repo updates.
         public boolean updated;
@@ -184,9 +188,12 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-    // Version 2...
-    { "alter table " + TABLE_APP + " add marketVersion text",
-            "alter table " + TABLE_APP + " add marketVercode integer" }
+            // Version 2...
+            { "alter table " + TABLE_APP + " add marketVersion text",
+                    "alter table " + TABLE_APP + " add marketVercode integer" },
+
+            // Version 3...
+            { "alter table " + TABLE_APK + " add apkSource text" }
 
     };
 
@@ -211,7 +218,7 @@ public class DB {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            for(int v=oldVersion+1;v<=newVersion;v++)
+            for (int v = oldVersion + 1; v <= newVersion; v++)
                 for (int i = 0; i < DB_UPGRADES[v - 2].length; i++)
                     db.execSQL(DB_UPGRADES[v - 2][i]);
         }
@@ -226,7 +233,7 @@ public class DB {
 
     public DB(Context ctx) {
 
-        DBHelper h=new DBHelper(ctx);
+        DBHelper h = new DBHelper(ctx);
         db = h.getWritableDatabase();
         mPm = ctx.getPackageManager();
     }
@@ -236,18 +243,18 @@ public class DB {
         db = null;
     }
 
-    // Delete the database, which should cause it to be re-created next time it's
-    // used.
+    // Delete the database, which should cause it to be re-created next time
+    // it's used.
     public static void delete(Context ctx) {
         try {
             ctx.deleteDatabase(DATABASE_NAME);
             // Also try and delete the old one, from versions 0.13 and earlier.
             ctx.deleteDatabase("fdroid_db");
-        } catch(Exception ex) {
-            Log.d("FDroid","Exception in DB.delete: "+ex.getMessage());
+        } catch (Exception ex) {
+            Log.d("FDroid", "Exception in DB.delete: " + ex.getMessage());
         }
     }
-    
+
     // Return a list of apps matching the given criteria.
     // 'appid' - specific app id to retrieve, or null
     // 'filter' - search text to filter on.
@@ -301,6 +308,7 @@ public class DB {
                     apk.hash = c2.getString(c2.getColumnIndex("hash"));
                     apk.size = c2.getInt(c2.getColumnIndex("size"));
                     apk.apkName = c2.getString(c2.getColumnIndex("apkName"));
+                    apk.apkSource = c2.getString(c2.getColumnIndex("apkSource"));
                     app.apks.add(apk);
                     c2.moveToNext();
                 }
@@ -522,6 +530,7 @@ public class DB {
         values.put("hash", upapk.hash);
         values.put("size", upapk.size);
         values.put("apkName", upapk.apkName);
+        values.put("apkSource", upapk.apkSource);
         if (oldapk != null) {
             db.update(TABLE_APK, values, "id = '" + oldapk.id
                     + "' and version = '" + oldapk.version + "'", null);
