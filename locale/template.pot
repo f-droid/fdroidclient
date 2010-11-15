@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-10-28 13:22+0100\n"
+"POT-Creation-Date: 2010-11-15 07:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,64 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0dev\n"
+
+msgctxt "version"
+msgid "Version"
+msgstr ""
+
+#, python-format
+msgctxt "n_versions_available"
+msgid "%d versions available"
+msgstr ""
+
+#, python-format
+msgctxt "n_version_available"
+msgid "%d version available"
+msgstr ""
+
+msgctxt "notify"
+msgid "Notify"
+msgstr ""
+
+msgctxt "storage"
+msgid "Storage"
+msgstr ""
+
+msgctxt "cache_downloaded"
+msgid "Cache downloaded apps"
+msgstr ""
+
+msgctxt "keep_downloaded"
+msgid "Keep downloaded apk files on SD card"
+msgstr ""
+
+msgctxt "updates"
+msgid "Updates"
+msgstr ""
+
+msgctxt "clear_all_cached_data"
+msgid "Clear all cached data"
+msgstr ""
+
+msgctxt "reset"
+msgid "Reset"
+msgstr ""
+
+msgctxt "maintenance"
+msgid "Maintenance"
+msgstr ""
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr ""
+
+msgctxt "update_apps_list"
+msgid "Update apps list from repositories automatically"
+msgstr ""
+
+msgctxt "automatic_repo_scan"
+msgid "Automatic repo scan"
+msgstr ""
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -27,7 +85,7 @@ msgstr ""
 
 msgctxt "about_desc"
 msgid ""
-"Based on Aptoide.\n"
+"Originally based on Aptoide.\n"
 "Released under the GNU GPL v2 license."
 msgstr ""
 
@@ -36,15 +94,15 @@ msgid "Home:"
 msgstr ""
 
 msgctxt "about_mail"
-msgid "e-Mail:"
+msgid "Email:"
+msgstr ""
+
+msgctxt "about_version"
+msgid "Version:"
 msgstr ""
 
 msgctxt "about_website"
 msgid "Web Site"
-msgstr ""
-
-msgctxt "no_found"
-msgid "No application found!"
 msgstr ""
 
 msgctxt "no_repo"
@@ -61,16 +119,8 @@ msgctxt "not_inst"
 msgid "Not Installed"
 msgstr ""
 
-msgctxt "installed"
-msgid "Installed - Ver.:"
-msgstr ""
-
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
-
-msgctxt "error"
-msgid "Error"
 msgstr ""
 
 msgctxt "ok"
@@ -98,11 +148,7 @@ msgid "Cancel"
 msgstr ""
 
 msgctxt "repo_delete_title"
-msgid "Chose repository to remove"
-msgstr ""
-
-msgctxt "url_website"
-msgid "http://f-droid.org"
+msgid "Choose repository to remove"
 msgstr ""
 
 msgctxt "server_connection_error"
@@ -157,64 +203,12 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr ""
 
-msgctxt "apk_version_new"
-msgid "available v"
-msgstr ""
-
-msgctxt "settings_sort_title"
-msgid "Sort application list by:"
-msgstr ""
-
-msgctxt "settings_sort_abc"
-msgid "Alphabetically"
-msgstr ""
-
-msgctxt "settings_sort_installed"
-msgid "Installed / Not Installed"
-msgstr ""
-
-msgctxt "settings_sort_recent"
-msgid "Most recent first"
-msgstr ""
-
-msgctxt "settings_sort_rating"
-msgid "Rating"
-msgstr ""
-
-msgctxt "settings_filter_title"
-msgid "Show applications:"
-msgstr ""
-
-msgctxt "settings_filter_category"
-msgid "By category"
-msgstr ""
-
-msgctxt "settings_filter_all"
-msgid "All applications"
-msgstr ""
-
-msgctxt "settings_save"
-msgid "Save"
-msgstr ""
-
 msgctxt "repo_add_url"
 msgid "Repository URL"
 msgstr ""
 
-msgctxt "up_server"
-msgid "Servers:"
-msgstr ""
-
-msgctxt "lstver"
-msgid "Server version:"
-msgstr ""
-
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
-
-msgctxt "instver"
-msgid "Installed version:"
 msgstr ""
 
 msgctxt "install"
@@ -257,6 +251,10 @@ msgctxt "menu_manage"
 msgid "Manage Repos"
 msgstr ""
 
+msgctxt "menu_preferences"
+msgid "Preferences"
+msgstr ""
+
 msgctxt "menu_about"
 msgid "About"
 msgstr ""
@@ -295,5 +293,23 @@ msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
+msgstr ""
+
+#, python-format
+msgctxt "details_installed"
+msgid "Version %s installed"
+msgstr ""
+
+#, python-format
+msgctxt "details_notinstalled"
+msgid "Not installed (%d available)"
+msgstr ""
+
+msgctxt "inst"
+msgid "Installed"
+msgstr ""
+
+msgctxt "corrupt_download"
+msgid "Downloaded file is corrupt"
 msgstr ""
 

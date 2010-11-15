@@ -1,22 +1,80 @@
-# Translations template for PROJECT.
+# Italian translations for PACKAGE.
 # Copyright (C) 2010 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-10-28 13:22+0100\n"
+"POT-Creation-Date: 2010-11-15 07:54+0000\n"
 "PO-Revision-Date: 2010-11-04 15:42+0200\n"
 "Last-Translator: graziano <graziano@sorbaioli.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: it\n"
+"Language-Team: it <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.1\n"
 "Generated-By: Babel 1.0dev\n"
+
+#, fuzzy
+msgctxt "version"
+msgid "Version"
+msgstr "Versione Server:"
+
+#, fuzzy, python-format
+msgctxt "n_versions_available"
+msgid "%d versions available"
+msgstr "Aggiornamenti disponibili"
+
+#, fuzzy, python-format
+msgctxt "n_version_available"
+msgid "%d version available"
+msgstr "Aggiornamenti disponibili"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr ""
+
+msgctxt "storage"
+msgid "Storage"
+msgstr ""
+
+msgctxt "cache_downloaded"
+msgid "Cache downloaded apps"
+msgstr ""
+
+msgctxt "keep_downloaded"
+msgid "Keep downloaded apk files on SD card"
+msgstr ""
+
+#, fuzzy
+msgctxt "updates"
+msgid "Updates"
+msgstr "Aggiornamenti"
+
+msgctxt "clear_all_cached_data"
+msgid "Clear all cached data"
+msgstr ""
+
+msgctxt "reset"
+msgid "Reset"
+msgstr ""
+
+msgctxt "maintenance"
+msgid "Maintenance"
+msgstr ""
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr ""
+
+msgctxt "update_apps_list"
+msgid "Update apps list from repositories automatically"
+msgstr ""
+
+msgctxt "automatic_repo_scan"
+msgid "Automatic repo scan"
+msgstr ""
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -26,9 +84,10 @@ msgctxt "about_title"
 msgid "About FDroid"
 msgstr "Informazioni"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
-"Based on Aptoide.\n"
+"Originally based on Aptoide.\n"
 "Released under the GNU GPL v2 license."
 msgstr ""
 "Basato su Aptoide.\n"
@@ -38,17 +97,19 @@ msgctxt "about_site"
 msgid "Home:"
 msgstr "Home:"
 
+#, fuzzy
 msgctxt "about_mail"
-msgid "e-Mail:"
+msgid "Email:"
 msgstr "e-Mail:"
+
+#, fuzzy
+msgctxt "about_version"
+msgid "Version:"
+msgstr "Versione Server:"
 
 msgctxt "about_website"
 msgid "Web Site"
 msgstr "Sito Web"
-
-msgctxt "no_found"
-msgid "No application found!"
-msgstr "Nessuna applicazione trovata!"
 
 msgctxt "no_repo"
 msgid ""
@@ -70,17 +131,9 @@ msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Non installato"
 
-msgctxt "installed"
-msgid "Installed - Ver.:"
-msgstr "Installato - Ver.:"
-
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
 msgstr "Aggiornamento: - Ver.:"
-
-msgctxt "error"
-msgid "Error"
-msgstr "Errore"
 
 msgctxt "ok"
 msgid "Ok"
@@ -106,13 +159,10 @@ msgctxt "cancel"
 msgid "Cancel"
 msgstr "Annulla"
 
+#, fuzzy
 msgctxt "repo_delete_title"
-msgid "Chose repository to remove"
+msgid "Choose repository to remove"
 msgstr "Rimuovi Repository"
-
-msgctxt "url_website"
-msgid "http://f-droid.org"
-msgstr "http://f-droid.org"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
@@ -166,65 +216,13 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Scaricamento applicazione da"
 
-msgctxt "apk_version_new"
-msgid "available v"
-msgstr "disponibile v"
-
-msgctxt "settings_sort_title"
-msgid "Sort application list by:"
-msgstr "Elenca applicazioni per:"
-
-msgctxt "settings_sort_abc"
-msgid "Alphabetically"
-msgstr "ordine alfabetico"
-
-msgctxt "settings_sort_installed"
-msgid "Installed / Not Installed"
-msgstr "Installato / Non installato"
-
-msgctxt "settings_sort_recent"
-msgid "Most recent first"
-msgstr "Piu' recente"
-
-msgctxt "settings_sort_rating"
-msgid "Rating"
-msgstr "Voto"
-
-msgctxt "settings_filter_title"
-msgid "Show applications:"
-msgstr "Mostra applicazioni:"
-
-msgctxt "settings_filter_category"
-msgid "By category"
-msgstr "Categoria"
-
-msgctxt "settings_filter_all"
-msgid "All applications"
-msgstr "Tutte"
-
-msgctxt "settings_save"
-msgid "Save"
-msgstr "Salva"
-
 msgctxt "repo_add_url"
 msgid "Repository URL"
 msgstr "Repository URL"
 
-msgctxt "up_server"
-msgid "Servers:"
-msgstr "Servers:"
-
-msgctxt "lstver"
-msgid "Server version:"
-msgstr "Versione Server:"
-
 msgctxt "isinst"
 msgid "Installed:"
 msgstr "Installato:"
-
-msgctxt "instver"
-msgid "Installed version:"
-msgstr "Versione installata:"
 
 msgctxt "install"
 msgid "Install"
@@ -274,6 +272,10 @@ msgctxt "menu_manage"
 msgid "Manage Repos"
 msgstr "Gestisci Repos"
 
+msgctxt "menu_preferences"
+msgid "Preferences"
+msgstr ""
+
 msgctxt "menu_about"
 msgid "About"
 msgstr "About"
@@ -313,3 +315,23 @@ msgstr "Market"
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Aggiornamento"
+
+#, fuzzy, python-format
+msgctxt "details_installed"
+msgid "Version %s installed"
+msgstr "Non installato"
+
+#, python-format
+msgctxt "details_notinstalled"
+msgid "Not installed (%d available)"
+msgstr ""
+
+#, fuzzy
+msgctxt "inst"
+msgid "Installed"
+msgstr "Installato"
+
+msgctxt "corrupt_download"
+msgid "Downloaded file is corrupt"
+msgstr ""
+
