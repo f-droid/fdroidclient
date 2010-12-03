@@ -1,5 +1,5 @@
 /*
-a * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
  *
  * This program is free software; you can redistribute it and/or
