@@ -12,21 +12,21 @@
     <string name="reset">Reset</string>
     <string name="maintenance">Maintenance</string>
     <string name="notify_updates_available">Notify when new updates are available</string>
-    <string name="update_apps_list">Update apps list from repositories automatically</string>
+    <string name="update_apps_list">Update app list from repositories automatically</string>
     <string name="automatic_repo_scan">Automatic repo scan</string>
 	<string name="app_name">FDroid</string>
 	<string name="about_title">About FDroid</string>
-	<string name="about_desc">Originally based on Aptoide.\nReleased under the GNU GPL v2
+	<string name="about_desc">Originally based on Aptoide.\nReleased under the GNU GPLv2
 		license.</string>
-	<string name="about_site">Home: </string>
+	<string name="about_site">Website: </string>
 	<string name="about_mail">Email: </string>
 	<string name="about_version">Version: </string>
-	<string name="about_website">Web Site</string>
+	<string name="about_website">Website</string>
 
 
-	<string name="no_repo">You have no repositories configured!\n\nA
+	<string name="no_repo">You don't have any repositories configured!\n\nA
 		repository is a source of applications. To add one, press the MENU
-		button now and enter the URL.\n\nA repository URL looks something like
+		button now and enter the URL.\n\nA repository address looks something like
 		this: http://f-droid.org/repo</string>
 
 	<string name="not_inst">Not Installed</string>
@@ -34,7 +34,7 @@
 	<string name="installed_update">Update possible - Ver.:</string>
 
 
-	<string name="ok">Ok</string>
+	<string name="ok">OK</string>
 
 	<string name="yes">Yes</string>
 	<string name="no">No</string>
@@ -59,7 +59,7 @@
 	<string name="download">Download</string>
 	<string name="download_server">Getting application from</string>
 
-	<string name="repo_add_url">Repository URL</string>
+	<string name="repo_add_url">Repository address</string>
 
 	<string name="isinst">Installed: </string>
 
@@ -67,10 +67,10 @@
 	<string name="uninstall">Uninstall </string>
 	<string name="update">Update!</string>
 
-	<string name="update_alrt">There updates available for some installed
-		applications.\nDo you wish to see them?</string>
-	<string name="repo_alrt">The list of repositories in use has been
-		changed.\nDo you wish to update them?</string>
+	<string name="update_alrt">There are updates available for some installed
+		applications.\nDo you want to see them?</string>
+	<string name="repo_alrt">The list of used repositories has
+		changed.\nDo you want to update them?</string>
 
 	<string name="error_download_alrt">Could not connect to server or apk file is corrupt!
 	</string>
@@ -87,7 +87,7 @@
 
 	<string name="menu_install">Install</string>
 	<string name="menu_uninstall">Uninstall</string>
-	<string name="menu_website">Web Site</string>
+	<string name="menu_website">Website</string>
 	<string name="menu_issues">Issues</string>
 	<string name="menu_source">Source Code</string>
 	<string name="menu_market">Market</string>
