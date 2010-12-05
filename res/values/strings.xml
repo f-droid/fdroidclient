@@ -24,7 +24,7 @@
 	<string name="about_website">Website</string>
 
 
-	<string name="no_repo">You don't have any repositories configured!\n\nA
+	<string name="no_repo">You don\'t have any repositories configured!\n\nA
 		repository is a source of applications. To add one, press the MENU
 		button now and enter the URL.\n\nA repository address looks something like
 		this: http://f-droid.org/repo</string>
