@@ -163,6 +163,8 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     private TabSpec ts1;
     private TabSpec tsUp;
 
+    private boolean triedEmptyUpdate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -195,6 +197,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         super.onStart();
         ((FDroidApp) getApplication()).inActivity++;
         db = new DB(this);
+        triedEmptyUpdate=false;
         populateLists(true);
     }
 
@@ -374,19 +377,24 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     // by asking the system.
     private void populateLists(boolean update) {
 
+        apps_in.clear();
+        apps_av.clear();
+        apps_up.clear();
+
         Vector<DB.App> apps = db.getApps(null, null, update);
         if(apps.isEmpty()) {
+            // Don't attempt this more than once - we may have invalid repositories.
+            if(triedEmptyUpdate)
+                return;
             // If there are no apps, update from the repos - it must be a
             // new installation.
             Log.d("FDroid", "Empty app list forces repo update");
             updateRepos();
+            triedEmptyUpdate = true;
             return;
         }
         Log.d("FDroid", "Updating lists - " + apps.size() + " apps in total");
 
-        apps_in.clear();
-        apps_av.clear();
-        apps_up.clear();
         for (DB.App app : apps) {
             if (app.installedVersion == null) {
                 apps_av.addItem(app);
