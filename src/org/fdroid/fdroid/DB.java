@@ -188,7 +188,7 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-            // Version 2...
+    // Version 2...
             { "alter table " + TABLE_APP + " add marketVersion text",
                     "alter table " + TABLE_APP + " add marketVercode integer" },
 
@@ -296,8 +296,9 @@ public class DB {
                 app.marketVercode = c.getInt(c.getColumnIndex("marketVercode"));
                 app.hasUpdates = false;
 
-                c2 = db.rawQuery("select * from " + TABLE_APK + " where "
-                        + "id = '" + app.id + "' order by vercode desc", null);
+                c2 = db.rawQuery("select * from " + TABLE_APK
+                        + " where id = ? order by vercode desc",
+                        new String[] { app.id });
                 c2.moveToFirst();
                 while (!c2.isAfterLast()) {
                     Apk apk = new Apk();
@@ -308,7 +309,8 @@ public class DB {
                     apk.hash = c2.getString(c2.getColumnIndex("hash"));
                     apk.size = c2.getInt(c2.getColumnIndex("size"));
                     apk.apkName = c2.getString(c2.getColumnIndex("apkName"));
-                    apk.apkSource = c2.getString(c2.getColumnIndex("apkSource"));
+                    apk.apkSource = c2
+                            .getString(c2.getColumnIndex("apkSource"));
                     app.apks.add(apk);
                     c2.moveToNext();
                 }
@@ -405,8 +407,8 @@ public class DB {
                 // in the repos.
                 Log.d("FDroid", "AppUpdate: " + app.name
                         + " is no longer in any repository - removing");
-                db.delete(TABLE_APP, "id = '" + app.id + "'", null);
-                db.delete(TABLE_APK, "id = '" + app.id + "'", null);
+                db.delete(TABLE_APP, "id = ?", new String[] { app.id });
+                db.delete(TABLE_APK, "id = ?", new String[] { app.id });
             } else {
                 for (Apk apk : app.apks) {
                     if (!apk.updated) {
@@ -415,8 +417,8 @@ public class DB {
                         Log.d("FDroid", "AppUpdate: Package " + apk.id + "/"
                                 + apk.version
                                 + " is no longer in any repository - removing");
-                        db.delete(TABLE_APK, "id = '" + app.id
-                                + "' and version ='" + apk.version + "'", null);
+                        db.delete(TABLE_APK, "id = ? and version = ?",
+                                new String[] { app.id, apk.version });
                     }
                 }
             }
@@ -509,7 +511,7 @@ public class DB {
         values.put("marketVercode", upapp.marketVercode);
         values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
         if (oldapp != null) {
-            db.update(TABLE_APP, values, "id = '" + oldapp.id + "'", null);
+            db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
         } else {
             db.insert(TABLE_APP, null, values);
         }
@@ -532,8 +534,8 @@ public class DB {
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
         if (oldapk != null) {
-            db.update(TABLE_APK, values, "id = '" + oldapk.id
-                    + "' and version = '" + oldapk.version + "'", null);
+            db.update(TABLE_APK, values, "id = ? and version =?", new String[] {
+                    oldapk.id, oldapk.version });
         } else {
             db.insert(TABLE_APK, null, values);
         }
@@ -542,7 +544,7 @@ public class DB {
     public void setInstalledVersion(String id, String version) {
         ContentValues values = new ContentValues();
         values.put("installedVersion", version);
-        db.update(TABLE_APP, values, "id = '" + id + "'", null);
+        db.update(TABLE_APP, values, "id = ?", new String[] { id });
     }
 
     // Get a list of the configured repositories.
@@ -572,7 +574,8 @@ public class DB {
 
     public void changeServerStatus(String address) {
         db.rawQuery("update " + TABLE_REPO
-                + " set inuse=1-inuse where address='" + address + "'", null);
+                + " set inuse=1-inuse where address= ?",
+                new String[] { address });
     }
 
     public void addServer(String address, int priority) {
@@ -585,8 +588,7 @@ public class DB {
 
     public void removeServers(Vector<String> addresses) {
         for (String address : addresses) {
-            db.delete(TABLE_REPO, "address = '" + address + "'", null);
+            db.delete(TABLE_REPO, "address = ?", new String[] { address });
         }
     }
-
 }
