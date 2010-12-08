@@ -76,6 +76,7 @@ public class DB {
         public String trackerURL;
         public String sourceURL;
         public String installedVersion;
+        public int installedVerCode;
         public String marketVersion;
         public int marketVercode;
 
@@ -193,7 +194,10 @@ public class DB {
                     "alter table " + TABLE_APP + " add marketVercode integer" },
 
             // Version 3...
-            { "alter table " + TABLE_APK + " add apkSource text" }
+            { "alter table " + TABLE_APK + " add apkSource text" },
+
+            // Version 4...
+            { "alter table " + TABLE_APP + " add installedVerCode integer" }
 
     };
 
@@ -291,6 +295,8 @@ public class DB {
                 app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
                 app.installedVersion = c.getString(c
                         .getColumnIndex("installedVersion"));
+                app.installedVerCode = c.getInt(c
+                        .getColumnIndex("installedVerCode"));
                 app.marketVersion = c.getString(c
                         .getColumnIndex("marketVersion"));
                 app.marketVercode = c.getInt(c.getColumnIndex("marketVercode"));
@@ -336,13 +342,15 @@ public class DB {
             getUpdates(result);
         }
 
-        // We'll say an application has updates if it's installed and the
-        // installed version is not the 'current' one.
+        // We'll say an application has updates if it's installed AND the
+        // installed version is not the 'current' one AND the installed
+        // version is older than the current one.
         for (App app : result) {
+            Apk curver = app.getCurrentVersion();
             if (app.installedVersion != null
-                    && !app.installedVersion
-                            .equals(app.getCurrentVersion().version)) {
-                app.hasUpdates = true;
+                    && !app.installedVersion.equals(curver.version)) {
+                if(app.installedVerCode < curver.vercode)
+                    app.hasUpdates = true;
             }
         }
 
@@ -361,15 +369,17 @@ public class DB {
 
         for (DB.App app : apps) {
             if (systemApks.containsKey(app.id)) {
-                String version = systemApks.get(app.id).versionName;
+                PackageInfo sysapk = systemApks.get(app.id);
+                String version = sysapk.versionName;
+                int vercode = sysapk.versionCode;
                 if (app.installedVersion == null
                         || !app.installedVersion.equals(version)) {
-                    setInstalledVersion(app.id, version);
+                    setInstalledVersion(app.id, version, vercode);
                     app.installedVersion = version;
                 }
             } else {
                 if (app.installedVersion != null) {
-                    setInstalledVersion(app.id, null);
+                    setInstalledVersion(app.id, null, 0);
                     app.installedVersion = null;
                 }
             }
@@ -507,6 +517,7 @@ public class DB {
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
         values.put("installedVersion", upapp.installedVersion);
+        values.put("installedVerCode", upapp.installedVerCode);
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
         values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
@@ -541,9 +552,10 @@ public class DB {
         }
     }
 
-    public void setInstalledVersion(String id, String version) {
+    public void setInstalledVersion(String id, String version, int vercode) {
         ContentValues values = new ContentValues();
         values.put("installedVersion", version);
+        values.put("installedVerCode", vercode);
         db.update(TABLE_APP, values, "id = ?", new String[] { id });
     }
 
