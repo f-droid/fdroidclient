@@ -347,7 +347,7 @@ public class DB {
         // version is older than the current one.
         for (App app : result) {
             Apk curver = app.getCurrentVersion();
-            if (app.installedVersion != null
+            if (curver!= null && app.installedVersion != null
                     && !app.installedVersion.equals(curver.version)) {
                 if(app.installedVerCode < curver.vercode)
                     app.hasUpdates = true;

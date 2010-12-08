@@ -99,7 +99,8 @@ public class AppDetails extends ListActivity {
             DB.Apk apk = items.get(position);
             TextView version = (TextView) v.findViewById(R.id.version);
             boolean iscurrent = apk.vercode == app_currentvercode;
-            version.setText(getString(R.string.version) + " " + apk.version + (iscurrent ? "*" : ""));
+            version.setText(getString(R.string.version) + " " + apk.version
+                    + (iscurrent ? "*" : ""));
             TextView status = (TextView) v.findViewById(R.id.status);
             if (apk.version.equals(app.installedVersion))
                 status.setText(getString(R.string.inst));
@@ -190,7 +191,8 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = db.getApps(appid, null, update).get(0);
-        app_currentvercode = app.getCurrentVersion().vercode;
+        DB.Apk curver = app.getCurrentVersion();
+        app_currentvercode = curver == null ? 0 : curver.vercode;
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
@@ -289,7 +291,7 @@ public class AppDetails extends ListActivity {
         super.onCreateOptionsMenu(menu);
         menu.clear();
         DB.Apk curver = app.getCurrentVersion();
-        if (app.installedVersion != null
+        if (app.installedVersion != null && curver != null
                 && !app.installedVersion.equals(curver.version)) {
             menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
                     android.R.drawable.ic_menu_add);
@@ -326,7 +328,8 @@ public class AppDetails extends ListActivity {
         case INSTALL:
             // Note that this handles updating as well as installing.
             curapk = app.getCurrentVersion();
-            install();
+            if (curapk != null)
+                install();
             return true;
 
         case UNINSTALL:
