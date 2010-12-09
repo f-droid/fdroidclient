@@ -347,9 +347,9 @@ public class DB {
         // version is older than the current one.
         for (App app : result) {
             Apk curver = app.getCurrentVersion();
-            if (curver!= null && app.installedVersion != null
+            if (curver != null && app.installedVersion != null
                     && !app.installedVersion.equals(curver.version)) {
-                if(app.installedVerCode < curver.vercode)
+                if (app.installedVerCode < curver.vercode)
                     app.hasUpdates = true;
             }
         }
@@ -363,7 +363,6 @@ public class DB {
         Map<String, PackageInfo> systemApks = new HashMap<String, PackageInfo>();
         Log.d("FDroid", "Reading installed packages");
         for (PackageInfo appInfo : installedPackages) {
-            Log.d("FDroid", "... " + appInfo.packageName);
             systemApks.put(appInfo.packageName, appInfo);
         }
 

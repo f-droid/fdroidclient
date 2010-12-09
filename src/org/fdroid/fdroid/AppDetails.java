@@ -162,6 +162,7 @@ public class AppDetails extends ListActivity {
     }
 
     private boolean pref_cacheDownloaded;
+    private boolean viewResetRequired;
 
     @Override
     protected void onStart() {
@@ -173,24 +174,33 @@ public class AppDetails extends ListActivity {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", true);
+        viewResetRequired = true;
 
-        reset(false);
+    }
+
+    @Override
+    protected void onResume() {
+        if (viewResetRequired) {
+            reset();
+            viewResetRequired = false;
+        }
+        super.onResume();
     }
 
     @Override
     protected void onStop() {
         db.close();
+        db = null;
         ((FDroidApp) getApplication()).inActivity--;
         super.onStop();
     }
 
     // Reset the display and list contents. Used when entering the activity, and
-    // also when something has been installed/uninstalled. In the latter case,
-    // 'update' is true to make the installed status get refreshed.
-    private void reset(boolean update) {
+    // also when something has been installed/uninstalled.
+    private void reset() {
 
         Log.d("FDroid", "Getting application details for " + appid);
-        app = db.getApps(appid, null, update).get(0);
+        app = db.getApps(appid, null, true).get(0);
         DB.Apk curver = app.getCurrentVersion();
         app_currentvercode = curver == null ? 0 : curver.vercode;
 
@@ -540,6 +550,7 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == REQUEST_INSTALL) {
             // If we're not meant to be caching, delete the apk file we just
             // installed (or maybe the user cancelled the install - doesn't
@@ -551,9 +562,10 @@ public class AppDetails extends ListActivity {
                 File file = new File(apk_file);
                 file.delete();
             }
+
+            viewResetRequired = true;
         }
 
-        reset(true);
     }
 
 }
