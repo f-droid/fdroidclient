@@ -184,8 +184,7 @@ public class RepoXMLHandler extends DefaultHandler {
         }
     }
 
-    // Returns the number of applications with updates.
-    public static int doUpdates(Context ctx, DB db) {
+    public static void doUpdates(Context ctx, DB db) {
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
@@ -236,7 +235,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
             }
         }
-        return db.endUpdate();
+        db.endUpdate();
 
     }
 
