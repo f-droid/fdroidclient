@@ -61,6 +61,7 @@ public class DB {
 			trackerURL = "";
 			sourceURL = "";
 			webURL = "";
+			antiFeatures = null;
 			hasUpdates = false;
 			updated = false;
 			apks = new Vector<Apk>();
@@ -79,6 +80,10 @@ public class DB {
 		public int installedVerCode;
 		public String marketVersion;
 		public int marketVercode;
+
+		// Comma-separated list of anti-features (as defined in the metadata
+		// documentation) or null if there aren't any.
+		public String antiFeatures;
 
 		// True if there are new versions (apks) that the user hasn't
 		// explicitly ignored. (We're currently not using the database
@@ -197,7 +202,10 @@ public class DB {
 			{ "alter table " + TABLE_APK + " add apkSource text" },
 
 			// Version 4...
-			{ "alter table " + TABLE_APP + " add installedVerCode integer" }
+			{ "alter table " + TABLE_APP + " add installedVerCode integer" },
+
+			// Version 5...
+			{ "alter table " + TABLE_APP + " add antiFeatures string" }
 
 	};
 
@@ -311,6 +319,8 @@ public class DB {
 				app.marketVersion = c.getString(c
 						.getColumnIndex("marketVersion"));
 				app.marketVercode = c.getInt(c.getColumnIndex("marketVercode"));
+				app.antiFeatures = c
+						.getString(c.getColumnIndex("antiFeatures"));
 				app.hasUpdates = false;
 
 				c2 = db.rawQuery("select * from " + TABLE_APK
@@ -523,6 +533,7 @@ public class DB {
 		values.put("installedVerCode", upapp.installedVerCode);
 		values.put("marketVersion", upapp.marketVersion);
 		values.put("marketVercode", upapp.marketVercode);
+		values.put("antiFeatures", upapp.antiFeatures);
 		values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
 		if (oldapp != null) {
 			db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
