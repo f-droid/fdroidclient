@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">Version</string>
-    <string name="n_versions_available">%d versions available</string>
-    <string name="n_version_available">%d version available</string>
-    <string name="notify">Notify</string>
-    <string name="storage">Storage</string>
-    <string name="cache_downloaded">Cache downloaded apps</string>
-    <string name="keep_downloaded">Keep downloaded apk files on SD card</string>
-    <string name="updates">Updates</string>
-    <string name="clear_all_cached_data">Clear all cached data</string>
-    <string name="reset">Reset</string>
-    <string name="maintenance">Maintenance</string>
-    <string name="notify_updates_available">Notify when new updates are available</string>
-    <string name="update_apps_list">Update app list from repositories automatically</string>
-    <string name="automatic_repo_scan">Automatic repo scan</string>
+	<string name="version">Version</string>
+	<string name="n_versions_available">%d versions available</string>
+	<string name="n_version_available">%d version available</string>
+	<string name="notify">Notify</string>
+	<string name="storage">Storage</string>
+	<string name="cache_downloaded">Cache downloaded apps</string>
+	<string name="keep_downloaded">Keep downloaded apk files on SD card</string>
+	<string name="updates">Updates</string>
+	<string name="clear_all_cached_data">Clear all cached data</string>
+	<string name="reset">Reset</string>
+	<string name="maintenance">Maintenance</string>
+	<string name="notify_updates_available">Notify when new updates are available</string>
+	<string name="update_apps_list">Update app list from repositories automatically
+	</string>
+	<string name="automatic_repo_scan">Automatic repo scan</string>
 	<string name="app_name">FDroid</string>
 	<string name="about_title">About FDroid</string>
-	<string name="about_desc">Originally based on Aptoide.\nReleased under the GNU GPLv2
+	<string name="about_desc">Originally based on Aptoide.\nReleased under the
+		GNU GPLv2
 		license.</string>
 	<string name="about_site">Website: </string>
 	<string name="about_mail">Email: </string>
@@ -26,7 +28,8 @@
 
 	<string name="no_repo">You don\'t have any repositories configured!\n\nA
 		repository is a source of applications. To add one, press the MENU
-		button now and enter the URL.\n\nA repository address looks something like
+		button now and enter the URL.\n\nA repository address looks something
+		like
 		this: http://f-droid.org/repo</string>
 
 	<string name="not_inst">Not Installed</string>
@@ -70,7 +73,8 @@
 	<string name="update_alrt">There are updates available for some installed
 		applications.\nDo you want to see them?</string>
 	<string name="repo_alrt">The list of used repositories has
-		changed.\nDo you want to update them?</string>
+		changed.\nDo you
+		want to update them?</string>
 
 	<string name="error_download_alrt">Could not connect to server or apk file is corrupt!
 	</string>
@@ -98,5 +102,17 @@
 	<string name="inst">Installed</string>
 	<string name="corrupt_download">Downloaded file is corrupt</string>
 
+
+
+	<string name="antifeatures">Anti-Features</string>
+
+	<string name="antiads">Advertising</string>
+	<string name="antiadslong">Show apps that contain advertising</string>
+	<string name="antitrack">Tracking</string>
+	<string name="antitracklong">Show apps that track and report your activity</string>
+	<string name="antinonfreead">Add-ons</string>
+	<string name="antinonfreeadlong">Show apps that promote non-free add-ons</string>
+	<string name="antinonfreenet">Network Services</string>
+	<string name="antinonfreenetlong">Show apps that promote non-free network services</string>
 
 </resources>
