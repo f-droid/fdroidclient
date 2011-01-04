@@ -115,4 +115,7 @@
 	<string name="antinonfreenet">Network Services</string>
 	<string name="antinonfreenetlong">Show apps that promote non-free network services</string>
 
+	<string name="expert">Expert</string>
+	<string name="expert_mode">Enabled expert mode</string>
+
 </resources>

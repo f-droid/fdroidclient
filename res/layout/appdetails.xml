@@ -28,6 +28,10 @@
 				android:textSize="12sp" android:layout_height="wrap_content"
 				android:layout_width="fill_parent" />
 
+			<TextView android:id="@+id/signature" android:layout_below="@id/status"
+				android:layout_alignParentLeft="true" android:textSize="12sp"
+				android:layout_height="wrap_content" android:layout_width="fill_parent" />
+
 		</RelativeLayout>
 
 	</LinearLayout>
