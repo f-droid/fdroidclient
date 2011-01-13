@@ -414,6 +414,7 @@ public class AppDetails extends ListActivity {
         pd = new ProgressDialog(this);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         pd.setMessage(getString(R.string.download_server));
+        pd.show();
 
         new Thread() {
             public void run() {
@@ -526,8 +527,6 @@ public class AppDetails extends ListActivity {
                 }
             }
         }.start();
-
-        pd.show();
 
     }
 
