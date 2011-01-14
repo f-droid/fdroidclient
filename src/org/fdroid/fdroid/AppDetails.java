@@ -254,11 +254,10 @@ public class AppDetails extends ListActivity {
         if (pref_expert && mInstalledSignature != null) {
             try {
                 tv = (TextView) findViewById(R.id.signature);
-                byte[] sig = mInstalledSignature.toByteArray();
                 MessageDigest md;
                 md = MessageDigest.getInstance("MD5");
                 byte[] md5sum = new byte[32];
-                md.update(sig, 0, sig.length);
+                md.update(mInstalledSignature.toCharsString().getBytes());
                 md5sum = md.digest();
                 BigInteger bigInt = new BigInteger(1, md5sum);
                 String md5hash = bigInt.toString(16);
