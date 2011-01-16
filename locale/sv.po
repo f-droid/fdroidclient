@@ -1,20 +1,20 @@
-# French translations for PACKAGE.
+# Translations template for PROJECT.
 # Copyright (C) 2010 ORGANIZATION
-# This file is distributed under the same license as the PACKAGE project.
+# This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2010-11-15 07:54+0000\n"
-"PO-Revision-Date: 2010-12-15 06:43+0200\n"
-"Last-Translator: MagicFab <magicfab@member.fsf.org>\n"
-"Language-Team: fr <LL@li.org>\n"
-"Language: fr\n"
+"PO-Revision-Date: 2011-01-14 07:33+0200\n"
+"Last-Translator: Henrik <tunedal@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
 
@@ -25,58 +25,57 @@ msgstr "Version"
 #, python-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d versions disponibles"
+msgstr "%d versioner tillgängliga"
 
 #, python-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "%d version disponible"
+msgstr "%d version tillgänglig"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Notifier"
+msgstr "Meddela"
 
-# According to granddictionnaire.com
 msgctxt "storage"
 msgid "Storage"
-msgstr "Mémoire"
+msgstr "Lagring"
 
+# Låt oss vara konsekventa med denna term.
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Garder en mémoire cache les applications téléchargées"
+msgstr "Cacha nerladdade program"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Garder les fichiers apk téléchargés sur la carte SD"
+msgstr "Behåll nerladdade apk-filer på SD-kortet"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Mises à jour"
+msgstr "Uppdateringar"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Vider la mémoire cache"
+msgstr "Rensa all cachad data"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Réinitialisation"
+msgstr "Återställ"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Maintenance"
+msgstr "Underhåll"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Notifier quand de nouvelles mises à jour sont disponibles"
+msgstr "Meddela mig när nya uppdateringar finns"
 
 msgctxt "update_apps_list"
 msgid "Update apps list from repositories automatically"
-msgstr ""
-"Mettre à jour automatiquement la liste d'applications à partir des dépôts "
+msgstr "Uppdatera programlistan från förråd automatiskt"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Balayage automatique du dépôt"
+msgstr "Automatisk förrådsskanning"
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -84,23 +83,23 @@ msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr "À propos de FDroid"
+msgstr "Om FDroid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPL v2 license."
 msgstr ""
-"Originallement basée sur Aptoide.\n"
-"Libéré sous licence GNU GPL v2."
+"Ursprungligen baserat på Aptoide.\n"
+"Släppt under GNU GPLv2-licensen."
 
 msgctxt "about_site"
 msgid "Home:"
-msgstr "Accueil:"
+msgstr "Hem:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "Courriel:"
+msgstr "E-post:"
 
 msgctxt "about_version"
 msgid "Version:"
@@ -108,7 +107,7 @@ msgstr "Version:"
 
 msgctxt "about_website"
 msgid "Web Site"
-msgstr "Site Web"
+msgstr "Webbsida"
 
 msgctxt "no_repo"
 msgid ""
@@ -119,212 +118,216 @@ msgid ""
 "\n"
 "A repository URL looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Aucun dépôt n'est configuré!\n"
+"Du har inga förråd konfigurerade!\n"
 "\n"
-"Un dépôt est une source d'applications. Pour en ajouter un, appuyez sur MENU "
-"maintenant et entrez l'adresse URL.\n"
+"Ett förråd är en källa för program. Tryck på Meny-knappen och ange URL:en "
+"för att lägga till ett nu.\n"
 "\n"
-"L'URL d'un dépôt ressemble à ceci: http://f-droid.org/repo"
+"En förråds-URL ser ut ungefär så här: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Pas installée"
+msgstr "Inte installerad"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Mise à jour possible - Ver.:"
+msgstr "Uppdatering möjlig - Ver.:"
 
 msgctxt "ok"
 msgid "Ok"
-msgstr "Ok"
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "Oui"
+msgstr "Ja"
 
 msgctxt "no"
 msgid "No"
-msgstr "Non"
+msgstr "Nej"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Ajouter un nouveau dépôt"
+msgstr "Lägg till nytt förråd"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Ajouter"
+msgstr "Lägg till"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Avbryt"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Choisissez le dépôt à supprimer"
+msgstr "Välj förråd att ta bort"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Connection au serveur impossible!"
+msgstr "Kunde inte ansluta till servern!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Mettre à jour les dépôts"
+msgstr "Uppdatera förråd"
 
+# Rubrik för lista på installerade program.
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Installée"
+msgstr "Installerade"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "Disponible"
+msgstr "Tillgängliga"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Mises à jour"
+msgstr "Uppdateringar"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Mises à jour disponibles"
+msgstr "Uppdateringar tillgängliga"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Patientez"
+msgstr "Var vänlig vänta"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Mise à jour de la liste d'applications..."
+msgstr "Uppdaterar programlistan..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Connection au réseau impossible."
+msgstr "Kunde inte ansluta till nätverket."
 
+# Om vi inte ska följa tyskarna och kalla det "tidsöverskridning"...?
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Délai d'attente"
+msgstr "Timeout"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Connection au serveur impossible!"
+msgstr "Kunde inte ansluta till servern!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Téléchargement"
+msgstr "Ladda ner"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Réception d'application de"
+msgstr "Hämtar program från"
 
 msgctxt "repo_add_url"
 msgid "Repository URL"
-msgstr "URL du dépôt"
+msgstr "Förråds-URL"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Installé:"
+msgstr "Installerad:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Installer"
+msgstr "Installera"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Supprimer"
+msgstr "Avinstallera"
 
+# Den här strängen tycks inte användas i programmet. Svårt att översätta utan sammanhang.
 msgctxt "update"
 msgid "Update!"
-msgstr "Mise à jour!"
+msgstr ""
 
 msgctxt "update_alrt"
 msgid ""
 "There updates available for some installed applications.\n"
 "Do you wish to see them?"
 msgstr ""
-"Des mises à jour sont disponibles pour certaines applications.\n"
-"\n"
-"Désirez-vous les voir?"
+"Det finns uppdateringar för vissa av de installerade programmen.\n"
+"Vill du se dem?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of repositories in use has been changed.\n"
 "Do you wish to update them?"
 msgstr ""
-"La liste des dépôts a changé.\n"
-"Voulez-vous les mettre à jour?"
+"Listan över förråd har ändrats.\n"
+"Vill du uppdatera dem?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Connections au serveur impossible ou fichier apk corrompu!"
+msgstr "Kunde inte ansluta till servern eller så är apk-filen är skadad!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Réception d'application de:\n"
+msgstr "Hämtar program från:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr "Mise à jour"
+msgstr "Uppdatera"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Gestion de dépôts"
+msgstr "Hantera förråd"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Préférences"
+msgstr "Inställningar"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "À propos de"
+msgstr "Om"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Nouveau dépôt"
+msgstr "Nytt förråd"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Supprimer un dépôt"
+msgstr "Ta bort förråd"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Installer"
+msgstr "Installera"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Supprimer"
+msgstr "Avinstallera"
 
 msgctxt "menu_website"
 msgid "Web Site"
-msgstr "Site Web"
+msgstr "Webbsida"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Problèmes"
+msgstr ""
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Code source"
+msgstr "Källkod"
 
+# Google kallar det "Market" även på svenska.
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Marché"
+msgstr "Market"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Mise à jour"
+msgstr "Uppdatera"
 
 #, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Version %s installée"
+msgstr "Version %s är installerad"
 
+# Programmet är inte installerat, men %d versioner är tillgängliga.
 #, python-format
 msgctxt "details_notinstalled"
 msgid "Not installed (%d available)"
-msgstr "Pas installée (%d disponible)"
+msgstr "Inte installerat (%d tillgängliga)"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Installée"
+msgstr "Installerad"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "Le fichier téléchargé est corrompu"
+msgstr "Den nerladdade filen är skadad"
