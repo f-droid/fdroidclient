@@ -11,11 +11,20 @@
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
+			<meta-data android:name="android.app.default_searchable"
+				android:value=".SearchResults" />
 		</activity>
 		<activity android:name="ManageRepo" />
 		<activity android:name="Settings" />
 		<activity android:name="AppDetails" />
 		<activity android:name="Preferences" />
+		<activity android:name="SearchResults" android:launchMode="singleTop">
+			<intent-filter>
+				<action android:name="android.intent.action.SEARCH" />
+			</intent-filter>
+			<meta-data android:name="android.app.searchable"
+				android:resource="@xml/searchable" />
+		</activity>
 
 		<receiver android:name="StartupReceiver">
 			<intent-filter>

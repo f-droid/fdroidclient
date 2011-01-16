@@ -20,8 +20,6 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 import org.fdroid.fdroid.R;
@@ -47,10 +45,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -59,77 +54,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.TabSpec;
 
 public class FDroid extends TabActivity implements OnItemClickListener {
-
-    private class AppListAdapter extends BaseAdapter {
-
-        private List<DB.App> items = new ArrayList<DB.App>();
-
-        public AppListAdapter(Context context) {
-        }
-
-        public void addItem(DB.App app) {
-            items.add(app);
-        }
-
-        public void clear() {
-            items.clear();
-        }
-
-        @Override
-        public int getCount() {
-            return items.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return items.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View v = convertView;
-            if (v == null) {
-                LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.applistitem, null);
-            }
-            DB.App app = items.get(position);
-
-            TextView name = (TextView) v.findViewById(R.id.name);
-            name.setText(app.name);
-
-            String vs;
-            int numav = app.apks.size();
-            if (numav == 1)
-                vs = getString(R.string.n_version_available);
-            else
-                vs = getString(R.string.n_versions_available);
-            TextView status = (TextView) v.findViewById(R.id.status);
-            status.setText(String.format(vs, numav));
-
-            TextView license = (TextView) v.findViewById(R.id.license);
-            license.setText(app.license);
-
-            TextView summary = (TextView) v.findViewById(R.id.summary);
-            summary.setText(app.summary);
-
-            ImageView icon = (ImageView) v.findViewById(R.id.icon);
-            String iconpath = new String(DB.getIconsPath() + app.icon);
-            File icn = new File(iconpath);
-            if (icn.exists() && icn.length() > 0) {
-                new Uri.Builder().build();
-                icon.setImageURI(Uri.parse(iconpath));
-            } else {
-                icon.setImageResource(android.R.drawable.sym_def_app_icon);
-            }
-
-            return v;
-        }
-    }
 
     private String LOCAL_PATH = "/sdcard/.fdroid";
 
@@ -141,6 +65,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     private static final int MANAGE_REPO = Menu.FIRST + 1;
     private static final int PREFERENCES = Menu.FIRST + 2;
     private static final int ABOUT = Menu.FIRST + 3;
+    private static final int SEARCH = Menu.FIRST + 4;
 
     private DB db = null;
 
@@ -216,9 +141,11 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 android.R.drawable.ic_menu_rotate);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
-        menu.add(Menu.NONE, PREFERENCES, 3, R.string.menu_preferences).setIcon(
+        menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
+                android.R.drawable.ic_menu_search);
+        menu.add(Menu.NONE, PREFERENCES, 4, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
-        menu.add(Menu.NONE, ABOUT, 4, R.string.menu_about).setIcon(
+        menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
                 android.R.drawable.ic_menu_help);
         return true;
     }
@@ -242,6 +169,10 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             startActivityForResult(prefs, REQUEST_PREFS);
             return true;
 
+        case SEARCH:
+            onSearchRequested();
+            return true;
+            
         case ABOUT:
             LayoutInflater li = LayoutInflater.from(this);
             View view = li.inflate(R.layout.about, null);
