@@ -171,6 +171,7 @@ public class AppDetails extends ListActivity {
 
     // The signature of the installed version.
     private Signature mInstalledSignature;
+    private String mInstalledSigID;
 
     @Override
     protected void onStart() {
@@ -221,8 +222,21 @@ public class AppDetails extends ListActivity {
                 PackageInfo pi = pm.getPackageInfo(appid,
                         PackageManager.GET_SIGNATURES);
                 mInstalledSignature = pi.signatures[0];
+                MessageDigest md;
+                md = MessageDigest.getInstance("MD5");
+                byte[] md5sum = new byte[32];
+                md.update(mInstalledSignature.toCharsString().getBytes());
+                md5sum = md.digest();
+                BigInteger bigInt = new BigInteger(1, md5sum);
+                String md5hash = bigInt.toString(16);
+                while (md5hash.length() < 32)
+                    md5hash = "0" + md5hash;
+                mInstalledSigID = md5hash;
             } catch (NameNotFoundException e) {
                 Log.d("FDroid", "Failed to get installed signature");
+            } catch (NoSuchAlgorithmException e) {
+                Log.d("FDroid", "Failed to calculate signature MD5 sum");
+                mInstalledSignature = null;
             }
         }
 
@@ -252,20 +266,8 @@ public class AppDetails extends ListActivity {
         tv = (TextView) findViewById(R.id.description);
         tv.setText(app.description);
         if (pref_expert && mInstalledSignature != null) {
-            try {
-                tv = (TextView) findViewById(R.id.signature);
-                MessageDigest md;
-                md = MessageDigest.getInstance("MD5");
-                byte[] md5sum = new byte[32];
-                md.update(mInstalledSignature.toCharsString().getBytes());
-                md5sum = md.digest();
-                BigInteger bigInt = new BigInteger(1, md5sum);
-                String md5hash = bigInt.toString(16);
-                while (md5hash.length() < 32)
-                    md5hash = "0" + md5hash;
-                tv.setText("Signed: " + md5hash);
-            } catch (NoSuchAlgorithmException e) {
-            }
+            tv = (TextView) findViewById(R.id.signature);
+            tv.setText("Signed: " + mInstalledSigID);
         }
 
         // Set up the list...
@@ -409,6 +411,19 @@ public class AppDetails extends ListActivity {
 
     // Install the version of this app denoted by 'curapk'.
     private void install() {
+
+        if (mInstalledSigID != null && !curapk.sig.equals(mInstalledSigID)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
+                    "Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+            return;
+        }
 
         pd = new ProgressDialog(this);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);

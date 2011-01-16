@@ -102,6 +102,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             } else if (curel == "hash") {
                 curapk.hash = str;
+            } else if (curel == "sig") {
+                curapk.sig = str;
             } else if (curel == "apkname") {
                 curapk.apkName = str;
             } else if (curel == "apksource") {

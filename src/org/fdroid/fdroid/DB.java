@@ -149,6 +149,11 @@ public class DB {
         public int size; // Size in bytes - 0 means we don't know!
         public String server;
         public String hash;
+        
+        // ID (md5 sum of public key) of signature. Might be null, in the
+        // transition to this field existing.
+        public String sig;
+                            
         public String apkName;
 
         // If null, the apk comes from the same server as the repo index.
@@ -194,7 +199,7 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-    // Version 2...
+            // Version 2...
             { "alter table " + TABLE_APP + " add marketVersion text",
                     "alter table " + TABLE_APP + " add marketVercode integer" },
 
@@ -205,7 +210,10 @@ public class DB {
             { "alter table " + TABLE_APP + " add installedVerCode integer" },
 
             // Version 5...
-            { "alter table " + TABLE_APP + " add antiFeatures string" }
+            { "alter table " + TABLE_APP + " add antiFeatures string" },
+
+            // Version 6...
+            { "alter table " + TABLE_APK + " add sig string" }
 
     };
 
@@ -334,6 +342,7 @@ public class DB {
                     apk.vercode = c2.getInt(c2.getColumnIndex("vercode"));
                     apk.server = c2.getString(c2.getColumnIndex("server"));
                     apk.hash = c2.getString(c2.getColumnIndex("hash"));
+                    apk.sig = c2.getString(c2.getColumnIndex("sig"));
                     apk.size = c2.getInt(c2.getColumnIndex("size"));
                     apk.apkName = c2.getString(c2.getColumnIndex("apkName"));
                     apk.apkSource = c2
@@ -555,6 +564,7 @@ public class DB {
         values.put("vercode", upapk.vercode);
         values.put("server", upapk.server);
         values.put("hash", upapk.hash);
+        values.put("sig", upapk.sig);
         values.put("size", upapk.size);
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
