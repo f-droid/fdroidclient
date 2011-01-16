@@ -6,17 +6,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-11-15 07:54+0000\n"
+"POT-Creation-Date: 2011-01-16 16:16+0000\n"
 "PO-Revision-Date: 2010-11-16 09:54+0200\n"
 "Last-Translator: Jan-Christoph <JanCBorchardt@gmail.com>\n"
 "Language-Team: de <LL@li.org>\n"
-"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
+
+msgctxt "SignatureMismatch"
+msgid ""
+"The new version is signed with a different key to the old one. To install"
+" the new version, the old one must be uninstalled first. Please do this "
+"and try again. (Note that uninstalling will erase any internal data "
+"stored by the application)"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -68,8 +74,9 @@ msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
 msgstr "Bei Aktualisierungen benachrichtigen"
 
+#, fuzzy
 msgctxt "update_apps_list"
-msgid "Update apps list from repositories automatically"
+msgid "Update app list from repositories automatically"
 msgstr "Anwendungsliste automatisch aktualisieren"
 
 msgctxt "automatic_repo_scan"
@@ -84,17 +91,19 @@ msgctxt "about_title"
 msgid "About FDroid"
 msgstr "Über FDroid"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPL v2 license."
+"Released under the GNU GPLv2 license."
 msgstr ""
 "Basierend auf Aptoide.\n"
 "Lizensiert unter GNU GPLv2."
 
+#, fuzzy
 msgctxt "about_site"
-msgid "Home:"
-msgstr "Internetseite:"
+msgid "Website:"
+msgstr "Internetseite"
 
 msgctxt "about_mail"
 msgid "Email:"
@@ -104,18 +113,20 @@ msgctxt "about_version"
 msgid "Version:"
 msgstr "Version:"
 
+#, fuzzy
 msgctxt "about_website"
-msgid "Web Site"
+msgid "Website"
 msgstr "Internetseite"
 
+#, fuzzy
 msgctxt "no_repo"
 msgid ""
-"You have no repositories configured!\n"
+"You don't have any repositories configured!\n"
 "\n"
 "A repository is a source of applications. To add one, press the MENU "
 "button now and enter the URL.\n"
 "\n"
-"A repository URL looks something like this: http://f-droid.org/repo"
+"A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
 "Sie haben keine Archive eingestellt!\n"
 "\n"
@@ -133,8 +144,8 @@ msgid "Update possible - Ver.:"
 msgstr "Aktualisierung verfügbar – Version:"
 
 msgctxt "ok"
-msgid "Ok"
-msgstr "OK"
+msgid "OK"
+msgstr ""
 
 msgctxt "yes"
 msgid "Yes"
@@ -212,8 +223,9 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Anwendung wird heruntergeladen von"
 
+#, fuzzy
 msgctxt "repo_add_url"
-msgid "Repository URL"
+msgid "Repository address"
 msgstr "Archiv-Adresse"
 
 msgctxt "isinst"
@@ -232,18 +244,20 @@ msgctxt "update"
 msgid "Update!"
 msgstr "Aktualisieren!"
 
+#, fuzzy
 msgctxt "update_alrt"
 msgid ""
-"There updates available for some installed applications.\n"
-"Do you wish to see them?"
+"There are updates available for some installed applications.\n"
+"Do you want to see them?"
 msgstr ""
 "Für einige installierte Anwendungen sind Aktualisierungen verfügbar.\n"
 "Sollen diese angezeigt werden?"
 
+#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
-"The list of repositories in use has been changed.\n"
-"Do you wish to update them?"
+"The list of used repositories has changed.\n"
+"Do you want to update them?"
 msgstr ""
 "Die Liste der genutzten Archive wurde geändert.\n"
 "Soll sie aktualisiert werden?"
@@ -290,8 +304,9 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Entfernen"
 
+#, fuzzy
 msgctxt "menu_website"
-msgid "Web Site"
+msgid "Website"
 msgstr "Internetseite"
 
 msgctxt "menu_issues"
@@ -327,3 +342,48 @@ msgstr "Installiert"
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Heruntergeladene Datei ist fehlerhaft"
+
+msgctxt "antifeatures"
+msgid "Anti-Features"
+msgstr ""
+
+msgctxt "antiads"
+msgid "Advertising"
+msgstr ""
+
+msgctxt "antiadslong"
+msgid "Show apps that contain advertising"
+msgstr ""
+
+msgctxt "antitrack"
+msgid "Tracking"
+msgstr ""
+
+msgctxt "antitracklong"
+msgid "Show apps that track and report your activity"
+msgstr ""
+
+msgctxt "antinonfreead"
+msgid "Add-ons"
+msgstr ""
+
+msgctxt "antinonfreeadlong"
+msgid "Show apps that promote non-free add-ons"
+msgstr ""
+
+msgctxt "antinonfreenet"
+msgid "Network Services"
+msgstr ""
+
+msgctxt "antinonfreenetlong"
+msgid "Show apps that promote non-free network services"
+msgstr ""
+
+msgctxt "expert"
+msgid "Expert"
+msgstr ""
+
+msgctxt "expert_mode"
+msgid "Enabled expert mode"
+msgstr ""
+

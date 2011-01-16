@@ -1,22 +1,28 @@
-# Translations template for PROJECT.
+# Swedish translations for PACKAGE.
 # Copyright (C) 2010 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-11-15 07:54+0000\n"
+"POT-Creation-Date: 2011-01-16 16:16+0000\n"
 "PO-Revision-Date: 2011-01-14 07:33+0200\n"
 "Last-Translator: Henrik <tunedal@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: sv\n"
+"Language-Team: sv <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
+
+msgctxt "SignatureMismatch"
+msgid ""
+"The new version is signed with a different key to the old one. To install"
+" the new version, the old one must be uninstalled first. Please do this "
+"and try again. (Note that uninstalling will erase any internal data "
+"stored by the application)"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -40,7 +46,6 @@ msgctxt "storage"
 msgid "Storage"
 msgstr "Lagring"
 
-# Låt oss vara konsekventa med denna term.
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Cacha nerladdade program"
@@ -69,8 +74,9 @@ msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
 msgstr "Meddela mig när nya uppdateringar finns"
 
+#, fuzzy
 msgctxt "update_apps_list"
-msgid "Update apps list from repositories automatically"
+msgid "Update app list from repositories automatically"
 msgstr "Uppdatera programlistan från förråd automatiskt"
 
 msgctxt "automatic_repo_scan"
@@ -85,17 +91,19 @@ msgctxt "about_title"
 msgid "About FDroid"
 msgstr "Om FDroid"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPL v2 license."
+"Released under the GNU GPLv2 license."
 msgstr ""
 "Ursprungligen baserat på Aptoide.\n"
 "Släppt under GNU GPLv2-licensen."
 
+#, fuzzy
 msgctxt "about_site"
-msgid "Home:"
-msgstr "Hem:"
+msgid "Website:"
+msgstr "Webbsida"
 
 msgctxt "about_mail"
 msgid "Email:"
@@ -105,23 +113,25 @@ msgctxt "about_version"
 msgid "Version:"
 msgstr "Version:"
 
+#, fuzzy
 msgctxt "about_website"
-msgid "Web Site"
+msgid "Website"
 msgstr "Webbsida"
 
+#, fuzzy
 msgctxt "no_repo"
 msgid ""
-"You have no repositories configured!\n"
+"You don't have any repositories configured!\n"
 "\n"
 "A repository is a source of applications. To add one, press the MENU "
 "button now and enter the URL.\n"
 "\n"
-"A repository URL looks something like this: http://f-droid.org/repo"
+"A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
 "Du har inga förråd konfigurerade!\n"
 "\n"
-"Ett förråd är en källa för program. Tryck på Meny-knappen och ange URL:en "
-"för att lägga till ett nu.\n"
+"Ett förråd är en källa för program. Tryck på Meny-knappen och ange URL:en"
+" för att lägga till ett nu.\n"
 "\n"
 "En förråds-URL ser ut ungefär så här: http://f-droid.org/repo"
 
@@ -134,8 +144,8 @@ msgid "Update possible - Ver.:"
 msgstr "Uppdatering möjlig - Ver.:"
 
 msgctxt "ok"
-msgid "Ok"
-msgstr "OK"
+msgid "OK"
+msgstr ""
 
 msgctxt "yes"
 msgid "Yes"
@@ -169,7 +179,6 @@ msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Uppdatera förråd"
 
-# Rubrik för lista på installerade program.
 msgctxt "tab_installed"
 msgid "Installed"
 msgstr "Installerade"
@@ -198,7 +207,6 @@ msgctxt "connection_error"
 msgid "Could not connect to the network."
 msgstr "Kunde inte ansluta till nätverket."
 
-# Om vi inte ska följa tyskarna och kalla det "tidsöverskridning"...?
 msgctxt "connection_timeout"
 msgid "Timeout"
 msgstr "Timeout"
@@ -215,8 +223,9 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Hämtar program från"
 
+#, fuzzy
 msgctxt "repo_add_url"
-msgid "Repository URL"
+msgid "Repository address"
 msgstr "Förråds-URL"
 
 msgctxt "isinst"
@@ -231,23 +240,24 @@ msgctxt "uninstall"
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-# Den här strängen tycks inte användas i programmet. Svårt att översätta utan sammanhang.
 msgctxt "update"
 msgid "Update!"
 msgstr ""
 
+#, fuzzy
 msgctxt "update_alrt"
 msgid ""
-"There updates available for some installed applications.\n"
-"Do you wish to see them?"
+"There are updates available for some installed applications.\n"
+"Do you want to see them?"
 msgstr ""
 "Det finns uppdateringar för vissa av de installerade programmen.\n"
 "Vill du se dem?"
 
+#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
-"The list of repositories in use has been changed.\n"
-"Do you wish to update them?"
+"The list of used repositories has changed.\n"
+"Do you want to update them?"
 msgstr ""
 "Listan över förråd har ändrats.\n"
 "Vill du uppdatera dem?"
@@ -292,8 +302,9 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Avinstallera"
 
+#, fuzzy
 msgctxt "menu_website"
-msgid "Web Site"
+msgid "Website"
 msgstr "Webbsida"
 
 msgctxt "menu_issues"
@@ -304,7 +315,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Källkod"
 
-# Google kallar det "Market" även på svenska.
 msgctxt "menu_market"
 msgid "Market"
 msgstr "Market"
@@ -318,7 +328,6 @@ msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Version %s är installerad"
 
-# Programmet är inte installerat, men %d versioner är tillgängliga.
 #, python-format
 msgctxt "details_notinstalled"
 msgid "Not installed (%d available)"
@@ -331,3 +340,48 @@ msgstr "Installerad"
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Den nerladdade filen är skadad"
+
+msgctxt "antifeatures"
+msgid "Anti-Features"
+msgstr ""
+
+msgctxt "antiads"
+msgid "Advertising"
+msgstr ""
+
+msgctxt "antiadslong"
+msgid "Show apps that contain advertising"
+msgstr ""
+
+msgctxt "antitrack"
+msgid "Tracking"
+msgstr ""
+
+msgctxt "antitracklong"
+msgid "Show apps that track and report your activity"
+msgstr ""
+
+msgctxt "antinonfreead"
+msgid "Add-ons"
+msgstr ""
+
+msgctxt "antinonfreeadlong"
+msgid "Show apps that promote non-free add-ons"
+msgstr ""
+
+msgctxt "antinonfreenet"
+msgid "Network Services"
+msgstr ""
+
+msgctxt "antinonfreenetlong"
+msgid "Show apps that promote non-free network services"
+msgstr ""
+
+msgctxt "expert"
+msgid "Expert"
+msgstr ""
+
+msgctxt "expert_mode"
+msgid "Enabled expert mode"
+msgstr ""
+
