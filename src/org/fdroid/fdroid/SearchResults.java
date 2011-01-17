@@ -20,11 +20,20 @@ package org.fdroid.fdroid;
 
 import java.util.Vector;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.SearchManager;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,8 +42,12 @@ public class SearchResults extends ListActivity {
        
     private static final int REQUEST_APPDETAILS = 0;
 
+    private static final int SEARCH = Menu.FIRST;
+
     private AppListAdapter applist = new AppListAdapter(this);
 
+    private String mQuery;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,29 +56,47 @@ public class SearchResults extends ListActivity {
         Intent intent = getIntent();
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            DB db = new DB(this);
-            Vector<DB.App> apps = db.getApps(null, query, false);
-            TextView tv = (TextView) findViewById(R.id.description);
-            String headertext;
-            if(apps.size()==0)
-                headertext = String.format(getString(R.string.searchres_noapps),query);
-            else if(apps.size()==1)
-                headertext = String.format(getString(R.string.searchres_oneapp),query);
-            else
-                headertext = String.format(getString(R.string.searchres_napps),apps.size(),query);
-            tv.setText(headertext);
-            Log.d("FDroid", "Search for '" + query + "' returned "
-                    + apps.size() + " results");
-            for (DB.App app : apps) {
-                applist.addItem(app);
-            }
-            applist.notifyDataSetChanged();
-            setListAdapter(applist);
-            db.close();
+            mQuery = intent.getStringExtra(SearchManager.QUERY);
         }
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction()))
+            mQuery = intent.getStringExtra(SearchManager.QUERY);
+        super.onNewIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        updateView();
+        super.onResume();
+    }
+
+    private void updateView() {
+        DB db = new DB(this);
+        Vector<DB.App> apps = db.getApps(null, mQuery, false);
+        TextView tv = (TextView) findViewById(R.id.description);
+        String headertext;
+        if(apps.size()==0)
+            headertext = String.format(getString(R.string.searchres_noapps),mQuery);
+        else if(apps.size()==1)
+            headertext = String.format(getString(R.string.searchres_oneapp),mQuery);
+        else
+            headertext = String.format(getString(R.string.searchres_napps),apps.size(),mQuery);
+        tv.setText(headertext);
+        Log.d("FDroid", "Search for '" + mQuery + "' returned "
+                + apps.size() + " results");
+        applist.clear();
+        for (DB.App app : apps) {
+            applist.addItem(app);
+        }
+        applist.notifyDataSetChanged();
+        setListAdapter(applist);
+        db.close();
+        
+    }
+    
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         final DB.App app;
@@ -77,4 +108,27 @@ public class SearchResults extends ListActivity {
         super.onListItemClick(l, v, position, id);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        super.onCreateOptionsMenu(menu);
+        menu.add(Menu.NONE, SEARCH, 1, R.string.menu_search).setIcon(
+                android.R.drawable.ic_menu_search);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+        case SEARCH:
+            onSearchRequested();
+            return true;
+            
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    
+    
 }
