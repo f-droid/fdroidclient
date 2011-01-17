@@ -22,7 +22,10 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
+import android.content.pm.Signature;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -162,7 +166,12 @@ public class AppDetails extends ListActivity {
     }
 
     private boolean pref_cacheDownloaded;
+    private boolean pref_expert;
     private boolean viewResetRequired;
+
+    // The signature of the installed version.
+    private Signature mInstalledSignature;
+    private String mInstalledSigID;
 
     @Override
     protected void onStart() {
@@ -174,6 +183,7 @@ public class AppDetails extends ListActivity {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", true);
+        pref_expert = prefs.getBoolean("expert", false);
         viewResetRequired = true;
 
     }
@@ -204,6 +214,32 @@ public class AppDetails extends ListActivity {
         DB.Apk curver = app.getCurrentVersion();
         app_currentvercode = curver == null ? 0 : curver.vercode;
 
+        // Get the signature of the installed package...
+        mInstalledSignature = null;
+        if (curver != null) {
+            PackageManager pm = getBaseContext().getPackageManager();
+            try {
+                PackageInfo pi = pm.getPackageInfo(appid,
+                        PackageManager.GET_SIGNATURES);
+                mInstalledSignature = pi.signatures[0];
+                MessageDigest md;
+                md = MessageDigest.getInstance("MD5");
+                byte[] md5sum = new byte[32];
+                md.update(mInstalledSignature.toCharsString().getBytes());
+                md5sum = md.digest();
+                BigInteger bigInt = new BigInteger(1, md5sum);
+                String md5hash = bigInt.toString(16);
+                while (md5hash.length() < 32)
+                    md5hash = "0" + md5hash;
+                mInstalledSigID = md5hash;
+            } catch (NameNotFoundException e) {
+                Log.d("FDroid", "Failed to get installed signature");
+            } catch (NoSuchAlgorithmException e) {
+                Log.d("FDroid", "Failed to calculate signature MD5 sum");
+                mInstalledSignature = null;
+            }
+        }
+
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
         String icon_path = DB.getIconsPath() + app.icon;
@@ -229,6 +265,10 @@ public class AppDetails extends ListActivity {
                     app.installedVersion));
         tv = (TextView) findViewById(R.id.description);
         tv.setText(app.description);
+        if (pref_expert && mInstalledSignature != null) {
+            tv = (TextView) findViewById(R.id.signature);
+            tv.setText("Signed: " + mInstalledSigID);
+        }
 
         // Set up the list...
         ApkListAdapter la = new ApkListAdapter(this);
@@ -372,9 +412,23 @@ public class AppDetails extends ListActivity {
     // Install the version of this app denoted by 'curapk'.
     private void install() {
 
+        if (mInstalledSigID != null && !curapk.sig.equals(mInstalledSigID)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
+                    "Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+            return;
+        }
+
         pd = new ProgressDialog(this);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         pd.setMessage(getString(R.string.download_server));
+        pd.show();
 
         new Thread() {
             public void run() {
@@ -487,8 +541,6 @@ public class AppDetails extends ListActivity {
                 }
             }
         }.start();
-
-        pd.show();
 
     }
 

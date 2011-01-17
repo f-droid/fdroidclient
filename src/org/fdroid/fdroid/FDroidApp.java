@@ -26,6 +26,6 @@ public class FDroidApp extends Application {
     // don't want a database update to run. Incremented when entering
     // one, and decremented when leaving, so if it's 0 it ought to be
     // ok!
-    public int inActivity=0;
+    public int inActivity = 0;
 
 }

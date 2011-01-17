@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2010 ORGANIZATION
+# Copyright (C) 2011 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-11-15 07:54+0000\n"
+"POT-Creation-Date: 2011-01-16 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0dev\n"
+
+msgctxt "SignatureMismatch"
+msgid ""
+"The new version is signed with a different key to the old one. To install"
+" the new version, the old one must be uninstalled first. Please do this "
+"and try again. (Note that uninstalling will erase any internal data "
+"stored by the application)"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -68,7 +76,7 @@ msgid "Notify when new updates are available"
 msgstr ""
 
 msgctxt "update_apps_list"
-msgid "Update apps list from repositories automatically"
+msgid "Update app list from repositories automatically"
 msgstr ""
 
 msgctxt "automatic_repo_scan"
@@ -86,11 +94,11 @@ msgstr ""
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPL v2 license."
+"Released under the GNU GPLv2 license."
 msgstr ""
 
 msgctxt "about_site"
-msgid "Home:"
+msgid "Website:"
 msgstr ""
 
 msgctxt "about_mail"
@@ -102,17 +110,17 @@ msgid "Version:"
 msgstr ""
 
 msgctxt "about_website"
-msgid "Web Site"
+msgid "Website"
 msgstr ""
 
 msgctxt "no_repo"
 msgid ""
-"You have no repositories configured!\n"
+"You don't have any repositories configured!\n"
 "\n"
 "A repository is a source of applications. To add one, press the MENU "
 "button now and enter the URL.\n"
 "\n"
-"A repository URL looks something like this: http://f-droid.org/repo"
+"A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
 
 msgctxt "not_inst"
@@ -124,7 +132,7 @@ msgid "Update possible - Ver.:"
 msgstr ""
 
 msgctxt "ok"
-msgid "Ok"
+msgid "OK"
 msgstr ""
 
 msgctxt "yes"
@@ -204,7 +212,7 @@ msgid "Getting application from"
 msgstr ""
 
 msgctxt "repo_add_url"
-msgid "Repository URL"
+msgid "Repository address"
 msgstr ""
 
 msgctxt "isinst"
@@ -225,14 +233,14 @@ msgstr ""
 
 msgctxt "update_alrt"
 msgid ""
-"There updates available for some installed applications.\n"
-"Do you wish to see them?"
+"There are updates available for some installed applications.\n"
+"Do you want to see them?"
 msgstr ""
 
 msgctxt "repo_alrt"
 msgid ""
-"The list of repositories in use has been changed.\n"
-"Do you wish to update them?"
+"The list of used repositories has changed.\n"
+"Do you want to update them?"
 msgstr ""
 
 msgctxt "error_download_alrt"
@@ -276,7 +284,7 @@ msgid "Uninstall"
 msgstr ""
 
 msgctxt "menu_website"
-msgid "Web Site"
+msgid "Website"
 msgstr ""
 
 msgctxt "menu_issues"
@@ -311,5 +319,49 @@ msgstr ""
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
+msgstr ""
+
+msgctxt "antifeatures"
+msgid "Anti-Features"
+msgstr ""
+
+msgctxt "antiads"
+msgid "Advertising"
+msgstr ""
+
+msgctxt "antiadslong"
+msgid "Show apps that contain advertising"
+msgstr ""
+
+msgctxt "antitrack"
+msgid "Tracking"
+msgstr ""
+
+msgctxt "antitracklong"
+msgid "Show apps that track and report your activity"
+msgstr ""
+
+msgctxt "antinonfreead"
+msgid "Add-ons"
+msgstr ""
+
+msgctxt "antinonfreeadlong"
+msgid "Show apps that promote non-free add-ons"
+msgstr ""
+
+msgctxt "antinonfreenet"
+msgid "Network Services"
+msgstr ""
+
+msgctxt "antinonfreenetlong"
+msgid "Show apps that promote non-free network services"
+msgstr ""
+
+msgctxt "expert"
+msgid "Expert"
+msgstr ""
+
+msgctxt "expert_mode"
+msgid "Enabled expert mode"
 msgstr ""
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2010-11-15 07:54+0000\n"
+"POT-Creation-Date: 2011-01-16 16:16+0000\n"
 "PO-Revision-Date: 2010-11-04 15:42+0200\n"
 "Last-Translator: graziano <graziano@sorbaioli.org>\n"
 "Language-Team: it <LL@li.org>\n"
@@ -15,6 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0dev\n"
+
+msgctxt "SignatureMismatch"
+msgid ""
+"The new version is signed with a different key to the old one. To install"
+" the new version, the old one must be uninstalled first. Please do this "
+"and try again. (Note that uninstalling will erase any internal data "
+"stored by the application)"
+msgstr ""
 
 #, fuzzy
 msgctxt "version"
@@ -69,7 +77,7 @@ msgid "Notify when new updates are available"
 msgstr ""
 
 msgctxt "update_apps_list"
-msgid "Update apps list from repositories automatically"
+msgid "Update app list from repositories automatically"
 msgstr ""
 
 msgctxt "automatic_repo_scan"
@@ -88,14 +96,15 @@ msgstr "Informazioni"
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPL v2 license."
+"Released under the GNU GPLv2 license."
 msgstr ""
 "Basato su Aptoide.\n"
 "Rilasciato sotto licenza GNU GPL v2."
 
+#, fuzzy
 msgctxt "about_site"
-msgid "Home:"
-msgstr "Home:"
+msgid "Website:"
+msgstr "Sito Web"
 
 #, fuzzy
 msgctxt "about_mail"
@@ -107,18 +116,20 @@ msgctxt "about_version"
 msgid "Version:"
 msgstr "Versione Server:"
 
+#, fuzzy
 msgctxt "about_website"
-msgid "Web Site"
+msgid "Website"
 msgstr "Sito Web"
 
+#, fuzzy
 msgctxt "no_repo"
 msgid ""
-"You have no repositories configured!\n"
+"You don't have any repositories configured!\n"
 "\n"
 "A repository is a source of applications. To add one, press the MENU "
 "button now and enter the URL.\n"
 "\n"
-"A repository URL looks something like this: http://f-droid.org/repo"
+"A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
 "Non hai configurato nessun repository!\n"
 "\n"
@@ -136,8 +147,8 @@ msgid "Update possible - Ver.:"
 msgstr "Aggiornamento: - Ver.:"
 
 msgctxt "ok"
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr ""
 
 msgctxt "yes"
 msgid "Yes"
@@ -216,8 +227,9 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Scaricamento applicazione da"
 
+#, fuzzy
 msgctxt "repo_add_url"
-msgid "Repository URL"
+msgid "Repository address"
 msgstr "Repository URL"
 
 msgctxt "isinst"
@@ -236,19 +248,21 @@ msgctxt "update"
 msgid "Update!"
 msgstr "Aggiorna!"
 
+#, fuzzy
 msgctxt "update_alrt"
 msgid ""
-"There updates available for some installed applications.\n"
-"Do you wish to see them?"
+"There are updates available for some installed applications.\n"
+"Do you want to see them?"
 msgstr ""
 "Aggiornamenti disponibili.\n"
 "\n"
 "Vuoi visualizzarli?"
 
+#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
-"The list of repositories in use has been changed.\n"
-"Do you wish to update them?"
+"The list of used repositories has changed.\n"
+"Do you want to update them?"
 msgstr ""
 "L'elenco dei repository in uso e' cambiato.\n"
 "\n"
@@ -296,8 +310,9 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Disinstalla"
 
+#, fuzzy
 msgctxt "menu_website"
-msgid "Web Site"
+msgid "Website"
 msgstr "Sito Web"
 
 msgctxt "menu_issues"
@@ -333,5 +348,49 @@ msgstr "Installato"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
+msgstr ""
+
+msgctxt "antifeatures"
+msgid "Anti-Features"
+msgstr ""
+
+msgctxt "antiads"
+msgid "Advertising"
+msgstr ""
+
+msgctxt "antiadslong"
+msgid "Show apps that contain advertising"
+msgstr ""
+
+msgctxt "antitrack"
+msgid "Tracking"
+msgstr ""
+
+msgctxt "antitracklong"
+msgid "Show apps that track and report your activity"
+msgstr ""
+
+msgctxt "antinonfreead"
+msgid "Add-ons"
+msgstr ""
+
+msgctxt "antinonfreeadlong"
+msgid "Show apps that promote non-free add-ons"
+msgstr ""
+
+msgctxt "antinonfreenet"
+msgid "Network Services"
+msgstr ""
+
+msgctxt "antinonfreenetlong"
+msgid "Show apps that promote non-free network services"
+msgstr ""
+
+msgctxt "expert"
+msgid "Expert"
+msgstr ""
+
+msgctxt "expert_mode"
+msgid "Enabled expert mode"
 msgstr ""
 

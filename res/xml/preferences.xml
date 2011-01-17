@@ -7,9 +7,9 @@
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/updates">
 		<ListPreference android:title="@string/automatic_repo_scan"
-			android:summary="@string/update_apps_list"
-			android:key="updateInterval" android:defaultValue="0"
-			android:entries="@array/updateIntervalNames" android:entryValues="@array/updateIntervalValues" />
+			android:summary="@string/update_apps_list" android:key="updateInterval"
+			android:defaultValue="0" android:entries="@array/updateIntervalNames"
+			android:entryValues="@array/updateIntervalValues" />
 		<CheckBoxPreference android:title="@string/notify"
 			android:defaultValue="false" android:summary="@string/notify_updates_available"
 			android:key="updateNotify" />
@@ -29,9 +29,10 @@
 			android:key="antiNonFreeNet" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/maintenance">
-	        <Preference
-                android:title="@string/reset"
-                android:summary="@string/clear_all_cached_data"
-                android:key="reset" />
-	</PreferenceCategory>	
+		<Preference android:title="@string/reset" android:summary="@string/clear_all_cached_data"
+			android:key="reset" />
+		<CheckBoxPreference android:title="@string/expert"
+			android:defaultValue="false" android:summary="@string/expert_mode"
+			android:key="expert" />
+	</PreferenceCategory>
 </PreferenceScreen>

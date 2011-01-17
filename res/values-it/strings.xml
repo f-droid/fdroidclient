@@ -1,17 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="version">Versione Server:</string>
+  <string name="n_versions_available">Aggiornamenti disponibili</string>
+  <string name="n_version_available">Aggiornamenti disponibili</string>
+  <string name="updates">Aggiornamenti</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Informazioni</string>
   <string name="about_desc">Basato su Aptoide.\nRilasciato sotto licenza GNU GPL v2.</string>
   <string name="about_site">Home:</string>
   <string name="about_mail">e-Mail:</string>
+  <string name="about_version">Versione Server:</string>
   <string name="about_website">Sito Web</string>
-  <string name="no_found">Nessuna applicazione trovata!</string>
   <string name="no_repo">Non hai configurato nessun repository!\n\nUn repository contiene un insieme di applicazioni. Per aggiungerne uno, premi MENU e inserisci un indirizzo URL.\n\nUn indirizzo URL di esempio e\': http://f-droid.org/repo</string>
   <string name="not_inst">Non installato</string>
-  <string name="installed">Installato - Ver.:</string>
   <string name="installed_update">Aggiornamento: - Ver.:</string>
-  <string name="error">Errore</string>
   <string name="ok">Ok</string>
   <string name="yes">Sì</string>
   <string name="no">No</string>
@@ -19,7 +21,6 @@
   <string name="repo_add_add">Aggiungi</string>
   <string name="cancel">Annulla</string>
   <string name="repo_delete_title">Rimuovi Repository</string>
-  <string name="url_website">http://f-droid.org</string>
   <string name="server_connection_error">Impossibile connettersi al server!</string>
   <string name="repo_update_title">Aggiorna Repositories</string>
   <string name="tab_installed">Installato</string>
@@ -33,21 +34,8 @@
   <string name="connection_error_msg">Impossibile connettersi al server!</string>
   <string name="download">Download</string>
   <string name="download_server">Scaricamento applicazione da</string>
-  <string name="apk_version_new">disponibile v</string>
-  <string name="settings_sort_title">Elenca applicazioni per:</string>
-  <string name="settings_sort_abc">ordine alfabetico</string>
-  <string name="settings_sort_installed">Installato / Non installato</string>
-  <string name="settings_sort_recent">Piu\' recente</string>
-  <string name="settings_sort_rating">Voto</string>
-  <string name="settings_filter_title">Mostra applicazioni:</string>
-  <string name="settings_filter_category">Categoria</string>
-  <string name="settings_filter_all">Tutte</string>
-  <string name="settings_save">Salva</string>
   <string name="repo_add_url">Repository URL</string>
-  <string name="up_server">Servers:</string>
-  <string name="lstver">Versione Server:</string>
   <string name="isinst">Installato:</string>
-  <string name="instver">Versione installata:</string>
   <string name="install">Installa</string>
   <string name="uninstall">Disinstalla</string>
   <string name="update">Aggiorna!</string>
@@ -67,4 +55,6 @@
   <string name="menu_source">Codice Sorgente</string>
   <string name="menu_market">Market</string>
   <string name="menu_update">Aggiornamento</string>
+  <string name="details_installed">Non installato</string>
+  <string name="inst">Installato</string>
 </resources>
