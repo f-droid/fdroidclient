@@ -26,11 +26,13 @@ import java.util.Vector;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class DB {
@@ -149,11 +151,11 @@ public class DB {
         public int size; // Size in bytes - 0 means we don't know!
         public String server;
         public String hash;
-        
+
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
         public String sig;
-                            
+
         public String apkName;
 
         // If null, the apk comes from the same server as the repo index.
@@ -199,7 +201,7 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-            // Version 2...
+    // Version 2...
             { "alter table " + TABLE_APP + " add marketVersion text",
                     "alter table " + TABLE_APP + " add marketVercode integer" },
 
@@ -250,9 +252,11 @@ public class DB {
     }
 
     private PackageManager mPm;
+    private Context mContext;
 
     public DB(Context ctx) {
 
+        mContext = ctx;
         DBHelper h = new DBHelper(ctx);
         db = h.getWritableDatabase();
         mPm = ctx.getPackageManager();
@@ -286,12 +290,21 @@ public class DB {
         return count;
     }
 
-    // Return a list of apps matching the given criteria.
+    // Return a list of apps matching the given criteria. Filtering is also
+    // done based on the user's current anti-features preferences.
     // 'appid' - specific app id to retrieve, or null
     // 'filter' - search text to filter on, or null
     // 'update' - update installed version information from device, rather than
     // simply using values cached in the database. Slower.
     public Vector<App> getApps(String appid, String filter, boolean update) {
+
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(mContext);
+        boolean pref_antiAds = prefs.getBoolean("antiAds", false);
+        boolean pref_antiTracking = prefs.getBoolean("antiTracking", false);
+        boolean pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
+        boolean pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
+
         Vector<App> result = new Vector<App>();
         Cursor c = null;
         Cursor c2 = null;
@@ -311,48 +324,71 @@ public class DB {
             while (!c.isAfterLast()) {
 
                 App app = new App();
-                app.id = c.getString(c.getColumnIndex("id"));
-                app.name = c.getString(c.getColumnIndex("name"));
-                app.summary = c.getString(c.getColumnIndex("summary"));
-                app.icon = c.getString(c.getColumnIndex("icon"));
-                app.description = c.getString(c.getColumnIndex("description"));
-                app.license = c.getString(c.getColumnIndex("license"));
-                app.webURL = c.getString(c.getColumnIndex("webURL"));
-                app.trackerURL = c.getString(c.getColumnIndex("trackerURL"));
-                app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
-                app.installedVersion = c.getString(c
-                        .getColumnIndex("installedVersion"));
-                app.installedVerCode = c.getInt(c
-                        .getColumnIndex("installedVerCode"));
-                app.marketVersion = c.getString(c
-                        .getColumnIndex("marketVersion"));
-                app.marketVercode = c.getInt(c.getColumnIndex("marketVercode"));
                 app.antiFeatures = c
                         .getString(c.getColumnIndex("antiFeatures"));
-                app.hasUpdates = false;
-
-                c2 = db.rawQuery("select * from " + TABLE_APK
-                        + " where id = ? order by vercode desc",
-                        new String[] { app.id });
-                c2.moveToFirst();
-                while (!c2.isAfterLast()) {
-                    Apk apk = new Apk();
-                    apk.id = app.id;
-                    apk.version = c2.getString(c2.getColumnIndex("version"));
-                    apk.vercode = c2.getInt(c2.getColumnIndex("vercode"));
-                    apk.server = c2.getString(c2.getColumnIndex("server"));
-                    apk.hash = c2.getString(c2.getColumnIndex("hash"));
-                    apk.sig = c2.getString(c2.getColumnIndex("sig"));
-                    apk.size = c2.getInt(c2.getColumnIndex("size"));
-                    apk.apkName = c2.getString(c2.getColumnIndex("apkName"));
-                    apk.apkSource = c2
-                            .getString(c2.getColumnIndex("apkSource"));
-                    app.apks.add(apk);
-                    c2.moveToNext();
+                boolean include=true;
+                if(app.antiFeatures!=null && app.antiFeatures.length()>0) {
+                    String[] afs=app.antiFeatures.split(",");
+                    for(String af : afs) {
+                        if (af.equals("Ads") && !pref_antiAds)
+                            include=false;
+                        else if(af.equals("Tracking") && !pref_antiTracking)
+                            include=false;
+                        else if(af.equals("NonFreeNet") && !pref_antiNonFreeNet)
+                            include=false;
+                        else if(af.equals("NonFreeAdd") && !pref_antiNonFreeAdd)
+                            include=false;
+                    }
                 }
-                c2.close();
+                
+                if (include) {
+                    app.id = c.getString(c.getColumnIndex("id"));
+                    app.name = c.getString(c.getColumnIndex("name"));
+                    app.summary = c.getString(c.getColumnIndex("summary"));
+                    app.icon = c.getString(c.getColumnIndex("icon"));
+                    app.description = c.getString(c
+                            .getColumnIndex("description"));
+                    app.license = c.getString(c.getColumnIndex("license"));
+                    app.webURL = c.getString(c.getColumnIndex("webURL"));
+                    app.trackerURL = c
+                            .getString(c.getColumnIndex("trackerURL"));
+                    app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
+                    app.installedVersion = c.getString(c
+                            .getColumnIndex("installedVersion"));
+                    app.installedVerCode = c.getInt(c
+                            .getColumnIndex("installedVerCode"));
+                    app.marketVersion = c.getString(c
+                            .getColumnIndex("marketVersion"));
+                    app.marketVercode = c.getInt(c
+                            .getColumnIndex("marketVercode"));
+                    app.hasUpdates = false;
 
-                result.add(app);
+                    c2 = db.rawQuery("select * from " + TABLE_APK
+                            + " where id = ? order by vercode desc",
+                            new String[] { app.id });
+                    c2.moveToFirst();
+                    while (!c2.isAfterLast()) {
+                        Apk apk = new Apk();
+                        apk.id = app.id;
+                        apk.version = c2
+                                .getString(c2.getColumnIndex("version"));
+                        apk.vercode = c2.getInt(c2.getColumnIndex("vercode"));
+                        apk.server = c2.getString(c2.getColumnIndex("server"));
+                        apk.hash = c2.getString(c2.getColumnIndex("hash"));
+                        apk.sig = c2.getString(c2.getColumnIndex("sig"));
+                        apk.size = c2.getInt(c2.getColumnIndex("size"));
+                        apk.apkName = c2
+                                .getString(c2.getColumnIndex("apkName"));
+                        apk.apkSource = c2.getString(c2
+                                .getColumnIndex("apkSource"));
+                        app.apks.add(apk);
+                        c2.moveToNext();
+                    }
+                    c2.close();
+
+                    result.add(app);
+                }
+
                 c.moveToNext();
             }
 
