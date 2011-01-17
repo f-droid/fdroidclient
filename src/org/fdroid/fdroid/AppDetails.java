@@ -307,7 +307,7 @@ public class AppDetails extends ListActivity {
         }
         p.setMessage(getString(R.string.isinst) + " " + installed);
 
-        p.setButton(getString(R.string.ok),
+        p.setButton(getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         return;
