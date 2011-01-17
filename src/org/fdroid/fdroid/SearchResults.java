@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class SearchResults extends ListActivity {
        
@@ -45,6 +46,15 @@ public class SearchResults extends ListActivity {
             String query = intent.getStringExtra(SearchManager.QUERY);
             DB db = new DB(this);
             Vector<DB.App> apps = db.getApps(null, query, false);
+            TextView tv = (TextView) findViewById(R.id.description);
+            String headertext;
+            if(apps.size()==0)
+                headertext = String.format(getString(R.string.searchres_noapps),query);
+            else if(apps.size()==1)
+                headertext = String.format(getString(R.string.searchres_oneapp),query);
+            else
+                headertext = String.format(getString(R.string.searchres_napps),apps.size(),query);
+            tv.setText(headertext);
             Log.d("FDroid", "Search for '" + query + "' returned "
                     + apps.size() + " results");
             for (DB.App app : apps) {
