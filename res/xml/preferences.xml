@@ -17,16 +17,16 @@
 	<PreferenceCategory android:title="@string/antifeatures">
 		<CheckBoxPreference android:title="@string/antiads"
 			android:defaultValue="false" android:summary="@string/antiadslong"
-			android:key="cacheDownloaded" />
+			android:key="antiAds" />
 		<CheckBoxPreference android:title="@string/antitrack"
 			android:defaultValue="false" android:summary="@string/antitracklong"
-			android:key="cacheDownloaded" />
+			android:key="antiTracking" />
 		<CheckBoxPreference android:title="@string/antinonfreead"
 			android:defaultValue="false" android:summary="@string/antinonfreeadlong"
-			android:key="cacheDownloaded" />
+			android:key="antiNonFreeAdd" />
 		<CheckBoxPreference android:title="@string/antinonfreenet"
 			android:defaultValue="false" android:summary="@string/antinonfreenetlong"
-			android:key="cacheDownloaded" />
+			android:key="antiNonFreeNet" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/maintenance">
 	        <Preference
