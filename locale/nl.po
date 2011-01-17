@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-01-16 16:16+0000\n"
+"POT-Creation-Date: 2011-01-17 22:37+0000\n"
 "PO-Revision-Date: 2010-11-15 07:54+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: nl <LL@li.org>\n"
@@ -16,6 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0dev\n"
+
+msgctxt "searchres_napps"
+msgid "Found %1$d applications matching '%2$s':"
+msgstr ""
+
+#, python-format
+msgctxt "searchres_oneapp"
+msgid "Found one application matching '%s':"
+msgstr ""
+
+#, python-format
+msgctxt "searchres_noapps"
+msgid "No applications were found matching '%s'"
+msgstr ""
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -267,6 +281,10 @@ msgctxt "menu_about"
 msgid "About"
 msgstr ""
 
+msgctxt "menu_search"
+msgid "Search"
+msgstr ""
+
 msgctxt "menu_add_repo"
 msgid "New Repository"
 msgstr ""
@@ -362,6 +380,14 @@ msgid "Expert"
 msgstr ""
 
 msgctxt "expert_mode"
-msgid "Enabled expert mode"
+msgid "Enable expert mode"
 msgstr ""
+
+msgctxt "search_hint"
+msgid "Search applications"
+msgstr ""
+
+#~ msgctxt "expert_mode"
+#~ msgid "Enabled expert mode"
+#~ msgstr ""
 
