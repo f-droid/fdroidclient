@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Avinstallera först den gamla versionen och försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versioner tillgängliga</string>
   <string name="n_version_available">%d version tillgänglig</string>
@@ -8,22 +9,23 @@
   <string name="cache_downloaded">Cacha nerladdade program</string>
   <string name="keep_downloaded">Behåll nerladdade apk-filer på SD-kortet</string>
   <string name="updates">Uppdateringar</string>
-  <string name="clear_all_cached_data">Rensa all cachad data</string>
+  <string name="clear_all_cached_data">Rensa alla cachade data</string>
   <string name="reset">Återställ</string>
   <string name="maintenance">Underhåll</string>
   <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
   <string name="update_apps_list">Uppdatera programlistan från förråd automatiskt</string>
-  <string name="automatic_repo_scan">Automatisk förrådsskanning</string>
+  <string name="automatic_repo_scan">Automatisk förrådsavsökning</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Om FDroid</string>
-  <string name="about_desc">Ursprungligen baserat på Aptoide.\nSläppt under GNU GPLv2-licensen.</string>
-  <string name="about_site">Webbsida</string>
+  <string name="about_desc">Ursprungligen baserat på Aptoide.\nSläppt under licensen GNU GPL, version 2 eller senare.</string>
+  <string name="about_site">Webbplats:</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Version:</string>
-  <string name="about_website">Webbsida</string>
-  <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på Meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förråds-URL ser ut ungefär så här: http://f-droid.org/repo</string>
+  <string name="about_website">Webbplats</string>
+  <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förråds-URL ser ut ungefär så här: http://f-droid.org/repo</string>
   <string name="not_inst">Inte installerad</string>
   <string name="installed_update">Uppdatering möjlig - Ver.:</string>
+  <string name="ok">OK</string>
   <string name="yes">Ja</string>
   <string name="no">Nej</string>
   <string name="repo_add_title">Lägg till nytt förråd</string>
@@ -43,10 +45,11 @@
   <string name="connection_error_msg">Kunde inte ansluta till servern!</string>
   <string name="download">Ladda ner</string>
   <string name="download_server">Hämtar program från</string>
-  <string name="repo_add_url">Förråds-URL</string>
+  <string name="repo_add_url">Förrådets adress</string>
   <string name="isinst">Installerad:</string>
   <string name="install">Installera</string>
   <string name="uninstall">Avinstallera</string>
+  <string name="update">Uppdatera!</string>
   <string name="update_alrt">Det finns uppdateringar för vissa av de installerade programmen.\nVill du se dem?</string>
   <string name="repo_alrt">Listan över förråd har ändrats.\nVill du uppdatera dem?</string>
   <string name="error_download_alrt">Kunde inte ansluta till servern eller så är apk-filen är skadad!</string>
@@ -59,13 +62,24 @@
   <string name="menu_rem_repo">Ta bort förråd</string>
   <string name="menu_install">Installera</string>
   <string name="menu_uninstall">Avinstallera</string>
-  <string name="menu_website">Webbsida</string>
+  <string name="menu_website">Webbplats</string>
+  <string name="menu_issues">Buggar</string>
   <string name="menu_source">Källkod</string>
-  <string name="menu_market">Market</string>
+  <string name="menu_market">Marknad</string>
   <string name="menu_update">Uppdatera</string>
   <string name="details_installed">Version %s är installerad</string>
-  <string name="details_notinstalled">Inte installerat (%d tillgängliga)</string>
+  <string name="details_notinstalled">Inte installerat (%d versioner tillgängliga)</string>
   <string name="inst">Installerad</string>
   <string name="corrupt_download">Den nerladdade filen är skadad</string>
+  <string name="antifeatures">Anti-finesser</string>
+  <string name="antiads">Reklam</string>
+  <string name="antiadslong">Visa program som innehåller reklam</string>
+  <string name="antitrack">Spårning</string>
+  <string name="antitracklong">Visa program som kartlägger och rapporterar ditt beteende</string>
+  <string name="antinonfreead">Tillägg</string>
+  <string name="antinonfreeadlong">Visa program som befrämjar icke-fria tillägg</string>
+  <string name="antinonfreenet">Nätverkstjänster</string>
+  <string name="antinonfreenetlong">Visa program som befrämjar icke-fria nätverkstjänster</string>
+  <string name="expert">Expert</string>
   <string name="search_hint">Hämtar program från</string>
 </resources>
