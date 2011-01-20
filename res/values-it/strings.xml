@@ -7,14 +7,13 @@
   <string name="app_name">FDroid</string>
   <string name="about_title">Informazioni</string>
   <string name="about_desc">Basato su Aptoide.\nRilasciato sotto licenza GNU GPL v2.</string>
-  <string name="about_site">Home:</string>
+  <string name="about_site">Sito Web</string>
   <string name="about_mail">e-Mail:</string>
   <string name="about_version">Versione Server:</string>
   <string name="about_website">Sito Web</string>
   <string name="no_repo">Non hai configurato nessun repository!\n\nUn repository contiene un insieme di applicazioni. Per aggiungerne uno, premi MENU e inserisci un indirizzo URL.\n\nUn indirizzo URL di esempio e\': http://f-droid.org/repo</string>
   <string name="not_inst">Non installato</string>
   <string name="installed_update">Aggiornamento: - Ver.:</string>
-  <string name="ok">Ok</string>
   <string name="yes">Sì</string>
   <string name="no">No</string>
   <string name="repo_add_title">Aggiungi nuovo repository</string>
@@ -57,4 +56,5 @@
   <string name="menu_update">Aggiornamento</string>
   <string name="details_installed">Non installato</string>
   <string name="inst">Installato</string>
+  <string name="search_hint">Scaricamento applicazione da</string>
 </resources>

@@ -17,14 +17,13 @@
   <string name="app_name">FDroid</string>
   <string name="about_title">Om FDroid</string>
   <string name="about_desc">Ursprungligen baserat på Aptoide.\nSläppt under GNU GPLv2-licensen.</string>
-  <string name="about_site">Hem:</string>
+  <string name="about_site">Webbsida</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Webbsida</string>
   <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på Meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förråds-URL ser ut ungefär så här: http://f-droid.org/repo</string>
   <string name="not_inst">Inte installerad</string>
   <string name="installed_update">Uppdatering möjlig - Ver.:</string>
-  <string name="ok">OK</string>
   <string name="yes">Ja</string>
   <string name="no">Nej</string>
   <string name="repo_add_title">Lägg till nytt förråd</string>
@@ -68,4 +67,5 @@
   <string name="details_notinstalled">Inte installerat (%d tillgängliga)</string>
   <string name="inst">Installerad</string>
   <string name="corrupt_download">Den nerladdade filen är skadad</string>
+  <string name="search_hint">Hämtar program från</string>
 </resources>

@@ -17,14 +17,13 @@
   <string name="app_name">FDroid</string>
   <string name="about_title">À propos de FDroid</string>
   <string name="about_desc">Originallement basée sur Aptoide.\nLibéré sous licence GNU GPL v2.</string>
-  <string name="about_site">Accueil:</string>
+  <string name="about_site">Site Web</string>
   <string name="about_mail">Courriel:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
   <string name="no_repo">Aucun dépôt n\'est configuré!\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez sur MENU maintenant et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci: http://f-droid.org/repo</string>
   <string name="not_inst">Pas installée</string>
   <string name="installed_update">Mise à jour possible - Ver.:</string>
-  <string name="ok">Ok</string>
   <string name="yes">Oui</string>
   <string name="no">Non</string>
   <string name="repo_add_title">Ajouter un nouveau dépôt</string>
@@ -70,4 +69,5 @@
   <string name="details_notinstalled">Pas installée (%d disponible)</string>
   <string name="inst">Installée</string>
   <string name="corrupt_download">Le fichier téléchargé est corrompu</string>
+  <string name="search_hint">Réception d\'application de</string>
 </resources>
