@@ -116,9 +116,10 @@ public class UpdateService extends Service {
                     if (notify)
                         prevUpdates = db.getNumUpdates();
 
-                    RepoXMLHandler.doUpdates(getBaseContext(), db);
+                    boolean success = RepoXMLHandler.doUpdates(
+                            getBaseContext(), db);
 
-                    if (notify) {
+                    if (success && notify) {
                         if (db.getNumUpdates() > prevUpdates) {
                             // And the user wants to know.
                             NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

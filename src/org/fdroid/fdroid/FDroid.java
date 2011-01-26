@@ -172,7 +172,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         case SEARCH:
             onSearchRequested();
             return true;
-            
+
         case ABOUT:
             LayoutInflater li = LayoutInflater.from(this);
             View view = li.inflate(R.layout.about, null);
@@ -363,8 +363,8 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 || netstate.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED) {
             new Thread() {
                 public void run() {
-                    RepoXMLHandler.doUpdates(FDroid.this, db);
-                    update_handler.sendEmptyMessage(0);
+                    boolean success = RepoXMLHandler.doUpdates(FDroid.this, db);
+                    update_handler.sendEmptyMessage(success ? 0 : 1);
                 }
             }.start();
             return true;
@@ -382,7 +382,13 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     private Handler update_handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            populateLists(true);
+            if (msg.what == 1) {
+                Toast.makeText(FDroid.this,
+                        getString(R.string.connection_error_msg),
+                        Toast.LENGTH_LONG).show();
+            } else {
+                populateLists(true);
+            }
             if (pd.isShowing())
                 pd.dismiss();
         }

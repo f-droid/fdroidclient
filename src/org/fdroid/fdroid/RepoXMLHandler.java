@@ -188,7 +188,7 @@ public class RepoXMLHandler extends DefaultHandler {
         }
     }
 
-    public static void doUpdates(Context ctx, DB db) {
+    public static boolean doUpdates(Context ctx, DB db) {
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
@@ -233,6 +233,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (Exception e) {
                     Log.d("FDroid", "Exception updating from " + repo.address
                             + " - " + e.getMessage());
+                    return false;
                 } finally {
                     ctx.deleteFile("tempindex.xml");
                 }
@@ -240,7 +241,7 @@ public class RepoXMLHandler extends DefaultHandler {
             }
         }
         db.endUpdate();
-
+        return true;
     }
 
 }
