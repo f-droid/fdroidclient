@@ -29,13 +29,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.app.AlertDialog.Builder;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -352,28 +349,17 @@ public class FDroid extends TabActivity implements OnItemClickListener {
 
     }
 
-    public boolean updateRepos() {
+    private void updateRepos() {
         pd = ProgressDialog.show(this, getString(R.string.process_wait_title),
                 getString(R.string.process_update_msg), true);
         pd.setIcon(android.R.drawable.ic_dialog_info);
 
-        // Check for connection first!
-        ConnectivityManager netstate = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (netstate.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED
-                || netstate.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED) {
-            new Thread() {
-                public void run() {
-                    boolean success = RepoXMLHandler.doUpdates(FDroid.this, db);
-                    update_handler.sendEmptyMessage(success ? 0 : 1);
-                }
-            }.start();
-            return true;
-        } else {
-            pd.dismiss();
-            Toast.makeText(FDroid.this, getString(R.string.connection_error),
-                    Toast.LENGTH_LONG).show();
-            return false;
-        }
+        new Thread() {
+            public void run() {
+                boolean success = RepoXMLHandler.doUpdates(FDroid.this, db);
+                update_handler.sendEmptyMessage(success ? 0 : 1);
+            }
+        }.start();
     }
 
     /*
