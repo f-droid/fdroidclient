@@ -412,7 +412,8 @@ public class AppDetails extends ListActivity {
     // Install the version of this app denoted by 'curapk'.
     private void install() {
 
-        if (mInstalledSigID != null && !curapk.sig.equals(mInstalledSigID)) {
+        if (mInstalledSigID != null && curapk.sig != null
+                && !curapk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
                     "Ok", new DialogInterface.OnClickListener() {

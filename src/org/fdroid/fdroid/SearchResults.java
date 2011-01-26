@@ -20,18 +20,11 @@ package org.fdroid.fdroid;
 
 import java.util.Vector;
 
-import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.SearchManager;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
