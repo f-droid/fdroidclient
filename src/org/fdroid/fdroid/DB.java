@@ -512,8 +512,8 @@ public class DB {
         boolean found = false;
         for (App app : updateApps) {
             if (app.id.equals(upapp.id)) {
-                Log.d("FDroid", "AppUpdate: " + app.id
-                        + " is already in the database.");
+//                Log.d("FDroid", "AppUpdate: " + app.id
+//                        + " is already in the database.");
                 updateAppIfDifferent(app, upapp);
                 app.updated = true;
                 found = true;
@@ -521,8 +521,8 @@ public class DB {
                     boolean afound = false;
                     for (Apk apk : app.apks) {
                         if (apk.version.equals(upapk.version)) {
-                            Log.d("FDroid", "AppUpdate: " + apk.version
-                                    + " is a known version.");
+//                            Log.d("FDroid", "AppUpdate: " + apk.version
+//                                    + " is a known version.");
                             updateApkIfDifferent(apk, upapk);
                             apk.updated = true;
                             afound = true;
@@ -531,8 +531,8 @@ public class DB {
                     }
                     if (!afound) {
                         // A new version of this application.
-                        Log.d("FDroid", "AppUpdate: " + upapk.version
-                                + " is a new version.");
+ //                       Log.d("FDroid", "AppUpdate: " + upapk.version
+ //                               + " is a new version.");
                         updateApkIfDifferent(null, upapk);
                         upapk.updated = true;
                         app.apks.add(upapk);
@@ -543,9 +543,9 @@ public class DB {
         }
         if (!found) {
             // It's a brand new application...
-            Log
-                    .d("FDroid", "AppUpdate: " + upapp.id
-                            + " is a new application.");
+//            Log
+//                    .d("FDroid", "AppUpdate: " + upapp.id
+//                            + " is a new application.");
             updateAppIfDifferent(null, upapp);
             for (Apk upapk : upapp.apks) {
                 updateApkIfDifferent(null, upapk);
