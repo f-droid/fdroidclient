@@ -131,7 +131,7 @@ public class ManageRepo extends ListActivity {
                             EditText uri = (EditText) alrt
                                     .findViewById(R.id.edit_uri);
                             String uri_str = uri.getText().toString();
-                            db.addServer(uri_str, 10);
+                            db.addServer(uri_str, 10, null);
                             changed = true;
                             redraw();
                         }

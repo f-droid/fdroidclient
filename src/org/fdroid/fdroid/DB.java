@@ -182,6 +182,7 @@ public class DB {
         public String address;
         public boolean inuse;
         public int priority;
+        public String pubkey; // null for an unsigned repo
     }
 
     // SQL to update the database to versions beyond the first. Here is
@@ -215,8 +216,10 @@ public class DB {
             { "alter table " + TABLE_APP + " add antiFeatures string" },
 
             // Version 6...
-            { "alter table " + TABLE_APK + " add sig string" }
+            { "alter table " + TABLE_APK + " add sig string" },
 
+            // Version 7...
+            { "alter table " + TABLE_REPO + " add pubkey string" }
     };
 
     private class DBHelper extends SQLiteOpenHelper {
@@ -234,6 +237,8 @@ public class DB {
             values.put("address", "http://f-droid.org/repo");
             values.put("inuse", 1);
             values.put("priority", 10);
+            String pubkey = null;
+            values.put("pubkey", pubkey);
             db.insert(TABLE_REPO, null, values);
             onUpgrade(db, 1, DB_UPGRADES.length + 1);
         }
@@ -624,7 +629,7 @@ public class DB {
         Vector<Repo> repos = new Vector<Repo>();
         Cursor c = null;
         try {
-            c = db.rawQuery("select address, inuse, priority from "
+            c = db.rawQuery("select address, inuse, priority, pubkey from "
                     + TABLE_REPO + " order by priority", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -632,6 +637,7 @@ public class DB {
                 repo.address = c.getString(0);
                 repo.inuse = (c.getInt(1) == 1);
                 repo.priority = c.getInt(2);
+                repo.pubkey = c.getString(3);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -650,11 +656,12 @@ public class DB {
                 new String[] { address });
     }
 
-    public void addServer(String address, int priority) {
+    public void addServer(String address, int priority, String pubkey) {
         ContentValues values = new ContentValues();
         values.put("address", address);
         values.put("inuse", 1);
         values.put("priority", priority);
+        values.put("pubkey", pubkey);
         db.insert(TABLE_REPO, null, values);
     }
 
