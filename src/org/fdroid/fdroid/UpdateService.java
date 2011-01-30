@@ -26,8 +26,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -94,12 +92,6 @@ public class UpdateService extends Service {
                     return;
                 if (lastUpdate + (interval * 60 * 60) > System
                         .currentTimeMillis())
-                    return;
-
-                // Make sure we have a connection...
-                ConnectivityManager netstate = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                if (netstate.getNetworkInfo(1).getState() != NetworkInfo.State.CONNECTED
-                        && netstate.getNetworkInfo(0).getState() != NetworkInfo.State.CONNECTED)
                     return;
 
                 // Do the update...
