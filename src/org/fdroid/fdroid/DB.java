@@ -219,8 +219,7 @@ public class DB {
             { "alter table " + TABLE_APK + " add sig string" },
 
             // Version 7...
-            { "alter table " + TABLE_REPO + " add pubkey string" }
-    };
+            { "alter table " + TABLE_REPO + " add pubkey string" } };
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -331,21 +330,23 @@ public class DB {
                 App app = new App();
                 app.antiFeatures = c
                         .getString(c.getColumnIndex("antiFeatures"));
-                boolean include=true;
-                if(app.antiFeatures!=null && app.antiFeatures.length()>0) {
-                    String[] afs=app.antiFeatures.split(",");
-                    for(String af : afs) {
+                boolean include = true;
+                if (app.antiFeatures != null && app.antiFeatures.length() > 0) {
+                    String[] afs = app.antiFeatures.split(",");
+                    for (String af : afs) {
                         if (af.equals("Ads") && !pref_antiAds)
-                            include=false;
-                        else if(af.equals("Tracking") && !pref_antiTracking)
-                            include=false;
-                        else if(af.equals("NonFreeNet") && !pref_antiNonFreeNet)
-                            include=false;
-                        else if(af.equals("NonFreeAdd") && !pref_antiNonFreeAdd)
-                            include=false;
+                            include = false;
+                        else if (af.equals("Tracking") && !pref_antiTracking)
+                            include = false;
+                        else if (af.equals("NonFreeNet")
+                                && !pref_antiNonFreeNet)
+                            include = false;
+                        else if (af.equals("NonFreeAdd")
+                                && !pref_antiNonFreeAdd)
+                            include = false;
                     }
                 }
-                
+
                 if (include) {
                     app.id = c.getString(c.getColumnIndex("id"));
                     app.name = c.getString(c.getColumnIndex("name"));
@@ -517,8 +518,8 @@ public class DB {
         boolean found = false;
         for (App app : updateApps) {
             if (app.id.equals(upapp.id)) {
-//                Log.d("FDroid", "AppUpdate: " + app.id
-//                        + " is already in the database.");
+                // Log.d("FDroid", "AppUpdate: " + app.id
+                // + " is already in the database.");
                 updateAppIfDifferent(app, upapp);
                 app.updated = true;
                 found = true;
@@ -526,8 +527,8 @@ public class DB {
                     boolean afound = false;
                     for (Apk apk : app.apks) {
                         if (apk.version.equals(upapk.version)) {
-//                            Log.d("FDroid", "AppUpdate: " + apk.version
-//                                    + " is a known version.");
+                            // Log.d("FDroid", "AppUpdate: " + apk.version
+                            // + " is a known version.");
                             updateApkIfDifferent(apk, upapk);
                             apk.updated = true;
                             afound = true;
@@ -536,8 +537,8 @@ public class DB {
                     }
                     if (!afound) {
                         // A new version of this application.
- //                       Log.d("FDroid", "AppUpdate: " + upapk.version
- //                               + " is a new version.");
+                        // Log.d("FDroid", "AppUpdate: " + upapk.version
+                        // + " is a new version.");
                         updateApkIfDifferent(null, upapk);
                         upapk.updated = true;
                         app.apks.add(upapk);
@@ -548,9 +549,9 @@ public class DB {
         }
         if (!found) {
             // It's a brand new application...
-//            Log
-//                    .d("FDroid", "AppUpdate: " + upapp.id
-//                            + " is a new application.");
+            // Log
+            // .d("FDroid", "AppUpdate: " + upapp.id
+            // + " is a new application.");
             updateAppIfDifferent(null, upapp);
             for (Apk upapk : upapp.apks) {
                 updateApkIfDifferent(null, upapk);
@@ -654,6 +655,15 @@ public class DB {
         db.rawQuery("update " + TABLE_REPO
                 + " set inuse=1-inuse where address= ?",
                 new String[] { address });
+    }
+
+    public void updateRepoByAddress(Repo repo) {
+        ContentValues values = new ContentValues();
+        values.put("inuse", repo.inuse);
+        values.put("priority", repo.priority);
+        values.put("pubkey", repo.pubkey);
+        db.update(TABLE_REPO, values, "address = ?",
+                new String[] { repo.address });
     }
 
     public void addServer(String address, int priority, String pubkey) {
