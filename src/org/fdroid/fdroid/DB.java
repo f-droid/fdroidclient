@@ -232,6 +232,7 @@ public class DB {
             db.execSQL(CREATE_TABLE_REPO);
             db.execSQL(CREATE_TABLE_APP);
             db.execSQL(CREATE_TABLE_APK);
+            onUpgrade(db, 1, DB_UPGRADES.length + 1);
             ContentValues values = new ContentValues();
             values.put("address", "http://f-droid.org/repo");
             values.put("inuse", 1);
@@ -243,7 +244,6 @@ public class DB {
             String pubkey = null;
             values.put("pubkey", pubkey);
             db.insert(TABLE_REPO, null, values);
-            onUpgrade(db, 1, DB_UPGRADES.length + 1);
         }
 
         @Override
