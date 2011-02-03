@@ -135,8 +135,8 @@ public class UpdateService extends Service {
                     }
 
                 } catch (Exception e) {
-                    Log.d("FDroid", "Exception during handleCommand() - "
-                            + e.getMessage());
+                    Log.e("FDroid", "Exception during handleCommand():\n"
+                            + Log.getStackTraceString(e));
                 } finally {
                     if (db != null)
                         db.close();

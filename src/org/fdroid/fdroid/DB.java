@@ -281,7 +281,8 @@ public class DB {
             // Also try and delete the old one, from versions 0.13 and earlier.
             ctx.deleteDatabase("fdroid_db");
         } catch (Exception ex) {
-            Log.d("FDroid", "Exception in DB.delete: " + ex.getMessage());
+            Log.e("FDroid", "Exception in DB.delete:\n"
+                    + Log.getStackTraceString(ex));
         }
     }
 
@@ -401,8 +402,8 @@ public class DB {
             }
 
         } catch (Exception e) {
-            Log.d("FDroid", "Exception during database reading - "
-                    + e.getMessage() + " ... " + e.toString());
+            Log.e("FDroid", "Exception during database reading:\n"
+                    + Log.getStackTraceString(e));
         } finally {
             if (c != null) {
                 c.close();

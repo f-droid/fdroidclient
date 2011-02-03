@@ -526,7 +526,8 @@ public class AppDetails extends ListActivity {
                         }
                     }
                 } catch (Exception e) {
-                    Log.d("FDroid", "Download failed - " + e.getMessage());
+                    Log.e("FDroid", "Download failed:\n"
+                            + Log.getStackTraceString(e));
                     Message msg = new Message();
                     msg.obj = e.getMessage();
                     download_error_handler.sendMessage(msg);

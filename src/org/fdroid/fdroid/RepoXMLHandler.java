@@ -321,8 +321,8 @@ public class RepoXMLHandler extends DefaultHandler {
                     }
 
                 } catch (Exception e) {
-                    Log.d("FDroid", "Exception updating from " + repo.address
-                            + " - " + e.toString());
+                    Log.e("FDroid", "Exception updating from " + repo.address
+                            + ":\n" + Log.getStackTraceString(e));
                     return false;
                 } finally {
                     ctx.deleteFile("tempindex.xml");
