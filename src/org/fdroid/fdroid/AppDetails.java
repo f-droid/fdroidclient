@@ -307,15 +307,8 @@ public class AppDetails extends ListActivity {
         }
         p.setMessage(getString(R.string.isinst) + " " + installed);
 
-        p.setButton(getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                });
-
         if (caninstall) {
-            p.setButton2(getString(R.string.install),
+            p.setButton(getString(R.string.install),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             p.dismiss();
@@ -323,7 +316,7 @@ public class AppDetails extends ListActivity {
                         }
                     });
         } else {
-            p.setButton2(getString(R.string.uninstall),
+            p.setButton(getString(R.string.uninstall),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             p.dismiss();
@@ -331,6 +324,13 @@ public class AppDetails extends ListActivity {
                         }
                     });
         }
+
+        p.setButton2(getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
 
         p.show();
     }
