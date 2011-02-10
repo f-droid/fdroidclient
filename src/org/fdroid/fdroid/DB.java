@@ -655,8 +655,8 @@ public class DB {
     }
 
     public void changeServerStatus(String address) {
-        db.rawQuery("update " + TABLE_REPO
-                + " set inuse=1-inuse where address= ?",
+        db.execSQL("update " + TABLE_REPO
+                + " set inuse=1-inuse where address = ?",
                 new String[] { address });
     }
 
