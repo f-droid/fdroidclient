@@ -222,6 +222,7 @@ public class RepoXMLHandler extends DefaultHandler {
     }
 
     public static boolean doUpdates(Context ctx, DB db) {
+        long startTime = System.currentTimeMillis();
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
@@ -332,6 +333,9 @@ public class RepoXMLHandler extends DefaultHandler {
             }
         }
         db.endUpdate();
+        Log.d("FDroid", "Update completed in "
+              + ((System.currentTimeMillis() - startTime) / 1000)
+              + " seconds.");
         return true;
     }
 
