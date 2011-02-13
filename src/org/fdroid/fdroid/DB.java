@@ -39,6 +39,11 @@ public class DB {
 
     private static final String DATABASE_NAME = "fdroid";
 
+    // Possible values of the SQLite flag "synchronous"
+    public static final int SYNC_OFF = 0;
+    public static final int SYNC_NORMAL = 1;
+    public static final int SYNC_FULL = 2;
+
     private SQLiteDatabase db;
 
     // The TABLE_APP table stores details of all the applications we know about.
@@ -266,6 +271,19 @@ public class DB {
         DBHelper h = new DBHelper(ctx);
         db = h.getWritableDatabase();
         mPm = ctx.getPackageManager();
+        SharedPreferences prefs = PreferenceManager
+            .getDefaultSharedPreferences(mContext);
+        String sync_mode = prefs.getString("dbSyncMode", null);
+        if ("off".equals(sync_mode))
+            setSynchronizationMode(SYNC_OFF);
+        else if ("normal".equals(sync_mode))
+            setSynchronizationMode(SYNC_NORMAL);
+        else if ("full".equals(sync_mode))
+            setSynchronizationMode(SYNC_FULL);
+        else
+            sync_mode = null;
+        if (sync_mode != null)
+            Log.d("FDroid", "Database synchronization mode: " + sync_mode);
     }
 
     public void close() {
@@ -682,5 +700,17 @@ public class DB {
         for (String address : addresses) {
             db.delete(TABLE_REPO, "address = ?", new String[] { address });
         }
+    }
+
+    public int getSynchronizationMode() {
+        Cursor cursor = db.rawQuery("PRAGMA synchronous", null);
+        cursor.moveToFirst();
+        int mode = cursor.getInt(0);
+        cursor.close();
+        return mode;
+    }
+
+    public void setSynchronizationMode(int mode) {
+        db.execSQL("PRAGMA synchronous = " + mode);
     }
 }

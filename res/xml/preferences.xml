@@ -4,6 +4,10 @@
 		<CheckBoxPreference android:title="@string/cache_downloaded"
 			android:defaultValue="false" android:summary="@string/keep_downloaded"
 			android:key="cacheDownloaded" />
+		<ListPreference android:title="@string/db_sync_mode"
+			android:summary="@string/db_sync_mode_long" android:key="dbSyncMode"
+			android:defaultValue="full" android:entries="@array/dbSyncModeNames"
+			android:entryValues="@array/dbSyncModeValues" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/updates">
 		<ListPreference android:title="@string/automatic_repo_scan"

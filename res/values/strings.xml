@@ -124,4 +124,7 @@
 	<string name="expert_mode">Enable expert mode</string>
 
 <string name="search_hint">Search applications</string>
+
+	<string name="db_sync_mode">Database sync mode</string>
+	<string name="db_sync_mode_long">Set the value of SQLite\'s "synchronous" flag</string>
 </resources>
