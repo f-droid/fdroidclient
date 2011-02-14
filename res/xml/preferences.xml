@@ -6,6 +6,7 @@
 			android:key="cacheDownloaded" />
 		<ListPreference android:title="@string/db_sync_mode"
 			android:summary="@string/db_sync_mode_long" android:key="dbSyncMode"
+			android:dependency="expert"
 			android:defaultValue="full" android:entries="@array/dbSyncModeNames"
 			android:entryValues="@array/dbSyncModeValues" />
 	</PreferenceCategory>
