@@ -223,6 +223,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public static boolean doUpdates(Context ctx, DB db) {
         long startTime = System.currentTimeMillis();
+        boolean success = true;
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
@@ -262,12 +263,12 @@ public class RepoXMLHandler extends DefaultHandler {
                         jar.close();
                         if (certs == null) {
                             Log.d("FDroid", "No signature found in index");
-                            return false;
+                            return success = false;
                         }
                         if (certs.length != 1) {
                             Log.d("FDroid", "Expected one signature - found "
                                     + certs.length);
-                            return false;
+                            return success = false;
                         }
 
                         byte[] sig = certs[0].getEncoded();
@@ -285,7 +286,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
                         if (!ssig.equals(repo.pubkey)) {
                             Log.d("FDroid", "Index signature mismatch");
-                            return false;
+                            return success = false;
                         }
 
                     } else {
@@ -324,10 +325,12 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (Exception e) {
                     Log.e("FDroid", "Exception updating from " + repo.address
                             + ":\n" + Log.getStackTraceString(e));
-                    return false;
+                    return success = false;
                 } finally {
                     ctx.deleteFile("tempindex.xml");
                     ctx.deleteFile("tempindex.jar");
+                    if (!success)
+                        db.cancelUpdate();
                 }
 
             }

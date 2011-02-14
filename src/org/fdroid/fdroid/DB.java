@@ -491,6 +491,10 @@ public class DB {
         updateApps = getApps(null, null, true);
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps before starting.");
+        // Wrap the whole update in a transaction. Make sure to call
+        // either endUpdate or cancelUpdate to commit or discard it,
+        // respectively.
+        db.beginTransaction();
     }
 
     // Called when a repo update ends. Any applications that have not been
@@ -521,10 +525,18 @@ public class DB {
                 }
             }
         }
+        // Commit updates to the database.
+        db.setTransactionSuccessful();
+        db.endTransaction();
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps on completion.");
         updateApps = null;
         return;
+    }
+
+    // Called instead of endUpdate if the update failed.
+    public void cancelUpdate() {
+        db.endTransaction();
     }
 
     // Called during update to supply new details for an application (or
