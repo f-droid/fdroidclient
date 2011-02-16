@@ -223,10 +223,10 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public static boolean doUpdates(Context ctx, DB db) {
         long startTime = System.currentTimeMillis();
-        boolean success = true;
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
+            boolean success = false;
             if (repo.inuse) {
 
                 try {
@@ -263,12 +263,12 @@ public class RepoXMLHandler extends DefaultHandler {
                         jar.close();
                         if (certs == null) {
                             Log.d("FDroid", "No signature found in index");
-                            return success = false;
+                            return false;
                         }
                         if (certs.length != 1) {
                             Log.d("FDroid", "Expected one signature - found "
                                     + certs.length);
-                            return success = false;
+                            return false;
                         }
 
                         byte[] sig = certs[0].getEncoded();
@@ -286,7 +286,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
                         if (!ssig.equals(repo.pubkey)) {
                             Log.d("FDroid", "Index signature mismatch");
-                            return success = false;
+                            return false;
                         }
 
                     } else {
@@ -321,11 +321,12 @@ public class RepoXMLHandler extends DefaultHandler {
                         repo.pubkey = handler.pubkey;
                         db.updateRepoByAddress(repo);
                     }
+                    success = true;
 
                 } catch (Exception e) {
                     Log.e("FDroid", "Exception updating from " + repo.address
                             + ":\n" + Log.getStackTraceString(e));
-                    return success = false;
+                    return false;
                 } finally {
                     ctx.deleteFile("tempindex.xml");
                     ctx.deleteFile("tempindex.jar");
