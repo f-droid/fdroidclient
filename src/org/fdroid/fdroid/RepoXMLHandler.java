@@ -223,123 +223,128 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public static boolean doUpdates(Context ctx, DB db) {
         long startTime = System.currentTimeMillis();
-        boolean success = true;
+        boolean success = false;
         db.beginUpdate();
-        Vector<DB.Repo> repos = db.getRepos();
-        for (DB.Repo repo : repos) {
-            if (repo.inuse) {
-
-                try {
-
-                    if (repo.pubkey != null) {
-
-                        // This is a signed repo - we download the jar file,
-                        // check the signature, and extract the index...
-                        Log.d("FDroid", "Getting signed index from "
-                                + repo.address);
-                        getRemoteFile(ctx, repo.address + "/index.jar",
-                                "tempindex.jar");
-                        String jarpath = ctx.getFilesDir() + "/tempindex.jar";
-                        JarFile jar = new JarFile(jarpath);
-                        JarEntry je = (JarEntry) jar.getEntry("index.xml");
-                        File efile = new File(ctx.getFilesDir(),
-                                "/tempindex.xml");
-                        InputStream in = new BufferedInputStream(jar
-                                .getInputStream(je), 8192);
-                        OutputStream out = new BufferedOutputStream(
-                                new FileOutputStream(efile), 8192);
-                        byte[] buffer = new byte[8192];
-                        while (true) {
-                            int nBytes = in.read(buffer);
-                            if (nBytes <= 0)
-                                break;
-                            out.write(buffer, 0, nBytes);
+        try
+        {
+            Vector<DB.Repo> repos = db.getRepos();
+            for (DB.Repo repo : repos) {
+                if (repo.inuse) {
+    
+                    try {
+    
+                        if (repo.pubkey != null) {
+    
+                            // This is a signed repo - we download the jar file,
+                            // check the signature, and extract the index...
+                            Log.d("FDroid", "Getting signed index from "
+                                    + repo.address);
+                            getRemoteFile(ctx, repo.address + "/index.jar",
+                                    "tempindex.jar");
+                            String jarpath = ctx.getFilesDir() + "/tempindex.jar";
+                            JarFile jar = new JarFile(jarpath);
+                            JarEntry je = (JarEntry) jar.getEntry("index.xml");
+                            File efile = new File(ctx.getFilesDir(),
+                                    "/tempindex.xml");
+                            InputStream in = new BufferedInputStream(jar
+                                    .getInputStream(je), 8192);
+                            OutputStream out = new BufferedOutputStream(
+                                    new FileOutputStream(efile), 8192);
+                            byte[] buffer = new byte[8192];
+                            while (true) {
+                                int nBytes = in.read(buffer);
+                                if (nBytes <= 0)
+                                    break;
+                                out.write(buffer, 0, nBytes);
+                            }
+                            out.flush();
+                            out.close();
+                            in.close();
+                            java.security.cert.Certificate[] certs = je
+                                    .getCertificates();
+                            jar.close();
+                            if (certs == null) {
+                                Log.d("FDroid", "No signature found in index");
+                                return false;
+                            }
+                            if (certs.length != 1) {
+                                Log.d("FDroid", "Expected one signature - found "
+                                        + certs.length);
+                                return false;
+                            }
+    
+                            byte[] sig = certs[0].getEncoded();
+                            byte[] csig = new byte[sig.length * 2];
+                            for (int j = 0; j < sig.length; j++) {
+                                byte v = sig[j];
+                                int d = (v >> 4) & 0xf;
+                                csig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10)
+                                        : ('0' + d));
+                                d = v & 0xf;
+                                csig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10)
+                                        : ('0' + d));
+                            }
+                            String ssig = new String(csig);
+    
+                            if (!ssig.equals(repo.pubkey)) {
+                                Log.d("FDroid", "Index signature mismatch");
+                                return false;
+                            }
+    
+                        } else {
+    
+                            // It's an old-fashioned unsigned repo...
+                            Log.d("FDroid", "Getting unsigned index from "
+                                    + repo.address);
+                            getRemoteFile(ctx, repo.address + "/index.xml",
+                                    "tempindex.xml");
                         }
-                        out.flush();
-                        out.close();
-                        in.close();
-                        java.security.cert.Certificate[] certs = je
-                                .getCertificates();
-                        jar.close();
-                        if (certs == null) {
-                            Log.d("FDroid", "No signature found in index");
-                            return success = false;
+    
+                        // Process the index...
+                        SAXParserFactory spf = SAXParserFactory.newInstance();
+                        SAXParser sp = spf.newSAXParser();
+                        XMLReader xr = sp.getXMLReader();
+                        RepoXMLHandler handler = new RepoXMLHandler(repo.address,
+                                db);
+                        xr.setContentHandler(handler);
+    
+                        InputStreamReader isr = new FileReader(new File(ctx
+                                .getFilesDir()
+                                + "/tempindex.xml"));
+                        InputSource is = new InputSource(isr);
+                        xr.parse(is);
+    
+                        if (handler.pubkey != null && repo.pubkey == null) {
+                            // We read an unsigned index, but that indicates that
+                            // a signed version is now available...
+                            Log
+                                    .d("FDroid",
+                                            "Public key found - switching to signed repo for future updates");
+                            repo.pubkey = handler.pubkey;
+                            db.updateRepoByAddress(repo);
                         }
-                        if (certs.length != 1) {
-                            Log.d("FDroid", "Expected one signature - found "
-                                    + certs.length);
-                            return success = false;
-                        }
-
-                        byte[] sig = certs[0].getEncoded();
-                        byte[] csig = new byte[sig.length * 2];
-                        for (int j = 0; j < sig.length; j++) {
-                            byte v = sig[j];
-                            int d = (v >> 4) & 0xf;
-                            csig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10)
-                                    : ('0' + d));
-                            d = v & 0xf;
-                            csig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10)
-                                    : ('0' + d));
-                        }
-                        String ssig = new String(csig);
-
-                        if (!ssig.equals(repo.pubkey)) {
-                            Log.d("FDroid", "Index signature mismatch");
-                            return success = false;
-                        }
-
-                    } else {
-
-                        // It's an old-fashioned unsigned repo...
-                        Log.d("FDroid", "Getting unsigned index from "
-                                + repo.address);
-                        getRemoteFile(ctx, repo.address + "/index.xml",
-                                "tempindex.xml");
+    
+                    } catch (Exception e) {
+                        Log.e("FDroid", "Exception updating from " + repo.address
+                                + ":\n" + Log.getStackTraceString(e));
+                        return false;
+                    } finally {
+                        ctx.deleteFile("tempindex.xml");
+                        ctx.deleteFile("tempindex.jar");
                     }
-
-                    // Process the index...
-                    SAXParserFactory spf = SAXParserFactory.newInstance();
-                    SAXParser sp = spf.newSAXParser();
-                    XMLReader xr = sp.getXMLReader();
-                    RepoXMLHandler handler = new RepoXMLHandler(repo.address,
-                            db);
-                    xr.setContentHandler(handler);
-
-                    InputStreamReader isr = new FileReader(new File(ctx
-                            .getFilesDir()
-                            + "/tempindex.xml"));
-                    InputSource is = new InputSource(isr);
-                    xr.parse(is);
-
-                    if (handler.pubkey != null && repo.pubkey == null) {
-                        // We read an unsigned index, but that indicates that
-                        // a signed version is now available...
-                        Log
-                                .d("FDroid",
-                                        "Public key found - switching to signed repo for future updates");
-                        repo.pubkey = handler.pubkey;
-                        db.updateRepoByAddress(repo);
-                    }
-
-                } catch (Exception e) {
-                    Log.e("FDroid", "Exception updating from " + repo.address
-                            + ":\n" + Log.getStackTraceString(e));
-                    return success = false;
-                } finally {
-                    ctx.deleteFile("tempindex.xml");
-                    ctx.deleteFile("tempindex.jar");
-                    if (!success)
-                        db.cancelUpdate();
+    
                 }
-
             }
+            success=true;
+            db.endUpdate();
+            Log.d("FDroid", "Update completed in "
+                  + ((System.currentTimeMillis() - startTime) / 1000)
+                  + " seconds.");
+            return true;
+        } finally {
+            if(!success)
+                db.cancelUpdate();
         }
-        db.endUpdate();
-        Log.d("FDroid", "Update completed in "
-              + ((System.currentTimeMillis() - startTime) / 1000)
-              + " seconds.");
-        return true;
     }
 
 }
