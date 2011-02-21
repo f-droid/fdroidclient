@@ -166,9 +166,13 @@ public class DB {
         public String apkName;
 
         // If null, the apk comes from the same server as the repo index.
-        // Otherwise
-        // this is the complete URL to download the apk from.
+        // Otherwise this is the complete URL to download the apk from.
         public String apkSource;
+
+        // If not null, this is the name of the source tarball for the
+        // application. Null indicates that it's a developer's binary
+        // build - otherwise it's built from source.
+        public String srcname;
 
         // Used internally for tracking during repo updates.
         public boolean updated;
@@ -229,7 +233,10 @@ public class DB {
             { "alter table " + TABLE_REPO + " add pubkey string" },
 
             // Version 8...
-            { "alter table " + TABLE_APP + " add donateURL string" } };
+            { "alter table " + TABLE_APP + " add donateURL string" },
+
+            // Version 9...
+            { "alter table " + TABLE_APK + " add srcname string" } };
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -421,6 +428,7 @@ public class DB {
                         apk.server = c2.getString(c2.getColumnIndex("server"));
                         apk.hash = c2.getString(c2.getColumnIndex("hash"));
                         apk.sig = c2.getString(c2.getColumnIndex("sig"));
+                        apk.srcname = c2.getString(c2.getColumnIndex("srcname"));
                         apk.size = c2.getInt(c2.getColumnIndex("size"));
                         apk.apkName = c2
                                 .getString(c2.getColumnIndex("apkName"));
@@ -665,6 +673,7 @@ public class DB {
         values.put("server", upapk.server);
         values.put("hash", upapk.hash);
         values.put("sig", upapk.sig);
+        values.put("srcname", upapk.srcname);
         values.put("size", upapk.size);
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-11  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -115,6 +115,12 @@ public class AppDetails extends ListActivity {
                 size.setText("");
             } else {
                 size.setText(getFriendlySize(apk.size));
+            }
+            TextView buildtype = (TextView) v.findViewById(R.id.buildtype);
+            if(apk.srcname!=null) {
+                buildtype.setText("source");
+            } else { 
+                buildtype.setText("bin");
             }
             return v;
         }
