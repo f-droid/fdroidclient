@@ -246,37 +246,25 @@ public class DB {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.beginTransaction();
-            try {
-                db.execSQL(CREATE_TABLE_REPO);
-                db.execSQL(CREATE_TABLE_APP);
-                db.execSQL(CREATE_TABLE_APK);
-                onUpgrade(db, 1, DB_UPGRADES.length + 1);
-                ContentValues values = new ContentValues();
-                values.put("address",
-                           mContext.getString(R.string.default_repo_address));
-                values.put("pubkey",
-                           mContext.getString(R.string.default_repo_pubkey));
-                values.put("inuse", 1);
-                values.put("priority", 10);
-                db.insert(TABLE_REPO, null, values);
-                db.setTransactionSuccessful();
-            } finally {
-                db.endTransaction();
-            }
+            db.execSQL(CREATE_TABLE_REPO);
+            db.execSQL(CREATE_TABLE_APP);
+            db.execSQL(CREATE_TABLE_APK);
+            onUpgrade(db, 1, DB_UPGRADES.length + 1);
+            ContentValues values = new ContentValues();
+            values.put("address",
+                       mContext.getString(R.string.default_repo_address));
+            values.put("pubkey",
+                       mContext.getString(R.string.default_repo_pubkey));
+            values.put("inuse", 1);
+            values.put("priority", 10);
+            db.insert(TABLE_REPO, null, values);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.beginTransaction();
-            try {
-                for (int v = oldVersion + 1; v <= newVersion; v++)
-                    for (int i = 0; i < DB_UPGRADES[v - 2].length; i++)
-                        db.execSQL(DB_UPGRADES[v - 2][i]);
-                db.setTransactionSuccessful();
-            } finally {
-                db.endTransaction();
-            }
+            for (int v = oldVersion + 1; v <= newVersion; v++)
+                for (int i = 0; i < DB_UPGRADES[v - 2].length; i++)
+                    db.execSQL(DB_UPGRADES[v - 2][i]);
         }
 
     }
