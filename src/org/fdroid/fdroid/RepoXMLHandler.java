@@ -85,72 +85,72 @@ public class RepoXMLHandler extends DefaultHandler {
         String curel = localName;
         String str = curchars;
 
-        if (curel == "application" && curapp != null) {
+        if (curel.equals("application") && curapp != null) {
             // Log.d("FDroid", "Repo: Updating application " + curapp.id);
             db.updateApplication(curapp);
             getIcon(curapp);
             curapp = null;
-        } else if (curel == "package" && curapk != null && curapp != null) {
+        } else if (curel.equals("package") && curapk != null && curapp != null) {
             // Log.d("FDroid", "Repo: Package added (" + curapk.version + ")");
             curapp.apks.add(curapk);
             curapk = null;
         } else if (curapk != null && str != null) {
-            if (curel == "version") {
+            if (curel.equals("version")) {
                 curapk.version = str;
-            } else if (curel == "versioncode") {
+            } else if (curel.equals("versioncode")) {
                 try {
                     curapk.vercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
                     curapk.vercode = 0;
                 }
-            } else if (curel == "size") {
+            } else if (curel.equals("size")) {
                 try {
                     curapk.size = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
                     curapk.size = 0;
                 }
-            } else if (curel == "hash") {
+            } else if (curel.equals("hash")) {
                 curapk.hash = str;
-            } else if (curel == "sig") {
+            } else if (curel.equals("sig")) {
                 curapk.sig = str;
-            } else if (curel == "srcname") {
+            } else if (curel.equals("srcname")) {
                 curapk.srcname = str;
-            } else if (curel == "apkname") {
+            } else if (curel.equals("apkname")) {
                 curapk.apkName = str;
-            } else if (curel == "apksource") {
+            } else if (curel.equals("apksource")) {
                 curapk.apkSource = str;
             }
         } else if (curapp != null && str != null) {
-            if (curel == "id") {
+            if (curel.equals("id")) {
                 // Log.d("FDroid", "App id is " + str);
                 curapp.id = str;
-            } else if (curel == "name") {
+            } else if (curel.equals("name")) {
                 curapp.name = str;
-            } else if (curel == "icon") {
+            } else if (curel.equals("icon")) {
                 curapp.icon = str;
-            } else if (curel == "description") {
+            } else if (curel.equals("description")) {
                 curapp.description = str;
-            } else if (curel == "summary") {
+            } else if (curel.equals("summary")) {
                 curapp.summary = str;
-            } else if (curel == "license") {
+            } else if (curel.equals("license")) {
                 curapp.license = str;
-            } else if (curel == "source") {
+            } else if (curel.equals("source")) {
                 curapp.sourceURL = str;
-            } else if (curel == "donate") {
+            } else if (curel.equals("donate")) {
                 curapp.donateURL = str;
-            } else if (curel == "web") {
+            } else if (curel.equals("web")) {
                 curapp.webURL = str;
-            } else if (curel == "tracker") {
+            } else if (curel.equals("tracker")) {
                 curapp.trackerURL = str;
-            } else if (curel == "marketversion") {
+            } else if (curel.equals("marketversion")) {
                 curapp.marketVersion = str;
-            } else if (curel == "marketvercode") {
+            } else if (curel.equals("marketvercode")) {
                 try {
                     curapp.marketVercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
                     curapp.marketVercode = 0;
                 }
-            } else if (curel == "antifeatures") {
+            } else if (curel.equals("antifeatures")) {
                 curapp.antiFeatures = str;
             }
         }
