@@ -372,8 +372,10 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, SOURCE, 4, R.string.menu_source).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        menu.add(Menu.NONE, MARKET, 5, R.string.menu_market).setIcon(
-                android.R.drawable.ic_menu_view);
+        if (app.marketVersion != null) {
+            menu.add(Menu.NONE, MARKET, 5, R.string.menu_market).setIcon(
+                    android.R.drawable.ic_menu_view);
+        }
         if (app.donateURL != null) {
             menu.add(Menu.NONE, DONATE, 6, R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
@@ -413,13 +415,8 @@ public class AppDetails extends ListActivity {
             return true;
 
         case MARKET:
-            try {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                        .parse("market://search?q=pname:" + app.id)));
-            } catch (Exception ex) {
-                // Do nothing. Probably means the market isn't installed.
-                // Hurrah. (But really we should remove the menu option)
-            }
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri
+                    .parse("http://market.android.com/details?id=" + app.id)));
             return true;
 
         case DONATE:
