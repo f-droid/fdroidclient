@@ -119,6 +119,16 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.apkName = str;
             } else if (curel.equals("apksource")) {
                 curapk.apkSource = str;
+            } else if (curel.equals("sdkver")) {
+                try {
+                    curapk.minSdkVersion = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.minSdkVersion = 0;
+                }
+            } else if (curel.equals("permissions")) {
+                curapk.permissions = DB.decodeList(str);
+            } else if (curel.equals("features")) {
+                curapk.features = DB.decodeList(str);
             }
         } else if (curapp != null && str != null) {
             if (curel.equals("id")) {
@@ -151,7 +161,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.marketVercode = 0;
                 }
             } else if (curel.equals("antifeatures")) {
-                curapp.antiFeatures = str;
+                curapp.antiFeatures = DB.decodeList(str);
             }
         }
 

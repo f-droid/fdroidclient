@@ -312,7 +312,33 @@ public class AppDetails extends ListActivity {
                 installed = app.installedVersion;
             }
         }
-        p.setMessage(getString(R.string.isinst) + " " + installed);
+
+        StringBuilder msg = new StringBuilder();
+        msg.append(getString(R.string.isinst));
+        msg.append(" ");
+        msg.append(installed);
+        if (caninstall && curapk.minSdkVersion > 0) {
+            msg.append("\nMinimum API level: ");
+            msg.append(curapk.minSdkVersion);
+        }
+        if (caninstall && curapk.permissions != null) {
+            msg.append("\nPermissions required:");
+            for (String perm : curapk.permissions) {
+                msg.append("\n  ");
+                msg.append(perm);
+            }
+        }
+        if (caninstall && curapk.features != null) {
+            msg.append("\nFeatures required:");
+            for (String feat : curapk.features) {
+                msg.append("\n  ");
+                if (feat.matches("android\\.(hard|soft)ware\\..*"))
+                    msg.append(feat.substring(17));
+                else
+                    msg.append(feat);
+            }
+        }
+        p.setMessage(msg.toString());
 
         if (caninstall) {
             p.setButton(getString(R.string.install),

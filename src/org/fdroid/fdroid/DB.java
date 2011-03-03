@@ -90,9 +90,9 @@ public class DB {
         public String marketVersion;
         public int marketVercode;
 
-        // Comma-separated list of anti-features (as defined in the metadata
+        // Array of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
-        public String antiFeatures;
+        public String[] antiFeatures;
 
         // True if there are new versions (apks) that the user hasn't
         // explicitly ignored. (We're currently not using the database
@@ -158,6 +158,9 @@ public class DB {
         public int size; // Size in bytes - 0 means we don't know!
         public String server;
         public String hash;
+        public int minSdkVersion;      // 0 if unknown
+        public String[] permissions;   // null if empty or unknown
+        public String[] features;      // null if empty or unknown
 
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
@@ -236,7 +239,12 @@ public class DB {
             { "alter table " + TABLE_APP + " add donateURL string" },
 
             // Version 9...
-            { "alter table " + TABLE_APK + " add srcname string" } };
+            { "alter table " + TABLE_APK + " add srcname string" },
+
+            // Version 10...
+            { "alter table " + TABLE_APK + " add minSdkVersion integer",
+              "alter table " + TABLE_APK + " add permissions string",
+              "alter table " + TABLE_APK + " add features string" }};
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -360,12 +368,11 @@ public class DB {
             while (!c.isAfterLast()) {
 
                 App app = new App();
-                app.antiFeatures = c
-                        .getString(c.getColumnIndex("antiFeatures"));
+                app.antiFeatures = decodeList(c
+                        .getString(c.getColumnIndex("antiFeatures")));
                 boolean include = true;
-                if (app.antiFeatures != null && app.antiFeatures.length() > 0) {
-                    String[] afs = app.antiFeatures.split(",");
-                    for (String af : afs) {
+                if (app.antiFeatures != null) {
+                    for (String af : app.antiFeatures) {
                         if (af.equals("Ads") && !pref_antiAds)
                             include = false;
                         else if (af.equals("Tracking") && !pref_antiTracking)
@@ -421,6 +428,12 @@ public class DB {
                                 .getString(c2.getColumnIndex("apkName"));
                         apk.apkSource = c2.getString(c2
                                 .getColumnIndex("apkSource"));
+                        apk.minSdkVersion = c2.getInt(c2
+                                .getColumnIndex("minSdkVersion"));
+                        apk.permissions = decodeList(c2.getString(c2
+                                .getColumnIndex("permissions")));
+                        apk.features = decodeList(c2.getString(c2
+                                .getColumnIndex("features")));
                         app.apks.add(apk);
                         c2.moveToNext();
                     }
@@ -495,6 +508,25 @@ public class DB {
                 }
             }
         }
+    }
+
+    // Join the elements of a String array with commas. An empty array
+    // or a null value both result in null as the return value.
+    public static String encodeList(String[] array) {
+        if (array == null || array.length == 0)
+            return null;
+        StringBuilder sb = new StringBuilder();
+        for (String e : array) {
+            sb.append(e);
+            sb.append(",");
+        }
+        return sb.substring(0, sb.length() - 1);
+    }
+
+    public static String[] decodeList(String string) {
+        if (string == null || string.length() == 0)
+            return null;
+        return string.split(",");
     }
 
     private Vector<App> updateApps = null;
@@ -637,7 +669,7 @@ public class DB {
         values.put("installedVerCode", upapp.installedVerCode);
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
-        values.put("antiFeatures", upapp.antiFeatures);
+        values.put("antiFeatures", encodeList(upapp.antiFeatures));
         values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
@@ -664,6 +696,9 @@ public class DB {
         values.put("size", upapk.size);
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
+        values.put("minSdkVersion", upapk.minSdkVersion);
+        values.put("permissions", encodeList(upapk.permissions));
+        values.put("features", encodeList(upapk.features));
         if (oldapk != null) {
             db.update(TABLE_APK, values, "id = ? and version =?", new String[] {
                     oldapk.id, oldapk.version });
