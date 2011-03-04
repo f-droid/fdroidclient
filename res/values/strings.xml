@@ -128,4 +128,8 @@
 
 	<string name="db_sync_mode">Database sync mode</string>
 	<string name="db_sync_mode_long">Set the value of SQLite\'s "synchronous" flag</string>
+
+	<string name="appcompatibility">Application compatibility</string>
+	<string name="showincompat">Incompatible apps</string>
+	<string name="showincompat_long">Show apps written for newer Android versions or different hardware</string>
 </resources>

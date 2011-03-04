@@ -217,9 +217,11 @@ public class DB {
             public boolean isCompatible(Apk apk) {
                 if (apk.minSdkVersion > SDK_INT)
                     return false;
-                for (String feat : apk.features) {
-                    if (!pm.hasSystemFeature(feat))
-                        return false;
+                if (apk.features != null) {
+                    for (String feat : apk.features) {
+                        if (!pm.hasSystemFeature(feat))
+                            return false;
+                    }
                 }
                 return true;
             }
@@ -323,6 +325,7 @@ public class DB {
 
     private PackageManager mPm;
     private Context mContext;
+    private Apk.CompatibilityChecker compatChecker;
 
     public DB(Context ctx) {
 
@@ -343,6 +346,7 @@ public class DB {
             sync_mode = null;
         if (sync_mode != null)
             Log.d("FDroid", "Database synchronization mode: " + sync_mode);
+        compatChecker = Apk.CompatibilityChecker.getChecker(ctx);
     }
 
     public void close() {
@@ -374,8 +378,9 @@ public class DB {
         return count;
     }
 
-    // Return a list of apps matching the given criteria. Filtering is also
-    // done based on the user's current anti-features preferences.
+    // Return a list of apps matching the given criteria. Filtering is
+    // also done based on compatibility and anti-features according to
+    // the user's current preferences.
     // 'appid' - specific app id to retrieve, or null
     // 'filter' - search text to filter on, or null
     // 'update' - update installed version information from device, rather than
@@ -388,6 +393,7 @@ public class DB {
         boolean pref_antiTracking = prefs.getBoolean("antiTracking", false);
         boolean pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
         boolean pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
+        boolean pref_showIncompat = prefs.getBoolean("showIncompatible", false);
 
         Vector<App> result = new Vector<App>();
         Cursor c = null;
@@ -453,6 +459,7 @@ public class DB {
                             + " where id = ? order by vercode desc",
                             new String[] { app.id });
                     c2.moveToFirst();
+                    boolean compatible = pref_showIncompat;
                     while (!c2.isAfterLast()) {
                         Apk apk = new Apk();
                         apk.id = app.id;
@@ -475,11 +482,21 @@ public class DB {
                         apk.features = decodeList(c2.getString(c2
                                 .getColumnIndex("features")));
                         app.apks.add(apk);
+                        if (!compatible && compatChecker.isCompatible(apk)) {
+                            // At least one compatible APK.
+                            compatible = true;
+                        }
                         c2.moveToNext();
                     }
                     c2.close();
 
-                    result.add(app);
+                    if (compatible) {
+                        result.add(app);
+                    }
+                    else {
+                        Log.d("FDroid", "Excluding incompatible application: "
+                              + app.id);
+                    }
                 }
 
                 c.moveToNext();

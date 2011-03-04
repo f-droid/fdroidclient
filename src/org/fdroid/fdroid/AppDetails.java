@@ -70,10 +70,8 @@ public class AppDetails extends ListActivity {
     private class ApkListAdapter extends BaseAdapter {
 
         private List<DB.Apk> items = new ArrayList<DB.Apk>();
-        private DB.Apk.CompatibilityChecker compatChecker;
 
         public ApkListAdapter(Context context) {
-            compatChecker = DB.Apk.CompatibilityChecker.getChecker(context);
         }
 
         public void addItem(DB.Apk apk) {
@@ -160,6 +158,7 @@ public class AppDetails extends ListActivity {
     private String appid;
     private PackageManager mPm;
     private ProgressDialog pd;
+    private DB.Apk.CompatibilityChecker compatChecker;
 
     private Context mctx = this;
 
@@ -200,6 +199,7 @@ public class AppDetails extends ListActivity {
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", true);
         pref_expert = prefs.getBoolean("expert", false);
         viewResetRequired = true;
+        compatChecker = DB.Apk.CompatibilityChecker.getChecker(this);
 
     }
 
@@ -295,10 +295,13 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
+        curapk = app.apks.get(position);
+
+        // Ignore attempt to install incompatible APK
+        if (!compatChecker.isCompatible(curapk)) return;
+
         // Create alert dialog...
         final AlertDialog p = new AlertDialog.Builder(this).create();
-
-        curapk = app.apks.get(position);
 
         // Set the title and icon...
         String icon_path = DB.getIconsPath() + app.icon;

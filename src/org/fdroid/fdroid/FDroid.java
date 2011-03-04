@@ -309,6 +309,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         apps_av.clear();
         apps_up.clear();
 
+        long startTime = System.currentTimeMillis();
         Vector<DB.App> apps = db.getApps(null, null, update);
         if (apps.isEmpty()) {
             // Don't attempt this more than once - we may have invalid
@@ -322,7 +323,9 @@ public class FDroid extends TabActivity implements OnItemClickListener {
             triedEmptyUpdate = true;
             return;
         }
-        Log.d("FDroid", "Updating lists - " + apps.size() + " apps in total");
+        Log.d("FDroid", "Updating lists - " + apps.size() + " apps in total"
+              + " (update took " + (System.currentTimeMillis() - startTime)
+              + " ms)");
 
         for (DB.App app : apps) {
             if (app.installedVersion == null) {
