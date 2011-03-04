@@ -70,8 +70,10 @@ public class AppDetails extends ListActivity {
     private class ApkListAdapter extends BaseAdapter {
 
         private List<DB.Apk> items = new ArrayList<DB.Apk>();
+        private DB.Apk.CompatibilityChecker compatChecker;
 
         public ApkListAdapter(Context context) {
+            compatChecker = DB.Apk.CompatibilityChecker.getChecker(context);
         }
 
         public void addItem(DB.Apk apk) {
@@ -121,6 +123,12 @@ public class AppDetails extends ListActivity {
                 buildtype.setText("source");
             } else { 
                 buildtype.setText("bin");
+            }
+            if (!compatChecker.isCompatible(apk)) {
+                View[] views = { v, version, status, size, buildtype };
+                for (View view : views) {
+                    view.setEnabled(false);
+                }
             }
             return v;
         }

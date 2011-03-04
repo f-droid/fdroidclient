@@ -32,6 +32,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -183,6 +184,45 @@ public class DB {
         public String getURL() {
             String path = apkName.replace(" ", "%20");
             return server + "/" + path;
+        }
+
+        // Call isCompatible(apk) on an instance of this class to
+        // check if an APK is compatible with the user's device.
+        public static abstract class CompatibilityChecker {
+            // Because Build.VERSION.SDK_INT requires API level 5
+            protected final static int SDK_INT
+                = Integer.parseInt(Build.VERSION.SDK);
+            public static CompatibilityChecker getChecker(Context ctx) {
+                CompatibilityChecker checker;
+                if (SDK_INT >= 5)
+                    checker = new EclairChecker(ctx);
+                else
+                    checker = new BasicChecker();
+                Log.d("FDroid", "Compatibility checker for API level "
+                      + SDK_INT + ": " + checker.getClass().getName());
+                return checker;
+            }
+            public abstract boolean isCompatible(Apk apk);
+        }
+        private static class BasicChecker extends CompatibilityChecker {
+            public boolean isCompatible(Apk apk) {
+                return (apk.minSdkVersion <= SDK_INT);
+            }
+        }
+        private static class EclairChecker extends CompatibilityChecker {
+            private PackageManager pm;
+            public EclairChecker(Context ctx) {
+                pm = ctx.getPackageManager();
+            }
+            public boolean isCompatible(Apk apk) {
+                if (apk.minSdkVersion > SDK_INT)
+                    return false;
+                for (String feat : apk.features) {
+                    if (!pm.hasSystemFeature(feat))
+                        return false;
+                }
+                return true;
+            }
         }
     }
 
