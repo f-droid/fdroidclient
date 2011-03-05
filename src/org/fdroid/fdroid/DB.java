@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -35,6 +36,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.text.TextUtils.SimpleStringSplitter;
 
 public class DB {
 
@@ -93,7 +95,7 @@ public class DB {
 
         // Array of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
-        public String[] antiFeatures;
+        public CommaSeparatedList antiFeatures;
 
         // True if there are new versions (apks) that the user hasn't
         // explicitly ignored. (We're currently not using the database
@@ -160,8 +162,8 @@ public class DB {
         public String server;
         public String hash;
         public int minSdkVersion;      // 0 if unknown
-        public String[] permissions;   // null if empty or unknown
-        public String[] features;      // null if empty or unknown
+        public CommaSeparatedList permissions; // null if empty or unknown
+        public CommaSeparatedList features;    // null if empty or unknown
 
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
@@ -414,7 +416,7 @@ public class DB {
             while (!c.isAfterLast()) {
 
                 App app = new App();
-                app.antiFeatures = decodeList(c
+                app.antiFeatures = DB.CommaSeparatedList.make(c
                         .getString(c.getColumnIndex("antiFeatures")));
                 boolean include = true;
                 if (app.antiFeatures != null) {
@@ -477,10 +479,10 @@ public class DB {
                                 .getColumnIndex("apkSource"));
                         apk.minSdkVersion = c2.getInt(c2
                                 .getColumnIndex("minSdkVersion"));
-                        apk.permissions = decodeList(c2.getString(c2
-                                .getColumnIndex("permissions")));
-                        apk.features = decodeList(c2.getString(c2
-                                .getColumnIndex("features")));
+                        apk.permissions = CommaSeparatedList.make(c2
+                                .getString(c2.getColumnIndex("permissions")));
+                        apk.features = CommaSeparatedList.make(c2
+                                .getString(c2.getColumnIndex("features")));
                         app.apks.add(apk);
                         if (!compatible && compatChecker.isCompatible(apk)) {
                             // At least one compatible APK.
@@ -567,23 +569,33 @@ public class DB {
         }
     }
 
-    // Join the elements of a String array with commas. An empty array
-    // or a null value both result in null as the return value.
-    public static String encodeList(String[] array) {
-        if (array == null || array.length == 0)
-            return null;
-        StringBuilder sb = new StringBuilder();
-        for (String e : array) {
-            sb.append(e);
-            sb.append(",");
-        }
-        return sb.substring(0, sb.length() - 1);
-    }
+    public static class CommaSeparatedList implements Iterable<String> {
+        private String value;
 
-    public static String[] decodeList(String string) {
-        if (string == null || string.length() == 0)
-            return null;
-        return string.split(",");
+        private CommaSeparatedList(String list) {
+            value = list;
+        }
+
+        public static CommaSeparatedList make(String list) {
+            if (list == null || list.length() == 0)
+                return null;
+            else
+                return new CommaSeparatedList(list);
+        }
+
+        public static String str(CommaSeparatedList instance) {
+            return (instance == null ? null : instance.toString());
+        }
+
+        public String toString() {
+            return value;
+        }
+
+        public Iterator<String> iterator() {
+            SimpleStringSplitter splitter = new SimpleStringSplitter(',');
+            splitter.setString(value);
+            return splitter.iterator();
+        }
     }
 
     private Vector<App> updateApps = null;
@@ -726,7 +738,7 @@ public class DB {
         values.put("installedVerCode", upapp.installedVerCode);
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
-        values.put("antiFeatures", encodeList(upapp.antiFeatures));
+        values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
@@ -754,8 +766,8 @@ public class DB {
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
         values.put("minSdkVersion", upapk.minSdkVersion);
-        values.put("permissions", encodeList(upapk.permissions));
-        values.put("features", encodeList(upapk.features));
+        values.put("permissions", CommaSeparatedList.str(upapk.permissions));
+        values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {
             db.update(TABLE_APK, values, "id = ? and version =?", new String[] {
                     oldapk.id, oldapk.version });
