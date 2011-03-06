@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ import java.util.Vector;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -191,9 +193,13 @@ public class DB {
         // Call isCompatible(apk) on an instance of this class to
         // check if an APK is compatible with the user's device.
         public static abstract class CompatibilityChecker {
+
             // Because Build.VERSION.SDK_INT requires API level 5
             protected final static int SDK_INT
                 = Integer.parseInt(Build.VERSION.SDK);
+
+            public abstract boolean isCompatible(Apk apk);
+
             public static CompatibilityChecker getChecker(Context ctx) {
                 CompatibilityChecker checker;
                 if (SDK_INT >= 5)
@@ -204,25 +210,32 @@ public class DB {
                       + SDK_INT + ": " + checker.getClass().getName());
                 return checker;
             }
-            public abstract boolean isCompatible(Apk apk);
         }
+
         private static class BasicChecker extends CompatibilityChecker {
             public boolean isCompatible(Apk apk) {
                 return (apk.minSdkVersion <= SDK_INT);
             }
         }
+
         private static class EclairChecker extends CompatibilityChecker {
-            private PackageManager pm;
+
+            private HashSet features;
+
             public EclairChecker(Context ctx) {
-                pm = ctx.getPackageManager();
+                PackageManager pm = ctx.getPackageManager();
+                features = new HashSet();
+                for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
+                    features.add(fi.name);
+                }
             }
+
             public boolean isCompatible(Apk apk) {
                 if (apk.minSdkVersion > SDK_INT)
                     return false;
                 if (apk.features != null) {
                     for (String feat : apk.features) {
-                        if (!pm.hasSystemFeature(feat))
-                            return false;
+                        if (!features.contains(feat)) return false;
                     }
                 }
                 return true;
