@@ -220,11 +220,11 @@ public class DB {
 
         private static class EclairChecker extends CompatibilityChecker {
 
-            private HashSet features;
+            private HashSet<String> features;
 
             public EclairChecker(Context ctx) {
                 PackageManager pm = ctx.getPackageManager();
-                features = new HashSet();
+                features = new HashSet<String>();
                 for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
                     features.add(fi.name);
                 }
