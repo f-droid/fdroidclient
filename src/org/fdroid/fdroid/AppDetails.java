@@ -128,7 +128,7 @@ public class AppDetails extends ListActivity {
 
     private static String getFriendlySize(int size) {
         double s = size;
-        String[] format = new String[] { "%fb", "%.0fK", "%.1fM", "%.2fG" };
+        String[] format = { "%f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
         int i = 0;
         while (i < format.length - 1 && s >= 1024) {
             s = (100 * s / 1024) / 100.0;
