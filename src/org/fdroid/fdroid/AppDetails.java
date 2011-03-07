@@ -297,87 +297,12 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         curapk = app.apks.get(position);
-
-        // Ignore attempt to install incompatible APK
-        if (!compatChecker.isCompatible(curapk)) return;
-
-        // Create alert dialog...
-        final AlertDialog p = new AlertDialog.Builder(this).create();
-
-        // Set the title and icon...
-        String icon_path = DB.getIconsPath() + app.icon;
-        File test_icon = new File(icon_path);
-        if (test_icon.exists()) {
-            p.setIcon(new BitmapDrawable(icon_path));
-        } else {
-            p.setIcon(android.R.drawable.sym_def_app_icon);
+        if (app.installedVersion != null
+              && app.installedVersion.equals(curapk.version)) {
+            removeApk(app.id);
+        } else if (compatChecker.isCompatible(curapk)) {
+            install();
         }
-        p.setTitle(app.name + " " + curapk.version);
-
-        boolean caninstall = true;
-        String installed = getString(R.string.no);
-        if (app.installedVersion != null) {
-            if (app.installedVersion.equals(curapk.version)) {
-                installed = getString(R.string.yes);
-                caninstall = false;
-            } else {
-                installed = app.installedVersion;
-            }
-        }
-
-        StringBuilder msg = new StringBuilder();
-        msg.append(getString(R.string.isinst));
-        msg.append(" ");
-        msg.append(installed);
-        if (caninstall && curapk.minSdkVersion > 0) {
-            msg.append("\nMinimum API level: ");
-            msg.append(curapk.minSdkVersion);
-        }
-        if (caninstall && curapk.permissions != null) {
-            msg.append("\nPermissions required:");
-            for (String perm : curapk.permissions) {
-                msg.append("\n  ");
-                msg.append(perm);
-            }
-        }
-        if (caninstall && curapk.features != null) {
-            msg.append("\nFeatures required:");
-            for (String feat : curapk.features) {
-                msg.append("\n  ");
-                if (feat.matches("android\\.(hard|soft)ware\\..*"))
-                    msg.append(feat.substring(17));
-                else
-                    msg.append(feat);
-            }
-        }
-        p.setMessage(msg.toString());
-
-        if (caninstall) {
-            p.setButton(getString(R.string.install),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            p.dismiss();
-                            install();
-                        }
-                    });
-        } else {
-            p.setButton(getString(R.string.uninstall),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            p.dismiss();
-                            removeApk(app.id);
-                        }
-                    });
-        }
-
-        p.setButton2(getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                });
-
-        p.show();
     }
 
     @Override
@@ -473,7 +398,8 @@ public class AppDetails extends ListActivity {
                 && !curapk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
-                    "Ok", new DialogInterface.OnClickListener() {
+                    getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
