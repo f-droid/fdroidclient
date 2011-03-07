@@ -159,6 +159,7 @@ public class AppDetails extends ListActivity {
     private PackageManager mPm;
     private ProgressDialog pd;
     private DB.Apk.CompatibilityChecker compatChecker;
+    private volatile boolean cancelDownload;
 
     private Context mctx = this;
 
@@ -482,9 +483,24 @@ public class AppDetails extends ListActivity {
             return;
         }
 
+        cancelDownload = false;
+
         pd = new ProgressDialog(this);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         pd.setMessage(getString(R.string.download_server));
+        pd.setCancelable(true);
+        pd.setOnCancelListener(
+                new DialogInterface.OnCancelListener() {
+                    public void onCancel(DialogInterface dialog) {
+                        cancelDownload = true;
+                    }
+                });
+        pd.setButton(getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
         pd.show();
 
         new Thread() {
@@ -552,6 +568,10 @@ public class AppDetails extends ListActivity {
                         int totalRead = 0;
                         int bytesRead = getit.read(data, 0, 1024);
                         while (bytesRead != -1) {
+                            if (cancelDownload) {
+                                Log.d("FDroid", "Download cancelled!");
+                                break;
+                            }
                             bout.write(data, 0, bytesRead);
                             totalRead += bytesRead;
                             msg = new Message();
@@ -563,6 +583,12 @@ public class AppDetails extends ListActivity {
                         getit.close();
                         saveit.close();
                         f = new File(localfile);
+                        if (cancelDownload) {
+                            f.delete();
+                            msg = download_cancelled_handler.obtainMessage();
+                            msg.sendToTarget();
+                            return;
+                        }
                         Md5Handler hash = new Md5Handler();
                         String calcedhash = hash.md5Calc(f);
                         if (curapk.hash.equalsIgnoreCase(calcedhash)) {
@@ -633,6 +659,14 @@ public class AppDetails extends ListActivity {
             installApk(apk_file);
 
             pd.dismiss();
+        }
+    };
+
+    private Handler download_cancelled_handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            Toast.makeText(mctx, getString(R.string.download_cancelled),
+                           Toast.LENGTH_SHORT).show();
         }
     };
 

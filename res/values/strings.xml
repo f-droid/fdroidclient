@@ -107,6 +107,7 @@
 	<string name="details_notinstalled">Not installed (%d available)</string>
 	<string name="inst">Installed</string>
 	<string name="corrupt_download">Downloaded file is corrupt</string>
+        <string name="download_cancelled">Download cancelled</string>
 
 
 
