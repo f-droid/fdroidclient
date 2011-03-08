@@ -75,6 +75,7 @@ public class DB {
             donateURL = null;
             webURL = "";
             antiFeatures = null;
+            requirements = null;
             hasUpdates = false;
             updated = false;
             apks = new Vector<Apk>();
@@ -95,9 +96,13 @@ public class DB {
         public String marketVersion;
         public int marketVercode;
 
-        // Array of anti-features (as defined in the metadata
+        // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
         public CommaSeparatedList antiFeatures;
+
+        // List of special requirements (such as root privileges) or
+        // null if there aren't any.
+        public CommaSeparatedList requirements;
 
         // True if there are new versions (apks) that the user hasn't
         // explicitly ignored. (We're currently not using the database
@@ -301,7 +306,10 @@ public class DB {
             // Version 10...
             { "alter table " + TABLE_APK + " add minSdkVersion integer",
               "alter table " + TABLE_APK + " add permissions string",
-              "alter table " + TABLE_APK + " add features string" }};
+              "alter table " + TABLE_APK + " add features string" },
+
+            // Version 11...
+            { "alter table " + TABLE_APP + " add requirements string" }};
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -409,6 +417,7 @@ public class DB {
         boolean pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
         boolean pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
         boolean pref_showIncompat = prefs.getBoolean("showIncompatible", false);
+        boolean pref_rooted = prefs.getBoolean("rooted", true);
 
         Vector<App> result = new Vector<App>();
         Cursor c = null;
@@ -444,6 +453,15 @@ public class DB {
                         else if (af.equals("NonFreeAdd")
                                 && !pref_antiNonFreeAdd)
                             include = false;
+                    }
+                }
+                app.requirements = DB.CommaSeparatedList.make(c
+                        .getString(c.getColumnIndex("requirements")));
+                if (app.requirements != null) {
+                    for (String r : app.requirements) {
+                        if (r.equals("root") && !pref_rooted) {
+                            include = false;
+                        }
                     }
                 }
 
@@ -752,6 +770,7 @@ public class DB {
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
+        values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });

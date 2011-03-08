@@ -162,6 +162,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             } else if (curel.equals("antifeatures")) {
                 curapp.antiFeatures = DB.CommaSeparatedList.make(str);
+            } else if (curel.equals("requirements")) {
+                curapp.requirements = DB.CommaSeparatedList.make(str);
             }
         }
 

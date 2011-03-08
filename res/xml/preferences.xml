@@ -37,6 +37,9 @@
 		<CheckBoxPreference android:title="@string/showincompat"
 			android:defaultValue="false" android:summary="@string/showincompat_long"
 			android:key="showIncompatible" />
+		<CheckBoxPreference android:title="@string/rooted"
+			android:defaultValue="true" android:summary="@string/rooted_long"
+			android:key="rooted" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/maintenance">
 		<Preference android:title="@string/reset" android:summary="@string/clear_all_cached_data"
