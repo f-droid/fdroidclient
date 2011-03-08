@@ -20,6 +20,8 @@
 package org.fdroid.fdroid;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -27,13 +29,16 @@ import java.util.Vector;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.text.TextUtils.SimpleStringSplitter;
 
 public class DB {
 
@@ -70,6 +75,7 @@ public class DB {
             donateURL = null;
             webURL = "";
             antiFeatures = null;
+            requirements = null;
             hasUpdates = false;
             updated = false;
             apks = new Vector<Apk>();
@@ -90,9 +96,13 @@ public class DB {
         public String marketVersion;
         public int marketVercode;
 
-        // Comma-separated list of anti-features (as defined in the metadata
+        // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
-        public String antiFeatures;
+        public CommaSeparatedList antiFeatures;
+
+        // List of special requirements (such as root privileges) or
+        // null if there aren't any.
+        public CommaSeparatedList requirements;
 
         // True if there are new versions (apks) that the user hasn't
         // explicitly ignored. (We're currently not using the database
@@ -109,22 +119,25 @@ public class DB {
         // This should be the 'current' version, as in the most recent stable
         // one, that most users would want by default. It might not be the
         // most recent, if for example there are betas etc.
-        public Apk getCurrentVersion() {
+        // To skip compatibility checks, pass null as the checker.
+        public Apk getCurrentVersion(DB.Apk.CompatibilityChecker checker) {
 
             // Try and return the version that's in Google's market first...
             if (marketVersion != null && marketVercode > 0) {
                 for (Apk apk : apks) {
-                    if (apk.vercode == marketVercode)
+                    if (apk.vercode == marketVercode
+                          && (checker == null || checker.isCompatible(apk)))
                         return apk;
                 }
             }
 
             // If we don't know the market version, or we don't have it, we
-            // return the most recent version we have...
+            // return the most recent compatible version we have...
             int latestcode = -1;
             Apk latestapk = null;
             for (Apk apk : apks) {
-                if (apk.vercode > latestcode) {
+                if (apk.vercode > latestcode
+                      && (checker == null || checker.isCompatible(apk))) {
                     latestapk = apk;
                     latestcode = apk.vercode;
                 }
@@ -158,6 +171,9 @@ public class DB {
         public int size; // Size in bytes - 0 means we don't know!
         public String server;
         public String hash;
+        public int minSdkVersion;      // 0 if unknown
+        public CommaSeparatedList permissions; // null if empty or unknown
+        public CommaSeparatedList features;    // null if empty or unknown
 
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
@@ -180,6 +196,58 @@ public class DB {
         public String getURL() {
             String path = apkName.replace(" ", "%20");
             return server + "/" + path;
+        }
+
+        // Call isCompatible(apk) on an instance of this class to
+        // check if an APK is compatible with the user's device.
+        public static abstract class CompatibilityChecker {
+
+            // Because Build.VERSION.SDK_INT requires API level 5
+            protected final static int SDK_INT
+                = Integer.parseInt(Build.VERSION.SDK);
+
+            public abstract boolean isCompatible(Apk apk);
+
+            public static CompatibilityChecker getChecker(Context ctx) {
+                CompatibilityChecker checker;
+                if (SDK_INT >= 5)
+                    checker = new EclairChecker(ctx);
+                else
+                    checker = new BasicChecker();
+                Log.d("FDroid", "Compatibility checker for API level "
+                      + SDK_INT + ": " + checker.getClass().getName());
+                return checker;
+            }
+        }
+
+        private static class BasicChecker extends CompatibilityChecker {
+            public boolean isCompatible(Apk apk) {
+                return (apk.minSdkVersion <= SDK_INT);
+            }
+        }
+
+        private static class EclairChecker extends CompatibilityChecker {
+
+            private HashSet<String> features;
+
+            public EclairChecker(Context ctx) {
+                PackageManager pm = ctx.getPackageManager();
+                features = new HashSet<String>();
+                for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
+                    features.add(fi.name);
+                }
+            }
+
+            public boolean isCompatible(Apk apk) {
+                if (apk.minSdkVersion > SDK_INT)
+                    return false;
+                if (apk.features != null) {
+                    for (String feat : apk.features) {
+                        if (!features.contains(feat)) return false;
+                    }
+                }
+                return true;
+            }
         }
     }
 
@@ -236,7 +304,15 @@ public class DB {
             { "alter table " + TABLE_APP + " add donateURL string" },
 
             // Version 9...
-            { "alter table " + TABLE_APK + " add srcname string" } };
+            { "alter table " + TABLE_APK + " add srcname string" },
+
+            // Version 10...
+            { "alter table " + TABLE_APK + " add minSdkVersion integer",
+              "alter table " + TABLE_APK + " add permissions string",
+              "alter table " + TABLE_APK + " add features string" },
+
+            // Version 11...
+            { "alter table " + TABLE_APP + " add requirements string" }};
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -275,6 +351,7 @@ public class DB {
 
     private PackageManager mPm;
     private Context mContext;
+    private Apk.CompatibilityChecker compatChecker;
 
     public DB(Context ctx) {
 
@@ -295,6 +372,7 @@ public class DB {
             sync_mode = null;
         if (sync_mode != null)
             Log.d("FDroid", "Database synchronization mode: " + sync_mode);
+        compatChecker = Apk.CompatibilityChecker.getChecker(ctx);
     }
 
     public void close() {
@@ -326,8 +404,9 @@ public class DB {
         return count;
     }
 
-    // Return a list of apps matching the given criteria. Filtering is also
-    // done based on the user's current anti-features preferences.
+    // Return a list of apps matching the given criteria. Filtering is
+    // also done based on compatibility and anti-features according to
+    // the user's current preferences.
     // 'appid' - specific app id to retrieve, or null
     // 'filter' - search text to filter on, or null
     // 'update' - update installed version information from device, rather than
@@ -340,6 +419,8 @@ public class DB {
         boolean pref_antiTracking = prefs.getBoolean("antiTracking", false);
         boolean pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
         boolean pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
+        boolean pref_showIncompat = prefs.getBoolean("showIncompatible", false);
+        boolean pref_rooted = prefs.getBoolean("rooted", true);
 
         Vector<App> result = new Vector<App>();
         Cursor c = null;
@@ -360,12 +441,11 @@ public class DB {
             while (!c.isAfterLast()) {
 
                 App app = new App();
-                app.antiFeatures = c
-                        .getString(c.getColumnIndex("antiFeatures"));
+                app.antiFeatures = DB.CommaSeparatedList.make(c
+                        .getString(c.getColumnIndex("antiFeatures")));
                 boolean include = true;
-                if (app.antiFeatures != null && app.antiFeatures.length() > 0) {
-                    String[] afs = app.antiFeatures.split(",");
-                    for (String af : afs) {
+                if (app.antiFeatures != null) {
+                    for (String af : app.antiFeatures) {
                         if (af.equals("Ads") && !pref_antiAds)
                             include = false;
                         else if (af.equals("Tracking") && !pref_antiTracking)
@@ -376,6 +456,15 @@ public class DB {
                         else if (af.equals("NonFreeAdd")
                                 && !pref_antiNonFreeAdd)
                             include = false;
+                    }
+                }
+                app.requirements = DB.CommaSeparatedList.make(c
+                        .getString(c.getColumnIndex("requirements")));
+                if (app.requirements != null) {
+                    for (String r : app.requirements) {
+                        if (r.equals("root") && !pref_rooted) {
+                            include = false;
+                        }
                     }
                 }
 
@@ -406,6 +495,7 @@ public class DB {
                             + " where id = ? order by vercode desc",
                             new String[] { app.id });
                     c2.moveToFirst();
+                    boolean compatible = pref_showIncompat;
                     while (!c2.isAfterLast()) {
                         Apk apk = new Apk();
                         apk.id = app.id;
@@ -421,12 +511,28 @@ public class DB {
                                 .getString(c2.getColumnIndex("apkName"));
                         apk.apkSource = c2.getString(c2
                                 .getColumnIndex("apkSource"));
+                        apk.minSdkVersion = c2.getInt(c2
+                                .getColumnIndex("minSdkVersion"));
+                        apk.permissions = CommaSeparatedList.make(c2
+                                .getString(c2.getColumnIndex("permissions")));
+                        apk.features = CommaSeparatedList.make(c2
+                                .getString(c2.getColumnIndex("features")));
                         app.apks.add(apk);
+                        if (!compatible && compatChecker.isCompatible(apk)) {
+                            // At least one compatible APK.
+                            compatible = true;
+                        }
                         c2.moveToNext();
                     }
                     c2.close();
 
-                    result.add(app);
+                    if (compatible) {
+                        result.add(app);
+                    }
+                    else {
+                        Log.d("FDroid", "Excluding incompatible application: "
+                              + app.id);
+                    }
                 }
 
                 c.moveToNext();
@@ -458,7 +564,7 @@ public class DB {
         // installed version is not the 'current' one AND the installed
         // version is older than the current one.
         for (App app : result) {
-            Apk curver = app.getCurrentVersion();
+            Apk curver = app.getCurrentVersion(compatChecker);
             if (curver != null && app.installedVersion != null
                     && !app.installedVersion.equals(curver.version)) {
                 if (app.installedVerCode < curver.vercode)
@@ -494,6 +600,35 @@ public class DB {
                     app.installedVersion = null;
                 }
             }
+        }
+    }
+
+    public static class CommaSeparatedList implements Iterable<String> {
+        private String value;
+
+        private CommaSeparatedList(String list) {
+            value = list;
+        }
+
+        public static CommaSeparatedList make(String list) {
+            if (list == null || list.length() == 0)
+                return null;
+            else
+                return new CommaSeparatedList(list);
+        }
+
+        public static String str(CommaSeparatedList instance) {
+            return (instance == null ? null : instance.toString());
+        }
+
+        public String toString() {
+            return value;
+        }
+
+        public Iterator<String> iterator() {
+            SimpleStringSplitter splitter = new SimpleStringSplitter(',');
+            splitter.setString(value);
+            return splitter.iterator();
         }
     }
 
@@ -637,7 +772,8 @@ public class DB {
         values.put("installedVerCode", upapp.installedVerCode);
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
-        values.put("antiFeatures", upapp.antiFeatures);
+        values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
+        values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
@@ -664,6 +800,9 @@ public class DB {
         values.put("size", upapk.size);
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
+        values.put("minSdkVersion", upapk.minSdkVersion);
+        values.put("permissions", CommaSeparatedList.str(upapk.permissions));
+        values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {
             db.update(TABLE_APK, values, "id = ? and version =?", new String[] {
                     oldapk.id, oldapk.version });

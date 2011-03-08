@@ -122,6 +122,12 @@ public class AppDetails extends ListActivity {
             } else { 
                 buildtype.setText("bin");
             }
+            if (!compatChecker.isCompatible(apk)) {
+                View[] views = { v, version, status, size, buildtype };
+                for (View view : views) {
+                    view.setEnabled(false);
+                }
+            }
             return v;
         }
     }
@@ -152,6 +158,8 @@ public class AppDetails extends ListActivity {
     private String appid;
     private PackageManager mPm;
     private ProgressDialog pd;
+    private DB.Apk.CompatibilityChecker compatChecker;
+    private volatile boolean cancelDownload;
 
     private Context mctx = this;
 
@@ -192,6 +200,7 @@ public class AppDetails extends ListActivity {
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
         viewResetRequired = true;
+        compatChecker = DB.Apk.CompatibilityChecker.getChecker(this);
 
     }
 
@@ -218,7 +227,7 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = db.getApps(appid, null, true).get(0);
-        DB.Apk curver = app.getCurrentVersion();
+        DB.Apk curver = app.getCurrentVersion(compatChecker);
         app_currentvercode = curver == null ? 0 : curver.vercode;
 
         // Get the signature of the installed package...
@@ -287,59 +296,13 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        // Create alert dialog...
-        final AlertDialog p = new AlertDialog.Builder(this).create();
-
         curapk = app.apks.get(position);
-
-        // Set the title and icon...
-        String icon_path = DB.getIconsPath() + app.icon;
-        File test_icon = new File(icon_path);
-        if (test_icon.exists()) {
-            p.setIcon(new BitmapDrawable(icon_path));
-        } else {
-            p.setIcon(android.R.drawable.sym_def_app_icon);
+        if (app.installedVersion != null
+              && app.installedVersion.equals(curapk.version)) {
+            removeApk(app.id);
+        } else if (compatChecker.isCompatible(curapk)) {
+            install();
         }
-        p.setTitle(app.name + " " + curapk.version);
-
-        boolean caninstall = true;
-        String installed = getString(R.string.no);
-        if (app.installedVersion != null) {
-            if (app.installedVersion.equals(curapk.version)) {
-                installed = getString(R.string.yes);
-                caninstall = false;
-            } else {
-                installed = app.installedVersion;
-            }
-        }
-        p.setMessage(getString(R.string.isinst) + " " + installed);
-
-        if (caninstall) {
-            p.setButton(getString(R.string.install),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            p.dismiss();
-                            install();
-                        }
-                    });
-        } else {
-            p.setButton(getString(R.string.uninstall),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            p.dismiss();
-                            removeApk(app.id);
-                        }
-                    });
-        }
-
-        p.setButton2(getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                });
-
-        p.show();
     }
 
     @Override
@@ -347,7 +310,7 @@ public class AppDetails extends ListActivity {
 
         super.onCreateOptionsMenu(menu);
         menu.clear();
-        DB.Apk curver = app.getCurrentVersion();
+        DB.Apk curver = app.getCurrentVersion(compatChecker);
         if (app.installedVersion != null && curver != null
                 && !app.installedVersion.equals(curver.version)) {
             menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
@@ -391,7 +354,7 @@ public class AppDetails extends ListActivity {
 
         case INSTALL:
             // Note that this handles updating as well as installing.
-            curapk = app.getCurrentVersion();
+            curapk = app.getCurrentVersion(compatChecker);
             if (curapk != null)
                 install();
             return true;
@@ -435,7 +398,8 @@ public class AppDetails extends ListActivity {
                 && !curapk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
-                    "Ok", new DialogInterface.OnClickListener() {
+                    getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
@@ -445,9 +409,24 @@ public class AppDetails extends ListActivity {
             return;
         }
 
+        cancelDownload = false;
+
         pd = new ProgressDialog(this);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         pd.setMessage(getString(R.string.download_server));
+        pd.setCancelable(true);
+        pd.setOnCancelListener(
+                new DialogInterface.OnCancelListener() {
+                    public void onCancel(DialogInterface dialog) {
+                        cancelDownload = true;
+                    }
+                });
+        pd.setButton(getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
         pd.show();
 
         new Thread() {
@@ -515,6 +494,10 @@ public class AppDetails extends ListActivity {
                         int totalRead = 0;
                         int bytesRead = getit.read(data, 0, 1024);
                         while (bytesRead != -1) {
+                            if (cancelDownload) {
+                                Log.d("FDroid", "Download cancelled!");
+                                break;
+                            }
                             bout.write(data, 0, bytesRead);
                             totalRead += bytesRead;
                             msg = new Message();
@@ -526,6 +509,12 @@ public class AppDetails extends ListActivity {
                         getit.close();
                         saveit.close();
                         f = new File(localfile);
+                        if (cancelDownload) {
+                            f.delete();
+                            msg = download_cancelled_handler.obtainMessage();
+                            msg.sendToTarget();
+                            return;
+                        }
                         Md5Handler hash = new Md5Handler();
                         String calcedhash = hash.md5Calc(f);
                         if (curapk.hash.equalsIgnoreCase(calcedhash)) {
@@ -596,6 +585,14 @@ public class AppDetails extends ListActivity {
             installApk(apk_file);
 
             pd.dismiss();
+        }
+    };
+
+    private Handler download_cancelled_handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            Toast.makeText(mctx, getString(R.string.download_cancelled),
+                           Toast.LENGTH_SHORT).show();
         }
     };
 
