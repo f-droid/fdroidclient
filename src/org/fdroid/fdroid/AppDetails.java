@@ -189,7 +189,7 @@ public class AppDetails extends ListActivity {
         // Get the preferences we're going to use in this Activity...
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", true);
+        pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
         viewResetRequired = true;
 
