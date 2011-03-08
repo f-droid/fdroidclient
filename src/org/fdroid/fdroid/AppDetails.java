@@ -227,7 +227,7 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = db.getApps(appid, null, true).get(0);
-        DB.Apk curver = app.getCurrentVersion();
+        DB.Apk curver = app.getCurrentVersion(compatChecker);
         app_currentvercode = curver == null ? 0 : curver.vercode;
 
         // Get the signature of the installed package...
@@ -310,7 +310,7 @@ public class AppDetails extends ListActivity {
 
         super.onCreateOptionsMenu(menu);
         menu.clear();
-        DB.Apk curver = app.getCurrentVersion();
+        DB.Apk curver = app.getCurrentVersion(compatChecker);
         if (app.installedVersion != null && curver != null
                 && !app.installedVersion.equals(curver.version)) {
             menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
@@ -354,7 +354,7 @@ public class AppDetails extends ListActivity {
 
         case INSTALL:
             // Note that this handles updating as well as installing.
-            curapk = app.getCurrentVersion();
+            curapk = app.getCurrentVersion(compatChecker);
             if (curapk != null)
                 install();
             return true;

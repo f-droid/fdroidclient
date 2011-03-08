@@ -119,22 +119,25 @@ public class DB {
         // This should be the 'current' version, as in the most recent stable
         // one, that most users would want by default. It might not be the
         // most recent, if for example there are betas etc.
-        public Apk getCurrentVersion() {
+        // To skip compatibility checks, pass null as the checker.
+        public Apk getCurrentVersion(DB.Apk.CompatibilityChecker checker) {
 
             // Try and return the version that's in Google's market first...
             if (marketVersion != null && marketVercode > 0) {
                 for (Apk apk : apks) {
-                    if (apk.vercode == marketVercode)
+                    if (apk.vercode == marketVercode
+                          && (checker == null || checker.isCompatible(apk)))
                         return apk;
                 }
             }
 
             // If we don't know the market version, or we don't have it, we
-            // return the most recent version we have...
+            // return the most recent compatible version we have...
             int latestcode = -1;
             Apk latestapk = null;
             for (Apk apk : apks) {
-                if (apk.vercode > latestcode) {
+                if (apk.vercode > latestcode
+                      && (checker == null || checker.isCompatible(apk))) {
                     latestapk = apk;
                     latestcode = apk.vercode;
                 }
@@ -561,7 +564,7 @@ public class DB {
         // installed version is not the 'current' one AND the installed
         // version is older than the current one.
         for (App app : result) {
-            Apk curver = app.getCurrentVersion();
+            Apk curver = app.getCurrentVersion(compatChecker);
             if (curver != null && app.installedVersion != null
                     && !app.installedVersion.equals(curver.version)) {
                 if (app.installedVerCode < curver.vercode)
