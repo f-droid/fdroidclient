@@ -6,14 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-01-20 22:58+0000\n"
+"POT-Creation-Date: 2011-03-10 15:01+0000\n"
 "PO-Revision-Date: 2010-12-15 06:43+0200\n"
 "Last-Translator: MagicFab <magicfab@member.fsf.org>\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
 
 msgctxt "searchres_napps"
@@ -56,6 +58,7 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Notifier"
 
+# According to granddictionnaire.com
 msgctxt "storage"
 msgid "Storage"
 msgstr "Mémoire"
@@ -342,6 +345,11 @@ msgctxt "menu_update"
 msgid "Update"
 msgstr "Mise à jour"
 
+#, fuzzy
+msgctxt "menu_donate"
+msgid "Donate"
+msgstr "Mise à jour"
+
 #, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
@@ -359,6 +367,10 @@ msgstr "Installée"
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Le fichier téléchargé est corrompu"
+
+msgctxt "download_cancelled"
+msgid "Download cancelled"
+msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
@@ -409,3 +421,30 @@ msgctxt "search_hint"
 msgid "Search applications"
 msgstr "Réception d'application de"
 
+msgctxt "db_sync_mode"
+msgid "Database sync mode"
+msgstr ""
+
+msgctxt "db_sync_mode_long"
+msgid "Set the value of SQLite's synchronous flag"
+msgstr ""
+
+msgctxt "appcompatibility"
+msgid "Application compatibility"
+msgstr ""
+
+msgctxt "showincompat"
+msgid "Incompatible apps"
+msgstr ""
+
+msgctxt "showincompat_long"
+msgid "Show apps written for newer Android versions or different hardware"
+msgstr ""
+
+msgctxt "rooted"
+msgid "Root"
+msgstr ""
+
+msgctxt "rooted_long"
+msgid "Show apps that require root privileges"
+msgstr ""

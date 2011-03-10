@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-01-20 22:58+0000\n"
+"POT-Creation-Date: 2011-03-10 15:01+0000\n"
 "PO-Revision-Date: 2010-11-16 09:54+0200\n"
 "Last-Translator: Jan-Christoph <JanCBorchardt@gmail.com>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -343,6 +343,11 @@ msgctxt "menu_update"
 msgid "Update"
 msgstr "Aktualisieren"
 
+#, fuzzy
+msgctxt "menu_donate"
+msgid "Donate"
+msgstr "Aktualisieren"
+
 #, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
@@ -360,6 +365,10 @@ msgstr "Installiert"
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Heruntergeladene Datei ist fehlerhaft"
+
+msgctxt "download_cancelled"
+msgid "Download cancelled"
+msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
@@ -409,4 +418,32 @@ msgstr ""
 msgctxt "search_hint"
 msgid "Search applications"
 msgstr "Anwendung wird heruntergeladen von"
+
+msgctxt "db_sync_mode"
+msgid "Database sync mode"
+msgstr ""
+
+msgctxt "db_sync_mode_long"
+msgid "Set the value of SQLite's synchronous flag"
+msgstr ""
+
+msgctxt "appcompatibility"
+msgid "Application compatibility"
+msgstr ""
+
+msgctxt "showincompat"
+msgid "Incompatible apps"
+msgstr ""
+
+msgctxt "showincompat_long"
+msgid "Show apps written for newer Android versions or different hardware"
+msgstr ""
+
+msgctxt "rooted"
+msgid "Root"
+msgstr ""
+
+msgctxt "rooted_long"
+msgid "Show apps that require root privileges"
+msgstr ""
 

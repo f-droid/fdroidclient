@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-01-20 22:58+0000\n"
-"PO-Revision-Date: 2011-01-21 01:09+0200\n"
-"Last-Translator: Administrator <>\n"
+"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"PO-Revision-Date: 2011-02-16 18:03+0200\n"
+"Last-Translator: Natanael_L <natanael.l@gmail.com>\n"
 "Language-Team: sv <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -39,10 +39,11 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Den nya versionen är signerad med en annan nyckel än den gamla. Avinstallera "
-"först den gamla versionen och försök sedan igen. (Observera att data som "
-"tillhör programmet kommer att raderas när det avinstalleras.)"
+"Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla "
+"versionen måste först avinstalleras. Försök sedan igen. (Observera att data "
+"som tillhör programmet kommer att raderas när det avinstalleras.)"
 
+# Dumma, dumma Pootle som måste klaga för att ordet inte ändrats...
 msgctxt "version"
 msgid "Version"
 msgstr "Version"
@@ -57,9 +58,10 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d version tillgänglig"
 
+# Tack till PactrackDroids skapare för detta mycket bättre förslag!
 msgctxt "notify"
 msgid "Notify"
-msgstr "Meddela"
+msgstr "Avisering"
 
 msgctxt "storage"
 msgid "Storage"
@@ -79,7 +81,7 @@ msgstr "Uppdateringar"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Rensa alla cachade data"
+msgstr "Rensa all cachad data"
 
 msgctxt "reset"
 msgid "Reset"
@@ -93,7 +95,6 @@ msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
 msgstr "Meddela mig när nya uppdateringar finns"
 
-#, fuzzy
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Uppdatera programlistan från förråd automatiskt"
@@ -110,34 +111,30 @@ msgctxt "about_title"
 msgid "About FDroid"
 msgstr "Om FDroid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
 "Ursprungligen baserat på Aptoide.\n"
-"Släppt under licensen GNU GPL, version 2 eller senare."
+"Släppt under licensen GNU GPLv2."
 
-#, fuzzy
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Webbplats:"
+msgstr "Webbplats: "
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "E-post:"
+msgstr "E-post: "
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Version:"
+msgstr "Version: "
 
-#, fuzzy
 msgctxt "about_website"
 msgid "Website"
 msgstr "Webbplats"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -149,8 +146,8 @@ msgid ""
 msgstr ""
 "Du har inga förråd konfigurerade!\n"
 "\n"
-"Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en "
-"för att lägga till ett nu.\n"
+"Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en"
+" för att lägga till ett nu.\n"
 "\n"
 "En förråds-URL ser ut ungefär så här: http://f-droid.org/repo"
 
@@ -242,10 +239,9 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Hämtar program från"
 
-#, fuzzy
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Förrådets adress"
+msgstr "Förrådadress"
 
 msgctxt "isinst"
 msgid "Installed:"
@@ -260,12 +256,10 @@ msgid "Uninstall"
 msgstr "Avinstallera"
 
 # Eller kanske "Uppdatering!". Vad är sammanhanget?
-#, fuzzy
 msgctxt "update"
 msgid "Update!"
 msgstr "Uppdatera!"
 
-#, fuzzy
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
@@ -274,7 +268,6 @@ msgstr ""
 "Det finns uppdateringar för vissa av de installerade programmen.\n"
 "Vill du se dem?"
 
-#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -327,7 +320,6 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-#, fuzzy
 msgctxt "menu_website"
 msgid "Website"
 msgstr "Webbplats"
@@ -340,12 +332,18 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Källkod"
 
+# Det ska vara "Market" eftersom det är Android Market det syftar på, och det har inget svenskt namn
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Marknad"
+msgstr "Market"
 
 msgctxt "menu_update"
 msgid "Update"
+msgstr "Uppdatera"
+
+#, fuzzy
+msgctxt "menu_donate"
+msgid "Donate"
 msgstr "Uppdatera"
 
 #, python-format
@@ -365,6 +363,10 @@ msgstr "Installerad"
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Den nerladdade filen är skadad"
+
+msgctxt "download_cancelled"
+msgid "Download cancelled"
+msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
@@ -391,9 +393,10 @@ msgid "Add-ons"
 msgstr "Tillägg"
 
 # Menar vi "gynna" eller "göra reklam för"?
+# - Det menas allt som stödjer eller använder ickefria vad-som-helst. T.ex. plugins med stängd kod.
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Visa program som befrämjar icke-fria tillägg"
+msgstr "Visa program som främjar icke-fria tillägg"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -401,7 +404,7 @@ msgstr "Nätverkstjänster"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Visa program som befrämjar icke-fria nätverkstjänster"
+msgstr "Visa program som främjar icke-fria nätverkstjänster"
 
 msgctxt "expert"
 msgid "Expert"
@@ -415,3 +418,31 @@ msgstr ""
 msgctxt "search_hint"
 msgid "Search applications"
 msgstr "Hämtar program från"
+
+msgctxt "db_sync_mode"
+msgid "Database sync mode"
+msgstr ""
+
+msgctxt "db_sync_mode_long"
+msgid "Set the value of SQLite's synchronous flag"
+msgstr ""
+
+msgctxt "appcompatibility"
+msgid "Application compatibility"
+msgstr ""
+
+msgctxt "showincompat"
+msgid "Incompatible apps"
+msgstr ""
+
+msgctxt "showincompat_long"
+msgid "Show apps written for newer Android versions or different hardware"
+msgstr ""
+
+msgctxt "rooted"
+msgid "Root"
+msgstr ""
+
+msgctxt "rooted_long"
+msgid "Show apps that require root privileges"
+msgstr ""

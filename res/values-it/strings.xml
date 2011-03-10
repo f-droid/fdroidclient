@@ -54,6 +54,7 @@
   <string name="menu_source">Codice Sorgente</string>
   <string name="menu_market">Market</string>
   <string name="menu_update">Aggiornamento</string>
+  <string name="menu_donate">Aggiornamento</string>
   <string name="details_installed">Non installato</string>
   <string name="inst">Installato</string>
   <string name="search_hint">Scaricamento applicazione da</string>

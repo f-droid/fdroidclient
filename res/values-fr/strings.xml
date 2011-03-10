@@ -65,6 +65,7 @@
   <string name="menu_source">Code source</string>
   <string name="menu_market">Marché</string>
   <string name="menu_update">Mise à jour</string>
+  <string name="menu_donate">Mise à jour</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Pas installée (%d disponible)</string>
   <string name="inst">Installée</string>

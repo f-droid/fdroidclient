@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2011-01-20 22:58+0000\n"
+"POT-Creation-Date: 2011-03-10 15:01+0000\n"
 "PO-Revision-Date: 2011-01-19 19:50-0500\n"
 "Last-Translator: Ilija Milicevic <engr3337@gmail.com>\n"
 "Language-Team: sr <LL@li.org>\n"
@@ -339,6 +339,11 @@ msgctxt "menu_update"
 msgid "Update"
 msgstr "Ажурирај"
 
+#, fuzzy
+msgctxt "menu_donate"
+msgid "Donate"
+msgstr "Ажурирај"
+
 #, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
@@ -356,6 +361,10 @@ msgstr "Инсталирана"
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Скинута датотека је покварена"
+
+msgctxt "download_cancelled"
+msgid "Download cancelled"
+msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
@@ -404,4 +413,32 @@ msgstr "Омогући стручни режим"
 msgctxt "search_hint"
 msgid "Search applications"
 msgstr "Претрага апликација"
+
+msgctxt "db_sync_mode"
+msgid "Database sync mode"
+msgstr ""
+
+msgctxt "db_sync_mode_long"
+msgid "Set the value of SQLite's synchronous flag"
+msgstr ""
+
+msgctxt "appcompatibility"
+msgid "Application compatibility"
+msgstr ""
+
+msgctxt "showincompat"
+msgid "Incompatible apps"
+msgstr ""
+
+msgctxt "showincompat_long"
+msgid "Show apps written for newer Android versions or different hardware"
+msgstr ""
+
+msgctxt "rooted"
+msgid "Root"
+msgstr ""
+
+msgctxt "rooted_long"
+msgid "Show apps that require root privileges"
+msgstr ""
 

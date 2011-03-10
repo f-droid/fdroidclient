@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Avinstallera först den gamla versionen och försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
+  <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla versionen måste först avinstalleras. Försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versioner tillgängliga</string>
   <string name="n_version_available">%d version tillgänglig</string>
-  <string name="notify">Meddela</string>
+  <string name="notify">Avisering</string>
   <string name="storage">Lagring</string>
   <string name="cache_downloaded">Cacha nerladdade program</string>
   <string name="keep_downloaded">Behåll nerladdade apk-filer på SD-kortet</string>
   <string name="updates">Uppdateringar</string>
-  <string name="clear_all_cached_data">Rensa alla cachade data</string>
+  <string name="clear_all_cached_data">Rensa all cachad data</string>
   <string name="reset">Återställ</string>
   <string name="maintenance">Underhåll</string>
   <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
@@ -17,10 +17,10 @@
   <string name="automatic_repo_scan">Automatisk förrådsavsökning</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Om FDroid</string>
-  <string name="about_desc">Ursprungligen baserat på Aptoide.\nSläppt under licensen GNU GPL, version 2 eller senare.</string>
-  <string name="about_site">Webbplats:</string>
-  <string name="about_mail">E-post:</string>
-  <string name="about_version">Version:</string>
+  <string name="about_desc">Ursprungligen baserat på Aptoide.\nSläppt under licensen GNU GPLv2.</string>
+  <string name="about_site">"Webbplats: "</string>
+  <string name="about_mail">"E-post: "</string>
+  <string name="about_version">"Version: "</string>
   <string name="about_website">Webbplats</string>
   <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förråds-URL ser ut ungefär så här: http://f-droid.org/repo</string>
   <string name="not_inst">Inte installerad</string>
@@ -45,7 +45,7 @@
   <string name="connection_error_msg">Kunde inte ansluta till servern!</string>
   <string name="download">Ladda ner</string>
   <string name="download_server">Hämtar program från</string>
-  <string name="repo_add_url">Förrådets adress</string>
+  <string name="repo_add_url">Förrådadress</string>
   <string name="isinst">Installerad:</string>
   <string name="install">Installera</string>
   <string name="uninstall">Avinstallera</string>
@@ -65,8 +65,9 @@
   <string name="menu_website">Webbplats</string>
   <string name="menu_issues">Buggar</string>
   <string name="menu_source">Källkod</string>
-  <string name="menu_market">Marknad</string>
+  <string name="menu_market">Market</string>
   <string name="menu_update">Uppdatera</string>
+  <string name="menu_donate">Uppdatera</string>
   <string name="details_installed">Version %s är installerad</string>
   <string name="details_notinstalled">Inte installerat (%d versioner tillgängliga)</string>
   <string name="inst">Installerad</string>
@@ -77,9 +78,9 @@
   <string name="antitrack">Spårning</string>
   <string name="antitracklong">Visa program som kartlägger och rapporterar ditt beteende</string>
   <string name="antinonfreead">Tillägg</string>
-  <string name="antinonfreeadlong">Visa program som befrämjar icke-fria tillägg</string>
+  <string name="antinonfreeadlong">Visa program som främjar icke-fria tillägg</string>
   <string name="antinonfreenet">Nätverkstjänster</string>
-  <string name="antinonfreenetlong">Visa program som befrämjar icke-fria nätverkstjänster</string>
+  <string name="antinonfreenetlong">Visa program som främjar icke-fria nätverkstjänster</string>
   <string name="expert">Expert</string>
   <string name="search_hint">Hämtar program från</string>
 </resources>

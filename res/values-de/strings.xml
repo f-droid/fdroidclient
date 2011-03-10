@@ -65,6 +65,7 @@
   <string name="menu_source">Quelltext</string>
   <string name="menu_market">Markt</string>
   <string name="menu_update">Aktualisieren</string>
+  <string name="menu_donate">Aktualisieren</string>
   <string name="details_installed">Version %s installiert</string>
   <string name="details_notinstalled">Nicht installiert (%d verfügbar)</string>
   <string name="inst">Installiert</string>
