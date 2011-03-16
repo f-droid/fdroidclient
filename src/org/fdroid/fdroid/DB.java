@@ -171,6 +171,7 @@ public class DB {
         public int size; // Size in bytes - 0 means we don't know!
         public String server;
         public String hash;
+        public String hashType;
         public int minSdkVersion;      // 0 if unknown
         public CommaSeparatedList permissions; // null if empty or unknown
         public CommaSeparatedList features;    // null if empty or unknown
@@ -281,9 +282,9 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-    // Version 2...
+            // Version 2...
             { "alter table " + TABLE_APP + " add marketVersion text",
-                    "alter table " + TABLE_APP + " add marketVercode integer" },
+              "alter table " + TABLE_APP + " add marketVercode integer" },
 
             // Version 3...
             { "alter table " + TABLE_APK + " add apkSource text" },
@@ -312,7 +313,11 @@ public class DB {
               "alter table " + TABLE_APK + " add features string" },
 
             // Version 11...
-            { "alter table " + TABLE_APP + " add requirements string" }};
+            { "alter table " + TABLE_APP + " add requirements string" },
+
+            // Version 12...
+            { "alter table " + TABLE_APK + " add hashType string",
+              "update " + TABLE_APK + " set hashType = 'MD5'" }};
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -504,6 +509,8 @@ public class DB {
                         apk.vercode = c2.getInt(c2.getColumnIndex("vercode"));
                         apk.server = c2.getString(c2.getColumnIndex("server"));
                         apk.hash = c2.getString(c2.getColumnIndex("hash"));
+                        apk.hashType = c2.getString(c2
+                                .getColumnIndex("hashType"));
                         apk.sig = c2.getString(c2.getColumnIndex("sig"));
                         apk.srcname = c2.getString(c2.getColumnIndex("srcname"));
                         apk.size = c2.getInt(c2.getColumnIndex("size"));
@@ -795,6 +802,7 @@ public class DB {
         values.put("vercode", upapk.vercode);
         values.put("server", upapk.server);
         values.put("hash", upapk.hash);
+        values.put("hashType", upapk.hashType);
         values.put("sig", upapk.sig);
         values.put("srcname", upapk.srcname);
         values.put("size", upapk.size);

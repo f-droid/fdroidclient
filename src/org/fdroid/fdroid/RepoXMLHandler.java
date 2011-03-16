@@ -56,7 +56,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private String curchars = null;
 
-    public String pubkey;
+    private String pubkey;
+    private String hashType;
 
     public RepoXMLHandler(String srv, DB db) {
         mserver = srv;
@@ -110,7 +111,15 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapk.size = 0;
                 }
             } else if (curel.equals("hash")) {
-                curapk.hash = str;
+                if (hashType == null || hashType.equals("md5")) {
+                    if (curapk.hash == null) {
+                        curapk.hash = str;
+                        curapk.hashType = "MD5";
+                    }
+                } else if (hashType.equals("sha256")) {
+                    curapk.hash = str;
+                    curapk.hashType = "SHA-256";
+                }
             } else if (curel.equals("sig")) {
                 curapk.sig = str;
             } else if (curel.equals("srcname")) {
@@ -186,6 +195,9 @@ public class RepoXMLHandler extends DefaultHandler {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
             curapk.server = mserver;
+            hashType = null;
+        } else if (localName == "hash" && curapk != null) {
+            hashType = attributes.getValue("", "type");
         }
         curchars = null;
     }

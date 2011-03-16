@@ -22,9 +22,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.math.BigInteger;
 import java.net.URL;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -238,16 +236,8 @@ public class AppDetails extends ListActivity {
                 PackageInfo pi = pm.getPackageInfo(appid,
                         PackageManager.GET_SIGNATURES);
                 mInstalledSignature = pi.signatures[0];
-                MessageDigest md;
-                md = MessageDigest.getInstance("MD5");
-                byte[] md5sum = new byte[32];
-                md.update(mInstalledSignature.toCharsString().getBytes());
-                md5sum = md.digest();
-                BigInteger bigInt = new BigInteger(1, md5sum);
-                String md5hash = bigInt.toString(16);
-                while (md5hash.length() < 32)
-                    md5hash = "0" + md5hash;
-                mInstalledSigID = md5hash;
+                Hasher hash = new Hasher("MD5", mInstalledSignature);
+                mInstalledSigID = hash.getHash();
             } catch (NameNotFoundException e) {
                 Log.d("FDroid", "Failed to get installed signature");
             } catch (NoSuchAlgorithmException e) {
@@ -443,9 +433,8 @@ public class AppDetails extends ListActivity {
                     f = new File(localfile);
                     if (f.exists()) {
                         // We do - if its hash matches, we'll use it...
-                        Md5Handler hash = new Md5Handler();
-                        String calcedhash = hash.md5Calc(f);
-                        if (curapk.hash.equalsIgnoreCase(calcedhash)) {
+                        Hasher hash = new Hasher(curapk.hashType, f);
+                        if (hash.match(curapk.hash)) {
                             apk_file = localfile;
                             Log.d("FDroid", "Using cached apk at " + localfile);
                             Message msg = new Message();
@@ -515,16 +504,15 @@ public class AppDetails extends ListActivity {
                             msg.sendToTarget();
                             return;
                         }
-                        Md5Handler hash = new Md5Handler();
-                        String calcedhash = hash.md5Calc(f);
-                        if (curapk.hash.equalsIgnoreCase(calcedhash)) {
+                        Hasher hash = new Hasher(curapk.hashType, f);
+                        if (hash.match(curapk.hash)) {
                             apk_file = localfile;
                         } else {
                             msg = new Message();
                             msg.obj = getString(R.string.corrupt_download);
                             download_error_handler.sendMessage(msg);
                             Log.d("FDroid", "Downloaded file hash of "
-                                    + calcedhash + " did not match repo's "
+                                    + hash.getHash() + " did not match repo's "
                                     + curapk.hash);
                             // No point keeping a bad file, whether we're
                             // caching or
