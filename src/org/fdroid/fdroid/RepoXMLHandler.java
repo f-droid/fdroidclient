@@ -30,6 +30,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.cert.Certificate;
 import java.util.Vector;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -266,53 +267,65 @@ public class RepoXMLHandler extends DefaultHandler {
                         Log.d("FDroid", "Getting signed index from "
                                 + repo.address);
                         getRemoteFile(ctx, repo.address + "/index.jar",
-                                "tempindex.jar");
-                        String jarpath = ctx.getFilesDir() + "/tempindex.jar";
-                        JarFile jar = new JarFile(jarpath);
-                        JarEntry je = (JarEntry) jar.getEntry("index.xml");
-                        File efile = new File(ctx.getFilesDir(),
-                                "/tempindex.xml");
-                        InputStream in = new BufferedInputStream(jar
-                                .getInputStream(je), 8192);
-                        OutputStream out = new BufferedOutputStream(
-                                new FileOutputStream(efile), 8192);
-                        byte[] buffer = new byte[8192];
-                        while (true) {
-                            int nBytes = in.read(buffer);
-                            if (nBytes <= 0)
-                                break;
-                            out.write(buffer, 0, nBytes);
+                                      "tempindex.jar");
+                        String jarpath = ctx.getFilesDir()
+                            + "/tempindex.jar";
+                        JarFile jar;
+                        JarEntry je;
+                        try {
+                            jar = new JarFile(jarpath, true);
+                            je = (JarEntry) jar.getEntry("index.xml");
+                            File efile = new File(ctx.getFilesDir(),
+                                    "/tempindex.xml");
+                            InputStream in = new BufferedInputStream(jar
+                                    .getInputStream(je), 8192);
+                            OutputStream out = new BufferedOutputStream(
+                                    new FileOutputStream(efile), 8192);
+                            byte[] buffer = new byte[8192];
+                            while (true) {
+                                int nBytes = in.read(buffer);
+                                if (nBytes <= 0)
+                                    break;
+                                out.write(buffer, 0, nBytes);
+                            }
+                            out.flush();
+                            out.close();
+                            in.close();
+                        } catch (SecurityException e) {
+                            Log.e("FDroid", "Invalid hash for index file");
+                            return false;
                         }
-                        out.flush();
-                        out.close();
-                        in.close();
-                        java.security.cert.Certificate[] certs = je
-                                .getCertificates();
+                        Certificate[] certs = je.getCertificates();
                         jar.close();
                         if (certs == null) {
                             Log.d("FDroid", "No signature found in index");
                             return false;
                         }
-                        if (certs.length != 1) {
-                            Log.d("FDroid", "Expected one signature - found "
-                                    + certs.length);
-                            return false;
-                        }
+                        Log.d("FDroid", "Index has "
+                              + certs.length + " signature"
+                              + (certs.length > 1 ? "s." : "."));
 
-                        byte[] sig = certs[0].getEncoded();
-                        byte[] csig = new byte[sig.length * 2];
-                        for (int j = 0; j < sig.length; j++) {
-                            byte v = sig[j];
-                            int d = (v >> 4) & 0xf;
-                            csig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10)
-                                    : ('0' + d));
-                            d = v & 0xf;
-                            csig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10)
-                                    : ('0' + d));
+                        boolean match = false;
+                        for (Certificate cert : certs) {
+                            byte[] sig = cert.getEncoded();
+                            byte[] csig = new byte[sig.length * 2];
+                            for (int j = 0; j < sig.length; j++) {
+                                byte v = sig[j];
+                                int d = (v >> 4) & 0xf;
+                                csig[j * 2] = (byte) (d >= 10
+                                                      ? ('a' + d - 10)
+                                                      : ('0' + d));
+                                d = v & 0xf;
+                                csig[j * 2 + 1] = (byte) (d >= 10
+                                                          ? ('a' + d - 10)
+                                                          : ('0' + d));
+                            }
+                            if (repo.pubkey.equals(new String(csig))) {
+                                match = true;
+                                break;
+                            }
                         }
-                        String ssig = new String(csig);
-
-                        if (!ssig.equals(repo.pubkey)) {
+                        if (!match) {
                             Log.d("FDroid", "Index signature mismatch");
                             return false;
                         }
