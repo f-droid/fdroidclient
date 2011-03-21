@@ -10,7 +10,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -18,16 +18,10 @@
 
 package org.fdroid.fdroid;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.fdroid.fdroid.R;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -59,8 +53,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public class AppDetails extends ListActivity {
-
-    private String LOCAL_PATH = "/sdcard/.fdroid";
 
     private static final int REQUEST_INSTALL = 0;
     private static final int REQUEST_UNINSTALL = 1;
@@ -155,9 +147,10 @@ public class AppDetails extends ListActivity {
     private DB.Apk curapk;
     private String appid;
     private PackageManager mPm;
-    private ProgressDialog pd;
     private DB.Apk.CompatibilityChecker compatChecker;
-    private volatile boolean cancelDownload;
+    private Downloader download;
+    private DownloadHandler downloadHandler;
+    private boolean stateRetained;
 
     private Context mctx = this;
 
@@ -199,7 +192,10 @@ public class AppDetails extends ListActivity {
         pref_expert = prefs.getBoolean("expert", false);
         viewResetRequired = true;
         compatChecker = DB.Apk.CompatibilityChecker.getChecker(this);
-
+        download = (Downloader)getLastNonConfigurationInstance();
+        if (download != null && download.isAlive()) {
+            downloadHandler = new DownloadHandler();
+        }
     }
 
     @Override
@@ -217,6 +213,23 @@ public class AppDetails extends ListActivity {
         db = null;
         ((FDroidApp) getApplication()).inActivity--;
         super.onStop();
+    }
+
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+        stateRetained = true;
+        return download;
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (download != null && !stateRetained) {
+            download.interrupt();
+        }
+        if (downloadHandler != null) {
+            downloadHandler.destroy();
+        }
+        super.onDestroy();
     }
 
     // Reset the display and list contents. Used when entering the activity, and
@@ -383,7 +396,6 @@ public class AppDetails extends ListActivity {
 
     // Install the version of this app denoted by 'curapk'.
     private void install() {
-
         if (mInstalledSigID != null && curapk.sig != null
                 && !curapk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -398,191 +410,10 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-
-        cancelDownload = false;
-
-        pd = new ProgressDialog(this);
-        pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        pd.setMessage(getString(R.string.download_server));
-        pd.setCancelable(true);
-        pd.setOnCancelListener(
-                new DialogInterface.OnCancelListener() {
-                    public void onCancel(DialogInterface dialog) {
-                        cancelDownload = true;
-                    }
-                });
-        pd.setButton(getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        pd.show();
-
-        new Thread() {
-            public void run() {
-
-                // Download the apk file from the repository...
-                File f;
-                String apk_file = null;
-                String apkname = curapk.apkName;
-                String localfile = new String(LOCAL_PATH + "/" + apkname);
-                try {
-
-                    // See if we already have this apk cached...
-                    f = new File(localfile);
-                    if (f.exists()) {
-                        // We do - if its hash matches, we'll use it...
-                        Hasher hash = new Hasher(curapk.hashType, f);
-                        if (hash.match(curapk.hash)) {
-                            apk_file = localfile;
-                            Log.d("FDroid", "Using cached apk at " + localfile);
-                            Message msg = new Message();
-                            msg.arg1 = 0;
-                            msg.arg2 = 1;
-                            msg.obj = new String(localfile);
-                            download_handler.sendMessage(msg);
-                            msg = new Message();
-                            msg.arg1 = 1;
-                            download_handler.sendMessage(msg);
-                        } else {
-                            Log.d("FDroid", "Not using cached apk at "
-                                    + localfile);
-                            f.delete();
-                        }
-                    }
-
-                    // If we haven't got the apk locally, we'll have to download
-                    // it...
-                    if (apk_file == null) {
-
-                        String remotefile;
-                        if (curapk.apkSource == null) {
-                            remotefile = curapk.server + "/"
-                                    + apkname.replace(" ", "%20");
-                        } else {
-                            remotefile = curapk.apkSource;
-                        }
-                        Log.d("FDroid", "Downloading apk from " + remotefile);
-
-                        Message msg = new Message();
-                        msg.arg1 = 0;
-                        msg.arg2 = curapk.size;
-                        msg.obj = new String(remotefile);
-                        download_handler.sendMessage(msg);
-
-                        BufferedInputStream getit = new BufferedInputStream(
-                                new URL(remotefile).openStream(), 8192);
-
-                        FileOutputStream saveit = new FileOutputStream(
-                                localfile);
-                        BufferedOutputStream bout = new BufferedOutputStream(
-                                saveit, 1024);
-                        byte data[] = new byte[1024];
-
-                        int totalRead = 0;
-                        int bytesRead = getit.read(data, 0, 1024);
-                        while (bytesRead != -1) {
-                            if (cancelDownload) {
-                                Log.d("FDroid", "Download cancelled!");
-                                break;
-                            }
-                            bout.write(data, 0, bytesRead);
-                            totalRead += bytesRead;
-                            msg = new Message();
-                            msg.arg1 = totalRead;
-                            download_handler.sendMessage(msg);
-                            bytesRead = getit.read(data, 0, 1024);
-                        }
-                        bout.close();
-                        getit.close();
-                        saveit.close();
-                        f = new File(localfile);
-                        if (cancelDownload) {
-                            f.delete();
-                            msg = download_cancelled_handler.obtainMessage();
-                            msg.sendToTarget();
-                            return;
-                        }
-                        Hasher hash = new Hasher(curapk.hashType, f);
-                        if (hash.match(curapk.hash)) {
-                            apk_file = localfile;
-                        } else {
-                            msg = new Message();
-                            msg.obj = getString(R.string.corrupt_download);
-                            download_error_handler.sendMessage(msg);
-                            Log.d("FDroid", "Downloaded file hash of "
-                                    + hash.getHash() + " did not match repo's "
-                                    + curapk.hash);
-                            // No point keeping a bad file, whether we're
-                            // caching or
-                            // not.
-                            f = new File(localfile);
-                            f.delete();
-                        }
-                    }
-                } catch (Exception e) {
-                    Log.e("FDroid", "Download failed:\n"
-                            + Log.getStackTraceString(e));
-                    Message msg = new Message();
-                    msg.obj = e.getMessage();
-                    download_error_handler.sendMessage(msg);
-                    // Get rid of any partial download...
-                    f = new File(localfile);
-                    f.delete();
-                }
-
-                if (apk_file != null) {
-                    Message msg = new Message();
-                    msg.obj = apk_file;
-                    download_complete_handler.sendMessage(msg);
-                }
-            }
-        }.start();
-
+        downloadHandler = new DownloadHandler();
+        download = new Downloader(curapk);
+        download.start();
     }
-
-    // Handler used to update the progress dialog while downloading. The
-    // message contains the progress (bytes read) in arg1. If this is 0,
-    // the message also contains the total bytes to read in arg2, and the
-    // message in obj.
-    private Handler download_handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            pd.setProgress(msg.arg1);
-            if (msg.arg1 == 0) {
-                pd.setMessage(getString(R.string.download_server) + ":\n "
-                        + msg.obj.toString());
-                pd.setMax(msg.arg2);
-            }
-        }
-    };
-
-    private Handler download_error_handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            pd.dismiss();
-            Toast.makeText(mctx, (String) msg.obj, Toast.LENGTH_LONG).show();
-        }
-    };
-
-    private Handler download_complete_handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            String apk_file = (String) msg.obj;
-            installApk(apk_file);
-
-            pd.dismiss();
-        }
-    };
-
-    private Handler download_cancelled_handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Toast.makeText(mctx, getString(R.string.download_cancelled),
-                           Toast.LENGTH_SHORT).show();
-        }
-    };
 
     private void removeApk(String id) {
         PackageInfo pkginfo;
@@ -606,24 +437,116 @@ public class AppDetails extends ListActivity {
         startActivityForResult(intent, REQUEST_INSTALL);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == REQUEST_INSTALL) {
-            // If we're not meant to be caching, delete the apk file we just
-            // installed (or maybe the user cancelled the install - doesn't
-            // matter)
-            // from the SD card...
-            if (!pref_cacheDownloaded) {
-                String apkname = curapk.apkName;
-                String apk_file = new String(LOCAL_PATH + "/" + apkname);
-                File file = new File(apk_file);
-                file.delete();
-            }
-
-            viewResetRequired = true;
-        }
-
+    private ProgressDialog createProgressDialog(String file, int p, int max) {
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        pd.setMessage(getString(R.string.download_server) + ":\n " + file);
+        pd.setMax(max);
+        pd.setProgress(p);
+        pd.setCancelable(true);
+        pd.setOnCancelListener(
+               new DialogInterface.OnCancelListener() {
+                   public void onCancel(DialogInterface dialog) {
+                       if (download != null) {
+                           download.interrupt();
+                       }
+                   }
+               });
+        pd.setButton(getString(R.string.cancel),
+               new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int which) {
+                       pd.cancel();
+                   }
+               });
+        pd.show();
+        return pd;
     }
 
+    // Handler used to update the progress dialog while downloading.
+    private class DownloadHandler extends Handler {
+        private ProgressDialog pd;
+
+        public DownloadHandler() {
+            sendEmptyMessage(0); // Start updating progress
+        }
+
+        public boolean updateProgress() {
+            boolean finished = false;
+            switch (download.getStatus()) {
+            case RUNNING:
+                if (pd == null) {
+                    pd = createProgressDialog(download.remoteFile(),
+                                              download.getProgress(),
+                                              download.getMax());
+                } else {
+                    pd.setProgress(download.getProgress());
+                }
+                break;
+            case ERROR:
+                if (pd != null) pd.dismiss();
+                String text;
+                if (download.getErrorType() == Downloader.Error.CORRUPT)
+                    text = getString(R.string.corrupt_download);
+                else
+                    text = download.getErrorMessage();
+                Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
+                finished = true;
+                break;
+            case DONE:
+                if (pd != null) pd.dismiss();
+                installApk(download.localFile());
+                finished = true;
+                break;
+            case CANCELLED:
+                Toast.makeText(AppDetails.this,
+                               getString(R.string.download_cancelled),
+                               Toast.LENGTH_SHORT).show();
+                finished = true;
+                break;
+            }
+            return finished;
+        }
+
+        public void destroy() {
+            // The dialog can't be dismissed when it's not displayed,
+            // so do it when the activity is being destroyed.
+            if (pd != null) {
+                pd.dismiss();
+                pd = null;
+            }
+            // Cancel any scheduled updates so that we don't
+            // accidentally recreate the progress dialog.
+            removeMessages(0);
+        }
+
+        // Repeatedly run updateProgress() until it's finished.
+        @Override
+        public void handleMessage(Message msg) {
+            boolean finished = updateProgress();
+            if (!finished) {
+                sendMessageDelayed(obtainMessage(), 50);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        switch(requestCode) {
+        case REQUEST_INSTALL:
+            // If we're not meant to be caching, delete the apk file we just
+            // installed (or maybe the user cancelled the install - doesn't
+            // matter) from the SD card...
+            if (!pref_cacheDownloaded && download != null) {
+                File file = new File(download.localFile());
+                Log.d("FDroid", "Cleaning up: " + file);
+                file.delete();
+            }
+            viewResetRequired = true;
+            break;
+        case REQUEST_UNINSTALL:
+            viewResetRequired = true;
+            break;
+        }
+    }
 }
