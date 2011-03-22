@@ -265,6 +265,7 @@ public class AppDetails extends ListActivity {
 
         // Get the signature of the installed package...
         mInstalledSignature = null;
+        mInstalledSigID = null;
         if (curver != null) {
             PackageManager pm = getBaseContext().getPackageManager();
             try {
