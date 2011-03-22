@@ -210,7 +210,18 @@ public class AppDetails extends ListActivity {
             reset();
             viewResetRequired = false;
         }
+        if (download != null && downloadHandler != null) {
+            downloadHandler.startUpdates();
+        }
         super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        if (downloadHandler != null) {
+            downloadHandler.stopUpdates();
+        }
+        super.onPause();
     }
 
     @Override
@@ -243,7 +254,7 @@ public class AppDetails extends ListActivity {
     // there.
     private void copyState(AppDetails old) {
         download = old.download;
-        if (download != null && download.isAlive()) {
+        if (download != null) {
             downloadHandler = new DownloadHandler();
         }
         ApkListAdapter oldAdapter = (ApkListAdapter)old.getListAdapter();
@@ -435,8 +446,8 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler();
         download = new Downloader(curapk);
+        downloadHandler = new DownloadHandler();
         download.start();
     }
 
@@ -490,9 +501,10 @@ public class AppDetails extends ListActivity {
     // Handler used to update the progress dialog while downloading.
     private class DownloadHandler extends Handler {
         private ProgressDialog pd;
+        boolean updating;
 
         public DownloadHandler() {
-            sendEmptyMessage(0); // Start updating progress
+            startUpdates();
         }
 
         public boolean updateProgress() {
@@ -532,6 +544,18 @@ public class AppDetails extends ListActivity {
             return finished;
         }
 
+        public void startUpdates() {
+            if (!updating) {
+                updating = true;
+                sendEmptyMessage(0);
+            }
+        }
+
+        public void stopUpdates() {
+            updating = false;
+            removeMessages(0);
+        }
+
         public void destroy() {
             // The dialog can't be dismissed when it's not displayed,
             // so do it when the activity is being destroyed.
@@ -541,7 +565,7 @@ public class AppDetails extends ListActivity {
             }
             // Cancel any scheduled updates so that we don't
             // accidentally recreate the progress dialog.
-            removeMessages(0);
+            stopUpdates();
         }
 
         // Repeatedly run updateProgress() until it's finished.
@@ -566,6 +590,7 @@ public class AppDetails extends ListActivity {
                 File file = new File(download.localFile());
                 Log.d("FDroid", "Cleaning up: " + file);
                 file.delete();
+                download = null;
             }
             viewResetRequired = true;
             break;

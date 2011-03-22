@@ -205,6 +205,7 @@ public class Downloader extends Thread {
             synchronized (this) {
                 status = Status.DONE;
             }
+            Log.d("FDroid", "Download finished: " + apk_file);
         }
     }
 }
