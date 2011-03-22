@@ -59,13 +59,18 @@ public class AppDetails extends ListActivity {
 
     private class ApkListAdapter extends BaseAdapter {
 
-        private List<DB.Apk> items = new ArrayList<DB.Apk>();
+        private List<DB.Apk> items;
 
-        public ApkListAdapter(Context context) {
+        public ApkListAdapter(Context context, List<DB.Apk> items) {
+            this.items = (items != null ? items : new ArrayList<DB.Apk>());
         }
 
         public void addItem(DB.Apk apk) {
             items.add(apk);
+        }
+
+        public List<DB.Apk> getItems() {
+            return items;
         }
 
         @Override
@@ -190,11 +195,12 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
-        viewResetRequired = true;
         compatChecker = DB.Apk.CompatibilityChecker.getChecker(this);
-        download = (Downloader)getLastNonConfigurationInstance();
-        if (download != null && download.isAlive()) {
-            downloadHandler = new DownloadHandler();
+        AppDetails old = (AppDetails)getLastNonConfigurationInstance();
+        if (old != null) {
+            copyState(old);
+        } else {
+            viewResetRequired = true;
         }
     }
 
@@ -218,7 +224,7 @@ public class AppDetails extends ListActivity {
     @Override
     public Object onRetainNonConfigurationInstance() {
         stateRetained = true;
-        return download;
+        return this;
     }
 
     @Override
@@ -232,10 +238,26 @@ public class AppDetails extends ListActivity {
         super.onDestroy();
     }
 
+    // Copy all relevant state from an old instance. This is used in
+    // place of reset(), so it must initialize all fields normally set
+    // there.
+    private void copyState(AppDetails old) {
+        download = old.download;
+        if (download != null && download.isAlive()) {
+            downloadHandler = new DownloadHandler();
+        }
+        ApkListAdapter oldAdapter = (ApkListAdapter)old.getListAdapter();
+        setListAdapter(new ApkListAdapter(this, oldAdapter.getItems()));
+        app = old.app;
+        app_currentvercode = old.app_currentvercode;
+        mInstalledSignature = old.mInstalledSignature;
+        mInstalledSigID = old.mInstalledSigID;
+        resetViews();
+    }
+
     // Reset the display and list contents. Used when entering the activity, and
     // also when something has been installed/uninstalled.
     private void reset() {
-
         Log.d("FDroid", "Getting application details for " + appid);
         app = db.getApps(appid, null, true).get(0);
         DB.Apk curver = app.getCurrentVersion(compatChecker);
@@ -259,6 +281,17 @@ public class AppDetails extends ListActivity {
             }
         }
 
+        // Set up various parts of the UI
+        resetViews();
+
+        // Set up the list...
+        ApkListAdapter la = new ApkListAdapter(this, null);
+        for (DB.Apk apk : app.apks)
+            la.addItem(apk);
+        setListAdapter(la);
+    }
+
+    private void resetViews() {
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
         String icon_path = DB.getIconsPath() + app.icon;
@@ -288,13 +321,6 @@ public class AppDetails extends ListActivity {
             tv = (TextView) findViewById(R.id.signature);
             tv.setText("Signed: " + mInstalledSigID);
         }
-
-        // Set up the list...
-        ApkListAdapter la = new ApkListAdapter(this);
-        for (DB.Apk apk : app.apks)
-            la.addItem(apk);
-        setListAdapter(la);
-
     }
 
     @Override
