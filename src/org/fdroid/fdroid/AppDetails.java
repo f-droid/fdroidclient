@@ -308,10 +308,8 @@ public class AppDetails extends ListActivity {
         tv = (TextView) findViewById(R.id.license);
         tv.setText(app.license);
         tv = (TextView) findViewById(R.id.status);
-        int vnum = app.apks.size();
         if (app.installedVersion == null)
-            tv.setText(String.format(getString(R.string.details_notinstalled),
-                    vnum));
+            tv.setText(getString(R.string.details_notinstalled));
         else
             tv.setText(String.format(getString(R.string.details_installed),
                     app.installedVersion));
