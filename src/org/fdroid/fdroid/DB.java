@@ -233,10 +233,15 @@ public class DB {
 
             public EclairChecker(Context ctx) {
                 PackageManager pm = ctx.getPackageManager();
+                StringBuilder logMsg = new StringBuilder();
+                logMsg.append("Available device features:");
                 features = new HashSet<String>();
                 for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
                     features.add(fi.name);
+                    logMsg.append('\n');
+                    logMsg.append(fi.name);
                 }
+                Log.d("FDroid", logMsg.toString());
             }
 
             public boolean isCompatible(Apk apk) {
@@ -250,6 +255,12 @@ public class DB {
                 return true;
             }
         }
+    }
+
+    // Let other classes reuse the already instantiated compatibility
+    // checker, mostly to avoid redundant log output.
+    public Apk.CompatibilityChecker getCompatibilityChecker() {
+        return compatChecker;
     }
 
     // The TABLE_REPO table stores the details of the repositories in use.

@@ -188,6 +188,7 @@ public class AppDetails extends ListActivity {
     protected void onStart() {
         super.onStart();
         db = new DB(this);
+        compatChecker = db.getCompatibilityChecker();
         mPm = getPackageManager();
         ((FDroidApp) getApplication()).inActivity++;
         // Get the preferences we're going to use in this Activity...
@@ -195,7 +196,6 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
-        compatChecker = DB.Apk.CompatibilityChecker.getChecker(this);
         AppDetails old = (AppDetails)getLastNonConfigurationInstance();
         if (old != null) {
             copyState(old);
