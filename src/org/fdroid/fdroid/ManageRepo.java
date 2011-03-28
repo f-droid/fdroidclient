@@ -19,13 +19,13 @@
 
 package org.fdroid.fdroid;
 
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
-import org.fdroid.fdroid.R;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -33,6 +33,7 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -83,11 +84,29 @@ public class ManageRepo extends ListActivity {
             } else {
                 server_line.put("inuse", R.drawable.btn_check_off);
             }
+            if (repo.pubkey != null) {
+                try {
+                    MessageDigest digest = MessageDigest.getInstance("SHA-1");
+                    digest.update(Hasher.unhex(repo.pubkey));
+                    byte[] fingerprint = digest.digest();
+                    Formatter formatter = new Formatter(new StringBuilder());
+                    formatter.format("%02X", fingerprint[0]);
+                    for (int i=1; i < fingerprint.length; i++) {
+                        formatter.format(i % 5 == 0 ? " %02X" : ":%02X",
+                                         fingerprint[i]);
+                    }
+                    server_line.put("fingerprint", formatter.toString());
+                } catch (Exception e) {
+                    Log.w("FDroid", "Unable to get certificate fingerprint.\n"
+                          + Log.getStackTraceString(e));
+                }
+            }
             result.add(server_line);
         }
         SimpleAdapter show_out = new SimpleAdapter(this, result,
-                R.layout.repolisticons, new String[] { "address", "inuse" },
-                new int[] { R.id.uri, R.id.img });
+                R.layout.repolisticons,
+                new String[] { "address", "inuse", "fingerprint" },
+                new int[] { R.id.uri, R.id.img, R.id.fingerprint });
 
         setListAdapter(show_out);
     }
