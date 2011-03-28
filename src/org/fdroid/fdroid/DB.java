@@ -411,7 +411,7 @@ public class DB {
 
     // Get the number of apps that have updates available.
     public int getNumUpdates() {
-        Vector<App> apps = getApps(null, null, false);
+        Vector<App> apps = getApps(null, null, false, true);
         int count = 0;
         for (App app : apps) {
             if (app.hasUpdates)
@@ -427,7 +427,9 @@ public class DB {
     // 'filter' - search text to filter on, or null
     // 'update' - update installed version information from device, rather than
     // simply using values cached in the database. Slower.
-    public Vector<App> getApps(String appid, String filter, boolean update) {
+    // 'exclusions' - apply filtering for compatibility, anti-features, etc.
+    public Vector<App> getApps(String appid, String filter, boolean update,
+                               boolean exclusions) {
 
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(mContext);
@@ -460,7 +462,7 @@ public class DB {
                 app.antiFeatures = DB.CommaSeparatedList.make(c
                         .getString(c.getColumnIndex("antiFeatures")));
                 boolean include = true;
-                if (app.antiFeatures != null) {
+                if (app.antiFeatures != null && exclusions) {
                     for (String af : app.antiFeatures) {
                         if (af.equals("Ads") && !pref_antiAds)
                             include = false;
@@ -476,7 +478,7 @@ public class DB {
                 }
                 app.requirements = DB.CommaSeparatedList.make(c
                         .getString(c.getColumnIndex("requirements")));
-                if (app.requirements != null) {
+                if (app.requirements != null && exclusions) {
                     for (String r : app.requirements) {
                         if (r.equals("root") && !pref_rooted) {
                             include = false;
@@ -511,7 +513,7 @@ public class DB {
                             + " where id = ? order by vercode desc",
                             new String[] { app.id });
                     c2.moveToFirst();
-                    boolean compatible = pref_showIncompat;
+                    boolean compatible = pref_showIncompat || !exclusions;
                     while (!c2.isAfterLast()) {
                         Apk apk = new Apk();
                         apk.id = app.id;
@@ -660,7 +662,7 @@ public class DB {
         // end, any that are still false can be removed.
         // TODO: Need to ensure that UI and UpdateService can't both be doing
         // an update at the same time.
-        updateApps = getApps(null, null, true);
+        updateApps = getApps(null, null, true, false);
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps before starting.");
         // Wrap the whole update in a transaction. Make sure to call

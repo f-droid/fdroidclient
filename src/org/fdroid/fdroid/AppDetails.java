@@ -270,7 +270,7 @@ public class AppDetails extends ListActivity {
     // also when something has been installed/uninstalled.
     private void reset() {
         Log.d("FDroid", "Getting application details for " + appid);
-        app = db.getApps(appid, null, true).get(0);
+        app = db.getApps(appid, null, true, false).get(0);
         DB.Apk curver = app.getCurrentVersion(compatChecker);
         app_currentvercode = curver == null ? 0 : curver.vercode;
 

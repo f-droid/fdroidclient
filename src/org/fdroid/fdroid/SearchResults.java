@@ -68,7 +68,7 @@ public class SearchResults extends ListActivity {
 
     private void updateView() {
         DB db = new DB(this);
-        Vector<DB.App> apps = db.getApps(null, mQuery, false);
+        Vector<DB.App> apps = db.getApps(null, mQuery, false, true);
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
         if(apps.size()==0)

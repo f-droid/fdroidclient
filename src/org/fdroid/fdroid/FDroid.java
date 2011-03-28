@@ -310,7 +310,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         apps_up.clear();
 
         long startTime = System.currentTimeMillis();
-        Vector<DB.App> apps = db.getApps(null, null, update);
+        Vector<DB.App> apps = db.getApps(null, null, update, true);
         if (apps.isEmpty()) {
             // Don't attempt this more than once - we may have invalid
             // repositories.
