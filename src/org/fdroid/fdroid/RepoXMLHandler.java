@@ -307,20 +307,8 @@ public class RepoXMLHandler extends DefaultHandler {
 
                         boolean match = false;
                         for (Certificate cert : certs) {
-                            byte[] sig = cert.getEncoded();
-                            byte[] csig = new byte[sig.length * 2];
-                            for (int j = 0; j < sig.length; j++) {
-                                byte v = sig[j];
-                                int d = (v >> 4) & 0xf;
-                                csig[j * 2] = (byte) (d >= 10
-                                                      ? ('a' + d - 10)
-                                                      : ('0' + d));
-                                d = v & 0xf;
-                                csig[j * 2 + 1] = (byte) (d >= 10
-                                                          ? ('a' + d - 10)
-                                                          : ('0' + d));
-                            }
-                            if (repo.pubkey.equals(new String(csig))) {
+                            String certdata = Hasher.hex(cert.getEncoded());
+                            if (repo.pubkey.equals(certdata)) {
                                 match = true;
                                 break;
                             }

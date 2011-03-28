@@ -22,28 +22,25 @@ package org.fdroid.fdroid;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import android.content.pm.Signature;
 
 public class Hasher {
 
     private MessageDigest digest;
-    private File f;
-    private Signature s;
+    private File file;
+    private byte[] array;
     private String hashCache;
 
     public Hasher(String type, File f) throws NoSuchAlgorithmException {
         init(type);
-        this.f = f;
+        this.file = f;
     }
 
-    public Hasher(String type, Signature s) throws NoSuchAlgorithmException {
+    public Hasher(String type, byte[] a) throws NoSuchAlgorithmException {
         init(type);
-        this.s = s;
+        this.array = a;
     }
 
     private void init(String type) throws NoSuchAlgorithmException {
@@ -61,40 +58,22 @@ public class Hasher {
     public String getHash() {
         if (hashCache != null)
             return hashCache;
-
-        String hash = null;
-        byte[] buffer = new byte[1024];
-        int read = 0;
-
-        try {
-            InputStream is;
-            if (s == null)
-                is = new FileInputStream(f);
-            else
-                is = new ByteArrayInputStream(s.toCharsString().getBytes());
-            while ((read = is.read(buffer)) > 0) {
-                digest.update(buffer, 0, read);
-            }
-            byte[] checksum = digest.digest();
-            BigInteger bigInt = new BigInteger(1, checksum);
-            hash = bigInt.toString(16).toLowerCase();
-
-            // Add leading zeros
-            int targetLength = digest.getDigestLength() * 2;
-            if (hash.length() < targetLength) {
-                StringBuilder sb = new StringBuilder(targetLength);
-                for (int i = hash.length(); i < targetLength; i++) {
-                    sb.append('0');
+        else if (file != null) {
+            byte[] buffer = new byte[1024];
+            int read = 0;
+            try {
+                InputStream is = new FileInputStream(file);
+                while ((read = is.read(buffer)) > 0) {
+                    digest.update(buffer, 0, read);
                 }
-                sb.append(hash);
-                hash = sb.toString();
+                is.close();
+            } catch (Exception e) {
+                return hashCache = "";
             }
-
-        } catch (Exception e) {
-            return hashCache = "";
+        } else {
+            digest.update(array);
         }
-
-        return hashCache = hash;
+        return hashCache = hex(digest.digest());
     }
 
     // Compare the calculated hash to another string, ignoring case,
@@ -110,6 +89,36 @@ public class Hasher {
     public void reset() {
         hashCache = null;
         digest.reset();
+    }
+
+    public static String hex(byte[] sig) {
+        byte[] csig = new byte[sig.length * 2];
+        for (int j = 0; j < sig.length; j++) {
+            byte v = sig[j];
+            int d = (v >> 4) & 0xf;
+            csig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
+            d = v & 0xf;
+            csig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
+        }
+        return new String(csig);
+    }
+
+    public static byte[] unhex(String data) {
+        byte[] rawdata = new byte[data.length() / 2];
+        for (int i=0; i < data.length(); i++) {
+            char halfbyte = data.charAt(i);
+            int value;
+            if ('0' <= halfbyte && halfbyte <= '9')
+                value = halfbyte - '0';
+            else if ('a' <= halfbyte && halfbyte <= 'f')
+                value = halfbyte - 'a' + 10;
+            else if ('A' <= halfbyte && halfbyte <= 'F')
+                value = halfbyte - 'A' + 10;
+            else
+                throw new IllegalArgumentException("Bad hex digit");
+            rawdata[i/2] += (byte)(i % 2 == 0 ? value << 4 : value);
+        }
+        return rawdata;
     }
 
 }

@@ -283,7 +283,8 @@ public class AppDetails extends ListActivity {
                 PackageInfo pi = pm.getPackageInfo(appid,
                         PackageManager.GET_SIGNATURES);
                 mInstalledSignature = pi.signatures[0];
-                Hasher hash = new Hasher("MD5", mInstalledSignature);
+                Hasher hash = new Hasher("MD5", mInstalledSignature
+                                         .toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (NameNotFoundException e) {
                 Log.d("FDroid", "Failed to get installed signature");
