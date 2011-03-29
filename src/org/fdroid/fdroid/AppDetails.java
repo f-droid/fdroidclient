@@ -327,6 +327,7 @@ public class AppDetails extends ListActivity {
         if (pref_expert && mInstalledSignature != null) {
             tv = (TextView) findViewById(R.id.signature);
             tv.setText("Signed: " + mInstalledSigID);
+            tv.setVisibility(View.VISIBLE);
         }
     }
 
