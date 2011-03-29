@@ -193,7 +193,7 @@ public class Downloader extends Thread {
                   + Log.getStackTraceString(e));
             synchronized (this) {
                 error = Error.UNKNOWN;
-                errorMessage = e.getMessage();
+                errorMessage = e.toString();
                 status = Status.ERROR;
             }
             // Get rid of any partial download...

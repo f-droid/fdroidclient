@@ -153,7 +153,6 @@ public class AppDetails extends ListActivity {
     private String appid;
     private PackageManager mPm;
     private DB.Apk.CompatibilityChecker compatChecker;
-    private Downloader download;
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
 
@@ -210,7 +209,7 @@ public class AppDetails extends ListActivity {
             reset();
             viewResetRequired = false;
         }
-        if (download != null && downloadHandler != null) {
+        if (downloadHandler != null) {
             downloadHandler.startUpdates();
         }
         super.onResume();
@@ -240,10 +239,9 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onDestroy() {
-        if (download != null && !stateRetained) {
-            download.interrupt();
-        }
         if (downloadHandler != null) {
+            if (!stateRetained)
+                downloadHandler.cancel();
             downloadHandler.destroy();
         }
         super.onDestroy();
@@ -253,12 +251,10 @@ public class AppDetails extends ListActivity {
     // place of reset(), so it must initialize all fields normally set
     // there.
     private void copyState(AppDetails old) {
-        download = old.download;
-        if (download != null) {
-            downloadHandler = new DownloadHandler();
-        }
         ApkListAdapter oldAdapter = (ApkListAdapter)old.getListAdapter();
         setListAdapter(new ApkListAdapter(this, oldAdapter.getItems()));
+        if (old.downloadHandler != null)
+            downloadHandler = new DownloadHandler(old.downloadHandler);
         app = old.app;
         app_currentvercode = old.app_currentvercode;
         mInstalledSignature = old.mInstalledSignature;
@@ -447,9 +443,7 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        download = new Downloader(curapk);
-        downloadHandler = new DownloadHandler();
-        download.start();
+        downloadHandler = new DownloadHandler(curapk);
     }
 
     private void removeApk(String id) {
@@ -470,7 +464,6 @@ public class AppDetails extends ListActivity {
         intent.setAction(android.content.Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file),
                 "application/vnd.android.package-archive");
-
         startActivityForResult(intent, REQUEST_INSTALL);
     }
 
@@ -484,9 +477,7 @@ public class AppDetails extends ListActivity {
         pd.setOnCancelListener(
                new DialogInterface.OnCancelListener() {
                    public void onCancel(DialogInterface dialog) {
-                       if (download != null) {
-                           download.interrupt();
-                       }
+                       downloadHandler.cancel();
                    }
                });
         pd.setButton(getString(R.string.cancel),
@@ -501,10 +492,22 @@ public class AppDetails extends ListActivity {
 
     // Handler used to update the progress dialog while downloading.
     private class DownloadHandler extends Handler {
+        private Downloader download;
         private ProgressDialog pd;
-        boolean updating;
+        private boolean updating;
+        private String localFile;
 
-        public DownloadHandler() {
+        public DownloadHandler(DB.Apk apk) {
+            download = new Downloader(apk);
+            download.start();
+            startUpdates();
+        }
+
+        public DownloadHandler(DownloadHandler oldHandler) {
+            if (oldHandler != null) {
+                download = oldHandler.download;
+                localFile = oldHandler.localFile;
+            }
             startUpdates();
         }
 
@@ -532,7 +535,7 @@ public class AppDetails extends ListActivity {
                 break;
             case DONE:
                 if (pd != null) pd.dismiss();
-                installApk(download.localFile());
+                installApk(localFile = download.localFile());
                 finished = true;
                 break;
             case CANCELLED:
@@ -557,6 +560,26 @@ public class AppDetails extends ListActivity {
             removeMessages(0);
         }
 
+        public void cancel() {
+            if (download != null) download.interrupt();
+        }
+
+        public void cleanUp() {
+            if (localFile == null) {
+                Log.w("FDroid", "No APK to clean up!");
+                return;
+            }
+            // If we're not meant to be caching, delete the apk file we just
+            // installed (or maybe the user cancelled the install - doesn't
+            // matter) from the SD card...
+            if (!pref_cacheDownloaded) {
+                File file = new File(localFile);
+                Log.d("FDroid", "Cleaning up: " + file);
+                file.delete();
+                localFile = null;
+            }
+        }
+
         public void destroy() {
             // The dialog can't be dismissed when it's not displayed,
             // so do it when the activity is being destroyed.
@@ -572,10 +595,12 @@ public class AppDetails extends ListActivity {
         // Repeatedly run updateProgress() until it's finished.
         @Override
         public void handleMessage(Message msg) {
+            if (download == null) return;
             boolean finished = updateProgress();
-            if (!finished) {
+            if (finished)
+                download = null;
+            else
                 sendMessageDelayed(obtainMessage(), 50);
-            }
         }
     }
 
@@ -584,14 +609,9 @@ public class AppDetails extends ListActivity {
                                     Intent data) {
         switch(requestCode) {
         case REQUEST_INSTALL:
-            // If we're not meant to be caching, delete the apk file we just
-            // installed (or maybe the user cancelled the install - doesn't
-            // matter) from the SD card...
-            if (!pref_cacheDownloaded && download != null) {
-                File file = new File(download.localFile());
-                Log.d("FDroid", "Cleaning up: " + file);
-                file.delete();
-                download = null;
+            if (downloadHandler != null) {
+                downloadHandler.cleanUp();
+                downloadHandler = null;
             }
             viewResetRequired = true;
             break;
