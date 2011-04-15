@@ -13,10 +13,10 @@
 	<PreferenceCategory android:title="@string/updates">
 		<ListPreference android:title="@string/automatic_repo_scan"
 			android:summary="@string/update_apps_list" android:key="updateInterval"
-			android:defaultValue="0" android:entries="@array/updateIntervalNames"
+			android:defaultValue="24" android:entries="@array/updateIntervalNames"
 			android:entryValues="@array/updateIntervalValues" />
 		<CheckBoxPreference android:title="@string/notify"
-			android:defaultValue="false" android:summary="@string/notify_updates_available"
+			android:defaultValue="true" android:summary="@string/notify_updates_available"
 			android:key="updateNotify" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/antifeatures">
