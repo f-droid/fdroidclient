@@ -23,7 +23,7 @@
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:textSize="16px" android:textColor="#ffffff" />
 
-		<TextView android:id="@+id/sitec" android:text="http://f-droid.org"
+		<TextView android:id="@+id/sitec" android:text="@string/about_sitec"
 			android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
 	</LinearLayout>
@@ -36,13 +36,13 @@
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:textSize="16px" android:textColor="#ffffff" />
 
-		<TextView android:id="@+id/mailc" android:text="admin@f-droid.org"
+		<TextView android:id="@+id/mailc" android:text="@string/about_mailc"
 			android:autoLink="email" android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
 
 	</LinearLayout>
 
-	<TextView android:id="@+id/not" android:text=" "
+	<TextView android:id="@+id/not" android:text="@string/about_not"
 		android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
 	<TextView android:text="@string/about_desc"

@@ -25,10 +25,12 @@
 		GNU GPLv2
 		license.</string>
 	<string name="about_site">Website: </string>
+	<string name="about_sitec">http://f-droid.org</string>
 	<string name="about_mail">Email: </string>
+	<string name="about_mailc">admin@f-droid.org</string>
 	<string name="about_version">Version: </string>
 	<string name="about_website">Website</string>
-
+	<string name="about_not"> </string>
 
 	<string name="no_repo">You don\'t have any repositories configured!\n\nA
 		repository is a source of applications. To add one, press the MENU
@@ -67,6 +69,7 @@
 	<string name="download_server">Getting application from</string>
 
 	<string name="repo_add_url">Repository address</string>
+	<string name="repo_add_http">http://</string>
 
 	<string name="isinst">Installed: </string>
 
