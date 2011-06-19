@@ -70,6 +70,7 @@ public class DB {
             icon = "noicon.png";
             id = "unknown";
             license = "Unknown";
+            category = "Uncategorized";
             trackerURL = "";
             sourceURL = "";
             donateURL = null;
@@ -87,6 +88,7 @@ public class DB {
         public String icon;
         public String description;
         public String license;
+        public String category;
         public String webURL;
         public String trackerURL;
         public String sourceURL;
@@ -328,7 +330,10 @@ public class DB {
 
             // Version 12...
             { "alter table " + TABLE_APK + " add hashType string",
-              "update " + TABLE_APK + " set hashType = 'MD5'" }};
+              "update " + TABLE_APK + " set hashType = 'MD5'" },
+
+            // Version 13...
+            { "alter table " + TABLE_APP + " add category string" }};
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -420,6 +425,32 @@ public class DB {
         return count;
     }
 
+    public Vector<String> getCategories() {
+        Vector<String> result = new Vector<String>();
+        Cursor c = null;
+        try {
+            c = db.rawQuery("select distinct category from " + TABLE_APP + " order by category", null);
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                String s = c.getString(c.getColumnIndex("category"));
+                Log.d("FDroid", "Category: " + s);
+                if (s == null) {
+                    s = "none";
+                }
+                result.add(s);
+                c.moveToNext();
+            }
+        } catch (Exception e) {
+            Log.e("FDroid", "Exception during database reading:\n"
+                    + Log.getStackTraceString(e));
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+        }
+        return result;
+    }
+
     // Return a list of apps matching the given criteria. Filtering is
     // also done based on compatibility and anti-features according to
     // the user's current preferences.
@@ -494,6 +525,7 @@ public class DB {
                     app.description = c.getString(c
                             .getColumnIndex("description"));
                     app.license = c.getString(c.getColumnIndex("license"));
+                    app.category = c.getString(c.getColumnIndex("category"));
                     app.webURL = c.getString(c.getColumnIndex("webURL"));
                     app.trackerURL = c
                             .getString(c.getColumnIndex("trackerURL"));
@@ -784,6 +816,7 @@ public class DB {
         values.put("icon", upapp.icon);
         values.put("description", upapp.description);
         values.put("license", upapp.license);
+        values.put("category", upapp.category);
         values.put("webURL", upapp.webURL);
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
