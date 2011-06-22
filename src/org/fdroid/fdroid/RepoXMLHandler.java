@@ -86,6 +86,9 @@ public class RepoXMLHandler extends DefaultHandler {
         super.endElement(uri, localName, qName);
         String curel = localName;
         String str = curchars;
+        if (str != null) {
+            str = str.trim();
+        }
 
         if (curel.equals("application") && curapp != null) {
             // Log.d("FDroid", "Repo: Updating application " + curapp.id);
