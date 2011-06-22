@@ -157,6 +157,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.summary = str;
             } else if (curel.equals("license")) {
                 curapp.license = str;
+            } else if (curel.equals("category")) {
+                curapp.category = str;
             } else if (curel.equals("source")) {
                 curapp.sourceURL = str;
             } else if (curel.equals("donate")) {
