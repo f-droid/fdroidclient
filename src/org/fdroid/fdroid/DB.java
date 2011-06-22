@@ -427,6 +427,7 @@ public class DB {
 
     public Vector<String> getCategories() {
         Vector<String> result = new Vector<String>();
+        result.add("All");
         Cursor c = null;
         try {
             c = db.rawQuery("select distinct category from " + TABLE_APP + " order by category", null);

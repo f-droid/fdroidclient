@@ -51,9 +51,10 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TabHost.TabSpec;
 
-public class FDroid extends TabActivity implements OnItemClickListener {
+public class FDroid extends TabActivity implements OnItemClickListener, OnItemSelectedListener {
 
     private String LOCAL_PATH = "/sdcard/.fdroid";
 
@@ -80,6 +81,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
 
     // Category list
     private ArrayAdapter<String> categories;
+    private String currentCategory = "All";
 
     private ProgressDialog pd;
 
@@ -114,6 +116,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                   new Vector<String>());
         categories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(categories);
+        spinner.setOnItemSelectedListener(FDroid.this);
 
         tabHost = getTabHost();
         createTabs();
@@ -349,6 +352,9 @@ public class FDroid extends TabActivity implements OnItemClickListener {
               + " ms)");
 
         for (DB.App app : apps) {
+            if (!"All".equals(currentCategory) && !currentCategory.equals(app.category)) {
+                continue;
+            }
             if (app.installedVersion == null) {
                 apps_av.addItem(app);
             } else {
@@ -404,6 +410,15 @@ public class FDroid extends TabActivity implements OnItemClickListener {
                 pd.dismiss();
         }
     };
+
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        currentCategory = parent.getItemAtPosition(pos).toString();
+        populateLists(false);
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // We always have at least "All"
+    }
 
     // Handler for a click on one of the items in an application list. Pops
     // up a dialog that shows the details of the application and all its
