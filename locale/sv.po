@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2011-03-10 15:01+0000\n"
-"PO-Revision-Date: 2011-02-16 18:03+0200\n"
-"Last-Translator: Natanael_L <natanael.l@gmail.com>\n"
+"PO-Revision-Date: 2011-03-10 19:06+0200\n"
+"Last-Translator: Henrik <tunedal@gmail.com>\n"
 "Language-Team: sv <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -20,17 +20,17 @@ msgstr ""
 
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "Hittade %1$d program som matchade '%2$s':"
 
 #, python-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "Ett program matchade '%s':"
 
 #, python-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "Inga program matchade '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -79,9 +79,10 @@ msgctxt "updates"
 msgid "Updates"
 msgstr "Uppdateringar"
 
+# Datatermgruppen "avråder också från användningen av data som singulart massord". Det är ett lurigt ord.
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Rensa all cachad data"
+msgstr "Rensa alla cachade data"
 
 msgctxt "reset"
 msgid "Reset"
@@ -146,10 +147,10 @@ msgid ""
 msgstr ""
 "Du har inga förråd konfigurerade!\n"
 "\n"
-"Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en"
-" för att lägga till ett nu.\n"
+"Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en "
+"för att lägga till ett nu.\n"
 "\n"
-"En förråds-URL ser ut ungefär så här: http://f-droid.org/repo"
+"En förrådsadress ser ut så här: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
@@ -302,7 +303,7 @@ msgstr "Om"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Sök"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
@@ -341,10 +342,9 @@ msgctxt "menu_update"
 msgid "Update"
 msgstr "Uppdatera"
 
-#, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Uppdatera"
+msgstr "Donera"
 
 #, python-format
 msgctxt "details_installed"
@@ -366,7 +366,7 @@ msgstr "Den nerladdade filen är skadad"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Nerladdning avbruten"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
@@ -412,37 +412,36 @@ msgstr "Expert"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Aktivera expertläge"
 
-#, fuzzy
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Hämtar program från"
+msgstr "Sök program"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Databassynkroniseringsläge"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Ställ in värdet på synchronous-flaggan i SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Programkompatibilitet"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Inkompatibla program"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
+msgstr "Visa program skrivna för nyare Android-versioner eller annan hårdvara"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Visa program som kräver root-rättigheter"

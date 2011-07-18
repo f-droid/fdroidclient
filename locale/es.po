@@ -1,39 +1,36 @@
-# Serbian translations for .
+# Translations template for PROJECT.
 # Copyright (C) 2011 ORGANIZATION
-# This file is distributed under the same license as the  project.
+# This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-# Ilija Milicevic <engr3337@gmail.com>, 2011.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.17\n"
-"Report-Msgid-Bugs-To: a@b.c\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2011-03-10 15:01+0000\n"
-"PO-Revision-Date: 2011-01-20 03:30+0200\n"
-"Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
-"Language-Team: sr <LL@li.org>\n"
-"Language: sr\n"
+"PO-Revision-Date: 2011-03-11 22:17+0200\n"
+"Last-Translator: aafuentes <pajaro@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
 
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Нашао %1$d апликацијe/апликација што се поклапају са '%2$s':"
+msgstr "Se encontraron %1$d programas con '%2$s':"
 
 #, python-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Нађена је апликација која се поклапа са '%s':"
+msgstr "Se encontró un programa con '%s':"
 
 #, python-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Ни једна апликација не садржи '%s'"
+msgstr "No se encontró ningún programa con '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -42,68 +39,68 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Нова верзија је потписана са другачијим кључем од старе. Да би "
-"инсталирали нову верзију, стара мора бити уклоњена. Молимо вас да то "
-"урадите и опет пробате. (Уклањање такође брише интерне податке сачуване "
-"са апликацијом)"
+"La nueva versión está firmada con un key diferente al antiguo. Para instalar "
+"la nueva versión, el antiguo debe de ser desinstalado primero. Por favor, "
+"haz ésto y prueba de nuevo (Ten en cuenta que la desinstalación borrará "
+"cualquier dato guardado por el programa)"
 
 msgctxt "version"
 msgid "Version"
-msgstr "Верзија"
+msgstr "Versión"
 
 #, python-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d верзије/верзија на располагању"
+msgstr "%d versiones disponibles"
 
 #, python-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "%d верзија на располагању"
+msgstr "%d versión disponible"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Обавести"
+msgstr "Notificar"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Остава за Апликације"
+msgstr "Almacenamiento"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Чувај скинуте апликације"
+msgstr "Caché de programas descargados"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Чувај скинуте apk датотеке на СД картици"
+msgstr "Mantener los ficheros apk descargados en la SD card"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Ажурирање"
+msgstr "Actualizaciones"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Обриши све сачуване податке"
+msgstr "Borrar todos los datos cacheados"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Ресетуј"
+msgstr "Resetear"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Одржавање"
+msgstr "Mantenimiento"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Обавести кад су нове верзије на располагању"
+msgstr "Notificarme cuando halla actualizaciones disponibles"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Аутоматски ажурирај листу апликација"
+msgstr "Actualizar la lista de programas desde los repositorios automáticamente"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Аутоматско скенирање ризница"
+msgstr "Escanear los repositorios automáticamente"
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -111,31 +108,31 @@ msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr "О FDroid-у"
+msgstr "Acerca de FDroid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
-"Оригинално засновано на пројекту Aptoide.\n"
-"Објављено под GNU GPLv2 лиценцом."
+"Basado originalmente en Aptoide.\n"
+"Publicado bajo la licencia GNU GPLv2 ."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Веб страница:"
+msgstr "Página web:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "Електронска Пошта:"
+msgstr "Email:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Верзија:"
+msgstr "Versión:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr "Веб страница"
+msgstr "Página web"
 
 msgctxt "no_repo"
 msgid ""
@@ -146,300 +143,303 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Нисте конфигурисали ни једну ризницу!\n"
+"¡No tienes ningún repositorio configurado!\n"
 "\n"
-"Ризнице су места одакле се скидају апликације. Да би сте додали једну, "
-"притисните тастер МЕНИ и унесите адресу.\n"
+"Un repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el "
+"botón MENU ahora y introduce la URL.\n"
 "\n"
-"Адреса ризнице би личила на ово: http://f-droid.org/repo"
+"La dirección de un repositorio es algo similar a esto: "
+"http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Није Инсталирана"
+msgstr "No instalado"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Могуће је ажурирати - Вер.:"
+msgstr "Posible actualización - Ver.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr "ПОТВРДИ"
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "ДА"
+msgstr "Sí"
 
 msgctxt "no"
 msgid "No"
-msgstr "НЕ"
+msgstr "No"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Додај нову ризницу"
+msgstr "Añadir nuevo repositorio"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Додај"
+msgstr "Añadir"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Поништи"
+msgstr "Cancelar"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Изабери ризницу за уклањање"
+msgstr "Elige el repositorio a eliminar"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Није успело повезивање са сервером!"
+msgstr "¡No pudo conectar al servidor!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Ажурирај ризнице"
+msgstr "Actualizar repositorios"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Инсталиране"
+msgstr "Instalado"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "На располагању"
+msgstr "Disponible"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Нове верзије "
+msgstr "Actualizaciones"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Нове верзије на располагању"
+msgstr "Actualizaciones disponibles"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Сачекајте"
+msgstr "Por favor espera"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Ажурира се листа апликација..."
+msgstr "Actualizando la lista de aplicaciones..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Није било могуће накачити се на мрежу."
+msgstr "No pudo conectar con la red."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Истекло Време"
+msgstr "Tiempo de espera"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Није успело повезивање са сервером!"
+msgstr "¡No pudo conectar al servidor!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Преузимање"
+msgstr "Descarga"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Скида се апликација са"
+msgstr "Cogiendo el programa desde"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Адреса ризнице"
+msgstr "Dirección del repositorio"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Инсталирано:"
+msgstr "Instalado:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Инсталирај"
+msgstr "Instalar"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Уклони"
+msgstr "Desinstalar"
 
 msgctxt "update"
 msgid "Update!"
-msgstr "Ажурирај!"
+msgstr "¡Actualización!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
-"Неке апликације је могуће ажурирати.\n"
-"Желите ли да видите листу?"
+"Hay actualizaciones disponibles para algunos de los programas instalados.\n"
+"¿Desea verlas?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"Промењена је листа ризница у употреби.\n"
-"Желите ли да их ажурирате?"
+"La lista de repositorios usada ha cambiado.\n"
+"¿Deseas actualizarlos?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Грешка у повезивању на сервер или је apk датотека покварена!"
+msgstr "¡No pudo conectar con el servidor o el fichero apk está corrupto!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Апликација се скида са:\n"
+msgstr "Consiguiendo el programa desde:\n"
 
+# ó Actualizar :/
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr "Ажурирај"
+msgstr "Actualización"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Конфигуриши Ризнице"
+msgstr "Gestionar Repositorios"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Опције"
+msgstr "Preferencias"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "О Апликацији"
+msgstr "Acerca de"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr "Тражи"
+msgstr "Buscar"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Нова Ризница"
+msgstr "Repositorio nuevo"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Уклони Ризницу"
+msgstr "Borrar Repositorio"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Инсталирај"
+msgstr "Instalar"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Уклони"
+msgstr "Desinstalar"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr "Веб Страна"
+msgstr "Página web"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Проблеми"
+msgstr "Asuntos"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Изворни Код"
+msgstr "Código Fuente"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Тржиште"
+msgstr "Market"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Ажурирај"
+msgstr "Actualizar"
 
-#, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Ажурирај"
+msgstr "Donar"
 
 #, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Верзија %s инсталирана"
+msgstr "Versión %s instalada"
 
 #, python-format
 msgctxt "details_notinstalled"
 msgid "Not installed (%d available)"
-msgstr "Није инсталирана (%d је на располагању)"
+msgstr "No instalado (%d disponible)"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Инсталирана"
+msgstr "Instalado"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "Скинута датотека је покварена"
+msgstr "El fichero descargado está corrupto"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Descarga cancelada"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Непожељне Karakteristike"
+msgstr "Anti-Características"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Огласи"
+msgstr "Publicidad"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Прикажи апликације са уграђеним оглашавањем"
+msgstr "Muestra programas que contengan publicidad"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Праћење"
+msgstr "Rastreo"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Прикажи апликације које прате ваше активности"
+msgstr "Muestra programas que rastrean y reportan tu actividad"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr "Додаци"
+msgstr "Add-ons"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Прикажи апликације што промовишу плаћене додатке"
+msgstr "Muestra programas que promueven add-ons no libres"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Мрежне Услуге"
+msgstr "Servicios de Red"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Прикажи апликације што промовишу плаћене мрежне услуге"
+msgstr "Muestra programas que promueven servicios de red no libres"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr "Стручни"
+msgstr "Experto"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Омогући стручни режим"
+msgstr "Activa el modo experto"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Претрага апликација"
+msgstr "Buscar programas"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Modo síncrono de base de datos"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Fija el valor del flag síncrono de SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Compatibilidad de programas"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Programas incompatibles"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
+"Muestra los programas escritos para versiones de Android más modernas o con "
+"un hardware diferente"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Muestras los programas que requieren privilegios de root"

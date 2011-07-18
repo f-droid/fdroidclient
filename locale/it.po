@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2011-03-10 15:01+0000\n"
-"PO-Revision-Date: 2010-11-04 15:42+0200\n"
-"Last-Translator: graziano <graziano@sorbaioli.org>\n"
+"PO-Revision-Date: 2011-03-19 16:26+0200\n"
+"Last-Translator: paradix86 <paradix86@gmail.com>\n"
 "Language-Team: it <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
 
 msgctxt "searchres_napps"
@@ -37,66 +39,69 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"La nuova versione e' firmata con una chiave differente rispetto alla "
+"vecchia. Per installare la nuova versione occorre prima disinstallare la "
+"precedente. Riprova dopo aver disinstallato.  (Attenzione! disistallando si "
+"cancellerà qualsiasi dato salvato dall'applicazione)"
 
-#, fuzzy
 msgctxt "version"
 msgid "Version"
-msgstr "Versione Server:"
+msgstr "Versione"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "Aggiornamenti disponibili"
+msgstr "%d aggiornamenti disponibili"
 
-#, fuzzy, python-format
+# il %d penso sia il numero di versione, e tradotto letteralmente versione available sta per versione disponibile
+#, python-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "Aggiornamenti disponibili"
+msgstr "%d versione disponibile"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Notifica"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Memoria"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "Cache applicazioni scaricate"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "Salva apk scaricati su SD"
 
-#, fuzzy
 msgctxt "updates"
 msgid "Updates"
 msgstr "Aggiornamenti"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "Cancella dati temporanei"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Manutenzione"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "Notifica nuovi aggiornamenti disponibili"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "Aggiorna elenco applicazioni in automatico"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "Scansione repository automatica"
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -106,7 +111,6 @@ msgctxt "about_title"
 msgid "About FDroid"
 msgstr "Informazioni"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
@@ -115,27 +119,22 @@ msgstr ""
 "Basato su Aptoide.\n"
 "Rilasciato sotto licenza GNU GPL v2."
 
-#, fuzzy
 msgctxt "about_site"
 msgid "Website:"
 msgstr "Sito Web"
 
-#, fuzzy
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "e-Mail:"
+msgstr "Email:"
 
-#, fuzzy
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Versione Server:"
+msgstr "Versione:"
 
-#, fuzzy
 msgctxt "about_website"
 msgid "Website"
 msgstr "Sito Web"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -162,7 +161,7 @@ msgstr "Aggiornamento: - Ver.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
@@ -184,7 +183,6 @@ msgctxt "cancel"
 msgid "Cancel"
 msgstr "Annulla"
 
-#, fuzzy
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Rimuovi Repository"
@@ -241,10 +239,9 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Scaricamento applicazione da"
 
-#, fuzzy
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Repository URL"
+msgstr "Indirizzo Url Repository"
 
 msgctxt "isinst"
 msgid "Installed:"
@@ -262,7 +259,6 @@ msgctxt "update"
 msgid "Update!"
 msgstr "Aggiorna!"
 
-#, fuzzy
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
@@ -272,7 +268,6 @@ msgstr ""
 "\n"
 "Vuoi visualizzarli?"
 
-#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -302,7 +297,7 @@ msgstr "Gestisci Repos"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Preferenze"
 
 msgctxt "menu_about"
 msgid "About"
@@ -328,7 +323,6 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Disinstalla"
 
-#, fuzzy
 msgctxt "menu_website"
 msgid "Website"
 msgstr "Sito Web"
@@ -354,24 +348,23 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Aggiornamento"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Non installato"
+msgstr "Versione %s installata"
 
 #, python-format
 msgctxt "details_notinstalled"
 msgid "Not installed (%d available)"
-msgstr ""
+msgstr "Non installato (%d disponibile)"
 
-#, fuzzy
 msgctxt "inst"
 msgid "Installed"
 msgstr "Installato"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "File Corrotto"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
@@ -379,43 +372,43 @@ msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Anti-Features"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Pubblicita'"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Mostra applicazioni con pubblicita'"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Tracking"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "Mostra applicazioni a rischio per la privacy"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Add-ons"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Mostra applicazioni che promuovono add-ons non liberi"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Network Services"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
+msgstr "Mostra applicazioni che promuovono network services non liberi"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Esperto"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
@@ -453,4 +446,3 @@ msgstr ""
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr ""
-
