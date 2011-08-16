@@ -43,7 +43,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,6 +78,9 @@ public class FDroid extends TabActivity implements OnItemClickListener {
     // Apps that can be upgraded
     private AppListAdapter apps_up = new AppListAdapter(this);
 
+    // Category list
+    private ArrayAdapter<String> categories;
+
     private ProgressDialog pd;
 
     private static final String TAB_IN = "INST";
@@ -101,6 +107,13 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         File icon_path = new File(DB.getIconsPath());
         if (!icon_path.exists())
             icon_path.mkdir();
+
+        Spinner spinner = (Spinner) findViewById(R.id.category);
+        categories = new ArrayAdapter<String>(this,
+                  android.R.layout.simple_spinner_item,
+                  new Vector<String>());
+        categories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(categories);
 
         tabHost = getTabHost();
         createTabs();
@@ -308,8 +321,16 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         apps_in.clear();
         apps_av.clear();
         apps_up.clear();
+        categories.clear();
 
         long startTime = System.currentTimeMillis();
+
+        // Make sure we show at least "All" category even for empty DB
+        for (String s: db.getCategories()) {
+            Log.d("FDroid", "s: " + s);
+            categories.add(s);
+        }
+
         Vector<DB.App> apps = db.getApps(null, null, update, true);
         if (apps.isEmpty()) {
             // Don't attempt this more than once - we may have invalid
@@ -349,6 +370,7 @@ public class FDroid extends TabActivity implements OnItemClickListener {
         apps_av.notifyDataSetChanged();
         apps_in.notifyDataSetChanged();
         apps_up.notifyDataSetChanged();
+        categories.notifyDataSetChanged();
 
     }
 
