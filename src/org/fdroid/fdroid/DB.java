@@ -469,6 +469,7 @@ public class DB {
         boolean pref_antiTracking = prefs.getBoolean("antiTracking", false);
         boolean pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
         boolean pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
+        boolean pref_antiNonFreeDep = prefs.getBoolean("antiNonFreeDep", false);
         boolean pref_showIncompat = prefs.getBoolean("showIncompatible", false);
         boolean pref_rooted = prefs.getBoolean("rooted", true);
 
@@ -505,6 +506,9 @@ public class DB {
                             include = false;
                         else if (af.equals("NonFreeAdd")
                                 && !pref_antiNonFreeAdd)
+                            include = false;
+                        else if (af.equals("NonFreeDep")
+                                && !pref_antiNonFreeDep)
                             include = false;
                     }
                 }

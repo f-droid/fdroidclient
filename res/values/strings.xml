@@ -124,6 +124,8 @@
 	<string name="antinonfreeadlong">Show apps that promote non-free add-ons</string>
 	<string name="antinonfreenet">Network Services</string>
 	<string name="antinonfreenetlong">Show apps that promote non-free network services</string>
+	<string name="antinonfreedep">Dependencies</string>
+	<string name="antinonfreedeplong">Show apps that depend on other non-free apps</string>
 
 	<string name="expert">Expert</string>
 	<string name="expert_mode">Enable expert mode</string>
