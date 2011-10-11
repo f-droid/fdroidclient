@@ -1,0 +1,459 @@
+# Translations template for PROJECT.
+# Copyright (C) 2011 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2011-10-11 14:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.0dev\n"
+
+#, c-format
+msgctxt "searchres_napps"
+msgid "Found %1$d applications matching '%2$s':"
+msgstr ""
+
+#, c-format
+msgctxt "searchres_oneapp"
+msgid "Found one application matching '%s':"
+msgstr ""
+
+#, c-format
+msgctxt "searchres_noapps"
+msgid "No applications were found matching '%s'"
+msgstr ""
+
+msgctxt "SignatureMismatch"
+msgid ""
+"The new version is signed with a different key to the old one. To install"
+" the new version, the old one must be uninstalled first. Please do this "
+"and try again. (Note that uninstalling will erase any internal data "
+"stored by the application)"
+msgstr ""
+
+msgctxt "version"
+msgid "Version"
+msgstr "Version"
+
+#, c-format
+msgctxt "n_versions_available"
+msgid "%d versions available"
+msgstr "%d verfügbare Versionen"
+
+#, c-format
+msgctxt "n_version_available"
+msgid "%d version available"
+msgstr "%d verfügbare Version"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Benachrichtigen"
+
+msgctxt "storage"
+msgid "Storage"
+msgstr "Speicherplatz"
+
+msgctxt "cache_downloaded"
+msgid "Cache downloaded apps"
+msgstr "Heruntergeladene Anwendungen zwischenspeichern"
+
+msgctxt "keep_downloaded"
+msgid "Keep downloaded apk files on SD card"
+msgstr "Heruntergeladene Anwendungsdateien auf der SD-Karte behalten"
+
+msgctxt "updates"
+msgid "Updates"
+msgstr "Aktualisierungen"
+
+msgctxt "clear_all_cached_data"
+msgid "Clear all cached data"
+msgstr "Zwischenspeicher leeren"
+
+msgctxt "reset"
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgctxt "maintenance"
+msgid "Maintenance"
+msgstr "Verwaltung"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Bei Aktualisierungen benachrichtigen"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Anwendungsliste automatisch aktualisieren"
+
+msgctxt "automatic_repo_scan"
+msgid "Automatic repo scan"
+msgstr "Automatische Archivkontrolle"
+
+msgctxt "app_name"
+msgid "FDroid"
+msgstr "FDroid"
+
+msgctxt "about_title"
+msgid "About FDroid"
+msgstr "Über FDroid"
+
+msgctxt "about_desc"
+msgid ""
+"Originally based on Aptoide.\n"
+"Released under the GNU GPLv2 license."
+msgstr ""
+"Basierend auf Aptoide.\n"
+"Lizensiert unter GNU GPLv2."
+
+msgctxt "about_site"
+msgid "Website:"
+msgstr "Internetseite"
+
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
+msgctxt "about_mail"
+msgid "Email:"
+msgstr "Email:"
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
+
+msgctxt "about_version"
+msgid "Version:"
+msgstr "Version:"
+
+msgctxt "about_website"
+msgid "Website"
+msgstr "Internetseite"
+
+msgctxt "no_repo"
+msgid ""
+"You don't have any repositories configured!\n"
+"\n"
+"A repository is a source of applications. To add one, press the MENU "
+"button now and enter the URL.\n"
+"\n"
+"A repository address looks something like this: http://f-droid.org/repo"
+msgstr ""
+"Sie haben keine Archive eingestellt!\n"
+"\n"
+"Ein Archiv ist eine Sammlung von Anwendungen. Drücken Sie den Menü-Knopf "
+"und fügen Sie die Adresse eines Archivs hinzu.\n"
+"\n"
+"Eine Archiv-Adresse sieht ungefähr so aus: http://f-droid.org/repo"
+
+msgctxt "not_inst"
+msgid "Not Installed"
+msgstr "Nicht Installiert"
+
+msgctxt "installed_update"
+msgid "Update possible - Ver.:"
+msgstr "Aktualisierung verfügbar – Version:"
+
+msgctxt "ok"
+msgid "OK"
+msgstr ""
+
+msgctxt "yes"
+msgid "Yes"
+msgstr "Ja"
+
+msgctxt "no"
+msgid "No"
+msgstr "Nein"
+
+msgctxt "repo_add_title"
+msgid "Add new repository"
+msgstr "Neues Archiv hinzufügen"
+
+msgctxt "repo_add_add"
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgctxt "cancel"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "repo_delete_title"
+msgid "Choose repository to remove"
+msgstr "Zu entfernendes Archiv auswählen"
+
+msgctxt "server_connection_error"
+msgid "Could not connect to server!"
+msgstr "Die Serververbindung konnte nicht hergestellt werden!"
+
+msgctxt "repo_update_title"
+msgid "Update repositories"
+msgstr "Archive aktualisieren"
+
+msgctxt "tab_installed"
+msgid "Installed"
+msgstr "Installiert"
+
+msgctxt "tab_noninstalled"
+msgid "Available"
+msgstr "Verfügbar"
+
+msgctxt "tab_updates"
+msgid "Updates"
+msgstr "Aktualisierungen"
+
+msgctxt "update_available"
+msgid "Updates available"
+msgstr "Aktualisierungen verfügbar"
+
+msgctxt "process_wait_title"
+msgid "Please Wait"
+msgstr "Bitte warten"
+
+msgctxt "process_update_msg"
+msgid "Updating application list..."
+msgstr "Anwendungsliste wird aktualisiert …"
+
+msgctxt "connection_error"
+msgid "Could not connect to the network."
+msgstr "Die Netzwerkverbindung konnte nicht hergestellt werden!"
+
+msgctxt "connection_timeout"
+msgid "Timeout"
+msgstr "Zeitüberschreitung"
+
+msgctxt "connection_error_msg"
+msgid "Could not connect to server!"
+msgstr "Die Serververbindung konnte nicht hergestellt werden!"
+
+msgctxt "download"
+msgid "Download"
+msgstr "Herunterladen"
+
+msgctxt "download_server"
+msgid "Getting application from"
+msgstr "Anwendung wird heruntergeladen von"
+
+msgctxt "repo_add_url"
+msgid "Repository address"
+msgstr "Archiv-Adresse"
+
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
+
+msgctxt "isinst"
+msgid "Installed:"
+msgstr "Installiert:"
+
+msgctxt "install"
+msgid "Install"
+msgstr "Installieren"
+
+msgctxt "uninstall"
+msgid "Uninstall"
+msgstr "Entfernen"
+
+msgctxt "update"
+msgid "Update!"
+msgstr "Aktualisieren!"
+
+msgctxt "update_alrt"
+msgid ""
+"There are updates available for some installed applications.\n"
+"Do you want to see them?"
+msgstr ""
+"Für einige installierte Anwendungen sind Aktualisierungen verfügbar.\n"
+"Sollen diese angezeigt werden?"
+
+msgctxt "repo_alrt"
+msgid ""
+"The list of used repositories has changed.\n"
+"Do you want to update them?"
+msgstr ""
+"Die Liste der genutzten Archive wurde geändert.\n"
+"Soll sie aktualisiert werden?"
+
+msgctxt "error_download_alrt"
+msgid "Could not connect to server or apk file is corrupt!"
+msgstr ""
+"Die Serververbindung konnte nicht hergestellt werden oder die Datei ist "
+"fehlerhaft!"
+
+msgctxt "download_alrt"
+msgid "Getting application from:\n"
+msgstr "Anwendung wird geladen von:\n"
+
+msgctxt "menu_update_repo"
+msgid "Update"
+msgstr "Aktualisieren"
+
+msgctxt "menu_manage"
+msgid "Manage Repos"
+msgstr "Archive verwalten"
+
+msgctxt "menu_preferences"
+msgid "Preferences"
+msgstr "Einstellungen"
+
+msgctxt "menu_about"
+msgid "About"
+msgstr "Über"
+
+msgctxt "menu_search"
+msgid "Search"
+msgstr ""
+
+msgctxt "menu_add_repo"
+msgid "New Repository"
+msgstr "Archiv hinzufügen"
+
+msgctxt "menu_rem_repo"
+msgid "Remove Repository"
+msgstr "Archiv entfernen"
+
+msgctxt "menu_install"
+msgid "Install"
+msgstr "Installieren"
+
+msgctxt "menu_uninstall"
+msgid "Uninstall"
+msgstr "Entfernen"
+
+msgctxt "menu_website"
+msgid "Website"
+msgstr "Internetseite"
+
+msgctxt "menu_issues"
+msgid "Issues"
+msgstr "Probleme"
+
+msgctxt "menu_source"
+msgid "Source Code"
+msgstr "Quelltext"
+
+msgctxt "menu_market"
+msgid "Market"
+msgstr "Markt"
+
+msgctxt "menu_update"
+msgid "Update"
+msgstr "Aktualisieren"
+
+msgctxt "menu_donate"
+msgid "Donate"
+msgstr "Aktualisieren"
+
+#, c-format
+msgctxt "details_installed"
+msgid "Version %s installed"
+msgstr "Version %s installiert"
+
+msgctxt "details_notinstalled"
+msgid "Not installed"
+msgstr "Nicht installiert (%d verfügbar)"
+
+msgctxt "inst"
+msgid "Installed"
+msgstr "Installiert"
+
+msgctxt "corrupt_download"
+msgid "Downloaded file is corrupt"
+msgstr "Heruntergeladene Datei ist fehlerhaft"
+
+msgctxt "download_cancelled"
+msgid "Download cancelled"
+msgstr ""
+
+msgctxt "antifeatures"
+msgid "Anti-Features"
+msgstr ""
+
+msgctxt "antiads"
+msgid "Advertising"
+msgstr ""
+
+msgctxt "antiadslong"
+msgid "Show apps that contain advertising"
+msgstr ""
+
+msgctxt "antitrack"
+msgid "Tracking"
+msgstr ""
+
+msgctxt "antitracklong"
+msgid "Show apps that track and report your activity"
+msgstr ""
+
+msgctxt "antinonfreead"
+msgid "Add-ons"
+msgstr ""
+
+msgctxt "antinonfreeadlong"
+msgid "Show apps that promote non-free add-ons"
+msgstr ""
+
+msgctxt "antinonfreenet"
+msgid "Network Services"
+msgstr ""
+
+msgctxt "antinonfreenetlong"
+msgid "Show apps that promote non-free network services"
+msgstr ""
+
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr ""
+
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr ""
+
+msgctxt "expert"
+msgid "Expert"
+msgstr ""
+
+msgctxt "expert_mode"
+msgid "Enable expert mode"
+msgstr ""
+
+msgctxt "search_hint"
+msgid "Search applications"
+msgstr "Anwendung wird heruntergeladen von"
+
+msgctxt "db_sync_mode"
+msgid "Database sync mode"
+msgstr ""
+
+msgctxt "db_sync_mode_long"
+msgid "Set the value of SQLite's synchronous flag"
+msgstr ""
+
+msgctxt "appcompatibility"
+msgid "Application compatibility"
+msgstr ""
+
+msgctxt "showincompat"
+msgid "Incompatible apps"
+msgstr ""
+
+msgctxt "showincompat_long"
+msgid "Show apps written for newer Android versions or different hardware"
+msgstr ""
+
+msgctxt "rooted"
+msgid "Root"
+msgstr ""
+
+msgctxt "rooted_long"
+msgid "Show apps that require root privileges"
+msgstr ""
+
