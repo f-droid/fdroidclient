@@ -251,7 +251,10 @@ public class DB {
                     return false;
                 if (apk.features != null) {
                     for (String feat : apk.features) {
-                        if (!features.contains(feat)) return false;
+                        if (!features.contains(feat)) {
+                            Log.d("FDroid","Incompatible based on lack of " + feat);
+                            return false;
+                        }
                     }
                 }
                 return true;
