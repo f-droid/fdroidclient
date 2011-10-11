@@ -32,6 +32,9 @@
 		<CheckBoxPreference android:title="@string/antinonfreenet"
 			android:defaultValue="false" android:summary="@string/antinonfreenetlong"
 			android:key="antiNonFreeNet" />
+		<CheckBoxPreference android:title="@string/antinonfreedep"
+			android:defaultValue="false" android:summary="@string/antinonfreedeplong"
+			android:key="antiNonFreeDep" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/appcompatibility">
 		<CheckBoxPreference android:title="@string/showincompat"
