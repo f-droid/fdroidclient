@@ -2,35 +2,36 @@
 # Copyright (C) 2011 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-10-11 14:05+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"PO-Revision-Date: 2011-10-05 19:46+0200\n"
+"Last-Translator: mm3 <mm3@bk.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
-#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "Найдено %1$d совпадений с '%2$s':"
 
-#, c-format
+#, python-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "Найдено одно совпадение с '%s':"
 
-#, c-format
+#, python-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "Не найдено ни одного совпадения с '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -39,102 +40,100 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"Новая версия подписана ключом отличным от старого. Для установки новой "
+"версии, сначала нужно удалить старую программы. А потом попробовать снова. "
+"(Замечание: при удалении программы будут удалены все данные сохраненные в "
+"ней)"
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
-#, c-format
+#, python-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d версий доступно"
 
-#, c-format
+#, python-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "%d версия доступна"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Извещение"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Хранилище"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "Закешировать загруженную программу"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "Сохранить загруженный apk файл на SD карте"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "Обновления"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "Очистить все временные данные"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "Очистка"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Поддержка"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "Сообщить при появлении обновлений"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "Обновлять список приложений автоматически"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "Автоматически сканировать репозиторий"
 
 msgctxt "app_name"
 msgid "FDroid"
-msgstr ""
+msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr ""
+msgstr "О FDroid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
+"Оригинал основан на Aptoide.\n"
+"Выпущен под лицензией GNU GPLv2."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
-
-msgctxt "about_sitec"
-msgid "http://f-droid.org"
-msgstr ""
+msgstr "Сайт:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
-
-msgctxt "about_mailc"
-msgid "admin@f-droid.org"
-msgstr ""
+msgstr "E-mail:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr ""
+msgstr "Версия:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Сайт"
 
 msgctxt "no_repo"
 msgid ""
@@ -145,301 +144,299 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
+"В настройках не указан репозиторий!\n"
+"\n"
+"Репозиторий является источником приложений. Чтобы его добавить нажмите "
+"кнопку MENU  и введите URL адрес.\n"
+"\n"
+"Адрес репозитория похож на: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "Не установлено"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "Доступно обновление - версия:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "ОК"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "Добавить репозиторий"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr ""
+msgstr "Добавить"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Отменить"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr ""
+msgstr "Удалить репозиторий"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Нет соединения с сервером!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "Обновить репозитории"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr ""
+msgstr "Установлено"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "Доступно"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "Обновления"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "Доступные обновления"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr ""
+msgstr "Подождите"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr ""
+msgstr "Обновляем список приложений..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr ""
+msgstr "Нет соединения."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Время вышло"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Нет соединения с сервером!"
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Загрузка"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr ""
+msgstr "Взять приложение из"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
-
-msgctxt "repo_add_http"
-msgid "http://"
-msgstr ""
+msgstr "Адрес репозитория"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
+msgstr "Установлено:"
 
 msgctxt "install"
 msgid "Install"
-msgstr ""
+msgstr "Установить"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Удалить"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "Обновление!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
+"Обнаружены обновления для некоторых установленных приложений.\n"
+"Показать их?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
+"Список репозиториев изменился.\n"
+"Обновить его?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
+msgstr "Нет соединения с сервером или apk файл повреждён!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
+msgstr "Взять приложение из:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr ""
+msgstr "Обновить"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "Редактировать репозитории"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Настройки"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr ""
+msgstr "О программе"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "Новый репозиторий"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr ""
+msgstr "Удалить репозиторий"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr ""
+msgstr "Установить"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Удалить"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Сайт"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "Замечания"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr ""
+msgstr "Исходный код"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "Магазин"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "Обновить"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr ""
+msgstr "Пожертвовать"
 
-#, c-format
+#, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr ""
+msgstr "Версия %s установлена"
 
+#, python-format
 msgctxt "details_notinstalled"
-msgid "Not installed"
-msgstr ""
+msgid "Not installed (%d available)"
+msgstr "Не установлено (%d доступно)"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr ""
+msgstr "Установлено"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "Загруженный файл повреждён"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Загрузка остановлена"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Анти-Фишки"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Рекламма"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Показывать приложения с рекламмой"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Слежка"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "Показывать приложения который следят и отсылают данные о вас"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Дополнения"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Показывать приложения содержащие закрытые компоненты"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Сетевые сервисы"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr ""
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "Показывать приложения использующие несвободные сетевые сервисы"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Эксперт"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Включить режим эксперта"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "Найти приложения"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Режим синхронизации базы"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Установить флаг синхронизации SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Совместимость приложений"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Несовместимые приложения"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
+msgstr "Показать приложения для новых версий Андроида и/или другого железа"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Суперпользователь"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
-
+msgstr "Показывать приложения требующие root привелегий"

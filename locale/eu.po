@@ -2,35 +2,35 @@
 # Copyright (C) 2011 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-10-11 14:05+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"PO-Revision-Date: 2011-10-04 00:39+0200\n"
+"Last-Translator: Asier <asier.iturralde@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
-#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "'%2$s'-rekin bat datozen %1$d aplikazio aurkitu dira:"
 
-#, c-format
+#, python-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "'%s'-rekin bat datorren aplikazio bat aurkitu da:"
 
-#, c-format
+#, python-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "'%s'-rekin bat datorren aplikaziorik ez da aurkitu"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -39,102 +39,100 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio "
+"berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, "
+"egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak "
+"gordetako barne datuak ezabatuko direla)"
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "Bertsioa"
 
-#, c-format
+#, python-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d bertsio eskuragarri"
 
-#, c-format
+#, python-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "Bertsio %d eskuragarri"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Jakinarazi"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Biltegiratzea"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "Gorde cache-an deskargatutako aplikazioak"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "Gorde deskargatutako apk fitxategiak SD txartelean"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "Eguneraketak"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "Ezabatu cache-ko datu guztiak"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "Berrezarri"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Mantentzea"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "Jakinarazi eguneraketa berriak eskuragarri daudenean"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "Eguneratu aplikazio-zerrenda biltegiarekin automatikoki"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "Eskaneatu biltegiak automatikoki"
 
 msgctxt "app_name"
 msgid "FDroid"
-msgstr ""
+msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr ""
+msgstr "FDroid-i buruz"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
+"Jatorrian Aptoide-n oinarritua.\n"
+"GNU GPLv2 lizentziapean argitaratua."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
-
-msgctxt "about_sitec"
-msgid "http://f-droid.org"
-msgstr ""
+msgstr "Webgunea:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
-
-msgctxt "about_mailc"
-msgid "admin@f-droid.org"
-msgstr ""
+msgstr "E-posta:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr ""
+msgstr "Bertsioa:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Webgunea"
 
 msgctxt "no_repo"
 msgid ""
@@ -145,301 +143,303 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
+"Ez daukazu konfiguratutako biltegirik!\n"
+"\n"
+"Biltegi bat aplikazioen iturburu bat da. Bat gehitzeko, sakatu orain MENU "
+"botoia eta idatzi URL-a.\n"
+"\n"
+"Biltegi baten helbideak honen antzekoa izan ohi da: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "Instalatu gabea"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "Eguneraketa posiblea - Ber.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "Ados"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "Bai"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "Ez"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "Gehitu biltegi berria"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr ""
+msgstr "Gehitu"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Utzi"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr ""
+msgstr "Hautatu biltegia ezabatzeko"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Ezin izan da zerbitzarira konektatu!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "Eguneratu biltegiak"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr ""
+msgstr "Instalatuta"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "Eskuragarri"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "Eguneraketak"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "Eguneraketak eskuragarri"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr ""
+msgstr "Mesedez itxaron"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr ""
+msgstr "Aplikazio-zerrenda eguneratzen..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr ""
+msgstr "Ezin izan da sarera konektatu."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Denbora-muga"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Ezin izan da zerbitzarira konektatu!"
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Deskargatu"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr ""
+msgstr "Aplikazioa eskuratzen hemendik:"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
-
-msgctxt "repo_add_http"
-msgid "http://"
-msgstr ""
+msgstr "Biltegiaren helbidea"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
+msgstr "Instalatuta:"
 
 msgctxt "install"
 msgid "Install"
-msgstr ""
+msgstr "Instalatu"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Desinstalatu"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "Eguneraketa!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
+"Instalatutako zenbait aplikaziorentzako eguneraketak daude.\n"
+"Ikusi nahi dituzu?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
+"Erabilitako biltegien zerrenda aldatu egin da.\n"
+"Eguneratu nahi dituzu?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
+msgstr "Ezin izan da zerbitzarira konektatu edo apk fitxategia hondatuta dago!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
+msgstr "Aplikazioa eskuratzen hemendik:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr ""
+msgstr "Eguneraketa"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "Biltegiak Kudeatu"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Hobespenak"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr ""
+msgstr "Honi buruz"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Bilatu"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "Biltegi berria"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr ""
+msgstr "Ezabatu biltegia"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr ""
+msgstr "Instalatu"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Desinstalatu"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Webgunea"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "Gaiak"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr ""
+msgstr "Iturburu Kodea"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "Market"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "Eguneratu"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr ""
+msgstr "Dohaintza egin"
 
-#, c-format
+#, python-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr ""
+msgstr "%s bertsioa instalatuta"
 
+#, python-format
 msgctxt "details_notinstalled"
-msgid "Not installed"
-msgstr ""
+msgid "Not installed (%d available)"
+msgstr "Instalatu gabe (%d eskuragarri)"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr ""
+msgstr "Instalatuta"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "Deskargatutako fitxategia hondatuta dago"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Deskarga bertan behera utzita"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Anti-Ezaugarriak"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Iragarkiak"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Bistaratu iragarkiak dituzten aplikazioak"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Jarraipena"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr ""
+"Bistaratu zure aktibitateen jarraipena egin eta txostenak bidaltzen dituzten "
+"aplikazioak"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Gehigarriak"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Bistaratu gehigarri ez-libreak sustatzen dituzten aplikazioak"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Sareko Zerbitzuak"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr ""
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "Bistaratu sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Aditua"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Gaitu aditu modua"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "Bilatu aplikazioak"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Datu base modu sinkronoa"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Ezarri SQLite-ren bandera sinkronoaren balioa"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Aplikazioen bateragarritasuna"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Aplikazio bateraezinak"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
+"Bistaratu Androiden bertsio berriagoentzat edo hardware desberdinarentzat "
+"idatzitako aplikazioak"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
-
+msgstr "Bistaratu root baimenak behar dituzten aplikazioak"
