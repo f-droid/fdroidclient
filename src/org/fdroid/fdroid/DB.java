@@ -128,7 +128,7 @@ public class DB {
             if (marketVersion != null && marketVercode > 0) {
                 for (Apk apk : apks) {
                     if (apk.vercode == marketVercode
-                          && (checker == null || checker.isCompatible(apk)))
+                            && (checker == null || checker.isCompatible(apk)))
                         return apk;
                 }
             }
@@ -139,7 +139,7 @@ public class DB {
             Apk latestapk = null;
             for (Apk apk : apks) {
                 if (apk.vercode > latestcode
-                      && (checker == null || checker.isCompatible(apk))) {
+                        && (checker == null || checker.isCompatible(apk))) {
                     latestapk = apk;
                     latestcode = apk.vercode;
                 }
@@ -174,9 +174,9 @@ public class DB {
         public String server;
         public String hash;
         public String hashType;
-        public int minSdkVersion;      // 0 if unknown
+        public int minSdkVersion; // 0 if unknown
         public CommaSeparatedList permissions; // null if empty or unknown
-        public CommaSeparatedList features;    // null if empty or unknown
+        public CommaSeparatedList features; // null if empty or unknown
 
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
@@ -206,8 +206,8 @@ public class DB {
         public static abstract class CompatibilityChecker {
 
             // Because Build.VERSION.SDK_INT requires API level 5
-            protected final static int SDK_INT
-                = Integer.parseInt(Build.VERSION.SDK);
+            protected final static int SDK_INT = Integer
+                    .parseInt(Build.VERSION.SDK);
 
             public abstract boolean isCompatible(Apk apk);
 
@@ -218,7 +218,7 @@ public class DB {
                 else
                     checker = new BasicChecker();
                 Log.d("FDroid", "Compatibility checker for API level "
-                      + SDK_INT + ": " + checker.getClass().getName());
+                        + SDK_INT + ": " + checker.getClass().getName());
                 return checker;
             }
         }
@@ -252,7 +252,8 @@ public class DB {
                 if (apk.features != null) {
                     for (String feat : apk.features) {
                         if (!features.contains(feat)) {
-                            Log.d("FDroid","Incompatible based on lack of " + feat);
+                            Log.d("FDroid", "Incompatible based on lack of "
+                                    + feat);
                             return false;
                         }
                     }
@@ -298,9 +299,9 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-            // Version 2...
+    // Version 2...
             { "alter table " + TABLE_APP + " add marketVersion text",
-              "alter table " + TABLE_APP + " add marketVercode integer" },
+                    "alter table " + TABLE_APP + " add marketVercode integer" },
 
             // Version 3...
             { "alter table " + TABLE_APK + " add apkSource text" },
@@ -325,18 +326,18 @@ public class DB {
 
             // Version 10...
             { "alter table " + TABLE_APK + " add minSdkVersion integer",
-              "alter table " + TABLE_APK + " add permissions string",
-              "alter table " + TABLE_APK + " add features string" },
+                    "alter table " + TABLE_APK + " add permissions string",
+                    "alter table " + TABLE_APK + " add features string" },
 
             // Version 11...
             { "alter table " + TABLE_APP + " add requirements string" },
 
             // Version 12...
             { "alter table " + TABLE_APK + " add hashType string",
-              "update " + TABLE_APK + " set hashType = 'MD5'" },
+                    "update " + TABLE_APK + " set hashType = 'MD5'" },
 
             // Version 13...
-            { "alter table " + TABLE_APP + " add category string" }};
+            { "alter table " + TABLE_APP + " add category string" } };
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -351,10 +352,10 @@ public class DB {
             db.execSQL(CREATE_TABLE_APK);
             onUpgrade(db, 1, DB_UPGRADES.length + 1);
             ContentValues values = new ContentValues();
-            values.put("address",
-                       mContext.getString(R.string.default_repo_address));
-            values.put("pubkey",
-                       mContext.getString(R.string.default_repo_pubkey));
+            values.put("address", mContext
+                    .getString(R.string.default_repo_address));
+            values.put("pubkey", mContext
+                    .getString(R.string.default_repo_pubkey));
             values.put("inuse", 1);
             values.put("priority", 10);
             db.insert(TABLE_REPO, null, values);
@@ -433,7 +434,8 @@ public class DB {
         result.add("All");
         Cursor c = null;
         try {
-            c = db.rawQuery("select distinct category from " + TABLE_APP + " order by category", null);
+            c = db.rawQuery("select distinct category from " + TABLE_APP
+                    + " order by category", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 String s = c.getString(c.getColumnIndex("category"));
@@ -464,7 +466,7 @@ public class DB {
     // simply using values cached in the database. Slower.
     // 'exclusions' - apply filtering for compatibility, anti-features, etc.
     public Vector<App> getApps(String appid, String filter, boolean update,
-                               boolean exclusions) {
+            boolean exclusions) {
 
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(mContext);
@@ -495,8 +497,8 @@ public class DB {
             while (!c.isAfterLast()) {
 
                 App app = new App();
-                app.antiFeatures = DB.CommaSeparatedList.make(c
-                        .getString(c.getColumnIndex("antiFeatures")));
+                app.antiFeatures = DB.CommaSeparatedList.make(c.getString(c
+                        .getColumnIndex("antiFeatures")));
                 boolean include = true;
                 if (app.antiFeatures != null && exclusions) {
                     for (String af : app.antiFeatures) {
@@ -515,8 +517,8 @@ public class DB {
                             include = false;
                     }
                 }
-                app.requirements = DB.CommaSeparatedList.make(c
-                        .getString(c.getColumnIndex("requirements")));
+                app.requirements = DB.CommaSeparatedList.make(c.getString(c
+                        .getColumnIndex("requirements")));
                 if (app.requirements != null && exclusions) {
                     for (String r : app.requirements) {
                         if (r.equals("root") && !pref_rooted) {
@@ -565,7 +567,8 @@ public class DB {
                         apk.hashType = c2.getString(c2
                                 .getColumnIndex("hashType"));
                         apk.sig = c2.getString(c2.getColumnIndex("sig"));
-                        apk.srcname = c2.getString(c2.getColumnIndex("srcname"));
+                        apk.srcname = c2
+                                .getString(c2.getColumnIndex("srcname"));
                         apk.size = c2.getInt(c2.getColumnIndex("size"));
                         apk.apkName = c2
                                 .getString(c2.getColumnIndex("apkName"));
@@ -575,8 +578,8 @@ public class DB {
                                 .getColumnIndex("minSdkVersion"));
                         apk.permissions = CommaSeparatedList.make(c2
                                 .getString(c2.getColumnIndex("permissions")));
-                        apk.features = CommaSeparatedList.make(c2
-                                .getString(c2.getColumnIndex("features")));
+                        apk.features = CommaSeparatedList.make(c2.getString(c2
+                                .getColumnIndex("features")));
                         app.apks.add(apk);
                         if (!compatible && compatChecker.isCompatible(apk)) {
                             // At least one compatible APK.
@@ -588,10 +591,9 @@ public class DB {
 
                     if (compatible) {
                         result.add(app);
-                    }
-                    else {
+                    } else {
                         Log.d("FDroid", "Excluding incompatible application: "
-                              + app.id);
+                                + app.id);
                     }
                 }
 
@@ -615,6 +617,9 @@ public class DB {
             try {
                 getUpdates(result);
                 db.setTransactionSuccessful();
+            } catch (Exception e) {
+                Log.e("FDroid", "Exception while getting updates: "
+                        + Log.getStackTraceString(e));
             } finally {
                 db.endTransaction();
             }
@@ -750,7 +755,10 @@ public class DB {
 
     // Called instead of endUpdate if the update failed.
     public void cancelUpdate() {
-        db.endTransaction();
+        if (updateApps != null) {
+            db.endTransaction();
+            updateApps = null;
+        }
     }
 
     // Called during update to supply new details for an application (or

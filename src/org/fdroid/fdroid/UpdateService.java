@@ -113,7 +113,6 @@ public class UpdateService extends Service {
 
                     if (success && notify) {
                         if (db.getNumUpdates() > prevUpdates) {
-                            // And the user wants to know.
                             NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                             Notification notification = new Notification(
                                     R.drawable.icon,

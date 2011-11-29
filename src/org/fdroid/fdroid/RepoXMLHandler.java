@@ -260,7 +260,6 @@ public class RepoXMLHandler extends DefaultHandler {
         db.beginUpdate();
         Vector<DB.Repo> repos = db.getRepos();
         for (DB.Repo repo : repos) {
-            boolean success = false;
             if (repo.inuse) {
 
                 try {
@@ -272,9 +271,8 @@ public class RepoXMLHandler extends DefaultHandler {
                         Log.d("FDroid", "Getting signed index from "
                                 + repo.address);
                         getRemoteFile(ctx, repo.address + "/index.jar",
-                                      "tempindex.jar");
-                        String jarpath = ctx.getFilesDir()
-                            + "/tempindex.jar";
+                                "tempindex.jar");
+                        String jarpath = ctx.getFilesDir() + "/tempindex.jar";
                         JarFile jar;
                         JarEntry je;
                         try {
@@ -306,9 +304,9 @@ public class RepoXMLHandler extends DefaultHandler {
                             Log.d("FDroid", "No signature found in index");
                             return false;
                         }
-                        Log.d("FDroid", "Index has "
-                              + certs.length + " signature"
-                              + (certs.length > 1 ? "s." : "."));
+                        Log.d("FDroid", "Index has " + certs.length
+                                + " signature"
+                                + (certs.length > 1 ? "s." : "."));
 
                         boolean match = false;
                         for (Certificate cert : certs) {
@@ -355,25 +353,23 @@ public class RepoXMLHandler extends DefaultHandler {
                         repo.pubkey = handler.pubkey;
                         db.updateRepoByAddress(repo);
                     }
-                    success = true;
 
                 } catch (Exception e) {
                     Log.e("FDroid", "Exception updating from " + repo.address
                             + ":\n" + Log.getStackTraceString(e));
+                    db.cancelUpdate();
                     return false;
                 } finally {
                     ctx.deleteFile("tempindex.xml");
                     ctx.deleteFile("tempindex.jar");
-                    if (!success)
-                        db.cancelUpdate();
                 }
 
             }
         }
         db.endUpdate();
         Log.d("FDroid", "Update completed in "
-              + ((System.currentTimeMillis() - startTime) / 1000)
-              + " seconds.");
+                + ((System.currentTimeMillis() - startTime) / 1000)
+                + " seconds.");
         return true;
     }
 
