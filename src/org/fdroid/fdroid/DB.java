@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-11  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
  *
  * This program is free software; you can redistribute it and/or
@@ -658,6 +658,7 @@ public class DB {
                         || !app.installedVersion.equals(version)) {
                     setInstalledVersion(app.id, version, vercode);
                     app.installedVersion = version;
+                    app.installedVerCode = vercode;
                 }
             } else {
                 if (app.installedVersion != null) {
@@ -775,7 +776,7 @@ public class DB {
             if (app.id.equals(upapp.id)) {
                 // Log.d("FDroid", "AppUpdate: " + app.id
                 // + " is already in the database.");
-                updateAppIfDifferent(app, upapp);
+                updateApp(app, upapp);
                 app.updated = true;
                 found = true;
                 for (Apk upapk : upapp.apks) {
@@ -807,7 +808,7 @@ public class DB {
             // Log
             // .d("FDroid", "AppUpdate: " + upapp.id
             // + " is a new application.");
-            updateAppIfDifferent(null, upapp);
+            updateApp(null, upapp);
             for (Apk upapk : upapp.apks) {
                 updateApkIfDifferent(null, upapk);
                 upapk.updated = true;
@@ -818,13 +819,15 @@ public class DB {
 
     }
 
-    // Update application details in the database, if different to the
-    // previous ones.
+    // Update application details in the database.
     // 'oldapp' - previous details - i.e. what's in the database.
     // If null, this app is not in the database at all and
     // should be added.
     // 'upapp' - updated details
-    private void updateAppIfDifferent(App oldapp, App upapp) {
+    // Note that we deliberately do not update installedVersion or
+    // installedVerCode here - for a new app, they default correctly,
+    // and for an existing app we want to keep that cached data.
+    private void updateApp(App oldapp, App upapp) {
         ContentValues values = new ContentValues();
         values.put("id", upapp.id);
         values.put("name", upapp.name);
@@ -837,8 +840,6 @@ public class DB {
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
         values.put("donateURL", upapp.donateURL);
-        values.put("installedVersion", upapp.installedVersion);
-        values.put("installedVerCode", upapp.installedVerCode);
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));

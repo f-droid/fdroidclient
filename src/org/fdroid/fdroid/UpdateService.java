@@ -112,7 +112,9 @@ public class UpdateService extends Service {
                             getBaseContext(), db);
 
                     if (success && notify) {
-                        if (db.getNumUpdates() > prevUpdates) {
+                        int newUpdates = db.getNumUpdates();
+                        Log.d("FDroid", "Updates before:" + prevUpdates + ", after: " +newUpdates);                        
+                        if (newUpdates > prevUpdates) {
                             NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                             Notification notification = new Notification(
                                     R.drawable.icon,
