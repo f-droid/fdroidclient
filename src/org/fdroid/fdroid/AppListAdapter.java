@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fdroid.fdroid.R;
-
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -61,13 +59,21 @@ public class AppListAdapter extends BaseAdapter {
         name.setText(app.name);
 
         String vs;
-        int numav = app.apks.size();
-        if (numav == 1)
-            vs = mContext.getString(R.string.n_version_available);
-        else
-            vs = mContext.getString(R.string.n_versions_available);
+        if (app.hasUpdates)
+            vs = app.installedVersion + " -> " + app.currentVersion;
+        else if (app.installedVersion != null)
+            vs = app.installedVersion;
+        else {
+            int numav = app.apks.size();
+            if (numav == 1)
+                vs = mContext.getString(R.string.n_version_available);
+            else
+                vs = mContext.getString(R.string.n_versions_available);
+            vs = String.format(vs, numav);
+        }
+
         TextView status = (TextView) v.findViewById(R.id.status);
-        status.setText(String.format(vs, numav));
+        status.setText(vs);
 
         TextView license = (TextView) v.findViewById(R.id.license);
         license.setText(app.license);

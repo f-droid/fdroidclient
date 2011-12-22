@@ -37,8 +37,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.text.TextUtils.SimpleStringSplitter;
+import android.util.Log;
 
 public class DB {
 
@@ -94,6 +94,7 @@ public class DB {
         public String sourceURL;
         public String donateURL; // Donate link, or null
         public String installedVersion;
+        public String currentVersion;
         public int installedVerCode;
         public String marketVersion;
         public int marketVercode;
@@ -632,8 +633,10 @@ public class DB {
             Apk curver = app.getCurrentVersion(compatChecker);
             if (curver != null && app.installedVersion != null
                     && !app.installedVersion.equals(curver.version)) {
-                if (app.installedVerCode < curver.vercode)
+                if (app.installedVerCode < curver.vercode) {
                     app.hasUpdates = true;
+                    app.currentVersion = curver.version;
+                }
             }
         }
 
