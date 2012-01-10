@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller l\'application écrasera les données enregistrées par l\'application).</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versions disponibles</string>
   <string name="n_version_available">%d version disponible</string>
@@ -12,18 +13,19 @@
   <string name="reset">Réinitialisation</string>
   <string name="maintenance">Maintenance</string>
   <string name="notify_updates_available">Notifier quand de nouvelles mises à jour sont disponibles</string>
-  <string name="update_apps_list">"Mettre à jour automatiquement la liste d\'applications à partir des dépôts "</string>
+  <string name="update_apps_list">Mettre à jour automatiquement la liste d\'applications à partir des dépôts</string>
   <string name="automatic_repo_scan">Balayage automatique du dépôt</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">À propos de FDroid</string>
-  <string name="about_desc">Originallement basée sur Aptoide.\nLibéré sous licence GNU GPL v2.</string>
-  <string name="about_site">Site Web</string>
+  <string name="about_desc">Originellement basée sur Aptoide.\nLibéré sous licence GNU GPL v2.</string>
+  <string name="about_site">Site Web :</string>
   <string name="about_mail">Courriel:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
-  <string name="no_repo">Aucun dépôt n\'est configuré!\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez sur MENU maintenant et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci: http://f-droid.org/repo</string>
+  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez sur MENU maintenant et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="not_inst">Pas installée</string>
   <string name="installed_update">Mise à jour possible - Ver.:</string>
+  <string name="ok">OK</string>
   <string name="yes">Oui</string>
   <string name="no">Non</string>
   <string name="repo_add_title">Ajouter un nouveau dépôt</string>
@@ -43,13 +45,13 @@
   <string name="connection_error_msg">Connection au serveur impossible!</string>
   <string name="download">Téléchargement</string>
   <string name="download_server">Réception d\'application de</string>
-  <string name="repo_add_url">URL du dépôt</string>
+  <string name="repo_add_url">Adresse du dépôt</string>
   <string name="isinst">Installé:</string>
   <string name="install">Installer</string>
   <string name="uninstall">Supprimer</string>
   <string name="update">Mise à jour!</string>
-  <string name="update_alrt">Des mises à jour sont disponibles pour certaines applications.\n\nDésirez-vous les voir?</string>
-  <string name="repo_alrt">La liste des dépôts a changé.\nVoulez-vous les mettre à jour?</string>
+  <string name="update_alrt">Des mises à jour sont disponibles pour certaines applications.\n\nDésirez-vous les voir ?</string>
+  <string name="repo_alrt">La liste des dépôts utilisés a changé.\nVoulez-vous les mettre à jour ?</string>
   <string name="error_download_alrt">Connections au serveur impossible ou fichier apk corrompu!</string>
   <string name="download_alrt">Réception d\'application de:\n</string>
   <string name="menu_update_repo">Mise à jour</string>
@@ -67,8 +69,20 @@
   <string name="menu_update">Mise à jour</string>
   <string name="menu_donate">Mise à jour</string>
   <string name="details_installed">Version %s installée</string>
-  <string name="details_notinstalled">Pas installée (%d disponible)</string>
+  <string name="details_notinstalled">Pas installée</string>
   <string name="inst">Installée</string>
   <string name="corrupt_download">Le fichier téléchargé est corrompu</string>
+  <string name="antifeatures">Anti-fonctionnalités</string>
+  <string name="antiads">Publicités</string>
+  <string name="antiadslong">Montrer les applications qui contiennent des publicités</string>
+  <string name="antitrack">Surveillance</string>
+  <string name="antitracklong">Montrer les applications qui épient et qui rapportent votre activité</string>
+  <string name="antinonfreead">Extensions</string>
+  <string name="antinonfreeadlong">Montrer les applications qui promeuvent des extensions privateurs</string>
+  <string name="antinonfreenet">Services réseau</string>
+  <string name="antinonfreenetlong">Montrer les applications qui promeuvent des services réseaux privateurs</string>
+  <string name="antinonfreedep">Préférences</string>
+  <string name="antinonfreedeplong">Montrer les applications qui promeuvent des extensions privateurs</string>
+  <string name="expert">Expert</string>
   <string name="search_hint">Réception d\'application de</string>
 </resources>

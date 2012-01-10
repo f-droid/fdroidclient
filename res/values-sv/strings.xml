@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="searchres_napps">Hittade %1$d program som matchade \'%2$s\':</string>
+  <string name="searchres_oneapp">Ett program matchade \'%s\':</string>
+  <string name="searchres_noapps">Inga program matchade \'%s\'</string>
   <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla versionen måste först avinstalleras. Försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versioner tillgängliga</string>
@@ -9,7 +12,7 @@
   <string name="cache_downloaded">Cacha nerladdade program</string>
   <string name="keep_downloaded">Behåll nerladdade apk-filer på SD-kortet</string>
   <string name="updates">Uppdateringar</string>
-  <string name="clear_all_cached_data">Rensa all cachad data</string>
+  <string name="clear_all_cached_data">Rensa alla cachade data</string>
   <string name="reset">Återställ</string>
   <string name="maintenance">Underhåll</string>
   <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
@@ -22,7 +25,7 @@
   <string name="about_mail">"E-post: "</string>
   <string name="about_version">"Version: "</string>
   <string name="about_website">Webbplats</string>
-  <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förråds-URL ser ut ungefär så här: http://f-droid.org/repo</string>
+  <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förrådsadress ser ut så här: http://f-droid.org/repo</string>
   <string name="not_inst">Inte installerad</string>
   <string name="installed_update">Uppdatering möjlig - Ver.:</string>
   <string name="ok">OK</string>
@@ -58,6 +61,7 @@
   <string name="menu_manage">Hantera förråd</string>
   <string name="menu_preferences">Inställningar</string>
   <string name="menu_about">Om</string>
+  <string name="menu_search">Sök</string>
   <string name="menu_add_repo">Nytt förråd</string>
   <string name="menu_rem_repo">Ta bort förråd</string>
   <string name="menu_install">Installera</string>
@@ -67,11 +71,12 @@
   <string name="menu_source">Källkod</string>
   <string name="menu_market">Market</string>
   <string name="menu_update">Uppdatera</string>
-  <string name="menu_donate">Uppdatera</string>
+  <string name="menu_donate">Donera</string>
   <string name="details_installed">Version %s är installerad</string>
-  <string name="details_notinstalled">Inte installerat (%d versioner tillgängliga)</string>
+  <string name="details_notinstalled">Inte installerad</string>
   <string name="inst">Installerad</string>
   <string name="corrupt_download">Den nerladdade filen är skadad</string>
+  <string name="download_cancelled">Nerladdning avbruten</string>
   <string name="antifeatures">Anti-finesser</string>
   <string name="antiads">Reklam</string>
   <string name="antiadslong">Visa program som innehåller reklam</string>
@@ -81,6 +86,16 @@
   <string name="antinonfreeadlong">Visa program som främjar icke-fria tillägg</string>
   <string name="antinonfreenet">Nätverkstjänster</string>
   <string name="antinonfreenetlong">Visa program som främjar icke-fria nätverkstjänster</string>
+  <string name="antinonfreedep">Inställningar</string>
+  <string name="antinonfreedeplong">Visa program som främjar icke-fria tillägg</string>
   <string name="expert">Expert</string>
-  <string name="search_hint">Hämtar program från</string>
+  <string name="expert_mode">Aktivera expertläge</string>
+  <string name="search_hint">Sök program</string>
+  <string name="db_sync_mode">Databassynkroniseringsläge</string>
+  <string name="db_sync_mode_long">Ställ in värdet på synchronous-flaggan i SQLite</string>
+  <string name="appcompatibility">Programkompatibilitet</string>
+  <string name="showincompat">Inkompatibla program</string>
+  <string name="showincompat_long">Visa program skrivna för nyare Android-versioner eller annan hårdvara</string>
+  <string name="rooted">Root</string>
+  <string name="rooted_long">Visa program som kräver root-rättigheter</string>
 </resources>

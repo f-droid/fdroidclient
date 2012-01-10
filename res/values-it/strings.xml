@@ -1,19 +1,31 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="version">Versione Server:</string>
-  <string name="n_versions_available">Aggiornamenti disponibili</string>
-  <string name="n_version_available">Aggiornamenti disponibili</string>
+  <string name="SignatureMismatch">"La nuova versione e\' firmata con una chiave differente rispetto alla vecchia. Per installare la nuova versione occorre prima disinstallare la precedente. Riprova dopo aver disinstallato.  (Attenzione! disistallando si cancellerà qualsiasi dato salvato dall\'applicazione)"</string>
+  <string name="version">Versione</string>
+  <string name="n_versions_available">%d aggiornamenti disponibili</string>
+  <string name="n_version_available">%d versione disponibile</string>
+  <string name="notify">Notifica</string>
+  <string name="storage">Memoria</string>
+  <string name="cache_downloaded">Cache applicazioni scaricate</string>
+  <string name="keep_downloaded">Salva apk scaricati su SD</string>
   <string name="updates">Aggiornamenti</string>
+  <string name="clear_all_cached_data">Cancella dati temporanei</string>
+  <string name="reset">Reset</string>
+  <string name="maintenance">Manutenzione</string>
+  <string name="notify_updates_available">Notifica nuovi aggiornamenti disponibili</string>
+  <string name="update_apps_list">Aggiorna elenco applicazioni in automatico</string>
+  <string name="automatic_repo_scan">Scansione repository automatica</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Informazioni</string>
   <string name="about_desc">Basato su Aptoide.\nRilasciato sotto licenza GNU GPL v2.</string>
   <string name="about_site">Sito Web</string>
-  <string name="about_mail">e-Mail:</string>
-  <string name="about_version">Versione Server:</string>
+  <string name="about_mail">Email:</string>
+  <string name="about_version">Versione:</string>
   <string name="about_website">Sito Web</string>
   <string name="no_repo">Non hai configurato nessun repository!\n\nUn repository contiene un insieme di applicazioni. Per aggiungerne uno, premi MENU e inserisci un indirizzo URL.\n\nUn indirizzo URL di esempio e\': http://f-droid.org/repo</string>
   <string name="not_inst">Non installato</string>
   <string name="installed_update">Aggiornamento: - Ver.:</string>
+  <string name="ok">OK</string>
   <string name="yes">Sì</string>
   <string name="no">No</string>
   <string name="repo_add_title">Aggiungi nuovo repository</string>
@@ -33,7 +45,7 @@
   <string name="connection_error_msg">Impossibile connettersi al server!</string>
   <string name="download">Download</string>
   <string name="download_server">Scaricamento applicazione da</string>
-  <string name="repo_add_url">Repository URL</string>
+  <string name="repo_add_url">Indirizzo Url Repository</string>
   <string name="isinst">Installato:</string>
   <string name="install">Installa</string>
   <string name="uninstall">Disinstalla</string>
@@ -44,6 +56,7 @@
   <string name="download_alrt">Scaricamento applicazione da:\n\n</string>
   <string name="menu_update_repo">Aggiornamento</string>
   <string name="menu_manage">Gestisci Repos</string>
+  <string name="menu_preferences">Preferenze</string>
   <string name="menu_about">About</string>
   <string name="menu_add_repo">Nuovo Repository</string>
   <string name="menu_rem_repo">Rimuovi Repository</string>
@@ -55,7 +68,21 @@
   <string name="menu_market">Market</string>
   <string name="menu_update">Aggiornamento</string>
   <string name="menu_donate">Aggiornamento</string>
-  <string name="details_installed">Non installato</string>
+  <string name="details_installed">Versione %s installata</string>
+  <string name="details_notinstalled">Non installato</string>
   <string name="inst">Installato</string>
+  <string name="corrupt_download">File Corrotto</string>
+  <string name="antifeatures">Anti-Features</string>
+  <string name="antiads">Pubblicita\'</string>
+  <string name="antiadslong">Mostra applicazioni con pubblicita\'</string>
+  <string name="antitrack">Tracking</string>
+  <string name="antitracklong">Mostra applicazioni a rischio per la privacy</string>
+  <string name="antinonfreead">Add-ons</string>
+  <string name="antinonfreeadlong">Mostra applicazioni che promuovono add-ons non liberi</string>
+  <string name="antinonfreenet">Network Services</string>
+  <string name="antinonfreenetlong">Mostra applicazioni che promuovono network services non liberi</string>
+  <string name="antinonfreedep">Preferenze</string>
+  <string name="antinonfreedeplong">Mostra applicazioni che promuovono add-ons non liberi</string>
+  <string name="expert">Esperto</string>
   <string name="search_hint">Scaricamento applicazione da</string>
 </resources>

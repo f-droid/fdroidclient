@@ -67,8 +67,9 @@
   <string name="menu_update">Aktualisieren</string>
   <string name="menu_donate">Aktualisieren</string>
   <string name="details_installed">Version %s installiert</string>
-  <string name="details_notinstalled">Nicht installiert (%d verfügbar)</string>
+  <string name="details_notinstalled">Nicht Installiert</string>
   <string name="inst">Installiert</string>
   <string name="corrupt_download">Heruntergeladene Datei ist fehlerhaft</string>
+  <string name="antinonfreedep">Einstellungen</string>
   <string name="search_hint">Anwendung wird heruntergeladen von</string>
 </resources>

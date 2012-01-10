@@ -28,7 +28,7 @@
   <string name="no_repo">Нисте конфигурисали ни једну ризницу!\n\nРизнице су места одакле се скидају апликације. Да би сте додали једну, притисните тастер МЕНИ и унесите адресу.\n\nАдреса ризнице би личила на ово: http://f-droid.org/repo</string>
   <string name="not_inst">Није Инсталирана</string>
   <string name="installed_update">Могуће је ажурирати - Вер.:</string>
-  <string name="ok">У РЕДУ</string>
+  <string name="ok">ПОТВРДИ</string>
   <string name="yes">ДА</string>
   <string name="no">НЕ</string>
   <string name="repo_add_title">Додај нову ризницу</string>
@@ -73,7 +73,7 @@
   <string name="menu_update">Ажурирај</string>
   <string name="menu_donate">Ажурирај</string>
   <string name="details_installed">Верзија %s инсталирана</string>
-  <string name="details_notinstalled">Није инсталирана (%d је на располагању)</string>
+  <string name="details_notinstalled">Није Инсталирана</string>
   <string name="inst">Инсталирана</string>
   <string name="corrupt_download">Скинута датотека је покварена</string>
   <string name="antifeatures">Непожељне Karakteristike</string>
@@ -85,6 +85,8 @@
   <string name="antinonfreeadlong">Прикажи апликације што промовишу плаћене додатке</string>
   <string name="antinonfreenet">Мрежне Услуге</string>
   <string name="antinonfreenetlong">Прикажи апликације што промовишу плаћене мрежне услуге</string>
+  <string name="antinonfreedep">Опције</string>
+  <string name="antinonfreedeplong">Прикажи апликације што промовишу плаћене додатке</string>
   <string name="expert">Стручни</string>
   <string name="expert_mode">Омогући стручни режим</string>
   <string name="search_hint">Претрага апликација</string>
