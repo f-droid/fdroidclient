@@ -286,6 +286,7 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
                     ad = apps_av;
 
                 ListView lst = new ListView(FDroid.this);
+                lst.setFastScrollEnabled(true);
                 lst.setOnItemClickListener(FDroid.this);
                 lst.setAdapter(ad);
                 return lst;
