@@ -6,28 +6,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: 2011-03-19 16:26+0200\n"
 "Last-Translator: paradix86 <paradix86@gmail.com>\n"
 "Language-Team: it <LL@li.org>\n"
-"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr ""
@@ -41,20 +40,19 @@ msgid ""
 msgstr ""
 "La nuova versione e' firmata con una chiave differente rispetto alla "
 "vecchia. Per installare la nuova versione occorre prima disinstallare la "
-"precedente. Riprova dopo aver disinstallato.  (Attenzione! disistallando si "
-"cancellerà qualsiasi dato salvato dall'applicazione)"
+"precedente. Riprova dopo aver disinstallato.  (Attenzione! disistallando "
+"si cancellerà qualsiasi dato salvato dall'applicazione)"
 
 msgctxt "version"
 msgid "Version"
 msgstr "Versione"
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d aggiornamenti disponibili"
 
-# il %d penso sia il numero di versione, e tradotto letteralmente versione available sta per versione disponibile
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versione disponibile"
@@ -123,9 +121,17 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr "Sito Web"
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
 msgstr "Email:"
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
@@ -243,6 +249,10 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Indirizzo Url Repository"
 
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
+
 msgctxt "isinst"
 msgid "Installed:"
 msgstr "Installato:"
@@ -348,15 +358,15 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Aggiornamento"
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Versione %s installata"
 
-#, python-format
+#, fuzzy
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
-msgstr "Non installato (%d disponibile)"
+msgid "Not installed"
+msgstr "Non installato"
 
 msgctxt "inst"
 msgid "Installed"
@@ -406,6 +416,16 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Mostra applicazioni che promuovono network services non liberi"
 
+#, fuzzy
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr "Preferenze"
+
+#, fuzzy
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr "Mostra applicazioni che promuovono add-ons non liberi"
+
 msgctxt "expert"
 msgid "Expert"
 msgstr "Esperto"
@@ -446,3 +466,8 @@ msgstr ""
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr ""
+
+#~ msgctxt "details_notinstalled"
+#~ msgid "Not installed (%d available)"
+#~ msgstr "Non installato (%d disponibile)"
+

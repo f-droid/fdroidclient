@@ -6,28 +6,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: 2011-07-13 18:42+0200\n"
 "Last-Translator: zapman <anon@example.com>\n"
 "Language-Team: fr <LL@li.org>\n"
-"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr ""
@@ -39,21 +38,22 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"La nouvelle version est signée avec une clé différente de l'ancienne. Pour "
-"installer la nouvelle version, l'ancienne doit d'abord être désinstallée. "
-"Essayez cela puis recommencez. (Veuillez noter que désinstaller "
-"l'application écrasera les données enregistrées par l'application)."
+"La nouvelle version est signée avec une clé différente de l'ancienne. "
+"Pour installer la nouvelle version, l'ancienne doit d'abord être "
+"désinstallée. Essayez cela puis recommencez. (Veuillez noter que "
+"désinstaller l'application écrasera les données enregistrées par "
+"l'application)."
 
 msgctxt "version"
 msgid "Version"
 msgstr "Version"
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d versions disponibles"
 
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d version disponible"
@@ -62,7 +62,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Notifier"
 
-# According to granddictionnaire.com
 msgctxt "storage"
 msgid "Storage"
 msgstr "Mémoire"
@@ -97,8 +96,7 @@ msgstr "Notifier quand de nouvelles mises à jour sont disponibles"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
-"Mettre à jour automatiquement la liste d'applications à partir des dépôts"
+msgstr "Mettre à jour automatiquement la liste d'applications à partir des dépôts"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
@@ -124,9 +122,17 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr "Site Web :"
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
 msgstr "Courriel:"
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
@@ -147,8 +153,8 @@ msgid ""
 msgstr ""
 "Aucun dépôt n'est configuré !\n"
 "\n"
-"Un dépôt est une source d'applications. Pour en ajouter un, appuyez sur MENU "
-"maintenant et entrez l'adresse URL.\n"
+"Un dépôt est une source d'applications. Pour en ajouter un, appuyez sur "
+"MENU maintenant et entrez l'adresse URL.\n"
 "\n"
 "L'URL d'un dépôt ressemble à ceci : http://f-droid.org/repo"
 
@@ -243,6 +249,10 @@ msgstr "Réception d'application de"
 msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Adresse du dépôt"
+
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
 
 msgctxt "isinst"
 msgid "Installed:"
@@ -346,15 +356,15 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Mise à jour"
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Version %s installée"
 
-#, python-format
+#, fuzzy
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
-msgstr "Pas installée (%d disponible)"
+msgid "Not installed"
+msgstr "Pas installée"
 
 msgctxt "inst"
 msgid "Installed"
@@ -404,6 +414,16 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Montrer les applications qui promeuvent des services réseaux privateurs"
 
+#, fuzzy
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr "Préférences"
+
+#, fuzzy
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr "Montrer les applications qui promeuvent des extensions privateurs"
+
 msgctxt "expert"
 msgid "Expert"
 msgstr "Expert"
@@ -444,3 +464,8 @@ msgstr ""
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr ""
+
+#~ msgctxt "details_notinstalled"
+#~ msgid "Not installed (%d available)"
+#~ msgstr "Pas installée (%d disponible)"
+

@@ -6,28 +6,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: 2011-03-10 19:06+0200\n"
 "Last-Translator: Henrik <tunedal@gmail.com>\n"
 "Language-Team: sv <LL@li.org>\n"
-"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr "Hittade %1$d program som matchade '%2$s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr "Ett program matchade '%s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr "Inga program matchade '%s'"
@@ -39,26 +38,24 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla "
-"versionen måste först avinstalleras. Försök sedan igen. (Observera att data "
-"som tillhör programmet kommer att raderas när det avinstalleras.)"
+"Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla"
+" versionen måste först avinstalleras. Försök sedan igen. (Observera att "
+"data som tillhör programmet kommer att raderas när det avinstalleras.)"
 
-# Dumma, dumma Pootle som måste klaga för att ordet inte ändrats...
 msgctxt "version"
 msgid "Version"
 msgstr "Version"
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d versioner tillgängliga"
 
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d version tillgänglig"
 
-# Tack till PactrackDroids skapare för detta mycket bättre förslag!
 msgctxt "notify"
 msgid "Notify"
 msgstr "Avisering"
@@ -79,7 +76,6 @@ msgctxt "updates"
 msgid "Updates"
 msgstr "Uppdateringar"
 
-# Datatermgruppen "avråder också från användningen av data som singulart massord". Det är ett lurigt ord.
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
 msgstr "Rensa alla cachade data"
@@ -124,9 +120,17 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr "Webbplats: "
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
 msgstr "E-post: "
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
@@ -147,8 +151,8 @@ msgid ""
 msgstr ""
 "Du har inga förråd konfigurerade!\n"
 "\n"
-"Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en "
-"för att lägga till ett nu.\n"
+"Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en"
+" för att lägga till ett nu.\n"
 "\n"
 "En förrådsadress ser ut så här: http://f-droid.org/repo"
 
@@ -244,6 +248,10 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Förrådadress"
 
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
+
 msgctxt "isinst"
 msgid "Installed:"
 msgstr "Installerad:"
@@ -256,7 +264,6 @@ msgctxt "uninstall"
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-# Eller kanske "Uppdatering!". Vad är sammanhanget?
 msgctxt "update"
 msgid "Update!"
 msgstr "Uppdatera!"
@@ -333,7 +340,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Källkod"
 
-# Det ska vara "Market" eftersom det är Android Market det syftar på, och det har inget svenskt namn
 msgctxt "menu_market"
 msgid "Market"
 msgstr "Market"
@@ -346,15 +352,15 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Donera"
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Version %s är installerad"
 
-#, python-format
+#, fuzzy
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
-msgstr "Inte installerat (%d versioner tillgängliga)"
+msgid "Not installed"
+msgstr "Inte installerad"
 
 msgctxt "inst"
 msgid "Installed"
@@ -392,8 +398,6 @@ msgctxt "antinonfreead"
 msgid "Add-ons"
 msgstr "Tillägg"
 
-# Menar vi "gynna" eller "göra reklam för"?
-# - Det menas allt som stödjer eller använder ickefria vad-som-helst. T.ex. plugins med stängd kod.
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
 msgstr "Visa program som främjar icke-fria tillägg"
@@ -405,6 +409,16 @@ msgstr "Nätverkstjänster"
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Visa program som främjar icke-fria nätverkstjänster"
+
+#, fuzzy
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr "Inställningar"
+
+#, fuzzy
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr "Visa program som främjar icke-fria tillägg"
 
 msgctxt "expert"
 msgid "Expert"
@@ -445,3 +459,8 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Visa program som kräver root-rättigheter"
+
+#~ msgctxt "details_notinstalled"
+#~ msgid "Not installed (%d available)"
+#~ msgstr "Inte installerat (%d versioner tillgängliga)"
+

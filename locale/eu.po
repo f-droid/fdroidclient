@@ -1,33 +1,32 @@
-# Translations template for PROJECT.
+# Basque translations for PACKAGE.
 # Copyright (C) 2011 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: 2011-10-04 00:39+0200\n"
 "Last-Translator: Asier <asier.iturralde@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: eu\n"
+"Language-Team: eu <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr "'%2$s'-rekin bat datozen %1$d aplikazio aurkitu dira:"
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr "'%s'-rekin bat datorren aplikazio bat aurkitu da:"
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr "'%s'-rekin bat datorren aplikaziorik ez da aurkitu"
@@ -39,21 +38,21 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio "
-"berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, "
-"egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak "
-"gordetako barne datuak ezabatuko direla)"
+"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. "
+"Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago."
+"  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean "
+"aplikazioak gordetako barne datuak ezabatuko direla)"
 
 msgctxt "version"
 msgid "Version"
 msgstr "Bertsioa"
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d bertsio eskuragarri"
 
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "Bertsio %d eskuragarri"
@@ -122,9 +121,17 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr "Webgunea:"
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
 msgstr "E-posta:"
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
@@ -145,10 +152,11 @@ msgid ""
 msgstr ""
 "Ez daukazu konfiguratutako biltegirik!\n"
 "\n"
-"Biltegi bat aplikazioen iturburu bat da. Bat gehitzeko, sakatu orain MENU "
-"botoia eta idatzi URL-a.\n"
+"Biltegi bat aplikazioen iturburu bat da. Bat gehitzeko, sakatu orain MENU"
+" botoia eta idatzi URL-a.\n"
 "\n"
-"Biltegi baten helbideak honen antzekoa izan ohi da: http://f-droid.org/repo"
+"Biltegi baten helbideak honen antzekoa izan ohi da: "
+"http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
@@ -241,6 +249,10 @@ msgstr "Aplikazioa eskuratzen hemendik:"
 msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Biltegiaren helbidea"
+
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
 
 msgctxt "isinst"
 msgid "Installed:"
@@ -342,15 +354,15 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Dohaintza egin"
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "%s bertsioa instalatuta"
 
-#, python-format
+#, fuzzy
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
-msgstr "Instalatu gabe (%d eskuragarri)"
+msgid "Not installed"
+msgstr "Instalatu gabea"
 
 msgctxt "inst"
 msgid "Installed"
@@ -383,8 +395,8 @@ msgstr "Jarraipena"
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr ""
-"Bistaratu zure aktibitateen jarraipena egin eta txostenak bidaltzen dituzten "
-"aplikazioak"
+"Bistaratu zure aktibitateen jarraipena egin eta txostenak bidaltzen "
+"dituzten aplikazioak"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -401,6 +413,16 @@ msgstr "Sareko Zerbitzuak"
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Bistaratu sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
+
+#, fuzzy
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr "Hobespenak"
+
+#, fuzzy
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr "Bistaratu gehigarri ez-libreak sustatzen dituzten aplikazioak"
 
 msgctxt "expert"
 msgid "Expert"
@@ -433,8 +455,8 @@ msgstr "Aplikazio bateraezinak"
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Bistaratu Androiden bertsio berriagoentzat edo hardware desberdinarentzat "
-"idatzitako aplikazioak"
+"Bistaratu Androiden bertsio berriagoentzat edo hardware desberdinarentzat"
+" idatzitako aplikazioak"
 
 msgctxt "rooted"
 msgid "Root"
@@ -443,3 +465,8 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Bistaratu root baimenak behar dituzten aplikazioak"
+
+#~ msgctxt "details_notinstalled"
+#~ msgid "Not installed (%d available)"
+#~ msgstr "Instalatu gabe (%d eskuragarri)"
+

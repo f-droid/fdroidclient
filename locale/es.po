@@ -1,33 +1,32 @@
-# Translations template for PROJECT.
+# Spanish translations for PACKAGE.
 # Copyright (C) 2011 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: 2011-03-11 22:17+0200\n"
 "Last-Translator: aafuentes <pajaro@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.2\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr "Se encontraron %1$d programas con '%2$s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr "Se encontró un programa con '%s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr "No se encontró ningún programa con '%s'"
@@ -39,21 +38,21 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"La nueva versión está firmada con un key diferente al antiguo. Para instalar "
-"la nueva versión, el antiguo debe de ser desinstalado primero. Por favor, "
-"haz ésto y prueba de nuevo (Ten en cuenta que la desinstalación borrará "
-"cualquier dato guardado por el programa)"
+"La nueva versión está firmada con un key diferente al antiguo. Para "
+"instalar la nueva versión, el antiguo debe de ser desinstalado primero. "
+"Por favor, haz ésto y prueba de nuevo (Ten en cuenta que la "
+"desinstalación borrará cualquier dato guardado por el programa)"
 
 msgctxt "version"
 msgid "Version"
 msgstr "Versión"
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d versiones disponibles"
 
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versión disponible"
@@ -122,9 +121,17 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr "Página web:"
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
 msgstr "Email:"
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
@@ -243,6 +250,10 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Dirección del repositorio"
 
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
+
 msgctxt "isinst"
 msgid "Installed:"
 msgstr "Instalado:"
@@ -264,7 +275,8 @@ msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
-"Hay actualizaciones disponibles para algunos de los programas instalados.\n"
+"Hay actualizaciones disponibles para algunos de los programas instalados."
+"\n"
 "¿Desea verlas?"
 
 msgctxt "repo_alrt"
@@ -283,7 +295,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Consiguiendo el programa desde:\n"
 
-# ó Actualizar :/
 msgctxt "menu_update_repo"
 msgid "Update"
 msgstr "Actualización"
@@ -344,15 +355,15 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Donar"
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Versión %s instalada"
 
-#, python-format
+#, fuzzy
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
-msgstr "No instalado (%d disponible)"
+msgid "Not installed"
+msgstr "No instalado"
 
 msgctxt "inst"
 msgid "Installed"
@@ -402,6 +413,16 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Muestra programas que promueven servicios de red no libres"
 
+#, fuzzy
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr "Preferencias"
+
+#, fuzzy
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr "Muestra programas que promueven add-ons no libres"
+
 msgctxt "expert"
 msgid "Expert"
 msgstr "Experto"
@@ -433,8 +454,8 @@ msgstr "Programas incompatibles"
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Muestra los programas escritos para versiones de Android más modernas o con "
-"un hardware diferente"
+"Muestra los programas escritos para versiones de Android más modernas o "
+"con un hardware diferente"
 
 msgctxt "rooted"
 msgid "Root"
@@ -443,3 +464,8 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Muestras los programas que requieren privilegios de root"
+
+#~ msgctxt "details_notinstalled"
+#~ msgid "Not installed (%d available)"
+#~ msgstr "No instalado (%d disponible)"
+

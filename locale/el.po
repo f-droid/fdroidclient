@@ -1,33 +1,32 @@
-# Translations template for PROJECT.
+# Greek translations for PACKAGE.
 # Copyright (C) 2011 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: 2011-10-07 17:44+0200\n"
 "Last-Translator: g0d4 <giorgoskolokotronis@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: el\n"
+"Language-Team: el <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr "Βρέθηκαν %1$d εφαρμογές που συσχετίζονται με '%2$s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr "Βρέθηκε 1 ταίριασμα '%s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr "Δε βρέθηκαν ταιριάσματα για το '%s'"
@@ -39,22 +38,22 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Η καινούργια έκδοση είναι υπογεγραμμένη με διαφορετικό κλείδι από την παλιά. "
-"Για να γίνει η εγκατάσταση της καινούργιας έκδοσης, πρέπει να γίνει πρώτα η "
-"απεγκατάσταση της παλιάς έκδοσης. Παρακαλώ όπως κάνετε αυτό και προσπαθήστε "
-"ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει οποιαδήποτε εσωτερικά "
-"δεδομένα που αποθηκεύονται από την εφαρμογή)"
+"Η καινούργια έκδοση είναι υπογεγραμμένη με διαφορετικό κλείδι από την "
+"παλιά. Για να γίνει η εγκατάσταση της καινούργιας έκδοσης, πρέπει να "
+"γίνει πρώτα η απεγκατάσταση της παλιάς έκδοσης. Παρακαλώ όπως κάνετε αυτό"
+" και προσπαθήστε ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει "
+"οποιαδήποτε εσωτερικά δεδομένα που αποθηκεύονται από την εφαρμογή)"
 
 msgctxt "version"
 msgid "Version"
 msgstr "Έκδοση"
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d διαθέσιμες εκδόσεις"
 
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d διαθέσιμη έκδοση"
@@ -123,9 +122,17 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr "Ιστοσελίδα:"
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
 msgstr "Ηλ. ταχυδρομείο:"
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
@@ -243,6 +250,10 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Διεύθυνση αποθετηρίου"
 
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
+
 msgctxt "isinst"
 msgid "Installed:"
 msgstr "Εγκατεστημένο:"
@@ -345,15 +356,15 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Δωρεά"
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Εγκατεστημένη Έκδοση: %s"
 
-#, python-format
+#, fuzzy
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
-msgstr "Μη Εγκατεστημένο (%d διαθέσιμο)"
+msgid "Not installed"
+msgstr "Δεν είναι εγκατεστημένο"
 
 msgctxt "inst"
 msgid "Installed"
@@ -385,8 +396,7 @@ msgstr "Παρακολούθηση"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
-"Εμφάνιση εφαρμογών που παρακολουθούν και αναφέρουν την δραστηριότητα σας"
+msgstr "Εμφάνιση εφαρμογών που παρακολουθούν και αναφέρουν την δραστηριότητα σας"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -403,6 +413,16 @@ msgstr "Υπηρεσίες Δικτύου"
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν υπηρεσίες δικτύου"
+
+#, fuzzy
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr "Προτιμήσεις"
+
+#, fuzzy
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν πρόσθετα"
 
 msgctxt "expert"
 msgid "Expert"
@@ -445,3 +465,8 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Εμφάνιση εφαρμογών που απαιτούν δικαιώματα root"
+
+#~ msgctxt "details_notinstalled"
+#~ msgid "Not installed (%d available)"
+#~ msgstr "Μη Εγκατεστημένο (%d διαθέσιμο)"
+

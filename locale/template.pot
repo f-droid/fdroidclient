@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2011 ORGANIZATION
+# Copyright (C) 2012 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr ""
@@ -43,12 +44,12 @@ msgctxt "version"
 msgid "Version"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr ""
@@ -115,8 +116,16 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr ""
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
+msgstr ""
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
 msgstr ""
 
 msgctxt "about_version"
@@ -229,6 +238,10 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr ""
 
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
+
 msgctxt "isinst"
 msgid "Installed:"
 msgstr ""
@@ -325,14 +338,13 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr ""
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr ""
 
-#, python-format
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
+msgid "Not installed"
 msgstr ""
 
 msgctxt "inst"
@@ -381,6 +393,14 @@ msgstr ""
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
+msgstr ""
+
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr ""
+
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
 msgstr ""
 
 msgctxt "expert"

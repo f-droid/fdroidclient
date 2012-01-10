@@ -1,34 +1,33 @@
-# Translations template for PROJECT.
+# Russian translations for PACKAGE.
 # Copyright (C) 2011 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-03-10 15:01+0000\n"
+"POT-Creation-Date: 2012-01-10 17:06+0000\n"
 "PO-Revision-Date: 2011-10-05 19:46+0200\n"
 "Last-Translator: mm3 <mm3@bk.ru>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
 msgstr "Найдено %1$d совпадений с '%2$s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
 msgstr "Найдено одно совпадение с '%s':"
 
-#, python-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr "Не найдено ни одного совпадения с '%s'"
@@ -41,20 +40,20 @@ msgid ""
 "stored by the application)"
 msgstr ""
 "Новая версия подписана ключом отличным от старого. Для установки новой "
-"версии, сначала нужно удалить старую программы. А потом попробовать снова. "
-"(Замечание: при удалении программы будут удалены все данные сохраненные в "
-"ней)"
+"версии, сначала нужно удалить старую программы. А потом попробовать "
+"снова. (Замечание: при удалении программы будут удалены все данные "
+"сохраненные в ней)"
 
 msgctxt "version"
 msgid "Version"
 msgstr "Версия"
 
-#, python-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d версий доступно"
 
-#, python-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d версия доступна"
@@ -123,9 +122,17 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr "Сайт:"
 
+msgctxt "about_sitec"
+msgid "http://f-droid.org"
+msgstr ""
+
 msgctxt "about_mail"
 msgid "Email:"
 msgstr "E-mail:"
+
+msgctxt "about_mailc"
+msgid "admin@f-droid.org"
+msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
@@ -243,6 +250,10 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Адрес репозитория"
 
+msgctxt "repo_add_http"
+msgid "http://"
+msgstr ""
+
 msgctxt "isinst"
 msgid "Installed:"
 msgstr "Установлено:"
@@ -343,15 +354,15 @@ msgctxt "menu_donate"
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#, python-format
+#, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Версия %s установлена"
 
-#, python-format
+#, fuzzy
 msgctxt "details_notinstalled"
-msgid "Not installed (%d available)"
-msgstr "Не установлено (%d доступно)"
+msgid "Not installed"
+msgstr "Не установлено"
 
 msgctxt "inst"
 msgid "Installed"
@@ -401,6 +412,16 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Показывать приложения использующие несвободные сетевые сервисы"
 
+#, fuzzy
+msgctxt "antinonfreedep"
+msgid "Dependencies"
+msgstr "Настройки"
+
+#, fuzzy
+msgctxt "antinonfreedeplong"
+msgid "Show apps that depend on other non-free apps"
+msgstr "Показывать приложения содержащие закрытые компоненты"
+
 msgctxt "expert"
 msgid "Expert"
 msgstr "Эксперт"
@@ -440,3 +461,8 @@ msgstr "Суперпользователь"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Показывать приложения требующие root привелегий"
+
+#~ msgctxt "details_notinstalled"
+#~ msgid "Not installed (%d available)"
+#~ msgstr "Не установлено (%d доступно)"
+
