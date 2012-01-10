@@ -1,4 +1,4 @@
-# Italian translations for PACKAGE.
+# German translations for PACKAGE.
 # Copyright (C) 2010 ORGANIZATION
 # This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-01-10 17:06+0000\n"
-"PO-Revision-Date: 2011-03-19 16:26+0200\n"
-"Last-Translator: paradix86 <paradix86@gmail.com>\n"
-"Language-Team: it <LL@li.org>\n"
+"POT-Creation-Date: 2012-01-10 17:47+0000\n"
+"PO-Revision-Date: 2010-11-16 09:54+0200\n"
+"Last-Translator: Jan-Christoph <JanCBorchardt@gmail.com>\n"
+"Language-Team: de <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -38,68 +38,65 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"La nuova versione e' firmata con una chiave differente rispetto alla "
-"vecchia. Per installare la nuova versione occorre prima disinstallare la "
-"precedente. Riprova dopo aver disinstallato.  (Attenzione! disistallando "
-"si cancellerà qualsiasi dato salvato dall'applicazione)"
 
 msgctxt "version"
 msgid "Version"
-msgstr "Versione"
+msgstr "Version"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d aggiornamenti disponibili"
+msgstr "%d verfügbare Versionen"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "%d versione disponibile"
+msgstr "%d verfügbare Version"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Notifica"
+msgstr "Benachrichtigen"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Memoria"
+msgstr "Speicherplatz"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Cache applicazioni scaricate"
+msgstr "Heruntergeladene Anwendungen zwischenspeichern"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Salva apk scaricati su SD"
+msgstr "Heruntergeladene Anwendungsdateien auf der SD-Karte behalten"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Aggiornamenti"
+msgstr "Aktualisierungen"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Cancella dati temporanei"
+msgstr "Zwischenspeicher leeren"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Reset"
+msgstr "Zurücksetzen"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Manutenzione"
+msgstr "Verwaltung"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Notifica nuovi aggiornamenti disponibili"
+msgstr "Bei Aktualisierungen benachrichtigen"
 
+#, fuzzy
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Aggiorna elenco applicazioni in automatico"
+msgstr "Anwendungsliste automatisch aktualisieren"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Scansione repository automatica"
+msgstr "Automatische Archivkontrolle"
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -107,19 +104,21 @@ msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr "Informazioni"
+msgstr "Über FDroid"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
-"Basato su Aptoide.\n"
-"Rilasciato sotto licenza GNU GPL v2."
+"Basierend auf Aptoide.\n"
+"Lizensiert unter GNU GPLv2."
 
+#, fuzzy
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Sito Web"
+msgstr "Internetseite"
 
 msgctxt "about_sitec"
 msgid "http://f-droid.org"
@@ -135,12 +134,14 @@ msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Versione:"
+msgstr "Version:"
 
+#, fuzzy
 msgctxt "about_website"
 msgid "Website"
-msgstr "Sito Web"
+msgstr "Internetseite"
 
+#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -150,104 +151,105 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Non hai configurato nessun repository!\n"
+"Sie haben keine Archive eingestellt!\n"
 "\n"
-"Un repository contiene un insieme di applicazioni. Per aggiungerne uno, "
-"premi MENU e inserisci un indirizzo URL.\n"
+"Ein Archiv ist eine Sammlung von Anwendungen. Drücken Sie den Menü-Knopf "
+"und fügen Sie die Adresse eines Archivs hinzu.\n"
 "\n"
-"Un indirizzo URL di esempio e': http://f-droid.org/repo"
+"Eine Archiv-Adresse sieht ungefähr so aus: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Non installato"
+msgstr "Nicht Installiert"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Aggiornamento: - Ver.:"
+msgstr "Aktualisierung verfügbar – Version:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "Sì"
+msgstr "Ja"
 
 msgctxt "no"
 msgid "No"
-msgstr "No"
+msgstr "Nein"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Aggiungi nuovo repository"
+msgstr "Neues Archiv hinzufügen"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Aggiungi"
+msgstr "Hinzufügen"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Annulla"
+msgstr "Abbrechen"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Rimuovi Repository"
+msgstr "Zu entfernendes Archiv auswählen"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
+msgstr "Die Serververbindung konnte nicht hergestellt werden!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Aggiorna Repositories"
+msgstr "Archive aktualisieren"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Installato"
+msgstr "Installiert"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "Disponibile"
+msgstr "Verfügbar"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Aggiornamenti"
+msgstr "Aktualisierungen"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Aggiornamenti disponibili"
+msgstr "Aktualisierungen verfügbar"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Attendere Prego"
+msgstr "Bitte warten"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Aggiornamento elenco applicazioni in corso..."
+msgstr "Anwendungsliste wird aktualisiert …"
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Impossibile connettersi alla rete"
+msgstr "Die Netzwerkverbindung konnte nicht hergestellt werden!"
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Zeitüberschreitung"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
+msgstr "Die Serververbindung konnte nicht hergestellt werden!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Download"
+msgstr "Herunterladen"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Scaricamento applicazione da"
+msgstr "Anwendung wird heruntergeladen von"
 
+#, fuzzy
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Indirizzo Url Repository"
+msgstr "Archiv-Adresse"
 
 msgctxt "repo_add_http"
 msgid "http://"
@@ -255,63 +257,63 @@ msgstr ""
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Installato:"
+msgstr "Installiert:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Installa"
+msgstr "Installieren"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Disinstalla"
+msgstr "Entfernen"
 
 msgctxt "update"
 msgid "Update!"
-msgstr "Aggiorna!"
+msgstr "Aktualisieren!"
 
+#, fuzzy
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
-"Aggiornamenti disponibili.\n"
-"\n"
-"Vuoi visualizzarli?"
+"Für einige installierte Anwendungen sind Aktualisierungen verfügbar.\n"
+"Sollen diese angezeigt werden?"
 
+#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"L'elenco dei repository in uso e' cambiato.\n"
-"\n"
-"Vuoi aggiornarlo?"
+"Die Liste der genutzten Archive wurde geändert.\n"
+"Soll sie aktualisiert werden?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Impossibile connettersi al server o apk corrotto!"
+msgstr ""
+"Die Serververbindung konnte nicht hergestellt werden oder die Datei ist "
+"fehlerhaft!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
-"Scaricamento applicazione da:\n"
-"\n"
+msgstr "Anwendung wird geladen von:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr "Aggiornamento"
+msgstr "Aktualisieren"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Gestisci Repos"
+msgstr "Archive verwalten"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Preferenze"
+msgstr "Einstellungen"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "About"
+msgstr "Über"
 
 msgctxt "menu_search"
 msgid "Search"
@@ -319,62 +321,63 @@ msgstr ""
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Nuovo Repository"
+msgstr "Archiv hinzufügen"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Rimuovi Repository"
+msgstr "Archiv entfernen"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Installa"
+msgstr "Installieren"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Disinstalla"
+msgstr "Entfernen"
 
+#, fuzzy
 msgctxt "menu_website"
 msgid "Website"
-msgstr "Sito Web"
+msgstr "Internetseite"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Problemi"
+msgstr "Probleme"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Codice Sorgente"
+msgstr "Quelltext"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Market"
+msgstr "Markt"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Aggiornamento"
+msgstr "Aktualisieren"
 
 #, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Aggiornamento"
+msgstr "Aktualisieren"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Versione %s installata"
+msgstr "Version %s installiert"
 
 #, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Non installato"
+msgstr "Nicht Installiert"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Installato"
+msgstr "Installiert"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "File Corrotto"
+msgstr "Heruntergeladene Datei ist fehlerhaft"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
@@ -382,53 +385,52 @@ msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Anti-Features"
+msgstr ""
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Pubblicita'"
+msgstr ""
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Mostra applicazioni con pubblicita'"
+msgstr ""
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Tracking"
+msgstr ""
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Mostra applicazioni a rischio per la privacy"
+msgstr ""
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr "Add-ons"
+msgstr ""
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Mostra applicazioni che promuovono add-ons non liberi"
+msgstr ""
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Network Services"
+msgstr ""
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Mostra applicazioni che promuovono network services non liberi"
+msgstr ""
 
 #, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Preferenze"
+msgstr "Einstellungen"
 
-#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Mostra applicazioni che promuovono add-ons non liberi"
+msgstr ""
 
 msgctxt "expert"
 msgid "Expert"
-msgstr "Esperto"
+msgstr ""
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
@@ -437,7 +439,7 @@ msgstr ""
 #, fuzzy
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Scaricamento applicazione da"
+msgstr "Anwendung wird heruntergeladen von"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
@@ -466,8 +468,4 @@ msgstr ""
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr ""
-
-#~ msgctxt "details_notinstalled"
-#~ msgid "Not installed (%d available)"
-#~ msgstr "Non installato (%d disponibile)"
 

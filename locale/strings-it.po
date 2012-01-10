@@ -1,4 +1,4 @@
-# Swedish translations for PACKAGE.
+# Italian translations for PACKAGE.
 # Copyright (C) 2010 ORGANIZATION
 # This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-01-10 17:06+0000\n"
-"PO-Revision-Date: 2011-03-10 19:06+0200\n"
-"Last-Translator: Henrik <tunedal@gmail.com>\n"
-"Language-Team: sv <LL@li.org>\n"
+"POT-Creation-Date: 2012-01-10 17:47+0000\n"
+"PO-Revision-Date: 2011-03-19 16:26+0200\n"
+"Last-Translator: paradix86 <paradix86@gmail.com>\n"
+"Language-Team: it <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,17 +19,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Hittade %1$d program som matchade '%2$s':"
+msgstr ""
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Ett program matchade '%s':"
+msgstr ""
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Inga program matchade '%s'"
+msgstr ""
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -38,67 +38,68 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla"
-" versionen måste först avinstalleras. Försök sedan igen. (Observera att "
-"data som tillhör programmet kommer att raderas när det avinstalleras.)"
+"La nuova versione e' firmata con una chiave differente rispetto alla "
+"vecchia. Per installare la nuova versione occorre prima disinstallare la "
+"precedente. Riprova dopo aver disinstallato.  (Attenzione! disistallando "
+"si cancellerà qualsiasi dato salvato dall'applicazione)"
 
 msgctxt "version"
 msgid "Version"
-msgstr "Version"
+msgstr "Versione"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d versioner tillgängliga"
+msgstr "%d aggiornamenti disponibili"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "%d version tillgänglig"
+msgstr "%d versione disponibile"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Avisering"
+msgstr "Notifica"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Lagring"
+msgstr "Memoria"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Cacha nerladdade program"
+msgstr "Cache applicazioni scaricate"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Behåll nerladdade apk-filer på SD-kortet"
+msgstr "Salva apk scaricati su SD"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Uppdateringar"
+msgstr "Aggiornamenti"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Rensa alla cachade data"
+msgstr "Cancella dati temporanei"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Återställ"
+msgstr "Reset"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Underhåll"
+msgstr "Manutenzione"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Meddela mig när nya uppdateringar finns"
+msgstr "Notifica nuovi aggiornamenti disponibili"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Uppdatera programlistan från förråd automatiskt"
+msgstr "Aggiorna elenco applicazioni in automatico"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Automatisk förrådsavsökning"
+msgstr "Scansione repository automatica"
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -106,19 +107,19 @@ msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr "Om FDroid"
+msgstr "Informazioni"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
-"Ursprungligen baserat på Aptoide.\n"
-"Släppt under licensen GNU GPLv2."
+"Basato su Aptoide.\n"
+"Rilasciato sotto licenza GNU GPL v2."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Webbplats: "
+msgstr "Sito Web"
 
 msgctxt "about_sitec"
 msgid "http://f-droid.org"
@@ -126,7 +127,7 @@ msgstr ""
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "E-post: "
+msgstr "Email:"
 
 msgctxt "about_mailc"
 msgid "admin@f-droid.org"
@@ -134,11 +135,11 @@ msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Version: "
+msgstr "Versione:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr "Webbplats"
+msgstr "Sito Web"
 
 msgctxt "no_repo"
 msgid ""
@@ -149,20 +150,20 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Du har inga förråd konfigurerade!\n"
+"Non hai configurato nessun repository!\n"
 "\n"
-"Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en"
-" för att lägga till ett nu.\n"
+"Un repository contiene un insieme di applicazioni. Per aggiungerne uno, "
+"premi MENU e inserisci un indirizzo URL.\n"
 "\n"
-"En förrådsadress ser ut så här: http://f-droid.org/repo"
+"Un indirizzo URL di esempio e': http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Inte installerad"
+msgstr "Non installato"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Uppdatering möjlig - Ver.:"
+msgstr "Aggiornamento: - Ver.:"
 
 msgctxt "ok"
 msgid "OK"
@@ -170,63 +171,63 @@ msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "Ja"
+msgstr "Sì"
 
 msgctxt "no"
 msgid "No"
-msgstr "Nej"
+msgstr "No"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Lägg till nytt förråd"
+msgstr "Aggiungi nuovo repository"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Lägg till"
+msgstr "Aggiungi"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "Annulla"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Välj förråd att ta bort"
+msgstr "Rimuovi Repository"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Kunde inte ansluta till servern!"
+msgstr "Impossibile connettersi al server!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Uppdatera förråd"
+msgstr "Aggiorna Repositories"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Installerade"
+msgstr "Installato"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "Tillgängliga"
+msgstr "Disponibile"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Uppdateringar"
+msgstr "Aggiornamenti"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Uppdateringar tillgängliga"
+msgstr "Aggiornamenti disponibili"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Var vänlig vänta"
+msgstr "Attendere Prego"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Uppdaterar programlistan..."
+msgstr "Aggiornamento elenco applicazioni in corso..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Kunde inte ansluta till nätverket."
+msgstr "Impossibile connettersi alla rete"
 
 msgctxt "connection_timeout"
 msgid "Timeout"
@@ -234,19 +235,19 @@ msgstr "Timeout"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Kunde inte ansluta till servern!"
+msgstr "Impossibile connettersi al server!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Ladda ner"
+msgstr "Download"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Hämtar program från"
+msgstr "Scaricamento applicazione da"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Förrådadress"
+msgstr "Indirizzo Url Repository"
 
 msgctxt "repo_add_http"
 msgid "http://"
@@ -254,91 +255,95 @@ msgstr ""
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Installerad:"
+msgstr "Installato:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Installera"
+msgstr "Installa"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Avinstallera"
+msgstr "Disinstalla"
 
 msgctxt "update"
 msgid "Update!"
-msgstr "Uppdatera!"
+msgstr "Aggiorna!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
-"Det finns uppdateringar för vissa av de installerade programmen.\n"
-"Vill du se dem?"
+"Aggiornamenti disponibili.\n"
+"\n"
+"Vuoi visualizzarli?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"Listan över förråd har ändrats.\n"
-"Vill du uppdatera dem?"
+"L'elenco dei repository in uso e' cambiato.\n"
+"\n"
+"Vuoi aggiornarlo?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Kunde inte ansluta till servern eller så är apk-filen är skadad!"
+msgstr "Impossibile connettersi al server o apk corrotto!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Hämtar program från:\n"
+msgstr ""
+"Scaricamento applicazione da:\n"
+"\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr "Uppdatera"
+msgstr "Aggiornamento"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Hantera förråd"
+msgstr "Gestisci Repos"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Inställningar"
+msgstr "Preferenze"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "Om"
+msgstr "About"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr "Sök"
+msgstr ""
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Nytt förråd"
+msgstr "Nuovo Repository"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Ta bort förråd"
+msgstr "Rimuovi Repository"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Installera"
+msgstr "Installa"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Avinstallera"
+msgstr "Disinstalla"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr "Webbplats"
+msgstr "Sito Web"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Buggar"
+msgstr "Problemi"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Källkod"
+msgstr "Codice Sorgente"
 
 msgctxt "menu_market"
 msgid "Market"
@@ -346,121 +351,119 @@ msgstr "Market"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Uppdatera"
+msgstr "Aggiornamento"
 
+#, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Donera"
+msgstr "Aggiornamento"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Version %s är installerad"
+msgstr "Versione %s installata"
 
 #, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Inte installerad"
+msgstr "Non installato"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Installerad"
+msgstr "Installato"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "Den nerladdade filen är skadad"
+msgstr "File Corrotto"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr "Nerladdning avbruten"
+msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Anti-finesser"
+msgstr "Anti-Features"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Reklam"
+msgstr "Pubblicita'"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Visa program som innehåller reklam"
+msgstr "Mostra applicazioni con pubblicita'"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Spårning"
+msgstr "Tracking"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Visa program som kartlägger och rapporterar ditt beteende"
+msgstr "Mostra applicazioni a rischio per la privacy"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr "Tillägg"
+msgstr "Add-ons"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Visa program som främjar icke-fria tillägg"
+msgstr "Mostra applicazioni che promuovono add-ons non liberi"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Nätverkstjänster"
+msgstr "Network Services"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Visa program som främjar icke-fria nätverkstjänster"
+msgstr "Mostra applicazioni che promuovono network services non liberi"
 
 #, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Inställningar"
+msgstr "Preferenze"
 
 #, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Visa program som främjar icke-fria tillägg"
+msgstr "Mostra applicazioni che promuovono add-ons non liberi"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr "Expert"
+msgstr "Esperto"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Aktivera expertläge"
+msgstr ""
 
+#, fuzzy
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Sök program"
+msgstr "Scaricamento applicazione da"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr "Databassynkroniseringsläge"
+msgstr ""
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr "Ställ in värdet på synchronous-flaggan i SQLite"
+msgstr ""
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr "Programkompatibilitet"
+msgstr ""
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr "Inkompatibla program"
+msgstr ""
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr "Visa program skrivna för nyare Android-versioner eller annan hårdvara"
+msgstr ""
 
 msgctxt "rooted"
 msgid "Root"
-msgstr "Root"
+msgstr ""
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Visa program som kräver root-rättigheter"
-
-#~ msgctxt "details_notinstalled"
-#~ msgid "Not installed (%d available)"
-#~ msgstr "Inte installerat (%d versioner tillgängliga)"
+msgstr ""
 

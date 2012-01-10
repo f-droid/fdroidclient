@@ -1,17 +1,16 @@
-# Dutch translations for PACKAGE.
+# French translations for PACKAGE.
 # Copyright (C) 2010 ORGANIZATION
 # This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-01-10 17:06+0000\n"
-"PO-Revision-Date: 2010-11-15 07:54+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: nl <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2012-01-10 17:47+0000\n"
+"PO-Revision-Date: 2011-07-13 18:42+0200\n"
+"Last-Translator: zapman <anon@example.com>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,82 +38,89 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"La nouvelle version est signée avec une clé différente de l'ancienne. "
+"Pour installer la nouvelle version, l'ancienne doit d'abord être "
+"désinstallée. Essayez cela puis recommencez. (Veuillez noter que "
+"désinstaller l'application écrasera les données enregistrées par "
+"l'application)."
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d versions disponibles"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "%d version disponible"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Notifier"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Mémoire"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "Garder en mémoire cache les applications téléchargées"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "Garder les fichiers apk téléchargés sur la carte SD"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "Mises à jour"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "Vider la mémoire cache"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "Réinitialisation"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Maintenance"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "Notifier quand de nouvelles mises à jour sont disponibles"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "Mettre à jour automatiquement la liste d'applications à partir des dépôts"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "Balayage automatique du dépôt"
 
 msgctxt "app_name"
 msgid "FDroid"
-msgstr ""
+msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr ""
+msgstr "À propos de FDroid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
+"Originellement basée sur Aptoide.\n"
+"Libéré sous licence GNU GPL v2."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
+msgstr "Site Web :"
 
 msgctxt "about_sitec"
 msgid "http://f-droid.org"
@@ -122,7 +128,7 @@ msgstr ""
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
+msgstr "Courriel:"
 
 msgctxt "about_mailc"
 msgid "admin@f-droid.org"
@@ -130,11 +136,11 @@ msgstr ""
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr ""
+msgstr "Version:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Site Web"
 
 msgctxt "no_repo"
 msgid ""
@@ -145,98 +151,104 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
+"Aucun dépôt n'est configuré !\n"
+"\n"
+"Un dépôt est une source d'applications. Pour en ajouter un, appuyez sur "
+"MENU maintenant et entrez l'adresse URL.\n"
+"\n"
+"L'URL d'un dépôt ressemble à ceci : http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "Pas installée"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "Mise à jour possible - Ver.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "Ajouter un nouveau dépôt"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr ""
+msgstr "Choisissez le dépôt à supprimer"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Connection au serveur impossible!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "Mettre à jour les dépôts"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr ""
+msgstr "Installée"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "Mises à jour"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "Mises à jour disponibles"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr ""
+msgstr "Patientez"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr ""
+msgstr "Mise à jour de la liste d'applications..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr ""
+msgstr "Connection au réseau impossible."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Délai d'attente"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Connection au serveur impossible!"
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Téléchargement"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr ""
+msgstr "Réception d'application de"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
+msgstr "Adresse du dépôt"
 
 msgctxt "repo_add_http"
 msgid "http://"
@@ -244,55 +256,60 @@ msgstr ""
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
+msgstr "Installé:"
 
 msgctxt "install"
 msgid "Install"
-msgstr ""
+msgstr "Installer"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Supprimer"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "Mise à jour!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
+"Des mises à jour sont disponibles pour certaines applications.\n"
+"\n"
+"Désirez-vous les voir ?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
+"La liste des dépôts utilisés a changé.\n"
+"Voulez-vous les mettre à jour ?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
+msgstr "Connections au serveur impossible ou fichier apk corrompu!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
+msgstr "Réception d'application de:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr ""
+msgstr "Mise à jour"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "Gestion de dépôts"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Préférences"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr ""
+msgstr "À propos de"
 
 msgctxt "menu_search"
 msgid "Search"
@@ -300,60 +317,62 @@ msgstr ""
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "Nouveau dépôt"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr ""
+msgstr "Supprimer un dépôt"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr ""
+msgstr "Installer"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Supprimer"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Site Web"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "Problèmes"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr ""
+msgstr "Code source"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "Marché"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "Mise à jour"
 
+#, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr ""
+msgstr "Mise à jour"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr ""
+msgstr "Version %s installée"
 
+#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr ""
+msgstr "Pas installée"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr ""
+msgstr "Installée"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "Le fichier téléchargé est corrompu"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
@@ -361,59 +380,62 @@ msgstr ""
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Anti-fonctionnalités"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Publicités"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Montrer les applications qui contiennent des publicités"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Surveillance"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "Montrer les applications qui épient et qui rapportent votre activité"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Extensions"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Montrer les applications qui promeuvent des extensions privateurs"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Services réseau"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
+msgstr "Montrer les applications qui promeuvent des services réseaux privateurs"
 
+#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr ""
+msgstr "Préférences"
 
+#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "Montrer les applications qui promeuvent des extensions privateurs"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Expert"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
 msgstr ""
 
+#, fuzzy
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "Réception d'application de"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
@@ -442,8 +464,4 @@ msgstr ""
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr ""
-
-#~ msgctxt "details_notinstalled"
-#~ msgid "Not installed (%d available)"
-#~ msgstr ""
 
