@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-01-11 10:14+0000\n"
+"POT-Creation-Date: 2012-01-11 11:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,16 +116,8 @@ msgctxt "about_site"
 msgid "Website:"
 msgstr ""
 
-msgctxt "about_sitec"
-msgid "http://f-droid.org"
-msgstr ""
-
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
-
-msgctxt "about_mailc"
-msgid "admin@f-droid.org"
 msgstr ""
 
 msgctxt "about_version"
@@ -236,10 +228,6 @@ msgstr ""
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
-
-msgctxt "repo_add_http"
-msgid "http://"
 msgstr ""
 
 msgctxt "isinst"
