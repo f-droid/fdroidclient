@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-01-10 17:56+0000\n"
-"PO-Revision-Date: 2011-10-05 19:46+0200\n"
-"Last-Translator: mm3 <mm3@bk.ru>\n"
+"POT-Creation-Date: 2012-01-11 10:14+0000\n"
+"PO-Revision-Date: 2012-01-11 12:09+0200\n"
+"Last-Translator: Administrator <>\n"
 "Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
@@ -124,7 +124,7 @@ msgstr "Сайт:"
 
 msgctxt "about_sitec"
 msgid "http://f-droid.org"
-msgstr ""
+msgstr "http://f-droid.org"
 
 msgctxt "about_mail"
 msgid "Email:"
@@ -132,7 +132,7 @@ msgstr "E-mail:"
 
 msgctxt "about_mailc"
 msgid "admin@f-droid.org"
-msgstr ""
+msgstr "admin@f-droid.org"
 
 msgctxt "about_version"
 msgid "Version:"
@@ -252,7 +252,7 @@ msgstr "Адрес репозитория"
 
 msgctxt "repo_add_http"
 msgid "http://"
-msgstr ""
+msgstr "http://"
 
 msgctxt "isinst"
 msgid "Installed:"
@@ -359,7 +359,6 @@ msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Версия %s установлена"
 
-#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Не установлено"
@@ -412,15 +411,13 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Показывать приложения использующие несвободные сетевые сервисы"
 
-#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Настройки"
+msgstr "Зависимости"
 
-#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Показывать приложения содержащие закрытые компоненты"
+msgstr "Показывать приложения зависимые от несвободных приложений"
 
 msgctxt "expert"
 msgid "Expert"

@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-01-10 17:56+0000\n"
-"PO-Revision-Date: 2012-01-10 16:43+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-01-11 10:14+0000\n"
+"PO-Revision-Date: 2012-01-11 12:05+0200\n"
+"Last-Translator: Administrator <>\n"
 "Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
@@ -21,65 +20,65 @@ msgstr ""
 
 msgctxt "updateIntervalNames:0"
 msgid "Never"
-msgstr ""
+msgstr "Никогда"
 
 msgctxt "updateIntervalNames:1"
 msgid "Hourly"
-msgstr ""
+msgstr "Ежечасный"
 
 msgctxt "updateIntervalNames:2"
 msgid "Every 4 Hours"
-msgstr ""
+msgstr "Каждые 4 часа"
 
 msgctxt "updateIntervalNames:3"
 msgid "Every 12 Hours"
-msgstr ""
+msgstr "Каждые 12 часа"
 
 msgctxt "updateIntervalNames:4"
 msgid "Daily"
-msgstr ""
+msgstr "Ежедневно"
 
 msgctxt "updateIntervalValues:0"
 msgid "0"
-msgstr ""
+msgstr "0"
 
 msgctxt "updateIntervalValues:1"
 msgid "1"
-msgstr ""
+msgstr "1"
 
 msgctxt "updateIntervalValues:2"
 msgid "4"
-msgstr ""
+msgstr "4"
 
 msgctxt "updateIntervalValues:3"
 msgid "12"
-msgstr ""
+msgstr "12"
 
 msgctxt "updateIntervalValues:4"
 msgid "24"
-msgstr ""
+msgstr "24"
 
 msgctxt "dbSyncModeNames:0"
 msgid "Off (unsafe)"
-msgstr ""
+msgstr "Откл. (опасно)"
 
 msgctxt "dbSyncModeNames:1"
 msgid "Normal"
-msgstr ""
+msgstr "Обычный"
 
 msgctxt "dbSyncModeNames:2"
 msgid "Full"
-msgstr ""
+msgstr "Полный"
 
 msgctxt "dbSyncModeValues:0"
 msgid "off"
-msgstr ""
+msgstr "off"
 
 msgctxt "dbSyncModeValues:1"
 msgid "normal"
-msgstr ""
+msgstr "normal"
 
 msgctxt "dbSyncModeValues:2"
 msgid "full"
-msgstr ""
+msgstr "full"
 

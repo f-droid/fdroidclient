@@ -22,7 +22,9 @@
   <string name="about_title">Acerca de FDroid</string>
   <string name="about_desc">Basado originalmente en Aptoide.\nPublicado bajo la licencia GNU GPLv2 .</string>
   <string name="about_site">Página web:</string>
+  <string name="about_sitec">http://f-droid.org</string>
   <string name="about_mail">Email:</string>
+  <string name="about_mailc">admin\@f-droid.org</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Página web</string>
   <string name="no_repo">¡No tienes ningún repositorio configurado!\n\nUn repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón MENU ahora y introduce la URL.\n\nLa dirección de un repositorio es algo similar a esto: http://f-droid.org/repo</string>
@@ -49,6 +51,7 @@
   <string name="download">Descarga</string>
   <string name="download_server">Cogiendo el programa desde</string>
   <string name="repo_add_url">Dirección del repositorio</string>
+  <string name="repo_add_http">http://</string>
   <string name="isinst">Instalado:</string>
   <string name="install">Instalar</string>
   <string name="uninstall">Desinstalar</string>

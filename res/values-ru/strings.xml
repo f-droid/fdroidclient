@@ -22,7 +22,9 @@
   <string name="about_title">О FDroid</string>
   <string name="about_desc">Оригинал основан на Aptoide.\nВыпущен под лицензией GNU GPLv2.</string>
   <string name="about_site">Сайт:</string>
+  <string name="about_sitec">http://f-droid.org</string>
   <string name="about_mail">E-mail:</string>
+  <string name="about_mailc">admin\@f-droid.org</string>
   <string name="about_version">Версия:</string>
   <string name="about_website">Сайт</string>
   <string name="no_repo">"В настройках не указан репозиторий!\n\nРепозиторий является источником приложений. Чтобы его добавить нажмите кнопку MENU  и введите URL адрес.\n\nАдрес репозитория похож на: http://f-droid.org/repo"</string>
@@ -49,6 +51,7 @@
   <string name="download">Загрузка</string>
   <string name="download_server">Взять приложение из</string>
   <string name="repo_add_url">Адрес репозитория</string>
+  <string name="repo_add_http">http://</string>
   <string name="isinst">Установлено:</string>
   <string name="install">Установить</string>
   <string name="uninstall">Удалить</string>
@@ -86,8 +89,8 @@
   <string name="antinonfreeadlong">Показывать приложения содержащие закрытые компоненты</string>
   <string name="antinonfreenet">Сетевые сервисы</string>
   <string name="antinonfreenetlong">Показывать приложения использующие несвободные сетевые сервисы</string>
-  <string name="antinonfreedep">Настройки</string>
-  <string name="antinonfreedeplong">Показывать приложения содержащие закрытые компоненты</string>
+  <string name="antinonfreedep">Зависимости</string>
+  <string name="antinonfreedeplong">Показывать приложения зависимые от несвободных приложений</string>
   <string name="expert">Эксперт</string>
   <string name="expert_mode">Включить режим эксперта</string>
   <string name="search_hint">Найти приложения</string>
