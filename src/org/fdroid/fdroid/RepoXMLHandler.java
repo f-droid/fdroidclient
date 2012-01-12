@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
  *
  * This program is free software; you can redistribute it and/or
@@ -45,6 +45,8 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 public class RepoXMLHandler extends DefaultHandler {
@@ -270,8 +272,14 @@ public class RepoXMLHandler extends DefaultHandler {
                         // check the signature, and extract the index...
                         Log.d("FDroid", "Getting signed index from "
                                 + repo.address);
-                        getRemoteFile(ctx, repo.address + "/index.jar",
-                                "tempindex.jar");
+                        String address = repo.address + "/index.jar";
+                        PackageManager pm = ctx.getPackageManager();
+                        try {
+                            PackageInfo pi = pm.getPackageInfo(ctx.getPackageName(), 0);
+                            address += "?" + pi.versionName;
+                        } catch (Exception e) {
+                        }
+                        getRemoteFile(ctx, address, "tempindex.jar");
                         String jarpath = ctx.getFilesDir() + "/tempindex.jar";
                         JarFile jar;
                         JarEntry je;

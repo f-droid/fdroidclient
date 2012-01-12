@@ -193,9 +193,8 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
             // Fill in the version...
             TextView tv = (TextView) view.findViewById(R.id.version);
             PackageManager pm = getPackageManager();
-            PackageInfo pi;
             try {
-                pi = pm.getPackageInfo(
+                PackageInfo pi = pm.getPackageInfo(
                         getApplicationContext().getPackageName(), 0);
                 tv.setText(pi.versionName);
             } catch (Exception e) {
