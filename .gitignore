@@ -1,4 +1,7 @@
 local.properties
+build.properties
+project.properties
+.classpath
 bin/*
 proguard.cfg
 *~
