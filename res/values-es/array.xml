@@ -5,5 +5,11 @@
     <item>Cada hora</item>
     <item>Cada 4 horas</item>
     <item>Cada 12 horas</item>
+    <item>Diariamente</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>Desactivado (peligroso)</item>
+    <item>Normal</item>
+    <item>Completo</item>
   </string-array>
 </resources>

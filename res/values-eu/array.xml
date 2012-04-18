@@ -1,2 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources/>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Inoiz ez</item>
+    <item>Orduero</item>
+    <item>4 orduero</item>
+    <item>12 orduero</item>
+    <item>Egunero</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>Itzalita (ez da segurua)</item>
+    <item>Normala</item>
+    <item>Osoa</item>
+  </string-array>
+</resources>

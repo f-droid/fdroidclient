@@ -1,2 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources/>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Nooit</item>
+    <item>Elk uur</item>
+    <item>Elke 4 uur</item>
+    <item>Elke 12 uur</item>
+    <item>Dagelijks</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>Uit (onveilig)</item>
+    <item>Normaal</item>
+    <item>Vol</item>
+  </string-array>
+</resources>

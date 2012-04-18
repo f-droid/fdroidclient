@@ -2,35 +2,36 @@
 # Copyright (C) 2010 ORGANIZATION
 # This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-01-11 11:03+0000\n"
-"PO-Revision-Date: 2010-11-15 07:54+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-02-06 00:11+0200\n"
+"Last-Translator: Rob <programming@ertai.nl>\n"
 "Language-Team: nl <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "%1$d applicaties gevonden die voldoen aan '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "Één applicatie gevonden die voldoet aan '%s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "Geen applicaties gevonden die voldoen aan '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -39,94 +40,100 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"De nieuwe versie is gesigned met een andere sleutel als de oude. Om de "
+"nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer "
+"het daarna nogmaals. (Let op dat het verwijderen de data van de applicatie "
+"verwijderd wordt)"
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d versies beschikbaar"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "%d versie beschikbaar"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Verwittigen"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Opslag"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "buffer gedownloade apps"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "Bewaar gedownloade apk-bestanden op de SD-kaart"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "Updates"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "Maak gecached data leeg"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Onderhoud"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "Verwittigen bij nieuwe beschikbare updates"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "app-lijst automatisch bijwerken"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "Automatische bronnen-scan"
 
 msgctxt "app_name"
 msgid "FDroid"
-msgstr ""
+msgstr "FDriod"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr ""
+msgstr "Over FDroid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
+"Gebaseerd op Aptoide.\n"
+"Uitgegeven onder de GNU GPLv2 licentie"
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
+msgstr "Website:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr ""
+msgstr "Versie:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 msgctxt "no_repo"
 msgid ""
@@ -137,299 +144,310 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
+"U hebt geen bonnen geconfigureerd!\n"
+"\n"
+"Een bron is een lijst van applicaties. Om er een toe te voegen, druk de "
+"MENU-knop nu en voer een URL in.\n"
+"\n"
+"Een bron-adres ziet er ongeveer uit als: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "Niet geïnstalleerd"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "Update mogelijk - Ver.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "Voeg nieuwe bron toe"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr ""
+msgstr "Toevoegen"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr ""
+msgstr "Kies bron om te verwijderen"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Kan niet verbinden met de server!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "Vernieuw bronnen"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr ""
+msgstr "Geïnstalleerd"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "Beschikbaar"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "Updates"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "Updates beschikbaar"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr ""
+msgstr "Even geduld aub"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr ""
+msgstr "Applicatie-lijst vernieuwen"
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr ""
+msgstr "Kan niet verbinden met het netwerk"
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Vervaltijd"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Kan niet verbinden met de server!"
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr ""
+msgstr "downloaden applicatie van"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
+msgstr "Bron-adres"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
+msgstr "Geïnstalleerd:"
 
 msgctxt "install"
 msgid "Install"
-msgstr ""
+msgstr "Installeren"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Deinstalleren"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "Vernieuwen!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
+"Er zijn updates beschikbaar voor sommige geïnstalleerde applicaties.\n"
+"Wil je ze zien?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
+"De lijst van gebruikte bronnen is veranderd.\n"
+"Wil je ze vernieuwen?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
+msgstr "Kan niet verbinden met de server of apk-bestand is corrupt!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
+msgstr "Applicatie verkrijgen van:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "Beheer bronnen"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "Nieuwe bron"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr ""
+msgstr "Verwijder bron"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr ""
+msgstr "Installeren"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Deinstalleren"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "Problemen"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr ""
+msgstr "Broncode"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "Markt"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr ""
+msgstr "Doneer"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr ""
+msgstr "Versie %s geinstalleerd"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr ""
+msgstr "Niet geinstalleerd"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr ""
+msgstr "Geïnstalleerd"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "Gedownloade bestand is corrupt"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Download geannuleerd"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Anti-Functies"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Advertenties"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Laat apps zien die advertenties bevatten"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Volgen"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "Laat apps zien die je volgen en je activiteiten rapporteren"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Toevoegingen"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Laat apps zien die betaalde add-ons promoten"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Netwerkdiensten"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
+msgstr "Laat apps zien die betaalde netwerkdiensten promoten"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr ""
+msgstr "Afhankelijkheden"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "Laat apps zien die van andere betaalde apps afhankelijk zijn"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Expert"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Ga in expert-modus"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "Zoek-applicaties"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Database sync-modus"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Zet de SQLite's synchronisatie-vlag"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Applicatie verenigbaarheid"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Onverenigbare apps"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
+"Laat apps zien die gemaakt zij voor nieuwe Android-versie of andere hardware"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Laat apps zien die root-privileges vereisen"
 
 #~ msgctxt "about_sitec"
 #~ msgid "http://f-droid.org"
@@ -442,4 +460,3 @@ msgstr ""
 #~ msgctxt "repo_add_http"
 #~ msgid "http://"
 #~ msgstr ""
-

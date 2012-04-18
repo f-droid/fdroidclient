@@ -3,52 +3,53 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-01-11 11:03+0000\n"
-"PO-Revision-Date: 2012-01-10 16:43+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-01-27 00:54+0200\n"
+"Last-Translator: Rob <programming@ertai.nl>\n"
 "Language-Team: nl <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 msgctxt "updateIntervalNames:0"
 msgid "Never"
-msgstr ""
+msgstr "Nooit"
 
 msgctxt "updateIntervalNames:1"
 msgid "Hourly"
-msgstr ""
+msgstr "Elk uur"
 
 msgctxt "updateIntervalNames:2"
 msgid "Every 4 Hours"
-msgstr ""
+msgstr "Elke 4 uur"
 
 msgctxt "updateIntervalNames:3"
 msgid "Every 12 Hours"
-msgstr ""
+msgstr "Elke 12 uur"
 
 msgctxt "updateIntervalNames:4"
 msgid "Daily"
-msgstr ""
+msgstr "Dagelijks"
 
 msgctxt "dbSyncModeNames:0"
 msgid "Off (unsafe)"
-msgstr ""
+msgstr "Uit (onveilig)"
 
 msgctxt "dbSyncModeNames:1"
 msgid "Normal"
-msgstr ""
+msgstr "Normaal"
 
 msgctxt "dbSyncModeNames:2"
 msgid "Full"
-msgstr ""
+msgstr "Vol"
 
 #~ msgctxt "updateIntervalValues:0"
 #~ msgid "0"
@@ -81,4 +82,3 @@ msgstr ""
 #~ msgctxt "dbSyncModeValues:2"
 #~ msgid "full"
 #~ msgstr ""
-

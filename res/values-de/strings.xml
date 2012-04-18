@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+  <string name="searchres_napps">%1$d Anwendungen gefunden, die zu \'%2$s\' passen:</string>
+  <string name="searchres_oneapp">Eine Anwendung gefunden, die zu \'%s\' passt:</string>
+  <string name="searchres_noapps">Keine Anwendung gefunden, die zu \'%s\' passt.</string>
+  <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren muss zunächst die alte entfernt werden. Bitte tun Sie das und probieren Sie es dann nochmal. (Hinweis: Das Entfernen der Anwendung wird alle Daten dieser Anwendung löschen)</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d verfügbare Versionen</string>
   <string name="n_version_available">%d verfügbare Version</string>
@@ -16,14 +20,15 @@
   <string name="automatic_repo_scan">Automatische Archivkontrolle</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Über FDroid</string>
-  <string name="about_desc">Basierend auf Aptoide.\nLizensiert unter GNU GPLv2.</string>
-  <string name="about_site">Internetseite</string>
+  <string name="about_desc">Basierend auf Aptoide.\nLizensiert unter der GNU GPLv2.</string>
+  <string name="about_site">Internetseite:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Internetseite</string>
   <string name="no_repo">Sie haben keine Archive eingestellt!\n\nEin Archiv ist eine Sammlung von Anwendungen. Drücken Sie den Menü-Knopf und fügen Sie die Adresse eines Archivs hinzu.\n\nEine Archiv-Adresse sieht ungefähr so aus: http://f-droid.org/repo</string>
   <string name="not_inst">Nicht Installiert</string>
   <string name="installed_update">Aktualisierung verfügbar – Version:</string>
+  <string name="ok">OK</string>
   <string name="yes">Ja</string>
   <string name="no">Nein</string>
   <string name="repo_add_title">Neues Archiv hinzufügen</string>
@@ -48,7 +53,7 @@
   <string name="install">Installieren</string>
   <string name="uninstall">Entfernen</string>
   <string name="update">Aktualisieren!</string>
-  <string name="update_alrt">Für einige installierte Anwendungen sind Aktualisierungen verfügbar.\nSollen diese angezeigt werden?</string>
+  <string name="update_alrt">Für einige installierte Anwendungen sind Aktualisierungen verfügbar.\nMöchten Sie sie sehen?</string>
   <string name="repo_alrt">Die Liste der genutzten Archive wurde geändert.\nSoll sie aktualisiert werden?</string>
   <string name="error_download_alrt">Die Serververbindung konnte nicht hergestellt werden oder die Datei ist fehlerhaft!</string>
   <string name="download_alrt">Anwendung wird geladen von:\n</string>
@@ -56,6 +61,7 @@
   <string name="menu_manage">Archive verwalten</string>
   <string name="menu_preferences">Einstellungen</string>
   <string name="menu_about">Über</string>
+  <string name="menu_search">Suchen</string>
   <string name="menu_add_repo">Archiv hinzufügen</string>
   <string name="menu_rem_repo">Archiv entfernen</string>
   <string name="menu_install">Installieren</string>
@@ -65,11 +71,29 @@
   <string name="menu_source">Quelltext</string>
   <string name="menu_market">Markt</string>
   <string name="menu_update">Aktualisieren</string>
-  <string name="menu_donate">Aktualisieren</string>
+  <string name="menu_donate">Spenden</string>
   <string name="details_installed">Version %s installiert</string>
   <string name="details_notinstalled">Nicht Installiert</string>
   <string name="inst">Installiert</string>
   <string name="corrupt_download">Heruntergeladene Datei ist fehlerhaft</string>
-  <string name="antinonfreedep">Einstellungen</string>
-  <string name="search_hint">Anwendung wird heruntergeladen von</string>
+  <string name="download_cancelled">Download abgebrochen</string>
+  <string name="antifeatures">Unerwünschte Eigenschaften</string>
+  <string name="antiads">Werbung</string>
+  <string name="antiadslong">Zeige Apps, die Werbung enthalten</string>
+  <string name="antitracklong">Zeige Programme, welche Ihre Aktivitäten aufzeichnen und melden</string>
+  <string name="antinonfreead">Zusätze</string>
+  <string name="antinonfreeadlong">Zeige Apps, die unfreie Zusätze bewerben</string>
+  <string name="antinonfreenet">Netzwerkdienste</string>
+  <string name="antinonfreenetlong">Zeige Apps, die unfreie Netzwerkdienste propagieren</string>
+  <string name="antinonfreedep">Abhängigkeiten</string>
+  <string name="antinonfreedeplong">Zeige Apps, die von anderen unfreien Apps abhängen</string>
+  <string name="expert">Für Experten</string>
+  <string name="expert_mode">Expertenmodus einschalten</string>
+  <string name="search_hint">Anwendungen suchen</string>
+  <string name="db_sync_mode">Modus der Datenbanksynchronisation</string>
+  <string name="db_sync_mode_long">SQLite Synchronisationsmodus setzen</string>
+  <string name="appcompatibility">Kompatibilität</string>
+  <string name="showincompat">Inkompatible Apps</string>
+  <string name="showincompat_long">Zeige Apps für neuere Android-Versionen oder andere Hardware</string>
+  <string name="rooted">Erfordert Root-Zugriff</string>
 </resources>

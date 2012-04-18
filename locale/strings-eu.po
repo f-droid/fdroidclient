@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-01-11 11:03+0000\n"
-"PO-Revision-Date: 2011-10-04 00:39+0200\n"
+"PO-Revision-Date: 2012-03-14 02:47+0200\n"
 "Last-Translator: Asier <asier.iturralde@gmail.com>\n"
 "Language-Team: eu <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
@@ -184,7 +186,7 @@ msgstr "Utzi"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Hautatu biltegia ezabatzeko"
+msgstr "Aukeratu biltegia ezabatzeko"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
@@ -288,7 +290,7 @@ msgstr "Eguneraketa"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Biltegiak Kudeatu"
+msgstr "Kudeatu biltegiak"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
@@ -332,7 +334,7 @@ msgstr "Iturburu Kodea"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Market"
+msgstr "Merkatua"
 
 msgctxt "menu_update"
 msgid "Update"
@@ -347,10 +349,9 @@ msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "%s bertsioa instalatuta"
 
-#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Instalatu gabea"
+msgstr "Instalatu gabe"
 
 msgctxt "inst"
 msgid "Installed"
@@ -374,7 +375,7 @@ msgstr "Iragarkiak"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Bistaratu iragarkiak dituzten aplikazioak"
+msgstr "Erakutsi iragarkiak dituzten aplikazioak"
 
 msgctxt "antitrack"
 msgid "Tracking"
@@ -383,8 +384,8 @@ msgstr "Jarraipena"
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr ""
-"Bistaratu zure aktibitateen jarraipena egin eta txostenak bidaltzen "
-"dituzten aplikazioak"
+"Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen dituzten "
+"aplikazioak"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -392,7 +393,7 @@ msgstr "Gehigarriak"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Bistaratu gehigarri ez-libreak sustatzen dituzten aplikazioak"
+msgstr "Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -400,17 +401,15 @@ msgstr "Sareko Zerbitzuak"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Bistaratu sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
+msgstr "Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
 
-#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Hobespenak"
+msgstr "Mendekotasunak"
 
-#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Bistaratu gehigarri ez-libreak sustatzen dituzten aplikazioak"
+msgstr "Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak"
 
 msgctxt "expert"
 msgid "Expert"
@@ -426,7 +425,7 @@ msgstr "Bilatu aplikazioak"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr "Datu base modu sinkronoa"
+msgstr "Datu-base modu sinkronoa"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
@@ -443,8 +442,8 @@ msgstr "Aplikazio bateraezinak"
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Bistaratu Androiden bertsio berriagoentzat edo hardware desberdinarentzat"
-" idatzitako aplikazioak"
+"Erakutsi Androiden bertsio berriagoentzat edo hardware desberdinarentzat "
+"idatzitako aplikazioak"
 
 msgctxt "rooted"
 msgid "Root"
@@ -452,7 +451,7 @@ msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Bistaratu root baimenak behar dituzten aplikazioak"
+msgstr "Erakutsi root baimenak behar dituzten aplikazioak"
 
 #~ msgctxt "about_sitec"
 #~ msgid "http://f-droid.org"
@@ -465,4 +464,3 @@ msgstr "Bistaratu root baimenak behar dituzten aplikazioak"
 #~ msgctxt "repo_add_http"
 #~ msgid "http://"
 #~ msgstr ""
-

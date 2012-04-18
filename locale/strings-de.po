@@ -7,29 +7,31 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-01-11 11:03+0000\n"
-"PO-Revision-Date: 2010-11-16 09:54+0200\n"
-"Last-Translator: Jan-Christoph <JanCBorchardt@gmail.com>\n"
+"PO-Revision-Date: 2012-03-16 17:40+0200\n"
+"Last-Translator: reppleo <reppleo@gmail.com>\n"
 "Language-Team: de <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "%1$d Anwendungen gefunden, die zu '%2$s' passen:"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "Eine Anwendung gefunden, die zu '%s' passt:"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "Keine Anwendung gefunden, die zu '%s' passt."
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -38,6 +40,10 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um "
+"die neue Version zu installieren muss zunächst die alte entfernt werden. "
+"Bitte tun Sie das und probieren Sie es dann nochmal. (Hinweis: Das Entfernen "
+"der Anwendung wird alle Daten dieser Anwendung löschen)"
 
 msgctxt "version"
 msgid "Version"
@@ -89,7 +95,6 @@ msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
 msgstr "Bei Aktualisierungen benachrichtigen"
 
-#, fuzzy
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Anwendungsliste automatisch aktualisieren"
@@ -106,19 +111,17 @@ msgctxt "about_title"
 msgid "About FDroid"
 msgstr "Über FDroid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
 "Basierend auf Aptoide.\n"
-"Lizensiert unter GNU GPLv2."
+"Lizensiert unter der GNU GPLv2."
 
-#, fuzzy
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Internetseite"
+msgstr "Internetseite:"
 
 msgctxt "about_mail"
 msgid "Email:"
@@ -128,7 +131,6 @@ msgctxt "about_version"
 msgid "Version:"
 msgstr "Version:"
 
-#, fuzzy
 msgctxt "about_website"
 msgid "Website"
 msgstr "Internetseite"
@@ -160,7 +162,7 @@ msgstr "Aktualisierung verfügbar – Version:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
@@ -259,14 +261,13 @@ msgctxt "update"
 msgid "Update!"
 msgstr "Aktualisieren!"
 
-#, fuzzy
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
 "Für einige installierte Anwendungen sind Aktualisierungen verfügbar.\n"
-"Sollen diese angezeigt werden?"
+"Möchten Sie sie sehen?"
 
 #, fuzzy
 msgctxt "repo_alrt"
@@ -303,9 +304,10 @@ msgctxt "menu_about"
 msgid "About"
 msgstr "Über"
 
+#, fuzzy
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Suchen"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
@@ -323,7 +325,6 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Entfernen"
 
-#, fuzzy
 msgctxt "menu_website"
 msgid "Website"
 msgstr "Internetseite"
@@ -344,17 +345,15 @@ msgctxt "menu_update"
 msgid "Update"
 msgstr "Aktualisieren"
 
-#, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Aktualisieren"
+msgstr "Spenden"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Version %s installiert"
 
-#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Nicht Installiert"
@@ -369,19 +368,19 @@ msgstr "Heruntergeladene Datei ist fehlerhaft"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Download abgebrochen"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Unerwünschte Eigenschaften"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Werbung"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Zeige Apps, die Werbung enthalten"
 
 msgctxt "antitrack"
 msgid "Tracking"
@@ -389,69 +388,68 @@ msgstr ""
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "Zeige Programme, welche Ihre Aktivitäten aufzeichnen und melden"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Zusätze"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Zeige Apps, die unfreie Zusätze bewerben"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Netzwerkdienste"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
+msgstr "Zeige Apps, die unfreie Netzwerkdienste propagieren"
 
-#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Einstellungen"
+msgstr "Abhängigkeiten"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "Zeige Apps, die von anderen unfreien Apps abhängen"
 
+#, fuzzy
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Für Experten"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Expertenmodus einschalten"
 
-#, fuzzy
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Anwendung wird heruntergeladen von"
+msgstr "Anwendungen suchen"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Modus der Datenbanksynchronisation"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "SQLite Synchronisationsmodus setzen"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Kompatibilität"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Inkompatible Apps"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
+msgstr "Zeige Apps für neuere Android-Versionen oder andere Hardware"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Erfordert Root-Zugriff"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
@@ -468,4 +466,3 @@ msgstr ""
 #~ msgctxt "repo_add_http"
 #~ msgid "http://"
 #~ msgstr ""
-

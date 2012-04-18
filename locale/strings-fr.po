@@ -7,29 +7,31 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-01-11 11:03+0000\n"
-"PO-Revision-Date: 2011-07-13 18:42+0200\n"
-"Last-Translator: zapman <anon@example.com>\n"
+"PO-Revision-Date: 2012-02-29 18:00+0200\n"
+"Last-Translator: Grumpf <johan.binard@gmail.com>\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "Trouvé %1$d applications contenant '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "Trouvé %1$d application contenant '%2$s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "Pas d'application contenant '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -339,20 +341,18 @@ msgctxt "menu_update"
 msgid "Update"
 msgstr "Mise à jour"
 
-#, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Mise à jour"
+msgstr "Faire un don"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Version %s installée"
 
-#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Pas installée"
+msgstr "Non installée"
 
 msgctxt "inst"
 msgid "Installed"
@@ -364,7 +364,7 @@ msgstr "Le fichier téléchargé est corrompu"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Téléchargement annulé"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
@@ -418,12 +418,11 @@ msgstr "Expert"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Activer le mode expert"
 
-#, fuzzy
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Réception d'application de"
+msgstr "Recherche d'applications"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
@@ -439,19 +438,21 @@ msgstr ""
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Applications incompatibles"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
+"Montrer les applications écrites pour de nouvelles versions d'Android ou un "
+"matériel différent"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Montrer les applications qui requièrent les privilèges root"
 
 #~ msgctxt "about_sitec"
 #~ msgid "http://f-droid.org"
@@ -464,4 +465,3 @@ msgstr ""
 #~ msgctxt "repo_add_http"
 #~ msgid "http://"
 #~ msgstr ""
-
