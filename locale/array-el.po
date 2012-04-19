@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-01-11 11:03+0000\n"
+"POT-Creation-Date: 2012-04-18 17:21+0100\n"
 "PO-Revision-Date: 2012-01-10 16:43+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: el <LL@li.org>\n"
@@ -49,36 +49,4 @@ msgstr ""
 msgctxt "dbSyncModeNames:2"
 msgid "Full"
 msgstr ""
-
-#~ msgctxt "updateIntervalValues:0"
-#~ msgid "0"
-#~ msgstr ""
-
-#~ msgctxt "updateIntervalValues:1"
-#~ msgid "1"
-#~ msgstr ""
-
-#~ msgctxt "updateIntervalValues:2"
-#~ msgid "4"
-#~ msgstr ""
-
-#~ msgctxt "updateIntervalValues:3"
-#~ msgid "12"
-#~ msgstr ""
-
-#~ msgctxt "updateIntervalValues:4"
-#~ msgid "24"
-#~ msgstr ""
-
-#~ msgctxt "dbSyncModeValues:0"
-#~ msgid "off"
-#~ msgstr ""
-
-#~ msgctxt "dbSyncModeValues:1"
-#~ msgid "normal"
-#~ msgstr ""
-
-#~ msgctxt "dbSyncModeValues:2"
-#~ msgid "full"
-#~ msgstr ""
 
