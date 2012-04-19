@@ -1,16 +1,17 @@
-# Basque translations for PACKAGE.
+# Turkish translations for F-Droid.
 # Copyright (C) 2011 ORGANIZATION
-# This file is distributed under the same license as the PACKAGE project.
+# This file is distributed under the same license as the F-Droid project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-04-19 09:27+0100\n"
-"PO-Revision-Date: 2012-03-14 02:47+0200\n"
-"Last-Translator: Asier <asier.iturralde@gmail.com>\n"
-"Language-Team: eu <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"PO-Revision-Date: 2012-04-19 09:25+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: tr <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,17 +20,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "'%2$s'-rekin bat datozen %1$d aplikazio aurkitu dira:"
+msgstr "'%2$s' ile eşleşen %1$d uygulama bulundu:"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "'%s'-rekin bat datorren aplikazio bat aurkitu da:"
+msgstr "'%s' ile eşleşen bir uygulama bulundu:"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "'%s'-rekin bat datorren aplikaziorik ez da aurkitu"
+msgstr "'%s' ile eşleşen hiçbir uygulama bulunamadı:"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -38,68 +39,68 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. "
-"Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago."
-"  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean "
-"aplikazioak gordetako barne datuak ezabatuko direla)"
+"Bu yeni sürüm farklı bir anahtar ile imzalanmıştır. Yeni sürümü kurmak "
+"için önce eski sürümü kaldırmanız gerekir. Lütfen bunu yapın ve tekrar "
+"deneyin. (Not: bu, uygulama tarafından saklanan tüm dahili verileri "
+"silecektir)"
 
 msgctxt "version"
 msgid "Version"
-msgstr "Bertsioa"
+msgstr "Sürüm"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d bertsio eskuragarri"
+msgstr "%d sürüm mevcut"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "Bertsio %d eskuragarri"
+msgstr "%d sürüm mevcut"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Jakinarazi"
+msgstr "Bildirme"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Biltegiratzea"
+msgstr "Saklama"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Gorde cache-an deskargatutako aplikazioak"
+msgstr "İndirilen uygulamaları önbelleğe kaydet"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Gorde deskargatutako apk fitxategiak SD txartelean"
+msgstr "İndirilen uygulamaları SD kartına kaydet"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Eguneraketak"
+msgstr "Güncellemeler"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Ezabatu cache-ko datu guztiak"
+msgstr "Önbellekteki tüm verileri sil"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Berrezarri"
+msgstr "Sıfırla"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Mantentzea"
+msgstr "Bakım"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Jakinarazi eguneraketa berriak eskuragarri daudenean"
+msgstr "Yeni güncellemeler olduğunu bildir"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Eguneratu aplikazio-zerrenda biltegiarekin automatikoki"
+msgstr "Uygulama listesini depolardan otomatik olarak güncelle"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Eskaneatu biltegiak automatikoki"
+msgstr "Otomatik depo taraması"
 
 msgctxt "app_name"
 msgid "FDroid"
@@ -107,31 +108,31 @@ msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr "FDroid-i buruz"
+msgstr "Fdroid Hakkında"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
-"Jatorrian Aptoide-n oinarritua.\n"
-"GNU GPLv2 lizentziapean argitaratua."
+"Aptoide'den türetilmiştir.\n"
+"GNU GPLv2 lisansı kapsamında yayınlanmıştır."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Webgunea:"
+msgstr "Ağ sitesi:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "E-posta:"
+msgstr "E-mail:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Bertsioa:"
+msgstr "Sürüm:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr "Webgunea"
+msgstr "Ağ sitesi"
 
 msgctxt "no_repo"
 msgid ""
@@ -142,306 +143,303 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Ez daukazu konfiguratutako biltegirik!\n"
+"Kurulu hiçbir deponuz bulunmamaktadır!\n"
 "\n"
-"Biltegi bat aplikazioen iturburu bat da. Bat gehitzeko, sakatu orain MENU"
-" botoia eta idatzi URL-a.\n"
+"Depolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine "
+"basıp adresi giriniz.\n"
 "\n"
-"Biltegi baten helbideak honen antzekoa izan ohi da: "
-"http://f-droid.org/repo"
+"Bir depo adresi şuna benzer: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Instalatu gabea"
+msgstr "Kurulu değil"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Eguneraketa posiblea - Ber.:"
+msgstr "Güncelleme mümkün - Sürüm:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr "Ados"
+msgstr "Tamam"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "Bai"
+msgstr "Evet"
 
 msgctxt "no"
 msgid "No"
-msgstr "Ez"
+msgstr "Hayır"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Gehitu biltegi berria"
+msgstr "Yeni depo ekle"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Gehitu"
+msgstr "Ekle"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Utzi"
+msgstr "İptal"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Aukeratu biltegia ezabatzeko"
+msgstr "Kaldırılacak depoyu seç"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Ezin izan da zerbitzarira konektatu!"
+msgstr "Sunucuya bağlanılamadı!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Eguneratu biltegiak"
+msgstr "Depoları güncelle"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Instalatuta"
+msgstr "Kurulu"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "Eskuragarri"
+msgstr "Mevcut"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Eguneraketak"
+msgstr "Güncellemeler"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Eguneraketak eskuragarri"
+msgstr "Güncellemeler var"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Mesedez itxaron"
+msgstr "Bekleyiniz"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Aplikazio-zerrenda eguneratzen..."
+msgstr "Uygulama listesi güncelleniyor..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Ezin izan da sarera konektatu."
+msgstr "Ağa bağlanılamadı."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Denbora-muga"
+msgstr "Zaman aşımı"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Ezin izan da zerbitzarira konektatu!"
+msgstr "Sunucuya bağlanılamadı!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Deskargatu"
+msgstr "İndir"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Aplikazioa eskuratzen hemendik:"
+msgstr "Uygulama buradan alınıyor: "
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Biltegiaren helbidea"
+msgstr "Depo adresi"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Instalatuta:"
+msgstr "Kurulu:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Instalatu"
+msgstr "Kur"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Desinstalatu"
+msgstr "Kaldır"
 
 msgctxt "update"
 msgid "Update!"
-msgstr "Eguneraketa!"
+msgstr "Güncelle!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
-"Instalatutako zenbait aplikaziorentzako eguneraketak daude.\n"
-"Ikusi nahi dituzu?"
+"Bazı kurulu uygulamalar için güncellemeler bulunmaktadır.\n"
+"Görmek ister misiniz?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"Erabilitako biltegien zerrenda aldatu egin da.\n"
-"Eguneratu nahi dituzu?"
+"Kullanılan depoların listesi değişti.\n"
+"Güncellemek ister misiniz?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Ezin izan da zerbitzarira konektatu edo apk fitxategia hondatuta dago!"
+msgstr "Sunucuya bağlanılamadı ya da apk dosyası bozuk!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Aplikazioa eskuratzen hemendik:\n"
+msgstr "Uygulama buradan alınıyor:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr "Eguneraketa"
+msgstr "Güncelleme"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Kudeatu biltegiak"
+msgstr "Depoları Yönet"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Hobespenak"
+msgstr "Tercihler"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "Honi buruz"
+msgstr "Hakkında"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr "Bilatu"
+msgstr "Arama"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Biltegi berria"
+msgstr "Yeni Depo"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Ezabatu biltegia"
+msgstr "Depoyu kaldır"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Instalatu"
+msgstr "Kur"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Desinstalatu"
+msgstr "Kaldır"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr "Webgunea"
+msgstr "Ağ sitesi"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Gaiak"
+msgstr "Sorunlar"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Iturburu Kodea"
+msgstr "Kaynak kod"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Merkatua"
+msgstr "Market"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Eguneratu"
+msgstr "Güncelleme"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Dohaintza egin"
+msgstr "Bağış"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "%s bertsioa instalatuta"
+msgstr "%s sürümü kurulu"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Instalatu gabe"
+msgstr "Kurulu değil"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Instalatuta"
+msgstr "Kurulu"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "Deskargatutako fitxategia hondatuta dago"
+msgstr "İndirilen dosya bozuk"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr "Deskarga bertan behera utzita"
+msgstr "İndirme iptal edildi"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Anti-Ezaugarriak"
+msgstr "Anti-işlevler"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Iragarkiak"
+msgstr "Reklâm"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Erakutsi iragarkiak dituzten aplikazioak"
+msgstr "Reklâm içeren uygulamaları göster"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Jarraipena"
+msgstr "İzleme"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
-"Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen "
-"dituzten aplikazioak"
+msgstr "Etkinliklerinizi izleyip rapor eden uygulamaları göster"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr "Gehigarriak"
+msgstr "Eklentiler"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak"
+msgstr "Özgür olmayan eklentiler öneren uygulamaları göster"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Sareko Zerbitzuak"
+msgstr "Ağ Servisleri"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
+msgstr "Özgür olmayan ağ servislerini destekleyen uygulamaları göster"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Mendekotasunak"
+msgstr "Bağımlılıklar"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak"
+msgstr "Özgür olmayan uygulamalara bağımlı uygulamaları göster"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr "Aditua"
+msgstr "Uzman"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Gaitu aditu modua"
+msgstr "Uzman modunu etkinleştir"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Bilatu aplikazioak"
+msgstr "Uygulama ara"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr "Datu-base modu sinkronoa"
+msgstr "Veritabanı eşleşme modu"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr "Ezarri SQLite-ren bandera sinkronoaren balioa"
+msgstr "SQLite'ın senkronize flag değerini gir"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr "Aplikazioen bateragarritasuna"
+msgstr "Uygulama uyumu"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr "Aplikazio bateraezinak"
+msgstr "Uyumsuz uygulamalar"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Erakutsi Androiden bertsio berriagoentzat edo hardware desberdinarentzat "
-"idatzitako aplikazioak"
+"Başka Android sürümleri veya cihazlar için geliştirilen uygulamaları "
+"göster"
 
 msgctxt "rooted"
 msgid "Root"
@@ -449,5 +447,5 @@ msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Erakutsi root baimenak behar dituzten aplikazioak"
+msgstr "Root yetkilerine gerek duyan uygulamaları göster"
 
