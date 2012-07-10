@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Mai</item>
+    <item>Cada hora</item>
+    <item>Cada 4 hores</item>
+    <item>Cada 12 hores</item>
+    <item>Cada dia</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>Desactivat (no és segur)</item>
+    <item>Normal</item>
+    <item>Sencer</item>
+  </string-array>
+</resources>

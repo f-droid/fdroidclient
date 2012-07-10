@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Niciodata</item>
+    <item>Ora</item>
+    <item>La 4ore</item>
+    <item>La 12 ore</item>
+    <item>Zilnic</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>Inchis (nerecomandat)</item>
+    <item>Normal</item>
+    <item>Complet</item>
+  </string-array>
+</resources>

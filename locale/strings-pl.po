@@ -1,37 +1,38 @@
-# Italian translations for PACKAGE.
-# Copyright (C) 2010 ORGANIZATION
-# This file is distributed under the same license as the PACKAGE project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# Translations template for PROJECT.
+# Copyright (C) 2012 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-04-19 09:27+0100\n"
-"PO-Revision-Date: 2012-06-27 12:30+0200\n"
-"Last-Translator: b100w11 <b100w11@gmail.com>\n"
-"Language-Team: it <LL@li.org>\n"
-"Language: it\n"
+"PO-Revision-Date: 2012-07-05 16:23+0200\n"
+"Last-Translator: Bartlomiej <barwy@live.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Trovate %1$d applicazioni corrispondenti a '%2$s':"
+msgstr "Znaleziono %1$d pasujących aplikacji '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Trovata una applicazione corrispondente a '%2$s':"
+msgstr "Znaleziono jedną pasującą aplikację '%s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Non è stata trovate nessuna applicazione corrispondente a '%2$s'"
+msgstr "Nie znaleziono żadnych pasujących aplikacji '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -40,88 +41,88 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"La nuova versione è firmata con una chiave differente rispetto alla vecchia. "
-"Per installare la nuova versione occorre prima disinstallare la precedente. "
-"Riprovare dopo aver disinstallato. (Attenzione! Disistallando si cancellerà "
-"qualsiasi dato salvato dall'applicazione)"
+"Nowa wersja jest podpisana innym kluczem niż poprzednia. Aby ją zainstalować "
+"należy najpierw usunąć tę starą. Zrób to i spróbuj ponownie. (Proszę "
+"pamiętać, że deinstalacja spowoduje usunięcie wszystkich danych "
+"przechowywanych przez aplikację)"
 
 msgctxt "version"
 msgid "Version"
-msgstr "Versione"
+msgstr "Wersja"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d versioni disponibili"
+msgstr "%d dostępnych wersji"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "%d versione disponibile"
+msgstr "%d dostępna wersja"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Avviso"
+msgstr "Powiadom"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Memoria"
+msgstr "Magazyn"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Cache applicazioni scaricate"
+msgstr "Buforuj pobrane aplikacje"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Salva su SD i file apk scaricati"
+msgstr "Przechowuj pobrane pliki apk na karcie SD"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Aggiornamenti"
+msgstr "Aktualizacje"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Cancella dati temporanei dalla cache"
+msgstr "Wyczyść pamięć podręczną"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Reimposta"
+msgstr "Resetuj"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Manutenzione"
+msgstr "Konserwacja"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Avvisa quando sono disponibili nuovi aggiornamenti"
+msgstr "Powiadamiaj, gdy dostępne będą nowe aktualizacje"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Aggiorna automaticamente l'elenco applicazioni"
+msgstr "Automatycznie uaktualnij listę aplikacji z repozytorium"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Scansione repository automatica"
+msgstr "Automatycznie wyszukaj repozytoria"
 
 msgctxt "app_name"
 msgid "FDroid"
-msgstr "FDroid"
+msgstr "FDroid "
 
 msgctxt "about_title"
 msgid "About FDroid"
-msgstr "Informazioni"
+msgstr "O FDroid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
-"Basato su Aptoide.\n"
-"Rilasciato sotto licenza GNU GPL v2."
+"Pierwotnie oparte na Aptitude.\n"
+"Opublikowano na licencji GNU GPLv2."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Sito Web:"
+msgstr "Strona internetowa:"
 
 msgctxt "about_mail"
 msgid "Email:"
@@ -129,11 +130,11 @@ msgstr "Email:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Versione:"
+msgstr "Wersja:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr "Sito Web"
+msgstr "Strona internetowa"
 
 msgctxt "no_repo"
 msgid ""
@@ -144,20 +145,20 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Non hai configurato nessuna repository!\n"
+"Nie posiadasz żadnych skonfigurowanych repozytoriów\n"
 "\n"
-"Una repository è una fonte di applicazioni. Per aggiungerne una, premi MENU "
-"e inserisci un indirizzo URL.\n"
+"Repozytorium jest źródłem aplikacji. By jakieś dodać, wciśnij przycisku MENU "
+"i podaj adres URL\n"
 "\n"
-"Un indirizzo URL di esempio è: http://f-droid.org/repo"
+"Adres repozytorium wygląda mniej więcej tak: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Non installato"
+msgstr "Niezainstalowane"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Aggiornamento: - Ver.:"
+msgstr ""
 
 msgctxt "ok"
 msgid "OK"
@@ -165,173 +166,171 @@ msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "Sì"
+msgstr "Tak"
 
 msgctxt "no"
 msgid "No"
-msgstr "No"
+msgstr "Nie"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Aggiungi nuova repository"
+msgstr "Dodaj nowe repozytorium"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Aggiungi"
+msgstr "Dodaj"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Annulla"
+msgstr "Anuluj"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Rimuovi repository"
+msgstr "Wybierz repozytorium które chcesz usunąć"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
+msgstr "Nie udało się połączyć z serwerem!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Aggiorna le repository"
+msgstr "Aktualizuj repozytoria"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Installato"
+msgstr "Zainstalowano"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "Disponibile"
+msgstr "Dostępne"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Aggiornamenti"
+msgstr "Aktualizacje"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Aggiornamenti disponibili"
+msgstr "Dostępne aktualizacje"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Attendere prego"
+msgstr "Proszę czekać"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Aggiornamento elenco applicazioni in corso..."
+msgstr "Aktualizowanie listy aplikacji..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Impossibile connettersi alla rete."
+msgstr "Nie udało się połączyć z siecią."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Limit czasu"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
+msgstr "Nie udało się połączyć z serwerem!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Download"
+msgstr "Pobieranie"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Scaricamento applicazione da"
+msgstr "Pobieranie aplikacji z"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Indirizzo repository"
+msgstr "Adres repozytorium"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Installato:"
+msgstr "Zainstalowano:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Installa"
+msgstr "Zainstaluj"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Disinstalla"
+msgstr "Odinstaluj"
 
 msgctxt "update"
 msgid "Update!"
-msgstr "Aggiorna!"
+msgstr "Aktualizuj!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
-"Aggiornamenti disponibili per alcune applicazioni installate.\n"
-"\n"
-"Vuoi visualizzarli?"
+"Dostępne są aktualizacje dla niektórych zainstalowanych aplikacji.\n"
+"Czy chcesz je wyświetlić?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"L'elenco delle repository in uso è cambiato.\n"
-"\n"
-"Vuoi aggiornarlo?"
+"Lista wykorzystywanych repozytoriów uległa zmianie.\n"
+"Czy chcesz je zaktualizować?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Impossibile connettersi al server o file apk corrotto!"
+msgstr "Nie udało się połączyć z serwerem, lub plik apk jest uszkodzony!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Scaricamento applicazione da:\n"
+msgstr "Pobieranie aplikacji z:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update"
-msgstr "Aggiornamento"
+msgstr "Aktualizacja"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Gestione repository"
+msgstr "Zarządzaj repozytoriami"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Preferenze"
+msgstr "Ustawienia"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "Informazioni"
+msgstr "IInformacje"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr "Cerca"
+msgstr "Wyszukaj"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Nuova repository"
+msgstr "Nowe repozytorium"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Rimuovi repository"
+msgstr "Usuń repozytorium"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Installa"
+msgstr "Zainstaluj"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Disinstalla"
+msgstr "Odinstaluj"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr "Sito Web"
+msgstr "Strona internetowa"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Problemi"
+msgstr "Problemy"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Codice sorgente"
+msgstr "Kod żródłowy"
 
 msgctxt "menu_market"
 msgid "Market"
@@ -339,115 +338,114 @@ msgstr "Market"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Aggiornamento"
+msgstr "Aktualizuj"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Donazioni"
+msgstr "Złóż datek"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Versione %s installata"
+msgstr "Wersja %s została zainstalowana"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Non installato"
+msgstr "Nie zainstalowano"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Installato"
+msgstr "Zainstalowano"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "Il file scaricato è corrotto"
+msgstr "Pobrany plik jest uszkodzony"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr "Download annullato"
+msgstr "Anulowano pobieranie"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Caratteristiche negative"
+msgstr ""
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Pubblicità"
+msgstr "Reklamy"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Mostra applicazioni con pubblicità"
+msgstr "Pokaż aplikacje nie zawierające reklam"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Monitoraggio"
+msgstr "Śledzenie"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Mostra applicazioni che monitorano e riferiscono sulle tue attività"
+msgstr "Pokaż aplikacje śledzące i raportujące twoje działania"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr "Add-ons"
+msgstr "Dodatki"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Mostra applicazioni che promuovono add-on non liberi"
+msgstr "Pokaż aplikacje wspierające płatne dodatki"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Servizi di rete"
+msgstr "Usługi sieciowe"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Mostra applicazioni che promuovono servizi di rete a pagamento"
+msgstr "Pokaż aplikacje wspierające płatne usługi sieiowe"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "DIpendenze"
+msgstr "Zależności"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
+msgstr "Pokaż aplikacje zależne od innych, płatnych aplikacji"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr "Esperto"
+msgstr "Ekspert"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Attiva la modalità avanzata"
+msgstr "Uruchom tryb eksperta"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Scaricamento applicazione da"
+msgstr "Wyszukaj aplikacje"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr "Modalità di sincronizzazione database"
+msgstr "Tryb synchronizacji bazy danych"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr "Impostazione del flag di sincronizzazione di SQLite"
+msgstr "Ustaw synchronizację flagi SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr "Compatibilità applicazioni"
+msgstr "Kompatybilność aplikacji"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr "Applicazioni incompatibili"
+msgstr "Niekompatybilne aplikacje"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Mostra le applicazioni scritte per una versione di Android più recente o "
-"hardware differente"
+"Pokaż aplikacje napisane dla nowszych wersji Androida lub innego sprzętu"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr "Amministratore"
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Mostra le applicazioni che richiedono i privilegi di amministrazione"
+msgstr "Pokaż aplikacje wymagające uprawnień root"

@@ -2,9 +2,9 @@
 <resources>
   <string-array name="updateIntervalNames">
     <item>Никогда</item>
-    <item>Ежечасный</item>
+    <item>Ежечасно</item>
     <item>Каждые 4 часа</item>
-    <item>Каждые 12 часа</item>
+    <item>Каждые 12 часов</item>
     <item>Ежедневно</item>
   </string-array>
   <string-array name="dbSyncModeNames">

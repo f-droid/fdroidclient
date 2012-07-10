@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="searchres_napps">Sa gasit o aplicatie potrivita cu %s\'</string>
+  <string name="searchres_oneapp">Sa gasit o aplicatie potrivita cu %s\'</string>
+  <string name="searchres_noapps">Nu exita aplicatii potrivite cu %s\':</string>
+  <string name="version">Versiune</string>
+  <string name="n_versions_available">Versiunile %d disponibile</string>
+  <string name="n_version_available">Versiunea %d disponibila</string>
+  <string name="notify">Notificare</string>
+  <string name="storage">Stocare</string>
+  <string name="cache_downloaded">Istoric aplicatii descarcate</string>
+  <string name="keep_downloaded">Patrati fisierele apk descarcate pe cardul SD</string>
+  <string name="updates">Noutati</string>
+  <string name="clear_all_cached_data">Stergere istoric</string>
+  <string name="reset">Resetare</string>
+  <string name="maintenance">Mentenanta</string>
+  <string name="notify_updates_available">Notificare cand exista versiuni noi</string>
+  <string name="update_apps_list">Actualizare aplicatie automata</string>
+  <string name="automatic_repo_scan">Scanare versiuni noi</string>
+  <string name="app_name">FDroid</string>
+  <string name="about_title">Despre FDroid</string>
+  <string name="about_desc">Bazat pe Aptoide \nDistribuit sub licenta GNU GPLv2</string>
+  <string name="about_site">Website</string>
+  <string name="about_mail">Email</string>
+  <string name="about_version">Versiune</string>
+  <string name="about_website">Website</string>
+  <string name="no_repo">Nu aveti niciun depozit de aplicatii configurat\n\nUn depozit de aplicatii este sursa de aplicatii. Pentru adaugare apasati MENIU si introduceti adresa ...\n\nAdresa depozitului arata de genul: http://f-droid.org/repo</string>
+  <string name="not_inst">Nu este instalat</string>
+  <string name="installed_update">"Posibila versiune noua - Ver: "</string>
+  <string name="ok">Aplica</string>
+  <string name="yes">Da</string>
+  <string name="no">Nu</string>
+  <string name="repo_add_title">Adaugare depozit aplicatii nou</string>
+  <string name="repo_add_add">Adauga</string>
+  <string name="cancel">Anuleaza</string>
+  <string name="repo_delete_title">Alegeti depozitul pentru stergere</string>
+  <string name="server_connection_error">Nu se poate conecta la server!</string>
+  <string name="repo_update_title">Actualizare depozit aplicatii</string>
+  <string name="tab_installed">Instalat</string>
+  <string name="tab_noninstalled">Disponibil</string>
+  <string name="tab_updates">Actualizare</string>
+  <string name="update_available">Actualizare disponibila</string>
+  <string name="process_wait_title">Asteptati ...</string>
+  <string name="process_update_msg">Se actualizeaza lista ...</string>
+  <string name="connection_error">Se poate conecta.</string>
+</resources>

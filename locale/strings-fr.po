@@ -7,19 +7,21 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2012-04-19 09:27+0100\n"
-"PO-Revision-Date: 2012-02-29 18:00+0200\n"
+"PO-Revision-Date: 2012-05-15 22:37+0200\n"
 "Last-Translator: Grumpf <johan.binard@gmail.com>\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Trouvé %1$d applications contenant '%2$s':"
+msgstr "%1$d applications trouvées contenant '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
@@ -29,7 +31,7 @@ msgstr "Trouvé %1$d application contenant '%2$s':"
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Pas d'application contenant '%s'"
+msgstr "Aucune application contenant '%s' n'a été trouvée"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -116,7 +118,7 @@ msgid ""
 "Released under the GNU GPLv2 license."
 msgstr ""
 "Originellement basée sur Aptoide.\n"
-"Libéré sous licence GNU GPL v2."
+"Publié sous licence GNU GPL v2."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -145,8 +147,8 @@ msgid ""
 msgstr ""
 "Aucun dépôt n'est configuré !\n"
 "\n"
-"Un dépôt est une source d'applications. Pour en ajouter un, appuyez sur "
-"MENU maintenant et entrez l'adresse URL.\n"
+"Un dépôt est une source d'applications. Pour en ajouter un, appuyez "
+"maintenant sur MENU et entrez l'adresse URL.\n"
 "\n"
 "L'URL d'un dépôt ressemble à ceci : http://f-droid.org/repo"
 
@@ -224,7 +226,7 @@ msgstr "Connection au réseau impossible."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Délai d'attente"
+msgstr "Délai dépassé"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
@@ -301,7 +303,7 @@ msgstr "À propos de"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
@@ -390,7 +392,7 @@ msgstr "Extensions"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Montrer les applications qui promeuvent des extensions privateurs"
+msgstr "Montrer les applications qui promeuvent des extensions privatrices"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -400,15 +402,13 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Montrer les applications qui promeuvent des services réseaux privateurs"
 
-#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Préférences"
+msgstr "Dépendances"
 
-#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Montrer les applications qui promeuvent des extensions privateurs"
+msgstr "Montrer les applications qui dépendent d'autres applications non libres"
 
 msgctxt "expert"
 msgid "Expert"
@@ -424,15 +424,15 @@ msgstr "Recherche d'applications"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Mode de synchronisation à la base de données"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Régler la valeur de la synchronisation SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Compatibilité de l'application"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
@@ -451,4 +451,3 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Montrer les applications qui requièrent les privilèges root"
-

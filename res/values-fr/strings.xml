@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">Trouvé %1$d applications contenant \'%2$s\':</string>
+  <string name="searchres_napps">%1$d applications trouvées contenant \'%2$s\':</string>
   <string name="searchres_oneapp">Trouvé %1$d application contenant \'%2$s\':</string>
-  <string name="searchres_noapps">Pas d\'application contenant \'%s\'</string>
+  <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller l\'application écrasera les données enregistrées par l\'application).</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versions disponibles</string>
@@ -20,12 +20,12 @@
   <string name="automatic_repo_scan">Balayage automatique du dépôt</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">À propos de FDroid</string>
-  <string name="about_desc">Originellement basée sur Aptoide.\nLibéré sous licence GNU GPL v2.</string>
+  <string name="about_desc">Originellement basée sur Aptoide.\nPublié sous licence GNU GPL v2.</string>
   <string name="about_site">Site Web :</string>
   <string name="about_mail">Courriel:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
-  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez sur MENU maintenant et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
+  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="not_inst">Pas installée</string>
   <string name="installed_update">Mise à jour possible - Ver.:</string>
   <string name="ok">OK</string>
@@ -44,7 +44,7 @@
   <string name="process_wait_title">Patientez</string>
   <string name="process_update_msg">Mise à jour de la liste d\'applications...</string>
   <string name="connection_error">Connection au réseau impossible.</string>
-  <string name="connection_timeout">Délai d\'attente</string>
+  <string name="connection_timeout">Délai dépassé</string>
   <string name="connection_error_msg">Connection au serveur impossible!</string>
   <string name="download">Téléchargement</string>
   <string name="download_server">Réception d\'application de</string>
@@ -61,6 +61,7 @@
   <string name="menu_manage">Gestion de dépôts</string>
   <string name="menu_preferences">Préférences</string>
   <string name="menu_about">À propos de</string>
+  <string name="menu_search">Rechercher</string>
   <string name="menu_add_repo">Nouveau dépôt</string>
   <string name="menu_rem_repo">Supprimer un dépôt</string>
   <string name="menu_install">Installer</string>
@@ -82,14 +83,17 @@
   <string name="antitrack">Surveillance</string>
   <string name="antitracklong">Montrer les applications qui épient et qui rapportent votre activité</string>
   <string name="antinonfreead">Extensions</string>
-  <string name="antinonfreeadlong">Montrer les applications qui promeuvent des extensions privateurs</string>
+  <string name="antinonfreeadlong">Montrer les applications qui promeuvent des extensions privatrices</string>
   <string name="antinonfreenet">Services réseau</string>
   <string name="antinonfreenetlong">Montrer les applications qui promeuvent des services réseaux privateurs</string>
-  <string name="antinonfreedep">Préférences</string>
-  <string name="antinonfreedeplong">Montrer les applications qui promeuvent des extensions privateurs</string>
+  <string name="antinonfreedep">Dépendances</string>
+  <string name="antinonfreedeplong">Montrer les applications qui dépendent d\'autres applications non libres</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Activer le mode expert</string>
   <string name="search_hint">Recherche d\'applications</string>
+  <string name="db_sync_mode">Mode de synchronisation à la base de données</string>
+  <string name="db_sync_mode_long">Régler la valeur de la synchronisation SQLite</string>
+  <string name="appcompatibility">Compatibilité de l\'application</string>
   <string name="showincompat">Applications incompatibles</string>
   <string name="showincompat_long">Montrer les applications écrites pour de nouvelles versions d\'Android ou un matériel différent</string>
   <string name="rooted">Root</string>
