@@ -117,8 +117,15 @@ public class AppDetails extends ListActivity {
             } else { 
                 buildtype.setText("bin");
             }
+            TextView added = (TextView) v.findViewById(R.id.added);
+            if (apk.added != null && !apk.added.equals("")) {
+                added.setVisibility(View.VISIBLE);
+                added.setText(apk.added);
+            } else {
+                added.setVisibility(View.GONE);
+            }
             if (!compatChecker.isCompatible(apk)) {
-                View[] views = { v, version, status, size, buildtype };
+                View[] views = { v, version, status, size, buildtype, added };
                 for (View view : views) {
                     view.setEnabled(false);
                 }
