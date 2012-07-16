@@ -140,6 +140,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapk.minSdkVersion = 0;
                 }
+            } else if (curel.equals("added")) {
+                curapk.added = str;
             } else if (curel.equals("permissions")) {
                 curapk.permissions = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("features")) {
@@ -169,6 +171,10 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.webURL = str;
             } else if (curel.equals("tracker")) {
                 curapp.trackerURL = str;
+            } else if (curel.equals("added")) {
+                curapp.added = str;
+            } else if (curel.equals("lastupdated")) {
+                curapp.lastUpdated = str;
             } else if (curel.equals("marketversion")) {
                 curapp.marketVersion = str;
             } else if (curel.equals("marketvercode")) {

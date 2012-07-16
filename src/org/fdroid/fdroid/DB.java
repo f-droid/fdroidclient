@@ -79,6 +79,8 @@ public class DB {
             requirements = null;
             hasUpdates = false;
             updated = false;
+            added = "";
+            lastUpdated = "";
             apks = new Vector<Apk>();
         }
 
@@ -98,6 +100,8 @@ public class DB {
         public int installedVerCode;
         public String marketVersion;
         public int marketVercode;
+        public String added;
+        public String lastUpdated;
 
         // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
@@ -166,6 +170,7 @@ public class DB {
             updated = false;
             size = 0;
             apkSource = null;
+            added = "";
         }
 
         public String id;
@@ -176,6 +181,7 @@ public class DB {
         public String hash;
         public String hashType;
         public int minSdkVersion; // 0 if unknown
+        public String added;
         public CommaSeparatedList permissions; // null if empty or unknown
         public CommaSeparatedList features; // null if empty or unknown
 
@@ -338,7 +344,12 @@ public class DB {
                     "update " + TABLE_APK + " set hashType = 'MD5'" },
 
             // Version 13...
-            { "alter table " + TABLE_APP + " add category string" } };
+            { "alter table " + TABLE_APP + " add category string" },
+
+            // Version 14...
+            { "alter table " + TABLE_APK + " add added string",
+                "alter table " + TABLE_APP + " add added string",
+                "alter table " + TABLE_APP + " add lastUpdated string"} };
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -550,6 +561,10 @@ public class DB {
                             .getColumnIndex("marketVersion"));
                     app.marketVercode = c.getInt(c
                             .getColumnIndex("marketVercode"));
+                    app.added = c.getString(c
+                            .getColumnIndex("added"));
+                    app.lastUpdated = c.getString(c
+                            .getColumnIndex("lastUpdated"));
                     app.hasUpdates = false;
 
                     c2 = db.rawQuery("select * from " + TABLE_APK
@@ -577,6 +592,8 @@ public class DB {
                                 .getColumnIndex("apkSource"));
                         apk.minSdkVersion = c2.getInt(c2
                                 .getColumnIndex("minSdkVersion"));
+                        apk.added = c2.getString(c2
+                                .getColumnIndex("added"));
                         apk.permissions = CommaSeparatedList.make(c2
                                 .getString(c2.getColumnIndex("permissions")));
                         apk.features = CommaSeparatedList.make(c2.getString(c2
@@ -843,6 +860,8 @@ public class DB {
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
         values.put("donateURL", upapp.donateURL);
+        values.put("added", upapp.added);
+        values.put("lastUpdated", upapp.lastUpdated);
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
@@ -875,6 +894,7 @@ public class DB {
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
         values.put("minSdkVersion", upapk.minSdkVersion);
+        values.put("added", upapk.added);
         values.put("permissions", CommaSeparatedList.str(upapk.permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {
