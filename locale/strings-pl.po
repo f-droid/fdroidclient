@@ -1,22 +1,20 @@
-# Translations template for PROJECT.
+# Polish translations for PACKAGE.
 # Copyright (C) 2012 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the PACKAGE project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-04-19 09:27+0100\n"
-"PO-Revision-Date: 2012-07-05 16:23+0200\n"
+"POT-Creation-Date: 2012-08-13 15:38+0100\n"
+"PO-Revision-Date: 2012-07-23 20:40+0200\n"
 "Last-Translator: Bartlomiej <barwy@live.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: pl\n"
+"Language-Team: pl <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
@@ -41,9 +39,9 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"Nowa wersja jest podpisana innym kluczem niż poprzednia. Aby ją zainstalować "
-"należy najpierw usunąć tę starą. Zrób to i spróbuj ponownie. (Proszę "
-"pamiętać, że deinstalacja spowoduje usunięcie wszystkich danych "
+"Nowa wersja jest podpisana innym kluczem niż poprzednia. Aby ją "
+"zainstalować należy najpierw usunąć tę starą. Zrób to i spróbuj ponownie."
+" (Proszę pamiętać, że deinstalacja spowoduje usunięcie wszystkich danych "
 "przechowywanych przez aplikację)"
 
 msgctxt "version"
@@ -66,7 +64,7 @@ msgstr "Powiadom"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Magazyn"
+msgstr "Przechowalnia"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
@@ -102,11 +100,11 @@ msgstr "Automatycznie uaktualnij listę aplikacji z repozytorium"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Automatycznie wyszukaj repozytoria"
+msgstr "Automatycznie skanuj repozytoria"
 
 msgctxt "app_name"
 msgid "FDroid"
-msgstr "FDroid "
+msgstr "FDroid"
 
 msgctxt "about_title"
 msgid "About FDroid"
@@ -145,10 +143,10 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Nie posiadasz żadnych skonfigurowanych repozytoriów\n"
+"Nie posiadasz żadnych skonfigurowanych repozytoriów!\n"
 "\n"
-"Repozytorium jest źródłem aplikacji. By jakieś dodać, wciśnij przycisku MENU "
-"i podaj adres URL\n"
+"Repozytorium jest źródłem aplikacji. By jakieś dodać, wciśnij przycisku "
+"MENU i podaj adres URL.\n"
 "\n"
 "Adres repozytorium wygląda mniej więcej tak: http://f-droid.org/repo"
 
@@ -158,7 +156,7 @@ msgstr "Niezainstalowane"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "Aktualizuj do wersji:"
 
 msgctxt "ok"
 msgid "OK"
@@ -250,7 +248,7 @@ msgstr "Zainstalowano:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Zainstaluj"
+msgstr "Instaluj"
 
 msgctxt "uninstall"
 msgid "Uninstall"
@@ -298,7 +296,7 @@ msgstr "Ustawienia"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "IInformacje"
+msgstr "Informacje"
 
 msgctxt "menu_search"
 msgid "Search"
@@ -314,7 +312,7 @@ msgstr "Usuń repozytorium"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Zainstaluj"
+msgstr "Instaluj"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
@@ -367,7 +365,7 @@ msgstr "Anulowano pobieranie"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Antyfunkcje"
 
 msgctxt "antiads"
 msgid "Advertising"
@@ -375,15 +373,15 @@ msgstr "Reklamy"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Pokaż aplikacje nie zawierające reklam"
+msgstr "Pokaż aplikacje zawierające reklamy"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Śledzenie"
+msgstr "Namierzanie"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Pokaż aplikacje śledzące i raportujące twoje działania"
+msgstr "Pokaż aplikacje namierzające i raportujące twoje działania"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -439,8 +437,7 @@ msgstr "Niekompatybilne aplikacje"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
-"Pokaż aplikacje napisane dla nowszych wersji Androida lub innego sprzętu"
+msgstr "Pokaż aplikacje napisane dla nowszych wersji Androida lub innego sprzętu"
 
 msgctxt "rooted"
 msgid "Root"
@@ -449,3 +446,4 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Pokaż aplikacje wymagające uprawnień root"
+

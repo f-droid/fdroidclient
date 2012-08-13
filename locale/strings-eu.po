@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-04-19 09:27+0100\n"
-"PO-Revision-Date: 2012-03-14 02:47+0200\n"
+"POT-Creation-Date: 2012-08-13 15:38+0100\n"
+"PO-Revision-Date: 2012-07-20 14:14+0200\n"
 "Last-Translator: Asier <asier.iturralde@gmail.com>\n"
 "Language-Team: eu <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -236,7 +236,7 @@ msgstr "Deskargatu"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Aplikazioa eskuratzen hemendik:"
+msgstr "Aplikazioa eskuratzen hemendik"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
@@ -328,7 +328,7 @@ msgstr "Gaiak"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Iturburu Kodea"
+msgstr "Iturburu-kodea"
 
 msgctxt "menu_market"
 msgid "Market"
@@ -340,7 +340,7 @@ msgstr "Eguneratu"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Dohaintza egin"
+msgstr "Egin dohaintza"
 
 #, c-format
 msgctxt "details_installed"
@@ -365,7 +365,7 @@ msgstr "Deskarga bertan behera utzita"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Anti-Ezaugarriak"
+msgstr "Anti-ezaugarriak"
 
 msgctxt "antiads"
 msgid "Advertising"
@@ -395,7 +395,7 @@ msgstr "Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Sareko Zerbitzuak"
+msgstr "Sareko zerbitzuak"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
