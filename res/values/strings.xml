@@ -19,8 +19,8 @@
 	<string name="update_apps_list">Update app list from repositories automatically
 	</string>
 	<string name="automatic_repo_scan">Automatic repo scan</string>
-	<string name="app_name">FDroid</string>
-	<string name="about_title">About FDroid</string>
+	<string name="app_name">F-Droid</string>
+	<string name="about_title">About F-Droid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
 		GNU GPLv2
 		license.</string>
