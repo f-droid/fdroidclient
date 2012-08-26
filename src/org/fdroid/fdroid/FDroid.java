@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
  *
  * This program is free software; you can redistribute it and/or
@@ -20,6 +20,8 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 
 import org.fdroid.fdroid.R;
@@ -44,7 +46,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TabHost;
@@ -54,7 +55,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TabHost.TabSpec;
 
-public class FDroid extends TabActivity implements OnItemClickListener, OnItemSelectedListener {
+public class FDroid extends TabActivity implements OnItemClickListener,
+        OnItemSelectedListener {
 
     private String LOCAL_PATH = "/sdcard/.fdroid";
 
@@ -81,7 +83,7 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
 
     // Category list
     private ArrayAdapter<String> categories;
-    private String currentCategory = "All";
+    private String currentCategory = null;
 
     private ProgressDialog pd;
 
@@ -112,9 +114,9 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
 
         Spinner spinner = (Spinner) findViewById(R.id.category);
         categories = new ArrayAdapter<String>(this,
-                  android.R.layout.simple_spinner_item,
-                  new Vector<String>());
-        categories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                android.R.layout.simple_spinner_item, new Vector<String>());
+        categories
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(categories);
         spinner.setOnItemSelectedListener(FDroid.this);
 
@@ -194,8 +196,8 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
             TextView tv = (TextView) view.findViewById(R.id.version);
             PackageManager pm = getPackageManager();
             try {
-                PackageInfo pi = pm.getPackageInfo(
-                        getApplicationContext().getPackageName(), 0);
+                PackageInfo pi = pm.getPackageInfo(getApplicationContext()
+                        .getPackageName(), 0);
                 tv.setText(pi.versionName);
             } catch (Exception e) {
             }
@@ -328,11 +330,21 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
 
         long startTime = System.currentTimeMillis();
 
-        // Make sure we show at least "All" category even for empty DB
-        for (String s: db.getCategories()) {
+        // Populate the category list with the real categories, and the locally
+        // generated meta-categories for "All", "What's New" and "Recently
+        // Updated"...
+        String cat_all = getString(R.string.category_all);
+        String cat_whatsnew = getString(R.string.category_whatsnew);
+        String cat_recentlyupdated = getString(R.string.category_recentlyupdated);
+        categories.add(cat_all);
+        for (String s : db.getCategories()) {
             Log.d("FDroid", "s: " + s);
             categories.add(s);
         }
+        categories.add(cat_whatsnew);
+        categories.add(cat_recentlyupdated);
+        if (currentCategory == null)
+            currentCategory = cat_all;
 
         Vector<DB.App> apps = db.getApps(null, null, update, true);
         if (apps.isEmpty()) {
@@ -348,12 +360,35 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
             return;
         }
         Log.d("FDroid", "Updating lists - " + apps.size() + " apps in total"
-              + " (update took " + (System.currentTimeMillis() - startTime)
-              + " ms)");
+                + " (update took " + (System.currentTimeMillis() - startTime)
+                + " ms)");
+
+        // Calculate the cutoff date we'll use for What's New and Recently
+        // Updated...
+        Calendar recent = Calendar.getInstance();
+        recent.add(Calendar.DAY_OF_YEAR, -14);
+        Date recentDate = recent.getTime();
 
         for (DB.App app : apps) {
-            if (!"All".equals(currentCategory) && !currentCategory.equals(app.category)) {
-                continue;
+            if (currentCategory.equals(cat_all)) {
+                // Let everything through!
+            } else if (currentCategory.equals(cat_whatsnew)) {
+                if (app.added == null)
+                    continue;
+                if (app.added.compareTo(recentDate) < 0)
+                    continue;
+            } else if (currentCategory.equals(cat_recentlyupdated)) {
+                if (app.lastUpdated == null)
+                    continue;
+                // Don't include in the recently updated category if the
+                // 'update' was actually it being added.
+                if (app.lastUpdated.compareTo(app.added) == 0)
+                    continue;
+                if (app.lastUpdated.compareTo(recentDate) < 0)
+                    continue;
+            } else {
+                if (!currentCategory.equals(app.category))
+                    continue;
             }
             if (app.installedVersion == null) {
                 apps_av.addItem(app);
@@ -411,7 +446,8 @@ public class FDroid extends TabActivity implements OnItemClickListener, OnItemSe
         }
     };
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+    public void onItemSelected(AdapterView<?> parent, View view, int pos,
+            long id) {
         currentCategory = parent.getItemAtPosition(pos).toString();
         populateLists(false);
     }

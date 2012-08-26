@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010-11  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -44,6 +44,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -90,6 +91,9 @@ public class AppDetails extends ListActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+
+            java.text.DateFormat df = DateFormat.getDateFormat(mctx);
+
             View v = convertView;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -112,15 +116,15 @@ public class AppDetails extends ListActivity {
                 size.setText(getFriendlySize(apk.size));
             }
             TextView buildtype = (TextView) v.findViewById(R.id.buildtype);
-            if(apk.srcname!=null) {
+            if (apk.srcname != null) {
                 buildtype.setText("source");
-            } else { 
+            } else {
                 buildtype.setText("bin");
             }
             TextView added = (TextView) v.findViewById(R.id.added);
             if (apk.added != null && !apk.added.equals("")) {
                 added.setVisibility(View.VISIBLE);
-                added.setText(apk.added);
+                added.setText(df.format(apk.added));
             } else {
                 added.setVisibility(View.GONE);
             }
@@ -202,7 +206,7 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
-        AppDetails old = (AppDetails)getLastNonConfigurationInstance();
+        AppDetails old = (AppDetails) getLastNonConfigurationInstance();
         if (old != null) {
             copyState(old);
         } else {
@@ -258,7 +262,7 @@ public class AppDetails extends ListActivity {
     // place of reset(), so it must initialize all fields normally set
     // there.
     private void copyState(AppDetails old) {
-        ApkListAdapter oldAdapter = (ApkListAdapter)old.getListAdapter();
+        ApkListAdapter oldAdapter = (ApkListAdapter) old.getListAdapter();
         setListAdapter(new ApkListAdapter(this, oldAdapter.getItems()));
         if (old.downloadHandler != null)
             downloadHandler = new DownloadHandler(old.downloadHandler);
@@ -287,7 +291,7 @@ public class AppDetails extends ListActivity {
                         PackageManager.GET_SIGNATURES);
                 mInstalledSignature = pi.signatures[0];
                 Hasher hash = new Hasher("MD5", mInstalledSignature
-                                         .toCharsString().getBytes());
+                        .toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (NameNotFoundException e) {
                 Log.d("FDroid", "Failed to get installed signature");
@@ -342,7 +346,7 @@ public class AppDetails extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         curapk = app.apks.get(position);
         if (app.installedVersion != null
-              && app.installedVersion.equals(curapk.version)) {
+                && app.installedVersion.equals(curapk.version)) {
             removeApk(app.id);
         } else if (compatChecker.isCompatible(curapk)) {
             install();
@@ -412,23 +416,23 @@ public class AppDetails extends ListActivity {
             return true;
 
         case ISSUES:
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                    .parse(app.trackerURL)));
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(app.trackerURL)));
             return true;
 
         case SOURCE:
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                    .parse(app.sourceURL)));
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(app.sourceURL)));
             return true;
 
         case MARKET:
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                    .parse("http://market.android.com/details?id=" + app.id)));
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://market.android.com/details?id=" + app.id)));
             return true;
 
         case DONATE:
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                    .parse(app.donateURL)));
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(app.donateURL)));
             return true;
 
         }
@@ -482,18 +486,17 @@ public class AppDetails extends ListActivity {
         pd.setMax(max);
         pd.setProgress(p);
         pd.setCancelable(true);
-        pd.setOnCancelListener(
-               new DialogInterface.OnCancelListener() {
-                   public void onCancel(DialogInterface dialog) {
-                       downloadHandler.cancel();
-                   }
-               });
+        pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            public void onCancel(DialogInterface dialog) {
+                downloadHandler.cancel();
+            }
+        });
         pd.setButton(getString(R.string.cancel),
-               new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int which) {
-                       pd.cancel();
-                   }
-               });
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        pd.cancel();
+                    }
+                });
         pd.show();
         return pd;
     }
@@ -525,14 +528,14 @@ public class AppDetails extends ListActivity {
             case RUNNING:
                 if (pd == null) {
                     pd = createProgressDialog(download.remoteFile(),
-                                              download.getProgress(),
-                                              download.getMax());
+                            download.getProgress(), download.getMax());
                 } else {
                     pd.setProgress(download.getProgress());
                 }
                 break;
             case ERROR:
-                if (pd != null) pd.dismiss();
+                if (pd != null)
+                    pd.dismiss();
                 String text;
                 if (download.getErrorType() == Downloader.Error.CORRUPT)
                     text = getString(R.string.corrupt_download);
@@ -542,14 +545,15 @@ public class AppDetails extends ListActivity {
                 finished = true;
                 break;
             case DONE:
-                if (pd != null) pd.dismiss();
+                if (pd != null)
+                    pd.dismiss();
                 installApk(localFile = download.localFile());
                 finished = true;
                 break;
             case CANCELLED:
                 Toast.makeText(AppDetails.this,
-                               getString(R.string.download_cancelled),
-                               Toast.LENGTH_SHORT).show();
+                        getString(R.string.download_cancelled),
+                        Toast.LENGTH_SHORT).show();
                 finished = true;
                 break;
             }
@@ -569,7 +573,8 @@ public class AppDetails extends ListActivity {
         }
 
         public void cancel() {
-            if (download != null) download.interrupt();
+            if (download != null)
+                download.interrupt();
         }
 
         public void cleanUp() {
@@ -603,7 +608,8 @@ public class AppDetails extends ListActivity {
         // Repeatedly run updateProgress() until it's finished.
         @Override
         public void handleMessage(Message msg) {
-            if (download == null) return;
+            if (download == null)
+                return;
             boolean finished = updateProgress();
             if (finished)
                 download = null;
@@ -613,9 +619,8 @@ public class AppDetails extends ListActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
-        switch(requestCode) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
         case REQUEST_INSTALL:
             if (downloadHandler != null) {
                 downloadHandler.cleanUp();

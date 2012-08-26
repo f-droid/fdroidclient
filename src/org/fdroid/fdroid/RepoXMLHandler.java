@@ -31,6 +31,8 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.cert.Certificate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -61,6 +63,9 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private String pubkey;
     private String hashType;
+
+    // The date format used in the repo XML file.
+    private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public RepoXMLHandler(String srv, DB db) {
         mserver = srv;
@@ -141,7 +146,12 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapk.minSdkVersion = 0;
                 }
             } else if (curel.equals("added")) {
-                curapk.added = str;
+                try {
+                    curapk.added = str.length() == 0 ? null : mXMLDateFormat
+                            .parse(str);
+                } catch (ParseException e) {
+                    curapk.added = null;
+                }
             } else if (curel.equals("permissions")) {
                 curapk.permissions = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("features")) {
@@ -172,9 +182,19 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel.equals("tracker")) {
                 curapp.trackerURL = str;
             } else if (curel.equals("added")) {
-                curapp.added = str;
+                try {
+                    curapp.added = str.length() == 0 ? null : mXMLDateFormat
+                            .parse(str);
+                } catch (ParseException e) {
+                    curapp.added = null;
+                }
             } else if (curel.equals("lastupdated")) {
-                curapp.lastUpdated = str;
+                try {
+                    curapp.lastUpdated = str.length() == 0 ? null
+                            : mXMLDateFormat.parse(str);
+                } catch (ParseException e) {
+                    curapp.lastUpdated = null;
+                }
             } else if (curel.equals("marketversion")) {
                 curapp.marketVersion = str;
             } else if (curel.equals("marketvercode")) {
@@ -247,8 +267,8 @@ public class RepoXMLHandler extends DefaultHandler {
             throws MalformedURLException, IOException {
         FileOutputStream f = ctx.openFileOutput(dest, Context.MODE_PRIVATE);
 
-        BufferedInputStream getit = new BufferedInputStream(new URL(url)
-                .openStream());
+        BufferedInputStream getit = new BufferedInputStream(
+                new URL(url).openStream());
         BufferedOutputStream bout = new BufferedOutputStream(f, 1024);
         byte data[] = new byte[1024];
 
@@ -281,7 +301,8 @@ public class RepoXMLHandler extends DefaultHandler {
                         String address = repo.address + "/index.jar";
                         PackageManager pm = ctx.getPackageManager();
                         try {
-                            PackageInfo pi = pm.getPackageInfo(ctx.getPackageName(), 0);
+                            PackageInfo pi = pm.getPackageInfo(
+                                    ctx.getPackageName(), 0);
                             address += "?" + pi.versionName;
                         } catch (Exception e) {
                         }
@@ -294,8 +315,8 @@ public class RepoXMLHandler extends DefaultHandler {
                             je = (JarEntry) jar.getEntry("index.xml");
                             File efile = new File(ctx.getFilesDir(),
                                     "/tempindex.xml");
-                            InputStream in = new BufferedInputStream(jar
-                                    .getInputStream(je), 8192);
+                            InputStream in = new BufferedInputStream(
+                                    jar.getInputStream(je), 8192);
                             OutputStream out = new BufferedOutputStream(
                                     new FileOutputStream(efile), 8192);
                             byte[] buffer = new byte[8192];
@@ -352,18 +373,16 @@ public class RepoXMLHandler extends DefaultHandler {
                             db);
                     xr.setContentHandler(handler);
 
-                    InputStreamReader isr = new FileReader(new File(ctx
-                            .getFilesDir()
-                            + "/tempindex.xml"));
+                    InputStreamReader isr = new FileReader(new File(
+                            ctx.getFilesDir() + "/tempindex.xml"));
                     InputSource is = new InputSource(isr);
                     xr.parse(is);
 
                     if (handler.pubkey != null && repo.pubkey == null) {
                         // We read an unsigned index, but that indicates that
                         // a signed version is now available...
-                        Log
-                                .d("FDroid",
-                                        "Public key found - switching to signed repo for future updates");
+                        Log.d("FDroid",
+                                "Public key found - switching to signed repo for future updates");
                         repo.pubkey = handler.pubkey;
                         db.updateRepoByAddress(repo);
                     }

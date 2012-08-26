@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010-11  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
  *
  * This program is free software; you can redistribute it and/or
@@ -19,6 +19,8 @@
 
 package org.fdroid.fdroid;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -79,8 +81,8 @@ public class DB {
             requirements = null;
             hasUpdates = false;
             updated = false;
-            added = "";
-            lastUpdated = "";
+            added = null;
+            lastUpdated = null;
             apks = new Vector<Apk>();
         }
 
@@ -100,8 +102,8 @@ public class DB {
         public int installedVerCode;
         public String marketVersion;
         public int marketVercode;
-        public String added;
-        public String lastUpdated;
+        public Date added;
+        public Date lastUpdated;
 
         // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
@@ -170,7 +172,7 @@ public class DB {
             updated = false;
             size = 0;
             apkSource = null;
-            added = "";
+            added = null;
         }
 
         public String id;
@@ -181,7 +183,7 @@ public class DB {
         public String hash;
         public String hashType;
         public int minSdkVersion; // 0 if unknown
-        public String added;
+        public Date added;
         public CommaSeparatedList permissions; // null if empty or unknown
         public CommaSeparatedList features; // null if empty or unknown
 
@@ -306,7 +308,7 @@ public class DB {
     //
     private static final String[][] DB_UPGRADES = {
 
-    // Version 2...
+            // Version 2...
             { "alter table " + TABLE_APP + " add marketVersion text",
                     "alter table " + TABLE_APP + " add marketVercode integer" },
 
@@ -348,8 +350,8 @@ public class DB {
 
             // Version 14...
             { "alter table " + TABLE_APK + " add added string",
-                "alter table " + TABLE_APP + " add added string",
-                "alter table " + TABLE_APP + " add lastUpdated string"} };
+                    "alter table " + TABLE_APP + " add added string",
+                    "alter table " + TABLE_APP + " add lastUpdated string" } };
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -364,10 +366,10 @@ public class DB {
             db.execSQL(CREATE_TABLE_APK);
             onUpgrade(db, 1, DB_UPGRADES.length + 1);
             ContentValues values = new ContentValues();
-            values.put("address", mContext
-                    .getString(R.string.default_repo_address));
-            values.put("pubkey", mContext
-                    .getString(R.string.default_repo_pubkey));
+            values.put("address",
+                    mContext.getString(R.string.default_repo_address));
+            values.put("pubkey",
+                    mContext.getString(R.string.default_repo_pubkey));
             values.put("inuse", 1);
             values.put("priority", 10);
             db.insert(TABLE_REPO, null, values);
@@ -389,6 +391,10 @@ public class DB {
     private PackageManager mPm;
     private Context mContext;
     private Apk.CompatibilityChecker compatChecker;
+
+    // The date format used for storing dates (e.g. lastupdated, added) in the
+    // database.
+    private SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public DB(Context ctx) {
 
@@ -425,8 +431,8 @@ public class DB {
             // Also try and delete the old one, from versions 0.13 and earlier.
             ctx.deleteDatabase("fdroid_db");
         } catch (Exception ex) {
-            Log.e("FDroid", "Exception in DB.delete:\n"
-                    + Log.getStackTraceString(ex));
+            Log.e("FDroid",
+                    "Exception in DB.delete:\n" + Log.getStackTraceString(ex));
         }
     }
 
@@ -443,7 +449,6 @@ public class DB {
 
     public Vector<String> getCategories() {
         Vector<String> result = new Vector<String>();
-        result.add("All");
         Cursor c = null;
         try {
             c = db.rawQuery("select distinct category from " + TABLE_APP
@@ -459,8 +464,9 @@ public class DB {
                 c.moveToNext();
             }
         } catch (Exception e) {
-            Log.e("FDroid", "Exception during database reading:\n"
-                    + Log.getStackTraceString(e));
+            Log.e("FDroid",
+                    "Exception during database reading:\n"
+                            + Log.getStackTraceString(e));
         } finally {
             if (c != null) {
                 c.close();
@@ -561,10 +567,13 @@ public class DB {
                             .getColumnIndex("marketVersion"));
                     app.marketVercode = c.getInt(c
                             .getColumnIndex("marketVercode"));
-                    app.added = c.getString(c
-                            .getColumnIndex("added"));
-                    app.lastUpdated = c.getString(c
+                    String sAdded = c.getString(c.getColumnIndex("added"));
+                    app.added = sAdded.length() == 0 ? null : mDateFormat
+                            .parse(sAdded);
+                    String sLastUpdated = c.getString(c
                             .getColumnIndex("lastUpdated"));
+                    app.lastUpdated = sLastUpdated.length() == 0 ? null
+                            : mDateFormat.parse(sLastUpdated);
                     app.hasUpdates = false;
 
                     c2 = db.rawQuery("select * from " + TABLE_APK
@@ -592,8 +601,10 @@ public class DB {
                                 .getColumnIndex("apkSource"));
                         apk.minSdkVersion = c2.getInt(c2
                                 .getColumnIndex("minSdkVersion"));
-                        apk.added = c2.getString(c2
+                        String sApkAdded = c2.getString(c2
                                 .getColumnIndex("added"));
+                        apk.added = sApkAdded.length() == 0 ? null
+                                : mDateFormat.parse(sApkAdded);
                         apk.permissions = CommaSeparatedList.make(c2
                                 .getString(c2.getColumnIndex("permissions")));
                         apk.features = CommaSeparatedList.make(c2.getString(c2
@@ -619,8 +630,9 @@ public class DB {
             }
 
         } catch (Exception e) {
-            Log.e("FDroid", "Exception during database reading:\n"
-                    + Log.getStackTraceString(e));
+            Log.e("FDroid",
+                    "Exception during database reading:\n"
+                            + Log.getStackTraceString(e));
         } finally {
             if (c != null) {
                 c.close();
@@ -636,8 +648,9 @@ public class DB {
                 getUpdates(result);
                 db.setTransactionSuccessful();
             } catch (Exception e) {
-                Log.e("FDroid", "Exception while getting updates: "
-                        + Log.getStackTraceString(e));
+                Log.e("FDroid",
+                        "Exception while getting updates: "
+                                + Log.getStackTraceString(e));
             } finally {
                 db.endTransaction();
             }
@@ -860,8 +873,8 @@ public class DB {
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
         values.put("donateURL", upapp.donateURL);
-        values.put("added", upapp.added);
-        values.put("lastUpdated", upapp.lastUpdated);
+        values.put("added", mDateFormat.format(upapp.added));
+        values.put("lastUpdated", mDateFormat.format(upapp.lastUpdated));
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
@@ -894,7 +907,7 @@ public class DB {
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
         values.put("minSdkVersion", upapk.minSdkVersion);
-        values.put("added", upapk.added);
+        values.put("added", mDateFormat.format(upapk.added));
         values.put("permissions", CommaSeparatedList.str(upapk.permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {
