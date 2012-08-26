@@ -568,11 +568,11 @@ public class DB {
                     app.marketVercode = c.getInt(c
                             .getColumnIndex("marketVercode"));
                     String sAdded = c.getString(c.getColumnIndex("added"));
-                    app.added = sAdded.length() == 0 ? null : mDateFormat
+                    app.added = (sAdded == null || sAdded.length() == 0) ? null : mDateFormat
                             .parse(sAdded);
                     String sLastUpdated = c.getString(c
                             .getColumnIndex("lastUpdated"));
-                    app.lastUpdated = sLastUpdated.length() == 0 ? null
+                    app.lastUpdated = (sLastUpdated == null || sLastUpdated.length() == 0) ? null
                             : mDateFormat.parse(sLastUpdated);
                     app.hasUpdates = false;
 
@@ -603,7 +603,7 @@ public class DB {
                                 .getColumnIndex("minSdkVersion"));
                         String sApkAdded = c2.getString(c2
                                 .getColumnIndex("added"));
-                        apk.added = sApkAdded.length() == 0 ? null
+                        apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
                                 : mDateFormat.parse(sApkAdded);
                         apk.permissions = CommaSeparatedList.make(c2
                                 .getString(c2.getColumnIndex("permissions")));
