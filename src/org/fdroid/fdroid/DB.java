@@ -873,8 +873,8 @@ public class DB {
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
         values.put("donateURL", upapp.donateURL);
-        values.put("added", mDateFormat.format(upapp.added));
-        values.put("lastUpdated", mDateFormat.format(upapp.lastUpdated));
+        values.put("added", upapp.added == null ? "" : mDateFormat.format(upapp.added));
+        values.put("lastUpdated", upapp.added == null ? "" : mDateFormat.format(upapp.lastUpdated));
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
@@ -907,7 +907,7 @@ public class DB {
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
         values.put("minSdkVersion", upapk.minSdkVersion);
-        values.put("added", mDateFormat.format(upapk.added));
+        values.put("added", upapk.added == null ? "" : mDateFormat.format(upapk.added));
         values.put("permissions", CommaSeparatedList.str(upapk.permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {
