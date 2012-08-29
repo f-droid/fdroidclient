@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">%1$d applications trouvées contenant \'%2$s\':</string>
-  <string name="searchres_oneapp">Trouvé %1$d application contenant \'%2$s\':</string>
+  <string name="searchres_oneapp">Une application trouvée contenant \'%s\':</string>
   <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller l\'application écrasera les données enregistrées par l\'application).</string>
   <string name="version">Version</string>
