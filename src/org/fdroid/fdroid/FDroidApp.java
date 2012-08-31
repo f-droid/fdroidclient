@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -22,10 +22,5 @@ import android.app.Application;
 
 public class FDroidApp extends Application {
 
-    // Keeps track of when we are in one of our activities where we
-    // don't want a database update to run. Incremented when entering
-    // one, and decremented when leaving, so if it's 0 it ought to be
-    // ok!
-    public int inActivity = 0;
 
 }

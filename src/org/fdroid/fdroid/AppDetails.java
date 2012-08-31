@@ -200,7 +200,6 @@ public class AppDetails extends ListActivity {
         db = new DB(this);
         compatChecker = db.getCompatibilityChecker();
         mPm = getPackageManager();
-        ((FDroidApp) getApplication()).inActivity++;
         // Get the preferences we're going to use in this Activity...
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
@@ -238,7 +237,6 @@ public class AppDetails extends ListActivity {
     protected void onStop() {
         db.close();
         db = null;
-        ((FDroidApp) getApplication()).inActivity--;
         super.onStop();
     }
 

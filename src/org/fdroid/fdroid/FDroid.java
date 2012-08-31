@@ -31,6 +31,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -39,6 +40,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.ResultReceiver;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -135,7 +137,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     @Override
     protected void onStart() {
         super.onStart();
-        ((FDroidApp) getApplication()).inActivity++;
         db = new DB(this);
         triedEmptyUpdate = false;
         populateLists(true);
@@ -144,7 +145,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     @Override
     protected void onStop() {
         db.close();
-        ((FDroidApp) getApplication()).inActivity--;
         super.onStop();
     }
 
@@ -415,26 +415,15 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
     }
 
-    private void updateRepos() {
-        pd = ProgressDialog.show(this, getString(R.string.process_wait_title),
-                getString(R.string.process_update_msg), true);
-        pd.setIcon(android.R.drawable.ic_dialog_info);
-
-        new Thread() {
-            public void run() {
-                boolean success = RepoXMLHandler.doUpdates(FDroid.this, db);
-                update_handler.sendEmptyMessage(success ? 0 : 1);
-            }
-        }.start();
-    }
-
-    /*
-     * Handlers for thread functions that need to access GUI
-     */
-    private Handler update_handler = new Handler() {
+    // For receiving results from the UpdateService when we've told it to
+    // update in response to a user request.
+    private class UpdateReceiver extends ResultReceiver {
+        public UpdateReceiver(Handler handler) {
+            super(handler);
+        }
         @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 1) {
+        protected void onReceiveResult (int resultCode, Bundle resultData) {
+            if (resultCode == 1) {
                 Toast.makeText(FDroid.this,
                         getString(R.string.connection_error_msg),
                         Toast.LENGTH_LONG).show();
@@ -444,7 +433,22 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             if (pd.isShowing())
                 pd.dismiss();
         }
-    };
+    }
+    private UpdateReceiver mUpdateReceiver;
+
+    // Force a repo update now. A progress dialog is shown and the UpdateService
+    // is told to do the update, which will result in the database changing. The
+    // UpdateReceiver class should get told when this is finished.
+    private void updateRepos() {
+        pd = ProgressDialog.show(this, getString(R.string.process_wait_title),
+                getString(R.string.process_update_msg), true, true);
+        pd.setIcon(android.R.drawable.ic_dialog_info);
+
+        Intent intent = new Intent(this, UpdateService.class);
+        mUpdateReceiver = new UpdateReceiver(new Handler());
+        intent.putExtra("receiver", mUpdateReceiver);
+        startService(intent);
+    }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {

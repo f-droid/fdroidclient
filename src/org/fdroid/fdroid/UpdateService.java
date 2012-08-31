@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,6 +19,7 @@
 package org.fdroid.fdroid;
 
 import android.app.AlarmManager;
+import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -26,12 +27,19 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-public class UpdateService extends Service {
+public class UpdateService extends IntentService {
+
+    public UpdateService() {
+        super("UpdateService");
+    }
+
 
     // Schedule (or cancel schedule for) this service, according to the
     // current preferences. Should be called a) at boot, or b) if the preference
@@ -55,103 +63,89 @@ public class UpdateService extends Service {
                     SystemClock.elapsedRealtime() + 5000,
                     AlarmManager.INTERVAL_HOUR, pending);
         }
-
     }
 
-    // For API levels <5
-    @Override
-    public void onStart(Intent intent, int startId) {
-        handleCommand();
-    }
 
-    // For API levels >=5
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        handleCommand();
-        return START_REDELIVER_INTENT;
-    }
+    protected void onHandleIntent(Intent intent) {
 
-    private void handleCommand() {
+        // We might be doing a scheduled run, or we might have been launched by
+        // the app in response to a user's request. If we get this receiver, it's
+        // the latter...
+        ResultReceiver receiver = intent.getParcelableExtra("receiver");
+        
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
 
-        new Thread() {
-            public void run() {
+        // See if it's time to actually do anything yet...
+        if(receiver == null) {
+            long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
+            String sint = prefs.getString("updateInterval", "0");
+            int interval = Integer.parseInt(sint);
+            if (interval == 0)
+                return;
+            if (lastUpdate + (interval * 60 * 60) > System
+                    .currentTimeMillis())
+                return;
+        }
 
-                // If we're in one of our list activities, we don't want
-                // to run an update because the database will be out of
-                // sync with the display.
-                if (((FDroidApp) getApplication()).inActivity != 0)
-                    return;
+        // Do the update...
+        DB db = null;
+        try {
+            db = new DB(getBaseContext());
+            boolean notify = prefs.getBoolean("updateNotify", false);
 
-                // See if it's time to actually do anything yet...
-                SharedPreferences prefs = PreferenceManager
-                        .getDefaultSharedPreferences(getBaseContext());
-                long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
-                String sint = prefs.getString("updateInterval", "0");
-                int interval = Integer.parseInt(sint);
-                if (interval == 0)
-                    return;
-                if (lastUpdate + (interval * 60 * 60) > System
-                        .currentTimeMillis())
-                    return;
+            // Get the number of updates available before we
+            // start, so we can notify if there are new ones.
+            // (But avoid doing it if the user doesn't want
+            // notifications, since it may be time consuming)
+            int prevUpdates = 0;
+            if (notify)
+                prevUpdates = db.getNumUpdates();
 
-                // Do the update...
-                DB db = null;
-                try {
-                    db = new DB(getBaseContext());
-                    boolean notify = prefs.getBoolean("updateNotify", false);
+            boolean success = RepoXMLHandler.doUpdates(
+                    getBaseContext(), db);
 
-                    // Get the number of updates available before we
-                    // start, so we can notify if there are new ones.
-                    // (But avoid doing it if the user doesn't want
-                    // notifications, since it may be time consuming)
-                    int prevUpdates = 0;
-                    if (notify)
-                        prevUpdates = db.getNumUpdates();
-
-                    boolean success = RepoXMLHandler.doUpdates(
-                            getBaseContext(), db);
-
-                    if (success && notify) {
-                        int newUpdates = db.getNumUpdates();
-                        Log.d("FDroid", "Updates before:" + prevUpdates + ", after: " +newUpdates);                        
-                        if (newUpdates > prevUpdates) {
-                            NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                            Notification notification = new Notification(
-                                    R.drawable.icon,
-                                    "FDroid Updates Available", System
-                                            .currentTimeMillis());
-                            Context context = getApplicationContext();
-                            CharSequence contentTitle = "FDroid";
-                            CharSequence contentText = "Updates are available.";
-                            Intent notificationIntent = new Intent(
-                                    UpdateService.this, FDroid.class);
-                            PendingIntent contentIntent = PendingIntent
-                                    .getActivity(UpdateService.this, 0,
-                                            notificationIntent, 0);
-                            notification.setLatestEventInfo(context,
-                                    contentTitle, contentText, contentIntent);
-                            notification.flags |= Notification.FLAG_AUTO_CANCEL;
-                            n.notify(1, notification);
-                        }
-                    }
-
-                } catch (Exception e) {
-                    Log.e("FDroid", "Exception during handleCommand():\n"
-                            + Log.getStackTraceString(e));
-                } finally {
-                    if (db != null)
-                        db.close();
-                    stopSelf();
+            if (success && notify) {
+                int newUpdates = db.getNumUpdates();
+                Log.d("FDroid", "Updates before:" + prevUpdates + ", after: " +newUpdates);                        
+                if (newUpdates > prevUpdates) {
+                    NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    Notification notification = new Notification(
+                            R.drawable.icon,
+                            "FDroid Updates Available", System
+                                    .currentTimeMillis());
+                    Context context = getApplicationContext();
+                    CharSequence contentTitle = "FDroid";
+                    CharSequence contentText = "Updates are available.";
+                    Intent notificationIntent = new Intent(
+                            UpdateService.this, FDroid.class);
+                    PendingIntent contentIntent = PendingIntent
+                            .getActivity(UpdateService.this, 0,
+                                    notificationIntent, 0);
+                    notification.setLatestEventInfo(context,
+                            contentTitle, contentText, contentIntent);
+                    notification.flags |= Notification.FLAG_AUTO_CANCEL;
+                    n.notify(1, notification);
                 }
-
             }
-        }.start();
+            
+            if(receiver != null) {
+                Bundle resultData = new Bundle();
+                receiver.send(0, resultData);
+            }
 
-    }
+        } catch (Exception e) {
+            Log.e("FDroid", "Exception during handleCommand():\n"
+                    + Log.getStackTraceString(e));
+            if(receiver != null) {
+                Bundle resultData = new Bundle();
+                receiver.send(1, resultData);
+            }
+        } finally {
+            if (db != null)
+                db.close();
+        }
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
     }
 
 }
