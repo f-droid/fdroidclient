@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.fdroid.fdroid" android:versionCode="22"
 	android:versionName="0.31" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="15" />
+	<uses-sdk android:minSdkVersion="3" android:targetSdkVersion="15" />
 	<supports-screens
 		android:anyDensity="true"
 		android:largeScreens="true"
