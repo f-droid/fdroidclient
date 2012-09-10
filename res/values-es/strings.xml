@@ -18,8 +18,8 @@
   <string name="notify_updates_available">Notificarme cuando haya actualizaciones disponibles</string>
   <string name="update_apps_list">Actualizar la lista de programas desde los repositorios automáticamente</string>
   <string name="automatic_repo_scan">Escanear los repositorios automáticamente</string>
-  <string name="app_name">FDroid</string>
-  <string name="about_title">Acerca de FDroid</string>
+  <string name="app_name">F-Droid</string>
+  <string name="about_title">Acerca de F-Droid</string>
   <string name="about_desc">Basado originalmente en Aptoide.\nPublicado bajo la licencia GNU GPLv2.</string>
   <string name="about_site">Página web:</string>
   <string name="about_mail">Correo electrónico:</string>
@@ -98,4 +98,7 @@
   <string name="showincompat_long">Muestra los programas escritos para versiones de Android más modernas o con un hardware diferente</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Muestras los programas que requieren privilegios de root</string>
+  <string name="category_all">Todos</string>
+  <string name="category_whatsnew">Novedades</string>
+  <string name="category_recentlyupdated">Recientemente actualizados</string>
 </resources>

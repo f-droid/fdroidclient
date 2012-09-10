@@ -98,4 +98,5 @@
   <string name="showincompat_long">Pokaż aplikacje napisane dla nowszych wersji Androida lub innego sprzętu</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Pokaż aplikacje wymagające uprawnień root</string>
+  <string name="category_all">Instaluj</string>
 </resources>

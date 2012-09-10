@@ -98,4 +98,5 @@
   <string name="showincompat_long">Mostra le applicazioni scritte per una versione di Android più recente o hardware differente</string>
   <string name="rooted">Amministratore</string>
   <string name="rooted_long">Mostra le applicazioni che richiedono i privilegi di amministrazione</string>
+  <string name="category_all">Installa</string>
 </resources>

@@ -98,4 +98,5 @@
   <string name="showincompat_long">Başka Android sürümleri veya cihazlar için geliştirilen uygulamaları göster</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Root yetkilerine gerek duyan uygulamaları göster</string>
+  <string name="category_all">Kur</string>
 </resources>

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-08-13 15:38+0100\n"
+"POT-Creation-Date: 2012-09-10 22:52+0100\n"
 "PO-Revision-Date: 2011-03-10 19:06+0200\n"
 "Last-Translator: Henrik <tunedal@gmail.com>\n"
 "Language-Team: sv <LL@li.org>\n"
@@ -100,12 +100,14 @@ msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Automatisk förrådsavsökning"
 
+#, fuzzy
 msgctxt "app_name"
-msgid "FDroid"
+msgid "F-Droid"
 msgstr "FDroid"
 
+#, fuzzy
 msgctxt "about_title"
-msgid "About FDroid"
+msgid "About F-Droid"
 msgstr "Om FDroid"
 
 msgctxt "about_desc"
@@ -447,4 +449,17 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Visa program som kräver root-rättigheter"
+
+#, fuzzy
+msgctxt "category_all"
+msgid "All"
+msgstr "Installera"
+
+msgctxt "category_whatsnew"
+msgid "What's New"
+msgstr ""
+
+msgctxt "category_recentlyupdated"
+msgid "Recently Updated"
+msgstr ""
 

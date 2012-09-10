@@ -98,4 +98,5 @@
   <string name="showincompat_long">Показать приложения для новых версий Андроида и/или другого железа</string>
   <string name="rooted">Суперпользователь</string>
   <string name="rooted_long">Показывать приложения требующие root привелегий</string>
+  <string name="category_all">Установить</string>
 </resources>

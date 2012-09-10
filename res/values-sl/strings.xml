@@ -98,4 +98,5 @@
   <string name="showincompat_long">Pokaži aplikacije napisane za novejše različice Androida ali za različno strojno opremo</string>
   <string name="rooted">Skrbnik</string>
   <string name="rooted_long">Pokaži aplikacije, ki zahtevajo skrbniške pravice</string>
+  <string name="category_all">Namesti</string>
 </resources>

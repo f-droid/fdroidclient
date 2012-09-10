@@ -98,4 +98,5 @@
   <string name="showincompat_long">Laat apps zien die gemaakt zij voor nieuwe Android-versie of andere hardware</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Laat apps zien die root-privileges vereisen</string>
+  <string name="category_all">Installeren</string>
 </resources>

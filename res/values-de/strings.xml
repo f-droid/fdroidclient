@@ -96,4 +96,5 @@
   <string name="showincompat">Inkompatible Apps</string>
   <string name="showincompat_long">Zeige Apps für neuere Android-Versionen oder andere Hardware</string>
   <string name="rooted">Erfordert Root-Zugriff</string>
+  <string name="category_all">Installieren</string>
 </resources>

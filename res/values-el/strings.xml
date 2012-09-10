@@ -18,8 +18,8 @@
   <string name="notify_updates_available">Ειδοποίηση για την ύπαρξη διαθέσιμων ενημερώσεων</string>
   <string name="update_apps_list">Αυτόματη ενημέρωση της λίστας εφαρμογών από το αποθετήριο</string>
   <string name="automatic_repo_scan">Αυτόματη Σάρωση Αποθετηρίου</string>
-  <string name="app_name">FDroid</string>
-  <string name="about_title">Σχετικά με FDroid</string>
+  <string name="app_name">F-Droid</string>
+  <string name="about_title">Σχετικά με το F-Droid</string>
   <string name="about_desc">Αρχικά, βασιζόταν στο Aptoide.\nΚυκλοφόρεί κάτω από την άδεια GNU GPLv2.</string>
   <string name="about_site">Ιστοσελίδα:</string>
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
@@ -86,8 +86,8 @@
   <string name="antinonfreeadlong">Εμφάνιση εφαρμογών που προωθούν μη δωρεάν πρόσθετα</string>
   <string name="antinonfreenet">Υπηρεσίες Δικτύου</string>
   <string name="antinonfreenetlong">Εμφάνιση εφαρμογών που προωθούν μη δωρεάν υπηρεσίες δικτύου</string>
-  <string name="antinonfreedep">Προτιμήσεις</string>
-  <string name="antinonfreedeplong">Εμφάνιση εφαρμογών που προωθούν μη δωρεάν πρόσθετα</string>
+  <string name="antinonfreedep">Eξαρτήσεις</string>
+  <string name="antinonfreedeplong">Εμφάνιση εφαρμογών που προωθούν μη δωρεάν εφαρμογές</string>
   <string name="expert">Για Προχωρημένους</string>
   <string name="expert_mode">Ενεργοποίηση λειτουργίας για προχωρημένους</string>
   <string name="search_hint">Αναζήτηση εφαρμογών</string>
@@ -98,4 +98,6 @@
   <string name="showincompat_long">Εμφάνιση εφαρμογών που γράφτηκαν για νεότερες εκδόσεις Android ή για διαφορετικό υλικό</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Εμφάνιση εφαρμογών που απαιτούν δικαιώματα root</string>
+  <string name="category_all">Εγκατάσταση</string>
+  <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
 </resources>

@@ -98,4 +98,5 @@
   <string name="showincompat_long">Erakutsi Androiden bertsio berriagoentzat edo hardware desberdinarentzat idatzitako aplikazioak</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Erakutsi root baimenak behar dituzten aplikazioak</string>
+  <string name="category_all">Instalatu</string>
 </resources>

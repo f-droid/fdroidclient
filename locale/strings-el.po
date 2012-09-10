@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-08-13 15:38+0100\n"
-"PO-Revision-Date: 2011-10-07 17:44+0200\n"
-"Last-Translator: g0d4 <giorgoskolokotronis@gmail.com>\n"
+"POT-Creation-Date: 2012-09-10 22:52+0100\n"
+"PO-Revision-Date: 2012-09-05 23:18+0200\n"
+"Last-Translator: dpdt1 <dpdt1@espiv.net>\n"
 "Language-Team: el <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -103,12 +103,12 @@ msgid "Automatic repo scan"
 msgstr "Αυτόματη Σάρωση Αποθετηρίου"
 
 msgctxt "app_name"
-msgid "FDroid"
-msgstr "FDroid"
+msgid "F-Droid"
+msgstr "F-Droid"
 
 msgctxt "about_title"
-msgid "About FDroid"
-msgstr "Σχετικά με FDroid"
+msgid "About F-Droid"
+msgstr "Σχετικά με το F-Droid"
 
 msgctxt "about_desc"
 msgid ""
@@ -349,7 +349,6 @@ msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Εγκατεστημένη Έκδοση: %s"
 
-#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Δεν είναι εγκατεστημένο"
@@ -402,15 +401,13 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν υπηρεσίες δικτύου"
 
-#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Προτιμήσεις"
+msgstr "Eξαρτήσεις"
 
-#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν πρόσθετα"
+msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν εφαρμογές"
 
 msgctxt "expert"
 msgid "Expert"
@@ -453,4 +450,17 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Εμφάνιση εφαρμογών που απαιτούν δικαιώματα root"
+
+#, fuzzy
+msgctxt "category_all"
+msgid "All"
+msgstr "Εγκατάσταση"
+
+msgctxt "category_whatsnew"
+msgid "What's New"
+msgstr ""
+
+msgctxt "category_recentlyupdated"
+msgid "Recently Updated"
+msgstr "Πρόσφατα Ενημερωμένες"
 

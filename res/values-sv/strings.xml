@@ -98,4 +98,5 @@
   <string name="showincompat_long">Visa program skrivna för nyare Android-versioner eller annan hårdvara</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Visa program som kräver root-rättigheter</string>
+  <string name="category_all">Installera</string>
 </resources>

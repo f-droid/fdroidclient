@@ -98,4 +98,5 @@
   <string name="showincompat_long">Mostra les aplicacions escrites per a versions posteriors d\'Android o per a maquinari diferent</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Mostra aplicacions que necessiten privilegis de roor</string>
+  <string name="category_all">Instal·la</string>
 </resources>

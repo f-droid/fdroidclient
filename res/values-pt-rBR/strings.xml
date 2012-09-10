@@ -81,4 +81,5 @@
   <string name="expert">Especialista</string>
   <string name="expert_mode">Ativar modo expert</string>
   <string name="search_hint">Pesquisar aplicações</string>
+  <string name="category_all">Instalar</string>
 </resources>

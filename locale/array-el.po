@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-08-13 15:38+0100\n"
-"PO-Revision-Date: 2012-01-10 16:43+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-09-10 22:52+0100\n"
+"PO-Revision-Date: 2012-08-29 21:56+0200\n"
+"Last-Translator: g0d4 <giorgoskolokotronis@gmail.com>\n"
 "Language-Team: el <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -20,33 +19,33 @@ msgstr ""
 
 msgctxt "updateIntervalNames:0"
 msgid "Never"
-msgstr ""
+msgstr "Ποτέ"
 
 msgctxt "updateIntervalNames:1"
 msgid "Hourly"
-msgstr ""
+msgstr "Ωριαία"
 
 msgctxt "updateIntervalNames:2"
 msgid "Every 4 Hours"
-msgstr ""
+msgstr "Κάθε 4 ώρες"
 
 msgctxt "updateIntervalNames:3"
 msgid "Every 12 Hours"
-msgstr ""
+msgstr "Κάθε 12 ώρες"
 
 msgctxt "updateIntervalNames:4"
 msgid "Daily"
-msgstr ""
+msgstr "Καθημερινά"
 
 msgctxt "dbSyncModeNames:0"
 msgid "Off (unsafe)"
-msgstr ""
+msgstr "Απενεργοποίηση (επισφαλής)"
 
 msgctxt "dbSyncModeNames:1"
 msgid "Normal"
-msgstr ""
+msgstr "Κανονικό"
 
 msgctxt "dbSyncModeNames:2"
 msgid "Full"
-msgstr ""
+msgstr "Ολόκληρο"
 
