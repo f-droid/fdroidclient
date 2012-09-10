@@ -89,7 +89,7 @@ public class UpdateService extends IntentService {
         // Do the update...
         DB db = null;
         try {
-            db = new DB(getBaseContext());
+            db = DB.getDB();
             boolean notify = prefs.getBoolean("updateNotify", false);
 
             // Get the number of updates available before we
@@ -141,7 +141,7 @@ public class UpdateService extends IntentService {
             }
         } finally {
             if (db != null)
-                db.close();
+                DB.releaseDB();
         }
 
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2011-12  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -67,8 +67,13 @@ public class SearchResults extends ListActivity {
     }
 
     private void updateView() {
-        DB db = new DB(this);
-        Vector<DB.App> apps = db.getApps(null, mQuery, false, true);
+        Vector<DB.App> apps;
+        try {
+            DB db = DB.getDB();
+            apps = db.getApps(null, mQuery, false, true);
+        } finally {
+            DB.releaseDB();
+        }
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
         if(apps.size()==0)
@@ -86,7 +91,6 @@ public class SearchResults extends ListActivity {
         }
         applist.notifyDataSetChanged();
         setListAdapter(applist);
-        db.close();
         
     }
     

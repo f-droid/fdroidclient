@@ -27,6 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.Semaphore;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -43,6 +44,31 @@ import android.text.TextUtils.SimpleStringSplitter;
 import android.util.Log;
 
 public class DB {
+
+    private static Semaphore dbSync = new Semaphore(1, true);
+    static DB dbInstance = null;
+
+    // Initialise the database. Called once when the application starts up.
+    static void initDB(Context ctx) {
+        dbInstance = new DB(ctx);
+    }
+    
+    // Get access to the database. Must be called before any database activity,
+    // and releaseDB must be called subsequently. Returns null in the event of
+    // failure.
+    static DB getDB() {
+        try {
+            dbSync.acquire();
+            return dbInstance;
+        } catch (InterruptedException e) {
+            return null;
+        }
+    }
+
+    // Release database access lock acquired via getDB().
+    static void releaseDB() {
+        dbSync.release();
+    }
 
     private static final String DATABASE_NAME = "fdroid";
 
@@ -131,7 +157,7 @@ public class DB {
         // To skip compatibility checks, pass null as the checker.
         public Apk getCurrentVersion(DB.Apk.CompatibilityChecker checker) {
 
-            // Try and return the version that's in Google's market first...
+            // Try and return the real current version first...
             if (marketVersion != null && marketVercode > 0) {
                 for (Apk apk : apks) {
                     if (apk.vercode == marketVercode
@@ -140,7 +166,7 @@ public class DB {
                 }
             }
 
-            // If we don't know the market version, or we don't have it, we
+            // If we don't know the current version, or we don't have it, we
             // return the most recent compatible version we have...
             int latestcode = -1;
             Apk latestapk = null;
@@ -396,7 +422,7 @@ public class DB {
     // database.
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public DB(Context ctx) {
+    private DB(Context ctx) {
 
         mContext = ctx;
         DBHelper h = new DBHelper(ctx);
@@ -568,12 +594,13 @@ public class DB {
                     app.marketVercode = c.getInt(c
                             .getColumnIndex("marketVercode"));
                     String sAdded = c.getString(c.getColumnIndex("added"));
-                    app.added = (sAdded == null || sAdded.length() == 0) ? null : mDateFormat
-                            .parse(sAdded);
+                    app.added = (sAdded == null || sAdded.length() == 0) ? null
+                            : mDateFormat.parse(sAdded);
                     String sLastUpdated = c.getString(c
                             .getColumnIndex("lastUpdated"));
-                    app.lastUpdated = (sLastUpdated == null || sLastUpdated.length() == 0) ? null
-                            : mDateFormat.parse(sLastUpdated);
+                    app.lastUpdated = (sLastUpdated == null || sLastUpdated
+                            .length() == 0) ? null : mDateFormat
+                            .parse(sLastUpdated);
                     app.hasUpdates = false;
 
                     c2 = db.rawQuery("select * from " + TABLE_APK
@@ -873,8 +900,12 @@ public class DB {
         values.put("trackerURL", upapp.trackerURL);
         values.put("sourceURL", upapp.sourceURL);
         values.put("donateURL", upapp.donateURL);
-        values.put("added", upapp.added == null ? "" : mDateFormat.format(upapp.added));
-        values.put("lastUpdated", upapp.added == null ? "" : mDateFormat.format(upapp.lastUpdated));
+        values.put("added",
+                upapp.added == null ? "" : mDateFormat.format(upapp.added));
+        values.put(
+                "lastUpdated",
+                upapp.added == null ? "" : mDateFormat
+                        .format(upapp.lastUpdated));
         values.put("marketVersion", upapp.marketVersion);
         values.put("marketVercode", upapp.marketVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
@@ -907,7 +938,8 @@ public class DB {
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
         values.put("minSdkVersion", upapk.minSdkVersion);
-        values.put("added", upapk.added == null ? "" : mDateFormat.format(upapk.added));
+        values.put("added",
+                upapk.added == null ? "" : mDateFormat.format(upapk.added));
         values.put("permissions", CommaSeparatedList.str(upapk.permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {

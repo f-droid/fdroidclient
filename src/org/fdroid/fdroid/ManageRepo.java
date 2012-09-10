@@ -1,6 +1,6 @@
 /*
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -44,8 +44,6 @@ import android.widget.SimpleAdapter;
 
 public class ManageRepo extends ListActivity {
 
-    private DB db = null;
-
     private final int ADD_REPO = 1;
     private final int REM_REPO = 2;
 
@@ -59,8 +57,6 @@ public class ManageRepo extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.repolist);
 
-        db = new DB(this);
-
     }
 
     @Override
@@ -71,7 +67,12 @@ public class ManageRepo extends ListActivity {
     }
 
     private void redraw() {
-        repos = db.getRepos();
+        try {
+            DB db = DB.getDB();
+            repos = db.getRepos();
+        } finally {
+            DB.releaseDB();
+        }
 
         List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
         Map<String, Object> server_line;
@@ -91,22 +92,22 @@ public class ManageRepo extends ListActivity {
                     byte[] fingerprint = digest.digest();
                     Formatter formatter = new Formatter(new StringBuilder());
                     formatter.format("%02X", fingerprint[0]);
-                    for (int i=1; i < fingerprint.length; i++) {
+                    for (int i = 1; i < fingerprint.length; i++) {
                         formatter.format(i % 5 == 0 ? " %02X" : ":%02X",
-                                         fingerprint[i]);
+                                fingerprint[i]);
                     }
                     server_line.put("fingerprint", formatter.toString());
                 } catch (Exception e) {
                     Log.w("FDroid", "Unable to get certificate fingerprint.\n"
-                          + Log.getStackTraceString(e));
+                            + Log.getStackTraceString(e));
                 }
             }
             result.add(server_line);
         }
         SimpleAdapter show_out = new SimpleAdapter(this, result,
-                R.layout.repolisticons,
-                new String[] { "address", "inuse", "fingerprint" },
-                new int[] { R.id.uri, R.id.img, R.id.fingerprint });
+                R.layout.repolisticons, new String[] { "address", "inuse",
+                        "fingerprint" }, new int[] { R.id.uri, R.id.img,
+                        R.id.fingerprint });
 
         setListAdapter(show_out);
     }
@@ -115,7 +116,12 @@ public class ManageRepo extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
         super.onListItemClick(l, v, position, id);
-        db.changeServerStatus(repos.get(position).address);
+        try {
+            DB db = DB.getDB();
+            db.changeServerStatus(repos.get(position).address);
+        } finally {
+            DB.releaseDB();
+        }
         changed = true;
         redraw();
     }
@@ -150,7 +156,12 @@ public class ManageRepo extends ListActivity {
                             EditText uri = (EditText) alrt
                                     .findViewById(R.id.edit_uri);
                             String uri_str = uri.getText().toString();
-                            db.addServer(uri_str, 10, null);
+                            try {
+                                DB db = DB.getDB();
+                                db.addServer(uri_str, 10, null);
+                            } finally {
+                                DB.releaseDB();
+                            }
                             changed = true;
                             redraw();
                         }
@@ -180,11 +191,9 @@ public class ManageRepo extends ListActivity {
                         public void onClick(DialogInterface dialog,
                                 int whichButton, boolean isChecked) {
                             if (isChecked) {
-                                rem_lst
-                                        .addElement(repos.get(whichButton).address);
+                                rem_lst.addElement(repos.get(whichButton).address);
                             } else {
-                                rem_lst
-                                        .removeElement(repos.get(whichButton).address);
+                                rem_lst.removeElement(repos.get(whichButton).address);
                             }
                         }
                     });
@@ -192,7 +201,12 @@ public class ManageRepo extends ListActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            db.removeServers(rem_lst);
+                            try {
+                                DB db = DB.getDB();
+                                db.removeServers(rem_lst);
+                            } finally {
+                                DB.releaseDB();
+                            }
                             changed = true;
                             redraw();
                         }
@@ -217,7 +231,6 @@ public class ManageRepo extends ListActivity {
         if (changed)
             ret.putExtra("update", true);
         this.setResult(RESULT_OK, ret);
-        db.close();
         super.finish();
     }
 

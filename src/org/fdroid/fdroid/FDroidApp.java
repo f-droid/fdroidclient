@@ -22,5 +22,13 @@ import android.app.Application;
 
 public class FDroidApp extends Application {
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        
+        DB.initDB(getApplicationContext());
+    }
+
 
 }
+

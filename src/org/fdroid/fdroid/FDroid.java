@@ -70,8 +70,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     private static final int ABOUT = Menu.FIRST + 3;
     private static final int SEARCH = Menu.FIRST + 4;
 
-    private DB db = null;
-
     // Apps that are available to be installed
     private AppListAdapter apps_av = new AppListAdapter(this);
 
@@ -135,14 +133,12 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     @Override
     protected void onStart() {
         super.onStart();
-        db = new DB(this);
         triedEmptyUpdate = false;
         populateLists(true);
     }
 
     @Override
     protected void onStop() {
-        db.close();
         super.onStop();
     }
 
@@ -328,23 +324,34 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
         long startTime = System.currentTimeMillis();
 
-        // Populate the category list with the real categories, and the locally
-        // generated meta-categories for "All", "What's New" and "Recently
-        // Updated"...
-        String cat_all = getString(R.string.category_all);
-        String cat_whatsnew = getString(R.string.category_whatsnew);
-        String cat_recentlyupdated = getString(R.string.category_recentlyupdated);
-        categories.add(cat_all);
-        for (String s : db.getCategories()) {
-            Log.d("FDroid", "s: " + s);
-            categories.add(s);
-        }
-        categories.add(cat_whatsnew);
-        categories.add(cat_recentlyupdated);
-        if (currentCategory == null)
-            currentCategory = cat_all;
+        DB db;
+        Vector<DB.App> apps;
+        String cat_all, cat_whatsnew, cat_recentlyupdated;
+        try {
+            db = DB.getDB();
 
-        Vector<DB.App> apps = db.getApps(null, null, update, true);
+            // Populate the category list with the real categories, and the
+            // locally
+            // generated meta-categories for "All", "What's New" and "Recently
+            // Updated"...
+            cat_all = getString(R.string.category_all);
+            cat_whatsnew = getString(R.string.category_whatsnew);
+            cat_recentlyupdated = getString(R.string.category_recentlyupdated);
+            categories.add(cat_all);
+            for (String s : db.getCategories()) {
+                Log.d("FDroid", "s: " + s);
+                categories.add(s);
+            }
+            categories.add(cat_whatsnew);
+            categories.add(cat_recentlyupdated);
+            if (currentCategory == null)
+                currentCategory = cat_all;
+
+            apps = db.getApps(null, null, update, true);
+        } finally {
+            DB.releaseDB();
+        }
+
         if (apps.isEmpty()) {
             // Don't attempt this more than once - we may have invalid
             // repositories.
@@ -419,8 +426,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         public UpdateReceiver(Handler handler) {
             super(handler);
         }
+
         @Override
-        protected void onReceiveResult (int resultCode, Bundle resultData) {
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
             if (resultCode == 1) {
                 Toast.makeText(FDroid.this,
                         getString(R.string.connection_error_msg),
@@ -432,6 +440,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 pd.dismiss();
         }
     }
+
     private UpdateReceiver mUpdateReceiver;
 
     // Force a repo update now. A progress dialog is shown and the UpdateService

@@ -23,6 +23,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.fdroid.fdroid.DB.Apk.CompatibilityChecker;
+
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -157,13 +159,12 @@ public class AppDetails extends ListActivity {
     private static final int MARKET = Menu.FIRST + 5;
     private static final int DONATE = Menu.FIRST + 6;
 
-    private DB db;
     private DB.App app;
     private int app_currentvercode;
     private DB.Apk curapk;
     private String appid;
+    private CompatibilityChecker compatChecker;
     private PackageManager mPm;
-    private DB.Apk.CompatibilityChecker compatChecker;
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
 
@@ -197,8 +198,6 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        db = new DB(this);
-        compatChecker = db.getCompatibilityChecker();
         mPm = getPackageManager();
         // Get the preferences we're going to use in this Activity...
         SharedPreferences prefs = PreferenceManager
@@ -235,8 +234,6 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onStop() {
-        db.close();
-        db = null;
         super.onStop();
     }
 
@@ -275,8 +272,15 @@ public class AppDetails extends ListActivity {
     // also when something has been installed/uninstalled.
     private void reset() {
         Log.d("FDroid", "Getting application details for " + appid);
-        app = db.getApps(appid, null, true, false).get(0);
-        DB.Apk curver = app.getCurrentVersion(compatChecker);
+        DB.Apk curver;
+        try {
+            DB db = DB.getDB();
+            compatChecker = db.getCompatibilityChecker();
+            app = db.getApps(appid, null, true, false).get(0);
+            curver = app.getCurrentVersion(compatChecker);
+        } finally {
+            DB.releaseDB();
+        }
         app_currentvercode = curver == null ? 0 : curver.vercode;
 
         // Get the signature of the installed package...
