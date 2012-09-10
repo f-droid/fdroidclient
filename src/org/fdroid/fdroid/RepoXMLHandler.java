@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.cert.Certificate;
@@ -244,20 +245,25 @@ public class RepoXMLHandler extends DefaultHandler {
             if (f.exists())
                 return;
 
-            BufferedInputStream getit = new BufferedInputStream(new URL(mserver
-                    + "/icons/" + app.icon).openStream());
-            FileOutputStream saveit = new FileOutputStream(destpath);
-            BufferedOutputStream bout = new BufferedOutputStream(saveit, 1024);
-            byte data[] = new byte[1024];
+            URL u = new URL(mserver + "/icons/" + app.icon);
+            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+            if (uc.getResponseCode() == 200) {
+                BufferedInputStream getit = new BufferedInputStream(
+                        uc.getInputStream());
+                FileOutputStream saveit = new FileOutputStream(destpath);
+                BufferedOutputStream bout = new BufferedOutputStream(saveit,
+                        1024);
+                byte data[] = new byte[1024];
 
-            int readed = getit.read(data, 0, 1024);
-            while (readed != -1) {
-                bout.write(data, 0, readed);
-                readed = getit.read(data, 0, 1024);
+                int readed = getit.read(data, 0, 1024);
+                while (readed != -1) {
+                    bout.write(data, 0, readed);
+                    readed = getit.read(data, 0, 1024);
+                }
+                bout.close();
+                getit.close();
+                saveit.close();
             }
-            bout.close();
-            getit.close();
-            saveit.close();
         } catch (Exception e) {
 
         }
