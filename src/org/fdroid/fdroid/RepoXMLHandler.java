@@ -59,7 +59,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private DB.App curapp = null;
     private DB.Apk curapk = null;
-    private String curchars = null;
+    private StringBuilder curchars = new StringBuilder();
 
     private String pubkey;
     private String hashType;
@@ -74,16 +74,8 @@ public class RepoXMLHandler extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length)
-            throws SAXException {
-
-        super.characters(ch, start, length);
-
-        String str = new String(ch).substring(start, start + length);
-        if (curchars == null)
-            curchars = str;
-        else
-            curchars += str;
+    public void characters(char[] ch, int start, int length) {
+        curchars.append(ch, start, length);
     }
 
     @Override
@@ -92,7 +84,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
         super.endElement(uri, localName, qName);
         String curel = localName;
-        String str = curchars;
+        String str = curchars.toString();
         if (str != null) {
             str = str.trim();
         }
@@ -243,7 +235,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName == "hash" && curapk != null) {
             hashType = attributes.getValue("", "type");
         }
-        curchars = null;
+        curchars.setLength(0);
     }
 
     private void getIcon(DB.App app) {
