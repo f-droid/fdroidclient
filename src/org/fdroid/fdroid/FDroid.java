@@ -64,6 +64,8 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     private static final int REQUEST_MANAGEREPOS = 1;
     private static final int REQUEST_PREFS = 2;
 
+    public static final String EXTRA_TAB_UPDATE = "extraTab";
+
     private static final int UPDATE_REPO = Menu.FIRST;
     private static final int MANAGE_REPO = Menu.FIRST + 1;
     private static final int PREFERENCES = Menu.FIRST + 2;
@@ -126,6 +128,11 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             Intent call = new Intent(this, ManageRepo.class);
             call.putExtra("uri", i.getStringExtra("uri"));
             startActivityForResult(call, REQUEST_MANAGEREPOS);
+        } else if(i.hasExtra(EXTRA_TAB_UPDATE)) {
+            boolean updateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
+            if(updateTab) {
+                tabHost.setCurrentTab(2);
+            }
         }
 
     }

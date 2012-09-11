@@ -161,6 +161,7 @@ public class UpdateService extends IntentService {
                     CharSequence contentText = "Updates are available.";
                     Intent notificationIntent = new Intent(UpdateService.this,
                             FDroid.class);
+                    notificationIntent.putExtra(FDroid.EXTRA_TAB_UPDATE, true);
                     PendingIntent contentIntent = PendingIntent.getActivity(
                             UpdateService.this, 0, notificationIntent, 0);
                     notification.setLatestEventInfo(context, contentTitle,
