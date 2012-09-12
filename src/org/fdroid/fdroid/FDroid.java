@@ -436,8 +436,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             if (resultCode == 1) {
-                Toast.makeText(FDroid.this,
-                        getString(R.string.connection_error_msg),
+                Toast.makeText(FDroid.this, resultData.getString("errmsg"),
                         Toast.LENGTH_LONG).show();
             } else {
                 populateLists(true);

@@ -38,6 +38,7 @@ import java.util.Vector;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import javax.net.ssl.SSLHandshakeException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -292,8 +293,10 @@ public class RepoXMLHandler extends DefaultHandler {
 
     // Do an update from the given repo. All applications found, and their
     // APKs, are added to 'apps'. (If 'apps' already contains an app, its
-    // APKs are merged into the existing one)
-    public static boolean doUpdate(Context ctx, DB.Repo repo,
+    // APKs are merged into the existing one).
+    // Returns null if successful, otherwise an error message to be displayed
+    // to the user (if there is an interactive user!)
+    public static String doUpdate(Context ctx, DB.Repo repo,
             Vector<DB.App> apps) {
         try {
 
@@ -333,13 +336,13 @@ public class RepoXMLHandler extends DefaultHandler {
                     in.close();
                 } catch (SecurityException e) {
                     Log.e("FDroid", "Invalid hash for index file");
-                    return false;
+                    return "Invalid hash for index file";
                 }
                 Certificate[] certs = je.getCertificates();
                 jar.close();
                 if (certs == null) {
                     Log.d("FDroid", "No signature found in index");
-                    return false;
+                    return "No signature found in index";
                 }
                 Log.d("FDroid", "Index has " + certs.length + " signature"
                         + (certs.length > 1 ? "s." : "."));
@@ -354,7 +357,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
                 if (!match) {
                     Log.d("FDroid", "Index signature mismatch");
-                    return false;
+                    return "Index signature mismatch";
                 }
 
             } else {
@@ -390,16 +393,20 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             }
 
+        } catch (SSLHandshakeException sslex) {
+            Log.e("FDroid", "SSLHandShakeException updating from " + repo.address + ":\n"
+                    + Log.getStackTraceString(sslex));
+            return "A problem occurred while establishing an SSL connection. If this problem persists, AND you have a very old device, you could try using http instead of https for the repo URL.";
         } catch (Exception e) {
             Log.e("FDroid", "Exception updating from " + repo.address + ":\n"
                     + Log.getStackTraceString(e));
-            return false;
+            return "Failed to update - " + e.getMessage();
         } finally {
             ctx.deleteFile("tempindex.xml");
             ctx.deleteFile("tempindex.jar");
         }
 
-        return true;
+        return null;
     }
 
 }

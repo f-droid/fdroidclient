@@ -73,6 +73,7 @@ public class UpdateService extends IntentService {
         ResultReceiver receiver = intent.getParcelableExtra("receiver");
 
         long startTime = System.currentTimeMillis();
+        String errmsg = "";
 
         try {
 
@@ -120,10 +121,16 @@ public class UpdateService extends IntentService {
             boolean success = true;
             for (DB.Repo repo : repos) {
                 if (repo.inuse) {
-                    if (!RepoXMLHandler.doUpdate(getBaseContext(), repo, apps)) {
-                        Log.d("FDroid", "Update failed for repo "
-                                + repo.address);
+                    String err = RepoXMLHandler.doUpdate(getBaseContext(),
+                            repo, apps);
+                    if (err != null) {
                         success = false;
+                        err = "Update failed for " + repo.address + " - " + err;
+                        Log.d("FDroid", err);
+                        if (errmsg.length() == 0)
+                            errmsg = err;
+                        else
+                            errmsg += "\n" + err;
                     }
                 }
             }
@@ -142,6 +149,7 @@ public class UpdateService extends IntentService {
                     db.cancelUpdate();
                     Log.e("FDroid", "Exception during update processing:\n"
                             + Log.getStackTraceString(ex));
+                    errmsg = "Exception during processing - " + ex.getMessage();
                     success = false;
                 } finally {
                     DB.releaseDB();
@@ -173,7 +181,14 @@ public class UpdateService extends IntentService {
 
             if (receiver != null) {
                 Bundle resultData = new Bundle();
-                receiver.send(0, resultData);
+                if (!success) {
+                    if (errmsg.length() == 0)
+                        errmsg = "Unknown error";
+                    resultData.putString("errmsg", errmsg);
+                    receiver.send(1, resultData);
+                } else {
+                    receiver.send(0, resultData);
+                }
             }
 
         } catch (Exception e) {
@@ -182,6 +197,9 @@ public class UpdateService extends IntentService {
                             + Log.getStackTraceString(e));
             if (receiver != null) {
                 Bundle resultData = new Bundle();
+                if (errmsg.length() == 0)
+                    errmsg = "Unknown error";
+                resultData.putString("errmsg", errmsg);
                 receiver.send(1, resultData);
             }
         } finally {
