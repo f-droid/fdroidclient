@@ -217,6 +217,15 @@ public class AppDetails extends ListActivity {
         if (viewResetRequired) {
             reset();
             viewResetRequired = false;
+        } else {
+            // Doing the reset() will usually get our compatChecker, but if
+            // we're skipping that we'd better get one now...
+            try {
+                DB db = DB.getDB();
+                compatChecker = db.getCompatibilityChecker();
+            } finally {
+                DB.releaseDB();
+            }
         }
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
