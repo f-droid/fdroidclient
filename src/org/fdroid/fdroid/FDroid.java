@@ -128,19 +128,19 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             Intent call = new Intent(this, ManageRepo.class);
             call.putExtra("uri", i.getStringExtra("uri"));
             startActivityForResult(call, REQUEST_MANAGEREPOS);
-        } else if(i.hasExtra(EXTRA_TAB_UPDATE)) {
+        } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
             boolean updateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
-            if(updateTab) {
+            if (updateTab) {
                 tabHost.setCurrentTab(2);
             }
         }
 
+        triedEmptyUpdate = false;
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        triedEmptyUpdate = false;
         populateLists(true);
     }
 
@@ -231,6 +231,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        triedEmptyUpdate = true;
         switch (requestCode) {
         case REQUEST_APPDETAILS:
             break;
@@ -260,10 +261,8 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             break;
         case REQUEST_PREFS:
             // The automatic update settings may have changed, so reschedule (or
-            // unschedule) the
-            // service accordingly. It's cheap, so no need to check if the
-            // particular setting has
-            // actually been changed.
+            // unschedule) the service accordingly. It's cheap, so no need to
+            // check if the particular setting has actually been changed.
             UpdateService.schedule(getBaseContext());
             break;
 
