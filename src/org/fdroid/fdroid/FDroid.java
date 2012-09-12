@@ -97,6 +97,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
     private boolean triedEmptyUpdate;
 
+    // List of apps.
+    private Vector<DB.App> apps = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -141,7 +144,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     @Override
     protected void onStart() {
         super.onStart();
-        populateLists(true);
+        populateLists(true, true);
     }
 
     @Override
@@ -321,7 +324,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     // Populate the lists.
     // 'update' - true to update the installed status of the applications
     // by asking the system.
-    private void populateLists(boolean update) {
+    // 'refreshdb' - true to refresh the list from the database rather
+    // than using the last one we got.
+    private void populateLists(boolean update, boolean refreshdb) {
 
         apps_in.clear();
         apps_av.clear();
@@ -331,15 +336,13 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         long startTime = System.currentTimeMillis();
 
         DB db;
-        Vector<DB.App> apps;
         String cat_all, cat_whatsnew, cat_recentlyupdated;
         try {
             db = DB.getDB();
 
             // Populate the category list with the real categories, and the
-            // locally
-            // generated meta-categories for "All", "What's New" and "Recently
-            // Updated"...
+            // locally generated meta-categories for "All", "What's New" and
+            // "Recently  Updated"...
             cat_all = getString(R.string.category_all);
             cat_whatsnew = getString(R.string.category_whatsnew);
             cat_recentlyupdated = getString(R.string.category_recentlyupdated);
@@ -353,7 +356,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             if (currentCategory == null)
                 currentCategory = cat_all;
 
-            apps = db.getApps(null, null, update, true);
+            if(apps == null || refreshdb || update)
+                apps = db.getApps(null, null, update, true);
+
         } finally {
             DB.releaseDB();
         }
@@ -370,9 +375,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             triedEmptyUpdate = true;
             return;
         }
-        Log.d("FDroid", "Updating lists - " + apps.size() + " apps in total"
-                + " (update took " + (System.currentTimeMillis() - startTime)
-                + " ms)");
 
         // Calculate the cutoff date we'll use for What's New and Recently
         // Updated...
@@ -424,6 +426,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         apps_up.notifyDataSetChanged();
         categories.notifyDataSetChanged();
 
+        Log.d("FDroid", "Updated lists - " + apps.size() + " apps in total"
+                + " (update took " + (System.currentTimeMillis() - startTime)
+                + " ms)");
     }
 
     // For receiving results from the UpdateService when we've told it to
@@ -439,7 +444,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 Toast.makeText(FDroid.this, resultData.getString("errmsg"),
                         Toast.LENGTH_LONG).show();
             } else {
-                populateLists(true);
+                populateLists(true, true);
             }
             if (pd.isShowing())
                 pd.dismiss();
@@ -465,7 +470,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {
         currentCategory = parent.getItemAtPosition(pos).toString();
-        populateLists(false);
+        populateLists(false, false);
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
