@@ -67,13 +67,18 @@ public class SearchResults extends ListActivity {
     }
 
     private void updateView() {
-        Vector<DB.App> apps;
-        try {
-            DB db = DB.getDB();
-            apps = db.getApps(null, mQuery, false, true);
-        } finally {
-            DB.releaseDB();
+
+        Vector<DB.App> apps= new Vector<DB.App>();
+        AppFilter appfilter = new AppFilter(this);
+        String mq = mQuery.toLowerCase();
+        Vector<DB.App> tapps = ((FDroidApp) getApplication()).getApps();
+        for(DB.App tapp : tapps) {
+            if(tapp.name.toLowerCase().contains(mq) || tapp.description.toLowerCase().contains(mq)) {
+                if(!appfilter.filter(tapp))
+                    apps.add(tapp);
+            }
         }
+
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
         if(apps.size()==0)

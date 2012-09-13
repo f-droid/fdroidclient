@@ -18,6 +18,9 @@
 
 package org.fdroid.fdroid;
 
+import java.util.Vector;
+import java.util.concurrent.Semaphore;
+
 import android.app.Application;
 
 public class FDroidApp extends Application {
@@ -25,10 +28,60 @@ public class FDroidApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        
+
+        apps = null;
         DB.initDB(getApplicationContext());
     }
 
+    // Global list of all known applications.
+    private Vector<DB.App> apps;
+
+    // Set when something has changed (database or installed apps) so we know
+    // we should invalidate the apps.
+    private volatile boolean appsInvalid = false;
+    private Semaphore appsInvalidLock = new Semaphore(1, false);
+
+    // Set apps invalid. Call this when the database has been updated with
+    // new app information, or when the installed packages have changed.
+    public void invalidateApps() {
+        try {
+            appsInvalidLock.acquire();
+            appsInvalid = true;
+        } catch (InterruptedException e) {
+            // Don't care
+        } finally {
+            appsInvalidLock.release();
+        }
+    }
+
+    // Get a list of all known applications. Should not be called when the
+    // database is locked (i.e. between DB.getDB() and db.releaseDB(). The
+    // contents should never be modified, it's for reading only.
+    public Vector<DB.App> getApps() {
+
+        boolean invalid = false;
+        try {
+            appsInvalidLock.acquire();
+            invalid = appsInvalid;
+            if (invalid)
+                appsInvalid = false;
+        } catch (InterruptedException e) {
+            // Don't care
+        } finally {
+            appsInvalidLock.release();
+        }
+
+        if (apps == null || invalid) {
+            try {
+                DB db = DB.getDB();
+                apps = db.getApps(true);
+            } finally {
+                DB.releaseDB();
+            }
+        }
+        if (apps == null)
+            return new Vector<DB.App>();
+        return apps;
+    }
 
 }
-

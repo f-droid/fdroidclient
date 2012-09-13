@@ -33,12 +33,14 @@ import android.app.TabActivity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -144,7 +146,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     @Override
     protected void onStart() {
         super.onStart();
-        populateLists(true, true);
+        populateLists();
     }
 
     @Override
@@ -322,11 +324,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     }
 
     // Populate the lists.
-    // 'update' - true to update the installed status of the applications
-    // by asking the system.
-    // 'refreshdb' - true to refresh the list from the database rather
-    // than using the last one we got.
-    private void populateLists(boolean update, boolean refreshdb) {
+    private void populateLists() {
 
         apps_in.clear();
         apps_av.clear();
@@ -348,7 +346,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             cat_recentlyupdated = getString(R.string.category_recentlyupdated);
             categories.add(cat_all);
             for (String s : db.getCategories()) {
-                Log.d("FDroid", "s: " + s);
                 categories.add(s);
             }
             categories.add(cat_whatsnew);
@@ -356,12 +353,11 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             if (currentCategory == null)
                 currentCategory = cat_all;
 
-            if(apps == null || refreshdb || update)
-                apps = db.getApps(null, null, update, true);
-
         } finally {
             DB.releaseDB();
         }
+
+        apps = ((FDroidApp) getApplication()).getApps();
 
         if (apps.isEmpty()) {
             // Don't attempt this more than once - we may have invalid
@@ -382,6 +378,8 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         recent.add(Calendar.DAY_OF_YEAR, -14);
         Date recentDate = recent.getTime();
 
+        AppFilter appfilter = new AppFilter(this);
+        
         for (DB.App app : apps) {
             if (currentCategory.equals(cat_all)) {
                 // Let everything through!
@@ -403,15 +401,21 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 if (!currentCategory.equals(app.category))
                     continue;
             }
+
+            boolean filtered = appfilter.filter(app);
+
+            // Add it to the list(s). Always to installed and updates, but
+            // only to available if it's not filtered.
             if (app.installedVersion == null) {
                 apps_av.addItem(app);
             } else {
-                apps_in.addItem(app);
+                if (!filtered)
+                    apps_in.addItem(app);
                 if (app.hasUpdates)
                     apps_up.addItem(app);
             }
         }
-
+        
         // Update the count on the 'Updates' tab to show the number available.
         // This is quite unpleasant, but seems to be the only way to do it.
         TextView uptext = (TextView) tabHost.getTabWidget().getChildAt(2)
@@ -444,7 +448,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 Toast.makeText(FDroid.this, resultData.getString("errmsg"),
                         Toast.LENGTH_LONG).show();
             } else {
-                populateLists(true, true);
+                populateLists();
             }
             if (pd.isShowing())
                 pd.dismiss();
@@ -470,7 +474,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {
         currentCategory = parent.getItemAtPosition(pos).toString();
-        populateLists(false, false);
+        populateLists();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {

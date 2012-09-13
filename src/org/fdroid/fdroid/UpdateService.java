@@ -102,16 +102,7 @@ public class UpdateService extends IntentService {
             int newUpdates = 0;
             Vector<DB.Repo> repos;
             try {
-
-                // Get the number of updates available before we
-                // start, so we can notify if there are new ones.
-                // (But avoid doing it if the user doesn't want
-                // notifications, since it may be time consuming)
-                if (notify)
-                    prevUpdates = db.getNumUpdates();
-
                 repos = db.getRepos();
-
             } finally {
                 DB.releaseDB();
             }
@@ -136,13 +127,15 @@ public class UpdateService extends IntentService {
             }
 
             if (success) {
+                Vector<DB.App> prevapps = ((FDroidApp)getApplication()).getApps();
                 db = DB.getDB();
                 try {
-                    db.beginUpdate();
+                    prevUpdates = db.beginUpdate(prevapps);
                     for (DB.App app : apps) {
                         db.updateApplication(app);
                     }
                     db.endUpdate();
+                    ((FDroidApp)getApplication()).invalidateApps();
                     if (notify)
                         newUpdates = db.getNumUpdates();
                 } catch (Exception ex) {

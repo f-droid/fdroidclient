@@ -20,7 +20,9 @@
 package org.fdroid.fdroid;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -52,7 +54,7 @@ public class DB {
     static void initDB(Context ctx) {
         dbInstance = new DB(ctx);
     }
-    
+
     // Get access to the database. Must be called before any database activity,
     // and releaseDB must be called subsequently. Returns null in the event of
     // failure.
@@ -90,7 +92,7 @@ public class DB {
             + "installedVersion text," + "hasUpdates int not null,"
             + "primary key(id));";
 
-    public static class App {
+    public static class App implements Comparable<App> {
 
         public App() {
             name = "Unknown";
@@ -154,30 +156,32 @@ public class DB {
         // This should be the 'current' version, as in the most recent stable
         // one, that most users would want by default. It might not be the
         // most recent, if for example there are betas etc.
-        // To skip compatibility checks, pass null as the checker.
-        public Apk getCurrentVersion(DB.Apk.CompatibilityChecker checker) {
+        public Apk getCurrentVersion() {
 
             // Try and return the real current version first...
             if (marketVersion != null && marketVercode > 0) {
                 for (Apk apk : apks) {
-                    if (apk.vercode == marketVercode
-                            && (checker == null || checker.isCompatible(apk)))
+                    if (apk.vercode == marketVercode)
                         return apk;
                 }
             }
 
             // If we don't know the current version, or we don't have it, we
-            // return the most recent compatible version we have...
+            // return the most recent version we have...
             int latestcode = -1;
             Apk latestapk = null;
             for (Apk apk : apks) {
-                if (apk.vercode > latestcode
-                        && (checker == null || checker.isCompatible(apk))) {
+                if (apk.vercode > latestcode) {
                     latestapk = apk;
                     latestcode = apk.vercode;
                 }
             }
             return latestapk;
+        }
+
+        @Override
+        public int compareTo(App arg0) {
+            return name.compareTo(arg0.name);
         }
 
     }
@@ -298,12 +302,6 @@ public class DB {
         }
     }
 
-    // Let other classes reuse the already instantiated compatibility
-    // checker, mostly to avoid redundant log output.
-    public Apk.CompatibilityChecker getCompatibilityChecker() {
-        return compatChecker;
-    }
-
     // The TABLE_REPO table stores the details of the repositories in use.
     private static final String TABLE_REPO = "fdroid_repo";
     private static final String CREATE_TABLE_REPO = "create table "
@@ -377,7 +375,10 @@ public class DB {
             // Version 14...
             { "alter table " + TABLE_APK + " add added string",
                     "alter table " + TABLE_APP + " add added string",
-                    "alter table " + TABLE_APP + " add lastUpdated string" } };
+                    "alter table " + TABLE_APP + " add lastUpdated string" },
+
+            // Version 15...
+            { "create index apk_vercode on " + TABLE_APK + " (vercode);" } };
 
     private class DBHelper extends SQLiteOpenHelper {
 
@@ -416,7 +417,7 @@ public class DB {
 
     private PackageManager mPm;
     private Context mContext;
-    private Apk.CompatibilityChecker compatChecker;
+    private Apk.CompatibilityChecker compatChecker = null;
 
     // The date format used for storing dates (e.g. lastupdated, added) in the
     // database.
@@ -441,7 +442,6 @@ public class DB {
             sync_mode = null;
         if (sync_mode != null)
             Log.d("FDroid", "Database synchronization mode: " + sync_mode);
-        compatChecker = Apk.CompatibilityChecker.getChecker(ctx);
     }
 
     public void close() {
@@ -462,9 +462,10 @@ public class DB {
         }
     }
 
-    // Get the number of apps that have updates available.
+    // Get the number of apps that have updates available. This can be a
+    // time consuming operation.
     public int getNumUpdates() {
-        Vector<App> apps = getApps(null, null, false, true);
+        Vector<App> apps = getApps(true);
         int count = 0;
         for (App app : apps) {
             if (app.hasUpdates)
@@ -482,7 +483,6 @@ public class DB {
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 String s = c.getString(c.getColumnIndex("category"));
-                Log.d("FDroid", "Category: " + s);
                 if (s == null) {
                     s = "none";
                 }
@@ -504,157 +504,85 @@ public class DB {
     // Return a list of apps matching the given criteria. Filtering is
     // also done based on compatibility and anti-features according to
     // the user's current preferences.
-    // 'appid' - specific app id to retrieve, or null
-    // 'filter' - search text to filter on, or null
-    // 'update' - update installed version information from device, rather than
-    // simply using values cached in the database. Slower.
-    // 'exclusions' - apply filtering for compatibility, anti-features, etc.
-    public Vector<App> getApps(String appid, String filter, boolean update,
-            boolean exclusions) {
+    public Vector<App> getApps(boolean getinstalledinfo) {
 
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
-        boolean pref_antiAds = prefs.getBoolean("antiAds", false);
-        boolean pref_antiTracking = prefs.getBoolean("antiTracking", false);
-        boolean pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
-        boolean pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
-        boolean pref_antiNonFreeDep = prefs.getBoolean("antiNonFreeDep", false);
-        boolean pref_showIncompat = prefs.getBoolean("showIncompatible", false);
-        boolean pref_rooted = prefs.getBoolean("rooted", true);
-
-        Vector<App> result = new Vector<App>();
+        Map<String, App> apps = new HashMap<String, App>();
         Cursor c = null;
-        Cursor c2 = null;
+        long startTime = System.currentTimeMillis();
         try {
 
-            String query = "select * from " + TABLE_APP;
-            if (appid != null) {
-                query += " where id = '" + appid + "'";
-            } else if (filter != null) {
-                query += " where name like '%" + filter + "%'"
-                        + " or description like '%" + filter + "%'";
-            }
-            query += " order by name collate nocase";
-
-            c = db.rawQuery(query, null);
+            c = db.query(TABLE_APP, null, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
 
                 App app = new App();
                 app.antiFeatures = DB.CommaSeparatedList.make(c.getString(c
                         .getColumnIndex("antiFeatures")));
-                boolean include = true;
-                if (app.antiFeatures != null && exclusions) {
-                    for (String af : app.antiFeatures) {
-                        if (af.equals("Ads") && !pref_antiAds)
-                            include = false;
-                        else if (af.equals("Tracking") && !pref_antiTracking)
-                            include = false;
-                        else if (af.equals("NonFreeNet")
-                                && !pref_antiNonFreeNet)
-                            include = false;
-                        else if (af.equals("NonFreeAdd")
-                                && !pref_antiNonFreeAdd)
-                            include = false;
-                        else if (af.equals("NonFreeDep")
-                                && !pref_antiNonFreeDep)
-                            include = false;
-                    }
-                }
                 app.requirements = DB.CommaSeparatedList.make(c.getString(c
                         .getColumnIndex("requirements")));
-                if (app.requirements != null && exclusions) {
-                    for (String r : app.requirements) {
-                        if (r.equals("root") && !pref_rooted) {
-                            include = false;
-                        }
-                    }
-                }
+                app.id = c.getString(c.getColumnIndex("id"));
+                app.name = c.getString(c.getColumnIndex("name"));
+                app.summary = c.getString(c.getColumnIndex("summary"));
+                app.icon = c.getString(c.getColumnIndex("icon"));
+                app.description = c.getString(c.getColumnIndex("description"));
+                app.license = c.getString(c.getColumnIndex("license"));
+                app.category = c.getString(c.getColumnIndex("category"));
+                app.webURL = c.getString(c.getColumnIndex("webURL"));
+                app.trackerURL = c.getString(c.getColumnIndex("trackerURL"));
+                app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
+                app.donateURL = c.getString(c.getColumnIndex("donateURL"));
+                app.marketVersion = c.getString(c
+                        .getColumnIndex("marketVersion"));
+                app.marketVercode = c.getInt(c.getColumnIndex("marketVercode"));
+                String sAdded = c.getString(c.getColumnIndex("added"));
+                app.added = (sAdded == null || sAdded.length() == 0) ? null
+                        : mDateFormat.parse(sAdded);
+                String sLastUpdated = c.getString(c
+                        .getColumnIndex("lastUpdated"));
+                app.lastUpdated = (sLastUpdated == null || sLastUpdated
+                        .length() == 0) ? null : mDateFormat
+                        .parse(sLastUpdated);
+                app.hasUpdates = false;
 
-                if (include) {
-                    app.id = c.getString(c.getColumnIndex("id"));
-                    app.name = c.getString(c.getColumnIndex("name"));
-                    app.summary = c.getString(c.getColumnIndex("summary"));
-                    app.icon = c.getString(c.getColumnIndex("icon"));
-                    app.description = c.getString(c
-                            .getColumnIndex("description"));
-                    app.license = c.getString(c.getColumnIndex("license"));
-                    app.category = c.getString(c.getColumnIndex("category"));
-                    app.webURL = c.getString(c.getColumnIndex("webURL"));
-                    app.trackerURL = c
-                            .getString(c.getColumnIndex("trackerURL"));
-                    app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
-                    app.donateURL = c.getString(c.getColumnIndex("donateURL"));
-                    app.installedVersion = c.getString(c
-                            .getColumnIndex("installedVersion"));
-                    app.installedVerCode = c.getInt(c
-                            .getColumnIndex("installedVerCode"));
-                    app.marketVersion = c.getString(c
-                            .getColumnIndex("marketVersion"));
-                    app.marketVercode = c.getInt(c
-                            .getColumnIndex("marketVercode"));
-                    String sAdded = c.getString(c.getColumnIndex("added"));
-                    app.added = (sAdded == null || sAdded.length() == 0) ? null
-                            : mDateFormat.parse(sAdded);
-                    String sLastUpdated = c.getString(c
-                            .getColumnIndex("lastUpdated"));
-                    app.lastUpdated = (sLastUpdated == null || sLastUpdated
-                            .length() == 0) ? null : mDateFormat
-                            .parse(sLastUpdated);
-                    app.hasUpdates = false;
-
-                    c2 = db.rawQuery("select * from " + TABLE_APK
-                            + " where id = ? order by vercode desc",
-                            new String[] { app.id });
-                    c2.moveToFirst();
-                    boolean compatible = pref_showIncompat || !exclusions;
-                    while (!c2.isAfterLast()) {
-                        Apk apk = new Apk();
-                        apk.id = app.id;
-                        apk.version = c2
-                                .getString(c2.getColumnIndex("version"));
-                        apk.vercode = c2.getInt(c2.getColumnIndex("vercode"));
-                        apk.server = c2.getString(c2.getColumnIndex("server"));
-                        apk.hash = c2.getString(c2.getColumnIndex("hash"));
-                        apk.hashType = c2.getString(c2
-                                .getColumnIndex("hashType"));
-                        apk.sig = c2.getString(c2.getColumnIndex("sig"));
-                        apk.srcname = c2
-                                .getString(c2.getColumnIndex("srcname"));
-                        apk.size = c2.getInt(c2.getColumnIndex("size"));
-                        apk.apkName = c2
-                                .getString(c2.getColumnIndex("apkName"));
-                        apk.apkSource = c2.getString(c2
-                                .getColumnIndex("apkSource"));
-                        apk.minSdkVersion = c2.getInt(c2
-                                .getColumnIndex("minSdkVersion"));
-                        String sApkAdded = c2.getString(c2
-                                .getColumnIndex("added"));
-                        apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
-                                : mDateFormat.parse(sApkAdded);
-                        apk.permissions = CommaSeparatedList.make(c2
-                                .getString(c2.getColumnIndex("permissions")));
-                        apk.features = CommaSeparatedList.make(c2.getString(c2
-                                .getColumnIndex("features")));
-                        app.apks.add(apk);
-                        if (!compatible && compatChecker.isCompatible(apk)) {
-                            // At least one compatible APK.
-                            compatible = true;
-                        }
-                        c2.moveToNext();
-                    }
-                    c2.close();
-
-                    if (compatible) {
-                        result.add(app);
-                    } else {
-                        Log.d("FDroid", "Excluding incompatible application: "
-                                + app.id);
-                    }
-                }
+                apps.put(app.id, app);
 
                 c.moveToNext();
             }
+            c.close();
+            c = null;
+
+            Log.d("FDroid", "Read app data from database " + " (took "
+                    + (System.currentTimeMillis() - startTime) + " ms)");
+
+            c = db.query(TABLE_APK, null, null, null, null, null,
+                    "vercode desc");
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                Apk apk = new Apk();
+                apk.id = c.getString(c.getColumnIndex("id"));
+                apk.version = c.getString(c.getColumnIndex("version"));
+                apk.vercode = c.getInt(c.getColumnIndex("vercode"));
+                apk.server = c.getString(c.getColumnIndex("server"));
+                apk.hash = c.getString(c.getColumnIndex("hash"));
+                apk.hashType = c.getString(c.getColumnIndex("hashType"));
+                apk.sig = c.getString(c.getColumnIndex("sig"));
+                apk.srcname = c.getString(c.getColumnIndex("srcname"));
+                apk.size = c.getInt(c.getColumnIndex("size"));
+                apk.apkName = c.getString(c.getColumnIndex("apkName"));
+                apk.apkSource = c.getString(c.getColumnIndex("apkSource"));
+                apk.minSdkVersion = c.getInt(c
+                        .getColumnIndex("minSdkVersion"));
+                String sApkAdded = c.getString(c.getColumnIndex("added"));
+                apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
+                        : mDateFormat.parse(sApkAdded);
+                apk.permissions = CommaSeparatedList.make(c.getString(c
+                        .getColumnIndex("permissions")));
+                apk.features = CommaSeparatedList.make(c.getString(c
+                        .getColumnIndex("features")));
+                apps.get(apk.id).apks.add(apk);
+                c.moveToNext();
+            }
+            c.close();
 
         } catch (Exception e) {
             Log.e("FDroid",
@@ -664,35 +592,28 @@ public class DB {
             if (c != null) {
                 c.close();
             }
-            if (c2 != null) {
-                c2.close();
-            }
+
+            Log.d("FDroid", "Read app and apk data from database " + " (took "
+                    + (System.currentTimeMillis() - startTime) + " ms)");
         }
 
-        if (update) {
-            db.beginTransaction();
-            try {
-                getUpdates(result);
-                db.setTransactionSuccessful();
-            } catch (Exception e) {
-                Log.e("FDroid",
-                        "Exception while getting updates: "
-                                + Log.getStackTraceString(e));
-            } finally {
-                db.endTransaction();
-            }
-        }
+        Vector<App> result = new Vector<App>(apps.values());
+        Collections.sort(result);
 
-        // We'll say an application has updates if it's installed AND the
-        // installed version is not the 'current' one AND the installed
-        // version is older than the current one.
-        for (App app : result) {
-            Apk curver = app.getCurrentVersion(compatChecker);
-            if (curver != null && app.installedVersion != null
-                    && !app.installedVersion.equals(curver.version)) {
-                if (app.installedVerCode < curver.vercode) {
-                    app.hasUpdates = true;
-                    app.currentVersion = curver.version;
+        if (getinstalledinfo) {
+            getInstalledInfo(result);
+
+            // We'll say an application has updates if it's installed AND the
+            // installed version is not the 'current' one AND the installed
+            // version is older than the current one.
+            for (App app : result) {
+                Apk curver = app.getCurrentVersion();
+                if (curver != null && app.installedVersion != null
+                        && !app.installedVersion.equals(curver.version)) {
+                    if (app.installedVerCode < curver.vercode) {
+                        app.hasUpdates = true;
+                        app.currentVersion = curver.version;
+                    }
                 }
             }
         }
@@ -700,8 +621,8 @@ public class DB {
         return result;
     }
 
-    // Verify installed status against the system's package list.
-    private void getUpdates(Vector<DB.App> apps) {
+    // Get installation status for all apps.
+    private void getInstalledInfo(Vector<DB.App> apps) {
         List<PackageInfo> installedPackages = mPm.getInstalledPackages(0);
         Map<String, PackageInfo> systemApks = new HashMap<String, PackageInfo>();
         Log.d("FDroid", "Reading installed packages");
@@ -712,19 +633,11 @@ public class DB {
         for (DB.App app : apps) {
             if (systemApks.containsKey(app.id)) {
                 PackageInfo sysapk = systemApks.get(app.id);
-                String version = sysapk.versionName;
-                int vercode = sysapk.versionCode;
-                if (app.installedVersion == null
-                        || !app.installedVersion.equals(version)) {
-                    setInstalledVersion(app.id, version, vercode);
-                    app.installedVersion = version;
-                    app.installedVerCode = vercode;
-                }
+                app.installedVersion = sysapk.versionName;
+                app.installedVerCode = sysapk.versionCode;
             } else {
-                if (app.installedVersion != null) {
-                    setInstalledVersion(app.id, null, 0);
-                    app.installedVersion = null;
-                }
+                app.installedVersion = null;
+                app.installedVerCode = 0;
             }
         }
     }
@@ -760,21 +673,27 @@ public class DB {
 
     private Vector<App> updateApps = null;
 
-    // Called before a repo update starts.
-    public void beginUpdate() {
+    // Called before a repo update starts. Returns the number of updates
+    // available beforehand.
+    public int beginUpdate(Vector<DB.App> apps) {
         // Get a list of all apps. All the apps and apks in this list will
         // have 'updated' set to false at this point, and we will only set
         // it to true when we see the app/apk in a repository. Thus, at the
         // end, any that are still false can be removed.
-        // TODO: Need to ensure that UI and UpdateService can't both be doing
-        // an update at the same time.
-        updateApps = getApps(null, null, true, false);
+        updateApps = apps;
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps before starting.");
         // Wrap the whole update in a transaction. Make sure to call
         // either endUpdate or cancelUpdate to commit or discard it,
         // respectively.
         db.beginTransaction();
+
+        int count = 0;
+        for (App app : updateApps) {
+            if (app.hasUpdates)
+                count++;
+        }
+        return count;
     }
 
     // Called when a repo update ends. Any applications that have not been
@@ -831,6 +750,21 @@ public class DB {
             return;
         }
 
+        // Lazy initialise this...
+        if (compatChecker == null)
+            compatChecker = Apk.CompatibilityChecker.getChecker(mContext);
+
+        // See if it's compatible (by which we mean if it has at least one
+        // compatible apk - if it's not, leave it out)
+        // Also keep a list of which were compatible, because they're the
+        // only ones we'll add.
+        Vector<Apk> compatibleapks = new Vector<Apk>();
+        for (Apk apk : upapp.apks)
+            if (compatChecker.isCompatible(apk))
+                compatibleapks.add(apk);
+        if (compatibleapks.size() == 0)
+            return;
+
         boolean found = false;
         for (App app : updateApps) {
             if (app.id.equals(upapp.id)) {
@@ -839,7 +773,7 @@ public class DB {
                 updateApp(app, upapp);
                 app.updated = true;
                 found = true;
-                for (Apk upapk : upapp.apks) {
+                for (Apk upapk : compatibleapks) {
                     boolean afound = false;
                     for (Apk apk : app.apks) {
                         if (apk.version.equals(upapk.version)) {
@@ -869,7 +803,7 @@ public class DB {
             // .d("FDroid", "AppUpdate: " + upapp.id
             // + " is a new application.");
             updateApp(null, upapp);
-            for (Apk upapk : upapp.apks) {
+            for (Apk upapk : compatibleapks) {
                 updateApkIfDifferent(null, upapk);
                 upapk.updated = true;
             }

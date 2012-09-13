@@ -22,8 +22,7 @@ import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.fdroid.fdroid.DB.Apk.CompatibilityChecker;
+import java.util.Vector;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -130,12 +129,6 @@ public class AppDetails extends ListActivity {
             } else {
                 added.setVisibility(View.GONE);
             }
-            if (!compatChecker.isCompatible(apk)) {
-                View[] views = { v, version, status, size, buildtype, added };
-                for (View view : views) {
-                    view.setEnabled(false);
-                }
-            }
             return v;
         }
     }
@@ -163,7 +156,6 @@ public class AppDetails extends ListActivity {
     private int app_currentvercode;
     private DB.Apk curapk;
     private String appid;
-    private CompatibilityChecker compatChecker;
     private PackageManager mPm;
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
@@ -217,15 +209,6 @@ public class AppDetails extends ListActivity {
         if (viewResetRequired) {
             reset();
             viewResetRequired = false;
-        } else {
-            // Doing the reset() will usually get our compatChecker, but if
-            // we're skipping that we'd better get one now...
-            try {
-                DB db = DB.getDB();
-                compatChecker = db.getCompatibilityChecker();
-            } finally {
-                DB.releaseDB();
-            }
         }
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
@@ -280,16 +263,22 @@ public class AppDetails extends ListActivity {
     // Reset the display and list contents. Used when entering the activity, and
     // also when something has been installed/uninstalled.
     private void reset() {
+
         Log.d("FDroid", "Getting application details for " + appid);
-        DB.Apk curver;
-        try {
-            DB db = DB.getDB();
-            compatChecker = db.getCompatibilityChecker();
-            app = db.getApps(appid, null, true, false).get(0);
-            curver = app.getCurrentVersion(compatChecker);
-        } finally {
-            DB.releaseDB();
+        app = null;
+        Vector<DB.App> apps = ((FDroidApp) getApplication()).getApps();
+        for (DB.App tapp : apps) {
+            if (tapp.id.equals(appid)) {
+                app = tapp;
+                break;
+            }
         }
+        if (app == null) {
+            finish();
+            return;
+        }
+
+        DB.Apk curver = app.getCurrentVersion();
         app_currentvercode = curver == null ? 0 : curver.vercode;
 
         // Get the signature of the installed package...
@@ -359,7 +348,7 @@ public class AppDetails extends ListActivity {
         if (app.installedVersion != null
                 && app.installedVersion.equals(curapk.version)) {
             removeApk(app.id);
-        } else if (compatChecker.isCompatible(curapk)) {
+        } else {
             install();
         }
     }
@@ -369,7 +358,7 @@ public class AppDetails extends ListActivity {
 
         super.onCreateOptionsMenu(menu);
         menu.clear();
-        DB.Apk curver = app.getCurrentVersion(compatChecker);
+        DB.Apk curver = app.getCurrentVersion();
         if (app.installedVersion != null && curver != null
                 && !app.installedVersion.equals(curver.version)) {
             menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
@@ -413,7 +402,7 @@ public class AppDetails extends ListActivity {
 
         case INSTALL:
             // Note that this handles updating as well as installing.
-            curapk = app.getCurrentVersion(compatChecker);
+            curapk = app.getCurrentVersion();
             if (curapk != null)
                 install();
             return true;
@@ -480,6 +469,8 @@ public class AppDetails extends ListActivity {
         Uri uri = Uri.fromParts("package", pkginfo.packageName, null);
         Intent intent = new Intent(Intent.ACTION_DELETE, uri);
         startActivityForResult(intent, REQUEST_UNINSTALL);
+        ((FDroidApp) getApplication()).invalidateApps();
+
     }
 
     private void installApk(String file) {
@@ -488,6 +479,7 @@ public class AppDetails extends ListActivity {
         intent.setDataAndType(Uri.parse("file://" + file),
                 "application/vnd.android.package-archive");
         startActivityForResult(intent, REQUEST_INSTALL);
+        ((FDroidApp) getApplication()).invalidateApps();
     }
 
     private ProgressDialog createProgressDialog(String file, int p, int max) {
