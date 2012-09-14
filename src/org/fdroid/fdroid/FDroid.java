@@ -335,12 +335,12 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             cat_all = getString(R.string.category_all);
             cat_whatsnew = getString(R.string.category_whatsnew);
             cat_recentlyupdated = getString(R.string.category_recentlyupdated);
+            categories.add(cat_whatsnew);
+            categories.add(cat_recentlyupdated);
             categories.add(cat_all);
             for (String s : db.getCategories()) {
                 categories.add(s);
             }
-            categories.add(cat_whatsnew);
-            categories.add(cat_recentlyupdated);
             if (currentCategory == null)
                 currentCategory = cat_whatsnew;
 
