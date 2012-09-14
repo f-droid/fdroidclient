@@ -82,11 +82,10 @@ public class AppListAdapter extends BaseAdapter {
         summary.setText(app.summary);
 
         ImageView icon = (ImageView) v.findViewById(R.id.icon);
-        String iconpath = new String(DB.getIconsPath() + app.icon);
-        File icn = new File(iconpath);
+        File icn = new File(DB.getIconsPath(), app.icon);
         if (icn.exists() && icn.length() > 0) {
             new Uri.Builder().build();
-            icon.setImageURI(Uri.parse(iconpath));
+            icon.setImageURI(Uri.parse(icn.getPath()));
         } else {
             icon.setImageResource(android.R.drawable.sym_def_app_icon);
         }

@@ -242,8 +242,7 @@ public class RepoXMLHandler extends DefaultHandler {
     private void getIcon(DB.App app) {
         try {
 
-            String destpath = DB.getIconsPath() + app.icon;
-            File f = new File(destpath);
+            File f = new File(DB.getIconsPath(), app.icon);
             if (f.exists())
                 return;
 
@@ -252,7 +251,7 @@ public class RepoXMLHandler extends DefaultHandler {
             if (uc.getResponseCode() == 200) {
                 BufferedInputStream getit = new BufferedInputStream(
                         uc.getInputStream());
-                FileOutputStream saveit = new FileOutputStream(destpath);
+                FileOutputStream saveit = new FileOutputStream(f);
                 BufferedOutputStream bout = new BufferedOutputStream(saveit,
                         1024);
                 byte data[] = new byte[1024];
@@ -296,8 +295,7 @@ public class RepoXMLHandler extends DefaultHandler {
     // APKs are merged into the existing one).
     // Returns null if successful, otherwise an error message to be displayed
     // to the user (if there is an interactive user!)
-    public static String doUpdate(Context ctx, DB.Repo repo,
-            Vector<DB.App> apps) {
+    public static String doUpdate(Context ctx, DB.Repo repo, Vector<DB.App> apps) {
         try {
 
             if (repo.pubkey != null) {
@@ -394,8 +392,8 @@ public class RepoXMLHandler extends DefaultHandler {
             }
 
         } catch (SSLHandshakeException sslex) {
-            Log.e("FDroid", "SSLHandShakeException updating from " + repo.address + ":\n"
-                    + Log.getStackTraceString(sslex));
+            Log.e("FDroid", "SSLHandShakeException updating from "
+                    + repo.address + ":\n" + Log.getStackTraceString(sslex));
             return "A problem occurred while establishing an SSL connection. If this problem persists, AND you have a very old device, you could try using http instead of https for the repo URL.";
         } catch (Exception e) {
             Log.e("FDroid", "Exception updating from " + repo.address + ":\n"

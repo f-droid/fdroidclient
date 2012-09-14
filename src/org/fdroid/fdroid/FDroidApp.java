@@ -18,10 +18,12 @@
 
 package org.fdroid.fdroid;
 
+import java.io.File;
 import java.util.Vector;
 import java.util.concurrent.Semaphore;
 
 import android.app.Application;
+import android.util.Log;
 
 public class FDroidApp extends Application {
 
@@ -29,8 +31,19 @@ public class FDroidApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+        File local_path = DB.getDataPath();
+        Log.d("FDroid", "Data path is " + local_path.getPath());
+        if (!local_path.exists())
+            local_path.mkdir();
+
+        File icon_path = DB.getIconsPath();
+        Log.d("FDroid", "Icon path is " + icon_path.getPath());
+        if (!icon_path.exists())
+            icon_path.mkdir();
+
         apps = null;
         DB.initDB(getApplicationContext());
+    
     }
 
     // Global list of all known applications.

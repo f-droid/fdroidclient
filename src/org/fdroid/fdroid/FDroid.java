@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid;
 
-import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
@@ -33,14 +32,12 @@ import android.app.TabActivity;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -59,8 +56,6 @@ import android.widget.TabHost.TabSpec;
 
 public class FDroid extends TabActivity implements OnItemClickListener,
         OnItemSelectedListener {
-
-    private String LOCAL_PATH = "/sdcard/.fdroid";
 
     private static final int REQUEST_APPDETAILS = 0;
     private static final int REQUEST_MANAGEREPOS = 1;
@@ -108,14 +103,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fdroid);
-
-        File local_path = new File(LOCAL_PATH);
-        if (!local_path.exists())
-            local_path.mkdir();
-
-        File icon_path = new File(DB.getIconsPath());
-        if (!icon_path.exists())
-            icon_path.mkdir();
 
         Spinner spinner = (Spinner) findViewById(R.id.category);
         categories = new ArrayAdapter<String>(this,

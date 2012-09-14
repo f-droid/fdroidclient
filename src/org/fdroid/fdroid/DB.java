@@ -19,10 +19,10 @@
 
 package org.fdroid.fdroid;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -42,6 +42,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.util.Log;
@@ -419,8 +420,12 @@ public class DB {
 
     }
 
-    public static String getIconsPath() {
-        return "/sdcard/.fdroid/icons/";
+    public static File getDataPath() {
+        return new File(Environment.getExternalStorageDirectory(), ".fdroid");
+    }
+
+    public static File getIconsPath() {
+        return new File(getDataPath(), "icons");
     }
 
     private PackageManager mPm;

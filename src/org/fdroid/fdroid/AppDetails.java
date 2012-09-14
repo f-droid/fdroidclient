@@ -314,10 +314,9 @@ public class AppDetails extends ListActivity {
     private void resetViews() {
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        String icon_path = DB.getIconsPath() + app.icon;
-        File test_icon = new File(icon_path);
-        if (test_icon.exists()) {
-            iv.setImageDrawable(new BitmapDrawable(icon_path));
+        File icon = new File(DB.getIconsPath(), app.icon);
+        if (icon.exists()) {
+            iv.setImageDrawable(new BitmapDrawable(icon.getPath()));
         } else {
             iv.setImageResource(android.R.drawable.sym_def_app_icon);
         }
@@ -473,10 +472,10 @@ public class AppDetails extends ListActivity {
 
     }
 
-    private void installApk(String file) {
+    private void installApk(File file) {
         Intent intent = new Intent();
         intent.setAction(android.content.Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse("file://" + file),
+        intent.setDataAndType(Uri.parse("file://" + file.getPath()),
                 "application/vnd.android.package-archive");
         startActivityForResult(intent, REQUEST_INSTALL);
         ((FDroidApp) getApplication()).invalidateApps();
@@ -509,7 +508,7 @@ public class AppDetails extends ListActivity {
         private Downloader download;
         private ProgressDialog pd;
         private boolean updating;
-        private String localFile;
+        private File localFile;
 
         public DownloadHandler(DB.Apk apk) {
             download = new Downloader(apk);
@@ -589,9 +588,8 @@ public class AppDetails extends ListActivity {
             // installed (or maybe the user cancelled the install - doesn't
             // matter) from the SD card...
             if (!pref_cacheDownloaded) {
-                File file = new File(localFile);
-                Log.d("FDroid", "Cleaning up: " + file);
-                file.delete();
+                Log.d("FDroid", "Cleaning up: " + localFile.getPath());
+                localFile.delete();
                 localFile = null;
             }
         }
