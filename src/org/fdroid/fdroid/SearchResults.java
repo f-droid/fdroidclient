@@ -32,7 +32,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class SearchResults extends ListActivity {
-       
+
     private static final int REQUEST_APPDETAILS = 0;
 
     private static final int SEARCH = Menu.FIRST;
@@ -40,7 +40,7 @@ public class SearchResults extends ListActivity {
     private AppListAdapter applist = new AppListAdapter(this);
 
     private String mQuery;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,37 +68,55 @@ public class SearchResults extends ListActivity {
 
     private void updateView() {
 
-        Vector<DB.App> apps= new Vector<DB.App>();
+        Vector<String> matchingids = new Vector<String>();
+        try {
+            DB db = DB.getDB();
+            matchingids = db.doSearch(mQuery);
+        } catch (Exception ex) {
+            Log.d("FDroid", "Search failed - " + ex.getMessage());
+        } finally {
+            DB.releaseDB();
+        }
+
+        Vector<DB.App> apps = new Vector<DB.App>();
         AppFilter appfilter = new AppFilter(this);
-        String mq = mQuery.toLowerCase();
         Vector<DB.App> tapps = ((FDroidApp) getApplication()).getApps();
-        for(DB.App tapp : tapps) {
-            if(tapp.name.toLowerCase().contains(mq) || tapp.description.toLowerCase().contains(mq)) {
-                if(!appfilter.filter(tapp))
-                    apps.add(tapp);
+        for (DB.App tapp : tapps) {
+            boolean include = false;
+            for (String tid : matchingids) {
+                if (tid.equals(tapp.id)) {
+                    include = true;
+                    break;
+                }
             }
+            if (include && !appfilter.filter(tapp))
+                apps.add(tapp);
+
         }
 
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
-        if(apps.size()==0)
-            headertext = String.format(getString(R.string.searchres_noapps),mQuery);
-        else if(apps.size()==1)
-            headertext = String.format(getString(R.string.searchres_oneapp),mQuery);
+        if (apps.size() == 0)
+            headertext = String.format(getString(R.string.searchres_noapps),
+                    mQuery);
+        else if (apps.size() == 1)
+            headertext = String.format(getString(R.string.searchres_oneapp),
+                    mQuery);
         else
-            headertext = String.format(getString(R.string.searchres_napps),apps.size(),mQuery);
+            headertext = String.format(getString(R.string.searchres_napps),
+                    apps.size(), mQuery);
         tv.setText(headertext);
-        Log.d("FDroid", "Search for '" + mQuery + "' returned "
-                + apps.size() + " results");
+        Log.d("FDroid", "Search for '" + mQuery + "' returned " + apps.size()
+                + " results");
         applist.clear();
         for (DB.App app : apps) {
             applist.addItem(app);
         }
         applist.notifyDataSetChanged();
         setListAdapter(applist);
-        
+
     }
-    
+
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         final DB.App app;
@@ -127,10 +145,9 @@ public class SearchResults extends ListActivity {
         case SEARCH:
             onSearchRequested();
             return true;
-            
+
         }
         return super.onOptionsItemSelected(item);
     }
-    
-    
+
 }

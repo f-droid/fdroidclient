@@ -47,6 +47,8 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.util.Log;
 
+
+
 public class DB {
 
     private static Semaphore dbSync = new Semaphore(1, true);
@@ -91,16 +93,11 @@ public class DB {
             + "summary text not null, " + "icon text, "
             + "description text not null, " + "license text not null, "
             + "webURL text, " + "trackerURL text, " + "sourceURL text, "
-            + "curVersion text,"
-            + "curVercode integer,"
-            + "antiFeatures string,"
-            + "donateURL string,"
-            + "requirements string,"
-            + "category string,"
-            + "added string,"
-            + "lastUpdated string,"
-            + "primary key(id));";    
-    
+            + "curVersion text," + "curVercode integer,"
+            + "antiFeatures string," + "donateURL string,"
+            + "requirements string," + "category string," + "added string,"
+            + "lastUpdated string," + "primary key(id));";
+
     public static class App implements Comparable<App> {
 
         public App() {
@@ -110,10 +107,10 @@ public class DB {
             id = "unknown";
             license = "Unknown";
             category = "Uncategorized";
-            trackerURL = "";
-            sourceURL = "";
-            donateURL = null;
-            webURL = "";
+            detail_trackerURL = null;
+            detail_sourceURL = null;
+            detail_donateURL = null;
+            detail_webURL = null;
             antiFeatures = null;
             requirements = null;
             hasUpdates = false;
@@ -121,19 +118,36 @@ public class DB {
             added = null;
             lastUpdated = null;
             apks = new Vector<Apk>();
+            detail_Populated = false;
         }
+
+        // True when all the detail fields are populated, False otherwise.
+        public boolean detail_Populated;
 
         public String id;
         public String name;
         public String summary;
         public String icon;
-        public String description;
+
+        // Null when !detail_Populated
+        public String detail_description;
+
         public String license;
         public String category;
-        public String webURL;
-        public String trackerURL;
-        public String sourceURL;
-        public String donateURL; // Donate link, or null
+
+        // Null when !detail_Populated
+        public String detail_webURL;
+
+        // Null when !detail_Populated
+        public String detail_trackerURL;
+
+        // Null when !detail_Populated
+        public String detail_sourceURL;
+
+        // Donate link, or null
+        // Null when !detail_Populated
+        public String detail_donateURL;
+
         public String curVersion;
         public int curVercode;
         public Date added;
@@ -163,6 +177,7 @@ public class DB {
         // Used internally for tracking during repo updates.
         public boolean updated;
 
+        // List of apks.
         public Vector<Apk> apks;
 
         // Get the current version - this will be one of the Apks from 'apks'.
@@ -208,36 +223,35 @@ public class DB {
             + " ( " + "id text not null, " + "version text not null, "
             + "server text not null, " + "hash text not null, "
             + "vercode int not null," + "apkName text not null, "
-            + "size int not null,"
-            + "apkSource text,"
-            + "sig string,"
-            + "srcname string,"
-            + "minSdkVersion integer,"
-            + "permissions string,"
-            + "features string,"
-            + "hashType string,"
-            + "added string,"
-            + "primary key(id));";
-    
+            + "size int not null," + "apkSource text," + "sig string,"
+            + "srcname string," + "minSdkVersion integer,"
+            + "permissions string," + "features string," + "hashType string,"
+            + "added string," + "primary key(id,vercode));";
+
     public static class Apk {
 
         public Apk() {
             updated = false;
-            size = 0;
+            detail_size = 0;
             apkSource = null;
             added = null;
+            detail_server = null;
+            detail_hash = null;
+            detail_hashType = null;
+            detail_permissions = null;
         }
 
         public String id;
         public String version;
         public int vercode;
-        public int size; // Size in bytes - 0 means we don't know!
-        public String server;
-        public String hash;
-        public String hashType;
+        public int detail_size; // Size in bytes - 0 means we don't know!
+        public String detail_server;
+        public String detail_hash;
+        public String detail_hashType;
         public int minSdkVersion; // 0 if unknown
         public Date added;
-        public CommaSeparatedList permissions; // null if empty or unknown
+        public CommaSeparatedList detail_permissions; // null if empty or
+                                                      // unknown
         public CommaSeparatedList features; // null if empty or unknown
 
         // ID (md5 sum of public key) of signature. Might be null, in the
@@ -260,7 +274,7 @@ public class DB {
 
         public String getURL() {
             String path = apkName.replace(" ", "%20");
-            return server + "/" + path;
+            return detail_server + "/" + path;
         }
 
         // Call isCompatible(apk) on an instance of this class to
@@ -315,7 +329,8 @@ public class DB {
                 if (apk.features != null) {
                     for (String feat : apk.features) {
                         if (!features.contains(feat)) {
-                            Log.d("FDroid", "Incompatible based on lack of "
+                            Log.d("FDroid", apk.id
+                                    + " is incompatible based on lack of "
                                     + feat);
                             return false;
                         }
@@ -340,8 +355,21 @@ public class DB {
         public String pubkey; // null for an unsigned repo
     }
 
-    private final int DBVersion = 16;
+    private final int DBVersion = 17;
 
+    private static void createAppApk(SQLiteDatabase db) {
+        db.execSQL(CREATE_TABLE_APP);
+        db.execSQL("create index app_id on " + TABLE_APP + " (id);");
+        db.execSQL(CREATE_TABLE_APK);
+        db.execSQL("create index apk_vercode on " + TABLE_APK
+                + " (vercode);");
+        db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
+    }
+    public static void resetTransient(SQLiteDatabase db) {
+        db.execSQL("drop table " + TABLE_APP);
+        db.execSQL("drop table " + TABLE_APK);
+        createAppApk(db);            
+    }
     private class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
@@ -350,10 +378,10 @@ public class DB {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
+
+            createAppApk(db);
+
             db.execSQL(CREATE_TABLE_REPO);
-            db.execSQL(CREATE_TABLE_APP);
-            db.execSQL(CREATE_TABLE_APK);
-            db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
             ContentValues values = new ContentValues();
             values.put("address",
                     mContext.getString(R.string.default_repo_address));
@@ -366,14 +394,12 @@ public class DB {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("drop table " + TABLE_APP);
-            db.execSQL("drop table " + TABLE_APK);
-            db.execSQL(CREATE_TABLE_APP);
-            db.execSQL(CREATE_TABLE_APK);
+            resetTransient(db);
             if (oldVersion < 7)
                 db.execSQL("alter table " + TABLE_REPO + " add pubkey string");
         }
 
+        
     }
 
     public static File getDataPath() {
@@ -416,6 +442,11 @@ public class DB {
     public void close() {
         db.close();
         db = null;
+    }
+
+    // Reset the transient data in the database.
+    public void reset() {
+        resetTransient(db);
     }
 
     // Delete the database, which should cause it to be re-created next time
@@ -470,6 +501,52 @@ public class DB {
         return result;
     }
 
+    // Populate the details for the given app, if necessary.
+    public void populateDetails(App app) {
+        if (app.detail_Populated)
+            return;
+        Cursor c = null;
+        try {
+            String[] cols = new String[] { "description", "webURL",
+                    "trackerURL", "sourceURL", "donateURL" };
+            c = db.query(TABLE_APP, cols, "id = ?", new String[] { app.id },
+                    null, null, null, null);
+            c.moveToFirst();
+            app.detail_description = c.getString(0);
+            app.detail_webURL = c.getString(1);
+            app.detail_trackerURL = c.getString(2);
+            app.detail_sourceURL = c.getString(3);
+            app.detail_donateURL = c.getString(4);
+            c.close();
+            c = null;
+
+            cols = new String[] { "server", "hash", "hashType", "size",
+                    "permissions" };
+            for (Apk apk : app.apks) {
+
+                c = db.query(
+                        TABLE_APK,
+                        cols,
+                        "id = ? and vercode = " + Integer.toString(apk.vercode),
+                        new String[] { apk.id }, null, null, null, null);
+                c.moveToFirst();
+                apk.detail_server = c.getString(0);
+                apk.detail_hash = c.getString(1);
+                apk.detail_hashType = c.getString(2);
+                apk.detail_size = c.getInt(3);
+                apk.detail_permissions = CommaSeparatedList
+                        .make(c.getString(4));
+                c.close();
+                c = null;
+            }
+            app.detail_Populated = true;
+
+        } finally {
+            if (c != null)
+                c.close();
+        }
+    }
+
     // Return a list of apps matching the given criteria. Filtering is
     // also done based on compatibility and anti-features according to
     // the user's current preferences.
@@ -491,34 +568,28 @@ public class DB {
         long startTime = System.currentTimeMillis();
         try {
 
-            c = db.query(TABLE_APP, null, null, null, null, null, null);
+            String cols[] = new String[] { "antiFeatures", "requirements",
+                    "id", "name", "summary", "icon", "license", "category",
+                    "curVersion", "curVercode", "added", "lastUpdated" };
+            c = db.query(TABLE_APP, cols, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
 
                 App app = new App();
-                app.antiFeatures = DB.CommaSeparatedList.make(c.getString(c
-                        .getColumnIndex("antiFeatures")));
-                app.requirements = DB.CommaSeparatedList.make(c.getString(c
-                        .getColumnIndex("requirements")));
-                app.id = c.getString(c.getColumnIndex("id"));
-                app.name = c.getString(c.getColumnIndex("name"));
-                app.summary = c.getString(c.getColumnIndex("summary"));
-                app.icon = c.getString(c.getColumnIndex("icon"));
-                app.description = c.getString(c.getColumnIndex("description"));
-                app.license = c.getString(c.getColumnIndex("license"));
-                app.category = c.getString(c.getColumnIndex("category"));
-                app.webURL = c.getString(c.getColumnIndex("webURL"));
-                app.trackerURL = c.getString(c.getColumnIndex("trackerURL"));
-                app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
-                app.donateURL = c.getString(c.getColumnIndex("donateURL"));
-                app.curVersion = c.getString(c
-                        .getColumnIndex("curVersion"));
-                app.curVercode = c.getInt(c.getColumnIndex("curVercode"));
-                String sAdded = c.getString(c.getColumnIndex("added"));
+                app.antiFeatures = DB.CommaSeparatedList.make(c.getString(0));
+                app.requirements = DB.CommaSeparatedList.make(c.getString(1));
+                app.id = c.getString(2);
+                app.name = c.getString(3);
+                app.summary = c.getString(4);
+                app.icon = c.getString(5);
+                app.license = c.getString(6);
+                app.category = c.getString(7);
+                app.curVersion = c.getString(8);
+                app.curVercode = c.getInt(9);
+                String sAdded = c.getString(10);
                 app.added = (sAdded == null || sAdded.length() == 0) ? null
                         : mDateFormat.parse(sAdded);
-                String sLastUpdated = c.getString(c
-                        .getColumnIndex("lastUpdated"));
+                String sLastUpdated = c.getString(11);
                 app.lastUpdated = (sLastUpdated == null || sLastUpdated
                         .length() == 0) ? null : mDateFormat
                         .parse(sLastUpdated);
@@ -543,30 +614,26 @@ public class DB {
             Log.d("FDroid", "Read app data from database " + " (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
-            c = db.query(TABLE_APK, null, null, null, null, null,
+            cols = new String[] { "id", "version", "vercode", "sig", "srcname",
+                    "apkName", "apkSource", "minSdkVersion", "added",
+                    "features" };
+            c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 Apk apk = new Apk();
-                apk.id = c.getString(c.getColumnIndex("id"));
-                apk.version = c.getString(c.getColumnIndex("version"));
-                apk.vercode = c.getInt(c.getColumnIndex("vercode"));
-                apk.server = c.getString(c.getColumnIndex("server"));
-                apk.hash = c.getString(c.getColumnIndex("hash"));
-                apk.hashType = c.getString(c.getColumnIndex("hashType"));
-                apk.sig = c.getString(c.getColumnIndex("sig"));
-                apk.srcname = c.getString(c.getColumnIndex("srcname"));
-                apk.size = c.getInt(c.getColumnIndex("size"));
-                apk.apkName = c.getString(c.getColumnIndex("apkName"));
-                apk.apkSource = c.getString(c.getColumnIndex("apkSource"));
-                apk.minSdkVersion = c.getInt(c.getColumnIndex("minSdkVersion"));
-                String sApkAdded = c.getString(c.getColumnIndex("added"));
+                apk.id = c.getString(0);
+                apk.version = c.getString(1);
+                apk.vercode = c.getInt(2);
+                apk.sig = c.getString(3);
+                apk.srcname = c.getString(4);
+                apk.apkName = c.getString(5);
+                apk.apkSource = c.getString(6);
+                apk.minSdkVersion = c.getInt(7);
+                String sApkAdded = c.getString(8);
                 apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
                         : mDateFormat.parse(sApkAdded);
-                apk.permissions = CommaSeparatedList.make(c.getString(c
-                        .getColumnIndex("permissions")));
-                apk.features = CommaSeparatedList.make(c.getString(c
-                        .getColumnIndex("features")));
+                apk.features = CommaSeparatedList.make(c.getString(9));
                 apps.get(apk.id).apks.add(apk);
                 c.moveToNext();
             }
@@ -607,6 +674,27 @@ public class DB {
         }
 
         return result;
+    }
+
+    public Vector<String> doSearch(String query) {
+
+        Vector<String> ids = new Vector<String>();
+        Cursor c = null;
+        try {
+            String filter = "%" + query + "%";
+            c = db.query(TABLE_APP, new String[] { "id" },
+                    "name like ? or description like ?", new String[] { filter,
+                            filter }, null, null, null);
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                ids.add(c.getString(0));
+                c.moveToNext();
+            }
+        } finally {
+            if (c != null)
+                c.close();
+        }
+        return ids;
     }
 
     public static class CommaSeparatedList implements Iterable<String> {
@@ -669,6 +757,7 @@ public class DB {
     public void endUpdate() {
         if (updateApps == null)
             return;
+        Log.d("FDroid", "Processing endUpdate - " + updateApps.size() + " apps before");
         for (App app : updateApps) {
             if (!app.updated) {
                 // The application hasn't been updated, so it's no longer
@@ -735,15 +824,13 @@ public class DB {
         boolean found = false;
         for (App app : updateApps) {
             if (app.id.equals(upapp.id)) {
-                // Log.d("FDroid", "AppUpdate: " + app.id
-                // + " is already in the database.");
                 updateApp(app, upapp);
                 app.updated = true;
                 found = true;
                 for (Apk upapk : compatibleapks) {
                     boolean afound = false;
                     for (Apk apk : app.apks) {
-                        if (apk.version.equals(upapk.version)) {
+                        if (apk.vercode == upapk.vercode) {
                             // Log.d("FDroid", "AppUpdate: " + apk.version
                             // + " is a known version.");
                             updateApkIfDifferent(apk, upapk);
@@ -754,8 +841,6 @@ public class DB {
                     }
                     if (!afound) {
                         // A new version of this application.
-                        // Log.d("FDroid", "AppUpdate: " + upapk.version
-                        // + " is a new version.");
                         updateApkIfDifferent(null, upapk);
                         upapk.updated = true;
                         app.apks.add(upapk);
@@ -766,9 +851,6 @@ public class DB {
         }
         if (!found) {
             // It's a brand new application...
-            // Log
-            // .d("FDroid", "AppUpdate: " + upapp.id
-            // + " is a new application.");
             updateApp(null, upapp);
             for (Apk upapk : compatibleapks) {
                 updateApkIfDifferent(null, upapk);
@@ -791,13 +873,13 @@ public class DB {
         values.put("name", upapp.name);
         values.put("summary", upapp.summary);
         values.put("icon", upapp.icon);
-        values.put("description", upapp.description);
+        values.put("description", upapp.detail_description);
         values.put("license", upapp.license);
         values.put("category", upapp.category);
-        values.put("webURL", upapp.webURL);
-        values.put("trackerURL", upapp.trackerURL);
-        values.put("sourceURL", upapp.sourceURL);
-        values.put("donateURL", upapp.donateURL);
+        values.put("webURL", upapp.detail_webURL);
+        values.put("trackerURL", upapp.detail_trackerURL);
+        values.put("sourceURL", upapp.detail_sourceURL);
+        values.put("donateURL", upapp.detail_donateURL);
         values.put("added",
                 upapp.added == null ? "" : mDateFormat.format(upapp.added));
         values.put(
@@ -826,22 +908,23 @@ public class DB {
         values.put("id", upapk.id);
         values.put("version", upapk.version);
         values.put("vercode", upapk.vercode);
-        values.put("server", upapk.server);
-        values.put("hash", upapk.hash);
-        values.put("hashType", upapk.hashType);
+        values.put("server", upapk.detail_server);
+        values.put("hash", upapk.detail_hash);
+        values.put("hashType", upapk.detail_hashType);
         values.put("sig", upapk.sig);
         values.put("srcname", upapk.srcname);
-        values.put("size", upapk.size);
+        values.put("size", upapk.detail_size);
         values.put("apkName", upapk.apkName);
         values.put("apkSource", upapk.apkSource);
         values.put("minSdkVersion", upapk.minSdkVersion);
         values.put("added",
                 upapk.added == null ? "" : mDateFormat.format(upapk.added));
-        values.put("permissions", CommaSeparatedList.str(upapk.permissions));
+        values.put("permissions",
+                CommaSeparatedList.str(upapk.detail_permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {
-            db.update(TABLE_APK, values, "id = ? and version =?", new String[] {
-                    oldapk.id, oldapk.version });
+            db.update(TABLE_APK, values, "id = ? and vercode = " + Integer.toString(oldapk.vercode),
+                    new String[] { oldapk.id });
         } else {
             db.insert(TABLE_APK, null, values);
         }

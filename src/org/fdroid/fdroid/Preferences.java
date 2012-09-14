@@ -18,6 +18,9 @@
 
 package org.fdroid.fdroid;
 
+import java.io.File;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -35,17 +38,56 @@ public class Preferences extends PreferenceActivity {
         r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
             public boolean onPreferenceClick(Preference preference) {
-                DB.delete(getApplicationContext());
-                // TODO: Clear cached apks and icons too.
-                Toast
-                        .makeText(getBaseContext(),
-                                "Local cached data has been cleared",
-                                Toast.LENGTH_LONG).show();
+                
+                // TODO: Progress dialog + thread is needed, it can take a
+                // while to delete all the icons and cached apks in a long
+                // standing install!
+                Toast.makeText(getBaseContext(),
+                        "Hold on...", Toast.LENGTH_SHORT)
+                        .show();
+
+                // TODO: This is going to cause problems if there is background
+                // update in progress at the time!
+
+                try {
+                    DB db = DB.getDB();
+                    db.reset();
+                } finally {
+                    DB.releaseDB();
+                }
+                ((FDroidApp) getApplication()).invalidateApps();
+
+                File dp = DB.getDataPath();
+                deleteAll(dp);
+                dp.mkdir();
+                DB.getIconsPath().mkdir();
+
+                Toast.makeText(getBaseContext(),
+                        "Local cached data has been cleared", Toast.LENGTH_LONG)
+                        .show();
                 return true;
             }
 
         });
 
+    }
+
+    @Override
+    public void finish() {
+        Intent ret = new Intent();
+        this.setResult(RESULT_OK, ret);
+        super.finish();
+    }
+    
+    private void deleteAll(File dir) {
+
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                deleteAll(new File(dir, children[i]));
+            }
+        }
+        dir.delete();
     }
 
 }

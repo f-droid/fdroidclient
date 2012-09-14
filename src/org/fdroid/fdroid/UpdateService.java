@@ -82,7 +82,8 @@ public class UpdateService extends IntentService {
 
             // See if it's time to actually do anything yet...
             if (receiver == null) {
-                long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
+                long lastUpdate = prefs.getLong("lastUpdateCheck",
+                        System.currentTimeMillis());
                 String sint = prefs.getString("updateInterval", "0");
                 int interval = Integer.parseInt(sint);
                 if (interval == 0)
@@ -127,7 +128,8 @@ public class UpdateService extends IntentService {
             }
 
             if (success) {
-                Vector<DB.App> prevapps = ((FDroidApp)getApplication()).getApps();
+                Vector<DB.App> prevapps = ((FDroidApp) getApplication())
+                        .getApps();
                 db = DB.getDB();
                 try {
                     prevUpdates = db.beginUpdate(prevapps);
@@ -135,7 +137,7 @@ public class UpdateService extends IntentService {
                         db.updateApplication(app);
                     }
                     db.endUpdate();
-                    ((FDroidApp)getApplication()).invalidateApps();
+                    ((FDroidApp) getApplication()).invalidateApps();
                     if (notify)
                         newUpdates = db.getNumUpdates();
                 } catch (Exception ex) {

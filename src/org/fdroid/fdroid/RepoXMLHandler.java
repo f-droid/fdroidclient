@@ -99,8 +99,9 @@ public class RepoXMLHandler extends DefaultHandler {
             // going to be stupid if the list gets very big!
             boolean merged = false;
             for (DB.App app : apps) {
-                if (app.id == curapp.id) {
+                if (app.id.equals(curapp.id)) {
                     app.apks.addAll(curapp.apks);
+                    merged = true;
                     break;
                 }
             }
@@ -123,19 +124,19 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             } else if (curel.equals("size")) {
                 try {
-                    curapk.size = Integer.parseInt(str);
+                    curapk.detail_size = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
-                    curapk.size = 0;
+                    curapk.detail_size = 0;
                 }
             } else if (curel.equals("hash")) {
                 if (hashType == null || hashType.equals("md5")) {
-                    if (curapk.hash == null) {
-                        curapk.hash = str;
-                        curapk.hashType = "MD5";
+                    if (curapk.detail_hash == null) {
+                        curapk.detail_hash = str;
+                        curapk.detail_hashType = "MD5";
                     }
                 } else if (hashType.equals("sha256")) {
-                    curapk.hash = str;
-                    curapk.hashType = "SHA-256";
+                    curapk.detail_hash = str;
+                    curapk.detail_hashType = "SHA-256";
                 }
             } else if (curel.equals("sig")) {
                 curapk.sig = str;
@@ -159,7 +160,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapk.added = null;
                 }
             } else if (curel.equals("permissions")) {
-                curapk.permissions = DB.CommaSeparatedList.make(str);
+                curapk.detail_permissions = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("features")) {
                 curapk.features = DB.CommaSeparatedList.make(str);
             }
@@ -171,7 +172,7 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel.equals("icon")) {
                 curapp.icon = str;
             } else if (curel.equals("description")) {
-                curapp.description = str;
+                curapp.detail_description = str;
             } else if (curel.equals("summary")) {
                 curapp.summary = str;
             } else if (curel.equals("license")) {
@@ -179,13 +180,13 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel.equals("category")) {
                 curapp.category = str;
             } else if (curel.equals("source")) {
-                curapp.sourceURL = str;
+                curapp.detail_sourceURL = str;
             } else if (curel.equals("donate")) {
-                curapp.donateURL = str;
+                curapp.detail_donateURL = str;
             } else if (curel.equals("web")) {
-                curapp.webURL = str;
+                curapp.detail_webURL = str;
             } else if (curel.equals("tracker")) {
-                curapp.trackerURL = str;
+                curapp.detail_trackerURL = str;
             } else if (curel.equals("added")) {
                 try {
                     curapp.added = str.length() == 0 ? null : mXMLDateFormat
@@ -228,10 +229,11 @@ public class RepoXMLHandler extends DefaultHandler {
                 pubkey = pk;
         } else if (localName == "application" && curapp == null) {
             curapp = new DB.App();
+            curapp.detail_Populated = true;
         } else if (localName == "package" && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
-            curapk.server = server;
+            curapk.detail_server = server;
             hashType = null;
         } else if (localName == "hash" && curapk != null) {
             hashType = attributes.getValue("", "type");

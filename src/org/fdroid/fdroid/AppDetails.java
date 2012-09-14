@@ -111,10 +111,10 @@ public class AppDetails extends ListActivity {
             else
                 status.setText(getString(R.string.not_inst));
             TextView size = (TextView) v.findViewById(R.id.size);
-            if (apk.size == 0) {
+            if (apk.detail_size == 0) {
                 size.setText("");
             } else {
-                size.setText(getFriendlySize(apk.size));
+                size.setText(getFriendlySize(apk.detail_size));
             }
             TextView buildtype = (TextView) v.findViewById(R.id.buildtype);
             if (apk.srcname != null) {
@@ -277,6 +277,16 @@ public class AppDetails extends ListActivity {
             finish();
             return;
         }
+        
+        // Make sure the app is populated.
+        try {
+            DB db = DB.getDB();
+            db.populateDetails(app);
+        } catch (Exception ex) {
+            Log.d("FDroid", "Failed to populate app - " + ex.getMessage());
+        } finally {
+            DB.releaseDB();
+        }
 
         DB.Apk curver = app.getCurrentVersion();
         app_currentvercode = curver == null ? 0 : curver.vercode;
@@ -333,7 +343,7 @@ public class AppDetails extends ListActivity {
             tv.setText(String.format(getString(R.string.details_installed),
                     app.installedVersion));
         tv = (TextView) findViewById(R.id.description);
-        tv.setText(app.description);
+        tv.setText(app.detail_description);
         if (pref_expert && mInstalledSignature != null) {
             tv = (TextView) findViewById(R.id.signature);
             tv.setText("Signed: " + mInstalledSigID);
@@ -370,21 +380,21 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
                     android.R.drawable.ic_menu_delete);
         }
-        if (app.webURL.length() > 0) {
+        if (app.detail_webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        if (app.trackerURL.length() > 0) {
+        if (app.detail_trackerURL.length() > 0) {
             menu.add(Menu.NONE, ISSUES, 3, R.string.menu_issues).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        if (app.sourceURL.length() > 0) {
+        if (app.detail_sourceURL.length() > 0) {
             menu.add(Menu.NONE, SOURCE, 4, R.string.menu_source).setIcon(
                     android.R.drawable.ic_menu_view);
         }
         menu.add(Menu.NONE, MARKET, 5, R.string.menu_market).setIcon(
                 android.R.drawable.ic_menu_view);
-        if (app.donateURL != null) {
+        if (app.detail_donateURL != null) {
             menu.add(Menu.NONE, DONATE, 6, R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
         }
@@ -409,17 +419,17 @@ public class AppDetails extends ListActivity {
             return true;
 
         case WEBSITE:
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.webURL)));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.detail_webURL)));
             return true;
 
         case ISSUES:
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(app.trackerURL)));
+                    Uri.parse(app.detail_trackerURL)));
             return true;
 
         case SOURCE:
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(app.sourceURL)));
+                    Uri.parse(app.detail_sourceURL)));
             return true;
 
         case MARKET:
@@ -429,7 +439,7 @@ public class AppDetails extends ListActivity {
 
         case DONATE:
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(app.donateURL)));
+                    Uri.parse(app.detail_donateURL)));
             return true;
 
         }
