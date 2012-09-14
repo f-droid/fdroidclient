@@ -181,7 +181,7 @@ public class DB {
 
         @Override
         public int compareTo(App arg0) {
-            return name.compareTo(arg0.name);
+            return name.compareToIgnoreCase(arg0.name);
         }
 
     }
