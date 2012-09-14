@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.Semaphore;
 
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -268,6 +269,7 @@ public class DB {
             }
         }
 
+        @TargetApi(5)
         private static class EclairChecker extends CompatibilityChecker {
 
             private HashSet<String> features;
