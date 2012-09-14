@@ -20,9 +20,12 @@
 package org.fdroid.fdroid;
 
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Vector;
 
+import org.fdroid.fdroid.DB.App;
 import org.fdroid.fdroid.R;
 
 import android.R.drawable;
@@ -339,7 +342,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             categories.add(cat_whatsnew);
             categories.add(cat_recentlyupdated);
             if (currentCategory == null)
-                currentCategory = cat_all;
+                currentCategory = cat_whatsnew;
 
         } finally {
             DB.releaseDB();
@@ -368,6 +371,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
         AppFilter appfilter = new AppFilter(this);
         
+        Vector<DB.App> availapps = new Vector<DB.App>();
         for (DB.App app : apps) {
             if (currentCategory.equals(cat_all)) {
                 // Let everything through!
@@ -395,7 +399,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             // Add it to the list(s). Always to installed and updates, but
             // only to available if it's not filtered.
             if (app.installedVersion == null) {
-                apps_av.addItem(app);
+                availapps.add(app);
             } else {
                 if (!filtered)
                     apps_in.addItem(app);
@@ -403,6 +407,27 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                     apps_up.addItem(app);
             }
         }
+
+        if(currentCategory.equals(cat_whatsnew)) {
+            class WhatsNewComparator implements Comparator<DB.App> {
+                @Override
+                public int compare(App lhs, App rhs) {
+                    return rhs.added.compareTo(lhs.added);
+                }
+            }
+            Collections.sort(availapps, new WhatsNewComparator());
+        }
+        else if(currentCategory.equals(cat_recentlyupdated)) {
+            class UpdatedComparator implements Comparator<DB.App> {
+                @Override
+                public int compare(App lhs, App rhs) {
+                    return rhs.lastUpdated.compareTo(lhs.lastUpdated);
+                }
+            }
+            Collections.sort(availapps, new UpdatedComparator());
+        }
+        for(DB.App app : availapps)
+            apps_av.addItem(app);
         
         // Update the count on the 'Updates' tab to show the number available.
         // This is quite unpleasant, but seems to be the only way to do it.
