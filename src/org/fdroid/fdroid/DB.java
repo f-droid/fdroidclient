@@ -85,16 +85,22 @@ public class DB {
 
     // The TABLE_APP table stores details of all the applications we know about.
     // This information is retrieved from the repositories.
-    // TODO: The hasUpdates and instlaledVersion fields are no longer used
     private static final String TABLE_APP = "fdroid_app";
     private static final String CREATE_TABLE_APP = "create table " + TABLE_APP
             + " ( " + "id text not null, " + "name text not null, "
             + "summary text not null, " + "icon text, "
             + "description text not null, " + "license text not null, "
             + "webURL text, " + "trackerURL text, " + "sourceURL text, "
-            + "installedVersion text," + "hasUpdates int not null,"
-            + "primary key(id));";
-
+            + "curVersion text,"
+            + "curVercode integer,"
+            + "antiFeatures string,"
+            + "donateURL string,"
+            + "requirements string,"
+            + "category string,"
+            + "added string,"
+            + "lastUpdated string,"
+            + "primary key(id));";    
+    
     public static class App implements Comparable<App> {
 
         public App() {
@@ -128,8 +134,8 @@ public class DB {
         public String trackerURL;
         public String sourceURL;
         public String donateURL; // Donate link, or null
-        public String marketVersion;
-        public int marketVercode;
+        public String curVersion;
+        public int curVercode;
         public Date added;
         public Date lastUpdated;
 
@@ -167,9 +173,9 @@ public class DB {
         public Apk getCurrentVersion() {
 
             // Try and return the real current version first...
-            if (marketVersion != null && marketVercode > 0) {
+            if (curVersion != null && curVercode > 0) {
                 for (Apk apk : apks) {
-                    if (apk.vercode == marketVercode)
+                    if (apk.vercode == curVercode)
                         return apk;
                 }
             }
@@ -202,8 +208,17 @@ public class DB {
             + " ( " + "id text not null, " + "version text not null, "
             + "server text not null, " + "hash text not null, "
             + "vercode int not null," + "apkName text not null, "
-            + "size int not null," + "primary key(id,version));";
-
+            + "size int not null,"
+            + "apkSource text,"
+            + "sig string,"
+            + "srcname string,"
+            + "minSdkVersion integer,"
+            + "permissions string,"
+            + "features string,"
+            + "hashType string,"
+            + "added string,"
+            + "primary key(id));";
+    
     public static class Apk {
 
         public Apk() {
@@ -315,7 +330,8 @@ public class DB {
     private static final String TABLE_REPO = "fdroid_repo";
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (" + "address text primary key, "
-            + "inuse integer not null, " + "priority integer not null);";
+            + "inuse integer not null, " + "priority integer not null,"
+            + "pubkey text);";
 
     public static class Repo {
         public String address;
@@ -324,75 +340,12 @@ public class DB {
         public String pubkey; // null for an unsigned repo
     }
 
-    // SQL to update the database to versions beyond the first. Here is
-    // how the database works:
-    //
-    // * The SQL to create the database tables always creates version
-    // 1. This SQL will never be altered.
-    // * In the array below there is SQL for each subsequent version
-    // from 2 onwards.
-    // * For a new install, the database is always initialised to version
-    // 1.
-    // * Then, whether it's a new install or not, all the upgrade SQL in
-    // the array below is executed in order to bring the database up to
-    // the latest version.
-    // * The current version is tracked by an entry in the TABLE_VERSION
-    // table.
-    //
-    private static final String[][] DB_UPGRADES = {
-
-            // Version 2...
-            { "alter table " + TABLE_APP + " add marketVersion text",
-                    "alter table " + TABLE_APP + " add marketVercode integer" },
-
-            // Version 3...
-            { "alter table " + TABLE_APK + " add apkSource text" },
-
-            // Version 4...
-            { "alter table " + TABLE_APP + " add installedVerCode integer" },
-
-            // Version 5...
-            { "alter table " + TABLE_APP + " add antiFeatures string" },
-
-            // Version 6...
-            { "alter table " + TABLE_APK + " add sig string" },
-
-            // Version 7...
-            { "alter table " + TABLE_REPO + " add pubkey string" },
-
-            // Version 8...
-            { "alter table " + TABLE_APP + " add donateURL string" },
-
-            // Version 9...
-            { "alter table " + TABLE_APK + " add srcname string" },
-
-            // Version 10...
-            { "alter table " + TABLE_APK + " add minSdkVersion integer",
-                    "alter table " + TABLE_APK + " add permissions string",
-                    "alter table " + TABLE_APK + " add features string" },
-
-            // Version 11...
-            { "alter table " + TABLE_APP + " add requirements string" },
-
-            // Version 12...
-            { "alter table " + TABLE_APK + " add hashType string",
-                    "update " + TABLE_APK + " set hashType = 'MD5'" },
-
-            // Version 13...
-            { "alter table " + TABLE_APP + " add category string" },
-
-            // Version 14...
-            { "alter table " + TABLE_APK + " add added string",
-                    "alter table " + TABLE_APP + " add added string",
-                    "alter table " + TABLE_APP + " add lastUpdated string" },
-
-            // Version 15...
-            { "create index apk_vercode on " + TABLE_APK + " (vercode);" } };
+    private final int DBVersion = 16;
 
     private class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, DATABASE_NAME, null, DB_UPGRADES.length + 1);
+            super(context, DATABASE_NAME, null, DBVersion);
         }
 
         @Override
@@ -400,7 +353,7 @@ public class DB {
             db.execSQL(CREATE_TABLE_REPO);
             db.execSQL(CREATE_TABLE_APP);
             db.execSQL(CREATE_TABLE_APK);
-            onUpgrade(db, 1, DB_UPGRADES.length + 1);
+            db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
             ContentValues values = new ContentValues();
             values.put("address",
                     mContext.getString(R.string.default_repo_address));
@@ -413,9 +366,12 @@ public class DB {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            for (int v = oldVersion + 1; v <= newVersion; v++)
-                for (int i = 0; i < DB_UPGRADES[v - 2].length; i++)
-                    db.execSQL(DB_UPGRADES[v - 2][i]);
+            db.execSQL("drop table " + TABLE_APP);
+            db.execSQL("drop table " + TABLE_APK);
+            db.execSQL(CREATE_TABLE_APP);
+            db.execSQL(CREATE_TABLE_APK);
+            if (oldVersion < 7)
+                db.execSQL("alter table " + TABLE_REPO + " add pubkey string");
         }
 
     }
@@ -555,9 +511,9 @@ public class DB {
                 app.trackerURL = c.getString(c.getColumnIndex("trackerURL"));
                 app.sourceURL = c.getString(c.getColumnIndex("sourceURL"));
                 app.donateURL = c.getString(c.getColumnIndex("donateURL"));
-                app.marketVersion = c.getString(c
-                        .getColumnIndex("marketVersion"));
-                app.marketVercode = c.getInt(c.getColumnIndex("marketVercode"));
+                app.curVersion = c.getString(c
+                        .getColumnIndex("curVersion"));
+                app.curVercode = c.getInt(c.getColumnIndex("curVercode"));
                 String sAdded = c.getString(c.getColumnIndex("added"));
                 app.added = (sAdded == null || sAdded.length() == 0) ? null
                         : mDateFormat.parse(sAdded);
@@ -652,7 +608,6 @@ public class DB {
 
         return result;
     }
-
 
     public static class CommaSeparatedList implements Iterable<String> {
         private String value;
@@ -849,8 +804,8 @@ public class DB {
                 "lastUpdated",
                 upapp.added == null ? "" : mDateFormat
                         .format(upapp.lastUpdated));
-        values.put("marketVersion", upapp.marketVersion);
-        values.put("marketVercode", upapp.marketVercode);
+        values.put("curVersion", upapp.curVersion);
+        values.put("curVercode", upapp.curVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         if (oldapp != null) {

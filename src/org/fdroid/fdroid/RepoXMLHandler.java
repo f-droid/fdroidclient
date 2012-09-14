@@ -201,12 +201,12 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.lastUpdated = null;
                 }
             } else if (curel.equals("marketversion")) {
-                curapp.marketVersion = str;
+                curapp.curVersion = str;
             } else if (curel.equals("marketvercode")) {
                 try {
-                    curapp.marketVercode = Integer.parseInt(str);
+                    curapp.curVercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
-                    curapp.marketVercode = 0;
+                    curapp.curVercode = 0;
                 }
             } else if (curel.equals("antifeatures")) {
                 curapp.antiFeatures = DB.CommaSeparatedList.make(str);
