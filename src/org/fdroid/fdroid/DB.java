@@ -84,6 +84,7 @@ public class DB {
 
     // The TABLE_APP table stores details of all the applications we know about.
     // This information is retrieved from the repositories.
+    // TODO: The hasUpdates and instlaledVersion fields are no longer used
     private static final String TABLE_APP = "fdroid_app";
     private static final String CREATE_TABLE_APP = "create table " + TABLE_APP
             + " ( " + "id text not null, " + "name text not null, "
@@ -126,13 +127,15 @@ public class DB {
         public String trackerURL;
         public String sourceURL;
         public String donateURL; // Donate link, or null
-        public String installedVersion;
-        public String currentVersion;
-        public int installedVerCode;
         public String marketVersion;
         public int marketVercode;
         public Date added;
         public Date lastUpdated;
+
+        // Installed version (or null) and version code. These are valid only
+        // when getApps() has been called with getinstalledinfo=true.
+        public String installedVersion;
+        public int installedVerCode;
 
         // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
@@ -146,6 +149,9 @@ public class DB {
         // explicitly ignored. (We're currently not using the database
         // field for this - we make the decision on the fly in getApps().
         public boolean hasUpdates;
+
+        // The name of the version that would be updated to.
+        public String updateVersion;
 
         // Used internally for tracking during repo updates.
         public boolean updated;
@@ -508,6 +514,17 @@ public class DB {
     // the user's current preferences.
     public Vector<App> getApps(boolean getinstalledinfo) {
 
+        // If we're going to need it, get info in what's currently installed
+        Map<String, PackageInfo> systemApks = null;
+        if (getinstalledinfo) {
+            Log.d("FDroid", "Reading installed packages");
+            systemApks = new HashMap<String, PackageInfo>();
+            List<PackageInfo> installedPackages = mPm.getInstalledPackages(0);
+            for (PackageInfo appInfo : installedPackages) {
+                systemApks.put(appInfo.packageName, appInfo);
+            }
+        }
+
         Map<String, App> apps = new HashMap<String, App>();
         Cursor c = null;
         long startTime = System.currentTimeMillis();
@@ -546,6 +563,15 @@ public class DB {
                         .parse(sLastUpdated);
                 app.hasUpdates = false;
 
+                if (getinstalledinfo && systemApks.containsKey(app.id)) {
+                    PackageInfo sysapk = systemApks.get(app.id);
+                    app.installedVersion = sysapk.versionName;
+                    app.installedVerCode = sysapk.versionCode;
+                } else {
+                    app.installedVersion = null;
+                    app.installedVerCode = 0;
+                }
+
                 apps.put(app.id, app);
 
                 c.moveToNext();
@@ -572,8 +598,7 @@ public class DB {
                 apk.size = c.getInt(c.getColumnIndex("size"));
                 apk.apkName = c.getString(c.getColumnIndex("apkName"));
                 apk.apkSource = c.getString(c.getColumnIndex("apkSource"));
-                apk.minSdkVersion = c.getInt(c
-                        .getColumnIndex("minSdkVersion"));
+                apk.minSdkVersion = c.getInt(c.getColumnIndex("minSdkVersion"));
                 String sApkAdded = c.getString(c.getColumnIndex("added"));
                 apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
                         : mDateFormat.parse(sApkAdded);
@@ -602,8 +627,8 @@ public class DB {
         Vector<App> result = new Vector<App>(apps.values());
         Collections.sort(result);
 
+        // Fill in the hasUpdates fields if we have the necessary information...
         if (getinstalledinfo) {
-            getInstalledInfo(result);
 
             // We'll say an application has updates if it's installed AND the
             // installed version is not the 'current' one AND the installed
@@ -614,7 +639,7 @@ public class DB {
                         && !app.installedVersion.equals(curver.version)) {
                     if (app.installedVerCode < curver.vercode) {
                         app.hasUpdates = true;
-                        app.currentVersion = curver.version;
+                        app.updateVersion = curver.version;
                     }
                 }
             }
@@ -623,26 +648,6 @@ public class DB {
         return result;
     }
 
-    // Get installation status for all apps.
-    private void getInstalledInfo(Vector<DB.App> apps) {
-        List<PackageInfo> installedPackages = mPm.getInstalledPackages(0);
-        Map<String, PackageInfo> systemApks = new HashMap<String, PackageInfo>();
-        Log.d("FDroid", "Reading installed packages");
-        for (PackageInfo appInfo : installedPackages) {
-            systemApks.put(appInfo.packageName, appInfo);
-        }
-
-        for (DB.App app : apps) {
-            if (systemApks.containsKey(app.id)) {
-                PackageInfo sysapk = systemApks.get(app.id);
-                app.installedVersion = sysapk.versionName;
-                app.installedVerCode = sysapk.versionCode;
-            } else {
-                app.installedVersion = null;
-                app.installedVerCode = 0;
-            }
-        }
-    }
 
     public static class CommaSeparatedList implements Iterable<String> {
         private String value;
@@ -820,9 +825,6 @@ public class DB {
     // If null, this app is not in the database at all and
     // should be added.
     // 'upapp' - updated details
-    // Note that we deliberately do not update installedVersion or
-    // installedVerCode here - for a new app, they default correctly,
-    // and for an existing app we want to keep that cached data.
     private void updateApp(App oldapp, App upapp) {
         ContentValues values = new ContentValues();
         values.put("id", upapp.id);
@@ -846,7 +848,6 @@ public class DB {
         values.put("marketVercode", upapp.marketVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("requirements", CommaSeparatedList.str(upapp.requirements));
-        values.put("hasUpdates", upapp.hasUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
         } else {
@@ -884,13 +885,6 @@ public class DB {
         } else {
             db.insert(TABLE_APK, null, values);
         }
-    }
-
-    public void setInstalledVersion(String id, String version, int vercode) {
-        ContentValues values = new ContentValues();
-        values.put("installedVersion", version);
-        values.put("installedVerCode", vercode);
-        db.update(TABLE_APP, values, "id = ?", new String[] { id });
     }
 
     // Get a list of the configured repositories.

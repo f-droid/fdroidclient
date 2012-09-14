@@ -60,7 +60,7 @@ public class AppListAdapter extends BaseAdapter {
 
         String vs;
         if (app.hasUpdates)
-            vs = app.installedVersion + " -> " + app.currentVersion;
+            vs = app.installedVersion + " -> " + app.updateVersion;
         else if (app.installedVersion != null)
             vs = app.installedVersion;
         else {
