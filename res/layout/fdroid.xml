@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:orientation="vertical" android:paddingTop="3dp">
-
-<Spinner android:id="@+id/category"
-	android:layout_width="fill_parent" android:layout_height="wrap_content" />
+	android:orientation="vertical">
 
 <TabHost xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@android:id/tabhost" android:layout_width="fill_parent"

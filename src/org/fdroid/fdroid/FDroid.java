@@ -46,8 +46,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TabHost;
@@ -87,9 +89,11 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
     private ProgressDialog pd;
 
-    private static final String TAB_IN = "INST";
-    private static final String TAB_UN = "UNIN";
-    private static final String TAB_UP = "UPDT";
+    // Tags for the tabs
+    private static final String TAB_Installed = "I";
+    private static final String TAB_Available = "A";
+    private static final String TAB_Updates = "U";
+
     private TabHost tabHost;
     private TabSpec ts;
     private TabSpec ts1;
@@ -107,13 +111,10 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
         setContentView(R.layout.fdroid);
 
-        Spinner spinner = (Spinner) findViewById(R.id.category);
         categories = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, new Vector<String>());
         categories
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(categories);
-        spinner.setOnItemSelectedListener(FDroid.this);
 
         tabHost = getTabHost();
         createTabs();
@@ -275,9 +276,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             public View createTabContent(String tag) {
 
                 AppListAdapter ad;
-                if (tag.equals(TAB_IN))
+                if (tag.equals(TAB_Installed))
                     ad = apps_in;
-                else if (tag.equals(TAB_UP))
+                else if (tag.equals(TAB_Updates))
                     ad = apps_up;
                 else
                     ad = apps_av;
@@ -286,24 +287,39 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 lst.setFastScrollEnabled(true);
                 lst.setOnItemClickListener(FDroid.this);
                 lst.setAdapter(ad);
-                return lst;
+
+                if (!tag.equals(TAB_Available))
+                    return lst;
+
+                LinearLayout v = new LinearLayout(FDroid.this);
+                v.setOrientation(LinearLayout.VERTICAL);
+                Spinner cats = new Spinner(FDroid.this);
+                cats.setAdapter(categories);
+                cats.setOnItemSelectedListener(FDroid.this);
+                v.addView(cats, new LayoutParams(
+                        LinearLayout.LayoutParams.FILL_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                v.addView(lst, new LayoutParams(
+                        LinearLayout.LayoutParams.FILL_PARENT,
+                        LinearLayout.LayoutParams.FILL_PARENT));
+                return v;
             }
         };
 
         // Create the tab of installed apps...
-        ts = tabHost.newTabSpec(TAB_IN);
+        ts = tabHost.newTabSpec(TAB_Installed);
         ts.setIndicator(getString(R.string.tab_installed), getResources()
                 .getDrawable(drawable.star_off));
         ts.setContent(tf);
 
         // Create the tab of apps with updates...
-        tsUp = tabHost.newTabSpec(TAB_UP);
+        tsUp = tabHost.newTabSpec(TAB_Updates);
         tsUp.setIndicator(getString(R.string.tab_updates), getResources()
                 .getDrawable(drawable.star_on));
         tsUp.setContent(tf);
 
         // Create the tab of available apps...
-        ts1 = tabHost.newTabSpec(TAB_UN);
+        ts1 = tabHost.newTabSpec(TAB_Available);
         ts1.setIndicator(getString(R.string.tab_noninstalled), getResources()
                 .getDrawable(drawable.ic_input_add));
         ts1.setContent(tf);
@@ -370,45 +386,48 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         Date recentDate = recent.getTime();
 
         AppFilter appfilter = new AppFilter(this);
-        
+
+        boolean incat;
         Vector<DB.App> availapps = new Vector<DB.App>();
         for (DB.App app : apps) {
             if (currentCategory.equals(cat_all)) {
-                // Let everything through!
+                incat = true;
             } else if (currentCategory.equals(cat_whatsnew)) {
                 if (app.added == null)
-                    continue;
-                if (app.added.compareTo(recentDate) < 0)
-                    continue;
+                    incat = false;
+                else if (app.added.compareTo(recentDate) < 0)
+                    incat = false;
+                else
+                    incat = true;
             } else if (currentCategory.equals(cat_recentlyupdated)) {
                 if (app.lastUpdated == null)
-                    continue;
+                    incat = false;
                 // Don't include in the recently updated category if the
                 // 'update' was actually it being added.
-                if (app.lastUpdated.compareTo(app.added) == 0)
-                    continue;
-                if (app.lastUpdated.compareTo(recentDate) < 0)
-                    continue;
+                else if (app.lastUpdated.compareTo(app.added) == 0)
+                    incat = false;
+                else if (app.lastUpdated.compareTo(recentDate) < 0)
+                    incat = false;
+                else
+                    incat = true;
             } else {
-                if (!currentCategory.equals(app.category))
-                    continue;
+                incat = currentCategory.equals(app.category);
             }
 
             boolean filtered = appfilter.filter(app);
 
             // Add it to the list(s). Always to installed and updates, but
             // only to available if it's not filtered.
-            if (app.installedVersion == null) {
+            if (!filtered && incat)
                 availapps.add(app);
-            } else {
-                if (!filtered)
-                    apps_in.addItem(app);
+            if (app.installedVersion != null) {
+                apps_in.addItem(app);
                 if (app.hasUpdates)
                     apps_up.addItem(app);
             }
         }
 
-        if(currentCategory.equals(cat_whatsnew)) {
+        if (currentCategory.equals(cat_whatsnew)) {
             class WhatsNewComparator implements Comparator<DB.App> {
                 @Override
                 public int compare(App lhs, App rhs) {
@@ -416,8 +435,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 }
             }
             Collections.sort(availapps, new WhatsNewComparator());
-        }
-        else if(currentCategory.equals(cat_recentlyupdated)) {
+        } else if (currentCategory.equals(cat_recentlyupdated)) {
             class UpdatedComparator implements Comparator<DB.App> {
                 @Override
                 public int compare(App lhs, App rhs) {
@@ -426,9 +444,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             }
             Collections.sort(availapps, new UpdatedComparator());
         }
-        for(DB.App app : availapps)
+        for (DB.App app : availapps)
             apps_av.addItem(app);
-        
+
         // Update the count on the 'Updates' tab to show the number available.
         // This is quite unpleasant, but seems to be the only way to do it.
         TextView uptext = (TextView) tabHost.getTabWidget().getChildAt(2)
@@ -502,9 +520,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
         final DB.App app;
         String curtab = tabHost.getCurrentTabTag();
-        if (curtab.equalsIgnoreCase(TAB_IN)) {
+        if (curtab.equalsIgnoreCase(TAB_Installed)) {
             app = (DB.App) apps_in.getItem(arg2);
-        } else if (curtab.equalsIgnoreCase(TAB_UP)) {
+        } else if (curtab.equalsIgnoreCase(TAB_Updates)) {
             app = (DB.App) apps_up.getItem(arg2);
         } else {
             app = (DB.App) apps_av.getItem(arg2);
