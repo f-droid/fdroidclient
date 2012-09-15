@@ -42,9 +42,6 @@ public class Preferences extends PreferenceActivity {
                 // TODO: Progress dialog + thread is needed, it can take a
                 // while to delete all the icons and cached apks in a long
                 // standing install!
-                Toast.makeText(getBaseContext(),
-                        "Hold on...", Toast.LENGTH_SHORT)
-                        .show();
 
                 // TODO: This is going to cause problems if there is background
                 // update in progress at the time!
@@ -65,18 +62,15 @@ public class Preferences extends PreferenceActivity {
                 Toast.makeText(getBaseContext(),
                         "Local cached data has been cleared", Toast.LENGTH_LONG)
                         .show();
+                Intent ret = new Intent();
+                ret.putExtra("reset", true);
+               setResult(RESULT_OK, ret);
+                finish();
                 return true;
             }
 
         });
 
-    }
-
-    @Override
-    public void finish() {
-        Intent ret = new Intent();
-        this.setResult(RESULT_OK, ret);
-        super.finish();
     }
     
     private void deleteAll(File dir) {

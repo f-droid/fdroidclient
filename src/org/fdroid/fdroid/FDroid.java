@@ -260,7 +260,11 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             // unschedule) the service accordingly. It's cheap, so no need to
             // check if the particular setting has actually been changed.
             UpdateService.schedule(getBaseContext());
-            populateLists();
+            if (data.hasExtra("reset")) {
+                updateRepos();
+            } else {
+                populateLists();
+            }
             break;
 
         }

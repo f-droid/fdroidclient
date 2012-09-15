@@ -91,7 +91,6 @@ public class RepoXMLHandler extends DefaultHandler {
         }
 
         if (curel.equals("application") && curapp != null) {
-            getIcon(curapp);
 
             // If we already have this application (must be from scanning a
             // different repo) then just merge in the apks.
@@ -241,36 +240,6 @@ public class RepoXMLHandler extends DefaultHandler {
         curchars.setLength(0);
     }
 
-    private void getIcon(DB.App app) {
-        try {
-
-            File f = new File(DB.getIconsPath(), app.icon);
-            if (f.exists())
-                return;
-
-            URL u = new URL(server + "/icons/" + app.icon);
-            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
-            if (uc.getResponseCode() == 200) {
-                BufferedInputStream getit = new BufferedInputStream(
-                        uc.getInputStream());
-                FileOutputStream saveit = new FileOutputStream(f);
-                BufferedOutputStream bout = new BufferedOutputStream(saveit,
-                        1024);
-                byte data[] = new byte[1024];
-
-                int readed = getit.read(data, 0, 1024);
-                while (readed != -1) {
-                    bout.write(data, 0, readed);
-                    readed = getit.read(data, 0, 1024);
-                }
-                bout.close();
-                getit.close();
-                saveit.close();
-            }
-        } catch (Exception e) {
-
-        }
-    }
 
     private static void getRemoteFile(Context ctx, String url, String dest)
             throws MalformedURLException, IOException {

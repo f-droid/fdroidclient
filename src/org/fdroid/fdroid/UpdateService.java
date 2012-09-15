@@ -18,6 +18,12 @@
 
 package org.fdroid.fdroid;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Vector;
 
 import android.app.AlarmManager;
@@ -128,16 +134,17 @@ public class UpdateService extends IntentService {
             }
 
             if (success) {
+                Vector<DB.App> acceptedapps = new Vector<DB.App>();
                 Vector<DB.App> prevapps = ((FDroidApp) getApplication())
                         .getApps();
                 db = DB.getDB();
                 try {
                     prevUpdates = db.beginUpdate(prevapps);
                     for (DB.App app : apps) {
-                        db.updateApplication(app);
+                        if(db.updateApplication(app))
+                            acceptedapps.add(app);
                     }
                     db.endUpdate();
-                    ((FDroidApp) getApplication()).invalidateApps();
                     if (notify)
                         newUpdates = db.getNumUpdates();
                 } catch (Exception ex) {
@@ -149,6 +156,12 @@ public class UpdateService extends IntentService {
                 } finally {
                     DB.releaseDB();
                 }
+                if (success) {
+                    for (DB.App app : acceptedapps)
+                        getIcon(app);
+                    ((FDroidApp) getApplication()).invalidateApps();
+                }
+
             }
 
             if (success && notify) {
@@ -204,4 +217,41 @@ public class UpdateService extends IntentService {
         }
 
     }
+    
+    private void getIcon(DB.App app) {
+        try {
+
+            File f = new File(DB.getIconsPath(), app.icon);
+            if (f.exists())
+                return;
+
+            if(app.apks.size() == 0)
+                return;
+            String server = app.apks.get(0).detail_server;
+            URL u = new URL(server + "/icons/" + app.icon);
+            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+            if (uc.getResponseCode() == 200) {
+                BufferedInputStream getit = new BufferedInputStream(
+                        uc.getInputStream());
+                FileOutputStream saveit = new FileOutputStream(f);
+                BufferedOutputStream bout = new BufferedOutputStream(saveit,
+                        1024);
+                byte data[] = new byte[1024];
+
+                int readed = getit.read(data, 0, 1024);
+                while (readed != -1) {
+                    bout.write(data, 0, readed);
+                    readed = getit.read(data, 0, 1024);
+                }
+                bout.close();
+                getit.close();
+                saveit.close();
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    
 }
+
+

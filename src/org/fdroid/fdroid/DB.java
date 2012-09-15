@@ -47,8 +47,6 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.util.Log;
 
-
-
 public class DB {
 
     private static Semaphore dbSync = new Semaphore(1, true);
@@ -360,16 +358,18 @@ public class DB {
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL("create index app_id on " + TABLE_APP + " (id);");
+        db.execSQL("create index app_category on " + TABLE_APP + " (category);");
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + TABLE_APK
-                + " (vercode);");
+        db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
         db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
     }
+
     public static void resetTransient(SQLiteDatabase db) {
         db.execSQL("drop table " + TABLE_APP);
         db.execSQL("drop table " + TABLE_APK);
-        createAppApk(db);            
+        createAppApk(db);
     }
+
     private class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
@@ -399,7 +399,6 @@ public class DB {
                 db.execSQL("alter table " + TABLE_REPO + " add pubkey string");
         }
 
-        
     }
 
     public static File getDataPath() {
@@ -482,11 +481,10 @@ public class DB {
                     + " order by category", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                String s = c.getString(c.getColumnIndex("category"));
-                if (s == null) {
-                    s = "none";
+                String s = c.getString(0);
+                if (s != null) {
+                    result.add(s);
                 }
-                result.add(s);
                 c.moveToNext();
             }
         } catch (Exception e) {
@@ -757,7 +755,8 @@ public class DB {
     public void endUpdate() {
         if (updateApps == null)
             return;
-        Log.d("FDroid", "Processing endUpdate - " + updateApps.size() + " apps before");
+        Log.d("FDroid", "Processing endUpdate - " + updateApps.size()
+                + " apps before");
         for (App app : updateApps) {
             if (!app.updated) {
                 // The application hasn't been updated, so it's no longer
@@ -800,10 +799,12 @@ public class DB {
     // Called during update to supply new details for an application (or
     // details of a completely new one). Calls to this must be wrapped by
     // a call to beginUpdate and a call to endUpdate.
-    public void updateApplication(App upapp) {
+    // Returns true if the app was accepted. If it wasn't, it's probably
+    // because it's not compatible with the device.
+    public boolean updateApplication(App upapp) {
 
         if (updateApps == null) {
-            return;
+            return false;
         }
 
         // Lazy initialise this...
@@ -819,7 +820,7 @@ public class DB {
             if (compatChecker.isCompatible(apk))
                 compatibleapks.add(apk);
         if (compatibleapks.size() == 0)
-            return;
+            return false;
 
         boolean found = false;
         for (App app : updateApps) {
@@ -859,6 +860,7 @@ public class DB {
             upapp.updated = true;
             updateApps.add(upapp);
         }
+        return true;
 
     }
 
@@ -923,7 +925,8 @@ public class DB {
                 CommaSeparatedList.str(upapk.detail_permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
         if (oldapk != null) {
-            db.update(TABLE_APK, values, "id = ? and vercode = " + Integer.toString(oldapk.vercode),
+            db.update(TABLE_APK, values,
+                    "id = ? and vercode = " + Integer.toString(oldapk.vercode),
                     new String[] { oldapk.id });
         } else {
             db.insert(TABLE_APK, null, values);
