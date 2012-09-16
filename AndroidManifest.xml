@@ -26,7 +26,7 @@
 		<activity android:name="Settings" />
 		<activity android:name="AppDetails" />
 		<activity android:name="Preferences" />
-		<activity android:name="SearchResults" android:launchMode="singleTop">
+		<activity android:name="SearchResults" android:launchMode="singleTop" android:exported="false">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
 			</intent-filter>
