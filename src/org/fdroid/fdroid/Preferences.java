@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ public class Preferences extends PreferenceActivity {
         r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
             public boolean onPreferenceClick(Preference preference) {
-                
+
                 // TODO: Progress dialog + thread is needed, it can take a
                 // while to delete all the icons and cached apks in a long
                 // standing install!
@@ -64,15 +64,27 @@ public class Preferences extends PreferenceActivity {
                         .show();
                 Intent ret = new Intent();
                 ret.putExtra("reset", true);
-               setResult(RESULT_OK, ret);
+                setResult(RESULT_OK, ret);
                 finish();
                 return true;
             }
 
         });
 
+        r = (Preference) findPreference("ignoreTouchscreen");
+        r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+
+            public boolean onPreferenceClick(Preference preference) {
+                Intent ret = new Intent();
+                ret.putExtra("update", true);
+                setResult(RESULT_OK, ret);
+                return true;
+            }
+
+        });
+
     }
-    
+
     private void deleteAll(File dir) {
 
         if (dir.isDirectory()) {
@@ -83,5 +95,6 @@ public class Preferences extends PreferenceActivity {
         }
         dir.delete();
     }
+
 
 }
