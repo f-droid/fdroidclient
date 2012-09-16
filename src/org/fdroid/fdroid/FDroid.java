@@ -298,6 +298,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 LinearLayout v = new LinearLayout(FDroid.this);
                 v.setOrientation(LinearLayout.VERTICAL);
                 Spinner cats = new Spinner(FDroid.this);
+                // Giving it an ID lets the default save/restore state
+                // functionality do its stuff.
+                cats.setId(R.id.categorySpinner);
                 cats.setAdapter(categories);
                 cats.setOnItemSelectedListener(FDroid.this);
                 v.addView(cats, new LayoutParams(
