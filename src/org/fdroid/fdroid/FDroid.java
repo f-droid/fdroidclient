@@ -503,6 +503,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         pd = ProgressDialog.show(this, getString(R.string.process_wait_title),
                 getString(R.string.process_update_msg), true, true);
         pd.setIcon(android.R.drawable.ic_dialog_info);
+        pd.setCanceledOnTouchOutside(false);
 
         Intent intent = new Intent(this, UpdateService.class);
         mUpdateReceiver = new UpdateReceiver(new Handler());
