@@ -307,8 +307,15 @@ public class DB {
         private static class EclairChecker extends CompatibilityChecker {
 
             private HashSet<String> features;
+            private boolean ignoreTouchscreen;
 
             public EclairChecker(Context ctx) {
+
+                SharedPreferences prefs = PreferenceManager
+                        .getDefaultSharedPreferences(ctx);
+                ignoreTouchscreen = prefs
+                        .getBoolean("ignoreTouchscreen", false);
+
                 PackageManager pm = ctx.getPackageManager();
                 StringBuilder logMsg = new StringBuilder();
                 logMsg.append("Available device features:");
@@ -326,7 +333,10 @@ public class DB {
                     return false;
                 if (apk.features != null) {
                     for (String feat : apk.features) {
-                        if (!features.contains(feat)) {
+                        if (ignoreTouchscreen
+                                && feat.equals("android.hardware.touchscreen")) {
+                            // Don't check it!
+                        } else if (!features.contains(feat)) {
                             Log.d("FDroid", apk.id
                                     + " is incompatible based on lack of "
                                     + feat);
