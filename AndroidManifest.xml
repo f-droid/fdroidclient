@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.fdroid.fdroid" android:versionCode="25"
-	android:versionName="0.34-test" android:installLocation="auto">
+	package="org.fdroid.fdroid" android:versionCode="26"
+	android:versionName="0.35-test" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="3" android:targetSdkVersion="15" />
 	<supports-screens
 		android:anyDensity="true"
