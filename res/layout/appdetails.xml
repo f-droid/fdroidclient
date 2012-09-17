@@ -1,45 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<LinearLayout android:id="@+id/header"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-		<ImageView android:id="@+id/icon" android:cropToPadding="true"
-			android:padding="4px" android:scaleType="centerInside"
-			android:layout_height="50px" android:layout_width="50px" />
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:cropToPadding="true"
+            android:padding="4px"
+            android:scaleType="centerInside" />
 
-		<RelativeLayout android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-			<TextView android:id="@+id/title" android:textStyle="bold"
-				android:singleLine="true" android:ellipsize="marquee"
-				android:layout_width="fill_parent" android:layout_height="wrap_content"
-				android:textSize="18sp" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-			<TextView android:id="@+id/license" android:textSize="12sp"
-				android:layout_below="@id/title" android:layout_alignParentRight="true"
-				android:layout_height="wrap_content" android:layout_width="wrap_content" />
+            <TextView
+                android:id="@+id/license"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/title"
+                android:textSize="12sp" />
 
-			<TextView android:id="@+id/status" android:layout_toLeftOf="@id/license"
-				android:layout_below="@id/title" android:layout_alignParentLeft="true"
-				android:textSize="12sp" android:layout_height="wrap_content"
-				android:layout_width="fill_parent" />
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/title"
+                android:layout_toLeftOf="@id/license"
+                android:textSize="12sp" />
 
-			<TextView android:id="@+id/signature" android:layout_below="@id/status"
-				android:layout_alignParentLeft="true" android:textSize="12sp"
-				android:layout_height="wrap_content" android:layout_width="fill_parent" />
+            <TextView
+                android:id="@+id/signature"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/status"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
 
-		</RelativeLayout>
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false" />
 
-	</LinearLayout>
-
-	<TextView android:id="@+id/description" android:singleLine="false"
-		android:layout_width="fill_parent" android:layout_height="wrap_content" />
-
-	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" />
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

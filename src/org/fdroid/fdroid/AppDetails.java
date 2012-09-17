@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import org.xml.sax.XMLReader;
+
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -45,7 +47,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.Html;
+import android.text.Html.TagHandler;
 import android.text.format.DateFormat;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -171,7 +177,11 @@ public class AppDetails extends ListActivity {
 
         Intent i = getIntent();
         appid = "";
-        if (!i.hasExtra("appid")) {
+        Uri data = getIntent().getData();
+        if(data != null) {
+            appid = data.getEncodedSchemeSpecificPart();
+            Log.d("FDroid", "AppDetails launched from link, for '" + appid + "'");
+        } else if (!i.hasExtra("appid")) {
             Log.d("FDroid", "No application ID in AppDetails!?");
         } else {
             appid = i.getStringExtra("appid");
@@ -277,7 +287,7 @@ public class AppDetails extends ListActivity {
             finish();
             return;
         }
-        
+
         // Make sure the app is populated.
         try {
             DB db = DB.getDB();
@@ -343,7 +353,36 @@ public class AppDetails extends ListActivity {
             tv.setText(String.format(getString(R.string.details_installed),
                     app.installedVersion));
         tv = (TextView) findViewById(R.id.description);
-        tv.setText(app.detail_description);
+        tv.setMovementMethod(LinkMovementMethod.getInstance());
+
+        // Need this to add the unimplemented support for ordered and unordered
+        // lists to Html.fromHtml().
+        class HtmlTagHandler implements TagHandler {
+            int listNum;
+            @Override
+            public void handleTag(boolean opening, String tag, Editable output,
+                    XMLReader reader) {
+                if (opening && tag.equals("ul")) {
+                    listNum = -1;
+                } else if (opening && tag.equals("ol")) {
+                    listNum = 1;
+                } else if (tag.equals("li")) {
+                    if (opening) {
+                        if (listNum == -1) {
+                            output.append("\t•");
+                        } else {
+                            output.append("\t" + Integer.toString(listNum)
+                                    + ". ");
+                            listNum++;
+                        }
+                    } else {
+                        output.append('\n');
+                    }
+                }
+            }
+        }
+        tv.setText(Html.fromHtml(app.detail_description, null, new HtmlTagHandler()));
+
         if (pref_expert && mInstalledSignature != null) {
             tv = (TextView) findViewById(R.id.signature);
             tv.setText("Signed: " + mInstalledSigID);
@@ -367,6 +406,8 @@ public class AppDetails extends ListActivity {
 
         super.onCreateOptionsMenu(menu);
         menu.clear();
+        if(app == null)
+            return true;
         DB.Apk curver = app.getCurrentVersion();
         if (app.installedVersion != null && curver != null
                 && !app.installedVersion.equals(curver.version)) {
@@ -419,7 +460,8 @@ public class AppDetails extends ListActivity {
             return true;
 
         case WEBSITE:
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.detail_webURL)));
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(app.detail_webURL)));
             return true;
 
         case ISSUES:
