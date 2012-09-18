@@ -129,7 +129,7 @@ public class AppDetails extends ListActivity {
                 buildtype.setText("bin");
             }
             TextView added = (TextView) v.findViewById(R.id.added);
-            if (apk.added != null && !apk.added.equals("")) {
+            if (apk.added != null && apk.added != null) {
                 added.setVisibility(View.VISIBLE);
                 added.setText(df.format(apk.added));
             } else {
