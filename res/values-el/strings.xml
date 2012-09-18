@@ -98,6 +98,7 @@
   <string name="showincompat_long">Εμφάνιση εφαρμογών που γράφτηκαν για νεότερες εκδόσεις Android ή για διαφορετικό υλικό</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Εμφάνιση εφαρμογών που απαιτούν δικαιώματα root</string>
-  <string name="category_all">Εγκατάσταση</string>
+  <string name="category_all">Όλα</string>
+  <string name="category_whatsnew">Τι νέο υπάρχει</string>
   <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
 </resources>

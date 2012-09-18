@@ -78,8 +78,8 @@
   <string name="corrupt_download">Загруженный файл повреждён</string>
   <string name="download_cancelled">Загрузка остановлена</string>
   <string name="antifeatures">Анти-возможности</string>
-  <string name="antiads">Рекламма</string>
-  <string name="antiadslong">Показывать приложения с рекламмой</string>
+  <string name="antiads">Реклама</string>
+  <string name="antiadslong">Показывать приложения с рекламой</string>
   <string name="antitrack">Слежка</string>
   <string name="antitracklong">Показывать приложения который следят и отсылают данные о вас</string>
   <string name="antinonfreead">Дополнения</string>

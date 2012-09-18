@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-10 22:52+0100\n"
+"POT-Creation-Date: 2012-09-18 14:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -429,6 +429,14 @@ msgstr ""
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
+msgstr ""
+
+msgctxt "ignoreTouch"
+msgid "Ignore Touchscreen"
+msgstr ""
+
+msgctxt "ignoreTouch_long"
+msgid "Always include apps that require touchscreen"
 msgstr ""
 
 msgctxt "category_all"
