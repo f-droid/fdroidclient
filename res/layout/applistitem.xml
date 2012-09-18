@@ -9,7 +9,7 @@
 		android:paddingRight="10dp">
 
   <ImageView android:id="@+id/icon"
-	     android:scaleType="centerInside"
+	     android:scaleType="fitCenter"
 	     android:layout_width="50dp"
 	     android:layout_height="50dp"
 	     android:padding="4dp"/>

@@ -178,9 +178,10 @@ public class AppDetails extends ListActivity {
         Intent i = getIntent();
         appid = "";
         Uri data = getIntent().getData();
-        if(data != null) {
+        if (data != null) {
             appid = data.getEncodedSchemeSpecificPart();
-            Log.d("FDroid", "AppDetails launched from link, for '" + appid + "'");
+            Log.d("FDroid", "AppDetails launched from link, for '" + appid
+                    + "'");
         } else if (!i.hasExtra("appid")) {
             Log.d("FDroid", "No application ID in AppDetails!?");
         } else {
@@ -216,14 +217,16 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onResume() {
+        super.onResume();
         if (viewResetRequired) {
             reset();
             viewResetRequired = false;
+        } else {
+            resetViews();
         }
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
         }
-        super.onResume();
     }
 
     @Override
@@ -267,7 +270,6 @@ public class AppDetails extends ListActivity {
         app_currentvercode = old.app_currentvercode;
         mInstalledSignature = old.mInstalledSignature;
         mInstalledSigID = old.mInstalledSigID;
-        resetViews();
     }
 
     // Reset the display and list contents. Used when entering the activity, and
@@ -321,14 +323,13 @@ public class AppDetails extends ListActivity {
             }
         }
 
-        // Set up various parts of the UI
-        resetViews();
-
         // Set up the list...
         ApkListAdapter la = new ApkListAdapter(this, null);
         for (DB.Apk apk : app.apks)
             la.addItem(apk);
         setListAdapter(la);
+
+        resetViews();
     }
 
     private void resetViews() {
@@ -359,6 +360,7 @@ public class AppDetails extends ListActivity {
         // lists to Html.fromHtml().
         class HtmlTagHandler implements TagHandler {
             int listNum;
+
             @Override
             public void handleTag(boolean opening, String tag, Editable output,
                     XMLReader reader) {
@@ -381,12 +383,32 @@ public class AppDetails extends ListActivity {
                 }
             }
         }
-        tv.setText(Html.fromHtml(app.detail_description, null, new HtmlTagHandler()));
+        tv.setText(Html.fromHtml(app.detail_description, null,
+                new HtmlTagHandler()));
 
-        if (pref_expert && mInstalledSignature != null) {
-            tv = (TextView) findViewById(R.id.signature);
-            tv.setText("Signed: " + mInstalledSigID);
-            tv.setVisibility(View.VISIBLE);
+        tv = (TextView) findViewById(R.id.summary);
+        if (tv != null) {
+            tv.setText(app.summary);
+        }
+
+        if (tv != null) {
+            tv = (TextView) findViewById(R.id.appid);
+            if (pref_expert) {
+                tv.setVisibility(View.VISIBLE);
+                tv.setText(app.id);
+            } else {
+                tv.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        tv = (TextView) findViewById(R.id.signature);
+        if (tv != null) {
+            if (pref_expert && mInstalledSignature != null) {
+                tv.setVisibility(View.VISIBLE);
+                tv.setText("Signed: " + mInstalledSigID);
+            } else {
+                tv.setVisibility(View.INVISIBLE);
+            }
         }
     }
 
@@ -406,7 +428,7 @@ public class AppDetails extends ListActivity {
 
         super.onCreateOptionsMenu(menu);
         menu.clear();
-        if(app == null)
+        if (app == null)
             return true;
         DB.Apk curver = app.getCurrentVersion();
         if (app.installedVersion != null && curver != null

@@ -12,11 +12,11 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="50px"
-            android:layout_height="50px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:cropToPadding="true"
-            android:padding="4px"
-            android:scaleType="centerInside" />
+            android:padding="4dp"
+            android:scaleType="fitCenter" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -48,26 +48,43 @@
                 android:layout_below="@id/title"
                 android:layout_toLeftOf="@id/license"
                 android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/signature"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/status"
-                android:textSize="12sp" />
         </RelativeLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/description"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:singleLine="false" />
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/appid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/signature"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false" />
+    </LinearLayout>
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:minHeight="80dp" />
 
 </LinearLayout>
