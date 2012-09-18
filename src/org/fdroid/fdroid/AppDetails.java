@@ -560,6 +560,7 @@ public class AppDetails extends ListActivity {
         pd.setMax(max);
         pd.setProgress(p);
         pd.setCancelable(true);
+        pd.setCanceledOnTouchOutside(false);
         pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
             public void onCancel(DialogInterface dialog) {
                 downloadHandler.cancel();
