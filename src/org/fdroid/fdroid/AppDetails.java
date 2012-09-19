@@ -36,6 +36,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -168,6 +169,7 @@ public class AppDetails extends ListActivity {
 
     private Context mctx = this;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -192,7 +194,7 @@ public class AppDetails extends ListActivity {
 
     private boolean pref_cacheDownloaded;
     private boolean pref_expert;
-    private boolean viewResetRequired;
+    private boolean resetRequired;
 
     // The signature of the installed version.
     private Signature mInstalledSignature;
@@ -211,19 +213,18 @@ public class AppDetails extends ListActivity {
         if (old != null) {
             copyState(old);
         } else {
-            viewResetRequired = true;
+            resetRequired = true;
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (viewResetRequired) {
+        if (resetRequired) {
             reset();
-            viewResetRequired = false;
-        } else {
-            resetViews();
+            resetRequired = false;
         }
+        resetViews();
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
         }
@@ -323,16 +324,33 @@ public class AppDetails extends ListActivity {
             }
         }
 
+    }
+
+    private void resetViews() {
+
+        // Clear the listadapter, because we can't mess with the listview's
+        // header view while it's set.
+        setListAdapter(null);
+        
+        // Insert the 'infoView' (which contains the summary, various odds and
+        // ends, and the description) into the appropriate place, if we're in
+        // landscape mode. In portrait mode, we put it in the listview's
+        // header..
+        View infoView = View.inflate(this, R.layout.appinfo, null);
+        LinearLayout landparent = (LinearLayout) findViewById(R.id.landleft);
+        ListView lv = (ListView) findViewById(android.R.id.list);
+        if (landparent != null) {
+            landparent.addView(infoView);
+        } else {
+            lv.addHeaderView(infoView);
+        }
+
         // Set up the list...
         ApkListAdapter la = new ApkListAdapter(this, null);
         for (DB.Apk apk : app.apks)
             la.addItem(apk);
         setListAdapter(la);
 
-        resetViews();
-    }
-
-    private void resetViews() {
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
         File icon = new File(DB.getIconsPath(), app.icon);
@@ -353,9 +371,9 @@ public class AppDetails extends ListActivity {
         else
             tv.setText(String.format(getString(R.string.details_installed),
                     app.installedVersion));
-        tv = (TextView) findViewById(R.id.description);
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
 
+        tv = (TextView) infoView.findViewById(R.id.description);
+        tv.setMovementMethod(LinkMovementMethod.getInstance());
         // Need this to add the unimplemented support for ordered and unordered
         // lists to Html.fromHtml().
         class HtmlTagHandler implements TagHandler {
@@ -386,30 +404,25 @@ public class AppDetails extends ListActivity {
         tv.setText(Html.fromHtml(app.detail_description, null,
                 new HtmlTagHandler()));
 
-        tv = (TextView) findViewById(R.id.summary);
-        if (tv != null) {
-            tv.setText(app.summary);
+        tv = (TextView) infoView.findViewById(R.id.summary);
+        tv.setText(app.summary);
+
+        tv = (TextView) infoView.findViewById(R.id.appid);
+        if (pref_expert) {
+            tv.setVisibility(View.VISIBLE);
+            tv.setText(app.id);
+        } else {
+            tv.setVisibility(View.GONE);
         }
 
-        if (tv != null) {
-            tv = (TextView) findViewById(R.id.appid);
-            if (pref_expert) {
-                tv.setVisibility(View.VISIBLE);
-                tv.setText(app.id);
-            } else {
-                tv.setVisibility(View.INVISIBLE);
-            }
+        tv = (TextView) infoView.findViewById(R.id.signature);
+        if (pref_expert && mInstalledSignature != null) {
+            tv.setVisibility(View.VISIBLE);
+            tv.setText("Signed: " + mInstalledSigID);
+        } else {
+            tv.setVisibility(View.GONE);
         }
 
-        tv = (TextView) findViewById(R.id.signature);
-        if (tv != null) {
-            if (pref_expert && mInstalledSignature != null) {
-                tv.setVisibility(View.VISIBLE);
-                tv.setText("Signed: " + mInstalledSigID);
-            } else {
-                tv.setVisibility(View.INVISIBLE);
-            }
-        }
     }
 
     @Override
@@ -700,10 +713,10 @@ public class AppDetails extends ListActivity {
                 downloadHandler.cleanUp();
                 downloadHandler = null;
             }
-            viewResetRequired = true;
+            resetRequired = true;
             break;
         case REQUEST_UNINSTALL:
-            viewResetRequired = true;
+            resetRequired = true;
             break;
         }
     }
