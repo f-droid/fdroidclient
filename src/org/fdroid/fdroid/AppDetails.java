@@ -138,11 +138,9 @@ public class AppDetails extends ListActivity {
             }
 
             // Disable it all if it isn't compatible...
-            if (!apk.compatible) {
-                View[] views = { v, version, status, size, buildtype, added };
-                for (View view : views) {
-                    view.setEnabled(false);
-                }
+            View[] views = { v, version, status, size, buildtype, added };
+            for (View view : views) {
+                view.setEnabled(apk.compatible);
             }
 
             return v;
