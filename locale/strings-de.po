@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-10 22:52+0100\n"
+"POT-Creation-Date: 2012-09-19 21:51+0100\n"
 "PO-Revision-Date: 2012-03-16 17:40+0200\n"
 "Last-Translator: reppleo <reppleo@gmail.com>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -42,6 +42,12 @@ msgstr ""
 " Um die neue Version zu installieren muss zunächst die alte entfernt "
 "werden. Bitte tun Sie das und probieren Sie es dann nochmal. (Hinweis: "
 "Das Entfernen der Anwendung wird alle Daten dieser Anwendung löschen)"
+
+msgctxt "installIncompatible"
+msgid ""
+"Android says this package is not compatible with your device. Do you want"
+" to try and install it anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -453,6 +459,14 @@ msgstr "Erfordert Root-Zugriff"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
+msgstr ""
+
+msgctxt "ignoreTouch"
+msgid "Ignore Touchscreen"
+msgstr ""
+
+msgctxt "ignoreTouch_long"
+msgid "Always include apps that require touchscreen"
 msgstr ""
 
 #, fuzzy

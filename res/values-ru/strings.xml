@@ -95,8 +95,10 @@
   <string name="db_sync_mode_long">Установить флаг синхронизации SQLite</string>
   <string name="appcompatibility">Совместимость приложений</string>
   <string name="showincompat">Несовместимые приложения</string>
-  <string name="showincompat_long">Показать приложения для новых версий Андроида и/или другого железа</string>
+  <string name="showincompat_long">Показать приложения для новых версий Android и/или другого железа</string>
   <string name="rooted">Суперпользователь</string>
   <string name="rooted_long">Показывать приложения требующие root привелегий</string>
-  <string name="category_all">Установить</string>
+  <string name="category_all">Все</string>
+  <string name="category_whatsnew">Новые</string>
+  <string name="category_recentlyupdated">Недавно обновленные</string>
 </resources>

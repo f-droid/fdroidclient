@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-10 22:52+0100\n"
-"PO-Revision-Date: 2012-02-06 00:11+0200\n"
-"Last-Translator: Rob <programming@ertai.nl>\n"
+"POT-Creation-Date: 2012-09-19 21:51+0100\n"
+"PO-Revision-Date: 2012-09-18 15:47+0200\n"
+"Last-Translator: Administrator <>\n"
 "Language-Team: nl <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,12 @@ msgstr ""
 "nieuwe versie te installeren moet eerst de oude verwijderd worden. "
 "Probeer het daarna nogmaals. (Let op dat het verwijderen de data van de "
 "applicatie verwijderd wordt)"
+
+msgctxt "installIncompatible"
+msgid ""
+"Android says this package is not compatible with your device. Do you want"
+" to try and install it anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -101,10 +107,9 @@ msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Automatische bronnen-scan"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDriod"
+msgstr "F-Droid"
 
 #, fuzzy
 msgctxt "about_title"
@@ -449,6 +454,14 @@ msgstr "Root"
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Laat apps zien die root-privileges vereisen"
+
+msgctxt "ignoreTouch"
+msgid "Ignore Touchscreen"
+msgstr ""
+
+msgctxt "ignoreTouch_long"
+msgid "Always include apps that require touchscreen"
+msgstr ""
 
 #, fuzzy
 msgctxt "category_all"

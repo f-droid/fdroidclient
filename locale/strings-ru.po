@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-10 22:52+0100\n"
-"PO-Revision-Date: 2012-05-07 06:57+0200\n"
-"Last-Translator: AlexanderR <alexander.r@gmx.com>\n"
+"POT-Creation-Date: 2012-09-19 21:51+0100\n"
+"PO-Revision-Date: 2012-09-19 17:38+0200\n"
+"Last-Translator: mg0x <droidest@lavabit.com>\n"
 "Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
@@ -42,6 +42,12 @@ msgstr ""
 "Новая версия подписана ключом отличным от старого. Для установки новой "
 "версии, сначала нужно удалить старую программы. А потом попробовать "
 "снова. (Замечание: при удалении программы будут удалены все её данные)"
+
+msgctxt "installIncompatible"
+msgid ""
+"Android says this package is not compatible with your device. Do you want"
+" to try and install it anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -370,11 +376,11 @@ msgstr "Анти-возможности"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Рекламма"
+msgstr "Реклама"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Показывать приложения с рекламмой"
+msgstr "Показывать приложения с рекламой"
 
 msgctxt "antitrack"
 msgid "Tracking"
@@ -438,7 +444,7 @@ msgstr "Несовместимые приложения"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr "Показать приложения для новых версий Андроида и/или другого железа"
+msgstr "Показать приложения для новых версий Android и/или другого железа"
 
 msgctxt "rooted"
 msgid "Root"
@@ -448,16 +454,25 @@ msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
 msgstr "Показывать приложения требующие root привелегий"
 
-#, fuzzy
+msgctxt "ignoreTouch"
+msgid "Ignore Touchscreen"
+msgstr ""
+
+msgctxt "ignoreTouch_long"
+msgid "Always include apps that require touchscreen"
+msgstr ""
+
 msgctxt "category_all"
 msgid "All"
-msgstr "Установить"
+msgstr "Все"
 
+#, fuzzy
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Новые"
 
+#, fuzzy
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "Недавно обновленные"
 
