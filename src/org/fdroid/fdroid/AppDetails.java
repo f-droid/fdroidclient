@@ -136,6 +136,15 @@ public class AppDetails extends ListActivity {
             } else {
                 added.setVisibility(View.GONE);
             }
+
+            // Disable it all if it isn't compatible...
+            if (!apk.compatible) {
+                View[] views = { v, version, status, size, buildtype, added };
+                for (View view : views) {
+                    view.setEnabled(false);
+                }
+            }
+
             return v;
         }
     }
@@ -167,8 +176,9 @@ public class AppDetails extends ListActivity {
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
 
-    private Context mctx = this;
+    LinearLayout headerView;
 
+    private Context mctx = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,6 +199,13 @@ public class AppDetails extends ListActivity {
         } else {
             appid = i.getStringExtra("appid");
         }
+
+        // Set up the list...
+        headerView = new LinearLayout(this);
+        ListView lv = (ListView) findViewById(android.R.id.list);
+        lv.addHeaderView(headerView);
+        ApkListAdapter la = new ApkListAdapter(this, null);
+        setListAdapter(la);
 
     }
 
@@ -263,8 +280,6 @@ public class AppDetails extends ListActivity {
     // place of reset(), so it must initialize all fields normally set
     // there.
     private void copyState(AppDetails old) {
-        ApkListAdapter oldAdapter = (ApkListAdapter) old.getListAdapter();
-        setListAdapter(new ApkListAdapter(this, oldAdapter.getItems()));
         if (old.downloadHandler != null)
             downloadHandler = new DownloadHandler(old.downloadHandler);
         app = old.app;
@@ -328,28 +343,26 @@ public class AppDetails extends ListActivity {
 
     private void resetViews() {
 
-        // Clear the listadapter, because we can't mess with the listview's
-        // header view while it's set.
-        setListAdapter(null);
-        
+        // Repopulate the list...
+        ApkListAdapter la = (ApkListAdapter) getListAdapter();
+        la.items.clear();
+        for (DB.Apk apk : app.apks)
+            la.addItem(apk);
+
         // Insert the 'infoView' (which contains the summary, various odds and
         // ends, and the description) into the appropriate place, if we're in
         // landscape mode. In portrait mode, we put it in the listview's
         // header..
         View infoView = View.inflate(this, R.layout.appinfo, null);
         LinearLayout landparent = (LinearLayout) findViewById(R.id.landleft);
-        ListView lv = (ListView) findViewById(android.R.id.list);
+        headerView.removeAllViews();
         if (landparent != null) {
             landparent.addView(infoView);
+            Log.d("FDroid", "Setting landparent infoview");
         } else {
-            lv.addHeaderView(infoView);
+            headerView.addView(infoView);
+            Log.d("FDroid", "Setting header infoview");
         }
-
-        // Set up the list...
-        ApkListAdapter la = new ApkListAdapter(this, null);
-        for (DB.Apk apk : app.apks)
-            la.addItem(apk);
-        setListAdapter(la);
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
@@ -427,7 +440,7 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        curapk = app.apks.get(position);
+        curapk = app.apks.get(position - l.getHeaderViewsCount());
         if (app.installedVersion != null
                 && app.installedVersion.equals(curapk.version)) {
             removeApk(app.id);
@@ -525,6 +538,27 @@ public class AppDetails extends ListActivity {
 
     // Install the version of this app denoted by 'curapk'.
     private void install() {
+        if(!curapk.compatible) {
+            AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
+            ask_alrt.setMessage(getString(R.string.installIncompatible));
+            ask_alrt.setPositiveButton(getString(R.string.yes),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                            downloadHandler = new DownloadHandler(curapk);
+                        }
+                    });
+            ask_alrt.setNegativeButton(getString(R.string.no),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                            return;
+                        }
+                    });
+            AlertDialog alert = ask_alrt.create();
+            alert.show();
+            return;
+        }
         if (mInstalledSigID != null && curapk.sig != null
                 && !curapk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

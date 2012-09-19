@@ -27,62 +27,18 @@ import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.widget.Toast;
 
-public class Preferences extends PreferenceActivity {
+public class Preferences extends PreferenceActivity implements
+        OnPreferenceClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
-
-        Preference r = (Preference) findPreference("reset");
-        r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-
-            public boolean onPreferenceClick(Preference preference) {
-
-                // TODO: Progress dialog + thread is needed, it can take a
-                // while to delete all the icons and cached apks in a long
-                // standing install!
-
-                // TODO: This is going to cause problems if there is background
-                // update in progress at the time!
-
-                try {
-                    DB db = DB.getDB();
-                    db.reset();
-                } finally {
-                    DB.releaseDB();
-                }
-                ((FDroidApp) getApplication()).invalidateApps();
-
-                File dp = DB.getDataPath();
-                deleteAll(dp);
-                dp.mkdir();
-                DB.getIconsPath().mkdir();
-
-                Toast.makeText(getBaseContext(),
-                        "Local cached data has been cleared", Toast.LENGTH_LONG)
-                        .show();
-                Intent ret = new Intent();
-                ret.putExtra("reset", true);
-                setResult(RESULT_OK, ret);
-                finish();
-                return true;
-            }
-
-        });
-
-        r = (Preference) findPreference("ignoreTouchscreen");
-        r.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-
-            public boolean onPreferenceClick(Preference preference) {
-                Intent ret = new Intent();
-                ret.putExtra("update", true);
-                setResult(RESULT_OK, ret);
-                return true;
-            }
-
-        });
-
+        for (String prefkey : new String[] { "reset", "ignoreTouchscreen",
+                "showIncompatible" }) {
+            Preference pref = findPreference(prefkey);
+            pref.setOnPreferenceClickListener(this);
+        }
     }
 
     private void deleteAll(File dir) {
@@ -96,5 +52,45 @@ public class Preferences extends PreferenceActivity {
         dir.delete();
     }
 
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        String key = preference.getKey();
+        if (key.equals("ignoreTouchscreen") || key.equals("showIncompatible")) {
+            Intent ret = new Intent();
+            ret.putExtra("update", true);
+            setResult(RESULT_OK, ret);
+            return true;
+        } else if (key.equals("reset")) {
+            // TODO: Progress dialog + thread is needed, it can take a
+            // while to delete all the icons and cached apks in a long
+            // standing install!
+
+            // TODO: This is going to cause problems if there is background
+            // update in progress at the time!
+
+            try {
+                DB db = DB.getDB();
+                db.reset();
+            } finally {
+                DB.releaseDB();
+            }
+            ((FDroidApp) getApplication()).invalidateApps();
+
+            File dp = DB.getDataPath();
+            deleteAll(dp);
+            dp.mkdir();
+            DB.getIconsPath().mkdir();
+
+            Toast.makeText(getBaseContext(),
+                    "Local cached data has been cleared", Toast.LENGTH_LONG)
+                    .show();
+            Intent ret = new Intent();
+            ret.putExtra("reset", true);
+            setResult(RESULT_OK, ret);
+            finish();
+            return true;
+        }
+        return false;
+    }
 
 }

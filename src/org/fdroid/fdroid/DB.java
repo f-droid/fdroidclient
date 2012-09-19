@@ -94,7 +94,8 @@ public class DB {
             + "curVersion text," + "curVercode integer,"
             + "antiFeatures string," + "donateURL string,"
             + "requirements string," + "category string," + "added string,"
-            + "lastUpdated string," + "primary key(id));";
+            + "lastUpdated string," + "compatible int not null,"
+            + "primary key(id));";
 
     public static class App implements Comparable<App> {
 
@@ -117,10 +118,14 @@ public class DB {
             lastUpdated = null;
             apks = new Vector<Apk>();
             detail_Populated = false;
+            compatible = false;
         }
 
         // True when all the detail fields are populated, False otherwise.
         public boolean detail_Populated;
+
+        // True if compatible with the device (i.e. if at least one apk is)
+        public boolean compatible;
 
         public String id;
         public String name;
@@ -224,7 +229,8 @@ public class DB {
             + "size int not null," + "apkSource text," + "sig string,"
             + "srcname string," + "minSdkVersion integer,"
             + "permissions string," + "features string," + "hashType string,"
-            + "added string," + "primary key(id,vercode));";
+            + "added string," + "compatible int not null,"
+            + "primary key(id,vercode));";
 
     public static class Apk {
 
@@ -237,6 +243,7 @@ public class DB {
             detail_hash = null;
             detail_hashType = null;
             detail_permissions = null;
+            compatible = false;
         }
 
         public String id;
@@ -255,6 +262,9 @@ public class DB {
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
         public String sig;
+
+        // True if compatible with the device.
+        public boolean compatible;
 
         public String apkName;
 
@@ -363,7 +373,7 @@ public class DB {
         public String pubkey; // null for an unsigned repo
     }
 
-    private final int DBVersion = 17;
+    private final int DBVersion = 18;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -578,7 +588,8 @@ public class DB {
 
             String cols[] = new String[] { "antiFeatures", "requirements",
                     "id", "name", "summary", "icon", "license", "category",
-                    "curVersion", "curVercode", "added", "lastUpdated" };
+                    "curVersion", "curVercode", "added", "lastUpdated",
+                    "compatible" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -601,6 +612,7 @@ public class DB {
                 app.lastUpdated = (sLastUpdated == null || sLastUpdated
                         .length() == 0) ? null : mDateFormat
                         .parse(sLastUpdated);
+                app.compatible = c.getInt(12) == 1;
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -624,7 +636,7 @@ public class DB {
 
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
                     "apkName", "apkSource", "minSdkVersion", "added",
-                    "features" };
+                    "features", "compatible" };
             c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
             c.moveToFirst();
@@ -642,6 +654,7 @@ public class DB {
                 apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
                         : mDateFormat.parse(sApkAdded);
                 apk.features = CommaSeparatedList.make(c.getString(9));
+                apk.compatible = c.getInt(10) == 1;
                 apps.get(apk.id).apks.add(apk);
                 c.moveToNext();
             }
@@ -821,14 +834,25 @@ public class DB {
         if (compatChecker == null)
             compatChecker = Apk.CompatibilityChecker.getChecker(mContext);
 
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(mContext);
+        boolean prefCompat = prefs.getBoolean("showIncompatible", false);
+
         // See if it's compatible (by which we mean if it has at least one
         // compatible apk - if it's not, leave it out)
         // Also keep a list of which were compatible, because they're the
-        // only ones we'll add.
+        // only ones we'll add, unless the showIncompatible preference is set.
         Vector<Apk> compatibleapks = new Vector<Apk>();
-        for (Apk apk : upapp.apks)
-            if (compatChecker.isCompatible(apk))
+        for (Apk apk : upapp.apks) {
+            if (compatChecker.isCompatible(apk)) {
+                apk.compatible = true;
                 compatibleapks.add(apk);
+            }
+        }
+        if (compatibleapks.size() > 0)
+            upapp.compatible = true;
+        if (prefCompat)
+            compatibleapks = upapp.apks;
         if (compatibleapks.size() == 0)
             return false;
 
@@ -902,6 +926,7 @@ public class DB {
         values.put("curVercode", upapp.curVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("requirements", CommaSeparatedList.str(upapp.requirements));
+        values.put("compatible", upapp.compatible ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
         } else {
@@ -934,6 +959,7 @@ public class DB {
         values.put("permissions",
                 CommaSeparatedList.str(upapk.detail_permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
+        values.put("compatible", upapk.compatible ? 1 : 0);
         if (oldapk != null) {
             db.update(TABLE_APK, values,
                     "id = ? and vercode = " + Integer.toString(oldapk.vercode),

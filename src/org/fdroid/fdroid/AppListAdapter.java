@@ -90,6 +90,14 @@ public class AppListAdapter extends BaseAdapter {
             icon.setImageResource(android.R.drawable.sym_def_app_icon);
         }
 
+        // Disable it all if it isn't compatible...
+        if (!app.compatible) {
+            View[] views = { v, status, summary, license, name };
+            for (View view : views) {
+                view.setEnabled(false);
+            }
+        }
+
         return v;
     }
 
