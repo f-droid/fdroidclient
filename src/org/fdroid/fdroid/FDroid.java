@@ -113,6 +113,9 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
         categories = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, new Vector<String>());
+        // Add a dummy item to see if this prevents a strange crash on a
+        // rooted nook (issue #88)
+        categories.add("empty");
         categories
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
