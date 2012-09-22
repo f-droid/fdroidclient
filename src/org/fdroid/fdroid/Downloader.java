@@ -117,7 +117,7 @@ public class Downloader extends Thread {
             // If we haven't got the apk locally, we'll have to download it...
             String remotefile;
             if (curapk.apkSource == null) {
-                remotefile = curapk.detail_server + "/" + apkname.replace(" ", "%20");
+                remotefile = curapk.server + "/" + apkname.replace(" ", "%20");
             } else {
                 remotefile = curapk.apkSource;
             }

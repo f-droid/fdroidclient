@@ -307,7 +307,7 @@ public class AppDetails extends ListActivity {
         // Make sure the app is populated.
         try {
             DB db = DB.getDB();
-            db.populateDetails(app);
+            db.populateDetails(app, null);
         } catch (Exception ex) {
             Log.d("FDroid", "Failed to populate app - " + ex.getMessage());
         } finally {

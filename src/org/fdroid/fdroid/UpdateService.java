@@ -102,13 +102,12 @@ public class UpdateService extends IntentService {
             boolean notify = prefs.getBoolean("updateNotify", false);
 
             // Grab some preliminary information, then we can release the
-            // database
-            // while we do all the downloading, etc...
-            DB db = DB.getDB();
+            // database while we do all the downloading, etc...
             int prevUpdates = 0;
             int newUpdates = 0;
             Vector<DB.Repo> repos;
             try {
+                DB db = DB.getDB();
                 repos = db.getRepos();
             } finally {
                 DB.releaseDB();
@@ -116,12 +115,16 @@ public class UpdateService extends IntentService {
 
             // Process each repo...
             Vector<DB.App> apps = new Vector<DB.App>();
+            Vector<String> keeprepos = new Vector<String>();
             boolean success = true;
             for (DB.Repo repo : repos) {
                 if (repo.inuse) {
+                    StringBuilder newetag = new StringBuilder();
                     String err = RepoXMLHandler.doUpdate(getBaseContext(),
-                            repo, apps);
-                    if (err != null) {
+                            repo, apps, newetag, keeprepos);
+                    if (err == null) {
+                        repo.lastetag = newetag.toString();
+                    } else {
                         success = false;
                         err = "Update failed for " + repo.address + " - " + err;
                         Log.d("FDroid", err);
@@ -137,16 +140,55 @@ public class UpdateService extends IntentService {
                 Vector<DB.App> acceptedapps = new Vector<DB.App>();
                 Vector<DB.App> prevapps = ((FDroidApp) getApplication())
                         .getApps();
-                db = DB.getDB();
+
+                DB db = DB.getDB();
                 try {
+
+                    // Need to flag things we're keeping despite having received
+                    // no data about during the update. (i.e. stuff from a repo
+                    // that we know is unchanged due to the etag)
+                    for (String keep : keeprepos) {
+                        for (DB.App app : prevapps) {
+                            boolean keepapp = false;
+                            for (DB.Apk apk : app.apks) {
+                                if (apk.server.equals(keep)) {
+                                    keepapp = true;
+                                    break;
+                                }
+                            }
+                            if (keepapp) {
+                                DB.App app_k = null;
+                                for (DB.App app2 : apps) {
+                                    if (app2.id.equals(app.id)) {
+                                        app_k = app2;
+                                        break;
+                                    }
+                                }
+                                if (app_k == null) {
+                                    apps.add(app);
+                                    app_k = app;
+                                }
+                                app_k.updated = true;
+                                if (!app_k.detail_Populated) {
+                                    db.populateDetails(app_k, keep);
+                                }
+                                for (DB.Apk apk : app.apks)
+                                    if (apk.server.equals(keep))
+                                        apk.updated = true;
+                            }
+                        }
+                    }
+
                     prevUpdates = db.beginUpdate(prevapps);
                     for (DB.App app : apps) {
-                        if(db.updateApplication(app))
+                        if (db.updateApplication(app))
                             acceptedapps.add(app);
                     }
                     db.endUpdate();
                     if (notify)
                         newUpdates = db.getNumUpdates();
+                    for (DB.Repo repo : repos)
+                        db.writeLastEtag(repo);
                 } catch (Exception ex) {
                     db.cancelUpdate();
                     Log.e("FDroid", "Exception during update processing:\n"
@@ -217,7 +259,7 @@ public class UpdateService extends IntentService {
         }
 
     }
-    
+
     private void getIcon(DB.App app) {
         try {
 
@@ -225,9 +267,9 @@ public class UpdateService extends IntentService {
             if (f.exists())
                 return;
 
-            if(app.apks.size() == 0)
+            if (app.apks.size() == 0)
                 return;
-            String server = app.apks.get(0).detail_server;
+            String server = app.apks.get(0).server;
             URL u = new URL(server + "/icons/" + app.icon);
             HttpURLConnection uc = (HttpURLConnection) u.openConnection();
             if (uc.getResponseCode() == 200) {
@@ -251,7 +293,5 @@ public class UpdateService extends IntentService {
 
         }
     }
-    
+
 }
-
-

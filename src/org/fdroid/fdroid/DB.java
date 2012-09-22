@@ -239,7 +239,7 @@ public class DB {
             detail_size = 0;
             apkSource = null;
             added = null;
-            detail_server = null;
+            server = null;
             detail_hash = null;
             detail_hashType = null;
             detail_permissions = null;
@@ -250,7 +250,7 @@ public class DB {
         public String version;
         public int vercode;
         public int detail_size; // Size in bytes - 0 means we don't know!
-        public String detail_server;
+        public String server;
         public String detail_hash;
         public String detail_hashType;
         public int minSdkVersion; // 0 if unknown
@@ -282,7 +282,7 @@ public class DB {
 
         public String getURL() {
             String path = apkName.replace(" ", "%20");
-            return detail_server + "/" + path;
+            return server + "/" + path;
         }
 
         // Call isCompatible(apk) on an instance of this class to
@@ -364,16 +364,17 @@ public class DB {
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (" + "address text primary key, "
             + "inuse integer not null, " + "priority integer not null,"
-            + "pubkey text);";
+            + "pubkey text, lastetag text);";
 
     public static class Repo {
         public String address;
         public boolean inuse;
         public int priority;
         public String pubkey; // null for an unsigned repo
+        public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 18;
+    private final int DBVersion = 19;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -409,6 +410,7 @@ public class DB {
                     mContext.getString(R.string.default_repo_pubkey));
             values.put("inuse", 1);
             values.put("priority", 10);
+            values.put("lastetag", (String) null);
             db.insert(TABLE_REPO, null, values);
         }
 
@@ -417,6 +419,8 @@ public class DB {
             resetTransient(db);
             if (oldVersion < 7)
                 db.execSQL("alter table " + TABLE_REPO + " add pubkey string");
+            if (oldVersion < 19)
+                db.execSQL("alter table " + TABLE_REPO + " add lastetag string");
         }
 
     }
@@ -520,7 +524,9 @@ public class DB {
     }
 
     // Populate the details for the given app, if necessary.
-    public void populateDetails(App app) {
+    // If 'apkrepo' is not null, only apks from that repo address are
+    // populated (this is used during the update process)
+    public void populateDetails(App app, String apkrepo) {
         if (app.detail_Populated)
             return;
         Cursor c = null;
@@ -538,24 +544,22 @@ public class DB {
             c.close();
             c = null;
 
-            cols = new String[] { "server", "hash", "hashType", "size",
-                    "permissions" };
+            cols = new String[] { "hash", "hashType", "size", "permissions" };
             for (Apk apk : app.apks) {
 
-                c = db.query(
-                        TABLE_APK,
-                        cols,
-                        "id = ? and vercode = " + Integer.toString(apk.vercode),
-                        new String[] { apk.id }, null, null, null, null);
-                c.moveToFirst();
-                apk.detail_server = c.getString(0);
-                apk.detail_hash = c.getString(1);
-                apk.detail_hashType = c.getString(2);
-                apk.detail_size = c.getInt(3);
-                apk.detail_permissions = CommaSeparatedList
-                        .make(c.getString(4));
-                c.close();
-                c = null;
+                if (apkrepo == null || apkrepo.equals(apk.server)) {
+                    c = db.query(TABLE_APK, cols, "id = ? and vercode = "
+                            + Integer.toString(apk.vercode),
+                            new String[] { apk.id }, null, null, null, null);
+                    c.moveToFirst();
+                    apk.detail_hash = c.getString(0);
+                    apk.detail_hashType = c.getString(1);
+                    apk.detail_size = c.getInt(2);
+                    apk.detail_permissions = CommaSeparatedList.make(c
+                            .getString(3));
+                    c.close();
+                    c = null;
+                }
             }
             app.detail_Populated = true;
 
@@ -636,7 +640,7 @@ public class DB {
 
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
                     "apkName", "apkSource", "minSdkVersion", "added",
-                    "features", "compatible" };
+                    "features", "compatible", "server" };
             c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
             c.moveToFirst();
@@ -655,6 +659,7 @@ public class DB {
                         : mDateFormat.parse(sApkAdded);
                 apk.features = CommaSeparatedList.make(c.getString(9));
                 apk.compatible = c.getInt(10) == 1;
+                apk.server = c.getString(11);
                 apps.get(apk.id).apks.add(apk);
                 c.moveToNext();
             }
@@ -945,7 +950,7 @@ public class DB {
         values.put("id", upapk.id);
         values.put("version", upapk.version);
         values.put("vercode", upapk.vercode);
-        values.put("server", upapk.detail_server);
+        values.put("server", upapk.server);
         values.put("hash", upapk.detail_hash);
         values.put("hashType", upapk.detail_hashType);
         values.put("sig", upapk.sig);
@@ -974,8 +979,9 @@ public class DB {
         Vector<Repo> repos = new Vector<Repo>();
         Cursor c = null;
         try {
-            c = db.rawQuery("select address, inuse, priority, pubkey from "
-                    + TABLE_REPO + " order by priority", null);
+            c = db.rawQuery(
+                    "select address, inuse, priority, pubkey, lastetag from "
+                            + TABLE_REPO + " order by priority", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 Repo repo = new Repo();
@@ -983,6 +989,7 @@ public class DB {
                 repo.inuse = (c.getInt(1) == 1);
                 repo.priority = c.getInt(2);
                 repo.pubkey = c.getString(3);
+                repo.lastetag = c.getString(4);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -997,7 +1004,7 @@ public class DB {
 
     public void changeServerStatus(String address) {
         db.execSQL("update " + TABLE_REPO
-                + " set inuse=1-inuse where address = ?",
+                + " set inuse=1-inuse, lastetag=null where address = ?",
                 new String[] { address });
     }
 
@@ -1006,6 +1013,14 @@ public class DB {
         values.put("inuse", repo.inuse);
         values.put("priority", repo.priority);
         values.put("pubkey", repo.pubkey);
+        values.put("lastetag", (String) null);
+        db.update(TABLE_REPO, values, "address = ?",
+                new String[] { repo.address });
+    }
+
+    public void writeLastEtag(Repo repo) {
+        ContentValues values = new ContentValues();
+        values.put("lastetag", repo.lastetag);
         db.update(TABLE_REPO, values, "address = ?",
                 new String[] { repo.address });
     }
@@ -1016,6 +1031,7 @@ public class DB {
         values.put("inuse", 1);
         values.put("priority", priority);
         values.put("pubkey", pubkey);
+        values.put("lastetag", (String) null);
         db.insert(TABLE_REPO, null, values);
     }
 

@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.cert.Certificate;
@@ -237,7 +238,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName == "package" && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
-            curapk.detail_server = server;
+            curapk.server = server;
             hashType = null;
         } else if (localName == "hash" && curapk != null) {
             hashType = attributes.getValue("", "type");
@@ -245,24 +246,44 @@ public class RepoXMLHandler extends DefaultHandler {
         curchars.setLength(0);
     }
 
+    // Get a remote file. Returns the HTTP response code.
+    // If 'etag' is not null, it's passed to the server as an If-None-Match
+    // header, in which case expect a 304 response if nothing changed.
+    // In the event of a 200 response ONLY, 'retag' (which should be passed
+    // empty) may contain an etag value for the response, or it may be left
+    // empty if none was available.
+    private static int getRemoteFile(Context ctx, String url, String dest,
+            String etag, StringBuilder retag) throws MalformedURLException,
+            IOException {
 
-    private static void getRemoteFile(Context ctx, String url, String dest)
-            throws MalformedURLException, IOException {
-        FileOutputStream f = ctx.openFileOutput(dest, Context.MODE_PRIVATE);
+        URL u = new URL(url);
+        HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+        if (etag != null)
+            uc.setRequestProperty("If-None-Match", etag);
+        int code = uc.getResponseCode();
+        if (code == 200) {
 
-        BufferedInputStream getit = new BufferedInputStream(
-                new URL(url).openStream());
-        BufferedOutputStream bout = new BufferedOutputStream(f, 1024);
-        byte data[] = new byte[1024];
+            FileOutputStream f = ctx.openFileOutput(dest, Context.MODE_PRIVATE);
 
-        int readed = getit.read(data, 0, 1024);
-        while (readed != -1) {
-            bout.write(data, 0, readed);
-            readed = getit.read(data, 0, 1024);
+            BufferedInputStream getit = new BufferedInputStream(
+                    new URL(url).openStream());
+            BufferedOutputStream bout = new BufferedOutputStream(f, 1024);
+            byte data[] = new byte[1024];
+
+            int readed = getit.read(data, 0, 1024);
+            while (readed != -1) {
+                bout.write(data, 0, readed);
+                readed = getit.read(data, 0, 1024);
+            }
+            bout.close();
+            getit.close();
+            f.close();
+
+            String et = uc.getHeaderField("ETag");
+            if (et != null)
+                retag.append(et);
         }
-        bout.close();
-        getit.close();
-        f.close();
+        return code;
 
     }
 
@@ -271,9 +292,14 @@ public class RepoXMLHandler extends DefaultHandler {
     // APKs are merged into the existing one).
     // Returns null if successful, otherwise an error message to be displayed
     // to the user (if there is an interactive user!)
-    public static String doUpdate(Context ctx, DB.Repo repo, Vector<DB.App> apps) {
+    // 'newetag' should be passed empty. On success, it may contain an etag
+    // value for the index that was successfully processed, or it may contain
+    // null if none was available.
+    public static String doUpdate(Context ctx, DB.Repo repo,
+            Vector<DB.App> apps, StringBuilder newetag, Vector<String> keeprepos) {
         try {
 
+            int code = 0;
             if (repo.pubkey != null) {
 
                 // This is a signed repo - we download the jar file,
@@ -286,85 +312,106 @@ public class RepoXMLHandler extends DefaultHandler {
                     address += "?" + pi.versionName;
                 } catch (Exception e) {
                 }
-                getRemoteFile(ctx, address, "tempindex.jar");
-                String jarpath = ctx.getFilesDir() + "/tempindex.jar";
-                JarFile jar;
-                JarEntry je;
-                try {
-                    jar = new JarFile(jarpath, true);
-                    je = (JarEntry) jar.getEntry("index.xml");
-                    File efile = new File(ctx.getFilesDir(), "/tempindex.xml");
-                    InputStream in = new BufferedInputStream(
-                            jar.getInputStream(je), 8192);
-                    OutputStream out = new BufferedOutputStream(
-                            new FileOutputStream(efile), 8192);
-                    byte[] buffer = new byte[8192];
-                    while (true) {
-                        int nBytes = in.read(buffer);
-                        if (nBytes <= 0)
-                            break;
-                        out.write(buffer, 0, nBytes);
+                code = getRemoteFile(ctx, address, "tempindex.jar",
+                        repo.lastetag, newetag);
+                if (code == 200) {
+                    String jarpath = ctx.getFilesDir() + "/tempindex.jar";
+                    JarFile jar;
+                    JarEntry je;
+                    try {
+                        jar = new JarFile(jarpath, true);
+                        je = (JarEntry) jar.getEntry("index.xml");
+                        File efile = new File(ctx.getFilesDir(),
+                                "/tempindex.xml");
+                        InputStream in = new BufferedInputStream(
+                                jar.getInputStream(je), 8192);
+                        OutputStream out = new BufferedOutputStream(
+                                new FileOutputStream(efile), 8192);
+                        byte[] buffer = new byte[8192];
+                        while (true) {
+                            int nBytes = in.read(buffer);
+                            if (nBytes <= 0)
+                                break;
+                            out.write(buffer, 0, nBytes);
+                        }
+                        out.flush();
+                        out.close();
+                        in.close();
+                    } catch (SecurityException e) {
+                        Log.e("FDroid", "Invalid hash for index file");
+                        return "Invalid hash for index file";
                     }
-                    out.flush();
-                    out.close();
-                    in.close();
-                } catch (SecurityException e) {
-                    Log.e("FDroid", "Invalid hash for index file");
-                    return "Invalid hash for index file";
-                }
-                Certificate[] certs = je.getCertificates();
-                jar.close();
-                if (certs == null) {
-                    Log.d("FDroid", "No signature found in index");
-                    return "No signature found in index";
-                }
-                Log.d("FDroid", "Index has " + certs.length + " signature"
-                        + (certs.length > 1 ? "s." : "."));
+                    Certificate[] certs = je.getCertificates();
+                    jar.close();
+                    if (certs == null) {
+                        Log.d("FDroid", "No signature found in index");
+                        return "No signature found in index";
+                    }
+                    Log.d("FDroid", "Index has " + certs.length + " signature"
+                            + (certs.length > 1 ? "s." : "."));
 
-                boolean match = false;
-                for (Certificate cert : certs) {
-                    String certdata = Hasher.hex(cert.getEncoded());
-                    if (repo.pubkey.equals(certdata)) {
-                        match = true;
-                        break;
+                    boolean match = false;
+                    for (Certificate cert : certs) {
+                        String certdata = Hasher.hex(cert.getEncoded());
+                        if (repo.pubkey.equals(certdata)) {
+                            match = true;
+                            break;
+                        }
                     }
-                }
-                if (!match) {
-                    Log.d("FDroid", "Index signature mismatch");
-                    return "Index signature mismatch";
+                    if (!match) {
+                        Log.d("FDroid", "Index signature mismatch");
+                        return "Index signature mismatch";
+                    }
                 }
 
             } else {
 
                 // It's an old-fashioned unsigned repo...
                 Log.d("FDroid", "Getting unsigned index from " + repo.address);
-                getRemoteFile(ctx, repo.address + "/index.xml", "tempindex.xml");
+                code = getRemoteFile(ctx, repo.address + "/index.xml",
+                        "tempindex.xml", repo.lastetag, newetag);
             }
 
-            // Process the index...
-            SAXParserFactory spf = SAXParserFactory.newInstance();
-            SAXParser sp = spf.newSAXParser();
-            XMLReader xr = sp.getXMLReader();
-            RepoXMLHandler handler = new RepoXMLHandler(repo.address, apps);
-            xr.setContentHandler(handler);
+            if (code == 200) {
+                // Process the index...
+                SAXParserFactory spf = SAXParserFactory.newInstance();
+                SAXParser sp = spf.newSAXParser();
+                XMLReader xr = sp.getXMLReader();
+                RepoXMLHandler handler = new RepoXMLHandler(repo.address, apps);
+                xr.setContentHandler(handler);
 
-            InputStreamReader isr = new FileReader(new File(ctx.getFilesDir()
-                    + "/tempindex.xml"));
-            InputSource is = new InputSource(isr);
-            xr.parse(is);
+                InputStreamReader isr = new FileReader(new File(
+                        ctx.getFilesDir() + "/tempindex.xml"));
+                InputSource is = new InputSource(isr);
+                xr.parse(is);
 
-            if (handler.pubkey != null && repo.pubkey == null) {
-                // We read an unsigned index, but that indicates that
-                // a signed version is now available...
-                Log.d("FDroid",
-                        "Public key found - switching to signed repo for future updates");
-                repo.pubkey = handler.pubkey;
-                DB db = DB.getDB();
-                try {
-                    db.updateRepoByAddress(repo);
-                } finally {
-                    DB.releaseDB();
+                if (handler.pubkey != null && repo.pubkey == null) {
+                    // We read an unsigned index, but that indicates that
+                    // a signed version is now available...
+                    Log.d("FDroid",
+                            "Public key found - switching to signed repo for future updates");
+                    repo.pubkey = handler.pubkey;
+                    try {
+                        DB db = DB.getDB();
+                        db.updateRepoByAddress(repo);
+                    } finally {
+                        DB.releaseDB();
+                    }
                 }
+
+            } else if (code == 304) {
+                // The index is unchanged since we last read it. We just mark
+                // everything that came from this repo as being updated.
+                Log.d("FDroid", "Repo index for " + repo.address
+                        + " is up to date (by etag)");
+                keeprepos.add(repo.address);
+                // Make sure we give back the same etag. (The 200 route will
+                // have supplied a new one.
+                newetag.append(repo.lastetag);
+
+            } else {
+                return "Failed to read index - HTTP response "
+                        + Integer.toString(code);
             }
 
         } catch (SSLHandshakeException sslex) {
