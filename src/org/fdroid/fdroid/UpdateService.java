@@ -88,15 +88,19 @@ public class UpdateService extends IntentService {
 
             // See if it's time to actually do anything yet...
             if (receiver == null) {
-                long lastUpdate = prefs.getLong("lastUpdateCheck",
-                        System.currentTimeMillis());
+                long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
                 String sint = prefs.getString("updateInterval", "0");
                 int interval = Integer.parseInt(sint);
-                if (interval == 0)
+                if (interval == 0) {
+                    Log.d("FDroid", "Skipping update - disabled");
                     return;
-                if (lastUpdate + (interval * 60 * 60) > System
-                        .currentTimeMillis())
+                }
+                long elapsed = System.currentTimeMillis() - lastUpdate;
+                if (elapsed < interval * 60 * 60) {
+                    Log.d("FDroid", "Skipping update - done " + elapsed
+                            + "ms ago, interval is " + interval + " hours");
                     return;
+                }
             }
 
             boolean notify = prefs.getBoolean("updateNotify", false);
