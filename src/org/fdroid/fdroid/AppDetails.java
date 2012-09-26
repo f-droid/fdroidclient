@@ -307,7 +307,7 @@ public class AppDetails extends ListActivity {
         // Make sure the app is populated.
         try {
             DB db = DB.getDB();
-            db.populateDetails(app, null);
+            db.populateDetails(app, 0);
         } catch (Exception ex) {
             Log.d("FDroid", "Failed to populate app - " + ex.getMessage());
         } finally {
@@ -536,14 +536,31 @@ public class AppDetails extends ListActivity {
 
     // Install the version of this app denoted by 'curapk'.
     private void install() {
-        if(!curapk.compatible) {
+
+        String ra = null;
+        try {
+            DB db = DB.getDB();
+            DB.Repo repo = db.getRepo(curapk.repo);
+            if (repo != null)
+                ra = repo.address;
+        } catch (Exception ex) {
+            Log.d("FDroid", "Failed to get repo address - " + ex.getMessage());
+        } finally {
+            DB.releaseDB();
+        }
+        if (ra == null)
+            return;
+        final String repoaddress = ra;
+
+        if (!curapk.compatible) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
             ask_alrt.setMessage(getString(R.string.installIncompatible));
             ask_alrt.setPositiveButton(getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            downloadHandler = new DownloadHandler(curapk);
+                            downloadHandler = new DownloadHandler(curapk,
+                                    repoaddress);
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -571,7 +588,7 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(curapk);
+        downloadHandler = new DownloadHandler(curapk, repoaddress);
     }
 
     private void removeApk(String id) {
@@ -628,8 +645,8 @@ public class AppDetails extends ListActivity {
         private boolean updating;
         private File localFile;
 
-        public DownloadHandler(DB.Apk apk) {
-            download = new Downloader(apk);
+        public DownloadHandler(DB.Apk apk, String repoaddress) {
+            download = new Downloader(apk, repoaddress);
             download.start();
             startUpdates();
         }

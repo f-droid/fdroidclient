@@ -55,7 +55,9 @@ import android.util.Log;
 
 public class RepoXMLHandler extends DefaultHandler {
 
-    String server;
+    // The ID of the repo we're processing.
+    private int repo;
+
     private Vector<DB.App> apps;
 
     private DB.App curapp = null;
@@ -68,8 +70,8 @@ public class RepoXMLHandler extends DefaultHandler {
     // The date format used in the repo XML file.
     private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public RepoXMLHandler(String srv, Vector<DB.App> apps) {
-        this.server = srv;
+    public RepoXMLHandler(int repo, Vector<DB.App> apps) {
+        this.repo = repo;
         this.apps = apps;
         pubkey = null;
     }
@@ -143,8 +145,6 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.srcname = str;
             } else if (curel.equals("apkname")) {
                 curapk.apkName = str;
-            } else if (curel.equals("apksource")) {
-                curapk.apkSource = str;
             } else if (curel.equals("sdkver")) {
                 try {
                     curapk.minSdkVersion = Integer.parseInt(str);
@@ -238,7 +238,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName == "package" && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
-            curapk.server = server;
+            curapk.repo = repo;
             hashType = null;
         } else if (localName == "hash" && curapk != null) {
             hashType = attributes.getValue("", "type");
@@ -296,7 +296,7 @@ public class RepoXMLHandler extends DefaultHandler {
     // value for the index that was successfully processed, or it may contain
     // null if none was available.
     public static String doUpdate(Context ctx, DB.Repo repo,
-            Vector<DB.App> apps, StringBuilder newetag, Vector<String> keeprepos) {
+            Vector<DB.App> apps, StringBuilder newetag, Vector<Integer> keeprepos) {
         try {
 
             int code = 0;
@@ -377,7 +377,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 SAXParserFactory spf = SAXParserFactory.newInstance();
                 SAXParser sp = spf.newSAXParser();
                 XMLReader xr = sp.getXMLReader();
-                RepoXMLHandler handler = new RepoXMLHandler(repo.address, apps);
+                RepoXMLHandler handler = new RepoXMLHandler(repo.id, apps);
                 xr.setContentHandler(handler);
 
                 InputStreamReader isr = new FileReader(new File(
@@ -404,7 +404,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 // everything that came from this repo as being updated.
                 Log.d("FDroid", "Repo index for " + repo.address
                         + " is up to date (by etag)");
-                keeprepos.add(repo.address);
+                keeprepos.add(repo.id);
                 // Make sure we give back the same etag. (The 200 route will
                 // have supplied a new one.
                 newetag.append(repo.lastetag);

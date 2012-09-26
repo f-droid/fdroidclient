@@ -224,22 +224,20 @@ public class DB {
     private static final String TABLE_APK = "fdroid_apk";
     private static final String CREATE_TABLE_APK = "create table " + TABLE_APK
             + " ( " + "id text not null, " + "version text not null, "
-            + "server text not null, " + "hash text not null, "
+            + "repo integer not null, " + "hash text not null, "
             + "vercode int not null," + "apkName text not null, "
-            + "size int not null," + "apkSource text," + "sig string,"
-            + "srcname string," + "minSdkVersion integer,"
-            + "permissions string," + "features string," + "hashType string,"
-            + "added string," + "compatible int not null,"
-            + "primary key(id,vercode));";
+            + "size int not null," + "sig string," + "srcname string,"
+            + "minSdkVersion integer," + "permissions string,"
+            + "features string," + "hashType string," + "added string,"
+            + "compatible int not null," + "primary key(id,vercode));";
 
     public static class Apk {
 
         public Apk() {
             updated = false;
             detail_size = 0;
-            apkSource = null;
             added = null;
-            server = null;
+            repo = 0;
             detail_hash = null;
             detail_hashType = null;
             detail_permissions = null;
@@ -250,7 +248,7 @@ public class DB {
         public String version;
         public int vercode;
         public int detail_size; // Size in bytes - 0 means we don't know!
-        public String server;
+        public int repo; // ID of the repo it comes from
         public String detail_hash;
         public String detail_hashType;
         public int minSdkVersion; // 0 if unknown
@@ -268,10 +266,6 @@ public class DB {
 
         public String apkName;
 
-        // If null, the apk comes from the same server as the repo index.
-        // Otherwise this is the complete URL to download the apk from.
-        public String apkSource;
-
         // If not null, this is the name of the source tarball for the
         // application. Null indicates that it's a developer's binary
         // build - otherwise it's built from source.
@@ -279,11 +273,6 @@ public class DB {
 
         // Used internally for tracking during repo updates.
         public boolean updated;
-
-        public String getURL() {
-            String path = apkName.replace(" ", "%20");
-            return server + "/" + path;
-        }
 
         // Call isCompatible(apk) on an instance of this class to
         // check if an APK is compatible with the user's device.
@@ -362,11 +351,12 @@ public class DB {
     // The TABLE_REPO table stores the details of the repositories in use.
     private static final String TABLE_REPO = "fdroid_repo";
     private static final String CREATE_TABLE_REPO = "create table "
-            + TABLE_REPO + " (" + "address text primary key, "
+            + TABLE_REPO + " (id integer primary key, address text not null, "
             + "inuse integer not null, " + "priority integer not null,"
             + "pubkey text, lastetag text);";
 
     public static class Repo {
+        public int id;
         public String address;
         public boolean inuse;
         public int priority;
@@ -374,7 +364,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 19;
+    private final int DBVersion = 20;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -417,10 +407,36 @@ public class DB {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             resetTransient(db);
-            if (oldVersion < 7)
-                db.execSQL("alter table " + TABLE_REPO + " add pubkey string");
-            if (oldVersion < 19)
-                db.execSQL("alter table " + TABLE_REPO + " add lastetag string");
+
+            // Migrate repo list to new structure. (No way to change primary
+            // key in sqlite - table must be recreated)
+            if (oldVersion < 20) {
+                Vector<Repo> oldrepos = new Vector<Repo>();
+                Cursor c = db.rawQuery("select address, inuse, pubkey from "
+                        + TABLE_REPO, null);
+                c.moveToFirst();
+                while (!c.isAfterLast()) {
+                    Repo repo = new Repo();
+                    repo.address = c.getString(0);
+                    repo.inuse = (c.getInt(1) == 1);
+                    repo.pubkey = c.getString(2);
+                    oldrepos.add(repo);
+                    c.moveToNext();
+                }
+                c.close();
+                db.execSQL("drop table " + TABLE_REPO);
+                db.execSQL(CREATE_TABLE_REPO);
+                for (Repo repo : oldrepos) {
+                    ContentValues values = new ContentValues();
+                    values.put("address", repo.address);
+                    values.put("inuse", repo.inuse);
+                    values.put("priority", 10);
+                    values.put("pubkey", repo.pubkey);
+                    values.put("lastetag", (String) null);
+                    db.insert(TABLE_REPO, null, values);
+                }
+            }
+
         }
 
     }
@@ -524,9 +540,9 @@ public class DB {
     }
 
     // Populate the details for the given app, if necessary.
-    // If 'apkrepo' is not null, only apks from that repo address are
+    // If 'apkrepo' is non-zero, only apks from that repo are
     // populated (this is used during the update process)
-    public void populateDetails(App app, String apkrepo) {
+    public void populateDetails(App app, int apkrepo) {
         if (app.detail_Populated)
             return;
         Cursor c = null;
@@ -547,7 +563,7 @@ public class DB {
             cols = new String[] { "hash", "hashType", "size", "permissions" };
             for (Apk apk : app.apks) {
 
-                if (apkrepo == null || apkrepo.equals(apk.server)) {
+                if (apkrepo == 0 || apkrepo == apk.repo) {
                     c = db.query(TABLE_APK, cols, "id = ? and vercode = "
                             + Integer.toString(apk.vercode),
                             new String[] { apk.id }, null, null, null, null);
@@ -639,8 +655,8 @@ public class DB {
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
-                    "apkName", "apkSource", "minSdkVersion", "added",
-                    "features", "compatible", "server" };
+                    "apkName", "minSdkVersion", "added", "features",
+                    "compatible", "repo" };
             c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
             c.moveToFirst();
@@ -652,14 +668,13 @@ public class DB {
                 apk.sig = c.getString(3);
                 apk.srcname = c.getString(4);
                 apk.apkName = c.getString(5);
-                apk.apkSource = c.getString(6);
-                apk.minSdkVersion = c.getInt(7);
-                String sApkAdded = c.getString(8);
+                apk.minSdkVersion = c.getInt(6);
+                String sApkAdded = c.getString(7);
                 apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
                         : mDateFormat.parse(sApkAdded);
-                apk.features = CommaSeparatedList.make(c.getString(9));
-                apk.compatible = c.getInt(10) == 1;
-                apk.server = c.getString(11);
+                apk.features = CommaSeparatedList.make(c.getString(8));
+                apk.compatible = c.getInt(9) == 1;
+                apk.repo = c.getInt(10);
                 apps.get(apk.id).apks.add(apk);
                 c.moveToNext();
             }
@@ -950,14 +965,13 @@ public class DB {
         values.put("id", upapk.id);
         values.put("version", upapk.version);
         values.put("vercode", upapk.vercode);
-        values.put("server", upapk.server);
+        values.put("repo", upapk.repo);
         values.put("hash", upapk.detail_hash);
         values.put("hashType", upapk.detail_hashType);
         values.put("sig", upapk.sig);
         values.put("srcname", upapk.srcname);
         values.put("size", upapk.detail_size);
         values.put("apkName", upapk.apkName);
-        values.put("apkSource", upapk.apkSource);
         values.put("minSdkVersion", upapk.minSdkVersion);
         values.put("added",
                 upapk.added == null ? "" : mDateFormat.format(upapk.added));
@@ -974,22 +988,47 @@ public class DB {
         }
     }
 
+    // Get details of a repo, given the ID. Returns null if the repo
+    // doesn't exist.
+    public Repo getRepo(int id) {
+        Cursor c = null;
+        try {
+            c = db.query(TABLE_REPO, new String[] { "address, inuse",
+                    "priority", "pubkey", "lastetag" },
+                    "id = " + Integer.toString(id), null, null, null, null);
+            if (!c.moveToFirst())
+                return null;
+            Repo repo = new Repo();
+            repo.id = id;
+            repo.address = c.getString(0);
+            repo.inuse = (c.getInt(1) == 1);
+            repo.priority = c.getInt(2);
+            repo.pubkey = c.getString(3);
+            repo.lastetag = c.getString(4);
+            return repo;
+        } finally {
+            if (c != null)
+                c.close();
+        }
+    }
+
     // Get a list of the configured repositories.
     public Vector<Repo> getRepos() {
         Vector<Repo> repos = new Vector<Repo>();
         Cursor c = null;
         try {
             c = db.rawQuery(
-                    "select address, inuse, priority, pubkey, lastetag from "
+                    "select id, address, inuse, priority, pubkey, lastetag from "
                             + TABLE_REPO + " order by priority", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 Repo repo = new Repo();
-                repo.address = c.getString(0);
-                repo.inuse = (c.getInt(1) == 1);
-                repo.priority = c.getInt(2);
-                repo.pubkey = c.getString(3);
-                repo.lastetag = c.getString(4);
+                repo.id = c.getInt(0);
+                repo.address = c.getString(1);
+                repo.inuse = (c.getInt(2) == 1);
+                repo.priority = c.getInt(3);
+                repo.pubkey = c.getString(4);
+                repo.lastetag = c.getString(5);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -1025,10 +1064,11 @@ public class DB {
                 new String[] { repo.address });
     }
 
-    public void addServer(String address, int priority, String pubkey) {
+    public void addRepo(String address, int priority, String pubkey,
+            boolean inuse) {
         ContentValues values = new ContentValues();
         values.put("address", address);
-        values.put("inuse", 1);
+        values.put("inuse", inuse ? 1 : 0);
         values.put("priority", priority);
         values.put("pubkey", pubkey);
         values.put("lastetag", (String) null);

@@ -30,6 +30,7 @@ import java.net.URL;
 public class Downloader extends Thread {
 
     private DB.Apk curapk;
+    private String repoaddress;
     private String filename;
     private File localfile;
 
@@ -49,8 +50,9 @@ public class Downloader extends Thread {
 
     // Constructor - creates a Downloader to download the given Apk,
     // which must have its detail populated.
-    Downloader(DB.Apk apk) {
+    Downloader(DB.Apk apk, String repoaddress) {
         curapk = apk;
+        this.repoaddress = repoaddress;
     }
 
     public synchronized Status getStatus() {
@@ -116,11 +118,7 @@ public class Downloader extends Thread {
 
             // If we haven't got the apk locally, we'll have to download it...
             String remotefile;
-            if (curapk.apkSource == null) {
-                remotefile = curapk.server + "/" + apkname.replace(" ", "%20");
-            } else {
-                remotefile = curapk.apkSource;
-            }
+            remotefile = repoaddress + "/" + apkname.replace(" ", "%20");
             Log.d("FDroid", "Downloading apk from " + remotefile);
             synchronized (this) {
                 filename = remotefile;

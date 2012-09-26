@@ -119,7 +119,7 @@ public class UpdateService extends IntentService {
 
             // Process each repo...
             Vector<DB.App> apps = new Vector<DB.App>();
-            Vector<String> keeprepos = new Vector<String>();
+            Vector<Integer> keeprepos = new Vector<Integer>();
             boolean success = true;
             for (DB.Repo repo : repos) {
                 if (repo.inuse) {
@@ -151,11 +151,11 @@ public class UpdateService extends IntentService {
                     // Need to flag things we're keeping despite having received
                     // no data about during the update. (i.e. stuff from a repo
                     // that we know is unchanged due to the etag)
-                    for (String keep : keeprepos) {
+                    for (int keep : keeprepos) {
                         for (DB.App app : prevapps) {
                             boolean keepapp = false;
                             for (DB.Apk apk : app.apks) {
-                                if (apk.server.equals(keep)) {
+                                if (apk.repo == keep) {
                                     keepapp = true;
                                     break;
                                 }
@@ -177,7 +177,7 @@ public class UpdateService extends IntentService {
                                     db.populateDetails(app_k, keep);
                                 }
                                 for (DB.Apk apk : app.apks)
-                                    if (apk.server.equals(keep))
+                                    if (apk.repo == keep)
                                         apk.updated = true;
                             }
                         }
@@ -204,7 +204,7 @@ public class UpdateService extends IntentService {
                 }
                 if (success) {
                     for (DB.App app : acceptedapps)
-                        getIcon(app);
+                        getIcon(app, repos);
                     ((FDroidApp) getApplication()).invalidateApps();
                 }
 
@@ -264,7 +264,7 @@ public class UpdateService extends IntentService {
 
     }
 
-    private void getIcon(DB.App app) {
+    private void getIcon(DB.App app, Vector<DB.Repo> repos) {
         try {
 
             File f = new File(DB.getIconsPath(), app.icon);
@@ -273,7 +273,12 @@ public class UpdateService extends IntentService {
 
             if (app.apks.size() == 0)
                 return;
-            String server = app.apks.get(0).server;
+            String server = null;
+            for (DB.Repo repo : repos)
+                if (repo.id == app.apks.get(0).repo)
+                    server = repo.address;
+            if (server == null)
+                return;
             URL u = new URL(server + "/icons/" + app.icon);
             HttpURLConnection uc = (HttpURLConnection) u.openConnection();
             if (uc.getResponseCode() == 200) {
