@@ -34,6 +34,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
@@ -243,6 +244,13 @@ public class UpdateService extends IntentService {
                 } else {
                     receiver.send(0, resultData);
                 }
+                
+            }
+
+            if(success) {
+                Editor e = prefs.edit();
+                e.putLong("lastUpdateCheck", System.currentTimeMillis());
+                e.commit();
             }
 
         } catch (Exception e) {
