@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
@@ -28,11 +29,14 @@ import java.util.Map;
 import java.util.Vector;
 
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.app.AlertDialog.Builder;
+import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -41,6 +45,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 public class ManageRepo extends ListActivity {
 
@@ -57,6 +62,20 @@ public class ManageRepo extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.repolist);
 
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+
+        TextView tv_lastCheck = (TextView)findViewById(R.id.lastUpdateCheck);
+        long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
+        String s_lastUpdateCheck = "";
+        if(lastUpdate == 0) {
+        	s_lastUpdateCheck = getString(R.string.never);
+        } else {
+        	Date d = new Date(lastUpdate);
+        	s_lastUpdateCheck = DateFormat.getDateFormat(this).format(d) + 
+        			" " + DateFormat.getTimeFormat(this).format(d);
+        }
+        tv_lastCheck.setText(getString(R.string.last_update_check,s_lastUpdateCheck));
     }
 
     @Override
