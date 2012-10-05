@@ -77,6 +77,16 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name="PackageReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_UPGRADED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+
         <service android:name="UpdateService" />
     </application>
 
