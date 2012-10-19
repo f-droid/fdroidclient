@@ -76,8 +76,10 @@ public class FDroidApp extends Application {
         try {
             appsInvalidLock.acquire();
             invalid = appsInvalid;
-            if (invalid)
+            if (invalid) {
                 appsInvalid = false;
+                Log.d("FDroid", "Dropping cached app data");
+            }
         } catch (InterruptedException e) {
             // Don't care
         } finally {
