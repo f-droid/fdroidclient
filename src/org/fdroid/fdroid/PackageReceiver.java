@@ -21,11 +21,13 @@ package org.fdroid.fdroid;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 public class PackageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context ctx, Intent intent) {
+        Log.d("FDroid", "PackageReciever invalidating apps");
         ((FDroidApp) ctx.getApplicationContext()).invalidateApps();
     }
 
