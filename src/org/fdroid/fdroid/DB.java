@@ -449,7 +449,6 @@ public class DB {
         return new File(getDataPath(), "icons");
     }
 
-    private PackageManager mPm;
     private Context mContext;
     private Apk.CompatibilityChecker compatChecker = null;
 
@@ -462,7 +461,6 @@ public class DB {
         mContext = ctx;
         DBHelper h = new DBHelper(ctx);
         db = h.getWritableDatabase();
-        mPm = ctx.getPackageManager();
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(mContext);
         String sync_mode = prefs.getString("dbSyncMode", null);
@@ -595,7 +593,7 @@ public class DB {
         if (getinstalledinfo) {
             Log.d("FDroid", "Reading installed packages");
             systemApks = new HashMap<String, PackageInfo>();
-            List<PackageInfo> installedPackages = mPm.getInstalledPackages(0);
+            List<PackageInfo> installedPackages = mContext.getPackageManager().getInstalledPackages(0);
             for (PackageInfo appInfo : installedPackages) {
                 systemApks.put(appInfo.packageName, appInfo);
             }
