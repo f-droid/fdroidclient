@@ -346,6 +346,7 @@ public class AppDetails extends ListActivity {
         la.items.clear();
         for (DB.Apk apk : app.apks)
             la.addItem(apk);
+        la.notifyDataSetChanged();
 
         // Insert the 'infoView' (which contains the summary, various odds and
         // ends, and the description) into the appropriate place, if we're in
