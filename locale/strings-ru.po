@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-19 21:51+0100\n"
-"PO-Revision-Date: 2012-09-19 17:38+0200\n"
-"Last-Translator: mg0x <droidest@lavabit.com>\n"
+"POT-Creation-Date: 2012-10-19 20:34+0100\n"
+"PO-Revision-Date: 2012-10-05 22:32+0200\n"
+"Last-Translator: mm3 <mm3@bk.ru>\n"
 "Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
@@ -48,6 +48,8 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Android сказал что пакет не совместим с вашим устройством. "
+"Проигнорировать предупреждение и всё равно поставить?"
 
 msgctxt "version"
 msgid "Version"
@@ -73,11 +75,11 @@ msgstr "Хранилище"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Кешировать загруженный apk"
+msgstr "Кешировать загруженные приложения"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Сохранить загруженный apk файл на SD карте"
+msgstr "Сохранять загруженные apk файлы на SD карте"
 
 msgctxt "updates"
 msgid "Updates"
@@ -97,25 +99,32 @@ msgstr "Поддержка"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Сообщить при появлении обновлений"
+msgstr "Сообщать при появлении обновлений"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Обновлять список приложений автоматически"
 
+#, c-format
+msgctxt "last_update_check"
+msgid "Last repo scan: %s"
+msgstr ""
+
+msgctxt "never"
+msgid "never"
+msgstr ""
+
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Автоматически сканировать репозиторий"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDroid"
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "О FDroid"
+msgstr "О F-Droid"
 
 msgctxt "about_desc"
 msgid ""
@@ -223,7 +232,7 @@ msgstr "Подождите"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Список приложений обновляется ..."
+msgstr "Список приложений обновляется..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
@@ -388,7 +397,7 @@ msgstr "Слежка"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Показывать приложения который следят и отсылают данные о вас"
+msgstr "Показывать приложения, которые следят и отсылают данные о вас"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -396,7 +405,7 @@ msgstr "Дополнения"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Показывать приложения содержащие закрытые компоненты"
+msgstr "Показывать приложения использующие несвободные дополнения"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -452,27 +461,25 @@ msgstr "Суперпользователь"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Показывать приложения требующие root привелегий"
+msgstr "Показывать приложения требующие root-привилегий"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Игнорировать Тачскрин"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Всегда включать приложения требующие тачскрин"
 
 msgctxt "category_all"
 msgid "All"
 msgstr "Все"
 
-#, fuzzy
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr "Новые"
+msgstr "Что Нового"
 
-#, fuzzy
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr "Недавно обновленные"
+msgstr "Недавно обновлённые"
 

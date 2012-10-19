@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2012-09-19 21:51+0100\n"
+"POT-Creation-Date: 2012-10-19 20:34+0100\n"
 "PO-Revision-Date: 2011-01-20 03:30+0200\n"
 "Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
 "Language-Team: sr <LL@li.org>\n"
@@ -105,6 +105,15 @@ msgstr "Обавести кад су нове верзије на распола
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Аутоматски ажурирај листу апликација"
+
+#, c-format
+msgctxt "last_update_check"
+msgid "Last repo scan: %s"
+msgstr ""
+
+msgctxt "never"
+msgid "never"
+msgstr ""
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"

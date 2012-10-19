@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-19 21:51+0100\n"
+"POT-Creation-Date: 2012-10-19 20:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,6 +98,15 @@ msgstr ""
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
+msgstr ""
+
+#, c-format
+msgctxt "last_update_check"
+msgid "Last repo scan: %s"
+msgstr ""
+
+msgctxt "never"
+msgid "never"
 msgstr ""
 
 msgctxt "automatic_repo_scan"

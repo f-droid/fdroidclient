@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-19 21:51+0100\n"
+"POT-Creation-Date: 2012-10-19 20:34+0100\n"
 "PO-Revision-Date: 2012-09-11 20:13+0200\n"
 "Last-Translator: g0d4 <giorgoskolokotronis@gmail.com>\n"
 "Language-Team: el <LL@li.org>\n"
@@ -103,6 +103,15 @@ msgstr "Ειδοποίηση για την ύπαρξη διαθέσιμων ε�
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Αυτόματη ενημέρωση της λίστας εφαρμογών από το αποθετήριο"
+
+#, c-format
+msgctxt "last_update_check"
+msgid "Last repo scan: %s"
+msgstr ""
+
+msgctxt "never"
+msgid "never"
+msgstr ""
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
