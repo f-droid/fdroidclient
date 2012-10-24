@@ -562,9 +562,13 @@ public class DB {
             for (Apk apk : app.apks) {
 
                 if (apkrepo == 0 || apkrepo == apk.repo) {
-                    c = db.query(TABLE_APK, cols, "id = ? and vercode = "
-                            + Integer.toString(apk.vercode),
-                            new String[] { apk.id }, null, null, null, null);
+                    c = db.query(
+                            TABLE_APK,
+                            cols,
+                            "id = ? and vercode = ?",
+                            new String[] { apk.id,
+                                    Integer.toString(apk.vercode) }, null,
+                            null, null, null);
                     c.moveToFirst();
                     apk.detail_hash = c.getString(0);
                     apk.detail_hashType = c.getString(1);
