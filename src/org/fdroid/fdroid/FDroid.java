@@ -141,11 +141,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);

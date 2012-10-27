@@ -634,7 +634,8 @@ public class AppDetails extends ListActivity {
                 downloadHandler.cancel();
             }
         });
-        pd.setButton(getString(R.string.cancel),
+        pd.setButton(DialogInterface.BUTTON_NEUTRAL,
+                getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         pd.cancel();
@@ -698,6 +699,8 @@ public class AppDetails extends ListActivity {
                         getString(R.string.download_cancelled),
                         Toast.LENGTH_SHORT).show();
                 finished = true;
+                break;
+            default:
                 break;
             }
             return finished;

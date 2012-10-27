@@ -116,6 +116,7 @@ public class ManageRepo extends ListActivity {
                                 fingerprint[i]);
                     }
                     server_line.put("fingerprint", formatter.toString());
+                    formatter.close();
                 } catch (Exception e) {
                     Log.w("FDroid", "Unable to get certificate fingerprint.\n"
                             + Log.getStackTraceString(e));
@@ -169,7 +170,8 @@ public class ManageRepo extends ListActivity {
 
             alrt.setIcon(android.R.drawable.ic_menu_add);
             alrt.setTitle(getString(R.string.repo_add_title));
-            alrt.setButton(getString(R.string.repo_add_add),
+            alrt.setButton(DialogInterface.BUTTON_POSITIVE,
+                    getString(R.string.repo_add_add),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             EditText uri = (EditText) alrt
@@ -186,7 +188,8 @@ public class ManageRepo extends ListActivity {
                         }
                     });
 
-            alrt.setButton2(getString(R.string.cancel),
+            alrt.setButton(DialogInterface.BUTTON_NEGATIVE,
+                    getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             return;

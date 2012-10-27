@@ -279,6 +279,7 @@ public class DB {
         public static abstract class CompatibilityChecker {
 
             // Because Build.VERSION.SDK_INT requires API level 5
+            @SuppressWarnings("deprecation")
             protected final static int SDK_INT = Integer
                     .parseInt(Build.VERSION.SDK);
 
