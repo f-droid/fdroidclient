@@ -33,7 +33,7 @@ import java.net.URL;
 import java.security.cert.Certificate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Vector;
+import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -57,7 +57,7 @@ public class RepoXMLHandler extends DefaultHandler {
     // The ID of the repo we're processing.
     private int repo;
 
-    private Vector<DB.App> apps;
+    private List<DB.App> apps;
 
     private DB.App curapp = null;
     private DB.Apk curapk = null;
@@ -69,7 +69,7 @@ public class RepoXMLHandler extends DefaultHandler {
     // The date format used in the repo XML file.
     private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public RepoXMLHandler(int repo, Vector<DB.App> apps) {
+    public RepoXMLHandler(int repo, List<DB.App> apps) {
         this.repo = repo;
         this.apps = apps;
         pubkey = null;
@@ -293,7 +293,7 @@ public class RepoXMLHandler extends DefaultHandler {
     // value for the index that was successfully processed, or it may contain
     // null if none was available.
     public static String doUpdate(Context ctx, DB.Repo repo,
-            Vector<DB.App> apps, StringBuilder newetag, Vector<Integer> keeprepos) {
+            List<DB.App> apps, StringBuilder newetag, List<Integer> keeprepos) {
         try {
 
             int code = 0;

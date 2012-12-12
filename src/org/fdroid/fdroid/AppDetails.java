@@ -22,7 +22,6 @@ import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import android.support.v4.view.MenuItemCompat;
 import org.xml.sax.XMLReader;
@@ -302,7 +301,7 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = null;
-        Vector<DB.App> apps = ((FDroidApp) getApplication()).getApps();
+        List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
         for (DB.App tapp : apps) {
             if (tapp.id.equals(appid)) {
                 app = tapp;

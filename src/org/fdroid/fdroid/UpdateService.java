@@ -24,7 +24,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -110,7 +111,7 @@ public class UpdateService extends IntentService {
             // database while we do all the downloading, etc...
             int prevUpdates = 0;
             int newUpdates = 0;
-            Vector<DB.Repo> repos;
+            List<DB.Repo> repos;
             try {
                 DB db = DB.getDB();
                 repos = db.getRepos();
@@ -119,8 +120,8 @@ public class UpdateService extends IntentService {
             }
 
             // Process each repo...
-            Vector<DB.App> apps = new Vector<DB.App>();
-            Vector<Integer> keeprepos = new Vector<Integer>();
+            List<DB.App> apps = new ArrayList<DB.App>();
+            List<Integer> keeprepos = new ArrayList<Integer>();
             boolean success = true;
             for (DB.Repo repo : repos) {
                 if (repo.inuse) {
@@ -142,8 +143,8 @@ public class UpdateService extends IntentService {
             }
 
             if (success) {
-                Vector<DB.App> acceptedapps = new Vector<DB.App>();
-                Vector<DB.App> prevapps = ((FDroidApp) getApplication())
+                List<DB.App> acceptedapps = new ArrayList<DB.App>();
+                List<DB.App> prevapps = ((FDroidApp) getApplication())
                         .getApps();
 
                 DB db = DB.getDB();
@@ -272,7 +273,7 @@ public class UpdateService extends IntentService {
 
     }
 
-    private void getIcon(DB.App app, Vector<DB.Repo> repos) {
+    private void getIcon(DB.App app, List<DB.Repo> repos) {
         try {
 
             File f = new File(DB.getIconsPath(), app.icon);
