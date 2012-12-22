@@ -90,7 +90,7 @@
 	</string>
 	<string name="download_alrt">Getting application from:\n </string>
 
-	<string name="menu_update_repo">Update</string>
+	<string name="menu_update_repo">Update Repos</string>
 	<string name="menu_manage">Manage Repos</string>
 	<string name="menu_preferences">Preferences</string>
 	<string name="menu_about">About</string>
