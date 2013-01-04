@@ -27,7 +27,7 @@ public class PackageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d("FDroid", "PackageReciever invalidating apps");
+        Log.d("FDroid", "PackageReceiver invalidating apps");
         ((FDroidApp) ctx.getApplicationContext()).invalidateApps();
     }
 
