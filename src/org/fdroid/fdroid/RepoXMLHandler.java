@@ -21,13 +21,14 @@ package org.fdroid.fdroid;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -380,9 +381,9 @@ public class RepoXMLHandler extends DefaultHandler {
                 RepoXMLHandler handler = new RepoXMLHandler(repo.id, apps);
                 xr.setContentHandler(handler);
 
-                InputStreamReader isr = new FileReader(new File(
-                        ctx.getFilesDir() + "/tempindex.xml"));
-                InputSource is = new InputSource(isr);
+                Reader r = new BufferedReader(new FileReader(new File(
+                        ctx.getFilesDir() + "/tempindex.xml")));
+                InputSource is = new InputSource(r);
                 xr.parse(is);
 
                 if (handler.pubkey != null && repo.pubkey == null) {

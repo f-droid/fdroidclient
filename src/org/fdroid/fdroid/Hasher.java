@@ -21,6 +21,7 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.MessageDigest;
@@ -62,7 +63,8 @@ public class Hasher {
             byte[] buffer = new byte[1024];
             int read = 0;
             try {
-                InputStream is = new FileInputStream(file);
+                InputStream is = new BufferedInputStream(
+                        new FileInputStream(file));
                 while ((read = is.read(buffer)) > 0) {
                     digest.update(buffer, 0, read);
                 }
