@@ -170,6 +170,7 @@ public class AppDetails extends ListActivity {
     private static final int SOURCE = Menu.FIRST + 4;
     private static final int MARKET = Menu.FIRST + 5;
     private static final int DONATE = Menu.FIRST + 6;
+    private static final int LAUNCH = Menu.FIRST + 7;
 
     private DB.App app;
     private int app_currentvercode;
@@ -470,6 +471,8 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
                     android.R.drawable.ic_menu_add);
         } else {
+            menu.add(Menu.NONE, LAUNCH, 1, R.string.menu_launch).setIcon(
+                    android.R.drawable. ic_media_play);
             menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
                     android.R.drawable.ic_menu_delete);
         }
@@ -499,6 +502,10 @@ public class AppDetails extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+        case LAUNCH:
+            launchApk(app.id);
+            return true;
 
         case INSTALL:
             // Note that this handles updating as well as installing.
@@ -619,6 +626,11 @@ public class AppDetails extends ListActivity {
                 "application/vnd.android.package-archive");
         startActivityForResult(intent, REQUEST_INSTALL);
         ((FDroidApp) getApplication()).invalidateApps();
+    }
+
+    private void launchApk(String id) {
+        Intent intent = mPm.getLaunchIntentForPackage(id);
+        startActivity(intent);
     }
 
     private ProgressDialog createProgressDialog(String file, int p, int max) {
