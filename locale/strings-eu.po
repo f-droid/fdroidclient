@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-19 20:34+0100\n"
-"PO-Revision-Date: 2012-07-20 14:14+0200\n"
+"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"PO-Revision-Date: 2012-11-28 22:06+0200\n"
 "Last-Translator: Asier <asier.iturralde@gmail.com>\n"
 "Language-Team: eu <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -48,6 +48,8 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Android-ek dio pakete hau ez dela zure gailuarekin bateragarria. "
+"Instalatu egin nahi duzu dena den?"
 
 msgctxt "version"
 msgid "Version"
@@ -106,25 +108,23 @@ msgstr "Eguneratu aplikazio-zerrenda biltegiarekin automatikoki"
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Biltegiaren azken eskaneatzea: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "inoiz ez"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Eskaneatu biltegiak automatikoki"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDroid"
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "FDroid-i buruz"
+msgstr "F-Droid-i buruz"
 
 msgctxt "about_desc"
 msgid ""
@@ -299,9 +299,10 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Aplikazioa eskuratzen hemendik:\n"
 
+#, fuzzy
 msgctxt "menu_update_repo"
-msgid "Update"
-msgstr "Eguneraketa"
+msgid "Update Repos"
+msgstr "Eguneratu biltegiak"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
@@ -326,6 +327,10 @@ msgstr "Biltegi berria"
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
 msgstr "Ezabatu biltegia"
+
+msgctxt "menu_launch"
+msgid "Run"
+msgstr ""
 
 msgctxt "menu_install"
 msgid "Install"
@@ -470,22 +475,25 @@ msgstr "Erakutsi root baimenak behar dituzten aplikazioak"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Ezikusi egin ukipen-pantailari"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Sartu ukipen-pantaila behar duten aplikazioak beti"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Instalatu"
+msgstr "Guztia"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Zer da berria"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "Azkenaldian eguneratua"
+
+#~ msgctxt "menu_update_repo"
+#~ msgid "Update"
+#~ msgstr "Eguneraketa"
 

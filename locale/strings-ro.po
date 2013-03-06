@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-19 20:34+0100\n"
+"POT-Creation-Date: 2013-03-06 18:34+0000\n"
 "PO-Revision-Date: 2012-04-24 11:14+0200\n"
 "Last-Translator: sgmif <android@sgmif.eu>\n"
 "Language-Team: ro <LL@li.org>\n"
@@ -292,9 +292,10 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr ""
 
+#, fuzzy
 msgctxt "menu_update_repo"
-msgid "Update"
-msgstr ""
+msgid "Update Repos"
+msgstr "Actualizare depozit aplicatii"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
@@ -318,6 +319,10 @@ msgstr ""
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
+msgstr ""
+
+msgctxt "menu_launch"
+msgid "Run"
 msgstr ""
 
 msgctxt "menu_install"
@@ -476,4 +481,8 @@ msgstr ""
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
+
+#~ msgctxt "menu_update_repo"
+#~ msgid "Update"
+#~ msgstr ""
 

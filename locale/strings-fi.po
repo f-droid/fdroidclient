@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-19 20:34+0100\n"
-"PO-Revision-Date: 2012-10-19 20:34+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"PO-Revision-Date: 2012-11-08 17:36+0200\n"
+"Last-Translator: Mika <mkaysi@outlook.com>\n"
 "Language-Team: fi <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -19,17 +19,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "Löydettiin %1$d sovellusta täsmäten '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "Löydettiin yksi sovellus, joka täsmää '%s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "'%s':ään täsmääviä sovelluksia ei löytynyt"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -38,66 +38,71 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi "
+"uuden version, vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen. "
+"(Huomaa, että poistaminen poistaa kaiken sovelluksen sisäisen datan)"
 
 msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Android sanoo ettei tämä paketti ole yhteensopiva laitteesi kanssa. "
+"Tahdotko asentaa sen silti?"
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "Versio"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d versiota saatavilla"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "%d versio saatavilla"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Huomauta"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Varasto"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "Säilytä ladatut sovellukset välimuistissa"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "Pidä ladatut apk-tiedostot SD-kortilla"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "Päivitykset"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "Pyyhi kaikki välimuistissa oleva data"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "Resetoi"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Huolto"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "Ilmoita kun uusia päivityksiä on saatavilla"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "Päivitä sovelluslista sovelluslähteistä automaattisesti"
 
 #, c-format
 msgctxt "last_update_check"
@@ -110,37 +115,39 @@ msgstr ""
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "Automaattinen sovelluslähteen skannaus"
 
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr ""
+msgstr "F-Droid"
 
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr ""
+msgstr "Tietoa F-Droidista"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
+"Perustuu alunperin Aptoideen.\n"
+"Julkaistu GNU GPLv2-lisenssillä."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
+msgstr "Verkkosivu:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
+msgstr "Sähköposti:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr ""
+msgstr "Versio:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Verkkosivu"
 
 msgctxt "no_repo"
 msgid ""
@@ -151,317 +158,340 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
+"Sovelluslähteitä ei ole määritetty!\n"
+"\n"
+"Sovelluslähde on paikka, josta voidaan ladata sovelluksia. Lisätäksesi "
+"sellaisen paina MENU-näppäintä nyt ja anna URL-osoite.\n"
+"\n"
+"Sovelluslähteen osoite näyttää tälläiseltä: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "Ei asennettu"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "Päivittäminen mahdollista - Ver.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "Lisää uusi sovelluslähde"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr ""
+msgstr "Lisää"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Peruuta"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr ""
+msgstr "Valitse sovelluslähde, jonka tahdot poistaa"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Yhteyttä palvelimeen ei voitu muodostaa!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "Päivitä sovelluslähteet"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr ""
+msgstr "Asennettu"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "Saatavilla"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "Päivityksiä"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "Päivityksiä saatavilla"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr ""
+msgstr "Odota hetki"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr ""
+msgstr "Päivitetään sovelluslistaa..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr ""
+msgstr "Verkkoyhteyttä ei voitu muodostaa."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Aikakatkaisu"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Yhteyttä palvelimeen ei voitu muodostaa!"
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Lataa"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr ""
+msgstr "Haetaan sovellusta lähteestä"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
+msgstr "Sovelluslähteen osoite"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
+msgstr "Asennettu:"
 
 msgctxt "install"
 msgid "Install"
-msgstr ""
+msgstr "Asenna"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Poista"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "Päivitä!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
+"Päivityksiä on saatavilla joillekin asennetuille sovelluksille.\n"
+"Tahdotko katsoa niitä?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
+"Lista käytetyistä sovelluslähteistä on muuttumut.\n"
+"Tahdotko päivittää ne?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
+msgstr "Yhteyttö palvelimeen ei voitu muodostaa tai apk-tiedosto on viallinen!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
+msgstr "Ladataan sovellusta lähteestä:\n"
 
+#, fuzzy
 msgctxt "menu_update_repo"
-msgid "Update"
-msgstr ""
+msgid "Update Repos"
+msgstr "Päivitä sovelluslähteet"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "Hallitse sovelluslähteitä"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr ""
+msgstr "Tietoja"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "Uusi sovelluslähde"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
+msgstr "Poista sovelluslähde"
+
+msgctxt "menu_launch"
+msgid "Run"
 msgstr ""
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr ""
+msgstr "Asenna"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Poista"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Verkkosivu"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "Ongelmat"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr ""
+msgstr "Lähdekoodi"
 
+#, fuzzy
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "Kauppa"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "Päivitä"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr ""
+msgstr "Lahjoita"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr ""
+msgstr "Versio %s asennettu"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr ""
+msgstr "Ei asennettu"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr ""
+msgstr "Asennettu"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "Ladattu tiedosto on viallinen"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Lataus peruutettu"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Anti-Toiminnot"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Mainostus"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Näytä sovellukset, jotka sisältävät mainostusta"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Seuranta"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "Näytä sovellukset, jotka seuraavat ja raportoivat aktiivisuuttasi"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Lisä-osat"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Näytä sovellukset, jotka mainostavat epävapaita lisä-osia"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Verkkopalvelut"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
+msgstr "Näytä sovellukset, jotka mainostavat epävapaita verkkopalveluja"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr ""
+msgstr "Riippuvuudet"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "Näytä sovellukset, jotka riippuvat muista epävapaista sovelluksista"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Asiantuntija"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Ota käyttöön asiantuntija-tila"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "Etsi sovelluksia"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Tietokannan synkronointi-tila"
 
+#, fuzzy
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Aseta SQLiten synkrooninen lippu"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Sovellusten yhteensopivuus"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Epäyhteensopivia sovelluksia"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
+"Näytä sovellukset, jotka kirjoitettiin uudemmille Androidin versioille "
+"tai erilaiselle laitteistolle"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Näytä sovellukset, jotka vaativat root-oikeudet"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Älä välitä kosketusnäytöstä"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Sisällytä aina sovellukset, jotka vaativat kosketusnäytön"
 
 msgctxt "category_all"
 msgid "All"
-msgstr ""
+msgstr "Kaikki"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Uutta"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "Viimeaikoina päivitetty"
+
+#~ msgctxt "menu_update_repo"
+#~ msgid "Update"
+#~ msgstr "Päivitä"
 

@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-19 20:34+0100\n"
-"PO-Revision-Date: 2012-01-10 17:56+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"PO-Revision-Date: 2013-03-05 14:38+0200\n"
+"Last-Translator: Tulio <tuliouel@gmail.com>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
@@ -20,33 +19,33 @@ msgstr ""
 
 msgctxt "updateIntervalNames:0"
 msgid "Never"
-msgstr ""
+msgstr "Nunca"
 
 msgctxt "updateIntervalNames:1"
 msgid "Hourly"
-msgstr ""
+msgstr "A cada hora"
 
 msgctxt "updateIntervalNames:2"
 msgid "Every 4 Hours"
-msgstr ""
+msgstr "A cada 4 horas"
 
 msgctxt "updateIntervalNames:3"
 msgid "Every 12 Hours"
-msgstr ""
+msgstr "A cada 12 horas"
 
 msgctxt "updateIntervalNames:4"
 msgid "Daily"
-msgstr ""
+msgstr "Diariamente"
 
 msgctxt "dbSyncModeNames:0"
 msgid "Off (unsafe)"
-msgstr ""
+msgstr "Desligada (inseguro)"
 
 msgctxt "dbSyncModeNames:1"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "dbSyncModeNames:2"
 msgid "Full"
-msgstr ""
+msgstr "Completa"
 

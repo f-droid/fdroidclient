@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="about_title">关于F-Droid</string>
+  <string name="about_site">网站：</string>
+  <string name="about_mail">邮件：</string>
+  <string name="about_version">版本：</string>
+  <string name="repo_add_add">加</string>
+  <string name="cancel">取消</string>
+  <string name="tab_installed">已经安装的</string>
+  <string name="process_wait_title">请等一下</string>
+  <string name="process_update_msg">更新着软件列表。。。</string>
+  <string name="connection_timeout">超时</string>
+  <string name="download">下载</string>
+  <string name="install">安装</string>
+  <string name="uninstall">卸掉</string>
+  <string name="menu_update_repo">更新软件列表</string>
+  <string name="menu_preferences">参数选择</string>
+  <string name="menu_about">关于</string>
+  <string name="menu_search">搜索</string>
+  <string name="menu_install">安装</string>
+  <string name="menu_uninstall">卸载</string>
+  <string name="menu_website">网站</string>
+  <string name="menu_source">源代码</string>
+  <string name="menu_donate">捐赠</string>
+  <string name="inst">安装好了</string>
+  <string name="antinonfreead">插件</string>
+</resources>

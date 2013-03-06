@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-19 20:34+0100\n"
-"PO-Revision-Date: 2012-10-19 20:34+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"PO-Revision-Date: 2012-11-18 12:26+0200\n"
+"Last-Translator: Ingemar <ingemar@ingemarberg.com>\n"
 "Language-Team: eo <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -47,25 +47,25 @@ msgstr ""
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "Versio"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d versioj disponeblaj"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "%d versio disponebla"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Sciigi"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Konservado"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
@@ -77,7 +77,7 @@ msgstr ""
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "Ĝisdatigoj"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
@@ -89,7 +89,7 @@ msgstr ""
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Prizorgado"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
@@ -114,11 +114,11 @@ msgstr ""
 
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr ""
+msgstr "F-Droid"
 
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr ""
+msgstr "Pri F-Droid"
 
 msgctxt "about_desc"
 msgid ""
@@ -128,19 +128,19 @@ msgstr ""
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
+msgstr "Retejo:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
+msgstr "Retpoŝto:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr ""
+msgstr "Versio:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Retejo"
 
 msgctxt "no_repo"
 msgid ""
@@ -154,7 +154,7 @@ msgstr ""
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "Ne instalita"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -162,27 +162,27 @@ msgstr ""
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "Jes"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "Aldoni novan deponejon"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr ""
+msgstr "Aldoni"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Rezigni"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
@@ -194,27 +194,27 @@ msgstr ""
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "Ĝisdatigi deponejojn"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr ""
+msgstr "Instalitaj"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "Disponeblaj"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "Ĝisdatigoj"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "Ĝisdatigoj disponeblaj"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr ""
+msgstr "Bonvolu atendi"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
@@ -226,7 +226,7 @@ msgstr ""
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Tempolimo"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
@@ -234,7 +234,7 @@ msgstr ""
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Elŝuti"
 
 msgctxt "download_server"
 msgid "Getting application from"
@@ -250,15 +250,15 @@ msgstr ""
 
 msgctxt "install"
 msgid "Install"
-msgstr ""
+msgstr "Instali"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Malinstali"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "Ĝisdatigu!"
 
 msgctxt "update_alrt"
 msgid ""
@@ -280,53 +280,58 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr ""
 
+#, fuzzy
 msgctxt "menu_update_repo"
-msgid "Update"
-msgstr ""
+msgid "Update Repos"
+msgstr "Ĝisdatigi deponejojn"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "Administri deponejojn"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Agordoj"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr ""
+msgstr "Pri"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Serĉi"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "Nova deponejo"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
+msgstr "Forigi deponejon"
+
+msgctxt "menu_launch"
+msgid "Run"
 msgstr ""
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr ""
+msgstr "Instali"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Malinstali"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Retejo"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "Cimoj"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr ""
+msgstr "Fontkodo"
 
 msgctxt "menu_market"
 msgid "Market"
@@ -334,11 +339,11 @@ msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "Ĝisdatigi"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr ""
+msgstr "Donaci"
 
 #, c-format
 msgctxt "details_installed"
@@ -347,11 +352,11 @@ msgstr ""
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr ""
+msgstr "Neinstalita"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr ""
+msgstr "Instalita"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
@@ -367,7 +372,7 @@ msgstr ""
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Reklamo"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
@@ -375,7 +380,7 @@ msgstr ""
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Spurado"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
@@ -383,7 +388,7 @@ msgstr ""
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Aldonaĵoj"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
@@ -399,7 +404,7 @@ msgstr ""
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr ""
+msgstr "Dependecoj"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
@@ -415,7 +420,7 @@ msgstr ""
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "Trovi aplikaĵojn"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
@@ -431,7 +436,7 @@ msgstr ""
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Nekongruaj aplikaĵoj"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
@@ -439,7 +444,7 @@ msgstr ""
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Ĉefuzanto"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
@@ -464,4 +469,8 @@ msgstr ""
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
+
+#~ msgctxt "menu_update_repo"
+#~ msgid "Update"
+#~ msgstr "Ĝisdatigi"
 

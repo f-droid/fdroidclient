@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-19 20:34+0100\n"
-"PO-Revision-Date: 2011-02-21 14:02+0200\n"
-"Last-Translator: mateusfbi <mateusfbi@gmail.com>\n"
+"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"PO-Revision-Date: 2013-03-05 14:39+0200\n"
+"Last-Translator: Tulio <tuliouel@gmail.com>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
@@ -16,22 +16,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0dev\n"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Encontramos %1$d aplicações correspondente a '%2$s':"
+msgstr "Encontramos %1$d aplicações correspondentes a '%2$s':"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Encontrámos uma aplicação correspondente '%s':"
+msgstr "Encontramos uma aplicação correspondente a '%s':"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
 msgstr "Não foram encontradas aplicações correspondentes a '%s'"
 
-#, fuzzy
 msgctxt "SignatureMismatch"
 msgid ""
 "The new version is signed with a different key to the old one. To install"
@@ -39,27 +38,29 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"A nova versão é assinado com uma chave diferente para o antigo. Para "
-"instalar a nova versão, desinstale primeiro a antiga. Por favor, faça "
-"isso e tente novamente. (Note que a desinstalação apaga todos os dados "
-"internos armazenados pela aplicação)"
+"A nova versão é assinada com uma chave diferente da antiga. Para instalar"
+" a nova versão, desinstale primeiro a antiga. Por favor, faça isso e "
+"tente novamente. (Note que a desinstalação apaga todos os dados internos "
+"armazenados pela aplicação)"
 
 msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"O Android diz que esse pacote não é compatível com o seu dispositivo. "
+"Quer tentar instalá-lo mesmo assim?"
 
 msgctxt "version"
 msgid "Version"
 msgstr "Versão"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
 msgstr "%d versões disponíveis"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versão disponível"
@@ -74,11 +75,11 @@ msgstr "Armazenamento"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Cache de aplicativos baixados"
+msgstr "Cache de aplicativos baixado"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Manter os arquivos apt baixados em cartão SD"
+msgstr "Manter no cartão SD os arquivos apk baixados"
 
 msgctxt "updates"
 msgid "Updates"
@@ -88,7 +89,6 @@ msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
 msgstr "Limpar todos os dados em cache"
 
-#, fuzzy
 msgctxt "reset"
 msgid "Reset"
 msgstr "Reiniciar"
@@ -103,42 +103,40 @@ msgstr "Notificar quando novas atualizações estiverem disponíveis"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Atualizar a lista de repositórios de aplicativos automaticamente"
+msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositórios"
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Última consulta aos repositórios: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "nunca"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Busca automática nos repositórios"
+msgstr "Consulta automática aos repositórios"
 
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr ""
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "Sobre o FDroid"
+msgstr "Sobre o F-Droid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
-"Baseado no Aptoide.\n"
+"Baseado originalmente no Aptoide.\n"
 "Lançado sob a licença GNU GPLv2."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
+msgstr "Site:"
 
 msgctxt "about_mail"
 msgid "Email:"
@@ -150,9 +148,8 @@ msgstr "Versão:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Site"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -162,7 +159,7 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Você não tem todos os repositórios configurados!\n"
+"Você não tem nenhum repositório configurado!!\n"
 "\n"
 "Um repositório é uma fonte de aplicações. Para adicionar um, pressione o "
 "botão MENU e digite a URL.\n"
@@ -243,7 +240,7 @@ msgstr "Não foi possível conectar à rede."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Tempo esgotado"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
@@ -251,7 +248,7 @@ msgstr "Não foi possível conectar ao servidor!"
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Baixar"
 
 msgctxt "download_server"
 msgid "Getting application from"
@@ -277,7 +274,6 @@ msgctxt "update"
 msgid "Update!"
 msgstr "Atualizar!"
 
-#, fuzzy
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
@@ -286,7 +282,6 @@ msgstr ""
 "Existem atualizações disponíveis para alguns aplicativos instalados.\n"
 "Você quer vê-las?"
 
-#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -295,18 +290,20 @@ msgstr ""
 "A lista de repositórios usados mudou.\n"
 "Você deseja atualizá-los?"
 
-#, fuzzy
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Não foi possível conectar ao servidor de arquivos ou apk está corrompido!"
+msgstr ""
+"Não foi possível se conectar ao servidor de arquivos ou o arquivo apk "
+"está corrompido!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Pegando aplicação de:\n"
 
+#, fuzzy
 msgctxt "menu_update_repo"
-msgid "Update"
-msgstr "Atualizar"
+msgid "Update Repos"
+msgstr "Atualizar repositórios"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
@@ -332,6 +329,10 @@ msgctxt "menu_rem_repo"
 msgid "Remove Repository"
 msgstr "Remover Repositório"
 
+msgctxt "menu_launch"
+msgid "Run"
+msgstr ""
+
 msgctxt "menu_install"
 msgid "Install"
 msgstr "Instalar"
@@ -342,7 +343,7 @@ msgstr "Desinstalar"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Site"
 
 msgctxt "menu_issues"
 msgid "Issues"
@@ -354,23 +355,21 @@ msgstr "Código Fonte"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "Loja"
 
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Atualizar"
 
-#, fuzzy
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Atualizar"
+msgstr "Fazer doação"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Versão %s instalada"
 
-#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Não Instalado"
@@ -385,15 +384,15 @@ msgstr "O arquivo baixado está corrompido"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Download cancelado"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Anti-Características"
+msgstr "Anticaracterísticas"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Publicidade"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
@@ -405,15 +404,15 @@ msgstr "Rastreamento"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Mostrar aplicativos que acompanho e relatar sua atividade"
+msgstr "Mostrar aplicativos que rastreiam e relatam sua atividade"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Complementos"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Mostrar aplicativos que promovem add-ons não-livres"
+msgstr "Mostrar aplicativos que promovem complementos não-livres"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -423,15 +422,13 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Mostrar aplicativos que promovem serviços de rede não-livre"
 
-#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Preferências"
+msgstr "Dependências"
 
-#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Mostrar aplicativos que promovem add-ons não-livres"
+msgstr "Mostrar aplicativos que dependem de aplicativos não-livres."
 
 msgctxt "expert"
 msgid "Expert"
@@ -439,58 +436,63 @@ msgstr "Especialista"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Ativar modo expert"
+msgstr "Ativar modo especialista"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Pesquisar aplicações"
+msgstr "Pesquisar aplicativos"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Modo de sincronia do banco de dados"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "Definir o valor da flag de sincronia do SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Compatibilidade de aplicativo"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Aplicativos incompatíveis"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
+"Mostrar aplicativos escritos para versões mais novas do Android ou para "
+"hardware diferente"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Mostrar aplicativos que requerem privilégios de root"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Ignorar tela sensível ao toque"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Sempre incluir aplicativos que requerem tela sensível ao toque"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Instalar"
+msgstr "Todos"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "O que há de novo"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
+
+#~ msgctxt "menu_update_repo"
+#~ msgid "Update"
+#~ msgstr "Atualizar"
 

@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2012 ORGANIZATION
+# Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-19 20:34+0100\n"
+"POT-Creation-Date: 2013-03-06 18:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -282,7 +282,7 @@ msgid "Getting application from:\n"
 msgstr ""
 
 msgctxt "menu_update_repo"
-msgid "Update"
+msgid "Update Repos"
 msgstr ""
 
 msgctxt "menu_manage"
@@ -307,6 +307,10 @@ msgstr ""
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
+msgstr ""
+
+msgctxt "menu_launch"
+msgid "Run"
 msgstr ""
 
 msgctxt "menu_install"

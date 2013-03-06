@@ -4,6 +4,7 @@
   <string name="searchres_oneapp">\'%s\'-rekin bat datorren aplikazio bat aurkitu da:</string>
   <string name="searchres_noapps">\'%s\'-rekin bat datorren aplikaziorik ez da aurkitu</string>
   <string name="SignatureMismatch">"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)"</string>
+  <string name="installIncompatible">Android-ek dio pakete hau ez dela zure gailuarekin bateragarria. Instalatu egin nahi duzu dena den?</string>
   <string name="version">Bertsioa</string>
   <string name="n_versions_available">%d bertsio eskuragarri</string>
   <string name="n_version_available">Bertsio %d eskuragarri</string>
@@ -17,9 +18,11 @@
   <string name="maintenance">Mantentzea</string>
   <string name="notify_updates_available">Jakinarazi eguneraketa berriak eskuragarri daudenean</string>
   <string name="update_apps_list">Eguneratu aplikazio-zerrenda biltegiarekin automatikoki</string>
+  <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
+  <string name="never">inoiz ez</string>
   <string name="automatic_repo_scan">Eskaneatu biltegiak automatikoki</string>
-  <string name="app_name">FDroid</string>
-  <string name="about_title">FDroid-i buruz</string>
+  <string name="app_name">F-Droid</string>
+  <string name="about_title">F-Droid-i buruz</string>
   <string name="about_desc">Jatorrian Aptoide-n oinarritua.\nGNU GPLv2 lizentziapean argitaratua.</string>
   <string name="about_site">Webgunea:</string>
   <string name="about_mail">E-posta:</string>
@@ -98,5 +101,9 @@
   <string name="showincompat_long">Erakutsi Androiden bertsio berriagoentzat edo hardware desberdinarentzat idatzitako aplikazioak</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Erakutsi root baimenak behar dituzten aplikazioak</string>
-  <string name="category_all">Instalatu</string>
+  <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
+  <string name="ignoreTouch_long">Sartu ukipen-pantaila behar duten aplikazioak beti</string>
+  <string name="category_all">Guztia</string>
+  <string name="category_whatsnew">Zer da berria</string>
+  <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
 </resources>
