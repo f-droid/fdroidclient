@@ -18,6 +18,13 @@
 		<CheckBoxPreference android:title="@string/notify"
 			android:defaultValue="true" android:summary="@string/notify_updates_available"
 			android:key="updateNotify" />
+		<EditTextPreference
+			android:defaultValue="14"
+			android:key="updateHistoryDays"
+			android:maxLength="2"
+			android:numeric="integer"
+			android:summary="@string/update_history_desc"
+			android:title="@string/update_history" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/antifeatures">
 		<CheckBoxPreference android:title="@string/antiads"
