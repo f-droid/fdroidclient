@@ -1,19 +1,18 @@
-# Swedish translations for PROJECT.
-# Copyright (C) 2011 ORGANIZATION
+# Translations template for PROJECT.
+# Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-03-06 18:34+0000\n"
-"PO-Revision-Date: 2013-03-15 14:26+0200\n"
-"Last-Translator: haaninjo <jonars03@student.umu.se>\n"
-"Language-Team: sv <LL@li.org>\n"
-"Language: sv\n"
+"PO-Revision-Date: 2013-03-12 02:20+0200\n"
+"Last-Translator: meixome <meixome@certima.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.6\n"
@@ -21,27 +20,27 @@ msgstr ""
 
 msgctxt "updateIntervalNames:0"
 msgid "Never"
-msgstr "Aldrig"
+msgstr "Nunca"
 
 msgctxt "updateIntervalNames:1"
 msgid "Hourly"
-msgstr "Varje timme"
+msgstr "Cada hora"
 
 msgctxt "updateIntervalNames:2"
 msgid "Every 4 Hours"
-msgstr "Var fjärde timme"
+msgstr "Cada 4 horas"
 
 msgctxt "updateIntervalNames:3"
 msgid "Every 12 Hours"
-msgstr "Var tolfte timme"
+msgstr "Cada 12 horas"
 
 msgctxt "updateIntervalNames:4"
 msgid "Daily"
-msgstr "Dagligen"
+msgstr "Diariamente"
 
 msgctxt "dbSyncModeNames:0"
 msgid "Off (unsafe)"
-msgstr "Av (osäkert)"
+msgstr "Apagado (inseguro)"
 
 msgctxt "dbSyncModeNames:1"
 msgid "Normal"
@@ -49,4 +48,4 @@ msgstr "Normal"
 
 msgctxt "dbSyncModeNames:2"
 msgid "Full"
-msgstr "Fullständig"
+msgstr "Completo"

@@ -57,7 +57,7 @@
   <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.\nWil je ze vernieuwen?</string>
   <string name="error_download_alrt">Kan niet verbinden met de server of apk-bestand is corrupt!</string>
   <string name="download_alrt">Applicatie verkrijgen van:\n</string>
-  <string name="menu_update_repo">Update</string>
+  <string name="menu_update_repo">Vernieuw bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>

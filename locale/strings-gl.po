@@ -1,18 +1,18 @@
-# Italian translations for PACKAGE.
-# Copyright (C) 2010 ORGANIZATION
-# This file is distributed under the same license as the PACKAGE project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# Translations template for PROJECT.
+# Copyright (C) 2013 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-03-06 18:34+0000\n"
-"PO-Revision-Date: 2013-03-23 12:12+0200\n"
-"Last-Translator: Administrator <>\n"
-"Language-Team: it <LL@li.org>\n"
-"Language: it\n"
+"PO-Revision-Date: 2013-03-12 04:14+0200\n"
+"Last-Translator: meixome <meixome@certima.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.1.6\n"
@@ -21,17 +21,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Trovate %1$d applicazioni corrispondenti a '%2$s':"
+msgstr "Atopáronse %1$d aplicativos que coincidentes con '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Trovata una applicazione corrispondente a '%s':"
+msgstr "Atopouse un aplicativo coincidente con '%s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Non è stata trovate nessuna applicazione corrispondente a '%s'"
+msgstr "Non se atoparon aplicativos coincidentes con '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -40,117 +40,117 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"La nuova versione è firmata con una chiave differente rispetto alla "
-"vecchia. Per installare la nuova versione occorre prima disinstallare la "
-"precedente. Riprovare dopo aver disinstallato. (Attenzione! Disistallando"
-" si cancellerà qualsiasi dato salvato dall'applicazione)"
+"A nova versión está asinada cunha clave diferente da anterior. Para instalar "
+"a nova versión, débese desinstalar a anteior. Fágoa e ténteo outra vez. "
+"(Vexa que ao desinstalar borrarase calquera dato interno gardado polo "
+"aplicativo)"
 
 msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Android di que este paquete non é compatíbel co seu dispositivo. Quere "
+"probar a instalalo de todas maneiras?"
 
 msgctxt "version"
 msgid "Version"
-msgstr "Versione"
+msgstr "Versión"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d versioni disponibili"
+msgstr "%d versións dispoñíbeis"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "%d versione disponibile"
+msgstr "%d versión dispoñíbel"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Avviso"
+msgstr "Notificar"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Memoria"
+msgstr "Almacenamento"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Cache applicazioni scaricate"
+msgstr "Caché de apps descargados"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Salva su SD i file apk scaricati"
+msgstr "Gardar os ficheiros apk descargados na tarxeta SD"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Aggiornamenti"
+msgstr "Actualizacións"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Cancella dati temporanei dalla cache"
+msgstr "Despexa todos os datos da caché"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Reimposta"
+msgstr "Reiniciar"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Manutenzione"
+msgstr "Mantemento"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Avvisa quando sono disponibili nuovi aggiornamenti"
+msgstr "Enviar notificación cando estean dispoñíbeis novas actualizacións"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Aggiorna automaticamente l'elenco applicazioni"
+msgstr "Actualizar a lista de apps do repositorio automaticamente "
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Último escaneado do repo: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "nunca"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Scansione repository automatica"
+msgstr "Escaneado automático do repo"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDroid"
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "Informazioni"
+msgstr "Sobre F-Droid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
-"Basato su Aptoide.\n"
-"Rilasciato sotto licenza GNU GPL v2."
+"Baseado orixinalmente en Aptoide.\n"
+"Publicado con licenza GNU GPLv2."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Sito Web:"
+msgstr "Sitio web:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "Email:"
+msgstr "Correo:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Versione:"
+msgstr "Versión:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr "Sito Web"
+msgstr "Sitio web"
 
 msgctxt "no_repo"
 msgid ""
@@ -161,340 +161,330 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Non hai configurato nessuna repository!\n"
+"Non ten ningún repositoio configurado!\n"
 "\n"
-"Una repository è una fonte di applicazioni. Per aggiungerne una, premi "
-"MENU e inserisci un indirizzo URL.\n"
+"Un repositorio é unha fonte de aplicativos. Para engadir un, prema no botón "
+"MENÚ agora e introduza o URL.\n"
 "\n"
-"Un indirizzo URL di esempio è: http://f-droid.org/repo"
+"Un enderezo de repositorio será algo coma isto: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Non installato"
+msgstr "Non instalado"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Aggiornamento: - Ver.:"
+msgstr "Actualización posíbel - Vers.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "Sì"
+msgstr "Si"
 
 msgctxt "no"
 msgid "No"
-msgstr "No"
+msgstr "Non"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Aggiungi nuova repository"
+msgstr "Engadir un novo repositorio"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Aggiungi"
+msgstr "Engadir"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Annulla"
+msgstr "Cancelar"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Rimuovi repository"
+msgstr "Escoller o repositorio que retirar"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
+msgstr "Non sei puido conectar co servidor!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Aggiorna le repository"
+msgstr "Actualizar repositorios"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Installato"
+msgstr "Instalado"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "Disponibile"
+msgstr "Dispoñíbel"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Aggiornamenti"
+msgstr "Actualizacións"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Aggiornamenti disponibili"
+msgstr "Actualizacións dispoñíbeis"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Attendere prego"
+msgstr "Agarde por favor"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Aggiornamento elenco applicazioni in corso..."
+msgstr "Actualización da lista de aplicativos..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Impossibile connettersi alla rete."
+msgstr "Non sei puido conectar á rede."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Tempo esgotado"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
+msgstr "Non se puido conectar co servidor!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Download"
+msgstr "Descargar"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Scaricamento applicazione da"
+msgstr "Obter o aplicativo de"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Indirizzo repository"
+msgstr "Enderezo do repositorio"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Installato:"
+msgstr "Instalado:"
 
 msgctxt "install"
 msgid "Install"
-msgstr "Installa"
+msgstr "Instalar"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Disinstalla"
+msgstr "Desinstalar"
 
 msgctxt "update"
 msgid "Update!"
-msgstr "Aggiorna!"
+msgstr "Actualizar!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
-msgstr ""
-"Aggiornamenti disponibili per alcune applicazioni installate.\n"
-"\n"
-"Vuoi visualizzarli?"
+msgstr "Hai actualización dispoñíbeis para algúns aplicativos instalados.\n"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"L'elenco delle repository in uso è cambiato.\n"
-"\n"
-"Vuoi aggiornarlo?"
+"Cambiou a lista de repositorios usados.\n"
+"Quere actualizalos?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Impossibile connettersi al server o file apk corrotto!"
+msgstr ""
+"Non se puido conectar co servidor ou ben o ficheiro apk está corrompido!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Scaricamento applicazione da:\n"
+msgstr "Obter o aplicativo de:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
-msgstr "Aggiorna le repository"
+msgstr "Actualizar repos"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Gestione repository"
+msgstr "Xestionar repos"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Preferenze"
+msgstr "Preferencias"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "Informazioni"
+msgstr "Sobre"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr "Cerca"
+msgstr "Buscar"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Nuova repository"
+msgstr "Novo repositorio"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Rimuovi repository"
+msgstr "Retirar repositorio"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Executar"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Installa"
+msgstr "Instalar"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Disinstalla"
+msgstr "Desinstalar"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr "Sito Web"
+msgstr "Sitio web"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Problemi"
+msgstr "Incidencias"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Codice sorgente"
+msgstr "Código fonte"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Market"
+msgstr "Mercado"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Aggiornamento"
+msgstr "Actualizar"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Donazioni"
+msgstr "Doar"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Versione %s installata"
+msgstr "Instalada a versión %s"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Non installato"
+msgstr "Non instalada"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Installato"
+msgstr "Instalada"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "Il file scaricato è corrotto"
+msgstr "O ficheiro descargado está corrompido"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr "Download annullato"
+msgstr "Descarga cancelada"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Caratteristiche negative"
+msgstr "Anti-funcionalidades"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Pubblicità"
+msgstr "Publicidade"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Mostra applicazioni con pubblicità"
+msgstr "Amosar apps que conteñen publicidade"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Monitoraggio"
+msgstr "Seguimento"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Mostra applicazioni che monitorano e riferiscono sulle tue attività"
+msgstr "Amosar apps que fan seguimento e informan da túa actividade"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr "Add-ons"
+msgstr "Engadidos"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Mostra applicazioni che promuovono add-on non liberi"
+msgstr "Amosar apps que promoven engadidos non libres"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Servizi di rete"
+msgstr "Servizos de rede"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Mostra applicazioni che promuovono servizi di rete a pagamento"
+msgstr "Amosar apps que promoven servizos de rede non libres"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "DIpendenze"
+msgstr "Dependencias"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
+msgstr "Amosar apps que dependen doutros apps non libres"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr "Esperto"
+msgstr "Experto"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Attiva la modalità avanzata"
+msgstr "Activar o modo experto"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Scaricamento applicazione da"
+msgstr "Buscar aplicativos"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr "Modalità di sincronizzazione database"
+msgstr "Modo de sincronización da base de datos"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr "Impostazione del flag di sincronizzazione di SQLite"
+msgstr "Estabelecer o valor da bandeira de sincronización de SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr "Compatibilità applicazioni"
+msgstr "Compatibilidade co aplicativo"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr "Applicazioni incompatibili"
+msgstr "Aplicativos incompatíbeis"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Mostra le applicazioni scritte per una versione di Android più recente o "
-"hardware differente"
+"Amosar apps escritos para novas versións de Android ou hardware diferente"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr "Amministratore"
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Mostra le applicazioni che richiedono i privilegi di amministrazione"
+msgstr "Amosar apps que requiren privilexios de root"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Ignorar a pantalla táctil"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Incluír sempre apps que requiren pantalla táctil"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Installa"
+msgstr "Todos"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Que novidades hai"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
-
-#~ msgctxt "menu_update_repo"
-#~ msgid "Update"
-#~ msgstr "Aggiornamento"
+msgstr "Actualizado recentemente"

@@ -57,7 +57,7 @@
   <string name="repo_alrt">Kullanılan depoların listesi değişti.\nGüncellemek ister misiniz?</string>
   <string name="error_download_alrt">Sunucuya bağlanılamadı ya da apk dosyası bozuk!</string>
   <string name="download_alrt">Uygulama buradan alınıyor:\n</string>
-  <string name="menu_update_repo">Güncelleme</string>
+  <string name="menu_update_repo">Depoları güncelle</string>
   <string name="menu_manage">Depoları Yönet</string>
   <string name="menu_preferences">Tercihler</string>
   <string name="menu_about">Hakkında</string>

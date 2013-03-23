@@ -43,4 +43,5 @@
   <string name="process_wait_title">Asteptati ...</string>
   <string name="process_update_msg">Se actualizeaza lista ...</string>
   <string name="connection_error">Se poate conecta.</string>
+  <string name="menu_update_repo">Actualizare depozit aplicatii</string>
 </resources>

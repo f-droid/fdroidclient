@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-03-06 18:34+0000\n"
-"PO-Revision-Date: 2011-03-10 19:06+0200\n"
-"Last-Translator: Henrik <tunedal@gmail.com>\n"
+"PO-Revision-Date: 2013-03-15 18:43+0200\n"
+"Last-Translator: haaninjo <jonars03@student.umu.se>\n"
 "Language-Team: sv <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
@@ -47,6 +49,8 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Android säger att det här paketet inte är kompatibelt med din enhet. Vill du "
+"försöka installera det ändå?"
 
 msgctxt "version"
 msgid "Version"
@@ -105,25 +109,23 @@ msgstr "Uppdatera programlistan från förråd automatiskt"
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Senaste förrådsavsökning: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "aldrig"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Automatisk förrådsavsökning"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDroid"
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "Om FDroid"
+msgstr "Om F-Droid"
 
 msgctxt "about_desc"
 msgid ""
@@ -135,15 +137,15 @@ msgstr ""
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Webbplats: "
+msgstr "Webbplats:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "E-post: "
+msgstr "E-post:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Version: "
+msgstr "Version:"
 
 msgctxt "about_website"
 msgid "Website"
@@ -291,13 +293,12 @@ msgstr ""
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Kunde inte ansluta till servern eller så är apk-filen är skadad!"
+msgstr "Kunde inte ansluta till servern eller så är apk-filen skadad!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Hämtar program från:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Uppdatera förråd"
@@ -328,7 +329,7 @@ msgstr "Ta bort förråd"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Kör"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -367,7 +368,6 @@ msgctxt "details_installed"
 msgid "Version %s installed"
 msgstr "Version %s är installerad"
 
-#, fuzzy
 msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Inte installerad"
@@ -420,15 +420,13 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Visa program som främjar icke-fria nätverkstjänster"
 
-#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Inställningar"
+msgstr "Beroenden"
 
-#, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Visa program som främjar icke-fria tillägg"
+msgstr "Visa program som beror på icke-fria program"
 
 msgctxt "expert"
 msgid "Expert"
@@ -472,26 +470,24 @@ msgstr "Visa program som kräver root-rättigheter"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Ignorera touchscreen"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Inkludera alltid program som kräver touchscreen"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Installera"
+msgstr "Alla"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Nyheter"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "Nyligt uppdaterade"
 
 #~ msgctxt "menu_update_repo"
 #~ msgid "Update"
 #~ msgstr "Uppdatera"
-

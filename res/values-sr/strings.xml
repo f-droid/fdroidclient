@@ -57,7 +57,7 @@
   <string name="repo_alrt">Промењена је листа ризница у употреби.\nЖелите ли да их ажурирате?</string>
   <string name="error_download_alrt">Грешка у повезивању на сервер или је apk датотека покварена!</string>
   <string name="download_alrt">Апликација се скида са:\n</string>
-  <string name="menu_update_repo">Ажурирај</string>
+  <string name="menu_update_repo">Ажурирај ризнице</string>
   <string name="menu_manage">Конфигуриши Ризнице</string>
   <string name="menu_preferences">Опције</string>
   <string name="menu_about">О Апликацији</string>

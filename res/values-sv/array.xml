@@ -1,2 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources/>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Aldrig</item>
+    <item>Varje timme</item>
+    <item>Var fjärde timme</item>
+    <item>Var tolfte timme</item>
+    <item>Dagligen</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>Av (osäkert)</item>
+    <item>Normal</item>
+    <item>Fullständig</item>
+  </string-array>
+</resources>

@@ -57,7 +57,7 @@
   <string name="repo_alrt">Die Liste der genutzten Archive wurde geändert.\nSoll sie aktualisiert werden?</string>
   <string name="error_download_alrt">Die Serververbindung konnte nicht hergestellt werden oder die Datei ist fehlerhaft!</string>
   <string name="download_alrt">Anwendung wird geladen von:\n</string>
-  <string name="menu_update_repo">Aktualisieren</string>
+  <string name="menu_update_repo">Archive aktualisieren</string>
   <string name="menu_manage">Archive verwalten</string>
   <string name="menu_preferences">Einstellungen</string>
   <string name="menu_about">Über</string>

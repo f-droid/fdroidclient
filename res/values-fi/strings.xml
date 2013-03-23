@@ -58,7 +58,7 @@
   <string name="repo_alrt">Lista käytetyistä sovelluslähteistä on muuttumut.\nTahdotko päivittää ne?</string>
   <string name="error_download_alrt">Yhteyttö palvelimeen ei voitu muodostaa tai apk-tiedosto on viallinen!</string>
   <string name="download_alrt">Ladataan sovellusta lähteestä:\n</string>
-  <string name="menu_update_repo">Päivitä</string>
+  <string name="menu_update_repo">Päivitä sovelluslähteet</string>
   <string name="menu_manage">Hallitse sovelluslähteitä</string>
   <string name="menu_preferences">Asetukset</string>
   <string name="menu_about">Tietoja</string>

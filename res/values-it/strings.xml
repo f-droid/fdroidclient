@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Trovate %1$d applicazioni corrispondenti a \'%2$s\':</string>
-  <string name="searchres_oneapp">Trovata una applicazione corrispondente a \'%2$s\':</string>
-  <string name="searchres_noapps">Non è stata trovate nessuna applicazione corrispondente a \'%2$s\'</string>
+  <string name="searchres_oneapp">Trovata una applicazione corrispondente a \'%s\':</string>
+  <string name="searchres_noapps">Non è stata trovate nessuna applicazione corrispondente a \'%s\'</string>
   <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per installare la nuova versione occorre prima disinstallare la precedente. Riprovare dopo aver disinstallato. (Attenzione! Disistallando si cancellerà qualsiasi dato salvato dall\'applicazione)</string>
   <string name="version">Versione</string>
   <string name="n_versions_available">%d versioni disponibili</string>
@@ -57,7 +57,7 @@
   <string name="repo_alrt">L\'elenco delle repository in uso è cambiato.\n\nVuoi aggiornarlo?</string>
   <string name="error_download_alrt">Impossibile connettersi al server o file apk corrotto!</string>
   <string name="download_alrt">Scaricamento applicazione da:\n</string>
-  <string name="menu_update_repo">Aggiornamento</string>
+  <string name="menu_update_repo">Aggiorna le repository</string>
   <string name="menu_manage">Gestione repository</string>
   <string name="menu_preferences">Preferenze</string>
   <string name="menu_about">Informazioni</string>

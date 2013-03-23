@@ -57,7 +57,7 @@
   <string name="repo_alrt">Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. \nΘέλετε να ενημερωθούν;</string>
   <string name="error_download_alrt">Δεν ήταν δυνατή η σύνδεση με τον εξυπηρετητή ή το αρχείο apk είναι κατεστραμμένο</string>
   <string name="download_alrt">Λήψη εφαρμογής από:\n</string>
-  <string name="menu_update_repo">Ενημέρωση</string>
+  <string name="menu_update_repo">Ενημέρωση αποθετηρίων</string>
   <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
   <string name="menu_preferences">Προτιμήσεις</string>
   <string name="menu_about">Σχετικά</string>

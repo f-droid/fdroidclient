@@ -57,7 +57,7 @@
   <string name="repo_alrt">Spisek uporabljenih skladišč se je spremenil.\nGa želite posodobiti?</string>
   <string name="error_download_alrt">Povezava s strežnikom ni mogoča ali pa je datoteka apk poškodovana!</string>
   <string name="download_alrt">Prejem aplikacije iz:\n</string>
-  <string name="menu_update_repo">Posodobitev</string>
+  <string name="menu_update_repo">Posodobi skladišča</string>
   <string name="menu_manage">Upravljanje s skladišči</string>
   <string name="menu_preferences">Možnosti</string>
   <string name="menu_about">O programu</string>

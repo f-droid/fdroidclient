@@ -58,7 +58,7 @@
   <string name="repo_alrt">Список репозиториев изменился.\nОбновить его?</string>
   <string name="error_download_alrt">Нет соединения с сервером или apk файл повреждён!</string>
   <string name="download_alrt">Взять приложение из:\n</string>
-  <string name="menu_update_repo">Обновить</string>
+  <string name="menu_update_repo">Обновить репозитории</string>
   <string name="menu_manage">Редактировать репозитории</string>
   <string name="menu_preferences">Настройки</string>
   <string name="menu_about">О программе</string>

@@ -7,29 +7,31 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-03-06 18:34+0000\n"
-"PO-Revision-Date: 2013-01-23 23:29+0200\n"
-"Last-Translator: sysko <allan.simon@supinfo.com>\n"
+"PO-Revision-Date: 2013-03-22 11:36+0200\n"
+"Last-Translator: shenshang428 <shenshang428@gmail.com>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "找到%1$d个应用符合关键词'%2$s'"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "找到一个应用符合关键词 '%s'"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "没有找到 '%s'相关内容"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -37,84 +39,84 @@ msgid ""
 " the new version, the old one must be uninstalled first. Please do this "
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
-msgstr ""
+msgstr "新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用的所有已储存数据）"
 
 msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
-msgstr ""
+msgstr "该安装包与你的设备不兼容，确定进行安装吗？"
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d个可用版本"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "%d个可用版本"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "通知"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "存储"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "已下载应用缓存"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "在SD卡中保留下载的apk文件"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "升级"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "清空所有缓存数据"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "重新设定"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "维护"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "当有更新时，通知栏提醒"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "自动更新应用列表"
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "最后一次repo扫描:"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "从不"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "自动扫描repo"
 
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr ""
+msgstr "F-Droid"
 
 msgctxt "about_title"
 msgid "About F-Droid"
@@ -125,6 +127,8 @@ msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv2 license."
 msgstr ""
+"Originally based on Aptoide.\n"
+"Released under the GNU GPLv2 license."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -140,7 +144,7 @@ msgstr "版本："
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 msgctxt "no_repo"
 msgid ""
@@ -151,30 +155,35 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
+"你还没有设置应用源\n"
+"\n"
+"应用源即是应用下载发布来源，按菜单键，然后输入源的URL来添加源\n"
+"\n"
+"示例应用源: http://f-droid.org/repo"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "未安装"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "可用更新 - 版本:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "确认"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "取消"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "添加应用源"
 
 msgctxt "repo_add_add"
 msgid "Add"
@@ -186,15 +195,15 @@ msgstr "取消"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr ""
+msgstr "选择要移除的应用源"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "服务器无法连接！"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "更新应用源"
 
 msgctxt "tab_installed"
 msgid "Installed"
@@ -202,15 +211,15 @@ msgstr "已经安装的"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "可安装"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "更新"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "可用更新"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -218,19 +227,19 @@ msgstr "请等一下"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "更新着软件列表。。。"
+msgstr "应用列表更新中"
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr ""
+msgstr "网络无法连接"
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "超时"
+msgstr "连接超时"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "服务器无法连接！"
 
 msgctxt "download"
 msgid "Download"
@@ -238,15 +247,15 @@ msgstr "下载"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr ""
+msgstr "下载应用"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
+msgstr "应用源地址"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
+msgstr "已安装"
 
 msgctxt "install"
 msgid "Install"
@@ -254,43 +263,47 @@ msgstr "安装"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "卸掉"
+msgstr "卸载"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "升级！"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
+"有可用更新。\n"
+"点击查看"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
+"应用源列表发生变化\n"
+"确认更新吗？"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
+msgstr "服务器无法连接或文件已损坏"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
+msgstr "下载应用 \n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
-msgstr ""
+msgstr "更新应用源"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "管理应用源"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "参数选择"
+msgstr "设置"
 
 msgctxt "menu_about"
 msgid "About"
@@ -302,15 +315,15 @@ msgstr "搜索"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "添加应用源"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr ""
+msgstr "移除应用源"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "运行"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -326,7 +339,7 @@ msgstr "网站"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "报告错误"
 
 msgctxt "menu_source"
 msgid "Source Code"
@@ -334,11 +347,11 @@ msgstr "源代码"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "应用市场"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "升级"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -347,129 +360,130 @@ msgstr "捐赠"
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr ""
+msgstr "版本 %s 已安装"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr ""
+msgstr "未安装"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "安装好了"
+msgstr "已安装"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "文件下载错误"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "下载取消"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "个性设置"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "广告"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "显示包含广告的应用"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "追踪"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "显示会追踪、上传你的活动的应用"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
 msgstr "插件"
 
+#, fuzzy
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "显示改善收费插件的应用"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "网络服务"
 
+#, fuzzy
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
+msgstr "显示提供收费网络服务的应用"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr ""
+msgstr "非独立应用"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "显示依赖于收费应用的应用"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "高级"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "开启高级模式"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "搜索应用"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "数据同步模式"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr ""
+msgstr "设置 SQLite's synchronous flag的值"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "应用兼容性"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "不兼容的应用"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
+msgstr "显示更高版本Android或其他硬件环境下的应用"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "显示需要root权限的应用"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "忽略需要触屏的应用"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "总是显示需要触屏的应用"
 
 msgctxt "category_all"
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "新鲜货"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "最近更新"
 
 #~ msgctxt "menu_update_repo"
 #~ msgid "Update"
 #~ msgstr "更新软件列表"
-

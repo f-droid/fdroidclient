@@ -57,7 +57,7 @@
   <string name="repo_alrt">La lista de repositorios usada ha cambiado.\n¿Deseas actualizarlos?</string>
   <string name="error_download_alrt">¡No pudo conectarse al servidor o el fichero apk está corrupto!</string>
   <string name="download_alrt">Obteniendo el programa de:\n</string>
-  <string name="menu_update_repo">Actualización</string>
+  <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Gestionar Repositorios</string>
   <string name="menu_preferences">Preferencias</string>
   <string name="menu_about">Acerca de</string>

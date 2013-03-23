@@ -57,7 +57,7 @@
   <string name="repo_alrt">Ha canviat la llista de dipòsits utilitzats.\nEls voleu actualitzar?</string>
   <string name="error_download_alrt">No ha estat possible connectar amb el servidor o l\'arxiu apk està corrupte!</string>
   <string name="download_alrt">S\'està obtenint l\'aplicació des de: \n</string>
-  <string name="menu_update_repo">Actualitza</string>
+  <string name="menu_update_repo">Actualitza els dipòsits</string>
   <string name="menu_manage">Gestiona els dipòsits</string>
   <string name="menu_preferences">Preferències</string>
   <string name="menu_about">Quant a</string>

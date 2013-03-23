@@ -31,7 +31,7 @@
   <string name="install">Instali</string>
   <string name="uninstall">Malinstali</string>
   <string name="update">Ĝisdatigu!</string>
-  <string name="menu_update_repo">Ĝisdatigi</string>
+  <string name="menu_update_repo">Ĝisdatigi deponejojn</string>
   <string name="menu_manage">Administri deponejojn</string>
   <string name="menu_preferences">Agordoj</string>
   <string name="menu_about">Pri</string>

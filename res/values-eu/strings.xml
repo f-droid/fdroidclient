@@ -60,7 +60,7 @@
   <string name="repo_alrt">Erabilitako biltegien zerrenda aldatu egin da.\nEguneratu nahi dituzu?</string>
   <string name="error_download_alrt">Ezin izan da zerbitzarira konektatu edo apk fitxategia hondatuta dago!</string>
   <string name="download_alrt">Aplikazioa eskuratzen hemendik:\n</string>
-  <string name="menu_update_repo">Eguneraketa</string>
+  <string name="menu_update_repo">Eguneratu biltegiak</string>
   <string name="menu_manage">Kudeatu biltegiak</string>
   <string name="menu_preferences">Hobespenak</string>
   <string name="menu_about">Honi buruz</string>

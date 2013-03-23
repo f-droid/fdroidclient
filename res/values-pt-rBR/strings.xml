@@ -60,7 +60,7 @@
   <string name="repo_alrt">A lista de repositórios usados mudou.\nVocê deseja atualizá-los?</string>
   <string name="error_download_alrt">Não foi possível se conectar ao servidor de arquivos ou o arquivo apk está corrompido!</string>
   <string name="download_alrt">Pegando aplicação de:\n</string>
-  <string name="menu_update_repo">Atualizar</string>
+  <string name="menu_update_repo">Atualizar repositórios</string>
   <string name="menu_manage">Gerenciar Repositórios</string>
   <string name="menu_preferences">Preferências</string>
   <string name="menu_about">Sobre</string>

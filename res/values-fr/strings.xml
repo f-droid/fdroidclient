@@ -57,7 +57,7 @@
   <string name="repo_alrt">La liste des dépôts utilisés a changé.\nVoulez-vous les mettre à jour ?</string>
   <string name="error_download_alrt">Connections au serveur impossible ou fichier apk corrompu!</string>
   <string name="download_alrt">Réception d\'application de:\n</string>
-  <string name="menu_update_repo">Mise à jour</string>
+  <string name="menu_update_repo">Mettre à jour les dépôts</string>
   <string name="menu_manage">Gestion de dépôts</string>
   <string name="menu_preferences">Préférences</string>
   <string name="menu_about">À propos de</string>
