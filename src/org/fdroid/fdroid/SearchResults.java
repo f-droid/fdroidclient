@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2011-13  Ciaran Gultnieks, ciaran@ciarang.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -95,16 +95,21 @@ public class SearchResults extends ListActivity {
         }
 
         TextView tv = (TextView) findViewById(R.id.description);
-        String headertext;
-        if (apps.size() == 0)
-            headertext = String.format(getString(R.string.searchres_noapps),
-                    mQuery);
-        else if (apps.size() == 1)
-            headertext = String.format(getString(R.string.searchres_oneapp),
-                    mQuery);
-        else
-            headertext = String.format(getString(R.string.searchres_napps),
-                    apps.size(), mQuery);
+        String headertexit;
+        try
+        {
+            if (apps.size() == 0)
+                headertext = String.format(getString(R.string.searchres_noapps),
+                        mQuery);
+            else if (apps.size() == 1)
+                headertext = String.format(getString(R.string.searchres_oneapp),
+                        mQuery);
+            else
+                headertext = String.format(getString(R.string.searchres_napps),
+                        apps.size(), mQuery);
+        } catch(Exception ex) {
+            headertext = "TRANSLATION ERROR!";
+        }
         tv.setText(headertext);
         Log.d("FDroid", "Search for '" + mQuery + "' returned " + apps.size()
                 + " results");
