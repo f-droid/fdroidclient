@@ -95,7 +95,7 @@ public class SearchResults extends ListActivity {
         }
 
         TextView tv = (TextView) findViewById(R.id.description);
-        String headertexit;
+        String headertext;
         try
         {
             if (apps.size() == 0)
