@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>કદી નહિ</item>
+    <item>દર કલાકે</item>
+    <item>દર 4 કલાકે</item>
+    <item>દર 12 કલાકે</item>
+    <item>દરરોજ</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>બંધ (અસુરક્ષિત)</item>
+    <item>સામાન્ય</item>
+    <item>પૂર્ણ</item>
+  </string-array>
+</resources>

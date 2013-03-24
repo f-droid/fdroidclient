@@ -18,6 +18,8 @@
   <string name="maintenance">Поддержка</string>
   <string name="notify_updates_available">Сообщать при появлении обновлений</string>
   <string name="update_apps_list">Обновлять список приложений автоматически</string>
+  <string name="last_update_check">Обновлено: %s</string>
+  <string name="never">никогда</string>
   <string name="automatic_repo_scan">Автоматически сканировать репозиторий</string>
   <string name="app_name">F-Droid</string>
   <string name="about_title">О F-Droid</string>
@@ -65,12 +67,13 @@
   <string name="menu_search">Поиск</string>
   <string name="menu_add_repo">Новый репозиторий</string>
   <string name="menu_rem_repo">Удалить репозиторий</string>
+  <string name="menu_launch">Запустить</string>
   <string name="menu_install">Установить</string>
   <string name="menu_uninstall">Удалить</string>
   <string name="menu_website">Сайт</string>
   <string name="menu_issues">Ошибки</string>
   <string name="menu_source">Исходный код</string>
-  <string name="menu_market">В Market</string>
+  <string name="menu_market">Маркет</string>
   <string name="menu_update">Обновить</string>
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
