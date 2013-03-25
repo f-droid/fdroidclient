@@ -257,10 +257,12 @@ public class RepoXMLHandler extends DefaultHandler {
             String etag, StringBuilder retag) throws MalformedURLException,
             IOException {
 
+        long startTime = System.currentTimeMillis();
         URL u = new URL(url);
         HttpURLConnection uc = (HttpURLConnection) u.openConnection();
         if (etag != null)
             uc.setRequestProperty("If-None-Match", etag);
+        int totalBytes = 0;
         int code = uc.getResponseCode();
         if (code == 200) {
 
@@ -273,6 +275,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
             int readed = getit.read(data, 0, 1024);
             while (readed != -1) {
+                totalBytes += readed;
                 bout.write(data, 0, readed);
                 readed = getit.read(data, 0, 1024);
             }
@@ -284,6 +287,8 @@ public class RepoXMLHandler extends DefaultHandler {
             if (et != null)
                 retag.append(et);
         }
+        Log.d("FDroid", "Fetched " + url + " (" + totalBytes + " bytes) in "
+                + (System.currentTimeMillis() - startTime) + "ms");
         return code;
 
     }
