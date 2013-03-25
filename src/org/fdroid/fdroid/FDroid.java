@@ -37,10 +37,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -384,8 +386,13 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
         // Calculate the cutoff date we'll use for What's New and Recently
         // Updated...
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        String sint = prefs.getString("updateHistoryDays", "14");
+        int history_days = Integer.parseInt(sint);
+
         Calendar recent = Calendar.getInstance();
-        recent.add(Calendar.DAY_OF_YEAR, -14);
+        recent.add(Calendar.DAY_OF_YEAR, -history_days);
         Date recentDate = recent.getTime();
 
         AppFilter appfilter = new AppFilter(this);
