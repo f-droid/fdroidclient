@@ -149,10 +149,11 @@ public class ManageRepo extends ListActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
-        menu.add(Menu.NONE, ADD_REPO, 1, R.string.menu_add_repo).setIcon(
+        MenuItem item = menu.add(Menu.NONE, ADD_REPO, 1, R.string.menu_add_repo).setIcon(
                 android.R.drawable.ic_menu_add);
         menu.add(Menu.NONE, REM_REPO, 2, R.string.menu_rem_repo).setIcon(
                 android.R.drawable.ic_menu_close_clear_cancel);
+        CompatabilityUtils.showAsAction(item);
         return true;
     }
 

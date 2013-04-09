@@ -135,7 +135,7 @@ public class AppDetails extends ListActivity {
                 buildtype.setText("bin");
             }
             TextView added = (TextView) v.findViewById(R.id.added);
-            if (apk.added != null && apk.added != null) {
+            if (apk.added != null) {
                 added.setVisibility(View.VISIBLE);
                 added.setText(df.format(apk.added));
             } else {
@@ -462,18 +462,18 @@ public class AppDetails extends ListActivity {
         if (app == null)
             return true;
         DB.Apk curver = app.getCurrentVersion();
+        List<MenuItem> toShow = new ArrayList<MenuItem>(2);
         if (app.installedVersion != null && curver != null
                 && !app.installedVersion.equals(curver.version)) {
-            menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
-                    android.R.drawable.ic_menu_add);
+            toShow.add(menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
+                    R.drawable.ic_menu_refresh));
         }
         if (app.installedVersion == null && curver != null) {
-            menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
-                    android.R.drawable.ic_menu_add);
+            toShow.add(menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
+                    android.R.drawable.ic_menu_add));
         } else {
-            MenuItem launch = menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch ).setIcon(
-					android.R.drawable.ic_media_play );
-            CompatabilityUtils.showAsAction( launch );
+            toShow.add(menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch ).setIcon(
+					android.R.drawable.ic_media_play));
             menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
                     android.R.drawable.ic_menu_delete);
         }
@@ -495,7 +495,7 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, DONATE, 6, R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-
+        CompatabilityUtils.showAsAction(toShow);
         return true;
     }
 
