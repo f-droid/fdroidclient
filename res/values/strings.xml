@@ -152,4 +152,15 @@
 	<string name="category_whatsnew">What\'s New</string>
 	<string name="category_recentlyupdated">Recently Updated</string>
 
+    <!--
+    status_download takes three parameters:
+      - Downloaded size (human readable)
+      - Total size (human readable)
+      - Percentage complete (int between 0-100)
+    -->
+    <string name="status_download">Downloading %1$s / %2$s (%3$d%%)</string>
+    <string name="status_processing_xml">Processing application %1$d of %2$d</string>
+    <string name="status_connecting_to_repo">Connecting to repository:\n%1$s</string>
+    <string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
+
 </resources>

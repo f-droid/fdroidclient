@@ -30,6 +30,7 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.security.cert.Certificate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -66,13 +67,21 @@ public class RepoXMLHandler extends DefaultHandler {
     private String pubkey;
     private String hashType;
 
+    private int progressCounter = 0;
+    private ProgressListener progressListener;
+
+    public static final int PROGRESS_TYPE_DOWNLOAD     = 1;
+    public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
+
     // The date format used in the repo XML file.
     private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private int totalAppCount;
 
-    public RepoXMLHandler(int repo, Vector<DB.App> apps) {
+    public RepoXMLHandler(int repo, Vector<DB.App> apps, ProgressListener listener) {
         this.repo = repo;
         this.apps = apps;
         pubkey = null;
+        progressListener = listener;
     }
 
     @Override
@@ -225,7 +234,6 @@ public class RepoXMLHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName,
             Attributes attributes) throws SAXException {
-
         super.startElement(uri, localName, qName, attributes);
         if (localName == "repo") {
             String pk = attributes.getValue("", "pubkey");
@@ -234,6 +242,8 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName == "application" && curapp == null) {
             curapp = new DB.App();
             curapp.detail_Populated = true;
+            progressCounter ++;
+            progressListener.onProgress(RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML, progressCounter, totalAppCount);
         } else if (localName == "package" && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
@@ -252,29 +262,38 @@ public class RepoXMLHandler extends DefaultHandler {
     // empty) may contain an etag value for the response, or it may be left
     // empty if none was available.
     private static int getRemoteFile(Context ctx, String url, String dest,
-            String etag, StringBuilder retag) throws MalformedURLException,
+            String etag, StringBuilder retag,
+            ProgressListener progressListener ) throws MalformedURLException,
             IOException {
 
         long startTime = System.currentTimeMillis();
         URL u = new URL(url);
-        HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+        HttpURLConnection connection = (HttpURLConnection) u.openConnection();
         if (etag != null)
-            uc.setRequestProperty("If-None-Match", etag);
+            connection.setRequestProperty("If-None-Match", etag);
         int totalBytes = 0;
-        int code = uc.getResponseCode();
+        int code = connection.getResponseCode();
         if (code == 200) {
+            // Testing in the emulator for me, showed that figuring out the filesize took about 1 to 1.5 seconds.
+            // To put this in context, downloading a repo of:
+            //  - 400k takes ~6 seconds
+            //  - 5k   takes ~3 seconds
+            // on my connection. I think the 1/1.5 seconds is worth it, because as the repo grows, the tradeoff will
+            // become more worth it.
+            int size = connection.getContentLength();
+            Log.d("FDroid", "Downloading " + size + " bytes from " + url);
             InputStream input = null;
             OutputStream output = null;
             try {
-                input = new URL(url).openStream();
+                input = connection.getInputStream();
                 output = ctx.openFileOutput(dest, Context.MODE_PRIVATE);
-                Utils.copy(input, output);
+                Utils.copy(input, output, size, progressListener, PROGRESS_TYPE_DOWNLOAD);
             } finally {
                 Utils.closeQuietly(output);
                 Utils.closeQuietly(input);
             }
 
-            String et = uc.getHeaderField("ETag");
+            String et = connection.getHeaderField("ETag");
             if (et != null)
                 retag.append(et);
         }
@@ -293,7 +312,8 @@ public class RepoXMLHandler extends DefaultHandler {
     // value for the index that was successfully processed, or it may contain
     // null if none was available.
     public static String doUpdate(Context ctx, DB.Repo repo,
-            Vector<DB.App> apps, StringBuilder newetag, Vector<Integer> keeprepos) {
+                                  Vector<DB.App> apps, StringBuilder newetag, Vector<Integer> keeprepos,
+                                  ProgressListener progressListener) {
         try {
 
             int code = 0;
@@ -310,7 +330,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (Exception e) {
                 }
                 code = getRemoteFile(ctx, address, "tempindex.jar",
-                        repo.lastetag, newetag);
+                        repo.lastetag, newetag, progressListener);
                 if (code == 200) {
                     String jarpath = ctx.getFilesDir() + "/tempindex.jar";
                     JarFile jar = null;
@@ -366,7 +386,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 // It's an old-fashioned unsigned repo...
                 Log.d("FDroid", "Getting unsigned index from " + repo.address);
                 code = getRemoteFile(ctx, repo.address + "/index.xml",
-                        "tempindex.xml", repo.lastetag, newetag);
+                        "tempindex.xml", repo.lastetag, newetag, progressListener);
             }
 
             if (code == 200) {
@@ -374,11 +394,22 @@ public class RepoXMLHandler extends DefaultHandler {
                 SAXParserFactory spf = SAXParserFactory.newInstance();
                 SAXParser sp = spf.newSAXParser();
                 XMLReader xr = sp.getXMLReader();
-                RepoXMLHandler handler = new RepoXMLHandler(repo.id, apps);
+                RepoXMLHandler handler = new RepoXMLHandler(repo.id, apps, progressListener);
                 xr.setContentHandler(handler);
 
-                Reader r = new BufferedReader(new FileReader(new File(
-                        ctx.getFilesDir() + "/tempindex.xml")));
+                File tempIndex = new File(ctx.getFilesDir() + "/tempindex.xml");
+                BufferedReader r = new BufferedReader(new FileReader(tempIndex));
+
+                // A bit of a hack, this might return false positives if an apps description
+                // or some other part of the XML file contains this, but it is a pretty good
+                // estimate and makes the progress counter more informative.
+                // As with asking the server about the size of the index before downloading,
+                // this also has a time tradeoff. It takes about three seconds to iterate
+                // through the file and count 600 apps on a slow emulator (v17), but if it is
+                // taking two minutes to update, the three second wait may be worth it.
+                final String APPLICATION = "<application";
+                handler.setTotalAppCount(Utils.countSubstringOccurrence(tempIndex, APPLICATION));
+
                 InputSource is = new InputSource(r);
                 xr.parse(is);
 
@@ -427,4 +458,7 @@ public class RepoXMLHandler extends DefaultHandler {
         return null;
     }
 
+    public void setTotalAppCount(int totalAppCount) {
+        this.totalAppCount = totalAppCount;
+    }
 }
