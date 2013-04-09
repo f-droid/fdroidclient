@@ -471,8 +471,9 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
                     android.R.drawable.ic_menu_add);
         } else {
-            menu.add(Menu.NONE, LAUNCH, 1, R.string.menu_launch).setIcon(
-                    android.R.drawable. ic_media_play);
+            MenuItem launch = menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch ).setIcon(
+					android.R.drawable.ic_media_play );
+            CompatabilityUtils.showAsAction( launch );
             menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
                     android.R.drawable.ic_menu_delete);
         }
