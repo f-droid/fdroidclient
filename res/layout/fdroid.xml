@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:orientation="vertical">
+	android:orientation="vertical">-->
 
-<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@android:id/tabhost" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+<android.support.v4.view.ViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_pager"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-	<TabWidget android:id="@android:id/tabs"
-		android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <!--<android.support.v4.view.PagerTitleStrip
+        android:id="@+id/main_pager_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="#33b5e5"
+        android:textColor="#fff"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp" />-->
 
-	<FrameLayout android:id="@android:id/tabcontent"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:paddingTop="65dp">
-		<ListView android:id="@android:id/list" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" />
-	</FrameLayout>
-
-</TabHost>
-
-</LinearLayout>
+</android.support.v4.view.ViewPager>

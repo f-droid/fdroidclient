@@ -7,3 +7,6 @@ gen/*
 proguard.cfg
 proguard-project.txt
 *~
+.idea
+*.iml
+out
