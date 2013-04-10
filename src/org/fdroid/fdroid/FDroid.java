@@ -25,6 +25,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Vector;
 
+import android.support.v4.view.MenuItemCompat;
 import org.fdroid.fdroid.DB.App;
 import org.fdroid.fdroid.R;
 
@@ -150,12 +151,13 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 android.R.drawable.ic_menu_rotate);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
-        menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
+        MenuItem search = menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
                 android.R.drawable.ic_menu_search);
         menu.add(Menu.NONE, PREFERENCES, 4, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
         menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
                 android.R.drawable.ic_menu_help);
+        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
         return true;
     }
 
