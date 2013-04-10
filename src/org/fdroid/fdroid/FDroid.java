@@ -29,14 +29,11 @@ import android.app.*;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
+import android.view.*;
 import android.widget.*;
 import org.fdroid.fdroid.DB.App;
-import org.fdroid.fdroid.R;
 
-import android.R.drawable;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -49,15 +46,11 @@ import android.os.Handler;
 import android.os.ResultReceiver;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TabHost.TabSpec;
-import org.fdroid.fdroid.views.AppListFragmentStatePageAdapter;
+import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
+import org.fdroid.fdroid.views.AppListView;
 
 public class FDroid extends FragmentActivity implements OnItemClickListener,
         OnItemSelectedListener {
@@ -97,6 +90,9 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
 
     private ViewPager viewPager;
 
+    // Used by pre 3.0 devices which don't have an ActionBar...
+    private TabHost tabHost;
+
     // The following getters
     // (availableAdapter/installedAdapter/canUpdateAdapter/categoriesAdapter)
     // are used by the APpListViewFactory to construct views that can be used
@@ -123,14 +119,15 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.fdroid);
 
         // Needs to be created before createViews(), because that will use the
         // getCategoriesAdapter() accessor which expects this object...
-        categories = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, new Vector<String>());
-        categories.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
+        categories = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, new Vector<String>());
+        categories
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         createViews();
         createTabs();
@@ -141,9 +138,9 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
             call.putExtra("uri", i.getStringExtra("uri"));
             startActivityForResult(call, REQUEST_MANAGEREPOS);
         } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
-            boolean updateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
-            if (updateTab) {
-                tabHost.setCurrentTab(2);
+            boolean showUpdateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
+            if (showUpdateTab) {
+                selectTab(2);
             }
         }
 
@@ -284,7 +281,12 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        viewPager.setAdapter(new AppListFragmentStatePageAdapter(this));
+        viewPager.setAdapter(new AppListFragmentPageAdapter(this));
+        viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
+            public void onPageSelected(int position) {
+                selectTab(position);
+            }
+        });
     }
 
     private void createTabs() {
@@ -292,6 +294,14 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
             createActionBarTabs();
         } else {
             createOldTabs();
+        }
+    }
+
+    private void selectTab(int index) {
+        if (Build.VERSION.SDK_INT >= 11) {
+            getActionBar().setSelectedNavigationItem(index);
+        } else {
+            tabHost.setCurrentTab(index);
         }
     }
 
@@ -328,17 +338,70 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
                         }
                     }));
         }
-
-        pager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
-            public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
-            }
-        });
     }
 
+    /**
+     * There is a bit of boiler-plate code required to get a TabWidget showing,
+     * which includes creating a TabHost, populating it with the TabWidget,
+     * and giving it a FrameLayout as a child. This will make the tabs have
+     * dummy empty contents and then hook them up to our ViewPager.
+     */
     private void createOldTabs() {
+        tabHost = new TabHost(this);
+        tabHost.setLayoutParams(new TabHost.LayoutParams(
+                TabHost.LayoutParams.MATCH_PARENT, TabHost.LayoutParams.WRAP_CONTENT));
+
         TabWidget tabWidget = new TabWidget(this);
-        tabWidget.
+        tabWidget.setId(android.R.id.tabs);
+        tabHost.setLayoutParams(new TabHost.LayoutParams(
+                TabWidget.LayoutParams.MATCH_PARENT, TabWidget.LayoutParams.WRAP_CONTENT));
+
+        FrameLayout layout = new FrameLayout(this);
+        layout.setId(android.R.id.tabcontent);
+        layout.setLayoutParams(new TabWidget.LayoutParams(0, 0));
+
+        tabHost.addView(tabWidget);
+        tabHost.addView(layout);
+        tabHost.setup();
+
+        TabHost.TabContentFactory factory = new TabHost.TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return new View(FDroid.this);
+            }
+        };
+
+        TabSpec availableTabSpec = tabHost.newTabSpec("available")
+                .setIndicator(
+                        getString(R.string.tab_noninstalled),
+                        getResources().getDrawable(android.R.drawable.ic_input_add))
+                .setContent(factory);
+
+        TabSpec installedTabSpec = tabHost.newTabSpec("installed")
+                .setIndicator(
+                        getString(R.string.tab_installed),
+                        getResources().getDrawable(android.R.drawable.star_off))
+                .setContent(factory);
+
+        TabSpec canUpdateTabSpec = tabHost.newTabSpec("canUpdate")
+                .setIndicator(
+                        getString(R.string.tab_updates),
+                        getResources().getDrawable(android.R.drawable.star_on))
+                .setContent(factory);
+
+        tabHost.addTab(availableTabSpec);
+        tabHost.addTab(installedTabSpec);
+        tabHost.addTab(canUpdateTabSpec);
+
+        LinearLayout contentView = (LinearLayout)findViewById(R.id.fdroid_layout);
+        contentView.addView(tabHost, 0);
+
+        tabHost.setOnTabChangedListener( new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                viewPager.setCurrentItem(tabHost.getCurrentTab());
+            }
+        });
     }
 
     // Populate the lists.
@@ -530,17 +593,13 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
     public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2,
             long arg3) {
 
-        ViewPager pager = (ViewPager)findViewById(R.id.main_pager);
+        Fragment fragment = ((AppListFragmentPageAdapter)viewPager.getAdapter()).getItem(viewPager.getCurrentItem());
 
-        final DB.App app;
-        String curtab = tabHost.getCurrentTabTag();
-        if (curtab.equalsIgnoreCase(TAB_Installed)) {
-            app = (DB.App) apps_in.getItem(arg2);
-        } else if (curtab.equalsIgnoreCase(TAB_Updates)) {
-            app = (DB.App) apps_up.getItem(arg2);
-        } else {
-            app = (DB.App) apps_av.getItem(arg2);
-        }
+        // The fragment.getView() returns a wrapper object which has the
+        // actual view we're interested in inside:
+        //   http://stackoverflow.com/a/13684505
+        AppListView view  = ((AppListView)((ViewGroup)fragment.getView()).getChildAt(0));
+        final DB.App app = (DB.App)view.getAppList().getAdapter().getItem(arg2);
 
         Intent intent = new Intent(this, AppDetails.class);
         intent.putExtra("appid", app.id);

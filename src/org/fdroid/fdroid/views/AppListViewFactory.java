@@ -2,7 +2,6 @@ package org.fdroid.fdroid.views;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -10,6 +9,10 @@ import org.fdroid.fdroid.AppListAdapter;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 
+/**
+ * Provides functionality to create the three lists of applications
+ * required for the FDroid activity.
+ */
 public class AppListViewFactory {
 
     private FDroid parent;
@@ -18,32 +21,52 @@ public class AppListViewFactory {
         this.parent = parent;
     }
 
-    public View createAvailableView() {
-        ListView list = createAppListView(parent.getAvailableAdapter());
-        LinearLayout view = new LinearLayout(parent);
+    public AppListView createAvailableView() {
+        AppListView view = new AppListView(parent);
         view.setOrientation(LinearLayout.VERTICAL);
-        Spinner cats = new Spinner(parent);
 
+        Spinner spinner = new Spinner(parent);
         // Giving it an ID lets the default save/restore state
         // functionality do its stuff.
-        cats.setId(R.id.categorySpinner);
-        cats.setAdapter(parent.getCategoriesAdapter());
-        cats.setOnItemSelectedListener(parent);
-        view.addView(cats, new ViewGroup.LayoutParams(
-                LinearLayout.LayoutParams.FILL_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        view.addView(list, new ViewGroup.LayoutParams(
-                LinearLayout.LayoutParams.FILL_PARENT,
-                LinearLayout.LayoutParams.FILL_PARENT));
+        spinner.setId(R.id.categorySpinner);
+        spinner.setAdapter(parent.getCategoriesAdapter());
+        spinner.setOnItemSelectedListener(parent);
+
+        view.addView(
+                spinner,
+                new ViewGroup.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        ListView list = createAppListView(parent.getAvailableAdapter());
+        view.setAppList(list);
+        view.addView(
+                list,
+                new ViewGroup.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT));
+
         return view;
     }
 
-    public View createInstalledView() {
-        return createAppListView(parent.getInstalledAdapter());
+    public AppListView createInstalledView() {
+        return createPlainAppList(parent.getInstalledAdapter());
     }
 
-    public View createCanUpdateView() {
-        return createAppListView(parent.getCanUpdateAdapter());
+    public AppListView createCanUpdateView() {
+        return createPlainAppList(parent.getCanUpdateAdapter());
+    }
+
+    protected AppListView createPlainAppList(AppListAdapter adapter) {
+        AppListView view = new AppListView(parent);
+        ListView list = createAppListView(adapter);
+        view.addView(
+                list,
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+        view.setAppList(list);
+        return view;
     }
 
     protected ListView createAppListView(AppListAdapter adapter) {

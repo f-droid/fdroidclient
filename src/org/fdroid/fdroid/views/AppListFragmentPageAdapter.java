@@ -2,19 +2,23 @@ package org.fdroid.fdroid.views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 
-public class AppListFragmentStatePageAdapter extends FragmentStatePagerAdapter {
+/**
+ * Used by the FDroid activity in conjunction with its ViewPager to support
+ * swiping of tabs for both old devices (< 3.0) and new devices.
+ */
+public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
 
     private FDroid parent;
     private Fragment[] fragments = new Fragment[3];
 
-    public AppListFragmentStatePageAdapter(FDroid parent) {
+    public AppListFragmentPageAdapter(FDroid parent) {
 
         super(parent.getSupportFragmentManager());
         this.parent  = parent;
@@ -57,7 +61,7 @@ public class AppListFragmentStatePageAdapter extends FragmentStatePagerAdapter {
                 return parent.getString(R.string.tab_installed);
             case 2:
                 String updates = parent.getString(R.string.tab_updates);
-                updates += " (" + parent.getCanUpdateAdapter() + ")";
+                updates += " (" + parent.getCanUpdateAdapter().getCount() + ")";
                 return updates;
             default:
                 return "";
