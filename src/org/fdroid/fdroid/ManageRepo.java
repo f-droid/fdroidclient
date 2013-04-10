@@ -36,6 +36,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.view.MenuItemCompat;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -153,7 +154,7 @@ public class ManageRepo extends ListActivity {
                 android.R.drawable.ic_menu_add);
         menu.add(Menu.NONE, REM_REPO, 2, R.string.menu_rem_repo).setIcon(
                 android.R.drawable.ic_menu_close_clear_cancel);
-        CompatabilityUtils.showAsAction(item);
+        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
         return true;
     }
 

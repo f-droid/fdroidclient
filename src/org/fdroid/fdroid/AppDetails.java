@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import android.support.v4.view.MenuItemCompat;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -495,7 +496,9 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, DONATE, 6, R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        CompatabilityUtils.showAsAction(toShow);
+        for (MenuItem item : toShow) {
+            MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        }
         return true;
     }
 
