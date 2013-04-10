@@ -1,13 +1,18 @@
 package org.fdroid.fdroid.views;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.fragments.AvailableAppsFragment;
+import org.fdroid.fdroid.views.fragments.CanUpdateAppsFragment;
+import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
 
 /**
  * Used by the FDroid activity in conjunction with its ViewPager to support
@@ -19,28 +24,11 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
     private Fragment[] fragments = new Fragment[3];
 
     public AppListFragmentPageAdapter(FDroid parent) {
-
         super(parent.getSupportFragmentManager());
         this.parent  = parent;
-        final AppListViewFactory viewFactory = new AppListViewFactory(parent);
-
-        fragments[0] = new Fragment() {
-            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                return viewFactory.createAvailableView();
-            }
-        };
-
-        fragments[1] = new Fragment() {
-            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                return viewFactory.createInstalledView();
-            }
-        };
-
-        fragments[2] = new Fragment() {
-            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                return viewFactory.createCanUpdateView();
-            }
-        };
+        fragments[0] = new AvailableAppsFragment();
+        fragments[1] = new InstalledAppsFragment();
+        fragments[2] = new CanUpdateAppsFragment();
     }
 
     @Override

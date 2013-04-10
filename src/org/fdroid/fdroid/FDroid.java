@@ -29,6 +29,7 @@ import android.app.*;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.*;
 import android.widget.*;
@@ -92,6 +93,7 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
 
     // Used by pre 3.0 devices which don't have an ActionBar...
     private TabHost tabHost;
+    private AppListFragmentPageAdapter viewPageAdapter;
 
     // The following getters
     // (availableAdapter/installedAdapter/canUpdateAdapter/categoriesAdapter)
@@ -149,8 +151,8 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
 
     @Override
     protected void onStart() {
-        super.onStart();
         populateLists();
+        super.onStart();
     }
 
     @Override
@@ -281,7 +283,8 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        viewPager.setAdapter(new AppListFragmentPageAdapter(this));
+        viewPageAdapter = new AppListFragmentPageAdapter(this);
+        viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 selectTab(position);
@@ -593,13 +596,15 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
     public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2,
             long arg3) {
 
-        Fragment fragment = ((AppListFragmentPageAdapter)viewPager.getAdapter()).getItem(viewPager.getCurrentItem());
+        int currentItem = viewPager.getCurrentItem();
+        Fragment fragment = viewPageAdapter.getItem(currentItem);
 
         // The fragment.getView() returns a wrapper object which has the
         // actual view we're interested in inside:
         //   http://stackoverflow.com/a/13684505
-        AppListView view  = ((AppListView)((ViewGroup)fragment.getView()).getChildAt(0));
-        final DB.App app = (DB.App)view.getAppList().getAdapter().getItem(arg2);
+        ViewGroup group = (ViewGroup)fragment.getView();
+        AppListView view  = (AppListView)group.getChildAt(0);
+        final DB.App app = (DB.App)view.getAppList().   getAdapter().getItem(arg2);
 
         Intent intent = new Intent(this, AppDetails.class);
         intent.putExtra("appid", app.id);
