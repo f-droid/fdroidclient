@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import org.fdroid.fdroid.AppListManager;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.AvailableAppsFragment;
@@ -20,25 +21,29 @@ import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
  */
 public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
 
-    private FDroid parent;
-    private Fragment[] fragments = new Fragment[3];
+    private FDroid parent = null;
 
     public AppListFragmentPageAdapter(FDroid parent) {
         super(parent.getSupportFragmentManager());
         this.parent  = parent;
-        fragments[0] = new AvailableAppsFragment().setAppListAdapter(parent.getAvailableAdapter());
-        fragments[1] = new InstalledAppsFragment().setAppListAdapter(parent.getInstalledAdapter());
-        fragments[2] = new CanUpdateAppsFragment().setAppListAdapter(parent.getCanUpdateAdapter()).;
     }
 
     @Override
     public Fragment getItem(int i) {
-        return fragments[i];
+        Fragment fragment = null;
+        if ( i == 0 ) {
+            fragment = new AvailableAppsFragment();
+        } else if ( i == 1 ) {
+            fragment = new InstalledAppsFragment();
+        } else if ( i == 2 ) {
+            fragment = new CanUpdateAppsFragment();
+        }
+        return fragment;
     }
 
     @Override
     public int getCount() {
-        return fragments.length;
+        return 3;
     }
 
     public String getPageTitle(int i) {
@@ -49,7 +54,7 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
                 return parent.getString(R.string.tab_installed);
             case 2:
                 String updates = parent.getString(R.string.tab_updates);
-                updates += " (" + parent.getCanUpdateAdapter().getCount() + ")";
+                updates += " (" + parent.getManager().getCanUpdateAdapter().getCount() + ")";
                 return updates;
             default:
                 return "";

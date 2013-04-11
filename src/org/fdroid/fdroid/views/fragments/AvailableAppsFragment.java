@@ -1,16 +1,17 @@
 package org.fdroid.fdroid.views.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import org.fdroid.fdroid.AppListAdapter;
+import org.fdroid.fdroid.AppListManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.AppListView;
 
 public class AvailableAppsFragment extends AppListFragment implements AdapterView.OnItemSelectedListener {
-
-    private ArrayAdapter<String> categoriesAdapter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         AppListView view = new AppListView(getActivity());
@@ -20,7 +21,7 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
         // Giving it an ID lets the default save/restore state
         // functionality do its stuff.
         spinner.setId(R.id.categorySpinner);
-        spinner.setAdapter(getCategoriesAdapter());
+        spinner.setAdapter(getAppListManager().getCategoriesAdapter());
         spinner.setOnItemSelectedListener(this);
 
         view.addView(
@@ -29,7 +30,7 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        ListView list = createAppListView(getAppListAdapter());
+        ListView list = createAppListView();
         view.setAppList(list);
         view.addView(
                 list,
@@ -48,26 +49,19 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
         super.onActivityCreated(savedInstanceState);
     }
 
-    public ArrayAdapter<String> getCategoriesAdapter() {
-        return categoriesAdapter;
-    }
-
-    public void setCategoriesAdapter(ArrayAdapter<String> categoriesAdapter) {
-        this.categoriesAdapter = categoriesAdapter;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+    public void onItemSelected(AdapterView<?> parent, View view, int pos,
+            long id) {
+        getAppListManager().setCurrentCategory(parent.getItemAtPosition(pos).toString());
+        getAppListManager().repopulateLists();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    protected AppListAdapter getAppListAdapter() {
+        return getAppListManager().getAvailableAdapter();
     }
 }

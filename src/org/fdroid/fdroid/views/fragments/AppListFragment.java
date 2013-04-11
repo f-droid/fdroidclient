@@ -1,29 +1,44 @@
 package org.fdroid.fdroid.views.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import org.fdroid.fdroid.AppListAdapter;
+import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.views.AppListView;
 
 abstract class AppListFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    private AppListAdapter appListAdapter;
+    private AppListManager appListManager;
+    private FDroid parent;
 
-    public AppListAdapter getAppListAdapter() {
-        return appListAdapter;
+    protected abstract AppListAdapter getAppListAdapter();
+
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            parent = (FDroid)activity;
+        } catch (ClassCastException e) {
+            // I know fragments are meant to be activity agnostic, but I can't
+            // think of a better way to share the one application list between
+            // all three app list fragments.
+            throw new RuntimeException(
+                "AppListFragment can only be attached to FDroid activity. " +
+                "Here it was attached to a " + activity.getClass() );
+        }
     }
 
-    public AppListFragment setAppListAdapter(AppListAdapter adapter) {
-        appListAdapter = adapter;
-        return this;
+    public AppListManager getAppListManager() {
+        return parent.getManager();
     }
 
-    protected AppListView createPlainAppList(AppListAdapter adapter) {
+    protected AppListView createPlainAppList() {
         AppListView view = new AppListView(getActivity());
-        ListView list = createAppListView(adapter);
+        ListView list = createAppListView();
         view.addView(
                 list,
                 new ViewGroup.LayoutParams(
@@ -33,11 +48,19 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
         return view;
     }
 
-    protected ListView createAppListView(AppListAdapter adapter) {
+    protected ListView createAppListView() {
         ListView list = new ListView(getActivity());
         list.setFastScrollEnabled(true);
         list.setOnItemClickListener(this);
-        list.setAdapter(adapter);
+        list.setAdapter(getAppListAdapter());
         return list;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final DB.App app = (DB.App)getAppListAdapter().getItem(position);
+        Intent intent = new Intent(getActivity(), AppDetails.class);
+        intent.putExtra("appid", app.id);
+        startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
     }
 }

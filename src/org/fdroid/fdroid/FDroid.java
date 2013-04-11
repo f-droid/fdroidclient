@@ -19,46 +19,36 @@
 
 package org.fdroid.fdroid;
 
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Vector;
-
-import android.app.*;
-import android.os.Build;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.*;
-import android.widget.*;
-import org.fdroid.fdroid.DB.App;
-
+import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.*;
 import android.widget.TabHost.TabSpec;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
-import org.fdroid.fdroid.views.AppListView;
 
-public class FDroid extends FragmentActivity implements OnItemClickListener,
-        OnItemSelectedListener {
+public class FDroid extends FragmentActivity {
 
-    private static final int REQUEST_APPDETAILS = 0;
-    private static final int REQUEST_MANAGEREPOS = 1;
-    private static final int REQUEST_PREFS = 2;
+    public static final int REQUEST_APPDETAILS = 0;
+    public static final int REQUEST_MANAGEREPOS = 1;
+    public static final int REQUEST_PREFS = 2;
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
@@ -68,71 +58,32 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
     private static final int ABOUT = Menu.FIRST + 3;
     private static final int SEARCH = Menu.FIRST + 4;
 
-    // Apps that are available to be installed
-    private AppListAdapter apps_av = new AppListAdapter(this);
-
-    // Apps that are installed
-    private AppListAdapter apps_in = new AppListAdapter(this);
-
-    // Apps that can be upgraded
-    private AppListAdapter apps_up = new AppListAdapter(this);
-
-    // Category list
-    private ArrayAdapter<String> categories;
-
-    private String currentCategory = null;
-
     private ProgressDialog pd;
-
-    private boolean triedEmptyUpdate;
-
-    // List of apps.
-    private Vector<DB.App> apps = null;
 
     private ViewPager viewPager;
 
+    private AppListManager manager = null;
+
     // Used by pre 3.0 devices which don't have an ActionBar...
     private TabHost tabHost;
-    private AppListFragmentPageAdapter viewPageAdapter;
 
-    // The following getters
-    // (availableAdapter/installedAdapter/canUpdateAdapter/categoriesAdapter)
-    // are used by the APpListViewFactory to construct views that can be used
-    // either by Android 3.0+ devices with ActionBars, or earlier devices
-    // with old fashioned tabs.
-
-    public AppListAdapter getAvailableAdapter() {
-        return apps_av;
-    }
-
-    public AppListAdapter getInstalledAdapter() {
-        return apps_in;
-    }
-
-    public AppListAdapter getCanUpdateAdapter() {
-        return apps_up;
-    }
-
-    public ArrayAdapter<String> getCategoriesAdapter() {
-        return categories;
+    public AppListManager getManager() {
+        return manager;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        manager = new AppListManager(this);
         setContentView(R.layout.fdroid);
-
-        // Needs to be created before createViews(), because that will use the
-        // getCategoriesAdapter() accessor which expects this object...
-        categories = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, new Vector<String>());
-        categories
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         createViews();
         createTabs();
+
+        // Must be done *after* createViews, because it will involve a
+        // callback to update the tab label for the "update" tab. This
+        // will fail unless the tabs have actually been created.
+        repopulateViews();
 
         Intent i = getIntent();
         if (i.hasExtra("uri")) {
@@ -145,14 +96,15 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
                 selectTab(2);
             }
         }
-
-        triedEmptyUpdate = false;
     }
 
     @Override
     protected void onStart() {
-        populateLists();
         super.onStart();
+    }
+
+    protected void repopulateViews() {
+        manager.repopulateLists();
     }
 
     @Override
@@ -237,7 +189,6 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        triedEmptyUpdate = true;
         switch (requestCode) {
         case REQUEST_APPDETAILS:
             break;
@@ -274,7 +225,7 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
                     && (data.hasExtra("reset") || data.hasExtra("update"))) {
                 updateRepos();
             } else {
-                populateLists();
+                repopulateViews();
             }
             break;
 
@@ -283,7 +234,7 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        viewPageAdapter = new AppListFragmentPageAdapter(this);
+        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
@@ -308,12 +259,17 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
         }
     }
 
-    private void updateTabText(int index) {
-        CharSequence text = viewPager.getAdapter().getPageTitle(index);
+    public void refreshUpdateTabLabel() {
+        final int INDEX = 2;
+        CharSequence text = viewPager.getAdapter().getPageTitle(INDEX);
         if ( Build.VERSION.SDK_INT >= 11) {
-            getActionBar().getTabAt(index).setText(text);
+            getActionBar().getTabAt(INDEX).setText(text);
         } else {
-
+             // Update the count on the 'Updates' tab to show the number available.
+            // This is quite unpleasant, but seems to be the only way to do it.
+            TextView textView = (TextView) tabHost.getTabWidget().getChildAt(2)
+                    .findViewById(android.R.id.title);
+            textView.setText(text);
         }
     }
 
@@ -407,142 +363,6 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
         });
     }
 
-    // Populate the lists.
-    private void populateLists() {
-
-        apps_in.clear();
-        apps_av.clear();
-        apps_up.clear();
-        categories.clear();
-
-        long startTime = System.currentTimeMillis();
-
-        DB db;
-        String cat_all, cat_whatsnew, cat_recentlyupdated;
-        try {
-            db = DB.getDB();
-
-            // Populate the category list with the real categories, and the
-            // locally generated meta-categories for "All", "What's New" and
-            // "Recently  Updated"...
-            cat_all = getString(R.string.category_all);
-            cat_whatsnew = getString(R.string.category_whatsnew);
-            cat_recentlyupdated = getString(R.string.category_recentlyupdated);
-            categories.add(cat_whatsnew);
-            categories.add(cat_recentlyupdated);
-            categories.add(cat_all);
-            for (String s : db.getCategories()) {
-                categories.add(s);
-            }
-            if (currentCategory == null)
-                currentCategory = cat_whatsnew;
-
-        } finally {
-            DB.releaseDB();
-        }
-
-        apps = ((FDroidApp) getApplication()).getApps();
-
-        if (apps.isEmpty()) {
-            // Don't attempt this more than once - we may have invalid
-            // repositories.
-            if (triedEmptyUpdate)
-                return;
-            // If there are no apps, update from the repos - it must be a
-            // new installation.
-            Log.d("FDroid", "Empty app list forces repo update");
-            updateRepos();
-            triedEmptyUpdate = true;
-            return;
-        }
-
-        // Calculate the cutoff date we'll use for What's New and Recently
-        // Updated...
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        String sint = prefs.getString("updateHistoryDays", "14");
-        int history_days = Integer.parseInt(sint);
-
-        Calendar recent = Calendar.getInstance();
-        recent.add(Calendar.DAY_OF_YEAR, -history_days);
-        Date recentDate = recent.getTime();
-
-        AppFilter appfilter = new AppFilter(this);
-
-        boolean incat;
-        Vector<DB.App> availapps = new Vector<DB.App>();
-        for (DB.App app : apps) {
-            if (currentCategory.equals(cat_all)) {
-                incat = true;
-            } else if (currentCategory.equals(cat_whatsnew)) {
-                if (app.added == null)
-                    incat = false;
-                else if (app.added.compareTo(recentDate) < 0)
-                    incat = false;
-                else
-                    incat = true;
-            } else if (currentCategory.equals(cat_recentlyupdated)) {
-                if (app.lastUpdated == null)
-                    incat = false;
-                // Don't include in the recently updated category if the
-                // 'update' was actually it being added.
-                else if (app.lastUpdated.compareTo(app.added) == 0)
-                    incat = false;
-                else if (app.lastUpdated.compareTo(recentDate) < 0)
-                    incat = false;
-                else
-                    incat = true;
-            } else {
-                incat = currentCategory.equals(app.category);
-            }
-
-            boolean filtered = appfilter.filter(app);
-
-            // Add it to the list(s). Always to installed and updates, but
-            // only to available if it's not filtered.
-            if (!filtered && incat)
-                availapps.add(app);
-            if (app.installedVersion != null) {
-                apps_in.addItem(app);
-                if (app.hasUpdates)
-                    apps_up.addItem(app);
-            }
-        }
-
-        if (currentCategory.equals(cat_whatsnew)) {
-            class WhatsNewComparator implements Comparator<DB.App> {
-                @Override
-                public int compare(App lhs, App rhs) {
-                    return rhs.added.compareTo(lhs.added);
-                }
-            }
-            Collections.sort(availapps, new WhatsNewComparator());
-        } else if (currentCategory.equals(cat_recentlyupdated)) {
-            class UpdatedComparator implements Comparator<DB.App> {
-                @Override
-                public int compare(App lhs, App rhs) {
-                    return rhs.lastUpdated.compareTo(lhs.lastUpdated);
-                }
-            }
-            Collections.sort(availapps, new UpdatedComparator());
-        }
-        for (DB.App app : availapps)
-            apps_av.addItem(app);
-
-        updateTabText(2);
-
-        // Tell the lists that the data behind the adapter has changed, so
-        // they can refresh...
-        apps_av.notifyDataSetChanged();
-        apps_in.notifyDataSetChanged();
-        apps_up.notifyDataSetChanged();
-        categories.notifyDataSetChanged();
-
-        Log.d("FDroid", "Updated lists - " + apps.size() + " apps in total"
-                + " (update took " + (System.currentTimeMillis() - startTime)
-                + " ms)");
-    }
-
     // For receiving results from the UpdateService when we've told it to
     // update in response to a user request.
     private class UpdateReceiver extends ResultReceiver {
@@ -556,7 +376,7 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
                 Toast.makeText(FDroid.this, resultData.getString("errmsg"),
                         Toast.LENGTH_LONG).show();
             } else {
-                populateLists();
+                repopulateViews();
             }
             if (pd.isShowing())
                 pd.dismiss();
@@ -565,10 +385,32 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
 
     private UpdateReceiver mUpdateReceiver;
 
+    /**
+     * The first time the app is run, we will have an empty app list.
+     * If this is the case, we will attempt to update with the default repo.
+     * However, if we have tried this at least once, then don't try to do
+     * it automatically again, because the repos or internet connection may
+     * be bad.
+     */
+    public boolean updateEmptyRepos() {
+        final String TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
+        boolean hasTriedEmptyUpdate = getPreferences(MODE_PRIVATE).getBoolean(TRIED_EMPTY_UPDATE, false);
+        if (!hasTriedEmptyUpdate) {
+            Log.d("FDroid", "Empty app list, and we haven't done an update yet. Forcing repo update.");
+            updateRepos();
+            getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true);
+            return true;
+        } else {
+            Log.d("FDroid", "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+            return false;
+        }
+    }
+
     // Force a repo update now. A progress dialog is shown and the UpdateService
     // is told to do the update, which will result in the database changing. The
     // UpdateReceiver class should get told when this is finished.
-    private void updateRepos() {
+    public void updateRepos() {
+
         pd = ProgressDialog.show(this, getString(R.string.process_wait_title),
                 getString(R.string.process_update_msg), true, true);
         pd.setIcon(android.R.drawable.ic_dialog_info);
@@ -578,38 +420,6 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
         mUpdateReceiver = new UpdateReceiver(new Handler());
         intent.putExtra("receiver", mUpdateReceiver);
         startService(intent);
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view, int pos,
-            long id) {
-        currentCategory = parent.getItemAtPosition(pos).toString();
-        populateLists();
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // We always have at least "All"
-    }
-
-    // Handler for a click on one of the items in an application list. Pops
-    // up a dialog that shows the details of the application and all its
-    // available versions, with buttons to allow installation etc.
-    public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2,
-            long arg3) {
-
-        int currentItem = viewPager.getCurrentItem();
-        Fragment fragment = viewPageAdapter.getItem(currentItem);
-
-        // The fragment.getView() returns a wrapper object which has the
-        // actual view we're interested in inside:
-        //   http://stackoverflow.com/a/13684505
-        ViewGroup group = (ViewGroup)fragment.getView();
-        AppListView view  = (AppListView)group.getChildAt(0);
-        final DB.App app = (DB.App)view.getAppList().getAdapter().getItem(arg2);
-
-        Intent intent = new Intent(this, AppDetails.class);
-        intent.putExtra("appid", app.id);
-        startActivityForResult(intent, REQUEST_APPDETAILS);
-
     }
 
 }
