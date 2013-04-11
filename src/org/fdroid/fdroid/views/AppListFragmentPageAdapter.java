@@ -26,9 +26,9 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
     public AppListFragmentPageAdapter(FDroid parent) {
         super(parent.getSupportFragmentManager());
         this.parent  = parent;
-        fragments[0] = new AvailableAppsFragment();
-        fragments[1] = new InstalledAppsFragment();
-        fragments[2] = new CanUpdateAppsFragment();
+        fragments[0] = new AvailableAppsFragment().setAppListAdapter(parent.getAvailableAdapter());
+        fragments[1] = new InstalledAppsFragment().setAppListAdapter(parent.getInstalledAdapter());
+        fragments[2] = new CanUpdateAppsFragment().setAppListAdapter(parent.getCanUpdateAdapter()).;
     }
 
     @Override

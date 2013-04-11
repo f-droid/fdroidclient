@@ -604,7 +604,7 @@ public class FDroid extends FragmentActivity implements OnItemClickListener,
         //   http://stackoverflow.com/a/13684505
         ViewGroup group = (ViewGroup)fragment.getView();
         AppListView view  = (AppListView)group.getChildAt(0);
-        final DB.App app = (DB.App)view.getAppList().   getAdapter().getItem(arg2);
+        final DB.App app = (DB.App)view.getAppList().getAdapter().getItem(arg2);
 
         Intent intent = new Intent(this, AppDetails.class);
         intent.putExtra("appid", app.id);
