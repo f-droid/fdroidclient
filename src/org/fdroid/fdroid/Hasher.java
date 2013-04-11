@@ -62,15 +62,16 @@ public class Hasher {
         else if (file != null) {
             byte[] buffer = new byte[1024];
             int read = 0;
+            InputStream input = null;
             try {
-                InputStream is = new BufferedInputStream(
-                        new FileInputStream(file));
-                while ((read = is.read(buffer)) > 0) {
+                input = new BufferedInputStream(new FileInputStream(file));
+                while ((read = input.read(buffer)) > 0) {
                     digest.update(buffer, 0, read);
                 }
-                is.close();
             } catch (Exception e) {
                 return hashCache = "";
+            } finally {
+                Utils.closeQuietly(input);
             }
         } else {
             digest.update(array);
