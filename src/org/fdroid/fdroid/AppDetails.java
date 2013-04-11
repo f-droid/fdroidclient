@@ -247,6 +247,7 @@ public class AppDetails extends ListActivity {
             resetRequired = false;
         }
         resetViews();
+        invalidateOptionsMenu();
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
         }
