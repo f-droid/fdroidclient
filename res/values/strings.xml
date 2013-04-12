@@ -27,7 +27,7 @@
 	<string name="app_name">F-Droid</string>
 	<string name="about_title">About F-Droid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
-		GNU GPLv2
+		GNU GPLv3
 		license.</string>
 	<string name="about_site">Website: </string>
 	<string name="about_sitec">http://f-droid.org</string>
