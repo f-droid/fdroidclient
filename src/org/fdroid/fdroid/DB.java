@@ -379,6 +379,7 @@ public class DB {
     public static void resetTransient(SQLiteDatabase db) {
         db.execSQL("drop table " + TABLE_APP);
         db.execSQL("drop table " + TABLE_APK);
+        db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
         createAppApk(db);
     }
 
