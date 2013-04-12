@@ -4,6 +4,7 @@
   <string name="searchres_oneapp">\'%s\' ile eşleşen bir uygulama bulundu:</string>
   <string name="searchres_noapps">\'%s\' ile eşleşen hiçbir uygulama bulunamadı:</string>
   <string name="SignatureMismatch">Bu yeni sürüm farklı bir anahtar ile imzalanmıştır. Yeni sürümü kurmak için önce eski sürümü kaldırmanız gerekir. Lütfen bunu yapın ve tekrar deneyin. (Not: bu, uygulama tarafından saklanan tüm dahili verileri silecektir)</string>
+  <string name="installIncompatible">Android bu paketin cihazınızla uyumlu olmadığını bildiriyor. Yine de kurmayı denemek istiyor musunuz?</string>
   <string name="version">Sürüm</string>
   <string name="n_versions_available">%d sürüm mevcut</string>
   <string name="n_version_available">%d sürüm mevcut</string>
@@ -17,9 +18,11 @@
   <string name="maintenance">Bakım</string>
   <string name="notify_updates_available">Yeni güncellemeler olduğunu bildir</string>
   <string name="update_apps_list">Uygulama listesini depolardan otomatik olarak güncelle</string>
+  <string name="last_update_check">Son depo analizi: %s</string>
+  <string name="never">asla</string>
   <string name="automatic_repo_scan">Otomatik depo taraması</string>
-  <string name="app_name">FDroid</string>
-  <string name="about_title">Fdroid Hakkında</string>
+  <string name="app_name">F-Droid</string>
+  <string name="about_title">F-Droid Hakkında</string>
   <string name="about_desc">Aptoide\'den türetilmiştir.\nGNU GPLv2 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_site">Ağ sitesi:</string>
   <string name="about_mail">E-mail:</string>
@@ -64,6 +67,7 @@
   <string name="menu_search">Arama</string>
   <string name="menu_add_repo">Yeni Depo</string>
   <string name="menu_rem_repo">Depoyu kaldır</string>
+  <string name="menu_launch">Çalıştır</string>
   <string name="menu_install">Kur</string>
   <string name="menu_uninstall">Kaldır</string>
   <string name="menu_website">Ağ sitesi</string>
@@ -98,5 +102,9 @@
   <string name="showincompat_long">Başka Android sürümleri veya cihazlar için geliştirilen uygulamaları göster</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Root yetkilerine gerek duyan uygulamaları göster</string>
-  <string name="category_all">Kur</string>
+  <string name="ignoreTouch">Dokunmatik ekranı yok say</string>
+  <string name="ignoreTouch_long">Dokunmatik ekran gerektiren uygulamaları daima ekle</string>
+  <string name="category_all">Tümü</string>
+  <string name="category_whatsnew">Yeni olanlar</string>
+  <string name="category_recentlyupdated">Yakın geçmişte güncellenen</string>
 </resources>

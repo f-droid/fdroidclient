@@ -67,6 +67,7 @@
   <string name="menu_search">Pesquisa</string>
   <string name="menu_add_repo">Novo Repositório</string>
   <string name="menu_rem_repo">Remover Repositório</string>
+  <string name="menu_launch">Rodar</string>
   <string name="menu_install">Instalar</string>
   <string name="menu_uninstall">Desinstalar</string>
   <string name="menu_website">Site</string>
@@ -105,4 +106,5 @@
   <string name="ignoreTouch_long">Sempre incluir aplicativos que requerem tela sensível ao toque</string>
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">O que há de novo</string>
+  <string name="category_recentlyupdated">Atualizado Recentemente</string>
 </resources>

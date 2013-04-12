@@ -18,6 +18,8 @@
   <string name="maintenance">Huolto</string>
   <string name="notify_updates_available">Ilmoita kun uusia päivityksiä on saatavilla</string>
   <string name="update_apps_list">Päivitä sovelluslista sovelluslähteistä automaattisesti</string>
+  <string name="last_update_check">Viimeisin sovelluslähteiden skannaus: %s</string>
+  <string name="never">ei koskaan</string>
   <string name="automatic_repo_scan">Automaattinen sovelluslähteen skannaus</string>
   <string name="app_name">F-Droid</string>
   <string name="about_title">Tietoa F-Droidista</string>
@@ -65,6 +67,7 @@
   <string name="menu_search">Etsi</string>
   <string name="menu_add_repo">Uusi sovelluslähde</string>
   <string name="menu_rem_repo">Poista sovelluslähde</string>
+  <string name="menu_launch">Suorita</string>
   <string name="menu_install">Asenna</string>
   <string name="menu_uninstall">Poista</string>
   <string name="menu_website">Verkkosivu</string>

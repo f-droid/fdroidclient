@@ -4,6 +4,7 @@
   <string name="searchres_oneapp">Une application trouvée contenant \'%s\':</string>
   <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller l\'application écrasera les données enregistrées par l\'application).</string>
+  <string name="installIncompatible">Android dit que ce paquetage n\'est pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versions disponibles</string>
   <string name="n_version_available">%d version disponible</string>
@@ -17,9 +18,11 @@
   <string name="maintenance">Maintenance</string>
   <string name="notify_updates_available">Notifier quand de nouvelles mises à jour sont disponibles</string>
   <string name="update_apps_list">Mettre à jour automatiquement la liste d\'applications à partir des dépôts</string>
+  <string name="last_update_check">Dernière analyse du dépôt : %s</string>
+  <string name="never">jamais</string>
   <string name="automatic_repo_scan">Balayage automatique du dépôt</string>
-  <string name="app_name">FDroid</string>
-  <string name="about_title">À propos de FDroid</string>
+  <string name="app_name">F-Droid</string>
+  <string name="about_title">À propos de F-Droid</string>
   <string name="about_desc">Originellement basée sur Aptoide.\nPublié sous licence GNU GPL v2.</string>
   <string name="about_site">Site Web :</string>
   <string name="about_mail">Courriel:</string>
@@ -64,6 +67,7 @@
   <string name="menu_search">Rechercher</string>
   <string name="menu_add_repo">Nouveau dépôt</string>
   <string name="menu_rem_repo">Supprimer un dépôt</string>
+  <string name="menu_launch">Lancer</string>
   <string name="menu_install">Installer</string>
   <string name="menu_uninstall">Supprimer</string>
   <string name="menu_website">Site Web</string>
@@ -98,5 +102,9 @@
   <string name="showincompat_long">Montrer les applications écrites pour de nouvelles versions d\'Android ou un matériel différent</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Montrer les applications qui requièrent les privilèges root</string>
-  <string name="category_all">Installer</string>
+  <string name="ignoreTouch">Ignorer l\'écran tactile</string>
+  <string name="ignoreTouch_long">Toujours inclure les applications qui nécessitent un écran tactile</string>
+  <string name="category_all">Tout</string>
+  <string name="category_whatsnew">Quoi de neuf ?</string>
+  <string name="category_recentlyupdated">Mis à jour récemment</string>
 </resources>

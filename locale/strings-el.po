@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"POT-Creation-Date: 2013-04-12 14:49+0100\n"
 "PO-Revision-Date: 2012-09-11 20:13+0200\n"
 "Last-Translator: g0d4 <giorgoskolokotronis@gmail.com>\n"
 "Language-Team: el <LL@li.org>\n"
@@ -104,6 +104,15 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Αυτόματη ενημέρωση της λίστας εφαρμογών από το αποθετήριο"
 
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Ενημέρωση αποθετηρίων"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
+
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -125,10 +134,11 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Σχετικά με το F-Droid"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPLv2 license."
+"Released under the GNU GPLv3 license."
 msgstr ""
 "Αρχικά, βασιζόταν στο Aptoide.\n"
 "Κυκλοφόρεί κάτω από την άδεια GNU GPLv2."
@@ -490,8 +500,4 @@ msgstr "Τι νέο υπάρχει"
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Πρόσφατα Ενημερωμένες"
-
-#~ msgctxt "menu_update_repo"
-#~ msgid "Update"
-#~ msgstr "Ενημέρωση"
 
