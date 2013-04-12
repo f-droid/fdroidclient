@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"POT-Creation-Date: 2013-04-12 14:49+0100\n"
 "PO-Revision-Date: 2012-04-24 11:14+0200\n"
 "Last-Translator: sgmif <android@sgmif.eu>\n"
 "Language-Team: ro <LL@li.org>\n"
@@ -101,6 +101,15 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Actualizare aplicatie automata"
 
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Actualizare depozit aplicatii"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
+
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -124,10 +133,11 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Despre FDroid"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPLv2 license."
+"Released under the GNU GPLv3 license."
 msgstr ""
 "Bazat pe Aptoide \n"
 "Distribuit sub licenta GNU GPLv2"
@@ -481,8 +491,4 @@ msgstr ""
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
-
-#~ msgctxt "menu_update_repo"
-#~ msgid "Update"
-#~ msgstr ""
 

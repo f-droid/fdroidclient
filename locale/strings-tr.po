@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-06 18:34+0000\n"
-"PO-Revision-Date: 2012-04-19 09:25+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-04-12 14:49+0100\n"
+"PO-Revision-Date: 2013-04-08 16:08+0200\n"
+"Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: tr <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,8 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Android bu paketin cihazınızla uyumlu olmadığını bildiriyor. Yine de "
+"kurmayı denemek istiyor musunuz?"
 
 msgctxt "version"
 msgid "Version"
@@ -104,33 +106,41 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Uygulama listesini depolardan otomatik olarak güncelle"
 
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Depoları güncelle"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
+
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Son depo analizi: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "asla"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Otomatik depo taraması"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDroid"
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "Fdroid Hakkında"
+msgstr "F-Droid Hakkında"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPLv2 license."
+"Released under the GNU GPLv3 license."
 msgstr ""
 "Aptoide'den türetilmiştir.\n"
 "GNU GPLv2 lisansı kapsamında yayınlanmıştır."
@@ -299,7 +309,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Uygulama buradan alınıyor:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Depoları güncelle"
@@ -330,7 +339,7 @@ msgstr "Depoyu kaldır"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Çalıştır"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -473,26 +482,21 @@ msgstr "Root yetkilerine gerek duyan uygulamaları göster"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Dokunmatik ekranı yok say"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Dokunmatik ekran gerektiren uygulamaları daima ekle"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Kur"
+msgstr "Tümü"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Yeni olanlar"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
-
-#~ msgctxt "menu_update_repo"
-#~ msgid "Update"
-#~ msgstr "Güncelleme"
+msgstr "Yakın geçmişte güncellenen"
 

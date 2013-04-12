@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
+ * as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid;
 
+import android.app.ActionBar;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,43 +32,34 @@ import org.fdroid.fdroid.R;
 
 import android.R.drawable;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.app.TabActivity;
 import android.app.AlertDialog.Builder;
+import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TabHost;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.*;
 import android.widget.TabHost.TabSpec;
+import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
 
-public class FDroid extends TabActivity implements OnItemClickListener,
-        OnItemSelectedListener {
+public class FDroid extends FragmentActivity {
 
-    private static final int REQUEST_APPDETAILS = 0;
-    private static final int REQUEST_MANAGEREPOS = 1;
-    private static final int REQUEST_PREFS = 2;
+    public static final int REQUEST_APPDETAILS = 0;
+    public static final int REQUEST_MANAGEREPOS = 1;
+    public static final int REQUEST_PREFS = 2;
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
@@ -77,50 +69,32 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     private static final int ABOUT = Menu.FIRST + 3;
     private static final int SEARCH = Menu.FIRST + 4;
 
-    // Apps that are available to be installed
-    private AppListAdapter apps_av = new AppListAdapter(this);
-
-    // Apps that are installed
-    private AppListAdapter apps_in = new AppListAdapter(this);
-
-    // Apps that can be upgraded
-    private AppListAdapter apps_up = new AppListAdapter(this);
-
-    // Category list
-    private ArrayAdapter<String> categories;
-    private String currentCategory = null;
-
     private ProgressDialog pd;
 
-    // Tags for the tabs
-    private static final String TAB_Installed = "I";
-    private static final String TAB_Available = "A";
-    private static final String TAB_Updates = "U";
+    private ViewPager viewPager;
 
+    private AppListManager manager = null;
+
+    // Used by pre 3.0 devices which don't have an ActionBar...
     private TabHost tabHost;
-    private TabSpec ts;
-    private TabSpec ts1;
-    private TabSpec tsUp;
 
-    private boolean triedEmptyUpdate;
-
-    // List of apps.
-    private Vector<DB.App> apps = null;
+    public AppListManager getManager() {
+        return manager;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        manager = new AppListManager(this);
         setContentView(R.layout.fdroid);
-
-        categories = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, new Vector<String>());
-        categories
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        tabHost = getTabHost();
+        createViews();
         createTabs();
+
+        // Must be done *after* createViews, because it will involve a
+        // callback to update the tab label for the "update" tab. This
+        // will fail unless the tabs have actually been created.
+        repopulateViews();
 
         Intent i = getIntent();
         if (i.hasExtra("uri")) {
@@ -128,19 +102,20 @@ public class FDroid extends TabActivity implements OnItemClickListener,
             call.putExtra("uri", i.getStringExtra("uri"));
             startActivityForResult(call, REQUEST_MANAGEREPOS);
         } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
-            boolean updateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
-            if (updateTab) {
-                tabHost.setCurrentTab(2);
+            boolean showUpdateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
+            if (showUpdateTab) {
+                selectTab(2);
             }
         }
-
-        triedEmptyUpdate = false;
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        populateLists();
+    }
+
+    protected void repopulateViews() {
+        manager.repopulateLists();
     }
 
     @Override
@@ -226,7 +201,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        triedEmptyUpdate = true;
         switch (requestCode) {
         case REQUEST_APPDETAILS:
             break;
@@ -263,219 +237,142 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                     && (data.hasExtra("reset") || data.hasExtra("update"))) {
                 updateRepos();
             } else {
-                populateLists();
+                repopulateViews();
             }
             break;
 
         }
     }
 
-    private void createTabs() {
-        tabHost.clearAllTabs();
+    private void createViews() {
+        viewPager = (ViewPager)findViewById(R.id.main_pager);
+        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
+        viewPager.setAdapter(viewPageAdapter);
+        viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
+            public void onPageSelected(int position) {
+                selectTab(position);
+            }
+        });
+    }
 
-        // TabContentFactory that can generate the appropriate list for each
-        // tab...
-        TabHost.TabContentFactory tf = new TabHost.TabContentFactory() {
+    private void createTabs() {
+        if (Build.VERSION.SDK_INT >= 11) {
+            createActionBarTabs();
+        } else {
+            createOldTabs();
+        }
+    }
+
+    private void selectTab(int index) {
+        if (Build.VERSION.SDK_INT >= 11) {
+            getActionBar().setSelectedNavigationItem(index);
+        } else {
+            tabHost.setCurrentTab(index);
+        }
+    }
+
+    public void refreshUpdateTabLabel() {
+        final int INDEX = 2;
+        CharSequence text = viewPager.getAdapter().getPageTitle(INDEX);
+        if ( Build.VERSION.SDK_INT >= 11) {
+            getActionBar().getTabAt(INDEX).setText(text);
+        } else {
+             // Update the count on the 'Updates' tab to show the number available.
+            // This is quite unpleasant, but seems to be the only way to do it.
+            TextView textView = (TextView) tabHost.getTabWidget().getChildAt(2)
+                    .findViewById(android.R.id.title);
+            textView.setText(text);
+        }
+    }
+
+    private void createActionBarTabs() {
+        final ActionBar actionBar = getActionBar();
+        final ViewPager pager     = viewPager;
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        for (int i = 0; i < viewPager.getAdapter().getCount(); i ++) {
+            CharSequence label = viewPager.getAdapter().getPageTitle(i);
+            actionBar.addTab(
+                actionBar.newTab()
+                    .setText(label)
+                    .setTabListener(new ActionBar.TabListener() {
+                        public void onTabSelected(ActionBar.Tab tab,
+                                                  FragmentTransaction ft) {
+                            pager.setCurrentItem(tab.getPosition());
+                        }
+
+                        @Override
+                        public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+                        }
+
+                        @Override
+                        public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+                        }
+                    }));
+        }
+    }
+
+    /**
+     * There is a bit of boiler-plate code required to get a TabWidget showing,
+     * which includes creating a TabHost, populating it with the TabWidget,
+     * and giving it a FrameLayout as a child. This will make the tabs have
+     * dummy empty contents and then hook them up to our ViewPager.
+     */
+    private void createOldTabs() {
+        tabHost = new TabHost(this);
+        tabHost.setLayoutParams(new TabHost.LayoutParams(
+                TabHost.LayoutParams.MATCH_PARENT, TabHost.LayoutParams.WRAP_CONTENT));
+
+        TabWidget tabWidget = new TabWidget(this);
+        tabWidget.setId(android.R.id.tabs);
+        tabHost.setLayoutParams(new TabHost.LayoutParams(
+                TabWidget.LayoutParams.MATCH_PARENT, TabWidget.LayoutParams.WRAP_CONTENT));
+
+        FrameLayout layout = new FrameLayout(this);
+        layout.setId(android.R.id.tabcontent);
+        layout.setLayoutParams(new TabWidget.LayoutParams(0, 0));
+
+        tabHost.addView(tabWidget);
+        tabHost.addView(layout);
+        tabHost.setup();
+
+        TabHost.TabContentFactory factory = new TabHost.TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
-
-                AppListAdapter ad;
-                if (tag.equals(TAB_Installed))
-                    ad = apps_in;
-                else if (tag.equals(TAB_Updates))
-                    ad = apps_up;
-                else
-                    ad = apps_av;
-
-                ListView lst = new ListView(FDroid.this);
-                lst.setFastScrollEnabled(true);
-                lst.setOnItemClickListener(FDroid.this);
-                lst.setAdapter(ad);
-
-                if (!tag.equals(TAB_Available))
-                    return lst;
-
-                LinearLayout v = new LinearLayout(FDroid.this);
-                v.setOrientation(LinearLayout.VERTICAL);
-                Spinner cats = new Spinner(FDroid.this);
-                // Giving it an ID lets the default save/restore state
-                // functionality do its stuff.
-                cats.setId(R.id.categorySpinner);
-                cats.setAdapter(categories);
-                cats.setOnItemSelectedListener(FDroid.this);
-                v.addView(cats, new LayoutParams(
-                        LinearLayout.LayoutParams.FILL_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-                v.addView(lst, new LayoutParams(
-                        LinearLayout.LayoutParams.FILL_PARENT,
-                        LinearLayout.LayoutParams.FILL_PARENT));
-                return v;
+                return new View(FDroid.this);
             }
         };
 
-        // Create the tab of installed apps...
-        ts = tabHost.newTabSpec(TAB_Installed);
-        ts.setIndicator(getString(R.string.tab_installed), getResources()
-                .getDrawable(drawable.star_off));
-        ts.setContent(tf);
+        TabSpec availableTabSpec = tabHost.newTabSpec("available")
+                .setIndicator(
+                        getString(R.string.tab_noninstalled),
+                        getResources().getDrawable(android.R.drawable.ic_input_add))
+                .setContent(factory);
 
-        // Create the tab of apps with updates...
-        tsUp = tabHost.newTabSpec(TAB_Updates);
-        tsUp.setIndicator(getString(R.string.tab_updates), getResources()
-                .getDrawable(drawable.star_on));
-        tsUp.setContent(tf);
+        TabSpec installedTabSpec = tabHost.newTabSpec("installed")
+                .setIndicator(
+                        getString(R.string.tab_installed),
+                        getResources().getDrawable(android.R.drawable.star_off))
+                .setContent(factory);
 
-        // Create the tab of available apps...
-        ts1 = tabHost.newTabSpec(TAB_Available);
-        ts1.setIndicator(getString(R.string.tab_noninstalled), getResources()
-                .getDrawable(drawable.ic_input_add));
-        ts1.setContent(tf);
+        TabSpec canUpdateTabSpec = tabHost.newTabSpec("canUpdate")
+                .setIndicator(
+                        getString(R.string.tab_updates),
+                        getResources().getDrawable(android.R.drawable.star_on))
+                .setContent(factory);
 
-        tabHost.addTab(ts1);
-        tabHost.addTab(ts);
-        tabHost.addTab(tsUp);
+        tabHost.addTab(availableTabSpec);
+        tabHost.addTab(installedTabSpec);
+        tabHost.addTab(canUpdateTabSpec);
 
-    }
+        LinearLayout contentView = (LinearLayout)findViewById(R.id.fdroid_layout);
+        contentView.addView(tabHost, 0);
 
-    // Populate the lists.
-    private void populateLists() {
-
-        apps_in.clear();
-        apps_av.clear();
-        apps_up.clear();
-        categories.clear();
-
-        long startTime = System.currentTimeMillis();
-
-        DB db;
-        String cat_all, cat_whatsnew, cat_recentlyupdated;
-        try {
-            db = DB.getDB();
-
-            // Populate the category list with the real categories, and the
-            // locally generated meta-categories for "All", "What's New" and
-            // "Recently  Updated"...
-            cat_all = getString(R.string.category_all);
-            cat_whatsnew = getString(R.string.category_whatsnew);
-            cat_recentlyupdated = getString(R.string.category_recentlyupdated);
-            categories.add(cat_whatsnew);
-            categories.add(cat_recentlyupdated);
-            categories.add(cat_all);
-            for (String s : db.getCategories()) {
-                categories.add(s);
+        tabHost.setOnTabChangedListener( new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                viewPager.setCurrentItem(tabHost.getCurrentTab());
             }
-            if (currentCategory == null)
-                currentCategory = cat_whatsnew;
-
-        } finally {
-            DB.releaseDB();
-        }
-
-        apps = ((FDroidApp) getApplication()).getApps();
-
-        if (apps.isEmpty()) {
-            // Don't attempt this more than once - we may have invalid
-            // repositories.
-            if (triedEmptyUpdate)
-                return;
-            // If there are no apps, update from the repos - it must be a
-            // new installation.
-            Log.d("FDroid", "Empty app list forces repo update");
-            updateRepos();
-            triedEmptyUpdate = true;
-            return;
-        }
-
-        // Calculate the cutoff date we'll use for What's New and Recently
-        // Updated...
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        String sint = prefs.getString("updateHistoryDays", "14");
-        int history_days = Integer.parseInt(sint);
-
-        Calendar recent = Calendar.getInstance();
-        recent.add(Calendar.DAY_OF_YEAR, -history_days);
-        Date recentDate = recent.getTime();
-
-        AppFilter appfilter = new AppFilter(this);
-
-        boolean incat;
-        Vector<DB.App> availapps = new Vector<DB.App>();
-        for (DB.App app : apps) {
-            if (currentCategory.equals(cat_all)) {
-                incat = true;
-            } else if (currentCategory.equals(cat_whatsnew)) {
-                if (app.added == null)
-                    incat = false;
-                else if (app.added.compareTo(recentDate) < 0)
-                    incat = false;
-                else
-                    incat = true;
-            } else if (currentCategory.equals(cat_recentlyupdated)) {
-                if (app.lastUpdated == null)
-                    incat = false;
-                // Don't include in the recently updated category if the
-                // 'update' was actually it being added.
-                else if (app.lastUpdated.compareTo(app.added) == 0)
-                    incat = false;
-                else if (app.lastUpdated.compareTo(recentDate) < 0)
-                    incat = false;
-                else
-                    incat = true;
-            } else {
-                incat = currentCategory.equals(app.category);
-            }
-
-            boolean filtered = appfilter.filter(app);
-
-            // Add it to the list(s). Always to installed and updates, but
-            // only to available if it's not filtered.
-            if (!filtered && incat)
-                availapps.add(app);
-            if (app.installedVersion != null) {
-                apps_in.addItem(app);
-                if (app.hasUpdates)
-                    apps_up.addItem(app);
-            }
-        }
-
-        if (currentCategory.equals(cat_whatsnew)) {
-            class WhatsNewComparator implements Comparator<DB.App> {
-                @Override
-                public int compare(App lhs, App rhs) {
-                    return rhs.added.compareTo(lhs.added);
-                }
-            }
-            Collections.sort(availapps, new WhatsNewComparator());
-        } else if (currentCategory.equals(cat_recentlyupdated)) {
-            class UpdatedComparator implements Comparator<DB.App> {
-                @Override
-                public int compare(App lhs, App rhs) {
-                    return rhs.lastUpdated.compareTo(lhs.lastUpdated);
-                }
-            }
-            Collections.sort(availapps, new UpdatedComparator());
-        }
-        for (DB.App app : availapps)
-            apps_av.addItem(app);
-
-        // Update the count on the 'Updates' tab to show the number available.
-        // This is quite unpleasant, but seems to be the only way to do it.
-        TextView uptext = (TextView) tabHost.getTabWidget().getChildAt(2)
-                .findViewById(android.R.id.title);
-        uptext.setText(getString(R.string.tab_updates) + " ("
-                + Integer.toString(apps_up.getCount()) + ")");
-
-        // Tell the lists that the data behind the adapter has changed, so
-        // they can refresh...
-        apps_av.notifyDataSetChanged();
-        apps_in.notifyDataSetChanged();
-        apps_up.notifyDataSetChanged();
-        categories.notifyDataSetChanged();
-
-        Log.d("FDroid", "Updated lists - " + apps.size() + " apps in total"
-                + " (update took " + (System.currentTimeMillis() - startTime)
-                + " ms)");
+        });
     }
 
     // For receiving results from the UpdateService when we've told it to
@@ -491,7 +388,7 @@ public class FDroid extends TabActivity implements OnItemClickListener,
                 Toast.makeText(FDroid.this, resultData.getString("errmsg"),
                         Toast.LENGTH_LONG).show();
             } else {
-                populateLists();
+                repopulateViews();
             }
             if (pd.isShowing())
                 pd.dismiss();
@@ -500,10 +397,32 @@ public class FDroid extends TabActivity implements OnItemClickListener,
 
     private UpdateReceiver mUpdateReceiver;
 
+    /**
+     * The first time the app is run, we will have an empty app list.
+     * If this is the case, we will attempt to update with the default repo.
+     * However, if we have tried this at least once, then don't try to do
+     * it automatically again, because the repos or internet connection may
+     * be bad.
+     */
+    public boolean updateEmptyRepos() {
+        final String TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
+        boolean hasTriedEmptyUpdate = getPreferences(MODE_PRIVATE).getBoolean(TRIED_EMPTY_UPDATE, false);
+        if (!hasTriedEmptyUpdate) {
+            Log.d("FDroid", "Empty app list, and we haven't done an update yet. Forcing repo update.");
+            getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true).apply();
+            updateRepos();
+            return true;
+        } else {
+            Log.d("FDroid", "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+            return false;
+        }
+    }
+
     // Force a repo update now. A progress dialog is shown and the UpdateService
     // is told to do the update, which will result in the database changing. The
     // UpdateReceiver class should get told when this is finished.
-    private void updateRepos() {
+    public void updateRepos() {
+
         pd = ProgressDialog.show(this, getString(R.string.process_wait_title),
                 getString(R.string.process_update_msg), true, true);
         pd.setIcon(android.R.drawable.ic_dialog_info);
@@ -513,38 +432,6 @@ public class FDroid extends TabActivity implements OnItemClickListener,
         mUpdateReceiver = new UpdateReceiver(new Handler());
         intent.putExtra("receiver", mUpdateReceiver);
         startService(intent);
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view, int pos,
-            long id) {
-        currentCategory = parent.getItemAtPosition(pos).toString();
-        populateLists();
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // We always have at least "All"
-    }
-
-    // Handler for a click on one of the items in an application list. Pops
-    // up a dialog that shows the details of the application and all its
-    // available versions, with buttons to allow installation etc.
-    public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2,
-            long arg3) {
-
-        final DB.App app;
-        String curtab = tabHost.getCurrentTabTag();
-        if (curtab.equalsIgnoreCase(TAB_Installed)) {
-            app = (DB.App) apps_in.getItem(arg2);
-        } else if (curtab.equalsIgnoreCase(TAB_Updates)) {
-            app = (DB.App) apps_up.getItem(arg2);
-        } else {
-            app = (DB.App) apps_av.getItem(arg2);
-        }
-
-        Intent intent = new Intent(this, AppDetails.class);
-        intent.putExtra("appid", app.id);
-        startActivityForResult(intent, REQUEST_APPDETAILS);
-
     }
 
 }

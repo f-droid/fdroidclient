@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-06 18:34+0000\n"
-"PO-Revision-Date: 2012-08-29 12:17+0200\n"
-"Last-Translator: Ciaran <ciaran@ciarang.com>\n"
+"POT-Creation-Date: 2013-04-12 14:49+0100\n"
+"PO-Revision-Date: 2013-04-08 16:13+0200\n"
+"Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,8 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Android dit que ce paquetage n'est pas compatible avec votre appareil. "
+"Voulez-vous quand même tenter de l'installer ?"
 
 msgctxt "version"
 msgid "Version"
@@ -104,33 +106,41 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Mettre à jour automatiquement la liste d'applications à partir des dépôts"
 
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Mettre à jour les dépôts"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
+
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Dernière analyse du dépôt : %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "jamais"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Balayage automatique du dépôt"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDroid"
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "À propos de FDroid"
+msgstr "À propos de F-Droid"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPLv2 license."
+"Released under the GNU GPLv3 license."
 msgstr ""
 "Originellement basée sur Aptoide.\n"
 "Publié sous licence GNU GPL v2."
@@ -300,7 +310,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Réception d'application de:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Mettre à jour les dépôts"
@@ -331,7 +340,7 @@ msgstr "Supprimer un dépôt"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Lancer"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -474,26 +483,21 @@ msgstr "Montrer les applications qui requièrent les privilèges root"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Ignorer l'écran tactile"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Toujours inclure les applications qui nécessitent un écran tactile"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Installer"
+msgstr "Tout"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Quoi de neuf ?"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
-
-#~ msgctxt "menu_update_repo"
-#~ msgid "Update"
-#~ msgstr "Mise à jour"
+msgstr "Mis à jour récemment"
 

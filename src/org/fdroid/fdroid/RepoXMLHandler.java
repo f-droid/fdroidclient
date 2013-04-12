@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
+ * as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -19,8 +19,6 @@
 
 package org.fdroid.fdroid;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -265,23 +263,16 @@ public class RepoXMLHandler extends DefaultHandler {
         int totalBytes = 0;
         int code = uc.getResponseCode();
         if (code == 200) {
-
-            FileOutputStream f = ctx.openFileOutput(dest, Context.MODE_PRIVATE);
-
-            BufferedInputStream getit = new BufferedInputStream(
-                    new URL(url).openStream());
-            BufferedOutputStream bout = new BufferedOutputStream(f, 1024);
-            byte data[] = new byte[1024];
-
-            int readed = getit.read(data, 0, 1024);
-            while (readed != -1) {
-                totalBytes += readed;
-                bout.write(data, 0, readed);
-                readed = getit.read(data, 0, 1024);
+            InputStream input = null;
+            OutputStream output = null;
+            try {
+                input = new URL(url).openStream();
+                output = ctx.openFileOutput(dest, Context.MODE_PRIVATE);
+                Utils.copy(input, output);
+            } finally {
+                Utils.closeQuietly(output);
+                Utils.closeQuietly(input);
             }
-            bout.close();
-            getit.close();
-            f.close();
 
             String et = uc.getHeaderField("ETag");
             if (et != null)
@@ -322,33 +313,33 @@ public class RepoXMLHandler extends DefaultHandler {
                         repo.lastetag, newetag);
                 if (code == 200) {
                     String jarpath = ctx.getFilesDir() + "/tempindex.jar";
-                    JarFile jar;
+                    JarFile jar = null;
                     JarEntry je;
+                    Certificate[] certs;
                     try {
                         jar = new JarFile(jarpath, true);
                         je = (JarEntry) jar.getEntry("index.xml");
                         File efile = new File(ctx.getFilesDir(),
                                 "/tempindex.xml");
-                        InputStream in = new BufferedInputStream(
-                                jar.getInputStream(je), 8192);
-                        OutputStream out = new BufferedOutputStream(
-                                new FileOutputStream(efile), 8192);
-                        byte[] buffer = new byte[8192];
-                        while (true) {
-                            int nBytes = in.read(buffer);
-                            if (nBytes <= 0)
-                                break;
-                            out.write(buffer, 0, nBytes);
+                        InputStream input = null;
+                        OutputStream output = null;
+                        try {
+                            input = jar.getInputStream(je);
+                            output = new FileOutputStream(efile);
+                            Utils.copy(input, output);
+                        } finally {
+                            Utils.closeQuietly(output);
+                            Utils.closeQuietly(input);
                         }
-                        out.flush();
-                        out.close();
-                        in.close();
+                        certs = je.getCertificates();
                     } catch (SecurityException e) {
                         Log.e("FDroid", "Invalid hash for index file");
                         return "Invalid hash for index file";
+                    } finally {
+                        if (jar != null) {
+                            jar.close();
+                        }
                     }
-                    Certificate[] certs = je.getCertificates();
-                    jar.close();
                     if (certs == null) {
                         Log.d("FDroid", "No signature found in index");
                         return "No signature found in index";

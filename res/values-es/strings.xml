@@ -4,6 +4,7 @@
   <string name="searchres_oneapp">Se encontró un programa con \'%s\':</string>
   <string name="searchres_noapps">No se encontró ningún programa con \'%s\'</string>
   <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe de ser desinstalada primero. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por el programa)</string>
+  <string name="installIncompatible">Android dice que este paquete no es compatible con tu dispositivo. ¿Quieres probar e instalarlo de todos modos?</string>
   <string name="version">Versión</string>
   <string name="n_versions_available">%d versiones disponibles</string>
   <string name="n_version_available">%d versión disponible</string>
@@ -17,6 +18,8 @@
   <string name="maintenance">Mantenimiento</string>
   <string name="notify_updates_available">Notificarme cuando haya actualizaciones disponibles</string>
   <string name="update_apps_list">Actualizar la lista de programas desde los repositorios automáticamente</string>
+  <string name="last_update_check">Último escaneo del repositorio: %s</string>
+  <string name="never">nunca</string>
   <string name="automatic_repo_scan">Escanear los repositorios automáticamente</string>
   <string name="app_name">F-Droid</string>
   <string name="about_title">Acerca de F-Droid</string>
@@ -64,6 +67,7 @@
   <string name="menu_search">Buscar</string>
   <string name="menu_add_repo">Repositorio nuevo</string>
   <string name="menu_rem_repo">Borrar Repositorio</string>
+  <string name="menu_launch">Ejecutar</string>
   <string name="menu_install">Instalar</string>
   <string name="menu_uninstall">Desinstalar</string>
   <string name="menu_website">Página web</string>
@@ -98,6 +102,8 @@
   <string name="showincompat_long">Muestra los programas escritos para versiones de Android más modernas o con un hardware diferente</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Muestras los programas que requieren privilegios de root</string>
+  <string name="ignoreTouch">Ignorar pantalla táctil</string>
+  <string name="ignoreTouch_long">Siempre incluir aplicaciones que requieren pantalla táctil</string>
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">Novedades</string>
   <string name="category_recentlyupdated">Recientemente actualizados</string>

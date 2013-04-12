@@ -3,7 +3,7 @@
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
+ * as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -18,10 +18,10 @@
 
 package org.fdroid.fdroid;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Vector;
@@ -290,21 +290,16 @@ public class UpdateService extends IntentService {
             URL u = new URL(server + "/icons/" + app.icon);
             HttpURLConnection uc = (HttpURLConnection) u.openConnection();
             if (uc.getResponseCode() == 200) {
-                BufferedInputStream getit = new BufferedInputStream(
-                        uc.getInputStream());
-                FileOutputStream saveit = new FileOutputStream(f);
-                BufferedOutputStream bout = new BufferedOutputStream(saveit,
-                        1024);
-                byte data[] = new byte[1024];
-
-                int readed = getit.read(data, 0, 1024);
-                while (readed != -1) {
-                    bout.write(data, 0, readed);
-                    readed = getit.read(data, 0, 1024);
+                InputStream input = null;
+                OutputStream output = null;
+                try {
+                    input = uc.getInputStream();
+                    output = new FileOutputStream(f);
+                    Utils.copy(input, output);
+                } finally {
+                    Utils.closeQuietly(output);
+                    Utils.closeQuietly(input);
                 }
-                bout.close();
-                getit.close();
-                saveit.close();
             }
         } catch (Exception e) {
 

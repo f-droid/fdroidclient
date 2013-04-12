@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation; either version 3 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful, but
@@ -62,15 +62,16 @@ public class Hasher {
         else if (file != null) {
             byte[] buffer = new byte[1024];
             int read = 0;
+            InputStream input = null;
             try {
-                InputStream is = new BufferedInputStream(
-                        new FileInputStream(file));
-                while ((read = is.read(buffer)) > 0) {
+                input = new BufferedInputStream(new FileInputStream(file));
+                while ((read = input.read(buffer)) > 0) {
                     digest.update(buffer, 0, read);
                 }
-                is.close();
             } catch (Exception e) {
                 return hashCache = "";
+            } finally {
+                Utils.closeQuietly(input);
             }
         } else {
             digest.update(array);

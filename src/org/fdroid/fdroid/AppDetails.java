@@ -3,7 +3,7 @@
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
+ * as published by the Free Software Foundation; either version 3
  * of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -153,15 +153,17 @@ public class AppDetails extends ListActivity {
         }
     }
 
+    private static final String[] FRIENDLY_SIZE_FORMAT = {
+            "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
+
     private static String getFriendlySize(int size) {
         double s = size;
-        String[] format = { "%f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
         int i = 0;
-        while (i < format.length - 1 && s >= 1024) {
+        while (i < FRIENDLY_SIZE_FORMAT.length - 1 && s >= 1024) {
             s = (100 * s / 1024) / 100.0;
             i++;
         }
-        return String.format(format[i], s);
+        return String.format(FRIENDLY_SIZE_FORMAT[i], s);
     }
 
     private static final int INSTALL = Menu.FIRST;
@@ -247,6 +249,7 @@ public class AppDetails extends ListActivity {
             resetRequired = false;
         }
         resetViews();
+        invalidateOptionsMenu();
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
         }

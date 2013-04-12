@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-06 18:34+0000\n"
+"POT-Creation-Date: 2013-04-12 14:49+0100\n"
 "PO-Revision-Date: 2012-03-16 17:40+0200\n"
 "Last-Translator: reppleo <reppleo@gmail.com>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -103,6 +103,15 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Anwendungsliste automatisch aktualisieren"
 
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Archive aktualisieren"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
+
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -126,10 +135,11 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Über FDroid"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPLv2 license."
+"Released under the GNU GPLv3 license."
 msgstr ""
 "Basierend auf Aptoide.\n"
 "Lizensiert unter der GNU GPLv2."
@@ -495,8 +505,4 @@ msgstr ""
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
-
-#~ msgctxt "menu_update_repo"
-#~ msgid "Update"
-#~ msgstr "Aktualisieren"
 

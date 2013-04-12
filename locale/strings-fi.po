@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-06 18:34+0000\n"
-"PO-Revision-Date: 2012-11-08 17:36+0200\n"
-"Last-Translator: Mika <mkaysi@outlook.com>\n"
+"POT-Creation-Date: 2013-04-12 14:49+0100\n"
+"PO-Revision-Date: 2013-04-03 17:19+0200\n"
+"Last-Translator: PatrikSelin <patrik.selin@gmail.com>\n"
 "Language-Team: fi <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -104,14 +104,23 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Päivitä sovelluslista sovelluslähteistä automaattisesti"
 
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Päivitä sovelluslähteet"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
+
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Viimeisin sovelluslähteiden skannaus: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "ei koskaan"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
@@ -125,10 +134,11 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Tietoa F-Droidista"
 
+#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
-"Released under the GNU GPLv2 license."
+"Released under the GNU GPLv3 license."
 msgstr ""
 "Perustuu alunperin Aptoideen.\n"
 "Julkaistu GNU GPLv2-lisenssillä."
@@ -297,7 +307,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Ladataan sovellusta lähteestä:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Päivitä sovelluslähteet"
@@ -328,7 +337,7 @@ msgstr "Poista sovelluslähde"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Suorita"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -350,7 +359,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Lähdekoodi"
 
-#, fuzzy
 msgctxt "menu_market"
 msgid "Market"
 msgstr "Kauppa"
@@ -444,7 +452,6 @@ msgctxt "db_sync_mode"
 msgid "Database sync mode"
 msgstr "Tietokannan synkronointi-tila"
 
-#, fuzzy
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
 msgstr "Aseta SQLiten synkrooninen lippu"
@@ -490,8 +497,4 @@ msgstr "Uutta"
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Viimeaikoina päivitetty"
-
-#~ msgctxt "menu_update_repo"
-#~ msgid "Update"
-#~ msgstr "Päivitä"
 
