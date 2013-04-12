@@ -21,10 +21,10 @@
 package org.fdroid.fdroid;
 
 import android.util.Log;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 
 public class Downloader extends Thread {
@@ -94,6 +94,8 @@ public class Downloader extends Thread {
 
     public void run() {
 
+        InputStream input = null;
+        OutputStream output = null;
         String apkname = curapk.apkName;
         localfile = new File(DB.getDataPath(), apkname);
         try {
@@ -127,30 +129,23 @@ public class Downloader extends Thread {
                 status = Status.RUNNING;
             }
 
-            BufferedInputStream getit = new BufferedInputStream(new URL(
-                    remotefile).openStream(), 8192);
-
-            FileOutputStream saveit = new FileOutputStream(localfile);
-            BufferedOutputStream bout = new BufferedOutputStream(saveit, 1024);
-            byte data[] = new byte[1024];
-
-            int totalRead = 0;
-            int bytesRead = getit.read(data, 0, 1024);
-            while (bytesRead != -1) {
+            input = new URL(remotefile).openStream();
+            output = new FileOutputStream(localfile);
+            byte data[] = new byte[Utils.BUFFER_SIZE];
+            while (true) {
                 if (isInterrupted()) {
                     Log.d("FDroid", "Download cancelled!");
                     break;
                 }
-                bout.write(data, 0, bytesRead);
-                totalRead += bytesRead;
-                synchronized (this) {
-                    progress = totalRead;
+                int count = input.read(data);
+                if (count == -1) {
+                    break;
                 }
-                bytesRead = getit.read(data, 0, 1024);
+                output.write(data, 0, count);
+                synchronized (this) {
+                    progress += count;
+                }
             }
-            bout.close();
-            getit.close();
-            saveit.close();
 
             if (isInterrupted()) {
                 localfile.delete();
@@ -182,6 +177,9 @@ public class Downloader extends Thread {
                 status = Status.ERROR;
                 return;
             }
+        } finally {
+            Utils.closeQuietly(output);
+            Utils.closeQuietly(input);
         }
 
         Log.d("FDroid", "Download finished: " + localfile);
