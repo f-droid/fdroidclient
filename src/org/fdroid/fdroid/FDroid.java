@@ -409,8 +409,8 @@ public class FDroid extends FragmentActivity {
         boolean hasTriedEmptyUpdate = getPreferences(MODE_PRIVATE).getBoolean(TRIED_EMPTY_UPDATE, false);
         if (!hasTriedEmptyUpdate) {
             Log.d("FDroid", "Empty app list, and we haven't done an update yet. Forcing repo update.");
+            getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true).apply();
             updateRepos();
-            getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true);
             return true;
         } else {
             Log.d("FDroid", "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
