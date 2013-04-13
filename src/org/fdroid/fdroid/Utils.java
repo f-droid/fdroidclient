@@ -18,6 +18,8 @@
 
 package org.fdroid.fdroid;
 
+import android.os.Build;
+
 import java.io.Closeable;
 import java.io.InputStream;
 import java.io.IOException;
@@ -51,5 +53,13 @@ public final class Utils {
         } catch (IOException ioe) {
             // ignore
         }
+    }
+
+    public static boolean hasApi(int apiLevel) {
+        return Build.VERSION.SDK_INT >= apiLevel;
+    }
+
+    public static int getApi() {
+        return Build.VERSION.SDK_INT;
     }
 }

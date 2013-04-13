@@ -249,7 +249,11 @@ public class AppDetails extends ListActivity {
             resetRequired = false;
         }
         resetViews();
-        invalidateOptionsMenu();
+
+        if (Utils.hasApi(11)) {
+            invalidateOptionsMenu();
+        }
+
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
         }

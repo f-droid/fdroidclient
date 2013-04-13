@@ -256,7 +256,7 @@ public class FDroid extends FragmentActivity {
     }
 
     private void createTabs() {
-        if (Build.VERSION.SDK_INT >= 11) {
+        if (Utils.hasApi(11)) {
             createActionBarTabs();
         } else {
             createOldTabs();
@@ -264,7 +264,7 @@ public class FDroid extends FragmentActivity {
     }
 
     private void selectTab(int index) {
-        if (Build.VERSION.SDK_INT >= 11) {
+        if (Utils.hasApi(11)) {
             getActionBar().setSelectedNavigationItem(index);
         } else {
             tabHost.setCurrentTab(index);
@@ -274,7 +274,7 @@ public class FDroid extends FragmentActivity {
     public void refreshUpdateTabLabel() {
         final int INDEX = 2;
         CharSequence text = viewPager.getAdapter().getPageTitle(INDEX);
-        if ( Build.VERSION.SDK_INT >= 11) {
+        if (Utils.hasApi(11)) {
             getActionBar().getTabAt(INDEX).setText(text);
         } else {
              // Update the count on the 'Updates' tab to show the number available.
