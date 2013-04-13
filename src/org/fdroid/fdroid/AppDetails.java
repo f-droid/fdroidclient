@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Vector;
 
 import android.support.v4.view.MenuItemCompat;
+import org.fdroid.fdroid.compat.MenuManager;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -250,9 +251,7 @@ public class AppDetails extends ListActivity {
         }
         resetViews();
 
-        if (Utils.hasApi(11)) {
-            invalidateOptionsMenu();
-        }
+        MenuManager.create(this).invalidateOptionsMenu();
 
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
@@ -801,4 +800,5 @@ public class AppDetails extends ListActivity {
             break;
         }
     }
+
 }
