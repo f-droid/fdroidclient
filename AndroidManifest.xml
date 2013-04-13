@@ -62,6 +62,9 @@
         <activity
             android:name="ManageRepo"
             android:label="@string/menu_manage" />
+        <activity
+            android:name=".views.RepoDetailsActivity"
+            android:label="@string/menu_manage" />
         <activity android:name="Settings" />
         <activity
             android:name="AppDetails"

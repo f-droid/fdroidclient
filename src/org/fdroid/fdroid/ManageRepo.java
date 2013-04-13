@@ -19,67 +19,49 @@
 
 package org.fdroid.fdroid;
 
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
+import android.view.*;
+import android.widget.*;
+import org.fdroid.fdroid.compat.ClipboardCompat;
+import org.fdroid.fdroid.views.RepoAdapter;
+import org.fdroid.fdroid.views.RepoDetailsActivity;
+import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 public class ManageRepo extends ListActivity {
 
     private final int ADD_REPO = 1;
-    private final int REM_REPO = 2;
+
+    /**
+     * If we have a new repo added, or the address of a repo has changed, then
+     * we when we're finished, we'll set this boolean to true in the intent
+     * that we finish with, to signify that we want the main list of apps
+     * updated.
+     */
+    public static final String REQUEST_UPDATE = "update";
 
     private boolean changed = false;
 
-    private List<DB.Repo> repos;
-
-    private static List<String> reposToDisable;
-    private static List<String> reposToRemove;
-
-    public void disableRepo(String address) {
-        if (reposToDisable.contains(address)) return;
-        reposToDisable.add(address);
-    }
-
-    public void removeRepo(String address) {
-        if (reposToRemove.contains(address)) return;
-        reposToRemove.add(address);
-    }
-
-    public void removeRepos(List<String> addresses) {
-        for (String address : addresses)
-            removeRepo(address);
-    }
+    private RepoAdapter repoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.repolist);
 
+        repoAdapter = new RepoAdapter(this);
+        setListAdapter(repoAdapter);
+
+        /*
+        TODO: Find some other way to display this info, now that we use the ListView widgets...
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
 
@@ -95,69 +77,24 @@ public class ManageRepo extends ListActivity {
         }
         tv_lastCheck.setText(getString(R.string.last_update_check,s_lastUpdateCheck));
 
-        reposToRemove = new ArrayList<String>();
-        reposToDisable = new ArrayList<String>();
+        */
     }
 
     @Override
     protected void onResume() {
-
         super.onResume();
-        redraw();
-    }
-
-    private void redraw() {
-        try {
-            DB db = DB.getDB();
-            repos = db.getRepos();
-        } finally {
-            DB.releaseDB();
-        }
-
-        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-        Map<String, Object> server_line;
-
-        for (DB.Repo repo : repos) {
-            server_line = new HashMap<String, Object>();
-            server_line.put("address", repo.address);
-            if (repo.inuse) {
-                server_line.put("inuse", R.drawable.btn_check_on);
-            } else {
-                server_line.put("inuse", R.drawable.btn_check_off);
-            }
-            if (repo.pubkey != null) {
-                try {
-                    MessageDigest digest = MessageDigest.getInstance("SHA-1");
-                    digest.update(Hasher.unhex(repo.pubkey));
-                    byte[] fingerprint = digest.digest();
-                    Formatter formatter = new Formatter(new StringBuilder());
-                    formatter.format("%02X", fingerprint[0]);
-                    for (int i = 1; i < fingerprint.length; i++) {
-                        formatter.format(i % 5 == 0 ? " %02X" : ":%02X",
-                                fingerprint[i]);
-                    }
-                    server_line.put("fingerprint", formatter.toString());
-                    formatter.close();
-                } catch (Exception e) {
-                    Log.w("FDroid", "Unable to get certificate fingerprint.\n"
-                            + Log.getStackTraceString(e));
-                }
-            }
-            result.add(server_line);
-        }
-        SimpleAdapter show_out = new SimpleAdapter(this, result,
-                R.layout.repolisticons, new String[] { "address", "inuse",
-                        "fingerprint" }, new int[] { R.id.uri, R.id.img,
-                        R.id.fingerprint });
-
-        setListAdapter(show_out);
+        refreshList();
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
         super.onListItemClick(l, v, position, id);
-        try {
+
+        DB.Repo repo = (DB.Repo)getListView().getItemAtPosition(position);
+        editRepo(repo);
+
+        /*try {
             DB db = DB.getDB();
             String address = repos.get(position).address;
             db.changeServerStatus(address);
@@ -168,139 +105,160 @@ public class ManageRepo extends ListActivity {
         }
         changed = true;
         redraw();
+        repoAdapter.refresh();*/
+	}
+
+    private void refreshList() {
+        repoAdapter.refresh();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-
         super.onCreateOptionsMenu(menu);
-        MenuItem item = menu.add(Menu.NONE, ADD_REPO, 1, R.string.menu_add_repo).setIcon(
+        MenuItem addItem = menu.add(Menu.NONE, ADD_REPO, 1, R.string.menu_add_repo).setIcon(
                 android.R.drawable.ic_menu_add);
-        menu.add(Menu.NONE, REM_REPO, 2, R.string.menu_rem_repo).setIcon(
-                android.R.drawable.ic_menu_close_clear_cancel);
-        MenuItemCompat.setShowAsAction(item,
+        MenuItemCompat.setShowAsAction(addItem,
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         return true;
+    }
+
+    public static final int SHOW_REPO_DETAILS = 1;
+
+    public void editRepo(DB.Repo repo) {
+        Log.d("FDroid", "Showing details screen for repo: '" + repo + "'.");
+        Intent intent = new Intent(this, RepoDetailsActivity.class);
+        intent.putExtra(RepoDetailsFragment.ARG_REPO_ID, repo.id);
+        startActivityForResult(intent, SHOW_REPO_DETAILS);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == SHOW_REPO_DETAILS && resultCode == RESULT_OK) {
+
+            boolean wasDeleted  = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_DELETED, false);
+            boolean wasEnabled  = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_ENABLED, false);
+            boolean wasDisabled = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_DISABLED, false);
+            boolean wasChanged  = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_CHANGED, false);
+
+            if (wasDeleted) {
+                refreshList();
+            } else if (wasEnabled || wasDisabled || wasChanged) {
+                changed = true;
+            }
+        }
     }
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
         super.onMenuItemSelected(featureId, item);
-        LayoutInflater li = LayoutInflater.from(this);
 
         switch (item.getItemId()) {
         case ADD_REPO:
-            View view = li.inflate(R.layout.addrepo, null);
-            Builder p = new AlertDialog.Builder(this).setView(view);
-            final AlertDialog alrt = p.create();
-
-            alrt.setIcon(android.R.drawable.ic_menu_add);
-            alrt.setTitle(getString(R.string.repo_add_title));
-            alrt.setButton(DialogInterface.BUTTON_POSITIVE,
-                    getString(R.string.repo_add_add),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            EditText uri = (EditText) alrt
-                                    .findViewById(R.id.edit_uri);
-                            String uri_str = uri.getText().toString();
-                            try {
-                                DB db = DB.getDB();
-                                db.addRepo(uri_str, null, null, 10, null, true);
-                            } finally {
-                                DB.releaseDB();
-                            }
-                            changed = true;
-                            redraw();
-                        }
-                    });
-
-            alrt.setButton(DialogInterface.BUTTON_NEGATIVE,
-                    getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            return;
-                        }
-                    });
-            alrt.show();
-            return true;
-
-        case REM_REPO:
-            final List<String> rem_lst = new ArrayList<String>();
-            CharSequence[] b = new CharSequence[repos.size()];
-            for (int i = 0; i < repos.size(); i++) {
-                b[i] = repos.get(i).address;
-            }
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getString(R.string.repo_delete_title));
-            builder.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-            builder.setMultiChoiceItems(b, null,
-                    new DialogInterface.OnMultiChoiceClickListener() {
-                        public void onClick(DialogInterface dialog,
-                                int whichButton, boolean isChecked) {
-                            if (isChecked) {
-                                rem_lst.add(repos.get(whichButton).address);
-                            } else {
-                                rem_lst.remove(repos.get(whichButton).address);
-                            }
-                        }
-                    });
-            builder.setPositiveButton(getString(R.string.ok),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            try {
-                                DB db = DB.getDB();
-                                removeRepos(rem_lst);
-                            } finally {
-                                DB.releaseDB();
-                            }
-                            changed = true;
-                            redraw();
-                        }
-                    });
-            builder.setNegativeButton(getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            return;
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
+            promptForNewRepo();
             return true;
         }
         return true;
     }
 
+    private void createNewRepo(String uri) {
+        try {
+            DB db = DB.getDB();
+            db.addRepo(uri, null, null, 10, null, true);
+        } finally {
+            DB.releaseDB();
+        }
+        changed = true;
+        refreshList();
+    }
+
+    private void promptForNewRepo() {
+        View view = getLayoutInflater().inflate(R.layout.addrepo, null);
+        final EditText inputUri = (EditText)view.findViewById(R.id.edit_uri);
+        inputUri.setText(getNewRepoUri());
+        final AlertDialog alert = new AlertDialog.Builder(this).setView(view).create();
+
+        alert.setIcon(android.R.drawable.ic_menu_add);
+        alert.setTitle(getString(R.string.repo_add_title));
+        alert.setButton(DialogInterface.BUTTON_POSITIVE,
+                getString(R.string.repo_add_add),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        createNewRepo(inputUri.getText().toString());
+                    }
+                });
+
+        alert.setButton(DialogInterface.BUTTON_NEGATIVE,
+                getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing...
+                    }
+                });
+        alert.show();
+    }
+
+    /**
+     * If there is text in the clipboard, and it looks like a URL, use that.
+     * Otherwise return "https://".
+     */
+    private String getNewRepoUri() {
+        ClipboardCompat clipboard = ClipboardCompat.create(this);
+        String text = clipboard.getText();
+        if (text != null) {
+            try {
+                new URL(text);
+            } catch (MalformedURLException e) {
+                text = null;
+            }
+        }
+
+        if (text == null) {
+            text = "https://";
+        }
+        return text;
+    }
+
     @Override
     public void finish() {
-        if (!reposToRemove.isEmpty()) {
-            try {
-                DB db = DB.getDB();
-                db.doDisableRepos(reposToRemove, true);
-            } finally {
-                DB.releaseDB();
-            }
-            ((FDroidApp) getApplication()).invalidateAllApps();
-        }
-
-        if (!reposToDisable.isEmpty()) {
-            try {
-                DB db = DB.getDB();
-                db.doDisableRepos(reposToDisable, false);
-            } finally {
-                DB.releaseDB();
-            }
-            ((FDroidApp) getApplication()).invalidateAllApps();
-        }
-
         Intent ret = new Intent();
-        if (changed)
-            ret.putExtra("update", true);
-        this.setResult(RESULT_OK, ret);
+        if (changed) {
+            Log.i("FDroid", "Repo details have changed, prompting for update.");
+            ret.putExtra(REQUEST_UPDATE, true);
+        }
+        setResult(RESULT_OK, ret);
         super.finish();
+    }
+
+    /**
+     * NOTE: If somebody toggles a repo off then on again, it will have removed
+     * all apps from the index when it was toggled off, so when it is toggled on
+     * again, then it will require a refresh.
+     *
+     * Previously, I toyed with the idea of remembering whether they had
+     * toggled on or off, and then only actually performing the function when
+     * the activity stopped, but I think that will be problematic. What about
+     * when they press the home button, or edit a repos details? It will start
+     * to become somewhat-random as to when the actual enabling, disabling is
+     * performed.
+     *
+     * So now, it just does the disable as soon as the user clicks "Off" and
+     * then removes the apps. To compensate for the removal of apps from
+     * index, it notifies the user via a toast that the apps have been removed.
+     * Also, as before, it will still prompt the user to update the repos if
+     * you toggled on on.
+     */
+    public void setRepoEnabled(DB.Repo repo, boolean enabled) {
+        FDroidApp app = (FDroidApp)getApplication();
+        if (enabled) {
+            repo.enable(app);
+            changed = true;
+        } else {
+            repo.disable(app);
+            String notification = getString(R.string.repo_disabled_notification, repo.toString());
+            Toast.makeText(this, notification, 3000).show();
+        }
     }
 
 }

@@ -18,6 +18,9 @@
 
 package org.fdroid.fdroid;
 
+import android.os.Build;
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
@@ -25,6 +28,8 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.MessageDigest;
+import java.util.Formatter;
 
 public final class Utils {
 
@@ -118,4 +123,33 @@ public final class Utils {
         return count;
     }
 
+    public static String formatFingerprint(DB.Repo repo) {
+        return formatFingerprint(repo.pubkey);
+    }
+
+    public static String formatFingerprint(String key) {
+        String fingerprintString;
+        if (key == null) {
+            return "";
+        }
+
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-1");
+            digest.update(Hasher.unhex(key));
+            byte[] fingerprint = digest.digest();
+            Formatter formatter = new Formatter(new StringBuilder());
+            formatter.format("%02X", fingerprint[0]);
+            for (int i = 1; i < fingerprint.length; i++) {
+                formatter.format(i % 5 == 0 ? " %02X" : ":%02X",
+                        fingerprint[i]);
+            }
+            fingerprintString = formatter.toString();
+            formatter.close();
+        } catch (Exception e) {
+            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
+                    + Log.getStackTraceString(e));
+            fingerprintString = "";
+        }
+        return fingerprintString;
+    }
 }

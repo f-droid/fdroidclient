@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="25dp"
+    android:padding="8dp"
+    android:descendantFocusability="blocksDescendants">
+    <!--
+     descendantFocusability is here because if you have a child that responds
+     to touch events (in our case, the switch/toggle button) then the list item
+     itself will not respond to touch events.
+     http://syedasaraahmed.wordpress.com/2012/10/03/android-onitemclicklistener-not-responding-clickable-rowitem-of-custom-listview/
+    -->
+
+    <TextView android:id="@+id/repo_name"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView android:id="@+id/repo_not_signed"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/repo_name"
+        android:textColor="@color/unsigned"
+        android:text="@string/unsigned" />
+
+</RelativeLayout>

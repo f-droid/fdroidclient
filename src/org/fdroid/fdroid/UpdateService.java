@@ -28,35 +28,100 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlarmManager;
-import android.app.IntentService;
-import android.app.PendingIntent;
-import android.app.NotificationManager;
+import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.ResultReceiver;
-import android.os.SystemClock;
+import android.os.*;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.widget.Toast;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
     public static final String RESULT_MESSAGE = "msg";
+    public static final String RESULT_EVENT   = "event";
     public static final int STATUS_COMPLETE = 0;
-    public static final int STATUS_ERROR = 1;
-    public static final int STATUS_INFO = 2;
+    public static final int STATUS_ERROR    = 1;
+    public static final int STATUS_INFO     = 2;
 
     private ResultReceiver receiver = null;
 
     public UpdateService() {
         super("UpdateService");
+    }
+
+    // For receiving results from the UpdateService when we've told it to
+    // update in response to a user request.
+    public static class UpdateReceiver extends ResultReceiver {
+
+        private Context context;
+        private ProgressDialog dialog;
+        private ProgressListener listener;
+
+        public UpdateReceiver(Handler handler) {
+            super(handler);
+        }
+
+        public UpdateReceiver setContext(Context context) {
+            this.context = context;
+            return this;
+        }
+
+        public UpdateReceiver setDialog(ProgressDialog dialog) {
+            this.dialog = dialog;
+            return this;
+        }
+
+        public UpdateReceiver setListener(ProgressListener listener) {
+            this.listener = listener;
+            return this;
+        }
+
+        @Override
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
+            String message = resultData.getString(UpdateService.RESULT_MESSAGE);
+            boolean finished = false;
+            if (resultCode == UpdateService.STATUS_ERROR) {
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                finished = true;
+            } else if (resultCode == UpdateService.STATUS_COMPLETE) {
+                finished = true;
+            } else if (resultCode == UpdateService.STATUS_INFO) {
+                dialog.setMessage(message);
+            }
+
+            // Forward the progress event on to anybody else who'd like to know.
+            if (listener != null) {
+                Parcelable event = resultData.getParcelable(UpdateService.RESULT_EVENT);
+                if (event != null && event instanceof Event) {
+                    listener.onProgress((Event)event);
+                }
+            }
+
+            if (finished && dialog.isShowing())
+                dialog.dismiss();
+        }
+    }
+
+    public static UpdateReceiver updateNow(Context context) {
+        String title   = context.getString(R.string.process_wait_title);
+        String message = context.getString(R.string.process_update_msg);
+        ProgressDialog dialog = ProgressDialog.show(context, title, message, true, true);
+        dialog.setIcon(android.R.drawable.ic_dialog_info);
+        dialog.setCanceledOnTouchOutside(false);
+
+        Intent intent = new Intent(context, UpdateService.class);
+        UpdateReceiver receiver = new UpdateReceiver(new Handler());
+        receiver.setContext(context).setDialog(dialog);
+        intent.putExtra("receiver", receiver);
+        context.startService(intent);
+
+        return receiver;
     }
 
     // Schedule (or cancel schedule for) this service, according to the
@@ -91,10 +156,16 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     protected void sendStatus(int statusCode, String message) {
+        sendStatus(statusCode, message, null);
+    }
+
+    protected void sendStatus(int statusCode, String message, Event event) {
         if (receiver != null) {
             Bundle resultData = new Bundle();
             if (message != null && message.length() > 0)
                 resultData.putString(RESULT_MESSAGE, message);
+            if (event != null)
+                resultData.putParcelable(RESULT_EVENT, event);
             receiver.send(statusCode, resultData);
         }
     }
@@ -186,10 +257,20 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
+            if (success) {
+                DB db = DB.getDB();
+                try {
+                    db.refreshLastUpdates();
+                } finally {
+                    DB.releaseDB();
+                }
+            }
+
             List<DB.App> acceptedapps = new ArrayList<DB.App>();
             if (!changes && success) {
                 Log.d("FDroid",
-                        "Not checking app details or compatibility, because all repos were up to date.");
+                        "Not checking app details or compatibility, " +
+                                "because all repos were up to date.");
             } else if (changes && success) {
 
                 sendStatus(STATUS_INFO,

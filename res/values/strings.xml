@@ -11,6 +11,8 @@
 	<string name="n_version_available">%d version available</string>
 	<string name="notify">Notify</string>
 	<string name="storage">Storage</string>
+	<string name="edit">Edit</string>
+	<string name="delete">Delete</string>
 	<string name="cache_downloaded">Cache downloaded apps</string>
 	<string name="keep_downloaded">Keep downloaded apk files on SD card</string>
 	<string name="updates">Updates</string>
@@ -103,7 +105,7 @@
 	<string name="download_alrt">Getting application from:\n </string>
 
 	<string name="menu_update_repo">Update Repos</string>
-	<string name="menu_manage">Manage Repos</string>
+	<string name="menu_manage">Repositories</string>
 	<string name="menu_preferences">Preferences</string>
 	<string name="menu_about">About</string>
 	<string name="menu_search">Search</string>
@@ -186,5 +188,34 @@
     <string name="no_handler_app">You don\'t have any app installed that can handle %s</string>
     <string name="compactlayout">Compact Layout</string>
     <string name="compactlayout_long">Only show app names and summaries in list</string>
+    <string name="unsigned">Unsigned</string>
+    <string name="repo_url">URL</string>
+    <string name="repo_num_apps"># of apps</string>
+    <string name="repo_signature">Signature</string>
+    <string name="repo_description">Description</string>
+    <string name="repo_last_update">Last update</string>
+    <string name="repo_name">Name</string>
+    <string name="unsigned_description">This means that the list of
+        applications could not be verified. You should be careful
+        with applications downloaded from unsigned indexes.</string>
+    <string name="repo_not_yet_updated">This repository has not been used yet.
+        In order to view the apps it provides, you will need to update
+        it.\n\nOnce updated, the description and other details will
+        become available here.
+    </string>
+    <string name="repo_delete_details">Do you want to delete the \"{0}\"
+        repository, which has {1} apps in it? Any installed apps will NOT be
+        removed, but you will not be able to update them through F-Droid any
+        more.
+    </string>
+    <string name="unknown">Unknown</string>
+    <string name="repo_confirm_delete_title">Delete Repository?</string>
+    <string name="repo_confirm_delete_body">Deleting a repository means
+        apps from it will no longer be available from F-Droid.\n\nNote: All
+        previously installed apps will remain on your device.
+    </string>
+    <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
+        need to re-enable this repository to install apps from it.
+    </string>
 
 </resources>
