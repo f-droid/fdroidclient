@@ -51,8 +51,8 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {
-        getAppListManager().setCurrentCategory(parent.getItemAtPosition(pos).toString());
-        getAppListManager().repopulateLists();
+        String category = parent.getItemAtPosition(pos).toString();
+        getAppListManager().setCurrentCategory(category);
     }
 
     @Override
