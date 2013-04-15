@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-13  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
  *
  * This program is free software; you can redistribute it and/or
@@ -599,7 +599,8 @@ public class DB {
         if (getinstalledinfo) {
             Log.d("FDroid", "Reading installed packages");
             systemApks = new HashMap<String, PackageInfo>();
-            List<PackageInfo> installedPackages = mContext.getPackageManager().getInstalledPackages(0);
+            List<PackageInfo> installedPackages = mContext.getPackageManager()
+                    .getInstalledPackages(0);
             for (PackageInfo appInfo : installedPackages) {
                 systemApks.put(appInfo.packageName, appInfo);
             }
@@ -1079,10 +1080,27 @@ public class DB {
         db.insert(TABLE_REPO, null, values);
     }
 
-    public void removeServers(Vector<String> addresses) {
+    public void removeRepos(Vector<String> addresses) {
         db.beginTransaction();
         try {
             for (String address : addresses) {
+
+                // Before removing the repo, remove any apks that are
+                // connected to it...
+                Cursor c = null;
+                try {
+                    c = db.rawQuery("select id from " + TABLE_REPO
+                            + " where address = '" + address + "'", null);
+                    c.moveToFirst();
+                    if (!c.isAfterLast()) {
+                        db.delete(TABLE_APK, "repo = ?",
+                                new String[] { Integer.toString(c.getInt(0)) });
+                    }
+                } finally {
+                    if (c != null) {
+                        c.close();
+                    }
+                }
                 db.delete(TABLE_REPO, "address = ?", new String[] { address });
             }
             db.setTransactionSuccessful();

@@ -227,7 +227,7 @@ public class ManageRepo extends ListActivity {
                                 int whichButton) {
                             try {
                                 DB db = DB.getDB();
-                                db.removeServers(rem_lst);
+                                db.removeRepos(rem_lst);
                             } finally {
                                 DB.releaseDB();
                             }
