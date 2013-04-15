@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:ems="20"
         android:layout_height="wrap_content"
-        android:text="@string/repo_add_http"/>
+	android:text="https://"/>
 </LinearLayout>
 <!--
  * Copyright (C) 2009  Roberto Jacinto
