@@ -533,53 +533,76 @@ public class DB {
         return result;
     }
 
+    private static final String[] POPULATE_APP_COLS = new String[] {"description", "webURL",
+                    "trackerURL", "sourceURL", "donateURL" };
+
+    private void populateAppDetails(App app) {
+        Cursor cursor = null;
+        try {
+            cursor = db.query(TABLE_APP, POPULATE_APP_COLS, "id = ?",
+                    new String[] { app.id }, null, null, null, null);
+            cursor.moveToFirst();
+            app.detail_description = cursor.getString(0);
+            app.detail_webURL = cursor.getString(1);
+            app.detail_trackerURL = cursor.getString(2);
+            app.detail_sourceURL = cursor.getString(3);
+            app.detail_donateURL = cursor.getString(4);
+            app.detail_Populated = true;
+        } catch (Exception e) {
+            Log.d("FDroid", "Error populating app details " + app.id );
+            Log.d("FDroid", e.getMessage());
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
+    private static final String[] POPULATE_APK_COLS = new String[] { "hash", "hashType", "size", "permissions" };
+
+    private void populateApkDetails(Apk apk, int repo) {
+        if (repo == 0 || repo == apk.repo) {
+            Cursor cursor = null;
+            try {
+                cursor = db.query(
+                        TABLE_APK,
+                        POPULATE_APK_COLS,
+                        "id = ? and vercode = ?",
+                        new String[] { apk.id,
+                                Integer.toString(apk.vercode) }, null,
+                        null, null, null);
+                cursor.moveToFirst();
+                apk.detail_hash = cursor.getString(0);
+                apk.detail_hashType = cursor.getString(1);
+                apk.detail_size = cursor.getInt(2);
+                apk.detail_permissions = CommaSeparatedList.make(cursor
+                        .getString(3));
+            } catch (Exception e) {
+                Log.d("FDroid", "Error populating apk details for " + apk.id + " (version " + apk.version + ")");
+                Log.d("FDroid", e.getMessage());
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
+        } else {
+            Log.d("FDroid", "Not setting details for apk '" + apk.id + "' (version " + apk.version +") because it belongs to a different repo.");
+        }
+    }
+
     // Populate the details for the given app, if necessary.
     // If 'apkrepo' is non-zero, only apks from that repo are
     // populated (this is used during the update process)
-    public void populateDetails(App app, int apkrepo) {
-        if (app.detail_Populated)
-            return;
-        Cursor c = null;
-        try {
-            String[] cols = new String[] { "description", "webURL",
-                    "trackerURL", "sourceURL", "donateURL" };
-            c = db.query(TABLE_APP, cols, "id = ?", new String[] { app.id },
-                    null, null, null, null);
-            c.moveToFirst();
-            app.detail_description = c.getString(0);
-            app.detail_webURL = c.getString(1);
-            app.detail_trackerURL = c.getString(2);
-            app.detail_sourceURL = c.getString(3);
-            app.detail_donateURL = c.getString(4);
-            c.close();
-            c = null;
+    public void populateDetails(App app, int apkRepo) {
+        if (!app.detail_Populated) {
+            populateAppDetails(app);
+        }
 
-            cols = new String[] { "hash", "hashType", "size", "permissions" };
-            for (Apk apk : app.apks) {
-
-                if (apkrepo == 0 || apkrepo == apk.repo) {
-                    c = db.query(
-                            TABLE_APK,
-                            cols,
-                            "id = ? and vercode = ?",
-                            new String[] { apk.id,
-                                    Integer.toString(apk.vercode) }, null,
-                            null, null, null);
-                    c.moveToFirst();
-                    apk.detail_hash = c.getString(0);
-                    apk.detail_hashType = c.getString(1);
-                    apk.detail_size = c.getInt(2);
-                    apk.detail_permissions = CommaSeparatedList.make(c
-                            .getString(3));
-                    c.close();
-                    c = null;
-                }
+        for (Apk apk : app.apks) {
+            boolean isPopulated = apk.detail_hash != null;
+            if (!isPopulated) {
+                populateApkDetails(apk, apkRepo);
             }
-            app.detail_Populated = true;
-
-        } finally {
-            if (c != null)
-                c.close();
         }
     }
 
@@ -979,6 +1002,7 @@ public class DB {
         values.put("features", CommaSeparatedList.str(upapk.features));
         values.put("compatible", upapk.compatible ? 1 : 0);
         if (oldapk != null) {
+            Log.d("FDroid", "Updating apk '" + upapk.id + "' with hash '" + upapk.detail_hash + "'");
             db.update(TABLE_APK, values,
                     "id = ? and vercode = " + Integer.toString(oldapk.vercode),
                     new String[] { oldapk.id });
