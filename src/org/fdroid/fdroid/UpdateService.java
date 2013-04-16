@@ -147,6 +147,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             List<DB.App> apps = new ArrayList<DB.App>();
             List<Integer> keeprepos = new ArrayList<Integer>();
             boolean success = true;
+            boolean changes = false;
             for (DB.Repo repo : repos) {
                 if (repo.inuse) {
 
@@ -156,7 +157,11 @@ public class UpdateService extends IntentService implements ProgressListener {
                     String err = RepoXMLHandler.doUpdate(getBaseContext(),
                             repo, apps, newetag, keeprepos, this);
                     if (err == null) {
-                        repo.lastetag = newetag.toString();
+                        String nt = newetag.toString();
+                        if(!nt.equals(repo.lastetag)) {
+                            repo.lastetag = newetag.toString();
+                            changes = true;
+                        }
                     } else {
                         success = false;
                         err = "Update failed for " + repo.address + " - " + err;
@@ -169,7 +174,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
-            if (success) {
+            if (changes && success) {
                 sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
                 List<DB.App> acceptedapps = new ArrayList<DB.App>();
                 List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
@@ -239,7 +244,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             }
 
-            if (success && notify) {
+            if (success && changes && notify) {
                 Log.d("FDroid", "Updates before:" + prevUpdates + ", after: "
                         + newUpdates);
                 if (newUpdates > prevUpdates) {
