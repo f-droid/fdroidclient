@@ -215,7 +215,10 @@ public class AppListManager {
     }
 
     public void setCurrentCategory(String currentCategory) {
-        this.currentCategory = currentCategory;
+        if (!this.currentCategory.equals(currentCategory)){
+            this.currentCategory = currentCategory;
+            repopulateLists();
+        }
     }
 
     static class WhatsNewComparator implements Comparator<DB.App> {
