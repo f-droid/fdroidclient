@@ -44,8 +44,8 @@ import android.util.Log;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
-	public static final String RESULT_MESSAGE  = "msg";
-	public static final int STATUS_COMPLETE    = 0;
+    public static final String RESULT_MESSAGE  = "msg";
+    public static final int STATUS_COMPLETE    = 0;
     public static final int STATUS_ERROR       = 1;
     public static final int STATUS_INFO        = 2;
 
@@ -339,13 +339,13 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         String message = "";
         if (event.type == RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD) {
-			String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
             String downloadedSize = Utils.getFriendlySize( event.progress );
             String totalSize      = Utils.getFriendlySize( event.total );
             int percent           = (int)((double)event.progress/event.total * 100);
             message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
         } else if (event.type == RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML) {
-			String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
             message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
         }
 
