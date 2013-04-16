@@ -42,6 +42,7 @@ import javax.net.ssl.SSLHandshakeException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import android.os.Bundle;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -55,8 +56,8 @@ import android.util.Log;
 
 public class RepoXMLHandler extends DefaultHandler {
 
-    // The ID of the repo we're processing.
-    private int repo;
+    // The repo we're processing.
+    private DB.Repo repo;
 
     private Vector<DB.App> apps;
 
@@ -73,11 +74,13 @@ public class RepoXMLHandler extends DefaultHandler {
     public static final int PROGRESS_TYPE_DOWNLOAD     = 1;
     public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
 
+	public static final String PROGRESS_DATA_REPO = "repo";
+
     // The date format used in the repo XML file.
     private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private int totalAppCount;
 
-    public RepoXMLHandler(int repo, Vector<DB.App> apps, ProgressListener listener) {
+    public RepoXMLHandler(DB.Repo repo, Vector<DB.App> apps, ProgressListener listener) {
         this.repo = repo;
         this.apps = apps;
         pubkey = null;
@@ -228,28 +231,37 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.requirements = DB.CommaSeparatedList.make(str);
             }
         }
-
     }
+
+	private static Bundle createProgressData(String repoAddress) {
+		Bundle data = new Bundle();
+		data.putString(PROGRESS_DATA_REPO, repoAddress);
+		return data;
+	}
 
     @Override
     public void startElement(String uri, String localName, String qName,
             Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
-        if (localName == "repo") {
+        if (localName.equals("repo")) {
             String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
-        } else if (localName == "application" && curapp == null) {
+        } else if (localName.equals("application") && curapp == null) {
             curapp = new DB.App();
             curapp.detail_Populated = true;
+            Bundle progressData = createProgressData(repo.address);
             progressCounter ++;
-            progressListener.onProgress(RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML, progressCounter, totalAppCount);
-        } else if (localName == "package" && curapp != null && curapk == null) {
+            progressListener.onProgress(
+                new ProgressListener.Event(
+                    RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML, progressCounter,
+                    totalAppCount, progressData));
+        } else if (localName.equals("package") && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
-            curapk.repo = repo;
+            curapk.repo = repo.id;
             hashType = null;
-        } else if (localName == "hash" && curapk != null) {
+        } else if (localName.equals("hash") && curapk != null) {
             hashType = attributes.getValue("", "type");
         }
         curchars.setLength(0);
@@ -263,7 +275,8 @@ public class RepoXMLHandler extends DefaultHandler {
     // empty if none was available.
     private static int getRemoteFile(Context ctx, String url, String dest,
             String etag, StringBuilder retag,
-            ProgressListener progressListener ) throws MalformedURLException,
+            ProgressListener progressListener,
+            ProgressListener.Event progressEvent) throws MalformedURLException,
             IOException {
 
         long startTime = System.currentTimeMillis();
@@ -280,14 +293,14 @@ public class RepoXMLHandler extends DefaultHandler {
             //  - 5k   takes ~3 seconds
             // on my connection. I think the 1/1.5 seconds is worth it, because as the repo grows, the tradeoff will
             // become more worth it.
-            int size = connection.getContentLength();
-            Log.d("FDroid", "Downloading " + size + " bytes from " + url);
+            progressEvent.total = connection.getContentLength();
+            Log.d("FDroid", "Downloading " + progressEvent.total + " bytes from " + url);
             InputStream input = null;
             OutputStream output = null;
             try {
                 input = connection.getInputStream();
                 output = ctx.openFileOutput(dest, Context.MODE_PRIVATE);
-                Utils.copy(input, output, size, progressListener, PROGRESS_TYPE_DOWNLOAD);
+                Utils.copy(input, output, progressListener, progressEvent);
             } finally {
                 Utils.closeQuietly(output);
                 Utils.closeQuietly(input);
@@ -329,8 +342,11 @@ public class RepoXMLHandler extends DefaultHandler {
                     address += "?" + pi.versionName;
                 } catch (Exception e) {
                 }
+                Bundle progressData = createProgressData(repo.address);
+                ProgressListener.Event event = new ProgressListener.Event(
+                        RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD, progressData);
                 code = getRemoteFile(ctx, address, "tempindex.jar",
-                        repo.lastetag, newetag, progressListener);
+                        repo.lastetag, newetag, progressListener, event );
                 if (code == 200) {
                     String jarpath = ctx.getFilesDir() + "/tempindex.jar";
                     JarFile jar = null;
@@ -385,8 +401,12 @@ public class RepoXMLHandler extends DefaultHandler {
 
                 // It's an old-fashioned unsigned repo...
                 Log.d("FDroid", "Getting unsigned index from " + repo.address);
+                Bundle eventData = createProgressData(repo.address);
+                ProgressListener.Event event = new ProgressListener.Event(
+                        RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD, eventData);
                 code = getRemoteFile(ctx, repo.address + "/index.xml",
-                        "tempindex.xml", repo.lastetag, newetag, progressListener);
+                        "tempindex.xml", repo.lastetag, newetag,
+                        progressListener, event);
             }
 
             if (code == 200) {
@@ -394,7 +414,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 SAXParserFactory spf = SAXParserFactory.newInstance();
                 SAXParser sp = spf.newSAXParser();
                 XMLReader xr = sp.getXMLReader();
-                RepoXMLHandler handler = new RepoXMLHandler(repo.id, apps, progressListener);
+                RepoXMLHandler handler = new RepoXMLHandler(repo, apps, progressListener);
                 xr.setContentHandler(handler);
 
                 File tempIndex = new File(ctx.getFilesDir() + "/tempindex.xml");

@@ -330,16 +330,18 @@ public class UpdateService extends IntentService implements ProgressListener {
      * It could be progress downloading from the repo, or perhaps processing the info from the repo.
      */
     @Override
-    public void onProgress(int type, int progress, int total) {
+    public void onProgress(ProgressListener.Event event) {
 
         String message = "";
-        if (type == RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD) {
-            String downloadedSize = Utils.getFriendlySize( progress );
-            String totalSize      = Utils.getFriendlySize( total );
-            int percent           = (int)((double)progress/total * 100);
-            message = getString(R.string.status_download, downloadedSize, totalSize, percent);
-        } else if (type == RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML) {
-            message = getString(R.string.status_processing_xml, progress, total);
+        if (event.type == RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD) {
+			String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            String downloadedSize = Utils.getFriendlySize( event.progress );
+            String totalSize      = Utils.getFriendlySize( event.total );
+            int percent           = (int)((double)event.progress/event.total * 100);
+            message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
+        } else if (event.type == RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML) {
+			String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
         }
 
         sendStatus(STATUS_INFO, message);

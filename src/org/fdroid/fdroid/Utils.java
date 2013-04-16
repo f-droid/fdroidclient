@@ -18,18 +18,9 @@
 
 package org.fdroid.fdroid;
 
-import java.io.Closeable;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public final class Utils {
-    private Utils() {
-    }
 
     public static final int BUFFER_SIZE = 4096;
 
@@ -37,28 +28,31 @@ public final class Utils {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
 
 
-	public static void copy(InputStream input, OutputStream output)
-			throws IOException {
-		copy(input, output, -1, null, -1);
-	}
+    public static void copy(InputStream input, OutputStream output)
+            throws IOException {
+        copy(input, output, null, null);
+    }
 
-	public static void copy(InputStream input, OutputStream output, int totalSize, ProgressListener progressListener, int progressType)
-			throws IOException {
-		byte[] buffer = new byte[BUFFER_SIZE];
-		int bytesRead = 0;
-		while (true) {
-			int count = input.read(buffer);
-			if (count == -1) {
-				break;
-			}
-			if (progressListener != null) {
-				bytesRead += count;
-				progressListener.onProgress(progressType, bytesRead, totalSize);
-			}
-			output.write(buffer, 0, count);
-		}
-		output.flush();
-	}
+    public static void copy(InputStream input, OutputStream output,
+                    ProgressListener progressListener,
+                    ProgressListener.Event templateProgressEvent)
+    throws IOException {
+        byte[] buffer = new byte[BUFFER_SIZE];
+        int bytesRead = 0;
+        while (true) {
+            int count = input.read(buffer);
+            if (count == -1) {
+                break;
+            }
+            if (progressListener != null) {
+                bytesRead += count;
+                templateProgressEvent.progress = bytesRead;
+                progressListener.onProgress(templateProgressEvent);
+            }
+            output.write(buffer, 0, count);
+        }
+        output.flush();
+    }
 
     public static void closeQuietly(Closeable closeable) {
         if (closeable == null) {
