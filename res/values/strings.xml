@@ -74,7 +74,6 @@
 	<string name="download_server">Getting application from</string>
 
 	<string name="repo_add_url">Repository address</string>
-	<string name="repo_add_http">http://</string>
 
 	<string name="isinst">Installed: </string>
 
@@ -152,5 +151,17 @@
 	<string name="category_all">All</string>
 	<string name="category_whatsnew">What\'s New</string>
 	<string name="category_recentlyupdated">Recently Updated</string>
+
+    <!--
+    status_download takes four parameters:
+      - Repository (url)
+      - Downloaded size (human readable)
+      - Total size (human readable)
+      - Percentage complete (int between 0-100)
+    -->
+    <string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
+    <string name="status_processing_xml">Processing application\n%2$d of %3$d from\n%1$s</string>
+    <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
+    <string name="status_checking_compatibility">Checking all apps compatibility with your device…</string>
 
 </resources>

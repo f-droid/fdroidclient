@@ -22,9 +22,9 @@ import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import android.support.v4.view.MenuItemCompat;
+import org.fdroid.fdroid.compat.MenuManager;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -127,7 +127,7 @@ public class AppDetails extends ListActivity {
             if (apk.detail_size == 0) {
                 size.setText("");
             } else {
-                size.setText(getFriendlySize(apk.detail_size));
+                size.setText(Utils.getFriendlySize(apk.detail_size));
             }
             TextView buildtype = (TextView) v.findViewById(R.id.buildtype);
             if (apk.srcname != null) {
@@ -151,19 +151,6 @@ public class AppDetails extends ListActivity {
 
             return v;
         }
-    }
-
-    private static final String[] FRIENDLY_SIZE_FORMAT = {
-            "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
-
-    private static String getFriendlySize(int size) {
-        double s = size;
-        int i = 0;
-        while (i < FRIENDLY_SIZE_FORMAT.length - 1 && s >= 1024) {
-            s = (100 * s / 1024) / 100.0;
-            i++;
-        }
-        return String.format(FRIENDLY_SIZE_FORMAT[i], s);
     }
 
     private static final int INSTALL = Menu.FIRST;
@@ -249,7 +236,9 @@ public class AppDetails extends ListActivity {
             resetRequired = false;
         }
         resetViews();
-        invalidateOptionsMenu();
+
+        MenuManager.create(this).invalidateOptionsMenu();
+
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
         }
@@ -302,7 +291,7 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = null;
-        Vector<DB.App> apps = ((FDroidApp) getApplication()).getApps();
+        List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
         for (DB.App tapp : apps) {
             if (tapp.id.equals(appid)) {
                 app = tapp;
@@ -797,4 +786,5 @@ public class AppDetails extends ListActivity {
             break;
         }
     }
+
 }

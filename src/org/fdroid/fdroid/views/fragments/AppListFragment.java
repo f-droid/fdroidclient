@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,7 +12,6 @@ import org.fdroid.fdroid.views.AppListView;
 
 abstract class AppListFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    private AppListManager appListManager;
     private FDroid parent;
 
     protected abstract AppListAdapter getAppListAdapter();

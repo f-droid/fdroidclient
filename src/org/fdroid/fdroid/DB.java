@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2010-13  Ciaran Gultnieks, ciaran@ciarang.com
  * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
  *
  * This program is free software; you can redistribute it and/or
@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,7 +29,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 import java.util.concurrent.Semaphore;
 
 import android.annotation.TargetApi;
@@ -41,7 +41,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
@@ -116,7 +115,7 @@ public class DB {
             updated = false;
             added = null;
             lastUpdated = null;
-            apks = new Vector<Apk>();
+            apks = new ArrayList<Apk>();
             detail_Populated = false;
             compatible = false;
         }
@@ -181,7 +180,7 @@ public class DB {
         public boolean updated;
 
         // List of apks.
-        public Vector<Apk> apks;
+        public List<Apk> apks;
 
         // Get the current version - this will be one of the Apks from 'apks'.
         // Can return null if there are no available versions.
@@ -278,28 +277,23 @@ public class DB {
         // check if an APK is compatible with the user's device.
         public static abstract class CompatibilityChecker {
 
-            // Because Build.VERSION.SDK_INT requires API level 5
-            @SuppressWarnings("deprecation")
-            protected final static int SDK_INT = Integer
-                    .parseInt(Build.VERSION.SDK);
-
             public abstract boolean isCompatible(Apk apk);
 
             public static CompatibilityChecker getChecker(Context ctx) {
                 CompatibilityChecker checker;
-                if (SDK_INT >= 5)
+                if (Utils.hasApi(5))
                     checker = new EclairChecker(ctx);
                 else
                     checker = new BasicChecker();
                 Log.d("FDroid", "Compatibility checker for API level "
-                        + SDK_INT + ": " + checker.getClass().getName());
+                        + Utils.getApi() + ": " + checker.getClass().getName());
                 return checker;
             }
         }
 
         private static class BasicChecker extends CompatibilityChecker {
             public boolean isCompatible(Apk apk) {
-                return (apk.minSdkVersion <= SDK_INT);
+                return (apk.minSdkVersion <= Utils.getApi());
             }
         }
 
@@ -329,7 +323,7 @@ public class DB {
             }
 
             public boolean isCompatible(Apk apk) {
-                if (apk.minSdkVersion > SDK_INT)
+                if (apk.minSdkVersion > Utils.getApi())
                     return false;
                 if (apk.features != null) {
                     for (String feat : apk.features) {
@@ -379,6 +373,7 @@ public class DB {
     public static void resetTransient(SQLiteDatabase db) {
         db.execSQL("drop table " + TABLE_APP);
         db.execSQL("drop table " + TABLE_APK);
+        db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
         createAppApk(db);
     }
 
@@ -412,7 +407,7 @@ public class DB {
             // Migrate repo list to new structure. (No way to change primary
             // key in sqlite - table must be recreated)
             if (oldVersion < 20) {
-                Vector<Repo> oldrepos = new Vector<Repo>();
+                List<Repo> oldrepos = new ArrayList<Repo>();
                 Cursor c = db.rawQuery("select address, inuse, pubkey from "
                         + TABLE_REPO, null);
                 c.moveToFirst();
@@ -503,7 +498,7 @@ public class DB {
     // Get the number of apps that have updates available. This can be a
     // time consuming operation.
     public int getNumUpdates() {
-        Vector<App> apps = getApps(true);
+        List<App> apps = getApps(true);
         int count = 0;
         for (App app : apps) {
             if (app.hasUpdates)
@@ -512,8 +507,8 @@ public class DB {
         return count;
     }
 
-    public Vector<String> getCategories() {
-        Vector<String> result = new Vector<String>();
+    public List<String> getCategories() {
+        List<String> result = new ArrayList<String>();
         Cursor c = null;
         try {
             c = db.rawQuery("select distinct category from " + TABLE_APP
@@ -591,14 +586,15 @@ public class DB {
     // Return a list of apps matching the given criteria. Filtering is
     // also done based on compatibility and anti-features according to
     // the user's current preferences.
-    public Vector<App> getApps(boolean getinstalledinfo) {
+    public List<App> getApps(boolean getinstalledinfo) {
 
         // If we're going to need it, get info in what's currently installed
         Map<String, PackageInfo> systemApks = null;
         if (getinstalledinfo) {
             Log.d("FDroid", "Reading installed packages");
             systemApks = new HashMap<String, PackageInfo>();
-            List<PackageInfo> installedPackages = mContext.getPackageManager().getInstalledPackages(0);
+            List<PackageInfo> installedPackages = mContext.getPackageManager()
+                    .getInstalledPackages(0);
             for (PackageInfo appInfo : installedPackages) {
                 systemApks.put(appInfo.packageName, appInfo);
             }
@@ -696,7 +692,7 @@ public class DB {
                     + (System.currentTimeMillis() - startTime) + " ms)");
         }
 
-        Vector<App> result = new Vector<App>(apps.values());
+        List<App> result = new ArrayList<App>(apps.values());
         Collections.sort(result);
 
         // Fill in the hasUpdates fields if we have the necessary information...
@@ -720,9 +716,9 @@ public class DB {
         return result;
     }
 
-    public Vector<String> doSearch(String query) {
+    public List<String> doSearch(String query) {
 
-        Vector<String> ids = new Vector<String>();
+        List<String> ids = new ArrayList<String>();
         Cursor c = null;
         try {
             String filter = "%" + query + "%";
@@ -770,11 +766,11 @@ public class DB {
         }
     }
 
-    private Vector<App> updateApps = null;
+    private List<App> updateApps = null;
 
     // Called before a repo update starts. Returns the number of updates
     // available beforehand.
-    public int beginUpdate(Vector<DB.App> apps) {
+    public int beginUpdate(List<DB.App> apps) {
         // Get a list of all apps. All the apps and apks in this list will
         // have 'updated' set to false at this point, and we will only set
         // it to true when we see the app/apk in a repository. Thus, at the
@@ -865,7 +861,7 @@ public class DB {
         // compatible apk - if it's not, leave it out)
         // Also keep a list of which were compatible, because they're the
         // only ones we'll add, unless the showIncompatible preference is set.
-        Vector<Apk> compatibleapks = new Vector<Apk>();
+        List<Apk> compatibleapks = new ArrayList<Apk>();
         for (Apk apk : upapp.apks) {
             if (compatChecker.isCompatible(apk)) {
                 apk.compatible = true;
@@ -1016,8 +1012,8 @@ public class DB {
     }
 
     // Get a list of the configured repositories.
-    public Vector<Repo> getRepos() {
-        Vector<Repo> repos = new Vector<Repo>();
+    public List<Repo> getRepos() {
+        List<Repo> repos = new ArrayList<Repo>();
         Cursor c = null;
         try {
             c = db.rawQuery(
@@ -1078,10 +1074,27 @@ public class DB {
         db.insert(TABLE_REPO, null, values);
     }
 
-    public void removeServers(Vector<String> addresses) {
+    public void removeRepos(List<String> addresses) {
         db.beginTransaction();
         try {
             for (String address : addresses) {
+
+                // Before removing the repo, remove any apks that are
+                // connected to it...
+                Cursor c = null;
+                try {
+                    c = db.rawQuery("select id from " + TABLE_REPO
+                            + " where address = '" + address + "'", null);
+                    c.moveToFirst();
+                    if (!c.isAfterLast()) {
+                        db.delete(TABLE_APK, "repo = ?",
+                                new String[] { Integer.toString(c.getInt(0)) });
+                    }
+                } finally {
+                    if (c != null) {
+                        c.close();
+                    }
+                }
                 db.delete(TABLE_REPO, "address = ?", new String[] { address });
             }
             db.setTransactionSuccessful();

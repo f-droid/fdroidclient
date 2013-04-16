@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class AppListManager {
 
-    private Vector<DB.App> allApps = null;
+    private List<DB.App> allApps = null;
 
     private FDroid fdroidActivity;
 
@@ -55,7 +55,7 @@ public class AppListManager {
         // Needs to be created before createViews(), because that will use the
         // getCategoriesAdapter() accessor which expects this object...
         categories = new ArrayAdapter<String>(activity,
-                android.R.layout.simple_spinner_item, new Vector<String>());
+                android.R.layout.simple_spinner_item, new ArrayList<String>());
         categories
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     }
@@ -185,7 +185,7 @@ public class AppListManager {
         Date recentDate = calcMaxHistory();
         AppFilter appFilter = new AppFilter(fdroidActivity);
 
-        Vector<DB.App> availApps = new Vector<DB.App>();
+        List<DB.App> availApps = new ArrayList<DB.App>();
         for (DB.App app : allApps) {
 
             boolean isInCategory = isInCategory(app, currentCategory, recentDate);
@@ -215,7 +215,10 @@ public class AppListManager {
     }
 
     public void setCurrentCategory(String currentCategory) {
-        this.currentCategory = currentCategory;
+        if (!this.currentCategory.equals(currentCategory)){
+            this.currentCategory = currentCategory;
+            repopulateLists();
+        }
     }
 
     static class WhatsNewComparator implements Comparator<DB.App> {

@@ -18,7 +18,8 @@
 
 package org.fdroid.fdroid;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ListActivity;
 import android.app.SearchManager;
@@ -68,7 +69,7 @@ public class SearchResults extends ListActivity {
 
     private void updateView() {
 
-        Vector<String> matchingids = new Vector<String>();
+        List<String> matchingids = new ArrayList<String>();
         try {
             DB db = DB.getDB();
             matchingids = db.doSearch(mQuery);
@@ -78,9 +79,9 @@ public class SearchResults extends ListActivity {
             DB.releaseDB();
         }
 
-        Vector<DB.App> apps = new Vector<DB.App>();
+        List<DB.App> apps = new ArrayList<DB.App>();
         AppFilter appfilter = new AppFilter(this);
-        Vector<DB.App> tapps = ((FDroidApp) getApplication()).getApps();
+        List<DB.App> tapps = ((FDroidApp) getApplication()).getApps();
         for (DB.App tapp : tapps) {
             boolean include = false;
             for (String tid : matchingids) {

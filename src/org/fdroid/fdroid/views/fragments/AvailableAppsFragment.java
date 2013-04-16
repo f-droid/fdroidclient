@@ -1,13 +1,12 @@
 package org.fdroid.fdroid.views.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
 import org.fdroid.fdroid.AppListAdapter;
-import org.fdroid.fdroid.AppListManager;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.AppListView;
 
@@ -51,8 +50,8 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {
-        getAppListManager().setCurrentCategory(parent.getItemAtPosition(pos).toString());
-        getAppListManager().repopulateLists();
+        String category = parent.getItemAtPosition(pos).toString();
+        getAppListManager().setCurrentCategory(category);
     }
 
     @Override

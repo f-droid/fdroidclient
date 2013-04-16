@@ -18,24 +18,44 @@
 
 package org.fdroid.fdroid;
 
+import android.os.Build;
+
+import java.io.BufferedReader;
 import java.io.Closeable;
+import java.io.File;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public final class Utils {
-    private Utils() {
-    }
 
     public static final int BUFFER_SIZE = 4096;
 
+    private static final String[] FRIENDLY_SIZE_FORMAT = {
+            "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
+
+
     public static void copy(InputStream input, OutputStream output)
             throws IOException {
+        copy(input, output, null, null);
+    }
+
+    public static void copy(InputStream input, OutputStream output,
+                    ProgressListener progressListener,
+                    ProgressListener.Event templateProgressEvent)
+    throws IOException {
         byte[] buffer = new byte[BUFFER_SIZE];
+        int bytesRead = 0;
         while (true) {
             int count = input.read(buffer);
             if (count == -1) {
                 break;
+            }
+            if (progressListener != null) {
+                bytesRead += count;
+                templateProgressEvent.progress = bytesRead;
+                progressListener.onProgress(templateProgressEvent);
             }
             output.write(buffer, 0, count);
         }
@@ -52,4 +72,60 @@ public final class Utils {
             // ignore
         }
     }
+
+    public static boolean hasApi(int apiLevel) {
+        return Build.VERSION.SDK_INT >= apiLevel;
+    }
+
+    public static int getApi() {
+        return Build.VERSION.SDK_INT;
+    }
+
+    public static String getFriendlySize(int size) {
+        double s = size;
+        int i = 0;
+        while (i < FRIENDLY_SIZE_FORMAT.length - 1 && s >= 1024) {
+            s = (100 * s / 1024) / 100.0;
+            i++;
+        }
+        return String.format(FRIENDLY_SIZE_FORMAT[i], s);
+    }
+
+    public static int countSubstringOccurrence(File file, String substring) throws IOException {
+        int count = 0;
+        BufferedReader reader = null;
+        try {
+
+            reader = new BufferedReader(new FileReader(file));
+            while(true) {
+                String line = reader.readLine();
+                if (line == null) {
+                    break;
+                }
+                count += countSubstringOccurrence(line, substring);
+            }
+
+        } finally {
+            closeQuietly(reader);
+        }
+        return count;
+    }
+
+    /**
+     * Thanks to http://stackoverflow.com/a/767910
+     */
+    public static int countSubstringOccurrence(String toSearch, String substring) {
+        int count = 0;
+        int index = 0;
+        while (true) {
+            index = toSearch.indexOf(substring, index);
+            if (index == -1){
+                break;
+            }
+            count ++;
+            index += substring.length();
+        }
+        return count;
+    }
+
 }
