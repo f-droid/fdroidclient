@@ -26,7 +26,6 @@ import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -55,7 +54,7 @@ public class ManageRepo extends ListActivity {
 
     private boolean changed = false;
 
-    private Vector<DB.Repo> repos;
+    private List<DB.Repo> repos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,7 +200,7 @@ public class ManageRepo extends ListActivity {
             return true;
 
         case REM_REPO:
-            final Vector<String> rem_lst = new Vector<String>();
+            final List<String> rem_lst = new ArrayList<String>();
             CharSequence[] b = new CharSequence[repos.size()];
             for (int i = 0; i < repos.size(); i++) {
                 b[i] = repos.get(i).address;
@@ -215,9 +214,9 @@ public class ManageRepo extends ListActivity {
                         public void onClick(DialogInterface dialog,
                                 int whichButton, boolean isChecked) {
                             if (isChecked) {
-                                rem_lst.addElement(repos.get(whichButton).address);
+                                rem_lst.add(repos.get(whichButton).address);
                             } else {
-                                rem_lst.removeElement(repos.get(whichButton).address);
+                                rem_lst.remove(repos.get(whichButton).address);
                             }
                         }
                     });

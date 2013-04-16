@@ -19,7 +19,8 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import android.app.Application;
@@ -47,7 +48,7 @@ public class FDroidApp extends Application {
     }
 
     // Global list of all known applications.
-    private Vector<DB.App> apps;
+    private List<DB.App> apps;
 
     // Set when something has changed (database or installed apps) so we know
     // we should invalidate the apps.
@@ -70,7 +71,7 @@ public class FDroidApp extends Application {
     // Get a list of all known applications. Should not be called when the
     // database is locked (i.e. between DB.getDB() and db.releaseDB(). The
     // contents should never be modified, it's for reading only.
-    public Vector<DB.App> getApps() {
+    public List<DB.App> getApps() {
 
         boolean invalid = false;
         try {
@@ -95,7 +96,7 @@ public class FDroidApp extends Application {
             }
         }
         if (apps == null)
-            return new Vector<DB.App>();
+            return new ArrayList<DB.App>();
         return apps;
     }
 
