@@ -20,7 +20,10 @@ package org.fdroid.fdroid;
 
 import android.os.Build;
 
+import java.io.BufferedReader;
 import java.io.Closeable;
+import java.io.File;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;

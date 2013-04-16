@@ -1,14 +1,7 @@
 package org.fdroid.fdroid.views;
 
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import org.fdroid.fdroid.AppListManager;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.AvailableAppsFragment;

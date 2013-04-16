@@ -19,19 +19,9 @@
 
 package org.fdroid.fdroid;
 
-import android.app.ActionBar;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.support.v4.view.MenuItemCompat;
-import org.fdroid.fdroid.DB.App;
 import org.fdroid.fdroid.R;
 
-import android.R.drawable;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
@@ -44,7 +34,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
