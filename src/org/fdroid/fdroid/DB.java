@@ -278,28 +278,23 @@ public class DB {
         // check if an APK is compatible with the user's device.
         public static abstract class CompatibilityChecker {
 
-            // Because Build.VERSION.SDK_INT requires API level 5
-            @SuppressWarnings("deprecation")
-            protected final static int SDK_INT = Integer
-                    .parseInt(Build.VERSION.SDK);
-
             public abstract boolean isCompatible(Apk apk);
 
             public static CompatibilityChecker getChecker(Context ctx) {
                 CompatibilityChecker checker;
-                if (SDK_INT >= 5)
+                if (Utils.hasApi(5))
                     checker = new EclairChecker(ctx);
                 else
                     checker = new BasicChecker();
                 Log.d("FDroid", "Compatibility checker for API level "
-                        + SDK_INT + ": " + checker.getClass().getName());
+                        + Utils.getApi() + ": " + checker.getClass().getName());
                 return checker;
             }
         }
 
         private static class BasicChecker extends CompatibilityChecker {
             public boolean isCompatible(Apk apk) {
-                return (apk.minSdkVersion <= SDK_INT);
+                return (apk.minSdkVersion <= Utils.getApi());
             }
         }
 
@@ -329,7 +324,7 @@ public class DB {
             }
 
             public boolean isCompatible(Apk apk) {
-                if (apk.minSdkVersion > SDK_INT)
+                if (apk.minSdkVersion > Utils.getApi())
                     return false;
                 if (apk.features != null) {
                     for (String feat : apk.features) {

@@ -34,18 +34,17 @@ import org.fdroid.fdroid.R;
 import android.R.drawable;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,7 +52,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import android.widget.TabHost.TabSpec;
+import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
 
 public class FDroid extends FragmentActivity {
@@ -76,8 +75,7 @@ public class FDroid extends FragmentActivity {
 
     private AppListManager manager = null;
 
-    // Used by pre 3.0 devices which don't have an ActionBar...
-    private TabHost tabHost;
+    private TabManager tabManager = null;
 
     public AppListManager getManager() {
         return manager;
@@ -90,7 +88,7 @@ public class FDroid extends FragmentActivity {
         manager = new AppListManager(this);
         setContentView(R.layout.fdroid);
         createViews();
-        createTabs();
+        getTabManager().createTabs();
 
         // Must be done *after* createViews, because it will involve a
         // callback to update the tab label for the "update" tab. This
@@ -105,7 +103,7 @@ public class FDroid extends FragmentActivity {
         } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
             boolean showUpdateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
             if (showUpdateTab) {
-                selectTab(2);
+                getTabManager().selectTab(2);
             }
         }
     }
@@ -251,127 +249,7 @@ public class FDroid extends FragmentActivity {
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
-                selectTab(position);
-            }
-        });
-    }
-
-    private void createTabs() {
-        if (Build.VERSION.SDK_INT >= 11) {
-            createActionBarTabs();
-        } else {
-            createOldTabs();
-        }
-    }
-
-    private void selectTab(int index) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            getActionBar().setSelectedNavigationItem(index);
-        } else {
-            tabHost.setCurrentTab(index);
-        }
-    }
-
-    public void refreshUpdateTabLabel() {
-        final int INDEX = 2;
-        CharSequence text = viewPager.getAdapter().getPageTitle(INDEX);
-        if ( Build.VERSION.SDK_INT >= 11) {
-            getActionBar().getTabAt(INDEX).setText(text);
-        } else {
-             // Update the count on the 'Updates' tab to show the number available.
-            // This is quite unpleasant, but seems to be the only way to do it.
-            TextView textView = (TextView) tabHost.getTabWidget().getChildAt(2)
-                    .findViewById(android.R.id.title);
-            textView.setText(text);
-        }
-    }
-
-    private void createActionBarTabs() {
-        final ActionBar actionBar = getActionBar();
-        final ViewPager pager     = viewPager;
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        for (int i = 0; i < viewPager.getAdapter().getCount(); i ++) {
-            CharSequence label = viewPager.getAdapter().getPageTitle(i);
-            actionBar.addTab(
-                actionBar.newTab()
-                    .setText(label)
-                    .setTabListener(new ActionBar.TabListener() {
-                        public void onTabSelected(ActionBar.Tab tab,
-                                                  FragmentTransaction ft) {
-                            pager.setCurrentItem(tab.getPosition());
-                        }
-
-                        @Override
-                        public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                        }
-
-                        @Override
-                        public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                        }
-                    }));
-        }
-    }
-
-    /**
-     * There is a bit of boiler-plate code required to get a TabWidget showing,
-     * which includes creating a TabHost, populating it with the TabWidget,
-     * and giving it a FrameLayout as a child. This will make the tabs have
-     * dummy empty contents and then hook them up to our ViewPager.
-     */
-    private void createOldTabs() {
-        tabHost = new TabHost(this);
-        tabHost.setLayoutParams(new TabHost.LayoutParams(
-                TabHost.LayoutParams.MATCH_PARENT, TabHost.LayoutParams.WRAP_CONTENT));
-
-        TabWidget tabWidget = new TabWidget(this);
-        tabWidget.setId(android.R.id.tabs);
-        tabHost.setLayoutParams(new TabHost.LayoutParams(
-                TabWidget.LayoutParams.MATCH_PARENT, TabWidget.LayoutParams.WRAP_CONTENT));
-
-        FrameLayout layout = new FrameLayout(this);
-        layout.setId(android.R.id.tabcontent);
-        layout.setLayoutParams(new TabWidget.LayoutParams(0, 0));
-
-        tabHost.addView(tabWidget);
-        tabHost.addView(layout);
-        tabHost.setup();
-
-        TabHost.TabContentFactory factory = new TabHost.TabContentFactory() {
-            @Override
-            public View createTabContent(String tag) {
-                return new View(FDroid.this);
-            }
-        };
-
-        TabSpec availableTabSpec = tabHost.newTabSpec("available")
-                .setIndicator(
-                        getString(R.string.tab_noninstalled),
-                        getResources().getDrawable(android.R.drawable.ic_input_add))
-                .setContent(factory);
-
-        TabSpec installedTabSpec = tabHost.newTabSpec("installed")
-                .setIndicator(
-                        getString(R.string.tab_installed),
-                        getResources().getDrawable(android.R.drawable.star_off))
-                .setContent(factory);
-
-        TabSpec canUpdateTabSpec = tabHost.newTabSpec("canUpdate")
-                .setIndicator(
-                        getString(R.string.tab_updates),
-                        getResources().getDrawable(android.R.drawable.star_on))
-                .setContent(factory);
-
-        tabHost.addTab(availableTabSpec);
-        tabHost.addTab(installedTabSpec);
-        tabHost.addTab(canUpdateTabSpec);
-
-        LinearLayout contentView = (LinearLayout)findViewById(R.id.fdroid_layout);
-        contentView.addView(tabHost, 0);
-
-        tabHost.setOnTabChangedListener( new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                viewPager.setCurrentItem(tabHost.getCurrentTab());
+                getTabManager().selectTab(position);
             }
         });
     }
@@ -410,7 +288,7 @@ public class FDroid extends FragmentActivity {
         boolean hasTriedEmptyUpdate = getPreferences(MODE_PRIVATE).getBoolean(TRIED_EMPTY_UPDATE, false);
         if (!hasTriedEmptyUpdate) {
             Log.d("FDroid", "Empty app list, and we haven't done an update yet. Forcing repo update.");
-            getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true).apply();
+            getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
             updateRepos();
             return true;
         } else {
@@ -433,6 +311,17 @@ public class FDroid extends FragmentActivity {
         mUpdateReceiver = new UpdateReceiver(new Handler());
         intent.putExtra("receiver", mUpdateReceiver);
         startService(intent);
+    }
+
+    private TabManager getTabManager() {
+        if (tabManager == null) {
+            tabManager = TabManager.create(this, viewPager);
+        }
+        return tabManager;
+    }
+
+    public void refreshUpdateTabLabel() {
+        getTabManager().refreshTabLabel(TabManager.INDEX_CAN_UPDATE);
     }
 
 }

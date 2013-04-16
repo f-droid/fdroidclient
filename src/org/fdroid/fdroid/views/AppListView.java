@@ -27,10 +27,6 @@ public class AppListView extends LinearLayout {
         super(context, attrs);
     }
 
-    public AppListView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-    }
-
     public void setAppList(ListView appList) {
         this.appList = appList;
     }
