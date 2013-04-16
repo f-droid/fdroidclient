@@ -32,6 +32,7 @@ import java.net.URL;
 import java.security.cert.Certificate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -76,6 +77,8 @@ public class RepoXMLHandler extends DefaultHandler {
 
     // The date format used in the repo XML file.
     private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private static final SimpleDateFormat logDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     private int totalAppCount;
 
     public RepoXMLHandler(DB.Repo repo, List<DB.App> apps, ProgressListener listener) {
@@ -332,7 +335,8 @@ public class RepoXMLHandler extends DefaultHandler {
 
                 // This is a signed repo - we download the jar file,
                 // check the signature, and extract the index...
-                Log.d("FDroid", "Getting signed index from " + repo.address);
+                Log.d("FDroid", "Getting signed index from " + repo.address + " at " + 
+                    logDateFormat.format(new Date(System.currentTimeMillis())));
                 String address = repo.address + "/index.jar";
                 PackageManager pm = ctx.getPackageManager();
                 try {
