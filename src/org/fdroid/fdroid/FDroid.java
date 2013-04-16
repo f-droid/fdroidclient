@@ -263,13 +263,19 @@ public class FDroid extends FragmentActivity {
 
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
-            if (resultCode == 1) {
-                Toast.makeText(FDroid.this, resultData.getString("errmsg"),
-                        Toast.LENGTH_LONG).show();
-            } else {
+            String message = resultData.getString(UpdateService.RESULT_MESSAGE);
+            boolean finished = false;
+            if (resultCode == UpdateService.STATUS_ERROR) {
+                Toast.makeText(FDroid.this, message, Toast.LENGTH_LONG).show();
+                finished = true;
+            } else if (resultCode == UpdateService.STATUS_COMPLETE) {
                 repopulateViews();
+                finished = true;
+            } else if (resultCode == UpdateService.STATUS_INFO) {
+                pd.setMessage(message);
             }
-            if (pd.isShowing())
+
+            if (finished && pd.isShowing())
                 pd.dismiss();
         }
     }

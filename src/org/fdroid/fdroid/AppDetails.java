@@ -127,7 +127,7 @@ public class AppDetails extends ListActivity {
             if (apk.detail_size == 0) {
                 size.setText("");
             } else {
-                size.setText(getFriendlySize(apk.detail_size));
+                size.setText(Utils.getFriendlySize(apk.detail_size));
             }
             TextView buildtype = (TextView) v.findViewById(R.id.buildtype);
             if (apk.srcname != null) {
@@ -151,19 +151,6 @@ public class AppDetails extends ListActivity {
 
             return v;
         }
-    }
-
-    private static final String[] FRIENDLY_SIZE_FORMAT = {
-            "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
-
-    private static String getFriendlySize(int size) {
-        double s = size;
-        int i = 0;
-        while (i < FRIENDLY_SIZE_FORMAT.length - 1 && s >= 1024) {
-            s = (100 * s / 1024) / 100.0;
-            i++;
-        }
-        return String.format(FRIENDLY_SIZE_FORMAT[i], s);
     }
 
     private static final int INSTALL = Menu.FIRST;

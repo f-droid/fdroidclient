@@ -42,7 +42,14 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-public class UpdateService extends IntentService {
+public class UpdateService extends IntentService implements ProgressListener {
+
+	public static final String RESULT_MESSAGE  = "msg";
+	public static final int STATUS_COMPLETE    = 0;
+    public static final int STATUS_ERROR       = 1;
+    public static final int STATUS_INFO        = 2;
+
+    private ResultReceiver receiver = null;
 
     public UpdateService() {
         super("UpdateService");
@@ -72,24 +79,41 @@ public class UpdateService extends IntentService {
         }
     }
 
+    protected void sendStatus(int statusCode ) {
+        sendStatus(statusCode, null);
+    }
+
+    protected void sendStatus(int statusCode, String message ) {
+        if (receiver != null) {
+            Bundle resultData = new Bundle();
+            if (message != null && message.length() > 0)
+                resultData.putString(RESULT_MESSAGE, message);
+            receiver.send( statusCode, resultData );
+        }
+    }
+
+    /**
+     * We might be doing a scheduled run, or we might have been launched by
+     * the app in response to a user's request. If we have a receiver, it's
+     * the latter...
+     */
+    private boolean isScheduledRun() {
+        return receiver == null;
+    }
+
     protected void onHandleIntent(Intent intent) {
 
-        // We might be doing a scheduled run, or we might have been launched by
-        // the app in response to a user's request. If we get this receiver,
-        // it's
-        // the latter...
-        ResultReceiver receiver = intent.getParcelableExtra("receiver");
+        receiver = intent.getParcelableExtra("receiver");
 
         long startTime = System.currentTimeMillis();
         String errmsg = "";
-
         try {
 
             SharedPreferences prefs = PreferenceManager
                     .getDefaultSharedPreferences(getBaseContext());
 
             // See if it's time to actually do anything yet...
-            if (receiver == null) {
+            if (isScheduledRun()) {
                 long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
                 String sint = prefs.getString("updateInterval", "0");
                 int interval = Integer.parseInt(sint);
@@ -125,9 +149,12 @@ public class UpdateService extends IntentService {
             boolean success = true;
             for (DB.Repo repo : repos) {
                 if (repo.inuse) {
+
+                    sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
+
                     StringBuilder newetag = new StringBuilder();
                     String err = RepoXMLHandler.doUpdate(getBaseContext(),
-                            repo, apps, newetag, keeprepos);
+                            repo, apps, newetag, keeprepos, this);
                     if (err == null) {
                         repo.lastetag = newetag.toString();
                     } else {
@@ -143,9 +170,9 @@ public class UpdateService extends IntentService {
             }
 
             if (success) {
+                sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
                 List<DB.App> acceptedapps = new ArrayList<DB.App>();
-                List<DB.App> prevapps = ((FDroidApp) getApplication())
-                        .getApps();
+                List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
 
                 DB db = DB.getDB();
                 try {
@@ -235,17 +262,12 @@ public class UpdateService extends IntentService {
                 }
             }
 
-            if (receiver != null) {
-                Bundle resultData = new Bundle();
-                if (!success) {
-                    if (errmsg.length() == 0)
-                        errmsg = "Unknown error";
-                    resultData.putString("errmsg", errmsg);
-                    receiver.send(1, resultData);
-                } else {
-                    receiver.send(0, resultData);
-                }
-                
+            if (!success) {
+                if (errmsg.length() == 0)
+                    errmsg = "Unknown error";
+                sendStatus(STATUS_ERROR, errmsg);
+            } else {
+                sendStatus(STATUS_COMPLETE);
             }
 
             if(success) {
@@ -258,19 +280,15 @@ public class UpdateService extends IntentService {
             Log.e("FDroid",
                     "Exception during update processing:\n"
                             + Log.getStackTraceString(e));
-            if (receiver != null) {
-                Bundle resultData = new Bundle();
-                if (errmsg.length() == 0)
-                    errmsg = "Unknown error";
-                resultData.putString("errmsg", errmsg);
-                receiver.send(1, resultData);
-            }
+            if (errmsg.length() == 0)
+                errmsg = "Unknown error";
+            sendStatus(STATUS_ERROR, errmsg);
         } finally {
             Log.d("FDroid", "Update took "
                     + ((System.currentTimeMillis() - startTime) / 1000)
                     + " seconds.");
+            receiver = null;
         }
-
     }
 
     private void getIcon(DB.App app, List<DB.Repo> repos) {
@@ -307,4 +325,25 @@ public class UpdateService extends IntentService {
         }
     }
 
+    /**
+     * Received progress event from the RepoXMLHandler.
+     * It could be progress downloading from the repo, or perhaps processing the info from the repo.
+     */
+    @Override
+    public void onProgress(ProgressListener.Event event) {
+
+        String message = "";
+        if (event.type == RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD) {
+			String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            String downloadedSize = Utils.getFriendlySize( event.progress );
+            String totalSize      = Utils.getFriendlySize( event.total );
+            int percent           = (int)((double)event.progress/event.total * 100);
+            message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
+        } else if (event.type == RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML) {
+			String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
+        }
+
+        sendStatus(STATUS_INFO, message);
+    }
 }
