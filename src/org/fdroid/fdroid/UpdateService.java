@@ -179,7 +179,10 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
-            if (changes && success) {
+            if (!changes && success) {
+                Log.d("FDroid", "Not updating any apps, because no repos were changed.");
+            } else if (changes && success) {
+
                 sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
                 List<DB.App> acceptedapps = new ArrayList<DB.App>();
                 List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
