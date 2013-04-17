@@ -122,11 +122,13 @@ public class UpdateService extends IntentService implements ProgressListener {
                     return;
                 }
                 long elapsed = System.currentTimeMillis() - lastUpdate;
-                if (elapsed < interval * 60 * 60) {
+                if (elapsed < interval * 60 * 60 * 1000) {
                     Log.d("FDroid", "Skipping update - done " + elapsed
                             + "ms ago, interval is " + interval + " hours");
                     return;
                 }
+            } else {
+                Log.d("FDroid", "Unscheduled (manually requested) update");
             }
 
             boolean notify = prefs.getBoolean("updateNotify", false);
