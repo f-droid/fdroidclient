@@ -56,9 +56,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     // Schedule (or cancel schedule for) this service, according to the
-    // current preferences. Should be called a) at boot, or b) if the preference
-    // is changed.
-    // TODO: What if we get upgraded?
+    // current preferences. Should be called a) at boot, b) if the preference
+    // is changed, or c) on startup, in case we get upgraded.
     public static void schedule(Context ctx) {
 
         SharedPreferences prefs = PreferenceManager
@@ -76,7 +75,11 @@ public class UpdateService extends IntentService implements ProgressListener {
             alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
                     SystemClock.elapsedRealtime() + 5000,
                     AlarmManager.INTERVAL_HOUR, pending);
+            Log.d("FDroid", "Update scheduler alarm set");
+        } else {
+            Log.d("FDroid", "Update scheduler alarm not set");
         }
+
     }
 
     protected void sendStatus(int statusCode ) {
