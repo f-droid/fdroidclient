@@ -25,6 +25,7 @@ import java.util.concurrent.Semaphore;
 
 import android.app.Application;
 import android.util.Log;
+import android.content.Context;
 
 public class FDroidApp extends Application {
 
@@ -43,7 +44,9 @@ public class FDroidApp extends Application {
             icon_path.mkdir();
 
         apps = null;
-        DB.initDB(getApplicationContext());
+        Context ctx = getApplicationContext();
+        DB.initDB(ctx);
+        UpdateService.schedule(ctx);
     
     }
 
