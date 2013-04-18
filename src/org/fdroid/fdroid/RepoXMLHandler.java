@@ -285,7 +285,6 @@ public class RepoXMLHandler extends DefaultHandler {
         HttpURLConnection connection = (HttpURLConnection) u.openConnection();
         if (etag != null)
             connection.setRequestProperty("If-None-Match", etag);
-        int totalBytes = 0;
         int code = connection.getResponseCode();
         if (code == 200) {
             // Testing in the emulator for me, showed that figuring out the filesize took about 1 to 1.5 seconds.
@@ -311,8 +310,9 @@ public class RepoXMLHandler extends DefaultHandler {
             if (et != null)
                 retag.append(et);
         }
-        Log.d("FDroid", "Fetched " + url + " (" + totalBytes + " bytes) in "
-                + (System.currentTimeMillis() - startTime) + "ms");
+        Log.d("FDroid", "Fetched " + url + " (" + progressEvent.total +
+                " bytes) in " + (System.currentTimeMillis() - startTime) +
+                "ms");
         return code;
 
     }

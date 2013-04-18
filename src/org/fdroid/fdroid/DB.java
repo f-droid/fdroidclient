@@ -1002,7 +1002,6 @@ public class DB {
         values.put("features", CommaSeparatedList.str(upapk.features));
         values.put("compatible", upapk.compatible ? 1 : 0);
         if (oldapk != null) {
-            Log.d("FDroid", "Updating apk '" + upapk.id + "' with hash '" + upapk.detail_hash + "'");
             db.update(TABLE_APK, values,
                     "id = ? and vercode = " + Integer.toString(oldapk.vercode),
                     new String[] { oldapk.id });

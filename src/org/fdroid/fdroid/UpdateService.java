@@ -180,136 +180,79 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             if (!changes && success) {
-                Log.d("FDroid", "Not updating any apps, because no repos were changed.");
+                    Log.d("FDroid", "Not checking app details or compatibility, because all repos were up to date.");
             } else if (changes && success) {
 
                 sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
                 List<DB.App> acceptedapps = new ArrayList<DB.App>();
                 List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
 
-                boolean anyRepoToUpdate = false;
-                for (DB.Repo repo : repos) {
-                    boolean keepThisRepo = false;
-                    for(int repoId : keeprepos) {
-                        if (repo.id == repoId) {
-                            keepThisRepo = true;
-                            break;
-                        }
-                    }
-                    if (!keepThisRepo) {
-                        anyRepoToUpdate = true;
-                        break;
-                    }
-                }
+                DB db = DB.getDB();
+                try {
 
-                if (!anyRepoToUpdate) {
-                    Log.d("FDroid", "Not checking app details or compatibility, because all repos were up to date.");
-                } else {
-                    sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
-                    List<DB.App> acceptedapps = new ArrayList<DB.App>();
-                    List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
-
-                    DB db = DB.getDB();
-                    try {
-
-                        // Need to flag things we're keeping despite having received
-                        // no data about during the update. (i.e. stuff from a repo
-                        // that we know is unchanged due to the etag)
-
-                        // keeep repos are the unchanged ones...
-                        Log.d("FDroid", "Checking " + keeprepos.size() + " unchanged repos.");
-                        for (int keep : keeprepos) {
-
-                            // prevapps are all previous apps (and their respective apks
-                            // These *DON'T* yet have the details_hash set)...
-                            Log.d("Fdroid", "Checking '" + keep + "' repo to populate its apk details...");
-                            for (DB.App app : prevapps) {
-                                boolean keepapp = false;
-                                for (DB.Apk apk : app.apks) {
-
-                                    // only continue below if the apk is in the sqlite database,
-                                    // and belongs to one of the unchanged repos...
-
-                                    if (apk.repo == keep) {
-                                        Log.d("FDroid", "App '" + app.id + "' has apk '" + apk.id + "' which belongs to repo " + keep);
-                                        keepapp = true;
+                    // Need to flag things we're keeping despite having received
+                    // no data about during the update. (i.e. stuff from a repo
+                    // that we know is unchanged due to the etag)
+                    for (int keep : keeprepos) {
+                        for (DB.App app : prevapps) {
+                            boolean keepapp = false;
+                            for (DB.Apk apk : app.apks) {
+                                if (apk.repo == keep) {
+                                    keepapp = true;
+                                    break;
+                                }
+                            }
+                            if (keepapp) {
+                                DB.App app_k = null;
+                                for (DB.App app2 : apps) {
+                                    if (app2.id.equals(app.id)) {
+                                        app_k = app2;
                                         break;
                                     }
                                 }
-                                if (keepapp) {
-                                    DB.App app_k = null;
-
-                                    // "apps" are the ones found in the index.xml files from
-                                    // every index.xml file we came across during update...
-                                    // Not that this excludes apps from up-to-date repos (due to etag)...
-
-                                    Log.d("FDroid", "Searching through apps from index.xml to figure out if they match (the unchanged) '" + app.id + "'..." );
-                                    for (DB.App app2 : apps) {
-                                        if (app2.id.equals(app.id)) {
-
-                                            // "app_k" is the DB.App which is in an index.xml file
-                                            // that we downloaded, and also in the database, and in
-                                            // a repo which was up to date... I think...
-
-                                            Log.d("FDroid", "Found matching app '" + app2.id + "' in one of the index.xml files..." );
-                                            app_k = app2;
-                                            break;
-                                        }
-                                    }
-
-                                    // Just assign it from the "prevapps" - those
-                                    // which game straight from sqlite. In this case,
-                                    // app_k will *NOT* have hash_details set...
-
-                                    if (app_k == null) {
-
-                                        Log.d("FDroid", "Could not find matching app in index.xml files (searched " + apps.size() + " apps). Wlil just assign it from the SQLite version...");
-                                        apps.add(app);
-                                        app_k = app;
-                                    }
-                                    app_k.updated = true;
-                                    // At this point, we set the hash_details for each
-                                    // of app_k's apks...
-                                    Log.d("FDroid", "Populating details for app '" + app_k.id + "' (should set the details_hash for us)...");
-                                    db.populateDetails(app_k, keep);
-                                    for (DB.Apk apk : app.apks)
-                                        if (apk.repo == keep)
-                                            apk.updated = true;
+                                if (app_k == null) {
+                                    apps.add(app);
+                                    app_k = app;
                                 }
+                                app_k.updated = true;
+                                db.populateDetails(app_k, keep);
+                                for (DB.Apk apk : app.apks)
+                                    if (apk.repo == keep)
+                                        apk.updated = true;
                             }
                         }
-
-                        prevUpdates = db.beginUpdate(prevapps);
-                        for (DB.App app : apps) {
-                            if (db.updateApplication(app))
-                                acceptedapps.add(app);
-                        }
-                        db.endUpdate();
-                        if (notify)
-                            newUpdates = db.getNumUpdates();
-                        for (DB.Repo repo : repos)
-                            db.writeLastEtag(repo);
-                    } catch (Exception ex) {
-                        db.cancelUpdate();
-                        Log.e("FDroid", "Exception during update processing:\n"
-                                + Log.getStackTraceString(ex));
-                        errmsg = "Exception during processing - " + ex.getMessage();
-                        success = false;
-                    } finally {
-                        DB.releaseDB();
-                    }
-                    if (success) {
-                        for (DB.App app : acceptedapps)
-                            getIcon(app, repos);
-                        ((FDroidApp) getApplication()).invalidateApps();
                     }
 
+                    prevUpdates = db.beginUpdate(prevapps);
+                    for (DB.App app : apps) {
+                        if (db.updateApplication(app))
+                            acceptedapps.add(app);
+                    }
+                    db.endUpdate();
+                    if (notify)
+                        newUpdates = db.getNumUpdates();
+                    for (DB.Repo repo : repos)
+                        db.writeLastEtag(repo);
+                } catch (Exception ex) {
+                    db.cancelUpdate();
+                    Log.e("FDroid", "Exception during update processing:\n"
+                            + Log.getStackTraceString(ex));
+                    errmsg = "Exception during processing - " + ex.getMessage();
+                    success = false;
+                } finally {
+                    DB.releaseDB();
                 }
+                if (success) {
+                    for (DB.App app : acceptedapps)
+                        getIcon(app, repos);
+                    ((FDroidApp) getApplication()).invalidateApps();
+                }
+
             }
 
             if (success && changes && notify) {
-                Log.d("FDroid", "Updates before:" + prevUpdates + ", after: "
-                        + newUpdates);
+                Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
+                        + ", apps after: " + newUpdates);
                 if (newUpdates > prevUpdates) {
                     NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                     Notification notification = new Notification(
