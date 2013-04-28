@@ -489,7 +489,10 @@ public class AppDetails extends ListActivity {
                     android.R.drawable.ic_menu_view);
         }
         for (MenuItem item : toShow) {
-            MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+            MenuItemCompat.setShowAsAction(item,
+                    MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                    MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+
         }
         return true;
     }

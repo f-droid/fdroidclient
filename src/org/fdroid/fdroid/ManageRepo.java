@@ -153,7 +153,9 @@ public class ManageRepo extends ListActivity {
                 android.R.drawable.ic_menu_add);
         menu.add(Menu.NONE, REM_REPO, 2, R.string.menu_rem_repo).setIcon(
                 android.R.drawable.ic_menu_close_clear_cancel);
-        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        MenuItemCompat.setShowAsAction(item,
+                MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         return true;
     }
 
