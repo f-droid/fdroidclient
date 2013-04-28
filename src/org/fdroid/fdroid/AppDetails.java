@@ -22,8 +22,10 @@ package org.fdroid.fdroid;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import android.content.pm.PermissionInfo;
 import android.support.v4.view.MenuItemCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
@@ -223,7 +225,7 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
-        pref_permissions = prefs.getBoolean("showPermissions", true);
+        pref_permissions = prefs.getBoolean("showPermissions", false);
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
         if (old != null) {
             copyState(old);
@@ -440,10 +442,24 @@ public class AppDetails extends ListActivity {
 
         tv = (TextView) infoView.findViewById(R.id.permissions_list);
         if (pref_permissions) {
-            CommaSeparatedList permissions = app.apks.get(0).detail_permissions;
-            if (null != permissions)
-                tv.setText(permissions.toString());
-            else {
+            Iterator<String> permissions = app.apks.get(0).detail_permissions.iterator();
+            if (null != permissions && permissions.hasNext()) {
+                StringBuilder sb = new StringBuilder();
+                while(permissions.hasNext()) {
+                    String permissionName = permissions.next();
+                    try {
+                        Permission permission = new Permission(this, permissionName);
+                        sb.append(permission.getName());
+                        if (permissions.hasNext()) {
+                            sb.append('\n');
+                        }
+                    } catch (NameNotFoundException e) {
+                        Log.d( "FDroid",
+                                "Can't find permsission '" + permissionName + "'");
+                    }
+                }
+                tv.setText(sb.toString());
+            } else {
                 tv.setText("NONE");
             }
         } else {
