@@ -163,5 +163,8 @@
     <string name="status_processing_xml">Processing application\n%2$d of %3$d from\n%1$s</string>
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
     <string name="status_checking_compatibility">Checking all apps compatibility with your device…</string>
+    <string name="permissions">Permissions</string>
+    <string name="showPermissions">Show permissions</string>
+    <string name="showPermissions_long">Display a list of permissions an app needs</string>
 
 </resources>

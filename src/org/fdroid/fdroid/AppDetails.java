@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2013 Stefan Völkel, bd@bc-bd.org
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,6 +26,7 @@ import java.util.List;
 
 import android.support.v4.view.MenuItemCompat;
 import org.fdroid.fdroid.compat.MenuManager;
+import org.fdroid.fdroid.DB.CommaSeparatedList;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -205,6 +207,7 @@ public class AppDetails extends ListActivity {
 
     private boolean pref_cacheDownloaded;
     private boolean pref_expert;
+    private boolean pref_permissions;
     private boolean resetRequired;
 
     // The signature of the installed version.
@@ -220,6 +223,7 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
+        pref_permissions = prefs.getBoolean("showPermissions", true);
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
         if (old != null) {
             copyState(old);
@@ -434,6 +438,19 @@ public class AppDetails extends ListActivity {
             tv.setVisibility(View.GONE);
         }
 
+        tv = (TextView) infoView.findViewById(R.id.permissions_list);
+        if (pref_permissions) {
+            CommaSeparatedList permissions = app.apks.get(0).detail_permissions;
+            if (null != permissions)
+                tv.setText(permissions.toString());
+            else {
+                tv.setText("NONE");
+            }
+        } else {
+            tv.setVisibility(View.GONE);
+            tv = (TextView) infoView.findViewById(R.id.permissions);
+            tv.setVisibility(View.GONE);
+        }
     }
 
     @Override
