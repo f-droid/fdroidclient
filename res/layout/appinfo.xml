@@ -35,8 +35,7 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textSize="14sp"
-        android:textStyle="bold"
-        android:text="@string/permissions" />
+        android:textStyle="bold" />
     
     <TextView
         android:id="@+id/permissions_list"

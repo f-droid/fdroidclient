@@ -462,6 +462,9 @@ public class AppDetails extends ListActivity {
             } else {
                 tv.setText("NONE");
             }
+            tv = (TextView) infoView.findViewById(R.id.permissions);
+            tv.setText(getResources().getString(
+                    R.string.permissions, app.apks.get(0).version));
         } else {
             tv.setVisibility(View.GONE);
             tv = (TextView) infoView.findViewById(R.id.permissions);
