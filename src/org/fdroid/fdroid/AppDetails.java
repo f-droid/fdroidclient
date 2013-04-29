@@ -442,7 +442,8 @@ public class AppDetails extends ListActivity {
 
         tv = (TextView) infoView.findViewById(R.id.permissions_list);
         if (pref_permissions) {
-            Iterator<String> permissions = app.apks.get(0).detail_permissions.iterator();
+            CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
+            Iterator<String> permissions = permsList != null ? permsList.iterator() : null;
             if (null != permissions && permissions.hasNext()) {
                 StringBuilder sb = new StringBuilder();
                 while(permissions.hasNext()) {
