@@ -2,12 +2,17 @@ package org.fdroid.fdroid.compat;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class TabManager {
 
@@ -34,6 +39,7 @@ public abstract class TabManager {
     abstract public void createTabs();
     abstract public void selectTab(int index);
     abstract public void refreshTabLabel(int index);
+    abstract public void onConfigurationChanged(Configuration newConfig);
 
     protected CharSequence getLabel(int index) {
         return pager.getAdapter().getPageTitle(index);
@@ -127,11 +133,21 @@ class OldTabManagerImpl extends TabManager {
         textView.setText(text);
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        // Do nothing
+    }
+
 }
 
 class HoneycombTabManagerImpl extends TabManager {
 
     protected final ActionBar actionBar;
+    private Spinner actionBarSpinner = null;
+
+    // Used to make sure we only search for the action bar spinner once
+    // in each orientation.
+    private boolean dirtyConfig = true;
 
     public HoneycombTabManagerImpl(FDroid parent, ViewPager pager) {
         super(parent, pager);
@@ -164,10 +180,79 @@ class HoneycombTabManagerImpl extends TabManager {
 
     public void selectTab(int index) {
         actionBar.setSelectedNavigationItem(index);
+        Spinner actionBarSpinner = getActionBarSpinner();
+        if (actionBarSpinner != null) {
+            actionBarSpinner.setSelection(index);
+        }
     }
 
     public void refreshTabLabel(int index) {
         CharSequence text = getLabel(index);
         actionBar.getTabAt(index).setText(text);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        dirtyConfig = true;
+    }
+
+    /**
+     * Traversing the view hierarchy is a non-trivial task, and takes between 0 and 3
+     * milliseconds on my SGS i9000 (Android 4.2).
+     * As such, we lazily try to identify the spinner, and only search once per
+     * orientation change. Once we've found it, we stop looking.
+     */
+    private Spinner getActionBarSpinner() {
+        if (actionBarSpinner == null && dirtyConfig) {
+            dirtyConfig = false;
+            long time = System.currentTimeMillis();
+            actionBarSpinner = findActionBarSpinner();
+        }
+        return actionBarSpinner;
+    }
+
+    /**
+     * Dodgey hack to fix issue 231, based on the solution at
+     * http://stackoverflow.com/a/13353493
+     * Turns out that there is a bug in Android where the Spinner in the action
+     * bar (which represents the tabs if there is not enough space) is not
+     * updated when we call setSelectedNavigationItem(), and they don't expose
+     * the spinner via the API. So we go on a merry hunt for all spinners in
+     * our view, and find the first one with an id of -1.
+     * <p/>
+     * This is because the view hierarchy dictates that the action bar comes
+     * before everything below it when traversing children, and also our spinner
+     * on the first view (for the app categories) has an id, whereas the
+     * actionbar one doesn't. If that changes in future releases of android,
+     * then we will need to update the findListNavigationSpinner() method.
+     */
+    private Spinner findActionBarSpinner() {
+        View rootView = parent.findViewById(android.R.id.content).getRootView();
+        List<Spinner> spinners = traverseViewChildren((ViewGroup) rootView);
+        return findListNavigationSpinner(spinners);
+    }
+
+    private Spinner findListNavigationSpinner(List<Spinner> spinners) {
+        Spinner spinner = null;
+        if (spinners.size() > 0) {
+            Spinner first = spinners.get(0);
+            if (first.getId() == -1) {
+                spinner = first;
+            }
+        }
+        return spinner;
+    }
+
+    private List<Spinner> traverseViewChildren(ViewGroup parent) {
+        List<Spinner> spinners = new ArrayList<Spinner>();
+        for (int i = 0; i < parent.getChildCount(); i++) {
+            View child = parent.getChildAt(i);
+            if (child instanceof Spinner) {
+                spinners.add((Spinner) child);
+            } else if (child instanceof ViewGroup) {
+                spinners.addAll(traverseViewChildren((ViewGroup) child));
+            }
+        }
+        return spinners;
     }
 }

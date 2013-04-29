@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid;
 
+import android.content.res.Configuration;
 import android.support.v4.view.MenuItemCompat;
 import org.fdroid.fdroid.R;
 
@@ -105,6 +106,11 @@ public class FDroid extends FragmentActivity {
     protected void repopulateViews() {
         manager.repopulateLists();
     }
+
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		getTabManager().onConfigurationChanged(newConfig);
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
