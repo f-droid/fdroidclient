@@ -162,6 +162,6 @@
     <string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
     <string name="status_processing_xml">Processing application\n%2$d of %3$d from\n%1$s</string>
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
-    <string name="status_checking_compatibility">Checking all apps compatibility with your device…</string>
+    <string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
 
 </resources>
