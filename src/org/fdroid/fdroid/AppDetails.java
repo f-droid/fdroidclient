@@ -444,10 +444,8 @@ public class AppDetails extends ListActivity {
         if (pref_permissions) {
             CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
             if (permsList == null) {
-                StringBuilder sb = new StringBuilder(R.string.no_permissions);
-                sb.append('\n')
-                tv.setText(sb.toString());
-            else {
+                tv.setText(getString(R.string.no_permissions) + '\n');
+            } else {
                 Iterator<String> permissions = permsList.iterator();
                 StringBuilder sb = new StringBuilder();
                 while (permissions.hasNext()) {
