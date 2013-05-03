@@ -451,10 +451,7 @@ public class AppDetails extends ListActivity {
                     String permissionName = permissions.next();
                     try {
                         Permission permission = new Permission(this, permissionName);
-                        sb.append(permission.getName());
-                        if (permissions.hasNext()) {
-                            sb.append('\n');
-                        }
+                        sb.append("     • " + permission.getName() + '\n');
                     } catch (NameNotFoundException e) {
                         Log.d( "FDroid",
                                 "Can't find permsission '" + permissionName + "'");
