@@ -443,7 +443,10 @@ public class AppDetails extends ListActivity {
         tv = (TextView) infoView.findViewById(R.id.permissions_list);
         if (pref_permissions) {
             CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
-            if (permsList == null) tv.setText(R.string.no_permissions);
+            if (permsList == null) {
+                StringBuilder sb = new StringBuilder(R.string.no_permissions);
+                sb.append('\n')
+                tv.setText(sb.toString());
             else {
                 Iterator<String> permissions = permsList.iterator();
                 StringBuilder sb = new StringBuilder();
@@ -451,7 +454,7 @@ public class AppDetails extends ListActivity {
                     String permissionName = permissions.next();
                     try {
                         Permission permission = new Permission(this, permissionName);
-                        sb.append("     • " + permission.getName() + '\n');
+                        sb.append("\t• " + permission.getName() + '\n');
                     } catch (NameNotFoundException e) {
                         Log.d( "FDroid",
                                 "Can't find permsission '" + permissionName + "'");
