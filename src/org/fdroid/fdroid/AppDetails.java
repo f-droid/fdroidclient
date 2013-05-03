@@ -443,10 +443,11 @@ public class AppDetails extends ListActivity {
         tv = (TextView) infoView.findViewById(R.id.permissions_list);
         if (pref_permissions) {
             CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
-            Iterator<String> permissions = permsList != null ? permsList.iterator() : null;
-            if (null != permissions && permissions.hasNext()) {
+            if (permsList == null) tv.setText("NONE");
+            else {
+                Iterator<String> permissions = permsList.iterator();
                 StringBuilder sb = new StringBuilder();
-                while(permissions.hasNext()) {
+                while (permissions.hasNext()) {
                     String permissionName = permissions.next();
                     try {
                         Permission permission = new Permission(this, permissionName);
@@ -460,8 +461,6 @@ public class AppDetails extends ListActivity {
                     }
                 }
                 tv.setText(sb.toString());
-            } else {
-                tv.setText("NONE");
             }
             tv = (TextView) infoView.findViewById(R.id.permissions);
             tv.setText(getResources().getString(
