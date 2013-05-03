@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid;
 
+import android.content.*;
 import android.content.res.Configuration;
 import android.support.v4.view.MenuItemCompat;
 import org.fdroid.fdroid.R;
@@ -26,8 +27,6 @@ import org.fdroid.fdroid.R;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -80,10 +79,6 @@ public class FDroid extends FragmentActivity {
         createViews();
         getTabManager().createTabs();
 
-        // Must be done *after* createViews, because it will involve a
-        // callback to update the tab label for the "update" tab. This
-        // will fail unless the tabs have actually been created.
-        repopulateViews();
 
         Intent i = getIntent();
         if (i.hasExtra("uri")) {
@@ -99,10 +94,16 @@ public class FDroid extends FragmentActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
+        repopulateViews();
     }
 
+    /**
+     * Must be done *after* createViews, because it will involve a
+     * callback to update the tab label for the "update" tab. This
+     * will fail unless the tabs have actually been created.
+     */
     protected void repopulateViews() {
         manager.repopulateLists();
     }

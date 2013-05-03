@@ -120,7 +120,7 @@ public class AppListManager {
         notifyLists();
         notifyActivity();
 
-        Log.d("FDroid", "Updated lists - " + allApps.size() + " allApps in total"
+        Log.d("FDroid", "Updated lists - " + allApps.size() + " in total"
                 + " (update took " + (System.currentTimeMillis() - startTime)
                 + " ms)");
     }
