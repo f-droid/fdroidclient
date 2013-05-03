@@ -28,5 +28,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:singleLine="false" />
+    
+    <TextView
+        android:id="@+id/permissions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/permissions_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false" />
 
 </LinearLayout>

@@ -53,6 +53,7 @@
 		<CheckBoxPreference android:title="@string/ignoreTouch"
 			android:defaultValue="false" android:summary="@string/ignoreTouch_long"
 			android:key="ignoreTouchscreen" />
+		<CheckBoxPreference android:key="showPermissions" android:summary="@string/showPermissions_long" android:title="@string/showPermissions" android:defaultValue="true"/>
 			</PreferenceCategory>
 	<PreferenceCategory android:title="@string/maintenance">
 		<Preference android:title="@string/reset" android:summary="@string/clear_all_cached_data"
