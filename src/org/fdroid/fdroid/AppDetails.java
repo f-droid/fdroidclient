@@ -542,7 +542,7 @@ public class AppDetails extends ListActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s)));
         } catch (android.content.ActivityNotFoundException e) {
             Toast toast = Toast.makeText(this,
-                    "You don't have any app installed that can handle " + s, 3);
+                    String.format(getString(R.string.no_handler_app), s), 4);
             toast.show();
         }
     }
@@ -590,6 +590,7 @@ public class AppDetails extends ListActivity {
 
         // TODO: Separate donate links if there are many (e.g. paypal and
         // bitcoin) and use their link schemas if possible.
+        // http://f-droid.org/repository/issues/?do=view_issue&issue=212
         case DONATE:
             tryOpenUri(app.detail_donateURL);
             return true;

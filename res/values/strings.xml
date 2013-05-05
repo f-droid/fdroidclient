@@ -166,5 +166,6 @@
     <string name="permissions">Permissions for v%s</string>
     <string name="showPermissions">Show permissions</string>
     <string name="showPermissions_long">Display a list of permissions an app needs</string>
+    <string name="no_handler_app">You don\'t have any app installed that can handle %s</string>
 
 </resources>
