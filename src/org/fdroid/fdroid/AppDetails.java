@@ -386,7 +386,7 @@ public class AppDetails extends ListActivity {
         if (app.installedVersion == null)
             tv.setText(getString(R.string.details_notinstalled));
         else
-            tv.setText(String.format(getString(R.string.details_installed),
+            tv.setText(getString(R.string.details_installed,
                     app.installedVersion));
 
         tv = (TextView) infoView.findViewById(R.id.description);
@@ -464,7 +464,7 @@ public class AppDetails extends ListActivity {
                 tv.setText("NONE");
             }
             tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setText(getResources().getString(
+            tv.setText(getString(
                     R.string.permissions, app.apks.get(0).version));
         } else {
             tv.setVisibility(View.GONE);
@@ -542,7 +542,7 @@ public class AppDetails extends ListActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s)));
         } catch (android.content.ActivityNotFoundException e) {
             Toast toast = Toast.makeText(this,
-                    String.format(getString(R.string.no_handler_app), s), 4);
+                    getString(R.string.no_handler_app, s), 4);
             toast.show();
         }
     }
