@@ -164,8 +164,7 @@
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
     <string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
     <string name="no_permissions">No permissions are used.</string>
-    <string name="permissions">Permissions for %s</string>
-    <string name="permissions_long">Permissions for version %s</string>
+    <string name="permissions_for_long">Permissions for version %s</string>
     <string name="showPermissions">Show permissions</string>
     <string name="showPermissions_long">Display a list of permissions an app needs</string>
 

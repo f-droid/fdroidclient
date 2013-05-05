@@ -461,8 +461,8 @@ public class AppDetails extends ListActivity {
                 tv.setText(sb.toString());
             }
             tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setText(getResources().getString(
-                    R.string.permissions_long, app.apks.get(0).version));
+            tv.setText(getString(
+                    R.string.permissions_for_long, app.apks.get(0).version));
         } else {
             tv.setVisibility(View.GONE);
             tv = (TextView) infoView.findViewById(R.id.permissions);
