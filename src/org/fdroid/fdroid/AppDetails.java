@@ -386,7 +386,7 @@ public class AppDetails extends ListActivity {
         if (app.installedVersion == null)
             tv.setText(getString(R.string.details_notinstalled));
         else
-            tv.setText(String.format(getString(R.string.details_installed),
+            tv.setText(getString(R.string.details_installed,
                     app.installedVersion));
 
         tv = (TextView) infoView.findViewById(R.id.description);
@@ -499,10 +499,13 @@ public class AppDetails extends ListActivity {
             toShow.add(menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
                     android.R.drawable.ic_menu_add));
         } else {
-            toShow.add(menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch ).setIcon(
-					android.R.drawable.ic_media_play));
             menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
                     android.R.drawable.ic_menu_delete);
+
+            if (mPm.getLaunchIntentForPackage(app.id) != null) {
+                toShow.add(menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch ).setIcon(
+                        android.R.drawable.ic_media_play));
+            }
         }
         if (app.detail_webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
@@ -531,6 +534,16 @@ public class AppDetails extends ListActivity {
         return true;
     }
 
+    public void tryOpenUri(String s) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s)));
+        } catch (android.content.ActivityNotFoundException e) {
+            Toast toast = Toast.makeText(this,
+                    getString(R.string.no_handler_app, s), 4);
+            toast.show();
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -552,28 +565,31 @@ public class AppDetails extends ListActivity {
             return true;
 
         case WEBSITE:
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(app.detail_webURL)));
+            tryOpenUri(app.detail_webURL);
             return true;
 
         case ISSUES:
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(app.detail_trackerURL)));
+            tryOpenUri(app.detail_trackerURL);
             return true;
 
         case SOURCE:
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(app.detail_sourceURL)));
+            tryOpenUri(app.detail_sourceURL);
             return true;
 
         case MARKET:
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://market.android.com/details?id=" + app.id)));
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + app.id)));
+            } catch (android.content.ActivityNotFoundException e) {
+                tryOpenUri("https://play.google.com/store/apps/details?id=" + app.id);
+            }
             return true;
 
+        // TODO: Separate donate links if there are many (e.g. paypal and
+        // bitcoin) and use their link schemas if possible.
+        // http://f-droid.org/repository/issues/?do=view_issue&issue=212
         case DONATE:
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(app.detail_donateURL)));
+            tryOpenUri(app.detail_donateURL);
             return true;
 
         }
