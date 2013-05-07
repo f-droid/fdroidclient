@@ -65,6 +65,9 @@
 	<string name="tab_noninstalled">Available</string>
 	<string name="tab_updates">Updates</string>
 	<string name="update_available">Updates available</string>
+	<string name="one_update_available">1 update is available.</string>
+	<string name="many_updates_available">%d updates are available.</string>
+	<string name="fdroid_updates_available">F-Droid Updates Available</string>
 	<string name="process_wait_title">Please Wait</string>
 	<string name="process_update_msg">Updating application list...</string>
 	<string name="connection_error">Could not connect to the network.</string>
