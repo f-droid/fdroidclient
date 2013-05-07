@@ -473,12 +473,10 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         curapk = app.apks.get(position - l.getHeaderViewsCount());
-        if (app.installedVerCode != 0
-                && app.installedVerCode == curapk.vercode) {
+        if (app.installedVerCode == curapk.vercode)
             removeApk(app.id);
-        } else {
+        else
             install();
-        }
     }
 
     @Override
@@ -539,7 +537,7 @@ public class AppDetails extends ListActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s)));
         } catch (android.content.ActivityNotFoundException e) {
             Toast toast = Toast.makeText(this,
-                    getString(R.string.no_handler_app, s), 4);
+                    getString(R.string.no_handler_app, s), Toast.LENGTH_LONG);
             toast.show();
         }
     }
