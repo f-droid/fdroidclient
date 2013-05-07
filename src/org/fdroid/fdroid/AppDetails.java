@@ -473,8 +473,8 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         curapk = app.apks.get(position - l.getHeaderViewsCount());
-        if (app.installedVersion != null
-                && app.installedVersion.equals(curapk.version)) {
+        if (app.installedVerCode != 0
+                && app.installedVerCode == curapk.vercode) {
             removeApk(app.id);
         } else {
             install();
