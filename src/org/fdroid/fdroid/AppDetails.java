@@ -142,7 +142,7 @@ public class AppDetails extends ListActivity {
             TextView added = (TextView) v.findViewById(R.id.added);
             if (apk.added != null) {
                 added.setVisibility(View.VISIBLE);
-                added.setText(df.format(apk.added));
+                added.setText(getString(R.string.added_on, df.format(apk.added)));
             } else {
                 added.setVisibility(View.GONE);
             }
