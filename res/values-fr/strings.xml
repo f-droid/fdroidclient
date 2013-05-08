@@ -18,12 +18,14 @@
   <string name="maintenance">Maintenance</string>
   <string name="notify_updates_available">Notifier quand de nouvelles mises à jour sont disponibles</string>
   <string name="update_apps_list">Mettre à jour automatiquement la liste d\'applications à partir des dépôts</string>
+  <string name="update_history">Historique des mises à jour</string>
+  <string name="update_history_desc">Jours pour présenter les applications nouvelles/mises à jour</string>
   <string name="last_update_check">Dernière analyse du dépôt : %s</string>
   <string name="never">jamais</string>
   <string name="automatic_repo_scan">Balayage automatique du dépôt</string>
   <string name="app_name">F-Droid</string>
   <string name="about_title">À propos de F-Droid</string>
-  <string name="about_desc">Originellement basée sur Aptoide.\nPublié sous licence GNU GPL v2.</string>
+  <string name="about_desc">Originellement basée sur Aptoide.\nPubliée sous licence GNU GPL v3.</string>
   <string name="about_site">Site Web :</string>
   <string name="about_mail">Courriel:</string>
   <string name="about_version">Version:</string>

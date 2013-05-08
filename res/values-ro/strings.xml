@@ -16,6 +16,7 @@
   <string name="maintenance">Mentenanta</string>
   <string name="notify_updates_available">Notificare cand exista versiuni noi</string>
   <string name="update_apps_list">Actualizare aplicatie automata</string>
+  <string name="update_history">Actualizare depozit aplicatii</string>
   <string name="automatic_repo_scan">Scanare versiuni noi</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Despre FDroid</string>

@@ -1,2 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources/>
+<resources>
+  <string name="searchres_napps">عثر على %1$d تطبيق يوافق \'%2$s\':</string>
+  <string name="searchres_oneapp">عثر على تطبيق واحد يوافق \'%s\':</string>
+  <string name="searchres_noapps">لم يعثر على أي تطبيق يوافق \'%s\'</string>
+  <string name="installIncompatible">أندرويد يقول أن هذه الحزمة ليست متوافقة مع جهازك. هل تريد التجريب و تثبيتها على أي حال؟</string>
+  <string name="version">الإصدار</string>
+  <string name="n_versions_available">%d إصدار متوفر</string>
+</resources>

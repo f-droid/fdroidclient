@@ -17,6 +17,7 @@
   <string name="maintenance">Verwaltung</string>
   <string name="notify_updates_available">Bei Aktualisierungen benachrichtigen</string>
   <string name="update_apps_list">Anwendungsliste automatisch aktualisieren</string>
+  <string name="update_history">Archive aktualisieren</string>
   <string name="automatic_repo_scan">Automatische Archivkontrolle</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Über FDroid</string>

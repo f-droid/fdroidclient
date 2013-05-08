@@ -17,6 +17,7 @@
   <string name="maintenance">Manutenzione</string>
   <string name="notify_updates_available">Avvisa quando sono disponibili nuovi aggiornamenti</string>
   <string name="update_apps_list">Aggiorna automaticamente l\'elenco applicazioni</string>
+  <string name="update_history">Aggiorna le repository</string>
   <string name="automatic_repo_scan">Scansione repository automatica</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">Informazioni</string>

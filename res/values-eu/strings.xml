@@ -18,6 +18,7 @@
   <string name="maintenance">Mantentzea</string>
   <string name="notify_updates_available">Jakinarazi eguneraketa berriak eskuragarri daudenean</string>
   <string name="update_apps_list">Eguneratu aplikazio-zerrenda biltegiarekin automatikoki</string>
+  <string name="update_history">Eguneratu biltegiak</string>
   <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
   <string name="never">inoiz ez</string>
   <string name="automatic_repo_scan">Eskaneatu biltegiak automatikoki</string>

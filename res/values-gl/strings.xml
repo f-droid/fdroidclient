@@ -18,6 +18,7 @@
   <string name="maintenance">Mantemento</string>
   <string name="notify_updates_available">Enviar notificación cando estean dispoñíbeis novas actualizacións</string>
   <string name="update_apps_list">"Actualizar a lista de apps do repositorio automaticamente "</string>
+  <string name="update_history">Actualizar repositorios</string>
   <string name="last_update_check">Último escaneado do repo: %s</string>
   <string name="never">nunca</string>
   <string name="automatic_repo_scan">Escaneado automático do repo</string>

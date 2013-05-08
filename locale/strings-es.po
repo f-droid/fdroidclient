@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-04-12 14:49+0100\n"
-"PO-Revision-Date: 2013-03-24 19:11+0200\n"
+"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"PO-Revision-Date: 2013-04-19 13:04+0200\n"
 "Last-Translator: larjona <larjona99@gmail.com>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -105,14 +105,13 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Actualizar la lista de programas desde los repositorios automáticamente"
 
-#, fuzzy
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Actualizar repositorios"
+msgstr "Actualizar historial"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr ""
+msgstr "Días para mostrar apps nuevas/actualizadas"
 
 #, c-format
 msgctxt "last_update_check"
@@ -135,14 +134,13 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Acerca de F-Droid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Basado originalmente en Aptoide.\n"
-"Publicado bajo la licencia GNU GPLv2."
+"Publicado bajo la licencia GNU GPLv3."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -500,4 +498,56 @@ msgstr "Novedades"
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Recientemente actualizados"
+
+#. status_download takes four parameters:       - Repository (url)       -
+#. Downloaded size (human readable)       - Total size (human readable)       -
+#. Percentage complete (int between 0-100)
+#, c-format
+msgctxt "status_download"
+msgid ""
+"Downloading\n"
+"%2$s / %3$s (%4$d%%) from\n"
+"%1$s"
+msgstr ""
+
+#, fuzzy, c-format
+msgctxt "status_processing_xml"
+msgid ""
+"Processing application\n"
+"%2$d of %3$d from\n"
+"%1$s"
+msgstr "Obteniendo el programa de:\n"
+
+#, c-format
+msgctxt "status_connecting_to_repo"
+msgid ""
+"Connecting to\n"
+"%1$s"
+msgstr ""
+
+msgctxt "status_checking_compatibility"
+msgid "Checking apps compatibility with your device…"
+msgstr ""
+
+msgctxt "no_permissions"
+msgid "No permissions are used."
+msgstr ""
+
+#, c-format
+msgctxt "permissions_for_long"
+msgid "Permissions for version %s"
+msgstr ""
+
+msgctxt "showPermissions"
+msgid "Show permissions"
+msgstr ""
+
+msgctxt "showPermissions_long"
+msgid "Display a list of permissions an app needs"
+msgstr ""
+
+#, c-format
+msgctxt "no_handler_app"
+msgid "You don't have any app installed that can handle %s"
+msgstr ""
 

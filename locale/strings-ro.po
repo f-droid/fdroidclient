@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-04-12 14:49+0100\n"
+"POT-Creation-Date: 2013-05-08 12:06+0100\n"
 "PO-Revision-Date: 2012-04-24 11:14+0200\n"
 "Last-Translator: sgmif <android@sgmif.eu>\n"
 "Language-Team: ro <LL@li.org>\n"
@@ -490,5 +490,57 @@ msgstr ""
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
+msgstr ""
+
+#. status_download takes four parameters:       - Repository (url)       -
+#. Downloaded size (human readable)       - Total size (human readable)       -
+#. Percentage complete (int between 0-100)
+#, c-format
+msgctxt "status_download"
+msgid ""
+"Downloading\n"
+"%2$s / %3$s (%4$d%%) from\n"
+"%1$s"
+msgstr ""
+
+#, c-format
+msgctxt "status_processing_xml"
+msgid ""
+"Processing application\n"
+"%2$d of %3$d from\n"
+"%1$s"
+msgstr ""
+
+#, c-format
+msgctxt "status_connecting_to_repo"
+msgid ""
+"Connecting to\n"
+"%1$s"
+msgstr ""
+
+msgctxt "status_checking_compatibility"
+msgid "Checking apps compatibility with your device…"
+msgstr ""
+
+msgctxt "no_permissions"
+msgid "No permissions are used."
+msgstr ""
+
+#, c-format
+msgctxt "permissions_for_long"
+msgid "Permissions for version %s"
+msgstr ""
+
+msgctxt "showPermissions"
+msgid "Show permissions"
+msgstr ""
+
+msgctxt "showPermissions_long"
+msgid "Display a list of permissions an app needs"
+msgstr ""
+
+#, c-format
+msgctxt "no_handler_app"
+msgid "You don't have any app installed that can handle %s"
 msgstr ""
 

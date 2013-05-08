@@ -18,6 +18,7 @@
   <string name="maintenance">Konserwacja</string>
   <string name="notify_updates_available">Powiadamiaj, gdy dostępne będą nowe aktualizacje</string>
   <string name="update_apps_list">Automatycznie uaktualnij listę aplikacji z repozytorium</string>
+  <string name="update_history">Aktualizuj repozytoria</string>
   <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
   <string name="never">nigdy</string>
   <string name="automatic_repo_scan">Automatycznie skanuj repozytoria</string>

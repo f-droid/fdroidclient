@@ -4,6 +4,7 @@
   <string name="searchres_oneapp">S\'ha trobat una aplicació coincident amb \'%s\':</string>
   <string name="searchres_noapps">No hi ha aplicacions coincidents amb \'%s\':</string>
   <string name="SignatureMismatch">La nova versió està signada amb una clau diferent de la vella. Per tal d\'instal·lar la nova versió, cal desinstal·lar primer la vella. Si us plau feu-ho i torneu-ho a intentar. (Sapigueu que desintal·lar-la suprimirà qualsevol dada interna que l\'aplicació hagi desat)</string>
+  <string name="installIncompatible">Sembla que aquest paquet no és compatible amb el vostre dispositiu. Tot i així voleu provar d\'instal·lar-ho?</string>
   <string name="version">Versió</string>
   <string name="n_versions_available">Hi ha %d versions disponibles</string>
   <string name="n_version_available">Hi ha %d versió disponible</string>
@@ -17,10 +18,14 @@
   <string name="maintenance">Manteniment</string>
   <string name="notify_updates_available">Avisa\'m quan hi hagi noves actualitzacions</string>
   <string name="update_apps_list">Actualitza de forma automàtica la llista d\'aplicacions des dels dipòsits</string>
+  <string name="update_history">Actualitzacions</string>
+  <string name="update_history_desc">Mostra les aplicacions noves o actualitzades cada tans dies</string>
+  <string name="last_update_check">Darrera actualització dels dipòsits: %s</string>
+  <string name="never">mai</string>
   <string name="automatic_repo_scan">Actualitza automàtica dels dipòsits</string>
-  <string name="app_name">Fdroid</string>
+  <string name="app_name">F-droid</string>
   <string name="about_title">Quant a FDroid</string>
-  <string name="about_desc">Originalment basat en Aptoide.\nPublicat amb la llicència GNU GPL v2.</string>
+  <string name="about_desc">Originalment basat en Aptoide.\nPublicat amb la llicència GNU GPL v3.</string>
   <string name="about_site">Pàgina web:</string>
   <string name="about_mail">Correu:</string>
   <string name="about_version">Versió:</string>
@@ -64,6 +69,7 @@
   <string name="menu_search">Cerca</string>
   <string name="menu_add_repo">Nou dipòsit</string>
   <string name="menu_rem_repo">Suprimeix el dipòsit</string>
+  <string name="menu_launch">Executa</string>
   <string name="menu_install">Instal·la</string>
   <string name="menu_uninstall">Desinstal·la</string>
   <string name="menu_website">Pàgina web</string>
@@ -98,5 +104,9 @@
   <string name="showincompat_long">Mostra les aplicacions escrites per a versions posteriors d\'Android o per a maquinari diferent</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Mostra aplicacions que necessiten privilegis de roor</string>
-  <string name="category_all">Instal·la</string>
+  <string name="ignoreTouch">Ignora la Touchscreen</string>
+  <string name="ignoreTouch_long">Inclou sempre les aplicacions que necesiten de la touchscreen</string>
+  <string name="category_all">Tot</string>
+  <string name="category_whatsnew">Novetats</string>
+  <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
 </resources>

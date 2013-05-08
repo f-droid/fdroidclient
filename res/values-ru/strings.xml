@@ -18,6 +18,7 @@
   <string name="maintenance">Поддержка</string>
   <string name="notify_updates_available">Сообщать при появлении обновлений</string>
   <string name="update_apps_list">Обновлять список приложений автоматически</string>
+  <string name="update_history">Обновить репозитории</string>
   <string name="last_update_check">Обновлено: %s</string>
   <string name="never">никогда</string>
   <string name="automatic_repo_scan">Автоматически сканировать репозиторий</string>

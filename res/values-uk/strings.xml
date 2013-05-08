@@ -18,6 +18,7 @@
   <string name="maintenance">Серйозні справи</string>
   <string name="notify_updates_available">Сповіщати про наявність оновлень</string>
   <string name="update_apps_list">Автоматично оновлювати список програм із репозиторію</string>
+  <string name="update_history">Оновити репозиторії?</string>
   <string name="last_update_check">Синхронізовано: %s</string>
   <string name="never">ніколи</string>
   <string name="automatic_repo_scan">Синхронізація</string>

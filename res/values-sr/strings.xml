@@ -17,6 +17,7 @@
   <string name="maintenance">Одржавање</string>
   <string name="notify_updates_available">Обавести кад су нове верзије на располагању</string>
   <string name="update_apps_list">Аутоматски ажурирај листу апликација</string>
+  <string name="update_history">Ажурирај ризнице</string>
   <string name="automatic_repo_scan">Аутоматско скенирање ризница</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">О FDroid-у</string>

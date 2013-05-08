@@ -17,6 +17,7 @@
   <string name="maintenance">Vzdrževanje</string>
   <string name="notify_updates_available">Opozori na posodobitve</string>
   <string name="update_apps_list">Samodejno posodobi spisek aplikacij iz skladišč</string>
+  <string name="update_history">Posodobi skladišča</string>
   <string name="automatic_repo_scan">Samodejni pregled skladišč</string>
   <string name="app_name">FDroid</string>
   <string name="about_title">O programu</string>

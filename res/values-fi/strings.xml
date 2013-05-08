@@ -18,6 +18,7 @@
   <string name="maintenance">Huolto</string>
   <string name="notify_updates_available">Ilmoita kun uusia päivityksiä on saatavilla</string>
   <string name="update_apps_list">Päivitä sovelluslista sovelluslähteistä automaattisesti</string>
+  <string name="update_history">Päivitä sovelluslähteet</string>
   <string name="last_update_check">Viimeisin sovelluslähteiden skannaus: %s</string>
   <string name="never">ei koskaan</string>
   <string name="automatic_repo_scan">Automaattinen sovelluslähteen skannaus</string>

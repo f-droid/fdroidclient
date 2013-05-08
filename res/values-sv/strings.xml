@@ -18,6 +18,7 @@
   <string name="maintenance">Underhåll</string>
   <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
   <string name="update_apps_list">Uppdatera programlistan från förråd automatiskt</string>
+  <string name="update_history">Uppdatera förråd</string>
   <string name="last_update_check">Senaste förrådsavsökning: %s</string>
   <string name="never">aldrig</string>
   <string name="automatic_repo_scan">Automatisk förrådsavsökning</string>

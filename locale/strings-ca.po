@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-04-12 14:49+0100\n"
-"PO-Revision-Date: 2012-05-05 20:56+0200\n"
+"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"PO-Revision-Date: 2013-04-13 12:04+0200\n"
 "Last-Translator: Paco <web@pacoriviere.cat>\n"
 "Language-Team: ca <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -48,6 +48,8 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Sembla que aquest paquet no és compatible amb el vostre dispositiu. Tot i"
+" així voleu provar d'instal·lar-ho?"
 
 msgctxt "version"
 msgid "Version"
@@ -103,46 +105,42 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Actualitza de forma automàtica la llista d'aplicacions des dels dipòsits"
 
-#, fuzzy
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Actualitza els dipòsits"
+msgstr "Actualitzacions"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr ""
+msgstr "Mostra les aplicacions noves o actualitzades cada tans dies"
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Darrera actualització dels dipòsits: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "mai"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Actualitza automàtica dels dipòsits"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "Fdroid"
+msgstr "F-droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Quant a FDroid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Originalment basat en Aptoide.\n"
-"Publicat amb la llicència GNU GPL v2."
+"Publicat amb la llicència GNU GPL v3."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -310,7 +308,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "S'està obtenint l'aplicació des de: \n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Actualitza els dipòsits"
@@ -341,7 +338,7 @@ msgstr "Suprimeix el dipòsit"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Executa"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -484,22 +481,73 @@ msgstr "Mostra aplicacions que necessiten privilegis de roor"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Ignora la Touchscreen"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Inclou sempre les aplicacions que necesiten de la touchscreen"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Instal·la"
+msgstr "Tot"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Novetats"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
+msgstr "S'ha actualitzat fa poc"
+
+#. status_download takes four parameters:       - Repository (url)       -
+#. Downloaded size (human readable)       - Total size (human readable)       -
+#. Percentage complete (int between 0-100)
+#, c-format
+msgctxt "status_download"
+msgid ""
+"Downloading\n"
+"%2$s / %3$s (%4$d%%) from\n"
+"%1$s"
+msgstr ""
+
+#, fuzzy, c-format
+msgctxt "status_processing_xml"
+msgid ""
+"Processing application\n"
+"%2$d of %3$d from\n"
+"%1$s"
+msgstr "S'està obtenint l'aplicació des de: \n"
+
+#, c-format
+msgctxt "status_connecting_to_repo"
+msgid ""
+"Connecting to\n"
+"%1$s"
+msgstr ""
+
+msgctxt "status_checking_compatibility"
+msgid "Checking apps compatibility with your device…"
+msgstr ""
+
+msgctxt "no_permissions"
+msgid "No permissions are used."
+msgstr ""
+
+#, c-format
+msgctxt "permissions_for_long"
+msgid "Permissions for version %s"
+msgstr ""
+
+msgctxt "showPermissions"
+msgid "Show permissions"
+msgstr ""
+
+msgctxt "showPermissions_long"
+msgid "Display a list of permissions an app needs"
+msgstr ""
+
+#, c-format
+msgctxt "no_handler_app"
+msgid "You don't have any app installed that can handle %s"
 msgstr ""
 

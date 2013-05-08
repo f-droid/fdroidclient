@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-04-12 14:49+0100\n"
-"PO-Revision-Date: 2013-03-24 17:36+0200\n"
+"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"PO-Revision-Date: 2013-04-29 13:53+0200\n"
 "Last-Translator: Cárlisson <cg@bardo.ws>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
@@ -105,14 +105,13 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositórios"
 
-#, fuzzy
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Atualizar repositórios"
+msgstr "Atualizar histórico"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr ""
+msgstr "Dias para mostrar apps novos/atualizados"
 
 #, c-format
 msgctxt "last_update_check"
@@ -135,14 +134,13 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Sobre o F-Droid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Baseado originalmente no Aptoide.\n"
-"Lançado sob a licença GNU GPLv2."
+"Lançado sob a licença GNU GPLv3."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -310,7 +308,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Pegando aplicação de:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Atualizar repositórios"
@@ -501,4 +498,56 @@ msgstr "O que há de novo"
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Atualizado Recentemente"
+
+#. status_download takes four parameters:       - Repository (url)       -
+#. Downloaded size (human readable)       - Total size (human readable)       -
+#. Percentage complete (int between 0-100)
+#, c-format
+msgctxt "status_download"
+msgid ""
+"Downloading\n"
+"%2$s / %3$s (%4$d%%) from\n"
+"%1$s"
+msgstr ""
+
+#, fuzzy, c-format
+msgctxt "status_processing_xml"
+msgid ""
+"Processing application\n"
+"%2$d of %3$d from\n"
+"%1$s"
+msgstr "Pegando aplicação de:\n"
+
+#, c-format
+msgctxt "status_connecting_to_repo"
+msgid ""
+"Connecting to\n"
+"%1$s"
+msgstr ""
+
+msgctxt "status_checking_compatibility"
+msgid "Checking apps compatibility with your device…"
+msgstr ""
+
+msgctxt "no_permissions"
+msgid "No permissions are used."
+msgstr ""
+
+#, c-format
+msgctxt "permissions_for_long"
+msgid "Permissions for version %s"
+msgstr ""
+
+msgctxt "showPermissions"
+msgid "Show permissions"
+msgstr ""
+
+msgctxt "showPermissions_long"
+msgid "Display a list of permissions an app needs"
+msgstr ""
+
+#, c-format
+msgctxt "no_handler_app"
+msgid "You don't have any app installed that can handle %s"
+msgstr ""
 

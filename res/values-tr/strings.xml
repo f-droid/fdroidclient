@@ -18,6 +18,7 @@
   <string name="maintenance">Bakım</string>
   <string name="notify_updates_available">Yeni güncellemeler olduğunu bildir</string>
   <string name="update_apps_list">Uygulama listesini depolardan otomatik olarak güncelle</string>
+  <string name="update_history">Depoları güncelle</string>
   <string name="last_update_check">Son depo analizi: %s</string>
   <string name="never">asla</string>
   <string name="automatic_repo_scan">Otomatik depo taraması</string>
