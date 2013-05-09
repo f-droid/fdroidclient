@@ -475,7 +475,26 @@ public class AppDetails extends ListActivity {
         curapk = app.apks.get(position - l.getHeaderViewsCount());
         if (app.installedVerCode == curapk.vercode)
             removeApk(app.id);
-        else
+        else if (app.installedVerCode > curapk.vercode) {
+            AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
+            ask_alrt.setMessage(getString(R.string.installDowngrade));
+            ask_alrt.setPositiveButton(getString(R.string.yes),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                            install();
+                        }
+                    });
+            ask_alrt.setNegativeButton(getString(R.string.no),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                            return;
+                        }
+                    });
+            AlertDialog alert = ask_alrt.create();
+            alert.show();
+        } else
             install();
     }
 
