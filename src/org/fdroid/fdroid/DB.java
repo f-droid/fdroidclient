@@ -398,6 +398,16 @@ public class DB {
             values.put("priority", 10);
             values.put("lastetag", (String) null);
             db.insert(TABLE_REPO, null, values);
+
+            values = new ContentValues();
+            values.put("address",
+                    mContext.getString(R.string.default_repo_address2));
+            values.put("pubkey",
+                    mContext.getString(R.string.default_repo_pubkey));
+            values.put("inuse", 0);
+            values.put("priority", 20);
+            values.put("lastetag", (String) null);
+            db.insert(TABLE_REPO, null, values);
         }
 
         @Override
