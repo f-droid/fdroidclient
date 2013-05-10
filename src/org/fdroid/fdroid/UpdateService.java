@@ -254,20 +254,27 @@ public class UpdateService extends IntentService implements ProgressListener {
                 Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
                         + ", apps after: " + newUpdates);
                 if (newUpdates > prevUpdates) {
-                    NotificationManager n = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    Notification notification = new Notification(
-                            R.drawable.icon, "F-Droid Updates Available",
+                    NotificationManager n = (NotificationManager) getSystemService(
+                            Context.NOTIFICATION_SERVICE);
+                    Notification notification = new Notification(R.drawable.icon,
+                            getString(R.string.fdroid_updates_available),
                             System.currentTimeMillis());
                     Context context = getApplicationContext();
-                    CharSequence contentTitle = "F-Droid";
-                    CharSequence contentText = "Updates are available.";
                     Intent notificationIntent = new Intent(UpdateService.this,
                             FDroid.class);
                     notificationIntent.putExtra(FDroid.EXTRA_TAB_UPDATE, true);
                     PendingIntent contentIntent = PendingIntent.getActivity(
                             UpdateService.this, 0, notificationIntent, 0);
-                    notification.setLatestEventInfo(context, contentTitle,
-                            contentText, contentIntent);
+                    CharSequence notification_text;
+                    if (newUpdates > 1)
+                        notification_text = getString(
+                                R.string.many_updates_available, newUpdates);
+                    else
+                        notification_text = getString(
+                                R.string.one_update_available);
+                    notification.setLatestEventInfo(context,
+                        getString(R.string.app_name),
+                        notification_text, contentIntent);
                     notification.flags |= Notification.FLAG_AUTO_CANCEL;
                     n.notify(1, notification);
                 }
