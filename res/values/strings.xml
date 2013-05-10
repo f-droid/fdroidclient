@@ -44,7 +44,10 @@
 		like
 		this: http://f-droid.org/repo</string>
 
+	<string name="inst">Installed</string>
 	<string name="not_inst">Not Installed</string>
+
+    <string name="added_on">Added on %s</string>
 
 	<string name="installed_update">Update possible - Ver.:</string>
 
@@ -117,7 +120,6 @@
 
 	<string name="details_installed">Version %s installed</string>
 	<string name="details_notinstalled">Not installed</string>
-	<string name="inst">Installed</string>
 	<string name="corrupt_download">Downloaded file is corrupt</string>
         <string name="download_cancelled">Download cancelled</string>
 
