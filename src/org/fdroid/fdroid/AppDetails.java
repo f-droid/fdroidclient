@@ -473,12 +473,29 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         curapk = app.apks.get(position - l.getHeaderViewsCount());
-        if (app.installedVersion != null
-                && app.installedVersion.equals(curapk.version)) {
+        if (app.installedVerCode == curapk.vercode)
             removeApk(app.id);
-        } else {
+        else if (app.installedVerCode > curapk.vercode) {
+            AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
+            ask_alrt.setMessage(getString(R.string.installDowngrade));
+            ask_alrt.setPositiveButton(getString(R.string.yes),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                            install();
+                        }
+                    });
+            ask_alrt.setNegativeButton(getString(R.string.no),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                            return;
+                        }
+                    });
+            AlertDialog alert = ask_alrt.create();
+            alert.show();
+        } else
             install();
-        }
     }
 
     @Override
@@ -539,7 +556,7 @@ public class AppDetails extends ListActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s)));
         } catch (android.content.ActivityNotFoundException e) {
             Toast toast = Toast.makeText(this,
-                    getString(R.string.no_handler_app, s), 4);
+                    getString(R.string.no_handler_app, s), Toast.LENGTH_LONG);
             toast.show();
         }
     }
