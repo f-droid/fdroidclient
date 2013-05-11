@@ -38,13 +38,14 @@ public class SearchResults extends ListActivity {
 
     private static final int SEARCH = Menu.FIRST;
 
-    private AppListAdapter applist = new AppListAdapter(this);
+    private AppListAdapter applist;
 
     private String mQuery;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        applist = new AppListAdapter(this);
         setContentView(R.layout.searchresults);
 
         Intent intent = getIntent();
