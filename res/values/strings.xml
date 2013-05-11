@@ -138,6 +138,8 @@
 	<string name="antinonfreedep">Dependencies</string>
 	<string name="antinonfreedeplong">Show apps that depend on other non-free apps</string>
 
+	<string name="display">Display</string>
+
 	<string name="expert">Expert</string>
 	<string name="expert_mode">Enable expert mode</string>
 
@@ -174,5 +176,7 @@
     <string name="showPermissions">Show permissions</string>
     <string name="showPermissions_long">Display a list of permissions an app needs</string>
     <string name="no_handler_app">You don\'t have any app installed that can handle %s</string>
+    <string name="compactlayout">Compact Layout</string>
+    <string name="compactlayout_long">Hide app summaries when listing apps</string>
 
 </resources>
