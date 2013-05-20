@@ -26,6 +26,14 @@
 			android:summary="@string/update_history_desc"
 			android:title="@string/update_history" />
 	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/display">
+        <CheckBoxPreference android:title="@string/showPermissions"
+            android:defaultValue="false" android:summary="@string/showPermissions_long"
+            android:key="showPermissions"/>
+        <CheckBoxPreference android:title="@string/compactlayout"
+            android:defaultValue="false" android:summary="@string/compactlayout_long"
+            android:key="compactlayout"/>
+	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/antifeatures">
 		<CheckBoxPreference android:title="@string/antiads"
 			android:defaultValue="false" android:summary="@string/antiadslong"
@@ -53,8 +61,7 @@
 		<CheckBoxPreference android:title="@string/ignoreTouch"
 			android:defaultValue="false" android:summary="@string/ignoreTouch_long"
 			android:key="ignoreTouchscreen" />
-		<CheckBoxPreference android:key="showPermissions" android:summary="@string/showPermissions_long" android:title="@string/showPermissions" android:defaultValue="false"/>
-			</PreferenceCategory>
+	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/maintenance">
 		<Preference android:title="@string/reset" android:summary="@string/clear_all_cached_data"
 			android:key="reset" />
