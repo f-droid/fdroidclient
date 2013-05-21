@@ -17,11 +17,12 @@
   <string name="maintenance">Onderhoud</string>
   <string name="notify_updates_available">Verwittigen bij nieuwe beschikbare updates</string>
   <string name="update_apps_list">app-lijst automatisch bijwerken</string>
-  <string name="update_history">Vernieuw bronnen</string>
+  <string name="update_history">Vernieuw historie</string>
+  <string name="never">nooit</string>
   <string name="automatic_repo_scan">Automatische bronnen-scan</string>
   <string name="app_name">F-Droid</string>
-  <string name="about_title">Over FDroid</string>
-  <string name="about_desc">Gebaseerd op Aptoide.\nUitgegeven onder de GNU GPLv2 licentie</string>
+  <string name="about_title">Over F-Droid</string>
+  <string name="about_desc">Gebaseerd op Aptoide.\nUitgegeven onder de GNU GPLv3 licentie</string>
   <string name="about_site">Website:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versie:</string>
@@ -65,6 +66,7 @@
   <string name="menu_search">Zoeken</string>
   <string name="menu_add_repo">Nieuwe bron</string>
   <string name="menu_rem_repo">Verwijder bron</string>
+  <string name="menu_launch">Start</string>
   <string name="menu_install">Installeren</string>
   <string name="menu_uninstall">Deinstalleren</string>
   <string name="menu_website">Website</string>
@@ -100,4 +102,5 @@
   <string name="rooted">Root</string>
   <string name="rooted_long">Laat apps zien die root-privileges vereisen</string>
   <string name="category_all">Installeren</string>
+  <string name="status_processing_xml">Applicatie verkrijgen van:\n</string>
 </resources>

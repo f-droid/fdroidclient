@@ -102,4 +102,5 @@
   <string name="category_all">Όλα</string>
   <string name="category_whatsnew">Τι νέο υπάρχει</string>
   <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
+  <string name="status_processing_xml">Λήψη εφαρμογής από:\n</string>
 </resources>

@@ -108,4 +108,5 @@
   <string name="category_all">Alla</string>
   <string name="category_whatsnew">Nyheter</string>
   <string name="category_recentlyupdated">Nyligt uppdaterade</string>
+  <string name="status_processing_xml">Hämtar program från:\n</string>
 </resources>

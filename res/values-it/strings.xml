@@ -100,4 +100,5 @@
   <string name="rooted">Amministratore</string>
   <string name="rooted_long">Mostra le applicazioni che richiedono i privilegi di amministrazione</string>
   <string name="category_all">Installa</string>
+  <string name="status_processing_xml">Scaricamento applicazione da:\n</string>
 </resources>

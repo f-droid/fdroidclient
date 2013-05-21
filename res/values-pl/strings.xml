@@ -108,4 +108,5 @@
   <string name="category_all">Wszystkie</string>
   <string name="category_whatsnew">Ostatnio dodane</string>
   <string name="category_recentlyupdated">Ostatnio zaktualizowane</string>
+  <string name="status_processing_xml">Pobieranie aplikacji z:\n</string>
 </resources>

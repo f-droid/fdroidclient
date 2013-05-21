@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
 "PO-Revision-Date: 2013-03-23 12:12+0200\n"
 "Last-Translator: Administrator <>\n"
 "Language-Team: it <LL@li.org>\n"
@@ -47,6 +47,13 @@ msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
+msgstr ""
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
 msgstr ""
 
 msgctxt "version"
@@ -176,9 +183,18 @@ msgstr ""
 "\n"
 "Un indirizzo URL di esempio è: http://f-droid.org/repo"
 
+msgctxt "inst"
+msgid "Installed"
+msgstr "Installato"
+
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Non installato"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -234,6 +250,21 @@ msgstr "Aggiornamenti"
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr "Aggiornamenti disponibili"
+
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Aggiornamenti disponibili"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Aggiornamenti disponibili"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr "Aggiornamenti disponibili"
 
 msgctxt "process_wait_title"
@@ -384,10 +415,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Non installato"
 
-msgctxt "inst"
-msgid "Installed"
-msgstr "Installato"
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Il file scaricato è corrotto"
@@ -439,6 +466,10 @@ msgstr "DIpendenze"
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
 msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
+
+msgctxt "display"
+msgid "Display"
+msgstr ""
 
 msgctxt "expert"
 msgid "Expert"
@@ -553,5 +584,13 @@ msgstr ""
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr ""
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

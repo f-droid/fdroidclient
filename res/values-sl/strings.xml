@@ -100,4 +100,5 @@
   <string name="rooted">Skrbnik</string>
   <string name="rooted_long">Pokaži aplikacije, ki zahtevajo skrbniške pravice</string>
   <string name="category_all">Namesti</string>
+  <string name="status_processing_xml">Prejem aplikacije iz:\n</string>
 </resources>

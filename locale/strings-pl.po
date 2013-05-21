@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
 "PO-Revision-Date: 2013-03-15 22:49+0200\n"
 "Last-Translator: Qrchack <qrchackofficial@gmail.com>\n"
 "Language-Team: pl <LL@li.org>\n"
@@ -49,6 +49,13 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr "Ten pakiet jest niekompatybilny z Twoim urządzeniem. Zainstalować mimo to?"
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -175,9 +182,18 @@ msgstr ""
 "\n"
 "Adres repozytorium wygląda mniej więcej tak: http://f-droid.org/repo"
 
+msgctxt "inst"
+msgid "Installed"
+msgstr "Zainstalowano"
+
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Niezainstalowane"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -233,6 +249,21 @@ msgstr "Aktualizacje"
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr "Dostępne aktualizacje"
+
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Dostępne aktualizacje"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Dostępne aktualizacje"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr "Dostępne aktualizacje"
 
 msgctxt "process_wait_title"
@@ -380,10 +411,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Nie zainstalowano"
 
-msgctxt "inst"
-msgid "Installed"
-msgstr "Zainstalowano"
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Pobrany plik jest uszkodzony"
@@ -435,6 +462,10 @@ msgstr "Zależności"
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
 msgstr "Pokaż aplikacje zależne od innych, płatnych aplikacji"
+
+msgctxt "display"
+msgid "Display"
+msgstr ""
 
 msgctxt "expert"
 msgid "Expert"
@@ -548,5 +579,13 @@ msgstr ""
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr ""
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

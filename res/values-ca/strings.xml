@@ -109,4 +109,5 @@
   <string name="category_all">Tot</string>
   <string name="category_whatsnew">Novetats</string>
   <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
+  <string name="status_processing_xml">S\'està obtenint l\'aplicació des de: \n</string>
 </resources>

@@ -108,4 +108,5 @@
   <string name="category_all">Все</string>
   <string name="category_whatsnew">Что Нового</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
+  <string name="status_processing_xml">Взять приложение из:\n</string>
 </resources>

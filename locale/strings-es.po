@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
-"PO-Revision-Date: 2013-04-19 13:04+0200\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
+"PO-Revision-Date: 2013-05-10 18:40+0200\n"
 "Last-Translator: larjona <larjona99@gmail.com>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -48,8 +48,15 @@ msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
-"Android dice que este paquete no es compatible con tu dispositivo. "
+"Android informa que este paquete no es compatible con tu dispositivo. "
 "¿Quieres probar e instalarlo de todos modos?"
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -175,9 +182,18 @@ msgstr ""
 "La dirección de un repositorio es algo similar a esto: "
 "http://f-droid.org/repo"
 
+msgctxt "inst"
+msgid "Installed"
+msgstr "Instalado"
+
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "No instalado"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -233,6 +249,21 @@ msgstr "Actualizaciones"
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr "Actualizaciones disponibles"
+
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Actualizaciones disponibles"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Actualizaciones disponibles"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr "Actualizaciones disponibles"
 
 msgctxt "process_wait_title"
@@ -381,10 +412,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "No instalado"
 
-msgctxt "inst"
-msgid "Installed"
-msgstr "Instalado"
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "El fichero descargado está corrupto"
@@ -436,6 +463,10 @@ msgstr "Dependencias"
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
 msgstr "Muestra programas que dependen de otros no libres"
+
+msgctxt "display"
+msgid "Display"
+msgstr ""
 
 msgctxt "expert"
 msgid "Expert"
@@ -509,14 +540,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"Descargando\n"
+"%2$s / %3$s (%4$d%%) desde\n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "Obteniendo el programa de:\n"
+msgstr ""
+"Procesando la aplicación\n"
+"%2$d de %3$d desde\n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -524,30 +561,40 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Conectándose con\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
+msgstr "Comprobando la compatibilidad de las aplicaciones con tu dispositivo..."
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "No se usan permisos."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Permisos para la versión %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Mostrar permisos"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Mostrar una lista de los permisos que necesita una aplicación"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr "No tienes instalada ninguna aplicación que maneje %s"
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

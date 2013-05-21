@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
 "PO-Revision-Date: 2013-04-08 16:08+0200\n"
 "Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: tr <LL@li.org>\n"
@@ -51,6 +51,13 @@ msgid ""
 msgstr ""
 "Android bu paketin cihazınızla uyumlu olmadığını bildiriyor. Yine de "
 "kurmayı denemek istiyor musunuz?"
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -177,9 +184,18 @@ msgstr ""
 "\n"
 "Bir depo adresi şuna benzer: http://f-droid.org/repo"
 
+msgctxt "inst"
+msgid "Installed"
+msgstr "Kurulu"
+
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Kurulu değil"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -235,6 +251,21 @@ msgstr "Güncellemeler"
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr "Güncellemeler var"
+
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Güncellemeler var"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Güncellemeler var"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr "Güncellemeler var"
 
 msgctxt "process_wait_title"
@@ -382,10 +413,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Kurulu değil"
 
-msgctxt "inst"
-msgid "Installed"
-msgstr "Kurulu"
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "İndirilen dosya bozuk"
@@ -437,6 +464,10 @@ msgstr "Bağımlılıklar"
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
 msgstr "Özgür olmayan uygulamalara bağımlı uygulamaları göster"
+
+msgctxt "display"
+msgid "Display"
+msgstr ""
 
 msgctxt "expert"
 msgid "Expert"
@@ -550,5 +581,13 @@ msgstr ""
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr ""
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

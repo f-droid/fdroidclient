@@ -108,4 +108,5 @@
   <string name="category_all">Tümü</string>
   <string name="category_whatsnew">Yeni olanlar</string>
   <string name="category_recentlyupdated">Yakın geçmişte güncellenen</string>
+  <string name="status_processing_xml">Uygulama buradan alınıyor:\n</string>
 </resources>

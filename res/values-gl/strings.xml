@@ -108,4 +108,5 @@
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">Que novidades hai</string>
   <string name="category_recentlyupdated">Actualizado recentemente</string>
+  <string name="status_processing_xml">Obter o aplicativo de:\n</string>
 </resources>

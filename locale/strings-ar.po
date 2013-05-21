@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
 "PO-Revision-Date: 2013-04-24 00:11+0200\n"
 "Last-Translator: Abdellah <sneetsher@gmail.com>\n"
 "Language-Team: ar <LL@li.org>\n"
@@ -47,6 +47,13 @@ msgid ""
 msgstr ""
 "أندرويد يقول أن هذه الحزمة ليست متوافقة مع جهازك. هل تريد التجريب و "
 "تثبيتها على أي حال؟"
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -163,8 +170,17 @@ msgid ""
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
 
+msgctxt "inst"
+msgid "Installed"
+msgstr ""
+
 msgctxt "not_inst"
 msgid "Not Installed"
+msgstr ""
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
 msgstr ""
 
 msgctxt "installed_update"
@@ -222,6 +238,21 @@ msgstr ""
 msgctxt "update_available"
 msgid "Updates available"
 msgstr ""
+
+#, fuzzy, c-format
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "%d إصدار متوفر"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "%d إصدار متوفر"
+
+#, fuzzy, c-format
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
+msgstr "%d إصدار متوفر"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -364,10 +395,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr ""
 
-msgctxt "inst"
-msgid "Installed"
-msgstr ""
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr ""
@@ -418,6 +445,10 @@ msgstr ""
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr ""
+
+msgctxt "display"
+msgid "Display"
 msgstr ""
 
 msgctxt "expert"
@@ -532,9 +563,11 @@ msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
 msgstr ""
 
-#~ msgctxt "about_desc"
-#~ msgid ""
-#~ "Originally based on Aptoide.\n"
-#~ "Released under the GNU GPLv2 license."
-#~ msgstr ""
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
+msgstr ""
 

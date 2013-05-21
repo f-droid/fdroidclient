@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
 "PO-Revision-Date: 2012-11-28 22:06+0200\n"
 "Last-Translator: Asier <asier.iturralde@gmail.com>\n"
 "Language-Team: eu <LL@li.org>\n"
@@ -50,6 +50,13 @@ msgid ""
 msgstr ""
 "Android-ek dio pakete hau ez dela zure gailuarekin bateragarria. "
 "Instalatu egin nahi duzu dena den?"
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -177,9 +184,18 @@ msgstr ""
 "Biltegi baten helbideak honen antzekoa izan ohi da: "
 "http://f-droid.org/repo"
 
+msgctxt "inst"
+msgid "Installed"
+msgstr "Instalatuta"
+
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Instalatu gabea"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -235,6 +251,21 @@ msgstr "Eguneraketak"
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr "Eguneraketak eskuragarri"
+
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Eguneraketak eskuragarri"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Eguneraketak eskuragarri"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr "Eguneraketak eskuragarri"
 
 msgctxt "process_wait_title"
@@ -383,10 +414,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Instalatu gabe"
 
-msgctxt "inst"
-msgid "Installed"
-msgstr "Instalatuta"
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Deskargatutako fitxategia hondatuta dago"
@@ -440,6 +467,10 @@ msgstr "Mendekotasunak"
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
 msgstr "Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak"
+
+msgctxt "display"
+msgid "Display"
+msgstr ""
 
 msgctxt "expert"
 msgid "Expert"
@@ -553,5 +584,13 @@ msgstr ""
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr ""
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

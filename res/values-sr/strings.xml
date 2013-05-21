@@ -92,4 +92,5 @@
   <string name="expert_mode">Омогући стручни режим</string>
   <string name="search_hint">Претрага апликација</string>
   <string name="category_all">Инсталирај</string>
+  <string name="status_processing_xml">Апликација се скида са:\n</string>
 </resources>

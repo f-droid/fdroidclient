@@ -108,4 +108,5 @@
   <string name="category_all">Всі програми</string>
   <string name="category_whatsnew">Недавні додання</string>
   <string name="category_recentlyupdated">Недавні оновлення</string>
+  <string name="status_processing_xml">Звантажую програму:\n</string>
 </resources>

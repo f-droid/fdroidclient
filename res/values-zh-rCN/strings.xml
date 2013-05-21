@@ -18,6 +18,7 @@
   <string name="maintenance">维护</string>
   <string name="notify_updates_available">当有更新时，通知栏提醒</string>
   <string name="update_apps_list">自动更新应用列表</string>
+  <string name="update_history">更新应用源</string>
   <string name="last_update_check">最后一次repo扫描:</string>
   <string name="never">从不</string>
   <string name="automatic_repo_scan">自动扫描repo</string>
@@ -107,4 +108,5 @@
   <string name="category_all">全部</string>
   <string name="category_whatsnew">新鲜货</string>
   <string name="category_recentlyupdated">最近更新</string>
+  <string name="status_processing_xml">下载应用 \n</string>
 </resources>

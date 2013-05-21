@@ -108,4 +108,5 @@
   <string name="category_all">Kaikki</string>
   <string name="category_whatsnew">Uutta</string>
   <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
+  <string name="status_processing_xml">Ladataan sovellusta lähteestä:\n</string>
 </resources>

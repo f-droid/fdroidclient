@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
 "PO-Revision-Date: 2012-04-24 11:14+0200\n"
 "Last-Translator: sgmif <android@sgmif.eu>\n"
 "Language-Team: ro <LL@li.org>\n"
@@ -45,6 +45,13 @@ msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
+msgstr ""
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
 msgstr ""
 
 msgctxt "version"
@@ -174,9 +181,18 @@ msgstr ""
 "\n"
 "Adresa depozitului arata de genul: http://f-droid.org/repo"
 
+msgctxt "inst"
+msgid "Installed"
+msgstr ""
+
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Nu este instalat"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -232,6 +248,21 @@ msgstr "Actualizare"
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr "Actualizare disponibila"
+
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Actualizare disponibila"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Actualizare disponibila"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr "Actualizare disponibila"
 
 msgctxt "process_wait_title"
@@ -376,10 +407,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr ""
 
-msgctxt "inst"
-msgid "Installed"
-msgstr ""
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr ""
@@ -430,6 +457,10 @@ msgstr ""
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr ""
+
+msgctxt "display"
+msgid "Display"
 msgstr ""
 
 msgctxt "expert"
@@ -542,5 +573,13 @@ msgstr ""
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr ""
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

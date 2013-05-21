@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
-"PO-Revision-Date: 2012-03-16 17:40+0200\n"
-"Last-Translator: reppleo <reppleo@gmail.com>\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
+"PO-Revision-Date: 2013-05-12 21:20+0200\n"
+"Last-Translator: Robin <ypid23@aol.de>\n"
 "Language-Team: de <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -47,6 +47,15 @@ msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
+msgstr ""
+"Android hat festgestellt, dass dieses Programm nicht kompatibel mit Ihrem"
+" Gerät ist. Möchten Sie es trotzdem installieren?"
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
 msgstr ""
 
 msgctxt "version"
@@ -103,46 +112,42 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Anwendungsliste automatisch aktualisieren"
 
-#, fuzzy
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Archive aktualisieren"
+msgstr "Liste der durchgeführten Aktualisierung "
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr ""
+msgstr "Tage um neue/aktualisierte Anwendungen anzuzeigen. "
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "letzte Aktualisierung: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "nie"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Automatische Archivkontrolle"
 
-#, fuzzy
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr "FDroid"
+msgstr "F-Droid"
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "Über FDroid"
+msgstr "Über F-Droid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Basierend auf Aptoide.\n"
-"Lizensiert unter der GNU GPLv2."
+"Lizensiert unter der GNU GPLv3."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -160,7 +165,6 @@ msgctxt "about_website"
 msgid "Website"
 msgstr "Internetseite"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -177,9 +181,18 @@ msgstr ""
 "\n"
 "Eine Archiv-Adresse sieht ungefähr so aus: http://f-droid.org/repo"
 
+msgctxt "inst"
+msgid "Installed"
+msgstr "Installiert"
+
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Nicht Installiert"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -215,7 +228,7 @@ msgstr "Zu entfernendes Archiv auswählen"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Die Serververbindung konnte nicht hergestellt werden!"
+msgstr "Die Verbindung zum Server konnte nicht hergestellt werden!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
@@ -235,6 +248,21 @@ msgstr "Aktualisierungen"
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr "Aktualisierungen verfügbar"
+
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Aktualisierungen verfügbar"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Aktualisierungen verfügbar"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr "Aktualisierungen verfügbar"
 
 msgctxt "process_wait_title"
@@ -265,7 +293,6 @@ msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Anwendung wird heruntergeladen von"
 
-#, fuzzy
 msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Archiv-Adresse"
@@ -294,7 +321,6 @@ msgstr ""
 "Für einige installierte Anwendungen sind Aktualisierungen verfügbar.\n"
 "Möchten Sie sie sehen?"
 
-#, fuzzy
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -313,7 +339,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Anwendung wird geladen von:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Archive aktualisieren"
@@ -330,7 +355,6 @@ msgctxt "menu_about"
 msgid "About"
 msgstr "Über"
 
-#, fuzzy
 msgctxt "menu_search"
 msgid "Search"
 msgstr "Suchen"
@@ -345,7 +369,7 @@ msgstr "Archiv entfernen"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Ausführen"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -388,10 +412,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr "Nicht Installiert"
 
-msgctxt "inst"
-msgid "Installed"
-msgstr "Installiert"
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr "Heruntergeladene Datei ist fehlerhaft"
@@ -410,15 +430,15 @@ msgstr "Werbung"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Zeige Apps, die Werbung enthalten"
+msgstr "Zeige Anwendungen, die Werbung enthalten"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Verfolgung"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Zeige Programme, welche Ihre Aktivitäten aufzeichnen und melden"
+msgstr "Zeige Anwendungen, welche Ihre Aktivitäten aufzeichnen und melden"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -426,7 +446,7 @@ msgstr "Zusätze"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Zeige Apps, die unfreie Zusätze bewerben"
+msgstr "Zeige Anwendungen, die unfreie Zusätze bewerben"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -434,7 +454,7 @@ msgstr "Netzwerkdienste"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Zeige Apps, die unfreie Netzwerkdienste propagieren"
+msgstr "Zeige Anwendungen, die unfreie Netzwerkdienste propagieren"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
@@ -442,9 +462,12 @@ msgstr "Abhängigkeiten"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Zeige Apps, die von anderen unfreien Apps abhängen"
+msgstr "Zeige Anwendungen, die von anderen unfreien Anwendungen abhängen"
 
-#, fuzzy
+msgctxt "display"
+msgid "Display"
+msgstr ""
+
 msgctxt "expert"
 msgid "Expert"
 msgstr "Für Experten"
@@ -471,11 +494,11 @@ msgstr "Kompatibilität"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr "Inkompatible Apps"
+msgstr "Inkompatible Anwendungen"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
-msgstr "Zeige Apps für neuere Android-Versionen oder andere Hardware"
+msgstr "Zeige Anwendungen für neuere Android-Versionen oder andere Hardware"
 
 msgctxt "rooted"
 msgid "Root"
@@ -483,28 +506,30 @@ msgstr "Erfordert Root-Zugriff"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Anwendungen anzeigen, die Root-Zugriff benötigen"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Berührungsbildschirm"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
 msgstr ""
+"Zeige Anwendungen auch wenn diese Angeben, dass sie einen "
+"Berührungsbildschirm benötigen. Nur interessant falls Ihr Gerät keinen "
+"Berührungsbildschirm hat."
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Installieren"
+msgstr "Alle"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Neue Anwendungen"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "Kürzlich Aktualisiert"
 
 #. status_download takes four parameters:       - Repository (url)       -
 #. Downloaded size (human readable)       - Total size (human readable)       -
@@ -516,14 +541,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"Herunterladen …\n"
+"%2$s / %3$s (%4$d%%) von\n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "Anwendung wird geladen von:\n"
+msgstr ""
+"Anwendung wird vorbereitet\n"
+"%2$d/%3$d von\n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -531,30 +562,42 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Verbunden mit\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
+msgstr "Überprüfen welche Anwendungen mit Ihrem Gerät kompatibel sind …"
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Keine besonderen Berechtigungen Erforderlich."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Berechtigungen für Version %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Zeige Berechtigungen"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
 msgstr ""
+"Zeige eine Liste von Berechtigungen die von einer Anwendung benötigt "
+"werden"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr "Es ist keine Anwendung für %s installiert"
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

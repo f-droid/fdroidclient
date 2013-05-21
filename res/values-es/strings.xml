@@ -4,7 +4,7 @@
   <string name="searchres_oneapp">Se encontró un programa con \'%s\':</string>
   <string name="searchres_noapps">No se encontró ningún programa con \'%s\'</string>
   <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe de ser desinstalada primero. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por el programa)</string>
-  <string name="installIncompatible">Android dice que este paquete no es compatible con tu dispositivo. ¿Quieres probar e instalarlo de todos modos?</string>
+  <string name="installIncompatible">Android informa que este paquete no es compatible con tu dispositivo. ¿Quieres probar e instalarlo de todos modos?</string>
   <string name="version">Versión</string>
   <string name="n_versions_available">%d versiones disponibles</string>
   <string name="n_version_available">%d versión disponible</string>
@@ -109,4 +109,13 @@
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">Novedades</string>
   <string name="category_recentlyupdated">Recientemente actualizados</string>
+  <string name="status_download">Descargando\n%2$s / %3$s (%4$d%%) desde\n%1$s</string>
+  <string name="status_processing_xml">Procesando la aplicación\n%2$d de %3$d desde\n%1$s</string>
+  <string name="status_connecting_to_repo">Conectándose con\n%1$s</string>
+  <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo...</string>
+  <string name="no_permissions">No se usan permisos.</string>
+  <string name="permissions_for_long">Permisos para la versión %s</string>
+  <string name="showPermissions">Mostrar permisos</string>
+  <string name="showPermissions_long">Mostrar una lista de los permisos que necesita una aplicación</string>
+  <string name="no_handler_app">No tienes instalada ninguna aplicación que maneje %s</string>
 </resources>

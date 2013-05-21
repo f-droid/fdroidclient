@@ -109,4 +109,5 @@
   <string name="category_all">Tout</string>
   <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
+  <string name="status_processing_xml">Réception d\'application de:\n</string>
 </resources>

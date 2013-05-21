@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">Encontramos %1$d aplicações correspondentes a \'%2$s\':</string>
-  <string name="searchres_oneapp">Encontramos uma aplicação correspondente a \'%s\':</string>
-  <string name="searchres_noapps">Não foram encontradas aplicações correspondentes a \'%s\'</string>
-  <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga todos os dados internos armazenados pela aplicação)</string>
+  <string name="searchres_napps">Encontramos %1$d aplicativos correspondentes a \'%2$s\':</string>
+  <string name="searchres_oneapp">Encontramos um aplicativo correspondente a \'%s\':</string>
+  <string name="searchres_noapps">Não foram encontrados aplicativos correspondentes a \'%s\'</string>
+  <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga todos os dados internos armazenados pelo aplicativo)</string>
   <string name="installIncompatible">O Android diz que esse pacote não é compatível com o seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
   <string name="version">Versão</string>
   <string name="n_versions_available">%d versões disponíveis</string>
@@ -30,7 +30,7 @@
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Versão:</string>
   <string name="about_website">Site</string>
-  <string name="no_repo">Você não tem nenhum repositório configurado!!\n\nUm repositório é uma fonte de aplicações. Para adicionar um, pressione o botão MENU e digite a URL.\n\nUm endereço do repositório é algo similar a isto: http://f-droid.org/repo</string>
+  <string name="no_repo">Você não tem nenhum repositório configurado!!\n\nUm repositório é uma fonte de aplicativos. Para adicionar um, pressione o botão MENU e digite a URL.\n\nUm endereço do repositório é algo similar a isto: http://f-droid.org/repo</string>
   <string name="not_inst">Não Instalado</string>
   <string name="installed_update">Possível atualizar - Ver.:</string>
   <string name="ok">OK</string>
@@ -52,7 +52,7 @@
   <string name="connection_timeout">Tempo esgotado</string>
   <string name="connection_error_msg">Não foi possível conectar ao servidor!</string>
   <string name="download">Baixar</string>
-  <string name="download_server">Começar a aplicação de</string>
+  <string name="download_server">Baixando aplicativo de</string>
   <string name="repo_add_url">Endereço do repositório</string>
   <string name="isinst">Instalado:</string>
   <string name="install">Instalar</string>
@@ -61,7 +61,7 @@
   <string name="update_alrt">Existem atualizações disponíveis para alguns aplicativos instalados.\nVocê quer vê-las?</string>
   <string name="repo_alrt">A lista de repositórios usados mudou.\nVocê deseja atualizá-los?</string>
   <string name="error_download_alrt">Não foi possível se conectar ao servidor de arquivos ou o arquivo apk está corrompido!</string>
-  <string name="download_alrt">Pegando aplicação de:\n</string>
+  <string name="download_alrt">Pegando aplicativo de:\n</string>
   <string name="menu_update_repo">Atualizar repositórios</string>
   <string name="menu_manage">Gerenciar Repositórios</string>
   <string name="menu_preferences">Preferências</string>
@@ -79,7 +79,7 @@
   <string name="menu_update">Atualizar</string>
   <string name="menu_donate">Fazer doação</string>
   <string name="details_installed">Versão %s instalada</string>
-  <string name="details_notinstalled">Não Instalado</string>
+  <string name="details_notinstalled">Não instalado</string>
   <string name="inst">Instalado</string>
   <string name="corrupt_download">O arquivo baixado está corrompido</string>
   <string name="download_cancelled">Download cancelado</string>
@@ -93,7 +93,7 @@
   <string name="antinonfreenet">Serviços de Rede</string>
   <string name="antinonfreenetlong">Mostrar aplicativos que promovem serviços de rede não-livre</string>
   <string name="antinonfreedep">Dependências</string>
-  <string name="antinonfreedeplong">Mostrar aplicativos que dependem de aplicativos não-livres.</string>
+  <string name="antinonfreedeplong">Mostrar aplicativos que dependem de aplicativos não-livres</string>
   <string name="expert">Especialista</string>
   <string name="expert_mode">Ativar modo especialista</string>
   <string name="search_hint">Pesquisar aplicativos</string>
@@ -109,4 +109,13 @@
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">O que há de novo</string>
   <string name="category_recentlyupdated">Atualizado Recentemente</string>
+  <string name="status_download">Baixando\n%2$s / %3$s (%4$d%%) de \n%1$s</string>
+  <string name="status_processing_xml">Processando aplicativo\n%2$d de %3$d, de \n%1$s</string>
+  <string name="status_connecting_to_repo">Conectando-se a\n%1$s</string>
+  <string name="status_checking_compatibility">Verificando compatibilidade de aplicativos com o seu dispositivo...</string>
+  <string name="no_permissions">Nenhuma permissão utilizada.</string>
+  <string name="permissions_for_long">Permissões para a versão %s</string>
+  <string name="showPermissions">Mostrar permissões</string>
+  <string name="showPermissions_long">Mostrar uma lista de permissões que um aplicativo requer</string>
+  <string name="no_handler_app">Você não tem aplicativo instalado que lide com %s</string>
 </resources>

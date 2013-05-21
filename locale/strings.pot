@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,6 +44,13 @@ msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
+msgstr ""
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
 msgstr ""
 
 msgctxt "version"
@@ -161,8 +168,17 @@ msgid ""
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
 
+msgctxt "inst"
+msgid "Installed"
+msgstr ""
+
 msgctxt "not_inst"
 msgid "Not Installed"
+msgstr ""
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
 msgstr ""
 
 msgctxt "installed_update"
@@ -219,6 +235,19 @@ msgstr ""
 
 msgctxt "update_available"
 msgid "Updates available"
+msgstr ""
+
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr ""
+
+#, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr ""
+
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
 msgstr ""
 
 msgctxt "process_wait_title"
@@ -362,10 +391,6 @@ msgctxt "details_notinstalled"
 msgid "Not installed"
 msgstr ""
 
-msgctxt "inst"
-msgid "Installed"
-msgstr ""
-
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
 msgstr ""
@@ -416,6 +441,10 @@ msgstr ""
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr ""
+
+msgctxt "display"
+msgid "Display"
 msgstr ""
 
 msgctxt "expert"
@@ -528,5 +557,13 @@ msgstr ""
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr ""
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-08 12:06+0100\n"
-"PO-Revision-Date: 2013-04-29 13:53+0200\n"
+"POT-Creation-Date: 2013-05-21 11:38+0100\n"
+"PO-Revision-Date: 2013-05-13 14:56+0200\n"
 "Last-Translator: Cárlisson <cg@bardo.ws>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
@@ -19,17 +19,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Encontramos %1$d aplicações correspondentes a '%2$s':"
+msgstr "Encontramos %1$d aplicativos correspondentes a '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Encontramos uma aplicação correspondente a '%s':"
+msgstr "Encontramos um aplicativo correspondente a '%s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Não foram encontradas aplicações correspondentes a '%s'"
+msgstr "Não foram encontrados aplicativos correspondentes a '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -41,7 +41,7 @@ msgstr ""
 "A nova versão é assinada com uma chave diferente da antiga. Para instalar"
 " a nova versão, desinstale primeiro a antiga. Por favor, faça isso e "
 "tente novamente. (Note que a desinstalação apaga todos os dados internos "
-"armazenados pela aplicação)"
+"armazenados pelo aplicativo)"
 
 msgctxt "installIncompatible"
 msgid ""
@@ -50,6 +50,13 @@ msgid ""
 msgstr ""
 "O Android diz que esse pacote não é compatível com o seu dispositivo. "
 "Quer tentar instalá-lo mesmo assim?"
+
+msgctxt "installDowngrade"
+msgid ""
+"You are trying to downgrade this application. Doing so might get it to "
+"malfunction and even lose your data. Do you want to try and downgrade it "
+"anyway?"
+msgstr ""
 
 msgctxt "version"
 msgid "Version"
@@ -169,14 +176,23 @@ msgid ""
 msgstr ""
 "Você não tem nenhum repositório configurado!!\n"
 "\n"
-"Um repositório é uma fonte de aplicações. Para adicionar um, pressione o "
-"botão MENU e digite a URL.\n"
+"Um repositório é uma fonte de aplicativos. Para adicionar um, pressione o"
+" botão MENU e digite a URL.\n"
 "\n"
 "Um endereço do repositório é algo similar a isto: http://f-droid.org/repo"
+
+msgctxt "inst"
+msgid "Installed"
+msgstr "Instalado"
 
 msgctxt "not_inst"
 msgid "Not Installed"
 msgstr "Não Instalado"
+
+#, c-format
+msgctxt "added_on"
+msgid "Added on %s"
+msgstr ""
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -234,6 +250,21 @@ msgctxt "update_available"
 msgid "Updates available"
 msgstr "Atualizações disponíveis"
 
+#, fuzzy
+msgctxt "one_update_available"
+msgid "1 update is available."
+msgstr "Atualizações disponíveis"
+
+#, fuzzy, c-format
+msgctxt "many_updates_available"
+msgid "%d updates are available."
+msgstr "Atualizações disponíveis"
+
+#, fuzzy
+msgctxt "fdroid_updates_available"
+msgid "F-Droid Updates Available"
+msgstr "Atualizações disponíveis"
+
 msgctxt "process_wait_title"
 msgid "Please Wait"
 msgstr "Aguarde"
@@ -260,7 +291,7 @@ msgstr "Baixar"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Começar a aplicação de"
+msgstr "Baixando aplicativo de"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
@@ -306,7 +337,7 @@ msgstr ""
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Pegando aplicação de:\n"
+msgstr "Pegando aplicativo de:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
@@ -379,11 +410,7 @@ msgstr "Versão %s instalada"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Não Instalado"
-
-msgctxt "inst"
-msgid "Installed"
-msgstr "Instalado"
+msgstr "Não instalado"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
@@ -435,7 +462,11 @@ msgstr "Dependências"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Mostrar aplicativos que dependem de aplicativos não-livres."
+msgstr "Mostrar aplicativos que dependem de aplicativos não-livres"
+
+msgctxt "display"
+msgid "Display"
+msgstr ""
 
 msgctxt "expert"
 msgid "Expert"
@@ -509,14 +540,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"Baixando\n"
+"%2$s / %3$s (%4$d%%) de \n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "Pegando aplicação de:\n"
+msgstr ""
+"Processando aplicativo\n"
+"%2$d de %3$d, de \n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -524,30 +561,40 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Conectando-se a\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
+msgstr "Verificando compatibilidade de aplicativos com o seu dispositivo..."
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Nenhuma permissão utilizada."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Permissões para a versão %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Mostrar permissões"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Mostrar uma lista de permissões que um aplicativo requer"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
+msgstr "Você não tem aplicativo instalado que lide com %s"
+
+msgctxt "compactlayout"
+msgid "Compact Layout"
+msgstr ""
+
+msgctxt "compactlayout_long"
+msgid "Hide app summaries when listing apps"
 msgstr ""
 

@@ -107,4 +107,5 @@
   <string name="category_all">Guztia</string>
   <string name="category_whatsnew">Zer da berria</string>
   <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
+  <string name="status_processing_xml">Aplikazioa eskuratzen hemendik:\n</string>
 </resources>
