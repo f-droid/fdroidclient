@@ -412,7 +412,6 @@ public class DB {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            resetTransient(db);
 
             // Migrate repo list to new structure. (No way to change primary
             // key in sqlite - table must be recreated)
@@ -442,6 +441,11 @@ public class DB {
                     db.insert(TABLE_REPO, null, values);
                 }
             }
+
+            // The other tables are transient and can just be reset. Do this after
+            // the repo table changes though, because it also clears the lastetag
+            // fields which didn't always exist.
+            resetTransient(db);
 
         }
 
