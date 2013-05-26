@@ -116,7 +116,7 @@ public class AppDetails extends ListActivity {
             TextView version = (TextView) v.findViewById(R.id.version);
             boolean iscurrent = apk.vercode == app_currentvercode;
             version.setText(getString(R.string.version) + " " + apk.version
-                    + (iscurrent ? "*" : ""));
+                    + (iscurrent ? " *" : ""));
 
             // TODO: This will show 'Installed' for all apks with the same
             // version code, which could be more than one if they come from
