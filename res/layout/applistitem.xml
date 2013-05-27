@@ -22,6 +22,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_toRightOf="@id/icon"
+	    android:paddingTop="4dp"
 	    android:paddingBottom="2dp"
 	    android:paddingLeft="1dp"/>
 
@@ -51,6 +52,6 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_below="@id/icon"
-	    android:paddingLeft="4dp"/>
+	    android:paddingLeft="6dp"/>
 
 </RelativeLayout>
