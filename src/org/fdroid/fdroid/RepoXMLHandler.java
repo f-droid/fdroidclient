@@ -65,6 +65,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private StringBuilder curchars = new StringBuilder();
 
     private String pubkey;
+    private String name;
+    private String description;
     private String hashType;
 
     private int progressCounter = 0;
@@ -85,6 +87,8 @@ public class RepoXMLHandler extends DefaultHandler {
         this.repo = repo;
         this.apps = apps;
         pubkey = null;
+        name = null;
+        description = null;
         progressListener = listener;
     }
 
@@ -248,6 +252,12 @@ public class RepoXMLHandler extends DefaultHandler {
             String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
+            String nm = attributes.getValue("", "name");
+            if (nm != null)
+                name = nm;
+            String dc = attributes.getValue("", "description");
+            if (dc != null)
+                description = dc;
         } else if (localName.equals("application") && curapp == null) {
             curapp = new DB.App();
             curapp.detail_Populated = true;

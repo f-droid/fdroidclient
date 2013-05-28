@@ -182,7 +182,7 @@ public class ManageRepo extends ListActivity {
                             String uri_str = uri.getText().toString();
                             try {
                                 DB db = DB.getDB();
-                                db.addRepo(uri_str, 10, null, true);
+                                db.addRepo(uri_str, null, null, 10, null, true);
                             } finally {
                                 DB.releaseDB();
                             }
