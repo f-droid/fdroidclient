@@ -138,7 +138,7 @@ public class AppListManager {
     }
 
     // recentDate could really be calculated here, but this is just a hack so
-    // it doesn't need to be caluculated for every single app. The reason it
+    // it doesn't need to be calculated for every single app. The reason it
     // isn't an instance variable is because the preferences may change, and
     // we wouldn't know.
     private boolean isInCategory(DB.App app, String category, Date recentDate) {
