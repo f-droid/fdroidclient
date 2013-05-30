@@ -1029,7 +1029,7 @@ public class DB {
     public Repo getRepo(int id) {
         Cursor c = null;
         try {
-            c = db.query(TABLE_REPO, new String[] { "address, inuse",
+            c = db.query(TABLE_REPO, new String[] { "address", "inuse",
                     "priority", "pubkey", "lastetag" },
                     "id = " + Integer.toString(id), null, null, null, null);
             if (!c.moveToFirst())
