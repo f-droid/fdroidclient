@@ -19,13 +19,16 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import android.app.Application;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 public class FDroidApp extends Application {
 
@@ -37,6 +40,19 @@ public class FDroidApp extends Application {
         Log.d("FDroid", "Data path is " + local_path.getPath());
         if (!local_path.exists())
             local_path.mkdir();
+        // Clear cached apk files. We used to just remove them after they'd
+        // been installed, but this causes problems for proprietary gapps
+        // users since the introduction of verification (on pre-4.2 Android),
+        // because the install intent says it's finished when it hasn't.
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        if(!prefs.getBoolean("cacheDownloaded", false)) {
+            for(File f : local_path.listFiles()) {
+                if(f.getName().endsWith(".apk")) {
+                    f.delete();
+                }
+            }
+        }
 
         File icon_path = DB.getIconsPath();
         Log.d("FDroid", "Icon path is " + icon_path.getPath());

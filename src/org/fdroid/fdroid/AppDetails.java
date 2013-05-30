@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import android.content.pm.PermissionInfo;
 import android.support.v4.view.MenuItemCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
@@ -207,7 +206,6 @@ public class AppDetails extends ListActivity {
 
     }
 
-    private boolean pref_cacheDownloaded;
     private boolean pref_expert;
     private boolean pref_permissions;
     private boolean resetRequired;
@@ -223,7 +221,6 @@ public class AppDetails extends ListActivity {
         // Get the preferences we're going to use in this Activity...
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        pref_cacheDownloaded = prefs.getBoolean("cacheDownloaded", false);
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
@@ -728,7 +725,6 @@ public class AppDetails extends ListActivity {
         private Downloader download;
         private ProgressDialog pd;
         private boolean updating;
-        private File localFile;
 
         public DownloadHandler(DB.Apk apk, String repoaddress) {
             download = new Downloader(apk, repoaddress);
@@ -739,7 +735,6 @@ public class AppDetails extends ListActivity {
         public DownloadHandler(DownloadHandler oldHandler) {
             if (oldHandler != null) {
                 download = oldHandler.download;
-                localFile = oldHandler.localFile;
             }
             startUpdates();
         }
@@ -769,7 +764,7 @@ public class AppDetails extends ListActivity {
             case DONE:
                 if (pd != null)
                     pd.dismiss();
-                installApk(localFile = download.localFile());
+                installApk(download.localFile());
                 finished = true;
                 break;
             case CANCELLED:
@@ -799,21 +794,6 @@ public class AppDetails extends ListActivity {
         public void cancel() {
             if (download != null)
                 download.interrupt();
-        }
-
-        public void cleanUp() {
-            if (localFile == null) {
-                Log.w("FDroid", "No APK to clean up!");
-                return;
-            }
-            // If we're not meant to be caching, delete the apk file we just
-            // installed (or maybe the user cancelled the install - doesn't
-            // matter) from the SD card...
-            if (!pref_cacheDownloaded) {
-                Log.d("FDroid", "Cleaning up: " + localFile.getPath());
-                localFile.delete();
-                localFile = null;
-            }
         }
 
         public void destroy() {
@@ -846,7 +826,6 @@ public class AppDetails extends ListActivity {
         switch (requestCode) {
         case REQUEST_INSTALL:
             if (downloadHandler != null) {
-                downloadHandler.cleanUp();
                 downloadHandler = null;
             }
             resetRequired = true;
