@@ -502,8 +502,7 @@ public class AppDetails extends ListActivity {
             return true;
         DB.Apk curver = app.getCurrentVersion();
         List<MenuItem> toShow = new ArrayList<MenuItem>(2);
-        if (app.installedVersion != null && curver != null
-                && !app.installedVersion.equals(curver.version)) {
+        if (app.hasUpdates == true) {
             toShow.add(menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
                     R.drawable.ic_menu_refresh));
         }
