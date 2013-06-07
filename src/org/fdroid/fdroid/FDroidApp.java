@@ -47,9 +47,14 @@ public class FDroidApp extends Application {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         if(!prefs.getBoolean("cacheDownloaded", false)) {
-            for(File f : local_path.listFiles()) {
-                if(f.getName().endsWith(".apk")) {
-                    f.delete();
+            File[] files = local_path.listFiles();
+            // files can be null if the SD card is not ready - we'll just
+            // ignore that and do it next time.
+            if(files != null) {
+                for(File f : files) {
+                    if(f.getName().endsWith(".apk")) {
+                        f.delete();
+                    }
                 }
             }
         }
