@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
-import org.fdroid.fdroid.AppListAdapter;
+import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.AppListView;
 

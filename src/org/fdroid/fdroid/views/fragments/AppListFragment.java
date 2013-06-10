@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AppListView;
 
 abstract class AppListFragment extends Fragment implements AdapterView.OnItemClickListener {

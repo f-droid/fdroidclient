@@ -4,6 +4,10 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import org.fdroid.fdroid.views.AppListAdapter;
+import org.fdroid.fdroid.views.AvailableAppListAdapter;
+import org.fdroid.fdroid.views.CanUpdateAppListAdapter;
+import org.fdroid.fdroid.views.InstalledAppListAdapter;
 
 import java.util.*;
 
@@ -48,9 +52,9 @@ public class AppListManager {
     public AppListManager(FDroid activity) {
         this.fdroidActivity = activity;
 
-        availableApps = new AppListAdapter(fdroidActivity);
-        installedApps = new AppListAdapter(fdroidActivity);
-        canUpgradeApps = new AppListAdapter(fdroidActivity);
+        availableApps  = new AvailableAppListAdapter(fdroidActivity);
+        installedApps  = new InstalledAppListAdapter(fdroidActivity);
+        canUpgradeApps = new CanUpdateAppListAdapter(fdroidActivity);
 
         // Needs to be created before createViews(), because that will use the
         // getCategoriesAdapter() accessor which expects this object...

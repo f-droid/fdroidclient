@@ -14,6 +14,26 @@
 	     android:layout_height="50dp"
 	     android:padding="4dp"/>
 
+  <LinearLayout android:id="@+id/status_icons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:padding="4dp">
+
+      <ImageView android:id="@+id/icon_status_has_updates"
+          android:layout_width="18dp"
+          android:layout_height="18dp"
+          android:gravity="end" />
+
+      <ImageView android:id="@+id/icon_status_installed"
+          android:layout_width="18dp"
+          android:layout_height="18dp"
+          android:gravity="end" />
+
+  </LinearLayout>
+
   <TextView android:id="@+id/name"
 	    android:textSize="18sp"
 	    android:textStyle="bold"
@@ -22,6 +42,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_toRightOf="@id/icon"
+	    android:layout_toLeftOf="@id/status_icons"
 	    android:paddingBottom="2dp"
 	    android:paddingLeft="1dp"/>
 
