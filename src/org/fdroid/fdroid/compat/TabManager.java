@@ -61,7 +61,7 @@ class OldTabManagerImpl extends TabManager {
      * dummy empty contents and then hook them up to our ViewPager.
      */
     public void createTabs() {
-        tabHost = new TabHost(parent);
+        tabHost = new TabHost(parent, null);
         tabHost.setLayoutParams(new TabHost.LayoutParams(
                 TabHost.LayoutParams.MATCH_PARENT, TabHost.LayoutParams.WRAP_CONTENT));
 
