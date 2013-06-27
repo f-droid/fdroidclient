@@ -736,16 +736,14 @@ public class DB {
         if (getinstalledinfo) {
 
             // We'll say an application has updates if it's installed AND the
-            // installed version is not the 'current' one AND the installed
-            // version is older than the current one.
+            // version is older than the current one
             for (App app : result) {
                 Apk curver = app.getCurrentVersion();
-                if (curver != null && app.installedVersion != null
-                        && !app.installedVersion.equals(curver.version)) {
-                    if (app.installedVerCode < curver.vercode) {
-                        app.hasUpdates = true;
-                        app.updateVersion = curver.version;
-                    }
+                if (curver != null
+                        && app.installedVersion != null
+                        && app.installedVerCode < curver.vercode) {
+                    app.hasUpdates = true;
+                    app.updateVersion = curver.version;
                 }
             }
         }
