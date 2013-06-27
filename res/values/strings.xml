@@ -36,7 +36,6 @@
 	<string name="about_mailc">admin@f-droid.org</string>
 	<string name="about_version">Version: </string>
 	<string name="about_website">Website</string>
-	<string name="about_not"> </string>
 
 	<string name="no_repo">You don\'t have any repositories configured!\n\nA
 		repository is a source of applications. To add one, press the MENU

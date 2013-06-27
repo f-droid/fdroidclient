@@ -115,7 +115,7 @@ public class AppDetails extends ListActivity {
             TextView version = (TextView) v.findViewById(R.id.version);
             boolean iscurrent = apk.vercode == app_currentvercode;
             version.setText(getString(R.string.version) + " " + apk.version
-                    + (iscurrent ? "*" : ""));
+                    + (iscurrent ? " *" : ""));
 
             TextView status = (TextView) v.findViewById(R.id.status);
             if (apk.vercode == app.installedVerCode
