@@ -29,18 +29,20 @@ import java.util.List;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
@@ -254,29 +256,34 @@ public class UpdateService extends IntentService implements ProgressListener {
                 Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
                         + ", apps after: " + newUpdates);
                 if (newUpdates > prevUpdates) {
-                    NotificationManager n = (NotificationManager) getSystemService(
-                            Context.NOTIFICATION_SERVICE);
-                    Notification notification = new Notification(R.drawable.icon,
-                            getString(R.string.fdroid_updates_available),
-                            System.currentTimeMillis());
-                    Context context = getApplicationContext();
-                    Intent notificationIntent = new Intent(UpdateService.this,
-                            FDroid.class);
-                    notificationIntent.putExtra(FDroid.EXTRA_TAB_UPDATE, true);
-                    PendingIntent contentIntent = PendingIntent.getActivity(
-                            UpdateService.this, 0, notificationIntent, 0);
-                    CharSequence notification_text;
-                    if (newUpdates > 1)
-                        notification_text = getString(
-                                R.string.many_updates_available, newUpdates);
-                    else
-                        notification_text = getString(
-                                R.string.one_update_available);
-                    notification.setLatestEventInfo(context,
-                        getString(R.string.app_name),
-                        notification_text, contentIntent);
-                    notification.flags |= Notification.FLAG_AUTO_CANCEL;
-                    n.notify(1, notification);
+                    NotificationCompat.Builder mBuilder =
+                            new NotificationCompat.Builder(this)
+                            .setSmallIcon(R.drawable.icon)
+                            .setLargeIcon(
+                    BitmapFactory.decodeResource(getResources(), R.drawable.icon))
+                            .setAutoCancel(true)
+                            .setContentTitle(getString(R.string.fdroid_updates_available));
+                    Intent notifyIntent = new Intent(this, FDroid.class)
+                            .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
+                    if (newUpdates > 1) {
+                        mBuilder.setContentText(getString(
+                                    R.string.many_updates_available, newUpdates));
+                      
+                    } else {
+                        mBuilder.setContentText(getString(
+                                    R.string.one_update_available));
+                    }
+                    TaskStackBuilder stackBuilder = TaskStackBuilder.create(this)
+                            .addParentStack(FDroid.class)
+                            .addNextIntent(notifyIntent);
+                    PendingIntent pendingIntent =
+                            stackBuilder.getPendingIntent(0,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                            );
+                    mBuilder.setContentIntent(pendingIntent);
+                    NotificationManager mNotificationManager =
+                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    mNotificationManager.notify(1, mBuilder.build());
                 }
             }
 
