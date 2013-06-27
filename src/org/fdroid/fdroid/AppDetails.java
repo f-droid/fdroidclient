@@ -450,7 +450,7 @@ public class AppDetails extends ListActivity {
                         sb.append("\t• " + permission.getName() + '\n');
                     } catch (NameNotFoundException e) {
                         Log.d( "FDroid",
-                                "Can't find permsission '" + permissionName + "'");
+                                "Can't find permission '" + permissionName + "'");
                     }
                 }
                 tv.setText(sb.toString());
