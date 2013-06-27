@@ -347,19 +347,21 @@ public class DB {
     private static final String TABLE_REPO = "fdroid_repo";
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (id integer primary key, address text not null, "
-            + "inuse integer not null, " + "priority integer not null,"
-            + "pubkey text, lastetag text);";
+            + "name text, description text, inuse integer not null, "
+            + "priority integer not null, pubkey text, lastetag text);";
 
     public static class Repo {
         public int id;
         public String address;
+        public String name;
+        public String description;
         public boolean inuse;
         public int priority;
         public String pubkey; // null for an unsigned repo
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 20;
+    private final int DBVersion = 21;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -377,6 +379,12 @@ public class DB {
         createAppApk(db);
     }
 
+    private static boolean columnExists(SQLiteDatabase db,
+            String table, String column) {
+        return (db.rawQuery( "select * from " + table + " limit 0,1", null )
+                .getColumnIndex(column) != -1);
+    }
+
     private class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
@@ -392,6 +400,10 @@ public class DB {
             ContentValues values = new ContentValues();
             values.put("address",
                     mContext.getString(R.string.default_repo_address));
+            values.put("name",
+                    mContext.getString(R.string.default_repo_name));
+            values.put("description",
+                    mContext.getString(R.string.default_repo_description));
             values.put("pubkey",
                     mContext.getString(R.string.default_repo_pubkey));
             values.put("inuse", 1);
@@ -402,6 +414,10 @@ public class DB {
             values = new ContentValues();
             values.put("address",
                     mContext.getString(R.string.default_repo_address2));
+            values.put("name",
+                    mContext.getString(R.string.default_repo_name2));
+            values.put("description",
+                    mContext.getString(R.string.default_repo_description2));
             values.put("pubkey",
                     mContext.getString(R.string.default_repo_pubkey));
             values.put("inuse", 0);
@@ -446,6 +462,23 @@ public class DB {
             // the repo table changes though, because it also clears the lastetag
             // fields which didn't always exist.
             resetTransient(db);
+
+            if (oldVersion < 21) {
+                if (!columnExists(db, TABLE_REPO, "name"))
+                    db.execSQL("alter table " + TABLE_REPO + " add column name text");
+                if (!columnExists(db, TABLE_REPO, "description"))
+                    db.execSQL("alter table " + TABLE_REPO + " add column description text");
+                ContentValues values = new ContentValues();
+                values.put("name", mContext.getString(R.string.default_repo_name));
+                values.put("description", mContext.getString(R.string.default_repo_description));
+                db.update(TABLE_REPO, values, "address = ?", new String[] {
+                    mContext.getString(R.string.default_repo_address) });
+                values.clear();
+                values.put("name", mContext.getString(R.string.default_repo_name2));
+                values.put("description", mContext.getString(R.string.default_repo_description2));
+                db.update(TABLE_REPO, values, "address = ?", new String[] {
+                    mContext.getString(R.string.default_repo_address2) });
+            }
 
         }
 
@@ -1027,18 +1060,20 @@ public class DB {
     public Repo getRepo(int id) {
         Cursor c = null;
         try {
-            c = db.query(TABLE_REPO, new String[] { "address", "inuse",
-                    "priority", "pubkey", "lastetag" },
+            c = db.query(TABLE_REPO, new String[] { "address", "name",
+                "description", "inuse", "priority", "pubkey", "lastetag" },
                     "id = " + Integer.toString(id), null, null, null, null);
             if (!c.moveToFirst())
                 return null;
             Repo repo = new Repo();
             repo.id = id;
             repo.address = c.getString(0);
-            repo.inuse = (c.getInt(1) == 1);
-            repo.priority = c.getInt(2);
-            repo.pubkey = c.getString(3);
-            repo.lastetag = c.getString(4);
+            repo.name = c.getString(1);
+            repo.description = c.getString(2);
+            repo.inuse = (c.getInt(3) == 1);
+            repo.priority = c.getInt(4);
+            repo.pubkey = c.getString(5);
+            repo.lastetag = c.getString(6);
             return repo;
         } finally {
             if (c != null)
@@ -1051,18 +1086,20 @@ public class DB {
         List<Repo> repos = new ArrayList<Repo>();
         Cursor c = null;
         try {
-            c = db.rawQuery(
-                    "select id, address, inuse, priority, pubkey, lastetag from "
-                            + TABLE_REPO + " order by priority", null);
+            c = db.rawQuery("select id, address, name, description, inuse, "
+                    + "priority, pubkey, lastetag from " + TABLE_REPO
+                            + " order by priority", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 Repo repo = new Repo();
                 repo.id = c.getInt(0);
                 repo.address = c.getString(1);
-                repo.inuse = (c.getInt(2) == 1);
-                repo.priority = c.getInt(3);
-                repo.pubkey = c.getString(4);
-                repo.lastetag = c.getString(5);
+                repo.name = c.getString(2);
+                repo.description = c.getString(3);
+                repo.inuse = (c.getInt(4) == 1);
+                repo.priority = c.getInt(5);
+                repo.pubkey = c.getString(6);
+                repo.lastetag = c.getString(7);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -1083,6 +1120,8 @@ public class DB {
 
     public void updateRepoByAddress(Repo repo) {
         ContentValues values = new ContentValues();
+        values.put("name", repo.name);
+        values.put("description", repo.description);
         values.put("inuse", repo.inuse);
         values.put("priority", repo.priority);
         values.put("pubkey", repo.pubkey);
@@ -1098,10 +1137,12 @@ public class DB {
                 new String[] { repo.address });
     }
 
-    public void addRepo(String address, int priority, String pubkey,
-            boolean inuse) {
+    public void addRepo(String address, String name, String description,
+            int priority, String pubkey, boolean inuse) {
         ContentValues values = new ContentValues();
         values.put("address", address);
+        values.put("name", name);
+        values.put("description", description);
         values.put("inuse", inuse ? 1 : 0);
         values.put("priority", priority);
         values.put("pubkey", pubkey);
