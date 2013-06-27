@@ -31,6 +31,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import org.fdroid.fdroid.views.AppListAdapter;
+import org.fdroid.fdroid.views.AvailableAppListAdapter;
 
 public class SearchResults extends ListActivity {
 
@@ -45,7 +47,7 @@ public class SearchResults extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        applist = new AppListAdapter(this);
+        applist = new AvailableAppListAdapter(this);
         setContentView(R.layout.searchresults);
 
         Intent intent = getIntent();
