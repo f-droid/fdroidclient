@@ -433,8 +433,9 @@ public class DB {
             // key in sqlite - table must be recreated)
             if (oldVersion < 20) {
                 List<Repo> oldrepos = new ArrayList<Repo>();
-                Cursor c = db.rawQuery("select address, inuse, pubkey from "
-                        + TABLE_REPO, null);
+                Cursor c = db.query(TABLE_REPO,
+                        new String[] { "address", "inuse", "pubkey" },
+                        null, null, null, null, null);
                 c.moveToFirst();
                 while (!c.isAfterLast()) {
                     Repo repo = new Repo();
@@ -558,8 +559,8 @@ public class DB {
         List<String> result = new ArrayList<String>();
         Cursor c = null;
         try {
-            c = db.rawQuery("select distinct category from " + TABLE_APP
-                    + " order by category", null);
+            c = db.query(true, TABLE_APP, new String[] { "category" },
+                    null, null, null, null, "category", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 String s = c.getString(0);
@@ -1048,8 +1049,8 @@ public class DB {
         values.put("compatible", upapk.compatible ? 1 : 0);
         if (oldapk != null) {
             db.update(TABLE_APK, values,
-                    "id = ? and vercode = " + Integer.toString(oldapk.vercode),
-                    new String[] { oldapk.id });
+                    "id = ? and vercode = ?",
+                    new String[] { oldapk.id, Integer.toString(oldapk.vercode) });
         } else {
             db.insert(TABLE_APK, null, values);
         }
@@ -1062,7 +1063,7 @@ public class DB {
         try {
             c = db.query(TABLE_REPO, new String[] { "address", "name",
                 "description", "inuse", "priority", "pubkey", "lastetag" },
-                    "id = " + Integer.toString(id), null, null, null, null);
+                    "id = ?", new String[] { Integer.toString(id) }, null, null, null);
             if (!c.moveToFirst())
                 return null;
             Repo repo = new Repo();
@@ -1086,9 +1087,9 @@ public class DB {
         List<Repo> repos = new ArrayList<Repo>();
         Cursor c = null;
         try {
-            c = db.rawQuery("select id, address, name, description, inuse, "
-                    + "priority, pubkey, lastetag from " + TABLE_REPO
-                            + " order by priority", null);
+            c = db.query(TABLE_REPO, new String[] { "id", "address", "name",
+                    "description", "inuse", "priority", "pubkey", "lastetag" },
+                    null, null, null, null, "priority");
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 Repo repo = new Repo();
@@ -1159,8 +1160,9 @@ public class DB {
                 // connected to it...
                 Cursor c = null;
                 try {
-                    c = db.rawQuery("select id from " + TABLE_REPO
-                            + " where address = '" + address + "'", null);
+                    c = db.query(TABLE_REPO, new String[] { "id" },
+                            "address = ?", new String[] { address },
+                            null, null, null, null);
                     c.moveToFirst();
                     if (!c.isAfterLast()) {
                         db.delete(TABLE_APK, "repo = ?",
