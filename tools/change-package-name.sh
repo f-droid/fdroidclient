@@ -10,7 +10,7 @@
 
 FDROID_PACKAGE=${1:-org.your.fdroid}
 FDROID_NAME=${2:-Your FDroid}
-FDROID_PATH=${PACKAGE//./\/}
+FDROID_PATH=${FDROID_PACKAGE//./\/}
 
 mkdir -p "src/${FDROID_PATH}"
 perl -pi -e"s|org/fdroid/fdroid/R.java|${FDROID_PATH}/R.java|g" build.xml
