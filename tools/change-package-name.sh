@@ -8,19 +8,19 @@
 ## org.your.fdroid will be the new package id
 ## "Your FDroid" will be the name of the application
 
-PACKAGE=${1:-org.your.fdroid}
-NAME=${2:-Your FDroid}
-PATH=${PACKAGE//./\/}
+FDROID_PACKAGE=${1:-org.your.fdroid}
+FDROID_NAME=${2:-Your FDroid}
+FDROID_PATH=${PACKAGE//./\/}
 
-mkdir -p "src/$PATH"
-perl -pi -e"s|org/fdroid/fdroid/R.java|$PATH/R.java|g" build.xml
+mkdir -p "src/${FDROID_PATH}"
+perl -pi -e"s|org/fdroid/fdroid/R.java|${FDROID_PATH}/R.java|g" build.xml
 
-find src/org/fdroid/ res/ -type f |xargs -n 1 perl -pi -e"s/org.fdroid.fdroid(?=\W)/$PACKAGE/g"
-perl -pi -e"s|org.fdroid.fdroid|$PACKAGE|g" AndroidManifest.xml
+find src/org/fdroid/ res/ -type f |xargs -n 1 perl -pi -e"s/org.fdroid.fdroid(?=\W)/${FDROID_PACKAGE}/g"
+perl -pi -e"s|org.fdroid.fdroid|${FDROID_PACKAGE}|g" AndroidManifest.xml
 
-mv src/org/fdroid/fdroid/* src/$PATH/
+mv src/org/fdroid/fdroid/* src/${FDROID_PATH}/
 rm -rf src/org/fdroid/fdroid/
 
-perl -pi -e"s|FDroid|$NAME|g" build.xml
-find res/ -type f -print0 | xargs -0 sed -i "s/F-Droid/$NAME/g"
+perl -pi -e"s|FDroid|${FDROID_NAME}|g" build.xml
+find res/ -type f -print0 | xargs -0 sed -i "s/F-Droid/${FDROID_NAME}/g"
 
