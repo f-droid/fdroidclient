@@ -55,6 +55,7 @@ public class SearchResults extends ListActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             mQuery = intent.getStringExtra(SearchManager.QUERY);
         }
+        updateView();
     }
 
     @Override
@@ -62,11 +63,11 @@ public class SearchResults extends ListActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction()))
             mQuery = intent.getStringExtra(SearchManager.QUERY);
         super.onNewIntent(intent);
+        updateView();
     }
 
     @Override
     protected void onResume() {
-        updateView();
         super.onResume();
     }
 
