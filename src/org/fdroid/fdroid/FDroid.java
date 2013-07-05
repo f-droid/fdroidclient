@@ -79,6 +79,8 @@ public class FDroid extends FragmentActivity {
         createViews();
         getTabManager().createTabs();
 
+        // Start a search by just typing
+        setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL)
 
         Intent i = getIntent();
         if (i.hasExtra("uri")) {
