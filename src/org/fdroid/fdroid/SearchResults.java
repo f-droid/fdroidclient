@@ -50,11 +50,15 @@ public class SearchResults extends ListActivity {
         applist = new AvailableAppListAdapter(this);
         setContentView(R.layout.searchresults);
 
+        // Start a search by just typing
+        setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
+
         Intent intent = getIntent();
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             mQuery = intent.getStringExtra(SearchManager.QUERY);
         }
+
         updateView();
     }
 
