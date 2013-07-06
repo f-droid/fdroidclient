@@ -20,13 +20,8 @@ abstract public class AppListAdapter extends BaseAdapter {
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
 
-    private boolean pref_compact;
-
     public AppListAdapter(Context context) {
         mContext = context;
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
-        pref_compact = prefs.getBoolean("compactlayout", false);
     }
 
     abstract protected boolean showStatusUpdate();
@@ -78,7 +73,9 @@ abstract public class AppListAdapter extends BaseAdapter {
         ImageView iconUpdates   = (ImageView)v.findViewById(R.id.icon_status_has_updates);
         ImageView iconInstalled = (ImageView)v.findViewById(R.id.icon_status_installed);
 
-        if (pref_compact) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+
+        if (prefs.getBoolean("compactlayout", false)) {
 
             status.setVisibility(View.GONE);
             license.setVisibility(View.GONE);
