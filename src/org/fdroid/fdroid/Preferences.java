@@ -74,7 +74,7 @@ public class Preferences extends PreferenceActivity implements
             } finally {
                 DB.releaseDB();
             }
-            ((FDroidApp) getApplication()).invalidateApps();
+            ((FDroidApp) getApplication()).invalidateAllApps();
 
             File dp = DB.getDataPath();
             deleteAll(dp);

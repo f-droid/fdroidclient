@@ -248,7 +248,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     sendStatus(STATUS_INFO, getString(R.string.status_downloading_icons));
                     for (DB.App app : acceptedapps)
                         getIcon(app, repos);
-                    ((FDroidApp) getApplication()).invalidateApps();
+                    ((FDroidApp) getApplication()).invalidateAllApps();
                 }
 
             }

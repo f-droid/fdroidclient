@@ -653,6 +653,17 @@ public class DB {
         }
     }
 
+    // Repopulate the details for the given app.
+    // If 'apkrepo' is non-zero, only apks from that repo are
+    // populated.
+    public void repopulateDetails(App app, int apkRepo) {
+        populateAppDetails(app);
+
+        for (Apk apk : app.apks) {
+            populateApkDetails(apk, apkRepo);
+        }
+    }
+
     // Return a list of apps matching the given criteria. Filtering is
     // also done based on compatibility and anti-features according to
     // the user's current preferences.
@@ -782,6 +793,57 @@ public class DB {
         }
 
         return result;
+    }
+
+    public List<App> refreshApps(List<App> apps, List<String> invalidApps) {
+
+        List<PackageInfo> installedPackages = mContext.getPackageManager()
+                .getInstalledPackages(0);
+        long startTime = System.currentTimeMillis();
+        for (String appid : invalidApps) {
+            App app = null;
+            int index = -1;
+            for (App oldapp : apps) {
+                index++;
+                if (oldapp.id.equals(appid)) {
+                    app = oldapp;
+                    break;
+                }
+            }
+
+            if (app == null) continue;
+
+            PackageInfo installed = null;
+
+            for (PackageInfo appInfo : installedPackages) {
+                if (appInfo.packageName.equals(appid)) {
+                    installed = appInfo;
+                    break;
+                }
+            }
+
+            if (installed != null) {
+                app.installedVersion = installed.versionName;
+                app.installedVerCode = installed.versionCode;
+            } else {
+                app.installedVersion = null;
+                app.installedVerCode = 0;
+            }
+
+            Apk curver = app.getCurrentVersion();
+            if (curver != null
+                    && app.installedVersion != null
+                    && app.installedVerCode < curver.vercode) {
+                app.hasUpdates = true;
+                app.updateVersion = curver.version;
+            }
+
+            apps.set(index, app);
+        }
+        Log.d("FDroid", "Refreshing " + invalidApps.size() + " apps took "
+                + (System.currentTimeMillis() - startTime) + " ms");
+
+        return apps;
     }
 
     public List<String> doSearch(String query) {

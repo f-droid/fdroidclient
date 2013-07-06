@@ -65,6 +65,7 @@ public class FDroidApp extends Application {
             icon_path.mkdir();
 
         apps = null;
+        invalidApps = new ArrayList<String>();
         Context ctx = getApplicationContext();
         DB.initDB(ctx);
         UpdateService.schedule(ctx);
@@ -76,20 +77,27 @@ public class FDroidApp extends Application {
 
     // Set when something has changed (database or installed apps) so we know
     // we should invalidate the apps.
-    private volatile boolean appsInvalid = false;
+    private volatile boolean appsAllInvalid = false;
     private Semaphore appsInvalidLock = new Semaphore(1, false);
+    private List<String> invalidApps;
 
     // Set apps invalid. Call this when the database has been updated with
     // new app information, or when the installed packages have changed.
-    public void invalidateApps() {
+    public void invalidateAllApps() {
         try {
             appsInvalidLock.acquire();
-            appsInvalid = true;
+            appsAllInvalid = true;
         } catch (InterruptedException e) {
             // Don't care
         } finally {
             appsInvalidLock.release();
         }
+    }
+
+    // Invalidate a single app
+    public void invalidateApp(String id) {
+        Log.d("FDroid", "Invalidating "+id);
+        invalidApps.add(id);
     }
 
     // Get a list of all known applications. Should not be called when the
@@ -100,9 +108,9 @@ public class FDroidApp extends Application {
         boolean invalid = false;
         try {
             appsInvalidLock.acquire();
-            invalid = appsInvalid;
+            invalid = appsAllInvalid;
             if (invalid) {
-                appsInvalid = false;
+                appsAllInvalid = false;
                 Log.d("FDroid", "Dropping cached app data");
             }
         } catch (InterruptedException e) {
@@ -115,6 +123,14 @@ public class FDroidApp extends Application {
             try {
                 DB db = DB.getDB();
                 apps = db.getApps(true);
+            } finally {
+                DB.releaseDB();
+            }
+        } else if (!invalidApps.isEmpty()) {
+            try {
+                DB db = DB.getDB();
+                apps = db.refreshApps(apps, invalidApps);
+                invalidApps.clear();
             } finally {
                 DB.releaseDB();
             }
