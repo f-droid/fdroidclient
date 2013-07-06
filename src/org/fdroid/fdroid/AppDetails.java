@@ -390,6 +390,7 @@ public class AppDetails extends ListActivity {
 
         tv = (TextView) infoView.findViewById(R.id.description);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
+        tv.setTextIsSelectable(true);
         // Need this to add the unimplemented support for ordered and unordered
         // lists to Html.fromHtml().
         class HtmlTagHandler implements TagHandler {
@@ -422,6 +423,7 @@ public class AppDetails extends ListActivity {
 
         tv = (TextView) infoView.findViewById(R.id.summary);
         tv.setText(app.summary);
+        tv.setTextIsSelectable(true);
 
         tv = (TextView) infoView.findViewById(R.id.appid);
         if (pref_expert) {
