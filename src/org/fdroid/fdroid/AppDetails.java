@@ -233,7 +233,10 @@ public class AppDetails extends ListActivity {
     protected void onResume() {
         super.onResume();
         if (resetRequired) {
-            reset();
+            if (!reset()) {
+                finish();
+                return;
+            }
             resetRequired = false;
         }
         resetViews();
@@ -288,7 +291,8 @@ public class AppDetails extends ListActivity {
 
     // Reset the display and list contents. Used when entering the activity, and
     // also when something has been installed/uninstalled.
-    private void reset() {
+    // Return true if the app was found, false otherwise.
+    private boolean reset() {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = null;
@@ -301,7 +305,7 @@ public class AppDetails extends ListActivity {
         }
         if (app == null) {
             finish();
-            return;
+            return false;
         }
 
         // Make sure the app is populated.
@@ -336,7 +340,7 @@ public class AppDetails extends ListActivity {
                 mInstalledSignature = null;
             }
         }
-
+        return true;
     }
 
     private void resetViews() {
