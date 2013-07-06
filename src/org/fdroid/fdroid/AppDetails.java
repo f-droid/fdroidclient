@@ -291,6 +291,12 @@ public class AppDetails extends ListActivity {
         mInstalledSigID = old.mInstalledSigID;
     }
 
+    // Use the new textview select stuff only when available
+    private void setSelectable(TextView tv) {
+        if (Utils.hasApi(11))
+            tv.setTextIsSelectable(true);
+    }
+
     // Reset the display and list contents. Used when entering the activity, and
     // also when something has been installed/uninstalled.
     // Return true if the app was found, false otherwise.
@@ -386,7 +392,7 @@ public class AppDetails extends ListActivity {
 
         tv = (TextView) infoView.findViewById(R.id.description);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
-        tv.setTextIsSelectable(true);
+        setSelectable(tv);
 
         // Need this to add the unimplemented support for ordered and unordered
         // lists to Html.fromHtml().
@@ -423,7 +429,7 @@ public class AppDetails extends ListActivity {
 
         tv = (TextView) infoView.findViewById(R.id.summary);
         tv.setText(app.summary);
-        tv.setTextIsSelectable(true);
+        setSelectable(tv);
 
         tv = (TextView) infoView.findViewById(R.id.permissions_list);
 
