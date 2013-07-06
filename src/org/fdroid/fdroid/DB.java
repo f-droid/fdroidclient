@@ -647,8 +647,7 @@ public class DB {
         }
 
         for (Apk apk : app.apks) {
-            boolean isPopulated = apk.detail_hash != null;
-            if (!isPopulated) {
+            if (apk.detail_hash == null) {
                 populateApkDetails(apk, apkRepo);
             }
         }

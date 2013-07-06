@@ -172,6 +172,7 @@ public class AppDetails extends ListActivity {
     private boolean stateRetained;
 
     LinearLayout headerView;
+    View infoView;
 
     private Context mctx = this;
 
@@ -202,6 +203,20 @@ public class AppDetails extends ListActivity {
         ApkListAdapter la = new ApkListAdapter(this, null);
         setListAdapter(la);
 
+        mPm = getPackageManager();
+        // Get the preferences we're going to use in this Activity...
+        AppDetails old = (AppDetails) getLastNonConfigurationInstance();
+        if (old != null) {
+            copyState(old);
+        } else {
+            if (!reset()) {
+                finish();
+                return;
+            }
+            resetRequired = false;
+        }
+        startViews();
+
     }
 
     private boolean pref_expert;
@@ -213,23 +228,6 @@ public class AppDetails extends ListActivity {
     private String mInstalledSigID;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mPm = getPackageManager();
-        // Get the preferences we're going to use in this Activity...
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        pref_expert = prefs.getBoolean("expert", false);
-        pref_permissions = prefs.getBoolean("showPermissions", false);
-        AppDetails old = (AppDetails) getLastNonConfigurationInstance();
-        if (old != null) {
-            copyState(old);
-        } else {
-            resetRequired = true;
-        }
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         if (resetRequired) {
@@ -239,7 +237,11 @@ public class AppDetails extends ListActivity {
             }
             resetRequired = false;
         }
-        resetViews();
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        pref_expert = prefs.getBoolean("expert", false);
+        pref_permissions = prefs.getBoolean("showPermissions", false);
+        updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
 
@@ -343,11 +345,10 @@ public class AppDetails extends ListActivity {
         return true;
     }
 
-    private void resetViews() {
+    private void startViews() {
 
-        // Repopulate the list...
+        // Populate the list...
         ApkListAdapter la = (ApkListAdapter) getListAdapter();
-        la.items.clear();
         for (DB.Apk apk : app.apks)
             la.addItem(apk);
         la.notifyDataSetChanged();
@@ -356,7 +357,7 @@ public class AppDetails extends ListActivity {
         // ends, and the description) into the appropriate place, if we're in
         // landscape mode. In portrait mode, we put it in the listview's
         // header..
-        View infoView = View.inflate(this, R.layout.appinfo, null);
+        infoView = View.inflate(this, R.layout.appinfo, null);
         LinearLayout landparent = (LinearLayout) findViewById(R.id.landleft);
         headerView.removeAllViews();
         if (landparent != null) {
@@ -382,15 +383,11 @@ public class AppDetails extends ListActivity {
         tv = (TextView) findViewById(R.id.license);
         tv.setText(app.license);
         tv = (TextView) findViewById(R.id.status);
-        if (app.installedVersion == null)
-            tv.setText(getString(R.string.details_notinstalled));
-        else
-            tv.setText(getString(R.string.details_installed,
-                    app.installedVersion));
 
         tv = (TextView) infoView.findViewById(R.id.description);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
         tv.setTextIsSelectable(true);
+
         // Need this to add the unimplemented support for ordered and unordered
         // lists to Html.fromHtml().
         class HtmlTagHandler implements TagHandler {
@@ -421,14 +418,54 @@ public class AppDetails extends ListActivity {
         tv.setText(Html.fromHtml(app.detail_description, null,
                 new HtmlTagHandler()));
 
+        tv = (TextView) infoView.findViewById(R.id.appid);
+        tv.setText(app.id);
+
         tv = (TextView) infoView.findViewById(R.id.summary);
         tv.setText(app.summary);
         tv.setTextIsSelectable(true);
 
+        tv = (TextView) infoView.findViewById(R.id.permissions_list);
+
+        CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
+        if (permsList == null) {
+            tv.setText(getString(R.string.no_permissions) + '\n');
+        } else {
+            Iterator<String> permissions = permsList.iterator();
+            StringBuilder sb = new StringBuilder();
+            while (permissions.hasNext()) {
+                String permissionName = permissions.next();
+                try {
+                    Permission permission = new Permission(this, permissionName);
+                    sb.append("\t• " + permission.getName() + '\n');
+                } catch (NameNotFoundException e) {
+                    Log.d( "FDroid",
+                            "Can't find permission '" + permissionName + "'");
+                }
+            }
+            tv.setText(sb.toString());
+        }
+        tv = (TextView) infoView.findViewById(R.id.permissions);
+        tv.setText(getString(
+                R.string.permissions_for_long, app.apks.get(0).version));
+    }
+
+    private void updateViews() {
+
+        // Refresh the list...
+        ApkListAdapter la = (ApkListAdapter) getListAdapter();
+        la.notifyDataSetChanged();
+
+        TextView tv = (TextView) findViewById(R.id.status);
+        if (app.installedVersion == null)
+            tv.setText(getString(R.string.details_notinstalled));
+        else
+            tv.setText(getString(R.string.details_installed,
+                    app.installedVersion));
+
         tv = (TextView) infoView.findViewById(R.id.appid);
         if (pref_expert) {
             tv.setVisibility(View.VISIBLE);
-            tv.setText(app.id);
         } else {
             tv.setVisibility(View.GONE);
         }
@@ -441,34 +478,18 @@ public class AppDetails extends ListActivity {
             tv.setVisibility(View.GONE);
         }
 
-        tv = (TextView) infoView.findViewById(R.id.permissions_list);
         if (pref_permissions) {
-            CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
-            if (permsList == null) {
-                tv.setText(getString(R.string.no_permissions) + '\n');
-            } else {
-                Iterator<String> permissions = permsList.iterator();
-                StringBuilder sb = new StringBuilder();
-                while (permissions.hasNext()) {
-                    String permissionName = permissions.next();
-                    try {
-                        Permission permission = new Permission(this, permissionName);
-                        sb.append("\t• " + permission.getName() + '\n');
-                    } catch (NameNotFoundException e) {
-                        Log.d( "FDroid",
-                                "Can't find permission '" + permissionName + "'");
-                    }
-                }
-                tv.setText(sb.toString());
-            }
             tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setText(getString(
-                    R.string.permissions_for_long, app.apks.get(0).version));
+            tv.setVisibility(View.VISIBLE);
+            tv = (TextView) infoView.findViewById(R.id.permissions_list);
+            tv.setVisibility(View.VISIBLE);
         } else {
-            tv.setVisibility(View.GONE);
             tv = (TextView) infoView.findViewById(R.id.permissions);
+            tv.setVisibility(View.GONE);
+            tv = (TextView) infoView.findViewById(R.id.permissions_list);
             tv.setVisibility(View.GONE);
         }
+
     }
 
     @Override
