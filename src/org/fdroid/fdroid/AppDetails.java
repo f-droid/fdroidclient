@@ -510,7 +510,7 @@ public class AppDetails extends ListActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            install(app.id);
+                            install();
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -523,7 +523,7 @@ public class AppDetails extends ListActivity {
             AlertDialog alert = ask_alrt.create();
             alert.show();
         } else
-            install(app.id);
+            install();
     }
 
     @Override
@@ -601,7 +601,7 @@ public class AppDetails extends ListActivity {
             // Note that this handles updating as well as installing.
             curapk = app.getCurrentVersion();
             if (curapk != null)
-                install(app.id);
+                install();
             return true;
 
         case UNINSTALL:
@@ -641,7 +641,7 @@ public class AppDetails extends ListActivity {
     }
 
     // Install the version of this app denoted by 'curapk'.
-    private void install(final String id) {
+    private void install() {
 
         String ra = null;
         try {
@@ -666,7 +666,7 @@ public class AppDetails extends ListActivity {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             downloadHandler = new DownloadHandler(curapk,
-                                    repoaddress, id);
+                                    repoaddress);
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -694,7 +694,7 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(curapk, repoaddress, id);
+        downloadHandler = new DownloadHandler(curapk, repoaddress);
     }
 
     private void removeApk(String id) {
@@ -711,7 +711,7 @@ public class AppDetails extends ListActivity {
 
     }
 
-    private void installApk(File file, String id) {
+    private void installApk(File file) {
         Intent intent = new Intent();
         intent.setAction(android.content.Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file.getPath()),
@@ -753,10 +753,8 @@ public class AppDetails extends ListActivity {
         private Downloader download;
         private ProgressDialog pd;
         private boolean updating;
-        private String id;
 
-        public DownloadHandler(DB.Apk apk, String repoaddress, String appid) {
-            id = appid;
+        public DownloadHandler(DB.Apk apk, String repoaddress) {
             download = new Downloader(apk, repoaddress);
             download.start();
             startUpdates();
@@ -794,7 +792,7 @@ public class AppDetails extends ListActivity {
             case DONE:
                 if (pd != null)
                     pd.dismiss();
-                installApk(download.localFile(), id);
+                installApk(download.localFile());
                 finished = true;
                 break;
             case CANCELLED:
