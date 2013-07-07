@@ -621,12 +621,7 @@ public class AppDetails extends ListActivity {
             return true;
 
         case MARKET:
-            try {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("market://details?id=" + app.id)));
-            } catch (android.content.ActivityNotFoundException e) {
-                tryOpenUri("https://play.google.com/store/apps/details?id=" + app.id);
-            }
+            tryOpenUri("https://play.google.com/store/apps/details?id=" + app.id);
             return true;
 
         // TODO: Separate donate links if there are many (e.g. paypal and
