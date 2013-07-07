@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -47,6 +48,8 @@ public class SearchResults extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Utils.hasApi(11))
+            getActionBar().setDisplayHomeAsUpEnabled(true);
         applist = new AvailableAppListAdapter(this);
         setContentView(R.layout.searchresults);
 

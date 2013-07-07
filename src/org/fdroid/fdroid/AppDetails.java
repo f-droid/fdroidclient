@@ -30,6 +30,7 @@ import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
 import org.xml.sax.XMLReader;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -180,6 +181,8 @@ public class AppDetails extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        if (Utils.hasApi(11))
+            getActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.appdetails);
 

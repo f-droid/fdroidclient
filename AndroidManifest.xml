@@ -53,7 +53,8 @@
         <activity android:name="Settings" />
         <activity
             android:name="AppDetails"
-            android:exported="true" >
+            android:exported="true"
+            android:parentActivityName="FDroid" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -61,12 +62,22 @@
 
                 <data android:scheme="fdroid.app" />
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="FDroid" />
         </activity>
-        <activity android:name="Preferences" />
+        <activity
+            android:name="Preferences"
+            android:parentActivityName="FDroid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="FDroid" />
+        </activity>
         <activity
             android:name="SearchResults"
             android:exported="true"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop"
+            android:parentActivityName="FDroid" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -74,6 +85,9 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="FDroid" />
         </activity>
 
         <receiver android:name="StartupReceiver" >

@@ -20,6 +20,7 @@ package org.fdroid.fdroid;
 
 import java.io.File;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -33,6 +34,8 @@ public class Preferences extends PreferenceActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Utils.hasApi(11))
+            getActionBar().setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
         for (String prefkey : new String[] { "reset", "ignoreTouchscreen",
                 "showIncompatible" }) {
