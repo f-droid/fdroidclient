@@ -28,7 +28,8 @@
     <application
         android:name="FDroidApp"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:supportsRtl="true" >
         <activity
             android:name="FDroid"
             android:configChanges="keyboardHidden|orientation|screenSize" >
