@@ -795,6 +795,10 @@ public class DB {
         return result;
     }
 
+
+    // Alternative to getApps() that only refreshes the installation details
+    // of those apps in invalidApps. Much faster when returning from
+    // installs/uninstalls, where getApps() was already called before.
     public List<App> refreshApps(List<App> apps, List<String> invalidApps) {
 
         List<PackageInfo> installedPackages = mContext.getPackageManager()
