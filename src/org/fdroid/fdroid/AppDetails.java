@@ -706,15 +706,17 @@ public class AppDetails extends ListActivity {
         Uri uri = Uri.fromParts("package", pkginfo.packageName, null);
         Intent intent = new Intent(Intent.ACTION_DELETE, uri);
         startActivityForResult(intent, REQUEST_UNINSTALL);
+        ((FDroidApp) getApplication()).invalidateApp(id);
 
     }
 
-    private void installApk(File file) {
+    private void installApk(File file, String id) {
         Intent intent = new Intent();
         intent.setAction(android.content.Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file.getPath()),
                 "application/vnd.android.package-archive");
         startActivityForResult(intent, REQUEST_INSTALL);
+        ((FDroidApp) getApplication()).invalidateApp(id);
     }
 
     private void launchApk(String id) {
@@ -751,8 +753,10 @@ public class AppDetails extends ListActivity {
         private Downloader download;
         private ProgressDialog pd;
         private boolean updating;
+        private String id;
 
         public DownloadHandler(DB.Apk apk, String repoaddress) {
+            id = apk.id;
             download = new Downloader(apk, repoaddress);
             download.start();
             startUpdates();
@@ -790,7 +794,7 @@ public class AppDetails extends ListActivity {
             case DONE:
                 if (pd != null)
                     pd.dismiss();
-                installApk(download.localFile());
+                installApk(download.localFile(), id);
                 finished = true;
                 break;
             case CANCELLED:

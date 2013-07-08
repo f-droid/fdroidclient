@@ -28,7 +28,7 @@ public class PackageReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context ctx, Intent intent) {
         String appid = intent.getData().getSchemeSpecificPart();
-        Log.d("FDroid", "PackageReceiver invalidating "+appid);
+        Log.d("FDroid", "PackageReceiver received "+appid);
         ((FDroidApp) ctx.getApplicationContext()).invalidateApp(appid);
     }
 

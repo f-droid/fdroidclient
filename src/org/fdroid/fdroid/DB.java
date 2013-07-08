@@ -800,7 +800,9 @@ public class DB {
         List<PackageInfo> installedPackages = mContext.getPackageManager()
                 .getInstalledPackages(0);
         long startTime = System.currentTimeMillis();
+        List<String> refreshedApps = new ArrayList<String>();
         for (String appid : invalidApps) {
+            if (refreshedApps.contains(appid)) continue;
             App app = null;
             int index = -1;
             for (App oldapp : apps) {
@@ -839,8 +841,9 @@ public class DB {
             }
 
             apps.set(index, app);
+            refreshedApps.add(appid);
         }
-        Log.d("FDroid", "Refreshing " + invalidApps.size() + " apps took "
+        Log.d("FDroid", "Refreshing " + refreshedApps.size() + " apps took "
                 + (System.currentTimeMillis() - startTime) + " ms");
 
         return apps;
