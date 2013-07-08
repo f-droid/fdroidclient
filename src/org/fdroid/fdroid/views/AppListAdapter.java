@@ -62,9 +62,6 @@ abstract public class AppListAdapter extends BaseAdapter {
             init = true;
         }
 
-        ImageView iconUpdates   = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
-        ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
-
         TextView name = (TextView) convertView.findViewById(R.id.name);
         TextView summary = (TextView) convertView.findViewById(R.id.summary);
         TextView status = (TextView) convertView.findViewById(R.id.status);
@@ -87,17 +84,19 @@ abstract public class AppListAdapter extends BaseAdapter {
             icon.setImageResource(android.R.drawable.sym_def_app_icon);
         }
 
-        iconUpdates.setVisibility(View.GONE);
-        iconInstalled.setVisibility(View.GONE);
-
         if (init) {
-            iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
-            iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
             SharedPreferences prefs = PreferenceManager
                     .getDefaultSharedPreferences(mContext);
             pref_compactlayout = prefs.getBoolean("compactlayout", false);
 
             if (pref_compactlayout == true) {
+
+                ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
+                ImageView iconUpdates   = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
+
+                iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
+                iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
+
                 status.setVisibility(View.GONE);
                 license.setVisibility(View.GONE);
 
@@ -106,6 +105,7 @@ abstract public class AppListAdapter extends BaseAdapter {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
+                summaryLayout.addRule(RelativeLayout.RIGHT_OF, R.id.icon);
                 summaryLayout.addRule(RelativeLayout.END_OF, R.id.icon);
                 summary.setLayoutParams(summaryLayout);
 

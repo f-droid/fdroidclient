@@ -28,11 +28,13 @@
       <ImageView android:id="@+id/icon_status_has_updates"
           android:layout_width="18dp"
           android:layout_height="18dp"
+          android:visibility="gone"
           android:gravity="end" />
 
       <ImageView android:id="@+id/icon_status_installed"
           android:layout_width="18dp"
           android:layout_height="18dp"
+          android:visibility="gone"
           android:gravity="end" />
 
   </LinearLayout>
