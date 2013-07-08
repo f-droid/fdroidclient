@@ -30,6 +30,7 @@
   <string name="about_version">"Версія: "</string>
   <string name="about_website">Сайт</string>
   <string name="no_repo">Слід додати репозиторій — джерело програм.\n\nНатисніть кнопку пристрою «меню»,\nоберіть пункт додання та введіть адресу.\n\nТиповий репозиторій: http://f-droid.org/repo</string>
+  <string name="inst">Встановлено</string>
   <string name="not_inst">Не встановлено</string>
   <string name="installed_update">Наявна нова версія:</string>
   <string name="ok">Гаразд</string>
@@ -45,6 +46,9 @@
   <string name="tab_noninstalled">Наявне</string>
   <string name="tab_updates">Оновлення</string>
   <string name="update_available">Наявні оновлення</string>
+  <string name="one_update_available">Наявні оновлення</string>
+  <string name="many_updates_available">Наявні оновлення</string>
+  <string name="fdroid_updates_available">Наявні оновлення</string>
   <string name="process_wait_title">Зачекайте</string>
   <string name="process_update_msg">Оновлюю список програм...</string>
   <string name="connection_error">Нема з’єднання.</string>
@@ -79,7 +83,6 @@
   <string name="menu_donate">Пожертва</string>
   <string name="details_installed">Встановлена версія %s</string>
   <string name="details_notinstalled">Не встановлено</string>
-  <string name="inst">Встановлено</string>
   <string name="corrupt_download">Отриманий файл пошкоджений</string>
   <string name="download_cancelled">Звантаження скасовано</string>
   <string name="antifeatures">«Антифункції»</string>

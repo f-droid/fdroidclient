@@ -18,19 +18,21 @@
   <string name="maintenance">Mantentzea</string>
   <string name="notify_updates_available">Jakinarazi eguneraketa berriak eskuragarri daudenean</string>
   <string name="update_apps_list">Eguneratu aplikazio-zerrenda biltegiarekin automatikoki</string>
-  <string name="update_history">Eguneratu biltegiak</string>
+  <string name="update_history">Eguneratu historia</string>
   <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
   <string name="never">inoiz ez</string>
   <string name="automatic_repo_scan">Eskaneatu biltegiak automatikoki</string>
   <string name="app_name">F-Droid</string>
   <string name="about_title">F-Droid-i buruz</string>
-  <string name="about_desc">Jatorrian Aptoide-n oinarritua.\nGNU GPLv2 lizentziapean argitaratua.</string>
+  <string name="about_desc">Jatorrian Aptoide-n oinarritua.\nGNU GPLv3 lizentziapean argitaratua.</string>
   <string name="about_site">Webgunea:</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Bertsioa:</string>
   <string name="about_website">Webgunea</string>
   <string name="no_repo">Ez daukazu konfiguratutako biltegirik!\n\nBiltegi bat aplikazioen iturburu bat da. Bat gehitzeko, sakatu orain MENU botoia eta idatzi URL-a.\n\nBiltegi baten helbideak honen antzekoa izan ohi da: http://f-droid.org/repo</string>
+  <string name="inst">Instalatuta</string>
   <string name="not_inst">Instalatu gabea</string>
+  <string name="added_on">%s(e)an gehitua</string>
   <string name="installed_update">Eguneraketa posiblea - Ber.:</string>
   <string name="ok">Ados</string>
   <string name="yes">Bai</string>
@@ -45,6 +47,9 @@
   <string name="tab_noninstalled">Eskuragarri</string>
   <string name="tab_updates">Eguneraketak</string>
   <string name="update_available">Eguneraketak eskuragarri</string>
+  <string name="one_update_available">Eguneraketa 1 eskuragarri.</string>
+  <string name="many_updates_available">%d eguneraketa eskuragarri.</string>
+  <string name="fdroid_updates_available">F-Droid eguneraketak eskuragarri</string>
   <string name="process_wait_title">Mesedez itxaron</string>
   <string name="process_update_msg">Aplikazio-zerrenda eguneratzen...</string>
   <string name="connection_error">Ezin izan da sarera konektatu.</string>
@@ -68,6 +73,7 @@
   <string name="menu_search">Bilatu</string>
   <string name="menu_add_repo">Biltegi berria</string>
   <string name="menu_rem_repo">Ezabatu biltegia</string>
+  <string name="menu_launch">Exekutatu</string>
   <string name="menu_install">Instalatu</string>
   <string name="menu_uninstall">Desinstalatu</string>
   <string name="menu_website">Webgunea</string>
@@ -78,7 +84,6 @@
   <string name="menu_donate">Egin dohaintza</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
   <string name="details_notinstalled">Instalatu gabe</string>
-  <string name="inst">Instalatuta</string>
   <string name="corrupt_download">Deskargatutako fitxategia hondatuta dago</string>
   <string name="download_cancelled">Deskarga bertan behera utzita</string>
   <string name="antifeatures">Anti-ezaugarriak</string>
@@ -92,6 +97,7 @@
   <string name="antinonfreenetlong">Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak</string>
   <string name="antinonfreedep">Mendekotasunak</string>
   <string name="antinonfreedeplong">Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak</string>
+  <string name="display">Bistaratu</string>
   <string name="expert">Aditua</string>
   <string name="expert_mode">Gaitu aditu modua</string>
   <string name="search_hint">Bilatu aplikazioak</string>
@@ -108,4 +114,12 @@
   <string name="category_whatsnew">Zer da berria</string>
   <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
   <string name="status_processing_xml">Aplikazioa eskuratzen hemendik:\n</string>
+  <string name="status_connecting_to_repo">%1$s(e)ra\nkonektatzen</string>
+  <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen...</string>
+  <string name="no_permissions">Ez da baimenik erabiltzen.</string>
+  <string name="permissions_for_long">%s bertsioarentzako baimenak</string>
+  <string name="showPermissions">Erakutsi baimenak</string>
+  <string name="showPermissions_long">Bistaratu aplikazio batek behar dituen baimenen zerrenda</string>
+  <string name="no_handler_app">Ez daukazu %s maneiatu dezakeen aplikaziorik instalatuta</string>
+  <string name="compactlayout">Diseinu trinkoa</string>
 </resources>

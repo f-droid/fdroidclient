@@ -1,16 +1,16 @@
-# Portuguese (Brazil) translations for PACKAGE.
-# Copyright (C) 2011 ORGANIZATION
+# Uighur translations for PACKAGE.
+# Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the PACKAGE project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-07-08 17:26+0100\n"
-"PO-Revision-Date: 2013-06-10 15:44+0200\n"
-"Last-Translator: Cárlisson <cg@bardo.ws>\n"
-"Language-Team: pt_BR <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"PO-Revision-Date: 2013-06-08 04:23+0200\n"
+"Last-Translator: Abduqadir <sahran.ug@gmail.com>\n"
+"Language-Team: ug <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,17 +19,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Encontramos %1$d aplicativos correspondentes a '%2$s':"
+msgstr "بۇ '%2$s'غا ماس كېلىدىغان %1$d ئەپنى تاپتى:"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Encontramos um aplicativo correspondente a '%s':"
+msgstr "'%s' غا ماس كېلىدىغان بىر ئەپنى تاپتى:"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Não foram encontrados aplicativos correspondentes a '%s'"
+msgstr "'%s' غا ماس كېلىدىغان ھېچقانداق ئەپنى تاپالمىدى"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -38,18 +38,16 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"A nova versão é assinada com uma chave diferente da antiga. Para instalar"
-" a nova versão, desinstale primeiro a antiga. Por favor, faça isso e "
-"tente novamente. (Note que a desinstalação apaga todos os dados internos "
-"armazenados pelo aplicativo)"
+"بۇ يېڭى نەشرى كونا نەشرىنىڭكى بىلەن پەرقلىق ئاچقۇچ بىلەن ئىمزا قويۇلغان. "
+"ئالدى بىلەن كونا نەشرىنى ئۆچۈرۈۋېتىپ ئاندىن يېڭى نەشرىنى ئورنىتىڭ. بۇ "
+"مەشغۇلاتنى قىلىپ ئاندىن قايتا سىناڭ. (دىققەت كونا نەشرى ئۆچۈرۈلسە شۇ "
+"ئەپتە ساقلانغان ھەممە سانلىق مەلۇماتلارمۇ ئۆچۈرۈلىدۇ)"
 
 msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
-msgstr ""
-"O Android diz que esse pacote não é compatível com o seu dispositivo. "
-"Quer tentar instalá-lo mesmo assim?"
+msgstr "بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -57,84 +55,84 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
-"Você está tentando desatualizar este aplicativo. Isso pode causar mal "
-"funcionamento e eventualmente perda de dados. Você quer tentar "
-"desatualizá-lo mesmo assim?"
+"بۇ ئەپنىڭ دەرىجىسىنى تۆۋەنلىتىشنى سىناۋاتىسىز. بۇ مەشغۇلاتنى ئىجرا قىلىش "
+"داۋامىدا كاشىلا كۆرۈلۈشى ۋە سانلىق مەلۇماتلىرىڭىزنى يوقۇتۇپ قويۇشىڭىز "
+"مۇمكىن. ئۇنى سىناپ دەرىجىسىنى تۆۋەنلىتىۋېرەمسىز؟"
 
 msgctxt "version"
 msgid "Version"
-msgstr "Versão"
+msgstr "نەشرى"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr "%d versões disponíveis"
+msgstr "%d نەشرى بار"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr "%d versão disponível"
+msgstr "%d نەشرى بار"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Notificar"
+msgstr "ئۇقتۇرۇش"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr "Armazenamento"
+msgstr "ساقلىغۇچ"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Cache de aplicativos baixado"
+msgstr "ئەپلەر غەملەككە چۈشۈرۈلدى"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr "Manter no cartão SD os arquivos apk baixados"
+msgstr "چۈشۈرگەن apk ھۆججەتلەرنى SD كارتىدا ساقلاپ قال"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr "Atualizações"
+msgstr "يېڭىلانمىلار"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr "Limpar todos os dados em cache"
+msgstr "غەملەنگەنلەرنىڭ ھەممىسىنى تازىلا"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr "Reiniciar"
+msgstr "ئەسلىگە قايتۇر"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr "Manutenção"
+msgstr "ئاسراش"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Notificar quando novas atualizações estiverem disponíveis"
+msgstr "يېڭى يېڭىلانمىلار بولسا ئەسكەرت"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositórios"
+msgstr "ئەپ تىزىمىنى خەزىنەدىن ئۆزلۈكىدىن يېڭىلا"
 
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Atualizar histórico"
+msgstr "يېڭىلاش تارىخى"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr "Dias para mostrar apps novos/atualizados"
+msgstr "يېڭى/يېڭىلانغان ئەپلەرنى كۆرسىتىدىغان كۈن سانى"
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr "Última consulta aos repositórios: %s"
+msgstr "ئاخىرقى repo تەكشۈرۈش: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr "nunca"
+msgstr "ھەرگىز"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr "Consulta automática aos repositórios"
+msgstr "ئاپتوماتىك repo تەكشۈرۈش"
 
 msgctxt "app_name"
 msgid "F-Droid"
@@ -142,31 +140,31 @@ msgstr "F-Droid"
 
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "Sobre o F-Droid"
+msgstr "F-Droid ھەققىدە"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
-"Baseado originalmente no Aptoide.\n"
-"Lançado sob a licença GNU GPLv3."
+"دەسلەپتە Aptoide نى ئاساس قىلغان.\n"
+"بۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr "Site:"
+msgstr "تور تۇرا:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "E-mail:"
+msgstr "تورخەت:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr "Versão:"
+msgstr "نەشرى:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr "Site"
+msgstr "تورتۇرا"
 
 msgctxt "no_repo"
 msgid ""
@@ -177,331 +175,329 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
-"Você não tem nenhum repositório configurado!!\n"
+"سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!\n"
 "\n"
-"Um repositório é uma fonte de aplicativos. Para adicionar um, pressione o"
-" botão MENU e digite a URL.\n"
+"خەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، تىزىملىك توپچىنى بېسىپ، ئاندىن"
+" مەنبەنىڭ تور ئادرېسىنى كىرگۈزۈڭ.\n"
 "\n"
-"Um endereço do repositório é algo similar a isto: http://f-droid.org/repo"
+"خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr "Instalado"
+msgstr "ئورنىتىلغان"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr "Não Instalado"
+msgstr "ئورنىتىلمىغان"
 
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr "Adicionado em %s"
+msgstr "%s دا قوشۇلغان"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr "Possível atualizar - Ver.:"
+msgstr "يېڭىلانما بار - نەشرى:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr "OK"
+msgstr "جەزملە"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr "Sim"
+msgstr "ھەئە"
 
 msgctxt "no"
 msgid "No"
-msgstr "Não"
+msgstr "ياق"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Adicionar novo repositório"
+msgstr "يېڭى خەزىنە قوش"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr "Adicionar"
+msgstr "قوش"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "ۋاز كەچ"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Escolha o repositório para remover"
+msgstr "چىقىرىۋېتىدىغان خەزىنەنى تاللاڭ"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr "Não foi possível conectar ao servidor!"
+msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Atualizar repositórios"
+msgstr "خەزىنە يېڭىلا"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr "Instalado"
+msgstr "ئورنىتىلغان"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr "Disponível"
+msgstr "ئىشلىتىشچان"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr "Atualizações"
+msgstr "يېڭىلانمىلار"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr "Atualizações disponíveis"
+msgstr "يېڭىلانمىلار بار"
 
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "1 atualização disponível."
+msgstr "1 يېڭىلانما بار."
 
 #, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "%d atualizações disponíveis."
+msgstr "%d يېڭىلانما بار."
 
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Atualizações do F-Droid Disponíveis"
+msgstr "F-Droid يېڭىلانمىلىرى بار"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Aguarde"
+msgstr "سەل كۈتۈڭ"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Atualizando a lista de aplicativos..."
+msgstr "ئەپ تىزىمىنى يېڭىلاۋاتىدۇ…"
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr "Não foi possível conectar à rede."
+msgstr "تورغا باغلىنالمىدى."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr "Tempo esgotado"
+msgstr "ۋاقىت ھالقىش"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr "Não foi possível conectar ao servidor!"
+msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
 
 msgctxt "download"
 msgid "Download"
-msgstr "Baixar"
+msgstr "چۈشۈر"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Baixando aplicativo de"
+msgstr "ئەپكە ئېرىشىش ئورنى "
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Endereço do repositório"
+msgstr "خەزىنە ئادرېسى"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr "Instalado:"
+msgstr "ئورنىتىلغان: "
 
 msgctxt "install"
 msgid "Install"
-msgstr "Instalar"
+msgstr "ئورنات"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr "Desinstalar"
+msgstr "ئۆچۈر"
 
 msgctxt "update"
 msgid "Update!"
-msgstr "Atualizar!"
+msgstr "يېڭىلا!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
-"Existem atualizações disponíveis para alguns aplicativos instalados.\n"
-"Você quer vê-las?"
+"ئورنىتىلغان بەزى ئەپلەرنىڭ يېڭىلانمىسى بار.\n"
+"ئۇلارنى كۆرەمسىز؟"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"A lista de repositórios usados mudou.\n"
-"Você deseja atualizá-los?"
+"ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.\n"
+"ئۇلارنى يېڭىلامسىز؟"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
-"Não foi possível se conectar ao servidor de arquivos ou o arquivo apk "
-"está corrompido!"
+msgstr "مۇلازىمېتىرغا باغلىنالمىدى ياكى apk ھۆججەت بۇزۇق!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr "Pegando aplicativo de:\n"
+msgstr "ئەپلەرگە ئېرىشىش ئورنى: \n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
-msgstr "Atualizar repositórios"
+msgstr "خەزىنە يېڭىلا"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Gerenciar Repositórios"
+msgstr "خەزىنە باشقۇر"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr "Preferências"
+msgstr "مايىللىقلار"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr "Sobre"
+msgstr "ھەققىدە"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr "Pesquisa"
+msgstr "ئىزدە"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Novo Repositório"
+msgstr "يېڭى خەزىنە"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Remover Repositório"
+msgstr "خەزىنەنى چىقىرىۋەت"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr "Rodar"
+msgstr "ئىجرا قىل"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr "Instalar"
+msgstr "ئورنات"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr "Desinstalar"
+msgstr "ئۆچۈر"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr "Site"
+msgstr "تورتۇرا"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr "Questões"
+msgstr "مەسىلىلەر"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Código Fonte"
+msgstr "ئەسلى كود"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr "Loja"
+msgstr "بازار"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr "Atualizar"
+msgstr "يېڭىلا"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Fazer doação"
+msgstr "ئىئانە"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr "Versão %s instalada"
+msgstr "%s نەشرى ئورنىتىلدى"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr "Não instalado"
+msgstr "ئورنىتىلمىدى"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr "O arquivo baixado está corrompido"
+msgstr "چۈشۈرگەن ھۆججەت بۇرۇق"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr "Download cancelado"
+msgstr "چۈشۈرۈشتىن ۋاز كەچتى"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr "Anticaracterísticas"
+msgstr "خاس ئىقتىدارلار"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr "Publicidade"
+msgstr "ئېلان"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Mostrar aplicativos que contenham publicidade"
+msgstr "ئېلان بار ئەپلەرنى كۆرسەت"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr "Rastreamento"
+msgstr "ئىزلاش"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Mostrar aplicativos que rastreiam e relatam sua atividade"
+msgstr "پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدىغان ئەپلەرنى كۆرسەت"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr "Complementos"
+msgstr "قىستۇرما"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Mostrar aplicativos que promovem complementos não-livres"
+msgstr "ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr "Serviços de Rede"
+msgstr "تور مۇلازىمەتلىرى"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Mostrar aplicativos que promovem serviços de rede não-livre"
+msgstr "ھەقسىز بولمىغان تور مۇلازىمەتلىرىنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr "Dependências"
+msgstr "بېقىندىلار"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Mostrar aplicativos que dependem de aplicativos não-livres"
+msgstr "ھەقسىز بولمىغان باشقا ئەپلەرگە بېقىنىدىغان ئەپلەرنى كۆرسىتىدۇ"
 
 msgctxt "display"
 msgid "Display"
-msgstr "Exibição"
+msgstr "كۆرسەت"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr "Especialista"
+msgstr "ئالىي"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Ativar modo especialista"
+msgstr "ئالىي ھالەتنى قوزغات"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Pesquisar aplicativos"
+msgstr "ئەپ ئىزدە"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr "Modo de sincronia do banco de dados"
+msgstr "ساندان قەدەمداش ھالەت"
 
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
-msgstr "Definir o valor da flag de sincronia do SQLite"
+msgstr "بۇ SQLite قەدەمداش بايراقىنىڭ قىممىتىنى تەڭشەيدۇ"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr "Compatibilidade de aplicativo"
+msgstr "ئەپ ماسلىشىشچانلىقى"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr "Aplicativos incompatíveis"
+msgstr "ماسلاشمايدىغان ئەپلەر"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Mostrar aplicativos escritos para versões mais novas do Android ou para "
-"hardware diferente"
+"يېڭى نەشرىدىكى ئاندرويىد ياكى باشقا قاتتىق دېتال ئۈسكۈنىسى ئۈچۈن يازغان "
+"ئەپلەرنى كۆرسەت"
 
 msgctxt "rooted"
 msgid "Root"
@@ -509,27 +505,27 @@ msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Mostrar aplicativos que requerem privilégios de root"
+msgstr "root ھوقۇقى زۆرۈر بولغان ئەپلەرنى كۆرسەت"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr "Ignorar tela sensível ao toque"
+msgstr "سەزگۈر ئېكرانغا پەرۋا قىلما"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr "Sempre incluir aplicativos que requerem tela sensível ao toque"
+msgstr "ھەمىشە سەزگۈر ئېكرانلىق ئەپلەرنى ئۆز ئىچىگە ئالىدۇ"
 
 msgctxt "category_all"
 msgid "All"
-msgstr "Todos"
+msgstr "ھەممىسى"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr "O que há de novo"
+msgstr "يېڭىلىقلار"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr "Atualizado Recentemente"
+msgstr "يېقىنقى يېڭىلانغانلار"
 
 #. status_download takes four parameters:       - Repository (url)       -
 #. Downloaded size (human readable)       - Total size (human readable)       -
@@ -541,8 +537,8 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
-"Baixando\n"
-"%2$s / %3$s (%4$d%%) de \n"
+"چۈشۈرۈۋاتىدۇ\n"
+"%2$s / %3$s (%4$d%%)\n"
 "%1$s"
 
 #, c-format
@@ -552,8 +548,8 @@ msgid ""
 "%2$d of %3$d from\n"
 "%1$s"
 msgstr ""
-"Processando aplicativo\n"
-"%2$d de %3$d, de \n"
+"ئەپنى بىر تەرەپ قىلىۋاتىدۇ\n"
+"%2$d of %3$d\n"
 "%1$s"
 
 #, c-format
@@ -562,12 +558,12 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
-"Conectando-se a\n"
-"%1$s"
+"%1$s غا \n"
+"باغلىنىۋاتىدۇ"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr "Verificando compatibilidade de aplicativos com o seu dispositivo..."
+msgstr "ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…"
 
 msgctxt "status_downloading_icons"
 msgid "Downloading new icons…"
@@ -575,29 +571,29 @@ msgstr ""
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr "Nenhuma permissão utilizada."
+msgstr "ھېچقانداق ھوقۇق ئىشلەتمەيدۇ."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr "Permissões para a versão %s"
+msgstr "%s نەشرىنىڭ ھوقۇقلىرى"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr "Mostrar permissões"
+msgstr "ھوقۇقلارنى كۆرسەت"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr "Mostrar uma lista de permissões que um aplicativo requer"
+msgstr "ئەپكە زۆرۈر بولغان ھوقۇق تىزىمىنى كۆرسىتىدۇ"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
-msgstr "Você não tem aplicativo instalado que lide com %s"
+msgstr "سىز %s نى بىر تەرەپ قىلىدىغان ھېچقانداق ئەپ ئورناتمىغان"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr "Leiaute compacto"
+msgstr "ئىخچام جايلاشتۇرۇش"
 
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
@@ -605,5 +601,5 @@ msgstr ""
 
 #~ msgctxt "compactlayout_long"
 #~ msgid "Hide app summaries when listing apps"
-#~ msgstr ""
+#~ msgstr "ئەپ تىزىمىنى كۆرسەتكەندە ئەپ ئۈزۈندىلىرىنى يوشۇرىدۇ"
 

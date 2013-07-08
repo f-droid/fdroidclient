@@ -27,6 +27,7 @@
   <string name="about_version">Različica:</string>
   <string name="about_website">Spletišče</string>
   <string name="no_repo">Nastavili niste nobenega skladišča!\n\nSkladišče je vir aplikacij. Dodate ga lahko s pritiskom na gumb MENI in vnosom naslova URL.\n\nNaslov skladišča je podoben temu: http://f-droid.org/repo</string>
+  <string name="inst">Nameščeno</string>
   <string name="not_inst">Ni nameščeno</string>
   <string name="installed_update">Možna posodobitev - Raz.:</string>
   <string name="ok">V redu</string>
@@ -42,6 +43,9 @@
   <string name="tab_noninstalled">Na razpolago</string>
   <string name="tab_updates">Posodobitve</string>
   <string name="update_available">Na razpolago so posodobitve</string>
+  <string name="one_update_available">Na razpolago so posodobitve</string>
+  <string name="many_updates_available">Na razpolago so posodobitve</string>
+  <string name="fdroid_updates_available">Na razpolago so posodobitve</string>
   <string name="process_wait_title">Počakajte prosim</string>
   <string name="process_update_msg">Poteka posodobitev spiska aplikacij ...</string>
   <string name="connection_error">Povezava z omrežjem ni uspela.</string>
@@ -75,7 +79,6 @@
   <string name="menu_donate">Prispevek</string>
   <string name="details_installed">Nameščena različica %s</string>
   <string name="details_notinstalled">Ni nameščeno</string>
-  <string name="inst">Nameščeno</string>
   <string name="corrupt_download">Prejeta datoteka je poškodovana</string>
   <string name="download_cancelled">Prenos je preklican</string>
   <string name="antifeatures">Negativne lastnosti</string>

@@ -5,6 +5,7 @@
   <string name="searchres_noapps">Não foram encontrados aplicativos correspondentes a \'%s\'</string>
   <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga todos os dados internos armazenados pelo aplicativo)</string>
   <string name="installIncompatible">O Android diz que esse pacote não é compatível com o seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
+  <string name="installDowngrade">Você está tentando desatualizar este aplicativo. Isso pode causar mal funcionamento e eventualmente perda de dados. Você quer tentar desatualizá-lo mesmo assim?</string>
   <string name="version">Versão</string>
   <string name="n_versions_available">%d versões disponíveis</string>
   <string name="n_version_available">%d versão disponível</string>
@@ -31,7 +32,9 @@
   <string name="about_version">Versão:</string>
   <string name="about_website">Site</string>
   <string name="no_repo">Você não tem nenhum repositório configurado!!\n\nUm repositório é uma fonte de aplicativos. Para adicionar um, pressione o botão MENU e digite a URL.\n\nUm endereço do repositório é algo similar a isto: http://f-droid.org/repo</string>
+  <string name="inst">Instalado</string>
   <string name="not_inst">Não Instalado</string>
+  <string name="added_on">Adicionado em %s</string>
   <string name="installed_update">Possível atualizar - Ver.:</string>
   <string name="ok">OK</string>
   <string name="yes">Sim</string>
@@ -46,6 +49,9 @@
   <string name="tab_noninstalled">Disponível</string>
   <string name="tab_updates">Atualizações</string>
   <string name="update_available">Atualizações disponíveis</string>
+  <string name="one_update_available">1 atualização disponível.</string>
+  <string name="many_updates_available">%d atualizações disponíveis.</string>
+  <string name="fdroid_updates_available">Atualizações do F-Droid Disponíveis</string>
   <string name="process_wait_title">Aguarde</string>
   <string name="process_update_msg">Atualizando a lista de aplicativos...</string>
   <string name="connection_error">Não foi possível conectar à rede.</string>
@@ -80,7 +86,6 @@
   <string name="menu_donate">Fazer doação</string>
   <string name="details_installed">Versão %s instalada</string>
   <string name="details_notinstalled">Não instalado</string>
-  <string name="inst">Instalado</string>
   <string name="corrupt_download">O arquivo baixado está corrompido</string>
   <string name="download_cancelled">Download cancelado</string>
   <string name="antifeatures">Anticaracterísticas</string>
@@ -94,6 +99,7 @@
   <string name="antinonfreenetlong">Mostrar aplicativos que promovem serviços de rede não-livre</string>
   <string name="antinonfreedep">Dependências</string>
   <string name="antinonfreedeplong">Mostrar aplicativos que dependem de aplicativos não-livres</string>
+  <string name="display">Exibição</string>
   <string name="expert">Especialista</string>
   <string name="expert_mode">Ativar modo especialista</string>
   <string name="search_hint">Pesquisar aplicativos</string>
@@ -118,4 +124,5 @@
   <string name="showPermissions">Mostrar permissões</string>
   <string name="showPermissions_long">Mostrar uma lista de permissões que um aplicativo requer</string>
   <string name="no_handler_app">Você não tem aplicativo instalado que lide com %s</string>
+  <string name="compactlayout">Leiaute compacto</string>
 </resources>

@@ -5,6 +5,7 @@
   <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller l\'application écrasera les données enregistrées par l\'application).</string>
   <string name="installIncompatible">Android dit que ce paquetage n\'est pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
+  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous continuer ?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versions disponibles</string>
   <string name="n_version_available">%d version disponible</string>
@@ -31,7 +32,9 @@
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
   <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
+  <string name="inst">Installée</string>
   <string name="not_inst">Pas installée</string>
+  <string name="added_on">Ajouté le %s</string>
   <string name="installed_update">Mise à jour possible - Ver.:</string>
   <string name="ok">OK</string>
   <string name="yes">Oui</string>
@@ -46,6 +49,9 @@
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Mises à jour</string>
   <string name="update_available">Mises à jour disponibles</string>
+  <string name="one_update_available">1 mise à jour est disponible.</string>
+  <string name="many_updates_available">%d mises à jour sont disponibles.</string>
+  <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
   <string name="process_wait_title">Patientez</string>
   <string name="process_update_msg">Mise à jour de la liste d\'applications...</string>
   <string name="connection_error">Connection au réseau impossible.</string>
@@ -80,7 +86,6 @@
   <string name="menu_donate">Faire un don</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
-  <string name="inst">Installée</string>
   <string name="corrupt_download">Le fichier téléchargé est corrompu</string>
   <string name="download_cancelled">Téléchargement annulé</string>
   <string name="antifeatures">Anti-fonctionnalités</string>
@@ -94,6 +99,7 @@
   <string name="antinonfreenetlong">Montrer les applications qui promeuvent des services réseaux privateurs</string>
   <string name="antinonfreedep">Dépendances</string>
   <string name="antinonfreedeplong">Montrer les applications qui dépendent d\'autres applications non libres</string>
+  <string name="display">Affichage</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Activer le mode expert</string>
   <string name="search_hint">Recherche d\'applications</string>
@@ -109,5 +115,15 @@
   <string name="category_all">Tout</string>
   <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
-  <string name="status_processing_xml">Réception d\'application de:\n</string>
+  <string name="status_download">Téléchargement\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
+  <string name="status_processing_xml">Prise en compte de l\'application\n%2$d de %3$d depuis\n%1$s</string>
+  <string name="status_connecting_to_repo">Connexion à\n%1$s</string>
+  <string name="status_checking_compatibility">Vérification de la compatibilité des applis avec votre appareil…</string>
+  <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
+  <string name="permissions_for_long">Autorisations pour la version %s</string>
+  <string name="showPermissions">Afficher les autorisations</string>
+  <string name="showPermissions_long">Afficher la liste des permissions que nécessite l\'application</string>
+  <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
+  <string name="compactlayout">Affichage compact</string>
+  <string name="compactlayout_long">Cacher les résumés sur la liste des applications</string>
 </resources>

@@ -28,6 +28,7 @@
   <string name="about_version">Versie:</string>
   <string name="about_website">Website</string>
   <string name="no_repo">U hebt geen bonnen geconfigureerd!\n\nEen bron is een lijst van applicaties. Om er een toe te voegen, druk de MENU-knop nu en voer een URL in.\n\nEen bron-adres ziet er ongeveer uit als: http://f-droid.org/repo</string>
+  <string name="inst">Geïnstalleerd</string>
   <string name="not_inst">Niet geïnstalleerd</string>
   <string name="installed_update">Update mogelijk - Ver.:</string>
   <string name="ok">OK</string>
@@ -43,6 +44,9 @@
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
   <string name="update_available">Updates beschikbaar</string>
+  <string name="one_update_available">Updates beschikbaar</string>
+  <string name="many_updates_available">Updates beschikbaar</string>
+  <string name="fdroid_updates_available">Updates beschikbaar</string>
   <string name="process_wait_title">Even geduld aub</string>
   <string name="process_update_msg">Applicatie-lijst vernieuwen</string>
   <string name="connection_error">Kan niet verbinden met het netwerk</string>
@@ -77,7 +81,6 @@
   <string name="menu_donate">Doneer</string>
   <string name="details_installed">Versie %s geinstalleerd</string>
   <string name="details_notinstalled">Niet geinstalleerd</string>
-  <string name="inst">Geïnstalleerd</string>
   <string name="corrupt_download">Gedownloade bestand is corrupt</string>
   <string name="download_cancelled">Download geannuleerd</string>
   <string name="antifeatures">Anti-Functies</string>

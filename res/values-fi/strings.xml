@@ -30,6 +30,7 @@
   <string name="about_version">Versio:</string>
   <string name="about_website">Verkkosivu</string>
   <string name="no_repo">Sovelluslähteitä ei ole määritetty!\n\nSovelluslähde on paikka, josta voidaan ladata sovelluksia. Lisätäksesi sellaisen paina MENU-näppäintä nyt ja anna URL-osoite.\n\nSovelluslähteen osoite näyttää tälläiseltä: http://f-droid.org/repo</string>
+  <string name="inst">Asennettu</string>
   <string name="not_inst">Ei asennettu</string>
   <string name="installed_update">Päivittäminen mahdollista - Ver.:</string>
   <string name="ok">OK</string>
@@ -45,6 +46,9 @@
   <string name="tab_noninstalled">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
   <string name="update_available">Päivityksiä saatavilla</string>
+  <string name="one_update_available">Päivityksiä saatavilla</string>
+  <string name="many_updates_available">Päivityksiä saatavilla</string>
+  <string name="fdroid_updates_available">Päivityksiä saatavilla</string>
   <string name="process_wait_title">Odota hetki</string>
   <string name="process_update_msg">Päivitetään sovelluslistaa...</string>
   <string name="connection_error">Verkkoyhteyttä ei voitu muodostaa.</string>
@@ -79,7 +83,6 @@
   <string name="menu_donate">Lahjoita</string>
   <string name="details_installed">Versio %s asennettu</string>
   <string name="details_notinstalled">Ei asennettu</string>
-  <string name="inst">Asennettu</string>
   <string name="corrupt_download">Ladattu tiedosto on viallinen</string>
   <string name="download_cancelled">Lataus peruutettu</string>
   <string name="antifeatures">Anti-Toiminnot</string>

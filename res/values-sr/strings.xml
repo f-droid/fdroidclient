@@ -27,6 +27,7 @@
   <string name="about_version">Верзија:</string>
   <string name="about_website">Веб страница</string>
   <string name="no_repo">Нисте конфигурисали ни једну ризницу!\n\nРизнице су места одакле се скидају апликације. Да би сте додали једну, притисните тастер МЕНИ и унесите адресу.\n\nАдреса ризнице би личила на ово: http://f-droid.org/repo</string>
+  <string name="inst">Инсталирана</string>
   <string name="not_inst">Није Инсталирана</string>
   <string name="installed_update">Могуће је ажурирати - Вер.:</string>
   <string name="ok">ПОТВРДИ</string>
@@ -42,6 +43,9 @@
   <string name="tab_noninstalled">На располагању</string>
   <string name="tab_updates">"Нове верзије "</string>
   <string name="update_available">Нове верзије на располагању</string>
+  <string name="one_update_available">Нове верзије на располагању</string>
+  <string name="many_updates_available">Нове верзије на располагању</string>
+  <string name="fdroid_updates_available">Нове верзије на располагању</string>
   <string name="process_wait_title">Сачекајте</string>
   <string name="process_update_msg">Ажурира се листа апликација...</string>
   <string name="connection_error">Није било могуће накачити се на мрежу.</string>
@@ -75,7 +79,6 @@
   <string name="menu_donate">Ажурирај</string>
   <string name="details_installed">Верзија %s инсталирана</string>
   <string name="details_notinstalled">Није Инсталирана</string>
-  <string name="inst">Инсталирана</string>
   <string name="corrupt_download">Скинута датотека је покварена</string>
   <string name="antifeatures">Непожељне Karakteristike</string>
   <string name="antiads">Огласи</string>

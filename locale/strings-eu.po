@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-21 11:38+0100\n"
-"PO-Revision-Date: 2012-11-28 22:06+0200\n"
+"POT-Creation-Date: 2013-07-08 17:26+0100\n"
+"PO-Revision-Date: 2013-06-05 00:43+0200\n"
 "Last-Translator: Asier <asier.iturralde@gmail.com>\n"
 "Language-Team: eu <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -112,10 +112,9 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Eguneratu aplikazio-zerrenda biltegiarekin automatikoki"
 
-#, fuzzy
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Eguneratu biltegiak"
+msgstr "Eguneratu historia"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
@@ -142,14 +141,13 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "F-Droid-i buruz"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Jatorrian Aptoide-n oinarritua.\n"
-"GNU GPLv2 lizentziapean argitaratua."
+"GNU GPLv3 lizentziapean argitaratua."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -195,7 +193,7 @@ msgstr "Instalatu gabea"
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "%s(e)an gehitua"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -253,20 +251,18 @@ msgctxt "update_available"
 msgid "Updates available"
 msgstr "Eguneraketak eskuragarri"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Eguneraketak eskuragarri"
+msgstr "Eguneraketa 1 eskuragarri."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Eguneraketak eskuragarri"
+msgstr "%d eguneraketa eskuragarri."
 
-#, fuzzy
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Eguneraketak eskuragarri"
+msgstr "F-Droid eguneraketak eskuragarri"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -340,7 +336,6 @@ msgctxt "download_alrt"
 msgid "Getting application from:\n"
 msgstr "Aplikazioa eskuratzen hemendik:\n"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Eguneratu biltegiak"
@@ -371,7 +366,7 @@ msgstr "Ezabatu biltegia"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Exekutatu"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -470,7 +465,7 @@ msgstr "Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak"
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Bistaratu"
 
 msgctxt "expert"
 msgid "Expert"
@@ -559,38 +554,48 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"%1$s(e)ra\n"
+"konektatzen"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
+msgstr "Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen..."
+
+msgctxt "status_downloading_icons"
+msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Ez da baimenik erabiltzen."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "%s bertsioarentzako baimenak"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Erakutsi baimenak"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Bistaratu aplikazio batek behar dituen baimenen zerrenda"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
-msgstr ""
+msgstr "Ez daukazu %s maneiatu dezakeen aplikaziorik instalatuta"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Diseinu trinkoa"
 
 msgctxt "compactlayout_long"
-msgid "Hide app summaries when listing apps"
+msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "compactlayout_long"
+#~ msgid "Hide app summaries when listing apps"
+#~ msgstr ""
 

@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-21 11:38+0100\n"
-"PO-Revision-Date: 2013-03-23 21:04+0200\n"
-"Last-Translator: Rax <admin@dvizho.ks.ua>\n"
+"POT-Creation-Date: 2013-07-08 17:26+0100\n"
+"PO-Revision-Date: 2013-07-04 12:06+0200\n"
+"Last-Translator: mg0x <droidest@lavabit.com>\n"
 "Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
@@ -74,7 +74,7 @@ msgstr "%d версия доступна"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr "Извещение"
+msgstr "Уведомление"
 
 msgctxt "storage"
 msgid "Storage"
@@ -142,14 +142,13 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "О F-Droid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Оригинал основан на Aptoide.\n"
-"Выпущен под лицензией GNU GPLv2."
+"Выпущен под лицензией GNU GPLv3."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -252,15 +251,14 @@ msgctxt "update_available"
 msgid "Updates available"
 msgstr "Доступные обновления"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Доступные обновления"
+msgstr "Доступно 1 обновление."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Доступные обновления"
+msgstr "Обновлений доступно - %d."
 
 #, fuzzy
 msgctxt "fdroid_updates_available"
@@ -553,9 +551,15 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Соединение с\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
+msgstr ""
+
+msgctxt "status_downloading_icons"
+msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -565,15 +569,15 @@ msgstr ""
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Разрешения для версии %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Показывать разрешения"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Показывать список разрешений, необходимых приложению"
 
 #, c-format
 msgctxt "no_handler_app"
@@ -585,6 +589,10 @@ msgid "Compact Layout"
 msgstr ""
 
 msgctxt "compactlayout_long"
-msgid "Hide app summaries when listing apps"
+msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "compactlayout_long"
+#~ msgid "Hide app summaries when listing apps"
+#~ msgstr ""
 

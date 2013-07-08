@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-21 11:38+0100\n"
-"PO-Revision-Date: 2013-05-10 18:40+0200\n"
+"POT-Creation-Date: 2013-07-08 17:26+0100\n"
+"PO-Revision-Date: 2013-05-26 20:23+0200\n"
 "Last-Translator: larjona <larjona99@gmail.com>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -57,6 +57,9 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
+"Estás intentando instalar una versión inferior de esta aplicación. "
+"Hacerlo puede derivar en mal funcionamiento o incluso pérdida de datos. "
+"¿Quieres intentarlo de todos modos?"
 
 msgctxt "version"
 msgid "Version"
@@ -193,7 +196,7 @@ msgstr "No instalado"
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "Agregado el %s"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -251,20 +254,18 @@ msgctxt "update_available"
 msgid "Updates available"
 msgstr "Actualizaciones disponibles"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Actualizaciones disponibles"
+msgstr "1 actualización disponible."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Actualizaciones disponibles"
+msgstr "%d actualizaciones disponibles."
 
-#, fuzzy
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Actualizaciones disponibles"
+msgstr "Actualizaciones de F-Droid disponibles"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -466,7 +467,7 @@ msgstr "Muestra programas que dependen de otros no libres"
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Mostrar"
 
 msgctxt "expert"
 msgid "Expert"
@@ -568,6 +569,10 @@ msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
 msgstr "Comprobando la compatibilidad de las aplicaciones con tu dispositivo..."
 
+msgctxt "status_downloading_icons"
+msgid "Downloading new icons…"
+msgstr ""
+
 msgctxt "no_permissions"
 msgid "No permissions are used."
 msgstr "No se usan permisos."
@@ -592,9 +597,13 @@ msgstr "No tienes instalada ninguna aplicación que maneje %s"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Diseño compacto"
 
 msgctxt "compactlayout_long"
-msgid "Hide app summaries when listing apps"
+msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "compactlayout_long"
+#~ msgid "Hide app summaries when listing apps"
+#~ msgstr "Ocultar resúmenes de aplicaciones al listarlas"
 

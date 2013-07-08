@@ -8,7 +8,7 @@
   <string name="version">Версия</string>
   <string name="n_versions_available">версий доступно - %d</string>
   <string name="n_version_available">%d версия доступна</string>
-  <string name="notify">Извещение</string>
+  <string name="notify">Уведомление</string>
   <string name="storage">Хранилище</string>
   <string name="cache_downloaded">Кешировать загруженные приложения</string>
   <string name="keep_downloaded">Сохранять загруженные apk файлы на SD карте</string>
@@ -24,12 +24,13 @@
   <string name="automatic_repo_scan">Автоматически сканировать репозиторий</string>
   <string name="app_name">F-Droid</string>
   <string name="about_title">О F-Droid</string>
-  <string name="about_desc">Оригинал основан на Aptoide.\nВыпущен под лицензией GNU GPLv2.</string>
+  <string name="about_desc">Оригинал основан на Aptoide.\nВыпущен под лицензией GNU GPLv3.</string>
   <string name="about_site">Сайт:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Версия:</string>
   <string name="about_website">Сайт</string>
   <string name="no_repo">В настройках не указан репозиторий!\n\nРепозиторий является источником приложений. Чтобы его добавить нажмите кнопку MENU и введите адрес.\n\nАдрес репозитория выглядит примерно так: http://f-droid.org/repo</string>
+  <string name="inst">Установлено</string>
   <string name="not_inst">Не установлено</string>
   <string name="installed_update">Доступно обновление до версии:</string>
   <string name="ok">ОК</string>
@@ -45,6 +46,9 @@
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Обновления</string>
   <string name="update_available">Доступные обновления</string>
+  <string name="one_update_available">Доступно 1 обновление.</string>
+  <string name="many_updates_available">Обновлений доступно - %d.</string>
+  <string name="fdroid_updates_available">Доступные обновления</string>
   <string name="process_wait_title">Подождите</string>
   <string name="process_update_msg">Список приложений обновляется...</string>
   <string name="connection_error">Нет соединения.</string>
@@ -79,7 +83,6 @@
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
-  <string name="inst">Установлено</string>
   <string name="corrupt_download">Загруженный файл повреждён</string>
   <string name="download_cancelled">Загрузка остановлена</string>
   <string name="antifeatures">Анти-возможности</string>
@@ -109,4 +112,8 @@
   <string name="category_whatsnew">Что Нового</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
   <string name="status_processing_xml">Взять приложение из:\n</string>
+  <string name="status_connecting_to_repo">Соединение с\n%1$s</string>
+  <string name="permissions_for_long">Разрешения для версии %s</string>
+  <string name="showPermissions">Показывать разрешения</string>
+  <string name="showPermissions_long">Показывать список разрешений, необходимых приложению</string>
 </resources>

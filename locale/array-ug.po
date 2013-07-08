@@ -1,16 +1,16 @@
-# Catalan translations for PACKAGE.
-# Copyright (C) 2012 ORGANIZATION
+# Uighur translations for PACKAGE.
+# Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the PACKAGE project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-07-08 17:26+0100\n"
-"PO-Revision-Date: 2012-05-05 20:15+0200\n"
-"Last-Translator: Paco <web@pacoriviere.cat>\n"
-"Language-Team: ca <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"PO-Revision-Date: 2013-06-06 04:18+0200\n"
+"Last-Translator: Abduqadir <sahran.ug@gmail.com>\n"
+"Language-Team: ug <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,33 +18,33 @@ msgstr ""
 
 msgctxt "updateIntervalNames:0"
 msgid "Never"
-msgstr "Mai"
+msgstr "ھەرگىز"
 
 msgctxt "updateIntervalNames:1"
 msgid "Hourly"
-msgstr "Cada hora"
+msgstr "سائەتتە بىر"
 
 msgctxt "updateIntervalNames:2"
 msgid "Every 4 Hours"
-msgstr "Cada 4 hores"
+msgstr "ھەر 4 سائەتتە بىر"
 
 msgctxt "updateIntervalNames:3"
 msgid "Every 12 Hours"
-msgstr "Cada 12 hores"
+msgstr "ھەر 12 سائەتتە بىر"
 
 msgctxt "updateIntervalNames:4"
 msgid "Daily"
-msgstr "Cada dia"
+msgstr "كۈندە بىر"
 
 msgctxt "dbSyncModeNames:0"
 msgid "Off (unsafe)"
-msgstr "Desactivat (no és segur)"
+msgstr "تاقاق (بىخەتەر ئەمەس)"
 
 msgctxt "dbSyncModeNames:1"
 msgid "Normal"
-msgstr "Normal"
+msgstr "نورمال"
 
 msgctxt "dbSyncModeNames:2"
 msgid "Full"
-msgstr "Sencer"
+msgstr "تولۇق"
 

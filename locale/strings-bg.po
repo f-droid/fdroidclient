@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-21 11:38+0100\n"
-"PO-Revision-Date: 2013-03-06 18:34+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-07-08 17:26+0100\n"
+"PO-Revision-Date: 2013-05-24 22:25+0200\n"
+"Last-Translator: radovid <radovid@hmamail.com>\n"
 "Language-Team: bg <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -19,17 +19,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr ""
+msgstr "Намерени са %1$d приложения съвпадащи с '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr ""
+msgstr "Едно приложение съвпадащо с '%s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr ""
+msgstr "Не бяха открити приложения съвпадащи с '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -38,12 +38,18 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
+"Новата версия е подписана с ключ различен от предишната. За да инсталираш"
+" новата версия, трябва първо да деинсталираш старата. Моля, направи го и "
+"опитай отново. (Забележка: деинсталирането ще изтрие всички вътрешни "
+"данни запазени от приложението)"
 
 msgctxt "installIncompatible"
 msgid ""
 "Android says this package is not compatible with your device. Do you want"
 " to try and install it anyway?"
 msgstr ""
+"Този пакет не е съвместим с твоето устойство. Искаш ли да опиташ да го "
+"инсталираш въпреки това?"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -51,111 +57,116 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
+"Опитваш се да инсталираш по-стара версия на праложението. Това може да го"
+" повреди и дори да изтрие данните ти. Искаш ли да го инсталираш въпреки "
+"това?"
 
 msgctxt "version"
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
 #, c-format
 msgctxt "n_versions_available"
 msgid "%d versions available"
-msgstr ""
+msgstr "%d налични версии"
 
 #, c-format
 msgctxt "n_version_available"
 msgid "%d version available"
-msgstr ""
+msgstr "%d налична версия"
 
 msgctxt "notify"
 msgid "Notify"
-msgstr ""
+msgstr "Уведомления"
 
 msgctxt "storage"
 msgid "Storage"
-msgstr ""
+msgstr "Съхранение"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr ""
+msgstr "Кеширай свалените приложения"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
-msgstr ""
+msgstr "Пази свалените apk файлове на SD картата"
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
+msgstr "Актуализации"
 
 msgctxt "clear_all_cached_data"
 msgid "Clear all cached data"
-msgstr ""
+msgstr "Изчисти всички кеширани данни"
 
 msgctxt "reset"
 msgid "Reset"
-msgstr ""
+msgstr "Рестартирай"
 
 msgctxt "maintenance"
 msgid "Maintenance"
-msgstr ""
+msgstr "Подръжка"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr ""
+msgstr "Уведомявай ме при нови налични актуализации"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr ""
+msgstr "Актуализирай списъка на приложенията от хранилищата автоматично"
 
 msgctxt "update_history"
 msgid "Update history"
-msgstr ""
+msgstr "Актуализирай историята"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr ""
+msgstr "Дни за показване на нови/актуализирани приложения"
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Последно сканиране на хранилищата: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "никога"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
+msgstr "Автоматично сканиране на хранилищата"
 
 msgctxt "app_name"
 msgid "F-Droid"
-msgstr ""
+msgstr "F-Droid"
 
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr ""
+msgstr "За F-Droid"
 
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
+"Първоначално базиран на Aptoide.\n"
+"Лицензиран под ГНУ ОПЛв3."
 
 msgctxt "about_site"
 msgid "Website:"
-msgstr ""
+msgstr "Уебсайт:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr ""
+msgstr "Мейл:"
 
 msgctxt "about_version"
 msgid "Version:"
-msgstr ""
+msgstr "Версия:"
 
 msgctxt "about_website"
 msgid "Website"
-msgstr ""
+msgstr "Уебсайт"
 
 msgctxt "no_repo"
 msgid ""
@@ -166,345 +177,358 @@ msgid ""
 "\n"
 "A repository address looks something like this: http://f-droid.org/repo"
 msgstr ""
+"Нямаш нито едно зададено хранилище!\n"
+"\n"
+"Хранилищата са източник на приложения. За да добавиш натисни МЕНЮ бутона "
+"сега и въведи адрес.\n"
+"\n"
+"Адрес на храналищи изглежда примерно така: http://f-droid.org/repo"
 
 msgctxt "inst"
 msgid "Installed"
-msgstr ""
+msgstr "Инсталирано"
 
 msgctxt "not_inst"
 msgid "Not Installed"
-msgstr ""
+msgstr "Не е инсталирано"
 
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "Добавено на %s"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
-msgstr ""
+msgstr "Възможна актуализация - Верс.:"
 
 msgctxt "ok"
 msgid "OK"
-msgstr ""
+msgstr "Добре"
 
 msgctxt "yes"
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 msgctxt "no"
 msgid "No"
-msgstr ""
+msgstr "Не"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr ""
+msgstr "Добави ново хранилище"
 
 msgctxt "repo_add_add"
 msgid "Add"
-msgstr ""
+msgstr "Добави"
 
 msgctxt "cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Отказ"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr ""
+msgstr "Избери хранилище за премахване"
 
 msgctxt "server_connection_error"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Не може да се осъществи връзка със сървър!"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr ""
+msgstr "Актуализирай хранилищата"
 
 msgctxt "tab_installed"
 msgid "Installed"
-msgstr ""
+msgstr "Инсталирани"
 
 msgctxt "tab_noninstalled"
 msgid "Available"
-msgstr ""
+msgstr "Налични"
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
+msgstr "За актуализация"
 
 msgctxt "update_available"
 msgid "Updates available"
-msgstr ""
+msgstr "Възможни актуализация"
 
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr ""
+msgstr "1 налична актуализация."
 
 #, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr ""
+msgstr "%d налични актуализации."
 
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr ""
+msgstr "Актуализации на F-Droid са налични"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr ""
+msgstr "Моля изчакай"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr ""
+msgstr "Обновявани на списъка с приложения..."
 
 msgctxt "connection_error"
 msgid "Could not connect to the network."
-msgstr ""
+msgstr "Не може да се осъществи връзка с мрежата."
 
 msgctxt "connection_timeout"
 msgid "Timeout"
-msgstr ""
+msgstr "Времето изтече"
 
 msgctxt "connection_error_msg"
 msgid "Could not connect to server!"
-msgstr ""
+msgstr "Не може да се осъществи връзка със сървър!"
 
 msgctxt "download"
 msgid "Download"
-msgstr ""
+msgstr "Свали"
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr ""
+msgstr "Взимане на приложението от"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr ""
+msgstr "Адрес на хранилището"
 
 msgctxt "isinst"
 msgid "Installed:"
-msgstr ""
+msgstr "Инсталирани:"
 
 msgctxt "install"
 msgid "Install"
-msgstr ""
+msgstr "Инсталирай"
 
 msgctxt "uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Деинсталирай"
 
 msgctxt "update"
 msgid "Update!"
-msgstr ""
+msgstr "Обнови!"
 
 msgctxt "update_alrt"
 msgid ""
 "There are updates available for some installed applications.\n"
 "Do you want to see them?"
 msgstr ""
+"Налични са обновления за някои инсталирани приложения.\n"
+"Искаш ли да ги видиш?"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
+"Списъкът на хранилищата е променен.\n"
+"Искаш ли да ги обновиш?"
 
 msgctxt "error_download_alrt"
 msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
+msgstr "Не може да се свърже със сървър или apk файлът е развален!"
 
 msgctxt "download_alrt"
 msgid "Getting application from:\n"
-msgstr ""
+msgstr "Взимане на приложение от:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
-msgstr ""
+msgstr "Обнови хранилищата"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr ""
+msgstr "Управление на хранилищата"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
-msgstr ""
+msgstr "Предпочитания"
 
 msgctxt "menu_about"
 msgid "About"
-msgstr ""
+msgstr "Относно"
 
 msgctxt "menu_search"
 msgid "Search"
-msgstr ""
+msgstr "Търсене"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr ""
+msgstr "Ново хранилище"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr ""
+msgstr "Премахни хранилище"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Стартирай"
 
 msgctxt "menu_install"
 msgid "Install"
-msgstr ""
+msgstr "Инсталирай"
 
 msgctxt "menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Деинсталирай"
 
 msgctxt "menu_website"
 msgid "Website"
-msgstr ""
+msgstr "Уебсайт"
 
 msgctxt "menu_issues"
 msgid "Issues"
-msgstr ""
+msgstr "Проблеми"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr ""
+msgstr "Изходен код"
 
 msgctxt "menu_market"
 msgid "Market"
-msgstr ""
+msgstr "Андроид Маркет"
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
+msgstr "Обнови"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr ""
+msgstr "Направи дарение"
 
 #, c-format
 msgctxt "details_installed"
 msgid "Version %s installed"
-msgstr ""
+msgstr "Версия %s е инсталирана"
 
 msgctxt "details_notinstalled"
 msgid "Not installed"
-msgstr ""
+msgstr "Не е инсталирано"
 
 msgctxt "corrupt_download"
 msgid "Downloaded file is corrupt"
-msgstr ""
+msgstr "Сваленият файл е развален (Опитай отново)"
 
 msgctxt "download_cancelled"
 msgid "Download cancelled"
-msgstr ""
+msgstr "Свалянето е отказано"
 
 msgctxt "antifeatures"
 msgid "Anti-Features"
-msgstr ""
+msgstr "Анти-свойства"
 
 msgctxt "antiads"
 msgid "Advertising"
-msgstr ""
+msgstr "Реклами"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr ""
+msgstr "Показвай приложения съдържащи реклами"
 
 msgctxt "antitrack"
 msgid "Tracking"
-msgstr ""
+msgstr "Проследяване"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr ""
+msgstr "Показвай приложения следящи и докладващи моята дейност"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
-msgstr ""
+msgstr "Добавки"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr ""
+msgstr "Показвай приложения препоръчващи несвободни добавки"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
-msgstr ""
+msgstr "Мрежови услуги"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr ""
+msgstr "Показвай приложения препоръчващи несвободни мрежови услуги"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
-msgstr ""
+msgstr "Зависимости"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr ""
+msgstr "Показвай приложения зависещи от несвободни програми"
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Дисплей"
 
 msgctxt "expert"
 msgid "Expert"
-msgstr ""
+msgstr "Експерт"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr ""
+msgstr "Активирай експертен режим"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr ""
+msgstr "Търсене на приложения"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
-msgstr ""
+msgstr "Вид на синхронизация на базата данни"
 
+#, fuzzy
 msgctxt "db_sync_mode_long"
 msgid "Set the value of SQLite's synchronous flag"
 msgstr ""
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr ""
+msgstr "Съвместимост на приложенията"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr ""
+msgstr "Несъвместими приложения"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
+"Показвай приложения направени за по-нова версия на Андроид или за друг "
+"хардуер"
 
 msgctxt "rooted"
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr ""
+msgstr "Показвай приложени изискващи root права (администраторски)"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Игнорирай сензорния екран"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Винаги включвай приложения изискващи сензорен екран"
 
 msgctxt "category_all"
 msgid "All"
-msgstr ""
+msgstr "Всички"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Какво ново"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "Обновени наскоро"
 
 #. status_download takes four parameters:       - Repository (url)       -
 #. Downloaded size (human readable)       - Total size (human readable)       -
@@ -516,6 +540,9 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"Сваляне\n"
+" %2$s / %3$s (%4$d%%) от\n"
+" %1$s"
 
 #, c-format
 msgctxt "status_processing_xml"
@@ -524,6 +551,9 @@ msgid ""
 "%2$d of %3$d from\n"
 "%1$s"
 msgstr ""
+"Обработване на приложението\n"
+" %2$d of %3$d от\n"
+" %1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -531,38 +561,48 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Свързване с\n"
+" %1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
+msgstr "Проверяване на съвместимост с твоето устройство…"
+
+msgctxt "status_downloading_icons"
+msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Не се искат разрешения."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Разрешения за версия %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Покажи разрешения"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Показване на списък с разрешения, които приложението ползва"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
-msgstr ""
+msgstr "Нямаш инсталирано приложение, което може да изпълни %s"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Компактно оформление"
 
 msgctxt "compactlayout_long"
-msgid "Hide app summaries when listing apps"
+msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "compactlayout_long"
+#~ msgid "Hide app summaries when listing apps"
+#~ msgstr "Скриване на резюмета на приложения при показване в списък"
 

@@ -30,6 +30,7 @@
   <string name="about_version">Wersja:</string>
   <string name="about_website">Strona internetowa</string>
   <string name="no_repo">Nie posiadasz żadnych skonfigurowanych repozytoriów!\n\nRepozytorium jest źródłem aplikacji. By jakieś dodać, wciśnij przycisku MENU i podaj adres URL.\n\nAdres repozytorium wygląda mniej więcej tak: http://f-droid.org/repo</string>
+  <string name="inst">Zainstalowano</string>
   <string name="not_inst">Niezainstalowane</string>
   <string name="installed_update">Aktualizuj do wersji:</string>
   <string name="ok">OK</string>
@@ -45,6 +46,9 @@
   <string name="tab_noninstalled">Dostępne</string>
   <string name="tab_updates">Aktualizacje</string>
   <string name="update_available">Dostępne aktualizacje</string>
+  <string name="one_update_available">Dostępne aktualizacje</string>
+  <string name="many_updates_available">Dostępne aktualizacje</string>
+  <string name="fdroid_updates_available">Dostępne aktualizacje</string>
   <string name="process_wait_title">Proszę czekać</string>
   <string name="process_update_msg">Aktualizowanie listy aplikacji...</string>
   <string name="connection_error">Nie udało się połączyć z siecią.</string>
@@ -79,7 +83,6 @@
   <string name="menu_donate">Złóż datek</string>
   <string name="details_installed">Wersja %s została zainstalowana</string>
   <string name="details_notinstalled">Nie zainstalowano</string>
-  <string name="inst">Zainstalowano</string>
   <string name="corrupt_download">Pobrany plik jest uszkodzony</string>
   <string name="download_cancelled">Anulowano pobieranie</string>
   <string name="antifeatures">Antyfunkcje</string>

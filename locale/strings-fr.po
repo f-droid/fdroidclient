@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-21 11:38+0100\n"
-"PO-Revision-Date: 2013-04-15 22:07+0200\n"
+"POT-Creation-Date: 2013-07-08 17:26+0100\n"
+"PO-Revision-Date: 2013-05-27 16:41+0200\n"
 "Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
@@ -58,6 +58,9 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
+"Vous essayez de revenir à une ancienne version de cette application. Cela"
+" peut causer des problèmes de fonctionnement ou des pertes de données. "
+"Voulez-vous continuer ?"
 
 msgctxt "version"
 msgid "Version"
@@ -193,7 +196,7 @@ msgstr "Pas installée"
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "Ajouté le %s"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -251,20 +254,18 @@ msgctxt "update_available"
 msgid "Updates available"
 msgstr "Mises à jour disponibles"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Mises à jour disponibles"
+msgstr "1 mise à jour est disponible."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Mises à jour disponibles"
+msgstr "%d mises à jour sont disponibles."
 
-#, fuzzy
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Mises à jour disponibles"
+msgstr "Des mises à jour F-Droid sont disponibles"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -466,7 +467,7 @@ msgstr "Montrer les applications qui dépendent d'autres applications non libres
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Affichage"
 
 msgctxt "expert"
 msgid "Expert"
@@ -540,14 +541,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"Téléchargement\n"
+"%2$s / %3$s (%4$d%%) de\n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "Réception d'application de:\n"
+msgstr ""
+"Prise en compte de l'application\n"
+"%2$d de %3$d depuis\n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -555,38 +562,48 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Connexion à\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
+msgstr "Vérification de la compatibilité des applis avec votre appareil…"
+
+msgctxt "status_downloading_icons"
+msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Aucune autorisation n'est utilisée."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Autorisations pour la version %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Afficher les autorisations"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Afficher la liste des permissions que nécessite l'application"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
-msgstr ""
+msgstr "Vous n'avez aucune application installée pour gérer %s"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Affichage compact"
 
 msgctxt "compactlayout_long"
-msgid "Hide app summaries when listing apps"
+msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "compactlayout_long"
+#~ msgid "Hide app summaries when listing apps"
+#~ msgstr "Cacher les résumés sur la liste des applications"
 

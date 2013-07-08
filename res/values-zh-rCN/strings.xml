@@ -30,6 +30,7 @@
   <string name="about_version">版本：</string>
   <string name="about_website">Website</string>
   <string name="no_repo">你还没有设置应用源\n\n应用源即是应用下载发布来源，按菜单键，然后输入源的URL来添加源\n\n示例应用源: http://f-droid.org/repo</string>
+  <string name="inst">已安装</string>
   <string name="not_inst">未安装</string>
   <string name="installed_update">可用更新 - 版本:</string>
   <string name="ok">OK</string>
@@ -45,6 +46,9 @@
   <string name="tab_noninstalled">可安装</string>
   <string name="tab_updates">更新</string>
   <string name="update_available">可用更新</string>
+  <string name="one_update_available">可用更新</string>
+  <string name="many_updates_available">可用更新</string>
+  <string name="fdroid_updates_available">可用更新</string>
   <string name="process_wait_title">请等一下</string>
   <string name="process_update_msg">应用列表更新中</string>
   <string name="connection_error">网络无法连接</string>
@@ -79,7 +83,6 @@
   <string name="menu_donate">捐赠</string>
   <string name="details_installed">版本 %s 已安装</string>
   <string name="details_notinstalled">未安装</string>
-  <string name="inst">已安装</string>
   <string name="corrupt_download">文件下载错误</string>
   <string name="download_cancelled">下载取消</string>
   <string name="antifeatures">个性设置</string>

@@ -14,6 +14,7 @@
   <string name="about_mail">Retpoŝto:</string>
   <string name="about_version">Versio:</string>
   <string name="about_website">Retejo</string>
+  <string name="inst">Instalita</string>
   <string name="not_inst">Ne instalita</string>
   <string name="ok">OK</string>
   <string name="yes">Jes</string>
@@ -26,6 +27,9 @@
   <string name="tab_noninstalled">Disponeblaj</string>
   <string name="tab_updates">Ĝisdatigoj</string>
   <string name="update_available">Ĝisdatigoj disponeblaj</string>
+  <string name="one_update_available">Ĝisdatigoj disponeblaj</string>
+  <string name="many_updates_available">Ĝisdatigoj disponeblaj</string>
+  <string name="fdroid_updates_available">Ĝisdatigoj disponeblaj</string>
   <string name="process_wait_title">Bonvolu atendi</string>
   <string name="connection_timeout">Tempolimo</string>
   <string name="download">Elŝuti</string>
@@ -47,7 +51,6 @@
   <string name="menu_update">Ĝisdatigi</string>
   <string name="menu_donate">Donaci</string>
   <string name="details_notinstalled">Neinstalita</string>
-  <string name="inst">Instalita</string>
   <string name="antiads">Reklamo</string>
   <string name="antitrack">Spurado</string>
   <string name="antinonfreead">Aldonaĵoj</string>

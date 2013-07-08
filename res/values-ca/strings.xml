@@ -31,6 +31,7 @@
   <string name="about_version">Versió:</string>
   <string name="about_website">Pàgina web</string>
   <string name="no_repo">No heu configurat cap dipòsit!\n\nUn dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENU i entreu la seva URL.\n\nL\'adreça d\'un dipòsit té un aspecte com ara: http://f-droid.org/repo</string>
+  <string name="inst">Instal·lat</string>
   <string name="not_inst">No està instal·lat</string>
   <string name="installed_update">Hi ha una actualització - Ver.:</string>
   <string name="ok">D\'acord</string>
@@ -46,6 +47,9 @@
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Actualitzacions</string>
   <string name="update_available">Actualitzacions disponibles</string>
+  <string name="one_update_available">Actualitzacions disponibles</string>
+  <string name="many_updates_available">Actualitzacions disponibles</string>
+  <string name="fdroid_updates_available">Actualitzacions disponibles</string>
   <string name="process_wait_title">Un moment si us plau</string>
   <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions</string>
   <string name="connection_error">No ha estàt possible connectar amb la xarxa.</string>
@@ -80,7 +84,6 @@
   <string name="menu_donate">Féu una donació</string>
   <string name="details_installed">Versió instal·lada %s</string>
   <string name="details_notinstalled">No està instal·lat</string>
-  <string name="inst">Instal·lat</string>
   <string name="corrupt_download">El fitxer baixat ha arribat en mal estat</string>
   <string name="download_cancelled">S\'ha cancel·lat la baixat</string>
   <string name="antifeatures">Anti-Característiques</string>

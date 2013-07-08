@@ -27,6 +27,7 @@
   <string name="about_version">Έκδοση:</string>
   <string name="about_website">Ιστοσελίδα</string>
   <string name="no_repo">Δεν έχει ρυθμιστεί κανένα αποθετήριο!\n\nΤο αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε ένα, πιέστε το πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.\n\nΜια διεύθυνση αποθετηρίου μοιάζει σαν αυτό: http://f-droid.org/repo</string>
+  <string name="inst">Εγκατεστημένο</string>
   <string name="not_inst">Δεν είναι εγκατεστημένο</string>
   <string name="installed_update">Πιθανή ενημέρωση - Έκδοση:</string>
   <string name="ok">Εντάξει</string>
@@ -42,6 +43,9 @@
   <string name="tab_noninstalled">Διαθέσιμα</string>
   <string name="tab_updates">Ενημερώσεις</string>
   <string name="update_available">Διαθέσιμες ενημερώσεις</string>
+  <string name="one_update_available">Διαθέσιμες ενημερώσεις</string>
+  <string name="many_updates_available">Διαθέσιμες ενημερώσεις</string>
+  <string name="fdroid_updates_available">Διαθέσιμες ενημερώσεις</string>
   <string name="process_wait_title">Παρακαλώ περιμένετε</string>
   <string name="process_update_msg">Ενημέρωση λίστα εφαρμογών...</string>
   <string name="connection_error">Δεν ήταν δυνατή η σύνδεση στο δίκτυο</string>
@@ -75,7 +79,6 @@
   <string name="menu_donate">Δωρεά</string>
   <string name="details_installed">Εγκατεστημένη Έκδοση: %s</string>
   <string name="details_notinstalled">Δεν είναι εγκατεστημένο</string>
-  <string name="inst">Εγκατεστημένο</string>
   <string name="corrupt_download">Το αρχείο που λήφθηκε είναι κατεστραμμένο</string>
   <string name="download_cancelled">Ακύρωθηκε η λήψη</string>
   <string name="antifeatures">Αντί-Χαρακτηριστικά</string>

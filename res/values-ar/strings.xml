@@ -6,4 +6,7 @@
   <string name="installIncompatible">أندرويد يقول أن هذه الحزمة ليست متوافقة مع جهازك. هل تريد التجريب و تثبيتها على أي حال؟</string>
   <string name="version">الإصدار</string>
   <string name="n_versions_available">%d إصدار متوفر</string>
+  <string name="one_update_available">%d إصدار متوفر</string>
+  <string name="many_updates_available">%d إصدار متوفر</string>
+  <string name="fdroid_updates_available">%d إصدار متوفر</string>
 </resources>

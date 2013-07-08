@@ -5,6 +5,7 @@
   <string name="searchres_noapps">Keine Anwendung gefunden, die zu \'%s\' passt.</string>
   <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren muss zunächst die alte entfernt werden. Bitte tun Sie das und probieren Sie es dann nochmal. (Hinweis: Das Entfernen der Anwendung wird alle Daten dieser Anwendung löschen)</string>
   <string name="installIncompatible">Android hat festgestellt, dass dieses Programm nicht kompatibel mit Ihrem Gerät ist. Möchten Sie es trotzdem installieren?</string>
+  <string name="installDowngrade">Sie versuchen eine vorherige Version eines bereits installierten Programms zu installieren. Dies kann allerdings zu Fehlfunktionen oder zum Verlust Ihrer Daten und Einstellungen dieses Programms führen. Möchten Sie dennoch fortfahren?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d verfügbare Versionen</string>
   <string name="n_version_available">%d verfügbare Version</string>
@@ -31,7 +32,9 @@
   <string name="about_version">Version:</string>
   <string name="about_website">Internetseite</string>
   <string name="no_repo">Sie haben keine Archive eingestellt!\n\nEin Archiv ist eine Sammlung von Anwendungen. Drücken Sie den Menü-Knopf und fügen Sie die Adresse eines Archivs hinzu.\n\nEine Archiv-Adresse sieht ungefähr so aus: http://f-droid.org/repo</string>
+  <string name="inst">Installiert</string>
   <string name="not_inst">Nicht Installiert</string>
+  <string name="added_on">Hinzugefügt am %s</string>
   <string name="installed_update">Aktualisierung verfügbar – Version:</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -46,6 +49,9 @@
   <string name="tab_noninstalled">Verfügbar</string>
   <string name="tab_updates">Aktualisierungen</string>
   <string name="update_available">Aktualisierungen verfügbar</string>
+  <string name="one_update_available">Eine Aktualisierung verfügbar.</string>
+  <string name="many_updates_available">%d Aktualisierungen verfügbar.</string>
+  <string name="fdroid_updates_available">Aktualisierung für F-Droid verfügbar</string>
   <string name="process_wait_title">Bitte warten</string>
   <string name="process_update_msg">Anwendungsliste wird aktualisiert …</string>
   <string name="connection_error">Die Netzwerkverbindung konnte nicht hergestellt werden!</string>
@@ -80,7 +86,6 @@
   <string name="menu_donate">Spenden</string>
   <string name="details_installed">Version %s installiert</string>
   <string name="details_notinstalled">Nicht Installiert</string>
-  <string name="inst">Installiert</string>
   <string name="corrupt_download">Heruntergeladene Datei ist fehlerhaft</string>
   <string name="download_cancelled">Download abgebrochen</string>
   <string name="antifeatures">Unerwünschte Eigenschaften</string>
@@ -94,6 +99,7 @@
   <string name="antinonfreenetlong">Zeige Anwendungen, die unfreie Netzwerkdienste propagieren</string>
   <string name="antinonfreedep">Abhängigkeiten</string>
   <string name="antinonfreedeplong">Zeige Anwendungen, die von anderen unfreien Anwendungen abhängen</string>
+  <string name="display">Bildschirm</string>
   <string name="expert">Für Experten</string>
   <string name="expert_mode">Expertenmodus einschalten</string>
   <string name="search_hint">Anwendungen suchen</string>
@@ -118,4 +124,6 @@
   <string name="showPermissions">Zeige Berechtigungen</string>
   <string name="showPermissions_long">Zeige eine Liste von Berechtigungen die von einer Anwendung benötigt werden</string>
   <string name="no_handler_app">Es ist keine Anwendung für %s installiert</string>
+  <string name="compactlayout">Kompakte Auflistung</string>
+  <string name="compactlayout_long">Anwendungsbeschreibung bei der Auflistung ausblenden</string>
 </resources>

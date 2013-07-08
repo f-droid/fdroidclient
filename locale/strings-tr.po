@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-21 11:38+0100\n"
-"PO-Revision-Date: 2013-04-08 16:08+0200\n"
+"POT-Creation-Date: 2013-07-08 17:26+0100\n"
+"PO-Revision-Date: 2013-05-27 16:53+0200\n"
 "Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: tr <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -58,6 +58,9 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
+"Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın "
+"yanlış çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek "
+"istiyor musunuz?"
 
 msgctxt "version"
 msgid "Version"
@@ -113,14 +116,13 @@ msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
 msgstr "Uygulama listesini depolardan otomatik olarak güncelle"
 
-#, fuzzy
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Depoları güncelle"
+msgstr "Güncelleme tarihçesi"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr ""
+msgstr "Yeni/güncellenmiş uygulamaların gösterilecekleri gün sayısı"
 
 #, c-format
 msgctxt "last_update_check"
@@ -143,14 +145,13 @@ msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "F-Droid Hakkında"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Aptoide'den türetilmiştir.\n"
-"GNU GPLv2 lisansı kapsamında yayınlanmıştır."
+"GNU GPLv3 lisansı kapsamında yayınlanmıştır."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -195,7 +196,7 @@ msgstr "Kurulu değil"
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "%s tarihinde eklenmiş"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -253,20 +254,18 @@ msgctxt "update_available"
 msgid "Updates available"
 msgstr "Güncellemeler var"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Güncellemeler var"
+msgstr "1 güncelleme bulunmaktadır."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Güncellemeler var"
+msgstr "%d güncelleme bulunmaktadır."
 
-#, fuzzy
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Güncellemeler var"
+msgstr "F-Droid güncellemeleri bulunmaktadır"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -467,7 +466,7 @@ msgstr "Özgür olmayan uygulamalara bağımlı uygulamaları göster"
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Görüntüleme"
 
 msgctxt "expert"
 msgid "Expert"
@@ -541,14 +540,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"İndiriliyor\n"
+"%2$s / %3$s (%4$d%%) şuradan\n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "Uygulama buradan alınıyor:\n"
+msgstr ""
+"Uygulama ele alınıyor\n"
+"%2$d toplam %3$d şuradan\n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -556,38 +561,48 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"%1$s konumuna\n"
+"bağlanılıyor"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
+msgstr "Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…"
+
+msgctxt "status_downloading_icons"
+msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Hiçbir izin kullanılmıyor."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "%s sürümü için izinler"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "İzinleri göster"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Uygulamanın gerektirdiği izinlerin listesini göster"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
-msgstr ""
+msgstr "%s unsurunu yönetecek hiçbir kurulu uygulamanız yok"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Yoğun düzen"
 
 msgctxt "compactlayout_long"
-msgid "Hide app summaries when listing apps"
+msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "compactlayout_long"
+#~ msgid "Hide app summaries when listing apps"
+#~ msgstr "Uygulamalar listesinde özetleri sakla"
 
