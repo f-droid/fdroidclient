@@ -109,13 +109,6 @@ abstract public class AppListAdapter extends BaseAdapter {
                 summaryLayout.addRule(RelativeLayout.END_OF, R.id.icon);
                 summary.setLayoutParams(summaryLayout);
 
-                if (app.hasUpdates && showStatusUpdate()) {
-                    iconUpdates.setVisibility(View.VISIBLE);
-                }
-
-                if (app.installedVerCode > 0 && showStatusInstalled()) {
-                    iconInstalled.setVisibility(View.VISIBLE);
-                }
             }
         }
 
@@ -126,6 +119,16 @@ abstract public class AppListAdapter extends BaseAdapter {
         }
 
         return convertView;
+    }
+
+    if (pref_compactlayout == true) {
+        if (app.hasUpdates && showStatusUpdate()) {
+            iconUpdates.setVisibility(View.VISIBLE);
+        }
+
+        if (app.installedVerCode > 0 && showStatusInstalled()) {
+            iconInstalled.setVisibility(View.VISIBLE);
+        }
     }
 
     private String getVersionInfo(DB.App app) {
