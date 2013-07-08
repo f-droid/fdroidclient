@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.views;
 
+import org.fdroid.fdroid.Utils;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,8 +110,10 @@ abstract public class AppListAdapter extends BaseAdapter {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
-                summaryLayout.addRule(RelativeLayout.RIGHT_OF, R.id.icon);
-                summaryLayout.addRule(RelativeLayout.END_OF, R.id.icon);
+                if (Utils.hasApi(17))
+                    summaryLayout.addRule(RelativeLayout.END_OF, R.id.icon);
+                else
+                    summaryLayout.addRule(RelativeLayout.RIGHT_OF, R.id.icon);
                 summary.setLayoutParams(summaryLayout);
 
             }
