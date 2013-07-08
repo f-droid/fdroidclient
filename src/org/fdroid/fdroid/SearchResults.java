@@ -21,6 +21,8 @@ package org.fdroid.fdroid;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.support.v4.view.MenuItemCompat;
+
 import android.app.ActionBar;
 import android.app.ListActivity;
 import android.app.SearchManager;
@@ -149,8 +151,9 @@ public class SearchResults extends ListActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
-        menu.add(Menu.NONE, SEARCH, 1, R.string.menu_search).setIcon(
+        MenuItem search = menu.add(Menu.NONE, SEARCH, 1, R.string.menu_search).setIcon(
                 android.R.drawable.ic_menu_search);
+        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
         return true;
     }
 
