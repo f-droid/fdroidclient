@@ -19,6 +19,7 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
+    boolean pref_compactlayout;
 
     public AppListAdapter(Context context) {
         mContext = context;
@@ -53,65 +54,31 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
-        if (v == null) {
-            LayoutInflater vi = (LayoutInflater) mContext
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = vi.inflate(R.layout.applistitem, null);
+        boolean init = false;
+
+        if (convertView == null) {
+            convertView = ((LayoutInflater) mContext.getSystemService(
+                    Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.applistitem, null);
+            init = true;
         }
+
+        ImageView iconUpdates   = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
+        ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
+
+        TextView name = (TextView) convertView.findViewById(R.id.name);
+        TextView summary = (TextView) convertView.findViewById(R.id.summary);
+        TextView status = (TextView) convertView.findViewById(R.id.status);
+        TextView license = (TextView) convertView.findViewById(R.id.license);
+
         DB.App app = items.get(position);
 
-        TextView name = (TextView) v.findViewById(R.id.name);
-        name.setText(app.name);
+        status.setText(getVersionInfo(app));
+        license.setText(app.license);
 
-        TextView summary = (TextView) v.findViewById(R.id.summary);
+        name.setText(app.name);
         summary.setText(app.summary);
 
-        TextView status = (TextView) v.findViewById(R.id.status);
-        TextView license = (TextView) v.findViewById(R.id.license);
-
-        ImageView iconUpdates   = (ImageView)v.findViewById(R.id.icon_status_has_updates);
-        ImageView iconInstalled = (ImageView)v.findViewById(R.id.icon_status_installed);
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-
-        if (prefs.getBoolean("compactlayout", false)) {
-
-            status.setVisibility(View.GONE);
-            license.setVisibility(View.GONE);
-
-            RelativeLayout.LayoutParams summaryLayout =
-                new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
-            summaryLayout.addRule(RelativeLayout.RIGHT_OF, R.id.icon);
-            summary.setLayoutParams(summaryLayout);
-
-            if (app.hasUpdates && showStatusUpdate()) {
-                iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
-                iconUpdates.setVisibility(View.VISIBLE);
-            } else {
-                iconUpdates.setVisibility(View.GONE);
-            }
-
-            if (app.installedVerCode > 0 && showStatusInstalled()) {
-                iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
-                iconInstalled.setVisibility(View.VISIBLE);
-            } else {
-                iconInstalled.setVisibility(View.GONE);
-            }
-
-        } else {
-
-            status.setText(getVersionInfo(app));
-            license.setText(app.license);
-
-            iconUpdates.setVisibility(View.GONE);
-            iconInstalled.setVisibility(View.GONE);
-        }
-
-        ImageView icon = (ImageView) v.findViewById(R.id.icon);
+        ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
         File icn = new File(DB.getIconsPath(), app.icon);
         if (icn.exists() && icn.length() > 0) {
             new Uri.Builder().build();
@@ -120,13 +87,45 @@ abstract public class AppListAdapter extends BaseAdapter {
             icon.setImageResource(android.R.drawable.sym_def_app_icon);
         }
 
+        iconUpdates.setVisibility(View.GONE);
+        iconInstalled.setVisibility(View.GONE);
+
+        if (init) {
+            iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
+            iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
+            SharedPreferences prefs = PreferenceManager
+                    .getDefaultSharedPreferences(mContext);
+            pref_compactlayout = prefs.getBoolean("compactlayout", false);
+
+            if (pref_compactlayout == true) {
+                status.setVisibility(View.GONE);
+                license.setVisibility(View.GONE);
+
+                RelativeLayout.LayoutParams summaryLayout =
+                    new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
+                summaryLayout.addRule(RelativeLayout.END_OF, R.id.icon);
+                summary.setLayoutParams(summaryLayout);
+
+                if (app.hasUpdates && showStatusUpdate()) {
+                    iconUpdates.setVisibility(View.VISIBLE);
+                }
+
+                if (app.installedVerCode > 0 && showStatusInstalled()) {
+                    iconInstalled.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+
         // Disable it all if it isn't compatible...
-        View[] views = { v, status, summary, license, name };
+        View[] views = { convertView, status, summary, license, name };
         for (View view : views) {
             view.setEnabled(app.compatible);
         }
 
-        return v;
+        return convertView;
     }
 
     private String getVersionInfo(DB.App app) {
