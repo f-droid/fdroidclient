@@ -19,7 +19,7 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
-    boolean pref_compactlayout;
+    Boolean pref_compactlayout = null;
 
     public AppListAdapter(Context context) {
         mContext = context;
@@ -84,15 +84,18 @@ abstract public class AppListAdapter extends BaseAdapter {
             icon.setImageResource(android.R.drawable.sym_def_app_icon);
         }
 
+        ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
+        ImageView iconUpdates = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
+
         if (init) {
-            SharedPreferences prefs = PreferenceManager
-                    .getDefaultSharedPreferences(mContext);
-            pref_compactlayout = prefs.getBoolean("compactlayout", false);
+
+            if (pref_compactlayout == null) {
+                SharedPreferences prefs = PreferenceManager
+                        .getDefaultSharedPreferences(mContext);
+                pref_compactlayout = prefs.getBoolean("compactlayout", false);
+            }
 
             if (pref_compactlayout == true) {
-
-                ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
-                ImageView iconUpdates   = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
 
                 iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
                 iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
@@ -112,6 +115,21 @@ abstract public class AppListAdapter extends BaseAdapter {
             }
         }
 
+        if (pref_compactlayout == true) {
+
+            if (app.hasUpdates && showStatusUpdate()) {
+                iconUpdates.setVisibility(View.VISIBLE);
+            } else {
+                iconUpdates.setVisibility(View.GONE);
+            }
+
+            if (app.installedVerCode > 0 && showStatusInstalled()) {
+                iconInstalled.setVisibility(View.VISIBLE);
+            } else {
+                iconInstalled.setVisibility(View.GONE);
+            }
+        }
+
         // Disable it all if it isn't compatible...
         View[] views = { convertView, status, summary, license, name };
         for (View view : views) {
@@ -119,16 +137,6 @@ abstract public class AppListAdapter extends BaseAdapter {
         }
 
         return convertView;
-    }
-
-    if (pref_compactlayout == true) {
-        if (app.hasUpdates && showStatusUpdate()) {
-            iconUpdates.setVisibility(View.VISIBLE);
-        }
-
-        if (app.installedVerCode > 0 && showStatusInstalled()) {
-            iconInstalled.setVisibility(View.VISIBLE);
-        }
     }
 
     private String getVersionInfo(DB.App app) {
