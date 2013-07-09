@@ -131,8 +131,12 @@ public class SearchResults extends ListActivity {
         for (DB.App app : apps) {
             applist.addItem(app);
         }
-        getListView().setFastScrollAlwaysVisible(true);
-        getListView().setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET);
+        if (Utils.hasApi(11)) {
+            getListView().setFastScrollAlwaysVisible(true);
+            getListView().setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET);
+        } else {
+            getListView().setFastScrollEnabled(true);
+        }
         applist.notifyDataSetChanged();
         setListAdapter(applist);
 

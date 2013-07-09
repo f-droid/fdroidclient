@@ -49,8 +49,12 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
 
     protected ListView createAppListView() {
         ListView list = new ListView(getActivity());
-        list.setFastScrollAlwaysVisible(true);
-        list.setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET);
+        if (Utils.hasApi(11)) {
+            list.setFastScrollAlwaysVisible(true);
+            list.setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET);
+        } else {
+            list.setFastScrollEnabled(true);
+        }
         list.setOnItemClickListener(this);
         list.setAdapter(getAppListAdapter());
         return list;
