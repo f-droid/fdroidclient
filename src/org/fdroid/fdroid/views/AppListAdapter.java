@@ -115,7 +115,7 @@ abstract public class AppListAdapter extends BaseAdapter {
                 else
                     summaryLayout.addRule(RelativeLayout.RIGHT_OF, R.id.icon);
                 summary.setLayoutParams(summaryLayout);
-                summary.setPadding ((int)(mContext.getResources().getDisplayMetrics().density + 0.5f),0,0,0);
+                summary.setPadding(0,0,0,0);
 
             }
         }
