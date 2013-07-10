@@ -19,6 +19,7 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -37,6 +38,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -46,10 +48,10 @@ import android.support.v4.app.TaskStackBuilder;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
-    public static final String RESULT_MESSAGE  = "msg";
-    public static final int STATUS_COMPLETE    = 0;
-    public static final int STATUS_ERROR       = 1;
-    public static final int STATUS_INFO        = 2;
+    public static final String RESULT_MESSAGE = "msg";
+    public static final int STATUS_COMPLETE = 0;
+    public static final int STATUS_ERROR = 1;
+    public static final int STATUS_INFO = 2;
 
     private ResultReceiver receiver = null;
 
@@ -84,23 +86,23 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     }
 
-    protected void sendStatus(int statusCode ) {
+    protected void sendStatus(int statusCode) {
         sendStatus(statusCode, null);
     }
 
-    protected void sendStatus(int statusCode, String message ) {
+    protected void sendStatus(int statusCode, String message) {
         if (receiver != null) {
             Bundle resultData = new Bundle();
             if (message != null && message.length() > 0)
                 resultData.putString(RESULT_MESSAGE, message);
-            receiver.send( statusCode, resultData );
+            receiver.send(statusCode, resultData);
         }
     }
 
     /**
-     * We might be doing a scheduled run, or we might have been launched by
-     * the app in response to a user's request. If we have a receiver, it's
-     * the latter...
+     * We might be doing a scheduled run, or we might have been launched by the
+     * app in response to a user's request. If we have a receiver, it's the
+     * latter...
      */
     private boolean isScheduledRun() {
         return receiver == null;
@@ -158,14 +160,17 @@ public class UpdateService extends IntentService implements ProgressListener {
             for (DB.Repo repo : repos) {
                 if (repo.inuse) {
 
-                    sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
+                    sendStatus(
+                            STATUS_INFO,
+                            getString(R.string.status_connecting_to_repo,
+                                    repo.address));
 
                     StringBuilder newetag = new StringBuilder();
                     String err = RepoXMLHandler.doUpdate(getBaseContext(),
                             repo, apps, newetag, keeprepos, this);
                     if (err == null) {
                         String nt = newetag.toString();
-                        if(!nt.equals(repo.lastetag)) {
+                        if (!nt.equals(repo.lastetag)) {
                             repo.lastetag = newetag.toString();
                             changes = true;
                         }
@@ -182,12 +187,15 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             if (!changes && success) {
-                    Log.d("FDroid", "Not checking app details or compatibility, because all repos were up to date.");
+                Log.d("FDroid",
+                        "Not checking app details or compatibility, because all repos were up to date.");
             } else if (changes && success) {
 
-                sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
+                sendStatus(STATUS_INFO,
+                        getString(R.string.status_checking_compatibility));
                 List<DB.App> acceptedapps = new ArrayList<DB.App>();
-                List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
+                List<DB.App> prevapps = ((FDroidApp) getApplication())
+                        .getApps();
 
                 DB db = DB.getDB();
                 try {
@@ -245,7 +253,8 @@ public class UpdateService extends IntentService implements ProgressListener {
                     DB.releaseDB();
                 }
                 if (success) {
-                    sendStatus(STATUS_INFO, getString(R.string.status_downloading_icons));
+                    sendStatus(STATUS_INFO,
+                            getString(R.string.status_downloading_icons));
                     for (DB.App app : acceptedapps)
                         getIcon(app, repos);
                     ((FDroidApp) getApplication()).invalidateAllApps();
@@ -257,33 +266,32 @@ public class UpdateService extends IntentService implements ProgressListener {
                 Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
                         + ", apps after: " + newUpdates);
                 if (newUpdates > prevUpdates) {
-                    NotificationCompat.Builder mBuilder =
-                            new NotificationCompat.Builder(this)
+                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+                            this)
                             .setSmallIcon(R.drawable.icon)
                             .setLargeIcon(
-                    BitmapFactory.decodeResource(getResources(), R.drawable.icon))
+                                    BitmapFactory.decodeResource(
+                                            getResources(), R.drawable.icon))
                             .setAutoCancel(true)
-                            .setContentTitle(getString(R.string.fdroid_updates_available));
+                            .setContentTitle(
+                                    getString(R.string.fdroid_updates_available));
                     Intent notifyIntent = new Intent(this, FDroid.class)
                             .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
                     if (newUpdates > 1) {
                         mBuilder.setContentText(getString(
-                                    R.string.many_updates_available, newUpdates));
-                      
+                                R.string.many_updates_available, newUpdates));
+
                     } else {
-                        mBuilder.setContentText(getString(
-                                    R.string.one_update_available));
+                        mBuilder.setContentText(getString(R.string.one_update_available));
                     }
-                    TaskStackBuilder stackBuilder = TaskStackBuilder.create(this)
-                            .addParentStack(FDroid.class)
+                    TaskStackBuilder stackBuilder = TaskStackBuilder
+                            .create(this).addParentStack(FDroid.class)
                             .addNextIntent(notifyIntent);
-                    PendingIntent pendingIntent =
-                            stackBuilder.getPendingIntent(0,
-                                PendingIntent.FLAG_UPDATE_CURRENT
-                            );
+                    PendingIntent pendingIntent = stackBuilder
+                            .getPendingIntent(0,
+                                    PendingIntent.FLAG_UPDATE_CURRENT);
                     mBuilder.setContentIntent(pendingIntent);
-                    NotificationManager mNotificationManager =
-                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                     mNotificationManager.notify(1, mBuilder.build());
                 }
             }
@@ -296,7 +304,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 sendStatus(STATUS_COMPLETE);
             }
 
-            if(success) {
+            if (success) {
                 Editor e = prefs.edit();
                 e.putLong("lastUpdateCheck", System.currentTimeMillis());
                 e.commit();
@@ -318,6 +326,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private void getIcon(DB.App app, List<DB.Repo> repos) {
+        InputStream input = null;
+        OutputStream output = null;
         try {
 
             File f = new File(DB.getIconsPath(this), app.icon);
@@ -332,42 +342,63 @@ public class UpdateService extends IntentService implements ProgressListener {
                     server = repo.address;
             if (server == null)
                 return;
-            URL u = new URL(server + "/icons/" + app.icon);
-            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
-            if (uc.getResponseCode() == 200) {
-                InputStream input = null;
-                OutputStream output = null;
-                try {
+
+            // TODO: Remove this later
+            // If we can find the icon in the old .fdroid directory, use that
+            // instead of re-downloading it.
+            File oldfile = new File(Environment.getExternalStorageDirectory(),
+                    ".fdroid/icons/" + app.icon);
+            if (oldfile.exists()) {
+                // Try and move it - should succeed if it's on the same
+                // filesystem.
+                if(oldfile.renameTo(f))
+                    return;
+                // Otherwise we'll have to copy...
+                input = new FileInputStream(oldfile);
+            }
+
+            // Get it from the server...
+            if (input == null) {
+                URL u = new URL(server + "/icons/" + app.icon);
+                HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+                if (uc.getResponseCode() == 200) {
                     input = uc.getInputStream();
-                    output = new FileOutputStream(f);
-                    Utils.copy(input, output);
-                } finally {
-                    Utils.closeQuietly(output);
-                    Utils.closeQuietly(input);
                 }
             }
-        } catch (Exception e) {
 
+            // Whereever we got the input stream from, copy it...
+            if (input != null) {
+                output = new FileOutputStream(f);
+                Utils.copy(input, output);
+            }
+        } catch (Exception e) {
+        } finally {
+            Utils.closeQuietly(output);
+            Utils.closeQuietly(input);
         }
     }
 
     /**
-     * Received progress event from the RepoXMLHandler.
-     * It could be progress downloading from the repo, or perhaps processing the info from the repo.
+     * Received progress event from the RepoXMLHandler. It could be progress
+     * downloading from the repo, or perhaps processing the info from the repo.
      */
     @Override
     public void onProgress(ProgressListener.Event event) {
 
         String message = "";
         if (event.type == RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD) {
-            String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
-            String downloadedSize = Utils.getFriendlySize( event.progress );
-            String totalSize      = Utils.getFriendlySize( event.total );
-            int percent           = (int)((double)event.progress/event.total * 100);
-            message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
+            String repoAddress = event.data
+                    .getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            String downloadedSize = Utils.getFriendlySize(event.progress);
+            String totalSize = Utils.getFriendlySize(event.total);
+            int percent = (int) ((double) event.progress / event.total * 100);
+            message = getString(R.string.status_download, repoAddress,
+                    downloadedSize, totalSize, percent);
         } else if (event.type == RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML) {
-            String repoAddress    = event.data.getString(RepoXMLHandler.PROGRESS_DATA_REPO);
-            message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
+            String repoAddress = event.data
+                    .getString(RepoXMLHandler.PROGRESS_DATA_REPO);
+            message = getString(R.string.status_processing_xml, repoAddress,
+                    event.progress, event.total);
         }
 
         sendStatus(STATUS_INFO, message);
