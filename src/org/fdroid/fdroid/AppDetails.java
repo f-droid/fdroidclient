@@ -181,8 +181,10 @@ public class AppDetails extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        if (Utils.hasApi(11))
+        if (Utils.hasApi(11)) {
+            getActionBar().setDisplayShowTitleEnabled(false);
             getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         setContentView(R.layout.appdetails);
 
