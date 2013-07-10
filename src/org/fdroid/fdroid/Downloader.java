@@ -32,6 +32,7 @@ public class Downloader extends Thread {
     private DB.Apk curapk;
     private String repoaddress;
     private String filename;
+    private File destdir;
     private File localfile;
 
     public static enum Status {
@@ -50,9 +51,10 @@ public class Downloader extends Thread {
 
     // Constructor - creates a Downloader to download the given Apk,
     // which must have its detail populated.
-    Downloader(DB.Apk apk, String repoaddress) {
+    Downloader(DB.Apk apk, String repoaddress, File destdir) {
         curapk = apk;
         this.repoaddress = repoaddress;
+        this.destdir = destdir;
     }
 
     public synchronized Status getStatus() {
@@ -97,7 +99,7 @@ public class Downloader extends Thread {
         InputStream input = null;
         OutputStream output = null;
         String apkname = curapk.apkName;
-        localfile = new File(DB.getDataPath(), apkname);
+        localfile = new File(destdir, apkname);
         try {
 
             // See if we already have this apk cached...

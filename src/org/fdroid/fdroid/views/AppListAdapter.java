@@ -78,7 +78,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         summary.setText(app.summary);
 
         ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
-        File icn = new File(DB.getIconsPath(), app.icon);
+        File icn = new File(DB.getIconsPath(mContext), app.icon);
         if (icn.exists() && icn.length() > 0) {
             new Uri.Builder().build();
             icon.setImageURI(Uri.parse(icn.getPath()));

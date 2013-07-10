@@ -320,7 +320,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     private void getIcon(DB.App app, List<DB.Repo> repos) {
         try {
 
-            File f = new File(DB.getIconsPath(), app.icon);
+            File f = new File(DB.getIconsPath(this), app.icon);
             if (f.exists())
                 return;
 

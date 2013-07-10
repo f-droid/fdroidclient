@@ -36,7 +36,7 @@ public class FDroidApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        File local_path = DB.getDataPath();
+        File local_path = DB.getDataPath(this);
         Log.d("FDroid", "Data path is " + local_path.getPath());
         if (!local_path.exists())
             local_path.mkdir();
@@ -59,7 +59,7 @@ public class FDroidApp extends Application {
             }
         }
 
-        File icon_path = DB.getIconsPath();
+        File icon_path = DB.getIconsPath(this);
         Log.d("FDroid", "Icon path is " + icon_path.getPath());
         if (!icon_path.exists())
             icon_path.mkdir();

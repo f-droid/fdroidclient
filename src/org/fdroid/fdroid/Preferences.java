@@ -79,10 +79,10 @@ public class Preferences extends PreferenceActivity implements
             }
             ((FDroidApp) getApplication()).invalidateAllApps();
 
-            File dp = DB.getDataPath();
+            File dp = DB.getDataPath(this);
             deleteAll(dp);
             dp.mkdir();
-            DB.getIconsPath().mkdir();
+            DB.getIconsPath(this).mkdir();
 
             Toast.makeText(getBaseContext(),
                     "Local cached data has been cleared", Toast.LENGTH_LONG)

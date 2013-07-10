@@ -379,7 +379,7 @@ public class AppDetails extends ListActivity {
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        File icon = new File(DB.getIconsPath(), app.icon);
+        File icon = new File(DB.getIconsPath(this), app.icon);
         if (icon.exists()) {
             iv.setImageDrawable(new BitmapDrawable(icon.getPath()));
         } else {
@@ -664,7 +664,8 @@ public class AppDetails extends ListActivity {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             downloadHandler = new DownloadHandler(curapk,
-                                    repoaddress);
+                                    repoaddress, DB
+                                            .getDataPath(getBaseContext()));
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -692,7 +693,8 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(curapk, repoaddress);
+        downloadHandler = new DownloadHandler(curapk, repoaddress,
+                DB.getDataPath(this));
     }
 
     private void removeApk(String id) {
@@ -755,9 +757,9 @@ public class AppDetails extends ListActivity {
         private boolean updating;
         private String id;
 
-        public DownloadHandler(DB.Apk apk, String repoaddress) {
+        public DownloadHandler(DB.Apk apk, String repoaddress, File destdir) {
             id = apk.id;
-            download = new Downloader(apk, repoaddress);
+            download = new Downloader(apk, repoaddress, destdir);
             download.start();
             startUpdates();
         }

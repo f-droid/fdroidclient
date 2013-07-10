@@ -485,12 +485,19 @@ public class DB {
 
     }
 
-    public static File getDataPath() {
-        return new File(Environment.getExternalStorageDirectory(), ".fdroid");
+    public static File getDataPath(Context ctx) {
+        File f;
+        if (Utils.hasApi(8)) {
+            f = ctx.getExternalCacheDir();
+        } else {
+            f = new File(Environment.getExternalStorageDirectory(),
+                    "Android/data/org.fdroid.fdroid/cache");
+        }
+        return f;
     }
 
-    public static File getIconsPath() {
-        return new File(getDataPath(), "icons");
+    public static File getIconsPath(Context ctx) {
+        return new File(getDataPath(ctx), "icons");
     }
 
     private Context mContext;
