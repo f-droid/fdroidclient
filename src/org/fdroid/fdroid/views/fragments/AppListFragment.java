@@ -49,7 +49,7 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
 
     protected ListView createAppListView() {
         ListView list = new ListView(getActivity());
-        list.setFastScrollEnabled(true);
+        list.setVerticalScrollBarEnabled(false);
         list.setOnItemClickListener(this);
         list.setAdapter(getAppListAdapter());
         return list;
