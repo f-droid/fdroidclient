@@ -14,6 +14,8 @@
 	     android:scaleType="fitCenter"
 	     android:layout_width="50dp"
 	     android:layout_height="50dp"
+	     android:layout_marginRight="2dp"
+	     android:layout_marginEnd="2dp"
 	     android:padding="4dp"/>
 
   <LinearLayout android:id="@+id/status_icons"
@@ -51,9 +53,7 @@
 	    android:layout_toLeftOf="@id/status_icons"
 	    android:layout_toStartOf="@id/status_icons"
 	    android:paddingTop="4dp"
-	    android:paddingBottom="2dp"
-	    android:paddingLeft="1dp"
-	    android:paddingStart="1dp"/>
+	    android:paddingBottom="2dp" />
 
   <TextView android:id="@+id/license"
 	    android:textSize="12sp"

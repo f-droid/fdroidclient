@@ -181,8 +181,10 @@ public class AppDetails extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        if (Utils.hasApi(11))
+        if (Utils.hasApi(11)) {
+            getActionBar().setDisplayShowTitleEnabled(false);
             getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         setContentView(R.layout.appdetails);
 
@@ -546,8 +548,8 @@ public class AppDetails extends ListActivity {
             toShow.add(menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
                     android.R.drawable.ic_menu_add));
         } else {
-            menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
-                    android.R.drawable.ic_menu_delete);
+            toShow.add(menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
+                    android.R.drawable.ic_menu_delete));
 
             if (mPm.getLaunchIntentForPackage(app.id) != null) {
                 toShow.add(menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch ).setIcon(
