@@ -38,13 +38,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="android.intent.action.VIEW" />
-
-                <data android:scheme="market" android:host="details" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.default_searchable"
@@ -56,12 +49,28 @@
             android:name="AppDetails"
             android:exported="true"
             android:parentActivityName="FDroid" >
+
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <action android:name="android.intent.action.VIEW" />
 
                 <data android:scheme="fdroid.app" />
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:scheme="market" android:host="details" />
+            </intent-filter>
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:scheme="fdroid" android:host="details" />
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

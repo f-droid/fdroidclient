@@ -192,7 +192,13 @@ public class AppDetails extends ListActivity {
         appid = "";
         Uri data = getIntent().getData();
         if (data != null) {
-            appid = data.getEncodedSchemeSpecificPart();
+            if (data.isHierarchical())
+                // fdroid://details?id=app.id
+                // market://details?id=app.id
+                appid = data.getQueryParameter("id");
+            else
+                // fdroid.app:app.id (old scheme)
+                appid = data.getEncodedSchemeSpecificPart();
             Log.d("FDroid", "AppDetails launched from link, for '" + appid
                     + "'");
         } else if (!i.hasExtra("appid")) {
