@@ -163,6 +163,7 @@ public class AppDetails extends ListActivity {
     private static final int MARKET = Menu.FIRST + 5;
     private static final int DONATE = Menu.FIRST + 6;
     private static final int LAUNCH = Menu.FIRST + 7;
+    private static final int SHARE = Menu.FIRST + 8;
 
     private DB.App app;
     private int app_currentvercode;
@@ -558,10 +559,13 @@ public class AppDetails extends ListActivity {
                     android.R.drawable.ic_menu_delete));
 
             if (mPm.getLaunchIntentForPackage(app.id) != null) {
-                toShow.add(menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch ).setIcon(
+                toShow.add(menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch).setIcon(
                         android.R.drawable.ic_media_play));
             }
         }
+        toShow.add(menu.add( Menu.NONE, SHARE, 1, R.string.menu_share).setIcon(
+                android.R.drawable.ic_menu_share));
+
         if (app.detail_webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
                     android.R.drawable.ic_menu_view);
@@ -606,6 +610,10 @@ public class AppDetails extends ListActivity {
 
         case LAUNCH:
             launchApk(app.id);
+            return true;
+
+        case SHARE:
+            shareApp(app);
             return true;
 
         case INSTALL:
@@ -732,6 +740,16 @@ public class AppDetails extends ListActivity {
     private void launchApk(String id) {
         Intent intent = mPm.getLaunchIntentForPackage(id);
         startActivity(intent);
+    }
+
+    private void shareApp(DB.App app) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+
+        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, app.name);
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "fdroid://details?id="+app.id);
+
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
 
     private ProgressDialog createProgressDialog(String file, int p, int max) {
