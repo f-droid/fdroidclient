@@ -83,12 +83,7 @@ public class FDroid extends FragmentActivity {
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
         Intent i = getIntent();
-        Uri data = i.getData();
-        if (data != null && data.getScheme().equals("market")) {
-            Intent call = new Intent(this, AppDetails.class);
-            call.putExtra("appid", data.getQueryParameter("id"));
-            startActivityForResult(call, REQUEST_APPDETAILS);
-        } else if (i.hasExtra("uri")) {
+        if (i.hasExtra("uri")) {
             Intent call = new Intent(this, ManageRepo.class);
             call.putExtra("uri", i.getStringExtra("uri"));
             startActivityForResult(call, REQUEST_MANAGEREPOS);
