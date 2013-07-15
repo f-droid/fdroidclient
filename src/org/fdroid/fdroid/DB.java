@@ -485,6 +485,8 @@ public class DB {
 
     }
 
+    // Get the local storage (cache) path. This will also create it if
+    // it doesn't exist. It can return null if it's currently unavailable.
     public static File getDataPath(Context ctx) {
         File f;
         if (Utils.hasApi(8)) {
@@ -492,12 +494,22 @@ public class DB {
         } else {
             f = new File(Environment.getExternalStorageDirectory(),
                     "Android/data/org.fdroid.fdroid/cache");
+            if(f != null) {
+                if(!f.exists())
+                    f.mkdirs();
+            }
         }
         return f;
     }
 
     public static File getIconsPath(Context ctx) {
-        return new File(getDataPath(ctx), "icons");
+        File dp = getDataPath(ctx);
+        if(dp == null)
+            return null;
+        File ip = new File(dp, "icons");
+        if(!ip.exists())
+            ip.mkdirs();
+        return ip;
     }
 
     private Context mContext;

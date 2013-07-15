@@ -37,9 +37,7 @@ public class FDroidApp extends Application {
         super.onCreate();
 
         File local_path = DB.getDataPath(this);
-        Log.d("FDroid", "Data path is " + local_path.getPath());
-        if (!local_path.exists())
-            local_path.mkdir();
+
         // Clear cached apk files. We used to just remove them after they'd
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),
@@ -58,11 +56,6 @@ public class FDroidApp extends Application {
                 }
             }
         }
-
-        File icon_path = DB.getIconsPath(this);
-        Log.d("FDroid", "Icon path is " + icon_path.getPath());
-        if (!icon_path.exists())
-            icon_path.mkdir();
 
         apps = null;
         invalidApps = new ArrayList<String>();
