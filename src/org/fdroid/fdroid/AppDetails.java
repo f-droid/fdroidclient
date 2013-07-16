@@ -410,11 +410,12 @@ public class AppDetails extends ListActivity {
             }
         }
         
-        if (Utils.hasApi(11))
+        if (Utils.hasApi(11)) {
             tv.setTextIsSelectable(true);
             tv.setMovementMethod(new CustomMovementMethod());
-        else
+        } else {
             tv.setMovementMethod(LinkMovementMethod.getInstance());
+        }
         */
 
         tv.setMovementMethod(LinkMovementMethod.getInstance());
