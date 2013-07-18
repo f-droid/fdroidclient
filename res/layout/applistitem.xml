@@ -6,16 +6,13 @@
 		android:paddingTop="3dp"
 		android:paddingBottom="4dp"
 		android:paddingLeft="6dp"
-		android:paddingStart="6dp"
 		android:paddingRight="10dp"
-		android:paddingEnd="10dp">
 
   <ImageView android:id="@+id/icon"
 	     android:scaleType="fitCenter"
 	     android:layout_width="50dp"
 	     android:layout_height="50dp"
 	     android:layout_marginRight="2dp"
-	     android:layout_marginEnd="2dp"
 	     android:padding="4dp"/>
 
   <LinearLayout android:id="@+id/status_icons"
@@ -24,7 +21,6 @@
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:padding="4dp">
 
       <ImageView android:id="@+id/icon_status_has_updates"
@@ -49,9 +45,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_toRightOf="@id/icon"
-	    android:layout_toEndOf="@id/icon"
 	    android:layout_toLeftOf="@id/status_icons"
-	    android:layout_toStartOf="@id/status_icons"
 	    android:paddingTop="4dp"
 	    android:paddingBottom="2dp" />
 
@@ -63,7 +57,6 @@
 	    android:layout_height="wrap_content"
 	    android:layout_below="@id/name"
 	    android:layout_alignParentRight="true"
-	    android:layout_alignParentEnd="true"/>
 
   <TextView android:id="@+id/status"
 	    android:textSize="12sp"
@@ -73,11 +66,8 @@
 	    android:layout_height="wrap_content"
 	    android:layout_alignBaseline="@id/license"
 	    android:layout_toLeftOf="@id/license"
-	    android:layout_toStartOf="@id/license"
 	    android:layout_alignLeft="@id/name"
-	    android:layout_alignStart="@id/name"
 	    android:paddingLeft="1dp"
-	    android:paddingStart="1dp"/>
 
   <TextView android:id="@+id/summary"
 	    android:singleLine="true"
@@ -86,6 +76,5 @@
 	    android:layout_height="wrap_content"
 	    android:layout_below="@id/icon"
 	    android:paddingLeft="6dp"
-	    android:paddingStart="6dp"/>
 
 </RelativeLayout>

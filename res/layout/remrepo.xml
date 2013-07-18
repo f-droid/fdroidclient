@@ -5,9 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="6dip"
-    android:paddingStart="6dip"
     android:paddingRight="6dip"
-    android:paddingEnd="6dip"
     android:paddingBottom="6dip">
     
     <Spinner 
