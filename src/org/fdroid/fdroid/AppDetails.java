@@ -760,7 +760,7 @@ public class AppDetails extends ListActivity {
         shareIntent.setType("text/plain");
 
         shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://fdroid.org/app?id="+app.id);
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://f-droid.org/app?id="+app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }

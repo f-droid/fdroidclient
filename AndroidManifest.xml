@@ -73,7 +73,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http" android:host="fdroid.org" android:path="/app" />
+                <data android:scheme="http" android:host="f-droid.org" android:path="/app" />
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
