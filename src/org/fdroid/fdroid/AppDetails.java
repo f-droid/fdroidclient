@@ -559,25 +559,39 @@ public class AppDetails extends ListActivity {
         if (app == null)
             return true;
         DB.Apk curver = app.getCurrentVersion();
-        List<MenuItem> toShow = new ArrayList<MenuItem>(2);
         if (app.hasUpdates == true) {
-            toShow.add(menu.add(Menu.NONE, INSTALL, 0, R.string.menu_update).setIcon(
-                    R.drawable.ic_menu_refresh));
+            MenuItemCompat.setShowAsAction(menu.add(
+                        Menu.NONE, INSTALL, 0, R.string.menu_update)
+                        .setIcon(R.drawable.ic_menu_refresh),
+                    MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                    MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
         if (app.installedVersion == null && curver != null) {
-            toShow.add(menu.add(Menu.NONE, INSTALL, 1, R.string.menu_install).setIcon(
-                    android.R.drawable.ic_menu_add));
+            MenuItemCompat.setShowAsAction(menu.add(
+                        Menu.NONE, INSTALL, 1, R.string.menu_install)
+                        .setIcon(android.R.drawable.ic_menu_add),
+                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
+                    MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         } else {
-            toShow.add(menu.add(Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall).setIcon(
-                    android.R.drawable.ic_menu_delete));
+            MenuItemCompat.setShowAsAction(menu.add(
+                        Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall)
+                        .setIcon(android.R.drawable.ic_menu_delete),
+                    MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                    MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
             if (mPm.getLaunchIntentForPackage(app.id) != null) {
-                toShow.add(menu.add( Menu.NONE, LAUNCH, 1, R.string.menu_launch).setIcon(
-                        android.R.drawable.ic_media_play));
+                MenuItemCompat.setShowAsAction(menu.add(
+                            Menu.NONE, LAUNCH, 1, R.string.menu_launch)
+                            .setIcon(android.R.drawable.ic_media_play),
+                        MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
+                        MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
             }
         }
-        toShow.add(menu.add( Menu.NONE, SHARE, 1, R.string.menu_share).setIcon(
-                android.R.drawable.ic_menu_share));
+        MenuItemCompat.setShowAsAction(menu.add(
+                    Menu.NONE, SHARE, 1, R.string.menu_share)
+                    .setIcon(android.R.drawable.ic_menu_share),
+                MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
         if (app.detail_webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
@@ -597,12 +611,7 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, DONATE, 6, R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        for (MenuItem item : toShow) {
-            MenuItemCompat.setShowAsAction(item,
-                    MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
-                    MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
-        }
         return true;
     }
 
