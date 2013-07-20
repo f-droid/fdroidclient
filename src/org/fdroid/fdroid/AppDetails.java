@@ -26,6 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.support.v4.view.MenuItemCompat;
+import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
 import org.xml.sax.XMLReader;
@@ -182,10 +183,9 @@ public class AppDetails extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        if (Utils.hasApi(11)) {
-            getActionBar().setDisplayShowTitleEnabled(false);
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        ActionBarCompat abCompat = ActionBarCompat.create(this);
+        abCompat.setDisplayHomeAsUpEnabled(true);
+        abCompat.setDisplayShowTitleEnabled(false);
 
         setContentView(R.layout.appdetails);
 

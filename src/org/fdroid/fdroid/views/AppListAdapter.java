@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.compat.LayoutCompat;
 
 abstract public class AppListAdapter extends BaseAdapter {
 
@@ -110,10 +111,7 @@ abstract public class AppListAdapter extends BaseAdapter {
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
                         RelativeLayout.LayoutParams.WRAP_CONTENT);
                 summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
-                if (Utils.hasApi(17))
-                    summaryLayout.addRule(RelativeLayout.END_OF, R.id.icon);
-                else
-                    summaryLayout.addRule(RelativeLayout.RIGHT_OF, R.id.icon);
+                summaryLayout.addRule(LayoutCompat.RelativeLayout.END_OF, R.id.icon);
                 summary.setLayoutParams(summaryLayout);
                 summary.setPadding(0,0,0,0);
 

@@ -45,6 +45,8 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.util.Log;
+import org.fdroid.fdroid.compat.Compatibility;
+import org.fdroid.fdroid.compat.ContextCompat;
 
 public class DB {
 
@@ -275,25 +277,25 @@ public class DB {
 
         // Call isCompatible(apk) on an instance of this class to
         // check if an APK is compatible with the user's device.
-        public static abstract class CompatibilityChecker {
+        public static abstract class CompatibilityChecker extends Compatibility {
 
             public abstract boolean isCompatible(Apk apk);
 
             public static CompatibilityChecker getChecker(Context ctx) {
                 CompatibilityChecker checker;
-                if (Utils.hasApi(5))
+                if (hasApi(5))
                     checker = new EclairChecker(ctx);
                 else
                     checker = new BasicChecker();
                 Log.d("FDroid", "Compatibility checker for API level "
-                        + Utils.getApi() + ": " + checker.getClass().getName());
+                        + getApi() + ": " + checker.getClass().getName());
                 return checker;
             }
         }
 
         private static class BasicChecker extends CompatibilityChecker {
             public boolean isCompatible(Apk apk) {
-                return (apk.minSdkVersion <= Utils.getApi());
+                return hasApi(apk.minSdkVersion);
             }
         }
 
@@ -323,7 +325,7 @@ public class DB {
             }
 
             public boolean isCompatible(Apk apk) {
-                if (apk.minSdkVersion > Utils.getApi())
+                if (!hasApi(apk.minSdkVersion))
                     return false;
                 if (apk.features != null) {
                     for (String feat : apk.features) {
@@ -485,21 +487,12 @@ public class DB {
 
     }
 
-    // Get the local storage (cache) path. This will also create it if
-    // it doesn't exist. It can return null if it's currently unavailable.
+    /**
+     * Get the local storage (cache) path. This will also create it if
+     * it doesn't exist. It can return null if it's currently unavailable.
+     */
     public static File getDataPath(Context ctx) {
-        File f;
-        if (Utils.hasApi(8)) {
-            f = ctx.getExternalCacheDir();
-        } else {
-            f = new File(Environment.getExternalStorageDirectory(),
-                    "Android/data/org.fdroid.fdroid/cache");
-            if(f != null) {
-                if(!f.exists())
-                    f.mkdirs();
-            }
-        }
-        return f;
+        return ContextCompat.create(ctx).getExternalCacheDir();
     }
 
     public static File getIconsPath(Context ctx) {

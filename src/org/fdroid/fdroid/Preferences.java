@@ -27,6 +27,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.widget.Toast;
+import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class Preferences extends PreferenceActivity implements
         OnPreferenceClickListener {
@@ -34,8 +35,7 @@ public class Preferences extends PreferenceActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Utils.hasApi(11))
-            getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
         for (String prefkey : new String[] { "reset", "ignoreTouchscreen",
                 "showIncompatible" }) {

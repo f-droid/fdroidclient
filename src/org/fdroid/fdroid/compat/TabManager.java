@@ -14,14 +14,14 @@ import org.fdroid.fdroid.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TabManager {
+public abstract class TabManager extends Compatibility {
 
     public static final int INDEX_AVAILABLE  = 0;
     public static final int INDEX_INSTALLED  = 1;
     public static final int INDEX_CAN_UPDATE = 2;
 
     public static TabManager create(FDroid parent, ViewPager pager) {
-        if (Utils.hasApi(11)) {
+        if (hasApi(11)) {
             return new HoneycombTabManagerImpl(parent, pager);
         } else {
             return new OldTabManagerImpl(parent, pager);

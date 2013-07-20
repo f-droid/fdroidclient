@@ -3,10 +3,10 @@ package org.fdroid.fdroid.compat;
 import android.app.Activity;
 import org.fdroid.fdroid.Utils;
 
-abstract public class MenuManager {
+abstract public class MenuManager extends Compatibility {
 
     public static MenuManager create(Activity activity) {
-        if (Utils.hasApi(11)) {
+        if (hasApi(11)) {
             return new HoneycombMenuManagerImpl(activity);
         } else {
             return new OldMenuManagerImpl(activity);

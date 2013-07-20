@@ -34,6 +34,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
 
@@ -50,8 +51,7 @@ public class SearchResults extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Utils.hasApi(11))
-            getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         applist = new AvailableAppListAdapter(this);
         setContentView(R.layout.searchresults);
 
