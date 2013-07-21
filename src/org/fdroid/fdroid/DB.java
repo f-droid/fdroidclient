@@ -848,6 +848,7 @@ public class DB {
                 app.installedVerCode = 0;
             }
 
+            app.hasUpdates = false;
             Apk curver = app.getCurrentVersion();
             if (curver != null
                     && app.installedVersion != null
