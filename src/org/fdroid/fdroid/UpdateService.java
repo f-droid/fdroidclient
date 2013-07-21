@@ -262,38 +262,36 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             }
 
-            if (success && changes && notify) {
+            if (success && changes && notify && (newUpdates > prevUpdates)) {
                 Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
                         + ", apps after: " + newUpdates);
-                if (newUpdates > prevUpdates) {
-                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-                            this)
-                            .setSmallIcon(R.drawable.icon)
-                            .setLargeIcon(
-                                    BitmapFactory.decodeResource(
-                                            getResources(), R.drawable.icon))
-                            .setAutoCancel(true)
-                            .setContentTitle(
-                                    getString(R.string.fdroid_updates_available));
-                    Intent notifyIntent = new Intent(this, FDroid.class)
-                            .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
-                    if (newUpdates > 1) {
-                        mBuilder.setContentText(getString(
-                                R.string.many_updates_available, newUpdates));
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+                        this)
+                        .setSmallIcon(R.drawable.icon)
+                        .setLargeIcon(
+                                BitmapFactory.decodeResource(
+                                        getResources(), R.drawable.icon))
+                        .setAutoCancel(true)
+                        .setContentTitle(
+                                getString(R.string.fdroid_updates_available));
+                Intent notifyIntent = new Intent(this, FDroid.class)
+                        .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
+                if (newUpdates > 1) {
+                    mBuilder.setContentText(getString(
+                            R.string.many_updates_available, newUpdates));
 
-                    } else {
-                        mBuilder.setContentText(getString(R.string.one_update_available));
-                    }
-                    TaskStackBuilder stackBuilder = TaskStackBuilder
-                            .create(this).addParentStack(FDroid.class)
-                            .addNextIntent(notifyIntent);
-                    PendingIntent pendingIntent = stackBuilder
-                            .getPendingIntent(0,
-                                    PendingIntent.FLAG_UPDATE_CURRENT);
-                    mBuilder.setContentIntent(pendingIntent);
-                    NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    mNotificationManager.notify(1, mBuilder.build());
+                } else {
+                    mBuilder.setContentText(getString(R.string.one_update_available));
                 }
+                TaskStackBuilder stackBuilder = TaskStackBuilder
+                        .create(this).addParentStack(FDroid.class)
+                        .addNextIntent(notifyIntent);
+                PendingIntent pendingIntent = stackBuilder
+                        .getPendingIntent(0,
+                                PendingIntent.FLAG_UPDATE_CURRENT);
+                mBuilder.setContentIntent(pendingIntent);
+                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                mNotificationManager.notify(1, mBuilder.build());
             }
 
             if (!success) {
@@ -302,9 +300,6 @@ public class UpdateService extends IntentService implements ProgressListener {
                 sendStatus(STATUS_ERROR, errmsg);
             } else {
                 sendStatus(STATUS_COMPLETE);
-            }
-
-            if (success) {
                 Editor e = prefs.edit();
                 e.putLong("lastUpdateCheck", System.currentTimeMillis());
                 e.commit();
