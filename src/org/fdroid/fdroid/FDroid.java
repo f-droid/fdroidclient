@@ -26,6 +26,7 @@ import org.fdroid.fdroid.R;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -326,6 +327,12 @@ public class FDroid extends FragmentActivity {
 
     public void refreshUpdateTabLabel() {
         getTabManager().refreshTabLabel(TabManager.INDEX_CAN_UPDATE);
+    }
+
+    public void removeNotification(int id) {
+        NotificationManager nMgr = (NotificationManager) getBaseContext()
+            .getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancel(1);
     }
 
 }

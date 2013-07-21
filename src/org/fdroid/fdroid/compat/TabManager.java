@@ -44,6 +44,10 @@ public abstract class TabManager extends Compatibility {
     protected CharSequence getLabel(int index) {
         return pager.getAdapter().getPageTitle(index);
     }
+
+    public void removeNotification(int id) {
+        parent.removeNotification(id);
+    }
 }
 
 class OldTabManagerImpl extends TabManager {
@@ -113,7 +117,10 @@ class OldTabManagerImpl extends TabManager {
         tabHost.setOnTabChangedListener( new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                pager.setCurrentItem(tabHost.getCurrentTab());
+                int pos = tabHost.getCurrentTab();
+                pager.setCurrentItem(pos);
+                if (pos == 2)
+                    removeNotification(1);
             }
         });
     }
@@ -121,6 +128,8 @@ class OldTabManagerImpl extends TabManager {
 
     public void selectTab(int index) {
         tabHost.setCurrentTab(index);
+        if (index == 2)
+            removeNotification(1);
     }
 
     public void refreshTabLabel(int index) {
@@ -164,7 +173,10 @@ class HoneycombTabManagerImpl extends TabManager {
                     .setTabListener(new ActionBar.TabListener() {
                         public void onTabSelected(ActionBar.Tab tab,
                                                   FragmentTransaction ft) {
-                            pager.setCurrentItem(tab.getPosition());
+                            int pos = tab.getPosition();
+                            pager.setCurrentItem(pos);
+                            if (pos == 2)
+                                removeNotification(1);
                         }
 
                         @Override
@@ -184,6 +196,8 @@ class HoneycombTabManagerImpl extends TabManager {
         if (actionBarSpinner != null) {
             actionBarSpinner.setSelection(index);
         }
+        if (index == 2)
+            removeNotification(1);
     }
 
     public void refreshTabLabel(int index) {
