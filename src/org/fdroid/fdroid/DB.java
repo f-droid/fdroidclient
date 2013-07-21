@@ -1350,6 +1350,12 @@ public class DB {
                 }
                 db.delete(TABLE_REPO, "address = ?", new String[] { address });
             }
+            List<App> apps = getAppsBasic(true);
+            for (App app : apps) {
+                if (app.apks.isEmpty()) {
+                    db.delete(TABLE_APP, "id = ?", new String[] { app.id });
+                }
+            }
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
