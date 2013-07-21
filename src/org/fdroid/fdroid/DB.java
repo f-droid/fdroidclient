@@ -192,7 +192,7 @@ public class DB {
         public Apk getCurrentVersion() {
 
             // Try and return the real current version first...
-            if (curVersion != null && curVercode > 0) {
+            if (curVercode > 0) {
                 for (Apk apk : apks) {
                     if (apk.vercode == curVercode)
                         return apk;
@@ -558,7 +558,7 @@ public class DB {
     // Get the number of apps that have updates available. This can be a
     // time consuming operation.
     public int getNumUpdates() {
-        List<App> apps = getApps(true);
+        List<App> apps = getAppsBasic(true);
         int count = 0;
         for (App app : apps) {
             if (app.hasUpdates)
@@ -864,6 +864,100 @@ public class DB {
                 + (System.currentTimeMillis() - startTime) + " ms");
 
         return apps;
+    }
+
+    public List<App> getAppsBasic(boolean getinstalledinfo) {
+
+        // If we're going to need it, get info in what's currently installed
+        Map<String, PackageInfo> systemApks = null;
+        if (getinstalledinfo) {
+            Log.d("FDroid", "Reading installed packages");
+            systemApks = new HashMap<String, PackageInfo>();
+            List<PackageInfo> installedPackages = mContext.getPackageManager()
+                    .getInstalledPackages(0);
+            for (PackageInfo appInfo : installedPackages) {
+                systemApks.put(appInfo.packageName, appInfo);
+            }
+        }
+
+        Map<String, App> apps = new HashMap<String, App>();
+        Cursor c = null;
+        long startTime = System.currentTimeMillis();
+        try {
+
+            String cols[] = new String[] { "id", "curVercode" };
+            c = db.query(TABLE_APP, cols, null, null, null, null, null);
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+
+                App app = new App();
+                app.id = c.getString(0);
+                app.curVercode = c.getInt(1);
+                app.hasUpdates = false;
+
+                if (getinstalledinfo && systemApks.containsKey(app.id)) {
+                    PackageInfo sysapk = systemApks.get(app.id);
+                    app.installedVerCode = sysapk.versionCode;
+                } else {
+                    app.installedVerCode = 0;
+                }
+
+                apps.put(app.id, app);
+                c.moveToNext();
+            }
+            c.close();
+            c = null;
+
+            Log.d("FDroid", "Read basic app data from database " + " (took "
+                    + (System.currentTimeMillis() - startTime) + " ms)");
+
+            cols = new String[] { "id", "vercode", "repo" };
+            c = db.query(TABLE_APK, cols, null, null, null, null,
+                    "vercode desc");
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                Apk apk = new Apk();
+                apk.id = c.getString(0);
+                apk.vercode = c.getInt(1);
+                apk.repo = c.getInt(2);
+                apps.get(apk.id).apks.add(apk);
+                c.moveToNext();
+            }
+            c.close();
+
+        } catch (Exception e) {
+            Log.e("FDroid", "Exception during database reading:\n"
+                            + Log.getStackTraceString(e));
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+
+            Log.d("FDroid", "Read basic app and apk data from database " +
+                    " (took " + (System.currentTimeMillis() - startTime) +
+                    " ms)");
+        }
+
+        List<App> result = new ArrayList<App>(apps.values());
+        Collections.sort(result);
+
+        // Fill in the hasUpdates fields if we have the necessary information...
+        if (getinstalledinfo) {
+
+            // We'll say an application has updates if it's installed AND the
+            // version is older than the current one
+            for (App app : result) {
+                Apk curver = app.getCurrentVersion();
+                if (curver != null
+                        && app.installedVersion != null
+                        && app.installedVerCode < curver.vercode) {
+                    app.hasUpdates = true;
+                    app.updateVersion = curver.version;
+                }
+            }
+        }
+
+        return result;
     }
 
     public List<String> doSearch(String query) {
