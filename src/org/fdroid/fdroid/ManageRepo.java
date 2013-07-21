@@ -229,6 +229,7 @@ public class ManageRepo extends ListActivity {
                             try {
                                 DB db = DB.getDB();
                                 db.removeRepos(rem_lst);
+                                ((FDroidApp) getApplication()).invalidateAllApps();
                             } finally {
                                 DB.releaseDB();
                             }
