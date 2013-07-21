@@ -456,29 +456,31 @@ public class AppDetails extends ListActivity {
         tv = (TextView) infoView.findViewById(R.id.summary);
         tv.setText(app.summary);
 
-        tv = (TextView) infoView.findViewById(R.id.permissions_list);
+        if (!app.apks.isEmpty()) {
+            tv = (TextView) infoView.findViewById(R.id.permissions_list);
 
-        CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
-        if (permsList == null) {
-            tv.setText(getString(R.string.no_permissions) + '\n');
-        } else {
-            Iterator<String> permissions = permsList.iterator();
-            StringBuilder sb = new StringBuilder();
-            while (permissions.hasNext()) {
-                String permissionName = permissions.next();
-                try {
-                    Permission permission = new Permission(this, permissionName);
-                    sb.append("\t• " + permission.getName() + '\n');
-                } catch (NameNotFoundException e) {
-                    Log.d( "FDroid",
-                            "Can't find permission '" + permissionName + "'");
+            CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
+            if (permsList == null) {
+                tv.setText(getString(R.string.no_permissions) + '\n');
+            } else {
+                Iterator<String> permissions = permsList.iterator();
+                StringBuilder sb = new StringBuilder();
+                while (permissions.hasNext()) {
+                    String permissionName = permissions.next();
+                    try {
+                        Permission permission = new Permission(this, permissionName);
+                        sb.append("\t• " + permission.getName() + '\n');
+                    } catch (NameNotFoundException e) {
+                        Log.d( "FDroid",
+                                "Can't find permission '" + permissionName + "'");
+                    }
                 }
+                tv.setText(sb.toString());
             }
-            tv.setText(sb.toString());
+            tv = (TextView) infoView.findViewById(R.id.permissions);
+            tv.setText(getString(
+                    R.string.permissions_for_long, app.apks.get(0).version));
         }
-        tv = (TextView) infoView.findViewById(R.id.permissions);
-        tv.setText(getString(
-                R.string.permissions_for_long, app.apks.get(0).version));
     }
 
     private void updateViews() {
