@@ -796,7 +796,7 @@ public class DB {
             for (App app : result) {
                 Apk curver = app.getCurrentVersion();
                 if (curver != null
-                        && app.installedVersion != null
+                        && app.installedVerCode > 0
                         && app.installedVerCode < curver.vercode) {
                     app.hasUpdates = true;
                     app.updateVersion = curver.version;
@@ -949,7 +949,7 @@ public class DB {
             for (App app : result) {
                 Apk curver = app.getCurrentVersion();
                 if (curver != null
-                        && app.installedVersion != null
+                        && app.installedVerCode > 0
                         && app.installedVerCode < curver.vercode) {
                     app.hasUpdates = true;
                     app.updateVersion = curver.version;
