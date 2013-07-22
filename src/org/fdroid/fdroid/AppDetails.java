@@ -198,7 +198,7 @@ public class AppDetails extends ListActivity {
                     // market://details?id=app.id
                     appid = data.getQueryParameter("id");
                 } else {
-                    // http://f-droid.org/app/app.id
+                    // https://f-droid.org/app/app.id
                     appid = data.getLastPathSegment();
                 }
             } else {
@@ -776,7 +776,7 @@ public class AppDetails extends ListActivity {
         shareIntent.setType("text/plain");
 
         shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://f-droid.org/app/"+app.id);
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://f-droid.org/app/"+app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
