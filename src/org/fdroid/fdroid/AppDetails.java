@@ -193,13 +193,18 @@ public class AppDetails extends ListActivity {
         appid = "";
         Uri data = getIntent().getData();
         if (data != null) {
-            if (data.isHierarchical())
-                // fdroid://details?id=app.id
-                // market://details?id=app.id
-                appid = data.getQueryParameter("id");
-            else
+            if (data.isHierarchical()) {
+                if (data.getHost().equals("details")) {
+                    // market://details?id=app.id
+                    appid = data.getQueryParameter("id");
+                } else {
+                    // http://f-droid.org/app/app.id
+                    appid = data.getLastPathSegment();
+                }
+            } else {
                 // fdroid.app:app.id (old scheme)
                 appid = data.getEncodedSchemeSpecificPart();
+            }
             Log.d("FDroid", "AppDetails launched from link, for '" + appid
                     + "'");
         } else if (!i.hasExtra("appid")) {
@@ -771,7 +776,7 @@ public class AppDetails extends ListActivity {
         shareIntent.setType("text/plain");
 
         shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://f-droid.org/app?id="+app.id);
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "http://f-droid.org/app/"+app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
