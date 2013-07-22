@@ -119,7 +119,7 @@ class OldTabManagerImpl extends TabManager {
             public void onTabChanged(String tabId) {
                 int pos = tabHost.getCurrentTab();
                 pager.setCurrentItem(pos);
-                if (pos == 2)
+                if (pos == INDEX_CAN_UPDATE)
                     removeNotification(1);
             }
         });
@@ -128,7 +128,7 @@ class OldTabManagerImpl extends TabManager {
 
     public void selectTab(int index) {
         tabHost.setCurrentTab(index);
-        if (index == 2)
+        if (index == INDEX_CAN_UPDATE)
             removeNotification(1);
     }
 
@@ -175,7 +175,7 @@ class HoneycombTabManagerImpl extends TabManager {
                                                   FragmentTransaction ft) {
                             int pos = tab.getPosition();
                             pager.setCurrentItem(pos);
-                            if (pos == 2)
+                            if (pos == INDEX_CAN_UPDATE)
                                 removeNotification(1);
                         }
 
@@ -196,7 +196,7 @@ class HoneycombTabManagerImpl extends TabManager {
         if (actionBarSpinner != null) {
             actionBarSpinner.setSelection(index);
         }
-        if (index == 2)
+        if (index == INDEX_CAN_UPDATE)
             removeNotification(1);
     }
 
