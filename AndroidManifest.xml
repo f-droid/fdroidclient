@@ -75,6 +75,8 @@
 
                 <data android:scheme="http" android:host="f-droid.org"
                     android:pathPrefix="/app" />
+                <data android:scheme="https" android:host="f-droid.org"
+                    android:pathPrefix="/app" />
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
