@@ -56,6 +56,24 @@ public class ManageRepo extends ListActivity {
 
     private List<DB.Repo> repos;
 
+    private static List<String> reposToDisable;
+    private static List<String> reposToRemove;
+
+    public void disableRepo(String address) {
+        if (reposToDisable.contains(address)) return;
+        reposToDisable.add(address);
+    }
+
+    public void removeRepo(String address) {
+        if (reposToRemove.contains(address)) return;
+        reposToRemove.add(address);
+    }
+
+    public void removeRepos(List<String> addresses) {
+        for (String address : addresses)
+            removeRepo(address);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -68,7 +86,7 @@ public class ManageRepo extends ListActivity {
         TextView tv_lastCheck = (TextView)findViewById(R.id.lastUpdateCheck);
         long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
         String s_lastUpdateCheck = "";
-        if(lastUpdate == 0) {
+        if (lastUpdate == 0) {
         	s_lastUpdateCheck = getString(R.string.never);
         } else {
         	Date d = new Date(lastUpdate);
@@ -76,6 +94,9 @@ public class ManageRepo extends ListActivity {
         			" " + DateFormat.getTimeFormat(this).format(d);
         }
         tv_lastCheck.setText(getString(R.string.last_update_check,s_lastUpdateCheck));
+
+        reposToRemove = new ArrayList<String>();
+        reposToDisable = new ArrayList<String>();
     }
 
     @Override
@@ -138,7 +159,10 @@ public class ManageRepo extends ListActivity {
         super.onListItemClick(l, v, position, id);
         try {
             DB db = DB.getDB();
-            db.changeServerStatus(repos.get(position).address);
+            String address = repos.get(position).address;
+            db.changeServerStatus(address);
+            // TODO: Disabling and re-enabling a repo will delete its apks too.
+            disableRepo(address);
         } finally {
             DB.releaseDB();
         }
@@ -228,8 +252,7 @@ public class ManageRepo extends ListActivity {
                                 int whichButton) {
                             try {
                                 DB db = DB.getDB();
-                                db.removeRepos(rem_lst);
-                                ((FDroidApp) getApplication()).invalidateAllApps();
+                                removeRepos(rem_lst);
                             } finally {
                                 DB.releaseDB();
                             }
@@ -253,6 +276,26 @@ public class ManageRepo extends ListActivity {
 
     @Override
     public void finish() {
+        if (!reposToRemove.isEmpty()) {
+            try {
+                DB db = DB.getDB();
+                db.doDisableRepos(reposToRemove, true);
+            } finally {
+                DB.releaseDB();
+            }
+            ((FDroidApp) getApplication()).invalidateAllApps();
+        }
+
+        if (!reposToDisable.isEmpty()) {
+            try {
+                DB db = DB.getDB();
+                db.doDisableRepos(reposToDisable, false);
+            } finally {
+                DB.releaseDB();
+            }
+            ((FDroidApp) getApplication()).invalidateAllApps();
+        }
+
         Intent ret = new Intent();
         if (changed)
             ret.putExtra("update", true);

@@ -1326,7 +1326,8 @@ public class DB {
         db.insert(TABLE_REPO, null, values);
     }
 
-    public void removeRepos(List<String> addresses) {
+    public void doDisableRepos(List<String> addresses, boolean remove) {
+        if (addresses.isEmpty()) return;
         db.beginTransaction();
         try {
             for (String address : addresses) {
@@ -1348,7 +1349,9 @@ public class DB {
                         c.close();
                     }
                 }
-                db.delete(TABLE_REPO, "address = ?", new String[] { address });
+                if (remove)
+                    db.delete(TABLE_REPO, "address = ?",
+                            new String[] { address });
             }
             List<App> apps = getAppsBasic(true);
             for (App app : apps) {
