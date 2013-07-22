@@ -775,8 +775,8 @@ public class AppDetails extends ListActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
 
-        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://f-droid.org/app/"+app.id);
+        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Android App: "+app.name);
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app.name+" ("+app.summary+") - https://f-droid.org/app/"+app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
