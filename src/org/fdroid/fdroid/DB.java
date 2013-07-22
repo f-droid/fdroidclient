@@ -204,7 +204,7 @@ public class DB {
             int latestcode = -1;
             Apk latestapk = null;
             for (Apk apk : apks) {
-                if (apk.vercode > latestcode) {
+                if (apk.vercode < curVercode && apk.vercode > latestcode) {
                     latestapk = apk;
                     latestcode = apk.vercode;
                 }
