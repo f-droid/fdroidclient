@@ -194,7 +194,7 @@ public class DB {
             // Try and return the real current version first...
             if (curVercode > 0) {
                 for (Apk apk : apks) {
-                    if (apk.vercode == curVercode)
+                    if (apk.compatible && apk.vercode == curVercode)
                         return apk;
                 }
             }
@@ -204,7 +204,8 @@ public class DB {
             int latestcode = -1;
             Apk latestapk = null;
             for (Apk apk : apks) {
-                if (apk.vercode < curVercode && apk.vercode > latestcode) {
+                if (apk.compatible &&apk.vercode < curVercode
+                        && apk.vercode > latestcode) {
                     latestapk = apk;
                     latestcode = apk.vercode;
                 }
