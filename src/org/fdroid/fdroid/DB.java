@@ -191,26 +191,36 @@ public class DB {
         // most recent, if for example there are betas etc.
         public Apk getCurrentVersion() {
 
-            // Try and return the real current version first...
+            // Try and return the real current version first. It will find the
+            // closest version smaller than the curVercode, being the same
+            // vercode if it exists.
             if (curVercode > 0) {
+                int latestcode = -1;
+                Apk latestapk = null;
                 for (Apk apk : apks) {
-                    if (apk.compatible && apk.vercode == curVercode)
-                        return apk;
+                    if (apk.compatible && apk.vercode <= curVercode
+                            && apk.vercode > latestcode) {
+                        latestapk = apk;
+                        latestcode = apk.vercode;
+                    }
                 }
+                return latestapk;
             }
 
-            // If we don't know the current version, or we don't have it, we
-            // return the most recent version we have...
-            int latestcode = -1;
-            Apk latestapk = null;
-            for (Apk apk : apks) {
-                if (apk.compatible &&apk.vercode < curVercode
-                        && apk.vercode > latestcode) {
-                    latestapk = apk;
-                    latestcode = apk.vercode;
+            // If the current version was not set we return the most recent apk.
+            if (curVercode == -1) {
+                int latestcode = -1;
+                Apk latestapk = null;
+                for (Apk apk : apks) {
+                    if (apk.compatible && apk.vercode > latestcode) {
+                        latestapk = apk;
+                        latestcode = apk.vercode;
+                    }
                 }
+                return latestapk;
             }
-            return latestapk;
+
+            return null;
         }
 
         @Override

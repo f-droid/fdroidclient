@@ -137,7 +137,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 try {
                     curapk.vercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
-                    curapk.vercode = 0;
+                    curapk.vercode = -1;
                 }
             } else if (curel.equals("size")) {
                 try {
@@ -228,7 +228,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 try {
                     curapp.curVercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
-                    curapp.curVercode = 0;
+                    curapp.curVercode = -1;
                 }
             } else if (curel.equals("antifeatures")) {
                 curapp.antiFeatures = DB.CommaSeparatedList.make(str);
