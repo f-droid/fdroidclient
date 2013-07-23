@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.views;
 
-import org.fdroid.fdroid.Utils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,9 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
-    Boolean pref_compactlayout = null;
+
+    private boolean prefCompactLayoutInitialized = false;
+    private boolean prefCompactLayout = false;
 
     public AppListAdapter(Context context) {
         mContext = context;
@@ -53,6 +53,15 @@ abstract public class AppListAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    protected boolean hasCompactLayout() {
+        if (!prefCompactLayoutInitialized) {
+            prefCompactLayoutInitialized = true;
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+            prefCompactLayout = prefs.getBoolean("compactlayout", false);
+        }
+        return prefCompactLayout;
     }
 
     @Override
@@ -92,13 +101,7 @@ abstract public class AppListAdapter extends BaseAdapter {
 
         if (init) {
 
-            if (pref_compactlayout == null) {
-                SharedPreferences prefs = PreferenceManager
-                        .getDefaultSharedPreferences(mContext);
-                pref_compactlayout = prefs.getBoolean("compactlayout", false);
-            }
-
-            if (pref_compactlayout == true) {
+            if (hasCompactLayout()) {
 
                 iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
                 iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
@@ -118,7 +121,7 @@ abstract public class AppListAdapter extends BaseAdapter {
             }
         }
 
-        if (pref_compactlayout == true) {
+        if (hasCompactLayout()) {
 
             if (app.hasUpdates && showStatusUpdate()) {
                 iconUpdates.setVisibility(View.VISIBLE);
