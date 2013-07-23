@@ -36,15 +36,16 @@ public class FDroidApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        File local_path = DB.getDataPath(this);
-
         // Clear cached apk files. We used to just remove them after they'd
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        if(!prefs.getBoolean("cacheDownloaded", false)) {
+        if (!prefs.getBoolean("cacheDownloaded", false)) {
+
+            File local_path = DB.getDataPath(this);
+
             File[] files = local_path.listFiles();
             // files can be null if the SD card is not ready - we'll just
             // ignore that and do it next time.
