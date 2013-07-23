@@ -63,8 +63,6 @@
 			android:key="ignoreTouchscreen" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/maintenance">
-		<Preference android:title="@string/reset" android:summary="@string/clear_all_cached_data"
-			android:key="reset" />
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false" android:summary="@string/expert_mode"
 			android:key="expert" />

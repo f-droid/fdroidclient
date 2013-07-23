@@ -231,8 +231,7 @@ public class FDroid extends FragmentActivity {
             // unschedule) the service accordingly. It's cheap, so no need to
             // check if the particular setting has actually been changed.
             UpdateService.schedule(getBaseContext());
-            if (data != null
-                    && (data.hasExtra("reset") || data.hasExtra("update"))) {
+            if (data != null && data.hasExtra("update")) {
                 updateRepos();
             } else {
                 repopulateViews();

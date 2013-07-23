@@ -37,63 +37,23 @@ public class Preferences extends PreferenceActivity implements
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
-        for (String prefkey : new String[] { "reset", "ignoreTouchscreen",
+        for (String prefkey : new String[] { "ignoreTouchscreen",
                 "showIncompatible" }) {
             Preference pref = findPreference(prefkey);
             pref.setOnPreferenceClickListener(this);
         }
     }
 
-    private void deleteAll(File dir) {
-
-        if (dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                deleteAll(new File(dir, children[i]));
-            }
-        }
-        dir.delete();
-    }
-
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        String key = preference.getKey();
-        if (key.equals("ignoreTouchscreen") || key.equals("showIncompatible")) {
-            Intent ret = new Intent();
-            ret.putExtra("update", true);
-            setResult(RESULT_OK, ret);
-            return true;
-        } else if (key.equals("reset")) {
-            // TODO: Progress dialog + thread is needed, it can take a
-            // while to delete all the icons and cached apks in a long
-            // standing install!
-
-            // TODO: This is going to cause problems if there is background
-            // update in progress at the time!
-
-            try {
-                DB db = DB.getDB();
-                db.reset();
-            } finally {
-                DB.releaseDB();
-            }
-            ((FDroidApp) getApplication()).invalidateAllApps();
-
-            File dp = DB.getDataPath(this);
-            deleteAll(dp);
-            dp.mkdir();
-            DB.getIconsPath(this).mkdir();
-
-            Toast.makeText(getBaseContext(),
-                    "Local cached data has been cleared", Toast.LENGTH_LONG)
-                    .show();
-            Intent ret = new Intent();
-            ret.putExtra("reset", true);
-            setResult(RESULT_OK, ret);
-            finish();
-            return true;
-        }
-        return false;
+        // Currently only one action is returned.
+        //String key = preference.getKey();
+        //if (key.equals("ignoreTouchscreen") || key.equals("showIncompatible")) {
+        Intent ret = new Intent();
+        ret.putExtra("update", true);
+        setResult(RESULT_OK, ret);
+        return true;
+        //}
     }
 
 }
