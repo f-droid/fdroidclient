@@ -185,7 +185,6 @@ public class AppDetails extends ListActivity {
         super.onCreate(savedInstanceState);
         ActionBarCompat abCompat = ActionBarCompat.create(this);
         abCompat.setDisplayHomeAsUpEnabled(true);
-        abCompat.setDisplayShowTitleEnabled(false);
 
         setContentView(R.layout.appdetails);
 
