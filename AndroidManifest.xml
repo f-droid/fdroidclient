@@ -93,6 +93,7 @@
         </activity>
         <activity
             android:name="SearchResults"
+            android:label="Search Results"
             android:exported="true"
             android:launchMode="singleTop"
             android:parentActivityName="FDroid" >
