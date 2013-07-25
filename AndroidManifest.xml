@@ -84,8 +84,8 @@
                 android:value="FDroid" />
         </activity>
         <activity
-            android:name="Preferences"
             android:label="Preferences"
+            android:name=".PreferencesActivity"
             android:parentActivityName="FDroid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -40,14 +40,6 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
         return view;
     }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {
         String category = parent.getItemAtPosition(pos).toString();

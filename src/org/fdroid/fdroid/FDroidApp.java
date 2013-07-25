@@ -36,6 +36,11 @@ public class FDroidApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // Needs to be setup before anything else tries to access it.
+        // Perhaps the constructor is a better place, but then again,
+        // it is more deterministic as to when this gets called...
+        Preferences.setup(this);
+
         // Clear cached apk files. We used to just remove them after they'd
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),

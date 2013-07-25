@@ -22,7 +22,6 @@ package org.fdroid.fdroid;
 import android.content.*;
 import android.content.res.Configuration;
 import android.support.v4.view.MenuItemCompat;
-import org.fdroid.fdroid.R;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -149,7 +148,7 @@ public class FDroid extends FragmentActivity {
             return true;
 
         case PREFERENCES:
-            Intent prefs = new Intent(getBaseContext(), Preferences.class);
+            Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
             startActivityForResult(prefs, REQUEST_PREFS);
             return true;
 

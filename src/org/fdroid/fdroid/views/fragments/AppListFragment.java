@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,23 @@ import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AppListView;
 
-abstract class AppListFragment extends Fragment implements AdapterView.OnItemClickListener {
+abstract class AppListFragment extends Fragment implements AdapterView.OnItemClickListener, Preferences.ChangeListener {
 
     private FDroid parent;
 
     protected abstract AppListAdapter getAppListAdapter();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Preferences.get().registerCompactLayoutChangeListener(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Preferences.get().unregisterCompactLayoutChangeListener(this);
+    }
 
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -61,5 +74,10 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
         Intent intent = new Intent(getActivity(), AppDetails.class);
         intent.putExtra("appid", app.id);
         startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
+    }
+
+    @Override
+    public void onPreferenceChange() {
+        getAppListAdapter().notifyDataSetChanged();
     }
 }

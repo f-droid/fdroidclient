@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import org.fdroid.fdroid.DB;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.LayoutCompat;
 
@@ -20,9 +21,6 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
-
-    private boolean prefCompactLayoutInitialized = false;
-    private boolean prefCompactLayout = false;
 
     public AppListAdapter(Context context) {
         mContext = context;
@@ -55,73 +53,48 @@ abstract public class AppListAdapter extends BaseAdapter {
         return position;
     }
 
-    protected boolean hasCompactLayout() {
-        if (!prefCompactLayoutInitialized) {
-            prefCompactLayoutInitialized = true;
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-            prefCompactLayout = prefs.getBoolean("compactlayout", false);
-        }
-        return prefCompactLayout;
-    }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        boolean init = false;
+
+        boolean compact = Preferences.get().hasCompactLayout();
+        DB.App app = items.get(position);
 
         if (convertView == null) {
             convertView = ((LayoutInflater) mContext.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.applistitem, null);
-            init = true;
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.name);
         TextView summary = (TextView) convertView.findViewById(R.id.summary);
         TextView status = (TextView) convertView.findViewById(R.id.status);
         TextView license = (TextView) convertView.findViewById(R.id.license);
-
-        DB.App app = items.get(position);
-
-        status.setText(getVersionInfo(app));
-        license.setText(app.license);
+        ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
+        LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
+        ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
+        ImageView iconUpdates = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
 
         name.setText(app.name);
         summary.setText(app.summary);
 
-        ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
-        File icn = new File(DB.getIconsPath(mContext), app.icon);
-        if (icn.exists() && icn.length() > 0) {
-            new Uri.Builder().build();
-            icon.setImageURI(Uri.parse(icn.getPath()));
+        layoutSummary(summary);
+        layoutIcon(icon, app);
+
+        int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
+        int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
+
+        iconContainer.setVisibility(visibleOnCompact);
+        status.setVisibility(notVisibleOnCompact);
+        license.setVisibility(notVisibleOnCompact);
+
+        if (!compact) {
+            status.setText(getVersionInfo(app));
+            license.setText(app.license);
         } else {
-            icon.setImageResource(android.R.drawable.sym_def_app_icon);
-        }
+            status.setText("");
+            license.setText("");
 
-        ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
-        ImageView iconUpdates = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
-
-        if (init) {
-
-            if (hasCompactLayout()) {
-
-                iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
-                iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
-
-                status.setVisibility(View.GONE);
-                license.setVisibility(View.GONE);
-
-                RelativeLayout.LayoutParams summaryLayout =
-                    new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-                summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
-                summaryLayout.addRule(LayoutCompat.RelativeLayout.END_OF, R.id.icon);
-                summary.setLayoutParams(summaryLayout);
-                summary.setPadding(0,0,0,0);
-
-            }
-        }
-
-        if (hasCompactLayout()) {
+            iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
+            iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
 
             if (app.hasUpdates && showStatusUpdate()) {
                 iconUpdates.setVisibility(View.VISIBLE);
@@ -143,6 +116,54 @@ abstract public class AppListAdapter extends BaseAdapter {
         }
 
         return convertView;
+    }
+
+    /**
+     * If an icon exists on disc, we'll use that, otherwise default to the
+     * plain android app icon.
+     */
+    private void layoutIcon(ImageView iconView, DB.App app) {
+
+        File icn = new File(DB.getIconsPath(mContext), app.icon);
+        if (icn.exists() && icn.length() > 0) {
+            new Uri.Builder().build();
+            iconView.setImageURI(Uri.parse(icn.getPath()));
+        } else {
+            iconView.setImageResource(android.R.drawable.sym_def_app_icon);
+        }
+
+    }
+
+    /**
+     * In compact view, the summary sites next to the icon, below the name.
+     * In non-compact view, it sits under the icon, with some padding pushing
+     * it away from the left margin.
+     */
+    private void layoutSummary(TextView summaryView) {
+
+        if (Preferences.get().hasCompactLayout()) {
+
+            RelativeLayout.LayoutParams summaryLayout =
+                new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT);
+            summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
+            summaryLayout.addRule(LayoutCompat.RelativeLayout.END_OF, R.id.icon);
+            summaryView.setLayoutParams(summaryLayout);
+            summaryView.setPadding(0,0,0,0);
+
+        } else {
+
+            RelativeLayout.LayoutParams summaryLayout =
+                new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT);
+            summaryLayout.addRule(RelativeLayout.BELOW, R.id.icon);
+            summaryView.setLayoutParams(summaryLayout);
+            float padding = mContext.getResources().getDimension(R.dimen.applist_summary_padding);
+            summaryView.setPadding((int)padding, 0, 0, 0);
+
+        }
     }
 
     private String getVersionInfo(DB.App app) {
