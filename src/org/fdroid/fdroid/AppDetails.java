@@ -579,7 +579,7 @@ public class AppDetails extends ListActivity {
                         .setIcon(android.R.drawable.ic_menu_add),
                     MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-        } else {
+        } else if (app.installedVersion != null) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall)
                         .setIcon(android.R.drawable.ic_menu_delete),
