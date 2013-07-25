@@ -47,6 +47,7 @@
         <activity android:name="Settings" />
         <activity
             android:name="AppDetails"
+            android:label="App Details"
             android:exported="true"
             android:parentActivityName="FDroid" >
 
