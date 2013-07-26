@@ -167,7 +167,7 @@ msgid ""
 "A repository is a source of applications. To add one, press the MENU "
 "button now and enter the URL.\n"
 "\n"
-"A repository address looks something like this: http://f-droid.org/repo"
+"A repository address looks something like this: https://f-droid.org/repo"
 msgstr ""
 
 msgctxt "inst"

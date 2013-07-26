@@ -179,7 +179,7 @@ public class FDroid extends FragmentActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            Uri uri = Uri.parse("http://f-droid.org");
+                            Uri uri = Uri.parse("https://f-droid.org");
                             startActivity(new Intent(Intent.ACTION_VIEW, uri));
                         }
                     });
