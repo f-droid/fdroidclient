@@ -511,12 +511,9 @@ public class DB {
 
     public static File getIconsPath(Context ctx) {
         File dp = getDataPath(ctx);
-        if(dp == null)
+        if (dp == null)
             return null;
-        File ip = new File(dp, "icons");
-        if(!ip.exists())
-            ip.mkdirs();
-        return ip;
+        return new File(dp, "icons");
     }
 
     private Context mContext;

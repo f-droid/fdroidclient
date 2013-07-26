@@ -186,6 +186,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
+            List<DB.App> acceptedapps = new ArrayList<DB.App>();
             if (!changes && success) {
                 Log.d("FDroid",
                         "Not checking app details or compatibility, because all repos were up to date.");
@@ -193,9 +194,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 sendStatus(STATUS_INFO,
                         getString(R.string.status_checking_compatibility));
-                List<DB.App> acceptedapps = new ArrayList<DB.App>();
-                List<DB.App> prevapps = ((FDroidApp) getApplication())
-                        .getApps();
+                List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
 
                 DB db = DB.getDB();
                 try {
@@ -252,14 +251,22 @@ public class UpdateService extends IntentService implements ProgressListener {
                 } finally {
                     DB.releaseDB();
                 }
-                if (success) {
-                    sendStatus(STATUS_INFO,
-                            getString(R.string.status_downloading_icons));
-                    for (DB.App app : acceptedapps)
-                        getIcon(app, repos);
-                    ((FDroidApp) getApplication()).invalidateAllApps();
-                }
 
+            }
+
+            if (success) {
+                File d = DB.getIconsPath(this);
+                List<DB.App> toDownloadIcons = acceptedapps;
+                if (!d.exists()) {
+                    Log.d("FDroid", "Icons were wiped. Re-downloading all of them.");
+                    d.mkdirs();
+                    toDownloadIcons = ((FDroidApp) getApplication()).getApps();
+                }
+                sendStatus(STATUS_INFO,
+                        getString(R.string.status_downloading_icons));
+                for (DB.App app : toDownloadIcons)
+                    getIcon(app, repos);
+                ((FDroidApp) getApplication()).invalidateAllApps();
             }
 
             if (success && changes && notify && (newUpdates > prevUpdates)) {
