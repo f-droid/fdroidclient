@@ -35,6 +35,7 @@ import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -157,10 +158,12 @@ public class DB {
         public Date added;
         public Date lastUpdated;
 
-        // Installed version (or null) and version code. These are valid only
-        // when getApps() has been called with getinstalledinfo=true.
+        // Installed version (or null), version code and whether it was
+        // installed by the user or bundled with the system. These are valid
+        // only when getApps() has been called with getinstalledinfo=true.
         public String installedVersion;
         public int installedVerCode;
+        public boolean userInstalled;
 
         // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
@@ -742,9 +745,12 @@ public class DB {
                     PackageInfo sysapk = systemApks.get(app.id);
                     app.installedVersion = sysapk.versionName;
                     app.installedVerCode = sysapk.versionCode;
+                    app.userInstalled = ((sysapk.applicationInfo.flags
+                            & ApplicationInfo.FLAG_SYSTEM) != 1);
                 } else {
                     app.installedVersion = null;
                     app.installedVerCode = 0;
+                    app.userInstalled = false;
                 }
 
                 apps.put(app.id, app);
