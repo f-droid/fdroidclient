@@ -880,7 +880,7 @@ public class DB {
         return apps;
     }
 
-    public List<App> getAppsBasic(boolean getinstalledinfo) {
+    private List<App> getAppsBasic(boolean getinstalledinfo) {
 
         // If we're going to need it, get info in what's currently installed
         Map<String, PackageInfo> systemApks = null;
