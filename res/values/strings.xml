@@ -25,7 +25,11 @@
 	<string name="last_update_check">Last repo scan: %s</string>
 	<string name="never">never</string>
 	<string name="automatic_repo_scan">Automatic repo scan</string>
+
 	<string name="app_name">F-Droid</string>
+    <string name="search_results">Search Results</string>
+    <string name="app_details">App Details</string>
+
 	<string name="about_title">About F-Droid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
 		GNU GPLv3

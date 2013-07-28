@@ -59,11 +59,13 @@
                 android:name="android.app.default_searchable"
                 android:value=".SearchResults" />
         </activity>
-        <activity android:name="ManageRepo" />
+        <activity
+            android:name="ManageRepo"
+            android:label="@string/menu_manage" />
         <activity android:name="Settings" />
         <activity
             android:name="AppDetails"
-            android:label="App Details"
+            android:label="@string/app_details"
             android:exported="true"
             android:parentActivityName="FDroid" >
 
@@ -104,7 +106,7 @@
                 android:value="FDroid" />
         </activity>
         <activity
-            android:label="Preferences"
+            android:label="@string/menu_preferences"
             android:name=".PreferencesActivity"
             android:parentActivityName="FDroid" >
             <meta-data
@@ -113,7 +115,7 @@
         </activity>
         <activity
             android:name="SearchResults"
-            android:label="Search Results"
+            android:label="@string/search_results"
             android:exported="true"
             android:launchMode="singleTop"
             android:parentActivityName="FDroid" >
