@@ -39,6 +39,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" android:host="f-droid.org"
+                    android:path="/repository/browse" />
+                <data android:scheme="https" android:host="f-droid.org"
+                    android:path="/repository/browse" />
+            </intent-filter>
+
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".SearchResults" />
