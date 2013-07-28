@@ -256,18 +256,24 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             if (success) {
                 File d = DB.getIconsPath(this);
-                List<DB.App> toDownloadIcons = acceptedapps;
-                if (!d.exists()) {
+                List<DB.App> toDownloadIcons = null;
+                if (changes) {
+                    toDownloadIcons = acceptedapps;
+                } else if (!d.exists()) {
                     Log.d("FDroid", "Icons were wiped. Re-downloading all of them.");
                     d.mkdirs();
                     toDownloadIcons = ((FDroidApp) getApplication()).getApps();
                 }
-                sendStatus(STATUS_INFO,
-                        getString(R.string.status_downloading_icons));
-                for (DB.App app : toDownloadIcons)
-                    getIcon(app, repos);
-                ((FDroidApp) getApplication()).invalidateAllApps();
+                if (toDownloadIcons != null) {
+                    sendStatus(STATUS_INFO,
+                            getString(R.string.status_downloading_icons));
+                    for (DB.App app : toDownloadIcons)
+                        getIcon(app, repos);
+                }
             }
+
+            if (success && changes)
+                ((FDroidApp) getApplication()).invalidateAllApps();
 
             if (success && changes && notify && (newUpdates > prevUpdates)) {
                 Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
