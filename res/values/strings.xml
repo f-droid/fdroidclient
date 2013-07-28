@@ -41,7 +41,7 @@
 		repository is a source of applications. To add one, press the MENU
 		button now and enter the URL.\n\nA repository address looks something
 		like
-		this: http://f-droid.org/repo</string>
+		this: https://f-droid.org/repo</string>
 
 	<string name="inst">Installed</string>
 	<string name="not_inst">Not Installed</string>
