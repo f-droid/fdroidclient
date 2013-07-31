@@ -95,6 +95,7 @@ public class DB {
             + "webURL text, " + "trackerURL text, " + "sourceURL text, "
             + "curVersion text," + "curVercode integer,"
             + "antiFeatures string," + "donateURL string,"
+            + "bitcoinAddr string," + "flattrID string,"
             + "requirements string," + "category string," + "added string,"
             + "lastUpdated string," + "compatible int not null,"
             + "primary key(id));";
@@ -111,6 +112,7 @@ public class DB {
             detail_trackerURL = null;
             detail_sourceURL = null;
             detail_donateURL = null;
+            detail_bitcoinAddr = null;
             detail_webURL = null;
             antiFeatures = null;
             requirements = null;
@@ -152,6 +154,14 @@ public class DB {
         // Donate link, or null
         // Null when !detail_Populated
         public String detail_donateURL;
+
+        // Bitcoin donate address, or null
+        // Null when !detail_Populated
+        public String detail_bitcoinAddr;
+
+        // Flattr donate ID, or null
+        // Null when !detail_Populated
+        public String detail_flattrID;
 
         public String curVersion;
         public int curVercode;
@@ -605,7 +615,7 @@ public class DB {
     }
 
     private static final String[] POPULATE_APP_COLS = new String[] {"description", "webURL",
-                    "trackerURL", "sourceURL", "donateURL" };
+                    "trackerURL", "sourceURL", "donateURL", "bitcoinAddr", "flattrID" };
 
     private void populateAppDetails(App app) {
         Cursor cursor = null;
@@ -618,6 +628,8 @@ public class DB {
             app.detail_trackerURL = cursor.getString(2);
             app.detail_sourceURL = cursor.getString(3);
             app.detail_donateURL = cursor.getString(4);
+            app.detail_bitcoinAddr = cursor.getString(5);
+            app.detail_flattrID = cursor.getString(6);
             app.detail_Populated = true;
         } catch (Exception e) {
             Log.d("FDroid", "Error populating app details " + app.id );
@@ -1193,6 +1205,8 @@ public class DB {
         values.put("trackerURL", upapp.detail_trackerURL);
         values.put("sourceURL", upapp.detail_sourceURL);
         values.put("donateURL", upapp.detail_donateURL);
+        values.put("bitcoinAddr", upapp.detail_bitcoinAddr);
+        values.put("flattrID", upapp.detail_flattrID);
         values.put("added",
                 upapp.added == null ? "" : mDateFormat.format(upapp.added));
         values.put(

@@ -162,9 +162,11 @@ public class AppDetails extends ListActivity {
     private static final int ISSUES = Menu.FIRST + 3;
     private static final int SOURCE = Menu.FIRST + 4;
     private static final int MARKET = Menu.FIRST + 5;
-    private static final int DONATE = Menu.FIRST + 6;
-    private static final int LAUNCH = Menu.FIRST + 7;
-    private static final int SHARE = Menu.FIRST + 8;
+    private static final int BITCOIN = Menu.FIRST + 6;
+    private static final int FLATTR = Menu.FIRST + 7;
+    private static final int DONATE = Menu.FIRST + 8;
+    private static final int LAUNCH = Menu.FIRST + 9;
+    private static final int SHARE = Menu.FIRST + 10;
 
     private DB.App app;
     private int app_currentvercode;
@@ -613,8 +615,16 @@ public class AppDetails extends ListActivity {
         }
         menu.add(Menu.NONE, MARKET, 5, R.string.menu_market).setIcon(
                 android.R.drawable.ic_menu_view);
+        if (app.detail_bitcoinAddr != null) {
+            menu.add(Menu.NONE, BITCOIN, 6, R.string.menu_bitcoin).setIcon(
+                    android.R.drawable.ic_menu_view);
+        }
+        if (app.detail_flattrID != null) {
+            menu.add(Menu.NONE, FLATTR, 7, R.string.menu_flattr).setIcon(
+                    android.R.drawable.ic_menu_view);
+        }
         if (app.detail_donateURL != null) {
-            menu.add(Menu.NONE, DONATE, 6, R.string.menu_donate).setIcon(
+            menu.add(Menu.NONE, DONATE, 8, R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
         }
 
@@ -671,9 +681,14 @@ public class AppDetails extends ListActivity {
             tryOpenUri("https://play.google.com/store/apps/details?id=" + app.id);
             return true;
 
-        // TODO: Separate donate links if there are many (e.g. paypal and
-        // bitcoin) and use their link schemas if possible.
-        // http://f-droid.org/repository/issues/?do=view_issue&issue=212
+        case BITCOIN:
+            tryOpenUri("bitcoin:" + app.detail_bitcoinAddr);
+            return true;
+
+        case FLATTR:
+            tryOpenUri("https://flattr.com/thing/" + app.detail_flattrID);
+            return true;
+
         case DONATE:
             tryOpenUri(app.detail_donateURL);
             return true;

@@ -120,6 +120,8 @@
 	<string name="menu_source">Source Code</string>
 	<string name="menu_market">Market</string>
 	<string name="menu_update">Update</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_flattr">Flattr</string>
 	<string name="menu_donate">Donate</string>
 
 	<string name="details_installed">Version %s installed</string>
