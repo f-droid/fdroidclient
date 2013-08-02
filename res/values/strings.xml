@@ -29,6 +29,7 @@
 	<string name="app_name">F-Droid</string>
     <string name="search_results">Search Results</string>
     <string name="app_details">App Details</string>
+    <string name="no_such_app">No matching app was found in the database.</string>
 
 	<string name="about_title">About F-Droid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the

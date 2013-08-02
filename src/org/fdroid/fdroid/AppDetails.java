@@ -324,6 +324,9 @@ public class AppDetails extends ListActivity {
             }
         }
         if (app == null) {
+            Toast toast = Toast.makeText(this,
+                    getString(R.string.no_such_app), Toast.LENGTH_LONG);
+            toast.show();
             finish();
             return false;
         }
