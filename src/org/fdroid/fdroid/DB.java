@@ -398,7 +398,9 @@ public class DB {
         db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
     }
 
-    public static void resetTransient(SQLiteDatabase db) {
+    public void resetTransient(SQLiteDatabase db) {
+        mContext.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
+                .putBoolean("triedEmptyUpdate", false).commit();
         db.execSQL("drop table " + TABLE_APP);
         db.execSQL("drop table " + TABLE_APK);
         db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
