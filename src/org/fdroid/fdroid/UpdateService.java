@@ -257,12 +257,12 @@ public class UpdateService extends IntentService implements ProgressListener {
             if (success) {
                 File d = DB.getIconsPath(this);
                 List<DB.App> toDownloadIcons = null;
-                if (changes) {
-                    toDownloadIcons = acceptedapps;
-                } else if (!d.exists()) {
+                if (!d.exists()) {
                     Log.d("FDroid", "Icons were wiped. Re-downloading all of them.");
                     d.mkdirs();
                     toDownloadIcons = ((FDroidApp) getApplication()).getApps();
+                } else if (changes) {
+                    toDownloadIcons = acceptedapps;
                 }
                 if (toDownloadIcons != null) {
                     sendStatus(STATUS_INFO,
