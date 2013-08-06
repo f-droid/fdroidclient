@@ -125,5 +125,4 @@
   <string name="showPermissions_long">Afficher la liste des permissions que nécessite l\'application</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
-  <string name="compactlayout_long">Cacher les résumés sur la liste des applications</string>
 </resources>

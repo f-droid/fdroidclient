@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-07-08 17:26+0100\n"
-"PO-Revision-Date: 2013-06-08 04:23+0200\n"
+"POT-Creation-Date: 2013-08-06 14:51+0100\n"
+"PO-Revision-Date: 2013-07-12 11:15+0200\n"
 "Last-Translator: Abduqadir <sahran.ug@gmail.com>\n"
 "Language-Team: ug <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -138,6 +138,18 @@ msgctxt "app_name"
 msgid "F-Droid"
 msgstr "F-Droid"
 
+msgctxt "search_results"
+msgid "Search Results"
+msgstr ""
+
+msgctxt "app_details"
+msgid "App Details"
+msgstr ""
+
+msgctxt "no_such_app"
+msgid "No matching app was found in the database."
+msgstr ""
+
 msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "F-Droid ھەققىدە"
@@ -166,6 +178,7 @@ msgctxt "about_website"
 msgid "Website"
 msgstr "تورتۇرا"
 
+#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -180,7 +193,7 @@ msgstr ""
 "خەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، تىزىملىك توپچىنى بېسىپ، ئاندىن"
 " مەنبەنىڭ تور ئادرېسىنى كىرگۈزۈڭ.\n"
 "\n"
-"خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: https://f-droid.org/repo"
+"خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo"
 
 msgctxt "inst"
 msgid "Installed"
@@ -368,6 +381,10 @@ msgctxt "menu_launch"
 msgid "Run"
 msgstr "ئىجرا قىل"
 
+msgctxt "menu_share"
+msgid "Share"
+msgstr ""
+
 msgctxt "menu_install"
 msgid "Install"
 msgstr "ئورنات"
@@ -395,6 +412,14 @@ msgstr "بازار"
 msgctxt "menu_update"
 msgid "Update"
 msgstr "يېڭىلا"
+
+msgctxt "menu_bitcoin"
+msgid "Bitcoin"
+msgstr ""
+
+msgctxt "menu_flattr"
+msgid "Flattr"
+msgstr ""
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -567,7 +592,7 @@ msgstr "ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچا�
 
 msgctxt "status_downloading_icons"
 msgid "Downloading new icons…"
-msgstr ""
+msgstr "يېڭى سىنبەلگەلەرنى چۈشۈرۈۋاتىدۇ…"
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
@@ -597,9 +622,5 @@ msgstr "ئىخچام جايلاشتۇرۇش"
 
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
-msgstr ""
-
-#~ msgctxt "compactlayout_long"
-#~ msgid "Hide app summaries when listing apps"
-#~ msgstr "ئەپ تىزىمىنى كۆرسەتكەندە ئەپ ئۈزۈندىلىرىنى يوشۇرىدۇ"
+msgstr "تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ"
 

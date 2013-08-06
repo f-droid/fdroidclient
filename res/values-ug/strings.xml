@@ -119,11 +119,12 @@
   <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ\n%2$d of %3$d\n%1$s</string>
   <string name="status_connecting_to_repo">%1$s غا \nباغلىنىۋاتىدۇ</string>
   <string name="status_checking_compatibility">ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…</string>
+  <string name="status_downloading_icons">يېڭى سىنبەلگەلەرنى چۈشۈرۈۋاتىدۇ…</string>
   <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
   <string name="permissions_for_long">%s نەشرىنىڭ ھوقۇقلىرى</string>
   <string name="showPermissions">ھوقۇقلارنى كۆرسەت</string>
   <string name="showPermissions_long">ئەپكە زۆرۈر بولغان ھوقۇق تىزىمىنى كۆرسىتىدۇ</string>
   <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلىدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
   <string name="compactlayout">ئىخچام جايلاشتۇرۇش</string>
-  <string name="compactlayout_long">ئەپ تىزىمىنى كۆرسەتكەندە ئەپ ئۈزۈندىلىرىنى يوشۇرىدۇ</string>
+  <string name="compactlayout_long">تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ</string>
 </resources>

@@ -125,5 +125,4 @@
   <string name="showPermissions_long">Uygulamanın gerektirdiği izinlerin listesini göster</string>
   <string name="no_handler_app">%s unsurunu yönetecek hiçbir kurulu uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
-  <string name="compactlayout_long">Uygulamalar listesinde özetleri sakla</string>
 </resources>

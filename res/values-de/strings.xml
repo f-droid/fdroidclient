@@ -125,5 +125,4 @@
   <string name="showPermissions_long">Zeige eine Liste von Berechtigungen die von einer Anwendung benötigt werden</string>
   <string name="no_handler_app">Es ist keine Anwendung für %s installiert</string>
   <string name="compactlayout">Kompakte Auflistung</string>
-  <string name="compactlayout_long">Anwendungsbeschreibung bei der Auflistung ausblenden</string>
 </resources>

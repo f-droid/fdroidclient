@@ -125,5 +125,4 @@
   <string name="showPermissions_long">Visa en lista av behörigheter en app behöver</string>
   <string name="no_handler_app">Du har ingen app installerad som kan hantera %s</string>
   <string name="compactlayout">Kompakt layout</string>
-  <string name="compactlayout_long">Göm sammanfattningar vid listning av appar</string>
 </resources>

@@ -124,5 +124,4 @@
   <string name="showPermissions_long">Показване на списък с разрешения, които приложението ползва</string>
   <string name="no_handler_app">Нямаш инсталирано приложение, което може да изпълни %s</string>
   <string name="compactlayout">Компактно оформление</string>
-  <string name="compactlayout_long">Скриване на резюмета на приложения при показване в списък</string>
 </resources>

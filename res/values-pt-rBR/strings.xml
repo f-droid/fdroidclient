@@ -119,10 +119,12 @@
   <string name="status_processing_xml">Processando aplicativo\n%2$d de %3$d, de \n%1$s</string>
   <string name="status_connecting_to_repo">Conectando-se a\n%1$s</string>
   <string name="status_checking_compatibility">Verificando compatibilidade de aplicativos com o seu dispositivo...</string>
+  <string name="status_downloading_icons">Baixando novos ícones...</string>
   <string name="no_permissions">Nenhuma permissão utilizada.</string>
   <string name="permissions_for_long">Permissões para a versão %s</string>
   <string name="showPermissions">Mostrar permissões</string>
   <string name="showPermissions_long">Mostrar uma lista de permissões que um aplicativo requer</string>
   <string name="no_handler_app">Você não tem aplicativo instalado que lide com %s</string>
   <string name="compactlayout">Leiaute compacto</string>
+  <string name="compactlayout_long">Mostrar só nomes de aplicativos e sumários na lista</string>
 </resources>

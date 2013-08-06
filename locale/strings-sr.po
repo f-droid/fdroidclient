@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2013-07-08 17:26+0100\n"
+"POT-Creation-Date: 2013-08-06 14:51+0100\n"
 "PO-Revision-Date: 2011-01-20 03:30+0200\n"
 "Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
 "Language-Team: sr <LL@li.org>\n"
@@ -140,6 +140,18 @@ msgctxt "app_name"
 msgid "F-Droid"
 msgstr "FDroid"
 
+msgctxt "search_results"
+msgid "Search Results"
+msgstr ""
+
+msgctxt "app_details"
+msgid "App Details"
+msgstr ""
+
+msgctxt "no_such_app"
+msgid "No matching app was found in the database."
+msgstr ""
+
 #, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
@@ -170,6 +182,7 @@ msgctxt "about_website"
 msgid "Website"
 msgstr "Веб страница"
 
+#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -184,7 +197,7 @@ msgstr ""
 "Ризнице су места одакле се скидају апликације. Да би сте додали једну, "
 "притисните тастер МЕНИ и унесите адресу.\n"
 "\n"
-"Адреса ризнице би личила на ово: https://f-droid.org/repo"
+"Адреса ризнице би личила на ово: http://f-droid.org/repo"
 
 msgctxt "inst"
 msgid "Installed"
@@ -375,6 +388,10 @@ msgctxt "menu_launch"
 msgid "Run"
 msgstr ""
 
+msgctxt "menu_share"
+msgid "Share"
+msgstr ""
+
 msgctxt "menu_install"
 msgid "Install"
 msgstr "Инсталирај"
@@ -402,6 +419,14 @@ msgstr "Тржиште"
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Ажурирај"
+
+msgctxt "menu_bitcoin"
+msgid "Bitcoin"
+msgstr ""
+
+msgctxt "menu_flattr"
+msgid "Flattr"
+msgstr ""
 
 #, fuzzy
 msgctxt "menu_donate"
@@ -600,8 +625,4 @@ msgstr ""
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
-
-#~ msgctxt "compactlayout_long"
-#~ msgid "Hide app summaries when listing apps"
-#~ msgstr ""
 
