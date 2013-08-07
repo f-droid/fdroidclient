@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2013-08-06 14:51+0100\n"
+"POT-Creation-Date: 2013-08-07 13:00+0100\n"
 "PO-Revision-Date: 2011-01-20 03:30+0200\n"
 "Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
 "Language-Team: sr <LL@li.org>\n"
@@ -149,7 +149,7 @@ msgid "App Details"
 msgstr ""
 
 msgctxt "no_such_app"
-msgid "No matching app was found in the database."
+msgid "No such app found"
 msgstr ""
 
 #, fuzzy
