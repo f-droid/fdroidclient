@@ -14,6 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:paddingRight="6dp"
             android:orientation="vertical" >
 
             <RelativeLayout
@@ -27,6 +28,7 @@
                     android:id="@+id/title"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:layout_marginBottom="4dp"
                     android:singleLine="false"
                     android:textSize="18sp"
@@ -37,6 +39,7 @@
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:layout_below="@id/title"
+                    android:layout_marginRight="5dp"
                     android:scaleType="fitCenter" />
 
                 <TextView
@@ -44,6 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/title"
+                    android:layout_toRightOf="@id/icon"
                     android:textSize="12sp" />
 
                 <TextView
@@ -51,6 +55,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/license"
+                    android:layout_toRightOf="@id/icon"
                     android:textSize="12sp" />
             </RelativeLayout>
         </LinearLayout>
