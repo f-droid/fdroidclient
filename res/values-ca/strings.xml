@@ -121,8 +121,8 @@
   <string name="category_all">Tot</string>
   <string name="category_whatsnew">Novetats</string>
   <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
-  <string name="status_download">S\\\'està baixant\n%2$s / %3$s (%4$d%%) des de\n%1$s</string>
-  <string name="status_processing_xml">S\\\'està processant l\'aplicació\n%2$d de %3$d des de\n%1$s</string>
+  <string name="status_download">S\'està baixant\n%2$s / %3$s (%4$d%%) des de\n%1$s</string>
+  <string name="status_processing_xml">S\'està processant l\'aplicació\n%2$d de %3$d des de\n%1$s</string>
   <string name="status_connecting_to_repo">S\'està connectant a\n%1$s</string>
   <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu...</string>
   <string name="status_downloading_icons">S\'està baixant les noves icones...</string>
