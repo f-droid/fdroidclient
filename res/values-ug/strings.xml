@@ -25,13 +25,16 @@
   <string name="never">ھەرگىز</string>
   <string name="automatic_repo_scan">ئاپتوماتىك repo تەكشۈرۈش</string>
   <string name="app_name">F-Droid</string>
+  <string name="search_results">ئىزدەش نەتىجىلىرى</string>
+  <string name="app_details">ئەپ تەپسىلاتلىرى</string>
+  <string name="no_such_app">بۇنداق ئەپ تېپىلمىدى</string>
   <string name="about_title">F-Droid ھەققىدە</string>
   <string name="about_desc">دەسلەپتە Aptoide نى ئاساس قىلغان.\nبۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان.</string>
   <string name="about_site">تور تۇرا:</string>
   <string name="about_mail">تورخەت:</string>
   <string name="about_version">نەشرى:</string>
   <string name="about_website">تورتۇرا</string>
-  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!\n\nخەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، تىزىملىك توپچىنى بېسىپ، ئاندىن مەنبەنىڭ تور ئادرېسىنى كىرگۈزۈڭ.\n\nخەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo</string>
+  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!\n\nخەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ.\n\nخەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo</string>
   <string name="inst">ئورنىتىلغان</string>
   <string name="not_inst">ئورنىتىلمىغان</string>
   <string name="added_on">%s دا قوشۇلغان</string>
@@ -76,6 +79,7 @@
   <string name="menu_add_repo">يېڭى خەزىنە</string>
   <string name="menu_rem_repo">خەزىنەنى چىقىرىۋەت</string>
   <string name="menu_launch">ئىجرا قىل</string>
+  <string name="menu_share">ھەمبەھىر</string>
   <string name="menu_install">ئورنات</string>
   <string name="menu_uninstall">ئۆچۈر</string>
   <string name="menu_website">تورتۇرا</string>
@@ -83,6 +87,8 @@
   <string name="menu_source">ئەسلى كود</string>
   <string name="menu_market">بازار</string>
   <string name="menu_update">يېڭىلا</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">ئىئانە</string>
   <string name="details_installed">%s نەشرى ئورنىتىلدى</string>
   <string name="details_notinstalled">ئورنىتىلمىدى</string>

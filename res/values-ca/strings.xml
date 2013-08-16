@@ -5,6 +5,7 @@
   <string name="searchres_noapps">No hi ha aplicacions coincidents amb \'%s\':</string>
   <string name="SignatureMismatch">La nova versió està signada amb una clau diferent de la vella. Per tal d\'instal·lar la nova versió, cal desinstal·lar primer la vella. Si us plau feu-ho i torneu-ho a intentar. (Sapigueu que desintal·lar-la suprimirà qualsevol dada interna que l\'aplicació hagi desat)</string>
   <string name="installIncompatible">Sembla que aquest paquet no és compatible amb el vostre dispositiu. Tot i així voleu provar d\'instal·lar-ho?</string>
+  <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació nofuncionés o inclús es perdèssin les vostres dades. Esteu segur que ho voleu fer?</string>
   <string name="version">Versió</string>
   <string name="n_versions_available">Hi ha %d versions disponibles</string>
   <string name="n_version_available">Hi ha %d versió disponible</string>
@@ -24,6 +25,9 @@
   <string name="never">mai</string>
   <string name="automatic_repo_scan">Actualitza automàtica dels dipòsits</string>
   <string name="app_name">F-droid</string>
+  <string name="search_results">Resultats de la cerca</string>
+  <string name="app_details">Detalls de l\'aplicació</string>
+  <string name="no_such_app">No s\'ha trobat l\'aplicació</string>
   <string name="about_title">Quant a FDroid</string>
   <string name="about_desc">Originalment basat en Aptoide.\nPublicat amb la llicència GNU GPL v3.</string>
   <string name="about_site">Pàgina web:</string>
@@ -33,6 +37,7 @@
   <string name="no_repo">No heu configurat cap dipòsit!\n\nUn dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENU i entreu la seva URL.\n\nL\'adreça d\'un dipòsit té un aspecte com ara: http://f-droid.org/repo</string>
   <string name="inst">Instal·lat</string>
   <string name="not_inst">No està instal·lat</string>
+  <string name="added_on">S\'ha afegit a %s</string>
   <string name="installed_update">Hi ha una actualització - Ver.:</string>
   <string name="ok">D\'acord</string>
   <string name="yes">Sí</string>
@@ -47,9 +52,9 @@
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Actualitzacions</string>
   <string name="update_available">Actualitzacions disponibles</string>
-  <string name="one_update_available">Actualitzacions disponibles</string>
-  <string name="many_updates_available">Actualitzacions disponibles</string>
-  <string name="fdroid_updates_available">Actualitzacions disponibles</string>
+  <string name="one_update_available">Hi ha 1 actualització disponible.</string>
+  <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
+  <string name="fdroid_updates_available">Hi ha actualitzacions de l\'F-Droid disponibles</string>
   <string name="process_wait_title">Un moment si us plau</string>
   <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions</string>
   <string name="connection_error">No ha estàt possible connectar amb la xarxa.</string>
@@ -74,6 +79,7 @@
   <string name="menu_add_repo">Nou dipòsit</string>
   <string name="menu_rem_repo">Suprimeix el dipòsit</string>
   <string name="menu_launch">Executa</string>
+  <string name="menu_share">Comparteix</string>
   <string name="menu_install">Instal·la</string>
   <string name="menu_uninstall">Desinstal·la</string>
   <string name="menu_website">Pàgina web</string>
@@ -81,6 +87,8 @@
   <string name="menu_source">Codi font</string>
   <string name="menu_market">Mercat</string>
   <string name="menu_update">Actualitza</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Féu una donació</string>
   <string name="details_installed">Versió instal·lada %s</string>
   <string name="details_notinstalled">No està instal·lat</string>
@@ -97,6 +105,7 @@
   <string name="antinonfreenetlong">Mostra aplicacions que promouen serveis de xarxa no lliures</string>
   <string name="antinonfreedep">Dependències</string>
   <string name="antinonfreedeplong">Mostra aplicacions que depenen d\'altres aplicacions no lliures</string>
+  <string name="display">Pantalla</string>
   <string name="expert">Usuari expert</string>
   <string name="expert_mode">Activa el mode expert</string>
   <string name="search_hint">Cerca aplicacions</string>
@@ -112,5 +121,16 @@
   <string name="category_all">Tot</string>
   <string name="category_whatsnew">Novetats</string>
   <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
-  <string name="status_processing_xml">S\'està obtenint l\'aplicació des de: \n</string>
+  <string name="status_download">S\'està baixant\n%2$s / %3$s (%4$d%%) des de\n%1$s</string>
+  <string name="status_processing_xml">S\'està procesant l\'aplicació\n%2$d of %3$d des de\n%1$s</string>
+  <string name="status_connecting_to_repo">S\'està connectant a\n%1$s</string>
+  <string name="status_checking_compatibility">S\'està comprobant la compatibilitat de les aplicacions amb el vostre dispositiu...</string>
+  <string name="status_downloading_icons">S\'està baixant les noves icones...</string>
+  <string name="no_permissions">No es fa servir cap permís.</string>
+  <string name="permissions_for_long">Permisos de la versió %s</string>
+  <string name="showPermissions">Mostra els permisos</string>
+  <string name="showPermissions_long">Mostra els permisos que necessita l\'aplicació</string>
+  <string name="no_handler_app">No teniu cap aplicació instal·lada que pugui gestionar %s</string>
+  <string name="compactlayout">Vista compacta</string>
+  <string name="compactlayout_long">Nostra només els noms de les aplicacions i els resums a la llista</string>
 </resources>

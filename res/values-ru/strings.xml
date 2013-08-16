@@ -5,6 +5,7 @@
   <string name="searchres_noapps">Не найдено ни одного совпадения с \'%s\'</string>
   <string name="SignatureMismatch">Новая версия подписана ключом отличным от старого. Для установки новой версии, сначала нужно удалить старую программы. А потом попробовать снова. (Замечание: при удалении программы будут удалены все её данные)</string>
   <string name="installIncompatible">Android сказал что пакет не совместим с вашим устройством. Проигнорировать предупреждение и всё равно поставить?</string>
+  <string name="installDowngrade">Вы пытаетесь установить более старую версию приложения. Это может привести к его некорректной работе и даже потере данных. Вы уверены, что хотите продолжить?</string>
   <string name="version">Версия</string>
   <string name="n_versions_available">версий доступно - %d</string>
   <string name="n_version_available">%d версия доступна</string>
@@ -18,20 +19,25 @@
   <string name="maintenance">Поддержка</string>
   <string name="notify_updates_available">Сообщать при появлении обновлений</string>
   <string name="update_apps_list">Обновлять список приложений автоматически</string>
-  <string name="update_history">Обновить репозитории</string>
+  <string name="update_history">История обновлений</string>
+  <string name="update_history_desc">Сколько дней показывать новые/обновлённый приложения</string>
   <string name="last_update_check">Обновлено: %s</string>
   <string name="never">никогда</string>
   <string name="automatic_repo_scan">Автоматически сканировать репозиторий</string>
   <string name="app_name">F-Droid</string>
+  <string name="search_results">Результаты поиска</string>
+  <string name="app_details">Описание приложения</string>
+  <string name="no_such_app">Приложение не найдено</string>
   <string name="about_title">О F-Droid</string>
   <string name="about_desc">Оригинал основан на Aptoide.\nВыпущен под лицензией GNU GPLv3.</string>
   <string name="about_site">Сайт:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Версия:</string>
   <string name="about_website">Сайт</string>
-  <string name="no_repo">В настройках не указан репозиторий!\n\nРепозиторий является источником приложений. Чтобы его добавить нажмите кнопку MENU и введите адрес.\n\nАдрес репозитория выглядит примерно так: http://f-droid.org/repo</string>
+  <string name="no_repo">В настройках не указан репозиторий!\n\nРепозиторий является источником приложений. Чтобы его добавить нажмите кнопку MENU и введите адрес.\n\nАдрес репозитория выглядит примерно так: https://f-droid.org/repo</string>
   <string name="inst">Установлено</string>
   <string name="not_inst">Не установлено</string>
+  <string name="added_on">Добавлено %s</string>
   <string name="installed_update">Доступно обновление до версии:</string>
   <string name="ok">ОК</string>
   <string name="yes">Да</string>
@@ -73,6 +79,7 @@
   <string name="menu_add_repo">Новый репозиторий</string>
   <string name="menu_rem_repo">Удалить репозиторий</string>
   <string name="menu_launch">Запустить</string>
+  <string name="menu_share">Поделиться</string>
   <string name="menu_install">Установить</string>
   <string name="menu_uninstall">Удалить</string>
   <string name="menu_website">Сайт</string>
@@ -80,6 +87,8 @@
   <string name="menu_source">Исходный код</string>
   <string name="menu_market">Маркет</string>
   <string name="menu_update">Обновить</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
@@ -96,6 +105,7 @@
   <string name="antinonfreenetlong">Показывать приложения использующие несвободные сетевые сервисы</string>
   <string name="antinonfreedep">Зависимости</string>
   <string name="antinonfreedeplong">Показывать приложения зависимые от несвободных приложений</string>
+  <string name="display">Вид</string>
   <string name="expert">Эксперт</string>
   <string name="expert_mode">Включить режим эксперта</string>
   <string name="search_hint">Найти приложения</string>
@@ -111,9 +121,15 @@
   <string name="category_all">Все</string>
   <string name="category_whatsnew">Что Нового</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
+  <string name="status_download">Загрузка\n%2$s / %3$s (%4$d%%) из\n%1$s</string>
   <string name="status_processing_xml">Взять приложение из:\n</string>
   <string name="status_connecting_to_repo">Соединение с\n%1$s</string>
+  <string name="status_checking_compatibility">Проверка совместимости приложений с устройством...</string>
+  <string name="status_downloading_icons">Загрузка новых значков...</string>
+  <string name="no_permissions">Разрешений не требуется.</string>
   <string name="permissions_for_long">Разрешения для версии %s</string>
   <string name="showPermissions">Показывать разрешения</string>
   <string name="showPermissions_long">Показывать список разрешений, необходимых приложению</string>
+  <string name="compactlayout">Компактный вид</string>
+  <string name="compactlayout_long">Показывать в списке только названия и краткие описания приложений</string>
 </resources>

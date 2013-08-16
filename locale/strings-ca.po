@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-08-07 13:00+0100\n"
-"PO-Revision-Date: 2013-04-13 12:04+0200\n"
+"PO-Revision-Date: 2013-08-16 14:35+0200\n"
 "Last-Translator: Paco <web@pacoriviere.cat>\n"
 "Language-Team: ca <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
@@ -57,6 +59,9 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
+"Aneu a desactualitzar aquesta aplicació. Això podria fer que l'aplicació "
+"nofuncionés o inclús es perdèssin les vostres dades. Esteu segur que ho "
+"voleu fer?"
 
 msgctxt "version"
 msgid "Version"
@@ -139,15 +144,15 @@ msgstr "F-droid"
 
 msgctxt "search_results"
 msgid "Search Results"
-msgstr ""
+msgstr "Resultats de la cerca"
 
 msgctxt "app_details"
 msgid "App Details"
-msgstr ""
+msgstr "Detalls de l'aplicació"
 
 msgctxt "no_such_app"
 msgid "No such app found"
-msgstr ""
+msgstr "No s'ha trobat l'aplicació"
 
 msgctxt "about_title"
 msgid "About F-Droid"
@@ -177,7 +182,6 @@ msgctxt "about_website"
 msgid "Website"
 msgstr "Pàgina web"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -205,7 +209,7 @@ msgstr "No està instal·lat"
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "S'ha afegit a %s"
 
 msgctxt "installed_update"
 msgid "Update possible - Ver.:"
@@ -263,20 +267,18 @@ msgctxt "update_available"
 msgid "Updates available"
 msgstr "Actualitzacions disponibles"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Actualitzacions disponibles"
+msgstr "Hi ha 1 actualització disponible."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Actualitzacions disponibles"
+msgstr "Hi ha %d actualitzacions disponibles."
 
-#, fuzzy
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Actualitzacions disponibles"
+msgstr "Hi ha actualitzacions de l'F-Droid disponibles"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -386,7 +388,7 @@ msgstr "Executa"
 
 msgctxt "menu_share"
 msgid "Share"
-msgstr ""
+msgstr "Comparteix"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -418,11 +420,11 @@ msgstr "Actualitza"
 
 msgctxt "menu_bitcoin"
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 msgctxt "menu_flattr"
 msgid "Flattr"
-msgstr ""
+msgstr "Flattr"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -491,7 +493,7 @@ msgstr "Mostra aplicacions que depenen d'altres aplicacions no lliures"
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Pantalla"
 
 msgctxt "expert"
 msgid "Expert"
@@ -565,14 +567,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"S'està baixant\n"
+"%2$s / %3$s (%4$d%%) des de\n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "S'està obtenint l'aplicació des de: \n"
+msgstr ""
+"S'està procesant l'aplicació\n"
+"%2$d of %3$d des de\n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -580,42 +588,45 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"S'està connectant a\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
 msgstr ""
+"S'està comprobant la compatibilitat de les aplicacions amb el vostre "
+"dispositiu..."
 
 msgctxt "status_downloading_icons"
 msgid "Downloading new icons…"
-msgstr ""
+msgstr "S'està baixant les noves icones..."
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "No es fa servir cap permís."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Permisos de la versió %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Mostra els permisos"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Mostra els permisos que necessita l'aplicació"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any app installed that can handle %s"
-msgstr ""
+msgstr "No teniu cap aplicació instal·lada que pugui gestionar %s"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Vista compacta"
 
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
-msgstr ""
-
+msgstr "Nostra només els noms de les aplicacions i els resums a la llista"
