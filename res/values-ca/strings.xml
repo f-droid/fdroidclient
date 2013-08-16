@@ -12,7 +12,7 @@
   <string name="notify">Notifica-ho</string>
   <string name="storage">Emmagatzament</string>
   <string name="cache_downloaded">Memòria cau de les aplicacions baixades</string>
-  <string name="keep_downloaded">Desa els f¡txers apk baixats a la targeta SD</string>
+  <string name="keep_downloaded">Desa els fitxers apk baixats a la targeta SD</string>
   <string name="updates">Actualitzacions</string>
   <string name="clear_all_cached_data">Neteja les dades de la memòria cau</string>
   <string name="reset">Reinicia</string>
