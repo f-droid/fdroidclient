@@ -19,7 +19,7 @@
   <string name="update_apps_list">Aggiorna automaticamente l\'elenco applicazioni</string>
   <string name="update_history">Aggiorna le repository</string>
   <string name="automatic_repo_scan">Scansione repository automatica</string>
-  <string name="app_name">FDroid</string>
+  <string name="app_name">F-Droid</string>
   <string name="about_title">Informazioni</string>
   <string name="about_desc">Basato su Aptoide.\nRilasciato sotto licenza GNU GPL v2.</string>
   <string name="about_site">Sito Web:</string>
@@ -76,6 +76,8 @@
   <string name="menu_source">Codice sorgente</string>
   <string name="menu_market">Market</string>
   <string name="menu_update">Aggiornamento</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Donazioni</string>
   <string name="details_installed">Versione %s installata</string>
   <string name="details_notinstalled">Non installato</string>

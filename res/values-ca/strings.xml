@@ -18,7 +18,7 @@
   <string name="reset">Reinicia</string>
   <string name="maintenance">Manteniment</string>
   <string name="notify_updates_available">Avisa\'m quan hi hagi noves actualitzacions</string>
-  <string name="update_apps_list">Actualitza de forma automàtica la llista d\'aplicacions des dels dipòsits</string>
+  <string name="update_apps_list">Actualitza de forma automàtica la llista d\'aplicacions dels dipòsits</string>
   <string name="update_history">Actualitzacions</string>
   <string name="update_history_desc">Mostra les aplicacions noves o actualitzades periòdicament</string>
   <string name="last_update_check">Darrera actualització dels dipòsits: %s</string>

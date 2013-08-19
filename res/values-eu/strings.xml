@@ -81,6 +81,8 @@
   <string name="menu_source">Iturburu-kodea</string>
   <string name="menu_market">Merkatua</string>
   <string name="menu_update">Eguneratu</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Egin dohaintza</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
   <string name="details_notinstalled">Instalatu gabe</string>

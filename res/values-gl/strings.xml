@@ -83,6 +83,8 @@
   <string name="menu_source">Código fonte</string>
   <string name="menu_market">Mercado</string>
   <string name="menu_update">Actualizar</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Doar</string>
   <string name="details_installed">Instalada a versión %s</string>
   <string name="details_notinstalled">Non instalada</string>

@@ -25,13 +25,16 @@
   <string name="never">nunca</string>
   <string name="automatic_repo_scan">Escanear los repositorios automáticamente</string>
   <string name="app_name">F-Droid</string>
+  <string name="search_results">Resultados de la búsqueda</string>
+  <string name="app_details">Detalles de la aplicación</string>
+  <string name="no_such_app">No se encontró la aplicación</string>
   <string name="about_title">Acerca de F-Droid</string>
   <string name="about_desc">Basado originalmente en Aptoide.\nPublicado bajo la licencia GNU GPLv3.</string>
   <string name="about_site">Página web:</string>
   <string name="about_mail">Correo electrónico:</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Página web</string>
-  <string name="no_repo">¡No tienes ningún repositorio configurado!\n\nUn repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón MENU ahora e introduce la URL.\n\nLa dirección de un repositorio es algo similar a esto: http://f-droid.org/repo</string>
+  <string name="no_repo">¡No tienes ningún repositorio configurado!\n\nUn repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón MENU ahora e introduce la URL.\n\nLa dirección de un repositorio es algo similar a esto: https://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">No instalado</string>
   <string name="added_on">Agregado el %s</string>
@@ -76,6 +79,7 @@
   <string name="menu_add_repo">Repositorio nuevo</string>
   <string name="menu_rem_repo">Borrar Repositorio</string>
   <string name="menu_launch">Ejecutar</string>
+  <string name="menu_share">Compartir</string>
   <string name="menu_install">Instalar</string>
   <string name="menu_uninstall">Desinstalar</string>
   <string name="menu_website">Página web</string>
@@ -83,6 +87,8 @@
   <string name="menu_source">Código Fuente</string>
   <string name="menu_market">Market</string>
   <string name="menu_update">Actualizar</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Donar</string>
   <string name="details_installed">Versión %s instalada</string>
   <string name="details_notinstalled">No instalado</string>
