@@ -265,6 +265,20 @@ public class UpdateService extends IntentService implements ProgressListener {
                     toDownloadIcons = acceptedapps;
                 }
                 if (toDownloadIcons != null) {
+
+                    // Create a .nomedia file in the icons directory. For
+                    // recent Android versions this isn't necessary, because
+                    // they recognise the cache location. Older versions don't
+                    // though.
+                    File f = new File(d, ".nomedia");
+                    if (!f.exists()) {
+                        try {
+                            f.createNewFile();
+                        } catch (Exception e) {
+                            Log.d("FDroid", "Failed to create .nomedia");
+                        }
+                    }
+
                     sendStatus(STATUS_INFO,
                             getString(R.string.status_downloading_icons));
                     for (DB.App app : toDownloadIcons)
