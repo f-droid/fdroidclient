@@ -634,14 +634,15 @@ public class AppDetails extends ListActivity {
         return true;
     }
 
+
     public void tryOpenUri(String s) {
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s)));
-        } catch (android.content.ActivityNotFoundException e) {
-            Toast toast = Toast.makeText(this,
-                    getString(R.string.no_handler_app, s), Toast.LENGTH_LONG);
-            toast.show();
-        }
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
+        if (intent.resolveActivity(getPackageManager()) != null)
+            startActivity(intent);
+        else
+            Toast.makeText(this,
+                    getString(R.string.no_handler_app, intent.getDataString()),
+                    Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -183,7 +183,7 @@
     <string name="permissions_for_long">Permissions for version %s</string>
     <string name="showPermissions">Show permissions</string>
     <string name="showPermissions_long">Display a list of permissions an app needs</string>
-    <string name="no_handler_app">You don\'t have any app installed that can handle %s</string>
+    <string name="no_handler_app">You don\'t have any available app that can handle %s</string>
     <string name="compactlayout">Compact Layout</string>
     <string name="compactlayout_long">Only show app names and summaries in list</string>
 
