@@ -365,31 +365,11 @@ public class UpdateService extends IntentService implements ProgressListener {
             if (server == null)
                 return;
 
-            // TODO: Remove this later
-            // If we can find the icon in the old .fdroid directory, use that
-            // instead of re-downloading it.
-            File oldfile = new File(Environment.getExternalStorageDirectory(),
-                    ".fdroid/icons/" + app.icon);
-            if (oldfile.exists()) {
-                // Try and move it - should succeed if it's on the same
-                // filesystem.
-                if(oldfile.renameTo(f))
-                    return;
-                // Otherwise we'll have to copy...
-                input = new FileInputStream(oldfile);
-            }
-
             // Get it from the server...
-            if (input == null) {
-                URL u = new URL(server + "/icons/" + app.icon);
-                HttpURLConnection uc = (HttpURLConnection) u.openConnection();
-                if (uc.getResponseCode() == 200) {
-                    input = uc.getInputStream();
-                }
-            }
-
-            // Whereever we got the input stream from, copy it...
-            if (input != null) {
+            URL u = new URL(server + "/icons/" + app.icon);
+            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
+            if (uc.getResponseCode() == 200) {
+                input = uc.getInputStream();
                 output = new FileOutputStream(f);
                 Utils.copy(input, output);
             }
