@@ -77,6 +77,10 @@ public class ManageRepo extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("lightTheme", false))
+            setTheme(R.style.AppThemeLight);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.repolist);
 

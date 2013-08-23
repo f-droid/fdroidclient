@@ -33,6 +33,9 @@
         <CheckBoxPreference android:title="@string/compactlayout"
             android:defaultValue="false" android:summary="@string/compactlayout_long"
             android:key="compactlayout"/>
+        <CheckBoxPreference android:title="@string/lightTheme"
+            android:defaultValue="false" android:summary="@string/lightTheme_long"
+            android:key="lightTheme"/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/antifeatures">
 		<CheckBoxPreference android:title="@string/antiads"

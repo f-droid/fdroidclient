@@ -184,6 +184,10 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("lightTheme", false))
+            setTheme(R.style.AppThemeLight);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat abCompat = ActionBarCompat.create(this);
         abCompat.setDisplayHomeAsUpEnabled(true);

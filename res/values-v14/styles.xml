@@ -1,0 +1,11 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo">
+        <!-- API 14 theme customizations go here -->
+    </style> 
+
+    <style name="AppBaseThemeLight" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- API 14 theme customizations go here -->
+    </style> 
+
+</resources>

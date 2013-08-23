@@ -1,0 +1,19 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Black">
+        <!-- backward-compatibility theme options go here -->
+    </style>
+
+    <style name="AppBaseThemeLight" parent="android:Theme.Light">
+        <!-- backward-compatibility theme options go here -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- customizations that are not API-level specific go here. -->
+    </style>
+
+    <style name="AppThemeLight" parent="AppBaseThemeLight">
+        <!-- customizations that are not API-level specific go here. -->
+    </style>
+
+</resources>

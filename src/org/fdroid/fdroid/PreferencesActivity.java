@@ -24,6 +24,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.widget.Toast;
@@ -32,28 +33,48 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 public class PreferencesActivity extends PreferenceActivity implements
         OnPreferenceClickListener {
 
+
+    private boolean ignoreTouchscreenChanged = false;
+    private boolean showIncompatibleChanged = false;
+    private boolean lightThemeChanged = false;
+
+    Intent ret;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("lightTheme", false))
+            setTheme(R.style.AppThemeLight);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
         for (String prefkey : new String[] { "ignoreTouchscreen",
-                "showIncompatible" }) {
+                "showIncompatible", "lightTheme" }) {
             Preference pref = findPreference(prefkey);
             pref.setOnPreferenceClickListener(this);
         }
+        ret = new Intent();
     }
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        // Currently only one action is returned.
-        //String key = preference.getKey();
-        //if (key.equals("ignoreTouchscreen") || key.equals("showIncompatible")) {
-        Intent ret = new Intent();
-        ret.putExtra("update", true);
+        String key = preference.getKey();
+        if (key.equals("ignoreTouchscreen"))
+            ignoreTouchscreenChanged ^= true;
+        else if (key.equals("showIncompatible"))
+            showIncompatibleChanged ^= true;
+        else
+            lightThemeChanged ^= true;
+
+        if (lightThemeChanged)
+            ret.putExtra("restart", true);
+        else if (ignoreTouchscreenChanged || showIncompatibleChanged)
+            ret.putExtra("update", true);
+
         setResult(RESULT_OK, ret);
         return true;
-        //}
     }
 
 }
