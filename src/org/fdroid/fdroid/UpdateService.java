@@ -20,6 +20,7 @@ package org.fdroid.fdroid;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FilenameFilter;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -347,7 +348,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    private void getIcon(DB.App app, List<DB.Repo> repos) {
+    private void getIcon(final DB.App app, List<DB.Repo> repos) {
         InputStream input = null;
         OutputStream output = null;
         try {
@@ -369,6 +370,20 @@ public class UpdateService extends IntentService implements ProgressListener {
             URL u = new URL(server + "/icons/" + app.icon);
             HttpURLConnection uc = (HttpURLConnection) u.openConnection();
             if (uc.getResponseCode() == 200) {
+
+                // Delete all other icons for the same app
+                final File[] files = DB.getIconsPath(this).listFiles(
+                        new FilenameFilter() {
+                    @Override
+                    public boolean accept(final File d, final String n) {
+                        return n.matches(app.id+"\\.[0-9]+\\.png");
+                    }
+                } );
+                for (final File file : files) {
+                    if (!file.delete())
+                        Log.e("FDroid", "Cannot remove icon file " + file.getAbsolutePath());
+                }
+
                 input = uc.getInputStream();
                 output = new FileOutputStream(f);
                 Utils.copy(input, output);
