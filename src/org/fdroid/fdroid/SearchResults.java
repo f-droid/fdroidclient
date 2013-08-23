@@ -50,6 +50,11 @@ public class SearchResults extends ListActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("lightTheme", false))
+            setTheme(R.style.AppThemeLight);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         applist = new AvailableAppListAdapter(this);
