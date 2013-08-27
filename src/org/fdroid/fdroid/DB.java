@@ -253,7 +253,8 @@ public class DB {
             + "vercode int not null," + "apkName text not null, "
             + "size int not null," + "sig string," + "srcname string,"
             + "minSdkVersion integer," + "permissions string,"
-            + "features string," + "hashType string," + "added string,"
+            + "features string," + "nativecode string,"
+            + "hashType string," + "added string,"
             + "compatible int not null," + "primary key(id,vercode));";
 
     public static class Apk {
@@ -281,6 +282,8 @@ public class DB {
         public CommaSeparatedList detail_permissions; // null if empty or
                                                       // unknown
         public CommaSeparatedList features; // null if empty or unknown
+
+        public CommaSeparatedList nativecode; // null if empty or unknown
 
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
@@ -387,7 +390,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 22;
+    private final int DBVersion = 23;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -775,7 +778,7 @@ public class DB {
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
-                    "apkName", "minSdkVersion", "added", "features",
+                    "apkName", "minSdkVersion", "added", "features", "nativecode",
                     "compatible", "repo" };
             c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
@@ -793,8 +796,9 @@ public class DB {
                 apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
                         : mDateFormat.parse(sApkAdded);
                 apk.features = CommaSeparatedList.make(c.getString(8));
-                apk.compatible = c.getInt(9) == 1;
-                apk.repo = c.getInt(10);
+                apk.nativecode = CommaSeparatedList.make(c.getString(9));
+                apk.compatible = c.getInt(10) == 1;
+                apk.repo = c.getInt(11);
                 apps.get(apk.id).apks.add(apk);
                 c.moveToNext();
             }
@@ -1251,6 +1255,7 @@ public class DB {
         values.put("permissions",
                 CommaSeparatedList.str(upapk.detail_permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
+        values.put("nativecode", CommaSeparatedList.str(upapk.nativecode));
         values.put("compatible", upapk.compatible ? 1 : 0);
         if (oldapk != null) {
             db.update(TABLE_APK, values,

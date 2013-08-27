@@ -178,6 +178,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.detail_permissions = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("features")) {
                 curapk.features = DB.CommaSeparatedList.make(str);
+            } else if (curel.equals("nativecode")) {
+                curapk.nativecode = DB.CommaSeparatedList.make(str);
             }
         } else if (curapp != null && str != null) {
             if (curel.equals("id")) {
