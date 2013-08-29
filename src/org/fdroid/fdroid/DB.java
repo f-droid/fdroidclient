@@ -330,6 +330,7 @@ public class DB {
         private static class EclairChecker extends CompatibilityChecker {
 
             private HashSet<String> features;
+            private List<String> cpuAbis;
             private boolean ignoreTouchscreen;
 
             public EclairChecker(Context ctx) {
@@ -348,7 +349,23 @@ public class DB {
                     logMsg.append('\n');
                     logMsg.append(fi.name);
                 }
+
+                cpuAbis = new ArrayList<String>();
+                if (hasApi(8))
+                    cpuAbis.add(android.os.Build.CPU_ABI2);
+                cpuAbis.add(android.os.Build.CPU_ABI);
+
                 Log.d("FDroid", logMsg.toString());
+            }
+
+            private boolean compatibleApi(CommaSeparatedList nativecode) {
+                if (nativecode == null) return true;
+                for (String abi : nativecode) {
+                    if (cpuAbis.contains(abi)) {
+                        return true;
+                    }
+                }
+                return false;
             }
 
             public boolean isCompatible(Apk apk) {
@@ -366,6 +383,13 @@ public class DB {
                             return false;
                         }
                     }
+                }
+                if (!compatibleApi(apk.nativecode)) {
+                    Log.d("FDroid", apk.id
+                            + " makes use of incompatible native code: "
+                            + CommaSeparatedList.str(apk.nativecode)
+                            + " while your architecture is " + cpuAbis.get(0));
+                    return false;
                 }
                 return true;
             }
