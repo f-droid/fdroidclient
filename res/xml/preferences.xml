@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:title="@string/storage">
-		<CheckBoxPreference android:title="@string/cache_downloaded"
-			android:defaultValue="false" android:summary="@string/keep_downloaded"
-			android:key="cacheDownloaded" />
-		<ListPreference android:title="@string/db_sync_mode"
-			android:summary="@string/db_sync_mode_long" android:key="dbSyncMode"
-			android:dependency="expert"
-			android:defaultValue="full" android:entries="@array/dbSyncModeNames"
-			android:entryValues="@array/dbSyncModeValues" />
-	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/updates">
 		<ListPreference android:title="@string/automatic_repo_scan"
 			android:summary="@string/update_apps_list" android:key="updateInterval"
@@ -66,8 +56,16 @@
 			android:key="ignoreTouchscreen" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/maintenance">
+		<CheckBoxPreference android:title="@string/cache_downloaded"
+			android:defaultValue="false" android:summary="@string/keep_downloaded"
+			android:key="cacheDownloaded" />
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false" android:summary="@string/expert_mode"
 			android:key="expert" />
+		<ListPreference android:title="@string/db_sync_mode"
+			android:summary="@string/db_sync_mode_long" android:key="dbSyncMode"
+			android:dependency="expert"
+			android:defaultValue="full" android:entries="@array/dbSyncModeNames"
+			android:entryValues="@array/dbSyncModeValues" />
 	</PreferenceCategory>
 </PreferenceScreen>
