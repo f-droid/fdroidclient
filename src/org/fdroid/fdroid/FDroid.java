@@ -255,8 +255,6 @@ public class FDroid extends FragmentActivity {
                 finish();
                 overridePendingTransition(0, 0);
                 startActivity(intent);
-            } else {
-                repopulateViews();
             }
             break;
 

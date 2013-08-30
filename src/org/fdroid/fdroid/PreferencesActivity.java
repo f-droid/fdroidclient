@@ -35,7 +35,6 @@ public class PreferencesActivity extends PreferenceActivity implements
 
 
     private boolean ignoreTouchscreenChanged = false;
-    private boolean showIncompatibleChanged = false;
     private boolean lightThemeChanged = false;
 
     Intent ret;
@@ -51,7 +50,7 @@ public class PreferencesActivity extends PreferenceActivity implements
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
         for (String prefkey : new String[] { "ignoreTouchscreen",
-                "showIncompatible", "lightTheme" }) {
+                "lightTheme" }) {
             Preference pref = findPreference(prefkey);
             pref.setOnPreferenceClickListener(this);
         }
@@ -63,14 +62,12 @@ public class PreferencesActivity extends PreferenceActivity implements
         String key = preference.getKey();
         if (key.equals("ignoreTouchscreen"))
             ignoreTouchscreenChanged ^= true;
-        else if (key.equals("showIncompatible"))
-            showIncompatibleChanged ^= true;
         else
             lightThemeChanged ^= true;
 
         if (lightThemeChanged)
             ret.putExtra("restart", true);
-        else if (ignoreTouchscreenChanged || showIncompatibleChanged)
+        else if (ignoreTouchscreenChanged)
             ret.putExtra("update", true);
 
         setResult(RESULT_OK, ret);

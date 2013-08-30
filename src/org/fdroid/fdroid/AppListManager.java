@@ -178,6 +178,9 @@ public class AppListManager {
     private boolean updateApps() {
 
         allApps = ((FDroidApp)fdroidActivity.getApplication()).getApps();
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(fdroidActivity.getBaseContext());
+        boolean showIncompatible = prefs.getBoolean("showIncompatible", false);
 
         if (allApps.isEmpty()) {
             // If its the first time we've run the app, this should update
@@ -197,11 +200,14 @@ public class AppListManager {
 
             // Add it to the list(s). Always to installed and updates, but
             // only to available if it's not filtered.
-            if (!isFiltered && isInCategory)
-                availApps.add(app);
+            if (!isFiltered && isInCategory) {
+                if (showIncompatible || app.compatible) {
+                    availApps.add(app);
+                }
+            }
             if (app.installedVersion != null) {
                 installedApps.addItem(app);
-                if (app.hasUpdates)
+                if (app.hasUpdates && (showIncompatible || app.compatible))
                     canUpgradeApps.addItem(app);
             }
         }

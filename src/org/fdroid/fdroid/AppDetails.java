@@ -243,6 +243,7 @@ public class AppDetails extends ListActivity {
 
     private boolean pref_expert;
     private boolean pref_permissions;
+    private boolean pref_incompatible;
     private boolean resetRequired;
 
     // The signature of the installed version.
@@ -263,6 +264,7 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
+        pref_incompatible = prefs.getBoolean("showIncompatible", false);
         updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
@@ -375,7 +377,8 @@ public class AppDetails extends ListActivity {
         // Populate the list...
         ApkListAdapter la = (ApkListAdapter) getListAdapter();
         for (DB.Apk apk : app.apks)
-            la.addItem(apk);
+            if (pref_incompatible || apk.compatible)
+                la.addItem(apk);
         la.notifyDataSetChanged();
 
         // Insert the 'infoView' (which contains the summary, various odds and

@@ -1153,27 +1153,15 @@ public class DB {
         if (compatChecker == null)
             compatChecker = Apk.CompatibilityChecker.getChecker(mContext);
 
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
-        boolean prefCompat = prefs.getBoolean("showIncompatible", false);
-
         // See if it's compatible (by which we mean if it has at least one
-        // compatible apk - if it's not, leave it out)
-        // Also keep a list of which were compatible, because they're the
-        // only ones we'll add, unless the showIncompatible preference is set.
-        List<Apk> compatibleapks = new ArrayList<Apk>();
+        // compatible apk)
+        upapp.compatible = false;
         for (Apk apk : upapp.apks) {
             if (compatChecker.isCompatible(apk)) {
                 apk.compatible = true;
-                compatibleapks.add(apk);
+                upapp.compatible = true;
             }
         }
-        if (compatibleapks.size() > 0)
-            upapp.compatible = true;
-        if (prefCompat)
-            compatibleapks = upapp.apks;
-        if (compatibleapks.size() == 0)
-            return false;
 
         boolean found = false;
         for (App app : updateApps) {
@@ -1181,7 +1169,7 @@ public class DB {
                 updateApp(app, upapp);
                 app.updated = true;
                 found = true;
-                for (Apk upapk : compatibleapks) {
+                for (Apk upapk : upapp.apks) {
                     boolean afound = false;
                     for (Apk apk : app.apks) {
                         if (apk.vercode == upapk.vercode) {
@@ -1206,7 +1194,7 @@ public class DB {
         if (!found) {
             // It's a brand new application...
             updateApp(null, upapp);
-            for (Apk upapk : compatibleapks) {
+            for (Apk upapk : upapp.apks) {
                 updateApkIfDifferent(null, upapk);
                 upapk.updated = true;
             }
