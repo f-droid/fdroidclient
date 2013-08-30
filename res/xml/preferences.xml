@@ -55,7 +55,7 @@
 			android:defaultValue="false" android:summary="@string/ignoreTouch_long"
 			android:key="ignoreTouchscreen" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/maintenance">
+	<PreferenceCategory android:title="@string/other">
 		<CheckBoxPreference android:title="@string/cache_downloaded"
 			android:defaultValue="false" android:summary="@string/keep_downloaded"
 			android:key="cacheDownloaded" />

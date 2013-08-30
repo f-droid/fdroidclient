@@ -16,7 +16,7 @@
 	<string name="updates">Updates</string>
 	<string name="clear_all_cached_data">Clear all cached data</string>
 	<string name="reset">Reset</string>
-	<string name="maintenance">Maintenance</string>
+	<string name="other">Other</string>
 	<string name="notify_updates_available">Notify when new updates are available</string>
 	<string name="update_apps_list">Update app list from repositories automatically
 	</string>
