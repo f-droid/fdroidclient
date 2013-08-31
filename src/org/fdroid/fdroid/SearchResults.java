@@ -160,7 +160,7 @@ public class SearchResults extends ListActivity {
         super.onCreateOptionsMenu(menu);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 1, R.string.menu_search).setIcon(
                 android.R.drawable.ic_menu_search);
-        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
         return true;
     }
 

@@ -145,7 +145,7 @@ public class FDroid extends FragmentActivity {
                 android.R.drawable.ic_menu_preferences);
         menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
                 android.R.drawable.ic_menu_help);
-        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
         return true;
     }
 

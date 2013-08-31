@@ -583,7 +583,7 @@ public class AppDetails extends ListActivity {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 0, R.string.menu_update)
                         .setIcon(R.drawable.ic_menu_refresh),
-                    MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
         if (app.installedVersion == null && curver != null) {
