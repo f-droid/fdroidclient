@@ -265,11 +265,11 @@ public class AppDetails extends ListActivity {
                 finish();
                 return;
             }
+            updateViews();
+            MenuManager.create(this).invalidateOptionsMenu();
+
             resetRequired = false;
         }
-        updateViews();
-
-        MenuManager.create(this).invalidateOptionsMenu();
 
         if (downloadHandler != null) {
             downloadHandler.startUpdates();
