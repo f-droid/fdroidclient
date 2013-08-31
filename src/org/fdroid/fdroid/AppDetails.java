@@ -237,6 +237,13 @@ public class AppDetails extends ListActivity {
             }
             resetRequired = false;
         }
+
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        pref_expert = prefs.getBoolean("expert", false);
+        pref_permissions = prefs.getBoolean("showPermissions", false);
+        pref_incompatible = prefs.getBoolean("showIncompatible", false);
+
         startViews();
 
     }
@@ -260,11 +267,6 @@ public class AppDetails extends ListActivity {
             }
             resetRequired = false;
         }
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        pref_expert = prefs.getBoolean("expert", false);
-        pref_permissions = prefs.getBoolean("showPermissions", false);
-        pref_incompatible = prefs.getBoolean("showIncompatible", false);
         updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
