@@ -33,7 +33,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -62,7 +61,6 @@ public class FDroid extends FragmentActivity {
     private ProgressDialog pd;
 
     private ViewPager viewPager;
-    private AppListFragmentPageAdapter viewPageAdapter;
 
     private AppListManager manager = null;
 
@@ -74,10 +72,6 @@ public class FDroid extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        if (PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean("lightTheme", false))
-            setTheme(R.style.AppThemeLight);
 
         super.onCreate(savedInstanceState);
         manager = new AppListManager(this);
@@ -248,13 +242,8 @@ public class FDroid extends FragmentActivity {
             UpdateService.schedule(getBaseContext());
             if (data != null && data.hasExtra("update")) {
                 updateRepos();
-            } else if (data != null && data.hasExtra("restart")) {
-                final Intent intent = getIntent();
-                overridePendingTransition(0, 0);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(intent);
+            } else {
+                repopulateViews();
             }
             break;
 
@@ -263,7 +252,7 @@ public class FDroid extends FragmentActivity {
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        viewPageAdapter = new AppListFragmentPageAdapter(this);
+        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {

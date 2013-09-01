@@ -24,7 +24,6 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.widget.Toast;
@@ -33,43 +32,25 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 public class PreferencesActivity extends PreferenceActivity implements
         OnPreferenceClickListener {
 
-
-    private boolean ignoreTouchscreenChanged = false;
-    private boolean lightThemeChanged = false;
-
     Intent ret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        if (PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean("lightTheme", false))
-            setTheme(R.style.AppThemeLight);
-
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
-        for (String prefkey : new String[] { "ignoreTouchscreen",
-                "lightTheme" }) {
-            Preference pref = findPreference(prefkey);
-            pref.setOnPreferenceClickListener(this);
-        }
-        ret = new Intent();
+        //for (String prefkey : new String[] { }) {
+            //Preference pref = findPreference(prefkey);
+            //pref.setOnPreferenceClickListener(this);
+        //}
     }
 
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        String key = preference.getKey();
-        if (key.equals("ignoreTouchscreen"))
-            ignoreTouchscreenChanged ^= true;
-        else
-            lightThemeChanged ^= true;
-
-        if (lightThemeChanged)
-            ret.putExtra("restart", true);
-        else if (ignoreTouchscreenChanged)
-            ret.putExtra("update", true);
-
+        // Currently no actions are returned
+        //String key = preference.getKey();
+        //if (key.equals("...")) {
+        Intent ret = new Intent();
         setResult(RESULT_OK, ret);
         return true;
     }
