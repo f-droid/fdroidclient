@@ -98,7 +98,7 @@ public class DB {
             + "bitcoinAddr string," + "flattrID string,"
             + "requirements string," + "category string," + "added string,"
             + "lastUpdated string," + "compatible int not null,"
-            + "primary key(id));";
+            + "ignoreUpdates int not null," + "primary key(id));";
 
     public static class App implements Comparable<App> {
 
@@ -123,6 +123,7 @@ public class DB {
             apks = new ArrayList<Apk>();
             detail_Populated = false;
             compatible = false;
+            ignoreUpdates = false;
         }
 
         // True when all the detail fields are populated, False otherwise.
@@ -187,6 +188,10 @@ public class DB {
         // explicitly ignored. (We're currently not using the database
         // field for this - we make the decision on the fly in getApps().
         public boolean hasUpdates;
+
+        // True if updates should not show up in the Updates tab for this
+        // application
+        public boolean ignoreUpdates;
 
         // The name of the version that would be updated to.
         public String updateVersion;
@@ -414,7 +419,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 23;
+    private final int DBVersion = 24;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -611,7 +616,7 @@ public class DB {
         List<App> apps = getAppsBasic(true);
         int count = 0;
         for (App app : apps) {
-            if (app.hasUpdates)
+            if (!app.ignoreUpdates && app.hasUpdates)
                 count++;
         }
         return count;
@@ -753,7 +758,7 @@ public class DB {
             String cols[] = new String[] { "antiFeatures", "requirements",
                     "id", "name", "summary", "icon", "license", "category",
                     "curVersion", "curVercode", "added", "lastUpdated",
-                    "compatible" };
+                    "compatible", "ignoreUpdates" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -777,6 +782,7 @@ public class DB {
                         .length() == 0) ? null : mDateFormat
                         .parse(sLastUpdated);
                 app.compatible = c.getInt(12) == 1;
+                app.ignoreUpdates = c.getInt(13) == 1;
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -1085,7 +1091,7 @@ public class DB {
 
         int count = 0;
         for (App app : updateApps) {
-            if (app.hasUpdates)
+            if (!app.ignoreUpdates && app.hasUpdates)
                 count++;
         }
         return count;
@@ -1236,6 +1242,7 @@ public class DB {
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         values.put("compatible", upapp.compatible ? 1 : 0);
+        values.put("ignoreUpdates", upapp.ignoreUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
         } else {
@@ -1339,6 +1346,12 @@ public class DB {
         db.execSQL("update " + TABLE_REPO
                 + " set inuse=1-inuse, lastetag=null where address = ?",
                 new String[] { address });
+    }
+
+    public void toggleIgnoreUpdates(String appid) {
+        db.execSQL("update " + TABLE_APP
+                + " set ignoreUpdates=1-ignoreUpdates where id = ?",
+                new String[] { appid });
     }
 
     public void updateRepoByAddress(Repo repo) {

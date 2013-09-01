@@ -158,15 +158,16 @@ public class AppDetails extends ListActivity {
 
     private static final int INSTALL = Menu.FIRST;
     private static final int UNINSTALL = Menu.FIRST + 1;
-    private static final int WEBSITE = Menu.FIRST + 2;
-    private static final int ISSUES = Menu.FIRST + 3;
-    private static final int SOURCE = Menu.FIRST + 4;
-    private static final int MARKET = Menu.FIRST + 5;
-    private static final int BITCOIN = Menu.FIRST + 6;
-    private static final int FLATTR = Menu.FIRST + 7;
-    private static final int DONATE = Menu.FIRST + 8;
-    private static final int LAUNCH = Menu.FIRST + 9;
-    private static final int SHARE = Menu.FIRST + 10;
+    private static final int IGNORE = Menu.FIRST + 2;
+    private static final int WEBSITE = Menu.FIRST + 3;
+    private static final int ISSUES = Menu.FIRST + 4;
+    private static final int SOURCE = Menu.FIRST + 5;
+    private static final int MARKET = Menu.FIRST + 6;
+    private static final int BITCOIN = Menu.FIRST + 7;
+    private static final int FLATTR = Menu.FIRST + 8;
+    private static final int DONATE = Menu.FIRST + 9;
+    private static final int LAUNCH = Menu.FIRST + 10;
+    private static final int SHARE = Menu.FIRST + 11;
 
     private DB.App app;
     private int app_currentvercode;
@@ -175,6 +176,7 @@ public class AppDetails extends ListActivity {
     private PackageManager mPm;
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
+    private boolean ignoreToggled;
 
     LinearLayout headerView;
     View infoView;
@@ -243,6 +245,8 @@ public class AppDetails extends ListActivity {
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
         pref_incompatible = prefs.getBoolean("showIncompatible", false);
+
+        ignoreToggled = false;
 
         startViews();
 
@@ -607,36 +611,42 @@ public class AppDetails extends ListActivity {
                         MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
             }
         }
+
         MenuItemCompat.setShowAsAction(menu.add(
                     Menu.NONE, SHARE, 1, R.string.menu_share)
                     .setIcon(android.R.drawable.ic_menu_share),
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
+        menu.add(Menu.NONE, IGNORE, 2, R.string.menu_ignore)
+                    .setIcon(android.R.drawable.ic_menu_add)
+                    .setCheckable(true)
+                    .setChecked(app.ignoreUpdates);
+
         if (app.detail_webURL.length() > 0) {
-            menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
+            menu.add(Menu.NONE, WEBSITE, 3, R.string.menu_website).setIcon(
                     android.R.drawable.ic_menu_view);
         }
         if (app.detail_trackerURL.length() > 0) {
-            menu.add(Menu.NONE, ISSUES, 3, R.string.menu_issues).setIcon(
+            menu.add(Menu.NONE, ISSUES, 4, R.string.menu_issues).setIcon(
                     android.R.drawable.ic_menu_view);
         }
         if (app.detail_sourceURL.length() > 0) {
-            menu.add(Menu.NONE, SOURCE, 4, R.string.menu_source).setIcon(
+            menu.add(Menu.NONE, SOURCE, 5, R.string.menu_source).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        menu.add(Menu.NONE, MARKET, 5, R.string.menu_market).setIcon(
+        menu.add(Menu.NONE, MARKET, 6, R.string.menu_market).setIcon(
                 android.R.drawable.ic_menu_view);
         if (app.detail_bitcoinAddr != null) {
-            menu.add(Menu.NONE, BITCOIN, 6, R.string.menu_bitcoin).setIcon(
+            menu.add(Menu.NONE, BITCOIN, 7, R.string.menu_bitcoin).setIcon(
                     android.R.drawable.ic_menu_view);
         }
         if (app.detail_flattrID != null) {
-            menu.add(Menu.NONE, FLATTR, 7, R.string.menu_flattr).setIcon(
+            menu.add(Menu.NONE, FLATTR, 8, R.string.menu_flattr).setIcon(
                     android.R.drawable.ic_menu_view);
         }
         if (app.detail_donateURL != null) {
-            menu.add(Menu.NONE, DONATE, 8, R.string.menu_donate).setIcon(
+            menu.add(Menu.NONE, DONATE, 9, R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
         }
 
@@ -676,6 +686,12 @@ public class AppDetails extends ListActivity {
 
         case UNINSTALL:
             removeApk(app.id);
+            return true;
+
+        case IGNORE:
+            app.ignoreUpdates ^= true;
+            item.setChecked(app.ignoreUpdates);
+            ignoreToggled ^= true;
             return true;
 
         case WEBSITE:
@@ -948,6 +964,19 @@ public class AppDetails extends ListActivity {
             resetRequired = true;
             break;
         }
+    }
+
+    @Override
+    public void finish() {
+        if (ignoreToggled) {
+            try {
+                DB db = DB.getDB();
+                db.toggleIgnoreUpdates(app.id);
+            } finally {
+                DB.releaseDB();
+            }
+        }
+        super.finish();
     }
 
 }
