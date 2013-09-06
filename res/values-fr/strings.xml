@@ -25,13 +25,16 @@
   <string name="never">jamais</string>
   <string name="automatic_repo_scan">Balayage automatique du dépôt</string>
   <string name="app_name">F-Droid</string>
+  <string name="search_results">Résultats de la recherche</string>
+  <string name="app_details">Détails de l\'application</string>
+  <string name="no_such_app">Pas d\'application trouvée</string>
   <string name="about_title">À propos de F-Droid</string>
   <string name="about_desc">Originellement basée sur Aptoide.\nPubliée sous licence GNU GPL v3.</string>
   <string name="about_site">Site Web :</string>
   <string name="about_mail">Courriel:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
-  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
+  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter une, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Pas installée</string>
   <string name="added_on">Ajouté le %s</string>
@@ -76,6 +79,7 @@
   <string name="menu_add_repo">Nouveau dépôt</string>
   <string name="menu_rem_repo">Supprimer un dépôt</string>
   <string name="menu_launch">Lancer</string>
+  <string name="menu_share">Partager</string>
   <string name="menu_install">Installer</string>
   <string name="menu_uninstall">Supprimer</string>
   <string name="menu_website">Site Web</string>
@@ -83,6 +87,8 @@
   <string name="menu_source">Code source</string>
   <string name="menu_market">Marché</string>
   <string name="menu_update">Mise à jour</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Faire un don</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
@@ -119,10 +125,11 @@
   <string name="status_processing_xml">Prise en compte de l\'application\n%2$d de %3$d depuis\n%1$s</string>
   <string name="status_connecting_to_repo">Connexion à\n%1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des applis avec votre appareil…</string>
+  <string name="status_downloading_icons">Téléchargement de nouvelles icônes...</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Autorisations pour la version %s</string>
   <string name="showPermissions">Afficher les autorisations</string>
-  <string name="showPermissions_long">Afficher la liste des permissions que nécessite l\'application</string>
+  <string name="showPermissions_long">Afficher la liste des autorisations que nécessite l\'application</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
 </resources>

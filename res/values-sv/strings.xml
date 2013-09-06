@@ -25,13 +25,16 @@
   <string name="never">aldrig</string>
   <string name="automatic_repo_scan">Automatisk förrådsavsökning</string>
   <string name="app_name">F-Droid</string>
+  <string name="search_results">Sökresultat</string>
+  <string name="app_details">Appdetaljer</string>
+  <string name="no_such_app">Ingen sådan app funnen</string>
   <string name="about_title">Om F-Droid</string>
   <string name="about_desc">Ursprungligen baserat på Aptoide.\nSläppt under licensen GNU GPLv3.</string>
   <string name="about_site">Webbplats:</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Webbplats</string>
-  <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förrådsadress ser ut så här: http://f-droid.org/repo</string>
+  <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="inst">Installerad</string>
   <string name="not_inst">Inte installerad</string>
   <string name="added_on">Tillagd %s</string>
@@ -76,6 +79,7 @@
   <string name="menu_add_repo">Nytt förråd</string>
   <string name="menu_rem_repo">Ta bort förråd</string>
   <string name="menu_launch">Kör</string>
+  <string name="menu_share">Dela</string>
   <string name="menu_install">Installera</string>
   <string name="menu_uninstall">Avinstallera</string>
   <string name="menu_website">Webbplats</string>
@@ -83,6 +87,8 @@
   <string name="menu_source">Källkod</string>
   <string name="menu_market">Market</string>
   <string name="menu_update">Uppdatera</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Donera</string>
   <string name="details_installed">Version %s är installerad</string>
   <string name="details_notinstalled">Inte installerad</string>
@@ -119,10 +125,12 @@
   <string name="status_processing_xml">Bearbetar program\n%2$d av %3$d från\n%1$s</string>
   <string name="status_connecting_to_repo">Ansluter till\n%1$s</string>
   <string name="status_checking_compatibility">Kontrollerar appars kompatibilitet med din enhet…</string>
+  <string name="status_downloading_icons">Hämtar nya ikoner...</string>
   <string name="no_permissions">Inga behörigheter används.</string>
   <string name="permissions_for_long">Behörigheter för version %s</string>
   <string name="showPermissions">Visa behörigheter</string>
   <string name="showPermissions_long">Visa en lista av behörigheter en app behöver</string>
   <string name="no_handler_app">Du har ingen app installerad som kan hantera %s</string>
   <string name="compactlayout">Kompakt layout</string>
+  <string name="compactlayout_long">Visa endast appnamn och sammanfattningar i listan</string>
 </resources>

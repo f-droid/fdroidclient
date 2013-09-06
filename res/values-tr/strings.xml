@@ -25,13 +25,16 @@
   <string name="never">asla</string>
   <string name="automatic_repo_scan">Otomatik depo taraması</string>
   <string name="app_name">F-Droid</string>
+  <string name="search_results">Arama Sonuçları</string>
+  <string name="app_details">Uygulama Detayları</string>
+  <string name="no_such_app">Böyle bir uygulama bulunamadı</string>
   <string name="about_title">F-Droid Hakkında</string>
   <string name="about_desc">Aptoide\'den türetilmiştir.\nGNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_site">Ağ sitesi:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Sürüm:</string>
   <string name="about_website">Ağ sitesi</string>
-  <string name="no_repo">Kurulu hiçbir deponuz bulunmamaktadır!\n\nDepolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine basıp adresi giriniz.\n\nBir depo adresi şuna benzer: http://f-droid.org/repo</string>
+  <string name="no_repo">Kurulu hiçbir deponuz bulunmamaktadır!\n\nDepolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine basıp adresi giriniz.\n\nBir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="inst">Kurulu</string>
   <string name="not_inst">Kurulu değil</string>
   <string name="added_on">%s tarihinde eklenmiş</string>
@@ -76,6 +79,7 @@
   <string name="menu_add_repo">Yeni Depo</string>
   <string name="menu_rem_repo">Depoyu kaldır</string>
   <string name="menu_launch">Çalıştır</string>
+  <string name="menu_share">Paylaş</string>
   <string name="menu_install">Kur</string>
   <string name="menu_uninstall">Kaldır</string>
   <string name="menu_website">Ağ sitesi</string>
@@ -83,6 +87,8 @@
   <string name="menu_source">Kaynak kod</string>
   <string name="menu_market">Market</string>
   <string name="menu_update">Güncelleme</string>
+  <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Bağış</string>
   <string name="details_installed">%s sürümü kurulu</string>
   <string name="details_notinstalled">Kurulu değil</string>
@@ -119,10 +125,12 @@
   <string name="status_processing_xml">Uygulama ele alınıyor\n%2$d toplam %3$d şuradan\n%1$s</string>
   <string name="status_connecting_to_repo">%1$s konumuna\nbağlanılıyor</string>
   <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>
+  <string name="status_downloading_icons">Yeni ikonlar indiriliyor…</string>
   <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
   <string name="permissions_for_long">%s sürümü için izinler</string>
   <string name="showPermissions">İzinleri göster</string>
   <string name="showPermissions_long">Uygulamanın gerektirdiği izinlerin listesini göster</string>
   <string name="no_handler_app">%s unsurunu yönetecek hiçbir kurulu uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
+  <string name="compactlayout_long">Listede sadece uygulama adlarını ve özetleri göster</string>
 </resources>
