@@ -377,11 +377,13 @@ public class AppDetails extends ListActivity {
     private void startViews() {
 
         // Populate the list...
-        ApkListAdapter la = (ApkListAdapter) getListAdapter();
-        for (DB.Apk apk : app.apks)
-            if (pref_incompatible || apk.compatible)
-                la.addItem(apk);
-        la.notifyDataSetChanged();
+        if (!app.filtered) {
+            ApkListAdapter la = (ApkListAdapter) getListAdapter();
+            for (DB.Apk apk : app.apks)
+                if (pref_incompatible || apk.compatible)
+                    la.addItem(apk);
+            la.notifyDataSetChanged();
+        }
 
         // Insert the 'infoView' (which contains the summary, various odds and
         // ends, and the description) into the appropriate place, if we're in
@@ -504,8 +506,10 @@ public class AppDetails extends ListActivity {
     private void updateViews() {
 
         // Refresh the list...
-        ApkListAdapter la = (ApkListAdapter) getListAdapter();
-        la.notifyDataSetChanged();
+        if (!app.filtered) {
+            ApkListAdapter la = (ApkListAdapter) getListAdapter();
+            la.notifyDataSetChanged();
+        }
 
         TextView tv = (TextView) findViewById(R.id.status);
         if (app.installedVersion == null)

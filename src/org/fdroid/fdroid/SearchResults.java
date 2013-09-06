@@ -95,7 +95,6 @@ public class SearchResults extends ListActivity {
         }
 
         List<DB.App> apps = new ArrayList<DB.App>();
-        AppFilter appfilter = new AppFilter(this);
         List<DB.App> tapps = ((FDroidApp) getApplication()).getApps();
         for (DB.App tapp : tapps) {
             boolean include = false;
@@ -105,7 +104,7 @@ public class SearchResults extends ListActivity {
                     break;
                 }
             }
-            if (include && !appfilter.filter(tapp))
+            if (include)
                 apps.add(tapp);
 
         }

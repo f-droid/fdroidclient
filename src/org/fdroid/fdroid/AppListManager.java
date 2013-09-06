@@ -190,25 +190,21 @@ public class AppListManager {
         }
 
         Date recentDate = calcMaxHistory();
-        AppFilter appFilter = new AppFilter(fdroidActivity);
-
         List<DB.App> availApps = new ArrayList<DB.App>();
         for (DB.App app : allApps) {
 
             boolean isInCategory = isInCategory(app, currentCategory, recentDate);
-            boolean isFiltered   = appFilter.filter(app);
 
             // Add it to the list(s). Always to installed and updates, but
             // only to available if it's not filtered.
-            if (!isFiltered && isInCategory) {
-                if (showIncompatible || app.compatible) {
-                    availApps.add(app);
-                }
+            if (!app.filtered && isInCategory
+                    && (showIncompatible || app.compatible)) {
+                availApps.add(app);
             }
             if (app.installedVersion != null) {
                 installedApps.addItem(app);
-                if (!app.ignoreUpdates && app.hasUpdates &&
-                        (showIncompatible || app.compatible))
+                if (!app.ignoreUpdates && app.hasUpdates && !app.filtered
+                        && (showIncompatible || app.compatible))
                     canUpgradeApps.addItem(app);
             }
         }
