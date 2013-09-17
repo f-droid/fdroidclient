@@ -66,11 +66,13 @@ public class FDroidApp extends Application {
 
         apps = null;
         invalidApps = new ArrayList<String>();
-        Context ctx = getApplicationContext();
+        ctx = getApplicationContext();
         DB.initDB(ctx);
         UpdateService.schedule(ctx);
     
     }
+
+    Context ctx;
 
     // Global list of all known applications.
     private List<DB.App> apps;
@@ -137,7 +139,15 @@ public class FDroidApp extends Application {
         }
         if (apps == null)
             return new ArrayList<DB.App>();
+        filterApps();
         return apps;
+    }
+
+    public void filterApps() {
+        AppFilter appFilter = new AppFilter(ctx);
+        for (DB.App app : apps) {
+            app.filtered = appFilter.filter(app);
+        }
     }
 
 }

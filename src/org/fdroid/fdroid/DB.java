@@ -53,12 +53,10 @@ public class DB {
 
     private static Semaphore dbSync = new Semaphore(1, true);
     static DB dbInstance = null;
-    private static Context activityContext = null;
 
     // Initialise the database. Called once when the application starts up.
     static void initDB(Context ctx) {
         dbInstance = new DB(ctx);
-        activityContext = ctx;
     }
 
     // Get access to the database. Must be called before any database activity,
@@ -758,7 +756,6 @@ public class DB {
         }
 
         Map<String, App> apps = new HashMap<String, App>();
-        AppFilter appFilter = new AppFilter(activityContext);
         Cursor c = null;
         long startTime = System.currentTimeMillis();
         try {
@@ -791,7 +788,6 @@ public class DB {
                         .parse(sLastUpdated);
                 app.compatible = c.getInt(12) == 1;
                 app.ignoreUpdates = c.getInt(13) == 1;
-                app.filtered = appFilter.filter(app);
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
