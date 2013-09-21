@@ -10,15 +10,17 @@ Building from source
 
 The only required tools are the Android SDK and Apache Ant.
 
+`
 $ android update project -p .
 $ ant clean release
+`
 
 
 Direct download
 ---------------
 
-You can download the application directly from our site:
-[FDroid.apk](https://f-droid.org/FDroid.apk)
+You can [download the application](https://f-droid.org/FDroid.apk) directly
+from our site.
 
 
 Contributing
