@@ -10,10 +10,10 @@ Building from source
 
 The only required tools are the Android SDK and Apache Ant.
 
-`
-$ android update project -p .
-$ ant clean release
-`
+```
+android update project -p .
+ant clean release
+```
 
 
 Direct download
