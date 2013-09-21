@@ -63,6 +63,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -163,11 +164,12 @@ public class AppDetails extends ListActivity {
     private static final int ISSUES = Menu.FIRST + 4;
     private static final int SOURCE = Menu.FIRST + 5;
     private static final int MARKET = Menu.FIRST + 6;
-    private static final int BITCOIN = Menu.FIRST + 7;
-    private static final int FLATTR = Menu.FIRST + 8;
+    private static final int LAUNCH = Menu.FIRST + 7;
+    private static final int SHARE = Menu.FIRST + 8;
     private static final int DONATE = Menu.FIRST + 9;
-    private static final int LAUNCH = Menu.FIRST + 10;
-    private static final int SHARE = Menu.FIRST + 11;
+    private static final int BITCOIN = Menu.FIRST + 10;
+    private static final int FLATTR = Menu.FIRST + 11;
+    private static final int DONATE_URL = Menu.FIRST + 12;
 
     private DB.App app;
     private int app_currentvercode;
@@ -637,17 +639,24 @@ public class AppDetails extends ListActivity {
         }
         menu.add(Menu.NONE, MARKET, 6, R.string.menu_market).setIcon(
                 android.R.drawable.ic_menu_view);
-        if (app.detail_bitcoinAddr != null) {
-            menu.add(Menu.NONE, BITCOIN, 7, R.string.menu_bitcoin).setIcon(
+
+        if (app.detail_bitcoinAddr != null && app.detail_flattrID != null && 
+                app.detail_donateURL != null) {
+            SubMenu donate = menu.addSubMenu(Menu.NONE, DONATE, 7,
+                    R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
-        }
-        if (app.detail_flattrID != null) {
-            menu.add(Menu.NONE, FLATTR, 8, R.string.menu_flattr).setIcon(
-                    android.R.drawable.ic_menu_view);
-        }
-        if (app.detail_donateURL != null) {
-            menu.add(Menu.NONE, DONATE, 9, R.string.menu_donate).setIcon(
-                    android.R.drawable.ic_menu_view);
+            if (app.detail_bitcoinAddr != null) {
+                donate.add(Menu.NONE, BITCOIN, 8, R.string.menu_bitcoin).setIcon(
+                        android.R.drawable.ic_menu_view);
+            }
+            if (app.detail_flattrID != null) {
+                donate.add(Menu.NONE, FLATTR, 9, R.string.menu_flattr).setIcon(
+                        android.R.drawable.ic_menu_view);
+            }
+            if (app.detail_donateURL != null) {
+                donate.add(Menu.NONE, DONATE_URL, 10, R.string.menu_website).setIcon(
+                        android.R.drawable.ic_menu_view);
+            }
         }
 
         return true;
@@ -718,7 +727,7 @@ public class AppDetails extends ListActivity {
             tryOpenUri("https://flattr.com/thing/" + app.detail_flattrID);
             return true;
 
-        case DONATE:
+        case DONATE_URL:
             tryOpenUri(app.detail_donateURL);
             return true;
 
