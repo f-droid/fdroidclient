@@ -68,6 +68,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import org.fdroid.fdroid.compat.PackageManagerCompat;
+
 public class AppDetails extends ListActivity {
 
     private static final int REQUEST_INSTALL = 0;
@@ -967,6 +969,8 @@ public class AppDetails extends ListActivity {
             if (downloadHandler != null) {
                 downloadHandler = null;
             }
+
+            PackageManagerCompat.setInstaller(mPm, app.id);
             resetRequired = true;
             break;
         case REQUEST_UNINSTALL:
