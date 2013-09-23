@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.*;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

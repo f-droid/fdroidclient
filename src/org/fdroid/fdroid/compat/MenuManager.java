@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.compat;
 
 import android.app.Activity;
-import org.fdroid.fdroid.Utils;
 
 abstract public class MenuManager extends Compatibility {
 

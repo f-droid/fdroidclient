@@ -31,11 +31,9 @@ import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
 import org.xml.sax.XMLReader;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;

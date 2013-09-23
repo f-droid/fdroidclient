@@ -18,15 +18,11 @@
 
 package org.fdroid.fdroid;
 
-import java.io.File;
-
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
-import android.widget.Toast;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class PreferencesActivity extends PreferenceActivity implements

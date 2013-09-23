@@ -1,13 +1,9 @@
 package org.fdroid.fdroid.views;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
