@@ -10,12 +10,9 @@
 	<string name="n_versions_available">%d versions available</string>
 	<string name="n_version_available">%d version available</string>
 	<string name="notify">Notify</string>
-	<string name="storage">Storage</string>
 	<string name="cache_downloaded">Cache downloaded apps</string>
 	<string name="keep_downloaded">Keep downloaded apk files on SD card</string>
 	<string name="updates">Updates</string>
-	<string name="clear_all_cached_data">Clear all cached data</string>
-	<string name="reset">Reset</string>
 	<string name="other">Other</string>
 	<string name="notify_updates_available">Notify when new updates are available</string>
 	<string name="update_apps_list">Update app list from repositories automatically
@@ -53,9 +50,6 @@
 
     <string name="added_on">Added on %s</string>
 
-	<string name="installed_update">Update possible - Ver.:</string>
-
-
 	<string name="ok">OK</string>
 
 	<string name="yes">Yes</string>
@@ -66,41 +60,22 @@
 	<string name="cancel">Cancel</string>
 	<string name="repo_delete_title">Choose repository to remove</string>
 
-	<string name="server_connection_error">Could not connect to server!</string>
-
 	<string name="repo_update_title">Update repositories</string>
 	<string name="tab_installed">Installed</string>
 	<string name="tab_noninstalled">Available</string>
 	<string name="tab_updates">Updates</string>
-	<string name="update_available">Updates available</string>
 	<string name="one_update_available">1 update is available.</string>
 	<string name="many_updates_available">%d updates are available.</string>
 	<string name="fdroid_updates_available">F-Droid Updates Available</string>
 	<string name="process_wait_title">Please Wait</string>
 	<string name="process_update_msg">Updating application list...</string>
-	<string name="connection_error">Could not connect to the network.</string>
-	<string name="connection_timeout">Timeout</string>
-	<string name="connection_error_msg">Could not connect to server!</string>
-	<string name="download">Download</string>
 	<string name="download_server">Getting application from</string>
 
 	<string name="repo_add_url">Repository address</string>
 
-	<string name="isinst">Installed: </string>
-
-	<string name="install">Install </string>
-	<string name="uninstall">Uninstall </string>
-	<string name="update">Update!</string>
-
-	<string name="update_alrt">There are updates available for some installed
-		applications.\nDo you want to see them?</string>
 	<string name="repo_alrt">The list of used repositories has
 		changed.\nDo you
 		want to update them?</string>
-
-	<string name="error_download_alrt">Could not connect to server or apk file is corrupt!
-	</string>
-	<string name="download_alrt">Getting application from:\n </string>
 
 	<string name="menu_update_repo">Update Repos</string>
 	<string name="menu_manage">Manage Repos</string>
@@ -179,7 +154,6 @@
     <string name="status_processing_xml">Processing application\n%2$d of %3$d from\n%1$s</string>
     <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
     <string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
-    <string name="status_downloading_icons">Downloading new icons…</string>
     <string name="no_permissions">No permissions are used.</string>
     <string name="permissions_for_long">Permissions for version %s</string>
     <string name="showPermissions">Show permissions</string>
