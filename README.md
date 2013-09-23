@@ -11,7 +11,9 @@ Building from source
 The only required tools are the Android SDK and Apache Ant.
 
 ```
+git submodule update --init
 android update project -p .
+android update project -p extern/Universal-Image-Loader/library
 ant clean release
 ```
 

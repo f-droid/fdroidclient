@@ -1,3 +1,4 @@
 [submodule "extern/Universal-Image-Loader"]
 	path = extern/Universal-Image-Loader
 	url = https://github.com/nostra13/Android-Universal-Image-Loader
+    ignore = dirty
