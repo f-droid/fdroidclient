@@ -11,6 +11,7 @@
     
     <EditText
         android:id="@+id/edit_uri"
+        android:inputType="textUri"
         android:maxLines="1"
         android:layout_width="wrap_content"
         android:ems="20"
