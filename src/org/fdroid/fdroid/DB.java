@@ -125,6 +125,7 @@ public class DB {
             compatible = false;
             ignoreUpdates = false;
             filtered = false;
+            repoAddress = null;
         }
 
         // True when all the detail fields are populated, False otherwise.
@@ -206,6 +207,8 @@ public class DB {
 
         // List of apks.
         public List<Apk> apks;
+
+        public String repoAddress;
 
         // Get the current version - this will be one of the Apks from 'apks'.
         // Can return null if there are no available versions.
@@ -556,13 +559,6 @@ public class DB {
      */
     public static File getDataPath(Context ctx) {
         return ContextCompat.create(ctx).getExternalCacheDir();
-    }
-
-    public static File getIconsPath(Context ctx) {
-        File dp = getDataPath(ctx);
-        if (dp == null)
-            return null;
-        return new File(dp, "icons");
     }
 
     private Context mContext;

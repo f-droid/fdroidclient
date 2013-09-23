@@ -255,38 +255,6 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             }
 
-            if (success) {
-                File d = DB.getIconsPath(this);
-                List<DB.App> toDownloadIcons = null;
-                if (!d.exists()) {
-                    Log.d("FDroid", "Icons were wiped. Re-downloading all of them.");
-                    d.mkdirs();
-                    toDownloadIcons = ((FDroidApp) getApplication()).getApps();
-                } else if (changes) {
-                    toDownloadIcons = acceptedapps;
-                }
-                if (toDownloadIcons != null) {
-
-                    // Create a .nomedia file in the icons directory. For
-                    // recent Android versions this isn't necessary, because
-                    // they recognise the cache location. Older versions don't
-                    // though.
-                    File f = new File(d, ".nomedia");
-                    if (!f.exists()) {
-                        try {
-                            f.createNewFile();
-                        } catch (Exception e) {
-                            Log.d("FDroid", "Failed to create .nomedia");
-                        }
-                    }
-
-                    sendStatus(STATUS_INFO,
-                            getString(R.string.status_downloading_icons));
-                    for (DB.App app : toDownloadIcons)
-                        getIcon(app, repos);
-                }
-            }
-
             if (success && changes)
                 ((FDroidApp) getApplication()).invalidateAllApps();
 
@@ -348,52 +316,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    private void getIcon(final DB.App app, List<DB.Repo> repos) {
-        InputStream input = null;
-        OutputStream output = null;
-        try {
-
-            File f = new File(DB.getIconsPath(this), app.icon);
-            if (f.exists())
-                return;
-
-            if (app.apks.size() == 0)
-                return;
-            String server = null;
-            for (DB.Repo repo : repos)
-                if (repo.id == app.apks.get(0).repo)
-                    server = repo.address;
-            if (server == null)
-                return;
-
-            // Get it from the server...
-            URL u = new URL(server + "/icons/" + app.icon);
-            HttpURLConnection uc = (HttpURLConnection) u.openConnection();
-            if (uc.getResponseCode() == 200) {
-
-                // Delete all other icons for the same app
-                final File[] files = DB.getIconsPath(this).listFiles(
-                        new FilenameFilter() {
-                    @Override
-                    public boolean accept(final File d, final String n) {
-                        return n.matches(app.id+"\\.[0-9]+\\.png");
-                    }
-                } );
-                for (final File file : files) {
-                    if (!file.delete())
-                        Log.e("FDroid", "Cannot remove icon file " + file.getAbsolutePath());
-                }
-
-                input = uc.getInputStream();
-                output = new FileOutputStream(f);
-                Utils.copy(input, output);
-            }
-        } catch (Exception e) {
-        } finally {
-            Utils.closeQuietly(output);
-            Utils.closeQuietly(input);
-        }
-    }
 
     /**
      * Received progress event from the RepoXMLHandler. It could be progress

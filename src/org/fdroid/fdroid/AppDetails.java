@@ -70,6 +70,8 @@ import android.widget.BaseAdapter;
 
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 public class AppDetails extends ListActivity {
 
     private static final int REQUEST_INSTALL = 0;
@@ -406,12 +408,7 @@ public class AppDetails extends ListActivity {
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        File icon = new File(DB.getIconsPath(this), app.icon);
-        if (icon.exists()) {
-            iv.setImageDrawable(new BitmapDrawable(icon.getPath()));
-        } else {
-            iv.setImageResource(android.R.drawable.sym_def_app_icon);
-        }
+        ImageLoader.getInstance().displayImage(app.repoAddress+"/icons/"+app.icon, iv);
 
         // Set the title and other header details...
         TextView tv = (TextView) findViewById(R.id.title);

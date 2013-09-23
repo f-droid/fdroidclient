@@ -19,7 +19,6 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -29,6 +28,13 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
+import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class FDroidApp extends Application {
 
@@ -69,7 +75,22 @@ public class FDroidApp extends Application {
         ctx = getApplicationContext();
         DB.initDB(ctx);
         UpdateService.schedule(ctx);
-    
+
+        File cacheDir = new File(StorageUtils.getCacheDirectory(ctx), "icons");
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisc(true)
+            .showImageOnLoading(android.R.drawable.sym_def_app_icon)
+            .showImageForEmptyUri(android.R.drawable.sym_def_app_icon)
+            .build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
+            .discCache(new UnlimitedDiscCache(cacheDir, new FileNameGenerator() {
+                public String generate(String imageUri) {
+                    return imageUri.substring(imageUri.lastIndexOf('/') + 1);
+                } } ))
+            .defaultDisplayImageOptions(defaultOptions)
+            .build();
+        ImageLoader.getInstance().init(config);
     }
 
     Context ctx;
@@ -125,6 +146,11 @@ public class FDroidApp extends Application {
             try {
                 DB db = DB.getDB();
                 apps = db.getApps(true);
+                for (DB.Repo repo : db.getRepos())
+                    for (DB.App app : apps)
+                        if (repo.id == app.apks.get(0).repo)
+                            app.repoAddress = repo.address;
+
             } finally {
                 DB.releaseDB();
             }

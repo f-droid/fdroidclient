@@ -17,6 +17,8 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.LayoutCompat;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
@@ -77,7 +79,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         summary.setText(app.summary);
 
         layoutSummary(summary);
-        layoutIcon(icon, app);
+        ImageLoader.getInstance().displayImage(app.repoAddress+"/icons/"+app.icon, icon);
 
         int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
         int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
@@ -116,22 +118,6 @@ abstract public class AppListAdapter extends BaseAdapter {
         }
 
         return convertView;
-    }
-
-    /**
-     * If an icon exists on disc, we'll use that, otherwise default to the
-     * plain android app icon.
-     */
-    private void layoutIcon(ImageView iconView, DB.App app) {
-
-        File icn = new File(DB.getIconsPath(mContext), app.icon);
-        if (icn.exists() && icn.length() > 0) {
-            new Uri.Builder().build();
-            iconView.setImageURI(Uri.parse(icn.getPath()));
-        } else {
-            iconView.setImageResource(android.R.drawable.sym_def_app_icon);
-        }
-
     }
 
     /**
