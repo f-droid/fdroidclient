@@ -146,10 +146,18 @@ public class FDroidApp extends Application {
             try {
                 DB db = DB.getDB();
                 apps = db.getApps(true);
-                for (DB.Repo repo : db.getRepos())
-                    for (DB.App app : apps)
-                        if (repo.id == app.apks.get(0).repo)
-                            app.repoAddress = repo.address;
+
+                List<DB.Repo> repos = db.getRepos();
+                for (DB.App app : apps) {
+                    for (DB.Repo repo : repos) {
+                        DB.Apk bestApk = app.apks.get(0);
+                        if (repo.id == bestApk.repo) {
+                            app.icon = repo.address + "/icons/"
+                                + app.id + '.' + bestApk.vercode + ".png";
+                            break;
+                        }
+                    }
+                }
 
             } finally {
                 DB.releaseDB();
@@ -158,6 +166,20 @@ public class FDroidApp extends Application {
             try {
                 DB db = DB.getDB();
                 apps = db.refreshApps(apps, invalidApps);
+
+                List<DB.Repo> repos = db.getRepos();
+                for (DB.App app : apps) {
+                    if (!invalidApps.contains(app.id)) continue;
+                    for (DB.Repo repo : repos) {
+                        DB.Apk bestApk = app.apks.get(0);
+                        if (repo.id == bestApk.repo) {
+                            app.icon = repo.address + "/icons/"
+                                + app.id + '.' + bestApk.vercode + ".png";
+                            break;
+                        }
+                    }
+                }
+
                 invalidApps.clear();
             } finally {
                 DB.releaseDB();
