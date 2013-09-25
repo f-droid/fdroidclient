@@ -5,6 +5,7 @@
     android:paddingTop="5dp"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
+    android:baselineAligned="false"
     android:orientation="vertical" >
 
     <LinearLayout
