@@ -182,9 +182,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.nativecode = DB.CommaSeparatedList.make(str);
             }
         } else if (curapp != null && str != null) {
-            if (curel.equals("id")) {
-                curapp.id = str;
-            } else if (curel.equals("name")) {
+            if (curel.equals("name")) {
                 curapp.name = str;
             } else if (curel.equals("description")) {
                 // This is the old-style description. We'll read it
@@ -265,6 +263,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName.equals("application") && curapp == null) {
             curapp = new DB.App();
             curapp.detail_Populated = true;
+            curapp.id = attributes.getValue("", "id");
             Bundle progressData = createProgressData(repo.address);
             progressCounter ++;
             progressListener.onProgress(
