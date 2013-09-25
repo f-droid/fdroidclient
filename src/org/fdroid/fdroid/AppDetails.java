@@ -198,7 +198,7 @@ public class AppDetails extends ListActivity {
 
         Intent i = getIntent();
         appid = "";
-        Uri data = getIntent().getData();
+        Uri data = i.getData();
         if (data != null) {
             if (data.isHierarchical()) {
                 if (data.getHost().equals("details")) {
