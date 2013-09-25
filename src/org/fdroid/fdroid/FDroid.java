@@ -85,18 +85,23 @@ public class FDroid extends FragmentActivity {
         Intent i = getIntent();
         Uri data = i.getData();
         if (data != null) {
-            String appid = data.getQueryParameter("fdid");
-            // If appid == null, we just browse all the apps.
-            // If appid != null, we browse the app specified.
-            if (appid != null) {
-                Intent call = new Intent(this, AppDetails.class);
-                call.putExtra("appid", appid);
-                startActivityForResult(call, REQUEST_APPDETAILS);
+            if (data.isHierarchical()) {
+                String appid = data.getQueryParameter("fdid");
+                // If appid == null, we just browse all the apps.
+                // If appid != null, we browse the app specified.
+                if (appid != null) {
+                    Intent call = new Intent(this, AppDetails.class);
+                    call.putExtra("appid", appid);
+                    startActivityForResult(call, REQUEST_APPDETAILS);
+                }
+            } else {
+                String repoUri = data.getEncodedSchemeSpecificPart();
+                if (repoUri != null) {
+                    Intent call = new Intent(this, ManageRepo.class);
+                    call.putExtra("repoUri", repoUri);
+                    startActivityForResult(call, REQUEST_MANAGEREPOS);
+                }
             }
-        } else if (i.hasExtra("uri")) {
-            Intent call = new Intent(this, ManageRepo.class);
-            call.putExtra("uri", i.getStringExtra("uri"));
-            startActivityForResult(call, REQUEST_MANAGEREPOS);
         } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
             boolean showUpdateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
             if (showUpdateTab) {

@@ -80,6 +80,13 @@ public class ManageRepo extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.repolist);
 
+        Intent i = getIntent();
+        if (i.hasExtra("repoUri")) {
+            String repoUri = i.getStringExtra("repoUri");
+            addRepo(repoUri);
+            finish();
+        }
+
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
 
@@ -183,6 +190,16 @@ public class ManageRepo extends ListActivity {
         return true;
     }
 
+    protected void addRepo(String repoUri) {
+        try {
+            DB db = DB.getDB();
+            db.addRepo(repoUri, null, null, 10, null, true);
+        } finally {
+            DB.releaseDB();
+        }
+        changed = true;
+    }
+
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
@@ -203,13 +220,7 @@ public class ManageRepo extends ListActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             EditText uri = (EditText) alrt
                                     .findViewById(R.id.edit_uri);
-                            String uri_str = uri.getText().toString();
-                            try {
-                                DB db = DB.getDB();
-                                db.addRepo(uri_str, null, null, 10, null, true);
-                            } finally {
-                                DB.releaseDB();
-                            }
+                            addRepo(uri.getText().toString());
                             changed = true;
                             redraw();
                         }
