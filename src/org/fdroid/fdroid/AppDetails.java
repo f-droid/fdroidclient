@@ -197,7 +197,6 @@ public class AppDetails extends ListActivity {
         setContentView(R.layout.appdetails);
 
         Intent i = getIntent();
-        appid = "";
         Uri data = i.getData();
         if (data != null) {
             if (data.isHierarchical()) {
@@ -328,11 +327,13 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = null;
-        List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
-        for (DB.App tapp : apps) {
-            if (tapp.id.equals(appid)) {
-                app = tapp;
-                break;
+        if (appid != null && appid.length() > 0) {
+            List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
+            for (DB.App tapp : apps) {
+                if (tapp.id.equals(appid)) {
+                    app = tapp;
+                    break;
+                }
             }
         }
         if (app == null) {

@@ -89,14 +89,14 @@ public class FDroid extends FragmentActivity {
                 String appid = data.getQueryParameter("fdid");
                 // If appid == null, we just browse all the apps.
                 // If appid != null, we browse the app specified.
-                if (appid != null) {
+                if (appid != null && appid.length() > 0) {
                     Intent call = new Intent(this, AppDetails.class);
                     call.putExtra("appid", appid);
                     startActivityForResult(call, REQUEST_APPDETAILS);
                 }
             } else {
                 String repoUri = data.getEncodedSchemeSpecificPart();
-                if (repoUri != null) {
+                if (repoUri != null && repoUri.length() > 0) {
                     Intent call = new Intent(this, ManageRepo.class);
                     call.putExtra("repoUri", repoUri);
                     startActivityForResult(call, REQUEST_MANAGEREPOS);

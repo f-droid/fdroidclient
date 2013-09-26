@@ -82,8 +82,7 @@ public class ManageRepo extends ListActivity {
 
         Intent i = getIntent();
         if (i.hasExtra("repoUri")) {
-            String repoUri = i.getStringExtra("repoUri");
-            addRepo(repoUri);
+            addRepo(i.getStringExtra("repoUri"));
             finish();
         }
 
