@@ -26,6 +26,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -47,6 +48,21 @@ public class SearchResults extends ListActivity {
 
     private String mQuery;
 
+    protected void getQuery(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            mQuery = intent.getStringExtra(SearchManager.QUERY);
+        } else {
+            Uri data = intent.getData();
+            if (data.isHierarchical()) {
+                mQuery = data.getQueryParameter("q");
+            } else {
+                mQuery = data.getEncodedSchemeSpecificPart();
+            }
+        }
+        if (mQuery == null || mQuery.length() == 0)
+            finish();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -58,19 +74,14 @@ public class SearchResults extends ListActivity {
         // Start a search by just typing
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
-        Intent intent = getIntent();
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            mQuery = intent.getStringExtra(SearchManager.QUERY);
-        }
+        getQuery(getIntent());
 
         updateView();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction()))
-            mQuery = intent.getStringExtra(SearchManager.QUERY);
+        getQuery(intent);
         super.onNewIntent(intent);
         updateView();
     }
