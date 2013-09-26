@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="searchres_napps">Found %1$d applications matching \'%2$s\':</string>
-    <string name="searchres_oneapp">Found one application matching \'%s\':</string>
-    <string name="searchres_noapps">No applications were found matching \'%s\'</string>
-    <string name="SignatureMismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
-    <string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try and install it anyway?</string>
-    <string name="installDowngrade">You are trying to downgrade this application. Doing so might get it to malfunction and even lose your data. Do you want to try and downgrade it anyway?</string>
+	<string name="searchres_napps">Found %1$d applications matching \'%2$s\':</string>
+	<string name="searchres_oneapp">Found one application matching \'%s\':</string>
+	<string name="searchres_noapps">No applications were found matching \'%s\'</string>
+	<string name="SignatureMismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
+	<string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try and install it anyway?</string>
+	<string name="installDowngrade">You are trying to downgrade this application. Doing so might get it to malfunction and even lose your data. Do you want to try and downgrade it anyway?</string>
 	<string name="version">Version</string>
 	<string name="n_versions_available">%d versions available</string>
 	<string name="n_version_available">%d version available</string>
@@ -24,9 +24,9 @@
 	<string name="automatic_repo_scan">Automatic repo scan</string>
 
 	<string name="app_name">F-Droid</string>
-    <string name="search_results">Search Results</string>
-    <string name="app_details">App Details</string>
-    <string name="no_such_app">No such app found</string>
+	<string name="search_results">Search Results</string>
+	<string name="app_details">App Details</string>
+	<string name="no_such_app">No such app found</string>
 
 	<string name="about_title">About F-Droid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
@@ -48,7 +48,7 @@
 	<string name="inst">Installed</string>
 	<string name="not_inst">Not Installed</string>
 
-    <string name="added_on">Added on %s</string>
+	<string name="added_on">Added on %s</string>
 
 	<string name="ok">OK</string>
 
@@ -95,7 +95,7 @@
 	<string name="menu_website">Website</string>
 	<string name="menu_issues">Issues</string>
 	<string name="menu_source">Source Code</string>
-	<string name="menu_market">Market</string>
+	<string name="menu_market">Google Play</string>
 	<string name="menu_update">Update</string>
 	<string name="menu_bitcoin">Bitcoin</string>
 	<string name="menu_flattr">Flattr</string>
@@ -104,7 +104,7 @@
 	<string name="details_installed">Version %s installed</string>
 	<string name="details_notinstalled">Not installed</string>
 	<string name="corrupt_download">Downloaded file is corrupt</string>
-        <string name="download_cancelled">Download cancelled</string>
+	<string name="download_cancelled">Download cancelled</string>
 
 
 
@@ -143,23 +143,23 @@
 	<string name="category_whatsnew">What\'s New</string>
 	<string name="category_recentlyupdated">Recently Updated</string>
 
-    <!--
-    status_download takes four parameters:
-      - Repository (url)
-      - Downloaded size (human readable)
-      - Total size (human readable)
-      - Percentage complete (int between 0-100)
-    -->
-    <string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
-    <string name="status_processing_xml">Processing application\n%2$d of %3$d from\n%1$s</string>
-    <string name="status_connecting_to_repo">Connecting to\n%1$s</string>
-    <string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
-    <string name="no_permissions">No permissions are used.</string>
-    <string name="permissions_for_long">Permissions for version %s</string>
-    <string name="showPermissions">Show permissions</string>
-    <string name="showPermissions_long">Display a list of permissions an app needs</string>
-    <string name="no_handler_app">You don\'t have any available app that can handle %s</string>
-    <string name="compactlayout">Compact Layout</string>
-    <string name="compactlayout_long">Only show app names and summaries in list</string>
+	<!--
+	status_download takes four parameters:
+	  - Repository (url)
+	  - Downloaded size (human readable)
+	  - Total size (human readable)
+	  - Percentage complete (int between 0-100)
+	-->
+	<string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
+	<string name="status_processing_xml">Processing application\n%2$d of %3$d from\n%1$s</string>
+	<string name="status_connecting_to_repo">Connecting to\n%1$s</string>
+	<string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
+	<string name="no_permissions">No permissions are used.</string>
+	<string name="permissions_for_long">Permissions for version %s</string>
+	<string name="showPermissions">Show permissions</string>
+	<string name="showPermissions_long">Display a list of permissions an app needs</string>
+	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
+	<string name="compactlayout">Compact Layout</string>
+	<string name="compactlayout_long">Only show app names and summaries in list</string>
 
 </resources>
