@@ -6,6 +6,7 @@
     android:paddingRight="8dp"
     android:paddingTop="6dp"
     android:paddingBottom="6dp"
+    android:baselineAligned="false"
     android:orientation="vertical">
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
