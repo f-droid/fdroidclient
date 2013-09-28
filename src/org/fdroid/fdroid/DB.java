@@ -607,17 +607,6 @@ public class DB {
         }
     }
 
-    // Get the number of apps that have updates available. This can be a
-    // time consuming operation.
-    public int getNumUpdates(List<DB.App> apps) {
-        int count = 0;
-        for (App app : apps) {
-            if (!app.ignoreUpdates && app.hasUpdates)
-                count++;
-        }
-        return count;
-    }
-
     public List<String> getCategories() {
         List<String> result = new ArrayList<String>();
         Cursor c = null;

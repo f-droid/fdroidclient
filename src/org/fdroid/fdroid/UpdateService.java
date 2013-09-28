@@ -100,6 +100,16 @@ public class UpdateService extends IntentService implements ProgressListener {
         return receiver == null;
     }
 
+    // Get the number of apps that have updates available.
+    public int getNumUpdates(List<DB.App> apps) {
+        int count = 0;
+        for (DB.App app : apps) {
+            if (!app.ignoreUpdates && app.hasUpdates)
+                count++;
+        }
+        return count;
+    }
+
     protected void onHandleIntent(Intent intent) {
 
         receiver = intent.getParcelableExtra("receiver");
@@ -144,6 +154,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             // Process each repo...
+            List<DB.App> apps;
             List<DB.App> updatingApps = new ArrayList<DB.App>();
             List<Integer> keeprepos = new ArrayList<Integer>();
             boolean success = true;
@@ -184,7 +195,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 sendStatus(STATUS_INFO,
                         getString(R.string.status_checking_compatibility));
-                List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
+                apps = ((FDroidApp) getApplication()).getApps();
 
                 DB db = DB.getDB();
                 try {
@@ -227,10 +238,6 @@ public class UpdateService extends IntentService implements ProgressListener {
                         db.updateApplication(app);
                     }
                     db.endUpdate();
-                    if (notify) {
-                		apps = ((FDroidApp) getApplication()).getApps();
-                        updates = db.getNumUpdates(apps);
-					}
                     for (DB.Repo repo : repos)
                         db.writeLastEtag(repo);
                 } catch (Exception ex) {
@@ -245,8 +252,13 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             }
 
-            if (success && changes)
+            if (success && changes) {
                 ((FDroidApp) getApplication()).invalidateAllApps();
+                if (notify) {
+                    apps = ((FDroidApp) getApplication()).getApps();
+                    updates = getNumUpdates(apps);
+                }
+            }
 
             if (success && changes && notify && updates > 0) {
                 Log.d("FDroid", "Notifying "+updates+" updates.");
