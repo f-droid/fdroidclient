@@ -386,7 +386,7 @@ public class DB {
                                 && feat.equals("android.hardware.touchscreen")) {
                             // Don't check it!
                         } else if (!features.contains(feat)) {
-                            Log.d("FDroid", apk.id
+                            Log.d("FDroid", apk.id + " vercode " + apk.vercode
                                     + " is incompatible based on lack of "
                                     + feat);
                             return false;
@@ -394,7 +394,7 @@ public class DB {
                     }
                 }
                 if (!compatibleApi(apk.nativecode)) {
-                    Log.d("FDroid", apk.id
+                    Log.d("FDroid", apk.id + " vercode " + apk.vercode
                             + " makes use of incompatible native code: "
                             + CommaSeparatedList.str(apk.nativecode)
                             + " while your architecture is " + cpuAbis.get(0));
