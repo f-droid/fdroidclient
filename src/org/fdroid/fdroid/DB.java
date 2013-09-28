@@ -609,8 +609,7 @@ public class DB {
 
     // Get the number of apps that have updates available. This can be a
     // time consuming operation.
-    public int getNumUpdates() {
-        List<App> apps = getAppsBasic(true);
+    public int getNumUpdates(List<DB.App> apps) {
         int count = 0;
         for (App app : apps) {
             if (!app.ignoreUpdates && app.hasUpdates)
@@ -924,100 +923,6 @@ public class DB {
         return apps;
     }
 
-    private List<App> getAppsBasic(boolean getinstalledinfo) {
-
-        // If we're going to need it, get info in what's currently installed
-        Map<String, PackageInfo> systemApks = null;
-        if (getinstalledinfo) {
-            Log.d("FDroid", "Reading installed packages");
-            systemApks = new HashMap<String, PackageInfo>();
-            List<PackageInfo> installedPackages = mContext.getPackageManager()
-                    .getInstalledPackages(0);
-            for (PackageInfo appInfo : installedPackages) {
-                systemApks.put(appInfo.packageName, appInfo);
-            }
-        }
-
-        Map<String, App> apps = new HashMap<String, App>();
-        Cursor c = null;
-        long startTime = System.currentTimeMillis();
-        try {
-
-            String cols[] = new String[] { "id", "curVercode" };
-            c = db.query(TABLE_APP, cols, null, null, null, null, null);
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-
-                App app = new App();
-                app.id = c.getString(0);
-                app.curVercode = c.getInt(1);
-                app.hasUpdates = false;
-
-                if (getinstalledinfo && systemApks.containsKey(app.id)) {
-                    PackageInfo sysapk = systemApks.get(app.id);
-                    app.installedVerCode = sysapk.versionCode;
-                } else {
-                    app.installedVerCode = 0;
-                }
-
-                apps.put(app.id, app);
-                c.moveToNext();
-            }
-            c.close();
-            c = null;
-
-            Log.d("FDroid", "Read basic app data from database " + " (took "
-                    + (System.currentTimeMillis() - startTime) + " ms)");
-
-            cols = new String[] { "id", "vercode", "repo" };
-            c = db.query(TABLE_APK, cols, null, null, null, null,
-                    "vercode desc");
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                Apk apk = new Apk();
-                apk.id = c.getString(0);
-                apk.vercode = c.getInt(1);
-                apk.repo = c.getInt(2);
-                apps.get(apk.id).apks.add(apk);
-                c.moveToNext();
-            }
-            c.close();
-
-        } catch (Exception e) {
-            Log.e("FDroid", "Exception during database reading:\n"
-                            + Log.getStackTraceString(e));
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-
-            Log.d("FDroid", "Read basic app and apk data from database " +
-                    " (took " + (System.currentTimeMillis() - startTime) +
-                    " ms)");
-        }
-
-        List<App> result = new ArrayList<App>(apps.values());
-        Collections.sort(result);
-
-        // Fill in the hasUpdates fields if we have the necessary information...
-        if (getinstalledinfo) {
-
-            // We'll say an application has updates if it's installed AND the
-            // version is older than the current one
-            for (App app : result) {
-                Apk curver = app.getCurrentVersion();
-                if (curver != null
-                        && app.installedVerCode > 0
-                        && app.installedVerCode < curver.vercode) {
-                    app.hasUpdates = true;
-                    app.updateVersion = curver.version;
-                }
-            }
-        }
-
-        return result;
-    }
-
     public List<String> doSearch(String query) {
 
         List<String> ids = new ArrayList<String>();
@@ -1070,27 +975,18 @@ public class DB {
 
     private List<App> updateApps = null;
 
-    // Called before a repo update starts. Returns the number of updates
-    // available beforehand.
-    public int beginUpdate(List<DB.App> apps) {
+    // Called before a repo update starts.
+    public void beginUpdate(List<DB.App> apps) {
         // Get a list of all apps. All the apps and apks in this list will
         // have 'updated' set to false at this point, and we will only set
         // it to true when we see the app/apk in a repository. Thus, at the
         // end, any that are still false can be removed.
         updateApps = apps;
-        Log.d("FDroid", "AppUpdate: " + updateApps.size()
-                + " apps before starting.");
+        Log.d("FDroid", "AppUpdate: " + updateApps.size() + " apps before starting.");
         // Wrap the whole update in a transaction. Make sure to call
         // either endUpdate or cancelUpdate to commit or discard it,
         // respectively.
         db.beginTransaction();
-
-        int count = 0;
-        for (App app : updateApps) {
-            if (!app.ignoreUpdates && app.hasUpdates)
-                count++;
-        }
-        return count;
     }
 
     // Called when a repo update ends. Any applications that have not been
@@ -1408,7 +1304,7 @@ public class DB {
                     db.delete(TABLE_REPO, "address = ?",
                             new String[] { address });
             }
-            List<App> apps = getAppsBasic(true);
+            List<App> apps = getApps(false);
             for (App app : apps) {
                 if (app.apks.isEmpty()) {
                     db.delete(TABLE_APP, "id = ?", new String[] { app.id });

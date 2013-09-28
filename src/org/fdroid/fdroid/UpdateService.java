@@ -134,8 +134,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
-            int prevUpdates = 0;
-            int newUpdates = 0;
+            int updates = 0;
             List<DB.Repo> repos;
             try {
                 DB db = DB.getDB();
@@ -145,7 +144,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             // Process each repo...
-            List<DB.App> apps = new ArrayList<DB.App>();
+            List<DB.App> updatingApps = new ArrayList<DB.App>();
             List<Integer> keeprepos = new ArrayList<Integer>();
             boolean success = true;
             boolean changes = false;
@@ -159,7 +158,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                     StringBuilder newetag = new StringBuilder();
                     String err = RepoXMLHandler.doUpdate(getBaseContext(),
-                            repo, apps, newetag, keeprepos, this);
+                            repo, updatingApps, newetag, keeprepos, this);
                     if (err == null) {
                         String nt = newetag.toString();
                         if (!nt.equals(repo.lastetag)) {
@@ -178,7 +177,6 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
-            List<DB.App> acceptedapps = new ArrayList<DB.App>();
             if (!changes && success) {
                 Log.d("FDroid",
                         "Not checking app details or compatibility, because all repos were up to date.");
@@ -186,7 +184,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 sendStatus(STATUS_INFO,
                         getString(R.string.status_checking_compatibility));
-                List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
+                List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
 
                 DB db = DB.getDB();
                 try {
@@ -195,7 +193,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     // no data about during the update. (i.e. stuff from a repo
                     // that we know is unchanged due to the etag)
                     for (int keep : keeprepos) {
-                        for (DB.App app : prevapps) {
+                        for (DB.App app : apps) {
                             boolean keepapp = false;
                             for (DB.Apk apk : app.apks) {
                                 if (apk.repo == keep) {
@@ -205,14 +203,14 @@ public class UpdateService extends IntentService implements ProgressListener {
                             }
                             if (keepapp) {
                                 DB.App app_k = null;
-                                for (DB.App app2 : apps) {
+                                for (DB.App app2 : updatingApps) {
                                     if (app2.id.equals(app.id)) {
                                         app_k = app2;
                                         break;
                                     }
                                 }
                                 if (app_k == null) {
-                                    apps.add(app);
+                                    updatingApps.add(app);
                                     app_k = app;
                                 }
                                 app_k.updated = true;
@@ -224,14 +222,15 @@ public class UpdateService extends IntentService implements ProgressListener {
                         }
                     }
 
-                    prevUpdates = db.beginUpdate(prevapps);
-                    for (DB.App app : apps) {
-                        if (db.updateApplication(app))
-                            acceptedapps.add(app);
+                    db.beginUpdate(apps);
+                    for (DB.App app : updatingApps) {
+                        db.updateApplication(app);
                     }
                     db.endUpdate();
-                    if (notify)
-                        newUpdates = db.getNumUpdates();
+                    if (notify) {
+                		apps = ((FDroidApp) getApplication()).getApps();
+                        updates = db.getNumUpdates(apps);
+					}
                     for (DB.Repo repo : repos)
                         db.writeLastEtag(repo);
                 } catch (Exception ex) {
@@ -249,9 +248,8 @@ public class UpdateService extends IntentService implements ProgressListener {
             if (success && changes)
                 ((FDroidApp) getApplication()).invalidateAllApps();
 
-            if (success && changes && notify && (newUpdates > prevUpdates)) {
-                Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
-                        + ", apps after: " + newUpdates);
+            if (success && changes && notify && updates > 0) {
+                Log.d("FDroid", "Notifying "+updates+" updates.");
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
                         this)
                         .setSmallIcon(R.drawable.icon)
@@ -263,9 +261,9 @@ public class UpdateService extends IntentService implements ProgressListener {
                                 getString(R.string.fdroid_updates_available));
                 Intent notifyIntent = new Intent(this, FDroid.class)
                         .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
-                if (newUpdates > 1) {
+                if (updates > 1) {
                     mBuilder.setContentText(getString(
-                            R.string.many_updates_available, newUpdates));
+                            R.string.many_updates_available, updates));
 
                 } else {
                     mBuilder.setContentText(getString(R.string.one_update_available));
