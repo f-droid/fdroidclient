@@ -206,9 +206,10 @@ public class AppDetails extends ListActivity {
                 } else {
                     // https://f-droid.org/app/app.id
                     appid = data.getLastPathSegment();
+                    if (appid.equals("app")) appid = null;
                 }
             } else {
-                // fdroid.app:app.id (old scheme)
+                // fdroid.app:app.id
                 appid = data.getEncodedSchemeSpecificPart();
             }
             Log.d("FDroid", "AppDetails launched from link, for '" + appid

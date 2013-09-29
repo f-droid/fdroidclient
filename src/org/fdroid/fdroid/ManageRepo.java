@@ -80,12 +80,6 @@ public class ManageRepo extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.repolist);
 
-        Intent i = getIntent();
-        if (i.hasExtra("repoUri")) {
-            addRepo(i.getStringExtra("repoUri"));
-            finish();
-        }
-
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
 
@@ -196,7 +190,6 @@ public class ManageRepo extends ListActivity {
         } finally {
             DB.releaseDB();
         }
-        changed = true;
     }
 
     @Override

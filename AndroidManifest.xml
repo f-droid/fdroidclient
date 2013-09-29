@@ -34,6 +34,7 @@
         <activity
             android:name="FDroid"
             android:configChanges="keyboardHidden|orientation|screenSize" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,15 +55,6 @@
                     android:pathPrefix="/repository/browse" />
                 <data android:scheme="https" android:host="www.f-droid.org"
                     android:pathPrefix="/repository/browse" />
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="fdroid.repo" />
             </intent-filter>
 
             <meta-data
@@ -92,6 +84,7 @@
 
                 <data android:scheme="fdroid.app" />
             </intent-filter>
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -108,13 +101,13 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="http" android:host="f-droid.org"
-                    android:pathPrefix="/app" />
+                    android:pathPrefix="/app/" />
                 <data android:scheme="https" android:host="f-droid.org"
-                    android:pathPrefix="/app" />
+                    android:pathPrefix="/app/" />
                 <data android:scheme="http" android:host="www.f-droid.org"
-                    android:pathPrefix="/app" />
+                    android:pathPrefix="/app/" />
                 <data android:scheme="https" android:host="www.f-droid.org"
-                    android:pathPrefix="/app" />
+                    android:pathPrefix="/app/" />
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -144,7 +137,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="market" android:host="search" />
+                <data android:scheme="fdroid.search" />
             </intent-filter>
 
             <intent-filter>
@@ -153,7 +146,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="fdroid.search" />
+                <data android:scheme="market" android:host="search" />
             </intent-filter>
 
             <meta-data

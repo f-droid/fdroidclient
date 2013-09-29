@@ -84,29 +84,22 @@ public class FDroid extends FragmentActivity {
 
         Intent i = getIntent();
         Uri data = i.getData();
+        String appid = null;
         if (data != null) {
             if (data.isHierarchical()) {
-                String appid = data.getQueryParameter("fdid");
-                // If appid == null, we just browse all the apps.
-                // If appid != null, we browse the app specified.
-                if (appid != null && appid.length() > 0) {
-                    Intent call = new Intent(this, AppDetails.class);
-                    call.putExtra("appid", appid);
-                    startActivityForResult(call, REQUEST_APPDETAILS);
-                }
-            } else {
-                String repoUri = data.getEncodedSchemeSpecificPart();
-                if (repoUri != null && repoUri.length() > 0) {
-                    Intent call = new Intent(this, ManageRepo.class);
-                    call.putExtra("repoUri", repoUri);
-                    startActivityForResult(call, REQUEST_MANAGEREPOS);
-                }
+                // http(s)://f-droid.org/repository/browse?fdid=app.id
+                appid = data.getQueryParameter("fdid");
             }
         } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
             boolean showUpdateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
             if (showUpdateTab) {
                 getTabManager().selectTab(2);
             }
+        }
+        if (appid != null && appid.length() > 0) {
+            Intent call = new Intent(this, AppDetails.class);
+            call.putExtra("appid", appid);
+            startActivityForResult(call, REQUEST_APPDETAILS);
         }
     }
 
@@ -125,10 +118,10 @@ public class FDroid extends FragmentActivity {
         manager.repopulateLists();
     }
 
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		getTabManager().onConfigurationChanged(newConfig);
-	}
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        getTabManager().onConfigurationChanged(newConfig);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
