@@ -32,6 +32,7 @@ import android.content.SharedPreferences;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -82,6 +83,7 @@ public class FDroidApp extends Application {
             .cacheOnDisc(true)
             .showImageOnLoading(android.R.drawable.sym_def_app_icon)
             .showImageForEmptyUri(android.R.drawable.sym_def_app_icon)
+            .displayer(new FadeInBitmapDisplayer(200))
             .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
             .discCache(new UnlimitedDiscCache(cacheDir, new FileNameGenerator() {
