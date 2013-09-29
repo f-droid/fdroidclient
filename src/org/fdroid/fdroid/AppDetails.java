@@ -408,7 +408,7 @@ public class AppDetails extends ListActivity {
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        ImageLoader.getInstance().displayImage(app.icon, iv);
+        ImageLoader.getInstance().displayImage(app.iconUrl, iv);
 
         // Set the title and other header details...
         TextView tv = (TextView) findViewById(R.id.title);

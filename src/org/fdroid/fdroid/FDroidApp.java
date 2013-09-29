@@ -152,8 +152,7 @@ public class FDroidApp extends Application {
                     for (DB.Repo repo : repos) {
                         DB.Apk bestApk = app.apks.get(0);
                         if (repo.id == bestApk.repo) {
-                            app.icon = repo.address + "/icons/"
-                                + app.id + '.' + bestApk.vercode + ".png";
+							app.iconUrl = repo.address + "/icons/" + app.icon;
                             break;
                         }
                     }
@@ -173,8 +172,7 @@ public class FDroidApp extends Application {
                     for (DB.Repo repo : repos) {
                         DB.Apk bestApk = app.apks.get(0);
                         if (repo.id == bestApk.repo) {
-                            app.icon = repo.address + "/icons/"
-                                + app.id + '.' + bestApk.vercode + ".png";
+							app.iconUrl = repo.address + "/icons/" + app.icon;
                             break;
                         }
                     }

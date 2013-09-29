@@ -89,7 +89,7 @@ public class DB {
     private static final String TABLE_APP = "fdroid_app";
     private static final String CREATE_TABLE_APP = "create table " + TABLE_APP
             + " ( " + "id text not null, " + "name text not null, "
-            + "summary text not null, "
+            + "summary text not null, " + "icon text, "
             + "description text not null, " + "license text not null, "
             + "webURL text, " + "trackerURL text, " + "sourceURL text, "
             + "curVersion text," + "curVercode integer,"
@@ -104,7 +104,7 @@ public class DB {
         public App() {
             name = "Unknown";
             summary = "Unknown application";
-            icon = null;
+            icon = "noicon.png";
             id = "unknown";
             license = "Unknown";
             category = "Uncategorized";
@@ -124,6 +124,7 @@ public class DB {
             compatible = false;
             ignoreUpdates = false;
             filtered = false;
+			iconUrl = null;
         }
 
         // True when all the detail fields are populated, False otherwise.
@@ -205,6 +206,8 @@ public class DB {
 
         // List of apks.
         public List<Apk> apks;
+
+        public String iconUrl;
 
         // Get the current version - this will be one of the Apks from 'apks'.
         // Can return null if there are no available versions.
@@ -423,7 +426,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 25;
+    private final int DBVersion = 24;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -741,7 +744,7 @@ public class DB {
         try {
 
             String cols[] = new String[] { "antiFeatures", "requirements",
-                    "id", "name", "summary", "license", "category",
+                    "id", "name", "summary", "icon", "license", "category",
                     "curVersion", "curVercode", "added", "lastUpdated",
                     "compatible", "ignoreUpdates" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
@@ -754,19 +757,20 @@ public class DB {
                 app.id = c.getString(2);
                 app.name = c.getString(3);
                 app.summary = c.getString(4);
-                app.license = c.getString(5);
-                app.category = c.getString(6);
-                app.curVersion = c.getString(7);
-                app.curVercode = c.getInt(8);
-                String sAdded = c.getString(9);
+                app.icon = c.getString(5);
+                app.license = c.getString(6);
+                app.category = c.getString(7);
+                app.curVersion = c.getString(8);
+                app.curVercode = c.getInt(9);
+                String sAdded = c.getString(10);
                 app.added = (sAdded == null || sAdded.length() == 0) ? null
                         : mDateFormat.parse(sAdded);
-                String sLastUpdated = c.getString(10);
+                String sLastUpdated = c.getString(11);
                 app.lastUpdated = (sLastUpdated == null || sLastUpdated
                         .length() == 0) ? null : mDateFormat
                         .parse(sLastUpdated);
-                app.compatible = c.getInt(11) == 1;
-                app.ignoreUpdates = c.getInt(12) == 1;
+                app.compatible = c.getInt(12) == 1;
+                app.ignoreUpdates = c.getInt(13) == 1;
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -1102,6 +1106,7 @@ public class DB {
         values.put("id", upapp.id);
         values.put("name", upapp.name);
         values.put("summary", upapp.summary);
+        values.put("icon", upapp.icon);
         values.put("description", upapp.detail_description);
         values.put("license", upapp.license);
         values.put("category", upapp.category);

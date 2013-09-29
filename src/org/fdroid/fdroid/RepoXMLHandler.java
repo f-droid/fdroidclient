@@ -184,6 +184,8 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (curapp != null && str != null) {
             if (curel.equals("name")) {
                 curapp.name = str;
+            } else if (curel.equals("icon")) {
+                curapp.icon = str;
             } else if (curel.equals("description")) {
                 // This is the old-style description. We'll read it
                 // if present, to support old repos, but in newer

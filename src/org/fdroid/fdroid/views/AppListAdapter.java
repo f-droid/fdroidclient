@@ -75,7 +75,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         summary.setText(app.summary);
 
         layoutSummary(summary);
-        ImageLoader.getInstance().displayImage(app.icon, icon);
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon);
 
         int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
         int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
