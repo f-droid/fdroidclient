@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
 "PO-Revision-Date: 2011-01-20 03:30+0200\n"
 "Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
 "Language-Team: sr <LL@li.org>\n"
@@ -77,10 +77,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Обавести"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Остава за Апликације"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Чувај скинуте апликације"
@@ -92,14 +88,6 @@ msgstr "Чувај скинуте apk датотеке на СД картици"
 msgctxt "updates"
 msgid "Updates"
 msgstr "Ажурирање"
-
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Обриши све сачуване податке"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Ресетуј"
 
 msgctxt "other"
 msgid "Other"
@@ -212,10 +200,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr ""
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Могуће је ажурирати - Вер.:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "ПОТВРДИ"
@@ -244,10 +228,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Изабери ризницу за уклањање"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Није успело повезивање са сервером!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Ажурирај ризнице"
@@ -263,10 +243,6 @@ msgstr "На располагању"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Нове верзије "
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Нове верзије на располагању"
 
 #, fuzzy
 msgctxt "one_update_available"
@@ -291,22 +267,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Ажурира се листа апликација..."
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Није било могуће накачити се на мрежу."
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Истекло Време"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Није успело повезивање са сервером!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "Преузимање"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Скида се апликација са"
@@ -315,30 +275,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Адреса ризнице"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Инсталирано:"
-
-msgctxt "install"
-msgid "Install"
-msgstr "Инсталирај"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Уклони"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Ажурирај!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Неке апликације је могуће ажурирати.\n"
-"Желите ли да видите листу?"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -346,14 +282,6 @@ msgid ""
 msgstr ""
 "Промењена је листа ризница у употреби.\n"
 "Желите ли да их ажурирате?"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Грешка у повезивању на сервер или је apk датотека покварена!"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Апликација се скида са:\n"
 
 #, fuzzy
 msgctxt "menu_update_repo"
@@ -417,8 +345,8 @@ msgid "Source Code"
 msgstr "Изворни Код"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Тржиште"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -566,9 +494,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -594,10 +522,6 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
-
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -630,18 +554,83 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "installIncompatible"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Остава за Апликације"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Обриши све сачуване податке"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Ресетуј"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Могуће је ажурирати - Вер.:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Није успело повезивање са сервером!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Нове верзије на располагању"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Није било могуће накачити се на мрежу."
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Истекло Време"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Није успело повезивање са сервером!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Преузимање"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Инсталирано:"
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Инсталирај"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Уклони"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Ажурирај!"
+
+#~ msgctxt "update_alrt"
 #~ msgid ""
-#~ "Android says this package is not "
-#~ "compatible with your device. Do you "
-#~ "want to try and install it anyway?"
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
 #~ msgstr ""
+#~ "Неке апликације је могуће ажурирати.\n"
+#~ "Желите ли да видите листу?"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Одржавање"
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr "Грешка у повезивању на сервер или је apk датотека покварена!"
 
-#~ msgctxt "no_handler_app"
-#~ msgid "You don't have any app installed that can handle %s"
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Апликација се скида са:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Тржиште"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
 #~ msgstr ""
 

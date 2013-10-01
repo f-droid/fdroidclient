@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
 "PO-Revision-Date: 2013-07-17 06:15+0200\n"
 "Last-Translator: Yes <Stratmaster@gmail.com>\n"
 "Language-Team: he <LL@li.org>\n"
@@ -70,10 +70,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr ""
 
-msgctxt "storage"
-msgid "Storage"
-msgstr ""
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr ""
@@ -84,14 +80,6 @@ msgstr ""
 
 msgctxt "updates"
 msgid "Updates"
-msgstr ""
-
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr ""
-
-msgctxt "reset"
-msgid "Reset"
 msgstr ""
 
 msgctxt "other"
@@ -192,10 +180,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr ""
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr ""
-
 msgctxt "ok"
 msgid "OK"
 msgstr ""
@@ -224,10 +208,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr ""
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr ""
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr ""
@@ -242,10 +222,6 @@ msgstr ""
 
 msgctxt "tab_updates"
 msgid "Updates"
-msgstr ""
-
-msgctxt "update_available"
-msgid "Updates available"
 msgstr ""
 
 msgctxt "one_update_available"
@@ -269,22 +245,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr ""
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr ""
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr ""
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr ""
-
-msgctxt "download"
-msgid "Download"
-msgstr ""
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr ""
@@ -293,40 +253,10 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr ""
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr ""
-
-msgctxt "install"
-msgid "Install"
-msgstr ""
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr ""
-
-msgctxt "update"
-msgid "Update!"
-msgstr ""
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
-msgstr ""
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
 msgstr ""
 
 msgctxt "menu_update_repo"
@@ -390,7 +320,7 @@ msgid "Source Code"
 msgstr ""
 
 msgctxt "menu_market"
-msgid "Market"
+msgid "Google Play"
 msgstr ""
 
 msgctxt "menu_update"
@@ -534,9 +464,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -562,10 +492,6 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
-
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -598,18 +524,81 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "installIncompatible"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr ""
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr ""
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr ""
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr ""
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr ""
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr ""
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr ""
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr ""
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr ""
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr ""
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr ""
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr ""
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr ""
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr ""
+
+#~ msgctxt "update_alrt"
 #~ msgid ""
-#~ "Android says this package is not "
-#~ "compatible with your device. Do you "
-#~ "want to try and install it anyway?"
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
 #~ msgstr ""
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
 #~ msgstr ""
 
-#~ msgctxt "no_handler_app"
-#~ msgid "You don't have any app installed that can handle %s"
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr ""
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr ""
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
 #~ msgstr ""
 

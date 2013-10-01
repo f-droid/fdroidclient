@@ -15,7 +15,6 @@
   <string name="updates">Aktualizacje</string>
   <string name="clear_all_cached_data">Wyczyść pamięć podręczną</string>
   <string name="reset">Resetuj</string>
-  <string name="maintenance">Konserwacja</string>
   <string name="notify_updates_available">Powiadamiaj, gdy dostępne będą nowe aktualizacje</string>
   <string name="update_apps_list">Automatycznie uaktualnij listę aplikacji z repozytorium</string>
   <string name="update_history">Aktualizuj repozytoria</string>

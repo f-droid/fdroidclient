@@ -4,7 +4,7 @@
   <string name="searchres_oneapp">\'%s\' ile eşleşen bir uygulama bulundu:</string>
   <string name="searchres_noapps">\'%s\' ile eşleşen hiçbir uygulama bulunamadı:</string>
   <string name="SignatureMismatch">Bu yeni sürüm farklı bir anahtar ile imzalanmıştır. Yeni sürümü kurmak için önce eski sürümü kaldırmanız gerekir. Lütfen bunu yapın ve tekrar deneyin. (Not: bu, uygulama tarafından saklanan tüm dahili verileri silecektir)</string>
-  <string name="installIncompatible">Android bu paketin cihazınızla uyumlu olmadığını bildiriyor. Yine de kurmayı denemek istiyor musunuz?</string>
+  <string name="installIncompatible">Bu paket cihazınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor musunuz?</string>
   <string name="installDowngrade">Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın yanlış çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek istiyor musunuz?</string>
   <string name="version">Sürüm</string>
   <string name="n_versions_available">%d sürüm mevcut</string>
@@ -16,7 +16,7 @@
   <string name="updates">Güncellemeler</string>
   <string name="clear_all_cached_data">Önbellekteki tüm verileri sil</string>
   <string name="reset">Sıfırla</string>
-  <string name="maintenance">Bakım</string>
+  <string name="other">Diğer</string>
   <string name="notify_updates_available">Yeni güncellemeler olduğunu bildir</string>
   <string name="update_apps_list">Uygulama listesini depolardan otomatik olarak güncelle</string>
   <string name="update_history">Güncelleme tarihçesi</string>
@@ -82,6 +82,7 @@
   <string name="menu_share">Paylaş</string>
   <string name="menu_install">Kur</string>
   <string name="menu_uninstall">Kaldır</string>
+  <string name="menu_ignore">Güncellemeleri görmezden gel</string>
   <string name="menu_website">Ağ sitesi</string>
   <string name="menu_issues">Sorunlar</string>
   <string name="menu_source">Kaynak kod</string>
@@ -130,7 +131,7 @@
   <string name="permissions_for_long">%s sürümü için izinler</string>
   <string name="showPermissions">İzinleri göster</string>
   <string name="showPermissions_long">Uygulamanın gerektirdiği izinlerin listesini göster</string>
-  <string name="no_handler_app">%s unsurunu yönetecek hiçbir kurulu uygulamanız yok</string>
+  <string name="no_handler_app">%s unsurunu yönetecek hiçbir mevcut uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
   <string name="compactlayout_long">Listede sadece uygulama adlarını ve özetleri göster</string>
 </resources>

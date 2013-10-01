@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
 "PO-Revision-Date: 2012-06-27 11:15+0200\n"
 "Last-Translator: b100w11 <b100w11@gmail.com>\n"
 "Language-Team: sl <LL@li.org>\n"
@@ -76,10 +76,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Opozorilo"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Pomnilnik"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Predpomnilnik naloženih aplikacij"
@@ -91,14 +87,6 @@ msgstr "Shrani naložene datoteke apk na kartico SD"
 msgctxt "updates"
 msgid "Updates"
 msgstr "Posodobitve"
-
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Izbriši vse predpomnjene podatke"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Ponastavi"
 
 msgctxt "other"
 msgid "Other"
@@ -211,10 +199,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr ""
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Možna posodobitev - Raz.:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "V redu"
@@ -243,10 +227,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Odstrani skladišče"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Povezava s strežnikom ni uspela!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Posodobi skladišča"
@@ -262,10 +242,6 @@ msgstr "Na razpolago"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Posodobitve"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Na razpolago so posodobitve"
 
 #, fuzzy
 msgctxt "one_update_available"
@@ -290,22 +266,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Poteka posodobitev spiska aplikacij ..."
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Povezava z omrežjem ni uspela."
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Časovna omejitev"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Povezava s strežnikom ni uspela!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "Prejemanje"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Prejem aplikacije iz"
@@ -314,30 +274,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Naslov skladišča"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Nameščeno:"
-
-msgctxt "install"
-msgid "Install"
-msgstr "Namesti"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Odstrani"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Posodobi!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Na razpolago so posodobitve za nekatere aplikacije.\n"
-"Jih želite videti?"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -345,14 +281,6 @@ msgid ""
 msgstr ""
 "Spisek uporabljenih skladišč se je spremenil.\n"
 "Ga želite posodobiti?"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Povezava s strežnikom ni mogoča ali pa je datoteka apk poškodovana!"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Prejem aplikacije iz:\n"
 
 #, fuzzy
 msgctxt "menu_update_repo"
@@ -416,8 +344,8 @@ msgid "Source Code"
 msgstr "Izvorna koda"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Trgovina"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -563,9 +491,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -591,10 +519,6 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
-
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -627,18 +551,83 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "installIncompatible"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Pomnilnik"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Izbriši vse predpomnjene podatke"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Ponastavi"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Možna posodobitev - Raz.:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Povezava s strežnikom ni uspela!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Na razpolago so posodobitve"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Povezava z omrežjem ni uspela."
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Časovna omejitev"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Povezava s strežnikom ni uspela!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Prejemanje"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Nameščeno:"
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Namesti"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Odstrani"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Posodobi!"
+
+#~ msgctxt "update_alrt"
 #~ msgid ""
-#~ "Android says this package is not "
-#~ "compatible with your device. Do you "
-#~ "want to try and install it anyway?"
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
 #~ msgstr ""
+#~ "Na razpolago so posodobitve za nekatere aplikacije.\n"
+#~ "Jih želite videti?"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Vzdrževanje"
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr "Povezava s strežnikom ni mogoča ali pa je datoteka apk poškodovana!"
 
-#~ msgctxt "no_handler_app"
-#~ msgid "You don't have any app installed that can handle %s"
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Prejem aplikacije iz:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Trgovina"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
 #~ msgstr ""
 

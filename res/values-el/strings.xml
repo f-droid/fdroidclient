@@ -14,7 +14,6 @@
   <string name="updates">Ενημερώσεις</string>
   <string name="clear_all_cached_data">Εκκαθάριση όλων των προσωρινών αποθηκευμένων δεδομένων</string>
   <string name="reset">Επαναφορά</string>
-  <string name="maintenance">Συντήρηση</string>
   <string name="notify_updates_available">Ειδοποίηση για την ύπαρξη διαθέσιμων ενημερώσεων</string>
   <string name="update_apps_list">Αυτόματη ενημέρωση της λίστας εφαρμογών από το αποθετήριο</string>
   <string name="update_history">Ενημέρωση αποθετηρίων</string>

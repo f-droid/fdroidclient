@@ -15,7 +15,6 @@
   <string name="updates">Eguneraketak</string>
   <string name="clear_all_cached_data">Ezabatu cache-ko datu guztiak</string>
   <string name="reset">Berrezarri</string>
-  <string name="maintenance">Mantentzea</string>
   <string name="notify_updates_available">Jakinarazi eguneraketa berriak eskuragarri daudenean</string>
   <string name="update_apps_list">Eguneratu aplikazio-zerrenda biltegiarekin automatikoki</string>
   <string name="update_history">Eguneratu historia</string>

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
 "PO-Revision-Date: 2013-08-24 14:57+0200\n"
 "Last-Translator: Anders <jonars03@student.umu.se>\n"
 "Language-Team: sv <LL@li.org>\n"
@@ -79,10 +79,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Avisering"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Lagring"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Cacha nerladdade appar"
@@ -94,14 +90,6 @@ msgstr "Behåll nerladdade apk-filer på SD-kortet"
 msgctxt "updates"
 msgid "Updates"
 msgstr "Uppdateringar"
-
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Rensa alla cachade data"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Återställ"
 
 msgctxt "other"
 msgid "Other"
@@ -209,10 +197,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr "Tillagd %s"
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Uppdatering möjlig - Ver.:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "OK"
@@ -241,10 +225,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Välj förråd att ta bort"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Kunde inte ansluta till servern!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Uppdatera förråd"
@@ -260,10 +240,6 @@ msgstr "Tillgängliga"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Uppdateringar"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Uppdateringar tillgängliga"
 
 msgctxt "one_update_available"
 msgid "1 update is available."
@@ -286,22 +262,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Uppdaterar programlistan..."
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Kunde inte ansluta till nätverket."
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Timeout"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Kunde inte ansluta till servern!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "Ladda ner"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Hämtar program från"
@@ -310,30 +270,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Förrådadress"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Installerad:"
-
-msgctxt "install"
-msgid "Install"
-msgstr "Installera"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Avinstallera"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Uppdatera!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Det finns uppdateringar för vissa av de installerade programmen.\n"
-"Vill du se dem?"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -341,14 +277,6 @@ msgid ""
 msgstr ""
 "Listan över förråd har ändrats.\n"
 "Vill du uppdatera dem?"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Kunde inte ansluta till servern eller så är apk-filen skadad!"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Hämtar program från:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
@@ -411,8 +339,8 @@ msgid "Source Code"
 msgstr "Källkod"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Market"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -555,9 +483,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Nyligt uppdaterade"
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -593,10 +521,6 @@ msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
 msgstr "Kontrollerar appars kompatibilitet med din enhet…"
 
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
-msgstr "Hämtar nya ikoner..."
-
 msgctxt "no_permissions"
 msgid "No permissions are used."
 msgstr "Inga behörigheter används."
@@ -627,7 +551,83 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Visa endast appnamn och sammanfattningar i listan"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Underhåll"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Lagring"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Rensa alla cachade data"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Återställ"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Uppdatering möjlig - Ver.:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Kunde inte ansluta till servern!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Uppdateringar tillgängliga"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Kunde inte ansluta till nätverket."
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Timeout"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Kunde inte ansluta till servern!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Ladda ner"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Installerad:"
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Installera"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Avinstallera"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Uppdatera!"
+
+#~ msgctxt "update_alrt"
+#~ msgid ""
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
+#~ msgstr ""
+#~ "Det finns uppdateringar för vissa av de installerade programmen.\n"
+#~ "Vill du se dem?"
+
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr "Kunde inte ansluta till servern eller så är apk-filen skadad!"
+
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Hämtar program från:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Market"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
+#~ msgstr "Hämtar nya ikoner..."
 

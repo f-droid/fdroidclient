@@ -14,7 +14,7 @@
   <string name="updates">Aggiornamenti</string>
   <string name="clear_all_cached_data">Cancella dati temporanei dalla cache</string>
   <string name="reset">Reimposta</string>
-  <string name="maintenance">Manutenzione</string>
+  <string name="other">Altro</string>
   <string name="notify_updates_available">Avvisa quando sono disponibili nuovi aggiornamenti</string>
   <string name="update_apps_list">Aggiorna automaticamente l\'elenco applicazioni</string>
   <string name="update_history">Aggiorna le repository</string>

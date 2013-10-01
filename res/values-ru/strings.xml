@@ -16,7 +16,6 @@
   <string name="updates">Обновления</string>
   <string name="clear_all_cached_data">Очистить все временные данные</string>
   <string name="reset">Очистка</string>
-  <string name="maintenance">Поддержка</string>
   <string name="notify_updates_available">Сообщать при появлении обновлений</string>
   <string name="update_apps_list">Обновлять список приложений автоматически</string>
   <string name="update_history">История обновлений</string>

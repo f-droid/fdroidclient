@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
 "PO-Revision-Date: 2012-09-11 20:13+0200\n"
 "Last-Translator: g0d4 <giorgoskolokotronis@gmail.com>\n"
 "Language-Team: el <LL@li.org>\n"
@@ -75,10 +75,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Ειδοποίηση"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Αποθήκευση"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Αποθήκευση ληφθέντων εφαρμογών στην προσωρινή μνήμη"
@@ -90,14 +86,6 @@ msgstr "Διατήρηση ληφθέντων αρχείων apk στην κάρ
 msgctxt "updates"
 msgid "Updates"
 msgstr "Ενημερώσεις"
-
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Εκκαθάριση όλων των προσωρινών αποθηκευμένων δεδομένων"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Επαναφορά"
 
 msgctxt "other"
 msgid "Other"
@@ -208,10 +196,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr ""
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Πιθανή ενημέρωση - Έκδοση:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "Εντάξει"
@@ -240,10 +224,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Επιλογή αποθετηρίου για διαγραφή"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Δεν ήταν δυνατή η σύνδεση με τον εξυπηρετητή!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Ενημέρωση αποθετηρίων"
@@ -259,10 +239,6 @@ msgstr "Διαθέσιμα"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Ενημερώσεις"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Διαθέσιμες ενημερώσεις"
 
 #, fuzzy
 msgctxt "one_update_available"
@@ -287,22 +263,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Ενημέρωση λίστα εφαρμογών..."
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Δεν ήταν δυνατή η σύνδεση στο δίκτυο"
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Χρονικό Όριο"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Δεν ήταν δυνατή η σύνδεση με τον εξυπηρετητή!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "Λήψη"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Λήψη εφαρμογών από"
@@ -311,30 +271,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Διεύθυνση αποθετηρίου"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Εγκατεστημένο:"
-
-msgctxt "install"
-msgid "Install"
-msgstr "Εγκατάσταση"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Απεγκατάσταση"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Ενημέρωση!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Υπάρχουν διαθέσιμες ενημερώσεις για κάποιες εγκατεστημένες εφαρμογές.\n"
-"Θέλετε να τις δείτε;"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -342,16 +278,6 @@ msgid ""
 msgstr ""
 "Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. \n"
 "Θέλετε να ενημερωθούν;"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
-"Δεν ήταν δυνατή η σύνδεση με τον εξυπηρετητή ή το αρχείο apk είναι "
-"κατεστραμμένο"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Λήψη εφαρμογής από:\n"
 
 #, fuzzy
 msgctxt "menu_update_repo"
@@ -415,8 +341,8 @@ msgid "Source Code"
 msgstr "Πηγαίος κώδικας"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Market"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -561,9 +487,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Πρόσφατα Ενημερωμένες"
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -589,10 +515,6 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
-
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -625,18 +547,86 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "installIncompatible"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Αποθήκευση"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Εκκαθάριση όλων των προσωρινών αποθηκευμένων δεδομένων"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Επαναφορά"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Πιθανή ενημέρωση - Έκδοση:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Δεν ήταν δυνατή η σύνδεση με τον εξυπηρετητή!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Διαθέσιμες ενημερώσεις"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Δεν ήταν δυνατή η σύνδεση στο δίκτυο"
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Χρονικό Όριο"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Δεν ήταν δυνατή η σύνδεση με τον εξυπηρετητή!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Λήψη"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Εγκατεστημένο:"
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Εγκατάσταση"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Απεγκατάσταση"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Ενημέρωση!"
+
+#~ msgctxt "update_alrt"
 #~ msgid ""
-#~ "Android says this package is not "
-#~ "compatible with your device. Do you "
-#~ "want to try and install it anyway?"
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
 #~ msgstr ""
+#~ "Υπάρχουν διαθέσιμες ενημερώσεις για κάποιες εγκατεστημένες εφαρμογές.\n"
+#~ "Θέλετε να τις δείτε;"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Συντήρηση"
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr ""
+#~ "Δεν ήταν δυνατή η σύνδεση με τον"
+#~ " εξυπηρετητή ή το αρχείο apk είναι"
+#~ " κατεστραμμένο"
 
-#~ msgctxt "no_handler_app"
-#~ msgid "You don't have any app installed that can handle %s"
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Λήψη εφαρμογής από:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Market"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
 #~ msgstr ""
 

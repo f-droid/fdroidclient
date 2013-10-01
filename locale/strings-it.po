@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
-"PO-Revision-Date: 2013-08-17 16:08+0200\n"
-"Last-Translator: mvdan <mvdan@mvdan.cc>\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"PO-Revision-Date: 2013-09-25 23:09+0200\n"
+"Last-Translator: Mario  <mariogreco85@openmailbox.org>\n"
 "Language-Team: it <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -74,10 +74,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Avviso"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Memoria"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Cache applicazioni scaricate"
@@ -90,17 +86,9 @@ msgctxt "updates"
 msgid "Updates"
 msgstr "Aggiornamenti"
 
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Cancella dati temporanei dalla cache"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Reimposta"
-
 msgctxt "other"
 msgid "Other"
-msgstr ""
+msgstr "Altro"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
@@ -208,10 +196,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr ""
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Aggiornamento: - Ver.:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "OK"
@@ -240,10 +224,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Rimuovi repository"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Aggiorna le repository"
@@ -259,10 +239,6 @@ msgstr "Disponibile"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Aggiornamenti"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Aggiornamenti disponibili"
 
 #, fuzzy
 msgctxt "one_update_available"
@@ -287,22 +263,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Aggiornamento elenco applicazioni in corso..."
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Impossibile connettersi alla rete."
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Timeout"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Impossibile connettersi al server!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "Download"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Scaricamento applicazione da"
@@ -310,31 +270,6 @@ msgstr "Scaricamento applicazione da"
 msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Indirizzo repository"
-
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Installato:"
-
-msgctxt "install"
-msgid "Install"
-msgstr "Installa"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Disinstalla"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Aggiorna!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Aggiornamenti disponibili per alcune applicazioni installate.\n"
-"\n"
-"Vuoi visualizzarli?"
 
 msgctxt "repo_alrt"
 msgid ""
@@ -344,14 +279,6 @@ msgstr ""
 "L'elenco delle repository in uso è cambiato.\n"
 "\n"
 "Vuoi aggiornarlo?"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Impossibile connettersi al server o file apk corrotto!"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Scaricamento applicazione da:\n"
 
 #, fuzzy
 msgctxt "menu_update_repo"
@@ -415,8 +342,8 @@ msgid "Source Code"
 msgstr "Codice sorgente"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Market"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -562,9 +489,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -590,10 +517,6 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
-
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -626,18 +549,84 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "installIncompatible"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Memoria"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Cancella dati temporanei dalla cache"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Reimposta"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Aggiornamento: - Ver.:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Impossibile connettersi al server!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Aggiornamenti disponibili"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Impossibile connettersi alla rete."
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Timeout"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Impossibile connettersi al server!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Download"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Installato:"
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Installa"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Disinstalla"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Aggiorna!"
+
+#~ msgctxt "update_alrt"
 #~ msgid ""
-#~ "Android says this package is not "
-#~ "compatible with your device. Do you "
-#~ "want to try and install it anyway?"
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
 #~ msgstr ""
+#~ "Aggiornamenti disponibili per alcune applicazioni installate.\n"
+#~ "\n"
+#~ "Vuoi visualizzarli?"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Manutenzione"
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr "Impossibile connettersi al server o file apk corrotto!"
 
-#~ msgctxt "no_handler_app"
-#~ msgid "You don't have any app installed that can handle %s"
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Scaricamento applicazione da:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Market"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
 #~ msgstr ""
 

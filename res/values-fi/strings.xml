@@ -15,7 +15,6 @@
   <string name="updates">Päivitykset</string>
   <string name="clear_all_cached_data">Pyyhi kaikki välimuistissa oleva data</string>
   <string name="reset">Resetoi</string>
-  <string name="maintenance">Huolto</string>
   <string name="notify_updates_available">Ilmoita kun uusia päivityksiä on saatavilla</string>
   <string name="update_apps_list">Päivitä sovelluslista sovelluslähteistä automaattisesti</string>
   <string name="update_history">Päivitä sovelluslähteet</string>

@@ -16,7 +16,6 @@
   <string name="updates">Aktualisierungen</string>
   <string name="clear_all_cached_data">Zwischenspeicher leeren</string>
   <string name="reset">Zurücksetzen</string>
-  <string name="maintenance">Verwaltung</string>
   <string name="notify_updates_available">Bei verfügbaren Aktualisierungen benachrichtigen</string>
   <string name="update_apps_list">Liste der Anwendungen automatisch aus Online-Quellen aktualisieren</string>
   <string name="update_history">Liste durchgeführter Aktualisierungen</string>

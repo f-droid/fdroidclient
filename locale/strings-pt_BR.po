@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
-"PO-Revision-Date: 2013-08-06 21:12+0200\n"
-"Last-Translator: hugotorres <hugotorres@hush.com>\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"PO-Revision-Date: 2013-09-19 02:12+0200\n"
+"Last-Translator: Cárlisson <cg@bardo.ws>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
@@ -43,14 +43,13 @@ msgstr ""
 "tente novamente. (Note que a desinstalação apaga todos os dados internos "
 "armazenados pelo aplicativo)"
 
-#, fuzzy
 msgctxt "installIncompatible"
 msgid ""
 "It seems like this package is not compatible with your device. Do you "
 "want to try and install it anyway?"
 msgstr ""
-"O Android diz que esse pacote não é compatível com o seu dispositivo. "
-"Quer tentar instalá-lo mesmo assim?"
+"Aparentemente esse pacote não é compatível com o seu dispositivo. Quer "
+"tentar instalá-lo mesmo assim?"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -80,10 +79,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Notificar"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Armazenamento"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Cache de aplicativos baixado"
@@ -96,17 +91,9 @@ msgctxt "updates"
 msgid "Updates"
 msgstr "Atualizações"
 
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Limpar todos os dados em cache"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Reiniciar"
-
 msgctxt "other"
 msgid "Other"
-msgstr ""
+msgstr "Outro"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
@@ -211,10 +198,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr "Adicionado em %s"
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Possível atualizar - Ver.:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "OK"
@@ -243,10 +226,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Escolha o repositório para remover"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Não foi possível conectar ao servidor!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Atualizar repositórios"
@@ -262,10 +241,6 @@ msgstr "Disponível"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Atualizações"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Atualizações disponíveis"
 
 msgctxt "one_update_available"
 msgid "1 update is available."
@@ -288,22 +263,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Atualizando a lista de aplicativos..."
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Não foi possível conectar à rede."
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Tempo esgotado"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Não foi possível conectar ao servidor!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "Baixar"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Baixando aplicativo de"
@@ -312,30 +271,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Endereço do repositório"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Instalado:"
-
-msgctxt "install"
-msgid "Install"
-msgstr "Instalar"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Desinstalar"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Atualizar!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Existem atualizações disponíveis para alguns aplicativos instalados.\n"
-"Você quer vê-las?"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -343,16 +278,6 @@ msgid ""
 msgstr ""
 "A lista de repositórios usados mudou.\n"
 "Você deseja atualizá-los?"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr ""
-"Não foi possível se conectar ao servidor de arquivos ou o arquivo apk "
-"está corrompido!"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Pegando aplicativo de:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
@@ -415,8 +340,8 @@ msgid "Source Code"
 msgstr "Código Fonte"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Loja"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -561,9 +486,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Atualizado Recentemente"
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -599,10 +524,6 @@ msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
 msgstr "Verificando compatibilidade de aplicativos com o seu dispositivo..."
 
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
-msgstr "Baixando novos ícones..."
-
 msgctxt "no_permissions"
 msgid "No permissions are used."
 msgstr "Nenhuma permissão utilizada."
@@ -633,7 +554,86 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Mostrar só nomes de aplicativos e sumários na lista"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Manutenção"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Armazenamento"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Limpar todos os dados em cache"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Reiniciar"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Possível atualizar - Ver.:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Não foi possível conectar ao servidor!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Atualizações disponíveis"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Não foi possível conectar à rede."
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Tempo esgotado"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Não foi possível conectar ao servidor!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Baixar"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Instalado:"
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Instalar"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Desinstalar"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Atualizar!"
+
+#~ msgctxt "update_alrt"
+#~ msgid ""
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
+#~ msgstr ""
+#~ "Existem atualizações disponíveis para alguns aplicativos instalados.\n"
+#~ "Você quer vê-las?"
+
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr ""
+#~ "Não foi possível se conectar ao "
+#~ "servidor de arquivos ou o arquivo "
+#~ "apk está corrompido!"
+
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Pegando aplicativo de:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Loja"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
+#~ msgstr "Baixando novos ícones..."
 

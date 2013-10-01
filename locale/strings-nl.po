@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
 "PO-Revision-Date: 2013-05-15 16:15+0200\n"
 "Last-Translator: Rob <programming@ertai.nl>\n"
 "Language-Team: nl <LL@li.org>\n"
@@ -74,10 +74,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Verwittigen"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Opslag"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "buffer gedownloade apps"
@@ -89,14 +85,6 @@ msgstr "Bewaar gedownloade apk-bestanden op de SD-kaart"
 msgctxt "updates"
 msgid "Updates"
 msgstr "Updates"
-
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Maak gecached data leeg"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Reset"
 
 msgctxt "other"
 msgid "Other"
@@ -205,10 +193,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr ""
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Update mogelijk - Ver.:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "OK"
@@ -237,10 +221,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Kies bron om te verwijderen"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Kan niet verbinden met de server!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Vernieuw bronnen"
@@ -256,10 +236,6 @@ msgstr "Beschikbaar"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Updates"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Updates beschikbaar"
 
 #, fuzzy
 msgctxt "one_update_available"
@@ -284,22 +260,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Applicatie-lijst vernieuwen"
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Kan niet verbinden met het netwerk"
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Vervaltijd"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Kan niet verbinden met de server!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "Download"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "downloaden applicatie van"
@@ -308,30 +268,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Bron-adres"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Geïnstalleerd:"
-
-msgctxt "install"
-msgid "Install"
-msgstr "Installeren"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Deinstalleren"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Vernieuwen!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Er zijn updates beschikbaar voor sommige geïnstalleerde applicaties.\n"
-"Wil je ze zien?"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -339,14 +275,6 @@ msgid ""
 msgstr ""
 "De lijst van gebruikte bronnen is veranderd.\n"
 "Wil je ze vernieuwen?"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Kan niet verbinden met de server of apk-bestand is corrupt!"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Applicatie verkrijgen van:\n"
 
 #, fuzzy
 msgctxt "menu_update_repo"
@@ -410,8 +338,8 @@ msgid "Source Code"
 msgstr "Broncode"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Markt"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -557,9 +485,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr ""
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -585,10 +513,6 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
-
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -621,18 +545,83 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "installIncompatible"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Opslag"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Maak gecached data leeg"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Reset"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Update mogelijk - Ver.:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Kan niet verbinden met de server!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Updates beschikbaar"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Kan niet verbinden met het netwerk"
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Vervaltijd"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Kan niet verbinden met de server!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Download"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Geïnstalleerd:"
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Installeren"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Deinstalleren"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Vernieuwen!"
+
+#~ msgctxt "update_alrt"
 #~ msgid ""
-#~ "Android says this package is not "
-#~ "compatible with your device. Do you "
-#~ "want to try and install it anyway?"
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
 #~ msgstr ""
+#~ "Er zijn updates beschikbaar voor sommige geïnstalleerde applicaties.\n"
+#~ "Wil je ze zien?"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Onderhoud"
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr "Kan niet verbinden met de server of apk-bestand is corrupt!"
 
-#~ msgctxt "no_handler_app"
-#~ msgid "You don't have any app installed that can handle %s"
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Applicatie verkrijgen van:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Markt"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
 #~ msgstr ""
 

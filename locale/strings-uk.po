@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
 "PO-Revision-Date: 2013-03-23 20:56+0200\n"
 "Last-Translator: Rax <admin@dvizho.ks.ua>\n"
 "Language-Team: uk <LL@li.org>\n"
@@ -77,10 +77,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "Сповіщення"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "Сховище"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Зберігати звантажене"
@@ -92,14 +88,6 @@ msgstr "Зберігати звантажені APK-файли на карті �
 msgctxt "updates"
 msgid "Updates"
 msgstr "Оновлення"
-
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "Стерти всі кешовані дані"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "Стерти кеш"
 
 msgctxt "other"
 msgid "Other"
@@ -210,10 +198,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr ""
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "Наявна нова версія:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "Гаразд"
@@ -242,10 +226,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "Видалити репозиторій"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "Збій з’єднання з сервером."
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "Оновити репозиторії?"
@@ -261,10 +241,6 @@ msgstr "Наявне"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Оновлення"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "Наявні оновлення"
 
 #, fuzzy
 msgctxt "one_update_available"
@@ -289,22 +265,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "Оновлюю список програм..."
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "Нема з’єднання."
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "Час вийшов"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "Збій з’єднання з сервером."
-
-msgctxt "download"
-msgid "Download"
-msgstr "Звантажити"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "Звантажую програму"
@@ -313,30 +273,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "Адреса репозиторію"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "Встановлено: "
-
-msgctxt "install"
-msgid "Install"
-msgstr "Встановити"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "Стерти"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "Оновлення"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"Наявні оновлення встановлених програм.\n"
-"Показати їх?"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -344,14 +280,6 @@ msgid ""
 msgstr ""
 "Список репозиторіїв змінено.\n"
 "Оновити їх?"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr "Збій при з’єднанні з сервером або пошкоджений APK."
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "Звантажую програму:\n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
@@ -414,8 +342,8 @@ msgid "Source Code"
 msgstr "Сирці"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "Маркет"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -560,9 +488,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "Недавні оновлення"
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -588,10 +516,6 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
-
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
 msgstr ""
 
 msgctxt "no_permissions"
@@ -624,11 +548,83 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "Серйозні справи"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "Сховище"
 
-#~ msgctxt "no_handler_app"
-#~ msgid "You don't have any app installed that can handle %s"
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "Стерти всі кешовані дані"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "Стерти кеш"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "Наявна нова версія:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Збій з’єднання з сервером."
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "Наявні оновлення"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "Нема з’єднання."
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "Час вийшов"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "Збій з’єднання з сервером."
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "Звантажити"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "Встановлено: "
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "Встановити"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "Стерти"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "Оновлення"
+
+#~ msgctxt "update_alrt"
+#~ msgid ""
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
+#~ msgstr ""
+#~ "Наявні оновлення встановлених програм.\n"
+#~ "Показати їх?"
+
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr "Збій при з’єднанні з сервером або пошкоджений APK."
+
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "Звантажую програму:\n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "Маркет"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
 #~ msgstr ""
 

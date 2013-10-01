@@ -4,7 +4,7 @@
   <string name="searchres_oneapp">\'%s\' غا ماس كېلىدىغان بىر ئەپنى تاپتى:</string>
   <string name="searchres_noapps">\'%s\' غا ماس كېلىدىغان ھېچقانداق ئەپنى تاپالمىدى</string>
   <string name="SignatureMismatch">بۇ يېڭى نەشرى كونا نەشرىنىڭكى بىلەن پەرقلىق ئاچقۇچ بىلەن ئىمزا قويۇلغان. ئالدى بىلەن كونا نەشرىنى ئۆچۈرۈۋېتىپ ئاندىن يېڭى نەشرىنى ئورنىتىڭ. بۇ مەشغۇلاتنى قىلىپ ئاندىن قايتا سىناڭ. (دىققەت كونا نەشرى ئۆچۈرۈلسە شۇ ئەپتە ساقلانغان ھەممە سانلىق مەلۇماتلارمۇ ئۆچۈرۈلىدۇ)</string>
-  <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟</string>
+  <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدىغاندەك تۇرىدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟</string>
   <string name="installDowngrade">بۇ ئەپنىڭ دەرىجىسىنى تۆۋەنلىتىشنى سىناۋاتىسىز. بۇ مەشغۇلاتنى ئىجرا قىلىش داۋامىدا كاشىلا كۆرۈلۈشى ۋە سانلىق مەلۇماتلىرىڭىزنى يوقۇتۇپ قويۇشىڭىز مۇمكىن. ئۇنى سىناپ دەرىجىسىنى تۆۋەنلىتىۋېرەمسىز؟</string>
   <string name="version">نەشرى</string>
   <string name="n_versions_available">%d نەشرى بار</string>
@@ -16,7 +16,7 @@
   <string name="updates">يېڭىلانمىلار</string>
   <string name="clear_all_cached_data">غەملەنگەنلەرنىڭ ھەممىسىنى تازىلا</string>
   <string name="reset">ئەسلىگە قايتۇر</string>
-  <string name="maintenance">ئاسراش</string>
+  <string name="other">باشقا</string>
   <string name="notify_updates_available">يېڭى يېڭىلانمىلار بولسا ئەسكەرت</string>
   <string name="update_apps_list">ئەپ تىزىمىنى خەزىنەدىن ئۆزلۈكىدىن يېڭىلا</string>
   <string name="update_history">يېڭىلاش تارىخى</string>
@@ -82,6 +82,7 @@
   <string name="menu_share">ھەمبەھىر</string>
   <string name="menu_install">ئورنات</string>
   <string name="menu_uninstall">ئۆچۈر</string>
+  <string name="menu_ignore">يېڭىلانمىلارغا پەرۋا قىلما</string>
   <string name="menu_website">تورتۇرا</string>
   <string name="menu_issues">مەسىلىلەر</string>
   <string name="menu_source">ئەسلى كود</string>
@@ -130,7 +131,7 @@
   <string name="permissions_for_long">%s نەشرىنىڭ ھوقۇقلىرى</string>
   <string name="showPermissions">ھوقۇقلارنى كۆرسەت</string>
   <string name="showPermissions_long">ئەپكە زۆرۈر بولغان ھوقۇق تىزىمىنى كۆرسىتىدۇ</string>
-  <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلىدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
+  <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
   <string name="compactlayout">ئىخچام جايلاشتۇرۇش</string>
   <string name="compactlayout_long">تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ</string>
 </resources>

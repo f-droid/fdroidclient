@@ -16,7 +16,6 @@
   <string name="updates">Actualitzacions</string>
   <string name="clear_all_cached_data">Neteja les dades de la memòria cau</string>
   <string name="reset">Reinicia</string>
-  <string name="maintenance">Manteniment</string>
   <string name="notify_updates_available">Avisa\'m quan hi hagi noves actualitzacions</string>
   <string name="update_apps_list">Actualitza de forma automàtica la llista d\'aplicacions dels dipòsits</string>
   <string name="update_history">Actualitzacions</string>

@@ -15,7 +15,6 @@
   <string name="updates">Оновлення</string>
   <string name="clear_all_cached_data">Стерти всі кешовані дані</string>
   <string name="reset">Стерти кеш</string>
-  <string name="maintenance">Серйозні справи</string>
   <string name="notify_updates_available">Сповіщати про наявність оновлень</string>
   <string name="update_apps_list">Автоматично оновлювати список програм із репозиторію</string>
   <string name="update_history">Оновити репозиторії?</string>

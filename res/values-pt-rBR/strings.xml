@@ -4,7 +4,7 @@
   <string name="searchres_oneapp">Encontramos um aplicativo correspondente a \'%s\':</string>
   <string name="searchres_noapps">Não foram encontrados aplicativos correspondentes a \'%s\'</string>
   <string name="SignatureMismatch">A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova versão, desinstale primeiro a antiga. Por favor, faça isso e tente novamente. (Note que a desinstalação apaga todos os dados internos armazenados pelo aplicativo)</string>
-  <string name="installIncompatible">O Android diz que esse pacote não é compatível com o seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
+  <string name="installIncompatible">Aparentemente esse pacote não é compatível com o seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
   <string name="installDowngrade">Você está tentando desatualizar este aplicativo. Isso pode causar mal funcionamento e eventualmente perda de dados. Você quer tentar desatualizá-lo mesmo assim?</string>
   <string name="version">Versão</string>
   <string name="n_versions_available">%d versões disponíveis</string>
@@ -16,7 +16,7 @@
   <string name="updates">Atualizações</string>
   <string name="clear_all_cached_data">Limpar todos os dados em cache</string>
   <string name="reset">Reiniciar</string>
-  <string name="maintenance">Manutenção</string>
+  <string name="other">Outro</string>
   <string name="notify_updates_available">Notificar quando novas atualizações estiverem disponíveis</string>
   <string name="update_apps_list">Atualizar a lista de aplicativos automaticamente a partir dos repositórios</string>
   <string name="update_history">Atualizar histórico</string>

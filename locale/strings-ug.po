@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-09-06 13:30+0100\n"
-"PO-Revision-Date: 2013-08-09 04:18+0200\n"
+"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"PO-Revision-Date: 2013-09-09 04:43+0200\n"
 "Last-Translator: Abduqadir <sahran.ug@gmail.com>\n"
 "Language-Team: ug <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -43,12 +43,13 @@ msgstr ""
 "مەشغۇلاتنى قىلىپ ئاندىن قايتا سىناڭ. (دىققەت كونا نەشرى ئۆچۈرۈلسە شۇ "
 "ئەپتە ساقلانغان ھەممە سانلىق مەلۇماتلارمۇ ئۆچۈرۈلىدۇ)"
 
-#, fuzzy
 msgctxt "installIncompatible"
 msgid ""
 "It seems like this package is not compatible with your device. Do you "
 "want to try and install it anyway?"
-msgstr "بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟"
+msgstr ""
+"بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدىغاندەك تۇرىدۇ، ئۇنى سىناپ "
+"ئورنىتىۋېرەمسىز؟"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -78,10 +79,6 @@ msgctxt "notify"
 msgid "Notify"
 msgstr "ئۇقتۇرۇش"
 
-msgctxt "storage"
-msgid "Storage"
-msgstr "ساقلىغۇچ"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "ئەپلەر غەملەككە چۈشۈرۈلدى"
@@ -94,17 +91,9 @@ msgctxt "updates"
 msgid "Updates"
 msgstr "يېڭىلانمىلار"
 
-msgctxt "clear_all_cached_data"
-msgid "Clear all cached data"
-msgstr "غەملەنگەنلەرنىڭ ھەممىسىنى تازىلا"
-
-msgctxt "reset"
-msgid "Reset"
-msgstr "ئەسلىگە قايتۇر"
-
 msgctxt "other"
 msgid "Other"
-msgstr ""
+msgstr "باشقا"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
@@ -208,10 +197,6 @@ msgctxt "added_on"
 msgid "Added on %s"
 msgstr "%s دا قوشۇلغان"
 
-msgctxt "installed_update"
-msgid "Update possible - Ver.:"
-msgstr "يېڭىلانما بار - نەشرى:"
-
 msgctxt "ok"
 msgid "OK"
 msgstr "جەزملە"
@@ -240,10 +225,6 @@ msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
 msgstr "چىقىرىۋېتىدىغان خەزىنەنى تاللاڭ"
 
-msgctxt "server_connection_error"
-msgid "Could not connect to server!"
-msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
-
 msgctxt "repo_update_title"
 msgid "Update repositories"
 msgstr "خەزىنە يېڭىلا"
@@ -259,10 +240,6 @@ msgstr "ئىشلىتىشچان"
 msgctxt "tab_updates"
 msgid "Updates"
 msgstr "يېڭىلانمىلار"
-
-msgctxt "update_available"
-msgid "Updates available"
-msgstr "يېڭىلانمىلار بار"
 
 msgctxt "one_update_available"
 msgid "1 update is available."
@@ -285,22 +262,6 @@ msgctxt "process_update_msg"
 msgid "Updating application list..."
 msgstr "ئەپ تىزىمىنى يېڭىلاۋاتىدۇ…"
 
-msgctxt "connection_error"
-msgid "Could not connect to the network."
-msgstr "تورغا باغلىنالمىدى."
-
-msgctxt "connection_timeout"
-msgid "Timeout"
-msgstr "ۋاقىت ھالقىش"
-
-msgctxt "connection_error_msg"
-msgid "Could not connect to server!"
-msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
-
-msgctxt "download"
-msgid "Download"
-msgstr "چۈشۈر"
-
 msgctxt "download_server"
 msgid "Getting application from"
 msgstr "ئەپكە ئېرىشىش ئورنى "
@@ -309,30 +270,6 @@ msgctxt "repo_add_url"
 msgid "Repository address"
 msgstr "خەزىنە ئادرېسى"
 
-msgctxt "isinst"
-msgid "Installed:"
-msgstr "ئورنىتىلغان: "
-
-msgctxt "install"
-msgid "Install"
-msgstr "ئورنات"
-
-msgctxt "uninstall"
-msgid "Uninstall"
-msgstr "ئۆچۈر"
-
-msgctxt "update"
-msgid "Update!"
-msgstr "يېڭىلا!"
-
-msgctxt "update_alrt"
-msgid ""
-"There are updates available for some installed applications.\n"
-"Do you want to see them?"
-msgstr ""
-"ئورنىتىلغان بەزى ئەپلەرنىڭ يېڭىلانمىسى بار.\n"
-"ئۇلارنى كۆرەمسىز؟"
-
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
@@ -340,14 +277,6 @@ msgid ""
 msgstr ""
 "ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.\n"
 "ئۇلارنى يېڭىلامسىز؟"
-
-msgctxt "error_download_alrt"
-msgid "Could not connect to server or apk file is corrupt!"
-msgstr "مۇلازىمېتىرغا باغلىنالمىدى ياكى apk ھۆججەت بۇزۇق!"
-
-msgctxt "download_alrt"
-msgid "Getting application from:\n"
-msgstr "ئەپلەرگە ئېرىشىش ئورنى: \n"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
@@ -395,7 +324,7 @@ msgstr "ئۆچۈر"
 
 msgctxt "menu_ignore"
 msgid "Ignore Updates"
-msgstr ""
+msgstr "يېڭىلانمىلارغا پەرۋا قىلما"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -410,8 +339,8 @@ msgid "Source Code"
 msgstr "ئەسلى كود"
 
 msgctxt "menu_market"
-msgid "Market"
-msgstr "بازار"
+msgid "Google Play"
+msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
@@ -556,9 +485,9 @@ msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
 msgstr "يېقىنقى يېڭىلانغانلار"
 
-#. status_download takes four parameters:       - Repository (url)       -
-#. Downloaded size (human readable)       - Total size (human readable)       -
-#. Percentage complete (int between 0-100)
+#. status_download takes four parameters:           - Repository (url)
+#. - Downloaded size (human readable)           - Total size (human readable)
+#. - Percentage complete (int between 0-100)
 #, c-format
 msgctxt "status_download"
 msgid ""
@@ -594,10 +523,6 @@ msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
 msgstr "ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…"
 
-msgctxt "status_downloading_icons"
-msgid "Downloading new icons…"
-msgstr "يېڭى سىنبەلگەلەرنى چۈشۈرۈۋاتىدۇ…"
-
 msgctxt "no_permissions"
 msgid "No permissions are used."
 msgstr "ھېچقانداق ھوقۇق ئىشلەتمەيدۇ."
@@ -615,10 +540,10 @@ msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
 msgstr "ئەپكە زۆرۈر بولغان ھوقۇق تىزىمىنى كۆرسىتىدۇ"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any available app that can handle %s"
-msgstr "سىز %s نى بىر تەرەپ قىلىدىغان ھېچقانداق ئەپ ئورناتمىغان"
+msgstr "سىز %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئەپ ئورناتمىغان"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
@@ -628,7 +553,83 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ"
 
-#~ msgctxt "maintenance"
-#~ msgid "Maintenance"
-#~ msgstr "ئاسراش"
+#~ msgctxt "storage"
+#~ msgid "Storage"
+#~ msgstr "ساقلىغۇچ"
+
+#~ msgctxt "clear_all_cached_data"
+#~ msgid "Clear all cached data"
+#~ msgstr "غەملەنگەنلەرنىڭ ھەممىسىنى تازىلا"
+
+#~ msgctxt "reset"
+#~ msgid "Reset"
+#~ msgstr "ئەسلىگە قايتۇر"
+
+#~ msgctxt "installed_update"
+#~ msgid "Update possible - Ver.:"
+#~ msgstr "يېڭىلانما بار - نەشرى:"
+
+#~ msgctxt "server_connection_error"
+#~ msgid "Could not connect to server!"
+#~ msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
+
+#~ msgctxt "update_available"
+#~ msgid "Updates available"
+#~ msgstr "يېڭىلانمىلار بار"
+
+#~ msgctxt "connection_error"
+#~ msgid "Could not connect to the network."
+#~ msgstr "تورغا باغلىنالمىدى."
+
+#~ msgctxt "connection_timeout"
+#~ msgid "Timeout"
+#~ msgstr "ۋاقىت ھالقىش"
+
+#~ msgctxt "connection_error_msg"
+#~ msgid "Could not connect to server!"
+#~ msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
+
+#~ msgctxt "download"
+#~ msgid "Download"
+#~ msgstr "چۈشۈر"
+
+#~ msgctxt "isinst"
+#~ msgid "Installed:"
+#~ msgstr "ئورنىتىلغان: "
+
+#~ msgctxt "install"
+#~ msgid "Install"
+#~ msgstr "ئورنات"
+
+#~ msgctxt "uninstall"
+#~ msgid "Uninstall"
+#~ msgstr "ئۆچۈر"
+
+#~ msgctxt "update"
+#~ msgid "Update!"
+#~ msgstr "يېڭىلا!"
+
+#~ msgctxt "update_alrt"
+#~ msgid ""
+#~ "There are updates available for some installed applications.\n"
+#~ "Do you want to see them?"
+#~ msgstr ""
+#~ "ئورنىتىلغان بەزى ئەپلەرنىڭ يېڭىلانمىسى بار.\n"
+#~ "ئۇلارنى كۆرەمسىز؟"
+
+#~ msgctxt "error_download_alrt"
+#~ msgid "Could not connect to server or apk file is corrupt!"
+#~ msgstr "مۇلازىمېتىرغا باغلىنالمىدى ياكى apk ھۆججەت بۇزۇق!"
+
+#~ msgctxt "download_alrt"
+#~ msgid "Getting application from:\n"
+#~ msgstr "ئەپلەرگە ئېرىشىش ئورنى: \n"
+
+#~ msgctxt "menu_market"
+#~ msgid "Market"
+#~ msgstr "بازار"
+
+#~ msgctxt "status_downloading_icons"
+#~ msgid "Downloading new icons…"
+#~ msgstr "يېڭى سىنبەلگەلەرنى چۈشۈرۈۋاتىدۇ…"
 

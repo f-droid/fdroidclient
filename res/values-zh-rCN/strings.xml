@@ -15,7 +15,6 @@
   <string name="updates">升级</string>
   <string name="clear_all_cached_data">清空所有缓存数据</string>
   <string name="reset">重新设定</string>
-  <string name="maintenance">维护</string>
   <string name="notify_updates_available">当有更新时，通知栏提醒</string>
   <string name="update_apps_list">自动更新应用列表</string>
   <string name="update_history">更新应用源</string>

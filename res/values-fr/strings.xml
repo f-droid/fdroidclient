@@ -4,20 +4,20 @@
   <string name="searchres_oneapp">Une application trouvée contenant \'%s\':</string>
   <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller l\'application écrasera les données enregistrées par l\'application).</string>
-  <string name="installIncompatible">Android dit que ce paquetage n\'est pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
-  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous continuer ?</string>
+  <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
+  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même revenir à une ancienne version?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versions disponibles</string>
   <string name="n_version_available">%d version disponible</string>
   <string name="notify">Notifier</string>
-  <string name="storage">Mémoire</string>
-  <string name="cache_downloaded">Garder en mémoire cache les applications téléchargées</string>
+  <string name="storage">Stockage</string>
+  <string name="cache_downloaded">Stocker les applications téléchargées sur l\'appareil</string>
   <string name="keep_downloaded">Garder les fichiers apk téléchargés sur la carte SD</string>
   <string name="updates">Mises à jour</string>
   <string name="clear_all_cached_data">Vider la mémoire cache</string>
   <string name="reset">Réinitialisation</string>
-  <string name="maintenance">Maintenance</string>
-  <string name="notify_updates_available">Notifier quand de nouvelles mises à jour sont disponibles</string>
+  <string name="other">Autres</string>
+  <string name="notify_updates_available">Avertir quand de nouvelles mises à jour sont disponibles</string>
   <string name="update_apps_list">Mettre à jour automatiquement la liste d\'applications à partir des dépôts</string>
   <string name="update_history">Historique des mises à jour</string>
   <string name="update_history_desc">Jours pour présenter les applications nouvelles/mises à jour</string>
@@ -31,10 +31,10 @@
   <string name="about_title">À propos de F-Droid</string>
   <string name="about_desc">Originellement basée sur Aptoide.\nPubliée sous licence GNU GPL v3.</string>
   <string name="about_site">Site Web :</string>
-  <string name="about_mail">Courriel:</string>
+  <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
-  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter une, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
+  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Pas installée</string>
   <string name="added_on">Ajouté le %s</string>
@@ -82,6 +82,7 @@
   <string name="menu_share">Partager</string>
   <string name="menu_install">Installer</string>
   <string name="menu_uninstall">Supprimer</string>
+  <string name="menu_ignore">Ignorer les mises à jour</string>
   <string name="menu_website">Site Web</string>
   <string name="menu_issues">Problèmes</string>
   <string name="menu_source">Code source</string>
@@ -132,4 +133,5 @@
   <string name="showPermissions_long">Afficher la liste des autorisations que nécessite l\'application</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
+  <string name="compactlayout_long">Afficher seulement les noms d\'applications et les résumés dans la liste</string>
 </resources>

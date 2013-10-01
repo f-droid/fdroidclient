@@ -16,7 +16,6 @@
   <string name="updates">Actualizacións</string>
   <string name="clear_all_cached_data">Limpar todos os datos da caché</string>
   <string name="reset">Restablecer</string>
-  <string name="maintenance">Mantemento</string>
   <string name="notify_updates_available">Avisarme cando estean dispoñíbles novas actualizacións</string>
   <string name="update_apps_list">Actualizar automáticamente a lista de aplicacións do repositorio</string>
   <string name="update_history">Histórico de actualizacións</string>

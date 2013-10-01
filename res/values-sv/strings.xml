@@ -16,7 +16,6 @@
   <string name="updates">Uppdateringar</string>
   <string name="clear_all_cached_data">Rensa alla cachade data</string>
   <string name="reset">Återställ</string>
-  <string name="maintenance">Underhåll</string>
   <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
   <string name="update_apps_list">Uppdatera applistan från förråd automatiskt</string>
   <string name="update_history">Uppdateringshistorik</string>
