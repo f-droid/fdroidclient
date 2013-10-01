@@ -1127,7 +1127,7 @@ public class DB {
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         values.put("compatible", upapp.compatible ? 1 : 0);
-        values.put("ignoreUpdates", upapp.ignoreUpdates ? 1 : 0);
+        values.put("ignoreUpdates", oldapp.ignoreUpdates ? 1 : 0);
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
         } else {
