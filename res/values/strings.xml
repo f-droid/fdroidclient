@@ -30,8 +30,7 @@
 
 	<string name="about_title">About F-Droid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
-		GNU GPLv3
-		license.</string>
+		GNU GPLv3 license.</string>
 	<string name="about_site">Website: </string>
 	<string name="about_sitec">http://f-droid.org</string>
 	<string name="about_mail">Email: </string>
@@ -85,8 +84,6 @@
 	<string name="menu_add_repo">New Repository</string>
 	<string name="menu_rem_repo">Remove Repository</string>
 
-
-
 	<string name="menu_launch">Run</string>
 	<string name="menu_share">Share</string>
 	<string name="menu_install">Install</string>
@@ -95,7 +92,6 @@
 	<string name="menu_website">Website</string>
 	<string name="menu_issues">Issues</string>
 	<string name="menu_source">Source Code</string>
-	<string name="menu_market">Google Play</string>
 	<string name="menu_update">Update</string>
 	<string name="menu_bitcoin">Bitcoin</string>
 	<string name="menu_flattr">Flattr</string>
@@ -105,8 +101,6 @@
 	<string name="details_notinstalled">Not installed</string>
 	<string name="corrupt_download">Downloaded file is corrupt</string>
 	<string name="download_cancelled">Download cancelled</string>
-
-
 
 	<string name="antifeatures">Anti-Features</string>
 

@@ -165,13 +165,12 @@ public class AppDetails extends ListActivity {
     private static final int WEBSITE = Menu.FIRST + 3;
     private static final int ISSUES = Menu.FIRST + 4;
     private static final int SOURCE = Menu.FIRST + 5;
-    private static final int MARKET = Menu.FIRST + 6;
-    private static final int LAUNCH = Menu.FIRST + 7;
-    private static final int SHARE = Menu.FIRST + 8;
-    private static final int DONATE = Menu.FIRST + 9;
-    private static final int BITCOIN = Menu.FIRST + 10;
-    private static final int FLATTR = Menu.FIRST + 11;
-    private static final int DONATE_URL = Menu.FIRST + 12;
+    private static final int LAUNCH = Menu.FIRST + 6;
+    private static final int SHARE = Menu.FIRST + 7;
+    private static final int DONATE = Menu.FIRST + 8;
+    private static final int BITCOIN = Menu.FIRST + 9;
+    private static final int FLATTR = Menu.FIRST + 10;
+    private static final int DONATE_URL = Menu.FIRST + 11;
 
     private DB.App app;
     private int app_currentvercode;
@@ -636,8 +635,6 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, SOURCE, 5, R.string.menu_source).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        menu.add(Menu.NONE, MARKET, 6, R.string.menu_market).setIcon(
-                android.R.drawable.ic_menu_view);
 
         if (app.detail_bitcoinAddr != null && app.detail_flattrID != null && 
                 app.detail_donateURL != null) {
@@ -712,10 +709,6 @@ public class AppDetails extends ListActivity {
 
         case SOURCE:
             tryOpenUri(app.detail_sourceURL);
-            return true;
-
-        case MARKET:
-            tryOpenUri("https://play.google.com/store/apps/details?id=" + app.id);
             return true;
 
         case BITCOIN:
