@@ -32,7 +32,7 @@
         android:allowBackup="true"
         android:supportsRtl="false" >
         <activity
-            android:name="FDroid"
+            android:name=".FDroid"
             android:configChanges="keyboardHidden|orientation|screenSize" >
 
             <intent-filter>
@@ -63,18 +63,22 @@
         </activity>
 
         <activity
-            android:name="ManageRepo"
+            android:name=".ManageRepo"
             android:label="@string/menu_manage"
-            android:parentActivityName="FDroid" >
+            android:parentActivityName=".FDroid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
         </activity>
 
-        <activity android:name="Settings" />
-
         <activity
-            android:name="AppDetails"
+            android:name=".AppDetails"
             android:label="@string/app_details"
             android:exported="true"
-            android:parentActivityName="FDroid" >
+            android:parentActivityName=".FDroid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -109,24 +113,25 @@
                 <data android:scheme="https" android:host="www.f-droid.org"
                     android:pathPrefix="/app/" />
             </intent-filter>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="FDroid" />
         </activity>
         <activity
             android:label="@string/menu_preferences"
             android:name=".PreferencesActivity"
-            android:parentActivityName="FDroid" >
+            android:parentActivityName=".FDroid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="FDroid" />
+                android:value=".FDroid" />
         </activity>
         <activity
-            android:name="SearchResults"
+            android:name=".SearchResults"
             android:label="@string/search_results"
             android:exported="true"
             android:launchMode="singleTop"
-            android:parentActivityName="FDroid" >
+            android:parentActivityName=".FDroid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -152,19 +157,16 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="FDroid" />
         </activity>
 
-        <receiver android:name="StartupReceiver" >
+        <receiver android:name=".StartupReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
 
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
-        <receiver android:name="PackageReceiver" >
+        <receiver android:name=".PackageReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_UPGRADED" />
@@ -174,7 +176,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="UpdateService" />
+        <service android:name=".UpdateService" />
     </application>
 
 </manifest>
