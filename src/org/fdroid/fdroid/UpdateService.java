@@ -104,7 +104,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     public int getNumUpdates(List<DB.App> apps) {
         int count = 0;
         for (DB.App app : apps) {
-            if (!app.toUpdate)
+            if (app.toUpdate)
                 count++;
         }
         return count;
