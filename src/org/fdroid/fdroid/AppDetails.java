@@ -55,6 +55,7 @@ import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.Html;
 import android.text.Html.TagHandler;
+import android.text.Spanned;
 import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -478,8 +479,9 @@ public class AppDetails extends ListActivity {
                 }
             }
         }
-        tv.setText(Html.fromHtml(app.detail_description, null,
-                new HtmlTagHandler()));
+        Spanned desc = Html.fromHtml(
+                app.detail_description, null, new HtmlTagHandler());
+        tv.setText(desc.subSequence(0, desc.length() - 1));
 
         tv = (TextView) infoView.findViewById(R.id.appid);
         if (pref_expert)
