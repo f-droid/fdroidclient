@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2011-01-20 03:30+0200\n"
 "Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
 "Language-Team: sr <LL@li.org>\n"
@@ -344,10 +344,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Изворни Код"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Ажурирај"
@@ -554,83 +550,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "Остава за Апликације"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "Обриши све сачуване податке"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "Ресетуј"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "Могуће је ажурирати - Вер.:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Није успело повезивање са сервером!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "Нове верзије на располагању"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "Није било могуће накачити се на мрежу."
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "Истекло Време"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Није успело повезивање са сервером!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "Преузимање"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "Инсталирано:"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "Инсталирај"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "Уклони"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "Ажурирај!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "Неке апликације је могуће ажурирати.\n"
-#~ "Желите ли да видите листу?"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "Грешка у повезивању на сервер или је apk датотека покварена!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "Апликација се скида са:\n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "Тржиште"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
+#~ msgid "Google Play"
 #~ msgstr ""
 

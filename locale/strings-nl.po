@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-05-15 16:15+0200\n"
 "Last-Translator: Rob <programming@ertai.nl>\n"
 "Language-Team: nl <LL@li.org>\n"
@@ -337,10 +337,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Broncode"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Update"
@@ -545,83 +541,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "Opslag"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "Maak gecached data leeg"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "Reset"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "Update mogelijk - Ver.:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Kan niet verbinden met de server!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "Updates beschikbaar"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "Kan niet verbinden met het netwerk"
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "Vervaltijd"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Kan niet verbinden met de server!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "Download"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "Geïnstalleerd:"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "Installeren"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "Deinstalleren"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "Vernieuwen!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "Er zijn updates beschikbaar voor sommige geïnstalleerde applicaties.\n"
-#~ "Wil je ze zien?"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "Kan niet verbinden met de server of apk-bestand is corrupt!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "Applicatie verkrijgen van:\n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "Markt"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
+#~ msgid "Google Play"
 #~ msgstr ""
 

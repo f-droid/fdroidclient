@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-08-13 14:27+0200\n"
 "Last-Translator: som <tursom@gmail.com>\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -340,10 +340,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Исходный код"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Обновить"
@@ -550,83 +546,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Показывать в списке только названия и краткие описания приложений"
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "Хранилище"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "Очистить все временные данные"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "Очистка"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "Доступно обновление до версии:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Нет соединения с сервером!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "Доступные обновления"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "Нет соединения."
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "Время вышло"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Нет соединения с сервером!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "Загрузка"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "Установлено:"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "Установить"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "Удалить"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "Обновление!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "Обнаружены обновления для некоторых установленных приложений.\n"
-#~ "Показать их?"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "Нет соединения с сервером или apk файл повреждён!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "Взять приложение из:\n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "Маркет"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
-#~ msgstr "Загрузка новых значков..."
+#~ msgid "Google Play"
+#~ msgstr ""
 

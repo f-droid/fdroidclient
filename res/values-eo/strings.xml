@@ -4,7 +4,6 @@
   <string name="n_versions_available">%d versioj disponeblaj</string>
   <string name="n_version_available">%d versio disponebla</string>
   <string name="notify">Sciigi</string>
-  <string name="storage">Konservado</string>
   <string name="updates">Ĝisdatigoj</string>
   <string name="update_history">Ĝisdatigi deponejojn</string>
   <string name="app_name">F-Droid</string>
@@ -25,16 +24,10 @@
   <string name="tab_installed">Instalitaj</string>
   <string name="tab_noninstalled">Disponeblaj</string>
   <string name="tab_updates">Ĝisdatigoj</string>
-  <string name="update_available">Ĝisdatigoj disponeblaj</string>
   <string name="one_update_available">Ĝisdatigoj disponeblaj</string>
   <string name="many_updates_available">Ĝisdatigoj disponeblaj</string>
   <string name="fdroid_updates_available">Ĝisdatigoj disponeblaj</string>
   <string name="process_wait_title">Bonvolu atendi</string>
-  <string name="connection_timeout">Tempolimo</string>
-  <string name="download">Elŝuti</string>
-  <string name="install">Instali</string>
-  <string name="uninstall">Malinstali</string>
-  <string name="update">Ĝisdatigu!</string>
   <string name="menu_update_repo">Ĝisdatigi deponejojn</string>
   <string name="menu_manage">Administri deponejojn</string>
   <string name="menu_preferences">Agordoj</string>

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-09-13 15:30+0200\n"
 "Last-Translator: nodiscc <nodiscc@gmail.com>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -339,10 +339,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Code source"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Mise à jour"
@@ -554,84 +550,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Afficher seulement les noms d'applications et les résumés dans la liste"
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "Stockage"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "Vider la mémoire cache"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "Réinitialisation"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "Mise à jour possible - Ver.:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Connection au serveur impossible!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "Mises à jour disponibles"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "Connection au réseau impossible."
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "Délai dépassé"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Connection au serveur impossible!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "Téléchargement"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "Installé:"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "Installer"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "Supprimer"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "Mise à jour!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "Des mises à jour sont disponibles pour certaines applications.\n"
-#~ "\n"
-#~ "Désirez-vous les voir ?"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "Connections au serveur impossible ou fichier apk corrompu!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "Réception d'application de:\n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "Marché"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
-#~ msgstr "Téléchargement de nouvelles icônes..."
+#~ msgid "Google Play"
+#~ msgstr ""
 

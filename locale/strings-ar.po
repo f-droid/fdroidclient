@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-04-24 00:11+0200\n"
 "Last-Translator: Abdellah <sneetsher@gmail.com>\n"
 "Language-Team: ar <LL@li.org>\n"
@@ -325,10 +325,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr ""
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr ""
@@ -530,81 +526,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr ""
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr ""
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr ""
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr ""
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr ""
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr ""
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr ""
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr ""
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr ""
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr ""
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr ""
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr ""
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr ""
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr ""
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr ""
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr ""
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr ""
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
+#~ msgid "Google Play"
 #~ msgstr ""
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
-"PO-Revision-Date: 2013-09-09 04:43+0200\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
+"PO-Revision-Date: 2013-10-08 05:13+0200\n"
 "Last-Translator: Abduqadir <sahran.ug@gmail.com>\n"
 "Language-Team: ug <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -338,10 +338,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "ئەسلى كود"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "يېڭىلا"
@@ -553,83 +549,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ"
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "ساقلىغۇچ"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "غەملەنگەنلەرنىڭ ھەممىسىنى تازىلا"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "ئەسلىگە قايتۇر"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "يېڭىلانما بار - نەشرى:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "يېڭىلانمىلار بار"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "تورغا باغلىنالمىدى."
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "ۋاقىت ھالقىش"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "مۇلازىمېتىرغا باغلىنالمىدى!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "چۈشۈر"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "ئورنىتىلغان: "
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "ئورنات"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "ئۆچۈر"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "يېڭىلا!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "ئورنىتىلغان بەزى ئەپلەرنىڭ يېڭىلانمىسى بار.\n"
-#~ "ئۇلارنى كۆرەمسىز؟"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "مۇلازىمېتىرغا باغلىنالمىدى ياكى apk ھۆججەت بۇزۇق!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "ئەپلەرگە ئېرىشىش ئورنى: \n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "بازار"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
-#~ msgstr "يېڭى سىنبەلگەلەرنى چۈشۈرۈۋاتىدۇ…"
+#~ msgid "Google Play"
+#~ msgstr "Google Play"
 

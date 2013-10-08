@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-04-03 17:19+0200\n"
 "Last-Translator: PatrikSelin <patrik.selin@gmail.com>\n"
 "Language-Team: fi <LL@li.org>\n"
@@ -340,10 +340,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Lähdekoodi"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Päivitä"
@@ -547,83 +543,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "Varasto"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "Pyyhi kaikki välimuistissa oleva data"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "Resetoi"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "Päivittäminen mahdollista - Ver.:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Yhteyttä palvelimeen ei voitu muodostaa!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "Päivityksiä saatavilla"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "Verkkoyhteyttä ei voitu muodostaa."
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "Aikakatkaisu"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Yhteyttä palvelimeen ei voitu muodostaa!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "Lataa"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "Asennettu:"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "Asenna"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "Poista"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "Päivitä!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "Päivityksiä on saatavilla joillekin asennetuille sovelluksille.\n"
-#~ "Tahdotko katsoa niitä?"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "Yhteyttö palvelimeen ei voitu muodostaa tai apk-tiedosto on viallinen!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "Ladataan sovellusta lähteestä:\n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "Kauppa"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
+#~ msgid "Google Play"
 #~ msgstr ""
 

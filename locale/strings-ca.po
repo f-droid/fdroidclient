@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-08-17 16:22+0200\n"
 "Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -339,10 +339,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Codi font"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Actualitza"
@@ -556,87 +552,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Mostra només els noms de les aplicacions i els resums a la llista"
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "Emmagatzament"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "Neteja les dades de la memòria cau"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "Reinicia"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "Hi ha una actualització - Ver.:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "No ha estat possible connectar amb el servidor!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "Actualitzacions disponibles"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "No ha estàt possible connectar amb la xarxa."
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "Temps excedit"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "No ha estàt possible connectar amb el servidor!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "Baixa-ho"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "Instal·lat:"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "Instal·la"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "Desinstal·la"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "Actualitza!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "Hi ha actualitzacions disponibles per "
-#~ "algunes aplicacions instal·lades.\n"
-#~ "Les voleu veure?"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr ""
-#~ "No ha estat possible connectar amb "
-#~ "el servidor o l'arxiu apk està "
-#~ "corrupte!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "S'està obtenint l'aplicació des de:\n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "Mercat"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
-#~ msgstr "S'està baixant les noves icones..."
+#~ msgid "Google Play"
+#~ msgstr ""
 

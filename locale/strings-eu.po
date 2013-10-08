@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-08-17 17:24+0200\n"
 "Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: eu <LL@li.org>\n"
@@ -338,10 +338,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Iturburu-kodea"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Eguneratu"
@@ -549,83 +545,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "Biltegiratzea"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "Ezabatu cache-ko datu guztiak"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "Berrezarri"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "Eguneraketa posiblea - Ber.:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Ezin izan da zerbitzarira konektatu!"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "Eguneraketak eskuragarri"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "Ezin izan da sarera konektatu."
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "Denbora-muga"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "Ezin izan da zerbitzarira konektatu!"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "Deskargatu"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "Instalatuta:"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "Instalatu"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "Desinstalatu"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "Eguneraketa!"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "Instalatutako zenbait aplikaziorentzako eguneraketak daude.\n"
-#~ "Ikusi nahi dituzu?"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "Ezin izan da zerbitzarira konektatu edo apk fitxategia hondatuta dago!"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "Aplikazioa eskuratzen hemendik:\n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "Merkatua"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
+#~ msgid "Google Play"
 #~ msgstr ""
 

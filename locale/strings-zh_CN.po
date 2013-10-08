@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-01 08:04+0100\n"
+"POT-Creation-Date: 2013-10-08 12:21+0100\n"
 "PO-Revision-Date: 2013-03-22 11:36+0200\n"
 "Last-Translator: shenshang428 <shenshang428@gmail.com>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -334,10 +334,6 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "源代码"
 
-msgctxt "menu_market"
-msgid "Google Play"
-msgstr ""
-
 msgctxt "menu_update"
 msgid "Update"
 msgstr "升级"
@@ -541,83 +537,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "storage"
-#~ msgid "Storage"
-#~ msgstr "存储"
-
-#~ msgctxt "clear_all_cached_data"
-#~ msgid "Clear all cached data"
-#~ msgstr "清空所有缓存数据"
-
-#~ msgctxt "reset"
-#~ msgid "Reset"
-#~ msgstr "重新设定"
-
-#~ msgctxt "installed_update"
-#~ msgid "Update possible - Ver.:"
-#~ msgstr "可用更新 - 版本:"
-
-#~ msgctxt "server_connection_error"
-#~ msgid "Could not connect to server!"
-#~ msgstr "服务器无法连接！"
-
-#~ msgctxt "update_available"
-#~ msgid "Updates available"
-#~ msgstr "可用更新"
-
-#~ msgctxt "connection_error"
-#~ msgid "Could not connect to the network."
-#~ msgstr "网络无法连接"
-
-#~ msgctxt "connection_timeout"
-#~ msgid "Timeout"
-#~ msgstr "连接超时"
-
-#~ msgctxt "connection_error_msg"
-#~ msgid "Could not connect to server!"
-#~ msgstr "服务器无法连接！"
-
-#~ msgctxt "download"
-#~ msgid "Download"
-#~ msgstr "下载"
-
-#~ msgctxt "isinst"
-#~ msgid "Installed:"
-#~ msgstr "已安装"
-
-#~ msgctxt "install"
-#~ msgid "Install"
-#~ msgstr "安装"
-
-#~ msgctxt "uninstall"
-#~ msgid "Uninstall"
-#~ msgstr "卸载"
-
-#~ msgctxt "update"
-#~ msgid "Update!"
-#~ msgstr "升级！"
-
-#~ msgctxt "update_alrt"
-#~ msgid ""
-#~ "There are updates available for some installed applications.\n"
-#~ "Do you want to see them?"
-#~ msgstr ""
-#~ "有可用更新。\n"
-#~ "点击查看"
-
-#~ msgctxt "error_download_alrt"
-#~ msgid "Could not connect to server or apk file is corrupt!"
-#~ msgstr "服务器无法连接或文件已损坏"
-
-#~ msgctxt "download_alrt"
-#~ msgid "Getting application from:\n"
-#~ msgstr "下载应用 \n"
-
 #~ msgctxt "menu_market"
-#~ msgid "Market"
-#~ msgstr "应用市场"
-
-#~ msgctxt "status_downloading_icons"
-#~ msgid "Downloading new icons…"
+#~ msgid "Google Play"
 #~ msgstr ""
 
