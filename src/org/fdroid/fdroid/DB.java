@@ -776,6 +776,8 @@ public class DB {
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
                     PackageInfo sysapk = systemApks.get(app.id);
                     app.installedVersion = sysapk.versionName;
+                    if (app.installedVersion == null)
+                        app.installedVersion = "null";
                     app.installedVerCode = sysapk.versionCode;
                     app.userInstalled = ((sysapk.applicationInfo.flags
                             & ApplicationInfo.FLAG_SYSTEM) != 1);
