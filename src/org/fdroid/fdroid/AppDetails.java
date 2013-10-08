@@ -467,7 +467,7 @@ public class AppDetails extends ListActivity {
                 } else if (tag.equals("li")) {
                     if (opening) {
                         if (listNum == -1) {
-                            output.append("\t•");
+                            output.append("\t• ");
                         } else {
                             output.append("\t" + Integer.toString(listNum)
                                     + ". ");
