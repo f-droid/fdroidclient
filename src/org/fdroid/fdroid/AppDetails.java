@@ -244,6 +244,11 @@ public class AppDetails extends ListActivity {
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
         pref_incompatible = prefs.getBoolean("showIncompatible", false);
+        pref_antiAds = prefs.getBoolean("antiAds", false);
+        pref_antiTracking = prefs.getBoolean("antiTracking", false);
+        pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
+        pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
+        pref_antiNonFreeDep = prefs.getBoolean("antiNonFreeDep", false);
 
         ignoreToggled = false;
 
@@ -255,6 +260,12 @@ public class AppDetails extends ListActivity {
     private boolean pref_permissions;
     private boolean pref_incompatible;
     private boolean resetRequired;
+
+    private boolean pref_antiAds;
+    private boolean pref_antiTracking;
+    private boolean pref_antiNonFreeAdd;
+    private boolean pref_antiNonFreeNet;
+    private boolean pref_antiNonFreeDep;
 
     // The signature of the installed version.
     private Signature mInstalledSignature;
@@ -471,12 +482,15 @@ public class AppDetails extends ListActivity {
                 new HtmlTagHandler()));
 
         tv = (TextView) infoView.findViewById(R.id.appid);
-        tv.setText(app.id);
+        if (pref_expert)
+            tv.setText(app.id);
+        else
+            tv.setVisibility(View.GONE);
 
         tv = (TextView) infoView.findViewById(R.id.summary);
         tv.setText(app.summary);
 
-        if (!app.apks.isEmpty()) {
+        if (pref_permissions && !app.apks.isEmpty()) {
             tv = (TextView) infoView.findViewById(R.id.permissions_list);
 
             CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
@@ -500,7 +514,34 @@ public class AppDetails extends ListActivity {
             tv = (TextView) infoView.findViewById(R.id.permissions);
             tv.setText(getString(
                     R.string.permissions_for_long, app.apks.get(0).version));
+        } else {
+            infoView.findViewById(R.id.permissions).setVisibility(View.GONE);
+            infoView.findViewById(R.id.permissions_list).setVisibility(View.GONE);
         }
+
+        if (app.antiFeatures != null) {
+            tv = (TextView) infoView.findViewById(R.id.antifeatures_list);
+            StringBuilder sb = new StringBuilder();
+            for (String af : app.antiFeatures)
+                sb.append("<li><b>"+af+"</b>: "+descAntiFeature(af)+"</li>");
+            tv.setText(Html.fromHtml(sb.toString(), null, new HtmlTagHandler()));
+        } else {
+            infoView.findViewById(R.id.antifeatures).setVisibility(View.GONE);
+        }
+    }
+
+    private String descAntiFeature(String antiFeature) {
+        if (antiFeature.equals("Ads"))
+            return getString(R.string.antiadslist);
+        if (antiFeature.equals("Tracking"))
+            return getString(R.string.antitracklist);
+        if (antiFeature.equals("NonFreeNet"))
+            return getString(R.string.antinonfreenetlist);
+        if (antiFeature.equals("NonFreeAdd"))
+            return getString(R.string.antinonfreeadlist);
+        if (antiFeature.equals("NonFreeDep"))
+            return getString(R.string.antinonfreedeplist);
+        return "";
     }
 
     private void updateViews() {
@@ -518,30 +559,11 @@ public class AppDetails extends ListActivity {
             tv.setText(getString(R.string.details_installed,
                     app.installedVersion));
 
-        tv = (TextView) infoView.findViewById(R.id.appid);
-        if (pref_expert) {
-            tv.setVisibility(View.VISIBLE);
-        } else {
-            tv.setVisibility(View.GONE);
-        }
-
         tv = (TextView) infoView.findViewById(R.id.signature);
         if (pref_expert && mInstalledSignature != null) {
             tv.setVisibility(View.VISIBLE);
             tv.setText("Signed: " + mInstalledSigID);
         } else {
-            tv.setVisibility(View.GONE);
-        }
-
-        if (pref_permissions) {
-            tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setVisibility(View.VISIBLE);
-            tv = (TextView) infoView.findViewById(R.id.permissions_list);
-            tv.setVisibility(View.VISIBLE);
-        } else {
-            tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setVisibility(View.GONE);
-            tv = (TextView) infoView.findViewById(R.id.permissions_list);
             tv.setVisibility(View.GONE);
         }
 

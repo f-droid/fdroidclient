@@ -103,17 +103,27 @@
 	<string name="download_cancelled">Download cancelled</string>
 
 	<string name="antifeatures">Anti-Features</string>
+	<string name="antifeatures_list">This application has the following anti-features:</string>
 
 	<string name="antiads">Advertising</string>
 	<string name="antiadslong">Show apps that contain advertising</string>
+	<string name="antiadslist">This app contains advertising</string>
+
 	<string name="antitrack">Tracking</string>
 	<string name="antitracklong">Show apps that track and report your activity</string>
+	<string name="antitracklist">This app tracks and reports your activity</string>
+
 	<string name="antinonfreead">Add-ons</string>
 	<string name="antinonfreeadlong">Show apps that promote non-free add-ons</string>
+	<string name="antinonfreeadlist">This app promotes non-free add-ons</string>
+
 	<string name="antinonfreenet">Network Services</string>
 	<string name="antinonfreenetlong">Show apps that promote non-free network services</string>
+	<string name="antinonfreenetlist">This app promotes non-free network services</string>
+
 	<string name="antinonfreedep">Dependencies</string>
 	<string name="antinonfreedeplong">Show apps that depend on other non-free apps</string>
+	<string name="antinonfreedeplist">This app depends on other non-free apps</string>
 
 	<string name="display">Display</string>
 

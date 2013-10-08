@@ -43,4 +43,19 @@
         android:layout_height="wrap_content"
         android:singleLine="false" />
 
+    <TextView
+        android:id="@+id/antifeatures"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="14sp"
+		android:textStyle="bold"
+		android:text="@string/antifeatures_list" />
+
+    <TextView
+        android:id="@+id/antifeatures_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false" />
+
 </LinearLayout>
