@@ -898,6 +898,8 @@ public class DB {
 
             if (installed != null) {
                 app.installedVersion = installed.versionName;
+                if (app.installedVersion == null)
+                    app.installedVersion = "null";
                 app.installedVerCode = installed.versionCode;
             } else {
                 app.installedVersion = null;
