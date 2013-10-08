@@ -94,7 +94,7 @@ abstract public class AppListAdapter extends BaseAdapter {
             iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
             iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
 
-            if (app.hasUpdates && showStatusUpdate()) {
+            if (app.toUpdate && showStatusUpdate()) {
                 iconUpdates.setVisibility(View.VISIBLE);
             } else {
                 iconUpdates.setVisibility(View.GONE);
@@ -152,7 +152,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         StringBuilder version = new StringBuilder();
         if (app.installedVersion != null) {
             version.append(app.installedVersion);
-            if (app.hasUpdates) {
+            if (app.toUpdate) {
                 version.append(" -> ");
                 version.append(app.updateVersion);
             }

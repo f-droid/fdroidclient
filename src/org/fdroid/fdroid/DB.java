@@ -116,6 +116,7 @@ public class DB {
             antiFeatures = null;
             requirements = null;
             hasUpdates = false;
+            toUpdate = false;
             updated = false;
             added = null;
             lastUpdated = null;
@@ -189,10 +190,13 @@ public class DB {
         // permission (set in the Settings page)
         public boolean filtered;
 
-        // True if there are new versions (apks) that the user hasn't
-        // explicitly ignored. (We're currently not using the database
-        // field for this - we make the decision on the fly in getApps().
+        // True if there are new versions (apks) available, regardless of
+        // any filtering
         public boolean hasUpdates;
+
+        // True if there are new versions (apks) available and the user wants
+        // to be notified about them
+        public boolean toUpdate;
 
         // True if updates should not show up in the Updates tab for this
         // application

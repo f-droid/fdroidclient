@@ -583,7 +583,7 @@ public class AppDetails extends ListActivity {
         if (app == null)
             return true;
         DB.Apk curver = app.getCurrentVersion();
-        if (app.hasUpdates == true) {
+        if (app.toUpdate) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 0, R.string.menu_update)
                         .setIcon(R.drawable.ic_menu_refresh),

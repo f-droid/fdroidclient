@@ -203,8 +203,7 @@ public class AppListManager {
             }
             if (app.installedVersion != null) {
                 installedApps.addItem(app);
-                if (!app.ignoreUpdates && app.hasUpdates && !app.filtered
-                        && (showIncompatible || app.compatible))
+                if (app.toUpdate)
                     canUpgradeApps.addItem(app);
             }
         }

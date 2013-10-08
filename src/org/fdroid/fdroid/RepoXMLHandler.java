@@ -75,7 +75,7 @@ public class RepoXMLHandler extends DefaultHandler {
     public static final int PROGRESS_TYPE_DOWNLOAD     = 1;
     public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
 
-	public static final String PROGRESS_DATA_REPO = "repo";
+    public static final String PROGRESS_DATA_REPO = "repo";
 
     // The date format used in the repo XML file.
     private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -242,11 +242,11 @@ public class RepoXMLHandler extends DefaultHandler {
         }
     }
 
-	private static Bundle createProgressData(String repoAddress) {
-		Bundle data = new Bundle();
-		data.putString(PROGRESS_DATA_REPO, repoAddress);
-		return data;
-	}
+    private static Bundle createProgressData(String repoAddress) {
+        Bundle data = new Bundle();
+        data.putString(PROGRESS_DATA_REPO, repoAddress);
+        return data;
+    }
 
     @Override
     public void startElement(String uri, String localName, String qName,

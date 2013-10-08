@@ -54,6 +54,7 @@ public class FDroidApp extends Application {
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
+        showIncompatible = prefs.getBoolean("showIncompatible", false);
         if (!prefs.getBoolean("cacheDownloaded", false)) {
 
             File local_path = DB.getDataPath(this);
@@ -99,6 +100,8 @@ public class FDroidApp extends Application {
 
     // Global list of all known applications.
     private List<DB.App> apps;
+
+    private boolean showIncompatible;
 
     // Set when something has changed (database or installed apps) so we know
     // we should invalidate the apps.
@@ -154,7 +157,7 @@ public class FDroidApp extends Application {
                     for (DB.Repo repo : repos) {
                         DB.Apk bestApk = app.apks.get(0);
                         if (repo.id == bestApk.repo) {
-							app.iconUrl = repo.address + "/icons/" + app.icon;
+                            app.iconUrl = repo.address + "/icons/" + app.icon;
                             break;
                         }
                     }
@@ -174,7 +177,7 @@ public class FDroidApp extends Application {
                     for (DB.Repo repo : repos) {
                         DB.Apk bestApk = app.apks.get(0);
                         if (repo.id == bestApk.repo) {
-							app.iconUrl = repo.address + "/icons/" + app.icon;
+                            app.iconUrl = repo.address + "/icons/" + app.icon;
                             break;
                         }
                     }
@@ -195,6 +198,12 @@ public class FDroidApp extends Application {
         AppFilter appFilter = new AppFilter(ctx);
         for (DB.App app : apps) {
             app.filtered = appFilter.filter(app);
+
+            app.toUpdate = (
+                    !app.ignoreUpdates
+                    && app.hasUpdates
+                    && !app.filtered
+                    && (showIncompatible || app.compatible));
         }
     }
 

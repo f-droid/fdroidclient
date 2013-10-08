@@ -87,11 +87,11 @@ public class ManageRepo extends ListActivity {
         long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
         String s_lastUpdateCheck = "";
         if (lastUpdate == 0) {
-        	s_lastUpdateCheck = getString(R.string.never);
+            s_lastUpdateCheck = getString(R.string.never);
         } else {
-        	Date d = new Date(lastUpdate);
-        	s_lastUpdateCheck = DateFormat.getDateFormat(this).format(d) + 
-        			" " + DateFormat.getTimeFormat(this).format(d);
+            Date d = new Date(lastUpdate);
+            s_lastUpdateCheck = DateFormat.getDateFormat(this).format(d) + 
+                    " " + DateFormat.getTimeFormat(this).format(d);
         }
         tv_lastCheck.setText(getString(R.string.last_update_check,s_lastUpdateCheck));
 
