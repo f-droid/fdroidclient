@@ -83,8 +83,7 @@ public class FDroidApp extends Application {
             .cacheInMemory(true)
             .cacheOnDisc(true)
             .showImageOnLoading(android.R.drawable.sym_def_app_icon)
-            .showImageForEmptyUri(android.R.drawable.sym_def_app_icon)
-            .displayer(new FadeInBitmapDisplayer(200))
+            .displayer(new FadeInBitmapDisplayer(250, true, true, false))
             .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
             .discCache(new UnlimitedDiscCache(cacheDir, new FileNameGenerator() {
