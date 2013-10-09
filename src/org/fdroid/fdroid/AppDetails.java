@@ -526,23 +526,42 @@ public class AppDetails extends ListActivity {
             tv = (TextView) infoView.findViewById(R.id.antifeatures_list);
             StringBuilder sb = new StringBuilder();
             for (String af : app.antiFeatures)
-                sb.append("<li><b>"+af+"</b>: "+descAntiFeature(af)+"</li>");
+                sb.append("<li>"+titleAntiFeature(af)+": "+descAntiFeature(af)+"</li>");
             tv.setText(Html.fromHtml(sb.toString(), null, new HtmlTagHandler()));
         } else {
             infoView.findViewById(R.id.antifeatures).setVisibility(View.GONE);
         }
     }
 
-    private String descAntiFeature(String antiFeature) {
-        if (antiFeature.equals("Ads"))
+    private String titleAntiFeature(String af) {
+        if (af.equals("Ads")) {
+            if (!pref_antiAds) return "</b>"+af+"</b>";
+            return "<b><font color='red'>"+af+"</font></b>";
+        } if (af.equals("Tracking")) {
+            if (pref_antiTracking) return "</b>"+af+"</b>";
+            return "<b><font color='red'>"+af+"</font></b>";
+        } if (af.equals("NonFreeNet")) {
+            if (pref_antiNonFreeNet) return "</b>"+af+"</b>";
+            return "<b><font color='red'>"+af+"</font></b>";
+        } if (af.equals("NonFreeAdd")) {
+            if (pref_antiNonFreeAdd) return "</b>"+af+"</b>";
+            return "<b><font color='red'>"+af+"</font></b>";
+        } if (af.equals("NonFreeDep")) {
+            if (pref_antiNonFreeDep) return "</b>"+af+"</b>";
+            return "<b><font color='red'>"+af+"</font></b>";
+        } return "";
+    }
+
+    private String descAntiFeature(String af) {
+        if (af.equals("Ads"))
             return getString(R.string.antiadslist);
-        if (antiFeature.equals("Tracking"))
+        if (af.equals("Tracking"))
             return getString(R.string.antitracklist);
-        if (antiFeature.equals("NonFreeNet"))
+        if (af.equals("NonFreeNet"))
             return getString(R.string.antinonfreenetlist);
-        if (antiFeature.equals("NonFreeAdd"))
+        if (af.equals("NonFreeAdd"))
             return getString(R.string.antinonfreeadlist);
-        if (antiFeature.equals("NonFreeDep"))
+        if (af.equals("NonFreeDep"))
             return getString(R.string.antinonfreedeplist);
         return "";
     }
