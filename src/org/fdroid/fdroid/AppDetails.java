@@ -170,8 +170,9 @@ public class AppDetails extends ListActivity {
     private static final int SHARE = Menu.FIRST + 7;
     private static final int DONATE = Menu.FIRST + 8;
     private static final int BITCOIN = Menu.FIRST + 9;
-    private static final int FLATTR = Menu.FIRST + 10;
-    private static final int DONATE_URL = Menu.FIRST + 11;
+    private static final int LITECOIN = Menu.FIRST + 10;
+    private static final int FLATTR = Menu.FIRST + 11;
+    private static final int DONATE_URL = Menu.FIRST + 12;
 
     private DB.App app;
     private int app_currentvercode;
@@ -660,13 +661,17 @@ public class AppDetails extends ListActivity {
                     android.R.drawable.ic_menu_view);
         }
 
-        if (app.detail_bitcoinAddr != null && app.detail_flattrID != null && 
-                app.detail_donateURL != null) {
+        if (app.detail_bitcoinAddr != null && app.detail_litecoinAddr != null &&
+                app.detail_flattrID != null && app.detail_donateURL != null) {
             SubMenu donate = menu.addSubMenu(Menu.NONE, DONATE, 7,
                     R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_view);
             if (app.detail_bitcoinAddr != null) {
                 donate.add(Menu.NONE, BITCOIN, 8, R.string.menu_bitcoin).setIcon(
+                        android.R.drawable.ic_menu_view);
+            }
+            if (app.detail_litecoinAddr != null) {
+                donate.add(Menu.NONE, LITECOIN, 8, R.string.menu_litecoin).setIcon(
                         android.R.drawable.ic_menu_view);
             }
             if (app.detail_flattrID != null) {
@@ -737,6 +742,10 @@ public class AppDetails extends ListActivity {
 
         case BITCOIN:
             tryOpenUri("bitcoin:" + app.detail_bitcoinAddr);
+            return true;
+
+        case LITECOIN:
+            tryOpenUri("litecoin:" + app.detail_litecoinAddr);
             return true;
 
         case FLATTR:

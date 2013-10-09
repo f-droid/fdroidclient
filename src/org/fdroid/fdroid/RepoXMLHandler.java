@@ -206,6 +206,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.detail_donateURL = str;
             } else if (curel.equals("bitcoin")) {
                 curapp.detail_bitcoinAddr = str;
+            } else if (curel.equals("litecoin")) {
+                curapp.detail_litecoinAddr = str;
             } else if (curel.equals("flattr")) {
                 curapp.detail_flattrID = str;
             } else if (curel.equals("web")) {
