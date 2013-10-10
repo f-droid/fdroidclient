@@ -23,6 +23,10 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.view.MenuItem;
+
+import android.support.v4.app.NavUtils;
+
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class PreferencesActivity extends PreferenceActivity implements
@@ -39,6 +43,16 @@ public class PreferencesActivity extends PreferenceActivity implements
             //Preference pref = findPreference(prefkey);
             //pref.setOnPreferenceClickListener(this);
         //}
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -67,6 +67,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import android.support.v4.app.NavUtils;
+
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -723,6 +725,10 @@ public class AppDetails extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+        case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
 
         case LAUNCH:
             launchApk(app.id);

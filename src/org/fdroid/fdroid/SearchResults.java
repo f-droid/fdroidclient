@@ -34,6 +34,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import android.support.v4.app.NavUtils;
+
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
@@ -172,6 +175,10 @@ public class SearchResults extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+        case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
 
         case SEARCH:
             onSearchRequested();

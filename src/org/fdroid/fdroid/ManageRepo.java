@@ -47,6 +47,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import android.support.v4.app.NavUtils;
+
+import org.fdroid.fdroid.compat.ActionBarCompat;
+
 public class ManageRepo extends ListActivity {
 
     private final int ADD_REPO = 1;
@@ -78,6 +82,9 @@ public class ManageRepo extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        ActionBarCompat abCompat = ActionBarCompat.create(this);
+        abCompat.setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.repolist);
 
         SharedPreferences prefs = PreferenceManager
@@ -190,6 +197,16 @@ public class ManageRepo extends ListActivity {
         } finally {
             DB.releaseDB();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
