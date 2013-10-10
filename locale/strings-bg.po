@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-08 12:21+0100\n"
+"POT-Creation-Date: 2013-10-10 20:24+0100\n"
 "PO-Revision-Date: 2013-09-26 18:15+0200\n"
 "Last-Translator: radovid <radovid@hmamail.com>\n"
 "Language-Team: bg <LL@li.org>\n"
@@ -322,8 +322,12 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Деинсталирай"
 
-msgctxt "menu_ignore"
-msgid "Ignore Updates"
+msgctxt "menu_ignore_all"
+msgid "Ignore All Updates"
+msgstr ""
+
+msgctxt "menu_ignore_this"
+msgid "Ignore This Update"
 msgstr ""
 
 msgctxt "menu_website"
@@ -344,6 +348,11 @@ msgstr "Обнови"
 
 msgctxt "menu_bitcoin"
 msgid "Bitcoin"
+msgstr "Биткойн"
+
+#, fuzzy
+msgctxt "menu_litecoin"
+msgid "Litecoin"
 msgstr "Биткойн"
 
 msgctxt "menu_flattr"
@@ -375,12 +384,21 @@ msgctxt "antifeatures"
 msgid "Anti-Features"
 msgstr "Анти-свойства"
 
+msgctxt "antifeatures_list"
+msgid "This application has the following anti-features:"
+msgstr ""
+
 msgctxt "antiads"
 msgid "Advertising"
 msgstr "Реклами"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
+msgstr "Показвай приложения съдържащи реклами"
+
+#, fuzzy
+msgctxt "antiadslist"
+msgid "This app contains advertising"
 msgstr "Показвай приложения съдържащи реклами"
 
 msgctxt "antitrack"
@@ -391,12 +409,22 @@ msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr "Показвай приложения следящи и докладващи моята дейност"
 
+#, fuzzy
+msgctxt "antitracklist"
+msgid "This app tracks and reports your activity"
+msgstr "Показвай приложения следящи и докладващи моята дейност"
+
 msgctxt "antinonfreead"
 msgid "Add-ons"
 msgstr "Добавки"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
+msgstr "Показвай приложения препоръчващи несвободни добавки"
+
+#, fuzzy
+msgctxt "antinonfreeadlist"
+msgid "This app promotes non-free add-ons"
 msgstr "Показвай приложения препоръчващи несвободни добавки"
 
 msgctxt "antinonfreenet"
@@ -407,12 +435,22 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Показвай приложения препоръчващи несвободни мрежови услуги"
 
+#, fuzzy
+msgctxt "antinonfreenetlist"
+msgid "This app promotes non-free network services"
+msgstr "Показвай приложения препоръчващи несвободни мрежови услуги"
+
 msgctxt "antinonfreedep"
 msgid "Dependencies"
 msgstr "Зависимости"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr "Показвай приложения зависещи от несвободни програми"
+
+#, fuzzy
+msgctxt "antinonfreedeplist"
+msgid "This app depends on other non-free apps"
 msgstr "Показвай приложения зависещи от несвободни програми"
 
 msgctxt "display"
@@ -550,7 +588,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Показвай само имената и описанията на приложенията в списъка"
 
-#~ msgctxt "menu_market"
-#~ msgid "Google Play"
+#~ msgctxt "menu_ignore"
+#~ msgid "Ignore Updates"
 #~ msgstr ""
 

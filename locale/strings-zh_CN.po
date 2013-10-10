@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-08 12:21+0100\n"
+"POT-Creation-Date: 2013-10-10 20:24+0100\n"
 "PO-Revision-Date: 2013-03-22 11:36+0200\n"
 "Last-Translator: shenshang428 <shenshang428@gmail.com>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -318,8 +318,12 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "卸载"
 
-msgctxt "menu_ignore"
-msgid "Ignore Updates"
+msgctxt "menu_ignore_all"
+msgid "Ignore All Updates"
+msgstr ""
+
+msgctxt "menu_ignore_this"
+msgid "Ignore This Update"
 msgstr ""
 
 msgctxt "menu_website"
@@ -340,6 +344,10 @@ msgstr "升级"
 
 msgctxt "menu_bitcoin"
 msgid "Bitcoin"
+msgstr ""
+
+msgctxt "menu_litecoin"
+msgid "Litecoin"
 msgstr ""
 
 msgctxt "menu_flattr"
@@ -371,6 +379,10 @@ msgctxt "antifeatures"
 msgid "Anti-Features"
 msgstr "个性设置"
 
+msgctxt "antifeatures_list"
+msgid "This application has the following anti-features:"
+msgstr ""
+
 msgctxt "antiads"
 msgid "Advertising"
 msgstr "广告"
@@ -379,12 +391,22 @@ msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
 msgstr "显示包含广告的应用"
 
+#, fuzzy
+msgctxt "antiadslist"
+msgid "This app contains advertising"
+msgstr "显示包含广告的应用"
+
 msgctxt "antitrack"
 msgid "Tracking"
 msgstr "追踪"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
+msgstr "显示会追踪、上传你的活动的应用"
+
+#, fuzzy
+msgctxt "antitracklist"
+msgid "This app tracks and reports your activity"
 msgstr "显示会追踪、上传你的活动的应用"
 
 msgctxt "antinonfreead"
@@ -396,6 +418,11 @@ msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
 msgstr "显示改善收费插件的应用"
 
+#, fuzzy
+msgctxt "antinonfreeadlist"
+msgid "This app promotes non-free add-ons"
+msgstr "显示改善收费插件的应用"
+
 msgctxt "antinonfreenet"
 msgid "Network Services"
 msgstr "网络服务"
@@ -405,12 +432,22 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "显示提供收费网络服务的应用"
 
+#, fuzzy
+msgctxt "antinonfreenetlist"
+msgid "This app promotes non-free network services"
+msgstr "显示提供收费网络服务的应用"
+
 msgctxt "antinonfreedep"
 msgid "Dependencies"
 msgstr "非独立应用"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr "显示依赖于收费应用的应用"
+
+#, fuzzy
+msgctxt "antinonfreedeplist"
+msgid "This app depends on other non-free apps"
 msgstr "显示依赖于收费应用的应用"
 
 msgctxt "display"
@@ -537,7 +574,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "menu_market"
-#~ msgid "Google Play"
+#~ msgctxt "menu_ignore"
+#~ msgid "Ignore Updates"
 #~ msgstr ""
 

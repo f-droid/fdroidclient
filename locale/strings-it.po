@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-08 12:21+0100\n"
+"POT-Creation-Date: 2013-10-10 20:24+0100\n"
 "PO-Revision-Date: 2013-09-25 23:09+0200\n"
 "Last-Translator: Mario  <mariogreco85@openmailbox.org>\n"
 "Language-Team: it <LL@li.org>\n"
@@ -325,8 +325,12 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Disinstalla"
 
-msgctxt "menu_ignore"
-msgid "Ignore Updates"
+msgctxt "menu_ignore_all"
+msgid "Ignore All Updates"
+msgstr ""
+
+msgctxt "menu_ignore_this"
+msgid "Ignore This Update"
 msgstr ""
 
 msgctxt "menu_website"
@@ -347,6 +351,11 @@ msgstr "Aggiornamento"
 
 msgctxt "menu_bitcoin"
 msgid "Bitcoin"
+msgstr "Bitcoin"
+
+#, fuzzy
+msgctxt "menu_litecoin"
+msgid "Litecoin"
 msgstr "Bitcoin"
 
 msgctxt "menu_flattr"
@@ -378,12 +387,21 @@ msgctxt "antifeatures"
 msgid "Anti-Features"
 msgstr "Caratteristiche negative"
 
+msgctxt "antifeatures_list"
+msgid "This application has the following anti-features:"
+msgstr ""
+
 msgctxt "antiads"
 msgid "Advertising"
 msgstr "Pubblicità"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
+msgstr "Mostra applicazioni con pubblicità"
+
+#, fuzzy
+msgctxt "antiadslist"
+msgid "This app contains advertising"
 msgstr "Mostra applicazioni con pubblicità"
 
 msgctxt "antitrack"
@@ -394,12 +412,22 @@ msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr "Mostra applicazioni che monitorano e riferiscono sulle tue attività"
 
+#, fuzzy
+msgctxt "antitracklist"
+msgid "This app tracks and reports your activity"
+msgstr "Mostra applicazioni che monitorano e riferiscono sulle tue attività"
+
 msgctxt "antinonfreead"
 msgid "Add-ons"
 msgstr "Add-ons"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
+msgstr "Mostra applicazioni che promuovono add-on non liberi"
+
+#, fuzzy
+msgctxt "antinonfreeadlist"
+msgid "This app promotes non-free add-ons"
 msgstr "Mostra applicazioni che promuovono add-on non liberi"
 
 msgctxt "antinonfreenet"
@@ -410,12 +438,22 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Mostra applicazioni che promuovono servizi di rete a pagamento"
 
+#, fuzzy
+msgctxt "antinonfreenetlist"
+msgid "This app promotes non-free network services"
+msgstr "Mostra applicazioni che promuovono servizi di rete a pagamento"
+
 msgctxt "antinonfreedep"
 msgid "Dependencies"
 msgstr "DIpendenze"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
+
+#, fuzzy
+msgctxt "antinonfreedeplist"
+msgid "This app depends on other non-free apps"
 msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
 
 msgctxt "display"
@@ -545,7 +583,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "menu_market"
-#~ msgid "Google Play"
+#~ msgctxt "menu_ignore"
+#~ msgid "Ignore Updates"
 #~ msgstr ""
 

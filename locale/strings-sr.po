@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2013-10-08 12:21+0100\n"
+"POT-Creation-Date: 2013-10-10 20:24+0100\n"
 "PO-Revision-Date: 2011-01-20 03:30+0200\n"
 "Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
 "Language-Team: sr <LL@li.org>\n"
@@ -328,8 +328,12 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Уклони"
 
-msgctxt "menu_ignore"
-msgid "Ignore Updates"
+msgctxt "menu_ignore_all"
+msgid "Ignore All Updates"
+msgstr ""
+
+msgctxt "menu_ignore_this"
+msgid "Ignore This Update"
 msgstr ""
 
 msgctxt "menu_website"
@@ -350,6 +354,10 @@ msgstr "Ажурирај"
 
 msgctxt "menu_bitcoin"
 msgid "Bitcoin"
+msgstr ""
+
+msgctxt "menu_litecoin"
+msgid "Litecoin"
 msgstr ""
 
 msgctxt "menu_flattr"
@@ -383,12 +391,21 @@ msgctxt "antifeatures"
 msgid "Anti-Features"
 msgstr "Непожељне Karakteristike"
 
+msgctxt "antifeatures_list"
+msgid "This application has the following anti-features:"
+msgstr ""
+
 msgctxt "antiads"
 msgid "Advertising"
 msgstr "Огласи"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
+msgstr "Прикажи апликације са уграђеним оглашавањем"
+
+#, fuzzy
+msgctxt "antiadslist"
+msgid "This app contains advertising"
 msgstr "Прикажи апликације са уграђеним оглашавањем"
 
 msgctxt "antitrack"
@@ -399,12 +416,22 @@ msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr "Прикажи апликације које прате ваше активности"
 
+#, fuzzy
+msgctxt "antitracklist"
+msgid "This app tracks and reports your activity"
+msgstr "Прикажи апликације које прате ваше активности"
+
 msgctxt "antinonfreead"
 msgid "Add-ons"
 msgstr "Додаци"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
+msgstr "Прикажи апликације што промовишу плаћене додатке"
+
+#, fuzzy
+msgctxt "antinonfreeadlist"
+msgid "This app promotes non-free add-ons"
 msgstr "Прикажи апликације што промовишу плаћене додатке"
 
 msgctxt "antinonfreenet"
@@ -416,6 +443,11 @@ msgid "Show apps that promote non-free network services"
 msgstr "Прикажи апликације што промовишу плаћене мрежне услуге"
 
 #, fuzzy
+msgctxt "antinonfreenetlist"
+msgid "This app promotes non-free network services"
+msgstr "Прикажи апликације што промовишу плаћене мрежне услуге"
+
+#, fuzzy
 msgctxt "antinonfreedep"
 msgid "Dependencies"
 msgstr "Опције"
@@ -423,6 +455,11 @@ msgstr "Опције"
 #, fuzzy
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr "Прикажи апликације што промовишу плаћене додатке"
+
+#, fuzzy
+msgctxt "antinonfreedeplist"
+msgid "This app depends on other non-free apps"
 msgstr "Прикажи апликације што промовишу плаћене додатке"
 
 msgctxt "display"
@@ -550,7 +587,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "menu_market"
-#~ msgid "Google Play"
+#~ msgctxt "menu_ignore"
+#~ msgid "Ignore Updates"
 #~ msgstr ""
 

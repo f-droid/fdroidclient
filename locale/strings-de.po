@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-08 12:21+0100\n"
-"PO-Revision-Date: 2013-08-17 17:29+0200\n"
-"Last-Translator: helmchyn <f-droid@plutz.net>\n"
+"POT-Creation-Date: 2013-10-10 20:24+0100\n"
+"PO-Revision-Date: 2013-10-10 16:19+0200\n"
+"Last-Translator: toba <bantobl2008@banto.de>\n"
 "Language-Team: de <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -19,17 +19,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "%1$d Anwendungen gefunden, die zu '%2$s' passen:"
+msgstr "%1$d Anwendungen mit '%2$s' gefunden:"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Eine Anwendung gefunden, die zu '%s' passt:"
+msgstr "Eine Anwendung mit '%s' gefunden:"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "Keine Anwendung gefunden, die zu '%s' passt."
+msgstr "Keine Anwendung mit '%s' gefunden."
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -39,19 +39,17 @@ msgid ""
 "stored by the application)"
 msgstr ""
 "Die neue Version wurde mit einem anderen Schlüssel signiert als die alte."
-" Um die neue Version zu installieren muss zunächst die alte entfernt "
-"werden. Versuchen Sie es bitte danach nochmal. (Seien Sie sich bewusst, "
-"dass beim Entfernen der Anwendung alle internen Daten dieser Anwendung "
-"gelöscht werden)"
+" Um die neue Version zu installieren, muss zunächst die alte entfernt "
+"werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen "
+"dieser Anwendung werden alle Daten dieser Anwendung gelöscht.)"
 
-#, fuzzy
 msgctxt "installIncompatible"
 msgid ""
 "It seems like this package is not compatible with your device. Do you "
 "want to try and install it anyway?"
 msgstr ""
-"Android hat festgestellt, dass dieses Programm nicht kompatibel mit Ihrem"
-" Gerät ist. Möchten Sie trotzdem versuchen es zu installieren?"
+"Es sieht so aus, als sei dieses Programm nicht zu Ihrem Gerät kompatibel."
+" Möchten Sie trotzdem versuchen es zu installieren?"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -95,7 +93,7 @@ msgstr "Aktualisierungen"
 
 msgctxt "other"
 msgid "Other"
-msgstr ""
+msgstr "Andere"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
@@ -103,22 +101,22 @@ msgstr "Bei verfügbaren Aktualisierungen benachrichtigen"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Liste der Anwendungen automatisch aus Online-Quellen aktualisieren"
+msgstr "Liste der Anwendungen automatisch aus den Paketquellen aktualisieren"
 
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Liste durchgeführter Aktualisierungen"
+msgstr "Aktualisierungsverlauf"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
 msgstr ""
 "Zeitraum in Tagen, für den neue bzw. aktualisierte Anwendungen angezeigt "
-"werden. "
+"werden."
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr "Letzte Softwarequellen-Aktualisierung: %s"
+msgstr "Letzte Aktualisierung der Paketquellen: %s"
 
 msgctxt "never"
 msgid "never"
@@ -162,7 +160,7 @@ msgstr "Internetseite:"
 
 msgctxt "about_mail"
 msgid "Email:"
-msgstr "Email:"
+msgstr "E-Mail:"
 
 msgctxt "about_version"
 msgid "Version:"
@@ -181,13 +179,13 @@ msgid ""
 "\n"
 "A repository address looks something like this: https://f-droid.org/repo"
 msgstr ""
-"Sie haben keine Softwarequellen konfiguriert!\n"
+"Sie haben keine Paketquellen konfiguriert!\n"
 "\n"
-"Um eine Softwarequelle hinzuzufügen drücken Sie jetzt den Menü-Knopf und "
+"Eine Paketquelle ist eine Sammelstelle von Anwendungen.\n"
+"Um eine Paketquelle hinzuzufügen drücken Sie jetzt den Menüknopf und "
 "geben Sie deren Adresse an.\n"
 "\n"
-"Die Adresse einrer Softwarequelle sieht etwa so aus: "
-"http://f-droid.org/repo"
+"Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo"
 
 msgctxt "inst"
 msgid "Installed"
@@ -216,7 +214,7 @@ msgstr "Nein"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Softwarequelle hinzufügen"
+msgstr "Paketquelle hinzufügen"
 
 msgctxt "repo_add_add"
 msgid "Add"
@@ -228,7 +226,7 @@ msgstr "Abbrechen"
 
 msgctxt "repo_delete_title"
 msgid "Choose repository to remove"
-msgstr "Softwarequelle zum Entfernen auswählen"
+msgstr "Zu entfernende Paketquelle auswählen"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
@@ -273,23 +271,23 @@ msgstr "Anwendung wird heruntergeladen von"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
-msgstr "Adresse der Softwarequelle"
+msgstr "Adresse der Paketquelle"
 
 msgctxt "repo_alrt"
 msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"Die Liste der genutzten Softwarequellen wurde geändert.\n"
-"Soll die Liste von Anwendungen aktualisiert werden?"
+"Die Liste der genutzten Paketquellen hat sich geändert.\n"
+"Soll diese aktualisiert werden?"
 
 msgctxt "menu_update_repo"
 msgid "Update Repos"
-msgstr "Softwarequellen aktualisieren"
+msgstr "Paketquellen aktualisieren"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Softwarequellen verwalten"
+msgstr "Paketquellen verwalten"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
@@ -305,11 +303,11 @@ msgstr "Suchen"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Softwarequelle hinzufügen"
+msgstr "Paketquelle hinzufügen"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Softwarequelle entfernen"
+msgstr "Paketquelle entfernen"
 
 msgctxt "menu_launch"
 msgid "Run"
@@ -327,9 +325,15 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Entfernen"
 
-msgctxt "menu_ignore"
-msgid "Ignore Updates"
-msgstr ""
+#, fuzzy
+msgctxt "menu_ignore_all"
+msgid "Ignore All Updates"
+msgstr "Aktualisierungen ignorieren"
+
+#, fuzzy
+msgctxt "menu_ignore_this"
+msgid "Ignore This Update"
+msgstr "Aktualisierungen ignorieren"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -349,6 +353,11 @@ msgstr "Aktualisieren"
 
 msgctxt "menu_bitcoin"
 msgid "Bitcoin"
+msgstr "Bitcoin"
+
+#, fuzzy
+msgctxt "menu_litecoin"
+msgid "Litecoin"
 msgstr "Bitcoin"
 
 msgctxt "menu_flattr"
@@ -380,12 +389,21 @@ msgctxt "antifeatures"
 msgid "Anti-Features"
 msgstr "Unerwünschte Funktionen"
 
+msgctxt "antifeatures_list"
+msgid "This application has the following anti-features:"
+msgstr ""
+
 msgctxt "antiads"
 msgid "Advertising"
 msgstr "Werbung"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
+msgstr "Zeige Anwendungen, die Werbung enthalten"
+
+#, fuzzy
+msgctxt "antiadslist"
+msgid "This app contains advertising"
 msgstr "Zeige Anwendungen, die Werbung enthalten"
 
 msgctxt "antitrack"
@@ -396,12 +414,22 @@ msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr "Zeige Anwendungen, welche Ihre Aktivitäten aufzeichnen und melden"
 
+#, fuzzy
+msgctxt "antitracklist"
+msgid "This app tracks and reports your activity"
+msgstr "Zeige Anwendungen, welche Ihre Aktivitäten aufzeichnen und melden"
+
 msgctxt "antinonfreead"
 msgid "Add-ons"
 msgstr "Add-Ons"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
+msgstr "Zeige Anwendungen, die unfreie Zusätze bewerben"
+
+#, fuzzy
+msgctxt "antinonfreeadlist"
+msgid "This app promotes non-free add-ons"
 msgstr "Zeige Anwendungen, die unfreie Zusätze bewerben"
 
 msgctxt "antinonfreenet"
@@ -412,12 +440,22 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Zeige Anwendungen, die unfreie Netzwerkdienste bewerben"
 
+#, fuzzy
+msgctxt "antinonfreenetlist"
+msgid "This app promotes non-free network services"
+msgstr "Zeige Anwendungen, die unfreie Netzwerkdienste bewerben"
+
 msgctxt "antinonfreedep"
 msgid "Dependencies"
 msgstr "Abhängigkeiten"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr "Zeige Anwendungen, die von unfreien Anwendungen abhängen"
+
+#, fuzzy
+msgctxt "antinonfreedeplist"
+msgid "This app depends on other non-free apps"
 msgstr "Zeige Anwendungen, die von unfreien Anwendungen abhängen"
 
 msgctxt "display"
@@ -520,7 +558,7 @@ msgstr ""
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr "Kompatibilität mit Ihrem Gerät wird überprüft..."
+msgstr "Kompatibilität mit Ihrem Gerät wird überprüft ..."
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
@@ -541,20 +579,16 @@ msgstr ""
 "Zeige eine Liste von Berechtigungen die von einer Anwendung benötigt "
 "werden"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any available app that can handle %s"
 msgstr "Es ist keine Anwendung installiert, die mit %s umgehen kann"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr "Kompakte Auslegung"
+msgstr "Kompakte Ansicht"
 
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Nur Namen und Kurzbeschreibung in der Anwendungsliste anzeigen"
-
-#~ msgctxt "menu_market"
-#~ msgid "Google Play"
-#~ msgstr ""
 

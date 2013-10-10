@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-08 12:21+0100\n"
+"POT-Creation-Date: 2013-10-10 20:24+0100\n"
 "PO-Revision-Date: 2013-08-17 16:21+0200\n"
 "Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: gl <LL@li.org>\n"
@@ -323,8 +323,12 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-msgctxt "menu_ignore"
-msgid "Ignore Updates"
+msgctxt "menu_ignore_all"
+msgid "Ignore All Updates"
+msgstr ""
+
+msgctxt "menu_ignore_this"
+msgid "Ignore This Update"
 msgstr ""
 
 msgctxt "menu_website"
@@ -345,6 +349,11 @@ msgstr "Actualizar"
 
 msgctxt "menu_bitcoin"
 msgid "Bitcoin"
+msgstr "Bitcoin"
+
+#, fuzzy
+msgctxt "menu_litecoin"
+msgid "Litecoin"
 msgstr "Bitcoin"
 
 msgctxt "menu_flattr"
@@ -376,12 +385,21 @@ msgctxt "antifeatures"
 msgid "Anti-Features"
 msgstr "Anti-funcionalidades"
 
+msgctxt "antifeatures_list"
+msgid "This application has the following anti-features:"
+msgstr ""
+
 msgctxt "antiads"
 msgid "Advertising"
 msgstr "Publicidade"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
+msgstr "Amosar apps que conteñen publicidade"
+
+#, fuzzy
+msgctxt "antiadslist"
+msgid "This app contains advertising"
 msgstr "Amosar apps que conteñen publicidade"
 
 msgctxt "antitrack"
@@ -392,12 +410,22 @@ msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr "Amosar aplicacións que fan seguimento e informan da túa actividade"
 
+#, fuzzy
+msgctxt "antitracklist"
+msgid "This app tracks and reports your activity"
+msgstr "Amosar aplicacións que fan seguimento e informan da túa actividade"
+
 msgctxt "antinonfreead"
 msgid "Add-ons"
 msgstr "Engadidos"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
+msgstr "Amosar aplicacións que promoven engadidos non libres"
+
+#, fuzzy
+msgctxt "antinonfreeadlist"
+msgid "This app promotes non-free add-ons"
 msgstr "Amosar aplicacións que promoven engadidos non libres"
 
 msgctxt "antinonfreenet"
@@ -408,12 +436,22 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Amosar aplicacións que promoven servizos de rede non libres"
 
+#, fuzzy
+msgctxt "antinonfreenetlist"
+msgid "This app promotes non-free network services"
+msgstr "Amosar aplicacións que promoven servizos de rede non libres"
+
 msgctxt "antinonfreedep"
 msgid "Dependencies"
 msgstr "Dependencias"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
+msgstr "Amosar aplicacións que dependen doutras non libres"
+
+#, fuzzy
+msgctxt "antinonfreedeplist"
+msgid "This app depends on other non-free apps"
 msgstr "Amosar aplicacións que dependen doutras non libres"
 
 msgctxt "display"
@@ -550,7 +588,7 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Amosar únicamente os nomes das aplicacións e resumos na lista"
 
-#~ msgctxt "menu_market"
-#~ msgid "Google Play"
+#~ msgctxt "menu_ignore"
+#~ msgid "Ignore Updates"
 #~ msgstr ""
 
