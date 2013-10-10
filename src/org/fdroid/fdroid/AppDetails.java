@@ -162,17 +162,18 @@ public class AppDetails extends ListActivity {
 
     private static final int INSTALL = Menu.FIRST;
     private static final int UNINSTALL = Menu.FIRST + 1;
-    private static final int IGNORE = Menu.FIRST + 2;
-    private static final int WEBSITE = Menu.FIRST + 3;
-    private static final int ISSUES = Menu.FIRST + 4;
-    private static final int SOURCE = Menu.FIRST + 5;
-    private static final int LAUNCH = Menu.FIRST + 6;
-    private static final int SHARE = Menu.FIRST + 7;
-    private static final int DONATE = Menu.FIRST + 8;
-    private static final int BITCOIN = Menu.FIRST + 9;
-    private static final int LITECOIN = Menu.FIRST + 10;
-    private static final int FLATTR = Menu.FIRST + 11;
-    private static final int DONATE_URL = Menu.FIRST + 12;
+    private static final int IGNOREALL = Menu.FIRST + 2;
+    private static final int IGNORETHIS = Menu.FIRST + 3;
+    private static final int WEBSITE = Menu.FIRST + 4;
+    private static final int ISSUES = Menu.FIRST + 5;
+    private static final int SOURCE = Menu.FIRST + 6;
+    private static final int LAUNCH = Menu.FIRST + 7;
+    private static final int SHARE = Menu.FIRST + 8;
+    private static final int DONATE = Menu.FIRST + 9;
+    private static final int BITCOIN = Menu.FIRST + 10;
+    private static final int LITECOIN = Menu.FIRST + 11;
+    private static final int FLATTR = Menu.FIRST + 12;
+    private static final int DONATE_URL = Menu.FIRST + 13;
 
     private DB.App app;
     private int app_currentvercode;
@@ -181,7 +182,9 @@ public class AppDetails extends ListActivity {
     private PackageManager mPm;
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
-    private boolean ignoreToggled;
+
+    private boolean ignoreAllToggled;
+    private boolean ignoreThisToggled;
 
     LinearLayout headerView;
     View infoView;
@@ -252,7 +255,8 @@ public class AppDetails extends ListActivity {
         pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
         pref_antiNonFreeDep = prefs.getBoolean("antiNonFreeDep", false);
 
-        ignoreToggled = false;
+        ignoreAllToggled = false;
+        ignoreThisToggled = false;
 
         startViews();
 
@@ -662,11 +666,17 @@ public class AppDetails extends ListActivity {
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
-        menu.add(Menu.NONE, IGNORE, 2, R.string.menu_ignore)
-                    .setIcon(android.R.drawable.ic_menu_add)
+        menu.add(Menu.NONE, IGNOREALL, 2, R.string.menu_ignore_all)
+                    .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
                     .setCheckable(true)
-                    .setChecked(app.ignoreUpdates);
+                    .setChecked(app.ignoreAllUpdates);
 
+        if (app.hasUpdates) {
+            menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
+                        .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
+                        .setCheckable(true)
+                        .setChecked(app.ignoreThisUpdate);
+        }
         if (app.detail_webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 3, R.string.menu_website).setIcon(
                     android.R.drawable.ic_menu_view);
@@ -733,10 +743,16 @@ public class AppDetails extends ListActivity {
             removeApk(app.id);
             return true;
 
-        case IGNORE:
-            app.ignoreUpdates ^= true;
-            item.setChecked(app.ignoreUpdates);
-            ignoreToggled ^= true;
+        case IGNOREALL:
+            app.ignoreAllUpdates ^= true;
+            item.setChecked(app.ignoreAllUpdates);
+            ignoreAllToggled ^= true;
+            return true;
+
+        case IGNORETHIS:
+            app.ignoreThisUpdate ^= true;
+            item.setChecked(app.ignoreThisUpdate);
+            ignoreThisToggled ^= true;
             return true;
 
         case WEBSITE:
@@ -1015,10 +1031,11 @@ public class AppDetails extends ListActivity {
 
     @Override
     public void finish() {
-        if (ignoreToggled) {
+        if (ignoreAllToggled || ignoreThisToggled) {
             try {
                 DB db = DB.getDB();
-                db.toggleIgnoreUpdates(app.id);
+                db.toggleIgnoreUpdates(app.id,
+                        ignoreAllToggled, ignoreThisToggled);
             } finally {
                 DB.releaseDB();
             }

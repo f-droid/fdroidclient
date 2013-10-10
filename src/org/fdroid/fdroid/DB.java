@@ -98,7 +98,9 @@ public class DB {
             + "flattrID string," + "requirements string,"
             + "category string," + "added string,"
             + "lastUpdated string," + "compatible int not null,"
-            + "ignoreUpdates int not null," + "primary key(id));";
+            + "ignoreAllUpdates int not null,"
+            + "ignoreThisUpdate int not null,"
+            + "primary key(id));";
 
     public static class App implements Comparable<App> {
 
@@ -125,7 +127,8 @@ public class DB {
             apks = new ArrayList<Apk>();
             detail_Populated = false;
             compatible = false;
-            ignoreUpdates = false;
+            ignoreAllUpdates = false;
+            ignoreThisUpdate = false;
             filtered = false;
             iconUrl = null;
         }
@@ -204,9 +207,11 @@ public class DB {
         // to be notified about them
         public boolean toUpdate;
 
-        // True if updates should not show up in the Updates tab for this
-        // application
-        public boolean ignoreUpdates;
+        // True if all updates for this app are to be ignored
+        public boolean ignoreAllUpdates;
+
+        // True if the current update for this app is to be ignored
+        public boolean ignoreThisUpdate;
 
         // The name of the version that would be updated to.
         public String updateVersion;
@@ -436,7 +441,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 25;
+    private final int DBVersion = 26;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -758,7 +763,7 @@ public class DB {
             String cols[] = new String[] { "antiFeatures", "requirements",
                     "id", "name", "summary", "icon", "license", "category",
                     "curVersion", "curVercode", "added", "lastUpdated",
-                    "compatible", "ignoreUpdates" };
+                    "compatible", "ignoreAllUpdates", "ignoreThisUpdate" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -782,7 +787,8 @@ public class DB {
                         .length() == 0) ? null : mDateFormat
                         .parse(sLastUpdated);
                 app.compatible = c.getInt(12) == 1;
-                app.ignoreUpdates = c.getInt(13) == 1;
+                app.ignoreAllUpdates = c.getInt(13) == 1;
+                app.ignoreThisUpdate = c.getInt(14) == 1;
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -1147,9 +1153,14 @@ public class DB {
 
         // Values to keep if already present
         if (oldapp == null) {
-            values.put("ignoreUpdates", upapp.ignoreUpdates ? 1 : 0);
+            values.put("ignoreAllUpdates", upapp.ignoreAllUpdates ? 1 : 0);
+            values.put("ignoreThisUpdate", upapp.ignoreThisUpdate ? 1 : 0);
         } else {
-            values.put("ignoreUpdates", oldapp.ignoreUpdates ? 1 : 0);
+            values.put("ignoreAllUpdates", oldapp.ignoreAllUpdates ? 1 : 0);
+            if (upapp.curVercode > oldapp.curVercode)
+                values.put("ignoreThisUpdate", upapp.ignoreThisUpdate ? 1 : 0);
+            else
+                values.put("ignoreThisUpdate", oldapp.ignoreThisUpdate ? 1 : 0);
         }
 
         if (oldapp != null) {
@@ -1257,10 +1268,11 @@ public class DB {
                 new String[] { address });
     }
 
-    public void toggleIgnoreUpdates(String appid) {
-        db.execSQL("update " + TABLE_APP
-                + " set ignoreUpdates=1-ignoreUpdates where id = ?",
-                new String[] { appid });
+    public void toggleIgnoreUpdates(String appid, boolean All, boolean This) {
+        db.execSQL("update " + TABLE_APP + " set "
+                + (All ? "ignoreAllUpdates=1-ignoreAllUpdates " : "")
+                + (This ? "ignoreThisUpdate=1-ignoreThisUpdate " : "")
+                + "where id = ?", new String[] { appid });
     }
 
     public void updateRepoByAddress(Repo repo) {

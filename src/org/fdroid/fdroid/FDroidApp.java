@@ -198,9 +198,9 @@ public class FDroidApp extends Application {
         for (DB.App app : apps) {
             app.filtered = appFilter.filter(app);
 
-            app.toUpdate = (
-                    !app.ignoreUpdates
-                    && app.hasUpdates
+            app.toUpdate = (app.hasUpdates
+                    && !app.ignoreAllUpdates
+                    && !app.ignoreThisUpdate
                     && !app.filtered
                     && (showIncompatible || app.compatible));
         }
