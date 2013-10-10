@@ -684,23 +684,15 @@ public class AppDetails extends ListActivity {
                 app.detail_flattrID != null && app.detail_donateURL != null) {
             SubMenu donate = menu.addSubMenu(Menu.NONE, DONATE, 7,
                     R.string.menu_donate).setIcon(
-                    android.R.drawable.ic_menu_view);
-            if (app.detail_bitcoinAddr != null) {
-                donate.add(Menu.NONE, BITCOIN, 8, R.string.menu_bitcoin).setIcon(
-                        android.R.drawable.ic_menu_view);
-            }
-            if (app.detail_litecoinAddr != null) {
-                donate.add(Menu.NONE, LITECOIN, 8, R.string.menu_litecoin).setIcon(
-                        android.R.drawable.ic_menu_view);
-            }
-            if (app.detail_flattrID != null) {
-                donate.add(Menu.NONE, FLATTR, 9, R.string.menu_flattr).setIcon(
-                        android.R.drawable.ic_menu_view);
-            }
-            if (app.detail_donateURL != null) {
-                donate.add(Menu.NONE, DONATE_URL, 10, R.string.menu_website).setIcon(
-                        android.R.drawable.ic_menu_view);
-            }
+                    android.R.drawable.ic_menu_send);
+            if (app.detail_bitcoinAddr != null)
+                donate.add(Menu.NONE, BITCOIN, 8, R.string.menu_bitcoin);
+            if (app.detail_litecoinAddr != null)
+                donate.add(Menu.NONE, LITECOIN, 8, R.string.menu_litecoin);
+            if (app.detail_flattrID != null)
+                donate.add(Menu.NONE, FLATTR, 9, R.string.menu_flattr);
+            if (app.detail_donateURL != null)
+                donate.add(Menu.NONE, DONATE_URL, 10, R.string.menu_website);
         }
 
         return true;
