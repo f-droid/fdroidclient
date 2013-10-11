@@ -12,7 +12,7 @@
 	     android:scaleType="fitCenter"
 	     android:layout_width="50dp"
 	     android:layout_height="50dp"
-	     android:layout_marginRight="2dp"
+	     android:layout_marginRight="4dp"
 	     android:padding="4dp"/>
 
   <LinearLayout android:id="@+id/status_icons"
@@ -66,8 +66,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_alignBaseline="@id/license"
 	    android:layout_toLeftOf="@id/license"
-	    android:layout_alignLeft="@id/name"
-		android:paddingLeft="1dp" />
+		android:layout_alignLeft="@id/name" />
 
   <TextView android:id="@+id/summary"
 	    android:singleLine="true"
