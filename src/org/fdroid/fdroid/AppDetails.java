@@ -474,10 +474,16 @@ public class AppDetails extends ListActivity {
             @Override
             public void handleTag(boolean opening, String tag, Editable output,
                     XMLReader reader) {
-                if (opening && tag.equals("ul")) {
-                    listNum = -1;
+                if (tag.equals("ul")) {
+                    if (opening)
+                        listNum = -1;
+                    else
+                        output.append('\n');
                 } else if (opening && tag.equals("ol")) {
-                    listNum = 1;
+                    if (opening)
+                        listNum = 1;
+                    else
+                        output.append('\n');
                 } else if (tag.equals("li")) {
                     if (opening) {
                         if (listNum == -1) {
@@ -495,7 +501,7 @@ public class AppDetails extends ListActivity {
         }
         Spanned desc = Html.fromHtml(
                 app.detail_description, null, new HtmlTagHandler());
-        tv.setText(desc.subSequence(0, desc.length() - 1));
+        tv.setText(desc.subSequence(0, desc.length() - 2));
 
         tv = (TextView) infoView.findViewById(R.id.appid);
         if (pref_expert)
@@ -511,7 +517,7 @@ public class AppDetails extends ListActivity {
 
             CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
             if (permsList == null) {
-                tv.setText(getString(R.string.no_permissions) + '\n');
+                tv.setText(getString(R.string.no_permissions));
             } else {
                 Iterator<String> permissions = permsList.iterator();
                 StringBuilder sb = new StringBuilder();
@@ -525,6 +531,7 @@ public class AppDetails extends ListActivity {
                                 "Can't find permission '" + permissionName + "'");
                     }
                 }
+                sb.setLength(sb.length() - 1);
                 tv.setText(sb.toString());
             }
             tv = (TextView) infoView.findViewById(R.id.permissions);
@@ -540,9 +547,11 @@ public class AppDetails extends ListActivity {
             StringBuilder sb = new StringBuilder();
             for (String af : app.antiFeatures)
                 sb.append("<li>"+titleAntiFeature(af)+": "+descAntiFeature(af)+"</li>");
-            tv.setText(Html.fromHtml(sb.toString(), null, new HtmlTagHandler()));
+            Spanned afs = Html.fromHtml(sb.toString(), null, new HtmlTagHandler());
+            tv.setText(afs.subSequence(0, afs.length() - 2));
         } else {
             infoView.findViewById(R.id.antifeatures).setVisibility(View.GONE);
+            infoView.findViewById(R.id.antifeatures_list).setVisibility(View.GONE);
         }
     }
 
