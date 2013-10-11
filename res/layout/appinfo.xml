@@ -5,7 +5,7 @@
     android:paddingTop="3dp"
     android:paddingLeft="3dp"
     android:paddingRight="3dp"
-    android:paddingBottom="10dp"
+    android:paddingBottom="11dp"
     android:baselineAligned="false"
     android:orientation="vertical" >
 
@@ -38,7 +38,7 @@
         android:id="@+id/permissions"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6sp"
+        android:layout_marginTop="8sp"
         android:singleLine="true"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -53,7 +53,7 @@
         android:id="@+id/antifeatures"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6sp"
+        android:layout_marginTop="8sp"
         android:singleLine="true"
         android:textSize="14sp"
         android:textStyle="bold"
