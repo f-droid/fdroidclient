@@ -177,6 +177,7 @@ public class DB {
 
         public String curVersion;
         public int curVercode;
+        public Apk curApk;
         public Date added;
         public Date lastUpdated;
 
@@ -212,9 +213,6 @@ public class DB {
 
         // True if the current update for this app is to be ignored
         public boolean ignoreThisUpdate;
-
-        // The name of the version that would be updated to.
-        public String updateVersion;
 
         // Used internally for tracking during repo updates.
         public boolean updated;
@@ -864,12 +862,11 @@ public class DB {
             // We'll say an application has updates if it's installed AND the
             // version is older than the current one
             for (App app : result) {
-                Apk curver = app.getCurrentVersion();
-                if (curver != null
+                app.curApk = app.getCurrentVersion();
+                if (app.curApk != null
                         && app.installedVerCode > 0
-                        && app.installedVerCode < curver.vercode) {
+                        && app.installedVerCode < app.curApk.vercode) {
                     app.hasUpdates = true;
-                    app.updateVersion = curver.version;
                 }
             }
         }
@@ -921,12 +918,11 @@ public class DB {
             }
 
             app.hasUpdates = false;
-            Apk curver = app.getCurrentVersion();
-            if (curver != null
+            app.curApk = app.getCurrentVersion();
+            if (app.curApk != null
                     && app.installedVersion != null
-                    && app.installedVerCode < curver.vercode) {
+                    && app.installedVerCode < app.curApk.vercode) {
                 app.hasUpdates = true;
-                app.updateVersion = curver.version;
             }
 
             apps.set(index, app);
@@ -1157,7 +1153,7 @@ public class DB {
             values.put("ignoreThisUpdate", upapp.ignoreThisUpdate ? 1 : 0);
         } else {
             values.put("ignoreAllUpdates", oldapp.ignoreAllUpdates ? 1 : 0);
-            if (upapp.curVercode > oldapp.curVercode)
+            if (upapp.curApk.vercode > oldapp.curApk.vercode)
                 values.put("ignoreThisUpdate", upapp.ignoreThisUpdate ? 1 : 0);
             else
                 values.put("ignoreThisUpdate", oldapp.ignoreThisUpdate ? 1 : 0);

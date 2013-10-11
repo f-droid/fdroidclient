@@ -154,7 +154,7 @@ abstract public class AppListAdapter extends BaseAdapter {
             version.append(app.installedVersion);
             if (app.toUpdate) {
                 version.append(" -> ");
-                version.append(app.updateVersion);
+                version.append(app.curApk.version);
             }
         } else {
             int numav = app.apks.size();

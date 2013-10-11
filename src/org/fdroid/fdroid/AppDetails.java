@@ -179,7 +179,6 @@ public class AppDetails extends ListActivity {
 
     private DB.App app;
     private int app_currentvercode;
-    private DB.Apk curapk;
     private String appid;
     private PackageManager mPm;
     private DownloadHandler downloadHandler;
@@ -373,8 +372,7 @@ public class AppDetails extends ListActivity {
             DB.releaseDB();
         }
 
-        DB.Apk curver = app.getCurrentVersion();
-        app_currentvercode = curver == null ? 0 : curver.vercode;
+        app_currentvercode = app.curApk == null ? 0 : app.curApk.vercode;
 
         // Get the signature of the installed package...
         mInstalledSignature = null;
@@ -599,10 +597,10 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        curapk = app.apks.get(position - l.getHeaderViewsCount());
-        if (app.installedVerCode == curapk.vercode)
+        app.curApk = app.apks.get(position - l.getHeaderViewsCount());
+        if (app.installedVerCode == app.curApk.vercode)
             removeApk(app.id);
-        else if (app.installedVerCode > curapk.vercode) {
+        else if (app.installedVerCode > app.curApk.vercode) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
             ask_alrt.setMessage(getString(R.string.installDowngrade));
             ask_alrt.setPositiveButton(getString(R.string.yes),
@@ -632,7 +630,6 @@ public class AppDetails extends ListActivity {
         menu.clear();
         if (app == null)
             return true;
-        DB.Apk curver = app.getCurrentVersion();
         if (app.toUpdate) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 0, R.string.menu_update)
@@ -640,7 +637,7 @@ public class AppDetails extends ListActivity {
                     MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
-        if (app.installedVersion == null && curver != null) {
+        if (app.installedVersion == null && app.curApk != null) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 1, R.string.menu_install)
                         .setIcon(android.R.drawable.ic_menu_add),
@@ -740,8 +737,7 @@ public class AppDetails extends ListActivity {
 
         case INSTALL:
             // Note that this handles updating as well as installing.
-            curapk = app.getCurrentVersion();
-            if (curapk != null)
+            if (app.curApk != null)
                 install();
             return true;
 
@@ -793,13 +789,13 @@ public class AppDetails extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Install the version of this app denoted by 'curapk'.
+    // Install the version of this app denoted by 'app.curApk'.
     private void install() {
 
         String ra = null;
         try {
             DB db = DB.getDB();
-            DB.Repo repo = db.getRepo(curapk.repo);
+            DB.Repo repo = db.getRepo(app.curApk.repo);
             if (repo != null)
                 ra = repo.address;
         } catch (Exception ex) {
@@ -811,14 +807,14 @@ public class AppDetails extends ListActivity {
             return;
         final String repoaddress = ra;
 
-        if (!curapk.compatible) {
+        if (!app.curApk.compatible) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
             ask_alrt.setMessage(getString(R.string.installIncompatible));
             ask_alrt.setPositiveButton(getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            downloadHandler = new DownloadHandler(curapk,
+                            downloadHandler = new DownloadHandler(app.curApk,
                                     repoaddress, DB
                                             .getDataPath(getBaseContext()));
                         }
@@ -834,8 +830,8 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        if (mInstalledSigID != null && curapk.sig != null
-                && !curapk.sig.equals(mInstalledSigID)) {
+        if (mInstalledSigID != null && app.curApk.sig != null
+                && !app.curApk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
                     getString(R.string.ok),
@@ -848,7 +844,7 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(curapk, repoaddress,
+        downloadHandler = new DownloadHandler(app.curApk, repoaddress,
                 DB.getDataPath(this));
     }
 
