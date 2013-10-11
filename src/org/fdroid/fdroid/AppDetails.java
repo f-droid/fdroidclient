@@ -25,10 +25,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import android.support.v4.view.MenuItemCompat;
-import org.fdroid.fdroid.compat.ActionBarCompat;
-import org.fdroid.fdroid.compat.MenuManager;
-import org.fdroid.fdroid.DB.CommaSeparatedList;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -68,8 +64,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
 
 import org.fdroid.fdroid.compat.PackageManagerCompat;
+import org.fdroid.fdroid.compat.ActionBarCompat;
+import org.fdroid.fdroid.compat.MenuManager;
+import org.fdroid.fdroid.DB.CommaSeparatedList;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 

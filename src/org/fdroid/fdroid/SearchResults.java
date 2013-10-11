@@ -21,8 +21,6 @@ package org.fdroid.fdroid;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.support.v4.view.MenuItemCompat;
-
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -36,6 +34,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
 
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.AppListAdapter;

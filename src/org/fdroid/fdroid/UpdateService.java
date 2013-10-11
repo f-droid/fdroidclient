@@ -35,6 +35,7 @@ import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 

@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.AvailableAppsFragment;

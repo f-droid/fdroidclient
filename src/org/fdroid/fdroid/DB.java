@@ -45,6 +45,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.util.Log;
+
 import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.ContextCompat;
 

@@ -1,17 +1,19 @@
 package org.fdroid.fdroid.compat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
+import android.support.v4.view.ViewPager;
+
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class TabManager extends Compatibility {
 

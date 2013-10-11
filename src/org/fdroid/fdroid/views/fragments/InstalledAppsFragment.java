@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import org.fdroid.fdroid.views.AppListAdapter;
 
 public class InstalledAppsFragment extends AppListFragment {

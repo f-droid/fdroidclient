@@ -1,15 +1,16 @@
 package org.fdroid.fdroid;
 
+import java.util.*;
+
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
 import org.fdroid.fdroid.views.CanUpdateAppListAdapter;
 import org.fdroid.fdroid.views.InstalledAppListAdapter;
-
-import java.util.*;
 
 /**
  * Should be owned by the FDroid Activity, but used by the AppListFragments.

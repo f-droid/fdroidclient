@@ -1,9 +1,9 @@
 package org.fdroid.fdroid.compat;
 
+import java.io.File;
+
 import android.content.Context;
 import android.os.Environment;
-
-import java.io.File;
 
 public abstract class ContextCompat extends Compatibility {
 
