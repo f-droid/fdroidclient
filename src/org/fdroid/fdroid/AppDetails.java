@@ -113,49 +113,58 @@ public class AppDetails extends ListActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             java.text.DateFormat df = DateFormat.getDateFormat(mctx);
+            DB.Apk apk = items.get(position);
 
             View v = convertView;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.apklistitem, null);
             }
-            DB.Apk apk = items.get(position);
-            TextView version = (TextView) v.findViewById(R.id.version);
-            boolean iscurrent = apk.vercode == app_currentvercode;
-            version.setText(getString(R.string.version) + " " + apk.version
-                    + (iscurrent ? " *" : ""));
+            v.setEnabled(apk.compatible);
 
-            TextView status = (TextView) v.findViewById(R.id.status);
+            TextView tv = (TextView) v.findViewById(R.id.version);
+            boolean iscurrent = apk.vercode == app_currentvercode;
+            tv.setText(getString(R.string.version) + " " + apk.version
+                    + (iscurrent ? " *" : ""));
+            tv.setEnabled(apk.compatible);
+
+            tv = (TextView) v.findViewById(R.id.status);
             if (apk.vercode == app.installedVerCode
                     && apk.sig.equals(mInstalledSigID))
-                status.setText(getString(R.string.inst));
+                tv.setText(getString(R.string.inst));
             else
-                status.setText(getString(R.string.not_inst));
+                tv.setText(getString(R.string.not_inst));
+            tv.setEnabled(apk.compatible);
 
-            TextView size = (TextView) v.findViewById(R.id.size);
+            tv = (TextView) v.findViewById(R.id.size);
             if (apk.detail_size == 0) {
-                size.setText("");
+                tv.setText("");
             } else {
-                size.setText(Utils.getFriendlySize(apk.detail_size));
+                tv.setText(Utils.getFriendlySize(apk.detail_size));
+                tv.setEnabled(apk.compatible);
             }
-            TextView buildtype = (TextView) v.findViewById(R.id.buildtype);
+            tv = (TextView) v.findViewById(R.id.buildtype);
             if (apk.srcname != null) {
-                buildtype.setText("source");
+                tv.setText("source");
             } else {
-                buildtype.setText("bin");
+                tv.setText("bin");
             }
-            TextView added = (TextView) v.findViewById(R.id.added);
+            tv.setEnabled(apk.compatible);
+            tv = (TextView) v.findViewById(R.id.added);
             if (apk.added != null) {
-                added.setVisibility(View.VISIBLE);
-                added.setText(getString(R.string.added_on, df.format(apk.added)));
+                tv.setVisibility(View.VISIBLE);
+                tv.setText(getString(R.string.added_on, df.format(apk.added)));
+                tv.setEnabled(apk.compatible);
             } else {
-                added.setVisibility(View.GONE);
+                tv.setVisibility(View.GONE);
             }
-
-            // Disable it all if it isn't compatible...
-            View[] views = { v, version, status, size, buildtype, added };
-            for (View view : views) {
-                view.setEnabled(apk.compatible);
+            tv = (TextView) v.findViewById(R.id.nativecode);
+            if (pref_expert && apk.nativecode != null) {
+                tv.setVisibility(View.VISIBLE);
+                tv.setText(apk.nativecode.toString().replaceAll(","," "));
+                tv.setEnabled(apk.compatible);
+            } else {
+                tv.setVisibility(View.GONE);
             }
 
             return v;
