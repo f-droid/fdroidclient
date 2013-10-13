@@ -123,9 +123,8 @@ public class AppDetails extends ListActivity {
             v.setEnabled(apk.compatible);
 
             TextView tv = (TextView) v.findViewById(R.id.version);
-            boolean iscurrent = apk.vercode == app_currentvercode;
             tv.setText(getString(R.string.version) + " " + apk.version
-                    + (iscurrent ? " *" : ""));
+                    + (apk == app.curApk ? " *" : ""));
             tv.setEnabled(apk.compatible);
 
             tv = (TextView) v.findViewById(R.id.status);
@@ -187,14 +186,13 @@ public class AppDetails extends ListActivity {
     private static final int DONATE_URL = Menu.FIRST + 13;
 
     private DB.App app;
-    private int app_currentvercode;
     private String appid;
     private PackageManager mPm;
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
 
-    private boolean ignoreAllToggled;
-    private boolean ignoreThisToggled;
+    private boolean startingIgnoreAll;
+    private int startingIgnoreThis;
 
     LinearLayout headerView;
     View infoView;
@@ -264,9 +262,6 @@ public class AppDetails extends ListActivity {
         pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
         pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
         pref_antiNonFreeDep = prefs.getBoolean("antiNonFreeDep", false);
-
-        ignoreAllToggled = false;
-        ignoreThisToggled = false;
 
         startViews();
 
@@ -342,7 +337,6 @@ public class AppDetails extends ListActivity {
         if (old.downloadHandler != null)
             downloadHandler = new DownloadHandler(old.downloadHandler);
         app = old.app;
-        app_currentvercode = old.app_currentvercode;
         mInstalledSignature = old.mInstalledSignature;
         mInstalledSigID = old.mInstalledSigID;
     }
@@ -381,7 +375,8 @@ public class AppDetails extends ListActivity {
             DB.releaseDB();
         }
 
-        app_currentvercode = app.curApk == null ? 0 : app.curApk.vercode;
+        startingIgnoreAll = app.ignoreAllUpdates;
+        startingIgnoreThis = app.ignoreThisUpdate;
 
         // Get the signature of the installed package...
         mInstalledSignature = null;
@@ -692,7 +687,7 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
                         .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
                         .setCheckable(true)
-                        .setChecked(app.ignoreThisUpdate);
+                        .setChecked(app.ignoreThisUpdate >= app.curApk.vercode);
         }
         if (app.detail_webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 3, R.string.menu_website).setIcon(
@@ -766,13 +761,14 @@ public class AppDetails extends ListActivity {
         case IGNOREALL:
             app.ignoreAllUpdates ^= true;
             item.setChecked(app.ignoreAllUpdates);
-            ignoreAllToggled ^= true;
             return true;
 
         case IGNORETHIS:
-            app.ignoreThisUpdate ^= true;
-            item.setChecked(app.ignoreThisUpdate);
-            ignoreThisToggled ^= true;
+            if (app.ignoreThisUpdate >= app.curApk.vercode)
+                app.ignoreThisUpdate = 0;
+            else
+                app.ignoreThisUpdate = app.curApk.vercode;
+            item.setChecked(app.ignoreThisUpdate > 0);
             return true;
 
         case WEBSITE:
@@ -1051,11 +1047,12 @@ public class AppDetails extends ListActivity {
 
     @Override
     public void finish() {
-        if (ignoreAllToggled || ignoreThisToggled) {
+        if (app.ignoreAllUpdates != startingIgnoreAll
+                || app.ignoreThisUpdate != startingIgnoreThis) {
             try {
                 DB db = DB.getDB();
-                db.toggleIgnoreUpdates(app.id,
-                        ignoreAllToggled, ignoreThisToggled);
+                db.setIgnoreUpdates(app.id,
+                        app.ignoreAllUpdates, app.ignoreThisUpdate);
             } finally {
                 DB.releaseDB();
             }

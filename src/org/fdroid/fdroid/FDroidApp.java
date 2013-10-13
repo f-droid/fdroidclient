@@ -200,7 +200,7 @@ public class FDroidApp extends Application {
 
             app.toUpdate = (app.hasUpdates
                     && !app.ignoreAllUpdates
-                    && !app.ignoreThisUpdate
+                    && app.curApk.vercode > app.ignoreThisUpdate
                     && !app.filtered
                     && (showIncompatible || app.compatible));
         }

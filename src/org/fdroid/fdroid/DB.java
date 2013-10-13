@@ -129,7 +129,7 @@ public class DB {
             detail_Populated = false;
             compatible = false;
             ignoreAllUpdates = false;
-            ignoreThisUpdate = false;
+            ignoreThisUpdate = 0;
             filtered = false;
             iconUrl = null;
         }
@@ -213,7 +213,7 @@ public class DB {
         public boolean ignoreAllUpdates;
 
         // True if the current update for this app is to be ignored
-        public boolean ignoreThisUpdate;
+        public int ignoreThisUpdate;
 
         // Used internally for tracking during repo updates.
         public boolean updated;
@@ -440,7 +440,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 26;
+    private final int DBVersion = 27;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -787,7 +787,7 @@ public class DB {
                         .parse(sLastUpdated);
                 app.compatible = c.getInt(12) == 1;
                 app.ignoreAllUpdates = c.getInt(13) == 1;
-                app.ignoreThisUpdate = c.getInt(14) == 1;
+                app.ignoreThisUpdate = c.getInt(14);
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -1151,13 +1151,10 @@ public class DB {
         // Values to keep if already present
         if (oldapp == null) {
             values.put("ignoreAllUpdates", upapp.ignoreAllUpdates ? 1 : 0);
-            values.put("ignoreThisUpdate", upapp.ignoreThisUpdate ? 1 : 0);
+            values.put("ignoreThisUpdate", upapp.ignoreThisUpdate);
         } else {
             values.put("ignoreAllUpdates", oldapp.ignoreAllUpdates ? 1 : 0);
-            if (upapp.curApk.vercode > oldapp.curApk.vercode)
-                values.put("ignoreThisUpdate", upapp.ignoreThisUpdate ? 1 : 0);
-            else
-                values.put("ignoreThisUpdate", oldapp.ignoreThisUpdate ? 1 : 0);
+            values.put("ignoreThisUpdate", upapp.ignoreThisUpdate);
         }
 
         if (oldapp != null) {
@@ -1265,11 +1262,11 @@ public class DB {
                 new String[] { address });
     }
 
-    public void toggleIgnoreUpdates(String appid, boolean All, boolean This) {
-        db.execSQL("update " + TABLE_APP + " set "
-                + (All ? "ignoreAllUpdates=1-ignoreAllUpdates " : "")
-                + (This ? "ignoreThisUpdate=1-ignoreThisUpdate " : "")
-                + "where id = ?", new String[] { appid });
+    public void setIgnoreUpdates(String appid, boolean All, int This) {
+        db.execSQL("update " + TABLE_APP + " set"
+                + (All ? " ignoreAllUpdates="+All : "")
+                + (This>0 ? " ignoreThisUpdate="+This : "")
+                + " where id = ?", new String[] { appid });
     }
 
     public void updateRepoByAddress(Repo repo) {
