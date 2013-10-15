@@ -702,8 +702,8 @@ public class AppDetails extends ListActivity {
                     android.R.drawable.ic_menu_view);
         }
 
-        if (app.detail_bitcoinAddr != null && app.detail_litecoinAddr != null &&
-                app.detail_flattrID != null && app.detail_donateURL != null) {
+        if (app.detail_bitcoinAddr != null || app.detail_litecoinAddr != null ||
+                app.detail_flattrID != null || app.detail_donateURL != null) {
             SubMenu donate = menu.addSubMenu(Menu.NONE, DONATE, 7,
                     R.string.menu_donate).setIcon(
                     android.R.drawable.ic_menu_send);
