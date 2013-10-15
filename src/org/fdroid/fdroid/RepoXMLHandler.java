@@ -48,8 +48,6 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import android.os.Bundle;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.util.Log;
 
 public class RepoXMLHandler extends DefaultHandler {
@@ -353,13 +351,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 // check the signature, and extract the index...
                 Log.d("FDroid", "Getting signed index from " + repo.address + " at " + 
                     logDateFormat.format(new Date(System.currentTimeMillis())));
-                String address = repo.address + "/index.jar";
-                PackageManager pm = ctx.getPackageManager();
-                try {
-                    PackageInfo pi = pm.getPackageInfo(ctx.getPackageName(), 0);
-                    address += "?" + pi.versionName;
-                } catch (Exception e) {
-                }
+                String address = repo.address + "/index.jar?"
+                    + ctx.getString(R.string.version_name);
                 Bundle progressData = createProgressData(repo.address);
                 ProgressListener.Event event = new ProgressListener.Event(
                         RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD, progressData);
