@@ -1,6 +1,6 @@
 --gettext locale/
 --groups strings array
 
+--ignore-fuzzy
 --ignore /updateIntervalValues.*/
 --ignore /dbSyncModeValues.*/
-
