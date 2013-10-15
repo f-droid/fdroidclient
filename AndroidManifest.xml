@@ -3,7 +3,7 @@
     package="org.fdroid.fdroid"
     android:installLocation="auto"
     android:versionCode="52"
-    android:versionName="0.52-test" >
+    android:versionName="@string/version_name" >
 
     <uses-sdk
         android:minSdkVersion="4"

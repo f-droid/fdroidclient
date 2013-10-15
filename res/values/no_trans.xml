@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">F-Droid</string>
+	<string name="version_name">0.52-test</string>
+
+	<string name="about_sitec">http://f-droid.org</string>
+	<string name="about_mailc">admin@f-droid.org</string>
+
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+</resources>

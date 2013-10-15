@@ -23,7 +23,6 @@
 	<string name="never">never</string>
 	<string name="automatic_repo_scan">Automatic repo scan</string>
 
-	<string name="app_name">F-Droid</string>
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>
 	<string name="no_such_app">No such app found</string>
@@ -32,9 +31,7 @@
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
 		GNU GPLv3 license.</string>
 	<string name="about_site">Website: </string>
-	<string name="about_sitec">http://f-droid.org</string>
 	<string name="about_mail">Email: </string>
-	<string name="about_mailc">admin@f-droid.org</string>
 	<string name="about_version">Version: </string>
 	<string name="about_website">Website</string>
 
@@ -94,9 +91,6 @@
 	<string name="menu_issues">Issues</string>
 	<string name="menu_source">Source Code</string>
 	<string name="menu_update">Update</string>
-	<string name="menu_bitcoin">Bitcoin</string>
-	<string name="menu_litecoin">Litecoin</string>
-	<string name="menu_flattr">Flattr</string>
 	<string name="menu_donate">Donate</string>
 
 	<string name="details_installed">Version %s installed</string>

@@ -1,8 +1,6 @@
 --gettext locale/
 --groups strings array
 
---ignore about_sitec about_mailc
---ignore repo_add_http
 --ignore /updateIntervalValues.*/
 --ignore /dbSyncModeValues.*/
 
