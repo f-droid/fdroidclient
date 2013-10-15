@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">Найдено одно совпадение с \'%s\':</string>
   <string name="searchres_noapps">Не найдено ни одного совпадения с \'%s\'</string>
   <string name="SignatureMismatch">Новая версия подписана ключом отличным от старого. Для установки новой версии, сначала нужно удалить старую программы. А потом попробовать снова. (Замечание: при удалении программы будут удалены все её данные)</string>
-  <string name="installIncompatible">Android сказал что пакет не совместим с вашим устройством. Проигнорировать предупреждение и всё равно поставить?</string>
   <string name="installDowngrade">Вы пытаетесь установить более старую версию приложения. Это может привести к его некорректной работе и даже потере данных. Вы уверены, что хотите продолжить?</string>
   <string name="version">Версия</string>
   <string name="n_versions_available">версий доступно - %d</string>
@@ -20,7 +19,6 @@
   <string name="last_update_check">Обновлено: %s</string>
   <string name="never">никогда</string>
   <string name="automatic_repo_scan">Автоматически сканировать репозиторий</string>
-  <string name="app_name">F-Droid</string>
   <string name="search_results">Результаты поиска</string>
   <string name="app_details">Описание приложения</string>
   <string name="no_such_app">Приложение не найдено</string>
@@ -47,7 +45,6 @@
   <string name="tab_updates">Обновления</string>
   <string name="one_update_available">Доступно 1 обновление.</string>
   <string name="many_updates_available">Обновлений доступно - %d.</string>
-  <string name="fdroid_updates_available">Доступные обновления</string>
   <string name="process_wait_title">Подождите</string>
   <string name="process_update_msg">Список приложений обновляется...</string>
   <string name="download_server">Взять приложение из</string>
@@ -68,9 +65,6 @@
   <string name="menu_issues">Ошибки</string>
   <string name="menu_source">Исходный код</string>
   <string name="menu_update">Обновить</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_litecoin">Bitcoin</string>
-  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
@@ -79,19 +73,14 @@
   <string name="antifeatures">Анти-возможности</string>
   <string name="antiads">Реклама</string>
   <string name="antiadslong">Показывать приложения с рекламой</string>
-  <string name="antiadslist">Показывать приложения с рекламой</string>
   <string name="antitrack">Слежка</string>
   <string name="antitracklong">Показывать приложения, которые следят и отсылают данные о вас</string>
-  <string name="antitracklist">Показывать приложения, которые следят и отсылают данные о вас</string>
   <string name="antinonfreead">Дополнения</string>
   <string name="antinonfreeadlong">Показывать приложения использующие несвободные дополнения</string>
-  <string name="antinonfreeadlist">Показывать приложения использующие несвободные дополнения</string>
   <string name="antinonfreenet">Сетевые сервисы</string>
   <string name="antinonfreenetlong">Показывать приложения использующие несвободные сетевые сервисы</string>
-  <string name="antinonfreenetlist">Показывать приложения использующие несвободные сетевые сервисы</string>
   <string name="antinonfreedep">Зависимости</string>
   <string name="antinonfreedeplong">Показывать приложения зависимые от несвободных приложений</string>
-  <string name="antinonfreedeplist">Показывать приложения зависимые от несвободных приложений</string>
   <string name="display">Вид</string>
   <string name="expert">Эксперт</string>
   <string name="expert_mode">Включить режим эксперта</string>
@@ -109,7 +98,6 @@
   <string name="category_whatsnew">Что Нового</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
   <string name="status_download">Загрузка\n%2$s / %3$s (%4$d%%) из\n%1$s</string>
-  <string name="status_processing_xml">Взять приложение из:\n</string>
   <string name="status_connecting_to_repo">Соединение с\n%1$s</string>
   <string name="status_checking_compatibility">Проверка совместимости приложений с устройством...</string>
   <string name="no_permissions">Разрешений не требуется.</string>

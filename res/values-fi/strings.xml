@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">Löydettiin yksi sovellus, joka täsmää \'%s\':</string>
   <string name="searchres_noapps">\'%s\':ään täsmääviä sovelluksia ei löytynyt</string>
   <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version, vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen. (Huomaa, että poistaminen poistaa kaiken sovelluksen sisäisen datan)</string>
-  <string name="installIncompatible">Android sanoo ettei tämä paketti ole yhteensopiva laitteesi kanssa. Tahdotko asentaa sen silti?</string>
   <string name="version">Versio</string>
   <string name="n_versions_available">%d versiota saatavilla</string>
   <string name="n_version_available">%d versio saatavilla</string>
@@ -14,18 +13,14 @@
   <string name="updates">Päivitykset</string>
   <string name="notify_updates_available">Ilmoita kun uusia päivityksiä on saatavilla</string>
   <string name="update_apps_list">Päivitä sovelluslista sovelluslähteistä automaattisesti</string>
-  <string name="update_history">Päivitä sovelluslähteet</string>
   <string name="last_update_check">Viimeisin sovelluslähteiden skannaus: %s</string>
   <string name="never">ei koskaan</string>
   <string name="automatic_repo_scan">Automaattinen sovelluslähteen skannaus</string>
-  <string name="app_name">F-Droid</string>
   <string name="about_title">Tietoa F-Droidista</string>
-  <string name="about_desc">Perustuu alunperin Aptoideen.\nJulkaistu GNU GPLv2-lisenssillä.</string>
   <string name="about_site">Verkkosivu:</string>
   <string name="about_mail">Sähköposti:</string>
   <string name="about_version">Versio:</string>
   <string name="about_website">Verkkosivu</string>
-  <string name="no_repo">Sovelluslähteitä ei ole määritetty!\n\nSovelluslähde on paikka, josta voidaan ladata sovelluksia. Lisätäksesi sellaisen paina MENU-näppäintä nyt ja anna URL-osoite.\n\nSovelluslähteen osoite näyttää tälläiseltä: http://f-droid.org/repo</string>
   <string name="inst">Asennettu</string>
   <string name="not_inst">Ei asennettu</string>
   <string name="ok">OK</string>
@@ -39,9 +34,6 @@
   <string name="tab_installed">Asennettu</string>
   <string name="tab_noninstalled">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
-  <string name="one_update_available">Päivityksiä saatavilla</string>
-  <string name="many_updates_available">Päivityksiä saatavilla</string>
-  <string name="fdroid_updates_available">Päivityksiä saatavilla</string>
   <string name="process_wait_title">Odota hetki</string>
   <string name="process_update_msg">Päivitetään sovelluslistaa...</string>
   <string name="download_server">Haetaan sovellusta lähteestä</string>
@@ -69,19 +61,14 @@
   <string name="antifeatures">Anti-Toiminnot</string>
   <string name="antiads">Mainostus</string>
   <string name="antiadslong">Näytä sovellukset, jotka sisältävät mainostusta</string>
-  <string name="antiadslist">Näytä sovellukset, jotka sisältävät mainostusta</string>
   <string name="antitrack">Seuranta</string>
   <string name="antitracklong">Näytä sovellukset, jotka seuraavat ja raportoivat aktiivisuuttasi</string>
-  <string name="antitracklist">Näytä sovellukset, jotka seuraavat ja raportoivat aktiivisuuttasi</string>
   <string name="antinonfreead">Lisä-osat</string>
   <string name="antinonfreeadlong">Näytä sovellukset, jotka mainostavat epävapaita lisä-osia</string>
-  <string name="antinonfreeadlist">Näytä sovellukset, jotka mainostavat epävapaita lisä-osia</string>
   <string name="antinonfreenet">Verkkopalvelut</string>
   <string name="antinonfreenetlong">Näytä sovellukset, jotka mainostavat epävapaita verkkopalveluja</string>
-  <string name="antinonfreenetlist">Näytä sovellukset, jotka mainostavat epävapaita verkkopalveluja</string>
   <string name="antinonfreedep">Riippuvuudet</string>
   <string name="antinonfreedeplong">Näytä sovellukset, jotka riippuvat muista epävapaista sovelluksista</string>
-  <string name="antinonfreedeplist">Näytä sovellukset, jotka riippuvat muista epävapaista sovelluksista</string>
   <string name="expert">Asiantuntija</string>
   <string name="expert_mode">Ota käyttöön asiantuntija-tila</string>
   <string name="search_hint">Etsi sovelluksia</string>
@@ -97,5 +84,4 @@
   <string name="category_all">Kaikki</string>
   <string name="category_whatsnew">Uutta</string>
   <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
-  <string name="status_processing_xml">Ladataan sovellusta lähteestä:\n</string>
 </resources>

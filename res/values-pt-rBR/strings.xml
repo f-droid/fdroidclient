@@ -21,7 +21,6 @@
   <string name="last_update_check">Última consulta aos repositórios: %s</string>
   <string name="never">nunca</string>
   <string name="automatic_repo_scan">Consulta automática aos repositórios</string>
-  <string name="app_name">F-Droid</string>
   <string name="search_results">Resultados da Pesquisa</string>
   <string name="app_details">Detalhes do Aplicativo</string>
   <string name="no_such_app">Nenhum aplicativo encontrado</string>
@@ -31,7 +30,6 @@
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Versão:</string>
   <string name="about_website">Site</string>
-  <string name="no_repo">Você não tem nenhum repositório configurado!!\n\nUm repositório é uma fonte de aplicativos. Para adicionar um, pressione o botão MENU e digite a URL.\n\nUm endereço do repositório é algo similar a isto: http://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">Não Instalado</string>
   <string name="added_on">Adicionado em %s</string>
@@ -69,9 +67,6 @@
   <string name="menu_issues">Questões</string>
   <string name="menu_source">Código Fonte</string>
   <string name="menu_update">Atualizar</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_litecoin">Bitcoin</string>
-  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Fazer doação</string>
   <string name="details_installed">Versão %s instalada</string>
   <string name="details_notinstalled">Não instalado</string>
@@ -80,19 +75,14 @@
   <string name="antifeatures">Anticaracterísticas</string>
   <string name="antiads">Publicidade</string>
   <string name="antiadslong">Mostrar aplicativos que contenham publicidade</string>
-  <string name="antiadslist">Mostrar aplicativos que contenham publicidade</string>
   <string name="antitrack">Rastreamento</string>
   <string name="antitracklong">Mostrar aplicativos que rastreiam e relatam sua atividade</string>
-  <string name="antitracklist">Mostrar aplicativos que rastreiam e relatam sua atividade</string>
   <string name="antinonfreead">Complementos</string>
   <string name="antinonfreeadlong">Mostrar aplicativos que promovem complementos não-livres</string>
-  <string name="antinonfreeadlist">Mostrar aplicativos que promovem complementos não-livres</string>
   <string name="antinonfreenet">Serviços de Rede</string>
   <string name="antinonfreenetlong">Mostrar aplicativos que promovem serviços de rede não-livre</string>
-  <string name="antinonfreenetlist">Mostrar aplicativos que promovem serviços de rede não-livre</string>
   <string name="antinonfreedep">Dependências</string>
   <string name="antinonfreedeplong">Mostrar aplicativos que dependem de aplicativos não-livres</string>
-  <string name="antinonfreedeplist">Mostrar aplicativos que dependem de aplicativos não-livres</string>
   <string name="display">Exibição</string>
   <string name="expert">Especialista</string>
   <string name="expert_mode">Ativar modo especialista</string>
@@ -117,7 +107,6 @@
   <string name="permissions_for_long">Permissões para a versão %s</string>
   <string name="showPermissions">Mostrar permissões</string>
   <string name="showPermissions_long">Mostrar uma lista de permissões que um aplicativo requer</string>
-  <string name="no_handler_app">Você não tem aplicativo instalado que lide com %s</string>
   <string name="compactlayout">Leiaute compacto</string>
   <string name="compactlayout_long">Mostrar só nomes de aplicativos e sumários na lista</string>
 </resources>

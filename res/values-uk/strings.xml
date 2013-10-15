@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">Знайдено програму за запитом «%s»:</string>
   <string name="searchres_noapps">Не знайдено програм за запитом «%2$s».</string>
   <string name="SignatureMismatch">Нова версія підписана не тим ключем, що стара. Перш ніж встановити нову версію, самостійно зітріть стару. Зауважте, що стирання програми призведе до знищення всіх даних цієї програми.</string>
-  <string name="installIncompatible">Згідно з даними системи, цей пакунок не сумісний із вашим пристроєм. Все одно встановити?</string>
   <string name="version">Версія</string>
   <string name="n_versions_available">Наявно версій: %d</string>
   <string name="n_version_available">Наявна %d версія</string>
@@ -14,18 +13,14 @@
   <string name="updates">Оновлення</string>
   <string name="notify_updates_available">Сповіщати про наявність оновлень</string>
   <string name="update_apps_list">Автоматично оновлювати список програм із репозиторію</string>
-  <string name="update_history">Оновити репозиторії?</string>
   <string name="last_update_check">Синхронізовано: %s</string>
   <string name="never">ніколи</string>
   <string name="automatic_repo_scan">Синхронізація</string>
-  <string name="app_name">F-Droid</string>
   <string name="about_title">Про F-Droid</string>
-  <string name="about_desc">Колись основою був Aptoide.\nЛіцензія — GNU GPLv2.</string>
   <string name="about_site">"Сайт: "</string>
   <string name="about_mail">"Пошта: "</string>
   <string name="about_version">"Версія: "</string>
   <string name="about_website">Сайт</string>
-  <string name="no_repo">Слід додати репозиторій — джерело програм.\n\nНатисніть кнопку пристрою «меню»,\nоберіть пункт додання та введіть адресу.\n\nТиповий репозиторій: http://f-droid.org/repo</string>
   <string name="inst">Встановлено</string>
   <string name="not_inst">Не встановлено</string>
   <string name="ok">Гаразд</string>
@@ -39,9 +34,6 @@
   <string name="tab_installed">Встановлене</string>
   <string name="tab_noninstalled">Наявне</string>
   <string name="tab_updates">Оновлення</string>
-  <string name="one_update_available">Наявні оновлення</string>
-  <string name="many_updates_available">Наявні оновлення</string>
-  <string name="fdroid_updates_available">Наявні оновлення</string>
   <string name="process_wait_title">Зачекайте</string>
   <string name="process_update_msg">Оновлюю список програм...</string>
   <string name="download_server">Звантажую програму</string>
@@ -69,19 +61,14 @@
   <string name="antifeatures">«Антифункції»</string>
   <string name="antiads">Реклама</string>
   <string name="antiadslong">Показувати програми з рекламою</string>
-  <string name="antiadslist">Показувати програми з рекламою</string>
   <string name="antitrack">Стеження</string>
   <string name="antitracklong">Показувати програми, що стежать за вами й передають інформацію</string>
-  <string name="antitracklist">Показувати програми, що стежать за вами й передають інформацію</string>
   <string name="antinonfreead">Додатки</string>
   <string name="antinonfreeadlong">Показувати програми, що сприяють невільним додаткам</string>
-  <string name="antinonfreeadlist">Показувати програми, що сприяють невільним додаткам</string>
   <string name="antinonfreenet">Мережні сервіси</string>
   <string name="antinonfreenetlong">Показувати програми, що сприяють невільним мережним сервісам</string>
-  <string name="antinonfreenetlist">Показувати програми, що сприяють невільним мережним сервісам</string>
   <string name="antinonfreedep">Залежності</string>
   <string name="antinonfreedeplong">Показувати програми, що залежать від інших невільних програм</string>
-  <string name="antinonfreedeplist">Показувати програми, що залежать від інших невільних програм</string>
   <string name="expert">Експерт</string>
   <string name="expert_mode">Увімкнути режим експерта</string>
   <string name="search_hint">Пошук програм</string>
@@ -97,5 +84,4 @@
   <string name="category_all">Всі програми</string>
   <string name="category_whatsnew">Недавні додання</string>
   <string name="category_recentlyupdated">Недавні оновлення</string>
-  <string name="status_processing_xml">Звантажую програму:\n</string>
 </resources>

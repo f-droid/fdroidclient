@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">Atopouse unha aplicación que cadra con \'%s\':</string>
   <string name="searchres_noapps">Non se atoparon aplicacións que cadren con \'%s\'</string>
   <string name="SignatureMismatch">A nova versión está asinada cunha chave diferente da antiga. Para instalar a nova versión, antes débese desinstalar a anterior. Por favor, fai esto e téntao de novo. (Decátate que ó desinstalar borrarase calquera dato interno gardado pola aplicación)</string>
-  <string name="installIncompatible">Segundo Android este paquete non é compatíble co teu aparato. ¿Queres tentar de instalalo aínda así?</string>
   <string name="installDowngrade">Estás tentando de instalar unha versión anterior. Esto pode acarrexar un mal funcionamento ou pérdida de datos. ¿Queres tentalo aínda así?</string>
   <string name="version">Versión</string>
   <string name="n_versions_available">%d versións dispoñíbles</string>
@@ -20,14 +19,12 @@
   <string name="last_update_check">Último escaneado do repositorio: %s</string>
   <string name="never">nunca</string>
   <string name="automatic_repo_scan">Escaneado automático dos repositorios</string>
-  <string name="app_name">F-Droid</string>
   <string name="about_title">Sobre F-Droid</string>
   <string name="about_desc">Baseado en Aptoide.\nPublicado con licencia GNU GPLv3.</string>
   <string name="about_site">Sitio web:</string>
   <string name="about_mail">Correo:</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Sitio web</string>
-  <string name="no_repo">Non tes ningún repositorio configurado!\n\nUn repositorio é unha fonte de aplicacións. Para engadir un repositorio, preme no botón MENÚ e introduce a URL.\n\nUn enderezo de repositorio debería ser algo así: http://f-droid.org/repo</string>
   <string name="inst">Instalada</string>
   <string name="not_inst">Non instalado</string>
   <string name="added_on">Engadido en %s</string>
@@ -64,9 +61,6 @@
   <string name="menu_issues">Incidencias</string>
   <string name="menu_source">Código fonte</string>
   <string name="menu_update">Actualizar</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_litecoin">Bitcoin</string>
-  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Doar</string>
   <string name="details_installed">Instalada a versión %s</string>
   <string name="details_notinstalled">Non instalada</string>
@@ -75,19 +69,14 @@
   <string name="antifeatures">Anti-funcionalidades</string>
   <string name="antiads">Publicidade</string>
   <string name="antiadslong">Amosar apps que conteñen publicidade</string>
-  <string name="antiadslist">Amosar apps que conteñen publicidade</string>
   <string name="antitrack">Seguimento</string>
   <string name="antitracklong">Amosar aplicacións que fan seguimento e informan da túa actividade</string>
-  <string name="antitracklist">Amosar aplicacións que fan seguimento e informan da túa actividade</string>
   <string name="antinonfreead">Engadidos</string>
   <string name="antinonfreeadlong">Amosar aplicacións que promoven engadidos non libres</string>
-  <string name="antinonfreeadlist">Amosar aplicacións que promoven engadidos non libres</string>
   <string name="antinonfreenet">Servizos de rede</string>
   <string name="antinonfreenetlong">Amosar aplicacións que promoven servizos de rede non libres</string>
-  <string name="antinonfreenetlist">Amosar aplicacións que promoven servizos de rede non libres</string>
   <string name="antinonfreedep">Dependencias</string>
   <string name="antinonfreedeplong">Amosar aplicacións que dependen doutras non libres</string>
-  <string name="antinonfreedeplist">Amosar aplicacións que dependen doutras non libres</string>
   <string name="display">Amosar</string>
   <string name="expert">Experto</string>
   <string name="expert_mode">Activar o modo experto</string>
@@ -112,7 +101,6 @@
   <string name="permissions_for_long">Permisos para a versión %s</string>
   <string name="showPermissions">Amosar permisos</string>
   <string name="showPermissions_long">Amosar unha lista dos permisos que precisa unha aplicación</string>
-  <string name="no_handler_app">Non tes instalada ningunha aplicación que poida manexar %s</string>
   <string name="compactlayout">Deseño compacto</string>
   <string name="compactlayout_long">Amosar únicamente os nomes das aplicacións e resumos na lista</string>
 </resources>

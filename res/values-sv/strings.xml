@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">Ett program matchade \'%s\':</string>
   <string name="searchres_noapps">Inga program matchade \'%s\'</string>
   <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla versionen måste först avinstalleras. Försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
-  <string name="installIncompatible">Android säger att det här paketet inte är kompatibelt med din enhet. Vill du försöka installera det ändå?</string>
   <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller orsaka förlust av dina data. Vill du ändå försöka nedgradera?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versioner tillgängliga</string>
@@ -20,7 +19,6 @@
   <string name="last_update_check">Senaste förrådsavsökning: %s</string>
   <string name="never">aldrig</string>
   <string name="automatic_repo_scan">Automatisk förrådsavsökning</string>
-  <string name="app_name">F-Droid</string>
   <string name="search_results">Sökresultat</string>
   <string name="app_details">Appdetaljer</string>
   <string name="no_such_app">Ingen sådan app funnen</string>
@@ -68,9 +66,6 @@
   <string name="menu_issues">Buggar</string>
   <string name="menu_source">Källkod</string>
   <string name="menu_update">Uppdatera</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_litecoin">Bitcoin</string>
-  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Donera</string>
   <string name="details_installed">Version %s är installerad</string>
   <string name="details_notinstalled">Inte installerad</string>
@@ -79,19 +74,14 @@
   <string name="antifeatures">Anti-finesser</string>
   <string name="antiads">Reklam</string>
   <string name="antiadslong">Visa appar som innehåller reklam</string>
-  <string name="antiadslist">Visa appar som innehåller reklam</string>
   <string name="antitrack">Spårning</string>
   <string name="antitracklong">Visa appar som kartlägger och rapporterar ditt beteende</string>
-  <string name="antitracklist">Visa appar som kartlägger och rapporterar ditt beteende</string>
   <string name="antinonfreead">Tillägg</string>
   <string name="antinonfreeadlong">Visa appar som främjar icke-fria tillägg</string>
-  <string name="antinonfreeadlist">Visa appar som främjar icke-fria tillägg</string>
   <string name="antinonfreenet">Nätverkstjänster</string>
   <string name="antinonfreenetlong">Visa appar som främjar icke-fria nätverkstjänster</string>
-  <string name="antinonfreenetlist">Visa appar som främjar icke-fria nätverkstjänster</string>
   <string name="antinonfreedep">Beroenden</string>
   <string name="antinonfreedeplong">Visa appar som beror på andra icke-fria appar</string>
-  <string name="antinonfreedeplist">Visa appar som beror på andra icke-fria appar</string>
   <string name="display">Visning</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Aktivera expertläge</string>
@@ -116,7 +106,6 @@
   <string name="permissions_for_long">Behörigheter för version %s</string>
   <string name="showPermissions">Visa behörigheter</string>
   <string name="showPermissions_long">Visa en lista av behörigheter en app behöver</string>
-  <string name="no_handler_app">Du har ingen app installerad som kan hantera %s</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_long">Visa endast appnamn och sammanfattningar i listan</string>
 </resources>

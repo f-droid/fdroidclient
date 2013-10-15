@@ -21,7 +21,6 @@
   <string name="last_update_check">Último escaneo del repositorio: %s</string>
   <string name="never">nunca</string>
   <string name="automatic_repo_scan">Escanear los repositorios automáticamente</string>
-  <string name="app_name">F-Droid</string>
   <string name="search_results">Resultados de la búsqueda</string>
   <string name="app_details">Detalles de la aplicación</string>
   <string name="no_such_app">No se encontró la aplicación</string>
@@ -71,9 +70,6 @@
   <string name="menu_issues">Incidencias</string>
   <string name="menu_source">Código Fuente</string>
   <string name="menu_update">Actualizar</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_litecoin">Litecoin</string>
-  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Donar</string>
   <string name="details_installed">Versión %s instalada</string>
   <string name="details_notinstalled">No instalado</string>

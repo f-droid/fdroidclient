@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">找到一个应用符合关键词 \'%s\'</string>
   <string name="searchres_noapps">没有找到 \'%s\'相关内容</string>
   <string name="SignatureMismatch">新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用的所有已储存数据）</string>
-  <string name="installIncompatible">该安装包与你的设备不兼容，确定进行安装吗？</string>
   <string name="version">版本</string>
   <string name="n_versions_available">%d个可用版本</string>
   <string name="n_version_available">%d个可用版本</string>
@@ -14,18 +13,14 @@
   <string name="updates">升级</string>
   <string name="notify_updates_available">当有更新时，通知栏提醒</string>
   <string name="update_apps_list">自动更新应用列表</string>
-  <string name="update_history">更新应用源</string>
   <string name="last_update_check">最后一次repo扫描:</string>
   <string name="never">从不</string>
   <string name="automatic_repo_scan">自动扫描repo</string>
-  <string name="app_name">F-Droid</string>
   <string name="about_title">关于F-Droid</string>
-  <string name="about_desc">Originally based on Aptoide.\nReleased under the GNU GPLv2 license.</string>
   <string name="about_site">网站：</string>
   <string name="about_mail">邮件：</string>
   <string name="about_version">版本：</string>
   <string name="about_website">Website</string>
-  <string name="no_repo">你还没有设置应用源\n\n应用源即是应用下载发布来源，按菜单键，然后输入源的URL来添加源\n\n示例应用源: http://f-droid.org/repo</string>
   <string name="inst">已安装</string>
   <string name="not_inst">未安装</string>
   <string name="ok">OK</string>
@@ -39,9 +34,6 @@
   <string name="tab_installed">已经安装的</string>
   <string name="tab_noninstalled">可安装</string>
   <string name="tab_updates">更新</string>
-  <string name="one_update_available">可用更新</string>
-  <string name="many_updates_available">可用更新</string>
-  <string name="fdroid_updates_available">可用更新</string>
   <string name="process_wait_title">请等一下</string>
   <string name="process_update_msg">应用列表更新中</string>
   <string name="download_server">下载应用</string>
@@ -69,19 +61,12 @@
   <string name="antifeatures">个性设置</string>
   <string name="antiads">广告</string>
   <string name="antiadslong">显示包含广告的应用</string>
-  <string name="antiadslist">显示包含广告的应用</string>
   <string name="antitrack">追踪</string>
   <string name="antitracklong">显示会追踪、上传你的活动的应用</string>
-  <string name="antitracklist">显示会追踪、上传你的活动的应用</string>
   <string name="antinonfreead">插件</string>
-  <string name="antinonfreeadlong">显示改善收费插件的应用</string>
-  <string name="antinonfreeadlist">显示改善收费插件的应用</string>
   <string name="antinonfreenet">网络服务</string>
-  <string name="antinonfreenetlong">显示提供收费网络服务的应用</string>
-  <string name="antinonfreenetlist">显示提供收费网络服务的应用</string>
   <string name="antinonfreedep">非独立应用</string>
   <string name="antinonfreedeplong">显示依赖于收费应用的应用</string>
-  <string name="antinonfreedeplist">显示依赖于收费应用的应用</string>
   <string name="expert">高级</string>
   <string name="expert_mode">开启高级模式</string>
   <string name="search_hint">搜索应用</string>
@@ -97,5 +82,4 @@
   <string name="category_all">全部</string>
   <string name="category_whatsnew">新鲜货</string>
   <string name="category_recentlyupdated">最近更新</string>
-  <string name="status_processing_xml">下载应用 \n</string>
 </resources>

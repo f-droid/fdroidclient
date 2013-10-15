@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">\'%s\'-rekin bat datorren aplikazio bat aurkitu da:</string>
   <string name="searchres_noapps">\'%s\'-rekin bat datorren aplikaziorik ez da aurkitu</string>
   <string name="SignatureMismatch">"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)"</string>
-  <string name="installIncompatible">Android-ek dio pakete hau ez dela zure gailuarekin bateragarria. Instalatu egin nahi duzu dena den?</string>
   <string name="version">Bertsioa</string>
   <string name="n_versions_available">%d bertsio eskuragarri</string>
   <string name="n_version_available">Bertsio %d eskuragarri</string>
@@ -18,14 +17,12 @@
   <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
   <string name="never">inoiz ez</string>
   <string name="automatic_repo_scan">Eskaneatu biltegiak automatikoki</string>
-  <string name="app_name">F-Droid</string>
   <string name="about_title">F-Droid-i buruz</string>
   <string name="about_desc">Jatorrian Aptoide-n oinarritua.\nGNU GPLv3 lizentziapean argitaratua.</string>
   <string name="about_site">Webgunea:</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Bertsioa:</string>
   <string name="about_website">Webgunea</string>
-  <string name="no_repo">Ez daukazu konfiguratutako biltegirik!\n\nBiltegi bat aplikazioen iturburu bat da. Bat gehitzeko, sakatu orain MENU botoia eta idatzi URL-a.\n\nBiltegi baten helbideak honen antzekoa izan ohi da: http://f-droid.org/repo</string>
   <string name="inst">Instalatuta</string>
   <string name="not_inst">Instalatu gabea</string>
   <string name="added_on">%s(e)an gehitua</string>
@@ -62,9 +59,6 @@
   <string name="menu_issues">Gaiak</string>
   <string name="menu_source">Iturburu-kodea</string>
   <string name="menu_update">Eguneratu</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_litecoin">Bitcoin</string>
-  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Egin dohaintza</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
   <string name="details_notinstalled">Instalatu gabe</string>
@@ -73,19 +67,14 @@
   <string name="antifeatures">Anti-ezaugarriak</string>
   <string name="antiads">Iragarkiak</string>
   <string name="antiadslong">Erakutsi iragarkiak dituzten aplikazioak</string>
-  <string name="antiadslist">Erakutsi iragarkiak dituzten aplikazioak</string>
   <string name="antitrack">Jarraipena</string>
   <string name="antitracklong">Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen dituzten aplikazioak</string>
-  <string name="antitracklist">Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen dituzten aplikazioak</string>
   <string name="antinonfreead">Gehigarriak</string>
   <string name="antinonfreeadlong">Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak</string>
-  <string name="antinonfreeadlist">Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak</string>
   <string name="antinonfreenet">Sareko zerbitzuak</string>
   <string name="antinonfreenetlong">Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak</string>
-  <string name="antinonfreenetlist">Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak</string>
   <string name="antinonfreedep">Mendekotasunak</string>
   <string name="antinonfreedeplong">Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak</string>
-  <string name="antinonfreedeplist">Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak</string>
   <string name="display">Bistaratu</string>
   <string name="expert">Aditua</string>
   <string name="expert_mode">Gaitu aditu modua</string>
@@ -102,13 +91,11 @@
   <string name="category_all">Guztia</string>
   <string name="category_whatsnew">Zer da berria</string>
   <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
-  <string name="status_processing_xml">Aplikazioa eskuratzen hemendik:\n</string>
   <string name="status_connecting_to_repo">%1$s(e)ra\nkonektatzen</string>
   <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen...</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
   <string name="permissions_for_long">%s bertsioarentzako baimenak</string>
   <string name="showPermissions">Erakutsi baimenak</string>
   <string name="showPermissions_long">Bistaratu aplikazio batek behar dituen baimenen zerrenda</string>
-  <string name="no_handler_app">Ez daukazu %s maneiatu dezakeen aplikaziorik instalatuta</string>
   <string name="compactlayout">Diseinu trinkoa</string>
 </resources>

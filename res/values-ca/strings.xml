@@ -21,7 +21,6 @@
   <string name="last_update_check">Darrera actualització dels dipòsits: %s</string>
   <string name="never">mai</string>
   <string name="automatic_repo_scan">Actualitza automàticament els dipòsits</string>
-  <string name="app_name">F-Droid</string>
   <string name="search_results">Resultats de la cerca</string>
   <string name="app_details">Detalls de l\'aplicació</string>
   <string name="no_such_app">No s\'ha trobat l\'aplicació</string>
@@ -71,9 +70,6 @@
   <string name="menu_issues">Problemes</string>
   <string name="menu_source">Codi font</string>
   <string name="menu_update">Actualitza</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_litecoin">Litecoin</string>
-  <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Féu una donació</string>
   <string name="details_installed">Versió instal·lada %s</string>
   <string name="details_notinstalled">No està instal·lat</string>

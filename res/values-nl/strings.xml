@@ -16,14 +16,12 @@
   <string name="update_history">Vernieuw historie</string>
   <string name="never">nooit</string>
   <string name="automatic_repo_scan">Automatische bronnen-scan</string>
-  <string name="app_name">F-Droid</string>
   <string name="about_title">Over F-Droid</string>
   <string name="about_desc">Gebaseerd op Aptoide.\nUitgegeven onder de GNU GPLv3 licentie</string>
   <string name="about_site">Website:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versie:</string>
   <string name="about_website">Website</string>
-  <string name="no_repo">U hebt geen bonnen geconfigureerd!\n\nEen bron is een lijst van applicaties. Om er een toe te voegen, druk de MENU-knop nu en voer een URL in.\n\nEen bron-adres ziet er ongeveer uit als: http://f-droid.org/repo</string>
   <string name="inst">Geïnstalleerd</string>
   <string name="not_inst">Niet geïnstalleerd</string>
   <string name="ok">OK</string>
@@ -37,15 +35,11 @@
   <string name="tab_installed">Geïnstalleerd</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
-  <string name="one_update_available">Updates beschikbaar</string>
-  <string name="many_updates_available">Updates beschikbaar</string>
-  <string name="fdroid_updates_available">Updates beschikbaar</string>
   <string name="process_wait_title">Even geduld aub</string>
   <string name="process_update_msg">Applicatie-lijst vernieuwen</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="repo_add_url">Bron-adres</string>
   <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.\nWil je ze vernieuwen?</string>
-  <string name="menu_update_repo">Vernieuw bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>
@@ -67,19 +61,14 @@
   <string name="antifeatures">Anti-Functies</string>
   <string name="antiads">Advertenties</string>
   <string name="antiadslong">Laat apps zien die advertenties bevatten</string>
-  <string name="antiadslist">Laat apps zien die advertenties bevatten</string>
   <string name="antitrack">Volgen</string>
   <string name="antitracklong">Laat apps zien die je volgen en je activiteiten rapporteren</string>
-  <string name="antitracklist">Laat apps zien die je volgen en je activiteiten rapporteren</string>
   <string name="antinonfreead">Toevoegingen</string>
   <string name="antinonfreeadlong">Laat apps zien die betaalde add-ons promoten</string>
-  <string name="antinonfreeadlist">Laat apps zien die betaalde add-ons promoten</string>
   <string name="antinonfreenet">Netwerkdiensten</string>
   <string name="antinonfreenetlong">Laat apps zien die betaalde netwerkdiensten promoten</string>
-  <string name="antinonfreenetlist">Laat apps zien die betaalde netwerkdiensten promoten</string>
   <string name="antinonfreedep">Afhankelijkheden</string>
   <string name="antinonfreedeplong">Laat apps zien die van andere betaalde apps afhankelijk zijn</string>
-  <string name="antinonfreedeplist">Laat apps zien die van andere betaalde apps afhankelijk zijn</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Ga in expert-modus</string>
   <string name="search_hint">Zoek-applicaties</string>
@@ -90,6 +79,4 @@
   <string name="showincompat_long">Laat apps zien die gemaakt zij voor nieuwe Android-versie of andere hardware</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Laat apps zien die root-privileges vereisen</string>
-  <string name="category_all">Installeren</string>
-  <string name="status_processing_xml">Applicatie verkrijgen van:\n</string>
 </resources>

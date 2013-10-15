@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">Znaleziono jedną pasującą aplikację \'%s\':</string>
   <string name="searchres_noapps">Nie znaleziono żadnych pasujących aplikacji \'%s\'</string>
   <string name="SignatureMismatch">Nowa wersja jest podpisana innym kluczem niż poprzednia. Aby ją zainstalować należy najpierw usunąć tę starą. Zrób to i spróbuj ponownie. (Proszę pamiętać, że deinstalacja spowoduje usunięcie wszystkich danych przechowywanych przez aplikację)</string>
-  <string name="installIncompatible">Ten pakiet jest niekompatybilny z Twoim urządzeniem. Zainstalować mimo to?</string>
   <string name="version">Wersja</string>
   <string name="n_versions_available">%d dostępnych wersji</string>
   <string name="n_version_available">%d dostępna wersja</string>
@@ -14,18 +13,14 @@
   <string name="updates">Aktualizacje</string>
   <string name="notify_updates_available">Powiadamiaj, gdy dostępne będą nowe aktualizacje</string>
   <string name="update_apps_list">Automatycznie uaktualnij listę aplikacji z repozytorium</string>
-  <string name="update_history">Aktualizuj repozytoria</string>
   <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
   <string name="never">nigdy</string>
   <string name="automatic_repo_scan">Automatycznie skanuj repozytoria</string>
-  <string name="app_name">F-Droid</string>
   <string name="about_title">O F-Droid</string>
-  <string name="about_desc">Pierwotnie oparte na Aptitude.\nOpublikowano na licencji GNU GPLv2.</string>
   <string name="about_site">Strona internetowa:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Wersja:</string>
   <string name="about_website">Strona internetowa</string>
-  <string name="no_repo">Nie posiadasz żadnych skonfigurowanych repozytoriów!\n\nRepozytorium jest źródłem aplikacji. By jakieś dodać, wciśnij przycisku MENU i podaj adres URL.\n\nAdres repozytorium wygląda mniej więcej tak: http://f-droid.org/repo</string>
   <string name="inst">Zainstalowano</string>
   <string name="not_inst">Niezainstalowane</string>
   <string name="ok">OK</string>
@@ -39,9 +34,6 @@
   <string name="tab_installed">Zainstalowano</string>
   <string name="tab_noninstalled">Dostępne</string>
   <string name="tab_updates">Aktualizacje</string>
-  <string name="one_update_available">Dostępne aktualizacje</string>
-  <string name="many_updates_available">Dostępne aktualizacje</string>
-  <string name="fdroid_updates_available">Dostępne aktualizacje</string>
   <string name="process_wait_title">Proszę czekać</string>
   <string name="process_update_msg">Aktualizowanie listy aplikacji...</string>
   <string name="download_server">Pobieranie aplikacji z</string>
@@ -69,19 +61,14 @@
   <string name="antifeatures">Antyfunkcje</string>
   <string name="antiads">Reklamy</string>
   <string name="antiadslong">Pokaż aplikacje zawierające reklamy</string>
-  <string name="antiadslist">Pokaż aplikacje zawierające reklamy</string>
   <string name="antitrack">Namierzanie</string>
   <string name="antitracklong">Pokaż aplikacje namierzające i raportujące twoje działania</string>
-  <string name="antitracklist">Pokaż aplikacje namierzające i raportujące twoje działania</string>
   <string name="antinonfreead">Dodatki</string>
   <string name="antinonfreeadlong">Pokaż aplikacje wspierające płatne dodatki</string>
-  <string name="antinonfreeadlist">Pokaż aplikacje wspierające płatne dodatki</string>
   <string name="antinonfreenet">Usługi sieciowe</string>
   <string name="antinonfreenetlong">Pokaż aplikacje wspierające płatne usługi sieiowe</string>
-  <string name="antinonfreenetlist">Pokaż aplikacje wspierające płatne usługi sieiowe</string>
   <string name="antinonfreedep">Zależności</string>
   <string name="antinonfreedeplong">Pokaż aplikacje zależne od innych, płatnych aplikacji</string>
-  <string name="antinonfreedeplist">Pokaż aplikacje zależne od innych, płatnych aplikacji</string>
   <string name="expert">Ekspert</string>
   <string name="expert_mode">Uruchom tryb eksperta</string>
   <string name="search_hint">Wyszukaj aplikacje</string>
@@ -92,10 +79,7 @@
   <string name="showincompat_long">Pokaż aplikacje napisane dla nowszych wersji Androida lub innego sprzętu</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Pokaż aplikacje wymagające uprawnień root</string>
-  <string name="ignoreTouch">Ignoruj ekran dotykowy</string>
-  <string name="ignoreTouch_long">Zawsze dołączaj aplikacje wymagające ekranu dotykowego</string>
   <string name="category_all">Wszystkie</string>
   <string name="category_whatsnew">Ostatnio dodane</string>
   <string name="category_recentlyupdated">Ostatnio zaktualizowane</string>
-  <string name="status_processing_xml">Pobieranie aplikacji z:\n</string>
 </resources>
