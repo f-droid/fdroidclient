@@ -59,6 +59,7 @@
   <string name="menu_source">Codice sorgente</string>
   <string name="menu_update">Aggiornamento</string>
   <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_litecoin">Bitcoin</string>
   <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Donazioni</string>
   <string name="details_installed">Versione %s installata</string>
@@ -68,14 +69,19 @@
   <string name="antifeatures">Caratteristiche negative</string>
   <string name="antiads">Pubblicità</string>
   <string name="antiadslong">Mostra applicazioni con pubblicità</string>
+  <string name="antiadslist">Mostra applicazioni con pubblicità</string>
   <string name="antitrack">Monitoraggio</string>
   <string name="antitracklong">Mostra applicazioni che monitorano e riferiscono sulle tue attività</string>
+  <string name="antitracklist">Mostra applicazioni che monitorano e riferiscono sulle tue attività</string>
   <string name="antinonfreead">Add-ons</string>
   <string name="antinonfreeadlong">Mostra applicazioni che promuovono add-on non liberi</string>
+  <string name="antinonfreeadlist">Mostra applicazioni che promuovono add-on non liberi</string>
   <string name="antinonfreenet">Servizi di rete</string>
   <string name="antinonfreenetlong">Mostra applicazioni che promuovono servizi di rete a pagamento</string>
+  <string name="antinonfreenetlist">Mostra applicazioni che promuovono servizi di rete a pagamento</string>
   <string name="antinonfreedep">DIpendenze</string>
   <string name="antinonfreedeplong">Mostra applicazioni che dipendono da applicazioni non libere</string>
+  <string name="antinonfreedeplist">Mostra applicazioni che dipendono da applicazioni non libere</string>
   <string name="expert">Esperto</string>
   <string name="expert_mode">Attiva la modalità avanzata</string>
   <string name="search_hint">Scaricamento applicazione da</string>

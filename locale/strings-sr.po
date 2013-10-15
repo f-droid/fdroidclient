@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  0.17\n"
 "Report-Msgid-Bugs-To: a@b.c\n"
-"POT-Creation-Date: 2013-10-10 20:24+0100\n"
-"PO-Revision-Date: 2011-01-20 03:30+0200\n"
-"Last-Translator: FiReSTaRT <ridethefizzer@gmail.com>\n"
+"POT-Creation-Date: 2013-10-15 15:08+0100\n"
+"PO-Revision-Date: 2013-10-10 22:27+0200\n"
+"Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: sr <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
@@ -123,11 +123,6 @@ msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Аутоматско скенирање ризница"
 
-#, fuzzy
-msgctxt "app_name"
-msgid "F-Droid"
-msgstr "FDroid"
-
 msgctxt "search_results"
 msgid "Search Results"
 msgstr ""
@@ -140,19 +135,17 @@ msgctxt "no_such_app"
 msgid "No such app found"
 msgstr ""
 
-#, fuzzy
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "О FDroid-у"
+msgstr "О F-Droid-у"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Оригинално засновано на пројекту Aptoide.\n"
-"Објављено под GNU GPLv2 лиценцом."
+"Објављено под GNU GPLv3 лиценцом."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -351,18 +344,6 @@ msgstr "Изворни Код"
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Ажурирај"
-
-msgctxt "menu_bitcoin"
-msgid "Bitcoin"
-msgstr ""
-
-msgctxt "menu_litecoin"
-msgid "Litecoin"
-msgstr ""
-
-msgctxt "menu_flattr"
-msgid "Flattr"
-msgstr ""
 
 #, fuzzy
 msgctxt "menu_donate"
@@ -587,7 +568,19 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "menu_ignore"
-#~ msgid "Ignore Updates"
+#~ msgctxt "app_name"
+#~ msgid "F-Droid"
+#~ msgstr "F-Droid"
+
+#~ msgctxt "menu_bitcoin"
+#~ msgid "Bitcoin"
+#~ msgstr ""
+
+#~ msgctxt "menu_litecoin"
+#~ msgid "Litecoin"
+#~ msgstr ""
+
+#~ msgctxt "menu_flattr"
+#~ msgid "Flattr"
 #~ msgstr ""
 

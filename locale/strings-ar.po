@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-10 20:24+0100\n"
+"POT-Creation-Date: 2013-10-15 15:08+0100\n"
 "PO-Revision-Date: 2013-04-24 00:11+0200\n"
 "Last-Translator: Abdellah <sneetsher@gmail.com>\n"
 "Language-Team: ar <LL@li.org>\n"
@@ -117,10 +117,6 @@ msgstr ""
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
-
-msgctxt "app_name"
-msgid "F-Droid"
 msgstr ""
 
 msgctxt "search_results"
@@ -331,18 +327,6 @@ msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
-
-msgctxt "menu_bitcoin"
-msgid "Bitcoin"
-msgstr ""
-
-msgctxt "menu_litecoin"
-msgid "Litecoin"
-msgstr ""
-
-msgctxt "menu_flattr"
-msgid "Flattr"
 msgstr ""
 
 msgctxt "menu_donate"
@@ -558,7 +542,19 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "menu_ignore"
-#~ msgid "Ignore Updates"
+#~ msgctxt "app_name"
+#~ msgid "F-Droid"
+#~ msgstr ""
+
+#~ msgctxt "menu_bitcoin"
+#~ msgid "Bitcoin"
+#~ msgstr ""
+
+#~ msgctxt "menu_litecoin"
+#~ msgid "Litecoin"
+#~ msgstr ""
+
+#~ msgctxt "menu_flattr"
+#~ msgid "Flattr"
 #~ msgstr ""
 

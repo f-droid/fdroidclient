@@ -14,9 +14,9 @@
   <string name="update_apps_list">Actualizare aplicatie automata</string>
   <string name="update_history">Actualizare depozit aplicatii</string>
   <string name="automatic_repo_scan">Scanare versiuni noi</string>
-  <string name="app_name">FDroid</string>
-  <string name="about_title">Despre FDroid</string>
-  <string name="about_desc">Bazat pe Aptoide \nDistribuit sub licenta GNU GPLv2</string>
+  <string name="app_name">F-Droid</string>
+  <string name="about_title">Despre F-Droid</string>
+  <string name="about_desc">Bazat pe Aptoide.\nDistribuit sub licenta GNU GPLv3.</string>
   <string name="about_site">Website</string>
   <string name="about_mail">Email</string>
   <string name="about_version">Versiune</string>

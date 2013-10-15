@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-10 20:24+0100\n"
-"PO-Revision-Date: 2013-08-17 16:22+0200\n"
+"POT-Creation-Date: 2013-10-15 15:08+0100\n"
+"PO-Revision-Date: 2013-10-10 22:20+0200\n"
 "Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: ca <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -38,19 +38,18 @@ msgid ""
 "and try again. (Note that uninstalling will erase any internal data "
 "stored by the application)"
 msgstr ""
-"La nova versió està signada amb una clau diferent de la vella. Per tal "
-"d'instal·lar la nova versió, cal desinstal·lar primer la vella. Si us "
-"plau feu-ho i torneu-ho a intentar. (Sapigueu que desintal·lar-la "
-"suprimirà qualsevol dada interna que l'aplicació hagi desat)"
+"La nova versió està signada amb una clau diferent de la vella. Per a "
+"d'instal·lar la nova versió, cal desinstaŀlar primer la vella. Si us plau"
+" feu-ho i proveu altre cop. (Sapigueu que desintal·lar-la suprimirà "
+"qualsevol dada interna que l'aplicació hagi desat)"
 
-#, fuzzy
 msgctxt "installIncompatible"
 msgid ""
 "It seems like this package is not compatible with your device. Do you "
 "want to try and install it anyway?"
 msgstr ""
-"Sembla que aquest paquet no és compatible amb el vostre dispositiu. Tot i"
-" així voleu provar d'instal·lar-ho?"
+"Sembla que aquest paquet no és compatible amb el vostre dispositiu. Voleu"
+" provar a instaŀlar-lo de totes maneres?"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -94,7 +93,7 @@ msgstr "Actualitzacions"
 
 msgctxt "other"
 msgid "Other"
-msgstr ""
+msgstr "Altres"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
@@ -125,10 +124,6 @@ msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Actualitza automàticament els dipòsits"
 
-msgctxt "app_name"
-msgid "F-Droid"
-msgstr "F-Droid"
-
 msgctxt "search_results"
 msgid "Search Results"
 msgstr "Resultats de la cerca"
@@ -143,7 +138,7 @@ msgstr "No s'ha trobat l'aplicació"
 
 msgctxt "about_title"
 msgid "About F-Droid"
-msgstr "Quant a FDroid"
+msgstr "Quant a F-Droid"
 
 msgctxt "about_desc"
 msgid ""
@@ -325,11 +320,11 @@ msgstr "Desinstal·la"
 
 msgctxt "menu_ignore_all"
 msgid "Ignore All Updates"
-msgstr ""
+msgstr "Ignora totes les actualitzacions"
 
 msgctxt "menu_ignore_this"
 msgid "Ignore This Update"
-msgstr ""
+msgstr "Ignora aquesta actualització"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -346,19 +341,6 @@ msgstr "Codi font"
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Actualitza"
-
-msgctxt "menu_bitcoin"
-msgid "Bitcoin"
-msgstr "Bitcoin"
-
-#, fuzzy
-msgctxt "menu_litecoin"
-msgid "Litecoin"
-msgstr "Bitcoin"
-
-msgctxt "menu_flattr"
-msgid "Flattr"
-msgstr "Flattr"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -387,7 +369,7 @@ msgstr "Anti-Característiques"
 
 msgctxt "antifeatures_list"
 msgid "This application has the following anti-features:"
-msgstr ""
+msgstr "Aquesta aplicació té les següents anti-característiques:"
 
 msgctxt "antiads"
 msgid "Advertising"
@@ -397,10 +379,9 @@ msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
 msgstr "Mostra aplicacions que contenen publicitat"
 
-#, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr "Mostra aplicacions que contenen publicitat"
+msgstr "Aquesta aplicació conté publicitat"
 
 msgctxt "antitrack"
 msgid "Tracking"
@@ -410,10 +391,9 @@ msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
 msgstr "Mostra aplicacions que segueixen i informen sobre la vostra activitat"
 
-#, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
-msgstr "Mostra aplicacions que segueixen i informen sobre la vostra activitat"
+msgstr "Aquesta aplicació segueix i informa sobre la vostra activitat"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -423,10 +403,9 @@ msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
 msgstr "Mostra aplicacions que promouen complements no lliures"
 
-#, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
-msgstr "Mostra aplicacions que promouen complements no lliures"
+msgstr "Aquesta aplicació promou complements no lliures"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -436,10 +415,9 @@ msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
 msgstr "Mostra aplicacions que promouen serveis de xarxa no lliures"
 
-#, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr "Mostra aplicacions que promouen serveis de xarxa no lliures"
+msgstr "Aquesta aplicació promou serveis de xarxa no lliures"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
@@ -449,10 +427,9 @@ msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
 msgstr "Mostra aplicacions que depenen d'altres aplicacions no lliures"
 
-#, fuzzy
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
-msgstr "Mostra aplicacions que depenen d'altres aplicacions no lliures"
+msgstr "Aquesta aplicació depèn d'altres aplicacions no lliures"
 
 msgctxt "display"
 msgid "Display"
@@ -577,10 +554,10 @@ msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
 msgstr "Mostra els permisos que necessita l'aplicació"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any available app that can handle %s"
-msgstr "No teniu cap aplicació instal·lada que pugui gestionar %s"
+msgstr "No teniu cap aplicació disponible que pugui gestionar %s"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
@@ -590,7 +567,19 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Mostra només els noms de les aplicacions i els resums a la llista"
 
-#~ msgctxt "menu_ignore"
-#~ msgid "Ignore Updates"
-#~ msgstr ""
+#~ msgctxt "app_name"
+#~ msgid "F-Droid"
+#~ msgstr "F-Droid"
+
+#~ msgctxt "menu_bitcoin"
+#~ msgid "Bitcoin"
+#~ msgstr "Bitcoin"
+
+#~ msgctxt "menu_litecoin"
+#~ msgid "Litecoin"
+#~ msgstr "Litecoin"
+
+#~ msgctxt "menu_flattr"
+#~ msgid "Flattr"
+#~ msgstr "Flattr"
 

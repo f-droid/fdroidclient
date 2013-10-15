@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-10 20:24+0100\n"
-"PO-Revision-Date: 2013-10-06 17:43+0200\n"
-"Last-Translator: larjona <larjona99@gmail.com>\n"
+"POT-Creation-Date: 2013-10-15 15:08+0100\n"
+"PO-Revision-Date: 2013-10-10 22:43+0200\n"
+"Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -19,17 +19,17 @@ msgstr ""
 #, c-format
 msgctxt "searchres_napps"
 msgid "Found %1$d applications matching '%2$s':"
-msgstr "Se encontraron %1$d programas con '%2$s':"
+msgstr "Se encontraron %1$d aplicaciones con '%2$s':"
 
 #, c-format
 msgctxt "searchres_oneapp"
 msgid "Found one application matching '%s':"
-msgstr "Se encontró un programa con '%s':"
+msgstr "Se encontró una aplicación con '%s':"
 
 #, c-format
 msgctxt "searchres_noapps"
 msgid "No applications were found matching '%s'"
-msgstr "No se encontró ningún programa con '%s'"
+msgstr "No se encontró ninguna aplicación con '%s'"
 
 msgctxt "SignatureMismatch"
 msgid ""
@@ -41,7 +41,7 @@ msgstr ""
 "La nueva versión está firmada con una clave diferente a la antigua. Para "
 "instalar la nueva versión, la antigua debe de ser desinstalada primero. "
 "Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación "
-"borrará cualquier dato interno guardado por el programa)"
+"borrará cualquier dato interno guardado por la aplicación)"
 
 msgctxt "installIncompatible"
 msgid ""
@@ -81,7 +81,7 @@ msgstr "Notificar"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
-msgstr "Caché de programas descargados"
+msgstr "Caché de aplicaciones descargadas"
 
 msgctxt "keep_downloaded"
 msgid "Keep downloaded apk files on SD card"
@@ -93,23 +93,23 @@ msgstr "Actualizaciones"
 
 msgctxt "other"
 msgid "Other"
-msgstr "Otro"
+msgstr "Otros"
 
 msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
-msgstr "Notificarme cuando haya actualizaciones disponibles"
+msgstr "Notificar cuando haya actualizaciones disponibles"
 
 msgctxt "update_apps_list"
 msgid "Update app list from repositories automatically"
-msgstr "Actualizar la lista de programas desde los repositorios automáticamente"
+msgstr "Actualizar la lista de aplicaciones desde los repositorios automáticamente"
 
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Actualizar historial"
+msgstr "Historial de actualizaciones"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr "Días para mostrar apps nuevas/actualizadas"
+msgstr "Días a mostrar apps nuevas/actualizadas"
 
 #, c-format
 msgctxt "last_update_check"
@@ -123,10 +123,6 @@ msgstr "nunca"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Escanear los repositorios automáticamente"
-
-msgctxt "app_name"
-msgid "F-Droid"
-msgstr "F-Droid"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -257,7 +253,7 @@ msgstr "Actualizaciones de F-Droid disponibles"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
-msgstr "Por favor espera"
+msgstr "Por favor, espera"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
@@ -265,7 +261,7 @@ msgstr "Actualizando la lista de aplicaciones..."
 
 msgctxt "download_server"
 msgid "Getting application from"
-msgstr "Obteniendo el programa de"
+msgstr "Obteniendo la aplicación de"
 
 msgctxt "repo_add_url"
 msgid "Repository address"
@@ -323,15 +319,13 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-#, fuzzy
 msgctxt "menu_ignore_all"
 msgid "Ignore All Updates"
-msgstr "Ignorar actualizaciones"
+msgstr "Ignorar todas las actualizaciones"
 
-#, fuzzy
 msgctxt "menu_ignore_this"
 msgid "Ignore This Update"
-msgstr "Ignorar actualizaciones"
+msgstr "Ignorar esta actualización"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -348,19 +342,6 @@ msgstr "Código Fuente"
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Actualizar"
-
-msgctxt "menu_bitcoin"
-msgid "Bitcoin"
-msgstr "Bitcoin"
-
-#, fuzzy
-msgctxt "menu_litecoin"
-msgid "Litecoin"
-msgstr "Bitcoin"
-
-msgctxt "menu_flattr"
-msgid "Flattr"
-msgstr "Flattr"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -389,7 +370,7 @@ msgstr "Anti-Características"
 
 msgctxt "antifeatures_list"
 msgid "This application has the following anti-features:"
-msgstr ""
+msgstr "Esta aplicación tiene las siguientes anti-características:"
 
 msgctxt "antiads"
 msgid "Advertising"
@@ -397,12 +378,11 @@ msgstr "Publicidad"
 
 msgctxt "antiadslong"
 msgid "Show apps that contain advertising"
-msgstr "Muestra programas que contengan publicidad"
+msgstr "Muestra aplicaciones que contengan publicidad"
 
-#, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr "Muestra programas que contengan publicidad"
+msgstr "Esta aplicación contiene publicidad"
 
 msgctxt "antitrack"
 msgid "Tracking"
@@ -410,12 +390,11 @@ msgstr "Rastreo"
 
 msgctxt "antitracklong"
 msgid "Show apps that track and report your activity"
-msgstr "Muestra programas que rastrean e informan de tu actividad"
+msgstr "Muestra aplicaciones que rastrean e informan de tu actividad"
 
-#, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
-msgstr "Muestra programas que rastrean e informan de tu actividad"
+msgstr "Esta aplicación rastrea e informa de tu actividad"
 
 msgctxt "antinonfreead"
 msgid "Add-ons"
@@ -423,12 +402,11 @@ msgstr "Complementos"
 
 msgctxt "antinonfreeadlong"
 msgid "Show apps that promote non-free add-ons"
-msgstr "Muestra programas que promueven complementos no libres"
+msgstr "Muestra aplicaciones que promueven complementos no libres"
 
-#, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
-msgstr "Muestra programas que promueven complementos no libres"
+msgstr "Esta aplicación promueve complementos no libres"
 
 msgctxt "antinonfreenet"
 msgid "Network Services"
@@ -436,12 +414,11 @@ msgstr "Servicios de Red"
 
 msgctxt "antinonfreenetlong"
 msgid "Show apps that promote non-free network services"
-msgstr "Muestra programas que promueven servicios de red no libres"
+msgstr "Muestra aplicaciones que promueven servicios de red no libres"
 
-#, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr "Muestra programas que promueven servicios de red no libres"
+msgstr "Esta aplicación promueve servicios de red no libres"
 
 msgctxt "antinonfreedep"
 msgid "Dependencies"
@@ -449,12 +426,11 @@ msgstr "Dependencias"
 
 msgctxt "antinonfreedeplong"
 msgid "Show apps that depend on other non-free apps"
-msgstr "Muestra programas que dependen de otros no libres"
+msgstr "Muestra aplicaciones que dependen de otros no libres"
 
-#, fuzzy
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
-msgstr "Muestra programas que dependen de otros no libres"
+msgstr "Esta aplicación depende de otras no libres"
 
 msgctxt "display"
 msgid "Display"
@@ -470,7 +446,7 @@ msgstr "Activa el modo experto"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Buscar programas"
+msgstr "Buscar aplicaciones"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
@@ -482,17 +458,17 @@ msgstr "Fija el valor del flag síncrono de SQLite"
 
 msgctxt "appcompatibility"
 msgid "Application compatibility"
-msgstr "Compatibilidad de programas"
+msgstr "Compatibilidad de aplicaciones"
 
 msgctxt "showincompat"
 msgid "Incompatible apps"
-msgstr "Programas incompatibles"
+msgstr "Aplicaciones incompatibles"
 
 msgctxt "showincompat_long"
 msgid "Show apps written for newer Android versions or different hardware"
 msgstr ""
-"Muestra los programas escritos para versiones de Android más modernas o "
-"con un hardware diferente"
+"Muestra las aplicaciones escritas para versiones de Android más modernas "
+"o con un hardware diferente"
 
 msgctxt "rooted"
 msgid "Root"
@@ -500,7 +476,7 @@ msgstr "Root"
 
 msgctxt "rooted_long"
 msgid "Show apps that require root privileges"
-msgstr "Muestras los programas que requieren privilegios de root"
+msgstr "Muestras las aplicaciones que requieren privilegios de root"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
@@ -533,7 +509,7 @@ msgid ""
 "%1$s"
 msgstr ""
 "Descargando\n"
-"%2$s / %3$s (%4$d%%) desde\n"
+"%2$s / %3$s (%4$d%%) de\n"
 "%1$s"
 
 #, c-format
@@ -553,7 +529,7 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
-"Conectándose con\n"
+"Conectando a\n"
 "%1$s"
 
 msgctxt "status_checking_compatibility"
@@ -589,4 +565,20 @@ msgstr "Diseño compacto"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Mostrar sólo los nombres de las aplicaciones y resúmenes en la lista"
+
+#~ msgctxt "app_name"
+#~ msgid "F-Droid"
+#~ msgstr "F-Droid"
+
+#~ msgctxt "menu_bitcoin"
+#~ msgid "Bitcoin"
+#~ msgstr "Bitcoin"
+
+#~ msgctxt "menu_litecoin"
+#~ msgid "Litecoin"
+#~ msgstr "Litecoin"
+
+#~ msgctxt "menu_flattr"
+#~ msgid "Flattr"
+#~ msgstr "Flattr"
 

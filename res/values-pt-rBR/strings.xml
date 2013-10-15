@@ -70,6 +70,7 @@
   <string name="menu_source">Código Fonte</string>
   <string name="menu_update">Atualizar</string>
   <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_litecoin">Bitcoin</string>
   <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Fazer doação</string>
   <string name="details_installed">Versão %s instalada</string>
@@ -79,14 +80,19 @@
   <string name="antifeatures">Anticaracterísticas</string>
   <string name="antiads">Publicidade</string>
   <string name="antiadslong">Mostrar aplicativos que contenham publicidade</string>
+  <string name="antiadslist">Mostrar aplicativos que contenham publicidade</string>
   <string name="antitrack">Rastreamento</string>
   <string name="antitracklong">Mostrar aplicativos que rastreiam e relatam sua atividade</string>
+  <string name="antitracklist">Mostrar aplicativos que rastreiam e relatam sua atividade</string>
   <string name="antinonfreead">Complementos</string>
   <string name="antinonfreeadlong">Mostrar aplicativos que promovem complementos não-livres</string>
+  <string name="antinonfreeadlist">Mostrar aplicativos que promovem complementos não-livres</string>
   <string name="antinonfreenet">Serviços de Rede</string>
   <string name="antinonfreenetlong">Mostrar aplicativos que promovem serviços de rede não-livre</string>
+  <string name="antinonfreenetlist">Mostrar aplicativos que promovem serviços de rede não-livre</string>
   <string name="antinonfreedep">Dependências</string>
   <string name="antinonfreedeplong">Mostrar aplicativos que dependem de aplicativos não-livres</string>
+  <string name="antinonfreedeplist">Mostrar aplicativos que dependem de aplicativos não-livres</string>
   <string name="display">Exibição</string>
   <string name="expert">Especialista</string>
   <string name="expert_mode">Ativar modo especialista</string>

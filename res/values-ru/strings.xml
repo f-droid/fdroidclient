@@ -69,6 +69,7 @@
   <string name="menu_source">Исходный код</string>
   <string name="menu_update">Обновить</string>
   <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_litecoin">Bitcoin</string>
   <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
@@ -78,14 +79,19 @@
   <string name="antifeatures">Анти-возможности</string>
   <string name="antiads">Реклама</string>
   <string name="antiadslong">Показывать приложения с рекламой</string>
+  <string name="antiadslist">Показывать приложения с рекламой</string>
   <string name="antitrack">Слежка</string>
   <string name="antitracklong">Показывать приложения, которые следят и отсылают данные о вас</string>
+  <string name="antitracklist">Показывать приложения, которые следят и отсылают данные о вас</string>
   <string name="antinonfreead">Дополнения</string>
   <string name="antinonfreeadlong">Показывать приложения использующие несвободные дополнения</string>
+  <string name="antinonfreeadlist">Показывать приложения использующие несвободные дополнения</string>
   <string name="antinonfreenet">Сетевые сервисы</string>
   <string name="antinonfreenetlong">Показывать приложения использующие несвободные сетевые сервисы</string>
+  <string name="antinonfreenetlist">Показывать приложения использующие несвободные сетевые сервисы</string>
   <string name="antinonfreedep">Зависимости</string>
   <string name="antinonfreedeplong">Показывать приложения зависимые от несвободных приложений</string>
+  <string name="antinonfreedeplist">Показывать приложения зависимые от несвободных приложений</string>
   <string name="display">Вид</string>
   <string name="expert">Эксперт</string>
   <string name="expert_mode">Включить режим эксперта</string>

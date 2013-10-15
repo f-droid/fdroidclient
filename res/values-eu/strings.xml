@@ -63,6 +63,7 @@
   <string name="menu_source">Iturburu-kodea</string>
   <string name="menu_update">Eguneratu</string>
   <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_litecoin">Bitcoin</string>
   <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Egin dohaintza</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
@@ -72,14 +73,19 @@
   <string name="antifeatures">Anti-ezaugarriak</string>
   <string name="antiads">Iragarkiak</string>
   <string name="antiadslong">Erakutsi iragarkiak dituzten aplikazioak</string>
+  <string name="antiadslist">Erakutsi iragarkiak dituzten aplikazioak</string>
   <string name="antitrack">Jarraipena</string>
   <string name="antitracklong">Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen dituzten aplikazioak</string>
+  <string name="antitracklist">Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen dituzten aplikazioak</string>
   <string name="antinonfreead">Gehigarriak</string>
   <string name="antinonfreeadlong">Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak</string>
+  <string name="antinonfreeadlist">Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak</string>
   <string name="antinonfreenet">Sareko zerbitzuak</string>
   <string name="antinonfreenetlong">Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak</string>
+  <string name="antinonfreenetlist">Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak</string>
   <string name="antinonfreedep">Mendekotasunak</string>
   <string name="antinonfreedeplong">Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak</string>
+  <string name="antinonfreedeplist">Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak</string>
   <string name="display">Bistaratu</string>
   <string name="expert">Aditua</string>
   <string name="expert_mode">Gaitu aditu modua</string>

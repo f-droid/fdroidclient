@@ -70,6 +70,7 @@
   <string name="menu_source">Изходен код</string>
   <string name="menu_update">Обнови</string>
   <string name="menu_bitcoin">Биткойн</string>
+  <string name="menu_litecoin">Биткойн</string>
   <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Направи дарение</string>
   <string name="details_installed">Версия %s е инсталирана</string>
@@ -79,14 +80,19 @@
   <string name="antifeatures">Анти-свойства</string>
   <string name="antiads">Реклами</string>
   <string name="antiadslong">Показвай приложения съдържащи реклами</string>
+  <string name="antiadslist">Показвай приложения съдържащи реклами</string>
   <string name="antitrack">Проследяване</string>
   <string name="antitracklong">Показвай приложения следящи и докладващи моята дейност</string>
+  <string name="antitracklist">Показвай приложения следящи и докладващи моята дейност</string>
   <string name="antinonfreead">Добавки</string>
   <string name="antinonfreeadlong">Показвай приложения препоръчващи несвободни добавки</string>
+  <string name="antinonfreeadlist">Показвай приложения препоръчващи несвободни добавки</string>
   <string name="antinonfreenet">Мрежови услуги</string>
   <string name="antinonfreenetlong">Показвай приложения препоръчващи несвободни мрежови услуги</string>
+  <string name="antinonfreenetlist">Показвай приложения препоръчващи несвободни мрежови услуги</string>
   <string name="antinonfreedep">Зависимости</string>
   <string name="antinonfreedeplong">Показвай приложения зависещи от несвободни програми</string>
+  <string name="antinonfreedeplist">Показвай приложения зависещи от несвободни програми</string>
   <string name="display">Дисплей</string>
   <string name="expert">Експерт</string>
   <string name="expert_mode">Активирай експертен режим</string>

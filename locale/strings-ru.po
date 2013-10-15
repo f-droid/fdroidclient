@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-10 20:24+0100\n"
+"POT-Creation-Date: 2013-10-15 15:08+0100\n"
 "PO-Revision-Date: 2013-08-13 14:27+0200\n"
 "Last-Translator: som <tursom@gmail.com>\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -124,10 +124,6 @@ msgstr "никогда"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Автоматически сканировать репозиторий"
-
-msgctxt "app_name"
-msgid "F-Droid"
-msgstr "F-Droid"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -347,19 +343,6 @@ msgstr "Исходный код"
 msgctxt "menu_update"
 msgid "Update"
 msgstr "Обновить"
-
-msgctxt "menu_bitcoin"
-msgid "Bitcoin"
-msgstr "Bitcoin"
-
-#, fuzzy
-msgctxt "menu_litecoin"
-msgid "Litecoin"
-msgstr "Bitcoin"
-
-msgctxt "menu_flattr"
-msgid "Flattr"
-msgstr "Flattr"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -584,7 +567,19 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Показывать в списке только названия и краткие описания приложений"
 
-#~ msgctxt "menu_ignore"
-#~ msgid "Ignore Updates"
-#~ msgstr ""
+#~ msgctxt "app_name"
+#~ msgid "F-Droid"
+#~ msgstr "F-Droid"
+
+#~ msgctxt "menu_bitcoin"
+#~ msgid "Bitcoin"
+#~ msgstr "Bitcoin"
+
+#~ msgctxt "menu_litecoin"
+#~ msgid "Litecoin"
+#~ msgstr "Bitcoin"
+
+#~ msgctxt "menu_flattr"
+#~ msgid "Flattr"
+#~ msgstr "Flattr"
 

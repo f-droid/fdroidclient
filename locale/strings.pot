@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-10 20:24+0100\n"
+"POT-Creation-Date: 2013-10-15 15:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,10 +114,6 @@ msgstr ""
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
-msgstr ""
-
-msgctxt "app_name"
-msgid "F-Droid"
 msgstr ""
 
 msgctxt "search_results"
@@ -326,18 +322,6 @@ msgstr ""
 
 msgctxt "menu_update"
 msgid "Update"
-msgstr ""
-
-msgctxt "menu_bitcoin"
-msgid "Bitcoin"
-msgstr ""
-
-msgctxt "menu_litecoin"
-msgid "Litecoin"
-msgstr ""
-
-msgctxt "menu_flattr"
-msgid "Flattr"
 msgstr ""
 
 msgctxt "menu_donate"

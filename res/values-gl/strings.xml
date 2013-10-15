@@ -65,6 +65,7 @@
   <string name="menu_source">Código fonte</string>
   <string name="menu_update">Actualizar</string>
   <string name="menu_bitcoin">Bitcoin</string>
+  <string name="menu_litecoin">Bitcoin</string>
   <string name="menu_flattr">Flattr</string>
   <string name="menu_donate">Doar</string>
   <string name="details_installed">Instalada a versión %s</string>
@@ -74,14 +75,19 @@
   <string name="antifeatures">Anti-funcionalidades</string>
   <string name="antiads">Publicidade</string>
   <string name="antiadslong">Amosar apps que conteñen publicidade</string>
+  <string name="antiadslist">Amosar apps que conteñen publicidade</string>
   <string name="antitrack">Seguimento</string>
   <string name="antitracklong">Amosar aplicacións que fan seguimento e informan da túa actividade</string>
+  <string name="antitracklist">Amosar aplicacións que fan seguimento e informan da túa actividade</string>
   <string name="antinonfreead">Engadidos</string>
   <string name="antinonfreeadlong">Amosar aplicacións que promoven engadidos non libres</string>
+  <string name="antinonfreeadlist">Amosar aplicacións que promoven engadidos non libres</string>
   <string name="antinonfreenet">Servizos de rede</string>
   <string name="antinonfreenetlong">Amosar aplicacións que promoven servizos de rede non libres</string>
+  <string name="antinonfreenetlist">Amosar aplicacións que promoven servizos de rede non libres</string>
   <string name="antinonfreedep">Dependencias</string>
   <string name="antinonfreedeplong">Amosar aplicacións que dependen doutras non libres</string>
+  <string name="antinonfreedeplist">Amosar aplicacións que dependen doutras non libres</string>
   <string name="display">Amosar</string>
   <string name="expert">Experto</string>
   <string name="expert_mode">Activar o modo experto</string>
