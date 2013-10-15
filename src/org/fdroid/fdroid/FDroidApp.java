@@ -19,6 +19,7 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
+import java.lang.Runtime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -91,6 +92,7 @@ public class FDroidApp extends Application {
                     return imageUri.substring(imageUri.lastIndexOf('/') + 1);
                 } } ))
             .defaultDisplayImageOptions(defaultOptions)
+            .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
             .build();
         ImageLoader.getInstance().init(config);
     }
