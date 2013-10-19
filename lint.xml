@@ -1,0 +1,5 @@
+<lint>
+  <issue id="ProtectedPermission">
+    <ignore path="AndroidManifest.xml" />
+  </issue>
+</lint> 

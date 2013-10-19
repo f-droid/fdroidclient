@@ -62,7 +62,6 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 
@@ -74,9 +73,6 @@ import org.fdroid.fdroid.DB.CommaSeparatedList;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class AppDetails extends ListActivity {
-
-    private static final int REQUEST_INSTALL = 0;
-    private static final int REQUEST_UNINSTALL = 1;
 
     private class ApkListAdapter extends BaseAdapter {
 
@@ -198,6 +194,7 @@ public class AppDetails extends ListActivity {
     View infoView;
 
     private Context mctx = this;
+    private InstallManager installManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,6 +237,8 @@ public class AppDetails extends ListActivity {
         setListAdapter(la);
 
         mPm = getPackageManager();
+        installManager = new InstallManager(this, mPm, myInstallCallback);
+        
         // Get the preferences we're going to use in this Activity...
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
         if (old != null) {
@@ -861,30 +860,82 @@ public class AppDetails extends ListActivity {
         downloadHandler = new DownloadHandler(app.curApk, repoaddress,
                 DB.getDataPath(this));
     }
+    
+    private void installApk(File file, String id) {
+        installManager.installApk(file, id);
+
+        ((FDroidApp) getApplication()).invalidateApp(id);
+    }
 
     private void removeApk(String id) {
-        PackageInfo pkginfo;
-        try {
-            pkginfo = mPm.getPackageInfo(id, 0);
-        } catch (NameNotFoundException e) {
-            Log.d("FDroid", "Couldn't find package " + id + " to uninstall.");
-            return;
+        installManager.removeApk(id);
+
+        ((FDroidApp) getApplication()).invalidateApp(id);
+    }
+    
+    private InstallManager.InstallCallback myInstallCallback = new InstallManager.InstallCallback() {
+
+        @Override
+        public void onPackageInstalled(int returnCode, boolean unattended) {
+            // TODO: check return code?!
+            if (downloadHandler != null) {
+                downloadHandler = null;
+            }
+
+            PackageManagerCompat.setInstaller(mPm, app.id);
+            resetRequired = true;
+            
+            // TODO: Somehow the internal API needs time to update the package state.
+            // This needs to be done nicer!
+            if (unattended) {
+                Thread wait = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d("FDroid", "resume");
+                                onResume();
+                            }
+                        });
+                    }
+                });
+                wait.start();
+            }
         }
-        Uri uri = Uri.fromParts("package", pkginfo.packageName, null);
-        Intent intent = new Intent(Intent.ACTION_DELETE, uri);
-        startActivityForResult(intent, REQUEST_UNINSTALL);
-        ((FDroidApp) getApplication()).invalidateApp(id);
 
-    }
-
-    private void installApk(File file, String id) {
-        Intent intent = new Intent();
-        intent.setAction(android.content.Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse("file://" + file.getPath()),
-                "application/vnd.android.package-archive");
-        startActivityForResult(intent, REQUEST_INSTALL);
-        ((FDroidApp) getApplication()).invalidateApp(id);
-    }
+        @Override
+        public void onPackageDeleted(int returnCode, boolean unattended) {
+            // TODO: check return code?!
+            resetRequired = true;
+            
+            // TODO: Somehow the internal API needs time to update the package state.
+            // This needs to be done nicer!
+            if (unattended) {
+                Thread wait = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d("FDroid", "resume");
+                                onResume();
+                            }
+                        });
+                    }
+                });
+                wait.start();
+            }
+        }
+    };
 
     private void launchApk(String id) {
         Intent intent = mPm.getLaunchIntentForPackage(id);
@@ -1030,19 +1081,7 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-        case REQUEST_INSTALL:
-            if (downloadHandler != null) {
-                downloadHandler = null;
-            }
-
-            PackageManagerCompat.setInstaller(mPm, app.id);
-            resetRequired = true;
-            break;
-        case REQUEST_UNINSTALL:
-            resetRequired = true;
-            break;
-        }
+        installManager.handleOnActivityResult(requestCode, resultCode, data);
     }
 
     @Override
