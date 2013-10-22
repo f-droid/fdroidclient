@@ -28,7 +28,8 @@ public class Permission {
     }
 
     public CharSequence getName() {
-        return this.permissionInfo.loadLabel(this.packageManager);
+        String label = this.permissionInfo.loadLabel(this.packageManager).toString();
+        return Character.toUpperCase(label.charAt(0)) + label.substring(1);
     }
 
     public CharSequence getDescription() {
