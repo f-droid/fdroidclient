@@ -509,8 +509,10 @@ public class AppDetails extends ListActivity {
                         Permission permission = new Permission(this, permissionName);
                         sb.append("\t• " + permission.getName() + '\n');
                     } catch (NameNotFoundException e) {
-                        Log.d( "FDroid",
-                                "Can't find permission '" + permissionName + "'");
+                        if (permissionName.equals("ACCESS_SUPERUSER"))
+                            sb.append("\t• Full permissions to all device features and storage\n");
+                        else
+                            Log.d("FDroid", "Can't find permission "+permissionName);
                     }
                 }
                 sb.setLength(sb.length() - 1);
