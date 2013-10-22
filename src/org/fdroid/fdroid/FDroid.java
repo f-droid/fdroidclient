@@ -180,7 +180,7 @@ public class FDroid extends FragmentActivity {
 
             Builder p = new AlertDialog.Builder(this).setView(view);
             final AlertDialog alrt = p.create();
-            alrt.setIcon(R.drawable.icon);
+            alrt.setIcon(R.drawable.ic_launcher);
             alrt.setTitle(getString(R.string.about_title));
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
                     getString(R.string.about_website),
