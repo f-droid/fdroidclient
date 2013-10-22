@@ -24,11 +24,6 @@ import android.preference.PreferenceManager;
 
 public class AppFilter {
 
-    boolean pref_antiAds;
-    boolean pref_antiTracking;
-    boolean pref_antiNonFreeAdd;
-    boolean pref_antiNonFreeNet;
-    boolean pref_antiNonFreeDep;
     boolean pref_rooted;
 
     public AppFilter(Context ctx) {
@@ -36,11 +31,6 @@ public class AppFilter {
         // Read preferences and cache them so we can do quick lookups.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(ctx);
-        pref_antiAds = prefs.getBoolean("antiAds", false);
-        pref_antiTracking = prefs.getBoolean("antiTracking", false);
-        pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
-        pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
-        pref_antiNonFreeDep = prefs.getBoolean("antiNonFreeDep", false);
         pref_rooted = prefs.getBoolean("rooted", true);
     }
 
@@ -48,20 +38,6 @@ public class AppFilter {
     // preferences, and false otherwise.
     public boolean filter(DB.App app) {
         boolean filtered = false;
-        if (app.antiFeatures != null) {
-            for (String af : app.antiFeatures) {
-                if (af.equals("Ads") && !pref_antiAds)
-                    filtered = true;
-                else if (af.equals("Tracking") && !pref_antiTracking)
-                    filtered = true;
-                else if (af.equals("NonFreeNet") && !pref_antiNonFreeNet)
-                    filtered = true;
-                else if (af.equals("NonFreeAdd") && !pref_antiNonFreeAdd)
-                    filtered = true;
-                else if (af.equals("NonFreeDep") && !pref_antiNonFreeDep)
-                    filtered = true;
-            }
-        }
         if (app.requirements != null) {
             for (String r : app.requirements) {
                 if (r.equals("root") && !pref_rooted)

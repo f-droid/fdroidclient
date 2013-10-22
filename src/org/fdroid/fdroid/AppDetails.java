@@ -257,11 +257,6 @@ public class AppDetails extends ListActivity {
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
         pref_incompatible = prefs.getBoolean("showIncompatible", false);
-        pref_antiAds = prefs.getBoolean("antiAds", false);
-        pref_antiTracking = prefs.getBoolean("antiTracking", false);
-        pref_antiNonFreeAdd = prefs.getBoolean("antiNonFreeAdd", false);
-        pref_antiNonFreeNet = prefs.getBoolean("antiNonFreeNet", false);
-        pref_antiNonFreeDep = prefs.getBoolean("antiNonFreeDep", false);
 
         startViews();
 
@@ -271,12 +266,6 @@ public class AppDetails extends ListActivity {
     private boolean pref_permissions;
     private boolean pref_incompatible;
     private boolean resetRequired;
-
-    private boolean pref_antiAds;
-    private boolean pref_antiTracking;
-    private boolean pref_antiNonFreeAdd;
-    private boolean pref_antiNonFreeNet;
-    private boolean pref_antiNonFreeDep;
 
     // The signature of the installed version.
     private Signature mInstalledSignature;
@@ -403,13 +392,11 @@ public class AppDetails extends ListActivity {
     private void startViews() {
 
         // Populate the list...
-        if (!app.filtered) {
-            ApkListAdapter la = (ApkListAdapter) getListAdapter();
-            for (DB.Apk apk : app.apks)
-                if (pref_incompatible || apk.compatible)
-                    la.addItem(apk);
-            la.notifyDataSetChanged();
-        }
+        ApkListAdapter la = (ApkListAdapter) getListAdapter();
+        for (DB.Apk apk : app.apks)
+            if (pref_incompatible || apk.compatible)
+                la.addItem(apk);
+        la.notifyDataSetChanged();
 
         // Insert the 'infoView' (which contains the summary, various odds and
         // ends, and the description) into the appropriate place, if we're in
@@ -537,36 +524,16 @@ public class AppDetails extends ListActivity {
             infoView.findViewById(R.id.permissions_list).setVisibility(View.GONE);
         }
 
+        tv = (TextView) infoView.findViewById(R.id.antifeatures);
         if (app.antiFeatures != null) {
-            tv = (TextView) infoView.findViewById(R.id.antifeatures_list);
             StringBuilder sb = new StringBuilder();
             for (String af : app.antiFeatures)
-                sb.append("<li>"+titleAntiFeature(af)+": "+descAntiFeature(af)+"</li>");
-            Spanned afs = Html.fromHtml(sb.toString(), null, new HtmlTagHandler());
-            tv.setText(afs.subSequence(0, afs.length() - 2));
+                sb.append("\t• " + descAntiFeature(af) + "\n");
+            sb.setLength(sb.length() - 1);
+            tv.setText(sb.toString());
         } else {
-            infoView.findViewById(R.id.antifeatures).setVisibility(View.GONE);
-            infoView.findViewById(R.id.antifeatures_list).setVisibility(View.GONE);
+            tv.setVisibility(View.GONE);
         }
-    }
-
-    private String titleAntiFeature(String af) {
-        if (af.equals("Ads")) {
-            if (!pref_antiAds) return "</b>"+af+"</b>";
-            return "<b><font color='red'>"+af+"</font></b>";
-        } if (af.equals("Tracking")) {
-            if (pref_antiTracking) return "</b>"+af+"</b>";
-            return "<b><font color='red'>"+af+"</font></b>";
-        } if (af.equals("NonFreeNet")) {
-            if (pref_antiNonFreeNet) return "</b>"+af+"</b>";
-            return "<b><font color='red'>"+af+"</font></b>";
-        } if (af.equals("NonFreeAdd")) {
-            if (pref_antiNonFreeAdd) return "</b>"+af+"</b>";
-            return "<b><font color='red'>"+af+"</font></b>";
-        } if (af.equals("NonFreeDep")) {
-            if (pref_antiNonFreeDep) return "</b>"+af+"</b>";
-            return "<b><font color='red'>"+af+"</font></b>";
-        } return "";
     }
 
     private String descAntiFeature(String af) {
@@ -586,10 +553,8 @@ public class AppDetails extends ListActivity {
     private void updateViews() {
 
         // Refresh the list...
-        if (!app.filtered) {
-            ApkListAdapter la = (ApkListAdapter) getListAdapter();
-            la.notifyDataSetChanged();
-        }
+        ApkListAdapter la = (ApkListAdapter) getListAdapter();
+        la.notifyDataSetChanged();
 
         TextView tv = (TextView) findViewById(R.id.status);
         if (app.installedVersion == null)
