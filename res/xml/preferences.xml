@@ -28,9 +28,6 @@
        <CheckBoxPreference android:title="@string/showincompat"
            android:defaultValue="false" android:summary="@string/showincompat_long"
            android:key="showIncompatible" />
-		<CheckBoxPreference android:title="@string/rooted"
-			android:defaultValue="true" android:summary="@string/rooted_long"
-			android:key="rooted" />
 		<CheckBoxPreference android:title="@string/ignoreTouch"
 			android:defaultValue="false" android:summary="@string/ignoreTouch_long"
 			android:key="ignoreTouchscreen" />

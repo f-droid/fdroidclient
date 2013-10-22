@@ -109,7 +109,7 @@
 	<string name="expert">Expert</string>
 	<string name="expert_mode">Enable expert mode</string>
 
-<string name="search_hint">Search applications</string>
+	<string name="search_hint">Search applications</string>
 
 	<string name="db_sync_mode">Database sync mode</string>
 	<string name="db_sync_mode_long">Set the value of SQLite\'s "synchronous" flag</string>
@@ -117,11 +117,9 @@
 	<string name="appcompatibility">Application compatibility</string>
 	<string name="showincompat">Incompatible apps</string>
 	<string name="showincompat_long">Show apps written for newer Android versions or different hardware</string>
-	<string name="rooted">Root</string>
-	<string name="rooted_long">Show apps that require root privileges</string>
 	<string name="ignoreTouch">Ignore Touchscreen</string>
 	<string name="ignoreTouch_long">Always include apps that require touchscreen</string>
-		
+
 	<string name="category_all">All</string>
 	<string name="category_whatsnew">What\'s New</string>
 	<string name="category_recentlyupdated">Recently Updated</string>

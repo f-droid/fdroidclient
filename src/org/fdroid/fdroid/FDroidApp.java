@@ -196,14 +196,10 @@ public class FDroidApp extends Application {
     }
 
     public void filterApps() {
-        AppFilter appFilter = new AppFilter(ctx);
         for (DB.App app : apps) {
-            app.filtered = appFilter.filter(app);
-
             app.toUpdate = (app.hasUpdates
                     && !app.ignoreAllUpdates
                     && app.curApk.vercode > app.ignoreThisUpdate
-                    && !app.filtered
                     && (showIncompatible || app.compatible));
         }
     }

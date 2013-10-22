@@ -96,7 +96,7 @@ public class DB {
             + "curVersion text," + "curVercode integer,"
             + "antiFeatures string," + "donateURL string,"
             + "bitcoinAddr string," + "litecoinAddr string,"
-            + "flattrID string," + "requirements string,"
+            + "flattrID string,"
             + "category string," + "added string,"
             + "lastUpdated string," + "compatible int not null,"
             + "ignoreAllUpdates int not null,"
@@ -119,7 +119,6 @@ public class DB {
             detail_litecoinAddr = null;
             detail_webURL = null;
             antiFeatures = null;
-            requirements = null;
             hasUpdates = false;
             toUpdate = false;
             updated = false;
@@ -130,7 +129,6 @@ public class DB {
             compatible = false;
             ignoreAllUpdates = false;
             ignoreThisUpdate = 0;
-            filtered = false;
             iconUrl = null;
         }
 
@@ -192,14 +190,6 @@ public class DB {
         // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
         public CommaSeparatedList antiFeatures;
-
-        // List of special requirements (such as root privileges) or
-        // null if there aren't any.
-        public CommaSeparatedList requirements;
-
-        // Whether the app is filtered or not based on AntiFeatures and root
-        // permission (set in the Settings page)
-        public boolean filtered;
 
         // True if there are new versions (apks) available, regardless of
         // any filtering
@@ -440,7 +430,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 27;
+    private final int DBVersion = 28;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -759,7 +749,7 @@ public class DB {
         long startTime = System.currentTimeMillis();
         try {
 
-            String cols[] = new String[] { "antiFeatures", "requirements",
+            String cols[] = new String[] { "antiFeatures",
                     "id", "name", "summary", "icon", "license", "category",
                     "curVersion", "curVercode", "added", "lastUpdated",
                     "compatible", "ignoreAllUpdates", "ignoreThisUpdate" };
@@ -769,25 +759,24 @@ public class DB {
 
                 App app = new App();
                 app.antiFeatures = DB.CommaSeparatedList.make(c.getString(0));
-                app.requirements = DB.CommaSeparatedList.make(c.getString(1));
-                app.id = c.getString(2);
-                app.name = c.getString(3);
-                app.summary = c.getString(4);
-                app.icon = c.getString(5);
-                app.license = c.getString(6);
-                app.category = c.getString(7);
-                app.curVersion = c.getString(8);
-                app.curVercode = c.getInt(9);
-                String sAdded = c.getString(10);
+                app.id = c.getString(1);
+                app.name = c.getString(2);
+                app.summary = c.getString(3);
+                app.icon = c.getString(4);
+                app.license = c.getString(5);
+                app.category = c.getString(6);
+                app.curVersion = c.getString(7);
+                app.curVercode = c.getInt(8);
+                String sAdded = c.getString(9);
                 app.added = (sAdded == null || sAdded.length() == 0) ? null
                         : mDateFormat.parse(sAdded);
-                String sLastUpdated = c.getString(11);
+                String sLastUpdated = c.getString(10);
                 app.lastUpdated = (sLastUpdated == null || sLastUpdated
                         .length() == 0) ? null : mDateFormat
                         .parse(sLastUpdated);
-                app.compatible = c.getInt(12) == 1;
-                app.ignoreAllUpdates = c.getInt(13) == 1;
-                app.ignoreThisUpdate = c.getInt(14);
+                app.compatible = c.getInt(11) == 1;
+                app.ignoreAllUpdates = c.getInt(12) == 1;
+                app.ignoreThisUpdate = c.getInt(13);
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -1145,7 +1134,6 @@ public class DB {
         values.put("curVersion", upapp.curVersion);
         values.put("curVercode", upapp.curVercode);
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
-        values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         values.put("compatible", upapp.compatible ? 1 : 0);
 
         // Values to keep if already present
