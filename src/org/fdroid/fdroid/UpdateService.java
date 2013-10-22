@@ -265,10 +265,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 Log.d("FDroid", "Notifying "+updates+" updates.");
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
                         this)
-                        .setSmallIcon(R.drawable.icon)
-                        .setLargeIcon(
-                                BitmapFactory.decodeResource(
-                                        getResources(), R.drawable.icon))
+                        .setSmallIcon(R.drawable.ic_stat_notify_updates)
                         .setAutoCancel(true)
                         .setContentTitle(
                                 getString(R.string.fdroid_updates_available));
