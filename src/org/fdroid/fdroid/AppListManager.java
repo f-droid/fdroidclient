@@ -197,9 +197,9 @@ public class AppListManager {
             boolean isInCategory = isInCategory(app, currentCategory, recentDate);
 
             // Add it to the list(s). Always to installed and updates, but
-            // only to available if it's compatible (or incompatible with
-            // showIncompatible at true)
-            if (isInCategory && (showIncompatible || app.compatible)) {
+            // only to available if it's not filtered.
+            if (!app.filtered && isInCategory
+                    && (showIncompatible || app.compatible)) {
                 availApps.add(app);
             }
             if (app.installedVersion != null) {

@@ -111,7 +111,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         // Disable it all if it isn't compatible...
         View[] views = { convertView, status, summary, license, name };
         for (View view : views) {
-            view.setEnabled(app.compatible);
+            view.setEnabled(app.compatible && !app.filtered);
         }
 
         return convertView;
