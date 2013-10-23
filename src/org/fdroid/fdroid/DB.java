@@ -1264,8 +1264,8 @@ public class DB {
 
     public void setIgnoreUpdates(String appid, boolean All, int This) {
         db.execSQL("update " + TABLE_APP + " set"
-                + (All ? " ignoreAllUpdates="+All : "")
-                + (This>0 ? " ignoreThisUpdate="+This : "")
+                + " ignoreAllUpdates=" + (All ? '1' : '0')
+                + ", ignoreThisUpdate="+This
                 + " where id = ?", new String[] { appid });
     }
 
