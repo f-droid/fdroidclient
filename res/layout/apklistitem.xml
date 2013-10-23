@@ -4,10 +4,7 @@
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
 		android:baselineAligned="false"
-		android:paddingTop="5dp"
-		android:paddingBottom="5dp"
-		android:paddingLeft="2dp"
-		android:paddingRight="2dp">
+		android:padding="5dp" >
 
   <TextView android:id="@+id/version"
 	    android:textStyle="bold"
