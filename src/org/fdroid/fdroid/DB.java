@@ -1154,7 +1154,7 @@ public class DB {
             values.put("ignoreThisUpdate", upapp.ignoreThisUpdate);
         } else {
             values.put("ignoreAllUpdates", oldapp.ignoreAllUpdates ? 1 : 0);
-            values.put("ignoreThisUpdate", upapp.ignoreThisUpdate);
+            values.put("ignoreThisUpdate", oldapp.ignoreThisUpdate);
         }
 
         if (oldapp != null) {
