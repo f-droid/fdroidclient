@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
-"PO-Revision-Date: 2013-09-25 23:09+0200\n"
-"Last-Translator: Mario  <mariogreco85@openmailbox.org>\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
+"PO-Revision-Date: 2013-10-24 16:10+0200\n"
+"Last-Translator: Random <rand@yopmail.com>\n"
 "Language-Team: it <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +48,8 @@ msgid ""
 "It seems like this package is not compatible with your device. Do you "
 "want to try and install it anyway?"
 msgstr ""
+"Sembra che questo pacchetto non sia compatibile con il tuo dispositivo. "
+"Vuoi provare comunque ad installarlo?"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -55,6 +57,9 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
+"Stai provando a passare ad una versione precedente di questa "
+"applicazione. Potresti avere malfunzionamenti e perdita di dati. Vuoi "
+"installarla comunque?"
 
 msgctxt "version"
 msgid "Version"
@@ -69,10 +74,6 @@ msgstr "%d versioni disponibili"
 msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versione disponibile"
-
-msgctxt "notify"
-msgid "Notify"
-msgstr "Avviso"
 
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
@@ -90,61 +91,71 @@ msgctxt "other"
 msgid "Other"
 msgstr "Altro"
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Avvisa quando sono disponibili nuovi aggiornamenti"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Aggiorna automaticamente l'elenco applicazioni"
-
-#, fuzzy
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Aggiorna le repository"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr ""
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Ultima scansione repository: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "mai"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Scansione repository automatica"
 
-msgctxt "search_results"
-msgid "Search Results"
-msgstr ""
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Aggiorna automaticamente l'elenco applicazioni"
 
-msgctxt "app_details"
-msgid "App Details"
-msgstr ""
-
-msgctxt "no_such_app"
-msgid "No such app found"
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
 msgstr ""
 
 #, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Aggiorna automaticamente l'elenco applicazioni"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Avviso"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Avvisa quando sono disponibili nuovi aggiornamenti"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Aggiorna i repository"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr "Giorni per mostrare app nuove/da aggiornare"
+
+msgctxt "search_results"
+msgid "Search Results"
+msgstr "Risultati Ricerca"
+
+msgctxt "app_details"
+msgid "App Details"
+msgstr "Dettagli App"
+
+msgctxt "no_such_app"
+msgid "No such app found"
+msgstr "Nessuna app corrispondente trovata"
+
 msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Informazioni"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
 "Basato su Aptoide.\n"
-"Rilasciato sotto licenza GNU GPL v2."
+"Rilasciato sotto licenza GNU GPLv3."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -162,7 +173,6 @@ msgctxt "about_website"
 msgid "Website"
 msgstr "Sito Web"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -172,12 +182,12 @@ msgid ""
 "\n"
 "A repository address looks something like this: https://f-droid.org/repo"
 msgstr ""
-"Non hai configurato nessuna repository!\n"
+"Non hai configurato nessun repository!\n"
 "\n"
-"Una repository è una fonte di applicazioni. Per aggiungerne una, premi "
+"Un repository è una fonte di applicazioni. Per aggiungerne uno, premi "
 "MENU e inserisci un indirizzo URL.\n"
 "\n"
-"Un indirizzo URL di esempio è: http://f-droid.org/repo"
+"Un indirizzo URL di esempio è: https://f-droid.org/repo"
 
 msgctxt "inst"
 msgid "Installed"
@@ -190,7 +200,7 @@ msgstr "Non installato"
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "Aggiunto il %s"
 
 msgctxt "ok"
 msgid "OK"
@@ -206,7 +216,7 @@ msgstr "No"
 
 msgctxt "repo_add_title"
 msgid "Add new repository"
-msgstr "Aggiungi nuova repository"
+msgstr "Aggiungi nuovo repository"
 
 msgctxt "repo_add_add"
 msgid "Add"
@@ -222,7 +232,7 @@ msgstr "Rimuovi repository"
 
 msgctxt "repo_update_title"
 msgid "Update repositories"
-msgstr "Aggiorna le repository"
+msgstr "Aggiorna i repository"
 
 msgctxt "tab_installed"
 msgid "Installed"
@@ -236,20 +246,18 @@ msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Aggiornamenti"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Aggiornamenti disponibili"
+msgstr "1 aggiornamento disponibile."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Aggiornamenti disponibili"
+msgstr "%d aggiornamenti disponibili."
 
-#, fuzzy
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Aggiornamenti disponibili"
+msgstr "Aggiornamenti per F-Droid Disponibili"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -257,7 +265,7 @@ msgstr "Attendere prego"
 
 msgctxt "process_update_msg"
 msgid "Updating application list..."
-msgstr "Aggiornamento elenco applicazioni in corso..."
+msgstr "Aggiornamento elenco applicazioni..."
 
 msgctxt "download_server"
 msgid "Getting application from"
@@ -272,18 +280,16 @@ msgid ""
 "The list of used repositories has changed.\n"
 "Do you want to update them?"
 msgstr ""
-"L'elenco delle repository in uso è cambiato.\n"
-"\n"
+"L'elenco dei repository in uso è cambiato.\n"
 "Vuoi aggiornarlo?"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
-msgstr "Aggiorna le repository"
+msgstr "Aggiorna i Repository"
 
 msgctxt "menu_manage"
 msgid "Manage Repos"
-msgstr "Gestione repository"
+msgstr "Gestione Repository"
 
 msgctxt "menu_preferences"
 msgid "Preferences"
@@ -299,19 +305,19 @@ msgstr "Cerca"
 
 msgctxt "menu_add_repo"
 msgid "New Repository"
-msgstr "Nuova repository"
+msgstr "Nuovo Repository"
 
 msgctxt "menu_rem_repo"
 msgid "Remove Repository"
-msgstr "Rimuovi repository"
+msgstr "Rimuovi Repository"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Avvia"
 
 msgctxt "menu_share"
 msgid "Share"
-msgstr ""
+msgstr "Condividi"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -323,11 +329,11 @@ msgstr "Disinstalla"
 
 msgctxt "menu_ignore_all"
 msgid "Ignore All Updates"
-msgstr ""
+msgstr "Ignora Tutti gli Aggiornamenti"
 
 msgctxt "menu_ignore_this"
 msgid "Ignore This Update"
-msgstr ""
+msgstr "Ignora Questo Aggiornamento"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -347,7 +353,7 @@ msgstr "Aggiornamento"
 
 msgctxt "menu_donate"
 msgid "Donate"
-msgstr "Donazioni"
+msgstr "Dona"
 
 #, c-format
 msgctxt "details_installed"
@@ -366,82 +372,29 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Download annullato"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Caratteristiche negative"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Pubblicità"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Mostra applicazioni con pubblicità"
-
-#, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr "Mostra applicazioni con pubblicità"
+msgstr "Questa app contiene pubblicità"
 
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Monitoraggio"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Mostra applicazioni che monitorano e riferiscono sulle tue attività"
-
-#, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
-msgstr "Mostra applicazioni che monitorano e riferiscono sulle tue attività"
+msgstr "Questa app monitora e riferisce sulle tue attività"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Add-ons"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Mostra applicazioni che promuovono add-on non liberi"
-
-#, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
-msgstr "Mostra applicazioni che promuovono add-on non liberi"
+msgstr "Questa app promuove add-on non liberi"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Servizi di rete"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Mostra applicazioni che promuovono servizi di rete a pagamento"
-
-#, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr "Mostra applicazioni che promuovono servizi di rete a pagamento"
+msgstr "Questa app promuove servizi di rete non liberi"
 
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "DIpendenze"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
-
-#, fuzzy
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
-msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
+msgstr "Questa app dipende da applicazioni non libere"
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Mostra"
 
 msgctxt "expert"
 msgid "Expert"
@@ -449,11 +402,11 @@ msgstr "Esperto"
 
 msgctxt "expert_mode"
 msgid "Enable expert mode"
-msgstr "Attiva la modalità avanzata"
+msgstr "Abilita la modalità avanzata"
 
 msgctxt "search_hint"
 msgid "Search applications"
-msgstr "Scaricamento applicazione da"
+msgstr "Ricerca applicazioni"
 
 msgctxt "db_sync_mode"
 msgid "Database sync mode"
@@ -487,24 +440,23 @@ msgstr "Mostra le applicazioni che richiedono i privilegi di amministrazione"
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Ignora il Touchscreen"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Includi sempre le applicazioni che richiedono il touchscreen"
 
-#, fuzzy
 msgctxt "category_all"
 msgid "All"
-msgstr "Installa"
+msgstr "Tutte"
 
 msgctxt "category_whatsnew"
 msgid "What's New"
-msgstr ""
+msgstr "Novità"
 
 msgctxt "category_recentlyupdated"
 msgid "Recently Updated"
-msgstr ""
+msgstr "Aggiornate di Recente"
 
 #. status_download takes four parameters:           - Repository (url)
 #. - Downloaded size (human readable)           - Total size (human readable)
@@ -516,14 +468,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"Scaricamento\n"
+"%2$s / %3$s (%4$d%%) da\n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "Scaricamento applicazione da:\n"
+msgstr ""
+"Elaborazione applicazione\n"
+"%2$d di %3$d da\n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -531,38 +489,88 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Connessione a\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
+msgstr "Controllo compatibilità applicazioni con il tuo dispositivo..."
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Non viene usata alcuna autorizzazione."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Autorizzazioni per la versione %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Mostra autorizzazioni"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Mostra la lista di autorizzazioni necessarie per un'app"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any available app that can handle %s"
-msgstr ""
+msgstr "Non hai alcuna app disponibile che può gestire %s"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Layout Compatto"
 
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
-msgstr ""
+msgstr "Mostra solo nomi e sintesi delle app nella lista"
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Caratteristiche Negative"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr "Questa applicazione ha le seguenti caratteristiche negative:"
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Pubblicità"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Mostra applicazioni con pubblicità"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Monitoraggio"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Mostra applicazioni che monitorano e riferiscono sulle tue attività"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Add-ons"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Mostra applicazioni che promuovono add-on non liberi"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Servizi di Rete"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Mostra applicazioni che promuovono servizi di rete non liberi"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "DIpendenze"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Mostra applicazioni che dipendono da applicazioni non libere"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-10-10 22:20+0200\n"
 "Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -75,10 +75,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "Hi ha %d versió disponible"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Notifica-ho"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Memòria cau de les aplicacions baixades"
@@ -95,22 +91,6 @@ msgctxt "other"
 msgid "Other"
 msgstr "Altres"
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Avisa'm quan hi hagi noves actualitzacions"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Actualitza de forma automàtica la llista d'aplicacions dels dipòsits"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Actualitzacions"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr "Mostra les aplicacions noves o actualitzades periòdicament"
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -123,6 +103,35 @@ msgstr "mai"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Actualitza automàticament els dipòsits"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Actualitza de forma automàtica la llista d'aplicacions dels dipòsits"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Actualitza de forma automàtica la llista d'aplicacions dels dipòsits"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Notifica-ho"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Avisa'm quan hi hagi noves actualitzacions"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Actualitzacions"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr "Mostra les aplicacions noves o actualitzades periòdicament"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -363,69 +372,21 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "S'ha cancel·lat la baixat"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Anti-Característiques"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr "Aquesta aplicació té les següents anti-característiques:"
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Publicitat"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Mostra aplicacions que contenen publicitat"
-
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "Aquesta aplicació conté publicitat"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Seguiment"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Mostra aplicacions que segueixen i informen sobre la vostra activitat"
 
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr "Aquesta aplicació segueix i informa sobre la vostra activitat"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Complements"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Mostra aplicacions que promouen complements no lliures"
-
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "Aquesta aplicació promou complements no lliures"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Serveis de xarxa"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Mostra aplicacions que promouen serveis de xarxa no lliures"
-
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "Aquesta aplicació promou serveis de xarxa no lliures"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Dependències"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Mostra aplicacions que depenen d'altres aplicacions no lliures"
 
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
@@ -566,4 +527,52 @@ msgstr "Vista compacta"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Mostra només els noms de les aplicacions i els resums a la llista"
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Anti-Característiques"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr "Aquesta aplicació té les següents anti-característiques:"
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Publicitat"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Mostra aplicacions que contenen publicitat"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Seguiment"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Mostra aplicacions que segueixen i informen sobre la vostra activitat"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Complements"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Mostra aplicacions que promouen complements no lliures"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Serveis de xarxa"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Mostra aplicacions que promouen serveis de xarxa no lliures"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Dependències"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Mostra aplicacions que depenen d'altres aplicacions no lliures"
 

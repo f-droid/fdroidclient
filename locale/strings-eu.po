@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-08-17 17:24+0200\n"
 "Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: eu <LL@li.org>\n"
@@ -73,10 +73,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "Bertsio %d eskuragarri"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Jakinarazi"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Gorde cache-an deskargatutako aplikazioak"
@@ -93,22 +89,6 @@ msgctxt "other"
 msgid "Other"
 msgstr ""
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Jakinarazi eguneraketa berriak eskuragarri daudenean"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Eguneratu aplikazio-zerrenda biltegiarekin automatikoki"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Eguneratu historia"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr ""
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -121,6 +101,35 @@ msgstr "inoiz ez"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Eskaneatu biltegiak automatikoki"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Eguneratu aplikazio-zerrenda biltegiarekin automatikoki"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Eguneratu aplikazio-zerrenda biltegiarekin automatikoki"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Jakinarazi"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Jakinarazi eguneraketa berriak eskuragarri daudenean"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Eguneratu historia"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -363,36 +372,10 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Deskarga bertan behera utzita"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Anti-ezaugarriak"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Iragarkiak"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Erakutsi iragarkiak dituzten aplikazioak"
-
 #, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "Erakutsi iragarkiak dituzten aplikazioak"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Jarraipena"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr ""
-"Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen "
-"dituzten aplikazioak"
 
 #, fuzzy
 msgctxt "antitracklist"
@@ -401,39 +384,15 @@ msgstr ""
 "Erakutsi zure aktibitateen jarraipena egin eta txostenak bidaltzen "
 "dituzten aplikazioak"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Gehigarriak"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak"
-
 #, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Sareko zerbitzuak"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
-
 #, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Mendekotasunak"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak"
 
 #, fuzzy
 msgctxt "antinonfreedeplist"
@@ -567,4 +526,54 @@ msgstr "Diseinu trinkoa"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Anti-ezaugarriak"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Iragarkiak"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Erakutsi iragarkiak dituzten aplikazioak"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Jarraipena"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr ""
+#~ "Erakutsi zure aktibitateen jarraipena egin "
+#~ "eta txostenak bidaltzen dituzten aplikazioak"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Gehigarriak"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Erakutsi gehigarri ez-libreak sustatzen dituzten aplikazioak"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Sareko zerbitzuak"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Erakutsi sareko zerbitzu ez-libreak sustatzen dituzten aplikazioak"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Mendekotasunak"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Erakutsi aplikazio ez-libreen mendekoak diren aplikazioak"
 

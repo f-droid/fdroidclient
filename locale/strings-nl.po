@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-05-15 16:15+0200\n"
 "Last-Translator: Rob <programming@ertai.nl>\n"
 "Language-Team: nl <LL@li.org>\n"
@@ -70,10 +70,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versie beschikbaar"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Verwittigen"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "buffer gedownloade apps"
@@ -90,22 +86,6 @@ msgctxt "other"
 msgid "Other"
 msgstr ""
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Verwittigen bij nieuwe beschikbare updates"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "app-lijst automatisch bijwerken"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Vernieuw historie"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr ""
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -118,6 +98,35 @@ msgstr "nooit"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Automatische bronnen-scan"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "app-lijst automatisch bijwerken"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "app-lijst automatisch bijwerken"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Verwittigen"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Verwittigen bij nieuwe beschikbare updates"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Vernieuw historie"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -362,73 +371,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Download geannuleerd"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Anti-Functies"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Advertenties"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Laat apps zien die advertenties bevatten"
-
 #, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "Laat apps zien die advertenties bevatten"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Volgen"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Laat apps zien die je volgen en je activiteiten rapporteren"
 
 #, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr "Laat apps zien die je volgen en je activiteiten rapporteren"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Toevoegingen"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Laat apps zien die betaalde add-ons promoten"
-
 #, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "Laat apps zien die betaalde add-ons promoten"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Netwerkdiensten"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Laat apps zien die betaalde netwerkdiensten promoten"
-
 #, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "Laat apps zien die betaalde netwerkdiensten promoten"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Afhankelijkheden"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Laat apps zien die van andere betaalde apps afhankelijk zijn"
 
 #, fuzzy
 msgctxt "antinonfreedeplist"
@@ -561,4 +522,52 @@ msgstr ""
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Anti-Functies"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Advertenties"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Laat apps zien die advertenties bevatten"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Volgen"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Laat apps zien die je volgen en je activiteiten rapporteren"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Toevoegingen"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Laat apps zien die betaalde add-ons promoten"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Netwerkdiensten"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Laat apps zien die betaalde netwerkdiensten promoten"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Afhankelijkheden"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Laat apps zien die van andere betaalde apps afhankelijk zijn"
 

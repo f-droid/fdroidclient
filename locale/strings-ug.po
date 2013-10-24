@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
-"PO-Revision-Date: 2013-10-08 05:13+0200\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
+"PO-Revision-Date: 2013-10-21 04:55+0200\n"
 "Last-Translator: Abduqadir <sahran.ug@gmail.com>\n"
 "Language-Team: ug <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -75,10 +75,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d نەشرى بار"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "ئۇقتۇرۇش"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "ئەپلەر غەملەككە چۈشۈرۈلدى"
@@ -95,22 +91,6 @@ msgctxt "other"
 msgid "Other"
 msgstr "باشقا"
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "يېڭى يېڭىلانمىلار بولسا ئەسكەرت"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "ئەپ تىزىمىنى خەزىنەدىن ئۆزلۈكىدىن يېڭىلا"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "يېڭىلاش تارىخى"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr "يېڭى/يېڭىلانغان ئەپلەرنى كۆرسىتىدىغان كۈن سانى"
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -123,6 +103,35 @@ msgstr "ھەرگىز"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "ئاپتوماتىك repo تەكشۈرۈش"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "ئەپ تىزىمىنى خەزىنەدىن ئۆزلۈكىدىن يېڭىلا"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "ئەپ تىزىمىنى خەزىنەدىن ئۆزلۈكىدىن يېڭىلا"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "ئۇقتۇرۇش"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "يېڭى يېڭىلانمىلار بولسا ئەسكەرت"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "يېڭىلاش تارىخى"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr "يېڭى/يېڭىلانغان ئەپلەرنى كۆرسىتىدىغان كۈن سانى"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -318,15 +327,13 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "ئۆچۈر"
 
-#, fuzzy
 msgctxt "menu_ignore_all"
 msgid "Ignore All Updates"
-msgstr "يېڭىلانمىلارغا پەرۋا قىلما"
+msgstr "ھەممە يېڭىلانمىلارغا پەرۋا قىلما"
 
-#, fuzzy
 msgctxt "menu_ignore_this"
 msgid "Ignore This Update"
-msgstr "يېڭىلانمىلارغا پەرۋا قىلما"
+msgstr "بۇ يېڭىلانمىغا پەرۋا قىلما"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -365,78 +372,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "چۈشۈرۈشتىن ۋاز كەچتى"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "خاس ئىقتىدارلار"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "ئېلان"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "ئېلان بار ئەپلەرنى كۆرسەت"
-
-#, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr "ئېلان بار ئەپلەرنى كۆرسەت"
+msgstr "بۇ ئەپتە ئېلان بار"
 
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "ئىزلاش"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدىغان ئەپلەرنى كۆرسەت"
-
-#, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
-msgstr "پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدىغان ئەپلەرنى كۆرسەت"
+msgstr "بۇ ئەپ پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدۇ"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "قىستۇرما"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
-
-#, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
-msgstr "ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
+msgstr "بۇ ئەپ ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدۇ"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "تور مۇلازىمەتلىرى"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "ھەقسىز بولمىغان تور مۇلازىمەتلىرىنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
-
-#, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr "ھەقسىز بولمىغان تور مۇلازىمەتلىرىنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
+msgstr "بۇ ئەپ ھەقسىز بولمىغان تور مۇلازىمەتلىرىنى تەۋسىيە قىلىدۇ"
 
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "بېقىندىلار"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "ھەقسىز بولمىغان باشقا ئەپلەرگە بېقىنىدىغان ئەپلەرنى كۆرسىتىدۇ"
-
-#, fuzzy
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
-msgstr "ھەقسىز بولمىغان باشقا ئەپلەرگە بېقىنىدىغان ئەپلەرنى كۆرسىتىدۇ"
+msgstr "بۇ ئەپ ھەقسىز بولمىغان باشقا ئەپلەرگە بېقىنىدۇ"
 
 msgctxt "display"
 msgid "Display"
@@ -571,4 +525,54 @@ msgstr "ئىخچام جايلاشتۇرۇش"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ"
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "خاس ئىقتىدارلار"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr "بۇ ئەپنىڭ تۆۋەندىكىدەك ئىقتىدارلىرى بار:"
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "ئېلان"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "ئېلان بار ئەپلەرنى كۆرسەت"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "ئىزلاش"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدىغان ئەپلەرنى كۆرسەت"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "قىستۇرما"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "تور مۇلازىمەتلىرى"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr ""
+#~ "ھەقسىز بولمىغان تور مۇلازىمەتلىرىنى تەۋسىيە"
+#~ " قىلىدىغان ئەپلەرنى كۆرسىتىدۇ"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "بېقىندىلار"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "ھەقسىز بولمىغان باشقا ئەپلەرگە بېقىنىدىغان ئەپلەرنى كۆرسىتىدۇ"
 

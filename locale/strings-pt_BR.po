@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-09-19 02:12+0200\n"
 "Last-Translator: Cárlisson <cg@bardo.ws>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -75,10 +75,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versão disponível"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Notificar"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Cache de aplicativos baixado"
@@ -95,22 +91,6 @@ msgctxt "other"
 msgid "Other"
 msgstr "Outro"
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Notificar quando novas atualizações estiverem disponíveis"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositórios"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Atualizar histórico"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr "Dias para mostrar apps novos/atualizados"
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -123,6 +103,35 @@ msgstr "nunca"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Consulta automática aos repositórios"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositórios"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositórios"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Notificar"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Notificar quando novas atualizações estiverem disponíveis"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Atualizar histórico"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr "Dias para mostrar apps novos/atualizados"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -364,73 +373,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Download cancelado"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Anticaracterísticas"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Publicidade"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Mostrar aplicativos que contenham publicidade"
-
 #, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "Mostrar aplicativos que contenham publicidade"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Rastreamento"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Mostrar aplicativos que rastreiam e relatam sua atividade"
 
 #, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr "Mostrar aplicativos que rastreiam e relatam sua atividade"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Complementos"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Mostrar aplicativos que promovem complementos não-livres"
-
 #, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "Mostrar aplicativos que promovem complementos não-livres"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Serviços de Rede"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Mostrar aplicativos que promovem serviços de rede não-livre"
-
 #, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "Mostrar aplicativos que promovem serviços de rede não-livre"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Dependências"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Mostrar aplicativos que dependem de aplicativos não-livres"
 
 #, fuzzy
 msgctxt "antinonfreedeplist"
@@ -570,4 +531,52 @@ msgstr "Leiaute compacto"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Mostrar só nomes de aplicativos e sumários na lista"
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Anticaracterísticas"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Publicidade"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Mostrar aplicativos que contenham publicidade"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Rastreamento"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Mostrar aplicativos que rastreiam e relatam sua atividade"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Complementos"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Mostrar aplicativos que promovem complementos não-livres"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Serviços de Rede"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Mostrar aplicativos que promovem serviços de rede não-livre"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Dependências"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Mostrar aplicativos que dependem de aplicativos não-livres"
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
-"PO-Revision-Date: 2013-09-15 13:48+0200\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
+"PO-Revision-Date: 2013-10-19 12:39+0200\n"
 "Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: tr <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -76,10 +76,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d sürüm mevcut"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Bildirme"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "İndirilen uygulamaları önbelleğe kaydet"
@@ -96,22 +92,6 @@ msgctxt "other"
 msgid "Other"
 msgstr "Diğer"
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Yeni güncellemeler olduğunu bildir"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Uygulama listesini depolardan otomatik olarak güncelle"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Güncelleme tarihçesi"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr "Yeni/güncellenmiş uygulamaların gösterilecekleri gün sayısı"
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -124,6 +104,35 @@ msgstr "asla"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Otomatik depo taraması"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Uygulama listesini depolardan otomatik olarak güncelle"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Uygulama listesini depolardan otomatik olarak güncelle"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Bildirme"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Yeni güncellemeler olduğunu bildir"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Güncelleme tarihçesi"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr "Yeni/güncellenmiş uygulamaların gösterilecekleri gün sayısı"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -319,15 +328,13 @@ msgctxt "menu_uninstall"
 msgid "Uninstall"
 msgstr "Kaldır"
 
-#, fuzzy
 msgctxt "menu_ignore_all"
 msgid "Ignore All Updates"
-msgstr "Güncellemeleri görmezden gel"
+msgstr "Tüm güncellemeleri görmezden gel"
 
-#, fuzzy
 msgctxt "menu_ignore_this"
 msgid "Ignore This Update"
-msgstr "Güncellemeleri görmezden gel"
+msgstr "Bu güncellemeyi görmezden gel"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -366,78 +373,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "İndirme iptal edildi"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Anti-işlevler"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Reklâm"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Reklâm içeren uygulamaları göster"
-
-#, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr "Reklâm içeren uygulamaları göster"
+msgstr "Bu uygulama reklam içerir"
 
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "İzleme"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Etkinliklerinizi izleyip rapor eden uygulamaları göster"
-
-#, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
-msgstr "Etkinliklerinizi izleyip rapor eden uygulamaları göster"
+msgstr "Bu uygulama etkinliklerinizi izleyip rapor eder"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Eklentiler"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Özgür olmayan eklentiler öneren uygulamaları göster"
-
-#, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
-msgstr "Özgür olmayan eklentiler öneren uygulamaları göster"
+msgstr "Bu uygulama özgür olmayan eklentiler tavsiye eder"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Ağ Servisleri"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Özgür olmayan ağ servislerini destekleyen uygulamaları göster"
-
-#, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr "Özgür olmayan ağ servislerini destekleyen uygulamaları göster"
+msgstr "Bu uygulama özgür olmayan ağ servisleri tavsiye eder"
 
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Bağımlılıklar"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Özgür olmayan uygulamalara bağımlı uygulamaları göster"
-
-#, fuzzy
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
-msgstr "Özgür olmayan uygulamalara bağımlı uygulamaları göster"
+msgstr "Bu uygulama özgür olmayan başka uygulamalara bağımlıdır"
 
 msgctxt "display"
 msgid "Display"
@@ -572,4 +526,52 @@ msgstr "Yoğun düzen"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Listede sadece uygulama adlarını ve özetleri göster"
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Anti-işlevler"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr "Bu uygulama aşağıdaki anti-işlevleri bulundurur:"
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Reklâm"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Reklâm içeren uygulamaları göster"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "İzleme"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Etkinliklerinizi izleyip rapor eden uygulamaları göster"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Eklentiler"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Özgür olmayan eklentiler öneren uygulamaları göster"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Ağ Servisleri"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Özgür olmayan ağ servislerini destekleyen uygulamaları göster"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Bağımlılıklar"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Özgür olmayan uygulamalara bağımlı uygulamaları göster"
 

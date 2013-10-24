@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-08-24 14:57+0200\n"
 "Last-Translator: Anders <jonars03@student.umu.se>\n"
 "Language-Team: sv <LL@li.org>\n"
@@ -75,10 +75,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d version tillgänglig"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Avisering"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Cacha nerladdade appar"
@@ -95,22 +91,6 @@ msgctxt "other"
 msgid "Other"
 msgstr ""
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Meddela mig när nya uppdateringar finns"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Uppdatera applistan från förråd automatiskt"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Uppdateringshistorik"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr "Antal dagar att visa nya/uppdaterade appar"
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -123,6 +103,35 @@ msgstr "aldrig"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Automatisk förrådsavsökning"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Uppdatera applistan från förråd automatiskt"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Uppdatera applistan från förråd automatiskt"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Avisering"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Meddela mig när nya uppdateringar finns"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Uppdateringshistorik"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr "Antal dagar att visa nya/uppdaterade appar"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -363,73 +372,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Nerladdning avbruten"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Anti-finesser"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Reklam"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Visa appar som innehåller reklam"
-
 #, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "Visa appar som innehåller reklam"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Spårning"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Visa appar som kartlägger och rapporterar ditt beteende"
 
 #, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr "Visa appar som kartlägger och rapporterar ditt beteende"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Tillägg"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Visa appar som främjar icke-fria tillägg"
-
 #, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "Visa appar som främjar icke-fria tillägg"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Nätverkstjänster"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Visa appar som främjar icke-fria nätverkstjänster"
-
 #, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "Visa appar som främjar icke-fria nätverkstjänster"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Beroenden"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Visa appar som beror på andra icke-fria appar"
 
 #, fuzzy
 msgctxt "antinonfreedeplist"
@@ -567,4 +528,52 @@ msgstr "Kompakt layout"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Visa endast appnamn och sammanfattningar i listan"
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Anti-finesser"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Reklam"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Visa appar som innehåller reklam"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Spårning"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Visa appar som kartlägger och rapporterar ditt beteende"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Tillägg"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Visa appar som främjar icke-fria tillägg"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Nätverkstjänster"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Visa appar som främjar icke-fria nätverkstjänster"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Beroenden"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Visa appar som beror på andra icke-fria appar"
 

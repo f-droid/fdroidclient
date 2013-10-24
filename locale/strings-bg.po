@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-09-26 18:15+0200\n"
 "Last-Translator: radovid <radovid@hmamail.com>\n"
 "Language-Team: bg <LL@li.org>\n"
@@ -75,10 +75,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d налична версия"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Уведомления"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Кеширай свалените приложения"
@@ -95,22 +91,6 @@ msgctxt "other"
 msgid "Other"
 msgstr "Други"
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Уведомявай ме при нови налични актуализации"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Актуализирай списъка на приложенията от хранилищата автоматично"
-
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Актуализирай историята"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr "Дни за показване на нови/актуализирани приложения"
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -123,6 +103,35 @@ msgstr "никога"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Автоматично сканиране на хранилищата"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Актуализирай списъка на приложенията от хранилищата автоматично"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Актуализирай списъка на приложенията от хранилищата автоматично"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Уведомления"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Уведомявай ме при нови налични актуализации"
+
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Актуализирай историята"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr "Дни за показване на нови/актуализирани приложения"
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -363,73 +372,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Свалянето е отказано"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Анти-свойства"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Реклами"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Показвай приложения съдържащи реклами"
-
 #, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "Показвай приложения съдържащи реклами"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Проследяване"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Показвай приложения следящи и докладващи моята дейност"
 
 #, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr "Показвай приложения следящи и докладващи моята дейност"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Добавки"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Показвай приложения препоръчващи несвободни добавки"
-
 #, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "Показвай приложения препоръчващи несвободни добавки"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Мрежови услуги"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Показвай приложения препоръчващи несвободни мрежови услуги"
-
 #, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "Показвай приложения препоръчващи несвободни мрежови услуги"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Зависимости"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Показвай приложения зависещи от несвободни програми"
 
 #, fuzzy
 msgctxt "antinonfreedeplist"
@@ -570,4 +531,52 @@ msgstr "Компактно оформление"
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Показвай само имената и описанията на приложенията в списъка"
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Анти-свойства"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Реклами"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Показвай приложения съдържащи реклами"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Проследяване"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Показвай приложения следящи и докладващи моята дейност"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Добавки"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Показвай приложения препоръчващи несвободни добавки"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Мрежови услуги"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Показвай приложения препоръчващи несвободни мрежови услуги"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Зависимости"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Показвай приложения зависещи от несвободни програми"
 

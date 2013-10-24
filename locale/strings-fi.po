@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-04-03 17:19+0200\n"
 "Last-Translator: PatrikSelin <patrik.selin@gmail.com>\n"
 "Language-Team: fi <LL@li.org>\n"
@@ -72,10 +72,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versio saatavilla"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Huomauta"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "Säilytä ladatut sovellukset välimuistissa"
@@ -92,23 +88,6 @@ msgctxt "other"
 msgid "Other"
 msgstr ""
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "Ilmoita kun uusia päivityksiä on saatavilla"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "Päivitä sovelluslista sovelluslähteistä automaattisesti"
-
-#, fuzzy
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Päivitä sovelluslähteet"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr ""
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -121,6 +100,36 @@ msgstr "ei koskaan"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "Automaattinen sovelluslähteen skannaus"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "Päivitä sovelluslista sovelluslähteistä automaattisesti"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "Päivitä sovelluslista sovelluslähteistä automaattisesti"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Huomauta"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "Ilmoita kun uusia päivityksiä on saatavilla"
+
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Päivitä sovelluslähteet"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -365,73 +374,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Lataus peruutettu"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "Anti-Toiminnot"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Mainostus"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "Näytä sovellukset, jotka sisältävät mainostusta"
-
 #, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "Näytä sovellukset, jotka sisältävät mainostusta"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Seuranta"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "Näytä sovellukset, jotka seuraavat ja raportoivat aktiivisuuttasi"
 
 #, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr "Näytä sovellukset, jotka seuraavat ja raportoivat aktiivisuuttasi"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Lisä-osat"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "Näytä sovellukset, jotka mainostavat epävapaita lisä-osia"
-
 #, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "Näytä sovellukset, jotka mainostavat epävapaita lisä-osia"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "Verkkopalvelut"
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "Näytä sovellukset, jotka mainostavat epävapaita verkkopalveluja"
-
 #, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "Näytä sovellukset, jotka mainostavat epävapaita verkkopalveluja"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Riippuvuudet"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "Näytä sovellukset, jotka riippuvat muista epävapaista sovelluksista"
 
 #, fuzzy
 msgctxt "antinonfreedeplist"
@@ -563,4 +524,52 @@ msgstr ""
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "Anti-Toiminnot"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Mainostus"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "Näytä sovellukset, jotka sisältävät mainostusta"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Seuranta"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "Näytä sovellukset, jotka seuraavat ja raportoivat aktiivisuuttasi"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Lisä-osat"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "Näytä sovellukset, jotka mainostavat epävapaita lisä-osia"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "Verkkopalvelut"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "Näytä sovellukset, jotka mainostavat epävapaita verkkopalveluja"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Riippuvuudet"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "Näytä sovellukset, jotka riippuvat muista epävapaista sovelluksista"
 

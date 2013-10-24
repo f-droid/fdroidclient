@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2013-03-22 11:36+0200\n"
 "Last-Translator: shenshang428 <shenshang428@gmail.com>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -67,10 +67,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d个可用版本"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "通知"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr "已下载应用缓存"
@@ -87,23 +83,6 @@ msgctxt "other"
 msgid "Other"
 msgstr ""
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr "当有更新时，通知栏提醒"
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr "自动更新应用列表"
-
-#, fuzzy
-msgctxt "update_history"
-msgid "Update history"
-msgstr "更新应用源"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr ""
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -116,6 +95,36 @@ msgstr "从不"
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
 msgstr "自动扫描repo"
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr "自动更新应用列表"
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+#, fuzzy
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr "自动更新应用列表"
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "通知"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr "当有更新时，通知栏提醒"
+
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "更新应用源"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
+msgstr ""
 
 msgctxt "search_results"
 msgid "Search Results"
@@ -359,75 +368,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "下载取消"
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr "个性设置"
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "广告"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr "显示包含广告的应用"
-
 #, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
 msgstr "显示包含广告的应用"
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "追踪"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
-msgstr "显示会追踪、上传你的活动的应用"
 
 #, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr "显示会追踪、上传你的活动的应用"
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "插件"
-
-#, fuzzy
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr "显示改善收费插件的应用"
-
 #, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr "显示改善收费插件的应用"
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr "网络服务"
-
-#, fuzzy
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr "显示提供收费网络服务的应用"
-
 #, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
 msgstr "显示提供收费网络服务的应用"
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "非独立应用"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
-msgstr "显示依赖于收费应用的应用"
 
 #, fuzzy
 msgctxt "antinonfreedeplist"
@@ -557,4 +516,52 @@ msgstr ""
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr "个性设置"
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "广告"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr "显示包含广告的应用"
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "追踪"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr "显示会追踪、上传你的活动的应用"
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "插件"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr "显示改善收费插件的应用"
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr "网络服务"
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr "显示提供收费网络服务的应用"
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "非独立应用"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr "显示依赖于收费应用的应用"
 

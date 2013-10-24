@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-15 16:04+0100\n"
+"POT-Creation-Date: 2013-10-24 17:13+0100\n"
 "PO-Revision-Date: 2012-11-18 12:26+0200\n"
 "Last-Translator: Ingemar <ingemar@ingemarberg.com>\n"
 "Language-Team: eo <LL@li.org>\n"
@@ -66,10 +66,6 @@ msgctxt "n_version_available"
 msgid "%d version available"
 msgstr "%d versio disponebla"
 
-msgctxt "notify"
-msgid "Notify"
-msgstr "Sciigi"
-
 msgctxt "cache_downloaded"
 msgid "Cache downloaded apps"
 msgstr ""
@@ -86,23 +82,6 @@ msgctxt "other"
 msgid "Other"
 msgstr ""
 
-msgctxt "notify_updates_available"
-msgid "Notify when new updates are available"
-msgstr ""
-
-msgctxt "update_apps_list"
-msgid "Update app list from repositories automatically"
-msgstr ""
-
-#, fuzzy
-msgctxt "update_history"
-msgid "Update history"
-msgstr "Ĝisdatigi deponejojn"
-
-msgctxt "update_history_desc"
-msgid "Days to show new/updated apps"
-msgstr ""
-
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
@@ -114,6 +93,35 @@ msgstr ""
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
+msgstr ""
+
+msgctxt "update_apps_list"
+msgid "Update app list from repositories automatically"
+msgstr ""
+
+msgctxt "automatic_scan_wifi"
+msgid "Only on wifi"
+msgstr ""
+
+msgctxt "automatic_scan_wifi_desc"
+msgid "Update app lists automatically only on wifi"
+msgstr ""
+
+msgctxt "notify"
+msgid "Notify"
+msgstr "Sciigi"
+
+msgctxt "notify_updates_available"
+msgid "Notify when new updates are available"
+msgstr ""
+
+#, fuzzy
+msgctxt "update_history"
+msgid "Update history"
+msgstr "Ĝisdatigi deponejojn"
+
+msgctxt "update_history_desc"
+msgid "Days to show new/updated apps"
 msgstr ""
 
 msgctxt "search_results"
@@ -348,68 +356,20 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr ""
 
-msgctxt "antifeatures"
-msgid "Anti-Features"
-msgstr ""
-
-msgctxt "antifeatures_list"
-msgid "This application has the following anti-features:"
-msgstr ""
-
-msgctxt "antiads"
-msgid "Advertising"
-msgstr "Reklamo"
-
-msgctxt "antiadslong"
-msgid "Show apps that contain advertising"
-msgstr ""
-
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr ""
-
-msgctxt "antitrack"
-msgid "Tracking"
-msgstr "Spurado"
-
-msgctxt "antitracklong"
-msgid "Show apps that track and report your activity"
 msgstr ""
 
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
 msgstr ""
 
-msgctxt "antinonfreead"
-msgid "Add-ons"
-msgstr "Aldonaĵoj"
-
-msgctxt "antinonfreeadlong"
-msgid "Show apps that promote non-free add-ons"
-msgstr ""
-
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
 msgstr ""
 
-msgctxt "antinonfreenet"
-msgid "Network Services"
-msgstr ""
-
-msgctxt "antinonfreenetlong"
-msgid "Show apps that promote non-free network services"
-msgstr ""
-
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr ""
-
-msgctxt "antinonfreedep"
-msgid "Dependencies"
-msgstr "Dependecoj"
-
-msgctxt "antinonfreedeplong"
-msgid "Show apps that depend on other non-free apps"
 msgstr ""
 
 msgctxt "antinonfreedeplist"
@@ -539,4 +499,52 @@ msgstr ""
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
+
+#~ msgctxt "antifeatures"
+#~ msgid "Anti-Features"
+#~ msgstr ""
+
+#~ msgctxt "antifeatures_list"
+#~ msgid "This application has the following anti-features:"
+#~ msgstr ""
+
+#~ msgctxt "antiads"
+#~ msgid "Advertising"
+#~ msgstr "Reklamo"
+
+#~ msgctxt "antiadslong"
+#~ msgid "Show apps that contain advertising"
+#~ msgstr ""
+
+#~ msgctxt "antitrack"
+#~ msgid "Tracking"
+#~ msgstr "Spurado"
+
+#~ msgctxt "antitracklong"
+#~ msgid "Show apps that track and report your activity"
+#~ msgstr ""
+
+#~ msgctxt "antinonfreead"
+#~ msgid "Add-ons"
+#~ msgstr "Aldonaĵoj"
+
+#~ msgctxt "antinonfreeadlong"
+#~ msgid "Show apps that promote non-free add-ons"
+#~ msgstr ""
+
+#~ msgctxt "antinonfreenet"
+#~ msgid "Network Services"
+#~ msgstr ""
+
+#~ msgctxt "antinonfreenetlong"
+#~ msgid "Show apps that promote non-free network services"
+#~ msgstr ""
+
+#~ msgctxt "antinonfreedep"
+#~ msgid "Dependencies"
+#~ msgstr "Dependecoj"
+
+#~ msgctxt "antinonfreedeplong"
+#~ msgid "Show apps that depend on other non-free apps"
+#~ msgstr ""
 
