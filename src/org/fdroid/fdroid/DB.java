@@ -942,8 +942,8 @@ public class DB {
         try {
             String filter = "%" + query + "%";
             c = db.query(TABLE_APP, new String[] { "id" },
-                    "name like ? or summary like ? or description like ?",
-                    new String[] { filter, filter, filter }, null, null, null);
+                    "id like ? or name like ? or summary like ? or description like ?",
+                    new String[] { filter, filter, filter, filter }, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 ids.add(c.getString(0));
