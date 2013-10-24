@@ -22,7 +22,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.ListPreference;
+import android.preference.CheckBoxPreference;
 import android.view.MenuItem;
 
 import android.support.v4.app.NavUtils;
@@ -30,7 +32,7 @@ import android.support.v4.app.NavUtils;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class PreferencesActivity extends PreferenceActivity implements
-        OnPreferenceClickListener {
+        OnPreferenceChangeListener {
 
     Intent ret;
 
@@ -39,10 +41,14 @@ public class PreferencesActivity extends PreferenceActivity implements
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
-        //for (String prefkey : new String[] { }) {
-            //Preference pref = findPreference(prefkey);
-            //pref.setOnPreferenceClickListener(this);
-        //}
+        for (String prefkey : new String[] { "updateInterval" }) {
+            Preference pref = findPreference(prefkey);
+            pref.setOnPreferenceChangeListener(this);
+            CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
+                    findPreference("updateOnWifiOnly");
+            onlyOnWifi.setEnabled(Integer.parseInt(
+                            ((ListPreference)pref).getValue()) > 0);
+        }
     }
 
     @Override
@@ -56,13 +62,16 @@ public class PreferencesActivity extends PreferenceActivity implements
     }
 
     @Override
-    public boolean onPreferenceClick(Preference preference) {
-        // Currently no actions are returned
-        //String key = preference.getKey();
-        //if (key.equals("...")) {
-        Intent ret = new Intent();
-        setResult(RESULT_OK, ret);
-        return true;
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        String key = preference.getKey();
+        if (key.equals("updateInterval")) {
+            int interval = Integer.parseInt(newValue.toString());
+            CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
+                    findPreference("updateOnWifiOnly");
+            onlyOnWifi.setEnabled(interval > 0);
+            return true;
+        }
+        return false;
     }
 
 }

@@ -5,6 +5,9 @@
 			android:summary="@string/update_apps_list" android:key="updateInterval"
 			android:defaultValue="24" android:entries="@array/updateIntervalNames"
 			android:entryValues="@array/updateIntervalValues" />
+		<CheckBoxPreference android:title="@string/automatic_scan_wifi"
+			android:defaultValue="false" android:summary="@string/automatic_scan_wifi_desc"
+			android:key="updateOnWifiOnly" />
 		<CheckBoxPreference android:title="@string/notify"
 			android:defaultValue="true" android:summary="@string/notify_updates_available"
 			android:key="updateNotify" />

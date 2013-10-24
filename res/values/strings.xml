@@ -9,19 +9,21 @@
 	<string name="version">Version</string>
 	<string name="n_versions_available">%d versions available</string>
 	<string name="n_version_available">%d version available</string>
-	<string name="notify">Notify</string>
 	<string name="cache_downloaded">Cache downloaded apps</string>
 	<string name="keep_downloaded">Keep downloaded apk files on SD card</string>
 	<string name="updates">Updates</string>
 	<string name="other">Other</string>
-	<string name="notify_updates_available">Notify when new updates are available</string>
-	<string name="update_apps_list">Update app list from repositories automatically
-	</string>
-	<string name="update_history">Update history</string>
-	<string name="update_history_desc">Days to show new/updated apps</string>
 	<string name="last_update_check">Last repo scan: %s</string>
 	<string name="never">never</string>
+
 	<string name="automatic_repo_scan">Automatic repo scan</string>
+	<string name="update_apps_list">Update app list from repositories automatically</string>
+	<string name="automatic_scan_wifi">Only on wifi</string>
+	<string name="automatic_scan_wifi_desc">Update app lists automatically only on wifi</string>
+	<string name="notify">Notify</string>
+	<string name="notify_updates_available">Notify when new updates are available</string>
+	<string name="update_history">Update history</string>
+	<string name="update_history_desc">Days to show new/updated apps</string>
 
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>

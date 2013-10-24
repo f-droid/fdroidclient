@@ -30,6 +30,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
@@ -136,6 +138,18 @@ public class UpdateService extends IntentService implements ProgressListener {
                     Log.d("FDroid", "Skipping update - done " + elapsed
                             + "ms ago, interval is " + interval + " hours");
                     return;
+                }
+
+                // If we are to update the repos only on wifi, make sure that
+                // connection is active
+                if (prefs.getBoolean("updateOnWifiOnly", false)) {
+                    ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
+                    if (wifi != NetworkInfo.State.CONNECTED &&
+                            wifi !=  NetworkInfo.State.CONNECTING) {
+                        Log.d("FDroid", "Skipping update - wifi not available");
+                        return;
+                    }
                 }
             } else {
                 Log.d("FDroid", "Unscheduled (manually requested) update");
