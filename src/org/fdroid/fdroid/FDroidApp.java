@@ -29,6 +29,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -85,6 +86,7 @@ public class FDroidApp extends Application {
             .cacheOnDisc(true)
             .showImageOnLoading(android.R.drawable.sym_def_app_icon)
             .displayer(new FadeInBitmapDisplayer(250, true, true, false))
+            .bitmapConfig(Bitmap.Config.RGB_565)
             .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
             .discCache(new UnlimitedDiscCache(cacheDir, new FileNameGenerator() {
@@ -92,7 +94,7 @@ public class FDroidApp extends Application {
                     return imageUri.substring(imageUri.lastIndexOf('/') + 1);
                 } } ))
             .defaultDisplayImageOptions(defaultOptions)
-            .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
+            .threadPoolSize(4)
             .build();
         ImageLoader.getInstance().init(config);
     }
