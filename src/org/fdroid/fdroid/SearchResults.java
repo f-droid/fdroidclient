@@ -57,6 +57,8 @@ public class SearchResults extends ListActivity {
             Uri data = intent.getData();
             if (data.isHierarchical()) {
                 mQuery = data.getQueryParameter("q");
+                if (mQuery.startsWith("pname:"))
+                    mQuery = mQuery.substring(6);
             } else {
                 mQuery = data.getEncodedSchemeSpecificPart();
             }
