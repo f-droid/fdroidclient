@@ -94,7 +94,7 @@ public class FDroidApp extends Application {
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .imageScaleType(ImageScaleType.NONE)
                 .build();
-            threads = 1;
+            threads = 2;
         }
         // Parameters for 2.3 and above
         else {
