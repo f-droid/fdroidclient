@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
+import android.os.Build;
 import android.app.Application;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -34,6 +35,7 @@ import android.graphics.Bitmap;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -80,23 +82,47 @@ public class FDroidApp extends Application {
         DB.initDB(ctx);
         UpdateService.schedule(ctx);
 
-        File cacheDir = new File(StorageUtils.getCacheDirectory(ctx), "icons");
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .cacheOnDisc(true)
-            .showImageOnLoading(android.R.drawable.sym_def_app_icon)
-            .displayer(new FadeInBitmapDisplayer(250, true, true, false))
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .build();
+        DisplayImageOptions defaultOptions;
+        int threads;
+
+        // Parameters for 2.2 and below
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisc(true)
+                .showImageOnLoading(android.R.drawable.sym_def_app_icon)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .imageScaleType(ImageScaleType.NONE)
+                .build();
+            threads = 1;
+        }
+        // Parameters for 2.3 and above
+        else {
+            defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisc(true)
+                .showImageOnLoading(android.R.drawable.sym_def_app_icon)
+                .displayer(new FadeInBitmapDisplayer(250, true, true, false))
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .imageScaleType(ImageScaleType.NONE)
+                .build();
+            threads = Runtime.getRuntime().availableProcessors() * 2;
+        }
+
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
-            .discCache(new UnlimitedDiscCache(cacheDir, new FileNameGenerator() {
-                public String generate(String imageUri) {
-                    return imageUri.substring(imageUri.lastIndexOf('/') + 1);
-                } } ))
+            .discCache(new UnlimitedDiscCache(
+                        new File(StorageUtils.getCacheDirectory(ctx), "icons"),
+                        new FileNameGenerator() {
+                            public String generate(String imageUri) {
+                                return imageUri.substring(
+                                    imageUri.lastIndexOf('/') + 1);
+                            } } ))
             .defaultDisplayImageOptions(defaultOptions)
-            .threadPoolSize(4)
+            .threadPoolSize(threads)
             .build();
         ImageLoader.getInstance().init(config);
+        Log.d("FDroid", "Universal Image Loader started with "
+                + threads + " threads");
     }
 
     Context ctx;
