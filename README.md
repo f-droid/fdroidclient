@@ -33,6 +33,17 @@ can also follow our [Issue tracker](https://f-droid.org/repository/issues/)
 and our [Forums](https://f-droid.org/forums/).
 
 
+Translating
+-----------
+
+The `locale` dir is automatically updated via the
+[android2po](https://github.com/miracle2k/android2po) tool, and translations
+are pulled from our Pootle translation server at
+[f-droid.org/translate](https://f-droid.org/translate). You should only add or
+remove strings in the `res/values/` dir, since all the `res/values-*` dirs are
+also generated automatically.
+
+
 License
 -------
 
