@@ -90,7 +90,7 @@ public class FDroidApp extends Application {
             defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisc(true)
-                .showImageOnLoading(android.R.drawable.sym_def_app_icon)
+                .showImageOnLoading(android.R.color.transparent)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .imageScaleType(ImageScaleType.NONE)
                 .build();
@@ -101,8 +101,8 @@ public class FDroidApp extends Application {
             defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisc(true)
-                .showImageOnLoading(android.R.drawable.sym_def_app_icon)
-                .displayer(new FadeInBitmapDisplayer(250, true, true, false))
+                .showImageOnLoading(android.R.color.transparent)
+                .displayer(new FadeInBitmapDisplayer(200, true, true, false))
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .imageScaleType(ImageScaleType.NONE)
                 .build();
