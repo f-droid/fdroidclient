@@ -612,7 +612,7 @@ public class AppDetails extends ListActivity {
             return true;
         if (app.toUpdate) {
             MenuItemCompat.setShowAsAction(menu.add(
-                        Menu.NONE, INSTALL, 0, R.string.menu_update)
+                        Menu.NONE, INSTALL, 0, R.string.menu_upgrade)
                         .setIcon(R.drawable.ic_menu_refresh),
                     MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
