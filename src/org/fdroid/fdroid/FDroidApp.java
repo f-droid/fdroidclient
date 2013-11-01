@@ -82,32 +82,14 @@ public class FDroidApp extends Application {
         DB.initDB(ctx);
         UpdateService.schedule(ctx);
 
-        DisplayImageOptions defaultOptions;
-        int threads;
-
-        // Parameters for 2.2 and below
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            defaultOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisc(true)
-                .showImageOnLoading(android.R.color.transparent)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .imageScaleType(ImageScaleType.NONE)
-                .build();
-            threads = 2;
-        }
-        // Parameters for 2.3 and above
-        else {
-            defaultOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisc(true)
-                .showImageOnLoading(android.R.color.transparent)
-                .displayer(new FadeInBitmapDisplayer(200, true, true, false))
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .imageScaleType(ImageScaleType.NONE)
-                .build();
-            threads = Runtime.getRuntime().availableProcessors() * 2;
-        }
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisc(true)
+            .showImageOnLoading(R.drawable.ic_repo_app_default)
+            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+            .displayer(new FadeInBitmapDisplayer(200, true, true, false))
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
             .discCache(new UnlimitedDiscCache(
@@ -117,12 +99,10 @@ public class FDroidApp extends Application {
                                 return imageUri.substring(
                                     imageUri.lastIndexOf('/') + 1);
                             } } ))
-            .defaultDisplayImageOptions(defaultOptions)
-            .threadPoolSize(threads)
+            .defaultDisplayImageOptions(options)
+            .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
             .build();
         ImageLoader.getInstance().init(config);
-        Log.d("FDroid", "Universal Image Loader started with "
-                + threads + " threads");
     }
 
     Context ctx;
@@ -183,9 +163,10 @@ public class FDroidApp extends Application {
 
                 List<DB.Repo> repos = db.getRepos();
                 for (DB.App app : apps) {
+                    if (app.icon == null) continue;
                     for (DB.Repo repo : repos) {
-                        DB.Apk bestApk = app.apks.get(0);
-                        if (repo.id == bestApk.repo) {
+                        int latestRepo = app.apks.get(0).repo;
+                        if (repo.id == latestRepo) {
                             app.iconUrl = repo.address + "/icons/" + app.icon;
                             break;
                         }
@@ -202,10 +183,11 @@ public class FDroidApp extends Application {
 
                 List<DB.Repo> repos = db.getRepos();
                 for (DB.App app : apps) {
+                    if (app.icon == null) continue;
                     if (!invalidApps.contains(app.id)) continue;
                     for (DB.Repo repo : repos) {
-                        DB.Apk bestApk = app.apks.get(0);
-                        if (repo.id == bestApk.repo) {
+                        int latestRepo = app.apks.get(0).repo;
+                        if (repo.id == latestRepo) {
                             app.iconUrl = repo.address + "/icons/" + app.icon;
                             break;
                         }

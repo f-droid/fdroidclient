@@ -108,7 +108,7 @@ public class DB {
         public App() {
             name = "Unknown";
             summary = "Unknown application";
-            icon = "noicon.png";
+            icon = null;
             id = "unknown";
             license = "Unknown";
             category = "Uncategorized";
