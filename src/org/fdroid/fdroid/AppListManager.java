@@ -147,31 +147,28 @@ public class AppListManager {
     // isn't an instance variable is because the preferences may change, and
     // we wouldn't know.
     private boolean isInCategory(DB.App app, String category, Date recentDate) {
-        boolean isInCategory;
         if (category.equals(categoryAll)) {
-                isInCategory = true;
-        } else if (category.equals(categoryWhatsNew)) {
+            return true;
+        }
+        if (category.equals(categoryWhatsNew)) {
             if (app.added == null)
-                isInCategory = false;
-            else if (app.added.compareTo(recentDate) < 0)
-                isInCategory = false;
-            else
-                isInCategory = true;
-        } else if (category.equals(categoryRecentlyUpdated)) {
+                return false;
+            if (app.added.compareTo(recentDate) < 0)
+                return false;
+            return true;
+        }
+        if (category.equals(categoryRecentlyUpdated)) {
             if (app.lastUpdated == null)
-                isInCategory = false;
+                return false;
             // Don't include in the recently updated category if the
             // 'update' was actually it being added.
-            else if (app.lastUpdated.compareTo(app.added) == 0)
-                isInCategory = false;
-            else if (app.lastUpdated.compareTo(recentDate) < 0)
-                isInCategory = false;
-            else
-                isInCategory = true;
-        } else {
-            isInCategory = category.equals(app.category);
+            if (app.lastUpdated.compareTo(app.added) == 0)
+                return false;
+            if (app.lastUpdated.compareTo(recentDate) < 0)
+                return false;
+            return true;
         }
-        return isInCategory;
+        return app.categories.contains(category);
     }
 
     // Returns false if the app list is empty and the fdroid activity decided
@@ -194,12 +191,10 @@ public class AppListManager {
         List<DB.App> availApps = new ArrayList<DB.App>();
         for (DB.App app : allApps) {
 
-            boolean isInCategory = isInCategory(app, currentCategory, recentDate);
-
             // Add it to the list(s). Always to installed and updates, but
             // only to available if it's not filtered.
-            if (!app.filtered && isInCategory
-                    && (showIncompatible || app.compatible)) {
+            if (!app.filtered && (showIncompatible || app.compatible)
+                    && isInCategory(app, currentCategory, recentDate)) {
                 availApps.add(app);
             }
             if (app.installedVersion != null) {
