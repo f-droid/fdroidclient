@@ -88,17 +88,17 @@ public class AppListManager {
             // Populate the category list with the real categories, and the
             // locally generated meta-categories for "All", "What's New" and
             // "Recently  Updated"...
-            categoryAll             = fdroidActivity.getString(R.string.category_all);
-            categoryWhatsNew        = fdroidActivity.getString(R.string.category_whatsnew);
-            categoryRecentlyUpdated = fdroidActivity.getString(R.string.category_recentlyupdated);
+            categoryAll = fdroidActivity
+                .getString(R.string.category_all);
+            categoryWhatsNew = fdroidActivity
+                .getString(R.string.category_whatsnew);
+            categoryRecentlyUpdated = fdroidActivity
+                .getString(R.string.category_recentlyupdated);
 
             categories.add(categoryWhatsNew);
             categories.add(categoryRecentlyUpdated);
             categories.add(categoryAll);
-
-            for (String s : db.getCategories()) {
-                categories.add(s);
-            }
+            categories.addAll(db.getCategories());
 
             if (currentCategory == null)
                 currentCategory = categoryWhatsNew;

@@ -97,7 +97,7 @@ public class DB {
             + "antiFeatures string," + "donateURL string,"
             + "bitcoinAddr string," + "litecoinAddr string,"
             + "flattrID string," + "requirements string,"
-            + "category string," + "added string,"
+            + "categories string," + "added string,"
             + "lastUpdated string," + "compatible int not null,"
             + "ignoreAllUpdates int not null,"
             + "ignoreThisUpdate int not null,"
@@ -111,13 +111,13 @@ public class DB {
             icon = null;
             id = "unknown";
             license = "Unknown";
-            category = "Uncategorized";
             detail_trackerURL = null;
             detail_sourceURL = null;
             detail_donateURL = null;
             detail_bitcoinAddr = null;
             detail_litecoinAddr = null;
             detail_webURL = null;
+            categories = null;
             antiFeatures = null;
             requirements = null;
             hasUpdates = false;
@@ -149,7 +149,6 @@ public class DB {
         public String detail_description;
 
         public String license;
-        public String category;
 
         // Null when !detail_Populated
         public String detail_webURL;
@@ -188,6 +187,10 @@ public class DB {
         public String installedVersion;
         public int installedVerCode;
         public boolean userInstalled;
+
+        // List of categories (as defined in the metadata
+        // documentation) or null if there aren't any.
+        public CommaSeparatedList categories;
 
         // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
@@ -440,12 +443,11 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 27;
+    private final int DBVersion = 28;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL("create index app_id on " + TABLE_APP + " (id);");
-        db.execSQL("create index app_category on " + TABLE_APP + " (category);");
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
         db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
@@ -628,13 +630,19 @@ public class DB {
         List<String> result = new ArrayList<String>();
         Cursor c = null;
         try {
-            c = db.query(true, TABLE_APP, new String[] { "category" },
-                    null, null, null, null, "category", null);
+            c = db.query(true, TABLE_APP, new String[] { "categories" },
+                    null, null, null, null, "categories", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                String s = c.getString(0);
-                if (s != null) {
-                    result.add(s);
+                Log.d("FDroid", "== CATEGS "+c.getString(0));
+                CommaSeparatedList categories = CommaSeparatedList
+                    .make(c.getString(0));
+                for (String category : categories) {
+                    Log.d("FDroid", "== CATEG "+category);
+                    if (!result.contains(category)) {
+                        Log.d("FDroid", "== CATEG ADDED "+category);
+                        result.add(category);
+                    }
                 }
                 c.moveToNext();
             }
@@ -760,7 +768,7 @@ public class DB {
         try {
 
             String cols[] = new String[] { "antiFeatures", "requirements",
-                    "id", "name", "summary", "icon", "license", "category",
+                    "categories", "id", "name", "summary", "icon", "license",
                     "curVersion", "curVercode", "added", "lastUpdated",
                     "compatible", "ignoreAllUpdates", "ignoreThisUpdate" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
@@ -770,12 +778,12 @@ public class DB {
                 App app = new App();
                 app.antiFeatures = DB.CommaSeparatedList.make(c.getString(0));
                 app.requirements = DB.CommaSeparatedList.make(c.getString(1));
-                app.id = c.getString(2);
-                app.name = c.getString(3);
-                app.summary = c.getString(4);
-                app.icon = c.getString(5);
-                app.license = c.getString(6);
-                app.category = c.getString(7);
+                app.categories = DB.CommaSeparatedList.make(c.getString(2));
+                app.id = c.getString(3);
+                app.name = c.getString(4);
+                app.summary = c.getString(5);
+                app.icon = c.getString(6);
+                app.license = c.getString(7);
                 app.curVersion = c.getString(8);
                 app.curVercode = c.getInt(9);
                 String sAdded = c.getString(10);
@@ -983,6 +991,15 @@ public class DB {
             splitter.setString(value);
             return splitter.iterator();
         }
+
+        public boolean contains(String v) {
+            Iterator<String> it = iterator();
+            while (it.hasNext()) {
+                if (it.next().equals(v))
+                    return true;
+            }
+            return false;
+        }
     }
 
     private List<App> updateApps = null;
@@ -1128,7 +1145,6 @@ public class DB {
         values.put("icon", upapp.icon);
         values.put("description", upapp.detail_description);
         values.put("license", upapp.license);
-        values.put("category", upapp.category);
         values.put("webURL", upapp.detail_webURL);
         values.put("trackerURL", upapp.detail_trackerURL);
         values.put("sourceURL", upapp.detail_sourceURL);
@@ -1144,6 +1160,7 @@ public class DB {
                         .format(upapp.lastUpdated));
         values.put("curVersion", upapp.curVersion);
         values.put("curVercode", upapp.curVercode);
+        values.put("categories", CommaSeparatedList.str(upapp.categories));
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         values.put("compatible", upapp.compatible ? 1 : 0);

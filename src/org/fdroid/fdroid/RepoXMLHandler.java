@@ -195,8 +195,6 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.summary = str;
             } else if (curel.equals("license")) {
                 curapp.license = str;
-            } else if (curel.equals("category")) {
-                curapp.category = str;
             } else if (curel.equals("source")) {
                 curapp.detail_sourceURL = str;
             } else if (curel.equals("donate")) {
@@ -233,6 +231,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapp.curVercode = -1;
                 }
+            } else if (curel.equals("category")) {
+                curapp.categories = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("antifeatures")) {
                 curapp.antiFeatures = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("requirements")) {
