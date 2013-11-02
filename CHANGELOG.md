@@ -1,7 +1,7 @@
 ### Future release
 
-* New launcher icon
-* Switch to proper updates notification iconography
+* New launcher and notification icons
+* New default/loading app icon
 * List anti-features on the App Details screen
 * New App Details option: Ignore All Updates
 * New App Details option: Ignore This Update
