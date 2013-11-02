@@ -32,6 +32,7 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
@@ -277,12 +278,17 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             if (success && changes && notify && updates > 0) {
                 Log.d("FDroid", "Notifying "+updates+" updates.");
-                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+                NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(
                         this)
-                        .setSmallIcon(R.drawable.ic_stat_notify_updates)
                         .setAutoCancel(true)
                         .setContentTitle(
                                 getString(R.string.fdroid_updates_available));
+                if (Build.VERSION.SDK_INT >= 11) {
+                    mBuilder.setSmallIcon(R.drawable.ic_stat_notify_updates);
+                } else {
+                    mBuilder.setSmallIcon(R.drawable.ic_launcher);
+                }
                 Intent notifyIntent = new Intent(this, FDroid.class)
                         .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
                 if (updates > 1) {
