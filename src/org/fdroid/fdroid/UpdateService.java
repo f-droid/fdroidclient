@@ -45,9 +45,10 @@ import android.support.v4.app.TaskStackBuilder;
 public class UpdateService extends IntentService implements ProgressListener {
 
     public static final String RESULT_MESSAGE = "msg";
-    public static final int STATUS_COMPLETE = 0;
-    public static final int STATUS_ERROR = 1;
-    public static final int STATUS_INFO = 2;
+    public static final int STATUS_CHANGES = 0;
+    public static final int STATUS_SAME = 1;
+    public static final int STATUS_ERROR = 2;
+    public static final int STATUS_INFO = 3;
 
     private ResultReceiver receiver = null;
 
@@ -314,10 +315,14 @@ public class UpdateService extends IntentService implements ProgressListener {
                     errmsg = "Unknown error";
                 sendStatus(STATUS_ERROR, errmsg);
             } else {
-                sendStatus(STATUS_COMPLETE);
                 Editor e = prefs.edit();
                 e.putLong("lastUpdateCheck", System.currentTimeMillis());
                 e.commit();
+                if (changes) {
+                    sendStatus(STATUS_CHANGES);
+                } else {
+                    sendStatus(STATUS_SAME);
+                }
             }
 
         } catch (Exception e) {

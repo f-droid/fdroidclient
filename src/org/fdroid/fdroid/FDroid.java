@@ -269,8 +269,10 @@ public class FDroid extends FragmentActivity {
             if (resultCode == UpdateService.STATUS_ERROR) {
                 Toast.makeText(FDroid.this, message, Toast.LENGTH_LONG).show();
                 finished = true;
-            } else if (resultCode == UpdateService.STATUS_COMPLETE) {
+            } else if (resultCode == UpdateService.STATUS_CHANGES) {
                 repopulateViews();
+                finished = true;
+            } else if (resultCode == UpdateService.STATUS_SAME) {
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_INFO) {
                 pd.setMessage(message);
