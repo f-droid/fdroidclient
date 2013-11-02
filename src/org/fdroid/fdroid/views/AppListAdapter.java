@@ -20,6 +20,7 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
+    private List<Boolean> compacts = new ArrayList<Boolean>();
 
     public AppListAdapter(Context context) {
         mContext = context;
@@ -31,10 +32,12 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     public void addItem(DB.App app) {
         items.add(app);
+        compacts.add(null);
     }
 
     public void clear() {
         items.clear();
+        compacts.clear();
     }
 
     @Override
@@ -68,29 +71,32 @@ abstract public class AppListAdapter extends BaseAdapter {
         TextView status = (TextView) convertView.findViewById(R.id.status);
         TextView license = (TextView) convertView.findViewById(R.id.license);
         ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
-        LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
-        ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
-        ImageView iconUpdates = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
 
         name.setText(app.name);
         summary.setText(app.summary);
 
-        layoutSummary(summary);
+        Boolean storedCompact = compacts.get(position);
+        if (storedCompact == null || compact != storedCompact) {
+            int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
+            int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
+
+            LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
+
+            iconContainer.setVisibility(visibleOnCompact);
+            status.setVisibility(notVisibleOnCompact);
+            license.setVisibility(notVisibleOnCompact);
+            compacts.set(position, compact);
+            layoutSummary(summary);
+        }
+
         ImageLoader.getInstance().displayImage(app.iconUrl, icon);
-
-        int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
-        int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
-
-        iconContainer.setVisibility(visibleOnCompact);
-        status.setVisibility(notVisibleOnCompact);
-        license.setVisibility(notVisibleOnCompact);
 
         if (!compact) {
             status.setText(getVersionInfo(app));
             license.setText(app.license);
         } else {
-            status.setText("");
-            license.setText("");
+            ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
+            ImageView iconUpdates = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
 
             iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
             iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
@@ -150,23 +156,18 @@ abstract public class AppListAdapter extends BaseAdapter {
     }
 
     private String getVersionInfo(DB.App app) {
-        StringBuilder version = new StringBuilder();
         if (app.installedVersion != null) {
-            version.append(app.installedVersion);
             if (app.toUpdate) {
-                version.append(" -> ");
-                version.append(app.curApk.version);
+                return app.installedVersion + " -> " + app.curApk.version;
             }
+            return app.installedVersion;
         } else {
             int numav = app.apks.size();
-            String numVersions;
-            if (numav == 1)
-                numVersions = mContext.getString(R.string.n_version_available);
-            else
-                numVersions = mContext.getString(R.string.n_versions_available);
-            version.append(String.format(numVersions, numav));
+            if (numav == 1) {
+                return mContext.getString(R.string.n_version_available, numav);
+            }
+            return mContext.getString(R.string.n_versions_available, numav);
         }
-        return version.toString();
     }
 
 }

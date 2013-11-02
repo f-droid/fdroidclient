@@ -24,15 +24,13 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        Fragment fragment = null;
         if ( i == 0 ) {
-            fragment = new AvailableAppsFragment();
-        } else if ( i == 1 ) {
-            fragment = new InstalledAppsFragment();
-        } else if ( i == 2 ) {
-            fragment = new CanUpdateAppsFragment();
+            return new AvailableAppsFragment();
         }
-        return fragment;
+        if ( i == 1 ) {
+            return new InstalledAppsFragment();
+        }
+        return new CanUpdateAppsFragment();
     }
 
     @Override
@@ -47,9 +45,8 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
             case 1:
                 return parent.getString(R.string.tab_installed);
             case 2:
-                String updates = parent.getString(R.string.tab_updates);
-                updates += " (" + parent.getManager().getCanUpdateAdapter().getCount() + ")";
-                return updates;
+                return parent.getString(R.string.tab_updates) + " ("
+                    + parent.getManager().getCanUpdateAdapter().getCount() + ")";
             default:
                 return "";
         }
