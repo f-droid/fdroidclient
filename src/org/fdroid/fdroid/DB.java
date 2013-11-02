@@ -634,13 +634,10 @@ public class DB {
                     null, null, null, null, "categories", null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                Log.d("FDroid", "== CATEGS "+c.getString(0));
                 CommaSeparatedList categories = CommaSeparatedList
                     .make(c.getString(0));
                 for (String category : categories) {
-                    Log.d("FDroid", "== CATEG "+category);
                     if (!result.contains(category)) {
-                        Log.d("FDroid", "== CATEG ADDED "+category);
                         result.add(category);
                     }
                 }

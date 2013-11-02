@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.os.Build;
 
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
@@ -98,7 +99,14 @@ public class AppListManager {
             categories.add(categoryWhatsNew);
             categories.add(categoryRecentlyUpdated);
             categories.add(categoryAll);
-            categories.addAll(db.getCategories());
+            if (Build.VERSION.SDK_INT >= 11) {
+                categories.addAll(db.getCategories());
+            } else {
+                List<String> categories = db.getCategories();
+                for (String category : db.getCategories()) {
+                    categories.add(category);
+                }
+            }
 
             if (currentCategory == null)
                 currentCategory = categoryWhatsNew;
