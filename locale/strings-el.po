@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-24 17:13+0100\n"
-"PO-Revision-Date: 2012-09-11 20:13+0200\n"
-"Last-Translator: g0d4 <giorgoskolokotronis@gmail.com>\n"
+"POT-Creation-Date: 2013-11-02 18:29+0000\n"
+"PO-Revision-Date: 2013-10-28 01:10+0200\n"
+"Last-Translator: tetris4 <tetris4@gmail.com>\n"
 "Language-Team: el <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,8 @@ msgid ""
 "It seems like this package is not compatible with your device. Do you "
 "want to try and install it anyway?"
 msgstr ""
+"Φαίνεται ότι αυτό το πακέτο δεν είναι συμβατό με τη συσκευή σας. Θα "
+"θέλατε να δοκιμάσετε να το εγκαταστήσετε ούτως ή άλλως;"
 
 msgctxt "installDowngrade"
 msgid ""
@@ -56,6 +58,9 @@ msgid ""
 "malfunction and even lose your data. Do you want to try and downgrade it "
 "anyway?"
 msgstr ""
+"Προσπαθείτε να υποβαθμίσετε αυτήν την εφαρμογή. Αν το κάνετε αυτό, μπορεί"
+" να προκληθούν προβλήματα στην εφαρμογή ή ακόμα και να χάσετε τα δεδομένα"
+" σας. Θέλετε να δοκιμάσετε να την υποβαθμίσετε ούτως ή άλλως;"
 
 msgctxt "version"
 msgid "Version"
@@ -85,16 +90,16 @@ msgstr "Ενημερώσεις"
 
 msgctxt "other"
 msgid "Other"
-msgstr ""
+msgstr "Άλλα"
 
 #, c-format
 msgctxt "last_update_check"
 msgid "Last repo scan: %s"
-msgstr ""
+msgstr "Τελευταίο σάρωμα αποθετηρίου: %s"
 
 msgctxt "never"
 msgid "never"
-msgstr ""
+msgstr "ποτέ"
 
 msgctxt "automatic_repo_scan"
 msgid "Automatic repo scan"
@@ -106,12 +111,11 @@ msgstr "Αυτόματη ενημέρωση της λίστας εφαρμογώ
 
 msgctxt "automatic_scan_wifi"
 msgid "Only on wifi"
-msgstr ""
+msgstr "Μόνο σε wifi"
 
-#, fuzzy
 msgctxt "automatic_scan_wifi_desc"
 msgid "Update app lists automatically only on wifi"
-msgstr "Αυτόματη ενημέρωση της λίστας εφαρμογών από το αποθετήριο"
+msgstr "Αυτόματη ενημέρωση της λίστας εφαρμογών μόνο σε wifi"
 
 msgctxt "notify"
 msgid "Notify"
@@ -121,39 +125,37 @@ msgctxt "notify_updates_available"
 msgid "Notify when new updates are available"
 msgstr "Ειδοποίηση για την ύπαρξη διαθέσιμων ενημερώσεων"
 
-#, fuzzy
 msgctxt "update_history"
 msgid "Update history"
-msgstr "Ενημέρωση αποθετηρίων"
+msgstr "Ιστορικό ενημερώσεων"
 
 msgctxt "update_history_desc"
 msgid "Days to show new/updated apps"
-msgstr ""
+msgstr "Ημέρες για να εμφανίζονται οι νέες/ενημερωμένες εφαρμογές"
 
 msgctxt "search_results"
 msgid "Search Results"
-msgstr ""
+msgstr "Αποτελέσματα Αναζήτησης"
 
 msgctxt "app_details"
 msgid "App Details"
-msgstr ""
+msgstr "Λεπτομέρειες Εφαρμογής"
 
 msgctxt "no_such_app"
 msgid "No such app found"
-msgstr ""
+msgstr "Δεν βρέθηκε τέτοια εφαρμογή"
 
 msgctxt "about_title"
 msgid "About F-Droid"
 msgstr "Σχετικά με το F-Droid"
 
-#, fuzzy
 msgctxt "about_desc"
 msgid ""
 "Originally based on Aptoide.\n"
 "Released under the GNU GPLv3 license."
 msgstr ""
-"Αρχικά, βασιζόταν στο Aptoide.\n"
-"Κυκλοφόρεί κάτω από την άδεια GNU GPLv2."
+"Αρχικά βασιζόταν στο Aptoide.\n"
+"Κυκλοφόρεί κάτω από την άδεια GNU GPLv3."
 
 msgctxt "about_site"
 msgid "Website:"
@@ -171,7 +173,6 @@ msgctxt "about_website"
 msgid "Website"
 msgstr "Ιστοσελίδα"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -183,10 +184,10 @@ msgid ""
 msgstr ""
 "Δεν έχει ρυθμιστεί κανένα αποθετήριο!\n"
 "\n"
-"Το αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε ένα, πιέστε το "
-"πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.\n"
+"Ένα αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε κάποιο, πιέστε"
+" το πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.\n"
 "\n"
-"Μια διεύθυνση αποθετηρίου μοιάζει σαν αυτό: http://f-droid.org/repo"
+"Μια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: http://f-droid.org/repo"
 
 msgctxt "inst"
 msgid "Installed"
@@ -199,7 +200,7 @@ msgstr "Δεν είναι εγκατεστημένο"
 #, c-format
 msgctxt "added_on"
 msgid "Added on %s"
-msgstr ""
+msgstr "Προστέθηκε στις %s"
 
 msgctxt "ok"
 msgid "OK"
@@ -245,20 +246,18 @@ msgctxt "tab_updates"
 msgid "Updates"
 msgstr "Ενημερώσεις"
 
-#, fuzzy
 msgctxt "one_update_available"
 msgid "1 update is available."
-msgstr "Διαθέσιμες ενημερώσεις"
+msgstr "1 διαθέσιμη ενημερώση."
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "many_updates_available"
 msgid "%d updates are available."
-msgstr "Διαθέσιμες ενημερώσεις"
+msgstr "%d διαθέσιμες ενημερώσεις."
 
-#, fuzzy
 msgctxt "fdroid_updates_available"
 msgid "F-Droid Updates Available"
-msgstr "Διαθέσιμες ενημερώσεις"
+msgstr "Διαθέσιμες ενημερώσεις για το F-Droid"
 
 msgctxt "process_wait_title"
 msgid "Please Wait"
@@ -284,7 +283,6 @@ msgstr ""
 "Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. \n"
 "Θέλετε να ενημερωθούν;"
 
-#, fuzzy
 msgctxt "menu_update_repo"
 msgid "Update Repos"
 msgstr "Ενημέρωση αποθετηρίων"
@@ -315,11 +313,11 @@ msgstr "Αφαίρεση Αποθετηρίου"
 
 msgctxt "menu_launch"
 msgid "Run"
-msgstr ""
+msgstr "Εκτέλεση"
 
 msgctxt "menu_share"
 msgid "Share"
-msgstr ""
+msgstr "Διαμοιρασμός"
 
 msgctxt "menu_install"
 msgid "Install"
@@ -331,11 +329,11 @@ msgstr "Απεγκατάσταση"
 
 msgctxt "menu_ignore_all"
 msgid "Ignore All Updates"
-msgstr ""
+msgstr "Αγνόησε Όλες τις Ενημερώσεις"
 
 msgctxt "menu_ignore_this"
 msgid "Ignore This Update"
-msgstr ""
+msgstr "Αγνόησε Αυτή την Ενημέρωση"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -349,9 +347,9 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Πηγαίος κώδικας"
 
-msgctxt "menu_update"
-msgid "Update"
-msgstr "Ενημέρωση"
+msgctxt "menu_upgrade"
+msgid "Upgrade"
+msgstr ""
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -374,34 +372,29 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Ακύρωθηκε η λήψη"
 
-#, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr "Εμφάνιση εφαρμογών που περιέχουν διαφημίσεις"
+msgstr "Αυτή η εφαρμογή περιέχει διαφημίσεις"
 
-#, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
-msgstr "Εμφάνιση εφαρμογών που παρακολουθούν και αναφέρουν την δραστηριότητα σας"
+msgstr "Αυτή η εφαρμογή παρακολουθεί και αναφέρει την δραστηριότητα σας"
 
-#, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
-msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν πρόσθετα"
+msgstr "Αυτή η εφαρμογή προωθεί μη-ελεύθερα πρόσθετα"
 
-#, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν υπηρεσίες δικτύου"
+msgstr "Αυτή η εφαρμογή προωθούν μη ελεύθερες υπηρεσίες δικτύου"
 
-#, fuzzy
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
-msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν εφαρμογές"
+msgstr "Αυτή η εφαρμογή εξαρτάται από άλλες μη-ελεύθερες εφαρμογές."
 
 msgctxt "display"
 msgid "Display"
-msgstr ""
+msgstr "Εμφάνιση"
 
 msgctxt "expert"
 msgid "Expert"
@@ -427,15 +420,15 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr "Συμβατότητα εφαμοργής"
 
-msgctxt "showincompat"
-msgid "Incompatible apps"
+#, fuzzy
+msgctxt "show_incompat_versions"
+msgid "Incompatible versions"
 msgstr "Μη συμβατές εφαρμογές"
 
-msgctxt "showincompat_long"
-msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
-"Εμφάνιση εφαρμογών που γράφτηκαν για νεότερες εκδόσεις Android ή για "
-"διαφορετικό υλικό"
+#, fuzzy
+msgctxt "show_incompat_versions_l"
+msgid "Show versions of apps that are incompatible with the device"
+msgstr "Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας..."
 
 msgctxt "rooted"
 msgid "Root"
@@ -447,11 +440,11 @@ msgstr "Εμφάνιση εφαρμογών που απαιτούν δικαιώ
 
 msgctxt "ignoreTouch"
 msgid "Ignore Touchscreen"
-msgstr ""
+msgstr "Αγνόησε την Οθόνη Επαφής"
 
 msgctxt "ignoreTouch_long"
 msgid "Always include apps that require touchscreen"
-msgstr ""
+msgstr "Να συμπεριλαμβάνονται πάντα εφαρμογές που απαιτούν οθόνη επαφής"
 
 msgctxt "category_all"
 msgid "All"
@@ -475,14 +468,20 @@ msgid ""
 "%2$s / %3$s (%4$d%%) from\n"
 "%1$s"
 msgstr ""
+"Λήψη\n"
+"%2$s / %3$s (%4$d%%)από\n"
+"%1$s"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "status_processing_xml"
 msgid ""
 "Processing application\n"
 "%2$d of %3$d from\n"
 "%1$s"
-msgstr "Λήψη εφαρμογής από:\n"
+msgstr ""
+"Επεξεργασία εφαρμογής\n"
+"%2$d από %3$d από\n"
+"%1$s"
 
 #, c-format
 msgctxt "status_connecting_to_repo"
@@ -490,88 +489,51 @@ msgid ""
 "Connecting to\n"
 "%1$s"
 msgstr ""
+"Σύνδεση με\n"
+"%1$s"
 
 msgctxt "status_checking_compatibility"
 msgid "Checking apps compatibility with your device…"
-msgstr ""
+msgstr "Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας..."
 
 msgctxt "no_permissions"
 msgid "No permissions are used."
-msgstr ""
+msgstr "Δεν χρησιμοποιείται καμία άδεια."
 
 #, c-format
 msgctxt "permissions_for_long"
 msgid "Permissions for version %s"
-msgstr ""
+msgstr "Άδειες για την έκδοση %s"
 
 msgctxt "showPermissions"
 msgid "Show permissions"
-msgstr ""
+msgstr "Εμφάνιση αδειών"
 
 msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
-msgstr ""
+msgstr "Εμφάνιση λίστας αδειών που χρειάζεται μια εφαρμογή"
 
 #, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any available app that can handle %s"
-msgstr ""
+msgstr "Δεν έχεται καμία διαθέσιμη εφαρμογή που να μπορεί να χειριστεί %s"
 
 msgctxt "compactlayout"
 msgid "Compact Layout"
-msgstr ""
+msgstr "Συμπτυγμένη Διάταξη"
 
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
-msgstr ""
+msgstr "Εμφάνιση μόνο ονομάτων εφαρμογών και περίληψεων στη λίστα "
 
-#~ msgctxt "antifeatures"
-#~ msgid "Anti-Features"
-#~ msgstr "Αντί-Χαρακτηριστικά"
+#~ msgctxt "menu_update"
+#~ msgid "Update"
+#~ msgstr "Ενημέρωση"
 
-#~ msgctxt "antifeatures_list"
-#~ msgid "This application has the following anti-features:"
+#~ msgctxt "showincompat_long"
+#~ msgid "Show apps written for newer Android versions or different hardware"
 #~ msgstr ""
-
-#~ msgctxt "antiads"
-#~ msgid "Advertising"
-#~ msgstr "Διαφήμιση"
-
-#~ msgctxt "antiadslong"
-#~ msgid "Show apps that contain advertising"
-#~ msgstr "Εμφάνιση εφαρμογών που περιέχουν διαφημίσεις"
-
-#~ msgctxt "antitrack"
-#~ msgid "Tracking"
-#~ msgstr "Παρακολούθηση"
-
-#~ msgctxt "antitracklong"
-#~ msgid "Show apps that track and report your activity"
-#~ msgstr ""
-#~ "Εμφάνιση εφαρμογών που παρακολουθούν και "
-#~ "αναφέρουν την δραστηριότητα σας"
-
-#~ msgctxt "antinonfreead"
-#~ msgid "Add-ons"
-#~ msgstr "Πρόσθετα"
-
-#~ msgctxt "antinonfreeadlong"
-#~ msgid "Show apps that promote non-free add-ons"
-#~ msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν πρόσθετα"
-
-#~ msgctxt "antinonfreenet"
-#~ msgid "Network Services"
-#~ msgstr "Υπηρεσίες Δικτύου"
-
-#~ msgctxt "antinonfreenetlong"
-#~ msgid "Show apps that promote non-free network services"
-#~ msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν υπηρεσίες δικτύου"
-
-#~ msgctxt "antinonfreedep"
-#~ msgid "Dependencies"
-#~ msgstr "Eξαρτήσεις"
-
-#~ msgctxt "antinonfreedeplong"
-#~ msgid "Show apps that depend on other non-free apps"
-#~ msgstr "Εμφάνιση εφαρμογών που προωθούν μη δωρεάν εφαρμογές"
+#~ "Εμφάνιση εφαρμογών που γράφτηκαν για "
+#~ "νεότερες εκδόσεις Android ή για "
+#~ "διαφορετικό υλικό"
 

@@ -6,13 +6,13 @@
   <string name="version">Versiune</string>
   <string name="n_versions_available">Versiunile %d disponibile</string>
   <string name="n_version_available">Versiunea %d disponibila</string>
-  <string name="notify">Notificare</string>
   <string name="cache_downloaded">Istoric aplicatii descarcate</string>
   <string name="keep_downloaded">Patrati fisierele apk descarcate pe cardul SD</string>
   <string name="updates">Noutati</string>
-  <string name="notify_updates_available">Notificare cand exista versiuni noi</string>
-  <string name="update_apps_list">Actualizare aplicatie automata</string>
   <string name="automatic_repo_scan">Scanare versiuni noi</string>
+  <string name="update_apps_list">Actualizare aplicatie automata</string>
+  <string name="notify">Notificare</string>
+  <string name="notify_updates_available">Notificare cand exista versiuni noi</string>
   <string name="about_title">Despre F-Droid</string>
   <string name="about_desc">Bazat pe Aptoide.\nDistribuit sub licenta GNU GPLv3.</string>
   <string name="about_site">Website</string>

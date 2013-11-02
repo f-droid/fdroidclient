@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-24 17:13+0100\n"
+"POT-Creation-Date: 2013-11-02 18:29+0000\n"
 "PO-Revision-Date: 2012-11-18 12:26+0200\n"
 "Last-Translator: Ingemar <ingemar@ingemarberg.com>\n"
 "Language-Team: eo <LL@li.org>\n"
@@ -331,9 +331,9 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Fontkodo"
 
-msgctxt "menu_update"
-msgid "Update"
-msgstr "Ĝisdatigi"
+msgctxt "menu_upgrade"
+msgid "Upgrade"
+msgstr ""
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -404,12 +404,13 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr ""
 
-msgctxt "showincompat"
-msgid "Incompatible apps"
+#, fuzzy
+msgctxt "show_incompat_versions"
+msgid "Incompatible versions"
 msgstr "Nekongruaj aplikaĵoj"
 
-msgctxt "showincompat_long"
-msgid "Show apps written for newer Android versions or different hardware"
+msgctxt "show_incompat_versions_l"
+msgid "Show versions of apps that are incompatible with the device"
 msgstr ""
 
 msgctxt "rooted"
@@ -500,51 +501,11 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr ""
 
-#~ msgctxt "antifeatures"
-#~ msgid "Anti-Features"
-#~ msgstr ""
+#~ msgctxt "menu_update"
+#~ msgid "Update"
+#~ msgstr "Ĝisdatigi"
 
-#~ msgctxt "antifeatures_list"
-#~ msgid "This application has the following anti-features:"
-#~ msgstr ""
-
-#~ msgctxt "antiads"
-#~ msgid "Advertising"
-#~ msgstr "Reklamo"
-
-#~ msgctxt "antiadslong"
-#~ msgid "Show apps that contain advertising"
-#~ msgstr ""
-
-#~ msgctxt "antitrack"
-#~ msgid "Tracking"
-#~ msgstr "Spurado"
-
-#~ msgctxt "antitracklong"
-#~ msgid "Show apps that track and report your activity"
-#~ msgstr ""
-
-#~ msgctxt "antinonfreead"
-#~ msgid "Add-ons"
-#~ msgstr "Aldonaĵoj"
-
-#~ msgctxt "antinonfreeadlong"
-#~ msgid "Show apps that promote non-free add-ons"
-#~ msgstr ""
-
-#~ msgctxt "antinonfreenet"
-#~ msgid "Network Services"
-#~ msgstr ""
-
-#~ msgctxt "antinonfreenetlong"
-#~ msgid "Show apps that promote non-free network services"
-#~ msgstr ""
-
-#~ msgctxt "antinonfreedep"
-#~ msgid "Dependencies"
-#~ msgstr "Dependecoj"
-
-#~ msgctxt "antinonfreedeplong"
-#~ msgid "Show apps that depend on other non-free apps"
+#~ msgctxt "showincompat_long"
+#~ msgid "Show apps written for newer Android versions or different hardware"
 #~ msgstr ""
 

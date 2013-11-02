@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-24 17:13+0100\n"
+"POT-Creation-Date: 2013-11-02 18:29+0000\n"
 "PO-Revision-Date: 2013-08-13 14:27+0200\n"
 "Last-Translator: som <tursom@gmail.com>\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -349,9 +349,9 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Исходный код"
 
-msgctxt "menu_update"
-msgid "Update"
-msgstr "Обновить"
+msgctxt "menu_upgrade"
+msgid "Upgrade"
+msgstr ""
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -427,13 +427,15 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr "Совместимость приложений"
 
-msgctxt "showincompat"
-msgid "Incompatible apps"
+#, fuzzy
+msgctxt "show_incompat_versions"
+msgid "Incompatible versions"
 msgstr "Несовместимые приложения"
 
-msgctxt "showincompat_long"
-msgid "Show apps written for newer Android versions or different hardware"
-msgstr "Показать приложения для новых версий Android и/или другого железа"
+#, fuzzy
+msgctxt "show_incompat_versions_l"
+msgid "Show versions of apps that are incompatible with the device"
+msgstr "Проверка совместимости приложений с устройством..."
 
 msgctxt "rooted"
 msgid "Root"
@@ -528,51 +530,11 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Показывать в списке только названия и краткие описания приложений"
 
-#~ msgctxt "antifeatures"
-#~ msgid "Anti-Features"
-#~ msgstr "Анти-возможности"
+#~ msgctxt "menu_update"
+#~ msgid "Update"
+#~ msgstr "Обновить"
 
-#~ msgctxt "antifeatures_list"
-#~ msgid "This application has the following anti-features:"
-#~ msgstr ""
-
-#~ msgctxt "antiads"
-#~ msgid "Advertising"
-#~ msgstr "Реклама"
-
-#~ msgctxt "antiadslong"
-#~ msgid "Show apps that contain advertising"
-#~ msgstr "Показывать приложения с рекламой"
-
-#~ msgctxt "antitrack"
-#~ msgid "Tracking"
-#~ msgstr "Слежка"
-
-#~ msgctxt "antitracklong"
-#~ msgid "Show apps that track and report your activity"
-#~ msgstr "Показывать приложения, которые следят и отсылают данные о вас"
-
-#~ msgctxt "antinonfreead"
-#~ msgid "Add-ons"
-#~ msgstr "Дополнения"
-
-#~ msgctxt "antinonfreeadlong"
-#~ msgid "Show apps that promote non-free add-ons"
-#~ msgstr "Показывать приложения использующие несвободные дополнения"
-
-#~ msgctxt "antinonfreenet"
-#~ msgid "Network Services"
-#~ msgstr "Сетевые сервисы"
-
-#~ msgctxt "antinonfreenetlong"
-#~ msgid "Show apps that promote non-free network services"
-#~ msgstr "Показывать приложения использующие несвободные сетевые сервисы"
-
-#~ msgctxt "antinonfreedep"
-#~ msgid "Dependencies"
-#~ msgstr "Зависимости"
-
-#~ msgctxt "antinonfreedeplong"
-#~ msgid "Show apps that depend on other non-free apps"
-#~ msgstr "Показывать приложения зависимые от несвободных приложений"
+#~ msgctxt "showincompat_long"
+#~ msgid "Show apps written for newer Android versions or different hardware"
+#~ msgstr "Показать приложения для новых версий Android и/или другого железа"
 

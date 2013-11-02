@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-24 17:13+0100\n"
-"PO-Revision-Date: 2013-10-19 12:34+0200\n"
+"POT-Creation-Date: 2013-11-02 18:29+0000\n"
+"PO-Revision-Date: 2013-10-30 21:29+0200\n"
 "Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
@@ -111,12 +111,11 @@ msgstr "Mettre à jour automatiquement la liste d'applications à partir des dé
 
 msgctxt "automatic_scan_wifi"
 msgid "Only on wifi"
-msgstr ""
+msgstr "Seulement via WiFi"
 
-#, fuzzy
 msgctxt "automatic_scan_wifi_desc"
 msgid "Update app lists automatically only on wifi"
-msgstr "Mettre à jour automatiquement la liste d'applications à partir des dépôts"
+msgstr "Mettre à jour automatiquement la liste d'applications seulement via WiFi"
 
 msgctxt "notify"
 msgid "Notify"
@@ -348,9 +347,9 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Code source"
 
-msgctxt "menu_update"
-msgid "Update"
-msgstr "Mise à jour"
+msgctxt "menu_upgrade"
+msgid "Upgrade"
+msgstr ""
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -421,15 +420,15 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr "Compatibilité de l'application"
 
-msgctxt "showincompat"
-msgid "Incompatible apps"
+#, fuzzy
+msgctxt "show_incompat_versions"
+msgid "Incompatible versions"
 msgstr "Applications incompatibles"
 
-msgctxt "showincompat_long"
-msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
-"Montrer les applications écrites pour de nouvelles versions d'Android ou "
-"un matériel différent"
+#, fuzzy
+msgctxt "show_incompat_versions_l"
+msgid "Show versions of apps that are incompatible with the device"
+msgstr "Vérification de la compatibilité des applis avec votre appareil…"
 
 msgctxt "rooted"
 msgid "Root"
@@ -527,51 +526,14 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Afficher seulement les noms d'applications et les résumés dans la liste"
 
-#~ msgctxt "antifeatures"
-#~ msgid "Anti-Features"
-#~ msgstr "Anti-fonctionnalités"
+#~ msgctxt "menu_update"
+#~ msgid "Update"
+#~ msgstr "Mise à jour"
 
-#~ msgctxt "antifeatures_list"
-#~ msgid "This application has the following anti-features:"
-#~ msgstr "Cette application a les anti-fonctionnalités suivantes :"
-
-#~ msgctxt "antiads"
-#~ msgid "Advertising"
-#~ msgstr "Publicités"
-
-#~ msgctxt "antiadslong"
-#~ msgid "Show apps that contain advertising"
-#~ msgstr "Montrer les applications qui contiennent des publicités"
-
-#~ msgctxt "antitrack"
-#~ msgid "Tracking"
-#~ msgstr "Surveillance"
-
-#~ msgctxt "antitracklong"
-#~ msgid "Show apps that track and report your activity"
-#~ msgstr "Montrer les applications qui épient et qui rapportent votre activité"
-
-#~ msgctxt "antinonfreead"
-#~ msgid "Add-ons"
-#~ msgstr "Extensions"
-
-#~ msgctxt "antinonfreeadlong"
-#~ msgid "Show apps that promote non-free add-ons"
-#~ msgstr "Montrer les applications qui promeuvent des extensions privatrices"
-
-#~ msgctxt "antinonfreenet"
-#~ msgid "Network Services"
-#~ msgstr "Services réseau"
-
-#~ msgctxt "antinonfreenetlong"
-#~ msgid "Show apps that promote non-free network services"
-#~ msgstr "Montrer les applications qui promeuvent des services réseaux privateurs"
-
-#~ msgctxt "antinonfreedep"
-#~ msgid "Dependencies"
-#~ msgstr "Dépendances"
-
-#~ msgctxt "antinonfreedeplong"
-#~ msgid "Show apps that depend on other non-free apps"
-#~ msgstr "Montrer les applications qui dépendent d'autres applications non libres"
+#~ msgctxt "showincompat_long"
+#~ msgid "Show apps written for newer Android versions or different hardware"
+#~ msgstr ""
+#~ "Montrer les applications écrites pour de"
+#~ " nouvelles versions d'Android ou un "
+#~ "matériel différent"
 

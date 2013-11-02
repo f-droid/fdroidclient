@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-10-24 17:13+0100\n"
+"POT-Creation-Date: 2013-11-02 18:29+0000\n"
 "PO-Revision-Date: 2013-08-17 16:21+0200\n"
 "Last-Translator: mvdan <mvdan@mvdan.cc>\n"
 "Language-Team: gl <LL@li.org>\n"
@@ -348,9 +348,9 @@ msgctxt "menu_source"
 msgid "Source Code"
 msgstr "Código fonte"
 
-msgctxt "menu_update"
-msgid "Update"
-msgstr "Actualizar"
+msgctxt "menu_upgrade"
+msgid "Upgrade"
+msgstr ""
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -426,15 +426,15 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr "Compatibilidade de aplicacións"
 
-msgctxt "showincompat"
-msgid "Incompatible apps"
+#, fuzzy
+msgctxt "show_incompat_versions"
+msgid "Incompatible versions"
 msgstr "Aplicacións incompatíbles"
 
-msgctxt "showincompat_long"
-msgid "Show apps written for newer Android versions or different hardware"
-msgstr ""
-"Amosar aplicacións escritas para novas versións de Android ou hardware "
-"distinto"
+#, fuzzy
+msgctxt "show_incompat_versions_l"
+msgid "Show versions of apps that are incompatible with the device"
+msgstr "Comprobando a compatibilidade das aplicacións con teu aparato"
 
 msgctxt "rooted"
 msgid "Root"
@@ -532,51 +532,13 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Amosar únicamente os nomes das aplicacións e resumos na lista"
 
-#~ msgctxt "antifeatures"
-#~ msgid "Anti-Features"
-#~ msgstr "Anti-funcionalidades"
+#~ msgctxt "menu_update"
+#~ msgid "Update"
+#~ msgstr "Actualizar"
 
-#~ msgctxt "antifeatures_list"
-#~ msgid "This application has the following anti-features:"
+#~ msgctxt "showincompat_long"
+#~ msgid "Show apps written for newer Android versions or different hardware"
 #~ msgstr ""
-
-#~ msgctxt "antiads"
-#~ msgid "Advertising"
-#~ msgstr "Publicidade"
-
-#~ msgctxt "antiadslong"
-#~ msgid "Show apps that contain advertising"
-#~ msgstr "Amosar apps que conteñen publicidade"
-
-#~ msgctxt "antitrack"
-#~ msgid "Tracking"
-#~ msgstr "Seguimento"
-
-#~ msgctxt "antitracklong"
-#~ msgid "Show apps that track and report your activity"
-#~ msgstr "Amosar aplicacións que fan seguimento e informan da túa actividade"
-
-#~ msgctxt "antinonfreead"
-#~ msgid "Add-ons"
-#~ msgstr "Engadidos"
-
-#~ msgctxt "antinonfreeadlong"
-#~ msgid "Show apps that promote non-free add-ons"
-#~ msgstr "Amosar aplicacións que promoven engadidos non libres"
-
-#~ msgctxt "antinonfreenet"
-#~ msgid "Network Services"
-#~ msgstr "Servizos de rede"
-
-#~ msgctxt "antinonfreenetlong"
-#~ msgid "Show apps that promote non-free network services"
-#~ msgstr "Amosar aplicacións que promoven servizos de rede non libres"
-
-#~ msgctxt "antinonfreedep"
-#~ msgid "Dependencies"
-#~ msgstr "Dependencias"
-
-#~ msgctxt "antinonfreedeplong"
-#~ msgid "Show apps that depend on other non-free apps"
-#~ msgstr "Amosar aplicacións que dependen doutras non libres"
+#~ "Amosar aplicacións escritas para novas "
+#~ "versións de Android ou hardware distinto"
 
