@@ -18,7 +18,6 @@
 
 package org.fdroid.fdroid;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -34,21 +33,24 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 public class PreferencesActivity extends PreferenceActivity implements
         OnPreferenceChangeListener {
 
-    Intent ret;
+    public static final int RESULT_RELOAD = 1;
+    public static final int RESULT_REFILTER = 2;
+    private int result = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
-        for (String prefkey : new String[] { "updateInterval" }) {
-            Preference pref = findPreference(prefkey);
-            pref.setOnPreferenceChangeListener(this);
-            CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                    findPreference("updateOnWifiOnly");
-            onlyOnWifi.setEnabled(Integer.parseInt(
-                            ((ListPreference)pref).getValue()) > 0);
+        for (String prefkey : new String[] {
+                "updateInterval", "rooted", "incompatibleVersions" }) {
+            findPreference(prefkey).setOnPreferenceChangeListener(this);
         }
+        CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
+                findPreference("updateOnWifiOnly");
+        onlyOnWifi.setEnabled(Integer.parseInt(
+                        ((ListPreference)findPreference("updateInterval"))
+                        .getValue()) > 0);
     }
 
     @Override
@@ -69,6 +71,16 @@ public class PreferencesActivity extends PreferenceActivity implements
             CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
                     findPreference("updateOnWifiOnly");
             onlyOnWifi.setEnabled(interval > 0);
+            return true;
+        }
+        if (key.equals("incompatibleVersions")) {
+            result ^= RESULT_RELOAD;
+            setResult(result);
+            return true;
+        }
+        if (key.equals("rooted")) {
+            result ^= RESULT_REFILTER;
+            setResult(result);
             return true;
         }
         return false;

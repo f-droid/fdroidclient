@@ -58,7 +58,6 @@ public class FDroidApp extends Application {
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        showIncompatible = prefs.getBoolean("showIncompatible", false);
         if (!prefs.getBoolean("cacheDownloaded", false)) {
 
             File local_path = DB.getDataPath(this);
@@ -110,8 +109,6 @@ public class FDroidApp extends Application {
     // Global list of all known applications.
     private List<DB.App> apps;
 
-    private boolean showIncompatible;
-
     // Set when something has changed (database or installed apps) so we know
     // we should invalidate the apps.
     private volatile boolean appsAllInvalid = false;
@@ -161,18 +158,6 @@ public class FDroidApp extends Application {
                 DB db = DB.getDB();
                 apps = db.getApps(true);
 
-                List<DB.Repo> repos = db.getRepos();
-                for (DB.App app : apps) {
-                    if (app.icon == null) continue;
-                    for (DB.Repo repo : repos) {
-                        int latestRepo = app.apks.get(0).repo;
-                        if (repo.id == latestRepo) {
-                            app.iconUrl = repo.address + "/icons/" + app.icon;
-                            break;
-                        }
-                    }
-                }
-
             } finally {
                 DB.releaseDB();
             }
@@ -180,19 +165,6 @@ public class FDroidApp extends Application {
             try {
                 DB db = DB.getDB();
                 apps = db.refreshApps(apps, invalidApps);
-
-                List<DB.Repo> repos = db.getRepos();
-                for (DB.App app : apps) {
-                    if (app.icon == null) continue;
-                    if (!invalidApps.contains(app.id)) continue;
-                    for (DB.Repo repo : repos) {
-                        int latestRepo = app.apks.get(0).repo;
-                        if (repo.id == latestRepo) {
-                            app.iconUrl = repo.address + "/icons/" + app.icon;
-                            break;
-                        }
-                    }
-                }
 
                 invalidApps.clear();
             } finally {
@@ -213,8 +185,7 @@ public class FDroidApp extends Application {
             app.toUpdate = (app.hasUpdates
                     && !app.ignoreAllUpdates
                     && app.curApk.vercode > app.ignoreThisUpdate
-                    && !app.filtered
-                    && (showIncompatible || app.compatible));
+                    && !app.filtered);
         }
     }
 

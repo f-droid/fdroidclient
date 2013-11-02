@@ -234,13 +234,18 @@ public class FDroid extends FragmentActivity {
             }
             break;
         case REQUEST_PREFS:
-            ((FDroidApp) getApplication()).filterApps();
             // The automatic update settings may have changed, so reschedule (or
             // unschedule) the service accordingly. It's cheap, so no need to
             // check if the particular setting has actually been changed.
             UpdateService.schedule(getBaseContext());
-            break;
 
+            if ((resultCode & PreferencesActivity.RESULT_RELOAD) != 0) {
+                ((FDroidApp) getApplication()).invalidateAllApps();
+            } else if ((resultCode & PreferencesActivity.RESULT_REFILTER) != 0) {
+                ((FDroidApp) getApplication()).filterApps();
+            }
+
+            break;
         }
     }
 

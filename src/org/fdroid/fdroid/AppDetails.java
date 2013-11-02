@@ -232,13 +232,6 @@ public class AppDetails extends ListActivity {
             appid = i.getStringExtra("appid");
         }
 
-        // Set up the list...
-        headerView = new LinearLayout(this);
-        ListView lv = (ListView) findViewById(android.R.id.list);
-        lv.addHeaderView(headerView);
-        ApkListAdapter la = new ApkListAdapter(this, null);
-        setListAdapter(la);
-
         mPm = getPackageManager();
         // Get the preferences we're going to use in this Activity...
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
@@ -252,11 +245,17 @@ public class AppDetails extends ListActivity {
             resetRequired = false;
         }
 
+        // Set up the list...
+        headerView = new LinearLayout(this);
+        ListView lv = (ListView) findViewById(android.R.id.list);
+        lv.addHeaderView(headerView);
+        ApkListAdapter la = new ApkListAdapter(this, app.apks);
+        setListAdapter(la);
+
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
-        pref_incompatible = prefs.getBoolean("showIncompatible", false);
 
         startViews();
 
@@ -264,7 +263,6 @@ public class AppDetails extends ListActivity {
 
     private boolean pref_expert;
     private boolean pref_permissions;
-    private boolean pref_incompatible;
     private boolean resetRequired;
 
     // The signature of the installed version.
@@ -390,13 +388,6 @@ public class AppDetails extends ListActivity {
     }
 
     private void startViews() {
-
-        // Populate the list...
-        ApkListAdapter la = (ApkListAdapter) getListAdapter();
-        for (DB.Apk apk : app.apks)
-            if (pref_incompatible || apk.compatible)
-                la.addItem(apk);
-        la.notifyDataSetChanged();
 
         // Insert the 'infoView' (which contains the summary, various odds and
         // ends, and the description) into the appropriate place, if we're in

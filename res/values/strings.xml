@@ -117,8 +117,8 @@
 	<string name="db_sync_mode_long">Set the value of SQLite\'s "synchronous" flag</string>
 
 	<string name="appcompatibility">Application compatibility</string>
-	<string name="showincompat">Incompatible apps</string>
-	<string name="showincompat_long">Show apps written for newer Android versions or different hardware</string>
+	<string name="show_incompat_versions">Incompatible versions</string>
+	<string name="show_incompat_versions_l">Show versions of apps that are incompatible with the device</string>
 	<string name="rooted">Root</string>
 	<string name="rooted_long">Show apps that require root privileges</string>
 	<string name="ignoreTouch">Ignore Touchscreen</string>

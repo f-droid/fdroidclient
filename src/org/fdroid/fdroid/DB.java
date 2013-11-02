@@ -819,6 +819,11 @@ public class DB {
             Log.d("FDroid", "Read app data from database " + " (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
+            List<Repo> repos = getRepos();
+            SharedPreferences prefs = PreferenceManager
+                    .getDefaultSharedPreferences(mContext);
+            boolean incompatibleVersions = prefs
+                    .getBoolean("incompatibleVersions", false);
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
                     "apkName", "minSdkVersion", "added", "features", "nativecode",
                     "compatible", "repo" };
@@ -826,22 +831,37 @@ public class DB {
                     "vercode desc");
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                Apk apk = new Apk();
-                apk.id = c.getString(0);
-                apk.version = c.getString(1);
-                apk.vercode = c.getInt(2);
-                apk.sig = c.getString(3);
-                apk.srcname = c.getString(4);
-                apk.apkName = c.getString(5);
-                apk.minSdkVersion = c.getInt(6);
-                String sApkAdded = c.getString(7);
-                apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
-                        : mDateFormat.parse(sApkAdded);
-                apk.features = CommaSeparatedList.make(c.getString(8));
-                apk.nativecode = CommaSeparatedList.make(c.getString(9));
-                apk.compatible = c.getInt(10) == 1;
-                apk.repo = c.getInt(11);
-                apps.get(apk.id).apks.add(apk);
+                String id = c.getString(0);
+                App app = apps.get(id);
+                boolean compatible = c.getInt(10) == 1;
+                int repoid = c.getInt(11);
+                if (compatible || incompatibleVersions) {
+                    Apk apk = new Apk();
+                    apk.id = id;
+                    apk.version = c.getString(1);
+                    apk.vercode = c.getInt(2);
+                    apk.sig = c.getString(3);
+                    apk.srcname = c.getString(4);
+                    apk.apkName = c.getString(5);
+                    apk.minSdkVersion = c.getInt(6);
+                    String sApkAdded = c.getString(7);
+                    apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
+                            : mDateFormat.parse(sApkAdded);
+                    apk.features = CommaSeparatedList.make(c.getString(8));
+                    apk.nativecode = CommaSeparatedList.make(c.getString(9));
+                    apk.compatible = compatible;
+                    apk.repo = repoid;
+                    app.apks.add(apk);
+                }
+                if (app.iconUrl == null && app.icon != null) {
+                    for (DB.Repo repo : repos) {
+                        if (repo.id == repoid) {
+                            app.iconUrl =
+                                repo.address + "/icons/" + app.icon;
+                            break;
+                        }
+                    }
+                }
                 c.moveToNext();
             }
             c.close();
@@ -1065,12 +1085,10 @@ public class DB {
     // Called during update to supply new details for an application (or
     // details of a completely new one). Calls to this must be wrapped by
     // a call to beginUpdate and a call to endUpdate.
-    // Returns true if the app was accepted. If it wasn't, it's probably
-    // because it's not compatible with the device.
-    public boolean updateApplication(App upapp) {
+    public void updateApplication(App upapp) {
 
         if (updateApps == null) {
-            return false;
+            return;
         }
 
         // Lazy initialise this...
@@ -1125,7 +1143,6 @@ public class DB {
             upapp.updated = true;
             updateApps.add(upapp);
         }
-        return true;
 
     }
 
