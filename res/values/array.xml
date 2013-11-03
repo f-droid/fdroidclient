@@ -15,6 +15,15 @@
 		<item>24</item>
 	</string-array>
 
+	<string-array name="themeNames">
+		<item>Dark</item>
+		<item>Light</item>
+	</string-array>
+	<string-array name="themeValues">
+		<item>dark</item>
+		<item>light</item>
+	</string-array>
+
 	<string-array name="dbSyncModeNames">
 		<item>Off (unsafe)</item>
 		<item>Normal</item>

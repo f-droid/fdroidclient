@@ -26,6 +26,7 @@ import java.util.concurrent.Semaphore;
 
 import android.os.Build;
 import android.app.Application;
+import android.app.Activity;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.content.Context;
@@ -43,6 +44,27 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class FDroidApp extends Application {
 
+    private static enum Theme {
+        dark, light
+    }
+    private static Theme curTheme = Theme.dark;
+
+    public void reloadTheme() {
+        curTheme = Theme.valueOf(PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext())
+                .getString("theme", "dark"));
+    }
+    public void applyTheme(Activity activity) {
+        switch (curTheme) {
+            case dark:
+                //activity.setTheme(R.style.AppThemeDark);
+                return;
+            case light:
+                activity.setTheme(R.style.AppThemeLight);
+                return;
+        }
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -58,6 +80,7 @@ public class FDroidApp extends Application {
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
+        curTheme = Theme.valueOf(prefs.getString("theme", "dark"));
         if (!prefs.getBoolean("cacheDownloaded", false)) {
 
             File local_path = DB.getDataPath(this);

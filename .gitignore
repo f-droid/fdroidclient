@@ -4,6 +4,7 @@ build.properties
 bin/*
 gen/*
 proguard.cfg
+build.xml
 *~
 .idea
 *.iml

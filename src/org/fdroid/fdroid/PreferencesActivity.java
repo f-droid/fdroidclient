@@ -35,15 +35,20 @@ public class PreferencesActivity extends PreferenceActivity implements
 
     public static final int RESULT_RELOAD = 1;
     public static final int RESULT_REFILTER = 2;
+    public static final int RESULT_RESTART = 4;
     private int result = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ((FDroidApp) getApplication()).applyTheme(this);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
         for (String prefkey : new String[] {
-                "updateInterval", "rooted", "incompatibleVersions" }) {
+                "updateInterval", "rooted", "incompatibleVersions",
+                "theme" }) {
             findPreference(prefkey).setOnPreferenceChangeListener(this);
         }
         CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
@@ -80,6 +85,11 @@ public class PreferencesActivity extends PreferenceActivity implements
         }
         if (key.equals("rooted")) {
             result ^= RESULT_REFILTER;
+            setResult(result);
+            return true;
+        }
+        if (key.equals("theme")) {
+            result |= RESULT_RESTART;
             setResult(result);
             return true;
         }

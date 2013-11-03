@@ -70,6 +70,8 @@ public class SearchResults extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
+        ((FDroidApp) getApplication()).applyTheme(this);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         applist = new AvailableAppListAdapter(this);

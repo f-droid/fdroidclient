@@ -30,12 +30,14 @@ import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,6 +63,7 @@ public class FDroid extends FragmentActivity {
     private ProgressDialog pd;
 
     private ViewPager viewPager;
+    private AppListFragmentPageAdapter viewPageAdapter;
 
     private AppListManager manager = null;
 
@@ -72,6 +75,8 @@ public class FDroid extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ((FDroidApp) getApplication()).applyTheme(this);
 
         super.onCreate(savedInstanceState);
         manager = new AppListManager(this);
@@ -165,20 +170,35 @@ public class FDroid extends FragmentActivity {
             return true;
 
         case ABOUT:
-            LayoutInflater li = LayoutInflater.from(this);
-            View view = li.inflate(R.layout.about, null);
+            View view = null;
+            if (Build.VERSION.SDK_INT >= 11) {
+                LayoutInflater li = LayoutInflater.from(this);
+                view = li.inflate(R.layout.about, null);
+            } else {
+                view = View.inflate(
+                        new ContextThemeWrapper(this, R.style.AboutDialogLight),
+                        R.layout.about, null);
+            }
 
             // Fill in the version...
-            TextView tv = (TextView) view.findViewById(R.id.version);
-            PackageManager pm = getPackageManager();
             try {
-                PackageInfo pi = pm.getPackageInfo(getApplicationContext()
-                        .getPackageName(), 0);
-                tv.setText(pi.versionName);
+                PackageInfo pi = getPackageManager()
+                    .getPackageInfo(getApplicationContext()
+                            .getPackageName(), 0);
+                ((TextView) view.findViewById(R.id.version))
+                    .setText(pi.versionName);
             } catch (Exception e) {
             }
 
-            Builder p = new AlertDialog.Builder(this).setView(view);
+            Builder p = null;
+            if (Build.VERSION.SDK_INT >= 11) {
+                p = new AlertDialog.Builder(this).setView(view);
+            } else {
+                p = new AlertDialog.Builder(
+                        new ContextThemeWrapper(
+                            this, R.style.AboutDialogLight)
+                        ).setView(view);
+            }
             final AlertDialog alrt = p.create();
             alrt.setIcon(R.drawable.ic_launcher);
             alrt.setTitle(getString(R.string.about_title));
@@ -244,6 +264,16 @@ public class FDroid extends FragmentActivity {
             } else if ((resultCode & PreferencesActivity.RESULT_REFILTER) != 0) {
                 ((FDroidApp) getApplication()).filterApps();
             }
+            
+            if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
+                ((FDroidApp) getApplication()).reloadTheme();
+                final Intent intent = getIntent();
+                overridePendingTransition(0, 0);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(intent);
+            }
 
             break;
         }
@@ -251,7 +281,7 @@ public class FDroid extends FragmentActivity {
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
+        viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {

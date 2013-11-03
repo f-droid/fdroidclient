@@ -81,6 +81,8 @@ public class ManageRepo extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        ((FDroidApp) getApplication()).applyTheme(this);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat abCompat = ActionBarCompat.create(this);
         abCompat.setDisplayHomeAsUpEnabled(true);

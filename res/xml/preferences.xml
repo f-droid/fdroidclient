@@ -26,6 +26,11 @@
         <CheckBoxPreference android:title="@string/compactlayout"
             android:defaultValue="false" android:summary="@string/compactlayout_long"
             android:key="compactlayout"/>
+		<ListPreference android:title="@string/theme"
+			android:summary="@string/theme_long" android:key="theme"
+			android:defaultValue="dark"
+			android:entries="@array/themeNames"
+			android:entryValues="@array/themeValues" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/appcompatibility">
        <CheckBoxPreference android:title="@string/show_incompat_versions"

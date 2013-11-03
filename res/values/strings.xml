@@ -146,5 +146,7 @@
 	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
 	<string name="compactlayout">Compact Layout</string>
 	<string name="compactlayout_long">Only show app names and summaries in list</string>
+    <string name="theme">Theme</string>
+    <string name="theme_long">Choose a theme to use</string>
 
 </resources>

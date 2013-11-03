@@ -1,5 +1,6 @@
 ### Future release
 
+* Add theming with Light and Dark themes
 * New launcher and notification icons
 * New default/loading app icon
 * List anti-features on the App Details screen
