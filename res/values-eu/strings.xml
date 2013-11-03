@@ -58,7 +58,6 @@
   <string name="menu_website">Webgunea</string>
   <string name="menu_issues">Gaiak</string>
   <string name="menu_source">Iturburu-kodea</string>
-  <string name="menu_update">Eguneratu</string>
   <string name="menu_donate">Egin dohaintza</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
   <string name="details_notinstalled">Instalatu gabe</string>
@@ -71,8 +70,6 @@
   <string name="db_sync_mode">Datu-base modu sinkronoa</string>
   <string name="db_sync_mode_long">Ezarri SQLite-ren bandera sinkronoaren balioa</string>
   <string name="appcompatibility">Aplikazioen bateragarritasuna</string>
-  <string name="showincompat">Aplikazio bateraezinak</string>
-  <string name="showincompat_long">Erakutsi Androiden bertsio berriagoentzat edo hardware desberdinarentzat idatzitako aplikazioak</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Erakutsi root baimenak behar dituzten aplikazioak</string>
   <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>

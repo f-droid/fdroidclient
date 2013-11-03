@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-11-02 18:29+0000\n"
+"POT-Creation-Date: 2013-11-03 19:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -495,5 +495,13 @@ msgstr ""
 
 msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
+msgstr ""
+
+msgctxt "theme"
+msgid "Theme"
+msgstr ""
+
+msgctxt "theme_long"
+msgid "Choose a theme to use"
 msgstr ""
 

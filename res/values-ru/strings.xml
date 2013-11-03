@@ -64,7 +64,6 @@
   <string name="menu_website">Сайт</string>
   <string name="menu_issues">Ошибки</string>
   <string name="menu_source">Исходный код</string>
-  <string name="menu_update">Обновить</string>
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
@@ -77,8 +76,6 @@
   <string name="db_sync_mode">Режим синхронизации базы</string>
   <string name="db_sync_mode_long">Установить флаг синхронизации SQLite</string>
   <string name="appcompatibility">Совместимость приложений</string>
-  <string name="showincompat">Несовместимые приложения</string>
-  <string name="showincompat_long">Показать приложения для новых версий Android и/или другого железа</string>
   <string name="rooted">Суперпользователь</string>
   <string name="rooted_long">Показывать приложения требующие root-привилегий</string>
   <string name="ignoreTouch">Игнорировать Тачскрин</string>

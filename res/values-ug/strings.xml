@@ -71,7 +71,6 @@
   <string name="menu_website">تورتۇرا</string>
   <string name="menu_issues">مەسىلىلەر</string>
   <string name="menu_source">ئەسلى كود</string>
-  <string name="menu_update">يېڭىلا</string>
   <string name="menu_donate">ئىئانە</string>
   <string name="details_installed">%s نەشرى ئورنىتىلدى</string>
   <string name="details_notinstalled">ئورنىتىلمىدى</string>
@@ -89,8 +88,6 @@
   <string name="db_sync_mode">ساندان قەدەمداش ھالەت</string>
   <string name="db_sync_mode_long">بۇ SQLite قەدەمداش بايراقىنىڭ قىممىتىنى تەڭشەيدۇ</string>
   <string name="appcompatibility">ئەپ ماسلىشىشچانلىقى</string>
-  <string name="showincompat">ماسلاشمايدىغان ئەپلەر</string>
-  <string name="showincompat_long">يېڭى نەشرىدىكى ئاندرويىد ياكى باشقا قاتتىق دېتال ئۈسكۈنىسى ئۈچۈن يازغان ئەپلەرنى كۆرسەت</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">root ھوقۇقى زۆرۈر بولغان ئەپلەرنى كۆرسەت</string>
   <string name="ignoreTouch">سەزگۈر ئېكرانغا پەرۋا قىلما</string>

@@ -52,7 +52,6 @@
   <string name="menu_website">网站</string>
   <string name="menu_issues">报告错误</string>
   <string name="menu_source">源代码</string>
-  <string name="menu_update">升级</string>
   <string name="menu_donate">捐赠</string>
   <string name="details_installed">版本 %s 已安装</string>
   <string name="details_notinstalled">未安装</string>
@@ -64,8 +63,6 @@
   <string name="db_sync_mode">数据同步模式</string>
   <string name="db_sync_mode_long">设置 SQLite\'s synchronous flag的值</string>
   <string name="appcompatibility">应用兼容性</string>
-  <string name="showincompat">不兼容的应用</string>
-  <string name="showincompat_long">显示更高版本Android或其他硬件环境下的应用</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">显示需要root权限的应用</string>
   <string name="ignoreTouch">忽略需要触屏的应用</string>

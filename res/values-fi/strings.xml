@@ -52,7 +52,6 @@
   <string name="menu_website">Verkkosivu</string>
   <string name="menu_issues">Ongelmat</string>
   <string name="menu_source">Lähdekoodi</string>
-  <string name="menu_update">Päivitä</string>
   <string name="menu_donate">Lahjoita</string>
   <string name="details_installed">Versio %s asennettu</string>
   <string name="details_notinstalled">Ei asennettu</string>
@@ -64,8 +63,6 @@
   <string name="db_sync_mode">Tietokannan synkronointi-tila</string>
   <string name="db_sync_mode_long">Aseta SQLiten synkrooninen lippu</string>
   <string name="appcompatibility">Sovellusten yhteensopivuus</string>
-  <string name="showincompat">Epäyhteensopivia sovelluksia</string>
-  <string name="showincompat_long">Näytä sovellukset, jotka kirjoitettiin uudemmille Androidin versioille tai erilaiselle laitteistolle</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Näytä sovellukset, jotka vaativat root-oikeudet</string>
   <string name="ignoreTouch">Älä välitä kosketusnäytöstä</string>

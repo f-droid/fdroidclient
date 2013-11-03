@@ -71,7 +71,6 @@
   <string name="menu_website">Site Web</string>
   <string name="menu_issues">Problèmes</string>
   <string name="menu_source">Code source</string>
-  <string name="menu_update">Mise à jour</string>
   <string name="menu_donate">Faire un don</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
@@ -89,8 +88,6 @@
   <string name="db_sync_mode">Mode de synchronisation à la base de données</string>
   <string name="db_sync_mode_long">Régler la valeur de la synchronisation SQLite</string>
   <string name="appcompatibility">Compatibilité de l\'application</string>
-  <string name="showincompat">Applications incompatibles</string>
-  <string name="showincompat_long">Montrer les applications écrites pour de nouvelles versions d\'Android ou un matériel différent</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Montrer les applications qui requièrent les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>

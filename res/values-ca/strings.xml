@@ -17,6 +17,8 @@
   <string name="never">mai</string>
   <string name="automatic_repo_scan">Actualitza automàticament els dipòsits</string>
   <string name="update_apps_list">Actualitza de forma automàtica la llista d\'aplicacions dels dipòsits</string>
+  <string name="automatic_scan_wifi">Només en wifi</string>
+  <string name="automatic_scan_wifi_desc">Actualitza automàticament les llistes d\'aplicacions només en wifi</string>
   <string name="notify">Notifica-ho</string>
   <string name="notify_updates_available">Avisa\'m quan hi hagi noves actualitzacions</string>
   <string name="update_history">Actualitzacions</string>
@@ -69,7 +71,7 @@
   <string name="menu_website">Pàgina web</string>
   <string name="menu_issues">Problemes</string>
   <string name="menu_source">Codi font</string>
-  <string name="menu_update">Actualitza</string>
+  <string name="menu_upgrade">Actualitza</string>
   <string name="menu_donate">Féu una donació</string>
   <string name="details_installed">Versió instal·lada %s</string>
   <string name="details_notinstalled">No està instal·lat</string>
@@ -87,8 +89,8 @@
   <string name="db_sync_mode">Mode de sincronització de la base de dades</string>
   <string name="db_sync_mode_long">Estableix el valor de l\'etiqueta de sincronització de SQLite</string>
   <string name="appcompatibility">Compatibilitat de les aplicacions</string>
-  <string name="showincompat">Aplicacions incompatibles</string>
-  <string name="showincompat_long">Mostra les aplicacions escrites per a versions posteriors d\'Android o per a maquinari diferent</string>
+  <string name="show_incompat_versions">Versions incompatibles</string>
+  <string name="show_incompat_versions_l">Mostra versions d\'aplicacions que siguin incompatibles amb el dispositiu</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Mostra aplicacions que necessiten privilegis de root</string>
   <string name="ignoreTouch">Ignora la pantalla tàctil</string>

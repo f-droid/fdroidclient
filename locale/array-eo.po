@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-11-02 18:29+0000\n"
+"POT-Creation-Date: 2013-11-03 19:34+0000\n"
 "PO-Revision-Date: 2013-03-24 17:38+0200\n"
 "Last-Translator: Cárlisson <cg@bardo.ws>\n"
 "Language-Team: eo <LL@li.org>\n"
@@ -34,6 +34,22 @@ msgstr ""
 
 msgctxt "updateIntervalNames:4"
 msgid "Daily"
+msgstr ""
+
+msgctxt "themeNames:0"
+msgid "Dark"
+msgstr ""
+
+msgctxt "themeNames:1"
+msgid "Light"
+msgstr ""
+
+msgctxt "themeValues:0"
+msgid "dark"
+msgstr ""
+
+msgctxt "themeValues:1"
+msgid "light"
 msgstr ""
 
 msgctxt "dbSyncModeNames:0"

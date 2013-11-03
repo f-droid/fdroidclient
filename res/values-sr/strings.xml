@@ -71,7 +71,6 @@
   <string name="menu_website">Веб Страна</string>
   <string name="menu_issues">Проблеми</string>
   <string name="menu_source">Изворни Код</string>
-  <string name="menu_update">Ажурирај</string>
   <string name="menu_donate">Добровољни Прилози</string>
   <string name="details_installed">Верзија %s инсталирана</string>
   <string name="details_notinstalled">Није Инсталирана</string>
@@ -89,8 +88,6 @@
   <string name="db_sync_mode">Режим синхронизације базе података</string>
   <string name="db_sync_mode_long">Унесите вредност за SQLite синхрону заставу</string>
   <string name="appcompatibility">Компатибилност апликације</string>
-  <string name="showincompat">Некомпатибилне апликације</string>
-  <string name="showincompat_long">Приказати апликације за новије верзије Андроида или други хардвер</string>
   <string name="rooted">Рут</string>
   <string name="rooted_long">Приказати апликације које захтевају рут привилегије</string>
   <string name="ignoreTouch">Игнориши Додирни Екран</string>

@@ -67,7 +67,6 @@
   <string name="menu_website">Уебсайт</string>
   <string name="menu_issues">Проблеми</string>
   <string name="menu_source">Изходен код</string>
-  <string name="menu_update">Обнови</string>
   <string name="menu_donate">Направи дарение</string>
   <string name="details_installed">Версия %s е инсталирана</string>
   <string name="details_notinstalled">Не е инсталирано</string>
@@ -79,8 +78,6 @@
   <string name="search_hint">Търсене на приложения</string>
   <string name="db_sync_mode">Вид на синхронизация на базата данни</string>
   <string name="appcompatibility">Съвместимост на приложенията</string>
-  <string name="showincompat">Несъвместими приложения</string>
-  <string name="showincompat_long">Показвай приложения направени за по-нова версия на Андроид или за друг хардуер</string>
   <string name="rooted">Root достъп</string>
   <string name="rooted_long">Показвай приложения изискващи root права</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>

@@ -52,7 +52,6 @@
   <string name="menu_website">Сайт</string>
   <string name="menu_issues">Вади</string>
   <string name="menu_source">Сирці</string>
-  <string name="menu_update">Оновити</string>
   <string name="menu_donate">Пожертва</string>
   <string name="details_installed">Встановлена версія %s</string>
   <string name="details_notinstalled">Не встановлено</string>
@@ -64,8 +63,6 @@
   <string name="db_sync_mode">Синхронізація БД</string>
   <string name="db_sync_mode_long">Режим синхронізації SQLite</string>
   <string name="appcompatibility">Сумісність</string>
-  <string name="showincompat">Несумісні програми</string>
-  <string name="showincompat_long">Показувати програми, написані для новіших версій Android та інших апаратних платформ</string>
   <string name="rooted">Суперкористувач</string>
   <string name="rooted_long">Показувати програми, для яких потрібні права суперкористувача</string>
   <string name="ignoreTouch">Ігнорувати тачскрін</string>

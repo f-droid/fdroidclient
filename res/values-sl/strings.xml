@@ -48,7 +48,6 @@
   <string name="menu_website">Spletišče</string>
   <string name="menu_issues">Težave</string>
   <string name="menu_source">Izvorna koda</string>
-  <string name="menu_update">Posodobitev</string>
   <string name="menu_donate">Prispevek</string>
   <string name="details_installed">Nameščena različica %s</string>
   <string name="details_notinstalled">Ni nameščeno</string>
@@ -60,8 +59,6 @@
   <string name="db_sync_mode">Način sinhronizacije baze podatkov</string>
   <string name="db_sync_mode_long">Nastavitev zastavice za sinhronost v SQLite</string>
   <string name="appcompatibility">Združljivost aplikacij</string>
-  <string name="showincompat">Nezdružljive aplikacije</string>
-  <string name="showincompat_long">Pokaži aplikacije napisane za novejše različice Androida ali za različno strojno opremo</string>
   <string name="rooted">Skrbnik</string>
   <string name="rooted_long">Pokaži aplikacije, ki zahtevajo skrbniške pravice</string>
 </resources>

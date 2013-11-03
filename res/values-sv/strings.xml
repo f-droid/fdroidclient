@@ -65,7 +65,6 @@
   <string name="menu_website">Webbplats</string>
   <string name="menu_issues">Buggar</string>
   <string name="menu_source">Källkod</string>
-  <string name="menu_update">Uppdatera</string>
   <string name="menu_donate">Donera</string>
   <string name="details_installed">Version %s är installerad</string>
   <string name="details_notinstalled">Inte installerad</string>
@@ -78,8 +77,6 @@
   <string name="db_sync_mode">Databassynkroniseringsläge</string>
   <string name="db_sync_mode_long">Ställ in värdet på synchronous-flaggan i SQLite</string>
   <string name="appcompatibility">Programkompatibilitet</string>
-  <string name="showincompat">Inkompatibla appar</string>
-  <string name="showincompat_long">Visa appar skrivna för nyare Android-versioner eller annan hårdvara</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Visa appar som kräver root-rättigheter</string>
   <string name="ignoreTouch">Ignorera touchscreen</string>

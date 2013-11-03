@@ -34,10 +34,8 @@
   <string name="menu_website">Retejo</string>
   <string name="menu_issues">Cimoj</string>
   <string name="menu_source">Fontkodo</string>
-  <string name="menu_update">Ĝisdatigi</string>
   <string name="menu_donate">Donaci</string>
   <string name="details_notinstalled">Neinstalita</string>
   <string name="search_hint">Trovi aplikaĵojn</string>
-  <string name="showincompat">Nekongruaj aplikaĵoj</string>
   <string name="rooted">Ĉefuzanto</string>
 </resources>
