@@ -231,7 +231,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapp.curVercode = -1;
                 }
-            } else if (curel.equals("category")) {
+            } else if (curel.equals("categories")) {
                 curapp.categories = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("antifeatures")) {
                 curapp.antiFeatures = DB.CommaSeparatedList.make(str);

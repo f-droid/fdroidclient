@@ -631,7 +631,7 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(true, TABLE_APP, new String[] { "categories" },
-                    null, null, null, null, "categories", null);
+                    null, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 CommaSeparatedList categories = CommaSeparatedList
@@ -652,6 +652,7 @@ public class DB {
                 c.close();
             }
         }
+        Collections.sort(result);
         return result;
     }
 
