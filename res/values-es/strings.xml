@@ -109,4 +109,6 @@
   <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s</string>
   <string name="compactlayout">Diseño compacto</string>
   <string name="compactlayout_long">Mostrar sólo los nombres de las aplicaciones y resúmenes en la lista</string>
+  <string name="theme">Tema</string>
+  <string name="theme_long">Escoger un tema a usar</string>
 </resources>

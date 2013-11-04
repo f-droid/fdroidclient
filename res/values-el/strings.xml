@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Βρέθηκαν %1$d εφαρμογές που συσχετίζονται με \'%2$s\':</string>
-  <string name="searchres_oneapp">Βρέθηκε 1 ταίριασμα \'%s\':</string>
-  <string name="searchres_noapps">Δε βρέθηκαν ταιριάσματα για το \'%s\'</string>
-  <string name="SignatureMismatch">Η καινούργια έκδοση είναι υπογεγραμμένη με διαφορετικό κλείδι από την παλιά. Για να γίνει η εγκατάσταση της καινούργιας έκδοσης, πρέπει να γίνει πρώτα η απεγκατάσταση της παλιάς έκδοσης. Παρακαλώ όπως κάνετε αυτό και προσπαθήστε ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει οποιαδήποτε εσωτερικά δεδομένα που αποθηκεύονται από την εφαρμογή)</string>
+  <string name="searchres_oneapp">Βρέθηκε μια εφαρμογή που συσχετίζεται με \'%s\':</string>
+  <string name="searchres_noapps">Δε βρέθηκαν εφαρμογές που να συσχετίζονται με το \'%s\'</string>
+  <string name="SignatureMismatch">Η καινούργια έκδοση είναι υπογεγραμμένη με διαφορετικό κλείδι από την παλιά. Για να γίνει η εγκατάσταση της καινούργιας έκδοσης, πρέπει να γίνει πρώτα η απεγκατάσταση της παλιάς έκδοσης. Παρακαλώ όπως το κάνετε αυτό και προσπαθήστε ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει οποιαδήποτε εσωτερικά δεδομένα που αποθηκεύονται από την εφαρμογή)</string>
   <string name="installIncompatible">Φαίνεται ότι αυτό το πακέτο δεν είναι συμβατό με τη συσκευή σας. Θα θέλατε να δοκιμάσετε να το εγκαταστήσετε ούτως ή άλλως;</string>
   <string name="installDowngrade">Προσπαθείτε να υποβαθμίσετε αυτήν την εφαρμογή. Αν το κάνετε αυτό, μπορεί να προκληθούν προβλήματα στην εφαρμογή ή ακόμα και να χάσετε τα δεδομένα σας. Θέλετε να δοκιμάσετε να την υποβαθμίσετε ούτως ή άλλως;</string>
   <string name="version">Έκδοση</string>
@@ -71,6 +71,7 @@
   <string name="menu_website">Ιστοσελίδα</string>
   <string name="menu_issues">Ζητήματα</string>
   <string name="menu_source">Πηγαίος κώδικας</string>
+  <string name="menu_upgrade">Αναβάθμιση</string>
   <string name="menu_donate">Δωρεά</string>
   <string name="details_installed">Εγκατεστημένη Έκδοση: %s</string>
   <string name="details_notinstalled">Δεν είναι εγκατεστημένο</string>
@@ -88,6 +89,8 @@
   <string name="db_sync_mode">Λειτουργία συγχρονισμόυ της βάσης δεδομένων</string>
   <string name="db_sync_mode_long">Ορισμός τιμής για SQLite synchronous flag</string>
   <string name="appcompatibility">Συμβατότητα εφαμοργής</string>
+  <string name="show_incompat_versions">Μη συμβατές εκδόσεις</string>
+  <string name="show_incompat_versions_l">Εμφάνιση εκδόσεων εφαρμογών που δεν είναι συμβατές με τη συσκευή</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Εμφάνιση εφαρμογών που απαιτούν δικαιώματα root</string>
   <string name="ignoreTouch">Αγνόησε την Οθόνη Επαφής</string>
@@ -106,4 +109,6 @@
   <string name="no_handler_app">Δεν έχεται καμία διαθέσιμη εφαρμογή που να μπορεί να χειριστεί %s</string>
   <string name="compactlayout">Συμπτυγμένη Διάταξη</string>
   <string name="compactlayout_long">"Εμφάνιση μόνο ονομάτων εφαρμογών και περίληψεων στη λίστα "</string>
+  <string name="theme">Θέμα</string>
+  <string name="theme_long">Επιλέξτε θέμα προς χρήση</string>
 </resources>
