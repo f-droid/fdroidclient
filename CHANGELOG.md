@@ -1,4 +1,4 @@
-### Future release
+### 0.54 (05-11-2013)
 
 * Add theming with Light and Dark themes
 * New launcher and notification icons
