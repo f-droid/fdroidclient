@@ -4,8 +4,8 @@
 	<string name="app_name">F-Droid</string>
 	<string name="version_name">0.53-test</string>
 
-	<string name="about_sitec">http://f-droid.org</string>
-	<string name="about_mailc">admin@f-droid.org</string>
+	<string name="about_sitec">https://f-droid.org</string>
+	<string name="about_mailc">team@f-droid.org</string>
 
 	<string name="menu_bitcoin">Bitcoin</string>
 	<string name="menu_litecoin">Litecoin</string>
