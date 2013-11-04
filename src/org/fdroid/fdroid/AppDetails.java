@@ -683,12 +683,13 @@ public class AppDetails extends ListActivity {
 
     public void tryOpenUri(String s) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
-        if (intent.resolveActivity(getPackageManager()) != null)
-            startActivity(intent);
-        else
+        if (intent.resolveActivity(getPackageManager()) == null) {
             Toast.makeText(this,
                     getString(R.string.no_handler_app, intent.getDataString()),
                     Toast.LENGTH_LONG).show();
+            return;
+        }
+        startActivity(intent);
     }
 
     @Override
@@ -838,8 +839,7 @@ public class AppDetails extends ListActivity {
     }
 
     private void installApk(File file, String id) {
-        Intent intent = new Intent();
-        intent.setAction(android.content.Intent.ACTION_VIEW);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file.getPath()),
                 "application/vnd.android.package-archive");
         startActivityForResult(intent, REQUEST_INSTALL);
@@ -855,8 +855,8 @@ public class AppDetails extends ListActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
 
-        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Android App: "+app.name);
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app.name+" ("+app.summary+") - https://f-droid.org/app/"+app.id);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Android App: "+app.name);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name+" ("+app.summary+") - https://f-droid.org/app/"+app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
