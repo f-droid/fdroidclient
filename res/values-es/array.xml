@@ -11,10 +11,6 @@
     <item>Oscuro</item>
     <item>Claro</item>
   </string-array>
-  <string-array name="themeValues">
-    <item>oscuro</item>
-    <item>claro</item>
-  </string-array>
   <string-array name="dbSyncModeNames">
     <item>Desactivado (peligroso)</item>
     <item>Normal</item>

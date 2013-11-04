@@ -7,6 +7,10 @@
     <item>Alle 12 Stunden</item>
     <item>Täglich</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Dunkle</item>
+    <item>Licht</item>
+  </string-array>
   <string-array name="dbSyncModeNames">
     <item>Aus (unsicher)</item>
     <item>Normal</item>

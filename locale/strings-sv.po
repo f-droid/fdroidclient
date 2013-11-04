@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-11-04 07:37+0000\n"
-"PO-Revision-Date: 2013-08-24 14:57+0200\n"
-"Last-Translator: Anders <jonars03@student.umu.se>\n"
+"POT-Creation-Date: 2013-11-04 21:51+0000\n"
+"PO-Revision-Date: 2013-11-04 11:43+0200\n"
+"Last-Translator: ersi <erik-fdroid@simmesgard.se>\n"
 "Language-Team: sv <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr "Uppdatera applistan från förråd automatiskt"
 
 msgctxt "automatic_scan_wifi"
 msgid "Only on wifi"
-msgstr ""
+msgstr "Endast via WiFi"
 
 #, fuzzy
 msgctxt "automatic_scan_wifi_desc"
@@ -349,7 +349,7 @@ msgstr "Källkod"
 
 msgctxt "menu_upgrade"
 msgid "Upgrade"
-msgstr ""
+msgstr "Uppgradera"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -533,9 +533,9 @@ msgstr "Visa endast appnamn och sammanfattningar i listan"
 
 msgctxt "theme"
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 msgctxt "theme_long"
 msgid "Choose a theme to use"
-msgstr ""
+msgstr "Välj ett tema att använda"
 
