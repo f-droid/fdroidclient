@@ -1,4 +1,4 @@
-### 0.54 (05-11-2013)
+### 0.54 (2013-11-05)
 
 *New options on the App Details screen to ignore all future updates for that
  particular app, or ignore just the current update.
@@ -21,7 +21,7 @@
 *Other minor bug fixes, and adjustments to spacings and layouts.
 *Lots of translation updates.
 
-### 0.50 (20-08-2013)
+### 0.50 (2013-08-20)
 
 * New basic app sharing functionality
 * Handle f-droid.org web repo as well as market:// app uris
