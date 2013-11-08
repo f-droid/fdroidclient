@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">Знайдено %1$d програм за запитом «%2$s»:</string>
   <string name="searchres_oneapp">Знайдено програму за запитом «%s»:</string>
@@ -38,7 +38,8 @@
   <string name="process_update_msg">Оновлюю список програм...</string>
   <string name="download_server">Звантажую програму</string>
   <string name="repo_add_url">Адреса репозиторію</string>
-  <string name="repo_alrt">Список репозиторіїв змінено.\nОновити їх?</string>
+  <string name="repo_alrt">Список репозиторіїв змінено.
+Оновити їх?</string>
   <string name="menu_update_repo">Оновити</string>
   <string name="menu_manage">Репозиторії</string>
   <string name="menu_preferences">Параметри</string>

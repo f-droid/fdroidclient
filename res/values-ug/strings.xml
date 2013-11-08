@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">بۇ \'%2$s\'غا ماس كېلىدىغان %1$d ئەپنى تاپتى:</string>
   <string name="searchres_oneapp">\'%s\' غا ماس كېلىدىغان بىر ئەپنى تاپتى:</string>
@@ -27,12 +27,17 @@
   <string name="app_details">ئەپ تەپسىلاتلىرى</string>
   <string name="no_such_app">بۇنداق ئەپ تېپىلمىدى</string>
   <string name="about_title">F-Droid ھەققىدە</string>
-  <string name="about_desc">دەسلەپتە Aptoide نى ئاساس قىلغان.\nبۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان.</string>
+  <string name="about_desc">دەسلەپتە Aptoide نى ئاساس قىلغان.
+بۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان.</string>
   <string name="about_site">تور تۇرا:</string>
   <string name="about_mail">تورخەت:</string>
   <string name="about_version">نەشرى:</string>
   <string name="about_website">تورتۇرا</string>
-  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!\n\nخەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ.\n\nخەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo</string>
+  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!
+
+خەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ.
+
+خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo</string>
   <string name="inst">ئورنىتىلغان</string>
   <string name="not_inst">ئورنىتىلمىغان</string>
   <string name="added_on">%s دا قوشۇلغان</string>
@@ -54,7 +59,8 @@
   <string name="process_update_msg">ئەپ تىزىمىنى يېڭىلاۋاتىدۇ…</string>
   <string name="download_server">ئەپكە ئېرىشىش ئورنى</string>
   <string name="repo_add_url">خەزىنە ئادرېسى</string>
-  <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.\nئۇلارنى يېڭىلامسىز؟</string>
+  <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.
+ئۇلارنى يېڭىلامسىز؟</string>
   <string name="menu_update_repo">خەزىنە يېڭىلا</string>
   <string name="menu_manage">خەزىنە باشقۇر</string>
   <string name="menu_preferences">مايىللىقلار</string>
@@ -98,9 +104,14 @@
   <string name="category_all">ھەممىسى</string>
   <string name="category_whatsnew">يېڭىلىقلار</string>
   <string name="category_recentlyupdated">يېقىنقى يېڭىلانغانلار</string>
-  <string name="status_download">چۈشۈرۈۋاتىدۇ\n%2$s / %3$s (%4$d%%)\n%1$s</string>
-  <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ\n%2$d of %3$d\n%1$s</string>
-  <string name="status_connecting_to_repo">%1$s غا \nباغلىنىۋاتىدۇ</string>
+  <string name="status_download">چۈشۈرۈۋاتىدۇ
+%2$s / %3$s (%4$d%%)
+%1$s</string>
+  <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ
+%2$d of %3$d
+%1$s</string>
+  <string name="status_connecting_to_repo">%1$s غا 
+باغلىنىۋاتىدۇ</string>
   <string name="status_checking_compatibility">ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…</string>
   <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
   <string name="permissions_for_long">%s نەشرىنىڭ ھوقۇقلىرى</string>

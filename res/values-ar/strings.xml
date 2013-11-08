@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_oneapp">عثر على تطبيق واحد يوافق \'%s\':</string>
   <string name="searchres_noapps">لم يعثر على أي تطبيق يوافق \'%s\'</string>

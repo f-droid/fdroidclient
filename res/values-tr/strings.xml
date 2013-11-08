@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">\'%2$s\' ile eşleşen %1$d uygulama bulundu:</string>
   <string name="searchres_oneapp">\'%s\' ile eşleşen bir uygulama bulundu:</string>
@@ -27,12 +27,17 @@
   <string name="app_details">Uygulama Detayları</string>
   <string name="no_such_app">Böyle bir uygulama bulunamadı</string>
   <string name="about_title">F-Droid Hakkında</string>
-  <string name="about_desc">Aptoide\'den türetilmiştir.\nGNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
+  <string name="about_desc">Aptoide\'den türetilmiştir.
+GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_site">Ağ sitesi:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Sürüm:</string>
   <string name="about_website">Ağ sitesi</string>
-  <string name="no_repo">Kurulu hiçbir deponuz bulunmamaktadır!\n\nDepolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine basıp adresi giriniz.\n\nBir depo adresi şuna benzer: https://f-droid.org/repo</string>
+  <string name="no_repo">Kurulu hiçbir deponuz bulunmamaktadır!
+
+Depolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine basıp adresi giriniz.
+
+Bir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="inst">Kurulu</string>
   <string name="not_inst">Kurulu değil</string>
   <string name="added_on">%s tarihinde eklenmiş</string>
@@ -54,7 +59,8 @@
   <string name="process_update_msg">Uygulama listesi güncelleniyor...</string>
   <string name="download_server">Uygulama buradan alınıyor: </string>
   <string name="repo_add_url">Depo adresi</string>
-  <string name="repo_alrt">Kullanılan depoların listesi değişti.\nGüncellemek ister misiniz?</string>
+  <string name="repo_alrt">Kullanılan depoların listesi değişti.
+Güncellemek ister misiniz?</string>
   <string name="menu_update_repo">Depoları güncelle</string>
   <string name="menu_manage">Depoları Yönet</string>
   <string name="menu_preferences">Tercihler</string>
@@ -98,9 +104,14 @@
   <string name="category_all">Tümü</string>
   <string name="category_whatsnew">Yeni olanlar</string>
   <string name="category_recentlyupdated">Yakın geçmişte güncellenen</string>
-  <string name="status_download">İndiriliyor\n%2$s / %3$s (%4$d%%) şuradan\n%1$s</string>
-  <string name="status_processing_xml">Uygulama ele alınıyor\n%2$d toplam %3$d şuradan\n%1$s</string>
-  <string name="status_connecting_to_repo">%1$s konumuna\nbağlanılıyor</string>
+  <string name="status_download">İndiriliyor
+%2$s / %3$s (%4$d%%) şuradan
+%1$s</string>
+  <string name="status_processing_xml">Uygulama ele alınıyor
+%2$d toplam %3$d şuradan
+%1$s</string>
+  <string name="status_connecting_to_repo">%1$s konumuna
+bağlanılıyor</string>
   <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>
   <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
   <string name="permissions_for_long">%s sürümü için izinler</string>

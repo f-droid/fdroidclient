@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">Βρέθηκαν %1$d εφαρμογές που συσχετίζονται με \'%2$s\':</string>
   <string name="searchres_oneapp">Βρέθηκε μια εφαρμογή που συσχετίζεται με \'%s\':</string>
@@ -27,12 +27,17 @@
   <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
   <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή</string>
   <string name="about_title">Σχετικά με το F-Droid</string>
-  <string name="about_desc">Αρχικά βασιζόταν στο Aptoide.\nΚυκλοφόρεί κάτω από την άδεια GNU GPLv3.</string>
+  <string name="about_desc">Αρχικά βασιζόταν στο Aptoide.
+Κυκλοφόρεί κάτω από την άδεια GNU GPLv3.</string>
   <string name="about_site">Ιστοσελίδα:</string>
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
   <string name="about_version">Έκδοση:</string>
   <string name="about_website">Ιστοσελίδα</string>
-  <string name="no_repo">Δεν έχει ρυθμιστεί κανένα αποθετήριο!\n\nΈνα αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε κάποιο, πιέστε το πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.\n\nΜια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: http://f-droid.org/repo</string>
+  <string name="no_repo">Δεν έχει ρυθμιστεί κανένα αποθετήριο!
+
+Ένα αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε κάποιο, πιέστε το πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.
+
+Μια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: http://f-droid.org/repo</string>
   <string name="inst">Εγκατεστημένο</string>
   <string name="not_inst">Δεν είναι εγκατεστημένο</string>
   <string name="added_on">Προστέθηκε στις %s</string>
@@ -54,7 +59,8 @@
   <string name="process_update_msg">Ενημέρωση λίστα εφαρμογών...</string>
   <string name="download_server">Λήψη εφαρμογών από</string>
   <string name="repo_add_url">Διεύθυνση αποθετηρίου</string>
-  <string name="repo_alrt">Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. \nΘέλετε να ενημερωθούν;</string>
+  <string name="repo_alrt">Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. 
+Θέλετε να ενημερωθούν;</string>
   <string name="menu_update_repo">Ενημέρωση αποθετηρίων</string>
   <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
   <string name="menu_preferences">Προτιμήσεις</string>
@@ -98,9 +104,14 @@
   <string name="category_all">Όλα</string>
   <string name="category_whatsnew">Τι νέο υπάρχει</string>
   <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
-  <string name="status_download">Λήψη\n%2$s / %3$s (%4$d%%)από\n%1$s</string>
-  <string name="status_processing_xml">Επεξεργασία εφαρμογής\n%2$d από %3$d από\n%1$s</string>
-  <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>
+  <string name="status_download">Λήψη
+%2$s / %3$s (%4$d%%)από
+%1$s</string>
+  <string name="status_processing_xml">Επεξεργασία εφαρμογής
+%2$d από %3$d από
+%1$s</string>
+  <string name="status_connecting_to_repo">Σύνδεση με
+%1$s</string>
   <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας...</string>
   <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
   <string name="permissions_for_long">Άδειες για την έκδοση %s</string>

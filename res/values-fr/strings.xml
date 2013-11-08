@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">%1$d applications trouvées contenant \'%2$s\':</string>
   <string name="searchres_oneapp">Une application trouvée contenant \'%s\':</string>
@@ -27,12 +27,17 @@
   <string name="app_details">Détails de l\'application</string>
   <string name="no_such_app">Pas d\'application trouvée</string>
   <string name="about_title">À propos de F-Droid</string>
-  <string name="about_desc">Originellement basée sur Aptoide.\nPubliée sous licence GNU GPL v3.</string>
+  <string name="about_desc">Originellement basée sur Aptoide.
+Publiée sous licence GNU GPL v3.</string>
   <string name="about_site">Site Web :</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
-  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
+  <string name="no_repo">Aucun dépôt n\'est configuré !
+
+Un dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.
+
+L\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Pas installée</string>
   <string name="added_on">Ajouté le %s</string>
@@ -54,7 +59,8 @@
   <string name="process_update_msg">Mise à jour de la liste d\'applications...</string>
   <string name="download_server">Réception d\'application de</string>
   <string name="repo_add_url">Adresse du dépôt</string>
-  <string name="repo_alrt">La liste des dépôts utilisés a changé.\nVoulez-vous les mettre à jour ?</string>
+  <string name="repo_alrt">La liste des dépôts utilisés a changé.
+Voulez-vous les mettre à jour ?</string>
   <string name="menu_update_repo">Mettre à jour les dépôts</string>
   <string name="menu_manage">Gestion de dépôts</string>
   <string name="menu_preferences">Préférences</string>
@@ -98,9 +104,14 @@
   <string name="category_all">Tout</string>
   <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
-  <string name="status_download">Téléchargement\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
-  <string name="status_processing_xml">Prise en compte de l\'application\n%2$d de %3$d depuis\n%1$s</string>
-  <string name="status_connecting_to_repo">Connexion à\n%1$s</string>
+  <string name="status_download">Téléchargement
+%2$s / %3$s (%4$d%%) de
+%1$s</string>
+  <string name="status_processing_xml">Prise en compte de l\'application
+%2$d de %3$d depuis
+%1$s</string>
+  <string name="status_connecting_to_repo">Connexion à
+%1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des applis avec votre appareil…</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Autorisations pour la version %s</string>

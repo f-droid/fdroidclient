@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">Se encontraron %1$d aplicaciones con \'%2$s\':</string>
   <string name="searchres_oneapp">Se encontró una aplicación con \'%s\':</string>
@@ -27,12 +27,17 @@
   <string name="app_details">Detalles de la aplicación</string>
   <string name="no_such_app">No se encontró la aplicación</string>
   <string name="about_title">Acerca de F-Droid</string>
-  <string name="about_desc">Basado originalmente en Aptoide.\nPublicado bajo la licencia GNU GPLv3.</string>
+  <string name="about_desc">Basado originalmente en Aptoide.
+Publicado bajo la licencia GNU GPLv3.</string>
   <string name="about_site">Página web:</string>
   <string name="about_mail">Correo electrónico:</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Página web</string>
-  <string name="no_repo">¡No tienes ningún repositorio configurado!\n\nUn repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón MENU ahora e introduce la URL.\n\nLa dirección de un repositorio es algo similar a esto: https://f-droid.org/repo</string>
+  <string name="no_repo">¡No tienes ningún repositorio configurado!
+
+Un repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón MENU ahora e introduce la URL.
+
+La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">No instalado</string>
   <string name="added_on">Agregado el %s</string>
@@ -54,7 +59,8 @@
   <string name="process_update_msg">Actualizando la lista de aplicaciones...</string>
   <string name="download_server">Obteniendo la aplicación de</string>
   <string name="repo_add_url">Dirección del repositorio</string>
-  <string name="repo_alrt">La lista de repositorios usada ha cambiado.\n¿Deseas actualizarlos?</string>
+  <string name="repo_alrt">La lista de repositorios usada ha cambiado.
+¿Deseas actualizarlos?</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Gestionar Repositorios</string>
   <string name="menu_preferences">Preferencias</string>
@@ -98,9 +104,14 @@
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">Novedades</string>
   <string name="category_recentlyupdated">Recientemente actualizados</string>
-  <string name="status_download">Descargando\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
-  <string name="status_processing_xml">Procesando la aplicación\n%2$d de %3$d desde\n%1$s</string>
-  <string name="status_connecting_to_repo">Conectando a\n%1$s</string>
+  <string name="status_download">Descargando
+%2$s / %3$s (%4$d%%) de
+%1$s</string>
+  <string name="status_processing_xml">Procesando la aplicación
+%2$d de %3$d desde
+%1$s</string>
+  <string name="status_connecting_to_repo">Conectando a
+%1$s</string>
   <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo...</string>
   <string name="no_permissions">No se usan permisos.</string>
   <string name="permissions_for_long">Permisos para la versión %s</string>
