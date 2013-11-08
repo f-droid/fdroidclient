@@ -11,4 +11,23 @@
 	<string name="menu_litecoin">Litecoin</string>
 	<string name="menu_flattr">Flattr</string>
 
+	<string-array name="updateIntervalValues">
+		<item>0</item>
+		<item>1</item>
+		<item>4</item>
+		<item>12</item>
+		<item>24</item>
+	</string-array>
+
+	<string-array name="dbSyncModeValues">
+		<item>off</item>
+		<item>normal</item>
+		<item>full</item>
+	</string-array>
+
+	<string-array name="themeValues">
+		<item>dark</item>
+		<item>light</item>
+	</string-array>
+
 </resources>
