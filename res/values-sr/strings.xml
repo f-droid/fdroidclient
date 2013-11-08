@@ -35,7 +35,7 @@
   <string name="no_repo">Нисте конфигурисали ни једну ризницу!\n\nРизнице су места одакле се скидају апликације. Да би сте додали једну, притисните тастер МЕНИ и унесите адресу.\n\nАдреса ризнице би личила на ово: http://f-droid.org/repo</string>
   <string name="inst">Инсталирана</string>
   <string name="not_inst">Није Инсталирана</string>
-  <string name="added_on">"Додато  %s"</string>
+  <string name="added_on">Додато  %s</string>
   <string name="ok">ПОТВРДИ</string>
   <string name="yes">ДА</string>
   <string name="no">НЕ</string>
@@ -46,7 +46,7 @@
   <string name="repo_update_title">Ажурирај ризнице</string>
   <string name="tab_installed">Инсталиране</string>
   <string name="tab_noninstalled">На располагању</string>
-  <string name="tab_updates">"Нове верзије "</string>
+  <string name="tab_updates">Нове верзије</string>
   <string name="one_update_available">1 нова верзија на располагању.</string>
   <string name="many_updates_available">%d нове/нових верзија на располагању</string>
   <string name="fdroid_updates_available">Ажурирање Ф-Дроида на располагању.</string>

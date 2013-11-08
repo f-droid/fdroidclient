@@ -52,7 +52,7 @@
   <string name="fdroid_updates_available">F-Droid يېڭىلانمىلىرى بار</string>
   <string name="process_wait_title">سەل كۈتۈڭ</string>
   <string name="process_update_msg">ئەپ تىزىمىنى يېڭىلاۋاتىدۇ…</string>
-  <string name="download_server">"ئەپكە ئېرىشىش ئورنى "</string>
+  <string name="download_server">ئەپكە ئېرىشىش ئورنى</string>
   <string name="repo_add_url">خەزىنە ئادرېسى</string>
   <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.\nئۇلارنى يېڭىلامسىز؟</string>
   <string name="menu_update_repo">خەزىنە يېڭىلا</string>

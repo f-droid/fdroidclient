@@ -3,7 +3,7 @@
   <string name="searchres_napps">\'%2$s\'-rekin bat datozen %1$d aplikazio aurkitu dira:</string>
   <string name="searchres_oneapp">\'%s\'-rekin bat datorren aplikazio bat aurkitu da:</string>
   <string name="searchres_noapps">\'%s\'-rekin bat datorren aplikaziorik ez da aurkitu</string>
-  <string name="SignatureMismatch">"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)"</string>
+  <string name="SignatureMismatch">Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)</string>
   <string name="version">Bertsioa</string>
   <string name="n_versions_available">%d bertsio eskuragarri</string>
   <string name="n_version_available">Bertsio %d eskuragarri</string>

@@ -52,7 +52,7 @@
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
   <string name="process_wait_title">Bekleyiniz</string>
   <string name="process_update_msg">Uygulama listesi güncelleniyor...</string>
-  <string name="download_server">"Uygulama buradan alınıyor: "</string>
+  <string name="download_server">Uygulama buradan alınıyor: </string>
   <string name="repo_add_url">Depo adresi</string>
   <string name="repo_alrt">Kullanılan depoların listesi değişti.\nGüncellemek ister misiniz?</string>
   <string name="menu_update_repo">Depoları güncelle</string>
