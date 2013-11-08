@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
   <string name="searchres_oneapp">Één applicatie gevonden die voldoet aan \'%s\':</string>
@@ -17,7 +17,8 @@
   <string name="notify_updates_available">Verwittigen bij nieuwe beschikbare updates</string>
   <string name="update_history">Vernieuw historie</string>
   <string name="about_title">Over F-Droid</string>
-  <string name="about_desc">Gebaseerd op Aptoide.\nUitgegeven onder de GNU GPLv3 licentie</string>
+  <string name="about_desc">Gebaseerd op Aptoide.
+Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="about_site">Website:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versie:</string>
@@ -39,7 +40,8 @@
   <string name="process_update_msg">Applicatie-lijst vernieuwen</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="repo_add_url">Bron-adres</string>
-  <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.\nWil je ze vernieuwen?</string>
+  <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
+Wil je ze vernieuwen?</string>
   <string name="menu_manage">Beheer bronnen</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">S\'ha trobat %1$d aplicacions coincidents amb \'%2$s\':</string>
   <string name="searchres_oneapp">S\'ha trobat una aplicació coincident amb \'%s\':</string>
@@ -27,12 +27,17 @@
   <string name="app_details">Detalls de l\'aplicació</string>
   <string name="no_such_app">No s\'ha trobat l\'aplicació</string>
   <string name="about_title">Quant a F-Droid</string>
-  <string name="about_desc">Originalment basat en Aptoide.\nPublicat amb la llicència GNU GPL v3.</string>
+  <string name="about_desc">Originalment basat en Aptoide.
+Publicat amb la llicència GNU GPL v3.</string>
   <string name="about_site">Pàgina web:</string>
   <string name="about_mail">Correu:</string>
   <string name="about_version">Versió:</string>
   <string name="about_website">Pàgina web</string>
-  <string name="no_repo">No heu configurat cap dipòsit!\n\nUn dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENÚ i entreu la seva URL.\n\nL\'adreça d\'un dipòsit té un aspecte com ara: http://f-droid.org/repo</string>
+  <string name="no_repo">No heu configurat cap dipòsit!
+
+Un dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENÚ i entreu la seva URL.
+
+L\'adreça d\'un dipòsit té un aspecte com ara: http://f-droid.org/repo</string>
   <string name="inst">Instal·lat</string>
   <string name="not_inst">No està instal·lat</string>
   <string name="added_on">S\'ha afegit a %s</string>
@@ -54,7 +59,8 @@
   <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions...</string>
   <string name="download_server">S\'està obtenint l\'aplicació des de</string>
   <string name="repo_add_url">Adreça del dipòsit</string>
-  <string name="repo_alrt">La llista de dipòsits ha canviat.\nLa voleu actualitzar?</string>
+  <string name="repo_alrt">La llista de dipòsits ha canviat.
+La voleu actualitzar?</string>
   <string name="menu_update_repo">Actualitza els dipòsits</string>
   <string name="menu_manage">Gestiona els dipòsits</string>
   <string name="menu_preferences">Preferències</string>
@@ -98,9 +104,14 @@
   <string name="category_all">Tot</string>
   <string name="category_whatsnew">Novetats</string>
   <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
-  <string name="status_download">S\'està baixant\n%2$s / %3$s (%4$d%%) des de\n%1$s</string>
-  <string name="status_processing_xml">S\'està processant l\'aplicació\n%2$d de %3$d des de\n%1$s</string>
-  <string name="status_connecting_to_repo">S\'està connectant a\n%1$s</string>
+  <string name="status_download">S\'està baixant
+%2$s / %3$s (%4$d%%) des de
+%1$s</string>
+  <string name="status_processing_xml">S\'està processant l\'aplicació
+%2$d de %3$d des de
+%1$s</string>
+  <string name="status_connecting_to_repo">S\'està connectant a
+%1$s</string>
   <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu...</string>
   <string name="no_permissions">No es fa servir cap permís.</string>
   <string name="permissions_for_long">Permisos de la versió %s</string>
