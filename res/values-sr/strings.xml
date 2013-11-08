@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Нашао %1$d апликацијe/апликација што се поклапају са \'%2$s\':</string>
   <string name="searchres_oneapp">Нађена је апликација која се поклапа са \'%s\':</string>
@@ -27,20 +27,15 @@
   <string name="app_details">Детаљни подаци за Апликацију</string>
   <string name="no_such_app">Та апликација не постоји</string>
   <string name="about_title">О F-Droid-у</string>
-  <string name="about_desc">Оригинално засновано на пројекту Aptoide.
-Објављено под GNU GPLv3 лиценцом.</string>
+  <string name="about_desc">Оригинално засновано на пројекту Aptoide.\nОбјављено под GNU GPLv3 лиценцом.</string>
   <string name="about_site">Веб страница:</string>
   <string name="about_mail">Електронска Пошта:</string>
   <string name="about_version">Верзија:</string>
   <string name="about_website">Веб страница</string>
-  <string name="no_repo">Нисте конфигурисали ни једну ризницу!
-
-Ризнице су места одакле се скидају апликације. Да би сте додали једну, притисните тастер МЕНИ и унесите адресу.
-
-Адреса ризнице би личила на ово: http://f-droid.org/repo</string>
+  <string name="no_repo">Нисте конфигурисали ни једну ризницу!\n\nРизнице су места одакле се скидају апликације. Да би сте додали једну, притисните тастер МЕНИ и унесите адресу.\n\nАдреса ризнице би личила на ово: http://f-droid.org/repo</string>
   <string name="inst">Инсталирана</string>
   <string name="not_inst">Није Инсталирана</string>
-  <string name="added_on">\"Додато  %s\"</string>
+  <string name="added_on">"Додато  %s"</string>
   <string name="ok">ПОТВРДИ</string>
   <string name="yes">ДА</string>
   <string name="no">НЕ</string>
@@ -51,7 +46,7 @@
   <string name="repo_update_title">Ажурирај ризнице</string>
   <string name="tab_installed">Инсталиране</string>
   <string name="tab_noninstalled">На располагању</string>
-  <string name="tab_updates">\"Нове верзије \"</string>
+  <string name="tab_updates">"Нове верзије "</string>
   <string name="one_update_available">1 нова верзија на располагању.</string>
   <string name="many_updates_available">%d нове/нових верзија на располагању</string>
   <string name="fdroid_updates_available">Ажурирање Ф-Дроида на располагању.</string>
@@ -59,8 +54,7 @@
   <string name="process_update_msg">Ажурира се листа апликација...</string>
   <string name="download_server">Скида се апликација са</string>
   <string name="repo_add_url">Адреса ризнице</string>
-  <string name="repo_alrt">Промењена је листа ризница у употреби.
-Желите ли да их ажурирате?</string>
+  <string name="repo_alrt">Промењена је листа ризница у употреби.\nЖелите ли да их ажурирате?</string>
   <string name="menu_update_repo">Ажурирај ризнице</string>
   <string name="menu_manage">Конфигуриши Ризнице</string>
   <string name="menu_preferences">Опције</string>
@@ -101,14 +95,9 @@
   <string name="category_all">Све</string>
   <string name="category_whatsnew">Ново</string>
   <string name="category_recentlyupdated">Недавно Ажурирано</string>
-  <string name="status_download">Скида се
-%2$s / %3$s (%4$d%%) са
-%1$s</string>
-  <string name="status_processing_xml">Обрада апликације
-%2$d са %3$d from
-%1$s</string>
-  <string name="status_connecting_to_repo">Повезивање са
-%1$s</string>
+  <string name="status_download">Скида се\n%2$s / %3$s (%4$d%%) са\n%1$s</string>
+  <string name="status_processing_xml">Обрада апликације\n%2$d са %3$d from\n%1$s</string>
+  <string name="status_connecting_to_repo">Повезивање са\n%1$s</string>
   <string name="status_checking_compatibility">Проверава се да ли је апликација компатибилна са вашим уређајем...</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
   <string name="permissions_for_long">Дозволе за верзију %s</string>

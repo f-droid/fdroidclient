@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Löydettiin %1$d sovellusta täsmäten \'%2$s\':</string>
   <string name="searchres_oneapp">Löydettiin yksi sovellus, joka täsmää \'%s\':</string>
@@ -38,8 +38,7 @@
   <string name="process_update_msg">Päivitetään sovelluslistaa...</string>
   <string name="download_server">Haetaan sovellusta lähteestä</string>
   <string name="repo_add_url">Sovelluslähteen osoite</string>
-  <string name="repo_alrt">Lista käytetyistä sovelluslähteistä on muuttumut.
-Tahdotko päivittää ne?</string>
+  <string name="repo_alrt">Lista käytetyistä sovelluslähteistä on muuttumut.\nTahdotko päivittää ne?</string>
   <string name="menu_update_repo">Päivitä sovelluslähteet</string>
   <string name="menu_manage">Hallitse sovelluslähteitä</string>
   <string name="menu_preferences">Asetukset</string>

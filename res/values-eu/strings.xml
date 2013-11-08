@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">\'%2$s\'-rekin bat datozen %1$d aplikazio aurkitu dira:</string>
   <string name="searchres_oneapp">\'%s\'-rekin bat datorren aplikazio bat aurkitu da:</string>
   <string name="searchres_noapps">\'%s\'-rekin bat datorren aplikaziorik ez da aurkitu</string>
-  <string name="SignatureMismatch">\"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)\"</string>
+  <string name="SignatureMismatch">"Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)"</string>
   <string name="version">Bertsioa</string>
   <string name="n_versions_available">%d bertsio eskuragarri</string>
   <string name="n_version_available">Bertsio %d eskuragarri</string>
@@ -18,8 +18,7 @@
   <string name="notify_updates_available">Jakinarazi eguneraketa berriak eskuragarri daudenean</string>
   <string name="update_history">Eguneratu historia</string>
   <string name="about_title">F-Droid-i buruz</string>
-  <string name="about_desc">Jatorrian Aptoide-n oinarritua.
-GNU GPLv3 lizentziapean argitaratua.</string>
+  <string name="about_desc">Jatorrian Aptoide-n oinarritua.\nGNU GPLv3 lizentziapean argitaratua.</string>
   <string name="about_site">Webgunea:</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Bertsioa:</string>
@@ -45,8 +44,7 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="process_update_msg">Aplikazio-zerrenda eguneratzen...</string>
   <string name="download_server">Aplikazioa eskuratzen hemendik</string>
   <string name="repo_add_url">Biltegiaren helbidea</string>
-  <string name="repo_alrt">Erabilitako biltegien zerrenda aldatu egin da.
-Eguneratu nahi dituzu?</string>
+  <string name="repo_alrt">Erabilitako biltegien zerrenda aldatu egin da.\nEguneratu nahi dituzu?</string>
   <string name="menu_update_repo">Eguneratu biltegiak</string>
   <string name="menu_manage">Kudeatu biltegiak</string>
   <string name="menu_preferences">Hobespenak</string>
@@ -79,8 +77,7 @@ Eguneratu nahi dituzu?</string>
   <string name="category_all">Guztia</string>
   <string name="category_whatsnew">Zer da berria</string>
   <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
-  <string name="status_connecting_to_repo">%1$s(e)ra
-konektatzen</string>
+  <string name="status_connecting_to_repo">%1$s(e)ra\nkonektatzen</string>
   <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen...</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
   <string name="permissions_for_long">%s bertsioarentzako baimenak</string>

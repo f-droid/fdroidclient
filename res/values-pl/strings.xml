@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Znaleziono %1$d pasujących aplikacji \'%2$s\':</string>
   <string name="searchres_oneapp">Znaleziono jedną pasującą aplikację \'%s\':</string>
@@ -38,8 +38,7 @@
   <string name="process_update_msg">Aktualizowanie listy aplikacji...</string>
   <string name="download_server">Pobieranie aplikacji z</string>
   <string name="repo_add_url">Adres repozytorium</string>
-  <string name="repo_alrt">Lista wykorzystywanych repozytoriów uległa zmianie.
-Czy chcesz je zaktualizować?</string>
+  <string name="repo_alrt">Lista wykorzystywanych repozytoriów uległa zmianie.\nCzy chcesz je zaktualizować?</string>
   <string name="menu_update_repo">Aktualizuj repozytoria</string>
   <string name="menu_manage">Zarządzaj repozytoriami</string>
   <string name="menu_preferences">Ustawienia</string>

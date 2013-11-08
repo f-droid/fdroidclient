@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Sa gasit o aplicatie potrivita cu %s\'</string>
   <string name="searchres_oneapp">Sa gasit o aplicatie potrivita cu %s\'</string>
@@ -14,8 +14,7 @@
   <string name="notify">Notificare</string>
   <string name="notify_updates_available">Notificare cand exista versiuni noi</string>
   <string name="about_title">Despre F-Droid</string>
-  <string name="about_desc">Bazat pe Aptoide.
-Distribuit sub licenta GNU GPLv3.</string>
+  <string name="about_desc">Bazat pe Aptoide.\nDistribuit sub licenta GNU GPLv3.</string>
   <string name="about_site">Website</string>
   <string name="about_mail">Email</string>
   <string name="about_version">Versiune</string>

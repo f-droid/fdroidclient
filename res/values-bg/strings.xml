@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Намерени са %1$d приложения съвпадащи с \'%2$s\':</string>
   <string name="searchres_oneapp">Едно приложение съвпадащо с \'%s\':</string>
@@ -25,17 +25,12 @@
   <string name="app_details">Детайли за приложението</string>
   <string name="no_such_app">Такова приложение не беше намерено</string>
   <string name="about_title">За F-Droid</string>
-  <string name="about_desc">Първоначално базиран на Aptoide.
-Лицензиран под GNU GPLv3.</string>
+  <string name="about_desc">Първоначално базиран на Aptoide.\nЛицензиран под GNU GPLv3.</string>
   <string name="about_site">Уебсайт:</string>
   <string name="about_mail">Мейл:</string>
   <string name="about_version">Версия:</string>
   <string name="about_website">Уебсайт</string>
-  <string name="no_repo">Нямаш нито едно зададено хранилище!
-
-Хранилищата са източник на приложения. За да добавиш натисни бутона MENU и въведи URL адрес.
-
-Адрес на храналищи изглежда примерно така: https://f-droid.org/repo</string>
+  <string name="no_repo">Нямаш нито едно зададено хранилище!\n\nХранилищата са източник на приложения. За да добавиш натисни бутона MENU и въведи URL адрес.\n\nАдрес на храналищи изглежда примерно така: https://f-droid.org/repo</string>
   <string name="inst">Инсталирано</string>
   <string name="not_inst">Не е инсталирано</string>
   <string name="added_on">Добавено на %s</string>
@@ -57,8 +52,7 @@
   <string name="process_update_msg">Обновявани на списъка с приложения...</string>
   <string name="download_server">Взимане на приложението от</string>
   <string name="repo_add_url">Адрес на хранилището</string>
-  <string name="repo_alrt">Списъкът на хранилищата е променен.
-Искаш ли да ги обновиш?</string>
+  <string name="repo_alrt">Списъкът на хранилищата е променен.\nИскаш ли да ги обновиш?</string>
   <string name="menu_update_repo">Обнови хранилищата</string>
   <string name="menu_manage">Управление на хранилищата</string>
   <string name="menu_preferences">Предпочитания</string>
@@ -91,14 +85,9 @@
   <string name="category_all">Всички</string>
   <string name="category_whatsnew">Какво ново</string>
   <string name="category_recentlyupdated">Обновени наскоро</string>
-  <string name="status_download">Сваляне
- %2$s / %3$s (%4$d%%) от
- %1$s</string>
-  <string name="status_processing_xml">Обработване на приложението
- %2$d of %3$d от
- %1$s</string>
-  <string name="status_connecting_to_repo">Свързване с
- %1$s</string>
+  <string name="status_download">Сваляне\n %2$s / %3$s (%4$d%%) от\n %1$s</string>
+  <string name="status_processing_xml">Обработване на приложението\n %2$d of %3$d от\n %1$s</string>
+  <string name="status_connecting_to_repo">Свързване с\n %1$s</string>
   <string name="status_checking_compatibility">Проверяване на съвместимост с твоето устройство…</string>
   <string name="no_permissions">Не се искат разрешения.</string>
   <string name="permissions_for_long">Разрешения за версия %s</string>

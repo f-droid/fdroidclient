@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">%1$d Anwendungen mit \'%2$s\' gefunden:</string>
   <string name="searchres_oneapp">Eine Anwendung mit \'%s\' gefunden:</string>
@@ -27,18 +27,12 @@
   <string name="app_details">Anwendungsdetails</string>
   <string name="no_such_app">Keine passende Anwendung gefunden</string>
   <string name="about_title">Über F-Droid</string>
-  <string name="about_desc">Ursprünglich basierend auf Aptoide.
-Lizensiert unter der GNU GPLv3.</string>
+  <string name="about_desc">Ursprünglich basierend auf Aptoide.\nLizensiert unter der GNU GPLv3.</string>
   <string name="about_site">Internetseite:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Internetseite</string>
-  <string name="no_repo">Sie haben keine Paketquellen konfiguriert!
-
-Eine Paketquelle ist eine Sammelstelle von Anwendungen.
-Um eine Paketquelle hinzuzufügen drücken Sie jetzt den Menüknopf und geben Sie deren Adresse an.
-
-Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</string>
+  <string name="no_repo">Sie haben keine Paketquellen konfiguriert!\n\nEine Paketquelle ist eine Sammelstelle von Anwendungen.\nUm eine Paketquelle hinzuzufügen drücken Sie jetzt den Menüknopf und geben Sie deren Adresse an.\n\nDie Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</string>
   <string name="inst">Installiert</string>
   <string name="not_inst">Nicht installiert</string>
   <string name="added_on">Hinzugefügt am %s</string>
@@ -60,8 +54,7 @@ Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</strin
   <string name="process_update_msg">Anwendungsliste wird aktualisiert …</string>
   <string name="download_server">Anwendung wird heruntergeladen von</string>
   <string name="repo_add_url">Adresse der Paketquelle</string>
-  <string name="repo_alrt">Die Liste der genutzten Paketquellen hat sich geändert.
-Soll diese aktualisiert werden?</string>
+  <string name="repo_alrt">Die Liste der genutzten Paketquellen hat sich geändert.\nSoll diese aktualisiert werden?</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
   <string name="menu_manage">Paketquellen verwalten</string>
   <string name="menu_preferences">Einstellungen</string>
@@ -102,14 +95,9 @@ Soll diese aktualisiert werden?</string>
   <string name="category_all">Alle</string>
   <string name="category_whatsnew">Neue Anwendungen</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
-  <string name="status_download">Herunterladen
-%2$s / %3$s (%4$d%%) von
-%1$s</string>
-  <string name="status_processing_xml">Anwendung wird vorbereitet
-%2$d / %3$d von
-%1$s</string>
-  <string name="status_connecting_to_repo">Verbinden mit
-%1$s</string>
+  <string name="status_download">Herunterladen\n%2$s / %3$s (%4$d%%) von\n%1$s</string>
+  <string name="status_processing_xml">Anwendung wird vorbereitet\n%2$d / %3$d von\n%1$s</string>
+  <string name="status_connecting_to_repo">Verbinden mit\n%1$s</string>
   <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft ...</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">找到%1$d个应用符合关键词\'%2$s\'</string>
   <string name="searchres_oneapp">找到一个应用符合关键词 \'%s\'</string>
@@ -38,8 +38,7 @@
   <string name="process_update_msg">应用列表更新中</string>
   <string name="download_server">下载应用</string>
   <string name="repo_add_url">应用源地址</string>
-  <string name="repo_alrt">应用源列表发生变化
-确认更新吗？</string>
+  <string name="repo_alrt">应用源列表发生变化\n确认更新吗？</string>
   <string name="menu_update_repo">更新应用源</string>
   <string name="menu_manage">管理应用源</string>
   <string name="menu_preferences">设置</string>

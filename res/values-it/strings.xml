@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Trovate %1$d applicazioni corrispondenti a \'%2$s\':</string>
   <string name="searchres_oneapp">Trovata un\'applicazione corrispondente a \'%s\':</string>
@@ -25,17 +25,12 @@
   <string name="app_details">Dettagli App</string>
   <string name="no_such_app">Nessuna app corrispondente trovata</string>
   <string name="about_title">Informazioni</string>
-  <string name="about_desc">Basato su Aptoide.
-Rilasciato sotto licenza GNU GPLv3.</string>
+  <string name="about_desc">Basato su Aptoide.\nRilasciato sotto licenza GNU GPLv3.</string>
   <string name="about_site">Sito Web:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versione:</string>
   <string name="about_website">Sito Web</string>
-  <string name="no_repo">Non hai configurato nessun repository!
-
-Un repository è una fonte di applicazioni. Per aggiungerne uno, premi MENU e inserisci un indirizzo URL.
-
-Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
+  <string name="no_repo">Non hai configurato nessun repository!\n\nUn repository è una fonte di applicazioni. Per aggiungerne uno, premi MENU e inserisci un indirizzo URL.\n\nUn indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="inst">Installato</string>
   <string name="not_inst">Non installato</string>
   <string name="added_on">Aggiunto il %s</string>
@@ -57,8 +52,7 @@ Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="process_update_msg">Aggiornamento elenco applicazioni...</string>
   <string name="download_server">Scaricamento applicazione da</string>
   <string name="repo_add_url">Indirizzo repository</string>
-  <string name="repo_alrt">L\'elenco dei repository in uso è cambiato.
-Vuoi aggiornarlo?</string>
+  <string name="repo_alrt">L\'elenco dei repository in uso è cambiato.\nVuoi aggiornarlo?</string>
   <string name="menu_update_repo">Aggiorna i Repository</string>
   <string name="menu_manage">Gestione Repository</string>
   <string name="menu_preferences">Preferenze</string>
@@ -99,14 +93,9 @@ Vuoi aggiornarlo?</string>
   <string name="category_all">Tutte</string>
   <string name="category_whatsnew">Novità</string>
   <string name="category_recentlyupdated">Aggiornate di Recente</string>
-  <string name="status_download">Scaricamento
-%2$s / %3$s (%4$d%%) da
-%1$s</string>
-  <string name="status_processing_xml">Elaborazione applicazione
-%2$d di %3$d da
-%1$s</string>
-  <string name="status_connecting_to_repo">Connessione a
-%1$s</string>
+  <string name="status_download">Scaricamento\n%2$s / %3$s (%4$d%%) da\n%1$s</string>
+  <string name="status_processing_xml">Elaborazione applicazione\n%2$d di %3$d da\n%1$s</string>
+  <string name="status_connecting_to_repo">Connessione a\n%1$s</string>
   <string name="status_checking_compatibility">Controllo compatibilità applicazioni con il tuo dispositivo...</string>
   <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
   <string name="permissions_for_long">Autorizzazioni per la versione %s</string>

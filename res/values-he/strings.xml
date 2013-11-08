@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">נמצאו %1$d אפליקציות התואמות ל-\'%2$s\':</string>
 </resources>
