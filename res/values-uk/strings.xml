@@ -17,9 +17,9 @@
   <string name="notify">Сповіщення</string>
   <string name="notify_updates_available">Сповіщати про наявність оновлень</string>
   <string name="about_title">Про F-Droid</string>
-  <string name="about_site">Сайт: </string>
-  <string name="about_mail">Пошта: </string>
-  <string name="about_version">Версія: </string>
+  <string name="about_site">Сайт:</string>
+  <string name="about_mail">Пошта:</string>
+  <string name="about_version">Версія:</string>
   <string name="about_website">Сайт</string>
   <string name="inst">Встановлено</string>
   <string name="not_inst">Не встановлено</string>

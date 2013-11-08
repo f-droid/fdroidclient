@@ -10,7 +10,7 @@
   <string name="n_versions_available">%d διαθέσιμες εκδόσεις</string>
   <string name="n_version_available">%d διαθέσιμη έκδοση</string>
   <string name="cache_downloaded">Αποθήκευση ληφθέντων εφαρμογών στην προσωρινή μνήμη</string>
-  <string name="keep_downloaded">Διατήρηση ληφθέντων αρχείων apk στην κάρτα SD </string>
+  <string name="keep_downloaded">Διατήρηση ληφθέντων αρχείων apk στην κάρτα SD</string>
   <string name="updates">Ενημερώσεις</string>
   <string name="other">Άλλα</string>
   <string name="last_update_check">Τελευταίο σάρωμα αποθετηρίου: %s</string>
@@ -119,7 +119,7 @@
   <string name="showPermissions_long">Εμφάνιση λίστας αδειών που χρειάζεται μια εφαρμογή</string>
   <string name="no_handler_app">Δεν έχεται καμία διαθέσιμη εφαρμογή που να μπορεί να χειριστεί %s</string>
   <string name="compactlayout">Συμπτυγμένη Διάταξη</string>
-  <string name="compactlayout_long">Εμφάνιση μόνο ονομάτων εφαρμογών και περίληψεων στη λίστα </string>
+  <string name="compactlayout_long">Εμφάνιση μόνο ονομάτων εφαρμογών και περίληψεων στη λίστα</string>
   <string name="theme">Θέμα</string>
   <string name="theme_long">Επιλέξτε θέμα προς χρήση</string>
 </resources>
