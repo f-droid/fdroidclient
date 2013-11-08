@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-11-04 21:51+0000\n"
-"PO-Revision-Date: 2013-10-30 21:29+0200\n"
+"PO-Revision-Date: 2013-11-06 15:38+0200\n"
 "Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
@@ -349,7 +351,7 @@ msgstr "Code source"
 
 msgctxt "menu_upgrade"
 msgid "Upgrade"
-msgstr ""
+msgstr "Mise à jour"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -420,15 +422,15 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr "Compatibilité de l'application"
 
-#, fuzzy
 msgctxt "show_incompat_versions"
 msgid "Incompatible versions"
-msgstr "Applications incompatibles"
+msgstr "Versions incompatibles"
 
-#, fuzzy
 msgctxt "show_incompat_versions_l"
 msgid "Show versions of apps that are incompatible with the device"
-msgstr "Vérification de la compatibilité des applis avec votre appareil…"
+msgstr ""
+"Afficher les version des applis qui ne sont pas compatibles avec votre "
+"appareil"
 
 msgctxt "rooted"
 msgid "Root"
@@ -526,12 +528,10 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Afficher seulement les noms d'applications et les résumés dans la liste"
 
-#, fuzzy
 msgctxt "theme"
 msgid "Theme"
-msgstr "Autres"
+msgstr "Thème"
 
 msgctxt "theme_long"
 msgid "Choose a theme to use"
-msgstr ""
-
+msgstr "Sélectionner un thème à utiliser"

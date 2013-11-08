@@ -17,6 +17,8 @@
   <string name="never">nunca</string>
   <string name="automatic_repo_scan">Consulta automática aos repositórios</string>
   <string name="update_apps_list">Atualizar a lista de aplicativos automaticamente a partir dos repositórios</string>
+  <string name="automatic_scan_wifi">Só com wifi</string>
+  <string name="automatic_scan_wifi_desc">Atualizar a lista de aplicativos somente via wifi</string>
   <string name="notify">Notificar</string>
   <string name="notify_updates_available">Notificar quando novas atualizações estiverem disponíveis</string>
   <string name="update_history">Atualizar histórico</string>
@@ -30,6 +32,7 @@
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Versão:</string>
   <string name="about_website">Site</string>
+  <string name="no_repo">Você não tem nenhum repositório configurado!!\n\nUm repositório é uma fonte de aplicativos. Para adicionar um, pressione o botão MENU e digite a URL.\n\nUm endereço do repositório é algo similar a isto: http://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">Não Instalado</string>
   <string name="added_on">Adicionado em %s</string>
@@ -63,14 +66,22 @@
   <string name="menu_share">Compartilhar</string>
   <string name="menu_install">Instalar</string>
   <string name="menu_uninstall">Desinstalar</string>
+  <string name="menu_ignore_all">Ignorar Todas as Atualizações</string>
+  <string name="menu_ignore_this">Ignorar Esta Atualização</string>
   <string name="menu_website">Site</string>
   <string name="menu_issues">Questões</string>
-  <string name="menu_source">Código Fonte</string>
+  <string name="menu_source">Código-Fonte</string>
+  <string name="menu_upgrade">Atualização (upgrade)</string>
   <string name="menu_donate">Fazer doação</string>
   <string name="details_installed">Versão %s instalada</string>
   <string name="details_notinstalled">Não instalado</string>
   <string name="corrupt_download">O arquivo baixado está corrompido</string>
   <string name="download_cancelled">Download cancelado</string>
+  <string name="antiadslist">Este aplicativo contem publicidade</string>
+  <string name="antitracklist">Este aplicativo rastreia e relata sua atividade</string>
+  <string name="antinonfreeadlist">Este aplicativo promove complementos não-livres</string>
+  <string name="antinonfreenetlist">Este aplicativo promove serviços de rede não-livre</string>
+  <string name="antinonfreedeplist">Este aplicativo depende de aplicativos não-livres</string>
   <string name="display">Exibição</string>
   <string name="expert">Especialista</string>
   <string name="expert_mode">Ativar modo especialista</string>
@@ -78,6 +89,8 @@
   <string name="db_sync_mode">Modo de sincronia do banco de dados</string>
   <string name="db_sync_mode_long">Definir o valor da flag de sincronia do SQLite</string>
   <string name="appcompatibility">Compatibilidade de aplicativo</string>
+  <string name="show_incompat_versions">Versões incompatíveis</string>
+  <string name="show_incompat_versions_l">Mostrar versões de aplicativos incompatíveis com o dispositivo</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Mostrar aplicativos que requerem privilégios de root</string>
   <string name="ignoreTouch">Ignorar tela sensível ao toque</string>
@@ -93,6 +106,9 @@
   <string name="permissions_for_long">Permissões para a versão %s</string>
   <string name="showPermissions">Mostrar permissões</string>
   <string name="showPermissions_long">Mostrar uma lista de permissões que um aplicativo requer</string>
+  <string name="no_handler_app">Você não tem aplicativo instalado que lide com %s</string>
   <string name="compactlayout">Leiaute compacto</string>
   <string name="compactlayout_long">Mostrar só nomes de aplicativos e sumários na lista</string>
+  <string name="theme">Tema</string>
+  <string name="theme_long">Escolha que tema utilizar</string>
 </resources>

@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-11-04 21:51+0000\n"
-"PO-Revision-Date: 2013-09-19 02:12+0200\n"
+"PO-Revision-Date: 2013-11-06 03:02+0200\n"
 "Last-Translator: Cárlisson <cg@bardo.ws>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
@@ -110,12 +112,11 @@ msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositór
 
 msgctxt "automatic_scan_wifi"
 msgid "Only on wifi"
-msgstr ""
+msgstr "Só com wifi"
 
-#, fuzzy
 msgctxt "automatic_scan_wifi_desc"
 msgid "Update app lists automatically only on wifi"
-msgstr "Atualizar a lista de aplicativos automaticamente a partir dos repositórios"
+msgstr "Atualizar a lista de aplicativos somente via wifi"
 
 msgctxt "notify"
 msgid "Notify"
@@ -173,7 +174,6 @@ msgctxt "about_website"
 msgid "Website"
 msgstr "Site"
 
-#, fuzzy
 msgctxt "no_repo"
 msgid ""
 "You don't have any repositories configured!\n"
@@ -330,11 +330,11 @@ msgstr "Desinstalar"
 
 msgctxt "menu_ignore_all"
 msgid "Ignore All Updates"
-msgstr ""
+msgstr "Ignorar Todas as Atualizações"
 
 msgctxt "menu_ignore_this"
 msgid "Ignore This Update"
-msgstr ""
+msgstr "Ignorar Esta Atualização"
 
 msgctxt "menu_website"
 msgid "Website"
@@ -346,11 +346,11 @@ msgstr "Questões"
 
 msgctxt "menu_source"
 msgid "Source Code"
-msgstr "Código Fonte"
+msgstr "Código-Fonte"
 
 msgctxt "menu_upgrade"
 msgid "Upgrade"
-msgstr ""
+msgstr "Atualização (upgrade)"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -373,30 +373,25 @@ msgctxt "download_cancelled"
 msgid "Download cancelled"
 msgstr "Download cancelado"
 
-#, fuzzy
 msgctxt "antiadslist"
 msgid "This app contains advertising"
-msgstr "Mostrar aplicativos que contenham publicidade"
+msgstr "Este aplicativo contem publicidade"
 
-#, fuzzy
 msgctxt "antitracklist"
 msgid "This app tracks and reports your activity"
-msgstr "Mostrar aplicativos que rastreiam e relatam sua atividade"
+msgstr "Este aplicativo rastreia e relata sua atividade"
 
-#, fuzzy
 msgctxt "antinonfreeadlist"
 msgid "This app promotes non-free add-ons"
-msgstr "Mostrar aplicativos que promovem complementos não-livres"
+msgstr "Este aplicativo promove complementos não-livres"
 
-#, fuzzy
 msgctxt "antinonfreenetlist"
 msgid "This app promotes non-free network services"
-msgstr "Mostrar aplicativos que promovem serviços de rede não-livre"
+msgstr "Este aplicativo promove serviços de rede não-livre"
 
-#, fuzzy
 msgctxt "antinonfreedeplist"
 msgid "This app depends on other non-free apps"
-msgstr "Mostrar aplicativos que dependem de aplicativos não-livres"
+msgstr "Este aplicativo depende de aplicativos não-livres"
 
 msgctxt "display"
 msgid "Display"
@@ -426,15 +421,13 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr "Compatibilidade de aplicativo"
 
-#, fuzzy
 msgctxt "show_incompat_versions"
 msgid "Incompatible versions"
-msgstr "Aplicativos incompatíveis"
+msgstr "Versões incompatíveis"
 
-#, fuzzy
 msgctxt "show_incompat_versions_l"
 msgid "Show versions of apps that are incompatible with the device"
-msgstr "Verificando compatibilidade de aplicativos com o seu dispositivo..."
+msgstr "Mostrar versões de aplicativos incompatíveis com o dispositivo"
 
 msgctxt "rooted"
 msgid "Root"
@@ -519,7 +512,7 @@ msgctxt "showPermissions_long"
 msgid "Display a list of permissions an app needs"
 msgstr "Mostrar uma lista de permissões que um aplicativo requer"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "no_handler_app"
 msgid "You don't have any available app that can handle %s"
 msgstr "Você não tem aplicativo instalado que lide com %s"
@@ -532,12 +525,10 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Mostrar só nomes de aplicativos e sumários na lista"
 
-#, fuzzy
 msgctxt "theme"
 msgid "Theme"
-msgstr "Outro"
+msgstr "Tema"
 
 msgctxt "theme_long"
 msgid "Choose a theme to use"
-msgstr ""
-
+msgstr "Escolha que tema utilizar"

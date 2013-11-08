@@ -71,6 +71,7 @@
   <string name="menu_website">Ağ sitesi</string>
   <string name="menu_issues">Sorunlar</string>
   <string name="menu_source">Kaynak kod</string>
+  <string name="menu_upgrade">Yükselt</string>
   <string name="menu_donate">Bağış</string>
   <string name="details_installed">%s sürümü kurulu</string>
   <string name="details_notinstalled">Kurulu değil</string>
@@ -88,6 +89,8 @@
   <string name="db_sync_mode">Veritabanı eşleşme modu</string>
   <string name="db_sync_mode_long">SQLite\'ın senkronize flag değerini gir</string>
   <string name="appcompatibility">Uygulama uyumu</string>
+  <string name="show_incompat_versions">Uyumsuz sürümler</string>
+  <string name="show_incompat_versions_l">Cihazınızla uyumsuz uygulama sürümlerini göster</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Root yetkilerine gerek duyan uygulamaları göster</string>
   <string name="ignoreTouch">Dokunmatik ekranı yok say</string>
@@ -106,4 +109,6 @@
   <string name="no_handler_app">%s unsurunu yönetecek hiçbir mevcut uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
   <string name="compactlayout_long">Listede sadece uygulama adlarını ve özetleri göster</string>
+  <string name="theme">Tema</string>
+  <string name="theme_long">Kullanılacak temayı seç</string>
 </resources>

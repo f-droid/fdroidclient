@@ -71,6 +71,7 @@
   <string name="menu_website">Site Web</string>
   <string name="menu_issues">Problèmes</string>
   <string name="menu_source">Code source</string>
+  <string name="menu_upgrade">Mise à jour</string>
   <string name="menu_donate">Faire un don</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
@@ -88,6 +89,8 @@
   <string name="db_sync_mode">Mode de synchronisation à la base de données</string>
   <string name="db_sync_mode_long">Régler la valeur de la synchronisation SQLite</string>
   <string name="appcompatibility">Compatibilité de l\'application</string>
+  <string name="show_incompat_versions">Versions incompatibles</string>
+  <string name="show_incompat_versions_l">Afficher les version des applis qui ne sont pas compatibles avec votre appareil</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Montrer les applications qui requièrent les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
@@ -106,4 +109,6 @@
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
   <string name="compactlayout_long">Afficher seulement les noms d\'applications et les résumés dans la liste</string>
+  <string name="theme">Thème</string>
+  <string name="theme_long">Sélectionner un thème à utiliser</string>
 </resources>

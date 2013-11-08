@@ -5,16 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  \n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-11-04 21:51+0000\n"
-"PO-Revision-Date: 2013-10-30 21:30+0200\n"
+"PO-Revision-Date: 2013-11-06 15:40+0200\n"
 "Last-Translator: zapman <thraex@numericable.fr>\n"
 "Language-Team: tr <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.6\n"
 "Generated-By: Babel 1.0dev\n"
 
 #, c-format
@@ -349,7 +351,7 @@ msgstr "Kaynak kod"
 
 msgctxt "menu_upgrade"
 msgid "Upgrade"
-msgstr ""
+msgstr "Yükselt"
 
 msgctxt "menu_donate"
 msgid "Donate"
@@ -420,15 +422,13 @@ msgctxt "appcompatibility"
 msgid "Application compatibility"
 msgstr "Uygulama uyumu"
 
-#, fuzzy
 msgctxt "show_incompat_versions"
 msgid "Incompatible versions"
-msgstr "Uyumsuz uygulamalar"
+msgstr "Uyumsuz sürümler"
 
-#, fuzzy
 msgctxt "show_incompat_versions_l"
 msgid "Show versions of apps that are incompatible with the device"
-msgstr "Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…"
+msgstr "Cihazınızla uyumsuz uygulama sürümlerini göster"
 
 msgctxt "rooted"
 msgid "Root"
@@ -526,12 +526,10 @@ msgctxt "compactlayout_long"
 msgid "Only show app names and summaries in list"
 msgstr "Listede sadece uygulama adlarını ve özetleri göster"
 
-#, fuzzy
 msgctxt "theme"
 msgid "Theme"
-msgstr "Diğer"
+msgstr "Tema"
 
 msgctxt "theme_long"
 msgid "Choose a theme to use"
-msgstr ""
-
+msgstr "Kullanılacak temayı seç"
