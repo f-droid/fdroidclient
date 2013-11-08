@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">Najdenih %1$d applikacij, ki ustrezajo \'%2$s\':</string>
   <string name="searchres_oneapp">Najdena ena aplikacija, ki ustreza \'%s\':</string>
@@ -14,7 +14,8 @@
   <string name="update_apps_list">Samodejno posodobi spisek aplikacij iz skladišč</string>
   <string name="notify">Opozorilo</string>
   <string name="notify_updates_available">Opozori na posodobitve</string>
-  <string name="about_desc">Izvorno osnovan na Aptoide.\nIzdan z licenco GNU GPLv3.</string>
+  <string name="about_desc">Izvorno osnovan na Aptoide.
+Izdan z licenco GNU GPLv3.</string>
   <string name="about_site">Spletna stran:</string>
   <string name="about_mail">E-pošta:</string>
   <string name="about_version">Različica:</string>
@@ -36,7 +37,8 @@
   <string name="process_update_msg">Poteka posodobitev spiska aplikacij ...</string>
   <string name="download_server">Prejem aplikacije iz</string>
   <string name="repo_add_url">Naslov skladišča</string>
-  <string name="repo_alrt">Spisek uporabljenih skladišč se je spremenil.\nGa želite posodobiti?</string>
+  <string name="repo_alrt">Spisek uporabljenih skladišč se je spremenil.
+Ga želite posodobiti?</string>
   <string name="menu_manage">Upravljanje s skladišči</string>
   <string name="menu_preferences">Možnosti</string>
   <string name="menu_about">O programu</string>

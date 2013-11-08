@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">Atopáronse %1$d aplicacións que cadran con \'%2$s\':</string>
   <string name="searchres_oneapp">Atopouse unha aplicación que cadra con \'%s\':</string>
@@ -20,7 +20,8 @@
   <string name="update_history">Histórico de actualizacións</string>
   <string name="update_history_desc">Días para mostrar aplicacións novas/actualizadas</string>
   <string name="about_title">Sobre F-Droid</string>
-  <string name="about_desc">Baseado en Aptoide.\nPublicado con licencia GNU GPLv3.</string>
+  <string name="about_desc">Baseado en Aptoide.
+Publicado con licencia GNU GPLv3.</string>
   <string name="about_site">Sitio web:</string>
   <string name="about_mail">Correo:</string>
   <string name="about_version">Versión:</string>
@@ -46,7 +47,8 @@
   <string name="process_update_msg">Actualizando a lista de aplicacións...</string>
   <string name="download_server">Obtendo a aplicación desde</string>
   <string name="repo_add_url">Enderezo do repositorio</string>
-  <string name="repo_alrt">Cambiou a lista de repositorios usados.\n¿Queres actualizalos?</string>
+  <string name="repo_alrt">Cambiou a lista de repositorios usados.
+¿Queres actualizalos?</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Xestionar repositorios</string>
   <string name="menu_preferences">Preferencias</string>
@@ -79,9 +81,14 @@
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">Qué novidades hai</string>
   <string name="category_recentlyupdated">Actualizado recentemente</string>
-  <string name="status_download">Descargando\n%2$s / %3$s (%4$d%%) desde\n%1$s</string>
-  <string name="status_processing_xml">Procesando a aplicación\n%2$d de %3$d desde\n%1$s</string>
-  <string name="status_connecting_to_repo">Conectándose con\n%1$s</string>
+  <string name="status_download">Descargando
+%2$s / %3$s (%4$d%%) desde
+%1$s</string>
+  <string name="status_processing_xml">Procesando a aplicación
+%2$d de %3$d desde
+%1$s</string>
+  <string name="status_connecting_to_repo">Conectándose con
+%1$s</string>
   <string name="status_checking_compatibility">Comprobando a compatibilidade das aplicacións con teu aparato</string>
   <string name="no_permissions">Non se usan permisos</string>
   <string name="permissions_for_long">Permisos para a versión %s</string>
