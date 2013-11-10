@@ -102,8 +102,8 @@ public class AppListManager {
             if (Build.VERSION.SDK_INT >= 11) {
                 categories.addAll(db.getCategories());
             } else {
-                List<String> categories = db.getCategories();
-                for (String category : db.getCategories()) {
+                List<String> categs = db.getCategories();
+                for (String category : categs) {
                     categories.add(category);
                 }
             }
