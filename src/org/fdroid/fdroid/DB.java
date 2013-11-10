@@ -636,9 +636,11 @@ public class DB {
             while (!c.isAfterLast()) {
                 CommaSeparatedList categories = CommaSeparatedList
                     .make(c.getString(0));
-                for (String category : categories) {
-                    if (!result.contains(category)) {
-                        result.add(category);
+                if (categories != null) {
+                    for (String category : categories) {
+                        if (!result.contains(category)) {
+                            result.add(category);
+                        }
                     }
                 }
                 c.moveToNext();
