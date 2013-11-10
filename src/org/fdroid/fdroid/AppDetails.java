@@ -502,13 +502,15 @@ public class AppDetails extends ListActivity {
                         Permission permission = new Permission(this, permissionName);
                         sb.append("\t• " + permission.getName() + '\n');
                     } catch (NameNotFoundException e) {
-                        if (permissionName.equals("ACCESS_SUPERUSER"))
+                        if (permissionName.equals("ACCESS_SUPERUSER")) {
                             sb.append("\t• Full permissions to all device features and storage\n");
-                        else
-                            Log.d("FDroid", "Can't find permission "+permissionName);
+                        } else {
+                            Log.d("FDroid", "Permission not yet available: "
+                                    +permissionName);
+                        }
                     }
                 }
-                sb.setLength(sb.length() - 1);
+                if (sb.length() > 0) sb.setLength(sb.length() - 1);
                 tv.setText(sb.toString());
             }
             tv = (TextView) infoView.findViewById(R.id.permissions);
@@ -524,7 +526,7 @@ public class AppDetails extends ListActivity {
             StringBuilder sb = new StringBuilder();
             for (String af : app.antiFeatures)
                 sb.append("\t• " + descAntiFeature(af) + "\n");
-            sb.setLength(sb.length() - 1);
+            if (sb.length() > 0) sb.setLength(sb.length() - 1);
             tv.setText(sb.toString());
         } else {
             tv.setVisibility(View.GONE);
