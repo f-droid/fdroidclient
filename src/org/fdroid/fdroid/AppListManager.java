@@ -176,6 +176,7 @@ public class AppListManager {
                 return false;
             return true;
         }
+        if (app.categories == null) return false;
         return app.categories.contains(category);
     }
 
