@@ -1,6 +1,6 @@
 ### 0.55 (2013-11-11)
 
-* Fixed problems with category selection on Android 2.X devices.
+* Fixed problems with category selection and permission lists on Android 2.X devices.
 * Lots of translation updates, including new Norwegian translation.
 
 ### 0.54 (2013-11-05)
