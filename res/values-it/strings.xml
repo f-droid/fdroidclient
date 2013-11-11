@@ -17,6 +17,8 @@
   <string name="never">mai</string>
   <string name="automatic_repo_scan">Scansione repository automatica</string>
   <string name="update_apps_list">Aggiorna automaticamente l\'elenco applicazioni</string>
+  <string name="automatic_scan_wifi">Solo su wifi</string>
+  <string name="automatic_scan_wifi_desc">Aggiorna liste app automaticamente solo su wifi</string>
   <string name="notify">Avviso</string>
   <string name="notify_updates_available">Avvisa quando sono disponibili nuovi aggiornamenti</string>
   <string name="update_history">Aggiorna i repository</string>
@@ -75,6 +77,7 @@ Vuoi aggiornarlo?</string>
   <string name="menu_website">Sito Web</string>
   <string name="menu_issues">Problemi</string>
   <string name="menu_source">Codice sorgente</string>
+  <string name="menu_upgrade">Aggiorna</string>
   <string name="menu_donate">Dona</string>
   <string name="details_installed">Versione %s installata</string>
   <string name="details_notinstalled">Non installato</string>
@@ -92,6 +95,8 @@ Vuoi aggiornarlo?</string>
   <string name="db_sync_mode">Modalità di sincronizzazione database</string>
   <string name="db_sync_mode_long">Impostazione del flag di sincronizzazione di SQLite</string>
   <string name="appcompatibility">Compatibilità applicazioni</string>
+  <string name="show_incompat_versions">Versioni incompatibili</string>
+  <string name="show_incompat_versions_l">Mostra versioni delle app incompatibili con questo dispositivo</string>
   <string name="rooted">Amministratore</string>
   <string name="rooted_long">Mostra le applicazioni che richiedono i privilegi di amministrazione</string>
   <string name="ignoreTouch">Ignora il Touchscreen</string>
@@ -115,4 +120,6 @@ Vuoi aggiornarlo?</string>
   <string name="no_handler_app">Non hai alcuna app disponibile che può gestire %s</string>
   <string name="compactlayout">Layout Compatto</string>
   <string name="compactlayout_long">Mostra solo nomi e sintesi delle app nella lista</string>
+  <string name="theme">Tema</string>
+  <string name="theme_long">Scegli un tema da usare</string>
 </resources>
