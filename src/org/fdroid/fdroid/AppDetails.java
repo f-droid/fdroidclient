@@ -295,6 +295,16 @@ public class AppDetails extends ListActivity {
         if (downloadHandler != null) {
             downloadHandler.stopUpdates();
         }
+        if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
+                || app.ignoreThisUpdate != startingIgnoreThis)) {
+            try {
+                DB db = DB.getDB();
+                db.setIgnoreUpdates(app.id,
+                        app.ignoreAllUpdates, app.ignoreThisUpdate);
+            } finally {
+                DB.releaseDB();
+            }
+        }
         super.onPause();
     }
 
@@ -1005,21 +1015,6 @@ public class AppDetails extends ListActivity {
             resetRequired = true;
             break;
         }
-    }
-
-    @Override
-    public void finish() {
-        if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
-                || app.ignoreThisUpdate != startingIgnoreThis)) {
-            try {
-                DB db = DB.getDB();
-                db.setIgnoreUpdates(app.id,
-                        app.ignoreAllUpdates, app.ignoreThisUpdate);
-            } finally {
-                DB.releaseDB();
-            }
-        }
-        super.finish();
     }
 
 }
