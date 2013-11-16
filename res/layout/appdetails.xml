@@ -16,11 +16,11 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+			android:layout_width="48dp"
+			android:layout_height="48dp"
             android:cropToPadding="true"
-            android:padding="4dp"
-			android:layout_marginRight="3dp"
+			android:layout_marginLeft="2dp"
+			android:layout_marginRight="6dp"
             android:scaleType="fitCenter" />
 
         <RelativeLayout
