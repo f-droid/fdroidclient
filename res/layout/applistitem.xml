@@ -13,10 +13,10 @@
 	     android:scaleType="fitCenter"
 	     android:layout_width="48dp"
 	     android:layout_height="48dp"
-		 android:paddingTop="4dp"
-		 android:paddingBottom="4dp"
-		 android:paddingRight="6dp"
-		 android:paddingLeft="2dp"
+		 android:layout_marginTop="4dp"
+		 android:layout_marginBottom="4dp"
+		 android:layout_marginRight="6dp"
+		 android:layout_marginLeft="2dp"
 		 />
 
   <LinearLayout android:id="@+id/status_icons"
