@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingTop="5dp"
-    android:paddingLeft="6dp"
-    android:paddingRight="6dp"
-    android:baselineAligned="false"
-    android:orientation="vertical" >
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:paddingTop="5dp"
+	android:paddingLeft="6dp"
+	android:paddingRight="6dp"
+	android:baselineAligned="false"
+	android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+	<LinearLayout
+		android:id="@+id/header"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
 
-        <ImageView
-            android:id="@+id/icon"
+		<ImageView
+			android:id="@+id/icon"
 			android:layout_width="48dp"
 			android:layout_height="48dp"
-            android:cropToPadding="true"
+			android:cropToPadding="true"
 			android:layout_marginLeft="2dp"
 			android:layout_marginRight="6dp"
-            android:scaleType="fitCenter" />
+			android:scaleType="fitCenter" />
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:orientation="vertical" >
+		<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:paddingTop="6dp"
+			android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="marquee"
-                android:singleLine="true"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+			<TextView
+				android:id="@+id/title"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:ellipsize="marquee"
+				android:singleLine="true"
+				android:textSize="18sp"
+				android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/title"
-                android:textSize="12sp" />
+			<TextView
+				android:id="@+id/status"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_below="@id/title"
+				android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/license"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:padding="3dp"
-                android:textSize="12sp" />
+			<TextView
+				android:id="@+id/license"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:padding="3dp"
+				android:textSize="12sp" />
 
-        </RelativeLayout>
-    </LinearLayout>
+		</RelativeLayout>
+	</LinearLayout>
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scrollbars="none" />
+	<ListView
+		android:id="@android:id/list"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:scrollbars="none" />
 
 </LinearLayout>

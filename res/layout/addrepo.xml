@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TextView
-    	android:layout_width="wrap_content"
-        android:ems="20"
-        android:layout_height="wrap_content" android:text="@string/repo_add_url"/>
-    
-    <EditText
-        android:id="@+id/edit_uri"
-        android:inputType="textUri"
-        android:maxLines="1"
-        android:layout_width="wrap_content"
-        android:ems="20"
-        android:layout_height="wrap_content"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+	<TextView
+		android:layout_width="wrap_content"
+		android:ems="20"
+		android:layout_height="wrap_content" android:text="@string/repo_add_url"/>
+	
+	<EditText
+		android:id="@+id/edit_uri"
+		android:inputType="textUri"
+		android:maxLines="1"
+		android:layout_width="wrap_content"
+		android:ems="20"
+		android:layout_height="wrap_content"
 	android:text="https://"/>
 </LinearLayout>
 <!--
