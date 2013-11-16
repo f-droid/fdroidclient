@@ -1009,8 +1009,8 @@ public class AppDetails extends ListActivity {
 
     @Override
     public void finish() {
-        if (app.ignoreAllUpdates != startingIgnoreAll
-                || app.ignoreThisUpdate != startingIgnoreThis) {
+        if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
+                || app.ignoreThisUpdate != startingIgnoreThis)) {
             try {
                 DB db = DB.getDB();
                 db.setIgnoreUpdates(app.id,
