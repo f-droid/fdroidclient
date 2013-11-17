@@ -534,10 +534,18 @@ public class AppDetails extends ListActivity {
         tv = (TextView) infoView.findViewById(R.id.antifeatures);
         if (app.antiFeatures != null) {
             StringBuilder sb = new StringBuilder();
-            for (String af : app.antiFeatures)
-                sb.append("\t• " + descAntiFeature(af) + "\n");
-            if (sb.length() > 0) sb.setLength(sb.length() - 1);
-            tv.setText(sb.toString());
+            for (String af : app.antiFeatures) {
+                String afdesc = descAntiFeature(af);
+                if (afdesc != null) {
+                    sb.append("\t• " + afdesc + "\n");
+                }
+            }
+            if (sb.length() > 0) {
+                sb.setLength(sb.length() - 1);
+                tv.setText(sb.toString());
+            } else {
+                tv.setVisibility(View.GONE);
+            }
         } else {
             tv.setVisibility(View.GONE);
         }
@@ -554,7 +562,7 @@ public class AppDetails extends ListActivity {
             return getString(R.string.antinonfreeadlist);
         if (af.equals("NonFreeDep"))
             return getString(R.string.antinonfreedeplist);
-        return "";
+        return null;
     }
 
     private void updateViews() {
