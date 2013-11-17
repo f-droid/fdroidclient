@@ -14,15 +14,24 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.LayoutCompat;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
+    private DisplayImageOptions displayImageOptions;
 
     public AppListAdapter(Context context) {
         mContext = context;
+
+        DisplayImageOptions.Builder builder = new DisplayImageOptions.Builder();
+        builder.imageScaleType(ImageScaleType.NONE); // let android scale
+        builder.resetViewBeforeLoading(true); // required for multiple loading
+        builder.cacheInMemory(true); // default even if doc says otherwise
+        displayImageOptions = builder.build();
     }
 
     abstract protected boolean showStatusUpdate();
@@ -81,7 +90,8 @@ abstract public class AppListAdapter extends BaseAdapter {
         status.setVisibility(notVisibleOnCompact);
         license.setVisibility(notVisibleOnCompact);
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon);
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon,
+            displayImageOptions);
 
         if (!compact) {
             status.setText(getVersionInfo(app));
