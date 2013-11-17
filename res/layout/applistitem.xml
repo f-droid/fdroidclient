@@ -9,6 +9,8 @@
 		android:paddingRight="3dp"
 		android:baselineAligned="false" >
 
+  <!-- Actual icon size is dependent on preferences and set in
+		AppListAdapater.java:layoutIcon() -->
   <ImageView android:id="@+id/icon"
 		android:scaleType="fitCenter"
 		android:layout_width="48dp"
@@ -51,6 +53,14 @@
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@id/icon" />
 
+  <TextView android:id="@+id/summary"
+    	android:singleLine="true"
+		android:ellipsize="end"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/name"
+		android:layout_toRightOf="@id/icon" />
+
   <TextView android:id="@+id/status"
 		android:textSize="12sp"
 		android:singleLine="true"
@@ -58,7 +68,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@id/icon"
-		android:layout_below="@id/name" />
+		android:layout_below="@id/summary" />
 
   <TextView android:id="@+id/license"
 		android:textSize="12sp"
@@ -69,15 +79,5 @@
 		android:padding="8dp"
 		android:layout_alignParentRight="true"
 		android:layout_alignBaseline="@id/status" />
-
-  <!-- Some of the layout settings are set in
-  	AppListAdapater.java:layoutSummary() -->
-  <TextView android:id="@+id/summary"
-		android:singleLine="true"
-		android:ellipsize="end"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/status"
-		android:layout_toRightOf="@id/icon" />
 
 </RelativeLayout>

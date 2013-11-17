@@ -90,6 +90,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         status.setVisibility(notVisibleOnCompact);
         license.setVisibility(notVisibleOnCompact);
 
+        layoutIcon(icon, compact);
         ImageLoader.getInstance().displayImage(app.iconUrl, icon,
             displayImageOptions);
 
@@ -138,6 +139,20 @@ abstract public class AppListAdapter extends BaseAdapter {
             }
             return mContext.getString(R.string.n_versions_available, numav);
         }
+    }
+
+    private void layoutIcon(ImageView icon, boolean compact) {
+        int size = (int)mContext.getResources().getDimension((compact
+            ? R.dimen.applist_icon_compact_size
+            : R.dimen.applist_icon_normal_size));
+
+        RelativeLayout.LayoutParams params =
+            (RelativeLayout.LayoutParams)icon.getLayoutParams();
+
+        params.height = size;
+        params.width = size;
+
+        icon.setLayoutParams(params);
     }
 
 }
