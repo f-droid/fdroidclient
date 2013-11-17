@@ -80,7 +80,6 @@ abstract public class AppListAdapter extends BaseAdapter {
         iconContainer.setVisibility(visibleOnCompact);
         status.setVisibility(notVisibleOnCompact);
         license.setVisibility(notVisibleOnCompact);
-        layoutSummary(summary);
 
         ImageLoader.getInstance().displayImage(app.iconUrl, icon);
 
@@ -114,38 +113,6 @@ abstract public class AppListAdapter extends BaseAdapter {
         }
 
         return convertView;
-    }
-
-    /**
-     * In compact view, the summary sites next to the icon, below the name.
-     * In non-compact view, it sits under the icon, with some padding pushing
-     * it away from the left margin.
-     */
-    private void layoutSummary(TextView summaryView) {
-
-        if (Preferences.get().hasCompactLayout()) {
-
-            RelativeLayout.LayoutParams summaryLayout =
-                new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
-            summaryLayout.addRule(LayoutCompat.RelativeLayout.END_OF, R.id.icon);
-            summaryView.setLayoutParams(summaryLayout);
-            summaryView.setPadding(0,0,0,0);
-
-        } else {
-
-            RelativeLayout.LayoutParams summaryLayout =
-                new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.MATCH_PARENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            summaryLayout.addRule(RelativeLayout.BELOW, R.id.icon);
-            summaryView.setLayoutParams(summaryLayout);
-            float padding = mContext.getResources().getDimension(R.dimen.applist_summary_padding);
-            summaryView.setPadding((int)padding, 0, 0, 0);
-
-        }
     }
 
     private String getVersionInfo(DB.App app) {
