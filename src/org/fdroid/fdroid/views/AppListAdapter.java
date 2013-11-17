@@ -20,7 +20,6 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
-    private List<Boolean> compacts = new ArrayList<Boolean>();
 
     public AppListAdapter(Context context) {
         mContext = context;
@@ -32,12 +31,10 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     public void addItem(DB.App app) {
         items.add(app);
-        compacts.add(null);
     }
 
     public void clear() {
         items.clear();
-        compacts.clear();
     }
 
     @Override
@@ -75,19 +72,15 @@ abstract public class AppListAdapter extends BaseAdapter {
         name.setText(app.name);
         summary.setText(app.summary);
 
-        Boolean storedCompact = compacts.get(position);
-        if (storedCompact == null || compact != storedCompact) {
-            int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
-            int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
+        int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
+        int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
 
-            LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
+        LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
 
-            iconContainer.setVisibility(visibleOnCompact);
-            status.setVisibility(notVisibleOnCompact);
-            license.setVisibility(notVisibleOnCompact);
-            compacts.set(position, compact);
-            layoutSummary(summary);
-        }
+        iconContainer.setVisibility(visibleOnCompact);
+        status.setVisibility(notVisibleOnCompact);
+        license.setVisibility(notVisibleOnCompact);
+        layoutSummary(summary);
 
         ImageLoader.getInstance().displayImage(app.iconUrl, icon);
 
