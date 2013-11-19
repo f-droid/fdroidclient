@@ -71,6 +71,18 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="FDROIDREPO" />
+                <data android:scheme="fdroidrepos" />
+                <data android:scheme="FDROIDREPOS" />
+            </intent-filter>
         </activity>
 
         <activity

@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import android.app.AlertDialog;
@@ -33,6 +34,7 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
@@ -106,6 +108,23 @@ public class ManageRepo extends ListActivity {
 
         reposToRemove = new ArrayList<String>();
         reposToDisable = new ArrayList<String>();
+
+        /* let's see if someone is trying to send us a new repo */
+        Intent intent = getIntent();
+        /* an URL from a click or a QRCode scan */
+        Uri uri = intent.getData();
+        if (uri != null) {
+            // scheme should only ever be pure ASCII:
+            String scheme = intent.getScheme().toLowerCase(Locale.ENGLISH);
+            String fingerprint = uri.getUserInfo();
+            if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
+                    || scheme.equals("https") || scheme.equals("http")) {
+                String uriString = uri.toString().replace("fdroidrepo", "http").
+                        replace(fingerprint + "@", "");
+                showAddRepo(uriString);
+                Log.i("ManageRepo", uriString + " fingerprint: " + fingerprint);
+            }
+        }
     }
 
     @Override
@@ -211,40 +230,51 @@ public class ManageRepo extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void showAddRepo(String uriString) {
+        LayoutInflater li = LayoutInflater.from(this);
+        View view = li.inflate(R.layout.addrepo, null);
+        Builder p = new AlertDialog.Builder(this).setView(view);
+        final AlertDialog alrt = p.create();
+
+        if (uriString != null) {
+            EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
+            uriEditText.setText(uriString);
+        }
+
+        alrt.setIcon(android.R.drawable.ic_menu_add);
+        alrt.setTitle(getString(R.string.repo_add_title));
+        alrt.setButton(DialogInterface.BUTTON_POSITIVE,
+                getString(R.string.repo_add_add),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EditText uri = (EditText) alrt
+                                .findViewById(R.id.edit_uri);
+                        addRepo(uri.getText().toString());
+                        changed = true;
+                        redraw();
+                    }
+                });
+
+        alrt.setButton(DialogInterface.BUTTON_NEGATIVE,
+                getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+        alrt.show();
+    }
+
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
         super.onMenuItemSelected(featureId, item);
-        LayoutInflater li = LayoutInflater.from(this);
 
         switch (item.getItemId()) {
         case ADD_REPO:
-            View view = li.inflate(R.layout.addrepo, null);
-            Builder p = new AlertDialog.Builder(this).setView(view);
-            final AlertDialog alrt = p.create();
-
-            alrt.setIcon(android.R.drawable.ic_menu_add);
-            alrt.setTitle(getString(R.string.repo_add_title));
-            alrt.setButton(DialogInterface.BUTTON_POSITIVE,
-                    getString(R.string.repo_add_add),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            EditText uri = (EditText) alrt
-                                    .findViewById(R.id.edit_uri);
-                            addRepo(uri.getText().toString());
-                            changed = true;
-                            redraw();
-                        }
-                    });
-
-            alrt.setButton(DialogInterface.BUTTON_NEGATIVE,
-                    getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            return;
-                        }
-                    });
-            alrt.show();
+            showAddRepo(null);
             return true;
 
         case REM_REPO:
