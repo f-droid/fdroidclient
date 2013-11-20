@@ -43,6 +43,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -284,9 +287,19 @@ public class ManageRepo extends ListActivity {
         List<Repo> repos = getRepos();
         Repo repo = getRepo(uriString, repos);
         if (repo != null) {
-            final TextView tv = (TextView) view.findViewById(R.id.repo_alert);
+            TextView tv = (TextView) view.findViewById(R.id.repo_alert);
             tv.setVisibility(0);
             tv.setText(R.string.repo_exists);
+            final Button addButton = alrt.getButton(DialogInterface.BUTTON_POSITIVE);
+            addButton.setEnabled(false);
+            final CheckBox overwriteCheckBox = (CheckBox) view.findViewById(R.id.overwrite_repo);
+            overwriteCheckBox.setVisibility(0);
+            overwriteCheckBox.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addButton.setEnabled(overwriteCheckBox.isChecked());
+                }
+            });
             // TODO if address and fingerprint match, then enable existing repo
             // TODO if address matches but fingerprint doesn't, handle this with extra widgets
         }
