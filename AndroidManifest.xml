@@ -49,14 +49,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http" android:host="f-droid.org"
-                    android:pathPrefix="/repository/browse" />
-                <data android:scheme="https" android:host="f-droid.org"
-                    android:pathPrefix="/repository/browse" />
-                <data android:scheme="http" android:host="www.f-droid.org"
-                    android:pathPrefix="/repository/browse" />
-                <data android:scheme="https" android:host="www.f-droid.org"
-                    android:pathPrefix="/repository/browse" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="f-droid.org" />
+                <data android:host="www.f-droid.org" />
+                <data android:pathPrefix="/repository/browse" />
             </intent-filter>
 
             <meta-data
@@ -134,14 +131,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http" android:host="f-droid.org"
-                    android:pathPrefix="/app/" />
-                <data android:scheme="https" android:host="f-droid.org"
-                    android:pathPrefix="/app/" />
-                <data android:scheme="http" android:host="www.f-droid.org"
-                    android:pathPrefix="/app/" />
-                <data android:scheme="https" android:host="www.f-droid.org"
-                    android:pathPrefix="/app/" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="f-droid.org" />
+                <data android:host="www.f-droid.org" />
+                <data android:pathPrefix="/app/" />
             </intent-filter>
         </activity>
         <activity
