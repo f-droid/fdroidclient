@@ -48,6 +48,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.DB.Repo;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 
@@ -121,7 +122,7 @@ public class ManageRepo extends ListActivity {
                     || scheme.equals("https") || scheme.equals("http")) {
                 String uriString = uri.toString().replace("fdroidrepo", "http").
                         replace(fingerprint + "@", "");
-                showAddRepo(uriString);
+                showAddRepo(uriString, fingerprint);
                 Log.i("ManageRepo", uriString + " fingerprint: " + fingerprint);
             }
         }
@@ -220,6 +221,25 @@ public class ManageRepo extends ListActivity {
         }
     }
 
+    protected List<Repo> getRepos() {
+        List<Repo> repos = null;
+        try {
+            DB db = DB.getDB();
+            repos = db.getRepos();
+        } finally {
+            DB.releaseDB();
+        }
+        return repos;
+    }
+
+    protected Repo getRepo(String repoUri, List<Repo> repos) {
+        if (repoUri != null)
+            for (Repo repo : repos)
+                if (repoUri.equals(repo.address))
+                    return repo;
+        return null;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -230,16 +250,13 @@ public class ManageRepo extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showAddRepo(String uriString) {
+    private void showAddRepo(String uriString, String fingerprint) {
         LayoutInflater li = LayoutInflater.from(this);
         View view = li.inflate(R.layout.addrepo, null);
         Builder p = new AlertDialog.Builder(this).setView(view);
         final AlertDialog alrt = p.create();
-
-        if (uriString != null) {
-            EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
-            uriEditText.setText(uriString);
-        }
+        final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
+        final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
         alrt.setIcon(android.R.drawable.ic_menu_add);
         alrt.setTitle(getString(R.string.repo_add_title));
@@ -248,9 +265,7 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        EditText uri = (EditText) alrt
-                                .findViewById(R.id.edit_uri);
-                        addRepo(uri.getText().toString());
+                        addRepo(uriEditText.getText().toString());
                         changed = true;
                         redraw();
                     }
@@ -265,6 +280,21 @@ public class ManageRepo extends ListActivity {
                     }
                 });
         alrt.show();
+
+        List<Repo> repos = getRepos();
+        Repo repo = getRepo(uriString, repos);
+        if (repo != null) {
+            final TextView tv = (TextView) view.findViewById(R.id.repo_alert);
+            tv.setVisibility(0);
+            tv.setText(R.string.repo_exists);
+            // TODO if address and fingerprint match, then enable existing repo
+            // TODO if address matches but fingerprint doesn't, handle this with extra widgets
+        }
+
+        if (uriString != null)
+            uriEditText.setText(uriString);
+        if (fingerprint != null)
+            fingerprintEditText.setText(fingerprint);
     }
 
     @Override
@@ -274,7 +304,7 @@ public class ManageRepo extends ListActivity {
 
         switch (item.getItemId()) {
         case ADD_REPO:
-            showAddRepo(null);
+            showAddRepo(null, null);
             return true;
 
         case REM_REPO:

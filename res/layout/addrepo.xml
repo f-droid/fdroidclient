@@ -1,24 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:orientation="vertical">
-	<TextView
-		android:layout_width="wrap_content"
-		android:ems="20"
-		android:layout_height="wrap_content" android:text="@string/repo_add_url"/>
-	
-	<EditText
-		android:id="@+id/edit_uri"
-		android:inputType="textUri"
-		android:maxLines="1"
-		android:layout_width="wrap_content"
-		android:ems="20"
-		android:layout_height="wrap_content"
-	android:text="https://"/>
-</LinearLayout>
-<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:text="@string/repo_add_url" />
+
+    <EditText
+        android:id="@+id/edit_uri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:inputType="textUri"
+        android:maxLines="1"
+        android:text="https://" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        android:text="@string/repo_add_fingerprint" />
+
+    <EditText
+        android:id="@+id/edit_fingerprint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="0123456789ABCDEFabcedf: "
+        android:ems="20"
+        android:inputType="textNoSuggestions"
+        android:maxLines="1"
+        android:typeface="monospace" />
+
+    <TextView
+        android:id="@+id/repo_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_dialog_alert"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:visibility="gone" />
+
+</LinearLayout><!--
  * Copyright (C) 2009  Roberto Jacinto
  * roberto.jacinto@caixamagica.pt
  *

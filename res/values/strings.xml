@@ -70,6 +70,8 @@
 	<string name="download_server">Getting application from</string>
 
 	<string name="repo_add_url">Repository address</string>
+	<string name="repo_add_fingerprint">fingerprint (optional)</string>
+	<string name="repo_exists">This repo already exists!</string>
 
 	<string name="repo_alrt">The list of used repositories has
 		changed.\nDo you

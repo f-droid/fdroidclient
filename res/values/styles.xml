@@ -10,6 +10,7 @@
 
 	<color name="black">#FF000000</color>
 	<color name="white">#FFFFFFFF</color>
+	<color name="red">#FFFF0000</color>
 
 	<style name="AboutDialogLight" parent="@android:style/Theme.Dialog">
 		<item name="@android:windowBackground">@color/black</item>
