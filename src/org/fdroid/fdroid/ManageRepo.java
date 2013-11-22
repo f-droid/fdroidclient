@@ -202,6 +202,7 @@ public class ManageRepo extends ListActivity {
         redraw();
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
@@ -332,6 +333,7 @@ public class ManageRepo extends ListActivity {
             builder.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
             builder.setMultiChoiceItems(b, null,
                     new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton, boolean isChecked) {
                             if (isChecked) {
@@ -343,6 +345,7 @@ public class ManageRepo extends ListActivity {
                     });
             builder.setPositiveButton(getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             try {
@@ -357,6 +360,7 @@ public class ManageRepo extends ListActivity {
                     });
             builder.setNegativeButton(getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             return;

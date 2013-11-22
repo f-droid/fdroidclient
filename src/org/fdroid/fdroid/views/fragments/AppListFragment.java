@@ -32,6 +32,7 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
         Preferences.get().unregisterCompactLayoutChangeListener(this);
     }
 
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {

@@ -19,6 +19,7 @@
 
 package org.fdroid.fdroid;
 
+import android.annotation.SuppressLint;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -350,6 +351,7 @@ public class DB {
         }
 
         private static class BasicChecker extends CompatibilityChecker {
+            @Override
             public boolean isCompatible(Apk apk) {
                 return hasApi(apk.minSdkVersion);
             }
@@ -362,6 +364,7 @@ public class DB {
             private List<String> cpuAbis;
             private boolean ignoreTouchscreen;
 
+            @SuppressLint("NewApi")
             public EclairChecker(Context ctx) {
 
                 SharedPreferences prefs = PreferenceManager
@@ -397,6 +400,7 @@ public class DB {
                 return false;
             }
 
+            @Override
             public boolean isCompatible(Apk apk) {
                 if (!hasApi(apk.minSdkVersion))
                     return false;
@@ -1002,10 +1006,12 @@ public class DB {
             return (instance == null ? null : instance.toString());
         }
 
+        @Override
         public String toString() {
             return value;
         }
 
+        @Override
         public Iterator<String> iterator() {
             SimpleStringSplitter splitter = new SimpleStringSplitter(',');
             splitter.setString(value);

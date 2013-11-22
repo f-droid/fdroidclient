@@ -9,6 +9,7 @@ import org.fdroid.fdroid.views.AppListAdapter;
 
 public class InstalledAppsFragment extends AppListFragment {
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return createPlainAppList();
     }

@@ -95,6 +95,7 @@ public class Downloader extends Thread {
         return curapk;
     }
 
+    @Override
     public void run() {
 
         InputStream input = null;

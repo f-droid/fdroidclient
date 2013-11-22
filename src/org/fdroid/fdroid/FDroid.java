@@ -23,6 +23,7 @@ import android.content.*;
 import android.content.res.Configuration;
 import android.support.v4.view.MenuItemCompat;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
@@ -123,6 +124,7 @@ public class FDroid extends FragmentActivity {
         manager.repopulateLists();
     }
 
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         getTabManager().onConfigurationChanged(newConfig);
@@ -205,6 +207,7 @@ public class FDroid extends FragmentActivity {
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
                     getString(R.string.about_website),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             Uri uri = Uri.parse("https://f-droid.org");
@@ -213,6 +216,7 @@ public class FDroid extends FragmentActivity {
                     });
             alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                         }
@@ -223,6 +227,7 @@ public class FDroid extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @TargetApi(5)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -237,6 +242,7 @@ public class FDroid extends FragmentActivity {
                 ask_alrt.setMessage(getString(R.string.repo_alrt));
                 ask_alrt.setPositiveButton(getString(R.string.yes),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
                                 updateRepos();
@@ -244,6 +250,7 @@ public class FDroid extends FragmentActivity {
                         });
                 ask_alrt.setNegativeButton(getString(R.string.no),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
                                 return;
@@ -264,7 +271,7 @@ public class FDroid extends FragmentActivity {
             } else if ((resultCode & PreferencesActivity.RESULT_REFILTER) != 0) {
                 ((FDroidApp) getApplication()).filterApps();
             }
-            
+
             if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
                 ((FDroidApp) getApplication()).reloadTheme();
                 final Intent intent = getIntent();
@@ -284,6 +291,7 @@ public class FDroid extends FragmentActivity {
         viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
+            @Override
             public void onPageSelected(int position) {
                 getTabManager().selectTab(position);
             }

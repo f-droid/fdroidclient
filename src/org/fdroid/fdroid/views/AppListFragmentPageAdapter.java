@@ -38,6 +38,7 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
         return 3;
     }
 
+    @Override
     public String getPageTitle(int i) {
         switch(i) {
             case 0:

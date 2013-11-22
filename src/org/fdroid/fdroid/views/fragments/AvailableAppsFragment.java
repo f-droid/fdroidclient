@@ -12,6 +12,7 @@ import org.fdroid.fdroid.views.AppListView;
 
 public class AvailableAppsFragment extends AppListFragment implements AdapterView.OnItemSelectedListener {
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         AppListView view = new AppListView(getActivity());
         view.setOrientation(LinearLayout.VERTICAL);
@@ -40,6 +41,7 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
         return view;
     }
 
+    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {
         String category = parent.getItemAtPosition(pos).toString();
