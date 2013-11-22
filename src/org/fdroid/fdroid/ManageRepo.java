@@ -238,10 +238,8 @@ public class ManageRepo extends ListActivity {
             digest.update(Hasher.unhex(repo.pubkey));
             byte[] fingerprint = digest.digest();
             Formatter formatter = new Formatter(new StringBuilder());
-            formatter.format("%02X", fingerprint[0]);
             for (int i = 1; i < fingerprint.length; i++) {
-                formatter.format(i % 5 == 0 ? " %02X" : ":%02X",
-                        fingerprint[i]);
+                formatter.format("%02X", fingerprint[i]);
             }
             ret = formatter.toString();
             formatter.close();
