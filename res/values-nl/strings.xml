@@ -108,7 +108,7 @@ Wil je ze vernieuwen?</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
   <string name="status_download">Downloaden
-%2$s / %3$s (%4d%%) van
+%2$s / %3$s (%4$d%%) van
 %1$s</string>
   <string name="status_processing_xml">Verwerken applicatie
 %2$d van %3$d van
