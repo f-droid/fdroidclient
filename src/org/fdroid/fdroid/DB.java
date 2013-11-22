@@ -21,10 +21,12 @@ package org.fdroid.fdroid;
 
 import android.annotation.SuppressLint;
 import java.io.File;
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -434,7 +436,8 @@ public class DB {
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (id integer primary key, address text not null, "
             + "name text, description text, inuse integer not null, "
-            + "priority integer not null, pubkey text, lastetag text);";
+            + "priority integer not null, pubkey text, fingerprint text, "
+            + "lastetag text);";
 
     public static class Repo {
         public int id;
@@ -444,10 +447,11 @@ public class DB {
         public boolean inuse;
         public int priority;
         public String pubkey; // null for an unsigned repo
+        public String fingerprint; // always null for an unsigned repo
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 28;
+    private final int DBVersion = 29;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -455,6 +459,26 @@ public class DB {
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
         db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
+    }
+
+    public static String calcFingerprint(String pubkey) {
+        String ret = null;
+        try {
+            // keytool -list -v gives you the SHA-256 fingerprint
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.update(Hasher.unhex(pubkey));
+            byte[] fingerprint = digest.digest();
+            Formatter formatter = new Formatter(new StringBuilder());
+            for (int i = 1; i < fingerprint.length; i++) {
+                formatter.format("%02X", fingerprint[i]);
+            }
+            ret = formatter.toString();
+            formatter.close();
+        } catch (Exception e) {
+            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
+                    + Log.getStackTraceString(e));
+        }
+        return ret;
     }
 
     public void resetTransient(SQLiteDatabase db) {
@@ -491,8 +515,10 @@ public class DB {
                     mContext.getString(R.string.default_repo_name));
             values.put("description",
                     mContext.getString(R.string.default_repo_description));
-            values.put("pubkey",
-                    mContext.getString(R.string.default_repo_pubkey));
+            String pubkey = mContext.getString(R.string.default_repo_pubkey);
+            String fingerprint = DB.calcFingerprint(pubkey);
+            values.put("pubkey", pubkey);
+            values.put("fingerprint", fingerprint);
             values.put("inuse", 1);
             values.put("priority", 10);
             values.put("lastetag", (String) null);
@@ -505,8 +531,9 @@ public class DB {
                     mContext.getString(R.string.default_repo_name2));
             values.put("description",
                     mContext.getString(R.string.default_repo_description2));
-            values.put("pubkey",
-                    mContext.getString(R.string.default_repo_pubkey));
+            // default #2 is /archive which has the same key as /repo
+            values.put("pubkey", pubkey);
+            values.put("fingerprint", fingerprint);
             values.put("inuse", 0);
             values.put("priority", 20);
             values.put("lastetag", (String) null);
@@ -568,6 +595,28 @@ public class DB {
                     mContext.getString(R.string.default_repo_address2) });
             }
 
+            if (oldVersion < 29) {
+                if (!columnExists(db, TABLE_REPO, "fingerprint"))
+                    db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
+                List<Repo> oldrepos = new ArrayList<Repo>();
+                Cursor c = db.query(TABLE_REPO,
+                        new String[] { "address", "pubkey" },
+                        null, null, null, null, null);
+                c.moveToFirst();
+                while (!c.isAfterLast()) {
+                    Repo repo = new Repo();
+                    repo.address = c.getString(0);
+                    repo.pubkey = c.getString(1);
+                    oldrepos.add(repo);
+                    c.moveToNext();
+                }
+                c.close();
+                for (Repo repo : oldrepos) {
+                    ContentValues values = new ContentValues();
+                    values.put("fingerprint", DB.calcFingerprint(repo.pubkey));
+                    db.update(TABLE_REPO, values, "address = ?", new String[] { repo.address });
+                }
+            }
         }
 
     }
@@ -1245,7 +1294,8 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(TABLE_REPO, new String[] { "address", "name",
-                "description", "inuse", "priority", "pubkey", "lastetag" },
+                "description", "inuse", "priority", "pubkey", "fingerprint",
+                "lastetag" },
                     "id = ?", new String[] { Integer.toString(id) }, null, null, null);
             if (!c.moveToFirst())
                 return null;
@@ -1257,7 +1307,8 @@ public class DB {
             repo.inuse = (c.getInt(3) == 1);
             repo.priority = c.getInt(4);
             repo.pubkey = c.getString(5);
-            repo.lastetag = c.getString(6);
+            repo.fingerprint = c.getString(6);
+            repo.lastetag = c.getString(7);
             return repo;
         } finally {
             if (c != null)
@@ -1271,7 +1322,8 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(TABLE_REPO, new String[] { "id", "address", "name",
-                    "description", "inuse", "priority", "pubkey", "lastetag" },
+                    "description", "inuse", "priority", "pubkey", "fingerprint",
+                    "lastetag" },
                     null, null, null, null, "priority");
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -1283,7 +1335,8 @@ public class DB {
                 repo.inuse = (c.getInt(4) == 1);
                 repo.priority = c.getInt(5);
                 repo.pubkey = c.getString(6);
-                repo.lastetag = c.getString(7);
+                repo.fingerprint = c.getString(7);
+                repo.lastetag = c.getString(8);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -1316,6 +1369,12 @@ public class DB {
         values.put("inuse", repo.inuse);
         values.put("priority", repo.priority);
         values.put("pubkey", repo.pubkey);
+        if (repo.pubkey != null && repo.fingerprint == null) {
+            // we got a new pubkey, so calc the fingerprint
+            values.put("fingerprint", DB.calcFingerprint(repo.pubkey));
+        } else {
+            values.put("fingerprint", repo.fingerprint);
+        }
         values.put("lastetag", (String) null);
         db.update(TABLE_REPO, values, "address = ?",
                 new String[] { repo.address });
@@ -1329,7 +1388,8 @@ public class DB {
     }
 
     public void addRepo(String address, String name, String description,
-            int priority, String pubkey, boolean inuse) {
+            int priority, String pubkey, String fingerprint, boolean inuse)
+                    throws SecurityException {
         ContentValues values = new ContentValues();
         values.put("address", address);
         values.put("name", name);
@@ -1337,6 +1397,17 @@ public class DB {
         values.put("inuse", inuse ? 1 : 0);
         values.put("priority", priority);
         values.put("pubkey", pubkey);
+        String calcedFingerprint = DB.calcFingerprint(pubkey);
+        if (fingerprint == null) {
+            fingerprint = calcedFingerprint;
+        } else {
+            fingerprint = fingerprint.toUpperCase();
+            if (!fingerprint.equals(calcedFingerprint)) {
+                throw new SecurityException("Given fingerprint does not match calculated one! ("
+                        + fingerprint + " != " + calcedFingerprint);
+            }
+        }
+        values.put("fingerprint", fingerprint);
         values.put("lastetag", (String) null);
         db.insert(TABLE_REPO, null, values);
     }

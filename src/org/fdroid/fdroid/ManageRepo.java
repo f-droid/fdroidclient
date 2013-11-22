@@ -19,10 +19,8 @@
 
 package org.fdroid.fdroid;
 
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -157,9 +155,8 @@ public class ManageRepo extends ListActivity {
             } else {
                 server_line.put("inuse", R.drawable.btn_check_off);
             }
-            if (repo.pubkey != null) {
-                String fingerprint = getRepoFingerprint(repo);
-                server_line.put("fingerprint", fingerprint);
+            if (repo.fingerprint != null) {
+                server_line.put("fingerprint", repo.fingerprint);
             }
             result.add(server_line);
         }
@@ -202,10 +199,10 @@ public class ManageRepo extends ListActivity {
         return true;
     }
 
-    protected void addRepo(String repoUri) {
+    protected void addRepo(String repoUri, String fingerprint) {
         try {
             DB db = DB.getDB();
-            db.addRepo(repoUri, null, null, 10, null, true);
+            db.addRepo(repoUri, null, null, 10, null, fingerprint, true);
         } finally {
             DB.releaseDB();
         }
@@ -228,26 +225,6 @@ public class ManageRepo extends ListActivity {
                 if (repoUri.equals(repo.address))
                     return repo;
         return null;
-    }
-
-    protected String getRepoFingerprint(Repo repo) {
-        String ret = null;
-        try {
-            // keytool -list -v gives you the SHA-256 fingerprint
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            digest.update(Hasher.unhex(repo.pubkey));
-            byte[] fingerprint = digest.digest();
-            Formatter formatter = new Formatter(new StringBuilder());
-            for (int i = 1; i < fingerprint.length; i++) {
-                formatter.format("%02X", fingerprint[i]);
-            }
-            ret = formatter.toString();
-            formatter.close();
-        } catch (Exception e) {
-            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
-                    + Log.getStackTraceString(e));
-        }
-        return ret;
     }
 
     @Override
@@ -275,7 +252,8 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addRepo(uriEditText.getText().toString());
+                        addRepo(uriEditText.getText().toString(),
+                                fingerprintEditText.getText().toString());
                         changed = true;
                         redraw();
                     }
