@@ -233,7 +233,8 @@ public class ManageRepo extends ListActivity {
     protected String getRepoFingerprint(Repo repo) {
         String ret = null;
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-1");
+            // keytool -list -v gives you the SHA-256 fingerprint
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
             digest.update(Hasher.unhex(repo.pubkey));
             byte[] fingerprint = digest.digest();
             Formatter formatter = new Formatter(new StringBuilder());
