@@ -49,14 +49,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http" android:host="f-droid.org"
-                    android:pathPrefix="/repository/browse" />
-                <data android:scheme="https" android:host="f-droid.org"
-                    android:pathPrefix="/repository/browse" />
-                <data android:scheme="http" android:host="www.f-droid.org"
-                    android:pathPrefix="/repository/browse" />
-                <data android:scheme="https" android:host="www.f-droid.org"
-                    android:pathPrefix="/repository/browse" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="f-droid.org" />
+                <data android:host="www.f-droid.org" />
+                <data android:pathPrefix="/repository/browse" />
             </intent-filter>
 
             <meta-data
@@ -71,6 +68,34 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+                <!-- the patterns are unpredictable, this is the best I could get working -->
+                <data android:path="/repo" />
+                <data android:path="/archive" />
+                <data android:pathPattern="/repo/*" />
+                <data android:pathPattern="/archive/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="FDROIDREPO" />
+                <data android:scheme="fdroidrepos" />
+                <data android:scheme="FDROIDREPOS" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -106,14 +131,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http" android:host="f-droid.org"
-                    android:pathPrefix="/app/" />
-                <data android:scheme="https" android:host="f-droid.org"
-                    android:pathPrefix="/app/" />
-                <data android:scheme="http" android:host="www.f-droid.org"
-                    android:pathPrefix="/app/" />
-                <data android:scheme="https" android:host="www.f-droid.org"
-                    android:pathPrefix="/app/" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="f-droid.org" />
+                <data android:host="www.f-droid.org" />
+                <data android:pathPrefix="/app/" />
             </intent-filter>
         </activity>
         <activity

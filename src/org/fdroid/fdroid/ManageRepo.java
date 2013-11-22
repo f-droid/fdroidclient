@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import android.app.AlertDialog;
@@ -33,6 +34,7 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
@@ -41,11 +43,15 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.DB.Repo;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 
@@ -106,6 +112,23 @@ public class ManageRepo extends ListActivity {
 
         reposToRemove = new ArrayList<String>();
         reposToDisable = new ArrayList<String>();
+
+        /* let's see if someone is trying to send us a new repo */
+        Intent intent = getIntent();
+        /* an URL from a click or a QRCode scan */
+        Uri uri = intent.getData();
+        if (uri != null) {
+            // scheme should only ever be pure ASCII:
+            String scheme = intent.getScheme().toLowerCase(Locale.ENGLISH);
+            String fingerprint = uri.getUserInfo();
+            if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
+                    || scheme.equals("https") || scheme.equals("http")) {
+                String uriString = uri.toString().replace("fdroidrepo", "http").
+                        replace(fingerprint + "@", "");
+                showAddRepo(uriString, fingerprint);
+                Log.i("ManageRepo", uriString + " fingerprint: " + fingerprint);
+            }
+        }
     }
 
     @Override
@@ -201,6 +224,25 @@ public class ManageRepo extends ListActivity {
         }
     }
 
+    protected List<Repo> getRepos() {
+        List<Repo> repos = null;
+        try {
+            DB db = DB.getDB();
+            repos = db.getRepos();
+        } finally {
+            DB.releaseDB();
+        }
+        return repos;
+    }
+
+    protected Repo getRepo(String repoUri, List<Repo> repos) {
+        if (repoUri != null)
+            for (Repo repo : repos)
+                if (repoUri.equals(repo.address))
+                    return repo;
+        return null;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -211,40 +253,71 @@ public class ManageRepo extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void showAddRepo(String uriString, String fingerprint) {
+        LayoutInflater li = LayoutInflater.from(this);
+        View view = li.inflate(R.layout.addrepo, null);
+        Builder p = new AlertDialog.Builder(this).setView(view);
+        final AlertDialog alrt = p.create();
+        final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
+        final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
+
+        alrt.setIcon(android.R.drawable.ic_menu_add);
+        alrt.setTitle(getString(R.string.repo_add_title));
+        alrt.setButton(DialogInterface.BUTTON_POSITIVE,
+                getString(R.string.repo_add_add),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        addRepo(uriEditText.getText().toString());
+                        changed = true;
+                        redraw();
+                    }
+                });
+
+        alrt.setButton(DialogInterface.BUTTON_NEGATIVE,
+                getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+        alrt.show();
+
+        List<Repo> repos = getRepos();
+        Repo repo = getRepo(uriString, repos);
+        if (repo != null) {
+            TextView tv = (TextView) view.findViewById(R.id.repo_alert);
+            tv.setVisibility(0);
+            tv.setText(R.string.repo_exists);
+            final Button addButton = alrt.getButton(DialogInterface.BUTTON_POSITIVE);
+            addButton.setEnabled(false);
+            final CheckBox overwriteCheckBox = (CheckBox) view.findViewById(R.id.overwrite_repo);
+            overwriteCheckBox.setVisibility(0);
+            overwriteCheckBox.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addButton.setEnabled(overwriteCheckBox.isChecked());
+                }
+            });
+            // TODO if address and fingerprint match, then enable existing repo
+            // TODO if address matches but fingerprint doesn't, handle this with extra widgets
+        }
+
+        if (uriString != null)
+            uriEditText.setText(uriString);
+        if (fingerprint != null)
+            fingerprintEditText.setText(fingerprint);
+    }
+
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
         super.onMenuItemSelected(featureId, item);
-        LayoutInflater li = LayoutInflater.from(this);
 
         switch (item.getItemId()) {
         case ADD_REPO:
-            View view = li.inflate(R.layout.addrepo, null);
-            Builder p = new AlertDialog.Builder(this).setView(view);
-            final AlertDialog alrt = p.create();
-
-            alrt.setIcon(android.R.drawable.ic_menu_add);
-            alrt.setTitle(getString(R.string.repo_add_title));
-            alrt.setButton(DialogInterface.BUTTON_POSITIVE,
-                    getString(R.string.repo_add_add),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            EditText uri = (EditText) alrt
-                                    .findViewById(R.id.edit_uri);
-                            addRepo(uri.getText().toString());
-                            changed = true;
-                            redraw();
-                        }
-                    });
-
-            alrt.setButton(DialogInterface.BUTTON_NEGATIVE,
-                    getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            return;
-                        }
-                    });
-            alrt.show();
+            showAddRepo(null, null);
             return true;
 
         case REM_REPO:
