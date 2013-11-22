@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="searchres_napps">%1$d Anwendungen mit \'%2$s\' gefunden:</string>
-  <string name="searchres_oneapp">Eine Anwendung mit \'%s\' gefunden:</string>
-  <string name="searchres_noapps">Keine Anwendung mit \'%s\' gefunden.</string>
-  <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen dieser Anwendung werden alle Daten dieser Anwendung gelöscht.)</string>
-  <string name="installIncompatible">Es sieht so aus, als sei dieses Programm nicht zu Ihrem Gerät kompatibel. Möchten Sie trotzdem versuchen es zu installieren?</string>
+  <string name="searchres_napps">%1$d Anwendungen mit »%s« gefunden:</string>
+  <string name="searchres_oneapp">Eine Anwendung mit »%s« gefunden:</string>
+  <string name="searchres_noapps">Keine Anwendung mit »%s« gefunden.</string>
+  <string name="SignatureMismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)</string>
+  <string name="installIncompatible">Es sieht so aus, als sei dieses Paket mit Ihrem Gerät nicht kompatibel. Möchten Sie trotzdem versuchen es zu installieren?</string>
   <string name="installDowngrade">Sie versuchen eine vorherige Version einer bereits installierten Anwendung zu installieren. Dies kann zu Fehlverhalten der Anwendung und gegebenenfalls zu Datenverlust führen. Möchten Sie dennoch fortfahren?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d Versionen verfügbar</string>
@@ -16,7 +16,7 @@
   <string name="last_update_check">Letzte Aktualisierung der Paketquellen: %s</string>
   <string name="never">niemals</string>
   <string name="automatic_repo_scan">Automatische Paketaktualisierung</string>
-  <string name="update_apps_list">Liste der Anwendungen automatisch aus den Paketquellen aktualisieren</string>
+  <string name="update_apps_list">Anwendungsliste automatisch aus den Paketquellen aktualisieren</string>
   <string name="automatic_scan_wifi">Nur bei WLAN</string>
   <string name="automatic_scan_wifi_desc">Anwendungsliste nur bei WLAN automatisch aktualisieren</string>
   <string name="notify">Benachrichtigen</string>
@@ -28,14 +28,14 @@
   <string name="no_such_app">Keine passende Anwendung gefunden</string>
   <string name="about_title">Über F-Droid</string>
   <string name="about_desc">Ursprünglich basierend auf Aptoide.
-Lizensiert unter der GNU GPLv3.</string>
+Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="about_site">Internetseite:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Internetseite</string>
   <string name="no_repo">Sie haben keine Paketquellen konfiguriert!
 
-Eine Paketquelle ist eine Sammelstelle von Anwendungen.
+Eine Paketquelle ist eine Sammlung von Anwendungen.
 Um eine Paketquelle hinzuzufügen drücken Sie jetzt den Menüknopf und geben Sie deren Adresse an.
 
 Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</string>
@@ -49,19 +49,19 @@ Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</strin
   <string name="repo_add_add">Hinzufügen</string>
   <string name="cancel">Abbrechen</string>
   <string name="repo_delete_title">Zu entfernende Paketquelle auswählen</string>
-  <string name="repo_update_title">Softwarequellen aktualisieren</string>
+  <string name="repo_update_title">Paketquellen aktualisieren</string>
   <string name="tab_installed">Installiert</string>
   <string name="tab_noninstalled">Verfügbar</string>
   <string name="tab_updates">Aktualisierungen</string>
-  <string name="one_update_available">Eine Aktualisierung verfügbar.</string>
+  <string name="one_update_available">Eine Aktualisierung ist verfügbar.</string>
   <string name="many_updates_available">%d Aktualisierungen sind verfügbar.</string>
-  <string name="fdroid_updates_available">Aktualisierungen für F-Droid verfügbar</string>
+  <string name="fdroid_updates_available">F-Droid: Aktualisierungen verfügbar</string>
   <string name="process_wait_title">Bitte warten</string>
   <string name="process_update_msg">Anwendungsliste wird aktualisiert …</string>
   <string name="download_server">Anwendung wird heruntergeladen von</string>
   <string name="repo_add_url">Adresse der Paketquelle</string>
   <string name="repo_alrt">Die Liste der genutzten Paketquellen hat sich geändert.
-Soll diese aktualisiert werden?</string>
+Sollen diese aktualisiert werden?</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
   <string name="menu_manage">Paketquellen verwalten</string>
   <string name="menu_preferences">Einstellungen</string>
@@ -70,7 +70,7 @@ Soll diese aktualisiert werden?</string>
   <string name="menu_add_repo">Paketquelle hinzufügen</string>
   <string name="menu_rem_repo">Paketquelle entfernen</string>
   <string name="menu_launch">Ausführen</string>
-  <string name="menu_share">Teilen</string>
+  <string name="menu_share">Empfehlen</string>
   <string name="menu_install">Installieren</string>
   <string name="menu_uninstall">Entfernen</string>
   <string name="menu_ignore_all">Alle Aktualisierungen ignorieren</string>
@@ -78,29 +78,32 @@ Soll diese aktualisiert werden?</string>
   <string name="menu_website">Internetseite</string>
   <string name="menu_issues">Probleme</string>
   <string name="menu_source">Quelltext</string>
+  <string name="menu_upgrade">Aktualisieren</string>
   <string name="menu_donate">Spenden</string>
   <string name="details_installed">Version %s installiert</string>
   <string name="details_notinstalled">Nicht Installiert</string>
   <string name="corrupt_download">Heruntergeladene Datei ist fehlerhaft</string>
   <string name="download_cancelled">Download abgebrochen</string>
   <string name="antiadslist">Diese Anwendung enthält Werbung</string>
-  <string name="antitracklist">Diese Anwendung zeichnet Ihre Aktivitäten auf und sendet diese</string>
-  <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht freie Add-Ons</string>
+  <string name="antitracklist">Diese Anwendung verfolgt und versendet Ihre Aktivitäten</string>
+  <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht freie Erweiterungen</string>
   <string name="antinonfreenetlist">Diese Anwendung bewirbt nicht freie Netzwerkdienste</string>
   <string name="antinonfreedeplist">Diese Anwendung hängt ab von nicht freien Anwendungen</string>
   <string name="display">Anzeige</string>
-  <string name="expert">Fortgeschrittene</string>
+  <string name="expert">Experte</string>
   <string name="expert_mode">Expertenmodus einschalten</string>
   <string name="search_hint">Anwendungen suchen</string>
   <string name="db_sync_mode">Art der Datenbanksynchronisation</string>
   <string name="db_sync_mode_long">SQLite Synchronisationsmodus setzen</string>
   <string name="appcompatibility">Kompatibilität der Anwendung</string>
-  <string name="rooted">Erfordert Root-Zugriff</string>
+  <string name="show_incompat_versions">Inkompatible Versionen</string>
+  <string name="show_incompat_versions_l">Anwendungsversionen anzeigen, welche mit dem Gerät inkompatibel sind</string>
+  <string name="rooted">Root</string>
   <string name="rooted_long">Anwendungen anzeigen, die Root-Rechte benötigen</string>
   <string name="ignoreTouch">Touchscreen ignorieren</string>
   <string name="ignoreTouch_long">Anwendungen die einen Touchscreen benötigen immer mit anzeigen</string>
   <string name="category_all">Alle</string>
-  <string name="category_whatsnew">Neue Anwendungen</string>
+  <string name="category_whatsnew">Was gibt es Neues</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
   <string name="status_download">Herunterladen
 %2$s / %3$s (%4$d%%) von
@@ -110,12 +113,14 @@ Soll diese aktualisiert werden?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Verbinden mit
 %1$s</string>
-  <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft ...</string>
+  <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>
-  <string name="showPermissions">Zeige Berechtigungen</string>
-  <string name="showPermissions_long">Zeige eine Liste von Berechtigungen die von einer Anwendung benötigt werden</string>
+  <string name="showPermissions">Berechtigungen anzeigen</string>
+  <string name="showPermissions_long">Eine Liste von Berechtigungen die von einer Anwendung benötigt werden anzeigen</string>
   <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann</string>
   <string name="compactlayout">Kompakte Ansicht</string>
   <string name="compactlayout_long">Nur Namen und Kurzbeschreibung in der Anwendungsliste anzeigen</string>
+  <string name="theme">Thema</string>
+  <string name="theme_long">Ein Thema welches benutzt werden soll auswählen</string>
 </resources>

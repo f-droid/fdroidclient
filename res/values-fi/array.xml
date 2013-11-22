@@ -7,6 +7,10 @@
     <item>12 tunnin välein</item>
     <item>Päivittäin</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Tumma</item>
+    <item>Valo</item>
+  </string-array>
   <string-array name="dbSyncModeNames">
     <item>Pois päältä (vaarallinen)</item>
     <item>Normaali</item>

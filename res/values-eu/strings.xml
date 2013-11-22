@@ -65,6 +65,7 @@ Eguneratu nahi dituzu?</string>
   <string name="details_notinstalled">Instalatu gabe</string>
   <string name="corrupt_download">Deskargatutako fitxategia hondatuta dago</string>
   <string name="download_cancelled">Deskarga bertan behera utzita</string>
+  <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="display">Bistaratu</string>
   <string name="expert">Aditua</string>
   <string name="expert_mode">Gaitu aditu modua</string>

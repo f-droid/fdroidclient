@@ -22,14 +22,13 @@
   <string name="notify">Varsle</string>
   <string name="notify_updates_available">Varsle når nye oppdateringer er tilgjengelige</string>
   <string name="update_history">Oppdater historie</string>
-  <string name="update_history_desc">Dager å vise nye/oppdaterte applikasjoner</string>
+  <string name="update_history_desc">Dager for visning av nye/oppdaterte applikasjoner</string>
   <string name="search_results">Søkeresultater</string>
-  <string name="app_details">Applikasjonsdetaljer</string>
-  <string name="no_such_app">Fant ikke en slik applikasjon</string>
+  <string name="app_details">Programdetaljer</string>
+  <string name="no_such_app">Program ikke funnet</string>
   <string name="about_title">Om F-Droid</string>
   <string name="about_desc">Basert på Aptoide.
-Sluppet ut under
-        GNU-GPLV3-lisensen.</string>
+Lisensiert GNU GPLv3.</string>
   <string name="about_site">Nettside:</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Versjon:</string>
@@ -51,10 +50,10 @@ Sluppet ut under
   <string name="tab_updates">Oppdateringer</string>
   <string name="one_update_available">1 oppdatering tilgjengelig.</string>
   <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
-  <string name="fdroid_updates_available">F-Droid-oppdateringer tilgjengelig</string>
+  <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
   <string name="process_wait_title">Vennligst vent</string>
   <string name="process_update_msg">Oppdaterer applikasjonsliste...</string>
-  <string name="download_server">Henter applikasjoner fra</string>
+  <string name="download_server">Henter program fra</string>
   <string name="repo_add_url">Registeradresse</string>
   <string name="repo_alrt">Listen over brukte register har endret seg. Vil du oppdatere dem?</string>
   <string name="menu_update_repo">Oppdater registrene</string>
@@ -79,24 +78,24 @@ Sluppet ut under
   <string name="details_notinstalled">Ikke installert</string>
   <string name="corrupt_download">Nedlastet fil er korrupt</string>
   <string name="download_cancelled">Nedlasting avbrutt</string>
-  <string name="antiadslist">Denne applikasjonen inneholder reklame</string>
-  <string name="antitracklist">Denne applikasjonen sporer din aktivitet</string>
-  <string name="antinonfreeadlist">Denne applikasjonen promoterer ikke-frie utvidelser</string>
-  <string name="antinonfreenetlist">Denne applikasjonen promoterer ikke-frie nettverkstjenester</string>
-  <string name="antinonfreedeplist">Denne applikasjonen avhenger av andre ikke-frie applikasjoner</string>
+  <string name="antiadslist">Dette programmet inneholder reklame</string>
+  <string name="antitracklist">Dette programmet sporer din aktivitet</string>
+  <string name="antinonfreeadlist">Dette programmet promoterer ufrie utvidelser</string>
+  <string name="antinonfreenetlist">Dette programmet promoterer ufrie nettverkstjenester</string>
+  <string name="antinonfreedeplist">Dette programmet avhenger av andre ufrie applikasjoner</string>
   <string name="display">Vis</string>
   <string name="expert">Ekspert</string>
   <string name="expert_mode">Skru på ekspertmodus</string>
-  <string name="search_hint">Søk i applikasjoner</string>
+  <string name="search_hint">Søk i programliste</string>
   <string name="db_sync_mode">Modus for databasesynkronisering</string>
-  <string name="db_sync_mode_long">Sett verdien for SQLites \"synchronous\"-bryter</string>
-  <string name="appcompatibility">Applikasjonskompatibilitet</string>
+  <string name="db_sync_mode_long">Sett verdien for SQLites \"synchronous\"-flagg</string>
+  <string name="appcompatibility">Programstøtte</string>
   <string name="show_incompat_versions">Ukompatible versjoner</string>
   <string name="show_incompat_versions_l">Vis versjoner av applikasjoner som ikke er kompatible med ditt utstyr</string>
   <string name="rooted">Rot</string>
   <string name="rooted_long">Vis applikasjoner som krever rottilgang</string>
-  <string name="ignoreTouch">Ignorer touch-skjerm</string>
-  <string name="ignoreTouch_long">Inkluder alltid applikasjoner som krever touch-skjerm</string>
+  <string name="ignoreTouch">Ignorer pekeskjerm</string>
+  <string name="ignoreTouch_long">Inkluder alltid applikasjoner som krever pekeskjerm</string>
   <string name="category_all">Alle</string>
   <string name="category_whatsnew">Det som er nytt</string>
   <string name="category_recentlyupdated">Nylig oppdatert</string>
@@ -108,7 +107,7 @@ Sluppet ut under
 %1$s</string>
   <string name="status_connecting_to_repo">Kobler til
 %1$s</string>
-  <string name="status_checking_compatibility">Sjekker applikasjonskompatibilitet med ditt utstyr...</string>
+  <string name="status_checking_compatibility">Sjekker programstøtte for ditt utstyr...</string>
   <string name="no_permissions">Krever ingen tillatelser.</string>
   <string name="permissions_for_long">Tillatelser for versjon %s</string>
   <string name="showPermissions">Vis tillatelser</string>

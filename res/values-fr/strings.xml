@@ -17,7 +17,7 @@
   <string name="never">jamais</string>
   <string name="automatic_repo_scan">Balayage automatique du dépôt</string>
   <string name="update_apps_list">Mettre à jour automatiquement la liste d\'applications à partir des dépôts</string>
-  <string name="automatic_scan_wifi">Seulement via WiFi</string>
+  <string name="automatic_scan_wifi">Seulement par WiFi</string>
   <string name="automatic_scan_wifi_desc">Mettre à jour automatiquement la liste d\'applications seulement via WiFi</string>
   <string name="notify">Notifier</string>
   <string name="notify_updates_available">Avertir quand de nouvelles mises à jour sont disponibles</string>
@@ -64,14 +64,14 @@ Voulez-vous les mettre à jour ?</string>
   <string name="menu_update_repo">Mettre à jour les dépôts</string>
   <string name="menu_manage">Gestion de dépôts</string>
   <string name="menu_preferences">Préférences</string>
-  <string name="menu_about">À propos de</string>
+  <string name="menu_about">A propos</string>
   <string name="menu_search">Rechercher</string>
   <string name="menu_add_repo">Nouveau dépôt</string>
   <string name="menu_rem_repo">Supprimer un dépôt</string>
   <string name="menu_launch">Lancer</string>
   <string name="menu_share">Partager</string>
   <string name="menu_install">Installer</string>
-  <string name="menu_uninstall">Supprimer</string>
+  <string name="menu_uninstall">Désinstaller</string>
   <string name="menu_ignore_all">Ignorer toutes les mises à jour</string>
   <string name="menu_ignore_this">Ignorer cette mise à jour</string>
   <string name="menu_website">Site Web</string>
@@ -91,7 +91,7 @@ Voulez-vous les mettre à jour ?</string>
   <string name="display">Affichage</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Activer le mode expert</string>
-  <string name="search_hint">Recherche d\'applications</string>
+  <string name="search_hint">Rechercher des applications</string>
   <string name="db_sync_mode">Mode de synchronisation à la base de données</string>
   <string name="db_sync_mode_long">Régler la valeur de la synchronisation SQLite</string>
   <string name="appcompatibility">Compatibilité de l\'application</string>

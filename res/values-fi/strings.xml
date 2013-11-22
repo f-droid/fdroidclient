@@ -16,6 +16,8 @@
   <string name="update_apps_list">Päivitä sovelluslista sovelluslähteistä automaattisesti</string>
   <string name="notify">Huomauta</string>
   <string name="notify_updates_available">Ilmoita kun uusia päivityksiä on saatavilla</string>
+  <string name="update_history">Päivityshistoria</string>
+  <string name="search_results">Hakutulokset</string>
   <string name="about_title">Tietoa F-Droidista</string>
   <string name="about_site">Verkkosivu:</string>
   <string name="about_mail">Sähköposti:</string>
@@ -34,6 +36,9 @@
   <string name="tab_installed">Asennettu</string>
   <string name="tab_noninstalled">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
+  <string name="one_update_available">1 päivitys saatavilla.</string>
+  <string name="many_updates_available">%d päivitystä saatavilla.</string>
+  <string name="fdroid_updates_available">F-Droid: Päivityksiä saatavilla</string>
   <string name="process_wait_title">Odota hetki</string>
   <string name="process_update_msg">Päivitetään sovelluslistaa...</string>
   <string name="download_server">Haetaan sovellusta lähteestä</string>
@@ -48,22 +53,27 @@ Tahdotko päivittää ne?</string>
   <string name="menu_add_repo">Uusi sovelluslähde</string>
   <string name="menu_rem_repo">Poista sovelluslähde</string>
   <string name="menu_launch">Suorita</string>
+  <string name="menu_share">Jaa</string>
   <string name="menu_install">Asenna</string>
   <string name="menu_uninstall">Poista</string>
   <string name="menu_website">Verkkosivu</string>
   <string name="menu_issues">Ongelmat</string>
   <string name="menu_source">Lähdekoodi</string>
+  <string name="menu_upgrade">Päivitä</string>
   <string name="menu_donate">Lahjoita</string>
   <string name="details_installed">Versio %s asennettu</string>
   <string name="details_notinstalled">Ei asennettu</string>
   <string name="corrupt_download">Ladattu tiedosto on viallinen</string>
   <string name="download_cancelled">Lataus peruutettu</string>
+  <string name="display">Näyttö</string>
   <string name="expert">Asiantuntija</string>
   <string name="expert_mode">Ota käyttöön asiantuntija-tila</string>
   <string name="search_hint">Etsi sovelluksia</string>
   <string name="db_sync_mode">Tietokannan synkronointi-tila</string>
   <string name="db_sync_mode_long">Aseta SQLiten synkrooninen lippu</string>
   <string name="appcompatibility">Sovellusten yhteensopivuus</string>
+  <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
+  <string name="show_incompat_versions_l">Näytä ohjelmaversiot jotka eivät ole yhteensopivia laitteesi kanssa</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Näytä sovellukset, jotka vaativat root-oikeudet</string>
   <string name="ignoreTouch">Älä välitä kosketusnäytöstä</string>
@@ -71,4 +81,7 @@ Tahdotko päivittää ne?</string>
   <string name="category_all">Kaikki</string>
   <string name="category_whatsnew">Uutta</string>
   <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
+  <string name="status_checking_compatibility">Tarkistetaan ohjelman yhteensopivuutta laitteesi kanssa...</string>
+  <string name="theme">Teema</string>
+  <string name="theme_long">Valitse käytettävä teema</string>
 </resources>

@@ -4,6 +4,7 @@
   <string name="searchres_oneapp">Atopouse unha aplicación que cadra con \'%s\':</string>
   <string name="searchres_noapps">Non se atoparon aplicacións que cadren con \'%s\'</string>
   <string name="SignatureMismatch">A nova versión está asinada cunha chave diferente da antiga. Para instalar a nova versión, antes débese desinstalar a anterior. Por favor, fai esto e téntao de novo. (Decátate que ó desinstalar borrarase calquera dato interno gardado pola aplicación)</string>
+  <string name="installIncompatible">Parece que este paquete non é compatíbel co seu dispositivo. Quere facer a proba e instalalo aínda así?</string>
   <string name="installDowngrade">Estás tentando de instalar unha versión anterior. Esto pode acarrexar un mal funcionamento ou pérdida de datos. ¿Queres tentalo aínda así?</string>
   <string name="version">Versión</string>
   <string name="n_versions_available">%d versións dispoñíbles</string>
@@ -11,14 +12,20 @@
   <string name="cache_downloaded">Caché de aplicacións descargadas</string>
   <string name="keep_downloaded">Gardar os ficheiros apk descargados na tarxeta SD</string>
   <string name="updates">Actualizacións</string>
+  <string name="other">Outro</string>
   <string name="last_update_check">Último escaneado do repositorio: %s</string>
   <string name="never">nunca</string>
   <string name="automatic_repo_scan">Escaneado automático dos repositorios</string>
   <string name="update_apps_list">Actualizar automáticamente a lista de aplicacións do repositorio</string>
+  <string name="automatic_scan_wifi">Soamente no wifi</string>
+  <string name="automatic_scan_wifi_desc">Actualizar as listas de aps automaticamente soamente cando hai wifi</string>
   <string name="notify">Notificar</string>
   <string name="notify_updates_available">Avisarme cando estean dispoñíbles novas actualizacións</string>
   <string name="update_history">Histórico de actualizacións</string>
   <string name="update_history_desc">Días para mostrar aplicacións novas/actualizadas</string>
+  <string name="search_results">Resultados da busca</string>
+  <string name="app_details">Detalles da ap</string>
+  <string name="no_such_app">Non se atopa tal ap</string>
   <string name="about_title">Sobre F-Droid</string>
   <string name="about_desc">Baseado en Aptoide.
 Publicado con licencia GNU GPLv3.</string>
@@ -26,6 +33,15 @@ Publicado con licencia GNU GPLv3.</string>
   <string name="about_mail">Correo:</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Sitio web</string>
+  <string name="no_repo">Non ten ningún repositorio configurado!
+
+Un
+		repositorio é unha fonte de aplicativos. Para engadir un, prema o botón MENU
+		agora e introduza o URL.
+
+Un enderezo a un repositorio sería algo
+		como
+		isto: https://f-droid.org/repo</string>
   <string name="inst">Instalada</string>
   <string name="not_inst">Non instalado</string>
   <string name="added_on">Engadido en %s</string>
@@ -57,16 +73,25 @@ Publicado con licencia GNU GPLv3.</string>
   <string name="menu_add_repo">Novo repositorio</string>
   <string name="menu_rem_repo">Retirar repositorio</string>
   <string name="menu_launch">Executar</string>
+  <string name="menu_share">Compartir</string>
   <string name="menu_install">Instalar</string>
   <string name="menu_uninstall">Desinstalar</string>
+  <string name="menu_ignore_all">Ignorar todas as actualizacións</string>
+  <string name="menu_ignore_this">Ignorar esta actualización</string>
   <string name="menu_website">Sitio web</string>
   <string name="menu_issues">Incidencias</string>
   <string name="menu_source">Código fonte</string>
+  <string name="menu_upgrade">Actualizar</string>
   <string name="menu_donate">Doar</string>
   <string name="details_installed">Instalada a versión %s</string>
   <string name="details_notinstalled">Non instalada</string>
   <string name="corrupt_download">O ficheiro descargado está corrompido</string>
   <string name="download_cancelled">Descarga cancelada</string>
+  <string name="antiadslist">Esta ap contén publicidade</string>
+  <string name="antitracklist">Esta ap rexistra e informa da súa actividade</string>
+  <string name="antinonfreeadlist">Esta ap promociona engadidos que non son libres</string>
+  <string name="antinonfreenetlist">Esta ap promove servizos de rede que non son libres</string>
+  <string name="antinonfreedeplist">Esta ap depende doutras aps non libres</string>
   <string name="display">Amosar</string>
   <string name="expert">Experto</string>
   <string name="expert_mode">Activar o modo experto</string>
@@ -74,6 +99,8 @@ Publicado con licencia GNU GPLv3.</string>
   <string name="db_sync_mode">Modo de sincronización da base de datos</string>
   <string name="db_sync_mode_long">Estabelece o valor da bandeira de sincronización de SQLite</string>
   <string name="appcompatibility">Compatibilidade de aplicacións</string>
+  <string name="show_incompat_versions">Versións incompatíbeis</string>
+  <string name="show_incompat_versions_l">Amosar versións de aps que son incompatíbeis co dispositivo</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Amosar aplicacións que requiren privilexios de root</string>
   <string name="ignoreTouch">Ignorar a pantalla táctil</string>
@@ -94,6 +121,9 @@ Publicado con licencia GNU GPLv3.</string>
   <string name="permissions_for_long">Permisos para a versión %s</string>
   <string name="showPermissions">Amosar permisos</string>
   <string name="showPermissions_long">Amosar unha lista dos permisos que precisa unha aplicación</string>
+  <string name="no_handler_app">Non ten ningunha ap dispoñíbel que poida manexar %s</string>
   <string name="compactlayout">Deseño compacto</string>
   <string name="compactlayout_long">Amosar únicamente os nomes das aplicacións e resumos na lista</string>
+  <string name="theme">Tema</string>
+  <string name="theme_long">Escolla un tema</string>
 </resources>

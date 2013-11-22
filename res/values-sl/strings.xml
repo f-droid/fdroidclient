@@ -14,6 +14,7 @@
   <string name="update_apps_list">Samodejno posodobi spisek aplikacij iz skladišč</string>
   <string name="notify">Opozorilo</string>
   <string name="notify_updates_available">Opozori na posodobitve</string>
+  <string name="update_history">Päivityshistoria</string>
   <string name="about_desc">Izvorno osnovan na Aptoide.
 Izdan z licenco GNU GPLv3.</string>
   <string name="about_site">Spletna stran:</string>
@@ -55,12 +56,16 @@ Ga želite posodobiti?</string>
   <string name="details_notinstalled">Ni nameščeno</string>
   <string name="corrupt_download">Prejeta datoteka je poškodovana</string>
   <string name="download_cancelled">Prenos je preklican</string>
+  <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="expert">Napredno</string>
   <string name="expert_mode">Vključi napredni način</string>
   <string name="search_hint">Iskanje aplikacij</string>
   <string name="db_sync_mode">Način sinhronizacije baze podatkov</string>
   <string name="db_sync_mode_long">Nastavitev zastavice za sinhronost v SQLite</string>
   <string name="appcompatibility">Združljivost aplikacij</string>
+  <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
+  <string name="show_incompat_versions_l">.</string>
   <string name="rooted">Skrbnik</string>
   <string name="rooted_long">Pokaži aplikacije, ki zahtevajo skrbniške pravice</string>
+  <string name="status_checking_compatibility">.</string>
 </resources>
