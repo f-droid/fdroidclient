@@ -117,6 +117,7 @@ public class FDroidApp extends Application {
             .discCache(new UnlimitedDiscCache(
                         new File(StorageUtils.getCacheDirectory(ctx), "icons"),
                         new FileNameGenerator() {
+                            @Override
                             public String generate(String imageUri) {
                                 return imageUri.substring(
                                     imageUri.lastIndexOf('/') + 1);

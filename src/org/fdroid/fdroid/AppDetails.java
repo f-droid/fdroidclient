@@ -433,14 +433,14 @@ public class AppDetails extends ListActivity {
         The following is a quick solution to enable both text selection and
         links. Causes glitches and crashes:
         java.lang.IndexOutOfBoundsException: setSpan (-1 ... -1) starts before 0
-        
+
         class CustomMovementMethod extends LinkMovementMethod {
             @Override
             public boolean canSelectArbitrarily () {
                 return true;
             }
         }
-        
+
         if (Utils.hasApi(11)) {
             tv.setTextIsSelectable(true);
             tv.setMovementMethod(new CustomMovementMethod());
@@ -598,6 +598,7 @@ public class AppDetails extends ListActivity {
             ask_alrt.setMessage(getString(R.string.installDowngrade));
             ask_alrt.setPositiveButton(getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             install();
@@ -605,6 +606,7 @@ public class AppDetails extends ListActivity {
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             return;
@@ -807,6 +809,7 @@ public class AppDetails extends ListActivity {
             ask_alrt.setMessage(getString(R.string.installIncompatible));
             ask_alrt.setPositiveButton(getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             downloadHandler = new DownloadHandler(app.curApk,
@@ -816,6 +819,7 @@ public class AppDetails extends ListActivity {
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             return;
@@ -831,6 +835,7 @@ public class AppDetails extends ListActivity {
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
                     getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
@@ -890,6 +895,7 @@ public class AppDetails extends ListActivity {
         pd.setCancelable(true);
         pd.setCanceledOnTouchOutside(false);
         pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
             public void onCancel(DialogInterface dialog) {
                 downloadHandler.cancel();
             }
@@ -897,6 +903,7 @@ public class AppDetails extends ListActivity {
         pd.setButton(DialogInterface.BUTTON_NEUTRAL,
                 getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         pd.cancel();
                     }

@@ -19,10 +19,8 @@
 
 package org.fdroid.fdroid;
 
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -157,23 +155,8 @@ public class ManageRepo extends ListActivity {
             } else {
                 server_line.put("inuse", R.drawable.btn_check_off);
             }
-            if (repo.pubkey != null) {
-                try {
-                    MessageDigest digest = MessageDigest.getInstance("SHA-1");
-                    digest.update(Hasher.unhex(repo.pubkey));
-                    byte[] fingerprint = digest.digest();
-                    Formatter formatter = new Formatter(new StringBuilder());
-                    formatter.format("%02X", fingerprint[0]);
-                    for (int i = 1; i < fingerprint.length; i++) {
-                        formatter.format(i % 5 == 0 ? " %02X" : ":%02X",
-                                fingerprint[i]);
-                    }
-                    server_line.put("fingerprint", formatter.toString());
-                    formatter.close();
-                } catch (Exception e) {
-                    Log.w("FDroid", "Unable to get certificate fingerprint.\n"
-                            + Log.getStackTraceString(e));
-                }
+            if (repo.fingerprint != null) {
+                server_line.put("fingerprint", repo.fingerprint);
             }
             result.add(server_line);
         }
@@ -202,6 +185,7 @@ public class ManageRepo extends ListActivity {
         redraw();
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
@@ -215,10 +199,10 @@ public class ManageRepo extends ListActivity {
         return true;
     }
 
-    protected void addRepo(String repoUri) {
+    protected void addRepo(String repoUri, String fingerprint) {
         try {
             DB db = DB.getDB();
-            db.addRepo(repoUri, null, null, 10, null, true);
+            db.addRepo(repoUri, null, null, 10, null, fingerprint, true);
         } finally {
             DB.releaseDB();
         }
@@ -268,7 +252,8 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addRepo(uriEditText.getText().toString());
+                        addRepo(uriEditText.getText().toString(),
+                                fingerprintEditText.getText().toString());
                         changed = true;
                         redraw();
                     }
@@ -332,6 +317,7 @@ public class ManageRepo extends ListActivity {
             builder.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
             builder.setMultiChoiceItems(b, null,
                     new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton, boolean isChecked) {
                             if (isChecked) {
@@ -343,6 +329,7 @@ public class ManageRepo extends ListActivity {
                     });
             builder.setPositiveButton(getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             try {
@@ -357,6 +344,7 @@ public class ManageRepo extends ListActivity {
                     });
             builder.setNegativeButton(getString(R.string.cancel),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             return;

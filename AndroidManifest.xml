@@ -83,6 +83,18 @@
                 <data android:path="/archive" />
                 <data android:pathPattern="/repo/*" />
                 <data android:pathPattern="/archive/*" />
+                <data android:pathPattern="/.*/repo" />
+                <data android:pathPattern="/.*/archive" />
+                <data android:pathPattern="/.*/repo/*" />
+                <data android:pathPattern="/.*/archive/*" />
+                <data android:pathPattern="/.*/.*/repo" />
+                <data android:pathPattern="/.*/.*/archive" />
+                <data android:pathPattern="/.*/.*/repo/*" />
+                <data android:pathPattern="/.*/.*/archive/*" />
+                <data android:pathPattern="/.*/.*/.*/repo" />
+                <data android:pathPattern="/.*/.*/.*/archive" />
+                <data android:pathPattern="/.*/.*/.*/repo/*" />
+                <data android:pathPattern="/.*/.*/.*/archive/*" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

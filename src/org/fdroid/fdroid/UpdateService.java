@@ -115,6 +115,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         return count;
     }
 
+    @Override
     protected void onHandleIntent(Intent intent) {
 
         receiver = intent.getParcelableExtra("receiver");
