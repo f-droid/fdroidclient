@@ -202,7 +202,7 @@ public class ManageRepo extends ListActivity {
     protected void addRepo(String repoUri, String fingerprint) {
         try {
             DB db = DB.getDB();
-            db.addRepo(repoUri, null, null, 10, null, fingerprint, true);
+            db.addRepo(repoUri, null, null, 10, null, fingerprint, 0, true);
         } finally {
             DB.releaseDB();
         }

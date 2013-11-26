@@ -437,6 +437,7 @@ public class DB {
             + TABLE_REPO + " (id integer primary key, address text not null, "
             + "name text, description text, inuse integer not null, "
             + "priority integer not null, pubkey text, fingerprint text, "
+            + "maxage integer not null, "
             + "lastetag text);";
 
     public static class Repo {
@@ -448,10 +449,11 @@ public class DB {
         public int priority;
         public String pubkey; // null for an unsigned repo
         public String fingerprint; // always null for an unsigned repo
+        public int maxage; // maximum age of index that will be accepted - 0 for any
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 29;
+    private final int DBVersion = 30;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -519,6 +521,7 @@ public class DB {
             String fingerprint = DB.calcFingerprint(pubkey);
             values.put("pubkey", pubkey);
             values.put("fingerprint", fingerprint);
+            values.put("maxage", 0);
             values.put("inuse", 1);
             values.put("priority", 10);
             values.put("lastetag", (String) null);
@@ -616,6 +619,10 @@ public class DB {
                     values.put("fingerprint", DB.calcFingerprint(repo.pubkey));
                     db.update(TABLE_REPO, values, "address = ?", new String[] { repo.address });
                 }
+            }
+
+            if (oldVersion < 30) {
+                db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null");
             }
         }
 
@@ -1295,7 +1302,7 @@ public class DB {
         try {
             c = db.query(TABLE_REPO, new String[] { "address", "name",
                 "description", "inuse", "priority", "pubkey", "fingerprint",
-                "lastetag" },
+                "maxage", "lastetag" },
                     "id = ?", new String[] { Integer.toString(id) }, null, null, null);
             if (!c.moveToFirst())
                 return null;
@@ -1308,7 +1315,8 @@ public class DB {
             repo.priority = c.getInt(4);
             repo.pubkey = c.getString(5);
             repo.fingerprint = c.getString(6);
-            repo.lastetag = c.getString(7);
+            repo.maxage = c.getInt(7);
+            repo.lastetag = c.getString(8);
             return repo;
         } finally {
             if (c != null)
@@ -1323,7 +1331,7 @@ public class DB {
         try {
             c = db.query(TABLE_REPO, new String[] { "id", "address", "name",
                     "description", "inuse", "priority", "pubkey", "fingerprint",
-                    "lastetag" },
+                    "maxage", "lastetag" },
                     null, null, null, null, "priority");
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -1336,7 +1344,8 @@ public class DB {
                 repo.priority = c.getInt(5);
                 repo.pubkey = c.getString(6);
                 repo.fingerprint = c.getString(7);
-                repo.lastetag = c.getString(8);
+                repo.maxage = c.getInt(8);
+                repo.lastetag = c.getString(9);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -1375,6 +1384,7 @@ public class DB {
         } else {
             values.put("fingerprint", repo.fingerprint);
         }
+        values.put("maxage", repo.maxage);
         values.put("lastetag", (String) null);
         db.update(TABLE_REPO, values, "address = ?",
                 new String[] { repo.address });
@@ -1388,7 +1398,7 @@ public class DB {
     }
 
     public void addRepo(String address, String name, String description,
-            int priority, String pubkey, String fingerprint, boolean inuse)
+            int priority, String pubkey, String fingerprint, int maxage, boolean inuse)
                     throws SecurityException {
         ContentValues values = new ContentValues();
         values.put("address", address);
@@ -1408,6 +1418,7 @@ public class DB {
             }
         }
         values.put("fingerprint", fingerprint);
+        values.put("maxage", maxage);
         values.put("lastetag", (String) null);
         db.insert(TABLE_REPO, null, values);
     }
