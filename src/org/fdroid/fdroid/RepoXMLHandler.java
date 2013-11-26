@@ -61,7 +61,16 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private StringBuilder curchars = new StringBuilder();
 
+    // After processing the XML, this will be null if the index didn't specify
+    // a maximum age - otherwise it will be the value specified.
+    private String maxage;
+
+    // After processing the XML, this will be null if the index specified a
+    // public key - otherwise a public key. This is used for TOFU where an
+    // index.xml is read on the first connection, and a signed index.jar is
+    // expected on all subsequent connections.
     private String pubkey;
+
     private String name;
     private String description;
     private String hashType;
@@ -255,6 +264,7 @@ public class RepoXMLHandler extends DefaultHandler {
             String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
+            maxage = attributes.getValue("", "maxage");
             String nm = attributes.getValue("", "name");
             if (nm != null)
                 name = nm;
@@ -455,6 +465,21 @@ public class RepoXMLHandler extends DefaultHandler {
                         db.updateRepoByAddress(repo);
                     } finally {
                         DB.releaseDB();
+                    }
+                }
+
+                if (handler.maxage != null) {
+                    int maxage = Integer.parseInt(handler.maxage);
+                    if (maxage != repo.maxage) {
+                        Log.d("FDroid",
+                                "Repo specified a new maximum age - updated");
+                        repo.maxage = maxage;
+                        try {
+                            DB db = DB.getDB();
+                            db.updateRepoByAddress(repo);
+                        } finally {
+                            DB.releaseDB();
+                        }
                     }
                 }
 
