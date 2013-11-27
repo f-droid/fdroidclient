@@ -562,6 +562,8 @@ public class AppDetails extends ListActivity {
             return getString(R.string.antinonfreeadlist);
         if (af.equals("NonFreeDep"))
             return getString(R.string.antinonfreedeplist);
+        if (af.equals("UpstreamNonFree"))
+            return getString(R.string.antiupstreamnonfreelist);
         return null;
     }
 

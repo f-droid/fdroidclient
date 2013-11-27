@@ -108,6 +108,7 @@
 	<string name="antinonfreeadlist">This app promotes non-free add-ons</string>
 	<string name="antinonfreenetlist">This app promotes non-free network services</string>
 	<string name="antinonfreedeplist">This app depends on other non-free apps</string>
+	<string name="antiupstreamnonfreelist">The upstream source code is not entirely Free</string>
 
 	<string name="display">Display</string>
 
