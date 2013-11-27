@@ -437,7 +437,7 @@ public class DB {
             + TABLE_REPO + " (id integer primary key, address text not null, "
             + "name text, description text, inuse integer not null, "
             + "priority integer not null, pubkey text, fingerprint text, "
-            + "maxage integer not null, "
+            + "maxage integer not null default 0, "
             + "lastetag text);";
 
     public static class Repo {
@@ -622,7 +622,7 @@ public class DB {
             }
 
             if (oldVersion < 30) {
-                db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null");
+                db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null default 0");
             }
         }
 
