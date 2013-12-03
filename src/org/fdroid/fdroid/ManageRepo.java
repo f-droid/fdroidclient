@@ -116,13 +116,25 @@ public class ManageRepo extends ListActivity {
         /* an URL from a click or a QRCode scan */
         Uri uri = intent.getData();
         if (uri != null) {
-            // scheme should only ever be pure ASCII:
+            // scheme should only ever be pure ASCII aka Locale.ENGLISH
             String scheme = intent.getScheme().toLowerCase(Locale.ENGLISH);
             String fingerprint = uri.getUserInfo();
+            String host = uri.getHost().toLowerCase(Locale.ENGLISH);
             if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
                     || scheme.equals("https") || scheme.equals("http")) {
-                String uriString = uri.toString().replace("fdroidrepo", "http").
-                        replace(fingerprint + "@", "");
+                // QRCode are more efficient in all upper case, so some incoming
+                // URLs might be encoded in all upper case. Therefore, we allow
+                // the standard paths to be encoded all upper case, then they'll
+                // be forced to lower case. The scheme and host are downcased
+                // just to make them more readable in the dialog.
+                String uriString = uri.toString()
+                        .replace(fingerprint + "@", "") // remove fingerprint
+                        .replaceAll("/*$", "") // remove all trailing slashes
+                        .replaceAll("/FDROID/REPO$", "/fdroid/repo")
+                        .replaceAll("/FDROID/ARCHIVE$", "/fdroid/archive")
+                        .replace(uri.getHost(), host) // downcase host name
+                        .replace(intent.getScheme(), scheme) // downcase scheme
+                        .replace("fdroidrepo", "http"); // make proper URL
                 showAddRepo(uriString, fingerprint);
                 Log.i("ManageRepo", uriString + " fingerprint: " + fingerprint);
             }
