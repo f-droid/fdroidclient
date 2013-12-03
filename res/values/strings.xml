@@ -77,6 +77,7 @@
 	<string name="repo_exists">This repo already exists!</string>
 	<string name="repo_exists_add_fingerprint">This repo is already setup, this will add new key information.</string>
 	<string name="repo_exists_enable">This repo is already setup, confirm that you want to re-enable it.</string>
+	<string name="repo_exists_and_enabled">The incoming repo is already setup and enabled!</string>
 	<string name="repo_delete_to_overwrite">You must first delete this repo before you can add one with a different key!</string>
 
 	<string name="repo_alrt">The list of used repositories has

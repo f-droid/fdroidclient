@@ -48,6 +48,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.fdroid.fdroid.DB.Repo;
 import org.fdroid.fdroid.compat.ActionBarCompat;
@@ -307,10 +308,16 @@ public class ManageRepo extends ListActivity {
                 addButton.setText(R.string.add_key);
                 positiveAction = PositiveAction.ADD_NEW;
             } else if (newFingerprint == null || newFingerprint.equals(repo.fingerprint)) {
-                // this entry already exists, offer to enable it
-                overwriteMessage.setText(R.string.repo_exists_enable);
-                addButton.setText(R.string.enable);
-                positiveAction = PositiveAction.ENABLE;
+                // this entry already exists and is not enabled, offer to enable it
+                if (repo.inuse) {
+                    alrt.dismiss();
+                    Toast.makeText(this, R.string.repo_exists_and_enabled, Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    overwriteMessage.setText(R.string.repo_exists_enable);
+                    addButton.setText(R.string.enable);
+                    positiveAction = PositiveAction.ENABLE;
+                }
             } else {
                 // same address with different fingerprint, this could be
                 // malicious, so force the user to manually delete the repo
