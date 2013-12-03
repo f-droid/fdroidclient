@@ -35,24 +35,21 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.DB.Repo;
-import android.support.v4.app.NavUtils;
-import android.support.v4.view.MenuItemCompat;
-
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class ManageRepo extends ListActivity {
@@ -61,6 +58,11 @@ public class ManageRepo extends ListActivity {
     private final int REM_REPO = 2;
 
     private boolean changed = false;
+
+    private enum PositiveAction {
+        ADD_NEW, ENABLE, IGNORE
+    }
+    private PositiveAction positiveAction;
 
     private List<DB.Repo> repos;
 
@@ -231,10 +233,10 @@ public class ManageRepo extends ListActivity {
         return repos;
     }
 
-    protected Repo getRepo(String repoUri, List<Repo> repos) {
-        if (repoUri != null)
+    protected Repo getRepoByAddress(String address, List<Repo> repos) {
+        if (address != null)
             for (Repo repo : repos)
-                if (repoUri.equals(repo.address))
+                if (address.equals(repo.address))
                     return repo;
         return null;
     }
@@ -249,13 +251,16 @@ public class ManageRepo extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showAddRepo(String uriString, String fingerprint) {
+    private void showAddRepo(String newAddress, String newFingerprint) {
         LayoutInflater li = LayoutInflater.from(this);
         View view = li.inflate(R.layout.addrepo, null);
         Builder p = new AlertDialog.Builder(this).setView(view);
         final AlertDialog alrt = p.create();
         final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
         final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
+
+        List<Repo> repos = getRepos();
+        final Repo repo = getRepoByAddress(newAddress, repos);
 
         alrt.setIcon(android.R.drawable.ic_menu_add);
         alrt.setTitle(getString(R.string.repo_add_title));
@@ -264,10 +269,15 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addRepo(uriEditText.getText().toString(),
-                                fingerprintEditText.getText().toString());
-                        changed = true;
-                        redraw();
+                        String fp = fingerprintEditText.getText().toString();
+                        // the DB uses null for no fingerprint but the above
+                        // code returns "" rather than null if its blank
+                        if (fp.equals(""))
+                            fp = null;
+                        if (positiveAction == PositiveAction.ADD_NEW)
+                            addRepoPositiveAction(uriEditText.getText().toString(), fp, null);
+                        else if (positiveAction == PositiveAction.ENABLE)
+                            addRepoPositiveAction(null, null, repo);
                     }
                 });
 
@@ -281,30 +291,59 @@ public class ManageRepo extends ListActivity {
                 });
         alrt.show();
 
-        List<Repo> repos = getRepos();
-        Repo repo = getRepo(uriString, repos);
-        if (repo != null) {
-            TextView tv = (TextView) view.findViewById(R.id.repo_alert);
-            tv.setVisibility(0);
-            tv.setText(R.string.repo_exists);
+        final TextView overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
+        overwriteMessage.setVisibility(View.GONE);
+        if (repo == null) {
+            // no existing repo, add based on what we have
+            positiveAction = PositiveAction.ADD_NEW;
+        } else {
+            // found the address in the DB of existing repos
             final Button addButton = alrt.getButton(DialogInterface.BUTTON_POSITIVE);
-            addButton.setEnabled(false);
-            final CheckBox overwriteCheckBox = (CheckBox) view.findViewById(R.id.overwrite_repo);
-            overwriteCheckBox.setVisibility(0);
-            overwriteCheckBox.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    addButton.setEnabled(overwriteCheckBox.isChecked());
-                }
-            });
-            // TODO if address and fingerprint match, then enable existing repo
-            // TODO if address matches but fingerprint doesn't, handle this with extra widgets
+            alrt.setTitle(R.string.repo_exists);
+            overwriteMessage.setVisibility(View.VISIBLE);
+            if (repo.fingerprint == null && newFingerprint != null) {
+                // we're upgrading from unsigned to signed repo
+                overwriteMessage.setText(R.string.repo_exists_add_fingerprint);
+                addButton.setText(R.string.add_key);
+                positiveAction = PositiveAction.ADD_NEW;
+            } else if (newFingerprint == null || newFingerprint.equals(repo.fingerprint)) {
+                // this entry already exists, offer to enable it
+                overwriteMessage.setText(R.string.repo_exists_enable);
+                addButton.setText(R.string.enable);
+                positiveAction = PositiveAction.ENABLE;
+            } else {
+                // same address with different fingerprint, this could be
+                // malicious, so force the user to manually delete the repo
+                // before adding this one
+                overwriteMessage.setTextColor(getResources().getColor(R.color.red));
+                overwriteMessage.setText(R.string.repo_delete_to_overwrite);
+                addButton.setText(R.string.overwrite);
+                addButton.setEnabled(false);
+                positiveAction = PositiveAction.IGNORE;
+            }
         }
 
-        if (uriString != null)
-            uriEditText.setText(uriString);
-        if (fingerprint != null)
-            fingerprintEditText.setText(fingerprint);
+        if (newAddress != null)
+            uriEditText.setText(newAddress);
+        if (newFingerprint != null)
+            fingerprintEditText.setText(newFingerprint);
+    }
+
+    private void addRepoPositiveAction(String address, String fingerprint, Repo repo) {
+        if (address != null) {
+            addRepo(address, fingerprint);
+        } else if (repo != null) {
+            // force-enable an existing repo
+            repo.inuse = true;
+            try {
+                DB db = DB.getDB();
+                db.updateRepoByAddress(repo);
+            } finally {
+                DB.releaseDB();
+            }
+        }
+        changed = true;
+        redraw();
     }
 
     @Override
