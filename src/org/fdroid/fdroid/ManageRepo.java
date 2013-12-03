@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
@@ -287,6 +288,8 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        setResult(Activity.RESULT_CANCELED);
+                        finish();
                         return;
                     }
                 });
@@ -351,6 +354,8 @@ public class ManageRepo extends ListActivity {
         }
         changed = true;
         redraw();
+        setResult(Activity.RESULT_OK);
+        finish();
     }
 
     @Override
