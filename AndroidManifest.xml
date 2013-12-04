@@ -60,10 +60,11 @@
                 android:name="android.app.default_searchable"
                 android:value=".SearchResults" />
         </activity>
-
         <activity
             android:name=".ManageRepo"
+            android:allowTaskReparenting="true"
             android:label="@string/menu_manage"
+            android:launchMode="singleTop"
             android:parentActivityName=".FDroid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -99,7 +100,7 @@
                 <data android:pathPattern="/.*/.*/fdroid/archive/*" />
                 <data android:pathPattern="/.*/.*/.*/fdroid/archive" />
                 <data android:pathPattern="/.*/.*/.*/fdroid/archive/*" />
-                </intent-filter>
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
@@ -35,24 +36,22 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.fdroid.fdroid.DB.Repo;
-import android.support.v4.app.NavUtils;
-import android.support.v4.view.MenuItemCompat;
-
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class ManageRepo extends ListActivity {
@@ -61,6 +60,11 @@ public class ManageRepo extends ListActivity {
     private final int REM_REPO = 2;
 
     private boolean changed = false;
+
+    private enum PositiveAction {
+        ADD_NEW, ENABLE, IGNORE
+    }
+    private PositiveAction positiveAction;
 
     private List<DB.Repo> repos;
 
@@ -103,7 +107,7 @@ public class ManageRepo extends ListActivity {
             s_lastUpdateCheck = getString(R.string.never);
         } else {
             Date d = new Date(lastUpdate);
-            s_lastUpdateCheck = DateFormat.getDateFormat(this).format(d) + 
+            s_lastUpdateCheck = DateFormat.getDateFormat(this).format(d) +
                     " " + DateFormat.getTimeFormat(this).format(d);
         }
         tv_lastCheck.setText(getString(R.string.last_update_check,s_lastUpdateCheck));
@@ -116,13 +120,25 @@ public class ManageRepo extends ListActivity {
         /* an URL from a click or a QRCode scan */
         Uri uri = intent.getData();
         if (uri != null) {
-            // scheme should only ever be pure ASCII:
+            // scheme should only ever be pure ASCII aka Locale.ENGLISH
             String scheme = intent.getScheme().toLowerCase(Locale.ENGLISH);
             String fingerprint = uri.getUserInfo();
+            String host = uri.getHost().toLowerCase(Locale.ENGLISH);
             if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
                     || scheme.equals("https") || scheme.equals("http")) {
-                String uriString = uri.toString().replace("fdroidrepo", "http").
-                        replace(fingerprint + "@", "");
+                // QRCode are more efficient in all upper case, so some incoming
+                // URLs might be encoded in all upper case. Therefore, we allow
+                // the standard paths to be encoded all upper case, then they'll
+                // be forced to lower case. The scheme and host are downcased
+                // just to make them more readable in the dialog.
+                String uriString = uri.toString()
+                        .replace(fingerprint + "@", "") // remove fingerprint
+                        .replaceAll("/*$", "") // remove all trailing slashes
+                        .replaceAll("/FDROID/REPO$", "/fdroid/repo")
+                        .replaceAll("/FDROID/ARCHIVE$", "/fdroid/archive")
+                        .replace(uri.getHost(), host) // downcase host name
+                        .replace(intent.getScheme(), scheme) // downcase scheme
+                        .replace("fdroidrepo", "http"); // make proper URL
                 showAddRepo(uriString, fingerprint);
                 Log.i("ManageRepo", uriString + " fingerprint: " + fingerprint);
             }
@@ -219,10 +235,10 @@ public class ManageRepo extends ListActivity {
         return repos;
     }
 
-    protected Repo getRepo(String repoUri, List<Repo> repos) {
-        if (repoUri != null)
+    protected Repo getRepoByAddress(String address, List<Repo> repos) {
+        if (address != null)
             for (Repo repo : repos)
-                if (repoUri.equals(repo.address))
+                if (address.equals(repo.address))
                     return repo;
         return null;
     }
@@ -237,13 +253,16 @@ public class ManageRepo extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showAddRepo(String uriString, String fingerprint) {
+    private void showAddRepo(String newAddress, String newFingerprint) {
         LayoutInflater li = LayoutInflater.from(this);
         View view = li.inflate(R.layout.addrepo, null);
         Builder p = new AlertDialog.Builder(this).setView(view);
         final AlertDialog alrt = p.create();
         final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
         final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
+
+        List<Repo> repos = getRepos();
+        final Repo repo = getRepoByAddress(newAddress, repos);
 
         alrt.setIcon(android.R.drawable.ic_menu_add);
         alrt.setTitle(getString(R.string.repo_add_title));
@@ -252,10 +271,15 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addRepo(uriEditText.getText().toString(),
-                                fingerprintEditText.getText().toString());
-                        changed = true;
-                        redraw();
+                        String fp = fingerprintEditText.getText().toString();
+                        // the DB uses null for no fingerprint but the above
+                        // code returns "" rather than null if its blank
+                        if (fp.equals(""))
+                            fp = null;
+                        if (positiveAction == PositiveAction.ADD_NEW)
+                            addRepoPositiveAction(uriEditText.getText().toString(), fp, null);
+                        else if (positiveAction == PositiveAction.ENABLE)
+                            addRepoPositiveAction(null, null, repo);
                     }
                 });
 
@@ -264,35 +288,74 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        setResult(Activity.RESULT_CANCELED);
+                        finish();
                         return;
                     }
                 });
         alrt.show();
 
-        List<Repo> repos = getRepos();
-        Repo repo = getRepo(uriString, repos);
-        if (repo != null) {
-            TextView tv = (TextView) view.findViewById(R.id.repo_alert);
-            tv.setVisibility(0);
-            tv.setText(R.string.repo_exists);
+        final TextView overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
+        overwriteMessage.setVisibility(View.GONE);
+        if (repo == null) {
+            // no existing repo, add based on what we have
+            positiveAction = PositiveAction.ADD_NEW;
+        } else {
+            // found the address in the DB of existing repos
             final Button addButton = alrt.getButton(DialogInterface.BUTTON_POSITIVE);
-            addButton.setEnabled(false);
-            final CheckBox overwriteCheckBox = (CheckBox) view.findViewById(R.id.overwrite_repo);
-            overwriteCheckBox.setVisibility(0);
-            overwriteCheckBox.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    addButton.setEnabled(overwriteCheckBox.isChecked());
+            alrt.setTitle(R.string.repo_exists);
+            overwriteMessage.setVisibility(View.VISIBLE);
+            if (repo.fingerprint == null && newFingerprint != null) {
+                // we're upgrading from unsigned to signed repo
+                overwriteMessage.setText(R.string.repo_exists_add_fingerprint);
+                addButton.setText(R.string.add_key);
+                positiveAction = PositiveAction.ADD_NEW;
+            } else if (newFingerprint == null || newFingerprint.equals(repo.fingerprint)) {
+                // this entry already exists and is not enabled, offer to enable it
+                if (repo.inuse) {
+                    alrt.dismiss();
+                    Toast.makeText(this, R.string.repo_exists_and_enabled, Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    overwriteMessage.setText(R.string.repo_exists_enable);
+                    addButton.setText(R.string.enable);
+                    positiveAction = PositiveAction.ENABLE;
                 }
-            });
-            // TODO if address and fingerprint match, then enable existing repo
-            // TODO if address matches but fingerprint doesn't, handle this with extra widgets
+            } else {
+                // same address with different fingerprint, this could be
+                // malicious, so force the user to manually delete the repo
+                // before adding this one
+                overwriteMessage.setTextColor(getResources().getColor(R.color.red));
+                overwriteMessage.setText(R.string.repo_delete_to_overwrite);
+                addButton.setText(R.string.overwrite);
+                addButton.setEnabled(false);
+                positiveAction = PositiveAction.IGNORE;
+            }
         }
 
-        if (uriString != null)
-            uriEditText.setText(uriString);
-        if (fingerprint != null)
-            fingerprintEditText.setText(fingerprint);
+        if (newAddress != null)
+            uriEditText.setText(newAddress);
+        if (newFingerprint != null)
+            fingerprintEditText.setText(newFingerprint);
+    }
+
+    private void addRepoPositiveAction(String address, String fingerprint, Repo repo) {
+        if (address != null) {
+            addRepo(address, fingerprint);
+        } else if (repo != null) {
+            // force-enable an existing repo
+            repo.inuse = true;
+            try {
+                DB db = DB.getDB();
+                db.updateRepoByAddress(repo);
+            } finally {
+                DB.releaseDB();
+            }
+        }
+        changed = true;
+        redraw();
+        setResult(Activity.RESULT_OK);
+        finish();
     }
 
     @Override

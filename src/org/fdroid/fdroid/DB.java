@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -465,6 +465,8 @@ public class DB {
 
     public static String calcFingerprint(String pubkey) {
         String ret = null;
+        if (pubkey == null)
+            return null;
         try {
             // keytool -list -v gives you the SHA-256 fingerprint
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -1410,7 +1412,7 @@ public class DB {
         String calcedFingerprint = DB.calcFingerprint(pubkey);
         if (fingerprint == null) {
             fingerprint = calcedFingerprint;
-        } else {
+        } else if (calcedFingerprint != null) {
             fingerprint = fingerprint.toUpperCase();
             if (!fingerprint.equals(calcedFingerprint)) {
                 throw new SecurityException("Given fingerprint does not match calculated one! ("
