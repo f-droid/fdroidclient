@@ -5,17 +5,6 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/repo_alert"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_dialog_alert"
-        android:gravity="center"
-        android:text="@string/repo_exists"
-        android:textAppearance="@android:style/TextAppearance.Large"
-        android:textColor="@color/red"
-        android:visibility="gone" />
-
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/repo_add_url" />
@@ -25,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textUri"
-        android:maxLines="1"
+        android:maxLines="2"
         android:text="https://" />
 
     <TextView
@@ -39,15 +28,17 @@
         android:layout_height="wrap_content"
         android:digits="0123456789ABCDEFabcedf: "
         android:inputType="textNoSuggestions"
-        android:maxLines="1"
+        android:maxLines="3"
         android:typeface="monospace" />
 
-    <CheckBox
-        android:id="@+id/overwrite_repo"
+    <TextView
+        android:id="@+id/overwrite_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_dialog_alert"
+        android:drawablePadding="20dp"
         android:padding="20dp"
-        android:text="@string/repo_overwrite"
+        android:text="@string/repo_delete_to_overwrite"
         android:textAppearance="@android:style/TextAppearance.Medium"
         android:visibility="gone" />
 
