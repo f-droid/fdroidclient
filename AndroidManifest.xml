@@ -78,24 +78,28 @@
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:host="*" />
-                <!-- the patterns are unpredictable, this is the best I could get working -->
-                <data android:path="/repo" />
-                <data android:path="/archive" />
-                <data android:pathPattern="/repo/*" />
-                <data android:pathPattern="/archive/*" />
-                <data android:pathPattern="/.*/repo" />
-                <data android:pathPattern="/.*/archive" />
-                <data android:pathPattern="/.*/repo/*" />
-                <data android:pathPattern="/.*/archive/*" />
-                <data android:pathPattern="/.*/.*/repo" />
-                <data android:pathPattern="/.*/.*/archive" />
-                <data android:pathPattern="/.*/.*/repo/*" />
-                <data android:pathPattern="/.*/.*/archive/*" />
-                <data android:pathPattern="/.*/.*/.*/repo" />
-                <data android:pathPattern="/.*/.*/.*/archive" />
-                <data android:pathPattern="/.*/.*/.*/repo/*" />
-                <data android:pathPattern="/.*/.*/.*/archive/*" />
-            </intent-filter>
+                <!--
+                The pattern matcher here is poorly implemented, in particular the * is
+                non-greedy, so you have to do stupid tricks to match patterns that have
+                repeat characters in them. http://stackoverflow.com/a/8599921/306864
+                -->
+                <data android:path="/fdroid/repo" />
+                <data android:pathPattern="/fdroid/repo/*" />
+                <data android:pathPattern="/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/fdroid/repo/*" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/repo" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/repo/*" />
+                <data android:path="/fdroid/archive" />
+                <data android:pathPattern="/fdroid/archive/*" />
+                <data android:pathPattern="/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/fdroid/archive/*" />
+                <data android:pathPattern="/.*/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/.*/fdroid/archive/*" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/archive" />
+                <data android:pathPattern="/.*/.*/.*/fdroid/archive/*" />
+                </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
