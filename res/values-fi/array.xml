@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="updateIntervalNames">
     <item>Ei koskaan</item>
@@ -6,6 +6,10 @@
     <item>4 tunnin välein</item>
     <item>12 tunnin välein</item>
     <item>Päivittäin</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Tumma</item>
+    <item>Valo</item>
   </string-array>
   <string-array name="dbSyncModeNames">
     <item>Pois päältä (vaarallinen)</item>

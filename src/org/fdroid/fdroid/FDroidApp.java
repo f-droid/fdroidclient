@@ -10,7 +10,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -19,18 +19,51 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
-import java.io.FilenameFilter;
+import java.lang.Runtime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
+import android.os.Build;
 import android.app.Application;
+import android.app.Activity;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+
+import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
+import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class FDroidApp extends Application {
+
+    private static enum Theme {
+        dark, light
+    }
+    private static Theme curTheme = Theme.dark;
+
+    public void reloadTheme() {
+        curTheme = Theme.valueOf(PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext())
+                .getString("theme", "dark"));
+    }
+    public void applyTheme(Activity activity) {
+        switch (curTheme) {
+            case dark:
+                //activity.setTheme(R.style.AppThemeDark);
+                return;
+            case light:
+                activity.setTheme(R.style.AppThemeLight);
+                return;
+        }
+    }
 
     @Override
     public void onCreate() {
@@ -47,6 +80,7 @@ public class FDroidApp extends Application {
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
+        curTheme = Theme.valueOf(prefs.getString("theme", "dark"));
         if (!prefs.getBoolean("cacheDownloaded", false)) {
 
             File local_path = DB.getDataPath(this);
@@ -66,11 +100,35 @@ public class FDroidApp extends Application {
 
         apps = null;
         invalidApps = new ArrayList<String>();
-        Context ctx = getApplicationContext();
+        ctx = getApplicationContext();
         DB.initDB(ctx);
         UpdateService.schedule(ctx);
-    
+
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisc(true)
+            .showImageOnLoading(R.drawable.ic_repo_app_default)
+            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+            .displayer(new FadeInBitmapDisplayer(200, true, true, false))
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
+            .discCache(new UnlimitedDiscCache(
+                        new File(StorageUtils.getCacheDirectory(ctx), "icons"),
+                        new FileNameGenerator() {
+                            @Override
+                            public String generate(String imageUri) {
+                                return imageUri.substring(
+                                    imageUri.lastIndexOf('/') + 1);
+                            } } ))
+            .defaultDisplayImageOptions(options)
+            .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
+            .build();
+        ImageLoader.getInstance().init(config);
     }
+
+    Context ctx;
 
     // Global list of all known applications.
     private List<DB.App> apps;
@@ -123,6 +181,7 @@ public class FDroidApp extends Application {
             try {
                 DB db = DB.getDB();
                 apps = db.getApps(true);
+
             } finally {
                 DB.releaseDB();
             }
@@ -130,6 +189,7 @@ public class FDroidApp extends Application {
             try {
                 DB db = DB.getDB();
                 apps = db.refreshApps(apps, invalidApps);
+
                 invalidApps.clear();
             } finally {
                 DB.releaseDB();
@@ -137,7 +197,20 @@ public class FDroidApp extends Application {
         }
         if (apps == null)
             return new ArrayList<DB.App>();
+        filterApps();
         return apps;
+    }
+
+    public void filterApps() {
+        AppFilter appFilter = new AppFilter(ctx);
+        for (DB.App app : apps) {
+            app.filtered = appFilter.filter(app);
+
+            app.toUpdate = (app.hasUpdates
+                    && !app.ignoreAllUpdates
+                    && app.curApk.vercode > app.ignoreThisUpdate
+                    && !app.filtered);
+        }
     }
 
 }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchres_napps">%1$d برنامه مطابق با \'%2$s\' یافت شد:</string>
+  <string name="searchres_oneapp">یک برنامه مطابق با \'%s\' یافت شد:</string>
+  <string name="searchres_noapps">برنامهٔ مطابق با \'%s\' یافت نشد</string>
+  <string name="SignatureMismatch">نسخهٔ جدید با کلید متفاوتی با نسخهٔ قدیم امضا شده‌است. برای نصب نسخهٔ جدید، در ابتدا نسخهٔ قدیمی باید حذف نصب‌شود. لطفاً این را انجام دهید و دوباره تلاش کنید. (در نظر داشته باشید که حذف نصب همهٔ اطلاعات داخلی ذخیره‌شده توسط برنامه را پاک خواهد کرد)</string>
+  <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی آزمایش و نصب کنید؟</string>
+  <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟</string>
+  <string name="version">نسخه</string>
+  <string name="n_versions_available">%d نسخه موجود است</string>
+  <string name="n_version_available">%d نسخه موجود است</string>
+  <string name="cache_downloaded">میانگیری برنامه‌های دریافت‌شده</string>
+  <string name="keep_downloaded">نگه‌داشتن پرونده‌های APK دریافت‌شده در کارت SD</string>
+  <string name="updates">به‌روزرسانی‌ها</string>
+  <string name="other">دیگر</string>
+  <string name="last_update_check">آخرین اسکن مخزن: %S</string>
+  <string name="never">هیچ‌گاه</string>
+  <string name="automatic_repo_scan">بررسی خودکار مخزن برنامه‌ها</string>
+  <string name="update_apps_list">به‌روزرسانی فهرست برنامه‌ها از مخازن به‌صورت خودکار</string>
+  <string name="automatic_scan_wifi">فقط هنگام اتصال وای‌فای</string>
+  <string name="automatic_scan_wifi_desc">به‌روزرسانی فهرست برنامه به صورت خودکار فقط هنگام اتصال وای‌فای</string>
+  <string name="notify">مطلع‌سازی</string>
+  <string name="notify_updates_available">هنگامی که به‌روزرسانی‌های جدیدی موجود بود من را مطلع کن</string>
+  <string name="update_history">به‌روزرسانی تاریخچه</string>
+  <string name="update_history_desc">روزهای نمایش برنامه‌های جدید/به‌روزشده</string>
+  <string name="search_results">جستجوی نتایج</string>
+  <string name="app_details">مشخصات برنامه</string>
+  <string name="no_such_app">چنین برنامه‌ای یافت نشد</string>
+  <string name="about_title">دربارهٔ F-Droid</string>
+  <string name="about_desc">در آغاز بر پایهٔ Aptoide بوده‌است.
+منتش شده تحت مجوز GNU GPLv3.</string>
+  <string name="about_site">وب‌گاه:</string>
+  <string name="about_mail">رایانامه:</string>
+  <string name="about_version">نسخه:</string>
+  <string name="about_website">وب‌گاه</string>
+  <string name="no_repo">شما هیچ مخزنی را تنظیم نکرده‌اید!
+
+یک مخزن منبعی از برنامه‌ها است. برای اضافه‌کردن یکی. دکمهٔ منو را بزنید و نشانی اینترنتی وارد کنید.
+
+نشانی یک مخزن چیزی است شبیه این: https://f-droid.org/repo</string>
+  <string name="inst">نصب‌شده</string>
+  <string name="not_inst">نصب‌نشده</string>
+  <string name="added_on">به %s افزوده شد</string>
+  <string name="ok">باشد</string>
+  <string name="yes">بله</string>
+  <string name="no">خیر</string>
+  <string name="repo_add_title">افزودن مخزنی جدید</string>
+  <string name="repo_add_add">افزودن</string>
+  <string name="cancel">فسخ</string>
+  <string name="repo_delete_title">انتخاب مخزن برای حذف</string>
+  <string name="repo_update_title">به‌روزرسانی مخازن</string>
+  <string name="tab_installed">نصب‌شده</string>
+  <string name="tab_noninstalled">موجود</string>
+  <string name="tab_updates">به‌روزرسانی‌ها</string>
+  <string name="one_update_available">۱ به‌روزرسانی موجود است.</string>
+  <string name="many_updates_available">%d به‌روزرسانی موجود است.</string>
+  <string name="fdroid_updates_available">به‌روزرسانی‌های F-Droid موجود هستند</string>
+  <string name="process_wait_title">لطفاً صبر کنید</string>
+  <string name="process_update_msg">به‌روزرسانی فهرست برنامه‌ها...</string>
+  <string name="download_server">گرفتن برنامه از</string>
+  <string name="repo_add_url">نشانی مخزن</string>
+  <string name="repo_alrt">فهرست مخزن‌ها تغییر یافته‌است.
+آیا می‌خواهید به‌روزرسانی‌شان کنید؟</string>
+  <string name="menu_update_repo">به‌روزرسانی مخزن‌ها</string>
+  <string name="menu_manage">مدیریت مخزن‌ها</string>
+  <string name="menu_preferences">ترجیحات</string>
+  <string name="menu_about">درباره</string>
+  <string name="menu_search">جستجو</string>
+  <string name="menu_add_repo">مخزن جدید</string>
+  <string name="menu_rem_repo">حذف مخزن</string>
+  <string name="menu_launch">اجرا</string>
+  <string name="menu_share">به اشتراک‌گذاری</string>
+  <string name="menu_install">نصب</string>
+  <string name="menu_uninstall">حذف نصب</string>
+  <string name="menu_ignore_all">در نظر نگرفتن همهٔ به‌روزرسانی‌ها</string>
+  <string name="menu_ignore_this">در نظر نگرفتن این به‌روزرسانی</string>
+  <string name="menu_website">وب‌گاه</string>
+  <string name="menu_issues">اشکال‌ها</string>
+  <string name="menu_source">کد مبدأ</string>
+  <string name="menu_upgrade">ارتقاع</string>
+  <string name="menu_donate">کمک مالی</string>
+  <string name="details_installed">نسخهٔ %s نصب‌شده</string>
+  <string name="details_notinstalled">نصب‌نشده</string>
+  <string name="corrupt_download">پروندهٔ دریافتی خراب است</string>
+  <string name="download_cancelled">دریافت فسخ شد</string>
+  <string name="antiadslist">این برنامه دارای تبلیغات است</string>
+  <string name="antitracklist">این برنامه فعالیت‌های شما را ردیابی و گزارش می‌کند</string>
+  <string name="antinonfreeadlist">این برنامه افزونه‌های غیر آزاد را تبلیغ می‌کند</string>
+  <string name="antinonfreenetlist">این برنامه خدمات شبکه‌های غیر آزاد را تبلیغ می‌کند</string>
+  <string name="antinonfreedeplist">این برنامه به سایر برنامه‌های غیر آزاد وابسته است</string>
+  <string name="display">نمایش</string>
+  <string name="expert">خارج‌سازی</string>
+  <string name="expert_mode">فعال‌سازی حالت خارج‌سازی</string>
+  <string name="search_hint">جستجوی برنامه‌ها</string>
+  <string name="db_sync_mode">حالت هماهنگی پایگاه داده‌ها</string>
+  <string name="db_sync_mode_long">تنظیم مقدار پرچم «همزمانی» اس‌کیولایت</string>
+  <string name="appcompatibility">هماهنگی برنامه</string>
+  <string name="show_incompat_versions">نسخه‌های غیرهماهنگ</string>
+  <string name="show_incompat_versions_l">نسخه‌هایی از برنامه که ناهماهنگ با این دستگاه است را نمایش بده</string>
+  <string name="rooted">روت</string>
+  <string name="rooted_long">برنامه‌هایی که نیازمند دسترسی روت هستند را نمایش بده</string>
+  <string name="ignoreTouch">صفحهٔ نمایش لمسی را در نظر نگیر</string>
+  <string name="ignoreTouch_long">همیشه برنامه‌هایی که نیازمند صفحهٔ نمایش لمسی هستند را شامل کن</string>
+  <string name="category_all">همه</string>
+  <string name="category_whatsnew">چیزهای جدید</string>
+  <string name="category_recentlyupdated">اخیراً به‌روز شده</string>
+  <string name="status_download">دریافت
+%2$s / %3$s (%4$d%%) از
+%1$s</string>
+  <string name="status_processing_xml">پردازش برنامه
+%2$d از %3$d از
+%1$s</string>
+  <string name="status_connecting_to_repo">اتصال به
+%1$s</string>
+  <string name="status_checking_compatibility">بررسی سازگاری برنامه‌ها با دستگاه شما...</string>
+  <string name="no_permissions">دسترسی‌ای استفاده نشده‌است.</string>
+  <string name="permissions_for_long">دسترسی‌های نسخهٔ %s</string>
+  <string name="showPermissions">نمایش دسترسی‌ها</string>
+  <string name="showPermissions_long">فهرستی از دسترسی‌هایی که یک برنامه نیاز دارد را نشان بده</string>
+  <string name="no_handler_app">شما برنامه‌ای که بتواند %s را مدیریت کند ندارید</string>
+  <string name="compactlayout">طرح‌بندی فشرده</string>
+  <string name="compactlayout_long">فقط نام‌ها و خلاصه‌ها را در فهرست نمایش بده</string>
+  <string name="theme">پوسته</string>
+  <string name="theme_long">پوسته‌ای برای استفاده انتخاب کنید</string>
+</resources>

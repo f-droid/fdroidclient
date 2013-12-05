@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -23,16 +23,19 @@ import android.content.*;
 import android.content.res.Configuration;
 import android.support.v4.view.MenuItemCompat;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,6 +59,7 @@ public class FDroid extends FragmentActivity {
     private static final int SEARCH = Menu.FIRST + 4;
 
     private ViewPager viewPager;
+    private AppListFragmentPageAdapter viewPageAdapter;
 
     private AppListManager manager = null;
 
@@ -68,6 +72,8 @@ public class FDroid extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        ((FDroidApp) getApplication()).applyTheme(this);
+
         super.onCreate(savedInstanceState);
         manager = new AppListManager(this);
         setContentView(R.layout.fdroid);
@@ -78,25 +84,23 @@ public class FDroid extends FragmentActivity {
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
         Intent i = getIntent();
-        Uri data = getIntent().getData();
+        Uri data = i.getData();
+        String appid = null;
         if (data != null) {
-            String appid = data.getQueryParameter("fdid");
-            // If appid == null, we just browse all the apps.
-            // If appid != null, we browse the app specified.
-            if (appid != null) {
-                Intent call = new Intent(this, AppDetails.class);
-                call.putExtra("appid", appid);
-                startActivityForResult(call, REQUEST_APPDETAILS);
+            if (data.isHierarchical()) {
+                // http(s)://f-droid.org/repository/browse?fdid=app.id
+                appid = data.getQueryParameter("fdid");
             }
-        } else if (i.hasExtra("uri")) {
-            Intent call = new Intent(this, ManageRepo.class);
-            call.putExtra("uri", i.getStringExtra("uri"));
-            startActivityForResult(call, REQUEST_MANAGEREPOS);
         } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
             boolean showUpdateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
             if (showUpdateTab) {
                 getTabManager().selectTab(2);
             }
+        }
+        if (appid != null && appid.length() > 0) {
+            Intent call = new Intent(this, AppDetails.class);
+            call.putExtra("appid", appid);
+            startActivityForResult(call, REQUEST_APPDETAILS);
         }
     }
 
@@ -115,10 +119,11 @@ public class FDroid extends FragmentActivity {
         manager.repopulateLists();
     }
 
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		getTabManager().onConfigurationChanged(newConfig);
-	}
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        getTabManager().onConfigurationChanged(newConfig);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,7 +139,7 @@ public class FDroid extends FragmentActivity {
                 android.R.drawable.ic_menu_preferences);
         menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
                 android.R.drawable.ic_menu_help);
-        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
         return true;
     }
 
@@ -162,26 +167,42 @@ public class FDroid extends FragmentActivity {
             return true;
 
         case ABOUT:
-            LayoutInflater li = LayoutInflater.from(this);
-            View view = li.inflate(R.layout.about, null);
+            View view = null;
+            if (Build.VERSION.SDK_INT >= 11) {
+                LayoutInflater li = LayoutInflater.from(this);
+                view = li.inflate(R.layout.about, null);
+            } else {
+                view = View.inflate(
+                        new ContextThemeWrapper(this, R.style.AboutDialogLight),
+                        R.layout.about, null);
+            }
 
             // Fill in the version...
-            TextView tv = (TextView) view.findViewById(R.id.version);
-            PackageManager pm = getPackageManager();
             try {
-                PackageInfo pi = pm.getPackageInfo(getApplicationContext()
-                        .getPackageName(), 0);
-                tv.setText(pi.versionName);
+                PackageInfo pi = getPackageManager()
+                    .getPackageInfo(getApplicationContext()
+                            .getPackageName(), 0);
+                ((TextView) view.findViewById(R.id.version))
+                    .setText(pi.versionName);
             } catch (Exception e) {
             }
 
-            Builder p = new AlertDialog.Builder(this).setView(view);
+            Builder p = null;
+            if (Build.VERSION.SDK_INT >= 11) {
+                p = new AlertDialog.Builder(this).setView(view);
+            } else {
+                p = new AlertDialog.Builder(
+                        new ContextThemeWrapper(
+                            this, R.style.AboutDialogLight)
+                        ).setView(view);
+            }
             final AlertDialog alrt = p.create();
-            alrt.setIcon(R.drawable.icon);
+            alrt.setIcon(R.drawable.ic_launcher);
             alrt.setTitle(getString(R.string.about_title));
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
                     getString(R.string.about_website),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             Uri uri = Uri.parse("https://f-droid.org");
@@ -190,6 +211,7 @@ public class FDroid extends FragmentActivity {
                     });
             alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                         }
@@ -200,6 +222,7 @@ public class FDroid extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @TargetApi(5)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -214,6 +237,7 @@ public class FDroid extends FragmentActivity {
                 ask_alrt.setMessage(getString(R.string.repo_alrt));
                 ask_alrt.setPositiveButton(getString(R.string.yes),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
                             updateRepos();
@@ -221,6 +245,7 @@ public class FDroid extends FragmentActivity {
                         });
                 ask_alrt.setNegativeButton(getString(R.string.no),
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
                             // do nothing
@@ -235,21 +260,33 @@ public class FDroid extends FragmentActivity {
             // unschedule) the service accordingly. It's cheap, so no need to
             // check if the particular setting has actually been changed.
             UpdateService.schedule(getBaseContext());
-            if (data != null && data.hasExtra("update")) {
-                updateRepos();
-            } else {
-                repopulateViews();
-            }
-            break;
 
+            if ((resultCode & PreferencesActivity.RESULT_RELOAD) != 0) {
+                ((FDroidApp) getApplication()).invalidateAllApps();
+            } else if ((resultCode & PreferencesActivity.RESULT_REFILTER) != 0) {
+                ((FDroidApp) getApplication()).filterApps();
+            }
+
+            if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
+                ((FDroidApp) getApplication()).reloadTheme();
+                final Intent intent = getIntent();
+                overridePendingTransition(0, 0);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(intent);
+            }
+
+            break;
         }
     }
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
+        viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
+            @Override
             public void onPageSelected(int position) {
                 getTabManager().selectTab(position);
             }
@@ -281,7 +318,14 @@ public class FDroid extends FragmentActivity {
     // is told to do the update, which will result in the database changing. The
     // UpdateReceiver class should get told when this is finished.
     public void updateRepos() {
-        UpdateService.updateNow(this);
+        UpdateService.updateNow(this).setListener(new ProgressListener() {
+            @Override
+            public void onProgress(Event event) {
+                if (event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES){
+                    repopulateViews();
+                }
+            }
+        });
     }
 
     private TabManager getTabManager() {

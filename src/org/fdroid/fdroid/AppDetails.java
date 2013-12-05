@@ -25,17 +25,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import android.support.v4.view.MenuItemCompat;
-import org.fdroid.fdroid.compat.ActionBarCompat;
-import org.fdroid.fdroid.compat.MenuManager;
-import org.fdroid.fdroid.DB.CommaSeparatedList;
 import org.xml.sax.XMLReader;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,15 +51,27 @@ import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.Html;
 import android.text.Html.TagHandler;
+import android.text.Spanned;
 import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
+
+import org.fdroid.fdroid.compat.PackageManagerCompat;
+import org.fdroid.fdroid.compat.ActionBarCompat;
+import org.fdroid.fdroid.compat.MenuManager;
+import org.fdroid.fdroid.DB.CommaSeparatedList;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class AppDetails extends ListActivity {
 
@@ -107,49 +113,57 @@ public class AppDetails extends ListActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             java.text.DateFormat df = DateFormat.getDateFormat(mctx);
+            DB.Apk apk = items.get(position);
 
             View v = convertView;
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.apklistitem, null);
             }
-            DB.Apk apk = items.get(position);
-            TextView version = (TextView) v.findViewById(R.id.version);
-            boolean iscurrent = apk.vercode == app_currentvercode;
-            version.setText(getString(R.string.version) + " " + apk.version
-                    + (iscurrent ? " *" : ""));
+            v.setEnabled(apk.compatible);
 
-            TextView status = (TextView) v.findViewById(R.id.status);
+            TextView tv = (TextView) v.findViewById(R.id.version);
+            tv.setText(getString(R.string.version) + " " + apk.version
+                    + (apk == app.curApk ? " *" : ""));
+            tv.setEnabled(apk.compatible);
+
+            tv = (TextView) v.findViewById(R.id.status);
             if (apk.vercode == app.installedVerCode
                     && apk.sig.equals(mInstalledSigID))
-                status.setText(getString(R.string.inst));
+                tv.setText(getString(R.string.inst));
             else
-                status.setText(getString(R.string.not_inst));
+                tv.setText(getString(R.string.not_inst));
+            tv.setEnabled(apk.compatible);
 
-            TextView size = (TextView) v.findViewById(R.id.size);
+            tv = (TextView) v.findViewById(R.id.size);
             if (apk.detail_size == 0) {
-                size.setText("");
+                tv.setText("");
             } else {
-                size.setText(Utils.getFriendlySize(apk.detail_size));
+                tv.setText(Utils.getFriendlySize(apk.detail_size));
+                tv.setEnabled(apk.compatible);
             }
-            TextView buildtype = (TextView) v.findViewById(R.id.buildtype);
+            tv = (TextView) v.findViewById(R.id.buildtype);
             if (apk.srcname != null) {
-                buildtype.setText("source");
+                tv.setText("source");
             } else {
-                buildtype.setText("bin");
+                tv.setText("bin");
             }
-            TextView added = (TextView) v.findViewById(R.id.added);
+            tv.setEnabled(apk.compatible);
+            tv = (TextView) v.findViewById(R.id.added);
             if (apk.added != null) {
-                added.setVisibility(View.VISIBLE);
-                added.setText(getString(R.string.added_on, df.format(apk.added)));
+                tv.setVisibility(View.VISIBLE);
+                tv.setText(getString(R.string.added_on, df.format(apk.added)));
+                tv.setEnabled(apk.compatible);
             } else {
-                added.setVisibility(View.GONE);
+                tv.setVisibility(View.GONE);
             }
-
-            // Disable it all if it isn't compatible...
-            View[] views = { v, version, status, size, buildtype, added };
-            for (View view : views) {
-                view.setEnabled(apk.compatible);
+            tv = (TextView) v.findViewById(R.id.nativecode);
+            if (pref_expert && apk.nativecode != null) {
+                tv.setVisibility(View.VISIBLE);
+                tv.setText(apk.nativecode.toString().replaceAll(","," "));
+                tv.setEnabled(apk.compatible);
+            } else {
+                tv.setVisibility(View.GONE);
             }
 
             return v;
@@ -158,23 +172,27 @@ public class AppDetails extends ListActivity {
 
     private static final int INSTALL = Menu.FIRST;
     private static final int UNINSTALL = Menu.FIRST + 1;
-    private static final int WEBSITE = Menu.FIRST + 2;
-    private static final int ISSUES = Menu.FIRST + 3;
-    private static final int SOURCE = Menu.FIRST + 4;
-    private static final int MARKET = Menu.FIRST + 5;
-    private static final int BITCOIN = Menu.FIRST + 6;
-    private static final int FLATTR = Menu.FIRST + 7;
-    private static final int DONATE = Menu.FIRST + 8;
-    private static final int LAUNCH = Menu.FIRST + 9;
-    private static final int SHARE = Menu.FIRST + 10;
+    private static final int IGNOREALL = Menu.FIRST + 2;
+    private static final int IGNORETHIS = Menu.FIRST + 3;
+    private static final int WEBSITE = Menu.FIRST + 4;
+    private static final int ISSUES = Menu.FIRST + 5;
+    private static final int SOURCE = Menu.FIRST + 6;
+    private static final int LAUNCH = Menu.FIRST + 7;
+    private static final int SHARE = Menu.FIRST + 8;
+    private static final int DONATE = Menu.FIRST + 9;
+    private static final int BITCOIN = Menu.FIRST + 10;
+    private static final int LITECOIN = Menu.FIRST + 11;
+    private static final int FLATTR = Menu.FIRST + 12;
+    private static final int DONATE_URL = Menu.FIRST + 13;
 
     private DB.App app;
-    private int app_currentvercode;
-    private DB.Apk curapk;
     private String appid;
     private PackageManager mPm;
     private DownloadHandler downloadHandler;
     private boolean stateRetained;
+
+    private boolean startingIgnoreAll;
+    private int startingIgnoreThis;
 
     LinearLayout headerView;
     View infoView;
@@ -184,6 +202,8 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        ((FDroidApp) getApplication()).applyTheme(this);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat abCompat = ActionBarCompat.create(this);
         abCompat.setDisplayHomeAsUpEnabled(true);
@@ -191,8 +211,7 @@ public class AppDetails extends ListActivity {
         setContentView(R.layout.appdetails);
 
         Intent i = getIntent();
-        appid = "";
-        Uri data = getIntent().getData();
+        Uri data = i.getData();
         if (data != null) {
             if (data.isHierarchical()) {
                 if (data.getHost().equals("details")) {
@@ -201,9 +220,10 @@ public class AppDetails extends ListActivity {
                 } else {
                     // https://f-droid.org/app/app.id
                     appid = data.getLastPathSegment();
+                    if (appid.equals("app")) appid = null;
                 }
             } else {
-                // fdroid.app:app.id (old scheme)
+                // fdroid.app:app.id
                 appid = data.getEncodedSchemeSpecificPart();
             }
             Log.d("FDroid", "AppDetails launched from link, for '" + appid
@@ -213,13 +233,6 @@ public class AppDetails extends ListActivity {
         } else {
             appid = i.getStringExtra("appid");
         }
-
-        // Set up the list...
-        headerView = new LinearLayout(this);
-        ListView lv = (ListView) findViewById(android.R.id.list);
-        lv.addHeaderView(headerView);
-        ApkListAdapter la = new ApkListAdapter(this, null);
-        setListAdapter(la);
 
         mPm = getPackageManager();
         // Get the preferences we're going to use in this Activity...
@@ -233,6 +246,19 @@ public class AppDetails extends ListActivity {
             }
             resetRequired = false;
         }
+
+        // Set up the list...
+        headerView = new LinearLayout(this);
+        ListView lv = (ListView) findViewById(android.R.id.list);
+        lv.addHeaderView(headerView);
+        ApkListAdapter la = new ApkListAdapter(this, app.apks);
+        setListAdapter(la);
+
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        pref_expert = prefs.getBoolean("expert", false);
+        pref_permissions = prefs.getBoolean("showPermissions", false);
+
         startViews();
 
     }
@@ -255,10 +281,6 @@ public class AppDetails extends ListActivity {
             }
             resetRequired = false;
         }
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        pref_expert = prefs.getBoolean("expert", false);
-        pref_permissions = prefs.getBoolean("showPermissions", false);
         updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
@@ -272,6 +294,16 @@ public class AppDetails extends ListActivity {
     protected void onPause() {
         if (downloadHandler != null) {
             downloadHandler.stopUpdates();
+        }
+        if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
+                || app.ignoreThisUpdate != startingIgnoreThis)) {
+            try {
+                DB db = DB.getDB();
+                db.setIgnoreUpdates(app.id,
+                        app.ignoreAllUpdates, app.ignoreThisUpdate);
+            } finally {
+                DB.releaseDB();
+            }
         }
         super.onPause();
     }
@@ -304,7 +336,6 @@ public class AppDetails extends ListActivity {
         if (old.downloadHandler != null)
             downloadHandler = new DownloadHandler(old.downloadHandler);
         app = old.app;
-        app_currentvercode = old.app_currentvercode;
         mInstalledSignature = old.mInstalledSignature;
         mInstalledSigID = old.mInstalledSigID;
     }
@@ -316,11 +347,13 @@ public class AppDetails extends ListActivity {
 
         Log.d("FDroid", "Getting application details for " + appid);
         app = null;
-        List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
-        for (DB.App tapp : apps) {
-            if (tapp.id.equals(appid)) {
-                app = tapp;
-                break;
+        if (appid != null && appid.length() > 0) {
+            List<DB.App> apps = ((FDroidApp) getApplication()).getApps();
+            for (DB.App tapp : apps) {
+                if (tapp.id.equals(appid)) {
+                    app = tapp;
+                    break;
+                }
             }
         }
         if (app == null) {
@@ -341,8 +374,8 @@ public class AppDetails extends ListActivity {
             DB.releaseDB();
         }
 
-        DB.Apk curver = app.getCurrentVersion();
-        app_currentvercode = curver == null ? 0 : curver.vercode;
+        startingIgnoreAll = app.ignoreAllUpdates;
+        startingIgnoreThis = app.ignoreThisUpdate;
 
         // Get the signature of the installed package...
         mInstalledSignature = null;
@@ -368,12 +401,6 @@ public class AppDetails extends ListActivity {
 
     private void startViews() {
 
-        // Populate the list...
-        ApkListAdapter la = (ApkListAdapter) getListAdapter();
-        for (DB.Apk apk : app.apks)
-            la.addItem(apk);
-        la.notifyDataSetChanged();
-
         // Insert the 'infoView' (which contains the summary, various odds and
         // ends, and the description) into the appropriate place, if we're in
         // landscape mode. In portrait mode, we put it in the listview's
@@ -391,12 +418,7 @@ public class AppDetails extends ListActivity {
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        File icon = new File(DB.getIconsPath(this), app.icon);
-        if (icon.exists()) {
-            iv.setImageDrawable(new BitmapDrawable(icon.getPath()));
-        } else {
-            iv.setImageResource(android.R.drawable.sym_def_app_icon);
-        }
+        ImageLoader.getInstance().displayImage(app.iconUrl, iv);
 
         // Set the title and other header details...
         TextView tv = (TextView) findViewById(R.id.title);
@@ -411,14 +433,14 @@ public class AppDetails extends ListActivity {
         The following is a quick solution to enable both text selection and
         links. Causes glitches and crashes:
         java.lang.IndexOutOfBoundsException: setSpan (-1 ... -1) starts before 0
-        
+
         class CustomMovementMethod extends LinkMovementMethod {
             @Override
             public boolean canSelectArbitrarily () {
                 return true;
             }
         }
-        
+
         if (Utils.hasApi(11)) {
             tv.setTextIsSelectable(true);
             tv.setMovementMethod(new CustomMovementMethod());
@@ -437,14 +459,20 @@ public class AppDetails extends ListActivity {
             @Override
             public void handleTag(boolean opening, String tag, Editable output,
                     XMLReader reader) {
-                if (opening && tag.equals("ul")) {
-                    listNum = -1;
+                if (tag.equals("ul")) {
+                    if (opening)
+                        listNum = -1;
+                    else
+                        output.append('\n');
                 } else if (opening && tag.equals("ol")) {
-                    listNum = 1;
+                    if (opening)
+                        listNum = 1;
+                    else
+                        output.append('\n');
                 } else if (tag.equals("li")) {
                     if (opening) {
                         if (listNum == -1) {
-                            output.append("\t•");
+                            output.append("\t• ");
                         } else {
                             output.append("\t" + Integer.toString(listNum)
                                     + ". ");
@@ -456,21 +484,25 @@ public class AppDetails extends ListActivity {
                 }
             }
         }
-        tv.setText(Html.fromHtml(app.detail_description, null,
-                new HtmlTagHandler()));
+        Spanned desc = Html.fromHtml(
+                app.detail_description, null, new HtmlTagHandler());
+        tv.setText(desc.subSequence(0, desc.length() - 2));
 
         tv = (TextView) infoView.findViewById(R.id.appid);
-        tv.setText(app.id);
+        if (pref_expert)
+            tv.setText(app.id);
+        else
+            tv.setVisibility(View.GONE);
 
         tv = (TextView) infoView.findViewById(R.id.summary);
         tv.setText(app.summary);
 
-        if (!app.apks.isEmpty()) {
+        if (pref_permissions && !app.apks.isEmpty()) {
             tv = (TextView) infoView.findViewById(R.id.permissions_list);
 
             CommaSeparatedList permsList = app.apks.get(0).detail_permissions;
             if (permsList == null) {
-                tv.setText(getString(R.string.no_permissions) + '\n');
+                tv.setText(getString(R.string.no_permissions));
             } else {
                 Iterator<String> permissions = permsList.iterator();
                 StringBuilder sb = new StringBuilder();
@@ -480,16 +512,59 @@ public class AppDetails extends ListActivity {
                         Permission permission = new Permission(this, permissionName);
                         sb.append("\t• " + permission.getName() + '\n');
                     } catch (NameNotFoundException e) {
-                        Log.d( "FDroid",
-                                "Can't find permission '" + permissionName + "'");
+                        if (permissionName.equals("ACCESS_SUPERUSER")) {
+                            sb.append("\t• Full permissions to all device features and storage\n");
+                        } else {
+                            Log.d("FDroid", "Permission not yet available: "
+                                    +permissionName);
+                        }
                     }
                 }
+                if (sb.length() > 0) sb.setLength(sb.length() - 1);
                 tv.setText(sb.toString());
             }
             tv = (TextView) infoView.findViewById(R.id.permissions);
             tv.setText(getString(
                     R.string.permissions_for_long, app.apks.get(0).version));
+        } else {
+            infoView.findViewById(R.id.permissions).setVisibility(View.GONE);
+            infoView.findViewById(R.id.permissions_list).setVisibility(View.GONE);
         }
+
+        tv = (TextView) infoView.findViewById(R.id.antifeatures);
+        if (app.antiFeatures != null) {
+            StringBuilder sb = new StringBuilder();
+            for (String af : app.antiFeatures) {
+                String afdesc = descAntiFeature(af);
+                if (afdesc != null) {
+                    sb.append("\t• " + afdesc + "\n");
+                }
+            }
+            if (sb.length() > 0) {
+                sb.setLength(sb.length() - 1);
+                tv.setText(sb.toString());
+            } else {
+                tv.setVisibility(View.GONE);
+            }
+        } else {
+            tv.setVisibility(View.GONE);
+        }
+    }
+
+    private String descAntiFeature(String af) {
+        if (af.equals("Ads"))
+            return getString(R.string.antiadslist);
+        if (af.equals("Tracking"))
+            return getString(R.string.antitracklist);
+        if (af.equals("NonFreeNet"))
+            return getString(R.string.antinonfreenetlist);
+        if (af.equals("NonFreeAdd"))
+            return getString(R.string.antinonfreeadlist);
+        if (af.equals("NonFreeDep"))
+            return getString(R.string.antinonfreedeplist);
+        if (af.equals("UpstreamNonFree"))
+            return getString(R.string.antiupstreamnonfreelist);
+        return null;
     }
 
     private void updateViews() {
@@ -505,13 +580,6 @@ public class AppDetails extends ListActivity {
             tv.setText(getString(R.string.details_installed,
                     app.installedVersion));
 
-        tv = (TextView) infoView.findViewById(R.id.appid);
-        if (pref_expert) {
-            tv.setVisibility(View.VISIBLE);
-        } else {
-            tv.setVisibility(View.GONE);
-        }
-
         tv = (TextView) infoView.findViewById(R.id.signature);
         if (pref_expert && mInstalledSignature != null) {
             tv.setVisibility(View.VISIBLE);
@@ -520,30 +588,19 @@ public class AppDetails extends ListActivity {
             tv.setVisibility(View.GONE);
         }
 
-        if (pref_permissions) {
-            tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setVisibility(View.VISIBLE);
-            tv = (TextView) infoView.findViewById(R.id.permissions_list);
-            tv.setVisibility(View.VISIBLE);
-        } else {
-            tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setVisibility(View.GONE);
-            tv = (TextView) infoView.findViewById(R.id.permissions_list);
-            tv.setVisibility(View.GONE);
-        }
-
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        curapk = app.apks.get(position - l.getHeaderViewsCount());
-        if (app.installedVerCode == curapk.vercode)
+        app.curApk = app.apks.get(position - l.getHeaderViewsCount());
+        if (app.installedVerCode == app.curApk.vercode)
             removeApk(app.id);
-        else if (app.installedVerCode > curapk.vercode) {
+        else if (app.installedVerCode > app.curApk.vercode) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
             ask_alrt.setMessage(getString(R.string.installDowngrade));
             ask_alrt.setPositiveButton(getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             install();
@@ -551,6 +608,7 @@ public class AppDetails extends ListActivity {
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             return;
@@ -569,15 +627,14 @@ public class AppDetails extends ListActivity {
         menu.clear();
         if (app == null)
             return true;
-        DB.Apk curver = app.getCurrentVersion();
-        if (app.hasUpdates == true) {
+        if (app.toUpdate) {
             MenuItemCompat.setShowAsAction(menu.add(
-                        Menu.NONE, INSTALL, 0, R.string.menu_update)
+                        Menu.NONE, INSTALL, 0, R.string.menu_upgrade)
                         .setIcon(R.drawable.ic_menu_refresh),
-                    MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
-        if (app.installedVersion == null && curver != null) {
+        if (app.installedVersion == null && app.curApk != null) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 1, R.string.menu_install)
                         .setIcon(android.R.drawable.ic_menu_add),
@@ -598,56 +655,75 @@ public class AppDetails extends ListActivity {
                         MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
             }
         }
+
         MenuItemCompat.setShowAsAction(menu.add(
                     Menu.NONE, SHARE, 1, R.string.menu_share)
                     .setIcon(android.R.drawable.ic_menu_share),
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
+        menu.add(Menu.NONE, IGNOREALL, 2, R.string.menu_ignore_all)
+                    .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
+                    .setCheckable(true)
+                    .setChecked(app.ignoreAllUpdates);
+
+        if (app.hasUpdates) {
+            menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
+                        .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
+                        .setCheckable(true)
+                        .setChecked(app.ignoreThisUpdate >= app.curApk.vercode);
+        }
         if (app.detail_webURL.length() > 0) {
-            menu.add(Menu.NONE, WEBSITE, 2, R.string.menu_website).setIcon(
+            menu.add(Menu.NONE, WEBSITE, 3, R.string.menu_website).setIcon(
                     android.R.drawable.ic_menu_view);
         }
         if (app.detail_trackerURL.length() > 0) {
-            menu.add(Menu.NONE, ISSUES, 3, R.string.menu_issues).setIcon(
+            menu.add(Menu.NONE, ISSUES, 4, R.string.menu_issues).setIcon(
                     android.R.drawable.ic_menu_view);
         }
         if (app.detail_sourceURL.length() > 0) {
-            menu.add(Menu.NONE, SOURCE, 4, R.string.menu_source).setIcon(
+            menu.add(Menu.NONE, SOURCE, 5, R.string.menu_source).setIcon(
                     android.R.drawable.ic_menu_view);
         }
-        menu.add(Menu.NONE, MARKET, 5, R.string.menu_market).setIcon(
-                android.R.drawable.ic_menu_view);
-        if (app.detail_bitcoinAddr != null) {
-            menu.add(Menu.NONE, BITCOIN, 6, R.string.menu_bitcoin).setIcon(
-                    android.R.drawable.ic_menu_view);
-        }
-        if (app.detail_flattrID != null) {
-            menu.add(Menu.NONE, FLATTR, 7, R.string.menu_flattr).setIcon(
-                    android.R.drawable.ic_menu_view);
-        }
-        if (app.detail_donateURL != null) {
-            menu.add(Menu.NONE, DONATE, 8, R.string.menu_donate).setIcon(
-                    android.R.drawable.ic_menu_view);
+
+        if (app.detail_bitcoinAddr != null || app.detail_litecoinAddr != null ||
+                app.detail_flattrID != null || app.detail_donateURL != null) {
+            SubMenu donate = menu.addSubMenu(Menu.NONE, DONATE, 7,
+                    R.string.menu_donate).setIcon(
+                    android.R.drawable.ic_menu_send);
+            if (app.detail_bitcoinAddr != null)
+                donate.add(Menu.NONE, BITCOIN, 8, R.string.menu_bitcoin);
+            if (app.detail_litecoinAddr != null)
+                donate.add(Menu.NONE, LITECOIN, 8, R.string.menu_litecoin);
+            if (app.detail_flattrID != null)
+                donate.add(Menu.NONE, FLATTR, 9, R.string.menu_flattr);
+            if (app.detail_donateURL != null)
+                donate.add(Menu.NONE, DONATE_URL, 10, R.string.menu_website);
         }
 
         return true;
     }
 
+
     public void tryOpenUri(String s) {
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s)));
-        } catch (android.content.ActivityNotFoundException e) {
-            Toast toast = Toast.makeText(this,
-                    getString(R.string.no_handler_app, s), Toast.LENGTH_LONG);
-            toast.show();
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
+        if (intent.resolveActivity(getPackageManager()) == null) {
+            Toast.makeText(this,
+                    getString(R.string.no_handler_app, intent.getDataString()),
+                    Toast.LENGTH_LONG).show();
+            return;
         }
+        startActivity(intent);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+        case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
 
         case LAUNCH:
             launchApk(app.id);
@@ -659,13 +735,25 @@ public class AppDetails extends ListActivity {
 
         case INSTALL:
             // Note that this handles updating as well as installing.
-            curapk = app.getCurrentVersion();
-            if (curapk != null)
+            if (app.curApk != null)
                 install();
             return true;
 
         case UNINSTALL:
             removeApk(app.id);
+            return true;
+
+        case IGNOREALL:
+            app.ignoreAllUpdates ^= true;
+            item.setChecked(app.ignoreAllUpdates);
+            return true;
+
+        case IGNORETHIS:
+            if (app.ignoreThisUpdate >= app.curApk.vercode)
+                app.ignoreThisUpdate = 0;
+            else
+                app.ignoreThisUpdate = app.curApk.vercode;
+            item.setChecked(app.ignoreThisUpdate > 0);
             return true;
 
         case WEBSITE:
@@ -680,19 +768,19 @@ public class AppDetails extends ListActivity {
             tryOpenUri(app.detail_sourceURL);
             return true;
 
-        case MARKET:
-            tryOpenUri("https://play.google.com/store/apps/details?id=" + app.id);
-            return true;
-
         case BITCOIN:
             tryOpenUri("bitcoin:" + app.detail_bitcoinAddr);
+            return true;
+
+        case LITECOIN:
+            tryOpenUri("litecoin:" + app.detail_litecoinAddr);
             return true;
 
         case FLATTR:
             tryOpenUri("https://flattr.com/thing/" + app.detail_flattrID);
             return true;
 
-        case DONATE:
+        case DONATE_URL:
             tryOpenUri(app.detail_donateURL);
             return true;
 
@@ -700,13 +788,13 @@ public class AppDetails extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Install the version of this app denoted by 'curapk'.
+    // Install the version of this app denoted by 'app.curApk'.
     private void install() {
 
         String ra = null;
         try {
             DB db = DB.getDB();
-            DB.Repo repo = db.getRepo(curapk.repo);
+            DB.Repo repo = db.getRepo(app.curApk.repo);
             if (repo != null)
                 ra = repo.address;
         } catch (Exception ex) {
@@ -718,20 +806,22 @@ public class AppDetails extends ListActivity {
             return;
         final String repoaddress = ra;
 
-        if (!curapk.compatible) {
+        if (!app.curApk.compatible) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
             ask_alrt.setMessage(getString(R.string.installIncompatible));
             ask_alrt.setPositiveButton(getString(R.string.yes),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            downloadHandler = new DownloadHandler(curapk,
+                            downloadHandler = new DownloadHandler(app.curApk,
                                     repoaddress, DB
                                             .getDataPath(getBaseContext()));
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             return;
@@ -741,12 +831,13 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        if (mInstalledSigID != null && curapk.sig != null
-                && !curapk.sig.equals(mInstalledSigID)) {
+        if (mInstalledSigID != null && app.curApk.sig != null
+                && !app.curApk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
                     getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
@@ -755,7 +846,7 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(curapk, repoaddress,
+        downloadHandler = new DownloadHandler(app.curApk, repoaddress,
                 DB.getDataPath(this));
     }
 
@@ -775,8 +866,7 @@ public class AppDetails extends ListActivity {
     }
 
     private void installApk(File file, String id) {
-        Intent intent = new Intent();
-        intent.setAction(android.content.Intent.ACTION_VIEW);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file.getPath()),
                 "application/vnd.android.package-archive");
         startActivityForResult(intent, REQUEST_INSTALL);
@@ -792,8 +882,8 @@ public class AppDetails extends ListActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
 
-        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Android App: "+app.name);
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app.name+" ("+app.summary+") - https://f-droid.org/app/"+app.id);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Android App: "+app.name);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name+" ("+app.summary+") - https://f-droid.org/app/"+app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
@@ -807,6 +897,7 @@ public class AppDetails extends ListActivity {
         pd.setCancelable(true);
         pd.setCanceledOnTouchOutside(false);
         pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
             public void onCancel(DialogInterface dialog) {
                 downloadHandler.cancel();
             }
@@ -814,6 +905,7 @@ public class AppDetails extends ListActivity {
         pd.setButton(DialogInterface.BUTTON_NEUTRAL,
                 getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         pd.cancel();
                     }
@@ -932,6 +1024,8 @@ public class AppDetails extends ListActivity {
             if (downloadHandler != null) {
                 downloadHandler = null;
             }
+
+            PackageManagerCompat.setInstaller(mPm, app.id);
             resetRequired = true;
             break;
         case REQUEST_UNINSTALL:

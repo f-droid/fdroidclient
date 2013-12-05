@@ -20,12 +20,13 @@
 
 package org.fdroid.fdroid;
 
-import android.util.Log;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+
+import android.util.Log;
 
 public class Downloader extends Thread {
 
@@ -94,6 +95,7 @@ public class Downloader extends Thread {
         return curapk;
     }
 
+    @Override
     public void run() {
 
         InputStream input = null;

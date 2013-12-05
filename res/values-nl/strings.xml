@@ -1,36 +1,49 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
   <string name="searchres_oneapp">Één applicatie gevonden die voldoet aan \'%s\':</string>
   <string name="searchres_noapps">Geen applicaties gevonden die voldoen aan \'%s\'</string>
   <string name="SignatureMismatch">De nieuwe versie is gesigned met een andere sleutel als de oude. Om de nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer het daarna nogmaals. (Let op dat het verwijderen de data van de applicatie verwijderd wordt)</string>
+  <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
+  <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet uw data kan corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
   <string name="version">Versie</string>
   <string name="n_versions_available">%d versies beschikbaar</string>
   <string name="n_version_available">%d versie beschikbaar</string>
-  <string name="notify">Verwittigen</string>
-  <string name="storage">Opslag</string>
   <string name="cache_downloaded">buffer gedownloade apps</string>
   <string name="keep_downloaded">Bewaar gedownloade apk-bestanden op de SD-kaart</string>
   <string name="updates">Updates</string>
-  <string name="clear_all_cached_data">Maak gecached data leeg</string>
-  <string name="reset">Reset</string>
-  <string name="maintenance">Onderhoud</string>
-  <string name="notify_updates_available">Verwittigen bij nieuwe beschikbare updates</string>
-  <string name="update_apps_list">app-lijst automatisch bijwerken</string>
-  <string name="update_history">Vernieuw historie</string>
+  <string name="other">Andere</string>
+  <string name="last_update_check">Laatste bronnen scan: %s</string>
   <string name="never">nooit</string>
   <string name="automatic_repo_scan">Automatische bronnen-scan</string>
-  <string name="app_name">F-Droid</string>
+  <string name="update_apps_list">app-lijst automatisch bijwerken</string>
+  <string name="automatic_scan_wifi">Allen op wifi</string>
+  <string name="automatic_scan_wifi_desc">Vernieuw app-lijst alleen op wifi automatisch</string>
+  <string name="notify">Verwittigen</string>
+  <string name="notify_updates_available">Verwittigen bij nieuwe beschikbare updates</string>
+  <string name="update_history">Vernieuw historie</string>
+  <string name="update_history_desc">Dagen om nieuwe/verbeterde apps te laten zien</string>
+  <string name="search_results">Zoekresultaten</string>
+  <string name="app_details">App Details</string>
+  <string name="no_such_app">Geen dergelijke app gevonden</string>
   <string name="about_title">Over F-Droid</string>
-  <string name="about_desc">Gebaseerd op Aptoide.\nUitgegeven onder de GNU GPLv3 licentie</string>
+  <string name="about_desc">Gebaseerd op Aptoide.
+Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="about_site">Website:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versie:</string>
   <string name="about_website">Website</string>
-  <string name="no_repo">U hebt geen bonnen geconfigureerd!\n\nEen bron is een lijst van applicaties. Om er een toe te voegen, druk de MENU-knop nu en voer een URL in.\n\nEen bron-adres ziet er ongeveer uit als: http://f-droid.org/repo</string>
+  <string name="no_repo">U hebt geen bronnen geconfigureerd!
+
+Een
+		bron is een lijst met applicaties. Om er een toe te voegen, druk op de MENU-knop en voer de URL in.
+
+Een bron-adres ziet er ongeveer
+		uit
+		als: https://f-droid.org/repo</string>
   <string name="inst">Geïnstalleerd</string>
   <string name="not_inst">Niet geïnstalleerd</string>
-  <string name="installed_update">Update mogelijk - Ver.:</string>
+  <string name="added_on">Toegevoegd op %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
   <string name="no">Nee</string>
@@ -38,32 +51,20 @@
   <string name="repo_add_add">Toevoegen</string>
   <string name="cancel">Annuleren</string>
   <string name="repo_delete_title">Kies bron om te verwijderen</string>
-  <string name="server_connection_error">Kan niet verbinden met de server!</string>
   <string name="repo_update_title">Vernieuw bronnen</string>
   <string name="tab_installed">Geïnstalleerd</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
-  <string name="update_available">Updates beschikbaar</string>
-  <string name="one_update_available">Updates beschikbaar</string>
-  <string name="many_updates_available">Updates beschikbaar</string>
-  <string name="fdroid_updates_available">Updates beschikbaar</string>
+  <string name="one_update_available">1 vernieuwing is beschikbaar</string>
+  <string name="many_updates_available">%d vernieuwingen zijn beschikbaar</string>
+  <string name="fdroid_updates_available">F-Droid Vernieuwingen Beschikbaar</string>
   <string name="process_wait_title">Even geduld aub</string>
   <string name="process_update_msg">Applicatie-lijst vernieuwen</string>
-  <string name="connection_error">Kan niet verbinden met het netwerk</string>
-  <string name="connection_timeout">Vervaltijd</string>
-  <string name="connection_error_msg">Kan niet verbinden met de server!</string>
-  <string name="download">Download</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="repo_add_url">Bron-adres</string>
-  <string name="isinst">Geïnstalleerd:</string>
-  <string name="install">Installeren</string>
-  <string name="uninstall">Deinstalleren</string>
-  <string name="update">Vernieuwen!</string>
-  <string name="update_alrt">Er zijn updates beschikbaar voor sommige geïnstalleerde applicaties.\nWil je ze zien?</string>
-  <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.\nWil je ze vernieuwen?</string>
-  <string name="error_download_alrt">Kan niet verbinden met de server of apk-bestand is corrupt!</string>
-  <string name="download_alrt">Applicatie verkrijgen van:\n</string>
-  <string name="menu_update_repo">Vernieuw bronnen</string>
+  <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
+Wil je ze vernieuwen?</string>
+  <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>
@@ -71,39 +72,57 @@
   <string name="menu_add_repo">Nieuwe bron</string>
   <string name="menu_rem_repo">Verwijder bron</string>
   <string name="menu_launch">Start</string>
+  <string name="menu_share">Delen</string>
   <string name="menu_install">Installeren</string>
   <string name="menu_uninstall">Deinstalleren</string>
+  <string name="menu_ignore_all">Negeer Alle Verbeteringen</string>
+  <string name="menu_ignore_this">Negeer Deze Verbetering</string>
   <string name="menu_website">Website</string>
   <string name="menu_issues">Problemen</string>
   <string name="menu_source">Broncode</string>
-  <string name="menu_market">Markt</string>
-  <string name="menu_update">Update</string>
+  <string name="menu_upgrade">Verbeteren</string>
   <string name="menu_donate">Doneer</string>
   <string name="details_installed">Versie %s geinstalleerd</string>
   <string name="details_notinstalled">Niet geinstalleerd</string>
   <string name="corrupt_download">Gedownloade bestand is corrupt</string>
   <string name="download_cancelled">Download geannuleerd</string>
-  <string name="antifeatures">Anti-Functies</string>
-  <string name="antiads">Advertenties</string>
-  <string name="antiadslong">Laat apps zien die advertenties bevatten</string>
-  <string name="antitrack">Volgen</string>
-  <string name="antitracklong">Laat apps zien die je volgen en je activiteiten rapporteren</string>
-  <string name="antinonfreead">Toevoegingen</string>
-  <string name="antinonfreeadlong">Laat apps zien die betaalde add-ons promoten</string>
-  <string name="antinonfreenet">Netwerkdiensten</string>
-  <string name="antinonfreenetlong">Laat apps zien die betaalde netwerkdiensten promoten</string>
-  <string name="antinonfreedep">Afhankelijkheden</string>
-  <string name="antinonfreedeplong">Laat apps zien die van andere betaalde apps afhankelijk zijn</string>
+  <string name="antiadslist">Deze app bevat advertenties</string>
+  <string name="antitracklist">Deze app houd je activiteiten bij en rapporteerd deze</string>
+  <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>
+  <string name="antinonfreenetlist">Deze app promoot niet-vrije netwerk diensten</string>
+  <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
+  <string name="display">Laat zien</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Ga in expert-modus</string>
   <string name="search_hint">Zoek-applicaties</string>
   <string name="db_sync_mode">Database sync-modus</string>
   <string name="db_sync_mode_long">Zet de SQLite\'s synchronisatie-vlag</string>
   <string name="appcompatibility">Applicatie verenigbaarheid</string>
-  <string name="showincompat">Onverenigbare apps</string>
-  <string name="showincompat_long">Laat apps zien die gemaakt zij voor nieuwe Android-versie of andere hardware</string>
+  <string name="show_incompat_versions">Onverenigbare versies</string>
+  <string name="show_incompat_versions_l">Laat versies van apps die onverenigbaar zijn met het apparaat</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Laat apps zien die root-privileges vereisen</string>
-  <string name="category_all">Installeren</string>
-  <string name="status_processing_xml">Applicatie verkrijgen van:\n</string>
+  <string name="ignoreTouch">Negeer aanraakscherm</string>
+  <string name="ignoreTouch_long">Altijd apps die aanraakscherm vereisen weergeven</string>
+  <string name="category_all">Alles</string>
+  <string name="category_whatsnew">Wat is nieuw</string>
+  <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
+  <string name="status_download">Downloaden
+%2$s / %3$s (%4$d%%) van
+%1$s</string>
+  <string name="status_processing_xml">Verwerken applicatie
+%2$d van %3$d van
+%1$s</string>
+  <string name="status_connecting_to_repo">Connecteren naar
+%1$s</string>
+  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat...</string>
+  <string name="no_permissions">Geen permissies worden gebruikt</string>
+  <string name="permissions_for_long">Permissies voor versie %s</string>
+  <string name="showPermissions">Laat permissies zien</string>
+  <string name="showPermissions_long">Laat een lijst met benodigde permissies van de app zien</string>
+  <string name="no_handler_app">U hebt geen beschikbare app die %s kan verwerken</string>
+  <string name="compactlayout">Compacte Layout</string>
+  <string name="compactlayout_long">Laat alleen namen en samenvattingen van apps zien in de lijst</string>
+  <string name="theme">Thema</string>
+  <string name="theme_long">Kies een thema om te gebruiken</string>
 </resources>

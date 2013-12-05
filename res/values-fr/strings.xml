@@ -1,41 +1,46 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">%1$d applications trouvées contenant \'%2$s\':</string>
   <string name="searchres_oneapp">Une application trouvée contenant \'%s\':</string>
   <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
   <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller l\'application écrasera les données enregistrées par l\'application).</string>
-  <string name="installIncompatible">Android dit que ce paquetage n\'est pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
-  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous continuer ?</string>
+  <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
+  <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même revenir à une ancienne version?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versions disponibles</string>
   <string name="n_version_available">%d version disponible</string>
-  <string name="notify">Notifier</string>
-  <string name="storage">Mémoire</string>
-  <string name="cache_downloaded">Garder en mémoire cache les applications téléchargées</string>
+  <string name="cache_downloaded">Stocker les applications téléchargées sur l\'appareil</string>
   <string name="keep_downloaded">Garder les fichiers apk téléchargés sur la carte SD</string>
   <string name="updates">Mises à jour</string>
-  <string name="clear_all_cached_data">Vider la mémoire cache</string>
-  <string name="reset">Réinitialisation</string>
-  <string name="maintenance">Maintenance</string>
-  <string name="notify_updates_available">Notifier quand de nouvelles mises à jour sont disponibles</string>
-  <string name="update_apps_list">Mettre à jour automatiquement la liste d\'applications à partir des dépôts</string>
-  <string name="update_history">Historique des mises à jour</string>
-  <string name="update_history_desc">Jours pour présenter les applications nouvelles/mises à jour</string>
+  <string name="other">Autres</string>
   <string name="last_update_check">Dernière analyse du dépôt : %s</string>
   <string name="never">jamais</string>
   <string name="automatic_repo_scan">Balayage automatique du dépôt</string>
-  <string name="app_name">F-Droid</string>
+  <string name="update_apps_list">Mettre à jour automatiquement la liste d\'applications à partir des dépôts</string>
+  <string name="automatic_scan_wifi">Seulement par WiFi</string>
+  <string name="automatic_scan_wifi_desc">Mettre à jour automatiquement la liste d\'applications seulement via WiFi</string>
+  <string name="notify">Notifier</string>
+  <string name="notify_updates_available">Avertir quand de nouvelles mises à jour sont disponibles</string>
+  <string name="update_history">Historique des mises à jour</string>
+  <string name="update_history_desc">Jours pour présenter les applications nouvelles/mises à jour</string>
+  <string name="search_results">Résultats de la recherche</string>
+  <string name="app_details">Détails de l\'application</string>
+  <string name="no_such_app">Pas d\'application trouvée</string>
   <string name="about_title">À propos de F-Droid</string>
-  <string name="about_desc">Originellement basée sur Aptoide.\nPubliée sous licence GNU GPL v3.</string>
+  <string name="about_desc">Originellement basée sur Aptoide.
+Publiée sous licence GNU GPL v3.</string>
   <string name="about_site">Site Web :</string>
-  <string name="about_mail">Courriel:</string>
+  <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Site Web</string>
-  <string name="no_repo">Aucun dépôt n\'est configuré !\n\nUn dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur MENU et entrez l\'adresse URL.\n\nL\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
+  <string name="no_repo">Aucun dépôt n\'est configuré !
+
+Un dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.
+
+L\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Pas installée</string>
   <string name="added_on">Ajouté le %s</string>
-  <string name="installed_update">Mise à jour possible - Ver.:</string>
   <string name="ok">OK</string>
   <string name="yes">Oui</string>
   <string name="no">Non</string>
@@ -43,71 +48,55 @@
   <string name="repo_add_add">Ajouter</string>
   <string name="cancel">Annuler</string>
   <string name="repo_delete_title">Choisissez le dépôt à supprimer</string>
-  <string name="server_connection_error">Connection au serveur impossible!</string>
   <string name="repo_update_title">Mettre à jour les dépôts</string>
   <string name="tab_installed">Installée</string>
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Mises à jour</string>
-  <string name="update_available">Mises à jour disponibles</string>
   <string name="one_update_available">1 mise à jour est disponible.</string>
   <string name="many_updates_available">%d mises à jour sont disponibles.</string>
   <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
   <string name="process_wait_title">Patientez</string>
   <string name="process_update_msg">Mise à jour de la liste d\'applications...</string>
-  <string name="connection_error">Connection au réseau impossible.</string>
-  <string name="connection_timeout">Délai dépassé</string>
-  <string name="connection_error_msg">Connection au serveur impossible!</string>
-  <string name="download">Téléchargement</string>
   <string name="download_server">Réception d\'application de</string>
   <string name="repo_add_url">Adresse du dépôt</string>
-  <string name="isinst">Installé:</string>
-  <string name="install">Installer</string>
-  <string name="uninstall">Supprimer</string>
-  <string name="update">Mise à jour!</string>
-  <string name="update_alrt">Des mises à jour sont disponibles pour certaines applications.\n\nDésirez-vous les voir ?</string>
-  <string name="repo_alrt">La liste des dépôts utilisés a changé.\nVoulez-vous les mettre à jour ?</string>
-  <string name="error_download_alrt">Connections au serveur impossible ou fichier apk corrompu!</string>
-  <string name="download_alrt">Réception d\'application de:\n</string>
+  <string name="repo_alrt">La liste des dépôts utilisés a changé.
+Voulez-vous les mettre à jour ?</string>
   <string name="menu_update_repo">Mettre à jour les dépôts</string>
   <string name="menu_manage">Gestion de dépôts</string>
   <string name="menu_preferences">Préférences</string>
-  <string name="menu_about">À propos de</string>
+  <string name="menu_about">A propos</string>
   <string name="menu_search">Rechercher</string>
   <string name="menu_add_repo">Nouveau dépôt</string>
   <string name="menu_rem_repo">Supprimer un dépôt</string>
   <string name="menu_launch">Lancer</string>
+  <string name="menu_share">Partager</string>
   <string name="menu_install">Installer</string>
-  <string name="menu_uninstall">Supprimer</string>
+  <string name="menu_uninstall">Désinstaller</string>
+  <string name="menu_ignore_all">Ignorer toutes les mises à jour</string>
+  <string name="menu_ignore_this">Ignorer cette mise à jour</string>
   <string name="menu_website">Site Web</string>
   <string name="menu_issues">Problèmes</string>
   <string name="menu_source">Code source</string>
-  <string name="menu_market">Marché</string>
-  <string name="menu_update">Mise à jour</string>
+  <string name="menu_upgrade">Mise à jour</string>
   <string name="menu_donate">Faire un don</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
   <string name="corrupt_download">Le fichier téléchargé est corrompu</string>
   <string name="download_cancelled">Téléchargement annulé</string>
-  <string name="antifeatures">Anti-fonctionnalités</string>
-  <string name="antiads">Publicités</string>
-  <string name="antiadslong">Montrer les applications qui contiennent des publicités</string>
-  <string name="antitrack">Surveillance</string>
-  <string name="antitracklong">Montrer les applications qui épient et qui rapportent votre activité</string>
-  <string name="antinonfreead">Extensions</string>
-  <string name="antinonfreeadlong">Montrer les applications qui promeuvent des extensions privatrices</string>
-  <string name="antinonfreenet">Services réseau</string>
-  <string name="antinonfreenetlong">Montrer les applications qui promeuvent des services réseaux privateurs</string>
-  <string name="antinonfreedep">Dépendances</string>
-  <string name="antinonfreedeplong">Montrer les applications qui dépendent d\'autres applications non libres</string>
+  <string name="antiadslist">Cette application contient des publicités</string>
+  <string name="antitracklist">Cette application épie et rapporte votre activité</string>
+  <string name="antinonfreeadlist">Cette application promeut des extensions privatrices</string>
+  <string name="antinonfreenetlist">Cette application promeut des services réseaux privateurs</string>
+  <string name="antinonfreedeplist">Cette application dépend d\'autres applications non libres</string>
   <string name="display">Affichage</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Activer le mode expert</string>
-  <string name="search_hint">Recherche d\'applications</string>
+  <string name="search_hint">Rechercher des applications</string>
   <string name="db_sync_mode">Mode de synchronisation à la base de données</string>
   <string name="db_sync_mode_long">Régler la valeur de la synchronisation SQLite</string>
   <string name="appcompatibility">Compatibilité de l\'application</string>
-  <string name="showincompat">Applications incompatibles</string>
-  <string name="showincompat_long">Montrer les applications écrites pour de nouvelles versions d\'Android ou un matériel différent</string>
+  <string name="show_incompat_versions">Versions incompatibles</string>
+  <string name="show_incompat_versions_l">Afficher les version des applis qui ne sont pas compatibles avec votre appareil</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Montrer les applications qui requièrent les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
@@ -115,14 +104,22 @@
   <string name="category_all">Tout</string>
   <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
-  <string name="status_download">Téléchargement\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
-  <string name="status_processing_xml">Prise en compte de l\'application\n%2$d de %3$d depuis\n%1$s</string>
-  <string name="status_connecting_to_repo">Connexion à\n%1$s</string>
+  <string name="status_download">Téléchargement
+%2$s / %3$s (%4$d%%) de
+%1$s</string>
+  <string name="status_processing_xml">Prise en compte de l\'application
+%2$d de %3$d depuis
+%1$s</string>
+  <string name="status_connecting_to_repo">Connexion à
+%1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des applis avec votre appareil…</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Autorisations pour la version %s</string>
   <string name="showPermissions">Afficher les autorisations</string>
-  <string name="showPermissions_long">Afficher la liste des permissions que nécessite l\'application</string>
+  <string name="showPermissions_long">Afficher la liste des autorisations que nécessite l\'application</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
+  <string name="compactlayout_long">Afficher seulement les noms d\'applications et les résumés dans la liste</string>
+  <string name="theme">Thème</string>
+  <string name="theme_long">Sélectionner un thème à utiliser</string>
 </resources>

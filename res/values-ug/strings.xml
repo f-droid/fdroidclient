@@ -1,44 +1,46 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">بۇ \'%2$s\'غا ماس كېلىدىغان %1$d ئەپنى تاپتى:</string>
   <string name="searchres_oneapp">\'%s\' غا ماس كېلىدىغان بىر ئەپنى تاپتى:</string>
   <string name="searchres_noapps">\'%s\' غا ماس كېلىدىغان ھېچقانداق ئەپنى تاپالمىدى</string>
   <string name="SignatureMismatch">بۇ يېڭى نەشرى كونا نەشرىنىڭكى بىلەن پەرقلىق ئاچقۇچ بىلەن ئىمزا قويۇلغان. ئالدى بىلەن كونا نەشرىنى ئۆچۈرۈۋېتىپ ئاندىن يېڭى نەشرىنى ئورنىتىڭ. بۇ مەشغۇلاتنى قىلىپ ئاندىن قايتا سىناڭ. (دىققەت كونا نەشرى ئۆچۈرۈلسە شۇ ئەپتە ساقلانغان ھەممە سانلىق مەلۇماتلارمۇ ئۆچۈرۈلىدۇ)</string>
-  <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟</string>
+  <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدىغاندەك تۇرىدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟</string>
   <string name="installDowngrade">بۇ ئەپنىڭ دەرىجىسىنى تۆۋەنلىتىشنى سىناۋاتىسىز. بۇ مەشغۇلاتنى ئىجرا قىلىش داۋامىدا كاشىلا كۆرۈلۈشى ۋە سانلىق مەلۇماتلىرىڭىزنى يوقۇتۇپ قويۇشىڭىز مۇمكىن. ئۇنى سىناپ دەرىجىسىنى تۆۋەنلىتىۋېرەمسىز؟</string>
   <string name="version">نەشرى</string>
   <string name="n_versions_available">%d نەشرى بار</string>
   <string name="n_version_available">%d نەشرى بار</string>
-  <string name="notify">ئۇقتۇرۇش</string>
-  <string name="storage">ساقلىغۇچ</string>
   <string name="cache_downloaded">ئەپلەر غەملەككە چۈشۈرۈلدى</string>
   <string name="keep_downloaded">چۈشۈرگەن apk ھۆججەتلەرنى SD كارتىدا ساقلاپ قال</string>
   <string name="updates">يېڭىلانمىلار</string>
-  <string name="clear_all_cached_data">غەملەنگەنلەرنىڭ ھەممىسىنى تازىلا</string>
-  <string name="reset">ئەسلىگە قايتۇر</string>
-  <string name="maintenance">ئاسراش</string>
-  <string name="notify_updates_available">يېڭى يېڭىلانمىلار بولسا ئەسكەرت</string>
-  <string name="update_apps_list">ئەپ تىزىمىنى خەزىنەدىن ئۆزلۈكىدىن يېڭىلا</string>
-  <string name="update_history">يېڭىلاش تارىخى</string>
-  <string name="update_history_desc">يېڭى/يېڭىلانغان ئەپلەرنى كۆرسىتىدىغان كۈن سانى</string>
+  <string name="other">باشقا</string>
   <string name="last_update_check">ئاخىرقى repo تەكشۈرۈش: %s</string>
   <string name="never">ھەرگىز</string>
   <string name="automatic_repo_scan">ئاپتوماتىك repo تەكشۈرۈش</string>
-  <string name="app_name">F-Droid</string>
+  <string name="update_apps_list">ئەپ تىزىمىنى خەزىنەدىن ئۆزلۈكىدىن يېڭىلا</string>
+  <string name="automatic_scan_wifi">wifi دىلا</string>
+  <string name="automatic_scan_wifi_desc">ئەپ تىزىمىنى wifi دىلا ئۆزلۈكىدىن يېڭىلا</string>
+  <string name="notify">ئۇقتۇرۇش</string>
+  <string name="notify_updates_available">يېڭى يېڭىلانمىلار بولسا ئەسكەرت</string>
+  <string name="update_history">يېڭىلاش تارىخى</string>
+  <string name="update_history_desc">يېڭى/يېڭىلانغان ئەپلەرنى كۆرسىتىدىغان كۈن سانى</string>
   <string name="search_results">ئىزدەش نەتىجىلىرى</string>
   <string name="app_details">ئەپ تەپسىلاتلىرى</string>
   <string name="no_such_app">بۇنداق ئەپ تېپىلمىدى</string>
   <string name="about_title">F-Droid ھەققىدە</string>
-  <string name="about_desc">دەسلەپتە Aptoide نى ئاساس قىلغان.\nبۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان.</string>
+  <string name="about_desc">دەسلەپتە Aptoide نى ئاساس قىلغان.
+بۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان.</string>
   <string name="about_site">تور تۇرا:</string>
   <string name="about_mail">تورخەت:</string>
   <string name="about_version">نەشرى:</string>
   <string name="about_website">تورتۇرا</string>
-  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!\n\nخەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ.\n\nخەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo</string>
+  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!
+
+خەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ.
+
+خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo</string>
   <string name="inst">ئورنىتىلغان</string>
   <string name="not_inst">ئورنىتىلمىغان</string>
   <string name="added_on">%s دا قوشۇلغان</string>
-  <string name="installed_update">يېڭىلانما بار - نەشرى:</string>
   <string name="ok">جەزملە</string>
   <string name="yes">ھەئە</string>
   <string name="no">ياق</string>
@@ -46,31 +48,19 @@
   <string name="repo_add_add">قوش</string>
   <string name="cancel">ۋاز كەچ</string>
   <string name="repo_delete_title">چىقىرىۋېتىدىغان خەزىنەنى تاللاڭ</string>
-  <string name="server_connection_error">مۇلازىمېتىرغا باغلىنالمىدى!</string>
   <string name="repo_update_title">خەزىنە يېڭىلا</string>
   <string name="tab_installed">ئورنىتىلغان</string>
   <string name="tab_noninstalled">ئىشلىتىشچان</string>
   <string name="tab_updates">يېڭىلانمىلار</string>
-  <string name="update_available">يېڭىلانمىلار بار</string>
   <string name="one_update_available">1 يېڭىلانما بار.</string>
   <string name="many_updates_available">%d يېڭىلانما بار.</string>
   <string name="fdroid_updates_available">F-Droid يېڭىلانمىلىرى بار</string>
   <string name="process_wait_title">سەل كۈتۈڭ</string>
   <string name="process_update_msg">ئەپ تىزىمىنى يېڭىلاۋاتىدۇ…</string>
-  <string name="connection_error">تورغا باغلىنالمىدى.</string>
-  <string name="connection_timeout">ۋاقىت ھالقىش</string>
-  <string name="connection_error_msg">مۇلازىمېتىرغا باغلىنالمىدى!</string>
-  <string name="download">چۈشۈر</string>
-  <string name="download_server">"ئەپكە ئېرىشىش ئورنى "</string>
+  <string name="download_server">ئەپكە ئېرىشىش ئورنى</string>
   <string name="repo_add_url">خەزىنە ئادرېسى</string>
-  <string name="isinst">"ئورنىتىلغان: "</string>
-  <string name="install">ئورنات</string>
-  <string name="uninstall">ئۆچۈر</string>
-  <string name="update">يېڭىلا!</string>
-  <string name="update_alrt">ئورنىتىلغان بەزى ئەپلەرنىڭ يېڭىلانمىسى بار.\nئۇلارنى كۆرەمسىز؟</string>
-  <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.\nئۇلارنى يېڭىلامسىز؟</string>
-  <string name="error_download_alrt">مۇلازىمېتىرغا باغلىنالمىدى ياكى apk ھۆججەت بۇزۇق!</string>
-  <string name="download_alrt">ئەپلەرگە ئېرىشىش ئورنى: \n</string>
+  <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.
+ئۇلارنى يېڭىلامسىز؟</string>
   <string name="menu_update_repo">خەزىنە يېڭىلا</string>
   <string name="menu_manage">خەزىنە باشقۇر</string>
   <string name="menu_preferences">مايىللىقلار</string>
@@ -82,29 +72,22 @@
   <string name="menu_share">ھەمبەھىر</string>
   <string name="menu_install">ئورنات</string>
   <string name="menu_uninstall">ئۆچۈر</string>
+  <string name="menu_ignore_all">ھەممە يېڭىلانمىلارغا پەرۋا قىلما</string>
+  <string name="menu_ignore_this">بۇ يېڭىلانمىغا پەرۋا قىلما</string>
   <string name="menu_website">تورتۇرا</string>
   <string name="menu_issues">مەسىلىلەر</string>
   <string name="menu_source">ئەسلى كود</string>
-  <string name="menu_market">بازار</string>
-  <string name="menu_update">يېڭىلا</string>
-  <string name="menu_bitcoin">Bitcoin</string>
-  <string name="menu_flattr">Flattr</string>
+  <string name="menu_upgrade">يۈكسەلت</string>
   <string name="menu_donate">ئىئانە</string>
   <string name="details_installed">%s نەشرى ئورنىتىلدى</string>
   <string name="details_notinstalled">ئورنىتىلمىدى</string>
   <string name="corrupt_download">چۈشۈرگەن ھۆججەت بۇرۇق</string>
   <string name="download_cancelled">چۈشۈرۈشتىن ۋاز كەچتى</string>
-  <string name="antifeatures">خاس ئىقتىدارلار</string>
-  <string name="antiads">ئېلان</string>
-  <string name="antiadslong">ئېلان بار ئەپلەرنى كۆرسەت</string>
-  <string name="antitrack">ئىزلاش</string>
-  <string name="antitracklong">پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدىغان ئەپلەرنى كۆرسەت</string>
-  <string name="antinonfreead">قىستۇرما</string>
-  <string name="antinonfreeadlong">ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ</string>
-  <string name="antinonfreenet">تور مۇلازىمەتلىرى</string>
-  <string name="antinonfreenetlong">ھەقسىز بولمىغان تور مۇلازىمەتلىرىنى تەۋسىيە قىلىدىغان ئەپلەرنى كۆرسىتىدۇ</string>
-  <string name="antinonfreedep">بېقىندىلار</string>
-  <string name="antinonfreedeplong">ھەقسىز بولمىغان باشقا ئەپلەرگە بېقىنىدىغان ئەپلەرنى كۆرسىتىدۇ</string>
+  <string name="antiadslist">بۇ ئەپتە ئېلان بار</string>
+  <string name="antitracklist">بۇ ئەپ پائالىيەتلىرىڭىزنى ئىزلاپ، دوكلات قىلىدۇ</string>
+  <string name="antinonfreeadlist">بۇ ئەپ ھەقسىز بولمىغان قىستۇرمىلارنى تەۋسىيە قىلىدۇ</string>
+  <string name="antinonfreenetlist">بۇ ئەپ ھەقسىز بولمىغان تور مۇلازىمەتلىرىنى تەۋسىيە قىلىدۇ</string>
+  <string name="antinonfreedeplist">بۇ ئەپ ھەقسىز بولمىغان باشقا ئەپلەرگە بېقىنىدۇ</string>
   <string name="display">كۆرسەت</string>
   <string name="expert">ئالىي</string>
   <string name="expert_mode">ئالىي ھالەتنى قوزغات</string>
@@ -112,8 +95,8 @@
   <string name="db_sync_mode">ساندان قەدەمداش ھالەت</string>
   <string name="db_sync_mode_long">بۇ SQLite قەدەمداش بايراقىنىڭ قىممىتىنى تەڭشەيدۇ</string>
   <string name="appcompatibility">ئەپ ماسلىشىشچانلىقى</string>
-  <string name="showincompat">ماسلاشمايدىغان ئەپلەر</string>
-  <string name="showincompat_long">يېڭى نەشرىدىكى ئاندرويىد ياكى باشقا قاتتىق دېتال ئۈسكۈنىسى ئۈچۈن يازغان ئەپلەرنى كۆرسەت</string>
+  <string name="show_incompat_versions">ماسلاشمايدىغان نەشرىلىرى</string>
+  <string name="show_incompat_versions_l">ئەپلەرنىڭ ئۈسكۈنە بىلەن ماسلاشمايدىغان نەشرىلىرىنى كۆرسىتىدۇ</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">root ھوقۇقى زۆرۈر بولغان ئەپلەرنى كۆرسەت</string>
   <string name="ignoreTouch">سەزگۈر ئېكرانغا پەرۋا قىلما</string>
@@ -121,16 +104,22 @@
   <string name="category_all">ھەممىسى</string>
   <string name="category_whatsnew">يېڭىلىقلار</string>
   <string name="category_recentlyupdated">يېقىنقى يېڭىلانغانلار</string>
-  <string name="status_download">چۈشۈرۈۋاتىدۇ\n%2$s / %3$s (%4$d%%)\n%1$s</string>
-  <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ\n%2$d of %3$d\n%1$s</string>
-  <string name="status_connecting_to_repo">%1$s غا \nباغلىنىۋاتىدۇ</string>
+  <string name="status_download">چۈشۈرۈۋاتىدۇ
+%2$s / %3$s (%4$d%%)
+%1$s</string>
+  <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ
+%2$d of %3$d
+%1$s</string>
+  <string name="status_connecting_to_repo">%1$s غا 
+باغلىنىۋاتىدۇ</string>
   <string name="status_checking_compatibility">ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…</string>
-  <string name="status_downloading_icons">يېڭى سىنبەلگەلەرنى چۈشۈرۈۋاتىدۇ…</string>
   <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
   <string name="permissions_for_long">%s نەشرىنىڭ ھوقۇقلىرى</string>
   <string name="showPermissions">ھوقۇقلارنى كۆرسەت</string>
   <string name="showPermissions_long">ئەپكە زۆرۈر بولغان ھوقۇق تىزىمىنى كۆرسىتىدۇ</string>
-  <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلىدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
+  <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
   <string name="compactlayout">ئىخچام جايلاشتۇرۇش</string>
   <string name="compactlayout_long">تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ</string>
+  <string name="theme">ئۆرنەك</string>
+  <string name="theme_long">ئىشلىتىدىغان ئۆرنەكتىن بىرنى تاللاڭ</string>
 </resources>

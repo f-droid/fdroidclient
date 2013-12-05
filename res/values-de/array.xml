@@ -1,11 +1,15 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="updateIntervalNames">
-    <item>Niemals</item>
+    <item>Nie</item>
     <item>Stündlich</item>
     <item>Alle 4 Stunden</item>
     <item>Alle 12 Stunden</item>
     <item>Täglich</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Dunkel</item>
+    <item>Hell</item>
   </string-array>
   <string-array name="dbSyncModeNames">
     <item>Aus (unsicher)</item>

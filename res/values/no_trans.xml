@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">F-Droid</string>
+	<string name="version_name">0.55</string>
+
+	<string name="about_sitec">https://f-droid.org</string>
+	<string name="about_mailc">team@f-droid.org</string>
+
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+	<string-array name="updateIntervalValues">
+		<item>0</item>
+		<item>1</item>
+		<item>4</item>
+		<item>12</item>
+		<item>24</item>
+	</string-array>
+
+	<string-array name="dbSyncModeValues">
+		<item>off</item>
+		<item>normal</item>
+		<item>full</item>
+	</string-array>
+
+	<string-array name="themeValues">
+		<item>dark</item>
+		<item>light</item>
+	</string-array>
+
+</resources>

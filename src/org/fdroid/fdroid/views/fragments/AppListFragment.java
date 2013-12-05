@@ -3,11 +3,13 @@ package org.fdroid.fdroid.views.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import android.support.v4.app.Fragment;
+
 import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AppListView;
@@ -30,6 +32,7 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
         Preferences.get().unregisterCompactLayoutChangeListener(this);
     }
 
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {

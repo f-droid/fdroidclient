@@ -1,41 +1,46 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">\'%2$s\' ile eşleşen %1$d uygulama bulundu:</string>
   <string name="searchres_oneapp">\'%s\' ile eşleşen bir uygulama bulundu:</string>
   <string name="searchres_noapps">\'%s\' ile eşleşen hiçbir uygulama bulunamadı:</string>
   <string name="SignatureMismatch">Bu yeni sürüm farklı bir anahtar ile imzalanmıştır. Yeni sürümü kurmak için önce eski sürümü kaldırmanız gerekir. Lütfen bunu yapın ve tekrar deneyin. (Not: bu, uygulama tarafından saklanan tüm dahili verileri silecektir)</string>
-  <string name="installIncompatible">Android bu paketin cihazınızla uyumlu olmadığını bildiriyor. Yine de kurmayı denemek istiyor musunuz?</string>
+  <string name="installIncompatible">Bu paket cihazınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor musunuz?</string>
   <string name="installDowngrade">Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın yanlış çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek istiyor musunuz?</string>
   <string name="version">Sürüm</string>
   <string name="n_versions_available">%d sürüm mevcut</string>
   <string name="n_version_available">%d sürüm mevcut</string>
-  <string name="notify">Bildirme</string>
-  <string name="storage">Saklama</string>
   <string name="cache_downloaded">İndirilen uygulamaları önbelleğe kaydet</string>
   <string name="keep_downloaded">İndirilen uygulamaları SD kartına kaydet</string>
   <string name="updates">Güncellemeler</string>
-  <string name="clear_all_cached_data">Önbellekteki tüm verileri sil</string>
-  <string name="reset">Sıfırla</string>
-  <string name="maintenance">Bakım</string>
-  <string name="notify_updates_available">Yeni güncellemeler olduğunu bildir</string>
-  <string name="update_apps_list">Uygulama listesini depolardan otomatik olarak güncelle</string>
-  <string name="update_history">Güncelleme tarihçesi</string>
-  <string name="update_history_desc">Yeni/güncellenmiş uygulamaların gösterilecekleri gün sayısı</string>
+  <string name="other">Diğer</string>
   <string name="last_update_check">Son depo analizi: %s</string>
   <string name="never">asla</string>
   <string name="automatic_repo_scan">Otomatik depo taraması</string>
-  <string name="app_name">F-Droid</string>
+  <string name="update_apps_list">Uygulama listesini depolardan otomatik olarak güncelle</string>
+  <string name="automatic_scan_wifi">Sadece WiFi ile</string>
+  <string name="automatic_scan_wifi_desc">Uygulama listesini otomatik olarak sadece WiFi ile güncelle</string>
+  <string name="notify">Bildirme</string>
+  <string name="notify_updates_available">Yeni güncellemeler olduğunu bildir</string>
+  <string name="update_history">Güncelleme tarihçesi</string>
+  <string name="update_history_desc">Yeni/güncellenmiş uygulamaların gösterilecekleri gün sayısı</string>
+  <string name="search_results">Arama Sonuçları</string>
+  <string name="app_details">Uygulama Detayları</string>
+  <string name="no_such_app">Böyle bir uygulama bulunamadı</string>
   <string name="about_title">F-Droid Hakkında</string>
-  <string name="about_desc">Aptoide\'den türetilmiştir.\nGNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
+  <string name="about_desc">Aptoide\'den türetilmiştir.
+GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_site">Ağ sitesi:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Sürüm:</string>
   <string name="about_website">Ağ sitesi</string>
-  <string name="no_repo">Kurulu hiçbir deponuz bulunmamaktadır!\n\nDepolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine basıp adresi giriniz.\n\nBir depo adresi şuna benzer: http://f-droid.org/repo</string>
+  <string name="no_repo">Kurulu hiçbir deponuz bulunmamaktadır!
+
+Depolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine basıp adresi giriniz.
+
+Bir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="inst">Kurulu</string>
   <string name="not_inst">Kurulu değil</string>
   <string name="added_on">%s tarihinde eklenmiş</string>
-  <string name="installed_update">Güncelleme mümkün - Sürüm:</string>
   <string name="ok">Tamam</string>
   <string name="yes">Evet</string>
   <string name="no">Hayır</string>
@@ -43,31 +48,19 @@
   <string name="repo_add_add">Ekle</string>
   <string name="cancel">İptal</string>
   <string name="repo_delete_title">Kaldırılacak depoyu seç</string>
-  <string name="server_connection_error">Sunucuya bağlanılamadı!</string>
   <string name="repo_update_title">Depoları güncelle</string>
   <string name="tab_installed">Kurulu</string>
   <string name="tab_noninstalled">Mevcut</string>
   <string name="tab_updates">Güncellemeler</string>
-  <string name="update_available">Güncellemeler var</string>
   <string name="one_update_available">1 güncelleme bulunmaktadır.</string>
   <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
   <string name="process_wait_title">Bekleyiniz</string>
   <string name="process_update_msg">Uygulama listesi güncelleniyor...</string>
-  <string name="connection_error">Ağa bağlanılamadı.</string>
-  <string name="connection_timeout">Zaman aşımı</string>
-  <string name="connection_error_msg">Sunucuya bağlanılamadı!</string>
-  <string name="download">İndir</string>
-  <string name="download_server">"Uygulama buradan alınıyor: "</string>
+  <string name="download_server">Uygulama buradan alınıyor:</string>
   <string name="repo_add_url">Depo adresi</string>
-  <string name="isinst">Kurulu:</string>
-  <string name="install">Kur</string>
-  <string name="uninstall">Kaldır</string>
-  <string name="update">Güncelle!</string>
-  <string name="update_alrt">Bazı kurulu uygulamalar için güncellemeler bulunmaktadır.\nGörmek ister misiniz?</string>
-  <string name="repo_alrt">Kullanılan depoların listesi değişti.\nGüncellemek ister misiniz?</string>
-  <string name="error_download_alrt">Sunucuya bağlanılamadı ya da apk dosyası bozuk!</string>
-  <string name="download_alrt">Uygulama buradan alınıyor:\n</string>
+  <string name="repo_alrt">Kullanılan depoların listesi değişti.
+Güncellemek ister misiniz?</string>
   <string name="menu_update_repo">Depoları güncelle</string>
   <string name="menu_manage">Depoları Yönet</string>
   <string name="menu_preferences">Tercihler</string>
@@ -76,29 +69,25 @@
   <string name="menu_add_repo">Yeni Depo</string>
   <string name="menu_rem_repo">Depoyu kaldır</string>
   <string name="menu_launch">Çalıştır</string>
+  <string name="menu_share">Paylaş</string>
   <string name="menu_install">Kur</string>
   <string name="menu_uninstall">Kaldır</string>
+  <string name="menu_ignore_all">Tüm güncellemeleri görmezden gel</string>
+  <string name="menu_ignore_this">Bu güncellemeyi görmezden gel</string>
   <string name="menu_website">Ağ sitesi</string>
   <string name="menu_issues">Sorunlar</string>
   <string name="menu_source">Kaynak kod</string>
-  <string name="menu_market">Market</string>
-  <string name="menu_update">Güncelleme</string>
+  <string name="menu_upgrade">Yükselt</string>
   <string name="menu_donate">Bağış</string>
   <string name="details_installed">%s sürümü kurulu</string>
   <string name="details_notinstalled">Kurulu değil</string>
   <string name="corrupt_download">İndirilen dosya bozuk</string>
   <string name="download_cancelled">İndirme iptal edildi</string>
-  <string name="antifeatures">Anti-işlevler</string>
-  <string name="antiads">Reklâm</string>
-  <string name="antiadslong">Reklâm içeren uygulamaları göster</string>
-  <string name="antitrack">İzleme</string>
-  <string name="antitracklong">Etkinliklerinizi izleyip rapor eden uygulamaları göster</string>
-  <string name="antinonfreead">Eklentiler</string>
-  <string name="antinonfreeadlong">Özgür olmayan eklentiler öneren uygulamaları göster</string>
-  <string name="antinonfreenet">Ağ Servisleri</string>
-  <string name="antinonfreenetlong">Özgür olmayan ağ servislerini destekleyen uygulamaları göster</string>
-  <string name="antinonfreedep">Bağımlılıklar</string>
-  <string name="antinonfreedeplong">Özgür olmayan uygulamalara bağımlı uygulamaları göster</string>
+  <string name="antiadslist">Bu uygulama reklam içerir</string>
+  <string name="antitracklist">Bu uygulama etkinliklerinizi izleyip rapor eder</string>
+  <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentiler tavsiye eder</string>
+  <string name="antinonfreenetlist">Bu uygulama özgür olmayan ağ servisleri tavsiye eder</string>
+  <string name="antinonfreedeplist">Bu uygulama özgür olmayan başka uygulamalara bağımlıdır</string>
   <string name="display">Görüntüleme</string>
   <string name="expert">Uzman</string>
   <string name="expert_mode">Uzman modunu etkinleştir</string>
@@ -106,8 +95,8 @@
   <string name="db_sync_mode">Veritabanı eşleşme modu</string>
   <string name="db_sync_mode_long">SQLite\'ın senkronize flag değerini gir</string>
   <string name="appcompatibility">Uygulama uyumu</string>
-  <string name="showincompat">Uyumsuz uygulamalar</string>
-  <string name="showincompat_long">Başka Android sürümleri veya cihazlar için geliştirilen uygulamaları göster</string>
+  <string name="show_incompat_versions">Uyumsuz sürümler</string>
+  <string name="show_incompat_versions_l">Cihazınızla uyumsuz uygulama sürümlerini göster</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Root yetkilerine gerek duyan uygulamaları göster</string>
   <string name="ignoreTouch">Dokunmatik ekranı yok say</string>
@@ -115,14 +104,22 @@
   <string name="category_all">Tümü</string>
   <string name="category_whatsnew">Yeni olanlar</string>
   <string name="category_recentlyupdated">Yakın geçmişte güncellenen</string>
-  <string name="status_download">İndiriliyor\n%2$s / %3$s (%4$d%%) şuradan\n%1$s</string>
-  <string name="status_processing_xml">Uygulama ele alınıyor\n%2$d toplam %3$d şuradan\n%1$s</string>
-  <string name="status_connecting_to_repo">%1$s konumuna\nbağlanılıyor</string>
+  <string name="status_download">İndiriliyor
+%2$s / %3$s (%4$d%%) şuradan
+%1$s</string>
+  <string name="status_processing_xml">Uygulama ele alınıyor
+%2$d toplam %3$d şuradan
+%1$s</string>
+  <string name="status_connecting_to_repo">%1$s konumuna
+bağlanılıyor</string>
   <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>
   <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
   <string name="permissions_for_long">%s sürümü için izinler</string>
   <string name="showPermissions">İzinleri göster</string>
   <string name="showPermissions_long">Uygulamanın gerektirdiği izinlerin listesini göster</string>
-  <string name="no_handler_app">%s unsurunu yönetecek hiçbir kurulu uygulamanız yok</string>
+  <string name="no_handler_app">%s unsurunu yönetecek hiçbir mevcut uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
+  <string name="compactlayout_long">Listede sadece uygulama adlarını ve özetleri göster</string>
+  <string name="theme">Tema</string>
+  <string name="theme_long">Kullanılacak temayı seç</string>
 </resources>

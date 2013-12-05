@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="updateIntervalNames">
     <item>Jamais</item>
@@ -6,6 +6,10 @@
     <item>Toutes les 4 heures</item>
     <item>Toutes les 12 heures</item>
     <item>Chaque jour</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Sombre</item>
+    <item>Clair</item>
   </string-array>
   <string-array name="dbSyncModeNames">
     <item>Désactivé (non recommandé)</item>

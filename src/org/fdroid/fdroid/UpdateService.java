@@ -10,7 +10,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -18,13 +18,6 @@
 
 package org.fdroid.fdroid;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,10 +26,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.*;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.widget.Toast;
@@ -45,9 +40,11 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     public static final String RESULT_MESSAGE = "msg";
     public static final String RESULT_EVENT   = "event";
-    public static final int STATUS_COMPLETE = 0;
-    public static final int STATUS_ERROR    = 1;
-    public static final int STATUS_INFO     = 2;
+
+    public static final int STATUS_COMPLETE_WITH_CHANGES = 0;
+    public static final int STATUS_COMPLETE_AND_SAME     = 1;
+    public static final int STATUS_ERROR                 = 2;
+    public static final int STATUS_INFO                  = 3;
 
     private ResultReceiver receiver = null;
 
@@ -89,7 +86,8 @@ public class UpdateService extends IntentService implements ProgressListener {
             if (resultCode == UpdateService.STATUS_ERROR) {
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 finished = true;
-            } else if (resultCode == UpdateService.STATUS_COMPLETE) {
+            } else if (resultCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES
+                    || resultCode == UpdateService.STATUS_COMPLETE_AND_SAME) {
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_INFO) {
                 dialog.setMessage(message);
@@ -179,6 +177,17 @@ public class UpdateService extends IntentService implements ProgressListener {
         return receiver == null;
     }
 
+    // Get the number of apps that have updates available.
+    public int getNumUpdates(List<DB.App> apps) {
+        int count = 0;
+        for (DB.App app : apps) {
+            if (app.toUpdate)
+                count++;
+        }
+        return count;
+    }
+
+    @Override
     protected void onHandleIntent(Intent intent) {
 
         receiver = intent.getParcelableExtra("receiver");
@@ -205,6 +214,18 @@ public class UpdateService extends IntentService implements ProgressListener {
                             + "ms ago, interval is " + interval + " hours");
                     return;
                 }
+
+                // If we are to update the repos only on wifi, make sure that
+                // connection is active
+                if (prefs.getBoolean("updateOnWifiOnly", false)) {
+                    ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
+                    if (wifi != NetworkInfo.State.CONNECTED &&
+                            wifi !=  NetworkInfo.State.CONNECTING) {
+                        Log.d("FDroid", "Skipping update - wifi not available");
+                        return;
+                    }
+                }
             } else {
                 Log.d("FDroid", "Unscheduled (manually requested) update");
             }
@@ -213,8 +234,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
-            int prevUpdates = 0;
-            int newUpdates = 0;
+            int updates = 0;
             List<DB.Repo> repos;
             try {
                 DB db = DB.getDB();
@@ -224,7 +244,8 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             // Process each repo...
-            List<DB.App> apps = new ArrayList<DB.App>();
+            List<DB.App> apps;
+            List<DB.App> updatingApps = new ArrayList<DB.App>();
             List<Integer> keeprepos = new ArrayList<Integer>();
             boolean success = true;
             boolean changes = false;
@@ -238,7 +259,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                     StringBuilder newetag = new StringBuilder();
                     String err = RepoXMLHandler.doUpdate(getBaseContext(),
-                            repo, apps, newetag, keeprepos, this);
+                            repo, updatingApps, newetag, keeprepos, this);
                     if (err == null) {
                         String nt = newetag.toString();
                         if (!nt.equals(repo.lastetag)) {
@@ -257,16 +278,6 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
-            if (success) {
-                DB db = DB.getDB();
-                try {
-                    db.refreshLastUpdates();
-                } finally {
-                    DB.releaseDB();
-                }
-            }
-
-            List<DB.App> acceptedapps = new ArrayList<DB.App>();
             if (!changes && success) {
                 Log.d("FDroid",
                         "Not checking app details or compatibility, " +
@@ -275,7 +286,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 sendStatus(STATUS_INFO,
                         getString(R.string.status_checking_compatibility));
-                List<DB.App> prevapps = ((FDroidApp) getApplication()).getApps();
+                apps = ((FDroidApp) getApplication()).getApps();
 
                 DB db = DB.getDB();
                 try {
@@ -284,7 +295,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     // no data about during the update. (i.e. stuff from a repo
                     // that we know is unchanged due to the etag)
                     for (int keep : keeprepos) {
-                        for (DB.App app : prevapps) {
+                        for (DB.App app : apps) {
                             boolean keepapp = false;
                             for (DB.Apk apk : app.apks) {
                                 if (apk.repo == keep) {
@@ -294,14 +305,14 @@ public class UpdateService extends IntentService implements ProgressListener {
                             }
                             if (keepapp) {
                                 DB.App app_k = null;
-                                for (DB.App app2 : apps) {
+                                for (DB.App app2 : updatingApps) {
                                     if (app2.id.equals(app.id)) {
                                         app_k = app2;
                                         break;
                                     }
                                 }
                                 if (app_k == null) {
-                                    apps.add(app);
+                                    updatingApps.add(app);
                                     app_k = app;
                                 }
                                 app_k.updated = true;
@@ -313,14 +324,11 @@ public class UpdateService extends IntentService implements ProgressListener {
                         }
                     }
 
-                    prevUpdates = db.beginUpdate(prevapps);
-                    for (DB.App app : apps) {
-                        if (db.updateApplication(app))
-                            acceptedapps.add(app);
+                    db.beginUpdate(apps);
+                    for (DB.App app : updatingApps) {
+                        db.updateApplication(app);
                     }
                     db.endUpdate();
-                    if (notify)
-                        newUpdates = db.getNumUpdates();
                     for (DB.Repo repo : repos)
                         db.writeLastEtag(repo);
                 } catch (Exception ex) {
@@ -335,58 +343,32 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             }
 
-            if (success) {
-                File d = DB.getIconsPath(this);
-                List<DB.App> toDownloadIcons = null;
-                if (!d.exists()) {
-                    Log.d("FDroid", "Icons were wiped. Re-downloading all of them.");
-                    d.mkdirs();
-                    toDownloadIcons = ((FDroidApp) getApplication()).getApps();
-                } else if (changes) {
-                    toDownloadIcons = acceptedapps;
-                }
-                if (toDownloadIcons != null) {
-
-                    // Create a .nomedia file in the icons directory. For
-                    // recent Android versions this isn't necessary, because
-                    // they recognise the cache location. Older versions don't
-                    // though.
-                    File f = new File(d, ".nomedia");
-                    if (!f.exists()) {
-                        try {
-                            f.createNewFile();
-                        } catch (Exception e) {
-                            Log.d("FDroid", "Failed to create .nomedia");
-                        }
-                    }
-
-                    sendStatus(STATUS_INFO,
-                            getString(R.string.status_downloading_icons));
-                    for (DB.App app : toDownloadIcons)
-                        getIcon(app, repos);
+            if (success && changes) {
+                ((FDroidApp) getApplication()).invalidateAllApps();
+                if (notify) {
+                    apps = ((FDroidApp) getApplication()).getApps();
+                    updates = getNumUpdates(apps);
                 }
             }
 
-            if (success && changes)
-                ((FDroidApp) getApplication()).invalidateAllApps();
-
-            if (success && changes && notify && (newUpdates > prevUpdates)) {
-                Log.d("FDroid", "Notifying updates. Apps before:" + prevUpdates
-                        + ", apps after: " + newUpdates);
-                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+            if (success && changes && notify && updates > 0) {
+                Log.d("FDroid", "Notifying "+updates+" updates.");
+                NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(
                         this)
-                        .setSmallIcon(R.drawable.icon)
-                        .setLargeIcon(
-                                BitmapFactory.decodeResource(
-                                        getResources(), R.drawable.icon))
                         .setAutoCancel(true)
                         .setContentTitle(
                                 getString(R.string.fdroid_updates_available));
+                if (Build.VERSION.SDK_INT >= 11) {
+                    mBuilder.setSmallIcon(R.drawable.ic_stat_notify_updates);
+                } else {
+                    mBuilder.setSmallIcon(R.drawable.ic_launcher);
+                }
                 Intent notifyIntent = new Intent(this, FDroid.class)
                         .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
-                if (newUpdates > 1) {
+                if (updates > 1) {
                     mBuilder.setContentText(getString(
-                            R.string.many_updates_available, newUpdates));
+                            R.string.many_updates_available, updates));
 
                 } else {
                     mBuilder.setContentText(getString(R.string.one_update_available));
@@ -407,10 +389,14 @@ public class UpdateService extends IntentService implements ProgressListener {
                     errmsg = "Unknown error";
                 sendStatus(STATUS_ERROR, errmsg);
             } else {
-                sendStatus(STATUS_COMPLETE);
                 Editor e = prefs.edit();
                 e.putLong("lastUpdateCheck", System.currentTimeMillis());
                 e.commit();
+                if (changes) {
+                    sendStatus(STATUS_COMPLETE_WITH_CHANGES);
+                } else {
+                    sendStatus(STATUS_COMPLETE_AND_SAME);
+                }
             }
 
         } catch (Exception e) {
@@ -428,58 +414,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    private void getIcon(DB.App app, List<DB.Repo> repos) {
-        InputStream input = null;
-        OutputStream output = null;
-        try {
-
-            File f = new File(DB.getIconsPath(this), app.icon);
-            if (f.exists())
-                return;
-
-            if (app.apks.size() == 0)
-                return;
-            String server = null;
-            for (DB.Repo repo : repos)
-                if (repo.id == app.apks.get(0).repo)
-                    server = repo.address;
-            if (server == null)
-                return;
-
-            // TODO: Remove this later
-            // If we can find the icon in the old .fdroid directory, use that
-            // instead of re-downloading it.
-            File oldfile = new File(Environment.getExternalStorageDirectory(),
-                    ".fdroid/icons/" + app.icon);
-            if (oldfile.exists()) {
-                // Try and move it - should succeed if it's on the same
-                // filesystem.
-                if(oldfile.renameTo(f))
-                    return;
-                // Otherwise we'll have to copy...
-                input = new FileInputStream(oldfile);
-            }
-
-            // Get it from the server...
-            if (input == null) {
-                URL u = new URL(server + "/icons/" + app.icon);
-                HttpURLConnection uc = (HttpURLConnection) u.openConnection();
-                if (uc.getResponseCode() == 200) {
-                    input = uc.getInputStream();
-                }
-            }
-
-            // Whereever we got the input stream from, copy it...
-            if (input != null) {
-                output = new FileOutputStream(f);
-                Utils.copy(input, output);
-            }
-        } catch (Exception e) {
-        } finally {
-            Utils.closeQuietly(output);
-            Utils.closeQuietly(input);
-        }
-    }
 
     /**
      * Received progress event from the RepoXMLHandler. It could be progress

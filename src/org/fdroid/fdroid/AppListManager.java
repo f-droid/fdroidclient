@@ -1,15 +1,17 @@
 package org.fdroid.fdroid;
 
+import java.util.*;
+
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.os.Build;
+
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
 import org.fdroid.fdroid.views.CanUpdateAppListAdapter;
 import org.fdroid.fdroid.views.InstalledAppListAdapter;
-
-import java.util.*;
 
 /**
  * Should be owned by the FDroid Activity, but used by the AppListFragments.
@@ -87,16 +89,23 @@ public class AppListManager {
             // Populate the category list with the real categories, and the
             // locally generated meta-categories for "All", "What's New" and
             // "Recently  Updated"...
-            categoryAll             = fdroidActivity.getString(R.string.category_all);
-            categoryWhatsNew        = fdroidActivity.getString(R.string.category_whatsnew);
-            categoryRecentlyUpdated = fdroidActivity.getString(R.string.category_recentlyupdated);
+            categoryAll = fdroidActivity
+                .getString(R.string.category_all);
+            categoryWhatsNew = fdroidActivity
+                .getString(R.string.category_whatsnew);
+            categoryRecentlyUpdated = fdroidActivity
+                .getString(R.string.category_recentlyupdated);
 
             categories.add(categoryWhatsNew);
             categories.add(categoryRecentlyUpdated);
             categories.add(categoryAll);
-
-            for (String s : db.getCategories()) {
-                categories.add(s);
+            if (Build.VERSION.SDK_INT >= 11) {
+                categories.addAll(db.getCategories());
+            } else {
+                List<String> categs = db.getCategories();
+                for (String category : categs) {
+                    categories.add(category);
+                }
             }
 
             if (currentCategory == null)
@@ -146,31 +155,29 @@ public class AppListManager {
     // isn't an instance variable is because the preferences may change, and
     // we wouldn't know.
     private boolean isInCategory(DB.App app, String category, Date recentDate) {
-        boolean isInCategory;
         if (category.equals(categoryAll)) {
-                isInCategory = true;
-        } else if (category.equals(categoryWhatsNew)) {
+            return true;
+        }
+        if (category.equals(categoryWhatsNew)) {
             if (app.added == null)
-                isInCategory = false;
-            else if (app.added.compareTo(recentDate) < 0)
-                isInCategory = false;
-            else
-                isInCategory = true;
-        } else if (category.equals(categoryRecentlyUpdated)) {
+                return false;
+            if (app.added.compareTo(recentDate) < 0)
+                return false;
+            return true;
+        }
+        if (category.equals(categoryRecentlyUpdated)) {
             if (app.lastUpdated == null)
-                isInCategory = false;
+                return false;
             // Don't include in the recently updated category if the
             // 'update' was actually it being added.
-            else if (app.lastUpdated.compareTo(app.added) == 0)
-                isInCategory = false;
-            else if (app.lastUpdated.compareTo(recentDate) < 0)
-                isInCategory = false;
-            else
-                isInCategory = true;
-        } else {
-            isInCategory = category.equals(app.category);
+            if (app.lastUpdated.compareTo(app.added) == 0)
+                return false;
+            if (app.lastUpdated.compareTo(recentDate) < 0)
+                return false;
+            return true;
         }
-        return isInCategory;
+        if (app.categories == null) return false;
+        return app.categories.contains(category);
     }
 
     // Returns false if the app list is empty and the fdroid activity decided
@@ -187,21 +194,17 @@ public class AppListManager {
         }
 
         Date recentDate = calcMaxHistory();
-        AppFilter appFilter = new AppFilter(fdroidActivity);
-
         List<DB.App> availApps = new ArrayList<DB.App>();
         for (DB.App app : allApps) {
 
-            boolean isInCategory = isInCategory(app, currentCategory, recentDate);
-            boolean isFiltered   = appFilter.filter(app);
-
             // Add it to the list(s). Always to installed and updates, but
             // only to available if it's not filtered.
-            if (!isFiltered && isInCategory)
+            if (isInCategory(app, currentCategory, recentDate)) {
                 availApps.add(app);
+            }
             if (app.installedVersion != null) {
                 installedApps.addItem(app);
-                if (app.hasUpdates)
+                if (app.toUpdate)
                     canUpgradeApps.addItem(app);
             }
         }

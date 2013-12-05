@@ -10,7 +10,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -21,12 +21,10 @@ package org.fdroid.fdroid;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.support.v4.view.MenuItemCompat;
-
-import android.app.ActionBar;
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -34,6 +32,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
+
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
@@ -48,8 +50,28 @@ public class SearchResults extends ListActivity {
 
     private String mQuery;
 
+    protected void getQuery(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            mQuery = intent.getStringExtra(SearchManager.QUERY);
+        } else {
+            Uri data = intent.getData();
+            if (data.isHierarchical()) {
+                mQuery = data.getQueryParameter("q");
+                if (mQuery.startsWith("pname:"))
+                    mQuery = mQuery.substring(6);
+            } else {
+                mQuery = data.getEncodedSchemeSpecificPart();
+            }
+        }
+        if (mQuery == null || mQuery.length() == 0)
+            finish();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        ((FDroidApp) getApplication()).applyTheme(this);
+
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         applist = new AvailableAppListAdapter(this);
@@ -58,19 +80,14 @@ public class SearchResults extends ListActivity {
         // Start a search by just typing
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
-        Intent intent = getIntent();
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            mQuery = intent.getStringExtra(SearchManager.QUERY);
-        }
+        getQuery(getIntent());
 
         updateView();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction()))
-            mQuery = intent.getStringExtra(SearchManager.QUERY);
+        getQuery(intent);
         super.onNewIntent(intent);
         updateView();
     }
@@ -93,7 +110,6 @@ public class SearchResults extends ListActivity {
         }
 
         List<DB.App> apps = new ArrayList<DB.App>();
-        AppFilter appfilter = new AppFilter(this);
         List<DB.App> tapps = ((FDroidApp) getApplication()).getApps();
         for (DB.App tapp : tapps) {
             boolean include = false;
@@ -103,7 +119,7 @@ public class SearchResults extends ListActivity {
                     break;
                 }
             }
-            if (include && !appfilter.filter(tapp))
+            if (include)
                 apps.add(tapp);
 
         }
@@ -154,7 +170,7 @@ public class SearchResults extends ListActivity {
         super.onCreateOptionsMenu(menu);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 1, R.string.menu_search).setIcon(
                 android.R.drawable.ic_menu_search);
-        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
         return true;
     }
 
@@ -162,6 +178,10 @@ public class SearchResults extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+        case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
 
         case SEARCH:
             onSearchRequested();

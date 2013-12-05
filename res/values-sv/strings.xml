@@ -1,41 +1,46 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">Hittade %1$d program som matchade \'%2$s\':</string>
   <string name="searchres_oneapp">Ett program matchade \'%s\':</string>
   <string name="searchres_noapps">Inga program matchade \'%s\'</string>
   <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla versionen måste först avinstalleras. Försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
-  <string name="installIncompatible">Android säger att det här paketet inte är kompatibelt med din enhet. Vill du försöka installera det ändå?</string>
+  <string name="installIncompatible">Det verkar som om detta programmet inte är kompatibelt med enheten. Vill ni försöka installera det ändå?</string>
   <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller orsaka förlust av dina data. Vill du ändå försöka nedgradera?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versioner tillgängliga</string>
   <string name="n_version_available">%d version tillgänglig</string>
-  <string name="notify">Avisering</string>
-  <string name="storage">Lagring</string>
   <string name="cache_downloaded">Cacha nerladdade appar</string>
   <string name="keep_downloaded">Behåll nerladdade apk-filer på SD-kortet</string>
   <string name="updates">Uppdateringar</string>
-  <string name="clear_all_cached_data">Rensa alla cachade data</string>
-  <string name="reset">Återställ</string>
-  <string name="maintenance">Underhåll</string>
-  <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
-  <string name="update_apps_list">Uppdatera applistan från förråd automatiskt</string>
-  <string name="update_history">Uppdateringshistorik</string>
-  <string name="update_history_desc">Antal dagar att visa nya/uppdaterade appar</string>
+  <string name="other">Andra</string>
   <string name="last_update_check">Senaste förrådsavsökning: %s</string>
   <string name="never">aldrig</string>
   <string name="automatic_repo_scan">Automatisk förrådsavsökning</string>
-  <string name="app_name">F-Droid</string>
+  <string name="update_apps_list">Uppdatera applistan från förråd automatiskt</string>
+  <string name="automatic_scan_wifi">Endast via WiFi</string>
+  <string name="automatic_scan_wifi_desc">Uppdatera applikasjonslista automatiskt endast över wifi</string>
+  <string name="notify">Avisering</string>
+  <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
+  <string name="update_history">Uppdateringshistorik</string>
+  <string name="update_history_desc">Antal dagar att visa nya/uppdaterade appar</string>
+  <string name="search_results">Sökresultat</string>
+  <string name="app_details">Appdetaljer</string>
+  <string name="no_such_app">Ingen sådan app funnen</string>
   <string name="about_title">Om F-Droid</string>
-  <string name="about_desc">Ursprungligen baserat på Aptoide.\nSläppt under licensen GNU GPLv3.</string>
+  <string name="about_desc">Ursprungligen baserat på Aptoide.
+Släppt under licensen GNU GPLv3.</string>
   <string name="about_site">Webbplats:</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Webbplats</string>
-  <string name="no_repo">Du har inga förråd konfigurerade!\n\nEtt förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.\n\nEn förrådsadress ser ut så här: http://f-droid.org/repo</string>
+  <string name="no_repo">Du har inga förråd konfigurerade!
+
+Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.
+
+En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="inst">Installerad</string>
   <string name="not_inst">Inte installerad</string>
   <string name="added_on">Tillagd %s</string>
-  <string name="installed_update">Uppdatering möjlig - Ver.:</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
   <string name="no">Nej</string>
@@ -43,31 +48,19 @@
   <string name="repo_add_add">Lägg till</string>
   <string name="cancel">Avbryt</string>
   <string name="repo_delete_title">Välj förråd att ta bort</string>
-  <string name="server_connection_error">Kunde inte ansluta till servern!</string>
   <string name="repo_update_title">Uppdatera förråd</string>
   <string name="tab_installed">Installerade</string>
   <string name="tab_noninstalled">Tillgängliga</string>
   <string name="tab_updates">Uppdateringar</string>
-  <string name="update_available">Uppdateringar tillgängliga</string>
   <string name="one_update_available">1 uppdatering finns tillgänglig.</string>
   <string name="many_updates_available">%d uppdateringar finns tillgängliga.</string>
   <string name="fdroid_updates_available">Uppdateringar för F-Droid tillgängliga</string>
   <string name="process_wait_title">Var vänlig vänta</string>
   <string name="process_update_msg">Uppdaterar programlistan...</string>
-  <string name="connection_error">Kunde inte ansluta till nätverket.</string>
-  <string name="connection_timeout">Timeout</string>
-  <string name="connection_error_msg">Kunde inte ansluta till servern!</string>
-  <string name="download">Ladda ner</string>
   <string name="download_server">Hämtar program från</string>
   <string name="repo_add_url">Förrådadress</string>
-  <string name="isinst">Installerad:</string>
-  <string name="install">Installera</string>
-  <string name="uninstall">Avinstallera</string>
-  <string name="update">Uppdatera!</string>
-  <string name="update_alrt">Det finns uppdateringar för vissa av de installerade programmen.\nVill du se dem?</string>
-  <string name="repo_alrt">Listan över förråd har ändrats.\nVill du uppdatera dem?</string>
-  <string name="error_download_alrt">Kunde inte ansluta till servern eller så är apk-filen skadad!</string>
-  <string name="download_alrt">Hämtar program från:\n</string>
+  <string name="repo_alrt">Listan över förråd har ändrats.
+Vill du uppdatera dem?</string>
   <string name="menu_update_repo">Uppdatera förråd</string>
   <string name="menu_manage">Hantera förråd</string>
   <string name="menu_preferences">Inställningar</string>
@@ -76,29 +69,25 @@
   <string name="menu_add_repo">Nytt förråd</string>
   <string name="menu_rem_repo">Ta bort förråd</string>
   <string name="menu_launch">Kör</string>
+  <string name="menu_share">Dela</string>
   <string name="menu_install">Installera</string>
   <string name="menu_uninstall">Avinstallera</string>
+  <string name="menu_ignore_all">Ignorer alla uppdateringar</string>
+  <string name="menu_ignore_this">Ignorer denna uppdateringen</string>
   <string name="menu_website">Webbplats</string>
   <string name="menu_issues">Buggar</string>
   <string name="menu_source">Källkod</string>
-  <string name="menu_market">Market</string>
-  <string name="menu_update">Uppdatera</string>
+  <string name="menu_upgrade">Uppgradera</string>
   <string name="menu_donate">Donera</string>
   <string name="details_installed">Version %s är installerad</string>
   <string name="details_notinstalled">Inte installerad</string>
   <string name="corrupt_download">Den nerladdade filen är skadad</string>
   <string name="download_cancelled">Nerladdning avbruten</string>
-  <string name="antifeatures">Anti-finesser</string>
-  <string name="antiads">Reklam</string>
-  <string name="antiadslong">Visa appar som innehåller reklam</string>
-  <string name="antitrack">Spårning</string>
-  <string name="antitracklong">Visa appar som kartlägger och rapporterar ditt beteende</string>
-  <string name="antinonfreead">Tillägg</string>
-  <string name="antinonfreeadlong">Visa appar som främjar icke-fria tillägg</string>
-  <string name="antinonfreenet">Nätverkstjänster</string>
-  <string name="antinonfreenetlong">Visa appar som främjar icke-fria nätverkstjänster</string>
-  <string name="antinonfreedep">Beroenden</string>
-  <string name="antinonfreedeplong">Visa appar som beror på andra icke-fria appar</string>
+  <string name="antiadslist">Denna app innehåller reklam</string>
+  <string name="antitracklist">Denna app övervakar dina aktiviteter</string>
+  <string name="antinonfreeadlist">Denna app promoterar ufria tillägg</string>
+  <string name="antinonfreenetlist">Denna app promoterar ufria nätverkstjänster</string>
+  <string name="antinonfreedeplist">Denna app avhenger av andra ufria apps</string>
   <string name="display">Visning</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Aktivera expertläge</string>
@@ -106,8 +95,8 @@
   <string name="db_sync_mode">Databassynkroniseringsläge</string>
   <string name="db_sync_mode_long">Ställ in värdet på synchronous-flaggan i SQLite</string>
   <string name="appcompatibility">Programkompatibilitet</string>
-  <string name="showincompat">Inkompatibla appar</string>
-  <string name="showincompat_long">Visa appar skrivna för nyare Android-versioner eller annan hårdvara</string>
+  <string name="show_incompat_versions">Inkompatibla versioner</string>
+  <string name="show_incompat_versions_l">Visa versioner av apps som är ukompatibla med ditt apparat</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Visa appar som kräver root-rättigheter</string>
   <string name="ignoreTouch">Ignorera touchscreen</string>
@@ -115,14 +104,22 @@
   <string name="category_all">Alla</string>
   <string name="category_whatsnew">Nyheter</string>
   <string name="category_recentlyupdated">Nyligt uppdaterade</string>
-  <string name="status_download">Hämtar\n%2$s / %3$s (%4$d%%) från\n%1$s</string>
-  <string name="status_processing_xml">Bearbetar program\n%2$d av %3$d från\n%1$s</string>
-  <string name="status_connecting_to_repo">Ansluter till\n%1$s</string>
+  <string name="status_download">Hämtar
+%2$s / %3$s (%4$d%%) från
+%1$s</string>
+  <string name="status_processing_xml">Bearbetar program
+%2$d av %3$d från
+%1$s</string>
+  <string name="status_connecting_to_repo">Ansluter till
+%1$s</string>
   <string name="status_checking_compatibility">Kontrollerar appars kompatibilitet med din enhet…</string>
   <string name="no_permissions">Inga behörigheter används.</string>
   <string name="permissions_for_long">Behörigheter för version %s</string>
   <string name="showPermissions">Visa behörigheter</string>
   <string name="showPermissions_long">Visa en lista av behörigheter en app behöver</string>
-  <string name="no_handler_app">Du har ingen app installerad som kan hantera %s</string>
+  <string name="no_handler_app">Ni har inte något app tilgängligt för behandling av %s</string>
   <string name="compactlayout">Kompakt layout</string>
+  <string name="compactlayout_long">Visa endast appnamn och sammanfattningar i listan</string>
+  <string name="theme">Tema</string>
+  <string name="theme_long">Välj ett tema att använda</string>
 </resources>

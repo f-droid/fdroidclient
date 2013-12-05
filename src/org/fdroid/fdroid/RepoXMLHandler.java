@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -40,17 +40,14 @@ import java.util.jar.JarFile;
 import javax.net.ssl.SSLHandshakeException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
-import android.os.Bundle;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
+import android.os.Bundle;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.util.Log;
 
 public class RepoXMLHandler extends DefaultHandler {
@@ -64,7 +61,16 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private StringBuilder curchars = new StringBuilder();
 
+    // After processing the XML, this will be null if the index didn't specify
+    // a maximum age - otherwise it will be the value specified.
+    private String maxage;
+
+    // After processing the XML, this will be null if the index specified a
+    // public key - otherwise a public key. This is used for TOFU where an
+    // index.xml is read on the first connection, and a signed index.jar is
+    // expected on all subsequent connections.
     private String pubkey;
+
     private String name;
     private String description;
     private String hashType;
@@ -75,7 +81,7 @@ public class RepoXMLHandler extends DefaultHandler {
     public static final int PROGRESS_TYPE_DOWNLOAD     = 1;
     public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
 
-	public static final String PROGRESS_DATA_REPO = "repo";
+    public static final String PROGRESS_DATA_REPO = "repo";
 
     // The date format used in the repo XML file.
     private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -178,11 +184,11 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.detail_permissions = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("features")) {
                 curapk.features = DB.CommaSeparatedList.make(str);
+            } else if (curel.equals("nativecode")) {
+                curapk.nativecode = DB.CommaSeparatedList.make(str);
             }
         } else if (curapp != null && str != null) {
-            if (curel.equals("id")) {
-                curapp.id = str;
-            } else if (curel.equals("name")) {
+            if (curel.equals("name")) {
                 curapp.name = str;
             } else if (curel.equals("icon")) {
                 curapp.icon = str;
@@ -198,14 +204,14 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.summary = str;
             } else if (curel.equals("license")) {
                 curapp.license = str;
-            } else if (curel.equals("category")) {
-                curapp.category = str;
             } else if (curel.equals("source")) {
                 curapp.detail_sourceURL = str;
             } else if (curel.equals("donate")) {
                 curapp.detail_donateURL = str;
             } else if (curel.equals("bitcoin")) {
                 curapp.detail_bitcoinAddr = str;
+            } else if (curel.equals("litecoin")) {
+                curapp.detail_litecoinAddr = str;
             } else if (curel.equals("flattr")) {
                 curapp.detail_flattrID = str;
             } else if (curel.equals("web")) {
@@ -234,6 +240,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapp.curVercode = -1;
                 }
+            } else if (curel.equals("categories")) {
+                curapp.categories = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("antifeatures")) {
                 curapp.antiFeatures = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("requirements")) {
@@ -242,11 +250,11 @@ public class RepoXMLHandler extends DefaultHandler {
         }
     }
 
-	private static Bundle createProgressData(String repoAddress) {
-		Bundle data = new Bundle();
-		data.putString(PROGRESS_DATA_REPO, repoAddress);
-		return data;
-	}
+    private static Bundle createProgressData(String repoAddress) {
+        Bundle data = new Bundle();
+        data.putString(PROGRESS_DATA_REPO, repoAddress);
+        return data;
+    }
 
     @Override
     public void startElement(String uri, String localName, String qName,
@@ -256,6 +264,7 @@ public class RepoXMLHandler extends DefaultHandler {
             String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
+            maxage = attributes.getValue("", "maxage");
             String nm = attributes.getValue("", "name");
             if (nm != null)
                 name = nm;
@@ -265,6 +274,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName.equals("application") && curapp == null) {
             curapp = new DB.App();
             curapp.detail_Populated = true;
+            curapp.id = attributes.getValue("", "id");
             Bundle progressData = createProgressData(repo.address);
             progressCounter ++;
             progressListener.onProgress(
@@ -349,15 +359,10 @@ public class RepoXMLHandler extends DefaultHandler {
 
                 // This is a signed repo - we download the jar file,
                 // check the signature, and extract the index...
-                Log.d("FDroid", "Getting signed index from " + repo.address + " at " + 
+                Log.d("FDroid", "Getting signed index from " + repo.address + " at " +
                     logDateFormat.format(new Date(System.currentTimeMillis())));
-                String address = repo.address + "/index.jar";
-                PackageManager pm = ctx.getPackageManager();
-                try {
-                    PackageInfo pi = pm.getPackageInfo(ctx.getPackageName(), 0);
-                    address += "?" + pi.versionName;
-                } catch (Exception e) {
-                }
+                String address = repo.address + "/index.jar?"
+                    + ctx.getString(R.string.version_name);
                 Bundle progressData = createProgressData(repo.address);
                 ProgressListener.Event event = new ProgressListener.Event(
                         RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD, progressData);
@@ -460,6 +465,21 @@ public class RepoXMLHandler extends DefaultHandler {
                         db.updateRepoByAddress(repo);
                     } finally {
                         DB.releaseDB();
+                    }
+                }
+
+                if (handler.maxage != null) {
+                    int maxage = Integer.parseInt(handler.maxage);
+                    if (maxage != repo.maxage) {
+                        Log.d("FDroid",
+                                "Repo specified a new maximum age - updated");
+                        repo.maxage = maxage;
+                        try {
+                            DB db = DB.getDB();
+                            db.updateRepoByAddress(repo);
+                        } finally {
+                            DB.releaseDB();
+                        }
                     }
                 }
 

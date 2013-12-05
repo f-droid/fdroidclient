@@ -1,2 +1,15 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources/>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Никада</item>
+    <item>Сваки сат</item>
+    <item>Свака 4 сата</item>
+    <item>Сваких 12 сати</item>
+    <item>Једном Дневно</item>
+  </string-array>
+  <string-array name="dbSyncModeNames">
+    <item>Искључено (није безбедно)</item>
+    <item>Нормално</item>
+    <item>Пуно</item>
+  </string-array>
+</resources>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="updateIntervalNames">
     <item>ھەرگىز</item>
@@ -6,6 +6,10 @@
     <item>ھەر 4 سائەتتە بىر</item>
     <item>ھەر 12 سائەتتە بىر</item>
     <item>كۈندە بىر</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>قاراڭغۇ</item>
+    <item>يورۇق</item>
   </string-array>
   <string-array name="dbSyncModeNames">
     <item>تاقاق (بىخەتەر ئەمەس)</item>

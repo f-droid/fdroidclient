@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -19,7 +19,9 @@
 
 package org.fdroid.fdroid;
 
+import android.annotation.SuppressLint;
 import java.io.File;
+import java.security.MessageDigest;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
@@ -27,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -45,10 +48,10 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.util.Log;
+
 import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.ContextCompat;
 
@@ -98,9 +101,12 @@ public class DB {
             + "webURL text, " + "trackerURL text, " + "sourceURL text, "
             + "curVersion text," + "curVercode integer,"
             + "antiFeatures string," + "donateURL string,"
-            + "bitcoinAddr string," + "flattrID string,"
-            + "requirements string," + "category string," + "added string,"
+            + "bitcoinAddr string," + "litecoinAddr string,"
+            + "flattrID string," + "requirements string,"
+            + "categories string," + "added string,"
             + "lastUpdated string," + "compatible int not null,"
+            + "ignoreAllUpdates int not null,"
+            + "ignoreThisUpdate int not null,"
             + "primary key(id));";
 
     public static class App implements Comparable<App> {
@@ -108,24 +114,30 @@ public class DB {
         public App() {
             name = "Unknown";
             summary = "Unknown application";
-            icon = "noicon.png";
+            icon = null;
             id = "unknown";
             license = "Unknown";
-            category = "Uncategorized";
             detail_trackerURL = null;
             detail_sourceURL = null;
             detail_donateURL = null;
             detail_bitcoinAddr = null;
+            detail_litecoinAddr = null;
             detail_webURL = null;
+            categories = null;
             antiFeatures = null;
             requirements = null;
             hasUpdates = false;
+            toUpdate = false;
             updated = false;
             added = null;
             lastUpdated = null;
             apks = new ArrayList<Apk>();
             detail_Populated = false;
             compatible = false;
+            ignoreAllUpdates = false;
+            ignoreThisUpdate = 0;
+            filtered = false;
+            iconUrl = null;
         }
 
         // True when all the detail fields are populated, False otherwise.
@@ -143,7 +155,6 @@ public class DB {
         public String detail_description;
 
         public String license;
-        public String category;
 
         // Null when !detail_Populated
         public String detail_webURL;
@@ -162,12 +173,17 @@ public class DB {
         // Null when !detail_Populated
         public String detail_bitcoinAddr;
 
+        // Litecoin donate address, or null
+        // Null when !detail_Populated
+        public String detail_litecoinAddr;
+
         // Flattr donate ID, or null
         // Null when !detail_Populated
         public String detail_flattrID;
 
         public String curVersion;
         public int curVercode;
+        public Apk curApk;
         public Date added;
         public Date lastUpdated;
 
@@ -178,6 +194,10 @@ public class DB {
         public int installedVerCode;
         public boolean userInstalled;
 
+        // List of categories (as defined in the metadata
+        // documentation) or null if there aren't any.
+        public CommaSeparatedList categories;
+
         // List of anti-features (as defined in the metadata
         // documentation) or null if there aren't any.
         public CommaSeparatedList antiFeatures;
@@ -186,19 +206,31 @@ public class DB {
         // null if there aren't any.
         public CommaSeparatedList requirements;
 
-        // True if there are new versions (apks) that the user hasn't
-        // explicitly ignored. (We're currently not using the database
-        // field for this - we make the decision on the fly in getApps().
+        // Whether the app is filtered or not based on AntiFeatures and root
+        // permission (set in the Settings page)
+        public boolean filtered;
+
+        // True if there are new versions (apks) available, regardless of
+        // any filtering
         public boolean hasUpdates;
 
-        // The name of the version that would be updated to.
-        public String updateVersion;
+        // True if there are new versions (apks) available and the user wants
+        // to be notified about them
+        public boolean toUpdate;
+
+        // True if all updates for this app are to be ignored
+        public boolean ignoreAllUpdates;
+
+        // True if the current update for this app is to be ignored
+        public int ignoreThisUpdate;
 
         // Used internally for tracking during repo updates.
         public boolean updated;
 
         // List of apks.
         public List<Apk> apks;
+
+        public String iconUrl;
 
         // Get the current version - this will be one of the Apks from 'apks'.
         // Can return null if there are no available versions.
@@ -256,7 +288,8 @@ public class DB {
             + "vercode int not null," + "apkName text not null, "
             + "size int not null," + "sig string," + "srcname string,"
             + "minSdkVersion integer," + "permissions string,"
-            + "features string," + "hashType string," + "added string,"
+            + "features string," + "nativecode string,"
+            + "hashType string," + "added string,"
             + "compatible int not null," + "primary key(id,vercode));";
 
     public static class Apk {
@@ -284,6 +317,8 @@ public class DB {
         public CommaSeparatedList detail_permissions; // null if empty or
                                                       // unknown
         public CommaSeparatedList features; // null if empty or unknown
+
+        public CommaSeparatedList nativecode; // null if empty or unknown
 
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
@@ -321,6 +356,7 @@ public class DB {
         }
 
         private static class BasicChecker extends CompatibilityChecker {
+            @Override
             public boolean isCompatible(Apk apk) {
                 return hasApi(apk.minSdkVersion);
             }
@@ -330,8 +366,10 @@ public class DB {
         private static class EclairChecker extends CompatibilityChecker {
 
             private HashSet<String> features;
+            private List<String> cpuAbis;
             private boolean ignoreTouchscreen;
 
+            @SuppressLint("NewApi")
             public EclairChecker(Context ctx) {
 
                 SharedPreferences prefs = PreferenceManager
@@ -348,9 +386,26 @@ public class DB {
                     logMsg.append('\n');
                     logMsg.append(fi.name);
                 }
+
+                cpuAbis = new ArrayList<String>();
+                if (hasApi(8))
+                    cpuAbis.add(android.os.Build.CPU_ABI2);
+                cpuAbis.add(android.os.Build.CPU_ABI);
+
                 Log.d("FDroid", logMsg.toString());
             }
 
+            private boolean compatibleApi(CommaSeparatedList nativecode) {
+                if (nativecode == null) return true;
+                for (String abi : nativecode) {
+                    if (cpuAbis.contains(abi)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            @Override
             public boolean isCompatible(Apk apk) {
                 if (!hasApi(apk.minSdkVersion))
                     return false;
@@ -360,12 +415,19 @@ public class DB {
                                 && feat.equals("android.hardware.touchscreen")) {
                             // Don't check it!
                         } else if (!features.contains(feat)) {
-                            Log.d("FDroid", apk.id
+                            Log.d("FDroid", apk.id + " vercode " + apk.vercode
                                     + " is incompatible based on lack of "
                                     + feat);
                             return false;
                         }
                     }
+                }
+                if (!compatibleApi(apk.nativecode)) {
+                    Log.d("FDroid", apk.id + " vercode " + apk.vercode
+                            + " makes use of incompatible native code: "
+                            + CommaSeparatedList.str(apk.nativecode)
+                            + " while your architecture is " + cpuAbis.get(0));
+                    return false;
                 }
                 return true;
             }
@@ -377,8 +439,9 @@ public class DB {
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (id integer primary key, address text not null, "
             + "name text, description text, inuse integer not null, "
-            + "priority integer not null, pubkey text, lastetag text, "
-            + "lastUpdated string);";
+            + "priority integer not null, pubkey text, fingerprint text, "
+            + "maxage integer not null default 0, "
+            + "lastetag text, lastUpdated string);";
 
     public static class Repo {
         public int id;
@@ -388,6 +451,8 @@ public class DB {
         public boolean inuse;
         public int priority;
         public String pubkey; // null for an unsigned repo
+        public String fingerprint; // always null for an unsigned repo
+        public int maxage; // maximum age of index that will be accepted - 0 for any
         public String lastetag; // last etag we updated from, null forces update
         public Date lastUpdated;
 
@@ -472,8 +537,8 @@ public class DB {
         }
     }
 
-    private final int DBVersion = 24;
-    
+    private final int DBVersion = 31;
+
 	private int countAppsForRepo(int id) {
         String[] selection     = { "COUNT(distinct id)" };
         String[] selectionArgs = { Integer.toString(id) };
@@ -490,10 +555,31 @@ public class DB {
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL("create index app_id on " + TABLE_APP + " (id);");
-        db.execSQL("create index app_category on " + TABLE_APP + " (category);");
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
         db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
+    }
+
+    public static String calcFingerprint(String pubkey) {
+        String ret = null;
+        if (pubkey == null)
+            return null;
+        try {
+            // keytool -list -v gives you the SHA-256 fingerprint
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.update(Hasher.unhex(pubkey));
+            byte[] fingerprint = digest.digest();
+            Formatter formatter = new Formatter(new StringBuilder());
+            for (int i = 1; i < fingerprint.length; i++) {
+                formatter.format("%02X", fingerprint[i]);
+            }
+            ret = formatter.toString();
+            formatter.close();
+        } catch (Exception e) {
+            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
+                    + Log.getStackTraceString(e));
+        }
+        return ret;
     }
 
     public void resetTransient(SQLiteDatabase db) {
@@ -530,8 +616,11 @@ public class DB {
                     mContext.getString(R.string.default_repo_name));
             values.put("description",
                     mContext.getString(R.string.default_repo_description));
-            values.put("pubkey",
-                    mContext.getString(R.string.default_repo_pubkey));
+            String pubkey = mContext.getString(R.string.default_repo_pubkey);
+            String fingerprint = DB.calcFingerprint(pubkey);
+            values.put("pubkey", pubkey);
+            values.put("fingerprint", fingerprint);
+            values.put("maxage", 0);
             values.put("inuse", 1);
             values.put("priority", 10);
             values.put("lastetag", (String) null);
@@ -544,8 +633,9 @@ public class DB {
                     mContext.getString(R.string.default_repo_name2));
             values.put("description",
                     mContext.getString(R.string.default_repo_description2));
-            values.put("pubkey",
-                    mContext.getString(R.string.default_repo_pubkey));
+            // default #2 is /archive which has the same key as /repo
+            values.put("pubkey", pubkey);
+            values.put("fingerprint", fingerprint);
             values.put("inuse", 0);
             values.put("priority", 20);
             values.put("lastetag", (String) null);
@@ -610,7 +700,34 @@ public class DB {
                     mContext.getString(R.string.default_repo_address2) });
             }
 
-            if (oldVersion < 23) {
+            if (oldVersion < 29) {
+                if (!columnExists(db, TABLE_REPO, "fingerprint"))
+                    db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
+                List<Repo> oldrepos = new ArrayList<Repo>();
+                Cursor c = db.query(TABLE_REPO,
+                        new String[] { "address", "pubkey" },
+                        null, null, null, null, null);
+                c.moveToFirst();
+                while (!c.isAfterLast()) {
+                    Repo repo = new Repo();
+                    repo.address = c.getString(0);
+                    repo.pubkey = c.getString(1);
+                    oldrepos.add(repo);
+                    c.moveToNext();
+                }
+                c.close();
+                for (Repo repo : oldrepos) {
+                    ContentValues values = new ContentValues();
+                    values.put("fingerprint", DB.calcFingerprint(repo.pubkey));
+                    db.update(TABLE_REPO, values, "address = ?", new String[] { repo.address });
+                }
+            }
+
+            if (oldVersion < 30) {
+                db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null default 0");
+            }
+
+            if (oldVersion < 31) {
                 if (!columnExists(db, TABLE_REPO, "lastUpdated"))
                     db.execSQL("Alter table " + TABLE_REPO + " add column lastUpdated string");
             }
@@ -625,13 +742,6 @@ public class DB {
      */
     public static File getDataPath(Context ctx) {
         return ContextCompat.create(ctx).getExternalCacheDir();
-    }
-
-    public static File getIconsPath(Context ctx) {
-        File dp = getDataPath(ctx);
-        if (dp == null)
-            return null;
-        return new File(dp, "icons");
     }
 
     private Context mContext;
@@ -684,29 +794,22 @@ public class DB {
         }
     }
 
-    // Get the number of apps that have updates available. This can be a
-    // time consuming operation.
-    public int getNumUpdates() {
-        List<App> apps = getAppsBasic(true);
-        int count = 0;
-        for (App app : apps) {
-            if (app.hasUpdates)
-                count++;
-        }
-        return count;
-    }
-
     public List<String> getCategories() {
         List<String> result = new ArrayList<String>();
         Cursor c = null;
         try {
-            c = db.query(true, TABLE_APP, new String[]{"category"},
-                    null, null, null, null, "category", null);
+            c = db.query(true, TABLE_APP, new String[] { "categories" },
+                    null, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                String s = c.getString(0);
-                if (s != null) {
-                    result.add(s);
+                CommaSeparatedList categories = CommaSeparatedList
+                    .make(c.getString(0));
+                if (categories != null) {
+                    for (String category : categories) {
+                        if (!result.contains(category)) {
+                            result.add(category);
+                        }
+                    }
                 }
                 c.moveToNext();
             }
@@ -719,11 +822,13 @@ public class DB {
                 c.close();
             }
         }
+        Collections.sort(result);
         return result;
     }
 
-    private static final String[] POPULATE_APP_COLS = new String[] {"description", "webURL",
-                    "trackerURL", "sourceURL", "donateURL", "bitcoinAddr", "flattrID" };
+    private static final String[] POPULATE_APP_COLS = new String[] {
+        "description", "webURL", "trackerURL", "sourceURL",
+        "donateURL", "bitcoinAddr", "flattrID", "litecoinAddr" };
 
     private void populateAppDetails(App app) {
         Cursor cursor = null;
@@ -738,6 +843,7 @@ public class DB {
             app.detail_donateURL = cursor.getString(4);
             app.detail_bitcoinAddr = cursor.getString(5);
             app.detail_flattrID = cursor.getString(6);
+            app.detail_litecoinAddr = cursor.getString(7);
             app.detail_Populated = true;
         } catch (Exception e) {
             Log.d("FDroid", "Error populating app details " + app.id );
@@ -830,9 +936,9 @@ public class DB {
         try {
 
             String cols[] = new String[] { "antiFeatures", "requirements",
-                    "id", "name", "summary", "icon", "license", "category",
+                    "categories", "id", "name", "summary", "icon", "license",
                     "curVersion", "curVercode", "added", "lastUpdated",
-                    "compatible" };
+                    "compatible", "ignoreAllUpdates", "ignoreThisUpdate" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -840,12 +946,12 @@ public class DB {
                 App app = new App();
                 app.antiFeatures = DB.CommaSeparatedList.make(c.getString(0));
                 app.requirements = DB.CommaSeparatedList.make(c.getString(1));
-                app.id = c.getString(2);
-                app.name = c.getString(3);
-                app.summary = c.getString(4);
-                app.icon = c.getString(5);
-                app.license = c.getString(6);
-                app.category = c.getString(7);
+                app.categories = DB.CommaSeparatedList.make(c.getString(2));
+                app.id = c.getString(3);
+                app.name = c.getString(4);
+                app.summary = c.getString(5);
+                app.icon = c.getString(6);
+                app.license = c.getString(7);
                 app.curVersion = c.getString(8);
                 app.curVercode = c.getInt(9);
                 String sAdded = c.getString(10);
@@ -856,11 +962,15 @@ public class DB {
                         .length() == 0) ? null : mDateFormat
                         .parse(sLastUpdated);
                 app.compatible = c.getInt(12) == 1;
+                app.ignoreAllUpdates = c.getInt(13) == 1;
+                app.ignoreThisUpdate = c.getInt(14);
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
                     PackageInfo sysapk = systemApks.get(app.id);
                     app.installedVersion = sysapk.versionName;
+                    if (app.installedVersion == null)
+                        app.installedVersion = "null";
                     app.installedVerCode = sysapk.versionCode;
                     app.userInstalled = ((sysapk.applicationInfo.flags
                             & ApplicationInfo.FLAG_SYSTEM) != 1);
@@ -880,28 +990,49 @@ public class DB {
             Log.d("FDroid", "Read app data from database " + " (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
+            List<Repo> repos = getRepos();
+            SharedPreferences prefs = PreferenceManager
+                    .getDefaultSharedPreferences(mContext);
+            boolean incompatibleVersions = prefs
+                    .getBoolean("incompatibleVersions", false);
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
-                    "apkName", "minSdkVersion", "added", "features",
+                    "apkName", "minSdkVersion", "added", "features", "nativecode",
                     "compatible", "repo" };
             c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                Apk apk = new Apk();
-                apk.id = c.getString(0);
-                apk.version = c.getString(1);
-                apk.vercode = c.getInt(2);
-                apk.sig = c.getString(3);
-                apk.srcname = c.getString(4);
-                apk.apkName = c.getString(5);
-                apk.minSdkVersion = c.getInt(6);
-                String sApkAdded = c.getString(7);
-                apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
-                        : mDateFormat.parse(sApkAdded);
-                apk.features = CommaSeparatedList.make(c.getString(8));
-                apk.compatible = c.getInt(9) == 1;
-                apk.repo = c.getInt(10);
-                apps.get(apk.id).apks.add(apk);
+                String id = c.getString(0);
+                App app = apps.get(id);
+                boolean compatible = c.getInt(10) == 1;
+                int repoid = c.getInt(11);
+                if (compatible || incompatibleVersions) {
+                    Apk apk = new Apk();
+                    apk.id = id;
+                    apk.version = c.getString(1);
+                    apk.vercode = c.getInt(2);
+                    apk.sig = c.getString(3);
+                    apk.srcname = c.getString(4);
+                    apk.apkName = c.getString(5);
+                    apk.minSdkVersion = c.getInt(6);
+                    String sApkAdded = c.getString(7);
+                    apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
+                            : mDateFormat.parse(sApkAdded);
+                    apk.features = CommaSeparatedList.make(c.getString(8));
+                    apk.nativecode = CommaSeparatedList.make(c.getString(9));
+                    apk.compatible = compatible;
+                    apk.repo = repoid;
+                    app.apks.add(apk);
+                }
+                if (app.iconUrl == null && app.icon != null) {
+                    for (DB.Repo repo : repos) {
+                        if (repo.id == repoid) {
+                            app.iconUrl =
+                                repo.address + "/icons/" + app.icon;
+                            break;
+                        }
+                    }
+                }
                 c.moveToNext();
             }
             c.close();
@@ -928,12 +1059,11 @@ public class DB {
             // We'll say an application has updates if it's installed AND the
             // version is older than the current one
             for (App app : result) {
-                Apk curver = app.getCurrentVersion();
-                if (curver != null
+                app.curApk = app.getCurrentVersion();
+                if (app.curApk != null
                         && app.installedVerCode > 0
-                        && app.installedVerCode < curver.vercode) {
+                        && app.installedVerCode < app.curApk.vercode) {
                     app.hasUpdates = true;
-                    app.updateVersion = curver.version;
                 }
             }
         }
@@ -976,6 +1106,8 @@ public class DB {
 
             if (installed != null) {
                 app.installedVersion = installed.versionName;
+                if (app.installedVersion == null)
+                    app.installedVersion = "null";
                 app.installedVerCode = installed.versionCode;
             } else {
                 app.installedVersion = null;
@@ -983,12 +1115,11 @@ public class DB {
             }
 
             app.hasUpdates = false;
-            Apk curver = app.getCurrentVersion();
-            if (curver != null
+            app.curApk = app.getCurrentVersion();
+            if (app.curApk != null
                     && app.installedVersion != null
-                    && app.installedVerCode < curver.vercode) {
+                    && app.installedVerCode < app.curApk.vercode) {
                 app.hasUpdates = true;
-                app.updateVersion = curver.version;
             }
 
             apps.set(index, app);
@@ -1000,100 +1131,6 @@ public class DB {
         return apps;
     }
 
-    private List<App> getAppsBasic(boolean getinstalledinfo) {
-
-        // If we're going to need it, get info in what's currently installed
-        Map<String, PackageInfo> systemApks = null;
-        if (getinstalledinfo) {
-            Log.d("FDroid", "Reading installed packages");
-            systemApks = new HashMap<String, PackageInfo>();
-            List<PackageInfo> installedPackages = mContext.getPackageManager()
-                    .getInstalledPackages(0);
-            for (PackageInfo appInfo : installedPackages) {
-                systemApks.put(appInfo.packageName, appInfo);
-            }
-        }
-
-        Map<String, App> apps = new HashMap<String, App>();
-        Cursor c = null;
-        long startTime = System.currentTimeMillis();
-        try {
-
-            String cols[] = new String[] { "id", "curVercode" };
-            c = db.query(TABLE_APP, cols, null, null, null, null, null);
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-
-                App app = new App();
-                app.id = c.getString(0);
-                app.curVercode = c.getInt(1);
-                app.hasUpdates = false;
-
-                if (getinstalledinfo && systemApks.containsKey(app.id)) {
-                    PackageInfo sysapk = systemApks.get(app.id);
-                    app.installedVerCode = sysapk.versionCode;
-                } else {
-                    app.installedVerCode = 0;
-                }
-
-                apps.put(app.id, app);
-                c.moveToNext();
-            }
-            c.close();
-            c = null;
-
-            Log.d("FDroid", "Read basic app data from database " + " (took "
-                    + (System.currentTimeMillis() - startTime) + " ms)");
-
-            cols = new String[] { "id", "vercode", "repo" };
-            c = db.query(TABLE_APK, cols, null, null, null, null,
-                    "vercode desc");
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                Apk apk = new Apk();
-                apk.id = c.getString(0);
-                apk.vercode = c.getInt(1);
-                apk.repo = c.getInt(2);
-                apps.get(apk.id).apks.add(apk);
-                c.moveToNext();
-            }
-            c.close();
-
-        } catch (Exception e) {
-            Log.e("FDroid", "Exception during database reading:\n"
-                            + Log.getStackTraceString(e));
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-
-            Log.d("FDroid", "Read basic app and apk data from database " +
-                    " (took " + (System.currentTimeMillis() - startTime) +
-                    " ms)");
-        }
-
-        List<App> result = new ArrayList<App>(apps.values());
-        Collections.sort(result);
-
-        // Fill in the hasUpdates fields if we have the necessary information...
-        if (getinstalledinfo) {
-
-            // We'll say an application has updates if it's installed AND the
-            // version is older than the current one
-            for (App app : result) {
-                Apk curver = app.getCurrentVersion();
-                if (curver != null
-                        && app.installedVerCode > 0
-                        && app.installedVerCode < curver.vercode) {
-                    app.hasUpdates = true;
-                    app.updateVersion = curver.version;
-                }
-            }
-        }
-
-        return result;
-    }
-
     public List<String> doSearch(String query) {
 
         List<String> ids = new ArrayList<String>();
@@ -1101,8 +1138,8 @@ public class DB {
         try {
             String filter = "%" + query + "%";
             c = db.query(TABLE_APP, new String[] { "id" },
-                    "name like ? or summary like ? or description like ?",
-                    new String[] { filter, filter, filter }, null, null, null);
+                    "id like ? or name like ? or summary like ? or description like ?",
+                    new String[] { filter, filter, filter, filter }, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
                 ids.add(c.getString(0));
@@ -1133,40 +1170,42 @@ public class DB {
             return (instance == null ? null : instance.toString());
         }
 
+        @Override
         public String toString() {
             return value;
         }
 
+        @Override
         public Iterator<String> iterator() {
             SimpleStringSplitter splitter = new SimpleStringSplitter(',');
             splitter.setString(value);
             return splitter.iterator();
         }
+
+        public boolean contains(String v) {
+            Iterator<String> it = iterator();
+            while (it.hasNext()) {
+                if (it.next().equals(v))
+                    return true;
+            }
+            return false;
+        }
     }
 
     private List<App> updateApps = null;
 
-    // Called before a repo update starts. Returns the number of updates
-    // available beforehand.
-    public int beginUpdate(List<DB.App> apps) {
+    // Called before a repo update starts.
+    public void beginUpdate(List<DB.App> apps) {
         // Get a list of all apps. All the apps and apks in this list will
         // have 'updated' set to false at this point, and we will only set
         // it to true when we see the app/apk in a repository. Thus, at the
         // end, any that are still false can be removed.
         updateApps = apps;
-        Log.d("FDroid", "AppUpdate: " + updateApps.size()
-                + " apps before starting.");
+        Log.d("FDroid", "AppUpdate: " + updateApps.size() + " apps before starting.");
         // Wrap the whole update in a transaction. Make sure to call
         // either endUpdate or cancelUpdate to commit or discard it,
         // respectively.
         db.beginTransaction();
-
-        int count = 0;
-        for (App app : updateApps) {
-            if (app.hasUpdates)
-                count++;
-        }
-        return count;
     }
 
     // Called when a repo update ends. Any applications that have not been
@@ -1219,39 +1258,25 @@ public class DB {
     // Called during update to supply new details for an application (or
     // details of a completely new one). Calls to this must be wrapped by
     // a call to beginUpdate and a call to endUpdate.
-    // Returns true if the app was accepted. If it wasn't, it's probably
-    // because it's not compatible with the device.
-    public boolean updateApplication(App upapp) {
+    public void updateApplication(App upapp) {
 
         if (updateApps == null) {
-            return false;
+            return;
         }
 
         // Lazy initialise this...
         if (compatChecker == null)
             compatChecker = Apk.CompatibilityChecker.getChecker(mContext);
 
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
-        boolean prefCompat = prefs.getBoolean("showIncompatible", false);
-
         // See if it's compatible (by which we mean if it has at least one
-        // compatible apk - if it's not, leave it out)
-        // Also keep a list of which were compatible, because they're the
-        // only ones we'll add, unless the showIncompatible preference is set.
-        List<Apk> compatibleapks = new ArrayList<Apk>();
+        // compatible apk)
+        upapp.compatible = false;
         for (Apk apk : upapp.apks) {
             if (compatChecker.isCompatible(apk)) {
                 apk.compatible = true;
-                compatibleapks.add(apk);
+                upapp.compatible = true;
             }
         }
-        if (compatibleapks.size() > 0)
-            upapp.compatible = true;
-        if (prefCompat)
-            compatibleapks = upapp.apks;
-        if (compatibleapks.size() == 0)
-            return false;
 
         boolean found = false;
         for (App app : updateApps) {
@@ -1259,7 +1284,7 @@ public class DB {
                 updateApp(app, upapp);
                 app.updated = true;
                 found = true;
-                for (Apk upapk : compatibleapks) {
+                for (Apk upapk : upapp.apks) {
                     boolean afound = false;
                     for (Apk apk : app.apks) {
                         if (apk.vercode == upapk.vercode) {
@@ -1284,14 +1309,13 @@ public class DB {
         if (!found) {
             // It's a brand new application...
             updateApp(null, upapp);
-            for (Apk upapk : compatibleapks) {
+            for (Apk upapk : upapp.apks) {
                 updateApkIfDifferent(null, upapk);
                 upapk.updated = true;
             }
             upapp.updated = true;
             updateApps.add(upapp);
         }
-        return true;
 
     }
 
@@ -1308,12 +1332,12 @@ public class DB {
         values.put("icon", upapp.icon);
         values.put("description", upapp.detail_description);
         values.put("license", upapp.license);
-        values.put("category", upapp.category);
         values.put("webURL", upapp.detail_webURL);
         values.put("trackerURL", upapp.detail_trackerURL);
         values.put("sourceURL", upapp.detail_sourceURL);
         values.put("donateURL", upapp.detail_donateURL);
         values.put("bitcoinAddr", upapp.detail_bitcoinAddr);
+        values.put("litecoinAddr", upapp.detail_litecoinAddr);
         values.put("flattrID", upapp.detail_flattrID);
         values.put("added",
                 upapp.added == null ? "" : mDateFormat.format(upapp.added));
@@ -1323,9 +1347,20 @@ public class DB {
                         .format(upapp.lastUpdated));
         values.put("curVersion", upapp.curVersion);
         values.put("curVercode", upapp.curVercode);
+        values.put("categories", CommaSeparatedList.str(upapp.categories));
         values.put("antiFeatures", CommaSeparatedList.str(upapp.antiFeatures));
         values.put("requirements", CommaSeparatedList.str(upapp.requirements));
         values.put("compatible", upapp.compatible ? 1 : 0);
+
+        // Values to keep if already present
+        if (oldapp == null) {
+            values.put("ignoreAllUpdates", upapp.ignoreAllUpdates ? 1 : 0);
+            values.put("ignoreThisUpdate", upapp.ignoreThisUpdate);
+        } else {
+            values.put("ignoreAllUpdates", oldapp.ignoreAllUpdates ? 1 : 0);
+            values.put("ignoreThisUpdate", oldapp.ignoreThisUpdate);
+        }
+
         if (oldapp != null) {
             db.update(TABLE_APP, values, "id = ?", new String[] { oldapp.id });
         } else {
@@ -1357,6 +1392,7 @@ public class DB {
         values.put("permissions",
                 CommaSeparatedList.str(upapk.detail_permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
+        values.put("nativecode", CommaSeparatedList.str(upapk.nativecode));
         values.put("compatible", upapk.compatible ? 1 : 0);
         if (oldapk != null) {
             db.update(TABLE_APK, values,
@@ -1373,9 +1409,9 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(TABLE_REPO, new String[] { "address", "name",
-                "description", "inuse", "priority", "pubkey", "lastetag",
-                "lastUpdated" }, "id = ?", new String[] { Integer.toString(id) },
-                null, null, null);
+                "description", "inuse", "priority", "pubkey", "fingerprint",
+                "maxage", "lastetag", "lastUpdated" },
+                    "id = ?", new String[] { Integer.toString(id) }, null, null, null);
             if (!c.moveToFirst())
                 return null;
             Repo repo = new Repo();
@@ -1386,14 +1422,16 @@ public class DB {
             repo.inuse = (c.getInt(3) == 1);
             repo.priority = c.getInt(4);
             repo.pubkey = c.getString(5);
-            repo.lastetag = c.getString(6);
+            repo.fingerprint = c.getString(6);
+            repo.maxage = c.getInt(7);
+            repo.lastetag = c.getString(8);
 
             try {
-                repo.lastUpdated =  c.getString(7) != null ?
-                    mDateFormat.parse( c.getString(7)) :
+                repo.lastUpdated =  c.getString(9) != null ?
+                    mDateFormat.parse( c.getString(9)) :
                     null;
             } catch (ParseException e) {
-                Log.e("FDroid", "Error parsing date " + c.getString(7));
+                Log.e("FDroid", "Error parsing date " + c.getString(9));
             }
             return repo;
         } finally {
@@ -1407,8 +1445,9 @@ public class DB {
         List<Repo> repos = new ArrayList<Repo>();
         Cursor c = null;
         try {
-            c = db.query(TABLE_REPO, new String[]{"id", "address", "name",
-                    "description", "inuse", "priority", "pubkey", "lastetag"},
+            c = db.query(TABLE_REPO, new String[] { "id", "address", "name",
+                    "description", "inuse", "priority", "pubkey", "fingerprint",
+                    "maxage", "lastetag" },
                     null, null, null, null, "priority");
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -1420,7 +1459,9 @@ public class DB {
                 repo.inuse = (c.getInt(4) == 1);
                 repo.priority = c.getInt(5);
                 repo.pubkey = c.getString(6);
-                repo.lastetag = c.getString(7);
+                repo.fingerprint = c.getString(7);
+                repo.maxage = c.getInt(8);
+                repo.lastetag = c.getString(9);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -1460,6 +1501,13 @@ public class DB {
                 new String[] { address });
     }
 
+    public void setIgnoreUpdates(String appid, boolean All, int This) {
+        db.execSQL("update " + TABLE_APP + " set"
+                + " ignoreAllUpdates=" + (All ? '1' : '0')
+                + ", ignoreThisUpdate="+This
+                + " where id = ?", new String[] { appid });
+    }
+
     public void updateRepoByAddress(Repo repo) {
         ContentValues values = new ContentValues();
         values.put("name", repo.name);
@@ -1467,6 +1515,13 @@ public class DB {
         values.put("inuse", repo.inuse);
         values.put("priority", repo.priority);
         values.put("pubkey", repo.pubkey);
+        if (repo.pubkey != null && repo.fingerprint == null) {
+            // we got a new pubkey, so calc the fingerprint
+            values.put("fingerprint", DB.calcFingerprint(repo.pubkey));
+        } else {
+            values.put("fingerprint", repo.fingerprint);
+        }
+        values.put("maxage", repo.maxage);
         values.put("lastetag", (String) null);
         db.update(TABLE_REPO, values, "address = ?",
                 new String[] { repo.address });
@@ -1491,7 +1546,8 @@ public class DB {
     }
 
     public void addRepo(String address, String name, String description,
-            int priority, String pubkey, boolean inuse) {
+            int priority, String pubkey, String fingerprint, int maxage, boolean inuse)
+                    throws SecurityException {
         ContentValues values = new ContentValues();
         values.put("address", address);
         values.put("name", name);
@@ -1499,6 +1555,18 @@ public class DB {
         values.put("inuse", inuse ? 1 : 0);
         values.put("priority", priority);
         values.put("pubkey", pubkey);
+        String calcedFingerprint = DB.calcFingerprint(pubkey);
+        if (fingerprint == null) {
+            fingerprint = calcedFingerprint;
+        } else if (calcedFingerprint != null) {
+            fingerprint = fingerprint.toUpperCase();
+            if (!fingerprint.equals(calcedFingerprint)) {
+                throw new SecurityException("Given fingerprint does not match calculated one! ("
+                        + fingerprint + " != " + calcedFingerprint);
+            }
+        }
+        values.put("fingerprint", fingerprint);
+        values.put("maxage", maxage);
         values.put("lastetag", (String) null);
         db.insert(TABLE_REPO, null, values);
     }
@@ -1542,7 +1610,7 @@ public class DB {
                             new String[] { address });
                 }
             }
-            List<App> apps = getAppsBasic(true);
+            List<App> apps = getApps(false);
             for (App app : apps) {
                 if (app.apks.isEmpty()) {
                     db.delete(TABLE_APP, "id = ?", new String[] { app.id });

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="195"
+   height="60.000015"
+   id="svg7844"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="button.svg"
+   inkscape:export-filename="/media/200GB/Projects/F-Droid/button.png"
+   inkscape:export-xdpi="90.050003"
+   inkscape:export-ydpi="90.050003">
+  <defs
+     id="defs7846">
+    <radialGradient
+       r="56.816132"
+       fy="-167.2554"
+       fx="457.85013"
+       cy="-167.2554"
+       cx="457.85013"
+       gradientTransform="matrix(5.0200047,-0.0125494,0.02612338,0.68186962,-2075.1287,-92.049171)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient7784"
+       xlink:href="#linearGradient3594-7-1-7"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3594-7-1-7">
+      <stop
+         style="stop-color:#61a5d1;stop-opacity:1"
+         offset="0"
+         id="stop3596-4-0-6" />
+      <stop
+         style="stop-color:#2a588f;stop-opacity:1"
+         offset="1"
+         id="stop3598-2-08-4" />
+    </linearGradient>
+    <radialGradient
+       r="56.816132"
+       fy="-279.63022"
+       fx="443.20758"
+       cy="-279.63022"
+       cx="443.20758"
+       gradientTransform="matrix(5.0200047,-0.0125494,0.02612338,0.68186962,-1797.0064,377.07795)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient7842"
+       xlink:href="#linearGradient3594-7-1-7"
+       inkscape:collect="always" />
+    <radialGradient
+       r="56.816132"
+       fy="-167.2554"
+       fx="457.85013"
+       cy="-167.2554"
+       cx="457.85013"
+       gradientTransform="matrix(5.0200047,-0.0125494,0.02612338,0.68186962,-2075.1287,-92.049171)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient7784-9"
+       xlink:href="#linearGradient3594-7-1-7-2"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3594-7-1-7-2">
+      <stop
+         style="stop-color:#61a5d1;stop-opacity:1"
+         offset="0"
+         id="stop3596-4-0-6-6" />
+      <stop
+         style="stop-color:#2a588f;stop-opacity:1"
+         offset="1"
+         id="stop3598-2-08-4-3" />
+    </linearGradient>
+    <radialGradient
+       r="56.816132"
+       fy="-167.2554"
+       fx="457.85013"
+       cy="-167.2554"
+       cx="457.85013"
+       gradientTransform="matrix(5.0200047,-0.0125494,0.02612338,0.68186962,-1870.084,303.2506)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient7842-2"
+       xlink:href="#linearGradient3594-7-1-7-2"
+       inkscape:collect="always" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3594-7-1-7-2"
+       id="radialGradient7909"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.0200047,-0.0125494,0.02612338,0.68186962,-1870.084,303.2506)"
+       cx="457.85013"
+       cy="-167.2554"
+       fx="457.85013"
+       fy="-167.2554"
+       r="56.816132" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.48832"
+     inkscape:cx="180.36953"
+     inkscape:cy="-13.247366"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1615"
+     inkscape:window-height="1026"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3012"
+       empspacing="5"
+       dotted="true"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-2.5390648e-08px"
+       originy="1.5039063e-05px" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7849">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-462.85794,-227.3629)">
+    <g
+       id="g7902"
+       transform="translate(73.077514,43.828781)">
+      <rect
+         style="color:#000000;fill:url(#radialGradient7909);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect4866-2-5-5-7"
+         width="195"
+         height="30.805176"
+         x="389.78043"
+         y="183.53412"
+         rx="3.7905197"
+         ry="3.7905197" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text5484-7-1"
+         y="205.02208"
+         x="404.2576"
+         style="font-size:21.36322975px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.55967078;color:#000000;fill:#133869;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Rokkitt;-inkscape-font-specification:Rokkitt Bold"
+         xml:space="preserve"><tspan
+           style="font-size:19.5829792px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#133869;fill-opacity:1;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+           y="205.02208"
+           x="404.2576"
+           id="tspan5486-0-8"
+           sodipodi:role="line">Download F-Droid</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:21.36322975px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Rokkitt;-inkscape-font-specification:Rokkitt Bold"
+         x="402.95206"
+         y="204.36931"
+         id="text5238-7-8"
+         sodipodi:linespacing="100%"><tspan
+           sodipodi:role="line"
+           id="tspan5240-6-7"
+           x="402.95206"
+           y="204.36931"
+           style="font-size:19.5829792px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab">Download F-Droid</tspan></text>
+    </g>
+    <rect
+       ry="3.7905197"
+       rx="3.7905197"
+       y="257.36148"
+       x="462.85794"
+       height="30.001434"
+       width="195"
+       id="rect4866-2-5-5"
+       style="color:#000000;fill:url(#radialGradient7842);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <text
+       xml:space="preserve"
+       style="font-size:21.36322975px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#133869;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Rokkitt;-inkscape-font-specification:Rokkitt Bold"
+       x="477.33511"
+       y="278.84943"
+       id="text5484-7"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan5486-0"
+         x="477.33511"
+         y="278.84943"
+         style="font-size:19.5829792px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#133869;fill-opacity:1;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab">Download F-Droid</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text5238-7"
+       y="278.19666"
+       x="476.02957"
+       style="font-size:21.36322975px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Rokkitt;-inkscape-font-specification:Rokkitt Bold"
+       xml:space="preserve"><tspan
+         style="font-size:19.5829792px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;font-family:Roboto Slab;-inkscape-font-specification:Roboto Slab"
+         y="278.19666"
+         x="476.02957"
+         id="tspan5240-6"
+         sodipodi:role="line">Download F-Droid</tspan></text>
+  </g>
+</svg>

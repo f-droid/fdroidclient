@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="updateIntervalNames">
     <item>Mai</item>
@@ -7,9 +7,13 @@
     <item>Cada 12 hores</item>
     <item>Cada dia</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Fosc</item>
+    <item>Clar</item>
+  </string-array>
   <string-array name="dbSyncModeNames">
-    <item>Desactivat (no és segur)</item>
+    <item>Desactivat (no segur)</item>
     <item>Normal</item>
-    <item>Sencer</item>
+    <item>Complet</item>
   </string-array>
 </resources>
