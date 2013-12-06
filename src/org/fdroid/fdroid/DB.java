@@ -535,6 +535,10 @@ public class DB {
         public boolean isSigned() {
             return this.pubkey != null && this.pubkey.length() > 0;
         }
+
+        public boolean hasBeenUpdated() {
+            return this.lastetag != null;
+        }
     }
 
     private final int DBVersion = 31;

@@ -65,6 +65,12 @@ public class ManageRepo extends ListActivity {
 
     private RepoAdapter repoAdapter;
 
+    /**
+     * True if activity started with an intent such as from QR code. False if
+     * opened from, e.g. the main menu.
+     */
+    private boolean isImportingRepo = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -108,6 +114,9 @@ public class ManageRepo extends ListActivity {
             String host = uri.getHost().toLowerCase(Locale.ENGLISH);
             if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
                     || scheme.equals("https") || scheme.equals("http")) {
+
+                isImportingRepo = true;
+
                 // QRCode are more efficient in all upper case, so some incoming
                 // URLs might be encoded in all upper case. Therefore, we allow
                 // the standard paths to be encoded all upper case, then they'll
@@ -255,7 +264,7 @@ public class ManageRepo extends ListActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         setResult(Activity.RESULT_CANCELED);
-                        if (getCallingActivity() != null) {
+                        if (isImportingRepo) {
                             finish();
                         }
                     }
@@ -340,7 +349,7 @@ public class ManageRepo extends ListActivity {
      */
     private void finishedAddingRepo() {
         changed = true;
-        if (getCallingActivity() != null) {
+        if (isImportingRepo) {
             setResult(Activity.RESULT_OK);
             finish();
         } else {

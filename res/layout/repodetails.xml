@@ -123,7 +123,7 @@
     <Button
         android:id="@+id/btn_update"
         android:layout_centerHorizontal="true"
-        android:text="@string/update"
+        android:text="@string/repo_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_not_yet_updated"/>

@@ -27,12 +27,12 @@
         android:layout_toRightOf="@id/img"
         android:layout_alignParentLeft="true"/>
 
-    <TextView android:id="@+id/repo_not_signed"
+    <TextView android:id="@+id/repo_unsigned"
         android:textSize="14sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/repo_name"
-        android:textColor="@color/unsigned"
-        android:text="@string/unsigned" />
+        android:text="@string/unsigned"
+        android:textColor="@color/unsigned"/>
 
 </RelativeLayout>

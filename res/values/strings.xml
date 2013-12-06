@@ -166,6 +166,7 @@
     <string name="repo_signature">Signature</string>
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Last update</string>
+    <string name="repo_update">Update</string>
     <string name="repo_name">Name</string>
     <string name="unsigned_description">This means that the list of
         applications could not be verified. You should be careful

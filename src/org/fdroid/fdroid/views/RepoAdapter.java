@@ -74,8 +74,7 @@ public class RepoAdapter extends BaseAdapter {
         });
 
         int unsignedVisibility = repository.isSigned() ? View.GONE : View.VISIBLE;
-        view.findViewById(R.id.repo_not_signed).setVisibility
-                (unsignedVisibility);
+        view.findViewById(R.id.repo_unsigned).setVisibility(unsignedVisibility);
 
         TextView nameView = (TextView)view.findViewById(R.id.repo_name);
         nameView.setText(repository.getName());

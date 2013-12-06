@@ -45,6 +45,7 @@ public class RepoDetailsFragment extends Fragment {
     };
 
     private static final int DELETE = 0;
+    private static final int UPDATE = 1;
 
     public void setRepoChangeListener(OnRepoChangeListener listener) {
         repoChangeListener = listener;
@@ -70,16 +71,6 @@ public class RepoDetailsFragment extends Fragment {
         public void onUpdatePerformed(DB.Repo repo);
 
     }
-
-    private ProgressListener updateProgressListener = new ProgressListener() {
-        @Override
-        public void onProgress(Event event) {
-            if (event.type == UpdateService.STATUS_COMPLETE) {
-                reloadRepoDetails();
-                updateView((ViewGroup)getView());
-            }
-        }
-    };
 
     // TODO: Currently initialised in onCreateView. Not sure if that is the
     // best way to go about this...
@@ -125,7 +116,12 @@ public class RepoDetailsFragment extends Fragment {
         inputUrl.addTextChangedListener(new UrlWatcher());
 
         Button update = (Button)repoView.findViewById(R.id.btn_update);
-        update.setOnClickListener(new UpdateListener());
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performUpdate();
+            }
+        });
 
         return repoView;
     }
@@ -171,17 +167,22 @@ public class RepoDetailsFragment extends Fragment {
     }
 
     /**
-     * When the update button is clicked, notify the listener so that the repo
+     * When an update is performed, notify the listener so that the repo
      * list can be updated. We will perform the update ourselves though.
      */
-    class UpdateListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            UpdateService.updateNow(getActivity()).setListener(updateProgressListener);
-            if (repoChangeListener != null) {
-                repoChangeListener.onUpdatePerformed(repo);
+    private void performUpdate() {
+        UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
+            @Override
+            public void onProgress(Event event) {
+                if (event.type == UpdateService.STATUS_COMPLETE_AND_SAME ||
+                        event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                    reloadRepoDetails();
+                    updateView((ViewGroup)getView());
+                }
             }
+        });
+        if (repoChangeListener != null) {
+            repoChangeListener.onUpdatePerformed(repo);
         }
     }
 
@@ -208,11 +209,19 @@ public class RepoDetailsFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
+
+        MenuItem update = menu.add(Menu.NONE, UPDATE, 0, R.string.repo_update);
+        update.setIcon(R.drawable.ic_menu_refresh);
+        MenuItemCompat.setShowAsAction(update,
+            MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
+            MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT );
+
         MenuItem delete = menu.add(Menu.NONE, DELETE, 0, R.string.delete);
         delete.setIcon(android.R.drawable.ic_menu_delete);
         MenuItemCompat.setShowAsAction(delete,
             MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+
     }
 
     @Override
@@ -220,6 +229,9 @@ public class RepoDetailsFragment extends Fragment {
 
         if (item.getItemId() == DELETE) {
             promptForDelete();
+            return true;
+        } else if (item.getItemId() == UPDATE) {
+            performUpdate();
             return true;
         }
 
