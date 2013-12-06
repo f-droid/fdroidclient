@@ -186,11 +186,39 @@ public class ManageRepo extends ListActivity {
             boolean wasChanged  = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_CHANGED, false);
 
             if (wasDeleted) {
-                refreshList();
+                int repoId = data.getIntExtra(RepoDetailsActivity.DATA_REPO_ID, 0);
+                remove(repoId);
             } else if (wasEnabled || wasDisabled || wasChanged) {
                 changed = true;
             }
         }
+    }
+
+    private DB.Repo getRepoById(int repoId) {
+        for (int i = 0; i < getListAdapter().getCount(); i ++) {
+            DB.Repo repo = (DB.Repo)getListAdapter().getItem(i);
+            if (repo.id == repoId) {
+                return repo;
+            }
+        }
+        return null;
+    }
+
+    private void remove(int repoId) {
+        DB.Repo repo = getRepoById(repoId);
+        if (repo == null) {
+            return;
+        }
+
+        List<DB.Repo> reposToRemove = new ArrayList<DB.Repo>(1);
+        reposToRemove.add(repo);
+        try {
+            DB db = DB.getDB();
+            db.doDisableRepos(reposToRemove, true);
+        } finally {
+            DB.releaseDB();
+        }
+        refreshList();
     }
 
     protected List<Repo> getRepos() {
