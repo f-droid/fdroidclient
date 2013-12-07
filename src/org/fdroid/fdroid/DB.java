@@ -898,6 +898,10 @@ public class DB {
             while (!c.isAfterLast()) {
                 String id = c.getString(0);
                 App app = apps.get(id);
+                if (app == null) {
+                    c.moveToNext();
+                    continue;
+                }
                 boolean compatible = c.getInt(10) == 1;
                 int repoid = c.getInt(11);
                 if (compatible || incompatibleVersions) {
