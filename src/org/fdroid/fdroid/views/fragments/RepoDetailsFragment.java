@@ -13,13 +13,15 @@ import android.view.*;
 import android.widget.*;
 import org.fdroid.fdroid.*;
 
+import java.util.List;
+
 public class RepoDetailsFragment extends Fragment {
 
     public static final String ARG_REPO_ID = "repo_id";
 
     /**
      * If the repo has been updated at least once, then we will show
-     * all of this info, otherwise it will be hidden.
+     * all of this info, otherwise they will be hidden.
      */
     private static final int[] SHOW_IF_EXISTS = {
         R.id.label_repo_name,
@@ -133,37 +135,72 @@ public class RepoDetailsFragment extends Fragment {
      */
     private void updateView(ViewGroup repoView) {
 
-        EditText inputUrl    = (EditText)repoView.findViewById(R.id.input_repo_url);
-        TextView name        = (TextView)repoView.findViewById(R.id.text_repo_name);
-        TextView numApps     = (TextView)repoView.findViewById(R.id.text_num_apps);
-        TextView lastUpdated = (TextView)repoView.findViewById(R.id.text_last_update);
-        TextView description = (TextView)repoView.findViewById(R.id.text_description);
-        TextView signature   = (TextView)repoView.findViewById(R.id.text_signature);
-        TextView signatureInfo = (TextView)repoView.findViewById(R.id.text_signature_description);
-
-        boolean hasBeenUpdated = repo.lastetag != null;
-        int showIfExists = hasBeenUpdated ? View.VISIBLE : View.GONE;
-        int hideIfExists = hasBeenUpdated ? View.GONE : View.VISIBLE;
-
-        for (int id : SHOW_IF_EXISTS) {
-            repoView.findViewById(id).setVisibility(showIfExists);
-        }
-
-        for (int id : HIDE_IF_EXISTS) {
-            repoView.findViewById(id).setVisibility(hideIfExists);
-        }
-
+        EditText inputUrl = (EditText)repoView.findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.address);
+
+        if (repo.hasBeenUpdated()) {
+            updateViewForExistingRepo(repoView);
+        } else {
+            updateViewForNewRepo(repoView);
+        }
+
+    }
+
+    /**
+     * Help function to make switching between two view states easier.
+     * Perhaps there is a better way to do this. I recall that using Adobe
+     * Flex, there was a thing called "ViewStates" for exactly this. Wonder if
+     * that exists in  Android?
+     */
+    private static void setMultipleViewVisibility(ViewGroup parent,
+                                                  int[] viewIds,
+                                                  int visibility) {
+        for (int viewId : viewIds) {
+            parent.findViewById(viewId).setVisibility(visibility);
+        }
+    }
+
+    private void updateViewForNewRepo(ViewGroup repoView) {
+        setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.VISIBLE);
+        setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.GONE);
+    }
+
+    private void updateViewForExistingRepo(ViewGroup repoView) {
+        setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.VISIBLE);
+        setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.GONE);
+
+        TextView name          = (TextView)repoView.findViewById(R.id.text_repo_name);
+        TextView numApps       = (TextView)repoView.findViewById(R.id.text_num_apps);
+        TextView lastUpdated   = (TextView)repoView.findViewById(R.id.text_last_update);
+
         name.setText(repo.getName());
         numApps.setText(Integer.toString(repo.getNumberOfApps()));
-        description.setText(repo.description);
-        setupSignature(repo, signature, signatureInfo);
 
-        if (repo.lastUpdated != null) {
-            lastUpdated.setText(repo.lastUpdated.toString());
+        setupDescription(repoView, repo);
+        setupSignature(repoView, repo);
+
+        // Repos that existed before this feature was supported will have an
+        // "Unknown" last update until next time they update...
+        String lastUpdate = repo.lastUpdated != null
+                ? repo.lastUpdated.toString() : getString(R.string.unknown);
+        lastUpdated.setText(lastUpdate);
+    }
+
+    private void setupDescription(ViewGroup parent, DB.Repo repo) {
+
+        TextView descriptionLabel = (TextView)parent.findViewById(R.id.label_description);
+        TextView description      = (TextView)parent.findViewById(R.id.text_description);
+
+        if (repo.description == null || repo.description.length() == 0) {
+            descriptionLabel.setVisibility(View.GONE);
+            description.setVisibility(View.GONE);
         } else {
-            lastUpdated.setText(getString(R.string.unknown));
+            descriptionLabel.setVisibility(View.VISIBLE);
+            description.setVisibility(View.VISIBLE);
         }
+
+        description.setText(repo.description);
+
     }
 
     /**
@@ -261,23 +298,26 @@ public class RepoDetailsFragment extends Fragment {
         ).show();
     }
 
-    private void setupSignature(DB.Repo repo, TextView signatureView,
-                                TextView signatureDescView) {
+    private void setupSignature(ViewGroup parent, DB.Repo repo) {
+        TextView signatureView     = (TextView)parent.findViewById(R.id.text_signature);
+        TextView signatureDescView = (TextView)parent.findViewById(R.id.text_signature_description);
+
         String signature;
-        String signatureDesc;
         int signatureColour;
+
         if (repo.pubkey != null && repo.pubkey.length() > 0) {
             signature       = Utils.formatFingerprint(repo.pubkey);
-            signatureDesc   = "";
             signatureColour = getResources().getColor(R.color.signed);
+            signatureDescView.setVisibility(View.GONE);
         } else {
             signature       = getResources().getString(R.string.unsigned);
-            signatureDesc   = getResources().getString(R.string.unsigned_description);
             signatureColour = getResources().getColor(R.color.unsigned);
+            signatureDescView.setVisibility(View.VISIBLE);
+            signatureDescView.setText(getResources().getString(R.string.unsigned_description));
         }
+
         signatureView.setText(signature);
         signatureView.setTextColor(signatureColour);
-        signatureDescView.setText(signatureDesc);
     }
 
     public void onCreate(Bundle savedInstanceState) {
