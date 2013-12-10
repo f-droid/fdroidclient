@@ -46,7 +46,8 @@ import java.util.*;
 
 public class ManageRepo extends ListActivity {
 
-    private final int ADD_REPO = 1;
+    private final int ADD_REPO     = 1;
+    private final int UPDATE_REPOS = 2;
 
     /**
      * If we have a new repo added, or the address of a repo has changed, then
@@ -158,11 +159,19 @@ public class ManageRepo extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+
+        MenuItem updateItem = menu.add(Menu.NONE, UPDATE_REPOS, 1,
+                R.string.menu_add_repo).setIcon(R.drawable.ic_menu_refresh);
+        MenuItemCompat.setShowAsAction(updateItem,
+                MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
+                MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+
         MenuItem addItem = menu.add(Menu.NONE, ADD_REPO, 1, R.string.menu_add_repo).setIcon(
                 android.R.drawable.ic_menu_add);
         MenuItemCompat.setShowAsAction(addItem,
-                MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+
         return true;
     }
 
@@ -248,6 +257,10 @@ public class ManageRepo extends ListActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void updateRepos() {
+        UpdateService.updateNow(this);
     }
 
     private void showAddRepo() {
@@ -390,12 +403,15 @@ public class ManageRepo extends ListActivity {
 
         super.onMenuItemSelected(featureId, item);
 
-        switch (item.getItemId()) {
-        case ADD_REPO:
+        if (item.getItemId() == ADD_REPO) {
             showAddRepo();
+            return true;
+        } else if (item.getItemId() == UPDATE_REPOS) {
+            updateRepos();
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     /**

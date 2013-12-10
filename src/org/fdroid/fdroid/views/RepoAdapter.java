@@ -73,14 +73,22 @@ public class RepoAdapter extends BaseAdapter {
             }
         });
 
-        int unsignedVisibility = repository.isSigned() ? View.GONE : View.VISIBLE;
-        view.findViewById(R.id.repo_unsigned).setVisibility(unsignedVisibility);
-
         TextView nameView = (TextView)view.findViewById(R.id.repo_name);
         nameView.setText(repository.getName());
         RelativeLayout.LayoutParams nameViewLayout =
                 (RelativeLayout.LayoutParams)nameView.getLayoutParams();
         nameViewLayout.addRule(RelativeLayout.LEFT_OF, switchView.getId());
+
+        // If we set the signed view to GONE instead of INVISIBLE, then the
+        // height of each list item varies.
+        View signedView = view.findViewById(R.id.repo_unsigned);
+        if (repository.isSigned()) {
+            nameViewLayout.addRule(RelativeLayout.CENTER_VERTICAL);
+            signedView.setVisibility(View.INVISIBLE);
+        } else {
+            nameViewLayout.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+            signedView.setVisibility(View.VISIBLE);
+        }
 
         return view;
     }
