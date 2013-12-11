@@ -378,10 +378,12 @@ public class DB {
                 StringBuilder logMsg = new StringBuilder();
                 logMsg.append("Available device features:");
                 features = new HashSet<String>();
-                for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
-                    features.add(fi.name);
-                    logMsg.append('\n');
-                    logMsg.append(fi.name);
+                if (pm != null) {
+                    for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
+                        features.add(fi.name);
+                        logMsg.append('\n');
+                        logMsg.append(fi.name);
+                    }
                 }
 
                 cpuAbis = new ArrayList<String>();
@@ -866,8 +868,10 @@ public class DB {
                     if (app.installedVersion == null)
                         app.installedVersion = "null";
                     app.installedVerCode = sysapk.versionCode;
-                    app.userInstalled = ((sysapk.applicationInfo.flags
-                            & ApplicationInfo.FLAG_SYSTEM) != 1);
+                    if (sysapk.applicationInfo != null) {
+                        app.userInstalled = ((sysapk.applicationInfo.flags
+                                & ApplicationInfo.FLAG_SYSTEM) != 1);
+                    }
                 } else {
                     app.installedVersion = null;
                     app.installedVerCode = 0;
