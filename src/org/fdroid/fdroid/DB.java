@@ -55,7 +55,7 @@ import org.fdroid.fdroid.compat.ContextCompat;
 public class DB {
 
     private static Semaphore dbSync = new Semaphore(1, true);
-    static DB dbInstance = null;
+    private static DB dbInstance = null;
 
     // Initialise the database. Called once when the application starts up.
     static void initDB(Context ctx) {

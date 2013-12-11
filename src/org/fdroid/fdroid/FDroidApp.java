@@ -126,7 +126,7 @@ public class FDroidApp extends Application {
         ImageLoader.getInstance().init(config);
     }
 
-    Context ctx;
+    private Context ctx;
 
     // Global list of all known applications.
     private List<DB.App> apps;

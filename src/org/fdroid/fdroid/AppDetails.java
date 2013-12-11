@@ -197,7 +197,7 @@ public class AppDetails extends ListActivity {
     LinearLayout headerView;
     View infoView;
 
-    private Context mctx = this;
+    private final Context mctx = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
