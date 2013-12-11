@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.compat;
 
-import android.widget.RelativeLayout;
-
 public abstract class LayoutCompat extends Compatibility {
 
     public static LayoutCompat create() {
