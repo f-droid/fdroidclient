@@ -46,6 +46,7 @@ import java.util.*;
 
 public class ManageRepo extends ListActivity {
 
+    private static final String DEFAULT_NEW_REPO_TEXT = "https://";
     private final int ADD_REPO     = 1;
     private final int UPDATE_REPOS = 2;
 
@@ -275,7 +276,7 @@ public class ManageRepo extends ListActivity {
         final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
         List<Repo> repos = getRepos();
-        final Repo repo = getRepoByAddress(newAddress, repos);
+        final Repo repo = newAddress != null && isImportingRepo ? getRepoByAddress(newAddress, repos) : null;
 
         alrt.setIcon(android.R.drawable.ic_menu_add);
         alrt.setTitle(getString(R.string.repo_add_title));
@@ -350,10 +351,16 @@ public class ManageRepo extends ListActivity {
             }
         }
 
-        if (newAddress != null)
-            uriEditText.setText(newAddress);
         if (newFingerprint != null)
             fingerprintEditText.setText(newFingerprint);
+
+        if (newAddress != null) {
+            // This trick of emptying text then appending,
+            // rather than just setting in the first place,
+            // is neccesary to move the cursor to the end of the input.
+            uriEditText.setText("");
+            uriEditText.append(newAddress);
+        }
     }
 
     /**
@@ -430,7 +437,7 @@ public class ManageRepo extends ListActivity {
         }
 
         if (text == null) {
-            text = "https://";
+            text = DEFAULT_NEW_REPO_TEXT;
         }
         return text;
     }
