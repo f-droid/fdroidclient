@@ -161,7 +161,7 @@ public class ManageRepo extends ListActivity {
         super.onCreateOptionsMenu(menu);
 
         MenuItem updateItem = menu.add(Menu.NONE, UPDATE_REPOS, 1,
-                R.string.menu_add_repo).setIcon(R.drawable.ic_menu_refresh);
+                R.string.menu_update_repo).setIcon(R.drawable.ic_menu_refresh);
         MenuItemCompat.setShowAsAction(updateItem,
                 MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);

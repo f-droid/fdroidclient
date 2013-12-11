@@ -1513,8 +1513,17 @@ public class DB {
     }
 
     public void updateRepoByAddress(Repo repo) {
+        updateRepo(repo, "address", repo.address);
+    }
+
+    public void updateRepo(Repo repo) {
+        updateRepo(repo, "id", repo.id + "");
+    }
+
+    private void updateRepo(Repo repo, String field, String value) {
         ContentValues values = new ContentValues();
         values.put("name", repo.name);
+        values.put("address", repo.address);
         values.put("description", repo.description);
         values.put("inuse", repo.inuse);
         values.put("priority", repo.priority);
@@ -1527,8 +1536,8 @@ public class DB {
         }
         values.put("maxage", repo.maxage);
         values.put("lastetag", (String) null);
-        db.update(TABLE_REPO, values, "address = ?",
-                new String[] { repo.address });
+        db.update(TABLE_REPO, values, field + " = ?",
+                new String[] { value });
     }
 
     /**

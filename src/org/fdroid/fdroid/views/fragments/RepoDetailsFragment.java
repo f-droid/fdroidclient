@@ -236,8 +236,17 @@ public class RepoDetailsFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (repoChangeListener != null) {
-                repoChangeListener.onRepoDetailsChanged(repo);
+            if (!repo.address.equals(s.toString())) {
+                repo.address = s.toString();
+                try {
+                    DB db = DB.getDB();
+                    db.updateRepo(repo);
+                } finally {
+                    DB.releaseDB();
+                }
+                if (repoChangeListener != null) {
+                    repoChangeListener.onRepoDetailsChanged(repo);
+                }
             }
         }
     }

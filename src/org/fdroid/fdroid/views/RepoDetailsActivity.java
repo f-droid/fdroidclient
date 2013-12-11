@@ -48,7 +48,7 @@ public class RepoDetailsActivity extends FragmentActivity implements RepoDetails
 
     @Override
     public void onRepoDetailsChanged(DB.Repo repo) {
-        finishWithAction(ACTION_IS_CHANGED);
+        // Do nothing...
     }
 
     @Override

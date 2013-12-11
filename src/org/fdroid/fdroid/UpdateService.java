@@ -162,8 +162,9 @@ public class UpdateService extends IntentService implements ProgressListener {
             Bundle resultData = new Bundle();
             if (message != null && message.length() > 0)
                 resultData.putString(RESULT_MESSAGE, message);
-            if (event != null)
-                resultData.putParcelable(RESULT_EVENT, event);
+            if (event == null)
+                event = new Event(statusCode);
+            resultData.putParcelable(RESULT_EVENT, event);
             receiver.send(statusCode, resultData);
         }
     }
