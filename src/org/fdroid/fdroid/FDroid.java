@@ -375,7 +375,7 @@ public class FDroid extends FragmentActivity {
     public void removeNotification(int id) {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
             .getSystemService(Context.NOTIFICATION_SERVICE);
-        nMgr.cancel(1);
+        nMgr.cancel(id);
     }
 
 }
