@@ -64,7 +64,6 @@ public class FDroid extends FragmentActivity {
     private ProgressDialog pd;
 
     private ViewPager viewPager;
-    private AppListFragmentPageAdapter viewPageAdapter;
 
     private AppListManager manager = null;
 
@@ -288,7 +287,7 @@ public class FDroid extends FragmentActivity {
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        viewPageAdapter = new AppListFragmentPageAdapter(this);
+        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -326,8 +325,6 @@ public class FDroid extends FragmentActivity {
         }
     }
 
-    private UpdateReceiver mUpdateReceiver;
-
     /**
      * The first time the app is run, we will have an empty app list.
      * If this is the case, we will attempt to update with the default repo.
@@ -360,7 +357,7 @@ public class FDroid extends FragmentActivity {
         pd.setCanceledOnTouchOutside(false);
 
         Intent intent = new Intent(this, UpdateService.class);
-        mUpdateReceiver = new UpdateReceiver(new Handler());
+        UpdateReceiver mUpdateReceiver = new UpdateReceiver(new Handler());
         intent.putExtra("receiver", mUpdateReceiver);
         startService(intent);
     }
