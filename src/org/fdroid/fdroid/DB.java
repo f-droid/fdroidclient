@@ -1085,9 +1085,8 @@ public class DB {
         }
 
         public boolean contains(String v) {
-            Iterator<String> it = iterator();
-            while (it.hasNext()) {
-                if (it.next().equals(v))
+            for (String s : this) {
+                if (s.equals(v))
                     return true;
             }
             return false;
