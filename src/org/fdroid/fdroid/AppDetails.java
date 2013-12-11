@@ -425,7 +425,6 @@ public class AppDetails extends ListActivity {
         tv.setText(app.name);
         tv = (TextView) findViewById(R.id.license);
         tv.setText(app.license);
-        tv = (TextView) findViewById(R.id.status);
 
         tv = (TextView) infoView.findViewById(R.id.description);
 

@@ -220,7 +220,6 @@ class HoneycombTabManagerImpl extends TabManager {
     private Spinner getActionBarSpinner() {
         if (actionBarSpinner == null && dirtyConfig) {
             dirtyConfig = false;
-            long time = System.currentTimeMillis();
             actionBarSpinner = findActionBarSpinner();
         }
         return actionBarSpinner;
