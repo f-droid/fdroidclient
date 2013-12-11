@@ -474,8 +474,7 @@ public class AppDetails extends ListActivity {
                         if (listNum == -1) {
                             output.append("\t• ");
                         } else {
-                            output.append("\t" + Integer.toString(listNum)
-                                    + ". ");
+                            output.append("\t").append(Integer.toString(listNum)).append(". ");
                             listNum++;
                         }
                     } else {
@@ -510,7 +509,7 @@ public class AppDetails extends ListActivity {
                     String permissionName = permissions.next();
                     try {
                         Permission permission = new Permission(this, permissionName);
-                        sb.append("\t• " + permission.getName() + '\n');
+                        sb.append("\t• ").append(permission.getName()).append('\n');
                     } catch (NameNotFoundException e) {
                         if (permissionName.equals("ACCESS_SUPERUSER")) {
                             sb.append("\t• Full permissions to all device features and storage\n");
@@ -537,7 +536,7 @@ public class AppDetails extends ListActivity {
             for (String af : app.antiFeatures) {
                 String afdesc = descAntiFeature(af);
                 if (afdesc != null) {
-                    sb.append("\t• " + afdesc + "\n");
+                    sb.append("\t• ").append(afdesc).append("\n");
                 }
             }
             if (sb.length() > 0) {
