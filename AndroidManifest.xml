@@ -200,6 +200,9 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        
+        <!--Used for SSL TOFU, supported by extern/MemorizingTrustManager lib -->
+        <activity android:name="de.duenndns.ssl.MemorizingActivity" />
 
         <receiver android:name=".StartupReceiver" >
             <intent-filter>

@@ -12,8 +12,10 @@ The only required tools are the Android SDK and Apache Ant.
 
 ```
 git submodule update --init
-android update project -p .
-android update project -p extern/Universal-Image-Loader/library
+android update project -p . --name F-droid
+android update lib-project -p extern/Universal-Image-Loader/library
+android update lib-project -p extern/AndroidPinning
+android update lib-project -p extern/MemorizingTrustManager
 ant clean release
 ```
 
