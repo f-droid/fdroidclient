@@ -199,7 +199,9 @@ public class RepoDetailsFragment extends Fragment {
             description.setVisibility(View.VISIBLE);
         }
 
-        description.setText(repo.description);
+        String descriptionText = repo.description == null
+                ? "" : repo.description.replaceAll("\n", " ");
+        description.setText(descriptionText);
 
     }
 
@@ -208,6 +210,7 @@ public class RepoDetailsFragment extends Fragment {
      * list can be updated. We will perform the update ourselves though.
      */
     private void performUpdate() {
+        repo.enable((FDroidApp)getActivity().getApplication());
         UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {

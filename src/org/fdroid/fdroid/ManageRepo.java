@@ -261,7 +261,14 @@ public class ManageRepo extends ListActivity {
     }
 
     private void updateRepos() {
-        UpdateService.updateNow(this);
+        UpdateService.updateNow(this).setListener(new ProgressListener() {
+            @Override
+            public void onProgress(Event event) {
+                // No need to prompt to update any more, we just did it!
+                changed = false;
+                refreshList();
+            }
+        });
     }
 
     private void showAddRepo() {

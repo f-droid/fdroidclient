@@ -83,10 +83,8 @@ public class RepoAdapter extends BaseAdapter {
         // height of each list item varies.
         View signedView = view.findViewById(R.id.repo_unsigned);
         if (repository.isSigned()) {
-            nameViewLayout.addRule(RelativeLayout.CENTER_VERTICAL);
             signedView.setVisibility(View.INVISIBLE);
         } else {
-            nameViewLayout.addRule(RelativeLayout.ALIGN_PARENT_TOP);
             signedView.setVisibility(View.VISIBLE);
         }
 

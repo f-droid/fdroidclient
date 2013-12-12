@@ -61,9 +61,9 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private StringBuilder curchars = new StringBuilder();
 
-    // After processing the XML, this will be null if the index didn't specify
+    // After processing the XML, this will be -1 if the index didn't specify
     // a maximum age - otherwise it will be the value specified.
-    private String maxage;
+    private int maxage = -1;
 
     // After processing the XML, this will be null if the index specified a
     // public key - otherwise a public key. This is used for TOFU where an
@@ -247,6 +247,8 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel.equals("requirements")) {
                 curapp.requirements = DB.CommaSeparatedList.make(str);
             }
+        } else if (curel.equals("description")) {
+            description = str;
         }
     }
 
@@ -264,7 +266,13 @@ public class RepoXMLHandler extends DefaultHandler {
             String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
-            maxage = attributes.getValue("", "maxage");
+            String maxAgeAttr = attributes.getValue("", "maxage");
+            if (maxAgeAttr != null) {
+                try {
+                    maxage = Integer.parseInt(maxAgeAttr);
+                } catch (NumberFormatException nfe) {}
+            }
+
             String nm = attributes.getValue("", "name");
             if (nm != null)
                 name = nm;
@@ -453,35 +461,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
                 InputSource is = new InputSource(r);
                 xr.parse(is);
-
-                if (handler.pubkey != null && repo.pubkey == null) {
-                    // We read an unsigned index, but that indicates that
-                    // a signed version is now available...
-                    Log.d("FDroid",
-                            "Public key found - switching to signed repo for future updates");
-                    repo.pubkey = handler.pubkey;
-                    try {
-                        DB db = DB.getDB();
-                        db.updateRepoByAddress(repo);
-                    } finally {
-                        DB.releaseDB();
-                    }
-                }
-
-                if (handler.maxage != null) {
-                    int maxage = Integer.parseInt(handler.maxage);
-                    if (maxage != repo.maxage) {
-                        Log.d("FDroid",
-                                "Repo specified a new maximum age - updated");
-                        repo.maxage = maxage;
-                        try {
-                            DB db = DB.getDB();
-                            db.updateRepoByAddress(repo);
-                        } finally {
-                            DB.releaseDB();
-                        }
-                    }
-                }
+                handler.updateRepoDetails(repo);
 
             } else if (code == 304) {
                 // The index is unchanged since we last read it. We just mark
@@ -512,6 +492,46 @@ public class RepoXMLHandler extends DefaultHandler {
         }
 
         return null;
+    }
+
+    public void updateRepoDetails(DB.Repo repo) {
+
+        boolean repoChanged = false;
+
+        if (pubkey != null && repo.pubkey == null) {
+            // We read an unsigned index, but that indicates that
+            // a signed version is now available...
+            Log.d("FDroid",
+                    "Public key found - switching to signed repo for future updates");
+            repo.pubkey = pubkey;
+            repoChanged = true;
+        }
+
+        if (maxage != -1 && maxage != repo.maxage) {
+            Log.d("FDroid",
+                    "Repo specified a new maximum age - updated");
+            repo.maxage = maxage;
+            repoChanged = true;
+        }
+
+        if (description != null && !description.equals(repo.description)) {
+            repo.description = description;
+            repoChanged = true;
+        }
+
+        if (name != null && !name.equals(repo.name)) {
+            repo.name = name;
+            repoChanged = true;
+        }
+
+        if (repoChanged) {
+            try {
+                DB db = DB.getDB();
+                db.updateRepoByAddress(repo);
+            } finally {
+                DB.releaseDB();
+            }
+        }
     }
 
     public void setTotalAppCount(int totalAppCount) {

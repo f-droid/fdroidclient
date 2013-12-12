@@ -75,7 +75,7 @@
 	<string name="download_server">Getting application from</string>
 
 	<string name="repo_add_url">Repository address</string>
-	<string name="repo_add_fingerprint">fingerprint (optional)</string>
+	<string name="repo_add_fingerprint">Fingerprint (optional)</string>
 	<string name="repo_exists">This repo already exists!</string>
 	<string name="repo_exists_add_fingerprint">This repo is already setup, this will add new key information.</string>
 	<string name="repo_exists_enable">This repo is already setup, confirm that you want to re-enable it.</string>
