@@ -251,7 +251,6 @@ public class FDroid extends FragmentActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                                return;
                             }
                         });
                 AlertDialog alert = ask_alrt.create();

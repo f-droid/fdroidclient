@@ -1145,7 +1145,6 @@ public class DB {
         Log.d("FDroid", "AppUpdate: " + updateApps.size()
                 + " apps on completion.");
         updateApps = null;
-        return;
     }
 
     // Called instead of endUpdate if the update failed.

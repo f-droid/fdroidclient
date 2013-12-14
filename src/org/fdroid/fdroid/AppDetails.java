@@ -609,7 +609,6 @@ public class AppDetails extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            return;
                         }
                     });
             AlertDialog alert = ask_alrt.create();
@@ -822,7 +821,6 @@ public class AppDetails extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            return;
                         }
                     });
             AlertDialog alert = ask_alrt.create();
