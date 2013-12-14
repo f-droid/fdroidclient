@@ -214,13 +214,13 @@ public class AppDetails extends ListActivity {
         Uri data = i.getData();
         if (data != null) {
             if (data.isHierarchical()) {
-                if (data.getHost().equals("details")) {
+                if (data.getHost() != null && data.getHost().equals("details")) {
                     // market://details?id=app.id
                     appid = data.getQueryParameter("id");
                 } else {
                     // https://f-droid.org/app/app.id
                     appid = data.getLastPathSegment();
-                    if (appid.equals("app")) appid = null;
+                    if (appid != null && appid.equals("app")) appid = null;
                 }
             } else {
                 // fdroid.app:app.id
