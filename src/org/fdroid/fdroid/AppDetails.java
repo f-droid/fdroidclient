@@ -309,11 +309,6 @@ public class AppDetails extends ListActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
     public Object onRetainNonConfigurationInstance() {
         stateRetained = true;
         return this;

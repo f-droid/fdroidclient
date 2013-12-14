@@ -92,11 +92,6 @@ public class SearchResults extends ListActivity {
         updateView();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void updateView() {
 
         List<String> matchingids = new ArrayList<String>();
