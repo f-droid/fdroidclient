@@ -1,12 +1,12 @@
-local.properties
-build.properties
+/local.properties
+/build.properties
 .classpath
 /bin/
 /gen/
 /build
 /.gradle
-proguard.cfg
-build.xml
+/proguard.cfg
+/build.xml
 *~
 .idea
 *.iml
