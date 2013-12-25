@@ -62,6 +62,7 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.graphics.Bitmap;
 
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -71,7 +72,10 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
 
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 public class AppDetails extends ListActivity {
 
@@ -198,6 +202,7 @@ public class AppDetails extends ListActivity {
     View infoView;
 
     private final Context mctx = this;
+    private DisplayImageOptions displayImageOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,6 +210,16 @@ public class AppDetails extends ListActivity {
         ((FDroidApp) getApplication()).applyTheme(this);
 
         super.onCreate(savedInstanceState);
+
+        displayImageOptions = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisc(true)
+            .imageScaleType(ImageScaleType.NONE)
+            .showImageOnLoading(R.drawable.ic_repo_app_default)
+            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
         ActionBarCompat abCompat = ActionBarCompat.create(this);
         abCompat.setDisplayHomeAsUpEnabled(true);
 
@@ -413,7 +428,8 @@ public class AppDetails extends ListActivity {
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        ImageLoader.getInstance().displayImage(app.iconUrl, iv);
+        ImageLoader.getInstance().displayImage(app.iconUrl, iv,
+            displayImageOptions);
 
         // Set the title and other header details...
         TextView tv = (TextView) findViewById(R.id.title);
