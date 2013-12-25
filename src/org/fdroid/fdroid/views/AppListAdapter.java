@@ -14,15 +14,24 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.LayoutCompat;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
+    private DisplayImageOptions displayImageOptions;
 
     public AppListAdapter(Context context) {
         mContext = context;
+
+        DisplayImageOptions.Builder builder = new DisplayImageOptions.Builder();
+        builder.imageScaleType(ImageScaleType.NONE); // let android scale
+        builder.resetViewBeforeLoading(true); // required for multiple loading
+        builder.cacheInMemory(true); // default even if doc says otherwise
+        displayImageOptions = builder.build();
     }
 
     abstract protected boolean showStatusUpdate();
@@ -80,9 +89,10 @@ abstract public class AppListAdapter extends BaseAdapter {
         iconContainer.setVisibility(visibleOnCompact);
         status.setVisibility(notVisibleOnCompact);
         license.setVisibility(notVisibleOnCompact);
-        layoutSummary(summary);
 
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon);
+        layoutIcon(icon, compact);
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon,
+            displayImageOptions);
 
         if (!compact) {
             status.setText(getVersionInfo(app));
@@ -116,38 +126,6 @@ abstract public class AppListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    /**
-     * In compact view, the summary sites next to the icon, below the name.
-     * In non-compact view, it sits under the icon, with some padding pushing
-     * it away from the left margin.
-     */
-    private void layoutSummary(TextView summaryView) {
-
-        if (Preferences.get().hasCompactLayout()) {
-
-            RelativeLayout.LayoutParams summaryLayout =
-                new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
-            summaryLayout.addRule(LayoutCompat.RelativeLayout.END_OF, R.id.icon);
-            summaryView.setLayoutParams(summaryLayout);
-            summaryView.setPadding(0,0,0,0);
-
-        } else {
-
-            RelativeLayout.LayoutParams summaryLayout =
-                new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.MATCH_PARENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            summaryLayout.addRule(RelativeLayout.BELOW, R.id.icon);
-            summaryView.setLayoutParams(summaryLayout);
-            float padding = mContext.getResources().getDimension(R.dimen.applist_summary_padding);
-            summaryView.setPadding((int)padding, 0, 0, 0);
-
-        }
-    }
-
     private String getVersionInfo(DB.App app) {
         if (app.installedVersion != null) {
             if (app.toUpdate) {
@@ -161,6 +139,20 @@ abstract public class AppListAdapter extends BaseAdapter {
             }
             return mContext.getString(R.string.n_versions_available, numav);
         }
+    }
+
+    private void layoutIcon(ImageView icon, boolean compact) {
+        int size = (int)mContext.getResources().getDimension((compact
+            ? R.dimen.applist_icon_compact_size
+            : R.dimen.applist_icon_normal_size));
+
+        RelativeLayout.LayoutParams params =
+            (RelativeLayout.LayoutParams)icon.getLayoutParams();
+
+        params.height = size;
+        params.width = size;
+
+        icon.setLayoutParams(params);
     }
 
 }
