@@ -243,7 +243,8 @@ public class DB {
                 int latestcode = -1;
                 Apk latestapk = null;
                 for (Apk apk : apks) {
-                    if (apk.compatible && apk.vercode <= curVercode
+                    if ((!this.compatible || apk.compatible)
+                            && apk.vercode <= curVercode
                             && apk.vercode > latestcode) {
                         latestapk = apk;
                         latestcode = apk.vercode;
@@ -257,7 +258,8 @@ public class DB {
                 int latestcode = -1;
                 Apk latestapk = null;
                 for (Apk apk : apks) {
-                    if (apk.compatible && apk.vercode > latestcode) {
+                    if ((!this.compatible || apk.compatible)
+                            && apk.vercode > latestcode) {
                         latestapk = apk;
                         latestcode = apk.vercode;
                     }
@@ -891,8 +893,6 @@ public class DB {
             List<Repo> repos = getRepos();
             SharedPreferences prefs = PreferenceManager
                     .getDefaultSharedPreferences(mContext);
-            boolean incompatibleVersions = prefs
-                    .getBoolean("incompatibleVersions", false);
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
                     "apkName", "minSdkVersion", "added", "features", "nativecode",
                     "compatible", "repo" };
@@ -908,24 +908,22 @@ public class DB {
                 }
                 boolean compatible = c.getInt(10) == 1;
                 int repoid = c.getInt(11);
-                if (compatible || incompatibleVersions) {
-                    Apk apk = new Apk();
-                    apk.id = id;
-                    apk.version = c.getString(1);
-                    apk.vercode = c.getInt(2);
-                    apk.sig = c.getString(3);
-                    apk.srcname = c.getString(4);
-                    apk.apkName = c.getString(5);
-                    apk.minSdkVersion = c.getInt(6);
-                    String sApkAdded = c.getString(7);
-                    apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
-                            : mDateFormat.parse(sApkAdded);
-                    apk.features = CommaSeparatedList.make(c.getString(8));
-                    apk.nativecode = CommaSeparatedList.make(c.getString(9));
-                    apk.compatible = compatible;
-                    apk.repo = repoid;
-                    app.apks.add(apk);
-                }
+                Apk apk = new Apk();
+                apk.id = id;
+                apk.version = c.getString(1);
+                apk.vercode = c.getInt(2);
+                apk.sig = c.getString(3);
+                apk.srcname = c.getString(4);
+                apk.apkName = c.getString(5);
+                apk.minSdkVersion = c.getInt(6);
+                String sApkAdded = c.getString(7);
+                apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
+                        : mDateFormat.parse(sApkAdded);
+                apk.features = CommaSeparatedList.make(c.getString(8));
+                apk.nativecode = CommaSeparatedList.make(c.getString(9));
+                apk.compatible = compatible;
+                apk.repo = repoid;
+                app.apks.add(apk);
                 if (app.iconUrl == null && app.icon != null) {
                     for (DB.Repo repo : repos) {
                         if (repo.id == repoid) {

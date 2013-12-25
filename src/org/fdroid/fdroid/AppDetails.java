@@ -87,11 +87,18 @@ public class AppDetails extends ListActivity {
         private List<DB.Apk> items;
 
         public ApkListAdapter(Context context, List<DB.Apk> items) {
-            this.items = (items != null ? items : new ArrayList<DB.Apk>());
+            this.items = new ArrayList<DB.Apk>();
+            if (items != null) {
+                for (DB.Apk apk : items) {
+                    this.addItem(apk);
+                }
+            }
         }
 
         public void addItem(DB.Apk apk) {
-            items.add(apk);
+            if (apk.compatible || pref_incompatibleVersions) {
+                items.add(apk);
+            }
         }
 
         public List<DB.Apk> getItems() {
@@ -273,6 +280,8 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
+        pref_incompatibleVersions = prefs.getBoolean(
+                "incompatibleVersions", false);
 
         startViews();
 
@@ -280,6 +289,7 @@ public class AppDetails extends ListActivity {
 
     private boolean pref_expert;
     private boolean pref_permissions;
+    private boolean pref_incompatibleVersions;
     private boolean resetRequired;
 
     // The signature of the installed version.
