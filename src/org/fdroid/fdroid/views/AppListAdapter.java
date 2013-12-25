@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.graphics.Bitmap;
 
 import org.fdroid.fdroid.DB;
@@ -133,20 +136,38 @@ abstract public class AppListAdapter extends BaseAdapter {
 
         return convertView;
     }
-
-    private String getVersionInfo(DB.App app) {
-        if (app.installedVersion != null) {
-            if (app.toUpdate) {
-                return app.installedVersion + " -> " + app.curApk.version;
-            }
-            return app.installedVersion;
-        } else {
-            int numav = app.apks.size();
-            if (numav == 1) {
-                return mContext.getString(R.string.n_version_available, numav);
-            }
-            return mContext.getString(R.string.n_versions_available, numav);
+    String ellipsize(String input, int maxLength) {
+        if (input == null || input.length() < maxLength+1) {
+            return input;
         }
+        return input.substring(0, maxLength) + "…";
+    }
+
+    private SpannableString getVersionInfo(DB.App app) {
+
+        if (app.curApk == null) {
+            return null;
+        }
+
+        if (app.installedVersion == null) {
+            return new SpannableString(
+                    ellipsize(app.curApk.version, 12));
+        }
+
+        SpannableString span;
+        String cur;
+
+        if (app.toUpdate) {
+            cur = ellipsize(app.installedVersion, 8);
+            span = new SpannableString(
+                    cur + " -> " + ellipsize(app.curApk.version, 8));
+        } else {
+            cur = ellipsize(app.installedVersion, 12);
+            span = new SpannableString(cur);
+        }
+
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0, cur.length(), 0);
+        return span;
     }
 
     private void layoutIcon(ImageView icon, boolean compact) {
