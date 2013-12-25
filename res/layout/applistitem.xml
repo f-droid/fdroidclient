@@ -1,85 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="vertical"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:paddingTop="3dp"
-		android:paddingBottom="4dp"
-		android:paddingLeft="3dp"
-		android:paddingRight="3dp"
-		android:baselineAligned="false" >
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:paddingTop="6dp"
+	android:paddingBottom="6dp"
+	android:baselineAligned="false" >
 
-  <!-- Actual icon size is dependent on preferences and set in
+	<!-- Actual icon size is dependent on preferences and set in
 		AppListAdapater.java:layoutIcon() -->
-  <ImageView android:id="@+id/icon"
+	<ImageView android:id="@+id/icon"
 		android:scaleType="fitCenter"
 		android:layout_width="48dp"
 		android:layout_height="48dp"
-		android:layout_marginTop="4dp"
-		android:layout_marginBottom="4dp"
-		android:layout_marginRight="6dp"
-		android:layout_marginLeft="2dp"
+		android:layout_marginLeft="8dp"
 		android:layout_centerVertical="true"
 		/>
 
-  <LinearLayout android:id="@+id/status_icons"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		android:layout_alignParentTop="true"
-		android:layout_alignParentRight="true"
-		android:padding="4dp">
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:paddingLeft="6dp"
+		android:paddingRight="6dp"
+		android:layout_toRightOf="@id/icon"
+		android:layout_centerVertical="true"
+		android:baselineAligned="false" >
 
-	<ImageView android:id="@+id/icon_status_has_updates"
-		android:layout_width="18dp"
-		android:layout_height="18dp"
-		android:visibility="gone"
-		android:gravity="end" />
+		<LinearLayout android:id="@+id/status_icons"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentRight="true"
+			android:padding="4dp">
 
-	<ImageView android:id="@+id/icon_status_installed"
-		android:layout_width="18dp"
-		android:layout_height="18dp"
-		android:visibility="gone"
-		android:gravity="end" />
+			<ImageView android:id="@+id/icon_status_has_updates"
+				android:layout_width="18dp"
+				android:layout_height="18dp"
+				android:visibility="gone"
+				android:gravity="end" />
 
-  </LinearLayout>
+			<ImageView android:id="@+id/icon_status_installed"
+				android:layout_width="18dp"
+				android:layout_height="18dp"
+				android:visibility="gone"
+				android:gravity="end" />
 
-  <TextView android:id="@+id/status"
-		android:singleLine="true"
-		android:ellipsize="end"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:padding="3dp"
-		android:layout_alignParentTop="true"
-		android:layout_alignParentRight="true" />
+		</LinearLayout>
 
-  <TextView android:id="@+id/name"
-		android:textSize="18sp"
-		android:textStyle="bold"
-		android:singleLine="true"
-		android:ellipsize="marquee"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_toLeftOf="@id/status"
-		android:layout_toRightOf="@id/icon" />
+		<TextView android:id="@+id/status"
+			android:singleLine="true"
+			android:ellipsize="end"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentRight="true" />
 
-  <TextView android:id="@+id/summary"
-    	android:maxLines="2"
-		android:ellipsize="end"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/name"
-		android:layout_toRightOf="@id/icon" />
+		<TextView android:id="@+id/license"
+			android:singleLine="true"
+			android:textSize="13sp"
+			android:ellipsize="end"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentRight="true" />
 
-  <TextView android:id="@+id/license"
-		android:textSize="12sp"
-		android:singleLine="true"
-		android:ellipsize="end"
-		android:paddingLeft="4dp"
-		android:paddingRight="4dp"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentRight="true" />
+		<TextView android:id="@+id/name"
+			android:textSize="18sp"
+			android:textStyle="bold"
+			android:singleLine="true"
+			android:ellipsize="end"
+			android:paddingBottom="3dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_toLeftOf="@id/status" />
+
+		<TextView android:id="@+id/summary"
+
+			android:singleLine="true"
+			android:ellipsize="end"
+			android:layout_below="@id/name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_toLeftOf="@id/license" />
+
+	</RelativeLayout>
 
 </RelativeLayout>
