@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="550"
+    android:versionCode="560"
     android:versionName="@string/version_name" >
 
     <uses-sdk
