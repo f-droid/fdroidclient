@@ -135,7 +135,7 @@ public class AppDetails extends ListActivity {
 
             TextView tv = (TextView) v.findViewById(R.id.version);
             tv.setText(getString(R.string.version) + " " + apk.version
-                    + (apk == app.curApk ? " *" : ""));
+                    + (apk == app.curApk ? "   ☆" : ""));
             tv.setEnabled(apk.compatible);
 
             tv = (TextView) v.findViewById(R.id.status);

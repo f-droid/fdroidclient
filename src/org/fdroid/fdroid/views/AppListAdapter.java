@@ -160,7 +160,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         if (app.toUpdate) {
             cur = ellipsize(app.installedVersion, 8);
             span = new SpannableString(
-                    cur + " -> " + ellipsize(app.curApk.version, 8));
+                    cur + " → " + ellipsize(app.curApk.version, 8));
         } else {
             cur = ellipsize(app.installedVersion, 12);
             span = new SpannableString(cur);
