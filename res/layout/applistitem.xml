@@ -14,15 +14,14 @@
 		android:layout_width="48dp"
 		android:layout_height="48dp"
 		android:layout_marginLeft="8dp"
-		android:layout_centerVertical="true"
-		/>
+		android:layout_centerVertical="true" />
 
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:paddingLeft="6dp"
-		android:paddingRight="6dp"
+		android:paddingLeft="8dp"
+		android:paddingRight="8dp"
 		android:layout_toRightOf="@id/icon"
 		android:layout_centerVertical="true"
 		android:baselineAligned="false" >
@@ -52,6 +51,8 @@
 		<TextView android:id="@+id/status"
 			android:singleLine="true"
 			android:ellipsize="end"
+			android:paddingTop="2dp"
+			android:paddingBottom="2dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentTop="true"
@@ -67,11 +68,11 @@
 			android:layout_alignParentRight="true" />
 
 		<TextView android:id="@+id/name"
-			android:textSize="18sp"
+			android:textSize="17sp"
 			android:textStyle="bold"
 			android:singleLine="true"
 			android:ellipsize="end"
-			android:paddingBottom="3dp"
+			android:paddingBottom="2dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true"

@@ -16,7 +16,6 @@
 			android:id="@+id/icon"
 			android:layout_width="48dp"
 			android:layout_height="48dp"
-			android:cropToPadding="true"
 			android:layout_marginRight="6dp"
 			android:scaleType="fitCenter" />
 

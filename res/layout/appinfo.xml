@@ -3,8 +3,6 @@
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:paddingTop="4dp"
-	android:paddingLeft="2dp"
-	android:paddingRight="2dp"
 	android:paddingBottom="10dp"
 	android:baselineAligned="false"
 	android:orientation="vertical" >
@@ -13,14 +11,13 @@
 		android:id="@+id/summary"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:textSize="14sp"
 		android:textStyle="bold" />
 
 	<TextView
 		android:id="@+id/appid"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:textSize="12sp" />
+		android:textSize="13sp" />
 
 	<TextView
 		android:id="@+id/signature"
@@ -33,7 +30,6 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="6sp"
-		android:textSize="14sp"
 		android:textStyle="bold"
 		android:textColor="#ff0000" />
 
@@ -50,7 +46,6 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="8sp"
 		android:singleLine="true"
-		android:textSize="14sp"
 		android:textStyle="bold" />
 	
 	<TextView
