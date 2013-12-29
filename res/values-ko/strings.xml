@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchres_napps">\'%2$s\' 검색결과 (%1$d개)</string>
+  <string name="searchres_oneapp">\'%s\' 검색결과:</string>
+  <string name="searchres_noapps">\'%s\' 와 일치하는 응용프로그램을 찾을 수 없습니다.</string>
+  <string name="installDowngrade">이 응용 프로그램의 다운그레이드 하려고 합니다. 이전 버전을 설치할 경우, 응용 프로그램에 데이터가 손상되거나 오작동이 발생할 수 있습니다. 정말로 다운그레이드하시겠습니까?</string>
+  <string name="version">버전</string>
+  <string name="n_versions_available">%d개의 버전을 사용할 수 있습니다.</string>
+  <string name="n_version_available">%d개의 버전을 사용할 수 있습니다.</string>
+  <string name="cache_downloaded">다운로드된 설치파일 저장</string>
+  <string name="keep_downloaded">SD카드에 다운로드된 설치파일을 보관</string>
+  <string name="updates">업데이트</string>
+  <string name="other">기타</string>
+  <string name="last_update_check">마지막 저장소 검색: %s</string>
+  <string name="automatic_repo_scan">자동으로 저장소 검색</string>
+  <string name="update_apps_list">자동으로 저장소의 앱 목록을 갱신합니다.</string>
+  <string name="automatic_scan_wifi">Wi-Fi 연결 시에만</string>
+  <string name="automatic_scan_wifi_desc">Wi-Fi에 연결되어 있을 때만 자동으로 앱 목록을 갱신합니다.</string>
+  <string name="notify">알림</string>
+  <string name="notify_updates_available">새로운 업데이트가 가능할 때 알림</string>
+  <string name="update_history">이력 업데이트</string>
+  <string name="search_results">검색 결과</string>
+  <string name="app_details">앱 상세정보</string>
+  <string name="about_title">F-Droid 대하여</string>
+  <string name="about_site">웹사이트:</string>
+  <string name="about_mail">이메일:</string>
+  <string name="about_version">버전:</string>
+  <string name="about_website">웹사이트</string>
+  <string name="no_repo">저장소가 구성되지 않았습니다!
+저장소는 응용프로그램의 소스입니다.
+추가하려면, 메뉴에 \"새 저장소\" 버튼을 누르고 URL 입력해주세요.
+저장소 URL 예: https://f-droid.org/repo</string>
+  <string name="inst">설치됨</string>
+  <string name="not_inst">설치되지 않음</string>
+  <string name="added_on">%s에 추가됨</string>
+  <string name="ok">확인</string>
+  <string name="yes">예</string>
+  <string name="no">아니오</string>
+  <string name="repo_add_title">새로운 저장소 추가</string>
+  <string name="repo_add_add">추가</string>
+  <string name="cancel">취소</string>
+  <string name="repo_delete_title">제거할 저장소 선택</string>
+  <string name="repo_update_title">저장소 업데이트</string>
+  <string name="tab_installed">설치됨</string>
+  <string name="tab_updates">업데이트</string>
+  <string name="one_update_available">1개의 업데이트를 사용할 수 있습니다.</string>
+  <string name="many_updates_available">%d개의 업데이트를 사용할 수 있습니다.</string>
+  <string name="fdroid_updates_available">F-Droid 업데이트를 사용할 수 있습니다.</string>
+  <string name="process_wait_title">잠시만 기다려주세요</string>
+  <string name="process_update_msg">응용 프로그램 목록 업데이트중...</string>
+  <string name="download_server">에서 응용프로그램 가져오기</string>
+  <string name="repo_add_url">저장소 주소</string>
+  <string name="repo_alrt">사용된 저장소의 목록이 변경되었습니다.
+업데이트 하시겠습니까?</string>
+  <string name="menu_update_repo">저장소 업데이트</string>
+  <string name="menu_manage">저장소 관리</string>
+  <string name="menu_preferences">설정</string>
+  <string name="menu_about">대하여</string>
+  <string name="menu_search">검색</string>
+  <string name="menu_add_repo">새로운 저장소</string>
+  <string name="menu_rem_repo">저장소 제거</string>
+  <string name="menu_launch">실행</string>
+  <string name="menu_share">공유</string>
+  <string name="menu_install">설치</string>
+  <string name="menu_uninstall">제거</string>
+  <string name="menu_ignore_all">모든 업데이트 무시</string>
+  <string name="menu_ignore_this">이 업데이트 무시</string>
+  <string name="menu_website">웹사이트</string>
+  <string name="menu_issues">이슈</string>
+  <string name="menu_source">소스코드</string>
+  <string name="menu_upgrade">업그레이드</string>
+  <string name="menu_donate">기부</string>
+  <string name="details_notinstalled">설치되지 않음</string>
+  <string name="corrupt_download">다운로드된 파일이 손상되었습니다.</string>
+  <string name="download_cancelled">다운로드 취소됨</string>
+  <string name="antiadslist">이 응용프로그램은 광고가 포함되어 있습니다.</string>
+  <string name="antitracklist">이 응용프로그램은 활동을 추적하여 리포트를 보고합니다.</string>
+  <string name="display">표시</string>
+  <string name="expert">전문가</string>
+  <string name="expert_mode">전문가 모드 사용</string>
+  <string name="search_hint">응용 프로그램 검색</string>
+  <string name="db_sync_mode">데이터베이스 동기화 모드</string>
+  <string name="appcompatibility">응용 프로그램 호환성</string>
+  <string name="show_incompat_versions">호환되지 않는 버전</string>
+  <string name="rooted_long">Root 권한이 필요한 앱을 보여줍니다.</string>
+  <string name="ignoreTouch">터치스크린 무시</string>
+  <string name="ignoreTouch_long">터치스크린을 요구하는 앱을 포함합니다</string>
+  <string name="category_all">전체</string>
+  <string name="category_whatsnew">새로운 기능</string>
+  <string name="category_recentlyupdated">최근 업데이트</string>
+  <string name="status_download">%1$s 에서 다운로드 중입니다.
+%2$s / %3$s (%4$d%%)</string>
+  <string name="status_processing_xml">응용 프로그램 처리중
+%1$s
+%2$d / %3$d</string>
+  <string name="status_connecting_to_repo">%1$s에 접속중</string>
+  <string name="status_checking_compatibility">장치와 응용프로그램의 호환성 확인중…</string>
+  <string name="no_permissions">사용된 권한이 없습니다.</string>
+  <string name="permissions_for_long">%s 버전에 대한 권한</string>
+  <string name="showPermissions">권한 표시</string>
+  <string name="showPermissions_long">응용 프로그램이 필요한 권한의 목록을 표시</string>
+  <string name="no_handler_app">%s을(를) 처리할 수 있는 응용프로그램이 없습니다.</string>
+  <string name="compactlayout">컴팩트 레이아웃</string>
+  <string name="compactlayout_long">목록에 웹이름과 요약정보만 표시합니다.</string>
+  <string name="theme">테마</string>
+  <string name="theme_long">사용할 테마를 선택하세요.</string>
+</resources>
