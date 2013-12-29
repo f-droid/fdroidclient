@@ -2,7 +2,7 @@
 <resources>
   <string name="searchres_napps">بۇ \'%2$s\'غا ماس كېلىدىغان %1$d ئەپنى تاپتى:</string>
   <string name="searchres_oneapp">\'%s\' غا ماس كېلىدىغان بىر ئەپنى تاپتى:</string>
-  <string name="searchres_noapps">\'%s\' غا ماس كېلىدىغان ھېچقانداق ئەپنى تاپالمىدى</string>
+  <string name="searchres_noapps">\'%s\' غا ماس كېلىدىغان ئەپنى تاپالمىدى</string>
   <string name="SignatureMismatch">بۇ يېڭى نەشرى كونا نەشرىنىڭكى بىلەن پەرقلىق ئاچقۇچ بىلەن ئىمزا قويۇلغان. ئالدى بىلەن كونا نەشرىنى ئۆچۈرۈۋېتىپ ئاندىن يېڭى نەشرىنى ئورنىتىڭ. بۇ مەشغۇلاتنى قىلىپ ئاندىن قايتا سىناڭ. (دىققەت كونا نەشرى ئۆچۈرۈلسە شۇ ئەپتە ساقلانغان ھەممە سانلىق مەلۇماتلارمۇ ئۆچۈرۈلىدۇ)</string>
   <string name="installIncompatible">بۇ بوغچا ئۈسكۈنىڭىز بىلەن ماسلاشمايدىغاندەك تۇرىدۇ، ئۇنى سىناپ ئورنىتىۋېرەمسىز؟</string>
   <string name="installDowngrade">بۇ ئەپنىڭ دەرىجىسىنى تۆۋەنلىتىشنى سىناۋاتىسىز. بۇ مەشغۇلاتنى ئىجرا قىلىش داۋامىدا كاشىلا كۆرۈلۈشى ۋە سانلىق مەلۇماتلىرىڭىزنى يوقۇتۇپ قويۇشىڭىز مۇمكىن. ئۇنى سىناپ دەرىجىسىنى تۆۋەنلىتىۋېرەمسىز؟</string>
@@ -27,17 +27,12 @@
   <string name="app_details">ئەپ تەپسىلاتلىرى</string>
   <string name="no_such_app">بۇنداق ئەپ تېپىلمىدى</string>
   <string name="about_title">F-Droid ھەققىدە</string>
-  <string name="about_desc">دەسلەپتە Aptoide نى ئاساس قىلغان.
-بۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان.</string>
-  <string name="about_site">تور تۇرا:</string>
+  <string name="about_desc">دەسلەپتە Aptoide نى ئاساس قىلغان. بۇ GNU GPLv3 ئىجازىتىدە تارقىتىلغان.</string>
+  <string name="about_site">تورتۇرا:</string>
   <string name="about_mail">تورخەت:</string>
   <string name="about_version">نەشرى:</string>
   <string name="about_website">تورتۇرا</string>
-  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!
-
-خەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ.
-
-خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: http://f-droid.org/repo</string>
+  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز! خەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ. خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: https://f-droid.org/repo</string>
   <string name="inst">ئورنىتىلغان</string>
   <string name="not_inst">ئورنىتىلمىغان</string>
   <string name="added_on">%s دا قوشۇلغان</string>
@@ -59,8 +54,7 @@
   <string name="process_update_msg">ئەپ تىزىمىنى يېڭىلاۋاتىدۇ…</string>
   <string name="download_server">ئەپكە ئېرىشىش ئورنى</string>
   <string name="repo_add_url">خەزىنە ئادرېسى</string>
-  <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.
-ئۇلارنى يېڭىلامسىز؟</string>
+  <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى. ئۇلارنى يېڭىلامسىز؟</string>
   <string name="menu_update_repo">خەزىنە يېڭىلا</string>
   <string name="menu_manage">خەزىنە باشقۇر</string>
   <string name="menu_preferences">مايىللىقلار</string>
@@ -104,22 +98,17 @@
   <string name="category_all">ھەممىسى</string>
   <string name="category_whatsnew">يېڭىلىقلار</string>
   <string name="category_recentlyupdated">يېقىنقى يېڭىلانغانلار</string>
-  <string name="status_download">چۈشۈرۈۋاتىدۇ
-%2$s / %3$s (%4$d%%)
-%1$s</string>
-  <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ
-%2$d of %3$d
-%1$s</string>
-  <string name="status_connecting_to_repo">%1$s غا 
-باغلىنىۋاتىدۇ</string>
-  <string name="status_checking_compatibility">ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…</string>
+  <string name="status_download">چۈشۈرۈۋاتىدۇ %2$s / %3$s (%4$d%%) %1$s</string>
+  <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ %2$d of %3$d %1$s</string>
+  <string name="status_connecting_to_repo">%1$s غا باغلىنىۋاتىدۇ</string>
+  <string name="status_checking_compatibility">ئەپنىڭ ئۈسكۈنە بىلەن ماسلىشىشچانلىقىنى تەكشۈرمەكتە…</string>
   <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
-  <string name="permissions_for_long">%s نەشرىنىڭ ھوقۇقلىرى</string>
+  <string name="permissions_for_long">%s نىڭ ھوقۇقلىرى</string>
   <string name="showPermissions">ھوقۇقلارنى كۆرسەت</string>
-  <string name="showPermissions_long">ئەپكە زۆرۈر بولغان ھوقۇق تىزىمىنى كۆرسىتىدۇ</string>
-  <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
+  <string name="showPermissions_long">ئەپ ئېھتىياجلىق ھوقۇق تىزىمىنى كۆرسىتىدۇ</string>
+  <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلىدىغان ھېچقانداق ئىشلىتىلىشچان ئەپ يوق</string>
   <string name="compactlayout">ئىخچام جايلاشتۇرۇش</string>
-  <string name="compactlayout_long">تىزىمدا پەقەت ئەپ ئىسمى ۋە ئۈزۈندىلىرىنىلا كۆرسىتىدۇ</string>
+  <string name="compactlayout_long">پەقەت ئەپ ئىسمى ۋە ئۈزۈندىسىنى تىزىمدا كۆرسىتىدۇ</string>
   <string name="theme">ئۆرنەك</string>
-  <string name="theme_long">ئىشلىتىدىغان ئۆرنەكتىن بىرنى تاللاڭ</string>
+  <string name="theme_long">ئىشلىتىدىغان ئۆرنەكنى تاللاڭ</string>
 </resources>
