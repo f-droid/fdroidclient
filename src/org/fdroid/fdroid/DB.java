@@ -99,6 +99,7 @@ public class DB {
             + "curVersion text," + "curVercode integer,"
             + "antiFeatures string," + "donateURL string,"
             + "bitcoinAddr string," + "litecoinAddr string,"
+            + "dogecoinAddr string,"
             + "flattrID string," + "requirements string,"
             + "categories string," + "added string,"
             + "lastUpdated string," + "compatible int not null,"
@@ -119,6 +120,7 @@ public class DB {
             detail_donateURL = null;
             detail_bitcoinAddr = null;
             detail_litecoinAddr = null;
+            detail_dogecoinAddr = null;
             detail_webURL = null;
             categories = null;
             provides = null;
@@ -174,6 +176,10 @@ public class DB {
         // Litecoin donate address, or null
         // Null when !detail_Populated
         public String detail_litecoinAddr;
+
+        // Dogecoin donate address, or null
+        // Null when !detail_Populated
+        public String detail_dogecoinAddr;
 
         // Flattr donate ID, or null
         // Null when !detail_Populated
@@ -461,7 +467,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 31;
+    private final int DBVersion = 32;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -730,7 +736,7 @@ public class DB {
 
     private static final String[] POPULATE_APP_COLS = new String[] {
         "description", "webURL", "trackerURL", "sourceURL",
-        "donateURL", "bitcoinAddr", "flattrID", "litecoinAddr" };
+        "donateURL", "bitcoinAddr", "flattrID", "litecoinAddr", "dogecoinAddr" };
 
     private void populateAppDetails(App app) {
         Cursor cursor = null;
@@ -746,6 +752,7 @@ public class DB {
             app.detail_bitcoinAddr = cursor.getString(5);
             app.detail_flattrID = cursor.getString(6);
             app.detail_litecoinAddr = cursor.getString(7);
+            app.detail_dogecoinAddr = cursor.getString(8);
             app.detail_Populated = true;
         } catch (Exception e) {
             Log.d("FDroid", "Error populating app details " + app.id );
@@ -1247,6 +1254,7 @@ public class DB {
         values.put("donateURL", upapp.detail_donateURL);
         values.put("bitcoinAddr", upapp.detail_bitcoinAddr);
         values.put("litecoinAddr", upapp.detail_litecoinAddr);
+        values.put("dogecoinAddr", upapp.detail_dogecoinAddr);
         values.put("flattrID", upapp.detail_flattrID);
         values.put("added",
                 upapp.added == null ? "" : mDateFormat.format(upapp.added));

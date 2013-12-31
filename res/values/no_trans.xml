@@ -9,6 +9,7 @@
 
 	<string name="menu_bitcoin">Bitcoin</string>
 	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_dogecoin">Dogecoin</string>
 	<string name="menu_flattr">Flattr</string>
 
 	<string-array name="updateIntervalValues">
