@@ -10,6 +10,7 @@
 		android:id="@+id/header"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
+		android:paddingBottom="4dp"
 		android:orientation="horizontal" >
 
 		<ImageView
@@ -40,7 +41,7 @@
 				android:layout_height="wrap_content"
 				android:layout_alignParentLeft="true"
 				android:layout_below="@id/title"
-				android:textSize="12sp" />
+				android:textSize="13sp" />
 
 			<TextView
 				android:id="@+id/license"
@@ -48,7 +49,7 @@
 				android:layout_height="wrap_content"
 				android:layout_alignParentRight="true"
 				android:padding="3dp"
-				android:textSize="12sp" />
+				android:textSize="13sp" />
 
 		</RelativeLayout>
 	</LinearLayout>

@@ -7,8 +7,6 @@
 	<string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try and install it anyway?</string>
 	<string name="installDowngrade">You are trying to downgrade this application. Doing so might get it to malfunction and even lose your data. Do you want to try and downgrade it anyway?</string>
 	<string name="version">Version</string>
-	<string name="n_versions_available">%d versions available</string>
-	<string name="n_version_available">%d version available</string>
 	<string name="cache_downloaded">Cache downloaded apps</string>
 	<string name="keep_downloaded">Keep downloaded apk files on SD card</string>
 	<string name="updates">Updates</string>
