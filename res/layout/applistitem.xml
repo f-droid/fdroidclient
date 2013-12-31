@@ -55,6 +55,7 @@
 			android:paddingBottom="2dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_marginLeft="6dp"
 			android:layout_alignParentTop="true"
 			android:layout_alignParentRight="true" />
 
@@ -64,6 +65,7 @@
 			android:ellipsize="end"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_marginLeft="6dp"
 			android:layout_alignParentBottom="true"
 			android:layout_alignParentRight="true" />
 
