@@ -19,11 +19,11 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.ListPreference;
 import android.preference.CheckBoxPreference;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.view.MenuItem;
 
 import android.support.v4.app.NavUtils;
@@ -31,31 +31,45 @@ import android.support.v4.app.NavUtils;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class PreferencesActivity extends PreferenceActivity implements
-        OnPreferenceChangeListener {
+        OnSharedPreferenceChangeListener {
 
     public static final int RESULT_RELOAD = 1;
     public static final int RESULT_REFILTER = 2;
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
+    public static final String KEY_UP_INT = "updateInterval";
+    public static final String KEY_UP_WI_O = "updateOnWifiOnly";
+    public static final String KEY_ROOTED = "rooted";
+    public static final String KEY_INC_VER = "incompatibleVersions";
+    public static final String KEY_THEME = "theme";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ((FDroidApp) getApplication()).applyTheme(this);
-
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
-        for (String prefkey : new String[] {
-                "updateInterval", "rooted", "incompatibleVersions",
-                "theme" }) {
-            findPreference(prefkey).setOnPreferenceChangeListener(this);
-        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getPreferenceScreen().getSharedPreferences()
+                    .registerOnSharedPreferenceChangeListener(
+                            (OnSharedPreferenceChangeListener)this);
         CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                findPreference("updateOnWifiOnly");
+                findPreference(KEY_UP_WI_O);
         onlyOnWifi.setEnabled(Integer.parseInt(
-                        ((ListPreference)findPreference("updateInterval"))
+                        ((ListPreference)findPreference(KEY_UP_INT))
                         .getValue()) > 0);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences()
+                    .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -69,31 +83,33 @@ public class PreferencesActivity extends PreferenceActivity implements
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        String key = preference.getKey();
-        if (key.equals("updateInterval")) {
-            int interval = Integer.parseInt(newValue.toString());
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
+        if (key.equals(KEY_UP_INT)) {
+            int interval = Integer.parseInt(
+                    sharedPreferences.getString(key, "").toString());
             CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                    findPreference("updateOnWifiOnly");
+                    findPreference(KEY_UP_WI_O);
             onlyOnWifi.setEnabled(interval > 0);
-            return true;
+            return;
         }
-        if (key.equals("incompatibleVersions")) {
+
+        if (key.equals(KEY_INC_VER)) {
             result ^= RESULT_RELOAD;
             setResult(result);
-            return true;
+            return;
         }
-        if (key.equals("rooted")) {
+
+        if (key.equals(KEY_ROOTED)) {
             result ^= RESULT_REFILTER;
             setResult(result);
-            return true;
+            return;
         }
-        if (key.equals("theme")) {
+        if (key.equals(KEY_THEME)) {
             result |= RESULT_RESTART;
             setResult(result);
-            return true;
+            return;
         }
-        return false;
     }
 
 }
