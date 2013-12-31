@@ -68,6 +68,10 @@ public class PreferencesActivity extends PreferenceActivity implements
         } else {
             updateInterval.setSummary(updateInterval.getEntry());
         }
+
+        ListPreference theme = (ListPreference)findPreference(
+                Preferences.PREF_THEME);
+        theme.setSummary(theme.getEntry());
     }
 
     @Override
@@ -165,6 +169,9 @@ public class PreferencesActivity extends PreferenceActivity implements
         if (key.equals(Preferences.PREF_THEME)) {
             result |= RESULT_RESTART;
             setResult(result);
+            ListPreference theme = (ListPreference)findPreference(
+                    Preferences.PREF_THEME);
+            theme.setSummary(theme.getEntry());
             return;
         }
     }
