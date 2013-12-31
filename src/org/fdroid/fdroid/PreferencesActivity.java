@@ -53,11 +53,21 @@ public class PreferencesActivity extends PreferenceActivity implements
         getPreferenceScreen().getSharedPreferences()
                     .registerOnSharedPreferenceChangeListener(
                             (OnSharedPreferenceChangeListener)this);
+
+        ListPreference updateInterval = (ListPreference)findPreference(
+                Preferences.PREF_UPD_INTERVAL);
+
+        int interval = Integer.parseInt(updateInterval.getValue().toString());
+
         Preference onlyOnWifi = findPreference(
                 Preferences.PREF_UPD_WIFI_ONLY);
-        onlyOnWifi.setEnabled(Integer.parseInt(((ListPreference)
-                        findPreference(Preferences.PREF_UPD_INTERVAL))
-                        .getValue()) > 0);
+        onlyOnWifi.setEnabled(interval > 0);
+
+        if (interval == 0) {
+            updateInterval.setSummary(R.string.update_interval_zero);
+        } else {
+            updateInterval.setSummary(updateInterval.getEntry());
+        }
     }
 
     @Override
@@ -78,14 +88,32 @@ public class PreferencesActivity extends PreferenceActivity implements
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+    public void onSharedPreferenceChanged(
+            SharedPreferences sharedPreferences, String key) {
 
         if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
-            int interval = Integer.parseInt(
-                    sharedPreferences.getString(key, "").toString());
+            ListPreference pref = (ListPreference)findPreference(
+                    Preferences.PREF_UPD_INTERVAL);
+            int interval = Integer.parseInt(pref.getValue().toString());
             Preference onlyOnWifi = findPreference(
                     Preferences.PREF_UPD_WIFI_ONLY);
             onlyOnWifi.setEnabled(interval > 0);
+            if (interval == 0) {
+                pref.setSummary(R.string.update_interval_zero);
+            } else {
+                pref.setSummary(pref.getEntry());
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
+            Preference pref = findPreference(Preferences.PREF_UPD_WIFI_ONLY);
+            if (sharedPreferences.getBoolean(
+                        Preferences.PREF_UPD_WIFI_ONLY, false)) {
+                pref.setSummary(R.string.automatic_scan_wifi_on);
+            } else {
+                pref.setSummary(R.string.automatic_scan_wifi_off);
+            }
             return;
         }
 
@@ -115,7 +143,7 @@ public class PreferencesActivity extends PreferenceActivity implements
             setResult(result);
             Preference pref = findPreference(Preferences.PREF_ROOTED);
             if (sharedPreferences.getBoolean(
-                        Preferences.PREF_ROOTED, false)) {
+                        Preferences.PREF_ROOTED, true)) {
                 pref.setSummary(R.string.rooted_on);
             } else {
                 pref.setSummary(R.string.rooted_off);

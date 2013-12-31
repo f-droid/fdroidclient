@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory android:title="@string/updates">
-		<ListPreference android:title="@string/automatic_repo_scan"
-			android:summary="@string/update_apps_list" android:key="updateInterval"
+		<ListPreference android:title="@string/update_interval"
+			android:summary="@string/update_interval_zero" android:key="updateInterval"
 			android:defaultValue="24" android:entries="@array/updateIntervalNames"
 			android:entryValues="@array/updateIntervalValues" />
 		<CheckBoxPreference android:title="@string/automatic_scan_wifi"
-			android:defaultValue="false" android:summary="@string/automatic_scan_wifi_desc"
+			android:defaultValue="false" android:summary="@string/automatic_scan_wifi_off"
 			android:key="updateOnWifiOnly" />
 		<CheckBoxPreference android:title="@string/notify"
 			android:defaultValue="true" android:summary="@string/notify_updates_available"
