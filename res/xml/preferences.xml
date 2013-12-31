@@ -24,7 +24,7 @@
             android:defaultValue="false" android:summary="@string/showPermissions_long"
             android:key="showPermissions"/>
         <CheckBoxPreference android:title="@string/compactlayout"
-            android:defaultValue="false" android:summary="@string/compactlayout_long"
+            android:defaultValue="false" android:summary="@string/compactlayout_off"
             android:key="compactlayout"/>
 		<ListPreference android:title="@string/theme"
 			android:summary="@string/theme_long" android:key="theme"
@@ -37,10 +37,10 @@
            android:defaultValue="false" android:summary="@string/show_incompat_versions_l"
            android:key="incompatibleVersions" />
 		<CheckBoxPreference android:title="@string/rooted"
-			android:defaultValue="true" android:summary="@string/rooted_long"
+			android:defaultValue="true" android:summary="@string/rooted_on"
 			android:key="rooted" />
 		<CheckBoxPreference android:title="@string/ignoreTouch"
-			android:defaultValue="false" android:summary="@string/ignoreTouch_long"
+			android:defaultValue="false" android:summary="@string/ignoreTouch_off"
 			android:key="ignoreTouchscreen" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/other">

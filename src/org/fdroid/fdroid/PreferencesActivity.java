@@ -19,9 +19,9 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.ListPreference;
-import android.preference.CheckBoxPreference;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.view.MenuItem;
@@ -53,8 +53,8 @@ public class PreferencesActivity extends PreferenceActivity implements
         getPreferenceScreen().getSharedPreferences()
                     .registerOnSharedPreferenceChangeListener(
                             (OnSharedPreferenceChangeListener)this);
-        CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                findPreference(Preferences.PREF_UPD_WIFI_ONLY);
+        Preference onlyOnWifi = findPreference(
+                Preferences.PREF_UPD_WIFI_ONLY);
         onlyOnWifi.setEnabled(Integer.parseInt(((ListPreference)
                         findPreference(Preferences.PREF_UPD_INTERVAL))
                         .getValue()) > 0);
@@ -83,9 +83,24 @@ public class PreferencesActivity extends PreferenceActivity implements
         if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
             int interval = Integer.parseInt(
                     sharedPreferences.getString(key, "").toString());
-            CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                    findPreference(Preferences.PREF_UPD_WIFI_ONLY);
+            Preference onlyOnWifi = findPreference(
+                    Preferences.PREF_UPD_WIFI_ONLY);
             onlyOnWifi.setEnabled(interval > 0);
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
+            Preference pref = findPreference(Preferences.PREF_COMPACT_LAYOUT);
+            if (sharedPreferences.getBoolean(
+                        Preferences.PREF_COMPACT_LAYOUT, false)) {
+                pref.setSummary(R.string.compactlayout_on);
+            } else {
+                pref.setSummary(R.string.compactlayout_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
             return;
         }
 
@@ -98,8 +113,27 @@ public class PreferencesActivity extends PreferenceActivity implements
         if (key.equals(Preferences.PREF_ROOTED)) {
             result ^= RESULT_REFILTER;
             setResult(result);
+            Preference pref = findPreference(Preferences.PREF_ROOTED);
+            if (sharedPreferences.getBoolean(
+                        Preferences.PREF_ROOTED, false)) {
+                pref.setSummary(R.string.rooted_on);
+            } else {
+                pref.setSummary(R.string.rooted_off);
+            }
             return;
         }
+
+        if (key.equals(Preferences.PREF_IGN_TOUCH)) {
+            Preference pref = findPreference(Preferences.PREF_IGN_TOUCH);
+            if (sharedPreferences.getBoolean(
+                        Preferences.PREF_IGN_TOUCH, false)) {
+                pref.setSummary(R.string.ignoreTouch_on);
+            } else {
+                pref.setSummary(R.string.ignoreTouch_off);
+            }
+            return;
+        }
+
         if (key.equals(Preferences.PREF_THEME)) {
             result |= RESULT_RESTART;
             setResult(result);
