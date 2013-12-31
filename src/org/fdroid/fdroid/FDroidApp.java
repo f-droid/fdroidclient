@@ -32,7 +32,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
+import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -100,14 +100,17 @@ public class FDroidApp extends Application {
         UpdateService.schedule(ctx);
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
-            .discCache(new UnlimitedDiscCache(
+            .discCache(new LimitedAgeDiscCache(
                         new File(StorageUtils.getCacheDirectory(ctx), "icons"),
                         new FileNameGenerator() {
                             @Override
                             public String generate(String imageUri) {
                                 return imageUri.substring(
                                     imageUri.lastIndexOf('/') + 1);
-                            } } ))
+                            } },
+                        // 30 days in secs: 30*24*60*60 = 2592000
+                        2592000)
+                    )
             .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
             .build();
         ImageLoader.getInstance().init(config);
