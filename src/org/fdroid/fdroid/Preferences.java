@@ -26,7 +26,13 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         preferences.registerOnSharedPreferenceChangeListener(this);
     }
 
-    private static final String PREF_COMPACT_LAYOUT    = "compactlayout";
+    public static final String PREF_UPD_INTERVAL = "updateInterval";
+    public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
+    public static final String PREF_ROOTED = "rooted";
+    public static final String PREF_INCOMP_VER = "incompatibleVersions";
+    public static final String PREF_THEME = "theme";
+    public static final String PREF_COMPACT_LAYOUT = "compactlayout";
+
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;

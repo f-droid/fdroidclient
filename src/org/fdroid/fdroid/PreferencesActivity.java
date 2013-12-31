@@ -28,6 +28,7 @@ import android.view.MenuItem;
 
 import android.support.v4.app.NavUtils;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class PreferencesActivity extends PreferenceActivity implements
@@ -37,12 +38,6 @@ public class PreferencesActivity extends PreferenceActivity implements
     public static final int RESULT_REFILTER = 2;
     public static final int RESULT_RESTART = 4;
     private int result = 0;
-
-    public static final String KEY_UP_INT = "updateInterval";
-    public static final String KEY_UP_WI_O = "updateOnWifiOnly";
-    public static final String KEY_ROOTED = "rooted";
-    public static final String KEY_INC_VER = "incompatibleVersions";
-    public static final String KEY_THEME = "theme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +54,9 @@ public class PreferencesActivity extends PreferenceActivity implements
                     .registerOnSharedPreferenceChangeListener(
                             (OnSharedPreferenceChangeListener)this);
         CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                findPreference(KEY_UP_WI_O);
-        onlyOnWifi.setEnabled(Integer.parseInt(
-                        ((ListPreference)findPreference(KEY_UP_INT))
+                findPreference(Preferences.PREF_UPD_WIFI_ONLY);
+        onlyOnWifi.setEnabled(Integer.parseInt(((ListPreference)
+                        findPreference(Preferences.PREF_UPD_INTERVAL))
                         .getValue()) > 0);
     }
 
@@ -85,27 +80,27 @@ public class PreferencesActivity extends PreferenceActivity implements
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-        if (key.equals(KEY_UP_INT)) {
+        if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
             int interval = Integer.parseInt(
                     sharedPreferences.getString(key, "").toString());
             CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                    findPreference(KEY_UP_WI_O);
+                    findPreference(Preferences.PREF_UPD_WIFI_ONLY);
             onlyOnWifi.setEnabled(interval > 0);
             return;
         }
 
-        if (key.equals(KEY_INC_VER)) {
+        if (key.equals(Preferences.PREF_INCOMP_VER)) {
             result ^= RESULT_RELOAD;
             setResult(result);
             return;
         }
 
-        if (key.equals(KEY_ROOTED)) {
+        if (key.equals(Preferences.PREF_ROOTED)) {
             result ^= RESULT_REFILTER;
             setResult(result);
             return;
         }
-        if (key.equals(KEY_THEME)) {
+        if (key.equals(Preferences.PREF_THEME)) {
             result |= RESULT_RESTART;
             setResult(result);
             return;
