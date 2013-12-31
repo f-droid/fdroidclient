@@ -105,24 +105,20 @@ public class SearchResults extends ListActivity {
         }
 
         List<DB.App> apps = new ArrayList<DB.App>();
-        List<DB.App> tapps = ((FDroidApp) getApplication()).getApps();
-        for (DB.App tapp : tapps) {
+        List<DB.App> allApps = ((FDroidApp) getApplication()).getApps();
+        for (DB.App app : allApps) {
             boolean include = false;
-            for (String tid : matchingids) {
-                if (tid.equals(tapp.id)) {
-                    include = true;
+            for (String id : matchingids) {
+                if (id.equals(app.id)) {
+                    apps.add(app);
                     break;
                 }
             }
-            if (include)
-                apps.add(tapp);
-
         }
 
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
-        try
-        {
+        try {
             if (apps.size() == 0)
                 headertext = String.format(getString(R.string.searchres_noapps),
                         mQuery);
