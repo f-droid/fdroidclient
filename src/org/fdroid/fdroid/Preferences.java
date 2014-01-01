@@ -28,6 +28,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
     public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
+    public static final String PREF_UPD_HISTORY = "updateHistoryDays";
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";

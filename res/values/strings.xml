@@ -22,7 +22,7 @@
 	<string name="notify">Notify</string>
 	<string name="notify_updates_available">Notify when new updates are available</string>
 	<string name="update_history">Update history</string>
-	<string name="update_history_desc">Days to show new/updated apps</string>
+	<string name="update_history_summ">Days to consider apps new or recent: %s</string>
 
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>

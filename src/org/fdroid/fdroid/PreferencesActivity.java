@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -43,6 +44,7 @@ public class PreferencesActivity extends PreferenceActivity implements
     private static String[] summariesToUpdate = {
                     Preferences.PREF_UPD_INTERVAL,
                     Preferences.PREF_UPD_WIFI_ONLY,
+                    Preferences.PREF_UPD_HISTORY,
                     Preferences.PREF_ROOTED,
                     Preferences.PREF_INCOMP_VER,
                     Preferences.PREF_THEME,
@@ -82,6 +84,14 @@ public class PreferencesActivity extends PreferenceActivity implements
             } else {
                 pref.setSummary(R.string.automatic_scan_wifi_off);
             }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_UPD_HISTORY)) {
+            EditTextPreference pref = (EditTextPreference)findPreference(
+                    Preferences.PREF_UPD_HISTORY);
+            pref.setSummary(getString(R.string.update_history_summ,
+                        pref.getText()));
             return;
         }
 
