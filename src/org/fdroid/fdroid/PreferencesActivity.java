@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -39,6 +40,15 @@ public class PreferencesActivity extends PreferenceActivity implements
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
+    private static String[] summariesToUpdate = {
+                    Preferences.PREF_UPD_INTERVAL,
+                    Preferences.PREF_UPD_WIFI_ONLY,
+                    Preferences.PREF_ROOTED,
+                    Preferences.PREF_INCOMP_VER,
+                    Preferences.PREF_THEME,
+                    Preferences.PREF_COMPACT_LAYOUT,
+                    Preferences.PREF_IGN_TOUCH };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ((FDroidApp) getApplication()).applyTheme(this);
@@ -47,31 +57,96 @@ public class PreferencesActivity extends PreferenceActivity implements
         addPreferencesFromResource(R.xml.preferences);
     }
 
+    protected void updateSummary(String key) {
+
+        if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
+            ListPreference pref = (ListPreference)findPreference(
+                    Preferences.PREF_UPD_INTERVAL);
+            int interval = Integer.parseInt(pref.getValue().toString());
+            Preference onlyOnWifi = findPreference(
+                    Preferences.PREF_UPD_WIFI_ONLY);
+            onlyOnWifi.setEnabled(interval > 0);
+            if (interval == 0) {
+                pref.setSummary(R.string.update_interval_zero);
+            } else {
+                pref.setSummary(pref.getEntry());
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_UPD_WIFI_ONLY);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.automatic_scan_wifi_on);
+            } else {
+                pref.setSummary(R.string.automatic_scan_wifi_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_COMPACT_LAYOUT);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.compactlayout_on);
+            } else {
+                pref.setSummary(R.string.compactlayout_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_INCOMP_VER)) {
+            result ^= RESULT_RELOAD;
+            setResult(result);
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_ROOTED)) {
+            result ^= RESULT_REFILTER;
+            setResult(result);
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_ROOTED);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.rooted_on);
+            } else {
+                pref.setSummary(R.string.rooted_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_IGN_TOUCH)) {
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_IGN_TOUCH);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.ignoreTouch_on);
+            } else {
+                pref.setSummary(R.string.ignoreTouch_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_THEME)) {
+            result |= RESULT_RESTART;
+            setResult(result);
+            ListPreference theme = (ListPreference)findPreference(
+                    Preferences.PREF_THEME);
+            theme.setSummary(theme.getEntry());
+            return;
+        }
+    }
+
     @Override
     protected void onResume() {
+
         super.onResume();
         getPreferenceScreen().getSharedPreferences()
                     .registerOnSharedPreferenceChangeListener(
                             (OnSharedPreferenceChangeListener)this);
 
-        ListPreference updateInterval = (ListPreference)findPreference(
-                Preferences.PREF_UPD_INTERVAL);
-
-        int interval = Integer.parseInt(updateInterval.getValue().toString());
-
-        Preference onlyOnWifi = findPreference(
-                Preferences.PREF_UPD_WIFI_ONLY);
-        onlyOnWifi.setEnabled(interval > 0);
-
-        if (interval == 0) {
-            updateInterval.setSummary(R.string.update_interval_zero);
-        } else {
-            updateInterval.setSummary(updateInterval.getEntry());
+        for (String key : summariesToUpdate) {
+            updateSummary(key);
         }
-
-        ListPreference theme = (ListPreference)findPreference(
-                Preferences.PREF_THEME);
-        theme.setSummary(theme.getEntry());
     }
 
     @Override
@@ -95,85 +170,7 @@ public class PreferencesActivity extends PreferenceActivity implements
     public void onSharedPreferenceChanged(
             SharedPreferences sharedPreferences, String key) {
 
-        if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
-            ListPreference pref = (ListPreference)findPreference(
-                    Preferences.PREF_UPD_INTERVAL);
-            int interval = Integer.parseInt(pref.getValue().toString());
-            Preference onlyOnWifi = findPreference(
-                    Preferences.PREF_UPD_WIFI_ONLY);
-            onlyOnWifi.setEnabled(interval > 0);
-            if (interval == 0) {
-                pref.setSummary(R.string.update_interval_zero);
-            } else {
-                pref.setSummary(pref.getEntry());
-            }
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
-            Preference pref = findPreference(Preferences.PREF_UPD_WIFI_ONLY);
-            if (sharedPreferences.getBoolean(
-                        Preferences.PREF_UPD_WIFI_ONLY, false)) {
-                pref.setSummary(R.string.automatic_scan_wifi_on);
-            } else {
-                pref.setSummary(R.string.automatic_scan_wifi_off);
-            }
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
-            Preference pref = findPreference(Preferences.PREF_COMPACT_LAYOUT);
-            if (sharedPreferences.getBoolean(
-                        Preferences.PREF_COMPACT_LAYOUT, false)) {
-                pref.setSummary(R.string.compactlayout_on);
-            } else {
-                pref.setSummary(R.string.compactlayout_off);
-            }
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_INCOMP_VER)) {
-            result ^= RESULT_RELOAD;
-            setResult(result);
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_ROOTED)) {
-            result ^= RESULT_REFILTER;
-            setResult(result);
-            Preference pref = findPreference(Preferences.PREF_ROOTED);
-            if (sharedPreferences.getBoolean(
-                        Preferences.PREF_ROOTED, true)) {
-                pref.setSummary(R.string.rooted_on);
-            } else {
-                pref.setSummary(R.string.rooted_off);
-            }
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_IGN_TOUCH)) {
-            Preference pref = findPreference(Preferences.PREF_IGN_TOUCH);
-            if (sharedPreferences.getBoolean(
-                        Preferences.PREF_IGN_TOUCH, false)) {
-                pref.setSummary(R.string.ignoreTouch_on);
-            } else {
-                pref.setSummary(R.string.ignoreTouch_off);
-            }
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_THEME)) {
-            result |= RESULT_RESTART;
-            setResult(result);
-            ListPreference theme = (ListPreference)findPreference(
-                    Preferences.PREF_THEME);
-            theme.setSummary(theme.getEntry());
-            return;
-        }
+        updateSummary(key);
     }
 
 }

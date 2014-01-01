@@ -156,8 +156,8 @@
 	<string name="showPermissions_long">Display a list of permissions an app needs</string>
 	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
 	<string name="compactlayout">Compact Layout</string>
-	<string name="compactlayout_on">Show icons at regular size</string>
-	<string name="compactlayout_off">Show icons at a smaller size</string>
+	<string name="compactlayout_on">Show icons at a smaller size</string>
+	<string name="compactlayout_off">Show icons at regular size</string>
     <string name="theme">Theme</string>
 
 </resources>
