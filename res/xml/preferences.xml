@@ -16,7 +16,6 @@
 			android:key="updateHistoryDays"
 			android:maxLength="2"
 			android:numeric="integer"
-			android:summary="@string/update_history_desc"
 			android:title="@string/update_history" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/display">
@@ -45,13 +44,13 @@
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/other">
 		<CheckBoxPreference android:title="@string/cache_downloaded"
-			android:defaultValue="false" android:summary="@string/keep_downloaded"
+			android:defaultValue="false"
 			android:key="cacheDownloaded" />
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false" android:summary="@string/expert_mode"
 			android:key="expert" />
 		<ListPreference android:title="@string/db_sync_mode"
-			android:summary="@string/db_sync_mode_long" android:key="dbSyncMode"
+			android:key="dbSyncMode"
 			android:dependency="expert"
 			android:defaultValue="full" android:entries="@array/dbSyncModeNames"
 			android:entryValues="@array/dbSyncModeValues" />

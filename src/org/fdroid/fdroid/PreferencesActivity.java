@@ -50,7 +50,9 @@ public class PreferencesActivity extends PreferenceActivity implements
                     Preferences.PREF_THEME,
                     Preferences.PREF_PERMISSIONS,
                     Preferences.PREF_COMPACT_LAYOUT,
-                    Preferences.PREF_IGN_TOUCH };
+                    Preferences.PREF_IGN_TOUCH,
+                    Preferences.PREF_DB_SYNC,
+                    Preferences.PREF_CACHE_APK };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,9 +149,9 @@ public class PreferencesActivity extends PreferenceActivity implements
         if (key.equals(Preferences.PREF_THEME)) {
             result |= RESULT_RESTART;
             setResult(result);
-            ListPreference theme = (ListPreference)findPreference(
+            ListPreference pref = (ListPreference)findPreference(
                     Preferences.PREF_THEME);
-            theme.setSummary(theme.getEntry());
+            pref.setSummary(pref.getEntry());
             return;
         }
 
@@ -161,6 +163,24 @@ public class PreferencesActivity extends PreferenceActivity implements
             } else {
                 pref.setSummary(R.string.showPermissions_off);
             }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_CACHE_APK)) {
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_CACHE_APK);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.cache_downloaded_on);
+            } else {
+                pref.setSummary(R.string.cache_downloaded_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_DB_SYNC)) {
+            ListPreference pref = (ListPreference)findPreference(
+                    Preferences.PREF_DB_SYNC);
+            pref.setSummary(pref.getEntry());
             return;
         }
     }

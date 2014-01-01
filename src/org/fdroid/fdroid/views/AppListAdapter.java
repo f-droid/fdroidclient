@@ -136,7 +136,8 @@ abstract public class AppListAdapter extends BaseAdapter {
 
         return convertView;
     }
-    String ellipsize(String input, int maxLength) {
+
+    private String ellipsize(String input, int maxLength) {
         if (input == null || input.length() < maxLength+1) {
             return input;
         }
