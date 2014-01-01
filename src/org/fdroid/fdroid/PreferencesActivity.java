@@ -65,6 +65,27 @@ public class PreferencesActivity extends PreferenceActivity implements
         addPreferencesFromResource(R.xml.preferences);
     }
 
+    protected void onoffSummary(String key, int on, int off) {
+        CheckBoxPreference pref = (CheckBoxPreference)findPreference(key);
+        if (pref.isChecked()) {
+            pref.setSummary(on);
+        } else {
+            pref.setSummary(off);
+        }
+    }
+
+    protected void entrySummary(String key) {
+        ListPreference pref = (ListPreference)findPreference(key);
+        pref.setSummary(pref.getEntry());
+    }
+
+    protected void textSummary(String key) {
+        EditTextPreference pref = (EditTextPreference)findPreference(key);
+        pref.setSummary(getString(R.string.update_history_summ,
+                    pref.getText()));
+    }
+
+
     protected void updateSummary(String key) {
 
         if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
@@ -79,134 +100,57 @@ public class PreferencesActivity extends PreferenceActivity implements
             } else {
                 pref.setSummary(pref.getEntry());
             }
-            return;
-        }
 
-        if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_UPD_WIFI_ONLY);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.automatic_scan_wifi_on);
-            } else {
-                pref.setSummary(R.string.automatic_scan_wifi_off);
-            }
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
+            onoffSummary(key, R.string.automatic_scan_wifi_on,
+                    R.string.automatic_scan_wifi_off);
 
-        if (key.equals(Preferences.PREF_UPD_NOTIFY)) {
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_UPD_NOTIFY);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.notify_on);
-            } else {
-                pref.setSummary(R.string.notify_off);
-            }
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_UPD_NOTIFY)) {
+            onoffSummary(key, R.string.notify_on,
+                R.string.notify_off);
 
-        if (key.equals(Preferences.PREF_UPD_HISTORY)) {
-            EditTextPreference pref = (EditTextPreference)findPreference(
-                    Preferences.PREF_UPD_HISTORY);
-            pref.setSummary(getString(R.string.update_history_summ,
-                        pref.getText()));
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_UPD_HISTORY)) {
+            textSummary(key);
 
-        if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_COMPACT_LAYOUT);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.compactlayout_on);
-            } else {
-                pref.setSummary(R.string.compactlayout_off);
-            }
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_PERMISSIONS)) {
+            onoffSummary(key, R.string.showPermissions_on,
+                R.string.showPermissions_off);
 
-        if (key.equals(Preferences.PREF_INCOMP_VER)) {
-            result ^= RESULT_RELOAD;
-            setResult(result);
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_INCOMP_VER);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.show_incompat_versions_on);
-            } else {
-                pref.setSummary(R.string.show_incompat_versions_off);
-            }
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
+            onoffSummary(key, R.string.compactlayout_on,
+                R.string.compactlayout_off);
 
-        if (key.equals(Preferences.PREF_ROOTED)) {
-            result ^= RESULT_REFILTER;
-            setResult(result);
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_ROOTED);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.rooted_on);
-            } else {
-                pref.setSummary(R.string.rooted_off);
-            }
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_IGN_TOUCH)) {
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_IGN_TOUCH);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.ignoreTouch_on);
-            } else {
-                pref.setSummary(R.string.ignoreTouch_off);
-            }
-            return;
-        }
-
-        if (key.equals(Preferences.PREF_THEME)) {
+        } else if (key.equals(Preferences.PREF_THEME)) {
+            entrySummary(key);
             result |= RESULT_RESTART;
             setResult(result);
-            ListPreference pref = (ListPreference)findPreference(
-                    Preferences.PREF_THEME);
-            pref.setSummary(pref.getEntry());
-            return;
-        }
 
-        if (key.equals(Preferences.PREF_PERMISSIONS)) {
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_PERMISSIONS);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.showPermissions_on);
-            } else {
-                pref.setSummary(R.string.showPermissions_off);
-            }
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_INCOMP_VER)) {
+            onoffSummary(key, R.string.show_incompat_versions_on,
+                R.string.show_incompat_versions_off);
+            result ^= RESULT_RELOAD;
+            setResult(result);
 
-        if (key.equals(Preferences.PREF_CACHE_APK)) {
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_CACHE_APK);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.cache_downloaded_on);
-            } else {
-                pref.setSummary(R.string.cache_downloaded_off);
-            }
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_ROOTED)) {
+            onoffSummary(key, R.string.rooted_on,
+                R.string.rooted_off);
+            result ^= RESULT_REFILTER;
+            setResult(result);
 
-        if (key.equals(Preferences.PREF_EXPERT)) {
-            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
-                    Preferences.PREF_EXPERT);
-            if (pref.isChecked()) {
-                pref.setSummary(R.string.expert_on);
-            } else {
-                pref.setSummary(R.string.expert_off);
-            }
-            return;
-        }
+        } else if (key.equals(Preferences.PREF_IGN_TOUCH)) {
+            onoffSummary(key, R.string.ignoreTouch_on,
+                R.string.ignoreTouch_off);
 
-        if (key.equals(Preferences.PREF_DB_SYNC)) {
-            ListPreference pref = (ListPreference)findPreference(
-                    Preferences.PREF_DB_SYNC);
-            pref.setSummary(pref.getEntry());
-            return;
+        } else if (key.equals(Preferences.PREF_CACHE_APK)) {
+            onoffSummary(key, R.string.cache_downloaded_on,
+                R.string.cache_downloaded_off);
+
+        } else if (key.equals(Preferences.PREF_EXPERT)) {
+            onoffSummary(key, R.string.expert_on,
+                R.string.expert_off);
+
+        } else if (key.equals(Preferences.PREF_DB_SYNC)) {
+            entrySummary(key);
         }
     }
 
