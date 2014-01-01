@@ -48,6 +48,7 @@ public class PreferencesActivity extends PreferenceActivity implements
                     Preferences.PREF_ROOTED,
                     Preferences.PREF_INCOMP_VER,
                     Preferences.PREF_THEME,
+                    Preferences.PREF_PERMISSIONS,
                     Preferences.PREF_COMPACT_LAYOUT,
                     Preferences.PREF_IGN_TOUCH };
 
@@ -109,6 +110,13 @@ public class PreferencesActivity extends PreferenceActivity implements
         if (key.equals(Preferences.PREF_INCOMP_VER)) {
             result ^= RESULT_RELOAD;
             setResult(result);
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_INCOMP_VER);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.show_incompat_versions_on);
+            } else {
+                pref.setSummary(R.string.show_incompat_versions_off);
+            }
             return;
         }
 
@@ -142,6 +150,17 @@ public class PreferencesActivity extends PreferenceActivity implements
             ListPreference theme = (ListPreference)findPreference(
                     Preferences.PREF_THEME);
             theme.setSummary(theme.getEntry());
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_PERMISSIONS)) {
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_PERMISSIONS);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.showPermissions_on);
+            } else {
+                pref.setSummary(R.string.showPermissions_off);
+            }
             return;
         }
     }

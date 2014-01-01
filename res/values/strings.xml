@@ -127,7 +127,8 @@
 
 	<string name="appcompatibility">Application compatibility</string>
 	<string name="show_incompat_versions">Incompatible versions</string>
-	<string name="show_incompat_versions_l">Show versions of apps that are incompatible with the device</string>
+	<string name="show_incompat_versions_on">Show app versions incompatible with the device</string>
+	<string name="show_incompat_versions_off">Hide app versions incompatible with the device</string>
 	<string name="rooted">Root</string>
 	<string name="rooted_on">Do not grey out apps requiring root privileges</string>
 	<string name="rooted_off">Grey out apps requiring root privileges</string>
@@ -153,7 +154,8 @@
 	<string name="no_permissions">No permissions are used.</string>
 	<string name="permissions_for_long">Permissions for version %s</string>
 	<string name="showPermissions">Show permissions</string>
-	<string name="showPermissions_long">Display a list of permissions an app needs</string>
+	<string name="showPermissions_on">Display a list of permissions an app requires</string>
+	<string name="showPermissions_off">Don\'t show permissions before downloading</string>
 	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
 	<string name="compactlayout">Compact Layout</string>
 	<string name="compactlayout_on">Show icons at a smaller size</string>

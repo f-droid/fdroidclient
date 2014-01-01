@@ -21,7 +21,7 @@
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/display">
         <CheckBoxPreference android:title="@string/showPermissions"
-            android:defaultValue="false" android:summary="@string/showPermissions_long"
+            android:defaultValue="false"
             android:key="showPermissions"/>
         <CheckBoxPreference android:title="@string/compactlayout"
             android:defaultValue="false"
@@ -34,7 +34,7 @@
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/appcompatibility">
        <CheckBoxPreference android:title="@string/show_incompat_versions"
-           android:defaultValue="false" android:summary="@string/show_incompat_versions_l"
+           android:defaultValue="false"
            android:key="incompatibleVersions" />
 		<CheckBoxPreference android:title="@string/rooted"
 			android:defaultValue="true"

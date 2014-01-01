@@ -32,6 +32,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";
+    public static final String PREF_PERMISSIONS = "showPermissions";
     public static final String PREF_COMPACT_LAYOUT = "compactlayout";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
 
