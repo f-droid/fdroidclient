@@ -3,6 +3,7 @@ package org.fdroid.fdroid.compat;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
@@ -150,6 +151,7 @@ class OldTabManagerImpl extends TabManager {
 
 }
 
+@TargetApi(11)
 class HoneycombTabManagerImpl extends TabManager {
 
     protected final ActionBar actionBar;

@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.compat;
 
+import android.annotation.TargetApi;
+
 public abstract class LayoutCompat extends Compatibility {
 
     public static LayoutCompat create() {
@@ -28,6 +30,7 @@ class OldLayoutCompatImpl extends LayoutCompat {
     }
 }
 
+@TargetApi(17)
 class JellyBeanMr1LayoutCompatImpl extends LayoutCompat {
 
     @Override

@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.compat;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 
 abstract public class MenuManager extends Compatibility {
@@ -34,6 +35,7 @@ class OldMenuManagerImpl extends MenuManager {
 
 }
 
+@TargetApi(11)
 class HoneycombMenuManagerImpl extends MenuManager {
 
     protected HoneycombMenuManagerImpl(Activity activity) {
