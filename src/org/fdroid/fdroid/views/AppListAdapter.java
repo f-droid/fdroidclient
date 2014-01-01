@@ -99,8 +99,6 @@ abstract public class AppListAdapter extends BaseAdapter {
         int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
         int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
 
-        LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
-
         layoutIcon(icon, compact);
         ImageLoader.getInstance().displayImage(app.iconUrl, icon,
             displayImageOptions);
