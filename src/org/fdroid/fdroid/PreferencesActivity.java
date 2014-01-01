@@ -44,6 +44,7 @@ public class PreferencesActivity extends PreferenceActivity implements
     private static String[] summariesToUpdate = {
         Preferences.PREF_UPD_INTERVAL,
         Preferences.PREF_UPD_WIFI_ONLY,
+        Preferences.PREF_UPD_NOTIFY,
         Preferences.PREF_UPD_HISTORY,
         Preferences.PREF_ROOTED,
         Preferences.PREF_INCOMP_VER,
@@ -88,6 +89,17 @@ public class PreferencesActivity extends PreferenceActivity implements
                 pref.setSummary(R.string.automatic_scan_wifi_on);
             } else {
                 pref.setSummary(R.string.automatic_scan_wifi_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_UPD_NOTIFY)) {
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_UPD_NOTIFY);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.notify_on);
+            } else {
+                pref.setSummary(R.string.notify_off);
             }
             return;
         }

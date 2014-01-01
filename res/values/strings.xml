@@ -22,7 +22,8 @@
 	<string name="automatic_scan_wifi_on">Update app lists automatically only on wifi</string>
 	<string name="automatic_scan_wifi_off">Always update app lists automatically</string>
 	<string name="notify">Notify</string>
-	<string name="notify_updates_available">Notify when new updates are available</string>
+	<string name="notify_on">Notify when updates are available</string>
+	<string name="notify_off">Do not notify of any updates</string>
 	<string name="update_history">Update history</string>
 	<string name="update_history_summ">Days to consider apps new or recent: %s</string>
 

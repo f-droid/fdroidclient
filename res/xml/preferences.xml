@@ -9,7 +9,7 @@
 			android:defaultValue="false"
 			android:key="updateOnWifiOnly" />
 		<CheckBoxPreference android:title="@string/notify"
-			android:defaultValue="true" android:summary="@string/notify_updates_available"
+			android:defaultValue="true"
 			android:key="updateNotify" />
 		<EditTextPreference
 			android:defaultValue="14"
