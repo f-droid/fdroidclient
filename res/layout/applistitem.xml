@@ -3,24 +3,22 @@
 	android:orientation="vertical"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-	android:paddingTop="6dp"
-	android:paddingBottom="6dp"
 	android:baselineAligned="false" >
 
 	<!-- Actual icon size is dependent on preferences and set in
 		AppListAdapater.java:layoutIcon() -->
 	<ImageView android:id="@+id/icon"
 		android:scaleType="fitCenter"
-		android:layout_width="48dp"
-		android:layout_height="48dp"
-		android:layout_marginLeft="8dp"
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:padding="8dp"
 		android:layout_centerVertical="true" />
 
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:paddingLeft="8dp"
+		android:paddingLeft="3dp"
 		android:paddingRight="8dp"
 		android:paddingBottom="3dp"
 		android:layout_toRightOf="@id/icon"
