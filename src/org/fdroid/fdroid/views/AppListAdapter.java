@@ -101,36 +101,12 @@ abstract public class AppListAdapter extends BaseAdapter {
 
         LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
 
-        iconContainer.setVisibility(visibleOnCompact);
-        status.setVisibility(notVisibleOnCompact);
-        license.setVisibility(notVisibleOnCompact);
-
         layoutIcon(icon, compact);
         ImageLoader.getInstance().displayImage(app.iconUrl, icon,
             displayImageOptions);
 
-        if (!compact) {
-            status.setText(getVersionInfo(app));
-            license.setText(app.license);
-        } else {
-            ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
-            ImageView iconUpdates = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
-
-            iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
-            iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
-
-            if (app.toUpdate && showStatusUpdate()) {
-                iconUpdates.setVisibility(View.VISIBLE);
-            } else {
-                iconUpdates.setVisibility(View.GONE);
-            }
-
-            if (app.installedVerCode > 0 && showStatusInstalled()) {
-                iconInstalled.setVisibility(View.VISIBLE);
-            } else {
-                iconInstalled.setVisibility(View.GONE);
-            }
-        }
+        status.setText(getVersionInfo(app));
+        license.setText(app.license);
 
         // Disable it all if it isn't compatible...
         View[] views = { convertView, status, summary, license, name };
@@ -148,31 +124,26 @@ abstract public class AppListAdapter extends BaseAdapter {
         return input.substring(0, maxLength) + "…";
     }
 
-    private SpannableString getVersionInfo(DB.App app) {
+    private String getVersionInfo(DB.App app) {
 
         if (app.curApk == null) {
             return null;
         }
 
         if (app.installedVersion == null) {
-            return new SpannableString(
-                    ellipsize(app.curApk.version, 12));
+            return ellipsize(app.curApk.version, 12);
         }
 
-        SpannableString span;
-        String cur;
-
-        if (app.toUpdate) {
-            cur = ellipsize(app.installedVersion, 8);
-            span = new SpannableString(
-                    cur + " → " + ellipsize(app.curApk.version, 8));
-        } else {
-            cur = ellipsize(app.installedVersion, 12);
-            span = new SpannableString(cur);
+        if (app.toUpdate && showStatusUpdate()) {
+            return ellipsize(app.installedVersion, 8) +
+                " → " + ellipsize(app.curApk.version, 8);
         }
 
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0, cur.length(), 0);
-        return span;
+        if (app.installedVerCode > 0 && showStatusInstalled()) {
+            return ellipsize(app.installedVersion, 12) + " ✔";
+        }
+
+        return app.installedVersion;
     }
 
     private void layoutIcon(ImageView icon, boolean compact) {

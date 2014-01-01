@@ -24,28 +24,6 @@
 		android:layout_centerVertical="true"
 		android:baselineAligned="false" >
 
-		<LinearLayout android:id="@+id/status_icons"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:layout_alignParentTop="true"
-			android:layout_alignParentRight="true"
-			android:padding="4dp">
-
-			<ImageView android:id="@+id/icon_status_has_updates"
-				android:layout_width="18dp"
-				android:layout_height="18dp"
-				android:visibility="gone"
-				android:gravity="end" />
-
-			<ImageView android:id="@+id/icon_status_installed"
-				android:layout_width="18dp"
-				android:layout_height="18dp"
-				android:visibility="gone"
-				android:gravity="end" />
-
-		</LinearLayout>
-
 		<TextView android:id="@+id/status"
 			android:singleLine="true"
 			android:ellipsize="end"
