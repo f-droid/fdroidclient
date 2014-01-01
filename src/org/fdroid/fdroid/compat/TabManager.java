@@ -98,7 +98,7 @@ class OldTabManagerImpl extends TabManager {
 
         TabHost.TabSpec installedTabSpec = tabHost.newTabSpec("installed")
                 .setIndicator(
-                        parent.getString(R.string.tab_installed),
+                        parent.getString(R.string.inst),
                         parent.getResources().getDrawable(android.R.drawable.star_off))
                 .setContent(factory);
 

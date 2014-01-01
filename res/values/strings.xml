@@ -64,7 +64,6 @@
 	<string name="repo_delete_title">Choose repository to remove</string>
 
 	<string name="repo_update_title">Update repositories</string>
-	<string name="tab_installed">Installed</string>
 	<string name="tab_noninstalled">Available</string>
 	<string name="tab_updates">Updates</string>
 	<string name="one_update_available">1 update is available.</string>

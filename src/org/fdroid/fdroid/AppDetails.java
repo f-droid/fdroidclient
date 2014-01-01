@@ -257,6 +257,10 @@ public class AppDetails extends ListActivity {
             appid = i.getStringExtra("appid");
         }
 
+        if (i.hasExtra("from")) {
+            setTitle(i.getStringExtra("from"));
+        }
+
         mPm = getPackageManager();
         // Get the preferences we're going to use in this Activity...
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();

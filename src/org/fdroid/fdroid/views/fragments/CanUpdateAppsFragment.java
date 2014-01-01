@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.AppListAdapter;
 
 public class CanUpdateAppsFragment extends AppListFragment {
@@ -17,5 +18,10 @@ public class CanUpdateAppsFragment extends AppListFragment {
     @Override
     protected AppListAdapter getAppListAdapter() {
         return getAppListManager().getCanUpdateAdapter();
+    }
+
+    @Override
+    protected String getFromTitle() {
+        return parent.getString(R.string.tab_updates);
     }
 }

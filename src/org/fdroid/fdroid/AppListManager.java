@@ -228,6 +228,10 @@ public class AppListManager {
         }
     }
 
+    public String getCurrentCategory() {
+        return this.currentCategory;
+    }
+
     static class WhatsNewComparator implements Comparator<DB.App> {
         @Override
         public int compare(DB.App lhs, DB.App rhs) {
