@@ -204,8 +204,9 @@ public class AppListManager {
             }
             if (app.installedVersion != null) {
                 installedApps.addItem(app);
-                if (app.toUpdate)
+                if (app.toUpdate) {
                     canUpgradeApps.addItem(app);
+                }
             }
         }
 
@@ -215,8 +216,7 @@ public class AppListManager {
             Collections.sort(availApps, new RecentlyUpdatedComparator());
         }
 
-        for (DB.App app : availApps)
-            availableApps.addItem(app);
+        availableApps.addItems(availApps);
 
         return true;
     }

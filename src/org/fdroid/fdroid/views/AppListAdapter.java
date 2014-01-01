@@ -53,6 +53,10 @@ abstract public class AppListAdapter extends BaseAdapter {
         items.add(app);
     }
 
+    public void addItems(List<DB.App> apps) {
+        items.addAll(apps);
+    }
+
     public void clear() {
         items.clear();
     }
