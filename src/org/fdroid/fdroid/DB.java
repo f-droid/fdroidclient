@@ -348,38 +348,14 @@ public class DB {
 
         // Call isCompatible(apk) on an instance of this class to
         // check if an APK is compatible with the user's device.
-        public static abstract class CompatibilityChecker extends Compatibility {
-
-            public abstract boolean isCompatible(Apk apk);
-
-            public static CompatibilityChecker getChecker(Context ctx) {
-                CompatibilityChecker checker;
-                if (hasApi(5))
-                    checker = new EclairChecker(ctx);
-                else
-                    checker = new BasicChecker();
-                Log.d("FDroid", "Compatibility checker for API level "
-                        + getApi() + ": " + checker.getClass().getName());
-                return checker;
-            }
-        }
-
-        private static class BasicChecker extends CompatibilityChecker {
-            @Override
-            public boolean isCompatible(Apk apk) {
-                return hasApi(apk.minSdkVersion);
-            }
-        }
-
-        @TargetApi(5)
-        private static class EclairChecker extends CompatibilityChecker {
+        private static class CompatibilityChecker extends Compatibility {
 
             private HashSet<String> features;
             private List<String> cpuAbis;
             private boolean ignoreTouchscreen;
 
-            @SuppressLint("NewApi")
-            public EclairChecker(Context ctx) {
+            //@SuppressLint("NewApi")
+            public CompatibilityChecker(Context ctx) {
 
                 SharedPreferences prefs = PreferenceManager
                         .getDefaultSharedPreferences(ctx);
@@ -416,7 +392,6 @@ public class DB {
                 return false;
             }
 
-            @Override
             public boolean isCompatible(Apk apk) {
                 if (!hasApi(apk.minSdkVersion))
                     return false;
@@ -1181,8 +1156,9 @@ public class DB {
         }
 
         // Lazy initialise this...
-        if (compatChecker == null)
-            compatChecker = Apk.CompatibilityChecker.getChecker(mContext);
+        if (compatChecker == null) {
+            compatChecker = new Apk.CompatibilityChecker(mContext);
+        }
 
         // See if it's compatible (by which we mean if it has at least one
         // compatible apk)
