@@ -120,7 +120,8 @@
 	<string name="display">Display</string>
 
 	<string name="expert">Expert</string>
-	<string name="expert_mode">Enable expert mode</string>
+	<string name="expert_on">Show extra info and enable extra settings</string>
+	<string name="expert_off">Hide extras for experienced users</string>
 
 	<string name="search_hint">Search applications</string>
 

@@ -36,6 +36,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_COMPACT_LAYOUT = "compactlayout";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
     public static final String PREF_CACHE_APK = "cacheDownloaded";
+    public static final String PREF_EXPERT = "expert";
     public static final String PREF_DB_SYNC = "dbSyncMode";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;

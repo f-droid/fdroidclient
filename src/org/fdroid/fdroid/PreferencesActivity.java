@@ -42,17 +42,19 @@ public class PreferencesActivity extends PreferenceActivity implements
     private int result = 0;
 
     private static String[] summariesToUpdate = {
-                    Preferences.PREF_UPD_INTERVAL,
-                    Preferences.PREF_UPD_WIFI_ONLY,
-                    Preferences.PREF_UPD_HISTORY,
-                    Preferences.PREF_ROOTED,
-                    Preferences.PREF_INCOMP_VER,
-                    Preferences.PREF_THEME,
-                    Preferences.PREF_PERMISSIONS,
-                    Preferences.PREF_COMPACT_LAYOUT,
-                    Preferences.PREF_IGN_TOUCH,
-                    Preferences.PREF_DB_SYNC,
-                    Preferences.PREF_CACHE_APK };
+        Preferences.PREF_UPD_INTERVAL,
+        Preferences.PREF_UPD_WIFI_ONLY,
+        Preferences.PREF_UPD_HISTORY,
+        Preferences.PREF_ROOTED,
+        Preferences.PREF_INCOMP_VER,
+        Preferences.PREF_THEME,
+        Preferences.PREF_PERMISSIONS,
+        Preferences.PREF_COMPACT_LAYOUT,
+        Preferences.PREF_IGN_TOUCH,
+        Preferences.PREF_CACHE_APK,
+        Preferences.PREF_EXPERT,
+        Preferences.PREF_DB_SYNC
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +175,17 @@ public class PreferencesActivity extends PreferenceActivity implements
                 pref.setSummary(R.string.cache_downloaded_on);
             } else {
                 pref.setSummary(R.string.cache_downloaded_off);
+            }
+            return;
+        }
+
+        if (key.equals(Preferences.PREF_EXPERT)) {
+            CheckBoxPreference pref = (CheckBoxPreference)findPreference(
+                    Preferences.PREF_EXPERT);
+            if (pref.isChecked()) {
+                pref.setSummary(R.string.expert_on);
+            } else {
+                pref.setSummary(R.string.expert_off);
             }
             return;
         }
