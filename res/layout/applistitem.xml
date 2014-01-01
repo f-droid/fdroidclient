@@ -22,6 +22,7 @@
 		android:layout_height="fill_parent"
 		android:paddingLeft="8dp"
 		android:paddingRight="8dp"
+		android:paddingBottom="3dp"
 		android:layout_toRightOf="@id/icon"
 		android:layout_centerVertical="true"
 		android:baselineAligned="false" >
@@ -55,7 +56,7 @@
 			android:paddingBottom="2dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="6dp"
+			android:layout_marginLeft="8dp"
 			android:layout_alignParentTop="true"
 			android:layout_alignParentRight="true" />
 
@@ -65,7 +66,7 @@
 			android:ellipsize="end"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="6dp"
+			android:layout_marginLeft="8dp"
 			android:layout_alignParentBottom="true"
 			android:layout_alignParentRight="true" />
 
@@ -74,7 +75,6 @@
 			android:textStyle="bold"
 			android:singleLine="true"
 			android:ellipsize="end"
-			android:paddingBottom="2dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true"
