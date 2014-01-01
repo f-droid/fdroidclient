@@ -25,6 +25,7 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 
 public final class Utils {
 
@@ -32,6 +33,10 @@ public final class Utils {
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
+
+    public static final SimpleDateFormat LOG_DATE_FORMAT =
+            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
 
     public static void copy(InputStream input, OutputStream output)

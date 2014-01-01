@@ -29,7 +29,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -38,6 +37,7 @@ import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import org.fdroid.fdroid.updater.RepoUpdater;
 
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -164,45 +164,39 @@ public class UpdateService extends IntentService implements ProgressListener {
             // database while we do all the downloading, etc...
             int updates = 0;
             List<DB.Repo> repos;
+            List<DB.App> apps;
             try {
                 DB db = DB.getDB();
                 repos = db.getRepos();
+                apps = db.getApps(false);
             } finally {
                 DB.releaseDB();
             }
 
             // Process each repo...
-            List<DB.App> apps;
             List<DB.App> updatingApps = new ArrayList<DB.App>();
             List<Integer> keeprepos = new ArrayList<Integer>();
             boolean success = true;
             boolean changes = false;
             for (DB.Repo repo : repos) {
-                if (repo.inuse) {
-
-                    sendStatus(
-                            STATUS_INFO,
-                            getString(R.string.status_connecting_to_repo,
-                                    repo.address));
-
-                    StringBuilder newetag = new StringBuilder();
-                    String err = RepoXMLHandler.doUpdate(getBaseContext(),
-                            repo, updatingApps, newetag, keeprepos, this);
-                    if (err == null) {
-                        String nt = newetag.toString();
-                        if (!nt.equals(repo.lastetag)) {
-                            repo.lastetag = newetag.toString();
-                            changes = true;
-                        }
+                if (!repo.inuse) {
+                    continue;
+                }
+                sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
+                RepoUpdater updater = RepoUpdater.createUpdaterFor(getBaseContext(), repo);
+                updater.setProgressListener(this);
+                try {
+                    updater.update();
+                    if (updater.hasChanged()) {
+                        updatingApps.addAll(updater.getApps());
+                        changes = true;
                     } else {
-                        success = false;
-                        err = "Update failed for " + repo.address + " - " + err;
-                        Log.d("FDroid", err);
-                        if (errmsg.length() == 0)
-                            errmsg = err;
-                        else
-                            errmsg += "\n" + err;
+                        keeprepos.add(repo.id);
                     }
+                } catch (RepoUpdater.UpdateException e) {
+                    errmsg += (errmsg.length() == 0 ? "" : "\n") + e.getMessage();
+                    Log.e("FDroid", "Error updating repository " + repo.address + ": " + e.getMessage());
+                    Log.e("FDroid", Log.getStackTraceString(e));
                 }
             }
 
@@ -348,23 +342,17 @@ public class UpdateService extends IntentService implements ProgressListener {
      */
     @Override
     public void onProgress(ProgressListener.Event event) {
-
         String message = "";
-        if (event.type == RepoXMLHandler.PROGRESS_TYPE_DOWNLOAD) {
-            String repoAddress = event.data
-                    .getString(RepoXMLHandler.PROGRESS_DATA_REPO);
-            String downloadedSize = Utils.getFriendlySize(event.progress);
-            String totalSize = Utils.getFriendlySize(event.total);
-            int percent = (int) ((double) event.progress / event.total * 100);
-            message = getString(R.string.status_download, repoAddress,
-                    downloadedSize, totalSize, percent);
-        } else if (event.type == RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML) {
-            String repoAddress = event.data
-                    .getString(RepoXMLHandler.PROGRESS_DATA_REPO);
-            message = getString(R.string.status_processing_xml, repoAddress,
-                    event.progress, event.total);
+        if (event.type == RepoUpdater.PROGRESS_TYPE_DOWNLOAD) {
+            String repoAddress    = event.data.getString(RepoUpdater.PROGRESS_DATA_REPO);
+            String downloadedSize = Utils.getFriendlySize( event.progress );
+            String totalSize      = Utils.getFriendlySize( event.total );
+            int percent           = (int)((double)event.progress/event.total * 100);
+            message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
+        } else if (event.type == RepoUpdater.PROGRESS_TYPE_PROCESS_XML) {
+            String repoAddress    = event.data.getString(RepoUpdater.PROGRESS_DATA_REPO);
+            message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
         }
-
         sendStatus(STATUS_INFO, message);
     }
 }

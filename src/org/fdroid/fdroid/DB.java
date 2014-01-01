@@ -65,7 +65,7 @@ public class DB {
     // Get access to the database. Must be called before any database activity,
     // and releaseDB must be called subsequently. Returns null in the event of
     // failure.
-    static DB getDB() {
+    public static DB getDB() {
         try {
             dbSync.acquire();
             return dbInstance;
@@ -75,7 +75,7 @@ public class DB {
     }
 
     // Release database access lock acquired via getDB().
-    static void releaseDB() {
+    public static void releaseDB() {
         dbSync.release();
     }
 
