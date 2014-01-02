@@ -17,10 +17,10 @@
   <string name="never">niemals</string>
   <string name="automatic_repo_scan">Automatische Paketaktualisierung</string>
   <string name="update_apps_list">Anwendungsliste automatisch aus den Paketquellen aktualisieren</string>
-  <string name="automatic_scan_wifi">Nur bei WLAN</string>
-  <string name="automatic_scan_wifi_desc">Anwendungsliste nur bei WLAN automatisch aktualisieren</string>
+  <string name="automatic_scan_wifi">Nur über WLAN</string>
+  <string name="automatic_scan_wifi_desc">Anwendungsliste nur über WLAN automatisch aktualisieren</string>
   <string name="notify">Benachrichtigen</string>
-  <string name="notify_updates_available">Bei verfügbaren Aktualisierungen benachrichtigen</string>
+  <string name="notify_updates_available">Benachrichtigen, wenn neue Aktualisierungen verfügbar sind</string>
   <string name="update_history">Aktualisierungsverlauf</string>
   <string name="update_history_desc">Zeitraum in Tagen, für den neue bzw. aktualisierte Anwendungen angezeigt werden.</string>
   <string name="search_results">Suchergebnisse</string>
@@ -93,8 +93,8 @@ Sollen diese aktualisiert werden?</string>
   <string name="expert">Experte</string>
   <string name="expert_mode">Expertenmodus einschalten</string>
   <string name="search_hint">Anwendungen suchen</string>
-  <string name="db_sync_mode">Art der Datenbanksynchronisation</string>
-  <string name="db_sync_mode_long">SQLite Synchronisationsmodus setzen</string>
+  <string name="db_sync_mode">Datenbanksynchronisierungsart</string>
+  <string name="db_sync_mode_long">SQLite-Synchronisationsmodus einstellen</string>
   <string name="appcompatibility">Kompatibilität der Anwendung</string>
   <string name="show_incompat_versions">Inkompatible Versionen</string>
   <string name="show_incompat_versions_l">Anwendungsversionen anzeigen, welche mit dem Gerät inkompatibel sind</string>

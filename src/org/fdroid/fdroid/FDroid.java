@@ -29,7 +29,6 @@ import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -64,7 +63,6 @@ public class FDroid extends FragmentActivity {
     private ProgressDialog pd;
 
     private ViewPager viewPager;
-    private AppListFragmentPageAdapter viewPageAdapter;
 
     private AppListManager manager = null;
 
@@ -253,7 +251,6 @@ public class FDroid extends FragmentActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                                return;
                             }
                         });
                 AlertDialog alert = ask_alrt.create();
@@ -288,7 +285,7 @@ public class FDroid extends FragmentActivity {
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        viewPageAdapter = new AppListFragmentPageAdapter(this);
+        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -326,8 +323,6 @@ public class FDroid extends FragmentActivity {
         }
     }
 
-    private UpdateReceiver mUpdateReceiver;
-
     /**
      * The first time the app is run, we will have an empty app list.
      * If this is the case, we will attempt to update with the default repo.
@@ -360,7 +355,7 @@ public class FDroid extends FragmentActivity {
         pd.setCanceledOnTouchOutside(false);
 
         Intent intent = new Intent(this, UpdateService.class);
-        mUpdateReceiver = new UpdateReceiver(new Handler());
+        UpdateReceiver mUpdateReceiver = new UpdateReceiver(new Handler());
         intent.putExtra("receiver", mUpdateReceiver);
         startService(intent);
     }
@@ -379,7 +374,7 @@ public class FDroid extends FragmentActivity {
     public void removeNotification(int id) {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
             .getSystemService(Context.NOTIFICATION_SERVICE);
-        nMgr.cancel(1);
+        nMgr.cancel(id);
     }
 
 }

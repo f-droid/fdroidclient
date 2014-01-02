@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="550"
+    android:versionCode="560"
     android:versionName="@string/version_name" >
 
     <uses-sdk
-        android:minSdkVersion="4"
+        android:minSdkVersion="5"
         android:targetSdkVersion="19" />
 
     <supports-screens
@@ -107,11 +107,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
                 <data android:scheme="fdroidrepo" />
-                <data android:scheme="FDROIDREPO" />
                 <data android:scheme="fdroidrepos" />
-                <data android:scheme="FDROIDREPOS" />
             </intent-filter>
         </activity>
 

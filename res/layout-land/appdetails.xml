@@ -14,8 +14,8 @@
             android:id="@+id/landleft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:paddingRight="6dp"
+            android:padding="5dp"
+            android:layout_marginRight="4dp"
             android:orientation="vertical" >
 
             <RelativeLayout
@@ -37,10 +37,10 @@
 
                 <ImageView
                     android:id="@+id/icon"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_below="@id/title"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="6dp"
                     android:scaleType="fitCenter" />
 
                 <TextView
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/title"
                     android:layout_toRightOf="@id/icon"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/status"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/license"
                     android:layout_toRightOf="@id/icon"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

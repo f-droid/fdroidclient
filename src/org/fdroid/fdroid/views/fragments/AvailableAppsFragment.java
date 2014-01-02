@@ -57,4 +57,9 @@ public class AvailableAppsFragment extends AppListFragment implements AdapterVie
     protected AppListAdapter getAppListAdapter() {
         return getAppListManager().getAvailableAdapter();
     }
+
+    @Override
+    protected String getFromTitle() {
+        return getAppListManager().getCurrentCategory();
+    }
 }

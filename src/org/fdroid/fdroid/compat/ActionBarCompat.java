@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.compat;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 
@@ -35,6 +36,7 @@ class OldActionBarCompatImpl extends ActionBarCompat {
     }
 }
 
+@TargetApi(11)
 class HoneycombActionBarCompatImpl extends ActionBarCompat {
 
     private final ActionBar actionBar;

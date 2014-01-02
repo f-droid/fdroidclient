@@ -2,11 +2,13 @@ package org.fdroid.fdroid.compat;
 
 import java.lang.Exception;
 
+import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
 public class PackageManagerCompat extends Compatibility {
 
+    @TargetApi(11)
     public static void setInstaller(PackageManager mPm, String app_id) {
         if (!hasApi(11)) return;
         try {

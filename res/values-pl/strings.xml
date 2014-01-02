@@ -10,12 +10,18 @@
   <string name="cache_downloaded">Buforuj pobrane aplikacje</string>
   <string name="keep_downloaded">Przechowuj pobrane pliki apk na karcie SD</string>
   <string name="updates">Aktualizacje</string>
+  <string name="other">Inne</string>
   <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
   <string name="never">nigdy</string>
   <string name="automatic_repo_scan">Automatycznie skanuj repozytoria</string>
   <string name="update_apps_list">Automatycznie uaktualnij listę aplikacji z repozytorium</string>
+  <string name="automatic_scan_wifi">Tylko przez wifi</string>
+  <string name="automatic_scan_wifi_desc">Aktualizuj automatycznie tylko przez wifi</string>
   <string name="notify">Powiadom</string>
   <string name="notify_updates_available">Powiadamiaj, gdy dostępne będą nowe aktualizacje</string>
+  <string name="update_history">Historia aktualizacji</string>
+  <string name="search_results">Wyniki wyszukiwania</string>
+  <string name="no_such_app">Nie znaleziono takiej aplikacji</string>
   <string name="about_title">O F-Droid</string>
   <string name="about_site">Strona internetowa:</string>
   <string name="about_mail">Email:</string>
@@ -23,6 +29,7 @@
   <string name="about_website">Strona internetowa</string>
   <string name="inst">Zainstalowano</string>
   <string name="not_inst">Niezainstalowane</string>
+  <string name="added_on">Dodano %s</string>
   <string name="ok">OK</string>
   <string name="yes">Tak</string>
   <string name="no">Nie</string>
@@ -48,8 +55,11 @@ Czy chcesz je zaktualizować?</string>
   <string name="menu_add_repo">Nowe repozytorium</string>
   <string name="menu_rem_repo">Usuń repozytorium</string>
   <string name="menu_launch">Uruchom</string>
-  <string name="menu_install">Instaluj</string>
+  <string name="menu_share">Udostępnij</string>
+  <string name="menu_install">Zainstaluj</string>
   <string name="menu_uninstall">Odinstaluj</string>
+  <string name="menu_ignore_all">Ignoruj wszystkie aktualizacje</string>
+  <string name="menu_ignore_this">Ignoruj tę aktualizację</string>
   <string name="menu_website">Strona internetowa</string>
   <string name="menu_issues">Problemy</string>
   <string name="menu_source">Kod żródłowy</string>
@@ -67,6 +77,9 @@ Czy chcesz je zaktualizować?</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Pokaż aplikacje wymagające uprawnień root</string>
   <string name="category_all">Wszystkie</string>
-  <string name="category_whatsnew">Ostatnio dodane</string>
+  <string name="category_whatsnew">Co nowego</string>
   <string name="category_recentlyupdated">Ostatnio zaktualizowane</string>
+  <string name="status_connecting_to_repo">Trwa łączenie z
+%1$s</string>
+  <string name="showPermissions">Wyświetl uprawnienia</string>
 </resources>

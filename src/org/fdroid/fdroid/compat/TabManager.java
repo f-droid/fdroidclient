@@ -3,6 +3,7 @@ package org.fdroid.fdroid.compat;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
@@ -98,7 +99,7 @@ class OldTabManagerImpl extends TabManager {
 
         TabHost.TabSpec installedTabSpec = tabHost.newTabSpec("installed")
                 .setIndicator(
-                        parent.getString(R.string.tab_installed),
+                        parent.getString(R.string.inst),
                         parent.getResources().getDrawable(android.R.drawable.star_off))
                 .setContent(factory);
 
@@ -150,6 +151,7 @@ class OldTabManagerImpl extends TabManager {
 
 }
 
+@TargetApi(11)
 class HoneycombTabManagerImpl extends TabManager {
 
     protected final ActionBar actionBar;
@@ -220,7 +222,6 @@ class HoneycombTabManagerImpl extends TabManager {
     private Spinner getActionBarSpinner() {
         if (actionBarSpinner == null && dirtyConfig) {
             dirtyConfig = false;
-            long time = System.currentTimeMillis();
             actionBarSpinner = findActionBarSpinner();
         }
         return actionBarSpinner;

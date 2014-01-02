@@ -2,6 +2,7 @@ package org.fdroid.fdroid.compat;
 
 import java.io.File;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Environment;
 
@@ -45,6 +46,7 @@ class OldContextCompatImpl extends ContextCompat {
 
 }
 
+@TargetApi(8)
 class FroyoContextCompatImpl extends ContextCompat {
 
     public FroyoContextCompatImpl(Context context) {

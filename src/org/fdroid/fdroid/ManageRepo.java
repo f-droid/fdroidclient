@@ -290,7 +290,6 @@ public class ManageRepo extends ListActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         setResult(Activity.RESULT_CANCELED);
                         finish();
-                        return;
                     }
                 });
         alrt.show();
@@ -410,7 +409,6 @@ public class ManageRepo extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            return;
                         }
                     });
             AlertDialog alert = builder.create();

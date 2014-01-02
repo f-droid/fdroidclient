@@ -3,8 +3,6 @@
 	android:id="@+id/fdroid_layout"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:paddingLeft="2dp"
-	android:paddingRight="2dp"
 	android:baselineAligned="false"
 	android:orientation="vertical">
 
