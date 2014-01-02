@@ -62,11 +62,14 @@ abstract public class RepoUpdater {
     }
 
     /**
-     * Return the index file if it is different than last time,
-     * otherwise returns null to indicate that the file has not changed.
-     * All error states will come via an UpdateException.
+     * For example, you may want to unzip a jar file to get the index inside,
+     * or if the file is not compressed, you can just return a reference to
+     * the downloaded file.
+     *
+     * @throws UpdateException All error states will come from here.
      */
-    protected abstract File getIndexFile() throws UpdateException;
+    protected abstract File getIndexFromFile(File downloadedFile) throws
+            UpdateException;
 
     protected abstract String getIndexAddress();
 
@@ -86,14 +89,13 @@ abstract public class RepoUpdater {
 
             int status = downloader.download();
 
-            repo.lastetag = downloader.getETag();
             if (status == 304) {
                 // The index is unchanged since we last read it. We just mark
                 // everything that came from this repo as being updated.
                 Log.d("FDroid", "Repo index for " + repo.address
                         + " is up to date (by etag)");
             } else if (status == 200) {
-                hasChanged = true;
+                // Nothing needed to be done here...
             } else {
                 // Is there any code other than 200 which still returns
                 // content? Just in case, lets try to clean up.
@@ -152,28 +154,38 @@ abstract public class RepoUpdater {
 
     public void update() throws UpdateException {
 
+        File downloadedFile = null;
         File indexFile = null;
         try {
-            indexFile = getIndexFile();
 
-            // Process the index...
-            SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            XMLReader reader = parser.getXMLReader();
-            RepoXMLHandler handler = new RepoXMLHandler(repo, apps, progressListener);
+            Downloader downloader = downloadIndex();
+            hasChanged = downloader.hasChanged();
 
-            if (isInteractive()) {
-                // Only bother spending the time to count the expected apps
-                // if we can show that to the user...
-                handler.setTotalAppCount(estimateAppCount(indexFile));
+            if (hasChanged) {
+
+                downloadedFile = downloader.getFile();
+                repo.lastetag = downloader.getETag();
+
+                indexFile = getIndexFromFile(downloadedFile);
+
+                // Process the index...
+                SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+                XMLReader reader = parser.getXMLReader();
+                RepoXMLHandler handler = new RepoXMLHandler(repo, apps, progressListener);
+
+                if (isInteractive()) {
+                    // Only bother spending the time to count the expected apps
+                    // if we can show that to the user...
+                    handler.setTotalAppCount(estimateAppCount(indexFile));
+                }
+
+                reader.setContentHandler(handler);
+                InputSource is = new InputSource(
+                        new BufferedReader(new FileReader(indexFile)));
+
+                reader.parse(is);
+                updateRepo(handler.getPubKey(), handler.getMaxAge());
             }
-
-            reader.setContentHandler(handler);
-            InputSource is = new InputSource(
-                    new BufferedReader(new FileReader(indexFile)));
-
-            reader.parse(is);
-            updateRepo(handler.getPubKey(), handler.getMaxAge());
-
         } catch (SAXException e) {
             throw new UpdateException(
                     repo, "Error parsing index for repo " + repo.address, e);
@@ -187,9 +199,14 @@ abstract public class RepoUpdater {
             throw new UpdateException(
                     repo, "Error parsing index for repo " + repo.address, e);
         } finally {
+            if (downloadedFile != null &&
+                    downloadedFile != indexFile && downloadedFile.exists()) {
+                downloadedFile.delete();
+            }
             if (indexFile != null && indexFile.exists()) {
                 indexFile.delete();
             }
+
         }
     }
 

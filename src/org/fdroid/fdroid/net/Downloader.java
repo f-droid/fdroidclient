@@ -135,4 +135,8 @@ public class Downloader {
         }
     }
 
+    public boolean hasChanged() {
+        return this.statusCode == 200;
+    }
+
 }

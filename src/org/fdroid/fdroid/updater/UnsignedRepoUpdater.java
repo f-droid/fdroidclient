@@ -14,10 +14,9 @@ public class UnsignedRepoUpdater extends RepoUpdater {
     }
 
     @Override
-    protected File getIndexFile() throws UpdateException {
+    protected File getIndexFromFile(File file) throws UpdateException {
         Log.d("FDroid", "Getting unsigned index from " + getIndexAddress());
-        Downloader downloader = downloadIndex();
-        return downloader.getFile();
+        return file;
     }
 
     @Override

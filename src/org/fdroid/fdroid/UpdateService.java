@@ -207,7 +207,6 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 sendStatus(STATUS_INFO,
                         getString(R.string.status_checking_compatibility));
-                apps = ((FDroidApp) getApplication()).getApps();
 
                 DB db = DB.getDB();
                 try {
@@ -226,7 +225,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                             }
                             if (keepapp) {
                                 DB.App app_k = null;
-                                for (DB.App app2 : updatingApps) {
+                                for (DB.App app2 : apps) {
                                     if (app2.id.equals(app.id)) {
                                         app_k = app2;
                                         break;

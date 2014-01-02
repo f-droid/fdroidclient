@@ -796,17 +796,6 @@ public class DB {
         }
     }
 
-    // Repopulate the details for the given app.
-    // If 'apkrepo' is non-zero, only apks from that repo are
-    // populated.
-    public void repopulateDetails(App app, int apkRepo) {
-        populateAppDetails(app);
-
-        for (Apk apk : app.apks) {
-            populateApkDetails(apk, apkRepo);
-        }
-    }
-
     // Return a list of apps matching the given criteria. Filtering is
     // also done based on compatibility and anti-features according to
     // the user's current preferences.

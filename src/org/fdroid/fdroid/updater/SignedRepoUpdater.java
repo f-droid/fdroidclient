@@ -91,23 +91,19 @@ public class SignedRepoUpdater extends RepoUpdater {
      * check the signature, and extract the index file
      */
     @Override
-    protected File getIndexFile() throws UpdateException {
+    protected File getIndexFromFile(File downloadedFile) throws
+            UpdateException {
         Date updateTime = new Date(System.currentTimeMillis());
         Log.d("FDroid", "Getting signed index from " + repo.address + " at " +
                 Utils.LOG_DATE_FORMAT.format(updateTime));
 
-        Downloader downloader = downloadIndex();
-        File indexJar  = downloader.getFile();
+        File indexJar  = downloadedFile;
         File indexXml  = null;
 
         // Don't worry about checking the status code for 200. If it was a
         // successful download, then we will have a file ready to use:
         if (indexJar != null && indexJar.exists()) {
-            try {
-                indexXml = extractIndexFromJar(indexJar);
-            } finally {
-                indexJar.delete();
-            }
+            indexXml = extractIndexFromJar(indexJar);
         }
         return indexXml;
     }
