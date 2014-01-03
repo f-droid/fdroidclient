@@ -105,9 +105,8 @@ public final class Utils {
             case 4: return "1.6";
             case 3: return "1.5";
             case 2: return "1.1";
-            case 1: return "1.0";
+            default: return "1.0";
         }
-        return "Unknown";
     }
 
     public static int countSubstringOccurrence(File file, String substring) throws IOException {
