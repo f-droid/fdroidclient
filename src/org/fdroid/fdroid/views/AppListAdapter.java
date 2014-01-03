@@ -27,10 +27,13 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
+    private LayoutInflater mInflater;
     private DisplayImageOptions displayImageOptions;
 
     public AppListAdapter(Context context) {
         mContext = context;
+        mInflater = (LayoutInflater) mContext.getSystemService(
+                Context.LAYOUT_INFLATER_SERVICE);
 
         displayImageOptions = new DisplayImageOptions.Builder()
             .cacheInMemory(true)
@@ -83,8 +86,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         DB.App app = items.get(position);
 
         if (convertView == null) {
-            convertView = ((LayoutInflater) mContext.getSystemService(
-                    Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.applistitem, null);
+            convertView = mInflater.inflate(R.layout.applistitem, null);
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.name);
