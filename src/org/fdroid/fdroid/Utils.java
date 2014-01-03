@@ -26,6 +26,10 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import android.content.Context;
+
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
 public final class Utils {
 
     public static final int BUFFER_SIZE = 4096;
@@ -141,6 +145,15 @@ public final class Utils {
             index += substring.length();
         }
         return count;
+    }
+
+    public static File getApkCacheDir(Context context) {
+        File apkCacheDir = new File(
+                StorageUtils.getCacheDirectory(context, true), "apks");
+        if (!apkCacheDir.exists()) {
+            apkCacheDir.mkdir();
+        }
+        return apkCacheDir;
     }
 
 }

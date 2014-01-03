@@ -76,6 +76,9 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import android.os.Environment;
 
 public class AppDetails extends ListActivity {
 
@@ -841,8 +844,8 @@ public class AppDetails extends ListActivity {
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
                             downloadHandler = new DownloadHandler(app.curApk,
-                                    repoaddress, DB
-                                            .getDataPath(getBaseContext()));
+                                    repoaddress, Utils
+                                    .getApkCacheDir(getBaseContext()));
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -872,7 +875,7 @@ public class AppDetails extends ListActivity {
             return;
         }
         downloadHandler = new DownloadHandler(app.curApk, repoaddress,
-                DB.getDataPath(this));
+                Utils.getApkCacheDir(getBaseContext()));
     }
 
     private void removeApk(String id) {

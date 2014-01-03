@@ -619,14 +619,6 @@ public class DB {
 
     }
 
-    /**
-     * Get the local storage (cache) path. This will also create it if
-     * it doesn't exist. It can return null if it's currently unavailable.
-     */
-    public static File getDataPath(Context ctx) {
-        return ContextCompat.create(ctx).getExternalCacheDir();
-    }
-
     private Context mContext;
     private Apk.CompatibilityChecker compatChecker = null;
 
