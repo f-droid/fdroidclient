@@ -79,37 +79,55 @@ abstract public class AppListAdapter extends BaseAdapter {
         return position;
     }
 
+    static class ViewHolder {
+        TextView name;
+        TextView summary;
+        TextView status;
+        TextView license;
+        ImageView icon;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         boolean compact = Preferences.get().hasCompactLayout();
         DB.App app = items.get(position);
+        ViewHolder holder;
 
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.applistitem, null);
+
+            holder = new ViewHolder();
+            holder.name = (TextView) convertView.findViewById(R.id.name);
+            holder.summary = (TextView) convertView.findViewById(R.id.summary);
+            holder.status = (TextView) convertView.findViewById(R.id.status);
+            holder.license = (TextView) convertView.findViewById(R.id.license);
+            holder.icon = (ImageView) convertView.findViewById(R.id.icon);
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        TextView name = (TextView) convertView.findViewById(R.id.name);
-        TextView summary = (TextView) convertView.findViewById(R.id.summary);
-        TextView status = (TextView) convertView.findViewById(R.id.status);
-        TextView license = (TextView) convertView.findViewById(R.id.license);
-        ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
+        holder.name.setText(app.name);
+        holder.summary.setText(app.summary);
 
-        name.setText(app.name);
-        summary.setText(app.summary);
-
-        int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
-        int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
-
-        layoutIcon(icon, compact);
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon,
+        layoutIcon(holder.icon, compact);
+        ImageLoader.getInstance().displayImage(app.iconUrl, holder.icon,
             displayImageOptions);
 
-        status.setText(getVersionInfo(app));
-        license.setText(app.license);
+        holder.status.setText(getVersionInfo(app));
+        holder.license.setText(app.license);
 
         // Disable it all if it isn't compatible...
-        View[] views = { convertView, status, summary, license, name };
+        View[] views = {
+            convertView,
+            holder.status,
+            holder.summary,
+            holder.license,
+            holder.name
+        };
+
         for (View view : views) {
             view.setEnabled(app.compatible && !app.filtered);
         }
