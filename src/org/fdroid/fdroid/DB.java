@@ -105,7 +105,7 @@ public class DB {
             + "lastUpdated string," + "compatible int not null,"
             + "ignoreAllUpdates int not null,"
             + "ignoreThisUpdate int not null,"
-            + "provides string," + "primary key(id));";
+            + "primary key(id));";
 
     public static class App implements Comparable<App> {
 
@@ -123,7 +123,6 @@ public class DB {
             detail_dogecoinAddr = null;
             detail_webURL = null;
             categories = null;
-            provides = null;
             antiFeatures = null;
             requirements = null;
             hasUpdates = false;
@@ -197,9 +196,6 @@ public class DB {
         public String installedVersion;
         public int installedVerCode;
         public boolean userInstalled;
-
-        // List of app IDs that this app provides or null if there aren't any.
-        public CommaSeparatedList provides;
 
         // List of categories (as defined in the metadata
         // documentation) or null if there aren't any.
@@ -442,7 +438,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 32;
+    private final int DBVersion = 33;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -814,8 +810,7 @@ public class DB {
             String cols[] = new String[] { "antiFeatures", "requirements",
                     "categories", "id", "name", "summary", "icon", "license",
                     "curVersion", "curVercode", "added", "lastUpdated",
-                    "compatible", "ignoreAllUpdates", "ignoreThisUpdate",
-                    "provides" };
+                    "compatible", "ignoreAllUpdates", "ignoreThisUpdate" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -841,7 +836,6 @@ public class DB {
                 app.compatible = c.getInt(12) == 1;
                 app.ignoreAllUpdates = c.getInt(13) == 1;
                 app.ignoreThisUpdate = c.getInt(14);
-                app.provides = DB.CommaSeparatedList.make(c.getString(15));
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -861,11 +855,6 @@ public class DB {
                 }
 
                 apps.put(app.id, app);
-                if (app.provides != null) {
-                    for (String id : app.provides) {
-                        apps.put(id, app);
-                    }
-                }
 
                 c.moveToNext();
             }
@@ -1023,7 +1012,7 @@ public class DB {
         try {
             String filter = "%" + query + "%";
             c = db.query(TABLE_APP, new String[] { "id" },
-                    "id like ? or provides like ? or name like ? or summary like ? or description like ?",
+                    "id like ? or name like ? or summary like ? or description like ?",
                     new String[] { filter, filter, filter, filter }, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
