@@ -810,8 +810,16 @@ public class DB {
             }
         }
 
-        Map<String, App> apps = new HashMap<String, App>();
-        Cursor c = null;
+        // Start the map at the actual number of apps we will have
+        Cursor c = db.rawQuery("select count(*) from "+TABLE_APP, null);
+        c.moveToFirst();
+        int count = c.getInt(0);
+        c.close();
+        c = null;
+
+        Log.d("FDroid", "Will be fetching " + count + " apps, and this took us ");
+
+        Map<String, App> apps = new HashMap<String, App>(count);
         long startTime = System.currentTimeMillis();
         try {
 
@@ -869,7 +877,7 @@ public class DB {
             c.close();
             c = null;
 
-            Log.d("FDroid", "Read app data from database " + " (took "
+            Log.d("FDroid", "Read app data from database (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
             List<Repo> repos = getRepos();
@@ -928,7 +936,7 @@ public class DB {
                 c.close();
             }
 
-            Log.d("FDroid", "Read app and apk data from database " + " (took "
+            Log.d("FDroid", "Read app and apk data from database (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
         }
 
