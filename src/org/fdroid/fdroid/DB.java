@@ -430,6 +430,7 @@ public class DB {
         public String address;
         public String name;
         public String description;
+        public int version; // index version, i.e. what fdroidserver built it - 0 if not specified
         public boolean inuse;
         public int priority;
         public String pubkey; // null for an unsigned repo
@@ -438,7 +439,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 33;
+    private final int DBVersion = 34;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -504,6 +505,7 @@ public class DB {
                     mContext.getString(R.string.default_repo_name));
             values.put("description",
                     mContext.getString(R.string.default_repo_description));
+            values.put("version", 0);
             String pubkey = mContext.getString(R.string.default_repo_pubkey);
             String fingerprint = DB.calcFingerprint(pubkey);
             values.put("pubkey", pubkey);
@@ -521,9 +523,11 @@ public class DB {
                     mContext.getString(R.string.default_repo_name2));
             values.put("description",
                     mContext.getString(R.string.default_repo_description2));
+            values.put("version", 0);
             // default #2 is /archive which has the same key as /repo
             values.put("pubkey", pubkey);
             values.put("fingerprint", fingerprint);
+            values.put("maxage", 0);
             values.put("inuse", 0);
             values.put("priority", 20);
             values.put("lastetag", (String) null);
@@ -610,6 +614,10 @@ public class DB {
 
             if (oldVersion < 30) {
                 db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null default 0");
+            }
+
+            if (oldVersion < 34) {
+                db.execSQL("alter table " + TABLE_REPO + " add column version integer not null default 0");
             }
         }
 
@@ -1283,8 +1291,8 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(TABLE_REPO, new String[] { "address", "name",
-                "description", "inuse", "priority", "pubkey", "fingerprint",
-                "maxage", "lastetag" },
+                "description", "version", "inuse", "priority", "pubkey",
+                "fingerprint", "maxage", "lastetag" },
                     "id = ?", new String[] { Integer.toString(id) }, null, null, null);
             if (!c.moveToFirst())
                 return null;
@@ -1293,12 +1301,13 @@ public class DB {
             repo.address = c.getString(0);
             repo.name = c.getString(1);
             repo.description = c.getString(2);
-            repo.inuse = (c.getInt(3) == 1);
-            repo.priority = c.getInt(4);
-            repo.pubkey = c.getString(5);
-            repo.fingerprint = c.getString(6);
-            repo.maxage = c.getInt(7);
-            repo.lastetag = c.getString(8);
+            repo.version = c.getInt(3);
+            repo.inuse = (c.getInt(4) == 1);
+            repo.priority = c.getInt(5);
+            repo.pubkey = c.getString(6);
+            repo.fingerprint = c.getString(7);
+            repo.maxage = c.getInt(8);
+            repo.lastetag = c.getString(9);
             return repo;
         } finally {
             if (c != null)
@@ -1312,8 +1321,8 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(TABLE_REPO, new String[] { "id", "address", "name",
-                    "description", "inuse", "priority", "pubkey", "fingerprint",
-                    "maxage", "lastetag" },
+                "description", "version", "inuse", "priority", "pubkey",
+                "fingerprint", "maxage", "lastetag" },
                     null, null, null, null, "priority");
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -1322,12 +1331,13 @@ public class DB {
                 repo.address = c.getString(1);
                 repo.name = c.getString(2);
                 repo.description = c.getString(3);
-                repo.inuse = (c.getInt(4) == 1);
-                repo.priority = c.getInt(5);
-                repo.pubkey = c.getString(6);
-                repo.fingerprint = c.getString(7);
-                repo.maxage = c.getInt(8);
-                repo.lastetag = c.getString(9);
+                repo.version = c.getInt(4);
+                repo.inuse = (c.getInt(5) == 1);
+                repo.priority = c.getInt(6);
+                repo.pubkey = c.getString(7);
+                repo.fingerprint = c.getString(8);
+                repo.maxage = c.getInt(9);
+                repo.lastetag = c.getString(10);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -1357,6 +1367,7 @@ public class DB {
         ContentValues values = new ContentValues();
         values.put("name", repo.name);
         values.put("description", repo.description);
+        values.put("version", repo.version);
         values.put("inuse", repo.inuse);
         values.put("priority", repo.priority);
         values.put("pubkey", repo.pubkey);
@@ -1380,12 +1391,14 @@ public class DB {
     }
 
     public void addRepo(String address, String name, String description,
-            int priority, String pubkey, String fingerprint, int maxage, boolean inuse)
+            int version, int priority, String pubkey, String fingerprint,
+            int maxage, boolean inuse)
                     throws SecurityException {
         ContentValues values = new ContentValues();
         values.put("address", address);
         values.put("name", name);
         values.put("description", description);
+        values.put("version", version);
         values.put("inuse", inuse ? 1 : 0);
         values.put("priority", priority);
         values.put("pubkey", pubkey);
