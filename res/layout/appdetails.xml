@@ -22,9 +22,8 @@
 
 		<RelativeLayout
 			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
+			android:layout_height="56dp"
 			android:padding="6dp"
-			android:layout_centerVertical="true"
 			android:orientation="vertical" >
 
 			<TextView
@@ -33,9 +32,9 @@
 				android:layout_height="wrap_content"
 				android:layout_alignParentTop="true"
 				android:layout_alignParentRight="true"
-				android:paddingTop="2sp"
-				android:paddingBottom="2sp"
-				android:layout_marginLeft="8dp"
+				android:paddingTop="3sp"
+				android:paddingBottom="3sp"
+				android:layout_marginLeft="8sp"
 				android:textSize="13sp" />
 
 			<TextView
@@ -44,7 +43,7 @@
 				android:layout_height="wrap_content"
 				android:layout_alignParentBottom="true"
 				android:layout_alignParentRight="true"
-				android:layout_marginLeft="8dp"
+				android:layout_marginLeft="8sp"
 				android:textSize="13sp" />
 
 			<TextView
