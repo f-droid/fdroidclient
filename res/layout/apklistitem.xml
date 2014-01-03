@@ -47,7 +47,7 @@
 		android:textSize="13sp"
 		android:layout_below="@id/buildtype"
 		android:layout_toLeftOf="@id/size"
-		android:layout_alignParentRight="true"
+		android:layout_marginRight="12sp"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
 

@@ -140,10 +140,11 @@ public class AppDetails extends ListActivity {
 
             tv = (TextView) v.findViewById(R.id.status);
             if (apk.vercode == app.installedVerCode
-                    && apk.sig.equals(mInstalledSigID))
+                    && apk.sig.equals(mInstalledSigID)) {
                 tv.setText(getString(R.string.inst));
-            else
+            } else {
                 tv.setText(getString(R.string.not_inst));
+            }
             tv.setEnabled(apk.compatible);
 
             tv = (TextView) v.findViewById(R.id.size);
@@ -153,6 +154,16 @@ public class AppDetails extends ListActivity {
                 tv.setText(Utils.getFriendlySize(apk.detail_size));
                 tv.setEnabled(apk.compatible);
             }
+
+            tv = (TextView) v.findViewById(R.id.api);
+            if (apk.minSdkVersion == 0) {
+                tv.setText("");
+            } else {
+                tv.setText(getString(R.string.minsdk_or_later,
+                            Utils.getAndroidVersionName(apk.minSdkVersion)));
+                tv.setEnabled(apk.compatible);
+            }
+
             tv = (TextView) v.findViewById(R.id.buildtype);
             if (apk.srcname != null) {
                 tv.setText("source");
@@ -160,6 +171,7 @@ public class AppDetails extends ListActivity {
                 tv.setText("bin");
             }
             tv.setEnabled(apk.compatible);
+
             tv = (TextView) v.findViewById(R.id.added);
             if (apk.added != null) {
                 tv.setVisibility(View.VISIBLE);
@@ -168,6 +180,7 @@ public class AppDetails extends ListActivity {
             } else {
                 tv.setVisibility(View.GONE);
             }
+
             tv = (TextView) v.findViewById(R.id.nativecode);
             if (pref_expert && apk.nativecode != null) {
                 tv.setVisibility(View.VISIBLE);
@@ -456,26 +469,6 @@ public class AppDetails extends ListActivity {
         tv.setText(app.categories.toString().replaceAll(",",", "));
 
         tv = (TextView) infoView.findViewById(R.id.description);
-
-        /*
-        The following is a quick solution to enable both text selection and
-        links. Causes glitches and crashes:
-        java.lang.IndexOutOfBoundsException: setSpan (-1 ... -1) starts before 0
-
-        class CustomMovementMethod extends LinkMovementMethod {
-            @Override
-            public boolean canSelectArbitrarily () {
-                return true;
-            }
-        }
-
-        if (Utils.hasApi(11)) {
-            tv.setTextIsSelectable(true);
-            tv.setMovementMethod(new CustomMovementMethod());
-        } else {
-            tv.setMovementMethod(LinkMovementMethod.getInstance());
-        }
-        */
 
         tv.setMovementMethod(LinkMovementMethod.getInstance());
 
