@@ -370,10 +370,11 @@ public class DB {
                     }
                 }
 
-                cpuAbis = new ArrayList<String>();
-                if (hasApi(8))
-                    cpuAbis.add(android.os.Build.CPU_ABI2);
+                cpuAbis = new ArrayList<String>(2);
                 cpuAbis.add(android.os.Build.CPU_ABI);
+                if (hasApi(8)) {
+                    cpuAbis.add(android.os.Build.CPU_ABI2);
+                }
 
                 Log.d("FDroid", logMsg.toString());
             }
@@ -406,8 +407,7 @@ public class DB {
                 }
                 if (!compatibleApi(apk.nativecode)) {
                     Log.d("FDroid", apk.id + " vercode " + apk.vercode
-                            + " makes use of incompatible native code: "
-                            + CommaSeparatedList.str(apk.nativecode)
+                            + " only supports " + CommaSeparatedList.str(apk.nativecode)
                             + " while your architecture is " + cpuAbis.get(0));
                     return false;
                 }
