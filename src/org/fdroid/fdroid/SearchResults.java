@@ -118,18 +118,15 @@ public class SearchResults extends ListActivity {
 
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
-        try {
-            if (apps.size() == 0)
-                headertext = String.format(getString(R.string.searchres_noapps),
-                        mQuery);
-            else if (apps.size() == 1)
-                headertext = String.format(getString(R.string.searchres_oneapp),
-                        mQuery);
-            else
-                headertext = String.format(getString(R.string.searchres_napps),
-                        apps.size(), mQuery);
-        } catch(Exception ex) {
-            headertext = "TRANSLATION ERROR!";
+        if (apps.size() == 0) {
+            headertext = String.format(getString(R.string.searchres_noapps),
+                    mQuery);
+        } else if (apps.size() == 1) {
+            headertext = String.format(getString(R.string.searchres_oneapp),
+                    mQuery);
+        } else {
+            headertext = String.format(getString(R.string.searchres_napps),
+                    apps.size(), mQuery);
         }
         tv.setText(headertext);
         Log.d("FDroid", "Search for '" + mQuery + "' returned " + apps.size()
