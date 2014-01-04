@@ -4,25 +4,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.graphics.Bitmap;
 
 import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.LayoutCompat;
 
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 abstract public class AppListAdapter extends BaseAdapter {
 
     private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
+    private DisplayImageOptions displayImageOptions;
 
     public AppListAdapter(Context context) {
         mContext = context;
+
+        displayImageOptions = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisc(true)
+            .imageScaleType(ImageScaleType.NONE)
+            .resetViewBeforeLoading(true)
+            .showImageOnLoading(R.drawable.ic_repo_app_default)
+            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+            .displayer(new FadeInBitmapDisplayer(200, true, true, false))
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
     }
 
     abstract protected boolean showStatusUpdate();
@@ -31,6 +51,10 @@ abstract public class AppListAdapter extends BaseAdapter {
 
     public void addItem(DB.App app) {
         items.add(app);
+    }
+
+    public void addItems(List<DB.App> apps) {
+        items.addAll(apps);
     }
 
     public void clear() {
@@ -75,37 +99,12 @@ abstract public class AppListAdapter extends BaseAdapter {
         int visibleOnCompact = compact ? View.VISIBLE : View.GONE;
         int notVisibleOnCompact = compact ? View.GONE : View.VISIBLE;
 
-        LinearLayout iconContainer = (LinearLayout)convertView.findViewById(R.id.status_icons);
+        layoutIcon(icon, compact);
+        ImageLoader.getInstance().displayImage(app.iconUrl, icon,
+            displayImageOptions);
 
-        iconContainer.setVisibility(visibleOnCompact);
-        status.setVisibility(notVisibleOnCompact);
-        license.setVisibility(notVisibleOnCompact);
-        layoutSummary(summary);
-
-        ImageLoader.getInstance().displayImage(app.iconUrl, icon);
-
-        if (!compact) {
-            status.setText(getVersionInfo(app));
-            license.setText(app.license);
-        } else {
-            ImageView iconInstalled = (ImageView) convertView.findViewById(R.id.icon_status_installed);
-            ImageView iconUpdates = (ImageView) convertView.findViewById(R.id.icon_status_has_updates);
-
-            iconInstalled.setImageResource(R.drawable.ic_cab_done_holo_dark);
-            iconUpdates.setImageResource(R.drawable.ic_menu_refresh);
-
-            if (app.toUpdate && showStatusUpdate()) {
-                iconUpdates.setVisibility(View.VISIBLE);
-            } else {
-                iconUpdates.setVisibility(View.GONE);
-            }
-
-            if (app.installedVerCode > 0 && showStatusInstalled()) {
-                iconInstalled.setVisibility(View.VISIBLE);
-            } else {
-                iconInstalled.setVisibility(View.GONE);
-            }
-        }
+        status.setText(getVersionInfo(app));
+        license.setText(app.license);
 
         // Disable it all if it isn't compatible...
         View[] views = { convertView, status, summary, license, name };
@@ -116,51 +115,47 @@ abstract public class AppListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    /**
-     * In compact view, the summary sites next to the icon, below the name.
-     * In non-compact view, it sits under the icon, with some padding pushing
-     * it away from the left margin.
-     */
-    private void layoutSummary(TextView summaryView) {
-
-        if (Preferences.get().hasCompactLayout()) {
-
-            RelativeLayout.LayoutParams summaryLayout =
-                new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            summaryLayout.addRule(RelativeLayout.BELOW, R.id.name);
-            summaryLayout.addRule(LayoutCompat.RelativeLayout.END_OF, R.id.icon);
-            summaryView.setLayoutParams(summaryLayout);
-            summaryView.setPadding(0,0,0,0);
-
-        } else {
-
-            RelativeLayout.LayoutParams summaryLayout =
-                new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.MATCH_PARENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-            summaryLayout.addRule(RelativeLayout.BELOW, R.id.icon);
-            summaryView.setLayoutParams(summaryLayout);
-            float padding = mContext.getResources().getDimension(R.dimen.applist_summary_padding);
-            summaryView.setPadding((int)padding, 0, 0, 0);
-
+    private String ellipsize(String input, int maxLength) {
+        if (input == null || input.length() < maxLength+1) {
+            return input;
         }
+        return input.substring(0, maxLength) + "…";
     }
 
     private String getVersionInfo(DB.App app) {
-        if (app.installedVersion != null) {
-            if (app.toUpdate) {
-                return app.installedVersion + " -> " + app.curApk.version;
-            }
-            return app.installedVersion;
-        } else {
-            int numav = app.apks.size();
-            if (numav == 1) {
-                return mContext.getString(R.string.n_version_available, numav);
-            }
-            return mContext.getString(R.string.n_versions_available, numav);
+
+        if (app.curApk == null) {
+            return null;
         }
+
+        if (app.installedVersion == null) {
+            return ellipsize(app.curApk.version, 12);
+        }
+
+        if (app.toUpdate && showStatusUpdate()) {
+            return ellipsize(app.installedVersion, 8) +
+                " → " + ellipsize(app.curApk.version, 8);
+        }
+
+        if (app.installedVerCode > 0 && showStatusInstalled()) {
+            return ellipsize(app.installedVersion, 12) + " ✔";
+        }
+
+        return app.installedVersion;
+    }
+
+    private void layoutIcon(ImageView icon, boolean compact) {
+        int size = (int)mContext.getResources().getDimension((compact
+            ? R.dimen.applist_icon_compact_size
+            : R.dimen.applist_icon_normal_size));
+
+        RelativeLayout.LayoutParams params =
+            (RelativeLayout.LayoutParams)icon.getLayoutParams();
+
+        params.height = size;
+        params.width = size;
+
+        icon.setLayoutParams(params);
     }
 
 }

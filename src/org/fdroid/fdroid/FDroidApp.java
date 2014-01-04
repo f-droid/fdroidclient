@@ -24,21 +24,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
-import android.os.Build;
 import android.app.Application;
 import android.app.Activity;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 
 import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
+import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -104,31 +99,24 @@ public class FDroidApp extends Application {
         DB.initDB(ctx);
         UpdateService.schedule(ctx);
 
-        DisplayImageOptions options = new DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .cacheOnDisc(true)
-            .showImageOnLoading(R.drawable.ic_repo_app_default)
-            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-            .displayer(new FadeInBitmapDisplayer(200, true, true, false))
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .build();
-
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
-            .discCache(new UnlimitedDiscCache(
+            .discCache(new LimitedAgeDiscCache(
                         new File(StorageUtils.getCacheDirectory(ctx), "icons"),
                         new FileNameGenerator() {
                             @Override
                             public String generate(String imageUri) {
                                 return imageUri.substring(
                                     imageUri.lastIndexOf('/') + 1);
-                            } } ))
-            .defaultDisplayImageOptions(options)
+                            } },
+                        // 30 days in secs: 30*24*60*60 = 2592000
+                        2592000)
+                    )
             .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
             .build();
         ImageLoader.getInstance().init(config);
     }
 
-    Context ctx;
+    private Context ctx;
 
     // Global list of all known applications.
     private List<DB.App> apps;

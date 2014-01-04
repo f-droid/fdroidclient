@@ -16,9 +16,11 @@ import org.fdroid.fdroid.views.AppListView;
 
 abstract class AppListFragment extends Fragment implements AdapterView.OnItemClickListener, Preferences.ChangeListener {
 
-    private FDroid parent;
+    protected FDroid parent;
 
     protected abstract AppListAdapter getAppListAdapter();
+
+    protected abstract String getFromTitle();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
         final DB.App app = (DB.App)getAppListAdapter().getItem(position);
         Intent intent = new Intent(getActivity(), AppDetails.class);
         intent.putExtra("appid", app.id);
+        intent.putExtra("from", getFromTitle());
         startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
     }
 

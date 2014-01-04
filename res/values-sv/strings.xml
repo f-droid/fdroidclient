@@ -4,7 +4,7 @@
   <string name="searchres_oneapp">Ett program matchade \'%s\':</string>
   <string name="searchres_noapps">Inga program matchade \'%s\'</string>
   <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla versionen måste först avinstalleras. Försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
-  <string name="installIncompatible">Det verkar som om detta programmet inte är kompatibelt med enheten. Vill ni försöka installera det ändå?</string>
+  <string name="installIncompatible">Det verkar som att detta program inte är kompatibelt med enheten. Vill ni försöka installera det ändå?</string>
   <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller orsaka förlust av dina data. Vill du ändå försöka nedgradera?</string>
   <string name="version">Version</string>
   <string name="n_versions_available">%d versioner tillgängliga</string>
@@ -18,7 +18,7 @@
   <string name="automatic_repo_scan">Automatisk förrådsavsökning</string>
   <string name="update_apps_list">Uppdatera applistan från förråd automatiskt</string>
   <string name="automatic_scan_wifi">Endast via WiFi</string>
-  <string name="automatic_scan_wifi_desc">Uppdatera applikasjonslista automatiskt endast över wifi</string>
+  <string name="automatic_scan_wifi_desc">Uppdatera applistor automatiskt endast över wifi</string>
   <string name="notify">Avisering</string>
   <string name="notify_updates_available">Meddela mig när nya uppdateringar finns</string>
   <string name="update_history">Uppdateringshistorik</string>
@@ -58,7 +58,7 @@ En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="process_wait_title">Var vänlig vänta</string>
   <string name="process_update_msg">Uppdaterar programlistan...</string>
   <string name="download_server">Hämtar program från</string>
-  <string name="repo_add_url">Förrådadress</string>
+  <string name="repo_add_url">Förrådsadress</string>
   <string name="repo_alrt">Listan över förråd har ändrats.
 Vill du uppdatera dem?</string>
   <string name="menu_update_repo">Uppdatera förråd</string>
@@ -72,8 +72,8 @@ Vill du uppdatera dem?</string>
   <string name="menu_share">Dela</string>
   <string name="menu_install">Installera</string>
   <string name="menu_uninstall">Avinstallera</string>
-  <string name="menu_ignore_all">Ignorer alla uppdateringar</string>
-  <string name="menu_ignore_this">Ignorer denna uppdateringen</string>
+  <string name="menu_ignore_all">Ignorera alla uppdateringar</string>
+  <string name="menu_ignore_this">Ignorera denna uppdatering</string>
   <string name="menu_website">Webbplats</string>
   <string name="menu_issues">Buggar</string>
   <string name="menu_source">Källkod</string>
@@ -85,9 +85,9 @@ Vill du uppdatera dem?</string>
   <string name="download_cancelled">Nerladdning avbruten</string>
   <string name="antiadslist">Denna app innehåller reklam</string>
   <string name="antitracklist">Denna app övervakar dina aktiviteter</string>
-  <string name="antinonfreeadlist">Denna app promoterar ufria tillägg</string>
-  <string name="antinonfreenetlist">Denna app promoterar ufria nätverkstjänster</string>
-  <string name="antinonfreedeplist">Denna app avhenger av andra ufria apps</string>
+  <string name="antinonfreeadlist">Denna app främjar ofria tillägg</string>
+  <string name="antinonfreenetlist">Denna app främjar ofria nätverkstjänster</string>
+  <string name="antinonfreedeplist">Denna app beror på andra ofria appar</string>
   <string name="display">Visning</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Aktivera expertläge</string>
@@ -96,7 +96,7 @@ Vill du uppdatera dem?</string>
   <string name="db_sync_mode_long">Ställ in värdet på synchronous-flaggan i SQLite</string>
   <string name="appcompatibility">Programkompatibilitet</string>
   <string name="show_incompat_versions">Inkompatibla versioner</string>
-  <string name="show_incompat_versions_l">Visa versioner av apps som är ukompatibla med ditt apparat</string>
+  <string name="show_incompat_versions_l">Visa versioner av appar som är inkompatibla med enheten</string>
   <string name="rooted">Root</string>
   <string name="rooted_long">Visa appar som kräver root-rättigheter</string>
   <string name="ignoreTouch">Ignorera touchscreen</string>
@@ -116,8 +116,8 @@ Vill du uppdatera dem?</string>
   <string name="no_permissions">Inga behörigheter används.</string>
   <string name="permissions_for_long">Behörigheter för version %s</string>
   <string name="showPermissions">Visa behörigheter</string>
-  <string name="showPermissions_long">Visa en lista av behörigheter en app behöver</string>
-  <string name="no_handler_app">Ni har inte något app tilgängligt för behandling av %s</string>
+  <string name="showPermissions_long">Visa en lista över behörigheter en app behöver</string>
+  <string name="no_handler_app">Du har inte någon app tillgänglig för hantering av %s</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_long">Visa endast appnamn och sammanfattningar i listan</string>
   <string name="theme">Tema</string>

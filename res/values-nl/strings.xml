@@ -3,7 +3,7 @@
   <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
   <string name="searchres_oneapp">Één applicatie gevonden die voldoet aan \'%s\':</string>
   <string name="searchres_noapps">Geen applicaties gevonden die voldoen aan \'%s\'</string>
-  <string name="SignatureMismatch">De nieuwe versie is gesigned met een andere sleutel als de oude. Om de nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer het daarna nogmaals. (Let op dat het verwijderen de data van de applicatie verwijderd wordt)</string>
+  <string name="SignatureMismatch">De nieuwe versie is gesigneerd met een andere sleutel als de oude. Om de nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer het daarna nogmaals. (Let op dat bij het verwijderen de data van de applicatie ook verwijderd wordt)</string>
   <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
   <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet uw data kan corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
   <string name="version">Versie</string>
@@ -15,12 +15,12 @@
   <string name="other">Andere</string>
   <string name="last_update_check">Laatste bronnen scan: %s</string>
   <string name="never">nooit</string>
-  <string name="automatic_repo_scan">Automatische bronnen-scan</string>
+  <string name="automatic_repo_scan">Scan bronnen automatisch</string>
   <string name="update_apps_list">app-lijst automatisch bijwerken</string>
   <string name="automatic_scan_wifi">Allen op wifi</string>
   <string name="automatic_scan_wifi_desc">Vernieuw app-lijst alleen op wifi automatisch</string>
   <string name="notify">Verwittigen</string>
-  <string name="notify_updates_available">Verwittigen bij nieuwe beschikbare updates</string>
+  <string name="notify_updates_available">Verwittigen wanneer nieuwe updates beschikbaar zijn</string>
   <string name="update_history">Vernieuw historie</string>
   <string name="update_history_desc">Dagen om nieuwe/verbeterde apps te laten zien</string>
   <string name="search_results">Zoekresultaten</string>
@@ -59,11 +59,11 @@ Een bron-adres ziet er ongeveer
   <string name="many_updates_available">%d vernieuwingen zijn beschikbaar</string>
   <string name="fdroid_updates_available">F-Droid Vernieuwingen Beschikbaar</string>
   <string name="process_wait_title">Even geduld aub</string>
-  <string name="process_update_msg">Applicatie-lijst vernieuwen</string>
+  <string name="process_update_msg">Applicatie-lijst vernieuwen...</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="repo_add_url">Bron-adres</string>
   <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
-Wil je ze vernieuwen?</string>
+Wilt u ze vernieuwen?</string>
   <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
   <string name="menu_preferences">Voorkeuren</string>
@@ -82,8 +82,8 @@ Wil je ze vernieuwen?</string>
   <string name="menu_source">Broncode</string>
   <string name="menu_upgrade">Verbeteren</string>
   <string name="menu_donate">Doneer</string>
-  <string name="details_installed">Versie %s geinstalleerd</string>
-  <string name="details_notinstalled">Niet geinstalleerd</string>
+  <string name="details_installed">Versie %s geïnstalleerd</string>
+  <string name="details_notinstalled">Niet geïnstalleerd</string>
   <string name="corrupt_download">Gedownloade bestand is corrupt</string>
   <string name="download_cancelled">Download geannuleerd</string>
   <string name="antiadslist">Deze app bevat advertenties</string>
@@ -94,9 +94,9 @@ Wil je ze vernieuwen?</string>
   <string name="display">Laat zien</string>
   <string name="expert">Expert</string>
   <string name="expert_mode">Ga in expert-modus</string>
-  <string name="search_hint">Zoek-applicaties</string>
+  <string name="search_hint">Zoek applicaties</string>
   <string name="db_sync_mode">Database sync-modus</string>
-  <string name="db_sync_mode_long">Zet de SQLite\'s synchronisatie-vlag</string>
+  <string name="db_sync_mode_long">Zet de waarde van SQLite\'s synchronisatie-vlag</string>
   <string name="appcompatibility">Applicatie verenigbaarheid</string>
   <string name="show_incompat_versions">Onverenigbare versies</string>
   <string name="show_incompat_versions_l">Laat versies van apps die onverenigbaar zijn met het apparaat</string>

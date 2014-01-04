@@ -62,6 +62,7 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.graphics.Bitmap;
 
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -71,7 +72,10 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
 
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 public class AppDetails extends ListActivity {
 
@@ -83,11 +87,18 @@ public class AppDetails extends ListActivity {
         private List<DB.Apk> items;
 
         public ApkListAdapter(Context context, List<DB.Apk> items) {
-            this.items = (items != null ? items : new ArrayList<DB.Apk>());
+            this.items = new ArrayList<DB.Apk>();
+            if (items != null) {
+                for (DB.Apk apk : items) {
+                    this.addItem(apk);
+                }
+            }
         }
 
         public void addItem(DB.Apk apk) {
-            items.add(apk);
+            if (apk.compatible || pref_incompatibleVersions) {
+                items.add(apk);
+            }
         }
 
         public List<DB.Apk> getItems() {
@@ -124,7 +135,7 @@ public class AppDetails extends ListActivity {
 
             TextView tv = (TextView) v.findViewById(R.id.version);
             tv.setText(getString(R.string.version) + " " + apk.version
-                    + (apk == app.curApk ? " *" : ""));
+                    + (apk == app.curApk ? "   ☆" : ""));
             tv.setEnabled(apk.compatible);
 
             tv = (TextView) v.findViewById(R.id.status);
@@ -182,8 +193,9 @@ public class AppDetails extends ListActivity {
     private static final int DONATE = Menu.FIRST + 9;
     private static final int BITCOIN = Menu.FIRST + 10;
     private static final int LITECOIN = Menu.FIRST + 11;
-    private static final int FLATTR = Menu.FIRST + 12;
-    private static final int DONATE_URL = Menu.FIRST + 13;
+    private static final int DOGECOIN = Menu.FIRST + 12;
+    private static final int FLATTR = Menu.FIRST + 13;
+    private static final int DONATE_URL = Menu.FIRST + 14;
 
     private DB.App app;
     private String appid;
@@ -197,7 +209,8 @@ public class AppDetails extends ListActivity {
     LinearLayout headerView;
     View infoView;
 
-    private Context mctx = this;
+    private final Context mctx = this;
+    private DisplayImageOptions displayImageOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,6 +218,16 @@ public class AppDetails extends ListActivity {
         ((FDroidApp) getApplication()).applyTheme(this);
 
         super.onCreate(savedInstanceState);
+
+        displayImageOptions = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisc(true)
+            .imageScaleType(ImageScaleType.NONE)
+            .showImageOnLoading(R.drawable.ic_repo_app_default)
+            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
         ActionBarCompat abCompat = ActionBarCompat.create(this);
         abCompat.setDisplayHomeAsUpEnabled(true);
 
@@ -214,13 +237,13 @@ public class AppDetails extends ListActivity {
         Uri data = i.getData();
         if (data != null) {
             if (data.isHierarchical()) {
-                if (data.getHost().equals("details")) {
+                if (data.getHost() != null && data.getHost().equals("details")) {
                     // market://details?id=app.id
                     appid = data.getQueryParameter("id");
                 } else {
                     // https://f-droid.org/app/app.id
                     appid = data.getLastPathSegment();
-                    if (appid.equals("app")) appid = null;
+                    if (appid != null && appid.equals("app")) appid = null;
                 }
             } else {
                 // fdroid.app:app.id
@@ -232,6 +255,10 @@ public class AppDetails extends ListActivity {
             Log.d("FDroid", "No application ID in AppDetails!?");
         } else {
             appid = i.getStringExtra("appid");
+        }
+
+        if (i.hasExtra("from")) {
+            setTitle(i.getStringExtra("from"));
         }
 
         mPm = getPackageManager();
@@ -258,6 +285,8 @@ public class AppDetails extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
+        pref_incompatibleVersions = prefs.getBoolean(
+                "incompatibleVersions", false);
 
         startViews();
 
@@ -265,6 +294,7 @@ public class AppDetails extends ListActivity {
 
     private boolean pref_expert;
     private boolean pref_permissions;
+    private boolean pref_incompatibleVersions;
     private boolean resetRequired;
 
     // The signature of the installed version.
@@ -306,11 +336,6 @@ public class AppDetails extends ListActivity {
             }
         }
         super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
     }
 
     @Override
@@ -418,14 +443,17 @@ public class AppDetails extends ListActivity {
 
         // Set the icon...
         ImageView iv = (ImageView) findViewById(R.id.icon);
-        ImageLoader.getInstance().displayImage(app.iconUrl, iv);
+        ImageLoader.getInstance().displayImage(app.iconUrl, iv,
+            displayImageOptions);
 
         // Set the title and other header details...
         TextView tv = (TextView) findViewById(R.id.title);
         tv.setText(app.name);
         tv = (TextView) findViewById(R.id.license);
         tv.setText(app.license);
-        tv = (TextView) findViewById(R.id.status);
+
+        tv = (TextView) findViewById(R.id.categories);
+        tv.setText(app.categories.toString().replaceAll(",",", "));
 
         tv = (TextView) infoView.findViewById(R.id.description);
 
@@ -474,8 +502,7 @@ public class AppDetails extends ListActivity {
                         if (listNum == -1) {
                             output.append("\t• ");
                         } else {
-                            output.append("\t" + Integer.toString(listNum)
-                                    + ". ");
+                            output.append("\t").append(Integer.toString(listNum)).append(". ");
                             listNum++;
                         }
                     } else {
@@ -510,7 +537,7 @@ public class AppDetails extends ListActivity {
                     String permissionName = permissions.next();
                     try {
                         Permission permission = new Permission(this, permissionName);
-                        sb.append("\t• " + permission.getName() + '\n');
+                        sb.append("\t• ").append(permission.getName()).append('\n');
                     } catch (NameNotFoundException e) {
                         if (permissionName.equals("ACCESS_SUPERUSER")) {
                             sb.append("\t• Full permissions to all device features and storage\n");
@@ -537,7 +564,7 @@ public class AppDetails extends ListActivity {
             for (String af : app.antiFeatures) {
                 String afdesc = descAntiFeature(af);
                 if (afdesc != null) {
-                    sb.append("\t• " + afdesc + "\n");
+                    sb.append("\t• ").append(afdesc).append("\n");
                 }
             }
             if (sb.length() > 0) {
@@ -611,7 +638,6 @@ public class AppDetails extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            return;
                         }
                     });
             AlertDialog alert = ask_alrt.create();
@@ -687,6 +713,7 @@ public class AppDetails extends ListActivity {
         }
 
         if (app.detail_bitcoinAddr != null || app.detail_litecoinAddr != null ||
+                app.detail_dogecoinAddr != null ||
                 app.detail_flattrID != null || app.detail_donateURL != null) {
             SubMenu donate = menu.addSubMenu(Menu.NONE, DONATE, 7,
                     R.string.menu_donate).setIcon(
@@ -695,6 +722,8 @@ public class AppDetails extends ListActivity {
                 donate.add(Menu.NONE, BITCOIN, 8, R.string.menu_bitcoin);
             if (app.detail_litecoinAddr != null)
                 donate.add(Menu.NONE, LITECOIN, 8, R.string.menu_litecoin);
+            if (app.detail_dogecoinAddr != null)
+                donate.add(Menu.NONE, DOGECOIN, 8, R.string.menu_dogecoin);
             if (app.detail_flattrID != null)
                 donate.add(Menu.NONE, FLATTR, 9, R.string.menu_flattr);
             if (app.detail_donateURL != null)
@@ -776,6 +805,10 @@ public class AppDetails extends ListActivity {
             tryOpenUri("litecoin:" + app.detail_litecoinAddr);
             return true;
 
+        case DOGECOIN:
+            tryOpenUri("dogecoin:" + app.detail_dogecoinAddr);
+            return true;
+
         case FLATTR:
             tryOpenUri("https://flattr.com/thing/" + app.detail_flattrID);
             return true;
@@ -824,7 +857,6 @@ public class AppDetails extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            return;
                         }
                     });
             AlertDialog alert = ask_alrt.create();

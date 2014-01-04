@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.prefs.PreferenceChangeListener;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,7 +26,20 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         preferences.registerOnSharedPreferenceChangeListener(this);
     }
 
-    private static final String PREF_COMPACT_LAYOUT    = "compactlayout";
+    public static final String PREF_UPD_INTERVAL = "updateInterval";
+    public static final String PREF_UPD_WIFI_ONLY = "updateOnWifiOnly";
+    public static final String PREF_UPD_NOTIFY = "updateNotify";
+    public static final String PREF_UPD_HISTORY = "updateHistoryDays";
+    public static final String PREF_ROOTED = "rooted";
+    public static final String PREF_INCOMP_VER = "incompatibleVersions";
+    public static final String PREF_THEME = "theme";
+    public static final String PREF_PERMISSIONS = "showPermissions";
+    public static final String PREF_COMPACT_LAYOUT = "compactlayout";
+    public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
+    public static final String PREF_CACHE_APK = "cacheDownloaded";
+    public static final String PREF_EXPERT = "expert";
+    public static final String PREF_DB_SYNC = "dbSyncMode";
+
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;

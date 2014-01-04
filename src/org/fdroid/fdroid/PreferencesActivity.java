@@ -21,41 +21,157 @@ package org.fdroid.fdroid;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.ListPreference;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.view.MenuItem;
 
 import android.support.v4.app.NavUtils;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 
 public class PreferencesActivity extends PreferenceActivity implements
-        OnPreferenceChangeListener {
+        OnSharedPreferenceChangeListener {
 
     public static final int RESULT_RELOAD = 1;
     public static final int RESULT_REFILTER = 2;
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
+    private static String[] summariesToUpdate = {
+        Preferences.PREF_UPD_INTERVAL,
+        Preferences.PREF_UPD_WIFI_ONLY,
+        Preferences.PREF_UPD_NOTIFY,
+        Preferences.PREF_UPD_HISTORY,
+        Preferences.PREF_ROOTED,
+        Preferences.PREF_INCOMP_VER,
+        Preferences.PREF_THEME,
+        Preferences.PREF_PERMISSIONS,
+        Preferences.PREF_COMPACT_LAYOUT,
+        Preferences.PREF_IGN_TOUCH,
+        Preferences.PREF_CACHE_APK,
+        Preferences.PREF_EXPERT,
+        Preferences.PREF_DB_SYNC
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ((FDroidApp) getApplication()).applyTheme(this);
-
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.preferences);
-        for (String prefkey : new String[] {
-                "updateInterval", "rooted", "incompatibleVersions",
-                "theme" }) {
-            findPreference(prefkey).setOnPreferenceChangeListener(this);
+    }
+
+    protected void onoffSummary(String key, int on, int off) {
+        CheckBoxPreference pref = (CheckBoxPreference)findPreference(key);
+        if (pref.isChecked()) {
+            pref.setSummary(on);
+        } else {
+            pref.setSummary(off);
         }
-        CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                findPreference("updateOnWifiOnly");
-        onlyOnWifi.setEnabled(Integer.parseInt(
-                        ((ListPreference)findPreference("updateInterval"))
-                        .getValue()) > 0);
+    }
+
+    protected void entrySummary(String key) {
+        ListPreference pref = (ListPreference)findPreference(key);
+        pref.setSummary(pref.getEntry());
+    }
+
+    protected void textSummary(String key) {
+        EditTextPreference pref = (EditTextPreference)findPreference(key);
+        pref.setSummary(getString(R.string.update_history_summ,
+                    pref.getText()));
+    }
+
+
+    protected void updateSummary(String key) {
+
+        if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
+            ListPreference pref = (ListPreference)findPreference(
+                    Preferences.PREF_UPD_INTERVAL);
+            int interval = Integer.parseInt(pref.getValue().toString());
+            Preference onlyOnWifi = findPreference(
+                    Preferences.PREF_UPD_WIFI_ONLY);
+            onlyOnWifi.setEnabled(interval > 0);
+            if (interval == 0) {
+                pref.setSummary(R.string.update_interval_zero);
+            } else {
+                pref.setSummary(pref.getEntry());
+            }
+
+        } else if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
+            onoffSummary(key, R.string.automatic_scan_wifi_on,
+                    R.string.automatic_scan_wifi_off);
+
+        } else if (key.equals(Preferences.PREF_UPD_NOTIFY)) {
+            onoffSummary(key, R.string.notify_on,
+                R.string.notify_off);
+
+        } else if (key.equals(Preferences.PREF_UPD_HISTORY)) {
+            textSummary(key);
+
+        } else if (key.equals(Preferences.PREF_PERMISSIONS)) {
+            onoffSummary(key, R.string.showPermissions_on,
+                R.string.showPermissions_off);
+
+        } else if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
+            onoffSummary(key, R.string.compactlayout_on,
+                R.string.compactlayout_off);
+
+        } else if (key.equals(Preferences.PREF_THEME)) {
+            entrySummary(key);
+            result |= RESULT_RESTART;
+            setResult(result);
+
+        } else if (key.equals(Preferences.PREF_INCOMP_VER)) {
+            onoffSummary(key, R.string.show_incompat_versions_on,
+                R.string.show_incompat_versions_off);
+            result ^= RESULT_RELOAD;
+            setResult(result);
+
+        } else if (key.equals(Preferences.PREF_ROOTED)) {
+            onoffSummary(key, R.string.rooted_on,
+                R.string.rooted_off);
+            result ^= RESULT_REFILTER;
+            setResult(result);
+
+        } else if (key.equals(Preferences.PREF_IGN_TOUCH)) {
+            onoffSummary(key, R.string.ignoreTouch_on,
+                R.string.ignoreTouch_off);
+
+        } else if (key.equals(Preferences.PREF_CACHE_APK)) {
+            onoffSummary(key, R.string.cache_downloaded_on,
+                R.string.cache_downloaded_off);
+
+        } else if (key.equals(Preferences.PREF_EXPERT)) {
+            onoffSummary(key, R.string.expert_on,
+                R.string.expert_off);
+
+        } else if (key.equals(Preferences.PREF_DB_SYNC)) {
+            entrySummary(key);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        getPreferenceScreen().getSharedPreferences()
+                    .registerOnSharedPreferenceChangeListener(
+                            (OnSharedPreferenceChangeListener)this);
+
+        for (String key : summariesToUpdate) {
+            updateSummary(key);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences()
+                    .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -69,31 +185,10 @@ public class PreferencesActivity extends PreferenceActivity implements
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        String key = preference.getKey();
-        if (key.equals("updateInterval")) {
-            int interval = Integer.parseInt(newValue.toString());
-            CheckBoxPreference onlyOnWifi = (CheckBoxPreference)
-                    findPreference("updateOnWifiOnly");
-            onlyOnWifi.setEnabled(interval > 0);
-            return true;
-        }
-        if (key.equals("incompatibleVersions")) {
-            result ^= RESULT_RELOAD;
-            setResult(result);
-            return true;
-        }
-        if (key.equals("rooted")) {
-            result ^= RESULT_REFILTER;
-            setResult(result);
-            return true;
-        }
-        if (key.equals("theme")) {
-            result |= RESULT_RESTART;
-            setResult(result);
-            return true;
-        }
-        return false;
+    public void onSharedPreferenceChanged(
+            SharedPreferences sharedPreferences, String key) {
+
+        updateSummary(key);
     }
 
 }

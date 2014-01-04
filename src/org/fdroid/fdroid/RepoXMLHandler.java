@@ -34,6 +34,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -55,7 +57,8 @@ public class RepoXMLHandler extends DefaultHandler {
     // The repo we're processing.
     private DB.Repo repo;
 
-    private List<DB.App> apps;
+    private Map<String, DB.App> apps;
+    private List<DB.App> appsList;
 
     private DB.App curapp = null;
     private DB.Apk curapk = null;
@@ -89,9 +92,11 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private int totalAppCount;
 
-    public RepoXMLHandler(DB.Repo repo, List<DB.App> apps, ProgressListener listener) {
+    public RepoXMLHandler(DB.Repo repo, List<DB.App> appsList, ProgressListener listener) {
         this.repo = repo;
-        this.apps = apps;
+        this.apps = new HashMap<String, DB.App>();
+        for (DB.App app : appsList) this.apps.put(app.id, app);
+        this.appsList = appsList;
         pubkey = null;
         name = null;
         description = null;
@@ -118,18 +123,13 @@ public class RepoXMLHandler extends DefaultHandler {
 
             // If we already have this application (must be from scanning a
             // different repo) then just merge in the apks.
-            // TODO: Scanning the whole app list like this every time is
-            // going to be stupid if the list gets very big!
-            boolean merged = false;
-            for (DB.App app : apps) {
-                if (app.id.equals(curapp.id)) {
-                    app.apks.addAll(curapp.apks);
-                    merged = true;
-                    break;
-                }
+            DB.App app = apps.get(curapp.id);
+            if (app != null) {
+                app.apks.addAll(curapp.apks);
+            } else {
+                appsList.add(curapp);
+                apps.put(curapp.id, curapp);
             }
-            if (!merged)
-                apps.add(curapp);
 
             curapp = null;
 
@@ -212,6 +212,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.detail_bitcoinAddr = str;
             } else if (curel.equals("litecoin")) {
                 curapp.detail_litecoinAddr = str;
+            } else if (curel.equals("dogecoin")) {
+                curapp.detail_dogecoinAddr = str;
             } else if (curel.equals("flattr")) {
                 curapp.detail_flattrID = str;
             } else if (curel.equals("web")) {
@@ -240,6 +242,8 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapp.curVercode = -1;
                 }
+            } else if (curel.equals("provides")) {
+                curapp.provides = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("categories")) {
                 curapp.categories = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("antifeatures")) {
@@ -358,7 +362,7 @@ public class RepoXMLHandler extends DefaultHandler {
     // value for the index that was successfully processed, or it may contain
     // null if none was available.
     public static String doUpdate(Context ctx, DB.Repo repo,
-            List<DB.App> apps, StringBuilder newetag, List<Integer> keeprepos,
+            List<DB.App> appsList, StringBuilder newetag, List<Integer> keeprepos,
             ProgressListener progressListener) {
         try {
 
@@ -443,7 +447,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 SAXParserFactory spf = SAXParserFactory.newInstance();
                 SAXParser sp = spf.newSAXParser();
                 XMLReader xr = sp.getXMLReader();
-                RepoXMLHandler handler = new RepoXMLHandler(repo, apps, progressListener);
+                RepoXMLHandler handler = new RepoXMLHandler(repo, appsList, progressListener);
                 xr.setContentHandler(handler);
 
                 File tempIndex = new File(ctx.getFilesDir() + "/tempindex.xml");

@@ -28,7 +28,6 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,7 +58,6 @@ public class FDroid extends FragmentActivity {
     private static final int SEARCH = Menu.FIRST + 4;
 
     private ViewPager viewPager;
-    private AppListFragmentPageAdapter viewPageAdapter;
 
     private AppListManager manager = null;
 
@@ -248,7 +246,7 @@ public class FDroid extends FragmentActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                            // do nothing
+                                // do nothing
                             }
                         });
                 AlertDialog alert = ask_alrt.create();
@@ -283,7 +281,7 @@ public class FDroid extends FragmentActivity {
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        viewPageAdapter = new AppListFragmentPageAdapter(this);
+        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -342,7 +340,7 @@ public class FDroid extends FragmentActivity {
     public void removeNotification(int id) {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
             .getSystemService(Context.NOTIFICATION_SERVICE);
-        nMgr.cancel(1);
+        nMgr.cancel(id);
     }
 
 }

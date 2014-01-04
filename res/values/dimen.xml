@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="applist_summary_padding">3dp</dimen>
+	<!--48dp with 8dp padding, 48+16=64-->
+    <dimen name="applist_icon_normal_size">64dp</dimen>
+	<!--32dp with 8dp padding, 32+16=48-->
+    <dimen name="applist_icon_compact_size">48dp</dimen>
 </resources>

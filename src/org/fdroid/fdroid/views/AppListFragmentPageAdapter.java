@@ -44,7 +44,7 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
             case 0:
                 return parent.getString(R.string.tab_noninstalled);
             case 1:
-                return parent.getString(R.string.tab_installed);
+                return parent.getString(R.string.inst);
             case 2:
                 return parent.getString(R.string.tab_updates) + " ("
                     + parent.getManager().getCanUpdateAdapter().getCount() + ")";
