@@ -23,7 +23,6 @@ import android.content.*;
 import android.content.res.Configuration;
 import android.support.v4.view.MenuItemCompat;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
@@ -228,7 +227,6 @@ public class FDroid extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @TargetApi(5)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
