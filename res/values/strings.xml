@@ -194,5 +194,6 @@
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
+    <string name="minsdk_or_later">Android %s or later</string>
 
 </resources>

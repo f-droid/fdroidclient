@@ -31,11 +31,13 @@ import android.util.Log;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.nostra13.universalimageloader.utils.StorageUtils;
+import org.fdroid.fdroid.Utils;
+
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.utils.StorageUtils;
 
 public class FDroidApp extends Application {
 
@@ -78,14 +80,14 @@ public class FDroidApp extends Application {
         curTheme = Theme.valueOf(prefs.getString("theme", "dark"));
         if (!prefs.getBoolean("cacheDownloaded", false)) {
 
-            File local_path = DB.getDataPath(this);
+            File local_path = Utils.getApkCacheDir(this);
             // Things can be null if the SD card is not ready - we'll just
             // ignore that and do it next time.
-            if(local_path != null) {
+            if (local_path != null) {
                 File[] files = local_path.listFiles();
-                if(files != null) {
-                    for(File f : files) {
-                        if(f.getName().endsWith(".apk")) {
+                if (files != null) {
+                    for (File f : files) {
+                        if (f.getName().endsWith(".apk")) {
                             f.delete();
                         }
                     }
@@ -101,7 +103,8 @@ public class FDroidApp extends Application {
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
             .discCache(new LimitedAgeDiscCache(
-                        new File(StorageUtils.getCacheDirectory(ctx), "icons"),
+                        new File(StorageUtils.getCacheDirectory(ctx, true),
+                            "icons"),
                         new FileNameGenerator() {
                             @Override
                             public String generate(String imageUri) {

@@ -64,8 +64,9 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private StringBuilder curchars = new StringBuilder();
 
-    // After processing the XML, this will be -1 if the index didn't specify
-    // a maximum age - otherwise it will be the value specified.
+    // After processing the XML, these will be -1 if the index didn't specify
+    // them - otherwise it will be the value specified.
+    private int version = -1;
     private int maxage = -1;
 
     // After processing the XML, this will be null if the index specified a
@@ -242,8 +243,6 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapp.curVercode = -1;
                 }
-            } else if (curel.equals("provides")) {
-                curapp.provides = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("categories")) {
                 curapp.categories = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("antifeatures")) {
@@ -266,14 +265,23 @@ public class RepoXMLHandler extends DefaultHandler {
     public void startElement(String uri, String localName, String qName,
             Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
+
         if (localName.equals("repo")) {
             String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
+
             String maxAgeAttr = attributes.getValue("", "maxage");
             if (maxAgeAttr != null) {
                 try {
                     maxage = Integer.parseInt(maxAgeAttr);
+                } catch (NumberFormatException nfe) {}
+            }
+
+            String versionAttr = attributes.getValue("", "version");
+            if (versionAttr != null) {
+                try {
+                    version = Integer.parseInt(versionAttr);
                 } catch (NumberFormatException nfe) {}
             }
 
@@ -283,6 +291,7 @@ public class RepoXMLHandler extends DefaultHandler {
             String dc = attributes.getValue("", "description");
             if (dc != null)
                 description = dc;
+
         } else if (localName.equals("application") && curapp == null) {
             curapp = new DB.App();
             curapp.detail_Populated = true;
@@ -293,11 +302,13 @@ public class RepoXMLHandler extends DefaultHandler {
                 new ProgressListener.Event(
                     RepoXMLHandler.PROGRESS_TYPE_PROCESS_XML, progressCounter,
                     totalAppCount, progressData));
+
         } else if (localName.equals("package") && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
             curapk.repo = repo.id;
             hashType = null;
+
         } else if (localName.equals("hash") && curapk != null) {
             hashType = attributes.getValue("", "type");
         }
@@ -511,6 +522,13 @@ public class RepoXMLHandler extends DefaultHandler {
             repoChanged = true;
         }
 
+        if (version != -1 && version != repo.version) {
+            Log.d("FDroid", "Repo specified a new version: from "
+                    + repo.version + " to " + version);
+            repo.version = version;
+            repoChanged = true;
+        }
+        
         if (maxage != -1 && maxage != repo.maxage) {
             Log.d("FDroid",
                     "Repo specified a new maximum age - updated");
