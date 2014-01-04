@@ -369,7 +369,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 // check the signature, and extract the index...
                 Log.d("FDroid", "Getting signed index from " + repo.address + " at " +
                     logDateFormat.format(new Date(System.currentTimeMillis())));
-                String address = repo.address + "/index.jar?"
+                String address = repo.address + "/index.jar?client_version="
                     + ctx.getString(R.string.version_name);
                 Bundle progressData = createProgressData(repo.address);
                 ProgressListener.Event event = new ProgressListener.Event(
