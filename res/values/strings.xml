@@ -163,5 +163,6 @@
 	<string name="compactlayout_on">Show icons at a smaller size</string>
 	<string name="compactlayout_off">Show icons at regular size</string>
     <string name="theme">Theme</string>
+    <string name="minsdk_or_later">Android %s or later</string>
 
 </resources>

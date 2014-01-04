@@ -89,8 +89,9 @@ public class RepoXMLHandler extends DefaultHandler {
     private DB.Apk curapk = null;
     private StringBuilder curchars = new StringBuilder();
 
-    // After processing the XML, this will be null if the index didn't specify
-    // a maximum age - otherwise it will be the value specified.
+    // After processing the XML, these will be null if the index didn't specify
+    // them - otherwise it will be the value specified.
+    private String version;
     private String maxage;
 
     // After processing the XML, this will be null if the index specified a
@@ -278,8 +279,6 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapp.curVercode = -1;
                 }
-            } else if (curel.equals("provides")) {
-                curapp.provides = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("categories")) {
                 curapp.categories = DB.CommaSeparatedList.make(str);
             } else if (curel.equals("antifeatures")) {
@@ -294,10 +293,12 @@ public class RepoXMLHandler extends DefaultHandler {
     public void startElement(String uri, String localName, String qName,
             Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
+
         if (localName.equals("repo")) {
             String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
+            version = attributes.getValue("", "version");
             maxage = attributes.getValue("", "maxage");
             String nm = attributes.getValue("", "name");
             if (nm != null)
@@ -305,6 +306,7 @@ public class RepoXMLHandler extends DefaultHandler {
             String dc = attributes.getValue("", "description");
             if (dc != null)
                 description = dc;
+
         } else if (localName.equals("application") && curapp == null) {
             curapp = new DB.App();
             curapp.detail_Populated = true;
@@ -315,11 +317,13 @@ public class RepoXMLHandler extends DefaultHandler {
                 new ProgressListener.Event(
                     RepoUpdater.PROGRESS_TYPE_PROCESS_XML, progressCounter,
                     totalAppCount, progressData));
+
         } else if (localName.equals("package") && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
             curapk.repo = repo.id;
             hashType = null;
+
         } else if (localName.equals("hash") && curapk != null) {
             hashType = attributes.getValue("", "type");
         }
@@ -726,6 +730,17 @@ public class RepoXMLHandler extends DefaultHandler {
                         DB.releaseDB();
                     }
                 }
+                boolean updateRepo = false;
+
+                if (handler.version != null) {
+                    int version = Integer.parseInt(handler.version);
+                    if (version != repo.version) {
+                        Log.d("FDroid", "Repo specified a new version: from "
+                                + repo.version + " to " + version);
+                        repo.version = version;
+                        updateRepo = true;
+                    }
+                }
 
                 if (handler.maxage != null) {
                     int maxage = Integer.parseInt(handler.maxage);
@@ -733,12 +748,16 @@ public class RepoXMLHandler extends DefaultHandler {
                         Log.d("FDroid",
                                 "Repo specified a new maximum age - updated");
                         repo.maxage = maxage;
-                        try {
-                            DB db = DB.getDB();
-                            db.updateRepoByAddress(repo);
-                        } finally {
-                            DB.releaseDB();
-                        }
+                        updateRepo = true;
+                    }
+                }
+
+                if (updateRepo) {
+                    try {
+                        DB db = DB.getDB();
+                        db.updateRepoByAddress(repo);
+                    } finally {
+                        DB.releaseDB();
                     }
                 }
 

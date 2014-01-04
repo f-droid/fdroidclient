@@ -27,6 +27,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 
+import android.content.Context;
+
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
 public final class Utils {
 
     public static final int BUFFER_SIZE = 4096;
@@ -86,6 +90,30 @@ public final class Utils {
         return String.format(FRIENDLY_SIZE_FORMAT[i], s);
     }
 
+    public static String getAndroidVersionName(int sdkLevel) {
+        switch (sdkLevel) {
+            case 19: return "4.4";
+            case 18: return "4.3";
+            case 17: return "4.2";
+            case 16: return "4.1";
+            case 15: return "4.0.3";
+            case 14: return "4.0";
+            case 13: return "3.2";
+            case 12: return "3.1";
+            case 11: return "3.0";
+            case 10: return "2.3.3";
+            case 9: return "2.3";
+            case 8: return "2.2";
+            case 7: return "2.1";
+            case 6: return "2.0.1";
+            case 5: return "2.0";
+            case 4: return "1.6";
+            case 3: return "1.5";
+            case 2: return "1.1";
+            default: return "1.0";
+        }
+    }
+
     public static int countSubstringOccurrence(File file, String substring) throws IOException {
         int count = 0;
         BufferedReader reader = null;
@@ -121,6 +149,15 @@ public final class Utils {
             index += substring.length();
         }
         return count;
+    }
+
+    public static File getApkCacheDir(Context context) {
+        File apkCacheDir = new File(
+                StorageUtils.getCacheDirectory(context, true), "apks");
+        if (!apkCacheDir.exists()) {
+            apkCacheDir.mkdir();
+        }
+        return apkCacheDir;
     }
 
 }

@@ -39,7 +39,7 @@ class OldContextCompatImpl extends ContextCompat {
     public File getExternalCacheDir() {
         File file = new File(Environment.getExternalStorageDirectory(),
                 "Android/data/org.fdroid.fdroid/cache");
-        if(!file.exists())
+        if (!file.exists())
             file.mkdirs();
         return file;
     }

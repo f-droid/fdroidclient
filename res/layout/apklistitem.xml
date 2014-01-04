@@ -15,7 +15,7 @@
 		android:textSize="18sp" />
 
   <TextView android:id="@+id/status"
-		android:textSize="12sp"
+		android:textSize="13sp"
 		android:maxLines="2"
 		android:ellipsize="end"
 		android:layout_below="@id/version"
@@ -23,28 +23,36 @@
 		android:layout_width="wrap_content" />
 
   <TextView android:id="@+id/added"
-		android:textSize="12sp"
+		android:textSize="13sp"
 		android:layout_below="@id/status"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
 
   <TextView android:id="@+id/buildtype"
-		android:textSize="12sp"
+		android:textSize="13sp"
 		android:layout_alignParentRight="true"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:layout_marginBottom="4sp" />
 
   <TextView android:id="@+id/size"
-		android:textSize="12sp"
+		android:textSize="13sp"
 		android:layout_below="@id/buildtype"
 		android:layout_alignParentRight="true"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:layout_marginBottom="4sp" />
 
+  <TextView android:id="@+id/api"
+		android:textSize="13sp"
+		android:layout_below="@id/buildtype"
+		android:layout_toLeftOf="@id/size"
+		android:layout_marginRight="16sp"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content" />
+
   <TextView android:id="@+id/nativecode"
-		android:textSize="12sp"
+		android:textSize="13sp"
 		android:layout_below="@id/size"
 		android:layout_alignParentRight="true"
 		android:layout_height="wrap_content"

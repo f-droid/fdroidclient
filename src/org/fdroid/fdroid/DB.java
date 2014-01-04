@@ -105,7 +105,7 @@ public class DB {
             + "lastUpdated string," + "compatible int not null,"
             + "ignoreAllUpdates int not null,"
             + "ignoreThisUpdate int not null,"
-            + "provides string," + "primary key(id));";
+            + "primary key(id));";
 
     public static class App implements Comparable<App> {
 
@@ -123,7 +123,6 @@ public class DB {
             detail_dogecoinAddr = null;
             detail_webURL = null;
             categories = null;
-            provides = null;
             antiFeatures = null;
             requirements = null;
             hasUpdates = false;
@@ -197,9 +196,6 @@ public class DB {
         public String installedVersion;
         public int installedVerCode;
         public boolean userInstalled;
-
-        // List of app IDs that this app provides or null if there aren't any.
-        public CommaSeparatedList provides;
 
         // List of categories (as defined in the metadata
         // documentation) or null if there aren't any.
@@ -374,10 +370,11 @@ public class DB {
                     }
                 }
 
-                cpuAbis = new ArrayList<String>();
-                if (hasApi(8))
-                    cpuAbis.add(android.os.Build.CPU_ABI2);
+                cpuAbis = new ArrayList<String>(2);
                 cpuAbis.add(android.os.Build.CPU_ABI);
+                if (hasApi(8)) {
+                    cpuAbis.add(android.os.Build.CPU_ABI2);
+                }
 
                 Log.d("FDroid", logMsg.toString());
             }
@@ -410,8 +407,7 @@ public class DB {
                 }
                 if (!compatibleApi(apk.nativecode)) {
                     Log.d("FDroid", apk.id + " vercode " + apk.vercode
-                            + " makes use of incompatible native code: "
-                            + CommaSeparatedList.str(apk.nativecode)
+                            + " only supports " + CommaSeparatedList.str(apk.nativecode)
                             + " while your architecture is " + cpuAbis.get(0));
                     return false;
                 }
@@ -434,6 +430,7 @@ public class DB {
         public String address;
         public String name;
         public String description;
+        public int version; // index version, i.e. what fdroidserver built it - 0 if not specified
         public boolean inuse;
         public int priority;
         public String pubkey; // null for an unsigned repo
@@ -442,7 +439,7 @@ public class DB {
         public String lastetag; // last etag we updated from, null forces update
     }
 
-    private final int DBVersion = 32;
+    private final int DBVersion = 34;
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -508,6 +505,7 @@ public class DB {
                     mContext.getString(R.string.default_repo_name));
             values.put("description",
                     mContext.getString(R.string.default_repo_description));
+            values.put("version", 0);
             String pubkey = mContext.getString(R.string.default_repo_pubkey);
             String fingerprint = DB.calcFingerprint(pubkey);
             values.put("pubkey", pubkey);
@@ -525,9 +523,11 @@ public class DB {
                     mContext.getString(R.string.default_repo_name2));
             values.put("description",
                     mContext.getString(R.string.default_repo_description2));
+            values.put("version", 0);
             // default #2 is /archive which has the same key as /repo
             values.put("pubkey", pubkey);
             values.put("fingerprint", fingerprint);
+            values.put("maxage", 0);
             values.put("inuse", 0);
             values.put("priority", 20);
             values.put("lastetag", (String) null);
@@ -615,16 +615,12 @@ public class DB {
             if (oldVersion < 30) {
                 db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null default 0");
             }
+
+            if (oldVersion < 34) {
+                db.execSQL("alter table " + TABLE_REPO + " add column version integer not null default 0");
+            }
         }
 
-    }
-
-    /**
-     * Get the local storage (cache) path. This will also create it if
-     * it doesn't exist. It can return null if it's currently unavailable.
-     */
-    public static File getDataPath(Context ctx) {
-        return ContextCompat.create(ctx).getExternalCacheDir();
     }
 
     private Context mContext;
@@ -803,16 +799,23 @@ public class DB {
             }
         }
 
-        Map<String, App> apps = new HashMap<String, App>();
-        Cursor c = null;
+        // Start the map at the actual number of apps we will have
+        Cursor c = db.rawQuery("select count(*) from "+TABLE_APP, null);
+        c.moveToFirst();
+        int count = c.getInt(0);
+        c.close();
+        c = null;
+
+        Log.d("FDroid", "Will be fetching " + count + " apps, and this took us ");
+
+        Map<String, App> apps = new HashMap<String, App>(count);
         long startTime = System.currentTimeMillis();
         try {
 
             String cols[] = new String[] { "antiFeatures", "requirements",
                     "categories", "id", "name", "summary", "icon", "license",
                     "curVersion", "curVercode", "added", "lastUpdated",
-                    "compatible", "ignoreAllUpdates", "ignoreThisUpdate",
-                    "provides" };
+                    "compatible", "ignoreAllUpdates", "ignoreThisUpdate" };
             c = db.query(TABLE_APP, cols, null, null, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -838,7 +841,6 @@ public class DB {
                 app.compatible = c.getInt(12) == 1;
                 app.ignoreAllUpdates = c.getInt(13) == 1;
                 app.ignoreThisUpdate = c.getInt(14);
-                app.provides = DB.CommaSeparatedList.make(c.getString(15));
                 app.hasUpdates = false;
 
                 if (getinstalledinfo && systemApks.containsKey(app.id)) {
@@ -858,18 +860,13 @@ public class DB {
                 }
 
                 apps.put(app.id, app);
-                if (app.provides != null) {
-                    for (String id : app.provides) {
-                        apps.put(id, app);
-                    }
-                }
 
                 c.moveToNext();
             }
             c.close();
             c = null;
 
-            Log.d("FDroid", "Read app data from database " + " (took "
+            Log.d("FDroid", "Read app data from database (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
             List<Repo> repos = getRepos();
@@ -928,7 +925,7 @@ public class DB {
                 c.close();
             }
 
-            Log.d("FDroid", "Read app and apk data from database " + " (took "
+            Log.d("FDroid", "Read app and apk data from database (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
         }
 
@@ -1020,7 +1017,7 @@ public class DB {
         try {
             String filter = "%" + query + "%";
             c = db.query(TABLE_APP, new String[] { "id" },
-                    "id like ? or provides like ? or name like ? or summary like ? or description like ?",
+                    "id like ? or name like ? or summary like ? or description like ?",
                     new String[] { filter, filter, filter, filter }, null, null, null);
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -1291,8 +1288,8 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(TABLE_REPO, new String[] { "address", "name",
-                "description", "inuse", "priority", "pubkey", "fingerprint",
-                "maxage", "lastetag" },
+                "description", "version", "inuse", "priority", "pubkey",
+                "fingerprint", "maxage", "lastetag" },
                     "id = ?", new String[] { Integer.toString(id) }, null, null, null);
             if (!c.moveToFirst())
                 return null;
@@ -1301,12 +1298,13 @@ public class DB {
             repo.address = c.getString(0);
             repo.name = c.getString(1);
             repo.description = c.getString(2);
-            repo.inuse = (c.getInt(3) == 1);
-            repo.priority = c.getInt(4);
-            repo.pubkey = c.getString(5);
-            repo.fingerprint = c.getString(6);
-            repo.maxage = c.getInt(7);
-            repo.lastetag = c.getString(8);
+            repo.version = c.getInt(3);
+            repo.inuse = (c.getInt(4) == 1);
+            repo.priority = c.getInt(5);
+            repo.pubkey = c.getString(6);
+            repo.fingerprint = c.getString(7);
+            repo.maxage = c.getInt(8);
+            repo.lastetag = c.getString(9);
             return repo;
         } finally {
             if (c != null)
@@ -1320,8 +1318,8 @@ public class DB {
         Cursor c = null;
         try {
             c = db.query(TABLE_REPO, new String[] { "id", "address", "name",
-                    "description", "inuse", "priority", "pubkey", "fingerprint",
-                    "maxage", "lastetag" },
+                "description", "version", "inuse", "priority", "pubkey",
+                "fingerprint", "maxage", "lastetag" },
                     null, null, null, null, "priority");
             c.moveToFirst();
             while (!c.isAfterLast()) {
@@ -1330,12 +1328,13 @@ public class DB {
                 repo.address = c.getString(1);
                 repo.name = c.getString(2);
                 repo.description = c.getString(3);
-                repo.inuse = (c.getInt(4) == 1);
-                repo.priority = c.getInt(5);
-                repo.pubkey = c.getString(6);
-                repo.fingerprint = c.getString(7);
-                repo.maxage = c.getInt(8);
-                repo.lastetag = c.getString(9);
+                repo.version = c.getInt(4);
+                repo.inuse = (c.getInt(5) == 1);
+                repo.priority = c.getInt(6);
+                repo.pubkey = c.getString(7);
+                repo.fingerprint = c.getString(8);
+                repo.maxage = c.getInt(9);
+                repo.lastetag = c.getString(10);
                 repos.add(repo);
                 c.moveToNext();
             }
@@ -1365,6 +1364,7 @@ public class DB {
         ContentValues values = new ContentValues();
         values.put("name", repo.name);
         values.put("description", repo.description);
+        values.put("version", repo.version);
         values.put("inuse", repo.inuse);
         values.put("priority", repo.priority);
         values.put("pubkey", repo.pubkey);
@@ -1388,12 +1388,14 @@ public class DB {
     }
 
     public void addRepo(String address, String name, String description,
-            int priority, String pubkey, String fingerprint, int maxage, boolean inuse)
+            int version, int priority, String pubkey, String fingerprint,
+            int maxage, boolean inuse)
                     throws SecurityException {
         ContentValues values = new ContentValues();
         values.put("address", address);
         values.put("name", name);
         values.put("description", description);
+        values.put("version", version);
         values.put("inuse", inuse ? 1 : 0);
         values.put("priority", priority);
         values.put("pubkey", pubkey);
