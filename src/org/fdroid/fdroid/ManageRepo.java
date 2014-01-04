@@ -375,7 +375,7 @@ public class ManageRepo extends ListActivity {
     private void createNewRepo(String address, String fingerprint) {
         try {
             DB db = DB.getDB();
-            db.addRepo(address, null, null, 10, null, fingerprint, 0, true);
+            db.addRepo(address, null, null, 0, 10, null, fingerprint, 0, true);
         } finally {
             DB.releaseDB();
         }
@@ -418,55 +418,6 @@ public class ManageRepo extends ListActivity {
 
         if (item.getItemId() == ADD_REPO) {
             showAddRepo();
-            return true;
-
-        case REM_REPO:
-            final List<String> rem_lst = new ArrayList<String>();
-            CharSequence[] b = new CharSequence[repos.size()];
-            for (int i = 0; i < repos.size(); i++) {
-                b[i] = repos.get(i).address;
-            }
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getString(R.string.repo_delete_title));
-            builder.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-            builder.setMultiChoiceItems(b, null,
-                    new DialogInterface.OnMultiChoiceClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton, boolean isChecked) {
-                            if (isChecked) {
-                                rem_lst.add(repos.get(whichButton).address);
-                            } else {
-                                rem_lst.remove(repos.get(whichButton).address);
-                            }
-                        }
-                    });
-            builder.setPositiveButton(getString(R.string.ok),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            try {
-                                DB db = DB.getDB();
-                                removeRepos(rem_lst);
-                            } finally {
-                                DB.releaseDB();
-                            }
-                            changed = true;
-                            redraw();
-                        }
-                    });
-            builder.setNegativeButton(getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            return;
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
             return true;
         }
 
