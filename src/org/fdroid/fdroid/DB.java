@@ -719,6 +719,10 @@ public class DB {
             if (oldVersion < 30) {
                 db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null default 0");
             }
+            
+            if (oldVersion < 33) {
+                db.execSQL("alter table " + TABLE_REPO + " add column version integer not null default 0");
+            }
 
             if (oldVersion < 35) {
                 if (!columnExists(db, TABLE_REPO, "lastUpdated"))
