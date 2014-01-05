@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="@dimen/padding_top"
+    android:paddingLeft="@dimen/padding_side"
+    android:paddingRight="@dimen/padding_side">
+
+    <!-- Editable URL of this repo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_repo_url"
+        android:text="@string/repo_url"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_repo_url"
+        android:inputType="textUri"
+        android:layout_below="@id/label_repo_url" />
+
+    <!-- Name of this repo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_repo_name"
+        android:text="@string/repo_name"
+        android:layout_below="@id/input_repo_url"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="@dimen/form_label_top"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:id="@+id/text_repo_name"
+        android:layout_below="@id/label_repo_name" android:textStyle="bold"/>
+
+    <!-- Description - as pulled from the index file during last update... -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_description"
+        android:text="@string/repo_description"
+        android:layout_below="@id/text_repo_name"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="@dimen/form_label_top"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:scrollHorizontally="false"
+        android:id="@+id/text_description"
+        android:layout_below="@id/label_description" android:textStyle="bold"/>
+
+    <!-- Number of apps belonging to this repo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_num_apps"
+        android:text="@string/repo_num_apps"
+        android:layout_below="@id/text_description"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="@dimen/form_label_top" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_num_apps"
+        android:layout_below="@id/label_num_apps" android:textStyle="bold"/>
+
+    <!-- The last time this repo was updated -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_last_update"
+        android:text="@string/repo_last_update"
+        android:layout_below="@id/text_num_apps"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="@dimen/form_label_top" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_last_update"
+        android:layout_below="@id/label_last_update" android:textStyle="bold"/>
+
+    <!-- Signature (or "unsigned" if none) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/label_signature"
+        android:text="@string/repo_signature"
+        android:layout_below="@id/text_last_update"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="@dimen/form_label_top" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:scrollHorizontally="false"
+        android:id="@+id/text_signature"
+        android:layout_below="@id/label_signature" android:textStyle="bold"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:scrollHorizontally="false"
+        android:id="@+id/text_signature_description"
+        android:layout_below="@id/text_signature"/>
+
+    <!-- The last time this repo was updated -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_not_yet_updated"
+        android:layout_below="@id/input_repo_url"
+        android:text="@string/repo_not_yet_updated"
+        android:textStyle="bold"
+        android:paddingTop="@dimen/form_label_top"/>
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_centerHorizontal="true"
+        android:text="@string/repo_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_not_yet_updated"/>
+
+</RelativeLayout>

@@ -27,13 +27,10 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
-import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -59,8 +56,6 @@ public class FDroid extends FragmentActivity {
     private static final int PREFERENCES = Menu.FIRST + 2;
     private static final int ABOUT = Menu.FIRST + 3;
     private static final int SEARCH = Menu.FIRST + 4;
-
-    private ProgressDialog pd;
 
     private ViewPager viewPager;
 
@@ -132,11 +127,6 @@ public class FDroid extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
-        MenuItem update = menu.add(Menu.NONE, UPDATE_REPO, 1, R.string.menu_update_repo).setIcon(
-                android.R.drawable.ic_menu_rotate);
-        MenuItemCompat.setShowAsAction(update,
-                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
-                    MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
@@ -236,7 +226,7 @@ public class FDroid extends FragmentActivity {
         case REQUEST_APPDETAILS:
             break;
         case REQUEST_MANAGEREPOS:
-            if (data.hasExtra("update")) {
+            if (data.hasExtra(ManageRepo.REQUEST_UPDATE)) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
                 ask_alrt.setTitle(getString(R.string.repo_update_title));
                 ask_alrt.setIcon(android.R.drawable.ic_menu_rotate);
@@ -246,7 +236,7 @@ public class FDroid extends FragmentActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                                updateRepos();
+                            updateRepos();
                             }
                         });
                 ask_alrt.setNegativeButton(getString(R.string.no),
@@ -254,6 +244,7 @@ public class FDroid extends FragmentActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
+                                // do nothing
                             }
                         });
                 AlertDialog alert = ask_alrt.create();
@@ -298,34 +289,6 @@ public class FDroid extends FragmentActivity {
         });
     }
 
-    // For receiving results from the UpdateService when we've told it to
-    // update in response to a user request.
-    private class UpdateReceiver extends ResultReceiver {
-        public UpdateReceiver(Handler handler) {
-            super(handler);
-        }
-
-        @Override
-        protected void onReceiveResult(int resultCode, Bundle resultData) {
-            String message = resultData.getString(UpdateService.RESULT_MESSAGE);
-            boolean finished = false;
-            if (resultCode == UpdateService.STATUS_ERROR) {
-                Toast.makeText(FDroid.this, message, Toast.LENGTH_LONG).show();
-                finished = true;
-            } else if (resultCode == UpdateService.STATUS_CHANGES) {
-                repopulateViews();
-                finished = true;
-            } else if (resultCode == UpdateService.STATUS_SAME) {
-                finished = true;
-            } else if (resultCode == UpdateService.STATUS_INFO) {
-                pd.setMessage(message);
-            }
-
-            if (finished && pd.isShowing())
-                pd.dismiss();
-        }
-    }
-
     /**
      * The first time the app is run, we will have an empty app list.
      * If this is the case, we will attempt to update with the default repo.
@@ -351,16 +314,14 @@ public class FDroid extends FragmentActivity {
     // is told to do the update, which will result in the database changing. The
     // UpdateReceiver class should get told when this is finished.
     public void updateRepos() {
-
-        pd = ProgressDialog.show(this, getString(R.string.process_wait_title),
-                getString(R.string.process_update_msg), true, true);
-        pd.setIcon(android.R.drawable.ic_dialog_info);
-        pd.setCanceledOnTouchOutside(false);
-
-        Intent intent = new Intent(this, UpdateService.class);
-        UpdateReceiver mUpdateReceiver = new UpdateReceiver(new Handler());
-        intent.putExtra("receiver", mUpdateReceiver);
-        startService(intent);
+        UpdateService.updateNow(this).setListener(new ProgressListener() {
+            @Override
+            public void onProgress(Event event) {
+                if (event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES){
+                    repopulateViews();
+                }
+            }
+        });
     }
 
     private TabManager getTabManager() {

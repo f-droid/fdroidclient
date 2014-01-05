@@ -22,6 +22,9 @@ package org.fdroid.fdroid;
 import android.annotation.SuppressLint;
 import java.io.File;
 import java.security.MessageDigest;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -423,7 +426,7 @@ public class DB {
             + "name text, description text, inuse integer not null, "
             + "priority integer not null, pubkey text, fingerprint text, "
             + "maxage integer not null default 0, "
-            + "lastetag text);";
+            + "lastetag text, lastUpdated string);";
 
     public static class Repo {
         public int id;
@@ -437,9 +440,107 @@ public class DB {
         public String fingerprint; // always null for an unsigned repo
         public int maxage; // maximum age of index that will be accepted - 0 for any
         public String lastetag; // last etag we updated from, null forces update
+        public Date lastUpdated;
+
+        /**
+         * If we haven't run an update for this repo yet, then the name
+         * will be unknown, in which case we will just take a guess at an
+         * appropriate name based on the url (e.g. "fdroid.org/archive")
+         */
+        public String getName() {
+            if (name == null) {
+                String tempName = null;
+                try {
+                    URL url = new URL(address);
+                    tempName = url.getHost() + url.getPath();
+                } catch (MalformedURLException e) {
+                    tempName = address;
+                }
+                return tempName;
+            } else {
+                return name;
+            }
+        }
+
+        public String toString() {
+            return address;
+        }
+
+        public int getNumberOfApps() {
+            DB db = DB.getDB();
+            int count = db.countAppsForRepo(id);
+            DB.releaseDB();
+            return count;
+        }
+
+        /**
+         * @param application In order invalidate the list of apps, we require
+         *                    a reference to the top level application.
+         */
+        public void enable(FDroidApp application) {
+            try {
+                DB db = DB.getDB();
+                List<DB.Repo> toEnable = new ArrayList<DB.Repo>(1);
+                toEnable.add(this);
+                db.enableRepos(toEnable);
+            } finally {
+                DB.releaseDB();
+            }
+            application.invalidateAllApps();
+        }
+
+        /**
+         * @param application See DB.Repo.enable(application)
+         */
+        public void disable(FDroidApp application) {
+            disableRemove(application, false);
+        }
+
+        /**
+         * @param application See DB.Repo.enable(application)
+         */
+        public void remove(FDroidApp application) {
+            disableRemove(application, true);
+        }
+
+        /**
+         * @param application See DB.Repo.enable(application)
+         */
+        private void disableRemove(FDroidApp application, boolean removeAfterDisabling) {
+            try {
+                DB db = DB.getDB();
+                List<DB.Repo> toDisable = new ArrayList<DB.Repo>(1);
+                toDisable.add(this);
+                db.doDisableRepos(toDisable, removeAfterDisabling);
+            } finally {
+                DB.releaseDB();
+            }
+            application.invalidateAllApps();
+        }
+
+        public boolean isSigned() {
+            return this.pubkey != null && this.pubkey.length() > 0;
+        }
+
+        public boolean hasBeenUpdated() {
+            return this.lastetag != null;
+        }
     }
 
-    private final int DBVersion = 34;
+    private final int DBVersion = 35;
+
+    private int countAppsForRepo(int id) {
+        String[] selection     = { "COUNT(distinct id)" };
+        String[] selectionArgs = { Integer.toString(id) };
+        Cursor result = db.query(
+        TABLE_APK, selection, "repo = ?", selectionArgs, "repo", null, null);
+        if (result.getCount() > 0) {
+            result.moveToFirst();
+            return result.getInt(0);
+        } else {
+            return 0;
+        }
+    }
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
@@ -537,6 +638,9 @@ public class DB {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+            Log.i("FDroid", "Upgrading database from v" + oldVersion + " v"
+                + newVersion );
+
             // Migrate repo list to new structure. (No way to change primary
             // key in sqlite - table must be recreated)
             if (oldVersion < 20) {
@@ -580,8 +684,8 @@ public class DB {
                 ContentValues values = new ContentValues();
                 values.put("name", mContext.getString(R.string.default_repo_name));
                 values.put("description", mContext.getString(R.string.default_repo_description));
-                db.update(TABLE_REPO, values, "address = ?", new String[] {
-                    mContext.getString(R.string.default_repo_address) });
+                db.update(TABLE_REPO, values, "address = ?", new String[]{
+                        mContext.getString(R.string.default_repo_address)});
                 values.clear();
                 values.put("name", mContext.getString(R.string.default_repo_name2));
                 values.put("description", mContext.getString(R.string.default_repo_description2));
@@ -615,9 +719,14 @@ public class DB {
             if (oldVersion < 30) {
                 db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null default 0");
             }
-
-            if (oldVersion < 34) {
+            
+            if (oldVersion < 33) {
                 db.execSQL("alter table " + TABLE_REPO + " add column version integer not null default 0");
+            }
+
+            if (oldVersion < 35) {
+                if (!columnExists(db, TABLE_REPO, "lastUpdated"))
+                    db.execSQL("Alter table " + TABLE_REPO + " add column lastUpdated string");
             }
         }
 
@@ -1289,7 +1398,7 @@ public class DB {
         try {
             c = db.query(TABLE_REPO, new String[] { "address", "name",
                 "description", "version", "inuse", "priority", "pubkey",
-                "fingerprint", "maxage", "lastetag" },
+                "fingerprint", "maxage", "lastetag", "lastUpdated" },
                     "id = ?", new String[] { Integer.toString(id) }, null, null, null);
             if (!c.moveToFirst())
                 return null;
@@ -1305,6 +1414,13 @@ public class DB {
             repo.fingerprint = c.getString(7);
             repo.maxage = c.getInt(8);
             repo.lastetag = c.getString(9);
+            try {
+                repo.lastUpdated =  c.getString(10) != null ?
+                    mDateFormat.parse( c.getString(10)) :
+                    null;
+            } catch (ParseException e) {
+                Log.e("FDroid", "Error parsing date " + c.getString(10));
+            }
             return repo;
         } finally {
             if (c != null)
@@ -1347,6 +1463,27 @@ public class DB {
         return repos;
     }
 
+    public void enableRepos(List<DB.Repo> repos) {
+        if (repos.isEmpty()) return;
+
+        ContentValues values = new ContentValues(1);
+        values.put("inuse", 1);
+
+        String[] whereArgs  = new String[repos.size()];
+        StringBuilder where = new StringBuilder("address IN (");
+        for (int i = 0; i < repos.size(); i ++) {
+            Repo repo = repos.get(i);
+            repo.inuse = true;
+            whereArgs[i] = repo.address;
+            where.append('?');
+            if ( i < repos.size() - 1 ) {
+                where.append(',');
+            }
+        }
+        where.append(")");
+        db.update(TABLE_REPO, values, where.toString(), whereArgs);
+    }
+
     public void changeServerStatus(String address) {
         db.execSQL("update " + TABLE_REPO
                 + " set inuse=1-inuse, lastetag=null where address = ?",
@@ -1361,8 +1498,17 @@ public class DB {
     }
 
     public void updateRepoByAddress(Repo repo) {
+        updateRepo(repo, "address", repo.address);
+    }
+
+    public void updateRepo(Repo repo) {
+        updateRepo(repo, "id", repo.id + "");
+    }
+
+    private void updateRepo(Repo repo, String field, String value) {
         ContentValues values = new ContentValues();
         values.put("name", repo.name);
+        values.put("address", repo.address);
         values.put("description", repo.description);
         values.put("version", repo.version);
         values.put("inuse", repo.inuse);
@@ -1376,13 +1522,24 @@ public class DB {
         }
         values.put("maxage", repo.maxage);
         values.put("lastetag", (String) null);
-        db.update(TABLE_REPO, values, "address = ?",
-                new String[] { repo.address });
+        db.update(TABLE_REPO, values, field + " = ?",
+                new String[] { value });
+    }
+
+    /**
+     * Updates the lastUpdated time for every enabled repo.
+     */
+    public void refreshLastUpdates() {
+        ContentValues values = new ContentValues();
+        values.put("lastUpdated", mDateFormat.format(new Date()));
+        db.update(TABLE_REPO, values, "inuse = 1",
+                new String[] {});
     }
 
     public void writeLastEtag(Repo repo) {
         ContentValues values = new ContentValues();
         values.put("lastetag", repo.lastetag);
+        values.put("lastUpdated", mDateFormat.format(new Date()));
         db.update(TABLE_REPO, values, "address = ?",
                 new String[] { repo.address });
     }
@@ -1415,18 +1572,23 @@ public class DB {
         db.insert(TABLE_REPO, null, values);
     }
 
-    public void doDisableRepos(List<String> addresses, boolean remove) {
-        if (addresses.isEmpty()) return;
+    public void doDisableRepos(List<Repo> repos, boolean remove) {
+        if (repos.isEmpty()) return;
         db.beginTransaction();
-        try {
-            for (String address : addresses) {
 
+        // TODO: Replace with
+        //   "delete from apk join repo where repo in (?, ?, ...)
+        //   "update repo set inuse = 0 | delete from repo ] where repo in (?, ?, ...)
+        try {
+            for (Repo repo : repos) {
+
+                String address = repo.address;
                 // Before removing the repo, remove any apks that are
                 // connected to it...
                 Cursor c = null;
                 try {
-                    c = db.query(TABLE_REPO, new String[] { "id" },
-                            "address = ?", new String[] { address },
+                    c = db.query(TABLE_REPO, new String[]{"id"},
+                            "address = ?", new String[]{address},
                             null, null, null, null);
                     c.moveToFirst();
                     if (!c.isAfterLast()) {
@@ -1441,6 +1603,13 @@ public class DB {
                 if (remove)
                     db.delete(TABLE_REPO, "address = ?",
                             new String[] { address });
+                else {
+                    ContentValues values = new ContentValues(2);
+                    values.put("inuse", 0);
+                    values.put("lastetag", (String)null);
+                    db.update(TABLE_REPO, values, "address = ?",
+                            new String[] { address });
+                }
             }
             List<App> apps = getApps(false);
             for (App app : apps) {

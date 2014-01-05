@@ -184,7 +184,7 @@ abstract public class RepoUpdater {
                         new BufferedReader(new FileReader(indexFile)));
 
                 reader.parse(is);
-                updateRepo(handler.getPubKey(), handler.getMaxAge());
+                updateRepo(handler);
             }
         } catch (SAXException e) {
             throw new UpdateException(
@@ -210,29 +210,49 @@ abstract public class RepoUpdater {
         }
     }
 
-    private void updateRepo(String publicKey, int maxAge) {
-        boolean changed = false;
+    private void updateRepo(RepoXMLHandler handler) {
+
+        boolean repoChanged = false;
 
         // We read an unsigned index, but that indicates that
         // a signed version is now available...
-        if (publicKey != null && repo.pubkey == null) {
-            changed = true;
+        if (handler.getPubKey() != null && repo.pubkey == null) {
             // TODO: Spend the time *now* going to get the etag of the signed
             // repo, so that we can prevent downloading it next time. Otherwise
             // next time we update, we have to download the signed index
             // in its entirety, regardless of if it contains the same
             // information as the unsigned one does not...
-            Log.d("FDroid", "Public key found - switching to signed repo " +
-                    "for future updates");
-            repo.pubkey = publicKey;
+            Log.d("FDroid",
+                    "Public key found - switching to signed repo for future updates");
+            repo.pubkey = handler.getPubKey();
+            repoChanged = true;
         }
 
-        if (repo.maxage != maxAge) {
-            changed = true;
-            repo.maxage = maxAge;
+        if (handler.getVersion() != -1 && handler.getVersion() != repo.version) {
+            Log.d("FDroid", "Repo specified a new version: from "
+                    + repo.version + " to " + handler.getVersion());
+            repo.version = handler.getVersion();
+            repoChanged = true;
+        }
+        
+        if (handler.getMaxAge() != -1 && handler.getMaxAge() != repo.maxage) {
+            Log.d("FDroid",
+                    "Repo specified a new maximum age - updated");
+            repo.maxage = handler.getMaxAge();
+            repoChanged = true;
         }
 
-        if (changed) {
+        if (handler.getDescription() != null && !handler.getDescription().equals(repo.description)) {
+            repo.description = handler.getDescription();
+            repoChanged = true;
+        }
+
+        if (handler.getName() != null && !handler.getName().equals(repo.name)) {
+            repo.name = handler.getName();
+            repoChanged = true;
+        }
+
+        if (repoChanged) {
             try {
                 DB db = DB.getDB();
                 db.updateRepoByAddress(repo);

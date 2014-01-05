@@ -7,10 +7,11 @@
 	<string name="installIncompatible">It seems like this package is not compatible with your device. Do you want to try and install it anyway?</string>
 	<string name="installDowngrade">You are trying to downgrade this application. Doing so might get it to malfunction and even lose your data. Do you want to try and downgrade it anyway?</string>
 	<string name="version">Version</string>
+	<string name="edit">Edit</string>
+	<string name="delete">Delete</string>
 	<string name="cache_downloaded">App cache</string>
 	<string name="cache_downloaded_on">Keep downloaded apk files on SD card</string>
 	<string name="cache_downloaded_off">Do not keep any apk files</string>
-
 	<string name="updates">Updates</string>
 	<string name="other">Other</string>
 	<string name="last_update_check">Last repo scan: %s</string>
@@ -74,7 +75,7 @@
 	<string name="download_server">Getting application from</string>
 
 	<string name="repo_add_url">Repository address</string>
-	<string name="repo_add_fingerprint">fingerprint (optional)</string>
+	<string name="repo_add_fingerprint">Fingerprint (optional)</string>
 	<string name="repo_exists">This repo already exists!</string>
 	<string name="repo_exists_add_fingerprint">This repo is already setup, this will add new key information.</string>
 	<string name="repo_exists_enable">This repo is already setup, confirm that you want to re-enable it.</string>
@@ -86,7 +87,7 @@
 		want to update them?</string>
 
 	<string name="menu_update_repo">Update Repos</string>
-	<string name="menu_manage">Manage Repos</string>
+	<string name="menu_manage">Repositories</string>
 	<string name="menu_preferences">Preferences</string>
 	<string name="menu_about">About</string>
 	<string name="menu_search">Search</string>
@@ -163,6 +164,36 @@
 	<string name="compactlayout_on">Show icons at a smaller size</string>
 	<string name="compactlayout_off">Show icons at regular size</string>
     <string name="theme">Theme</string>
+    <string name="unsigned">Unsigned</string>
+    <string name="repo_url">URL</string>
+    <string name="repo_num_apps"># of apps</string>
+    <string name="repo_signature">Signature</string>
+    <string name="repo_description">Description</string>
+    <string name="repo_last_update">Last update</string>
+    <string name="repo_update">Update</string>
+    <string name="repo_name">Name</string>
+    <string name="unsigned_description">This means that the list of
+        applications could not be verified. You should be careful
+        with applications downloaded from unsigned indexes.</string>
+    <string name="repo_not_yet_updated">This repository has not been used yet.
+        In order to view the apps it provides, you will need to update
+        it.\n\nOnce updated, the description and other details will
+        become available here.
+    </string>
+    <string name="repo_delete_details">Do you want to delete the \"{0}\"
+        repository, which has {1} apps in it? Any installed apps will NOT be
+        removed, but you will not be able to update them through F-Droid any
+        more.
+    </string>
+    <string name="unknown">Unknown</string>
+    <string name="repo_confirm_delete_title">Delete Repository?</string>
+    <string name="repo_confirm_delete_body">Deleting a repository means
+        apps from it will no longer be available from F-Droid.\n\nNote: All
+        previously installed apps will remain on your device.
+    </string>
+    <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
+        need to re-enable this repository to install apps from it.
+    </string>
     <string name="minsdk_or_later">Android %s or later</string>
 
 </resources>
