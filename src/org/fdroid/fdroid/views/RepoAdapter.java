@@ -63,13 +63,22 @@ public class RepoAdapter extends BaseAdapter {
             switchView = addSwitchToView(view);
         } else {
             switchView = (CompoundButton)view.findViewById(SWITCH_ID);
+
+            // Remove old listener (because we are reusing this view, we don't want
+            // to invoke the listener for the last repo to use it - particularly
+            // because we are potentially about to change the checked status
+            // which would in turn invoke this listener....
+            switchView.setOnCheckedChangeListener(null);
         }
 
         switchView.setChecked(repository.inuse);
+
+        // Add this listener *after* setting the checked status, so we don't
+        // invoke the listener while setting up the view...
         switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            activity.setRepoEnabled(repository, isChecked);
+                activity.setRepoEnabled(repository, isChecked);
             }
         });
 
