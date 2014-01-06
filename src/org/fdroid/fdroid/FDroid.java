@@ -131,11 +131,8 @@ public class FDroid extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
-        MenuItem update = menu.add(Menu.NONE, UPDATE_REPO, 1, R.string.menu_update_repo).setIcon(
+        menu.add(Menu.NONE, UPDATE_REPO, 1, R.string.menu_update_repo).setIcon(
                 android.R.drawable.ic_menu_rotate);
-        MenuItemCompat.setShowAsAction(update,
-                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
-                    MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(

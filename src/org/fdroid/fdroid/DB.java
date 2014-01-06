@@ -422,6 +422,7 @@ public class DB {
             + "name text, description text, inuse integer not null, "
             + "priority integer not null, pubkey text, fingerprint text, "
             + "maxage integer not null default 0, "
+            + "version integer not null default 0, "
             + "lastetag text);";
 
     public static class Repo {
