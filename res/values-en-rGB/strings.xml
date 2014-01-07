@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="notify_updates_available">Powiadom gdy będDroid Fire</string>
-  <string name="update_history">Historia aktualizacji</string>
-  <string name="about_mail">Email:</string>
-  <string name="about_version">Wersja:</string>
-  <string name="category_whatsnew">Co nowego</string>
-</resources>
