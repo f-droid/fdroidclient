@@ -46,6 +46,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import org.fdroid.fdroid.compat.Compatibility;
@@ -881,6 +882,25 @@ public class DB {
             c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
             c.moveToFirst();
+
+            DisplayMetrics metrics = mContext.getResources()
+                .getDisplayMetrics();
+            String iconsDir = null;
+            if (metrics.densityDpi >= 640) {
+                iconsDir = "/icons-640/";
+            } else if (metrics.densityDpi >= 480) {
+                iconsDir = "/icons-480/";
+            } else if (metrics.densityDpi >= 320) {
+                iconsDir = "/icons-320/";
+            } else if (metrics.densityDpi >= 240) {
+                iconsDir = "/icons-240/";
+            } else if (metrics.densityDpi >= 160) {
+                iconsDir = "/icons-160/";
+            } else {
+                iconsDir = "/icons-120/";
+            }
+            metrics = null;
+
             while (!c.isAfterLast()) {
                 String id = c.getString(0);
                 App app = apps.get(id);
@@ -908,11 +928,13 @@ public class DB {
                 app.apks.add(apk);
                 if (app.iconUrl == null && app.icon != null) {
                     for (DB.Repo repo : repos) {
-                        if (repo.id == repoid) {
-                            app.iconUrl =
-                                repo.address + "/icons/" + app.icon;
-                            break;
+                        if (repo.id != repoid) continue;
+                        if (repo.version >= 11) {
+                            app.iconUrl = repo.address + iconsDir + app.icon;
+                        } else {
+                            app.iconUrl = repo.address + "/icons/" + app.icon;
                         }
+                        break;
                     }
                 }
                 c.moveToNext();
