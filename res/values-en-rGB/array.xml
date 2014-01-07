@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="updateIntervalNames">
-    <item>从不</item>
-    <item>每个小时</item>
-    <item>每4个小时</item>
-    <item>每12个小时</item>
-    <item>每天</item>
+    <item>Nigdy</item>
+    <item>Hourly</item>
+    <item>Every 4 Hours</item>
+    <item>Every 12 Hours</item>
+    <item>Daily</item>
   </string-array>
   <string-array name="themeNames">
     <item>Dark</item>
     <item>Light</item>
   </string-array>
   <string-array name="dbSyncModeNames">
-    <item>关闭(存在安全风险)</item>
-    <item>正常</item>
-    <item>完整的</item>
+    <item>Off (unsafe)</item>
+    <item>Normal</item>
+    <item>Full</item>
   </string-array>
 </resources>

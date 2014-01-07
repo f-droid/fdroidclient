@@ -48,6 +48,9 @@ Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</strin
   <string name="repo_add_title">Paketquelle hinzufügen</string>
   <string name="repo_add_add">Hinzufügen</string>
   <string name="cancel">Abbrechen</string>
+  <string name="enable">Aktivieren</string>
+  <string name="add_key">Schlüssel hinzufügen</string>
+  <string name="overwrite">Überschreiben</string>
   <string name="repo_delete_title">Zu entfernende Paketquelle auswählen</string>
   <string name="repo_update_title">Paketquellen aktualisieren</string>
   <string name="tab_installed">Installiert</string>
@@ -60,6 +63,12 @@ Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</strin
   <string name="process_update_msg">Anwendungsliste wird aktualisiert …</string>
   <string name="download_server">Anwendung wird heruntergeladen von</string>
   <string name="repo_add_url">Adresse der Paketquelle</string>
+  <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
+  <string name="repo_exists">Diese Paketquelle existiert bereits!</string>
+  <string name="repo_exists_add_fingerprint">Diese Paketquelle ist bereits eingerichtet, dieses wird neue Schlüsselinformationen hinzuzufügen.</string>
+  <string name="repo_exists_enable">Diese Paketquelle ist bereits eingerichtet, bestätigen, dass Sie diese wieder aktivieren möchten.</string>
+  <string name="repo_exists_and_enabled">Die eingehende Paketquelle ist bereits eingerichtet und aktiviert!</string>
+  <string name="repo_delete_to_overwrite">Sie müssen zuerst diese Paketquelle löschen, bevor Sie eine mit einem anderen Schlüssel hinzuzufügen!</string>
   <string name="repo_alrt">Die Liste der genutzten Paketquellen hat sich geändert.
 Sollen diese aktualisiert werden?</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
@@ -69,7 +78,7 @@ Sollen diese aktualisiert werden?</string>
   <string name="menu_search">Suchen</string>
   <string name="menu_add_repo">Paketquelle hinzufügen</string>
   <string name="menu_rem_repo">Paketquelle entfernen</string>
-  <string name="menu_launch">Ausführen</string>
+  <string name="menu_launch">Starten</string>
   <string name="menu_share">Empfehlen</string>
   <string name="menu_install">Installieren</string>
   <string name="menu_uninstall">Entfernen</string>
@@ -89,6 +98,7 @@ Sollen diese aktualisiert werden?</string>
   <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht freie Erweiterungen</string>
   <string name="antinonfreenetlist">Diese Anwendung bewirbt nicht freie Netzwerkdienste</string>
   <string name="antinonfreedeplist">Diese Anwendung hängt ab von nicht freien Anwendungen</string>
+  <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig frei</string>
   <string name="display">Anzeige</string>
   <string name="expert">Experte</string>
   <string name="expert_mode">Expertenmodus einschalten</string>
