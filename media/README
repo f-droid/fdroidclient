@@ -1,3 +1,4 @@
-Most of the SVG files found in here are in the Inkscape format, i.e. they
-might need conversion to plain SVG if you plan to use them on web pages, for
-example. If that is not done, the renders might look different.
+Most of the SVG files found in here are in the Inkscape format You should
+convert them to plain SVG with Inkscape if you would like to use them in a
+website, for example. Depending on the viewer/browser, the resulting look of
+the SVG might differ.
