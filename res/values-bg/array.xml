@@ -7,6 +7,10 @@
     <item>През 12 часа</item>
     <item>Всеки ден</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Dark</item>
+    <item>Light</item>
+  </string-array>
   <string-array name="dbSyncModeNames">
     <item>Изключено (опасно)</item>
     <item>Нормално</item>

@@ -47,6 +47,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.preference.PreferenceManager;
 import android.text.TextUtils.SimpleStringSplitter;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import org.fdroid.fdroid.compat.Compatibility;
@@ -705,16 +706,8 @@ public class DB {
             }
         }
 
-        // Start the map at the actual number of apps we will have
-        Cursor c = db.rawQuery("select count(*) from "+TABLE_APP, null);
-        c.moveToFirst();
-        int count = c.getInt(0);
-        c.close();
-        c = null;
-
-        Log.d("FDroid", "Will be fetching " + count + " apps, and this took us ");
-
-        Map<String, App> apps = new HashMap<String, App>(count);
+        Map<String, App> apps = new HashMap<String, App>();
+        Cursor c = null;
         long startTime = System.currentTimeMillis();
         try {
 
@@ -772,7 +765,7 @@ public class DB {
             c.close();
             c = null;
 
-            Log.d("FDroid", "Read app data from database (took "
+            Log.d("FDroid", "Read app data from database " + " (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
             List<Repo> repos = getRepos();
@@ -784,6 +777,25 @@ public class DB {
             c = db.query(TABLE_APK, cols, null, null, null, null,
                     "vercode desc");
             c.moveToFirst();
+
+            DisplayMetrics metrics = mContext.getResources()
+                .getDisplayMetrics();
+            String iconsDir = null;
+            if (metrics.densityDpi >= 640) {
+                iconsDir = "/icons-640/";
+            } else if (metrics.densityDpi >= 480) {
+                iconsDir = "/icons-480/";
+            } else if (metrics.densityDpi >= 320) {
+                iconsDir = "/icons-320/";
+            } else if (metrics.densityDpi >= 240) {
+                iconsDir = "/icons-240/";
+            } else if (metrics.densityDpi >= 160) {
+                iconsDir = "/icons-160/";
+            } else {
+                iconsDir = "/icons-120/";
+            }
+            metrics = null;
+
             while (!c.isAfterLast()) {
                 String id = c.getString(0);
                 App app = apps.get(id);
@@ -811,11 +823,13 @@ public class DB {
                 app.apks.add(apk);
                 if (app.iconUrl == null && app.icon != null) {
                     for (DB.Repo repo : repos) {
-                        if (repo.id == repoid) {
-                            app.iconUrl =
-                                repo.address + "/icons/" + app.icon;
-                            break;
+                        if (repo.id != repoid) continue;
+                        if (repo.version >= 11) {
+                            app.iconUrl = repo.address + iconsDir + app.icon;
+                        } else {
+                            app.iconUrl = repo.address + "/icons/" + app.icon;
                         }
+                        break;
                     }
                 }
                 c.moveToNext();
@@ -831,7 +845,7 @@ public class DB {
                 c.close();
             }
 
-            Log.d("FDroid", "Read app and apk data from database (took "
+            Log.d("FDroid", "Read app and apk data from database " + " (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
         }
 

@@ -151,7 +151,7 @@ public class ManageRepo extends ListActivity {
 
         DB.Repo repo = (DB.Repo)getListView().getItemAtPosition(position);
         editRepo(repo);
-	}
+    }
 
     private void refreshList() {
         repoAdapter.refresh();
