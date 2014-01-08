@@ -17,8 +17,8 @@ public abstract class SwitchCompat extends Compatibility {
     public abstract CompoundButton createSwitch();
 
     public static SwitchCompat create(ManageRepo activity) {
-        if (hasApi(11)) {
-                return new HoneycombSwitch(activity);
+        if (hasApi(14)) {
+            return new IceCreamSwitch(activity);
         } else {
             return new OldSwitch(activity);
         }
@@ -26,10 +26,10 @@ public abstract class SwitchCompat extends Compatibility {
 
 }
 
-@TargetApi(11)
-class HoneycombSwitch extends SwitchCompat {
+@TargetApi(14)
+class IceCreamSwitch extends SwitchCompat {
 
-    protected HoneycombSwitch(ManageRepo activity) {
+    protected IceCreamSwitch(ManageRepo activity) {
         super(activity);
     }
 

@@ -326,7 +326,6 @@ public class DB {
             private String cpuAbisDesc;
             private boolean ignoreTouchscreen;
 
-            //@SuppressLint("NewApi")
             public CompatibilityChecker(Context ctx) {
 
                 SharedPreferences prefs = PreferenceManager
