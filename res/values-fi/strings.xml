@@ -5,17 +5,11 @@
   <string name="searchres_noapps">\'%s\':ään täsmääviä sovelluksia ei löytynyt</string>
   <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version, vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen. (Huomaa, että poistaminen poistaa kaiken sovelluksen sisäisen datan)</string>
   <string name="version">Versio</string>
-  <string name="n_versions_available">%d versiota saatavilla</string>
-  <string name="n_version_available">%d versio saatavilla</string>
   <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
-  <string name="keep_downloaded">Pidä ladatut apk-tiedostot SD-kortilla</string>
   <string name="updates">Päivitykset</string>
   <string name="last_update_check">Viimeisin sovelluslähteiden skannaus: %s</string>
   <string name="never">ei koskaan</string>
-  <string name="automatic_repo_scan">Automaattinen sovelluslähteen skannaus</string>
-  <string name="update_apps_list">Päivitä sovelluslista sovelluslähteistä automaattisesti</string>
   <string name="notify">Huomauta</string>
-  <string name="notify_updates_available">Ilmoita kun uusia päivityksiä on saatavilla</string>
   <string name="update_history">Päivityshistoria</string>
   <string name="search_results">Hakutulokset</string>
   <string name="about_title">Tietoa F-Droidista</string>
@@ -33,7 +27,6 @@
   <string name="cancel">Peruuta</string>
   <string name="repo_delete_title">Valitse sovelluslähde, jonka tahdot poistaa</string>
   <string name="repo_update_title">Päivitä sovelluslähteet</string>
-  <string name="tab_installed">Asennettu</string>
   <string name="tab_noninstalled">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
   <string name="one_update_available">1 päivitys saatavilla.</string>
@@ -67,21 +60,15 @@ Tahdotko päivittää ne?</string>
   <string name="download_cancelled">Lataus peruutettu</string>
   <string name="display">Näyttö</string>
   <string name="expert">Asiantuntija</string>
-  <string name="expert_mode">Ota käyttöön asiantuntija-tila</string>
   <string name="search_hint">Etsi sovelluksia</string>
   <string name="db_sync_mode">Tietokannan synkronointi-tila</string>
-  <string name="db_sync_mode_long">Aseta SQLiten synkrooninen lippu</string>
   <string name="appcompatibility">Sovellusten yhteensopivuus</string>
   <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
-  <string name="show_incompat_versions_l">Näytä ohjelmaversiot jotka eivät ole yhteensopivia laitteesi kanssa</string>
   <string name="rooted">Root</string>
-  <string name="rooted_long">Näytä sovellukset, jotka vaativat root-oikeudet</string>
   <string name="ignoreTouch">Älä välitä kosketusnäytöstä</string>
-  <string name="ignoreTouch_long">Sisällytä aina sovellukset, jotka vaativat kosketusnäytön</string>
   <string name="category_all">Kaikki</string>
   <string name="category_whatsnew">Uutta</string>
   <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
   <string name="status_checking_compatibility">Tarkistetaan ohjelman yhteensopivuutta laitteesi kanssa...</string>
   <string name="theme">Teema</string>
-  <string name="theme_long">Valitse käytettävä teema</string>
 </resources>
