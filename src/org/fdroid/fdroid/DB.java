@@ -900,6 +900,7 @@ public class DB {
                 iconsDir = "/icons-120/";
             }
             metrics = null;
+            Log.d("FDroid", "Density-specific icons dir is " + iconsDir);
 
             while (!c.isAfterLast()) {
                 String id = c.getString(0);
