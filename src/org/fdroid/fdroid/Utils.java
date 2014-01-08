@@ -86,6 +86,7 @@ public final class Utils {
     }
 
     public static String getAndroidVersionName(int sdkLevel) {
+        if (sdkLevel < 1) return null;
         switch (sdkLevel) {
             case 19: return "4.4";
             case 18: return "4.3";
@@ -105,7 +106,8 @@ public final class Utils {
             case 4: return "1.6";
             case 3: return "1.5";
             case 2: return "1.1";
-            default: return "1.0";
+            case 1: return "1.0";
+            default: return "?";
         }
     }
 
