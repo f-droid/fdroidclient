@@ -85,7 +85,7 @@ public class AppDetails extends ListActivity {
     private static final int REQUEST_INSTALL = 0;
     private static final int REQUEST_UNINSTALL = 1;
 
-    static class ViewHolder {
+    private static class ViewHolder {
         TextView version;
         TextView status;
         TextView size;

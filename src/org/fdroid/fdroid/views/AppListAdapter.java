@@ -79,7 +79,7 @@ abstract public class AppListAdapter extends BaseAdapter {
         return position;
     }
 
-    static class ViewHolder {
+    private static class ViewHolder {
         TextView name;
         TextView summary;
         TextView status;
