@@ -139,19 +139,19 @@ public class FDroidApp extends Application {
 
         try {
             SSLContext sc = SSLContext.getInstance("TLS");
-        	X509TrustManager defaultTrustManager = null;
+            X509TrustManager defaultTrustManager = null;
             
-        	/*
-        	 * init a trust manager factory with a null keystore to access the system trust managers
-        	 */
+            /*
+             * init a trust manager factory with a null keystore to access the system trust managers
+             */
             TrustManagerFactory tmf = 
-            		TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             KeyStore ks = null;
             tmf.init(ks);
             TrustManager[] mgrs = tmf.getTrustManagers();
             
             if(mgrs.length > 0 && mgrs[0] instanceof X509TrustManager)
-            	defaultTrustManager = (X509TrustManager) mgrs[0];
+                defaultTrustManager = (X509TrustManager) mgrs[0];
 
             /*
              * compose a chain of trust managers as follows:
@@ -173,7 +173,7 @@ public class FDroidApp extends Application {
             Log.e("FDroid", "Unable to set up trust manager chain. NoSuchAlgorithmException");
         } catch (KeyStoreException e) {
             Log.e("FDroid", "Unable to set up trust manager chain. KeyStoreException");
-		}
+        }
     }
 
     private Context ctx;
