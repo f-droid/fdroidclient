@@ -38,4 +38,8 @@ android {
 			proguardFile getDefaultProguardFile('proguard-android.txt')
 		}
 	}
+
+	tasks.withType(Compile) {
+		options.encoding = "UTF-8"
+	}
 }
