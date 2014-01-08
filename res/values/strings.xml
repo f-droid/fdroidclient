@@ -71,7 +71,7 @@
 	<string name="many_updates_available">%d updates are available.</string>
 	<string name="fdroid_updates_available">F-Droid Updates Available</string>
 	<string name="process_wait_title">Please Wait</string>
-	<string name="process_update_msg">Updating application list...</string>
+	<string name="process_update_msg">Updating application list…</string>
 	<string name="download_server">Getting application from</string>
 
 	<string name="repo_add_url">Repository address</string>

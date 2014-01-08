@@ -47,7 +47,7 @@
   <string name="many_updates_available">%d διαθέσιμες ενημερώσεις.</string>
   <string name="fdroid_updates_available">Διαθέσιμες ενημερώσεις για το F-Droid</string>
   <string name="process_wait_title">Παρακαλώ περιμένετε</string>
-  <string name="process_update_msg">Ενημέρωση λίστα εφαρμογών...</string>
+  <string name="process_update_msg">Ενημέρωση λίστα εφαρμογών…</string>
   <string name="download_server">Λήψη εφαρμογών από</string>
   <string name="repo_add_url">Διεύθυνση αποθετηρίου</string>
   <string name="repo_alrt">Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. 
@@ -98,7 +98,7 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Σύνδεση με
 %1$s</string>
-  <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας...</string>
+  <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας…</string>
   <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
   <string name="permissions_for_long">Άδειες για την έκδοση %s</string>
   <string name="showPermissions">Εμφάνιση αδειών</string>
