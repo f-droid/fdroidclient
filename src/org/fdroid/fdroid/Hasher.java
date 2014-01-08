@@ -28,6 +28,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
+import java.util.Locale;
 
 public class Hasher {
 
@@ -88,7 +89,7 @@ public class Hasher {
         if (hashCache == null) getHash();
         if (otherHash == null || hashCache.equals(""))
             return false;
-        return hashCache.equals(otherHash.toLowerCase());
+        return hashCache.equals(otherHash.toLowerCase(Locale.ENGLISH));
     }
 
     public void reset() {

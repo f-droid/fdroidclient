@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
 
@@ -1378,7 +1379,7 @@ public class DB {
         if (fingerprint == null) {
             fingerprint = calcedFingerprint;
         } else if (calcedFingerprint != null) {
-            fingerprint = fingerprint.toUpperCase();
+            fingerprint = fingerprint.toUpperCase(Locale.ENGLISH);
             if (!fingerprint.equals(calcedFingerprint)) {
                 throw new SecurityException("Given fingerprint does not match calculated one! ("
                         + fingerprint + " != " + calcedFingerprint);
