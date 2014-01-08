@@ -1,12 +1,12 @@
 package org.fdroid.fdroid.compat;
 
-import android.os.Build;
+import android.annotation.TargetApi;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.ToggleButton;
 import org.fdroid.fdroid.ManageRepo;
 
-public abstract class SwitchCompat {
+public abstract class SwitchCompat extends Compatibility {
 
     protected final ManageRepo activity;
 
@@ -17,7 +17,7 @@ public abstract class SwitchCompat {
     public abstract CompoundButton createSwitch();
 
     public static SwitchCompat create(ManageRepo activity) {
-        if (Build.VERSION.SDK_INT >= 11) {
+        if (hasApi(11)) {
                 return new HoneycombSwitch(activity);
         } else {
             return new OldSwitch(activity);
@@ -26,6 +26,7 @@ public abstract class SwitchCompat {
 
 }
 
+@TargetApi(11)
 class HoneycombSwitch extends SwitchCompat {
 
     protected HoneycombSwitch(ManageRepo activity) {

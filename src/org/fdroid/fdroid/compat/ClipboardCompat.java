@@ -1,21 +1,21 @@
 package org.fdroid.fdroid.compat;
 
+import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.os.Build;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.ToggleButton;
 import org.fdroid.fdroid.ManageRepo;
 
-public abstract class ClipboardCompat {
+public abstract class ClipboardCompat extends Compatibility {
 
     public abstract String getText();
 
     public static ClipboardCompat create(Context context) {
-        if (Build.VERSION.SDK_INT >= 11) {
-                return new HoneycombClipboard(context);
+        if (hasApi(11)) {
+            return new HoneycombClipboard(context);
         } else {
             return new OldClipboard();
         }
@@ -23,6 +23,7 @@ public abstract class ClipboardCompat {
 
 }
 
+@TargetApi(11)
 class HoneycombClipboard extends ClipboardCompat {
 
     private final ClipboardManager manager;
