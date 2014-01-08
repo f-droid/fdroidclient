@@ -19,19 +19,15 @@
 
 package org.fdroid.fdroid;
 
-import android.content.*;
-import android.content.res.Configuration;
-import android.support.v4.view.MenuItemCompat;
-
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
+import android.content.*;
 import android.content.pm.PackageInfo;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -39,6 +35,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
+
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
 

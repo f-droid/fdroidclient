@@ -31,6 +31,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.security.MessageDigest;
 import java.util.Formatter;
+import java.util.Locale;
 
 import android.content.Context;
 
@@ -44,7 +45,7 @@ public final class Utils {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
 
     public static final SimpleDateFormat LOG_DATE_FORMAT =
-            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
 
 

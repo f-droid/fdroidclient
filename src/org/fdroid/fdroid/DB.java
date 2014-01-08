@@ -548,7 +548,8 @@ public class DB {
 
     // The date format used for storing dates (e.g. lastupdated, added) in the
     // database.
-    private SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat(
+            "yyyy-MM-dd", Locale.ENGLISH);
 
     private DB(Context ctx) {
 
@@ -740,10 +741,10 @@ public class DB {
                 app.curVercode = c.getInt(9);
                 String sAdded = c.getString(10);
                 app.added = (sAdded == null || sAdded.length() == 0) ? null
-                        : mDateFormat.parse(sAdded);
+                        : dateFormat.parse(sAdded);
                 String sLastUpdated = c.getString(11);
                 app.lastUpdated = (sLastUpdated == null || sLastUpdated
-                        .length() == 0) ? null : mDateFormat
+                        .length() == 0) ? null : dateFormat
                         .parse(sLastUpdated);
                 app.compatible = c.getInt(12) == 1;
                 app.ignoreAllUpdates = c.getInt(13) == 1;
@@ -823,7 +824,7 @@ public class DB {
                 apk.minSdkVersion = c.getInt(6);
                 String sApkAdded = c.getString(7);
                 apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
-                        : mDateFormat.parse(sApkAdded);
+                        : dateFormat.parse(sApkAdded);
                 apk.features = CommaSeparatedList.make(c.getString(8));
                 apk.nativecode = CommaSeparatedList.make(c.getString(9));
                 apk.compatible = compatible;
@@ -1147,10 +1148,10 @@ public class DB {
         values.put("dogecoinAddr", upapp.detail_dogecoinAddr);
         values.put("flattrID", upapp.detail_flattrID);
         values.put("added",
-                upapp.added == null ? "" : mDateFormat.format(upapp.added));
+                upapp.added == null ? "" : dateFormat.format(upapp.added));
         values.put(
                 "lastUpdated",
-                upapp.added == null ? "" : mDateFormat
+                upapp.added == null ? "" : dateFormat
                         .format(upapp.lastUpdated));
         values.put("curVersion", upapp.curVersion);
         values.put("curVercode", upapp.curVercode);
@@ -1195,7 +1196,7 @@ public class DB {
         values.put("apkName", upapk.apkName);
         values.put("minSdkVersion", upapk.minSdkVersion);
         values.put("added",
-                upapk.added == null ? "" : mDateFormat.format(upapk.added));
+                upapk.added == null ? "" : dateFormat.format(upapk.added));
         values.put("permissions",
                 CommaSeparatedList.str(upapk.detail_permissions));
         values.put("features", CommaSeparatedList.str(upapk.features));
@@ -1235,7 +1236,7 @@ public class DB {
             repo.lastetag = c.getString(9);
             try {
                 repo.lastUpdated =  c.getString(10) != null ?
-                    mDateFormat.parse( c.getString(10)) :
+                    dateFormat.parse( c.getString(10)) :
                     null;
             } catch (ParseException e) {
                 Log.e("FDroid", "Error parsing date " + c.getString(10));
@@ -1350,7 +1351,7 @@ public class DB {
      */
     public void refreshLastUpdates() {
         ContentValues values = new ContentValues();
-        values.put("lastUpdated", mDateFormat.format(new Date()));
+        values.put("lastUpdated", dateFormat.format(new Date()));
         db.update(TABLE_REPO, values, "inuse = 1",
                 new String[] {});
     }
@@ -1358,7 +1359,7 @@ public class DB {
     public void writeLastEtag(Repo repo) {
         ContentValues values = new ContentValues();
         values.put("lastetag", repo.lastetag);
-        values.put("lastUpdated", mDateFormat.format(new Date()));
+        values.put("lastUpdated", dateFormat.format(new Date()));
         db.update(TABLE_REPO, values, "address = ?",
                 new String[] { repo.address });
     }

@@ -26,7 +26,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,10 +59,6 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private int progressCounter = 0;
     private ProgressListener progressListener;
-
-
-    // The date format used in the repo XML file.
-    private SimpleDateFormat mXMLDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     private int totalAppCount;
 
@@ -162,7 +157,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             } else if (curel.equals("added")) {
                 try {
-                    curapk.added = str.length() == 0 ? null : mXMLDateFormat
+                    curapk.added = str.length() == 0 ? null : DB.dateFormat
                             .parse(str);
                 } catch (ParseException e) {
                     curapk.added = null;
@@ -209,7 +204,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.detail_trackerURL = str;
             } else if (curel.equals("added")) {
                 try {
-                    curapp.added = str.length() == 0 ? null : mXMLDateFormat
+                    curapp.added = str.length() == 0 ? null : DB.dateFormat
                             .parse(str);
                 } catch (ParseException e) {
                     curapp.added = null;
@@ -217,7 +212,7 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel.equals("lastupdated")) {
                 try {
                     curapp.lastUpdated = str.length() == 0 ? null
-                            : mXMLDateFormat.parse(str);
+                            : DB.dateFormat.parse(str);
                 } catch (ParseException e) {
                     curapp.lastUpdated = null;
                 }
