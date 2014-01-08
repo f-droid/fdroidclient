@@ -47,7 +47,7 @@
 			android:defaultValue="false"
 			android:key="cacheDownloaded" />
 		<CheckBoxPreference android:title="@string/expert"
-			android:defaultValue="false" android:summary="@string/expert_mode"
+			android:defaultValue="false"
 			android:key="expert" />
 		<ListPreference android:title="@string/db_sync_mode"
 			android:key="dbSyncMode"
