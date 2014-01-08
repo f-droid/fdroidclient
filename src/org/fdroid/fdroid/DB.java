@@ -52,6 +52,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.ContextCompat;
+import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.DBHelper;
 
 public class DB {
@@ -321,7 +322,8 @@ public class DB {
         private static class CompatibilityChecker extends Compatibility {
 
             private HashSet<String> features;
-            private List<String> cpuAbis;
+            private HashSet<String> cpuAbis;
+            private String cpuAbisDesc;
             private boolean ignoreTouchscreen;
 
             //@SuppressLint("NewApi")
@@ -344,11 +346,17 @@ public class DB {
                     }
                 }
 
-                cpuAbis = new ArrayList<String>(2);
-                cpuAbis.add(android.os.Build.CPU_ABI);
-                if (hasApi(8)) {
-                    cpuAbis.add(android.os.Build.CPU_ABI2);
+                cpuAbis = SupportedArchitectures.getAbis();
+
+                StringBuilder builder = new StringBuilder();
+                boolean first = true;
+                for (String abi : cpuAbis) {
+                    if (first) first = false;
+                    else builder.append(", ");
+                    builder.append(abi);
                 }
+                cpuAbisDesc = builder.toString();
+                builder = null;
 
                 Log.d("FDroid", logMsg.toString());
             }
@@ -382,7 +390,7 @@ public class DB {
                 if (!compatibleApi(apk.nativecode)) {
                     Log.d("FDroid", apk.id + " vercode " + apk.vercode
                             + " only supports " + CommaSeparatedList.str(apk.nativecode)
-                            + " while your architecture is " + cpuAbis.get(0));
+                            + " while your architectures are " + cpuAbisDesc);
                     return false;
                 }
                 return true;
