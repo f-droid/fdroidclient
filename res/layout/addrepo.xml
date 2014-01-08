@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:inputType="textUri"
         android:maxLines="2"
-        android:text="https://" />
+        android:text="@string/https" />
 
     <TextView
         android:layout_width="match_parent"
