@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + DB.TABLE_REPO + " (id integer primary key, address text not null, "
             + "name text, description text, inuse integer not null, "
             + "priority integer not null, pubkey text, fingerprint text, "
-            + "maxage integer not null default 0, "
+            + "maxage integer not null default 0, version integer not null default 0,"
             + "lastetag text, lastUpdated string);";
 
     private static final String CREATE_TABLE_APK = "create table " + DB.TABLE_APK
