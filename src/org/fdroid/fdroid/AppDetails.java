@@ -494,8 +494,10 @@ public class AppDetails extends ListActivity {
         tv = (TextView) findViewById(R.id.license);
         tv.setText(app.license);
 
-        tv = (TextView) findViewById(R.id.categories);
-        tv.setText(app.categories.toString().replaceAll(",",", "));
+        if (app.categories != null) {
+            tv = (TextView) findViewById(R.id.categories);
+            tv.setText(app.categories.toString().replaceAll(",",", "));
+        }
 
         tv = (TextView) infoView.findViewById(R.id.description);
 
