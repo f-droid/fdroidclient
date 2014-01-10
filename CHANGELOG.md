@@ -1,4 +1,4 @@
-### Upcoming release
+### 0.58 (2014-01-11)
 
 * Download icons with a resolution that matches the device's screen density,
   which saves resources on smaller devices and gets rid of unnecessary
