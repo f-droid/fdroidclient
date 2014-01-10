@@ -26,12 +26,14 @@ abstract class AppListFragment extends Fragment implements AdapterView.OnItemCli
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Preferences.get().registerCompactLayoutChangeListener(this);
+        Preferences.get().registerSmallDensityChangeListener(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         Preferences.get().unregisterCompactLayoutChangeListener(this);
+        Preferences.get().unregisterSmallDensityChangeListener(this);
     }
 
     @Override

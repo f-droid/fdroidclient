@@ -25,6 +25,9 @@
         <CheckBoxPreference android:title="@string/compactlayout"
             android:defaultValue="false"
             android:key="compactlayout"/>
+        <CheckBoxPreference android:title="@string/small_density"
+            android:defaultValue="false"
+            android:key="smallDensity"/>
 		<ListPreference android:title="@string/theme"
 			android:key="theme"
 			android:defaultValue="dark"

@@ -180,8 +180,10 @@ public class AppDetails extends ListActivity {
             if (apk.minSdkVersion > 0) {
                 holder.api.setText(getString(R.string.minsdk_or_later,
                             Utils.getAndroidVersionName(apk.minSdkVersion)));
+                holder.api.setEnabled(apk.compatible);
+                holder.api.setVisibility(View.VISIBLE);
             } else {
-                holder.api.setText("");
+                holder.api.setVisibility(View.GONE);
             }
 
             if (apk.srcname != null) {
@@ -325,6 +327,7 @@ public class AppDetails extends ListActivity {
 
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
+        pref_smallDensity = prefs.getBoolean("smallDensity", false);
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
         pref_incompatibleVersions = prefs.getBoolean(
@@ -334,6 +337,7 @@ public class AppDetails extends ListActivity {
 
     }
 
+    private boolean pref_smallDensity;
     private boolean pref_expert;
     private boolean pref_permissions;
     private boolean pref_incompatibleVersions;
