@@ -34,7 +34,7 @@
   <string name="tab_noninstalled">Dostępne</string>
   <string name="tab_updates">Aktualizacje</string>
   <string name="process_wait_title">Proszę czekać</string>
-  <string name="process_update_msg">Aktualizowanie listy aplikacji...</string>
+  <string name="process_update_msg">Aktualizowanie listy aplikacji…</string>
   <string name="download_server">Pobieranie aplikacji z</string>
   <string name="repo_add_url">Adres repozytorium</string>
   <string name="repo_alrt">Lista wykorzystywanych repozytoriów uległa zmianie.

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Remove severity="ignore" to see the missing translations -->
+    <issue id="MissingTranslation" severity="ignore" >
+        <ignore path="res/values/no_trans.xml" />
+        <ignore path="res/values/default_repo.xml" />
+    </issue>
+</lint>

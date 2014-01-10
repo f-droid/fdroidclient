@@ -113,6 +113,10 @@
         </activity>
 
         <activity
+            android:name=".views.RepoDetailsActivity"
+            android:label="@string/menu_manage" />
+ 
+        <activity
             android:name=".AppDetails"
             android:label="@string/app_details"
             android:exported="true"
@@ -196,6 +200,9 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        
+        <!--Used for SSL TOFU, supported by extern/MemorizingTrustManager lib -->
+        <activity android:name="de.duenndns.ssl.MemorizingActivity" />
 
         <receiver android:name=".StartupReceiver" >
             <intent-filter>

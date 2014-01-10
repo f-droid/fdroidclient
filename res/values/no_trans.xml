@@ -12,6 +12,8 @@
 	<string name="menu_dogecoin">Dogecoin</string>
 	<string name="menu_flattr">Flattr</string>
 
+	<string name="https">https://</string>
+
 	<string-array name="updateIntervalValues">
 		<item>0</item>
 		<item>1</item>

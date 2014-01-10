@@ -1,4 +1,12 @@
 [submodule "extern/Universal-Image-Loader"]
 	path = extern/Universal-Image-Loader
 	url = https://github.com/nostra13/Android-Universal-Image-Loader
-    ignore = dirty
+	ignore = dirty
+[submodule "extern/MemorizingTrustManager"]
+	path = extern/MemorizingTrustManager
+	url = https://github.com/ge0rg/MemorizingTrustManager.git
+	ignore = dirty
+[submodule "extern/AndroidPinning"]
+	path = extern/AndroidPinning
+	url = https://github.com/binaryparadox/AndroidPinning.git
+	ignore = dirty

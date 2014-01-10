@@ -43,7 +43,7 @@
   <string name="one_update_available">Доступно 1 обновление.</string>
   <string name="many_updates_available">Обновлений доступно - %d.</string>
   <string name="process_wait_title">Подождите</string>
-  <string name="process_update_msg">Список приложений обновляется...</string>
+  <string name="process_update_msg">Список приложений обновляется…</string>
   <string name="download_server">Взять приложение из</string>
   <string name="repo_add_url">Адрес репозитория</string>
   <string name="repo_alrt">Список репозиториев изменился.
@@ -82,7 +82,7 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Соединение с
 %1$s</string>
-  <string name="status_checking_compatibility">Проверка совместимости приложений с устройством...</string>
+  <string name="status_checking_compatibility">Проверка совместимости приложений с устройством…</string>
   <string name="no_permissions">Разрешений не требуется.</string>
   <string name="permissions_for_long">Разрешения для версии %s</string>
   <string name="showPermissions">Показывать разрешения</string>

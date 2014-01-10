@@ -19,25 +19,44 @@
 package org.fdroid.fdroid;
 
 import java.io.File;
-import java.lang.Runtime;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
-import android.app.Application;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+
 import android.app.Activity;
-import android.preference.PreferenceManager;
-import android.util.Log;
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import org.fdroid.fdroid.Utils;
 
+import android.graphics.Bitmap;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import de.duenndns.ssl.MemorizingTrustManager;
+
+import org.thoughtcrime.ssl.pinning.PinningTrustManager;
+import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
 public class FDroidApp extends Application {
 
@@ -117,6 +136,44 @@ public class FDroidApp extends Application {
             .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
             .build();
         ImageLoader.getInstance().init(config);
+
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            X509TrustManager defaultTrustManager = null;
+            
+            /*
+             * init a trust manager factory with a null keystore to access the system trust managers
+             */
+            TrustManagerFactory tmf = 
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            KeyStore ks = null;
+            tmf.init(ks);
+            TrustManager[] mgrs = tmf.getTrustManagers();
+            
+            if(mgrs.length > 0 && mgrs[0] instanceof X509TrustManager)
+                defaultTrustManager = (X509TrustManager) mgrs[0];
+
+            /*
+             * compose a chain of trust managers as follows:
+             * MemorizingTrustManager -> Pinning Trust Manager -> System Trust Manager
+             */
+            PinningTrustManager pinMgr = new PinningTrustManager(SystemKeyStore.getInstance(ctx),FDroidCertPins.getPinList(), 0);
+            MemorizingTrustManager memMgr = new MemorizingTrustManager(ctx, pinMgr, defaultTrustManager);
+            
+            /*
+             * initialize a SSLContext with the outermost trust manager, use this
+             * context to set the default SSL socket factory for the HTTPSURLConnection
+             * class.
+             */
+            sc.init(null, new TrustManager[] {memMgr}, new java.security.SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (KeyManagementException e) {
+            Log.e("FDroid", "Unable to set up trust manager chain. KeyManagementException");
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("FDroid", "Unable to set up trust manager chain. NoSuchAlgorithmException");
+        } catch (KeyStoreException e) {
+            Log.e("FDroid", "Unable to set up trust manager chain. KeyStoreException");
+        }
     }
 
     private Context ctx;

@@ -85,9 +85,20 @@ public class AppDetails extends ListActivity {
     private static final int REQUEST_INSTALL = 0;
     private static final int REQUEST_UNINSTALL = 1;
 
+    private static class ViewHolder {
+        TextView version;
+        TextView status;
+        TextView size;
+        TextView api;
+        TextView buildtype;
+        TextView added;
+        TextView nativecode;
+    }
+
     private class ApkListAdapter extends BaseAdapter {
 
         private List<DB.Apk> items;
+        private LayoutInflater mInflater;
 
         public ApkListAdapter(Context context, List<DB.Apk> items) {
             this.items = new ArrayList<DB.Apk>();
@@ -96,6 +107,8 @@ public class AppDetails extends ListActivity {
                     this.addItem(apk);
                 }
             }
+            mInflater = (LayoutInflater) mctx.getSystemService(
+                    Context.LAYOUT_INFLATER_SERVICE);
         }
 
         public void addItem(DB.Apk apk) {
@@ -128,72 +141,85 @@ public class AppDetails extends ListActivity {
 
             java.text.DateFormat df = DateFormat.getDateFormat(mctx);
             DB.Apk apk = items.get(position);
+            ViewHolder holder;
 
-            View v = convertView;
-            if (v == null) {
-                LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.apklistitem, null);
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.apklistitem, null);
+
+                holder = new ViewHolder();
+                holder.version = (TextView) convertView.findViewById(R.id.version);
+                holder.status = (TextView) convertView.findViewById(R.id.status);
+                holder.size = (TextView) convertView.findViewById(R.id.size);
+                holder.api = (TextView) convertView.findViewById(R.id.api);
+                holder.buildtype = (TextView) convertView.findViewById(R.id.buildtype);
+                holder.added = (TextView) convertView.findViewById(R.id.added);
+                holder.nativecode = (TextView) convertView.findViewById(R.id.nativecode);
+
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
             }
-            v.setEnabled(apk.compatible);
 
-            TextView tv = (TextView) v.findViewById(R.id.version);
-            tv.setText(getString(R.string.version) + " " + apk.version
+            holder.version.setText(getString(R.string.version)
+                    + " " + apk.version
                     + (apk == app.curApk ? "   ☆" : ""));
-            tv.setEnabled(apk.compatible);
 
-            tv = (TextView) v.findViewById(R.id.status);
             if (apk.vercode == app.installedVerCode
                     && apk.sig.equals(mInstalledSigID)) {
-                tv.setText(getString(R.string.inst));
+                holder.status.setText(getString(R.string.inst));
             } else {
-                tv.setText(getString(R.string.not_inst));
-            }
-            tv.setEnabled(apk.compatible);
-
-            tv = (TextView) v.findViewById(R.id.size);
-            if (apk.detail_size == 0) {
-                tv.setText("");
-            } else {
-                tv.setText(Utils.getFriendlySize(apk.detail_size));
-                tv.setEnabled(apk.compatible);
+                holder.status.setText(getString(R.string.not_inst));
             }
 
-            tv = (TextView) v.findViewById(R.id.api);
-            if (apk.minSdkVersion == 0) {
-                tv.setText("");
+            if (apk.detail_size > 0) {
+                holder.size.setText(Utils.getFriendlySize(apk.detail_size));
             } else {
-                tv.setText(getString(R.string.minsdk_or_later,
+                holder.size.setText("");
+            }
+
+            if (apk.minSdkVersion > 0) {
+                holder.api.setText(getString(R.string.minsdk_or_later,
                             Utils.getAndroidVersionName(apk.minSdkVersion)));
-                tv.setEnabled(apk.compatible);
+            } else {
+                holder.api.setText("");
             }
 
-            tv = (TextView) v.findViewById(R.id.buildtype);
             if (apk.srcname != null) {
-                tv.setText("source");
+                holder.buildtype.setText("source");
             } else {
-                tv.setText("bin");
+                holder.buildtype.setText("bin");
             }
-            tv.setEnabled(apk.compatible);
 
-            tv = (TextView) v.findViewById(R.id.added);
             if (apk.added != null) {
-                tv.setVisibility(View.VISIBLE);
-                tv.setText(getString(R.string.added_on, df.format(apk.added)));
-                tv.setEnabled(apk.compatible);
+                holder.added.setText(getString(R.string.added_on,
+                            df.format(apk.added)));
             } else {
-                tv.setVisibility(View.GONE);
+                holder.added.setText("");
             }
 
-            tv = (TextView) v.findViewById(R.id.nativecode);
             if (pref_expert && apk.nativecode != null) {
-                tv.setVisibility(View.VISIBLE);
-                tv.setText(apk.nativecode.toString().replaceAll(","," "));
-                tv.setEnabled(apk.compatible);
+                holder.nativecode.setText(apk.nativecode.toString().replaceAll(","," "));
             } else {
-                tv.setVisibility(View.GONE);
+                holder.nativecode.setText("");
             }
 
-            return v;
+            // Disable it all if it isn't compatible...
+            View[] views = {
+                convertView,
+                holder.version,
+                holder.status,
+                holder.size,
+                holder.api,
+                holder.buildtype,
+                holder.added,
+                holder.nativecode
+            };
+
+            for (View view : views) {
+                view.setEnabled(apk.compatible);
+            }
+
+            return convertView;
         }
     }
 

@@ -26,6 +26,9 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
+import java.util.Locale;
 
 public class Hasher {
 
@@ -86,12 +89,22 @@ public class Hasher {
         if (hashCache == null) getHash();
         if (otherHash == null || hashCache.equals(""))
             return false;
-        return hashCache.equals(otherHash.toLowerCase());
+        return hashCache.equals(otherHash.toLowerCase(Locale.ENGLISH));
     }
 
     public void reset() {
         hashCache = null;
         digest.reset();
+    }
+
+    public static String hex(Certificate cert) {
+        byte[] encoded = null;
+        try {
+            encoded = cert.getEncoded();
+        } catch(CertificateEncodingException e) {
+            encoded = new byte[0];
+        }
+        return hex(encoded);
     }
 
     public static String hex(byte[] sig) {

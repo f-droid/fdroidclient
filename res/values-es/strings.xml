@@ -47,7 +47,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="many_updates_available">%d actualizaciones disponibles.</string>
   <string name="fdroid_updates_available">Actualizaciones de F-Droid disponibles</string>
   <string name="process_wait_title">Por favor, espera</string>
-  <string name="process_update_msg">Actualizando la lista de aplicaciones...</string>
+  <string name="process_update_msg">Actualizando la lista de aplicaciones…</string>
   <string name="download_server">Obteniendo la aplicación de</string>
   <string name="repo_add_url">Dirección del repositorio</string>
   <string name="repo_alrt">La lista de repositorios usada ha cambiado.
@@ -98,7 +98,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
 %1$s</string>
   <string name="status_connecting_to_repo">Conectando a
 %1$s</string>
-  <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo...</string>
+  <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo…</string>
   <string name="no_permissions">No se usan permisos.</string>
   <string name="permissions_for_long">Permisos para la versión %s</string>
   <string name="showPermissions">Mostrar permisos</string>
