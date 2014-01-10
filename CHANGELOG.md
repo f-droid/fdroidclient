@@ -1,5 +1,9 @@
 ### Upcoming release
 
+* Download icons with a resolution that matches the device's screen density,
+  which saves resources on smaller devices and gets rid of unnecessary
+  blurriness on larger devices
+
 * Tweaked some layouts, especially the app lists and their compact layout
 
 * App lists now show more useful version information: current version names,
@@ -10,13 +14,13 @@
 * Slightly increase performance in repo index XML handling by mapping apps
   with a HashMap, as opposed to doing linear searches
 
-* More info on App Details: The category in which the app was found, all the
-  categories the app is in and the Android version required to run each one of
-  its versions available.
+* More app info shown in App Details: The category in which the app was found
+  and all the categories the app is in, as well as the Android version
+  required to run each one of its versions available
 
 * The preferences screen now uses descriptive summaries, which means that you
   can see what the checkbox preferences actually mean and what the edit and
-  list preferences are set at.
+  list preferences are set at
 
 * Support for dogecoin donation method added (wow)
 
