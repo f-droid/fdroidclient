@@ -51,11 +51,10 @@ public class FDroid extends FragmentActivity {
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
-    private static final int UPDATE_REPO = Menu.FIRST;
-    private static final int MANAGE_REPO = Menu.FIRST + 1;
-    private static final int PREFERENCES = Menu.FIRST + 2;
-    private static final int ABOUT = Menu.FIRST + 3;
-    private static final int SEARCH = Menu.FIRST + 4;
+    private static final int MANAGE_REPO = Menu.FIRST;
+    private static final int PREFERENCES = Menu.FIRST + 1;
+    private static final int ABOUT = Menu.FIRST + 2;
+    private static final int SEARCH = Menu.FIRST + 3;
 
     private ViewPager viewPager;
 
@@ -143,10 +142,6 @@ public class FDroid extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-
-        case UPDATE_REPO:
-            updateRepos();
-            return true;
 
         case MANAGE_REPO:
             Intent i = new Intent(this, ManageRepo.class);
