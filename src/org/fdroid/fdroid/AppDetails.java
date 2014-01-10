@@ -162,7 +162,7 @@ public class AppDetails extends ListActivity {
 
             holder.version.setText(getString(R.string.version)
                     + " " + apk.version
-                    + (apk == app.curApk ? "   ☆" : ""));
+                    + (apk == app.curApk ? "  ☆" : ""));
 
             if (apk.vercode == app.installedVerCode
                     && apk.sig.equals(mInstalledSigID)) {
@@ -173,14 +173,14 @@ public class AppDetails extends ListActivity {
 
             if (apk.detail_size > 0) {
                 holder.size.setText(Utils.getFriendlySize(apk.detail_size));
+                holder.size.setVisibility(View.VISIBLE);
             } else {
-                holder.size.setText("");
+                holder.size.setVisibility(View.GONE);
             }
 
             if (apk.minSdkVersion > 0) {
                 holder.api.setText(getString(R.string.minsdk_or_later,
                             Utils.getAndroidVersionName(apk.minSdkVersion)));
-                holder.api.setEnabled(apk.compatible);
                 holder.api.setVisibility(View.VISIBLE);
             } else {
                 holder.api.setVisibility(View.GONE);
@@ -195,14 +195,16 @@ public class AppDetails extends ListActivity {
             if (apk.added != null) {
                 holder.added.setText(getString(R.string.added_on,
                             df.format(apk.added)));
+                holder.added.setVisibility(View.VISIBLE);
             } else {
-                holder.added.setText("");
+                holder.added.setVisibility(View.GONE);
             }
 
             if (pref_expert && apk.nativecode != null) {
                 holder.nativecode.setText(apk.nativecode.toString().replaceAll(","," "));
+                holder.nativecode.setVisibility(View.VISIBLE);
             } else {
-                holder.nativecode.setText("");
+                holder.nativecode.setVisibility(View.GONE);
             }
 
             // Disable it all if it isn't compatible...
