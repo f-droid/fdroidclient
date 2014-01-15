@@ -325,20 +325,20 @@ public class AppDetails extends ListActivity {
             resetRequired = false;
         }
 
-        // Set up the list...
-        headerView = new LinearLayout(this);
-        ListView lv = (ListView) findViewById(android.R.id.list);
-        lv.addHeaderView(headerView);
-        ApkListAdapter la = new ApkListAdapter(this, app.apks);
-        setListAdapter(la);
-
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         pref_smallDensity = prefs.getBoolean("smallDensity", false);
         pref_expert = prefs.getBoolean("expert", false);
         pref_permissions = prefs.getBoolean("showPermissions", false);
         pref_incompatibleVersions = prefs.getBoolean(
-                "incompatibleVersions", false);
+                Preferences.PREF_INCOMP_VER, false);
+
+        // Set up the list...
+        headerView = new LinearLayout(this);
+        ListView lv = (ListView) findViewById(android.R.id.list);
+        lv.addHeaderView(headerView);
+        ApkListAdapter la = new ApkListAdapter(this, app.apks);
+        setListAdapter(la);
 
         startViews();
 
