@@ -9,7 +9,7 @@ public class CanUpdateAppListAdapter extends AppListAdapter {
 
     @Override
     protected boolean showStatusUpdate() {
-        return false;
+        return true;
     }
 
     @Override
