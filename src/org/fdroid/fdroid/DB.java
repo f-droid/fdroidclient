@@ -334,7 +334,7 @@ public class DB {
                 SharedPreferences prefs = PreferenceManager
                         .getDefaultSharedPreferences(ctx);
                 ignoreTouchscreen = prefs
-                        .getBoolean("ignoreTouchscreen", false);
+                        .getBoolean(Preferences.PREF_IGN_TOUCH, false);
 
                 PackageManager pm = ctx.getPackageManager();
                 StringBuilder logMsg = new StringBuilder();
@@ -564,7 +564,7 @@ public class DB {
         db = h.getWritableDatabase();
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(mContext);
-        String sync_mode = prefs.getString("dbSyncMode", null);
+        String sync_mode = prefs.getString(Preferences.PREF_DB_SYNC, null);
         if ("off".equals(sync_mode))
             setSynchronizationMode(SYNC_OFF);
         else if ("normal".equals(sync_mode))
@@ -784,8 +784,6 @@ public class DB {
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
             List<Repo> repos = getRepos();
-            SharedPreferences prefs = PreferenceManager
-                    .getDefaultSharedPreferences(mContext);
             cols = new String[] { "id", "version", "vercode", "sig", "srcname",
                     "apkName", "minSdkVersion", "added", "features", "nativecode",
                     "compatible", "repo" };
