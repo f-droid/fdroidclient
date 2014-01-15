@@ -559,7 +559,8 @@ public class AppDetails extends ListActivity {
         tv = (TextView) infoView.findViewById(R.id.summary);
         tv.setText(app.summary);
 
-        if (pref_permissions && app.curApk != null) {
+        if (pref_permissions && app.curApk != null &&
+                (app.curApk.compatible || pref_incompatibleVersions)) {
             tv = (TextView) infoView.findViewById(R.id.permissions_list);
 
             CommaSeparatedList permsList = app.curApk.detail_permissions;
