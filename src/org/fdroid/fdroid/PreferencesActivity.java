@@ -130,10 +130,6 @@ public class PreferencesActivity extends PreferenceActivity implements
         } else if (key.equals(Preferences.PREF_INCOMP_VER)) {
             onoffSummary(key, R.string.show_incompat_versions_on,
                 R.string.show_incompat_versions_off);
-            if (changing) {
-                result ^= RESULT_RELOAD;
-                setResult(result);
-            }
 
         } else if (key.equals(Preferences.PREF_ROOTED)) {
             onoffSummary(key, R.string.rooted_on,
