@@ -207,6 +207,11 @@ public class AppDetails extends ListActivity {
                 holder.nativecode.setVisibility(View.GONE);
             }
 
+            if (apk.incompatible_reasons != null) {
+                holder.api.setText(apk.incompatible_reasons.toString());
+                holder.api.setVisibility(View.VISIBLE);
+            }
+
             // Disable it all if it isn't compatible...
             View[] views = {
                 convertView,
