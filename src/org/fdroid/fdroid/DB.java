@@ -301,6 +301,8 @@ public class DB {
 
         public CommaSeparatedList nativecode; // null if empty or unknown
 
+        public CommaSeparatedList incompatible_reasons; // null if empty or
+                                                        // unknown
         // ID (md5 sum of public key) of signature. Might be null, in the
         // transition to this field existing.
         public String sig;
@@ -372,14 +374,17 @@ public class DB {
             }
 
             public boolean isCompatible(Apk apk) {
-                if (!hasApi(apk.minSdkVersion))
+                if (!hasApi(apk.minSdkVersion)) {
+                    apk.incompatible_reasons = CommaSeparatedList.make(String.valueOf(apk.minSdkVersion));
                     return false;
+                }
                 if (apk.features != null) {
                     for (String feat : apk.features) {
                         if (ignoreTouchscreen
                                 && feat.equals("android.hardware.touchscreen")) {
                             // Don't check it!
                         } else if (!features.contains(feat)) {
+                            apk.incompatible_reasons = CommaSeparatedList.make(feat);
                             Log.d("FDroid", apk.id + " vercode " + apk.vercode
                                     + " is incompatible based on lack of "
                                     + feat);
@@ -388,6 +393,7 @@ public class DB {
                     }
                 }
                 if (!compatibleApi(apk.nativecode)) {
+                    apk.incompatible_reasons = apk.nativecode;
                     Log.d("FDroid", apk.id + " vercode " + apk.vercode
                             + " only supports " + CommaSeparatedList.str(apk.nativecode)
                             + " while your architectures are " + cpuAbisDesc);
