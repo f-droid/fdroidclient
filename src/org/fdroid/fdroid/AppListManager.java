@@ -143,7 +143,7 @@ public class AppListManager {
     private Date calcMaxHistory() {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(fdroidActivity.getBaseContext());
-        String daysPreference = prefs.getString("updateHistoryDays", "14");
+        String daysPreference = prefs.getString(Preferences.PREF_UPD_HISTORY, "14");
         int maxHistoryDays = Integer.parseInt(daysPreference);
         Calendar recent = Calendar.getInstance();
         recent.add(Calendar.DAY_OF_YEAR, -maxHistoryDays);

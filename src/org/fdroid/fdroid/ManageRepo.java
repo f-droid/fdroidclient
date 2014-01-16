@@ -92,7 +92,7 @@ public class ManageRepo extends ListActivity {
                 .getDefaultSharedPreferences(getBaseContext());
 
         TextView tv_lastCheck = (TextView)findViewById(R.id.lastUpdateCheck);
-        long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
+        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
         String s_lastUpdateCheck = "";
         if (lastUpdate == 0) {
             s_lastUpdateCheck = getString(R.string.never);

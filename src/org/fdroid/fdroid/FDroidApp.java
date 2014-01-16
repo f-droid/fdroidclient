@@ -68,7 +68,7 @@ public class FDroidApp extends Application {
     public void reloadTheme() {
         curTheme = Theme.valueOf(PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext())
-                .getString("theme", "dark"));
+                .getString(Preferences.PREF_THEME, "dark"));
     }
     public void applyTheme(Activity activity) {
         switch (curTheme) {
@@ -96,8 +96,8 @@ public class FDroidApp extends Application {
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        curTheme = Theme.valueOf(prefs.getString("theme", "dark"));
-        if (!prefs.getBoolean("cacheDownloaded", false)) {
+        curTheme = Theme.valueOf(prefs.getString(Preferences.PREF_THEME, "dark"));
+        if (!prefs.getBoolean(Preferences.PREF_CACHE_APK, false)) {
 
             File local_path = Utils.getApkCacheDir(this);
             // Things can be null if the SD card is not ready - we'll just

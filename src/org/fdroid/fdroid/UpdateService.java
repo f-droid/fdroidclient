@@ -42,6 +42,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final String RESULT_MESSAGE = "msg";
     public static final String RESULT_EVENT   = "event";
 
+
     public static final int STATUS_COMPLETE_WITH_CHANGES = 0;
     public static final int STATUS_COMPLETE_AND_SAME     = 1;
     public static final int STATUS_ERROR                 = 2;
@@ -130,7 +131,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(ctx);
-        String sint = prefs.getString("updateInterval", "0");
+        String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
         int interval = Integer.parseInt(sint);
 
         Intent intent = new Intent(ctx, UpdateService.class);
@@ -203,8 +204,8 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             // See if it's time to actually do anything yet...
             if (isScheduledRun()) {
-                long lastUpdate = prefs.getLong("lastUpdateCheck", 0);
-                String sint = prefs.getString("updateInterval", "0");
+                long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
+                String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
                 int interval = Integer.parseInt(sint);
                 if (interval == 0) {
                     Log.d("FDroid", "Skipping update - disabled");
@@ -219,7 +220,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 // If we are to update the repos only on wifi, make sure that
                 // connection is active
-                if (prefs.getBoolean("updateOnWifiOnly", false)) {
+                if (prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
                     ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                     NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
                     if (wifi != NetworkInfo.State.CONNECTED &&
@@ -232,7 +233,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 Log.d("FDroid", "Unscheduled (manually requested) update");
             }
 
-            boolean notify = prefs.getBoolean("updateNotify", false);
+            boolean notify = prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false);
 
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
@@ -385,7 +386,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 sendStatus(STATUS_ERROR, errmsg);
             } else {
                 Editor e = prefs.edit();
-                e.putLong("lastUpdateCheck", System.currentTimeMillis());
+                e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
                 e.commit();
                 if (changes) {
                     sendStatus(STATUS_COMPLETE_WITH_CHANGES);

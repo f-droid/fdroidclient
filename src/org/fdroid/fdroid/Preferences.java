@@ -40,6 +40,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_CACHE_APK = "cacheDownloaded";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_DB_SYNC = "dbSyncMode";
+    public static final String PREF_UPD_LAST = "lastUpdateCheck";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_SMALL_DENSITY = false;

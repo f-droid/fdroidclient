@@ -31,7 +31,7 @@ public class AppFilter {
         // Read preferences and cache them so we can do quick lookups.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(ctx);
-        pref_rooted = prefs.getBoolean("rooted", true);
+        pref_rooted = prefs.getBoolean(Preferences.PREF_ROOTED, true);
     }
 
     // Return true if the given app should be filtered out based on user
