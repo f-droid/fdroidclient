@@ -51,7 +51,6 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_THEME,
         Preferences.PREF_PERMISSIONS,
         Preferences.PREF_COMPACT_LAYOUT,
-        Preferences.PREF_SMALL_DENSITY,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
@@ -68,7 +67,11 @@ public class PreferencesActivity extends PreferenceActivity implements
 
     protected void onoffSummary(String key, int on, int off) {
         CheckBoxPreference pref = (CheckBoxPreference)findPreference(key);
-        pref.setSummary(pref.isChecked() ? on : off);
+        if (pref.isChecked()) {
+            pref.setSummary(on);
+        } else {
+            pref.setSummary(off);
+        }
     }
 
     protected void entrySummary(String key) {
@@ -115,10 +118,6 @@ public class PreferencesActivity extends PreferenceActivity implements
         } else if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
             onoffSummary(key, R.string.compactlayout_on,
                 R.string.compactlayout_off);
-
-        } else if (key.equals(Preferences.PREF_SMALL_DENSITY)) {
-            onoffSummary(key, R.string.small_density_on,
-                R.string.small_density_off);
 
         } else if (key.equals(Preferences.PREF_THEME)) {
             entrySummary(key);

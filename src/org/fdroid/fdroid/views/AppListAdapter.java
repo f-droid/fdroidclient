@@ -91,7 +91,6 @@ abstract public class AppListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         boolean compact = Preferences.get().hasCompactLayout();
-        boolean small = Preferences.get().hasSmallDensity();
         DB.App app = items.get(position);
         ViewHolder holder;
 
@@ -117,19 +116,8 @@ abstract public class AppListAdapter extends BaseAdapter {
         ImageLoader.getInstance().displayImage(app.iconUrl, holder.icon,
             displayImageOptions);
 
-        if (small) {
-            holder.status.setVisibility(View.GONE);
-        } else {
-            holder.status.setVisibility(View.VISIBLE);
-            holder.status.setText(getVersionInfo(app));
-        }
-
-        if (small) {
-            holder.license.setVisibility(View.GONE);
-        } else {
-            holder.license.setVisibility(View.VISIBLE);
-            holder.license.setText(app.license);
-        }
+        holder.status.setText(getVersionInfo(app));
+        holder.license.setText(app.license);
 
         // Disable it all if it isn't compatible...
         View[] views = {

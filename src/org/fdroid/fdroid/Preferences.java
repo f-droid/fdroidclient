@@ -35,7 +35,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_THEME = "theme";
     public static final String PREF_PERMISSIONS = "showPermissions";
     public static final String PREF_COMPACT_LAYOUT = "compactlayout";
-    public static final String PREF_SMALL_DENSITY = "smallDensity";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
     public static final String PREF_CACHE_APK = "cacheDownloaded";
     public static final String PREF_EXPERT = "expert";
@@ -43,14 +42,11 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_UPD_LAST = "lastUpdateCheck";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
-    private static final boolean DEFAULT_SMALL_DENSITY = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
-    private boolean smallDensity = DEFAULT_SMALL_DENSITY;
 
     private Map<String,Boolean> initialized = new HashMap<String,Boolean>();
     private List<ChangeListener> compactLayoutListeners = new ArrayList<ChangeListener>();
-    private List<ChangeListener> smallDensityListeners = new ArrayList<ChangeListener>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);
@@ -72,28 +68,12 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         return compactLayout;
     }
 
-    public boolean hasSmallDensity() {
-        if (!isInitialized(PREF_SMALL_DENSITY)) {
-            initialize(PREF_SMALL_DENSITY);
-            smallDensity = preferences.getBoolean(PREF_SMALL_DENSITY, DEFAULT_SMALL_DENSITY);
-        }
-        return smallDensity;
-    }
-
     public void registerCompactLayoutChangeListener(ChangeListener listener) {
         compactLayoutListeners.add(listener);
     }
 
     public void unregisterCompactLayoutChangeListener(ChangeListener listener) {
         compactLayoutListeners.remove(listener);
-    }
-
-    public void registerSmallDensityChangeListener(ChangeListener listener) {
-        smallDensityListeners.add(listener);
-    }
-
-    public void unregisterSmallDensityChangeListener(ChangeListener listener) {
-        smallDensityListeners.remove(listener);
     }
 
     @Override
@@ -103,12 +83,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
         if (key.equals(PREF_COMPACT_LAYOUT)) {
             for ( ChangeListener listener : compactLayoutListeners )  {
-                listener.onPreferenceChange();
-            }
-        }
-
-        if (key.equals(PREF_SMALL_DENSITY)) {
-            for ( ChangeListener listener : smallDensityListeners )  {
                 listener.onPreferenceChange();
             }
         }

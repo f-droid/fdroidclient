@@ -327,7 +327,6 @@ public class AppDetails extends ListActivity {
 
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        pref_smallDensity = prefs.getBoolean(Preferences.PREF_SMALL_DENSITY, false);
         pref_expert = prefs.getBoolean(Preferences.PREF_EXPERT, false);
         pref_permissions = prefs.getBoolean(Preferences.PREF_PERMISSIONS, false);
         pref_incompatibleVersions = prefs.getBoolean(
@@ -344,7 +343,6 @@ public class AppDetails extends ListActivity {
 
     }
 
-    private boolean pref_smallDensity;
     private boolean pref_expert;
     private boolean pref_permissions;
     private boolean pref_incompatibleVersions;
