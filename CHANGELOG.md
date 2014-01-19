@@ -1,3 +1,10 @@
+### Upcoming release
+
+* Support for repositories using self-signed HTTPS certificates through
+  Trust-on-first-use popup
+
+* Support for TLS Subject-Public-Key-Identifier pinning
+
 ### 0.58 (2014-01-11)
 
 * Download icons with a resolution that matches the device's screen density,
