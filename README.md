@@ -16,6 +16,10 @@ git submodule update --init
 ant clean release
 ```
 
+The project itself supports Gradle, but some of the libraries it uses don't.
+Hence it is currently not possible to build F-Droid with Gradle in a clean way
+without manual interaction.
+
 
 Direct download
 ---------------
