@@ -165,6 +165,7 @@ public class AppDetails extends ListActivity {
                     + (apk == app.curApk ? "  ☆" : ""));
 
             if (apk.vercode == app.installedVerCode
+                    && mInstalledSigID != null && apk.sig != null
                     && apk.sig.equals(mInstalledSigID)) {
                 holder.status.setText(getString(R.string.inst));
             } else {
