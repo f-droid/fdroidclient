@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="version">Versio</string>
+  <string name="n_versions_available">%d versioj disponeblaj</string>
+  <string name="n_version_available">%d versio disponebla</string>
   <string name="updates">Ĝisdatigoj</string>
   <string name="notify">Sciigi</string>
   <string name="about_title">Pri F-Droid</string>
@@ -17,6 +19,7 @@
   <string name="repo_add_add">Aldoni</string>
   <string name="cancel">Rezigni</string>
   <string name="repo_update_title">Ĝisdatigi deponejojn</string>
+  <string name="tab_installed">Instalitaj</string>
   <string name="tab_noninstalled">Disponeblaj</string>
   <string name="tab_updates">Ĝisdatigoj</string>
   <string name="process_wait_title">Bonvolu atendi</string>

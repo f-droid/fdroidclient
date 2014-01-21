@@ -8,8 +8,8 @@
     <item>Codziennie</item>
   </string-array>
   <string-array name="themeNames">
-    <item>Dark</item>
-    <item>Light</item>
+    <item>Ciemny</item>
+    <item>Jasny</item>
   </string-array>
   <string-array name="dbSyncModeNames">
     <item>Wyłączone (niebezpieczne)</item>

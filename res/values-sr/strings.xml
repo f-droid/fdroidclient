@@ -7,14 +7,22 @@
   <string name="installIncompatible">Изгледа да овај пакет није компатибилан са вашим уређајем. Да ли желите да га све једно инсталирате?</string>
   <string name="installDowngrade">Тренутно покушавате да инсталирате старију верзију ове апликације. То може да доведе до кварова и губитка података. Да ли сте сигурни да желите да инсталирате старију верзију?</string>
   <string name="version">Верзија</string>
+  <string name="n_versions_available">%d верзије/верзија на располагању</string>
+  <string name="n_version_available">%d верзија на располагању</string>
   <string name="cache_downloaded">Чувај скинуте апликације</string>
+  <string name="keep_downloaded">Чувај скинуте apk датотеке на СД картици</string>
   <string name="updates">Ажурирање</string>
   <string name="other">Druga</string>
   <string name="last_update_check">Задње скенирање ризнице: %s</string>
   <string name="never">никада</string>
+  <string name="automatic_repo_scan">Аутоматско скенирање ризница</string>
+  <string name="update_apps_list">Аутоматски ажурирај листу апликација</string>
   <string name="automatic_scan_wifi">Само на бежичној мрежи</string>
+  <string name="automatic_scan_wifi_desc">Аутоматски ажурирај листе апликација само на бежичној мрежи</string>
   <string name="notify">Обавести</string>
+  <string name="notify_updates_available">Обавести кад су нове верзије на располагању</string>
   <string name="update_history">Претходна ажурирања</string>
+  <string name="update_history_desc">Колико дана приказивати нове/ажуриране апликације</string>
   <string name="search_results">Резултати Претраге</string>
   <string name="app_details">Детаљни подаци за Апликацију</string>
   <string name="no_such_app">Та апликација не постоји</string>
@@ -41,13 +49,14 @@
   <string name="cancel">Поништи</string>
   <string name="repo_delete_title">Изабери ризницу за уклањање</string>
   <string name="repo_update_title">Ажурирај ризнице</string>
+  <string name="tab_installed">Инсталиране</string>
   <string name="tab_noninstalled">На располагању</string>
   <string name="tab_updates">Нове верзије</string>
   <string name="one_update_available">1 нова верзија на располагању.</string>
   <string name="many_updates_available">%d нове/нових верзија на располагању</string>
   <string name="fdroid_updates_available">Ажурирање Ф-Дроида на располагању.</string>
   <string name="process_wait_title">Сачекајте</string>
-  <string name="process_update_msg">Ажурира се листа апликација…</string>
+  <string name="process_update_msg">Ажурира се листа апликација...</string>
   <string name="download_server">Скида се апликација са</string>
   <string name="repo_add_url">Адреса ризнице</string>
   <string name="repo_alrt">Промењена је листа ризница у употреби.
@@ -80,11 +89,15 @@
   <string name="antinonfreedeplist">За ову апликацију су потребни плаћени додаци</string>
   <string name="display">Прикажи</string>
   <string name="expert">Стручни</string>
+  <string name="expert_mode">Омогући стручни режим</string>
   <string name="search_hint">Претрага апликација</string>
   <string name="db_sync_mode">Режим синхронизације базе података</string>
+  <string name="db_sync_mode_long">Унесите вредност за SQLite синхрону заставу</string>
   <string name="appcompatibility">Компатибилност апликације</string>
   <string name="rooted">Рут</string>
+  <string name="rooted_long">Приказати апликације које захтевају рут привилегије</string>
   <string name="ignoreTouch">Игнориши Додирни Екран</string>
+  <string name="ignoreTouch_long">Увек приказати апликације које захтевају додирни екран</string>
   <string name="category_all">Све</string>
   <string name="category_whatsnew">Ново</string>
   <string name="category_recentlyupdated">Недавно Ажурирано</string>
@@ -96,10 +109,12 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Повезивање са
 %1$s</string>
-  <string name="status_checking_compatibility">Проверава се да ли је апликација компатибилна са вашим уређајем…</string>
+  <string name="status_checking_compatibility">Проверава се да ли је апликација компатибилна са вашим уређајем...</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
   <string name="permissions_for_long">Дозволе за верзију %s</string>
   <string name="showPermissions">Прикажи дозволе</string>
+  <string name="showPermissions_long">Приказати листу дозвола неопходних за апликацију</string>
   <string name="no_handler_app">Немате инсталирану апликацију за %s</string>
   <string name="compactlayout">Компактни Распоред</string>
+  <string name="compactlayout_long">Само приказати имена и сажете описе апликација на лист</string>
 </resources>

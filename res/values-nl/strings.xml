@@ -7,14 +7,22 @@
   <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
   <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet uw data kan corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
   <string name="version">Versie</string>
+  <string name="n_versions_available">%d versies beschikbaar</string>
+  <string name="n_version_available">%d versie beschikbaar</string>
   <string name="cache_downloaded">buffer gedownloade apps</string>
+  <string name="keep_downloaded">Bewaar gedownloade apk-bestanden op de SD-kaart</string>
   <string name="updates">Updates</string>
   <string name="other">Andere</string>
   <string name="last_update_check">Laatste bronnen scan: %s</string>
   <string name="never">nooit</string>
+  <string name="automatic_repo_scan">Scan bronnen automatisch</string>
+  <string name="update_apps_list">app-lijst automatisch bijwerken</string>
   <string name="automatic_scan_wifi">Allen op wifi</string>
+  <string name="automatic_scan_wifi_desc">Vernieuw app-lijst alleen op wifi automatisch</string>
   <string name="notify">Verwittigen</string>
+  <string name="notify_updates_available">Verwittigen wanneer nieuwe updates beschikbaar zijn</string>
   <string name="update_history">Vernieuw historie</string>
+  <string name="update_history_desc">Dagen om nieuwe/verbeterde apps te laten zien</string>
   <string name="search_results">Zoekresultaten</string>
   <string name="app_details">App Details</string>
   <string name="no_such_app">Geen dergelijke app gevonden</string>
@@ -44,13 +52,14 @@ Een bron-adres ziet er ongeveer
   <string name="cancel">Annuleren</string>
   <string name="repo_delete_title">Kies bron om te verwijderen</string>
   <string name="repo_update_title">Vernieuw bronnen</string>
+  <string name="tab_installed">Geïnstalleerd</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
   <string name="one_update_available">1 vernieuwing is beschikbaar</string>
   <string name="many_updates_available">%d vernieuwingen zijn beschikbaar</string>
   <string name="fdroid_updates_available">F-Droid Vernieuwingen Beschikbaar</string>
   <string name="process_wait_title">Even geduld aub</string>
-  <string name="process_update_msg">Applicatie-lijst vernieuwen…</string>
+  <string name="process_update_msg">Applicatie-lijst vernieuwen...</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="repo_add_url">Bron-adres</string>
   <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
@@ -84,12 +93,17 @@ Wilt u ze vernieuwen?</string>
   <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
   <string name="display">Laat zien</string>
   <string name="expert">Expert</string>
+  <string name="expert_mode">Ga in expert-modus</string>
   <string name="search_hint">Zoek applicaties</string>
   <string name="db_sync_mode">Database sync-modus</string>
+  <string name="db_sync_mode_long">Zet de waarde van SQLite\'s synchronisatie-vlag</string>
   <string name="appcompatibility">Applicatie verenigbaarheid</string>
   <string name="show_incompat_versions">Onverenigbare versies</string>
+  <string name="show_incompat_versions_l">Laat versies van apps die onverenigbaar zijn met het apparaat</string>
   <string name="rooted">Root</string>
+  <string name="rooted_long">Laat apps zien die root-privileges vereisen</string>
   <string name="ignoreTouch">Negeer aanraakscherm</string>
+  <string name="ignoreTouch_long">Altijd apps die aanraakscherm vereisen weergeven</string>
   <string name="category_all">Alles</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
@@ -101,11 +115,14 @@ Wilt u ze vernieuwen?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Connecteren naar
 %1$s</string>
-  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
+  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat...</string>
   <string name="no_permissions">Geen permissies worden gebruikt</string>
   <string name="permissions_for_long">Permissies voor versie %s</string>
   <string name="showPermissions">Laat permissies zien</string>
+  <string name="showPermissions_long">Laat een lijst met benodigde permissies van de app zien</string>
   <string name="no_handler_app">U hebt geen beschikbare app die %s kan verwerken</string>
   <string name="compactlayout">Compacte Layout</string>
+  <string name="compactlayout_long">Laat alleen namen en samenvattingen van apps zien in de lijst</string>
   <string name="theme">Thema</string>
+  <string name="theme_long">Kies een thema om te gebruiken</string>
 </resources>
