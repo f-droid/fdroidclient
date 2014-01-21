@@ -32,9 +32,9 @@ public class RepoDetailsFragment extends Fragment {
         R.id.text_num_apps,
         R.id.label_last_update,
         R.id.text_last_update,
-        R.id.label_signature,
-        R.id.text_signature,
-        R.id.text_signature_description
+        R.id.label_repo_fingerprint,
+        R.id.text_repo_fingerprint,
+        R.id.text_repo_fingerprint_description
     };
 
     /**
@@ -177,7 +177,7 @@ public class RepoDetailsFragment extends Fragment {
         numApps.setText(Integer.toString(repo.getNumberOfApps()));
 
         setupDescription(repoView, repo);
-        setupSignature(repoView, repo);
+        setupRepoFingerprint(repoView, repo);
 
         // Repos that existed before this feature was supported will have an
         // "Unknown" last update until next time they update...
@@ -310,26 +310,26 @@ public class RepoDetailsFragment extends Fragment {
         ).show();
     }
 
-    private void setupSignature(ViewGroup parent, DB.Repo repo) {
-        TextView signatureView     = (TextView)parent.findViewById(R.id.text_signature);
-        TextView signatureDescView = (TextView)parent.findViewById(R.id.text_signature_description);
+    private void setupRepoFingerprint(ViewGroup parent, DB.Repo repo) {
+        TextView repoFingerprintView     = (TextView)parent.findViewById(R.id.text_repo_fingerprint);
+        TextView repoFingerprintDescView = (TextView)parent.findViewById(R.id.text_repo_fingerprint_description);
 
-        String signature;
-        int signatureColour;
+        String repoFingerprint;
+        int repoFingerprintColor;
 
         if (repo.pubkey != null && repo.pubkey.length() > 0) {
-            signature       = Utils.formatFingerprint(repo.pubkey);
-            signatureColour = getResources().getColor(R.color.signed);
-            signatureDescView.setVisibility(View.GONE);
+            repoFingerprint       = Utils.formatFingerprint(repo.pubkey);
+            repoFingerprintColor = getResources().getColor(R.color.signed);
+            repoFingerprintDescView.setVisibility(View.GONE);
         } else {
-            signature       = getResources().getString(R.string.unsigned);
-            signatureColour = getResources().getColor(R.color.unsigned);
-            signatureDescView.setVisibility(View.VISIBLE);
-            signatureDescView.setText(getResources().getString(R.string.unsigned_description));
+            repoFingerprint       = getResources().getString(R.string.unsigned);
+            repoFingerprintColor = getResources().getColor(R.color.unsigned);
+            repoFingerprintDescView.setVisibility(View.VISIBLE);
+            repoFingerprintDescView.setText(getResources().getString(R.string.unsigned_description));
         }
 
-        signatureView.setText(signature);
-        signatureView.setTextColor(signatureColour);
+        repoFingerprintView.setText(repoFingerprint);
+        repoFingerprintView.setTextColor(repoFingerprintColor);
     }
 
     public void onCreate(Bundle savedInstanceState) {

@@ -167,7 +167,7 @@
     <string name="unsigned">Unsigned</string>
     <string name="repo_url">URL</string>
     <string name="repo_num_apps">Number of apps</string>
-    <string name="repo_signature">Signature</string>
+    <string name="repo_fingerprint">Fingerprint of Repo Signing Key (SHA1)</string>
     <string name="repo_description">Description</string>
     <string name="repo_last_update">Last update</string>
     <string name="repo_update">Update</string>

@@ -90,8 +90,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/label_signature"
-        android:text="@string/repo_signature"
+        android:id="@+id/label_repo_fingerprint"
+        android:text="@string/repo_fingerprint"
         android:layout_below="@id/text_last_update"
         android:layout_alignParentLeft="true"
         android:paddingTop="@dimen/form_label_top" />
@@ -100,15 +100,15 @@
         android:layout_height="wrap_content"
         android:singleLine="false"
         android:scrollHorizontally="false"
-        android:id="@+id/text_signature"
-        android:layout_below="@id/label_signature" android:textStyle="bold"/>
+        android:id="@+id/text_repo_fingerprint"
+        android:layout_below="@id/label_repo_fingerprint" android:textStyle="bold"/>
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:singleLine="false"
         android:scrollHorizontally="false"
-        android:id="@+id/text_signature_description"
-        android:layout_below="@id/text_signature"/>
+        android:id="@+id/text_repo_fingerprint_description"
+        android:layout_below="@id/text_repo_fingerprint"/>
 
     <!-- The last time this repo was updated -->
     <TextView
