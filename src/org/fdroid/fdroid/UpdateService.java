@@ -20,6 +20,8 @@ package org.fdroid.fdroid;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -119,6 +121,10 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     public static UpdateReceiver updateNow(Context context) {
+        return updateRepoNow(null, context);
+    }
+
+    public static UpdateReceiver updateRepoNow(String address, Context context) {
         String title   = context.getString(R.string.process_wait_title);
         String message = context.getString(R.string.process_update_msg);
         ProgressDialog dialog = ProgressDialog.show(context, title, message, true, true);
@@ -129,6 +135,8 @@ public class UpdateService extends IntentService implements ProgressListener {
         UpdateReceiver receiver = new UpdateReceiver(new Handler());
         receiver.setContext(context).setDialog(dialog);
         intent.putExtra("receiver", receiver);
+        if (!TextUtils.isEmpty(address))
+            intent.putExtra("address", address);
         context.startService(intent);
 
         return receiver;
@@ -204,6 +212,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     protected void onHandleIntent(Intent intent) {
 
         receiver = intent.getParcelableExtra("receiver");
+        String address = intent.getStringExtra("address");
 
         long startTime = System.currentTimeMillis();
         String errmsg = "";
@@ -242,7 +251,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 Log.d("FDroid", "Unscheduled (manually requested) update");
             }
-            errmsg = updateRepos();
+            errmsg = updateRepos(address);
             if (TextUtils.isEmpty(errmsg)) {
                 Editor e = prefs.edit();
                 e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
@@ -263,7 +272,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    protected String updateRepos() throws Exception {
+    protected String updateRepos(String address) throws Exception {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
         boolean notify = prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false);
@@ -283,10 +292,25 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         // Process each repo...
         List<DB.App> updatingApps = new ArrayList<DB.App>();
-        List<Integer> keeprepos = new ArrayList<Integer>();
+        Set<Integer> keeprepos = new TreeSet<Integer>();
         boolean changes = false;
+        boolean update;
         for (DB.Repo repo : repos) {
             if (!repo.inuse)
+                continue;
+            // are we updating all repos, or just one?
+            if (TextUtils.isEmpty(address)) {
+                update = true;
+            } else {
+                // if only updating one repo, mark the rest as keepers
+                if (address.equals(repo.address)) {
+                    update = true;
+                } else {
+                    keeprepos.add(repo.id);
+                    update = false;
+                }
+            }
+            if (!update)
                 continue;
             sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
             RepoUpdater updater = RepoUpdater.createUpdaterFor(getBaseContext(), repo);

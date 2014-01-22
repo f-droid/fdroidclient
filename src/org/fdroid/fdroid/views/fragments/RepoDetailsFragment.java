@@ -211,7 +211,7 @@ public class RepoDetailsFragment extends Fragment {
      */
     private void performUpdate() {
         repo.enable((FDroidApp)getActivity().getApplication());
-        UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
+        UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
                 if (event.type == UpdateService.STATUS_COMPLETE_AND_SAME ||
