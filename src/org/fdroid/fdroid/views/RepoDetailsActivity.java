@@ -42,7 +42,7 @@ public class RepoDetailsActivity extends FragmentActivity implements RepoDetails
 
         ActionBarCompat abCompat = ActionBarCompat.create(this);
         abCompat.setDisplayHomeAsUpEnabled(true);
-        abCompat.setTitle(repo.getName());
+        setTitle(repo.getName());
     }
 
     private void finishWithAction(String actionName) {

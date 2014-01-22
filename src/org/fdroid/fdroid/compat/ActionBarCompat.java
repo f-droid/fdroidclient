@@ -21,7 +21,6 @@ public abstract class ActionBarCompat extends Compatibility {
     }
 
     public abstract void setDisplayHomeAsUpEnabled(boolean value);
-    public abstract void setTitle(CharSequence title);
 
 }
 
@@ -36,11 +35,6 @@ class OldActionBarCompatImpl extends ActionBarCompat {
         // Do nothing...
     }
 
-    @Override
-    public void setTitle(CharSequence title) {
-        // Do nothing...
-
-    }
 }
 
 @TargetApi(11)
@@ -58,8 +52,4 @@ class HoneycombActionBarCompatImpl extends ActionBarCompat {
         actionBar.setDisplayHomeAsUpEnabled(value);
     }
 
-    @Override
-    public void setTitle(CharSequence title) {
-        actionBar.setTitle(title);
-    }
 }
