@@ -21,21 +21,31 @@ package org.fdroid.fdroid;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.*;
+import android.app.AlarmManager;
+import android.app.IntentService;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.*;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcelable;
+import android.os.ResultReceiver;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import org.fdroid.fdroid.updater.RepoUpdater;
-
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
+
+import org.fdroid.fdroid.updater.RepoUpdater;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
@@ -232,177 +242,20 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 Log.d("FDroid", "Unscheduled (manually requested) update");
             }
-
-            boolean notify = prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false);
-
-            // Grab some preliminary information, then we can release the
-            // database while we do all the downloading, etc...
-            int updates = 0;
-            List<DB.Repo> repos;
-            List<DB.App> apps;
-            try {
-                DB db = DB.getDB();
-                repos = db.getRepos();
-                apps = db.getApps(false);
-            } finally {
-                DB.releaseDB();
-            }
-
-            // Process each repo...
-            List<DB.App> updatingApps = new ArrayList<DB.App>();
-            List<Integer> keeprepos = new ArrayList<Integer>();
-            boolean success = true;
-            boolean changes = false;
-            for (DB.Repo repo : repos) {
-                if (!repo.inuse) {
-                    continue;
-                }
-                sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
-                RepoUpdater updater = RepoUpdater.createUpdaterFor(getBaseContext(), repo);
-                updater.setProgressListener(this);
-                try {
-                    updater.update();
-                    if (updater.hasChanged()) {
-                        updatingApps.addAll(updater.getApps());
-                        changes = true;
-                    } else {
-                        keeprepos.add(repo.id);
-                    }
-                } catch (RepoUpdater.UpdateException e) {
-                    errmsg += (errmsg.length() == 0 ? "" : "\n") + e.getMessage();
-                    Log.e("FDroid", "Error updating repository " + repo.address + ": " + e.getMessage());
-                    Log.e("FDroid", Log.getStackTraceString(e));
-                }
-            }
-
-            if (!changes && success) {
-                Log.d("FDroid",
-                        "Not checking app details or compatibility, " +
-                                "because all repos were up to date.");
-            } else if (changes && success) {
-
-                sendStatus(STATUS_INFO,
-                        getString(R.string.status_checking_compatibility));
-
-                DB db = DB.getDB();
-                try {
-
-                    // Need to flag things we're keeping despite having received
-                    // no data about during the update. (i.e. stuff from a repo
-                    // that we know is unchanged due to the etag)
-                    for (int keep : keeprepos) {
-                        for (DB.App app : apps) {
-                            boolean keepapp = false;
-                            for (DB.Apk apk : app.apks) {
-                                if (apk.repo == keep) {
-                                    keepapp = true;
-                                    break;
-                                }
-                            }
-                            if (keepapp) {
-                                DB.App app_k = null;
-                                for (DB.App app2 : apps) {
-                                    if (app2.id.equals(app.id)) {
-                                        app_k = app2;
-                                        break;
-                                    }
-                                }
-                                if (app_k == null) {
-                                    updatingApps.add(app);
-                                    app_k = app;
-                                }
-                                app_k.updated = true;
-                                db.populateDetails(app_k, keep);
-                                for (DB.Apk apk : app.apks)
-                                    if (apk.repo == keep)
-                                        apk.updated = true;
-                            }
-                        }
-                    }
-
-                    db.beginUpdate(apps);
-                    for (DB.App app : updatingApps) {
-                        db.updateApplication(app);
-                    }
-                    db.endUpdate();
-                    for (DB.Repo repo : repos)
-                        db.writeLastEtag(repo);
-                } catch (Exception ex) {
-                    db.cancelUpdate();
-                    Log.e("FDroid", "Exception during update processing:\n"
-                            + Log.getStackTraceString(ex));
-                    errmsg = "Exception during processing - " + ex.getMessage();
-                    success = false;
-                } finally {
-                    DB.releaseDB();
-                }
-
-            }
-
-            if (success && changes) {
-                ((FDroidApp) getApplication()).invalidateAllApps();
-                if (notify) {
-                    apps = ((FDroidApp) getApplication()).getApps();
-                    updates = getNumUpdates(apps);
-                }
-            }
-
-            if (success && changes && notify && updates > 0) {
-                Log.d("FDroid", "Notifying "+updates+" updates.");
-                NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(
-                        this)
-                        .setAutoCancel(true)
-                        .setContentTitle(
-                                getString(R.string.fdroid_updates_available));
-                if (Build.VERSION.SDK_INT >= 11) {
-                    mBuilder.setSmallIcon(R.drawable.ic_stat_notify_updates);
-                } else {
-                    mBuilder.setSmallIcon(R.drawable.ic_launcher);
-                }
-                Intent notifyIntent = new Intent(this, FDroid.class)
-                        .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
-                if (updates > 1) {
-                    mBuilder.setContentText(getString(
-                            R.string.many_updates_available, updates));
-
-                } else {
-                    mBuilder.setContentText(getString(R.string.one_update_available));
-                }
-                TaskStackBuilder stackBuilder = TaskStackBuilder
-                        .create(this).addParentStack(FDroid.class)
-                        .addNextIntent(notifyIntent);
-                PendingIntent pendingIntent = stackBuilder
-                        .getPendingIntent(0,
-                                PendingIntent.FLAG_UPDATE_CURRENT);
-                mBuilder.setContentIntent(pendingIntent);
-                NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                mNotificationManager.notify(1, mBuilder.build());
-            }
-
-            if (!success) {
-                if (errmsg.length() == 0)
-                    errmsg = "Unknown error";
-                sendStatus(STATUS_ERROR, errmsg);
-            } else {
+            errmsg = updateRepos();
+            if (TextUtils.isEmpty(errmsg)) {
                 Editor e = prefs.edit();
                 e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
                 e.commit();
-                if (changes) {
-                    sendStatus(STATUS_COMPLETE_WITH_CHANGES);
-                } else {
-                    sendStatus(STATUS_COMPLETE_AND_SAME);
-                }
             }
-
         } catch (Exception e) {
             Log.e("FDroid",
                     "Exception during update processing:\n"
                             + Log.getStackTraceString(e));
-            if (errmsg.length() == 0)
+            if (TextUtils.isEmpty(errmsg))
                 errmsg = "Unknown error";
             sendStatus(STATUS_ERROR, errmsg);
-        } finally {
+       } finally {
             Log.d("FDroid", "Update took "
                     + ((System.currentTimeMillis() - startTime) / 1000)
                     + " seconds.");
@@ -410,6 +263,161 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
+    protected String updateRepos() throws Exception {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        boolean notify = prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false);
+        String errmsg = "";
+        // Grab some preliminary information, then we can release the
+        // database while we do all the downloading, etc...
+        int updates = 0;
+        List<DB.Repo> repos;
+        List<DB.App> apps;
+        try {
+            DB db = DB.getDB();
+            repos = db.getRepos();
+            apps = db.getApps(false);
+        } finally {
+            DB.releaseDB();
+        }
+
+        // Process each repo...
+        List<DB.App> updatingApps = new ArrayList<DB.App>();
+        List<Integer> keeprepos = new ArrayList<Integer>();
+        boolean changes = false;
+        for (DB.Repo repo : repos) {
+            if (!repo.inuse)
+                continue;
+            sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
+            RepoUpdater updater = RepoUpdater.createUpdaterFor(getBaseContext(), repo);
+            updater.setProgressListener(this);
+            try {
+                updater.update();
+                if (updater.hasChanged()) {
+                    updatingApps.addAll(updater.getApps());
+                    changes = true;
+                } else {
+                    keeprepos.add(repo.id);
+                }
+            } catch (RepoUpdater.UpdateException e) {
+                errmsg += (errmsg.length() == 0 ? "" : "\n") + e.getMessage();
+                Log.e("FDroid", "Error updating repository " + repo.address + ": " + e.getMessage());
+                Log.e("FDroid", Log.getStackTraceString(e));
+            }
+        }
+
+        boolean success = true;
+        if (!changes) {
+            Log.d("FDroid", "Not checking app details or compatibility, " +
+                    "because all repos were up to date.");
+        } else {
+            sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
+
+            DB db = DB.getDB();
+            try {
+
+                // Need to flag things we're keeping despite having received
+                // no data about during the update. (i.e. stuff from a repo
+                // that we know is unchanged due to the etag)
+                for (int keep : keeprepos) {
+                    for (DB.App app : apps) {
+                        boolean keepapp = false;
+                        for (DB.Apk apk : app.apks) {
+                            if (apk.repo == keep) {
+                                keepapp = true;
+                                break;
+                            }
+                        }
+                        if (keepapp) {
+                            DB.App app_k = null;
+                            for (DB.App app2 : apps) {
+                                if (app2.id.equals(app.id)) {
+                                    app_k = app2;
+                                    break;
+                                }
+                            }
+                            if (app_k == null) {
+                                updatingApps.add(app);
+                                app_k = app;
+                            }
+                            app_k.updated = true;
+                            db.populateDetails(app_k, keep);
+                            for (DB.Apk apk : app.apks)
+                                if (apk.repo == keep)
+                                    apk.updated = true;
+                        }
+                    }
+                }
+
+                db.beginUpdate(apps);
+                for (DB.App app : updatingApps) {
+                    db.updateApplication(app);
+                }
+                db.endUpdate();
+                for (DB.Repo repo : repos)
+                    db.writeLastEtag(repo);
+            } catch (Exception ex) {
+                db.cancelUpdate();
+                Log.e("FDroid", "Exception during update processing:\n"
+                        + Log.getStackTraceString(ex));
+                errmsg = "Exception during processing - " + ex.getMessage();
+                success = false;
+            } finally {
+                DB.releaseDB();
+            }
+        }
+
+        if (success && changes) {
+            ((FDroidApp) getApplication()).invalidateAllApps();
+            if (notify) {
+                apps = ((FDroidApp) getApplication()).getApps();
+                updates = getNumUpdates(apps);
+            }
+            if (notify && updates > 0)
+                showAppUpdatesNotification(updates);
+        }
+
+        if (success) {
+            if (changes) {
+                sendStatus(STATUS_COMPLETE_WITH_CHANGES);
+            } else {
+                sendStatus(STATUS_COMPLETE_AND_SAME);
+            }
+        } else {
+            if (TextUtils.isEmpty(errmsg))
+                errmsg = "Unknown error";
+            sendStatus(STATUS_ERROR, errmsg);
+        }
+
+        return errmsg;
+    }
+
+    private void showAppUpdatesNotification(int updates) throws Exception {
+        Log.d("FDroid", "Notifying " + updates + " updates.");
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setAutoCancel(true)
+                        .setContentTitle(getString(R.string.fdroid_updates_available));
+        if (Build.VERSION.SDK_INT >= 11) {
+            builder.setSmallIcon(R.drawable.ic_stat_notify_updates);
+        } else {
+            builder.setSmallIcon(R.drawable.ic_launcher);
+        }
+        Intent notifyIntent = new Intent(this, FDroid.class)
+                .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
+        if (updates > 1) {
+            builder.setContentText(getString(R.string.many_updates_available, updates));
+        } else {
+            builder.setContentText(getString(R.string.one_update_available));
+        }
+        TaskStackBuilder stackBuilder = TaskStackBuilder
+                .create(this).addParentStack(FDroid.class)
+                .addNextIntent(notifyIntent);
+        PendingIntent pi = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pi);
+        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.notify(1, builder.build());
+    }
 
     /**
      * Received progress event from the RepoXMLHandler. It could be progress
