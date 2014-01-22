@@ -114,7 +114,8 @@
 
         <activity
             android:name=".views.RepoDetailsActivity"
-            android:label="@string/menu_manage" />
+            android:label="@string/menu_manage"
+            android:parentActivityName=".ManageRepo" />
  
         <activity
             android:name=".AppDetails"

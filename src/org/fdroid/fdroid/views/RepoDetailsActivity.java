@@ -3,7 +3,9 @@ package org.fdroid.fdroid.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
 import org.fdroid.fdroid.DB;
+import org.fdroid.fdroid.DB.Repo;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
@@ -15,6 +17,8 @@ public class RepoDetailsActivity extends FragmentActivity implements RepoDetails
     public static final String ACTION_IS_CHANGED = "isChanged";
 
     public static final String DATA_REPO_ID     = "repoId";
+
+    private int repoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +34,21 @@ public class RepoDetailsActivity extends FragmentActivity implements RepoDetails
                 .commit();
         }
 
-        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+        repoId = getIntent().getIntExtra(RepoDetailsFragment.ARG_REPO_ID, -1);
+
+        DB db = DB.getDB();
+        Repo repo = db.getRepo(repoId);
+        DB.releaseDB();
+
+        ActionBarCompat abCompat = ActionBarCompat.create(this);
+        abCompat.setDisplayHomeAsUpEnabled(true);
+        abCompat.setTitle(repo.getName());
     }
 
     private void finishWithAction(String actionName) {
         Intent data = new Intent();
         data.putExtra(actionName, true);
-        data.putExtra(DATA_REPO_ID, getIntent().getIntExtra(RepoDetailsFragment.ARG_REPO_ID, -1));
+        data.putExtra(DATA_REPO_ID, repoId);
         setResult(RESULT_OK, data);
         finish();
     }
