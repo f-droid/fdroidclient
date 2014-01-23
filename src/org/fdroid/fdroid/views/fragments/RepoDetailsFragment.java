@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.database.ContentObserver;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.text.Editable;
@@ -53,12 +50,6 @@ public class RepoDetailsFragment extends Fragment {
     private static final int DELETE = 0;
     private static final int UPDATE = 1;
 
-    private final long repoId;
-
-    public RepoDetailsFragment(long repoId) {
-        this.repoId = repoId;
-    }
-
     // TODO: Currently initialised in onCreateView. Not sure if that is the
     // best way to go about this...
     private Repo repo;
@@ -67,14 +58,18 @@ public class RepoDetailsFragment extends Fragment {
         super.onAttach(activity);
     }
 
+	private long getRepoId() {
+		return getArguments().getLong(RepoDetailsFragment.ARG_REPO_ID, 0);
+	}
+
     /**
      * After, for example, a repo update, the details will have changed in the
-     * database. However, or local reference to the DB.Repo object will not
+     * database. However, or local reference to the Repo object will not
      * have been updated. The safest way to deal with this is to reload the
      * repo object directly from the database.
      */
     private Repo loadRepoDetails() {
-        return RepoProvider.Helper.findById(getActivity().getContentResolver(), repoId);
+        return RepoProvider.Helper.findById(getActivity().getContentResolver(), getRepoId());
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,7 +77,7 @@ public class RepoDetailsFragment extends Fragment {
         repo = loadRepoDetails();
 
         if (repo == null) {
-            Log.e("FDroid", "Error showing details for repo '" + repoId + "'");
+            Log.e("FDroid", "Error showing details for repo '" + getRepoId() + "'");
             return new LinearLayout(container.getContext());
         }
 

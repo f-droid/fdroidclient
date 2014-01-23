@@ -17,7 +17,7 @@ public class RepoDetailsActivity extends FragmentActivity {
         long repoId = getIntent().getLongExtra(RepoDetailsFragment.ARG_REPO_ID, 0);
 
         if (savedInstanceState == null) {
-            RepoDetailsFragment fragment = new RepoDetailsFragment(repoId);
+            RepoDetailsFragment fragment = new RepoDetailsFragment();
             fragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager()
                 .beginTransaction()
