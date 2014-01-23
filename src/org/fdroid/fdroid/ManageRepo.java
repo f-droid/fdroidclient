@@ -226,13 +226,20 @@ class RepoListFragment extends ListFragment
 
         /* let's see if someone is trying to send us a new repo */
         Intent intent = getActivity().getIntent();
-        /* an URL from a click or a QRCode scan */
+        /* an URL from a click, NFC, QRCode scan, etc */
         Uri uri = intent.getData();
         if (uri != null) {
-            // scheme should only ever be pure ASCII aka Locale.ENGLISH
-            String scheme = intent.getScheme().toLowerCase(Locale.ENGLISH);
+            // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
+            String scheme = intent.getScheme();
+            String host = uri.getHost();
+            if (scheme == null || host == null) {
+                String msg = String.format(getString(R.string.malformed_repo_uri), uri);
+                Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+                return;
+            }
+            scheme = scheme.toLowerCase(Locale.ENGLISH);
+            host = host.toLowerCase(Locale.ENGLISH);
             String fingerprint = uri.getUserInfo();
-            String host = uri.getHost().toLowerCase(Locale.ENGLISH);
             if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
                     || scheme.equals("https") || scheme.equals("http")) {
 
@@ -252,7 +259,6 @@ class RepoListFragment extends ListFragment
                         .replace(intent.getScheme(), scheme) // downcase scheme
                         .replace("fdroidrepo", "http"); // make proper URL
                 showAddRepo(uriString, fingerprint);
-                Log.i("ManageRepo", uriString + " fingerprint: " + fingerprint);
             }
         }
     }
