@@ -2,8 +2,12 @@ package org.fdroid.fdroid.views.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.text.Editable;
@@ -12,8 +16,8 @@ import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import org.fdroid.fdroid.*;
-
-import java.util.List;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 
 public class RepoDetailsFragment extends Fragment {
 
@@ -49,34 +53,15 @@ public class RepoDetailsFragment extends Fragment {
     private static final int DELETE = 0;
     private static final int UPDATE = 1;
 
-    public void setRepoChangeListener(OnRepoChangeListener listener) {
-        repoChangeListener = listener;
-    }
+    private final long repoId;
 
-    private OnRepoChangeListener repoChangeListener;
-
-    public static interface OnRepoChangeListener {
-
-        /**
-         * This fragment is responsible for getting confirmation from the
-         * user, so you should presume that the user has already consented
-         * and confirmed to the deletion.
-         */
-        public void onDeleteRepo(DB.Repo repo);
-
-        public void onRepoDetailsChanged(DB.Repo repo);
-
-        public void onEnableRepo(DB.Repo repo);
-
-        public void onDisableRepo(DB.Repo repo);
-
-        public void onUpdatePerformed(DB.Repo repo);
-
+    public RepoDetailsFragment(long repoId) {
+        this.repoId = repoId;
     }
 
     // TODO: Currently initialised in onCreateView. Not sure if that is the
     // best way to go about this...
-    private DB.Repo repo;
+    private Repo repo;
 
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -88,20 +73,13 @@ public class RepoDetailsFragment extends Fragment {
      * have been updated. The safest way to deal with this is to reload the
      * repo object directly from the database.
      */
-    private void reloadRepoDetails() {
-        try {
-            DB db = DB.getDB();
-            repo = db.getRepo(repo.id);
-        } finally {
-            DB.releaseDB();
-        }
+    private Repo loadRepoDetails() {
+        return RepoProvider.Helper.findById(getActivity().getContentResolver(), repoId);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        int repoId = getArguments().getInt(ARG_REPO_ID);
-        DB db = DB.getDB();
-        repo = db.getRepo(repoId);
-        DB.releaseDB();
+
+        repo = loadRepoDetails();
 
         if (repo == null) {
             Log.e("FDroid", "Error showing details for repo '" + repoId + "'");
@@ -186,7 +164,7 @@ public class RepoDetailsFragment extends Fragment {
         lastUpdated.setText(lastUpdate);
     }
 
-    private void setupDescription(ViewGroup parent, DB.Repo repo) {
+    private void setupDescription(ViewGroup parent, Repo repo) {
 
         TextView descriptionLabel = (TextView)parent.findViewById(R.id.label_description);
         TextView description      = (TextView)parent.findViewById(R.id.text_description);
@@ -210,20 +188,20 @@ public class RepoDetailsFragment extends Fragment {
      * list can be updated. We will perform the update ourselves though.
      */
     private void performUpdate() {
-        repo.enable((FDroidApp)getActivity().getApplication());
+        // Ensure repo is enabled before updating...
+        ContentValues values = new ContentValues(1);
+        values.put(RepoProvider.DataColumns.IN_USE, 1);
+        RepoProvider.Helper.update(getActivity().getContentResolver(), repo, values);
+
         UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
-                if (event.type == UpdateService.STATUS_COMPLETE_AND_SAME ||
-                        event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
-                    reloadRepoDetails();
+                if (event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                    repo = loadRepoDetails();
                     updateView((ViewGroup)getView());
                 }
             }
         });
-        if (repoChangeListener != null) {
-            repoChangeListener.onUpdatePerformed(repo);
-        }
     }
 
     /**
@@ -238,18 +216,15 @@ public class RepoDetailsFragment extends Fragment {
         public void afterTextChanged(Editable s) {}
 
         @Override
+        // TODO: This is called each character change, resulting in a DB query.
+        // Doesn't exactly cause performance problems,
+        // but seems silly not to go for more of a "focus out" event then
+        // this "text changed" event.
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (!repo.address.equals(s.toString())) {
-                repo.address = s.toString();
-                try {
-                    DB db = DB.getDB();
-                    db.updateRepo(repo);
-                } finally {
-                    DB.releaseDB();
-                }
-                if (repoChangeListener != null) {
-                    repoChangeListener.onRepoDetailsChanged(repo);
-                }
+                ContentValues values = new ContentValues(1);
+                values.put(RepoProvider.DataColumns.ADDRESS, s.toString());
+                RepoProvider.Helper.update(getActivity().getContentResolver(), repo, values);
             }
         }
     }
@@ -293,24 +268,23 @@ public class RepoDetailsFragment extends Fragment {
             .setIcon(android.R.drawable.ic_menu_delete)
             .setMessage(R.string.repo_confirm_delete_body)
             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (repoChangeListener != null) {
-                    DB.Repo repo = RepoDetailsFragment.this.repo;
-                    repoChangeListener.onDeleteRepo(repo);
-                }
-            }
-        }).setNegativeButton(android.R.string.cancel,
-            new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // Do nothing...
+                    Repo repo = RepoDetailsFragment.this.repo;
+                    RepoProvider.Helper.remove(getActivity().getContentResolver(), repo.getId());
+                    getActivity().finish();
                 }
-            }
+            }).setNegativeButton(android.R.string.cancel,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing...
+                    }
+                }
         ).show();
     }
 
-    private void setupRepoFingerprint(ViewGroup parent, DB.Repo repo) {
+    private void setupRepoFingerprint(ViewGroup parent, Repo repo) {
         TextView repoFingerprintView     = (TextView)parent.findViewById(R.id.text_repo_fingerprint);
         TextView repoFingerprintDescView = (TextView)parent.findViewById(R.id.text_repo_fingerprint_description);
 

@@ -1,34 +1,48 @@
 package org.fdroid.fdroid.views;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.support.v4.widget.CursorAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
 
-import org.fdroid.fdroid.DB;
-import org.fdroid.fdroid.ManageRepo;
+import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.SwitchCompat;
+import org.fdroid.fdroid.data.Repo;
 
-import java.util.List;
+public class RepoAdapter extends CursorAdapter {
 
-public class RepoAdapter extends BaseAdapter {
-
-    private List<DB.Repo> repositories;
-    private final ManageRepo activity;
-
-    public RepoAdapter(ManageRepo activity) {
-        this.activity = activity;
-        refresh();
+    public interface EnabledListener {
+        public void onSetEnabled(Repo repo, boolean isEnabled);
     }
 
-    public void refresh() {
-        try {
-            DB db = DB.getDB();
-            repositories = db.getRepos();
-        } finally {
-            DB.releaseDB();
-        }
-        notifyDataSetChanged();
+    private static final int SWITCH_ID = 10000;
+
+    private final LayoutInflater inflater;
+
+    private EnabledListener enabledListener;
+
+    public RepoAdapter(Context context, Cursor c, int flags) {
+        super(context, c, flags);
+        inflater = LayoutInflater.from(context);
+    }
+
+    public RepoAdapter(Context context, Cursor c, boolean autoRequery) {
+        super(context, c, autoRequery);
+        inflater = LayoutInflater.from(context);
+    }
+
+    public RepoAdapter(Context context, Cursor c) {
+        super(context, c);
+        inflater = LayoutInflater.from(context);
+    }
+
+    public void setEnabledListener(EnabledListener listener) {
+        enabledListener = listener;
     }
 
     public boolean hasStableIds() {
@@ -36,54 +50,45 @@ public class RepoAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return repositories.size();
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        View view = inflater.inflate(R.layout.repo_item, null);
+        CompoundButton switchView = addSwitchToView(view, context);
+        setupView(cursor, view, switchView);
+        return view;
     }
 
     @Override
-    public Object getItem(int position) {
-        return repositories.get(position);
+    public void bindView(View view, Context context, Cursor cursor) {
+        CompoundButton switchView = (CompoundButton)view.findViewById(SWITCH_ID);
+
+        // Remove old listener (because we are reusing this view, we don't want
+        // to invoke the listener for the last repo to use it - particularly
+        // because we are potentially about to change the checked status
+        // which would in turn invoke this listener....
+        switchView.setOnCheckedChangeListener(null);
+        setupView(cursor, view, switchView);
     }
 
-    @Override
-    public long getItemId(int position) {
-        return getItem(position).hashCode();
-    }
 
-    private static final int SWITCH_ID = 10000;
+    private void setupView(Cursor cursor, View view, CompoundButton switchView) {
 
-    @Override
-    public View getView(int position, View view, ViewGroup parent) {
+        final Repo repo = new Repo(cursor);
 
-        final DB.Repo repository = repositories.get(position);
-
-        CompoundButton switchView;
-        if (view == null) {
-            view = activity.getLayoutInflater().inflate(R.layout.repo_item,null);
-            switchView = addSwitchToView(view);
-        } else {
-            switchView = (CompoundButton)view.findViewById(SWITCH_ID);
-
-            // Remove old listener (because we are reusing this view, we don't want
-            // to invoke the listener for the last repo to use it - particularly
-            // because we are potentially about to change the checked status
-            // which would in turn invoke this listener....
-            switchView.setOnCheckedChangeListener(null);
-        }
-
-        switchView.setChecked(repository.inuse);
+        switchView.setChecked(repo.inuse);
 
         // Add this listener *after* setting the checked status, so we don't
         // invoke the listener while setting up the view...
         switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                activity.setRepoEnabled(repository, isChecked);
+                if (enabledListener != null) {
+                    enabledListener.onSetEnabled(repo, isChecked);
+                }
             }
         });
 
         TextView nameView = (TextView)view.findViewById(R.id.repo_name);
-        nameView.setText(repository.getName());
+        nameView.setText(repo.getName());
         RelativeLayout.LayoutParams nameViewLayout =
                 (RelativeLayout.LayoutParams)nameView.getLayoutParams();
         nameViewLayout.addRule(RelativeLayout.LEFT_OF, switchView.getId());
@@ -91,17 +96,15 @@ public class RepoAdapter extends BaseAdapter {
         // If we set the signed view to GONE instead of INVISIBLE, then the
         // height of each list item varies.
         View signedView = view.findViewById(R.id.repo_unsigned);
-        if (repository.isSigned()) {
+        if (repo.isSigned()) {
             signedView.setVisibility(View.INVISIBLE);
         } else {
             signedView.setVisibility(View.VISIBLE);
         }
-
-        return view;
     }
 
-    private CompoundButton addSwitchToView(View parent) {
-        SwitchCompat switchBuilder = SwitchCompat.create(activity);
+    private CompoundButton addSwitchToView(View parent, Context context) {
+        SwitchCompat switchBuilder = SwitchCompat.create(context);
         CompoundButton switchView = switchBuilder.createSwitch();
         switchView.setId(SWITCH_ID);
         RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(

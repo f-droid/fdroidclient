@@ -41,12 +41,16 @@ import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.util.Log;
+
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.updater.RepoUpdater;
 
 public class UpdateService extends IntentService implements ProgressListener {
@@ -280,22 +284,23 @@ public class UpdateService extends IntentService implements ProgressListener {
         // Grab some preliminary information, then we can release the
         // database while we do all the downloading, etc...
         int updates = 0;
-        List<DB.Repo> repos;
+        List<Repo> repos;
         List<DB.App> apps;
         try {
             DB db = DB.getDB();
-            repos = db.getRepos();
             apps = db.getApps(false);
         } finally {
             DB.releaseDB();
         }
 
+        repos = RepoProvider.Helper.all(getContentResolver());
+
         // Process each repo...
         List<DB.App> updatingApps = new ArrayList<DB.App>();
-        Set<Integer> keeprepos = new TreeSet<Integer>();
+        Set<Long> keeprepos = new TreeSet<Long>();
         boolean changes = false;
         boolean update;
-        for (DB.Repo repo : repos) {
+        for (Repo repo : repos) {
             if (!repo.inuse)
                 continue;
             // are we updating all repos, or just one?
@@ -306,7 +311,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 if (address.equals(repo.address)) {
                     update = true;
                 } else {
-                    keeprepos.add(repo.id);
+                    keeprepos.add(repo.getId());
                     update = false;
                 }
             }
@@ -321,7 +326,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     updatingApps.addAll(updater.getApps());
                     changes = true;
                 } else {
-                    keeprepos.add(repo.id);
+                    keeprepos.add(repo.getId());
                 }
             } catch (RepoUpdater.UpdateException e) {
                 errmsg += (errmsg.length() == 0 ? "" : "\n") + e.getMessage();
@@ -343,7 +348,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 // Need to flag things we're keeping despite having received
                 // no data about during the update. (i.e. stuff from a repo
                 // that we know is unchanged due to the etag)
-                for (int keep : keeprepos) {
+                for (long keep : keeprepos) {
                     for (DB.App app : apps) {
                         boolean keepapp = false;
                         for (DB.Apk apk : app.apks) {
@@ -378,8 +383,6 @@ public class UpdateService extends IntentService implements ProgressListener {
                     db.updateApplication(app);
                 }
                 db.endUpdate();
-                for (DB.Repo repo : repos)
-                    db.writeLastEtag(repo);
             } catch (Exception ex) {
                 db.cancelUpdate();
                 Log.e("FDroid", "Exception during update processing:\n"

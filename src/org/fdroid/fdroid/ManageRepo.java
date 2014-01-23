@@ -21,34 +21,39 @@ package org.fdroid.fdroid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.ListFragment;
+import android.support.v4.content.CursorLoader;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import org.fdroid.fdroid.DB.Repo;
+
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.ClipboardCompat;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.views.RepoAdapter;
 import org.fdroid.fdroid.views.RepoDetailsActivity;
 import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.Locale;
 
-public class ManageRepo extends ListActivity {
-
-    private static final String DEFAULT_NEW_REPO_TEXT = "https://";
-    private final int ADD_REPO     = 1;
-    private final int UPDATE_REPOS = 2;
+public class ManageRepo extends FragmentActivity {
 
     /**
      * If we have a new repo added, or the address of a repo has changed, then
@@ -57,6 +62,122 @@ public class ManageRepo extends ListActivity {
      * updated.
      */
     public static final String REQUEST_UPDATE = "update";
+
+    private RepoListFragment listFragment;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        ((FDroidApp) getApplication()).applyTheme(this);
+
+        if (savedInstanceState == null) {
+            listFragment = new RepoListFragment();
+            getSupportFragmentManager()
+                .beginTransaction()
+                .add(android.R.id.content, listFragment)
+                .commit();
+        }
+
+        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void finish() {
+        Intent ret = new Intent();
+        if (listFragment.hasChanged()) {
+            Log.i("FDroid", "Repo details have changed, prompting for update.");
+            ret.putExtra(REQUEST_UPDATE, true);
+        }
+        setResult(Activity.RESULT_OK, ret);
+        super.finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+}
+
+class RepoListFragment extends ListFragment
+    implements LoaderManager.LoaderCallbacks<Cursor>,RepoAdapter.EnabledListener {
+
+    private static final String DEFAULT_NEW_REPO_TEXT = "https://";
+    private final int ADD_REPO     = 1;
+    private final int UPDATE_REPOS = 2;
+
+    public boolean hasChanged() {
+        return changed;
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        Uri uri = RepoProvider.getContentUri();
+        Log.i("FDroid", "Creating repo loader '" + uri + "'.");
+        String[] projection = new String[] {
+                RepoProvider.DataColumns._ID,
+                RepoProvider.DataColumns.NAME,
+                RepoProvider.DataColumns.PUBLIC_KEY,
+                RepoProvider.DataColumns.FINGERPRINT,
+                RepoProvider.DataColumns.IN_USE
+        };
+        return new CursorLoader(getActivity(), uri, projection, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+        Log.i("FDroid", "Repo cursor loaded.");
+        repoAdapter.swapCursor(cursor);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+        Log.i("FDroid", "Repo cursor reset.");
+        repoAdapter.swapCursor(null);
+    }
+
+
+    /**
+     * NOTE: If somebody toggles a repo off then on again, it will have removed
+     * all apps from the index when it was toggled off, so when it is toggled on
+     * again, then it will require a refresh.
+     *
+     * Previously, I toyed with the idea of remembering whether they had
+     * toggled on or off, and then only actually performing the function when
+     * the activity stopped, but I think that will be problematic. What about
+     * when they press the home button, or edit a repos details? It will start
+     * to become somewhat-random as to when the actual enabling, disabling is
+     * performed.
+     *
+     * So now, it just does the disable as soon as the user clicks "Off" and
+     * then removes the apps. To compensate for the removal of apps from
+     * index, it notifies the user via a toast that the apps have been removed.
+     * Also, as before, it will still prompt the user to update the repos if
+     * you toggled on on.
+     */
+    @Override
+    public void onSetEnabled(Repo repo, boolean isEnabled) {
+        if (repo.inuse != isEnabled ) {
+            ContentValues values = new ContentValues(1);
+            values.put(RepoProvider.DataColumns.IN_USE, isEnabled ? 1 : 0);
+            RepoProvider.Helper.update(
+                    getActivity().getContentResolver(), repo, values);
+
+            if (isEnabled) {
+                changed = true;
+            } else {
+                FDroidApp app = (FDroidApp)getActivity().getApplication();
+                RepoProvider.Helper.purgeApps(repo, app);
+                String notification = getString(R.string.repo_disabled_notification, repo.name);
+                Toast.makeText(getActivity(), notification, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
     private enum PositiveAction {
         ADD_NEW, ENABLE, IGNORE
@@ -74,16 +195,14 @@ public class ManageRepo extends ListActivity {
     private boolean isImportingRepo = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        ((FDroidApp) getApplication()).applyTheme(this);
+    public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        ActionBarCompat abCompat = ActionBarCompat.create(this);
-        abCompat.setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
 
-        repoAdapter = new RepoAdapter(this);
+        repoAdapter = new RepoAdapter(getActivity(), null);
+        repoAdapter.setEnabledListener(this);
         setListAdapter(repoAdapter);
 
         /*
@@ -106,7 +225,7 @@ public class ManageRepo extends ListActivity {
         */
 
         /* let's see if someone is trying to send us a new repo */
-        Intent intent = getIntent();
+        Intent intent = getActivity().getIntent();
         /* an URL from a click or a QRCode scan */
         Uri uri = intent.getData();
         if (uri != null) {
@@ -139,27 +258,25 @@ public class ManageRepo extends ListActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
-        refreshList();
+
+        //Starts a new or restarts an existing Loader in this manager
+        getLoaderManager().restartLoader(0, null, this);
     }
 
     @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
+    public void onListItemClick(ListView l, View v, int position, long id) {
 
         super.onListItemClick(l, v, position, id);
 
-        DB.Repo repo = (DB.Repo)getListView().getItemAtPosition(position);
+        Repo repo = new Repo((Cursor)getListView().getItemAtPosition(position));
         editRepo(repo);
     }
 
-    private void refreshList() {
-        repoAdapter.refresh();
-    }
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
 
         MenuItem updateItem = menu.add(Menu.NONE, UPDATE_REPOS, 1,
                 R.string.menu_update_repo).setIcon(R.drawable.ic_menu_refresh);
@@ -171,102 +288,23 @@ public class ManageRepo extends ListActivity {
                 android.R.drawable.ic_menu_add);
         MenuItemCompat.setShowAsAction(addItem,
                 MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
-                MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-
-        return true;
+                        MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
     }
 
     public static final int SHOW_REPO_DETAILS = 1;
 
-    public void editRepo(DB.Repo repo) {
-        Log.d("FDroid", "Showing details screen for repo: '" + repo + "'.");
-        Intent intent = new Intent(this, RepoDetailsActivity.class);
-        intent.putExtra(RepoDetailsFragment.ARG_REPO_ID, repo.id);
+    public void editRepo(Repo repo) {
+        Intent intent = new Intent(getActivity(), RepoDetailsActivity.class);
+        intent.putExtra(RepoDetailsFragment.ARG_REPO_ID, repo.getId());
         startActivityForResult(intent, SHOW_REPO_DETAILS);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == SHOW_REPO_DETAILS && resultCode == RESULT_OK) {
-
-            boolean wasDeleted  = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_DELETED, false);
-            boolean wasEnabled  = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_ENABLED, false);
-            boolean wasDisabled = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_DISABLED, false);
-            boolean wasChanged  = data.getBooleanExtra(RepoDetailsActivity.ACTION_IS_CHANGED, false);
-
-            if (wasDeleted) {
-                int repoId = data.getIntExtra(RepoDetailsActivity.DATA_REPO_ID, 0);
-                remove(repoId);
-            } else if (wasEnabled || wasDisabled || wasChanged) {
-                changed = true;
-            }
-        }
-    }
-
-    private DB.Repo getRepoById(int repoId) {
-        for (int i = 0; i < getListAdapter().getCount(); i ++) {
-            DB.Repo repo = (DB.Repo)getListAdapter().getItem(i);
-            if (repo.id == repoId) {
-                return repo;
-            }
-        }
-        return null;
-    }
-
-    private void remove(int repoId) {
-        DB.Repo repo = getRepoById(repoId);
-        if (repo == null) {
-            return;
-        }
-
-        List<DB.Repo> reposToRemove = new ArrayList<DB.Repo>(1);
-        reposToRemove.add(repo);
-        try {
-            DB db = DB.getDB();
-            db.doDisableRepos(reposToRemove, true);
-        } finally {
-            DB.releaseDB();
-        }
-        refreshList();
-    }
-
-    protected List<Repo> getRepos() {
-        List<Repo> repos = null;
-        try {
-            DB db = DB.getDB();
-            repos = db.getRepos();
-        } finally {
-            DB.releaseDB();
-        }
-        return repos;
-    }
-
-    protected Repo getRepoByAddress(String address, List<Repo> repos) {
-        if (address != null)
-            for (Repo repo : repos)
-                if (address.equals(repo.address))
-                    return repo;
-        return null;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void updateRepos() {
-        UpdateService.updateNow(this).setListener(new ProgressListener() {
+        UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
                 // No need to prompt to update any more, we just did it!
                 changed = false;
-                refreshList();
             }
         });
     }
@@ -276,14 +314,14 @@ public class ManageRepo extends ListActivity {
     }
 
     private void showAddRepo(String newAddress, String newFingerprint) {
-
-        View view = getLayoutInflater().inflate(R.layout.addrepo, null);
-        final AlertDialog alrt = new AlertDialog.Builder(this).setView(view).create();
+        View view = getLayoutInflater(null).inflate(R.layout.addrepo, null);
+        final AlertDialog alrt = new AlertDialog.Builder(getActivity()).setView(view).create();
         final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
         final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
-        List<Repo> repos = getRepos();
-        final Repo repo = newAddress != null && isImportingRepo ? getRepoByAddress(newAddress, repos) : null;
+        final Repo repo = ( newAddress != null && isImportingRepo )
+            ? RepoProvider.Helper.findByAddress(getActivity().getContentResolver(), newAddress)
+            : null;
 
         alrt.setIcon(android.R.drawable.ic_menu_add);
         alrt.setTitle(getString(R.string.repo_add_title));
@@ -312,8 +350,8 @@ public class ManageRepo extends ListActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        setResult(Activity.RESULT_CANCELED);
-                        finish();
+                        getActivity().setResult(Activity.RESULT_CANCELED);
+                        getActivity().finish();
                         return;
                     }
                 });
@@ -338,7 +376,7 @@ public class ManageRepo extends ListActivity {
                 // this entry already exists and is not enabled, offer to enable it
                 if (repo.inuse) {
                     alrt.dismiss();
-                    Toast.makeText(this, R.string.repo_exists_and_enabled, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.repo_exists_and_enabled, Toast.LENGTH_LONG).show();
                     return;
                 } else {
                     overwriteMessage.setText(R.string.repo_exists_enable);
@@ -373,12 +411,10 @@ public class ManageRepo extends ListActivity {
      * Adds a new repo to the database.
      */
     private void createNewRepo(String address, String fingerprint) {
-        try {
-            DB db = DB.getDB();
-            db.addRepo(address, null, null, 0, 10, null, fingerprint, 0, true);
-        } finally {
-            DB.releaseDB();
-        }
+        ContentValues values = new ContentValues(2);
+        values.put(RepoProvider.DataColumns.ADDRESS, address);
+        values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint);
+        RepoProvider.Helper.insert(getActivity().getContentResolver(), values);
         finishedAddingRepo();
     }
 
@@ -386,13 +422,10 @@ public class ManageRepo extends ListActivity {
      * Seeing as this repo already exists, we will force it to be enabled again.
      */
     private void createNewRepo(Repo repo) {
+        ContentValues values = new ContentValues(1);
+        values.put(RepoProvider.DataColumns.IN_USE, 1);
+        RepoProvider.Helper.update(getActivity().getContentResolver(), repo, values);
         repo.inuse = true;
-        try {
-            DB db = DB.getDB();
-            db.updateRepoByAddress(repo);
-        } finally {
-            DB.releaseDB();
-        }
         finishedAddingRepo();
     }
 
@@ -404,17 +437,13 @@ public class ManageRepo extends ListActivity {
     private void finishedAddingRepo() {
         changed = true;
         if (isImportingRepo) {
-            setResult(Activity.RESULT_OK);
-            finish();
-        } else {
-            refreshList();
+            getActivity().setResult(Activity.RESULT_OK);
+            getActivity().finish();
         }
     }
 
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-
-        super.onMenuItemSelected(featureId, item);
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == ADD_REPO) {
             showAddRepo();
@@ -424,7 +453,7 @@ public class ManageRepo extends ListActivity {
             return true;
         }
 
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -432,7 +461,7 @@ public class ManageRepo extends ListActivity {
      * Otherwise return "https://".
      */
     private String getNewRepoUri() {
-        ClipboardCompat clipboard = ClipboardCompat.create(this);
+        ClipboardCompat clipboard = ClipboardCompat.create(getActivity());
         String text = clipboard.getText();
         if (text != null) {
             try {
@@ -447,46 +476,4 @@ public class ManageRepo extends ListActivity {
         }
         return text;
     }
-
-    @Override
-    public void finish() {
-        Intent ret = new Intent();
-        if (changed) {
-            Log.i("FDroid", "Repo details have changed, prompting for update.");
-            ret.putExtra(REQUEST_UPDATE, true);
-        }
-        setResult(RESULT_OK, ret);
-        super.finish();
-    }
-
-    /**
-     * NOTE: If somebody toggles a repo off then on again, it will have removed
-     * all apps from the index when it was toggled off, so when it is toggled on
-     * again, then it will require a refresh.
-     *
-     * Previously, I toyed with the idea of remembering whether they had
-     * toggled on or off, and then only actually performing the function when
-     * the activity stopped, but I think that will be problematic. What about
-     * when they press the home button, or edit a repos details? It will start
-     * to become somewhat-random as to when the actual enabling, disabling is
-     * performed.
-     *
-     * So now, it just does the disable as soon as the user clicks "Off" and
-     * then removes the apps. To compensate for the removal of apps from
-     * index, it notifies the user via a toast that the apps have been removed.
-     * Also, as before, it will still prompt the user to update the repos if
-     * you toggled on on.
-     */
-    public void setRepoEnabled(DB.Repo repo, boolean enabled) {
-        FDroidApp app = (FDroidApp)getApplication();
-        if (enabled) {
-            repo.enable(app);
-            changed = true;
-        } else {
-            repo.disable(app);
-            String notification = getString(R.string.repo_disabled_notification, repo.toString());
-            Toast.makeText(this, notification, Toast.LENGTH_LONG).show();
-        }
-    }
-
 }

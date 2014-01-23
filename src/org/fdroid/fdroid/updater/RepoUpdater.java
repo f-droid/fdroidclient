@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.updater;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,8 @@ import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -18,6 +21,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 abstract public class RepoUpdater {
@@ -26,7 +30,7 @@ abstract public class RepoUpdater {
     public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
     public static final String PROGRESS_DATA_REPO      = "repo";
 
-    public static RepoUpdater createUpdaterFor(Context ctx, DB.Repo repo) {
+    public static RepoUpdater createUpdaterFor(Context ctx, Repo repo) {
         if (repo.pubkey != null) {
             return new SignedRepoUpdater(ctx, repo);
         } else {
@@ -35,12 +39,12 @@ abstract public class RepoUpdater {
     }
 
     protected final Context context;
-    protected final DB.Repo repo;
+    protected final Repo repo;
     protected final List<DB.App> apps = new ArrayList<DB.App>();
     protected boolean hasChanged = false;
     protected ProgressListener progressListener;
 
-    public RepoUpdater(Context ctx, DB.Repo repo) {
+    public RepoUpdater(Context ctx, Repo repo) {
         this.context = ctx;
         this.repo    = repo;
     }
@@ -164,8 +168,6 @@ abstract public class RepoUpdater {
             if (hasChanged) {
 
                 downloadedFile = downloader.getFile();
-                repo.lastetag = downloader.getETag();
-
                 indexFile = getIndexFromFile(downloadedFile);
 
                 // Process the index...
@@ -184,7 +186,7 @@ abstract public class RepoUpdater {
                         new BufferedReader(new FileReader(indexFile)));
 
                 reader.parse(is);
-                updateRepo(handler);
+                updateRepo(handler, downloader.getETag());
             }
         } catch (SAXException e) {
             throw new UpdateException(
@@ -210,9 +212,15 @@ abstract public class RepoUpdater {
         }
     }
 
-    private void updateRepo(RepoXMLHandler handler) {
+    private void updateRepo(RepoXMLHandler handler, String etag) {
 
-        boolean repoChanged = false;
+        ContentValues values = new ContentValues();
+
+        values.put(RepoProvider.DataColumns.LAST_UPDATED, DB.DATE_FORMAT.format(new Date()));
+
+        if (repo.lastetag == null || !repo.lastetag.equals(etag)) {
+            values.put(RepoProvider.DataColumns.LAST_ETAG, etag);
+        }
 
         // We read an unsigned index, but that indicates that
         // a signed version is now available...
@@ -224,54 +232,42 @@ abstract public class RepoUpdater {
             // information as the unsigned one does not...
             Log.d("FDroid",
                     "Public key found - switching to signed repo for future updates");
-            repo.pubkey = handler.getPubKey();
-            repoChanged = true;
+            values.put(RepoProvider.DataColumns.PUBLIC_KEY, handler.getPubKey());
         }
 
         if (handler.getVersion() != -1 && handler.getVersion() != repo.version) {
             Log.d("FDroid", "Repo specified a new version: from "
                     + repo.version + " to " + handler.getVersion());
-            repo.version = handler.getVersion();
-            repoChanged = true;
+            values.put(RepoProvider.DataColumns.VERSION, handler.getVersion());
         }
         
         if (handler.getMaxAge() != -1 && handler.getMaxAge() != repo.maxage) {
             Log.d("FDroid",
                     "Repo specified a new maximum age - updated");
-            repo.maxage = handler.getMaxAge();
-            repoChanged = true;
+            values.put(RepoProvider.DataColumns.MAX_AGE, handler.getMaxAge());
         }
 
         if (handler.getDescription() != null && !handler.getDescription().equals(repo.description)) {
-            repo.description = handler.getDescription();
-            repoChanged = true;
+            values.put(RepoProvider.DataColumns.DESCRIPTION, handler.getDescription());
         }
 
         if (handler.getName() != null && !handler.getName().equals(repo.name)) {
-            repo.name = handler.getName();
-            repoChanged = true;
+            values.put(RepoProvider.DataColumns.NAME, handler.getName());
         }
 
-        if (repoChanged) {
-            try {
-                DB db = DB.getDB();
-                db.updateRepoByAddress(repo);
-            } finally {
-                DB.releaseDB();
-            }
-        }
+        RepoProvider.Helper.update(context.getContentResolver(), repo, values);
     }
 
     public static class UpdateException extends Exception {
 
-        public final DB.Repo repo;
+        public final Repo repo;
 
-        public UpdateException(DB.Repo repo, String message) {
+        public UpdateException(Repo repo, String message) {
             super(message);
             this.repo = repo;
         }
 
-        public UpdateException(DB.Repo repo, String message, Exception cause) {
+        public UpdateException(Repo repo, String message, Exception cause) {
             super(message, cause);
             this.repo = repo;
         }

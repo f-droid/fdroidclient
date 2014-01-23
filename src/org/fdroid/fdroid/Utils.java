@@ -36,6 +36,7 @@ import java.util.Locale;
 import android.content.Context;
 
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import org.fdroid.fdroid.data.Repo;
 
 public final class Utils {
 
@@ -159,7 +160,7 @@ public final class Utils {
         return count;
     }
 
-    public static String formatFingerprint(DB.Repo repo) {
+    public static String formatFingerprint(Repo repo) {
         return formatFingerprint(repo.pubkey);
     }
 

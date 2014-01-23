@@ -33,6 +33,12 @@
         android:allowBackup="true"
         android:theme="@style/AppThemeDark"
         android:supportsRtl="false" >
+
+        <provider
+            android:authorities="org.fdroid.fdroid.data"
+            android:name="org.fdroid.fdroid.data.RepoProvider"
+            android:exported="false"/>
+
         <activity
             android:name=".FDroid"
             android:configChanges="keyboardHidden|orientation|screenSize" >

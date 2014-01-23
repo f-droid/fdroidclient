@@ -6,6 +6,7 @@ import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.net.Downloader;
 
 import java.io.*;
@@ -16,7 +17,7 @@ import java.util.jar.JarFile;
 
 public class SignedRepoUpdater extends RepoUpdater {
 
-    public SignedRepoUpdater(Context ctx, DB.Repo repo) {
+    public SignedRepoUpdater(Context ctx, Repo repo) {
         super(ctx, repo);
     }
 

@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.updater.RepoUpdater;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -33,7 +34,7 @@ import java.util.Map;
 public class RepoXMLHandler extends DefaultHandler {
 
     // The repo we're processing.
-    private DB.Repo repo;
+    private Repo repo;
 
     private Map<String, DB.App> apps;
     private List<DB.App> appsList;
@@ -62,7 +63,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private int totalAppCount;
 
-    public RepoXMLHandler(DB.Repo repo, List<DB.App> appsList, ProgressListener listener) {
+    public RepoXMLHandler(Repo repo, List<DB.App> appsList, ProgressListener listener) {
         this.repo = repo;
         this.apps = new HashMap<String, DB.App>();
         for (DB.App app : appsList) this.apps.put(app.id, app);
@@ -157,7 +158,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             } else if (curel.equals("added")) {
                 try {
-                    curapk.added = str.length() == 0 ? null : DB.dateFormat
+                    curapk.added = str.length() == 0 ? null : DB.DATE_FORMAT
                             .parse(str);
                 } catch (ParseException e) {
                     curapk.added = null;
@@ -204,7 +205,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.detail_trackerURL = str;
             } else if (curel.equals("added")) {
                 try {
-                    curapp.added = str.length() == 0 ? null : DB.dateFormat
+                    curapp.added = str.length() == 0 ? null : DB.DATE_FORMAT
                             .parse(str);
                 } catch (ParseException e) {
                     curapp.added = null;
@@ -212,7 +213,7 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel.equals("lastupdated")) {
                 try {
                     curapp.lastUpdated = str.length() == 0 ? null
-                            : DB.dateFormat.parse(str);
+                            : DB.DATE_FORMAT.parse(str);
                 } catch (ParseException e) {
                     curapp.lastUpdated = null;
                 }
@@ -281,7 +282,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName.equals("package") && curapp != null && curapk == null) {
             curapk = new DB.Apk();
             curapk.id = curapp.id;
-            curapk.repo = repo.id;
+            curapk.repo = repo.getId();
             hashType = null;
 
         } else if (localName.equals("hash") && curapk != null) {

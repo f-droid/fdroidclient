@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -859,20 +861,13 @@ public class AppDetails extends ListActivity {
     // Install the version of this app denoted by 'app.curApk'.
     private void install() {
 
-        String ra = null;
-        try {
-            DB db = DB.getDB();
-            DB.Repo repo = db.getRepo(app.curApk.repo);
-            if (repo != null)
-                ra = repo.address;
-        } catch (Exception ex) {
-            Log.d("FDroid", "Failed to get repo address - " + ex.getMessage());
-        } finally {
-            DB.releaseDB();
-        }
-        if (ra == null)
+        String [] projection = { RepoProvider.DataColumns.ADDRESS };
+        Repo repo = RepoProvider.Helper.findById(
+                getContentResolver(), app.curApk.repo, projection);
+        if (repo == null || repo.address == null) {
             return;
-        final String repoaddress = ra;
+        }
+        final String repoaddress = repo.address;
 
         if (!app.curApk.compatible) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
