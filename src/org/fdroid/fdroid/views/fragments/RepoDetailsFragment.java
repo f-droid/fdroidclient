@@ -58,9 +58,9 @@ public class RepoDetailsFragment extends Fragment {
         super.onAttach(activity);
     }
 
-	private long getRepoId() {
-		return getArguments().getLong(RepoDetailsFragment.ARG_REPO_ID, 0);
-	}
+    private long getRepoId() {
+        return getArguments().getLong(RepoDetailsFragment.ARG_REPO_ID, 0);
+    }
 
     /**
      * After, for example, a repo update, the details will have changed in the
