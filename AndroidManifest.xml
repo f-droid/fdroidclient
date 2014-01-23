@@ -113,8 +113,16 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
+                <!--
+                Android's scheme matcher is case-sensitive, so include
+                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
+                QR Codes have a special ALL CAPS mode that uses a reduced
+                character set, making for more compact QR Codes.
+                -->
                 <data android:scheme="fdroidrepo" />
+                <data android:scheme="FDROIDREPO" />
                 <data android:scheme="fdroidrepos" />
+                <data android:scheme="FDROIDREPOS" />
             </intent-filter>
         </activity>
 
