@@ -129,7 +129,8 @@
         <activity
             android:name=".views.RepoDetailsActivity"
             android:label="@string/menu_manage"
-            android:parentActivityName=".ManageRepo" />
+            android:parentActivityName=".ManageRepo"
+            android:windowSoftInputMode="stateHidden" />
  
         <activity
             android:name=".AppDetails"
