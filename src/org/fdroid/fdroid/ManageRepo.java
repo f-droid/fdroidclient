@@ -22,6 +22,7 @@ package org.fdroid.fdroid;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
@@ -29,11 +30,14 @@ import android.support.v4.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -110,6 +114,8 @@ class RepoListFragment extends ListFragment
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
     private final int ADD_REPO     = 1;
     private final int UPDATE_REPOS = 2;
+
+    private WifiManager wifiManager;
 
     public boolean hasChanged() {
         return changed;
@@ -263,6 +269,29 @@ class RepoListFragment extends ListFragment
                         .replace(intent.getScheme(), scheme) // downcase scheme
                         .replace("fdroidrepo", "http"); // proper repo address
                 showAddRepo(uriString, fingerprint);
+
+                // if this is a local repo, check we're on the same wifi
+                String uriBssid = uri.getQueryParameter("bssid");
+                if (!TextUtils.isEmpty(uriBssid)) {
+                    if (uri.getPort() != 8888
+                            && !host.matches("[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+")) {
+                        Log.i("ManageRepo", "URI is not local repo: " + uri);
+                        return;
+                    }
+                    Activity a = getActivity();
+                    if (wifiManager == null)
+                        wifiManager = (WifiManager) a.getSystemService(Context.WIFI_SERVICE);
+                    WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                    String bssid = wifiInfo.getBSSID().toLowerCase(Locale.ENGLISH);
+                    uriBssid = Uri.decode(uriBssid).toLowerCase(Locale.ENGLISH);
+                    if (!bssid.equals(uriBssid)) {
+                        String msg = String.format(getString(R.string.not_on_same_wifi),
+                                uri.getQueryParameter("ssid"));
+                        Toast.makeText(a, msg, Toast.LENGTH_LONG).show();
+                    }
+                    // TODO we should help the user to the right thing here,
+                    // instead of just showing a message!
+                }
             }
         }
     }
