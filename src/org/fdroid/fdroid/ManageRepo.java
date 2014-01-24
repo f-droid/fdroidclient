@@ -237,27 +237,31 @@ class RepoListFragment extends ListFragment
                 Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
                 return;
             }
+            if (scheme.equals("FDROIDREPO") || scheme.equals("FDROIDREPOS")) {
+                /*
+                 * QRCodes are more efficient in all upper case, so QR URIs are
+                 * encoded in all upper case, then forced to lower case.
+                 * Checking if the special F-Droid scheme being all is upper
+                 * case means it should be downcased.
+                 */
+                uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
+            }
+            // make scheme and host lowercase so they're readable in dialogs
             scheme = scheme.toLowerCase(Locale.ENGLISH);
             host = host.toLowerCase(Locale.ENGLISH);
-            String fingerprint = uri.getUserInfo();
+            String fingerprint = uri.getQueryParameter("fingerprint");
             if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
                     || scheme.equals("https") || scheme.equals("http")) {
 
                 isImportingRepo = true;
 
-                // QRCode are more efficient in all upper case, so some incoming
-                // URLs might be encoded in all upper case. Therefore, we allow
-                // the standard paths to be encoded all upper case, then they'll
-                // be forced to lower case. The scheme and host are downcased
-                // just to make them more readable in the dialog.
+                /* sanitize and format for function and readability */
                 String uriString = uri.toString()
-                        .replace(fingerprint + "@", "") // remove fingerprint
+                        .replaceAll("\\?.*$", "") // remove the whole query
                         .replaceAll("/*$", "") // remove all trailing slashes
-                        .replaceAll("/FDROID/REPO$", "/fdroid/repo")
-                        .replaceAll("/FDROID/ARCHIVE$", "/fdroid/archive")
                         .replace(uri.getHost(), host) // downcase host name
                         .replace(intent.getScheme(), scheme) // downcase scheme
-                        .replace("fdroidrepo", "http"); // make proper URL
+                        .replace("fdroidrepo", "http"); // proper repo address
                 showAddRepo(uriString, fingerprint);
             }
         }
