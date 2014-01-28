@@ -21,9 +21,8 @@ package org.fdroid.fdroid;
 
 import java.io.File;
 import java.security.MessageDigest;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.ParseException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,6 +47,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -419,14 +419,27 @@ public class DB {
         }
     }
 
-    public static String calcFingerprint(String pubkey) {
-        String ret = null;
-        if (pubkey == null)
+    public static String calcFingerprint(String keyHexString) {
+        if (TextUtils.isEmpty(keyHexString))
             return null;
+        else
+            return calcFingerprint(Hasher.unhex(keyHexString));
+    }
+
+    public static String calcFingerprint(Certificate cert) {
+        try {
+            return calcFingerprint(cert.getEncoded());
+        } catch (CertificateEncodingException e) {
+            return null;
+        }
+    }
+
+    public static String calcFingerprint(byte[] key) {
+        String ret = null;
         try {
             // keytool -list -v gives you the SHA-256 fingerprint
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            digest.update(Hasher.unhex(pubkey));
+            digest.update(key);
             byte[] fingerprint = digest.digest();
             Formatter formatter = new Formatter(new StringBuilder());
             for (int i = 1; i < fingerprint.length; i++) {

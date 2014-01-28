@@ -31,10 +31,10 @@ abstract public class RepoUpdater {
     public static final String PROGRESS_DATA_REPO      = "repo";
 
     public static RepoUpdater createUpdaterFor(Context ctx, Repo repo) {
-        if (repo.pubkey != null) {
-            return new SignedRepoUpdater(ctx, repo);
-        } else {
+        if (repo.fingerprint == null && repo.pubkey == null) {
             return new UnsignedRepoUpdater(ctx, repo);
+        } else {
+            return new SignedRepoUpdater(ctx, repo);
         }
     }
 
