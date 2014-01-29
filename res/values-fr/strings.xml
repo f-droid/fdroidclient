@@ -56,7 +56,7 @@ L\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="many_updates_available">%d mises à jour sont disponibles.</string>
   <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
   <string name="process_wait_title">Patientez</string>
-  <string name="process_update_msg">Mise à jour de la liste d\'applications...</string>
+  <string name="process_update_msg">Mise à jour de la liste d\'applications…</string>
   <string name="download_server">Réception d\'application de</string>
   <string name="repo_add_url">Adresse du dépôt</string>
   <string name="repo_alrt">La liste des dépôts utilisés a changé.

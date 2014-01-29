@@ -57,7 +57,7 @@ L\'adreça d\'un dipòsit té un aspecte com ara: http://f-droid.org/repo</strin
   <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
   <string name="fdroid_updates_available">Hi ha actualitzacions de l\'F-Droid disponibles</string>
   <string name="process_wait_title">Un moment si us plau</string>
-  <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions...</string>
+  <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions…</string>
   <string name="download_server">S\'està obtenint l\'aplicació des de</string>
   <string name="repo_add_url">Adreça del dipòsit</string>
   <string name="repo_exists">Aquest repositori ja existeix.</string>
@@ -114,7 +114,7 @@ La voleu actualitzar?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">S\'està connectant a
 %1$s</string>
-  <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu...</string>
+  <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu…</string>
   <string name="no_permissions">No es fa servir cap permís.</string>
   <string name="permissions_for_long">Permisos de la versió %s</string>
   <string name="showPermissions">Mostra els permisos</string>

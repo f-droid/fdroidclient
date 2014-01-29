@@ -56,7 +56,7 @@ Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="many_updates_available">%d aggiornamenti disponibili.</string>
   <string name="fdroid_updates_available">Aggiornamenti per F-Droid Disponibili</string>
   <string name="process_wait_title">Attendere prego</string>
-  <string name="process_update_msg">Aggiornamento elenco applicazioni...</string>
+  <string name="process_update_msg">Aggiornamento elenco applicazioni…</string>
   <string name="download_server">Scaricamento applicazione da</string>
   <string name="repo_add_url">Indirizzo repository</string>
   <string name="repo_alrt">L\'elenco dei repository in uso è cambiato.
@@ -112,7 +112,7 @@ Vuoi aggiornarlo?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Connessione a
 %1$s</string>
-  <string name="status_checking_compatibility">Controllo compatibilità applicazioni con il tuo dispositivo...</string>
+  <string name="status_checking_compatibility">Controllo compatibilità applicazioni con il tuo dispositivo…</string>
   <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
   <string name="permissions_for_long">Autorizzazioni per la versione %s</string>
   <string name="showPermissions">Mostra autorizzazioni</string>

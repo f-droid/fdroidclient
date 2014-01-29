@@ -56,7 +56,7 @@
   <string name="many_updates_available">%d به‌روزرسانی موجود است.</string>
   <string name="fdroid_updates_available">به‌روزرسانی‌های F-Droid موجود هستند</string>
   <string name="process_wait_title">لطفاً صبر کنید</string>
-  <string name="process_update_msg">به‌روزرسانی فهرست برنامه‌ها...</string>
+  <string name="process_update_msg">به‌روزرسانی فهرست برنامه‌ها…</string>
   <string name="download_server">گرفتن برنامه از</string>
   <string name="repo_add_url">نشانی مخزن</string>
   <string name="repo_alrt">فهرست مخزن‌ها تغییر یافته‌است.
@@ -112,7 +112,7 @@
 %1$s</string>
   <string name="status_connecting_to_repo">اتصال به
 %1$s</string>
-  <string name="status_checking_compatibility">بررسی سازگاری برنامه‌ها با دستگاه شما...</string>
+  <string name="status_checking_compatibility">بررسی سازگاری برنامه‌ها با دستگاه شما…</string>
   <string name="no_permissions">دسترسی‌ای استفاده نشده‌است.</string>
   <string name="permissions_for_long">دسترسی‌های نسخهٔ %s</string>
   <string name="showPermissions">نمایش دسترسی‌ها</string>

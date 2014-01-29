@@ -32,6 +32,6 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="tab_installed">Instalat</string>
   <string name="tab_noninstalled">Disponibil</string>
   <string name="tab_updates">Actualizare</string>
-  <string name="process_wait_title">Asteptati ...</string>
-  <string name="process_update_msg">Se actualizeaza lista ...</string>
+  <string name="process_wait_title">Asteptati …</string>
+  <string name="process_update_msg">Se actualizeaza lista …</string>
 </resources>

@@ -59,7 +59,7 @@ Een bron-adres ziet er ongeveer
   <string name="many_updates_available">%d vernieuwingen zijn beschikbaar</string>
   <string name="fdroid_updates_available">F-Droid Vernieuwingen Beschikbaar</string>
   <string name="process_wait_title">Even geduld aub</string>
-  <string name="process_update_msg">Applicatie-lijst vernieuwen...</string>
+  <string name="process_update_msg">Applicatie-lijst vernieuwen…</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="repo_add_url">Bron-adres</string>
   <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
@@ -115,7 +115,7 @@ Wilt u ze vernieuwen?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Connecteren naar
 %1$s</string>
-  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat...</string>
+  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
   <string name="no_permissions">Geen permissies worden gebruikt</string>
   <string name="permissions_for_long">Permissies voor versie %s</string>
   <string name="showPermissions">Laat permissies zien</string>

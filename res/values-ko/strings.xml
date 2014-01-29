@@ -47,7 +47,7 @@
   <string name="many_updates_available">%d개의 업데이트를 사용할 수 있습니다.</string>
   <string name="fdroid_updates_available">F-Droid 업데이트를 사용할 수 있습니다.</string>
   <string name="process_wait_title">잠시만 기다려주세요</string>
-  <string name="process_update_msg">응용 프로그램 목록 업데이트중...</string>
+  <string name="process_update_msg">응용 프로그램 목록 업데이트중…</string>
   <string name="download_server">에서 응용프로그램 가져오기</string>
   <string name="repo_add_url">저장소 주소</string>
   <string name="repo_alrt">사용된 저장소의 목록이 변경되었습니다.
