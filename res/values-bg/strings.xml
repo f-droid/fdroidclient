@@ -7,20 +7,13 @@
   <string name="installIncompatible">Изглежда този пакет не е съвместим с твоето устойство. Искаш ли да опиташ да го инсталираш въпреки това?</string>
   <string name="installDowngrade">Опитваш се да инсталираш по-стара версия на праложението. Това може да го повреди и дори да изтрие данните ти. Искаш ли да го инсталираш въпреки това?</string>
   <string name="version">Версия</string>
-  <string name="n_versions_available">%d налични версии</string>
-  <string name="n_version_available">%d налична версия</string>
   <string name="cache_downloaded">Кеширай свалените приложения</string>
-  <string name="keep_downloaded">Пази свалените apk файлове на SD картата</string>
   <string name="updates">Актуализации</string>
   <string name="other">Други</string>
   <string name="last_update_check">Последно сканиране на хранилищата: %s</string>
   <string name="never">никога</string>
-  <string name="automatic_repo_scan">Автоматично сканиране на хранилищата</string>
-  <string name="update_apps_list">Актуализирай списъка на приложенията от хранилищата автоматично</string>
   <string name="notify">Уведомления</string>
-  <string name="notify_updates_available">Уведомявай ме при нови налични актуализации</string>
   <string name="update_history">Актуализирай историята</string>
-  <string name="update_history_desc">Дни за показване на нови/актуализирани приложения</string>
   <string name="search_results">Резултати от търсенето</string>
   <string name="app_details">Детайли за приложението</string>
   <string name="no_such_app">Такова приложение не беше намерено</string>
@@ -47,7 +40,6 @@
   <string name="cancel">Отказ</string>
   <string name="repo_delete_title">Избери хранилище за премахване</string>
   <string name="repo_update_title">Актуализирай хранилищата</string>
-  <string name="tab_installed">Инсталирани</string>
   <string name="tab_noninstalled">Налични</string>
   <string name="tab_updates">За актуализация</string>
   <string name="one_update_available">1 налична актуализация.</string>
@@ -80,14 +72,11 @@
   <string name="download_cancelled">Свалянето е отказано</string>
   <string name="display">Дисплей</string>
   <string name="expert">Експерт</string>
-  <string name="expert_mode">Активирай експертен режим</string>
   <string name="search_hint">Търсене на приложения</string>
   <string name="db_sync_mode">Вид на синхронизация на базата данни</string>
   <string name="appcompatibility">Съвместимост на приложенията</string>
   <string name="rooted">Root достъп</string>
-  <string name="rooted_long">Показвай приложения изискващи root права</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>
-  <string name="ignoreTouch_long">Винаги включвай приложения изискващи сензорен екран</string>
   <string name="category_all">Всички</string>
   <string name="category_whatsnew">Какво ново</string>
   <string name="category_recentlyupdated">Обновени наскоро</string>
@@ -103,8 +92,6 @@
   <string name="no_permissions">Не се искат разрешения.</string>
   <string name="permissions_for_long">Разрешения за версия %s</string>
   <string name="showPermissions">Покажи разрешения</string>
-  <string name="showPermissions_long">Показване на списък с разрешения, които приложението ползва</string>
   <string name="no_handler_app">Нямаш инсталирано приложение, което може да изпълни %s</string>
   <string name="compactlayout">Компактно оформление</string>
-  <string name="compactlayout_long">Показвай само имената и описанията на приложенията в списъка</string>
 </resources>

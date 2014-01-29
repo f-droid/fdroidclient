@@ -5,17 +5,11 @@
   <string name="searchres_noapps">\'%s\'-rekin bat datorren aplikaziorik ez da aurkitu</string>
   <string name="SignatureMismatch">Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)</string>
   <string name="version">Bertsioa</string>
-  <string name="n_versions_available">%d bertsio eskuragarri</string>
-  <string name="n_version_available">Bertsio %d eskuragarri</string>
   <string name="cache_downloaded">Gorde cache-an deskargatutako aplikazioak</string>
-  <string name="keep_downloaded">Gorde deskargatutako apk fitxategiak SD txartelean</string>
   <string name="updates">Eguneraketak</string>
   <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
   <string name="never">inoiz ez</string>
-  <string name="automatic_repo_scan">Eskaneatu biltegiak automatikoki</string>
-  <string name="update_apps_list">Eguneratu aplikazio-zerrenda biltegiarekin automatikoki</string>
   <string name="notify">Jakinarazi</string>
-  <string name="notify_updates_available">Jakinarazi eguneraketa berriak eskuragarri daudenean</string>
   <string name="update_history">Eguneratu historia</string>
   <string name="about_title">F-Droid-i buruz</string>
   <string name="about_desc">Jatorrian Aptoide-n oinarritua.
@@ -35,7 +29,6 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="cancel">Utzi</string>
   <string name="repo_delete_title">Aukeratu biltegia ezabatzeko</string>
   <string name="repo_update_title">Eguneratu biltegiak</string>
-  <string name="tab_installed">Instalatuta</string>
   <string name="tab_noninstalled">Eskuragarri</string>
   <string name="tab_updates">Eguneraketak</string>
   <string name="one_update_available">Eguneraketa 1 eskuragarri.</string>
@@ -68,15 +61,11 @@ Eguneratu nahi dituzu?</string>
   <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="display">Bistaratu</string>
   <string name="expert">Aditua</string>
-  <string name="expert_mode">Gaitu aditu modua</string>
   <string name="search_hint">Bilatu aplikazioak</string>
   <string name="db_sync_mode">Datu-base modu sinkronoa</string>
-  <string name="db_sync_mode_long">Ezarri SQLite-ren bandera sinkronoaren balioa</string>
   <string name="appcompatibility">Aplikazioen bateragarritasuna</string>
   <string name="rooted">Root</string>
-  <string name="rooted_long">Erakutsi root baimenak behar dituzten aplikazioak</string>
   <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
-  <string name="ignoreTouch_long">Sartu ukipen-pantaila behar duten aplikazioak beti</string>
   <string name="category_all">Guztia</string>
   <string name="category_whatsnew">Zer da berria</string>
   <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
@@ -86,6 +75,5 @@ konektatzen</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
   <string name="permissions_for_long">%s bertsioarentzako baimenak</string>
   <string name="showPermissions">Erakutsi baimenak</string>
-  <string name="showPermissions_long">Bistaratu aplikazio batek behar dituen baimenen zerrenda</string>
   <string name="compactlayout">Diseinu trinkoa</string>
 </resources>

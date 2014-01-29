@@ -3,5 +3,4 @@
   <string name="searchres_oneapp">عثر على تطبيق واحد يوافق \'%s\':</string>
   <string name="searchres_noapps">لم يعثر على أي تطبيق يوافق \'%s\'</string>
   <string name="version">الإصدار</string>
-  <string name="n_versions_available">%d إصدار متوفر</string>
 </resources>
