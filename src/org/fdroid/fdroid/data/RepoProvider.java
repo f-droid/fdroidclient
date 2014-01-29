@@ -15,6 +15,7 @@ import java.util.List;
 public class RepoProvider extends FDroidProvider {
 
     public static final class Helper {
+        public static final String TAG = "RepoProvider.Helper";
 
         private Helper() {}
 
@@ -91,16 +92,34 @@ public class RepoProvider extends FDroidProvider {
                 values.put(DataColumns.NAME, name);
             }
 
-            // Recalculate the fingerprint if we are saving a public key (it is
-            // probably a new public key. If not, we will get the same
-            // fingerprint anyhow).
-            if (values.containsKey(DataColumns.PUBLIC_KEY) &&
-                    values.containsKey(DataColumns.FINGERPRINT)) {
-
+            /*
+             * If the repo is signed and has a public key, then guarantee that
+             * the fingerprint is also set. The stored fingerprint is checked
+             * when a repo URI is received by FDroid to prevent bad actors from
+             * overriding repo configs with other keys. So if the fingerprint is
+             * not stored yet, calculate it and store it. If the fingerprint is
+             * stored, then check it against the calculated fingerprint just to
+             * make sure it is correct. If the fingerprint is empty, then store
+             * the calculated one.
+             */
+            if (values.containsKey(DataColumns.PUBLIC_KEY)) {
                 String publicKey = values.getAsString(DataColumns.PUBLIC_KEY);
-                String fingerprint = values.getAsString(DataColumns.FINGERPRINT);
-                if (publicKey != null && fingerprint == null) {
-                    values.put(DataColumns.FINGERPRINT, DB.calcFingerprint(publicKey));
+                String calcedFingerprint = DB.calcFingerprint(publicKey);
+                if (values.containsKey(DataColumns.FINGERPRINT)) {
+                    String fingerprint = values.getAsString(DataColumns.FINGERPRINT);
+                    if (!TextUtils.isEmpty(publicKey)) {
+                        if (TextUtils.isEmpty(fingerprint)) {
+                            values.put(DataColumns.FINGERPRINT, calcedFingerprint);
+                        } else if (!fingerprint.equals(calcedFingerprint)) {
+                            // TODO the UI should represent this error!
+                            Log.e(TAG, "The stored and calculated fingerprints do not match!");
+                            Log.e(TAG, "stored: " + fingerprint);
+                            Log.e(TAG, "calced: " + calcedFingerprint);
+                        }
+                    }
+                } else if (!TextUtils.isEmpty(publicKey)) {
+                    // no fingerprint in 'values', so put one there
+                    values.put(DataColumns.FINGERPRINT, calcedFingerprint);
                 }
             }
 
