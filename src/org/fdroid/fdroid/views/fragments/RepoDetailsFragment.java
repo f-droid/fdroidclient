@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.*;
@@ -286,15 +287,17 @@ public class RepoDetailsFragment extends Fragment {
         String repoFingerprint;
         int repoFingerprintColor;
 
-        if (repo.pubkey != null && repo.pubkey.length() > 0) {
-            repoFingerprint       = Utils.formatFingerprint(repo.pubkey);
-            repoFingerprintColor = getResources().getColor(R.color.signed);
-            repoFingerprintDescView.setVisibility(View.GONE);
-        } else {
-            repoFingerprint       = getResources().getString(R.string.unsigned);
+// TODO show the current state of the signature check, not just whether there is a key or not
+        if (TextUtils.isEmpty(repo.fingerprint) && TextUtils.isEmpty(repo.pubkey)) {
+            repoFingerprint = getResources().getString(R.string.unsigned);
             repoFingerprintColor = getResources().getColor(R.color.unsigned);
             repoFingerprintDescView.setVisibility(View.VISIBLE);
             repoFingerprintDescView.setText(getResources().getString(R.string.unsigned_description));
+        } else {
+            // this is based on repo.fingerprint always existing, which it should
+            repoFingerprint = Utils.formatFingerprint(repo.fingerprint);
+            repoFingerprintColor = getResources().getColor(R.color.signed);
+            repoFingerprintDescView.setVisibility(View.GONE);
         }
 
         repoFingerprintView.setText(repoFingerprint);
