@@ -30,6 +30,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -325,8 +326,8 @@ public class DB {
         // check if an APK is compatible with the user's device.
         private static class CompatibilityChecker extends Compatibility {
 
-            private HashSet<String> features;
-            private HashSet<String> cpuAbis;
+            private Set<String> features;
+            private Set<String> cpuAbis;
             private String cpuAbisDesc;
             private boolean ignoreTouchscreen;
 
