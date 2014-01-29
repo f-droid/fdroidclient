@@ -22,13 +22,7 @@ import android.content.Context;
 
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -117,37 +111,30 @@ public final class Utils {
 
     public static int countSubstringOccurrence(File file, String substring) throws IOException {
         int count = 0;
-        BufferedReader reader = null;
+        FileReader input = null;
         try {
+            int currentSubstringIndex = 0;
+            char[] buffer = new char[4096];
 
-            reader = new BufferedReader(new FileReader(file));
-            while(true) {
-                String line = reader.readLine();
-                if (line == null) {
-                    break;
+            input = new FileReader(file);
+            int numRead = input.read(buffer);
+            while(numRead != -1) {
+
+                for (char c : buffer) {
+                    if (c == substring.charAt(currentSubstringIndex)) {
+                        currentSubstringIndex ++;
+                        if (currentSubstringIndex == substring.length()) {
+                            count ++;
+                            currentSubstringIndex = 0;
+                        }
+                    } else {
+                        currentSubstringIndex = 0;
+                    }
                 }
-                count += countSubstringOccurrence(line, substring);
+                numRead = input.read(buffer);
             }
-
         } finally {
-            closeQuietly(reader);
-        }
-        return count;
-    }
-
-    /**
-     * Thanks to http://stackoverflow.com/a/767910
-     */
-    public static int countSubstringOccurrence(String toSearch, String substring) {
-        int count = 0;
-        int index = 0;
-        while (true) {
-            index = toSearch.indexOf(substring, index);
-            if (index == -1){
-                break;
-            }
-            count ++;
-            index += substring.length();
+            closeQuietly(input);
         }
         return count;
     }
