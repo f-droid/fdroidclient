@@ -38,7 +38,7 @@
 
 * Fixed a crash when trying to access a non-existing app
 
-* F-Droid registers with Android to receive F-Droid URIs https://*/fdroid/repo
+* F-Droid registers with Android to receive F-Droid URIs https://\*/fdroid/repo
   and fdroidrepos://
 
 * support including signing key fingerprint in repo URIs
