@@ -1,11 +1,12 @@
 package org.fdroid.fdroid.views.fragments;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.LoaderManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +24,11 @@ import java.util.List;
 
 public class AvailableAppsFragment extends AppListFragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
+    public static final String PREFERENCES_FILE = "CategorySpinnerPosition";
+    public static final String CATEGORY_KEY = "Selection";
+    public static String DEFAULT_CATEGORY;
 
+    private Spinner categorySpinner;
     private String currentCategory = null;
     private AppListAdapter adapter = null;
 
@@ -80,35 +85,31 @@ public class AvailableAppsFragment extends AppListFragment implements
 
         final List<String> categories = AppProvider.Helper.categories(getActivity());
 
-        Spinner spinner = new Spinner(getActivity());
+        categorySpinner = new Spinner(getActivity());
         // Giving it an ID lets the default save/restore state
         // functionality do its stuff.
-        spinner.setId(R.id.categorySpinner);
+        categorySpinner.setId(R.id.categorySpinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
             getActivity(), android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(
             android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        categorySpinner.setAdapter(adapter);
 
         getActivity().getContentResolver().registerContentObserver(
             AppProvider.getContentUri(), false, new CategoryObserver(adapter));
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                currentCategory = categories.get(pos);
-                Log.d("FDroid", "Category '" + currentCategory + "' selected.");
-                getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
+                setCurrentCategory(categories.get(pos));
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                currentCategory = null;
-                Log.d("FDroid", "Select empty category.");
-                getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
+                setCurrentCategory(null);
             }
         });
-        return spinner;
+        return categorySpinner;
     }
 
     @Override
@@ -132,6 +133,9 @@ public class AvailableAppsFragment extends AppListFragment implements
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT));
 
+        // R.string.category_whatsnew is the default set in AppListManager
+        DEFAULT_CATEGORY = getActivity().getString(R.string.category_whatsnew);
+
         return view;
     }
 
@@ -145,5 +149,39 @@ public class AvailableAppsFragment extends AppListFragment implements
             return AppProvider.getNewlyAddedUri();
         else
             return AppProvider.getCategoryUri(currentCategory);
+    }
+
+    private void setCurrentCategory(String category) {
+        currentCategory = category;
+        Log.d("FDroid", "Category '" + currentCategory + "' selected.");
+        getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        /* restore the saved Category Spinner position */
+        Activity activity = getActivity();
+        SharedPreferences p = activity.getSharedPreferences(PREFERENCES_FILE,
+                Context.MODE_PRIVATE);
+        currentCategory = p.getString(CATEGORY_KEY, DEFAULT_CATEGORY);
+        for (int i = 0; i < categorySpinner.getCount(); i++) {
+            if (currentCategory.equals(categorySpinner.getItemAtPosition(i).toString())) {
+                categorySpinner.setSelection(i);
+                break;
+            }
+        }
+        setCurrentCategory(currentCategory);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        /* store the Category Spinner position for when we come back */
+        SharedPreferences p = getActivity().getSharedPreferences(PREFERENCES_FILE,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor e = p.edit();
+        e.putString(CATEGORY_KEY, currentCategory);
+        e.commit();
     }
 }
