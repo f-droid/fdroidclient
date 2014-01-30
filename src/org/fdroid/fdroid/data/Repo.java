@@ -10,7 +10,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.util.Date;
 
-public class Repo {
+public class Repo extends ValueObject{
 
     private long id;
 
@@ -46,14 +46,7 @@ public class Repo {
             } else if (column.equals(RepoProvider.DataColumns.IN_USE)) {
                 inuse = cursor.getInt(i) == 1;
             } else if (column.equals(RepoProvider.DataColumns.LAST_UPDATED)) {
-                String dateString = cursor.getString(i);
-                if (dateString != null) {
-                    try {
-                        lastUpdated =  DB.DATE_FORMAT.parse(dateString);
-                    } catch (ParseException e) {
-                        Log.e("FDroid", "Error parsing date " + dateString);
-                    }
-                }
+                lastUpdated = toDate(cursor.getString(i));
             } else if (column.equals(RepoProvider.DataColumns.MAX_AGE)) {
                 maxage = cursor.getInt(i);
             } else if (column.equals(RepoProvider.DataColumns.VERSION)) {
@@ -76,13 +69,6 @@ public class Repo {
 
     public String toString() {
         return address;
-    }
-
-    public int getNumberOfApps() {
-        DB db = DB.getDB();
-        int count = db.countAppsForRepo(id);
-        DB.releaseDB();
-        return count;
     }
 
     public boolean isSigned() {

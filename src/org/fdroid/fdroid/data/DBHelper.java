@@ -18,6 +18,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_REPO = "fdroid_repo";
 
+    // The TABLE_APK table stores details of all the application versions we
+    // know about. Each relates directly back to an entry in TABLE_APP.
+    // This information is retrieved from the repositories.
+    public static final String TABLE_APK = "fdroid_apk";
+
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (_id integer primary key, "
             + "address text not null, "
@@ -27,15 +32,26 @@ public class DBHelper extends SQLiteOpenHelper {
             + "version integer not null default 0, "
             + "lastetag text, lastUpdated string);";
 
-    private static final String CREATE_TABLE_APK = "create table " + DB.TABLE_APK
-            + " ( " + "id text not null, " + "version text not null, "
-            + "repo integer not null, " + "hash text not null, "
-            + "vercode int not null," + "apkName text not null, "
-            + "size int not null," + "sig string," + "srcname string,"
-            + "minSdkVersion integer," + "permissions string,"
-            + "features string," + "nativecode string,"
-            + "hashType string," + "added string,"
-            + "compatible int not null," + "primary key(id,vercode));";
+    private static final String CREATE_TABLE_APK =
+            "CREATE TABLE " + TABLE_APK + " ( "
+            + "id text not null, "
+            + "version text not null, "
+            + "repo integer not null, "
+            + "hash text not null, "
+            + "vercode int not null,"
+            + "apkName text not null, "
+            + "size int not null, "
+            + "sig string, "
+            + "srcname string, "
+            + "minSdkVersion integer, "
+            + "permissions string, "
+            + "features string, "
+            + "nativecode string, "
+            + "hashType string, "
+            + "added string, "
+            + "compatible int not null, "
+            + "primary key(id, vercode)"
+            + ");";
 
     private static final String CREATE_TABLE_APP = "create table " + DB.TABLE_APP
             + " ( " + "id text not null, " + "name text not null, "
@@ -308,7 +324,7 @@ public class DBHelper extends SQLiteOpenHelper {
         context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
                 .putBoolean("triedEmptyUpdate", false).commit();
         db.execSQL("drop table " + DB.TABLE_APP);
-        db.execSQL("drop table " + DB.TABLE_APK);
+        db.execSQL("drop table " + TABLE_APK);
         db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
         createAppApk(db);
     }
@@ -317,8 +333,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APP);
         db.execSQL("create index app_id on " + DB.TABLE_APP + " (id);");
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + DB.TABLE_APK + " (vercode);");
-        db.execSQL("create index apk_id on " + DB.TABLE_APK + " (id);");
+        db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
+        db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
     }
 
     private static boolean columnExists(SQLiteDatabase db,

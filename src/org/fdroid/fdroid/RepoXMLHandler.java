@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.updater.RepoUpdater;
 import org.xml.sax.Attributes;
@@ -40,7 +41,7 @@ public class RepoXMLHandler extends DefaultHandler {
     private List<DB.App> appsList;
 
     private DB.App curapp = null;
-    private DB.Apk curapk = null;
+    private Apk curapk = null;
     private StringBuilder curchars = new StringBuilder();
 
     // After processing the XML, these will be -1 if the index didn't specify
@@ -280,7 +281,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     totalAppCount, progressData));
 
         } else if (localName.equals("package") && curapp != null && curapk == null) {
-            curapk = new DB.Apk();
+            curapk = new Apk();
             curapk.id = curapp.id;
             curapk.repo = repo.getId();
             hashType = null;

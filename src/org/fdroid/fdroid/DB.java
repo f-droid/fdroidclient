@@ -21,16 +21,17 @@ package org.fdroid.fdroid;
 
 import java.io.File;
 import java.security.MessageDigest;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -55,8 +56,7 @@ import android.util.Log;
 import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.ContextCompat;
 import org.fdroid.fdroid.compat.SupportedArchitectures;
-import org.fdroid.fdroid.data.DBHelper;
-import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.*;
 
 public class DB {
 
@@ -270,155 +270,6 @@ public class DB {
 
     }
 
-    // The TABLE_APK table stores details of all the application versions we
-    // know about. Each relates directly back to an entry in TABLE_APP.
-    // This information is retrieved from the repositories.
-    public static final String TABLE_APK = "fdroid_apk";
-
-    public static class Apk {
-
-        public Apk() {
-            updated = false;
-            detail_size = 0;
-            added = null;
-            repo = 0;
-            detail_hash = null;
-            detail_hashType = null;
-            detail_permissions = null;
-            compatible = false;
-        }
-
-        public String id;
-        public String version;
-        public int vercode;
-        public int detail_size; // Size in bytes - 0 means we don't know!
-        public long repo; // ID of the repo it comes from
-        public String detail_hash;
-        public String detail_hashType;
-        public int minSdkVersion; // 0 if unknown
-        public Date added;
-        public CommaSeparatedList detail_permissions; // null if empty or
-                                                      // unknown
-        public CommaSeparatedList features; // null if empty or unknown
-
-        public CommaSeparatedList nativecode; // null if empty or unknown
-
-        public CommaSeparatedList incompatible_reasons; // null if empty or
-                                                        // unknown
-        // ID (md5 sum of public key) of signature. Might be null, in the
-        // transition to this field existing.
-        public String sig;
-
-        // True if compatible with the device.
-        public boolean compatible;
-
-        public String apkName;
-
-        // If not null, this is the name of the source tarball for the
-        // application. Null indicates that it's a developer's binary
-        // build - otherwise it's built from source.
-        public String srcname;
-
-        // Used internally for tracking during repo updates.
-        public boolean updated;
-
-        // Call isCompatible(apk) on an instance of this class to
-        // check if an APK is compatible with the user's device.
-        private static class CompatibilityChecker extends Compatibility {
-
-            private Set<String> features;
-            private Set<String> cpuAbis;
-            private String cpuAbisDesc;
-            private boolean ignoreTouchscreen;
-
-            public CompatibilityChecker(Context ctx) {
-
-                SharedPreferences prefs = PreferenceManager
-                        .getDefaultSharedPreferences(ctx);
-                ignoreTouchscreen = prefs
-                        .getBoolean(Preferences.PREF_IGN_TOUCH, false);
-
-                PackageManager pm = ctx.getPackageManager();
-                StringBuilder logMsg = new StringBuilder();
-                logMsg.append("Available device features:");
-                features = new HashSet<String>();
-                if (pm != null) {
-                    for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
-                        features.add(fi.name);
-                        logMsg.append('\n');
-                        logMsg.append(fi.name);
-                    }
-                }
-
-                cpuAbis = SupportedArchitectures.getAbis();
-
-                StringBuilder builder = new StringBuilder();
-                boolean first = true;
-                for (String abi : cpuAbis) {
-                    if (first) first = false;
-                    else builder.append(", ");
-                    builder.append(abi);
-                }
-                cpuAbisDesc = builder.toString();
-                builder = null;
-
-                Log.d("FDroid", logMsg.toString());
-            }
-
-            private boolean compatibleApi(CommaSeparatedList nativecode) {
-                if (nativecode == null) return true;
-                for (String abi : nativecode) {
-                    if (cpuAbis.contains(abi)) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            public boolean isCompatible(Apk apk) {
-                if (!hasApi(apk.minSdkVersion)) {
-                    apk.incompatible_reasons = CommaSeparatedList.make(String.valueOf(apk.minSdkVersion));
-                    return false;
-                }
-                if (apk.features != null) {
-                    for (String feat : apk.features) {
-                        if (ignoreTouchscreen
-                                && feat.equals("android.hardware.touchscreen")) {
-                            // Don't check it!
-                        } else if (!features.contains(feat)) {
-                            apk.incompatible_reasons = CommaSeparatedList.make(feat);
-                            Log.d("FDroid", apk.id + " vercode " + apk.vercode
-                                    + " is incompatible based on lack of "
-                                    + feat);
-                            return false;
-                        }
-                    }
-                }
-                if (!compatibleApi(apk.nativecode)) {
-                    apk.incompatible_reasons = apk.nativecode;
-                    Log.d("FDroid", apk.id + " vercode " + apk.vercode
-                            + " only supports " + CommaSeparatedList.str(apk.nativecode)
-                            + " while your architectures are " + cpuAbisDesc);
-                    return false;
-                }
-                return true;
-            }
-        }
-    }
-
-    public int countAppsForRepo(long id) {
-        String[] selection     = { "COUNT(distinct id)" };
-        String[] selectionArgs = { Long.toString(id) };
-        Cursor result = db.query(
-        TABLE_APK, selection, "repo = ?", selectionArgs, "repo", null, null);
-        if (result.getCount() > 0) {
-            result.moveToFirst();
-            return result.getInt(0);
-        } else {
-            return 0;
-        }
-    }
-
     public static String calcFingerprint(String keyHexString) {
         if (TextUtils.isEmpty(keyHexString))
             return null;
@@ -569,33 +420,21 @@ public class DB {
         }
     }
 
-    private static final String[] POPULATE_APK_COLS = new String[] { "hash", "hashType", "size", "permissions" };
+    private static final String[] POPULATE_APK_COLS = new String[] {
+        ApkProvider.DataColumns.HASH,
+        ApkProvider.DataColumns.HASH_TYPE,
+        ApkProvider.DataColumns.SIZE,
+        ApkProvider.DataColumns.PERMISSIONS
+    };
 
     private void populateApkDetails(Apk apk, long repo) {
         if (repo == 0 || repo == apk.repo) {
-            Cursor cursor = null;
-            try {
-                cursor = db.query(
-                        TABLE_APK,
-                        POPULATE_APK_COLS,
-                        "id = ? and vercode = ?",
-                        new String[] { apk.id,
-                                Integer.toString(apk.vercode) }, null,
-                        null, null, null);
-                cursor.moveToFirst();
-                apk.detail_hash = cursor.getString(0);
-                apk.detail_hashType = cursor.getString(1);
-                apk.detail_size = cursor.getInt(2);
-                apk.detail_permissions = CommaSeparatedList.make(cursor
-                        .getString(3));
-            } catch (Exception e) {
-                Log.d("FDroid", "Error populating apk details for " + apk.id + " (version " + apk.version + ")");
-                Log.d("FDroid", e.getMessage());
-            } finally {
-                if (cursor != null) {
-                    cursor.close();
-                }
-            }
+            Apk loadedApk = ApkProvider.Helper.find(
+                mContext, apk.id, apk.vercode, POPULATE_APK_COLS);
+            apk.detail_hash = loadedApk.detail_hash;
+            apk.detail_hashType = loadedApk.detail_hashType;
+            apk.detail_size = loadedApk.detail_size;
+            apk.detail_permissions = loadedApk.detail_permissions;
         } else {
             Log.d("FDroid", "Not setting details for apk '" + apk.id + "' (version " + apk.version +") because it belongs to a different repo.");
         }
@@ -695,18 +534,6 @@ public class DB {
             Log.d("FDroid", "Read app data from database " + " (took "
                     + (System.currentTimeMillis() - startTime) + " ms)");
 
-            String query = "SELECT apk.id, apk.version, apk.vercode, apk.sig,"
-                    + " apk.srcname, apk.apkName, apk.minSdkVersion, "
-                    + " apk.added, apk.features, apk.nativecode, "
-                    + " apk.compatible, apk.repo, repo.version, repo.address "
-                    + " FROM " + TABLE_APK + " as apk "
-                    + " LEFT JOIN " + DBHelper.TABLE_REPO + " as repo "
-                    + " ON repo._id = apk.repo "
-                    + " ORDER BY apk.vercode DESC";
-
-            c = db.rawQuery(query, null);
-            c.moveToFirst();
-
             DisplayMetrics metrics = mContext.getResources()
                 .getDisplayMetrics();
             String iconsDir = null;
@@ -726,43 +553,21 @@ public class DB {
             metrics = null;
             Log.d("FDroid", "Density-specific icons dir is " + iconsDir);
 
-            while (!c.isAfterLast()) {
-                String id = c.getString(0);
-                App app = apps.get(id);
+            List<Apk> apks = ApkProvider.Helper.all(mContext);
+            for (Apk apk : apks) {
+                App app = apps.get(apk.id);
                 if (app == null) {
-                    c.moveToNext();
                     continue;
                 }
-                boolean compatible = c.getInt(10) == 1;
-                int repoid = c.getInt(11);
-                Apk apk = new Apk();
-                apk.id = id;
-                apk.version = c.getString(1);
-                apk.vercode = c.getInt(2);
-                apk.sig = c.getString(3);
-                apk.srcname = c.getString(4);
-                apk.apkName = c.getString(5);
-                apk.minSdkVersion = c.getInt(6);
-                String sApkAdded = c.getString(7);
-                apk.added = (sApkAdded == null || sApkAdded.length() == 0) ? null
-                        : DATE_FORMAT.parse(sApkAdded);
-                apk.features = CommaSeparatedList.make(c.getString(8));
-                apk.nativecode = CommaSeparatedList.make(c.getString(9));
-                apk.compatible = compatible;
-                apk.repo = repoid;
                 app.apks.add(apk);
                 if (app.iconUrl == null && app.icon != null) {
-                    int repoVersion = c.getInt(12);
-                    String repoAddress = c.getString(13);
-                    if (repoVersion >= 11) {
-                        app.iconUrl = repoAddress + iconsDir + app.icon;
+                    if (apk.repoVersion >= 11) {
+                        app.iconUrl = apk.repoAddress + iconsDir + app.icon;
                     } else {
-                        app.iconUrl = repoAddress + "/icons/" + app.icon;
+                        app.iconUrl = apk.repoAddress + "/icons/" + app.icon;
                     }
                 }
-                c.moveToNext();
             }
-            c.close();
 
         } catch (Exception e) {
             Log.e("FDroid",
@@ -948,8 +753,8 @@ public class DB {
                 // in the repos.
                 Log.d("FDroid", "AppUpdate: " + app.name
                         + " is no longer in any repository - removing");
-                db.delete(TABLE_APP, "id = ?", new String[] { app.id });
-                db.delete(TABLE_APK, "id = ?", new String[] { app.id });
+                db.delete(TABLE_APP, "id = ?", new String[]{app.id});
+                ApkProvider.Helper.deleteApksByApp(mContext, app);
             } else {
                 for (Apk apk : app.apks) {
                     if (!apk.updated) {
@@ -958,8 +763,7 @@ public class DB {
                         Log.d("FDroid", "AppUpdate: Package " + apk.id + "/"
                                 + apk.version
                                 + " is no longer in any repository - removing");
-                        db.delete(TABLE_APK, "id = ? and version = ?",
-                                new String[] { app.id, apk.version });
+                        ApkProvider.Helper.delete(mContext, app.id, apk.vercode);
                     }
                 }
             }
@@ -1014,9 +818,13 @@ public class DB {
                     boolean afound = false;
                     for (Apk apk : app.apks) {
                         if (apk.vercode == upapk.vercode) {
-                            // Log.d("FDroid", "AppUpdate: " + apk.version
-                            // + " is a known version.");
-                            updateApkIfDifferent(apk, upapk);
+
+                            ApkProvider.Helper.update(
+                                    mContext,
+                                    upapk,
+                                    apk.id,
+                                    apk.vercode);
+
                             apk.updated = true;
                             afound = true;
                             break;
@@ -1024,7 +832,7 @@ public class DB {
                     }
                     if (!afound) {
                         // A new version of this application.
-                        updateApkIfDifferent(null, upapk);
+                        ApkProvider.Helper.insert(mContext, upapk);
                         upapk.updated = true;
                         app.apks.add(upapk);
                     }
@@ -1036,7 +844,7 @@ public class DB {
             // It's a brand new application...
             updateApp(null, upapp);
             for (Apk upapk : upapp.apks) {
-                updateApkIfDifferent(null, upapk);
+                ApkProvider.Helper.insert(mContext, upapk);
                 upapk.updated = true;
             }
             upapp.updated = true;
@@ -1095,41 +903,6 @@ public class DB {
         }
     }
 
-    // Update apk details in the database, if different to the
-    // previous ones.
-    // 'oldapk' - previous details - i.e. what's in the database.
-    // If null, this apk is not in the database at all and
-    // should be added.
-    // 'upapk' - updated details
-    private void updateApkIfDifferent(Apk oldapk, Apk upapk) {
-        ContentValues values = new ContentValues();
-        values.put("id", upapk.id);
-        values.put("version", upapk.version);
-        values.put("vercode", upapk.vercode);
-        values.put("repo", upapk.repo);
-        values.put("hash", upapk.detail_hash);
-        values.put("hashType", upapk.detail_hashType);
-        values.put("sig", upapk.sig);
-        values.put("srcname", upapk.srcname);
-        values.put("size", upapk.detail_size);
-        values.put("apkName", upapk.apkName);
-        values.put("minSdkVersion", upapk.minSdkVersion);
-        values.put("added",
-                upapk.added == null ? "" : DATE_FORMAT.format(upapk.added));
-        values.put("permissions",
-                CommaSeparatedList.str(upapk.detail_permissions));
-        values.put("features", CommaSeparatedList.str(upapk.features));
-        values.put("nativecode", CommaSeparatedList.str(upapk.nativecode));
-        values.put("compatible", upapk.compatible ? 1 : 0);
-        if (oldapk != null) {
-            db.update(TABLE_APK, values,
-                    "id = ? and vercode = ?",
-                    new String[] { oldapk.id, Integer.toString(oldapk.vercode) });
-        } else {
-            db.insert(TABLE_APK, null, values);
-        }
-    }
-
     public void setIgnoreUpdates(String appid, boolean All, int This) {
         db.execSQL("update " + TABLE_APP + " set"
                 + " ignoreAllUpdates=" + (All ? '1' : '0')
@@ -1141,7 +914,7 @@ public class DB {
         db.beginTransaction();
 
         try {
-            db.delete(TABLE_APK, "repo = ?", new String[] { Long.toString(repo.getId()) });
+            ApkProvider.Helper.deleteApksByRepo(mContext, repo);
             List<App> apps = getApps(false);
             for (App app : apps) {
                 if (app.apks.isEmpty()) {

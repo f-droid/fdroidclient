@@ -76,6 +76,7 @@ public class RepoProvider extends FDroidProvider {
                     repos.add(new Repo(cursor));
                     cursor.moveToNext();
                 }
+                cursor.close();
             }
             return repos;
         }
@@ -163,6 +164,20 @@ public class RepoProvider extends FDroidProvider {
             }
         }
 
+        public static int countAppsForRepo(ContentResolver resolver,
+                                            long repoId) {
+            String[] projection = { "COUNT(distinct id)" };
+            String selection = "repo = ?";
+            String[] args = { Long.toString(repoId) };
+            Uri apkUri = ApkProvider.getContentUri();
+            Cursor result = resolver.query(apkUri, projection, selection, args, null);
+            if (result != null && result.getCount() > 0) {
+                result.moveToFirst();
+                return result.getInt(0);
+            } else {
+                return 0;
+            }
+        }
     }
 
     public interface DataColumns extends BaseColumns {
@@ -189,12 +204,12 @@ public class RepoProvider extends FDroidProvider {
     private static final UriMatcher matcher = new UriMatcher(-1);
 
     static {
-        matcher.addURI(AUTHORITY, PROVIDER_NAME, CODE_LIST);
-        matcher.addURI(AUTHORITY, PROVIDER_NAME + "/#", CODE_SINGLE);
+        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, null, CODE_LIST);
+        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, "#", CODE_SINGLE);
     }
 
     public static Uri getContentUri() {
-        return Uri.parse("content://" + AUTHORITY + "/" + PROVIDER_NAME);
+        return Uri.parse("content://" + AUTHORITY + "." + PROVIDER_NAME);
     }
 
     public static Uri getContentUri(long repoId) {
@@ -226,8 +241,8 @@ public class RepoProvider extends FDroidProvider {
                 break;
 
             case CODE_SINGLE:
-                selection = ( selection == null ? "" : selection ) +
-                        "_ID = " + uri.getLastPathSegment();
+                selection = ( selection == null ? "" : selection + " AND " ) +
+                        DataColumns._ID + " = " + uri.getLastPathSegment();
                 break;
 
             default:
@@ -287,7 +302,7 @@ public class RepoProvider extends FDroidProvider {
                 return 0;
 
             case CODE_SINGLE:
-                where = ( where == null ? "" : where ) +
+                where = ( where == null ? "" : where + " AND " ) +
                         "_ID = " + uri.getLastPathSegment();
                 break;
 

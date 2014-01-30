@@ -1,0 +1,3 @@
+incompatible_reasons needs to be implemented correctly for the data.Apk class (rather than DB.Apk).
+Currently, it is set during a CompatabilityChecker call to isCompatible(), which means we don't really
+know whether the field has been set or not. 

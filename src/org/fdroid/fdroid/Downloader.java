@@ -27,10 +27,11 @@ import java.io.OutputStream;
 import java.net.URL;
 
 import android.util.Log;
+import org.fdroid.fdroid.data.Apk;
 
 public class Downloader extends Thread {
 
-    private DB.Apk curapk;
+    private Apk curapk;
     private String repoaddress;
     private String filename;
     private File destdir;
@@ -38,11 +39,11 @@ public class Downloader extends Thread {
 
     public static enum Status {
         STARTING, RUNNING, ERROR, DONE, CANCELLED
-    };
+    }
 
     public static enum Error {
         CORRUPT, UNKNOWN
-    };
+    }
 
     private Status status = Status.STARTING;
     private Error error;
@@ -52,7 +53,7 @@ public class Downloader extends Thread {
 
     // Constructor - creates a Downloader to download the given Apk,
     // which must have its detail populated.
-    Downloader(DB.Apk apk, String repoaddress, File destdir) {
+    Downloader(Apk apk, String repoaddress, File destdir) {
         curapk = apk;
         this.repoaddress = repoaddress;
         this.destdir = destdir;
@@ -91,7 +92,7 @@ public class Downloader extends Thread {
     }
 
     // The APK being downloaded
-    public synchronized DB.Apk getApk() {
+    public synchronized Apk getApk() {
         return curapk;
     }
 

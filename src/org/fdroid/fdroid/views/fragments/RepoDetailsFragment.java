@@ -148,7 +148,10 @@ public class RepoDetailsFragment extends Fragment {
         TextView lastUpdated   = (TextView)repoView.findViewById(R.id.text_last_update);
 
         name.setText(repo.getName());
-        numApps.setText(Integer.toString(repo.getNumberOfApps()));
+
+        int appCount = RepoProvider.Helper.countAppsForRepo(
+                getActivity().getContentResolver(), repo.getId());
+        numApps.setText(Integer.toString(appCount));
 
         setupDescription(repoView, repo);
         setupRepoFingerprint(repoView, repo);

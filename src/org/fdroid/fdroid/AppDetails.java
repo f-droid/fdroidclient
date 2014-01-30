@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.xml.sax.XMLReader;
@@ -74,13 +75,9 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.DB.CommaSeparatedList;
 
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.utils.StorageUtils;
-
-import android.os.Environment;
 
 public class AppDetails extends ListActivity {
 
@@ -99,13 +96,13 @@ public class AppDetails extends ListActivity {
 
     private class ApkListAdapter extends BaseAdapter {
 
-        private List<DB.Apk> items;
+        private List<Apk> items;
         private LayoutInflater mInflater;
 
-        public ApkListAdapter(Context context, List<DB.Apk> items) {
-            this.items = new ArrayList<DB.Apk>();
+        public ApkListAdapter(Context context, List<Apk> items) {
+            this.items = new ArrayList<Apk>();
             if (items != null) {
-                for (DB.Apk apk : items) {
+                for (Apk apk : items) {
                     this.addItem(apk);
                 }
             }
@@ -113,13 +110,13 @@ public class AppDetails extends ListActivity {
                     Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public void addItem(DB.Apk apk) {
+        public void addItem(Apk apk) {
             if (apk.compatible || pref_incompatibleVersions) {
                 items.add(apk);
             }
         }
 
-        public List<DB.Apk> getItems() {
+        public List<Apk> getItems() {
             return items;
         }
 
@@ -142,7 +139,7 @@ public class AppDetails extends ListActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             java.text.DateFormat df = DateFormat.getDateFormat(mctx);
-            DB.Apk apk = items.get(position);
+            Apk apk = items.get(position);
             ViewHolder holder;
 
             if (convertView == null) {
@@ -983,7 +980,7 @@ public class AppDetails extends ListActivity {
         private boolean updating;
         private String id;
 
-        public DownloadHandler(DB.Apk apk, String repoaddress, File destdir) {
+        public DownloadHandler(Apk apk, String repoaddress, File destdir) {
             id = apk.id;
             download = new Downloader(apk, repoaddress, destdir);
             download.start();

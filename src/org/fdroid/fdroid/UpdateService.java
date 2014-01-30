@@ -49,6 +49,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.updater.RepoUpdater;
@@ -351,7 +352,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 for (long keep : keeprepos) {
                     for (DB.App app : apps) {
                         boolean keepapp = false;
-                        for (DB.Apk apk : app.apks) {
+                        for (Apk apk : app.apks) {
                             if (apk.repo == keep) {
                                 keepapp = true;
                                 break;
@@ -371,7 +372,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                             }
                             app_k.updated = true;
                             db.populateDetails(app_k, keep);
-                            for (DB.Apk apk : app.apks)
+                            for (Apk apk : app.apks)
                                 if (apk.repo == keep)
                                     apk.updated = true;
                         }
