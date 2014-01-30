@@ -9,6 +9,7 @@
 	<string name="version">Version</string>
 	<string name="edit">Edit</string>
 	<string name="delete">Delete</string>
+	<string name="enable_nfc_send">Enable NFC Send…</string>
 	<string name="cache_downloaded">App cache</string>
 	<string name="cache_downloaded_on">Keep downloaded apk files on SD card</string>
 	<string name="cache_downloaded_off">Do not keep any apk files</string>
@@ -73,6 +74,8 @@
 	<string name="process_wait_title">Please Wait</string>
 	<string name="process_update_msg">Updating application list…</string>
 	<string name="download_server">Getting application from</string>
+	<string name="nfc_is_not_enabled">NFC is not enabled!</string>
+	<string name="go_to_nfc_settings">Go to NFC Settings…</string>
 
 	<string name="repo_add_url">Repository address</string>
 	<string name="repo_add_fingerprint">Fingerprint (optional)</string>

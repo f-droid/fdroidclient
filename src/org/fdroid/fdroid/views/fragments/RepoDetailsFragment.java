@@ -1,9 +1,13 @@
 package org.fdroid.fdroid.views.fragments;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.nfc.NfcAdapter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -50,6 +54,9 @@ public class RepoDetailsFragment extends Fragment {
 
     private static final int DELETE = 0;
     private static final int UPDATE = 1;
+    private static final int ENABLE_NFC = 2;
+
+    private MenuItem enableNfc = null;
 
     // TODO: Currently initialised in onCreateView. Not sure if that is the
     // best way to go about this...
@@ -244,18 +251,51 @@ public class RepoDetailsFragment extends Fragment {
         MenuItemCompat.setShowAsAction(delete,
             MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+    }
 
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        if (Build.VERSION.SDK_INT >= 14)
+            prepareNfcMenuItems(menu);
+    }
+
+    @TargetApi(16)
+    private void prepareNfcMenuItems(Menu menu) {
+        boolean needsEnableNfcMenuItem = false;
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
+        if (Build.VERSION.SDK_INT < 16)
+            needsEnableNfcMenuItem = !nfcAdapter.isEnabled();
+        else
+            needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
+        if (needsEnableNfcMenuItem) {
+            if (enableNfc != null)
+                return; // already created
+            enableNfc = menu.add(Menu.NONE, ENABLE_NFC, 0, R.string.enable_nfc_send);
+            enableNfc.setIcon(android.R.drawable.ic_menu_preferences);
+            MenuItemCompat.setShowAsAction(enableNfc,
+                MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        } else if (enableNfc != null) {
+            // remove the existing MenuItem since NFC is now enabled
+            menu.removeItem(enableNfc.getItemId());
+            enableNfc = null;
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == DELETE) {
-            promptForDelete();
-            return true;
-        } else if (item.getItemId() == UPDATE) {
-            performUpdate();
-            return true;
+        switch (item.getItemId()) {
+            case DELETE:
+                promptForDelete();
+                return true;
+            case UPDATE:
+                performUpdate();
+                return true;
+            case ENABLE_NFC:
+                Intent intent = new Intent(getActivity(), NfcNotEnabledActivity.class);
+                startActivity(intent);
+                return true;
         }
 
         return false;
