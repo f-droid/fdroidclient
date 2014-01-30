@@ -48,23 +48,22 @@ public class SearchResults extends ListActivity {
 
     private AppListAdapter applist;
 
-    private String mQuery;
-
-    protected void getQuery(Intent intent) {
+    protected String getQuery() {
+        Intent intent = getIntent();
+        String query;
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            mQuery = intent.getStringExtra(SearchManager.QUERY);
+            query = intent.getStringExtra(SearchManager.QUERY);
         } else {
             Uri data = intent.getData();
-            if (data.isHierarchical()) {
-                mQuery = data.getQueryParameter("q");
-                if (mQuery.startsWith("pname:"))
-                    mQuery = mQuery.substring(6);
+            if (data != null && data.isHierarchical()) {
+                query = data.getQueryParameter("q");
+                if (query != null && query.startsWith("pname:"))
+                    query = query.substring(6);
             } else {
-                mQuery = data.getEncodedSchemeSpecificPart();
+                query = data.getEncodedSchemeSpecificPart();
             }
         }
-        if (mQuery == null || mQuery.length() == 0)
-            finish();
+        return query;
     }
 
     @Override
@@ -79,25 +78,34 @@ public class SearchResults extends ListActivity {
 
         // Start a search by just typing
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
+    }
 
-        getQuery(getIntent());
-
+    @Override
+    protected void onResume() {
+        super.onResume();
         updateView();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
-        getQuery(intent);
         super.onNewIntent(intent);
-        updateView();
+        setIntent(intent);
     }
 
     private void updateView() {
 
+        String query = getQuery();
+
+        if (query != null)
+            query = query.trim();
+
+        if (query == null || query.length() == 0)
+            finish();
+
         List<String> matchingids = new ArrayList<String>();
         try {
             DB db = DB.getDB();
-            matchingids = db.doSearch(mQuery);
+            matchingids = db.doSearch(query.trim());
         } catch (Exception ex) {
             Log.d("FDroid", "Search failed - " + ex.getMessage());
         } finally {
@@ -107,7 +115,6 @@ public class SearchResults extends ListActivity {
         List<DB.App> apps = new ArrayList<DB.App>();
         List<DB.App> allApps = ((FDroidApp) getApplication()).getApps();
         for (DB.App app : allApps) {
-            boolean include = false;
             for (String id : matchingids) {
                 if (id.equals(app.id)) {
                     apps.add(app);
@@ -119,14 +126,14 @@ public class SearchResults extends ListActivity {
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
         if (apps.size() == 0) {
-            headertext = getString(R.string.searchres_noapps, mQuery);
+            headertext = getString(R.string.searchres_noapps, query);
         } else if (apps.size() == 1) {
-            headertext = getString(R.string.searchres_oneapp, mQuery);
+            headertext = getString(R.string.searchres_oneapp, query);
         } else {
-            headertext = getString(R.string.searchres_napps, apps.size(), mQuery);
+            headertext = getString(R.string.searchres_napps, apps.size(), query);
         }
         tv.setText(headertext);
-        Log.d("FDroid", "Search for '" + mQuery + "' returned " + apps.size()
+        Log.d("FDroid", "Search for '" + query + "' returned " + apps.size()
                 + " results");
         applist.clear();
         for (DB.App app : apps) {
