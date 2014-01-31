@@ -29,7 +29,7 @@ Publicat amb la llicència GNU GPL v3.</string>
 
 Un dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENÚ i entreu la seva URL.
 
-L\'adreça d\'un dipòsit té un aspecte com ara: http://f-droid.org/repo</string>
+L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</string>
   <string name="inst">Instal·lat</string>
   <string name="not_inst">No està instal·lat</string>
   <string name="added_on">S\'ha afegit a %s</string>

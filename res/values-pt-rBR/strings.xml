@@ -29,7 +29,7 @@ Lançado sob a licença GNU GPLv3.</string>
 
 Um repositório é uma fonte de aplicativos. Para adicionar um, pressione o botão MENU e digite a URL.
 
-Um endereço do repositório é algo similar a isto: http://f-droid.org/repo</string>
+Um endereço do repositório é algo similar a isto: https://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">Não Instalado</string>
   <string name="added_on">Adicionado em %s</string>
