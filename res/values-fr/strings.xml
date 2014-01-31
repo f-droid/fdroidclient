@@ -29,7 +29,7 @@ Publiée sous licence GNU GPL v3.</string>
 
 Un dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.
 
-L\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
+L\'URL d\'un dépôt ressemble à ceci : https://f-droid.org/repo</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Pas installée</string>
   <string name="added_on">Ajouté le %s</string>
