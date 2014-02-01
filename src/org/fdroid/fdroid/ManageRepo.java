@@ -59,9 +59,10 @@ public class ManageRepo extends FragmentActivity {
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
     public void finish() {
         Intent ret = new Intent();
-        if (listFragment.hasChanged()) {
+        if (listFragment != null && listFragment.hasChanged()) {
             Log.i("FDroid", "Repo details have changed, prompting for update.");
             ret.putExtra(REQUEST_UPDATE, true);
         }
