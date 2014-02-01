@@ -20,12 +20,16 @@
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:name="FDroidApp"
@@ -135,14 +139,36 @@
                 <data android:scheme="fdroidrepos" />
                 <data android:scheme="FDROIDREPOS" />
             </intent-filter>
-        </activity>
+            <!-- Handle NFC tags detected from outside our application -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--
+                URIs that come in via NFC have scheme/host normalized to all lower case
+                https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
+                -->
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="fdroidrepos" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="application/vnd.org.fdroid.fdroid.repo" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NfcNotEnabledActivity"
+            android:noHistory="true" />
         <activity
             android:name=".views.RepoDetailsActivity"
             android:label="@string/menu_manage"
             android:parentActivityName=".ManageRepo"
             android:windowSoftInputMode="stateHidden" />
- 
+
         <activity
             android:name=".AppDetails"
             android:label="@string/app_details"
