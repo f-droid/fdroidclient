@@ -127,8 +127,6 @@
 
 	<string name="search_hint">Search applications</string>
 
-	<string name="db_sync_mode">Database sync mode</string>
-
 	<string name="appcompatibility">Application compatibility</string>
 	<string name="show_incompat_versions">Incompatible versions</string>
 	<string name="show_incompat_versions_on">Show app versions incompatible with the device</string>
@@ -155,6 +153,7 @@
 	<string name="status_processing_xml">Processing application\n%2$d of %3$d from\n%1$s</string>
 	<string name="status_connecting_to_repo">Connecting to\n%1$s</string>
 	<string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
+    <string name="status_inserting">Saving application details (%1$d%%)</string>
 	<string name="no_permissions">No permissions are used.</string>
 	<string name="permissions_for_long">Permissions for version %s</string>
 	<string name="showPermissions">Show permissions</string>
@@ -195,7 +194,8 @@
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
-    <string name="minsdk_or_later">%s or later</string>
+    <string name="minsdk_or_later">Android %s or later</string>
     <string name="not_on_same_wifi">Your device is not on the same WiFi as the local repo you just added! Try joining this network: %s</string>
+    <string name="requires_features">Requires: %1$s</string>
 
 </resources>

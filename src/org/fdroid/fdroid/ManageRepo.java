@@ -21,13 +21,11 @@ package org.fdroid.fdroid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
+import android.content.*;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
 import android.support.v4.content.CursorLoader;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
@@ -38,6 +36,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -55,6 +54,7 @@ import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 import java.util.Locale;
 
 public class ManageRepo extends FragmentActivity {
@@ -178,7 +178,7 @@ class RepoListFragment extends ListFragment
                 changed = true;
             } else {
                 FDroidApp app = (FDroidApp)getActivity().getApplication();
-                RepoProvider.Helper.purgeApps(repo, app);
+                RepoProvider.Helper.purgeApps(getActivity(), repo, app);
                 String notification = getString(R.string.repo_disabled_notification, repo.name);
                 Toast.makeText(getActivity(), notification, Toast.LENGTH_LONG).show();
             }
@@ -200,35 +200,49 @@ class RepoListFragment extends ListFragment
      */
     private boolean isImportingRepo = false;
 
+    private View createHeaderView() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        TextView textLastUpdate = new TextView(getActivity());
+        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
+        String lastUpdateCheck = "";
+        if (lastUpdate == 0) {
+            lastUpdateCheck = getString(R.string.never);
+        } else {
+            Date d = new Date(lastUpdate);
+            lastUpdateCheck = DateFormat.getDateFormat(getActivity()).format(d) +
+                    " " + DateFormat.getTimeFormat(getActivity()).format(d);
+        }
+        textLastUpdate.setText(getString(R.string.last_update_check, lastUpdateCheck));
+
+        int sidePadding = (int)getResources().getDimension(R.dimen.padding_side);
+        int topPadding = (int)getResources().getDimension(R.dimen.padding_top);
+
+        textLastUpdate.setPadding(sidePadding, topPadding, sidePadding, topPadding);
+        return textLastUpdate;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        // Can't do this in the onCreate view, because "onCreateView" which
+        // returns the list view is "called between onCreate and
+        // onActivityCreated" according to the docs.
+        getListView().addHeaderView(createHeaderView());
+
+        // This could go in onCreate (and used to) but it needs to be called
+        // after addHeaderView, which can only be called after onCreate...
+        repoAdapter = new RepoAdapter(getActivity(), null);
+        repoAdapter.setEnabledListener(this);
+        setListAdapter(repoAdapter);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-
-        repoAdapter = new RepoAdapter(getActivity(), null);
-        repoAdapter.setEnabledListener(this);
-        setListAdapter(repoAdapter);
-
-        /*
-        TODO: Find some other way to display this info, now that we use the ListView widgets...
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-
-        TextView tv_lastCheck = (TextView)findViewById(R.id.lastUpdateCheck);
-        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
-        String s_lastUpdateCheck = "";
-        if (lastUpdate == 0) {
-            s_lastUpdateCheck = getString(R.string.never);
-        } else {
-            Date d = new Date(lastUpdate);
-            s_lastUpdateCheck = DateFormat.getDateFormat(this).format(d) +
-                    " " + DateFormat.getTimeFormat(this).format(d);
-        }
-        tv_lastCheck.setText(getString(R.string.last_update_check,s_lastUpdateCheck));
-
-        */
 
         /* let's see if someone is trying to send us a new repo */
         Intent intent = getActivity().getIntent();
@@ -342,8 +356,11 @@ class RepoListFragment extends ListFragment
         UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
+            if (event.type == UpdateService.STATUS_COMPLETE_AND_SAME ||
+                    event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
                 // No need to prompt to update any more, we just did it!
                 changed = false;
+            }
             }
         });
     }

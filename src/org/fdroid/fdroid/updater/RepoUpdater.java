@@ -4,10 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
@@ -40,7 +41,8 @@ abstract public class RepoUpdater {
 
     protected final Context context;
     protected final Repo repo;
-    protected final List<DB.App> apps = new ArrayList<DB.App>();
+    private List<App> apps = new ArrayList<App>();
+    private List<Apk> apks = new ArrayList<Apk>();
     protected boolean hasChanged = false;
     protected ProgressListener progressListener;
 
@@ -57,8 +59,12 @@ abstract public class RepoUpdater {
         return hasChanged;
     }
 
-    public List<DB.App> getApps() {
+    public List<App> getApps() {
         return apps;
+    }
+
+    public List<Apk> getApks() {
+        return apks;
     }
 
     public boolean isInteractive() {
@@ -173,7 +179,7 @@ abstract public class RepoUpdater {
                 // Process the index...
                 SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
                 XMLReader reader = parser.getXMLReader();
-                RepoXMLHandler handler = new RepoXMLHandler(repo, apps, progressListener);
+                RepoXMLHandler handler = new RepoXMLHandler(repo, progressListener);
 
                 if (isInteractive()) {
                     // Only bother spending the time to count the expected apps
@@ -186,6 +192,8 @@ abstract public class RepoUpdater {
                         new BufferedReader(new FileReader(indexFile)));
 
                 reader.parse(is);
+                apps = handler.getApps();
+                apks = handler.getApks();
                 updateRepo(handler, downloader.getETag());
             }
         } catch (SAXException e) {
@@ -216,7 +224,7 @@ abstract public class RepoUpdater {
 
         ContentValues values = new ContentValues();
 
-        values.put(RepoProvider.DataColumns.LAST_UPDATED, DB.DATE_FORMAT.format(new Date()));
+        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.DATE_FORMAT.format(new Date()));
 
         if (repo.lastetag == null || !repo.lastetag.equals(etag)) {
             values.put(RepoProvider.DataColumns.LAST_ETAG, etag);

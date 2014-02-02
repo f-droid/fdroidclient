@@ -3,14 +3,16 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
-import org.fdroid.fdroid.DB;
+import org.fdroid.fdroid.Utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.Date;
 
-public class Repo extends ValueObject{
+public class Repo extends ValueObject {
+
+    public static final int VERSION_DENSITY_SPECIFIC_ICONS = 11;
 
     private long id;
 
@@ -31,6 +33,9 @@ public class Repo extends ValueObject{
     }
 
     public Repo(Cursor cursor) {
+
+        checkCursorPosition(cursor);
+
         for(int i = 0; i < cursor.getColumnCount(); i ++ ) {
             String column = cursor.getColumnName(i);
             if (column.equals(RepoProvider.DataColumns._ID)) {
@@ -132,7 +137,7 @@ public class Repo extends ValueObject{
             String dateString = values.getAsString(RepoProvider.DataColumns.LAST_UPDATED);
             if (dateString != null) {
                 try {
-                    lastUpdated =  DB.DATE_FORMAT.parse(dateString);
+                    lastUpdated =  Utils.DATE_FORMAT.parse(dateString);
                 } catch (ParseException e) {
                     Log.e("FDroid", "Error parsing date " + dateString);
                 }

@@ -1,11 +1,12 @@
 package org.fdroid.fdroid.data;
 
-import android.content.ContentProvider;
-import android.content.UriMatcher;
+import android.content.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-abstract class FDroidProvider extends ContentProvider {
+import java.util.ArrayList;
+
+public abstract class FDroidProvider extends ContentProvider {
 
     public static final String AUTHORITY = "org.fdroid.fdroid.data";
 
@@ -14,9 +15,38 @@ abstract class FDroidProvider extends ContentProvider {
 
     private DBHelper dbHelper;
 
+    private boolean isApplyingBatch = false;
+
     abstract protected String getTableName();
 
     abstract protected String getProviderName();
+
+    /**
+     * Tells us if we are in the middle of a batch of operations. Allows us to
+     * decide not to notify the content resolver of changes,
+     * every single time we do something during many operations.
+     * Based on http://stackoverflow.com/a/15886915.
+     * @return
+     */
+    protected final boolean isApplyingBatch() {
+        return this.isApplyingBatch;
+    }
+
+    @Override
+    public ContentProviderResult[] applyBatch(ArrayList<ContentProviderOperation> operations)
+        throws OperationApplicationException {
+        ContentProviderResult[] result = null;
+        isApplyingBatch = true;
+        write().beginTransaction();
+        try {
+            result = super.applyBatch(operations);
+            write().setTransactionSuccessful();
+        } finally {
+            write().endTransaction();
+            isApplyingBatch = false;
+        }
+        return result;
+    }
 
     @Override
     public boolean onCreate() {
@@ -55,5 +85,15 @@ abstract class FDroidProvider extends ContentProvider {
 
     abstract protected UriMatcher getMatcher();
 
+    protected String generateQuestionMarksForInClause(int num) {
+        StringBuilder sb = new StringBuilder(num * 2);
+        for (int i = 0; i < num; i ++) {
+            if (i != 0) {
+                sb.append(',');
+            }
+            sb.append('?');
+        }
+        return sb.toString();
+    }
 }
 

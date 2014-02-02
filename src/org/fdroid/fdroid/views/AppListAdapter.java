@@ -1,83 +1,66 @@
 package org.fdroid.fdroid.views;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.pm.PackageInfo;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.support.v4.widget.CursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
-import android.graphics.Bitmap;
-
-import org.fdroid.fdroid.DB;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.compat.LayoutCompat;
-
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.App;
 
-abstract public class AppListAdapter extends BaseAdapter {
+abstract public class AppListAdapter extends CursorAdapter {
 
-    private List<DB.App> items = new ArrayList<DB.App>();
     private Context mContext;
     private LayoutInflater mInflater;
     private DisplayImageOptions displayImageOptions;
 
-    public AppListAdapter(Context context) {
+    public AppListAdapter(Context context, Cursor c) {
+        super(context, c);
+        init(context);
+    }
+
+    public AppListAdapter(Context context, Cursor c, boolean autoRequery) {
+        super(context, c, autoRequery);
+        init(context);
+    }
+
+    public AppListAdapter(Context context, Cursor c, int flags) {
+        super(context, c, flags);
+        init(context);
+    }
+
+    private void init(Context context) {
         mContext = context;
         mInflater = (LayoutInflater) mContext.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
-
         displayImageOptions = new DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .cacheOnDisc(true)
-            .imageScaleType(ImageScaleType.NONE)
-            .resetViewBeforeLoading(true)
-            .showImageOnLoading(R.drawable.ic_repo_app_default)
-            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-            .displayer(new FadeInBitmapDisplayer(200, true, true, false))
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .build();
+                .cacheInMemory(true)
+                .cacheOnDisc(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .resetViewBeforeLoading(true)
+                .showImageOnLoading(R.drawable.ic_repo_app_default)
+                .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+                .displayer(new FadeInBitmapDisplayer(200, true, true, false))
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
 
     }
 
     abstract protected boolean showStatusUpdate();
 
     abstract protected boolean showStatusInstalled();
-
-    public void addItem(DB.App app) {
-        items.add(app);
-    }
-
-    public void addItems(List<DB.App> apps) {
-        items.addAll(apps);
-    }
-
-    public void clear() {
-        items.clear();
-    }
-
-    @Override
-    public int getCount() {
-        return items.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return items.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
     private static class ViewHolder {
         TextView name;
@@ -88,26 +71,32 @@ abstract public class AppListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        View view = mInflater.inflate(R.layout.applistitem, null);
+
+        ViewHolder holder = new ViewHolder();
+        holder.name = (TextView) view.findViewById(R.id.name);
+        holder.summary = (TextView) view.findViewById(R.id.summary);
+        holder.status = (TextView) view.findViewById(R.id.status);
+        holder.license = (TextView) view.findViewById(R.id.license);
+        holder.icon = (ImageView) view.findViewById(R.id.icon);
+        view.setTag(holder);
+
+        setupView(context, view, cursor, holder);
+
+        return view;
+    }
+
+    @Override
+    public void bindView(View view, Context context, Cursor cursor) {
+        ViewHolder holder = (ViewHolder)view.getTag();
+        setupView(context, view, cursor, holder);
+    }
+
+    private void setupView(Context context, View view, Cursor cursor, ViewHolder holder) {
+        final App app = new App(cursor);
 
         boolean compact = Preferences.get().hasCompactLayout();
-        DB.App app = items.get(position);
-        ViewHolder holder;
-
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.applistitem, null);
-
-            holder = new ViewHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            holder.summary = (TextView) convertView.findViewById(R.id.summary);
-            holder.status = (TextView) convertView.findViewById(R.id.status);
-            holder.license = (TextView) convertView.findViewById(R.id.license);
-            holder.icon = (ImageView) convertView.findViewById(R.id.icon);
-
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
 
         holder.name.setText(app.name);
         holder.summary.setText(app.summary);
@@ -121,47 +110,50 @@ abstract public class AppListAdapter extends BaseAdapter {
 
         // Disable it all if it isn't compatible...
         View[] views = {
-            convertView,
+            view,
             holder.status,
             holder.summary,
             holder.license,
             holder.name
         };
 
-        for (View view : views) {
-            view.setEnabled(app.compatible && !app.filtered);
+        for (View v : views) {
+            v.setEnabled(app.compatible && !app.isFiltered());
         }
-
-        return convertView;
     }
 
-    private String ellipsize(String input, int maxLength) {
+     private String ellipsize(String input, int maxLength) {
         if (input == null || input.length() < maxLength+1) {
             return input;
         }
         return input.substring(0, maxLength) + "…";
     }
 
-    private String getVersionInfo(DB.App app) {
+    private String getVersionInfo(App app) {
 
-        if (app.curApk == null) {
+        if (app.curVercode <= 0) {
             return null;
         }
 
-        if (app.installedVersion == null) {
-            return ellipsize(app.curApk.version, 12);
+        PackageInfo installedInfo = app.getInstalledInfo(mContext);
+
+        if (installedInfo == null) {
+            return ellipsize(app.curVersion, 12);
         }
 
-        if (app.toUpdate && showStatusUpdate()) {
-            return ellipsize(app.installedVersion, 8) +
-                " → " + ellipsize(app.curApk.version, 8);
+        String installedVersionString = installedInfo.versionName;
+        int installedVersionCode = installedInfo.versionCode;
+
+        if (app.canAndWantToUpdate(mContext) && showStatusUpdate()) {
+            return ellipsize(installedVersionString, 8) +
+                " → " + ellipsize(app.curVersion, 8);
         }
 
-        if (app.installedVerCode > 0 && showStatusInstalled()) {
-            return ellipsize(app.installedVersion, 12) + " ✔";
+        if (installedVersionCode > 0 && showStatusInstalled()) {
+            return ellipsize(installedVersionString, 12) + " ✔";
         }
 
-        return app.installedVersion;
+        return installedVersionString;
     }
 
     private void layoutIcon(ImageView icon, boolean compact) {

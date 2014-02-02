@@ -20,21 +20,59 @@ package org.fdroid.fdroid;
 
 import android.content.Context;
 
+import android.content.pm.PackageInfo;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.security.MessageDigest;
+import java.util.*;
+
+import org.fdroid.fdroid.data.Repo;
 
 public final class Utils {
 
     public static final int BUFFER_SIZE = 4096;
+
+    // The date format used for storing dates (e.g. lastupdated, added) in the
+    // database.
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
 
     public static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+
+    public static String getIconsDir(Context context) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        String iconsDir;
+        if (metrics.densityDpi >= 640) {
+            iconsDir = "/icons-640/";
+        } else if (metrics.densityDpi >= 480) {
+            iconsDir = "/icons-480/";
+        } else if (metrics.densityDpi >= 320) {
+            iconsDir = "/icons-320/";
+        } else if (metrics.densityDpi >= 240) {
+            iconsDir = "/icons-240/";
+        } else if (metrics.densityDpi >= 160) {
+            iconsDir = "/icons-160/";
+        } else {
+            iconsDir = "/icons-120/";
+        }
+        return iconsDir;
+    }
 
     public static void copy(InputStream input, OutputStream output)
             throws IOException {
@@ -157,5 +195,146 @@ public final class Utils {
         }
         return apkCacheDir;
     }
+
+    public static Map<String, PackageInfo> getInstalledApps(Context context) {
+        return installedApkCache.getApks(context);
+    }
+
+    public static void clearInstalledApksCache() {
+        installedApkCache.emptyCache();
+    }
+
+    public static String calcFingerprint(String keyHexString) {
+        if (TextUtils.isEmpty(keyHexString))
+            return null;
+        else
+            return calcFingerprint(Hasher.unhex(keyHexString));
+    }
+
+    public static String calcFingerprint(Certificate cert) {
+        try {
+            return calcFingerprint(cert.getEncoded());
+        } catch (CertificateEncodingException e) {
+            return null;
+        }
+    }
+
+    public static String calcFingerprint(byte[] key) {
+        String ret = null;
+        try {
+            // keytool -list -v gives you the SHA-256 fingerprint
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.update(key);
+            byte[] fingerprint = digest.digest();
+            Formatter formatter = new Formatter(new StringBuilder());
+            for (int i = 1; i < fingerprint.length; i++) {
+                formatter.format("%02X", fingerprint[i]);
+            }
+            ret = formatter.toString();
+            formatter.close();
+        } catch (Exception e) {
+            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
+                    + Log.getStackTraceString(e));
+        }
+        return ret;
+    }
+
+    public static class CommaSeparatedList implements Iterable<String> {
+        private String value;
+
+        private CommaSeparatedList(String list) {
+            value = list;
+        }
+
+        public static CommaSeparatedList make(List<String> list) {
+            if (list == null || list.size() == 0)
+                return null;
+            else {
+                StringBuilder sb = new StringBuilder();
+                for(int i = 0; i < list.size(); i ++) {
+                    if (i > 0) {
+                        sb.append(',');
+                    }
+                    sb.append(list.get(i));
+                }
+                return new CommaSeparatedList(sb.toString());
+            }
+        }
+
+        public static CommaSeparatedList make(String list) {
+            if (list == null || list.length() == 0)
+                return null;
+            else
+                return new CommaSeparatedList(list);
+        }
+
+        public static String str(CommaSeparatedList instance) {
+            return (instance == null ? null : instance.toString());
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+
+        public String toPrettyString() {
+            return value.replaceAll(",", ", ");
+        }
+
+        @Override
+        public Iterator<String> iterator() {
+            TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(',');
+            splitter.setString(value);
+            return splitter.iterator();
+        }
+
+        public boolean contains(String v) {
+            for (String s : this) {
+                if (s.equals(v))
+                    return true;
+            }
+            return false;
+        }
+    }
+
+    private static InstalledApkCache installedApkCache = null;
+
+    /**
+     * We do a lot of querying of the installed app's. As a result, we like
+     * to cache this information quite heavily (and flush the cache when new
+     * apps are installed). The caching implementation needs to be setup like
+     * this so that it is possible to mock for testing purposes.
+     */
+    public static void setupInstalledApkCache(InstalledApkCache cache) {
+        installedApkCache = cache;
+    }
+
+    public static class InstalledApkCache {
+
+        protected Map<String, PackageInfo> installedApks = null;
+
+        protected Map<String, PackageInfo> buildAppList(Context context) {
+            Map<String, PackageInfo> info = new HashMap<String, PackageInfo>();
+            Log.d("FDroid", "Reading installed packages");
+            List<PackageInfo> installedPackages = context.getPackageManager().getInstalledPackages(0);
+            for (PackageInfo appInfo : installedPackages) {
+                info.put(appInfo.packageName, appInfo);
+            }
+            return info;
+        }
+
+        public Map<String, PackageInfo> getApks(Context context) {
+            if (installedApks == null) {
+                installedApks = buildAppList(context);
+            }
+            return installedApks;
+        }
+
+        public void emptyCache() {
+            installedApks = null;
+        }
+
+    }
+
 
 }

@@ -30,6 +30,7 @@ public class PackageReceiver extends BroadcastReceiver {
         String appid = intent.getData().getSchemeSpecificPart();
         Log.d("FDroid", "PackageReceiver received "+appid);
         ((FDroidApp) ctx.getApplicationContext()).invalidateApp(appid);
+        Utils.clearInstalledApksCache();
     }
 
 }
