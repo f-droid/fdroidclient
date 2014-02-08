@@ -6,8 +6,8 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import android.text.TextUtils;
 import android.util.Log;
-import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.List;
 public class RepoProvider extends FDroidProvider {
 
     public static final class Helper {
+
         public static final String TAG = "RepoProvider.Helper";
 
         private Helper() {}
@@ -76,6 +77,7 @@ public class RepoProvider extends FDroidProvider {
                     repos.add(new Repo(cursor));
                     cursor.moveToNext();
                 }
+                cursor.close();
             }
             return repos;
         }
@@ -104,7 +106,7 @@ public class RepoProvider extends FDroidProvider {
              */
             if (values.containsKey(DataColumns.PUBLIC_KEY)) {
                 String publicKey = values.getAsString(DataColumns.PUBLIC_KEY);
-                String calcedFingerprint = DB.calcFingerprint(publicKey);
+                String calcedFingerprint = Utils.calcFingerprint(publicKey);
                 if (values.containsKey(DataColumns.FINGERPRINT)) {
                     String fingerprint = values.getAsString(DataColumns.FINGERPRINT);
                     if (!TextUtils.isEmpty(publicKey)) {
@@ -152,17 +154,32 @@ public class RepoProvider extends FDroidProvider {
             resolver.delete(uri, null, null);
         }
 
-        public static void purgeApps(Repo repo, FDroidApp app) {
-            // TODO: Once we have content providers for apps and apks, use them
-            // to do this...
-            DB db = DB.getDB();
-            try {
-                db.purgeApps(repo, app);
-            } finally {
-                DB.releaseDB();
-            }
+        public static void purgeApps(Context context, Repo repo, FDroidApp app) {
+            Uri apkUri = ApkProvider.getRepoUri(repo.getId());
+            int apkCount = context.getContentResolver().delete(apkUri, null, null);
+            Log.d("FDroid", "Removed " + apkCount + " apks from repo " + repo.name);
+
+            Uri appUri = AppProvider.getNoApksUri();
+            int appCount = context.getContentResolver().delete(appUri, null, null);
+            Log.d("Log", "Removed " + appCount + " apps with no apks.");
+
+            app.invalidateAllApps();
         }
 
+        public static int countAppsForRepo(ContentResolver resolver,
+                                            long repoId) {
+            String[] projection = { "COUNT(distinct id)" };
+            String selection = "repo = ?";
+            String[] args = { Long.toString(repoId) };
+            Uri apkUri = ApkProvider.getContentUri();
+            Cursor result = resolver.query(apkUri, projection, selection, args, null);
+            if (result != null && result.getCount() > 0) {
+                result.moveToFirst();
+                return result.getInt(0);
+            } else {
+                return 0;
+            }
+        }
     }
 
     public interface DataColumns extends BaseColumns {
@@ -189,12 +206,12 @@ public class RepoProvider extends FDroidProvider {
     private static final UriMatcher matcher = new UriMatcher(-1);
 
     static {
-        matcher.addURI(AUTHORITY, PROVIDER_NAME, CODE_LIST);
-        matcher.addURI(AUTHORITY, PROVIDER_NAME + "/#", CODE_SINGLE);
+        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, null, CODE_LIST);
+        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, "#", CODE_SINGLE);
     }
 
     public static Uri getContentUri() {
-        return Uri.parse("content://" + AUTHORITY + "/" + PROVIDER_NAME);
+        return Uri.parse("content://" + AUTHORITY + "." + PROVIDER_NAME);
     }
 
     public static Uri getContentUri(long repoId) {
@@ -226,8 +243,8 @@ public class RepoProvider extends FDroidProvider {
                 break;
 
             case CODE_SINGLE:
-                selection = ( selection == null ? "" : selection ) +
-                        "_ID = " + uri.getLastPathSegment();
+                selection = ( selection == null ? "" : selection + " AND " ) +
+                        DataColumns._ID + " = " + uri.getLastPathSegment();
                 break;
 
             default:
@@ -287,7 +304,7 @@ public class RepoProvider extends FDroidProvider {
                 return 0;
 
             case CODE_SINGLE:
-                where = ( where == null ? "" : where ) +
+                where = ( where == null ? "" : where + " AND " ) +
                         "_ID = " + uri.getLastPathSegment();
                 break;
 

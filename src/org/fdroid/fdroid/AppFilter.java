@@ -21,28 +21,25 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import org.fdroid.fdroid.data.App;
 
 public class AppFilter {
 
-    boolean pref_rooted;
-
-    public AppFilter(Context ctx) {
-
-        // Read preferences and cache them so we can do quick lookups.
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(ctx);
-        pref_rooted = prefs.getBoolean(Preferences.PREF_ROOTED, true);
-    }
-
     // Return true if the given app should be filtered out based on user
     // preferences, and false otherwise.
-    public boolean filter(DB.App app) {
-        if (app.requirements == null) return false;
+    public boolean filter(App app) {
+
+        boolean filterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
+
+        if (app.requirements == null || !filterRequiringRoot) return false;
+        
         for (String r : app.requirements) {
-            if (r.equals("root") && !pref_rooted)
+            if (r.equals("root"))
                 return true;
         }
+
         return false;
+
     }
 
 }

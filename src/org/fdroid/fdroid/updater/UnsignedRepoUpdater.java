@@ -2,9 +2,7 @@ package org.fdroid.fdroid.updater;
 
 import android.content.Context;
 import android.util.Log;
-import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.net.Downloader;
 
 import java.io.File;
 

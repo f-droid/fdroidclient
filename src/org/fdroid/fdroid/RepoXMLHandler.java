@@ -20,6 +20,8 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.updater.RepoUpdater;
 import org.xml.sax.Attributes;
@@ -27,20 +29,18 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RepoXMLHandler extends DefaultHandler {
 
     // The repo we're processing.
     private Repo repo;
 
-    private Map<String, DB.App> apps;
-    private List<DB.App> appsList;
+    private List<App> apps = new ArrayList<App>();
+    private List<Apk> apksList = new ArrayList<Apk>();
 
-    private DB.App curapp = null;
-    private DB.Apk curapk = null;
+    private App curapp = null;
+    private Apk curapk = null;
     private StringBuilder curchars = new StringBuilder();
 
     // After processing the XML, these will be -1 if the index didn't specify
@@ -63,15 +63,20 @@ public class RepoXMLHandler extends DefaultHandler {
 
     private int totalAppCount;
 
-    public RepoXMLHandler(Repo repo, List<DB.App> appsList, ProgressListener listener) {
+    public RepoXMLHandler(Repo repo, ProgressListener listener) {
         this.repo = repo;
-        this.apps = new HashMap<String, DB.App>();
-        for (DB.App app : appsList) this.apps.put(app.id, app);
-        this.appsList = appsList;
         pubkey = null;
         name = null;
         description = null;
         progressListener = listener;
+    }
+
+    public List<App> getApps() {
+        return apps;
+    }
+
+    public List<Apk> getApks() {
+        return apksList;
     }
 
     public int getMaxAge() { return maxage; }
@@ -103,21 +108,18 @@ public class RepoXMLHandler extends DefaultHandler {
         }
 
         if (curel.equals("application") && curapp != null) {
-
-            // If we already have this application (must be from scanning a
-            // different repo) then just merge in the apks.
-            DB.App app = apps.get(curapp.id);
-            if (app != null) {
-                app.apks.addAll(curapp.apks);
-            } else {
-                appsList.add(curapp);
-                apps.put(curapp.id, curapp);
-            }
-
+            apps.add(curapp);
             curapp = null;
-
+            // If the app id is already present in this apps list, then it
+            // means the same index file has a duplicate app, which should
+            // not be allowed.
+            // However, I'm thinking that it should be unefined behaviour,
+            // because it is probably a bug in the fdroid server that made it
+            // happen, and I don't *think* it will crash the client, because
+            // the first app will insert, the second one will update the newly
+            // inserted one.
         } else if (curel.equals("package") && curapk != null && curapp != null) {
-            curapp.apks.add(curapk);
+            apksList.add(curapk);
             curapk = null;
         } else if (curapk != null && str != null) {
             if (curel.equals("version")) {
@@ -130,19 +132,19 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             } else if (curel.equals("size")) {
                 try {
-                    curapk.detail_size = Integer.parseInt(str);
+                    curapk.size = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
-                    curapk.detail_size = 0;
+                    curapk.size = 0;
                 }
             } else if (curel.equals("hash")) {
                 if (hashType == null || hashType.equals("md5")) {
-                    if (curapk.detail_hash == null) {
-                        curapk.detail_hash = str;
-                        curapk.detail_hashType = "MD5";
+                    if (curapk.hash == null) {
+                        curapk.hash = str;
+                        curapk.hashType = "MD5";
                     }
                 } else if (hashType.equals("sha256")) {
-                    curapk.detail_hash = str;
-                    curapk.detail_hashType = "SHA-256";
+                    curapk.hash = str;
+                    curapk.hashType = "SHA-256";
                 }
             } else if (curel.equals("sig")) {
                 curapk.sig = str;
@@ -158,17 +160,17 @@ public class RepoXMLHandler extends DefaultHandler {
                 }
             } else if (curel.equals("added")) {
                 try {
-                    curapk.added = str.length() == 0 ? null : DB.DATE_FORMAT
+                    curapk.added = str.length() == 0 ? null : Utils.DATE_FORMAT
                             .parse(str);
                 } catch (ParseException e) {
                     curapk.added = null;
                 }
             } else if (curel.equals("permissions")) {
-                curapk.detail_permissions = DB.CommaSeparatedList.make(str);
+                curapk.permissions = Utils.CommaSeparatedList.make(str);
             } else if (curel.equals("features")) {
-                curapk.features = DB.CommaSeparatedList.make(str);
+                curapk.features = Utils.CommaSeparatedList.make(str);
             } else if (curel.equals("nativecode")) {
-                curapk.nativecode = DB.CommaSeparatedList.make(str);
+                curapk.nativecode = Utils.CommaSeparatedList.make(str);
             }
         } else if (curapp != null && str != null) {
             if (curel.equals("name")) {
@@ -179,33 +181,33 @@ public class RepoXMLHandler extends DefaultHandler {
                 // This is the old-style description. We'll read it
                 // if present, to support old repos, but in newer
                 // repos it will get overwritten straight away!
-                curapp.detail_description = "<p>" + str + "</p>";
+                curapp.description = "<p>" + str + "</p>";
             } else if (curel.equals("desc")) {
                 // New-style description.
-                curapp.detail_description = str;
+                curapp.description = str;
             } else if (curel.equals("summary")) {
                 curapp.summary = str;
             } else if (curel.equals("license")) {
                 curapp.license = str;
             } else if (curel.equals("source")) {
-                curapp.detail_sourceURL = str;
+                curapp.sourceURL = str;
             } else if (curel.equals("donate")) {
-                curapp.detail_donateURL = str;
+                curapp.donateURL = str;
             } else if (curel.equals("bitcoin")) {
-                curapp.detail_bitcoinAddr = str;
+                curapp.bitcoinAddr = str;
             } else if (curel.equals("litecoin")) {
-                curapp.detail_litecoinAddr = str;
+                curapp.litecoinAddr = str;
             } else if (curel.equals("dogecoin")) {
-                curapp.detail_dogecoinAddr = str;
+                curapp.dogecoinAddr = str;
             } else if (curel.equals("flattr")) {
-                curapp.detail_flattrID = str;
+                curapp.flattrID = str;
             } else if (curel.equals("web")) {
-                curapp.detail_webURL = str;
+                curapp.webURL = str;
             } else if (curel.equals("tracker")) {
-                curapp.detail_trackerURL = str;
+                curapp.trackerURL = str;
             } else if (curel.equals("added")) {
                 try {
-                    curapp.added = str.length() == 0 ? null : DB.DATE_FORMAT
+                    curapp.added = str.length() == 0 ? null : Utils.DATE_FORMAT
                             .parse(str);
                 } catch (ParseException e) {
                     curapp.added = null;
@@ -213,7 +215,7 @@ public class RepoXMLHandler extends DefaultHandler {
             } else if (curel.equals("lastupdated")) {
                 try {
                     curapp.lastUpdated = str.length() == 0 ? null
-                            : DB.DATE_FORMAT.parse(str);
+                            : Utils.DATE_FORMAT.parse(str);
                 } catch (ParseException e) {
                     curapp.lastUpdated = null;
                 }
@@ -226,11 +228,11 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.curVercode = -1;
                 }
             } else if (curel.equals("categories")) {
-                curapp.categories = DB.CommaSeparatedList.make(str);
+                curapp.categories = Utils.CommaSeparatedList.make(str);
             } else if (curel.equals("antifeatures")) {
-                curapp.antiFeatures = DB.CommaSeparatedList.make(str);
+                curapp.antiFeatures = Utils.CommaSeparatedList.make(str);
             } else if (curel.equals("requirements")) {
-                curapp.requirements = DB.CommaSeparatedList.make(str);
+                curapp.requirements = Utils.CommaSeparatedList.make(str);
             }
         } else if (curel.equals("description")) {
             description = str;
@@ -269,8 +271,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 description = dc;
 
         } else if (localName.equals("application") && curapp == null) {
-            curapp = new DB.App();
-            curapp.detail_Populated = true;
+            curapp = new App();
             curapp.id = attributes.getValue("", "id");
             Bundle progressData = RepoUpdater.createProgressData(repo.address);
             progressCounter ++;
@@ -280,7 +281,7 @@ public class RepoXMLHandler extends DefaultHandler {
                     totalAppCount, progressData));
 
         } else if (localName.equals("package") && curapp != null && curapk == null) {
-            curapk = new DB.Apk();
+            curapk = new Apk();
             curapk.id = curapp.id;
             curapk.repo = repo.getId();
             hashType = null;

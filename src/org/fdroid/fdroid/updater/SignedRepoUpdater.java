@@ -2,7 +2,6 @@ package org.fdroid.fdroid.updater;
 
 import android.content.Context;
 import android.util.Log;
-import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -30,7 +29,7 @@ public class SignedRepoUpdater extends RepoUpdater {
         boolean match = false;
         for (Certificate cert : certs) {
             String certdata = Hasher.hex(cert);
-            if (repo.pubkey == null && repo.fingerprint.equals(DB.calcFingerprint(cert))) {
+            if (repo.pubkey == null && repo.fingerprint.equals(Utils.calcFingerprint(cert))) {
                 repo.pubkey = certdata;
             }
             if (repo.pubkey != null && repo.pubkey.equals(certdata)) {

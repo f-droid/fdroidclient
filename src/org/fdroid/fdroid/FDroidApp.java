@@ -38,23 +38,19 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import org.fdroid.fdroid.Utils;
-
-import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import de.duenndns.ssl.MemorizingTrustManager;
 
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
@@ -90,6 +86,20 @@ public class FDroidApp extends Application {
         // it is more deterministic as to when this gets called...
         Preferences.setup(this);
 
+        // Set this up here, and the testing framework will override it when
+        // it gets fired up.
+        Utils.setupInstalledApkCache(new Utils.InstalledApkCache());
+
+        // If the user changes the preference to do with filtering rooted apps,
+        // it is easier to just notify a change in the app provider,
+        // so that the newly updated list will correctly filter relevant apps.
+        Preferences.get().registerAppsRequiringRootChangeListener(new Preferences.ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+            }
+        });
+
         // Clear cached apk files. We used to just remove them after they'd
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),
@@ -117,7 +127,6 @@ public class FDroidApp extends Application {
         apps = null;
         invalidApps = new ArrayList<String>();
         ctx = getApplicationContext();
-        DB.initDB(ctx);
         UpdateService.schedule(ctx);
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
@@ -179,7 +188,7 @@ public class FDroidApp extends Application {
     private Context ctx;
 
     // Global list of all known applications.
-    private List<DB.App> apps;
+    private List<App> apps;
 
     // Set when something has changed (database or installed apps) so we know
     // we should invalidate the apps.
@@ -204,61 +213,6 @@ public class FDroidApp extends Application {
     public void invalidateApp(String id) {
         Log.d("FDroid", "Invalidating "+id);
         invalidApps.add(id);
-    }
-
-    // Get a list of all known applications. Should not be called when the
-    // database is locked (i.e. between DB.getDB() and db.releaseDB(). The
-    // contents should never be modified, it's for reading only.
-    public List<DB.App> getApps() {
-
-        boolean invalid = false;
-        try {
-            appsInvalidLock.acquire();
-            invalid = appsAllInvalid;
-            if (invalid) {
-                appsAllInvalid = false;
-                Log.d("FDroid", "Dropping cached app data");
-            }
-        } catch (InterruptedException e) {
-            // Don't care
-        } finally {
-            appsInvalidLock.release();
-        }
-
-        if (apps == null || invalid) {
-            try {
-                DB db = DB.getDB();
-                apps = db.getApps(true);
-
-            } finally {
-                DB.releaseDB();
-            }
-        } else if (!invalidApps.isEmpty()) {
-            try {
-                DB db = DB.getDB();
-                apps = db.refreshApps(apps, invalidApps);
-
-                invalidApps.clear();
-            } finally {
-                DB.releaseDB();
-            }
-        }
-        if (apps == null)
-            return new ArrayList<DB.App>();
-        filterApps();
-        return apps;
-    }
-
-    public void filterApps() {
-        AppFilter appFilter = new AppFilter(ctx);
-        for (DB.App app : apps) {
-            app.filtered = appFilter.filter(app);
-
-            app.toUpdate = (app.hasUpdates
-                    && !app.ignoreAllUpdates
-                    && app.curApk.vercode > app.ignoreThisUpdate
-                    && !app.filtered);
-        }
     }
 
 }

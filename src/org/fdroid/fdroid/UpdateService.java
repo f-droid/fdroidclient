@@ -18,40 +18,25 @@
 
 package org.fdroid.fdroid;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
-import android.app.AlarmManager;
-import android.app.IntentService;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.app.*;
+import android.content.*;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Parcelable;
-import android.os.ResultReceiver;
-import android.os.SystemClock;
+import android.net.Uri;
+import android.os.*;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
+import org.fdroid.fdroid.data.*;
+import org.fdroid.fdroid.updater.RepoUpdater;
 
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
-
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.updater.RepoUpdater;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
@@ -202,16 +187,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         return receiver == null;
     }
 
-    // Get the number of apps that have updates available.
-    public int getNumUpdates(List<DB.App> apps) {
-        int count = 0;
-        for (DB.App app : apps) {
-            if (app.toUpdate)
-                count++;
-        }
-        return count;
-    }
-
     @Override
     protected void onHandleIntent(Intent intent) {
 
@@ -255,20 +230,113 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 Log.d("FDroid", "Unscheduled (manually requested) update");
             }
-            errmsg = updateRepos(address);
-            if (TextUtils.isEmpty(errmsg)) {
+
+            // Grab some preliminary information, then we can release the
+            // database while we do all the downloading, etc...
+            int updates = 0;
+            List<Repo> repos = RepoProvider.Helper.all(getContentResolver());
+
+            // Process each repo...
+            Map<String, App> appsToUpdate = new HashMap<String, App>();
+            List<Apk> apksToUpdate = new ArrayList<Apk>();
+            List<Repo> unchangedRepos = new ArrayList<Repo>();
+            List<Repo> updatedRepos = new ArrayList<Repo>();
+            List<Repo> disabledRepos = new ArrayList<Repo>();
+            boolean success = true;
+            boolean changes = false;
+            for (Repo repo : repos) {
+
+                if (!repo.inuse) {
+                    disabledRepos.add(repo);
+                    continue;
+                } else if (!TextUtils.isEmpty(address) && !repo.address.equals(address)) {
+                    unchangedRepos.add(repo);
+                    continue;
+                }
+
+                sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
+                RepoUpdater updater = RepoUpdater.createUpdaterFor(getBaseContext(), repo);
+                updater.setProgressListener(this);
+                try {
+                    updater.update();
+                    if (updater.hasChanged()) {
+                        for (App app : updater.getApps()) {
+                            appsToUpdate.put(app.id, app);
+                        }
+                        apksToUpdate.addAll(updater.getApks());
+                        updatedRepos.add(repo);
+                        changes = true;
+                    } else {
+                        unchangedRepos.add(repo);
+                    }
+                } catch (RepoUpdater.UpdateException e) {
+                    errmsg += (errmsg.length() == 0 ? "" : "\n") + e.getMessage();
+                    Log.e("FDroid", "Error updating repository " + repo.address + ": " + e.getMessage());
+                    Log.e("FDroid", Log.getStackTraceString(e));
+                }
+            }
+
+            if (!changes && success) {
+                Log.d("FDroid",
+                        "Not checking app details or compatibility, " +
+                                "because all repos were up to date.");
+            } else if (changes && success) {
+
+                sendStatus(STATUS_INFO,
+                        getString(R.string.status_checking_compatibility));
+
+                List<App> listOfAppsToUpdate = new ArrayList<App>();
+                listOfAppsToUpdate.addAll(appsToUpdate.values());
+
+                calcCompatibilityFlags(this, apksToUpdate, appsToUpdate);
+                calcIconUrls(this, apksToUpdate, appsToUpdate, repos);
+                calcCurrentApk(apksToUpdate, appsToUpdate);
+
+                int totalInsertsUpdates = listOfAppsToUpdate.size() + apksToUpdate.size();
+                updateOrInsertApps(listOfAppsToUpdate, totalInsertsUpdates, 0);
+                updateOrInsertApks(apksToUpdate, totalInsertsUpdates, listOfAppsToUpdate.size());
+                removeApksFromRepos(disabledRepos);
+                removeApksNoLongerInRepo(listOfAppsToUpdate, updatedRepos);
+                removeAppsWithoutApks();
+                notifyContentProviders();
+            }
+
+            if (success && changes && prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
+                int updateCount = 0;
+                for (App app : appsToUpdate.values()) {
+                    if (app.hasUpdates(this)) {
+                        updateCount ++;
+                    }
+                }
+
+                if (updateCount > 0) {
+                    showAppUpdatesNotification(updateCount);
+                }
+            }
+
+            if (!success) {
+                if (errmsg.length() == 0)
+                    errmsg = "Unknown error";
+                sendStatus(STATUS_ERROR, errmsg);
+            } else {
                 Editor e = prefs.edit();
                 e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
                 e.commit();
+                if (changes) {
+                    sendStatus(STATUS_COMPLETE_WITH_CHANGES);
+                } else {
+                    sendStatus(STATUS_COMPLETE_AND_SAME);
+                }
             }
+
         } catch (Exception e) {
             Log.e("FDroid",
                     "Exception during update processing:\n"
                             + Log.getStackTraceString(e));
-            if (TextUtils.isEmpty(errmsg))
+            if (errmsg.length() == 0)
                 errmsg = "Unknown error";
             sendStatus(STATUS_ERROR, errmsg);
-       } finally {
+        } finally {
             Log.d("FDroid", "Update took "
                     + ((System.currentTimeMillis() - startTime) / 1000)
                     + " seconds.");
@@ -276,147 +344,112 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    protected String updateRepos(String address) throws Exception {
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        boolean notify = prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false);
-        String errmsg = "";
-        // Grab some preliminary information, then we can release the
-        // database while we do all the downloading, etc...
-        int updates = 0;
-        List<Repo> repos;
-        List<DB.App> apps;
-        try {
-            DB db = DB.getDB();
-            apps = db.getApps(false);
-        } finally {
-            DB.releaseDB();
-        }
+    private void notifyContentProviders() {
+        getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+        getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
+    }
 
-        repos = RepoProvider.Helper.all(getContentResolver());
-
-        // Process each repo...
-        List<DB.App> updatingApps = new ArrayList<DB.App>();
-        Set<Long> keeprepos = new TreeSet<Long>();
-        boolean changes = false;
-        boolean update;
-        for (Repo repo : repos) {
-            if (!repo.inuse)
-                continue;
-            // are we updating all repos, or just one?
-            if (TextUtils.isEmpty(address)) {
-                update = true;
+    private static void calcCompatibilityFlags(Context context, List<Apk> apks,
+                                              Map<String, App> apps) {
+        CompatibilityChecker checker = new CompatibilityChecker(context);
+        for (Apk apk : apks) {
+            List<String> reasons = checker.getIncompatibleReasons(apk);
+            if (reasons.size() > 0) {
+                apk.compatible = false;
+                apk.incompatible_reasons = Utils.CommaSeparatedList.make(reasons);
             } else {
-                // if only updating one repo, mark the rest as keepers
-                if (address.equals(repo.address)) {
-                    update = true;
+                apk.compatible = true;
+                apk.incompatible_reasons = null;
+                apps.get(apk.id).compatible = true;
+            }
+        }
+    }
+
+    /**
+     * Get the current version - this will be one of the Apks from 'apks'.
+     * Can return null if there are no available versions.
+     * This should be the 'current' version, as in the most recent stable
+     * one, that most users would want by default. It might not be the
+     * most recent, if for example there are betas etc.
+     */
+    private static void calcCurrentApk(List<Apk> apks, Map<String,App> apps ) {
+        for ( App app : apps.values() ) {
+            List<Apk> apksForApp = new ArrayList<Apk>();
+            for (Apk apk : apks) {
+                if (apk.id.equals(app.id)) {
+                    apksForApp.add(apk);
+                }
+            }
+            calcCurrentApkForApp(app, apksForApp);
+        }
+    }
+
+    private static void calcCurrentApkForApp(App app, List<Apk> apksForApp) {
+        Apk latestApk = null;
+        // Try and return the real current version first. It will find the
+        // closest version smaller than the curVercode, being the same
+        // vercode if it exists.
+        if (app.curVercode > 0) {
+            int latestcode = -1;
+            for (Apk apk : apksForApp) {
+                if ((!app.compatible || apk.compatible)
+                        && apk.vercode <= app.curVercode
+                        && apk.vercode > latestcode) {
+                    latestApk = apk;
+                    latestcode = apk.vercode;
+                }
+            }
+        } else if (app.curVercode == -1) {
+            // If the current version was not set we return the most recent apk.
+            int latestCode = -1;
+            for (Apk apk : apksForApp) {
+                if ((!app.compatible || apk.compatible)
+                        && apk.vercode > latestCode) {
+                    latestApk = apk;
+                    latestCode = apk.vercode;
+                }
+            }
+        }
+
+        if (latestApk != null) {
+            app.curVercode = latestApk.vercode;
+            app.curVersion = latestApk.version;
+        }
+    }
+
+    private static void calcIconUrls(Context context, List<Apk> apks,
+                                     Map<String, App> apps, List<Repo> repos) {
+        String iconsDir = Utils.getIconsDir(context);
+        Log.d("FDroid", "Density-specific icons dir is " + iconsDir);
+        for (App app : apps.values()) {
+            if (app.iconUrl == null && app.icon != null) {
+                calcIconUrl(iconsDir, app, apks, repos);
+            }
+        }
+    }
+
+    private static void calcIconUrl(String iconsDir, App app,
+                                    List<Apk> allApks, List<Repo> repos) {
+        List<Apk> apksForApp = new ArrayList<Apk>();
+        for (Apk apk : allApks) {
+            if (apk.id.equals(app.id)) {
+                apksForApp.add(apk);
+            }
+        }
+
+        Collections.sort(apksForApp);
+        for (int i = apksForApp.size() - 1; i >= 0; i --) {
+            Apk apk = apksForApp.get(i);
+            for (Repo repo : repos) {
+                if (repo.getId() != apk.repo) continue;
+                if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
+                    app.iconUrl = repo.address + iconsDir + app.icon;
                 } else {
-                    keeprepos.add(repo.getId());
-                    update = false;
+                    app.iconUrl = repo.address + "/icons/" + app.icon;
                 }
-            }
-            if (!update)
-                continue;
-            sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
-            RepoUpdater updater = RepoUpdater.createUpdaterFor(getBaseContext(), repo);
-            updater.setProgressListener(this);
-            try {
-                updater.update();
-                if (updater.hasChanged()) {
-                    updatingApps.addAll(updater.getApps());
-                    changes = true;
-                } else {
-                    keeprepos.add(repo.getId());
-                }
-            } catch (RepoUpdater.UpdateException e) {
-                errmsg += (errmsg.length() == 0 ? "" : "\n") + e.getMessage();
-                Log.e("FDroid", "Error updating repository " + repo.address + ": " + e.getMessage());
-                Log.e("FDroid", Log.getStackTraceString(e));
+                return;
             }
         }
-
-        boolean success = true;
-        if (!changes) {
-            Log.d("FDroid", "Not checking app details or compatibility, " +
-                    "because all repos were up to date.");
-        } else {
-            sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
-
-            DB db = DB.getDB();
-            try {
-
-                // Need to flag things we're keeping despite having received
-                // no data about during the update. (i.e. stuff from a repo
-                // that we know is unchanged due to the etag)
-                for (long keep : keeprepos) {
-                    for (DB.App app : apps) {
-                        boolean keepapp = false;
-                        for (DB.Apk apk : app.apks) {
-                            if (apk.repo == keep) {
-                                keepapp = true;
-                                break;
-                            }
-                        }
-                        if (keepapp) {
-                            DB.App app_k = null;
-                            for (DB.App app2 : apps) {
-                                if (app2.id.equals(app.id)) {
-                                    app_k = app2;
-                                    break;
-                                }
-                            }
-                            if (app_k == null) {
-                                updatingApps.add(app);
-                                app_k = app;
-                            }
-                            app_k.updated = true;
-                            db.populateDetails(app_k, keep);
-                            for (DB.Apk apk : app.apks)
-                                if (apk.repo == keep)
-                                    apk.updated = true;
-                        }
-                    }
-                }
-
-                db.beginUpdate(apps);
-                for (DB.App app : updatingApps) {
-                    db.updateApplication(app);
-                }
-                db.endUpdate();
-            } catch (Exception ex) {
-                db.cancelUpdate();
-                Log.e("FDroid", "Exception during update processing:\n"
-                        + Log.getStackTraceString(ex));
-                errmsg = "Exception during processing - " + ex.getMessage();
-                success = false;
-            } finally {
-                DB.releaseDB();
-            }
-        }
-
-        if (success && changes) {
-            ((FDroidApp) getApplication()).invalidateAllApps();
-            if (notify) {
-                apps = ((FDroidApp) getApplication()).getApps();
-                updates = getNumUpdates(apps);
-            }
-            if (notify && updates > 0)
-                showAppUpdatesNotification(updates);
-        }
-
-        if (success) {
-            if (changes) {
-                sendStatus(STATUS_COMPLETE_WITH_CHANGES);
-            } else {
-                sendStatus(STATUS_COMPLETE_AND_SAME);
-            }
-        } else {
-            if (TextUtils.isEmpty(errmsg))
-                errmsg = "Unknown error";
-            sendStatus(STATUS_ERROR, errmsg);
-        }
-
-        return errmsg;
     }
 
     private void showAppUpdatesNotification(int updates) throws Exception {
@@ -445,6 +478,209 @@ public class UpdateService extends IntentService implements ProgressListener {
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         nm.notify(1, builder.build());
     }
+
+    private List<String> getKnownAppIds(List<App> apps) {
+        List<String> knownAppIds = new ArrayList<String>();
+        if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
+            int middle = apps.size() / 2;
+            List<App> apps1 = apps.subList(0, middle);
+            List<App> apps2 = apps.subList(middle, apps.size());
+            knownAppIds.addAll(getKnownAppIds(apps1));
+            knownAppIds.addAll(getKnownAppIds(apps2));
+        } else {
+            knownAppIds.addAll(getKnownAppIdsFromProvider(apps));
+        }
+        return knownAppIds;
+    }
+
+    /**
+     * Looks in the database to see which apps we already know about. Only
+     * returns ids of apps that are in the database if they are in the "apps"
+     * array.
+     */
+    private List<String> getKnownAppIdsFromProvider(List<App> apps) {
+
+        Uri uri = AppProvider.getContentUri(apps);
+        String[] fields = new String[] { AppProvider.DataColumns.APP_ID };
+        Cursor cursor = getContentResolver().query(uri, fields, null, null, null);
+
+        int knownIdCount = cursor != null ? cursor.getCount() : 0;
+        List<String> knownIds = new ArrayList<String>(knownIdCount);
+        if (knownIdCount > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                knownIds.add(cursor.getString(0));
+                cursor.moveToNext();
+            }
+        }
+
+        return knownIds;
+    }
+
+    /**
+     * If you call this with too many apks, then it will likely hit limit of
+     * parameters allowed for sqlite3 query. Rather, you should use
+     * {@link org.fdroid.fdroid.UpdateService#getKnownApks(java.util.List)}
+     * instead, which will only call this with the right number of apks at
+     * a time.
+     * @see org.fdroid.fdroid.UpdateService#getKnownAppIds(java.util.List)
+     */
+    private List<Apk> getKnownApksFromProvider(List<Apk> apks) {
+        String[] fields = {
+            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.VERSION,
+            ApkProvider.DataColumns.VERSION_CODE
+        };
+        return ApkProvider.Helper.knownApks(getContentResolver(), apks, fields);
+    }
+
+    private void updateOrInsertApps(List<App> appsToUpdate, int totalUpdateCount, int currentCount) {
+
+        ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
+        List<String> knownAppIds = getKnownAppIds(appsToUpdate);
+        for (App a : appsToUpdate) {
+            boolean known = false;
+            for (String knownId : knownAppIds) {
+                if (knownId.equals(a.id)) {
+                    known = true;
+                    break;
+                }
+            }
+
+            if (known) {
+                operations.add(updateExistingApp(a));
+            } else {
+                operations.add(insertNewApp(a));
+            }
+        }
+
+        Log.d("FDroid", "Updating/inserting " + operations.size() + " apps.");
+        try {
+            executeBatchWithStatus(AppProvider.getAuthority(), operations, currentCount, totalUpdateCount);
+        } catch (RemoteException e) {
+            Log.e("FDroid", e.getMessage());
+        } catch (OperationApplicationException e) {
+            Log.e("FDroid", e.getMessage());
+        }
+    }
+
+    private void executeBatchWithStatus(String providerAuthority,
+                                        ArrayList<ContentProviderOperation> operations,
+                                        int currentCount,
+                                        int totalUpdateCount)
+            throws RemoteException, OperationApplicationException {
+        int i = 0;
+        while (i < operations.size()) {
+            int count = Math.min(operations.size() - i, 100);
+            ArrayList<ContentProviderOperation> o = new ArrayList<ContentProviderOperation>(operations.subList(i, i + count));
+            sendStatus(STATUS_INFO, getString(
+                R.string.status_inserting,
+                (int)((double)(currentCount + i) / totalUpdateCount * 100)));
+            getContentResolver().applyBatch(providerAuthority, o);
+            i += 100;
+        }
+    }
+
+    /**
+     * Return list of apps from "fromApks" which are already in the database.
+     */
+    private List<Apk> getKnownApks(List<Apk> apks) {
+        List<Apk> knownApks = new ArrayList<Apk>();
+        if (apks.size() > ApkProvider.MAX_APKS_TO_QUERY) {
+            int middle = apks.size() / 2;
+            List<Apk> apks1 = apks.subList(0, middle);
+            List<Apk> apks2 = apks.subList(middle, apks.size());
+            knownApks.addAll(getKnownApks(apks1));
+            knownApks.addAll(getKnownApks(apks2));
+        } else {
+            knownApks.addAll(getKnownApksFromProvider(apks));
+        }
+        return knownApks;
+    }
+
+    private void updateOrInsertApks(List<Apk> apksToUpdate, int totalApksAppsCount, int currentCount) {
+
+        ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
+
+        List<Apk> knownApks = getKnownApks(apksToUpdate);
+        for (Apk apk : apksToUpdate) {
+            boolean known = false;
+            for (Apk knownApk : knownApks) {
+                if (knownApk.id.equals(apk.id) && knownApk.version.equals(knownApk.version)) {
+                    known = true;
+                    break;
+                }
+            }
+
+            if (known) {
+                operations.add(updateExistingApk(apk));
+            } else {
+                operations.add(insertNewApk(apk));
+            }
+        }
+
+        Log.d("FDroid", "Updating/inserting " + operations.size() + " apks.");
+        try {
+            executeBatchWithStatus(ApkProvider.getAuthority(), operations, currentCount, totalApksAppsCount);
+        } catch (RemoteException e) {
+            Log.e("FDroid", e.getMessage());
+        } catch (OperationApplicationException e) {
+            Log.e("FDroid", e.getMessage());
+        }
+    }
+
+    private ContentProviderOperation updateExistingApk(Apk apk) {
+        Uri uri = ApkProvider.getContentUri(apk);
+        ContentValues values = apk.toContentValues();
+        return ContentProviderOperation.newUpdate(uri).withValues(values).build();
+    }
+
+    private ContentProviderOperation insertNewApk(Apk apk) {
+        ContentValues values = apk.toContentValues();
+        Uri uri = ApkProvider.getContentUri();
+        return ContentProviderOperation.newInsert(uri).withValues(values).build();
+    }
+
+    private ContentProviderOperation updateExistingApp(App app) {
+        Uri uri = AppProvider.getContentUri(app);
+        ContentValues values = app.toContentValues();
+        return ContentProviderOperation.newUpdate(uri).withValues(values).build();
+    }
+
+    private ContentProviderOperation insertNewApp(App app) {
+        ContentValues values = app.toContentValues();
+        Uri uri = AppProvider.getContentUri();
+        return ContentProviderOperation.newInsert(uri).withValues(values).build();
+    }
+
+    /**
+     * If a repo was updated (i.e. it is in use, and the index has changed
+     * since last time we did an update), then we want to remove any apks that
+     * belong to the repo which are not in the current list of apks that were
+     * retrieved.
+     */
+    private void removeApksNoLongerInRepo(List<App> appsToUpdate,
+                                          List<Repo> updatedRepos) {
+        for (Repo repo : updatedRepos) {
+            Log.d("FDroid", "Removing apks no longer in repo " + repo.address);
+            // TODO: Implement
+        }
+
+    }
+
+    private void removeApksFromRepos(List<Repo> repos) {
+        for (Repo repo : repos) {
+            Log.d("FDroid", "Removing apks from repo " + repo.address);
+            Uri uri = ApkProvider.getRepoUri(repo.getId());
+            getContentResolver().delete(uri, null, null);
+        }
+    }
+
+    private void removeAppsWithoutApks() {
+        Log.d("FDroid", "Removing aps that don't have any apks");
+        getContentResolver().delete(AppProvider.getNoApksUri(), null, null);
+    }
+
 
     /**
      * Received progress event from the RepoXMLHandler. It could be progress

@@ -18,12 +18,10 @@
 
 package org.fdroid.fdroid;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +35,11 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 
 import org.fdroid.fdroid.compat.ActionBarCompat;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
+import org.fdroid.fdroid.views.fragments.AppListFragment;
 
 public class SearchResults extends ListActivity {
 
@@ -46,7 +47,7 @@ public class SearchResults extends ListActivity {
 
     private static final int SEARCH = Menu.FIRST;
 
-    private AppListAdapter applist;
+    private AppListAdapter adapter;
 
     protected String getQuery() {
         Intent intent = getIntent();
@@ -73,7 +74,6 @@ public class SearchResults extends ListActivity {
 
         super.onCreate(savedInstanceState);
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
-        applist = new AvailableAppListAdapter(this);
         setContentView(R.layout.searchresults);
 
         // Start a search by just typing
@@ -102,53 +102,32 @@ public class SearchResults extends ListActivity {
         if (query == null || query.length() == 0)
             finish();
 
-        List<String> matchingids = new ArrayList<String>();
-        try {
-            DB db = DB.getDB();
-            matchingids = db.doSearch(query.trim());
-        } catch (Exception ex) {
-            Log.d("FDroid", "Search failed - " + ex.getMessage());
-        } finally {
-            DB.releaseDB();
-        }
-
-        List<DB.App> apps = new ArrayList<DB.App>();
-        List<DB.App> allApps = ((FDroidApp) getApplication()).getApps();
-        for (DB.App app : allApps) {
-            for (String id : matchingids) {
-                if (id.equals(app.id)) {
-                    apps.add(app);
-                    break;
-                }
-            }
-        }
+        Cursor cursor = getContentResolver().query(
+            AppProvider.getSearchUri(query), AppListFragment.APP_PROJECTION,
+            null, null, AppListFragment.APP_SORT);
 
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
-        if (apps.size() == 0) {
+        int count = cursor != null ? cursor.getCount() : 0;
+        if (count == 0) {
             headertext = getString(R.string.searchres_noapps, query);
-        } else if (apps.size() == 1) {
+        } else if (count == 1) {
             headertext = getString(R.string.searchres_oneapp, query);
         } else {
-            headertext = getString(R.string.searchres_napps, apps.size(), query);
+            headertext = getString(R.string.searchres_napps, count, query);
         }
         tv.setText(headertext);
-        Log.d("FDroid", "Search for '" + query + "' returned " + apps.size()
-                + " results");
-        applist.clear();
-        for (DB.App app : apps) {
-            applist.addItem(app);
-        }
-        getListView().setFastScrollEnabled(true);
-        applist.notifyDataSetChanged();
-        setListAdapter(applist);
+        Log.d("FDroid", "Search for '" + query + "' returned " + count + " results");
 
+        adapter = new AvailableAppListAdapter(this, cursor);
+        getListView().setFastScrollEnabled(true);
+        setListAdapter(adapter);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        final DB.App app;
-        app = (DB.App) applist.getItem(position);
+        final App app;
+        app = new App((Cursor) adapter.getItem(position));
 
         Intent intent = new Intent(this, AppDetails.class);
         intent.putExtra("appid", app.id);

@@ -2,12 +2,13 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
 import android.util.Log;
-import org.fdroid.fdroid.DB;
-import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_REPO = "fdroid_repo";
 
+    // The TABLE_APK table stores details of all the application versions we
+    // know about. Each relates directly back to an entry in TABLE_APP.
+    // This information is retrieved from the repositories.
+    public static final String TABLE_APK = "fdroid_apk";
+
+
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (_id integer primary key, "
             + "address text not null, "
@@ -27,33 +34,59 @@ public class DBHelper extends SQLiteOpenHelper {
             + "version integer not null default 0, "
             + "lastetag text, lastUpdated string);";
 
-    private static final String CREATE_TABLE_APK = "create table " + DB.TABLE_APK
-            + " ( " + "id text not null, " + "version text not null, "
-            + "repo integer not null, " + "hash text not null, "
-            + "vercode int not null," + "apkName text not null, "
-            + "size int not null," + "sig string," + "srcname string,"
-            + "minSdkVersion integer," + "permissions string,"
-            + "features string," + "nativecode string,"
-            + "hashType string," + "added string,"
-            + "compatible int not null," + "primary key(id,vercode));";
+    private static final String CREATE_TABLE_APK =
+            "CREATE TABLE " + TABLE_APK + " ( "
+            + "id text not null, "
+            + "version text not null, "
+            + "repo integer not null, "
+            + "hash text not null, "
+            + "vercode int not null,"
+            + "apkName text not null, "
+            + "size int not null, "
+            + "sig string, "
+            + "srcname string, "
+            + "minSdkVersion integer, "
+            + "permissions string, "
+            + "features string, "
+            + "nativecode string, "
+            + "hashType string, "
+            + "added string, "
+            + "compatible int not null, "
+            + "incompatibleReasons text, "
+            + "primary key(id, vercode)"
+            + ");";
 
-    private static final String CREATE_TABLE_APP = "create table " + DB.TABLE_APP
-            + " ( " + "id text not null, " + "name text not null, "
-            + "summary text not null, " + "icon text, "
-            + "description text not null, " + "license text not null, "
-            + "webURL text, " + "trackerURL text, " + "sourceURL text, "
-            + "curVersion text," + "curVercode integer,"
-            + "antiFeatures string," + "donateURL string,"
-            + "bitcoinAddr string," + "litecoinAddr string,"
+    public static final String TABLE_APP = "fdroid_app";
+    private static final String CREATE_TABLE_APP = "CREATE TABLE " + TABLE_APP
+            + " ( "
+            + "id text not null, "
+            + "name text not null, "
+            + "summary text not null, "
+            + "icon text, "
+            + "description text not null, "
+            + "license text not null, "
+            + "webURL text, "
+            + "trackerURL text, "
+            + "sourceURL text, "
+            + "curVersion text,"
+            + "curVercode integer,"
+            + "antiFeatures string,"
+            + "donateURL string,"
+            + "bitcoinAddr string,"
+            + "litecoinAddr string,"
             + "dogecoinAddr string,"
-            + "flattrID string," + "requirements string,"
-            + "categories string," + "added string,"
-            + "lastUpdated string," + "compatible int not null,"
+            + "flattrID string,"
+            + "requirements string,"
+            + "categories string,"
+            + "added string,"
+            + "lastUpdated string,"
+            + "compatible int not null,"
             + "ignoreAllUpdates int not null,"
             + "ignoreThisUpdate int not null,"
+            + "iconUrl text, "
             + "primary key(id));";
 
-    private static final int DB_VERSION = 37;
+    private static final int DB_VERSION = 39;
 
     private Context context;
 
@@ -64,18 +97,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 37) {
+            Log.i("FDroid", "Populating repo names from the url");
             String[] columns = { "address", "_id" };
             Cursor cursor = db.query(TABLE_REPO, columns,
                     "name IS NULL OR name = ''", null, null, null, null);
-            cursor.moveToFirst();
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
                     String address = cursor.getString(0);
                     long id = cursor.getInt(1);
                     ContentValues values = new ContentValues(1);
-                    values.put("name", Repo.addressToName(address));
+                    String name = Repo.addressToName(address);
+                    values.put("name", name);
                     String[] args = { Long.toString( id ) };
+                    Log.i("FDroid", "Setting repo name to '" + name + "' for repo " + address);
                     db.update(TABLE_REPO, values, "_id = ?", args);
                     cursor.moveToNext();
                 }
@@ -87,7 +122,6 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 36) {
 
             Log.d("FDroid", "Renaming " + TABLE_REPO + ".id to _id");
-
             db.beginTransaction();
 
             try {
@@ -150,7 +184,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 context.getString(R.string.default_repo_description));
         values.put("version", 0);
         String pubkey = context.getString(R.string.default_repo_pubkey);
-        String fingerprint = DB.calcFingerprint(pubkey);
+        String fingerprint = Utils.calcFingerprint(pubkey);
         values.put("pubkey", pubkey);
         values.put("fingerprint", fingerprint);
         values.put("maxage", 0);
@@ -280,7 +314,7 @@ public class DBHelper extends SQLiteOpenHelper {
             c.close();
             for (Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
-                values.put("fingerprint", DB.calcFingerprint(repo.pubkey));
+                values.put("fingerprint", Utils.calcFingerprint(repo.pubkey));
                 db.update(TABLE_REPO, values, "address = ?", new String[] { repo.address });
             }
         }
@@ -300,6 +334,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void addLastUpdatedToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 35 && !columnExists(db, TABLE_REPO, "lastUpdated")) {
+            Log.i("FDroid", "Adding lastUpdated column to " + TABLE_REPO);
             db.execSQL("Alter table " + TABLE_REPO + " add column lastUpdated string");
         }
     }
@@ -307,18 +342,18 @@ public class DBHelper extends SQLiteOpenHelper {
     private void resetTransient(SQLiteDatabase db) {
         context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
                 .putBoolean("triedEmptyUpdate", false).commit();
-        db.execSQL("drop table " + DB.TABLE_APP);
-        db.execSQL("drop table " + DB.TABLE_APK);
+        db.execSQL("drop table " + TABLE_APP);
+        db.execSQL("drop table " + TABLE_APK);
         db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
         createAppApk(db);
     }
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
-        db.execSQL("create index app_id on " + DB.TABLE_APP + " (id);");
+        db.execSQL("create index app_id on " + TABLE_APP + " (id);");
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + DB.TABLE_APK + " (vercode);");
-        db.execSQL("create index apk_id on " + DB.TABLE_APK + " (id);");
+        db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
+        db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
     }
 
     private static boolean columnExists(SQLiteDatabase db,

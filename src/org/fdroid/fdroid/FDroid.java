@@ -25,9 +25,11 @@ import android.app.NotificationManager;
 import android.content.*;
 import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
+import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -41,6 +43,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 
 import org.fdroid.fdroid.compat.TabManager;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
 
 public class FDroid extends FragmentActivity {
@@ -58,13 +61,7 @@ public class FDroid extends FragmentActivity {
 
     private ViewPager viewPager;
 
-    private AppListManager manager = null;
-
     private TabManager tabManager = null;
-
-    public AppListManager getManager() {
-        return manager;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +69,6 @@ public class FDroid extends FragmentActivity {
         ((FDroidApp) getApplication()).applyTheme(this);
 
         super.onCreate(savedInstanceState);
-        manager = new AppListManager(this);
         setContentView(R.layout.fdroid);
         createViews();
         getTabManager().createTabs();
@@ -99,21 +95,9 @@ public class FDroid extends FragmentActivity {
             call.putExtra("appid", appid);
             startActivityForResult(call, REQUEST_APPDETAILS);
         }
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        repopulateViews();
-    }
-
-    /**
-     * Must be done *after* createViews, because it will involve a
-     * callback to update the tab label for the "update" tab. This
-     * will fail unless the tabs have actually been created.
-     */
-    protected void repopulateViews() {
-        manager.repopulateLists();
+        Uri uri = AppProvider.getContentUri();
+        getContentResolver().registerContentObserver(uri, true, new AppObserver());
     }
 
     @Override
@@ -253,8 +237,6 @@ public class FDroid extends FragmentActivity {
 
             if ((resultCode & PreferencesActivity.RESULT_RELOAD) != 0) {
                 ((FDroidApp) getApplication()).invalidateAllApps();
-            } else if ((resultCode & PreferencesActivity.RESULT_REFILTER) != 0) {
-                ((FDroidApp) getApplication()).filterApps();
             }
 
             if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
@@ -308,14 +290,7 @@ public class FDroid extends FragmentActivity {
     // is told to do the update, which will result in the database changing. The
     // UpdateReceiver class should get told when this is finished.
     public void updateRepos() {
-        UpdateService.updateNow(this).setListener(new ProgressListener() {
-            @Override
-            public void onProgress(Event event) {
-                if (event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES){
-                    repopulateViews();
-                }
-            }
-        });
+        UpdateService.updateNow(this);
     }
 
     private TabManager getTabManager() {
@@ -333,6 +308,29 @@ public class FDroid extends FragmentActivity {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
             .getSystemService(Context.NOTIFICATION_SERVICE);
         nMgr.cancel(id);
+    }
+
+    private class AppObserver extends ContentObserver {
+
+        public AppObserver() {
+            super(null);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            FDroid.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    refreshUpdateTabLabel();
+                }
+            });
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+
     }
 
 }

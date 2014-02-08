@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -20,6 +21,9 @@ public class RepoDetailsActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ((FDroidApp) getApplication()).applyTheme(this);
+
         super.onCreate(savedInstanceState);
 
         long repoId = getIntent().getLongExtra(RepoDetailsFragment.ARG_REPO_ID, 0);

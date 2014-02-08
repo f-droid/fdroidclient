@@ -37,7 +37,6 @@ public class PreferencesActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener {
 
     public static final int RESULT_RELOAD = 1;
-    public static final int RESULT_REFILTER = 2;
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
@@ -53,8 +52,7 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_CACHE_APK,
-        Preferences.PREF_EXPERT,
-        Preferences.PREF_DB_SYNC
+        Preferences.PREF_EXPERT
     };
 
     @Override
@@ -133,10 +131,6 @@ public class PreferencesActivity extends PreferenceActivity implements
         } else if (key.equals(Preferences.PREF_ROOTED)) {
             onoffSummary(key, R.string.rooted_on,
                 R.string.rooted_off);
-            if (changing) {
-                result ^= RESULT_REFILTER;
-                setResult(result);
-            }
 
         } else if (key.equals(Preferences.PREF_IGN_TOUCH)) {
             onoffSummary(key, R.string.ignoreTouch_on,
@@ -150,8 +144,6 @@ public class PreferencesActivity extends PreferenceActivity implements
             onoffSummary(key, R.string.expert_on,
                 R.string.expert_off);
 
-        } else if (key.equals(Preferences.PREF_DB_SYNC)) {
-            entrySummary(key);
         }
     }
 

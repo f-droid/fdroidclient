@@ -36,8 +36,18 @@
         android:supportsRtl="false" >
 
         <provider
-            android:authorities="org.fdroid.fdroid.data"
+            android:authorities="org.fdroid.fdroid.data.AppProvider"
+            android:name="org.fdroid.fdroid.data.AppProvider"
+            android:exported="false"/>
+
+        <provider
+            android:authorities="org.fdroid.fdroid.data.RepoProvider"
             android:name="org.fdroid.fdroid.data.RepoProvider"
+            android:exported="false"/>
+
+        <provider
+            android:authorities="org.fdroid.fdroid.data.ApkProvider"
+            android:name="org.fdroid.fdroid.data.ApkProvider"
             android:exported="false"/>
 
         <activity
