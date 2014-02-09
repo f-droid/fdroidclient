@@ -49,7 +49,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     private List<ChangeListener> compactLayoutListeners = new ArrayList<ChangeListener>();
     private List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<ChangeListener>();
-	private List<ChangeListener> updateHistoryListeners = new ArrayList<ChangeListener>();
+    private List<ChangeListener> updateHistoryListeners = new ArrayList<ChangeListener>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);
@@ -138,13 +138,13 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         }
     }
 
-	public void registerUpdateHistoryListener(ChangeListener listener) {
-		updateHistoryListeners.add(listener);
-	}
+    public void registerUpdateHistoryListener(ChangeListener listener) {
+        updateHistoryListeners.add(listener);
+    }
 
-	public void unregisterUpdateHistoryListener(ChangeListener listener) {
-		updateHistoryListeners.remove(listener);
-	}
+    public void unregisterUpdateHistoryListener(ChangeListener listener) {
+        updateHistoryListeners.remove(listener);
+    }
 
     public static interface ChangeListener {
         public void onPreferenceChange();
