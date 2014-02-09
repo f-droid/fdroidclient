@@ -82,7 +82,6 @@
   <string name="display">نمایش</string>
   <string name="expert">خارج‌سازی</string>
   <string name="search_hint">جستجوی برنامه‌ها</string>
-  <string name="db_sync_mode">حالت هماهنگی پایگاه داده‌ها</string>
   <string name="appcompatibility">هماهنگی برنامه</string>
   <string name="show_incompat_versions">نسخه‌های غیرهماهنگ</string>
   <string name="rooted">روت</string>

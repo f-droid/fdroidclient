@@ -93,7 +93,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="display">Anzeige</string>
   <string name="expert">Experte</string>
   <string name="search_hint">Anwendungen suchen</string>
-  <string name="db_sync_mode">Datenbanksynchronisierungsart</string>
   <string name="appcompatibility">Kompatibilität der Anwendung</string>
   <string name="show_incompat_versions">Inkompatible Versionen</string>
   <string name="rooted">Root</string>

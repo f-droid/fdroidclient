@@ -78,7 +78,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="antinonfreedeplist">Ta aplikacja wymaga innych, niewolnych aplikacji</string>
   <string name="expert">Ekspert</string>
   <string name="search_hint">Wyszukaj aplikacje</string>
-  <string name="db_sync_mode">Tryb synchronizacji bazy danych</string>
   <string name="appcompatibility">Kompatybilność aplikacji</string>
   <string name="rooted">Root</string>
   <string name="category_all">Wszystkie</string>

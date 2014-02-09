@@ -82,7 +82,6 @@ Vuoi aggiornarlo?</string>
   <string name="display">Mostra</string>
   <string name="expert">Esperto</string>
   <string name="search_hint">Ricerca applicazioni</string>
-  <string name="db_sync_mode">Modalità di sincronizzazione database</string>
   <string name="appcompatibility">Compatibilità applicazioni</string>
   <string name="show_incompat_versions">Versioni incompatibili</string>
   <string name="rooted">Amministratore</string>

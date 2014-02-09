@@ -92,7 +92,6 @@ Vill du uppdatera dem?</string>
   <string name="display">Visning</string>
   <string name="expert">Expert</string>
   <string name="search_hint">Sök program</string>
-  <string name="db_sync_mode">Databassynkroniseringsläge</string>
   <string name="appcompatibility">Programkompatibilitet</string>
   <string name="show_incompat_versions">Inkompatibla versioner</string>
   <string name="rooted">Root</string>

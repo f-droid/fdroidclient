@@ -82,7 +82,6 @@
   <string name="display">Εμφάνιση</string>
   <string name="expert">Για Προχωρημένους</string>
   <string name="search_hint">Αναζήτηση εφαρμογών</string>
-  <string name="db_sync_mode">Λειτουργία συγχρονισμόυ της βάσης δεδομένων</string>
   <string name="appcompatibility">Συμβατότητα εφαμοργής</string>
   <string name="show_incompat_versions">Μη συμβατές εκδόσεις</string>
   <string name="rooted">Root</string>

@@ -70,7 +70,6 @@
   <string name="display">표시</string>
   <string name="expert">전문가</string>
   <string name="search_hint">응용 프로그램 검색</string>
-  <string name="db_sync_mode">데이터베이스 동기화 모드</string>
   <string name="appcompatibility">응용 프로그램 호환성</string>
   <string name="show_incompat_versions">호환되지 않는 버전</string>
   <string name="ignoreTouch">터치스크린 무시</string>

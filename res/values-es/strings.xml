@@ -82,7 +82,6 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="display">Mostrar</string>
   <string name="expert">Experto</string>
   <string name="search_hint">Buscar aplicaciones</string>
-  <string name="db_sync_mode">Modo síncrono de base de datos</string>
   <string name="appcompatibility">Compatibilidad de aplicaciones</string>
   <string name="show_incompat_versions">Versiones incompatibles</string>
   <string name="rooted">Root</string>

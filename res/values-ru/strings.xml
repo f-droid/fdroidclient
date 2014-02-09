@@ -70,7 +70,6 @@
   <string name="display">Вид</string>
   <string name="expert">Эксперт</string>
   <string name="search_hint">Найти приложения</string>
-  <string name="db_sync_mode">Режим синхронизации базы</string>
   <string name="appcompatibility">Совместимость приложений</string>
   <string name="rooted">Суперпользователь</string>
   <string name="ignoreTouch">Игнорировать Тачскрин</string>
