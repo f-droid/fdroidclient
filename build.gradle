@@ -29,7 +29,7 @@ android {
 			assets.srcDirs = ['assets']
 		}
 
-		instrumentTest.setRoot('tests')
+		instrumentTest.setRoot('test')
 	}
 
 	buildTypes {
