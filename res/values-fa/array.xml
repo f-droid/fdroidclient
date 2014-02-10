@@ -11,9 +11,4 @@
     <item>تاریک</item>
     <item>روشن</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>خاموش (ناامن)</item>
-    <item>عادی</item>
-    <item>کامل</item>
-  </string-array>
 </resources>

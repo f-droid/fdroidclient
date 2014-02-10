@@ -11,9 +11,4 @@
     <item>Dark</item>
     <item>Light</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Itzalita (ez da segurua)</item>
-    <item>Normala</item>
-    <item>Osoa</item>
-  </string-array>
 </resources>

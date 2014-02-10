@@ -11,9 +11,4 @@
     <item>غامق</item>
     <item>فاتح</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>معطل (غير آمن)</item>
-    <item>عادي</item>
-    <item>مكتمل</item>
-  </string-array>
 </resources>

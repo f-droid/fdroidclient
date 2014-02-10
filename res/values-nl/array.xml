@@ -11,9 +11,4 @@
     <item>Donker</item>
     <item>Licht</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Uit (onveilig)</item>
-    <item>Normaal</item>
-    <item>Vol</item>
-  </string-array>
 </resources>

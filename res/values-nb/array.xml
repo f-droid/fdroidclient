@@ -11,9 +11,4 @@
     <item>Mørk</item>
     <item>Lys</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Av (utrygt)</item>
-    <item>Normalt</item>
-    <item>Fullt</item>
-  </string-array>
 </resources>
