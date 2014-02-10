@@ -42,10 +42,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         return adapter;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout view = new LinearLayout(getActivity());
-        view.setOrientation(LinearLayout.VERTICAL);
+    private Spinner createCategorySpinner() {
 
         final List<String> categories = AppProvider.Helper.categories(getActivity());
 
@@ -53,7 +50,13 @@ public class AvailableAppsFragment extends AppListFragment implements
         // Giving it an ID lets the default save/restore state
         // functionality do its stuff.
         spinner.setId(R.id.categorySpinner);
-        spinner.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, categories));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -68,10 +71,17 @@ public class AvailableAppsFragment extends AppListFragment implements
                 getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
             }
         });
-        spinner.setPadding( 0, 0, 0, 0 );
+
+        return spinner;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        LinearLayout view = new LinearLayout(getActivity());
+        view.setOrientation(LinearLayout.VERTICAL);
 
         view.addView(
-                spinner,
+                createCategorySpinner(),
                 new ViewGroup.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT));
