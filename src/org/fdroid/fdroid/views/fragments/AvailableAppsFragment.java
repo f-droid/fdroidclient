@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.views.fragments;
 
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,11 +52,36 @@ public class AvailableAppsFragment extends AppListFragment implements
         // functionality do its stuff.
         spinner.setId(R.id.categorySpinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, categories);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                getActivity(), android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        getActivity().getContentResolver().registerContentObserver(
+                AppProvider.getContentUri(), false,
+                new ContentObserver(null) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        // Wanted to just do this update here, but android tells
+                        // me that "Only the original thread that created a view
+                        // hierarchy can touch its views."
+                        getActivity().runOnUiThread( new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.clear();
+                                adapter.addAll(AppProvider.Helper.categories(getActivity()));
+                                // adapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onChange(boolean selfChange, Uri uri) {
+                        onChange(selfChange);
+                    }
+                }
+        );
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -71,7 +97,6 @@ public class AvailableAppsFragment extends AppListFragment implements
                 getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
             }
         });
-
         return spinner;
     }
 
