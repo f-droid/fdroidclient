@@ -3,7 +3,9 @@ package org.fdroid.fdroid.views.fragments;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.LoaderManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.compat.ArrayAdapterCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
@@ -43,6 +46,36 @@ public class AvailableAppsFragment extends AppListFragment implements
         return adapter;
     }
 
+    private class CategoryObserver extends ContentObserver {
+
+        private ArrayAdapter adapter;
+
+        public CategoryObserver(ArrayAdapter<String> adapter) {
+            super(null);
+            this.adapter = adapter;
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            // Wanted to just do this update here, but android tells
+            // me that "Only the original thread that created a view
+            // hierarchy can touch its views."
+            getActivity().runOnUiThread( new Runnable() {
+                @Override
+                public void run() {
+                    adapter.clear();
+                    List<String> catList = AppProvider.Helper.categories(getActivity());
+                    ArrayAdapterCompat.addAll(adapter, catList);
+                }
+            });
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            onChange(selfChange);
+        }
+    }
+
     private Spinner createCategorySpinner() {
 
         final List<String> categories = AppProvider.Helper.categories(getActivity());
@@ -52,36 +85,14 @@ public class AvailableAppsFragment extends AppListFragment implements
         // functionality do its stuff.
         spinner.setId(R.id.categorySpinner);
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                getActivity(), android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+            getActivity(), android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
+            android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
         getActivity().getContentResolver().registerContentObserver(
-                AppProvider.getContentUri(), false,
-                new ContentObserver(null) {
-                    @Override
-                    public void onChange(boolean selfChange) {
-                        // Wanted to just do this update here, but android tells
-                        // me that "Only the original thread that created a view
-                        // hierarchy can touch its views."
-                        getActivity().runOnUiThread( new Runnable() {
-                            @Override
-                            public void run() {
-                                adapter.clear();
-                                adapter.addAll(AppProvider.Helper.categories(getActivity()));
-                                // adapter.notifyDataSetChanged();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onChange(boolean selfChange, Uri uri) {
-                        onChange(selfChange);
-                    }
-                }
-        );
+            AppProvider.getContentUri(), false, new CategoryObserver(adapter));
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
