@@ -2,13 +2,14 @@ package mock;
 
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.test.mock.MockContext;
+import android.test.mock.*;
 
 public class MockContextSwappableComponents extends MockContext {
 
     private PackageManager packageManager;
 
     private Resources resources;
+    private MockContentResolver contentResolver;
 
     public MockContextSwappableComponents setPackageManager(PackageManager pm) {
         packageManager = pm;
@@ -20,6 +21,11 @@ public class MockContextSwappableComponents extends MockContext {
         return this;
     }
 
+    public MockContextSwappableComponents setContentResolver(MockContentResolver contentResolver) {
+        this.contentResolver = contentResolver;
+        return this;
+    }
+
     @Override
     public PackageManager getPackageManager() {
         return packageManager;
@@ -28,5 +34,10 @@ public class MockContextSwappableComponents extends MockContext {
     @Override
     public Resources getResources() {
         return resources;
+    }
+
+    @Override
+    public MockContentResolver getContentResolver() {
+		return contentResolver;
     }
 }

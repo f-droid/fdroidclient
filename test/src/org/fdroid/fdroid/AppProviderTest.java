@@ -1,23 +1,30 @@
 package org.fdroid.fdroid;
 
 import android.content.ContentValues;
-import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.net.Uri;
-import android.provider.ContactsContract;
+import junit.framework.AssertionFailedError;
+import mock.MockCategoryResources;
 import mock.MockInstallablePackageManager;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
     public AppProviderTest() {
         super(AppProvider.class, AppProvider.getAuthority());
+    }
+
+    @Override
+    public void setUp() throws Exception {
+        super.setUp();
+        getSwappableContext().setResources(new MockCategoryResources());
+		getSwappableContext().setContentResolver(getMockContentResolver());
     }
 
     protected String[] getMinimalProjection() {
@@ -53,6 +60,12 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertNotNull(cursor);
     }
 
+    private void insertApps(int count) {
+        for (int i = 0; i < count; i ++) {
+            insertApp("com.example.test." + i, "Test app " + i);
+        }
+    }
+
     public void testInstalled() {
 
         Utils.clearInstalledApksCache();
@@ -60,9 +73,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         MockInstallablePackageManager pm = new MockInstallablePackageManager();
         getSwappableContext().setPackageManager(pm);
 
-        for (int i = 0; i < 100; i ++) {
-            insertApp("com.example.test." + i, "Test app " + i);
-        }
+        insertApps(100);
 
         assertAppCount(100, AppProvider.getContentUri());
         assertAppCount(0, AppProvider.getInstalledUri());
@@ -75,7 +86,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     }
 
     private void assertAppCount(int expectedCount, Uri uri) {
-        Cursor cursor = getProvider().query(uri, getMinimalProjection(), null, null, null);
+        Cursor cursor = getMockContentResolver().query(uri, getMinimalProjection(), null, null, null);
         assertNotNull(cursor);
         assertEquals(expectedCount, cursor.getCount());
     }
@@ -114,25 +125,134 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     }
 
     private Cursor queryAllApps() {
-        return getProvider().query(AppProvider.getContentUri(), getMinimalProjection(), null, null, null);
+        return getMockContentResolver().query(AppProvider.getContentUri(), getMinimalProjection(), null, null, null);
+    }
+
+    public void testCategoriesSingle() {
+        insertAppWithCategory("com.dog", "Dog", "Animal");
+        insertAppWithCategory("com.rock", "Rock", "Mineral");
+        insertAppWithCategory("com.banana", "Banana", "Vegetable");
+
+        List<String> categories = AppProvider.Helper.categories(getMockContext());
+        String[] expected = new String[] {
+			getMockContext().getResources().getString(R.string.category_whatsnew),
+			getMockContext().getResources().getString(R.string.category_recentlyupdated),
+			getMockContext().getResources().getString(R.string.category_all),
+			"Animal",
+			"Mineral",
+			"Vegetable"
+		};
+        assertContainsOnly(categories, expected);
+    }
+
+    public void testCategoriesMultiple() {
+        insertAppWithCategory("com.rock.dog", "Rock-Dog", "Mineral,Animal");
+        insertAppWithCategory("com.dog.rock.apple", "Dog-Rock-Apple", "Animal,Mineral,Vegetable");
+        insertAppWithCategory("com.banana.apple", "Banana", "Vegetable,Vegetable");
+
+        List<String> categories = AppProvider.Helper.categories(getMockContext());
+        String[] expected = new String[] {
+            getMockContext().getResources().getString(R.string.category_whatsnew),
+            getMockContext().getResources().getString(R.string.category_recentlyupdated),
+            getMockContext().getResources().getString(R.string.category_all),
+
+            "Animal",
+            "Mineral",
+            "Vegetable"
+        };
+        assertContainsOnly(categories, expected);
+
+        insertAppWithCategory("com.example.game", "Game",
+                "Running,Shooting,Jumping,Bleh,Sneh,Pleh,Blah,Test category," +
+                "The quick brown fox jumps over the lazy dog,With apostrophe's");
+
+        List<String> categoriesLonger = AppProvider.Helper.categories(getMockContext());
+        String[] expectedLonger = new String[] {
+            getMockContext().getResources().getString(R.string.category_whatsnew),
+            getMockContext().getResources().getString(R.string.category_recentlyupdated),
+            getMockContext().getResources().getString(R.string.category_all),
+
+            "Animal",
+            "Mineral",
+            "Vegetable",
+
+            "Running",
+            "Shooting",
+            "Jumping",
+            "Bleh",
+            "Sneh",
+            "Pleh",
+            "Blah",
+            "Test category",
+            "The quick brown fox jumps over the lazy dog",
+            "With apostrophe's"
+        };
+
+        assertContainsOnly(categoriesLonger, expectedLonger);
     }
 
     private void insertApp(String id, String name) {
-        ContentValues values = new ContentValues(2);
-        values.put(AppProvider.DataColumns.APP_ID, id);
-        values.put(AppProvider.DataColumns.NAME, name);
+        insertApp(id, name, new ContentValues());
+    }
 
-        // Required fields (NOT NULL in the database).
-        values.put(AppProvider.DataColumns.SUMMARY, "test summary");
-        values.put(AppProvider.DataColumns.DESCRIPTION, "test description");
-        values.put(AppProvider.DataColumns.LICENSE, "GPL?");
-        values.put(AppProvider.DataColumns.IS_COMPATIBLE, 1);
-        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, 0);
-        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, 0);
+    private void insertAppWithCategory(String id, String name,
+                                       String categories) {
+        ContentValues values = new ContentValues(1);
+        values.put(AppProvider.DataColumns.CATEGORIES, categories);
+        insertApp(id, name, values);
+    }
 
-        Uri uri = AppProvider.getContentUri();
+    private void insertApp(String id, String name,
+                           ContentValues additionalValues) {
+        TestUtils.insertApp(getMockContentResolver(), id, name, additionalValues);
+    }
 
-        getProvider().insert(uri, values);
+    private <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedContains) {
+        List<T> containsList = new ArrayList<T>(expectedContains.length);
+        Collections.addAll(containsList, expectedContains);
+        assertContainsOnly(actualList, containsList);
+    }
+
+    private <T> String listToString(List<T> list) {
+        String string = "[";
+        for (int i = 0; i < list.size(); i ++) {
+            if (i > 0) {
+                string += ", ";
+            }
+            string += list.get(i);
+        }
+        string += "]";
+        return string;
+    }
+
+    private <T extends Comparable> void assertContainsOnly(List<T> actualList, List<T> expectedContains) {
+        if (actualList.size() != expectedContains.size()) {
+            String message =
+                "List sizes don't match.\n" +
+                "Expected: " +
+                listToString(expectedContains) + "\n" +
+                "Actual:   " +
+                listToString(actualList);
+            throw new AssertionFailedError(message);
+        }
+        for (T required : expectedContains) {
+            boolean containsRequired = false;
+            for (T itemInList : actualList) {
+                if (required.equals(itemInList)) {
+                    containsRequired = true;
+                    break;
+                }
+            }
+            if (!containsRequired) {
+                String message =
+                    "List doesn't contain \"" + required + "\".\n" +
+                    "Expected: " +
+                    listToString(expectedContains) + "\n" +
+                    "Actual:   " +
+                    listToString(actualList);
+                throw new AssertionFailedError(message);
+            }
+        }
     }
 
 }
