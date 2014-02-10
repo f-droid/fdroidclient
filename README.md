@@ -25,7 +25,8 @@ Direct download
 ---------------
 
 You can [download the application](https://f-droid.org/FDroid.apk) directly
-from our site.
+from our site or [browse it in the
+repo](https://f-droid.org/app/org.fdroid.fdroid).
 
 
 Contributing
@@ -39,13 +40,10 @@ and our [Forums](https://f-droid.org/forums/).
 Translating
 -----------
 
-The `locale` dir is automatically updated via the
-[android2po](https://github.com/miracle2k/android2po) tool, and translations
-are pulled from our Pootle translation server at
-[f-droid.org/translate](https://f-droid.org/translate). You should only add or
-remove strings in the `res/values/` dir, since all the `res/values-*` dirs are
-also generated automatically.
-
+The `res/values-*` dirs are kept up to date automatically via [MediaWiki's
+Translate Extension](http://www.mediawiki.org/wiki/Extension:Translate). See
+[our translation page](https://f-droid.org/wiki/page/Special:Translate) if you
+would like to contribute.
 
 License
 -------
