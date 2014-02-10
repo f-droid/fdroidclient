@@ -416,6 +416,10 @@ public class AppProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
         }
 
+        if (AppProvider.DataColumns.NAME.equals(sortOrder)) {
+            sortOrder = " lower( " + sortOrder + " ) ";
+        }
+
         for (String field : projection) {
             if (field.equals(DataColumns._COUNT)) {
                 projection = new String[] { "COUNT(*) AS " + DataColumns._COUNT };
