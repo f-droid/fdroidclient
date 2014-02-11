@@ -76,11 +76,11 @@ public class AppProvider extends FDroidProvider {
             Collections.sort(categories);
 
             // Populate the category list with the real categories, and the
-            // locally generated meta-categories for "All", "What's New" and
-            // "Recently  Updated"...
+            // locally generated meta-categories for "What's New", "Recently
+            // Updated" and "All"...
+            categories.add(0, getCategoryAll(context));
             categories.add(0, getCategoryRecentlyUpdated(context));
             categories.add(0, getCategoryWhatsNew(context));
-            categories.add(0, getCategoryAll(context));
 
             return categories;
         }
