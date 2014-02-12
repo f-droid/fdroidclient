@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-	android:paddingBottom="10dp"
+	android:paddingTop="4dp"
+	android:paddingBottom="8dp"
 	android:baselineAligned="false"
 	android:orientation="vertical" >
 
@@ -16,7 +17,7 @@
 		android:id="@+id/appid"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:textSize="13sp" />
+		android:textSize="12sp" />
 
 	<TextView
 		android:id="@+id/signature"
@@ -37,6 +38,7 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="8sp"
+		android:textSize="13sp"
 		android:singleLine="false" />
 	
 	<TextView
@@ -51,6 +53,7 @@
 		android:id="@+id/permissions_list"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
+		android:textSize="13sp"
 		android:singleLine="false" />
 
 </LinearLayout>

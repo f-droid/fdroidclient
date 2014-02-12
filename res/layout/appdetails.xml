@@ -10,19 +10,18 @@
 		android:id="@+id/header"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:paddingBottom="4dp"
 		android:orientation="horizontal" >
 
 		<ImageView
 			android:id="@+id/icon"
 			android:layout_width="56dp"
-			android:layout_height="56dp"
+			android:layout_height="fill_parent"
 			android:padding="4dp"
 			android:scaleType="fitCenter" />
 
 		<RelativeLayout
 			android:layout_width="fill_parent"
-			android:layout_height="56dp"
+			android:layout_height="wrap_content"
 			android:padding="6dp"
 			android:orientation="vertical" >
 
@@ -34,21 +33,8 @@
 				android:layout_alignParentRight="true"
 				android:singleLine="true"
 				android:ellipsize="end"
-				android:paddingTop="3sp"
-				android:paddingBottom="3sp"
-				android:layout_marginLeft="8sp"
-				android:textSize="13sp" />
-
-			<TextView
-				android:id="@+id/categories"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:singleLine="true"
-				android:ellipsize="end"
-				android:layout_alignParentBottom="true"
-				android:layout_alignParentRight="true"
-				android:layout_marginLeft="8sp"
-				android:textSize="13sp" />
+				android:layout_marginLeft="6sp"
+				android:textSize="12sp" />
 
 			<TextView
 				android:id="@+id/title"
@@ -62,15 +48,28 @@
 				android:layout_toLeftOf="@id/license" />
 
 			<TextView
+				android:id="@+id/categories"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:singleLine="true"
+				android:ellipsize="end"
+				android:layout_alignParentRight="true"
+				android:layout_marginLeft="6sp"
+				android:layout_below="@id/title"
+				android:textSize="12sp" />
+
+			<TextView
 				android:id="@+id/status"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:singleLine="true"
 				android:ellipsize="end"
-				android:textSize="13sp"
+				android:textSize="12sp"
 				android:layout_alignParentLeft="true"
-				android:layout_alignParentBottom="true"
-				android:layout_toLeftOf="@id/categories" />
+				android:layout_toLeftOf="@id/categories"
+				android:layout_below="@id/title" />
+
+
 
 		</RelativeLayout>
 	</LinearLayout>
