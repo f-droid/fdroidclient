@@ -42,7 +42,7 @@
 
 			<TextView
 				android:id="@+id/title"
-				android:textSize="18sp"
+				android:textSize="17sp"
 				android:textStyle="bold"
 				android:singleLine="true"
 				android:ellipsize="end"
