@@ -29,9 +29,9 @@ public class AppFilter {
     // preferences, and false otherwise.
     public boolean filter(App app) {
 
-        boolean filterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
+        boolean dontFilterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
 
-        if (app.requirements == null || !filterRequiringRoot) return false;
+        if (app.requirements == null || dontFilterRequiringRoot) return false;
         
         for (String r : app.requirements) {
             if (r.equals("root"))
