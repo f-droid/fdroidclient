@@ -19,28 +19,31 @@
 
 package org.fdroid.fdroid;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
 import android.content.*;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.ViewPager;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
@@ -98,6 +101,14 @@ public class FDroid extends FragmentActivity {
 
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // RepoDetailsActivity sets a different beam, so reset here
+        if (Build.VERSION.SDK_INT >= 16)
+            setupAndroidBeam();
     }
 
     @Override
@@ -333,4 +344,21 @@ public class FDroid extends FragmentActivity {
 
     }
 
+    @TargetApi(16)
+    private void setupAndroidBeam() {
+        PackageManager pm = getPackageManager();
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        ApplicationInfo appInfo;
+        try {
+            appInfo = pm.getApplicationInfo("org.fdroid.fdroid",
+                    PackageManager.GET_META_DATA);
+            // TODO can we send the repo here also, as a file?
+            Uri uris[] = {
+                    Uri.parse("file://" + appInfo.publicSourceDir),
+            };
+            nfcAdapter.setBeamPushUris(uris, this);
+        } catch (NameNotFoundException e1) {
+            e1.printStackTrace();
+        }
+    }
 }
