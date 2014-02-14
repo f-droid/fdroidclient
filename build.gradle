@@ -21,7 +21,7 @@ android {
 	sourceSets {
 		main {
 			manifest.srcFile 'AndroidManifest.xml'
-			java.srcDirs = ['src', 'extern/Universal-Image-Loader/library/src']
+			java.srcDirs = ['src']
 			resources.srcDirs = ['src']
 			aidl.srcDirs = ['src']
 			renderscript.srcDirs = ['src']
