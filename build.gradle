@@ -12,7 +12,27 @@ apply plugin: 'android'
 dependencies {
 	compile files('libs/android-support-v4.jar')
 	compile project(':extern:AndroidPinning')
+	compile project(':extern:UniversalImageLoader:library')
 	compile project(':extern:MemorizingTrustManager')
+}
+
+project(':extern:UniversalImageLoader:library') {
+    apply plugin: 'android-library'
+
+    android {
+        compileSdkVersion 16
+        buildToolsVersion '19.0.1'
+
+        sourceSets {
+                main {
+                    manifest.srcFile 'AndroidManifest.xml'
+                    java.srcDirs = ['src']
+                    resources.srcDirs = ['src']
+                    aidl.srcDirs = ['src']
+                    renderscript.srcDirs = ['src']
+            }
+        }
+    }
 }
 
 android {
