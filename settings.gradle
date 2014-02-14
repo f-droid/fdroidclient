@@ -1,1 +1,1 @@
-include ':extern:AndroidPinning', ':extern:UniversalImageLoader'
+include ':extern:AndroidPinning', ':extern:UniversalImageLoader', ':extern:MemorizingTrustManager'
