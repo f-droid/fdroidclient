@@ -1,6 +1,10 @@
 #!/bin/bash -ex
 
-android update lib-project -p extern/Universal-Image-Loader/library
-android update lib-project -p extern/AndroidPinning
-android update lib-project -p extern/MemorizingTrustManager
-android update project -p . --name F-Droid
+android update lib-project --path extern/Universal-Image-Loader/library
+android update lib-project --path extern/AndroidPinning
+android update lib-project --path extern/MemorizingTrustManager
+android update project --path . --name F-Droid
+
+# technically optional, needed for the tests
+cd test
+android update test-project --path ./ --main ../
