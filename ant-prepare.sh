@@ -7,4 +7,4 @@ android update project --path . --name F-Droid
 
 # technically optional, needed for the tests
 cd test
-android update test-project --path ./ --main ../
+android update test-project --path . --main ../ --name test

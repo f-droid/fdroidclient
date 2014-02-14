@@ -7,5 +7,6 @@
 /build.xml
 *~
 /.idea/
+/.project
 /*.iml
 out

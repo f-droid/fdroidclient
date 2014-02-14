@@ -4,7 +4,9 @@
 /gen/
 /build/
 /.gradle/
+/build.xml
 *~
 /.idea/
+/.project
 /*.iml
 out
