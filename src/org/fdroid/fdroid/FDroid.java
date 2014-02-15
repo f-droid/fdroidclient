@@ -423,17 +423,19 @@ public class FDroid extends FragmentActivity {
     private void setupAndroidBeam() {
         PackageManager pm = getPackageManager();
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        ApplicationInfo appInfo;
-        try {
-            appInfo = pm.getApplicationInfo("org.fdroid.fdroid",
-                    PackageManager.GET_META_DATA);
-            // TODO can we send the repo here also, as a file?
-            Uri uris[] = {
-                    Uri.parse("file://" + appInfo.publicSourceDir),
-            };
-            nfcAdapter.setBeamPushUris(uris, this);
-        } catch (NameNotFoundException e1) {
-            e1.printStackTrace();
+        if (nfcAdapter != null) {
+            ApplicationInfo appInfo;
+            try {
+                appInfo = pm.getApplicationInfo("org.fdroid.fdroid",
+                        PackageManager.GET_META_DATA);
+                // TODO can we send the repo here also, as a file?
+                Uri uris[] = {
+                        Uri.parse("file://" + appInfo.publicSourceDir),
+                };
+                nfcAdapter.setBeamPushUris(uris, this);
+            } catch (NameNotFoundException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 }
