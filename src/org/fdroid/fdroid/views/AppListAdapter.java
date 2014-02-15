@@ -130,14 +130,14 @@ abstract public class AppListAdapter extends CursorAdapter {
 
     private String getVersionInfo(App app) {
 
-        if (app.curVercode <= 0) {
+        if (app.suggestedVercode <= 0) {
             return null;
         }
 
         PackageInfo installedInfo = app.getInstalledInfo(mContext);
 
         if (installedInfo == null) {
-            return ellipsize(app.curVersion, 12);
+            return ellipsize(app.getSuggestedVersion(), 12);
         }
 
         String installedVersionString = installedInfo.versionName;
@@ -145,7 +145,7 @@ abstract public class AppListAdapter extends CursorAdapter {
 
         if (app.canAndWantToUpdate(mContext) && showStatusUpdate()) {
             return ellipsize(installedVersionString, 8) +
-                " → " + ellipsize(app.curVersion, 8);
+                " → " + ellipsize(app.getSuggestedVersion(), 8);
         }
 
         if (installedVersionCode > 0 && showStatusInstalled()) {

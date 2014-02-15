@@ -41,8 +41,18 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String flattrID;
 
-    public String curVersion;
-    public int curVercode;
+    public String upstreamVersion;
+    public int upstreamVercode;
+
+    /**
+     * Unlike other public fields, this is only accessible via a getter, to
+     * emphasise that setting it wont do anything. In order to change this,
+     * you need to change suggestedVercode to an apk which is in the apk table.
+     */
+    private String suggestedVersion;
+    
+    public int suggestedVercode;
+
     public Date added;
     public Date lastUpdated;
 
@@ -114,10 +124,14 @@ public class App extends ValueObject implements Comparable<App> {
                 dogecoinAddr = cursor.getString(i);
             } else if (column.equals(AppProvider.DataColumns.FLATTR_ID)) {
                 flattrID = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.CURRENT_VERSION)) {
-                curVersion = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.CURRENT_VERSION_CODE)) {
-                curVercode = cursor.getInt(i);
+            } else if (column.equals(AppProvider.DataColumns.SuggestedApk.VERSION)) {
+                suggestedVersion = cursor.getString(i);
+            } else if (column.equals(AppProvider.DataColumns.SUGGESTED_VERSION_CODE)) {
+                suggestedVercode = cursor.getInt(i);
+            } else if (column.equals(AppProvider.DataColumns.UPSTREAM_VERSION_CODE)) {
+                upstreamVercode = cursor.getInt(i);
+            } else if (column.equals(AppProvider.DataColumns.UPSTREAM_VERSION)) {
+                upstreamVersion = cursor.getString(i);
             } else if (column.equals(AppProvider.DataColumns.ADDED)) {
                 added = ValueObject.toDate(cursor.getString(i));
             } else if (column.equals(AppProvider.DataColumns.LAST_UPDATED)) {
@@ -158,8 +172,9 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.FLATTR_ID, flattrID);
         values.put(AppProvider.DataColumns.ADDED, added == null ? "" : Utils.DATE_FORMAT.format(added));
         values.put(AppProvider.DataColumns.LAST_UPDATED, added == null ? "" : Utils.DATE_FORMAT.format(lastUpdated));
-        values.put(AppProvider.DataColumns.CURRENT_VERSION, curVersion);
-        values.put(AppProvider.DataColumns.CURRENT_VERSION_CODE, curVercode);
+        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVercode);
+        values.put(AppProvider.DataColumns.UPSTREAM_VERSION, upstreamVersion);
+        values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVercode);
         values.put(AppProvider.DataColumns.CATEGORIES, Utils.CommaSeparatedList.str(categories));
         values.put(AppProvider.DataColumns.ANTI_FEATURES, Utils.CommaSeparatedList.str(antiFeatures));
         values.put(AppProvider.DataColumns.REQUIREMENTS, Utils.CommaSeparatedList.str(requirements));
@@ -207,9 +222,9 @@ public class App extends ValueObject implements Comparable<App> {
      */
     public boolean hasUpdates(Context context) {
         boolean updates = false;
-        if (curVercode > 0) {
+        if (suggestedVercode > 0) {
             int installedVerCode = getInstalledVerCode(context);
-            updates = (installedVerCode > 0 && installedVerCode < curVercode);
+            updates = (installedVerCode > 0 && installedVerCode < suggestedVercode);
         }
         return updates;
     }
@@ -218,7 +233,7 @@ public class App extends ValueObject implements Comparable<App> {
     // to be notified about them
     public boolean canAndWantToUpdate(Context context) {
         boolean canUpdate = hasUpdates(context);
-        boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < curVercode;
+        boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVercode;
         return canUpdate && wantsUpdate && !isFiltered();
     }
 
@@ -226,5 +241,9 @@ public class App extends ValueObject implements Comparable<App> {
     // permission (set in the Settings page)
     public boolean isFiltered() {
         return new AppFilter().filter(this);
+    }
+
+    public String getSuggestedVersion() {
+        return suggestedVersion;
     }
 }

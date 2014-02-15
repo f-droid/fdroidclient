@@ -27,7 +27,7 @@ abstract public class AppListFragment extends ListFragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final String[] APP_PROJECTION = {
-            AppProvider.DataColumns._ID,
+            AppProvider.DataColumns._ID, // Required for cursor loader to work.
             AppProvider.DataColumns.APP_ID,
             AppProvider.DataColumns.NAME,
             AppProvider.DataColumns.SUMMARY,
@@ -35,8 +35,8 @@ abstract public class AppListFragment extends ListFragment implements
             AppProvider.DataColumns.LICENSE,
             AppProvider.DataColumns.ICON,
             AppProvider.DataColumns.ICON_URL,
-            AppProvider.DataColumns.CURRENT_VERSION,
-            AppProvider.DataColumns.CURRENT_VERSION_CODE,
+            AppProvider.DataColumns.SuggestedApk.VERSION,
+            AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
             AppProvider.DataColumns.REQUIREMENTS, // Needed for filtering apps that require root.
     };
 

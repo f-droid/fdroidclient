@@ -128,7 +128,7 @@ public class AppDetails extends ListActivity {
 
             holder.version.setText(getString(R.string.version)
                     + " " + apk.version
-                    + (apk.vercode == app.curVercode ? "  ☆" : ""));
+                    + (apk.vercode == app.suggestedVercode ? "  ☆" : ""));
 
             if (apk.vercode == app.getInstalledVerCode(getContext())
                     && mInstalledSigID != null && apk.sig != null
@@ -534,7 +534,7 @@ public class AppDetails extends ListActivity {
         Apk curApk = null;
         for (int i = 0; i < adapter.getCount(); i ++) {
             Apk apk = adapter.getItem(i);
-            if (apk.vercode == app.curVercode) {
+            if (apk.vercode == app.suggestedVercode) {
                 curApk = apk;
                 break;
             }
@@ -678,7 +678,7 @@ public class AppDetails extends ListActivity {
         }
 
         // Check count > 0 due to incompatible apps resulting in an empty list.
-        if (app.getInstalledVersion(this) == null && app.curVercode > 0 &&
+        if (app.getInstalledVersion(this) == null && app.suggestedVercode > 0 &&
                 adapter.getCount() > 0) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 1, R.string.menu_install)
@@ -716,7 +716,7 @@ public class AppDetails extends ListActivity {
             menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
                         .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
                         .setCheckable(true)
-                        .setChecked(app.ignoreThisUpdate >= app.curVercode);
+                        .setChecked(app.ignoreThisUpdate >= app.suggestedVercode);
         }
         if (app.webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 3, R.string.menu_website).setIcon(
@@ -783,8 +783,8 @@ public class AppDetails extends ListActivity {
 
         case INSTALL:
             // Note that this handles updating as well as installing.
-            if (app.curVercode > 0) {
-                final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.curVercode);
+            if (app.suggestedVercode > 0) {
+                final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
                 install(apkToInstall);
             }
             return true;
@@ -799,10 +799,10 @@ public class AppDetails extends ListActivity {
             return true;
 
         case IGNORETHIS:
-            if (app.ignoreThisUpdate >= app.curVercode)
+            if (app.ignoreThisUpdate >= app.suggestedVercode)
                 app.ignoreThisUpdate = 0;
             else
-                app.ignoreThisUpdate = app.curVercode;
+                app.ignoreThisUpdate = app.suggestedVercode;
             item.setChecked(app.ignoreThisUpdate > 0);
             return true;
 

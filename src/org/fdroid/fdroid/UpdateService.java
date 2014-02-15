@@ -400,19 +400,19 @@ public class UpdateService extends IntentService implements ProgressListener {
     private static void calcCurrentApkForApp(App app, List<Apk> apksForApp) {
         Apk latestApk = null;
         // Try and return the real current version first. It will find the
-        // closest version smaller than the curVercode, being the same
+        // closest version smaller than the upstreamVercode, being the same
         // vercode if it exists.
-        if (app.curVercode > 0) {
+        if (app.upstreamVercode > 0) {
             int latestcode = -1;
             for (Apk apk : apksForApp) {
                 if ((!app.compatible || apk.compatible)
-                        && apk.vercode <= app.curVercode
+                        && apk.vercode <= app.upstreamVercode
                         && apk.vercode > latestcode) {
                     latestApk = apk;
                     latestcode = apk.vercode;
                 }
             }
-        } else if (app.curVercode == -1) {
+        } else if (app.upstreamVercode == -1) {
             // If the current version was not set we return the most recent apk.
             int latestCode = -1;
             for (Apk apk : apksForApp) {
@@ -425,8 +425,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
 
         if (latestApk != null) {
-            app.curVercode = latestApk.vercode;
-            app.curVersion = latestApk.version;
+            app.suggestedVercode = latestApk.vercode;
         }
     }
 
