@@ -63,6 +63,7 @@
 
         <activity
             android:name=".FDroid"
+            android:launchMode="singleTop"
             android:configChanges="keyboardHidden|orientation|screenSize" >
 
             <intent-filter>
