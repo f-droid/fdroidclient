@@ -1,5 +1,13 @@
 ### Upcoming release
 
+* Always remember the selected category in the list of apps
+
+* Send FDroid via Bluetooth to any device that supports receiving APKs via
+  Bluetooth (stock Android blocks APKs, most ROMs allow them)
+
+* NFC support: beam repo configs from the repo detail view (Android 4.0+),
+  beam the FDroid.apk from FDroid's main screen (Android 4.1+)
+
 * Support for repositories using self-signed HTTPS certificates through
   Trust-on-first-use popup
 
