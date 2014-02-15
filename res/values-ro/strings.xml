@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="searchres_napps">Sa gasit o aplicatie potrivita cu %s\'</string>
-  <string name="searchres_oneapp">Sa gasit o aplicatie potrivita cu %s\'</string>
-  <string name="searchres_noapps">Nu exita aplicatii potrivite cu %s\':</string>
+  <string name="searchres_napps">Sa gasit %1$d aplicații potrivita cu \'%2$s\'</string>
+  <string name="searchres_oneapp">Sa gasit o aplicatie potrivita cu \'%s\'</string>
+  <string name="searchres_noapps">Nu exita aplicatii potrivite cu \'%s\':</string>
   <string name="version">Versiune</string>
   <string name="cache_downloaded">Istoric aplicatii descarcate</string>
   <string name="updates">Noutati</string>
