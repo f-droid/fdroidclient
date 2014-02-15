@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-android update lib-project --path extern/Universal-Image-Loader/library
+android update lib-project --path extern/UniversalImageLoader/library
 android update lib-project --path extern/AndroidPinning
 android update lib-project --path extern/MemorizingTrustManager
 android update project --path . --name F-Droid
