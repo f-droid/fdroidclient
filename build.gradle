@@ -17,22 +17,30 @@ dependencies {
 }
 
 project(':extern:UniversalImageLoader:library') {
-    apply plugin: 'android-library'
+	apply plugin: 'android-library'
 
-    android {
-        compileSdkVersion 16
-        buildToolsVersion '19.0.1'
+	android {
+		compileSdkVersion 16
+		buildToolsVersion '19.0.1'
 
-        sourceSets {
-                main {
-                    manifest.srcFile 'AndroidManifest.xml'
-                    java.srcDirs = ['src']
-                    resources.srcDirs = ['src']
-                    aidl.srcDirs = ['src']
-                    renderscript.srcDirs = ['src']
-            }
-        }
-    }
+		sourceSets {
+			main {
+				manifest.srcFile 'AndroidManifest.xml'
+				java.srcDirs = ['src']
+				resources.srcDirs = ['src']
+				aidl.srcDirs = ['src']
+				renderscript.srcDirs = ['src']
+			}
+		}
+	}
+}
+
+project(':extern:AndroidPinning') {
+	android { buildToolsVersion '19.0.1' }
+}
+
+project(':extern:MemorizingTrustManager') {
+	android { buildToolsVersion '19.0.1' }
 }
 
 android {
