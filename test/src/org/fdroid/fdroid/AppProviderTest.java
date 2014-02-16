@@ -24,7 +24,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     public void setUp() throws Exception {
         super.setUp();
         getSwappableContext().setResources(new MockCategoryResources());
-		getSwappableContext().setContentResolver(getMockContentResolver());
+        getSwappableContext().setContentResolver(getMockContentResolver());
     }
 
     protected String[] getMinimalProjection() {
@@ -135,13 +135,13 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         List<String> categories = AppProvider.Helper.categories(getMockContext());
         String[] expected = new String[] {
-			getMockContext().getResources().getString(R.string.category_whatsnew),
-			getMockContext().getResources().getString(R.string.category_recentlyupdated),
-			getMockContext().getResources().getString(R.string.category_all),
-			"Animal",
-			"Mineral",
-			"Vegetable"
-		};
+            getMockContext().getResources().getString(R.string.category_whatsnew),
+            getMockContext().getResources().getString(R.string.category_recentlyupdated),
+            getMockContext().getResources().getString(R.string.category_all),
+            "Animal",
+            "Mineral",
+            "Vegetable"
+        };
         assertContainsOnly(categories, expected);
     }
 

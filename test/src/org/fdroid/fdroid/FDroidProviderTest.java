@@ -53,10 +53,10 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
 
     protected void assertInvalidUri(Uri uri) {
         try {
-			// Use getProvdider instead of getContentResolver, because the mock
-			// content resolver wont result in the provider we are testing, and
-			// hence we don't get to see how our provider responds to invalid
-			// uris.
+            // Use getProvdider instead of getContentResolver, because the mock
+            // content resolver wont result in the provider we are testing, and
+            // hence we don't get to see how our provider responds to invalid
+            // uris.
             getProvider().query(uri, getMinimalProjection(), null, null, null);
             fail();
         } catch (UnsupportedOperationException e) {}

@@ -38,6 +38,6 @@ public class MockContextSwappableComponents extends MockContext {
 
     @Override
     public MockContentResolver getContentResolver() {
-		return contentResolver;
+        return contentResolver;
     }
 }
