@@ -55,6 +55,20 @@ public class UpdateService extends IntentService implements ProgressListener {
         super("UpdateService");
     }
 
+    /**
+     * When an app already exists in the db, and we are updating it on the off chance that some
+     * values changed in the index, some fields should not be updated. Rather, they should be
+     * ignored, because they were explicitly set by the user, and hence can't be automatically
+     * overridden by the index.
+     *
+     * NOTE: In the future, these attributes will be moved to a join table, so that the app table
+     * is essentially completely transient, and can be nuked at any time.
+     */
+    private static final String[] APP_FIELDS_TO_IGNORE = {
+        AppProvider.DataColumns.IGNORE_ALLUPDATES,
+        AppProvider.DataColumns.IGNORE_THISUPDATE
+    };
+
     // For receiving results from the UpdateService when we've told it to
     // update in response to a user request.
     public static class UpdateReceiver extends ResultReceiver {
@@ -644,6 +658,11 @@ public class UpdateService extends IntentService implements ProgressListener {
     private ContentProviderOperation updateExistingApp(App app) {
         Uri uri = AppProvider.getContentUri(app);
         ContentValues values = app.toContentValues();
+        for (String toIgnore : APP_FIELDS_TO_IGNORE) {
+            if (values.containsKey(toIgnore)) {
+                values.remove(toIgnore);
+            }
+        }
         return ContentProviderOperation.newUpdate(uri).withValues(values).build();
     }
 
