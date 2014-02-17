@@ -3,7 +3,6 @@ package org.fdroid.fdroid;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import junit.framework.AssertionFailedError;
 import mock.MockCategoryResources;
 import mock.MockInstallablePackageManager;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -11,7 +10,6 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class AppProviderTest extends FDroidProviderTest<AppProvider> {
@@ -24,7 +22,6 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     public void setUp() throws Exception {
         super.setUp();
         getSwappableContext().setResources(new MockCategoryResources());
-		getSwappableContext().setContentResolver(getMockContentResolver());
     }
 
     protected String[] getMinimalProjection() {
@@ -75,20 +72,14 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         insertApps(100);
 
-        assertAppCount(100, AppProvider.getContentUri());
-        assertAppCount(0, AppProvider.getInstalledUri());
+        assertResultCount(100, AppProvider.getContentUri());
+        assertResultCount(0, AppProvider.getInstalledUri());
 
         for (int i = 10; i < 20; i ++) {
             pm.install("com.example.test." + i, i, "v1");
         }
 
-        assertAppCount(10, AppProvider.getInstalledUri());
-    }
-
-    private void assertAppCount(int expectedCount, Uri uri) {
-        Cursor cursor = getMockContentResolver().query(uri, getMinimalProjection(), null, null, null);
-        assertNotNull(cursor);
-        assertEquals(expectedCount, cursor.getCount());
+        assertResultCount(10, AppProvider.getInstalledUri());
     }
 
     public void testInsert() {
@@ -142,7 +133,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 			"Mineral",
 			"Vegetable"
 		};
-        assertContainsOnly(categories, expected);
+        TestUtils.assertContainsOnly(categories, expected);
     }
 
     public void testCategoriesMultiple() {
@@ -160,7 +151,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             "Mineral",
             "Vegetable"
         };
-        assertContainsOnly(categories, expected);
+        TestUtils.assertContainsOnly(categories, expected);
 
         insertAppWithCategory("com.example.game", "Game",
                 "Running,Shooting,Jumping,Bleh,Sneh,Pleh,Blah,Test category," +
@@ -188,7 +179,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             "With apostrophe's"
         };
 
-        assertContainsOnly(categoriesLonger, expectedLonger);
+        TestUtils.assertContainsOnly(categoriesLonger, expectedLonger);
     }
 
     private void insertApp(String id, String name) {
@@ -205,54 +196,6 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     private void insertApp(String id, String name,
                            ContentValues additionalValues) {
         TestUtils.insertApp(getMockContentResolver(), id, name, additionalValues);
-    }
-
-    private <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedContains) {
-        List<T> containsList = new ArrayList<T>(expectedContains.length);
-        Collections.addAll(containsList, expectedContains);
-        assertContainsOnly(actualList, containsList);
-    }
-
-    private <T> String listToString(List<T> list) {
-        String string = "[";
-        for (int i = 0; i < list.size(); i ++) {
-            if (i > 0) {
-                string += ", ";
-            }
-            string += list.get(i);
-        }
-        string += "]";
-        return string;
-    }
-
-    private <T extends Comparable> void assertContainsOnly(List<T> actualList, List<T> expectedContains) {
-        if (actualList.size() != expectedContains.size()) {
-            String message =
-                "List sizes don't match.\n" +
-                "Expected: " +
-                listToString(expectedContains) + "\n" +
-                "Actual:   " +
-                listToString(actualList);
-            throw new AssertionFailedError(message);
-        }
-        for (T required : expectedContains) {
-            boolean containsRequired = false;
-            for (T itemInList : actualList) {
-                if (required.equals(itemInList)) {
-                    containsRequired = true;
-                    break;
-                }
-            }
-            if (!containsRequired) {
-                String message =
-                    "List doesn't contain \"" + required + "\".\n" +
-                    "Expected: " +
-                    listToString(expectedContains) + "\n" +
-                    "Actual:   " +
-                    listToString(actualList);
-                throw new AssertionFailedError(message);
-            }
-        }
     }
 
 }

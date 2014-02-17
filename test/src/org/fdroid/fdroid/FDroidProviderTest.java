@@ -24,6 +24,13 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
     public void setUp() throws Exception {
         super.setUp();
         Utils.setupInstalledApkCache(new MockInstalledApkCache());
+
+        // The *Provider.Helper.* functions tend to take a Context as their
+        // first parameter. This context is used to connect to the relevant
+        // content provider. Thus, we need a context that is able to connect
+        // to the mock content resolver, in order to reach the provider
+        // under test.
+		getSwappableContext().setContentResolver(getMockContentResolver());
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
@@ -74,4 +81,9 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
      */
     protected abstract String[] getMinimalProjection();
 
+    protected void assertResultCount(int expectedCount, Uri uri) {
+        Cursor cursor = getMockContentResolver().query(uri, getMinimalProjection(), null, null, null);
+        assertNotNull(cursor);
+        assertEquals(expectedCount, cursor.getCount());
+    }
 }

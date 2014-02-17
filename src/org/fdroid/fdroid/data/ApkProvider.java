@@ -366,6 +366,11 @@ public class ApkProvider extends FDroidProvider {
         String[] apkDetails = apkKeys.split(",");
         String[] args = new String[apkDetails.length * 2];
         StringBuilder sb = new StringBuilder();
+        if (apkDetails.length > MAX_APKS_TO_QUERY) {
+            throw new IllegalArgumentException(
+                "Cannot query more than " + MAX_APKS_TO_QUERY + ". " +
+                "You tried to query " + apkDetails.length);
+        }
         for (int i = 0; i < apkDetails.length; i ++) {
             String[] parts = apkDetails[i].split(":");
             String id = parts[0];
