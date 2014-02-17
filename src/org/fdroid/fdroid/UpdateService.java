@@ -304,8 +304,8 @@ public class UpdateService extends IntentService implements ProgressListener {
             if (success && changes && prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
                 int updateCount = 0;
                 for (App app : appsToUpdate.values()) {
-                    if (app.hasUpdates(this)) {
-                        updateCount ++;
+                    if (app.canAndWantToUpdate(this)) {
+                        updateCount++;
                     }
                 }
 
