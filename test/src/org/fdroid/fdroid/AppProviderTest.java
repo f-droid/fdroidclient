@@ -126,13 +126,13 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         List<String> categories = AppProvider.Helper.categories(getMockContext());
         String[] expected = new String[] {
-			getMockContext().getResources().getString(R.string.category_whatsnew),
-			getMockContext().getResources().getString(R.string.category_recentlyupdated),
-			getMockContext().getResources().getString(R.string.category_all),
-			"Animal",
-			"Mineral",
-			"Vegetable"
-		};
+            getMockContext().getResources().getString(R.string.category_whatsnew),
+            getMockContext().getResources().getString(R.string.category_recentlyupdated),
+            getMockContext().getResources().getString(R.string.category_all),
+            "Animal",
+            "Mineral",
+            "Vegetable"
+        };
         TestUtils.assertContainsOnly(categories, expected);
     }
 

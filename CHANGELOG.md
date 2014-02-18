@@ -9,9 +9,11 @@
   beam the FDroid.apk from FDroid's main screen (Android 4.1+)
 
 * Support for repositories using self-signed HTTPS certificates through
-  Trust-on-first-use popup
+  a Trust-on-first-use popup
 
 * Support for TLS Subject-Public-Key-Identifier pinning
+
+* Various fixes to layout issues introduced in 0.58
 
 ### 0.58 (2014-01-11)
 
