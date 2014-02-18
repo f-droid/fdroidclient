@@ -30,7 +30,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         // content provider. Thus, we need a context that is able to connect
         // to the mock content resolver, in order to reach the provider
         // under test.
-		getSwappableContext().setContentResolver(getMockContentResolver());
+        getSwappableContext().setContentResolver(getMockContentResolver());
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
