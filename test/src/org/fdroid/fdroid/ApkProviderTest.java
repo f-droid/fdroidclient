@@ -214,8 +214,37 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
             assertResultCount(0, queryAllApks());
         }
 
-        // ApkProvider.DataColumns.REPO
+        ContentValues values = new ContentValues();
+        values.put(ApkProvider.DataColumns.REPO_ID, 10);
+        values.put(ApkProvider.DataColumns.REPO_ADDRESS, "http://example.com");
+        values.put(ApkProvider.DataColumns.REPO_VERSION, 3);
+        values.put(ApkProvider.DataColumns.FEATURES, "Some features");
+        Uri uri = insertApk("com.example.com", 1, values);
 
+        assertResultCount(1, queryAllApks());
+
+        String[] projections = {
+            ApkProvider.DataColumns.REPO_ID,
+            ApkProvider.DataColumns.REPO_ADDRESS,
+            ApkProvider.DataColumns.REPO_VERSION,
+            ApkProvider.DataColumns.FEATURES,
+            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.VERSION_CODE
+        };
+        
+        Cursor cursor = getMockContentResolver().query(uri, projections, null, null, null);
+        cursor.moveToFirst();
+        Apk apk = new Apk(cursor);
+
+        // These should have quietly been dropped when we tried to save them...
+        assertEquals(null, apk.repoAddress);
+        assertEquals(0, apk.repoVersion);
+
+        // But this should have saved correctly...
+        assertEquals("Some features", apk.features.toString());
+        assertEquals("com.example.com", apk.id);
+        assertEquals(1, apk.vercode);
+        assertEquals(10, apk.repo);
     }
 
     public void testIgnore() {
