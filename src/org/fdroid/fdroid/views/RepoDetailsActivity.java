@@ -54,7 +54,7 @@ public class RepoDetailsActivity extends FragmentActivity {
                 RepoProvider.DataColumns.ADDRESS,
                 RepoProvider.DataColumns.FINGERPRINT
         };
-        repo = RepoProvider.Helper.findById(getContentResolver(), repoId, projection);
+        repo = RepoProvider.Helper.findById(this, repoId, projection);
 
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         setTitle(repo.getName());

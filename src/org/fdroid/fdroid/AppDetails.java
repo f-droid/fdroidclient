@@ -837,8 +837,7 @@ public class AppDetails extends ListActivity {
     // Install the version of this app denoted by 'app.curApk'.
     private void install(final Apk apk) {
         String [] projection = { RepoProvider.DataColumns.ADDRESS };
-        Repo repo = RepoProvider.Helper.findById(
-                getContentResolver(), apk.repo, projection);
+        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
         if (repo == null || repo.address == null) {
             return;
         }

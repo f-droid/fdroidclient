@@ -263,7 +263,7 @@ abstract public class RepoUpdater {
             values.put(RepoProvider.DataColumns.NAME, handler.getName());
         }
 
-        RepoProvider.Helper.update(context.getContentResolver(), repo, values);
+        RepoProvider.Helper.update(context, repo, values);
     }
 
     public static class UpdateException extends Exception {

@@ -77,7 +77,7 @@ public class RepoDetailsFragment extends Fragment {
      * repo object directly from the database.
      */
     private Repo loadRepoDetails() {
-        return RepoProvider.Helper.findById(getActivity().getContentResolver(), getRepoId());
+        return RepoProvider.Helper.findById(getActivity(), getRepoId());
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -156,8 +156,7 @@ public class RepoDetailsFragment extends Fragment {
 
         name.setText(repo.getName());
 
-        int appCount = RepoProvider.Helper.countAppsForRepo(
-                getActivity().getContentResolver(), repo.getId());
+        int appCount = RepoProvider.Helper.countAppsForRepo(getActivity(), repo.getId());
         numApps.setText(Integer.toString(appCount));
 
         setupDescription(repoView, repo);
@@ -197,7 +196,7 @@ public class RepoDetailsFragment extends Fragment {
         // Ensure repo is enabled before updating...
         ContentValues values = new ContentValues(1);
         values.put(RepoProvider.DataColumns.IN_USE, 1);
-        RepoProvider.Helper.update(getActivity().getContentResolver(), repo, values);
+        RepoProvider.Helper.update(getActivity(), repo, values);
 
         UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
             @Override
@@ -230,7 +229,7 @@ public class RepoDetailsFragment extends Fragment {
             if (!repo.address.equals(s.toString())) {
                 ContentValues values = new ContentValues(1);
                 values.put(RepoProvider.DataColumns.ADDRESS, s.toString());
-                RepoProvider.Helper.update(getActivity().getContentResolver(), repo, values);
+                RepoProvider.Helper.update(getActivity(), repo, values);
             }
         }
     }
@@ -310,7 +309,7 @@ public class RepoDetailsFragment extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Repo repo = RepoDetailsFragment.this.repo;
-                    RepoProvider.Helper.remove(getActivity().getContentResolver(), repo.getId());
+                    RepoProvider.Helper.remove(getActivity(), repo.getId());
                     getActivity().finish();
                 }
             }).setNegativeButton(android.R.string.cancel,

@@ -20,12 +20,13 @@ public class RepoProvider extends FDroidProvider {
 
         private Helper() {}
 
-        public static Repo findById(ContentResolver resolver, long repoId) {
-            return findById(resolver, repoId, DataColumns.ALL);
+        public static Repo findById(Context context, long repoId) {
+            return findById(context, repoId, DataColumns.ALL);
         }
 
-        public static Repo findById(ContentResolver resolver, long repoId,
+        public static Repo findById(Context context, long repoId,
                                     String[] projection) {
+            ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri(repoId);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             Repo repo = null;
@@ -36,32 +37,33 @@ public class RepoProvider extends FDroidProvider {
             return repo;
         }
 
-        public static Repo findByAddress(ContentResolver resolver,
-                                         String address) {
-            return findByAddress(resolver, address, DataColumns.ALL);
+        public static Repo findByAddress(Context context, String address) {
+            return findByAddress(context, address, DataColumns.ALL);
         }
 
-        public static Repo findByAddress(ContentResolver resolver,
+        public static Repo findByAddress(Context context,
                                          String address, String[] projection) {
             List<Repo> repos = findBy(
-                    resolver, DataColumns.ADDRESS, address, projection);
+                    context, DataColumns.ADDRESS, address, projection);
             return repos.size() > 0 ? repos.get(0) : null;
         }
 
-        public static List<Repo> all(ContentResolver resolver) {
-            return all(resolver, DataColumns.ALL);
+        public static List<Repo> all(Context context) {
+            return all(context, DataColumns.ALL);
         }
 
-        public static List<Repo> all(ContentResolver resolver, String[] projection) {
+        public static List<Repo> all(Context context, String[] projection) {
+            ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri();
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             return cursorToList(cursor);
         }
 
-        private static List<Repo> findBy(ContentResolver resolver,
+        private static List<Repo> findBy(Context context,
                                          String fieldName,
                                          String fieldValue,
                                          String[] projection) {
+            ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri();
             String[] args = { fieldValue };
             Cursor cursor = resolver.query(
@@ -82,8 +84,9 @@ public class RepoProvider extends FDroidProvider {
             return repos;
         }
 
-        public static void update(ContentResolver resolver, Repo repo,
+        public static void update(Context context, Repo repo,
                                   ContentValues values) {
+            ContentResolver resolver = context.getContentResolver();
 
             // Change the name to the new address. Next time we update the repo
             // index file, it will populate the name field with the proper
@@ -143,31 +146,34 @@ public class RepoProvider extends FDroidProvider {
          * resolver, but I thought I'd put it here in the interests of having
          * each of the CRUD methods available in the helper class.
          */
-        public static void insert(ContentResolver resolver,
+        public static void insert(Context context,
                                   ContentValues values) {
+            ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri();
             resolver.insert(uri, values);
         }
 
-        public static void remove(ContentResolver resolver, long repoId) {
+        public static void remove(Context context, long repoId) {
+            ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri(repoId);
             resolver.delete(uri, null, null);
         }
 
         public static void purgeApps(Context context, Repo repo, FDroidApp app) {
             Uri apkUri = ApkProvider.getRepoUri(repo.getId());
-            int apkCount = context.getContentResolver().delete(apkUri, null, null);
+            ContentResolver resolver = context.getContentResolver();
+            int apkCount = resolver.delete(apkUri, null, null);
             Log.d("FDroid", "Removed " + apkCount + " apks from repo " + repo.name);
 
             Uri appUri = AppProvider.getNoApksUri();
-            int appCount = context.getContentResolver().delete(appUri, null, null);
+            int appCount = resolver.delete(appUri, null, null);
             Log.d("Log", "Removed " + appCount + " apps with no apks.");
 
             app.invalidateAllApps();
         }
 
-        public static int countAppsForRepo(ContentResolver resolver,
-                                            long repoId) {
+        public static int countAppsForRepo(Context context, long repoId) {
+            ContentResolver resolver = context.getContentResolver();
             String[] projection = { "COUNT(distinct id)" };
             String selection = "repo = ?";
             String[] args = { Long.toString(repoId) };

@@ -106,8 +106,7 @@ public class RepoListFragment extends ListFragment
         if (repo.inuse != isEnabled) {
             ContentValues values = new ContentValues(1);
             values.put(RepoProvider.DataColumns.IN_USE, isEnabled ? 1 : 0);
-            RepoProvider.Helper.update(
-                    getActivity().getContentResolver(), repo, values);
+            RepoProvider.Helper.update(getActivity(), repo, values);
 
             if (isEnabled) {
                 changed = true;
@@ -312,7 +311,7 @@ public class RepoListFragment extends ListFragment
         final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
         final Repo repo = (newAddress != null && isImportingRepo)
-                ? RepoProvider.Helper.findByAddress(getActivity().getContentResolver(), newAddress)
+                ? RepoProvider.Helper.findByAddress(getActivity(), newAddress)
                 : null;
 
         alrt.setIcon(android.R.drawable.ic_menu_add);
@@ -409,7 +408,7 @@ public class RepoListFragment extends ListFragment
         ContentValues values = new ContentValues(2);
         values.put(RepoProvider.DataColumns.ADDRESS, address);
         values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
-        RepoProvider.Helper.insert(getActivity().getContentResolver(), values);
+        RepoProvider.Helper.insert(getActivity(), values);
         finishedAddingRepo();
     }
 
@@ -419,7 +418,7 @@ public class RepoListFragment extends ListFragment
     private void createNewRepo(Repo repo) {
         ContentValues values = new ContentValues(1);
         values.put(RepoProvider.DataColumns.IN_USE, 1);
-        RepoProvider.Helper.update(getActivity().getContentResolver(), repo, values);
+        RepoProvider.Helper.update(getActivity(), repo, values);
         repo.inuse = true;
         finishedAddingRepo();
     }
