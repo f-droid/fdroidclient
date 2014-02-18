@@ -7,6 +7,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/AndroidPinning"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/MemorizingActivity"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Universal-Image-Loader"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/UniversalImageLoader"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
