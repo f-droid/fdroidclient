@@ -50,6 +50,16 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         return swappableContext;
     }
 
+    protected void assertCantDelete(Uri uri) {
+        try {
+            getMockContentResolver().delete(uri, null, null);
+            fail();
+        } catch (UnsupportedOperationException e) {
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
     protected void assertInvalidUri(String uri) {
         assertInvalidUri(Uri.parse(uri));
     }
@@ -83,7 +93,11 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
 
     protected void assertResultCount(int expectedCount, Uri uri) {
         Cursor cursor = getMockContentResolver().query(uri, getMinimalProjection(), null, null, null);
-        assertNotNull(cursor);
-        assertEquals(expectedCount, cursor.getCount());
+        assertResultCount(expectedCount, cursor);
+    }
+
+    protected void assertResultCount(int expectedCount, Cursor result) {
+        assertNotNull(result);
+        assertEquals(expectedCount, result.getCount());
     }
 }

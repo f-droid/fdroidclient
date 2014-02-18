@@ -82,7 +82,7 @@ public class TestUtils {
         resolver.insert(uri, values);
     }
 
-    public static void insertApk(ContentResolver resolver, String id, int versionCode, ContentValues additionalValues) {
+    public static Uri insertApk(ContentResolver resolver, String id, int versionCode, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
 
@@ -101,6 +101,6 @@ public class TestUtils {
 
         Uri uri = ApkProvider.getContentUri();
 
-        resolver.insert(uri, values);
+        return resolver.insert(uri, values);
     }
 }

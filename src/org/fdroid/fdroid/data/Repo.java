@@ -14,7 +14,7 @@ public class Repo extends ValueObject {
 
     public static final int VERSION_DENSITY_SPECIFIC_ICONS = 11;
 
-    private long id;
+    protected long id;
 
     public String address;
     public String name;

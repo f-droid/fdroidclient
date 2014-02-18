@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.data;
 
+import android.annotation.TargetApi;
 import android.content.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -94,6 +95,25 @@ public abstract class FDroidProvider extends ContentProvider {
             sb.append('?');
         }
         return sb.toString();
+    }
+
+    @TargetApi(11)
+    protected void validateFields(String[] validFields, ContentValues values)
+        throws IllegalArgumentException {
+        for (String key : values.keySet()) {
+            boolean isValid = false;
+            for (String validKey : validFields) {
+                if (validKey.equals(key)) {
+                    isValid = true;
+                    break;
+                }
+            }
+
+            if (!isValid) {
+                throw new IllegalArgumentException(
+                    "Cannot save field '" + key + "' to provider " + getProviderName());
+            }
+        }
     }
 }
 
