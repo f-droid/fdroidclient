@@ -92,7 +92,7 @@ public class AppDetails extends ListActivity {
 
         public ApkListAdapter(Context context, App app) {
             super(context, 0);
-            List<Apk> apks = ApkProvider.Helper.findByApp(context.getContentResolver(), app.id);
+            List<Apk> apks = ApkProvider.Helper.findByApp(context, app.id);
             for (Apk apk : apks ) {
                 if (apk.compatible || pref_incompatibleVersions) {
                     add(apk);

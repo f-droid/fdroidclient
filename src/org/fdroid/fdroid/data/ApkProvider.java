@@ -111,12 +111,13 @@ public class ApkProvider extends FDroidProvider {
             resolver.delete(uri, null, null);
         }
 
-        public static List<Apk> findByApp(ContentResolver resolver, String appId) {
-            return findByApp(resolver, appId, ApkProvider.DataColumns.ALL);
+        public static List<Apk> findByApp(Context context, String appId) {
+            return findByApp(context, appId, ApkProvider.DataColumns.ALL);
         }
 
-        public static List<Apk> findByApp(ContentResolver resolver,
+        public static List<Apk> findByApp(Context context,
                                           String appId, String[] projection) {
+            ContentResolver resolver = context.getContentResolver();
             Uri uri = getAppUri(appId);
             String sort = ApkProvider.DataColumns.VERSION_CODE + " DESC";
             Cursor cursor = resolver.query(uri, projection, null, null, sort);
@@ -127,8 +128,9 @@ public class ApkProvider extends FDroidProvider {
          * Returns apks in the database, which have the same id and version as
          * one of the apks in the "apks" argument.
          */
-        public static List<Apk> knownApks(ContentResolver resolver,
+        public static List<Apk> knownApks(Context context,
                                              List<Apk> apks, String[] fields) {
+            ContentResolver resolver = context.getContentResolver();
             Uri uri = getContentUri(apks);
             Cursor cursor = resolver.query(uri, fields, null, null, null);
             return cursorToList(cursor);

@@ -545,7 +545,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             ApkProvider.DataColumns.VERSION,
             ApkProvider.DataColumns.VERSION_CODE
         };
-        return ApkProvider.Helper.knownApks(getContentResolver(), apks, fields);
+        return ApkProvider.Helper.knownApks(this, apks, fields);
     }
 
     private void updateOrInsertApps(List<App> appsToUpdate, int totalUpdateCount, int currentCount) {
