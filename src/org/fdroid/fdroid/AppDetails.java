@@ -191,7 +191,6 @@ public class AppDetails extends ListActivity {
                 holder.status,
                 holder.size,
                 holder.api,
-                holder.incompatibleReasons,
                 holder.buildtype,
                 holder.added,
                 holder.nativecode
