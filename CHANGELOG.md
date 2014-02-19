@@ -13,6 +13,8 @@
 
 * Support for TLS Subject-Public-Key-Identifier pinning
 
+* Filter app compatibility by maxSdkVersion too
+
 * Various fixes to layout issues introduced in 0.58
 
 ### 0.58 (2014-01-11)
