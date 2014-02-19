@@ -66,8 +66,11 @@ public class AppProvider extends FDroidProvider {
             if (cursor != null) {
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    for( String s : Utils.CommaSeparatedList.make(cursor.getString(0))) {
-                        categorySet.add(s);
+                    String categoriesString = cursor.getString(0);
+                    if (categoriesString != null) {
+                        for( String s : Utils.CommaSeparatedList.make(categoriesString)) {
+                            categorySet.add(s);
+                        }
                     }
                     cursor.moveToNext();
                 }

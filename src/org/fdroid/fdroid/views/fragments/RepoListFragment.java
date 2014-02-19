@@ -407,7 +407,9 @@ public class RepoListFragment extends ListFragment
     private void createNewRepo(String address, String fingerprint) {
         ContentValues values = new ContentValues(2);
         values.put(RepoProvider.DataColumns.ADDRESS, address);
-        values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
+        if (fingerprint != null && fingerprint.length() > 0) {
+            values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
+        }
         RepoProvider.Helper.insert(getActivity(), values);
         finishedAddingRepo();
     }
