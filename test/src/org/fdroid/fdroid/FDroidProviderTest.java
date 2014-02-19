@@ -1,6 +1,7 @@
 package org.fdroid.fdroid;
 
 import android.annotation.TargetApi;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,6 +12,8 @@ import mock.MockContextEmptyComponents;
 import mock.MockContextSwappableComponents;
 import org.fdroid.fdroid.data.FDroidProvider;
 import org.fdroid.fdroid.mock.MockInstalledApkCache;
+
+import java.util.List;
 
 public abstract class FDroidProviderTest<T extends FDroidProvider> extends ProviderTestCase2MockContext<T> {
 
@@ -60,6 +63,16 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         }
     }
 
+    protected void assertCantUpdate(Uri uri) {
+        try {
+            getMockContentResolver().update(uri, new ContentValues(), null, null);
+            fail();
+        } catch (UnsupportedOperationException e) {
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
     protected void assertInvalidUri(String uri) {
         assertInvalidUri(Uri.parse(uri));
     }
@@ -94,6 +107,11 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
     protected void assertResultCount(int expectedCount, Uri uri) {
         Cursor cursor = getMockContentResolver().query(uri, getMinimalProjection(), null, null, null);
         assertResultCount(expectedCount, cursor);
+    }
+
+    protected void assertResultCount(int expectedCount, List items) {
+        assertNotNull(items);
+        assertEquals(expectedCount, items.size());
     }
 
     protected void assertResultCount(int expectedCount, Cursor result) {

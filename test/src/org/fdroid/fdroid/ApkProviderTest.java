@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.mock.MockApk;
 import org.fdroid.fdroid.mock.MockApp;
@@ -14,20 +13,7 @@ import org.fdroid.fdroid.mock.MockRepo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
-
-    public ApkProviderTest() {
-        super(ApkProvider.class, ApkProvider.getAuthority());
-    }
-
-    protected String[] getMinimalProjection() {
-        return new String[] {
-            ApkProvider.DataColumns.APK_ID,
-            ApkProvider.DataColumns.VERSION_CODE,
-            ApkProvider.DataColumns.NAME,
-            ApkProvider.DataColumns.REPO_ID
-        };
-    }
+public class ApkProviderTest extends BaseApkProviderTest {
 
     public void testUris() {
         assertInvalidUri(ApkProvider.getAuthority());
@@ -70,8 +56,8 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
 
     public void testAppApks() {
         for (int i = 1; i <= 10; i ++) {
-            insertApk("org.fdroid.fdroid", i);
-            insertApk("com.example", i);
+            TestUtils.insertApk(this, "org.fdroid.fdroid", i);
+            TestUtils.insertApk(this, "com.example", i);
         }
 
         assertTotalApkCount(20);
@@ -97,20 +83,35 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
         assertBelongsToApp(all, "org.fdroid.fdroid");
     }
 
-    public void testInvalidDeleteUris() {
-        assertCantDelete(ApkProvider.getContentUri());
-        assertCantDelete(ApkProvider.getContentUri(new ArrayList<Apk>()));
-        assertCantDelete(ApkProvider.getContentUri("org.fdroid.fdroid", 10));
-        assertCantDelete(ApkProvider.getContentUri(new MockApk("org.fdroid.fdroid", 10)));
+    public void testInvalidUpdateUris() {
+        Apk apk = new MockApk("org.fdroid.fdroid", 10);
 
-        try {
-            getMockContentResolver().delete(RepoProvider.getContentUri(), null, null);
-            fail();
-        } catch (IllegalArgumentException e) {
-            // Don't fail, it is what we were looking for...
-        } catch (Exception e) {
-            fail();
-        }
+        List<Apk> apks = new ArrayList<Apk>();
+        apks.add(apk);
+
+        assertCantUpdate(ApkProvider.getContentUri());
+        assertCantUpdate(ApkProvider.getAppUri("org.fdroid.fdroid"));
+        assertCantUpdate(ApkProvider.getRepoUri(1));
+        assertCantUpdate(ApkProvider.getContentUri(apks));
+        assertCantUpdate(Uri.withAppendedPath(ApkProvider.getContentUri(), "some-random-path"));
+
+        // The only valid ones are:
+        //  ApkProvider.getContentUri(apk)
+        //  ApkProvider.getContentUri(id, version)
+        // which are tested elsewhere.
+    }
+
+    public void testInvalidDeleteUris() {
+        Apk apk = new MockApk("org.fdroid.fdroid", 10);
+
+        List<Apk> apks = new ArrayList<Apk>();
+        apks.add(apk);
+
+        assertCantDelete(ApkProvider.getContentUri());
+        assertCantDelete(ApkProvider.getContentUri(apks));
+        assertCantDelete(ApkProvider.getContentUri("org.fdroid.fdroid", 10));
+        assertCantDelete(ApkProvider.getContentUri(apk));
+        assertCantDelete(Uri.withAppendedPath(ApkProvider.getContentUri(), "some-random-path"));
     }
 
     public void testRepoApks() {
@@ -163,7 +164,7 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
         Apk apk = new MockApk("org.fdroid.fdroid", 13);
 
         // Insert a new record...
-        Uri newUri = insertApk(apk.id, apk.vercode);
+        Uri newUri = TestUtils.insertApk(this, apk.id, apk.vercode);
         assertEquals(ApkProvider.getContentUri(apk).toString(), newUri.toString());
         cursor = queryAllApks();
         assertNotNull(cursor);
@@ -189,6 +190,26 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
         assertEquals(13, toCheck.vercode);
     }
 
+    public void testCount() {
+        String[] projectionFields = getMinimalProjection();
+        String[] projectionCount = new String[] { ApkProvider.DataColumns._COUNT };
+
+        for (int i = 0; i < 13; i ++) {
+            TestUtils.insertApk(this, "com.example", i);
+        }
+
+        Uri all = ApkProvider.getContentUri();
+        Cursor allWithFields = getMockContentResolver().query(all, projectionFields, null, null, null);
+        Cursor allWithCount = getMockContentResolver().query(all, projectionCount, null, null, null);
+
+        assertResultCount(13, allWithFields);
+        assertResultCount(1, allWithCount);
+
+        allWithCount.moveToFirst();
+        int countColumn = allWithCount.getColumnIndex(ApkProvider.DataColumns._COUNT);
+        assertEquals(13, allWithCount.getInt(countColumn));
+    }
+
     public void testInsertWithExtraFields() {
 
         assertResultCount(0, queryAllApks());
@@ -205,7 +226,7 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
             ContentValues invalidRepo = new ContentValues();
             invalidRepo.put(field, "Test data");
             try {
-                insertApk("org.fdroid.fdroid", 10, invalidRepo);
+                TestUtils.insertApk(this, "org.fdroid.fdroid", 10, invalidRepo);
                 fail();
             } catch (IllegalArgumentException e) {
             } catch (Exception e) {
@@ -219,24 +240,17 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
         values.put(ApkProvider.DataColumns.REPO_ADDRESS, "http://example.com");
         values.put(ApkProvider.DataColumns.REPO_VERSION, 3);
         values.put(ApkProvider.DataColumns.FEATURES, "Some features");
-        Uri uri = insertApk("com.example.com", 1, values);
+        Uri uri = TestUtils.insertApk(this, "com.example.com", 1, values);
 
         assertResultCount(1, queryAllApks());
 
-        String[] projections = {
-            ApkProvider.DataColumns.REPO_ID,
-            ApkProvider.DataColumns.REPO_ADDRESS,
-            ApkProvider.DataColumns.REPO_VERSION,
-            ApkProvider.DataColumns.FEATURES,
-            ApkProvider.DataColumns.APK_ID,
-            ApkProvider.DataColumns.VERSION_CODE
-        };
-        
+        String[] projections = ApkProvider.DataColumns.ALL;
         Cursor cursor = getMockContentResolver().query(uri, projections, null, null, null);
         cursor.moveToFirst();
         Apk apk = new Apk(cursor);
 
-        // These should have quietly been dropped when we tried to save them...
+        // These should have quietly been dropped when we tried to save them,
+        // because the provider only knows how to query them (not update them).
         assertEquals(null, apk.repoAddress);
         assertEquals(0, apk.repoVersion);
 
@@ -245,47 +259,6 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
         assertEquals("com.example.com", apk.id);
         assertEquals(1, apk.vercode);
         assertEquals(10, apk.repo);
-    }
-
-    public void testIgnore() {
-        /*for (int i = 0; i < 10; i ++) {
-            insertApk("org.fdroid.fdroid", i);
-        }*/
-    }
-
-    private void assertBelongsToApp(Cursor apks, String appId) {
-        for (Apk apk : ApkProvider.Helper.cursorToList(apks)) {
-            assertEquals(appId, apk.id);
-        }
-    }
-
-    private void assertTotalApkCount(int expected) {
-        assertResultCount(expected, queryAllApks());
-    }
-
-    private void assertBelongsToRepo(Cursor apkCursor, long repoId) {
-        for (Apk apk : ApkProvider.Helper.cursorToList(apkCursor)) {
-            assertEquals(repoId, apk.repo);
-        }
-    }
-
-    private void insertApkForRepo(String id, int versionCode, long repoId) {
-        ContentValues additionalValues = new ContentValues();
-        additionalValues.put(ApkProvider.DataColumns.REPO_ID, repoId);
-        insertApk(id, versionCode, additionalValues);
-    }
-
-    private Cursor queryAllApks() {
-        return getMockContentResolver().query(ApkProvider.getContentUri(), getMinimalProjection(), null, null, null);
-    }
-
-    private Uri insertApk(String id, int versionCode) {
-        return insertApk(id, versionCode, new ContentValues());
-    }
-
-    private Uri insertApk(String id, int versionCode,
-                           ContentValues additionalValues) {
-        return TestUtils.insertApk(getMockContentResolver(), id, versionCode, additionalValues);
     }
 
 }

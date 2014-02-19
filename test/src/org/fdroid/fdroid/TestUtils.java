@@ -82,7 +82,11 @@ public class TestUtils {
         resolver.insert(uri, values);
     }
 
-    public static Uri insertApk(ContentResolver resolver, String id, int versionCode, ContentValues additionalValues) {
+    public static Uri insertApk(FDroidProviderTest<ApkProvider> providerTest, String id, int versionCode) {
+        return insertApk(providerTest, id, versionCode, new ContentValues());
+    }
+
+    public static Uri insertApk(FDroidProviderTest<ApkProvider> providerTest, String id, int versionCode, ContentValues additionalValues) {
 
         ContentValues values = new ContentValues();
 
@@ -101,6 +105,6 @@ public class TestUtils {
 
         Uri uri = ApkProvider.getContentUri();
 
-        return resolver.insert(uri, values);
+        return providerTest.getMockContentResolver().insert(uri, values);
     }
 }
