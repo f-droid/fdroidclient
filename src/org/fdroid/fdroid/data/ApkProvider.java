@@ -149,6 +149,7 @@ public class ApkProvider extends FDroidProvider {
         public static String SIGNATURE       = "sig";
         public static String SOURCE_NAME     = "srcname";
         public static String MIN_SDK_VERSION = "minSdkVersion";
+        public static String MAX_SDK_VERSION = "maxSdkVersion";
         public static String PERMISSIONS     = "permissions";
         public static String FEATURES        = "features";
         public static String NATIVE_CODE     = "nativecode";
@@ -161,9 +162,9 @@ public class ApkProvider extends FDroidProvider {
 
         public static String[] ALL = {
             _ID, APK_ID, VERSION, REPO_ID, HASH, VERSION_CODE, NAME, SIZE,
-            SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, PERMISSIONS, FEATURES,
-            NATIVE_CODE, HASH_TYPE, ADDED_DATE, IS_COMPATIBLE,
-            REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS
+            SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
+            PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
+            IS_COMPATIBLE, REPO_VERSION, REPO_ADDRESS, INCOMPATIBLE_REASONS
         };
     }
 

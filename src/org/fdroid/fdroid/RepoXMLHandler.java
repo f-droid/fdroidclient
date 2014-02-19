@@ -158,6 +158,12 @@ public class RepoXMLHandler extends DefaultHandler {
                 } catch (NumberFormatException ex) {
                     curapk.minSdkVersion = 0;
                 }
+            } else if (curel.equals("maxsdkver")) {
+                try {
+                    curapk.maxSdkVersion = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.maxSdkVersion = 0;
+                }
             } else if (curel.equals("added")) {
                 try {
                     curapk.added = str.length() == 0 ? null : Utils.DATE_FORMAT

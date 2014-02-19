@@ -145,12 +145,21 @@ public class AppDetails extends ListActivity {
                 holder.size.setVisibility(View.GONE);
             }
 
-            if (pref_expert && apk.minSdkVersion > 0) {
+            if (!pref_expert) {
+                holder.api.setVisibility(View.GONE);
+            } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion > 0) {
+                holder.api.setText(getString(R.string.minsdk_up_to_maxsdk,
+                            Utils.getAndroidVersionName(apk.minSdkVersion),
+                            Utils.getAndroidVersionName(apk.maxSdkVersion)));
+                holder.api.setVisibility(View.VISIBLE);
+            } else if (apk.minSdkVersion > 0) {
                 holder.api.setText(getString(R.string.minsdk_or_later,
                             Utils.getAndroidVersionName(apk.minSdkVersion)));
                 holder.api.setVisibility(View.VISIBLE);
-            } else {
-                holder.api.setVisibility(View.GONE);
+            } else if (apk.maxSdkVersion > 0) {
+                holder.api.setText(getString(R.string.up_to_maxsdk,
+                            Utils.getAndroidVersionName(apk.maxSdkVersion)));
+                holder.api.setVisibility(View.VISIBLE);
             }
 
             if (apk.srcname != null) {

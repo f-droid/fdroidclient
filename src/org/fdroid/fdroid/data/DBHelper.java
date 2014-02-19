@@ -46,6 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "sig string, "
             + "srcname string, "
             + "minSdkVersion integer, "
+            + "maxSdkVersion integer, "
             + "permissions string, "
             + "features string, "
             + "nativecode string, "
@@ -86,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "iconUrl text, "
             + "primary key(id));";
 
-    private static final int DB_VERSION = 39;
+    private static final int DB_VERSION = 40;
 
     private Context context;
 

@@ -200,7 +200,9 @@
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
-    <string name="minsdk_or_later">Android %s or later</string>
+    <string name="minsdk_or_later">%s or later</string>
+    <string name="up_to_maxsdk">up to %s</string>
+    <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>
     <string name="not_on_same_wifi">Your device is not on the same WiFi as the local repo you just added! Try joining this network: %s</string>
     <string name="requires_features">Requires: %1$s</string>
 

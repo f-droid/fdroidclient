@@ -69,7 +69,7 @@ public class CompatibilityChecker extends Compatibility {
 
         List<String> incompatibleReasons = new ArrayList<String>();
 
-        if (!hasApi(apk.minSdkVersion)) {
+        if (!hasApi(apk.minSdkVersion) || !upToApi(apk.maxSdkVersion)) {
             incompatibleReasons.add(
                 context.getResources().getString(
                     R.string.minsdk_or_later,

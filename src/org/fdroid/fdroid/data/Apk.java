@@ -16,6 +16,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     public String hash;
     public String hashType;
     public int minSdkVersion; // 0 if unknown
+    public int maxSdkVersion; // 0 if none
     public Date added;
     public Utils.CommaSeparatedList permissions; // null if empty or
     // unknown
@@ -75,6 +76,8 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                 compatible = cursor.getInt(i) == 1;
             } else if (column.equals(ApkProvider.DataColumns.MIN_SDK_VERSION)) {
                 minSdkVersion = cursor.getInt(i);
+            } else if (column.equals(ApkProvider.DataColumns.MAX_SDK_VERSION)) {
+                maxSdkVersion = cursor.getInt(i);
             } else if (column.equals(ApkProvider.DataColumns.NAME)) {
                 apkName = cursor.getString(i);
             } else if (column.equals(ApkProvider.DataColumns.PERMISSIONS)) {
@@ -121,6 +124,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         values.put(ApkProvider.DataColumns.SIZE, size);
         values.put(ApkProvider.DataColumns.NAME, apkName);
         values.put(ApkProvider.DataColumns.MIN_SDK_VERSION, minSdkVersion);
+        values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, maxSdkVersion);
         values.put(ApkProvider.DataColumns.ADDED_DATE, added == null ? "" : Utils.DATE_FORMAT.format(added));
         values.put(ApkProvider.DataColumns.PERMISSIONS, Utils.CommaSeparatedList.str(permissions));
         values.put(ApkProvider.DataColumns.FEATURES, Utils.CommaSeparatedList.str(features));
