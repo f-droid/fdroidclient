@@ -100,6 +100,7 @@
 	<string name="menu_search">Search</string>
 	<string name="menu_add_repo">New Repository</string>
 	<string name="menu_rem_repo">Remove Repository</string>
+	<string name="menu_scan_repo">Find Local Repos</string>
 
 	<string name="menu_launch">Run</string>
 	<string name="menu_share">Share</string>
@@ -147,6 +148,9 @@
 	<string name="category_all">All</string>
 	<string name="category_whatsnew">What\'s New</string>
 	<string name="category_recentlyupdated">Recently Updated</string>
+
+	<string name="local_repos_title">Local FDroid Repos</string>
+	<string name="local_repos_scanning">Discovering local FDroid repos&#8230;</string>
 
 	<!--
 	status_download takes four parameters:
