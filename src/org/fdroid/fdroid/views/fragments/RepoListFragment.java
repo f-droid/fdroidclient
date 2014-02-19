@@ -163,7 +163,7 @@ public class RepoListFragment extends ListFragment
         // Can't do this in the onCreate view, because "onCreateView" which
         // returns the list view is "called between onCreate and
         // onActivityCreated" according to the docs.
-        getListView().addHeaderView(createHeaderView());
+        getListView().addHeaderView(createHeaderView(), null, false);
 
         // This could go in onCreate (and used to) but it needs to be called
         // after addHeaderView, which can only be called after onCreate...
