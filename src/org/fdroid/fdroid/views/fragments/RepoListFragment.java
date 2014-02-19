@@ -1,6 +1,7 @@
 
 package org.fdroid.fdroid.views.fragments;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -10,8 +11,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.net.nsd.NsdServiceInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ListFragment;
@@ -26,6 +29,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -33,9 +37,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.net.NsdHelper;
+import org.fdroid.fdroid.net.NsdHelper.DiscoveredRepo;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.net.NsdHelper.RepoScanListAdapter;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.data.Repo;
@@ -54,6 +61,7 @@ public class RepoListFragment extends ListFragment
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
     private final int ADD_REPO = 1;
     private final int UPDATE_REPOS = 2;
+    private final int SCAN_FOR_REPOS = 3;
 
     private WifiManager wifiManager;
 
@@ -277,6 +285,12 @@ public class RepoListFragment extends ListFragment
         MenuItemCompat.setShowAsAction(addItem,
                 MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                         MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+            menu.add(Menu.NONE, SCAN_FOR_REPOS, 1, R.string.menu_scan_repo).setIcon(
+                    android.R.drawable.ic_menu_search);
+        }
     }
 
     public static final int SHOW_REPO_DETAILS = 1;
@@ -298,6 +312,59 @@ public class RepoListFragment extends ListFragment
                 }
             }
         });
+    }
+
+    @TargetApi(16) // AKA Android 4.1 AKA Jelly Bean
+    private void scanForRepos() {
+        final Activity a = getActivity();
+
+        final RepoScanListAdapter adapter = new RepoScanListAdapter(a);
+        final NsdHelper nsdHelper = new NsdHelper(a.getApplicationContext(), adapter);
+
+        final View view = getLayoutInflater(null).inflate(R.layout.repodiscoverylist, null);
+        final ListView repoScanList = (ListView) view.findViewById(R.id.reposcanlist);
+
+        final AlertDialog alrt = new AlertDialog.Builder(getActivity()).setView(view)
+                                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        nsdHelper.stopDiscovery();
+                                        dialog.dismiss();
+                                    }
+                                }).create();
+
+        alrt.setTitle(R.string.local_repos_title);
+        alrt.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                nsdHelper.stopDiscovery();
+            }
+        });
+
+        repoScanList.setAdapter(adapter);
+        repoScanList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, final View view,
+              int position, long id) {
+
+            final DiscoveredRepo discoveredService =
+                    (DiscoveredRepo) parent.getItemAtPosition(position);
+
+            final NsdServiceInfo serviceInfo = discoveredService.getServiceInfo();
+
+            String serviceType = serviceInfo.getServiceType();
+            String protocol = serviceType.contains("fdroidrepos") ? "https://" : "http://";
+
+            String serviceAddress = protocol + serviceInfo.getHost().getHostAddress()
+                                    + ":" + serviceInfo.getPort() + "/fdroid/repo";
+            showAddRepo(serviceAddress, "");
+          }
+        });
+
+        alrt.show();
+
+        Log.d("FDroid", "Starting network service discovery");
+        nsdHelper.discoverServices();
     }
 
     private void showAddRepo() {
@@ -446,6 +513,9 @@ public class RepoListFragment extends ListFragment
             return true;
         } else if (item.getItemId() == UPDATE_REPOS) {
             updateRepos();
+            return true;
+        } else if (item.getItemId() == SCAN_FOR_REPOS) {
+            scanForRepos();
             return true;
         }
 

@@ -1,5 +1,8 @@
 ### Upcoming release
 
+* Support for Network Service Discovery of local FDroid repos on Android 4.1+
+  from the repository management screen.
+
 * Always remember the selected category in the list of apps
 
 * Send FDroid via Bluetooth to any device that supports receiving APKs via
