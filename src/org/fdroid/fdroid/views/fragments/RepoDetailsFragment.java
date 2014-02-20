@@ -264,6 +264,9 @@ public class RepoDetailsFragment extends Fragment {
     private void prepareNfcMenuItems(Menu menu) {
         boolean needsEnableNfcMenuItem = false;
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
+        if (nfcAdapter == null) {
+            return;
+        }
         if (Build.VERSION.SDK_INT < 16)
             needsEnableNfcMenuItem = !nfcAdapter.isEnabled();
         else
