@@ -66,10 +66,12 @@ public interface ProgressListener {
         }
 
         public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
+            @Override
             public Event createFromParcel(Parcel in) {
                 return new Event(in.readInt(), in.readInt(), in.readInt(), in.readBundle());
             }
 
+            @Override
             public Event[] newArray(int size) {
                 return new Event[size];
             }

@@ -25,6 +25,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         getSwappableContext().setResources(new MockCategoryResources());
     }
 
+    @Override
     protected String[] getMinimalProjection() {
         return new String[] {
             AppProvider.DataColumns.APP_ID,

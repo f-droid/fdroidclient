@@ -37,6 +37,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         return "Available";
     }
 
+    @Override
     protected AppListAdapter getAppListAdapter() {
         if (adapter == null) {
             final AppListAdapter a = new AvailableAppListAdapter(getActivity(), null);

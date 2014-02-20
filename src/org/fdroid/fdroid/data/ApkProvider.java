@@ -255,6 +255,7 @@ public class ApkProvider extends FDroidProvider {
         return PROVIDER_NAME;
     }
 
+    @Override
     protected UriMatcher getMatcher() {
         return matcher;
     }
@@ -323,6 +324,7 @@ public class ApkProvider extends FDroidProvider {
             this.orderBy = orderBy;
         }
 
+        @Override
         public String toString() {
 
             StringBuilder suffix = new StringBuilder();

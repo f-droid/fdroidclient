@@ -20,6 +20,7 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
         super(ApkProvider.class, ApkProvider.getAuthority());
     }
 
+    @Override
     protected String[] getMinimalProjection() {
         return new String[] {
             ApkProvider.DataColumns.APK_ID,

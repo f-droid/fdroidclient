@@ -266,6 +266,7 @@ public class AppProvider extends FDroidProvider {
         return AUTHORITY + "." + PROVIDER_NAME;
     }
 
+    @Override
     protected UriMatcher getMatcher() {
         return matcher;
     }

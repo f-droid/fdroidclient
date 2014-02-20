@@ -72,6 +72,7 @@ public class Repo extends ValueObject {
         return name;
     }
 
+    @Override
     public String toString() {
         return address;
     }
