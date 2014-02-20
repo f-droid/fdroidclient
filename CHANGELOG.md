@@ -16,6 +16,8 @@
 
 * Support for TLS Subject-Public-Key-Identifier pinning
 
+* Add native Right-to-Left support on devices running 4.2 and later
+
 * Filter app compatibility by maxSdkVersion too
 
 * Various fixes to layout issues introduced in 0.58
