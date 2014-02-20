@@ -22,12 +22,6 @@
 		<item>24</item>
 	</string-array>
 
-	<string-array name="dbSyncModeValues">
-		<item>off</item>
-		<item>normal</item>
-		<item>full</item>
-	</string-array>
-
 	<string-array name="themeValues">
 		<item>dark</item>
 		<item>light</item>
