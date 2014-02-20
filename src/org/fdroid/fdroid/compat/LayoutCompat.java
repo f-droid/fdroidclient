@@ -14,10 +14,16 @@ public abstract class LayoutCompat extends Compatibility {
 
     private static final LayoutCompat impl = LayoutCompat.create();
 
+    protected abstract int relativeLayoutStartOf();
     protected abstract int relativeLayoutEndOf();
+    protected abstract int relativeLayoutAlignParentStart();
+    protected abstract int relativeLayoutAlignParentEnd();
 
     public static class RelativeLayout {
+        public static final int START_OF = impl.relativeLayoutStartOf();
         public static final int END_OF = impl.relativeLayoutEndOf();
+        public static final int ALIGN_PARENT_START = impl.relativeLayoutAlignParentStart();
+        public static final int ALIGN_PARENT_END = impl.relativeLayoutAlignParentEnd();
     }
 
 }
@@ -25,8 +31,23 @@ public abstract class LayoutCompat extends Compatibility {
 class OldLayoutCompatImpl extends LayoutCompat {
 
     @Override
+    protected int relativeLayoutStartOf() {
+        return android.widget.RelativeLayout.LEFT_OF;
+    }
+
+    @Override
     protected int relativeLayoutEndOf() {
         return android.widget.RelativeLayout.RIGHT_OF;
+    }
+
+    @Override
+    protected int relativeLayoutAlignParentStart() {
+        return android.widget.RelativeLayout.ALIGN_PARENT_LEFT;
+    }
+
+    @Override
+    protected int relativeLayoutAlignParentEnd() {
+        return android.widget.RelativeLayout.ALIGN_PARENT_RIGHT;
     }
 }
 
@@ -34,7 +55,22 @@ class OldLayoutCompatImpl extends LayoutCompat {
 class JellyBeanMr1LayoutCompatImpl extends LayoutCompat {
 
     @Override
+    protected int relativeLayoutStartOf() {
+        return android.widget.RelativeLayout.START_OF;
+    }
+
+    @Override
     protected int relativeLayoutEndOf() {
         return android.widget.RelativeLayout.END_OF;
+    }
+
+    @Override
+    protected int relativeLayoutAlignParentStart() {
+        return android.widget.RelativeLayout.ALIGN_PARENT_START;
+    }
+
+    @Override
+    protected int relativeLayoutAlignParentEnd() {
+        return android.widget.RelativeLayout.ALIGN_PARENT_END;
     }
 }

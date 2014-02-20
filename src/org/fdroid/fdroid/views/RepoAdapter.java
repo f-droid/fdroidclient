@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.SwitchCompat;
+import org.fdroid.fdroid.compat.LayoutCompat;
 import org.fdroid.fdroid.data.Repo;
 
 public class RepoAdapter extends CursorAdapter {
@@ -92,7 +93,7 @@ public class RepoAdapter extends CursorAdapter {
         nameView.setText(repo.getName());
         RelativeLayout.LayoutParams nameViewLayout =
                 (RelativeLayout.LayoutParams)nameView.getLayoutParams();
-        nameViewLayout.addRule(RelativeLayout.LEFT_OF, switchView.getId());
+        nameViewLayout.addRule(LayoutCompat.RelativeLayout.START_OF, switchView.getId());
 
         // If we set the signed view to GONE instead of INVISIBLE, then the
         // height of each list item varies.
@@ -112,7 +113,7 @@ public class RepoAdapter extends CursorAdapter {
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
         );
-        layout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        layout.addRule(LayoutCompat.RelativeLayout.ALIGN_PARENT_END);
         layout.addRule(RelativeLayout.CENTER_VERTICAL);
         switchView.setLayoutParams(layout);
         ((RelativeLayout)parent).addView(switchView);
