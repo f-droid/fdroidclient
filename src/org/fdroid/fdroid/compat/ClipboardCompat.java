@@ -4,10 +4,6 @@ import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.ToggleButton;
-import org.fdroid.fdroid.ManageRepo;
 
 public abstract class ClipboardCompat extends Compatibility {
 

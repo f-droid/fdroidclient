@@ -2,7 +2,6 @@ package org.fdroid.fdroid;
 
 import android.content.*;
 import android.net.Uri;
-import android.test.mock.MockContentResolver;
 import junit.framework.AssertionFailedError;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;

@@ -2,7 +2,6 @@ package org.fdroid.fdroid.compat;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.ToggleButton;

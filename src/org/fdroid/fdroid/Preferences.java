@@ -2,7 +2,6 @@ package org.fdroid.fdroid;
 
 import java.util.*;
 
-import android.app.LoaderManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;

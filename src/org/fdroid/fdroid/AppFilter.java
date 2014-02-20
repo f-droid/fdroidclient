@@ -18,9 +18,6 @@
 
 package org.fdroid.fdroid;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import org.fdroid.fdroid.data.App;
 
 public class AppFilter {

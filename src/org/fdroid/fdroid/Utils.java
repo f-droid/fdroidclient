@@ -26,7 +26,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
-import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileReader;
@@ -38,8 +37,6 @@ import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
 import java.security.MessageDigest;
 import java.util.*;
-
-import org.fdroid.fdroid.data.Repo;
 
 public final class Utils {
 
