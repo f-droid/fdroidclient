@@ -16,12 +16,31 @@ dependencies {
 	compile project(':extern:MemorizingTrustManager')
 }
 
-project(':extern:UniversalImageLoader:library') {
+subprojects {
+	buildscript {
+		repositories {
+			mavenCentral()
+		}
+		dependencies {
+			classpath 'com.android.tools.build:gradle:0.8.+'
+		}
+	}
 	apply plugin: 'android-library'
+	android {
+		buildToolsVersion '19.0.1'
+		packagingOptions {
+			exclude "META-INF/LICENSE*"
+			exclude "META-INF/NOTICE*"
+			exclude "META-INF/README*"
+			exclude "META-INF/CHANGELOG*"
+			exclude "META-INF/BUILD*"
+		}
+	}
+}
 
+project(':extern:UniversalImageLoader:library') {
 	android {
 		compileSdkVersion 16
-		buildToolsVersion '19.0.1'
 
 		sourceSets {
 			main {
@@ -35,17 +54,9 @@ project(':extern:UniversalImageLoader:library') {
 	}
 }
 
-project(':extern:AndroidPinning') {
-	android { buildToolsVersion '19.0.1' }
-}
-
-project(':extern:MemorizingTrustManager') {
-	android { buildToolsVersion '19.0.1' }
-}
-
 android {
 	compileSdkVersion 19
-	buildToolsVersion "19.0.1"
+	buildToolsVersion '19.0.1'
 
 	sourceSets {
 		main {
