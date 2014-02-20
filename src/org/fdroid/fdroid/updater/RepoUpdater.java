@@ -268,6 +268,7 @@ abstract public class RepoUpdater {
 
     public static class UpdateException extends Exception {
 
+        private static final long serialVersionUID = -4492452418826132803L;
         public final Repo repo;
 
         public UpdateException(Repo repo, String message) {
