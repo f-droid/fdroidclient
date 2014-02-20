@@ -7,8 +7,8 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:paddingTop="@dimen/padding_top"
-    android:paddingLeft="@dimen/padding_side"
-    android:paddingRight="@dimen/padding_side">
+    android:paddingStart="@dimen/padding_side"
+    android:paddingEnd="@dimen/padding_side">
 
     <!-- Editable URL of this repo -->
     <TextView
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/label_repo_url"
         android:text="@string/repo_url"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
     <EditText
         android:layout_width="fill_parent"
@@ -32,7 +32,7 @@
         android:id="@+id/label_repo_name"
         android:text="@string/repo_name"
         android:layout_below="@id/input_repo_url"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:paddingTop="@dimen/form_label_top"/>
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         android:id="@+id/label_description"
         android:text="@string/repo_description"
         android:layout_below="@id/text_repo_name"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:paddingTop="@dimen/form_label_top"/>
     <TextView
         android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
         android:id="@+id/label_num_apps"
         android:text="@string/repo_num_apps"
         android:layout_below="@id/text_description"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:paddingTop="@dimen/form_label_top" />
     <TextView
         android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
         android:id="@+id/label_last_update"
         android:text="@string/repo_last_update"
         android:layout_below="@id/text_num_apps"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:paddingTop="@dimen/form_label_top" />
     <TextView
         android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
         android:id="@+id/label_repo_fingerprint"
         android:text="@string/repo_fingerprint"
         android:layout_below="@id/text_last_update"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:paddingTop="@dimen/form_label_top" />
     <TextView
         android:layout_width="fill_parent"
