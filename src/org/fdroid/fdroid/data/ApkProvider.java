@@ -442,7 +442,7 @@ public class ApkProvider extends FDroidProvider {
     public Uri insert(Uri uri, ContentValues values) {
         removeRepoFields(values);
         validateFields(DataColumns.ALL, values);
-        long id = write().insertOrThrow(getTableName(), null, values);
+        write().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }

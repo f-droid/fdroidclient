@@ -247,7 +247,6 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
-            int updates = 0;
             List<Repo> repos = RepoProvider.Helper.all(this);
 
             // Process each repo...

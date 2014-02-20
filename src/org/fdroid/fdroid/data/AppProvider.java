@@ -458,7 +458,7 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        long id = write().insertOrThrow(getTableName(), null, values);
+        write().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
