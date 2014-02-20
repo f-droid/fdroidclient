@@ -29,7 +29,7 @@ public class AppFilter {
         boolean dontFilterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
 
         if (app.requirements == null || dontFilterRequiringRoot) return false;
-        
+
         for (String r : app.requirements) {
             if (r.equals("root"))
                 return true;

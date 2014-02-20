@@ -231,7 +231,7 @@ public class ApkProviderTest extends FDroidProviderTest<ApkProvider> {
             ApkProvider.DataColumns.APK_ID,
             ApkProvider.DataColumns.VERSION_CODE
         };
-        
+
         Cursor cursor = getMockContentResolver().query(uri, projections, null, null, null);
         cursor.moveToFirst();
         Apk apk = new Apk(cursor);

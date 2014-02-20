@@ -248,7 +248,7 @@ abstract public class RepoUpdater {
                     + repo.version + " to " + handler.getVersion());
             values.put(RepoProvider.DataColumns.VERSION, handler.getVersion());
         }
-        
+
         if (handler.getMaxAge() != -1 && handler.getMaxAge() != repo.maxage) {
             Log.d("FDroid",
                     "Repo specified a new maximum age - updated");

@@ -58,6 +58,7 @@ public class FDroidApp extends Application {
     private static enum Theme {
         dark, light
     }
+
     private static Theme curTheme = Theme.dark;
 
     public void reloadTheme() {
@@ -65,6 +66,7 @@ public class FDroidApp extends Application {
                 .getDefaultSharedPreferences(getBaseContext())
                 .getString(Preferences.PREF_THEME, "dark"));
     }
+
     public void applyTheme(Activity activity) {
         switch (curTheme) {
             case dark:
@@ -147,16 +149,16 @@ public class FDroidApp extends Application {
         try {
             SSLContext sc = SSLContext.getInstance("TLS");
             X509TrustManager defaultTrustManager = null;
-            
+
             /*
              * init a trust manager factory with a null keystore to access the system trust managers
              */
-            TrustManagerFactory tmf = 
+            TrustManagerFactory tmf =
                     TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             KeyStore ks = null;
             tmf.init(ks);
             TrustManager[] mgrs = tmf.getTrustManagers();
-            
+
             if(mgrs.length > 0 && mgrs[0] instanceof X509TrustManager)
                 defaultTrustManager = (X509TrustManager) mgrs[0];
 
@@ -166,7 +168,7 @@ public class FDroidApp extends Application {
              */
             PinningTrustManager pinMgr = new PinningTrustManager(SystemKeyStore.getInstance(ctx),FDroidCertPins.getPinList(), 0);
             MemorizingTrustManager memMgr = new MemorizingTrustManager(ctx, pinMgr, defaultTrustManager);
-            
+
             /*
              * initialize a SSLContext with the outermost trust manager, use this
              * context to set the default SSL socket factory for the HTTPSURLConnection

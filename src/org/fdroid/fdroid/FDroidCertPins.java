@@ -31,8 +31,8 @@ public class FDroidCertPins {
          * SPKI Pin: 638F93856E1F5EDFCBD40C46D4160CFF21B0713A
          */
         "638F93856E1F5EDFCBD40C46D4160CFF21B0713A",
-        
-        /* 
+
+        /*
          * SubjectDN: CN=guardianproject.info, OU=Gandi Standard SSL, OU=Domain Control Validated
          * IssuerDN: CN=Gandi Standard SSL CA, O=GANDI SAS, C=FR
          * Fingerprint: 187C2573E924DFCBFF2A781A2F99D71C6E031828
