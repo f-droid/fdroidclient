@@ -15,7 +15,7 @@
     <ImageView android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentStart="true" />
 
     <TextView android:id="@+id/repo_name"
         android:textSize="21sp"
@@ -24,8 +24,8 @@
         android:ellipsize="marquee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/img"
-        android:layout_alignParentLeft="true"/>
+        android:layout_toEndOf="@id/img"
+        android:layout_alignParentStart="true"/>
 
     <TextView android:id="@+id/repo_unsigned"
         android:textSize="14sp"

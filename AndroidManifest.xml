@@ -44,7 +44,7 @@
         android:label="@string/app_name"
         android:allowBackup="true"
         android:theme="@style/AppThemeDark"
-        android:supportsRtl="false" >
+        android:supportsRtl="true" >
 
         <provider
             android:authorities="org.fdroid.fdroid.data.AppProvider"
