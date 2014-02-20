@@ -266,6 +266,7 @@ public class AppProvider extends FDroidProvider {
         return AUTHORITY + "." + PROVIDER_NAME;
     }
 
+    @Override
     protected UriMatcher getMatcher() {
         return matcher;
     }
@@ -458,7 +459,7 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        long id = write().insertOrThrow(getTableName(), null, values);
+        write().insertOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }

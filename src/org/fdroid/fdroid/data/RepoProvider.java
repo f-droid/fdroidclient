@@ -234,6 +234,7 @@ public class RepoProvider extends FDroidProvider {
         return "RepoProvider";
     }
 
+    @Override
     protected UriMatcher getMatcher() {
         return matcher;
     }

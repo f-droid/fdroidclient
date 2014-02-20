@@ -84,6 +84,7 @@ public class SignedRepoUpdater extends RepoUpdater {
         return indexFile;
     }
 
+    @Override
     protected String getIndexAddress() {
         return repo.address + "/index.jar?client_version=" + context.getString(R.string.version_name);
     }

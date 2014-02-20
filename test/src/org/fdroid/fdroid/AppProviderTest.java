@@ -2,9 +2,10 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.net.Uri;
+
 import mock.MockCategoryResources;
 import mock.MockInstallablePackageManager;
+
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -24,6 +25,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         getSwappableContext().setResources(new MockCategoryResources());
     }
 
+    @Override
     protected String[] getMinimalProjection() {
         return new String[] {
             AppProvider.DataColumns.APP_ID,

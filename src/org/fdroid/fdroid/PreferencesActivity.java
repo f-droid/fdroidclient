@@ -152,8 +152,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 
         super.onResume();
         getPreferenceScreen().getSharedPreferences()
-                    .registerOnSharedPreferenceChangeListener(
-                            (OnSharedPreferenceChangeListener)this);
+                    .registerOnSharedPreferenceChangeListener(this);
 
         for (String key : summariesToUpdate) {
             updateSummary(key, false);

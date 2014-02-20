@@ -248,7 +248,7 @@ abstract public class RepoUpdater {
                     + repo.version + " to " + handler.getVersion());
             values.put(RepoProvider.DataColumns.VERSION, handler.getVersion());
         }
-        
+
         if (handler.getMaxAge() != -1 && handler.getMaxAge() != repo.maxage) {
             Log.d("FDroid",
                     "Repo specified a new maximum age - updated");
@@ -268,6 +268,7 @@ abstract public class RepoUpdater {
 
     public static class UpdateException extends Exception {
 
+        private static final long serialVersionUID = -4492452418826132803L;
         public final Repo repo;
 
         public UpdateException(Repo repo, String message) {

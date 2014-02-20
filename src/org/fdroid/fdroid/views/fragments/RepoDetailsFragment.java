@@ -62,6 +62,7 @@ public class RepoDetailsFragment extends Fragment {
     // best way to go about this...
     private Repo repo;
 
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
     }
@@ -80,6 +81,7 @@ public class RepoDetailsFragment extends Fragment {
         return RepoProvider.Helper.findById(getActivity(), getRepoId());
     }
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         repo = loadRepoDetails();
@@ -346,11 +348,13 @@ public class RepoDetailsFragment extends Fragment {
         repoFingerprintView.setTextColor(repoFingerprintColor);
     }
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }

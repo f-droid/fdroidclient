@@ -45,6 +45,7 @@ public class RepoAdapter extends CursorAdapter {
         enabledListener = listener;
     }
 
+    @Override
     public boolean hasStableIds() {
         return true;
     }

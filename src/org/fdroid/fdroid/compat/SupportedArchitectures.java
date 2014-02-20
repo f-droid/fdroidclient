@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.HashSet;
 
 import android.annotation.TargetApi;
-import android.util.Log;
 import android.os.Build;
 
 public class SupportedArchitectures extends Compatibility {

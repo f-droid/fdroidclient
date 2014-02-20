@@ -18,9 +18,6 @@
 
 package org.fdroid.fdroid;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import org.fdroid.fdroid.data.App;
 
 public class AppFilter {
@@ -32,7 +29,7 @@ public class AppFilter {
         boolean dontFilterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
 
         if (app.requirements == null || dontFilterRequiringRoot) return false;
-        
+
         for (String r : app.requirements) {
             if (r.equals("root"))
                 return true;
