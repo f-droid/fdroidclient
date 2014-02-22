@@ -22,6 +22,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import org.fdroid.fdroid.data.AppProvider;
 
 public class PackageReceiver extends BroadcastReceiver {
 
@@ -29,7 +30,7 @@ public class PackageReceiver extends BroadcastReceiver {
     public void onReceive(Context ctx, Intent intent) {
         String appid = intent.getData().getSchemeSpecificPart();
         Log.d("FDroid", "PackageReceiver received "+appid);
-        ((FDroidApp) ctx.getApplicationContext()).invalidateApp(appid);
+        ctx.getContentResolver().notifyChange(AppProvider.getContentUri(appid), null);
         Utils.clearInstalledApksCache();
     }
 

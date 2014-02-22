@@ -909,7 +909,7 @@ public class AppDetails extends ListActivity {
         Uri uri = Uri.fromParts("package", pkginfo.packageName, null);
         Intent intent = new Intent(Intent.ACTION_DELETE, uri);
         startActivityForResult(intent, REQUEST_UNINSTALL);
-        ((FDroidApp) getApplication()).invalidateApp(id);
+        notifyAppChanged(id);
 
     }
 
@@ -927,7 +927,15 @@ public class AppDetails extends ListActivity {
                 "application/vnd.android.package-archive");
         extraNotUnknownSource(intent);
         startActivityForResult(intent, REQUEST_INSTALL);
-        ((FDroidApp) getApplication()).invalidateApp(id);
+        notifyAppChanged(id);
+    }
+
+    /**
+     * We could probably drop this, and let the PackageReceiver take care of notifications
+     * for us, but I don't think the package receiver notifications are very instantaneous.
+     */
+    private void notifyAppChanged(String id) {
+        getContentResolver().notifyChange(AppProvider.getContentUri(id), null);
     }
 
     private void launchApk(String id) {
