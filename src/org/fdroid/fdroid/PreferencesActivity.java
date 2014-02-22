@@ -36,7 +36,6 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 public class PreferencesActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener {
 
-    public static final int RESULT_RELOAD = 1;
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
@@ -184,7 +183,6 @@ public class PreferencesActivity extends PreferenceActivity implements
     @Override
     public void onSharedPreferenceChanged(
             SharedPreferences sharedPreferences, String key) {
-
         updateSummary(key, true);
     }
 

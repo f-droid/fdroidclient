@@ -129,13 +129,11 @@ public class FDroidApp extends Application {
             }
         }
 
-        invalidApps = new ArrayList<String>();
-        ctx = getApplicationContext();
-        UpdateService.schedule(ctx);
+        UpdateService.schedule(getApplicationContext());
 
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
             .discCache(new LimitedAgeDiscCache(
-                        new File(StorageUtils.getCacheDirectory(ctx, true),
+                        new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
                             "icons"),
                         new FileNameGenerator() {
                             @Override
@@ -170,8 +168,8 @@ public class FDroidApp extends Application {
              * compose a chain of trust managers as follows:
              * MemorizingTrustManager -> Pinning Trust Manager -> System Trust Manager
              */
-            PinningTrustManager pinMgr = new PinningTrustManager(SystemKeyStore.getInstance(ctx),FDroidCertPins.getPinList(), 0);
-            MemorizingTrustManager memMgr = new MemorizingTrustManager(ctx, pinMgr, defaultTrustManager);
+            PinningTrustManager pinMgr = new PinningTrustManager(SystemKeyStore.getInstance(getApplicationContext()),FDroidCertPins.getPinList(), 0);
+            MemorizingTrustManager memMgr = new MemorizingTrustManager(getApplicationContext(), pinMgr, defaultTrustManager);
 
             /*
              * initialize a SSLContext with the outermost trust manager, use this
@@ -187,31 +185,6 @@ public class FDroidApp extends Application {
         } catch (KeyStoreException e) {
             Log.e("FDroid", "Unable to set up trust manager chain. KeyStoreException");
         }
-    }
-
-    private Context ctx;
-
-    // Set when something has changed (database or installed apps) so we know
-    // we should invalidate the apps.
-    private Semaphore appsInvalidLock = new Semaphore(1, false);
-    private List<String> invalidApps;
-
-    // Set apps invalid. Call this when the database has been updated with
-    // new app information, or when the installed packages have changed.
-    public void invalidateAllApps() {
-        try {
-            appsInvalidLock.acquire();
-        } catch (InterruptedException e) {
-            // Don't care
-        } finally {
-            appsInvalidLock.release();
-        }
-    }
-
-    // Invalidate a single app
-    public void invalidateApp(String id) {
-        Log.d("FDroid", "Invalidating "+id);
-        invalidApps.add(id);
     }
 
 }

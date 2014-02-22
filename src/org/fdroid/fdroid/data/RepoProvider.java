@@ -169,8 +169,6 @@ public class RepoProvider extends FDroidProvider {
             Uri appUri = AppProvider.getNoApksUri();
             int appCount = resolver.delete(appUri, null, null);
             Log.d("Log", "Removed " + appCount + " apps with no apks.");
-
-            app.invalidateAllApps();
         }
 
         public static int countAppsForRepo(Context context, long repoId) {

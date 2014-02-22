@@ -281,10 +281,6 @@ public class FDroid extends FragmentActivity {
             // check if the particular setting has actually been changed.
             UpdateService.schedule(getBaseContext());
 
-            if ((resultCode & PreferencesActivity.RESULT_RELOAD) != 0) {
-                ((FDroidApp) getApplication()).invalidateAllApps();
-            }
-
             if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
                 ((FDroidApp) getApplication()).reloadTheme();
                 final Intent intent = getIntent();
