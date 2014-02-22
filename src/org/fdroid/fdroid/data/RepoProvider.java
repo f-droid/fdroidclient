@@ -174,11 +174,9 @@ public class RepoProvider extends FDroidProvider {
 
         public static int countAppsForRepo(Context context, long repoId) {
             ContentResolver resolver = context.getContentResolver();
-            String[] projection = { "COUNT(distinct id)" };
-            String selection = "repo = ?";
-            String[] args = { Long.toString(repoId) };
-            Uri apkUri = ApkProvider.getContentUri();
-            Cursor result = resolver.query(apkUri, projection, selection, args, null);
+            String[] projection = { ApkProvider.DataColumns._COUNT_DISTINCT_ID };
+            Uri apkUri = ApkProvider.getRepoUri(repoId);
+            Cursor result = resolver.query(apkUri, projection, null, null, null);
             if (result != null && result.getCount() > 0) {
                 result.moveToFirst();
                 return result.getInt(0);
@@ -189,6 +187,7 @@ public class RepoProvider extends FDroidProvider {
     }
 
     public interface DataColumns extends BaseColumns {
+
         public static String ADDRESS      = "address";
         public static String NAME         = "name";
         public static String DESCRIPTION  = "description";

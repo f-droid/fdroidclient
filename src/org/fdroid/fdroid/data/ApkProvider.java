@@ -100,6 +100,8 @@ public class ApkProvider extends FDroidProvider {
 
     public interface DataColumns extends BaseColumns {
 
+        public static String _COUNT_DISTINCT_ID = "countDistinct";
+
         public static String APK_ID          = "id";
         public static String VERSION         = "version";
         public static String REPO_ID         = "repo";
@@ -238,6 +240,8 @@ public class ApkProvider extends FDroidProvider {
                 appendField("rowid", "apk", "_id");
             } else if (field.equals(DataColumns._COUNT)) {
                 appendField("COUNT(*) AS " + DataColumns._COUNT);
+            } else if (field.equals(DataColumns._COUNT_DISTINCT_ID)) {
+                appendField("COUNT(DISTINCT apk.id) AS " + DataColumns._COUNT_DISTINCT_ID);
             } else {
                 appendField(field, "apk");
             }
