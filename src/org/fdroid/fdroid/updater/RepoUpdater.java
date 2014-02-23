@@ -12,6 +12,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.HttpDownloader;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -84,11 +85,11 @@ abstract public class RepoUpdater {
 
     protected abstract String getIndexAddress();
 
-    protected Downloader downloadIndex() throws UpdateException {
+    protected HttpDownloader downloadIndex() throws UpdateException {
         Bundle progressData = createProgressData(repo.address);
-        Downloader downloader = null;
+        HttpDownloader downloader = null;
         try {
-            downloader = new Downloader(getIndexAddress(), context);
+            downloader = new HttpDownloader(getIndexAddress(), context);
             downloader.setETag(repo.lastetag);
 
             if (isInteractive()) {
@@ -98,7 +99,7 @@ abstract public class RepoUpdater {
                 downloader.setProgressListener(progressListener, event);
             }
 
-            int status = downloader.download();
+            int status = downloader.downloadHttpFile();
 
             if (status == 304) {
                 // The index is unchanged since we last read it. We just mark
@@ -169,7 +170,7 @@ abstract public class RepoUpdater {
         File indexFile = null;
         try {
 
-            Downloader downloader = downloadIndex();
+            HttpDownloader downloader = downloadIndex();
             hasChanged = downloader.hasChanged();
 
             if (hasChanged) {
