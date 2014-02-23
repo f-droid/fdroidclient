@@ -27,7 +27,7 @@ subprojects {
 	}
 	apply plugin: 'android-library'
 	android {
-		buildToolsVersion '19.0.1'
+		buildToolsVersion '19.0.2'
 		packagingOptions {
 			exclude "META-INF/LICENSE*"
 			exclude "META-INF/NOTICE*"
@@ -56,7 +56,7 @@ project(':extern:UniversalImageLoader:library') {
 
 android {
 	compileSdkVersion 19
-	buildToolsVersion '19.0.1'
+	buildToolsVersion '19.0.2'
 
 	sourceSets {
 		main {
