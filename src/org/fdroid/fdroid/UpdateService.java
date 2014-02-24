@@ -628,6 +628,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 operations.add(updateExistingApk(apk));
             } else {
                 operations.add(insertNewApk(apk));
+                knownApks.add(apk); // In case another repo has the same version/id combo for this apk.
             }
         }
 
