@@ -100,6 +100,8 @@ public class ApkProvider extends FDroidProvider {
 
     public interface DataColumns extends BaseColumns {
 
+        public static String _COUNT_DISTINCT_ID = "countDistinct";
+
         public static String APK_ID          = "id";
         public static String VERSION         = "version";
         public static String REPO_ID         = "repo";
@@ -221,15 +223,16 @@ public class ApkProvider extends FDroidProvider {
         return matcher;
     }
 
-    private static class QueryBuilder {
-
-        private StringBuilder fields = new StringBuilder();
-        private StringBuilder tables = new StringBuilder(DBHelper.TABLE_APK + " AS apk");
-        private String selection = null;
-        private String orderBy = null;
+    private static class Query extends QueryBuilder {
 
         private boolean repoTableRequired = false;
 
+        @Override
+        protected String getRequiredTables() {
+            return DBHelper.TABLE_APK + " AS apk";
+        }
+
+        @Override
         public void addField(String field) {
             if (REPO_FIELDS.containsKey(field)) {
                 addRepoField(REPO_FIELDS.get(field), field);
@@ -237,68 +240,21 @@ public class ApkProvider extends FDroidProvider {
                 appendField("rowid", "apk", "_id");
             } else if (field.equals(DataColumns._COUNT)) {
                 appendField("COUNT(*) AS " + DataColumns._COUNT);
+            } else if (field.equals(DataColumns._COUNT_DISTINCT_ID)) {
+                appendField("COUNT(DISTINCT apk.id) AS " + DataColumns._COUNT_DISTINCT_ID);
             } else {
                 appendField(field, "apk");
             }
         }
 
-        public void addRepoField(String field, String alias) {
+        private void addRepoField(String field, String alias) {
             if (!repoTableRequired) {
                 repoTableRequired = true;
-                tables.append(" LEFT JOIN ");
-                tables.append(DBHelper.TABLE_REPO);
-                tables.append(" AS repo ON (apk.repo = repo._id) ");
+                leftJoin(DBHelper.TABLE_REPO, "repo", "apk.repo = repo._id");
             }
             appendField(field, "repo", alias);
         }
 
-        private void appendField(String field) {
-            appendField(field, null, null);
-        }
-
-        private void appendField(String field, String tableAlias) {
-            appendField(field, tableAlias, null);
-        }
-
-        private void appendField(String field, String tableAlias,
-                                 String fieldAlias) {
-            if (fields.length() != 0) {
-                fields.append(',');
-            }
-
-            if (tableAlias != null) {
-                fields.append(tableAlias).append('.');
-            }
-
-            fields.append(field);
-
-            if (fieldAlias != null) {
-                fields.append(" AS ").append(fieldAlias);
-            }
-        }
-
-        public void addSelection(String selection) {
-            this.selection = selection;
-        }
-
-        public void addOrderBy(String orderBy) {
-            this.orderBy = orderBy;
-        }
-
-        @Override
-        public String toString() {
-
-            StringBuilder suffix = new StringBuilder();
-            if (selection != null) {
-                suffix.append(" WHERE ").append(selection);
-            }
-
-            if (orderBy != null) {
-                suffix.append(" ORDER BY ").append(orderBy);
-            }
-
-            return "SELECT " + fields + " FROM " + tables + suffix;
-        }
     }
 
     private QuerySelection queryApp(String appId) {
@@ -377,7 +333,7 @@ public class ApkProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
         }
 
-        QueryBuilder queryBuilder = new QueryBuilder();
+        Query queryBuilder = new Query();
         for (String field : projection) {
             queryBuilder.addField(field);
         }

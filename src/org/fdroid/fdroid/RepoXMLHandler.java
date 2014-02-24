@@ -226,12 +226,12 @@ public class RepoXMLHandler extends DefaultHandler {
                     curapp.lastUpdated = null;
                 }
             } else if (curel.equals("marketversion")) {
-                curapp.curVersion = str;
+                curapp.upstreamVersion = str;
             } else if (curel.equals("marketvercode")) {
                 try {
-                    curapp.curVercode = Integer.parseInt(str);
+                    curapp.upstreamVercode = Integer.parseInt(str);
                 } catch (NumberFormatException ex) {
-                    curapp.curVercode = -1;
+                    curapp.upstreamVercode = -1;
                 }
             } else if (curel.equals("categories")) {
                 curapp.categories = Utils.CommaSeparatedList.make(str);

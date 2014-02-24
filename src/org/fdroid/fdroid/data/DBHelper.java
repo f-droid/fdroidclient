@@ -67,8 +67,9 @@ public class DBHelper extends SQLiteOpenHelper {
             + "webURL text, "
             + "trackerURL text, "
             + "sourceURL text, "
-            + "curVersion text,"
-            + "curVercode integer,"
+            + "suggestedVercode text,"
+            + "upstreamVersion text,"
+            + "upstreamVercode integer,"
             + "antiFeatures string,"
             + "donateURL string,"
             + "bitcoinAddr string,"
@@ -85,7 +86,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "iconUrl text, "
             + "primary key(id));";
 
-    private static final int DB_VERSION = 40;
+    private static final int DB_VERSION = 41;
 
     private Context context;
 
