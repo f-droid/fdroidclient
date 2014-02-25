@@ -1072,14 +1072,14 @@ public class AppDetails extends ListActivity {
 
     // Handler used to update the progress dialog while downloading.
     private class DownloadHandler extends Handler {
-        private Downloader download;
+        private ApkDownloader download;
         private ProgressDialog pd;
         private boolean updating;
         private String id;
 
         public DownloadHandler(Apk apk, String repoaddress, File destdir) {
             id = apk.id;
-            download = new Downloader(apk, repoaddress, destdir);
+            download = new ApkDownloader(apk, repoaddress, destdir);
             download.start();
             startUpdates();
         }
@@ -1106,7 +1106,7 @@ public class AppDetails extends ListActivity {
                 if (pd != null)
                     pd.dismiss();
                 String text;
-                if (download.getErrorType() == Downloader.Error.CORRUPT)
+                if (download.getErrorType() == ApkDownloader.Error.CORRUPT)
                     text = getString(R.string.corrupt_download);
                 else
                     text = download.getErrorMessage();

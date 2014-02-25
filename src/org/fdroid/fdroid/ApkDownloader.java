@@ -29,7 +29,7 @@ import java.net.URL;
 import android.util.Log;
 import org.fdroid.fdroid.data.Apk;
 
-public class Downloader extends Thread {
+public class ApkDownloader extends Thread {
 
     private Apk curapk;
     private String repoaddress;
@@ -53,7 +53,7 @@ public class Downloader extends Thread {
 
     // Constructor - creates a Downloader to download the given Apk,
     // which must have its detail populated.
-    Downloader(Apk apk, String repoaddress, File destdir) {
+    ApkDownloader(Apk apk, String repoaddress, File destdir) {
         curapk = apk;
         this.repoaddress = repoaddress;
         this.destdir = destdir;
