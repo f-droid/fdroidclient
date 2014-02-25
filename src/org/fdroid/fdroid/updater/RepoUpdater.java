@@ -66,10 +66,6 @@ abstract public class RepoUpdater {
         return apks;
     }
 
-    public boolean isInteractive() {
-        return progressListener != null;
-    }
-
     /**
      * For example, you may want to unzip a jar file to get the index inside,
      * or if the file is not compressed, you can just return a reference to
@@ -88,7 +84,7 @@ abstract public class RepoUpdater {
             downloader = new HttpDownloader(getIndexAddress(), context);
             downloader.setETag(repo.lastetag);
 
-            if (isInteractive()) {
+            if (progressListener != null) { // interactive session, show progress
                 downloader.setProgressListener(progressListener,
                         new ProgressListener.Event(PROGRESS_TYPE_DOWNLOAD, repo.address));
             }
@@ -171,7 +167,7 @@ abstract public class RepoUpdater {
                 XMLReader reader = parser.getXMLReader();
                 RepoXMLHandler handler = new RepoXMLHandler(repo, progressListener);
 
-                if (isInteractive()) {
+                if (progressListener != null) {
                     // Only bother spending the time to count the expected apps
                     // if we can show that to the user...
                     handler.setTotalAppCount(estimateAppCount(indexFile));
