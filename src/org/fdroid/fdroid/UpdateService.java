@@ -194,7 +194,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             if (message != null && message.length() > 0)
                 resultData.putString(RESULT_MESSAGE, message);
             if (event == null)
-                event = new Event(statusCode);
+                event = new ProgressListener.Event(statusCode);
             resultData.putParcelable(RESULT_EVENT, event);
             receiver.send(statusCode, resultData);
         }
@@ -675,14 +675,13 @@ public class UpdateService extends IntentService implements ProgressListener {
     @Override
     public void onProgress(ProgressListener.Event event) {
         String message = "";
+        String repoAddress = event.getRepoAddress();
         if (event.type == RepoUpdater.PROGRESS_TYPE_DOWNLOAD) {
-            String repoAddress    = event.data.getString(RepoUpdater.PROGRESS_DATA_REPO);
             String downloadedSize = Utils.getFriendlySize( event.progress );
             String totalSize      = Utils.getFriendlySize( event.total );
             int percent           = (int)((double)event.progress/event.total * 100);
             message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
         } else if (event.type == RepoUpdater.PROGRESS_TYPE_PROCESS_XML) {
-            String repoAddress    = event.data.getString(RepoUpdater.PROGRESS_DATA_REPO);
             message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
         }
         sendStatus(STATUS_INFO, message);

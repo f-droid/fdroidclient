@@ -1,8 +1,10 @@
+
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 public interface ProgressListener {
 
@@ -14,6 +16,7 @@ public interface ProgressListener {
     public static class Event implements Parcelable {
 
         public static final int NO_VALUE = Integer.MIN_VALUE;
+        public static final String PROGRESS_DATA_REPO = "repo";
 
         public final int type;
         public final Bundle data;
@@ -29,27 +32,18 @@ public interface ProgressListener {
             this(type, NO_VALUE, NO_VALUE, null);
         }
 
-        public Event(int type, Bundle data) {
-            this(type, NO_VALUE, NO_VALUE, data);
+        public Event(int type, String repoAddress) {
+            this(type, NO_VALUE, NO_VALUE, repoAddress);
         }
 
-        public Event(int type, int progress) {
-            this(type, progress, NO_VALUE, null);
-        }
-
-        public Event(int type, int progress, Bundle data) {
-            this(type, NO_VALUE, NO_VALUE, data);
-        }
-
-        public Event(int type, int progress, int total) {
-            this(type, progress, total, null);
-        }
-
-        public Event(int type, int progress, int total, Bundle data) {
+        public Event(int type, int progress, int total, String repoAddress) {
             this.type = type;
             this.progress = progress;
             this.total = total;
-            this.data = data == null ? new Bundle() : data;
+            if (TextUtils.isEmpty(repoAddress))
+                this.data = new Bundle();
+            else
+                this.data = createProgressData(repoAddress);
         }
 
         @Override
@@ -68,7 +62,8 @@ public interface ProgressListener {
         public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
             @Override
             public Event createFromParcel(Parcel in) {
-                return new Event(in.readInt(), in.readInt(), in.readInt(), in.readBundle());
+                return new Event(in.readInt(), in.readInt(), in.readInt(),
+                        in.readBundle().getString(PROGRESS_DATA_REPO));
             }
 
             @Override
@@ -76,6 +71,16 @@ public interface ProgressListener {
                 return new Event[size];
             }
         };
+
+        public String getRepoAddress() {
+            return data.getString(PROGRESS_DATA_REPO);
+        }
+
+        public static Bundle createProgressData(String repoAddress) {
+            Bundle data = new Bundle();
+            data.putString(PROGRESS_DATA_REPO, repoAddress);
+            return data;
+        }
 
     }
 

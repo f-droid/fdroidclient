@@ -48,11 +48,6 @@ public abstract class Downloader {
         outputFile   = null;
     }
 
-    public void setProgressListener(ProgressListener listener) {
-        this.progressListener = listener;
-        this.progressEvent = new ProgressListener.Event(EVENT_PROGRESS, totalDownloadSize());
-    }
-
     public void setProgressListener(ProgressListener progressListener,
                                     ProgressListener.Event progressEvent) {
         this.progressListener = progressListener;

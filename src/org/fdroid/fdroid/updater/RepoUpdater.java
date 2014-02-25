@@ -2,7 +2,6 @@ package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.RepoXMLHandler;
@@ -11,7 +10,6 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -30,7 +28,6 @@ abstract public class RepoUpdater {
 
     public static final int PROGRESS_TYPE_DOWNLOAD     = 1;
     public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
-    public static final String PROGRESS_DATA_REPO      = "repo";
 
     public static RepoUpdater createUpdaterFor(Context ctx, Repo repo) {
         if (repo.fingerprint == null && repo.pubkey == null) {
@@ -86,17 +83,14 @@ abstract public class RepoUpdater {
     protected abstract String getIndexAddress();
 
     protected HttpDownloader downloadIndex() throws UpdateException {
-        Bundle progressData = createProgressData(repo.address);
         HttpDownloader downloader = null;
         try {
             downloader = new HttpDownloader(getIndexAddress(), context);
             downloader.setETag(repo.lastetag);
 
             if (isInteractive()) {
-                ProgressListener.Event event =
-                    new ProgressListener.Event(
-                        RepoUpdater.PROGRESS_TYPE_DOWNLOAD, progressData);
-                downloader.setProgressListener(progressListener, event);
+                downloader.setProgressListener(progressListener,
+                        new ProgressListener.Event(PROGRESS_TYPE_DOWNLOAD, repo.address));
             }
 
             int status = downloader.downloadHttpFile();
@@ -137,12 +131,6 @@ abstract public class RepoUpdater {
                     e);
         }
         return downloader;
-    }
-
-    public static Bundle createProgressData(String repoAddress) {
-        Bundle data = new Bundle();
-        data.putString(PROGRESS_DATA_REPO, repoAddress);
-        return data;
     }
 
     private int estimateAppCount(File indexFile) {

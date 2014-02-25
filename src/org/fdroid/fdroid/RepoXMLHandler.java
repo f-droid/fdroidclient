@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid;
 
-import android.os.Bundle;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
@@ -279,12 +278,11 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName.equals("application") && curapp == null) {
             curapp = new App();
             curapp.id = attributes.getValue("", "id");
-            Bundle progressData = RepoUpdater.createProgressData(repo.address);
             progressCounter ++;
             progressListener.onProgress(
                 new ProgressListener.Event(
-                    RepoUpdater.PROGRESS_TYPE_PROCESS_XML, progressCounter,
-                    totalAppCount, progressData));
+                    RepoUpdater.PROGRESS_TYPE_PROCESS_XML,
+                    progressCounter, totalAppCount, repo.address));
 
         } else if (localName.equals("package") && curapp != null && curapk == null) {
             curapk = new Apk();

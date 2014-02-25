@@ -24,9 +24,11 @@ import java.io.*;
 
 import android.util.Log;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 
 public class ApkDownloader extends Thread {
+    private static final String TAG = "ApkDownloader";
 
     public static final int EVENT_APK_DOWNLOAD_COMPLETE = 100;
     public static final int EVENT_ERROR_HASH_MISMATCH = 101;
@@ -80,11 +82,15 @@ public class ApkDownloader extends Thread {
             }
 
             // If we haven't got the apk locally, we'll have to download it...
+            String remoteAddress = remoteFile();
+            HttpDownloader downloader = new HttpDownloader(remoteAddress, localfile);
 
-            HttpDownloader downloader = new HttpDownloader(remoteFile(), localfile);
-            downloader.setProgressListener(listener);
+            if (listener != null) {
+                downloader.setProgressListener(listener,
+                        new ProgressListener.Event(Downloader.EVENT_PROGRESS, remoteAddress));
+            }
 
-            Log.d("FDroid", "Downloading apk from " + remoteFile());
+            Log.d(TAG, "Downloading apk from " + remoteAddress);
             int httpStatus = downloader.downloadHttpFile();
 
             if (httpStatus != 200 || !localfile.exists()) {
