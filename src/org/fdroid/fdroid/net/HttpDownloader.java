@@ -1,19 +1,26 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.util.Log;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.net.ssl.SSLHandshakeException;
+
 public class HttpDownloader extends Downloader {
+    private static final String TAG = "HttpDownloader";
 
     private static final String HEADER_IF_NONE_MATCH = "If-None-Match";
     private static final String HEADER_FIELD_ETAG = "ETag";
 
     private URL sourceUrl;
-    private String eTag = null;
     private HttpURLConnection connection;
     private int statusCode = -1;
 
@@ -57,49 +64,48 @@ public class HttpDownloader extends Downloader {
     // In the event of a 200 response ONLY, 'retag' (which should be passed
     // empty) may contain an etag value for the response, or it may be left
     // empty if none was available.
-    public int downloadHttpFile() throws IOException {
-        connection = (HttpURLConnection)sourceUrl.openConnection();
-        setupCacheCheck();
-        statusCode = connection.getResponseCode();
-        if (statusCode == 200) {
-            download();
-            updateCacheCheck();
+    @Override
+    public void download() throws IOException {
+        try {
+            connection = (HttpURLConnection)sourceUrl.openConnection();
+            setupCacheCheck();
+            statusCode = connection.getResponseCode();
+            Log.i(TAG, "download " + statusCode);
+            if (statusCode == 304) {
+                // The index is unchanged since we last read it. We just mark
+                // everything that came from this repo as being updated.
+                Log.d("FDroid", "Repo index for " + sourceUrl
+                        + " is up to date (by etag)");
+            } else if (statusCode == 200) {
+                download();
+                updateCacheCheck();
+            } else {
+                // Is there any code other than 200 which still returns
+                // content? Just in case, lets try to clean up.
+                if (getFile() != null) {
+                    getFile().delete();
+                }
+                throw new IOException(
+                        "Failed to update repo " + sourceUrl +
+                        " - HTTP response " + statusCode);
+            }
+        } catch (SSLHandshakeException e) {
+            // TODO this should be handled better
+            throw new IOException(
+                    "A problem occurred while establishing an SSL " +
+                            "connection. If this problem persists, AND you have a " +
+                            "very old device, you could try using http instead of " +
+                            "https for the repo URL." + Log.getStackTraceString(e) );
         }
-        return statusCode;
     }
 
-    /**
-     * Only available after downloading a file.
-     */
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    /**
-     * If you ask for the eTag before calling download(), you will get the
-     * same one you passed in (if any). If you call it after download(), you
-     * will get the new eTag from the server, or null if there was none.
-     */
-    public String getETag() {
-        return eTag;
-    }
-
-    /**
-     * If this eTag matches that returned by the server, then no download will
-     * take place, and a status code of 304 will be returned by download().
-     */
-    public void setETag(String eTag) {
-        this.eTag = eTag;
-    }
-
-
-    protected void setupCacheCheck() {
+    private void setupCacheCheck() {
         if (eTag != null) {
             connection.setRequestProperty(HEADER_IF_NONE_MATCH, eTag);
         }
     }
 
-    protected void updateCacheCheck() {
+    private void updateCacheCheck() {
         eTag = connection.getHeaderField(HEADER_FIELD_ETAG);
     }
 
@@ -111,10 +117,12 @@ public class HttpDownloader extends Downloader {
     // on my connection. I think the 1/1.5 seconds is worth it,
     // because as the repo grows, the tradeoff will
     // become more worth it.
-    protected int totalDownloadSize() {
+    @Override
+    public int totalDownloadSize() {
         return connection.getContentLength();
     }
 
+    @Override
     public boolean hasChanged() {
         return this.statusCode == 200;
     }

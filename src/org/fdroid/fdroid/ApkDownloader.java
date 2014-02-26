@@ -20,12 +20,13 @@
 
 package org.fdroid.fdroid;
 
-import java.io.*;
-
 import android.util.Log;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
+
+import java.io.File;
 
 public class ApkDownloader extends Thread {
     private static final String TAG = "ApkDownloader";
@@ -83,7 +84,7 @@ public class ApkDownloader extends Thread {
 
             // If we haven't got the apk locally, we'll have to download it...
             String remoteAddress = getRemoteAddress();
-            HttpDownloader downloader = new HttpDownloader(remoteAddress, localfile);
+            Downloader downloader = new HttpDownloader(remoteAddress, localfile);
 
             if (listener != null) {
                 downloader.setProgressListener(listener,
@@ -91,9 +92,9 @@ public class ApkDownloader extends Thread {
             }
 
             Log.d(TAG, "Downloading apk from " + remoteAddress);
-            int httpStatus = downloader.downloadHttpFile();
+            downloader.download();
 
-            if (httpStatus != 200 || !localfile.exists()) {
+            if (!localfile.exists()) {
                 sendProgress(EVENT_ERROR_DOWNLOAD_FAILED);
                 return;
             }

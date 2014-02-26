@@ -1,16 +1,28 @@
 package org.fdroid.fdroid.net;
 
-import java.io.*;
-import java.net.*;
-import android.content.*;
-import org.fdroid.fdroid.*;
+import android.content.Context;
+import android.util.Log;
+
+import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.Utils;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
 
 public abstract class Downloader {
+    private static final String TAG = "Downloader";
 
     private OutputStream outputStream;
     private ProgressListener progressListener = null;
     private ProgressListener.Event progressEvent = null;
     private File outputFile;
+
+    protected String eTag = null;
 
     public static final int EVENT_PROGRESS = 1;
 
@@ -50,8 +62,26 @@ public abstract class Downloader {
 
     public void setProgressListener(ProgressListener progressListener,
                                     ProgressListener.Event progressEvent) {
+        Log.i(TAG, "setProgressListener(ProgressListener listener, ProgressListener.Event progressEvent)");
         this.progressListener = progressListener;
         this.progressEvent = progressEvent;
+    }
+
+    /**
+     * If you ask for the eTag before calling download(), you will get the
+     * same one you passed in (if any). If you call it after download(), you
+     * will get the new eTag from the server, or null if there was none.
+     */
+    public String getETag() {
+        return eTag;
+    }
+
+    /**
+     * If this eTag matches that returned by the server, then no download will
+     * take place, and a status code of 304 will be returned by download().
+     */
+    public void setETag(String eTag) {
+        this.eTag = eTag;
     }
 
     /**
@@ -63,15 +93,19 @@ public abstract class Downloader {
         return outputFile;
     }
 
+    public abstract boolean hasChanged();
+
+    public abstract int totalDownloadSize();
+
     private void setupProgressListener() {
+        Log.i(TAG, "setupProgressListener");
         if (progressListener != null && progressEvent != null) {
             progressEvent.total = totalDownloadSize();
         }
     }
 
-    protected abstract int totalDownloadSize();
-
-    protected void download() throws IOException {
+    public void download() throws IOException {
+        Log.i(TAG, "download");
         setupProgressListener();
         InputStream input = null;
         try {
