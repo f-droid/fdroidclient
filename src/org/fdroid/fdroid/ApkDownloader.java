@@ -58,7 +58,7 @@ public class ApkDownloader extends Thread {
         return localfile;
     }
 
-    public String remoteFile() {
+    public String getRemoteAddress() {
          return repoaddress + "/" + curapk.apkName.replace(" ", "%20");
     }
 
@@ -82,7 +82,7 @@ public class ApkDownloader extends Thread {
             }
 
             // If we haven't got the apk locally, we'll have to download it...
-            String remoteAddress = remoteFile();
+            String remoteAddress = getRemoteAddress();
             HttpDownloader downloader = new HttpDownloader(remoteAddress, localfile);
 
             if (listener != null) {

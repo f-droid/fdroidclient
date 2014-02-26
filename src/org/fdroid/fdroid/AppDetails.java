@@ -1106,7 +1106,7 @@ public class AppDetails extends ListActivity {
                         public void run() {
                             // this must be on the main UI thread
                             if (pd == null) {
-                                pd = createProgressDialog(download.remoteFile(),
+                                pd = createProgressDialog(download.getRemoteAddress(),
                                         event.progress, event.total);
                             } else {
                                 pd.setProgress(event.progress);
