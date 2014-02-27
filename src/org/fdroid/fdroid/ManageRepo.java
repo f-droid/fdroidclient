@@ -62,19 +62,30 @@ public class ManageRepo extends FragmentActivity {
     @Override
     public void finish() {
         Intent ret = new Intent();
-        if (listFragment != null && listFragment.hasChanged()) {
-            Log.i("FDroid", "Repo details have changed, prompting for update.");
-            ret.putExtra(REQUEST_UPDATE, true);
-        }
+        markChangedIfRequired(ret);
         setResult(Activity.RESULT_OK, ret);
         super.finish();
+    }
+
+    private boolean hasChanged() {
+        return listFragment != null && listFragment.hasChanged();
+    }
+
+    private void markChangedIfRequired(Intent intent) {
+        if (hasChanged()) {
+            Log.i("FDroid", "Repo details have changed, prompting for update.");
+            intent.putExtra(REQUEST_UPDATE, true);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                Intent destIntent = new Intent(this, FDroid.class);
+                markChangedIfRequired(destIntent);
+                setResult(RESULT_OK, destIntent);
+                NavUtils.navigateUpTo(this, destIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
