@@ -11,11 +11,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
 public class HttpDownloader extends Downloader {
-    private static final String TAG = "HttpDownloader";
+    private static final String TAG = "org.fdroid.fdroid.net.HttpDownloader";
 
     private static final String HEADER_IF_NONE_MATCH = "If-None-Match";
     private static final String HEADER_FIELD_ETAG = "ETag";
@@ -68,29 +69,22 @@ public class HttpDownloader extends Downloader {
     public void download() throws IOException {
         try {
             connection = (HttpURLConnection)sourceUrl.openConnection();
-            setupCacheCheck();
-            statusCode = connection.getResponseCode();
-            Log.i(TAG, "download " + statusCode);
-            if (statusCode == 304) {
-                // The index is unchanged since we last read it. We just mark
-                // everything that came from this repo as being updated.
-                Log.d("FDroid", "Repo index for " + sourceUrl
-                        + " is up to date (by etag)");
-            } else if (statusCode == 200) {
-                download();
-                updateCacheCheck();
+
+            if (wantToCheckCache()) {
+                setupCacheCheck();
+                Log.i(TAG, "Checking cached status of " + sourceUrl);
+                statusCode = connection.getResponseCode();
+            }
+
+            if (isCached()) {
+                Log.i(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
             } else {
-                // Is there any code other than 200 which still returns
-                // content? Just in case, lets try to clean up.
-                if (getFile() != null) {
-                    getFile().delete();
-                }
-                throw new IOException(
-                        "Failed to update repo " + sourceUrl +
-                        " - HTTP response " + statusCode);
+                Log.i(TAG, "Downloading from " + sourceUrl);
+                downloadFromStream();
+                updateCacheCheck();
             }
         } catch (SSLHandshakeException e) {
-            // TODO this should be handled better
+            // TODO this should be handled better, it is not internationalised here.
             throw new IOException(
                     "A problem occurred while establishing an SSL " +
                             "connection. If this problem persists, AND you have a " +
@@ -99,14 +93,18 @@ public class HttpDownloader extends Downloader {
         }
     }
 
+    public boolean isCached() {
+        return wantToCheckCache() && statusCode == 304;
+    }
+
     private void setupCacheCheck() {
-        if (eTag != null) {
-            connection.setRequestProperty(HEADER_IF_NONE_MATCH, eTag);
+        if (cacheTag != null) {
+            connection.setRequestProperty(HEADER_IF_NONE_MATCH, cacheTag);
         }
     }
 
     private void updateCacheCheck() {
-        eTag = connection.getHeaderField(HEADER_FIELD_ETAG);
+        cacheTag = connection.getHeaderField(HEADER_FIELD_ETAG);
     }
 
     // Testing in the emulator for me, showed that figuring out the

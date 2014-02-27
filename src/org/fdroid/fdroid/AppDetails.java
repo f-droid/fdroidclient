@@ -38,6 +38,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -932,8 +933,8 @@ public class AppDetails extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            downloadHandler = new DownloadHandler(activity, apk,
-                                    repoaddress, Utils.getApkCacheDir(getBaseContext()));
+                            downloadHandler = new DownloadHandler(
+                                apk, repoaddress, Utils.getApkCacheDir(getBaseContext()));
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -962,8 +963,8 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(activity, apk, repoaddress,
-                Utils.getApkCacheDir(getBaseContext()));
+        downloadHandler = new DownloadHandler(
+            apk, repoaddress, Utils.getApkCacheDir(getBaseContext()));
     }
     private void installApk(File file, String packageName) {
         setProgressBarIndeterminateVisibility(true);
@@ -1076,14 +1077,12 @@ public class AppDetails extends ListActivity {
 
     // Handler used to update the progress dialog while downloading.
     private class DownloadHandler extends Handler implements ProgressListener {
-        private static final String TAG = "AppDetails.DownloadHandler";
-        private Activity activity;
+        private static final String TAG = "org.fdroid.fdroid.AppDetails.DownloadHandler";
         private ApkDownloader download;
         private ProgressDialog pd;
         private String id;
 
-        public DownloadHandler(Activity activity, Apk apk, String repoaddress, File destdir) {
-            this.activity = activity;
+        public DownloadHandler(Apk apk, String repoaddress, File destdir) {
             id = apk.id;
             download = new ApkDownloader(apk, repoaddress, destdir);
             download.setProgressListener(this);
@@ -1096,23 +1095,22 @@ public class AppDetails extends ListActivity {
             }
         }
 
-        public void onProgress(final ProgressListener.Event event) {
+        private static final String MSG_EVENT_DATA = "msgEvent";
+
+        /**
+        * Subclasses must implement this to receive messages.
+        */
+        public void handleMessage(Message msg) {
+            ProgressListener.Event event = msg.getData().getParcelable(MSG_EVENT_DATA);
             boolean finished = false;
             switch (event.type) {
                 case Downloader.EVENT_PROGRESS:
-                    activity.runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            // this must be on the main UI thread
-                            if (pd == null) {
-                                pd = createProgressDialog(download.getRemoteAddress(),
-                                        event.progress, event.total);
-                            } else {
-                                pd.setProgress(event.progress);
-                            }
-                        }
-                    });
+                    if (pd == null) {
+                        pd = createProgressDialog(download.getRemoteAddress(),
+                                event.progress, event.total);
+                    } else {
+                        pd.setProgress(event.progress);
+                    }
                     break;
 
                 case ApkDownloader.EVENT_ERROR_DOWNLOAD_FAILED:
@@ -1123,14 +1121,8 @@ public class AppDetails extends ListActivity {
                         text = getString(R.string.corrupt_download);
                     else
                         text = getString(R.string.details_notinstalled);
-                    activity.runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            // this must be on the main UI thread
-                            Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    // this must be on the main UI thread
+                    Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
                     finished = true;
                     break;
 
@@ -1138,12 +1130,25 @@ public class AppDetails extends ListActivity {
                     installApk(download.localFile(), id);
                     finished = true;
                     break;
-
             }
 
             if (finished) {
                 destroy();
             }
+        }
+
+        /**
+         * We receive events on the download thread, and then post them to
+         * whatever thread the DownloadHandler was run on (in our case, the UI
+         * thread).
+         * @param event
+         */
+        public void onProgress(final ProgressListener.Event event) {
+            Message message = new Message();
+            Bundle bundle = new Bundle(1);
+            bundle.putParcelable(MSG_EVENT_DATA, event);
+            message.setData(bundle);
+            sendMessage(message);
         }
 
         public void cancel() {

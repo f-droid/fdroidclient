@@ -15,14 +15,14 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 
 public abstract class Downloader {
-    private static final String TAG = "Downloader";
+    private static final String TAG = "org.fdroid.fdroid.net.Downloader";
 
     private OutputStream outputStream;
     private ProgressListener progressListener = null;
     private ProgressListener.Event progressEvent = null;
     private File outputFile;
 
-    protected String eTag = null;
+    protected String cacheTag = null;
 
     public static final int EVENT_PROGRESS = 1;
 
@@ -68,20 +68,24 @@ public abstract class Downloader {
     }
 
     /**
-     * If you ask for the eTag before calling download(), you will get the
+     * If you ask for the cacheTag before calling download(), you will get the
      * same one you passed in (if any). If you call it after download(), you
-     * will get the new eTag from the server, or null if there was none.
+     * will get the new cacheTag from the server, or null if there was none.
      */
-    public String getETag() {
-        return eTag;
+    public String getCacheTag() {
+        return cacheTag;
     }
 
     /**
-     * If this eTag matches that returned by the server, then no download will
+     * If this cacheTag matches that returned by the server, then no download will
      * take place, and a status code of 304 will be returned by download().
      */
-    public void setETag(String eTag) {
-        this.eTag = eTag;
+    public void setCacheTag(String cacheTag) {
+        this.cacheTag = cacheTag;
+    }
+
+    protected boolean wantToCheckCache() {
+        return cacheTag != null;
     }
 
     /**
@@ -104,8 +108,12 @@ public abstract class Downloader {
         }
     }
 
-    public void download() throws IOException {
-        Log.i(TAG, "download");
+    public abstract void download() throws IOException;
+
+    public abstract boolean isCached();
+
+    protected void downloadFromStream() throws IOException {
+        Log.d(TAG, "Downloading from stream");
         setupProgressListener();
         InputStream input = null;
         try {

@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.net.ssl.SSLHandshakeException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -89,7 +88,7 @@ abstract public class RepoUpdater {
         Downloader downloader = null;
         try {
             downloader = new HttpDownloader(getIndexAddress(), context);
-            downloader.setETag(repo.lastetag);
+            downloader.setCacheTag(repo.lastetag);
 
             if (progressListener != null) { // interactive session, show progress
                 downloader.setProgressListener(progressListener,
@@ -97,6 +96,14 @@ abstract public class RepoUpdater {
             }
 
             downloader.download();
+
+            if (downloader.isCached()) {
+                // The index is unchanged since we last read it. We just mark
+                // everything that came from this repo as being updated.
+                Log.d("FDroid", "Repo index for " + getIndexAddress()
+                        + " is up to date (by etag)");
+            }
+
         } catch (IOException e) {
             if (downloader != null && downloader.getFile() != null) {
                 downloader.getFile().delete();
@@ -160,7 +167,7 @@ abstract public class RepoUpdater {
                 reader.parse(is);
                 apps = handler.getApps();
                 apks = handler.getApks();
-                updateRepo(handler, downloader.getETag());
+                updateRepo(handler, downloader.getCacheTag());
             }
         } catch (SAXException e) {
             throw new UpdateException(
