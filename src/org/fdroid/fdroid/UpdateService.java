@@ -618,7 +618,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         for (Apk apk : apksToUpdate) {
             boolean known = false;
             for (Apk knownApk : knownApks) {
-                if (knownApk.id.equals(apk.id) && knownApk.version.equals(knownApk.version)) {
+                if (knownApk.id.equals(apk.id) && knownApk.vercode == apk.vercode) {
                     known = true;
                     break;
                 }
