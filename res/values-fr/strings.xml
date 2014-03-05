@@ -29,7 +29,7 @@ Publiée sous licence GNU GPL v3.</string>
 
 Un dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.
 
-L\'URL d\'un dépôt ressemble à ceci : https://f-droid.org/repo</string>
+L\'URL d\'un dépôt ressemble à ceci : http://f-droid.org/repo</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Pas installée</string>
   <string name="added_on">Ajouté le %s</string>
@@ -47,7 +47,7 @@ L\'URL d\'un dépôt ressemble à ceci : https://f-droid.org/repo</string>
   <string name="many_updates_available">%d mises à jour sont disponibles.</string>
   <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
   <string name="process_wait_title">Patientez</string>
-  <string name="process_update_msg">Mise à jour de la liste d\'applications…</string>
+  <string name="process_update_msg">Mise à jour de la liste d\'applications...</string>
   <string name="download_server">Réception d\'application de</string>
   <string name="repo_add_url">Adresse du dépôt</string>
   <string name="repo_alrt">La liste des dépôts utilisés a changé.
@@ -82,6 +82,7 @@ Voulez-vous les mettre à jour ?</string>
   <string name="display">Affichage</string>
   <string name="expert">Expert</string>
   <string name="search_hint">Rechercher des applications</string>
+  <string name="db_sync_mode">Mode de synchronisation à la base de données</string>
   <string name="appcompatibility">Compatibilité de l\'application</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
   <string name="rooted">Root</string>

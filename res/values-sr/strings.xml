@@ -29,7 +29,7 @@
 
 Ризнице су места одакле се скидају апликације. Да би сте додали једну, притисните тастер МЕНИ и унесите адресу.
 
-Адреса ризнице би личила на ово: https://f-droid.org/repo</string>
+Адреса ризнице би личила на ово: http://f-droid.org/repo</string>
   <string name="inst">Инсталирана</string>
   <string name="not_inst">Није Инсталирана</string>
   <string name="added_on">Додато  %s</string>
@@ -47,7 +47,7 @@
   <string name="many_updates_available">%d нове/нових верзија на располагању</string>
   <string name="fdroid_updates_available">Ажурирање Ф-Дроида на располагању.</string>
   <string name="process_wait_title">Сачекајте</string>
-  <string name="process_update_msg">Ажурира се листа апликација…</string>
+  <string name="process_update_msg">Ажурира се листа апликација...</string>
   <string name="download_server">Скида се апликација са</string>
   <string name="repo_add_url">Адреса ризнице</string>
   <string name="repo_alrt">Промењена је листа ризница у употреби.
@@ -81,6 +81,7 @@
   <string name="display">Прикажи</string>
   <string name="expert">Стручни</string>
   <string name="search_hint">Претрага апликација</string>
+  <string name="db_sync_mode">Режим синхронизације базе података</string>
   <string name="appcompatibility">Компатибилност апликације</string>
   <string name="rooted">Рут</string>
   <string name="ignoreTouch">Игнориши Додирни Екран</string>
@@ -95,7 +96,7 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Повезивање са
 %1$s</string>
-  <string name="status_checking_compatibility">Проверава се да ли је апликација компатибилна са вашим уређајем…</string>
+  <string name="status_checking_compatibility">Проверава се да ли је апликација компатибилна са вашим уређајем...</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
   <string name="permissions_for_long">Дозволе за верзију %s</string>
   <string name="showPermissions">Прикажи дозволе</string>

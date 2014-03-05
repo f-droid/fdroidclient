@@ -47,7 +47,7 @@ Bir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
   <string name="process_wait_title">Bekleyiniz</string>
-  <string name="process_update_msg">Uygulama listesi güncelleniyor…</string>
+  <string name="process_update_msg">Uygulama listesi güncelleniyor...</string>
   <string name="download_server">Uygulama buradan alınıyor:</string>
   <string name="repo_add_url">Depo adresi</string>
   <string name="repo_alrt">Kullanılan depoların listesi değişti.
@@ -82,6 +82,7 @@ Güncellemek ister misiniz?</string>
   <string name="display">Görüntüleme</string>
   <string name="expert">Uzman</string>
   <string name="search_hint">Uygulama ara</string>
+  <string name="db_sync_mode">Veritabanı eşleşme modu</string>
   <string name="appcompatibility">Uygulama uyumu</string>
   <string name="show_incompat_versions">Uyumsuz sürümler</string>
   <string name="rooted">Root</string>

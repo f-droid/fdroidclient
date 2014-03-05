@@ -35,7 +35,7 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="many_updates_available">%d eguneraketa eskuragarri.</string>
   <string name="fdroid_updates_available">F-Droid eguneraketak eskuragarri</string>
   <string name="process_wait_title">Mesedez itxaron</string>
-  <string name="process_update_msg">Aplikazio-zerrenda eguneratzen…</string>
+  <string name="process_update_msg">Aplikazio-zerrenda eguneratzen...</string>
   <string name="download_server">Aplikazioa eskuratzen hemendik</string>
   <string name="repo_add_url">Biltegiaren helbidea</string>
   <string name="repo_alrt">Erabilitako biltegien zerrenda aldatu egin da.
@@ -62,6 +62,7 @@ Eguneratu nahi dituzu?</string>
   <string name="display">Bistaratu</string>
   <string name="expert">Aditua</string>
   <string name="search_hint">Bilatu aplikazioak</string>
+  <string name="db_sync_mode">Datu-base modu sinkronoa</string>
   <string name="appcompatibility">Aplikazioen bateragarritasuna</string>
   <string name="rooted">Root</string>
   <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
@@ -70,7 +71,7 @@ Eguneratu nahi dituzu?</string>
   <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
   <string name="status_connecting_to_repo">%1$s(e)ra
 konektatzen</string>
-  <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen…</string>
+  <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen...</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
   <string name="permissions_for_long">%s bertsioarentzako baimenak</string>
   <string name="showPermissions">Erakutsi baimenak</string>

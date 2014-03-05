@@ -29,7 +29,7 @@ Publicat amb la llicència GNU GPL v3.</string>
 
 Un dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENÚ i entreu la seva URL.
 
-L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</string>
+L\'adreça d\'un dipòsit té un aspecte com ara: http://f-droid.org/repo</string>
   <string name="inst">Instal·lat</string>
   <string name="not_inst">No està instal·lat</string>
   <string name="added_on">S\'ha afegit a %s</string>
@@ -48,7 +48,7 @@ L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</stri
   <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
   <string name="fdroid_updates_available">Hi ha actualitzacions de l\'F-Droid disponibles</string>
   <string name="process_wait_title">Un moment si us plau</string>
-  <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions…</string>
+  <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions...</string>
   <string name="download_server">S\'està obtenint l\'aplicació des de</string>
   <string name="repo_add_url">Adreça del dipòsit</string>
   <string name="repo_exists">Aquest repositori ja existeix.</string>
@@ -84,6 +84,7 @@ La voleu actualitzar?</string>
   <string name="display">Pantalla</string>
   <string name="expert">Usuari expert</string>
   <string name="search_hint">Cerca aplicacions</string>
+  <string name="db_sync_mode">Mode de sincronització de la base de dades</string>
   <string name="appcompatibility">Compatibilitat de les aplicacions</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
   <string name="rooted">Root</string>
@@ -99,7 +100,7 @@ La voleu actualitzar?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">S\'està connectant a
 %1$s</string>
-  <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu…</string>
+  <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu...</string>
   <string name="no_permissions">No es fa servir cap permís.</string>
   <string name="permissions_for_long">Permisos de la versió %s</string>
   <string name="showPermissions">Mostra els permisos</string>

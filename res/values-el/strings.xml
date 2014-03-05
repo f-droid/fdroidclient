@@ -29,7 +29,7 @@
 
 Ένα αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε κάποιο, πιέστε το πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.
 
-Μια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: https://f-droid.org/repo</string>
+Μια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: http://f-droid.org/repo</string>
   <string name="inst">Εγκατεστημένο</string>
   <string name="not_inst">Δεν είναι εγκατεστημένο</string>
   <string name="added_on">Προστέθηκε στις %s</string>
@@ -47,7 +47,7 @@
   <string name="many_updates_available">%d διαθέσιμες ενημερώσεις.</string>
   <string name="fdroid_updates_available">Διαθέσιμες ενημερώσεις για το F-Droid</string>
   <string name="process_wait_title">Παρακαλώ περιμένετε</string>
-  <string name="process_update_msg">Ενημέρωση λίστα εφαρμογών…</string>
+  <string name="process_update_msg">Ενημέρωση λίστα εφαρμογών...</string>
   <string name="download_server">Λήψη εφαρμογών από</string>
   <string name="repo_add_url">Διεύθυνση αποθετηρίου</string>
   <string name="repo_alrt">Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. 
@@ -82,6 +82,7 @@
   <string name="display">Εμφάνιση</string>
   <string name="expert">Για Προχωρημένους</string>
   <string name="search_hint">Αναζήτηση εφαρμογών</string>
+  <string name="db_sync_mode">Λειτουργία συγχρονισμόυ της βάσης δεδομένων</string>
   <string name="appcompatibility">Συμβατότητα εφαμοργής</string>
   <string name="show_incompat_versions">Μη συμβατές εκδόσεις</string>
   <string name="rooted">Root</string>
@@ -97,7 +98,7 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Σύνδεση με
 %1$s</string>
-  <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας…</string>
+  <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας...</string>
   <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
   <string name="permissions_for_long">Άδειες για την έκδοση %s</string>
   <string name="showPermissions">Εμφάνιση αδειών</string>

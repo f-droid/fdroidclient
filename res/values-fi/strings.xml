@@ -33,7 +33,7 @@
   <string name="many_updates_available">%d päivitystä saatavilla.</string>
   <string name="fdroid_updates_available">F-Droid: Päivityksiä saatavilla</string>
   <string name="process_wait_title">Odota hetki</string>
-  <string name="process_update_msg">Päivitetään sovelluslistaa…</string>
+  <string name="process_update_msg">Päivitetään sovelluslistaa...</string>
   <string name="download_server">Haetaan sovellusta lähteestä</string>
   <string name="repo_add_url">Sovelluslähteen osoite</string>
   <string name="repo_alrt">Lista käytetyistä sovelluslähteistä on muuttumut.
@@ -61,6 +61,7 @@ Tahdotko päivittää ne?</string>
   <string name="display">Näyttö</string>
   <string name="expert">Asiantuntija</string>
   <string name="search_hint">Etsi sovelluksia</string>
+  <string name="db_sync_mode">Tietokannan synkronointi-tila</string>
   <string name="appcompatibility">Sovellusten yhteensopivuus</string>
   <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
   <string name="rooted">Root</string>
@@ -68,6 +69,6 @@ Tahdotko päivittää ne?</string>
   <string name="category_all">Kaikki</string>
   <string name="category_whatsnew">Uutta</string>
   <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
-  <string name="status_checking_compatibility">Tarkistetaan ohjelman yhteensopivuutta laitteesi kanssa…</string>
+  <string name="status_checking_compatibility">Tarkistetaan ohjelman yhteensopivuutta laitteesi kanssa...</string>
   <string name="theme">Teema</string>
 </resources>

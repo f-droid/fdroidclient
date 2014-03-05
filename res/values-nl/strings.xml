@@ -7,7 +7,11 @@
   <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
   <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet uw data kan corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
   <string name="version">Versie</string>
+  <string name="edit">Bewerken</string>
+  <string name="delete">Verwijderen</string>
   <string name="cache_downloaded">buffer gedownloade apps</string>
+  <string name="cache_downloaded_on">Gedownloade apk-files bewaren op SD card</string>
+  <string name="cache_downloaded_off">apk-files niet bewaren</string>
   <string name="updates">Updates</string>
   <string name="other">Andere</string>
   <string name="last_update_check">Laatste bronnen scan: %s</string>
@@ -42,15 +46,16 @@ Een bron-adres ziet er ongeveer
   <string name="repo_add_title">Voeg nieuwe bron toe</string>
   <string name="repo_add_add">Toevoegen</string>
   <string name="cancel">Annuleren</string>
+  <string name="overwrite">Overschrijven</string>
   <string name="repo_delete_title">Kies bron om te verwijderen</string>
   <string name="repo_update_title">Vernieuw bronnen</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
-  <string name="one_update_available">1 vernieuwing is beschikbaar</string>
-  <string name="many_updates_available">%d vernieuwingen zijn beschikbaar</string>
-  <string name="fdroid_updates_available">F-Droid Vernieuwingen Beschikbaar</string>
+  <string name="one_update_available">1 update beschikbaar</string>
+  <string name="many_updates_available">%d updates beschikbaar</string>
+  <string name="fdroid_updates_available">F-Droid update beschikbaar</string>
   <string name="process_wait_title">Even geduld aub</string>
-  <string name="process_update_msg">Applicatie-lijst vernieuwen…</string>
+  <string name="process_update_msg">Applicatie-lijst vernieuwen...</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="repo_add_url">Bron-adres</string>
   <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
@@ -66,8 +71,8 @@ Wilt u ze vernieuwen?</string>
   <string name="menu_share">Delen</string>
   <string name="menu_install">Installeren</string>
   <string name="menu_uninstall">Deinstalleren</string>
-  <string name="menu_ignore_all">Negeer Alle Verbeteringen</string>
-  <string name="menu_ignore_this">Negeer Deze Verbetering</string>
+  <string name="menu_ignore_all">Negeer Alle Updates</string>
+  <string name="menu_ignore_this">Negeer Deze Update</string>
   <string name="menu_website">Website</string>
   <string name="menu_issues">Problemen</string>
   <string name="menu_source">Broncode</string>
@@ -85,6 +90,7 @@ Wilt u ze vernieuwen?</string>
   <string name="display">Laat zien</string>
   <string name="expert">Expert</string>
   <string name="search_hint">Zoek applicaties</string>
+  <string name="db_sync_mode">Database sync-modus</string>
   <string name="appcompatibility">Applicatie verenigbaarheid</string>
   <string name="show_incompat_versions">Onverenigbare versies</string>
   <string name="rooted">Root</string>
@@ -98,13 +104,18 @@ Wilt u ze vernieuwen?</string>
   <string name="status_processing_xml">Verwerken applicatie
 %2$d van %3$d van
 %1$s</string>
-  <string name="status_connecting_to_repo">Connecteren naar
-%1$s</string>
-  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
+  <string name="status_connecting_to_repo">Verbinden met %1$s</string>
+  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat...</string>
   <string name="no_permissions">Geen permissies worden gebruikt</string>
   <string name="permissions_for_long">Permissies voor versie %s</string>
   <string name="showPermissions">Laat permissies zien</string>
   <string name="no_handler_app">U hebt geen beschikbare app die %s kan verwerken</string>
   <string name="compactlayout">Compacte Layout</string>
   <string name="theme">Thema</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Aantal apps</string>
+  <string name="repo_description">Beschrijving</string>
+  <string name="repo_last_update">Meest recente update</string>
+  <string name="repo_name">Naam</string>
+  <string name="unknown">Onbekend</string>
 </resources>

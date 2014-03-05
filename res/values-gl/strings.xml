@@ -51,7 +51,7 @@ Un enderezo a un repositorio sería algo
   <string name="many_updates_available">%d actualizacións dispoñíbeis</string>
   <string name="fdroid_updates_available">Actualizacións de F-Droid dispoñíbeis</string>
   <string name="process_wait_title">Agarde por favor</string>
-  <string name="process_update_msg">Actualizando a lista de aplicativos…</string>
+  <string name="process_update_msg">Actualizando a lista de aplicativos...</string>
   <string name="download_server">Obtención do aplicativo desde</string>
   <string name="repo_add_url">Enderezo do repositorio</string>
   <string name="repo_alrt">Cambiou a lista de repositorios usados.
@@ -86,6 +86,7 @@ Quere actualizalos?</string>
   <string name="display">Amosar</string>
   <string name="expert">Experto</string>
   <string name="search_hint">Buscar aplicativos</string>
+  <string name="db_sync_mode">Modo de sincronización da base de datos</string>
   <string name="appcompatibility">Compatibilidade de aplicativos</string>
   <string name="show_incompat_versions">Versións incompatíbeis</string>
   <string name="rooted">Root</string>

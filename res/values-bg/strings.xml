@@ -46,7 +46,7 @@
   <string name="many_updates_available">%d налични актуализации.</string>
   <string name="fdroid_updates_available">Актуализации на F-Droid са налични</string>
   <string name="process_wait_title">Моля изчакай</string>
-  <string name="process_update_msg">Обновявани на списъка с приложения…</string>
+  <string name="process_update_msg">Обновявани на списъка с приложения...</string>
   <string name="download_server">Взимане на приложението от</string>
   <string name="repo_add_url">Адрес на хранилището</string>
   <string name="repo_alrt">Списъкът на хранилищата е променен.
@@ -73,6 +73,7 @@
   <string name="display">Дисплей</string>
   <string name="expert">Експерт</string>
   <string name="search_hint">Търсене на приложения</string>
+  <string name="db_sync_mode">Вид на синхронизация на базата данни</string>
   <string name="appcompatibility">Съвместимост на приложенията</string>
   <string name="rooted">Root достъп</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>
