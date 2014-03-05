@@ -47,7 +47,7 @@
   <string name="many_updates_available">%d нове/нових верзија на располагању</string>
   <string name="fdroid_updates_available">Ажурирање Ф-Дроида на располагању.</string>
   <string name="process_wait_title">Сачекајте</string>
-  <string name="process_update_msg">Ажурира се листа апликација...</string>
+  <string name="process_update_msg">Ажурира се листа апликација…</string>
   <string name="download_server">Скида се апликација са</string>
   <string name="repo_add_url">Адреса ризнице</string>
   <string name="repo_alrt">Промењена је листа ризница у употреби.
@@ -95,7 +95,7 @@
 %1$s</string>
   <string name="status_connecting_to_repo">Повезивање са
 %1$s</string>
-  <string name="status_checking_compatibility">Проверава се да ли је апликација компатибилна са вашим уређајем...</string>
+  <string name="status_checking_compatibility">Проверава се да ли је апликација компатибилна са вашим уређајем…</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
   <string name="permissions_for_long">Дозволе за верзију %s</string>
   <string name="showPermissions">Прикажи дозволе</string>

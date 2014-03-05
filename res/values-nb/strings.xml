@@ -43,7 +43,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
   <string name="process_wait_title">Vennligst vent</string>
-  <string name="process_update_msg">Oppdaterer applikasjonsliste...</string>
+  <string name="process_update_msg">Oppdaterer applikasjonsliste…</string>
   <string name="download_server">Henter program fra</string>
   <string name="repo_add_url">Registeradresse</string>
   <string name="repo_alrt">Listen over brukte register har endret seg. Vil du oppdatere dem?</string>
@@ -92,7 +92,7 @@ Lisensiert GNU GPLv3.</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Kobler til
 %1$s</string>
-  <string name="status_checking_compatibility">Sjekker programstøtte for ditt utstyr...</string>
+  <string name="status_checking_compatibility">Sjekker programstøtte for ditt utstyr…</string>
   <string name="no_permissions">Krever ingen tillatelser.</string>
   <string name="permissions_for_long">Tillatelser for versjon %s</string>
   <string name="showPermissions">Vis tillatelser</string>

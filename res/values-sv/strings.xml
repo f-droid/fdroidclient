@@ -61,7 +61,7 @@ En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="many_updates_available">%d uppdateringar finns tillgängliga.</string>
   <string name="fdroid_updates_available">Uppdateringar för F-Droid tillgängliga</string>
   <string name="process_wait_title">Var vänlig vänta</string>
-  <string name="process_update_msg">Uppdaterar programlistan...</string>
+  <string name="process_update_msg">Uppdaterar programlistan…</string>
   <string name="download_server">Hämtar program från</string>
   <string name="repo_add_url">Förrådsadress</string>
   <string name="repo_add_fingerprint">fingeravtryck (valfritt)</string>

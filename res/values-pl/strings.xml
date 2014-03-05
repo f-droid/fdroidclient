@@ -61,7 +61,7 @@ Przykładowy adres repozytorium: https://f-droid.org/repo</string>
   <string name="many_updates_available">Dostępnych jest %d uaktualnień</string>
   <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
   <string name="process_wait_title">Proszę czekać</string>
-  <string name="process_update_msg">Aktualizowanie listy aplikacji...</string>
+  <string name="process_update_msg">Aktualizowanie listy aplikacji…</string>
   <string name="download_server">Pobieranie aplikacji z</string>
   <string name="repo_add_url">Adres repozytorium</string>
   <string name="repo_add_fingerprint">Odcisk palca (opcjonalnie)</string>
@@ -122,7 +122,7 @@ Czy chcesz je zaktualizować?</string>
   <string name="status_processing_xml">Przetwarzanie aplikacji %2$d / %3$d z %1$s</string>
   <string name="status_connecting_to_repo">Trwa łączenie z
 %1$s</string>
-  <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem...</string>
+  <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
   <string name="no_permissions">Brak użytych uprawnień.</string>
   <string name="permissions_for_long">Uprawnienia dla wersji %s</string>
   <string name="showPermissions">Wyświetl uprawnienia</string>
