@@ -201,6 +201,45 @@ public class UpdateService extends IntentService implements ProgressListener {
         return receiver == null;
     }
 
+    /**
+     * Check whether it is time to run the scheduled update.
+     * We don't want to run if:
+     *  - The time between scheduled runs is set to zero (though don't know
+     *    when that would occur)
+     *  - Last update was too recent
+     *  - Not on wifi, but the property for "Only auto update on wifi" is set.
+     * @return True if we are due for a scheduled update.
+     */
+    private boolean verifyIsTimeForScheduledRun() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
+        String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
+        int interval = Integer.parseInt(sint);
+        if (interval == 0) {
+            Log.d("FDroid", "Skipping update - disabled");
+            return false;
+        }
+        long elapsed = System.currentTimeMillis() - lastUpdate;
+        if (elapsed < interval * 60 * 60 * 1000) {
+            Log.d("FDroid", "Skipping update - done " + elapsed
+                    + "ms ago, interval is " + interval + " hours");
+            return false;
+        }
+
+        // If we are to update the repos only on wifi, make sure that
+        // connection is active
+        if (prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
+            ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
+            if (wifi != NetworkInfo.State.CONNECTED &&
+                    wifi !=  NetworkInfo.State.CONNECTING) {
+                Log.d("FDroid", "Skipping update - wifi not available");
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     protected void onHandleIntent(Intent intent) {
 
@@ -210,39 +249,13 @@ public class UpdateService extends IntentService implements ProgressListener {
         long startTime = System.currentTimeMillis();
         String errmsg = "";
         try {
-
-            SharedPreferences prefs = PreferenceManager
-                    .getDefaultSharedPreferences(getBaseContext());
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
             // See if it's time to actually do anything yet...
-            if (isScheduledRun()) {
-                long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
-                String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
-                int interval = Integer.parseInt(sint);
-                if (interval == 0) {
-                    Log.d("FDroid", "Skipping update - disabled");
-                    return;
-                }
-                long elapsed = System.currentTimeMillis() - lastUpdate;
-                if (elapsed < interval * 60 * 60 * 1000) {
-                    Log.d("FDroid", "Skipping update - done " + elapsed
-                            + "ms ago, interval is " + interval + " hours");
-                    return;
-                }
-
-                // If we are to update the repos only on wifi, make sure that
-                // connection is active
-                if (prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
-                    ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                    NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
-                    if (wifi != NetworkInfo.State.CONNECTED &&
-                            wifi !=  NetworkInfo.State.CONNECTING) {
-                        Log.d("FDroid", "Skipping update - wifi not available");
-                        return;
-                    }
-                }
-            } else {
+            if (!isScheduledRun()) {
                 Log.d("FDroid", "Unscheduled (manually requested) update");
+            } else if (!verifyIsTimeForScheduledRun()) {
+                return;
             }
 
             // Grab some preliminary information, then we can release the
@@ -255,7 +268,6 @@ public class UpdateService extends IntentService implements ProgressListener {
             List<Repo> unchangedRepos = new ArrayList<Repo>();
             List<Repo> updatedRepos = new ArrayList<Repo>();
             List<Repo> disabledRepos = new ArrayList<Repo>();
-            boolean success = true;
             boolean changes = false;
             for (Repo repo : repos) {
 
@@ -289,14 +301,10 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
-            if (!changes && success) {
-                Log.d("FDroid",
-                        "Not checking app details or compatibility, " +
-                                "because all repos were up to date.");
-            } else if (changes && success) {
-
-                sendStatus(STATUS_INFO,
-                        getString(R.string.status_checking_compatibility));
+            if (!changes) {
+                Log.d("FDroid", "Not checking app details or compatibility, ecause all repos were up to date.");
+            } else {
+                sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
 
                 List<App> listOfAppsToUpdate = new ArrayList<App>();
                 listOfAppsToUpdate.addAll(appsToUpdate.values());
@@ -312,34 +320,19 @@ public class UpdateService extends IntentService implements ProgressListener {
                 removeApksNoLongerInRepo(listOfAppsToUpdate, updatedRepos);
                 removeAppsWithoutApks();
                 notifyContentProviders();
-            }
 
-            if (success && changes && prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
-                int updateCount = 0;
-                for (App app : appsToUpdate.values()) {
-                    if (app.canAndWantToUpdate(this)) {
-                        updateCount++;
-                    }
-                }
-
-                if (updateCount > 0) {
-                    showAppUpdatesNotification(updateCount);
+                if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
+                    performUpdateNotification(appsToUpdate.values());
                 }
             }
 
-            if (!success) {
-                if (errmsg.length() == 0)
-                    errmsg = "Unknown error";
-                sendStatus(STATUS_ERROR, errmsg);
+            Editor e = prefs.edit();
+            e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
+            e.commit();
+            if (changes) {
+                sendStatus(STATUS_COMPLETE_WITH_CHANGES);
             } else {
-                Editor e = prefs.edit();
-                e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
-                e.commit();
-                if (changes) {
-                    sendStatus(STATUS_COMPLETE_WITH_CHANGES);
-                } else {
-                    sendStatus(STATUS_COMPLETE_AND_SAME);
-                }
+                sendStatus(STATUS_COMPLETE_AND_SAME);
             }
 
         } catch (Exception e) {
@@ -464,7 +457,35 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    private void showAppUpdatesNotification(int updates) throws Exception {
+    private void performUpdateNotification(Collection<App> apps) {
+        int updateCount = 0;
+
+        // This may be somewhat strange, because we usually would just trust
+        // App.canAndWantToUpdate(). The only problem is that the "appsToUpdate"
+        // list only contains data from the repo index, not our database.
+        // As such, it doesn't know if we want to ignore the apps or not. For that, we
+        // need to query the database manually and identify those which are to be ignored.
+        String[] projection = { AppProvider.DataColumns.APP_ID };
+        List<App> appsToIgnore = AppProvider.Helper.findIgnored(this, projection);
+        for (App app : apps) {
+            boolean ignored = false;
+            for(App appIgnored : appsToIgnore) {
+                if (appIgnored.id.equals(app.id)) {
+                    ignored = true;
+                    break;
+                }
+            }
+            if (!ignored && app.hasUpdates(this)) {
+                updateCount++;
+            }
+        }
+
+        if (updateCount > 0) {
+            showAppUpdatesNotification(updateCount);
+        }
+    }
+
+    private void showAppUpdatesNotification(int updates) {
         Log.d("FDroid", "Notifying " + updates + " updates.");
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)

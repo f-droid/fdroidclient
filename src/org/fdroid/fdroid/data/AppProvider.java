@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 
 import java.util.*;
@@ -29,6 +30,12 @@ public class AppProvider extends FDroidProvider {
         public static List<App> all(ContentResolver resolver, String[] projection) {
             Uri uri = AppProvider.getContentUri();
             Cursor cursor = resolver.query(uri, projection, null, null, null);
+            return cursorToList(cursor);
+        }
+
+        public static List<App> findIgnored(Context context, String[] projection) {
+            Uri uri = AppProvider.getIgnoredUri();
+            Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             return cursorToList(cursor);
         }
 
@@ -227,6 +234,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
+    private static final String PATH_IGNORED = "ignored";
 
     private static final int CAN_UPDATE       = CODE_SINGLE + 1;
     private static final int INSTALLED        = CAN_UPDATE + 1;
@@ -236,9 +244,11 @@ public class AppProvider extends FDroidProvider {
     private static final int RECENTLY_UPDATED = APPS + 1;
     private static final int NEWLY_ADDED      = RECENTLY_UPDATED + 1;
     private static final int CATEGORY         = NEWLY_ADDED + 1;
+    private static final int IGNORED          = CATEGORY + 1;
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
+        matcher.addURI(getAuthority(), PATH_IGNORED, IGNORED);
         matcher.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         matcher.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
@@ -260,6 +270,10 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getNewlyAddedUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_NEWLY_ADDED);
+    }
+
+    public static Uri getIgnoredUri() {
+        return Uri.withAppendedPath(getContentUri(), PATH_IGNORED);
     }
 
     public static Uri getCategoryUri(String category) {
@@ -388,6 +402,12 @@ public class AppProvider extends FDroidProvider {
         return new QuerySelection(selection, args);
     }
 
+    private QuerySelection queryIgnored() {
+        String selection = "fdroid_app.ignoreAllUpdates = 1 OR " +
+                "fdroid_app.ignoreThisUpdate >= fdroid_app.suggestedVercode";
+        return new QuerySelection(selection);
+    }
+
     private QuerySelection queryNewlyAdded() {
         String selection = "fdroid_app.added > ?";
         String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
@@ -459,6 +479,10 @@ public class AppProvider extends FDroidProvider {
                 query = query.add(queryApps(uri.getLastPathSegment()));
                 break;
 
+            case IGNORED:
+                query = query.add(queryIgnored());
+                break;
+
             case CATEGORY:
                 query = query.add(queryCategory(uri.getLastPathSegment()));
                 break;
@@ -503,7 +527,7 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             default:
-                throw new UnsupportedOperationException("Can't delete yet");
+                throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
 
         }
 
@@ -531,7 +555,7 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             default:
-                throw new UnsupportedOperationException("Update not supported for '" + uri + "'.");
+                throw new UnsupportedOperationException("Update not supported for " + uri + ".");
 
         }
         int count = write().update(getTableName(), values, query.getSelection(), query.getArgs());
