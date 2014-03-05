@@ -11,9 +11,4 @@
     <item>قاراڭغۇ</item>
     <item>يورۇق</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>تاقاق (بىخەتەر ئەمەس)</item>
-    <item>نورمال</item>
-    <item>تولۇق</item>
-  </string-array>
 </resources>

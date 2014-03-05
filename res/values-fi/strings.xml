@@ -61,7 +61,6 @@ Tahdotko päivittää ne?</string>
   <string name="display">Näyttö</string>
   <string name="expert">Asiantuntija</string>
   <string name="search_hint">Etsi sovelluksia</string>
-  <string name="db_sync_mode">Tietokannan synkronointi-tila</string>
   <string name="appcompatibility">Sovellusten yhteensopivuus</string>
   <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
   <string name="rooted">Root</string>

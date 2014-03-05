@@ -11,9 +11,4 @@
     <item>Σκοτεινό</item>
     <item>Φωτεινό</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Απενεργοποίηση (επισφαλής)</item>
-    <item>Κανονικό</item>
-    <item>Ολόκληρο</item>
-  </string-array>
 </resources>

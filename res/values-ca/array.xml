@@ -11,9 +11,4 @@
     <item>Fosc</item>
     <item>Clar</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Desactivat (no segur)</item>
-    <item>Normal</item>
-    <item>Complet</item>
-  </string-array>
 </resources>

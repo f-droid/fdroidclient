@@ -105,7 +105,6 @@ Vill du uppdatera dem?</string>
   <string name="expert_on">Visa extra info och aktivera extra inställningar</string>
   <string name="expert_off">Dölj extraval för vana användare</string>
   <string name="search_hint">Sök program</string>
-  <string name="db_sync_mode">Databassynkroniseringsläge</string>
   <string name="appcompatibility">Programkompatibilitet</string>
   <string name="show_incompat_versions">Inkompatibla versioner</string>
   <string name="show_incompat_versions_on">Visa appversioner som är inkompatibla med enheten</string>
@@ -141,7 +140,6 @@ Vill du uppdatera dem?</string>
   <string name="unsigned">Osignerad</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Antal appar</string>
-  <string name="repo_signature">Signatur</string>
   <string name="repo_description">Beskrivning</string>
   <string name="repo_last_update">Senaste uppdatering</string>
   <string name="repo_update">Uppdatera</string>

@@ -11,9 +11,4 @@
     <item>Dark</item>
     <item>Light</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Ніколи (небезпечно)</item>
-    <item>Типово</item>
-    <item>Повністю</item>
-  </string-array>
 </resources>

@@ -11,9 +11,4 @@
     <item>Tumma</item>
     <item>Valo</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Pois päältä (vaarallinen)</item>
-    <item>Normaali</item>
-    <item>Täysi</item>
-  </string-array>
 </resources>

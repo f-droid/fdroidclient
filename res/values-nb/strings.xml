@@ -77,7 +77,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="display">Vis</string>
   <string name="expert">Ekspert</string>
   <string name="search_hint">Søk i programliste</string>
-  <string name="db_sync_mode">Modus for databasesynkronisering</string>
   <string name="appcompatibility">Programstøtte</string>
   <string name="show_incompat_versions">Ukompatible versjoner</string>
   <string name="rooted">Rot</string>

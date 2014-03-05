@@ -11,9 +11,4 @@
     <item>Mörk</item>
     <item>Ljus</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Av (osäkert)</item>
-    <item>Normal</item>
-    <item>Fullständig</item>
-  </string-array>
 </resources>

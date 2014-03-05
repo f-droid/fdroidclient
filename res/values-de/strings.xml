@@ -106,7 +106,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="expert_on">Zusätzliche Informationen anzeigen und zusätzliche Einstellungen aktivieren</string>
   <string name="expert_off">Experteneinstellungen ausblenden</string>
   <string name="search_hint">Anwendungen suchen</string>
-  <string name="db_sync_mode">Datenbanksynchronisierungsart</string>
   <string name="appcompatibility">Kompatibilität der Anwendung</string>
   <string name="show_incompat_versions">Inkompatible Versionen</string>
   <string name="show_incompat_versions_on">Mit diesem Gerät inkompatible Anwendungsversionen anzeigen</string>
@@ -142,7 +141,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="unsigned">Nicht signiert</string>
   <string name="repo_url">Adresse</string>
   <string name="repo_num_apps">Anwendungsanzahl</string>
-  <string name="repo_signature">Signatur</string>
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
   <string name="repo_update">Aktualisierung</string>

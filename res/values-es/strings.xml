@@ -105,7 +105,6 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="expert_on">Mostrar info extra y habilitar los ajustes extra</string>
   <string name="expert_off">Ocultar extras para usuarios experimentados</string>
   <string name="search_hint">Buscar aplicaciones</string>
-  <string name="db_sync_mode">Modo síncrono de base de datos</string>
   <string name="appcompatibility">Compatibilidad de aplicaciones</string>
   <string name="show_incompat_versions">Versiones incompatibles</string>
   <string name="show_incompat_versions_on">Mostrar las versiones de aplicaciones incompatibles con el dispositivo</string>
@@ -141,7 +140,6 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="unsigned">No firmado</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Número de aplicaciones</string>
-  <string name="repo_signature">Firma</string>
   <string name="repo_description">Descripción</string>
   <string name="repo_last_update">Última actualización</string>
   <string name="repo_update">Actualizar</string>

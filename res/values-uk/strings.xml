@@ -53,7 +53,6 @@
   <string name="download_cancelled">Звантаження скасовано</string>
   <string name="expert">Експерт</string>
   <string name="search_hint">Пошук програм</string>
-  <string name="db_sync_mode">Синхронізація БД</string>
   <string name="appcompatibility">Сумісність</string>
   <string name="rooted">Суперкористувач</string>
   <string name="ignoreTouch">Ігнорувати тачскрін</string>

@@ -105,7 +105,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="expert_on">Pokaż dodatkowe informacje i włącz dodatkowe ustawienia</string>
   <string name="expert_off">Ukryj dodatki dla zaawansowanych użytkowników</string>
   <string name="search_hint">Wyszukaj aplikacje</string>
-  <string name="db_sync_mode">Tryb synchronizacji bazy danych</string>
   <string name="appcompatibility">Kompatybilność aplikacji</string>
   <string name="show_incompat_versions">Niekompatybilne wersje</string>
   <string name="show_incompat_versions_on">Pokaż wersje aplikacji niekompatybilne z urządzeniem</string>
@@ -137,7 +136,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="unsigned">Niepodpisany</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Liczba aplikacji</string>
-  <string name="repo_signature">Podpis</string>
   <string name="repo_description">Opis</string>
   <string name="repo_last_update">Ostatnia modyfikacja</string>
   <string name="repo_update">Aktualizacja</string>

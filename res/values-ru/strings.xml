@@ -105,7 +105,6 @@
   <string name="expert_on">Показать дополнительную информацию и включить дополнительные настройки</string>
   <string name="expert_off">Скрыть дополнительные возможности для опытных пользователей</string>
   <string name="search_hint">Найти приложения</string>
-  <string name="db_sync_mode">Режим синхронизации базы</string>
   <string name="appcompatibility">Совместимость приложений</string>
   <string name="show_incompat_versions">Несовместимые версии</string>
   <string name="show_incompat_versions_on">Показать версии программ, несовместимые с устройством</string>
@@ -141,7 +140,6 @@
   <string name="unsigned">Неподписанный</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Количество приложений</string>
-  <string name="repo_signature">Подпись</string>
   <string name="repo_description">Описание</string>
   <string name="repo_last_update">Последние обновление</string>
   <string name="repo_update">Обновить</string>

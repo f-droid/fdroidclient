@@ -11,9 +11,4 @@
     <item>Ciemny</item>
     <item>Jasny</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Wyłączone (niebezpieczne)</item>
-    <item>Normalny</item>
-    <item>Pełny</item>
-  </string-array>
 </resources>

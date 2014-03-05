@@ -81,7 +81,6 @@
   <string name="display">Прикажи</string>
   <string name="expert">Стручни</string>
   <string name="search_hint">Претрага апликација</string>
-  <string name="db_sync_mode">Режим синхронизације базе података</string>
   <string name="appcompatibility">Компатибилност апликације</string>
   <string name="rooted">Рут</string>
   <string name="ignoreTouch">Игнориши Додирни Екран</string>

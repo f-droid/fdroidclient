@@ -53,7 +53,6 @@
   <string name="download_cancelled">下载取消</string>
   <string name="expert">高级</string>
   <string name="search_hint">搜索应用</string>
-  <string name="db_sync_mode">数据同步模式</string>
   <string name="appcompatibility">应用兼容性</string>
   <string name="rooted">Root</string>
   <string name="ignoreTouch">忽略需要触屏的应用</string>

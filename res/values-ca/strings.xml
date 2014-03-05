@@ -84,7 +84,6 @@ La voleu actualitzar?</string>
   <string name="display">Pantalla</string>
   <string name="expert">Usuari expert</string>
   <string name="search_hint">Cerca aplicacions</string>
-  <string name="db_sync_mode">Mode de sincronització de la base de dades</string>
   <string name="appcompatibility">Compatibilitat de les aplicacions</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
   <string name="rooted">Root</string>

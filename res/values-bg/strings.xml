@@ -73,7 +73,6 @@
   <string name="display">Дисплей</string>
   <string name="expert">Експерт</string>
   <string name="search_hint">Търсене на приложения</string>
-  <string name="db_sync_mode">Вид на синхронизация на базата данни</string>
   <string name="appcompatibility">Съвместимост на приложенията</string>
   <string name="rooted">Root достъп</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>
