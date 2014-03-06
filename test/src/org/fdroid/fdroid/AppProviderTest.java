@@ -1,9 +1,11 @@
 package org.fdroid.fdroid;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 
 import mock.MockCategoryResources;
+import mock.MockContextSwappableComponents;
 import mock.MockInstallablePackageManager;
 
 import org.fdroid.fdroid.data.ApkProvider;
@@ -31,6 +33,10 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             AppProvider.DataColumns.APP_ID,
             AppProvider.DataColumns.NAME
         };
+    }
+
+    public void testCantFindApp() {
+        assertNull(AppProvider.Helper.findById(getMockContentResolver(), "com.example.doesnt-exist"));
     }
 
     public void testUris() {
@@ -63,6 +69,110 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         for (int i = 0; i < count; i ++) {
             insertApp("com.example.test." + i, "Test app " + i);
         }
+    }
+
+    private void insertAndInstallApp(
+            MockInstallablePackageManager packageManager,
+            String id, int installedVercode, int suggestedVercode,
+            boolean ignoreAll, int ignoreVercode) {
+        ContentValues values = new ContentValues(3);
+        values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVercode);
+        values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAll);
+        values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreVercode);
+        insertApp(id, "App: " + id, values);
+
+        packageManager.install(id, installedVercode, "v" + installedVercode);
+    }
+
+    public void testCanUpdate() {
+
+        MockContextSwappableComponents c = getSwappableContext();
+
+        MockInstallablePackageManager pm = new MockInstallablePackageManager();
+        c.setPackageManager(pm);
+
+        insertApp("not installed", "not installed");
+        insertAndInstallApp(pm, "installed, only one version available", 1, 1, false, 0);
+        insertAndInstallApp(pm, "installed, already latest, no ignore", 10, 10, false, 0);
+        insertAndInstallApp(pm, "installed, already latest, ignore all", 10, 10, true, 0);
+        insertAndInstallApp(pm, "installed, already latest, ignore latest", 10, 10, false, 10);
+        insertAndInstallApp(pm, "installed, already latest, ignore old", 10, 10, false, 5);
+        insertAndInstallApp(pm, "installed, old version, no ignore", 5, 10, false, 0);
+        insertAndInstallApp(pm, "installed, old version, ignore all", 5, 10, true, 0);
+        insertAndInstallApp(pm, "installed, old version, ignore latest", 5, 10, false, 10);
+        insertAndInstallApp(pm, "installed, old version, ignore newer, but not latest", 5, 10, false, 8);
+
+        ContentResolver r = getMockContentResolver();
+
+        // Can't "update", although can "install"...
+        App notInstalled = AppProvider.Helper.findById(r, "not installed");
+        assertFalse(notInstalled.canAndWantToUpdate(c));
+
+        App installedOnlyOneVersionAvailable   = AppProvider.Helper.findById(r, "installed, only one version available");
+        App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findById(r, "installed, already latest, no ignore");
+        App installedAlreadyLatestIgnoreAll    = AppProvider.Helper.findById(r, "installed, already latest, ignore all");
+        App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findById(r, "installed, already latest, ignore latest");
+        App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findById(r, "installed, already latest, ignore old");
+
+        assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate(c));
+        assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate(c));
+        assertFalse(installedAlreadyLatestIgnoreAll.canAndWantToUpdate(c));
+        assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate(c));
+        assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate(c));
+
+        App installedOldNoIgnore             = AppProvider.Helper.findById(r, "installed, old version, no ignore");
+        App installedOldIgnoreAll            = AppProvider.Helper.findById(r, "installed, old version, ignore all");
+        App installedOldIgnoreLatest         = AppProvider.Helper.findById(r, "installed, old version, ignore latest");
+        App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findById(r, "installed, old version, ignore newer, but not latest");
+
+        assertTrue(installedOldNoIgnore.canAndWantToUpdate(c));
+        assertFalse(installedOldIgnoreAll.canAndWantToUpdate(c));
+        assertFalse(installedOldIgnoreLatest.canAndWantToUpdate(c));
+        assertTrue(installedOldIgnoreNewerNotLatest.canAndWantToUpdate(c));
+    }
+
+    public void testIgnored() {
+
+        MockInstallablePackageManager pm = new MockInstallablePackageManager();
+        getSwappableContext().setPackageManager(pm);
+
+        insertApp("not installed", "not installed");
+        insertAndInstallApp(pm, "installed, only one version available", 1, 1, false, 0);
+        insertAndInstallApp(pm, "installed, already latest, no ignore", 10, 10, false, 0);
+        insertAndInstallApp(pm, "installed, already latest, ignore all", 10, 10, true, 0);
+        insertAndInstallApp(pm, "installed, already latest, ignore latest", 10, 10, false, 10);
+        insertAndInstallApp(pm, "installed, already latest, ignore old", 10, 10, false, 5);
+        insertAndInstallApp(pm, "installed, old version, no ignore", 5, 10, false, 0);
+        insertAndInstallApp(pm, "installed, old version, ignore all", 5, 10, true, 0);
+        insertAndInstallApp(pm, "installed, old version, ignore latest", 5, 10, false, 10);
+        insertAndInstallApp(pm, "installed, old version, ignore newer, but not latest", 5, 10, false, 8);
+
+        assertResultCount(10, AppProvider.getContentUri());
+
+        String[] projection = { AppProvider.DataColumns.APP_ID };
+        List<App> ignoredApps = AppProvider.Helper.findIgnored(getMockContext(), projection);
+
+        String[] expectedIgnored = {
+            "installed, already latest, ignore all",
+            "installed, already latest, ignore latest",
+            // NOT "installed, already latest, ignore old" - because it
+            // is should only ignore if "ignored version" is >= suggested
+
+            "installed, old version, ignore all",
+            "installed, old version, ignore latest"
+            // NOT "installed, old version, ignore newer, but not latest"
+            // for the same reason as above.
+        };
+
+        assertContainsOnlyIds(ignoredApps, expectedIgnored);
+    }
+
+    private void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
+        List<String> actualIds = new ArrayList<String>(actualApps.size());
+        for (App app : actualApps) {
+            actualIds.add(app.id);
+        }
+        TestUtils.assertContainsOnly(actualIds, expectedIds);
     }
 
     public void testInstalled() {
