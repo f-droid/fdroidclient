@@ -37,6 +37,8 @@ abstract public class AppListFragment extends ListFragment implements
             AppProvider.DataColumns.ICON_URL,
             AppProvider.DataColumns.SuggestedApk.VERSION,
             AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
+            AppProvider.DataColumns.IGNORE_ALLUPDATES,
+            AppProvider.DataColumns.IGNORE_THISUPDATE,
             AppProvider.DataColumns.REQUIREMENTS, // Needed for filtering apps that require root.
     };
 
