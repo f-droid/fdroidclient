@@ -137,23 +137,14 @@ public class AppProvider extends FDroidProvider {
         public static final String SUGGESTED_VERSION_CODE = "suggestedVercode";
         public static final String UPSTREAM_VERSION = "upstreamVersion";
         public static final String UPSTREAM_VERSION_CODE = "upstreamVercode";
-        public static final String CURRENT_APK = null;
         public static final String ADDED = "added";
         public static final String LAST_UPDATED = "lastUpdated";
-        public static final String INSTALLED_VERSION = null;
-        public static final String INSTALLED_VERCODE = null;
-        public static final String USER_INSTALLED = null;
         public static final String CATEGORIES = "categories";
         public static final String ANTI_FEATURES = "antiFeatures";
         public static final String REQUIREMENTS = "requirements";
-        public static final String FILTERED = null;
-        public static final String HAS_UPDATES = null;
-        public static final String TO_UPDATE = null;
         public static final String IGNORE_ALLUPDATES = "ignoreAllUpdates";
         public static final String IGNORE_THISUPDATE = "ignoreThisUpdate";
         public static final String ICON_URL = "iconUrl";
-        public static final String UPDATED = null;
-        public static final String APKS = null;
 
         public interface SuggestedApk {
             public static final String VERSION = "suggestedApkVersion";

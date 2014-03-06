@@ -24,7 +24,7 @@ public class TestUtils {
             if (i > 0) {
                 string += ", ";
             }
-            string += list.get(i);
+            string += "'" + list.get(i) + "'";
         }
         string += "]";
         return string;
