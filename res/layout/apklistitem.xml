@@ -30,6 +30,7 @@
 
   <TextView android:id="@+id/buildtype"
 		android:textSize="13sp"
+		android:layout_alignParentRight="true"
 		android:layout_alignParentEnd="true"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
@@ -38,6 +39,7 @@
   <TextView android:id="@+id/size"
 		android:textSize="13sp"
 		android:layout_below="@id/buildtype"
+		android:layout_alignParentRight="true"
 		android:layout_alignParentEnd="true"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
@@ -46,7 +48,9 @@
   <TextView android:id="@+id/api"
 		android:textSize="13sp"
 		android:layout_below="@id/buildtype"
+		android:layout_toLeftOf="@id/size"
 		android:layout_toStartOf="@id/size"
+		android:layout_marginRight="16sp"
 		android:layout_marginEnd="16sp"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
@@ -54,6 +58,7 @@
   <TextView android:id="@+id/nativecode"
 		android:textSize="13sp"
 		android:layout_below="@id/size"
+		android:layout_alignParentRight="true"
 		android:layout_alignParentEnd="true"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
@@ -61,6 +66,7 @@
   <TextView android:id="@+id/incompatible_reasons"
 		android:textSize="13sp"
 		android:layout_below="@id/added"
+		android:layout_alignParentLeft="true"
 		android:layout_alignParentStart="true"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content" />
