@@ -408,9 +408,7 @@ public class RepoListFragment extends ListFragment
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        getActivity().setResult(Activity.RESULT_CANCELED);
-                        getActivity().finish();
-                        return;
+                        dialog.dismiss();
                     }
                 });
         alrt.show();
