@@ -48,7 +48,6 @@ abstract public class AppListAdapter extends CursorAdapter {
                 .cacheInMemory(true)
                 .cacheOnDisc(true)
                 .imageScaleType(ImageScaleType.NONE)
-                .resetViewBeforeLoading(true)
                 .showImageOnLoading(R.drawable.ic_repo_app_default)
                 .showImageForEmptyUri(R.drawable.ic_repo_app_default)
                 .displayer(new FadeInBitmapDisplayer(200, true, true, false))
