@@ -18,7 +18,7 @@
 			android:layout_height="56dp"
 			android:layout_centerVertical="true"
 			android:padding="4dp"
-			android:scaleType="center" />
+			android:scaleType="fitCenter" />
 
 		<RelativeLayout
 			android:layout_width="fill_parent"
