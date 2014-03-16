@@ -210,4 +210,7 @@
     <string name="not_on_same_wifi">Your device is not on the same WiFi as the local repo you just added! Try joining this network: %s</string>
     <string name="requires_features">Requires: %1$s</string>
 
+    <string name="discovered_repo_name">Discovered Repo Name</string>
+    <string name="repo_address">Repo Address</string>
+
 </resources>

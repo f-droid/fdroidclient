@@ -10,7 +10,7 @@
           android:maxLines="1"
           android:paddingLeft="8sp"
           android:paddingStart="8sp"
-          android:text="Discovered Repo Name"
+          android:text="@string/discovered_repo_name"
           android:textSize="16sp"
           android:textStyle="bold" />
 
@@ -23,7 +23,7 @@
           android:paddingLeft="8sp"
           android:paddingStart="8sp"
           android:maxLines="1"
-          android:text="Repo Address"
+          android:text="@string/repo_address"
           android:textSize="14sp" />
 
 </RelativeLayout>
