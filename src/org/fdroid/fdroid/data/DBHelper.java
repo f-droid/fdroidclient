@@ -293,7 +293,7 @@ public class DBHelper extends SQLiteOpenHelper {
             values.put("name", context.getString(R.string.default_repo_name1));
             values.put("description", context.getString(R.string.default_repo_description1));
             db.update(TABLE_REPO, values, "address = ?", new String[]{
-                    context.getString(R.string.default_repo_address)});
+                    context.getString(R.string.default_repo_address1)});
             values.clear();
             values.put("name", context.getString(R.string.default_repo_name2));
             values.put("description", context.getString(R.string.default_repo_description2));
