@@ -31,13 +31,9 @@ Add the following lines to your repo manifest:
 <remote name="fdroid" fetch="https://git.gitorious.org/f-droid" />
 <remote name="github" fetch="https://github.com/" />
 
-<project path="packages/apps/fdroidclient" name="fdroidclient.git" remote="fdroid" revision="master" />
+<project path="packages/apps/fdroidclient" name="fdroidclient.git" remote="fdroid" revision="0.58" />
 
-<project path="packages/apps/fdroidclient/extern/UniversalImageLoader" name="nostra13/Android-Universal-Image-Loader" remote="github" revision="master" />
-
-<project path="packages/apps/fdroidclient/extern/MemorizingTrustManager" name="ge0rg/MemorizingTrustManager" remote="github" revision="master" />
-
-<project path="packages/apps/fdroidclient/extern/AndroidPinning" name="binaryparadox/AndroidPinning" remote="github" revision="master" />
+<project path="packages/apps/fdroidclient/extern/Universal-Image-Loader" name="nostra13/Android-Universal-Image-Loader" remote="github" revision="1c2a91e464b49874068a8bf2a6e39d39aae9208a" />
 ```
 
 Adding F-Droid is then just a matter of adding `F-Droid` to your `PRODUCT_PACKAGES`.
