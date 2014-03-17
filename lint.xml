@@ -5,4 +5,7 @@
         <ignore path="res/values/no_trans.xml" />
         <ignore path="res/values/default_repo.xml" />
     </issue>
+    <issue id="UnusedResources" severity="ignore" >
+        <ignore path="res/values/default_repo.xml" />
+    </issue>
 </lint>
