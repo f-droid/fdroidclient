@@ -2,6 +2,7 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -175,40 +176,49 @@ public class DBHelper extends SQLiteOpenHelper {
         createAppApk(db);
 
         db.execSQL(CREATE_TABLE_REPO);
-        ContentValues values = new ContentValues();
-        values.put("address",
-                context.getString(R.string.default_repo_address));
-        values.put("name",
-                context.getString(R.string.default_repo_name));
-        values.put("description",
-                context.getString(R.string.default_repo_description));
-        values.put("version", 0);
-        String pubkey = context.getString(R.string.default_repo_pubkey);
-        String fingerprint = Utils.calcFingerprint(pubkey);
-        values.put("pubkey", pubkey);
-        values.put("fingerprint", fingerprint);
-        values.put("maxage", 0);
-        values.put("inuse", 1);
-        values.put("priority", 10);
-        values.put("lastetag", (String) null);
-        db.insert(TABLE_REPO, null, values);
 
-        values = new ContentValues();
-        values.put("address",
-                context.getString(R.string.default_repo_address2));
-        values.put("name",
-                context.getString(R.string.default_repo_name2));
-        values.put("description",
-                context.getString(R.string.default_repo_description2));
-        values.put("version", 0);
-        // default #2 is /archive which has the same key as /repo
-        values.put("pubkey", pubkey);
-        values.put("fingerprint", fingerprint);
-        values.put("maxage", 0);
-        values.put("inuse", 0);
-        values.put("priority", 20);
-        values.put("lastetag", (String) null);
-        db.insert(TABLE_REPO, null, values);
+        Resources ress = context.getResources();
+
+        int repoCount = ress.getInteger(R.integer.default_repo_count);
+        for (int i = 1; i <= repoCount; i++) {
+            ContentValues values = new ContentValues();
+            String repoName = context.getString(ress.getIdentifier(
+                    "default_repo_name" + i,
+                    "string",
+                    "org.fdroid.fdroid"
+                    ));
+            values.put("address",
+                context.getString(ress.getIdentifier(
+                    "default_repo_address" + i,
+                    "string",
+                    "org.fdroid.fdroid"
+                    )));
+            values.put("name",repoName);
+            values.put("description",
+                context.getString(ress.getIdentifier(
+                    "default_repo_description" + i,
+                    "string",
+                    "org.fdroid.fdroid"
+                   )));
+            String pubkey = context.getString(ress.getIdentifier(
+                    "default_repo_pubkey" + i,
+                    "string",
+                    "org.fdroid.fdroid"
+                    ));
+            String fingerprint = Utils.calcFingerprint(pubkey);
+            values.put("pubkey", pubkey);
+            values.put("fingerprint", fingerprint);
+            values.put("maxage", 0);
+            values.put("inuse", ress.getInteger(ress.getIdentifier(
+                    "default_repo_inuse" + i,
+                    "integer",
+                    "org.fdroid.fdroid"
+                   )));
+            values.put("priority", 10);
+            values.put("lastetag", (String) null);
+            Log.i("FDroid", "Add repository " + repoName);
+            db.insert(TABLE_REPO, null, values);
+        }
     }
 
     @Override
@@ -280,10 +290,10 @@ public class DBHelper extends SQLiteOpenHelper {
             if (!descriptionExists)
                 db.execSQL("alter table " + TABLE_REPO + " add column description text");
             ContentValues values = new ContentValues();
-            values.put("name", context.getString(R.string.default_repo_name));
-            values.put("description", context.getString(R.string.default_repo_description));
+            values.put("name", context.getString(R.string.default_repo_name1));
+            values.put("description", context.getString(R.string.default_repo_description1));
             db.update(TABLE_REPO, values, "address = ?", new String[]{
-                    context.getString(R.string.default_repo_address)});
+                    context.getString(R.string.default_repo_address1)});
             values.clear();
             values.put("name", context.getString(R.string.default_repo_name2));
             values.put("description", context.getString(R.string.default_repo_description2));
