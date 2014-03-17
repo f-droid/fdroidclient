@@ -7,13 +7,20 @@
   <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer ?</string>
   <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même revenir à une ancienne version?</string>
   <string name="version">Version</string>
+  <string name="edit">Éditer</string>
+  <string name="delete">Supprimer</string>
+  <string name="enable_nfc_send">Activer l\'envoi NFC…</string>
   <string name="cache_downloaded">Stocker les applications téléchargées sur l\'appareil</string>
+  <string name="cache_downloaded_on">Garder les fichiers apk téléchargés sur la carte SD</string>
+  <string name="cache_downloaded_off">Ne pas garder les fichiers apk</string>
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
   <string name="last_update_check">Dernière analyse du dépôt : %s</string>
   <string name="never">jamais</string>
   <string name="automatic_scan_wifi">Seulement par WiFi</string>
+  <string name="automatic_scan_wifi_off">Toujours mettre à jour automatiquement les listes d\'apps</string>
   <string name="notify">Notifier</string>
+  <string name="notify_off">Ne pas notifier des mises à jour</string>
   <string name="update_history">Historique des mises à jour</string>
   <string name="search_results">Résultats de la recherche</string>
   <string name="app_details">Détails de l\'application</string>
@@ -39,6 +46,9 @@ L\'URL d\'un dépôt ressemble à ceci : https://f-droid.org/repo</string>
   <string name="repo_add_title">Ajouter un nouveau dépôt</string>
   <string name="repo_add_add">Ajouter</string>
   <string name="cancel">Annuler</string>
+  <string name="enable">Activer</string>
+  <string name="add_key">Ajouter une clé</string>
+  <string name="overwrite">Écraser</string>
   <string name="repo_delete_title">Choisissez le dépôt à supprimer</string>
   <string name="repo_update_title">Mettre à jour les dépôts</string>
   <string name="tab_noninstalled">Disponible</string>
@@ -49,7 +59,15 @@ L\'URL d\'un dépôt ressemble à ceci : https://f-droid.org/repo</string>
   <string name="process_wait_title">Patientez</string>
   <string name="process_update_msg">Mise à jour de la liste d\'applications…</string>
   <string name="download_server">Réception d\'application de</string>
+  <string name="nfc_is_not_enabled">Le NFC n\'est pas activé !</string>
+  <string name="go_to_nfc_settings">Allez dans les paramètres NFC…</string>
+  <string name="bluetooth_activity_not_found">Pas de méthode d\'envoi Bluetooth trouvée, choisissez en une !</string>
+  <string name="choose_bt_send">Choisir la méthode d\'envoi Bluetooth</string>
   <string name="repo_add_url">Adresse du dépôt</string>
+  <string name="repo_add_fingerprint">Empreinte digitale (optionnel)</string>
+  <string name="repo_exists">Ce dépôt existe déja !</string>
+  <string name="repo_exists_enable">Ce dépôt est déja configuré, confirmer que vous voulez le réactiver.</string>
+  <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter avec une clé différente.</string>
   <string name="repo_alrt">La liste des dépôts utilisés a changé.
 Voulez-vous les mettre à jour ?</string>
   <string name="menu_update_repo">Mettre à jour les dépôts</string>
@@ -59,6 +77,7 @@ Voulez-vous les mettre à jour ?</string>
   <string name="menu_search">Rechercher</string>
   <string name="menu_add_repo">Nouveau dépôt</string>
   <string name="menu_rem_repo">Supprimer un dépôt</string>
+  <string name="menu_scan_repo">Trouver des dépôts locaux</string>
   <string name="menu_launch">Lancer</string>
   <string name="menu_share">Partager</string>
   <string name="menu_install">Installer</string>
@@ -81,14 +100,17 @@ Voulez-vous les mettre à jour ?</string>
   <string name="antinonfreedeplist">Cette application dépend d\'autres applications non libres</string>
   <string name="display">Affichage</string>
   <string name="expert">Expert</string>
+  <string name="expert_off">Cacher des extras pour les utilisateurs avancés</string>
   <string name="search_hint">Rechercher des applications</string>
   <string name="appcompatibility">Compatibilité de l\'application</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
   <string name="rooted">Root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
+  <string name="ignoreTouch_off">Filtrer les apps normalement</string>
   <string name="category_all">Tout</string>
   <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
+  <string name="local_repos_title">Dépôt FDroid locaux</string>
   <string name="status_download">Téléchargement
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
@@ -98,10 +120,25 @@ Voulez-vous les mettre à jour ?</string>
   <string name="status_connecting_to_repo">Connexion à
 %1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des applis avec votre appareil…</string>
+  <string name="status_inserting">Sauvegarder les détails de l\'application (%1$d%%)</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Autorisations pour la version %s</string>
   <string name="showPermissions">Afficher les autorisations</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
+  <string name="compactlayout_on">Montrer les icônes à une taille plus petite</string>
+  <string name="compactlayout_off">Montrer les icônes à une taille normale</string>
   <string name="theme">Thème</string>
+  <string name="unsigned">Non signé</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Nombre d\'applications</string>
+  <string name="repo_description">Description</string>
+  <string name="repo_last_update">Dernière mise à jour</string>
+  <string name="repo_name">Nom</string>
+  <string name="repo_delete_details">Voulez vous supprimer le dépôt \"{0}\", qui a {1} apps ? Toutes les applications installées ne seront pas supprimés, mais vous ne serez plus en mesure de les mettre à jour via F-Droid.</string>
+  <string name="unknown">Inconnu</string>
+  <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
+  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que les apps ne seront disponibles via F-Droid. Note: Toute les apps précédemment installées vont rester sur votre appareil.</string>
+  <string name="up_to_maxsdk">jusqu\'à %s</string>
+  <string name="requires_features">Nécessite: %1$s</string>
 </resources>

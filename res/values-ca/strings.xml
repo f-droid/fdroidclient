@@ -7,6 +7,8 @@
   <string name="installIncompatible">Sembla que aquest paquet no és compatible amb el vostre dispositiu. Voleu provar a instaŀlar-lo de totes maneres?</string>
   <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?</string>
   <string name="version">Versió</string>
+  <string name="edit">Editar</string>
+  <string name="delete">Esborrar</string>
   <string name="cache_downloaded">Memòria cau de les aplicacions baixades</string>
   <string name="updates">Actualitzacions</string>
   <string name="other">Altres</string>
@@ -39,6 +41,8 @@ L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</stri
   <string name="repo_add_title">Afegeix un nou dipòsit</string>
   <string name="repo_add_add">Afegeix</string>
   <string name="cancel">Anul·la</string>
+  <string name="enable">Permès</string>
+  <string name="add_key">Afegeix clau</string>
   <string name="overwrite">Sobreescriu</string>
   <string name="repo_delete_title">Trieu el dipòsit que voleu suprimir</string>
   <string name="repo_update_title">Actualitza els dipòsits</string>
@@ -51,7 +55,7 @@ L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</stri
   <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions…</string>
   <string name="download_server">S\'està obtenint l\'aplicació des de</string>
   <string name="repo_add_url">Adreça del dipòsit</string>
-  <string name="repo_exists">Aquest repositori ja existeix.</string>
+  <string name="repo_exists">Aquest dipòsit ja existeix.</string>
   <string name="repo_alrt">La llista de dipòsits ha canviat.
 La voleu actualitzar?</string>
   <string name="menu_update_repo">Actualitza els dipòsits</string>
@@ -61,6 +65,7 @@ La voleu actualitzar?</string>
   <string name="menu_search">Cerca</string>
   <string name="menu_add_repo">Nou dipòsit</string>
   <string name="menu_rem_repo">Suprimeix el dipòsit</string>
+  <string name="menu_scan_repo">Cerca dipòsits locals</string>
   <string name="menu_launch">Executa</string>
   <string name="menu_share">Comparteix</string>
   <string name="menu_install">Instal·la</string>
@@ -106,4 +111,10 @@ La voleu actualitzar?</string>
   <string name="no_handler_app">No teniu cap aplicació disponible que pugui gestionar %s</string>
   <string name="compactlayout">Vista compacta</string>
   <string name="theme">Tema</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Número d\'aplicacions</string>
+  <string name="repo_description">Descripció</string>
+  <string name="repo_update">Actualitzant</string>
+  <string name="repo_name">Nom</string>
+  <string name="repo_confirm_delete_title">Esborrar dipòsit?</string>
 </resources>
