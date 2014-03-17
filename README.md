@@ -10,6 +10,8 @@ Building from source
 
 The only required tools are the Android SDK and Apache Ant.
 
+Once you have checked out the version you wish to build, run:
+
 ```
 git submodule update --init
 ./ant-prepare.sh # This runs 'android update' on the libs and the main project
@@ -23,7 +25,7 @@ without manual interaction.
 Building as part of a ROM
 -------------------------
 
-Add the following lines to your repo manifest
+Add the following lines to your repo manifest:
 
 ```
 <remote name="fdroid" fetch="https://git.gitorious.org/f-droid" />
@@ -35,11 +37,10 @@ Add the following lines to your repo manifest
 
 <project path="packages/apps/fdroidclient/extern/MemorizingTrustManager" name="ge0rg/MemorizingTrustManager" remote="github" revision="master" />
 
-<!-- should be binaryparadox/AndroidPinning once pullrequest #2 is closed -->
-<project path="packages/apps/fdroidclient/extern/AndroidPinning" name="rtreffer/AndroidPinning" remote="github" revision="master" />
+<project path="packages/apps/fdroidclient/extern/AndroidPinning" name="binaryparadox/AndroidPinning" remote="github" revision="master" />
 ```
 
-Adding F-Droid is then just a matter of adding "F-Droid" to your PRODUCT_PACKAGES.
+Adding F-Droid is then just a matter of adding `F-Droid` to your `PRODUCT_PACKAGES`.
 
 Direct download
 ---------------
