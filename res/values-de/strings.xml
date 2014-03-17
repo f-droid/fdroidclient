@@ -9,7 +9,7 @@
   <string name="version">Version</string>
   <string name="edit">Bearbeiten</string>
   <string name="delete">Löschen</string>
-  <string name="enable_nfc_send">Aktiviere NFC Transfer...</string>
+  <string name="enable_nfc_send">Aktiviere NFC Transfer…</string>
   <string name="cache_downloaded">Anwendungszwischenspeicher</string>
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf der SD-Karte behalten</string>
   <string name="cache_downloaded_off">Installationsdateien nicht behalten</string>
@@ -66,7 +66,7 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
   <string name="process_update_msg">Anwendungsliste wird aktualisiert …</string>
   <string name="download_server">Anwendung wird heruntergeladen von</string>
   <string name="nfc_is_not_enabled">NFC ist deaktiviert!</string>
-  <string name="go_to_nfc_settings">Öffne NFC Einstellungen...</string>
+  <string name="go_to_nfc_settings">Öffne NFC Einstellungen…</string>
   <string name="bluetooth_activity_not_found">Keine Bluetooth Verbindung gefunden. Bitte wählen Sie eine Verbindung aus!</string>
   <string name="choose_bt_send">Wähle Bluetooth Übertragung</string>
   <string name="repo_add_url">Adresse der Paketquelle</string>
@@ -128,7 +128,7 @@ Sollen diese aktualisiert werden?</string>
   <string name="category_whatsnew">Was gibt es Neues</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
   <string name="local_repos_title">Lokale F-Droid Paketquellen</string>
-  <string name="local_repos_scanning">Entdecke lokale F-Droid Paketquellen...</string>
+  <string name="local_repos_scanning">Entdecke lokale F-Droid Paketquellen…</string>
   <string name="status_download">Herunterladen
 %2$s / %3$s (%4$d%%) von
 %1$s</string>
