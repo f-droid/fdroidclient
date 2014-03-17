@@ -214,7 +214,11 @@ public class DBHelper extends SQLiteOpenHelper {
                     "integer",
                     "org.fdroid.fdroid"
                    )));
-            values.put("priority", 10);
+            values.put("priority", ress.getInteger(ress.getIdentifier(
+                    "default_repo_pubkey" + i,
+                    "integer",
+                    "org.fdroid.fdroid"
+                   )));
             values.put("lastetag", (String) null);
             Log.i("FDroid", "Add repository " + repoName);
             db.insert(TABLE_REPO, null, values);

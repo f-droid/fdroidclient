@@ -7,6 +7,9 @@
     <integer name="default_repo_inuse1">1</integer>
     <integer name="default_repo_inuse2">0</integer>
     <integer name="default_repo_inuse3">0</integer>
+    <integer name="default_repo_priority1">10</integer>
+    <integer name="default_repo_priority2">20</integer>
+    <integer name="default_repo_priority3">30</integer>
     <string name="default_repo_address1" formatted="false">https://f-droid.org/repo</string>
     <string name="default_repo_address2" formatted="false">https://f-droid.org/archive</string>
     <string name="default_repo_address3" formatted="false">https://guardianproject.info/repo/</string>
