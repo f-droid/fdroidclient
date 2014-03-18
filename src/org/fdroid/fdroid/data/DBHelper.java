@@ -87,7 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "iconUrl text, "
             + "primary key(id));";
 
-    private static final int DB_VERSION = 41;
+    private static final int DB_VERSION = 42;
 
     private Context context;
 
@@ -231,12 +231,12 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.i("FDroid", "Upgrading database from v" + oldVersion + " v"
                 + newVersion);
 
-        migradeRepoTable(db, oldVersion);
+        migrateRepoTable(db, oldVersion);
 
         // The other tables are transient and can just be reset. Do this after
         // the repo table changes though, because it also clears the lastetag
         // fields which didn't always exist.
-        resetTransient(db);
+        resetTransient(db, oldVersion);
 
         addNameAndDescriptionToRepo(db, oldVersion);
         addFingerprintToRepo(db, oldVersion);
@@ -251,7 +251,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * Migrate repo list to new structure. (No way to change primary
      * key in sqlite - table must be recreated).
      */
-    private void migradeRepoTable(SQLiteDatabase db, int oldVersion) {
+    private void migrateRepoTable(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 20) {
             List<Repo> oldrepos = new ArrayList<Repo>();
             Cursor c = db.query(TABLE_REPO,
@@ -355,13 +355,20 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    private void resetTransient(SQLiteDatabase db) {
-        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
-                .putBoolean("triedEmptyUpdate", false).commit();
-        db.execSQL("drop table " + TABLE_APP);
-        db.execSQL("drop table " + TABLE_APK);
-        db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
-        createAppApk(db);
+    private void resetTransient(SQLiteDatabase db, int oldVersion) {
+        // Before version 42, only transient info was stored in here. As of some time
+        // just before 42 (F-Droid 0.60ish) it now has "ignore this version" info which
+        // was is specified by the user. We don't want to weely-neely nuke that data.
+        // and the new way to deal with changes to the table structure is to add a
+        // if (oldVersion < x && !columnExists(...) and then alter the table as required.
+        if (oldVersion < 42) {
+            context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
+                    .putBoolean("triedEmptyUpdate", false).commit();
+            db.execSQL("drop table " + TABLE_APP);
+            db.execSQL("drop table " + TABLE_APK);
+            db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
+            createAppApk(db);
+        }
     }
 
     private static void createAppApk(SQLiteDatabase db) {
