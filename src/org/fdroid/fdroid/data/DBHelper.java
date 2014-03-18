@@ -215,7 +215,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     "org.fdroid.fdroid"
                    )));
             values.put("priority", ress.getInteger(ress.getIdentifier(
-                    "default_repo_pubkey" + i,
+                    "default_repo_priority" + i,
                     "integer",
                     "org.fdroid.fdroid"
                    )));
