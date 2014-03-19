@@ -50,6 +50,7 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 import de.duenndns.ssl.MemorizingTrustManager;
 
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.compat.PRNGFixes;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
@@ -86,6 +87,9 @@ public class FDroidApp extends Application {
         // Perhaps the constructor is a better place, but then again,
         // it is more deterministic as to when this gets called...
         Preferences.setup(this);
+
+        //Apply the Google PRNG fixes to properly seed SecureRandom
+        PRNGFixes.apply();
 
         // Set this up here, and the testing framework will override it when
         // it gets fired up.
