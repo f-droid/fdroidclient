@@ -33,6 +33,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -913,7 +914,9 @@ public class AppDetails extends ListActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file.getPath()),
                 "application/vnd.android.package-archive");
-        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        if (Build.VERSION.SDK_INT >= 14) {
+            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        }
         startActivityForResult(intent, REQUEST_INSTALL);
         ((FDroidApp) getApplication()).invalidateApp(id);
     }
