@@ -4,8 +4,12 @@ import android.annotation.TargetApi;
 import android.content.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Map.Entry;
 
 public abstract class FDroidProvider extends ContentProvider {
 
@@ -98,9 +102,24 @@ public abstract class FDroidProvider extends ContentProvider {
     }
 
     @TargetApi(11)
+    protected Set<String> getKeySet(ContentValues values) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            return values.keySet();
+        }
+
+        Set<String> keySet = new HashSet<String>();
+        for (Entry<String, Object> item : values.valueSet()) {
+            String key = item.getKey();
+            keySet.add(key);
+        }
+        return keySet;
+
+    }
+
     protected void validateFields(String[] validFields, ContentValues values)
         throws IllegalArgumentException {
-        for (String key : values.keySet()) {
+        for (String key : getKeySet(values)) {
             boolean isValid = false;
             for (String validKey : validFields) {
                 if (validKey.equals(key)) {
