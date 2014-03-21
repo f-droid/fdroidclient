@@ -73,8 +73,13 @@ public class SearchResults extends ListActivity {
         ((FDroidApp) getApplication()).applyTheme(this);
 
         super.onCreate(savedInstanceState);
-        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.searchresults);
+
+        // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
+        // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+        // for reason why.
+        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
 
         // Start a search by just typing
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);

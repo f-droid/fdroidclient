@@ -261,10 +261,12 @@ public class AppDetails extends ListActivity {
             .bitmapConfig(Bitmap.Config.RGB_565)
             .build();
 
-        ActionBarCompat abCompat = ActionBarCompat.create(this);
-        abCompat.setDisplayHomeAsUpEnabled(true);
-
         setContentView(R.layout.appdetails);
+
+        // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
+        // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+        // for reason why.
+        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
 
         Intent i = getIntent();
         Uri data = i.getData();

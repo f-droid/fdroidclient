@@ -27,6 +27,7 @@ import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.MenuItem;
 
+import android.widget.LinearLayout;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.fragments.RepoListFragment;
 
@@ -49,6 +50,14 @@ public class ManageRepo extends FragmentActivity {
         ((FDroidApp) getApplication()).applyTheme(this);
 
         if (savedInstanceState == null) {
+
+            // Need to set a dummy view (which will get overridden by the fragment manager
+            // below) so that we can call setContentView(). This is a work around for
+            // a (bug?) thing in 3.0, 3.1 which requires setContentView to be invoked before
+            // the actionbar is played with:
+            // http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+            setContentView( new LinearLayout(this) );
+
             listFragment = new RepoListFragment();
             getSupportFragmentManager()
                 .beginTransaction()

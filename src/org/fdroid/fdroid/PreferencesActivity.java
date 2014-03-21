@@ -59,7 +59,12 @@ public class PreferencesActivity extends PreferenceActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
+
+        // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
+        // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+        // for reason why.
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+
         addPreferencesFromResource(R.xml.preferences);
     }
 

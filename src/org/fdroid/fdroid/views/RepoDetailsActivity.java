@@ -15,6 +15,7 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -41,6 +42,14 @@ public class RepoDetailsActivity extends FragmentActivity {
         long repoId = getIntent().getLongExtra(RepoDetailsFragment.ARG_REPO_ID, 0);
 
         if (savedInstanceState == null) {
+
+            // Need to set a dummy view (which will get overridden by the fragment manager
+            // below) so that we can call setContentView(). This is a work around for
+            // a (bug?) thing in 3.0, 3.1 which requires setContentView to be invoked before
+            // the actionbar is played with:
+            // http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+            setContentView( new LinearLayout(this) );
+
             RepoDetailsFragment fragment = new RepoDetailsFragment();
             fragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager()
