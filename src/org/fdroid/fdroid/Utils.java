@@ -118,30 +118,32 @@ public final class Utils {
         return String.format(FRIENDLY_SIZE_FORMAT[i], s);
     }
 
+    private static final String[] androidVersionNames = {
+        "?",     // 0, undefined
+        "1.0",   // 1
+        "1.1",   // 2
+        "1.5",   // 3
+        "1.6",   // 4
+        "2.0",   // 5
+        "2.0.1", // 6
+        "2.1",   // 7
+        "2.2",   // 8
+        "2.3",   // 9
+        "2.3.3", // 10
+        "3.0",   // 11
+        "3.1",   // 12
+        "3.2",   // 13
+        "4.0",   // 14
+        "4.0.3", // 15
+        "4.1",   // 16
+        "4.2",   // 17
+        "4.3",   // 18
+        "4.4"    // 19
+    };
+
     public static String getAndroidVersionName(int sdkLevel) {
-        if (sdkLevel < 1) return null;
-        switch (sdkLevel) {
-            case 19: return "4.4";
-            case 18: return "4.3";
-            case 17: return "4.2";
-            case 16: return "4.1";
-            case 15: return "4.0.3";
-            case 14: return "4.0";
-            case 13: return "3.2";
-            case 12: return "3.1";
-            case 11: return "3.0";
-            case 10: return "2.3.3";
-            case 9: return "2.3";
-            case 8: return "2.2";
-            case 7: return "2.1";
-            case 6: return "2.0.1";
-            case 5: return "2.0";
-            case 4: return "1.6";
-            case 3: return "1.5";
-            case 2: return "1.1";
-            case 1: return "1.0";
-            default: return "?";
-        }
+        if (sdkLevel < 0 || sdkLevel > 19) return androidVersionNames[0];
+        return androidVersionNames[sdkLevel];
     }
 
     public static int countSubstringOccurrence(File file, String substring) throws IOException {
