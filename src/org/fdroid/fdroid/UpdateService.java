@@ -539,12 +539,15 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         int knownIdCount = cursor != null ? cursor.getCount() : 0;
         List<String> knownIds = new ArrayList<String>(knownIdCount);
-        if (knownIdCount > 0) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                knownIds.add(cursor.getString(0));
-                cursor.moveToNext();
+        if (cursor != null) {
+            if (knownIdCount > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                    knownIds.add(cursor.getString(0));
+                    cursor.moveToNext();
+                }
             }
+            cursor.close();
         }
 
         return knownIds;

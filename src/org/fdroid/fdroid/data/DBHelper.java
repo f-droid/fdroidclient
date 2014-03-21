@@ -102,19 +102,22 @@ public class DBHelper extends SQLiteOpenHelper {
             String[] columns = { "address", "_id" };
             Cursor cursor = db.query(TABLE_REPO, columns,
                     "name IS NULL OR name = ''", null, null, null, null);
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    String address = cursor.getString(0);
-                    long id = cursor.getInt(1);
-                    ContentValues values = new ContentValues(1);
-                    String name = Repo.addressToName(address);
-                    values.put("name", name);
-                    String[] args = { Long.toString( id ) };
-                    Log.i("FDroid", "Setting repo name to '" + name + "' for repo " + address);
-                    db.update(TABLE_REPO, values, "_id = ?", args);
-                    cursor.moveToNext();
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        String address = cursor.getString(0);
+                        long id = cursor.getInt(1);
+                        ContentValues values = new ContentValues(1);
+                        String name = Repo.addressToName(address);
+                        values.put("name", name);
+                        String[] args = { Long.toString( id ) };
+                        Log.i("FDroid", "Setting repo name to '" + name + "' for repo " + address);
+                        db.update(TABLE_REPO, values, "_id = ?", args);
+                        cursor.moveToNext();
+                    }
                 }
+                cursor.close();
             }
         }
     }
@@ -254,19 +257,23 @@ public class DBHelper extends SQLiteOpenHelper {
     private void migrateRepoTable(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 20) {
             List<Repo> oldrepos = new ArrayList<Repo>();
-            Cursor c = db.query(TABLE_REPO,
+            Cursor cursor = db.query(TABLE_REPO,
                     new String[] { "address", "inuse", "pubkey" },
                     null, null, null, null, null);
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                Repo repo = new Repo();
-                repo.address = c.getString(0);
-                repo.inuse = (c.getInt(1) == 1);
-                repo.pubkey = c.getString(2);
-                oldrepos.add(repo);
-                c.moveToNext();
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        Repo repo = new Repo();
+                        repo.address = cursor.getString(0);
+                        repo.inuse = (cursor.getInt(1) == 1);
+                        repo.pubkey = cursor.getString(2);
+                        oldrepos.add(repo);
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
             }
-            c.close();
             db.execSQL("drop table " + TABLE_REPO);
             db.execSQL(CREATE_TABLE_REPO);
             for (Repo repo : oldrepos) {
@@ -316,18 +323,22 @@ public class DBHelper extends SQLiteOpenHelper {
             if (!columnExists(db, TABLE_REPO, "fingerprint"))
                 db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
             List<Repo> oldrepos = new ArrayList<Repo>();
-            Cursor c = db.query(TABLE_REPO,
+            Cursor cursor = db.query(TABLE_REPO,
                     new String[] { "address", "pubkey" },
                     null, null, null, null, null);
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                Repo repo = new Repo();
-                repo.address = c.getString(0);
-                repo.pubkey = c.getString(1);
-                oldrepos.add(repo);
-                c.moveToNext();
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        Repo repo = new Repo();
+                        repo.address = cursor.getString(0);
+                        repo.pubkey = cursor.getString(1);
+                        oldrepos.add(repo);
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
             }
-            c.close();
             for (Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
                 values.put("fingerprint", Utils.calcFingerprint(repo.pubkey));

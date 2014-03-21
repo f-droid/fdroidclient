@@ -33,6 +33,7 @@ public class RepoProvider extends FDroidProvider {
             if (cursor != null) {
                 cursor.moveToFirst();
                 repo = new Repo(cursor);
+                cursor.close();
             }
             return repo;
         }
@@ -176,13 +177,16 @@ public class RepoProvider extends FDroidProvider {
             ContentResolver resolver = context.getContentResolver();
             String[] projection = { ApkProvider.DataColumns._COUNT_DISTINCT_ID };
             Uri apkUri = ApkProvider.getRepoUri(repoId);
-            Cursor result = resolver.query(apkUri, projection, null, null, null);
-            if (result != null && result.getCount() > 0) {
-                result.moveToFirst();
-                return result.getInt(0);
-            } else {
-                return 0;
+            Cursor cursor = resolver.query(apkUri, projection, null, null, null);
+            int count = 0;
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    count = cursor.getInt(0);
+                }
+                cursor.close();
             }
+            return count;
         }
     }
 

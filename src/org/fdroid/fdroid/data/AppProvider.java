@@ -40,12 +40,15 @@ public class AppProvider extends FDroidProvider {
         }
 
         private static List<App> cursorToList(Cursor cursor) {
-            List<App> apps = new ArrayList<App>();
+            int knownAppCount = cursor != null ? cursor.getCount() : 0;
+            List<App> apps = new ArrayList<App>(knownAppCount);
             if (cursor != null) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    apps.add(new App(cursor));
-                    cursor.moveToNext();
+                if (knownAppCount > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        apps.add(new App(cursor));
+                        cursor.moveToNext();
+                    }
                 }
                 cursor.close();
             }
@@ -71,16 +74,19 @@ public class AppProvider extends FDroidProvider {
             Cursor cursor = resolver.query(uri, projection, null, null, null );
             Set<String> categorySet = new HashSet<String>();
             if (cursor != null) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    String categoriesString = cursor.getString(0);
-                    if (categoriesString != null) {
-                        for( String s : Utils.CommaSeparatedList.make(categoriesString)) {
-                            categorySet.add(s);
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        String categoriesString = cursor.getString(0);
+                        if (categoriesString != null) {
+                            for (String s : Utils.CommaSeparatedList.make(categoriesString)) {
+                                categorySet.add(s);
+                            }
                         }
+                        cursor.moveToNext();
                     }
-                    cursor.moveToNext();
                 }
+                cursor.close();
             }
             List<String> categories = new ArrayList<String>(categorySet);
             Collections.sort(categories);
@@ -103,12 +109,15 @@ public class AppProvider extends FDroidProvider {
                                    String[] projection) {
             Uri uri = getContentUri(appId);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
-            if (cursor != null && cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                return new App(cursor);
-            } else {
-                return null;
+            App app = null;
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    app = new App(cursor);
+                }
+                cursor.close();
             }
+            return app;
         }
 
         public static void deleteAppsWithNoApks(ContentResolver resolver) {

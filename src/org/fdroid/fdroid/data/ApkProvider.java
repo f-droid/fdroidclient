@@ -32,12 +32,15 @@ public class ApkProvider extends FDroidProvider {
         }
 
         public static List<Apk> cursorToList(Cursor cursor) {
-            List<Apk> apks = new ArrayList<Apk>();
+            int knownApkCount = cursor != null ? cursor.getCount() : 0;
+            List<Apk> apks = new ArrayList<Apk>(knownApkCount);
             if (cursor != null) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    apks.add(new Apk(cursor));
-                    cursor.moveToNext();
+                if (knownApkCount > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        apks.add(new Apk(cursor));
+                        cursor.moveToNext();
+                    }
                 }
                 cursor.close();
             }
@@ -64,12 +67,15 @@ public class ApkProvider extends FDroidProvider {
             ContentResolver resolver = context.getContentResolver();
             Uri uri = getContentUri(id, versionCode);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
-            if (cursor != null && cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                return new Apk(cursor);
-            } else {
-                return null;
+            Apk apk = null;
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    apk = new Apk(cursor);
+                }
+                cursor.close();
             }
+            return apk;
         }
 
         public static List<Apk> findByApp(Context context, String appId) {
