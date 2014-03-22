@@ -36,10 +36,12 @@
 
                 <ImageView
                     android:id="@+id/icon"
+                    android:contentDescription="@string/app_icon"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:padding="4dp"
-                    android:scaleType="fitCenter" />
+					android:scaleType="fitCenter"
+					/>
 
 				<RelativeLayout
 					android:layout_width="fill_parent"

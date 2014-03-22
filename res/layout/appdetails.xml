@@ -14,11 +14,13 @@
 
 		<ImageView
 			android:id="@+id/icon"
+			android:contentDescription="@string/app_icon"
 			android:layout_width="56dp"
 			android:layout_height="56dp"
 			android:layout_centerVertical="true"
 			android:padding="4dp"
-			android:scaleType="fitCenter" />
+			android:scaleType="fitCenter"
+			/>
 
 		<RelativeLayout
 			android:layout_width="fill_parent"
@@ -28,7 +30,8 @@
 			android:layout_toEndOf="@id/icon"
 			android:padding="5dp"
 			android:baselineAligned="false"
-			android:orientation="vertical" >
+			android:orientation="vertical"
+			>
 
 			<TextView
 				android:id="@+id/license"
@@ -41,7 +44,8 @@
 				android:ellipsize="end"
 				android:layout_marginLeft="6sp"
 				android:layout_marginStart="6sp"
-				android:textSize="12sp" />
+				android:textSize="12sp"
+				/>
 
 			<TextView
 				android:id="@+id/title"

@@ -213,4 +213,7 @@
     <string name="discovered_repo_name">Discovered Repo Name</string>
     <string name="repo_address">Repo Address</string>
 
+    <string name="app_icon">App icon</string>
+    <string name="repo_icon">Repo icon</string>
+
 </resources>

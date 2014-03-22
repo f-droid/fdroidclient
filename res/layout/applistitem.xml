@@ -8,12 +8,15 @@
 
 	<!-- Actual icon size is dependent on preferences and set in
 		AppListAdapater.java:layoutIcon() -->
-	<ImageView android:id="@+id/icon"
+	<ImageView
+		android:id="@+id/icon"
+		android:contentDescription="@string/app_icon"
 		android:layout_width="56dp"
 		android:layout_height="56dp"
 		android:layout_centerVertical="true"
 		android:padding="4dp"
-		android:scaleType="fitCenter" />
+		android:scaleType="fitCenter"
+		/>
 
 	<RelativeLayout
 		android:orientation="vertical"
