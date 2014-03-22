@@ -63,6 +63,9 @@ Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="process_wait_title">Attendere prego</string>
   <string name="process_update_msg">Aggiornamento elenco applicazioni…</string>
   <string name="download_server">Scaricamento applicazione da</string>
+  <string name="nfc_is_not_enabled">NFC non attivato!</string>
+  <string name="go_to_nfc_settings">Vai alle Impostazioni NFC...</string>
+  <string name="bluetooth_activity_not_found">Nessun metodo d\'invio via Bluetooth trovato, selezionane uno!</string>
   <string name="repo_add_url">Indirizzo repository</string>
   <string name="repo_add_fingerprint">Impronta digitale (opzionale)</string>
   <string name="repo_exists">Questo repository esiste già!</string>
@@ -79,6 +82,7 @@ Vuoi aggiornarlo?</string>
   <string name="menu_search">Cerca</string>
   <string name="menu_add_repo">Nuovo Repository</string>
   <string name="menu_rem_repo">Rimuovi Repository</string>
+  <string name="menu_scan_repo">Trova dei Repository locali</string>
   <string name="menu_launch">Avvia</string>
   <string name="menu_share">Condividi</string>
   <string name="menu_install">Installa</string>
@@ -156,4 +160,7 @@ Nota: Tutte le applicazioni installate precedentemente rimarranno sul dispositiv
   <string name="repo_disabled_notification">\"%1$s\" è disabilitato.
 È necessario abilitare nuovamente questo repository per installare le applicazioni contenute.</string>
   <string name="minsdk_or_later">%s o successivi</string>
+  <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete WiFi del Repository locale che hai aggiunto!
+Prova a collegarti a questa rete: %s</string>
+  <string name="requires_features">Richiede: %1$s</string>
 </resources>

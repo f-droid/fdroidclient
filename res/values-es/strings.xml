@@ -9,6 +9,7 @@
   <string name="version">Versión</string>
   <string name="edit">Editar</string>
   <string name="delete">Borrar</string>
+  <string name="enable_nfc_send">Habilitar envío NFC...</string>
   <string name="cache_downloaded">Caché de aplicaciones descargadas</string>
   <string name="cache_downloaded_on">Mantener en la tarjeta SD los ficheros apk descargados</string>
   <string name="cache_downloaded_off">No conservar ningún archivo apk</string>
@@ -63,6 +64,10 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="process_wait_title">Por favor, espera</string>
   <string name="process_update_msg">Actualizando la lista de aplicaciones…</string>
   <string name="download_server">Obteniendo la aplicación de</string>
+  <string name="nfc_is_not_enabled">¡No está habilitado NFC!</string>
+  <string name="go_to_nfc_settings">Ir a los ajustes de NFC...</string>
+  <string name="bluetooth_activity_not_found">No se encontró método de envío Bluetooth, ¡elige uno!</string>
+  <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>
   <string name="repo_add_url">Dirección del repositorio</string>
   <string name="repo_add_fingerprint">Huella digital (opcional)</string>
   <string name="repo_exists">¡Este repositorio ya existe!</string>
@@ -70,15 +75,18 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="repo_exists_enable">Este repositorio ya está configurado, confirma que quieres volver a habilitarlo.</string>
   <string name="repo_exists_and_enabled">¡El repositorio ya está configurado y habilitado!</string>
   <string name="repo_delete_to_overwrite">¡Debes borrar este repositorio antes de añadir uno con una clave diferente!</string>
+  <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
   <string name="repo_alrt">La lista de repositorios usada ha cambiado.
 ¿Deseas actualizarlos?</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Gestionar Repositorios</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk...</string>
   <string name="menu_preferences">Preferencias</string>
   <string name="menu_about">Acerca de</string>
   <string name="menu_search">Buscar</string>
   <string name="menu_add_repo">Repositorio nuevo</string>
   <string name="menu_rem_repo">Borrar Repositorio</string>
+  <string name="menu_scan_repo">Buscar repos locales</string>
   <string name="menu_launch">Ejecutar</string>
   <string name="menu_share">Compartir</string>
   <string name="menu_install">Instalar</string>
@@ -118,6 +126,8 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">Novedades</string>
   <string name="category_recentlyupdated">Recientemente actualizados</string>
+  <string name="local_repos_title">Repos de FDroid locales</string>
+  <string name="local_repos_scanning">Descubriendo repos locales de FDroid...</string>
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
@@ -127,6 +137,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="status_connecting_to_repo">Conectando a
 %1$s</string>
   <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo…</string>
+  <string name="status_inserting">Guardando detalles de la aplicación (%1$d%%)</string>
   <string name="no_permissions">No se usan permisos.</string>
   <string name="permissions_for_long">Permisos para la versión %s</string>
   <string name="showPermissions">Mostrar permisos</string>
@@ -140,6 +151,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="unsigned">No firmado</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Número de aplicaciones</string>
+  <string name="repo_fingerprint">Huella digital de la clave de firmado del repo (SHA-256)</string>
   <string name="repo_description">Descripción</string>
   <string name="repo_last_update">Última actualización</string>
   <string name="repo_update">Actualizar</string>
@@ -163,4 +175,8 @@ Nota: todas las aplicaciones previamente instaladas se quedarán en tu dispositi
 
 Necesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
   <string name="minsdk_or_later">%s o posterior</string>
+  <string name="up_to_maxsdk">hasta %s</string>
+  <string name="minsdk_up_to_maxsdk">De %1$ a %2$s</string>
+  <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma WiFi que el repo que acabas de añadir! Intenta unirte a esta red: %s</string>
+  <string name="requires_features">Requiere: %1$s</string>
 </resources>
