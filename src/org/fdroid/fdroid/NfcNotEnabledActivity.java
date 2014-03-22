@@ -19,7 +19,7 @@ public class NfcNotEnabledActivity extends Activity {
      * needed for NDEF. Therefore, we detect the current state of NFC,
      * and steer the user accordingly.
      */
-    @TargetApi(14)
+    @TargetApi(16)
     private void doOnJellybean(Intent intent) {
         if (NfcAdapter.getDefaultAdapter(this).isEnabled())
             intent.setAction(Settings.ACTION_NFCSHARING_SETTINGS);
@@ -28,7 +28,7 @@ public class NfcNotEnabledActivity extends Activity {
     }
 
     // this API was added in 4.0 aka Ice Cream Sandwich
-    @TargetApi(16)
+    @TargetApi(14)
     private void doOnIceCreamSandwich(Intent intent) {
         intent.setAction(Settings.ACTION_NFCSHARING_SETTINGS);
     }
