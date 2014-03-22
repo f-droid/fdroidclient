@@ -29,6 +29,7 @@ import android.widget.*;
 import org.fdroid.fdroid.data.*;
 import org.xml.sax.XMLReader;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -912,13 +913,19 @@ public class AppDetails extends ListActivity {
 
     }
 
+    @TargetApi(14)
+    private void extraNotUnknownSource(Intent intent) {
+        if (Build.VERSION.SDK_INT < 14) {
+            return;
+        }
+        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+    }
+
     private void installApk(File file, String id) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file.getPath()),
                 "application/vnd.android.package-archive");
-        if (Build.VERSION.SDK_INT >= 14) {
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-        }
+        extraNotUnknownSource(intent);
         startActivityForResult(intent, REQUEST_INSTALL);
         ((FDroidApp) getApplication()).invalidateApp(id);
     }
