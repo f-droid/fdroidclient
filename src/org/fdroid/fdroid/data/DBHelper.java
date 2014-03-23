@@ -177,55 +177,46 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         createAppApk(db);
-
         db.execSQL(CREATE_TABLE_REPO);
 
-        Resources ress = context.getResources();
+        insertRepo(
+            db,
+            context.getString(R.string.default_repo_name1),
+            context.getString(R.string.default_repo_address1),
+            context.getString(R.string.default_repo_description1),
+            context.getString(R.string.default_repo_pubkey1),
+            context.getResources().getInteger(R.integer.default_repo_inuse1),
+            context.getResources().getInteger(R.integer.default_repo_priority1)
+        );
 
-        int repoCount = ress.getInteger(R.integer.default_repo_count);
-        for (int i = 1; i <= repoCount; i++) {
-            ContentValues values = new ContentValues();
-            String repoName = context.getString(ress.getIdentifier(
-                    "default_repo_name" + i,
-                    "string",
-                    "org.fdroid.fdroid"
-                    ));
-            values.put("address",
-                context.getString(ress.getIdentifier(
-                    "default_repo_address" + i,
-                    "string",
-                    "org.fdroid.fdroid"
-                    )));
-            values.put("name",repoName);
-            values.put("description",
-                context.getString(ress.getIdentifier(
-                    "default_repo_description" + i,
-                    "string",
-                    "org.fdroid.fdroid"
-                   )));
-            String pubkey = context.getString(ress.getIdentifier(
-                    "default_repo_pubkey" + i,
-                    "string",
-                    "org.fdroid.fdroid"
-                    ));
-            String fingerprint = Utils.calcFingerprint(pubkey);
-            values.put("pubkey", pubkey);
-            values.put("fingerprint", fingerprint);
-            values.put("maxage", 0);
-            values.put("inuse", ress.getInteger(ress.getIdentifier(
-                    "default_repo_inuse" + i,
-                    "integer",
-                    "org.fdroid.fdroid"
-                   )));
-            values.put("priority", ress.getInteger(ress.getIdentifier(
-                    "default_repo_priority" + i,
-                    "integer",
-                    "org.fdroid.fdroid"
-                   )));
-            values.put("lastetag", (String) null);
-            Log.i("FDroid", "Add repository " + repoName);
-            db.insert(TABLE_REPO, null, values);
-        }
+        insertRepo(
+            db,
+            context.getString(R.string.default_repo_name2),
+            context.getString(R.string.default_repo_address2),
+            context.getString(R.string.default_repo_description2),
+            context.getString(R.string.default_repo_pubkey2),
+            context.getResources().getInteger(R.integer.default_repo_inuse2),
+            context.getResources().getInteger(R.integer.default_repo_priority2)
+        );
+    }
+
+    private void insertRepo(
+        SQLiteDatabase db, String name, String address, String description,
+        String pubKey, int inUse, int priority) {
+
+        ContentValues values = new ContentValues();
+        values.put(RepoProvider.DataColumns.ADDRESS, address);
+        values.put(RepoProvider.DataColumns.NAME, name);
+        values.put(RepoProvider.DataColumns.DESCRIPTION, description);
+        values.put(RepoProvider.DataColumns.PUBLIC_KEY, pubKey);
+        values.put(RepoProvider.DataColumns.FINGERPRINT, Utils.calcFingerprint(pubKey));
+        values.put(RepoProvider.DataColumns.MAX_AGE, 0);
+        values.put(RepoProvider.DataColumns.IN_USE, inUse);
+        values.put(RepoProvider.DataColumns.PRIORITY, priority);
+        values.put(RepoProvider.DataColumns.LAST_ETAG, (String)null);
+
+        Log.i("FDroid", "Adding repository " + name);
+        db.insert(TABLE_REPO, null, values);
     }
 
     @Override

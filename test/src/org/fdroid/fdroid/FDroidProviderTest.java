@@ -3,13 +3,16 @@ package org.fdroid.fdroid;
 import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
 import android.test.ProviderTestCase2MockContext;
+import mock.MockCategoryResources;
 import mock.MockContextEmptyComponents;
 import mock.MockContextSwappableComponents;
+import mock.MockFDroidResources;
 import org.fdroid.fdroid.data.FDroidProvider;
 import org.fdroid.fdroid.mock.MockInstalledApkCache;
 
@@ -23,10 +26,15 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         super(providerClass, providerAuthority);
     }
 
+    protected Resources getMockResources() {
+        return new MockFDroidResources(getContext());
+    }
+
     @Override
     public void setUp() throws Exception {
         super.setUp();
         Utils.setupInstalledApkCache(new MockInstalledApkCache());
+        getSwappableContext().setResources(getMockResources());
 
         // The *Provider.Helper.* functions tend to take a Context as their
         // first parameter. This context is used to connect to the relevant
@@ -34,6 +42,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         // to the mock content resolver, in order to reach the provider
         // under test.
         getSwappableContext().setContentResolver(getMockContentResolver());
+
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)

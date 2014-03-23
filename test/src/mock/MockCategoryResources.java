@@ -1,9 +1,14 @@
 package mock;
 
+import android.content.Context;
 import android.test.mock.*;
 import org.fdroid.fdroid.*;
 
-public class MockCategoryResources extends MockResources {
+public class MockCategoryResources extends MockFDroidResources {
+
+    public MockCategoryResources(Context getStringDelegatingContext) {
+        super(getStringDelegatingContext);
+    }
 
     @Override
     public String getString(int id) {

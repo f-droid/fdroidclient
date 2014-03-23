@@ -2,6 +2,7 @@ package org.fdroid.fdroid;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.res.Resources;
 import android.database.Cursor;
 
 import mock.MockCategoryResources;
@@ -24,7 +25,12 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        getSwappableContext().setResources(new MockCategoryResources());
+        getSwappableContext().setResources(new MockCategoryResources(getContext()));
+    }
+
+    @Override
+    protected Resources getMockResources() {
+        return new MockCategoryResources(getContext());
     }
 
     @Override
