@@ -405,7 +405,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     latestcode = apk.vercode;
                 }
             }
-        } else if (app.upstreamVercode == -1) {
+        } else {
             // If the current version was not set we return the most recent apk.
             int latestCode = -1;
             for (Apk apk : apksForApp) {
