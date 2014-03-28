@@ -63,11 +63,12 @@ public class FDroid extends FragmentActivity {
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
-    private static final int MANAGE_REPO = Menu.FIRST;
-    private static final int PREFERENCES = Menu.FIRST + 1;
-    private static final int ABOUT = Menu.FIRST + 2;
-    private static final int SEARCH = Menu.FIRST + 3;
-    private static final int BLUETOOTH_APK = Menu.FIRST + 4;
+    private static final int UPDATE_REPO = Menu.FIRST;
+    private static final int MANAGE_REPO = Menu.FIRST + 1;
+    private static final int PREFERENCES = Menu.FIRST + 2;
+    private static final int ABOUT = Menu.FIRST + 3;
+    private static final int SEARCH = Menu.FIRST + 4;
+    private static final int BLUETOOTH_APK = Menu.FIRST + 5;
 
     /* request codes for Bluetooth flows */
     private BluetoothAdapter mBluetoothAdapter = null;
@@ -143,6 +144,8 @@ public class FDroid extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
+        menu.add(Menu.NONE, UPDATE_REPO, 1, R.string.menu_update_repo).setIcon(
+                android.R.drawable.ic_menu_rotate);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
@@ -161,6 +164,10 @@ public class FDroid extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+        case UPDATE_REPO:
+            updateRepos();
+            return true;
 
         case MANAGE_REPO:
             Intent i = new Intent(this, ManageRepo.class);
@@ -260,7 +267,7 @@ public class FDroid extends FragmentActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                            updateRepos();
+                                updateRepos();
                             }
                         });
                 ask_alrt.setNegativeButton(getString(R.string.no),
