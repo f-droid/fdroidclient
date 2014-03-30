@@ -16,7 +16,6 @@ public interface ProgressListener {
     public static class Event implements Parcelable {
 
         public static final int NO_VALUE = Integer.MIN_VALUE;
-        public static final String PROGRESS_DATA_REPO = "repo";
 
         public final String type;
         public final Bundle data;

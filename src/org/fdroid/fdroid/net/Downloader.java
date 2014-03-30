@@ -128,10 +128,40 @@ public abstract class Downloader {
         InputStream input = null;
         try {
             input = inputStream();
+
+            // Getting the input stream is slow(ish) for HTTP downloads, so we'll check if
+            // we were interrupted before proceeding to the download.
+            throwExceptionIfInterrupted();
+
             copyInputToOutputStream(inputStream());
         } finally {
             Utils.closeQuietly(outputStream);
             Utils.closeQuietly(input);
+        }
+
+        // Even if we have completely downloaded the file, we should probably respect
+        // the wishes of the user who wanted to cancel us.
+        throwExceptionIfInterrupted();
+    }
+
+    /**
+     * In a synchronous download (the usual usage of the Downloader interface),
+     * you will not be able to interrupt this because the thread will block
+     * after you have called download(). However if you use the AsyncDownloadWrapper,
+     * then it will use this mechanism to cancel the download.
+     *
+     * After every network operation that could take a while, we will check if an
+     * interrupt occured during that blocking operation. The goal is to ensure we
+     * don't move onto another slow, network operation if we have cancelled the
+     * download.
+     * @throws InterruptedException
+     */
+    private void throwExceptionIfInterrupted() throws InterruptedException {
+        if (Thread.interrupted()) {
+            // TODO: Do we need to provide more information to whoever needs it,
+            // so they can, for example, remove any partially created files?
+            Log.d(TAG, "Received interrupt, cancelling download");
+            throw new InterruptedException();
         }
     }
 
@@ -140,21 +170,17 @@ public abstract class Downloader {
         byte[] buffer = new byte[Utils.BUFFER_SIZE];
         int bytesRead = 0;
         int totalBytes = totalDownloadSize();
+
+        // Getting the total download size could potentially take time, depending on how
+        // it is implemented, so we may as well check this before we proceed.
+        throwExceptionIfInterrupted();
+
         sendProgress(bytesRead, totalBytes);
         while (true) {
 
-            // In a synchronous download (the usual usage of the Downloader interface),
-            // you will not be able to interrupt this because the thread will block
-            // after you have called download(). However if you use the AsyncDownloadWrapper,
-            // then it will use this mechanism to cancel the download.
-            if (Thread.interrupted()) {
-                // TODO: Do we need to provide more information to whoever needs it,
-                // so they can, for example, remove any partially created files?
-                Log.d(TAG, "Received interrupt, cancelling download");
-                throw new InterruptedException();
-            }
-
             int count = input.read(buffer);
+            throwExceptionIfInterrupted();
+
             bytesRead += count;
             sendProgress(bytesRead, totalBytes);
             if (count == -1) {

@@ -1073,11 +1073,16 @@ public class AppDetails extends ListActivity implements ProgressListener {
             pd.setMessage(getString(R.string.download_server) + ":\n " + file);
             pd.setCancelable(true);
             pd.setCanceledOnTouchOutside(false);
-            pd.setIndeterminate(true); // This will get overridden on the first progress event we receive.
+
+            // The indeterminate-ness will get overridden on the first progress event we receive.
+            pd.setIndeterminate(true);
+
             pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {
                     downloadHandler.cancel();
+                    progressDialog = null;
+                    Toast.makeText(AppDetails.this, getString(R.string.download_cancelled), Toast.LENGTH_LONG).show();
                 }
             });
             pd.setButton(DialogInterface.BUTTON_NEUTRAL,
@@ -1117,9 +1122,6 @@ public class AppDetails extends ListActivity implements ProgressListener {
             finished = true;
         } else if (event.type.equals(ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE)) {
             installApk(downloadHandler.localFile(), downloadHandler.getApk().id);
-            finished = true;
-        } else if (event.type.equals(ApkDownloader.EVENT_APK_DOWNLOAD_CANCELLED)) {
-            Toast.makeText(this, getString(R.string.download_cancelled), Toast.LENGTH_LONG).show();
             finished = true;
         }
 

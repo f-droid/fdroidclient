@@ -94,7 +94,7 @@ abstract public class RepoUpdater {
 
             if (progressListener != null) { // interactive session, show progress
                 Bundle data = new Bundle(1);
-                data.putString(PROGRESS_DATA_REPO_ADDRESS, getIndexAddress());
+                data.putString(PROGRESS_DATA_REPO_ADDRESS, repo.address);
                 downloader.setProgressListener(progressListener, data);
             }
 
