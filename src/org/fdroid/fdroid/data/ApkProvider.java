@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
+import org.fdroid.fdroid.UpdateService;
 
 import java.util.*;
 
@@ -59,6 +60,12 @@ public class ApkProvider extends FDroidProvider {
             resolver.delete(uri, null, null);
         }
 
+        public static void deleteApks(Context context, List<Apk> apks) {
+            ContentResolver resolver = context.getContentResolver();
+            Uri uri = getContentUri(apks);
+            resolver.delete(uri, null, null);
+        }
+
         public static Apk find(Context context, String id, int versionCode) {
             return find(context, id, versionCode, DataColumns.ALL);
         }
@@ -99,6 +106,13 @@ public class ApkProvider extends FDroidProvider {
                                              List<Apk> apks, String[] fields) {
             ContentResolver resolver = context.getContentResolver();
             Uri uri = getContentUri(apks);
+            Cursor cursor = resolver.query(uri, fields, null, null, null);
+            return cursorToList(cursor);
+        }
+
+        public static List<Apk> findByRepo(Context context, Repo repo, String[] fields) {
+            ContentResolver resolver = context.getContentResolver();
+            Uri uri = getRepoUri(repo.getId());
             Cursor cursor = resolver.query(uri, fields, null, null, null);
             return cursorToList(cursor);
         }
@@ -392,20 +406,15 @@ public class ApkProvider extends FDroidProvider {
                 query = query.add(queryApp(uri.getLastPathSegment()));
                 break;
 
-            case CODE_LIST:
-                throw new UnsupportedOperationException(
-                    "Can't delete all apks. " +
-                    "Can only delete those belonging to an app, or a repo.");
-
             case CODE_APKS:
-                throw new UnsupportedOperationException(
-                    "Can't delete arbitrary apks. " +
-                    "Can only delete those belonging to an app, or a repo.");
+                query = query.add(queryApks(uri.getLastPathSegment()));
+                break;
+
+            case CODE_LIST:
+                throw new UnsupportedOperationException("Can't delete all apks.");
 
             case CODE_SINGLE:
-                throw new UnsupportedOperationException(
-                    "Can't delete individual apks. " +
-                    "Can only delete those belonging to an app, or a repo.");
+                throw new UnsupportedOperationException("Can't delete individual apks.");
 
             default:
                 Log.e("FDroid", "Invalid URI for apk content provider: " + uri);

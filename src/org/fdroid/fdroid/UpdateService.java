@@ -313,11 +313,14 @@ public class UpdateService extends IntentService implements ProgressListener {
                 calcIconUrls(this, apksToUpdate, appsToUpdate, repos);
                 calcCurrentApk(apksToUpdate, appsToUpdate);
 
+                // Need to do this BEFORE updating the apks, otherwise when it continually
+                // calls "get apks for repo X" then it will be getting the newly created apks
+                removeApksNoLongerInRepo(apksToUpdate, updatedRepos);
+
                 int totalInsertsUpdates = listOfAppsToUpdate.size() + apksToUpdate.size();
                 updateOrInsertApps(listOfAppsToUpdate, totalInsertsUpdates, 0);
                 updateOrInsertApks(apksToUpdate, totalInsertsUpdates, listOfAppsToUpdate.size());
                 removeApksFromRepos(disabledRepos);
-                removeApksNoLongerInRepo(listOfAppsToUpdate, updatedRepos);
                 removeAppsWithoutApks();
                 notifyContentProviders();
 
@@ -618,7 +621,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     /**
-     * Return list of apps from "fromApks" which are already in the database.
+     * Return list of apps from the "apks" argument which are already in the database.
      */
     private List<Apk> getKnownApks(List<Apk> apks) {
         List<Apk> knownApks = new ArrayList<Apk>();
@@ -701,26 +704,54 @@ public class UpdateService extends IntentService implements ProgressListener {
      * belong to the repo which are not in the current list of apks that were
      * retrieved.
      */
-    private void removeApksNoLongerInRepo(List<App> appsToUpdate,
-                                          List<Repo> updatedRepos) {
+    private void removeApksNoLongerInRepo(List<Apk> apksToUpdate, List<Repo> updatedRepos) {
+
+        long startTime = System.currentTimeMillis();
+        List<Apk> toRemove = new ArrayList<Apk>();
+
+        String[] fields = {
+            ApkProvider.DataColumns.APK_ID,
+            ApkProvider.DataColumns.VERSION_CODE,
+            ApkProvider.DataColumns.VERSION,
+        };
+
         for (Repo repo : updatedRepos) {
-            Log.d("FDroid", "Removing apks no longer in repo " + repo.address);
-            // TODO: Implement
+            List<Apk> existingApks = ApkProvider.Helper.findByRepo(this, repo, fields);
+            for (Apk existingApk : existingApks) {
+                if (!isApkToBeUpdated(existingApk, apksToUpdate)) {
+                    toRemove.add(existingApk);
+                }
+            }
         }
 
+        long duration = System.currentTimeMillis() - startTime;
+        Log.d("FDroid", "Found " + toRemove.size() + " apks no longer in the updated repos (took " + duration + "ms)");
+
+        if (toRemove.size() > 0) {
+            ApkProvider.Helper.deleteApks(this, toRemove);
+        }
+    }
+
+    private static boolean isApkToBeUpdated(Apk existingApk, List<Apk> apksToUpdate) {
+        for (Apk apkToUpdate : apksToUpdate) {
+            if (apkToUpdate.vercode == existingApk.vercode && apkToUpdate.id.equals(existingApk.id)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void removeApksFromRepos(List<Repo> repos) {
         for (Repo repo : repos) {
-            Log.d("FDroid", "Removing apks from repo " + repo.address);
             Uri uri = ApkProvider.getRepoUri(repo.getId());
-            getContentResolver().delete(uri, null, null);
+            int numDeleted = getContentResolver().delete(uri, null, null);
+            Log.d("FDroid", "Removing " + numDeleted + " apks from repo " + repo.address);
         }
     }
 
     private void removeAppsWithoutApks() {
-        Log.d("FDroid", "Removing aps that don't have any apks");
-        getContentResolver().delete(AppProvider.getNoApksUri(), null, null);
+        int numDeleted = getContentResolver().delete(AppProvider.getNoApksUri(), null, null);
+        Log.d("FDroid", "Removing " + numDeleted + " apks that don't have any apks");
     }
 
 
