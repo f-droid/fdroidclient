@@ -20,6 +20,10 @@
 
 * Filter app compatibility by maxSdkVersion too
 
+* Major internal changes to enable F-Droid to handle repos with thousands
+  of apps without slowing down too much. These internal changes will also make
+  new features easier to implement.
+
 * Various fixes to layout issues introduced in 0.58
 
 * Translation updates
