@@ -1,7 +1,7 @@
-### Upcoming release
+### 0.62 (2014-04-01)
 
 * Support for Network Service Discovery of local FDroid repos on Android 4.1+
-  from the repository management screen.
+  from the repository management screen
 
 * Always remember the selected category in the list of apps
 
@@ -21,6 +21,8 @@
 * Filter app compatibility by maxSdkVersion too
 
 * Various fixes to layout issues introduced in 0.58
+
+* Translation updates
 
 ### 0.58 (2014-01-11)
 
@@ -70,6 +72,7 @@
 ### 0.55 (2013-11-11)
 
 * Fixed problems with category selection and permission lists on Android 2.X devices.
+
 * Lots of translation updates, including new Norwegian translation.
 
 ### 0.54 (2013-11-05)
