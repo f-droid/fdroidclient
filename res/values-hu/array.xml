@@ -11,9 +11,4 @@
         <item>Sötét</item>
         <item>Világos</item>
     </string-array>
-    <string-array name="dbSyncModeNames">
-        <item>Ki (nem biztonságos)</item>
-        <item>Normál</item>
-        <item>Teljes</item>
-    </string-array>
 </resources>

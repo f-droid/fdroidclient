@@ -61,7 +61,7 @@ A repo cím valahogy így néz ki: https://f-droid.org/repo\"</string>
   <string name="many_updates_available">%d frissítés érhető el.</string>
   <string name="fdroid_updates_available">F-Droid frissítés érhető el</string>
   <string name="process_wait_title">Kérem várjon</string>
-  <string name="process_update_msg">Alkalmazáslista frissítése...</string>
+  <string name="process_update_msg">Alkalmazáslista frissítése…</string>
   <string name="download_server">Alkalmazás beszerzése</string>
   <string name="repo_add_url">Repo cím</string>
   <string name="repo_add_fingerprint">ujjlenyomat (opcionális)</string>
