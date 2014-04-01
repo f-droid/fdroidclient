@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="610"
-    android:versionName="0.61-test" >
+    android:versionCode="620"
+    android:versionName="0.62" >
 
     <uses-sdk
         android:minSdkVersion="5"
