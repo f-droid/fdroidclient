@@ -311,7 +311,6 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 calcCompatibilityFlags(this, apksToUpdate, appsToUpdate);
                 calcIconUrls(this, apksToUpdate, appsToUpdate, repos);
-                calcCurrentApk(apksToUpdate, appsToUpdate);
 
                 // Need to do this BEFORE updating the apks, otherwise when it continually
                 // calls "get apks for repo X" then it will be getting the newly created apks
@@ -322,6 +321,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 updateOrInsertApks(apksToUpdate, totalInsertsUpdates, listOfAppsToUpdate.size());
                 removeApksFromRepos(disabledRepos);
                 removeAppsWithoutApks();
+                AppProvider.Helper.calcSuggestedVersionsForAll(this);
                 notifyContentProviders();
 
                 if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
@@ -371,57 +371,6 @@ public class UpdateService extends IntentService implements ProgressListener {
                 apk.incompatible_reasons = null;
                 apps.get(apk.id).compatible = true;
             }
-        }
-    }
-
-    /**
-     * Get the current version - this will be one of the Apks from 'apks'.
-     * Can return null if there are no available versions.
-     * This should be the 'current' version, as in the most recent stable
-     * one, that most users would want by default. It might not be the
-     * most recent, if for example there are betas etc.
-     */
-    private static void calcCurrentApk(List<Apk> apks, Map<String,App> apps ) {
-        for ( App app : apps.values() ) {
-            List<Apk> apksForApp = new ArrayList<Apk>();
-            for (Apk apk : apks) {
-                if (apk.id.equals(app.id)) {
-                    apksForApp.add(apk);
-                }
-            }
-            calcCurrentApkForApp(app, apksForApp);
-        }
-    }
-
-    private static void calcCurrentApkForApp(App app, List<Apk> apksForApp) {
-        Apk latestApk = null;
-        // Try and return the real current version first. It will find the
-        // closest version smaller than the upstreamVercode, being the same
-        // vercode if it exists.
-        if (app.upstreamVercode > 0) {
-            int latestcode = -1;
-            for (Apk apk : apksForApp) {
-                if ((!app.compatible || apk.compatible)
-                        && apk.vercode <= app.upstreamVercode
-                        && apk.vercode > latestcode) {
-                    latestApk = apk;
-                    latestcode = apk.vercode;
-                }
-            }
-        } else {
-            // If the current version was not set we return the most recent apk.
-            int latestCode = -1;
-            for (Apk apk : apksForApp) {
-                if ((!app.compatible || apk.compatible)
-                        && apk.vercode > latestCode) {
-                    latestApk = apk;
-                    latestCode = apk.vercode;
-                }
-            }
-        }
-
-        if (latestApk != null) {
-            app.suggestedVercode = latestApk.vercode;
         }
     }
 

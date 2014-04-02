@@ -120,8 +120,19 @@ public class AppProvider extends FDroidProvider {
             return app;
         }
 
-        public static void deleteAppsWithNoApks(ContentResolver resolver) {
+        /*
+         * I wasn't quite sure on the best way to execute arbitrary queries using the same DBHelper as the
+         * content provider class, so I've hidden the implementation of this (by making it private) in case
+         * I find a better way in the future.
+         */
+        public static void calcSuggestedVersionsForAll(Context context) {
+            Uri fromUpstream = calcSuggestedVersionFromUpstream();
+            context.getContentResolver().update(fromUpstream, null, null, null);
+
+            Uri fromLatest = calcSuggestedVersionFromLatest();
+            context.getContentResolver().update(fromLatest, null, null, null);
         }
+
     }
 
     public interface DataColumns {
@@ -235,6 +246,8 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
     private static final String PATH_IGNORED = "ignored";
+    private static final String PATH_CALC_SUGGESTED_FROM_UPSTREAM = "calcSuggestedFromUpstream";
+    private static final String PATH_CALC_SUGGESTED_FROM_LATEST = "calcSuggestedFromLatest";
 
     private static final int CAN_UPDATE       = CODE_SINGLE + 1;
     private static final int INSTALLED        = CAN_UPDATE + 1;
@@ -245,9 +258,13 @@ public class AppProvider extends FDroidProvider {
     private static final int NEWLY_ADDED      = RECENTLY_UPDATED + 1;
     private static final int CATEGORY         = NEWLY_ADDED + 1;
     private static final int IGNORED          = CATEGORY + 1;
+    private static final int CALC_SUGGESTED_FROM_UPSTREAM = IGNORED + 1;
+    private static final int CALC_SUGGESTED_FROM_LATEST   = CALC_SUGGESTED_FROM_UPSTREAM + 1;
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
+        matcher.addURI(getAuthority(), PATH_CALC_SUGGESTED_FROM_UPSTREAM, CALC_SUGGESTED_FROM_UPSTREAM);
+        matcher.addURI(getAuthority(), PATH_CALC_SUGGESTED_FROM_LATEST, CALC_SUGGESTED_FROM_LATEST);
         matcher.addURI(getAuthority(), PATH_IGNORED, IGNORED);
         matcher.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
@@ -274,6 +291,14 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getIgnoredUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_IGNORED);
+    }
+
+    private static Uri calcSuggestedVersionFromUpstream() {
+        return Uri.withAppendedPath(getContentUri(), PATH_CALC_SUGGESTED_FROM_UPSTREAM);
+    }
+
+    private static Uri calcSuggestedVersionFromLatest() {
+        return Uri.withAppendedPath(getContentUri(), PATH_CALC_SUGGESTED_FROM_LATEST);
     }
 
     public static Uri getCategoryUri(String category) {
@@ -550,6 +575,14 @@ public class AppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         switch (matcher.match(uri)) {
 
+            case CALC_SUGGESTED_FROM_LATEST:
+                setSuggestedFromLatest();
+                return 0;
+
+            case CALC_SUGGESTED_FROM_UPSTREAM:
+                setSuggestedFromUpstream();
+                return 0;
+
             case CODE_SINGLE:
                 query = query.add(querySingle(uri.getLastPathSegment()));
                 break;
@@ -563,6 +596,104 @@ public class AppProvider extends FDroidProvider {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return count;
+    }
+
+    /**
+     * Look at the upstream version of each app, our goal is to find the apk
+     * with the closest version code to that, without going over.
+     * If the app is not compatible at all (i.e. no versions were compatible)
+     * then we take the highest, otherwise we take the highest compatible version.
+     *
+     * Replaces the existing Java code:
+     *
+     * if (app.upstreamVercode > 0) {
+     *     int latestcode = -1;
+     *     for (Apk apk : apksForApp) {
+     *         if ((!app.compatible || apk.compatible)
+     *                 && apk.vercode <= app.upstreamVercode
+     *                 && apk.vercode > latestcode) {
+     *             latestApk = apk;
+     *             latestcode = apk.vercode;
+     *         }
+     *     }
+     * }
+     *
+     * And it can be read a little easier like this (without the string concats):
+     *
+     *   UPDATE fdroid_app
+     *   SET suggestedVercode = (
+     *       SELECT MAX(fdroid_apk.vercode)
+     *       FROM fdroid_apk
+     *       WHERE
+     *           fdroid_app.id = fdroid_apk.id AND
+     *           fdroid_apk.vercode <= fdroid_app.upstreamVercode AND
+     *           ( fdroid_app.compatible = 0 OR fdroid_apk.compatible = 1 )
+     *   )
+     *   WHERE upstreamVercode > 0
+     */
+    private void setSuggestedFromUpstream() {
+
+        final String apk = DBHelper.TABLE_APK;
+        final String app = DBHelper.TABLE_APP;
+
+        String updateSql =
+            "UPDATE " + app +
+            " SET suggestedVercode = ( " +
+                " SELECT MAX( " + apk + ".vercode ) " +
+                " FROM " + apk +
+                " WHERE " +
+                    app + ".id = " + apk + ".id AND " +
+                    apk + ".vercode <= " + app + ".upstreamVercode AND " +
+                    " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
+            " WHERE upstreamVercode > 0 ";
+
+        write().execSQL(updateSql);
+    }
+
+    /**
+     * For all apps that don't specify an upstream version code, we take the
+     * latest apk in the repo. If the app is not compatible at all (i.e. no versions
+     * were compatible) then we take the highest, otherwise we take the highest
+     * compatible version.
+     *
+     * Replaces the existing Java code:
+     *
+     * for (Apk apk : apksForApp) {
+     *     if ((!app.compatible || apk.compatible)
+     *             && apk.vercode > latestCode) {
+     *         latestApk = apk;
+     *         latestCode = apk.vercode;
+     *     }
+     * }
+     *
+     * And it can be read a little easier like this (without the string concats):
+     *
+     *  UPDATE fdroid_app
+     *  SET suggestedVercode = (
+     *      SELECT MAX(fdroid_apk.vercode)
+     *      FROM fdroid_apk
+     *      WHERE
+     *          fdroid_app.id = fdroid_apk.id AND
+     *          ( fdroid_app.compatible = 0 OR fdroid_apk.compatible = 1 )
+     *  )
+     *  WHERE upstreamVercode = 0 OR upstreamVercode IS NULL;
+     */
+    private void setSuggestedFromLatest() {
+
+        final String apk = DBHelper.TABLE_APK;
+        final String app = DBHelper.TABLE_APP;
+
+        String updateSql =
+            "UPDATE " + app +
+            " SET suggestedVercode = ( " +
+                " SELECT MAX( " + apk + ".vercode ) " +
+                " FROM " + apk +
+                " WHERE " +
+                    app + ".id = " + apk + ".id AND " +
+                    " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
+            " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL ";
+
+        write().execSQL(updateSql);
     }
 
 }
