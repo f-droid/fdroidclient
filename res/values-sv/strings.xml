@@ -63,6 +63,8 @@ En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="process_wait_title">Var vänlig vänta</string>
   <string name="process_update_msg">Uppdaterar programlistan…</string>
   <string name="download_server">Hämtar program från</string>
+  <string name="nfc_is_not_enabled">NFC är inte aktiverat!</string>
+  <string name="go_to_nfc_settings">Gå till NFC-inställningar…</string>
   <string name="repo_add_url">Förrådsadress</string>
   <string name="repo_add_fingerprint">fingeravtryck (valfritt)</string>
   <string name="repo_exists">Detta förråd existerar redan!</string>
@@ -79,6 +81,7 @@ Vill du uppdatera dem?</string>
   <string name="menu_search">Sök</string>
   <string name="menu_add_repo">Nytt förråd</string>
   <string name="menu_rem_repo">Ta bort förråd</string>
+  <string name="menu_scan_repo">Hitta lokala förråd</string>
   <string name="menu_launch">Kör</string>
   <string name="menu_share">Dela</string>
   <string name="menu_install">Installera</string>
@@ -118,6 +121,8 @@ Vill du uppdatera dem?</string>
   <string name="category_all">Alla</string>
   <string name="category_whatsnew">Nyheter</string>
   <string name="category_recentlyupdated">Nyligt uppdaterade</string>
+  <string name="local_repos_title">Lokala FDroid-förråd</string>
+  <string name="local_repos_scanning">Upptäcker lokala FDroid-förråd…</string>
   <string name="status_download">Hämtar
 %2$s / %3$s (%4$d%%) från
 %1$s</string>
@@ -127,6 +132,7 @@ Vill du uppdatera dem?</string>
   <string name="status_connecting_to_repo">Ansluter till
 %1$s</string>
   <string name="status_checking_compatibility">Kontrollerar appars kompatibilitet med din enhet…</string>
+  <string name="status_inserting">Sparar programdetaljer (%1$d%%)</string>
   <string name="no_permissions">Inga behörigheter används.</string>
   <string name="permissions_for_long">Behörigheter för version %s</string>
   <string name="showPermissions">Visa behörigheter</string>
@@ -152,4 +158,8 @@ Vill du uppdatera dem?</string>
   <string name="repo_confirm_delete_body">Då ett förråd tas bort kommer inte längre appar därifrån vara tillgängliga via F-Droid. Obs: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
   <string name="repo_disabled_notification">Avaktiverade \"%1$s\". Du kommer behöva återaktivera detta förråd för att kunna installera appar från det.</string>
   <string name="minsdk_or_later">%s eller senare</string>
+  <string name="up_to_maxsdk">upp till %s</string>
+  <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
+  <string name="not_on_same_wifi">Din enhet är inte på samma trådlösa nätverk som det lokala förråd du just lagt till! Försök ansluta till detta nätverk: %s</string>
+  <string name="requires_features">Kräver: %1$s</string>
 </resources>
