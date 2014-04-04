@@ -47,6 +47,7 @@ public class SearchResults extends ListActivity {
 
     private static final int SEARCH = Menu.FIRST;
 
+    private Cursor cursor;
     private AppListAdapter adapter;
 
     protected String getQuery() {
@@ -107,9 +108,11 @@ public class SearchResults extends ListActivity {
         if (query == null || query.length() == 0)
             finish();
 
-        Cursor cursor = getContentResolver().query(
+        if (cursor != null) cursor.close();
+        cursor = managedQuery(
             AppProvider.getSearchUri(query), AppListFragment.APP_PROJECTION,
             null, null, AppListFragment.APP_SORT);
+
 
         TextView tv = (TextView) findViewById(R.id.description);
         String headertext;
