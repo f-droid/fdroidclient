@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 
 import java.util.*;
@@ -125,12 +124,9 @@ public class AppProvider extends FDroidProvider {
          * content provider class, so I've hidden the implementation of this (by making it private) in case
          * I find a better way in the future.
          */
-        public static void calcSuggestedVersionsForAll(Context context) {
-            Uri fromUpstream = calcSuggestedVersionFromUpstream();
+        public static void calcDetailsFromIndex(Context context) {
+            Uri fromUpstream = calcAppDetailsFromIndexUri();
             context.getContentResolver().update(fromUpstream, null, null, null);
-
-            Uri fromLatest = calcSuggestedVersionFromLatest();
-            context.getContentResolver().update(fromLatest, null, null, null);
         }
 
     }
@@ -246,8 +242,8 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
     private static final String PATH_IGNORED = "ignored";
-    private static final String PATH_CALC_SUGGESTED_FROM_UPSTREAM = "calcSuggestedFromUpstream";
-    private static final String PATH_CALC_SUGGESTED_FROM_LATEST = "calcSuggestedFromLatest";
+
+    private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
 
     private static final int CAN_UPDATE       = CODE_SINGLE + 1;
     private static final int INSTALLED        = CAN_UPDATE + 1;
@@ -258,13 +254,12 @@ public class AppProvider extends FDroidProvider {
     private static final int NEWLY_ADDED      = RECENTLY_UPDATED + 1;
     private static final int CATEGORY         = NEWLY_ADDED + 1;
     private static final int IGNORED          = CATEGORY + 1;
-    private static final int CALC_SUGGESTED_FROM_UPSTREAM = IGNORED + 1;
-    private static final int CALC_SUGGESTED_FROM_LATEST   = CALC_SUGGESTED_FROM_UPSTREAM + 1;
+
+    private static final int CALC_APP_DETAILS_FROM_INDEX = IGNORED + 1;
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
-        matcher.addURI(getAuthority(), PATH_CALC_SUGGESTED_FROM_UPSTREAM, CALC_SUGGESTED_FROM_UPSTREAM);
-        matcher.addURI(getAuthority(), PATH_CALC_SUGGESTED_FROM_LATEST, CALC_SUGGESTED_FROM_LATEST);
+        matcher.addURI(getAuthority(), PATH_CALC_APP_DETAILS_FROM_INDEX, CALC_APP_DETAILS_FROM_INDEX);
         matcher.addURI(getAuthority(), PATH_IGNORED, IGNORED);
         matcher.addURI(getAuthority(), PATH_RECENTLY_UPDATED, RECENTLY_UPDATED);
         matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
@@ -293,12 +288,8 @@ public class AppProvider extends FDroidProvider {
         return Uri.withAppendedPath(getContentUri(), PATH_IGNORED);
     }
 
-    private static Uri calcSuggestedVersionFromUpstream() {
-        return Uri.withAppendedPath(getContentUri(), PATH_CALC_SUGGESTED_FROM_UPSTREAM);
-    }
-
-    private static Uri calcSuggestedVersionFromLatest() {
-        return Uri.withAppendedPath(getContentUri(), PATH_CALC_SUGGESTED_FROM_LATEST);
+    private static Uri calcAppDetailsFromIndexUri() {
+        return Uri.withAppendedPath(getContentUri(), PATH_CALC_APP_DETAILS_FROM_INDEX);
     }
 
     public static Uri getCategoryUri(String category) {
@@ -575,12 +566,8 @@ public class AppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         switch (matcher.match(uri)) {
 
-            case CALC_SUGGESTED_FROM_LATEST:
-                setSuggestedFromLatest();
-                return 0;
-
-            case CALC_SUGGESTED_FROM_UPSTREAM:
-                setSuggestedFromUpstream();
+            case CALC_APP_DETAILS_FROM_INDEX:
+                updateAppDetails();
                 return 0;
 
             case CODE_SINGLE:
@@ -596,6 +583,13 @@ public class AppProvider extends FDroidProvider {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return count;
+    }
+
+    private void updateAppDetails() {
+        updateCompatibleFlags();
+        updateSuggestedFromLatest();
+        updateSuggestedFromUpstream();
+        updateIconUrls();
     }
 
     /**
@@ -631,7 +625,9 @@ public class AppProvider extends FDroidProvider {
      *   )
      *   WHERE upstreamVercode > 0
      */
-    private void setSuggestedFromUpstream() {
+    private void updateSuggestedFromUpstream() {
+
+        Log.d("FDroid", "Calculating suggested versions for all apps which specify an upstream version code.");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -646,6 +642,33 @@ public class AppProvider extends FDroidProvider {
                     apk + ".vercode <= " + app + ".upstreamVercode AND " +
                     " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
             " WHERE upstreamVercode > 0 ";
+
+        write().execSQL(updateSql);
+    }
+
+    /**
+     * For each app, we want to set the isCompatible flag to 1 if any of the apks we know
+     * about are compatible, and 0 otherwise.
+     *
+     * Here is the SQL query without all of the concatenations (hopefully it's a bit easier to read):
+     *
+     *  UPDATE fdroid_app SET compatible = (
+     *      SELECT TOTAL( fdroid_apk.compatible ) > 0
+     *      FROM fdroid_apk
+     *      WHERE fdroid_apk.id = fdroid_app.id );
+     */
+    private void updateCompatibleFlags() {
+
+        Log.d("FDroid", "Calculating whether apps are compatible, based on whether any of their apks are compatible");
+
+        final String apk = DBHelper.TABLE_APK;
+        final String app = DBHelper.TABLE_APP;
+
+        String updateSql =
+            "UPDATE " + app + " SET compatible = ( " +
+                " SELECT TOTAL( " + apk + ".compatible ) > 0 " +
+                " FROM " + apk +
+                " WHERE " + apk + ".id = " + app + ".id );";
 
         write().execSQL(updateSql);
     }
@@ -678,7 +701,9 @@ public class AppProvider extends FDroidProvider {
      *  )
      *  WHERE upstreamVercode = 0 OR upstreamVercode IS NULL;
      */
-    private void setSuggestedFromLatest() {
+    private void updateSuggestedFromLatest() {
+
+        Log.d("FDroid", "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -694,6 +719,63 @@ public class AppProvider extends FDroidProvider {
             " WHERE upstreamVercode = 0 OR upstreamVercode IS NULL ";
 
         write().execSQL(updateSql);
+    }
+
+    private void updateIconUrls() {
+
+        Log.d("FDroid", "Updating icon paths for apps belonging to repos with version >= " + Repo.VERSION_DENSITY_SPECIFIC_ICONS);
+        String iconsDir = Utils.getIconsDir(getContext());
+        String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
+        String query = getIconUpdateQuery();
+        String[] params = { iconsDir, repoVersion };
+        write().execSQL(query, params);
+    }
+
+    /**
+     * Returns a query which requires two parameters to be bound. These are (in order):
+     *  1) The repo version that introduced density specific icons
+     *  2) The dir to density specific icons for the current device.
+     */
+    private String getIconUpdateQuery() {
+
+        final String apk = DBHelper.TABLE_APK;
+        final String app = DBHelper.TABLE_APP;
+        final String repo = DBHelper.TABLE_REPO;
+
+        return
+            " UPDATE " + app + " SET iconUrl = ( " +
+                " SELECT " +
+
+                    // Concatenate (using the "||" operator) the address, the icons directory (bound to the ? as the
+                    // second parameter when executing the query) and the icon path.
+                    " ( " +
+                        repo + ".address " +
+                        " || " +
+
+                        // If the repo has the relevant version, then use a more intelligent icons dir,
+                        // otherwise revert to '/icons/'
+                        " CASE WHEN " + repo + ".version >= ? THEN ? ELSE '/icons/' END " +
+
+                        " || " +
+                        app + ".icon " +
+                    ") " +
+                " FROM " +
+                    apk +
+                    " JOIN " + repo + " ON (" + repo + "._id = " + apk + ".repo) " +
+                " WHERE " +
+                    app + ".id = " + apk + ".id AND " +
+                    apk + ".vercode = ( " +
+
+                        // We only want the latest apk here. Ideally, we should instead join
+                        // onto apk.suggestedVercode, but as per https://gitlab.com/fdroid/fdroidclient/issues/1
+                        // there may be some situations where suggestedVercode isn't set.
+                        // TODO: If we can guarantee that suggestedVercode is set, then join onto that instead.
+                        // This will save from doing a futher sub query for each app.
+                        " SELECT MAX(inner_apk.vercode)  " +
+                        " FROM fdroid_apk as inner_apk " +
+                        " WHERE inner_apk.id = fdroid_apk.id ) " +
+                    " AND fdroid_apk.repo = fdroid_repo._id " +
+            " ) ";
     }
 
 }

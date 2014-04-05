@@ -43,7 +43,6 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final String RESULT_MESSAGE = "msg";
     public static final String RESULT_EVENT   = "event";
 
-
     public static final int STATUS_COMPLETE_WITH_CHANGES = 0;
     public static final int STATUS_COMPLETE_AND_SAME     = 1;
     public static final int STATUS_ERROR                 = 2;
@@ -309,11 +308,11 @@ public class UpdateService extends IntentService implements ProgressListener {
                 List<App> listOfAppsToUpdate = new ArrayList<App>();
                 listOfAppsToUpdate.addAll(appsToUpdate.values());
 
-                calcCompatibilityFlags(this, apksToUpdate, appsToUpdate);
-                calcIconUrls(this, apksToUpdate, appsToUpdate, repos);
+                calcApkCompatibilityFlags(this, apksToUpdate);
 
                 // Need to do this BEFORE updating the apks, otherwise when it continually
-                // calls "get apks for repo X" then it will be getting the newly created apks
+                // calls "get existing apks for repo X" then it will be getting the newly
+                // created apks, rather than those from the fresh, juicy index we just processed.
                 removeApksNoLongerInRepo(apksToUpdate, updatedRepos);
 
                 int totalInsertsUpdates = listOfAppsToUpdate.size() + apksToUpdate.size();
@@ -321,7 +320,13 @@ public class UpdateService extends IntentService implements ProgressListener {
                 updateOrInsertApks(apksToUpdate, totalInsertsUpdates, listOfAppsToUpdate.size());
                 removeApksFromRepos(disabledRepos);
                 removeAppsWithoutApks();
-                AppProvider.Helper.calcSuggestedVersionsForAll(this);
+
+                // This will sort out the icon urls, compatibility flags. and suggested version
+                // for each app. It used to happen here in Java code, but was moved to SQL when
+                // it became apparant we don't always have enough info (depending on which repos
+                // were updated).
+                AppProvider.Helper.calcDetailsFromIndex(this);
+
                 notifyContentProviders();
 
                 if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
@@ -358,8 +363,13 @@ public class UpdateService extends IntentService implements ProgressListener {
         getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
     }
 
-    private static void calcCompatibilityFlags(Context context, List<Apk> apks,
-                                              Map<String, App> apps) {
+    /**
+     * This cannot be offloaded to the database (as we did with the query which
+     * updates apps, depending on whether their apks are compatible or not).
+     * The reason is that we need to interact with the CompatibilityChecker
+     * in order to see if, and why an apk is not compatible.
+     */
+    private static void calcApkCompatibilityFlags(Context context, List<Apk> apks) {
         CompatibilityChecker checker = new CompatibilityChecker(context);
         for (Apk apk : apks) {
             List<String> reasons = checker.getIncompatibleReasons(apk);
@@ -369,42 +379,6 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 apk.compatible = true;
                 apk.incompatible_reasons = null;
-                apps.get(apk.id).compatible = true;
-            }
-        }
-    }
-
-    private static void calcIconUrls(Context context, List<Apk> apks,
-                                     Map<String, App> apps, List<Repo> repos) {
-        String iconsDir = Utils.getIconsDir(context);
-        Log.d("FDroid", "Density-specific icons dir is " + iconsDir);
-        for (App app : apps.values()) {
-            if (app.iconUrl == null && app.icon != null) {
-                calcIconUrl(iconsDir, app, apks, repos);
-            }
-        }
-    }
-
-    private static void calcIconUrl(String iconsDir, App app,
-                                    List<Apk> allApks, List<Repo> repos) {
-        List<Apk> apksForApp = new ArrayList<Apk>();
-        for (Apk apk : allApks) {
-            if (apk.id.equals(app.id)) {
-                apksForApp.add(apk);
-            }
-        }
-
-        Collections.sort(apksForApp);
-        for (int i = apksForApp.size() - 1; i >= 0; i --) {
-            Apk apk = apksForApp.get(i);
-            for (Repo repo : repos) {
-                if (repo.getId() != apk.repo) continue;
-                if (repo.version >= Repo.VERSION_DENSITY_SPECIFIC_ICONS) {
-                    app.iconUrl = repo.address + iconsDir + app.icon;
-                } else {
-                    app.iconUrl = repo.address + "/icons/" + app.icon;
-                }
-                return;
             }
         }
     }
