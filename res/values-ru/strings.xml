@@ -155,4 +155,20 @@
   <string name="repo_disabled_notification">\"%1$s\" отключен. Вам нужно повторно включить этот репозиторий для установки приложений из него.</string>
   <string name="minsdk_or_later">%s или позднее</string>
   <string name="up_to_maxsdk">до %s</string>
+
+  <string name="Children">Детские</string>
+  <string name="Development">Разработка</string>
+  <string name="Games">Игры</string>
+  <string name="Internet">Интернет</string>
+  <string name="Mathematics">Математика</string>
+  <string name="Multimedia">Мультимедиа</string>
+  <string name="Navigation">Навигация</string>
+  <string name="News">Новости</string>
+  <string name="Office">Офис</string>
+  <string name="Phone_SMS">Связь</string>
+  <string name="Reading">Чтение</string>
+  <string name="Science_Education">Научные</string>
+  <string name="Security">Безопасность</string>
+  <string name="System">Системные</string>
+  <string name="Wallpaper">Обои</string>
 </resources>

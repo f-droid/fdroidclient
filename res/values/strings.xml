@@ -216,4 +216,20 @@
     <string name="app_icon">App icon</string>
     <string name="repo_icon">Repo icon</string>
 
+    <string name="Children">Children</string>
+    <string name="Development">Development</string>
+    <string name="Games">Games</string>
+    <string name="Internet">Internet</string>
+    <string name="Mathematics">Mathematics</string>
+    <string name="Multimedia">Multimedia</string>
+    <string name="Navigation">Navigation</string>
+    <string name="News">News</string>
+    <string name="Office">Office</string>
+    <string name="Phone_SMS">Phone &amp; SMS</string>
+    <string name="Reading">Reading</string>
+    <string name="Science_Education">Science &amp; Education</string>
+    <string name="Security">Security</string>
+    <string name="System">System</string>
+    <string name="Wallpaper">Wallpaper</string>
+
 </resources>
