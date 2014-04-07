@@ -120,13 +120,6 @@ abstract public class AppListAdapter extends CursorAdapter {
         }
     }
 
-     private String ellipsize(String input, int maxLength) {
-        if (input == null || input.length() < maxLength+1) {
-            return input;
-        }
-        return input.substring(0, maxLength) + "…";
-    }
-
     private String getVersionInfo(App app) {
 
         if (app.suggestedVercode <= 0) {
@@ -136,19 +129,18 @@ abstract public class AppListAdapter extends CursorAdapter {
         PackageInfo installedInfo = app.getInstalledInfo(mContext);
 
         if (installedInfo == null) {
-            return ellipsize(app.getSuggestedVersion(), 12);
+            return app.getSuggestedVersion();
         }
 
         String installedVersionString = installedInfo.versionName;
         int installedVersionCode = installedInfo.versionCode;
 
         if (app.canAndWantToUpdate(mContext) && showStatusUpdate()) {
-            return ellipsize(installedVersionString, 8) +
-                " → " + ellipsize(app.getSuggestedVersion(), 8);
+            return installedVersionString + " → " + app.getSuggestedVersion();
         }
 
         if (installedVersionCode > 0 && showStatusInstalled()) {
-            return ellipsize(installedVersionString, 12) + " ✔";
+            return installedVersionString + " ✔";
         }
 
         return installedVersionString;
