@@ -176,7 +176,7 @@ Nota: todas las aplicaciones previamente instaladas se quedarán en tu dispositi
 Necesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
   <string name="minsdk_or_later">%s o posterior</string>
   <string name="up_to_maxsdk">hasta %s</string>
-  <string name="minsdk_up_to_maxsdk">De %1$ a %2$s</string>
+  <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
   <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma WiFi que el repo que acabas de añadir! Intenta unirte a esta red: %s</string>
   <string name="requires_features">Requiere: %1$s</string>
 </resources>

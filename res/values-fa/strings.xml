@@ -9,7 +9,7 @@
   <string name="version">نسخه</string>
   <string name="edit">ویرایش</string>
   <string name="delete">حذف</string>
-  <string name="enable_nfc_send">فعال‌سازی ارسال ان‌اف‌سی...</string>
+  <string name="enable_nfc_send">فعال‌سازی ارسال ان‌اف‌سی…</string>
   <string name="cache_downloaded">میانگیری برنامه‌های دریافت‌شده</string>
   <string name="cache_downloaded_on">نگه‌داشتن پرونده‌های ای‌پی‌کی بر روی کارت اس‌دی</string>
   <string name="cache_downloaded_off">هیچ پروندهٔ ای‌پی‌کی را نگه‌ندار</string>
