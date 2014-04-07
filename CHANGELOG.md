@@ -1,4 +1,4 @@
-### 0.62 (2014-04-01)
+### 0.63 (2014-04-07)
 
 * Support for Network Service Discovery of local FDroid repos on Android 4.1+
   from the repository management screen
