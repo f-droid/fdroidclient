@@ -67,6 +67,7 @@ Wilt u ze vernieuwen?</string>
   <string name="menu_search">Zoeken</string>
   <string name="menu_add_repo">Nieuwe bron</string>
   <string name="menu_rem_repo">Verwijder bron</string>
+  <string name="menu_scan_repo">Vind lokale oplagplaatsen</string>
   <string name="menu_launch">Start</string>
   <string name="menu_share">Delen</string>
   <string name="menu_install">Installeren</string>
@@ -97,6 +98,7 @@ Wilt u ze vernieuwen?</string>
   <string name="category_all">Alles</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
+  <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
   <string name="status_download">Downloaden
 %2$s / %3$s (%4$d%%) van
 %1$s</string>
@@ -116,5 +118,13 @@ Wilt u ze vernieuwen?</string>
   <string name="repo_description">Beschrijving</string>
   <string name="repo_last_update">Meest recente update</string>
   <string name="repo_name">Naam</string>
+  <string name="repo_not_yet_updated">Deze opslag is nog niet eerder gebruikt. Om de leverbare apps te zien moet u het updaten.
+
+Zodra de update gedaan is ziet u hier de beschrijving en andere details.</string>
+  <string name="repo_delete_details">Weet u zeker dat u de opslag genaamd \"{0}\" met daarin \"{1}\" apps wilt verwijderen? Reeds geïnstalleerde apps blijven behouden, maar kunnen niet meer worden geüpdate via F-Droid.</string>
   <string name="unknown">Onbekend</string>
+  <string name="repo_confirm_delete_body">Het verwijderen van een opslag betekent dat apps hierop niet meer beschikbaar zijn voor F-Droid.
+
+Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
+  <string name="repo_disabled_notification">\"%1$s\" uitgeschakeld. U moet deze weer activeren mocht u apps vanuit deze opslag willen installeren.</string>
 </resources>
