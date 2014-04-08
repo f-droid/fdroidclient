@@ -257,7 +257,7 @@ public class FDroid extends FragmentActivity {
         case REQUEST_APPDETAILS:
             break;
         case REQUEST_MANAGEREPOS:
-            if (data.hasExtra(ManageRepo.REQUEST_UPDATE)) {
+            if (data != null && data.hasExtra(ManageRepo.REQUEST_UPDATE)) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
                 ask_alrt.setTitle(getString(R.string.repo_update_title));
                 ask_alrt.setIcon(android.R.drawable.ic_menu_rotate);
