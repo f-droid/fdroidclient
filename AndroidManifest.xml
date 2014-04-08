@@ -96,9 +96,8 @@
         </activity>
         <activity
             android:name=".ManageRepo"
-            android:allowTaskReparenting="true"
             android:label="@string/menu_manage"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:parentActivityName=".FDroid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
