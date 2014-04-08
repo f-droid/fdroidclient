@@ -208,6 +208,14 @@ public class RepoListFragment extends ListFragment
                  * case means it should be downcased.
                  */
                 uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
+            } else if (uri.getPath().startsWith("/FDROID/REPO")) {
+                /*
+                 * some QR scanners chop off the fdroidrepo:// and just try
+                 * http://, then the incoming URI does not get downcased
+                 * properly, and the query string is stripped off. So just
+                 * downcase the path, and carry on to get something working.
+                 */
+                uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
             }
             // make scheme and host lowercase so they're readable in dialogs
             scheme = scheme.toLowerCase(Locale.ENGLISH);
