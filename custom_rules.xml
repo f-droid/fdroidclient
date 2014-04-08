@@ -12,4 +12,12 @@
     </exec>
   </target>
 
+  <target name="javadoc" description="Generate Javadocs">
+    <javadoc sourcepath="${source.dir}"
+             destdir="${out.dir}/javadoc"
+             packagenames="org.fdroid.*"
+             windowtitle="${ant.project.name}"
+             doctitle="${ant.project.name}" />
+  </target>
+
 </project>
