@@ -15,7 +15,7 @@
     the package of org.fdroid.fdroid.  To run the tests use the command:
     "adb shell am instrument -w org.fdroid.fdroid.tests/android.test.InstrumentationTestRunner"
     -->
-    <instrumentation android:name="android.test.InstrumentationTestRunner"
+    <instrumentation android:name="com.zutubi.android.junitreport.JUnitReportTestRunner"
                      android:targetPackage="org.fdroid.fdroid"
                      android:label="Tests for org.fdroid.fdroid" />
 </manifest>
