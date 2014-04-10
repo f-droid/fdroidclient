@@ -156,6 +156,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         currentCategory = category;
         Log.d("FDroid", "Category '" + currentCategory + "' selected.");
         getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
+        getListView().setSelection(0);
     }
 
     @Override
