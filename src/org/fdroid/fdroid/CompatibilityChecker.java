@@ -34,11 +34,13 @@ public class CompatibilityChecker extends Compatibility {
         logMsg.append("Available device features:");
         features = new HashSet<String>();
         if (pm != null) {
-            for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
-                features.add(fi.name);
-                logMsg.append('\n');
-                logMsg.append(fi.name);
-            }
+            final FeatureInfo[] featureArray = pm.getSystemAvailableFeatures();
+            if (featureArray != null)
+                for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
+                    features.add(fi.name);
+                    logMsg.append('\n');
+                    logMsg.append(fi.name);
+                }
         }
 
         cpuAbis = SupportedArchitectures.getAbis();

@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
@@ -20,6 +21,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AvailableAppsFragment extends AppListFragment implements
@@ -86,13 +88,22 @@ public class AvailableAppsFragment extends AppListFragment implements
 
         final List<String> categories = AppProvider.Helper.categories(getActivity());
 
+        // attempt to translate category names with fallback to default name
+        List<String> translatedCategories = new ArrayList<>(categories.size());
+        Resources res = getResources();
+        for (String category:categories)
+        {
+            int id = res.getIdentifier(category.replace(" & ", "_"), "string", getActivity().getPackageName());
+            translatedCategories.add(id == 0 ? category : getString(id));
+        }
+
         categorySpinner = new Spinner(getActivity());
         // Giving it an ID lets the default save/restore state
         // functionality do its stuff.
         categorySpinner.setId(R.id.categorySpinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-            getActivity(), android.R.layout.simple_spinner_item, categories);
+            getActivity(), android.R.layout.simple_spinner_item, translatedCategories);
         adapter.setDropDownViewResource(
             android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
