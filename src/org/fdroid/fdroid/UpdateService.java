@@ -48,6 +48,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final int STATUS_ERROR                 = 2;
     public static final int STATUS_INFO                  = 3;
 
+    public static final String EXTRA_RECEIVER = "receiver";
+    public static final String EXTRA_ADDRESS = "address";
+
     private ResultReceiver receiver = null;
 
     public UpdateService() {
@@ -136,9 +139,10 @@ public class UpdateService extends IntentService implements ProgressListener {
         Intent intent = new Intent(context, UpdateService.class);
         UpdateReceiver receiver = new UpdateReceiver(new Handler());
         receiver.setContext(context).setDialog(dialog);
-        intent.putExtra("receiver", receiver);
-        if (!TextUtils.isEmpty(address))
-            intent.putExtra("address", address);
+        intent.putExtra(EXTRA_RECEIVER, receiver);
+        if (!TextUtils.isEmpty(address)) {
+            intent.putExtra(EXTRA_ADDRESS, address);
+        }
         context.startService(intent);
 
         return receiver;
@@ -242,8 +246,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     @Override
     protected void onHandleIntent(Intent intent) {
 
-        receiver = intent.getParcelableExtra("receiver");
-        String address = intent.getStringExtra("address");
+        receiver = intent.getParcelableExtra(EXTRA_RECEIVER);
+        String address = intent.getStringExtra(EXTRA_ADDRESS);
 
         long startTime = System.currentTimeMillis();
         String errmsg = "";
