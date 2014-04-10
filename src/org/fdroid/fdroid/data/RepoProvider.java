@@ -31,8 +31,10 @@ public class RepoProvider extends FDroidProvider {
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             Repo repo = null;
             if (cursor != null) {
-                cursor.moveToFirst();
-                repo = new Repo(cursor);
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    repo = new Repo(cursor);
+                }
                 cursor.close();
             }
             return repo;
@@ -73,12 +75,15 @@ public class RepoProvider extends FDroidProvider {
         }
 
         private static List<Repo> cursorToList(Cursor cursor) {
-            List<Repo> repos = new ArrayList<Repo>();
+            int knownRepoCount = cursor != null ? cursor.getCount() : 0;
+            List<Repo> repos = new ArrayList<Repo>(knownRepoCount);
             if (cursor != null) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    repos.add(new Repo(cursor));
-                    cursor.moveToNext();
+                if (knownRepoCount > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        repos.add(new Repo(cursor));
+                        cursor.moveToNext();
+                    }
                 }
                 cursor.close();
             }
