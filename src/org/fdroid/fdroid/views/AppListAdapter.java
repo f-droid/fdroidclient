@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -151,8 +151,8 @@ abstract public class AppListAdapter extends CursorAdapter {
             ? R.dimen.applist_icon_compact_size
             : R.dimen.applist_icon_normal_size));
 
-        RelativeLayout.LayoutParams params =
-            (RelativeLayout.LayoutParams)icon.getLayoutParams();
+        LinearLayout.LayoutParams params =
+            (LinearLayout.LayoutParams)icon.getLayoutParams();
 
         params.height = size;
         params.width = size;

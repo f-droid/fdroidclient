@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-	android:padding="5dp"
+	android:padding="10dp"
 	android:baselineAligned="false" >
 
 	<!-- Actual icon size is dependent on preferences and set in
@@ -13,8 +13,7 @@
 		android:contentDescription="@string/app_icon"
 		android:layout_width="56dp"
 		android:layout_height="56dp"
-		android:layout_centerVertical="true"
-		android:padding="5dp"
+		android:layout_gravity="center_vertical"
 		android:scaleType="fitCenter"
 		/>
 
@@ -22,10 +21,11 @@
 		android:orientation="vertical"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:padding="5dp"
+		android:paddingLeft="10dp"
+		android:paddingStart="10dp"
 		android:layout_toRightOf="@id/icon"
 		android:layout_toEndOf="@id/icon"
-		android:layout_centerVertical="true"
+		android:layout_gravity="center_vertical"
 		android:baselineAligned="false" >
 
 		<LinearLayout
@@ -33,17 +33,18 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:baselineAligned="false"
+			android:layout_marginBottom="3dp"
 			>
 
 			<TextView android:id="@+id/name"
 				android:textSize="17sp"
 				android:textStyle="bold"
-				android:paddingBottom="3sp"
 				android:singleLine="true"
 				android:ellipsize="end"
 				android:layout_weight="2"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
 				android:textAlignment="viewStart"
 				/>
 
@@ -54,8 +55,9 @@
 				android:layout_weight="1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="6sp"
-				android:layout_marginStart="6sp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginStart="8dp"
+				android:layout_gravity="center_vertical"
 				android:textAlignment="viewEnd"
 				/>
 
@@ -75,6 +77,7 @@
 				android:layout_weight="2"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
 				android:textAlignment="viewStart"
 				/>
 
@@ -87,13 +90,12 @@
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="6sp"
 				android:layout_marginStart="6sp"
+				android:layout_gravity="center_vertical"
 				android:textAlignment="viewEnd"
 				/>
-				<!--android:layout_alignParentRight="true"-->
-				<!--android:layout_alignParentEnd="true"-->
 
 		</LinearLayout>
 
 	</LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
