@@ -76,6 +76,7 @@ public class AppDetails extends ListActivity {
     private static final int REQUEST_UNINSTALL = 1;
 
     public static final String EXTRA_APPID = "appid";
+    public static final String EXTRA_FROM = "from";
 
     private ApkListAdapter adapter;
 
@@ -288,16 +289,15 @@ public class AppDetails extends ListActivity {
                 // fdroid.app:app.id
                 appid = data.getEncodedSchemeSpecificPart();
             }
-            Log.d("FDroid", "AppDetails launched from link, for '" + appid
-                    + "'");
+            Log.d("FDroid", "AppDetails launched from link, for '" + appid + "'");
         } else if (!i.hasExtra(EXTRA_APPID)) {
             Log.d("FDroid", "No application ID in AppDetails!?");
         } else {
             appid = i.getStringExtra(EXTRA_APPID);
         }
 
-        if (i.hasExtra("from")) {
-            setTitle(i.getStringExtra("from"));
+        if (i.hasExtra(EXTRA_FROM)) {
+            setTitle(i.getStringExtra(EXTRA_FROM));
         }
 
         mPm = getPackageManager();

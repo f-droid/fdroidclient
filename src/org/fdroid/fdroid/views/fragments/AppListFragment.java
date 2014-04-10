@@ -119,7 +119,7 @@ abstract public class AppListFragment extends ListFragment implements
         final App app = new App((Cursor)getListView().getItemAtPosition(position));
         Intent intent = new Intent(getActivity(), AppDetails.class);
         intent.putExtra(AppDetails.EXTRA_APPID, app.id);
-        intent.putExtra("from", getFromTitle());
+        intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
         startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
     }
 
