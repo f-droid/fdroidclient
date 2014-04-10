@@ -103,6 +103,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                getListView().setSelection(0);
                 setCurrentCategory(categories.get(pos));
             }
             @Override
