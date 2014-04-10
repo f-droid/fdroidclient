@@ -118,7 +118,7 @@ abstract public class AppListFragment extends ListFragment implements
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final App app = new App((Cursor)getListView().getItemAtPosition(position));
         Intent intent = new Intent(getActivity(), AppDetails.class);
-        intent.putExtra("appid", app.id);
+        intent.putExtra(AppDetails.EXTRA_APPID, app.id);
         intent.putExtra("from", getFromTitle());
         startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
     }

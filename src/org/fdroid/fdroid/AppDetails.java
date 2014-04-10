@@ -74,6 +74,9 @@ public class AppDetails extends ListActivity {
 
     private static final int REQUEST_INSTALL = 0;
     private static final int REQUEST_UNINSTALL = 1;
+
+    public static final String EXTRA_APPID = "appid";
+
     private ApkListAdapter adapter;
 
     private static class ViewHolder {
@@ -287,10 +290,10 @@ public class AppDetails extends ListActivity {
             }
             Log.d("FDroid", "AppDetails launched from link, for '" + appid
                     + "'");
-        } else if (!i.hasExtra("appid")) {
+        } else if (!i.hasExtra(EXTRA_APPID)) {
             Log.d("FDroid", "No application ID in AppDetails!?");
         } else {
-            appid = i.getStringExtra("appid");
+            appid = i.getStringExtra(EXTRA_APPID);
         }
 
         if (i.hasExtra("from")) {

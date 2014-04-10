@@ -138,7 +138,7 @@ public class SearchResults extends ListActivity {
         app = new App((Cursor) adapter.getItem(position));
 
         Intent intent = new Intent(this, AppDetails.class);
-        intent.putExtra("appid", app.id);
+        intent.putExtra(AppDetails.EXTRA_APPID, app.id);
         startActivityForResult(intent, REQUEST_APPDETAILS);
         super.onListItemClick(l, v, position, id);
     }

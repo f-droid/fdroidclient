@@ -106,7 +106,7 @@ public class FDroid extends FragmentActivity {
         }
         if (appid != null && appid.length() > 0) {
             Intent call = new Intent(this, AppDetails.class);
-            call.putExtra("appid", appid);
+            call.putExtra(AppDetails.EXTRA_APPID, appid);
             startActivityForResult(call, REQUEST_APPDETAILS);
         }
 
