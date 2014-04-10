@@ -9,7 +9,7 @@
   <string name="version">Version</string>
   <string name="edit">Bearbeiten</string>
   <string name="delete">Löschen</string>
-  <string name="enable_nfc_send">NFC-Transfer aktivieren…</string>
+  <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
   <string name="cache_downloaded">Anwendungszwischenspeicher</string>
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf der SD-Karte behalten</string>
   <string name="cache_downloaded_off">Installationsdateien nicht behalten</string>
@@ -66,7 +66,7 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
   <string name="process_update_msg">Anwendungsliste wird aktualisiert…</string>
   <string name="download_server">Anwendung wird heruntergeladen von</string>
   <string name="nfc_is_not_enabled">NFC ist deaktiviert!</string>
-  <string name="go_to_nfc_settings">NFC-Einstellungen öffnen…</string>
+  <string name="go_to_nfc_settings">NFC-Einstellungen öffnen …</string>
   <string name="bluetooth_activity_not_found">Keine Bluetooth-Sendemethode gefunden. Bitte wählen Sie eine aus!</string>
   <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>
   <string name="repo_add_url">Adresse der Paketquelle</string>
@@ -81,7 +81,7 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
 Sollen diese aktualisiert werden?</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
   <string name="menu_manage">Paketquellen verwalten</string>
-  <string name="menu_send_apk_bt">Bluetooth-FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Bluetooth-FDroid.apk …</string>
   <string name="menu_preferences">Einstellungen</string>
   <string name="menu_about">Über</string>
   <string name="menu_search">Suchen</string>
@@ -128,7 +128,7 @@ Sollen diese aktualisiert werden?</string>
   <string name="category_whatsnew">Was gibt es Neues</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
   <string name="local_repos_title">Lokale F-Droid-Paketquellen</string>
-  <string name="local_repos_scanning">Lokale F-Droid-Paketquellen entdecken…</string>
+  <string name="local_repos_scanning">Lokale F-Droid-Paketquellen entdecken …</string>
   <string name="status_download">Herunterladen
 %2$s / %3$s (%4$d%%) von
 %1$s</string>
@@ -137,7 +137,7 @@ Sollen diese aktualisiert werden?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Verbinden mit
 %1$s</string>
-  <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft…</string>
+  <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>
   <string name="status_inserting">App-Details speichern (%1$d%%)</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>
