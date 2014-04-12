@@ -116,6 +116,24 @@ public class ApkProvider extends FDroidProvider {
             Cursor cursor = resolver.query(uri, fields, null, null, null);
             return cursorToList(cursor);
         }
+
+        public static Apk get(Context context, Uri uri ) {
+            return get(context, uri, DataColumns.ALL);
+        }
+
+        public static Apk get(Context context, Uri uri, String[] fields) {
+            ContentResolver resolver = context.getContentResolver();
+            Cursor cursor = resolver.query(uri, fields, null, null, null);
+            Apk apk = null;
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    apk = new Apk(cursor);
+                }
+                cursor.close();
+            }
+            return apk;
+        }
     }
 
     public interface DataColumns extends BaseColumns {
