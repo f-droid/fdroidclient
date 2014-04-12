@@ -6,6 +6,7 @@ import android.net.Uri;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.mock.MockApk;
 import org.fdroid.fdroid.mock.MockApp;
@@ -102,14 +103,61 @@ public class ApkProviderTest extends BaseApkProviderTest {
         // which are tested elsewhere.
     }
 
+    public void testDeleteArbitraryApks() {
+        Apk one   = insertApkForRepo("com.example.one", 1, 10);
+        Apk two   = insertApkForRepo("com.example.two", 1, 10);
+        Apk three = insertApkForRepo("com.example.three", 1, 10);
+        Apk four  = insertApkForRepo("com.example.four", 1, 10);
+        Apk five  = insertApkForRepo("com.example.five", 1, 10);
+
+        assertTotalApkCount(5);
+
+        assertEquals("com.example.one", one.id);
+        assertEquals("com.example.two", two.id);
+        assertEquals("com.example.five", five.id);
+
+        String[] expectedIds = {
+            "com.example.one",
+            "com.example.two",
+            "com.example.three",
+            "com.example.four",
+            "com.example.five",
+        };
+
+        List<Apk> all = ApkProvider.Helper.findByRepo(getSwappableContext(), new MockRepo(10), ApkProvider.DataColumns.ALL);
+        List<String> actualIds = new ArrayList<String>();
+        for (Apk apk : all) {
+            actualIds.add(apk.id);
+        }
+
+        TestUtils.assertContainsOnly(actualIds, expectedIds);
+
+        List<Apk> toDelete = new ArrayList<Apk>(3);
+        toDelete.add(two);
+        toDelete.add(three);
+        toDelete.add(four);
+        ApkProvider.Helper.deleteApks(getSwappableContext(), toDelete);
+
+        assertTotalApkCount(2);
+
+        List<Apk> allRemaining = ApkProvider.Helper.findByRepo(getSwappableContext(), new MockRepo(10), ApkProvider.DataColumns.ALL);
+        List<String> actualRemainingIds = new ArrayList<String>();
+        for (Apk apk : allRemaining) {
+            actualRemainingIds.add(apk.id);
+        }
+
+        String[] expectedRemainingIds = {
+            "com.example.one",
+            "com.example.five",
+        };
+
+        TestUtils.assertContainsOnly(actualRemainingIds, expectedRemainingIds);
+    }
+
     public void testInvalidDeleteUris() {
         Apk apk = new MockApk("org.fdroid.fdroid", 10);
 
-        List<Apk> apks = new ArrayList<Apk>();
-        apks.add(apk);
-
         assertCantDelete(ApkProvider.getContentUri());
-        assertCantDelete(ApkProvider.getContentUri(apks));
         assertCantDelete(ApkProvider.getContentUri("org.fdroid.fdroid", 10));
         assertCantDelete(ApkProvider.getContentUri(apk));
         assertCantDelete(Uri.withAppendedPath(ApkProvider.getContentUri(), "some-random-path"));

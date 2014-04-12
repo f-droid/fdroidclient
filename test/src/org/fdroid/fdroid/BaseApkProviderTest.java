@@ -2,6 +2,7 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 
@@ -68,9 +69,10 @@ abstract class BaseApkProviderTest extends FDroidProviderTest<ApkProvider> {
         }
     }
 
-    protected void insertApkForRepo(String id, int versionCode, long repoId) {
+    protected Apk insertApkForRepo(String id, int versionCode, long repoId) {
         ContentValues additionalValues = new ContentValues();
         additionalValues.put(ApkProvider.DataColumns.REPO_ID, repoId);
-        TestUtils.insertApk(this, id, versionCode, additionalValues);
+        Uri uri = TestUtils.insertApk(this, id, versionCode, additionalValues);
+        return ApkProvider.Helper.get(getSwappableContext(), uri);
     }
 }
