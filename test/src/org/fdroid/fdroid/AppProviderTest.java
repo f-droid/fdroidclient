@@ -4,14 +4,13 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.res.Resources;
 import android.database.Cursor;
-
 import mock.MockCategoryResources;
 import mock.MockContextSwappableComponents;
 import mock.MockInstallablePackageManager;
-
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +38,42 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
             AppProvider.DataColumns.APP_ID,
             AppProvider.DataColumns.NAME
         };
+    }
+
+    /**
+     * Although this doesn't directly relate to the AppProvider, it is here because
+     * the AppProvider used to stumble across this bug when asking for installed apps,
+     * and the device had over 1000 apps installed.
+     */
+    public void testMaxSqliteParams() {
+
+        MockInstallablePackageManager pm = new MockInstallablePackageManager();
+        getSwappableContext().setPackageManager(pm);
+
+        insertApp("com.example.app1", "App 1");
+        insertApp("com.example.app100", "App 100");
+        insertApp("com.example.app1000", "App 1000");
+
+        for (int i = 0; i < 50; i ++) {
+            pm.install("com.example.app" + i, 1, "v" + 1);
+        }
+        InstalledAppCacheUpdater.updateInForeground(getMockContext());
+
+        assertResultCount(1, AppProvider.getInstalledUri());
+
+        for (int i = 50; i < 500; i ++) {
+            pm.install("com.example.app" + i, 1, "v" + 1);
+        }
+        InstalledAppCacheUpdater.updateInForeground(getMockContext());
+
+        assertResultCount(2, AppProvider.getInstalledUri());
+
+        for (int i = 500; i < 1100; i ++) {
+            pm.install("com.example.app" + i, 1, "v" + 1);
+        }
+        InstalledAppCacheUpdater.updateInForeground(getMockContext());
+
+        assertResultCount(3, AppProvider.getInstalledUri());
     }
 
     public void testCantFindApp() {
@@ -87,7 +122,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreVercode);
         insertApp(id, "App: " + id, values);
 
-        packageManager.install(id, installedVercode, "v" + installedVercode);
+        TestUtils.installAndBroadcast(getMockContext(), packageManager, id, installedVercode, "v" + installedVercode);
     }
 
     public void testCanUpdate() {
@@ -112,7 +147,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         // Can't "update", although can "install"...
         App notInstalled = AppProvider.Helper.findById(r, "not installed");
-        assertFalse(notInstalled.canAndWantToUpdate(c));
+        assertFalse(notInstalled.canAndWantToUpdate());
 
         App installedOnlyOneVersionAvailable   = AppProvider.Helper.findById(r, "installed, only one version available");
         App installedAlreadyLatestNoIgnore     = AppProvider.Helper.findById(r, "installed, already latest, no ignore");
@@ -120,21 +155,36 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         App installedAlreadyLatestIgnoreLatest = AppProvider.Helper.findById(r, "installed, already latest, ignore latest");
         App installedAlreadyLatestIgnoreOld    = AppProvider.Helper.findById(r, "installed, already latest, ignore old");
 
-        assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate(c));
-        assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate(c));
-        assertFalse(installedAlreadyLatestIgnoreAll.canAndWantToUpdate(c));
-        assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate(c));
-        assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate(c));
+        assertFalse(installedOnlyOneVersionAvailable.canAndWantToUpdate());
+        assertFalse(installedAlreadyLatestNoIgnore.canAndWantToUpdate());
+        assertFalse(installedAlreadyLatestIgnoreAll.canAndWantToUpdate());
+        assertFalse(installedAlreadyLatestIgnoreLatest.canAndWantToUpdate());
+        assertFalse(installedAlreadyLatestIgnoreOld.canAndWantToUpdate());
 
         App installedOldNoIgnore             = AppProvider.Helper.findById(r, "installed, old version, no ignore");
         App installedOldIgnoreAll            = AppProvider.Helper.findById(r, "installed, old version, ignore all");
         App installedOldIgnoreLatest         = AppProvider.Helper.findById(r, "installed, old version, ignore latest");
         App installedOldIgnoreNewerNotLatest = AppProvider.Helper.findById(r, "installed, old version, ignore newer, but not latest");
 
-        assertTrue(installedOldNoIgnore.canAndWantToUpdate(c));
-        assertFalse(installedOldIgnoreAll.canAndWantToUpdate(c));
-        assertFalse(installedOldIgnoreLatest.canAndWantToUpdate(c));
-        assertTrue(installedOldIgnoreNewerNotLatest.canAndWantToUpdate(c));
+        assertTrue(installedOldNoIgnore.canAndWantToUpdate());
+        assertFalse(installedOldIgnoreAll.canAndWantToUpdate());
+        assertFalse(installedOldIgnoreLatest.canAndWantToUpdate());
+        assertTrue(installedOldIgnoreNewerNotLatest.canAndWantToUpdate());
+
+        Cursor canUpdateCursor = r.query(AppProvider.getCanUpdateUri(), AppProvider.DataColumns.ALL, null, null, null);
+        canUpdateCursor.moveToFirst();
+        List<String> canUpdateIds = new ArrayList<String>(canUpdateCursor.getCount());
+        while (!canUpdateCursor.isAfterLast()) {
+            canUpdateIds.add(new App(canUpdateCursor).id);
+            canUpdateCursor.moveToNext();
+        }
+
+        String[] expectedUpdateableIds = {
+            "installed, old version, no ignore",
+            "installed, old version, ignore newer, but not latest",
+        };
+
+        TestUtils.assertContainsOnly(expectedUpdateableIds, canUpdateIds);
     }
 
     public void testIgnored() {
@@ -182,9 +232,6 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     }
 
     public void testInstalled() {
-
-        Utils.clearInstalledApksCache();
-
         MockInstallablePackageManager pm = new MockInstallablePackageManager();
         getSwappableContext().setPackageManager(pm);
 
@@ -194,7 +241,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertResultCount(0, AppProvider.getInstalledUri());
 
         for (int i = 10; i < 20; i ++) {
-            pm.install("com.example.test." + i, i, "v1");
+            TestUtils.installAndBroadcast(getMockContext(), pm, "com.example.test." + i, i, "v1");
         }
 
         assertResultCount(10, AppProvider.getInstalledUri());
@@ -236,6 +283,13 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     private Cursor queryAllApps() {
         return getMockContentResolver().query(AppProvider.getContentUri(), getMinimalProjection(), null, null, null);
     }
+
+    // ========================================================================
+    //  "Categories"
+    //  (at this point) not an additional table, but we treat them sort of
+    //  like they are. That means that if we change the implementation to
+    //  use a separate table in the future, these should still pass.
+    // ========================================================================
 
     public void testCategoriesSingle() {
         insertAppWithCategory("com.dog", "Dog", "Animal");
@@ -300,12 +354,16 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         TestUtils.assertContainsOnly(categoriesLonger, expectedLonger);
     }
 
+    // =======================================================================
+    //  Misc helper functions
+    //  (to be used by any tests in this suite)
+    // =======================================================================
+
     private void insertApp(String id, String name) {
         insertApp(id, name, new ContentValues());
     }
 
-    private void insertAppWithCategory(String id, String name,
-                                       String categories) {
+    private void insertAppWithCategory(String id, String name, String categories) {
         ContentValues values = new ContentValues(1);
         values.put(AppProvider.DataColumns.CATEGORIES, categories);
         insertApp(id, name, values);

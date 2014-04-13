@@ -27,6 +27,14 @@ public abstract class FDroidProvider extends ContentProvider {
     abstract protected String getProviderName();
 
     /**
+     * Should always be the same as the provider:name in the AndroidManifest
+     * @return
+     */
+    public final String getName() {
+        return AUTHORITY + "." + getProviderName();
+    }
+
+    /**
      * Tells us if we are in the middle of a batch of operations. Allows us to
      * decide not to notify the content resolver of changes,
      * every single time we do something during many operations.

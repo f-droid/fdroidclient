@@ -62,17 +62,27 @@ abstract class QueryBuilder {
         this.orderBy = orderBy;
     }
 
-    protected final void leftJoin(String table, String alias,
-                                  String condition) {
-        tables.append(" LEFT JOIN ");
-        tables.append(table);
+    protected final void leftJoin(String table, String alias, String condition) {
+        joinWithType("LEFT", table, alias, condition);
+    }
+
+    protected final void join(String table, String alias, String condition) {
+        joinWithType("", table, alias, condition);
+    }
+
+    private void joinWithType(String type, String table, String alias, String condition) {
+        tables.append(' ')
+            .append(type)
+            .append(" JOIN ")
+            .append(table);
+
         if (alias != null) {
-            tables.append(" AS ");
-            tables.append(alias);
+            tables.append(" AS ").append(alias);
         }
-        tables.append(" ON (");
-        tables.append(condition);
-        tables.append(")");
+
+        tables.append(" ON (")
+            .append(condition)
+            .append(')');
     }
 
     private String fieldsSql() {

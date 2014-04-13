@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.data;
 
 import android.content.*;
-import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
@@ -13,9 +12,6 @@ import java.util.*;
 
 public class AppProvider extends FDroidProvider {
 
-    /**
-     * @see org.fdroid.fdroid.data.ApkProvider.MAX_APKS_TO_QUERY
-     */
     public static final int MAX_APPS_TO_QUERY = 900;
 
     public static final class Helper {
@@ -166,6 +162,11 @@ public class AppProvider extends FDroidProvider {
             public static final String VERSION = "suggestedApkVersion";
         }
 
+        public interface InstalledApp {
+            public static final String VERSION_CODE = "installedVersionCode";
+            public static final String VERSION_NAME = "installedVersionName";
+        }
+
         public static String[] ALL = {
                 IS_COMPATIBLE, APP_ID, NAME, SUMMARY, ICON, DESCRIPTION,
                 LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, DONATE_URL,
@@ -173,14 +174,76 @@ public class AppProvider extends FDroidProvider {
                 UPSTREAM_VERSION, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                 CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,
                 IGNORE_THISUPDATE, ICON_URL, SUGGESTED_VERSION_CODE,
-                SuggestedApk.VERSION
+                SuggestedApk.VERSION, InstalledApp.VERSION_CODE,
+                InstalledApp.VERSION_NAME
         };
+    }
+
+    /**
+     * A QuerySelection which is aware of the option/need to join onto the
+     * installed apps table. Not that the base classes
+     * {@link org.fdroid.fdroid.data.QuerySelection#add(QuerySelection)} and
+     * {@link org.fdroid.fdroid.data.QuerySelection#add(String, String[])} methods
+     * will only return the base class {@link org.fdroid.fdroid.data.QuerySelection}
+     * which is not aware of the installed app table.
+     * However, the
+     * {@link org.fdroid.fdroid.data.AppProvider.AppQuerySelection#add(org.fdroid.fdroid.data.AppProvider.AppQuerySelection)}
+     * method from this class will return an instance of this class, that is aware of
+     * the install apps table.
+     */
+    private static class AppQuerySelection extends QuerySelection {
+
+        private boolean naturalJoinToInstalled = false;
+
+        public AppQuerySelection() {
+            // The same as no selection, because "1" will always resolve to true when executing the SQL query.
+            // e.g. "WHERE 1 AND ..." is the same as "WHERE ..."
+            super("1");
+        }
+
+        public AppQuerySelection(String selection) {
+            super(selection);
+        }
+
+        public AppQuerySelection(String selection, String[] args) {
+            super(selection, args);
+        }
+
+        public AppQuerySelection(String selection, List<String> args) {
+            super(selection, args);
+        }
+
+        public boolean naturalJoinToInstalled() {
+            return naturalJoinToInstalled;
+        }
+
+        /**
+         * Tells the query selection that it will need to join onto the installed apps table
+         * when used. This should be called when your query makes use of fields from that table
+         * (for example, list all installed, or list those which can be updated).
+         * @return A reference to this object, to allow method chaining, for example
+         * <code>return new AppQuerySelection(selection).requiresInstalledTable())</code>
+         */
+        public AppQuerySelection requireNaturalInstalledTable() {
+            naturalJoinToInstalled = true;
+            return this;
+        }
+
+        public AppQuerySelection add(AppQuerySelection query) {
+            QuerySelection both = super.add(query);
+            AppQuerySelection bothWithJoin = new AppQuerySelection(both.getSelection(), both.getArgs());
+            if (this.naturalJoinToInstalled() || query.naturalJoinToInstalled()) {
+                bothWithJoin.requireNaturalInstalledTable();
+            }
+            return bothWithJoin;
+        }
+
     }
 
     private static class Query extends QueryBuilder {
 
         private boolean isSuggestedApkTableAdded = false;
-
+        private boolean requiresInstalledTable = false;
         private boolean categoryFieldAdded = false;
 
         @Override
@@ -193,10 +256,43 @@ public class AppProvider extends FDroidProvider {
             return fieldCount() == 1 && categoryFieldAdded;
         }
 
+        public void addSelection(AppQuerySelection selection) {
+            addSelection(selection.getSelection());
+            if (selection.naturalJoinToInstalled()) {
+                naturalJoinToInstalledTable();
+            }
+        }
+
+        // TODO: What if the selection requires a natural join, but we first get a left join
+        // because something causes leftJoin to be caused first? Maybe throw an exception?
+        public void naturalJoinToInstalledTable() {
+            if (!requiresInstalledTable) {
+                join(
+                    DBHelper.TABLE_INSTALLED_APP,
+                    "installed",
+                    "installed." + InstalledAppProvider.DataColumns.APP_ID + " = " + DBHelper.TABLE_APP + ".id");
+                requiresInstalledTable = true;
+            }
+        }
+
+        public void leftJoinToInstalledTable() {
+            if (!requiresInstalledTable) {
+                leftJoin(
+                    DBHelper.TABLE_INSTALLED_APP,
+                    "installed",
+                    "installed." + InstalledAppProvider.DataColumns.APP_ID + " = " + DBHelper.TABLE_APP + ".id");
+                requiresInstalledTable = true;
+            }
+        }
+
         @Override
         public void addField(String field) {
             if (field.equals(DataColumns.SuggestedApk.VERSION)) {
                 addSuggestedApkVersionField();
+            } else if (field.equals(DataColumns.InstalledApp.VERSION_NAME)) {
+                addInstalledAppVersionName();
+            } else if (field.equals(DataColumns.InstalledApp.VERSION_CODE)) {
+                addInstalledAppVersionCode();
             } else if (field.equals(DataColumns._COUNT)) {
                 appendCountField();
             } else {
@@ -227,6 +323,25 @@ public class AppProvider extends FDroidProvider {
             }
             appendField(fieldName, "suggestedApk", alias);
         }
+
+        private void addInstalledAppVersionName() {
+            addInstalledAppField(
+                    InstalledAppProvider.DataColumns.VERSION_NAME,
+                    DataColumns.InstalledApp.VERSION_NAME
+            );
+        }
+
+        private void addInstalledAppVersionCode() {
+            addInstalledAppField(
+                    InstalledAppProvider.DataColumns.VERSION_CODE,
+                    DataColumns.InstalledApp.VERSION_CODE
+            );
+        }
+
+        private void addInstalledAppField(String fieldName, String alias) {
+            leftJoinToInstalledTable();
+            appendField(fieldName, "installed", alias);
+        }
     }
 
     private static final String PROVIDER_NAME = "AppProvider";
@@ -242,7 +357,6 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_NEWLY_ADDED = "newlyAdded";
     private static final String PATH_CATEGORY = "category";
     private static final String PATH_IGNORED = "ignored";
-
     private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
 
     private static final int CAN_UPDATE       = CODE_SINGLE + 1;
@@ -254,7 +368,6 @@ public class AppProvider extends FDroidProvider {
     private static final int NEWLY_ADDED      = RECENTLY_UPDATED + 1;
     private static final int CATEGORY         = NEWLY_ADDED + 1;
     private static final int IGNORED          = CATEGORY + 1;
-
     private static final int CALC_APP_DETAILS_FROM_INDEX = IGNORED + 1;
 
     static {
@@ -359,49 +472,19 @@ public class AppProvider extends FDroidProvider {
         return matcher;
     }
 
-    private QuerySelection queryCanUpdate() {
-        Map<String, PackageInfo> installedApps = Utils.getInstalledApps(getContext());
-
+    private AppQuerySelection queryCanUpdate() {
         String ignoreCurrent = " fdroid_app.ignoreThisUpdate != fdroid_app.suggestedVercode ";
         String ignoreAll = " fdroid_app.ignoreAllUpdates != 1 ";
         String ignore = " ( " + ignoreCurrent + " AND " + ignoreAll + " ) ";
-
-        StringBuilder where = new StringBuilder( ignore + " AND ( 0 ");
-        String[] selectionArgs = new String[installedApps.size() * 2];
-        int i = 0;
-        for (PackageInfo info : installedApps.values() ) {
-            where.append(" OR ( fdroid_app.")
-                    .append(DataColumns.APP_ID)
-                    .append(" = ? AND fdroid_app.")
-                    .append(DataColumns.SUGGESTED_VERSION_CODE)
-                    .append(" > ?) ");
-            selectionArgs[ i * 2 ] = info.packageName;
-            selectionArgs[ i * 2 + 1 ] = Integer.toString(info.versionCode);
-            i ++;
-        }
-        where.append(") ");
-
-        return new QuerySelection(where.toString(), selectionArgs);
+        String where = ignore + " AND fdroid_app." + DataColumns.SUGGESTED_VERSION_CODE + " > installed.versionCode";
+        return new AppQuerySelection(where).requireNaturalInstalledTable();
     }
 
-    private QuerySelection queryInstalled() {
-        Map<String, PackageInfo> installedApps = Utils.getInstalledApps(getContext());
-        StringBuilder where = new StringBuilder( " ( 0 ");
-        String[] selectionArgs = new String[installedApps.size()];
-        int i = 0;
-        for (Map.Entry<String, PackageInfo> entry : installedApps.entrySet() ) {
-            where.append(" OR fdroid_app.")
-                    .append(AppProvider.DataColumns.APP_ID)
-                    .append(" = ? ");
-            selectionArgs[i] = entry.getKey();
-            i ++;
-        }
-        where.append(" ) ");
-
-        return new QuerySelection(where.toString(), selectionArgs);
+    private AppQuerySelection queryInstalled() {
+        return new AppQuerySelection().requireNaturalInstalledTable();
     }
 
-    private QuerySelection querySearch(String keywords) {
+    private AppQuerySelection querySearch(String keywords) {
         keywords = "%" + keywords + "%";
         String selection =
                 "fdroid_app.id like ? OR " +
@@ -409,34 +492,34 @@ public class AppProvider extends FDroidProvider {
                 "fdroid_app.summary like ? OR " +
                 "fdroid_app.description like ? ";
         String[] args = new String[] { keywords, keywords, keywords, keywords};
-        return new QuerySelection(selection, args);
+        return new AppQuerySelection(selection, args);
     }
 
-    private QuerySelection querySingle(String id) {
+    private AppQuerySelection querySingle(String id) {
         String selection = "fdroid_app.id = ?";
         String[] args = { id };
-        return new QuerySelection(selection, args);
+        return new AppQuerySelection(selection, args);
     }
 
-    private QuerySelection queryIgnored() {
+    private AppQuerySelection queryIgnored() {
         String selection = "fdroid_app.ignoreAllUpdates = 1 OR " +
                 "fdroid_app.ignoreThisUpdate >= fdroid_app.suggestedVercode";
-        return new QuerySelection(selection);
+        return new AppQuerySelection(selection);
     }
 
-    private QuerySelection queryNewlyAdded() {
+    private AppQuerySelection queryNewlyAdded() {
         String selection = "fdroid_app.added > ?";
         String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
-        return new QuerySelection(selection, args);
+        return new AppQuerySelection(selection, args);
     }
 
-    private QuerySelection queryRecentlyUpdated() {
+    private AppQuerySelection queryRecentlyUpdated() {
         String selection = "fdroid_app.added != fdroid_app.lastUpdated AND fdroid_app.lastUpdated > ?";
         String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
-        return new QuerySelection(selection, args);
+        return new AppQuerySelection(selection, args);
     }
 
-    private QuerySelection queryCategory(String category) {
+    private AppQuerySelection queryCategory(String category) {
         // TODO: In the future, add a new table for categories,
         // so we can join onto it.
         String selection =
@@ -450,67 +533,68 @@ public class AppProvider extends FDroidProvider {
                 "%," + category,
                 "%," + category + ",%",
         };
-        return new QuerySelection(selection, args);
+        return new AppQuerySelection(selection, args);
     }
 
-    private QuerySelection queryNoApks() {
+    private AppQuerySelection queryNoApks() {
         String selection = "(SELECT COUNT(*) FROM fdroid_apk WHERE fdroid_apk.id = fdroid_app.id) = 0";
-        return new QuerySelection(selection);
+        return new AppQuerySelection(selection);
     }
 
-    private QuerySelection queryApps(String appIds) {
+    private AppQuerySelection queryApps(String appIds) {
         String[] args = appIds.split(",");
         String selection = "fdroid_app.id IN (" + generateQuestionMarksForInClause(args.length) + ")";
-        return new QuerySelection(selection, args);
+        return new AppQuerySelection(selection, args);
     }
 
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        QuerySelection query = new QuerySelection(selection, selectionArgs);
+    public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+        Query query = new Query();
+        AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
         switch (matcher.match(uri)) {
             case CODE_LIST:
                 break;
 
             case CODE_SINGLE:
-                query = query.add(querySingle(uri.getLastPathSegment()));
+                selection = selection.add(querySingle(uri.getLastPathSegment()));
                 break;
 
             case CAN_UPDATE:
-                query = query.add(queryCanUpdate());
+                selection = selection.add(queryCanUpdate());
                 break;
 
             case INSTALLED:
-                query = query.add(queryInstalled());
+                selection = selection.add(queryInstalled());
                 break;
 
             case SEARCH:
-                query = query.add(querySearch(uri.getLastPathSegment()));
+                selection = selection.add(querySearch(uri.getLastPathSegment()));
                 break;
 
             case NO_APKS:
-                query = query.add(queryNoApks());
+                selection = selection.add(queryNoApks());
                 break;
 
             case APPS:
-                query = query.add(queryApps(uri.getLastPathSegment()));
+                selection = selection.add(queryApps(uri.getLastPathSegment()));
                 break;
 
             case IGNORED:
-                query = query.add(queryIgnored());
+                selection = selection.add(queryIgnored());
                 break;
 
             case CATEGORY:
-                query = query.add(queryCategory(uri.getLastPathSegment()));
+                selection = selection.add(queryCategory(uri.getLastPathSegment()));
                 break;
 
             case RECENTLY_UPDATED:
                 sortOrder = " fdroid_app.lastUpdated DESC";
-                query = query.add(queryRecentlyUpdated());
+                selection = selection.add(queryRecentlyUpdated());
                 break;
 
             case NEWLY_ADDED:
                 sortOrder = " fdroid_app.added DESC";
-                query = query.add(queryNewlyAdded());
+                selection = selection.add(queryNewlyAdded());
                 break;
 
             default:
@@ -522,12 +606,11 @@ public class AppProvider extends FDroidProvider {
             sortOrder = " lower( fdroid_app." + sortOrder + " ) ";
         }
 
-        Query q = new Query();
-        q.addFields(projection);
-        q.addSelection(query.getSelection());
-        q.addOrderBy(sortOrder);
+        query.addSelection(selection);
+        query.addFields(projection); // TODO: Make the order of addFields/addSelection not dependent on each other...
+        query.addOrderBy(sortOrder);
 
-        Cursor cursor = read().rawQuery(q.toString(), query.getArgs());
+        Cursor cursor = read().rawQuery(query.toString(), selection.getArgs());
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }

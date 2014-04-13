@@ -61,6 +61,11 @@
             android:name="org.fdroid.fdroid.data.ApkProvider"
             android:exported="false"/>
 
+        <provider
+            android:authorities="org.fdroid.fdroid.data.InstalledAppProvider"
+            android:name="org.fdroid.fdroid.data.InstalledAppProvider"
+            android:exported="false"/>
+
         <activity
             android:name=".FDroid"
             android:launchMode="singleTop"
@@ -278,10 +283,22 @@
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".PackageReceiver" >
+        <receiver android:name=".PackageAddedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_UPGRADED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".PackageUpgradedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".PackageRemovedReceiver" >
+            <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
 
                 <data android:scheme="package" />

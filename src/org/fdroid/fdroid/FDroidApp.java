@@ -18,41 +18,29 @@
 
 package org.fdroid.fdroid;
 
-import java.io.File;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Semaphore;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
-
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
-
 import android.preference.PreferenceManager;
 import android.util.Log;
-
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
 import de.duenndns.ssl.MemorizingTrustManager;
-
-import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.compat.PRNGFixes;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
+
+import javax.net.ssl.*;
+import java.io.File;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 
 public class FDroidApp extends Application {
 
@@ -91,9 +79,12 @@ public class FDroidApp extends Application {
         //Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
 
-        // Set this up here, and the testing framework will override it when
-        // it gets fired up.
-        Utils.setupInstalledApkCache(new Utils.InstalledApkCache());
+        // Check that the installed app cache hasn't gotten out of sync somehow.
+        // e.g. if we crashed/ran out of battery half way through responding
+        // to a package installed intent. It doesn't really matter where
+        // we put this in the bootstrap process, because it runs on a different
+        // thread. In fact, we may as well start early for this reason.
+        InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
 
         // If the user changes the preference to do with filtering rooted apps,
         // it is easier to just notify a change in the app provider,

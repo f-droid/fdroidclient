@@ -2,17 +2,19 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
+
+    private static final String TAG = "org.fdroid.fdroid.data.DBHelper";
 
     public static final String DATABASE_NAME = "fdroid";
 
@@ -22,7 +24,6 @@ public class DBHelper extends SQLiteOpenHelper {
     // know about. Each relates directly back to an entry in TABLE_APP.
     // This information is retrieved from the repositories.
     public static final String TABLE_APK = "fdroid_apk";
-
 
     private static final String CREATE_TABLE_REPO = "create table "
             + TABLE_REPO + " (_id integer primary key, "
@@ -87,7 +88,15 @@ public class DBHelper extends SQLiteOpenHelper {
             + "iconUrl text, "
             + "primary key(id));";
 
-    private static final int DB_VERSION = 42;
+    public static final String TABLE_INSTALLED_APP = "fdroid_installedApp";
+    private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + TABLE_INSTALLED_APP
+            + " ( "
+            + "appId TEXT NOT NULL PRIMARY KEY, "
+            + "versionCode INT NOT NULL, "
+            + "versionName TEXT NOT NULL "
+            + " );";
+
+    private static final int DB_VERSION = 43;
 
     private Context context;
 
@@ -177,6 +186,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         createAppApk(db);
+        createInstalledApp(db);
         db.execSQL(CREATE_TABLE_REPO);
 
         insertRepo(
@@ -239,6 +249,8 @@ public class DBHelper extends SQLiteOpenHelper {
         addLastUpdatedToRepo(db, oldVersion);
         renameRepoId(db, oldVersion);
         populateRepoNames(db, oldVersion);
+
+        if (oldVersion < 43) createInstalledApp(db);
     }
 
     /**
@@ -379,6 +391,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_APK);
         db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
         db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
+    }
+
+    private void createInstalledApp(SQLiteDatabase db) {
+        Log.d(TAG, "Creating 'installed app' database table.");
+        db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 
     private static boolean columnExists(SQLiteDatabase db,

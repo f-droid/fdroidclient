@@ -195,14 +195,6 @@ public final class Utils {
         return apkCacheDir;
     }
 
-    public static Map<String, PackageInfo> getInstalledApps(Context context) {
-        return installedApkCache.getApks(context);
-    }
-
-    public static void clearInstalledApksCache() {
-        installedApkCache.emptyCache();
-    }
-
     public static String calcFingerprint(String keyHexString) {
         if (TextUtils.isEmpty(keyHexString))
             return null;
@@ -295,45 +287,5 @@ public final class Utils {
             return false;
         }
     }
-
-    private static InstalledApkCache installedApkCache = null;
-
-    /**
-     * We do a lot of querying of the installed app's. As a result, we like
-     * to cache this information quite heavily (and flush the cache when new
-     * apps are installed). The caching implementation needs to be setup like
-     * this so that it is possible to mock for testing purposes.
-     */
-    public static void setupInstalledApkCache(InstalledApkCache cache) {
-        installedApkCache = cache;
-    }
-
-    public static class InstalledApkCache {
-
-        protected Map<String, PackageInfo> installedApks = null;
-
-        protected Map<String, PackageInfo> buildAppList(Context context) {
-            Map<String, PackageInfo> info = new HashMap<String, PackageInfo>();
-            Log.d("FDroid", "Reading installed packages");
-            List<PackageInfo> installedPackages = context.getPackageManager().getInstalledPackages(0);
-            for (PackageInfo appInfo : installedPackages) {
-                info.put(appInfo.packageName, appInfo);
-            }
-            return info;
-        }
-
-        public Map<String, PackageInfo> getApks(Context context) {
-            if (installedApks == null) {
-                installedApks = buildAppList(context);
-            }
-            return installedApks;
-        }
-
-        public void emptyCache() {
-            installedApks = null;
-        }
-
-    }
-
 
 }

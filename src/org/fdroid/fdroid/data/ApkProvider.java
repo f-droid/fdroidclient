@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
-import org.fdroid.fdroid.UpdateService;
 
 import java.util.*;
 

@@ -35,6 +35,8 @@ abstract public class AppListFragment extends ListFragment implements
             AppProvider.DataColumns.LICENSE,
             AppProvider.DataColumns.ICON,
             AppProvider.DataColumns.ICON_URL,
+            AppProvider.DataColumns.InstalledApp.VERSION_CODE,
+            AppProvider.DataColumns.InstalledApp.VERSION_NAME,
             AppProvider.DataColumns.SuggestedApk.VERSION,
             AppProvider.DataColumns.SUGGESTED_VERSION_CODE,
             AppProvider.DataColumns.IGNORE_ALLUPDATES,

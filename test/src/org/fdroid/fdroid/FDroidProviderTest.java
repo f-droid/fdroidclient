@@ -9,16 +9,21 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
 import android.test.ProviderTestCase2MockContext;
-import mock.MockCategoryResources;
 import mock.MockContextEmptyComponents;
 import mock.MockContextSwappableComponents;
 import mock.MockFDroidResources;
-import org.fdroid.fdroid.data.FDroidProvider;
-import org.fdroid.fdroid.mock.MockInstalledApkCache;
+import org.fdroid.fdroid.data.*;
 
 import java.util.List;
 
 public abstract class FDroidProviderTest<T extends FDroidProvider> extends ProviderTestCase2MockContext<T> {
+
+    private FDroidProvider[] allProviders = {
+        new AppProvider(),
+        new RepoProvider(),
+        new ApkProvider(),
+        new InstalledAppProvider(),
+    };
 
     private MockContextSwappableComponents swappableContext;
 
@@ -33,7 +38,18 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        Utils.setupInstalledApkCache(new MockInstalledApkCache());
+
+        // Instantiate all providers other than the one which was already created by the base class.
+        // This is because F-Droid providers tend to perform joins onto tables managed by other
+        // providers, and so we need to be able to insert into those other providers for these
+        // joins to be tested correctly.
+        for (FDroidProvider provider : allProviders) {
+            if (!provider.getName().equals(getProvider().getName())) {
+                provider.attachInfo(getMockContext(), null);
+                getMockContentResolver().addProvider(provider.getName(), provider);
+            }
+        }
+
         getSwappableContext().setResources(getMockResources());
 
         // The *Provider.Helper.* functions tend to take a Context as their
@@ -127,4 +143,26 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
         assertNotNull(result);
         assertEquals(expectedCount, result.getCount());
     }
+
+    protected void assertIsInstalledVersionInDb(String appId, int versionCode, String versionName) {
+        Uri uri = InstalledAppProvider.getAppUri(appId);
+
+        String[] projection = {
+            InstalledAppProvider.DataColumns.APP_ID,
+            InstalledAppProvider.DataColumns.VERSION_CODE,
+            InstalledAppProvider.DataColumns.VERSION_NAME,
+        };
+
+        Cursor cursor = getMockContentResolver().query(uri, projection, null, null, null);
+
+        assertNotNull(cursor);
+        assertEquals("App \"" + appId + "\" not installed", 1, cursor.getCount());
+
+        cursor.moveToFirst();
+
+        assertEquals(appId, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)));
+        assertEquals(versionCode, cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE)));
+        assertEquals(versionName, cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_NAME)));
+    }
+
 }

@@ -136,7 +136,7 @@ public class AppDetails extends ListActivity {
                     + " " + apk.version
                     + (apk.vercode == app.suggestedVercode ? "  ☆" : ""));
 
-            if (apk.vercode == app.getInstalledVerCode(getContext())
+            if (apk.vercode == app.installedVersionCode
                     && mInstalledSigID != null && apk.sig != null
                     && apk.sig.equals(mInstalledSigID)) {
                 holder.status.setText(getString(R.string.inst));
@@ -437,7 +437,7 @@ public class AppDetails extends ListActivity {
         // Get the signature of the installed package...
         mInstalledSignature = null;
         mInstalledSigID = null;
-        if (app.getInstalledVersion(this) != null) {
+        if (app.isInstalled()) {
             PackageManager pm = getBaseContext().getPackageManager();
             try {
                 PackageInfo pi = pm.getPackageInfo(appid,
@@ -624,11 +624,11 @@ public class AppDetails extends ListActivity {
         adapter.notifyDataSetChanged();
 
         TextView tv = (TextView) findViewById(R.id.status);
-        if (app.getInstalledVersion(this) == null)
+        if (!app.isInstalled())
             tv.setText(getString(R.string.details_notinstalled));
         else
             tv.setText(getString(R.string.details_installed,
-                    app.getInstalledVersion(this)));
+                    app.installedVersionName));
 
         tv = (TextView) infoView.findViewById(R.id.signature);
         if (pref_expert && mInstalledSignature != null) {
@@ -643,9 +643,9 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         final Apk apk = adapter.getItem(position - l.getHeaderViewsCount());
-        if (app.getInstalledVerCode(this) == apk.vercode)
+        if (app.installedVersionCode == apk.vercode)
             removeApk(app.id);
-        else if (app.getInstalledVerCode(this) > apk.vercode) {
+        else if (app.installedVersionCode > apk.vercode) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
             ask_alrt.setMessage(getString(R.string.installDowngrade));
             ask_alrt.setPositiveButton(getString(R.string.yes),
@@ -676,7 +676,7 @@ public class AppDetails extends ListActivity {
         menu.clear();
         if (app == null)
             return true;
-        if (app.canAndWantToUpdate(this)) {
+        if (app.canAndWantToUpdate()) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 0, R.string.menu_upgrade)
                         .setIcon(R.drawable.ic_menu_refresh),
@@ -685,14 +685,14 @@ public class AppDetails extends ListActivity {
         }
 
         // Check count > 0 due to incompatible apps resulting in an empty list.
-        if (app.getInstalledVersion(this) == null && app.suggestedVercode > 0 &&
+        if (!app.isInstalled() && app.suggestedVercode > 0 &&
                 adapter.getCount() > 0) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 1, R.string.menu_install)
                         .setIcon(android.R.drawable.ic_menu_add),
                     MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-        } else if (app.getInstalledVersion(this) != null) {
+        } else if (app.isInstalled()) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall)
                         .setIcon(android.R.drawable.ic_menu_delete),
@@ -719,7 +719,7 @@ public class AppDetails extends ListActivity {
                     .setCheckable(true)
                     .setChecked(app.ignoreAllUpdates);
 
-        if (app.hasUpdates(this)) {
+        if (app.hasUpdates()) {
             menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
                         .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
                         .setCheckable(true)

@@ -3,6 +3,7 @@ package org.fdroid.fdroid;
 import android.content.*;
 import android.net.Uri;
 import junit.framework.AssertionFailedError;
+import mock.MockInstallablePackageManager;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 
@@ -12,10 +13,22 @@ import java.util.List;
 
 public class TestUtils {
 
-    public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedContains) {
-        List<T> containsList = new ArrayList<T>(expectedContains.length);
-        Collections.addAll(containsList, expectedContains);
-        assertContainsOnly(actualList, containsList);
+    public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedArray) {
+        List<T> expectedList = new ArrayList<T>(expectedArray.length);
+        Collections.addAll(expectedList, expectedArray);
+        assertContainsOnly(actualList, expectedList);
+    }
+
+    public static <T extends Comparable> void assertContainsOnly(T[] actualArray, List<T> expectedList) {
+        List<T> actualList = new ArrayList<T>(actualArray.length);
+        Collections.addAll(actualList, actualArray);
+        assertContainsOnly(actualList, expectedList);
+    }
+
+    public static <T extends Comparable> void assertContainsOnly(T[] actualArray, T[] expectedArray) {
+        List<T> expectedList = new ArrayList<T>(expectedArray.length);
+        Collections.addAll(expectedList, expectedArray);
+        assertContainsOnly(actualArray, expectedList);
     }
 
     public static <T> String listToString(List<T> list) {
@@ -58,6 +71,10 @@ public class TestUtils {
                 throw new AssertionFailedError(message);
             }
         }
+    }
+
+    public static void insertApp(ContentResolver resolver, String appId, String name) {
+        insertApp(resolver, appId, name, new ContentValues());
     }
 
     public static void insertApp(ContentResolver resolver, String id, String name, ContentValues additionalValues) {
@@ -106,4 +123,56 @@ public class TestUtils {
 
         return providerTest.getMockContentResolver().insert(uri, values);
     }
+
+    /**
+     * Will tell {@code pm} that we are installing {@code appId}, and then alert the
+     * {@link org.fdroid.fdroid.PackageAddedReceiver}. This will in turn update the
+     * "installed apps" table in the database.
+     *
+     * Note: in order for this to work, the {@link AppProviderTest#getSwappableContext()}
+     * will need to be aware of the package manager that we have passed in. Therefore,
+     * you will have to have called
+     * {@link mock.MockContextSwappableComponents#setPackageManager(android.content.pm.PackageManager)}
+     * on the {@link AppProviderTest#getSwappableContext()} before invoking this method.
+     */
+    public static void installAndBroadcast(
+            Context context,  MockInstallablePackageManager pm,
+            String appId, int versionCode, String versionName) {
+
+        pm.install(appId, versionCode, versionName);
+        Intent installIntent = new Intent(Intent.ACTION_PACKAGE_ADDED);
+        installIntent.setData(Uri.parse("package:" + appId));
+        new PackageAddedReceiver().onReceive(context, installIntent);
+
+    }
+
+    /**
+     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(android.content.Context context, mock.MockInstallablePackageManager, String, int, String)
+     */
+    public static void upgradeAndBroadcast(
+            Context context, MockInstallablePackageManager pm,
+            String appId, int versionCode, String versionName) {
+        /*
+        removeAndBroadcast(context, pm, appId);
+        installAndBroadcast(context, pm, appId, versionCode, versionName);
+        */
+        pm.install(appId, versionCode, versionName);
+        Intent installIntent = new Intent(Intent.ACTION_PACKAGE_CHANGED);
+        installIntent.setData(Uri.parse("package:" + appId));
+        new PackageUpgradedReceiver().onReceive(context, installIntent);
+
+    }
+
+    /**
+     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(android.content.Context context, mock.MockInstallablePackageManager, String, int, String)
+     */
+    public static void removeAndBroadcast(Context context, MockInstallablePackageManager pm, String appId) {
+
+        pm.remove(appId);
+        Intent installIntent = new Intent(Intent.ACTION_PACKAGE_REMOVED);
+        installIntent.setData(Uri.parse("package:" + appId));
+        new PackageRemovedReceiver().onReceive(context, installIntent);
+
+    }
+
 }

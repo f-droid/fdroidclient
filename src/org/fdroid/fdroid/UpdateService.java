@@ -405,7 +405,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     break;
                 }
             }
-            if (!ignored && app.hasUpdates(this)) {
+            if (!ignored && app.hasUpdates()) {
                 updateCount++;
             }
         }

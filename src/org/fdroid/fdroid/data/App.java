@@ -79,6 +79,10 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String iconUrl;
 
+    public String installedVersionName;
+
+    public int installedVersionCode;
+
     @Override
     public int compareTo(App app) {
         return name.compareToIgnoreCase(app.name);
@@ -148,6 +152,10 @@ public class App extends ValueObject implements Comparable<App> {
                 ignoreThisUpdate = cursor.getInt(i);
             } else if (column.equals(AppProvider.DataColumns.ICON_URL)) {
                 iconUrl = cursor.getString(i);
+            } else if (column.equals(AppProvider.DataColumns.InstalledApp.VERSION_CODE)) {
+                installedVersionCode = cursor.getInt(i);
+            } else if (column.equals(AppProvider.DataColumns.InstalledApp.VERSION_NAME)) {
+                installedVersionName = cursor.getString(i);
             }
         }
     }
@@ -186,53 +194,25 @@ public class App extends ValueObject implements Comparable<App> {
         return values;
     }
 
-    /**
-     * Version string for the currently installed version of this apk.
-     * If not installed, returns null.
-     */
-    public String getInstalledVersion(Context context) {
-        PackageInfo info = getInstalledInfo(context);
-        return info == null ? null : info.versionName;
-    }
-
-    /**
-     * Version code for the currently installed version of this apk.
-     * If not installed, it returns -1.
-     */
-    public int getInstalledVerCode(Context context) {
-        PackageInfo info = getInstalledInfo(context);
-        return info == null ? -1 : info.versionCode;
-    }
-
-    /**
-     * True if installed by the user, false if a system apk or not installed.
-     */
-    public boolean getUserInstalled(Context context) {
-        PackageInfo info = getInstalledInfo(context);
-        return info != null && ((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 1);
-    }
-
-    public PackageInfo getInstalledInfo(Context context) {
-        Map<String, PackageInfo> installed = Utils.getInstalledApps(context);
-        return installed.containsKey(id) ? installed.get(id) : null;
+    public boolean isInstalled() {
+        return installedVersionCode > 0;
     }
 
     /**
      * True if there are new versions (apks) available
      */
-    public boolean hasUpdates(Context context) {
+    public boolean hasUpdates() {
         boolean updates = false;
         if (suggestedVercode > 0) {
-            int installedVerCode = getInstalledVerCode(context);
-            updates = (installedVerCode > 0 && installedVerCode < suggestedVercode);
+            updates = (installedVersionCode > 0 && installedVersionCode < suggestedVercode);
         }
         return updates;
     }
 
     // True if there are new versions (apks) available and the user wants
     // to be notified about them
-    public boolean canAndWantToUpdate(Context context) {
-        boolean canUpdate = hasUpdates(context);
+    public boolean canAndWantToUpdate() {
+        boolean canUpdate = hasUpdates();
         boolean wantsUpdate = !ignoreAllUpdates && ignoreThisUpdate < suggestedVercode;
         return canUpdate && wantsUpdate && !isFiltered();
     }
