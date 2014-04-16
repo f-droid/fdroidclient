@@ -23,8 +23,6 @@
 		android:layout_height="wrap_content"
 		android:paddingLeft="10dp"
 		android:paddingStart="10dp"
-		android:layout_toRightOf="@id/icon"
-		android:layout_toEndOf="@id/icon"
 		android:layout_gravity="center_vertical"
 		android:baselineAligned="false" >
 
