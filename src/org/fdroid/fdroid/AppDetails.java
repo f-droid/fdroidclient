@@ -259,7 +259,7 @@ public class AppDetails extends ListActivity {
 
         displayImageOptions = new DisplayImageOptions.Builder()
             .cacheInMemory(true)
-            .cacheOnDisc(true)
+            .cacheOnDisk(true)
             .imageScaleType(ImageScaleType.NONE)
             .showImageOnLoading(R.drawable.ic_repo_app_default)
             .showImageForEmptyUri(R.drawable.ic_repo_app_default)

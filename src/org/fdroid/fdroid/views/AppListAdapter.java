@@ -46,7 +46,7 @@ abstract public class AppListAdapter extends CursorAdapter {
                 Context.LAYOUT_INFLATER_SERVICE);
         displayImageOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
-                .cacheOnDisc(true)
+                .cacheOnDisk(true)
                 .imageScaleType(ImageScaleType.NONE)
                 .showImageOnLoading(R.drawable.ic_repo_app_default)
                 .showImageForEmptyUri(R.drawable.ic_repo_app_default)
