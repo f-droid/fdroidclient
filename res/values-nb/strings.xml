@@ -75,7 +75,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="repo_alrt">Listen over brukte register har endret seg. Vil du oppdatere dem?</string>
   <string name="menu_update_repo">Oppdater registrene</string>
   <string name="menu_manage">Endre registrene</string>
-  <string name="menu_send_apk_bt">Blåtann FDroid.apk...</string>
+  <string name="menu_send_apk_bt">Blåtann FDroid.apk…</string>
   <string name="menu_preferences">Innstillinger</string>
   <string name="menu_about">Om</string>
   <string name="menu_search">Søk</string>
@@ -122,7 +122,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="category_whatsnew">Det som er nytt</string>
   <string name="category_recentlyupdated">Nylig oppdatert</string>
   <string name="local_repos_title">Lokale F-Droid register</string>
-  <string name="local_repos_scanning">Oppdager lokale FDroid register...</string>
+  <string name="local_repos_scanning">Oppdager lokale FDroid register…</string>
   <string name="status_download">Laster ned
 %2$s / %3$s (%4$d%%) fra
 %1$s</string>
