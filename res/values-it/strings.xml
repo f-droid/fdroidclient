@@ -9,6 +9,7 @@
   <string name="version">Versione</string>
   <string name="edit">Modifica</string>
   <string name="delete">Elimina</string>
+  <string name="enable_nfc_send">Attiva Invio NFC...</string>
   <string name="cache_downloaded">Cache applicazioni</string>
   <string name="cache_downloaded_on">Conserva i file apk scaricati sulla scheda SD</string>
   <string name="cache_downloaded_off">Non conservare i file apk</string>
@@ -66,6 +67,7 @@ Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="nfc_is_not_enabled">NFC non attivato!</string>
   <string name="go_to_nfc_settings">Vai alle Impostazioni NFC…</string>
   <string name="bluetooth_activity_not_found">Nessun metodo d\'invio via Bluetooth trovato, selezionane uno!</string>
+  <string name="choose_bt_send">Scegli il metodo di invio Bluetooth</string>
   <string name="repo_add_url">Indirizzo repository</string>
   <string name="repo_add_fingerprint">Impronta digitale (opzionale)</string>
   <string name="repo_exists">Questo repository esiste già!</string>
@@ -73,10 +75,12 @@ Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="repo_exists_enable">Questo repository è già configurato, conferma di volerlo abilitare nuovamente.</string>
   <string name="repo_exists_and_enabled">Il nuovo repository è già configurato e abilitato!</string>
   <string name="repo_delete_to_overwrite">È necessario eliminare questo repository prima di poter aggiungerne uno con una chiave differente!</string>
+  <string name="malformed_repo_uri">Ignoro URI repo malformati: %s</string>
   <string name="repo_alrt">L\'elenco dei repository in uso è cambiato.
 Vuoi aggiornarlo?</string>
   <string name="menu_update_repo">Aggiorna i Repository</string>
   <string name="menu_manage">Gestione dei repository</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
   <string name="menu_preferences">Preferenze</string>
   <string name="menu_about">Informazioni</string>
   <string name="menu_search">Cerca</string>
@@ -122,6 +126,8 @@ Vuoi aggiornarlo?</string>
   <string name="category_all">Tutte</string>
   <string name="category_whatsnew">Novità</string>
   <string name="category_recentlyupdated">Aggiornate di Recente</string>
+  <string name="local_repos_title">Repo FDroid Locali</string>
+  <string name="local_repos_scanning">Rilevazione repo FDroid locali...</string>
   <string name="status_download">Scaricamento
 %2$s / %3$s (%4$d%%) da
 %1$s</string>
@@ -131,6 +137,7 @@ Vuoi aggiornarlo?</string>
   <string name="status_connecting_to_repo">Connessione a
 %1$s</string>
   <string name="status_checking_compatibility">Controllo compatibilità applicazioni con il tuo dispositivo…</string>
+  <string name="status_inserting">Salvataggio dettagli applicazioni (%1$d%%)</string>
   <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
   <string name="permissions_for_long">Autorizzazioni per la versione %s</string>
   <string name="showPermissions">Mostra autorizzazioni</string>
@@ -144,6 +151,7 @@ Vuoi aggiornarlo?</string>
   <string name="unsigned">Non firmato</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Numero di applicazioni</string>
+  <string name="repo_fingerprint">Impronta digitale della Chiave del Repo (SHA-256)</string>
   <string name="repo_description">Descrizione</string>
   <string name="repo_last_update">Ultimo aggiornamento</string>
   <string name="repo_update">Aggiorna</string>

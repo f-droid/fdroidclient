@@ -9,6 +9,7 @@
   <string name="version">Версия</string>
   <string name="edit">Редактировать</string>
   <string name="delete">Удалить</string>
+  <string name="enable_nfc_send">Включить отправку по NFC…</string>
   <string name="cache_downloaded">Кэшировать загруженные приложения</string>
   <string name="cache_downloaded_on">Хранить загруженные файлы apk на SD-карте</string>
   <string name="cache_downloaded_off">Не хранить файлы apk</string>
@@ -63,6 +64,10 @@
   <string name="process_wait_title">Подождите</string>
   <string name="process_update_msg">Список приложений обновляется…</string>
   <string name="download_server">Взять приложение из</string>
+  <string name="nfc_is_not_enabled">NFC не включен!</string>
+  <string name="go_to_nfc_settings">Перейти в Настройки NFC…</string>
+  <string name="bluetooth_activity_not_found">Ни один метод отправки по Bluetooth не найден, выберите один из них!</string>
+  <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
   <string name="repo_add_url">Адрес репозитория</string>
   <string name="repo_add_fingerprint">Отпечаток ключа (опционально)</string>
   <string name="repo_exists">Этот репозиторий уже существует!</string>
@@ -70,15 +75,18 @@
   <string name="repo_exists_enable">Этот репозиторий уже настроен, убедитесь, что вы хотите снова включить его.</string>
   <string name="repo_exists_and_enabled">Репозиторий уже настроен и включен!</string>
   <string name="repo_delete_to_overwrite">Вы должны удалить этот репозиторий, прежде чем вы можете добавить новый с другим ключом!</string>
+  <string name="malformed_repo_uri">Игнорирование неверного URI репозитория: %s</string>
   <string name="repo_alrt">Список репозиториев изменился.
 Обновить его?</string>
   <string name="menu_update_repo">Обновить репозитории</string>
   <string name="menu_manage">Репозитории</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
   <string name="menu_preferences">Настройки</string>
   <string name="menu_about">О программе</string>
   <string name="menu_search">Поиск</string>
   <string name="menu_add_repo">Новый репозиторий</string>
   <string name="menu_rem_repo">Удалить репозиторий</string>
+  <string name="menu_scan_repo">Найти локальные репозитории</string>
   <string name="menu_launch">Запустить</string>
   <string name="menu_share">Поделиться</string>
   <string name="menu_install">Установить</string>
@@ -118,6 +126,8 @@
   <string name="category_all">Все</string>
   <string name="category_whatsnew">Что Нового</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
+  <string name="local_repos_title">Локальные репозитории FDroid</string>
+  <string name="local_repos_scanning">Обнаружение локальных репозиториев FDroid…</string>
   <string name="status_download">Загрузка
 %2$s / %3$s (%4$d%%) из
 %1$s</string>
@@ -127,6 +137,7 @@
   <string name="status_connecting_to_repo">Соединение с
 %1$s</string>
   <string name="status_checking_compatibility">Проверка совместимости приложений с вашим устройством…</string>
+  <string name="status_inserting">Сохранение данных приложений (%1$d%%)</string>
   <string name="no_permissions">Разрешений не требуется.</string>
   <string name="permissions_for_long">Разрешения для версии %s</string>
   <string name="showPermissions">Показывать разрешения</string>
@@ -140,6 +151,7 @@
   <string name="unsigned">Неподписанный</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Количество приложений</string>
+  <string name="repo_fingerprint">Отпечаток ключа подписи репозитория (SHA-256)</string>
   <string name="repo_description">Описание</string>
   <string name="repo_last_update">Последние обновление</string>
   <string name="repo_update">Обновить</string>
@@ -155,20 +167,7 @@
   <string name="repo_disabled_notification">\"%1$s\" отключен. Вам нужно повторно включить этот репозиторий для установки приложений из него.</string>
   <string name="minsdk_or_later">%s или позднее</string>
   <string name="up_to_maxsdk">до %s</string>
-
-  <string name="Children">Детские</string>
-  <string name="Development">Разработка</string>
-  <string name="Games">Игры</string>
-  <string name="Internet">Интернет</string>
-  <string name="Mathematics">Математика</string>
-  <string name="Multimedia">Мультимедиа</string>
-  <string name="Navigation">Навигация</string>
-  <string name="News">Новости</string>
-  <string name="Office">Офис</string>
-  <string name="Phone_SMS">Связь</string>
-  <string name="Reading">Чтение</string>
-  <string name="Science_Education">Научные</string>
-  <string name="Security">Безопасность</string>
-  <string name="System">Системные</string>
-  <string name="Wallpaper">Обои</string>
+  <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
+  <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте присоединиться к этой сети: %s</string>
+  <string name="requires_features">Требуется: %1$s</string>
 </resources>
