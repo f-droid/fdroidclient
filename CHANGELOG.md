@@ -1,3 +1,17 @@
+### Upcoming release
+
+* Cache the installed apps in the database for better performance and
+  usability, but mainly to fix the sqlite crashes at startup caused by the
+  sqlite limit of parameters in queries
+
+* Improve ellipsizing and spacing in the app lists
+
+* Start translating the category lists
+
+* Fix some crashes
+
+* Translation updates
+
 ### 0.63 (2014-04-07)
 
 * Support for Network Service Discovery of local FDroid repos on Android 4.1+
