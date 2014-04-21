@@ -1,12 +1,14 @@
 ### Upcoming release
 
-* Cache the installed apps in the database for better performance and
-  usability, but mainly to fix the sqlite crashes at startup caused by the
-  sqlite limit of parameters in queries
+* Fix crash on startup for devices with more than 500 installed apps
+
+* Improved performance for devices with many installed apps
 
 * Improve ellipsizing and spacing in the app lists
 
 * Start translating the category lists
+
+* Keep track of installed apps internally, rather than asking Android each time
 
 * Fix some crashes
 
