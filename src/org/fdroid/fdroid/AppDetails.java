@@ -34,11 +34,13 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.Signature;
@@ -624,11 +626,14 @@ public class AppDetails extends ListActivity {
         adapter.notifyDataSetChanged();
 
         TextView tv = (TextView) findViewById(R.id.status);
-        if (!app.isInstalled())
-            tv.setText(getString(R.string.details_notinstalled));
-        else
+        if (app.isInstalled()) {
             tv.setText(getString(R.string.details_installed,
                     app.installedVersionName));
+            NfcBeamManager.setAndroidBeam(this, app.id);
+        } else {
+            tv.setText(getString(R.string.details_notinstalled));
+            NfcBeamManager.disableAndroidBeam(this);
+        }
 
         tv = (TextView) infoView.findViewById(R.id.signature);
         if (pref_expert && mInstalledSignature != null) {
@@ -1101,5 +1106,4 @@ public class AppDetails extends ListActivity {
             break;
         }
     }
-
 }

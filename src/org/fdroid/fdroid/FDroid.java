@@ -129,9 +129,8 @@ public class FDroid extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // RepoDetailsActivity sets a different beam, so reset here
-        if (Build.VERSION.SDK_INT >= 16)
-            setupAndroidBeam();
+        // AppDetails and RepoDetailsActivity set different NFC actions, so reset here
+        NfcBeamManager.setAndroidBeam(this, getApplication().getPackageName());
     }
 
     @Override
@@ -422,23 +421,4 @@ public class FDroid extends FragmentActivity {
 
     }
 
-    @TargetApi(16)
-    private void setupAndroidBeam() {
-        PackageManager pm = getPackageManager();
-        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if (nfcAdapter != null) {
-            ApplicationInfo appInfo;
-            try {
-                appInfo = pm.getApplicationInfo("org.fdroid.fdroid",
-                        PackageManager.GET_META_DATA);
-                // TODO can we send the repo here also, as a file?
-                Uri uris[] = {
-                        Uri.parse("file://" + appInfo.publicSourceDir),
-                };
-                nfcAdapter.setBeamPushUris(uris, this);
-            } catch (NameNotFoundException e1) {
-                e1.printStackTrace();
-            }
-        }
-    }
 }
