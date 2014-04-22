@@ -20,18 +20,15 @@
 package org.fdroid.fdroid;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.content.*;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
@@ -48,7 +45,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
@@ -70,8 +66,7 @@ public class FDroid extends FragmentActivity {
     private static final int SEARCH = Menu.FIRST + 4;
     private static final int BLUETOOTH_APK = Menu.FIRST + 5;
 
-    /* request codes for Bluetooth flows */
-    private BluetoothAdapter mBluetoothAdapter = null;
+    private FDroidApp fdroidApp = null;
 
     private ViewPager viewPager;
 
@@ -80,7 +75,8 @@ public class FDroid extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ((FDroidApp) getApplication()).applyTheme(this);
+        fdroidApp = ((FDroidApp) getApplication());
+        fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fdroid);
@@ -112,18 +108,6 @@ public class FDroid extends FragmentActivity {
 
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
-
-        getBluetoothAdapter();
-    }
-
-    @TargetApi(18)
-    private void getBluetoothAdapter() {
-        // to use the new, recommended way of getting the adapter
-        // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
-        if (Build.VERSION.SDK_INT < 18)
-            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        else
-            mBluetoothAdapter = ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
     @Override
@@ -149,7 +133,7 @@ public class FDroid extends FragmentActivity {
                 android.R.drawable.ic_menu_agenda);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
                 android.R.drawable.ic_menu_search);
-        if (mBluetoothAdapter != null) // ignore on devices without Bluetooth
+        if (fdroidApp.bluetoothAdapter != null) // ignore on devices without Bluetooth
             menu.add(Menu.NONE, BLUETOOTH_APK, 3, R.string.menu_send_apk_bt);
         menu.add(Menu.NONE, PREFERENCES, 4, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
@@ -298,45 +282,7 @@ public class FDroid extends FragmentActivity {
             }
             break;
         case REQUEST_ENABLE_BLUETOOTH:
-            if (resultCode == Activity.RESULT_CANCELED)
-                break;
-            String packageName = null;
-            String className = null;
-            boolean found = false;
-            Intent sendBt = null;
-            try {
-                PackageManager pm = getPackageManager();
-                ApplicationInfo appInfo = pm.getApplicationInfo("org.fdroid.fdroid",
-                        PackageManager.GET_META_DATA);
-                sendBt = new Intent(Intent.ACTION_SEND);
-                // The APK type is blocked by stock Android, so use zip
-                // sendBt.setType("application/vnd.android.package-archive");
-                sendBt.setType("application/zip");
-                sendBt.putExtra(Intent.EXTRA_STREAM,
-                        Uri.parse("file://" + appInfo.publicSourceDir));
-                // not all devices have the same Bluetooth Activities, so
-                // let's find it
-                for (ResolveInfo info : pm.queryIntentActivities(sendBt, 0)) {
-                    packageName = info.activityInfo.packageName;
-                    if (packageName.equals("com.android.bluetooth")
-                            || packageName.equals("com.mediatek.bluetooth")) {
-                        className = info.activityInfo.name;
-                        found = true;
-                        break;
-                    }
-                }
-            } catch (NameNotFoundException e1) {
-                e1.printStackTrace();
-                found = false;
-            }
-            if (!found) {
-                Toast.makeText(this, R.string.bluetooth_activity_not_found,
-                        Toast.LENGTH_SHORT).show();
-                startActivity(Intent.createChooser(sendBt, getString(R.string.choose_bt_send)));
-            } else {
-                sendBt.setClassName(packageName, className);
-                startActivity(sendBt);
-            }
+            fdroidApp.sendViaBluetooth(this, resultCode, "org.fdroid.fdroid");
             break;
         }
     }

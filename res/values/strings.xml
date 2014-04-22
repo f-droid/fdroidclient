@@ -78,6 +78,7 @@
 	<string name="go_to_nfc_settings">Go to NFC Settings…</string>
 	<string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
 	<string name="choose_bt_send">Choose Bluetooth send method</string>
+	<string name="send_via_bluetooth">Send via Bluetooth</string>
 
 	<string name="repo_add_url">Repository address</string>
 	<string name="repo_add_fingerprint">Fingerprint (optional)</string>

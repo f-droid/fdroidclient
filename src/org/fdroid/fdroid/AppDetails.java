@@ -19,11 +19,6 @@
 
 package org.fdroid.fdroid;
 
-import java.io.File;
-import java.security.NoSuchAlgorithmException;
-import java.util.Iterator;
-import java.util.List;
-
 import android.content.*;
 import android.widget.*;
 import org.fdroid.fdroid.data.*;
@@ -33,6 +28,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Build;
@@ -40,6 +36,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
@@ -60,26 +58,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.graphics.Bitmap;
 
-import android.support.v4.app.NavUtils;
-import android.support.v4.view.MenuItemCompat;
-
-import org.fdroid.fdroid.compat.PackageManagerCompat;
-import org.fdroid.fdroid.compat.ActionBarCompat;
-import org.fdroid.fdroid.compat.MenuManager;
-import org.fdroid.fdroid.Utils.CommaSeparatedList;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
+import org.fdroid.fdroid.Utils.CommaSeparatedList;
+import org.fdroid.fdroid.compat.ActionBarCompat;
+import org.fdroid.fdroid.compat.MenuManager;
+import org.fdroid.fdroid.compat.PackageManagerCompat;
+
+import java.io.File;
+import java.security.NoSuchAlgorithmException;
+import java.util.Iterator;
+import java.util.List;
+
 public class AppDetails extends ListActivity {
+    private static final String TAG = "AppDetails";
 
     private static final int REQUEST_INSTALL = 0;
     private static final int REQUEST_UNINSTALL = 1;
+    public static final int REQUEST_ENABLE_BLUETOOTH = 2;
 
     public static final String EXTRA_APPID = "appid";
     public static final String EXTRA_FROM = "from";
 
+    private FDroidApp fdroidApp;
     private ApkListAdapter adapter;
 
     private static class ViewHolder {
@@ -236,6 +239,7 @@ public class AppDetails extends ListActivity {
     private static final int DOGECOIN = Menu.FIRST + 12;
     private static final int FLATTR = Menu.FIRST + 13;
     private static final int DONATE_URL = Menu.FIRST + 14;
+    private static final int SEND_VIA_BLUETOOTH = Menu.FIRST + 15;
 
     private App app;
     private String appid;
@@ -255,7 +259,8 @@ public class AppDetails extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ((FDroidApp) getApplication()).applyTheme(this);
+        fdroidApp = ((FDroidApp) getApplication());
+        fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);
 
@@ -760,6 +765,9 @@ public class AppDetails extends ListActivity {
             if (app.donateURL != null)
                 donate.add(Menu.NONE, DONATE_URL, 10, R.string.menu_website);
         }
+        if (app.isInstalled() && fdroidApp.bluetoothAdapter != null) { // ignore on devices without Bluetooth
+            menu.add(Menu.NONE, SEND_VIA_BLUETOOTH, 6, R.string.send_via_bluetooth);
+        }
 
         return true;
     }
@@ -848,6 +856,17 @@ public class AppDetails extends ListActivity {
 
         case DONATE_URL:
             tryOpenUri(app.donateURL);
+            return true;
+
+        case SEND_VIA_BLUETOOTH:
+            /*
+             * If Bluetooth has not been enabled/turned on, then
+             * enabling device discoverability will automatically enable Bluetooth
+             */
+            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
+            startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
+            // if this is successful, the Bluetooth transfer is started
             return true;
 
         }
@@ -1104,6 +1123,8 @@ public class AppDetails extends ListActivity {
         case REQUEST_UNINSTALL:
             resetRequired = true;
             break;
+        case REQUEST_ENABLE_BLUETOOTH:
+            fdroidApp.sendViaBluetooth(this, resultCode, app.id);
         }
     }
 }
