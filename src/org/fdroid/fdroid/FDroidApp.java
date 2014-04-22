@@ -18,17 +18,31 @@
 
 package org.fdroid.fdroid;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import de.duenndns.ssl.MemorizingTrustManager;
+
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
@@ -43,6 +57,8 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
 public class FDroidApp extends Application {
+
+    BluetoothAdapter bluetoothAdapter = null;
 
     private static enum Theme {
         dark, light
@@ -121,6 +137,7 @@ public class FDroidApp extends Application {
         }
 
         UpdateService.schedule(getApplicationContext());
+        bluetoothAdapter = getBluetoothAdapter();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
             .discCache(new LimitedAgeDiscCache(
@@ -179,4 +196,55 @@ public class FDroidApp extends Application {
         }
     }
 
+    @TargetApi(18)
+    private BluetoothAdapter getBluetoothAdapter() {
+        // to use the new, recommended way of getting the adapter
+        // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
+        if (Build.VERSION.SDK_INT < 18)
+            return BluetoothAdapter.getDefaultAdapter();
+        else
+            return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
+    }
+
+    void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
+        if (resultCode == Activity.RESULT_CANCELED)
+            return;
+        String bluetoothPackageName = null;
+        String className = null;
+        boolean found = false;
+        Intent sendBt = null;
+        try {
+            PackageManager pm = getPackageManager();
+            ApplicationInfo appInfo = pm.getApplicationInfo(packageName,
+                    PackageManager.GET_META_DATA);
+            sendBt = new Intent(Intent.ACTION_SEND);
+            // The APK type is blocked by stock Android, so use zip
+            // sendBt.setType("application/vnd.android.package-archive");
+            sendBt.setType("application/zip");
+            sendBt.putExtra(Intent.EXTRA_STREAM,
+                    Uri.parse("file://" + appInfo.publicSourceDir));
+            // not all devices have the same Bluetooth Activities, so
+            // let's find it
+            for (ResolveInfo info : pm.queryIntentActivities(sendBt, 0)) {
+                bluetoothPackageName = info.activityInfo.packageName;
+                if (bluetoothPackageName.equals("com.android.bluetooth")
+                        || bluetoothPackageName.equals("com.mediatek.bluetooth")) {
+                    className = info.activityInfo.name;
+                    found = true;
+                    break;
+                }
+            }
+        } catch (NameNotFoundException e1) {
+            e1.printStackTrace();
+            found = false;
+        }
+        if (!found) {
+            Toast.makeText(this, R.string.bluetooth_activity_not_found,
+                    Toast.LENGTH_SHORT).show();
+            activity.startActivity(Intent.createChooser(sendBt, getString(R.string.choose_bt_send)));
+        } else {
+            sendBt.setClassName(bluetoothPackageName, className);
+            activity.startActivity(sendBt);
+        }
+    }
 }

@@ -69,14 +69,12 @@ public class RepoDetailsActivity extends FragmentActivity {
         setTitle(repo.getName());
 
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-
-        // required NFC support starts in android-14
-        if (Build.VERSION.SDK_INT >= 14)
-            setNfc();
     }
 
     @TargetApi(14)
     private void setNfc() {
+        if (Build.VERSION.SDK_INT < 14)
+            return;
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
             return;
@@ -97,8 +95,9 @@ public class RepoDetailsActivity extends FragmentActivity {
     public void onResume() {
         Log.i(TAG, "onResume");
         super.onResume();
-        if (Build.VERSION.SDK_INT >= 9)
-            processIntent(getIntent());
+        // FDroid.java and AppDetails set different NFC actions, so reset here
+        setNfc();
+        processIntent(getIntent());
     }
 
     @Override
@@ -112,6 +111,8 @@ public class RepoDetailsActivity extends FragmentActivity {
 
     @TargetApi(9)
     void processIntent(Intent i) {
+        if (Build.VERSION.SDK_INT < 9)
+            return;
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(i.getAction())) {
             Log.i(TAG, "ACTION_NDEF_DISCOVERED");
             Parcelable[] rawMsgs =
