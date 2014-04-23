@@ -2,6 +2,8 @@
 
 * Fix crash on startup for devices with more than 500 installed apps
 
+* Send apps to other devices directly from the App Details screen via NFC or Bluetooth
+
 * Improved performance for devices with many installed apps
 
 * Improve ellipsizing and spacing in the app lists
