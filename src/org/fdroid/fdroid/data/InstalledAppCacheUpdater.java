@@ -27,7 +27,6 @@ public class InstalledAppCacheUpdater {
     private Context context;
 
     private List<PackageInfo> toInsert = new ArrayList<PackageInfo>();
-    private List<PackageInfo> toUpdate = new ArrayList<PackageInfo>();
     private List<String>      toDelete = new ArrayList<String>();
 
     protected InstalledAppCacheUpdater(Context context) {
@@ -85,14 +84,13 @@ public class InstalledAppCacheUpdater {
      * then the cache has changed.
      */
     private boolean hasChanged() {
-        return toInsert.size() > 0 || toUpdate.size() > 0 || toDelete.size() > 0;
+        return toInsert.size() > 0 || toDelete.size() > 0;
     }
 
     private void updateCache() {
 
         ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
         ops.addAll(deleteFromCache(toDelete));
-        ops.addAll(updateCachedValues(toUpdate));
         ops.addAll(insertIntoCache(toInsert));
 
         if (ops.size() > 0) {
@@ -114,12 +112,8 @@ public class InstalledAppCacheUpdater {
 
         List<PackageInfo> installedPackages = context.getPackageManager().getInstalledPackages(0);
         for (PackageInfo appInfo : installedPackages) {
-            if (!cachedInfo.containsKey(appInfo.packageName)) {
-                toInsert.add(appInfo);
-            } else {
-                if (cachedInfo.get(appInfo.packageName) < appInfo.versionCode) {
-                    toUpdate.add(appInfo);
-                }
+            toInsert.add(appInfo);
+            if (cachedInfo.containsKey(appInfo.packageName)) {
                 cachedInfo.remove(appInfo.packageName);
             }
         }
@@ -139,22 +133,6 @@ public class InstalledAppCacheUpdater {
             for (PackageInfo info : appsToInsert) {
                 ContentProviderOperation op = ContentProviderOperation.newInsert(uri)
                     .withValue(InstalledAppProvider.DataColumns.APP_ID, info.packageName)
-                    .withValue(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode)
-                    .withValue(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName)
-                    .build();
-                ops.add(op);
-            }
-        }
-        return ops;
-    }
-
-    private List<ContentProviderOperation> updateCachedValues(List<PackageInfo> appsToUpdate) {
-        List<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>(appsToUpdate.size());
-        if (appsToUpdate.size() > 0) {
-            Log.d(TAG, "Preparing to update installed app cache for " + appsToUpdate.size() + " apps.");
-            for (PackageInfo info : appsToUpdate) {
-                Uri uri = InstalledAppProvider.getAppUri(info.packageName);
-                ContentProviderOperation op = ContentProviderOperation.newUpdate(uri)
                     .withValue(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode)
                     .withValue(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName)
                     .build();

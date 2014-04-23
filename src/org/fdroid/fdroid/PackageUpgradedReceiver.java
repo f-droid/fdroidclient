@@ -39,11 +39,12 @@ public class PackageUpgradedReceiver extends PackageReceiver {
 
         Log.d("FDroid", "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
 
-        Uri uri = InstalledAppProvider.getAppUri(appId);
+        Uri uri = InstalledAppProvider.getContentUri();
         ContentValues values = new ContentValues(1);
+        values.put(InstalledAppProvider.DataColumns.APP_ID, info.packageName);
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode);
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName);
-        context.getContentResolver().update(uri, values, null, null);
+        context.getContentResolver().insert(uri, values);
     }
 
 }

@@ -140,7 +140,7 @@ public class InstalledAppProvider extends FDroidProvider {
         }
 
         verifyVersionNameNotNull(values);
-        write().insertOrThrow(getTableName(), null, values);
+        write().replaceOrThrow(getTableName(), null, values);
         if (!isApplyingBatch()) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
@@ -149,20 +149,7 @@ public class InstalledAppProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-
-        if (matcher.match(uri) != CODE_SINGLE) {
-            throw new UnsupportedOperationException("Update not supported for " + uri + ".");
-        }
-
-        QuerySelection query = new QuerySelection(where, whereArgs);
-        query = query.add(queryApp(uri.getLastPathSegment()));
-
-        verifyVersionNameNotNull(values);
-        int count = write().update(getTableName(), values, query.getSelection(), query.getArgs());
-        if (!isApplyingBatch()) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-        return count;
+        throw new UnsupportedOperationException("\"Update' not supported for installed appp provider. Instead, you should insert, and it will overwrite the relevant rows if one exists.");
     }
 
     /**

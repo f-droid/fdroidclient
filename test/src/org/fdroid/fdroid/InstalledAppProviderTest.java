@@ -60,10 +60,20 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         assertResultCount(2, InstalledAppProvider.getContentUri());
         assertIsInstalledVersionInDb("com.example.app2", 10, "1.0");
 
-        getMockContentResolver().update(
-            InstalledAppProvider.getAppUri("com.example.app2"),
-            createContentValues(11, "1.1"),
-            null, null
+        try {
+            getMockContentResolver().update(
+                InstalledAppProvider.getAppUri("com.example.app2"),
+                createContentValues(11, "1.1"),
+                null, null
+            );
+            fail();
+        } catch (UnsupportedOperationException e) {
+            // We expect this to happen, because we should be using insert() instead.
+        }
+
+        getMockContentResolver().insert(
+            InstalledAppProvider.getContentUri(),
+            createContentValues("com.example.app2", 11, "1.1")
         );
 
         assertResultCount(2, InstalledAppProvider.getContentUri());
