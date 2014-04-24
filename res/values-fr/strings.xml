@@ -66,7 +66,7 @@ L\'URL d\'un dépôt ressemble à ceci : https://f-droid.org/repo</string>
   <string name="download_server">Réception d\'application de</string>
   <string name="nfc_is_not_enabled">Le NFC n\'est pas activé !</string>
   <string name="go_to_nfc_settings">Allez dans les paramètres NFC…</string>
-  <string name="bluetooth_activity_not_found">Pas de méthode d\'envoi Bluetooth trouvée, choisissez en une !</string>
+  <string name="bluetooth_activity_not_found">Pas de méthode d\'envoi Bluetooth trouvée, choisissez-en une !</string>
   <string name="choose_bt_send">Choisir la méthode d\'envoi Bluetooth</string>
   <string name="repo_add_url">Adresse du dépôt</string>
   <string name="repo_add_fingerprint">Empreinte digitale (optionnel)</string>
@@ -126,7 +126,7 @@ Voulez-vous les mettre à jour ?</string>
   <string name="category_all">Tout</string>
   <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
-  <string name="local_repos_title">Dépôt FDroid locaux</string>
+  <string name="local_repos_title">Dépôts FDroid locaux</string>
   <string name="local_repos_scanning">Découverte des dépôts FDroid locaux…</string>
   <string name="status_download">Téléchargement
 %2$s / %3$s (%4$d%%) de

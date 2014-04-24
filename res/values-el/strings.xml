@@ -59,6 +59,7 @@
   <string name="menu_search">Αναζήτηση</string>
   <string name="menu_add_repo">Νέο Αποθετήριο</string>
   <string name="menu_rem_repo">Αφαίρεση Αποθετηρίου</string>
+  <string name="menu_scan_repo">Εύρεση τοπικών αποθετηρίων</string>
   <string name="menu_launch">Εκτέλεση</string>
   <string name="menu_share">Διαμοιρασμός</string>
   <string name="menu_install">Εγκατάσταση</string>
