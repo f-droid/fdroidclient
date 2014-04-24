@@ -18,55 +18,21 @@
 
 package org.fdroid.fdroid;
 
-import android.app.ListActivity;
-import android.app.SearchManager;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
-
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.LinearLayout;
 import org.fdroid.fdroid.compat.ActionBarCompat;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.views.AppListAdapter;
-import org.fdroid.fdroid.views.AvailableAppListAdapter;
-import org.fdroid.fdroid.views.fragments.AppListFragment;
+import org.fdroid.fdroid.views.fragments.SearchResultsFragment;
 
-public class SearchResults extends ListActivity {
-
-    private static final int REQUEST_APPDETAILS = 0;
+public class SearchResults extends FragmentActivity {
 
     private static final int SEARCH = Menu.FIRST;
-
-    private Cursor cursor;
-    private AppListAdapter adapter;
-
-    protected String getQuery() {
-        Intent intent = getIntent();
-        String query;
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            query = intent.getStringExtra(SearchManager.QUERY);
-        } else {
-            Uri data = intent.getData();
-            if (data != null && data.isHierarchical()) {
-                query = data.getQueryParameter("q");
-                if (query != null && query.startsWith("pname:"))
-                    query = query.substring(6);
-            } else {
-                query = data.getEncodedSchemeSpecificPart();
-            }
-        }
-        return query;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,72 +41,34 @@ public class SearchResults extends ListActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.searchresults);
+        // Start a search by just typing
+        setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
+
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm.findFragmentById(android.R.id.content) == null) {
+
+            // Need to set a dummy view (which will get overridden by the fragment manager
+            // below) so that we can call setContentView(). This is a work around for
+            // a (bug?) thing in 3.0, 3.1 which requires setContentView to be invoked before
+            // the actionbar is played with:
+            // http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+            setContentView( new LinearLayout(this) );
+
+            SearchResultsFragment fragment = new SearchResultsFragment();
+            fm.beginTransaction().add(android.R.id.content, fragment).commit();
+        }
 
         // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
         // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
         // for reason why.
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
 
-        // Start a search by just typing
-        setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        updateView();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-    }
-
-    private void updateView() {
-
-        String query = getQuery();
-
-        if (query != null)
-            query = query.trim();
-
-        if (query == null || query.length() == 0)
-            finish();
-
-        if (cursor != null) cursor.close();
-        cursor = managedQuery(
-            AppProvider.getSearchUri(query), AppListFragment.APP_PROJECTION,
-            null, null, AppListFragment.APP_SORT);
-
-
-        TextView tv = (TextView) findViewById(R.id.description);
-        String headertext;
-        int count = cursor != null ? cursor.getCount() : 0;
-        if (count == 0) {
-            headertext = getString(R.string.searchres_noapps, query);
-        } else if (count == 1) {
-            headertext = getString(R.string.searchres_oneapp, query);
-        } else {
-            headertext = getString(R.string.searchres_napps, count, query);
-        }
-        tv.setText(headertext);
-        Log.d("FDroid", "Search for '" + query + "' returned " + count + " results");
-
-        adapter = new AvailableAppListAdapter(this, cursor);
-        getListView().setFastScrollEnabled(true);
-        setListAdapter(adapter);
-    }
-
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        final App app;
-        app = new App((Cursor) adapter.getItem(position));
-
-        Intent intent = new Intent(this, AppDetails.class);
-        intent.putExtra(AppDetails.EXTRA_APPID, app.id);
-        startActivityForResult(intent, REQUEST_APPDETAILS);
-        super.onListItemClick(l, v, position, id);
     }
 
     @Override
