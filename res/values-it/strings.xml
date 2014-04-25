@@ -9,7 +9,7 @@
   <string name="version">Versione</string>
   <string name="edit">Modifica</string>
   <string name="delete">Elimina</string>
-  <string name="enable_nfc_send">Attiva Invio NFC...</string>
+  <string name="enable_nfc_send">Attiva Invio NFC…</string>
   <string name="cache_downloaded">Cache applicazioni</string>
   <string name="cache_downloaded_on">Conserva i file apk scaricati sulla scheda SD</string>
   <string name="cache_downloaded_off">Non conservare i file apk</string>
@@ -127,7 +127,7 @@ Vuoi aggiornarlo?</string>
   <string name="category_whatsnew">Novità</string>
   <string name="category_recentlyupdated">Aggiornate di Recente</string>
   <string name="local_repos_title">Repo FDroid Locali</string>
-  <string name="local_repos_scanning">Rilevazione repo FDroid locali...</string>
+  <string name="local_repos_scanning">Rilevazione repo FDroid locali…</string>
   <string name="status_download">Scaricamento
 %2$s / %3$s (%4$d%%) da
 %1$s</string>
