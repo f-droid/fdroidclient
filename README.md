@@ -99,7 +99,7 @@ Check the output of the ./ant-prepare.sh command. This error is often accompanie
 > Error: The project either has no target set or the target is invalid.
 > Please provide a --target to the 'android update' command.
 
-The most likely cause of this is that you're installed Android SDK is missing the target version specified by one of the dependencies. For example, at the time of writing this, UniversalImageLoader requires the "android-16" API, however the default install of the Android SDK will usually only install the latest version ("android-19" as of writing). NOTE: While it may be tempting to add "--target=android-19" to the ./ant-prepare.sh script, it is not the correct solution. Although it may work, it can also cause strange bugs when the upstream library uses features of the earlier SDK.
+The most likely cause of this is that your installed Android SDK is missing the target API specified by one of the dependencies. For example, at the time of writing this, UniversalImageLoader requires the "android-16" API (extern/UniversalImageLoader/library/project.properties), however the default install of the Android SDK will usually only install the latest version ("android-19" as of writing). NOTE: While it may be tempting to add "--target=android-19" to the ./ant-prepare.sh script, it is not the correct solution. Although it may work, it can also cause strange bugs when the upstream library uses features of the earlier SDK which have changed in later versions.
 
 
 License
