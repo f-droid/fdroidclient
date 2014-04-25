@@ -4,22 +4,43 @@
   <string name="searchres_oneapp">Znaleziono jedną pasującą aplikację \'%s\':</string>
   <string name="searchres_noapps">Nie znaleziono żadnych pasujących aplikacji \'%s\'</string>
   <string name="SignatureMismatch">Nowa wersja jest podpisana innym kluczem niż poprzednia. Aby ją zainstalować należy najpierw usunąć tę starą. Zrób to i spróbuj ponownie. (Proszę pamiętać, że deinstalacja spowoduje usunięcie wszystkich danych przechowywanych przez aplikację)</string>
+  <string name="installIncompatible">Wygląda na to, że ta aplikacja nie jest kompatybilna z twoim urządzeniem. Zainstalować mimo to?</string>
+  <string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji.Może to spowodować nieprawidłowe działanie, a nawet utratę swoich danych. Czy na pewno chcesz spróbować i zainstalować starszą wersję ?</string>
   <string name="version">Wersja</string>
+  <string name="edit">Edytuj</string>
+  <string name="delete">Usuń</string>
   <string name="cache_downloaded">Buforuj pobrane aplikacje</string>
+  <string name="cache_downloaded_on">Trzymaj ściągnięte pliki apk na karcie SD</string>
+  <string name="cache_downloaded_off">Nie zachowuj żadnych apk</string>
   <string name="updates">Aktualizacje</string>
   <string name="other">Inne</string>
   <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
   <string name="never">nigdy</string>
+  <string name="update_interval">Automatyczna przerwa aktualizacji</string>
+  <string name="update_interval_zero">Żadnych automatycznych aktualizacji listy aplikacji</string>
   <string name="automatic_scan_wifi">Tylko przez wifi</string>
+  <string name="automatic_scan_wifi_on">Aktualizuj automatycznie tylko przez wifi</string>
+  <string name="automatic_scan_wifi_off">Zawsze aktualizuj listę aplikacji automatycznie</string>
   <string name="notify">Powiadom</string>
+  <string name="notify_on">Powiadom kiedy aktualizacje są dostępne</string>
+  <string name="notify_off">Nie powiadamiaj o aktualizacjach</string>
   <string name="update_history">Historia aktualizacji</string>
+  <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
   <string name="search_results">Wyniki wyszukiwania</string>
+  <string name="app_details">Szczegóły aplikacji</string>
   <string name="no_such_app">Nie znaleziono takiej aplikacji</string>
   <string name="about_title">O F-Droid</string>
+  <string name="about_desc">Oryginalnie bazowany na Aptoide.
+Wydany na licencji GNU GPLv3.</string>
   <string name="about_site">Strona internetowa:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Wersja:</string>
   <string name="about_website">Strona internetowa</string>
+  <string name="no_repo">Nie masz skonfigurowanych żadnych repozytoriów!
+
+Repozytorium jest źródłem aplikacji. Aby dodać jedno wciśnij MENU i wprowadź adres URL.
+
+Przykładowy adres repozytorium: https://f-droid.org/repo</string>
   <string name="inst">Zainstalowano</string>
   <string name="not_inst">Niezainstalowane</string>
   <string name="added_on">Dodano %s</string>
@@ -29,14 +50,26 @@
   <string name="repo_add_title">Dodaj nowe repozytorium</string>
   <string name="repo_add_add">Dodaj</string>
   <string name="cancel">Anuluj</string>
+  <string name="enable">Włącz</string>
+  <string name="add_key">Dodaj klucz</string>
+  <string name="overwrite">Nadpisz</string>
   <string name="repo_delete_title">Wybierz repozytorium które chcesz usunąć</string>
   <string name="repo_update_title">Aktualizuj repozytoria</string>
   <string name="tab_noninstalled">Dostępne</string>
   <string name="tab_updates">Aktualizacje</string>
+  <string name="one_update_available">Dostępne jest 1 uaktualnienie.</string>
+  <string name="many_updates_available">Dostępnych jest %d uaktualnień</string>
+  <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
   <string name="process_wait_title">Proszę czekać</string>
   <string name="process_update_msg">Aktualizowanie listy aplikacji…</string>
   <string name="download_server">Pobieranie aplikacji z</string>
   <string name="repo_add_url">Adres repozytorium</string>
+  <string name="repo_add_fingerprint">Odcisk palca (opcjonalnie)</string>
+  <string name="repo_exists">Repozytorium już istnieje!</string>
+  <string name="repo_exists_add_fingerprint">To repozytorium jest już ustawione, doda to nowe kluczowe informacje</string>
+  <string name="repo_exists_enable">To repozytorium jest już ustawione, potwierdź że chcesz je włączyć ponownie</string>
+  <string name="repo_exists_and_enabled">Nadchodzące repozytorium jest już ustawione i włączone!</string>
+  <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym kluczem!</string>
   <string name="repo_alrt">Lista wykorzystywanych repozytoriów uległa zmianie.
 Czy chcesz je zaktualizować?</string>
   <string name="menu_update_repo">Aktualizuj repozytoria</string>
@@ -55,20 +88,70 @@ Czy chcesz je zaktualizować?</string>
   <string name="menu_website">Strona internetowa</string>
   <string name="menu_issues">Problemy</string>
   <string name="menu_source">Kod żródłowy</string>
+  <string name="menu_upgrade">Uaktualnij</string>
   <string name="menu_donate">Złóż datek</string>
   <string name="details_installed">Wersja %s została zainstalowana</string>
   <string name="details_notinstalled">Nie zainstalowano</string>
   <string name="corrupt_download">Pobrany plik jest uszkodzony</string>
   <string name="download_cancelled">Anulowano pobieranie</string>
+  <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
+  <string name="antitracklist">Ta aplikacja śledzi twoje działania</string>
+  <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
+  <string name="antinonfreenetlist">Ta aplikacja promuje niewolne usługi sieciowe</string>
+  <string name="antinonfreedeplist">Ta aplikacja wymaga innych, niewolnych aplikacji</string>
+  <string name="antiupstreamnonfreelist">Upstreamowy kod źródłowy nie jest w pełni wolny</string>
+  <string name="display">Wyświetl</string>
   <string name="expert">Ekspert</string>
+  <string name="expert_on">Pokaż dodatkowe informacje i włącz dodatkowe ustawienia</string>
+  <string name="expert_off">Ukryj dodatki dla zaawansowanych użytkowników</string>
   <string name="search_hint">Wyszukaj aplikacje</string>
-  <string name="db_sync_mode">Tryb synchronizacji bazy danych</string>
   <string name="appcompatibility">Kompatybilność aplikacji</string>
+  <string name="show_incompat_versions">Niekompatybilne wersje</string>
+  <string name="show_incompat_versions_on">Pokaż wersje aplikacji niekompatybilne z urządzeniem</string>
+  <string name="show_incompat_versions_off">Ukryj wersje aplikacji niekompatybilnych z urządzeniem</string>
   <string name="rooted">Root</string>
+  <string name="rooted_on">Nie przyciemniaj aplikacji wymagających uprawnień roota</string>
+  <string name="rooted_off">Przyciemnij aplikacje wymagające uprawnień roota</string>
+  <string name="ignoreTouch">Ignoruj ekran dotykowy</string>
+  <string name="ignoreTouch_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
+  <string name="ignoreTouch_off">Filtruj aplikacje normalnie</string>
   <string name="category_all">Wszystkie</string>
   <string name="category_whatsnew">Co nowego</string>
   <string name="category_recentlyupdated">Ostatnio zaktualizowane</string>
+  <string name="status_download">Pobieranie %2$s / %3$s(%4$d%%) z %1$s</string>
+  <string name="status_processing_xml">Przetwarzanie aplikacji %2$d / %3$d z %1$s</string>
   <string name="status_connecting_to_repo">Trwa łączenie z
 %1$s</string>
+  <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
+  <string name="no_permissions">Brak użytych uprawnień.</string>
+  <string name="permissions_for_long">Uprawnienia dla wersji %s</string>
   <string name="showPermissions">Wyświetl uprawnienia</string>
+  <string name="showPermissions_on">Wyświetl listę uprawnień wymaganych przez aplikację</string>
+  <string name="showPermissions_off">Nie pokazuj uprawnień przed pobraniem</string>
+  <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s</string>
+  <string name="compactlayout">Widok kompaktowy</string>
+  <string name="compactlayout_on">Pokaż ikony w mniejszym rozmiarze</string>
+  <string name="compactlayout_off">Pokaż ikony w zwykłym rozmiarze</string>
+  <string name="theme"> Motyw</string>
+  <string name="unsigned">Niepodpisany</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Liczba aplikacji</string>
+  <string name="repo_description">Opis</string>
+  <string name="repo_last_update">Ostatnia modyfikacja</string>
+  <string name="repo_update">Aktualizacja</string>
+  <string name="repo_name">Nazwa</string>
+  <string name="unsigned_description">To oznacza, że lista aplikacji nie może być zweryfikowana. Powinieneś być ostrożny przy aplikacjach ściągniętych z nie podpisanych źródeł</string>
+  <string name="repo_not_yet_updated">To repozytorium było jeszcze używane. Aby wyświetlić jego aplikacje musisz je zaktualizować.
+
+Opis i inne szczegóły będą tu dostępne gdy zaktualizujesz repozytorium</string>
+  <string name="repo_delete_details">Czy chcesz usunąć repozytorium \"{0}\", zawierające \"{1}\" aplikacji? Zainstalowane aplikacje nie zostaną usunięte, ale nie będziesz mógł ich dłużej  aktualizować przez F-Droid</string>
+  <string name="unknown">Nieznany</string>
+  <string name="repo_confirm_delete_title">Usunąć repozytorium?</string>
+  <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
+
+Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
+  <string name="repo_disabled_notification">Zablokowane \"%1$s\".
+
+Aby zainstalować aplikacje z tego repozytorium musisz je włączyć ponownie.</string>
+  <string name="minsdk_or_later">%s lub później</string>
 </resources>

@@ -20,6 +20,15 @@ public abstract class ActionBarCompat extends Compatibility {
         this.activity = activity;
     }
 
+    /**
+     * Cannot be accessed until after setContentView (on 3.0 and 3.1 devices) has
+     * been called on the relevant activity. If you don't have a content view
+     * (e.g. when using fragment manager to add fragments to the activity) then you
+     * will still need to call setContentView(), with a "new LinearLayout()" or something
+     * useless like that.
+     * See: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+     * for details.
+     */
     public abstract void setDisplayHomeAsUpEnabled(boolean value);
 
 }
@@ -34,6 +43,7 @@ class OldActionBarCompatImpl extends ActionBarCompat {
     public void setDisplayHomeAsUpEnabled(boolean value) {
         // Do nothing...
     }
+
 }
 
 @TargetApi(11)
@@ -50,4 +60,5 @@ class HoneycombActionBarCompatImpl extends ActionBarCompat {
     public void setDisplayHomeAsUpEnabled(boolean value) {
         actionBar.setDisplayHomeAsUpEnabled(value);
     }
+
 }

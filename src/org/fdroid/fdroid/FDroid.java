@@ -19,28 +19,35 @@
 
 package org.fdroid.fdroid;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
+import android.bluetooth.BluetoothAdapter;
 import android.content.*;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
+import android.database.ContentObserver;
 import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.ViewPager;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.compat.TabManager;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
 
 public class FDroid extends FragmentActivity {
@@ -48,6 +55,7 @@ public class FDroid extends FragmentActivity {
     public static final int REQUEST_APPDETAILS = 0;
     public static final int REQUEST_MANAGEREPOS = 1;
     public static final int REQUEST_PREFS = 2;
+    public static final int REQUEST_ENABLE_BLUETOOTH = 3;
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
@@ -56,24 +64,21 @@ public class FDroid extends FragmentActivity {
     private static final int PREFERENCES = Menu.FIRST + 2;
     private static final int ABOUT = Menu.FIRST + 3;
     private static final int SEARCH = Menu.FIRST + 4;
+    private static final int BLUETOOTH_APK = Menu.FIRST + 5;
+
+    private FDroidApp fdroidApp = null;
 
     private ViewPager viewPager;
 
-    private AppListManager manager = null;
-
     private TabManager tabManager = null;
-
-    public AppListManager getManager() {
-        return manager;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ((FDroidApp) getApplication()).applyTheme(this);
+        fdroidApp = ((FDroidApp) getApplication());
+        fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);
-        manager = new AppListManager(this);
         setContentView(R.layout.fdroid);
         createViews();
         getTabManager().createTabs();
@@ -97,24 +102,19 @@ public class FDroid extends FragmentActivity {
         }
         if (appid != null && appid.length() > 0) {
             Intent call = new Intent(this, AppDetails.class);
-            call.putExtra("appid", appid);
+            call.putExtra(AppDetails.EXTRA_APPID, appid);
             startActivityForResult(call, REQUEST_APPDETAILS);
         }
+
+        Uri uri = AppProvider.getContentUri();
+        getContentResolver().registerContentObserver(uri, true, new AppObserver());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        repopulateViews();
-    }
-
-    /**
-     * Must be done *after* createViews, because it will involve a
-     * callback to update the tab label for the "update" tab. This
-     * will fail unless the tabs have actually been created.
-     */
-    protected void repopulateViews() {
-        manager.repopulateLists();
+        // AppDetails and RepoDetailsActivity set different NFC actions, so reset here
+        NfcBeamManager.setAndroidBeam(this, getApplication().getPackageName());
     }
 
     @Override
@@ -127,10 +127,14 @@ public class FDroid extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
+        menu.add(Menu.NONE, UPDATE_REPO, 1, R.string.menu_update_repo).setIcon(
+                android.R.drawable.ic_menu_rotate);
         menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
                 android.R.drawable.ic_menu_agenda);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
                 android.R.drawable.ic_menu_search);
+        if (fdroidApp.bluetoothAdapter != null) // ignore on devices without Bluetooth
+            menu.add(Menu.NONE, BLUETOOTH_APK, 3, R.string.menu_send_apk_bt);
         menu.add(Menu.NONE, PREFERENCES, 4, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
         menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
@@ -160,6 +164,17 @@ public class FDroid extends FragmentActivity {
 
         case SEARCH:
             onSearchRequested();
+            return true;
+
+        case BLUETOOTH_APK:
+            /*
+             * If Bluetooth has not been enabled/turned on, then
+             * enabling device discoverability will automatically enable Bluetooth
+             */
+            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
+            startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
+            // if this is successful, the Bluetooth transfer is started
             return true;
 
         case ABOUT:
@@ -225,7 +240,7 @@ public class FDroid extends FragmentActivity {
         case REQUEST_APPDETAILS:
             break;
         case REQUEST_MANAGEREPOS:
-            if (data.hasExtra(ManageRepo.REQUEST_UPDATE)) {
+            if (data != null && data.hasExtra(ManageRepo.REQUEST_UPDATE)) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
                 ask_alrt.setTitle(getString(R.string.repo_update_title));
                 ask_alrt.setIcon(android.R.drawable.ic_menu_rotate);
@@ -235,7 +250,7 @@ public class FDroid extends FragmentActivity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                     int whichButton) {
-                            updateRepos();
+                                updateRepos();
                             }
                         });
                 ask_alrt.setNegativeButton(getString(R.string.no),
@@ -256,12 +271,6 @@ public class FDroid extends FragmentActivity {
             // check if the particular setting has actually been changed.
             UpdateService.schedule(getBaseContext());
 
-            if ((resultCode & PreferencesActivity.RESULT_RELOAD) != 0) {
-                ((FDroidApp) getApplication()).invalidateAllApps();
-            } else if ((resultCode & PreferencesActivity.RESULT_REFILTER) != 0) {
-                ((FDroidApp) getApplication()).filterApps();
-            }
-
             if ((resultCode & PreferencesActivity.RESULT_RESTART) != 0) {
                 ((FDroidApp) getApplication()).reloadTheme();
                 final Intent intent = getIntent();
@@ -271,7 +280,9 @@ public class FDroid extends FragmentActivity {
                 overridePendingTransition(0, 0);
                 startActivity(intent);
             }
-
+            break;
+        case REQUEST_ENABLE_BLUETOOTH:
+            fdroidApp.sendViaBluetooth(this, resultCode, "org.fdroid.fdroid");
             break;
         }
     }
@@ -313,14 +324,7 @@ public class FDroid extends FragmentActivity {
     // is told to do the update, which will result in the database changing. The
     // UpdateReceiver class should get told when this is finished.
     public void updateRepos() {
-        UpdateService.updateNow(this).setListener(new ProgressListener() {
-            @Override
-            public void onProgress(Event event) {
-                if (event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES){
-                    repopulateViews();
-                }
-            }
-        });
+        UpdateService.updateNow(this);
     }
 
     private TabManager getTabManager() {
@@ -338,6 +342,29 @@ public class FDroid extends FragmentActivity {
         NotificationManager nMgr = (NotificationManager) getBaseContext()
             .getSystemService(Context.NOTIFICATION_SERVICE);
         nMgr.cancel(id);
+    }
+
+    private class AppObserver extends ContentObserver {
+
+        public AppObserver() {
+            super(null);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            FDroid.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    refreshUpdateTabLabel();
+                }
+            });
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            onChange(selfChange, null);
+        }
+
     }
 
 }

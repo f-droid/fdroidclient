@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="about_version">Version:</string>
+  <string name="enable">Enable</string>
+  <string name="add_key">Add Key</string>
+  <string name="overwrite">Overwrite</string>
+</resources>

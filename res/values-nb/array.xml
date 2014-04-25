@@ -8,12 +8,7 @@
     <item>Daglig</item>
   </string-array>
   <string-array name="themeNames">
-    <item>Mørk</item>
-    <item>Lys</item>
-  </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Av (utrygt)</item>
-    <item>Normalt</item>
-    <item>Fullt</item>
+    <item>Mørkt</item>
+    <item>Lyst</item>
   </string-array>
 </resources>

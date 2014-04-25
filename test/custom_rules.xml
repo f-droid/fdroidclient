@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="test_custom_rules" default="fetch-test-report">
+
+  <target name="fetch-test-report">
+    <xpath
+        expression="/manifest/@package"
+        input="${tested.project.dir}/AndroidManifest.xml"
+        output="tested.package" />
+    <echo>Downloading XML test report (/data/data/${tested.package}/files/junit-report.xml)…</echo>
+    <mkdir dir="junitreports"/>
+    <exec executable="${adb}" failonerror="true">
+      <arg line="${adb.device.arg}"/>
+      <arg value="pull" />
+      <arg value="/data/data/${tested.package}/files/junit-report.xml" />
+      <arg value="junit-report.xml" />
+    </exec>
+  </target>
+
+</project>

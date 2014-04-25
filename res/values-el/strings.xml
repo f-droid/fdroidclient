@@ -29,7 +29,7 @@
 
 Ένα αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε κάποιο, πιέστε το πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.
 
-Μια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: http://f-droid.org/repo</string>
+Μια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: https://f-droid.org/repo</string>
   <string name="inst">Εγκατεστημένο</string>
   <string name="not_inst">Δεν είναι εγκατεστημένο</string>
   <string name="added_on">Προστέθηκε στις %s</string>
@@ -59,6 +59,7 @@
   <string name="menu_search">Αναζήτηση</string>
   <string name="menu_add_repo">Νέο Αποθετήριο</string>
   <string name="menu_rem_repo">Αφαίρεση Αποθετηρίου</string>
+  <string name="menu_scan_repo">Εύρεση τοπικών αποθετηρίων</string>
   <string name="menu_launch">Εκτέλεση</string>
   <string name="menu_share">Διαμοιρασμός</string>
   <string name="menu_install">Εγκατάσταση</string>
@@ -82,7 +83,6 @@
   <string name="display">Εμφάνιση</string>
   <string name="expert">Για Προχωρημένους</string>
   <string name="search_hint">Αναζήτηση εφαρμογών</string>
-  <string name="db_sync_mode">Λειτουργία συγχρονισμόυ της βάσης δεδομένων</string>
   <string name="appcompatibility">Συμβατότητα εφαμοργής</string>
   <string name="show_incompat_versions">Μη συμβατές εκδόσεις</string>
   <string name="rooted">Root</string>

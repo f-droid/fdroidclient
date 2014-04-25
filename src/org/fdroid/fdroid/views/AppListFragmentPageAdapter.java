@@ -1,10 +1,13 @@
 package org.fdroid.fdroid.views;
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.fragments.AvailableAppsFragment;
 import org.fdroid.fdroid.views.fragments.CanUpdateAppsFragment;
 import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
@@ -19,7 +22,20 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
 
     public AppListFragmentPageAdapter(FDroid parent) {
         super(parent.getSupportFragmentManager());
-        this.parent  = parent;
+        this.parent = parent;
+    }
+
+    private String getUpdateTabTitle() {
+        Uri uri = AppProvider.getCanUpdateUri();
+        String[] projection = new String[] { AppProvider.DataColumns._COUNT };
+        Cursor cursor = parent.getContentResolver().query(uri, projection, null, null, null);
+        String suffix = "";
+        if (cursor != null && cursor.getCount() == 1) {
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            suffix = " (" + count + ")";
+        }
+        return parent.getString(R.string.tab_updates) + suffix;
     }
 
     @Override
@@ -46,8 +62,7 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
             case 1:
                 return parent.getString(R.string.inst);
             case 2:
-                return parent.getString(R.string.tab_updates) + " ("
-                    + parent.getManager().getCanUpdateAdapter().getCount() + ")";
+                return getUpdateTabTitle();
             default:
                 return "";
         }

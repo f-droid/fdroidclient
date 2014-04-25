@@ -27,10 +27,11 @@ import java.io.OutputStream;
 import java.net.URL;
 
 import android.util.Log;
+import org.fdroid.fdroid.data.Apk;
 
 public class Downloader extends Thread {
 
-    private DB.Apk curapk;
+    private Apk curapk;
     private String repoaddress;
     private String filename;
     private File destdir;
@@ -38,11 +39,11 @@ public class Downloader extends Thread {
 
     public static enum Status {
         STARTING, RUNNING, ERROR, DONE, CANCELLED
-    };
+    }
 
     public static enum Error {
         CORRUPT, UNKNOWN
-    };
+    }
 
     private Status status = Status.STARTING;
     private Error error;
@@ -52,7 +53,7 @@ public class Downloader extends Thread {
 
     // Constructor - creates a Downloader to download the given Apk,
     // which must have its detail populated.
-    Downloader(DB.Apk apk, String repoaddress, File destdir) {
+    Downloader(Apk apk, String repoaddress, File destdir) {
         curapk = apk;
         this.repoaddress = repoaddress;
         this.destdir = destdir;
@@ -91,7 +92,7 @@ public class Downloader extends Thread {
     }
 
     // The APK being downloaded
-    public synchronized DB.Apk getApk() {
+    public synchronized Apk getApk() {
         return curapk;
     }
 
@@ -107,8 +108,8 @@ public class Downloader extends Thread {
             // See if we already have this apk cached...
             if (localfile.exists()) {
                 // We do - if its hash matches, we'll use it...
-                Hasher hash = new Hasher(curapk.detail_hashType, localfile);
-                if (hash.match(curapk.detail_hash)) {
+                Hasher hash = new Hasher(curapk.hashType, localfile);
+                if (hash.match(curapk.hash)) {
                     Log.d("FDroid", "Using cached apk at " + localfile);
                     synchronized (this) {
                         progress = 1;
@@ -129,7 +130,7 @@ public class Downloader extends Thread {
             synchronized (this) {
                 filename = remotefile;
                 progress = 0;
-                max = curapk.detail_size;
+                max = curapk.size;
                 status = Status.RUNNING;
             }
 
@@ -158,11 +159,11 @@ public class Downloader extends Thread {
                 }
                 return;
             }
-            Hasher hash = new Hasher(curapk.detail_hashType, localfile);
-            if (!hash.match(curapk.detail_hash)) {
+            Hasher hash = new Hasher(curapk.hashType, localfile);
+            if (!hash.match(curapk.hash)) {
                 synchronized (this) {
                     Log.d("FDroid", "Downloaded file hash of " + hash.getHash()
-                            + " did not match repo's " + curapk.detail_hash);
+                            + " did not match repo's " + curapk.hash);
                     // No point keeping a bad file, whether we're
                     // caching or not.
                     localfile.delete();

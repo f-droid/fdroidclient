@@ -66,6 +66,7 @@ class OldTabManagerImpl extends TabManager {
      * and giving it a FrameLayout as a child. This will make the tabs have
      * dummy empty contents and then hook them up to our ViewPager.
      */
+    @Override
     public void createTabs() {
         tabHost = new TabHost(parent, null);
         tabHost.setLayoutParams(new TabHost.LayoutParams(
@@ -128,12 +129,14 @@ class OldTabManagerImpl extends TabManager {
     }
 
 
+    @Override
     public void selectTab(int index) {
         tabHost.setCurrentTab(index);
         if (index == INDEX_CAN_UPDATE)
             removeNotification(1);
     }
 
+    @Override
     public void refreshTabLabel(int index) {
         CharSequence text = getLabel(index);
 
@@ -166,6 +169,7 @@ class HoneycombTabManagerImpl extends TabManager {
         actionBar = parent.getActionBar();
     }
 
+    @Override
     public void createTabs() {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         for (int i = 0; i < pager.getAdapter().getCount(); i ++) {
@@ -174,6 +178,7 @@ class HoneycombTabManagerImpl extends TabManager {
                 actionBar.newTab()
                     .setText(label)
                     .setTabListener(new ActionBar.TabListener() {
+                        @Override
                         public void onTabSelected(ActionBar.Tab tab,
                                                   FragmentTransaction ft) {
                             int pos = tab.getPosition();
@@ -193,6 +198,7 @@ class HoneycombTabManagerImpl extends TabManager {
         }
     }
 
+    @Override
     public void selectTab(int index) {
         actionBar.setSelectedNavigationItem(index);
         Spinner actionBarSpinner = getActionBarSpinner();
@@ -203,6 +209,7 @@ class HoneycombTabManagerImpl extends TabManager {
             removeNotification(1);
     }
 
+    @Override
     public void refreshTabLabel(int index) {
         CharSequence text = getLabel(index);
         actionBar.getTabAt(index).setText(text);

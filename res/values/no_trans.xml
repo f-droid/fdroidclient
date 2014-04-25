@@ -2,7 +2,7 @@
 <resources>
 
 	<string name="app_name">F-Droid</string>
-	<string name="version_name">0.57-test</string>
+	<string name="version_name">0.64-test</string>
 
 	<string name="about_sitec">https://f-droid.org</string>
 	<string name="about_mailc">team@f-droid.org</string>
@@ -20,12 +20,6 @@
 		<item>4</item>
 		<item>12</item>
 		<item>24</item>
-	</string-array>
-
-	<string-array name="dbSyncModeValues">
-		<item>off</item>
-		<item>normal</item>
-		<item>full</item>
 	</string-array>
 
 	<string-array name="themeValues">

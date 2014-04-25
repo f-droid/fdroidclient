@@ -11,9 +11,4 @@
     <item>Dark</item>
     <item>Light</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Inchis (nerecomandat)</item>
-    <item>Normal</item>
-    <item>Complet</item>
-  </string-array>
 </resources>

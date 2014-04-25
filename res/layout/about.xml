@@ -3,7 +3,9 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:paddingLeft="8dp"
+	android:paddingStart="8dp"
 	android:paddingRight="8dp"
+	android:paddingEnd="8dp"
 	android:paddingTop="6dp"
 	android:paddingBottom="6dp"
 	android:baselineAligned="false"
@@ -21,6 +23,7 @@
 
 		<TextView android:id="@+id/version"
 			android:paddingLeft="5dp"
+			android:paddingStart="5dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
 
@@ -39,6 +42,7 @@
 		<TextView android:id="@+id/sitec"
 			android:text="@string/about_sitec"
 			android:paddingLeft="5dp"
+			android:paddingStart="5dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
 
@@ -58,6 +62,7 @@
 		<TextView android:id="@+id/mailc"
 			android:text="@string/about_mailc"
 			android:paddingLeft="5dp"
+			android:paddingStart="5dp"
 			android:autoLink="email"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />

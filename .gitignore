@@ -1,5 +1,4 @@
 /local.properties
-/.classpath
 /bin/
 /gen/
 /build/
@@ -9,3 +8,4 @@
 /.idea/
 /*.iml
 out
+/.settings/

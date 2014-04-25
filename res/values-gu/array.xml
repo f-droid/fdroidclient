@@ -11,9 +11,4 @@
     <item>Dark</item>
     <item>Light</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>બંધ (અસુરક્ષિત)</item>
-    <item>સામાન્ય</item>
-    <item>પૂર્ણ</item>
-  </string-array>
 </resources>

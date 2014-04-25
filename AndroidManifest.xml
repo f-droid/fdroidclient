@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="570"
-    android:versionName="0.57-test" >
+    android:versionCode="640"
+    android:versionName="0.64-test" >
 
     <uses-sdk
         android:minSdkVersion="5"
@@ -18,13 +18,25 @@
         android:xlargeScreens="true" />
 
     <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
         android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
         android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.NFC" />
     
     <!-- These permissions are only granted when F-Droid is installed as a system app! -->
     <uses-permission android:name="android.permission.DELETE_PACKAGES" />
@@ -36,9 +48,31 @@
         android:label="@string/app_name"
         android:allowBackup="true"
         android:theme="@style/AppThemeDark"
-        android:supportsRtl="false" >
+        android:supportsRtl="true" >
+
+        <provider
+            android:authorities="org.fdroid.fdroid.data.AppProvider"
+            android:name="org.fdroid.fdroid.data.AppProvider"
+            android:exported="false"/>
+
+        <provider
+            android:authorities="org.fdroid.fdroid.data.RepoProvider"
+            android:name="org.fdroid.fdroid.data.RepoProvider"
+            android:exported="false"/>
+
+        <provider
+            android:authorities="org.fdroid.fdroid.data.ApkProvider"
+            android:name="org.fdroid.fdroid.data.ApkProvider"
+            android:exported="false"/>
+
+        <provider
+            android:authorities="org.fdroid.fdroid.data.InstalledAppProvider"
+            android:name="org.fdroid.fdroid.data.InstalledAppProvider"
+            android:exported="false"/>
+
         <activity
             android:name=".FDroid"
+            android:launchMode="singleTop"
             android:configChanges="keyboardHidden|orientation|screenSize" >
 
             <intent-filter>
@@ -66,9 +100,8 @@
         </activity>
         <activity
             android:name=".ManageRepo"
-            android:allowTaskReparenting="true"
             android:label="@string/menu_manage"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:parentActivityName=".FDroid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -104,6 +137,12 @@
                 <data android:pathPattern="/.*/.*/fdroid/archive/*" />
                 <data android:pathPattern="/.*/.*/.*/fdroid/archive" />
                 <data android:pathPattern="/.*/.*/.*/fdroid/archive/*" />
+                <!--
+                Some QR Code scanners don't respect custom schemes like fdroidrepo://,
+                so this is a workaround, since the local repo URL is all uppercase in
+                the QR Code for sending the local repo to another device.
+                -->
+                <data android:path="/FDROID/REPO" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -111,15 +150,47 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
+                <!--
+                Android's scheme matcher is case-sensitive, so include
+                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
+                QR Codes have a special ALL CAPS mode that uses a reduced
+                character set, making for more compact QR Codes.
+                -->
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="FDROIDREPO" />
+                <data android:scheme="fdroidrepos" />
+                <data android:scheme="FDROIDREPOS" />
+            </intent-filter>
+            <!-- Handle NFC tags detected from outside our application -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--
+                URIs that come in via NFC have scheme/host normalized to all lower case
+                https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
+                -->
                 <data android:scheme="fdroidrepo" />
                 <data android:scheme="fdroidrepos" />
             </intent-filter>
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="application/vnd.org.fdroid.fdroid.repo" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NfcNotEnabledActivity"
+            android:noHistory="true" />
         <activity
             android:name=".views.RepoDetailsActivity"
-            android:label="@string/menu_manage" />
- 
+            android:label="@string/menu_manage"
+            android:parentActivityName=".ManageRepo"
+            android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name=".AppDetails"
             android:label="@string/app_details"
@@ -204,6 +275,9 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        
+        <!--Used for SSL TOFU, supported by extern/MemorizingTrustManager lib -->
+        <activity android:name="de.duenndns.ssl.MemorizingActivity" />
 
         <receiver android:name=".StartupReceiver" >
             <intent-filter>
@@ -212,10 +286,22 @@
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".PackageReceiver" >
+        <receiver android:name=".PackageAddedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_UPGRADED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".PackageUpgradedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".PackageRemovedReceiver" >
+            <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
 
                 <data android:scheme="package" />

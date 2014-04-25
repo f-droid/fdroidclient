@@ -18,20 +18,22 @@
 
 package org.fdroid.fdroid;
 
-import java.io.File;
-import java.lang.Runtime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Semaphore;
-
-import android.app.Application;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Application;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import org.fdroid.fdroid.Utils;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
@@ -39,18 +41,37 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
+import de.duenndns.ssl.MemorizingTrustManager;
+
+import org.fdroid.fdroid.compat.PRNGFixes;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
+import org.thoughtcrime.ssl.pinning.PinningTrustManager;
+import org.thoughtcrime.ssl.pinning.SystemKeyStore;
+
+import javax.net.ssl.*;
+import java.io.File;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+
 public class FDroidApp extends Application {
+
+    BluetoothAdapter bluetoothAdapter = null;
 
     private static enum Theme {
         dark, light
     }
+
     private static Theme curTheme = Theme.dark;
 
     public void reloadTheme() {
         curTheme = Theme.valueOf(PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext())
-                .getString("theme", "dark"));
+                .getString(Preferences.PREF_THEME, "dark"));
     }
+
     public void applyTheme(Activity activity) {
         switch (curTheme) {
             case dark:
@@ -71,14 +92,34 @@ public class FDroidApp extends Application {
         // it is more deterministic as to when this gets called...
         Preferences.setup(this);
 
+        //Apply the Google PRNG fixes to properly seed SecureRandom
+        PRNGFixes.apply();
+
+        // Check that the installed app cache hasn't gotten out of sync somehow.
+        // e.g. if we crashed/ran out of battery half way through responding
+        // to a package installed intent. It doesn't really matter where
+        // we put this in the bootstrap process, because it runs on a different
+        // thread. In fact, we may as well start early for this reason.
+        InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
+
+        // If the user changes the preference to do with filtering rooted apps,
+        // it is easier to just notify a change in the app provider,
+        // so that the newly updated list will correctly filter relevant apps.
+        Preferences.get().registerAppsRequiringRootChangeListener(new Preferences.ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+            }
+        });
+
         // Clear cached apk files. We used to just remove them after they'd
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        curTheme = Theme.valueOf(prefs.getString("theme", "dark"));
-        if (!prefs.getBoolean("cacheDownloaded", false)) {
+        curTheme = Theme.valueOf(prefs.getString(Preferences.PREF_THEME, "dark"));
+        if (!prefs.getBoolean(Preferences.PREF_CACHE_APK, false)) {
 
             File local_path = Utils.getApkCacheDir(this);
             // Things can be null if the SD card is not ready - we'll just
@@ -95,16 +136,14 @@ public class FDroidApp extends Application {
             }
         }
 
-        apps = null;
-        invalidApps = new ArrayList<String>();
-        ctx = getApplicationContext();
-        DB.initDB(ctx);
-        UpdateService.schedule(ctx);
+        UpdateService.schedule(getApplicationContext());
+        bluetoothAdapter = getBluetoothAdapter();
 
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(ctx)
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
             .discCache(new LimitedAgeDiscCache(
-                        new File(StorageUtils.getCacheDirectory(ctx, true),
+                        new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
                             "icons"),
+                        null,
                         new FileNameGenerator() {
                             @Override
                             public String generate(String imageUri) {
@@ -117,91 +156,95 @@ public class FDroidApp extends Application {
             .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
             .build();
         ImageLoader.getInstance().init(config);
-    }
 
-    private Context ctx;
-
-    // Global list of all known applications.
-    private List<DB.App> apps;
-
-    // Set when something has changed (database or installed apps) so we know
-    // we should invalidate the apps.
-    private volatile boolean appsAllInvalid = false;
-    private Semaphore appsInvalidLock = new Semaphore(1, false);
-    private List<String> invalidApps;
-
-    // Set apps invalid. Call this when the database has been updated with
-    // new app information, or when the installed packages have changed.
-    public void invalidateAllApps() {
         try {
-            appsInvalidLock.acquire();
-            appsAllInvalid = true;
-        } catch (InterruptedException e) {
-            // Don't care
-        } finally {
-            appsInvalidLock.release();
+            SSLContext sc = SSLContext.getInstance("TLS");
+            X509TrustManager defaultTrustManager = null;
+
+            /*
+             * init a trust manager factory with a null keystore to access the system trust managers
+             */
+            TrustManagerFactory tmf =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            KeyStore ks = null;
+            tmf.init(ks);
+            TrustManager[] mgrs = tmf.getTrustManagers();
+
+            if(mgrs.length > 0 && mgrs[0] instanceof X509TrustManager)
+                defaultTrustManager = (X509TrustManager) mgrs[0];
+
+            /*
+             * compose a chain of trust managers as follows:
+             * MemorizingTrustManager -> Pinning Trust Manager -> System Trust Manager
+             */
+            PinningTrustManager pinMgr = new PinningTrustManager(SystemKeyStore.getInstance(getApplicationContext()),FDroidCertPins.getPinList(), 0);
+            MemorizingTrustManager memMgr = new MemorizingTrustManager(getApplicationContext(), pinMgr, defaultTrustManager);
+
+            /*
+             * initialize a SSLContext with the outermost trust manager, use this
+             * context to set the default SSL socket factory for the HTTPSURLConnection
+             * class.
+             */
+            sc.init(null, new TrustManager[] {memMgr}, new java.security.SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (KeyManagementException e) {
+            Log.e("FDroid", "Unable to set up trust manager chain. KeyManagementException");
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("FDroid", "Unable to set up trust manager chain. NoSuchAlgorithmException");
+        } catch (KeyStoreException e) {
+            Log.e("FDroid", "Unable to set up trust manager chain. KeyStoreException");
         }
     }
 
-    // Invalidate a single app
-    public void invalidateApp(String id) {
-        Log.d("FDroid", "Invalidating "+id);
-        invalidApps.add(id);
+    @TargetApi(18)
+    private BluetoothAdapter getBluetoothAdapter() {
+        // to use the new, recommended way of getting the adapter
+        // http://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html
+        if (Build.VERSION.SDK_INT < 18)
+            return BluetoothAdapter.getDefaultAdapter();
+        else
+            return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
-    // Get a list of all known applications. Should not be called when the
-    // database is locked (i.e. between DB.getDB() and db.releaseDB(). The
-    // contents should never be modified, it's for reading only.
-    public List<DB.App> getApps() {
-
-        boolean invalid = false;
+    void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
+        if (resultCode == Activity.RESULT_CANCELED)
+            return;
+        String bluetoothPackageName = null;
+        String className = null;
+        boolean found = false;
+        Intent sendBt = null;
         try {
-            appsInvalidLock.acquire();
-            invalid = appsAllInvalid;
-            if (invalid) {
-                appsAllInvalid = false;
-                Log.d("FDroid", "Dropping cached app data");
+            PackageManager pm = getPackageManager();
+            ApplicationInfo appInfo = pm.getApplicationInfo(packageName,
+                    PackageManager.GET_META_DATA);
+            sendBt = new Intent(Intent.ACTION_SEND);
+            // The APK type is blocked by stock Android, so use zip
+            // sendBt.setType("application/vnd.android.package-archive");
+            sendBt.setType("application/zip");
+            sendBt.putExtra(Intent.EXTRA_STREAM,
+                    Uri.parse("file://" + appInfo.publicSourceDir));
+            // not all devices have the same Bluetooth Activities, so
+            // let's find it
+            for (ResolveInfo info : pm.queryIntentActivities(sendBt, 0)) {
+                bluetoothPackageName = info.activityInfo.packageName;
+                if (bluetoothPackageName.equals("com.android.bluetooth")
+                        || bluetoothPackageName.equals("com.mediatek.bluetooth")) {
+                    className = info.activityInfo.name;
+                    found = true;
+                    break;
+                }
             }
-        } catch (InterruptedException e) {
-            // Don't care
-        } finally {
-            appsInvalidLock.release();
+        } catch (NameNotFoundException e1) {
+            e1.printStackTrace();
+            found = false;
         }
-
-        if (apps == null || invalid) {
-            try {
-                DB db = DB.getDB();
-                apps = db.getApps(true);
-
-            } finally {
-                DB.releaseDB();
-            }
-        } else if (!invalidApps.isEmpty()) {
-            try {
-                DB db = DB.getDB();
-                apps = db.refreshApps(apps, invalidApps);
-
-                invalidApps.clear();
-            } finally {
-                DB.releaseDB();
-            }
-        }
-        if (apps == null)
-            return new ArrayList<DB.App>();
-        filterApps();
-        return apps;
-    }
-
-    public void filterApps() {
-        AppFilter appFilter = new AppFilter(ctx);
-        for (DB.App app : apps) {
-            app.filtered = appFilter.filter(app);
-
-            app.toUpdate = (app.hasUpdates
-                    && !app.ignoreAllUpdates
-                    && app.curApk.vercode > app.ignoreThisUpdate
-                    && !app.filtered);
+        if (!found) {
+            Toast.makeText(this, R.string.bluetooth_activity_not_found,
+                    Toast.LENGTH_SHORT).show();
+            activity.startActivity(Intent.createChooser(sendBt, getString(R.string.choose_bt_send)));
+        } else {
+            sendBt.setClassName(bluetoothPackageName, className);
+            activity.startActivity(sendBt);
         }
     }
-
 }

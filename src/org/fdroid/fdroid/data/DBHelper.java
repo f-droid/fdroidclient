@@ -6,50 +6,97 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import org.fdroid.fdroid.DB;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    private static final String TAG = "org.fdroid.fdroid.data.DBHelper";
+
     public static final String DATABASE_NAME = "fdroid";
 
+    public static final String TABLE_REPO = "fdroid_repo";
+
+    // The TABLE_APK table stores details of all the application versions we
+    // know about. Each relates directly back to an entry in TABLE_APP.
+    // This information is retrieved from the repositories.
+    public static final String TABLE_APK = "fdroid_apk";
+
     private static final String CREATE_TABLE_REPO = "create table "
-            + DB.TABLE_REPO + " (id integer primary key, address text not null, "
+            + TABLE_REPO + " (_id integer primary key, "
+            + "address text not null, "
             + "name text, description text, inuse integer not null, "
             + "priority integer not null, pubkey text, fingerprint text, "
             + "maxage integer not null default 0, "
+            + "version integer not null default 0, "
             + "lastetag text, lastUpdated string);";
 
-    private static final String CREATE_TABLE_APK = "create table " + DB.TABLE_APK
-            + " ( " + "id text not null, " + "version text not null, "
-            + "repo integer not null, " + "hash text not null, "
-            + "vercode int not null," + "apkName text not null, "
-            + "size int not null," + "sig string," + "srcname string,"
-            + "minSdkVersion integer," + "permissions string,"
-            + "features string," + "nativecode string,"
-            + "hashType string," + "added string,"
-            + "compatible int not null," + "primary key(id,vercode));";
+    private static final String CREATE_TABLE_APK =
+            "CREATE TABLE " + TABLE_APK + " ( "
+            + "id text not null, "
+            + "version text not null, "
+            + "repo integer not null, "
+            + "hash text not null, "
+            + "vercode int not null,"
+            + "apkName text not null, "
+            + "size int not null, "
+            + "sig string, "
+            + "srcname string, "
+            + "minSdkVersion integer, "
+            + "maxSdkVersion integer, "
+            + "permissions string, "
+            + "features string, "
+            + "nativecode string, "
+            + "hashType string, "
+            + "added string, "
+            + "compatible int not null, "
+            + "incompatibleReasons text, "
+            + "primary key(id, vercode)"
+            + ");";
 
-    private static final String CREATE_TABLE_APP = "create table " + DB.TABLE_APP
-            + " ( " + "id text not null, " + "name text not null, "
-            + "summary text not null, " + "icon text, "
-            + "description text not null, " + "license text not null, "
-            + "webURL text, " + "trackerURL text, " + "sourceURL text, "
-            + "curVersion text," + "curVercode integer,"
-            + "antiFeatures string," + "donateURL string,"
-            + "bitcoinAddr string," + "litecoinAddr string,"
+    public static final String TABLE_APP = "fdroid_app";
+    private static final String CREATE_TABLE_APP = "CREATE TABLE " + TABLE_APP
+            + " ( "
+            + "id text not null, "
+            + "name text not null, "
+            + "summary text not null, "
+            + "icon text, "
+            + "description text not null, "
+            + "license text not null, "
+            + "webURL text, "
+            + "trackerURL text, "
+            + "sourceURL text, "
+            + "suggestedVercode text,"
+            + "upstreamVersion text,"
+            + "upstreamVercode integer,"
+            + "antiFeatures string,"
+            + "donateURL string,"
+            + "bitcoinAddr string,"
+            + "litecoinAddr string,"
             + "dogecoinAddr string,"
-            + "flattrID string," + "requirements string,"
-            + "categories string," + "added string,"
-            + "lastUpdated string," + "compatible int not null,"
+            + "flattrID string,"
+            + "requirements string,"
+            + "categories string,"
+            + "added string,"
+            + "lastUpdated string,"
+            + "compatible int not null,"
             + "ignoreAllUpdates int not null,"
             + "ignoreThisUpdate int not null,"
+            + "iconUrl text, "
             + "primary key(id));";
 
-    private static final int DB_VERSION = 35;
+    public static final String TABLE_INSTALLED_APP = "fdroid_installedApp";
+    private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + TABLE_INSTALLED_APP
+            + " ( "
+            + "appId TEXT NOT NULL PRIMARY KEY, "
+            + "versionCode INT NOT NULL, "
+            + "versionName TEXT NOT NULL "
+            + " );";
+
+    private static final int DB_VERSION = 43;
 
     private Context context;
 
@@ -58,46 +105,128 @@ public class DBHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
+    private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 37) {
+            Log.i("FDroid", "Populating repo names from the url");
+            String[] columns = { "address", "_id" };
+            Cursor cursor = db.query(TABLE_REPO, columns,
+                    "name IS NULL OR name = ''", null, null, null, null);
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        String address = cursor.getString(0);
+                        long id = cursor.getInt(1);
+                        ContentValues values = new ContentValues(1);
+                        String name = Repo.addressToName(address);
+                        values.put("name", name);
+                        String[] args = { Long.toString( id ) };
+                        Log.i("FDroid", "Setting repo name to '" + name + "' for repo " + address);
+                        db.update(TABLE_REPO, values, "_id = ?", args);
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
+            }
+        }
+    }
+
+    private void renameRepoId(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 36 && !columnExists(db, TABLE_REPO, "_id")) {
+
+            Log.d("FDroid", "Renaming " + TABLE_REPO + ".id to _id");
+            db.beginTransaction();
+
+            try {
+                // http://stackoverflow.com/questions/805363/how-do-i-rename-a-column-in-a-sqlite-database-table#805508
+                String tempTableName = TABLE_REPO + "__temp__";
+                db.execSQL("ALTER TABLE " + TABLE_REPO + " RENAME TO " + tempTableName + ";" );
+
+                // I realise this is available in the CREATE_TABLE_REPO above,
+                // however I have a feeling that it will need to be the same as the
+                // current structure of the table as of DBVersion 36, or else we may
+                // get into strife. For example, if there was a field that
+                // got removed, then it will break the "insert select"
+                // statement. Therefore, I've put a copy of CREATE_TABLE_REPO
+                // here that is the same as it was at DBVersion 36.
+                String createTableDdl = "create table " + TABLE_REPO + " ("
+                        + "_id integer not null primary key, "
+                        + "address text not null, "
+                        + "name text, "
+                        + "description text, "
+                        + "inuse integer not null, "
+                        + "priority integer not null, "
+                        + "pubkey text, "
+                        + "fingerprint text, "
+                        + "maxage integer not null default 0, "
+                        + "version integer not null default 0, "
+                        + "lastetag text, "
+                        + "lastUpdated string);";
+
+                db.execSQL(createTableDdl);
+
+                String nonIdFields = "address,  name, description, inuse, priority, " +
+                        "pubkey, fingerprint, maxage, version, lastetag, lastUpdated";
+
+                String insertSql = "INSERT INTO " + TABLE_REPO +
+                        "(_id, " + nonIdFields + " ) " +
+                        "SELECT id, " + nonIdFields + " FROM " + tempTableName + ";";
+
+                db.execSQL(insertSql);
+                db.execSQL("DROP TABLE " + tempTableName + ";");
+                db.setTransactionSuccessful();
+            } catch (Exception e) {
+                Log.e("FDroid", "Error renaming id to _id: " + e.getMessage());
+            }
+            db.endTransaction();
+        }
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         createAppApk(db);
-
+        createInstalledApp(db);
         db.execSQL(CREATE_TABLE_REPO);
-        ContentValues values = new ContentValues();
-        values.put("address",
-                context.getString(R.string.default_repo_address));
-        values.put("name",
-                context.getString(R.string.default_repo_name));
-        values.put("description",
-                context.getString(R.string.default_repo_description));
-        values.put("version", 0);
-        String pubkey = context.getString(R.string.default_repo_pubkey);
-        String fingerprint = DB.calcFingerprint(pubkey);
-        values.put("pubkey", pubkey);
-        values.put("fingerprint", fingerprint);
-        values.put("maxage", 0);
-        values.put("inuse", 1);
-        values.put("priority", 10);
-        values.put("lastetag", (String) null);
-        db.insert(DB.TABLE_REPO, null, values);
 
-        values = new ContentValues();
-        values.put("address",
-                context.getString(R.string.default_repo_address2));
-        values.put("name",
-                context.getString(R.string.default_repo_name2));
-        values.put("description",
-                context.getString(R.string.default_repo_description2));
-        values.put("version", 0);
-        // default #2 is /archive which has the same key as /repo
-        values.put("pubkey", pubkey);
-        values.put("fingerprint", fingerprint);
-        values.put("maxage", 0);
-        values.put("inuse", 0);
-        values.put("priority", 20);
-        values.put("lastetag", (String) null);
-        db.insert(DB.TABLE_REPO, null, values);
+        insertRepo(
+            db,
+            context.getString(R.string.default_repo_name1),
+            context.getString(R.string.default_repo_address1),
+            context.getString(R.string.default_repo_description1),
+            context.getString(R.string.default_repo_pubkey1),
+            context.getResources().getInteger(R.integer.default_repo_inuse1),
+            context.getResources().getInteger(R.integer.default_repo_priority1)
+        );
+
+        insertRepo(
+            db,
+            context.getString(R.string.default_repo_name2),
+            context.getString(R.string.default_repo_address2),
+            context.getString(R.string.default_repo_description2),
+            context.getString(R.string.default_repo_pubkey2),
+            context.getResources().getInteger(R.integer.default_repo_inuse2),
+            context.getResources().getInteger(R.integer.default_repo_priority2)
+        );
+    }
+
+    private void insertRepo(
+        SQLiteDatabase db, String name, String address, String description,
+        String pubKey, int inUse, int priority) {
+
+        ContentValues values = new ContentValues();
+        values.put(RepoProvider.DataColumns.ADDRESS, address);
+        values.put(RepoProvider.DataColumns.NAME, name);
+        values.put(RepoProvider.DataColumns.DESCRIPTION, description);
+        values.put(RepoProvider.DataColumns.PUBLIC_KEY, pubKey);
+        values.put(RepoProvider.DataColumns.FINGERPRINT, Utils.calcFingerprint(pubKey));
+        values.put(RepoProvider.DataColumns.MAX_AGE, 0);
+        values.put(RepoProvider.DataColumns.IN_USE, inUse);
+        values.put(RepoProvider.DataColumns.PRIORITY, priority);
+        values.put(RepoProvider.DataColumns.LAST_ETAG, (String)null);
+
+        Log.i("FDroid", "Adding repository " + name);
+        db.insert(TABLE_REPO, null, values);
     }
 
     @Override
@@ -106,50 +235,58 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.i("FDroid", "Upgrading database from v" + oldVersion + " v"
                 + newVersion);
 
-        migradeRepoTable(db, oldVersion);
+        migrateRepoTable(db, oldVersion);
 
         // The other tables are transient and can just be reset. Do this after
         // the repo table changes though, because it also clears the lastetag
         // fields which didn't always exist.
-        resetTransient(db);
+        resetTransient(db, oldVersion);
 
         addNameAndDescriptionToRepo(db, oldVersion);
         addFingerprintToRepo(db, oldVersion);
         addMaxAgeToRepo(db, oldVersion);
         addVersionToRepo(db, oldVersion);
         addLastUpdatedToRepo(db, oldVersion);
+        renameRepoId(db, oldVersion);
+        populateRepoNames(db, oldVersion);
+
+        if (oldVersion < 43) createInstalledApp(db);
     }
 
     /**
      * Migrate repo list to new structure. (No way to change primary
      * key in sqlite - table must be recreated).
      */
-    private void migradeRepoTable(SQLiteDatabase db, int oldVersion) {
+    private void migrateRepoTable(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 20) {
-            List<DB.Repo> oldrepos = new ArrayList<DB.Repo>();
-            Cursor c = db.query(DB.TABLE_REPO,
+            List<Repo> oldrepos = new ArrayList<Repo>();
+            Cursor cursor = db.query(TABLE_REPO,
                     new String[] { "address", "inuse", "pubkey" },
                     null, null, null, null, null);
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                DB.Repo repo = new DB.Repo();
-                repo.address = c.getString(0);
-                repo.inuse = (c.getInt(1) == 1);
-                repo.pubkey = c.getString(2);
-                oldrepos.add(repo);
-                c.moveToNext();
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        Repo repo = new Repo();
+                        repo.address = cursor.getString(0);
+                        repo.inuse = (cursor.getInt(1) == 1);
+                        repo.pubkey = cursor.getString(2);
+                        oldrepos.add(repo);
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
             }
-            c.close();
-            db.execSQL("drop table " + DB.TABLE_REPO);
+            db.execSQL("drop table " + TABLE_REPO);
             db.execSQL(CREATE_TABLE_REPO);
-            for (DB.Repo repo : oldrepos) {
+            for (Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
                 values.put("address", repo.address);
                 values.put("inuse", repo.inuse);
                 values.put("priority", 10);
                 values.put("pubkey", repo.pubkey);
                 values.put("lastetag", (String) null);
-                db.insert(DB.TABLE_REPO, null, values);
+                db.insert(TABLE_REPO, null, values);
             }
         }
     }
@@ -159,20 +296,22 @@ public class DBHelper extends SQLiteOpenHelper {
      * default repos with values from strings.xml.
      */
     private void addNameAndDescriptionToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 21) {
-            if (!columnExists(db, DB.TABLE_REPO, "name"))
-                db.execSQL("alter table " + DB.TABLE_REPO + " add column name text");
-            if (!columnExists(db, DB.TABLE_REPO, "description"))
-                db.execSQL("alter table " + DB.TABLE_REPO + " add column description text");
+        boolean nameExists = columnExists(db, TABLE_REPO, "name");
+        boolean descriptionExists = columnExists(db, TABLE_REPO, "description");
+        if (oldVersion < 21 && !(nameExists && descriptionExists)) {
+            if (!nameExists)
+                db.execSQL("alter table " + TABLE_REPO + " add column name text");
+            if (!descriptionExists)
+                db.execSQL("alter table " + TABLE_REPO + " add column description text");
             ContentValues values = new ContentValues();
-            values.put("name", context.getString(R.string.default_repo_name));
-            values.put("description", context.getString(R.string.default_repo_description));
-            db.update(DB.TABLE_REPO, values, "address = ?", new String[]{
-                    context.getString(R.string.default_repo_address)});
+            values.put("name", context.getString(R.string.default_repo_name1));
+            values.put("description", context.getString(R.string.default_repo_description1));
+            db.update(TABLE_REPO, values, "address = ?", new String[]{
+                    context.getString(R.string.default_repo_address1)});
             values.clear();
             values.put("name", context.getString(R.string.default_repo_name2));
             values.put("description", context.getString(R.string.default_repo_description2));
-            db.update(DB.TABLE_REPO, values, "address = ?", new String[] {
+            db.update(TABLE_REPO, values, "address = ?", new String[] {
                 context.getString(R.string.default_repo_address2) });
         }
 
@@ -184,62 +323,79 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     private void addFingerprintToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 29) {
-            if (!columnExists(db, DB.TABLE_REPO, "fingerprint"))
-                db.execSQL("alter table " + DB.TABLE_REPO + " add column fingerprint text");
-            List<DB.Repo> oldrepos = new ArrayList<DB.Repo>();
-            Cursor c = db.query(DB.TABLE_REPO,
+            if (!columnExists(db, TABLE_REPO, "fingerprint"))
+                db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
+            List<Repo> oldrepos = new ArrayList<Repo>();
+            Cursor cursor = db.query(TABLE_REPO,
                     new String[] { "address", "pubkey" },
                     null, null, null, null, null);
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                DB.Repo repo = new DB.Repo();
-                repo.address = c.getString(0);
-                repo.pubkey = c.getString(1);
-                oldrepos.add(repo);
-                c.moveToNext();
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        Repo repo = new Repo();
+                        repo.address = cursor.getString(0);
+                        repo.pubkey = cursor.getString(1);
+                        oldrepos.add(repo);
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
             }
-            c.close();
-            for (DB.Repo repo : oldrepos) {
+            for (Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
-                values.put("fingerprint", DB.calcFingerprint(repo.pubkey));
-                db.update(DB.TABLE_REPO, values, "address = ?", new String[] { repo.address });
+                values.put("fingerprint", Utils.calcFingerprint(repo.pubkey));
+                db.update(TABLE_REPO, values, "address = ?", new String[] { repo.address });
             }
         }
     }
 
     private void addMaxAgeToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 30) {
-            db.execSQL("alter table " + DB.TABLE_REPO + " add column maxage integer not null default 0");
+        if (oldVersion < 30 && !columnExists(db, TABLE_REPO, "maxage")) {
+            db.execSQL("alter table " + TABLE_REPO + " add column maxage integer not null default 0");
         }
     }
 
     private void addVersionToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 33 && !columnExists(db, DB.TABLE_REPO, "version")) {
-            db.execSQL("alter table " + DB.TABLE_REPO + " add column version integer not null default 0");
+        if (oldVersion < 33 && !columnExists(db, TABLE_REPO, "version")) {
+            db.execSQL("alter table " + TABLE_REPO + " add column version integer not null default 0");
         }
     }
 
     private void addLastUpdatedToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 35 && !columnExists(db, DB.TABLE_REPO, "lastUpdated")) {
-            db.execSQL("Alter table " + DB.TABLE_REPO + " add column lastUpdated string");
+        if (oldVersion < 35 && !columnExists(db, TABLE_REPO, "lastUpdated")) {
+            Log.i("FDroid", "Adding lastUpdated column to " + TABLE_REPO);
+            db.execSQL("Alter table " + TABLE_REPO + " add column lastUpdated string");
         }
     }
 
-    private void resetTransient(SQLiteDatabase db) {
-        context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
-                .putBoolean("triedEmptyUpdate", false).commit();
-        db.execSQL("drop table " + DB.TABLE_APP);
-        db.execSQL("drop table " + DB.TABLE_APK);
-        db.execSQL("update " + DB.TABLE_REPO + " set lastetag = NULL");
-        createAppApk(db);
+    private void resetTransient(SQLiteDatabase db, int oldVersion) {
+        // Before version 42, only transient info was stored in here. As of some time
+        // just before 42 (F-Droid 0.60ish) it now has "ignore this version" info which
+        // was is specified by the user. We don't want to weely-neely nuke that data.
+        // and the new way to deal with changes to the table structure is to add a
+        // if (oldVersion < x && !columnExists(...) and then alter the table as required.
+        if (oldVersion < 42) {
+            context.getSharedPreferences("FDroid", Context.MODE_PRIVATE).edit()
+                    .putBoolean("triedEmptyUpdate", false).commit();
+            db.execSQL("drop table " + TABLE_APP);
+            db.execSQL("drop table " + TABLE_APK);
+            db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
+            createAppApk(db);
+        }
     }
 
     private static void createAppApk(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_APP);
-        db.execSQL("create index app_id on " + DB.TABLE_APP + " (id);");
+        db.execSQL("create index app_id on " + TABLE_APP + " (id);");
         db.execSQL(CREATE_TABLE_APK);
-        db.execSQL("create index apk_vercode on " + DB.TABLE_APK + " (vercode);");
-        db.execSQL("create index apk_id on " + DB.TABLE_APK + " (id);");
+        db.execSQL("create index apk_vercode on " + TABLE_APK + " (vercode);");
+        db.execSQL("create index apk_id on " + TABLE_APK + " (id);");
+    }
+
+    private void createInstalledApp(SQLiteDatabase db) {
+        Log.d(TAG, "Creating 'installed app' database table.");
+        db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 
     private static boolean columnExists(SQLiteDatabase db,

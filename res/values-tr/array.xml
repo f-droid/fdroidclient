@@ -11,9 +11,4 @@
     <item>Koyu</item>
     <item>Açık</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Devre dışı (güvenli değildir)</item>
-    <item>Normal</item>
-    <item>Tümü</item>
-  </string-array>
 </resources>

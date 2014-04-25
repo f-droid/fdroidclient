@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules">
+
+  <target name="javadoc" description="Generate Javadocs">
+    <javadoc sourcepath="${source.dir}"
+             destdir="${out.dir}/javadoc"
+             packagenames="org.fdroid.*"
+             windowtitle="${ant.project.name}"
+             doctitle="${ant.project.name}" />
+  </target>
+
+</project>

@@ -11,9 +11,4 @@
     <item>Scuro</item>
     <item>Chiaro</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>Disabilitato (non sicuro)</item>
-    <item>Normale</item>
-    <item>Completo</item>
-  </string-array>
 </resources>

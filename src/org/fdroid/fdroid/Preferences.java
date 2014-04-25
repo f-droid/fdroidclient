@@ -1,9 +1,6 @@
 package org.fdroid.fdroid;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -38,14 +35,20 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
     public static final String PREF_CACHE_APK = "cacheDownloaded";
     public static final String PREF_EXPERT = "expert";
-    public static final String PREF_DB_SYNC = "dbSyncMode";
+    public static final String PREF_UPD_LAST = "lastUpdateCheck";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
+    private static final boolean DEFAULT_ROOTED = true;
+    private static final int DEFAULT_UPD_HISTORY = 14;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
+    private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
 
     private Map<String,Boolean> initialized = new HashMap<String,Boolean>();
+
     private List<ChangeListener> compactLayoutListeners = new ArrayList<ChangeListener>();
+    private List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<ChangeListener>();
+    private List<ChangeListener> updateHistoryListeners = new ArrayList<ChangeListener>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);
@@ -75,6 +78,45 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         compactLayoutListeners.remove(listener);
     }
 
+    /**
+     * Calculate the cutoff date we'll use for What's New and Recently
+     * Updated...
+     */
+    public Date calcMaxHistory() {
+        String daysString = preferences.getString(PREF_UPD_HISTORY, Integer.toString(DEFAULT_UPD_HISTORY));
+        int maxHistoryDays;
+        try {
+            maxHistoryDays = Integer.parseInt(daysString);
+        } catch (NumberFormatException e) {
+            maxHistoryDays = DEFAULT_UPD_HISTORY;
+        }
+        Calendar recent = Calendar.getInstance();
+        recent.add(Calendar.DAY_OF_YEAR, -maxHistoryDays);
+        return recent.getTime();
+    }
+
+    /**
+     * This is cached as it is called several times inside the AppListAdapter.
+     * Providing it here means sthe shared preferences file only needs to be
+     * read once, and we will keep our copy up to date by listening to changes
+     * in PREF_ROOTED.
+     */
+    public boolean filterAppsRequiringRoot() {
+        if (!isInitialized(PREF_ROOTED)) {
+            initialize(PREF_ROOTED);
+            filterAppsRequiringRoot = preferences.getBoolean(PREF_ROOTED, DEFAULT_ROOTED);
+        }
+        return filterAppsRequiringRoot;
+    }
+
+    public void registerAppsRequiringRootChangeListener(ChangeListener listener) {
+        filterAppsRequiringRootListeners.add(listener);
+    }
+
+    public void unregisterAppsRequiringRootChangeListener(ChangeListener listener) {
+        filterAppsRequiringRootListeners.remove(listener);
+    }
+
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Log.d("FDroid", "Invalidating preference '" + key + "'.");
@@ -84,7 +126,27 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
             for ( ChangeListener listener : compactLayoutListeners )  {
                 listener.onPreferenceChange();
             }
+        } else if (key.equals(PREF_ROOTED)) {
+            for ( ChangeListener listener : filterAppsRequiringRootListeners ) {
+                listener.onPreferenceChange();
+            }
+        } else if (key.equals(PREF_UPD_HISTORY)) {
+            for ( ChangeListener listener : updateHistoryListeners ) {
+                listener.onPreferenceChange();
+            }
         }
+    }
+
+    public void registerUpdateHistoryListener(ChangeListener listener) {
+        updateHistoryListeners.add(listener);
+    }
+
+    public void unregisterUpdateHistoryListener(ChangeListener listener) {
+        updateHistoryListeners.remove(listener);
+    }
+
+    public static interface ChangeListener {
+        public void onPreferenceChange();
     }
 
     private static Preferences instance;
@@ -107,10 +169,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
             throw new RuntimeException(error);
         }
         return instance;
-    }
-
-    public static interface ChangeListener {
-        public void onPreferenceChange();
     }
 
 }

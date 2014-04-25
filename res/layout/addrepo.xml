@@ -37,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@android:drawable/ic_dialog_alert"
+        android:drawableStart="@android:drawable/ic_dialog_alert"
         android:drawablePadding="20dp"
         android:padding="20dp"
         android:text="@string/repo_delete_to_overwrite"

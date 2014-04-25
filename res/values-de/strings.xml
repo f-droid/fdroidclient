@@ -7,14 +7,26 @@
   <string name="installIncompatible">Es sieht so aus, als sei dieses Paket mit Ihrem Gerät nicht kompatibel. Möchten Sie trotzdem versuchen es zu installieren?</string>
   <string name="installDowngrade">Sie versuchen eine vorherige Version einer bereits installierten Anwendung zu installieren. Dies kann zu Fehlverhalten der Anwendung und gegebenenfalls zu Datenverlust führen. Möchten Sie dennoch fortfahren?</string>
   <string name="version">Version</string>
-  <string name="cache_downloaded">Heruntergeladene Anwendungen zwischenspeichern</string>
+  <string name="edit">Bearbeiten</string>
+  <string name="delete">Löschen</string>
+  <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
+  <string name="cache_downloaded">Anwendungszwischenspeicher</string>
+  <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf der SD-Karte behalten</string>
+  <string name="cache_downloaded_off">Installationsdateien nicht behalten</string>
   <string name="updates">Aktualisierungen</string>
   <string name="other">Andere</string>
   <string name="last_update_check">Letzte Aktualisierung der Paketquellen: %s</string>
   <string name="never">niemals</string>
+  <string name="update_interval">Automatischer Aktualisierungsintervall</string>
+  <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>
+  <string name="automatic_scan_wifi_on">Anwendungsliste nur über WLAN automatisch aktualisieren</string>
+  <string name="automatic_scan_wifi_off">Anwendungsliste immer automatisch aktualisieren</string>
   <string name="notify">Benachrichtigen</string>
+  <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
+  <string name="notify_off">Über Aktualisierungen nicht benachrichtigen</string>
   <string name="update_history">Aktualisierungsverlauf</string>
+  <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
   <string name="search_results">Suchergebnisse</string>
   <string name="app_details">Anwendungsdetails</string>
   <string name="no_such_app">Keine passende Anwendung gefunden</string>
@@ -30,7 +42,7 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
 Eine Paketquelle ist eine Sammlung von Anwendungen.
 Um eine Paketquelle hinzuzufügen drücken Sie jetzt den Menüknopf und geben Sie deren Adresse an.
 
-Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</string>
+Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/repo</string>
   <string name="inst">Installiert</string>
   <string name="not_inst">Nicht installiert</string>
   <string name="added_on">Hinzugefügt am %s</string>
@@ -53,28 +65,35 @@ Die Adresse einer Paketquelle sieht etwa so aus: https://f-droid.org/repo</strin
   <string name="process_wait_title">Bitte warten</string>
   <string name="process_update_msg">Anwendungsliste wird aktualisiert …</string>
   <string name="download_server">Anwendung wird heruntergeladen von</string>
+  <string name="nfc_is_not_enabled">NFC ist deaktiviert!</string>
+  <string name="go_to_nfc_settings">NFC-Einstellungen öffnen …</string>
+  <string name="bluetooth_activity_not_found">Keine Bluetooth-Sendemethode gefunden. Bitte wählen Sie eine aus!</string>
+  <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>
   <string name="repo_add_url">Adresse der Paketquelle</string>
   <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
   <string name="repo_exists">Diese Paketquelle existiert bereits!</string>
   <string name="repo_exists_add_fingerprint">Diese Paketquelle ist bereits eingerichtet, dieses wird neue Schlüsselinformationen hinzuzufügen.</string>
   <string name="repo_exists_enable">Diese Paketquelle ist bereits eingerichtet, bestätigen, dass Sie diese wieder aktivieren möchten.</string>
   <string name="repo_exists_and_enabled">Die eingehende Paketquelle ist bereits eingerichtet und aktiviert!</string>
-  <string name="repo_delete_to_overwrite">Sie müssen zuerst diese Paketquelle löschen, bevor Sie eine mit einem anderen Schlüssel hinzuzufügen!</string>
+  <string name="repo_delete_to_overwrite">Sie müssen diese Paketquelle zuerst löschen, bevor Sie eine mit einem anderen Schlüssel hinzuzufügen!</string>
+  <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse ignorieren: %s</string>
   <string name="repo_alrt">Die Liste der genutzten Paketquellen hat sich geändert.
 Sollen diese aktualisiert werden?</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
   <string name="menu_manage">Paketquellen verwalten</string>
+  <string name="menu_send_apk_bt">Bluetooth-FDroid.apk …</string>
   <string name="menu_preferences">Einstellungen</string>
   <string name="menu_about">Über</string>
   <string name="menu_search">Suchen</string>
   <string name="menu_add_repo">Paketquelle hinzufügen</string>
   <string name="menu_rem_repo">Paketquelle entfernen</string>
+  <string name="menu_scan_repo">Lokale Paketquellen finden</string>
   <string name="menu_launch">Starten</string>
   <string name="menu_share">Empfehlen</string>
   <string name="menu_install">Installieren</string>
   <string name="menu_uninstall">Entfernen</string>
-  <string name="menu_ignore_all">Alle Aktualisierungen ignorieren</string>
-  <string name="menu_ignore_this">Diese Aktualisierung ignorieren</string>
+  <string name="menu_ignore_all">Alle Aktua. ignorieren</string>
+  <string name="menu_ignore_this">Diese Aktua. ignorieren</string>
   <string name="menu_website">Internetseite</string>
   <string name="menu_issues">Probleme</string>
   <string name="menu_source">Quelltext</string>
@@ -88,19 +107,28 @@ Sollen diese aktualisiert werden?</string>
   <string name="antitracklist">Diese Anwendung verfolgt und versendet Ihre Aktivitäten</string>
   <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht freie Erweiterungen</string>
   <string name="antinonfreenetlist">Diese Anwendung bewirbt nicht freie Netzwerkdienste</string>
-  <string name="antinonfreedeplist">Diese Anwendung hängt ab von nicht freien Anwendungen</string>
+  <string name="antinonfreedeplist">Diese Anwendung hängt von nicht freien Anwendungen ab</string>
   <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig frei</string>
   <string name="display">Anzeige</string>
   <string name="expert">Experte</string>
+  <string name="expert_on">Zusätzliche Informationen anzeigen und zusätzliche Einstellungen aktivieren</string>
+  <string name="expert_off">Experteneinstellungen ausblenden</string>
   <string name="search_hint">Anwendungen suchen</string>
-  <string name="db_sync_mode">Datenbanksynchronisierungsart</string>
   <string name="appcompatibility">Kompatibilität der Anwendung</string>
   <string name="show_incompat_versions">Inkompatible Versionen</string>
+  <string name="show_incompat_versions_on">Mit diesem Gerät inkompatible Anwendungsversionen anzeigen</string>
+  <string name="show_incompat_versions_off">Mit diesem Gerät inkompatible Anwendungsversionen ausblenden</string>
   <string name="rooted">Root</string>
+  <string name="rooted_on">Anwendungen, die Root-Rechte verlangen, nicht ausgrauen</string>
+  <string name="rooted_off">Anwendungen ausgrauen, welche Root-Rechte verlangen</string>
   <string name="ignoreTouch">Touchscreen ignorieren</string>
+  <string name="ignoreTouch_on">Anwendungen, die einen Touchscreen benötigen, anzeigen</string>
+  <string name="ignoreTouch_off">Anwendungen normal filtern</string>
   <string name="category_all">Alle</string>
   <string name="category_whatsnew">Was gibt es Neues</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
+  <string name="local_repos_title">Lokale F-Droid-Paketquellen</string>
+  <string name="local_repos_scanning">Lokale F-Droid-Paketquellen entdecken …</string>
   <string name="status_download">Herunterladen
 %2$s / %3$s (%4$d%%) von
 %1$s</string>
@@ -110,10 +138,52 @@ Sollen diese aktualisiert werden?</string>
   <string name="status_connecting_to_repo">Verbinden mit
 %1$s</string>
   <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>
+  <string name="status_inserting">App-Details speichern (%1$d%%)</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>
   <string name="showPermissions">Berechtigungen anzeigen</string>
+  <string name="showPermissions_on">Eine Liste mit Berechtigungen, die von einer Anwendung verlangt werden, anzeigen</string>
+  <string name="showPermissions_off">Zugriffsrechte nicht vor dem Herunterladen anzeigen</string>
   <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann</string>
   <string name="compactlayout">Kompakte Ansicht</string>
+  <string name="compactlayout_on">Symbole in einer kleineren Größe anzeigen</string>
+  <string name="compactlayout_off">Symbole in normaler Größe anzeigen</string>
   <string name="theme">Thema</string>
+  <string name="unsigned">Nicht signiert</string>
+  <string name="repo_url">Adresse</string>
+  <string name="repo_num_apps">Anwendungsanzahl</string>
+  <string name="repo_fingerprint">Fingerabdruck des Paketquellensignaturschlüssels (SHA-256)</string>
+  <string name="repo_description">Beschreibung</string>
+  <string name="repo_last_update">Letzte Aktualisierung</string>
+  <string name="repo_update">Aktualisierung</string>
+  <string name="repo_name">Name</string>
+  <string name="unsigned_description">Das bedeutet, dass die Liste von
+        Anwendungen nicht verifiziert werden konnte. 
+        Sie sollten sorgsam mit Anwendungen, heruntergeladen 
+        aus nicht nicht signierten Quellen, sein.</string>
+  <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt.
+        Um beinhaltende Anwendungen anzuzeigen, muss diese Paketquelle
+        zuvor aktualisiert werden.
+
+Nach der Aktualisierung sind die Beschreibungen und andere Details 
+        hier zu finden.</string>
+  <string name="repo_delete_details">Möchten Sie die »{0}«
+        Paketquelle löschen, die {1} Anwendungen beinhaltet? Alle installierten Apps werden
+        NICHT entfernt. Allerdings werden diese nicht mehr über F-Droid aktualisiert.</string>
+  <string name="unknown">Unbekannt</string>
+  <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
+  <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet,
+        dass die Anwendungen daraus nicht mehr in F-Droid verfügbar sein werden.
+
+Bemerkung: Alle
+        zuvor installierten Anwendungen bleiben auf Ihrem Gerät.</string>
+  <string name="repo_disabled_notification">»%1$s« deaktiviert.
+
+Sie müssen
+        diese Paketquelle wieder aktivieren, um Anwendungen daraus installieren zu können.</string>
+  <string name="minsdk_or_later">%s oder später</string>
+  <string name="up_to_maxsdk">bis zu %s</string>
+  <string name="minsdk_up_to_maxsdk">%1$s bis zu %2$s</string>
+  <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte Paketquelle. Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s</string>
+  <string name="requires_features">Erfordert: %1$s</string>
 </resources>

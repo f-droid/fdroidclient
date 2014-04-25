@@ -28,7 +28,7 @@ Izdan z licenco GNU GPLv3.</string>
   <string name="tab_noninstalled">Na razpolago</string>
   <string name="tab_updates">Posodobitve</string>
   <string name="process_wait_title">Počakajte prosim</string>
-  <string name="process_update_msg">Poteka posodobitev spiska aplikacij …</string>
+  <string name="process_update_msg">Poteka posodobitev spiska aplikacij…</string>
   <string name="download_server">Prejem aplikacije iz</string>
   <string name="repo_add_url">Naslov skladišča</string>
   <string name="repo_alrt">Spisek uporabljenih skladišč se je spremenil.
@@ -52,7 +52,6 @@ Ga želite posodobiti?</string>
   <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="expert">Napredno</string>
   <string name="search_hint">Iskanje aplikacij</string>
-  <string name="db_sync_mode">Način sinhronizacije baze podatkov</string>
   <string name="appcompatibility">Združljivost aplikacij</string>
   <string name="show_incompat_versions">Yhteensopimattomat versiot</string>
   <string name="rooted">Skrbnik</string>

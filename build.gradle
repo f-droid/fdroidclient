@@ -3,7 +3,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:0.7.+'
+		classpath 'com.android.tools.build:gradle:0.9.1'
 	}
 }
 
@@ -11,16 +11,47 @@ apply plugin: 'android'
 
 dependencies {
 	compile files('libs/android-support-v4.jar')
+	compile project(':extern:AndroidPinning')
+	compile project(':extern:UniversalImageLoader:library')
+	compile project(':extern:MemorizingTrustManager')
+}
+
+project(':extern:UniversalImageLoader:library') {
+	buildscript {
+		repositories {
+			mavenCentral()
+		}
+		dependencies {
+			classpath 'com.android.tools.build:gradle:0.9.1'
+		}
+	}
+
+	apply plugin: 'android'
+
+	android {
+		compileSdkVersion 16
+		buildToolsVersion '19.0.3'
+
+		sourceSets {
+			main {
+				manifest.srcFile 'AndroidManifest.xml'
+				java.srcDirs = ['src']
+				resources.srcDirs = ['src']
+				aidl.srcDirs = ['src']
+				renderscript.srcDirs = ['src']
+			}
+		}
+	}
 }
 
 android {
 	compileSdkVersion 19
-	buildToolsVersion "19.0.1"
+	buildToolsVersion '19.0.3'
 
 	sourceSets {
 		main {
 			manifest.srcFile 'AndroidManifest.xml'
-			java.srcDirs = ['src', 'extern/Universal-Image-Loader/library/src']
+			java.srcDirs = ['src']
 			resources.srcDirs = ['src']
 			aidl.srcDirs = ['src']
 			renderscript.srcDirs = ['src']
@@ -28,14 +59,13 @@ android {
 			assets.srcDirs = ['assets']
 		}
 
-		instrumentTest.setRoot('tests')
+		instrumentTest.setRoot('test')
 	}
 
 	buildTypes {
 		release {
 			runProguard true
-			proguardFile 'proguard-project.txt'
-			proguardFile getDefaultProguardFile('proguard-android.txt')
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
 		}
 	}
 

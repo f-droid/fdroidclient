@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2012  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2014  Ciaran Gultnieks, ciaran@ciarang.com,
+ * Peter Serwylo, peter@serwylo.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,15 +22,31 @@ package org.fdroid.fdroid;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.util.Log;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.AppProvider;
 
-public class PackageReceiver extends BroadcastReceiver {
+abstract class PackageReceiver extends BroadcastReceiver {
+
+    abstract protected void handle(Context context, String appId);
+
+    protected PackageInfo getPackageInfo(Context context, String appId) {
+        for( PackageInfo info : context.getPackageManager().getInstalledPackages(0)) {
+            if (info.packageName.equals(appId)) {
+                return info;
+            }
+        }
+        return null;
+    }
 
     @Override
-    public void onReceive(Context ctx, Intent intent) {
-        String appid = intent.getData().getSchemeSpecificPart();
-        Log.d("FDroid", "PackageReceiver received "+appid);
-        ((FDroidApp) ctx.getApplicationContext()).invalidateApp(appid);
+    public void onReceive(Context context, Intent intent) {
+        Log.d("FDroid", "PackageReceiver received [action = '" + intent.getAction() + "', data = '" + intent.getData() + "']");
+        String appId = intent.getData().getSchemeSpecificPart();
+        handle(context, appId);
+        context.getContentResolver().notifyChange(AppProvider.getContentUri(appId), null);
+        context.getContentResolver().notifyChange(ApkProvider.getAppUri(appId), null);
     }
 
 }

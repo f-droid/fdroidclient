@@ -29,7 +29,7 @@
 
 Ризнице су места одакле се скидају апликације. Да би сте додали једну, притисните тастер МЕНИ и унесите адресу.
 
-Адреса ризнице би личила на ово: http://f-droid.org/repo</string>
+Адреса ризнице би личила на ово: https://f-droid.org/repo</string>
   <string name="inst">Инсталирана</string>
   <string name="not_inst">Није Инсталирана</string>
   <string name="added_on">Додато  %s</string>
@@ -81,7 +81,6 @@
   <string name="display">Прикажи</string>
   <string name="expert">Стручни</string>
   <string name="search_hint">Претрага апликација</string>
-  <string name="db_sync_mode">Режим синхронизације базе података</string>
   <string name="appcompatibility">Компатибилност апликације</string>
   <string name="rooted">Рут</string>
   <string name="ignoreTouch">Игнориши Додирни Екран</string>

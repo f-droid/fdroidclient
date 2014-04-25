@@ -1,19 +1,25 @@
 package org.fdroid.fdroid.views.fragments;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.nfc.NfcAdapter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import org.fdroid.fdroid.*;
-
-import java.util.List;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 
 public class RepoDetailsFragment extends Fragment {
 
@@ -32,9 +38,9 @@ public class RepoDetailsFragment extends Fragment {
         R.id.text_num_apps,
         R.id.label_last_update,
         R.id.text_last_update,
-        R.id.label_signature,
-        R.id.text_signature,
-        R.id.text_signature_description
+        R.id.label_repo_fingerprint,
+        R.id.text_repo_fingerprint,
+        R.id.text_repo_fingerprint_description
     };
 
     /**
@@ -48,63 +54,40 @@ public class RepoDetailsFragment extends Fragment {
 
     private static final int DELETE = 0;
     private static final int UPDATE = 1;
+    private static final int ENABLE_NFC = 2;
 
-    public void setRepoChangeListener(OnRepoChangeListener listener) {
-        repoChangeListener = listener;
-    }
-
-    private OnRepoChangeListener repoChangeListener;
-
-    public static interface OnRepoChangeListener {
-
-        /**
-         * This fragment is responsible for getting confirmation from the
-         * user, so you should presume that the user has already consented
-         * and confirmed to the deletion.
-         */
-        public void onDeleteRepo(DB.Repo repo);
-
-        public void onRepoDetailsChanged(DB.Repo repo);
-
-        public void onEnableRepo(DB.Repo repo);
-
-        public void onDisableRepo(DB.Repo repo);
-
-        public void onUpdatePerformed(DB.Repo repo);
-
-    }
+    private MenuItem enableNfc = null;
 
     // TODO: Currently initialised in onCreateView. Not sure if that is the
     // best way to go about this...
-    private DB.Repo repo;
+    private Repo repo;
 
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
     }
 
+    private long getRepoId() {
+        return getArguments().getLong(RepoDetailsFragment.ARG_REPO_ID, 0);
+    }
+
     /**
      * After, for example, a repo update, the details will have changed in the
-     * database. However, or local reference to the DB.Repo object will not
+     * database. However, or local reference to the Repo object will not
      * have been updated. The safest way to deal with this is to reload the
      * repo object directly from the database.
      */
-    private void reloadRepoDetails() {
-        try {
-            DB db = DB.getDB();
-            repo = db.getRepo(repo.id);
-        } finally {
-            DB.releaseDB();
-        }
+    private Repo loadRepoDetails() {
+        return RepoProvider.Helper.findById(getActivity(), getRepoId());
     }
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        int repoId = getArguments().getInt(ARG_REPO_ID);
-        DB db = DB.getDB();
-        repo = db.getRepo(repoId);
-        DB.releaseDB();
+
+        repo = loadRepoDetails();
 
         if (repo == null) {
-            Log.e("FDroid", "Error showing details for repo '" + repoId + "'");
+            Log.e("FDroid", "Error showing details for repo '" + getRepoId() + "'");
             return new LinearLayout(container.getContext());
         }
 
@@ -174,10 +157,12 @@ public class RepoDetailsFragment extends Fragment {
         TextView lastUpdated   = (TextView)repoView.findViewById(R.id.text_last_update);
 
         name.setText(repo.getName());
-        numApps.setText(Integer.toString(repo.getNumberOfApps()));
+
+        int appCount = RepoProvider.Helper.countAppsForRepo(getActivity(), repo.getId());
+        numApps.setText(Integer.toString(appCount));
 
         setupDescription(repoView, repo);
-        setupSignature(repoView, repo);
+        setupRepoFingerprint(repoView, repo);
 
         // Repos that existed before this feature was supported will have an
         // "Unknown" last update until next time they update...
@@ -186,7 +171,7 @@ public class RepoDetailsFragment extends Fragment {
         lastUpdated.setText(lastUpdate);
     }
 
-    private void setupDescription(ViewGroup parent, DB.Repo repo) {
+    private void setupDescription(ViewGroup parent, Repo repo) {
 
         TextView descriptionLabel = (TextView)parent.findViewById(R.id.label_description);
         TextView description      = (TextView)parent.findViewById(R.id.text_description);
@@ -210,20 +195,20 @@ public class RepoDetailsFragment extends Fragment {
      * list can be updated. We will perform the update ourselves though.
      */
     private void performUpdate() {
-        repo.enable((FDroidApp)getActivity().getApplication());
-        UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
+        // Ensure repo is enabled before updating...
+        ContentValues values = new ContentValues(1);
+        values.put(RepoProvider.DataColumns.IN_USE, 1);
+        RepoProvider.Helper.update(getActivity(), repo, values);
+
+        UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
-                if (event.type == UpdateService.STATUS_COMPLETE_AND_SAME ||
-                        event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
-                    reloadRepoDetails();
+                if (event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                    repo = loadRepoDetails();
                     updateView((ViewGroup)getView());
                 }
             }
         });
-        if (repoChangeListener != null) {
-            repoChangeListener.onUpdatePerformed(repo);
-        }
     }
 
     /**
@@ -238,18 +223,15 @@ public class RepoDetailsFragment extends Fragment {
         public void afterTextChanged(Editable s) {}
 
         @Override
+        // TODO: This is called each character change, resulting in a DB query.
+        // Doesn't exactly cause performance problems,
+        // but seems silly not to go for more of a "focus out" event then
+        // this "text changed" event.
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (!repo.address.equals(s.toString())) {
-                repo.address = s.toString();
-                try {
-                    DB db = DB.getDB();
-                    db.updateRepo(repo);
-                } finally {
-                    DB.releaseDB();
-                }
-                if (repoChangeListener != null) {
-                    repoChangeListener.onRepoDetailsChanged(repo);
-                }
+                ContentValues values = new ContentValues(1);
+                values.put(RepoProvider.DataColumns.ADDRESS, s.toString());
+                RepoProvider.Helper.update(getActivity(), repo, values);
             }
         }
     }
@@ -270,18 +252,54 @@ public class RepoDetailsFragment extends Fragment {
         MenuItemCompat.setShowAsAction(delete,
             MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+    }
 
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        if (Build.VERSION.SDK_INT >= 14)
+            prepareNfcMenuItems(menu);
+    }
+
+    @TargetApi(16)
+    private void prepareNfcMenuItems(Menu menu) {
+        boolean needsEnableNfcMenuItem = false;
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
+        if (nfcAdapter == null) {
+            return;
+        }
+        if (Build.VERSION.SDK_INT < 16)
+            needsEnableNfcMenuItem = !nfcAdapter.isEnabled();
+        else
+            needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
+        if (needsEnableNfcMenuItem) {
+            if (enableNfc != null)
+                return; // already created
+            enableNfc = menu.add(Menu.NONE, ENABLE_NFC, 0, R.string.enable_nfc_send);
+            enableNfc.setIcon(android.R.drawable.ic_menu_preferences);
+            MenuItemCompat.setShowAsAction(enableNfc,
+                MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
+                MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+        } else if (enableNfc != null) {
+            // remove the existing MenuItem since NFC is now enabled
+            menu.removeItem(enableNfc.getItemId());
+            enableNfc = null;
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == DELETE) {
-            promptForDelete();
-            return true;
-        } else if (item.getItemId() == UPDATE) {
-            performUpdate();
-            return true;
+        switch (item.getItemId()) {
+            case DELETE:
+                promptForDelete();
+                return true;
+            case UPDATE:
+                performUpdate();
+                return true;
+            case ENABLE_NFC:
+                Intent intent = new Intent(getActivity(), NfcNotEnabledActivity.class);
+                startActivity(intent);
+                return true;
         }
 
         return false;
@@ -293,50 +311,53 @@ public class RepoDetailsFragment extends Fragment {
             .setIcon(android.R.drawable.ic_menu_delete)
             .setMessage(R.string.repo_confirm_delete_body)
             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (repoChangeListener != null) {
-                    DB.Repo repo = RepoDetailsFragment.this.repo;
-                    repoChangeListener.onDeleteRepo(repo);
-                }
-            }
-        }).setNegativeButton(android.R.string.cancel,
-            new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // Do nothing...
+                    Repo repo = RepoDetailsFragment.this.repo;
+                    RepoProvider.Helper.remove(getActivity(), repo.getId());
+                    getActivity().finish();
                 }
-            }
+            }).setNegativeButton(android.R.string.cancel,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing...
+                    }
+                }
         ).show();
     }
 
-    private void setupSignature(ViewGroup parent, DB.Repo repo) {
-        TextView signatureView     = (TextView)parent.findViewById(R.id.text_signature);
-        TextView signatureDescView = (TextView)parent.findViewById(R.id.text_signature_description);
+    private void setupRepoFingerprint(ViewGroup parent, Repo repo) {
+        TextView repoFingerprintView     = (TextView)parent.findViewById(R.id.text_repo_fingerprint);
+        TextView repoFingerprintDescView = (TextView)parent.findViewById(R.id.text_repo_fingerprint_description);
 
-        String signature;
-        int signatureColour;
+        String repoFingerprint;
+        int repoFingerprintColor;
 
-        if (repo.pubkey != null && repo.pubkey.length() > 0) {
-            signature       = Utils.formatFingerprint(repo.pubkey);
-            signatureColour = getResources().getColor(R.color.signed);
-            signatureDescView.setVisibility(View.GONE);
+// TODO show the current state of the signature check, not just whether there is a key or not
+        if (TextUtils.isEmpty(repo.fingerprint) && TextUtils.isEmpty(repo.pubkey)) {
+            repoFingerprint = getResources().getString(R.string.unsigned);
+            repoFingerprintColor = getResources().getColor(R.color.unsigned);
+            repoFingerprintDescView.setVisibility(View.VISIBLE);
+            repoFingerprintDescView.setText(getResources().getString(R.string.unsigned_description));
         } else {
-            signature       = getResources().getString(R.string.unsigned);
-            signatureColour = getResources().getColor(R.color.unsigned);
-            signatureDescView.setVisibility(View.VISIBLE);
-            signatureDescView.setText(getResources().getString(R.string.unsigned_description));
+            // this is based on repo.fingerprint always existing, which it should
+            repoFingerprint = Utils.formatFingerprint(repo.fingerprint);
+            repoFingerprintColor = getResources().getColor(R.color.signed);
+            repoFingerprintDescView.setVisibility(View.GONE);
         }
 
-        signatureView.setText(signature);
-        signatureView.setTextColor(signatureColour);
+        repoFingerprintView.setText(repoFingerprint);
+        repoFingerprintView.setTextColor(repoFingerprintColor);
     }
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }

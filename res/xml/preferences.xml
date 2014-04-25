@@ -49,10 +49,5 @@
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false"
 			android:key="expert" />
-		<ListPreference android:title="@string/db_sync_mode"
-			android:key="dbSyncMode"
-			android:dependency="expert"
-			android:defaultValue="full" android:entries="@array/dbSyncModeNames"
-			android:entryValues="@array/dbSyncModeValues" />
 	</PreferenceCategory>
 </PreferenceScreen>

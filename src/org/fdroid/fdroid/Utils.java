@@ -18,28 +18,33 @@
 
 package org.fdroid.fdroid;
 
-import android.os.Build;
-import android.util.Log;
+import android.content.Context;
 
-import java.io.BufferedReader;
+import android.content.pm.PackageInfo;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
 import java.security.MessageDigest;
-import java.util.Formatter;
-import java.util.Locale;
-
-import android.content.Context;
-
-import com.nostra13.universalimageloader.utils.StorageUtils;
+import java.util.*;
 
 public final class Utils {
 
     public static final int BUFFER_SIZE = 4096;
+
+    // The date format used for storing dates (e.g. lastupdated, added) in the
+    // database.
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
@@ -47,7 +52,24 @@ public final class Utils {
     public static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
-
+    public static String getIconsDir(Context context) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        String iconsDir;
+        if (metrics.densityDpi >= 640) {
+            iconsDir = "/icons-640/";
+        } else if (metrics.densityDpi >= 480) {
+            iconsDir = "/icons-480/";
+        } else if (metrics.densityDpi >= 320) {
+            iconsDir = "/icons-320/";
+        } else if (metrics.densityDpi >= 240) {
+            iconsDir = "/icons-240/";
+        } else if (metrics.densityDpi >= 160) {
+            iconsDir = "/icons-160/";
+        } else {
+            iconsDir = "/icons-120/";
+        }
+        return iconsDir;
+    }
 
     public static void copy(InputStream input, OutputStream output)
             throws IOException {
@@ -96,99 +118,74 @@ public final class Utils {
         return String.format(FRIENDLY_SIZE_FORMAT[i], s);
     }
 
+    private static final String[] androidVersionNames = {
+        "?",     // 0, undefined
+        "1.0",   // 1
+        "1.1",   // 2
+        "1.5",   // 3
+        "1.6",   // 4
+        "2.0",   // 5
+        "2.0.1", // 6
+        "2.1",   // 7
+        "2.2",   // 8
+        "2.3",   // 9
+        "2.3.3", // 10
+        "3.0",   // 11
+        "3.1",   // 12
+        "3.2",   // 13
+        "4.0",   // 14
+        "4.0.3", // 15
+        "4.1",   // 16
+        "4.2",   // 17
+        "4.3",   // 18
+        "4.4"    // 19
+    };
+
     public static String getAndroidVersionName(int sdkLevel) {
-        if (sdkLevel < 1) return null;
-        switch (sdkLevel) {
-            case 19: return "4.4";
-            case 18: return "4.3";
-            case 17: return "4.2";
-            case 16: return "4.1";
-            case 15: return "4.0.3";
-            case 14: return "4.0";
-            case 13: return "3.2";
-            case 12: return "3.1";
-            case 11: return "3.0";
-            case 10: return "2.3.3";
-            case 9: return "2.3";
-            case 8: return "2.2";
-            case 7: return "2.1";
-            case 6: return "2.0.1";
-            case 5: return "2.0";
-            case 4: return "1.6";
-            case 3: return "1.5";
-            case 2: return "1.1";
-            case 1: return "1.0";
-            default: return "?";
-        }
+        if (sdkLevel < 0 || sdkLevel > 19) return androidVersionNames[0];
+        return androidVersionNames[sdkLevel];
     }
 
     public static int countSubstringOccurrence(File file, String substring) throws IOException {
         int count = 0;
-        BufferedReader reader = null;
+        FileReader input = null;
         try {
+            int currentSubstringIndex = 0;
+            char[] buffer = new char[4096];
 
-            reader = new BufferedReader(new FileReader(file));
-            while(true) {
-                String line = reader.readLine();
-                if (line == null) {
-                    break;
+            input = new FileReader(file);
+            int numRead = input.read(buffer);
+            while(numRead != -1) {
+
+                for (char c : buffer) {
+                    if (c == substring.charAt(currentSubstringIndex)) {
+                        currentSubstringIndex ++;
+                        if (currentSubstringIndex == substring.length()) {
+                            count ++;
+                            currentSubstringIndex = 0;
+                        }
+                    } else {
+                        currentSubstringIndex = 0;
+                    }
                 }
-                count += countSubstringOccurrence(line, substring);
+                numRead = input.read(buffer);
             }
-
         } finally {
-            closeQuietly(reader);
+            closeQuietly(input);
         }
         return count;
     }
 
-    /**
-     * Thanks to http://stackoverflow.com/a/767910
-     */
-    public static int countSubstringOccurrence(String toSearch, String substring) {
-        int count = 0;
-        int index = 0;
-        while (true) {
-            index = toSearch.indexOf(substring, index);
-            if (index == -1){
-                break;
-            }
-            count ++;
-            index += substring.length();
-        }
-        return count;
+    // return a fingerprint formatted for display
+    public static String formatFingerprint(String fingerprint) {
+        if (fingerprint.length() != 62)  // SHA-256 is 62 hex chars
+            return "BAD FINGERPRINT";
+        String displayFP = fingerprint.substring(0, 2);
+        for (int i = 2; i < fingerprint.length(); i = i + 2)
+            displayFP += " " + fingerprint.substring(i, i + 2);
+        return displayFP;
     }
 
-    public static String formatFingerprint(DB.Repo repo) {
-        return formatFingerprint(repo.pubkey);
-    }
-
-    public static String formatFingerprint(String key) {
-        String fingerprintString;
-        if (key == null) {
-            return "";
-        }
-
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-1");
-            digest.update(Hasher.unhex(key));
-            byte[] fingerprint = digest.digest();
-            Formatter formatter = new Formatter(new StringBuilder());
-            formatter.format("%02X", fingerprint[0]);
-            for (int i = 1; i < fingerprint.length; i++) {
-                formatter.format(i % 5 == 0 ? " %02X" : ":%02X",
-                        fingerprint[i]);
-            }
-            fingerprintString = formatter.toString();
-            formatter.close();
-        } catch (Exception e) {
-            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
-                    + Log.getStackTraceString(e));
-            fingerprintString = "";
-        }
-        return fingerprintString;
-    }
-    
     public static File getApkCacheDir(Context context) {
         File apkCacheDir = new File(
                 StorageUtils.getCacheDirectory(context, true), "apks");
@@ -196,6 +193,99 @@ public final class Utils {
             apkCacheDir.mkdir();
         }
         return apkCacheDir;
+    }
+
+    public static String calcFingerprint(String keyHexString) {
+        if (TextUtils.isEmpty(keyHexString))
+            return null;
+        else
+            return calcFingerprint(Hasher.unhex(keyHexString));
+    }
+
+    public static String calcFingerprint(Certificate cert) {
+        try {
+            return calcFingerprint(cert.getEncoded());
+        } catch (CertificateEncodingException e) {
+            return null;
+        }
+    }
+
+    public static String calcFingerprint(byte[] key) {
+        String ret = null;
+        try {
+            // keytool -list -v gives you the SHA-256 fingerprint
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.update(key);
+            byte[] fingerprint = digest.digest();
+            Formatter formatter = new Formatter(new StringBuilder());
+            for (int i = 1; i < fingerprint.length; i++) {
+                formatter.format("%02X", fingerprint[i]);
+            }
+            ret = formatter.toString();
+            formatter.close();
+        } catch (Exception e) {
+            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
+                    + Log.getStackTraceString(e));
+        }
+        return ret;
+    }
+
+    public static class CommaSeparatedList implements Iterable<String> {
+        private String value;
+
+        private CommaSeparatedList(String list) {
+            value = list;
+        }
+
+        public static CommaSeparatedList make(List<String> list) {
+            if (list == null || list.size() == 0)
+                return null;
+            else {
+                StringBuilder sb = new StringBuilder();
+                for(int i = 0; i < list.size(); i ++) {
+                    if (i > 0) {
+                        sb.append(',');
+                    }
+                    sb.append(list.get(i));
+                }
+                return new CommaSeparatedList(sb.toString());
+            }
+        }
+
+        public static CommaSeparatedList make(String list) {
+            if (list == null || list.length() == 0)
+                return null;
+            else
+                return new CommaSeparatedList(list);
+        }
+
+        public static String str(CommaSeparatedList instance) {
+            return (instance == null ? null : instance.toString());
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+
+        public String toPrettyString() {
+            return value.replaceAll(",", ", ");
+        }
+
+        @Override
+        public Iterator<String> iterator() {
+            TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(',');
+            splitter.setString(value);
+            return splitter.iterator();
+        }
+
+        public boolean contains(String v) {
+            for (String s : this) {
+                if (s.equals(v))
+                    return true;
+            }
+            return false;
+        }
     }
 
 }

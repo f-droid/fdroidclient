@@ -11,9 +11,4 @@
     <item>Dark</item>
     <item>Light</item>
   </string-array>
-  <string-array name="dbSyncModeNames">
-    <item>关闭(存在安全风险)</item>
-    <item>正常</item>
-    <item>完整的</item>
-  </string-array>
 </resources>

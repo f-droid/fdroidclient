@@ -36,8 +36,6 @@ import org.fdroid.fdroid.compat.ActionBarCompat;
 public class PreferencesActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener {
 
-    public static final int RESULT_RELOAD = 1;
-    public static final int RESULT_REFILTER = 2;
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
@@ -53,15 +51,19 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_CACHE_APK,
-        Preferences.PREF_EXPERT,
-        Preferences.PREF_DB_SYNC
+        Preferences.PREF_EXPERT
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
+
+        // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
+        // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+        // for reason why.
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+
         addPreferencesFromResource(R.xml.preferences);
     }
 
@@ -85,8 +87,7 @@ public class PreferencesActivity extends PreferenceActivity implements
                     pref.getText()));
     }
 
-
-    protected void updateSummary(String key) {
+    protected void updateSummary(String key, boolean changing) {
 
         if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
             ListPreference pref = (ListPreference)findPreference(
@@ -122,20 +123,18 @@ public class PreferencesActivity extends PreferenceActivity implements
 
         } else if (key.equals(Preferences.PREF_THEME)) {
             entrySummary(key);
-            result |= RESULT_RESTART;
-            setResult(result);
+            if (changing) {
+                result |= RESULT_RESTART;
+                setResult(result);
+            }
 
         } else if (key.equals(Preferences.PREF_INCOMP_VER)) {
             onoffSummary(key, R.string.show_incompat_versions_on,
                 R.string.show_incompat_versions_off);
-            result ^= RESULT_RELOAD;
-            setResult(result);
 
         } else if (key.equals(Preferences.PREF_ROOTED)) {
             onoffSummary(key, R.string.rooted_on,
                 R.string.rooted_off);
-            result ^= RESULT_REFILTER;
-            setResult(result);
 
         } else if (key.equals(Preferences.PREF_IGN_TOUCH)) {
             onoffSummary(key, R.string.ignoreTouch_on,
@@ -149,8 +148,6 @@ public class PreferencesActivity extends PreferenceActivity implements
             onoffSummary(key, R.string.expert_on,
                 R.string.expert_off);
 
-        } else if (key.equals(Preferences.PREF_DB_SYNC)) {
-            entrySummary(key);
         }
     }
 
@@ -159,11 +156,10 @@ public class PreferencesActivity extends PreferenceActivity implements
 
         super.onResume();
         getPreferenceScreen().getSharedPreferences()
-                    .registerOnSharedPreferenceChangeListener(
-                            (OnSharedPreferenceChangeListener)this);
+                    .registerOnSharedPreferenceChangeListener(this);
 
         for (String key : summariesToUpdate) {
-            updateSummary(key);
+            updateSummary(key, false);
         }
     }
 
@@ -187,8 +183,7 @@ public class PreferencesActivity extends PreferenceActivity implements
     @Override
     public void onSharedPreferenceChanged(
             SharedPreferences sharedPreferences, String key) {
-
-        updateSummary(key);
+        updateSummary(key, true);
     }
 
 }

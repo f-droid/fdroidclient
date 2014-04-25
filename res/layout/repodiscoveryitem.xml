@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+       <TextView
+          android:id="@+id/reposcanitemname"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:maxLines="1"
+          android:paddingLeft="8sp"
+          android:paddingStart="8sp"
+          android:text="@string/discovered_repo_name"
+          android:textSize="16sp"
+          android:textStyle="bold" />
+
+       <TextView
+          android:id="@+id/reposcanitemaddress"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/reposcanitemname"
+          android:layout_marginTop="2dp"
+          android:paddingLeft="8sp"
+          android:paddingStart="8sp"
+          android:maxLines="1"
+          android:text="@string/repo_address"
+          android:textSize="14sp" />
+
+</RelativeLayout>

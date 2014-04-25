@@ -21,12 +21,14 @@ package org.fdroid.fdroid;
 
 import java.io.File;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
 public class InstallManager {
@@ -100,7 +102,16 @@ public class InstallManager {
         intent.setAction(android.content.Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + file.getPath()),
                 "application/vnd.android.package-archive");
+        extraNotUnknownSource(intent);
         mActivity.startActivityForResult(intent, REQUEST_INSTALL);
+    }
+
+    @TargetApi(14)
+    private void extraNotUnknownSource(Intent intent) {
+        if (Build.VERSION.SDK_INT < 14) {
+            return;
+        }
+        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
     }
 
     private InstallSystemManager.InstallSystemCallback mySystemCallback = new InstallSystemManager.InstallSystemCallback() {

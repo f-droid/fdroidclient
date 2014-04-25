@@ -7,14 +7,26 @@
   <string name="installIncompatible">Parece que este paquete no es compatible con tu dispositivo. ¿Quieres probar e instalarlo de todos modos?</string>
   <string name="installDowngrade">Estás intentando instalar una versión inferior de esta aplicación. Hacerlo puede derivar en mal funcionamiento o incluso pérdida de datos. ¿Quieres intentarlo de todos modos?</string>
   <string name="version">Versión</string>
+  <string name="edit">Editar</string>
+  <string name="delete">Borrar</string>
+  <string name="enable_nfc_send">Habilitar envío NFC…</string>
   <string name="cache_downloaded">Caché de aplicaciones descargadas</string>
+  <string name="cache_downloaded_on">Mantener en la tarjeta SD los ficheros apk descargados</string>
+  <string name="cache_downloaded_off">No conservar ningún archivo apk</string>
   <string name="updates">Actualizaciones</string>
   <string name="other">Otros</string>
   <string name="last_update_check">Último escaneo del repositorio: %s</string>
   <string name="never">nunca</string>
+  <string name="update_interval">Intervalo de actualización automática</string>
+  <string name="update_interval_zero">No actualizar la lista de aplicaciones automáticamente</string>
   <string name="automatic_scan_wifi">Sólo con wifi</string>
+  <string name="automatic_scan_wifi_on">Actualizar la lista de aplicaciones automáticamente sólo con Wi-Fi</string>
+  <string name="automatic_scan_wifi_off">Actualizar la lista de aplicaciones automáticamente siempre</string>
   <string name="notify">Notificar</string>
+  <string name="notify_on">Notificar cuando hay actualizaciones</string>
+  <string name="notify_off">No notificar ninguna actualización</string>
   <string name="update_history">Historial de actualizaciones</string>
+  <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
   <string name="search_results">Resultados de la búsqueda</string>
   <string name="app_details">Detalles de la aplicación</string>
   <string name="no_such_app">No se encontró la aplicación</string>
@@ -39,6 +51,9 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="repo_add_title">Añadir nuevo repositorio</string>
   <string name="repo_add_add">Añadir</string>
   <string name="cancel">Cancelar</string>
+  <string name="enable">Habilitar</string>
+  <string name="add_key">Añadir clave</string>
+  <string name="overwrite">Sobreescribir</string>
   <string name="repo_delete_title">Elige el repositorio a eliminar</string>
   <string name="repo_update_title">Actualizar repositorios</string>
   <string name="tab_noninstalled">Disponible</string>
@@ -49,16 +64,29 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="process_wait_title">Por favor, espera</string>
   <string name="process_update_msg">Actualizando la lista de aplicaciones…</string>
   <string name="download_server">Obteniendo la aplicación de</string>
+  <string name="nfc_is_not_enabled">¡No está habilitado NFC!</string>
+  <string name="go_to_nfc_settings">Ir a los ajustes de NFC…</string>
+  <string name="bluetooth_activity_not_found">No se encontró método de envío Bluetooth, ¡elige uno!</string>
+  <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>
   <string name="repo_add_url">Dirección del repositorio</string>
+  <string name="repo_add_fingerprint">Huella digital (opcional)</string>
+  <string name="repo_exists">¡Este repositorio ya existe!</string>
+  <string name="repo_exists_add_fingerprint">Este repositorio ya está configurado, esto agregará nueva información sobre la clave.</string>
+  <string name="repo_exists_enable">Este repositorio ya está configurado, confirma que quieres volver a habilitarlo.</string>
+  <string name="repo_exists_and_enabled">¡El repositorio ya está configurado y habilitado!</string>
+  <string name="repo_delete_to_overwrite">¡Debes borrar este repositorio antes de añadir uno con una clave diferente!</string>
+  <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
   <string name="repo_alrt">La lista de repositorios usada ha cambiado.
 ¿Deseas actualizarlos?</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Gestionar Repositorios</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
   <string name="menu_preferences">Preferencias</string>
   <string name="menu_about">Acerca de</string>
   <string name="menu_search">Buscar</string>
   <string name="menu_add_repo">Repositorio nuevo</string>
   <string name="menu_rem_repo">Borrar Repositorio</string>
+  <string name="menu_scan_repo">Buscar repos locales</string>
   <string name="menu_launch">Ejecutar</string>
   <string name="menu_share">Compartir</string>
   <string name="menu_install">Instalar</string>
@@ -79,17 +107,27 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
   <string name="antinonfreenetlist">Esta aplicación promueve servicios de red no libres</string>
   <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
+  <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
   <string name="display">Mostrar</string>
   <string name="expert">Experto</string>
+  <string name="expert_on">Mostrar info extra y habilitar los ajustes extra</string>
+  <string name="expert_off">Ocultar extras para usuarios experimentados</string>
   <string name="search_hint">Buscar aplicaciones</string>
-  <string name="db_sync_mode">Modo síncrono de base de datos</string>
   <string name="appcompatibility">Compatibilidad de aplicaciones</string>
   <string name="show_incompat_versions">Versiones incompatibles</string>
+  <string name="show_incompat_versions_on">Mostrar las versiones de aplicaciones incompatibles con el dispositivo</string>
+  <string name="show_incompat_versions_off">Ocultar las versiones de aplicaciones no compatibles con el dispositivo</string>
   <string name="rooted">Root</string>
+  <string name="rooted_on">No marcar en gris las aplicaciones que requieren privilegios de root</string>
+  <string name="rooted_off">Marcar en gris las aplicaciones que requieren privilegios de root</string>
   <string name="ignoreTouch">Ignorar pantalla táctil</string>
+  <string name="ignoreTouch_on">Incluir aplicaciones que requieran pantalla táctil siempre</string>
+  <string name="ignoreTouch_off">Filtrar aplicaciones de manera normal</string>
   <string name="category_all">Todos</string>
   <string name="category_whatsnew">Novedades</string>
   <string name="category_recentlyupdated">Recientemente actualizados</string>
+  <string name="local_repos_title">Repos de FDroid locales</string>
+  <string name="local_repos_scanning">Descubriendo repos locales de FDroid…</string>
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
@@ -99,10 +137,46 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="status_connecting_to_repo">Conectando a
 %1$s</string>
   <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo…</string>
+  <string name="status_inserting">Guardando detalles de la aplicación (%1$d%%)</string>
   <string name="no_permissions">No se usan permisos.</string>
   <string name="permissions_for_long">Permisos para la versión %s</string>
   <string name="showPermissions">Mostrar permisos</string>
+  <string name="showPermissions_on">Mostrar una lista de los permisos que requiere una aplicación</string>
+  <string name="showPermissions_off">No mostrar permisos antes de descargar</string>
   <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s</string>
   <string name="compactlayout">Diseño compacto</string>
+  <string name="compactlayout_on">Mostrar iconos en tamaño menor</string>
+  <string name="compactlayout_off">Mostrar iconos en tamaño regular</string>
   <string name="theme">Tema</string>
+  <string name="unsigned">No firmado</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Número de aplicaciones</string>
+  <string name="repo_fingerprint">Huella digital de la clave de firmado del repo (SHA-256)</string>
+  <string name="repo_description">Descripción</string>
+  <string name="repo_last_update">Última actualización</string>
+  <string name="repo_update">Actualizar</string>
+  <string name="repo_name">Nombre</string>
+  <string name="unsigned_description">Esto significa que la lista de
+aplicaciones no ha podido verificarse.
+Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.</string>
+  <string name="repo_not_yet_updated">Este repositorio aún no ha sido usado.
+Para ver las aplicaciones que ofrece, necesitarás actualizarlo.
+Una vez actualizado, la descripción y otros detalles estarán disponibles aquí.</string>
+  <string name="repo_delete_details">¿Quieres borrar el repositorio
+\"{0}\", que contiene {1} aplicaciones?
+Las aplicaciones instaladas NO se eliminarán, pero ya no podrás actualizarlas desde F-Droid.</string>
+  <string name="unknown">Desconocido</string>
+  <string name="repo_confirm_delete_title">¿Borrar repositorio?</string>
+  <string name="repo_confirm_delete_body">Borrar un repositorio significa
+que sus aplicaciones ya no estarán disponibles en F-Droid.
+
+Nota: todas las aplicaciones previamente instaladas se quedarán en tu dispositivo.</string>
+  <string name="repo_disabled_notification">\"%1$s\" deshabilitado.
+
+Necesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
+  <string name="minsdk_or_later">%s o posterior</string>
+  <string name="up_to_maxsdk">hasta %s</string>
+  <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
+  <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma WiFi que el repo que acabas de añadir! Intenta unirte a esta red: %s</string>
+  <string name="requires_features">Requiere: %1$s</string>
 </resources>

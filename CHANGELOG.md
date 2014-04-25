@@ -1,5 +1,57 @@
 ### Upcoming release
 
+* Fix crash on startup for devices with more than 500 installed apps
+
+* Send apps to other devices directly from the App Details screen via NFC or Bluetooth
+
+* Improved performance for devices with many installed apps
+
+* Improve ellipsizing and spacing in the app lists
+
+* Start translating the category lists
+
+* Keep track of installed apps internally, rather than asking Android each time
+
+* Fix some crashes
+
+* Translation updates
+
+### 0.63 (2014-04-07)
+
+* Support for Network Service Discovery of local FDroid repos on Android 4.1+
+  from the repository management screen
+
+* Always remember the selected category in the list of apps
+
+* Send FDroid via Bluetooth to any device that supports receiving APKs via
+  Bluetooth (stock Android blocks APKs, most ROMs allow them)
+
+* NFC support: beam repo configs from the repo detail view (Android 4.0+),
+  beam the FDroid.apk from FDroid's main screen (Android 4.1+)
+
+* Support for repositories using self-signed HTTPS certificates through
+  a Trust-on-first-use popup
+
+* Support for TLS Subject-Public-Key-Identifier pinning
+
+* Add native Right-to-Left support on devices running 4.2 and later
+
+* Filter app compatibility by maxSdkVersion too
+
+* Major internal changes to enable F-Droid to handle repos with thousands
+  of apps without slowing down too much. These internal changes will also make
+  new features easier to implement.
+
+* Various fixes to layout issues introduced in 0.58
+
+* Translation updates
+
+### 0.58 (2014-01-11)
+
+* Download icons with a resolution that matches the device's screen density,
+  which saves resources on smaller devices and gets rid of unnecessary
+  blurriness on larger devices
+
 * Tweaked some layouts, especially the app lists and their compact layout
 
 * App lists now show more useful version information: current version names,
@@ -10,13 +62,13 @@
 * Slightly increase performance in repo index XML handling by mapping apps
   with a HashMap, as opposed to doing linear searches
 
-* More info on App Details: The category in which the app was found, all the
-  categories the app is in and the Android version required to run each one of
-  its versions available.
+* More app info shown in App Details: The category in which the app was found
+  and all the categories the app is in, as well as the Android version
+  required to run each one of its versions available
 
 * The preferences screen now uses descriptive summaries, which means that you
   can see what the checkbox preferences actually mean and what the edit and
-  list preferences are set at.
+  list preferences are set at
 
 * Support for dogecoin donation method added (wow)
 
@@ -27,6 +79,14 @@
 
 * Fixed a crash when trying to access a non-existing app
 
+* F-Droid registers with Android to receive F-Droid URIs https://\*/fdroid/repo
+  and fdroidrepos://
+
+* support including signing key fingerprint in repo URIs
+
+* when adding new repos that include the fingerprint, check to see whether
+  that repo exists in F-Droid already, and if the fingerprints match
+
 * Other minor bug fixes
 
 * Lots of translation updates
@@ -34,6 +94,7 @@
 ### 0.55 (2013-11-11)
 
 * Fixed problems with category selection and permission lists on Android 2.X devices.
+
 * Lots of translation updates, including new Norwegian translation.
 
 ### 0.54 (2013-11-05)
