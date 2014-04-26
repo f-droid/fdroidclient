@@ -178,7 +178,7 @@ public final class Utils {
 
     // return a fingerprint formatted for display
     public static String formatFingerprint(String fingerprint) {
-        if (fingerprint.length() != 62)  // SHA-256 is 62 hex chars
+        if (fingerprint.length() != 64)  // SHA-256 is 64 hex chars
             return "BAD FINGERPRINT";
         String displayFP = fingerprint.substring(0, 2);
         for (int i = 2; i < fingerprint.length(); i = i + 2)
@@ -218,7 +218,7 @@ public final class Utils {
             digest.update(key);
             byte[] fingerprint = digest.digest();
             Formatter formatter = new Formatter(new StringBuilder());
-            for (int i = 1; i < fingerprint.length; i++) {
+            for (int i = 0; i < fingerprint.length; i++) {
                 formatter.format("%02X", fingerprint[i]);
             }
             ret = formatter.toString();
