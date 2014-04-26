@@ -10,3 +10,7 @@
 	path = extern/AndroidPinning
 	url = https://github.com/binaryparadox/AndroidPinning.git
 	ignore = dirty
+[submodule "extern/libsuperuser"]
+	path = extern/libsuperuser
+	url = https://github.com/dschuermann/libsuperuser.git
+	ignore = dirty
