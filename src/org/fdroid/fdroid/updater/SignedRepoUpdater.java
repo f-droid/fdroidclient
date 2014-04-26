@@ -31,6 +31,7 @@ public class SignedRepoUpdater extends RepoUpdater {
             String certdata = Hasher.hex(cert);
             if (repo.pubkey == null && repo.fingerprint.equals(Utils.calcFingerprint(cert))) {
                 repo.pubkey = certdata;
+                usePubkeyInJar = true;
             }
             if (repo.pubkey != null && repo.pubkey.equals(certdata)) {
                 match = true;
