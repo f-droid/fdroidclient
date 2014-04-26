@@ -178,7 +178,9 @@ public final class Utils {
 
     // return a fingerprint formatted for display
     public static String formatFingerprint(String fingerprint) {
-        if (fingerprint.length() != 64)  // SHA-256 is 64 hex chars
+        if (TextUtils.isEmpty(fingerprint)
+                || fingerprint.length() != 64  // SHA-256 is 64 hex chars
+                || fingerprint.matches(".*[^0-9a-fA-F].*")) // its a hex string
             return "BAD FINGERPRINT";
         String displayFP = fingerprint.substring(0, 2);
         for (int i = 2; i < fingerprint.length(); i = i + 2)
