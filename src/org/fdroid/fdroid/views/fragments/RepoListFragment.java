@@ -63,8 +63,6 @@ public class RepoListFragment extends ListFragment
     private final int UPDATE_REPOS = 2;
     private final int SCAN_FOR_REPOS = 3;
 
-    private WifiManager wifiManager;
-
     public boolean hasChanged() {
         return changed;
     }
@@ -85,13 +83,11 @@ public class RepoListFragment extends ListFragment
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        Log.i("FDroid", "Repo cursor loaded.");
         repoAdapter.swapCursor(cursor);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-        Log.i("FDroid", "Repo cursor reset.");
         repoAdapter.swapCursor(null);
     }
 
@@ -186,79 +182,6 @@ public class RepoListFragment extends ListFragment
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-
-        /* let's see if someone is trying to send us a new repo */
-        Intent intent = getActivity().getIntent();
-        /* an URL from a click, NFC, QRCode scan, etc */
-        Uri uri = intent.getData();
-        if (uri != null) {
-            // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
-            String scheme = intent.getScheme();
-            String host = uri.getHost();
-            if (scheme == null || host == null) {
-                String msg = String.format(getString(R.string.malformed_repo_uri), uri);
-                Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
-                return;
-            }
-            if (scheme.equals("FDROIDREPO") || scheme.equals("FDROIDREPOS")) {
-                /*
-                 * QRCodes are more efficient in all upper case, so QR URIs are
-                 * encoded in all upper case, then forced to lower case.
-                 * Checking if the special F-Droid scheme being all is upper
-                 * case means it should be downcased.
-                 */
-                uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
-            } else if (uri.getPath().startsWith("/FDROID/REPO")) {
-                /*
-                 * some QR scanners chop off the fdroidrepo:// and just try
-                 * http://, then the incoming URI does not get downcased
-                 * properly, and the query string is stripped off. So just
-                 * downcase the path, and carry on to get something working.
-                 */
-                uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
-            }
-            // make scheme and host lowercase so they're readable in dialogs
-            scheme = scheme.toLowerCase(Locale.ENGLISH);
-            host = host.toLowerCase(Locale.ENGLISH);
-            String fingerprint = uri.getQueryParameter("fingerprint");
-            if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
-                    || scheme.equals("https") || scheme.equals("http")) {
-
-                isImportingRepo = true;
-
-                /* sanitize and format for function and readability */
-                String uriString = uri.toString()
-                        .replaceAll("\\?.*$", "") // remove the whole query
-                        .replaceAll("/*$", "") // remove all trailing slashes
-                        .replace(uri.getHost(), host) // downcase host name
-                        .replace(intent.getScheme(), scheme) // downcase scheme
-                        .replace("fdroidrepo", "http"); // proper repo address
-                showAddRepo(uriString, fingerprint);
-
-                // if this is a local repo, check we're on the same wifi
-                String uriBssid = uri.getQueryParameter("bssid");
-                if (!TextUtils.isEmpty(uriBssid)) {
-                    if (uri.getPort() != 8888
-                            && !host.matches("[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+")) {
-                        Log.i("ManageRepo", "URI is not local repo: " + uri);
-                        return;
-                    }
-                    Activity a = getActivity();
-                    if (wifiManager == null)
-                        wifiManager = (WifiManager) a.getSystemService(Context.WIFI_SERVICE);
-                    WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-                    String bssid = wifiInfo.getBSSID().toLowerCase(Locale.ENGLISH);
-                    uriBssid = Uri.decode(uriBssid).toLowerCase(Locale.ENGLISH);
-                    if (!bssid.equals(uriBssid)) {
-                        String msg = String.format(getString(R.string.not_on_same_wifi),
-                                uri.getQueryParameter("ssid"));
-                        Toast.makeText(a, msg, Toast.LENGTH_LONG).show();
-                    }
-                    // TODO we should help the user to the right thing here,
-                    // instead of just showing a message!
-                }
-            }
-        }
     }
 
     @Override
@@ -375,6 +298,11 @@ public class RepoListFragment extends ListFragment
         nsdHelper.discoverServices();
     }
 
+    public void importRepo(String uri, String fingerprint) {
+        isImportingRepo = true;
+        showAddRepo(uri, fingerprint);
+    }
+
     private void showAddRepo() {
         showAddRepo(getNewRepoUri(), null);
     }
@@ -385,6 +313,11 @@ public class RepoListFragment extends ListFragment
         final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
         final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
+        /*
+         * If the "add new repo" dialog is launched by an action outside of
+         * FDroid, i.e. a URL, then check to see if any existing repos match,
+         * and change the action accordingly.
+         */
         final Repo repo = (newAddress != null && isImportingRepo)
                 ? RepoProvider.Helper.findByAddress(getActivity(), newAddress)
                 : null;
