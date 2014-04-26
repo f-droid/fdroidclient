@@ -2,6 +2,7 @@ package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.text.TextUtils;
 import android.util.Log;
 import org.fdroid.fdroid.Utils;
 
@@ -78,7 +79,13 @@ public class Repo extends ValueObject {
     }
 
     public boolean isSigned() {
-        return this.pubkey != null && this.pubkey.length() > 0;
+        return !TextUtils.isEmpty(this.pubkey);
+    }
+
+    // this happens when a repo is configed with a fingerprint, but the client
+    // has not connected to it yet to download its pubkey
+    public boolean isSignedButUnverified() {
+        return TextUtils.isEmpty(this.pubkey) && !TextUtils.isEmpty(this.fingerprint);
     }
 
     public boolean hasBeenUpdated() {
