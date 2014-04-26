@@ -3,7 +3,7 @@
     package="org.fdroid.fdroid"
     android:installLocation="auto"
     android:versionCode="640"
-    android:versionName="0.64-test" >
+    android:versionName="0.64-test" xmlns:tools="http://schemas.android.com/tools">
 
     <uses-sdk
         android:minSdkVersion="5"
@@ -38,10 +38,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.NFC" />
     
-    <!-- These permissions are only granted when F-Droid is installed as a system app! -->
-    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
-    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
-
+    <!-- These permissions are only granted when F-Droid is installed as a system-app! -->
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" tools:ignore="ProtectedPermissions"/>
+    
     <application
         android:name="FDroidApp"
         android:icon="@drawable/ic_launcher"

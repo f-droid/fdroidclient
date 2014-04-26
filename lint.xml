@@ -8,7 +8,4 @@
     <issue id="UnusedResources" severity="ignore" >
         <ignore path="res/values/default_repo.xml" />
     </issue>
-    <issue id="ProtectedPermission">
-        <ignore path="AndroidManifest.xml" />
-    </issue>
 </lint>

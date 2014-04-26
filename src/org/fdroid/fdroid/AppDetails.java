@@ -21,7 +21,10 @@ package org.fdroid.fdroid;
 
 import android.content.*;
 import android.widget.*;
+
 import org.fdroid.fdroid.data.*;
+import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -253,7 +256,7 @@ public class AppDetails extends ListActivity {
 
     private final Context mctx = this;
     private DisplayImageOptions displayImageOptions;
-    private InstallManager installManager;
+    private Installer installer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -307,7 +310,7 @@ public class AppDetails extends ListActivity {
         }
 
         mPm = getPackageManager();
-        installManager = new InstallManager(this, mPm, myInstallCallback);
+        installer = Installer.getActivityInstaller(this, mPm, myInstallCallback);
         
         // Get the preferences we're going to use in this Activity...
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
@@ -926,16 +929,24 @@ public class AppDetails extends ListActivity {
                 Utils.getApkCacheDir(getBaseContext()));
     }
     
-    private void installApk(File file, String id) {
-        installManager.installApk(file, id);
+    private void installApk(File file, String packageName) {
+        try {
+            installer.installPackage(file);
+        } catch (AndroidNotCompatibleException e) {
+            Log.e(TAG, "Android not compatible with this Installer!", e);
+        }
 
-        notifyAppChanged(id);
+        notifyAppChanged(packageName);
     }
 
-    private void removeApk(String id) {
-        installManager.removeApk(id);
+    private void removeApk(String packageName) {
+        try {
+            installer.deletePackage(packageName);
+        } catch (AndroidNotCompatibleException e) {
+            Log.e(TAG, "Android not compatible with this Installer!", e);
+        }
 
-        notifyAppChanged(id);
+        notifyAppChanged(packageName);
 	}
 
     /**
@@ -946,7 +957,7 @@ public class AppDetails extends ListActivity {
         getContentResolver().notifyChange(AppProvider.getContentUri(id), null);
     }
     
-    private InstallManager.InstallCallback myInstallCallback = new InstallManager.InstallCallback() {
+    private Installer.InstallerCallback myInstallCallback = new Installer.InstallerCallback() {
 
         @Override
         public void onPackageInstalled(int returnCode, boolean unattended) {
@@ -1156,12 +1167,15 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // handle cases for install manager first
+        if (installer.handleOnActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+        
         switch (requestCode) {
         case REQUEST_ENABLE_BLUETOOTH:
             fdroidApp.sendViaBluetooth(this, resultCode, app.id);
 			break;
-		default:
-			installManager.handleOnActivityResult(requestCode, resultCode, data);
         }
     }
 }
