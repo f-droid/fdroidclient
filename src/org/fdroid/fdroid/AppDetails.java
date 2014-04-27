@@ -310,7 +310,7 @@ public class AppDetails extends ListActivity {
         }
 
         mPm = getPackageManager();
-        installer = Installer.getActivityInstaller(this, mPm, myInstallCallback);
+        installer = Installer.getActivityInstaller(this, mPm, myInstallerCallback);
         
         // Get the preferences we're going to use in this Activity...
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
@@ -957,7 +957,7 @@ public class AppDetails extends ListActivity {
         getContentResolver().notifyChange(AppProvider.getContentUri(id), null);
     }
     
-    private Installer.InstallerCallback myInstallCallback = new Installer.InstallerCallback() {
+    private Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
 
         @Override
         public void onPackageInstalled(int returnCode, boolean unattended) {
@@ -969,26 +969,14 @@ public class AppDetails extends ListActivity {
             PackageManagerCompat.setInstaller(mPm, app.id);
             resetRequired = true;
             
-            // TODO: Somehow the internal API needs time to update the package state.
-            // This needs to be done nicer!
+            // if unattended, onResume is not execute automatically
             if (unattended) {
-                Thread wait = new Thread(new Runnable() {
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Log.d("FDroid", "resume");
-                                onResume();
-                            }
-                        });
+                        onResume();
                     }
                 });
-                wait.start();
             }
         }
 
@@ -997,26 +985,14 @@ public class AppDetails extends ListActivity {
             // TODO: check return code?!
             resetRequired = true;
             
-            // TODO: Somehow the internal API needs time to update the package state.
-            // This needs to be done nicer!
+            // if unattended, onResume is not execute automatically
             if (unattended) {
-                Thread wait = new Thread(new Runnable() {
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Log.d("FDroid", "resume");
-                                onResume();
-                            }
-                        });
+                        onResume();
                     }
                 });
-                wait.start();
             }
         }
     };

@@ -36,10 +36,12 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_CACHE_APK = "cacheDownloaded";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_UPD_LAST = "lastUpdateCheck";
+    public static final String PREF_ROOT_INSTALLER = "rootInstaller";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
     private static final int DEFAULT_UPD_HISTORY = 14;
+    private static final boolean DEFAULT_ROOT_INSTALLER = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
@@ -60,6 +62,10 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     private void uninitialize(String key) {
         initialized.put(key, false);
+    }
+    
+    public boolean useRootInstaller() {
+        return preferences.getBoolean(PREF_ROOT_INSTALLER, DEFAULT_ROOT_INSTALLER);
     }
 
     public boolean hasCompactLayout() {
@@ -97,7 +103,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     /**
      * This is cached as it is called several times inside the AppListAdapter.
-     * Providing it here means sthe shared preferences file only needs to be
+     * Providing it here means the shared preferences file only needs to be
      * read once, and we will keep our copy up to date by listening to changes
      * in PREF_ROOTED.
      */

@@ -51,7 +51,8 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_CACHE_APK,
-        Preferences.PREF_EXPERT
+        Preferences.PREF_EXPERT,
+        Preferences.PREF_ROOT_INSTALLER
     };
 
     @Override
@@ -148,6 +149,10 @@ public class PreferencesActivity extends PreferenceActivity implements
             onoffSummary(key, R.string.expert_on,
                 R.string.expert_off);
 
+        } else if (key.equals(Preferences.PREF_ROOT_INSTALLER)) {
+            onoffSummary(key, R.string.root_installer_on,
+                    R.string.root_installer_off);
+            
         }
     }
 

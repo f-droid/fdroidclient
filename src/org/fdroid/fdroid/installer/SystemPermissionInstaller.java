@@ -82,7 +82,21 @@ public class SystemPermissionInstaller extends Installer {
             // TODO: propagate other return codes?
             if (returnCode == INSTALL_SUCCEEDED) {
                 Log.d(TAG, "Install succeeded");
-                mCallback.onPackageInstalled(InstallerCallback.RETURN_SUCCESS, true);
+
+                // wait until Android's internal PackageManger has
+                // received the new package state
+                Thread wait = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                        }
+
+                        mCallback.onPackageInstalled(InstallerCallback.RETURN_SUCCESS, true);
+                    }
+                });
+                wait.start();
             } else {
                 Log.d(TAG, "Install failed: " + returnCode);
                 mCallback.onPackageInstalled(InstallerCallback.RETURN_CANCEL, true);
@@ -98,7 +112,21 @@ public class SystemPermissionInstaller extends Installer {
             // TODO: propagate other return codes?
             if (returnCode == DELETE_SUCCEEDED) {
                 Log.d(TAG, "Delete succeeded");
-                mCallback.onPackageDeleted(InstallerCallback.RETURN_SUCCESS, true);
+
+                // wait until Android's internal PackageManger has
+                // received the new package state
+                Thread wait = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                        }
+
+                        mCallback.onPackageDeleted(InstallerCallback.RETURN_SUCCESS, true);
+                    }
+                });
+                wait.start();
             } else {
                 Log.d(TAG, "Delete failed: " + returnCode);
                 mCallback.onPackageDeleted(InstallerCallback.RETURN_CANCEL, true);

@@ -21,15 +21,20 @@ package org.fdroid.fdroid.installer;
 
 import java.io.File;
 
+import org.fdroid.fdroid.Preferences;
+
 import android.Manifest.permission;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 
+/**
+ * Abstract Installer class. Also provides static methods to automatically
+ * instantiate a working Installer based on F-Droids granted permissions.
+ */
 abstract public class Installer {
     protected Context mContext;
     protected PackageManager mPm;
@@ -63,6 +68,10 @@ abstract public class Installer {
         }
     }
 
+    /**
+     * Callback from Installer. NOTE: This callback can be in a different thread
+     * than the UI thread
+     */
     public interface InstallerCallback {
 
         public static final int RETURN_SUCCESS = 1;
@@ -93,6 +102,16 @@ abstract public class Installer {
     public static Installer getActivityInstaller(Activity activity, PackageManager pm,
             InstallerCallback callback) {
 
+        // if root installer has been activated in preferences -> RootInstaller
+        boolean useRootInstaller = Preferences.get().useRootInstaller();
+        if (useRootInstaller) {
+            try {
+                return new RootInstaller(activity, pm, callback);
+            } catch (AndroidNotCompatibleException e) {
+                Log.e(TAG, "Android not compatible with RootInstaller!", e);
+            }
+        }
+
         // system permissions -> SystemPermissionInstaller
         if (hasSystemPermissions(activity, pm)) {
             Log.d(TAG, "system permissions -> SystemPermissionInstaller");
@@ -104,7 +123,7 @@ abstract public class Installer {
             }
         }
 
-        // try default installer
+        // Fallback -> DefaultInstaller
         try {
             Log.d(TAG, "try default installer");
 
@@ -121,6 +140,16 @@ abstract public class Installer {
 
     public static Installer getUnattendedInstaller(Context context, PackageManager pm,
             InstallerCallback callback) throws AndroidNotCompatibleException {
+
+        // if root installer has been activated in preferences -> RootInstaller
+        boolean useRootInstaller = Preferences.get().useRootInstaller();
+        if (useRootInstaller) {
+            try {
+                return new RootInstaller(context, pm, callback);
+            } catch (AndroidNotCompatibleException e) {
+                Log.e(TAG, "Android not compatible with RootInstaller!", e);
+            }
+        }
 
         if (hasSystemPermissions(context, pm)) {
             // we have system permissions!
@@ -139,27 +168,11 @@ abstract public class Installer {
         boolean permissionsGranted = (checkInstallPermission == PackageManager.PERMISSION_GRANTED
                 && checkDeletePermission == PackageManager.PERMISSION_GRANTED);
 
-        boolean isSystemApp;
-        try {
-            isSystemApp = isSystemApp(pm.getApplicationInfo(context.getPackageName(), 0));
-        } catch (NameNotFoundException e) {
-            isSystemApp = false;
-        }
-
-        // TODO: is this right???
-        // two ways to be able to get system permissions: somehow the
-        // permissions where actually granted on install or the app has been
-        // moved later to the system partition -> also access
-        if (permissionsGranted || isSystemApp) {
+        if (permissionsGranted) {
             return true;
         } else {
             return false;
         }
-    }
-
-    private static boolean isSystemApp(ApplicationInfo ai) {
-        int mask = ApplicationInfo.FLAG_SYSTEM | ApplicationInfo.FLAG_UPDATED_SYSTEM_APP;
-        return (ai.flags & mask) != 0;
     }
 
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {

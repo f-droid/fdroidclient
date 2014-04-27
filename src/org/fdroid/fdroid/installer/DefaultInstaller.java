@@ -50,12 +50,12 @@ public class DefaultInstaller extends Installer {
     private static final int REQUEST_CODE_DELETE = 1;
 
     @Override
-    public void installPackage(File file) throws AndroidNotCompatibleException {
-        super.installPackage(file);
+    public void installPackage(File apkFile) throws AndroidNotCompatibleException {
+        super.installPackage(apkFile);
 
         Intent intent = new Intent();
         intent.setAction(android.content.Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse("file://" + file.getPath()),
+        intent.setDataAndType(Uri.parse("file://" + apkFile.getPath()),
                 "application/vnd.android.package-archive");
         extraNotUnknownSource(intent);
         try {

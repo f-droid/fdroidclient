@@ -3,7 +3,8 @@
 	<PreferenceCategory android:title="@string/updates">
 		<ListPreference android:title="@string/update_interval"
 			android:key="updateInterval"
-			android:defaultValue="24" android:entries="@array/updateIntervalNames"
+			android:defaultValue="24"
+			android:entries="@array/updateIntervalNames"
 			android:entryValues="@array/updateIntervalValues" />
 		<CheckBoxPreference android:title="@string/automatic_scan_wifi"
 			android:defaultValue="false"
@@ -17,6 +18,9 @@
 			android:maxLength="2"
 			android:numeric="integer"
 			android:title="@string/update_history" />
+		<CheckBoxPreference android:title="@string/root_installer"
+			android:defaultValue="false"
+			android:key="rootInstaller" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/display">
         <CheckBoxPreference android:title="@string/showPermissions"
