@@ -57,6 +57,7 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.graphics.Bitmap;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -260,7 +261,8 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        
         fdroidApp = ((FDroidApp) getApplication());
         fdroidApp.applyTheme(this);
 
@@ -353,6 +355,7 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onResume() {
+        Log.d(TAG, "onresume");
         super.onResume();
         if (resetRequired) {
             if (!reset()) {
@@ -930,6 +933,8 @@ public class AppDetails extends ListActivity {
     }
     
     private void installApk(File file, String packageName) {
+        setProgressBarIndeterminateVisibility(true);
+        
         try {
             installer.installPackage(file);
         } catch (AndroidNotCompatibleException e) {
@@ -940,6 +945,8 @@ public class AppDetails extends ListActivity {
     }
 
     private void removeApk(String packageName) {
+        setProgressBarIndeterminateVisibility(true);
+        
         try {
             installer.deletePackage(packageName);
         } catch (AndroidNotCompatibleException e) {
@@ -960,40 +967,46 @@ public class AppDetails extends ListActivity {
     private Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
 
         @Override
-        public void onPackageInstalled(int returnCode, boolean unattended) {
-            // TODO: check return code?!
-            if (downloadHandler != null) {
-                downloadHandler = null;
-            }
-
-            PackageManagerCompat.setInstaller(mPm, app.id);
+        public void onSuccess(int operation, boolean unattended) {
             resetRequired = true;
             
-            // if unattended, onResume is not execute automatically
-            if (unattended) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        onResume();
-                    }
-                });
+            if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
+                if (downloadHandler != null) {
+                    downloadHandler = null;
+                }
+      
+                PackageManagerCompat.setInstaller(mPm, app.id);
             }
+            
+            // if unattended, onResume is not execute automatically
+//        if (unattended) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    onResume();
+                    setProgressBarIndeterminateVisibility(false);
+                }
+            });
+//        }
+            
         }
 
         @Override
-        public void onPackageDeleted(int returnCode, boolean unattended) {
-            // TODO: check return code?!
-            resetRequired = true;
+        public void onError(int operation, boolean unattended, final String reason) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setProgressBarIndeterminateVisibility(false);
+                    
+                    // TODO
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                    alertBuilder.setTitle("Error");
+                    alertBuilder.setMessage(reason);
+                    alertBuilder.setNeutralButton(android.R.string.ok, null);
+                    alertBuilder.create().show();
+                }
+            });
             
-            // if unattended, onResume is not execute automatically
-            if (unattended) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        onResume();
-                    }
-                });
-            }
         }
     };
 

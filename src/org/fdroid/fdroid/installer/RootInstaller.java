@@ -62,8 +62,9 @@ public class RootInstaller extends Installer {
                     // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
-                    // reportError("Error opening root shell: exitCode " +
-                    // exitCode);
+                    // TODO
+                    mCallback.onError(InstallerCallback.OPERATION_GENERIC_ERROR, true,
+                            "Error opening root shell with exitCode " + exitCode);
                 } else {
                     // Shell is up: send our first request
                     sendInstallCommand(apkFile);
@@ -95,8 +96,9 @@ public class RootInstaller extends Installer {
                     // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
-                    // reportError("Error opening root shell: exitCode " +
-                    // exitCode);
+                    // TODO
+                    mCallback.onError(InstallerCallback.OPERATION_GENERIC_ERROR, true,
+                            "Error opening root shell with exitCode " + exitCode);
                 } else {
                     // Shell is up: send our first request
                     sendDeleteCommand(packageName);
@@ -120,9 +122,9 @@ public class RootInstaller extends Installer {
                         rootSession.close();
 
                         if (exitCode < 0) {
-                            // reportError("Error executing commands: exitCode "
-                            // + exitCode);
-                            mCallback.onPackageInstalled(InstallerCallback.RETURN_CANCEL, true);
+                            // TODO
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
+                                    "Install failed with exit code " + exitCode);
                         } else {
                             // wait until Android's internal PackageManger has
                             // received the new package state
@@ -134,8 +136,7 @@ public class RootInstaller extends Installer {
                                     } catch (InterruptedException e) {
                                     }
 
-                                    mCallback.onPackageInstalled(InstallerCallback.RETURN_SUCCESS,
-                                            true);
+                                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, true);
                                 }
                             });
                             wait.start();
@@ -152,9 +153,9 @@ public class RootInstaller extends Installer {
                         rootSession.close();
 
                         if (exitCode < 0) {
-                            // reportError("Error executing commands: exitCode "
-                            // + exitCode);
-                            mCallback.onPackageDeleted(InstallerCallback.RETURN_CANCEL, true);
+                            // TODO
+                            mCallback.onError(InstallerCallback.OPERATION_DELETE, true,
+                                    "Delete failed with exit code " + exitCode);
                         } else {
                             // wait until Android's internal PackageManger has
                             // received the new package state
@@ -166,8 +167,7 @@ public class RootInstaller extends Installer {
                                     } catch (InterruptedException e) {
                                     }
 
-                                    mCallback.onPackageDeleted(InstallerCallback.RETURN_SUCCESS,
-                                            true);
+                                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, true);
                                 }
                             });
                             wait.start();

@@ -74,12 +74,13 @@ abstract public class Installer {
      */
     public interface InstallerCallback {
 
-        public static final int RETURN_SUCCESS = 1;
-        public static final int RETURN_CANCEL = 0;
+        public static final int OPERATION_GENERIC_ERROR = 0;
+        public static final int OPERATION_INSTALL = 1;
+        public static final int OPERATION_DELETE = 2;
 
-        public void onPackageInstalled(int returnCode, boolean unattended);
-
-        public void onPackageDeleted(int returnCode, boolean unattended);
+        public void onSuccess(int operation, boolean unattended);
+        
+        public void onError(int operation, boolean unattended, String reason);
     }
 
     public Installer(Context context, PackageManager pm, InstallerCallback callback)

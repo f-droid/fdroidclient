@@ -98,17 +98,17 @@ public class DefaultInstaller extends Installer {
         switch (requestCode) {
             case REQUEST_CODE_INSTALL:
                 if (resultCode == Activity.RESULT_OK) {
-                    mCallback.onPackageInstalled(InstallerCallback.RETURN_SUCCESS, false);
+                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, false);
                 } else {
-                    mCallback.onPackageInstalled(InstallerCallback.RETURN_CANCEL, false);
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, false, "todo");
                 }
 
                 return true;
             case REQUEST_CODE_DELETE:
                 if (resultCode == Activity.RESULT_OK) {
-                    mCallback.onPackageDeleted(InstallerCallback.RETURN_SUCCESS, false);
+                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, false);
                 } else {
-                    mCallback.onPackageDeleted(InstallerCallback.RETURN_CANCEL, false);
+                    mCallback.onError(InstallerCallback.OPERATION_DELETE, false, "todo");
                 }
 
                 return true;

@@ -93,13 +93,13 @@ public class SystemPermissionInstaller extends Installer {
                         } catch (InterruptedException e) {
                         }
 
-                        mCallback.onPackageInstalled(InstallerCallback.RETURN_SUCCESS, true);
+                        mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, true);
                     }
                 });
                 wait.start();
             } else {
                 Log.d(TAG, "Install failed: " + returnCode);
-                mCallback.onPackageInstalled(InstallerCallback.RETURN_CANCEL, true);
+                mCallback.onError(InstallerCallback.OPERATION_INSTALL, true, "todo");
             }
         }
     }
@@ -123,13 +123,13 @@ public class SystemPermissionInstaller extends Installer {
                         } catch (InterruptedException e) {
                         }
 
-                        mCallback.onPackageDeleted(InstallerCallback.RETURN_SUCCESS, true);
+                        mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, true);
                     }
                 });
                 wait.start();
             } else {
                 Log.d(TAG, "Delete failed: " + returnCode);
-                mCallback.onPackageDeleted(InstallerCallback.RETURN_CANCEL, true);
+                mCallback.onError(InstallerCallback.OPERATION_DELETE, true, "todo");
             }
         }
     }
