@@ -159,8 +159,8 @@ public class PreferencesActivity extends PreferenceActivity implements
     }
     
     /**
-     * Initializes RootInstaller preference. This method ensures that the preference can only be enabled
-     * when the user grants access to F-Droid.
+     * Initializes RootInstaller preference. This method ensures that the preference can only be checked and persisted
+     * when the user grants root access for F-Droid.
      */
     protected void initRootInstallerPreference() {
         CheckBoxPreference pref = (CheckBoxPreference)findPreference(Preferences.PREF_ROOT_INSTALLER);
