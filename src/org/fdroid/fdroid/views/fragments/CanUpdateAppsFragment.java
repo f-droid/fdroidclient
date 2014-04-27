@@ -84,9 +84,9 @@ public class CanUpdateAppsFragment extends AppListFragment {
     }
 
     /**
-     * Copied from ListFragment and added EditText for search on top of list. We
-     * do not use a custom layout here, because this breaks the progress bar
-     * functionality of ListFragment.
+     * Copied from ListFragment and added Button on top of list. We do not use a
+     * custom layout here, because this breaks the progress bar functionality of
+     * ListFragment.
      * 
      * @param inflater
      * @param container
