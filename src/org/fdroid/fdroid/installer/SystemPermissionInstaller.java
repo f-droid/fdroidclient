@@ -167,6 +167,11 @@ public class SystemPermissionInstaller extends Installer {
         return false;
     }
 
+    @Override
+    public boolean supportsUnattendedOperations() {
+        return false;
+    }
+
     public final int INSTALL_REPLACE_EXISTING = 2;
 
     /**

@@ -117,4 +117,9 @@ public class DefaultInstaller extends Installer {
         }
     }
 
+    @Override
+    public boolean supportsUnattendedOperations() {
+        return false;
+    }
+
 }

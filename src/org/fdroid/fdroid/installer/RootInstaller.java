@@ -241,6 +241,11 @@ public class RootInstaller extends Installer {
                 });
     }
 
+    @Override
+    public boolean supportsUnattendedOperations() {
+        return true;
+    }
+
     /**
      * pm install [-l] [-r] [-t] [-i INSTALLER_PACKAGE_NAME] [-s] [-f] [--algo
      * <algorithm name> --key <key-in-hex> --iv <IV-in-hex>] [--originating-uri

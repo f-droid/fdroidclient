@@ -211,4 +211,6 @@ abstract public class Installer {
     }
 
     public abstract boolean handleOnActivityResult(int requestCode, int resultCode, Intent data);
+    
+    public abstract boolean supportsUnattendedOperations();
 }
