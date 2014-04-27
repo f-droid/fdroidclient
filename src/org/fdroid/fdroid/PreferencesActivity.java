@@ -20,6 +20,7 @@ package org.fdroid.fdroid;
 
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -27,15 +28,16 @@ import android.preference.ListPreference;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.view.MenuItem;
-
 import android.support.v4.app.NavUtils;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.compat.ActionBarCompat;
+import org.fdroid.fdroid.installer.CheckRootAsyncTask;
+import org.fdroid.fdroid.installer.CheckRootAsyncTask.CheckRootCallback;
 
 public class PreferencesActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener {
-
+    
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
@@ -155,6 +157,56 @@ public class PreferencesActivity extends PreferenceActivity implements
             
         }
     }
+    
+    /**
+     * Initializes RootInstaller preference. This method ensures that the preference can only be enabled
+     * when the user grants access to F-Droid.
+     */
+    protected void initRootInstallerPreference() {
+        CheckBoxPreference pref = (CheckBoxPreference)findPreference(Preferences.PREF_ROOT_INSTALLER);
+        
+        // we are handling persistence ourself!
+        pref.setPersistent(false);
+
+        pref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                final CheckBoxPreference pref = (CheckBoxPreference) preference;
+                
+                if (pref.isChecked()) {
+                    CheckRootAsyncTask checkTask = new CheckRootAsyncTask(PreferencesActivity.this, new CheckRootCallback() {
+                        
+                        @Override
+                        public void onRootCheck(boolean rootGranted) {
+                            if (rootGranted) {
+                                // root access granted
+                                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                                editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, true);
+                                editor.commit();
+                                pref.setChecked(true);
+                            } else {
+                                // root access disallowed
+                                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                                editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, false);
+                                editor.commit();
+                                pref.setChecked(false);
+                            }
+                        }
+                    });
+                    checkTask.execute();
+                } else {
+                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                    editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, false);
+                    editor.commit();
+                    pref.setChecked(false);
+                }
+                
+                return true;
+            }
+        });
+        
+    }
 
     @Override
     protected void onResume() {
@@ -166,6 +218,8 @@ public class PreferencesActivity extends PreferenceActivity implements
         for (String key : summariesToUpdate) {
             updateSummary(key, false);
         }
+        
+        initRootInstallerPreference();
     }
 
     @Override
