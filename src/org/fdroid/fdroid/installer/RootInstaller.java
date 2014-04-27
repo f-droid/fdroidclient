@@ -20,6 +20,7 @@
 package org.fdroid.fdroid.installer;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
@@ -39,17 +40,21 @@ public class RootInstaller extends Installer {
         super(context, pm, callback);
     }
 
-    @Override
-    public void installPackage(final File apkFile) throws AndroidNotCompatibleException {
-        super.installPackage(apkFile);
-
+    private Shell.Builder createShellBuilder() {
         Shell.Builder shellBuilder = new Shell.Builder()
                 .useSU()
                 .setWantSTDERR(true)
                 .setWatchdogTimeout(5)
                 .setMinimalLogging(true);
 
-        rootSession = shellBuilder.open(new Shell.OnCommandResultListener() {
+        return shellBuilder;
+    }
+
+    @Override
+    public void installPackage(final File apkFile) throws AndroidNotCompatibleException {
+        super.installPackage(apkFile);
+
+        rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
 
             // Callback to report whether the shell was successfully
             // started up
@@ -63,11 +68,37 @@ public class RootInstaller extends Installer {
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
                     // TODO
-                    mCallback.onError(InstallerCallback.OPERATION_GENERIC_ERROR, true,
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
                             "Error opening root shell with exitCode " + exitCode);
                 } else {
-                    // Shell is up: send our first request
-                    sendInstallCommand(apkFile);
+                    addInstallCommand(apkFile);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void installPackage(final List<File> apkFiles) throws AndroidNotCompatibleException {
+        super.installPackage(apkFiles);
+
+        rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
+
+            // Callback to report whether the shell was successfully
+            // started up
+            @Override
+            public void onCommandResult(int commandCode, int exitCode, List<String> output) {
+                if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING) {
+                    // TODO
+                    // wrong uid
+                    // Shell.OnCommandResultListener.SHELL_WRONG_UID
+                    // exec failed
+                    // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
+
+                    // TODO
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
+                            "Error opening root shell with exitCode " + exitCode);
+                } else {
+                    addInstallCommand(apkFiles);
                 }
             }
         });
@@ -77,13 +108,7 @@ public class RootInstaller extends Installer {
     public void deletePackage(final String packageName) throws AndroidNotCompatibleException {
         super.deletePackage(packageName);
 
-        Shell.Builder shellBuilder = new Shell.Builder()
-                .useSU()
-                .setWantSTDERR(true)
-                .setWatchdogTimeout(5)
-                .setMinimalLogging(true);
-
-        rootSession = shellBuilder.open(new Shell.OnCommandResultListener() {
+        rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
 
             // Callback to report whether the shell was successfully
             // started up
@@ -97,11 +122,10 @@ public class RootInstaller extends Installer {
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
                     // TODO
-                    mCallback.onError(InstallerCallback.OPERATION_GENERIC_ERROR, true,
+                    mCallback.onError(InstallerCallback.OPERATION_DELETE, true,
                             "Error opening root shell with exitCode " + exitCode);
                 } else {
-                    // Shell is up: send our first request
-                    sendDeleteCommand(packageName);
+                    addDeleteCommand(packageName);
                 }
             }
         });
@@ -114,7 +138,48 @@ public class RootInstaller extends Installer {
         return false;
     }
 
-    private void sendInstallCommand(File apkFile) {
+    private void addInstallCommand(List<File> apkFiles) {
+        ArrayList<String> commands = new ArrayList<String>();
+        String pm = "pm install -r ";
+        for (File apkFile : apkFiles) {
+            commands.add(pm + apkFile.getAbsolutePath());
+        }
+
+        rootSession.addCommand(commands, 0,
+                new Shell.OnCommandResultListener() {
+                    public void onCommandResult(int commandCode, int exitCode,
+                            List<String> output) {
+                        // close su shell
+                        rootSession.close();
+
+                        if (exitCode < 0) {
+                            // TODO
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
+                                    "Install failed with exit code " + exitCode);
+                        } else {
+                            // wait until Android's internal PackageManger
+                            // has received the new package state
+                            Thread wait = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Thread.sleep(2000);
+                                    } catch (InterruptedException e) {
+                                    }
+
+                                    mCallback.onSuccess(
+                                            InstallerCallback.OPERATION_INSTALL,
+                                            true);
+                                }
+                            });
+                            wait.start();
+                        }
+                    }
+                });
+
+    }
+
+    private void addInstallCommand(File apkFile) {
         rootSession.addCommand("pm install -r " + apkFile.getAbsolutePath(), 0,
                 new Shell.OnCommandResultListener() {
                     public void onCommandResult(int commandCode, int exitCode, List<String> output) {
@@ -145,7 +210,7 @@ public class RootInstaller extends Installer {
                 });
     }
 
-    private void sendDeleteCommand(String packageName) {
+    private void addDeleteCommand(String packageName) {
         rootSession.addCommand("pm uninstall " + packageName, 0,
                 new Shell.OnCommandResultListener() {
                     public void onCommandResult(int commandCode, int exitCode, List<String> output) {

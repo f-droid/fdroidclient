@@ -20,6 +20,7 @@
 package org.fdroid.fdroid.installer;
 
 import java.io.File;
+import java.util.List;
 
 import org.fdroid.fdroid.Preferences;
 
@@ -74,12 +75,11 @@ abstract public class Installer {
      */
     public interface InstallerCallback {
 
-        public static final int OPERATION_GENERIC_ERROR = 0;
         public static final int OPERATION_INSTALL = 1;
         public static final int OPERATION_DELETE = 2;
 
         public void onSuccess(int operation, boolean unattended);
-        
+
         public void onError(int operation, boolean unattended, String reason);
     }
 
@@ -181,6 +181,18 @@ abstract public class Installer {
         if (!apkFile.exists()) {
             Log.d(TAG, "Couldn't find file " + apkFile + " to install.");
             return;
+        }
+
+        // extended class now actually installs the package
+    }
+
+    public void installPackage(List<File> apkFiles) throws AndroidNotCompatibleException {
+        // check if files exist...
+        for (File apkFile : apkFiles) {
+            if (!apkFile.exists()) {
+                Log.d(TAG, "Couldn't find file " + apkFile + " to install.");
+                return;
+            }
         }
 
         // extended class now actually installs the package
