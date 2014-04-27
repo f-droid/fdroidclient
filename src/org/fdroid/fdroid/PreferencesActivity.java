@@ -25,6 +25,8 @@ import android.preference.PreferenceActivity;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.view.MenuItem;
@@ -186,11 +188,17 @@ public class PreferencesActivity extends PreferenceActivity implements
                                 editor.commit();
                                 pref.setChecked(true);
                             } else {
-                                // root access disallowed
+                                // root access denied
                                 SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                                 editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, false);
                                 editor.commit();
                                 pref.setChecked(false);
+                                
+                                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(PreferencesActivity.this);
+                                alertBuilder.setTitle(R.string.root_access_denied_title);
+                                alertBuilder.setMessage(PreferencesActivity.this.getString(R.string.root_access_denied_body));
+                                alertBuilder.setNeutralButton(android.R.string.ok, null);
+                                alertBuilder.create().show();
                             }
                         }
                     });
