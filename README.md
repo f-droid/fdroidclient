@@ -87,6 +87,31 @@ You can also run the tests in Eclipse. Here's how:
 5. Right-click on the **fdroid-test** project, then *Run As...* -> *Android JUnit Test*
 
 
+Troubleshooting
+---------------
+
+When building F-Droid, the following error may occur:
+
+> Invalid file: extern/UniversalImageLoader/library/build.xml
+
+Check the output of the ./ant-prepare.sh command. This error is often
+accompanied by the following message:
+
+> Error: The project either has no target set or the target is invalid.
+> Please provide a --target to the 'android update' command.
+
+The most likely cause of this is that your installed Android SDK is missing
+the target version specified by one of the dependencies. For example, at the
+time of writing this, UniversalImageLoader uses the "android-16" target API,
+however the default install of the Android SDK will usually only install the
+latest version ("android-19" as of writing). So you will have to install
+the "android-16" target via the SDK manager.
+
+NOTE: While it may be tempting to add "--target=android-19" to the
+ant-prepare.sh script, it is not the correct solution. Although it may work,
+it can cause strange bugs at runtime.
+
+
 License
 -------
 
