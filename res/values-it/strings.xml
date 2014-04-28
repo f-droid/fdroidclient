@@ -127,7 +127,7 @@ Vuoi aggiornarlo?</string>
   <string name="category_whatsnew">Novità</string>
   <string name="category_recentlyupdated">Aggiornate di Recente</string>
   <string name="local_repos_title">Repo FDroid Locali</string>
-  <string name="local_repos_scanning">Rilevazione repo FDroid locali…</string>
+  <string name="local_repos_scanning">Rilevazione repo FDroid locali...</string>
   <string name="status_download">Scaricamento
 %2$s / %3$s (%4$d%%) da
 %1$s</string>
