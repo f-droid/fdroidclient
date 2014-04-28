@@ -39,8 +39,21 @@ import android.util.Log;
  * <li>android.permission.DELETE_PACKAGES</li>
  * </ul>
  * <p/>
- * Both permissions are only granted on F-Droid's install when F-Droid itself
- * has been installed as a system-application.
+ * Both permissions are protected by systemOrSignature (in newer versions:
+ * system|signature) and only granted on F-Droid's install in the following
+ * cases:
+ * <ul>
+ * <li>On all Android versions if F-Droid is pre-deployed as a
+ * system-application with the Rom</li>
+ * <li>On Android < 4.4 also when moved into /system/app/</li>
+ * <li>On Android >= 4.4 also when moved into /system/priv-app/</li>
+ * </ul>
+ * <p/>
+ * Sources for Android 4.4 change:
+ * https://groups.google.com/forum/#!msg/android-
+ * security-discuss/r7uL_OEMU5c/LijNHvxeV80J
+ * https://android.googlesource.com/platform
+ * /frameworks/base/+/ccbf84f44c9e6a5ed3c08673614826bb237afc54
  */
 public class SystemPermissionInstaller extends Installer {
 
