@@ -57,20 +57,11 @@ public class DefaultInstaller extends Installer {
         intent.setAction(android.content.Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + apkFile.getPath()),
                 "application/vnd.android.package-archive");
-        extraNotUnknownSource(intent);
         try {
             mActivity.startActivityForResult(intent, REQUEST_CODE_INSTALL);
         } catch (ActivityNotFoundException e) {
             throw new AndroidNotCompatibleException(e);
         }
-    }
-
-    @TargetApi(14)
-    private void extraNotUnknownSource(Intent intent) {
-        if (Build.VERSION.SDK_INT < 14) {
-            return;
-        }
-        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
     }
 
     @Override
