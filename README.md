@@ -31,7 +31,7 @@ Add the following lines to your repo manifest:
 <remote name="fdroid" fetch="https://git.gitorious.org/f-droid" />
 <remote name="github" fetch="https://github.com/" />
 
-<project path="packages/apps/fdroidclient" name="fdroidclient.git" remote="fdroid" revision="0.62" />
+<project path="packages/apps/fdroidclient" name="fdroidclient.git" remote="fdroid" revision="0.65" />
 
 <project path="packages/apps/fdroidclient/extern/UniversalImageLoader" name="nostra13/Android-Universal-Image-Loader" remote="github" revision="ee50fd1ce77d866a89374a5ff0886be6e179feb2" />
 <project path="packages/apps/fdroidclient/extern/AndroidPinning" name="binaryparadox/AndroidPinning" remote="github" revision="a0d713c6162b7016a3c3f55bcaefcdca4acacebd" />

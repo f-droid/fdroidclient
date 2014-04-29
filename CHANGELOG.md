@@ -1,4 +1,4 @@
-### Upcoming release
+### 0.65 (2014-04-29)
 
 * Fix crash on startup for devices with more than 500 installed apps
 
@@ -12,7 +12,9 @@
 
 * Keep track of installed apps internally, rather than asking Android each time
 
-* Fix some crashes
+* Security fixes and updates for adding of repos
+
+* Fix some other crashes
 
 * Translation updates
 
