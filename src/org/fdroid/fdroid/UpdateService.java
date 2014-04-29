@@ -305,7 +305,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             if (!changes) {
-                Log.d("FDroid", "Not checking app details or compatibility, ecause all repos were up to date.");
+                Log.d("FDroid", "Not checking app details or compatibility, because all repos were up to date.");
             } else {
                 sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
 
@@ -399,7 +399,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         List<App> appsToIgnore = AppProvider.Helper.findIgnored(this, projection);
         for (App app : apps) {
             boolean ignored = false;
-            for(App appIgnored : appsToIgnore) {
+            for (App appIgnored : appsToIgnore) {
                 if (appIgnored.id.equals(app.id)) {
                     ignored = true;
                     break;
@@ -444,7 +444,9 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private List<String> getKnownAppIds(List<App> apps) {
         List<String> knownAppIds = new ArrayList<String>();
-        if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
+        if (apps.size() == 0) {
+            // Do nothing
+        } else if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
             int middle = apps.size() / 2;
             List<App> apps1 = apps.subList(0, middle);
             List<App> apps2 = apps.subList(middle, apps.size());
