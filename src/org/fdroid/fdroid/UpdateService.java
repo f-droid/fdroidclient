@@ -333,7 +333,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 notifyContentProviders();
 
-                if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
+                if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {
                     performUpdateNotification(appsToUpdate.values());
                 }
             }
