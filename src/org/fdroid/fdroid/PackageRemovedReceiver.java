@@ -19,12 +19,22 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageRemovedReceiver extends PackageReceiver {
+
+    @Override
+    protected boolean toDiscard(Intent intent) {
+        if (intent.hasExtra(Intent.EXTRA_REPLACING)) {
+            Log.d("FDroid", "Discarding since this PACKAGE_REMOVED is just a PACKAGE_REPLACED");
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void handle(Context context, String appId) {
