@@ -120,7 +120,13 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             if (finished && dialog.isShowing())
-                dialog.dismiss();
+                try {
+                    dialog.dismiss();
+                } catch (IllegalArgumentException e) {
+                    // sometimes dialog.isShowing() doesn't work :(
+                    // https://stackoverflow.com/questions/19538282/view-not-attached-to-window-manager-dialog-dismiss
+                    e.printStackTrace();
+                }
         }
     }
 
