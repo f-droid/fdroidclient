@@ -19,23 +19,27 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
-
-import android.content.pm.PackageInfo;
+import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+
 import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import org.fdroid.fdroid.data.Repo;
 
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileReader;
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.MessageDigest;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
-import java.security.MessageDigest;
 import java.util.*;
 
 public final class Utils {
@@ -178,12 +182,30 @@ public final class Utils {
 
     // return a fingerprint formatted for display
     public static String formatFingerprint(String fingerprint) {
-        if (fingerprint.length() != 62)  // SHA-256 is 62 hex chars
+        if (TextUtils.isEmpty(fingerprint)
+                || fingerprint.length() != 64  // SHA-256 is 64 hex chars
+                || fingerprint.matches(".*[^0-9a-fA-F].*")) // its a hex string
             return "BAD FINGERPRINT";
         String displayFP = fingerprint.substring(0, 2);
         for (int i = 2; i < fingerprint.length(); i = i + 2)
             displayFP += " " + fingerprint.substring(i, i + 2);
         return displayFP;
+    }
+
+    public static Uri getSharingUri(Context context, Repo repo) {
+        Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
+        Uri.Builder b = uri.buildUpon();
+        b.appendQueryParameter("fingerprint", repo.fingerprint);
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        String ssid = wifiInfo.getSSID().replaceAll("^\"(.*)\"$", "$1");
+        String bssid = wifiInfo.getBSSID();
+        if (!TextUtils.isEmpty(bssid)) {
+            b.appendQueryParameter("bssid", Uri.encode(bssid));
+            if (!TextUtils.isEmpty(ssid))
+                b.appendQueryParameter("ssid", Uri.encode(ssid));
+        }
+        return b.build();
     }
 
     public static File getApkCacheDir(Context context) {
@@ -218,7 +240,7 @@ public final class Utils {
             digest.update(key);
             byte[] fingerprint = digest.digest();
             Formatter formatter = new Formatter(new StringBuilder());
-            for (int i = 1; i < fingerprint.length; i++) {
+            for (int i = 0; i < fingerprint.length; i++) {
                 formatter.format("%02X", fingerprint[i]);
             }
             ret = formatter.toString();

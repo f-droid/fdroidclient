@@ -96,7 +96,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "versionName TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 43;
+    private static final int DB_VERSION = 44;
 
     private Context context;
 
@@ -322,7 +322,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * calculate its fingerprint and save it to the database.
      */
     private void addFingerprintToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 29) {
+        if (oldVersion < 44) {
             if (!columnExists(db, TABLE_REPO, "fingerprint"))
                 db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
             List<Repo> oldrepos = new ArrayList<Repo>();

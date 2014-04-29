@@ -97,10 +97,16 @@ public class RepoAdapter extends CursorAdapter {
 
         // If we set the signed view to GONE instead of INVISIBLE, then the
         // height of each list item varies.
-        View signedView = view.findViewById(R.id.repo_unsigned);
+        TextView signedView = (TextView) view.findViewById(R.id.repo_unsigned);
         if (repo.isSigned()) {
             signedView.setVisibility(View.INVISIBLE);
+        } else if (repo.isSignedButUnverified()) {
+            signedView.setText(R.string.unverified);
+            signedView.setTextColor(view.getResources().getColor(R.color.unverified));
+            signedView.setVisibility(View.VISIBLE);
         } else {
+            signedView.setText(R.string.unsigned);
+            signedView.setTextColor(view.getResources().getColor(R.color.unsigned));
             signedView.setVisibility(View.VISIBLE);
         }
     }

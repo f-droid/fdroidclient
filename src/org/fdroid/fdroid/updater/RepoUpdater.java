@@ -43,6 +43,7 @@ abstract public class RepoUpdater {
     protected final Repo repo;
     private List<App> apps = new ArrayList<App>();
     private List<Apk> apks = new ArrayList<Apk>();
+    protected boolean usePubkeyInJar = false;
     protected boolean hasChanged = false;
     protected ProgressListener progressListener;
 
@@ -230,9 +231,13 @@ abstract public class RepoUpdater {
             values.put(RepoProvider.DataColumns.LAST_ETAG, etag);
         }
 
-        // We read an unsigned index, but that indicates that
-        // a signed version is now available...
-        if (handler.getPubKey() != null && repo.pubkey == null) {
+        /*
+         * We read an unsigned index that indicates that a signed version
+         * is available. Or we received a repo config that included the
+         * fingerprint, so we need to save the pubkey now.
+         */
+        if (handler.getPubKey() != null &&
+                (repo.pubkey == null || usePubkeyInJar)) {
             // TODO: Spend the time *now* going to get the etag of the signed
             // repo, so that we can prevent downloading it next time. Otherwise
             // next time we update, we have to download the signed index
@@ -241,6 +246,7 @@ abstract public class RepoUpdater {
             Log.d("FDroid",
                     "Public key found - switching to signed repo for future updates");
             values.put(RepoProvider.DataColumns.PUBLIC_KEY, handler.getPubKey());
+            usePubkeyInJar = false;
         }
 
         if (handler.getVersion() != -1 && handler.getVersion() != repo.version) {

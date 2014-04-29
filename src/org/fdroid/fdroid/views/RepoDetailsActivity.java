@@ -4,8 +4,6 @@ package org.fdroid.fdroid.views;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.net.Uri;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -13,12 +11,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -27,7 +25,6 @@ import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 public class RepoDetailsActivity extends FragmentActivity {
     public static final String TAG = "RepoDetailsActivity";
 
-    private WifiManager wifiManager;
     private Repo repo;
 
     static final String MIME_TYPE = "application/vnd.org.fdroid.fdroid.repo";
@@ -67,8 +64,6 @@ public class RepoDetailsActivity extends FragmentActivity {
 
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
         setTitle(repo.getName());
-
-        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
     }
 
     @TargetApi(14)
@@ -80,7 +75,7 @@ public class RepoDetailsActivity extends FragmentActivity {
             return;
         }
         nfcAdapter.setNdefPushMessage(new NdefMessage(new NdefRecord[] {
-                NdefRecord.createUri(getSharingUri()),
+                NdefRecord.createUri(Utils.getSharingUri(this, repo)),
         }), this);
         findViewById(android.R.id.content).post(new Runnable() {
             @Override
@@ -127,20 +122,5 @@ public class RepoDetailsActivity extends FragmentActivity {
             startActivity(intent);
             finish();
         }
-    }
-
-    protected Uri getSharingUri() {
-        Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
-        Uri.Builder b = uri.buildUpon();
-        b.appendQueryParameter("fingerprint", repo.fingerprint);
-        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        String ssid = wifiInfo.getSSID().replaceAll("^\"(.*)\"$", "$1");
-        String bssid = wifiInfo.getBSSID();
-        if (!TextUtils.isEmpty(bssid)) {
-            b.appendQueryParameter("bssid", Uri.encode(bssid));
-            if (!TextUtils.isEmpty(ssid))
-                b.appendQueryParameter("ssid", Uri.encode(ssid));
-        }
-        return b.build();
     }
 }
