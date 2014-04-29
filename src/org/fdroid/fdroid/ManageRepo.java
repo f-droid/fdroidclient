@@ -27,11 +27,11 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
-
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -57,8 +57,8 @@ public class ManageRepo extends FragmentActivity {
 
         ((FDroidApp) getApplication()).applyTheme(this);
 
-        if (savedInstanceState == null) {
-
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm.findFragmentById(android.R.id.content) == null) {
             // Need to set a dummy view (which will get overridden by the fragment manager
             // below) so that we can call setContentView(). This is a work around for
             // a (bug?) thing in 3.0, 3.1 which requires setContentView to be invoked before
@@ -67,10 +67,9 @@ public class ManageRepo extends FragmentActivity {
             setContentView( new LinearLayout(this) );
 
             listFragment = new RepoListFragment();
-            getSupportFragmentManager()
-                .beginTransaction()
-                .add(android.R.id.content, listFragment)
-                .commit();
+            fm.beginTransaction()
+                    .add(android.R.id.content, listFragment)
+                    .commit();
         }
 
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
