@@ -18,8 +18,6 @@
 
 package org.fdroid.fdroid;
 
-import java.util.*;
-
 import android.app.*;
 import android.content.*;
 import android.content.SharedPreferences.Editor;
@@ -29,14 +27,15 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.*;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 import org.fdroid.fdroid.data.*;
 import org.fdroid.fdroid.updater.RepoUpdater;
 
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.widget.Toast;
+import java.util.*;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
@@ -388,30 +387,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private void performUpdateNotification(Collection<App> apps) {
-        int updateCount = 0;
-
-        // This may be somewhat strange, because we usually would just trust
-        // App.canAndWantToUpdate(). The only problem is that the "appsToUpdate"
-        // list only contains data from the repo index, not our database.
-        // As such, it doesn't know if we want to ignore the apps or not. For that, we
-        // need to query the database manually and identify those which are to be ignored.
-        String[] projection = { AppProvider.DataColumns.APP_ID };
-        List<App> appsToIgnore = AppProvider.Helper.findIgnored(this, projection);
-        for (App app : apps) {
-            boolean ignored = false;
-            for (App appIgnored : appsToIgnore) {
-                if (appIgnored.id.equals(app.id)) {
-                    ignored = true;
-                    break;
-                }
-            }
-            if (!ignored && app.hasUpdates()) {
-                updateCount++;
-            }
-        }
-
-        if (updateCount > 0) {
-            showAppUpdatesNotification(updateCount);
+        int count = AppProvider.Helper.count(this, AppProvider.getCanUpdateUri());
+        if (count > 0) {
+            showAppUpdatesNotification(count);
         }
     }
 
