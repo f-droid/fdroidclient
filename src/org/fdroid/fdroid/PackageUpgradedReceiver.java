@@ -20,6 +20,7 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.util.Log;
@@ -32,6 +33,11 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
  * opt instead to send the PACKAGE_CHANGED intent.
  */
 public class PackageUpgradedReceiver extends PackageReceiver {
+
+    @Override
+    protected boolean toDiscard(Intent intent) {
+        return false;
+    }
 
     @Override
     protected void handle(Context context, String appId) {
