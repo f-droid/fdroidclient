@@ -218,9 +218,11 @@ public final class Utils {
     }
 
     public static String calcFingerprint(String keyHexString) {
-        if (TextUtils.isEmpty(keyHexString))
+        if (TextUtils.isEmpty(keyHexString)
+                || keyHexString.matches(".*[^a-fA-F0-9].*")) {
+            Log.e("FDroid", "Signing key certificate was blank or contained a non-hex-digit!");
             return null;
-        else
+        } else
             return calcFingerprint(Hasher.unhex(keyHexString));
     }
 
@@ -234,6 +236,10 @@ public final class Utils {
 
     public static String calcFingerprint(byte[] key) {
         String ret = null;
+        if (key.length < 256) {
+            Log.e("FDroid", "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
+            return null;
+        }
         try {
             // keytool -list -v gives you the SHA-256 fingerprint
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
