@@ -1,4 +1,4 @@
-### 0.66 (2014-04-??)
+### 0.66 (2014-05-01)
 
 * Fix crash on startup for devices with more than 500 installed apps
 
