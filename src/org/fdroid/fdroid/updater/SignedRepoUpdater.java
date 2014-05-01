@@ -52,6 +52,13 @@ public class SignedRepoUpdater extends RepoUpdater {
             InputStream input = null;
             OutputStream output = null;
             try {
+                /*
+                 * JarFile.getInputStream() provides the signature check, even
+                 * though the Android docs do not mention this, the Java docs do
+                 * and Android seems to implement it the same:
+                 * http://docs.oracle.com/javase/6/docs/api/java/util/jar/JarFile.html#getInputStream(java.util.zip.ZipEntry)
+                 * https://developer.android.com/reference/java/util/jar/JarFile.html#getInputStream(java.util.zip.ZipEntry)
+                 */
                 input = jarFile.getInputStream(indexEntry);
                 output = new FileOutputStream(indexFile);
                 Utils.copy(input, output);
