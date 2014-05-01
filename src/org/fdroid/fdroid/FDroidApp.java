@@ -154,7 +154,7 @@ public class FDroidApp extends Application {
                         // 30 days in secs: 30*24*60*60 = 2592000
                         2592000)
                     )
-            .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
+            .threadPoolSize(4)
             .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
             .build();
         ImageLoader.getInstance().init(config);
