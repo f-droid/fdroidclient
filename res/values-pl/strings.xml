@@ -150,5 +150,8 @@ Opis i inne szczegóły będą tu dostępne gdy zaktualizujesz repozytorium</str
   <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
 
 Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
+  <string name="repo_disabled_notification">Zablokowane \"%1$s\".
+
+Aby zainstalować aplikacje z tego repozytorium musisz je włączyć ponownie.</string>
   <string name="minsdk_or_later">%s lub później</string>
 </resources>
