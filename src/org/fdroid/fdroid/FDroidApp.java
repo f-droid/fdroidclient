@@ -51,6 +51,7 @@ import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
 import javax.net.ssl.*;
 import java.io.File;
+import java.lang.Thread;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -154,6 +155,7 @@ public class FDroidApp extends Application {
                         2592000)
                     )
             .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
+            .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
             .build();
         ImageLoader.getInstance().init(config);
 
