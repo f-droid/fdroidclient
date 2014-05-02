@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FDroidCertPins {
-    public static final String[] DEFAULT_PINS =
-    {
+    public static final String[] DEFAULT_PINS = {
         /*
          * SubjectDN: CN=f-droid.org, OU=PositiveSSL, OU=Domain Control Validated
          * IssuerDN: CN=PositiveSSL CA 2, O=COMODO CA Limited, L=Salford, ST=Greater Manchester, C=GB
@@ -31,22 +30,12 @@ public class FDroidCertPins {
          * SPKI Pin: 638F93856E1F5EDFCBD40C46D4160CFF21B0713A
          */
         "638F93856E1F5EDFCBD40C46D4160CFF21B0713A",
-
-        /*
-         * SubjectDN: CN=guardianproject.info, OU=Gandi Standard SSL, OU=Domain Control Validated
-         * IssuerDN: CN=Gandi Standard SSL CA, O=GANDI SAS, C=FR
-         * Fingerprint: 187C2573E924DFCBFF2A781A2F99D71C6E031828
-         * SPKI Pin: EB6BBC6C6BAEEA20CB0F3357720D86E0F3A526F4
-         */
-        "EB6BBC6C6BAEEA20CB0F3357720D86E0F3A526F4",
     };
 
     public static ArrayList<String> PINLIST = null;
 
-    public static String[] getPinList()
-    {
-        if(PINLIST == null)
-        {
+    public static String[] getPinList() {
+        if (PINLIST == null) {
             PINLIST = new ArrayList<String>();
             PINLIST.addAll(Arrays.asList(DEFAULT_PINS));
         }
