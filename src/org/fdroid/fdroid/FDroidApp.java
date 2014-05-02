@@ -23,6 +23,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -30,7 +32,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -46,18 +52,35 @@ import de.duenndns.ssl.MemorizingTrustManager;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
-import javax.net.ssl.*;
 import java.io.File;
-import java.lang.Thread;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 public class FDroidApp extends Application {
+
+    // for the local repo on this device, all static since there is only one
+    public static int ipAddress = 0;
+    public static int port = 8888;
+    public static String ipAddressString = null;
+    public static String ssid = "";
+    public static String bssid = "";
+    public static Repo repo = new Repo();
+    static Set<String> selectedApps = new HashSet<String>();
 
     BluetoothAdapter bluetoothAdapter = null;
 
@@ -196,6 +219,13 @@ public class FDroidApp extends Application {
         } catch (KeyStoreException e) {
             Log.e("FDroid", "Unable to set up trust manager chain. KeyStoreException");
         }
+
+        // initialized the local repo information
+        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        int wifiState = wifiManager.getWifiState();
+        if (wifiState == WifiManager.WIFI_STATE_ENABLING
+                || wifiState == WifiManager.WIFI_STATE_ENABLED)
+            startService(new Intent(this, WifiStateChangeService.class));
     }
 
     @TargetApi(18)

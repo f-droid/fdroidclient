@@ -197,15 +197,12 @@ public final class Utils {
             return Uri.parse("http://wifi-not-enabled");
         Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
         Uri.Builder b = uri.buildUpon();
-        b.appendQueryParameter("fingerprint", repo.fingerprint);
-        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        String ssid = wifiInfo.getSSID().replaceAll("^\"(.*)\"$", "$1");
-        String bssid = wifiInfo.getBSSID();
-        if (!TextUtils.isEmpty(bssid)) {
-            b.appendQueryParameter("bssid", Uri.encode(bssid));
-            if (!TextUtils.isEmpty(ssid))
-                b.appendQueryParameter("ssid", Uri.encode(ssid));
+        if (!TextUtils.isEmpty(repo.fingerprint))
+            b.appendQueryParameter("fingerprint", repo.fingerprint);
+        if (!TextUtils.isEmpty(FDroidApp.bssid)) {
+            b.appendQueryParameter("bssid", Uri.encode(FDroidApp.bssid));
+            if (!TextUtils.isEmpty(FDroidApp.ssid))
+                b.appendQueryParameter("ssid", Uri.encode(FDroidApp.ssid));
         }
         return b.build();
     }
