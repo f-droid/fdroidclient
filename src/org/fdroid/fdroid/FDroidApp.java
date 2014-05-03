@@ -26,6 +26,7 @@ import android.bluetooth.BluetoothManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -36,6 +37,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -53,6 +55,7 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
@@ -81,6 +84,9 @@ public class FDroidApp extends Application {
     public static String bssid = "";
     public static Repo repo = new Repo();
     static Set<String> selectedApps = new HashSet<String>();
+
+    private static Messenger localRepoServiceMessenger = null;
+    private static boolean localRepoServiceIsBound = false;
 
     BluetoothAdapter bluetoothAdapter = null;
 
@@ -277,6 +283,43 @@ public class FDroidApp extends Application {
         } else {
             sendBt.setClassName(bluetoothPackageName, className);
             activity.startActivity(sendBt);
+        }
+    }
+
+    private static ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            localRepoServiceMessenger = new Messenger(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName className) {
+            localRepoServiceMessenger = null;
+        }
+    };
+
+    public static void startLocalRepoService(Context context) {
+        context.bindService(new Intent(context, LocalRepoService.class),
+                serviceConnection, Context.BIND_AUTO_CREATE);
+        localRepoServiceIsBound = true;
+    }
+
+    public static void stopLocalRepoService(Context context) {
+        if (localRepoServiceIsBound) {
+            context.unbindService(serviceConnection);
+            localRepoServiceIsBound = false;
+        }
+    }
+
+    public static void restartLocalRepoService() {
+        if (localRepoServiceMessenger != null) {
+            try {
+                Message msg = Message.obtain(null,
+                        LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
+                localRepoServiceMessenger.send(msg);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

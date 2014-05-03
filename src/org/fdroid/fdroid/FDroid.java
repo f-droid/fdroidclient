@@ -19,20 +19,17 @@
 
 package org.fdroid.fdroid;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
-import android.content.*;
-import android.content.pm.ApplicationInfo;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
-import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -49,6 +46,7 @@ import android.widget.TextView;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
+import org.fdroid.fdroid.views.LocalRepoActivity;
 
 public class FDroid extends FragmentActivity {
 
@@ -65,6 +63,7 @@ public class FDroid extends FragmentActivity {
     private static final int ABOUT = Menu.FIRST + 3;
     private static final int SEARCH = Menu.FIRST + 4;
     private static final int BLUETOOTH_APK = Menu.FIRST + 5;
+    private static final int LOCAL_REPO = Menu.FIRST + 6;
 
     private FDroidApp fdroidApp = null;
 
@@ -135,6 +134,7 @@ public class FDroid extends FragmentActivity {
                 android.R.drawable.ic_menu_search);
         if (fdroidApp.bluetoothAdapter != null) // ignore on devices without Bluetooth
             menu.add(Menu.NONE, BLUETOOTH_APK, 3, R.string.menu_send_apk_bt);
+        menu.add(Menu.NONE, LOCAL_REPO, 4, R.string.local_repo);
         menu.add(Menu.NONE, PREFERENCES, 4, R.string.menu_preferences).setIcon(
                 android.R.drawable.ic_menu_preferences);
         menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
@@ -160,6 +160,10 @@ public class FDroid extends FragmentActivity {
         case PREFERENCES:
             Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
             startActivityForResult(prefs, REQUEST_PREFS);
+            return true;
+
+        case LOCAL_REPO:
+            startActivity(new Intent(this, LocalRepoActivity.class));
             return true;
 
         case SEARCH:
