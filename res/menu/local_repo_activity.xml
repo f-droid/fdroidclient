@@ -5,7 +5,12 @@
         android:id="@+id/menu_setup_repo"
         android:icon="@android:drawable/ic_input_add"
         android:showAsAction="ifRoom|withText"
-        android:title="Setup Repo"/>
+        android:title="@string/setup_repo"/>
+    <item
+        android:id="@+id/menu_send_fdroid_via_wifi"
+        android:icon="@android:drawable/arrow_up_float"
+        android:showAsAction="never"
+        android:title="@string/send_fdroid_via_wifi"/>
     <item
         android:id="@+id/menu_settings"
         android:icon="@android:drawable/ic_menu_preferences"

@@ -112,6 +112,9 @@ public class LocalRepoActivity extends Activity {
                 packages[1] = "com.android.bluetooth";
                 new UpdateAsyncTask(this, packages).execute();
                 return true;
+            case R.id.menu_send_fdroid_via_wifi:
+                startActivity(new Intent(this, QrWizardWifiNetworkActivity.class));
+                return true;
             case R.id.menu_settings:
                 startActivityForResult(new Intent(this, PreferencesActivity.class), SET_IP_ADDRESS);
                 return true;

@@ -182,6 +182,8 @@
         <activity
             android:name=".NfcNotEnabledActivity"
             android:noHistory="true" />
+        <activity android:name=".views.QrWizardDownloadActivity" />
+        <activity android:name=".views.QrWizardWifiNetworkActivity" />
         <activity
             android:name=".views.LocalRepoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
