@@ -193,6 +193,8 @@ public final class Utils {
     }
 
     public static Uri getSharingUri(Context context, Repo repo) {
+        if (TextUtils.isEmpty(repo.address))
+            return Uri.parse("http://wifi-not-enabled");
         Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
         Uri.Builder b = uri.buildUpon();
         b.appendQueryParameter("fingerprint", repo.fingerprint);
