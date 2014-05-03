@@ -55,6 +55,7 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
@@ -83,6 +84,7 @@ public class FDroidApp extends Application {
     public static String ssid = "";
     public static String bssid = "";
     public static Repo repo = new Repo();
+    public static LocalRepoManager localRepo = null;
     static Set<String> selectedApps = new HashSet<String>();
 
     private static Messenger localRepoServiceMessenger = null;
@@ -124,6 +126,8 @@ public class FDroidApp extends Application {
 
         //Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
+
+        localRepo = new LocalRepoManager(getApplicationContext());
 
         // Check that the installed app cache hasn't gotten out of sync somehow.
         // e.g. if we crashed/ran out of battery half way through responding

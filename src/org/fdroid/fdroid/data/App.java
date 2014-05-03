@@ -1,20 +1,20 @@
 package org.fdroid.fdroid.data;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.database.Cursor;
+
 import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.Utils;
 
 import java.util.Date;
-import java.util.Map;
+import java.util.List;
 
 public class App extends ValueObject implements Comparable<App> {
 
     // True if compatible with the device (i.e. if at least one apk is)
     public boolean compatible;
+    public boolean includeInRepo = false;
 
     public String id = "unknown";
     public String name = "Unknown";
@@ -82,6 +82,9 @@ public class App extends ValueObject implements Comparable<App> {
     public String installedVersionName;
 
     public int installedVersionCode;
+
+    public ApplicationInfo appInfo;
+    public List<Apk> apks;
 
     @Override
     public int compareTo(App app) {

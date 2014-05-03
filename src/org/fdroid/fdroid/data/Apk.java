@@ -4,7 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import org.fdroid.fdroid.Utils;
 
-import java.util.*;
+import java.io.File;
+import java.util.Date;
 
 public class Apk extends ValueObject implements Comparable<Apk> {
 
@@ -31,7 +32,8 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     // True if compatible with the device.
     public boolean compatible;
 
-    public String apkName;
+    public String apkName; // F-Droid style APK name
+    public File installedFile; // the .apk file on this device's filesystem
 
     // If not null, this is the name of the source tarball for the
     // application. Null indicates that it's a developer's binary

@@ -14,6 +14,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
 
 import java.util.Locale;
 
@@ -66,6 +67,9 @@ public class WifiStateChangeService extends Service {
                     scheme = "http";
                 FDroidApp.repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
+                FDroidApp.localRepo.setUriString(FDroidApp.repo.address);
+                FDroidApp.localRepo.writeIndexPage(
+                        Utils.getSharingUri(context, FDroidApp.repo).toString());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

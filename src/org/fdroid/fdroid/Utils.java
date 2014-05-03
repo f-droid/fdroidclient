@@ -20,8 +20,7 @@ package org.fdroid.fdroid;
 
 import android.content.Context;
 import android.net.Uri;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -30,13 +29,10 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.fdroid.fdroid.data.Repo;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
@@ -313,6 +309,64 @@ public final class Utils {
             }
             return false;
         }
+    }
+
+    // this is all new stuff being added
+    public static String hashBytes(byte[] input, String algo) {
+        try {
+            MessageDigest md = MessageDigest.getInstance(algo);
+            byte[] hashBytes = md.digest(input);
+            String hash = toHexString(hashBytes);
+
+            md.reset();
+            return hash;
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("FDroid", "Device does not support " + algo + " MessageDisgest algorithm");
+            return null;
+        }
+    }
+
+    public static String getBinaryHash(File apk, String algo) {
+        FileInputStream fis = null;
+        BufferedInputStream bis = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance(algo);
+            fis = new FileInputStream(apk);
+            bis = new BufferedInputStream(fis);
+
+            byte[] dataBytes = new byte[524288];
+            int nread = 0;
+
+            while ((nread = bis.read(dataBytes)) != -1)
+                md.update(dataBytes, 0, nread);
+
+            byte[] mdbytes = md.digest();
+            return toHexString(mdbytes);
+        } catch (IOException e) {
+            Log.e("FDroid", "Error reading \"" + apk.getAbsolutePath()
+                    + "\" to compute " + algo + " hash.");
+            return null;
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("FDroid", "Device does not support " + algo + " MessageDisgest algorithm");
+            return null;
+        } finally {
+            closeQuietly(fis);
+        }
+    }
+
+    /**
+     * Computes the base 16 representation of the byte array argument.
+     *
+     * @param bytes an array of bytes.
+     * @return the bytes represented as a string of hexadecimal digits.
+     */
+    public static String toHexString(byte[] bytes) {
+        BigInteger bi = new BigInteger(1, bytes);
+        return String.format("%0" + (bytes.length << 1) + "X", bi);
+    }
+
+    public static String getDefaultRepoName() {
+        return (Build.BRAND + " " + Build.MODEL).replaceAll(" ", "-");
     }
 
 }

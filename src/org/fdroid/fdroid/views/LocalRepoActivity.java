@@ -5,32 +5,25 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.PreferencesActivity;
-import org.fdroid.fdroid.QrGenAsyncTask;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.util.Locale;
@@ -104,12 +97,21 @@ public class LocalRepoActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.local_repo_activity, menu);
+        if (Build.VERSION.SDK_INT < 11) // TODO remove after including appcompat-v7
+            menu.findItem(R.id.menu_setup_repo).setVisible(false);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_setup_repo:
+                setUIFromWifi();
+                String[] packages = new String[2];
+                packages[0] = getPackageName();
+                packages[1] = "com.android.bluetooth";
+                new UpdateAsyncTask(this, packages).execute();
+                return true;
             case R.id.menu_settings:
                 startActivityForResult(new Intent(this, PreferencesActivity.class), SET_IP_ADDRESS);
                 return true;
@@ -205,5 +207,68 @@ public class LocalRepoActivity extends Activity {
     public void onConfigurationChanged(Configuration newConfig) {
         // ignore orientation/keyboard change
         super.onConfigurationChanged(newConfig);
+    }
+
+    class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
+        private static final String TAG = "UpdateAsyncTask";
+        private ProgressDialog progressDialog;
+        private String[] selectedApps;
+        private Uri sharingUri;
+
+        public UpdateAsyncTask(Context c, String[] apps) {
+            selectedApps = apps;
+            progressDialog = new ProgressDialog(c);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setTitle(R.string.updating);
+            sharingUri = Utils.getSharingUri(c, FDroidApp.repo);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                publishProgress(getString(R.string.deleting_repo));
+                FDroidApp.localRepo.deleteRepo();
+                for (String app : selectedApps) {
+                    publishProgress(String.format(getString(R.string.adding_apks_format), app));
+                    FDroidApp.localRepo.addApp(getApplicationContext(), app);
+                }
+                FDroidApp.localRepo.writeIndexPage(sharingUri.toString());
+                publishProgress(getString(R.string.writing_index_xml));
+                FDroidApp.localRepo.writeIndexXML();
+                publishProgress(getString(R.string.linking_apks));
+                FDroidApp.localRepo.copyApksToRepo();
+                publishProgress(getString(R.string.copying_icons));
+                // run the icon copy without progress, its not a blocker
+                new AsyncTask<Void, Void, Void>() {
+
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        FDroidApp.localRepo.copyIconsToRepo();
+                        return null;
+                    }
+                }.execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... progress) {
+            super.onProgressUpdate(progress);
+            progressDialog.setMessage(progress[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            progressDialog.dismiss();
+            Toast.makeText(getBaseContext(), R.string.updated_local_repo, Toast.LENGTH_SHORT)
+                    .show();
+        }
     }
 }

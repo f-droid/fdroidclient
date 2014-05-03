@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/menu_setup_repo"
+        android:icon="@android:drawable/ic_input_add"
+        android:showAsAction="ifRoom|withText"
+        android:title="Setup Repo"/>
+    <item
         android:id="@+id/menu_settings"
         android:icon="@android:drawable/ic_menu_preferences"
         android:showAsAction="never"
