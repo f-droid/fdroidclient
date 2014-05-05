@@ -198,6 +198,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".views.SelectLocalAppsActivity"
+            android:label="@string/setup_repo"
+            android:parentActivityName=".views.LocalRepoActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.LocalRepoActivity" />
+        </activity>
+        <activity
             android:name=".views.RepoDetailsActivity"
             android:label="@string/menu_manage"
             android:parentActivityName=".ManageRepo"

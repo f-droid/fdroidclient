@@ -36,6 +36,7 @@ public class LocalRepoActivity extends Activity {
     private ToggleButton repoSwitch;
 
     private int SET_IP_ADDRESS = 7345;
+    private int UPDATE_REPO = 7346;
 
     /** Called when the activity is first created. */
     @Override
@@ -106,11 +107,7 @@ public class LocalRepoActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_setup_repo:
-                setUIFromWifi();
-                String[] packages = new String[2];
-                packages[0] = getPackageName();
-                packages[1] = "com.android.bluetooth";
-                new UpdateAsyncTask(this, packages).execute();
+                startActivityForResult(new Intent(this, SelectLocalAppsActivity.class), UPDATE_REPO);
                 return true;
             case R.id.menu_send_fdroid_via_wifi:
                 startActivity(new Intent(this, QrWizardWifiNetworkActivity.class));
@@ -128,6 +125,10 @@ public class LocalRepoActivity extends Activity {
             return;
         if (requestCode == SET_IP_ADDRESS) {
             setUIFromWifi();
+        } else if (requestCode == UPDATE_REPO) {
+            setUIFromWifi();
+            new UpdateAsyncTask(this, FDroidApp.selectedApps.toArray(new String[0]))
+                    .execute();
         }
     }
 

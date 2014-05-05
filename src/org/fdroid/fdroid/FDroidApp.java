@@ -85,7 +85,7 @@ public class FDroidApp extends Application {
     public static String bssid = "";
     public static Repo repo = new Repo();
     public static LocalRepoManager localRepo = null;
-    static Set<String> selectedApps = new HashSet<String>();
+    public static Set<String> selectedApps = new HashSet<String>();
 
     private static Messenger localRepoServiceMessenger = null;
     private static boolean localRepoServiceIsBound = false;

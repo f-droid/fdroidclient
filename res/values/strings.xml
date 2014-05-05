@@ -157,12 +157,15 @@
 	<string name="setup_repo">Setup Local Repo</string>
 	<string name="touch_to_configure_local_repo">Touch to setup your local repo.</string>
 	<string name="updating">Updating&#8230;</string>
+	<string name="update_repo">Update Repo</string>
 	<string name="deleting_repo">Deleting current repo&#8230;</string>
 	<string name="adding_apks_format">Adding %s to repo&#8230;</string>
 	<string name="writing_index_xml">Writing raw index file (index.xml)&#8230;</string>
 	<string name="linking_apks">Linking APKs into the repo&#8230;</string>
 	<string name="copying_icons">Copying app icons into the repo&#8230;</string>
 	<string name="updated_local_repo">Finished updating local repo</string>
+	<string name="no_applications_found">No applications found</string>
+	<string name="icon">icon</string>
 	<string name="fingerprint">Fingerprint:</string>
 	<string name="wifi_network">WiFi Network:</string>
 	<string name="enable_wifi">Enable WiFi</string>
