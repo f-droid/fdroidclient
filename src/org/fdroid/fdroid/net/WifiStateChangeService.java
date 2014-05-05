@@ -21,11 +21,8 @@ import java.util.Locale;
 public class WifiStateChangeService extends Service {
     public static final String BROADCAST = "org.fdroid.fdroid.action.WIFI_CHANGE";
 
-    private Context context;
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        context = this;
         new WaitForWifiAsyncTask().execute();
         return START_NOT_STICKY;
     }
@@ -60,7 +57,7 @@ public class WifiStateChangeService extends Service {
                 FDroidApp.bssid = wifiInfo.getBSSID();
 
                 String scheme;
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(WifiStateChangeService.this);
                 if (prefs.getBoolean("use_https", false))
                     scheme = "https";
                 else
@@ -69,7 +66,7 @@ public class WifiStateChangeService extends Service {
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
                 FDroidApp.localRepo.setUriString(FDroidApp.repo.address);
                 FDroidApp.localRepo.writeIndexPage(
-                        Utils.getSharingUri(context, FDroidApp.repo).toString());
+                        Utils.getSharingUri(WifiStateChangeService.this, FDroidApp.repo).toString());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -79,7 +76,7 @@ public class WifiStateChangeService extends Service {
         @Override
         protected void onPostExecute(Void result) {
             Intent intent = new Intent(BROADCAST);
-            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+            LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
             WifiStateChangeService.this.stopSelf();
         }
     }
