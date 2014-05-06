@@ -33,6 +33,8 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider.DataColumns;
 import org.fdroid.fdroid.views.SelectLocalAppsActivity;
 
+import java.util.HashSet;
+
 public class SelectLocalAppsFragment extends ListFragment implements LoaderCallbacks<Cursor> {
 
     private SelectLocalAppsActivity selectLocalAppsActivity;
@@ -69,6 +71,17 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
 
         // either reconnect with an existing loader or start a new one
         getLoaderManager().initLoader(0, null, this);
+
+        // build list of existing apps from what is on the file system
+        if (FDroidApp.selectedApps == null) {
+            FDroidApp.selectedApps = new HashSet<String>();
+            for (String filename : FDroidApp.localRepo.repoDir.list()) {
+                if (filename.matches(".*\\.apk")) {
+                    String packageName = filename.substring(0, filename.indexOf("_"));
+                    FDroidApp.selectedApps.add(packageName);
+                }
+            }
+        }
     }
 
     @TargetApi(11)

@@ -66,7 +66,6 @@ import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -85,7 +84,7 @@ public class FDroidApp extends Application {
     public static String bssid = "";
     public static Repo repo = new Repo();
     public static LocalRepoManager localRepo = null;
-    public static Set<String> selectedApps = new HashSet<String>();
+    public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
 
     private static Messenger localRepoServiceMessenger = null;
     private static boolean localRepoServiceIsBound = false;

@@ -220,7 +220,6 @@ public class LocalRepoManager {
             OutputStream out = sh.getOutputStream();
             String command = "/system/bin/ln -s " + inFile.getAbsolutePath() + " " + outFile
                     + "\nexit\n";
-            Log.i(TAG, "Running: " + command);
             out.write(command.getBytes("ASCII"));
 
             final char buf[] = new char[40];
@@ -239,7 +238,6 @@ public class LocalRepoManager {
             e.printStackTrace();
             return false;
         }
-        Log.i(TAG, "symlink exitcode: " + exitCode);
         return exitCode == 0;
     }
 
@@ -258,12 +256,10 @@ public class LocalRepoManager {
         }
     }
 
-    public static boolean doCopyStream(InputStream inStream, OutputStream outStream)
-    {
+    public static boolean doCopyStream(InputStream inStream, OutputStream outStream) {
         byte[] buf = new byte[1024];
         int readBytes;
-        try
-        {
+        try {
             while ((readBytes = inStream.read(buf)) > 0) {
                 outStream.write(buf, 0, readBytes);
             }
