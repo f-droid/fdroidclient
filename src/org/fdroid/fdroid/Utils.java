@@ -19,6 +19,9 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.AssetManager;
+import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
@@ -28,6 +31,8 @@ import android.util.Log;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.fdroid.fdroid.data.Repo;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.*;
 import java.math.BigInteger;
@@ -199,6 +204,34 @@ public final class Utils {
     public static String getAndroidVersionName(int sdkLevel) {
         if (sdkLevel < 0 || sdkLevel > 19) return androidVersionNames[0];
         return androidVersionNames[sdkLevel];
+    }
+
+    /* PackageManager doesn't give us minSdkVersion, so we have to parse it */
+    public static int getMinSdkVersion(Context context, String packageName) {
+        try {
+            AssetManager am = context.createPackageContext(packageName, 0).getAssets();
+            XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
+            int eventType = xml.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG) {
+                    if (xml.getName().equals("uses-sdk")) {
+                        for (int j = 0; j < xml.getAttributeCount(); j++) {
+                            if (xml.getAttributeName(j).equals("minSdkVersion")) {
+                                return Integer.parseInt(xml.getAttributeValue(j));
+                            }
+                        }
+                    }
+                }
+                eventType = xml.nextToken();
+            }
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+        return 8; // some kind of hopeful default
     }
 
     public static int countSubstringOccurrence(File file, String substring) throws IOException {

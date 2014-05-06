@@ -188,6 +188,7 @@ public class LocalRepoManager {
 
     @TargetApi(9)
     public App addApp(Context context, String packageName) {
+        // TODO this should become a constructor, i.e. public App(PackageManager pm, String id)
         ApplicationInfo appInfo;
         PackageInfo packageInfo;
         try {
@@ -223,7 +224,7 @@ public class LocalRepoManager {
         apk.hashType = "sha256";
         apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
         apk.added = app.added;
-        apk.minSdkVersion = getMinSdkVersion(context, packageName);
+        apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
         apk.id = app.id;
         apk.installedFile = apkFile;
         if (packageInfo.requestedPermissions == null)
@@ -309,34 +310,6 @@ public class LocalRepoManager {
 
         apps.put(packageName, app);
         return app;
-    }
-
-    /* PackageManager doesn't give us minSdkVersion, so we have to parse it */
-    public int getMinSdkVersion(Context context, String packageName) {
-        try {
-            AssetManager am = context.createPackageContext(packageName, 0).getAssets();
-            XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
-            int eventType = xml.getEventType();
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG) {
-                    if (xml.getName().equals("uses-sdk")) {
-                        for (int j = 0; j < xml.getAttributeCount(); j++) {
-                            if (xml.getAttributeName(j).equals("minSdkVersion")) {
-                                return Integer.parseInt(xml.getAttributeValue(j));
-                            }
-                        }
-                    }
-                }
-                eventType = xml.nextToken();
-            }
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-        return 8; // some kind of hopeful default
     }
 
     public void removeApp(String packageName) {
