@@ -54,6 +54,11 @@ public class LocalRepoActivity extends Activity {
         resetNetworkInfo();
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
+        // if no local repo exists, create one with only FDroid in it
+        if (!FDroidApp.localRepo.xmlIndex.exists())
+            new UpdateAsyncTask(this, new String[] {
+                    getPackageName(),
+            }).execute();
     }
 
     @Override
