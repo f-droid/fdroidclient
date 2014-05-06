@@ -42,21 +42,29 @@ public class LocalRepoService extends Service {
     public static int STOP = 12345678;
     public static int RESTART = 87654;
 
-    final Messenger messenger = new Messenger(new Handler() {
+    final Messenger messenger = new Messenger(new StartStopHandler(this));
+
+    static class StartStopHandler extends Handler {
+        private static LocalRepoService service;
+
+        public StartStopHandler(LocalRepoService service) {
+            StartStopHandler.service = service;
+        }
+
         @Override
         public void handleMessage(Message msg) {
             if (msg.arg1 == START) {
-                startWebServer();
+                service.startWebServer();
             } else if (msg.arg1 == STOP) {
-                stopWebServer();
+                service.stopWebServer();
             } else if (msg.arg1 == RESTART) {
-                stopWebServer();
-                startWebServer();
+                service.stopWebServer();
+                service.startWebServer();
             } else {
                 Log.e(TAG, "unsupported msg.arg1, ignored");
             }
         }
-    });
+    }
 
     private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
