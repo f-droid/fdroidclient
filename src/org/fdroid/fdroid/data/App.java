@@ -96,7 +96,7 @@ public class App extends ValueObject implements Comparable<App> {
     public int installedVersionCode;
 
     public ApplicationInfo appInfo;
-    public List<Apk> apks;
+    public Apk installedApk; // might be null if not installed
 
     @Override
     public int compareTo(App app) {
@@ -216,7 +216,6 @@ public class App extends ValueObject implements Comparable<App> {
 
         this.name = (String) appInfo.loadLabel(pm);
         this.appInfo = appInfo;
-        this.apks = new ArrayList<Apk>();
 
         File apkFile = new File(appInfo.publicSourceDir);
         Apk apk = new Apk();
@@ -298,7 +297,7 @@ public class App extends ValueObject implements Comparable<App> {
         }
         apk.sig = Utils.hashBytes(fdroidSig, "md5");
 
-        this.apks.add(apk);
+        this.installedApk = apk;
     }
 
     public boolean isValid() {
@@ -306,14 +305,13 @@ public class App extends ValueObject implements Comparable<App> {
                 || TextUtils.isEmpty(this.id))
             return false;
 
-        if (this.apks == null || this.apks.size() != 1)
+        if (this.installedApk == null)
             return false;
 
-        Apk apk = this.apks.get(0);
-        if (TextUtils.isEmpty(apk.sig))
+        if (TextUtils.isEmpty(this.installedApk.sig))
             return false;
 
-        File apkFile = apk.installedFile;
+        File apkFile = this.installedApk.installedFile;
         if (apkFile == null || !apkFile.canRead())
             return false;
 

@@ -166,11 +166,10 @@ public class LocalRepoManager {
         for (String packageName : appsToCopy) {
             App app = apps.get(packageName);
 
-            for (Apk apk : app.apks) {
-                File outFile = new File(repoDir, apk.apkName);
-                if (!Utils.symlinkOrCopyFile(apk.installedFile, outFile)) {
-                    throw new IllegalStateException("Unable to copy APK");
-                }
+            File outFile = new File(repoDir, app.installedApk.apkName);
+            if (app.installedApk == null
+                    || !Utils.symlinkOrCopyFile(app.installedApk.installedFile, outFile)) {
+                throw new IllegalStateException("Unable to copy APK");
             }
         }
     }
@@ -211,12 +210,9 @@ public class LocalRepoManager {
     }
 
     public void copyIconsToRepo() {
-        for (App app : apps.values()) {
-            if (app.apks.size() > 0) {
-                Apk apk = app.apks.get(0);
-                copyIconToRepo(app.appInfo.loadIcon(pm), app.id, apk.vercode);
-            }
-        }
+        for (App app : apps.values())
+            if (app.installedApk != null)
+                copyIconToRepo(app.appInfo.loadIcon(pm), app.id, app.installedApk.vercode);
     }
 
     /**
@@ -281,8 +277,6 @@ public class LocalRepoManager {
 
         SimpleDateFormat dateToStr = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         for (Entry<String, App> entry : apps.entrySet()) {
-            String latestVersion = "0";
-            String latestVerCode = "0";
             App app = entry.getValue();
             Element application = doc.createElement("application");
             application.setAttribute("id", app.id);
@@ -338,75 +332,69 @@ public class LocalRepoManager {
             application.appendChild(tracker);
 
             Element marketVersion = doc.createElement("marketversion");
+            marketVersion.setTextContent(app.installedApk.version);
             application.appendChild(marketVersion);
 
             Element marketVerCode = doc.createElement("marketvercode");
+            marketVerCode.setTextContent(String.valueOf(app.installedApk.vercode));
             application.appendChild(marketVerCode);
 
-            for (Apk apk : app.apks) {
-                Element packageNode = doc.createElement("package");
+            Element packageNode = doc.createElement("package");
 
-                Element version = doc.createElement("version");
-                latestVersion = apk.version;
-                version.setTextContent(apk.version);
-                packageNode.appendChild(version);
+            Element version = doc.createElement("version");
+            version.setTextContent(app.installedApk.version);
+            packageNode.appendChild(version);
 
-                // F-Droid unfortunately calls versionCode versioncode...
-                Element versioncode = doc.createElement("versioncode");
-                latestVerCode = String.valueOf(apk.vercode);
-                versioncode.setTextContent(latestVerCode);
-                packageNode.appendChild(versioncode);
+            // F-Droid unfortunately calls versionCode versioncode...
+            Element versioncode = doc.createElement("versioncode");
+            versioncode.setTextContent(String.valueOf(app.installedApk.vercode));
+            packageNode.appendChild(versioncode);
 
-                Element apkname = doc.createElement("apkname");
-                apkname.setTextContent(apk.apkName);
-                packageNode.appendChild(apkname);
+            Element apkname = doc.createElement("apkname");
+            apkname.setTextContent(app.installedApk.apkName);
+            packageNode.appendChild(apkname);
 
-                Element hash = doc.createElement("hash");
-                hash.setAttribute("type", apk.hashType);
-                hash.setTextContent(apk.hash.toLowerCase(Locale.US));
-                packageNode.appendChild(hash);
+            Element hash = doc.createElement("hash");
+            hash.setAttribute("type", app.installedApk.hashType);
+            hash.setTextContent(app.installedApk.hash.toLowerCase(Locale.US));
+            packageNode.appendChild(hash);
 
-                Element sig = doc.createElement("sig");
-                sig.setTextContent(apk.sig.toLowerCase(Locale.US));
-                packageNode.appendChild(sig);
+            Element sig = doc.createElement("sig");
+            sig.setTextContent(app.installedApk.sig.toLowerCase(Locale.US));
+            packageNode.appendChild(sig);
 
-                Element size = doc.createElement("size");
-                size.setTextContent(String.valueOf(apk.installedFile.length()));
-                packageNode.appendChild(size);
+            Element size = doc.createElement("size");
+            size.setTextContent(String.valueOf(app.installedApk.installedFile.length()));
+            packageNode.appendChild(size);
 
-                Element sdkver = doc.createElement("sdkver");
-                sdkver.setTextContent(String.valueOf(apk.minSdkVersion));
-                packageNode.appendChild(sdkver);
+            Element sdkver = doc.createElement("sdkver");
+            sdkver.setTextContent(String.valueOf(app.installedApk.minSdkVersion));
+            packageNode.appendChild(sdkver);
 
-                Element apkAdded = doc.createElement("added");
-                apkAdded.setTextContent(dateToStr.format(apk.added));
-                packageNode.appendChild(apkAdded);
+            Element apkAdded = doc.createElement("added");
+            apkAdded.setTextContent(dateToStr.format(app.installedApk.added));
+            packageNode.appendChild(apkAdded);
 
-                Element features = doc.createElement("features");
-                if (apk.features != null)
-                    features.setTextContent(Utils.CommaSeparatedList.str(apk.features));
-                packageNode.appendChild(features);
+            Element features = doc.createElement("features");
+            if (app.installedApk.features != null)
+                features.setTextContent(Utils.CommaSeparatedList.str(app.installedApk.features));
+            packageNode.appendChild(features);
 
-                Element permissions = doc.createElement("permissions");
-                if (apk.permissions != null) {
-                    StringBuilder buff = new StringBuilder();
+            Element permissions = doc.createElement("permissions");
+            if (app.installedApk.permissions != null) {
+                StringBuilder buff = new StringBuilder();
 
-                    for (String permission : apk.permissions) {
-                        buff.append(permission.replace("android.permission.", ""));
-                        buff.append(",");
-                    }
-                    String out = buff.toString();
-                    if (!TextUtils.isEmpty(out))
-                        permissions.setTextContent(out.substring(0, out.length() - 1));
+                for (String permission : app.installedApk.permissions) {
+                    buff.append(permission.replace("android.permission.", ""));
+                    buff.append(",");
                 }
-                packageNode.appendChild(permissions);
-
-                application.appendChild(packageNode);
+                String out = buff.toString();
+                if (!TextUtils.isEmpty(out))
+                    permissions.setTextContent(out.substring(0, out.length() - 1));
             }
+            packageNode.appendChild(permissions);
 
-            // now mark the latest version in the feed for this particular app
-            marketVersion.setTextContent(latestVersion);
-            marketVerCode.setTextContent(latestVerCode);
+            application.appendChild(packageNode);
         }
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
