@@ -95,7 +95,6 @@ public class App extends ValueObject implements Comparable<App> {
 
     public int installedVersionCode;
 
-    public ApplicationInfo appInfo;
     public Apk installedApk; // might be null if not installed
 
     @Override
@@ -215,7 +214,6 @@ public class App extends ValueObject implements Comparable<App> {
                 + ", last updated on " + this.lastUpdated + ")</p>";
 
         this.name = (String) appInfo.loadLabel(pm);
-        this.appInfo = appInfo;
 
         File apkFile = new File(appInfo.publicSourceDir);
         Apk apk = new Apk();

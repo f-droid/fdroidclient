@@ -210,9 +210,17 @@ public class LocalRepoManager {
     }
 
     public void copyIconsToRepo() {
-        for (App app : apps.values())
-            if (app.installedApk != null)
-                copyIconToRepo(app.appInfo.loadIcon(pm), app.id, app.installedApk.vercode);
+        ApplicationInfo appInfo;
+        for (App app : apps.values()) {
+            if (app.installedApk != null) {
+                try {
+                    appInfo = pm.getApplicationInfo(app.id, PackageManager.GET_META_DATA);
+                    copyIconToRepo(appInfo.loadIcon(pm), app.id, app.installedApk.vercode);
+                } catch (NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /**
