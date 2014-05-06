@@ -187,8 +187,18 @@ public class App extends ValueObject implements Comparable<App> {
         packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES
                 | PackageManager.GET_PERMISSIONS);
 
-        this.name = (String) appInfo.loadLabel(pm);
-        this.summary = (String) appInfo.loadDescription(pm);
+
+        String installerPackageName = pm.getInstallerPackageName(packageName);
+        ApplicationInfo installerAppInfo = pm.getApplicationInfo(installerPackageName,
+                PackageManager.GET_META_DATA);
+        CharSequence installerPackageLabel = installerAppInfo.loadLabel(pm);
+        if (TextUtils.isEmpty(installerPackageLabel))
+            installerPackageLabel = installerPackageName;
+        CharSequence appDescription = appInfo.loadDescription(pm);
+        if (TextUtils.isEmpty(appDescription))
+            this.summary = "(installed by " + installerPackageLabel + ")";
+        else
+            this.summary = (String) appDescription.subSequence(0, 40);
         this.id = appInfo.packageName;
         if (Build.VERSION.SDK_INT > 8) {
             this.added = new Date(packageInfo.firstInstallTime);
@@ -197,10 +207,17 @@ public class App extends ValueObject implements Comparable<App> {
             this.added = new Date(System.currentTimeMillis());
             this.lastUpdated = this.added;
         }
+        this.description = "<p>";
+        if (!TextUtils.isEmpty(appDescription))
+            this.description += appDescription + "\n";
+        this.description += "(installed by " + installerPackageLabel
+                + ", first installed on " + this.added
+                + ", last updated on " + this.lastUpdated + ")</p>";
+
+        this.name = (String) appInfo.loadLabel(pm);
         this.appInfo = appInfo;
         this.apks = new ArrayList<Apk>();
 
-        // TODO: use pm.getInstallerPackageName(packageName) for something
         File apkFile = new File(appInfo.publicSourceDir);
         Apk apk = new Apk();
         apk.version = packageInfo.versionName;

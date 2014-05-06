@@ -7,13 +7,11 @@ import android.content.SharedPreferences;
 import android.content.pm.*;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
-import android.content.res.XmlResourceParser;
 import android.graphics.*;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,17 +21,12 @@ import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.*;
-import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -283,7 +276,7 @@ public class LocalRepoManager {
         rootElement.appendChild(repo);
 
         Element repoDesc = doc.createElement("description");
-        repoDesc.setTextContent("A repo generated from apps installed on " + repoName);
+        repoDesc.setTextContent("A local FDroid repo generated from apps installed on " + repoName);
         repo.appendChild(repoDesc);
 
         SimpleDateFormat dateToStr = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
@@ -312,15 +305,11 @@ public class LocalRepoManager {
             application.appendChild(name);
 
             Element summary = doc.createElement("summary");
-            summary.setTextContent(app.name);
+            summary.setTextContent(app.summary);
             application.appendChild(summary);
 
-            Element description = doc.createElement("description");
-            description.setTextContent(app.name);
-            application.appendChild(description);
-
             Element desc = doc.createElement("desc");
-            desc.setTextContent(app.name);
+            desc.setTextContent(app.description);
             application.appendChild(desc);
 
             Element icon = doc.createElement("icon");
