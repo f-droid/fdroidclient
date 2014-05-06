@@ -87,9 +87,8 @@ public class LocalRepoManager {
         this.uriString = uriString;
     }
 
-    public void writeIndexPage(String repoAddress) {
+    private String writeFdroidApkToWebroot(String repoAddress) {
         ApplicationInfo appInfo;
-
         String fdroidClientURL = "https://f-droid.org/FDroid.apk";
 
         try {
@@ -102,7 +101,11 @@ public class LocalRepoManager {
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
+        return fdroidClientURL;
+    }
 
+    public void writeIndexPage(String repoAddress) {
+        final String fdroidClientURL = writeFdroidApkToWebroot(repoAddress);
         try {
             File indexHtml = new File(webRoot, "index.html");
             BufferedReader in = new BufferedReader(
