@@ -187,129 +187,26 @@ public class LocalRepoManager {
     }
 
     @TargetApi(9)
-    public App addApp(Context context, String packageName) {
-        // TODO this should become a constructor, i.e. public App(PackageManager pm, String id)
-        ApplicationInfo appInfo;
-        PackageInfo packageInfo;
+    public void addApp(Context context, String packageName) {
+        App app;
         try {
-            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
-            packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES
-                    | PackageManager.GET_PERMISSIONS);
+            app = new App(context, pm, packageName);
+            if (!app.isValid())
+                return;
+            PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
+            app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
         } catch (NameNotFoundException e) {
             e.printStackTrace();
-            return null;
-        }
-
-        App app = new App();
-        app.name = (String) appInfo.loadLabel(pm);
-        app.summary = (String) appInfo.loadDescription(pm);
-        app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
-        app.id = appInfo.packageName;
-        if (Build.VERSION.SDK_INT > 8) {
-            app.added = new Date(packageInfo.firstInstallTime);
-            app.lastUpdated = new Date(packageInfo.lastUpdateTime);
-        } else {
-            app.added = new Date(System.currentTimeMillis());
-            app.lastUpdated = app.added;
-        }
-        app.appInfo = appInfo;
-        app.apks = new ArrayList<Apk>();
-
-        // TODO: use pm.getInstallerPackageName(packageName) for something
-
-        File apkFile = new File(appInfo.publicSourceDir);
-        Apk apk = new Apk();
-        apk.version = packageInfo.versionName;
-        apk.vercode = packageInfo.versionCode;
-        apk.hashType = "sha256";
-        apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
-        apk.added = app.added;
-        apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
-        apk.id = app.id;
-        apk.installedFile = apkFile;
-        if (packageInfo.requestedPermissions == null)
-            apk.permissions = null;
-        else
-            apk.permissions = Utils.CommaSeparatedList.make(
-                    Arrays.asList(packageInfo.requestedPermissions));
-        apk.apkName = apk.id + "_" + apk.vercode + ".apk";
-
-        FeatureInfo[] features = packageInfo.reqFeatures;
-
-        if (features != null && features.length > 0) {
-            List<String> featureNames = new ArrayList<String>(features.length);
-
-            for (int i = 0; i < features.length; i++)
-                featureNames.add(features[i].name);
-
-            apk.features = Utils.CommaSeparatedList.make(featureNames);
-        }
-
-        // Signature[] sigs = pkgInfo.signatures;
-
-        byte[] rawCertBytes;
-        try {
-            JarFile apkJar = new JarFile(apkFile);
-            JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
-
-            if (aSignedEntry == null) {
-                apkJar.close();
-                return null;
-            }
-
-            InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
-            byte[] buff = new byte[2048];
-            while (tmpIn.read(buff, 0, buff.length) != -1) {
-                // NOP - apparently have to READ from the JarEntry before you
-                // can call
-                // getCerficates() and have it return != null. Yay Java.
-            }
-            tmpIn.close();
-
-            if (aSignedEntry.getCertificates() == null
-                    || aSignedEntry.getCertificates().length == 0) {
-                apkJar.close();
-                return null;
-            }
-
-            Certificate signer = aSignedEntry.getCertificates()[0];
-            rawCertBytes = signer.getEncoded();
-
-            apkJar.close();
-
-            /*
-             * I don't fully understand the loop used here. I've copied it
-             * verbatim from getsig.java bundled with FDroidServer. I *believe*
-             * it is taking the raw byte encoding of the certificate &
-             * converting it to a byte array of the hex representation of the
-             * original certificate byte array. This is then MD5 sum'd. It's a
-             * really bad way to be doing this if I'm right... If I'm not right,
-             * I really don't know! see lines 67->75 in getsig.java bundled with
-             * Fdroidserver
-             */
-            byte[] fdroidSig = new byte[rawCertBytes.length * 2];
-            for (int j = 0; j < rawCertBytes.length; j++) {
-                byte v = rawCertBytes[j];
-                int d = (v >> 4) & 0xF;
-                fdroidSig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
-                d = v & 0xF;
-                fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
-            }
-            apk.sig = Utils.hashBytes(fdroidSig, "md5");
-
+            return;
         } catch (CertificateEncodingException e) {
-            return null;
+            e.printStackTrace();
+            return;
         } catch (IOException e) {
-            return null;
+            e.printStackTrace();
+            return;
         }
-
-        app.apks.add(apk);
-
-        if (!validApp(app))
-            return null;
-
+        Log.i(TAG, "apps.put: " + packageName);
         apps.put(packageName, app);
-        return app;
     }
 
     public void removeApp(String packageName) {
@@ -318,26 +215,6 @@ public class LocalRepoManager {
 
     public List<String> getApps() {
         return new ArrayList<String>(apps.keySet());
-    }
-
-    public boolean validApp(App app) {
-        if (app == null)
-            return false;
-
-        if (app.name == null || app.name.equals(""))
-            return false;
-
-        if (app.id == null | app.id.equals(""))
-            return false;
-
-        if (app.apks == null || app.apks.size() != 1)
-            return false;
-
-        File apkFile = app.apks.get(0).installedFile;
-        if (apkFile == null || !apkFile.canRead())
-            return false;
-
-        return true;
     }
 
     public void copyIconsToRepo() {
