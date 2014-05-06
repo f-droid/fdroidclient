@@ -97,6 +97,61 @@ public final class Utils {
         output.flush();
     }
 
+    /**
+     * use symlinks if they are available, otherwise fall back to copying
+     */
+    public static boolean symlinkOrCopyFile(File inFile, File outFile) {
+        if (new File("/system/bin/ln").exists()) {
+            return symlink(inFile, outFile);
+        } else {
+            return copy(inFile, outFile);
+        }
+    }
+
+    public static boolean symlink(File inFile, File outFile) {
+        int exitCode = -1;
+        try {
+            Process sh = Runtime.getRuntime().exec("sh");
+            OutputStream out = sh.getOutputStream();
+            String command = "/system/bin/ln -s " + inFile.getAbsolutePath() + " " + outFile
+                    + "\nexit\n";
+            out.write(command.getBytes("ASCII"));
+
+            final char buf[] = new char[40];
+            InputStreamReader reader = new InputStreamReader(sh.getInputStream());
+            while (reader.read(buf) != -1)
+                throw new IOException("stdout: " + new String(buf));
+            reader = new InputStreamReader(sh.getErrorStream());
+            while (reader.read(buf) != -1)
+                throw new IOException("stderr: " + new String(buf));
+
+            exitCode = sh.waitFor();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return exitCode == 0;
+    }
+
+    public static boolean copy(File inFile, File outFile) {
+        InputStream input = null;
+        OutputStream output = null;
+        try {
+            input = new FileInputStream(inFile);
+            output = new FileOutputStream(outFile);
+            Utils.copy(input, output);
+            output.close();
+            input.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static void closeQuietly(Closeable closeable) {
         if (closeable == null) {
             return;

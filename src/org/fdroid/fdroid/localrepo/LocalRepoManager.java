@@ -4,17 +4,13 @@ package org.fdroid.fdroid.localrepo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.FeatureInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.pm.*;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
-import android.graphics.Bitmap;
+import android.graphics.*;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -30,27 +26,11 @@ import org.w3c.dom.Element;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -124,7 +104,7 @@ public class LocalRepoManager {
             File apkFile = new File(appInfo.publicSourceDir);
             File fdroidApkLink = new File(webRoot, "fdroid.client.apk");
             fdroidApkLink.delete();
-            if (symlinkOrCopyFile(apkFile, fdroidApkLink))
+            if (Utils.symlinkOrCopyFile(apkFile, fdroidApkLink))
                 fdroidClientURL = "/" + fdroidApkLink.getName();
         } catch (NameNotFoundException e) {
             e.printStackTrace();
@@ -149,10 +129,10 @@ public class LocalRepoManager {
             // the user will always find the bootstrap page.
             File fdroidDirIndex = new File(fdroidDir, "index.html");
             fdroidDirIndex.delete();
-            symlinkOrCopyFile(indexHtml, fdroidDirIndex);
+            Utils.symlinkOrCopyFile(indexHtml, fdroidDirIndex);
             File repoDirIndex = new File(repoDir, "index.html");
             repoDirIndex.delete();
-            symlinkOrCopyFile(indexHtml, repoDirIndex);
+            Utils.symlinkOrCopyFile(indexHtml, repoDirIndex);
             // add in /FDROID/REPO to support bad QR Scanner apps
             File fdroidCAPS = new File(fdroidDir.getParentFile(), "FDROID");
             fdroidCAPS.mkdir();
@@ -160,10 +140,10 @@ public class LocalRepoManager {
             repoCAPS.mkdir();
             File fdroidCAPSIndex = new File(fdroidCAPS, "index.html");
             fdroidCAPSIndex.delete();
-            symlinkOrCopyFile(indexHtml, fdroidCAPSIndex);
+            Utils.symlinkOrCopyFile(indexHtml, fdroidCAPSIndex);
             File repoCAPSIndex = new File(repoCAPS, "index.html");
             repoCAPSIndex.delete();
-            symlinkOrCopyFile(indexHtml, repoCAPSIndex);
+            Utils.symlinkOrCopyFile(indexHtml, repoCAPSIndex);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -195,80 +175,10 @@ public class LocalRepoManager {
 
             for (Apk apk : app.apks) {
                 File outFile = new File(repoDir, apk.apkName);
-                if (!symlinkOrCopyFile(apk.installedFile, outFile)) {
+                if (!Utils.symlinkOrCopyFile(apk.installedFile, outFile)) {
                     throw new IllegalStateException("Unable to copy APK");
                 }
             }
-        }
-    }
-
-    /**
-     * use symlinks if they are available, otherwise fall back to copying
-     */
-    public static boolean symlinkOrCopyFile(File inFile, File outFile) {
-        if (new File("/system/bin/ln").exists()) {
-            return doSymLink(inFile, outFile);
-        } else {
-            return doCopyFile(inFile, outFile);
-        }
-    }
-
-    public static boolean doSymLink(File inFile, File outFile) {
-        int exitCode = -1;
-        try {
-            Process sh = Runtime.getRuntime().exec("sh");
-            OutputStream out = sh.getOutputStream();
-            String command = "/system/bin/ln -s " + inFile.getAbsolutePath() + " " + outFile
-                    + "\nexit\n";
-            out.write(command.getBytes("ASCII"));
-
-            final char buf[] = new char[40];
-            InputStreamReader reader = new InputStreamReader(sh.getInputStream());
-            while (reader.read(buf) != -1)
-                throw new IOException("stdout: " + new String(buf));
-            reader = new InputStreamReader(sh.getErrorStream());
-            while (reader.read(buf) != -1)
-                throw new IOException("stderr: " + new String(buf));
-
-            exitCode = sh.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return exitCode == 0;
-    }
-
-    public static boolean doCopyFile(File inFile, File outFile) {
-        InputStream inStream = null;
-        OutputStream outStream = null;
-
-        try {
-            inStream = new FileInputStream(inFile);
-            outStream = new FileOutputStream(outFile);
-
-            return doCopyStream(inStream, outStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public static boolean doCopyStream(InputStream inStream, OutputStream outStream) {
-        byte[] buf = new byte[1024];
-        int readBytes;
-        try {
-            while ((readBytes = inStream.read(buf)) > 0) {
-                outStream.write(buf, 0, readBytes);
-            }
-            inStream.close();
-            outStream.close();
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
         }
     }
 
