@@ -57,7 +57,7 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
         ListView listView = getListView();
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),
-                android.R.layout.simple_list_item_activated_1,
+                android.R.layout.simple_list_item_activated_2,
                 null,
                 new String[] {
                         InstalledAppProvider.DataColumns.APPLICATION_LABEL,
@@ -65,6 +65,7 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
                 },
                 new int[] {
                         android.R.id.text1,
+                        android.R.id.text2,
                 },
                 0);
         setListAdapter(adapter);
