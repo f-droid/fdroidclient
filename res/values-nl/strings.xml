@@ -9,6 +9,7 @@
   <string name="version">Versie</string>
   <string name="edit">Bewerken</string>
   <string name="delete">Verwijderen</string>
+  <string name="enable_nfc_send">Versturen via NFC aanzetten...</string>
   <string name="cache_downloaded">buffer gedownloade apps</string>
   <string name="cache_downloaded_on">Gedownloade apk-files bewaren op SD card</string>
   <string name="cache_downloaded_off">apk-files niet bewaren</string>
@@ -26,7 +27,6 @@
   <string name="about_desc">Gebaseerd op Aptoide.
 Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="about_site">Website:</string>
-  <string name="about_mail">Email:</string>
   <string name="about_version">Versie:</string>
   <string name="about_website">Website</string>
   <string name="no_repo">U hebt geen bronnen geconfigureerd!
@@ -57,11 +57,17 @@ Een bron-adres ziet er ongeveer
   <string name="process_wait_title">Even geduld aub</string>
   <string name="process_update_msg">Applicatie-lijst vernieuwen…</string>
   <string name="download_server">downloaden applicatie van</string>
+  <string name="nfc_is_not_enabled">NFC is niet ingeschakeld!</string>
+  <string name="go_to_nfc_settings">Ga naar NFC instellingen...</string>
+  <string name="bluetooth_activity_not_found">Geen Bluetooth verzendmethode gevonden, kies er een!</string>
+  <string name="choose_bt_send">Kies Bluetooth verzendmethode</string>
   <string name="repo_add_url">Bron-adres</string>
+  <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
   <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
 Wilt u ze vernieuwen?</string>
   <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk...</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>
   <string name="menu_search">Zoeken</string>
@@ -99,6 +105,7 @@ Wilt u ze vernieuwen?</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
   <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
+  <string name="local_repos_scanning">Lokale FDroid-bronnen ontdekken...</string>
   <string name="status_download">Downloaden
 %2$s / %3$s (%4$d%%) van
 %1$s</string>
@@ -107,6 +114,7 @@ Wilt u ze vernieuwen?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Verbinden met %1$s</string>
   <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
+  <string name="status_inserting">Applicatiedetails opslaan (%1$d%%)</string>
   <string name="no_permissions">Geen permissies worden gebruikt</string>
   <string name="permissions_for_long">Permissies voor versie %s</string>
   <string name="showPermissions">Laat permissies zien</string>
@@ -115,16 +123,20 @@ Wilt u ze vernieuwen?</string>
   <string name="theme">Thema</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Aantal apps</string>
+  <string name="repo_fingerprint">Vingerafdruk van bronondertekensleutel (SHA-256)</string>
   <string name="repo_description">Beschrijving</string>
   <string name="repo_last_update">Meest recente update</string>
   <string name="repo_name">Naam</string>
   <string name="repo_not_yet_updated">Deze opslag is nog niet eerder gebruikt. Om de leverbare apps te zien moet u het updaten.
 
 Zodra de update gedaan is ziet u hier de beschrijving en andere details.</string>
-  <string name="repo_delete_details">Weet u zeker dat u de opslag genaamd \"{0}\" met daarin \"{1}\" apps wilt verwijderen? Reeds geïnstalleerde apps blijven behouden, maar kunnen niet meer worden geüpdate via F-Droid.</string>
   <string name="unknown">Onbekend</string>
   <string name="repo_confirm_delete_body">Het verwijderen van een opslag betekent dat apps hierop niet meer beschikbaar zijn voor F-Droid.
 
 Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
   <string name="repo_disabled_notification">\"%1$s\" uitgeschakeld. U moet deze weer activeren mocht u apps vanuit deze opslag willen installeren.</string>
+  <string name="up_to_maxsdk">tot maximaal %s</string>
+  <string name="minsdk_up_to_maxsdk">%1$s tot %2$s</string>
+  <string name="not_on_same_wifi">Uw apparaat zit niet op hetzelfde WiFi-netwerk als de lokale bron die u zojuist heeft toegevoegd! Probeer om bij netwerk %s aan te melden</string>
+  <string name="requires_features">Benodigd: %1$s</string>
 </resources>
