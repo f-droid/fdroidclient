@@ -64,10 +64,14 @@ public class InstalledAppProvider extends FDroidProvider {
 
     private static final String PROVIDER_NAME = "InstalledAppProvider";
 
+    private static final String PATH_SEARCH = "search";
+    private static final int    CODE_SEARCH = CODE_SINGLE + 1;
+
     private static final UriMatcher matcher = new UriMatcher(-1);
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
+        matcher.addURI(getAuthority(), PATH_SEARCH + "/*", CODE_SEARCH);
         matcher.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
@@ -77,6 +81,13 @@ public class InstalledAppProvider extends FDroidProvider {
 
     public static Uri getAppUri(String appId) {
         return Uri.withAppendedPath(getContentUri(), appId);
+    }
+
+    public static Uri getSearchUri(String keywords) {
+        return getContentUri().buildUpon()
+			.appendPath(PATH_SEARCH)
+			.appendPath(keywords)
+			.build();
     }
 
     public static String getApplicationLabel(Context context, String packageName) {
@@ -116,6 +127,10 @@ public class InstalledAppProvider extends FDroidProvider {
         return new QuerySelection("appId = ?", new String[] { appId } );
     }
 
+    private QuerySelection querySearch(String keywords) {
+        return new QuerySelection("applicationLabel LIKE ?", new String[] { "%" + keywords + "%" } );
+    }
+
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
 		if (sortOrder == null) {
@@ -129,6 +144,10 @@ public class InstalledAppProvider extends FDroidProvider {
 
             case CODE_SINGLE:
                 selection = selection.add(queryApp(uri.getLastPathSegment()));
+                break;
+
+            case CODE_SEARCH:
+                selection = selection.add(querySearch(uri.getLastPathSegment()));
                 break;
 
             default:
