@@ -33,6 +33,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -181,6 +182,29 @@
         <activity
             android:name=".NfcNotEnabledActivity"
             android:noHistory="true" />
+        <activity android:name=".views.QrWizardDownloadActivity" />
+        <activity android:name=".views.QrWizardWifiNetworkActivity" />
+        <activity
+            android:name=".views.LocalRepoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/local_repo"
+            android:launchMode="singleTop"
+            android:parentActivityName=".FDroid"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.SelectLocalAppsActivity"
+            android:label="@string/setup_repo"
+            android:parentActivityName=".views.LocalRepoActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.LocalRepoActivity" />
+        </activity>
         <activity
             android:name=".views.RepoDetailsActivity"
             android:label="@string/menu_manage"
@@ -303,8 +327,15 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".WifiStateChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
 
         <service android:name=".UpdateService" />
+        <service android:name=".net.WifiStateChangeService" />
+        <service android:name=".localrepo.LocalRepoService" />
     </application>
 
 </manifest>

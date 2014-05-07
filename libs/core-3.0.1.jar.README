@@ -1,0 +1,17 @@
+zxing
+-----
+
+ZXing ("zebra crossing") is an open-source, multi-format 1D/2D barcode image
+processing library implemented in Java, with ports to other languages.
+
+https://github.com/zxing/zxing
+
+Building zxing from scratch is a massive pain, so we use the official jar.
+The main source repo is SVN, so we couldn't do a git submodule anyway.
+
+The releases should be signed by this key:
+Sean Owen (ZXing) <srowen@gmail.com>
+CE32 85F3 2068 5193 D11F  EA01 F6CE 9695 C931 8406
+
+http://central.maven.org/maven2/com/google/zxing/core/3.0.1/core-3.0.1.jar
+http://central.maven.org/maven2/com/google/zxing/core/3.0.1/core-3.0.1.jar.asc

@@ -19,9 +19,11 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.AssetManager;
+import android.content.res.XmlResourceParser;
 import android.net.Uri;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -29,14 +31,13 @@ import android.util.Log;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.fdroid.fdroid.data.Repo;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
@@ -101,6 +102,61 @@ public final class Utils {
         output.flush();
     }
 
+    /**
+     * use symlinks if they are available, otherwise fall back to copying
+     */
+    public static boolean symlinkOrCopyFile(File inFile, File outFile) {
+        if (new File("/system/bin/ln").exists()) {
+            return symlink(inFile, outFile);
+        } else {
+            return copy(inFile, outFile);
+        }
+    }
+
+    public static boolean symlink(File inFile, File outFile) {
+        int exitCode = -1;
+        try {
+            Process sh = Runtime.getRuntime().exec("sh");
+            OutputStream out = sh.getOutputStream();
+            String command = "/system/bin/ln -s " + inFile.getAbsolutePath() + " " + outFile
+                    + "\nexit\n";
+            out.write(command.getBytes("ASCII"));
+
+            final char buf[] = new char[40];
+            InputStreamReader reader = new InputStreamReader(sh.getInputStream());
+            while (reader.read(buf) != -1)
+                throw new IOException("stdout: " + new String(buf));
+            reader = new InputStreamReader(sh.getErrorStream());
+            while (reader.read(buf) != -1)
+                throw new IOException("stderr: " + new String(buf));
+
+            exitCode = sh.waitFor();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return exitCode == 0;
+    }
+
+    public static boolean copy(File inFile, File outFile) {
+        InputStream input = null;
+        OutputStream output = null;
+        try {
+            input = new FileInputStream(inFile);
+            output = new FileOutputStream(outFile);
+            Utils.copy(input, output);
+            output.close();
+            input.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static void closeQuietly(Closeable closeable) {
         if (closeable == null) {
             return;
@@ -150,6 +206,34 @@ public final class Utils {
         return androidVersionNames[sdkLevel];
     }
 
+    /* PackageManager doesn't give us minSdkVersion, so we have to parse it */
+    public static int getMinSdkVersion(Context context, String packageName) {
+        try {
+            AssetManager am = context.createPackageContext(packageName, 0).getAssets();
+            XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
+            int eventType = xml.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG) {
+                    if (xml.getName().equals("uses-sdk")) {
+                        for (int j = 0; j < xml.getAttributeCount(); j++) {
+                            if (xml.getAttributeName(j).equals("minSdkVersion")) {
+                                return Integer.parseInt(xml.getAttributeValue(j));
+                            }
+                        }
+                    }
+                }
+                eventType = xml.nextToken();
+            }
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+        return 8; // some kind of hopeful default
+    }
+
     public static int countSubstringOccurrence(File file, String substring) throws IOException {
         int count = 0;
         FileReader input = null;
@@ -193,17 +277,16 @@ public final class Utils {
     }
 
     public static Uri getSharingUri(Context context, Repo repo) {
+        if (TextUtils.isEmpty(repo.address))
+            return Uri.parse("http://wifi-not-enabled");
         Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
         Uri.Builder b = uri.buildUpon();
-        b.appendQueryParameter("fingerprint", repo.fingerprint);
-        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        String ssid = wifiInfo.getSSID().replaceAll("^\"(.*)\"$", "$1");
-        String bssid = wifiInfo.getBSSID();
-        if (!TextUtils.isEmpty(bssid)) {
-            b.appendQueryParameter("bssid", Uri.encode(bssid));
-            if (!TextUtils.isEmpty(ssid))
-                b.appendQueryParameter("ssid", Uri.encode(ssid));
+        if (!TextUtils.isEmpty(repo.fingerprint))
+            b.appendQueryParameter("fingerprint", repo.fingerprint);
+        if (!TextUtils.isEmpty(FDroidApp.bssid)) {
+            b.appendQueryParameter("bssid", Uri.encode(FDroidApp.bssid));
+            if (!TextUtils.isEmpty(FDroidApp.ssid))
+                b.appendQueryParameter("ssid", Uri.encode(FDroidApp.ssid));
         }
         return b.build();
     }
@@ -218,9 +301,11 @@ public final class Utils {
     }
 
     public static String calcFingerprint(String keyHexString) {
-        if (TextUtils.isEmpty(keyHexString))
+        if (TextUtils.isEmpty(keyHexString)
+                || keyHexString.matches(".*[^a-fA-F0-9].*")) {
+            Log.e("FDroid", "Signing key certificate was blank or contained a non-hex-digit!");
             return null;
-        else
+        } else
             return calcFingerprint(Hasher.unhex(keyHexString));
     }
 
@@ -234,6 +319,10 @@ public final class Utils {
 
     public static String calcFingerprint(byte[] key) {
         String ret = null;
+        if (key.length < 256) {
+            Log.e("FDroid", "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
+            return null;
+        }
         try {
             // keytool -list -v gives you the SHA-256 fingerprint
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -308,6 +397,64 @@ public final class Utils {
             }
             return false;
         }
+    }
+
+    // this is all new stuff being added
+    public static String hashBytes(byte[] input, String algo) {
+        try {
+            MessageDigest md = MessageDigest.getInstance(algo);
+            byte[] hashBytes = md.digest(input);
+            String hash = toHexString(hashBytes);
+
+            md.reset();
+            return hash;
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("FDroid", "Device does not support " + algo + " MessageDisgest algorithm");
+            return null;
+        }
+    }
+
+    public static String getBinaryHash(File apk, String algo) {
+        FileInputStream fis = null;
+        BufferedInputStream bis = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance(algo);
+            fis = new FileInputStream(apk);
+            bis = new BufferedInputStream(fis);
+
+            byte[] dataBytes = new byte[524288];
+            int nread = 0;
+
+            while ((nread = bis.read(dataBytes)) != -1)
+                md.update(dataBytes, 0, nread);
+
+            byte[] mdbytes = md.digest();
+            return toHexString(mdbytes);
+        } catch (IOException e) {
+            Log.e("FDroid", "Error reading \"" + apk.getAbsolutePath()
+                    + "\" to compute " + algo + " hash.");
+            return null;
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("FDroid", "Device does not support " + algo + " MessageDisgest algorithm");
+            return null;
+        } finally {
+            closeQuietly(fis);
+        }
+    }
+
+    /**
+     * Computes the base 16 representation of the byte array argument.
+     *
+     * @param bytes an array of bytes.
+     * @return the bytes represented as a string of hexadecimal digits.
+     */
+    public static String toHexString(byte[] bytes) {
+        BigInteger bi = new BigInteger(1, bytes);
+        return String.format("%0" + (bytes.length << 1) + "X", bi);
+    }
+
+    public static String getDefaultRepoName() {
+        return (Build.BRAND + " " + Build.MODEL).replaceAll(" ", "-");
     }
 
 }

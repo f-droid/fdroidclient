@@ -44,7 +44,8 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
         InputStream input = null;
         OutputStream output = null;
         try {
-            indexFile = File.createTempFile("index-", ".xml", context.getFilesDir());
+            indexFile = File.createTempFile("index-", ".xml",
+                    getInstrumentation().getTargetContext().getCacheDir());
             input = getInputStreamFromAssets(fileName);
             output = new FileOutputStream(indexFile);
             Utils.copy(input, output);

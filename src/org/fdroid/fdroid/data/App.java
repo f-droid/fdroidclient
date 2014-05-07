@@ -1,20 +1,32 @@
 package org.fdroid.fdroid.data;
 
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
+import android.content.pm.*;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
+import android.os.Build;
+import android.text.TextUtils;
+import android.util.Log;
+
 import org.fdroid.fdroid.AppFilter;
 import org.fdroid.fdroid.Utils;
 
-import java.util.Date;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateEncodingException;
+import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 public class App extends ValueObject implements Comparable<App> {
 
     // True if compatible with the device (i.e. if at least one apk is)
     public boolean compatible;
+    public boolean includeInRepo = false;
 
     public String id = "unknown";
     public String name = "Unknown";
@@ -82,6 +94,8 @@ public class App extends ValueObject implements Comparable<App> {
     public String installedVersionName;
 
     public int installedVersionCode;
+
+    public Apk installedApk; // might be null if not installed
 
     @Override
     public int compareTo(App app) {
@@ -158,6 +172,156 @@ public class App extends ValueObject implements Comparable<App> {
                 installedVersionName = cursor.getString(i);
             }
         }
+    }
+
+    /**
+     * Instantiate from a locally installed package.
+     */
+    @TargetApi(9)
+    public App(Context context, PackageManager pm, String packageName)
+            throws CertificateEncodingException, IOException, NameNotFoundException {
+        ApplicationInfo appInfo;
+        PackageInfo packageInfo;
+        appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+        packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES
+                | PackageManager.GET_PERMISSIONS);
+
+
+        String installerPackageName = pm.getInstallerPackageName(packageName);
+        CharSequence installerPackageLabel = null;
+        if (!TextUtils.isEmpty(installerPackageName)) {
+            try {
+                ApplicationInfo installerAppInfo = pm.getApplicationInfo(installerPackageName,
+                        PackageManager.GET_META_DATA);
+                installerPackageLabel = installerAppInfo.loadLabel(pm);
+            } catch (NameNotFoundException e) {
+                Log.d(getClass().getCanonicalName(), e.getMessage());
+            }
+        }
+        if (TextUtils.isEmpty(installerPackageLabel))
+            installerPackageLabel = installerPackageName;
+
+        CharSequence appDescription = appInfo.loadDescription(pm);
+        if (TextUtils.isEmpty(appDescription))
+            this.summary = "(installed by " + installerPackageLabel + ")";
+        else
+            this.summary = (String) appDescription.subSequence(0, 40);
+        this.id = appInfo.packageName;
+        if (Build.VERSION.SDK_INT > 8) {
+            this.added = new Date(packageInfo.firstInstallTime);
+            this.lastUpdated = new Date(packageInfo.lastUpdateTime);
+        } else {
+            this.added = new Date(System.currentTimeMillis());
+            this.lastUpdated = this.added;
+        }
+        this.description = "<p>";
+        if (!TextUtils.isEmpty(appDescription))
+            this.description += appDescription + "\n";
+        this.description += "(installed by " + installerPackageLabel
+                + ", first installed on " + this.added
+                + ", last updated on " + this.lastUpdated + ")</p>";
+
+        this.name = (String) appInfo.loadLabel(pm);
+
+        File apkFile = new File(appInfo.publicSourceDir);
+        Apk apk = new Apk();
+        apk.version = packageInfo.versionName;
+        apk.vercode = packageInfo.versionCode;
+        apk.hashType = "sha256";
+        apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
+        apk.added = this.added;
+        apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
+        apk.id = this.id;
+        apk.installedFile = apkFile;
+        if (packageInfo.requestedPermissions == null)
+            apk.permissions = null;
+        else
+            apk.permissions = Utils.CommaSeparatedList.make(
+                    Arrays.asList(packageInfo.requestedPermissions));
+        apk.apkName = apk.id + "_" + apk.vercode + ".apk";
+
+        FeatureInfo[] features = packageInfo.reqFeatures;
+
+        if (features != null && features.length > 0) {
+            List<String> featureNames = new ArrayList<String>(features.length);
+
+            for (int i = 0; i < features.length; i++)
+                featureNames.add(features[i].name);
+
+            apk.features = Utils.CommaSeparatedList.make(featureNames);
+        }
+
+        // Signature[] sigs = pkgInfo.signatures;
+
+        byte[] rawCertBytes;
+
+        JarFile apkJar = new JarFile(apkFile);
+        JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
+
+        if (aSignedEntry == null) {
+            apkJar.close();
+            throw new CertificateEncodingException("null signed entry!");
+        }
+
+        InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
+        byte[] buff = new byte[2048];
+        while (tmpIn.read(buff, 0, buff.length) != -1) {
+            /*
+             * NOP - apparently have to READ from the JarEntry before you can
+             * call getCerficates() and have it return != null. Yay Java.
+             */
+        }
+        tmpIn.close();
+
+        if (aSignedEntry.getCertificates() == null
+                || aSignedEntry.getCertificates().length == 0) {
+            apkJar.close();
+            throw new CertificateEncodingException("No Certificates found!");
+        }
+
+        Certificate signer = aSignedEntry.getCertificates()[0];
+        rawCertBytes = signer.getEncoded();
+
+        apkJar.close();
+
+        /*
+         * I don't fully understand the loop used here. I've copied it verbatim
+         * from getsig.java bundled with FDroidServer. I *believe* it is taking
+         * the raw byte encoding of the certificate & converting it to a byte
+         * array of the hex representation of the original certificate byte
+         * array. This is then MD5 sum'd. It's a really bad way to be doing this
+         * if I'm right... If I'm not right, I really don't know! see lines
+         * 67->75 in getsig.java bundled with Fdroidserver
+         */
+        byte[] fdroidSig = new byte[rawCertBytes.length * 2];
+        for (int j = 0; j < rawCertBytes.length; j++) {
+            byte v = rawCertBytes[j];
+            int d = (v >> 4) & 0xF;
+            fdroidSig[j * 2] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
+            d = v & 0xF;
+            fdroidSig[j * 2 + 1] = (byte) (d >= 10 ? ('a' + d - 10) : ('0' + d));
+        }
+        apk.sig = Utils.hashBytes(fdroidSig, "md5");
+
+        this.installedApk = apk;
+    }
+
+    public boolean isValid() {
+        if (TextUtils.isEmpty(this.name)
+                || TextUtils.isEmpty(this.id))
+            return false;
+
+        if (this.installedApk == null)
+            return false;
+
+        if (TextUtils.isEmpty(this.installedApk.sig))
+            return false;
+
+        File apkFile = this.installedApk.installedFile;
+        if (apkFile == null || !apkFile.canRead())
+            return false;
+
+        return true;
     }
 
     public ContentValues toContentValues() {

@@ -10,3 +10,6 @@
 	path = extern/AndroidPinning
 	url = http://gitlab.doeg.gy/cpu/androidpinning.git
 	ignore = dirty
+[submodule "extern/nanohttpd"]
+	path = extern/nanohttpd
+	url = https://github.com/eighthave/nanohttpd

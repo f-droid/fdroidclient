@@ -364,7 +364,8 @@ public class RepoListFragment extends ListFragment
             final Button addButton = alrt.getButton(DialogInterface.BUTTON_POSITIVE);
             alrt.setTitle(R.string.repo_exists);
             overwriteMessage.setVisibility(View.VISIBLE);
-            newFingerprint = newFingerprint.toUpperCase(Locale.ENGLISH);
+            if (newFingerprint != null)
+                newFingerprint = newFingerprint.toUpperCase(Locale.ENGLISH);
             if (repo.fingerprint == null && newFingerprint != null) {
                 // we're upgrading from unsigned to signed repo
                 overwriteMessage.setText(R.string.repo_exists_add_fingerprint);
