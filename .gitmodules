@@ -13,3 +13,4 @@
 [submodule "extern/nanohttpd"]
 	path = extern/nanohttpd
 	url = https://github.com/eighthave/nanohttpd
+	ignore = dirty
