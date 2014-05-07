@@ -9,9 +9,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
 import android.test.ProviderTestCase2MockContext;
+
 import mock.MockContextEmptyComponents;
 import mock.MockContextSwappableComponents;
 import mock.MockFDroidResources;
+
 import org.fdroid.fdroid.data.*;
 
 import java.util.List;
@@ -151,6 +153,7 @@ public abstract class FDroidProviderTest<T extends FDroidProvider> extends Provi
             InstalledAppProvider.DataColumns.APP_ID,
             InstalledAppProvider.DataColumns.VERSION_CODE,
             InstalledAppProvider.DataColumns.VERSION_NAME,
+            InstalledAppProvider.DataColumns.APPLICATION_LABEL,
         };
 
         Cursor cursor = getMockContentResolver().query(uri, projection, null, null, null);

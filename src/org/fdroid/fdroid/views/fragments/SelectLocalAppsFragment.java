@@ -60,6 +60,7 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
                 android.R.layout.simple_list_item_activated_1,
                 null,
                 new String[] {
+                        InstalledAppProvider.DataColumns.APPLICATION_LABEL,
                         InstalledAppProvider.DataColumns.APP_ID,
                 },
                 new int[] {
@@ -91,8 +92,8 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
         if (mActionMode == null)
             mActionMode = selectLocalAppsActivity
                     .startActionMode(selectLocalAppsActivity.mActionModeCallback);
-        Cursor cursor = (Cursor) l.getAdapter().getItem(position);
-        String packageName = cursor.getString(1);
+        Cursor c = (Cursor) l.getAdapter().getItem(position);
+        String packageName = c.getString(c.getColumnIndex(DataColumns.APP_ID));
         if (FDroidApp.selectedApps.contains(packageName)) {
             FDroidApp.selectedApps.remove(packageName);
         } else {
@@ -108,7 +109,7 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
                 InstalledAppProvider.DataColumns.ALL,
                 null,
                 null,
-                InstalledAppProvider.DataColumns.APP_ID);
+                InstalledAppProvider.DataColumns.APPLICATION_LABEL);
         return loader;
     }
 
@@ -123,7 +124,7 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
             Cursor c = ((Cursor) listView.getItemAtPosition(i));
             String packageName = c.getString(c.getColumnIndex(DataColumns.APP_ID));
             if (TextUtils.equals(packageName, fdroid)) {
-                listView.setItemChecked(i, true);
+                listView.setItemChecked(i, true); // always include FDroid
             } else {
                 for (String selected : FDroidApp.selectedApps) {
                     if (TextUtils.equals(packageName, selected)) {

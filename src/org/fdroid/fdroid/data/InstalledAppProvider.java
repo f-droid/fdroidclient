@@ -3,9 +3,14 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
+
 import org.fdroid.fdroid.R;
 
 import java.util.HashMap;
@@ -49,8 +54,11 @@ public class InstalledAppProvider extends FDroidProvider {
         public static final String APP_ID = "appId";
         public static final String VERSION_CODE = "versionCode";
         public static final String VERSION_NAME = "versionName";
+        public static final String APPLICATION_LABEL = "applicationLabel";
 
-        public static String[] ALL = { _ID, APP_ID, VERSION_CODE, VERSION_NAME };
+        public static String[] ALL = {
+                _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
+        };
 
     }
 
@@ -69,6 +77,20 @@ public class InstalledAppProvider extends FDroidProvider {
 
     public static Uri getAppUri(String appId) {
         return Uri.withAppendedPath(getContentUri(), appId);
+    }
+
+    public static String getApplicationLabel(Context context, String packageName) {
+        PackageManager pm = context.getPackageManager();
+        ApplicationInfo appInfo;
+        try {
+            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+            return appInfo.loadLabel(pm).toString();
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NotFoundException e) {
+            Log.d("InstalledAppProvider", "getApplicationLabel: " + e.getMessage());
+        }
+        return packageName; // all else fails, return id
     }
 
     @Override
