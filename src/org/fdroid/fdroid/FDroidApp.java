@@ -77,7 +77,6 @@ import javax.net.ssl.X509TrustManager;
 public class FDroidApp extends Application {
 
     // for the local repo on this device, all static since there is only one
-    public static int ipAddress = 0;
     public static int port = 8888;
     public static String ipAddressString = null;
     public static String ssid = "";

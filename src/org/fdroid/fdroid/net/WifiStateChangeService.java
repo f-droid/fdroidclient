@@ -39,19 +39,19 @@ public class WifiStateChangeService extends Service {
                     Log.i(TAG, "waiting for the wifi to be enabled...");
                     Thread.sleep(3000);
                 }
-                FDroidApp.ipAddress = wifiManager.getConnectionInfo().getIpAddress();
-                while (FDroidApp.ipAddress == 0) {
+                int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
+                while (ipAddress == 0) {
                     Log.i(TAG, "waiting for an IP address...");
                     Thread.sleep(3000);
-                    FDroidApp.ipAddress = wifiManager.getConnectionInfo().getIpAddress();
+                    ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                 }
                 WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-                FDroidApp.ipAddress = wifiInfo.getIpAddress();
+                ipAddress = wifiInfo.getIpAddress();
                 FDroidApp.ipAddressString = String.format(Locale.ENGLISH, "%d.%d.%d.%d",
-                        (FDroidApp.ipAddress & 0xff),
-                        (FDroidApp.ipAddress >> 8 & 0xff),
-                        (FDroidApp.ipAddress >> 16 & 0xff),
-                        (FDroidApp.ipAddress >> 24 & 0xff));
+                        (ipAddress & 0xff),
+                        (ipAddress >> 8 & 0xff),
+                        (ipAddress >> 16 & 0xff),
+                        (ipAddress >> 24 & 0xff));
 
                 FDroidApp.ssid = wifiInfo.getSSID().replaceAll("^\"(.*)\"$", "$1");
                 FDroidApp.bssid = wifiInfo.getBSSID();
