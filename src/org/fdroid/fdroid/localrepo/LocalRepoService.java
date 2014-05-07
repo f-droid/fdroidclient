@@ -21,12 +21,15 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.LocalRepoActivity;
 
 import java.io.IOException;
+import java.net.BindException;
+import java.util.Random;
 
 public class LocalRepoService extends Service {
     private static final String TAG = "LocalRepoService";
@@ -133,6 +136,11 @@ public class LocalRepoService extends Service {
                 };
                 try {
                     localHttpd.start();
+                } catch (BindException e) {
+                    int prev = FDroidApp.port;
+                    FDroidApp.port = FDroidApp.port + new Random().nextInt(1111);
+                    Log.w(TAG, "port " + prev + " occupied, trying on " + FDroidApp.port + "!");
+                    startService(new Intent(LocalRepoService.this, WifiStateChangeService.class));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
