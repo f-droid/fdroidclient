@@ -188,11 +188,19 @@ public class App extends ValueObject implements Comparable<App> {
 
 
         String installerPackageName = pm.getInstallerPackageName(packageName);
-        ApplicationInfo installerAppInfo = pm.getApplicationInfo(installerPackageName,
-                PackageManager.GET_META_DATA);
-        CharSequence installerPackageLabel = installerAppInfo.loadLabel(pm);
+        CharSequence installerPackageLabel = null;
+        if (!TextUtils.isEmpty(installerPackageName)) {
+            try {
+                ApplicationInfo installerAppInfo = pm.getApplicationInfo(installerPackageName,
+                        PackageManager.GET_META_DATA);
+                installerPackageLabel = installerAppInfo.loadLabel(pm);
+            } catch (NameNotFoundException e) {
+                Log.d(getClass().getCanonicalName(), e.getMessage());
+            }
+        }
         if (TextUtils.isEmpty(installerPackageLabel))
             installerPackageLabel = installerPackageName;
+
         CharSequence appDescription = appInfo.loadDescription(pm);
         if (TextUtils.isEmpty(appDescription))
             this.summary = "(installed by " + installerPackageLabel + ")";
