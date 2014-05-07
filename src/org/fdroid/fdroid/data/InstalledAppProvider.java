@@ -118,6 +118,10 @@ public class InstalledAppProvider extends FDroidProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+		if (sortOrder == null) {
+			sortOrder = DataColumns.APPLICATION_LABEL;
+		}
+
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
         switch (matcher.match(uri)) {
             case CODE_LIST:
@@ -133,7 +137,7 @@ public class InstalledAppProvider extends FDroidProvider {
                 throw new UnsupportedOperationException(message);
         }
 
-        Cursor cursor = read().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, null);
+        Cursor cursor = read().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
