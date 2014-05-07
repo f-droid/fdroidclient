@@ -2,12 +2,10 @@
 package org.fdroid.fdroid.views;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -92,12 +90,11 @@ public class QrWizardWifiNetworkActivity extends Activity {
             if (wifiInfo.getHiddenSSID())
                 qrString += ";H:true";
             qrString += ";;";
-            new QrGenAsyncTask(this, R.id.qrWizardImage).execute(qrString);
-            Log.i(TAG, "qr: " + qrString);
+            if (Build.VERSION.SDK_INT >= 8) // zxing requires >= 8
+                new QrGenAsyncTask(this, R.id.qrWizardImage).execute(qrString);
 
             TextView wifiNetworkName = (TextView) findViewById(R.id.qrWifiNetworkName);
             wifiNetworkName.setText(wifiInfo.getSSID());
-            Log.i(TAG, "wifi network name: " + wifiInfo.getSSID());
         }
     }
 

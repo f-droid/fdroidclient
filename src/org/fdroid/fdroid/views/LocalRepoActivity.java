@@ -188,7 +188,8 @@ public class LocalRepoActivity extends Activity {
                 .replaceAll("ssid=[^?]*", "")
                 .toUpperCase(Locale.ENGLISH);
         Log.i("QRURI", qrUriString);
-        new QrGenAsyncTask(this, R.id.repoQrCode).execute(qrUriString);
+        if (Build.VERSION.SDK_INT >= 8) // zxing requires >= 8
+            new QrGenAsyncTask(this, R.id.repoQrCode).execute(qrUriString);
 
         TextView wifiNetworkNameTextView = (TextView) findViewById(R.id.wifiNetworkName);
         wifiNetworkNameTextView.setText(FDroidApp.ssid);
