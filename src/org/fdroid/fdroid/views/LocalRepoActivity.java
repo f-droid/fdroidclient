@@ -19,21 +19,25 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.*;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
+import android.widget.*;
 
 import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LocalRepoActivity extends Activity {
     private static final String TAG = "LocalRepoActivity";
     private ProgressDialog repoProgress;
 
     private WifiManager wifiManager;
-    private ToggleButton repoSwitch;
+    private Button enableWifiButton;
+    private CheckBox repoSwitch;
+
+    private Timer stopTimer;
 
     private int SET_IP_ADDRESS = 7345;
     private int UPDATE_REPO = 7346;
@@ -42,9 +46,11 @@ public class LocalRepoActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((FDroidApp) getApplication()).applyTheme(this);
         setContentView(R.layout.local_repo_activity);
 
-        repoSwitch = (ToggleButton) findViewById(R.id.repoSwitch);
+        enableWifiButton = (Button) findViewById(R.id.enable_wifi);
+        repoSwitch = (CheckBox) findViewById(R.id.repoSwitch);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
     }
 
@@ -52,19 +58,35 @@ public class LocalRepoActivity extends Activity {
     public void onResume() {
         super.onResume();
         resetNetworkInfo();
+
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
+        LocalBroadcastManager.getInstance(this).registerReceiver(onLocalRepoChange,
+                new IntentFilter(LocalRepoService.STATE));
         // if no local repo exists, create one with only FDroid in it
         if (!FDroidApp.localRepo.xmlIndex.exists())
             new UpdateAsyncTask(this, new String[] {
                     getPackageName(),
             }).execute();
+
+        // start repo by default
+        FDroidApp.startLocalRepoService(LocalRepoActivity.this);
+        // automatically turn off after 15 minutes
+        stopTimer = new Timer();
+        stopTimer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                FDroidApp.stopLocalRepoService(LocalRepoActivity.this);
+            }
+        }, 900000); // 15 minutes
     }
 
     @Override
     public void onPause() {
         super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(onLocalRepoChange);
     }
 
     private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
@@ -74,19 +96,33 @@ public class LocalRepoActivity extends Activity {
         }
     };
 
+    private BroadcastReceiver onLocalRepoChange = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent i) {
+            String state = i.getStringExtra(LocalRepoService.STATE);
+            if (state != null && state.equals(LocalRepoService.STARTED))
+                setRepoSwitchChecked(true);
+            else
+                setRepoSwitchChecked(false);
+        }
+    };
+
     private void resetNetworkInfo() {
         int wifiState = wifiManager.getWifiState();
         if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
             setUIFromWifi();
             wireRepoSwitchToWebServer();
+            repoSwitch.setVisibility(View.VISIBLE);
+            enableWifiButton.setVisibility(View.GONE);
         } else {
             repoSwitch.setChecked(false);
-            repoSwitch.setText(R.string.enable_wifi);
-            repoSwitch.setTextOn(getString(R.string.enabling_wifi));
-            repoSwitch.setTextOff(getString(R.string.enable_wifi));
-            repoSwitch.setOnClickListener(new View.OnClickListener() {
+            repoSwitch.setVisibility(View.GONE);
+            enableWifiButton.setVisibility(View.VISIBLE);
+            enableWifiButton.setText(R.string.enable_wifi);
+            enableWifiButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    enableWifiButton.setText(R.string.enabling_wifi);
                     wifiManager.setWifiEnabled(true);
                     /*
                      * Once the wifi is connected to a network, then
@@ -158,13 +194,24 @@ public class LocalRepoActivity extends Activity {
         repoSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setRepoSwitchChecked(repoSwitch.isChecked());
                 if (repoSwitch.isChecked()) {
                     FDroidApp.startLocalRepoService(LocalRepoActivity.this);
                 } else {
                     FDroidApp.stopLocalRepoService(LocalRepoActivity.this);
+                    stopTimer.cancel(); // disable automatic stop
                 }
             }
         });
+    }
+
+    private void setRepoSwitchChecked(boolean checked) {
+        repoSwitch.setChecked(checked);
+        if (checked) {
+            repoSwitch.setText(R.string.local_repo_running);
+        } else {
+            repoSwitch.setText(R.string.touch_to_turn_on_local_repo);
+        }
     }
 
     @TargetApi(14)
@@ -173,9 +220,8 @@ public class LocalRepoActivity extends Activity {
             return;
         // the fingerprint is not useful on the button label
         String buttonLabel = FDroidApp.repo.address.replaceAll("\\?.*$", "");
-        repoSwitch.setText(buttonLabel);
-        repoSwitch.setTextOn(buttonLabel);
-        repoSwitch.setTextOff(buttonLabel);
+        TextView sharingUriTextView = (TextView) findViewById(R.id.sharing_uri);
+        sharingUriTextView.setText(buttonLabel);
         /*
          * Set URL to UPPER for compact QR Code, FDroid will translate it back.
          * Remove the SSID from the query string since SSIDs are case-sensitive.
@@ -188,9 +234,10 @@ public class LocalRepoActivity extends Activity {
                 .replaceAll("ssid=[^?]*", "")
                 .toUpperCase(Locale.ENGLISH);
         Log.i("QRURI", qrUriString);
-        new QrGenAsyncTask(this, R.id.repoQrCode).execute(qrUriString);
+        if (Build.VERSION.SDK_INT >= 8) // zxing requires >= 8
+            new QrGenAsyncTask(this, R.id.repoQrCode).execute(qrUriString);
 
-        TextView wifiNetworkNameTextView = (TextView) findViewById(R.id.wifiNetworkName);
+        TextView wifiNetworkNameTextView = (TextView) findViewById(R.id.wifi_network);
         wifiNetworkNameTextView.setText(FDroidApp.ssid);
 
         TextView fingerprintTextView = (TextView) findViewById(R.id.fingerprint);

@@ -2,11 +2,8 @@
 package org.fdroid.fdroid.views;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
+import android.content.*;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
@@ -27,6 +24,7 @@ public class QrWizardDownloadActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((FDroidApp) getApplication()).applyTheme(this);
         setContentView(R.layout.qr_wizard_activity);
         TextView instructions = (TextView) findViewById(R.id.qrWizardInstructions);
         instructions.setText(R.string.qr_wizard_download_instructions);
@@ -73,7 +71,8 @@ public class QrWizardDownloadActivity extends Activity {
         qrString += "://" + FDroidApp.ipAddressString;
         qrString += ":" + FDroidApp.port;
 
-        new QrGenAsyncTask(this, R.id.qrWizardImage).execute(qrString);
+        if (Build.VERSION.SDK_INT >= 8) // zxing requires >= 8
+            new QrGenAsyncTask(this, R.id.qrWizardImage).execute(qrString);
         Log.i(TAG, "qr: " + qrString);
 
         TextView wifiNetworkName = (TextView) findViewById(R.id.qrWifiNetworkName);
