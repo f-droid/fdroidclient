@@ -22,9 +22,12 @@ import android.view.*;
 import android.widget.*;
 
 import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LocalRepoActivity extends Activity {
     private static final String TAG = "LocalRepoActivity";
@@ -33,6 +36,8 @@ public class LocalRepoActivity extends Activity {
     private WifiManager wifiManager;
     private Button enableWifiButton;
     private CheckBox repoSwitch;
+
+    private Timer stopTimer;
 
     private int SET_IP_ADDRESS = 7345;
     private int UPDATE_REPO = 7346;
@@ -54,29 +59,51 @@ public class LocalRepoActivity extends Activity {
         super.onResume();
         resetNetworkInfo();
 
-        // start repo by default
-        setRepoSwitchChecked(true);
-        FDroidApp.startLocalRepoService(LocalRepoActivity.this);
-
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
+        LocalBroadcastManager.getInstance(this).registerReceiver(onLocalRepoChange,
+                new IntentFilter(LocalRepoService.STATE));
         // if no local repo exists, create one with only FDroid in it
         if (!FDroidApp.localRepo.xmlIndex.exists())
             new UpdateAsyncTask(this, new String[] {
                     getPackageName(),
             }).execute();
+
+        // start repo by default
+        FDroidApp.startLocalRepoService(LocalRepoActivity.this);
+        // automatically turn off after 15 minutes
+        stopTimer = new Timer();
+        stopTimer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                FDroidApp.stopLocalRepoService(LocalRepoActivity.this);
+            }
+        }, 900000); // 15 minutes
     }
 
     @Override
     public void onPause() {
         super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(onLocalRepoChange);
     }
 
     private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
             resetNetworkInfo();
+        }
+    };
+
+    private BroadcastReceiver onLocalRepoChange = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent i) {
+            String state = i.getStringExtra(LocalRepoService.STATE);
+            if (state != null && state.equals(LocalRepoService.STARTED))
+                setRepoSwitchChecked(true);
+            else
+                setRepoSwitchChecked(false);
         }
     };
 
@@ -172,6 +199,7 @@ public class LocalRepoActivity extends Activity {
                     FDroidApp.startLocalRepoService(LocalRepoActivity.this);
                 } else {
                     FDroidApp.stopLocalRepoService(LocalRepoActivity.this);
+                    stopTimer.cancel(); // disable automatic stop
                 }
             }
         });

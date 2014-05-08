@@ -34,6 +34,10 @@ import java.util.Random;
 public class LocalRepoService extends Service {
     private static final String TAG = "LocalRepoService";
 
+    public static final String STATE = "org.fdroid.fdroid.action.LOCAL_REPO_STATE";
+    public static final String STARTED = "org.fdroid.fdroid.category.LOCAL_REPO_STARTED";
+    public static final String STOPPED = "org.fdroid.fdroid.category.LOCAL_REPO_STOPPED";
+
     private NotificationManager notificationManager;
     // Unique Identification Number for the Notification.
     // We use it on Notification start, and to cancel it.
@@ -148,6 +152,9 @@ public class LocalRepoService extends Service {
             }
         };
         new Thread(webServer).start();
+        Intent intent = new Intent(STATE);
+        intent.putExtra(STATE, STARTED);
+        LocalBroadcastManager.getInstance(LocalRepoService.this).sendBroadcast(intent);
     }
 
     private void stopWebServer() {
@@ -158,5 +165,8 @@ public class LocalRepoService extends Service {
         Message msg = webServerThreadHandler.obtainMessage();
         msg.obj = webServerThreadHandler.getLooper().getThread().getName() + " says stop";
         webServerThreadHandler.sendMessage(msg);
+        Intent intent = new Intent(STATE);
+        intent.putExtra(STATE, STOPPED);
+        LocalBroadcastManager.getInstance(LocalRepoService.this).sendBroadcast(intent);
     }
 }
