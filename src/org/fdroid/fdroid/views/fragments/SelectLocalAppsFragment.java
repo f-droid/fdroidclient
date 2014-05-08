@@ -19,15 +19,19 @@ import android.app.ListFragment;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Loader;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.*;
 import android.widget.SearchView.OnQueryTextListener;
-import android.widget.SimpleCursorAdapter;
+import android.widget.SimpleCursorAdapter.ViewBinder;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -42,6 +46,8 @@ import java.util.HashSet;
 public class SelectLocalAppsFragment extends ListFragment
         implements LoaderCallbacks<Cursor>, OnQueryTextListener {
 
+    private PackageManager packageManager;
+    private Drawable defaultAppIcon;
     private SelectLocalAppsActivity selectLocalAppsActivity;
     private ActionMode mActionMode = null;
     private String mCurrentFilterString;
@@ -57,21 +63,48 @@ public class SelectLocalAppsFragment extends ListFragment
 
         setEmptyText(getString(R.string.no_applications_found));
 
+        packageManager = getActivity().getPackageManager();
+        defaultAppIcon = getActivity().getResources()
+                .getDrawable(android.R.drawable.sym_def_app_icon);
+
         selectLocalAppsActivity = (SelectLocalAppsActivity) getActivity();
         ListView listView = getListView();
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),
-                android.R.layout.simple_list_item_activated_2,
+                R.layout.select_local_apps_list_item,
                 null,
                 new String[] {
                         InstalledAppProvider.DataColumns.APPLICATION_LABEL,
                         InstalledAppProvider.DataColumns.APP_ID,
                 },
                 new int[] {
-                        android.R.id.text1,
-                        android.R.id.text2,
+                        R.id.application_label,
+                        R.id.package_name,
                 },
                 0);
+        adapter.setViewBinder(new ViewBinder() {
+
+            @Override
+            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+                Log.i("SelectLocalAppsFragment", "ViewBinder " + columnIndex);
+                if (columnIndex == cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)) {
+                    String packageName = cursor.getString(columnIndex);
+                    TextView textView = (TextView) view.findViewById(R.id.package_name);
+                    textView.setText(packageName);
+                    LinearLayout ll = (LinearLayout) view.getParent().getParent();
+                    ImageView iconView = (ImageView) ll.getChildAt(0);
+                    Drawable icon;
+                    try {
+                        icon = packageManager.getApplicationIcon(packageName);
+                    } catch (NameNotFoundException e) {
+                        icon = defaultAppIcon;
+                    }
+                    iconView.setImageDrawable(icon);
+                    return true;
+                }
+                return false;
+            }
+        });
         setListAdapter(adapter);
         setListShown(false); // start out with a progress indicator
 
