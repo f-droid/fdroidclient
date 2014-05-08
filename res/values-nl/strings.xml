@@ -9,7 +9,7 @@
   <string name="version">Versie</string>
   <string name="edit">Bewerken</string>
   <string name="delete">Verwijderen</string>
-  <string name="enable_nfc_send">Versturen via NFC aanzetten...</string>
+  <string name="enable_nfc_send">Versturen via NFC aanzetten…</string>
   <string name="cache_downloaded">buffer gedownloade apps</string>
   <string name="cache_downloaded_on">Gedownloade apk-files bewaren op SD card</string>
   <string name="cache_downloaded_off">apk-files niet bewaren</string>
@@ -58,7 +58,7 @@ Een bron-adres ziet er ongeveer
   <string name="process_update_msg">Applicatie-lijst vernieuwen…</string>
   <string name="download_server">downloaden applicatie van</string>
   <string name="nfc_is_not_enabled">NFC is niet ingeschakeld!</string>
-  <string name="go_to_nfc_settings">Ga naar NFC instellingen...</string>
+  <string name="go_to_nfc_settings">Ga naar NFC instellingen…</string>
   <string name="bluetooth_activity_not_found">Geen Bluetooth verzendmethode gevonden, kies er een!</string>
   <string name="choose_bt_send">Kies Bluetooth verzendmethode</string>
   <string name="repo_add_url">Bron-adres</string>
@@ -67,7 +67,7 @@ Een bron-adres ziet er ongeveer
 Wilt u ze vernieuwen?</string>
   <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
-  <string name="menu_send_apk_bt">Bluetooth FDroid.apk...</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>
   <string name="menu_search">Zoeken</string>
@@ -105,7 +105,7 @@ Wilt u ze vernieuwen?</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
   <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
-  <string name="local_repos_scanning">Lokale FDroid-bronnen ontdekken...</string>
+  <string name="local_repos_scanning">Lokale FDroid-bronnen ontdekken…</string>
   <string name="status_download">Downloaden
 %2$s / %3$s (%4$d%%) van
 %1$s</string>
