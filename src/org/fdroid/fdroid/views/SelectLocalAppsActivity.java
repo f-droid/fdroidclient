@@ -2,13 +2,11 @@
 package org.fdroid.fdroid.views;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.*;
+import android.widget.SearchView;
 
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
@@ -16,9 +14,10 @@ import org.fdroid.fdroid.views.fragments.SelectLocalAppsFragment;
 
 @TargetApi(11)
 // TODO replace with appcompat-v7
-public class SelectLocalAppsActivity extends FragmentActivity {
+public class SelectLocalAppsActivity extends Activity {
     private static final String TAG = "SelectLocalAppsActivity";
     private SelectLocalAppsFragment selectLocalAppsFragment = null;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +29,15 @@ public class SelectLocalAppsActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         if (selectLocalAppsFragment == null)
-            selectLocalAppsFragment = (SelectLocalAppsFragment) getSupportFragmentManager().findFragmentById(
-                    R.id.fragment_app_list);
+            selectLocalAppsFragment = (SelectLocalAppsFragment) getFragmentManager()
+                    .findFragmentById(R.id.fragment_app_list);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.select_local_apps_activity, menu);
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setOnQueryTextListener(selectLocalAppsFragment);
         return true;
     }
 
@@ -46,6 +47,10 @@ public class SelectLocalAppsActivity extends FragmentActivity {
             case android.R.id.home:
                 setResult(RESULT_CANCELED);
                 finish();
+                return true;
+            case R.id.action_search:
+                SearchView searchView = (SearchView) item.getActionView();
+                searchView.setIconified(false);
                 return true;
             case R.id.action_settings:
                 startActivity(new Intent(this, PreferencesActivity.class));
@@ -60,6 +65,7 @@ public class SelectLocalAppsActivity extends FragmentActivity {
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             MenuInflater inflater = mode.getMenuInflater();
             inflater.inflate(R.menu.select_local_apps_action_mode, menu);
+            menu.findItem(R.id.action_search).setActionView(searchView);
             return true;
         }
 

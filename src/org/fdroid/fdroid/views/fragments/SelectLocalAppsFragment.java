@@ -15,17 +15,19 @@ limitations under the License.
 package org.fdroid.fdroid.views.fragments;
 
 import android.annotation.TargetApi;
+import android.app.ListFragment;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.CursorLoader;
+import android.content.Loader;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.TextUtils;
 import android.view.ActionMode;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.SearchView.OnQueryTextListener;
+import android.widget.SimpleCursorAdapter;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -35,18 +37,20 @@ import org.fdroid.fdroid.views.SelectLocalAppsActivity;
 
 import java.util.HashSet;
 
-public class SelectLocalAppsFragment extends ListFragment implements LoaderCallbacks<Cursor> {
+//TODO replace with appcompat-v7
+@TargetApi(11)
+public class SelectLocalAppsFragment extends ListFragment
+        implements LoaderCallbacks<Cursor>, OnQueryTextListener {
 
     private SelectLocalAppsActivity selectLocalAppsActivity;
     private ActionMode mActionMode = null;
+    private String mCurrentFilterString;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    @TargetApi(11)
-    // TODO replace with appcompat-v7
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -69,7 +73,7 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
                 },
                 0);
         setListAdapter(adapter);
-        setListShown(false);
+        setListShown(false); // start out with a progress indicator
 
         // either reconnect with an existing loader or start a new one
         getLoaderManager().initLoader(0, null, this);
@@ -86,8 +90,6 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
         }
     }
 
-    @TargetApi(11)
-    // TODO replace with appcompat-v7
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (mActionMode == null)
@@ -104,9 +106,15 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
 
     @Override
     public CursorLoader onCreateLoader(int id, Bundle args) {
+        Uri baseUri;
+        if (TextUtils.isEmpty(mCurrentFilterString)) {
+            baseUri = InstalledAppProvider.getContentUri();
+        } else {
+            baseUri = InstalledAppProvider.getSearchUri(mCurrentFilterString);
+        }
         CursorLoader loader = new CursorLoader(
                 this.getActivity(),
-                InstalledAppProvider.getContentUri(),
+                baseUri,
                 InstalledAppProvider.DataColumns.ALL,
                 null,
                 null,
@@ -145,5 +153,29 @@ public class SelectLocalAppsFragment extends ListFragment implements LoaderCallb
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         ((SimpleCursorAdapter) this.getListAdapter()).swapCursor(null);
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String newFilter = !TextUtils.isEmpty(newText) ? newText : null;
+        if (mCurrentFilterString == null && newFilter == null) {
+            return true;
+        }
+        if (mCurrentFilterString != null && mCurrentFilterString.equals(newFilter)) {
+            return true;
+        }
+        mCurrentFilterString = newFilter;
+        getLoaderManager().restartLoader(0, null, this);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        // this is not needed since we respond to every change in text
+        return true;
+    }
+
+    public String getCurrentFilterString() {
+        return mCurrentFilterString;
     }
 }
