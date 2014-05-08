@@ -122,7 +122,7 @@ public class FDroidApp extends Application {
         // it is more deterministic as to when this gets called...
         Preferences.setup(this);
 
-        //Apply the Google PRNG fixes to properly seed SecureRandom
+        // Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
 
         localRepo = new LocalRepoManager(getApplicationContext());
@@ -301,14 +301,17 @@ public class FDroidApp extends Application {
     };
 
     public static void startLocalRepoService(Context context) {
-        context.bindService(new Intent(context, LocalRepoService.class),
-                serviceConnection, Context.BIND_AUTO_CREATE);
-        localRepoServiceIsBound = true;
+        if (!localRepoServiceIsBound) {
+            Context app = context.getApplicationContext();
+            app.bindService(new Intent(app, LocalRepoService.class),
+                    serviceConnection, Context.BIND_AUTO_CREATE);
+            localRepoServiceIsBound = true;
+        }
     }
 
     public static void stopLocalRepoService(Context context) {
         if (localRepoServiceIsBound) {
-            context.unbindService(serviceConnection);
+            context.getApplicationContext().unbindService(serviceConnection);
             localRepoServiceIsBound = false;
         }
     }
