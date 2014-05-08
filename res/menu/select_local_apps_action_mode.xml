@@ -8,7 +8,7 @@
     <item
         android:id="@+id/action_update_repo"
         android:icon="@android:drawable/ic_input_add"
-        android:showAsAction="ifRoom|withText"
+        android:showAsAction="always|withText"
         android:title="@string/update_repo"/>
 
 </menu>
