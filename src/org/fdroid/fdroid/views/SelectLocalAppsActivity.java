@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.SearchView;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.SelectLocalAppsFragment;
@@ -22,6 +23,7 @@ public class SelectLocalAppsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((FDroidApp) getApplication()).applyTheme(this);
         setContentView(R.layout.select_local_apps_activity);
     }
 

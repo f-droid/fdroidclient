@@ -24,6 +24,7 @@ public class QrWizardDownloadActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((FDroidApp) getApplication()).applyTheme(this);
         setContentView(R.layout.qr_wizard_activity);
         TextView instructions = (TextView) findViewById(R.id.qrWizardInstructions);
         instructions.setText(R.string.qr_wizard_download_instructions);

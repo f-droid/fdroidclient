@@ -42,6 +42,7 @@ public class LocalRepoActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((FDroidApp) getApplication()).applyTheme(this);
         setContentView(R.layout.local_repo_activity);
 
         repoSwitch = (ToggleButton) findViewById(R.id.repoSwitch);
