@@ -27,6 +27,7 @@
     <ImageView
         android:layout_width="48dip"
         android:layout_height="48dip"
+        android:layout_marginLeft="?android:attr/listPreferredItemPaddingStart"
         android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
         android:layout_marginTop="6dip"
         tools:ignore="ContentDescription" />
@@ -40,6 +41,7 @@
             android:id="@+id/application_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="?android:attr/listPreferredItemPaddingStart"
             android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
             android:layout_marginTop="6dip"
             android:textAppearance="?android:attr/textAppearanceListItem" />
