@@ -53,6 +53,11 @@ public class LocalRepoActivity extends Activity {
     public void onResume() {
         super.onResume();
         resetNetworkInfo();
+
+        // start repo by default
+        setRepoSwitchChecked(true);
+        FDroidApp.startLocalRepoService(LocalRepoActivity.this);
+
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
         // if no local repo exists, create one with only FDroid in it
@@ -162,15 +167,23 @@ public class LocalRepoActivity extends Activity {
         repoSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setRepoSwitchChecked(repoSwitch.isChecked());
                 if (repoSwitch.isChecked()) {
                     FDroidApp.startLocalRepoService(LocalRepoActivity.this);
-                    repoSwitch.setText(R.string.local_repo_running);
                 } else {
                     FDroidApp.stopLocalRepoService(LocalRepoActivity.this);
-                    repoSwitch.setText(R.string.touch_to_turn_on_local_repo);
                 }
             }
         });
+    }
+
+    private void setRepoSwitchChecked(boolean checked) {
+        repoSwitch.setChecked(checked);
+        if (checked) {
+            repoSwitch.setText(R.string.local_repo_running);
+        } else {
+            repoSwitch.setText(R.string.touch_to_turn_on_local_repo);
+        }
     }
 
     @TargetApi(14)
