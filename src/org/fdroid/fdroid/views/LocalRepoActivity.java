@@ -139,7 +139,7 @@ public class LocalRepoActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.local_repo_activity, menu);
-        if (Build.VERSION.SDK_INT < 11) // TODO remove after including appcompat-v7
+        if (Build.VERSION.SDK_INT < 14) // TODO remove after including appcompat-v7
             menu.findItem(R.id.menu_setup_repo).setVisible(false);
         return true;
     }

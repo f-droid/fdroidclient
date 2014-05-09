@@ -86,7 +86,6 @@ public class SelectLocalAppsFragment extends ListFragment
 
             @Override
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                Log.i("SelectLocalAppsFragment", "ViewBinder " + columnIndex);
                 if (columnIndex == cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)) {
                     String packageName = cursor.getString(columnIndex);
                     TextView textView = (TextView) view.findViewById(R.id.package_name);
