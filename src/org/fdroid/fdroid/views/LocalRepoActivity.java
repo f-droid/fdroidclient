@@ -58,6 +58,7 @@ public class LocalRepoActivity extends Activity {
     public void onResume() {
         super.onResume();
         resetNetworkInfo();
+        setRepoSwitchChecked(FDroidApp.isLocalRepoServiceRunnig());
 
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
@@ -71,6 +72,9 @@ public class LocalRepoActivity extends Activity {
 
         // start repo by default
         FDroidApp.startLocalRepoService(LocalRepoActivity.this);
+        // reset the timer if viewing this Activity again
+        if (stopTimer != null)
+            stopTimer.cancel();
         // automatically turn off after 15 minutes
         stopTimer = new Timer();
         stopTimer.schedule(new TimerTask() {

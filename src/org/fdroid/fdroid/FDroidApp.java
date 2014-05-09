@@ -327,4 +327,8 @@ public class FDroidApp extends Application {
             }
         }
     }
+
+    public static boolean isLocalRepoServiceRunnig() {
+        return localRepoServiceIsBound;
+    }
 }
