@@ -62,10 +62,8 @@ public class RootInstaller extends Installer {
             @Override
             public void onCommandResult(int commandCode, int exitCode, List<String> output) {
                 if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING) {
-                    // TODO
-                    // wrong uid
+                    // NOTE: Additional exit codes:
                     // Shell.OnCommandResultListener.SHELL_WRONG_UID
-                    // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
                     Log.e(TAG, "Error opening root shell with exitCode " + exitCode);
@@ -89,10 +87,8 @@ public class RootInstaller extends Installer {
             @Override
             public void onCommandResult(int commandCode, int exitCode, List<String> output) {
                 if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING) {
-                    // TODO
-                    // wrong uid
+                    // NOTE: Additional exit codes:
                     // Shell.OnCommandResultListener.SHELL_WRONG_UID
-                    // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
                     Log.e(TAG, "Error opening root shell with exitCode " + exitCode);
@@ -116,10 +112,8 @@ public class RootInstaller extends Installer {
             @Override
             public void onCommandResult(int commandCode, int exitCode, List<String> output) {
                 if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING) {
-                    // TODO
-                    // wrong uid
+                    // NOTE: Additional exit codes:
                     // Shell.OnCommandResultListener.SHELL_WRONG_UID
-                    // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
                     Log.e(TAG, "Error opening root shell with exitCode " + exitCode);

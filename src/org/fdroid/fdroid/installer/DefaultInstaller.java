@@ -48,18 +48,6 @@ public class DefaultInstaller extends Installer {
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_DELETE = 1;
 
-    // TODO: check before installation?
-    // int result = Settings.Secure.getInt(getContentResolver(),
-    // Settings.Secure.INSTALL_NON_MARKET_APPS, 0);
-    // if (result == 0) {
-    // // show some dialog here
-    // // ...
-    // // and may be show application settings dialog manually
-    // Intent intent = new Intent();
-    // intent.setAction(Settings.ACTION_APPLICATION_SETTINGS);
-    // startActivity(intent);
-    // }
-    
     @Override
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {
         super.installPackage(apkFile);
