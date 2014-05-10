@@ -96,20 +96,7 @@ public class SystemPermissionInstaller extends Installer {
             if (returnCode == INSTALL_SUCCEEDED) {
                 Log.d(TAG, "Install succeeded");
 
-                // wait until Android's internal PackageManger has
-                // received the new package state
-                Thread wait = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                        }
-
-                        mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
-                    }
-                });
-                wait.start();
+                mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
             } else {
                 Log.e(TAG, "Install failed with returnCode " + returnCode);
                 mCallback.onError(InstallerCallback.OPERATION_INSTALL,
@@ -127,20 +114,7 @@ public class SystemPermissionInstaller extends Installer {
             if (returnCode == DELETE_SUCCEEDED) {
                 Log.d(TAG, "Delete succeeded");
 
-                // wait until Android's internal PackageManger has
-                // received the new package state
-                Thread wait = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                        }
-
-                        mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
-                    }
-                });
-                wait.start();
+                mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
             } else {
                 Log.e(TAG, "Delete failed with returnCode " + returnCode);
                 mCallback.onError(InstallerCallback.OPERATION_DELETE,

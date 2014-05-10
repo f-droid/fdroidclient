@@ -964,28 +964,46 @@ public class AppDetails extends ListActivity {
 
         @Override
         public void onSuccess(final int operation) {
-            runOnUiThread(new Runnable() {
+            // TODO: this is a hack!!!
+            // Currently the views are not automatically updated when the receivers are notified
+            // if an app is installed/removed
+            // We are currently waiting that the receivers change the database and then reload the view
+            // 
+            // Better approach:
+            // Implement Android Loader that restarts automatically on db change!
+            Thread wait = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Log.d(TAG, "handling installer onSuccess");
-                    
-                    notifyAppChanged(app.id);
-
-                    resetRequired = true;
-
-                    if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                        if (downloadHandler != null) {
-                            downloadHandler = null;
-                        }
-
-                        PackageManagerCompat.setInstaller(mPm, app.id);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
                     }
 
-                    // TODO: whole onResume?
-                    onResume();
-                    setProgressBarIndeterminateVisibility(false);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d(TAG, "handling installer onSuccess");
+                            
+                            notifyAppChanged(app.id);
+
+                            resetRequired = true;
+
+                            if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
+                                if (downloadHandler != null) {
+                                    downloadHandler = null;
+                                }
+
+                                PackageManagerCompat.setInstaller(mPm, app.id);
+                            }
+
+                            // TODO: whole onResume?
+                            onResume();
+                            setProgressBarIndeterminateVisibility(false);
+                        }
+                    });
                 }
             });
+            wait.start();
         }
 
         @Override

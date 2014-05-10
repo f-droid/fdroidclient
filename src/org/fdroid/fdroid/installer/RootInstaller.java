@@ -158,20 +158,7 @@ public class RootInstaller extends Installer {
                             mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                                     InstallerCallback.ERROR_CODE_OTHER);
                         } else {
-                            // wait until Android's internal PackageManger
-                            // has received the new package state
-                            Thread wait = new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(2000);
-                                    } catch (InterruptedException e) {
-                                    }
-
-                                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
-                                }
-                            });
-                            wait.start();
+                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                         }
                     }
                 });
@@ -190,20 +177,7 @@ public class RootInstaller extends Installer {
                             mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                                     InstallerCallback.ERROR_CODE_OTHER);
                         } else {
-                            // wait until Android's internal PackageManger has
-                            // received the new package state
-                            Thread wait = new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(2000);
-                                    } catch (InterruptedException e) {
-                                    }
-
-                                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
-                                }
-                            });
-                            wait.start();
+                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                         }
                     }
                 });
@@ -221,20 +195,7 @@ public class RootInstaller extends Installer {
                             mCallback.onError(InstallerCallback.OPERATION_DELETE,
                                     InstallerCallback.ERROR_CODE_OTHER);
                         } else {
-                            // wait until Android's internal PackageManger has
-                            // received the new package state
-                            Thread wait = new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(2000);
-                                    } catch (InterruptedException e) {
-                                    }
-
-                                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
-                                }
-                            });
-                            wait.start();
+                            mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
                         }
                     }
                 });
