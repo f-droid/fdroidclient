@@ -135,6 +135,8 @@ public class InstalledAppCacheUpdater {
                     .withValue(InstalledAppProvider.DataColumns.APP_ID, info.packageName)
                     .withValue(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode)
                     .withValue(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName)
+                    .withValue(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
+                            InstalledAppProvider.getApplicationLabel(context, info.packageName))
                     .build();
                 ops.add(op);
             }

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+    <head>
+        <title>{{REPO_URL}} local FDroid repo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    </head>
+    <body>
+
+      <style>
+        body {
+          padding: 0;
+          margin: 0;
+          font-family: "Trebuchet MS", Helvetica, sans-serif;
+          color: #444;
+        }
+
+        h1 {
+          margin: 0 auto;
+          padding-top: 10px;
+          text-align: center;
+        }
+
+        ol {
+          counter-reset:li;
+          margin-left:0;
+          padding-left:0;
+        }
+
+        ol > li {
+          position: relative;
+          padding-left: 35px;
+          padding-top: 20px;
+          border-bottom: solid 1px #333;
+          height: 4em;
+          box-sizing: border-box;
+        }
+
+        ol > li:first-child {
+          border-top: solid 1px #333;
+        }
+
+        ol > li:before {
+          content: counter(li);
+          counter-increment: li;
+          position: absolute;
+          left: 5px;
+          top: 10px;
+          font: bold 2em Sans-Serif;
+        }
+      </style>
+
+      <h1>Kerplapp Bootstrap</h1>
+      <ol>
+        <li><del>Find a Kerplapp Repo</del></li>
+        <li><a href="{{CLIENT_URL}}">Download F-Droid client</a></li>
+        <li>Install F-Droid client</li>
+        <li><a href="{{REPO_URL}}">Add Kerplapp Repo to F-Droid client</a></li>
+        <li>Kerplapp an App!</li>
+      </ol>
+    </body>
+</html>

@@ -1,10 +1,7 @@
 package org.fdroid.fdroid.views;
 
-import android.database.Cursor;
-import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -26,16 +23,10 @@ public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
     }
 
     private String getUpdateTabTitle() {
-        Uri uri = AppProvider.getCanUpdateUri();
-        String[] projection = new String[] { AppProvider.DataColumns._COUNT };
-        Cursor cursor = parent.getContentResolver().query(uri, projection, null, null, null);
-        String suffix = "";
-        if (cursor != null && cursor.getCount() == 1) {
-            cursor.moveToFirst();
-            int count = cursor.getInt(0);
-            suffix = " (" + count + ")";
-        }
-        return parent.getString(R.string.tab_updates) + suffix;
+        int updateCount = AppProvider.Helper.count(parent, AppProvider.getCanUpdateUri());
+        
+        // TODO: Make RTL friendly, probably by having a different string for both tab_updates_none and tab_updates
+        return parent.getString(R.string.tab_updates) + " (" + updateCount + ")";
     }
 
     @Override

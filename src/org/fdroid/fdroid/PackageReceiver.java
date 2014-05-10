@@ -29,6 +29,7 @@ import org.fdroid.fdroid.data.AppProvider;
 
 abstract class PackageReceiver extends BroadcastReceiver {
 
+    abstract protected boolean toDiscard(Intent intent);
     abstract protected void handle(Context context, String appId);
 
     protected PackageInfo getPackageInfo(Context context, String appId) {
@@ -43,6 +44,9 @@ abstract class PackageReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d("FDroid", "PackageReceiver received [action = '" + intent.getAction() + "', data = '" + intent.getData() + "']");
+        if (toDiscard(intent)) {
+            return;
+        }
         String appId = intent.getData().getSchemeSpecificPart();
         handle(context, appId);
         context.getContentResolver().notifyChange(AppProvider.getContentUri(appId), null);

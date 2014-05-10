@@ -18,8 +18,6 @@
 
 package org.fdroid.fdroid;
 
-import java.util.*;
-
 import android.app.*;
 import android.content.*;
 import android.content.SharedPreferences.Editor;
@@ -29,14 +27,15 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.*;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 import org.fdroid.fdroid.data.*;
 import org.fdroid.fdroid.updater.RepoUpdater;
 
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.widget.Toast;
+import java.util.*;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
@@ -121,7 +120,13 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             if (finished && dialog.isShowing())
-                dialog.dismiss();
+                try {
+                    dialog.dismiss();
+                } catch (IllegalArgumentException e) {
+                    // sometimes dialog.isShowing() doesn't work :(
+                    // https://stackoverflow.com/questions/19538282/view-not-attached-to-window-manager-dialog-dismiss
+                    e.printStackTrace();
+                }
         }
     }
 
@@ -305,7 +310,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
 
             if (!changes) {
-                Log.d("FDroid", "Not checking app details or compatibility, ecause all repos were up to date.");
+                Log.d("FDroid", "Not checking app details or compatibility, because all repos were up to date.");
             } else {
                 sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
 
@@ -333,7 +338,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
                 notifyContentProviders();
 
-                if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, false)) {
+                if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {
                     performUpdateNotification(appsToUpdate.values());
                 }
             }
@@ -388,30 +393,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private void performUpdateNotification(Collection<App> apps) {
-        int updateCount = 0;
-
-        // This may be somewhat strange, because we usually would just trust
-        // App.canAndWantToUpdate(). The only problem is that the "appsToUpdate"
-        // list only contains data from the repo index, not our database.
-        // As such, it doesn't know if we want to ignore the apps or not. For that, we
-        // need to query the database manually and identify those which are to be ignored.
-        String[] projection = { AppProvider.DataColumns.APP_ID };
-        List<App> appsToIgnore = AppProvider.Helper.findIgnored(this, projection);
-        for (App app : apps) {
-            boolean ignored = false;
-            for(App appIgnored : appsToIgnore) {
-                if (appIgnored.id.equals(app.id)) {
-                    ignored = true;
-                    break;
-                }
-            }
-            if (!ignored && app.hasUpdates()) {
-                updateCount++;
-            }
-        }
-
-        if (updateCount > 0) {
-            showAppUpdatesNotification(updateCount);
+        int count = AppProvider.Helper.count(this, AppProvider.getCanUpdateUri());
+        if (count > 0) {
+            showAppUpdatesNotification(count);
         }
     }
 
@@ -444,7 +428,9 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private List<String> getKnownAppIds(List<App> apps) {
         List<String> knownAppIds = new ArrayList<String>();
-        if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
+        if (apps.size() == 0) {
+            // Do nothing
+        } else if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
             int middle = apps.size() / 2;
             List<App> apps1 = apps.subList(0, middle);
             List<App> apps2 = apps.subList(middle, apps.size());

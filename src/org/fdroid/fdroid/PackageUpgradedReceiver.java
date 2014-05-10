@@ -20,9 +20,14 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.util.Log;
+
 import org.fdroid.fdroid.data.InstalledAppProvider;
 
 /**
@@ -34,16 +39,23 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 public class PackageUpgradedReceiver extends PackageReceiver {
 
     @Override
+    protected boolean toDiscard(Intent intent) {
+        return false;
+    }
+
+    @Override
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
 
         Log.d("FDroid", "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
 
         Uri uri = InstalledAppProvider.getContentUri();
-        ContentValues values = new ContentValues(1);
-        values.put(InstalledAppProvider.DataColumns.APP_ID, info.packageName);
+        ContentValues values = new ContentValues(4);
+        values.put(InstalledAppProvider.DataColumns.APP_ID, appId);
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, info.versionCode);
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, info.versionName);
+        values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL,
+                InstalledAppProvider.getApplicationLabel(context, appId));
         context.getContentResolver().insert(uri, values);
     }
 

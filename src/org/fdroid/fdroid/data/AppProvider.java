@@ -18,6 +18,18 @@ public class AppProvider extends FDroidProvider {
 
         private Helper() {}
 
+        public static int count(Context context, Uri uri) {
+            String[] projection = new String[] { AppProvider.DataColumns._COUNT };
+            Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
+            int count = 0;
+            if (cursor != null && cursor.getCount() == 1) {
+                cursor.moveToFirst();
+                count = cursor.getInt(0);
+                cursor.close();
+            }
+            return count;
+        }
+
         public static List<App> all(ContentResolver resolver) {
             return all(resolver, DataColumns.ALL);
         }
@@ -808,9 +820,10 @@ public class AppProvider extends FDroidProvider {
 
         Log.d("FDroid", "Updating icon paths for apps belonging to repos with version >= " + Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         String iconsDir = Utils.getIconsDir(getContext());
+        Log.d("FDroid", "Using icon dir '"+iconsDir+"'");
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         String query = getIconUpdateQuery();
-        String[] params = { iconsDir, repoVersion };
+        String[] params = { repoVersion, iconsDir };
         write().execSQL(query, params);
     }
 

@@ -103,6 +103,9 @@ public class ApkProvider extends FDroidProvider {
          */
         public static List<Apk> knownApks(Context context,
                                              List<Apk> apks, String[] fields) {
+            if (apks.size() == 0) {
+                return new ArrayList<Apk>();
+            }
             ContentResolver resolver = context.getContentResolver();
             Uri uri = getContentUri(apks);
             Cursor cursor = resolver.query(uri, fields, null, null, null);

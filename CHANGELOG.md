@@ -1,4 +1,4 @@
-### Upcoming release
+### 0.66 (2014-05-01)
 
 * Fix crash on startup for devices with more than 500 installed apps
 
@@ -12,7 +12,12 @@
 
 * Keep track of installed apps internally, rather than asking Android each time
 
-* Fix some crashes
+* Security fixes and updates for adding of repos
+
+* Fix bug introduced in 0.63 which made F-Droid always omit density-specific
+  icons, making icons blurry on high-res devices
+
+* Fix some other crashes
 
 * Translation updates
 

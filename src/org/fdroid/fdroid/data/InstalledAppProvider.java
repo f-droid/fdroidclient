@@ -3,9 +3,14 @@ package org.fdroid.fdroid.data;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
+
 import org.fdroid.fdroid.R;
 
 import java.util.HashMap;
@@ -45,20 +50,28 @@ public class InstalledAppProvider extends FDroidProvider {
 
     public interface DataColumns {
 
+        public static final String _ID = "rowid as _id"; // Required for CursorLoaders
         public static final String APP_ID = "appId";
         public static final String VERSION_CODE = "versionCode";
         public static final String VERSION_NAME = "versionName";
+        public static final String APPLICATION_LABEL = "applicationLabel";
 
-        public static String[] ALL = { APP_ID, VERSION_CODE, VERSION_NAME };
+        public static String[] ALL = {
+                _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
+        };
 
     }
 
     private static final String PROVIDER_NAME = "InstalledAppProvider";
 
+    private static final String PATH_SEARCH = "search";
+    private static final int    CODE_SEARCH = CODE_SINGLE + 1;
+
     private static final UriMatcher matcher = new UriMatcher(-1);
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
+        matcher.addURI(getAuthority(), PATH_SEARCH + "/*", CODE_SEARCH);
         matcher.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
@@ -68,6 +81,27 @@ public class InstalledAppProvider extends FDroidProvider {
 
     public static Uri getAppUri(String appId) {
         return Uri.withAppendedPath(getContentUri(), appId);
+    }
+
+    public static Uri getSearchUri(String keywords) {
+        return getContentUri().buildUpon()
+			.appendPath(PATH_SEARCH)
+			.appendPath(keywords)
+			.build();
+    }
+
+    public static String getApplicationLabel(Context context, String packageName) {
+        PackageManager pm = context.getPackageManager();
+        ApplicationInfo appInfo;
+        try {
+            appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+            return appInfo.loadLabel(pm).toString();
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NotFoundException e) {
+            Log.d("InstalledAppProvider", "getApplicationLabel: " + e.getMessage());
+        }
+        return packageName; // all else fails, return id
     }
 
     @Override
@@ -93,8 +127,16 @@ public class InstalledAppProvider extends FDroidProvider {
         return new QuerySelection("appId = ?", new String[] { appId } );
     }
 
+    private QuerySelection querySearch(String keywords) {
+        return new QuerySelection("applicationLabel LIKE ?", new String[] { "%" + keywords + "%" } );
+    }
+
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
+		if (sortOrder == null) {
+			sortOrder = DataColumns.APPLICATION_LABEL;
+		}
+
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
         switch (matcher.match(uri)) {
             case CODE_LIST:
@@ -104,13 +146,17 @@ public class InstalledAppProvider extends FDroidProvider {
                 selection = selection.add(queryApp(uri.getLastPathSegment()));
                 break;
 
+            case CODE_SEARCH:
+                selection = selection.add(querySearch(uri.getLastPathSegment()));
+                break;
+
             default:
                 String message = "Invalid URI for installed app content provider: " + uri;
                 Log.e("FDroid", message);
                 throw new UnsupportedOperationException(message);
         }
 
-        Cursor cursor = read().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, null);
+        Cursor cursor = read().query(getTableName(), projection, selection.getSelection(), selection.getArgs(), null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }

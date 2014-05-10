@@ -153,8 +153,36 @@
 	<string name="category_whatsnew">What\'s New</string>
 	<string name="category_recentlyupdated">Recently Updated</string>
 
+	<string name="local_repo">Local Repo</string>
 	<string name="local_repos_title">Local FDroid Repos</string>
 	<string name="local_repos_scanning">Discovering local FDroid repos&#8230;</string>
+	<string name="local_repo_running">Your local FDroid repo is accessible.</string>
+	<string name="setup_repo">Setup Local Repo</string>
+	<string name="touch_to_configure_local_repo">Touch to setup your local repo.</string>
+	<string name="touch_to_turn_on_local_repo">Touch to turn on your local repo.</string>
+	<string name="touch_to_turn_off_local_repo">Touch to turn off your local repo.</string>
+	<string name="updating">Updating&#8230;</string>
+	<string name="update_repo">Update Repo</string>
+	<string name="deleting_repo">Deleting current repo&#8230;</string>
+	<string name="adding_apks_format">Adding %s to repo&#8230;</string>
+	<string name="writing_index_xml">Writing raw index file (index.xml)&#8230;</string>
+	<string name="linking_apks">Linking APKs into the repo&#8230;</string>
+	<string name="copying_icons">Copying app icons into the repo&#8230;</string>
+	<string name="updated_local_repo">Finished updating local repo</string>
+	<string name="no_applications_found">No applications found</string>
+	<string name="icon">icon</string>
+	<string name="fingerprint">Fingerprint:</string>
+	<string name="wifi_network">WiFi Network:</string>
+	<string name="sharing_uri">Sharing URL:</string>
+	<string name="enable_wifi">Enable WiFi</string>
+	<string name="enabling_wifi">Enabling WiFi&#8230;</string>
+	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same WiFi network.  Then either type the URL above into F-Droid, or scan this QR Code:</string>
+	<string name="qr_code">QR Code</string>
+	<string name="next">Next</string>
+	<string name="qr_content_description">QR Code of repo URL</string>
+	<string name="qr_wizard_wifi_network_instructions">Scan this QR Code to connect to the same WiFi network as this device.</string>
+	<string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
+	<string name="send_fdroid_via_wifi">Send FDroid via WiFi&#8230;</string>
 
 	<!--
 	status_download takes four parameters:
@@ -179,6 +207,7 @@
 	<string name="compactlayout_off">Show icons at regular size</string>
     <string name="theme">Theme</string>
     <string name="unsigned">Unsigned</string>
+    <string name="unverified">Unverified</string>
     <string name="repo_url">URL</string>
     <string name="repo_num_apps">Number of apps</string>
     <string name="repo_fingerprint">Fingerprint of Repo Signing Key (SHA-256)</string>

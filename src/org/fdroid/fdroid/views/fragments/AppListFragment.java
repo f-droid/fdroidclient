@@ -63,7 +63,6 @@ abstract public class AppListFragment extends ListFragment implements
         // onActivityCreated" according to the docs.
         getListView().setFastScrollEnabled(true);
         getListView().setOnItemClickListener(this);
-        getListView().setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, true));
     }
 
     @Override

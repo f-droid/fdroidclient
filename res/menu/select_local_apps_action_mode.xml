@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_search"/>
+    <item
+        android:id="@+id/action_update_repo"
+        android:icon="@android:drawable/ic_input_add"
+        android:showAsAction="always|withText"
+        android:title="@string/update_repo"/>
+
+</menu>

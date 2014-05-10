@@ -23,14 +23,22 @@ import android.app.Activity;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -46,17 +54,39 @@ import de.duenndns.ssl.MemorizingTrustManager;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.fdroid.fdroid.localrepo.LocalRepoService;
+import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
-import javax.net.ssl.*;
 import java.io.File;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Set;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 public class FDroidApp extends Application {
+
+    // for the local repo on this device, all static since there is only one
+    public static int port = 8888;
+    public static String ipAddressString = null;
+    public static String ssid = "";
+    public static String bssid = "";
+    public static Repo repo = new Repo();
+    public static LocalRepoManager localRepo = null;
+    public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
+
+    private static Messenger localRepoServiceMessenger = null;
+    private static boolean localRepoServiceIsBound = false;
 
     BluetoothAdapter bluetoothAdapter = null;
 
@@ -92,8 +122,10 @@ public class FDroidApp extends Application {
         // it is more deterministic as to when this gets called...
         Preferences.setup(this);
 
-        //Apply the Google PRNG fixes to properly seed SecureRandom
+        // Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
+
+        localRepo = new LocalRepoManager(getApplicationContext());
 
         // Check that the installed app cache hasn't gotten out of sync somehow.
         // e.g. if we crashed/ran out of battery half way through responding
@@ -153,7 +185,8 @@ public class FDroidApp extends Application {
                         // 30 days in secs: 30*24*60*60 = 2592000
                         2592000)
                     )
-            .threadPoolSize(Runtime.getRuntime().availableProcessors() * 2)
+            .threadPoolSize(4)
+            .threadPriority(Thread.NORM_PRIORITY - 2) // Default is NORM_PRIORITY - 1
             .build();
         ImageLoader.getInstance().init(config);
 
@@ -194,6 +227,13 @@ public class FDroidApp extends Application {
         } catch (KeyStoreException e) {
             Log.e("FDroid", "Unable to set up trust manager chain. KeyStoreException");
         }
+
+        // initialized the local repo information
+        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        int wifiState = wifiManager.getWifiState();
+        if (wifiState == WifiManager.WIFI_STATE_ENABLING
+                || wifiState == WifiManager.WIFI_STATE_ENABLED)
+            startService(new Intent(this, WifiStateChangeService.class));
     }
 
     @TargetApi(18)
@@ -245,6 +285,46 @@ public class FDroidApp extends Application {
         } else {
             sendBt.setClassName(bluetoothPackageName, className);
             activity.startActivity(sendBt);
+        }
+    }
+
+    private static ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            localRepoServiceMessenger = new Messenger(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName className) {
+            localRepoServiceMessenger = null;
+        }
+    };
+
+    public static void startLocalRepoService(Context context) {
+        if (!localRepoServiceIsBound) {
+            Context app = context.getApplicationContext();
+            app.bindService(new Intent(app, LocalRepoService.class),
+                    serviceConnection, Context.BIND_AUTO_CREATE);
+            localRepoServiceIsBound = true;
+        }
+    }
+
+    public static void stopLocalRepoService(Context context) {
+        if (localRepoServiceIsBound) {
+            context.getApplicationContext().unbindService(serviceConnection);
+            localRepoServiceIsBound = false;
+        }
+    }
+
+    public static void restartLocalRepoService() {
+        if (localRepoServiceMessenger != null) {
+            try {
+                Message msg = Message.obtain(null,
+                        LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
+                localRepoServiceMessenger.send(msg);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

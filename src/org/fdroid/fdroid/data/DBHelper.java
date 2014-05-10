@@ -91,12 +91,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_INSTALLED_APP = "fdroid_installedApp";
     private static final String CREATE_TABLE_INSTALLED_APP = "CREATE TABLE " + TABLE_INSTALLED_APP
             + " ( "
-            + "appId TEXT NOT NULL PRIMARY KEY, "
-            + "versionCode INT NOT NULL, "
-            + "versionName TEXT NOT NULL "
+            + InstalledAppProvider.DataColumns.APP_ID + " TEXT NOT NULL PRIMARY KEY, "
+            + InstalledAppProvider.DataColumns.VERSION_CODE + " INT NOT NULL, "
+            + InstalledAppProvider.DataColumns.VERSION_NAME + " TEXT NOT NULL, "
+            + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 43;
+    private static final int DB_VERSION = 46;
 
     private Context context;
 
@@ -249,11 +250,11 @@ public class DBHelper extends SQLiteOpenHelper {
         addLastUpdatedToRepo(db, oldVersion);
         renameRepoId(db, oldVersion);
         populateRepoNames(db, oldVersion);
-
         if (oldVersion < 43) createInstalledApp(db);
+        addAppLabelToInstalledCache(db, oldVersion);
     }
 
-    /**
+	/**
      * Migrate repo list to new structure. (No way to change primary
      * key in sqlite - table must be recreated).
      */
@@ -322,7 +323,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * calculate its fingerprint and save it to the database.
      */
     private void addFingerprintToRepo(SQLiteDatabase db, int oldVersion) {
-        if (oldVersion < 29) {
+        if (oldVersion < 44) {
             if (!columnExists(db, TABLE_REPO, "fingerprint"))
                 db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
             List<Repo> oldrepos = new ArrayList<Repo>();
@@ -396,6 +397,17 @@ public class DBHelper extends SQLiteOpenHelper {
     private void createInstalledApp(SQLiteDatabase db) {
         Log.d(TAG, "Creating 'installed app' database table.");
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
+    }
+
+    private void addAppLabelToInstalledCache(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 45) {
+            Log.i(TAG, "Adding applicationLabel to installed app table. " +
+					"Turns out we will need to repopulate the cache after doing this, " +
+					"so just dropping and recreating the table (instead of altering and adding a column). " +
+					"This will force the entire cache to be rebuilt, including app names.");
+            db.execSQL("DROP TABLE fdroid_installedApp;");
+			createInstalledApp(db);
+        }
     }
 
     private static boolean columnExists(SQLiteDatabase db,
