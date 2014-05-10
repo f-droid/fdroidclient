@@ -77,8 +77,6 @@ import java.util.List;
 public class AppDetails extends ListActivity {
     private static final String TAG = "AppDetails";
 
-    private static final int REQUEST_INSTALL = 0;
-    private static final int REQUEST_UNINSTALL = 1;
     public static final int REQUEST_ENABLE_BLUETOOTH = 2;
 
     public static final String EXTRA_APPID = "appid";

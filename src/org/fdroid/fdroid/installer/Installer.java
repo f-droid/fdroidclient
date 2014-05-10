@@ -124,6 +124,19 @@ abstract public class Installer {
             }
         }
 
+        // Android >= 4.0
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            try {
+                Log.d(TAG, "try default installer for Android 4");
+
+                return new DefaultInstallerSdk14(activity, pm, callback);
+            } catch (AndroidNotCompatibleException e) {
+                Log.e(TAG,
+                        "Android not compatible with DefaultInstallerSdk14! This should really not happen!",
+                        e);
+            }
+        }
+
         // Fallback -> DefaultInstaller
         try {
             Log.d(TAG, "try default installer");
@@ -211,6 +224,6 @@ abstract public class Installer {
     }
 
     public abstract boolean handleOnActivityResult(int requestCode, int resultCode, Intent data);
-    
+
     public abstract boolean supportsUnattendedOperations();
 }

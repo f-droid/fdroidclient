@@ -21,6 +21,7 @@ package org.fdroid.fdroid.installer;
 
 import java.io.File;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -28,18 +29,20 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.Build;
 
 /**
- * For Android < 4 Default Installer using the public PackageManager API of
+ * For Android >= 4.0 Default Installer using the public PackageManager API of
  * Android to install/delete packages. This starts a Activity from the Android
  * OS showing all permissions/changed permissions. The the user needs to
  * manually press an install button, this Installer cannot be used for
  * unattended installations.
  */
-public class DefaultInstaller extends Installer {
+@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+public class DefaultInstallerSdk14 extends Installer {
     private Activity mActivity;
 
-    public DefaultInstaller(Activity activity, PackageManager pm, InstallerCallback callback)
+    public DefaultInstallerSdk14(Activity activity, PackageManager pm, InstallerCallback callback)
             throws AndroidNotCompatibleException {
         super(activity, pm, callback);
         this.mActivity = activity;
@@ -48,26 +51,23 @@ public class DefaultInstaller extends Installer {
     private static final int REQUEST_CODE_INSTALL = 0;
     private static final int REQUEST_CODE_DELETE = 1;
 
-    // TODO: check before installation?
-    // int result = Settings.Secure.getInt(getContentResolver(),
-    // Settings.Secure.INSTALL_NON_MARKET_APPS, 0);
-    // if (result == 0) {
-    // // show some dialog here
-    // // ...
-    // // and may be show application settings dialog manually
-    // Intent intent = new Intent();
-    // intent.setAction(Settings.ACTION_APPLICATION_SETTINGS);
-    // startActivity(intent);
-    // }
-
+    @SuppressWarnings("deprecation")
     @Override
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {
         super.installPackage(apkFile);
 
         Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(apkFile),
-                "application/vnd.android.package-archive");
+        intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
+        intent.setData(Uri.fromFile(apkFile));
+        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+
+        // following extras only work when being installed as system-app
+        // https://code.google.com/p/android/issues/detail?id=42253
+        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            // deprecated in Android 4.1
+            intent.putExtra(Intent.EXTRA_ALLOW_REPLACE, true);
+        }
         try {
             mActivity.startActivityForResult(intent, REQUEST_CODE_INSTALL);
         } catch (ActivityNotFoundException e) {
@@ -87,7 +87,8 @@ public class DefaultInstaller extends Installer {
         }
 
         Uri uri = Uri.fromParts("package", pkgInfo.packageName, null);
-        Intent intent = new Intent(Intent.ACTION_DELETE, uri);
+        Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE, uri);
+        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
         try {
             mActivity.startActivityForResult(intent, REQUEST_CODE_DELETE);
         } catch (ActivityNotFoundException e) {
@@ -100,15 +101,29 @@ public class DefaultInstaller extends Installer {
         /**
          * resultCode is always 0 on Android < 4.0. See
          * com.android.packageinstaller.PackageInstallerActivity: setResult is
-         * never executed on Androids before 4.0
+         * never executed!
          */
         switch (requestCode) {
             case REQUEST_CODE_INSTALL:
-                mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, false);
+                if (resultCode == Activity.RESULT_OK) {
+                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, false);
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    // TODO
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, false, "canceled");
+                } else {
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, false, "todo");
+                }
 
                 return true;
             case REQUEST_CODE_DELETE:
-                mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, false);
+                if (resultCode == Activity.RESULT_OK) {
+                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, false);
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    // TODO
+                    mCallback.onError(InstallerCallback.OPERATION_DELETE, false, "canceled");
+                } else {
+                    mCallback.onError(InstallerCallback.OPERATION_DELETE, false, "todo");
+                }
 
                 return true;
             default:

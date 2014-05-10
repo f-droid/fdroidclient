@@ -27,7 +27,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 public class CheckRootAsyncTask extends AsyncTask<Void, Void, Boolean> {
-
     ProgressDialog mDialog;
     Context mContext;
     CheckRootCallback mCallback;
@@ -56,10 +55,7 @@ public class CheckRootAsyncTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... params) {
-
-        boolean suAvailable = Shell.SU.available();
-
-        return suAvailable;
+        return Shell.SU.available();
     }
 
     @Override
