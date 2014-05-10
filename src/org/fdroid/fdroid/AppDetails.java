@@ -33,18 +33,17 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.net.Uri;
-import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.Signature;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.ContentObserver;
 import android.text.Editable;
 import android.text.Html;
 import android.text.Html.TagHandler;
@@ -96,6 +95,31 @@ public class AppDetails extends ListActivity {
         TextView added;
         TextView nativecode;
     }
+    
+    // observer to update view when package has been installed/removed
+    AppObserver myAppObserver;
+    class AppObserver extends ContentObserver {      
+       public AppObserver(Handler handler) {
+          super(handler);           
+       }
+
+       @Override
+       public void onChange(boolean selfChange) {
+          this.onChange(selfChange, null);
+       }        
+
+       @Override
+       public void onChange(boolean selfChange, Uri uri) {
+           if (!reset()) {
+               AppDetails.this.finish();
+               return;
+           }
+           updateViews();
+
+           MenuManager.create(AppDetails.this).invalidateOptionsMenu();
+       }        
+    }
+
 
     private class ApkListAdapter extends ArrayAdapter<Apk> {
 
@@ -323,7 +347,6 @@ public class AppDetails extends ListActivity {
                 finish();
                 return;
             }
-            resetRequired = false;
         }
 
         SharedPreferences prefs = PreferenceManager
@@ -347,7 +370,6 @@ public class AppDetails extends ListActivity {
     private boolean pref_expert;
     private boolean pref_permissions;
     private boolean pref_incompatibleVersions;
-    private boolean resetRequired;
 
     // The signature of the installed version.
     private Signature mInstalledSignature;
@@ -357,12 +379,17 @@ public class AppDetails extends ListActivity {
     protected void onResume() {
         Log.d(TAG, "onresume");
         super.onResume();
-        if (resetRequired) {
-            if (!reset()) {
-                finish();
-                return;
-            }
-            resetRequired = false;
+        
+        // register observer to know when install status changes
+        myAppObserver = new AppObserver(new Handler());
+        getContentResolver().registerContentObserver(
+              AppProvider.getContentUri(app.id),
+              true,
+              myAppObserver);
+        
+        if (!reset()) {
+            finish();
+            return;
         }
         updateViews();
 
@@ -375,6 +402,9 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onPause() {
+        if (myAppObserver != null) {
+            getContentResolver().unregisterContentObserver(myAppObserver);
+        }
         if (downloadHandler != null) {
             downloadHandler.stopUpdates();
         }
@@ -964,51 +994,36 @@ public class AppDetails extends ListActivity {
 
         @Override
         public void onSuccess(final int operation) {
-            // TODO: this is a hack!!!
-            // Currently the views are not automatically updated when the receivers are notified
-            // if an app is installed/removed
-            // We are currently waiting that the receivers change the database and then reload the view
-            // 
-            // Better approach:
-            // Implement Android Loader that restarts automatically on db change!
-            Thread wait = new Thread(new Runnable() {
+            runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
+                    Log.d(TAG, "handling installer onSuccess");
+                    
+                    notifyAppChanged(app.id);
+
+                    if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
+                        if (downloadHandler != null) {
+                            downloadHandler = null;
+                        }
+
+                        PackageManagerCompat.setInstaller(mPm, app.id);
                     }
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.d(TAG, "handling installer onSuccess");
-                            
-                            notifyAppChanged(app.id);
-
-                            resetRequired = true;
-
-                            if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                                if (downloadHandler != null) {
-                                    downloadHandler = null;
-                                }
-
-                                PackageManagerCompat.setInstaller(mPm, app.id);
-                            }
-
-                            // TODO: whole onResume?
-                            onResume();
-                            setProgressBarIndeterminateVisibility(false);
-                        }
-                    });
+                    setProgressBarIndeterminateVisibility(false);
                 }
             });
-            wait.start();
         }
 
         @Override
         public void onError(int operation, final int errorCode) {
-            if (errorCode != InstallerCallback.ERROR_CODE_CANCELED) {
+            if (errorCode == InstallerCallback.ERROR_CODE_CANCELED) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setProgressBarIndeterminateVisibility(false);
+                    }
+                });
+            } else {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
