@@ -27,6 +27,7 @@ import eu.chainfire.libsuperuser.Shell;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.util.Log;
 
 /**
  * Installer using a root shell and "pm install", "pm uninstall" commands
@@ -67,9 +68,9 @@ public class RootInstaller extends Installer {
                     // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
-                    // TODO
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
-                            "Error opening root shell with exitCode " + exitCode);
+                    Log.e(TAG, "Error opening root shell with exitCode " + exitCode);
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                            InstallerCallback.ERROR_CODE_OTHER);
                 } else {
                     addInstallCommand(apkFile);
                 }
@@ -94,9 +95,9 @@ public class RootInstaller extends Installer {
                     // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
-                    // TODO
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
-                            "Error opening root shell with exitCode " + exitCode);
+                    Log.e(TAG, "Error opening root shell with exitCode " + exitCode);
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                            InstallerCallback.ERROR_CODE_OTHER);
                 } else {
                     addInstallCommand(apkFiles);
                 }
@@ -121,9 +122,9 @@ public class RootInstaller extends Installer {
                     // exec failed
                     // Shell.OnCommandResultListener.SHELL_EXEC_FAILED
 
-                    // TODO
-                    mCallback.onError(InstallerCallback.OPERATION_DELETE, true,
-                            "Error opening root shell with exitCode " + exitCode);
+                    Log.e(TAG, "Error opening root shell with exitCode " + exitCode);
+                    mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                            InstallerCallback.ERROR_CODE_OTHER);
                 } else {
                     addDeleteCommand(packageName);
                 }
@@ -153,9 +154,9 @@ public class RootInstaller extends Installer {
                         rootSession.close();
 
                         if (exitCode < 0) {
-                            // TODO
-                            mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
-                                    "Install failed with exit code " + exitCode);
+                            Log.e(TAG, "Install failed with exit code " + exitCode);
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                                    InstallerCallback.ERROR_CODE_OTHER);
                         } else {
                             // wait until Android's internal PackageManger
                             // has received the new package state
@@ -167,9 +168,7 @@ public class RootInstaller extends Installer {
                                     } catch (InterruptedException e) {
                                     }
 
-                                    mCallback.onSuccess(
-                                            InstallerCallback.OPERATION_INSTALL,
-                                            true);
+                                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                                 }
                             });
                             wait.start();
@@ -187,9 +186,9 @@ public class RootInstaller extends Installer {
                         rootSession.close();
 
                         if (exitCode < 0) {
-                            // TODO
-                            mCallback.onError(InstallerCallback.OPERATION_INSTALL, true,
-                                    "Install failed with exit code " + exitCode);
+                            Log.e(TAG, "Install failed with exit code " + exitCode);
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                                    InstallerCallback.ERROR_CODE_OTHER);
                         } else {
                             // wait until Android's internal PackageManger has
                             // received the new package state
@@ -201,7 +200,7 @@ public class RootInstaller extends Installer {
                                     } catch (InterruptedException e) {
                                     }
 
-                                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, true);
+                                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                                 }
                             });
                             wait.start();
@@ -218,9 +217,9 @@ public class RootInstaller extends Installer {
                         rootSession.close();
 
                         if (exitCode < 0) {
-                            // TODO
-                            mCallback.onError(InstallerCallback.OPERATION_DELETE, true,
-                                    "Delete failed with exit code " + exitCode);
+                            Log.e(TAG, "Delete failed with exit code " + exitCode);
+                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                                    InstallerCallback.ERROR_CODE_OTHER);
                         } else {
                             // wait until Android's internal PackageManger has
                             // received the new package state
@@ -232,7 +231,7 @@ public class RootInstaller extends Installer {
                                     } catch (InterruptedException e) {
                                     }
 
-                                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, true);
+                                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
                                 }
                             });
                             wait.start();

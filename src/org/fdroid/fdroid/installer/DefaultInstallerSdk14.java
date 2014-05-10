@@ -21,6 +21,8 @@ package org.fdroid.fdroid.installer;
 
 import java.io.File;
 
+import org.fdroid.fdroid.installer.Installer.InstallerCallback;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -97,38 +99,82 @@ public class DefaultInstallerSdk14 extends Installer {
     }
 
     @Override
-    public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
+    public boolean handleOnActivityResult(final int requestCode, final int resultCode, Intent data) {
         /**
          * resultCode is always 0 on Android < 4.0. See
          * com.android.packageinstaller.PackageInstallerActivity: setResult is
          * never executed!
          */
-        switch (requestCode) {
-            case REQUEST_CODE_INSTALL:
-                if (resultCode == Activity.RESULT_OK) {
-                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, false);
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    // TODO
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, false, "canceled");
-                } else {
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL, false, "todo");
+        // wait until Android's internal PackageManger has
+        // received the new package state
+        Thread wait = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
                 }
 
-                return true;
-            case REQUEST_CODE_DELETE:
-                if (resultCode == Activity.RESULT_OK) {
-                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, false);
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    // TODO
-                    mCallback.onError(InstallerCallback.OPERATION_DELETE, false, "canceled");
-                } else {
-                    mCallback.onError(InstallerCallback.OPERATION_DELETE, false, "todo");
-                }
+                switch (requestCode) {
+                    case REQUEST_CODE_INSTALL:
+                        if (resultCode == Activity.RESULT_OK) {
+                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+                        } else if (resultCode == Activity.RESULT_CANCELED) {
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                                    InstallerCallback.ERROR_CODE_CANCELED);
+                        } else {
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                                    InstallerCallback.ERROR_CODE_OTHER);
+                        }
 
-                return true;
-            default:
-                return false;
-        }
+                        // return true;
+                    case REQUEST_CODE_DELETE:
+                        if (resultCode == Activity.RESULT_OK) {
+                            mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
+                        } else if (resultCode == Activity.RESULT_CANCELED) {
+                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                                    InstallerCallback.ERROR_CODE_CANCELED);
+                        } else {
+                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                                    InstallerCallback.ERROR_CODE_OTHER);
+                        }
+
+                        // return true;
+                    default:
+                        // return false;
+                }
+            }
+        });
+        wait.start();
+        return true;
+
+        // case REQUEST_CODE_INSTALL:
+        // if (resultCode == Activity.RESULT_OK) {
+        // mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+        // } else if (resultCode == Activity.RESULT_CANCELED) {
+        // mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+        // InstallerCallback.ERROR_CODE_CANCELED);
+        // } else {
+        // mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+        // InstallerCallback.ERROR_CODE_OTHER);
+        // }
+        //
+        // return true;
+        // case REQUEST_CODE_DELETE:
+        // if (resultCode == Activity.RESULT_OK) {
+        // mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
+        // } else if (resultCode == Activity.RESULT_CANCELED) {
+        // mCallback.onError(InstallerCallback.OPERATION_DELETE,
+        // InstallerCallback.ERROR_CODE_CANCELED);
+        // } else {
+        // mCallback.onError(InstallerCallback.OPERATION_DELETE,
+        // InstallerCallback.ERROR_CODE_OTHER);
+        // }
+        //
+        // return true;
+        // default:
+        // return false;
+        // }
     }
 
     @Override

@@ -59,7 +59,7 @@ public class DefaultInstaller extends Installer {
     // intent.setAction(Settings.ACTION_APPLICATION_SETTINGS);
     // startActivity(intent);
     // }
-
+    
     @Override
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {
         super.installPackage(apkFile);
@@ -104,11 +104,11 @@ public class DefaultInstaller extends Installer {
          */
         switch (requestCode) {
             case REQUEST_CODE_INSTALL:
-                mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, false);
+                mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
 
                 return true;
             case REQUEST_CODE_DELETE:
-                mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, false);
+                mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
 
                 return true;
             default:

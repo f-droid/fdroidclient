@@ -25,6 +25,7 @@ import android.widget.*;
 import org.fdroid.fdroid.data.*;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
+import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -310,7 +311,8 @@ public class AppDetails extends ListActivity {
         }
 
         mPm = getPackageManager();
-        installer = Installer.getActivityInstaller(this, mPm, myInstallerCallback);
+        installer = Installer.getActivityInstaller(this, mPm,
+                myInstallerCallback);
         
         // Get the preferences we're going to use in this Activity...
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
@@ -929,82 +931,80 @@ public class AppDetails extends ListActivity {
         downloadHandler = new DownloadHandler(apk, repoaddress,
                 Utils.getApkCacheDir(getBaseContext()));
     }
-    
     private void installApk(File file, String packageName) {
         setProgressBarIndeterminateVisibility(true);
-        
+
         try {
             installer.installPackage(file);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
         }
-
-        notifyAppChanged(packageName);
     }
 
     private void removeApk(String packageName) {
         setProgressBarIndeterminateVisibility(true);
-        
+
         try {
             installer.deletePackage(packageName);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
         }
-
-        notifyAppChanged(packageName);
-	}
+    }
 
     /**
-     * We could probably drop this, and let the PackageReceiver take care of notifications
-     * for us, but I don't think the package receiver notifications are very instantaneous.
+     * We could probably drop this, and let the PackageReceiver take care of
+     * notifications for us, but I don't think the package receiver
+     * notifications are very instantaneous.
      */
     private void notifyAppChanged(String id) {
         getContentResolver().notifyChange(AppProvider.getContentUri(id), null);
     }
-    
-    private Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
+
+    Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
 
         @Override
-        public void onSuccess(int operation, boolean unattended) {
-            resetRequired = true;
-            
-            if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                if (downloadHandler != null) {
-                    downloadHandler = null;
-                }
-      
-                PackageManagerCompat.setInstaller(mPm, app.id);
-            }
-            
-            // if unattended, onResume is not execute automatically
-//        if (unattended) {
+        public void onSuccess(final int operation) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    Log.d(TAG, "handling installer onSuccess");
+                    
+                    notifyAppChanged(app.id);
+
+                    resetRequired = true;
+
+                    if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
+                        if (downloadHandler != null) {
+                            downloadHandler = null;
+                        }
+
+                        PackageManagerCompat.setInstaller(mPm, app.id);
+                    }
+
+                    // TODO: whole onResume?
                     onResume();
                     setProgressBarIndeterminateVisibility(false);
                 }
             });
-//        }
-            
         }
 
         @Override
-        public void onError(int operation, boolean unattended, final String reason) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    setProgressBarIndeterminateVisibility(false);
-                    
-                    // TODO
-                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
-                    alertBuilder.setTitle("Error");
-                    alertBuilder.setMessage(reason);
-                    alertBuilder.setNeutralButton(android.R.string.ok, null);
-                    alertBuilder.create().show();
-                }
-            });
-            
+        public void onError(int operation, final int errorCode) {
+            if (errorCode != InstallerCallback.ERROR_CODE_CANCELED) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setProgressBarIndeterminateVisibility(false);
+
+                        // TODO
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                        alertBuilder.setTitle("Error");
+                        alertBuilder.setMessage("errorCode: " + errorCode);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+                });
+            }
         }
     };
 

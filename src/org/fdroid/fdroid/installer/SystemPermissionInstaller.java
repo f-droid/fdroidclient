@@ -106,13 +106,14 @@ public class SystemPermissionInstaller extends Installer {
                         } catch (InterruptedException e) {
                         }
 
-                        mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL, true);
+                        mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                     }
                 });
                 wait.start();
             } else {
-                Log.d(TAG, "Install failed: " + returnCode);
-                mCallback.onError(InstallerCallback.OPERATION_INSTALL, true, "todo");
+                Log.e(TAG, "Install failed with returnCode " + returnCode);
+                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                        InstallerCallback.ERROR_CODE_OTHER);
             }
         }
     }
@@ -136,13 +137,14 @@ public class SystemPermissionInstaller extends Installer {
                         } catch (InterruptedException e) {
                         }
 
-                        mCallback.onSuccess(InstallerCallback.OPERATION_DELETE, true);
+                        mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
                     }
                 });
                 wait.start();
             } else {
-                Log.d(TAG, "Delete failed: " + returnCode);
-                mCallback.onError(InstallerCallback.OPERATION_DELETE, true, "todo");
+                Log.e(TAG, "Delete failed with returnCode " + returnCode);
+                mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                        InstallerCallback.ERROR_CODE_OTHER);
             }
         }
     }

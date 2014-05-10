@@ -77,10 +77,13 @@ abstract public class Installer {
 
         public static final int OPERATION_INSTALL = 1;
         public static final int OPERATION_DELETE = 2;
+        
+        public static final int ERROR_CODE_CANCELED = 1;
+        public static final int ERROR_CODE_OTHER = 2;
 
-        public void onSuccess(int operation, boolean unattended);
+        public void onSuccess(int operation);
 
-        public void onError(int operation, boolean unattended, String reason);
+        public void onError(int operation, int errorCode);
     }
 
     public Installer(Context context, PackageManager pm, InstallerCallback callback)
