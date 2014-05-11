@@ -21,6 +21,7 @@ package org.fdroid.fdroid.installer;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
@@ -124,9 +125,7 @@ public class SystemPermissionInstaller extends Installer {
     }
 
     @Override
-    public void installPackage(File apkFile) throws AndroidNotCompatibleException {
-        super.installPackage(apkFile);
-
+    public void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
         Uri packageURI = Uri.fromFile(apkFile);
         try {
             mInstallMethod.invoke(mPm, new Object[] {
@@ -138,9 +137,7 @@ public class SystemPermissionInstaller extends Installer {
     }
 
     @Override
-    public void deletePackage(String packageName) throws AndroidNotCompatibleException {
-        super.deletePackage(packageName);
-
+    public void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
         try {
             mDeleteMethod.invoke(mPm, new Object[] {
                     packageName, mDeleteObserver, 0
@@ -466,4 +463,10 @@ public class SystemPermissionInstaller extends Installer {
      * failed to delete the package since the user is restricted.
      */
     public static final int DELETE_FAILED_USER_RESTRICTED = -3;
+
+    @Override
+    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
+        // TODO Auto-generated method stub
+
+    }
 }

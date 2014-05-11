@@ -52,9 +52,7 @@ public class RootInstaller extends Installer {
     }
 
     @Override
-    public void installPackage(final File apkFile) throws AndroidNotCompatibleException {
-        super.installPackage(apkFile);
-
+    public void installPackageInternal(final File apkFile) throws AndroidNotCompatibleException {
         rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
 
             // Callback to report whether the shell was successfully
@@ -77,9 +75,7 @@ public class RootInstaller extends Installer {
     }
 
     @Override
-    public void installPackage(final List<File> apkFiles) throws AndroidNotCompatibleException {
-        super.installPackage(apkFiles);
-
+    public void installPackageInternal(final List<File> apkFiles) throws AndroidNotCompatibleException {
         rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
 
             // Callback to report whether the shell was successfully
@@ -102,9 +98,7 @@ public class RootInstaller extends Installer {
     }
 
     @Override
-    public void deletePackage(final String packageName) throws AndroidNotCompatibleException {
-        super.deletePackage(packageName);
-
+    public void deletePackageInternal(final String packageName) throws AndroidNotCompatibleException {
         rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
 
             // Callback to report whether the shell was successfully

@@ -20,6 +20,7 @@
 package org.fdroid.fdroid.installer;
 
 import java.io.File;
+import java.util.List;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -53,9 +54,7 @@ public class DefaultInstallerSdk14 extends Installer {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void installPackage(File apkFile) throws AndroidNotCompatibleException {
-        super.installPackage(apkFile);
-
+    public void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_INSTALL_PACKAGE);
         intent.setData(Uri.fromFile(apkFile));
@@ -76,9 +75,7 @@ public class DefaultInstallerSdk14 extends Installer {
     }
 
     @Override
-    public void deletePackage(String packageName) throws AndroidNotCompatibleException {
-        super.deletePackage(packageName);
-
+    public void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
         PackageInfo pkgInfo = null;
         try {
             pkgInfo = mPm.getPackageInfo(packageName, 0);
@@ -136,6 +133,12 @@ public class DefaultInstallerSdk14 extends Installer {
     @Override
     public boolean supportsUnattendedOperations() {
         return false;
+    }
+
+    @Override
+    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
+        // TODO Auto-generated method stub
+        
     }
 
 }

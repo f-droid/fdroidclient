@@ -60,7 +60,7 @@ public class CanUpdateAppsFragment extends AppListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        
         mUpdateAllButton.setOnClickListener(new OnClickListener() {
 
             @Override

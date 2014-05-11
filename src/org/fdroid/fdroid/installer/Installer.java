@@ -77,7 +77,7 @@ abstract public class Installer {
 
         public static final int OPERATION_INSTALL = 1;
         public static final int OPERATION_DELETE = 2;
-        
+
         public static final int ERROR_CODE_CANCELED = 1;
         public static final int ERROR_CODE_OTHER = 2;
 
@@ -199,7 +199,7 @@ abstract public class Installer {
             return;
         }
 
-        // extended class now actually installs the package
+        installPackageInternal(apkFile);
     }
 
     public void installPackage(List<File> apkFiles) throws AndroidNotCompatibleException {
@@ -211,7 +211,7 @@ abstract public class Installer {
             }
         }
 
-        // extended class now actually installs the package
+        installPackageInternal(apkFiles);
     }
 
     public void deletePackage(String packageName) throws AndroidNotCompatibleException {
@@ -223,8 +223,17 @@ abstract public class Installer {
             return;
         }
 
-        // extended class now actually deletes the package
+        deletePackageInternal(packageName);
     }
+
+    protected abstract void installPackageInternal(File apkFile)
+            throws AndroidNotCompatibleException;
+
+    protected abstract void installPackageInternal(List<File> apkFiles)
+            throws AndroidNotCompatibleException;
+
+    protected abstract void deletePackageInternal(String packageName)
+            throws AndroidNotCompatibleException;
 
     public abstract boolean handleOnActivityResult(int requestCode, int resultCode, Intent data);
 

@@ -20,6 +20,7 @@
 package org.fdroid.fdroid.installer;
 
 import java.io.File;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -49,9 +50,7 @@ public class DefaultInstaller extends Installer {
     private static final int REQUEST_CODE_DELETE = 1;
 
     @Override
-    public void installPackage(File apkFile) throws AndroidNotCompatibleException {
-        super.installPackage(apkFile);
-
+    public void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(apkFile),
@@ -64,9 +63,7 @@ public class DefaultInstaller extends Installer {
     }
 
     @Override
-    public void deletePackage(String packageName) throws AndroidNotCompatibleException {
-        super.deletePackage(packageName);
-
+    public void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
         PackageInfo pkgInfo = null;
         try {
             pkgInfo = mPm.getPackageInfo(packageName, 0);
@@ -107,6 +104,12 @@ public class DefaultInstaller extends Installer {
     @Override
     public boolean supportsUnattendedOperations() {
         return false;
+    }
+
+    @Override
+    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
+        // TODO Auto-generated method stub
+
     }
 
 }
