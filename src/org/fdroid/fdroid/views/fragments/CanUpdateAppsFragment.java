@@ -77,7 +77,8 @@ public class CanUpdateAppsFragment extends AppListFragment {
         super.onResume();
 
         if (mInstaller.supportsUnattendedOperations()) {
-            mUpdateAllButton.setVisibility(View.VISIBLE);
+//            mUpdateAllButton.setVisibility(View.VISIBLE);
+            mUpdateAllButton.setVisibility(View.GONE);
         } else {
             mUpdateAllButton.setVisibility(View.GONE);
         }
