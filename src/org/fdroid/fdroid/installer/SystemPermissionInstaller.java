@@ -125,7 +125,7 @@ public class SystemPermissionInstaller extends Installer {
     }
 
     @Override
-    public void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
+    protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
         Uri packageURI = Uri.fromFile(apkFile);
         try {
             mInstallMethod.invoke(mPm, new Object[] {
@@ -137,7 +137,13 @@ public class SystemPermissionInstaller extends Installer {
     }
 
     @Override
-    public void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
+    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
         try {
             mDeleteMethod.invoke(mPm, new Object[] {
                     packageName, mDeleteObserver, 0
@@ -464,9 +470,4 @@ public class SystemPermissionInstaller extends Installer {
      */
     public static final int DELETE_FAILED_USER_RESTRICTED = -3;
 
-    @Override
-    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
-        // TODO Auto-generated method stub
-
-    }
 }

@@ -50,7 +50,7 @@ public class DefaultInstaller extends Installer {
     private static final int REQUEST_CODE_DELETE = 1;
 
     @Override
-    public void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
+    protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(apkFile),
@@ -63,7 +63,13 @@ public class DefaultInstaller extends Installer {
     }
 
     @Override
-    public void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
+    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
         PackageInfo pkgInfo = null;
         try {
             pkgInfo = mPm.getPackageInfo(packageName, 0);
@@ -104,12 +110,6 @@ public class DefaultInstaller extends Installer {
     @Override
     public boolean supportsUnattendedOperations() {
         return false;
-    }
-
-    @Override
-    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
-        // TODO Auto-generated method stub
-
     }
 
 }
