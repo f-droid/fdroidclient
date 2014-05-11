@@ -981,26 +981,13 @@ public class AppDetails extends ListActivity {
         }
     }
 
-    /**
-     * We could probably drop this, and let the PackageReceiver take care of
-     * notifications for us, but I don't think the package receiver
-     * notifications are very instantaneous.
-     */
-    private void notifyAppChanged(String id) {
-        getContentResolver().notifyChange(AppProvider.getContentUri(id), null);
-    }
-
     Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
 
         @Override
         public void onSuccess(final int operation) {
             runOnUiThread(new Runnable() {
                 @Override
-                public void run() {
-                    Log.d(TAG, "handling installer onSuccess");
-                    
-                    notifyAppChanged(app.id);
-
+                public void run() {                    
                     if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
                         if (downloadHandler != null) {
                             downloadHandler = null;
@@ -1028,11 +1015,12 @@ public class AppDetails extends ListActivity {
                     @Override
                     public void run() {
                         setProgressBarIndeterminateVisibility(false);
-
-                        // TODO
+                        
+                        Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
+                        
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
-                        alertBuilder.setTitle("Error");
-                        alertBuilder.setMessage("errorCode: " + errorCode);
+                        alertBuilder.setTitle(R.string.installer_error_title);
+                        alertBuilder.setMessage(R.string.installer_error_title);
                         alertBuilder.setNeutralButton(android.R.string.ok, null);
                         alertBuilder.create().show();
                     }

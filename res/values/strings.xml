@@ -270,5 +270,7 @@
     <string name="root_access_denied_title">Root access denied</string>
     <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
     <string name="update_all">Update all</string>
-    
+    <string name="installer_error_title">(De-)Installation Error</string>
+    <string name="installer_error_body">The (de-)installation failed. If you are using root access, try disabling this setting!</string>
+   
 </resources>
