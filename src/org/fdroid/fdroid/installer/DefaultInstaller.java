@@ -31,7 +31,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 
 /**
- * For Android < 4 Default Installer using the public PackageManager API of
+ * For Android < 4: Default Installer using the public PackageManager API of
  * Android to install/delete packages. This starts a Activity from the Android
  * OS showing all permissions/changed permissions. The the user needs to
  * manually press an install button, this Installer cannot be used for

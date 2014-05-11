@@ -33,7 +33,7 @@ import android.net.Uri;
 import android.os.Build;
 
 /**
- * For Android >= 4.0 Default Installer using the public PackageManager API of
+ * For Android >= 4.0: Default Installer using the public PackageManager API of
  * Android to install/delete packages. This starts a Activity from the Android
  * OS showing all permissions/changed permissions. The the user needs to
  * manually press an install button, this Installer cannot be used for
@@ -95,11 +95,6 @@ public class DefaultInstallerSdk14 extends Installer {
 
     @Override
     public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
-        /**
-         * resultCode is always 0 on Android < 4.0. See
-         * com.android.packageinstaller.PackageInstallerActivity: setResult is
-         * never executed!
-         */
         switch (requestCode) {
             case REQUEST_CODE_INSTALL:
                 if (resultCode == Activity.RESULT_OK) {

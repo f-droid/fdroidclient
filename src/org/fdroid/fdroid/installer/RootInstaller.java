@@ -75,7 +75,8 @@ public class RootInstaller extends Installer {
     }
 
     @Override
-    public void installPackageInternal(final List<File> apkFiles) throws AndroidNotCompatibleException {
+    public void installPackageInternal(final List<File> apkFiles)
+            throws AndroidNotCompatibleException {
         rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
 
             // Callback to report whether the shell was successfully
@@ -98,7 +99,8 @@ public class RootInstaller extends Installer {
     }
 
     @Override
-    public void deletePackageInternal(final String packageName) throws AndroidNotCompatibleException {
+    public void deletePackageInternal(final String packageName)
+            throws AndroidNotCompatibleException {
         rootSession = createShellBuilder().open(new Shell.OnCommandResultListener() {
 
             // Callback to report whether the shell was successfully
@@ -127,6 +129,24 @@ public class RootInstaller extends Installer {
         return false;
     }
 
+    private void addInstallCommand(File apkFile) {
+        rootSession.addCommand("pm install -r " + apkFile.getAbsolutePath(), 0,
+                new Shell.OnCommandResultListener() {
+                    public void onCommandResult(int commandCode, int exitCode, List<String> output) {
+                        // close su shell
+                        rootSession.close();
+
+                        if (exitCode < 0) {
+                            Log.e(TAG, "Install failed with exit code " + exitCode);
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                                    InstallerCallback.ERROR_CODE_OTHER);
+                        } else {
+                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+                        }
+                    }
+                });
+    }
+
     private void addInstallCommand(List<File> apkFiles) {
         ArrayList<String> commands = new ArrayList<String>();
         String pm = "pm install -r ";
@@ -151,24 +171,6 @@ public class RootInstaller extends Installer {
                     }
                 });
 
-    }
-
-    private void addInstallCommand(File apkFile) {
-        rootSession.addCommand("pm install -r " + apkFile.getAbsolutePath(), 0,
-                new Shell.OnCommandResultListener() {
-                    public void onCommandResult(int commandCode, int exitCode, List<String> output) {
-                        // close su shell
-                        rootSession.close();
-
-                        if (exitCode < 0) {
-                            Log.e(TAG, "Install failed with exit code " + exitCode);
-                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                                    InstallerCallback.ERROR_CODE_OTHER);
-                        } else {
-                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
-                        }
-                    }
-                });
     }
 
     private void addDeleteCommand(String packageName) {

@@ -96,7 +96,7 @@ public class AppDetails extends ListActivity {
         TextView nativecode;
     }
     
-    // observer to update view when package has been installed/removed
+    // observer to update view when package has been installed/deleted
     AppObserver myAppObserver;
     class AppObserver extends ContentObserver {      
        public AppObserver(Handler handler) {
