@@ -18,9 +18,6 @@
 			android:maxLength="2"
 			android:numeric="integer"
 			android:title="@string/update_history" />
-		<CheckBoxPreference android:title="@string/root_installer"
-			android:defaultValue="false"
-			android:key="rootInstaller" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/display">
         <CheckBoxPreference android:title="@string/showPermissions"
@@ -53,5 +50,8 @@
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false"
 			android:key="expert" />
+		<CheckBoxPreference android:title="@string/root_installer"
+			android:defaultValue="false"
+			android:key="rootInstaller" />
 	</PreferenceCategory>
 </PreferenceScreen>
