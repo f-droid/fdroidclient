@@ -195,7 +195,7 @@ abstract public class Installer {
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {
         // check if file exists...
         if (!apkFile.exists()) {
-            Log.d(TAG, "Couldn't find file " + apkFile + " to install.");
+            Log.e(TAG, "Couldn't find file " + apkFile + " to install.");
             return;
         }
 
@@ -206,7 +206,7 @@ abstract public class Installer {
         // check if files exist...
         for (File apkFile : apkFiles) {
             if (!apkFile.exists()) {
-                Log.d(TAG, "Couldn't find file " + apkFile + " to install.");
+                Log.e(TAG, "Couldn't find file " + apkFile + " to install.");
                 return;
             }
         }
@@ -219,7 +219,7 @@ abstract public class Installer {
         try {
             mPm.getPackageInfo(packageName, 0);
         } catch (NameNotFoundException e) {
-            Log.d(TAG, "Couldn't find package " + packageName + " to delete.");
+            Log.e(TAG, "Couldn't find package " + packageName + " to delete.");
             return;
         }
 
