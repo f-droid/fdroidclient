@@ -55,7 +55,8 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
-        Preferences.PREF_ROOT_INSTALLER
+        Preferences.PREF_ROOT_INSTALLER,
+        Preferences.PREF_SYSTEM_INSTALLER
     };
 
     @Override
@@ -156,6 +157,10 @@ public class PreferencesActivity extends PreferenceActivity implements
             onoffSummary(key, R.string.root_installer_on,
                     R.string.root_installer_off);
             
+        } else if (key.equals(Preferences.PREF_SYSTEM_INSTALLER)) {
+            onoffSummary(key, R.string.system_installer_on,
+                    R.string.system_installer_off);
+            
         }
     }
     
@@ -164,7 +169,7 @@ public class PreferencesActivity extends PreferenceActivity implements
      * when the user grants root access for F-Droid.
      */
     protected void initRootInstallerPreference() {
-        CheckBoxPreference pref = (CheckBoxPreference)findPreference(Preferences.PREF_ROOT_INSTALLER);
+        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_ROOT_INSTALLER);
         
         // we are handling persistence ourself!
         pref.setPersistent(false);

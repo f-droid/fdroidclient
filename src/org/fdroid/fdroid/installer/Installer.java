@@ -107,8 +107,8 @@ abstract public class Installer {
             InstallerCallback callback) {
 
         // if root installer has been activated in preferences -> RootInstaller
-        boolean useRootInstaller = Preferences.get().useRootInstaller();
-        if (useRootInstaller) {
+        boolean isRootInstallerEnabled = Preferences.get().isRootInstallerEnabled();
+        if (isRootInstallerEnabled) {
             Log.d(TAG, "root installer preference enabled -> RootInstaller");
 
             try {
@@ -118,8 +118,9 @@ abstract public class Installer {
             }
         }
 
-        // system permissions -> SystemPermissionInstaller
-        if (hasSystemPermissions(activity, pm)) {
+        // system permissions and pref enabled -> SystemPermissionInstaller
+        boolean isSystemInstallerEnabled = Preferences.get().isSystemInstallerEnabled();
+        if (isSystemInstallerEnabled && hasSystemPermissions(activity, pm)) {
             Log.d(TAG, "system permissions -> SystemPermissionInstaller");
 
             try {
@@ -158,7 +159,7 @@ abstract public class Installer {
             InstallerCallback callback) throws AndroidNotCompatibleException {
 
         // if root installer has been activated in preferences -> RootInstaller
-        boolean useRootInstaller = Preferences.get().useRootInstaller();
+        boolean useRootInstaller = Preferences.get().isRootInstallerEnabled();
         if (useRootInstaller) {
             try {
                 return new RootInstaller(context, pm, callback);

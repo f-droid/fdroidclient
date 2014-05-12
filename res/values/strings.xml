@@ -31,6 +31,9 @@
 	<string name="root_installer">Root access for app installations</string>
 	<string name="root_installer_on">Root access is used to install/delete/update applications</string>
 	<string name="root_installer_off">Do not request root access to install/delete/update applications</string>
+	<string name="system_installer">Use system permissions for app installations</string>
+	<string name="system_installer_on">F-Droid tries to use system permissions to install/delete/update applications (only possible when installed as system-app)</string>
+	<string name="system_installer_off">F-Droid does not try to use system permissions to install/delete/update applications (only possible when installed as system-app)</string>
 	
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>
