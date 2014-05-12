@@ -205,7 +205,7 @@ public class RootInstaller extends Installer {
      * <p/>
      * Options:<br/>
      * -l: install the package with FORWARD_LOCK.<br/>
-     * -r: reinstall an exisiting app, keeping its data.<br/>
+     * -r: reinstall an existing app, keeping its data.<br/>
      * -t: allow test .apks to be installed.<br/>
      * -i: specify the installer package name.<br/>
      * -s: install package on sdcard.<br/>

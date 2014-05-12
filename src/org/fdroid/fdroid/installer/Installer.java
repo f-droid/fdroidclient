@@ -109,6 +109,8 @@ abstract public class Installer {
         // if root installer has been activated in preferences -> RootInstaller
         boolean useRootInstaller = Preferences.get().useRootInstaller();
         if (useRootInstaller) {
+            Log.d(TAG, "root installer preference enabled -> RootInstaller");
+
             try {
                 return new RootInstaller(activity, pm, callback);
             } catch (AndroidNotCompatibleException e) {
@@ -127,28 +129,25 @@ abstract public class Installer {
             }
         }
 
-        // Android >= 4.0
+        // Fallback -> DefaultInstaller
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            // Default installer on Android >= 4.0
             try {
-                Log.d(TAG, "try default installer for Android 4");
+                Log.d(TAG, "try default installer for Android >= 4");
 
                 return new DefaultInstallerSdk14(activity, pm, callback);
             } catch (AndroidNotCompatibleException e) {
-                Log.e(TAG,
-                        "Android not compatible with DefaultInstallerSdk14! This should really not happen!",
-                        e);
+                Log.e(TAG, "Android not compatible with DefaultInstallerSdk14!", e);
             }
-        }
+        } else {
+            // Default installer on Android < 4.0
+            try {
+                Log.d(TAG, "try default installer for Android < 4");
 
-        // Fallback -> DefaultInstaller
-        try {
-            Log.d(TAG, "try default installer");
-
-            return new DefaultInstaller(activity, pm, callback);
-        } catch (AndroidNotCompatibleException e) {
-            Log.e(TAG,
-                    "Android not compatible with DefaultInstaller! This should really not happen!",
-                    e);
+                return new DefaultInstaller(activity, pm, callback);
+            } catch (AndroidNotCompatibleException e) {
+                Log.e(TAG, "Android not compatible with DefaultInstaller!", e);
+            }
         }
 
         // this should not happen!
@@ -182,7 +181,8 @@ abstract public class Installer {
                 pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName());
         int checkDeletePermission =
                 pm.checkPermission(permission.DELETE_PACKAGES, context.getPackageName());
-        boolean permissionsGranted = (checkInstallPermission == PackageManager.PERMISSION_GRANTED
+        boolean permissionsGranted =
+                (checkInstallPermission == PackageManager.PERMISSION_GRANTED
                 && checkDeletePermission == PackageManager.PERMISSION_GRANTED);
 
         if (permissionsGranted) {
