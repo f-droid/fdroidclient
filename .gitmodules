@@ -14,3 +14,7 @@
 	path = extern/nanohttpd
 	url = https://github.com/eighthave/nanohttpd
 	ignore = dirty
+[submodule "extern/libsuperuser"]
+	path = extern/libsuperuser
+	url = https://github.com/dschuermann/libsuperuser.git
+	ignore = dirty

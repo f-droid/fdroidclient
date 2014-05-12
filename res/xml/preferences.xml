@@ -3,7 +3,8 @@
 	<PreferenceCategory android:title="@string/updates">
 		<ListPreference android:title="@string/update_interval"
 			android:key="updateInterval"
-			android:defaultValue="24" android:entries="@array/updateIntervalNames"
+			android:defaultValue="24"
+			android:entries="@array/updateIntervalNames"
 			android:entryValues="@array/updateIntervalValues" />
 		<CheckBoxPreference android:title="@string/automatic_scan_wifi"
 			android:defaultValue="false"
@@ -49,5 +50,11 @@
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false"
 			android:key="expert" />
+		<CheckBoxPreference android:title="@string/root_installer"
+			android:defaultValue="false"
+			android:key="rootInstaller" />
+		<CheckBoxPreference android:title="@string/system_installer"
+			android:defaultValue="false"
+			android:key="systemInstaller" />
 	</PreferenceCategory>
 </PreferenceScreen>

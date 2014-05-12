@@ -28,7 +28,13 @@
 	<string name="notify_off">Do not notify of any updates</string>
 	<string name="update_history">Update history</string>
 	<string name="update_history_summ">Days to consider apps new or recent: %s</string>
-
+	<string name="root_installer">Install using root access</string>
+	<string name="root_installer_on">Request root access to install, update, and remove packages</string>
+	<string name="root_installer_off">Do not request root access to install, update, and remove packages</string>
+	<string name="system_installer">Install using system-permissions</string>
+	<string name="system_installer_on">Use system permissions to install, update, and remove packages</string>
+	<string name="system_installer_off">Do not use system permissions to install, update, and remove packages</string>
+	
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>
 	<string name="no_such_app">No such app found</string>
@@ -261,5 +267,15 @@
     <string name="Security">Security</string>
     <string name="System">System</string>
     <string name="Wallpaper">Wallpaper</string>
-
+    
+    <string name="requesting_root_access_title">Root access</string>
+    <string name="requesting_root_access_body">Requesting root access…</string>
+    <string name="root_access_denied_title">Root access denied</string>
+    <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
+    <string name="update_all">Update all</string>
+    <string name="installer_error_title">(De-)Installation Error</string>
+    <string name="installer_error_body">The (de-)installation failed. If you are using root access, try disabling this setting!</string>
+    <string name="system_permission_denied_title">System permissions denied</string>
+    <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a system-app.</string>
+   
 </resources>

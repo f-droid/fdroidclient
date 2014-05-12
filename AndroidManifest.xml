@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
     android:versionCode="670"
@@ -38,7 +39,16 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.NFC" />
-
+    
+    <!-- These permissions are only granted when F-Droid is installed as a system-app! -->
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" 
+        tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" 
+        tools:ignore="ProtectedPermissions"/>
+    
+    <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app) -->
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
+    
     <application
         android:name="FDroidApp"
         android:icon="@drawable/ic_launcher"

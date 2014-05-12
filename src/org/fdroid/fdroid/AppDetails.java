@@ -21,28 +21,29 @@ package org.fdroid.fdroid;
 
 import android.content.*;
 import android.widget.*;
+
 import org.fdroid.fdroid.data.*;
+import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
+import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.xml.sax.XMLReader;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.net.Uri;
-import android.nfc.NfcAdapter;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.Signature;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.ContentObserver;
 import android.text.Editable;
 import android.text.Html;
 import android.text.Html.TagHandler;
@@ -56,6 +57,7 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.graphics.Bitmap;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -75,8 +77,6 @@ import java.util.List;
 public class AppDetails extends ListActivity {
     private static final String TAG = "AppDetails";
 
-    private static final int REQUEST_INSTALL = 0;
-    private static final int REQUEST_UNINSTALL = 1;
     public static final int REQUEST_ENABLE_BLUETOOTH = 2;
 
     public static final String EXTRA_APPID = "appid";
@@ -95,6 +95,31 @@ public class AppDetails extends ListActivity {
         TextView added;
         TextView nativecode;
     }
+    
+    // observer to update view when package has been installed/deleted
+    AppObserver myAppObserver;
+    class AppObserver extends ContentObserver {      
+       public AppObserver(Handler handler) {
+          super(handler);           
+       }
+
+       @Override
+       public void onChange(boolean selfChange) {
+          this.onChange(selfChange, null);
+       }        
+
+       @Override
+       public void onChange(boolean selfChange, Uri uri) {
+           if (!reset()) {
+               AppDetails.this.finish();
+               return;
+           }
+           updateViews();
+
+           MenuManager.create(AppDetails.this).invalidateOptionsMenu();
+       }        
+    }
+
 
     private class ApkListAdapter extends ArrayAdapter<Apk> {
 
@@ -255,10 +280,12 @@ public class AppDetails extends ListActivity {
 
     private final Context mctx = this;
     private DisplayImageOptions displayImageOptions;
+    private Installer installer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        
         fdroidApp = ((FDroidApp) getApplication());
         fdroidApp.applyTheme(this);
 
@@ -308,6 +335,9 @@ public class AppDetails extends ListActivity {
         }
 
         mPm = getPackageManager();
+        installer = Installer.getActivityInstaller(this, mPm,
+                myInstallerCallback);
+        
         // Get the preferences we're going to use in this Activity...
         AppDetails old = (AppDetails) getLastNonConfigurationInstance();
         if (old != null) {
@@ -317,7 +347,6 @@ public class AppDetails extends ListActivity {
                 finish();
                 return;
             }
-            resetRequired = false;
         }
 
         SharedPreferences prefs = PreferenceManager
@@ -341,7 +370,6 @@ public class AppDetails extends ListActivity {
     private boolean pref_expert;
     private boolean pref_permissions;
     private boolean pref_incompatibleVersions;
-    private boolean resetRequired;
 
     // The signature of the installed version.
     private Signature mInstalledSignature;
@@ -349,13 +377,19 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onResume() {
+        Log.d(TAG, "onresume");
         super.onResume();
-        if (resetRequired) {
-            if (!reset()) {
-                finish();
-                return;
-            }
-            resetRequired = false;
+        
+        // register observer to know when install status changes
+        myAppObserver = new AppObserver(new Handler());
+        getContentResolver().registerContentObserver(
+              AppProvider.getContentUri(app.id),
+              true,
+              myAppObserver);
+        
+        if (!reset()) {
+            finish();
+            return;
         }
         updateViews();
 
@@ -368,6 +402,9 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onPause() {
+        if (myAppObserver != null) {
+            getContentResolver().unregisterContentObserver(myAppObserver);
+        }
         if (downloadHandler != null) {
             downloadHandler.stopUpdates();
         }
@@ -924,46 +961,73 @@ public class AppDetails extends ListActivity {
         downloadHandler = new DownloadHandler(apk, repoaddress,
                 Utils.getApkCacheDir(getBaseContext()));
     }
+    private void installApk(File file, String packageName) {
+        setProgressBarIndeterminateVisibility(true);
 
-    private void removeApk(String id) {
-        PackageInfo pkginfo;
         try {
-            pkginfo = mPm.getPackageInfo(id, 0);
-        } catch (NameNotFoundException e) {
-            Log.d("FDroid", "Couldn't find package " + id + " to uninstall.");
-            return;
+            installer.installPackage(file);
+        } catch (AndroidNotCompatibleException e) {
+            Log.e(TAG, "Android not compatible with this Installer!", e);
         }
-        Uri uri = Uri.fromParts("package", pkginfo.packageName, null);
-        Intent intent = new Intent(Intent.ACTION_DELETE, uri);
-        startActivityForResult(intent, REQUEST_UNINSTALL);
-        notifyAppChanged(id);
-
     }
 
-    @TargetApi(14)
-    private void extraNotUnknownSource(Intent intent) {
-        if (Build.VERSION.SDK_INT < 14) {
-            return;
+    private void removeApk(String packageName) {
+        setProgressBarIndeterminateVisibility(true);
+
+        try {
+            installer.deletePackage(packageName);
+        } catch (AndroidNotCompatibleException e) {
+            Log.e(TAG, "Android not compatible with this Installer!", e);
         }
-        intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
     }
 
-    private void installApk(File file, String id) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse("file://" + file.getPath()),
-                "application/vnd.android.package-archive");
-        extraNotUnknownSource(intent);
-        startActivityForResult(intent, REQUEST_INSTALL);
-        notifyAppChanged(id);
-    }
+    Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
 
-    /**
-     * We could probably drop this, and let the PackageReceiver take care of notifications
-     * for us, but I don't think the package receiver notifications are very instantaneous.
-     */
-    private void notifyAppChanged(String id) {
-        getContentResolver().notifyChange(AppProvider.getContentUri(id), null);
-    }
+        @Override
+        public void onSuccess(final int operation) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {                    
+                    if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
+                        if (downloadHandler != null) {
+                            downloadHandler = null;
+                        }
+
+                        PackageManagerCompat.setInstaller(mPm, app.id);
+                    }
+
+                    setProgressBarIndeterminateVisibility(false);
+                }
+            });
+        }
+
+        @Override
+        public void onError(int operation, final int errorCode) {
+            if (errorCode == InstallerCallback.ERROR_CODE_CANCELED) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setProgressBarIndeterminateVisibility(false);
+                    }
+                });
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setProgressBarIndeterminateVisibility(false);
+                        
+                        Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
+                        
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                        alertBuilder.setTitle(R.string.installer_error_title);
+                        alertBuilder.setMessage(R.string.installer_error_title);
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+                });
+            }
+        }
+    };
 
     private void launchApk(String id) {
         Intent intent = mPm.getLaunchIntentForPackage(id);
@@ -1111,20 +1175,15 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // handle cases for install manager first
+        if (installer.handleOnActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+        
         switch (requestCode) {
-        case REQUEST_INSTALL:
-            if (downloadHandler != null) {
-                downloadHandler = null;
-            }
-
-            PackageManagerCompat.setInstaller(mPm, app.id);
-            resetRequired = true;
-            break;
-        case REQUEST_UNINSTALL:
-            resetRequired = true;
-            break;
         case REQUEST_ENABLE_BLUETOOTH:
             fdroidApp.sendViaBluetooth(this, resultCode, app.id);
+			break;
         }
     }
 }

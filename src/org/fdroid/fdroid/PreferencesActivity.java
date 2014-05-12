@@ -20,22 +20,26 @@ package org.fdroid.fdroid;
 
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.view.MenuItem;
-
 import android.support.v4.app.NavUtils;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.compat.ActionBarCompat;
+import org.fdroid.fdroid.installer.CheckRootAsyncTask;
+import org.fdroid.fdroid.installer.CheckRootAsyncTask.CheckRootCallback;
+import org.fdroid.fdroid.installer.Installer;
 
 public class PreferencesActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener {
-
+    
     public static final int RESULT_RESTART = 4;
     private int result = 0;
 
@@ -51,7 +55,9 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_CACHE_APK,
-        Preferences.PREF_EXPERT
+        Preferences.PREF_EXPERT,
+        Preferences.PREF_ROOT_INSTALLER,
+        Preferences.PREF_SYSTEM_INSTALLER
     };
 
     @Override
@@ -148,24 +154,138 @@ public class PreferencesActivity extends PreferenceActivity implements
             onoffSummary(key, R.string.expert_on,
                 R.string.expert_off);
 
+        } else if (key.equals(Preferences.PREF_ROOT_INSTALLER)) {
+            onoffSummary(key, R.string.root_installer_on,
+                    R.string.root_installer_off);
+            
+        } else if (key.equals(Preferences.PREF_SYSTEM_INSTALLER)) {
+            onoffSummary(key, R.string.system_installer_on,
+                    R.string.system_installer_off);
+            
         }
+    }
+    
+    /**
+     * Initializes RootInstaller preference. This method ensures that the preference can only be checked and persisted
+     * when the user grants root access for F-Droid.
+     */
+    protected void initRootInstallerPreference() {
+        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_ROOT_INSTALLER);
+        
+        // we are handling persistence ourself!
+        pref.setPersistent(false);
+
+        pref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                final CheckBoxPreference pref = (CheckBoxPreference) preference;
+                
+                if (pref.isChecked()) {
+                    CheckRootAsyncTask checkTask = new CheckRootAsyncTask(PreferencesActivity.this, new CheckRootCallback() {
+                        
+                        @Override
+                        public void onRootCheck(boolean rootGranted) {
+                            if (rootGranted) {
+                                // root access granted
+                                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                                editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, true);
+                                editor.commit();
+                                pref.setChecked(true);
+                            } else {
+                                // root access denied
+                                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                                editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, false);
+                                editor.commit();
+                                pref.setChecked(false);
+                                
+                                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(PreferencesActivity.this);
+                                alertBuilder.setTitle(R.string.root_access_denied_title);
+                                alertBuilder.setMessage(PreferencesActivity.this.getString(R.string.root_access_denied_body));
+                                alertBuilder.setNeutralButton(android.R.string.ok, null);
+                                alertBuilder.create().show();
+                            }
+                        }
+                    });
+                    checkTask.execute();
+                } else {
+                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                    editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, false);
+                    editor.commit();
+                    pref.setChecked(false);
+                }
+                
+                return true;
+            }
+        });
+    }
+    
+    /**
+     * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
+     */
+    protected void initSystemInstallerPreference() {
+        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_SYSTEM_INSTALLER);
+        
+        // we are handling persistence ourself!
+        pref.setPersistent(false);
+
+        pref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                final CheckBoxPreference pref = (CheckBoxPreference) preference;
+                
+                if (pref.isChecked()) {
+                    if (Installer.hasSystemPermissions(PreferencesActivity.this, PreferencesActivity.this.getPackageManager())) {
+                        // system-permission are granted, i.e. F-Droid is a system-app
+                        SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                        editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, true);
+                        editor.commit();
+                        pref.setChecked(true);
+                    } else {
+                        // system-permission not available
+                        SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                        editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, false);
+                        editor.commit();
+                        pref.setChecked(false);
+                        
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(PreferencesActivity.this);
+                        alertBuilder.setTitle(R.string.system_permission_denied_title);
+                        alertBuilder.setMessage(PreferencesActivity.this.getString(R.string.system_permission_denied_body));
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+                } else {
+                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                    editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, false);
+                    editor.commit();
+                    pref.setChecked(false);
+                }
+                
+                return true;
+            }
+        });
     }
 
     @Override
     protected void onResume() {
-
         super.onResume();
+        
         getPreferenceScreen().getSharedPreferences()
                     .registerOnSharedPreferenceChangeListener(this);
 
         for (String key : summariesToUpdate) {
             updateSummary(key, false);
         }
+        
+        initRootInstallerPreference();
+        initSystemInstallerPreference();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        
         getPreferenceScreen().getSharedPreferences()
                     .unregisterOnSharedPreferenceChangeListener(this);
     }
