@@ -35,6 +35,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.installer.CheckRootAsyncTask;
 import org.fdroid.fdroid.installer.CheckRootAsyncTask.CheckRootCallback;
+import org.fdroid.fdroid.installer.Installer;
 
 public class PreferencesActivity extends PreferenceActivity implements
         OnSharedPreferenceChangeListener {
@@ -217,13 +218,59 @@ public class PreferencesActivity extends PreferenceActivity implements
                 return true;
             }
         });
+    }
+    
+    /**
+     * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
+     */
+    protected void initSystemInstallerPreference() {
+        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_SYSTEM_INSTALLER);
         
+        // we are handling persistence ourself!
+        pref.setPersistent(false);
+
+        pref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                final CheckBoxPreference pref = (CheckBoxPreference) preference;
+                
+                if (pref.isChecked()) {
+                    if (Installer.hasSystemPermissions(PreferencesActivity.this, PreferencesActivity.this.getPackageManager())) {
+                        // system-permission are granted, i.e. F-Droid is a system-app
+                        SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                        editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, true);
+                        editor.commit();
+                        pref.setChecked(true);
+                    } else {
+                        // system-permission not available
+                        SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                        editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, false);
+                        editor.commit();
+                        pref.setChecked(false);
+                        
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(PreferencesActivity.this);
+                        alertBuilder.setTitle(R.string.system_permission_denied_title);
+                        alertBuilder.setMessage(PreferencesActivity.this.getString(R.string.system_permission_denied_body));
+                        alertBuilder.setNeutralButton(android.R.string.ok, null);
+                        alertBuilder.create().show();
+                    }
+                } else {
+                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
+                    editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, false);
+                    editor.commit();
+                    pref.setChecked(false);
+                }
+                
+                return true;
+            }
+        });
     }
 
     @Override
     protected void onResume() {
-
         super.onResume();
+        
         getPreferenceScreen().getSharedPreferences()
                     .registerOnSharedPreferenceChangeListener(this);
 
@@ -232,11 +279,13 @@ public class PreferencesActivity extends PreferenceActivity implements
         }
         
         initRootInstallerPreference();
+        initSystemInstallerPreference();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        
         getPreferenceScreen().getSharedPreferences()
                     .unregisterOnSharedPreferenceChangeListener(this);
     }

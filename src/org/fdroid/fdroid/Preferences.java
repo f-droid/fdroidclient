@@ -43,7 +43,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_ROOTED = true;
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_ROOT_INSTALLER = false;
-    private static final boolean DEFAULT_SYSTEM_INSTALLER = true;
+    private static final boolean DEFAULT_SYSTEM_INSTALLER = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;

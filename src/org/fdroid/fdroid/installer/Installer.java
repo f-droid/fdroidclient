@@ -118,16 +118,20 @@ abstract public class Installer {
             }
         }
 
-        // system permissions and pref enabled -> SystemPermissionInstaller
+        // system permissions and pref enabled -> SystemInstaller
         boolean isSystemInstallerEnabled = Preferences.get().isSystemInstallerEnabled();
-        if (isSystemInstallerEnabled && hasSystemPermissions(activity, pm)) {
-            Log.d(TAG, "system permissions -> SystemPermissionInstaller");
+        if (isSystemInstallerEnabled) {
+            if (hasSystemPermissions(activity, pm)) {
+                Log.d(TAG, "system permissions -> SystemInstaller");
 
-            try {
-                return new SystemPermissionInstaller(activity, pm, callback);
-            } catch (AndroidNotCompatibleException e) {
-                Log.e(TAG, "Android not compatible with SystemPermissionInstaller!", e);
+                try {
+                    return new SystemInstaller(activity, pm, callback);
+                } catch (AndroidNotCompatibleException e) {
+                    Log.e(TAG, "Android not compatible with SystemInstaller!", e);
+                }
             }
+        } else {
+            Log.e(TAG, "SystemInstaller is enabled in prefs, but system-perms are not granted!");
         }
 
         // Fallback -> DefaultInstaller
@@ -170,14 +174,14 @@ abstract public class Installer {
 
         if (hasSystemPermissions(context, pm)) {
             // we have system permissions!
-            return new SystemPermissionInstaller(context, pm, callback);
+            return new SystemInstaller(context, pm, callback);
         } else {
             // nope!
             throw new AndroidNotCompatibleException();
         }
     }
 
-    private static boolean hasSystemPermissions(Context context, PackageManager pm) {
+    public static boolean hasSystemPermissions(Context context, PackageManager pm) {
         int checkInstallPermission =
                 pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName());
         int checkDeletePermission =

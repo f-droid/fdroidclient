@@ -56,14 +56,14 @@ import android.util.Log;
  * https://android.googlesource.com/platform
  * /frameworks/base/+/ccbf84f44c9e6a5ed3c08673614826bb237afc54
  */
-public class SystemPermissionInstaller extends Installer {
+public class SystemInstaller extends Installer {
 
     private PackageInstallObserver mInstallObserver;
     private PackageDeleteObserver mDeleteObserver;
     private Method mInstallMethod;
     private Method mDeleteMethod;
 
-    public SystemPermissionInstaller(Context context, PackageManager pm,
+    public SystemInstaller(Context context, PackageManager pm,
             InstallerCallback callback) throws AndroidNotCompatibleException {
         super(context, pm, callback);
 

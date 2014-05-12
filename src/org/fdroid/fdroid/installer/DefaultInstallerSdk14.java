@@ -121,6 +121,8 @@ public class DefaultInstallerSdk14 extends Installer {
                     mCallback.onError(InstallerCallback.OPERATION_DELETE,
                             InstallerCallback.ERROR_CODE_CANCELED);
                 } else {
+                    // UninstallAppProgress actually returns
+                    // Activity.RESULT_FIRST_USER if something breaks
                     mCallback.onError(InstallerCallback.OPERATION_DELETE,
                             InstallerCallback.ERROR_CODE_OTHER);
                 }

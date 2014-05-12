@@ -54,7 +54,7 @@
 			android:defaultValue="false"
 			android:key="rootInstaller" />
 		<CheckBoxPreference android:title="@string/system_installer"
-			android:defaultValue="true"
+			android:defaultValue="false"
 			android:key="systemInstaller" />
 	</PreferenceCategory>
 </PreferenceScreen>
