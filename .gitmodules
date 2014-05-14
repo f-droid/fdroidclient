@@ -8,7 +8,7 @@
 	ignore = dirty
 [submodule "extern/AndroidPinning"]
 	path = extern/AndroidPinning
-	url = http://gitlab.doeg.gy/cpu/androidpinning.git
+	url = https://gitlab.com/fdroid/androidpinning.git
 	ignore = dirty
 [submodule "extern/nanohttpd"]
 	path = extern/nanohttpd
