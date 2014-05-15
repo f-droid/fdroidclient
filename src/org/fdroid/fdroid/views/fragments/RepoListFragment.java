@@ -58,6 +58,7 @@ import java.util.Locale;
 public class RepoListFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
 
+    private AlertDialog addRepoDialog;
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
     private final int ADD_REPO = 1;
     private final int UPDATE_REPOS = 2;
@@ -309,7 +310,7 @@ public class RepoListFragment extends ListFragment
 
     private void showAddRepo(String newAddress, String newFingerprint) {
         View view = getLayoutInflater(null).inflate(R.layout.addrepo, null);
-        final AlertDialog alrt = new AlertDialog.Builder(getActivity()).setView(view).create();
+        addRepoDialog = new AlertDialog.Builder(getActivity()).setView(view).create();
         final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
         final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
@@ -322,9 +323,9 @@ public class RepoListFragment extends ListFragment
                 ? RepoProvider.Helper.findByAddress(getActivity(), newAddress)
                 : null;
 
-        alrt.setIcon(android.R.drawable.ic_menu_add);
-        alrt.setTitle(getString(R.string.repo_add_title));
-        alrt.setButton(DialogInterface.BUTTON_POSITIVE,
+        addRepoDialog.setIcon(android.R.drawable.ic_menu_add);
+        addRepoDialog.setTitle(getString(R.string.repo_add_title));
+        addRepoDialog.setButton(DialogInterface.BUTTON_POSITIVE,
                 getString(R.string.repo_add_add),
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -344,7 +345,7 @@ public class RepoListFragment extends ListFragment
                     }
                 });
 
-        alrt.setButton(DialogInterface.BUTTON_NEGATIVE,
+        addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
                 getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -352,7 +353,7 @@ public class RepoListFragment extends ListFragment
                         dialog.dismiss();
                     }
                 });
-        alrt.show();
+        addRepoDialog.show();
 
         final TextView overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
         overwriteMessage.setVisibility(View.GONE);
@@ -361,8 +362,8 @@ public class RepoListFragment extends ListFragment
             positiveAction = PositiveAction.ADD_NEW;
         } else {
             // found the address in the DB of existing repos
-            final Button addButton = alrt.getButton(DialogInterface.BUTTON_POSITIVE);
-            alrt.setTitle(R.string.repo_exists);
+            final Button addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+            addRepoDialog.setTitle(R.string.repo_exists);
             overwriteMessage.setVisibility(View.VISIBLE);
             if (newFingerprint != null)
                 newFingerprint = newFingerprint.toUpperCase(Locale.ENGLISH);
@@ -375,7 +376,7 @@ public class RepoListFragment extends ListFragment
                 // this entry already exists and is not enabled, offer to enable
                 // it
                 if (repo.inuse) {
-                    alrt.dismiss();
+                    addRepoDialog.dismiss();
                     Toast.makeText(getActivity(), R.string.repo_exists_and_enabled,
                             Toast.LENGTH_LONG).show();
                     return;
@@ -439,6 +440,7 @@ public class RepoListFragment extends ListFragment
      */
     private void finishedAddingRepo() {
         changed = true;
+        addRepoDialog = null;
         if (isImportingRepo) {
             getActivity().setResult(Activity.RESULT_OK);
             getActivity().finish();
