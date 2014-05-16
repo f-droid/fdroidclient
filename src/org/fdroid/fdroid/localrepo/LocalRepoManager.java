@@ -125,10 +125,10 @@ public class LocalRepoManager {
             // the user will always find the bootstrap page.
             File fdroidDirIndex = new File(fdroidDir, "index.html");
             fdroidDirIndex.delete();
-            Utils.symlinkOrCopyFile(indexHtml, fdroidDirIndex);
+            Utils.symlinkOrCopyFile(new File("../index.html"), fdroidDirIndex);
             File repoDirIndex = new File(repoDir, "index.html");
             repoDirIndex.delete();
-            Utils.symlinkOrCopyFile(indexHtml, repoDirIndex);
+            Utils.symlinkOrCopyFile(new File("../../index.html"), repoDirIndex);
             // add in /FDROID/REPO to support bad QR Scanner apps
             File fdroidCAPS = new File(fdroidDir.getParentFile(), "FDROID");
             fdroidCAPS.mkdir();
@@ -136,10 +136,10 @@ public class LocalRepoManager {
             repoCAPS.mkdir();
             File fdroidCAPSIndex = new File(fdroidCAPS, "index.html");
             fdroidCAPSIndex.delete();
-            Utils.symlinkOrCopyFile(indexHtml, fdroidCAPSIndex);
+            Utils.symlinkOrCopyFile(new File("../index.html"), fdroidCAPSIndex);
             File repoCAPSIndex = new File(repoCAPS, "index.html");
             repoCAPSIndex.delete();
-            Utils.symlinkOrCopyFile(indexHtml, repoCAPSIndex);
+            Utils.symlinkOrCopyFile(new File("../../index.html"), repoCAPSIndex);
         } catch (IOException e) {
             e.printStackTrace();
         }

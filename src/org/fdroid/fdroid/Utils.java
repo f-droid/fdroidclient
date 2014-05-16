@@ -118,7 +118,7 @@ public final class Utils {
         try {
             Process sh = Runtime.getRuntime().exec("sh");
             OutputStream out = sh.getOutputStream();
-            String command = "/system/bin/ln -s " + inFile.getAbsolutePath() + " " + outFile
+            String command = "/system/bin/ln -s " + inFile + " " + outFile
                     + "\nexit\n";
             out.write(command.getBytes("ASCII"));
 
