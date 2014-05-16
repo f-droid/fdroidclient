@@ -34,7 +34,10 @@
 	<string name="system_installer">Install using system-permissions</string>
 	<string name="system_installer_on">Use system permissions to install, update, and remove packages</string>
 	<string name="system_installer_off">Do not use system permissions to install, update, and remove packages</string>
-	
+	<string name="local_repo_bonjour">Broadcast Local Repo</string>
+	<string name="local_repo_bonjour_on">Advertize your local repo using Bonjour (mDNS)</string>
+	<string name="local_repo_bonjour_off">Do not advertize your local repo.</string>
+
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>
 	<string name="no_such_app">No such app found</string>

@@ -54,6 +54,7 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_PERMISSIONS,
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
+        Preferences.PREF_LOCAL_REPO_BONJOUR,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
         Preferences.PREF_ROOT_INSTALLER,
@@ -145,6 +146,10 @@ public class PreferencesActivity extends PreferenceActivity implements
         } else if (key.equals(Preferences.PREF_IGN_TOUCH)) {
             onoffSummary(key, R.string.ignoreTouch_on,
                 R.string.ignoreTouch_off);
+
+        } else if (key.equals(Preferences.PREF_LOCAL_REPO_BONJOUR)) {
+            onoffSummary(key, R.string.local_repo_bonjour_on,
+                R.string.local_repo_bonjour_off);
 
         } else if (key.equals(Preferences.PREF_CACHE_APK)) {
             onoffSummary(key, R.string.cache_downloaded_on,
