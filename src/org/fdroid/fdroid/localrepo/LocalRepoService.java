@@ -97,7 +97,8 @@ public class LocalRepoService extends Service {
         // launch LocalRepoActivity if the user selects this notification
         Intent intent = new Intent(this, LocalRepoActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
         notification = new NotificationCompat.Builder(this)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
@@ -223,9 +224,10 @@ public class LocalRepoService extends Service {
             localRepoBonjourChangeListener = null;
         }
         if (jmdns != null) {
-            if (pairService != null)
+            if (pairService != null) {
                 jmdns.unregisterService(pairService);
-            pairService = null;
+                pairService = null;
+            }
             jmdns.unregisterAllServices();
             try {
                 jmdns.close();
