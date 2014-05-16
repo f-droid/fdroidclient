@@ -37,6 +37,8 @@
 	<string name="local_repo_bonjour">Broadcast Local Repo</string>
 	<string name="local_repo_bonjour_on">Advertise your local repo using Bonjour (mDNS)</string>
 	<string name="local_repo_bonjour_off">Do not advertise your local repo.</string>
+	<string name="local_repo_name">Name of your Local Repo</string>
+	<string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
 
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>

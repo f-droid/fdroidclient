@@ -55,6 +55,7 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_LOCAL_REPO_BONJOUR,
+        Preferences.PREF_LOCAL_REPO_NAME,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
         Preferences.PREF_ROOT_INSTALLER,
@@ -88,10 +89,9 @@ public class PreferencesActivity extends PreferenceActivity implements
         pref.setSummary(pref.getEntry());
     }
 
-    protected void textSummary(String key) {
+    protected void textSummary(String key, int resId) {
         EditTextPreference pref = (EditTextPreference)findPreference(key);
-        pref.setSummary(getString(R.string.update_history_summ,
-                    pref.getText()));
+        pref.setSummary(getString(resId, pref.getText()));
     }
 
     protected void updateSummary(String key, boolean changing) {
@@ -118,7 +118,7 @@ public class PreferencesActivity extends PreferenceActivity implements
                 R.string.notify_off);
 
         } else if (key.equals(Preferences.PREF_UPD_HISTORY)) {
-            textSummary(key);
+            textSummary(key, R.string.update_history_summ);
 
         } else if (key.equals(Preferences.PREF_PERMISSIONS)) {
             onoffSummary(key, R.string.showPermissions_on,
@@ -150,6 +150,9 @@ public class PreferencesActivity extends PreferenceActivity implements
         } else if (key.equals(Preferences.PREF_LOCAL_REPO_BONJOUR)) {
             onoffSummary(key, R.string.local_repo_bonjour_on,
                 R.string.local_repo_bonjour_off);
+
+        } else if (key.equals(Preferences.PREF_LOCAL_REPO_NAME)) {
+            textSummary(key, R.string.local_repo_name_summary);
 
         } else if (key.equals(Preferences.PREF_CACHE_APK)) {
             onoffSummary(key, R.string.cache_downloaded_on,

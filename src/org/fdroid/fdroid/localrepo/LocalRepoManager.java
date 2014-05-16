@@ -16,6 +16,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -271,7 +272,7 @@ public class LocalRepoManager {
         int repoMaxAge = Float.valueOf(prefs.getString("max_repo_age_days",
                 DEFAULT_REPO_MAX_AGE_DAYS)).intValue();
 
-        String repoName = prefs.getString("repo_name", Utils.getDefaultRepoName());
+        String repoName = Preferences.get().getLocalRepoName();
 
         Element repo = doc.createElement("repo");
         repo.setAttribute("icon", "blah.png");

@@ -48,6 +48,9 @@
 		    android:defaultValue="true"
 		    android:key="localRepoBonjour"
 		    android:title="@string/local_repo_bonjour" />
+		<EditTextPreference
+		    android:key="localRepoName"
+		    android:title="@string/local_repo_name" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/other">
 		<CheckBoxPreference android:title="@string/cache_downloaded"

@@ -14,6 +14,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 
 import java.util.Locale;
@@ -57,11 +58,13 @@ public class WifiStateChangeService extends Service {
                 FDroidApp.bssid = wifiInfo.getBSSID();
 
                 String scheme;
+                // TODO move this to Preferences.get().isHttpsEnabled();
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(WifiStateChangeService.this);
                 if (prefs.getBoolean("use_https", false))
                     scheme = "https";
                 else
                     scheme = "http";
+                FDroidApp.repo.name = Preferences.get().getLocalRepoName();
                 FDroidApp.repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
                 FDroidApp.localRepo.setUriString(FDroidApp.repo.address);

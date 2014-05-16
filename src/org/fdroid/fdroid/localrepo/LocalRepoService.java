@@ -196,14 +196,15 @@ public class LocalRepoService extends Service {
     }
 
     private void registerMDNSService() {
+        String repoName = Preferences.get().getLocalRepoName();
         final HashMap<String, String> values = new HashMap<String, String>();
         values.put("path", "/fdroid/repo");
-        values.put("name", FDroidApp.repo.name);
+        values.put("name", repoName);
         // TODO set type based on "use HTTPS" pref
         // values.put("fingerprint", FDroidApp.repo.fingerprint);
         values.put("type", "fdroidrepo");
         pairService = ServiceInfo.create("_http._tcp.local.",
-                FDroidApp.repo.name, FDroidApp.port, 0, 0, values);
+                repoName, FDroidApp.port, 0, 0, values);
         new Thread(new Runnable() {
 
             @Override
