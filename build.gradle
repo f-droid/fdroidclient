@@ -7,14 +7,17 @@ buildscript {
 	}
 }
 
+def toolVersion = "19.1"
 apply plugin: 'android'
 
 dependencies {
 	compile files('libs/android-support-v4.jar')
+	compile files('libs/core-3.0.1.jar')
 	compile project(':extern:AndroidPinning')
 	compile project(':extern:UniversalImageLoader:library')
 	compile project(':extern:MemorizingTrustManager')
 	compile project(':extern:libsuperuser:libsuperuser')
+	compile project(':extern:nanohttpd:core')
 }
 
 project(':extern:UniversalImageLoader:library') {
@@ -27,11 +30,11 @@ project(':extern:UniversalImageLoader:library') {
 		}
 	}
 
-	apply plugin: 'android'
+	apply plugin: 'android-library'
 
 	android {
 		compileSdkVersion 16
-		buildToolsVersion '19.0.3'
+		buildToolsVersion toolVersion
 
 		sourceSets {
 			main {
@@ -47,7 +50,7 @@ project(':extern:UniversalImageLoader:library') {
 
 android {
 	compileSdkVersion 19
-	buildToolsVersion '19.0.3'
+    buildToolsVersion toolVersion
 
 	sourceSets {
 		main {
@@ -70,7 +73,47 @@ android {
 		}
 	}
 
-	tasks.withType(Compile) {
+    tasks.withType(Compile) { task ->
 		options.encoding = "UTF-8"
 	}
+
+}
+
+// TODO: This person took the example code below from another blogpost online, however
+// I lost the reference to it:
+// http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
+android.applicationVariants.all { variant ->
+
+    task("generate${variant.name}Javadoc", type: Javadoc) {
+        title = "$name $version API"
+        description "Generates Javadoc for F-Droid."
+        source = variant.javaCompile.source
+        ext.androidJar = "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+        options.links("http://docs.oracle.com/javase/7/docs/api/");
+        options.links("http://d.android.com/reference/");
+        exclude '**/BuildConfig.java'
+        exclude '**/R.java'
+    }
+}
+
+// This is the hacky way which we force the subprojects to use the same build tools:
+// http://stackoverflow.com/a/21032272
+subprojects {
+    afterEvaluate {
+        android {
+
+            // The android build task only lets you configure the buildToolsVersion once, so if
+            // we execute the closure below to configure our subprojects, it will fail when it
+            // hits the second subproject. Therefore, we will only do it once, and I guess the
+            // android plubin will re-use the existing value I set. 
+            // https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
+            try {
+                buildToolsVersion toolVersion
+                logger.info("Set buildToolsVersion to $toolVersion")
+            } catch (GradleException e) {
+                logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
+            }
+        }
+    }
 }

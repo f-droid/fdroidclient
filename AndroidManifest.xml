@@ -302,7 +302,9 @@
         </activity>
         
         <!--Used for SSL TOFU, supported by extern/MemorizingTrustManager lib -->
-        <activity android:name="de.duenndns.ssl.MemorizingActivity" />
+        <activity
+                android:name="de.duenndns.ssl.MemorizingActivity"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <receiver android:name=".StartupReceiver" >
             <intent-filter>
