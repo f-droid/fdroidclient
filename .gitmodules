@@ -18,3 +18,6 @@
 	path = extern/libsuperuser
 	url = https://github.com/dschuermann/libsuperuser.git
 	ignore = dirty
+[submodule "extern/jmdns"]
+	path = extern/jmdns
+	url = https://gitlab.com/fdroid/jmdns.git
