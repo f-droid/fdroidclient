@@ -10,15 +10,28 @@ public abstract class Downloader {
     private OutputStream outputStream;
     private ProgressListener progressListener = null;
     private ProgressListener.Event progressEvent = null;
-    private final File outputFile;
+    private File outputFile;
+
+    public static final int EVENT_PROGRESS = 1;
 
     public abstract InputStream inputStream() throws IOException;
 
     // The context is required for opening the file to write to.
     public Downloader(String destFile, Context ctx)
             throws FileNotFoundException, MalformedURLException {
-        outputStream = ctx.openFileOutput(destFile, Context.MODE_PRIVATE);
-        outputFile   = new File(ctx.getFilesDir() + File.separator + destFile);
+        this(new File(ctx.getFilesDir() + File.separator + destFile));
+    }
+
+    // The context is required for opening the file to write to.
+    public Downloader(Context ctx) throws IOException {
+        this(File.createTempFile("dl-", "", ctx.getCacheDir()));
+    }
+
+    public Downloader(File destFile)
+            throws FileNotFoundException, MalformedURLException {
+        // http://developer.android.com/guide/topics/data/data-storage.html#InternalCache
+        outputFile = destFile;
+        outputStream = new FileOutputStream(outputFile);
     }
 
     /**
@@ -26,16 +39,18 @@ public abstract class Downloader {
      * you are done*.
      * @see org.fdroid.fdroid.net.Downloader#getFile()
      */
-    public Downloader(Context ctx) throws IOException {
-        // http://developer.android.com/guide/topics/data/data-storage.html#InternalCache
-        outputFile = File.createTempFile("dl-", "", ctx.getCacheDir());
-        outputStream = new FileOutputStream(outputFile);
+    public Downloader(File destFile, Context ctx) throws IOException {
     }
 
     public Downloader(OutputStream output)
             throws MalformedURLException {
         outputStream = output;
         outputFile   = null;
+    }
+
+    public void setProgressListener(ProgressListener listener) {
+        this.progressListener = listener;
+        this.progressEvent = new ProgressListener.Event(EVENT_PROGRESS, totalDownloadSize());
     }
 
     public void setProgressListener(ProgressListener progressListener,
@@ -61,7 +76,7 @@ public abstract class Downloader {
 
     protected abstract int totalDownloadSize();
 
-    public void download() throws IOException {
+    protected void download() throws IOException {
         setupProgressListener();
         InputStream input = null;
         try {

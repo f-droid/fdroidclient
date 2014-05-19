@@ -24,6 +24,13 @@ public class HttpDownloader extends Downloader {
         sourceUrl = new URL(source);
     }
 
+    // The context is required for opening the file to write to.
+    public HttpDownloader(String source, File destFile)
+            throws FileNotFoundException, MalformedURLException {
+        super(destFile);
+        sourceUrl = new URL(source);
+    }
+
     /**
      * Downloads to a temporary file, which *you must delete yourself when
      * you are done*.

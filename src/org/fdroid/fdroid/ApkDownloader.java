@@ -20,36 +20,28 @@
 
 package org.fdroid.fdroid;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
+import java.io.*;
 
 import android.util.Log;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.net.HttpDownloader;
 
 public class ApkDownloader extends Thread {
 
+    public static final int EVENT_APK_DOWNLOAD_COMPLETE = 100;
+    public static final int EVENT_ERROR_HASH_MISMATCH = 101;
+    public static final int EVENT_ERROR_DOWNLOAD_FAILED = 102;
+    public static final int EVENT_ERROR_UNKNOWN = 103;
     private Apk curapk;
     private String repoaddress;
-    private String filename;
     private File destdir;
     private File localfile;
 
-    public static enum Status {
-        STARTING, RUNNING, ERROR, DONE, CANCELLED
-    }
+    private ProgressListener listener;
 
-    public static enum Error {
-        CORRUPT, UNKNOWN
+    public void setProgressListener(ProgressListener listener) {
+        this.listener = listener;
     }
-
-    private Status status = Status.STARTING;
-    private Error error;
-    private int progress;
-    private int max;
-    private String errorMessage;
 
     // Constructor - creates a Downloader to download the given Apk,
     // which must have its detail populated.
@@ -59,50 +51,19 @@ public class ApkDownloader extends Thread {
         this.destdir = destdir;
     }
 
-    public synchronized Status getStatus() {
-        return status;
-    }
-
-    // Current progress and maximum value for progress dialog
-    public synchronized int getProgress() {
-        return progress;
-    }
-
-    public synchronized int getMax() {
-        return max;
-    }
-
-    // Error code and error message, only valid if status is ERROR
-    public synchronized Error getErrorType() {
-        return error;
-    }
-
-    public synchronized String getErrorMessage() {
-        return errorMessage;
-    }
-
-    // The URL being downloaded or path to a cached file
-    public synchronized String remoteFile() {
-        return filename;
-    }
-
     // The downloaded APK. Valid only when getStatus() has returned STATUS.DONE.
     public File localFile() {
         return localfile;
     }
 
-    // The APK being downloaded
-    public synchronized Apk getApk() {
-        return curapk;
+    public String remoteFile() {
+         return repoaddress + "/" + curapk.apkName.replace(" ", "%20");
     }
 
     @Override
     public void run() {
+        localfile = new File(destdir, curapk.apkName);
 
-        InputStream input = null;
-        OutputStream output = null;
-        String apkname = curapk.apkName;
-        localfile = new File(destdir, apkname);
         try {
 
             // See if we already have this apk cached...
@@ -111,12 +72,7 @@ public class ApkDownloader extends Thread {
                 Hasher hash = new Hasher(curapk.hashType, localfile);
                 if (hash.match(curapk.hash)) {
                     Log.d("FDroid", "Using cached apk at " + localfile);
-                    synchronized (this) {
-                        progress = 1;
-                        max = 1;
-                        status = Status.DONE;
-                        return;
-                    }
+                    return;
                 } else {
                     Log.d("FDroid", "Not using cached apk at " + localfile);
                     localfile.delete();
@@ -124,72 +80,45 @@ public class ApkDownloader extends Thread {
             }
 
             // If we haven't got the apk locally, we'll have to download it...
-            String remotefile;
-            remotefile = repoaddress + "/" + apkname.replace(" ", "%20");
-            Log.d("FDroid", "Downloading apk from " + remotefile);
-            synchronized (this) {
-                filename = remotefile;
-                progress = 0;
-                max = curapk.size;
-                status = Status.RUNNING;
-            }
 
-            input = new URL(remotefile).openStream();
-            output = new FileOutputStream(localfile);
-            byte data[] = new byte[Utils.BUFFER_SIZE];
-            while (true) {
-                if (isInterrupted()) {
-                    Log.d("FDroid", "Download cancelled!");
-                    break;
-                }
-                int count = input.read(data);
-                if (count == -1) {
-                    break;
-                }
-                output.write(data, 0, count);
-                synchronized (this) {
-                    progress += count;
-                }
-            }
+            HttpDownloader downloader = new HttpDownloader(remoteFile(), localfile);
+            downloader.setProgressListener(listener);
 
-            if (isInterrupted()) {
-                localfile.delete();
-                synchronized (this) {
-                    status = Status.CANCELLED;
-                }
+            Log.d("FDroid", "Downloading apk from " + remoteFile());
+            int httpStatus = downloader.downloadHttpFile();
+
+            if (httpStatus != 200 || !localfile.exists()) {
+                sendProgress(EVENT_ERROR_DOWNLOAD_FAILED);
                 return;
             }
+
             Hasher hash = new Hasher(curapk.hashType, localfile);
             if (!hash.match(curapk.hash)) {
-                synchronized (this) {
-                    Log.d("FDroid", "Downloaded file hash of " + hash.getHash()
-                            + " did not match repo's " + curapk.hash);
-                    // No point keeping a bad file, whether we're
-                    // caching or not.
-                    localfile.delete();
-                    error = Error.CORRUPT;
-                    errorMessage = null;
-                    status = Status.ERROR;
-                    return;
-                }
+                Log.d("FDroid", "Downloaded file hash of " + hash.getHash()
+                        + " did not match repo's " + curapk.hash);
+                // No point keeping a bad file, whether we're
+                // caching or not.
+                localfile.delete();
+                sendProgress(EVENT_ERROR_HASH_MISMATCH);
+                return;
             }
         } catch (Exception e) {
             Log.e("FDroid", "Download failed:\n" + Log.getStackTraceString(e));
-            synchronized (this) {
+            if (localfile.exists()) {
                 localfile.delete();
-                error = Error.UNKNOWN;
-                errorMessage = e.toString();
-                status = Status.ERROR;
-                return;
             }
-        } finally {
-            Utils.closeQuietly(output);
-            Utils.closeQuietly(input);
+            sendProgress(EVENT_ERROR_UNKNOWN);
+            return;
         }
 
         Log.d("FDroid", "Download finished: " + localfile);
-        synchronized (this) {
-            status = Status.DONE;
+        sendProgress(EVENT_APK_DOWNLOAD_COMPLETE);
+    }
+
+    private void sendProgress(int type) {
+        if (listener != null) {
+            listener.onProgress(new ProgressListener.Event(type));
         }
     }
+
 }

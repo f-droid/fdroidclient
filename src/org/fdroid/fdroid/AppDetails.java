@@ -26,6 +26,7 @@ import org.fdroid.fdroid.data.*;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
+import org.fdroid.fdroid.net.Downloader;
 import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
@@ -394,19 +395,12 @@ public class AppDetails extends ListActivity {
         updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
-
-        if (downloadHandler != null) {
-            downloadHandler.startUpdates();
-        }
     }
 
     @Override
     protected void onPause() {
         if (myAppObserver != null) {
             getContentResolver().unregisterContentObserver(myAppObserver);
-        }
-        if (downloadHandler != null) {
-            downloadHandler.stopUpdates();
         }
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
@@ -1039,7 +1033,7 @@ public class AppDetails extends ListActivity {
         shareIntent.setType("text/plain");
 
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name+" ("+app.summary+") - https://f-droid.org/app/"+app.id);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
@@ -1071,81 +1065,61 @@ public class AppDetails extends ListActivity {
     }
 
     // Handler used to update the progress dialog while downloading.
-    private class DownloadHandler extends Handler {
+    private class DownloadHandler extends Handler implements ProgressListener {
         private ApkDownloader download;
         private ProgressDialog pd;
-        private boolean updating;
         private String id;
 
         public DownloadHandler(Apk apk, String repoaddress, File destdir) {
             id = apk.id;
             download = new ApkDownloader(apk, repoaddress, destdir);
             download.start();
-            startUpdates();
         }
 
         public DownloadHandler(DownloadHandler oldHandler) {
             if (oldHandler != null) {
                 download = oldHandler.download;
             }
-            startUpdates();
         }
 
-        public boolean updateProgress() {
+        public void onProgress(ProgressListener.Event event) {
             boolean finished = false;
-            switch (download.getStatus()) {
-            case RUNNING:
-                if (pd == null) {
-                    pd = createProgressDialog(download.remoteFile(),
-                            download.getProgress(), download.getMax());
-                } else {
-                    pd.setProgress(download.getProgress());
-                }
-                break;
-            case ERROR:
-                if (pd != null)
-                    pd.dismiss();
-                String text;
-                if (download.getErrorType() == ApkDownloader.Error.CORRUPT)
-                    text = getString(R.string.corrupt_download);
-                else
-                    text = download.getErrorMessage();
-                Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
-                finished = true;
-                break;
-            case DONE:
-                if (pd != null)
-                    pd.dismiss();
-                installApk(download.localFile(), id);
-                finished = true;
-                break;
-            case CANCELLED:
-                Toast.makeText(AppDetails.this,
-                        getString(R.string.download_cancelled),
-                        Toast.LENGTH_SHORT).show();
-                finished = true;
-                break;
-            default:
-                break;
-            }
-            return finished;
-        }
+            switch (event.type) {
+                case Downloader.EVENT_PROGRESS:
+                    if (pd == null) {
+                        pd = createProgressDialog(download.remoteFile(),
+                                event.progress, event.total);
+                    } else {
+                        pd.setProgress(event.progress);
+                    }
+                    break;
 
-        public void startUpdates() {
-            if (!updating) {
-                updating = true;
-                sendEmptyMessage(0);
-            }
-        }
+                case ApkDownloader.EVENT_ERROR_DOWNLOAD_FAILED:
+                case ApkDownloader.EVENT_ERROR_HASH_MISMATCH:
+                case ApkDownloader.EVENT_ERROR_UNKNOWN:
+                    String text;
+                    if (event.type == ApkDownloader.EVENT_ERROR_HASH_MISMATCH)
+                        text = getString(R.string.corrupt_download);
+                    else
+                        text = getString(R.string.details_notinstalled);
+                    Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
+                    finished = true;
+                    break;
 
-        public void stopUpdates() {
-            updating = false;
-            removeMessages(0);
+                case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
+                    installApk(download.localFile(), id);
+                    finished = true;
+                    break;
+
+            }
+
+            if (finished) {
+                destroy();
+            }
         }
 
         public void cancel() {
-            if (download != null)
-                download.interrupt();
+            // TODO: Re-implement...
         }
 
         public void destroy() {
@@ -1155,23 +1129,9 @@ public class AppDetails extends ListActivity {
                 pd.dismiss();
                 pd = null;
             }
-            // Cancel any scheduled updates so that we don't
-            // accidentally recreate the progress dialog.
-            stopUpdates();
-        }
-
-        // Repeatedly run updateProgress() until it's finished.
-        @Override
-        public void handleMessage(Message msg) {
-            if (download == null)
-                return;
-            boolean finished = updateProgress();
-            if (finished)
-                download = null;
-            else
-                sendMessageDelayed(obtainMessage(), 50);
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
