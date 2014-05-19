@@ -2,6 +2,7 @@ package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 
 import org.fdroid.fdroid.ProgressListener;
@@ -32,8 +33,9 @@ import javax.xml.parsers.SAXParserFactory;
 
 abstract public class RepoUpdater {
 
-    public static final int PROGRESS_TYPE_DOWNLOAD     = 1;
-    public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
+    public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
+
+    public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
     public static RepoUpdater createUpdaterFor(Context ctx, Repo repo) {
         if (repo.fingerprint == null && repo.pubkey == null) {
@@ -91,11 +93,12 @@ abstract public class RepoUpdater {
             downloader.setCacheTag(repo.lastetag);
 
             if (progressListener != null) { // interactive session, show progress
-                downloader.setProgressListener(progressListener,
-                        new ProgressListener.Event(PROGRESS_TYPE_DOWNLOAD, repo.address));
+                Bundle data = new Bundle(1);
+                data.putString(PROGRESS_DATA_REPO_ADDRESS, getIndexAddress());
+                downloader.setProgressListener(progressListener, data);
             }
 
-            downloader.download();
+            downloader.downloadUninterrupted();
 
             if (downloader.isCached()) {
                 // The index is unchanged since we last read it. We just mark

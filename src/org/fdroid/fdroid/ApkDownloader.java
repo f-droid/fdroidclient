@@ -20,27 +20,42 @@
 
 package org.fdroid.fdroid;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.net.AsyncDownloadWrapper;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.HttpDownloader;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.security.NoSuchAlgorithmException;
 
-public class ApkDownloader extends Thread {
-    private static final String TAG = "ApkDownloader";
+public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
-    public static final int EVENT_APK_DOWNLOAD_COMPLETE = 100;
-    public static final int EVENT_ERROR_HASH_MISMATCH = 101;
-    public static final int EVENT_ERROR_DOWNLOAD_FAILED = 102;
-    public static final int EVENT_ERROR_UNKNOWN = 103;
-    private Apk curapk;
-    private String repoaddress;
-    private File destdir;
-    private File localfile;
+    private static final String TAG = "org.fdroid.fdroid.ApkDownloader";
+
+    public static final String EVENT_APK_DOWNLOAD_COMPLETE = "apkDownloadComplete";
+    public static final String EVENT_APK_DOWNLOAD_CANCELLED = "apkDownloadCancelled";
+    public static final String EVENT_ERROR = "apkDownloadError";
+
+    public static final int ERROR_HASH_MISMATCH = 101;
+    public static final int ERROR_DOWNLOAD_FAILED = 102;
+    public static final int ERROR_UNKNOWN = 103;
+
+    /**
+     * Used as a key to pass data through with an error event, explaining the type of event.
+     */
+    public static final String EVENT_DATA_ERROR_TYPE = "apkDownloadErrorType";
+
+    private Apk curApk;
+    private String repoAddress;
+    private File localFile;
 
     private ProgressListener listener;
+    private AsyncDownloadWrapper dlWrapper = null;
 
     public void setProgressListener(ProgressListener listener) {
         this.listener = listener;
@@ -48,84 +63,153 @@ public class ApkDownloader extends Thread {
 
     // Constructor - creates a Downloader to download the given Apk,
     // which must have its detail populated.
-    ApkDownloader(Apk apk, String repoaddress, File destdir) {
-        curapk = apk;
-        this.repoaddress = repoaddress;
-        this.destdir = destdir;
+    ApkDownloader(Apk apk, String repoAddress, File destDir) {
+        curApk = apk;
+        this.repoAddress = repoAddress;
+        localFile = new File(destDir, curApk.apkName);
     }
 
     // The downloaded APK. Valid only when getStatus() has returned STATUS.DONE.
     public File localFile() {
-        return localfile;
+        return localFile;
     }
 
     public String getRemoteAddress() {
-         return repoaddress + "/" + curapk.apkName.replace(" ", "%20");
+         return repoAddress + "/" + curApk.apkName.replace(" ", "%20");
     }
 
-    @Override
-    public void run() {
-        localfile = new File(destdir, curapk.apkName);
-
+    private Hasher createHasher() {
+        Hasher hasher;
         try {
+            hasher = new Hasher(curApk.hashType, localFile);
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("FDroid", "Error verifying hash of cached apk at " + localFile + ". " +
+                    "I don't understand what the " + curApk.hashType + " hash algorithm is :(");
+            hasher = null;
+        }
+        return hasher;
+    }
 
-            // See if we already have this apk cached...
-            if (localfile.exists()) {
-                // We do - if its hash matches, we'll use it...
-                Hasher hash = new Hasher(curapk.hashType, localfile);
-                if (hash.match(curapk.hash)) {
-                    Log.d("FDroid", "Using cached apk at " + localfile);
-                    return;
-                } else {
-                    Log.d("FDroid", "Not using cached apk at " + localfile);
-                    localfile.delete();
-                }
+    private boolean hashMatches() {
+        if (!localFile.exists()) {
+            return false;
+        }
+        Hasher hasher = createHasher();
+        return hasher != null && hasher.match(curApk.hash);
+    }
+
+    /**
+     * If an existing cached version exists, and matches the hash of the apk we
+     * want to download, then we will return true. Otherwise, we return false
+     * (and remove the cached file - if it exists and didn't match the correct hash).
+     */
+    private boolean verifyOrDeleteCachedVersion() {
+        if (localFile.exists()) {
+            if (hashMatches()) {
+                Log.d("FDroid", "Using cached apk at " + localFile);
+                return true;
+            } else {
+                Log.d("FDroid", "Not using cached apk at " + localFile);
+                deleteLocalFile();
             }
+        }
+        return false;
+    }
 
-            // If we haven't got the apk locally, we'll have to download it...
-            String remoteAddress = getRemoteAddress();
-            Downloader downloader = new HttpDownloader(remoteAddress, localfile);
+    private void deleteLocalFile() {
+        if (localFile != null && localFile.exists()) {
+            localFile.delete();
+        }
+    }
 
-            if (listener != null) {
-                downloader.setProgressListener(listener,
-                        new ProgressListener.Event(Downloader.EVENT_PROGRESS, remoteAddress));
-            }
+    public void download() {
 
-            Log.d(TAG, "Downloading apk from " + remoteAddress);
-            downloader.download();
-
-            if (!localfile.exists()) {
-                sendProgress(EVENT_ERROR_DOWNLOAD_FAILED);
-                return;
-            }
-
-            Hasher hash = new Hasher(curapk.hashType, localfile);
-            if (!hash.match(curapk.hash)) {
-                Log.d("FDroid", "Downloaded file hash of " + hash.getHash()
-                        + " did not match repo's " + curapk.hash);
-                // No point keeping a bad file, whether we're
-                // caching or not.
-                localfile.delete();
-                sendProgress(EVENT_ERROR_HASH_MISMATCH);
-                return;
-            }
-        } catch (Exception e) {
-            Log.e("FDroid", "Download failed:\n" + Log.getStackTraceString(e));
-            if (localfile.exists()) {
-                localfile.delete();
-            }
-            sendProgress(EVENT_ERROR_UNKNOWN);
+        // Can we use the cached version?
+        if (verifyOrDeleteCachedVersion()) {
+            sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
             return;
         }
 
-        Log.d("FDroid", "Download finished: " + localfile);
-        sendProgress(EVENT_APK_DOWNLOAD_COMPLETE);
-    }
+        String remoteAddress = getRemoteAddress();
+        Log.d(TAG, "Downloading apk from " + remoteAddress);
 
-    private void sendProgress(int type) {
-        if (listener != null) {
-            listener.onProgress(new ProgressListener.Event(type));
+        try {
+
+            Downloader downloader = new HttpDownloader(remoteAddress, localFile);
+            dlWrapper = new AsyncDownloadWrapper(downloader, this);
+            dlWrapper.download();
+
+        } catch (MalformedURLException e) {
+            onErrorDownloading(e.getLocalizedMessage());
+        } catch (IOException e) {
+            onErrorDownloading(e.getLocalizedMessage());
         }
     }
 
+    private void sendMessage(String type) {
+        sendProgressEvent(new ProgressListener.Event(type));
+    }
+
+    private void sendError(int errorType) {
+        Bundle data = new Bundle(1);
+        data.putInt(EVENT_DATA_ERROR_TYPE, errorType);
+        sendProgressEvent(new Event(EVENT_ERROR, data));
+    }
+
+    private void sendProgressEvent(Event event) {
+        if (listener != null) {
+            listener.onProgress(event);
+        }
+    }
+
+    @Override
+    public void onReceiveTotalDownloadSize(int size) {
+        // Do nothing...
+        // Rather, we will obtain the total download size from the progress events
+        // when they start coming through.
+    }
+
+    @Override
+    public void onReceiveCacheTag(String cacheTag) {
+        // Do nothing...
+    }
+
+    @Override
+    public void onErrorDownloading(String localisedExceptionDetails) {
+        Log.e("FDroid", "Download failed: " + localisedExceptionDetails);
+        sendError(ERROR_DOWNLOAD_FAILED);
+        deleteLocalFile();
+    }
+
+    @Override
+    public void onDownloadComplete() {
+
+        if (!verifyOrDeleteCachedVersion()) {
+            sendError(ERROR_HASH_MISMATCH);
+            return;
+        }
+
+        Log.d("FDroid", "Download finished: " + localFile);
+        sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
+    }
+
+    @Override
+    public void onDownloadCancelled() {
+        sendMessage(EVENT_APK_DOWNLOAD_CANCELLED);
+    }
+
+    @Override
+    public void onProgress(Event event) {
+        sendProgressEvent(event);
+    }
+
+    public void cancel() {
+        if (dlWrapper != null) {
+            dlWrapper.attemptCancel();
+        }
+    }
+
+    public Apk getApk() {
+        return curApk;
+    }
 }

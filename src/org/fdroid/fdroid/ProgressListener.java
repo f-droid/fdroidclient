@@ -18,7 +18,7 @@ public interface ProgressListener {
         public static final int NO_VALUE = Integer.MIN_VALUE;
         public static final String PROGRESS_DATA_REPO = "repo";
 
-        public final int type;
+        public final String type;
         public final Bundle data;
 
         // These two are not final, so that you can create a template Event,
@@ -28,22 +28,19 @@ public interface ProgressListener {
         public int progress;
         public int total;
 
-        public Event(int type) {
+        public Event(String type) {
             this(type, NO_VALUE, NO_VALUE, null);
         }
 
-        public Event(int type, String repoAddress) {
-            this(type, NO_VALUE, NO_VALUE, repoAddress);
+        public Event(String type, Bundle data) {
+            this(type, NO_VALUE, NO_VALUE, data);
         }
 
-        public Event(int type, int progress, int total, String repoAddress) {
+        public Event(String type, int progress, int total, Bundle data) {
             this.type = type;
             this.progress = progress;
             this.total = total;
-            if (TextUtils.isEmpty(repoAddress))
-                this.data = new Bundle();
-            else
-                this.data = createProgressData(repoAddress);
+            this.data = (data == null) ? new Bundle() : data;
         }
 
         @Override
@@ -53,7 +50,7 @@ public interface ProgressListener {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(type);
+            dest.writeString(type);
             dest.writeInt(progress);
             dest.writeInt(total);
             dest.writeBundle(data);
@@ -62,8 +59,7 @@ public interface ProgressListener {
         public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
             @Override
             public Event createFromParcel(Parcel in) {
-                return new Event(in.readInt(), in.readInt(), in.readInt(),
-                        in.readBundle().getString(PROGRESS_DATA_REPO));
+                return new Event(in.readString(), in.readInt(), in.readInt(), in.readBundle());
             }
 
             @Override
@@ -72,16 +68,16 @@ public interface ProgressListener {
             }
         };
 
-        public String getRepoAddress() {
-            return data.getString(PROGRESS_DATA_REPO);
-        }
-
-        public static Bundle createProgressData(String repoAddress) {
-            Bundle data = new Bundle();
-            data.putString(PROGRESS_DATA_REPO, repoAddress);
+        /**
+         * Can help to provide context to the listener about what process is causing the event.
+         * For example, the repo updater uses one listener to listen to multiple downloaders.
+         * When it receives an event, it doesn't know which repo download is causing the event,
+         * so we pass that through to the downloader when we set the progress listener. This way,
+         * we can ask the event for the name of the repo.
+         */
+        public Bundle getData() {
             return data;
         }
-
     }
 
 }

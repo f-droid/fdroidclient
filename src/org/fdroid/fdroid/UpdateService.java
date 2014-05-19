@@ -33,6 +33,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 import org.fdroid.fdroid.data.*;
+import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.updater.RepoUpdater;
 
 import java.util.*;
@@ -46,6 +47,14 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final int STATUS_COMPLETE_AND_SAME     = 1;
     public static final int STATUS_ERROR                 = 2;
     public static final int STATUS_INFO                  = 3;
+
+    // I don't like that I've had to dupliacte the statuses above with strings here, however
+    // one method of communication/notification is using ResultReceiver (int status codes)
+    // while the other uses progress events (string event types).
+    public static final String EVENT_COMPLETE_WITH_CHANGES = "repoUpdateComplete (changed)";
+    public static final String EVENT_COMPLETE_AND_SAME     = "repoUpdateComplete (not changed)";
+    public static final String EVENT_ERROR                 = "repoUpdateError";
+    public static final String EVENT_INFO                  = "repoUpdateInfo";
 
     public static final String EXTRA_RECEIVER = "receiver";
     public static final String EXTRA_ADDRESS = "address";
@@ -97,26 +106,29 @@ public class UpdateService extends IntentService implements ProgressListener {
             return this;
         }
 
+        private void forwardEvent(String type) {
+            if (listener != null) {
+                listener.onProgress(new Event(type));
+            }
+        }
+
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             String message = resultData.getString(UpdateService.RESULT_MESSAGE);
             boolean finished = false;
             if (resultCode == UpdateService.STATUS_ERROR) {
+                forwardEvent(EVENT_ERROR);
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 finished = true;
-            } else if (resultCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES
-                    || resultCode == UpdateService.STATUS_COMPLETE_AND_SAME) {
+            } else if (resultCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                forwardEvent(EVENT_COMPLETE_WITH_CHANGES);
+                finished = true;
+            } else if (resultCode == UpdateService.STATUS_COMPLETE_AND_SAME) {
+                forwardEvent(EVENT_COMPLETE_AND_SAME);
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_INFO) {
+                forwardEvent(EVENT_INFO);
                 dialog.setMessage(message);
-            }
-
-            // Forward the progress event on to anybody else who'd like to know.
-            if (listener != null) {
-                Parcelable event = resultData.getParcelable(UpdateService.RESULT_EVENT);
-                if (event != null && event instanceof Event) {
-                    listener.onProgress((Event)event);
-                }
             }
 
             if (finished && dialog.isShowing())
@@ -185,17 +197,10 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     protected void sendStatus(int statusCode, String message) {
-        sendStatus(statusCode, message, null);
-    }
-
-    protected void sendStatus(int statusCode, String message, Event event) {
         if (receiver != null) {
             Bundle resultData = new Bundle();
             if (message != null && message.length() > 0)
                 resultData.putString(RESULT_MESSAGE, message);
-            if (event == null)
-                event = new ProgressListener.Event(statusCode);
-            resultData.putParcelable(RESULT_EVENT, event);
             receiver.send(statusCode, resultData);
         }
     }
@@ -675,13 +680,15 @@ public class UpdateService extends IntentService implements ProgressListener {
     @Override
     public void onProgress(ProgressListener.Event event) {
         String message = "";
-        String repoAddress = event.getRepoAddress();
-        if (event.type == RepoUpdater.PROGRESS_TYPE_DOWNLOAD) {
-            String downloadedSize = Utils.getFriendlySize( event.progress );
-            String totalSize      = Utils.getFriendlySize( event.total );
+        // TODO: Switch to passing through Bundles of data with the event, rather than a repo address. They are
+        // now much more general purpose then just repo downloading.
+        String repoAddress = event.getData().getString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS);
+        if (event.type.equals(Downloader.EVENT_PROGRESS)) {
+            String downloadedSize = Utils.getFriendlySize(event.progress);
+            String totalSize      = Utils.getFriendlySize(event.total);
             int percent           = (int)((double)event.progress/event.total * 100);
             message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
-        } else if (event.type == RepoUpdater.PROGRESS_TYPE_PROCESS_XML) {
+        } else if (event.type.equals(RepoUpdater.PROGRESS_TYPE_PROCESS_XML)) {
             message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
         }
         sendStatus(STATUS_INFO, message);

@@ -38,7 +38,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -86,7 +85,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.List;
 
-public class AppDetails extends ListActivity {
+public class AppDetails extends ListActivity implements ProgressListener {
     private static final String TAG = "AppDetails";
 
     public static final int REQUEST_ENABLE_BLUETOOTH = 2;
@@ -96,6 +95,7 @@ public class AppDetails extends ListActivity {
 
     private FDroidApp fdroidApp;
     private ApkListAdapter adapter;
+    private ProgressDialog progressDialog;
 
     private static class ViewHolder {
         TextView version;
@@ -281,7 +281,7 @@ public class AppDetails extends ListActivity {
     private App app;
     private String appid;
     private PackageManager mPm;
-    private DownloadHandler downloadHandler;
+    private ApkDownloader downloadHandler;
     private boolean stateRetained;
 
     private boolean startingIgnoreAll;
@@ -441,23 +441,35 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onDestroy() {
+        // TODO: Generally need to verify the downloader stuff plays well with orientation changes...
         if (downloadHandler != null) {
             if (!stateRetained)
                 downloadHandler.cancel();
-            downloadHandler.destroy();
+            removeProgressDialog();
         }
         super.onDestroy();
+    }
+
+    private void removeProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
     // Copy all relevant state from an old instance. This is used in
     // place of reset(), so it must initialize all fields normally set
     // there.
     private void copyState(AppDetails old) {
+        // TODO: Reimplement copyState with the new downloader stuff... But really, if we start to use fragments for
+        // this view, then it will probably not be relevant any more...
+        /*
         if (old.downloadHandler != null)
             downloadHandler = new DownloadHandler(old.downloadHandler);
         app = old.app;
         mInstalledSignature = old.mInstalledSignature;
         mInstalledSigID = old.mInstalledSigID;
+        */
     }
 
     // Reset the display and list contents. Used when entering the activity, and
@@ -932,9 +944,8 @@ public class AppDetails extends ListActivity {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            downloadHandler = new DownloadHandler(
-                                apk, repoaddress, Utils.getApkCacheDir(getBaseContext()));
+                            int whichButton) {
+                            startDownload(apk, repoaddress);
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -963,8 +974,14 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(
-            apk, repoaddress, Utils.getApkCacheDir(getBaseContext()));
+        startDownload(apk, repoaddress);
+    }
+
+    private void startDownload(Apk apk, String repoAddress) {
+        downloadHandler = new ApkDownloader(apk, repoAddress, Utils.getApkCacheDir(getBaseContext()));
+        getProgressDialog(downloadHandler.getRemoteAddress()).show();
+        downloadHandler.setProgressListener(this);
+        downloadHandler.download();
     }
     private void installApk(File file, String packageName) {
         setProgressBarIndeterminateVisibility(true);
@@ -1049,122 +1066,69 @@ public class AppDetails extends ListActivity {
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
 
-    private ProgressDialog createProgressDialog(String file, int p, int max) {
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        pd.setMessage(getString(R.string.download_server) + ":\n " + file);
-        pd.setMax(max);
-        pd.setProgress(p);
-        pd.setCancelable(true);
-        pd.setCanceledOnTouchOutside(false);
-        pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                downloadHandler.cancel();
-            }
-        });
-        pd.setButton(DialogInterface.BUTTON_NEUTRAL,
-                getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        pd.cancel();
+    private ProgressDialog getProgressDialog(String file) {
+        if (progressDialog == null) {
+            final ProgressDialog pd = new ProgressDialog(this);
+            pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            pd.setMessage(getString(R.string.download_server) + ":\n " + file);
+            pd.setCancelable(true);
+            pd.setCanceledOnTouchOutside(false);
+            pd.setIndeterminate(true); // This will get overridden on the first progress event we receive.
+            pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    downloadHandler.cancel();
+                }
+            });
+            pd.setButton(DialogInterface.BUTTON_NEUTRAL,
+                    getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            pd.cancel();
+                        }
                     }
-                });
-        pd.show();
-        return pd;
+            );
+            progressDialog = pd;
+        }
+        return progressDialog;
     }
 
-    // Handler used to update the progress dialog while downloading.
-    private class DownloadHandler extends Handler implements ProgressListener {
-        private static final String TAG = "org.fdroid.fdroid.AppDetails.DownloadHandler";
-        private ApkDownloader download;
-        private ProgressDialog pd;
-        private String id;
+    private void updateProgressDialog(int progress, int total) {
+        ProgressDialog pd = getProgressDialog(downloadHandler.getRemoteAddress());
+        pd.setIndeterminate(false);
+        pd.setProgress(progress);
+        pd.setMax(total);
+    }
 
-        public DownloadHandler(Apk apk, String repoaddress, File destdir) {
-            id = apk.id;
-            download = new ApkDownloader(apk, repoaddress, destdir);
-            download.setProgressListener(this);
-            download.start();
+    @Override
+    public void onProgress(Event event) {
+        boolean finished = false;
+        if (event.type.equals(Downloader.EVENT_PROGRESS)) {
+            updateProgressDialog(event.progress, event.total);
+        } else if (event.type.equals(ApkDownloader.EVENT_ERROR)) {
+            final String text;
+            if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
+                text = getString(R.string.corrupt_download);
+            else
+                text = getString(R.string.details_notinstalled);
+            // this must be on the main UI thread
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+            finished = true;
+        } else if (event.type.equals(ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE)) {
+            installApk(downloadHandler.localFile(), downloadHandler.getApk().id);
+            finished = true;
+        } else if (event.type.equals(ApkDownloader.EVENT_APK_DOWNLOAD_CANCELLED)) {
+            Toast.makeText(this, getString(R.string.download_cancelled), Toast.LENGTH_LONG).show();
+            finished = true;
         }
 
-        public DownloadHandler(DownloadHandler oldHandler) {
-            if (oldHandler != null) {
-                download = oldHandler.download;
-            }
-        }
-
-        private static final String MSG_EVENT_DATA = "msgEvent";
-
-        /**
-        * Subclasses must implement this to receive messages.
-        */
-        public void handleMessage(Message msg) {
-            ProgressListener.Event event = msg.getData().getParcelable(MSG_EVENT_DATA);
-            boolean finished = false;
-            switch (event.type) {
-                case Downloader.EVENT_PROGRESS:
-                    if (pd == null) {
-                        pd = createProgressDialog(download.getRemoteAddress(),
-                                event.progress, event.total);
-                    } else {
-                        pd.setProgress(event.progress);
-                    }
-                    break;
-
-                case ApkDownloader.EVENT_ERROR_DOWNLOAD_FAILED:
-                case ApkDownloader.EVENT_ERROR_HASH_MISMATCH:
-                case ApkDownloader.EVENT_ERROR_UNKNOWN:
-                    final String text;
-                    if (event.type == ApkDownloader.EVENT_ERROR_HASH_MISMATCH)
-                        text = getString(R.string.corrupt_download);
-                    else
-                        text = getString(R.string.details_notinstalled);
-                    // this must be on the main UI thread
-                    Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
-                    finished = true;
-                    break;
-
-                case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                    installApk(download.localFile(), id);
-                    finished = true;
-                    break;
-            }
-
-            if (finished) {
-                destroy();
-            }
-        }
-
-        /**
-         * We receive events on the download thread, and then post them to
-         * whatever thread the DownloadHandler was run on (in our case, the UI
-         * thread).
-         * @param event
-         */
-        public void onProgress(final ProgressListener.Event event) {
-            Message message = new Message();
-            Bundle bundle = new Bundle(1);
-            bundle.putParcelable(MSG_EVENT_DATA, event);
-            message.setData(bundle);
-            sendMessage(message);
-        }
-
-        public void cancel() {
-            // TODO: Re-implement...
-        }
-
-        public void destroy() {
+        if (finished) {
             // The dialog can't be dismissed when it's not displayed,
             // so do it when the activity is being destroyed.
-            if (pd != null) {
-                pd.dismiss();
-                pd = null;
-            }
+            removeProgressDialog();
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

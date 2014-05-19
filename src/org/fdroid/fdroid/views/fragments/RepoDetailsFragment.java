@@ -203,7 +203,7 @@ public class RepoDetailsFragment extends Fragment {
         UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
-                if (event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                if (event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
                     repo = loadRepoDetails();
                     updateView((ViewGroup)getView());
                 }

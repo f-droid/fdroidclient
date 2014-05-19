@@ -66,7 +66,7 @@ public class HttpDownloader extends Downloader {
     // empty) may contain an etag value for the response, or it may be left
     // empty if none was available.
     @Override
-    public void download() throws IOException {
+    public void download() throws IOException, InterruptedException {
         try {
             connection = (HttpURLConnection)sourceUrl.openConnection();
 
@@ -122,7 +122,7 @@ public class HttpDownloader extends Downloader {
 
     @Override
     public boolean hasChanged() {
-        return this.statusCode == 200;
+        return this.statusCode != 304;
     }
 
 }
