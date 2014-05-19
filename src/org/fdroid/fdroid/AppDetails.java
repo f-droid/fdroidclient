@@ -24,11 +24,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -68,12 +64,7 @@ import org.fdroid.fdroid.Utils.CommaSeparatedList;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
-import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.data.ApkProvider;
-import org.fdroid.fdroid.data.App;
-import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.*;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
@@ -86,7 +77,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class AppDetails extends ListActivity implements ProgressListener {
-    private static final String TAG = "AppDetails";
+    private static final String TAG = "org.fdroid.fdroid.AppDetails";
 
     public static final int REQUEST_ENABLE_BLUETOOTH = 2;
 
@@ -122,7 +113,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
 
        @Override
        public void onChange(boolean selfChange, Uri uri) {
-           if (!reset()) {
+           if (!reset(app.id)) {
                AppDetails.this.finish();
                return;
            }
@@ -279,10 +270,8 @@ public class AppDetails extends ListActivity implements ProgressListener {
     private static final int SEND_VIA_BLUETOOTH = Menu.FIRST + 15;
 
     private App app;
-    private String appid;
     private PackageManager mPm;
     private ApkDownloader downloadHandler;
-    private boolean stateRetained;
 
     private boolean startingIgnoreAll;
     private int startingIgnoreThis;
@@ -293,6 +282,68 @@ public class AppDetails extends ListActivity implements ProgressListener {
     private final Context mctx = this;
     private DisplayImageOptions displayImageOptions;
     private Installer installer;
+
+    /**
+     * Stores relevant data that we want to keep track of when destroying the activity
+     * with the expectation of it being recreated straight away (e.g. after an
+     * orientation change). One of the major things is that we want the download thread
+     * to stay active, but for it not to trigger any UI stuff (e.g. progress dialogs)
+     * between the activity being destroyed and recreated.
+     */
+    private static class ConfigurationChangeHelper {
+
+        public ApkDownloader downloader;
+        public App app;
+
+        public ConfigurationChangeHelper(ApkDownloader downloader, App app) {
+            this.downloader = downloader;
+            this.app = app;
+        }
+    }
+
+    private boolean inProcessOfChangingConfiguration = false;
+
+    /**
+     * Attempt to extract the appId from the intent which launched this activity.
+     * Various different intents could cause us to show this activity, such as:
+     * <ul>
+     *     <li>market://details?id=[app_id]</li>
+     *     <li>https://f-droid.org/app/[app_id]</li>
+     *     <li>fdroid.app:[app_id]</li>
+     * </ul>
+     * @return May return null, if we couldn't find the appId. In this case, you will
+     * probably want to do something drastic like finish the activity and show some
+     * feedback to the user (this method will <em>not</em> do that, it will just return
+     * null).
+     */
+    private String getAppIdFromIntent() {
+        Intent i = getIntent();
+        Uri data = i.getData();
+        String appId = null;
+        if (data != null) {
+            if (data.isHierarchical()) {
+                if (data.getHost() != null && data.getHost().equals("details")) {
+                    // market://details?id=app.id
+                    appId = data.getQueryParameter("id");
+                } else {
+                    // https://f-droid.org/app/app.id
+                    appId = data.getLastPathSegment();
+                    if (appId != null && appId.equals("app")) {
+                        appId = null;
+                    }
+                }
+            } else {
+                // fdroid.app:app.id
+                appId = data.getEncodedSchemeSpecificPart();
+            }
+            Log.d("FDroid", "AppDetails launched from link, for '" + appId + "'");
+        } else if (!i.hasExtra(EXTRA_APPID)) {
+            Log.e("FDroid", "No application ID in AppDetails!?");
+        } else {
+            appId = i.getStringExtra(EXTRA_APPID);
+        }
+        return appId;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -319,43 +370,27 @@ public class AppDetails extends ListActivity implements ProgressListener {
         // for reason why.
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
 
-        Intent i = getIntent();
-        Uri data = i.getData();
-        if (data != null) {
-            if (data.isHierarchical()) {
-                if (data.getHost() != null && data.getHost().equals("details")) {
-                    // market://details?id=app.id
-                    appid = data.getQueryParameter("id");
-                } else {
-                    // https://f-droid.org/app/app.id
-                    appid = data.getLastPathSegment();
-                    if (appid != null && appid.equals("app")) appid = null;
-                }
-            } else {
-                // fdroid.app:app.id
-                appid = data.getEncodedSchemeSpecificPart();
-            }
-            Log.d("FDroid", "AppDetails launched from link, for '" + appid + "'");
-        } else if (!i.hasExtra(EXTRA_APPID)) {
-            Log.d("FDroid", "No application ID in AppDetails!?");
-        } else {
-            appid = i.getStringExtra(EXTRA_APPID);
-        }
-
-        if (i.hasExtra(EXTRA_FROM)) {
-            setTitle(i.getStringExtra(EXTRA_FROM));
+        if (getIntent().hasExtra(EXTRA_FROM)) {
+            setTitle(getIntent().getStringExtra(EXTRA_FROM));
         }
 
         mPm = getPackageManager();
+
         installer = Installer.getActivityInstaller(this, mPm,
                 myInstallerCallback);
         
         // Get the preferences we're going to use in this Activity...
-        AppDetails old = (AppDetails) getLastNonConfigurationInstance();
-        if (old != null) {
-            copyState(old);
+        ConfigurationChangeHelper previousData = (ConfigurationChangeHelper)getLastNonConfigurationInstance();
+        if (previousData != null) {
+            Log.d(TAG, "Recreating view after configuration change.");
+            downloadHandler = previousData.downloader;
+            if (downloadHandler != null) {
+                Log.d(TAG, "Download was in progress before the configuration change, so we will start to listen to its events again.");
+            }
+            app = previousData.app;
+            setApp(app);
         } else {
-            if (!reset()) {
+            if (!reset(getAppIdFromIntent())) {
                 finish();
                 return;
             }
@@ -398,11 +433,15 @@ public class AppDetails extends ListActivity implements ProgressListener {
               AppProvider.getContentUri(app.id),
               true,
               myAppObserver);
-        
-        if (!reset()) {
-            finish();
-            return;
+         if (downloadHandler != null) {
+            downloadHandler.setProgressListener(this);
+
+            // Show the progress dialog, if for no other reason than to prevent them attempting
+            // to download again (i.e. we force them to touch 'cancel' before they can access
+            // the rest of the activity).
+            updateProgressDialog();
         }
+
         updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
@@ -415,8 +454,16 @@ public class AppDetails extends ListActivity implements ProgressListener {
         }
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
+            Log.d(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
             setIgnoreUpdates(app.id, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
+
+        if (downloadHandler != null) {
+            downloadHandler.removeProgressListener();
+        }
+
+        removeProgressDialog();
+
         super.onPause();
     }
 
@@ -435,18 +482,18 @@ public class AppDetails extends ListActivity implements ProgressListener {
 
     @Override
     public Object onRetainNonConfigurationInstance() {
-        stateRetained = true;
-        return this;
+        inProcessOfChangingConfiguration = true;
+        return new ConfigurationChangeHelper(downloadHandler, app);
     }
 
     @Override
     protected void onDestroy() {
-        // TODO: Generally need to verify the downloader stuff plays well with orientation changes...
         if (downloadHandler != null) {
-            if (!stateRetained)
+            if (!inProcessOfChangingConfiguration) {
                 downloadHandler.cancel();
-            removeProgressDialog();
+            }
         }
+        inProcessOfChangingConfiguration = false;
         super.onDestroy();
     }
 
@@ -457,40 +504,36 @@ public class AppDetails extends ListActivity implements ProgressListener {
         }
     }
 
-    // Copy all relevant state from an old instance. This is used in
-    // place of reset(), so it must initialize all fields normally set
-    // there.
-    private void copyState(AppDetails old) {
-        // TODO: Reimplement copyState with the new downloader stuff... But really, if we start to use fragments for
-        // this view, then it will probably not be relevant any more...
-        /*
-        if (old.downloadHandler != null)
-            downloadHandler = new DownloadHandler(old.downloadHandler);
-        app = old.app;
-        mInstalledSignature = old.mInstalledSignature;
-        mInstalledSigID = old.mInstalledSigID;
-        */
-    }
-
     // Reset the display and list contents. Used when entering the activity, and
     // also when something has been installed/uninstalled.
     // Return true if the app was found, false otherwise.
-    private boolean reset() {
+    private boolean reset(String appId) {
 
-        Log.d("FDroid", "Getting application details for " + appid);
-        app = null;
+        Log.d("FDroid", "Getting application details for " + appId);
+        App newApp = null;
 
-        if (appid != null && appid.length() > 0) {
-            app = AppProvider.Helper.findById(getContentResolver(), appid);
+        if (appId != null && appId.length() > 0) {
+            newApp = AppProvider.Helper.findById(getContentResolver(), appId);
         }
 
-        if (app == null) {
-            Toast toast = Toast.makeText(this,
-                    getString(R.string.no_such_app), Toast.LENGTH_LONG);
-            toast.show();
+        setApp(newApp);
+
+        return this.app != null;
+    }
+
+    /**
+     * If passed null, this will show a message to the user ("Could not find app ..." or something
+     * like that) and then finish the activity.
+     */
+    private void setApp(App newApp) {
+
+        if (newApp == null) {
+            Toast.makeText(this, getString(R.string.no_such_app), Toast.LENGTH_LONG).show();
             finish();
-            return false;
+            return;
         }
+
+        app = newApp;
 
         startingIgnoreAll = app.ignoreAllUpdates;
         startingIgnoreThis = app.ignoreThisUpdate;
@@ -498,14 +541,13 @@ public class AppDetails extends ListActivity implements ProgressListener {
         // Get the signature of the installed package...
         mInstalledSignature = null;
         mInstalledSigID = null;
+
         if (app.isInstalled()) {
-            PackageManager pm = getBaseContext().getPackageManager();
+            PackageManager pm = getPackageManager();
             try {
-                PackageInfo pi = pm.getPackageInfo(appid,
-                        PackageManager.GET_SIGNATURES);
+                PackageInfo pi = pm.getPackageInfo(app.id, PackageManager.GET_SIGNATURES);
                 mInstalledSignature = pi.signatures[0];
-                Hasher hash = new Hasher("MD5", mInstalledSignature
-                        .toCharsString().getBytes());
+                Hasher hash = new Hasher("MD5", mInstalledSignature.toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (NameNotFoundException e) {
                 Log.d("FDroid", "Failed to get installed signature");
@@ -514,7 +556,6 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 mInstalledSignature = null;
             }
         }
-        return true;
     }
 
     private void startViews() {
@@ -528,10 +569,10 @@ public class AppDetails extends ListActivity implements ProgressListener {
         headerView.removeAllViews();
         if (landparent != null) {
             landparent.addView(infoView);
-            Log.d("FDroid", "Setting landparent infoview");
+            Log.d("FDroid", "Setting up landscape view");
         } else {
             headerView.addView(infoView);
-            Log.d("FDroid", "Setting header infoview");
+            Log.d("FDroid", "Setting up portrait view");
         }
 
         // Set the icon...
@@ -627,8 +668,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
                         if (permissionName.equals("ACCESS_SUPERUSER")) {
                             sb.append("\t• Full permissions to all device features and storage\n");
                         } else {
-                            Log.d("FDroid", "Permission not yet available: "
-                                    +permissionName);
+                            Log.d("FDroid", "Permission not yet available: " + permissionName);
                         }
                     }
                 }
@@ -979,9 +1019,9 @@ public class AppDetails extends ListActivity implements ProgressListener {
 
     private void startDownload(Apk apk, String repoAddress) {
         downloadHandler = new ApkDownloader(apk, repoAddress, Utils.getApkCacheDir(getBaseContext()));
-        getProgressDialog(downloadHandler.getRemoteAddress()).show();
         downloadHandler.setProgressListener(this);
         downloadHandler.download();
+        updateProgressDialog();
     }
     private void installApk(File file, String packageName) {
         setProgressBarIndeterminateVisibility(true);
@@ -1081,6 +1121,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 @Override
                 public void onCancel(DialogInterface dialog) {
                     downloadHandler.cancel();
+                    downloadHandler = null;
                     progressDialog = null;
                     Toast.makeText(AppDetails.this, getString(R.string.download_cancelled), Toast.LENGTH_LONG).show();
                 }
@@ -1099,11 +1140,28 @@ public class AppDetails extends ListActivity implements ProgressListener {
         return progressDialog;
     }
 
+    /**
+     * Looks at the current <code>downloadHandler</code> and finds it's size and progress.
+     * This is in comparison to {@link org.fdroid.fdroid.AppDetails#updateProgressDialog(int, int)},
+     * which is used when you have the details from a freshly received
+     * {@link org.fdroid.fdroid.ProgressListener.Event}.
+     */
+    private void updateProgressDialog() {
+        updateProgressDialog(downloadHandler.getProgress(), downloadHandler.getTotalSize());
+    }
+
     private void updateProgressDialog(int progress, int total) {
         ProgressDialog pd = getProgressDialog(downloadHandler.getRemoteAddress());
-        pd.setIndeterminate(false);
-        pd.setProgress(progress);
-        pd.setMax(total);
+        if (total > 0) {
+            pd.setIndeterminate(false);
+            pd.setProgress(progress);
+            pd.setMax(total);
+        } else {
+            pd.setIndeterminate(true);
+            pd.setProgress(progress);
+            pd.setMax(0);
+        }
+        pd.show();
     }
 
     @Override
@@ -1126,9 +1184,8 @@ public class AppDetails extends ListActivity implements ProgressListener {
         }
 
         if (finished) {
-            // The dialog can't be dismissed when it's not displayed,
-            // so do it when the activity is being destroyed.
             removeProgressDialog();
+            downloadHandler = null;
         }
     }
 

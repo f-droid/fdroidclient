@@ -56,13 +56,17 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     private ProgressListener listener;
     private AsyncDownloadWrapper dlWrapper = null;
+    private int progress  = 0;
+    private int totalSize = 0;
 
     public void setProgressListener(ProgressListener listener) {
         this.listener = listener;
     }
 
-    // Constructor - creates a Downloader to download the given Apk,
-    // which must have its detail populated.
+    public void removeProgressListener() {
+        setProgressListener(null);
+    }
+
     ApkDownloader(Apk apk, String repoAddress, File destDir) {
         curApk = apk;
         this.repoAddress = repoAddress;
@@ -157,6 +161,13 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     }
 
     private void sendProgressEvent(Event event) {
+        if (event.type.equals(Downloader.EVENT_PROGRESS)) {
+            // Keep a copy of these ourselves, so people can interrogate us for the
+            // info (in addition to receiving events with the info).
+            totalSize = event.total;
+            progress  = event.progress;
+        }
+
         if (listener != null) {
             listener.onProgress(event);
         }
@@ -203,7 +214,12 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         sendProgressEvent(event);
     }
 
+    /**
+     * Attempts to cancel the download (if in progress) and also removes the progress
+     * listener (to prevent
+     */
     public void cancel() {
+        removeProgressListener();
         if (dlWrapper != null) {
             dlWrapper.attemptCancel();
         }
@@ -211,5 +227,13 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     public Apk getApk() {
         return curApk;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public int getTotalSize() {
+        return totalSize;
     }
 }
