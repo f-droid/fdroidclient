@@ -47,15 +47,6 @@ public abstract class Downloader {
         outputStream = new FileOutputStream(outputFile);
     }
 
-    /**
-     * Downloads to a temporary file, which *you must delete yourself when
-     * you are done*.
-     * @see org.fdroid.fdroid.net.Downloader#getFile()
-     */
-    public Downloader(File destFile, Context ctx) throws IOException {
-        // TODO: Reimplement (is it still necessary? In what context was it being used before?)
-    }
-
     public Downloader(OutputStream output)
             throws MalformedURLException {
         outputStream = output;
@@ -158,8 +149,6 @@ public abstract class Downloader {
      */
     private void throwExceptionIfInterrupted() throws InterruptedException {
         if (Thread.interrupted()) {
-            // TODO: Do we need to provide more information to whoever needs it,
-            // so they can, for example, remove any partially created files?
             Log.d(TAG, "Received interrupt, cancelling download");
             throw new InterruptedException();
         }

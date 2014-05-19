@@ -8,6 +8,13 @@ import org.fdroid.fdroid.ProgressListener;
 
 import java.io.IOException;
 
+/**
+ * Given a {@link org.fdroid.fdroid.net.Downloader}, this wrapper will conduct the download operation on a
+ * separate thread. All progress/status/error/etc events will be forwarded from that thread to the thread
+ * that {@link AsyncDownloadWrapper#download()} was invoked on. If you want to respond with UI feedback
+ * to these events, it is important that you execute the download method of this class from the UI thread.
+ * That way, all forwarded events will be handled on that thread.
+ */
 public class AsyncDownloadWrapper extends Handler {
 
     private static final String TAG = "org.fdroid.fdroid.net.AsyncDownloadWrapper";
@@ -71,6 +78,11 @@ public class AsyncDownloadWrapper extends Handler {
         downloadThread.interrupt();
     }
 
+    /**
+     * Receives "messages" from the download thread, and passes them onto the
+     * relevant {@link org.fdroid.fdroid.net.AsyncDownloadWrapper.Listener}
+     * @param message
+     */
     public void handleMessage(Message message) {
         if (message.arg1 == MSG_PROGRESS) {
             Bundle data = message.getData();

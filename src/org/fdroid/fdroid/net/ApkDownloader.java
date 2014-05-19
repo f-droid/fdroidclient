@@ -31,6 +31,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Downloads and verifies (against the Apk.hash) the apk file.
+ * If the file has previously been downloaded, it will make use of that
+ * instead, without going to the network to download a new one.
+ */
 public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     private static final String TAG = "org.fdroid.fdroid.net.ApkDownloader";
@@ -71,7 +76,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         localFile = new File(destDir, curApk.apkName);
     }
 
-    // The downloaded APK. Valid only when getStatus() has returned STATUS.DONE.
+    /**
+     * The downloaded APK. Valid only when getStatus() has returned STATUS.DONE.
+     */
     public File localFile() {
         return localFile;
     }
