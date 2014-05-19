@@ -18,15 +18,13 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.net;
 
 import android.os.Bundle;
 import android.util.Log;
-
+import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.data.Apk;
-import org.fdroid.fdroid.net.AsyncDownloadWrapper;
-import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.HttpDownloader;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +33,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
-    private static final String TAG = "org.fdroid.fdroid.ApkDownloader";
+    private static final String TAG = "org.fdroid.fdroid.net.ApkDownloader";
 
     public static final String EVENT_APK_DOWNLOAD_COMPLETE = "apkDownloadComplete";
     public static final String EVENT_APK_DOWNLOAD_CANCELLED = "apkDownloadCancelled";

@@ -68,6 +68,7 @@ import org.fdroid.fdroid.data.*;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
+import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
 import org.xml.sax.XMLReader;
 
