@@ -19,32 +19,28 @@
 
 package org.fdroid.fdroid;
 
-import android.content.*;
-import android.widget.*;
-
-import org.fdroid.fdroid.data.*;
-import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
-import org.fdroid.fdroid.installer.Installer.InstallerCallback;
-import org.fdroid.fdroid.net.Downloader;
-import org.xml.sax.XMLReader;
-
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
+import android.database.ContentObserver;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageInfo;
-import android.content.pm.Signature;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.database.ContentObserver;
 import android.text.Editable;
 import android.text.Html;
 import android.text.Html.TagHandler;
@@ -59,16 +55,30 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.graphics.Bitmap;
-
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
+import org.fdroid.fdroid.installer.Installer.InstallerCallback;
+import org.fdroid.fdroid.net.Downloader;
+import org.xml.sax.XMLReader;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
@@ -99,7 +109,7 @@ public class AppDetails extends ListActivity {
     
     // observer to update view when package has been installed/deleted
     AppObserver myAppObserver;
-    class AppObserver extends ContentObserver {      
+    class AppObserver extends ContentObserver {
        public AppObserver(Handler handler) {
           super(handler);           
        }
@@ -906,6 +916,7 @@ public class AppDetails extends ListActivity {
 
     // Install the version of this app denoted by 'app.curApk'.
     private void install(final Apk apk) {
+        final Activity activity = this;
         String [] projection = { RepoProvider.DataColumns.ADDRESS };
         Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
         if (repo == null || repo.address == null) {
@@ -921,9 +932,8 @@ public class AppDetails extends ListActivity {
                         @Override
                         public void onClick(DialogInterface dialog,
                                 int whichButton) {
-                            downloadHandler = new DownloadHandler(apk,
-                                    repoaddress, Utils
-                                    .getApkCacheDir(getBaseContext()));
+                            downloadHandler = new DownloadHandler(activity, apk,
+                                    repoaddress, Utils.getApkCacheDir(getBaseContext()));
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -952,7 +962,7 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(apk, repoaddress,
+        downloadHandler = new DownloadHandler(activity, apk, repoaddress,
                 Utils.getApkCacheDir(getBaseContext()));
     }
     private void installApk(File file, String packageName) {
@@ -1066,13 +1076,17 @@ public class AppDetails extends ListActivity {
 
     // Handler used to update the progress dialog while downloading.
     private class DownloadHandler extends Handler implements ProgressListener {
+        private static final String TAG = "AppDetails.DownloadHandler";
+        private Activity activity;
         private ApkDownloader download;
         private ProgressDialog pd;
         private String id;
 
-        public DownloadHandler(Apk apk, String repoaddress, File destdir) {
+        public DownloadHandler(Activity activity, Apk apk, String repoaddress, File destdir) {
+            this.activity = activity;
             id = apk.id;
             download = new ApkDownloader(apk, repoaddress, destdir);
+            download.setProgressListener(this);
             download.start();
         }
 
@@ -1082,27 +1096,41 @@ public class AppDetails extends ListActivity {
             }
         }
 
-        public void onProgress(ProgressListener.Event event) {
+        public void onProgress(final ProgressListener.Event event) {
             boolean finished = false;
             switch (event.type) {
                 case Downloader.EVENT_PROGRESS:
-                    if (pd == null) {
-                        pd = createProgressDialog(download.remoteFile(),
-                                event.progress, event.total);
-                    } else {
-                        pd.setProgress(event.progress);
-                    }
+                    activity.runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            // this must be on the main UI thread
+                            if (pd == null) {
+                                pd = createProgressDialog(download.remoteFile(),
+                                        event.progress, event.total);
+                            } else {
+                                pd.setProgress(event.progress);
+                            }
+                        }
+                    });
                     break;
 
                 case ApkDownloader.EVENT_ERROR_DOWNLOAD_FAILED:
                 case ApkDownloader.EVENT_ERROR_HASH_MISMATCH:
                 case ApkDownloader.EVENT_ERROR_UNKNOWN:
-                    String text;
+                    final String text;
                     if (event.type == ApkDownloader.EVENT_ERROR_HASH_MISMATCH)
                         text = getString(R.string.corrupt_download);
                     else
                         text = getString(R.string.details_notinstalled);
-                    Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
+                    activity.runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            // this must be on the main UI thread
+                            Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
+                        }
+                    });
                     finished = true;
                     break;
 
