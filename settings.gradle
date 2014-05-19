@@ -1,5 +1,13 @@
-include ':extern:AndroidPinning',
-    ':extern:UniversalImageLoader:library',
-    ':extern:MemorizingTrustManager',
+include \
+	':extern:AndroidPinning',
+	':extern:UniversalImageLoader:library',
+	':extern:MemorizingTrustManager',
 	':extern:libsuperuser:libsuperuser',
 	':extern:nanohttpd:core'
+
+include ':support-v4'
+project(':support-v4').projectDir = new File('extern/Support/v4')
+
+include ':support-appcompat-v7'
+project(':support-appcompat-v7').projectDir = new File('extern/Support/v7/appcompat')
+

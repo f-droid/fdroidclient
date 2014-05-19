@@ -10,9 +10,14 @@ buildscript {
 def toolVersion = "19.1"
 apply plugin: 'android'
 
+sdkLoc = System.getenv("ANDROID_HOME")
+FileCollection getAndroidPrebuilt(String apiLevel) {
+    files("$sdkLoc/platforms/android-$apiLevel/android.jar")
+}
+
 dependencies {
-	compile files('libs/android-support-v4.jar')
 	compile files('libs/core-3.0.1.jar')
+	compile project(':support-v4')
 	compile project(':extern:AndroidPinning')
 	compile project(':extern:UniversalImageLoader:library')
 	compile project(':extern:MemorizingTrustManager')
@@ -117,3 +122,4 @@ subprojects {
         }
     }
 }
+
