@@ -280,5 +280,6 @@
     <string name="installer_error_body">The (de-)installation failed. If you are using root access, try disabling this setting!</string>
     <string name="system_permission_denied_title">System permissions denied</string>
     <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a system-app.</string>
-   
+
+    <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
 </resources>
