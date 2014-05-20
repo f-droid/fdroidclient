@@ -29,3 +29,6 @@
 [submodule "extern/nanohttpd"]
 	path = extern/nanohttpd
 	url = https://github.com/NanoHttpd/nanohttpd
+[submodule "extern/spongycastle"]
+	path = extern/spongycastle
+	url = https://github.com/open-keychain/spongycastle

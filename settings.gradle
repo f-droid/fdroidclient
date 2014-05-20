@@ -4,6 +4,10 @@ include ':extern:MemorizingTrustManager'
 include ':extern:libsuperuser:libsuperuser'
 include ':extern:nanohttpd:core'
 include ':extern:zipsigner'
+include ':extern:spongycastle:core'
+include ':extern:spongycastle:pg'
+include ':extern:spongycastle:pkix'
+include ':extern:spongycastle:prov'
 
 include ':support-v4'
 project(':support-v4').projectDir = new File('extern/Support/v4')

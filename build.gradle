@@ -12,7 +12,7 @@ apply plugin: 'android'
 
 sdkLoc = System.getenv("ANDROID_HOME")
 FileCollection getAndroidPrebuilt(String apiLevel) {
-    files("$sdkLoc/platforms/android-$apiLevel/android.jar")
+	files("$sdkLoc/platforms/android-$apiLevel/android.jar")
 }
 
 dependencies {
@@ -24,6 +24,10 @@ dependencies {
 	compile project(':extern:libsuperuser:libsuperuser')
 	compile project(':extern:nanohttpd:core')
 	compile project(':extern:zipsigner')
+	compile project(':extern:spongycastle:core')
+	compile project(':extern:spongycastle:pg')
+	compile project(':extern:spongycastle:pkix')
+	compile project(':extern:spongycastle:prov')
 }
 
 project(':extern:UniversalImageLoader:library') {
@@ -56,7 +60,7 @@ project(':extern:UniversalImageLoader:library') {
 
 android {
 	compileSdkVersion 19
-    buildToolsVersion toolVersion
+	buildToolsVersion toolVersion
 
 	sourceSets {
 		main {
@@ -79,7 +83,7 @@ android {
 		}
 	}
 
-    tasks.withType(Compile) { task ->
+	tasks.withType(Compile) { task ->
 		options.encoding = "UTF-8"
 	}
 
@@ -90,37 +94,37 @@ android {
 // http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
 android.applicationVariants.all { variant ->
 
-    task("generate${variant.name}Javadoc", type: Javadoc) {
-        title = "$name $version API"
-        description "Generates Javadoc for F-Droid."
-        source = variant.javaCompile.source
-        ext.androidJar = "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
-        options.links("http://docs.oracle.com/javase/7/docs/api/");
-        options.links("http://d.android.com/reference/");
-        exclude '**/BuildConfig.java'
-        exclude '**/R.java'
-    }
+	task("generate${variant.name}Javadoc", type: Javadoc) {
+		title = "$name $version API"
+		description "Generates Javadoc for F-Droid."
+		source = variant.javaCompile.source
+		ext.androidJar = "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+		classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+		options.links("http://docs.oracle.com/javase/7/docs/api/");
+		options.links("http://d.android.com/reference/");
+		exclude '**/BuildConfig.java'
+		exclude '**/R.java'
+	}
 }
 
 // This is the hacky way which we force the subprojects to use the same build tools:
 // http://stackoverflow.com/a/21032272
 subprojects {
-    afterEvaluate {
-        android {
+	afterEvaluate {
+		android {
 
-            // The android build task only lets you configure the buildToolsVersion once, so if
-            // we execute the closure below to configure our subprojects, it will fail when it
-            // hits the second subproject. Therefore, we will only do it once, and I guess the
-            // android plubin will re-use the existing value I set. 
-            // https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
-            try {
-                buildToolsVersion toolVersion
-                logger.info("Set buildToolsVersion to $toolVersion")
-            } catch (GradleException e) {
-                logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
-            }
-        }
-    }
+			// The android build task only lets you configure the buildToolsVersion once, so if
+			// we execute the closure below to configure our subprojects, it will fail when it
+			// hits the second subproject. Therefore, we will only do it once, and I guess the
+			// android plubin will re-use the existing value I set. 
+			// https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
+			try {
+				buildToolsVersion toolVersion
+				logger.info("Set buildToolsVersion to $toolVersion")
+			} catch (GradleException e) {
+				logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
+			}
+		}
+	}
 }
 
