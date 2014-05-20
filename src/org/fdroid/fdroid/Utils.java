@@ -23,7 +23,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -118,7 +117,7 @@ public final class Utils {
         try {
             Process sh = Runtime.getRuntime().exec("sh");
             OutputStream out = sh.getOutputStream();
-            String command = "/system/bin/ln -s " + inFile.getAbsolutePath() + " " + outFile
+            String command = "/system/bin/ln -s " + inFile + " " + outFile
                     + "\nexit\n";
             out.write(command.getBytes("ASCII"));
 
@@ -451,10 +450,6 @@ public final class Utils {
     public static String toHexString(byte[] bytes) {
         BigInteger bi = new BigInteger(1, bytes);
         return String.format("%0" + (bytes.length << 1) + "X", bi);
-    }
-
-    public static String getDefaultRepoName() {
-        return (Build.BRAND + " " + Build.MODEL).replaceAll(" ", "-");
     }
 
 }

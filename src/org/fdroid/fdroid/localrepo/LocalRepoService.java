@@ -2,26 +2,17 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.annotation.SuppressLint;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
+import android.app.*;
+import android.content.*;
+import android.os.*;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -29,7 +20,11 @@ import org.fdroid.fdroid.views.LocalRepoActivity;
 
 import java.io.IOException;
 import java.net.BindException;
+import java.util.HashMap;
 import java.util.Random;
+
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 
 public class LocalRepoService extends Service {
     private static final String TAG = "LocalRepoService";
@@ -39,11 +34,15 @@ public class LocalRepoService extends Service {
     public static final String STOPPED = "org.fdroid.fdroid.category.LOCAL_REPO_STOPPED";
 
     private NotificationManager notificationManager;
+    private Notification notification;
     // Unique Identification Number for the Notification.
     // We use it on Notification start, and to cancel it.
     private int NOTIFICATION = R.string.local_repo_running;
 
     private Handler webServerThreadHandler = null;
+    private LocalHTTPD localHttpd;
+    private JmDNS jmdns;
+    private ServiceInfo pairService;
 
     public static int START = 1111111;
     public static int STOP = 12345678;
@@ -61,12 +60,12 @@ public class LocalRepoService extends Service {
         @Override
         public void handleMessage(Message msg) {
             if (msg.arg1 == START) {
-                service.startWebServer();
+                service.startNetworkServices();
             } else if (msg.arg1 == STOP) {
-                service.stopWebServer();
+                service.stopNetworkServices();
             } else if (msg.arg1 == RESTART) {
-                service.stopWebServer();
-                service.startWebServer();
+                service.stopNetworkServices();
+                service.startNetworkServices();
             } else {
                 Log.e(TAG, "unsupported msg.arg1, ignored");
             }
@@ -76,8 +75,19 @@ public class LocalRepoService extends Service {
     private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
-            stopWebServer();
-            startWebServer();
+            stopNetworkServices();
+            startNetworkServices();
+        }
+    };
+
+    private ChangeListener localRepoBonjourChangeListener = new ChangeListener() {
+        @Override
+        public void onPreferenceChange() {
+            if (localHttpd.isAlive())
+                if (Preferences.get().isLocalRepoBonjourEnabled())
+                    registerMDNSService();
+                else
+                    unregisterMDNSService();
         }
     };
 
@@ -87,15 +97,18 @@ public class LocalRepoService extends Service {
         // launch LocalRepoActivity if the user selects this notification
         Intent intent = new Intent(this, LocalRepoActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
-        Notification notification = new NotificationCompat.Builder(this)
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+        notification = new NotificationCompat.Builder(this)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
                 .setContentIntent(contentIntent)
                 .build();
         startForeground(NOTIFICATION, notification);
-        startWebServer();
+        startNetworkServices();
+        Preferences.get().registerLocalRepoBonjourListeners(localRepoBonjourChangeListener);
+
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
     }
@@ -109,14 +122,26 @@ public class LocalRepoService extends Service {
 
     @Override
     public void onDestroy() {
-        stopWebServer();
+        stopNetworkServices();
         notificationManager.cancel(NOTIFICATION);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
+        Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         return messenger.getBinder();
+    }
+
+    private void startNetworkServices() {
+        startWebServer();
+        if (Preferences.get().isLocalRepoBonjourEnabled())
+            registerMDNSService();
+    }
+
+    private void stopNetworkServices() {
+        unregisterMDNSService();
+        stopWebServer();
     }
 
     private void startWebServer() {
@@ -127,7 +152,7 @@ public class LocalRepoService extends Service {
             @SuppressLint("HandlerLeak")
             @Override
             public void run() {
-                final LocalHTTPD localHttpd = new LocalHTTPD(getFilesDir(),
+                localHttpd = new LocalHTTPD(getFilesDir(),
                         prefs.getBoolean("use_https", false));
 
                 Looper.prepare(); // must be run before creating a Handler
@@ -168,5 +193,49 @@ public class LocalRepoService extends Service {
         Intent intent = new Intent(STATE);
         intent.putExtra(STATE, STOPPED);
         LocalBroadcastManager.getInstance(LocalRepoService.this).sendBroadcast(intent);
+    }
+
+    private void registerMDNSService() {
+        String repoName = Preferences.get().getLocalRepoName();
+        final HashMap<String, String> values = new HashMap<String, String>();
+        values.put("path", "/fdroid/repo");
+        values.put("name", repoName);
+        // TODO set type based on "use HTTPS" pref
+        // values.put("fingerprint", FDroidApp.repo.fingerprint);
+        values.put("type", "fdroidrepo");
+        pairService = ServiceInfo.create("_http._tcp.local.",
+                repoName, FDroidApp.port, 0, 0, values);
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    jmdns = JmDNS.create();
+                    jmdns.registerService(pairService);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private void unregisterMDNSService() {
+        if (localRepoBonjourChangeListener != null) {
+            Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
+            localRepoBonjourChangeListener = null;
+        }
+        if (jmdns != null) {
+            if (pairService != null) {
+                jmdns.unregisterService(pairService);
+                pairService = null;
+            }
+            jmdns.unregisterAllServices();
+            try {
+                jmdns.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            jmdns = null;
+        }
     }
 }

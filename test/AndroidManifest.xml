@@ -10,6 +10,8 @@
     <application>
         <uses-library android:name="android.test.runner"/>
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!--
     This declares that this application uses the instrumentation test runner targeting
     the package of org.fdroid.fdroid.  To run the tests use the command:

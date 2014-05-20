@@ -4,6 +4,7 @@ import java.util.*;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -21,6 +22,11 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private Preferences(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         preferences.registerOnSharedPreferenceChangeListener(this);
+        if (preferences.getString(PREF_LOCAL_REPO_NAME, null) == null) {
+            preferences.edit()
+                    .putString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName())
+                    .commit();
+        }
     }
 
     public static final String PREF_UPD_INTERVAL = "updateInterval";
@@ -38,12 +44,15 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_UPD_LAST = "lastUpdateCheck";
     public static final String PREF_ROOT_INSTALLER = "rootInstaller";
     public static final String PREF_SYSTEM_INSTALLER = "systemInstaller";
+    public static final String PREF_LOCAL_REPO_BONJOUR = "localRepoBonjour";
+    public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
     private static final int DEFAULT_UPD_HISTORY = 14;
     private static final boolean DEFAULT_ROOT_INSTALLER = false;
     private static final boolean DEFAULT_SYSTEM_INSTALLER = false;
+    private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
@@ -53,6 +62,8 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private List<ChangeListener> compactLayoutListeners = new ArrayList<ChangeListener>();
     private List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<ChangeListener>();
     private List<ChangeListener> updateHistoryListeners = new ArrayList<ChangeListener>();
+    private List<ChangeListener> localRepoBonjourListeners = new ArrayList<ChangeListener>();
+    private List<ChangeListener> localRepoNameListeners = new ArrayList<ChangeListener>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);
@@ -72,6 +83,19 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     
     public boolean isSystemInstallerEnabled() {
         return preferences.getBoolean(PREF_SYSTEM_INSTALLER, DEFAULT_SYSTEM_INSTALLER);
+    }
+
+    public boolean isLocalRepoBonjourEnabled() {
+        return preferences.getBoolean(PREF_LOCAL_REPO_BONJOUR, DEFAULT_LOCAL_REPO_BONJOUR);
+    }
+
+    private String getDefaultLocalRepoName() {
+        return (Build.BRAND + " " + Build.MODEL + String.valueOf(new Random().nextInt(9999)))
+                .replaceAll(" ", "-");
+    }
+
+    public String getLocalRepoName() {
+        return preferences.getString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
     }
 
     public boolean hasCompactLayout() {
@@ -146,6 +170,14 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
             for ( ChangeListener listener : updateHistoryListeners ) {
                 listener.onPreferenceChange();
             }
+        } else if (key.equals(PREF_LOCAL_REPO_BONJOUR)) {
+            for ( ChangeListener listener : localRepoBonjourListeners ) {
+                listener.onPreferenceChange();
+            }
+        } else if (key.equals(PREF_LOCAL_REPO_NAME)) {
+            for ( ChangeListener listener : localRepoNameListeners ) {
+                listener.onPreferenceChange();
+            }
         }
     }
 
@@ -155,6 +187,22 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public void unregisterUpdateHistoryListener(ChangeListener listener) {
         updateHistoryListeners.remove(listener);
+    }
+
+    public void registerLocalRepoBonjourListeners(ChangeListener listener) {
+        localRepoBonjourListeners.add(listener);
+    }
+
+    public void unregisterLocalRepoBonjourListeners(ChangeListener listener) {
+        localRepoBonjourListeners.remove(listener);
+    }
+
+    public void registerLocalRepoNameListeners(ChangeListener listener) {
+        localRepoNameListeners.add(listener);
+    }
+
+    public void unregisterLocalRepoNameListeners(ChangeListener listener) {
+        localRepoNameListeners.remove(listener);
     }
 
     public static interface ChangeListener {

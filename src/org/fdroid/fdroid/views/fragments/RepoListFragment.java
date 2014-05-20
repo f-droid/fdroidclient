@@ -1,19 +1,11 @@
 
 package org.fdroid.fdroid.views.fragments;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
 import android.database.Cursor;
 import android.net.Uri;
-import android.net.nsd.NsdServiceInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -25,28 +17,16 @@ import android.support.v4.view.MenuItemCompat;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.*;
+import android.widget.*;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.net.NsdHelper;
-import org.fdroid.fdroid.net.NsdHelper.DiscoveredRepo;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.ProgressListener;
-import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.net.NsdHelper.RepoScanListAdapter;
-import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.net.MDnsHelper;
+import org.fdroid.fdroid.net.MDnsHelper.DiscoveredRepo;
+import org.fdroid.fdroid.net.MDnsHelper.RepoScanListAdapter;
 import org.fdroid.fdroid.views.RepoAdapter;
 import org.fdroid.fdroid.views.RepoDetailsActivity;
 
@@ -54,6 +34,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.jmdns.ServiceInfo;
 
 public class RepoListFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
@@ -246,57 +228,56 @@ public class RepoListFragment extends ListFragment
         });
     }
 
-    @TargetApi(16) // AKA Android 4.1 AKA Jelly Bean
     private void scanForRepos() {
-        final Activity a = getActivity();
+        final Activity activity = getActivity();
 
-        final RepoScanListAdapter adapter = new RepoScanListAdapter(a);
-        final NsdHelper nsdHelper = new NsdHelper(a.getApplicationContext(), adapter);
+        final RepoScanListAdapter adapter = new RepoScanListAdapter(activity);
+        final MDnsHelper mDnsHelper = new MDnsHelper(activity, adapter);
 
         final View view = getLayoutInflater(null).inflate(R.layout.repodiscoverylist, null);
         final ListView repoScanList = (ListView) view.findViewById(R.id.reposcanlist);
 
         final AlertDialog alrt = new AlertDialog.Builder(getActivity()).setView(view)
-                                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        nsdHelper.stopDiscovery();
-                                        dialog.dismiss();
-                                    }
-                                }).create();
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mDnsHelper.stopDiscovery();
+                        dialog.dismiss();
+                    }
+                }).create();
 
         alrt.setTitle(R.string.local_repos_title);
         alrt.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                nsdHelper.stopDiscovery();
+                mDnsHelper.stopDiscovery();
             }
         });
 
         repoScanList.setAdapter(adapter);
         repoScanList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          @Override
-          public void onItemClick(AdapterView<?> parent, final View view,
-              int position, long id) {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                    int position, long id) {
 
-            final DiscoveredRepo discoveredService =
-                    (DiscoveredRepo) parent.getItemAtPosition(position);
+                final DiscoveredRepo discoveredService =
+                        (DiscoveredRepo) parent.getItemAtPosition(position);
 
-            final NsdServiceInfo serviceInfo = discoveredService.getServiceInfo();
-
-            String serviceType = serviceInfo.getServiceType();
-            String protocol = serviceType.contains("fdroidrepos") ? "https://" : "http://";
-
-            String serviceAddress = protocol + serviceInfo.getHost().getHostAddress()
-                                    + ":" + serviceInfo.getPort() + "/fdroid/repo";
-            showAddRepo(serviceAddress, "");
-          }
+                final ServiceInfo serviceInfo = discoveredService.getServiceInfo();
+                String type = serviceInfo.getPropertyString("type");
+                String protocol = type.contains("fdroidrepos") ? "https:/" : "http:/";
+                String path = serviceInfo.getPropertyString("path");
+                if (TextUtils.isEmpty(path))
+                    path = "/fdroid/repo";
+                String serviceUrl = protocol + serviceInfo.getInetAddresses()[0]
+                        + ":" + serviceInfo.getPort() + path;
+                // TODO get fingerprint from TXT record
+                showAddRepo(serviceUrl, "");
+            }
         });
 
         alrt.show();
-
-        Log.d("FDroid", "Starting network service discovery");
-        nsdHelper.discoverServices();
+        mDnsHelper.discoverServices();
     }
 
     public void importRepo(String uri, String fingerprint) {
@@ -416,7 +397,8 @@ public class RepoListFragment extends ListFragment
         ContentValues values = new ContentValues(2);
         values.put(RepoProvider.DataColumns.ADDRESS, address);
         if (fingerprint != null && fingerprint.length() > 0) {
-            values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
+            values.put(RepoProvider.DataColumns.FINGERPRINT,
+                    fingerprint.toUpperCase(Locale.ENGLISH));
         }
         RepoProvider.Helper.insert(getActivity(), values);
         finishedAddingRepo();
