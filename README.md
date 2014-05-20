@@ -22,24 +22,6 @@ The project itself supports Gradle, but some of the libraries it uses don't.
 Hence it is currently not possible to build F-Droid with Gradle in a clean way
 without manual interaction.
 
-Building as part of a ROM
--------------------------
-
-Add the following lines to your repo manifest:
-
-```
-<remote name="fdroid" fetch="https://git.gitorious.org/f-droid" />
-<remote name="github" fetch="https://github.com/" />
-
-<project path="packages/apps/fdroidclient" name="fdroidclient.git" remote="fdroid" revision="0.66" />
-
-<project path="packages/apps/fdroidclient/extern/UniversalImageLoader" name="nostra13/Android-Universal-Image-Loader" remote="github" revision="ee50fd1ce77d866a89374a5ff0886be6e179feb2" />
-<project path="packages/apps/fdroidclient/extern/AndroidPinning" name="binaryparadox/AndroidPinning" remote="github" revision="a0d713c6162b7016a3c3f55bcaefcdca4acacebd" />
-<project path="packages/apps/fdroidclient/extern/MemorizingTrustManager" name="ge0rg/MemorizingTrustManager" remote="github" revision="a705441ac53b9e1aba9f00f3f59aab81da6fbc9e" />
-```
-
-Adding F-Droid is then just a matter of adding `F-Droid` to your `PRODUCT_PACKAGES`.
-
 Direct download
 ---------------
 
