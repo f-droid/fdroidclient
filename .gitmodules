@@ -26,3 +26,7 @@
 	path = extern/Support
 	url = https://android.googlesource.com/platform/frameworks/support
 	ignore = dirty
+[submodule "extern/zipsigner"]
+	path = extern/zipsigner
+	url = https://gitlab.com/fdroid/zipsigner.git
+	ignore = dirty

@@ -1,9 +1,9 @@
-include \
-	':extern:AndroidPinning',
-	':extern:UniversalImageLoader:library',
-	':extern:MemorizingTrustManager',
-	':extern:libsuperuser:libsuperuser',
-	':extern:nanohttpd:core'
+include ':extern:AndroidPinning'
+include ':extern:UniversalImageLoader:library'
+include ':extern:MemorizingTrustManager'
+include ':extern:libsuperuser:libsuperuser'
+include ':extern:nanohttpd:core'
+include ':extern:zipsigner'
 
 include ':support-v4'
 project(':support-v4').projectDir = new File('extern/Support/v4')
