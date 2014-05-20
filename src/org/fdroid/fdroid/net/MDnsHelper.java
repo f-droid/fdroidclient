@@ -3,6 +3,8 @@ package org.fdroid.fdroid.net;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.MulticastLock;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
@@ -32,10 +34,14 @@ public class MDnsHelper implements ServiceListener {
     final RepoScanListAdapter mAdapter;
 
     private JmDNS mJmdns;
+    private MulticastLock mMulticastLock;
 
     public MDnsHelper(Activity activity, final RepoScanListAdapter adapter) {
         mActivity = activity;
         mAdapter = adapter;
+        WifiManager wm = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
+        mMulticastLock = wm.createMulticastLock(activity.getPackageName());
+        mMulticastLock.setReferenceCounted(false);
     }
 
     @Override
@@ -75,6 +81,7 @@ public class MDnsHelper implements ServiceListener {
     }
 
     public void discoverServices() {
+        mMulticastLock.acquire();
         new AsyncTask<Void, Void, Void>() {
 
             @Override
@@ -98,6 +105,7 @@ public class MDnsHelper implements ServiceListener {
     }
 
     public void stopDiscovery() {
+        mMulticastLock.release();
         if (mJmdns == null)
             return;
         mJmdns.removeServiceListener(HTTP_SERVICE_TYPE, MDnsHelper.this);
