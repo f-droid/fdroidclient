@@ -10,10 +10,6 @@
 	path = extern/AndroidPinning
 	url = https://gitlab.com/fdroid/androidpinning.git
 	ignore = dirty
-[submodule "extern/nanohttpd"]
-	path = extern/nanohttpd
-	url = https://github.com/eighthave/nanohttpd
-	ignore = dirty
 [submodule "extern/libsuperuser"]
 	path = extern/libsuperuser
 	url = https://github.com/dschuermann/libsuperuser.git
