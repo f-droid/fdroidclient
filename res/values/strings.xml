@@ -165,6 +165,7 @@
 	<string name="local_repos_title">Local FDroid Repos</string>
 	<string name="local_repos_scanning">Discovering local FDroid repos&#8230;</string>
 	<string name="local_repo_running">Your local FDroid repo is accessible.</string>
+	<string name="waiting_for_ipaddress">waiting for IP address…</string>
 	<string name="setup_repo">Setup Local Repo</string>
 	<string name="touch_to_configure_local_repo">Touch to setup your local repo.</string>
 	<string name="touch_to_turn_on_local_repo">Touch to turn on your local repo.</string>
@@ -250,9 +251,6 @@
     <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>
     <string name="not_on_same_wifi">Your device is not on the same WiFi as the local repo you just added! Try joining this network: %s</string>
     <string name="requires_features">Requires: %1$s</string>
-
-    <string name="discovered_repo_name">Discovered Repo Name</string>
-    <string name="repo_address">Repo Address</string>
 
     <string name="app_icon">App icon</string>
     <string name="repo_icon">Repo icon</string>
