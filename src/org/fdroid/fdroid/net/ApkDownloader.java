@@ -70,7 +70,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         setProgressListener(null);
     }
 
-    ApkDownloader(Apk apk, String repoAddress, File destDir) {
+    public ApkDownloader(Apk apk, String repoAddress, File destDir) {
         curApk = apk;
         this.repoAddress = repoAddress;
         localFile = new File(destDir, curApk.apkName);
