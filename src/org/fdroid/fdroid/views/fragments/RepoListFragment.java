@@ -14,6 +14,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.*;
@@ -263,15 +264,15 @@ public class RepoListFragment extends ListFragment
                         (DiscoveredRepo) parent.getItemAtPosition(position);
 
                 final ServiceInfo serviceInfo = discoveredService.getServiceInfo();
-
-                String serviceType = serviceInfo.getType();
-                // TODO get repo type from TXT record
-                String protocol = serviceType.contains("fdroidrepos") ? "https:/" : "http:/";
-
-                String serviceAddress = protocol + serviceInfo.getInetAddresses()[0]
-                        + ":" + serviceInfo.getPort() + "/fdroid/repo";
-                // TODO get path from TXT record
-                showAddRepo(serviceAddress, "");
+                String type = serviceInfo.getPropertyString("type");
+                String protocol = type.contains("fdroidrepos") ? "https:/" : "http:/";
+                String path = serviceInfo.getPropertyString("path");
+                if (TextUtils.isEmpty(path))
+                    path = "/fdroid/repo";
+                String serviceUrl = protocol + serviceInfo.getInetAddresses()[0]
+                        + ":" + serviceInfo.getPort() + path;
+                // TODO get fingerprint from TXT record
+                showAddRepo(serviceUrl, "");
             }
         });
 

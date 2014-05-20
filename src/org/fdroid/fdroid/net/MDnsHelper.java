@@ -8,6 +8,7 @@ import android.net.wifi.WifiManager.MulticastLock;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import org.fdroid.fdroid.R;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.jmdns.*;
@@ -45,18 +47,6 @@ public class MDnsHelper implements ServiceListener {
     }
 
     @Override
-    public void serviceAdded(ServiceEvent event) {
-        // a ListView Adapter can only be updated on the UI thread
-        final ServiceInfo serviceInfo = event.getInfo();
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.addItem(serviceInfo);
-            }
-        });
-    }
-
-    @Override
     public void serviceRemoved(ServiceEvent event) {
         // a ListView Adapter can only be updated on the UI thread
         final ServiceInfo serviceInfo = event.getInfo();
@@ -69,15 +59,26 @@ public class MDnsHelper implements ServiceListener {
     }
 
     @Override
+    public void serviceAdded(ServiceEvent event) {
+        addFDroidService(event);
+    }
+
+    @Override
     public void serviceResolved(ServiceEvent event) {
+        addFDroidService(event);
+    }
+
+    private void addFDroidService(ServiceEvent event) {
         // a ListView Adapter can only be updated on the UI thread
         final ServiceInfo serviceInfo = event.getInfo();
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.addItem(serviceInfo);
-            }
-        });
+        String type = serviceInfo.getPropertyString("type");
+        if (type.startsWith("fdroidrepo"))
+            mActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mAdapter.addItem(serviceInfo);
+                }
+            });
     }
 
     public void discoverServices() {
