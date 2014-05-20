@@ -26,3 +26,6 @@
 	path = extern/zipsigner
 	url = https://gitlab.com/fdroid/zipsigner.git
 	ignore = dirty
+[submodule "extern/nanohttpd"]
+	path = extern/nanohttpd
+	url = https://github.com/NanoHttpd/nanohttpd
