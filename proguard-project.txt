@@ -1,2 +1,4 @@
 -dontobfuscate
 -dontwarn javax.naming.**
+-dontnote android.support.**
+-dontnote **ILicensingService
