@@ -26,7 +26,6 @@ dependencies {
 	compile project(':extern:jmdns')
 	compile project(':extern:zipsigner')
 	compile project(':extern:spongycastle:core')
-	compile project(':extern:spongycastle:pg')
 	compile project(':extern:spongycastle:pkix')
 	compile project(':extern:spongycastle:prov')
 }
