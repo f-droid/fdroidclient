@@ -23,6 +23,7 @@ dependencies {
 	compile project(':extern:MemorizingTrustManager')
 	compile project(':extern:libsuperuser:libsuperuser')
 	compile project(':extern:nanohttpd:core')
+	compile project(':extern:jmdns')
 	compile project(':extern:zipsigner')
 	compile project(':extern:spongycastle:core')
 	compile project(':extern:spongycastle:pg')
