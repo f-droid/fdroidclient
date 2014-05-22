@@ -1,6 +1,8 @@
 
 package org.fdroid.fdroid.localrepo;
 
+import android.content.Context;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.x500.X500Name;
@@ -48,11 +50,36 @@ public class LocalRepoKeyStore {
 
     private static final String DEFAULT_INDEX_CERT_INFO = "O=Kerplapp,OU=GuardianProject";
 
+    private static LocalRepoKeyStore localRepoKeyStore;
     private KeyStore keyStore;
     private KeyManager[] keyManagers;
     private File backingFile;
 
-    public LocalRepoKeyStore(File backingFile) throws KeyStoreException, NoSuchAlgorithmException,
+    public static LocalRepoKeyStore get(Context context) {
+
+        if (localRepoKeyStore == null) {
+            File appKeyStoreDir = context.getDir("keystore", Context.MODE_PRIVATE);
+            File keyStoreFile = new File(appKeyStoreDir, "kerplapp.bks");
+            try {
+                localRepoKeyStore = new LocalRepoKeyStore(keyStoreFile);
+            } catch (UnrecoverableKeyException e) {
+                e.printStackTrace();
+            } catch (KeyStoreException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (CertificateException e) {
+                e.printStackTrace();
+            } catch (OperatorCreationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return localRepoKeyStore;
+    }
+
+    private LocalRepoKeyStore(File backingFile) throws KeyStoreException, NoSuchAlgorithmException,
             CertificateException, IOException, OperatorCreationException, UnrecoverableKeyException {
         this.backingFile = backingFile;
         this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
