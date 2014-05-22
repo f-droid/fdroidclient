@@ -3,12 +3,10 @@ package org.fdroid.fdroid.net;
 
 import android.app.Service;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -59,9 +57,7 @@ public class WifiStateChangeService extends Service {
                 FDroidApp.bssid = wifiInfo.getBSSID();
 
                 String scheme;
-                // TODO move this to Preferences.get().isHttpsEnabled();
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(WifiStateChangeService.this);
-                if (prefs.getBoolean("use_https", false))
+                if (Preferences.get().isLocalRepoHttpsEnabled())
                     scheme = "https";
                 else
                     scheme = "http";

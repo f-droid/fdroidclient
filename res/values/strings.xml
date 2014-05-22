@@ -39,6 +39,9 @@
 	<string name="local_repo_bonjour_off">Do not advertise your local repo.</string>
 	<string name="local_repo_name">Name of your Local Repo</string>
 	<string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
+	<string name="local_repo_https">Use Private Connection</string>
+	<string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
+	<string name="local_repo_https_off">Use insecure HTTP:// connection for local repo</string>
 
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>

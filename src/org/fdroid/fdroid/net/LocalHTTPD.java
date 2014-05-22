@@ -1,39 +1,33 @@
 
 package org.fdroid.fdroid.net;
 
+import android.content.Context;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import fi.iki.elonen.NanoHTTPD;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLEncoder;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import javax.net.ssl.SSLServerSocketFactory;
 
 public class LocalHTTPD extends NanoHTTPD {
     private static final String TAG = LocalHTTPD.class.getCanonicalName();
 
+    private final Context context;
     private final File webRoot;
     private final boolean logRequests;
 
-    public LocalHTTPD(File webRoot, boolean useHttps) {
+    public LocalHTTPD(Context context, File webRoot, boolean useHttps) {
         super(FDroidApp.ipAddressString, FDroidApp.port);
         this.logRequests = false;
         this.webRoot = webRoot;
+        this.context = context;
         if (useHttps)
             enableHTTPS();
     }
@@ -91,7 +85,15 @@ public class LocalHTTPD extends NanoHTTPD {
     }
 
     private void enableHTTPS() {
-        // TODO copy implementation from Kerplapp
+        try {
+            LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
+            SSLServerSocketFactory factory = NanoHTTPD.makeSSLSocketFactory(
+                    localRepoKeyStore.getKeyStore(),
+                    localRepoKeyStore.getKeyManagers());
+            makeSecure(factory);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private Response respond(Map<String, String> headers, String uri) {
@@ -305,7 +307,8 @@ public class LocalHTTPD extends NanoHTTPD {
                 }
                 for (String directory : directories) {
                     String dir = directory + "/";
-                    msg.append("<li><a rel=\"directory\" href=\"").append(encodeUriBetweenSlashes(uri + dir))
+                    msg.append("<li><a rel=\"directory\" href=\"")
+                            .append(encodeUriBetweenSlashes(uri + dir))
                             .append("\"><span class=\"dirname\">").append(dir)
                             .append("</span></a></b></li>");
                 }

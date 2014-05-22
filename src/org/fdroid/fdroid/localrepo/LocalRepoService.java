@@ -5,15 +5,12 @@ import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.*;
 import android.os.*;
-import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.Preferences.ChangeListener;
-import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.LocalRepoActivity;
@@ -91,6 +88,23 @@ public class LocalRepoService extends Service {
         }
     };
 
+    private ChangeListener localRepoHttpsChangeListener = new ChangeListener() {
+        @Override
+        public void onPreferenceChange() {
+            Log.i("localRepoHttpsChangeListener", "onPreferenceChange");
+            if (localHttpd.isAlive()) {
+                new AsyncTask<Void, Void, Void>() {
+                    @Override
+                    protected Void doInBackground(Void... params) {
+                        stopNetworkServices();
+                        startNetworkServices();
+                        return null;
+                    }
+                }.execute();
+            }
+        }
+    };
+
     @Override
     public void onCreate() {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -137,23 +151,25 @@ public class LocalRepoService extends Service {
         startWebServer();
         if (Preferences.get().isLocalRepoBonjourEnabled())
             registerMDNSService();
+        Preferences.get().registerLocalRepoHttpsListeners(localRepoHttpsChangeListener);
     }
 
     private void stopNetworkServices() {
+        Preferences.get().unregisterLocalRepoHttpsListeners(localRepoHttpsChangeListener);
         unregisterMDNSService();
         stopWebServer();
     }
 
     private void startWebServer() {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
         Runnable webServer = new Runnable() {
             // Tell Eclipse this is not a leak because of Looper use.
             @SuppressLint("HandlerLeak")
             @Override
             public void run() {
-                localHttpd = new LocalHTTPD(getFilesDir(),
-                        prefs.getBoolean("use_https", false));
+                localHttpd = new LocalHTTPD(
+                        LocalRepoService.this,
+                        getFilesDir(),
+                        Preferences.get().isLocalRepoHttpsEnabled());
 
                 Looper.prepare(); // must be run before creating a Handler
                 webServerThreadHandler = new Handler() {
@@ -200,11 +216,16 @@ public class LocalRepoService extends Service {
         final HashMap<String, String> values = new HashMap<String, String>();
         values.put("path", "/fdroid/repo");
         values.put("name", repoName);
-        // TODO set type based on "use HTTPS" pref
         values.put("fingerprint", FDroidApp.repo.fingerprint);
-        values.put("type", "fdroidrepo");
-        pairService = ServiceInfo.create("_http._tcp.local.",
-                repoName, FDroidApp.port, 0, 0, values);
+        String type;
+        if (Preferences.get().isLocalRepoHttpsEnabled()) {
+            values.put("type", "fdroidrepos");
+            type = "_https._tcp.local.";
+        } else {
+            values.put("type", "fdroidrepo");
+            type = "_http._tcp.local.";
+        }
+        pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
         new Thread(new Runnable() {
 
             @Override

@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.*;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.QrGenAsyncTask;
-import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 public class QrWizardDownloadActivity extends Activity {
@@ -62,9 +59,8 @@ public class QrWizardDownloadActivity extends Activity {
     };
 
     private void resetNetworkInfo() {
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String qrString = "";
-        if (prefs.getBoolean("use_https", false))
+        if (Preferences.get().isLocalRepoHttpsEnabled())
             qrString += "https";
         else
             qrString += "http";
