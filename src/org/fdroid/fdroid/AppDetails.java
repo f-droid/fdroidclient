@@ -425,7 +425,6 @@ public class AppDetails extends ListActivity implements ProgressListener {
 
     @Override
     protected void onResume() {
-        Log.d(TAG, "onresume");
         super.onResume();
         
         // register observer to know when install status changes
@@ -1021,8 +1020,9 @@ public class AppDetails extends ListActivity implements ProgressListener {
     private void startDownload(Apk apk, String repoAddress) {
         downloadHandler = new ApkDownloader(apk, repoAddress, Utils.getApkCacheDir(getBaseContext()));
         downloadHandler.setProgressListener(this);
-        downloadHandler.download();
-        updateProgressDialog();
+        if (downloadHandler.download()) {
+            updateProgressDialog();
+        }
     }
     private void installApk(File file, String packageName) {
         setProgressBarIndeterminateVisibility(true);
@@ -1052,10 +1052,6 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 @Override
                 public void run() {                    
                     if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                        if (downloadHandler != null) {
-                            downloadHandler = null;
-                        }
-
                         PackageManagerCompat.setInstaller(mPm, app.id);
                     }
 
@@ -1121,8 +1117,13 @@ public class AppDetails extends ListActivity implements ProgressListener {
             pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {
-                    downloadHandler.cancel();
-                    downloadHandler = null;
+                    Log.d(TAG, "User clicked 'cancel' on download, attempting to interrupt download thread.");
+                    if (downloadHandler !=  null) {
+                        downloadHandler.cancel();
+                        downloadHandler = null;
+                    } else {
+                        Log.e(TAG, "Tried to cancel, but the downloadHandler doesn't exist.");
+                    }
                     progressDialog = null;
                     Toast.makeText(AppDetails.this, getString(R.string.download_cancelled), Toast.LENGTH_LONG).show();
                 }
@@ -1148,21 +1149,28 @@ public class AppDetails extends ListActivity implements ProgressListener {
      * {@link org.fdroid.fdroid.ProgressListener.Event}.
      */
     private void updateProgressDialog() {
-        updateProgressDialog(downloadHandler.getProgress(), downloadHandler.getTotalSize());
+        if (downloadHandler != null) {
+            updateProgressDialog(downloadHandler.getProgress(), downloadHandler.getTotalSize());
+        }
     }
 
     private void updateProgressDialog(int progress, int total) {
-        ProgressDialog pd = getProgressDialog(downloadHandler.getRemoteAddress());
-        if (total > 0) {
-            pd.setIndeterminate(false);
-            pd.setProgress(progress);
-            pd.setMax(total);
-        } else {
-            pd.setIndeterminate(true);
-            pd.setProgress(progress);
-            pd.setMax(0);
+        if (downloadHandler != null) {
+            ProgressDialog pd = getProgressDialog(downloadHandler.getRemoteAddress());
+            if (total > 0) {
+                pd.setIndeterminate(false);
+                pd.setProgress(progress);
+                pd.setMax(total);
+            } else {
+                pd.setIndeterminate(true);
+                pd.setProgress(progress);
+                pd.setMax(0);
+            }
+            if (!pd.isShowing()) {
+                Log.d(TAG, "Showing progress dialog for download.");
+                pd.show();
+            }
         }
-        pd.show();
     }
 
     @Override
@@ -1200,7 +1208,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
         switch (requestCode) {
         case REQUEST_ENABLE_BLUETOOTH:
             fdroidApp.sendViaBluetooth(this, resultCode, app.id);
-			break;
+            break;
         }
     }
 }

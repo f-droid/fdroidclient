@@ -131,12 +131,17 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         }
     }
 
-    public void download() {
+    /**
+     * If the download successfully spins up a new thread to start downloading, then we return
+     * true, otherwise false. This is useful, e.g. when we use a cached version, and so don't
+     * want to bother with progress dialogs et al.
+     */
+    public boolean download() {
 
         // Can we use the cached version?
         if (verifyOrDeleteCachedVersion()) {
             sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
-            return;
+            return false;
         }
 
         String remoteAddress = getRemoteAddress();
@@ -147,12 +152,15 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             Downloader downloader = new HttpDownloader(remoteAddress, localFile);
             dlWrapper = new AsyncDownloadWrapper(downloader, this);
             dlWrapper.download();
+            return true;
 
         } catch (MalformedURLException e) {
             onErrorDownloading(e.getLocalizedMessage());
         } catch (IOException e) {
             onErrorDownloading(e.getLocalizedMessage());
         }
+
+        return false;
     }
 
     private void sendMessage(String type) {
