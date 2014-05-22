@@ -211,30 +211,6 @@ public class LocalRepoKeyStore {
         return null;
     }
 
-    // This is take from FDroid: org.fdroid.fdroid.DB.calcFingerprint()
-    // TODO once this code is part of FDroid, replace this with DB.calcFingerprint()
-    public String getFingerprint() {
-        String ret = null;
-        try {
-            Certificate cert = getCertificate();
-            if (cert != null) {
-                MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                digest.update(cert.getEncoded());
-                byte[] fingerprint = digest.digest();
-                Formatter formatter = new Formatter(new StringBuilder());
-                for (int i = 0; i < fingerprint.length; i++) {
-                    formatter.format("%02X", fingerprint[i]);
-                }
-                ret = formatter.toString();
-                formatter.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return ret;
-    }
-
     public Certificate getCertificate() {
         try {
             Key key = keyStore.getKey(INDEX_CERT_ALIAS, "".toCharArray());

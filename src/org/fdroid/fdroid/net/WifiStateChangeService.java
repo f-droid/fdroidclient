@@ -2,7 +2,6 @@
 package org.fdroid.fdroid.net;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiInfo;
@@ -16,7 +15,9 @@ import android.util.Log;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 
+import java.security.cert.Certificate;
 import java.util.Locale;
 
 public class WifiStateChangeService extends Service {
@@ -67,6 +68,8 @@ public class WifiStateChangeService extends Service {
                 FDroidApp.repo.name = Preferences.get().getLocalRepoName();
                 FDroidApp.repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
+                Certificate localCert = LocalRepoKeyStore.get(getApplication()).getCertificate();
+                FDroidApp.repo.fingerprint = Utils.calcFingerprint(localCert);
                 FDroidApp.localRepo.setUriString(FDroidApp.repo.address);
                 FDroidApp.localRepo.writeIndexPage(
                         Utils.getSharingUri(WifiStateChangeService.this, FDroidApp.repo).toString());

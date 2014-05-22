@@ -201,7 +201,7 @@ public class LocalRepoService extends Service {
         values.put("path", "/fdroid/repo");
         values.put("name", repoName);
         // TODO set type based on "use HTTPS" pref
-        // values.put("fingerprint", FDroidApp.repo.fingerprint);
+        values.put("fingerprint", FDroidApp.repo.fingerprint);
         values.put("type", "fdroidrepo");
         pairService = ServiceInfo.create("_http._tcp.local.",
                 repoName, FDroidApp.port, 0, 0, values);
