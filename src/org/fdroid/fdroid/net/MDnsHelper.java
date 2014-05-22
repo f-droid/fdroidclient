@@ -8,7 +8,6 @@ import android.net.wifi.WifiManager.MulticastLock;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import org.fdroid.fdroid.R;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.jmdns.*;
@@ -36,13 +34,14 @@ public class MDnsHelper implements ServiceListener {
     final RepoScanListAdapter mAdapter;
 
     private JmDNS mJmdns;
-    private MulticastLock mMulticastLock;
+    private final WifiManager wifiManager;
+    private final MulticastLock mMulticastLock;
 
     public MDnsHelper(Activity activity, final RepoScanListAdapter adapter) {
         mActivity = activity;
         mAdapter = adapter;
-        WifiManager wm = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
-        mMulticastLock = wm.createMulticastLock(activity.getPackageName());
+        wifiManager = (WifiManager) activity.getSystemService(Context.WIFI_SERVICE);
+        mMulticastLock = wifiManager.createMulticastLock(activity.getPackageName());
         mMulticastLock.setReferenceCounted(false);
     }
 
@@ -59,8 +58,15 @@ public class MDnsHelper implements ServiceListener {
     }
 
     @Override
-    public void serviceAdded(ServiceEvent event) {
+    public void serviceAdded(final ServiceEvent event) {
         addFDroidService(event);
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                mJmdns.requestServiceInfo(event.getType(), event.getName(), true);
+                return null;
+            }
+        }.execute();
     }
 
     @Override
@@ -88,7 +94,14 @@ public class MDnsHelper implements ServiceListener {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    mJmdns = JmDNS.create();
+                    int ip = wifiManager.getConnectionInfo().getIpAddress();
+                    byte[] byteIp = new byte[] {
+                            (byte) (ip & 0xff),
+                            (byte) (ip >> 8 & 0xff),
+                            (byte) (ip >> 16 & 0xff),
+                            (byte) (ip >> 24 & 0xff)
+                    };
+                    mJmdns = JmDNS.create(InetAddress.getByAddress(byteIp));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
