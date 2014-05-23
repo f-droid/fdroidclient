@@ -133,24 +133,25 @@ public class LocalRepoKeyStore {
         }
     }
 
-    public void setupHTTPSCertificate() throws CertificateException,
-            OperatorCreationException, KeyStoreException, NoSuchAlgorithmException,
-            FileNotFoundException, IOException, UnrecoverableKeyException {
-        // Get the existing private/public keypair to use for the HTTPS cert
-        KeyPair kerplappKeypair = getKerplappKeypair();
+    public void setupHTTPSCertificate() {
+        try {
+            // Get the existing private/public keypair to use for the HTTPS cert
+            KeyPair kerplappKeypair = getKerplappKeypair();
 
-        /*
-         * Once we have an IP address, that can be used as the hostname. We can
-         * generate a self signed cert with a valid CN field to stash into the
-         * keystore in a predictable place. If the IP address changes we should
-         * run this method again to stomp old HTTPS_CERT_ALIAS entries.
-         */
-        X500Name subject = new X500Name("CN=" + FDroidApp.ipAddressString);
-
-        Certificate indexCert = generateSelfSignedCertChain(kerplappKeypair, subject,
-                FDroidApp.ipAddressString);
-
-        addToStore(HTTP_CERT_ALIAS, kerplappKeypair, indexCert);
+            /*
+             * Once we have an IP address, that can be used as the hostname. We
+             * can generate a self signed cert with a valid CN field to stash
+             * into the keystore in a predictable place. If the IP address
+             * changes we should run this method again to stomp old
+             * HTTPS_CERT_ALIAS entries.
+             */
+            X500Name subject = new X500Name("CN=" + FDroidApp.ipAddressString);
+            Certificate indexCert = generateSelfSignedCertChain(kerplappKeypair, subject,
+                    FDroidApp.ipAddressString);
+            addToStore(HTTP_CERT_ALIAS, kerplappKeypair, indexCert);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public File getKeyStoreFile() {
