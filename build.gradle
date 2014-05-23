@@ -25,9 +25,6 @@ dependencies {
 	compile project(':extern:nanohttpd:core')
 	compile project(':extern:jmdns')
 	compile project(':extern:zipsigner')
-	compile project(':extern:spongycastle:core')
-	compile project(':extern:spongycastle:pkix')
-	compile project(':extern:spongycastle:prov')
 }
 
 project(':extern:UniversalImageLoader:library') {
@@ -56,6 +53,17 @@ project(':extern:UniversalImageLoader:library') {
 			}
 		}
 	}
+}
+
+project(':extern:zipsigner') {
+
+    apply plugin: 'java'
+
+    dependencies {
+        compile project(':extern:spongycastle:core')
+        compile project(':extern:spongycastle:pkix')
+        compile project(':extern:spongycastle:prov')
+    }
 }
 
 android {
