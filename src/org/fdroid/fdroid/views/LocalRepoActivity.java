@@ -23,6 +23,7 @@ import android.widget.*;
 
 import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
+import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.spongycastle.operator.OperatorCreationException;
@@ -73,7 +74,7 @@ public class LocalRepoActivity extends Activity {
         LocalBroadcastManager.getInstance(this).registerReceiver(onLocalRepoChange,
                 new IntentFilter(LocalRepoService.STATE));
         // if no local repo exists, create one with only FDroid in it
-        if (!FDroidApp.localRepo.xmlIndex.exists())
+        if (!LocalRepoManager.get(this).xmlIndex.exists())
             new UpdateAsyncTask(this, new String[] {
                     getPackageName(),
             }).execute();
@@ -321,26 +322,27 @@ public class LocalRepoActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
+                final LocalRepoManager lrm = LocalRepoManager.get(LocalRepoActivity.this);
                 publishProgress(getString(R.string.deleting_repo));
-                FDroidApp.localRepo.deleteRepo();
+                lrm.deleteRepo();
                 for (String app : selectedApps) {
                     publishProgress(String.format(getString(R.string.adding_apks_format), app));
-                    FDroidApp.localRepo.addApp(getApplicationContext(), app);
+                    lrm.addApp(getApplicationContext(), app);
                 }
-                FDroidApp.localRepo.writeIndexPage(sharingUri.toString());
+                lrm.writeIndexPage(sharingUri.toString());
                 publishProgress(getString(R.string.writing_index_xml));
-                FDroidApp.localRepo.writeIndexXML();
+                lrm.writeIndexXML();
                 publishProgress(getString(R.string.writing_index_jar));
-                FDroidApp.localRepo.writeIndexJar();
+                lrm.writeIndexJar();
                 publishProgress(getString(R.string.linking_apks));
-                FDroidApp.localRepo.copyApksToRepo();
+                lrm.copyApksToRepo();
                 publishProgress(getString(R.string.copying_icons));
                 // run the icon copy without progress, its not a blocker
                 new AsyncTask<Void, Void, Void>() {
 
                     @Override
                     protected Void doInBackground(Void... params) {
-                        FDroidApp.localRepo.copyIconsToRepo();
+                        lrm.copyIconsToRepo();
                         return null;
                     }
                 }.execute();

@@ -63,7 +63,15 @@ public class LocalRepoManager {
     public final File repoDir;
     public final File iconsDir;
 
-    public LocalRepoManager(Context c) {
+    private static LocalRepoManager localRepoManager;
+
+    public static LocalRepoManager get(Context context) {
+        if(localRepoManager == null)
+            localRepoManager = new LocalRepoManager(context);
+        return localRepoManager;
+    }
+
+    private LocalRepoManager(Context c) {
         context = c;
         pm = c.getPackageManager();
         assetManager = c.getAssets();

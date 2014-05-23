@@ -14,6 +14,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
+import org.fdroid.fdroid.localrepo.LocalRepoManager;
 
 import java.security.cert.Certificate;
 import java.util.Locale;
@@ -66,8 +67,9 @@ public class WifiStateChangeService extends Service {
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
                 Certificate localCert = LocalRepoKeyStore.get(getApplication()).getCertificate();
                 FDroidApp.repo.fingerprint = Utils.calcFingerprint(localCert);
-                FDroidApp.localRepo.setUriString(FDroidApp.repo.address);
-                FDroidApp.localRepo.writeIndexPage(
+                LocalRepoManager lrm = LocalRepoManager.get(WifiStateChangeService.this);
+                lrm.setUriString(FDroidApp.repo.address);
+                lrm.writeIndexPage(
                         Utils.getSharingUri(WifiStateChangeService.this, FDroidApp.repo).toString());
             } catch (InterruptedException e) {
                 e.printStackTrace();
