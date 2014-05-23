@@ -1,5 +1,16 @@
 ### Upcoming release (2014-06-??)
 
+* added "local repo" support to host an FDroid repo on the device itself, with
+  full signed repo support, icons, and optional HTTPS://
+
+* "Setup Local Repo" UI for setting up the local repo based on choosing from
+  any installed app on the device
+
+* find local repos on the same network using Bonjour/mDNS
+
+* directly send installed apps to other devices via Bluetooth and Android Beam
+  (NFC+Bluetooth), also compatible with Samsung/HTC S-Beam
+
 * Fix some crashes
 
 * Translation updates
