@@ -22,18 +22,10 @@ import android.view.*;
 import android.widget.*;
 
 import org.fdroid.fdroid.*;
-import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import org.spongycastle.operator.OperatorCreationException;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -259,28 +251,6 @@ public class LocalRepoActivity extends Activity {
             fingerprintTextView.setText(FDroidApp.repo.fingerprint);
         } else {
             fingerprintTextView.setVisibility(View.GONE);
-        }
-
-        // Once the IP address is known we need to generate a self signed
-        // certificate to use for HTTPS that has a CN field set to the
-        // ipAddressString. We'll generate it even if useHttps is false
-        // to simplify having to detect when that preference changes.
-        try {
-            LocalRepoKeyStore.get(this).setupHTTPSCertificate();
-        } catch (UnrecoverableKeyException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (OperatorCreationException e) {
-            e.printStackTrace();
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         // the required NFC API was added in 4.0 aka Ice Cream Sandwich
