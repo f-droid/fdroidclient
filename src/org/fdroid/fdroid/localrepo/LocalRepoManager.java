@@ -298,7 +298,6 @@ public class LocalRepoManager {
         repo.setAttribute("pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
         long timestamp = System.currentTimeMillis() / 1000L;
         repo.setAttribute("timestamp", String.valueOf(timestamp));
-        repo.setAttribute("url", uriString);
         rootElement.appendChild(repo);
 
         Element repoDesc = doc.createElement("description");
