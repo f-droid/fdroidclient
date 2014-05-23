@@ -48,6 +48,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     public static final int ERROR_DOWNLOAD_FAILED = 102;
     public static final int ERROR_UNKNOWN = 103;
 
+    private static final String EVENT_SOURCE_ID = "sourceId";
+    private static long downloadIdCounter = 0;
+
     /**
      * Used as a key to pass data through with an error event, explaining the type of event.
      */
@@ -61,6 +64,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     private AsyncDownloadWrapper dlWrapper = null;
     private int progress  = 0;
     private int totalSize = 0;
+    private boolean isComplete = false;
+
+    private long id = ++downloadIdCounter;
 
     public void setProgressListener(ProgressListener listener) {
         this.listener = listener;
@@ -81,6 +87,15 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      */
     public File localFile() {
         return localFile;
+    }
+
+    /**
+     * When stopping/starting downloaders multiple times (on different threads), it can
+     * get weird whereby different threads are sending progress events. It is important
+     * to be able to see which downloader these progress events are coming from.
+     */
+    public boolean isEventFromThis(Event event) {
+        return event.getData().containsKey(EVENT_SOURCE_ID) && event.getData().getLong(EVENT_SOURCE_ID) == id;
     }
 
     public String getRemoteAddress() {
@@ -131,6 +146,15 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         }
     }
 
+    private void sendCompleteMessage() {
+        isComplete = true;
+        sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
+    }
+
+    public boolean isComplete() {
+        return this.isComplete;
+    }
+
     /**
      * If the download successfully spins up a new thread to start downloading, then we return
      * true, otherwise false. This is useful, e.g. when we use a cached version, and so don't
@@ -140,7 +164,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
         // Can we use the cached version?
         if (verifyOrDeleteCachedVersion()) {
-            sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
+            sendCompleteMessage();
             return false;
         }
 
@@ -181,6 +205,8 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             progress  = event.progress;
         }
 
+        event.getData().putLong(EVENT_SOURCE_ID, id);
+
         if (listener != null) {
             listener.onProgress(event);
         }
@@ -214,7 +240,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         }
 
         Log.d("FDroid", "Download finished: " + localFile);
-        sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
+        sendCompleteMessage();
     }
 
     @Override
@@ -232,7 +258,6 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      * listener (to prevent
      */
     public void cancel() {
-        removeProgressListener();
         if (dlWrapper != null) {
             dlWrapper.attemptCancel();
         }

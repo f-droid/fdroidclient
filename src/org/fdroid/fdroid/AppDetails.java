@@ -433,18 +433,46 @@ public class AppDetails extends ListActivity implements ProgressListener {
               AppProvider.getContentUri(app.id),
               true,
               myAppObserver);
-         if (downloadHandler != null) {
-            downloadHandler.setProgressListener(this);
+        if (downloadHandler != null) {
+            if (downloadHandler.isComplete()) {
+                downloadCompleteInstallApk();
+            } else {
+                downloadHandler.setProgressListener(this);
 
-            // Show the progress dialog, if for no other reason than to prevent them attempting
-            // to download again (i.e. we force them to touch 'cancel' before they can access
-            // the rest of the activity).
-            updateProgressDialog();
+                // Show the progress dialog, if for no other reason than to prevent them attempting
+                // to download again (i.e. we force them to touch 'cancel' before they can access
+                // the rest of the activity).
+                Log.d(TAG, "Showing dialog to user after resuming app details view, because a download was previously in progress");
+                updateProgressDialog();
+            }
         }
 
         updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
+    }
+
+    /**
+     * Remove progress listener, suppress progress dialog, set downloadHandler to null.
+     */
+    private void cleanUpFinishedDownload() {
+        if (downloadHandler != null) {
+            downloadHandler.removeProgressListener();
+            removeProgressDialog();
+            downloadHandler = null;
+        }
+    }
+
+    /**
+     * Once the download completes successfully, call this method to start the install process
+     * with the file that was downloaded.
+     */
+    private void downloadCompleteInstallApk() {
+        if (downloadHandler != null) {
+            assert downloadHandler.isComplete();
+            installApk(downloadHandler.localFile(), downloadHandler.getApk().id);
+            cleanUpFinishedDownload();
+        }
     }
 
     @Override
@@ -491,6 +519,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
         if (downloadHandler != null) {
             if (!inProcessOfChangingConfiguration) {
                 downloadHandler.cancel();
+                cleanUpFinishedDownload();
             }
         }
         inProcessOfChangingConfiguration = false;
@@ -1024,6 +1053,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
             updateProgressDialog();
         }
     }
+
     private void installApk(File file, String packageName) {
         setProgressBarIndeterminateVisibility(true);
 
@@ -1120,7 +1150,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
                     Log.d(TAG, "User clicked 'cancel' on download, attempting to interrupt download thread.");
                     if (downloadHandler !=  null) {
                         downloadHandler.cancel();
-                        downloadHandler = null;
+                        cleanUpFinishedDownload();
                     } else {
                         Log.e(TAG, "Tried to cancel, but the downloadHandler doesn't exist.");
                     }
@@ -1175,6 +1205,18 @@ public class AppDetails extends ListActivity implements ProgressListener {
 
     @Override
     public void onProgress(Event event) {
+        if (downloadHandler == null || !downloadHandler.isEventFromThis(event)) {
+            // Choose not to respond to events from previous downloaders.
+            // We don't even care if we receive "cancelled" events or the like, because
+            // we dealt with cancellations in the onCancel listener of the dialog,
+            // rather than waiting to receive the event here. We try and be careful in
+            // the download thread to make sure that we check for cancellations before
+            // sending events, but it is not possible to be perfect, because the interruption
+            // which triggers the download can happen after the check to see if
+            Log.d(TAG, "Discarding downloader event \"" + event.type + "\" as it is from an old (probably cancelled) downloader.");
+            return;
+        }
+
         boolean finished = false;
         if (event.type.equals(Downloader.EVENT_PROGRESS)) {
             updateProgressDialog(event.progress, event.total);
@@ -1188,7 +1230,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
             finished = true;
         } else if (event.type.equals(ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE)) {
-            installApk(downloadHandler.localFile(), downloadHandler.getApk().id);
+            downloadCompleteInstallApk();
             finished = true;
         }
 
