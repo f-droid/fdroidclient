@@ -2,6 +2,7 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.spongycastle.asn1.ASN1Sequence;
@@ -23,7 +24,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Formatter;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -53,79 +53,84 @@ public class LocalRepoKeyStore {
     private static LocalRepoKeyStore localRepoKeyStore;
     private KeyStore keyStore;
     private KeyManager[] keyManagers;
-    private File backingFile;
+    private File keyStoreFile;
 
     public static LocalRepoKeyStore get(Context context) {
-        if (localRepoKeyStore == null) {
-            File appKeyStoreDir = context.getDir("keystore", Context.MODE_PRIVATE);
-            File keyStoreFile = new File(appKeyStoreDir, "kerplapp.bks");
-            try {
-                localRepoKeyStore = new LocalRepoKeyStore(keyStoreFile);
-            } catch (UnrecoverableKeyException e) {
-                e.printStackTrace();
-            } catch (KeyStoreException e) {
-                e.printStackTrace();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (CertificateException e) {
-                e.printStackTrace();
-            } catch (OperatorCreationException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        if (localRepoKeyStore == null)
+            localRepoKeyStore = new LocalRepoKeyStore(context);
         return localRepoKeyStore;
     }
 
-    private LocalRepoKeyStore(File backingFile) throws KeyStoreException, NoSuchAlgorithmException,
-            CertificateException, IOException, OperatorCreationException, UnrecoverableKeyException {
-        this.backingFile = backingFile;
-        this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+    private LocalRepoKeyStore(Context context) {
+        try {
+            Log.d(TAG, "generating LocalRepoKeyStore instance");
+            File appKeyStoreDir = context.getDir("keystore", Context.MODE_PRIVATE);
+            this.keyStoreFile = new File(appKeyStoreDir, "kerplapp.bks");
+            this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 
-        // If there isn't a persisted BKS keystore on disk we need to
-        // create a new empty keystore
-        if (!backingFile.exists()) {
-            // Init a new keystore with a blank passphrase
-            keyStore.load(null, "".toCharArray());
-        } else {
-            keyStore.load(new FileInputStream(backingFile), "".toCharArray());
+            // If there isn't a persisted BKS keystore on disk we need to
+            // create a new empty keystore
+            if (!keyStoreFile.exists()) {
+                // Init a new keystore with a blank passphrase
+                keyStore.load(null, "".toCharArray());
+            } else {
+                keyStore.load(new FileInputStream(keyStoreFile), "".toCharArray());
+            }
+
+            /*
+             * If the keystore we loaded doesn't have an INDEX_CERT_ALIAS entry
+             * we need to generate a new random keypair and a self signed
+             * certificate for this slot.
+             */
+            if (keyStore.getKey(INDEX_CERT_ALIAS, "".toCharArray()) == null) {
+                /*
+                 * Generate a random key pair to associate with the
+                 * INDEX_CERT_ALIAS certificate in the keystore. This keypair
+                 * will be used for the HTTPS cert as well.
+                 */
+                KeyPair rndKeys = generateRandomKeypair();
+
+                /*
+                 * Generate a self signed certificate for signing the index.jar
+                 * We can't generate the HTTPS certificate until we know what
+                 * the IP address will be to use for the CN field.
+                 */
+                X500Name subject = new X500Name(DEFAULT_INDEX_CERT_INFO);
+                Certificate indexCert = generateSelfSignedCertChain(rndKeys, subject);
+
+                addToStore(INDEX_CERT_ALIAS, rndKeys, indexCert);
+            }
+
+            /*
+             * Kerplapp uses its own KeyManager to to ensure the correct
+             * keystore alias is used for the correct purpose. With the default
+             * key manager it is not possible to specify that HTTP_CERT_ALIAS
+             * should be used for TLS and INDEX_CERT_ALIAS for signing the
+             * index.jar.
+             */
+            KeyManagerFactory keyManagerFactory = KeyManagerFactory
+                    .getInstance(KeyManagerFactory.getDefaultAlgorithm());
+
+            keyManagerFactory.init(keyStore, "".toCharArray());
+            KeyManager defaultKeyManager = keyManagerFactory.getKeyManagers()[0];
+            KeyManager wrappedKeyManager = new KerplappKeyManager(
+                    (X509KeyManager) defaultKeyManager);
+            keyManagers = new KeyManager[] {
+                    wrappedKeyManager
+            };
+        } catch (UnrecoverableKeyException e) {
+            e.printStackTrace();
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (CertificateException e) {
+            e.printStackTrace();
+        } catch (OperatorCreationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        /*
-         * If the keystore we loaded doesn't have an INDEX_CERT_ALIAS entry we
-         * need to generate a new random keypair and a self signed certificate
-         * for this slot.
-         */
-        if (keyStore.getKey(INDEX_CERT_ALIAS, "".toCharArray()) == null) {
-            // Generate a random key pair to associate with the INDEX_CERT_ALIAS
-            // certificate in the keystore. This keypair will be used for the
-            // HTTPS cert as well.
-            KeyPair rndKeys = generateRandomKeypair();
-
-            // Generate a self signed certificate for signing the index.jar
-            // We can't generate the HTTPS certificate until we know what the IP
-            // address will be to use for the CN field.
-            X500Name subject = new X500Name(DEFAULT_INDEX_CERT_INFO);
-            Certificate indexCert = generateSelfSignedCertChain(rndKeys, subject);
-
-            addToStore(INDEX_CERT_ALIAS, rndKeys, indexCert);
-        }
-
-        // Kerplapp uses its own KeyManager to to ensure the correct keystore
-        // alias is used for the correct purpose. With the default key manager
-        // it is not possible to specify that HTTP_CERT_ALIAS should be used for
-        // TLS and INDEX_CERT_ALIAS for signing the index.jar.
-        KeyManagerFactory keyManagerFactory = KeyManagerFactory
-                .getInstance(KeyManagerFactory.getDefaultAlgorithm());
-
-        keyManagerFactory.init(keyStore, "".toCharArray());
-        KeyManager defaultKeyManager = keyManagerFactory.getKeyManagers()[0];
-        KeyManager wrappedKeyManager = new KerplappKeyManager(
-                (X509KeyManager) defaultKeyManager);
-        keyManagers = new KeyManager[] {
-                wrappedKeyManager
-        };
     }
 
     public void setupHTTPSCertificate() throws CertificateException,
@@ -149,7 +154,7 @@ public class LocalRepoKeyStore {
     }
 
     public File getKeyStoreFile() {
-        return backingFile;
+        return keyStoreFile;
     }
 
     public KeyStore getKeyStore() {
@@ -235,7 +240,7 @@ public class LocalRepoKeyStore {
         keyStore.setKeyEntry(alias, kp.getPrivate(),
                 "".toCharArray(), chain);
 
-        keyStore.store(new FileOutputStream(backingFile), "".toCharArray());
+        keyStore.store(new FileOutputStream(keyStoreFile), "".toCharArray());
 
         /*
          * After adding an entry to the keystore we need to create a fresh
