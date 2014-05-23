@@ -177,8 +177,8 @@
 	<string name="update_repo">Update Repo</string>
 	<string name="deleting_repo">Deleting current repo&#8230;</string>
 	<string name="adding_apks_format">Adding %s to repo&#8230;</string>
-	<string name="writing_index_xml">Writing raw index file (index.xml)&#8230;</string>
 	<string name="writing_index_jar">Writing signed index file (index.jar)&#8230;</string>
+	<string name="failed_to_create_index">Failed to create the repo index!</string>
 	<string name="linking_apks">Linking APKs into the repo&#8230;</string>
 	<string name="copying_icons">Copying app icons into the repo&#8230;</string>
 	<string name="updated_local_repo">Finished updating local repo</string>

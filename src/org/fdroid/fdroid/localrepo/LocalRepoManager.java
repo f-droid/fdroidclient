@@ -15,10 +15,9 @@ import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
-import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.data.App;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -33,7 +32,9 @@ import java.util.jar.JarOutputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -66,7 +67,7 @@ public class LocalRepoManager {
     private static LocalRepoManager localRepoManager;
 
     public static LocalRepoManager get(Context context) {
-        if(localRepoManager == null)
+        if (localRepoManager == null)
             localRepoManager = new LocalRepoManager(context);
         return localRepoManager;
     }
@@ -276,7 +277,7 @@ public class LocalRepoManager {
 
     // TODO this needs to be ported to < android-8
     @TargetApi(8)
-    public void writeIndexXML() throws Exception {
+    private void writeIndexXML() throws TransformerException, ParserConfigurationException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
@@ -436,6 +437,14 @@ public class LocalRepoManager {
     }
 
     public void writeIndexJar() throws IOException {
+        try {
+            writeIndexXML();
+        } catch (Exception e) {
+            Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+            return;
+        }
+
         BufferedOutputStream bo = new BufferedOutputStream(
                 new FileOutputStream(xmlIndexJarUnsigned));
         JarOutputStream jo = new JarOutputStream(bo);

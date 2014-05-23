@@ -300,8 +300,6 @@ public class LocalRepoActivity extends Activity {
                     lrm.addApp(getApplicationContext(), app);
                 }
                 lrm.writeIndexPage(sharingUri.toString());
-                publishProgress(getString(R.string.writing_index_xml));
-                lrm.writeIndexXML();
                 publishProgress(getString(R.string.writing_index_jar));
                 lrm.writeIndexJar();
                 publishProgress(getString(R.string.linking_apks));
