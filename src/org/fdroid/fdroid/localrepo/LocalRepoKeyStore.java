@@ -31,15 +31,15 @@ import javax.net.ssl.X509KeyManager;
 
 import kellinwood.security.zipsigner.ZipSigner;
 
+// TODO Address exception handling in a uniform way throughout
+
 public class LocalRepoKeyStore {
-    // TODO: Address exception handling in a uniform way across the KeyStore & application
+    private static final String TAG = "KerplappKeyStore";
 
     static {
         Security.insertProviderAt(
                 new org.spongycastle.jce.provider.BouncyCastleProvider(), 1);
     }
-
-    private static final String TAG = "KerplappKeyStore";
 
     public static final String INDEX_CERT_ALIAS = "fdroid";
     public static final String HTTP_CERT_ALIAS = "https";
@@ -56,7 +56,6 @@ public class LocalRepoKeyStore {
     private File backingFile;
 
     public static LocalRepoKeyStore get(Context context) {
-
         if (localRepoKeyStore == null) {
             File appKeyStoreDir = context.getDir("keystore", Context.MODE_PRIVATE);
             File keyStoreFile = new File(appKeyStoreDir, "kerplapp.bks");
@@ -86,8 +85,7 @@ public class LocalRepoKeyStore {
 
         // If there isn't a persisted BKS keystore on disk we need to
         // create a new empty keystore
-        if (!backingFile.exists())
-        {
+        if (!backingFile.exists()) {
             // Init a new keystore with a blank passphrase
             keyStore.load(null, "".toCharArray());
         } else {
@@ -99,8 +97,7 @@ public class LocalRepoKeyStore {
          * need to generate a new random keypair and a self signed certificate
          * for this slot.
          */
-        if (keyStore.getKey(INDEX_CERT_ALIAS, "".toCharArray()) == null)
-        {
+        if (keyStore.getKey(INDEX_CERT_ALIAS, "".toCharArray()) == null) {
             // Generate a random key pair to associate with the INDEX_CERT_ALIAS
             // certificate in the keystore. This keypair will be used for the
             // HTTPS cert as well.
@@ -316,15 +313,9 @@ public class LocalRepoKeyStore {
                 subject,
                 subPubKeyInfo);
 
-        if (hostname != null)
-        {
-
+        if (hostname != null) {
             GeneralNames subjectAltName = new GeneralNames(
                     new GeneralName(GeneralName.iPAddress, hostname));
-
-            // X509Extension extension = new X509Extension(false, new
-            // DEROctetString(subjectAltName));
-
             v3CertGen.addExtension(X509Extension.subjectAlternativeName, false, subjectAltName);
         }
 
@@ -340,20 +331,17 @@ public class LocalRepoKeyStore {
     private static class KerplappKeyManager implements X509KeyManager {
         private final X509KeyManager wrapped;
 
-        private KerplappKeyManager(X509KeyManager wrapped)
-        {
+        private KerplappKeyManager(X509KeyManager wrapped) {
             this.wrapped = wrapped;
         }
 
         @Override
-        public String chooseClientAlias(String[] keyType, Principal[] issuers,
-                Socket socket) {
+        public String chooseClientAlias(String[] keyType, Principal[] issuers, Socket socket) {
             return wrapped.chooseClientAlias(keyType, issuers, socket);
         }
 
         @Override
-        public String chooseServerAlias(String keyType, Principal[] issuers,
-                Socket socket) {
+        public String chooseServerAlias(String keyType, Principal[] issuers, Socket socket) {
             /*
              * Always use the HTTP_CERT_ALIAS for the server alias.
              */
