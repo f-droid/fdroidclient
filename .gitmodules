@@ -32,3 +32,6 @@
 [submodule "extern/nanohttpd"]
 	path = extern/nanohttpd
 	url = https://github.com/eighthave/nanohttpd
+[submodule "extern/zxing-core"]
+	path = extern/zxing-core
+	url = https://gitlab.com/fdroid/zxing-core.git

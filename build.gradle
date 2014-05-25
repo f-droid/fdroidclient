@@ -16,7 +16,6 @@ FileCollection getAndroidPrebuilt(String apiLevel) {
 }
 
 dependencies {
-	compile files('libs/core-3.0.1.jar')
 	compile project(':support-v4')
 	compile project(':extern:AndroidPinning')
 	compile project(':extern:UniversalImageLoader:library')
@@ -25,6 +24,7 @@ dependencies {
 	compile project(':extern:nanohttpd:core')
 	compile project(':extern:jmdns')
 	compile project(':extern:zipsigner')
+	compile project(':extern:zxing-core')
 }
 
 project(':extern:UniversalImageLoader:library') {
