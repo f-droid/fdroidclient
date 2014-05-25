@@ -29,9 +29,12 @@
 [submodule "extern/spongycastle"]
 	path = extern/spongycastle
 	url = https://github.com/open-keychain/spongycastle
+	ignore = dirty
 [submodule "extern/nanohttpd"]
 	path = extern/nanohttpd
 	url = https://github.com/eighthave/nanohttpd
+	ignore = dirty
 [submodule "extern/zxing-core"]
 	path = extern/zxing-core
 	url = https://gitlab.com/fdroid/zxing-core.git
+	ignore = dirty
