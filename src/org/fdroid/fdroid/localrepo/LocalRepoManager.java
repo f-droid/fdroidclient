@@ -73,7 +73,7 @@ public class LocalRepoManager {
     }
 
     private LocalRepoManager(Context c) {
-        context = c;
+        context = c.getApplicationContext();
         pm = c.getPackageManager();
         assetManager = c.getAssets();
         prefs = PreferenceManager.getDefaultSharedPreferences(c);
