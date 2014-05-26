@@ -25,6 +25,7 @@
 	<string-array name="themeValues">
 		<item>dark</item>
 		<item>light</item>
+		<item>lightWithDarkActionBar</item>
 	</string-array>
 
 </resources>

@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'android'
 
 def toolVersion = "19.1"
-sdkLoc = android.plugin.sdkDirectory
+sdkLoc = getSdkPath()
 
 FileCollection getAndroidPrebuilt(String apiLevel) {
 	files("$sdkLoc/platforms/android-$apiLevel/android.jar")
@@ -141,4 +141,19 @@ subprojects {
 			}
 		}
 	}
+}
+
+/**
+ * Currently a bit hacky, because android.plugin is protected.
+ * The end goal is to find something in the android BaseExtension class found here:
+ *  https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
+ * which ends up asking their Sdk class for it's location. That class knows about
+ * both ANDROID_HOME env variables, and also local.properties sdk.loc properties.
+ * 
+ * If in the future, the android.adbExe is found to be inappropriate, deprecated,
+ * or a better way of finding the sdk path exists, we can change the implementation
+ * of this method to reflect that.
+ */
+def getSdkPath() {
+	new File( "$android.adbExe/../../" ).canonicalPath
 }

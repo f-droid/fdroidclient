@@ -4,7 +4,11 @@
         <!-- backward-compatibility theme options go here -->
     </style>
 
-    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light">
+        <!-- backward-compatibility theme options go here -->
+    </style>
+
+    <style name="AppBaseThemeLightWithDarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- backward-compatibility theme options go here -->
     </style>
 
@@ -22,6 +26,10 @@
     </style>
 
     <style name="AppThemeLight" parent="AppBaseThemeLight">
+        <!-- customizations that are not API-level specific go here. -->
+    </style>
+
+    <style name="AppThemeLightWithDarkActionBar" parent="AppBaseThemeLightWithDarkActionBar">
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
