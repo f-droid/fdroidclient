@@ -47,7 +47,7 @@ project(':extern:UniversalImageLoader:library') {
 			main {
 				manifest.srcFile 'AndroidManifest.xml'
 				java.srcDirs = ['src']
-				resources.srcDirs = ['src']
+				res.srcDirs = ['res']
 				aidl.srcDirs = ['src']
 				renderscript.srcDirs = ['src']
 			}
