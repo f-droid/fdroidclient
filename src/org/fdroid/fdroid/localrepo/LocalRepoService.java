@@ -216,6 +216,12 @@ public class LocalRepoService extends Service {
     }
 
     private void registerMDNSService() {
+        /*
+         * a ServiceInfo can only be registered with a single instance of JmDNS,
+         * and there is only ever a single LocalHTTPD port to advertise anyway.
+         */
+        if (pairService != null || jmdns != null)
+            clearCurrentMDNSService();
         String repoName = Preferences.get().getLocalRepoName();
         final HashMap<String, String> values = new HashMap<String, String>();
         values.put("path", "/fdroid/repo");
@@ -249,6 +255,10 @@ public class LocalRepoService extends Service {
             Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
             localRepoBonjourChangeListener = null;
         }
+        clearCurrentMDNSService();
+    }
+
+    private void clearCurrentMDNSService() {
         if (jmdns != null) {
             if (pairService != null) {
                 jmdns.unregisterService(pairService);
