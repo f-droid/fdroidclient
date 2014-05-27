@@ -41,6 +41,7 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import de.duenndns.ssl.MemorizingTrustManager;
 
+import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
@@ -213,6 +214,13 @@ public class FDroidApp extends Application {
         if (wifiState == WifiManager.WIFI_STATE_ENABLING
                 || wifiState == WifiManager.WIFI_STATE_ENABLED)
             startService(new Intent(this, WifiStateChangeService.class));
+        // if the HTTPS pref changes, then update all affected things
+        Preferences.get().registerLocalRepoHttpsListeners(new ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                startService(new Intent(FDroidApp.this, WifiStateChangeService.class));
+            }
+        });
     }
 
     @TargetApi(18)
