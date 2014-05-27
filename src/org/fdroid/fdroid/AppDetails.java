@@ -19,31 +19,24 @@
 
 package org.fdroid.fdroid;
 
-import android.content.*;
-import android.widget.*;
-
-import org.fdroid.fdroid.data.*;
-import org.fdroid.fdroid.installer.Installer;
-import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
-import org.fdroid.fdroid.installer.Installer.InstallerCallback;
-import org.xml.sax.XMLReader;
-
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.*;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
+import android.database.ContentObserver;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageInfo;
-import android.content.pm.Signature;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.database.ContentObserver;
 import android.text.Editable;
 import android.text.Html;
 import android.text.Html.TagHandler;
@@ -58,24 +51,34 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.graphics.Bitmap;
-
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
+import org.fdroid.fdroid.data.*;
+import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
+import org.fdroid.fdroid.installer.Installer.InstallerCallback;
+import org.fdroid.fdroid.net.ApkDownloader;
+import org.fdroid.fdroid.net.Downloader;
+import org.xml.sax.XMLReader;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.List;
 
-public class AppDetails extends ListActivity {
-    private static final String TAG = "AppDetails";
+public class AppDetails extends ListActivity implements ProgressListener {
+    private static final String TAG = "org.fdroid.fdroid.AppDetails";
 
     public static final int REQUEST_ENABLE_BLUETOOTH = 2;
 
@@ -84,6 +87,7 @@ public class AppDetails extends ListActivity {
 
     private FDroidApp fdroidApp;
     private ApkListAdapter adapter;
+    private ProgressDialog progressDialog;
 
     private static class ViewHolder {
         TextView version;
@@ -98,7 +102,7 @@ public class AppDetails extends ListActivity {
     
     // observer to update view when package has been installed/deleted
     AppObserver myAppObserver;
-    class AppObserver extends ContentObserver {      
+    class AppObserver extends ContentObserver {
        public AppObserver(Handler handler) {
           super(handler);           
        }
@@ -110,7 +114,7 @@ public class AppDetails extends ListActivity {
 
        @Override
        public void onChange(boolean selfChange, Uri uri) {
-           if (!reset()) {
+           if (!reset(app.id)) {
                AppDetails.this.finish();
                return;
            }
@@ -267,10 +271,8 @@ public class AppDetails extends ListActivity {
     private static final int SEND_VIA_BLUETOOTH = Menu.FIRST + 15;
 
     private App app;
-    private String appid;
     private PackageManager mPm;
-    private DownloadHandler downloadHandler;
-    private boolean stateRetained;
+    private ApkDownloader downloadHandler;
 
     private boolean startingIgnoreAll;
     private int startingIgnoreThis;
@@ -281,6 +283,68 @@ public class AppDetails extends ListActivity {
     private final Context mctx = this;
     private DisplayImageOptions displayImageOptions;
     private Installer installer;
+
+    /**
+     * Stores relevant data that we want to keep track of when destroying the activity
+     * with the expectation of it being recreated straight away (e.g. after an
+     * orientation change). One of the major things is that we want the download thread
+     * to stay active, but for it not to trigger any UI stuff (e.g. progress dialogs)
+     * between the activity being destroyed and recreated.
+     */
+    private static class ConfigurationChangeHelper {
+
+        public ApkDownloader downloader;
+        public App app;
+
+        public ConfigurationChangeHelper(ApkDownloader downloader, App app) {
+            this.downloader = downloader;
+            this.app = app;
+        }
+    }
+
+    private boolean inProcessOfChangingConfiguration = false;
+
+    /**
+     * Attempt to extract the appId from the intent which launched this activity.
+     * Various different intents could cause us to show this activity, such as:
+     * <ul>
+     *     <li>market://details?id=[app_id]</li>
+     *     <li>https://f-droid.org/app/[app_id]</li>
+     *     <li>fdroid.app:[app_id]</li>
+     * </ul>
+     * @return May return null, if we couldn't find the appId. In this case, you will
+     * probably want to do something drastic like finish the activity and show some
+     * feedback to the user (this method will <em>not</em> do that, it will just return
+     * null).
+     */
+    private String getAppIdFromIntent() {
+        Intent i = getIntent();
+        Uri data = i.getData();
+        String appId = null;
+        if (data != null) {
+            if (data.isHierarchical()) {
+                if (data.getHost() != null && data.getHost().equals("details")) {
+                    // market://details?id=app.id
+                    appId = data.getQueryParameter("id");
+                } else {
+                    // https://f-droid.org/app/app.id
+                    appId = data.getLastPathSegment();
+                    if (appId != null && appId.equals("app")) {
+                        appId = null;
+                    }
+                }
+            } else {
+                // fdroid.app:app.id
+                appId = data.getEncodedSchemeSpecificPart();
+            }
+            Log.d("FDroid", "AppDetails launched from link, for '" + appId + "'");
+        } else if (!i.hasExtra(EXTRA_APPID)) {
+            Log.e("FDroid", "No application ID in AppDetails!?");
+        } else {
+            appId = i.getStringExtra(EXTRA_APPID);
+        }
+        return appId;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -307,43 +371,27 @@ public class AppDetails extends ListActivity {
         // for reason why.
         ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
 
-        Intent i = getIntent();
-        Uri data = i.getData();
-        if (data != null) {
-            if (data.isHierarchical()) {
-                if (data.getHost() != null && data.getHost().equals("details")) {
-                    // market://details?id=app.id
-                    appid = data.getQueryParameter("id");
-                } else {
-                    // https://f-droid.org/app/app.id
-                    appid = data.getLastPathSegment();
-                    if (appid != null && appid.equals("app")) appid = null;
-                }
-            } else {
-                // fdroid.app:app.id
-                appid = data.getEncodedSchemeSpecificPart();
-            }
-            Log.d("FDroid", "AppDetails launched from link, for '" + appid + "'");
-        } else if (!i.hasExtra(EXTRA_APPID)) {
-            Log.d("FDroid", "No application ID in AppDetails!?");
-        } else {
-            appid = i.getStringExtra(EXTRA_APPID);
-        }
-
-        if (i.hasExtra(EXTRA_FROM)) {
-            setTitle(i.getStringExtra(EXTRA_FROM));
+        if (getIntent().hasExtra(EXTRA_FROM)) {
+            setTitle(getIntent().getStringExtra(EXTRA_FROM));
         }
 
         mPm = getPackageManager();
+
         installer = Installer.getActivityInstaller(this, mPm,
                 myInstallerCallback);
         
         // Get the preferences we're going to use in this Activity...
-        AppDetails old = (AppDetails) getLastNonConfigurationInstance();
-        if (old != null) {
-            copyState(old);
+        ConfigurationChangeHelper previousData = (ConfigurationChangeHelper)getLastNonConfigurationInstance();
+        if (previousData != null) {
+            Log.d(TAG, "Recreating view after configuration change.");
+            downloadHandler = previousData.downloader;
+            if (downloadHandler != null) {
+                Log.d(TAG, "Download was in progress before the configuration change, so we will start to listen to its events again.");
+            }
+            app = previousData.app;
+            setApp(app);
         } else {
-            if (!reset()) {
+            if (!reset(getAppIdFromIntent())) {
                 finish();
                 return;
             }
@@ -377,7 +425,6 @@ public class AppDetails extends ListActivity {
 
     @Override
     protected void onResume() {
-        Log.d(TAG, "onresume");
         super.onResume();
         
         // register observer to know when install status changes
@@ -386,17 +433,45 @@ public class AppDetails extends ListActivity {
               AppProvider.getContentUri(app.id),
               true,
               myAppObserver);
-        
-        if (!reset()) {
-            finish();
-            return;
+        if (downloadHandler != null) {
+            if (downloadHandler.isComplete()) {
+                downloadCompleteInstallApk();
+            } else {
+                downloadHandler.setProgressListener(this);
+
+                // Show the progress dialog, if for no other reason than to prevent them attempting
+                // to download again (i.e. we force them to touch 'cancel' before they can access
+                // the rest of the activity).
+                Log.d(TAG, "Showing dialog to user after resuming app details view, because a download was previously in progress");
+                updateProgressDialog();
+            }
         }
+
         updateViews();
 
         MenuManager.create(this).invalidateOptionsMenu();
+    }
 
+    /**
+     * Remove progress listener, suppress progress dialog, set downloadHandler to null.
+     */
+    private void cleanUpFinishedDownload() {
         if (downloadHandler != null) {
-            downloadHandler.startUpdates();
+            downloadHandler.removeProgressListener();
+            removeProgressDialog();
+            downloadHandler = null;
+        }
+    }
+
+    /**
+     * Once the download completes successfully, call this method to start the install process
+     * with the file that was downloaded.
+     */
+    private void downloadCompleteInstallApk() {
+        if (downloadHandler != null) {
+            assert downloadHandler.isComplete();
+            installApk(downloadHandler.localFile(), downloadHandler.getApk().id);
+            cleanUpFinishedDownload();
         }
     }
 
@@ -405,13 +480,18 @@ public class AppDetails extends ListActivity {
         if (myAppObserver != null) {
             getContentResolver().unregisterContentObserver(myAppObserver);
         }
-        if (downloadHandler != null) {
-            downloadHandler.stopUpdates();
-        }
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
+            Log.d(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
             setIgnoreUpdates(app.id, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
+
+        if (downloadHandler != null) {
+            downloadHandler.removeProgressListener();
+        }
+
+        removeProgressDialog();
+
         super.onPause();
     }
 
@@ -430,50 +510,59 @@ public class AppDetails extends ListActivity {
 
     @Override
     public Object onRetainNonConfigurationInstance() {
-        stateRetained = true;
-        return this;
+        inProcessOfChangingConfiguration = true;
+        return new ConfigurationChangeHelper(downloadHandler, app);
     }
 
     @Override
     protected void onDestroy() {
         if (downloadHandler != null) {
-            if (!stateRetained)
+            if (!inProcessOfChangingConfiguration) {
                 downloadHandler.cancel();
-            downloadHandler.destroy();
+                cleanUpFinishedDownload();
+            }
         }
+        inProcessOfChangingConfiguration = false;
         super.onDestroy();
     }
 
-    // Copy all relevant state from an old instance. This is used in
-    // place of reset(), so it must initialize all fields normally set
-    // there.
-    private void copyState(AppDetails old) {
-        if (old.downloadHandler != null)
-            downloadHandler = new DownloadHandler(old.downloadHandler);
-        app = old.app;
-        mInstalledSignature = old.mInstalledSignature;
-        mInstalledSigID = old.mInstalledSigID;
+    private void removeProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
     // Reset the display and list contents. Used when entering the activity, and
     // also when something has been installed/uninstalled.
     // Return true if the app was found, false otherwise.
-    private boolean reset() {
+    private boolean reset(String appId) {
 
-        Log.d("FDroid", "Getting application details for " + appid);
-        app = null;
+        Log.d("FDroid", "Getting application details for " + appId);
+        App newApp = null;
 
-        if (appid != null && appid.length() > 0) {
-            app = AppProvider.Helper.findById(getContentResolver(), appid);
+        if (appId != null && appId.length() > 0) {
+            newApp = AppProvider.Helper.findById(getContentResolver(), appId);
         }
 
-        if (app == null) {
-            Toast toast = Toast.makeText(this,
-                    getString(R.string.no_such_app), Toast.LENGTH_LONG);
-            toast.show();
+        setApp(newApp);
+
+        return this.app != null;
+    }
+
+    /**
+     * If passed null, this will show a message to the user ("Could not find app ..." or something
+     * like that) and then finish the activity.
+     */
+    private void setApp(App newApp) {
+
+        if (newApp == null) {
+            Toast.makeText(this, getString(R.string.no_such_app), Toast.LENGTH_LONG).show();
             finish();
-            return false;
+            return;
         }
+
+        app = newApp;
 
         startingIgnoreAll = app.ignoreAllUpdates;
         startingIgnoreThis = app.ignoreThisUpdate;
@@ -481,14 +570,13 @@ public class AppDetails extends ListActivity {
         // Get the signature of the installed package...
         mInstalledSignature = null;
         mInstalledSigID = null;
+
         if (app.isInstalled()) {
-            PackageManager pm = getBaseContext().getPackageManager();
+            PackageManager pm = getPackageManager();
             try {
-                PackageInfo pi = pm.getPackageInfo(appid,
-                        PackageManager.GET_SIGNATURES);
+                PackageInfo pi = pm.getPackageInfo(app.id, PackageManager.GET_SIGNATURES);
                 mInstalledSignature = pi.signatures[0];
-                Hasher hash = new Hasher("MD5", mInstalledSignature
-                        .toCharsString().getBytes());
+                Hasher hash = new Hasher("MD5", mInstalledSignature.toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (NameNotFoundException e) {
                 Log.d("FDroid", "Failed to get installed signature");
@@ -497,7 +585,6 @@ public class AppDetails extends ListActivity {
                 mInstalledSignature = null;
             }
         }
-        return true;
     }
 
     private void startViews() {
@@ -511,10 +598,10 @@ public class AppDetails extends ListActivity {
         headerView.removeAllViews();
         if (landparent != null) {
             landparent.addView(infoView);
-            Log.d("FDroid", "Setting landparent infoview");
+            Log.d("FDroid", "Setting up landscape view");
         } else {
             headerView.addView(infoView);
-            Log.d("FDroid", "Setting header infoview");
+            Log.d("FDroid", "Setting up portrait view");
         }
 
         // Set the icon...
@@ -610,8 +697,7 @@ public class AppDetails extends ListActivity {
                         if (permissionName.equals("ACCESS_SUPERUSER")) {
                             sb.append("\t• Full permissions to all device features and storage\n");
                         } else {
-                            Log.d("FDroid", "Permission not yet available: "
-                                    +permissionName);
+                            Log.d("FDroid", "Permission not yet available: " + permissionName);
                         }
                     }
                 }
@@ -912,6 +998,7 @@ public class AppDetails extends ListActivity {
 
     // Install the version of this app denoted by 'app.curApk'.
     private void install(final Apk apk) {
+        final Activity activity = this;
         String [] projection = { RepoProvider.DataColumns.ADDRESS };
         Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
         if (repo == null || repo.address == null) {
@@ -926,10 +1013,8 @@ public class AppDetails extends ListActivity {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            downloadHandler = new DownloadHandler(apk,
-                                    repoaddress, Utils
-                                    .getApkCacheDir(getBaseContext()));
+                            int whichButton) {
+                            startDownload(apk, repoaddress);
                         }
                     });
             ask_alrt.setNegativeButton(getString(R.string.no),
@@ -958,9 +1043,17 @@ public class AppDetails extends ListActivity {
             alert.show();
             return;
         }
-        downloadHandler = new DownloadHandler(apk, repoaddress,
-                Utils.getApkCacheDir(getBaseContext()));
+        startDownload(apk, repoaddress);
     }
+
+    private void startDownload(Apk apk, String repoAddress) {
+        downloadHandler = new ApkDownloader(apk, repoAddress, Utils.getApkCacheDir(getBaseContext()));
+        downloadHandler.setProgressListener(this);
+        if (downloadHandler.download()) {
+            updateProgressDialog();
+        }
+    }
+
     private void installApk(File file, String packageName) {
         setProgressBarIndeterminateVisibility(true);
 
@@ -989,10 +1082,6 @@ public class AppDetails extends ListActivity {
                 @Override
                 public void run() {                    
                     if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
-                        if (downloadHandler != null) {
-                            downloadHandler = null;
-                        }
-
                         PackageManagerCompat.setInstaller(mPm, app.id);
                     }
 
@@ -1039,137 +1128,115 @@ public class AppDetails extends ListActivity {
         shareIntent.setType("text/plain");
 
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, app.name);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name+" ("+app.summary+") - https://f-droid.org/app/"+app.id);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, app.name + " (" + app.summary + ") - https://f-droid.org/app/" + app.id);
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share)));
     }
 
-    private ProgressDialog createProgressDialog(String file, int p, int max) {
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        pd.setMessage(getString(R.string.download_server) + ":\n " + file);
-        pd.setMax(max);
-        pd.setProgress(p);
-        pd.setCancelable(true);
-        pd.setCanceledOnTouchOutside(false);
-        pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                downloadHandler.cancel();
-            }
-        });
-        pd.setButton(DialogInterface.BUTTON_NEUTRAL,
-                getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        pd.cancel();
+    private ProgressDialog getProgressDialog(String file) {
+        if (progressDialog == null) {
+            final ProgressDialog pd = new ProgressDialog(this);
+            pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            pd.setMessage(getString(R.string.download_server) + ":\n " + file);
+            pd.setCancelable(true);
+            pd.setCanceledOnTouchOutside(false);
+
+            // The indeterminate-ness will get overridden on the first progress event we receive.
+            pd.setIndeterminate(true);
+
+            pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    Log.d(TAG, "User clicked 'cancel' on download, attempting to interrupt download thread.");
+                    if (downloadHandler !=  null) {
+                        downloadHandler.cancel();
+                        cleanUpFinishedDownload();
+                    } else {
+                        Log.e(TAG, "Tried to cancel, but the downloadHandler doesn't exist.");
                     }
-                });
-        pd.show();
-        return pd;
+                    progressDialog = null;
+                    Toast.makeText(AppDetails.this, getString(R.string.download_cancelled), Toast.LENGTH_LONG).show();
+                }
+            });
+            pd.setButton(DialogInterface.BUTTON_NEUTRAL,
+                    getString(R.string.cancel),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            pd.cancel();
+                        }
+                    }
+            );
+            progressDialog = pd;
+        }
+        return progressDialog;
     }
 
-    // Handler used to update the progress dialog while downloading.
-    private class DownloadHandler extends Handler {
-        private Downloader download;
-        private ProgressDialog pd;
-        private boolean updating;
-        private String id;
-
-        public DownloadHandler(Apk apk, String repoaddress, File destdir) {
-            id = apk.id;
-            download = new Downloader(apk, repoaddress, destdir);
-            download.start();
-            startUpdates();
+    /**
+     * Looks at the current <code>downloadHandler</code> and finds it's size and progress.
+     * This is in comparison to {@link org.fdroid.fdroid.AppDetails#updateProgressDialog(int, int)},
+     * which is used when you have the details from a freshly received
+     * {@link org.fdroid.fdroid.ProgressListener.Event}.
+     */
+    private void updateProgressDialog() {
+        if (downloadHandler != null) {
+            updateProgressDialog(downloadHandler.getProgress(), downloadHandler.getTotalSize());
         }
+    }
 
-        public DownloadHandler(DownloadHandler oldHandler) {
-            if (oldHandler != null) {
-                download = oldHandler.download;
+    private void updateProgressDialog(int progress, int total) {
+        if (downloadHandler != null) {
+            ProgressDialog pd = getProgressDialog(downloadHandler.getRemoteAddress());
+            if (total > 0) {
+                pd.setIndeterminate(false);
+                pd.setProgress(progress);
+                pd.setMax(total);
+            } else {
+                pd.setIndeterminate(true);
+                pd.setProgress(progress);
+                pd.setMax(0);
             }
-            startUpdates();
-        }
-
-        public boolean updateProgress() {
-            boolean finished = false;
-            switch (download.getStatus()) {
-            case RUNNING:
-                if (pd == null) {
-                    pd = createProgressDialog(download.remoteFile(),
-                            download.getProgress(), download.getMax());
-                } else {
-                    pd.setProgress(download.getProgress());
-                }
-                break;
-            case ERROR:
-                if (pd != null)
-                    pd.dismiss();
-                String text;
-                if (download.getErrorType() == Downloader.Error.CORRUPT)
-                    text = getString(R.string.corrupt_download);
-                else
-                    text = download.getErrorMessage();
-                Toast.makeText(AppDetails.this, text, Toast.LENGTH_LONG).show();
-                finished = true;
-                break;
-            case DONE:
-                if (pd != null)
-                    pd.dismiss();
-                installApk(download.localFile(), id);
-                finished = true;
-                break;
-            case CANCELLED:
-                Toast.makeText(AppDetails.this,
-                        getString(R.string.download_cancelled),
-                        Toast.LENGTH_SHORT).show();
-                finished = true;
-                break;
-            default:
-                break;
-            }
-            return finished;
-        }
-
-        public void startUpdates() {
-            if (!updating) {
-                updating = true;
-                sendEmptyMessage(0);
+            if (!pd.isShowing()) {
+                Log.d(TAG, "Showing progress dialog for download.");
+                pd.show();
             }
         }
+    }
 
-        public void stopUpdates() {
-            updating = false;
-            removeMessages(0);
+    @Override
+    public void onProgress(Event event) {
+        if (downloadHandler == null || !downloadHandler.isEventFromThis(event)) {
+            // Choose not to respond to events from previous downloaders.
+            // We don't even care if we receive "cancelled" events or the like, because
+            // we dealt with cancellations in the onCancel listener of the dialog,
+            // rather than waiting to receive the event here. We try and be careful in
+            // the download thread to make sure that we check for cancellations before
+            // sending events, but it is not possible to be perfect, because the interruption
+            // which triggers the download can happen after the check to see if
+            Log.d(TAG, "Discarding downloader event \"" + event.type + "\" as it is from an old (probably cancelled) downloader.");
+            return;
         }
 
-        public void cancel() {
-            if (download != null)
-                download.interrupt();
-        }
-
-        public void destroy() {
-            // The dialog can't be dismissed when it's not displayed,
-            // so do it when the activity is being destroyed.
-            if (pd != null) {
-                pd.dismiss();
-                pd = null;
-            }
-            // Cancel any scheduled updates so that we don't
-            // accidentally recreate the progress dialog.
-            stopUpdates();
-        }
-
-        // Repeatedly run updateProgress() until it's finished.
-        @Override
-        public void handleMessage(Message msg) {
-            if (download == null)
-                return;
-            boolean finished = updateProgress();
-            if (finished)
-                download = null;
+        boolean finished = false;
+        if (event.type.equals(Downloader.EVENT_PROGRESS)) {
+            updateProgressDialog(event.progress, event.total);
+        } else if (event.type.equals(ApkDownloader.EVENT_ERROR)) {
+            final String text;
+            if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
+                text = getString(R.string.corrupt_download);
             else
-                sendMessageDelayed(obtainMessage(), 50);
+                text = getString(R.string.details_notinstalled);
+            // this must be on the main UI thread
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+            finished = true;
+        } else if (event.type.equals(ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE)) {
+            downloadCompleteInstallApk();
+            finished = true;
+        }
+
+        if (finished) {
+            removeProgressDialog();
+            downloadHandler = null;
         }
     }
 
@@ -1183,7 +1250,7 @@ public class AppDetails extends ListActivity {
         switch (requestCode) {
         case REQUEST_ENABLE_BLUETOOTH:
             fdroidApp.sendViaBluetooth(this, resultCode, app.id);
-			break;
+            break;
         }
     }
 }

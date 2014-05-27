@@ -1,55 +1,86 @@
 package org.fdroid.fdroid.net;
 
-import java.io.*;
-import java.net.*;
-import android.content.*;
-import org.fdroid.fdroid.*;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 
-public class Downloader {
+import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.Utils;
 
-    private static final String HEADER_IF_NONE_MATCH = "If-None-Match";
-    private static final String HEADER_FIELD_ETAG = "ETag";
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
 
-    private URL sourceUrl;
+public abstract class Downloader {
+
+    private static final String TAG = "org.fdroid.fdroid.net.Downloader";
     private OutputStream outputStream;
+
     private ProgressListener progressListener = null;
-    private ProgressListener.Event progressEvent = null;
-    private String eTag = null;
-    private final File outputFile;
-    private HttpURLConnection connection;
-    private int statusCode = -1;
+    private Bundle eventData = null;
+    private File outputFile;
+    protected String cacheTag = null;
+
+    public static final String EVENT_PROGRESS = "downloadProgress";
+
+    public abstract InputStream inputStream() throws IOException;
 
     // The context is required for opening the file to write to.
-    public Downloader(String source, String destFile, Context ctx)
+    public Downloader(String destFile, Context ctx)
             throws FileNotFoundException, MalformedURLException {
-        sourceUrl    = new URL(source);
-        outputStream = ctx.openFileOutput(destFile, Context.MODE_PRIVATE);
-        outputFile   = new File(ctx.getFilesDir() + File.separator + destFile);
+        this(new File(ctx.getFilesDir() + File.separator + destFile));
     }
 
-    /**
-     * Downloads to a temporary file, which *you must delete yourself when
-     * you are done*.
-     * @see org.fdroid.fdroid.net.Downloader#getFile()
-     */
-    public Downloader(String source, Context ctx) throws IOException {
+    // The context is required for opening the file to write to.
+    public Downloader(Context ctx) throws IOException {
+        this(File.createTempFile("dl-", "", ctx.getCacheDir()));
+    }
+
+    public Downloader(File destFile)
+            throws FileNotFoundException, MalformedURLException {
         // http://developer.android.com/guide/topics/data/data-storage.html#InternalCache
-        outputFile = File.createTempFile("dl-", "", ctx.getCacheDir());
+        outputFile = destFile;
         outputStream = new FileOutputStream(outputFile);
-        sourceUrl = new URL(source);
     }
 
-    public Downloader(String source, OutputStream output)
+    public Downloader(OutputStream output)
             throws MalformedURLException {
-        sourceUrl    = new URL(source);
         outputStream = output;
         outputFile   = null;
     }
 
-    public void setProgressListener(ProgressListener progressListener,
-                                    ProgressListener.Event progressEvent) {
-        this.progressListener = progressListener;
-        this.progressEvent = progressEvent;
+    public void setProgressListener(ProgressListener listener) {
+        setProgressListener(listener, null);
+    }
+
+    public void setProgressListener(ProgressListener listener, Bundle eventData) {
+        this.progressListener = listener;
+        this.eventData = eventData;
+    }
+
+    /**
+     * If you ask for the cacheTag before calling download(), you will get the
+     * same one you passed in (if any). If you call it after download(), you
+     * will get the new cacheTag from the server, or null if there was none.
+     */
+    public String getCacheTag() {
+        return cacheTag;
+    }
+
+    /**
+     * If this cacheTag matches that returned by the server, then no download will
+     * take place, and a status code of 304 will be returned by download().
+     */
+    public void setCacheTag(String cacheTag) {
+        this.cacheTag = cacheTag;
+    }
+
+    protected boolean wantToCheckCache() {
+        return cacheTag != null;
     }
 
     /**
@@ -61,82 +92,103 @@ public class Downloader {
         return outputFile;
     }
 
+    public abstract boolean hasChanged();
+
+    public abstract int totalDownloadSize();
+
     /**
-     * Only available after downloading a file.
+     * Helper function for synchronous downloads (i.e. those *not* using AsyncDownloadWrapper),
+     * which don't really want to bother dealing with an InterruptedException.
+     * The InterruptedException thrown from download() is there to enable cancelling asynchronous
+     * downloads, but regular synchronous downloads cannot be cancelled because download() will
+     * block until completed.
+     * @throws IOException
      */
-    public int getStatusCode() {
-        return statusCode;
+    public void downloadUninterrupted() throws IOException {
+        try {
+            download();
+        } catch (InterruptedException ignored) {}
+    }
+
+    public abstract void download() throws IOException, InterruptedException;
+
+    public abstract boolean isCached();
+
+    protected void downloadFromStream() throws IOException, InterruptedException {
+        Log.d(TAG, "Downloading from stream");
+        InputStream input = null;
+        try {
+            input = inputStream();
+
+            // Getting the input stream is slow(ish) for HTTP downloads, so we'll check if
+            // we were interrupted before proceeding to the download.
+            throwExceptionIfInterrupted();
+
+            copyInputToOutputStream(inputStream());
+        } finally {
+            Utils.closeQuietly(outputStream);
+            Utils.closeQuietly(input);
+        }
+
+        // Even if we have completely downloaded the file, we should probably respect
+        // the wishes of the user who wanted to cancel us.
+        throwExceptionIfInterrupted();
     }
 
     /**
-     * If you ask for the eTag before calling download(), you will get the
-     * same one you passed in (if any). If you call it after download(), you
-     * will get the new eTag from the server, or null if there was none.
+     * In a synchronous download (the usual usage of the Downloader interface),
+     * you will not be able to interrupt this because the thread will block
+     * after you have called download(). However if you use the AsyncDownloadWrapper,
+     * then it will use this mechanism to cancel the download.
+     *
+     * After every network operation that could take a while, we will check if an
+     * interrupt occured during that blocking operation. The goal is to ensure we
+     * don't move onto another slow, network operation if we have cancelled the
+     * download.
+     * @throws InterruptedException
      */
-    public String getETag() {
-        return eTag;
+    private void throwExceptionIfInterrupted() throws InterruptedException {
+        if (Thread.interrupted()) {
+            Log.d(TAG, "Received interrupt, cancelling download");
+            throw new InterruptedException();
+        }
     }
 
-    /**
-     * If this eTag matches that returned by the server, then no download will
-     * take place, and a status code of 304 will be returned by download().
-     */
-    public void setETag(String eTag) {
-        this.eTag = eTag;
-    }
+    protected void copyInputToOutputStream(InputStream input) throws IOException, InterruptedException {
 
-    // Get a remote file. Returns the HTTP response code.
-    // If 'etag' is not null, it's passed to the server as an If-None-Match
-    // header, in which case expect a 304 response if nothing changed.
-    // In the event of a 200 response ONLY, 'retag' (which should be passed
-    // empty) may contain an etag value for the response, or it may be left
-    // empty if none was available.
-    public int download() throws IOException {
-        connection = (HttpURLConnection)sourceUrl.openConnection();
-        setupCacheCheck();
-        statusCode = connection.getResponseCode();
-        if (statusCode == 200) {
-            setupProgressListener();
-            InputStream input = null;
-            try {
-                input = connection.getInputStream();
-                Utils.copy(input, outputStream,
-                        progressListener, progressEvent);
-            } finally {
-                Utils.closeQuietly(outputStream);
-                Utils.closeQuietly(input);
+        byte[] buffer = new byte[Utils.BUFFER_SIZE];
+        int bytesRead = 0;
+        int totalBytes = totalDownloadSize();
+
+        // Getting the total download size could potentially take time, depending on how
+        // it is implemented, so we may as well check this before we proceed.
+        throwExceptionIfInterrupted();
+
+        sendProgress(bytesRead, totalBytes);
+        while (true) {
+
+            int count = input.read(buffer);
+            throwExceptionIfInterrupted();
+
+            bytesRead += count;
+            sendProgress(bytesRead, totalBytes);
+            if (count == -1) {
+                Log.d(TAG, "Finished downloading from stream");
+                break;
             }
-            updateCacheCheck();
+            outputStream.write(buffer, 0, count);
         }
-        return statusCode;
+        outputStream.flush();
     }
 
-    protected void setupCacheCheck() {
-        if (eTag != null) {
-            connection.setRequestProperty(HEADER_IF_NONE_MATCH, eTag);
+    protected void sendProgress(int bytesRead, int totalBytes) {
+        sendProgress(new ProgressListener.Event(EVENT_PROGRESS, bytesRead, totalBytes, eventData));
+    }
+
+    protected void sendProgress(ProgressListener.Event event) {
+        if (progressListener != null) {
+            progressListener.onProgress(event);
         }
-    }
-
-    protected void updateCacheCheck() {
-        eTag = connection.getHeaderField(HEADER_FIELD_ETAG);
-    }
-
-    protected void setupProgressListener() {
-        if (progressListener != null && progressEvent != null) {
-            // Testing in the emulator for me, showed that figuring out the
-            // filesize took about 1 to 1.5 seconds.
-            // To put this in context, downloading a repo of:
-            //  - 400k takes ~6 seconds
-            //  - 5k   takes ~3 seconds
-            // on my connection. I think the 1/1.5 seconds is worth it,
-            // because as the repo grows, the tradeoff will
-            // become more worth it.
-            progressEvent.total = connection.getContentLength();
-        }
-    }
-
-    public boolean hasChanged() {
-        return this.statusCode == 200;
     }
 
 }

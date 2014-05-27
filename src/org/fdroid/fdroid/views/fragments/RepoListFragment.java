@@ -218,8 +218,8 @@ public class RepoListFragment extends ListFragment
         UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
-                if (event.type == UpdateService.STATUS_COMPLETE_AND_SAME ||
-                        event.type == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                if (event.type.equals(UpdateService.EVENT_COMPLETE_AND_SAME) ||
+                        event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
                     // No need to prompt to update any more, we just did it!
                     changed = false;
                 }

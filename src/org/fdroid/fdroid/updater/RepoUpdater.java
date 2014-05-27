@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
@@ -12,24 +13,29 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.HttpDownloader;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import javax.net.ssl.SSLHandshakeException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 abstract public class RepoUpdater {
 
-    public static final int PROGRESS_TYPE_DOWNLOAD     = 1;
-    public static final int PROGRESS_TYPE_PROCESS_XML  = 2;
-    public static final String PROGRESS_DATA_REPO      = "repo";
+    public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
+
+    public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
     public static RepoUpdater createUpdaterFor(Context ctx, Repo repo) {
         if (repo.fingerprint == null && repo.pubkey == null) {
@@ -68,10 +74,6 @@ abstract public class RepoUpdater {
         return apks;
     }
 
-    public boolean isInteractive() {
-        return progressListener != null;
-    }
-
     /**
      * For example, you may want to unzip a jar file to get the index inside,
      * or if the file is not compressed, you can just return a reference to
@@ -85,47 +87,26 @@ abstract public class RepoUpdater {
     protected abstract String getIndexAddress();
 
     protected Downloader downloadIndex() throws UpdateException {
-        Bundle progressData = createProgressData(repo.address);
         Downloader downloader = null;
         try {
-            downloader = new Downloader(getIndexAddress(), context);
-            downloader.setETag(repo.lastetag);
+            downloader = new HttpDownloader(getIndexAddress(), context);
+            downloader.setCacheTag(repo.lastetag);
 
-            if (isInteractive()) {
-                ProgressListener.Event event =
-                    new ProgressListener.Event(
-                        RepoUpdater.PROGRESS_TYPE_DOWNLOAD, progressData);
-                downloader.setProgressListener(progressListener, event);
+            if (progressListener != null) { // interactive session, show progress
+                Bundle data = new Bundle(1);
+                data.putString(PROGRESS_DATA_REPO_ADDRESS, repo.address);
+                downloader.setProgressListener(progressListener, data);
             }
 
-            int status = downloader.download();
+            downloader.downloadUninterrupted();
 
-            if (status == 304) {
+            if (downloader.isCached()) {
                 // The index is unchanged since we last read it. We just mark
                 // everything that came from this repo as being updated.
-                Log.d("FDroid", "Repo index for " + repo.address
+                Log.d("FDroid", "Repo index for " + getIndexAddress()
                         + " is up to date (by etag)");
-            } else if (status == 200) {
-                // Nothing needed to be done here...
-            } else {
-                // Is there any code other than 200 which still returns
-                // content? Just in case, lets try to clean up.
-                if (downloader.getFile() != null) {
-                    downloader.getFile().delete();
-                }
-                throw new UpdateException(
-                        repo,
-                        "Failed to update repo " + repo.address +
-                        " - HTTP response " + status);
             }
-        } catch (SSLHandshakeException e) {
-            throw new UpdateException(
-                    repo,
-                    "A problem occurred while establishing an SSL " +
-                    "connection. If this problem persists, AND you have a " +
-                    "very old device, you could try using http instead of " +
-                    "https for the repo URL.",
-                    e );
+
         } catch (IOException e) {
             if (downloader != null && downloader.getFile() != null) {
                 downloader.getFile().delete();
@@ -136,12 +117,6 @@ abstract public class RepoUpdater {
                     e);
         }
         return downloader;
-    }
-
-    public static Bundle createProgressData(String repoAddress) {
-        Bundle data = new Bundle();
-        data.putString(PROGRESS_DATA_REPO, repoAddress);
-        return data;
     }
 
     private int estimateAppCount(File indexFile) {
@@ -182,7 +157,7 @@ abstract public class RepoUpdater {
                 XMLReader reader = parser.getXMLReader();
                 RepoXMLHandler handler = new RepoXMLHandler(repo, progressListener);
 
-                if (isInteractive()) {
+                if (progressListener != null) {
                     // Only bother spending the time to count the expected apps
                     // if we can show that to the user...
                     handler.setTotalAppCount(estimateAppCount(indexFile));
@@ -195,7 +170,7 @@ abstract public class RepoUpdater {
                 reader.parse(is);
                 apps = handler.getApps();
                 apks = handler.getApks();
-                updateRepo(handler, downloader.getETag());
+                updateRepo(handler, downloader.getCacheTag());
             }
         } catch (SAXException e) {
             throw new UpdateException(

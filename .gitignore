@@ -6,6 +6,6 @@
 /build.xml
 *~
 /.idea/
-/*.iml
+*.iml
 out
 /.settings/

@@ -1,8 +1,10 @@
+
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 public interface ProgressListener {
 
@@ -15,7 +17,7 @@ public interface ProgressListener {
 
         public static final int NO_VALUE = Integer.MIN_VALUE;
 
-        public final int type;
+        public final String type;
         public final Bundle data;
 
         // These two are not final, so that you can create a template Event,
@@ -25,31 +27,19 @@ public interface ProgressListener {
         public int progress;
         public int total;
 
-        public Event(int type) {
+        public Event(String type) {
             this(type, NO_VALUE, NO_VALUE, null);
         }
 
-        public Event(int type, Bundle data) {
+        public Event(String type, Bundle data) {
             this(type, NO_VALUE, NO_VALUE, data);
         }
 
-        public Event(int type, int progress) {
-            this(type, progress, NO_VALUE, null);
-        }
-
-        public Event(int type, int progress, Bundle data) {
-            this(type, NO_VALUE, NO_VALUE, data);
-        }
-
-        public Event(int type, int progress, int total) {
-            this(type, progress, total, null);
-        }
-
-        public Event(int type, int progress, int total, Bundle data) {
+        public Event(String type, int progress, int total, Bundle data) {
             this.type = type;
             this.progress = progress;
             this.total = total;
-            this.data = data == null ? new Bundle() : data;
+            this.data = (data == null) ? new Bundle() : data;
         }
 
         @Override
@@ -59,7 +49,7 @@ public interface ProgressListener {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(type);
+            dest.writeString(type);
             dest.writeInt(progress);
             dest.writeInt(total);
             dest.writeBundle(data);
@@ -68,7 +58,7 @@ public interface ProgressListener {
         public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
             @Override
             public Event createFromParcel(Parcel in) {
-                return new Event(in.readInt(), in.readInt(), in.readInt(), in.readBundle());
+                return new Event(in.readString(), in.readInt(), in.readInt(), in.readBundle());
             }
 
             @Override
@@ -77,6 +67,16 @@ public interface ProgressListener {
             }
         };
 
+        /**
+         * Can help to provide context to the listener about what process is causing the event.
+         * For example, the repo updater uses one listener to listen to multiple downloaders.
+         * When it receives an event, it doesn't know which repo download is causing the event,
+         * so we pass that through to the downloader when we set the progress listener. This way,
+         * we can ask the event for the name of the repo.
+         */
+        public Bundle getData() {
+            return data;
+        }
     }
 
 }

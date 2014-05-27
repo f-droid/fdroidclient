@@ -279,12 +279,13 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName.equals("application") && curapp == null) {
             curapp = new App();
             curapp.id = attributes.getValue("", "id");
-            Bundle progressData = RepoUpdater.createProgressData(repo.address);
             progressCounter ++;
+            Bundle data = new Bundle(1);
+            data.putString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS, repo.address);
             progressListener.onProgress(
                 new ProgressListener.Event(
-                    RepoUpdater.PROGRESS_TYPE_PROCESS_XML, progressCounter,
-                    totalAppCount, progressData));
+                    RepoUpdater.PROGRESS_TYPE_PROCESS_XML,
+                    progressCounter, totalAppCount, data));
 
         } else if (localName.equals("package") && curapp != null && curapk == null) {
             curapk = new Apk();
