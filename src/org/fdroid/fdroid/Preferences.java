@@ -46,6 +46,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_SYSTEM_INSTALLER = "systemInstaller";
     public static final String PREF_LOCAL_REPO_BONJOUR = "localRepoBonjour";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
+    public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
@@ -53,6 +54,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_ROOT_INSTALLER = false;
     private static final boolean DEFAULT_SYSTEM_INSTALLER = false;
     private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
+    private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
@@ -64,6 +66,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private List<ChangeListener> updateHistoryListeners = new ArrayList<ChangeListener>();
     private List<ChangeListener> localRepoBonjourListeners = new ArrayList<ChangeListener>();
     private List<ChangeListener> localRepoNameListeners = new ArrayList<ChangeListener>();
+    private List<ChangeListener> localRepoHttpsListeners = new ArrayList<ChangeListener>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);
@@ -87,6 +90,10 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean isLocalRepoBonjourEnabled() {
         return preferences.getBoolean(PREF_LOCAL_REPO_BONJOUR, DEFAULT_LOCAL_REPO_BONJOUR);
+    }
+
+    public boolean isLocalRepoHttpsEnabled() {
+        return preferences.getBoolean(PREF_LOCAL_REPO_HTTPS, DEFAULT_LOCAL_REPO_HTTPS);
     }
 
     private String getDefaultLocalRepoName() {
@@ -178,6 +185,10 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
             for ( ChangeListener listener : localRepoNameListeners ) {
                 listener.onPreferenceChange();
             }
+        } else if (key.equals(PREF_LOCAL_REPO_HTTPS)) {
+            for ( ChangeListener listener : localRepoHttpsListeners ) {
+                listener.onPreferenceChange();
+            }
         }
     }
 
@@ -203,6 +214,14 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public void unregisterLocalRepoNameListeners(ChangeListener listener) {
         localRepoNameListeners.remove(listener);
+    }
+
+    public void registerLocalRepoHttpsListeners(ChangeListener listener) {
+        localRepoHttpsListeners.add(listener);
+    }
+
+    public void unregisterLocalRepoHttpsListeners(ChangeListener listener) {
+        localRepoHttpsListeners.remove(listener);
     }
 
     public static interface ChangeListener {

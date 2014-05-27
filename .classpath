@@ -4,8 +4,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="extern/nanohttpd/core/src/main/java"/>
-	<classpathentry kind="src" path="extern/jmdns/src/main/java"/>
+	<classpathentry kind="src" path="extern/symlinks-for-ant-and-eclipse"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/AndroidPinning"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/MemorizingActivity"/>

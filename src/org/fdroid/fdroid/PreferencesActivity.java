@@ -56,6 +56,7 @@ public class PreferencesActivity extends PreferenceActivity implements
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_LOCAL_REPO_BONJOUR,
         Preferences.PREF_LOCAL_REPO_NAME,
+        Preferences.PREF_LOCAL_REPO_HTTPS,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
         Preferences.PREF_ROOT_INSTALLER,
@@ -153,6 +154,10 @@ public class PreferencesActivity extends PreferenceActivity implements
 
         } else if (key.equals(Preferences.PREF_LOCAL_REPO_NAME)) {
             textSummary(key, R.string.local_repo_name_summary);
+
+        } else if (key.equals(Preferences.PREF_LOCAL_REPO_HTTPS)) {
+            onoffSummary(key, R.string.local_repo_https_on,
+                R.string.local_repo_https_off);
 
         } else if (key.equals(Preferences.PREF_CACHE_APK)) {
             onoffSummary(key, R.string.cache_downloaded_on,

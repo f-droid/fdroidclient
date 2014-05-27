@@ -26,7 +26,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.View;
 import android.widget.*;
@@ -37,6 +36,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.data.InstalledAppProvider.DataColumns;
+import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.views.SelectLocalAppsActivity;
 
 import java.util.HashSet;
@@ -113,7 +113,7 @@ public class SelectLocalAppsFragment extends ListFragment
         // build list of existing apps from what is on the file system
         if (FDroidApp.selectedApps == null) {
             FDroidApp.selectedApps = new HashSet<String>();
-            for (String filename : FDroidApp.localRepo.repoDir.list()) {
+            for (String filename : LocalRepoManager.get(selectLocalAppsActivity).repoDir.list()) {
                 if (filename.matches(".*\\.apk")) {
                     String packageName = filename.substring(0, filename.indexOf("_"));
                     FDroidApp.selectedApps.add(packageName);

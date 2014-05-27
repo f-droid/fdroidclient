@@ -200,8 +200,7 @@ public class RepoListFragment extends ListFragment
                 MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                         MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
-        if (Build.VERSION.SDK_INT >= 16)
-        {
+        if (Build.VERSION.SDK_INT >= 16) {
             menu.add(Menu.NONE, SCAN_FOR_REPOS, 1, R.string.menu_scan_repo).setIcon(
                     android.R.drawable.ic_menu_search);
         }
@@ -271,8 +270,7 @@ public class RepoListFragment extends ListFragment
                     path = "/fdroid/repo";
                 String serviceUrl = protocol + serviceInfo.getInetAddresses()[0]
                         + ":" + serviceInfo.getPort() + path;
-                // TODO get fingerprint from TXT record
-                showAddRepo(serviceUrl, "");
+                showAddRepo(serviceUrl, serviceInfo.getPropertyString("fingerprint"));
             }
         });
 

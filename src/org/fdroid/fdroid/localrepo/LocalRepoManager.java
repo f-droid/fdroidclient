@@ -15,10 +15,9 @@ import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.data.App;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,10 +27,14 @@ import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.jar.JarEntry;
+import java.util.jar.JarOutputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -42,6 +45,7 @@ public class LocalRepoManager {
     // For ref, official F-droid repo presently uses a maxage of 14 days
     private static final String DEFAULT_REPO_MAX_AGE_DAYS = "14";
 
+    private final Context context;
     private final PackageManager pm;
     private final AssetManager assetManager;
     private final SharedPreferences prefs;
@@ -53,12 +57,23 @@ public class LocalRepoManager {
     private Map<String, App> apps = new HashMap<String, App>();
 
     public final File xmlIndex;
+    private File xmlIndexJar = null;
+    private File xmlIndexJarUnsigned = null;
     public final File webRoot;
     public final File fdroidDir;
     public final File repoDir;
     public final File iconsDir;
 
-    public LocalRepoManager(Context c) {
+    private static LocalRepoManager localRepoManager;
+
+    public static LocalRepoManager get(Context context) {
+        if (localRepoManager == null)
+            localRepoManager = new LocalRepoManager(context);
+        return localRepoManager;
+    }
+
+    private LocalRepoManager(Context c) {
+        context = c.getApplicationContext();
         pm = c.getPackageManager();
         assetManager = c.getAssets();
         prefs = PreferenceManager.getDefaultSharedPreferences(c);
@@ -70,6 +85,8 @@ public class LocalRepoManager {
         repoDir = new File(fdroidDir, "repo");
         iconsDir = new File(repoDir, "icons");
         xmlIndex = new File(repoDir, "index.xml");
+        xmlIndexJar = new File(repoDir, "index.jar");
+        xmlIndexJarUnsigned = new File(repoDir, "index.unsigned.jar");
 
         if (!fdroidDir.exists())
             if (!fdroidDir.mkdir())
@@ -260,7 +277,7 @@ public class LocalRepoManager {
 
     // TODO this needs to be ported to < android-8
     @TargetApi(8)
-    public void writeIndexXML() throws Exception {
+    private void writeIndexXML() throws TransformerException, ParserConfigurationException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
@@ -278,9 +295,9 @@ public class LocalRepoManager {
         repo.setAttribute("icon", "blah.png");
         repo.setAttribute("maxage", String.valueOf(repoMaxAge));
         repo.setAttribute("name", repoName + " on " + ipAddressString);
+        repo.setAttribute("pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
         long timestamp = System.currentTimeMillis() / 1000L;
         repo.setAttribute("timestamp", String.valueOf(timestamp));
-        repo.setAttribute("url", uriString);
         rootElement.appendChild(repo);
 
         Element repoDesc = doc.createElement("description");
@@ -416,5 +433,39 @@ public class LocalRepoManager {
         StreamResult result = new StreamResult(xmlIndex);
 
         transformer.transform(domSource, result);
+    }
+
+    public void writeIndexJar() throws IOException {
+        try {
+            writeIndexXML();
+        } catch (Exception e) {
+            Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+            return;
+        }
+
+        BufferedOutputStream bo = new BufferedOutputStream(
+                new FileOutputStream(xmlIndexJarUnsigned));
+        JarOutputStream jo = new JarOutputStream(bo);
+
+        BufferedInputStream bi = new BufferedInputStream(new FileInputStream(xmlIndex));
+
+        JarEntry je = new JarEntry("index.xml");
+        jo.putNextEntry(je);
+
+        byte[] buf = new byte[1024];
+        int bytesRead;
+
+        while ((bytesRead = bi.read(buf)) != -1) {
+            jo.write(buf, 0, bytesRead);
+        }
+
+        bi.close();
+        jo.close();
+        bo.close();
+
+        LocalRepoKeyStore.get(context).signZip(xmlIndexJarUnsigned, xmlIndexJar);
+
+        xmlIndexJarUnsigned.delete();
     }
 }

@@ -23,22 +23,12 @@ import android.app.Activity;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
+import android.content.*;
+import android.content.pm.*;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
-import android.os.Build;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
+import android.os.*;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -55,24 +45,16 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
 import java.io.File;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
+import java.security.*;
 import java.util.Set;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.*;
 
 public class FDroidApp extends Application {
 
@@ -82,7 +64,6 @@ public class FDroidApp extends Application {
     public static String ssid = "";
     public static String bssid = "";
     public static Repo repo = new Repo();
-    public static LocalRepoManager localRepo = null;
     public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
 
     private static Messenger localRepoServiceMessenger = null;
@@ -124,8 +105,6 @@ public class FDroidApp extends Application {
 
         // Apply the Google PRNG fixes to properly seed SecureRandom
         PRNGFixes.apply();
-
-        localRepo = new LocalRepoManager(getApplicationContext());
 
         // Check that the installed app cache hasn't gotten out of sync somehow.
         // e.g. if we crashed/ran out of battery half way through responding
