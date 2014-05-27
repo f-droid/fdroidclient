@@ -282,17 +282,21 @@ public class FDroidApp extends Application {
     public static void startLocalRepoService(Context context) {
         if (!localRepoServiceIsBound) {
             Context app = context.getApplicationContext();
-            app.bindService(new Intent(app, LocalRepoService.class),
-                    serviceConnection, Context.BIND_AUTO_CREATE);
-            localRepoServiceIsBound = true;
+            Intent service = new Intent(app, LocalRepoService.class);
+            localRepoServiceIsBound = app.bindService(service, serviceConnection,
+                    Context.BIND_AUTO_CREATE);
+            if (localRepoServiceIsBound)
+                app.startService(service);
         }
     }
 
     public static void stopLocalRepoService(Context context) {
+        Context app = context.getApplicationContext();
         if (localRepoServiceIsBound) {
-            context.getApplicationContext().unbindService(serviceConnection);
+            app.unbindService(serviceConnection);
             localRepoServiceIsBound = false;
         }
+        app.stopService(new Intent(app, LocalRepoService.class));
     }
 
     public static void restartLocalRepoService() {
