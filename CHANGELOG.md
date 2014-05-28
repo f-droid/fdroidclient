@@ -10,6 +10,8 @@
 
 * use FDroid repos on Tor Hidden Services (.onion addresses)
 
+* support for a HTTP Proxy in Preferences
+
 * directly send installed apps to other devices via Bluetooth and Android Beam
   (NFC+Bluetooth), also compatible with Samsung/HTC S-Beam
 

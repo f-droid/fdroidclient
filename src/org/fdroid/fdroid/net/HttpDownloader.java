@@ -3,12 +3,17 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.util.Log;
 
+import org.fdroid.fdroid.Preferences;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.SocketAddress;
 import java.net.URL;
 
 import javax.net.ssl.SSLHandshakeException;
@@ -70,7 +75,14 @@ public class HttpDownloader extends Downloader {
     protected void setupConnection() throws IOException {
         if (connection != null)
             return;
-        connection = (HttpURLConnection) sourceUrl.openConnection();
+        Preferences prefs = Preferences.get();
+        if (prefs.isProxyEnabled()) {
+            SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
+            connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
+        } else {
+            connection = (HttpURLConnection) sourceUrl.openConnection();
+        }
     }
 
     protected void doDownload() throws IOException, InterruptedException {

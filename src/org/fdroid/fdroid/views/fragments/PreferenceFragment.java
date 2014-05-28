@@ -7,6 +7,8 @@ import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.text.TextUtils;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
@@ -34,7 +36,10 @@ public class PreferenceFragment
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
         Preferences.PREF_ROOT_INSTALLER,
-        Preferences.PREF_SYSTEM_INSTALLER
+        Preferences.PREF_SYSTEM_INSTALLER,
+        Preferences.PREF_ENABLE_PROXY,
+        Preferences.PREF_PROXY_HOST,
+        Preferences.PREF_PROXY_PORT,
     };
 
     @Override
@@ -143,6 +148,35 @@ public class PreferenceFragment
         } else if (key.equals(Preferences.PREF_SYSTEM_INSTALLER)) {
             onoffSummary(key, R.string.system_installer_on,
                     R.string.system_installer_off);
+
+        } else if (key.equals(Preferences.PREF_ENABLE_PROXY)) {
+            CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
+            pref.setSummary(R.string.enable_proxy_summary);
+            Preference h = findPreference(Preferences.PREF_PROXY_HOST);
+            Preference p = findPreference(Preferences.PREF_PROXY_PORT);
+            if (pref.isChecked()) {
+                h.setEnabled(true);
+                p.setEnabled(true);
+            } else {
+                h.setEnabled(false);
+                p.setEnabled(false);
+            }
+
+        } else if (key.equals(Preferences.PREF_PROXY_HOST)) {
+            EditTextPreference textPref = (EditTextPreference) findPreference(key);
+            String text = Preferences.get().getProxyHost();
+            if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST))
+                textPref.setSummary(R.string.proxy_host_summary);
+            else
+                textPref.setSummary(text);
+
+        } else if (key.equals(Preferences.PREF_PROXY_PORT)) {
+            EditTextPreference textPref = (EditTextPreference) findPreference(key);
+            int port = Preferences.get().getProxyPort();
+            if (port == Preferences.DEFAULT_PROXY_PORT)
+                textPref.setSummary(R.string.proxy_port_summary);
+            else
+                textPref.setSummary(String.valueOf(port));
 
         }
     }

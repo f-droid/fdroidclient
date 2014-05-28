@@ -197,6 +197,14 @@
 	<string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
 	<string name="send_fdroid_via_wifi">Send FDroid via WiFi&#8230;</string>
 
+	<string name="proxy">Proxy</string>
+	<string name="enable_proxy_title">Enable HTTP Proxy</string>
+	<string name="enable_proxy_summary">Configure HTTP Proxy for all network requests</string>
+	<string name="proxy_host">Proxy Host</string>
+	<string name="proxy_host_summary">Configure your proxy\'s hostname (e.g. 127.0.0.1)</string>
+	<string name="proxy_port">Proxy Port</string>
+	<string name="proxy_port_summary">Configure your proxy\'s port number (e.g. 8118)</string>
+
 	<!--
 	status_download takes four parameters:
 	  - Repository (url)

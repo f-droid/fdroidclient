@@ -53,6 +53,9 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_LOCAL_REPO_BONJOUR = "localRepoBonjour";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
+    public static final String PREF_ENABLE_PROXY = "enableProxy";
+    public static final String PREF_PROXY_HOST = "proxyHost";
+    public static final String PREF_PROXY_PORT = "proxyPort";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
@@ -64,6 +67,9 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_INCOMP_VER = false;
     private static final boolean DEFAULT_EXPERT = false;
     private static final boolean DEFAULT_PERMISSIONS = false;
+    private static final boolean DEFAULT_ENABLE_PROXY = false;
+    public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
+    public static final int DEFAULT_PROXY_PORT = 8118;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
@@ -88,11 +94,11 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private void uninitialize(String key) {
         initialized.put(key, false);
     }
-    
+
     public boolean isRootInstallerEnabled() {
         return preferences.getBoolean(PREF_ROOT_INSTALLER, DEFAULT_ROOT_INSTALLER);
     }
-    
+
     public boolean isSystemInstallerEnabled() {
         return preferences.getBoolean(PREF_SYSTEM_INSTALLER, DEFAULT_SYSTEM_INSTALLER);
     }
@@ -124,6 +130,28 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public String getLocalRepoName() {
         return preferences.getString(PREF_LOCAL_REPO_NAME, getDefaultLocalRepoName());
+    }
+
+    public boolean isProxyEnabled() {
+        return preferences.getBoolean(PREF_ENABLE_PROXY, DEFAULT_ENABLE_PROXY);
+    }
+
+    public String getProxyHost() {
+        return preferences.getString(PREF_PROXY_HOST, DEFAULT_PROXY_HOST);
+    }
+
+    public int getProxyPort() {
+        String port = preferences.getString(PREF_PROXY_PORT, String.valueOf(DEFAULT_PROXY_PORT));
+        try {
+            return Integer.parseInt(port);
+        } catch (NumberFormatException e) {
+            // hack until this can be a number-only preference
+            try {
+                return Integer.parseInt(port.replaceAll("[^0-9]", ""));
+            } catch (Exception e1) {
+                return DEFAULT_PROXY_PORT;
+            }
+        }
     }
 
     public boolean hasCompactLayout() {
