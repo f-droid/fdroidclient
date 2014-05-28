@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 
 public abstract class Downloader {
 
@@ -23,6 +24,8 @@ public abstract class Downloader {
     private ProgressListener progressListener = null;
     private Bundle eventData = null;
     private File outputFile;
+
+    protected URL sourceUrl;
     protected String cacheTag = null;
 
     public static final String EVENT_PROGRESS = "downloadProgress";

@@ -10,11 +10,23 @@ public class DownloaderFactory {
 
     public static Downloader create(String url, Context context)
             throws IOException {
-        return new HttpDownloader(url, context);
+        if (isOnionAddress(url)) {
+            return new TorHttpDownloader(url, context);
+        } else {
+            return new HttpDownloader(url, context);
+        }
     }
 
     public static Downloader create(String url, File destFile)
             throws IOException {
-        return new HttpDownloader(url, destFile);
+        if (isOnionAddress(url)) {
+            return new TorHttpDownloader(url, destFile);
+        } else {
+            return new HttpDownloader(url, destFile);
+        }
+    }
+
+    private static boolean isOnionAddress(String url) {
+        return url.matches("^[a-zA-Z0-9]+://[^/]+\\.onion/.*");
     }
 }

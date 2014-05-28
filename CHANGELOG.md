@@ -8,6 +8,8 @@
 
 * find local repos on the same network using Bonjour/mDNS
 
+* use FDroid repos on Tor Hidden Services (.onion addresses)
+
 * directly send installed apps to other devices via Bluetooth and Android Beam
   (NFC+Bluetooth), also compatible with Samsung/HTC S-Beam
 
