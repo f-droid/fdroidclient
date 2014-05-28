@@ -40,7 +40,7 @@ public class HttpDownloader extends Downloader {
     }
 
     @Override
-    public InputStream inputStream() throws IOException {
+    public InputStream getInputStream() throws IOException {
         return connection.getInputStream();
     }
 

@@ -30,7 +30,7 @@ public abstract class Downloader {
 
     public static final String EVENT_PROGRESS = "downloadProgress";
 
-    public abstract InputStream inputStream() throws IOException;
+    public abstract InputStream getInputStream() throws IOException;
 
     // The context is required for opening the file to write to.
     Downloader(String destFile, Context ctx)
@@ -120,13 +120,13 @@ public abstract class Downloader {
         Log.d(TAG, "Downloading from stream");
         InputStream input = null;
         try {
-            input = inputStream();
+            input = getInputStream();
 
             // Getting the input stream is slow(ish) for HTTP downloads, so we'll check if
             // we were interrupted before proceeding to the download.
             throwExceptionIfInterrupted();
 
-            copyInputToOutputStream(inputStream());
+            copyInputToOutputStream(getInputStream());
         } finally {
             Utils.closeQuietly(outputStream);
             Utils.closeQuietly(input);
