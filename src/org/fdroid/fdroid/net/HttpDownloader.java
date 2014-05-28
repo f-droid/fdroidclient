@@ -7,11 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
@@ -26,14 +24,7 @@ public class HttpDownloader extends Downloader {
     private int statusCode = -1;
 
     // The context is required for opening the file to write to.
-    public HttpDownloader(String source, String destFile, Context ctx)
-            throws FileNotFoundException, MalformedURLException {
-        super(destFile, ctx);
-        sourceUrl = new URL(source);
-    }
-
-    // The context is required for opening the file to write to.
-    public HttpDownloader(String source, File destFile)
+    HttpDownloader(String source, File destFile)
             throws FileNotFoundException, MalformedURLException {
         super(destFile);
         sourceUrl = new URL(source);
@@ -42,19 +33,14 @@ public class HttpDownloader extends Downloader {
     /**
      * Downloads to a temporary file, which *you must delete yourself when
      * you are done*.
-     * @see org.fdroid.fdroid.net.HttpDownloader#getFile()
+     * @see org.fdroid.fdroid.net.Downloader#getFile()
      */
-    public HttpDownloader(String source, Context ctx) throws IOException {
+    HttpDownloader(String source, Context ctx) throws IOException {
         super(ctx);
         sourceUrl = new URL(source);
     }
 
-    public HttpDownloader(String source, OutputStream output)
-            throws MalformedURLException {
-        super(output);
-        sourceUrl = new URL(source);
-    }
-
+    @Override
     public InputStream inputStream() throws IOException {
         return connection.getInputStream();
     }
@@ -93,6 +79,7 @@ public class HttpDownloader extends Downloader {
         }
     }
 
+    @Override
     public boolean isCached() {
         return wantToCheckCache() && statusCode == 304;
     }

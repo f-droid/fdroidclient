@@ -30,24 +30,23 @@ public abstract class Downloader {
     public abstract InputStream inputStream() throws IOException;
 
     // The context is required for opening the file to write to.
-    public Downloader(String destFile, Context ctx)
+    Downloader(String destFile, Context ctx)
             throws FileNotFoundException, MalformedURLException {
         this(new File(ctx.getFilesDir() + File.separator + destFile));
     }
 
     // The context is required for opening the file to write to.
-    public Downloader(Context ctx) throws IOException {
+    Downloader(Context ctx) throws IOException {
         this(File.createTempFile("dl-", "", ctx.getCacheDir()));
     }
 
-    public Downloader(File destFile)
+    Downloader(File destFile)
             throws FileNotFoundException, MalformedURLException {
-        // http://developer.android.com/guide/topics/data/data-storage.html#InternalCache
         outputFile = destFile;
         outputStream = new FileOutputStream(outputFile);
     }
 
-    public Downloader(OutputStream output)
+    Downloader(OutputStream output)
             throws MalformedURLException {
         outputStream = output;
         outputFile   = null;
