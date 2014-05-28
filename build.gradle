@@ -47,9 +47,11 @@ project(':extern:UniversalImageLoader:library') {
 			main {
 				manifest.srcFile 'AndroidManifest.xml'
 				java.srcDirs = ['src']
-				res.srcDirs = ['res']
+				resources.srcDirs = ['src']
 				aidl.srcDirs = ['src']
 				renderscript.srcDirs = ['src']
+				res.srcDirs = ['res']
+				assets.srcDirs = ['assets']
 			}
 		}
 	}
@@ -57,13 +59,13 @@ project(':extern:UniversalImageLoader:library') {
 
 project(':extern:zipsigner') {
 
-    apply plugin: 'java'
+	apply plugin: 'java'
 
-    dependencies {
-        compile project(':extern:spongycastle:core')
-        compile project(':extern:spongycastle:pkix')
-        compile project(':extern:spongycastle:prov')
-    }
+	dependencies {
+		compile project(':extern:spongycastle:core')
+		compile project(':extern:spongycastle:pkix')
+		compile project(':extern:spongycastle:prov')
+	}
 }
 
 android {
