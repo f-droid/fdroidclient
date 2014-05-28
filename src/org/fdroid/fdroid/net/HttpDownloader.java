@@ -41,6 +41,8 @@ public class HttpDownloader extends Downloader {
 
     @Override
     public InputStream getInputStream() throws IOException {
+        setupConnection();
+        // TODO check out BaseImageDownloader.getStreamFromNetwork() for optims
         return connection.getInputStream();
     }
 
@@ -53,7 +55,7 @@ public class HttpDownloader extends Downloader {
     @Override
     public void download() throws IOException, InterruptedException {
         try {
-            connection = (HttpURLConnection) sourceUrl.openConnection();
+            setupConnection();
             doDownload();
         } catch (SSLHandshakeException e) {
             // TODO this should be handled better, it is not internationalised here
@@ -63,6 +65,12 @@ public class HttpDownloader extends Downloader {
                             "very old device, you could try using http instead of " +
                             "https for the repo URL." + Log.getStackTraceString(e));
         }
+    }
+
+    protected void setupConnection() throws IOException {
+        if (connection != null)
+            return;
+        connection = (HttpURLConnection) sourceUrl.openConnection();
     }
 
     protected void doDownload() throws IOException, InterruptedException {
