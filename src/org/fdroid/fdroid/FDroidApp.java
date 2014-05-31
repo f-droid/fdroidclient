@@ -41,11 +41,13 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import de.duenndns.ssl.MemorizingTrustManager;
 
+import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
+import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
@@ -151,7 +153,8 @@ public class FDroidApp extends Application {
         bluetoothAdapter = getBluetoothAdapter();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
-            .discCache(new LimitedAgeDiscCache(
+            .imageDownloader(new IconDownloader(getApplicationContext()))
+            .diskCache(new LimitedAgeDiscCache(
                         new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
                             "icons"),
                         null,
@@ -213,6 +216,13 @@ public class FDroidApp extends Application {
         if (wifiState == WifiManager.WIFI_STATE_ENABLING
                 || wifiState == WifiManager.WIFI_STATE_ENABLED)
             startService(new Intent(this, WifiStateChangeService.class));
+        // if the HTTPS pref changes, then update all affected things
+        Preferences.get().registerLocalRepoHttpsListeners(new ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                startService(new Intent(FDroidApp.this, WifiStateChangeService.class));
+            }
+        });
     }
 
     @TargetApi(18)
@@ -282,17 +292,21 @@ public class FDroidApp extends Application {
     public static void startLocalRepoService(Context context) {
         if (!localRepoServiceIsBound) {
             Context app = context.getApplicationContext();
-            app.bindService(new Intent(app, LocalRepoService.class),
-                    serviceConnection, Context.BIND_AUTO_CREATE);
-            localRepoServiceIsBound = true;
+            Intent service = new Intent(app, LocalRepoService.class);
+            localRepoServiceIsBound = app.bindService(service, serviceConnection,
+                    Context.BIND_AUTO_CREATE);
+            if (localRepoServiceIsBound)
+                app.startService(service);
         }
     }
 
     public static void stopLocalRepoService(Context context) {
+        Context app = context.getApplicationContext();
         if (localRepoServiceIsBound) {
-            context.getApplicationContext().unbindService(serviceConnection);
+            app.unbindService(serviceConnection);
             localRepoServiceIsBound = false;
         }
+        app.stopService(new Intent(app, LocalRepoService.class));
     }
 
     public static void restartLocalRepoService() {

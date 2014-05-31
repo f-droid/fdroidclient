@@ -23,9 +23,14 @@ import java.util.Locale;
 public class WifiStateChangeService extends Service {
     public static final String BROADCAST = "org.fdroid.fdroid.action.WIFI_CHANGE";
 
+    private static WaitForWifiAsyncTask asyncTask;
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        new WaitForWifiAsyncTask().execute();
+        if (asyncTask != null)
+            asyncTask.cancel(true);
+        asyncTask = new WaitForWifiAsyncTask();
+        asyncTask.execute();
         return START_NOT_STICKY;
     }
 
@@ -38,15 +43,21 @@ public class WifiStateChangeService extends Service {
             wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
             try {
                 while (!wifiManager.isWifiEnabled()) {
+                    if (isCancelled())
+                        return null;
                     Log.i(TAG, "waiting for the wifi to be enabled...");
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                 }
                 int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                 while (ipAddress == 0) {
+                    if (isCancelled())
+                        return null;
                     Log.i(TAG, "waiting for an IP address...");
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                     ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                 }
+                if (isCancelled())
+                    return null;
                 WifiInfo wifiInfo = wifiManager.getConnectionInfo();
                 ipAddress = wifiInfo.getIpAddress();
                 FDroidApp.ipAddressString = String.format(Locale.ENGLISH, "%d.%d.%d.%d",
@@ -67,6 +78,9 @@ public class WifiStateChangeService extends Service {
                 FDroidApp.repo.address = String.format(Locale.ENGLISH, "%s://%s:%d/fdroid/repo",
                         scheme, FDroidApp.ipAddressString, FDroidApp.port);
 
+                if (isCancelled())
+                    return null;
+
                 Context context = WifiStateChangeService.this.getApplicationContext();
                 LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
                 Certificate localCert = localRepoKeyStore.getCertificate();
@@ -74,6 +88,9 @@ public class WifiStateChangeService extends Service {
                 LocalRepoManager lrm = LocalRepoManager.get(context);
                 lrm.setUriString(FDroidApp.repo.address);
                 lrm.writeIndexPage(Utils.getSharingUri(context, FDroidApp.repo).toString());
+
+                if (isCancelled())
+                    return null;
 
                 /*
                  * Once the IP address is known we need to generate a self

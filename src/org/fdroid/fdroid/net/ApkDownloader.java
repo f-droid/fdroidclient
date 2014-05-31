@@ -22,6 +22,7 @@ package org.fdroid.fdroid.net;
 
 import android.os.Bundle;
 import android.util.Log;
+
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.data.Apk;
@@ -172,8 +173,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         Log.d(TAG, "Downloading apk from " + remoteAddress);
 
         try {
-
-            Downloader downloader = new HttpDownloader(remoteAddress, localFile);
+            Downloader downloader = DownloaderFactory.create(remoteAddress, localFile);
             dlWrapper = new AsyncDownloadWrapper(downloader, this);
             dlWrapper.download();
             return true;

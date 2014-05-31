@@ -216,25 +216,31 @@ public class LocalRepoService extends Service {
     }
 
     private void registerMDNSService() {
-        String repoName = Preferences.get().getLocalRepoName();
-        final HashMap<String, String> values = new HashMap<String, String>();
-        values.put("path", "/fdroid/repo");
-        values.put("name", repoName);
-        values.put("fingerprint", FDroidApp.repo.fingerprint);
-        String type;
-        if (Preferences.get().isLocalRepoHttpsEnabled()) {
-            values.put("type", "fdroidrepos");
-            type = "_https._tcp.local.";
-        } else {
-            values.put("type", "fdroidrepo");
-            type = "_http._tcp.local.";
-        }
-        pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
         new Thread(new Runnable() {
-
             @Override
             public void run() {
+                /*
+                 * a ServiceInfo can only be registered with a single instance
+                 * of JmDNS, and there is only ever a single LocalHTTPD port to
+                 * advertise anyway.
+                 */
+                if (pairService != null || jmdns != null)
+                    clearCurrentMDNSService();
+                String repoName = Preferences.get().getLocalRepoName();
+                HashMap<String, String> values = new HashMap<String, String>();
+                values.put("path", "/fdroid/repo");
+                values.put("name", repoName);
+                values.put("fingerprint", FDroidApp.repo.fingerprint);
+                String type;
+                if (Preferences.get().isLocalRepoHttpsEnabled()) {
+                    values.put("type", "fdroidrepos");
+                    type = "_https._tcp.local.";
+                } else {
+                    values.put("type", "fdroidrepo");
+                    type = "_http._tcp.local.";
+                }
                 try {
+                    pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
                     jmdns = JmDNS.create();
                     jmdns.registerService(pairService);
                 } catch (IOException e) {
@@ -249,6 +255,10 @@ public class LocalRepoService extends Service {
             Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
             localRepoBonjourChangeListener = null;
         }
+        clearCurrentMDNSService();
+    }
+
+    private void clearCurrentMDNSService() {
         if (jmdns != null) {
             if (pairService != null) {
                 jmdns.unregisterService(pairService);

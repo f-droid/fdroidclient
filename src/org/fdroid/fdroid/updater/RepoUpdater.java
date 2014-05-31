@@ -13,7 +13,7 @@ import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.net.HttpDownloader;
+import org.fdroid.fdroid.net.DownloaderFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -89,7 +89,7 @@ abstract public class RepoUpdater {
     protected Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
-            downloader = new HttpDownloader(getIndexAddress(), context);
+            downloader = DownloaderFactory.create(getIndexAddress(), context);
             downloader.setCacheTag(repo.lastetag);
 
             if (progressListener != null) { // interactive session, show progress

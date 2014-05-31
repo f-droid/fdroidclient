@@ -7,33 +7,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
 public class HttpDownloader extends Downloader {
     private static final String TAG = "org.fdroid.fdroid.net.HttpDownloader";
 
-    private static final String HEADER_IF_NONE_MATCH = "If-None-Match";
-    private static final String HEADER_FIELD_ETAG = "ETag";
+    protected static final String HEADER_IF_NONE_MATCH = "If-None-Match";
+    protected static final String HEADER_FIELD_ETAG = "ETag";
 
-    private URL sourceUrl;
-    private HttpURLConnection connection;
+    protected HttpURLConnection connection;
     private int statusCode = -1;
 
     // The context is required for opening the file to write to.
-    public HttpDownloader(String source, String destFile, Context ctx)
-            throws FileNotFoundException, MalformedURLException {
-        super(destFile, ctx);
-        sourceUrl = new URL(source);
-    }
-
-    // The context is required for opening the file to write to.
-    public HttpDownloader(String source, File destFile)
+    HttpDownloader(String source, File destFile)
             throws FileNotFoundException, MalformedURLException {
         super(destFile);
         sourceUrl = new URL(source);
@@ -42,20 +32,17 @@ public class HttpDownloader extends Downloader {
     /**
      * Downloads to a temporary file, which *you must delete yourself when
      * you are done*.
-     * @see org.fdroid.fdroid.net.HttpDownloader#getFile()
+     * @see org.fdroid.fdroid.net.Downloader#getFile()
      */
-    public HttpDownloader(String source, Context ctx) throws IOException {
+    HttpDownloader(String source, Context ctx) throws IOException {
         super(ctx);
         sourceUrl = new URL(source);
     }
 
-    public HttpDownloader(String source, OutputStream output)
-            throws MalformedURLException {
-        super(output);
-        sourceUrl = new URL(source);
-    }
-
-    public InputStream inputStream() throws IOException {
+    @Override
+    public InputStream getInputStream() throws IOException {
+        setupConnection();
+        // TODO check out BaseImageDownloader.getStreamFromNetwork() for optims
         return connection.getInputStream();
     }
 
@@ -68,31 +55,41 @@ public class HttpDownloader extends Downloader {
     @Override
     public void download() throws IOException, InterruptedException {
         try {
-            connection = (HttpURLConnection)sourceUrl.openConnection();
-
-            if (wantToCheckCache()) {
-                setupCacheCheck();
-                Log.i(TAG, "Checking cached status of " + sourceUrl);
-                statusCode = connection.getResponseCode();
-            }
-
-            if (isCached()) {
-                Log.i(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
-            } else {
-                Log.i(TAG, "Downloading from " + sourceUrl);
-                downloadFromStream();
-                updateCacheCheck();
-            }
+            setupConnection();
+            doDownload();
         } catch (SSLHandshakeException e) {
-            // TODO this should be handled better, it is not internationalised here.
+            // TODO this should be handled better, it is not internationalised here
             throw new IOException(
                     "A problem occurred while establishing an SSL " +
                             "connection. If this problem persists, AND you have a " +
                             "very old device, you could try using http instead of " +
-                            "https for the repo URL." + Log.getStackTraceString(e) );
+                            "https for the repo URL." + Log.getStackTraceString(e));
         }
     }
 
+    protected void setupConnection() throws IOException {
+        if (connection != null)
+            return;
+        connection = (HttpURLConnection) sourceUrl.openConnection();
+    }
+
+    protected void doDownload() throws IOException, InterruptedException {
+        if (wantToCheckCache()) {
+            setupCacheCheck();
+            Log.i(TAG, "Checking cached status of " + sourceUrl);
+            statusCode = connection.getResponseCode();
+        }
+
+        if (isCached()) {
+            Log.i(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
+        } else {
+            Log.i(TAG, "Downloading from " + sourceUrl);
+            downloadFromStream();
+            updateCacheCheck();
+        }
+    }
+
+    @Override
     public boolean isCached() {
         return wantToCheckCache() && statusCode == 304;
     }
