@@ -1,12 +1,18 @@
 package org.fdroid.fdroid;
 
-import java.util.*;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Handles shared preferences for FDroid, looking after the names of
@@ -55,6 +61,9 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_SYSTEM_INSTALLER = false;
     private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
+    private static final boolean DEFAULT_INCOMP_VER = false;
+    private static final boolean DEFAULT_EXPERT = false;
+    private static final boolean DEFAULT_PERMISSIONS = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
@@ -90,6 +99,18 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean isLocalRepoBonjourEnabled() {
         return preferences.getBoolean(PREF_LOCAL_REPO_BONJOUR, DEFAULT_LOCAL_REPO_BONJOUR);
+    }
+
+    public boolean showIncompatibleVersions() {
+        return preferences.getBoolean(PREF_INCOMP_VER, DEFAULT_INCOMP_VER);
+    }
+
+    public boolean showPermissions() {
+        return preferences.getBoolean(PREF_PERMISSIONS, DEFAULT_PERMISSIONS);
+    }
+
+    public boolean expertMode() {
+        return preferences.getBoolean(PREF_EXPERT, DEFAULT_EXPERT);
     }
 
     public boolean isLocalRepoHttpsEnabled() {

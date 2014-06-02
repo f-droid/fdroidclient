@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:padding="5dp"
+	android:baselineAligned="false"
+	android:orientation="horizontal">
+
+    <ScrollView
+        android:id="@+id/app_summary_container"
+        android:layout_width="0px"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content">
+
+        <fragment
+            android:id="@+id/fragment_app_summary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:name="org.fdroid.fdroid.AppDetails$AppDetailsSummaryFragment"
+            tools:layout="@layout/app_details_summary"/>
+
+    </ScrollView>
+
+    <fragment
+        android:id="@+id/fragment_app_list"
+        android:layout_width="0px"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:name="org.fdroid.fdroid.AppDetails$AppDetailsListFragment"
+        tools:layout="@android:layout/list_content"/>
+
+</LinearLayout>
