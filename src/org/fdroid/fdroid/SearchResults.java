@@ -20,7 +20,7 @@ package org.fdroid.fdroid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -30,7 +30,7 @@ import android.widget.LinearLayout;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.fragments.SearchResultsFragment;
 
-public class SearchResults extends FragmentActivity {
+public class SearchResults extends ActionBarActivity {
 
     private static final int SEARCH = Menu.FIRST;
 
@@ -61,7 +61,7 @@ public class SearchResults extends FragmentActivity {
         // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
         // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
         // for reason why.
-        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

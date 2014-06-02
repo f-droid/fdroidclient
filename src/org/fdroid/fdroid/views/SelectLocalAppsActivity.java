@@ -1,21 +1,22 @@
 
 package org.fdroid.fdroid.views;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.SearchView;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.views.fragments.SelectLocalAppsFragment;
 
-@TargetApi(11)
-// TODO replace with appcompat-v7
-public class SelectLocalAppsActivity extends Activity {
+public class SelectLocalAppsActivity extends ActionBarActivity {
+
     private static final String TAG = "SelectLocalAppsActivity";
     private SelectLocalAppsFragment selectLocalAppsFragment = null;
     private SearchView searchView;
@@ -31,14 +32,14 @@ public class SelectLocalAppsActivity extends Activity {
     protected void onResume() {
         super.onResume();
         if (selectLocalAppsFragment == null)
-            selectLocalAppsFragment = (SelectLocalAppsFragment) getFragmentManager()
+            selectLocalAppsFragment = (SelectLocalAppsFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.fragment_app_list);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.select_local_apps_activity, menu);
-        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
         searchView.setOnQueryTextListener(selectLocalAppsFragment);
         return true;
     }

@@ -1,22 +1,26 @@
 
 package org.fdroid.fdroid.views;
 
-import android.app.Activity;
-import android.content.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.*;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
-public class QrWizardDownloadActivity extends Activity {
-    private static final String TAG = "QrWizardDownloadActivity";
+public class QrWizardDownloadActivity extends ActionBarActivity {
+
+    private static final String TAG = "org.fdroid.fdroid.QrWizardDownloadActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

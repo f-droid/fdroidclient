@@ -5,7 +5,10 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -16,12 +19,22 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
-
-import org.fdroid.fdroid.*;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.PreferencesActivity;
+import org.fdroid.fdroid.QrGenAsyncTask;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -30,8 +43,9 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LocalRepoActivity extends Activity {
-    private static final String TAG = "LocalRepoActivity";
+public class LocalRepoActivity extends ActionBarActivity {
+
+    private static final String TAG = "org.fdroid.fdroid.LocalRepoActivity";
     private ProgressDialog repoProgress;
 
     private WifiManager wifiManager;

@@ -14,24 +14,25 @@ limitations under the License.
 
 package org.fdroid.fdroid.views.fragments;
 
-import android.annotation.TargetApi;
-import android.app.ListFragment;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.CursorLoader;
-import android.content.Loader;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.ActionMode;
 import android.view.View;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.ViewBinder;
-
+import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
@@ -41,10 +42,8 @@ import org.fdroid.fdroid.views.SelectLocalAppsActivity;
 
 import java.util.HashSet;
 
-//TODO replace with appcompat-v7
-@TargetApi(11)
 public class SelectLocalAppsFragment extends ListFragment
-        implements LoaderCallbacks<Cursor>, OnQueryTextListener {
+        implements LoaderManager.LoaderCallbacks<Cursor>, OnQueryTextListener {
 
     private PackageManager packageManager;
     private Drawable defaultAppIcon;
@@ -95,7 +94,7 @@ public class SelectLocalAppsFragment extends ListFragment
                     Drawable icon;
                     try {
                         icon = packageManager.getApplicationIcon(packageName);
-                    } catch (NameNotFoundException e) {
+                    } catch (PackageManager.NameNotFoundException e) {
                         icon = defaultAppIcon;
                     }
                     iconView.setImageDrawable(icon);
