@@ -28,12 +28,13 @@ public class QrWizardWifiNetworkActivity extends ActionBarActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
+
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         wifiManager.setWifiEnabled(true);
         FDroidApp.startLocalRepoService(this);
 
-        ((FDroidApp) getApplication()).applyTheme(this);
         setContentView(R.layout.qr_wizard_activity);
         TextView instructions = (TextView) findViewById(R.id.qrWizardInstructions);
         instructions.setText(R.string.qr_wizard_wifi_network_instructions);

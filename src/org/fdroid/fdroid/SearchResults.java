@@ -20,14 +20,13 @@ package org.fdroid.fdroid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
-import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.fragments.SearchResultsFragment;
 
 public class SearchResults extends ActionBarActivity {
@@ -38,7 +37,6 @@ public class SearchResults extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         ((FDroidApp) getApplication()).applyTheme(this);
-
         super.onCreate(savedInstanceState);
 
         // Start a search by just typing

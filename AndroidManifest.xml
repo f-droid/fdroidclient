@@ -203,6 +203,9 @@
             android:launchMode="singleTop"
             android:parentActivityName=".FDroid"
             android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
         </activity>
         <activity
             android:name=".views.SelectLocalAppsActivity"
@@ -216,7 +219,11 @@
             android:name=".views.RepoDetailsActivity"
             android:label="@string/menu_manage"
             android:parentActivityName=".ManageRepo"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManageRepo" />
+        </activity>
 
         <activity
             android:name=".AppDetails"

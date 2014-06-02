@@ -91,10 +91,10 @@ public class FDroidApp extends Application {
         switch (curTheme) {
             case dark:
                 activity.setTheme(R.style.AppThemeDark);
-                return;
+                break;
             case light:
                 activity.setTheme(R.style.AppThemeLight);
-                return;
+                break;
         }
     }
 

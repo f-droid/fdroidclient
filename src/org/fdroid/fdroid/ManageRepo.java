@@ -52,9 +52,9 @@ public class ManageRepo extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         ((FDroidApp) getApplication()).applyTheme(this);
+        super.onCreate(savedInstanceState);
 
         FragmentManager fm = getSupportFragmentManager();
         if (fm.findFragmentById(android.R.id.content) == null) {

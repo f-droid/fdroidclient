@@ -36,7 +36,10 @@ public class NfcNotEnabledActivity extends ActionBarActivity
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
+
         final Intent intent = new Intent();
         if (Build.VERSION.SDK_INT >= 16) {
             doOnJellybean(intent);

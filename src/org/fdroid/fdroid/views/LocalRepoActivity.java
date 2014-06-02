@@ -60,8 +60,8 @@ public class LocalRepoActivity extends ActionBarActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         ((FDroidApp) getApplication()).applyTheme(this);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.local_repo_activity);
 
         enableWifiButton = (Button) findViewById(R.id.enable_wifi);

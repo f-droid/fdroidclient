@@ -10,19 +10,19 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
-public class RepoDetailsActivity extends FragmentActivity {
+public class RepoDetailsActivity extends ActionBarActivity {
     public static final String TAG = "RepoDetailsActivity";
 
     private Repo repo;
@@ -33,7 +33,6 @@ public class RepoDetailsActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         ((FDroidApp) getApplication()).applyTheme(this);
-
         super.onCreate(savedInstanceState);
 
         long repoId = getIntent().getLongExtra(RepoDetailsFragment.ARG_REPO_ID, 0);
@@ -62,7 +61,7 @@ public class RepoDetailsActivity extends FragmentActivity {
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 
-        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(repo.getName());
     }
 
@@ -123,4 +122,15 @@ public class RepoDetailsActivity extends FragmentActivity {
             finish();
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

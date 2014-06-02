@@ -23,8 +23,8 @@ public class SelectLocalAppsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         ((FDroidApp) getApplication()).applyTheme(this);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.select_local_apps_activity);
     }
 
