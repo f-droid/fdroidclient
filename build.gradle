@@ -27,6 +27,9 @@ dependencies {
 	compile project(':extern:jmdns')
 	compile project(':extern:zipsigner')
 	compile project(':extern:zxing-core')
+	compile( project(':extern:android-support-v4-preferencefragment') ) {
+		exclude module: 'support-v4'
+	}
 }
 
 project(':extern:UniversalImageLoader:library') {

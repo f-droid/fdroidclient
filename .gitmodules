@@ -34,6 +34,10 @@
 	path = extern/nanohttpd
 	url = https://github.com/eighthave/nanohttpd
 	ignore = dirty
+[submodule "extern/android-support-v4-preferencefragment"]
+	path = extern/android-support-v4-preferencefragment
+	url = https://github.com/CyberEagle/android-support-v4-preferencefragment.git
+	ignore = dirty
 [submodule "extern/zxing-core"]
 	path = extern/zxing-core
 	url = https://gitlab.com/fdroid/zxing-core.git

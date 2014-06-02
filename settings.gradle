@@ -10,6 +10,7 @@ include ':extern:spongycastle:pg'
 include ':extern:spongycastle:pkix'
 include ':extern:spongycastle:prov'
 include ':extern:zxing-core'
+include ':extern:android-support-v4-preferencefragment'
 
 include ':support-v4'
 project(':support-v4').projectDir = new File('extern/Support/v4')
