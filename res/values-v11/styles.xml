@@ -1,11 +1,15 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppBaseThemeDark" parent="android:Theme.Holo">
+    <style name="AppBaseThemeDark" parent="Theme.AppCompat">
         <!-- API 11 theme customizations go here -->
-    </style> 
+    </style>
 
-    <style name="AppBaseThemeLight" parent="android:Theme.Holo.Light">
+    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light">
         <!-- API 11 theme customizations go here -->
-    </style> 
+    </style>
+
+    <style name="AppBaseThemeLightWithDarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- API 11 theme customizations go here -->
+    </style>
 
 </resources>

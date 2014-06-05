@@ -1,10 +1,14 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppBaseThemeDark" parent="android:Theme.Black">
+    <style name="AppBaseThemeDark" parent="Theme.AppCompat">
         <!-- backward-compatibility theme options go here -->
     </style>
 
-    <style name="AppBaseThemeLight" parent="android:Theme.Light">
+    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light">
+        <!-- backward-compatibility theme options go here -->
+    </style>
+
+    <style name="AppBaseThemeLightWithDarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- backward-compatibility theme options go here -->
     </style>
 
@@ -22,6 +26,10 @@
     </style>
 
     <style name="AppThemeLight" parent="AppBaseThemeLight">
+        <!-- customizations that are not API-level specific go here. -->
+    </style>
+
+    <style name="AppThemeLightWithDarkActionBar" parent="AppBaseThemeLightWithDarkActionBar">
         <!-- customizations that are not API-level specific go here. -->
     </style>
 

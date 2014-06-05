@@ -32,15 +32,12 @@ import android.os.*;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
 import de.duenndns.ssl.MemorizingTrustManager;
-
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
@@ -52,6 +49,11 @@ import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 import java.io.File;
 import java.security.*;
 import java.util.Set;
@@ -74,7 +76,7 @@ public class FDroidApp extends Application {
     BluetoothAdapter bluetoothAdapter = null;
 
     private static enum Theme {
-        dark, light
+        dark, light, lightWithDarkActionBar
     }
 
     private static Theme curTheme = Theme.dark;
@@ -88,11 +90,14 @@ public class FDroidApp extends Application {
     public void applyTheme(Activity activity) {
         switch (curTheme) {
             case dark:
-                //activity.setTheme(R.style.AppThemeDark);
-                return;
+                activity.setTheme(R.style.AppThemeDark);
+                break;
             case light:
                 activity.setTheme(R.style.AppThemeLight);
-                return;
+                break;
+            case lightWithDarkActionBar:
+                activity.setTheme(R.style.AppThemeLightWithDarkActionBar);
+                break;
         }
     }
 

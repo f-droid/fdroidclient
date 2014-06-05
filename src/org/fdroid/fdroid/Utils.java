@@ -23,24 +23,41 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
+import android.text.Editable;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
-
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
 import org.fdroid.fdroid.data.Repo;
+import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Formatter;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 public final class Utils {
 
@@ -450,6 +467,40 @@ public final class Utils {
     public static String toHexString(byte[] bytes) {
         BigInteger bi = new BigInteger(1, bytes);
         return String.format("%0" + (bytes.length << 1) + "X", bi);
+    }
+
+
+    // Need this to add the unimplemented support for ordered and unordered
+    // lists to Html.fromHtml().
+    public static class HtmlTagHandler implements Html.TagHandler {
+        int listNum;
+
+        @Override
+        public void handleTag(boolean opening, String tag, Editable output,
+                XMLReader reader) {
+            if (tag.equals("ul")) {
+                if (opening)
+                    listNum = -1;
+                else
+                    output.append('\n');
+            } else if (opening && tag.equals("ol")) {
+                if (opening)
+                    listNum = 1;
+                else
+                    output.append('\n');
+            } else if (tag.equals("li")) {
+                if (opening) {
+                    if (listNum == -1) {
+                        output.append("\t• ");
+                    } else {
+                        output.append("\t").append(Integer.toString(listNum)).append(". ");
+                        listNum++;
+                    }
+                } else {
+                    output.append('\n');
+                }
+            }
+        }
     }
 
 }

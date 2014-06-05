@@ -32,9 +32,9 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -42,13 +42,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
 import org.fdroid.fdroid.views.LocalRepoActivity;
 
-public class FDroid extends FragmentActivity {
+public class FDroid extends ActionBarActivity {
 
     public static final int REQUEST_APPDETAILS = 0;
     public static final int REQUEST_MANAGEREPOS = 1;
@@ -80,6 +79,7 @@ public class FDroid extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fdroid);
         createViews();
+
         getTabManager().createTabs();
 
         // Start a search by just typing
@@ -333,7 +333,7 @@ public class FDroid extends FragmentActivity {
 
     private TabManager getTabManager() {
         if (tabManager == null) {
-            tabManager = TabManager.create(this, viewPager);
+            tabManager = new TabManager(this, viewPager);
         }
         return tabManager;
     }

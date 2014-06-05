@@ -26,20 +26,19 @@ import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.views.fragments.RepoListFragment;
 
 import java.util.Locale;
-public class ManageRepo extends FragmentActivity {
+
+public class ManageRepo extends ActionBarActivity {
 
     /**
      * If we have a new repo added, or the address of a repo has changed, then
@@ -53,9 +52,9 @@ public class ManageRepo extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         ((FDroidApp) getApplication()).applyTheme(this);
+        super.onCreate(savedInstanceState);
 
         FragmentManager fm = getSupportFragmentManager();
         if (fm.findFragmentById(android.R.id.content) == null) {
@@ -72,7 +71,7 @@ public class ManageRepo extends FragmentActivity {
                     .commit();
         }
 
-        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

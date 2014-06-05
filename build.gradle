@@ -7,16 +7,18 @@ buildscript {
 	}
 }
 
-def toolVersion = "19.1"
 apply plugin: 'android'
 
-sdkLoc = System.getenv("ANDROID_HOME")
+def toolVersion = "19.1"
+sdkLoc = getSdkPath()
+
 FileCollection getAndroidPrebuilt(String apiLevel) {
 	files("$sdkLoc/platforms/android-$apiLevel/android.jar")
 }
 
 dependencies {
 	compile project(':support-v4')
+	compile project(':support-appcompat-v7')
 	compile project(':extern:AndroidPinning')
 	compile project(':extern:UniversalImageLoader:library')
 	compile project(':extern:MemorizingTrustManager')
@@ -25,6 +27,9 @@ dependencies {
 	compile project(':extern:jmdns')
 	compile project(':extern:zipsigner')
 	compile project(':extern:zxing-core')
+	compile( project(':extern:android-support-v4-preferencefragment') ) {
+		exclude module: 'support-v4'
+	}
 }
 
 project(':extern:UniversalImageLoader:library') {
@@ -120,6 +125,15 @@ android.applicationVariants.all { variant ->
 // This is the hacky way which we force the subprojects to use the same build tools:
 // http://stackoverflow.com/a/21032272
 subprojects {
+
+	// The support-v4 library assumes certain things are defined in the 
+	// root project (which is usually the android-support project, but 
+	// this time it is the F-Droid project.
+	if (project.name.equals("support-v4")) {
+		apply plugin: 'maven'
+		rootProject.ext.supportRepoOut = ""
+	}
+
 	afterEvaluate {
 		android {
 
@@ -138,3 +152,17 @@ subprojects {
 	}
 }
 
+/**
+ * Currently a bit hacky, because android.plugin is protected.
+ * The end goal is to find something in the android BaseExtension class found here:
+ *  https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
+ * which ends up asking their Sdk class for it's location. That class knows about
+ * both ANDROID_HOME env variables, and also local.properties sdk.loc properties.
+ * 
+ * If in the future, the android.adbExe is found to be inappropriate, deprecated,
+ * or a better way of finding the sdk path exists, we can change the implementation
+ * of this method to reflect that.
+ */
+def getSdkPath() {
+	new File( "$android.adbExe/../../" ).canonicalPath
+}

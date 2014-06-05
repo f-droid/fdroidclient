@@ -1,37 +1,40 @@
 
 package org.fdroid.fdroid.views;
 
-import android.app.Activity;
-import android.content.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
-public class QrWizardWifiNetworkActivity extends Activity {
-    private static final String TAG = "QrWizardWifiNetworkActivity";
+public class QrWizardWifiNetworkActivity extends ActionBarActivity {
+    private static final String TAG = "org.fdroid.fdroid.QrWizardWifiNetworkActivity";
 
     private WifiManager wifiManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
+
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         wifiManager.setWifiEnabled(true);
         FDroidApp.startLocalRepoService(this);
 
-        ((FDroidApp) getApplication()).applyTheme(this);
         setContentView(R.layout.qr_wizard_activity);
         TextView instructions = (TextView) findViewById(R.id.qrWizardInstructions);
         instructions.setText(R.string.qr_wizard_wifi_network_instructions);

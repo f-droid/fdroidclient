@@ -21,10 +21,12 @@ package org.fdroid.fdroid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
-import android.content.*;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -34,12 +36,12 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
-import android.text.Editable;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
-import android.text.Html.TagHandler;
 import android.text.Spanned;
 import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
@@ -52,8 +54,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,20 +66,45 @@ import org.fdroid.fdroid.Utils.CommaSeparatedList;
 import org.fdroid.fdroid.compat.ActionBarCompat;
 import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
-import org.fdroid.fdroid.data.*;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.fdroid.fdroid.net.ApkDownloader;
 import org.fdroid.fdroid.net.Downloader;
-import org.xml.sax.XMLReader;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.List;
 
-public class AppDetails extends ListActivity implements ProgressListener {
+interface AppDetailsData {
+    public App getApp();
+    public AppDetails.ApkListAdapter getApks();
+    public Signature getInstalledSignature();
+    public String getInstalledSignatureId();
+}
+
+/**
+ * Interface which allows the apk list fragment to communicate with the activity when
+ * a user requests to install/remove an apk by clicking on an item in the list.
+ *
+ * NOTE: This is <em>not</em> to do with with the sudo/packagemanager/other installer
+ * stuff which allows multiple ways to install apps. It is only here to make fragment-
+ * activity communication possible.
+ */
+interface AppInstallListener {
+    public void install(final Apk apk);
+    public void removeApk(String packageName);
+}
+
+public class AppDetails extends ActionBarActivity implements ProgressListener, AppDetailsData, AppInstallListener {
+
     private static final String TAG = "org.fdroid.fdroid.AppDetails";
 
     public static final int REQUEST_ENABLE_BLUETOOTH = 2;
@@ -118,14 +145,13 @@ public class AppDetails extends ListActivity implements ProgressListener {
                AppDetails.this.finish();
                return;
            }
-           updateViews();
 
+           refreshApkList();
            MenuManager.create(AppDetails.this).invalidateOptionsMenu();
-       }        
+       }
     }
 
-
-    private class ApkListAdapter extends ArrayAdapter<Apk> {
+    class ApkListAdapter extends ArrayAdapter<Apk> {
 
         private LayoutInflater mInflater = (LayoutInflater) mctx.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
@@ -134,7 +160,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
             super(context, 0);
             List<Apk> apks = ApkProvider.Helper.findByApp(context, app.id);
             for (Apk apk : apks ) {
-                if (apk.compatible || pref_incompatibleVersions) {
+                if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
                     add(apk);
                 }
             }
@@ -149,7 +175,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
             ViewHolder holder;
 
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.apklistitem, null);
+                convertView = mInflater.inflate(R.layout.apklistitem, parent, false);
 
                 holder = new ViewHolder();
                 holder.version = (TextView) convertView.findViewById(R.id.version);
@@ -185,7 +211,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 holder.size.setVisibility(View.GONE);
             }
 
-            if (!pref_expert) {
+            if (!Preferences.get().expertMode()) {
                 holder.api.setVisibility(View.GONE);
             } else if (apk.minSdkVersion > 0 && apk.maxSdkVersion > 0) {
                 holder.api.setText(getString(R.string.minsdk_up_to_maxsdk,
@@ -216,7 +242,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 holder.added.setVisibility(View.GONE);
             }
 
-            if (pref_expert && apk.nativecode != null) {
+            if (Preferences.get().expertMode() && apk.nativecode != null) {
                 holder.nativecode.setText(apk.nativecode.toString().replaceAll(","," "));
                 holder.nativecode.setVisibility(View.VISIBLE);
             } else {
@@ -277,11 +303,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
     private boolean startingIgnoreAll;
     private int startingIgnoreThis;
 
-    LinearLayout headerView;
-    View infoView;
-
     private final Context mctx = this;
-    private DisplayImageOptions displayImageOptions;
     private Installer installer;
 
     /**
@@ -337,9 +359,9 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 // fdroid.app:app.id
                 appId = data.getEncodedSchemeSpecificPart();
             }
-            Log.d("FDroid", "AppDetails launched from link, for '" + appId + "'");
+            Log.d(TAG, "AppDetails launched from link, for '" + appId + "'");
         } else if (!i.hasExtra(EXTRA_APPID)) {
-            Log.e("FDroid", "No application ID in AppDetails!?");
+            Log.e(TAG, "No application ID in AppDetails!?");
         } else {
             appId = i.getStringExtra(EXTRA_APPID);
         }
@@ -349,27 +371,11 @@ public class AppDetails extends ListActivity implements ProgressListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        
+
         fdroidApp = ((FDroidApp) getApplication());
         fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);
-
-        displayImageOptions = new DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .cacheOnDisk(true)
-            .imageScaleType(ImageScaleType.NONE)
-            .showImageOnLoading(R.drawable.ic_repo_app_default)
-            .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .build();
-
-        setContentView(R.layout.appdetails);
-
-        // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
-        // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
-        // for reason why.
-        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
 
         if (getIntent().hasExtra(EXTRA_FROM)) {
             setTitle(getIntent().getStringExtra(EXTRA_FROM));
@@ -377,11 +383,10 @@ public class AppDetails extends ListActivity implements ProgressListener {
 
         mPm = getPackageManager();
 
-        installer = Installer.getActivityInstaller(this, mPm,
-                myInstallerCallback);
+        installer = Installer.getActivityInstaller(this, mPm, myInstallerCallback);
         
         // Get the preferences we're going to use in this Activity...
-        ConfigurationChangeHelper previousData = (ConfigurationChangeHelper)getLastNonConfigurationInstance();
+        ConfigurationChangeHelper previousData = (ConfigurationChangeHelper)getLastCustomNonConfigurationInstance();
         if (previousData != null) {
             Log.d(TAG, "Recreating view after configuration change.");
             downloadHandler = previousData.downloader;
@@ -397,27 +402,33 @@ public class AppDetails extends ListActivity implements ProgressListener {
             }
         }
 
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        pref_expert = prefs.getBoolean(Preferences.PREF_EXPERT, false);
-        pref_permissions = prefs.getBoolean(Preferences.PREF_PERMISSIONS, false);
-        pref_incompatibleVersions = prefs.getBoolean(
-                Preferences.PREF_INCOMP_VER, false);
-
         // Set up the list...
-        headerView = new LinearLayout(this);
-        ListView lv = (ListView) findViewById(android.R.id.list);
-        lv.addHeaderView(headerView);
         adapter = new ApkListAdapter(this, app);
-        setListAdapter(adapter);
 
-        startViews();
+        // Wait until all other intialization before doing this, because it will create the
+        // fragments, which rely on data from the activity that is set earlier in this method.
+        setContentView(R.layout.app_details);
+
+        // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
+        // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
+        // for reason why.
+        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+
+        // Check for the presence of a view which only exists in the landscape view.
+        // This seems to be the preferred way to interrogate the view, rather than
+        // to check the orientation. I guess this is because views can be dynamically
+        // chosen based on more than just orientation (e.g. large screen sizes).
+        View onlyInLandscape = findViewById(R.id.app_summary_container);
+
+        AppDetailsListFragment listFragment =
+                (AppDetailsListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_app_list);
+        if (onlyInLandscape == null) {
+            listFragment.setupSummaryHeader();
+        } else {
+            listFragment.removeSummaryHeader();
+        }
 
     }
-
-    private boolean pref_expert;
-    private boolean pref_permissions;
-    private boolean pref_incompatibleVersions;
 
     // The signature of the installed version.
     private Signature mInstalledSignature;
@@ -426,13 +437,13 @@ public class AppDetails extends ListActivity implements ProgressListener {
     @Override
     protected void onResume() {
         super.onResume();
-        
+
         // register observer to know when install status changes
         myAppObserver = new AppObserver(new Handler());
         getContentResolver().registerContentObserver(
-              AppProvider.getContentUri(app.id),
-              true,
-              myAppObserver);
+                AppProvider.getContentUri(app.id),
+                true,
+                myAppObserver);
         if (downloadHandler != null) {
             if (downloadHandler.isComplete()) {
                 downloadCompleteInstallApk();
@@ -446,9 +457,12 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 updateProgressDialog();
             }
         }
+    }
 
-        updateViews();
-
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        refreshApkList();
         MenuManager.create(this).invalidateOptionsMenu();
     }
 
@@ -509,7 +523,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
 
 
     @Override
-    public Object onRetainNonConfigurationInstance() {
+    public Object onRetainCustomNonConfigurationInstance() {
         inProcessOfChangingConfiguration = true;
         return new ConfigurationChangeHelper(downloadHandler, app);
     }
@@ -538,7 +552,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
     // Return true if the app was found, false otherwise.
     private boolean reset(String appId) {
 
-        Log.d("FDroid", "Getting application details for " + appId);
+        Log.d(TAG, "Getting application details for " + appId);
         App newApp = null;
 
         if (appId != null && appId.length() > 0) {
@@ -579,233 +593,22 @@ public class AppDetails extends ListActivity implements ProgressListener {
                 Hasher hash = new Hasher("MD5", mInstalledSignature.toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (NameNotFoundException e) {
-                Log.d("FDroid", "Failed to get installed signature");
+                Log.d(TAG, "Failed to get installed signature");
             } catch (NoSuchAlgorithmException e) {
-                Log.d("FDroid", "Failed to calculate signature MD5 sum");
+                Log.d(TAG, "Failed to calculate signature MD5 sum");
                 mInstalledSignature = null;
             }
         }
     }
 
-    private void startViews() {
-
-        // Insert the 'infoView' (which contains the summary, various odds and
-        // ends, and the description) into the appropriate place, if we're in
-        // landscape mode. In portrait mode, we put it in the listview's
-        // header..
-        infoView = View.inflate(this, R.layout.appinfo, null);
-        LinearLayout landparent = (LinearLayout) findViewById(R.id.landleft);
-        headerView.removeAllViews();
-        if (landparent != null) {
-            landparent.addView(infoView);
-            Log.d("FDroid", "Setting up landscape view");
-        } else {
-            headerView.addView(infoView);
-            Log.d("FDroid", "Setting up portrait view");
-        }
-
-        // Set the icon...
-        ImageView iv = (ImageView) findViewById(R.id.icon);
-        ImageLoader.getInstance().displayImage(app.iconUrl, iv,
-            displayImageOptions);
-
-        // Set the title and other header details...
-        TextView tv = (TextView) findViewById(R.id.title);
-        tv.setText(app.name);
-        tv = (TextView) findViewById(R.id.license);
-        tv.setText(app.license);
-
-        if (app.categories != null) {
-            tv = (TextView) findViewById(R.id.categories);
-            tv.setText(app.categories.toString().replaceAll(",",", "));
-        }
-
-        tv = (TextView) infoView.findViewById(R.id.description);
-
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
-
-        // Need this to add the unimplemented support for ordered and unordered
-        // lists to Html.fromHtml().
-        class HtmlTagHandler implements TagHandler {
-            int listNum;
-
-            @Override
-            public void handleTag(boolean opening, String tag, Editable output,
-                    XMLReader reader) {
-                if (tag.equals("ul")) {
-                    if (opening)
-                        listNum = -1;
-                    else
-                        output.append('\n');
-                } else if (opening && tag.equals("ol")) {
-                    if (opening)
-                        listNum = 1;
-                    else
-                        output.append('\n');
-                } else if (tag.equals("li")) {
-                    if (opening) {
-                        if (listNum == -1) {
-                            output.append("\t• ");
-                        } else {
-                            output.append("\t").append(Integer.toString(listNum)).append(". ");
-                            listNum++;
-                        }
-                    } else {
-                        output.append('\n');
-                    }
-                }
-            }
-        }
-        Spanned desc = Html.fromHtml(
-                app.description, null, new HtmlTagHandler());
-        tv.setText(desc.subSequence(0, desc.length() - 2));
-
-        tv = (TextView) infoView.findViewById(R.id.appid);
-        if (pref_expert)
-            tv.setText(app.id);
-        else
-            tv.setVisibility(View.GONE);
-
-        tv = (TextView) infoView.findViewById(R.id.summary);
-        tv.setText(app.summary);
-
-        Apk curApk = null;
-        for (int i = 0; i < adapter.getCount(); i ++) {
-            Apk apk = adapter.getItem(i);
-            if (apk.vercode == app.suggestedVercode) {
-                curApk = apk;
-                break;
-            }
-        }
-
-        if (pref_permissions && !adapter.isEmpty() &&
-                ((curApk != null && curApk.compatible) || pref_incompatibleVersions)) {
-            tv = (TextView) infoView.findViewById(R.id.permissions_list);
-
-            CommaSeparatedList permsList = adapter.getItem(0).permissions;
-            if (permsList == null) {
-                tv.setText(getString(R.string.no_permissions));
-            } else {
-                Iterator<String> permissions = permsList.iterator();
-                StringBuilder sb = new StringBuilder();
-                while (permissions.hasNext()) {
-                    String permissionName = permissions.next();
-                    try {
-                        Permission permission = new Permission(this, permissionName);
-                        sb.append("\t• ").append(permission.getName()).append('\n');
-                    } catch (NameNotFoundException e) {
-                        if (permissionName.equals("ACCESS_SUPERUSER")) {
-                            sb.append("\t• Full permissions to all device features and storage\n");
-                        } else {
-                            Log.d("FDroid", "Permission not yet available: " + permissionName);
-                        }
-                    }
-                }
-                if (sb.length() > 0) sb.setLength(sb.length() - 1);
-                tv.setText(sb.toString());
-            }
-            tv = (TextView) infoView.findViewById(R.id.permissions);
-            tv.setText(getString(
-                    R.string.permissions_for_long, adapter.getItem(0).version));
-        } else {
-            infoView.findViewById(R.id.permissions).setVisibility(View.GONE);
-            infoView.findViewById(R.id.permissions_list).setVisibility(View.GONE);
-        }
-
-        tv = (TextView) infoView.findViewById(R.id.antifeatures);
-        if (app.antiFeatures != null) {
-            StringBuilder sb = new StringBuilder();
-            for (String af : app.antiFeatures) {
-                String afdesc = descAntiFeature(af);
-                if (afdesc != null) {
-                    sb.append("\t• ").append(afdesc).append("\n");
-                }
-            }
-            if (sb.length() > 0) {
-                sb.setLength(sb.length() - 1);
-                tv.setText(sb.toString());
-            } else {
-                tv.setVisibility(View.GONE);
-            }
-        } else {
-            tv.setVisibility(View.GONE);
-        }
-    }
-
-    private String descAntiFeature(String af) {
-        if (af.equals("Ads"))
-            return getString(R.string.antiadslist);
-        if (af.equals("Tracking"))
-            return getString(R.string.antitracklist);
-        if (af.equals("NonFreeNet"))
-            return getString(R.string.antinonfreenetlist);
-        if (af.equals("NonFreeAdd"))
-            return getString(R.string.antinonfreeadlist);
-        if (af.equals("NonFreeDep"))
-            return getString(R.string.antinonfreedeplist);
-        if (af.equals("UpstreamNonFree"))
-            return getString(R.string.antiupstreamnonfreelist);
-        return null;
-    }
-
-    private void updateViews() {
-
-        // Refresh the list...
+    private void refreshApkList() {
         adapter.notifyDataSetChanged();
-
-        TextView tv = (TextView) findViewById(R.id.status);
-        if (app.isInstalled()) {
-            tv.setText(getString(R.string.details_installed,
-                    app.installedVersionName));
-            NfcBeamManager.setAndroidBeam(this, app.id);
-        } else {
-            tv.setText(getString(R.string.details_notinstalled));
-            NfcBeamManager.disableAndroidBeam(this);
-        }
-
-        tv = (TextView) infoView.findViewById(R.id.signature);
-        if (pref_expert && mInstalledSignature != null) {
-            tv.setVisibility(View.VISIBLE);
-            tv.setText("Signed: " + mInstalledSigID);
-        } else {
-            tv.setVisibility(View.GONE);
-        }
-
-    }
-
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        final Apk apk = adapter.getItem(position - l.getHeaderViewsCount());
-        if (app.installedVersionCode == apk.vercode)
-            removeApk(app.id);
-        else if (app.installedVersionCode > apk.vercode) {
-            AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
-            ask_alrt.setMessage(getString(R.string.installDowngrade));
-            ask_alrt.setPositiveButton(getString(R.string.yes),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            install(apk);
-                        }
-                    });
-            ask_alrt.setNegativeButton(getString(R.string.no),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                        }
-                    });
-            AlertDialog alert = ask_alrt.create();
-            alert.show();
-        } else
-            install(apk);
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
-        super.onCreateOptionsMenu(menu);
+        super.onPrepareOptionsMenu(menu);
         menu.clear();
         if (app == null)
             return true;
@@ -997,8 +800,7 @@ public class AppDetails extends ListActivity implements ProgressListener {
     }
 
     // Install the version of this app denoted by 'app.curApk'.
-    private void install(final Apk apk) {
-        final Activity activity = this;
+    public void install(final Apk apk) {
         String [] projection = { RepoProvider.DataColumns.ADDRESS };
         Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
         if (repo == null || repo.address == null) {
@@ -1064,7 +866,8 @@ public class AppDetails extends ListActivity implements ProgressListener {
         }
     }
 
-    private void removeApk(String packageName) {
+    @Override
+    public void removeApk(String packageName) {
         setProgressBarIndeterminateVisibility(true);
 
         try {
@@ -1253,4 +1056,327 @@ public class AppDetails extends ListActivity implements ProgressListener {
             break;
         }
     }
+
+    public App getApp() {
+        return app;
+    }
+
+    public ApkListAdapter getApks() {
+        return adapter;
+    }
+
+    public Signature getInstalledSignature() {
+        return mInstalledSignature;
+    }
+
+    public String getInstalledSignatureId() {
+        return mInstalledSigID;
+    }
+
+    public static class AppDetailsSummaryFragment extends Fragment {
+
+        protected final Preferences prefs;
+        protected final DisplayImageOptions displayImageOptions;
+        private AppDetailsData data;
+
+        public AppDetailsSummaryFragment() {
+            prefs = Preferences.get();
+            displayImageOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .showImageOnLoading(R.drawable.ic_repo_app_default)
+                .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
+        }
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            data = (AppDetailsData)activity;
+        }
+
+        protected App getApp() {
+            return data.getApp();
+        }
+
+        protected ApkListAdapter getApks() {
+            return data.getApks();
+        }
+
+        protected Signature getInstalledSignature() {
+            return data.getInstalledSignature();
+        }
+
+        protected String getInstalledSignatureId() {
+            return data.getInstalledSignatureId();
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            super.onCreateView(inflater, container, savedInstanceState);
+            View summaryView = inflater.inflate(R.layout.app_details_summary, container, false);
+            setupView(summaryView);
+            return summaryView;
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            updateViews(getView());
+        }
+
+        private void setupView(View view) {
+
+            // Set the icon...
+            ImageView iv = (ImageView) view.findViewById(R.id.icon);
+            ImageLoader.getInstance().displayImage(getApp().iconUrl, iv, displayImageOptions);
+
+            // Set the title and other header details...
+            TextView tv = (TextView) view.findViewById(R.id.title);
+            tv.setText(getApp().name);
+            tv = (TextView) view.findViewById(R.id.license);
+            tv.setText(getApp().license);
+
+            if (getApp().categories != null) {
+                tv = (TextView) view.findViewById(R.id.categories);
+                tv.setText(getApp().categories.toString().replaceAll(",", ", "));
+            }
+
+            TextView description = (TextView) view.findViewById(R.id.description);
+            Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
+            description.setMovementMethod(LinkMovementMethod.getInstance());
+            description.setText(desc.subSequence(0, desc.length() - 2));
+
+            TextView appIdView = (TextView) view.findViewById(R.id.appid);
+            if (prefs.expertMode())
+                appIdView.setText(getApp().id);
+            else
+                appIdView.setVisibility(View.GONE);
+
+            TextView summaryView = (TextView) view.findViewById(R.id.summary);
+            summaryView.setText(getApp().summary);
+
+            Apk curApk = null;
+            for (int i = 0; i < getApks().getCount(); i ++) {
+                Apk apk = getApks().getItem(i);
+                if (apk.vercode == getApp().suggestedVercode) {
+                    curApk = apk;
+                    break;
+                }
+            }
+
+            TextView permissionListView = (TextView) view.findViewById(R.id.permissions_list);
+            TextView permissionHeader = (TextView) view.findViewById(R.id.permissions);
+            boolean curApkCompatible = curApk != null && curApk.compatible;
+            if (prefs.showPermissions() && !getApks().isEmpty() &&
+                    ( curApkCompatible || prefs.showIncompatibleVersions() ) ) {
+
+                CommaSeparatedList permsList = getApks().getItem(0).permissions;
+                if (permsList == null) {
+                    permissionListView.setText(getString(R.string.no_permissions));
+                } else {
+                    Iterator<String> permissions = permsList.iterator();
+                    StringBuilder sb = new StringBuilder();
+                    while (permissions.hasNext()) {
+                        String permissionName = permissions.next();
+                        try {
+                            Permission permission = new Permission(getActivity(), permissionName);
+                            // TODO: Make this list RTL friendly
+                            sb.append("\t• ").append(permission.getName()).append('\n');
+                        } catch (NameNotFoundException e) {
+                            if (permissionName.equals("ACCESS_SUPERUSER")) {
+                                // TODO: i18n this string, but surely it is already translated somewhere?
+                                sb.append("\t• Full permissions to all device features and storage\n");
+                            } else {
+                                Log.e(TAG, "Permission not yet available: " + permissionName);
+                            }
+                        }
+                    }
+                    if (sb.length() > 0) sb.setLength(sb.length() - 1);
+                    permissionListView.setText(sb.toString());
+                }
+                permissionHeader.setText(getString(R.string.permissions_for_long, getApks().getItem(0).version));
+            } else {
+                permissionListView.setVisibility(View.GONE);
+                permissionHeader.setVisibility(View.GONE);
+            }
+
+            TextView antiFeaturesView = (TextView) view.findViewById(R.id.antifeatures);
+            if (getApp().antiFeatures != null) {
+                StringBuilder sb = new StringBuilder();
+                for (String af : getApp().antiFeatures) {
+                    String afdesc = descAntiFeature(af);
+                    if (afdesc != null) {
+                        sb.append("\t• ").append(afdesc).append("\n");
+                    }
+                }
+                if (sb.length() > 0) {
+                    sb.setLength(sb.length() - 1);
+                    antiFeaturesView.setText(sb.toString());
+                } else {
+                    antiFeaturesView.setVisibility(View.GONE);
+                }
+            } else {
+                antiFeaturesView.setVisibility(View.GONE);
+            }
+
+            updateViews(view);
+        }
+
+        private String descAntiFeature(String af) {
+            if (af.equals("Ads"))
+                return getString(R.string.antiadslist);
+            if (af.equals("Tracking"))
+                return getString(R.string.antitracklist);
+            if (af.equals("NonFreeNet"))
+                return getString(R.string.antinonfreenetlist);
+            if (af.equals("NonFreeAdd"))
+                return getString(R.string.antinonfreeadlist);
+            if (af.equals("NonFreeDep"))
+                return getString(R.string.antinonfreedeplist);
+            if (af.equals("UpstreamNonFree"))
+                return getString(R.string.antiupstreamnonfreelist);
+            return null;
+        }
+
+        public void updateViews(View view) {
+
+            if (view == null) {
+                Log.e(TAG, "AppDetailsSummaryFragment.refreshApkList - view == null. Oops.");
+                return;
+            }
+
+            TextView statusView = (TextView) view.findViewById(R.id.status);
+            if (getApp().isInstalled()) {
+                statusView.setText(getString(R.string.details_installed, getApp().installedVersionName));
+                NfcBeamManager.setAndroidBeam(getActivity(), getApp().id);
+            } else {
+                statusView.setText(getString(R.string.details_notinstalled));
+                NfcBeamManager.disableAndroidBeam(getActivity());
+            }
+
+            TextView signatureView = (TextView) view.findViewById(R.id.signature);
+            if (prefs.expertMode() && getInstalledSignature() != null) {
+                signatureView.setVisibility(View.VISIBLE);
+                signatureView.setText("Signed: " + getInstalledSignatureId());
+            } else {
+                signatureView.setVisibility(View.GONE);
+            }
+
+        }
+    }
+
+    public static class AppDetailsListFragment extends ListFragment {
+
+        private final String SUMMARY_TAG = "summary";
+
+        private AppDetailsData data;
+        private AppInstallListener installListener;
+        private AppDetailsSummaryFragment summaryFragment = null;
+
+        private FrameLayout headerView;
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            data = (AppDetailsData)activity;
+            installListener = (AppInstallListener)activity;
+        }
+
+        protected void install(final Apk apk) {
+            installListener.install(apk);
+        }
+
+        protected void remove() {
+            installListener.removeApk(getApp().id);
+        }
+
+        protected App getApp() {
+            return data.getApp();
+        }
+
+        protected ApkListAdapter getApks() {
+            return data.getApks();
+        }
+
+        @Override
+        public void onViewCreated(View view, Bundle savedInstanceState) {
+            // A bit of a hack, but we can't add the header view in setupSummaryHeader(),
+            // due to the fact it needs to happen before setListAdapter(). Also, seeing
+            // as we may never add a summary header (i.e. in landscape), this is probably
+            // the last opportunity to set the list adapter. As such, we use the headerView
+            // as a mechanism to optionally allow adding a header in the future.
+            if (headerView == null) {
+                headerView = new FrameLayout(getActivity().getApplicationContext());
+                headerView.setId(R.id.appDetailsSummaryHeader);
+            } else {
+                Fragment summaryFragment = getChildFragmentManager().findFragmentByTag(SUMMARY_TAG);
+                if (summaryFragment != null) {
+                    getChildFragmentManager().beginTransaction().remove(summaryFragment).commit();
+                }
+            }
+
+            setListAdapter(null);
+            getListView().addHeaderView(headerView);
+            setListAdapter(getApks());
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+        }
+
+        @Override
+        public void onListItemClick(ListView l, View v, int position, long id) {
+            final Apk apk = getApks().getItem(position - l.getHeaderViewsCount());
+            if (getApp().installedVersionCode == apk.vercode)
+                remove();
+            else if (getApp().installedVersionCode > apk.vercode) {
+                AlertDialog.Builder ask_alrt = new AlertDialog.Builder(getActivity());
+                ask_alrt.setMessage(getString(R.string.installDowngrade));
+                ask_alrt.setPositiveButton(getString(R.string.yes),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                    int whichButton) {
+                                install(apk);
+                            }
+                        });
+                ask_alrt.setNegativeButton(getString(R.string.no),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                    int whichButton) {
+                            }
+                        });
+                AlertDialog alert = ask_alrt.create();
+                alert.show();
+            } else
+                install(apk);
+        }
+
+        public void removeSummaryHeader() {
+            Fragment summary = getChildFragmentManager().findFragmentByTag(SUMMARY_TAG);
+            if (summary != null) {
+                getChildFragmentManager().beginTransaction().remove(summary).commit();
+                headerView.removeAllViews();
+                headerView.setVisibility(View.GONE);
+                summaryFragment = null;
+            }
+        }
+
+        public void setupSummaryHeader() {
+            Fragment fragment = getChildFragmentManager().findFragmentByTag(SUMMARY_TAG);
+            if (fragment != null) {
+                summaryFragment = (AppDetailsSummaryFragment)fragment;
+            } else {
+                summaryFragment = new AppDetailsSummaryFragment();
+            }
+            getChildFragmentManager().beginTransaction().replace(headerView.getId(), summaryFragment, SUMMARY_TAG).commit();
+            headerView.setVisibility(View.VISIBLE);
+        }
+    }
+
 }
