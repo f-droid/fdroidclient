@@ -77,6 +77,11 @@ android {
 	compileSdkVersion 19
 	buildToolsVersion toolVersion
 
+	compileOptions {
+		sourceCompatibility = "1.6"
+		targetCompatibility = "1.6"
+	}
+
 	sourceSets {
 		main {
 			manifest.srcFile 'AndroidManifest.xml'
