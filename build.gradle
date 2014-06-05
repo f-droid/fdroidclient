@@ -125,6 +125,15 @@ android.applicationVariants.all { variant ->
 // This is the hacky way which we force the subprojects to use the same build tools:
 // http://stackoverflow.com/a/21032272
 subprojects {
+
+	// The support-v4 library assumes certain things are defined in the 
+	// root project (which is usually the android-support project, but 
+	// this time it is the F-Droid project.
+	if (project.name.equals("support-v4")) {
+		apply plugin: 'maven'
+		rootProject.ext.supportRepoOut = ""
+	}
+
 	afterEvaluate {
 		android {
 
