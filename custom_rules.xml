@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="custom_rules">
 
-  <target name="-pre-build">
-
-    <echo message="Copying a bunch of files around to make F-Droid and its submodules build" />
-    <copy tofile="extern/android-support-v4-preferencefragment/libs/android-support-v4.jar"
-          file="libs/android-support-v4.jar" />
-    <copy tofile="extern/Support/v7/appcompat/libs/android-support-v4.jar"
-          file="libs/android-support-v4.jar" />
-
-  </target>
-
   <target name="javadoc" description="Generate Javadocs">
     <javadoc sourcepath="${source.dir}"
              destdir="${out.dir}/javadoc"
