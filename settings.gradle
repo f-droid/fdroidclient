@@ -1,3 +1,5 @@
+rootProject.name = "F-Droid"
+
 include ':extern:AndroidPinning'
 include ':extern:UniversalImageLoader:library'
 include ':extern:MemorizingTrustManager'
