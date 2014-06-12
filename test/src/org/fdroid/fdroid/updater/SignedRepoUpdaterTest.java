@@ -12,7 +12,11 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.updater.RepoUpdater.UpdateException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 @TargetApi(8)
 public class SignedRepoUpdaterTest extends InstrumentationTestCase {
@@ -161,6 +165,20 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
         } catch (UpdateException e) {
             e.printStackTrace();
             fail();
+        } catch (SecurityException e) {
+            // success!
+        }
+    }
+
+    public void testExtractIndexFromMasterKeyIndexJar() {
+        if (!testFilesDir.canWrite())
+            return;
+        // this is supposed to fail
+        try {
+            repoUpdater.getIndexFromFile(getTestFile("masterKeyIndex.jar"));
+            fail();
+        } catch (UpdateException e) {
+            // success!
         } catch (SecurityException e) {
             // success!
         }
