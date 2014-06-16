@@ -70,4 +70,19 @@
 			android:defaultValue="false"
 			android:key="systemInstaller" />
 	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/proxy" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="enableProxy"
+            android:title="@string/enable_proxy_title"
+            android:summary="@string/enable_proxy_summary" />
+        <EditTextPreference
+            android:key="proxyHost"
+            android:title="@string/proxy_host"
+            android:summary="@string/proxy_host_summary" />
+        <EditTextPreference
+            android:key="proxyPort"
+            android:title="@string/proxy_port"
+            android:summary="@string/proxy_port_summary" />
+	</PreferenceCategory>
 </PreferenceScreen>
