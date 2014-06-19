@@ -168,6 +168,8 @@ Nota: Tutte le applicazioni installate precedentemente rimarranno sul dispositiv
   <string name="repo_disabled_notification">\"%1$s\" è disabilitato.
 È necessario abilitare nuovamente questo repository per installare le applicazioni contenute.</string>
   <string name="minsdk_or_later">%s o successivi</string>
+  <string name="up_to_maxsdk">fino a %s</string>
+  <string name="minsdk_up_to_maxsdk">da %1$s fino a %2$s</string>
   <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete WiFi del Repository locale che hai aggiunto!
 Prova a collegarti a questa rete: %s</string>
   <string name="requires_features">Richiede: %1$s</string>
