@@ -56,20 +56,6 @@
 		    android:key="localRepoHttps"
 		    android:title="@string/local_repo_https" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="@string/other">
-		<CheckBoxPreference android:title="@string/cache_downloaded"
-			android:defaultValue="false"
-			android:key="cacheDownloaded" />
-		<CheckBoxPreference android:title="@string/expert"
-			android:defaultValue="false"
-			android:key="expert" />
-		<CheckBoxPreference android:title="@string/root_installer"
-			android:defaultValue="false"
-			android:key="rootInstaller" />
-		<CheckBoxPreference android:title="@string/system_installer"
-			android:defaultValue="false"
-			android:key="systemInstaller" />
-	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/proxy" >
         <CheckBoxPreference
             android:defaultValue="false"
@@ -84,5 +70,19 @@
             android:key="proxyPort"
             android:title="@string/proxy_port"
             android:summary="@string/proxy_port_summary" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/other">
+		<CheckBoxPreference android:title="@string/cache_downloaded"
+			android:defaultValue="false"
+			android:key="cacheDownloaded" />
+		<CheckBoxPreference android:title="@string/expert"
+			android:defaultValue="false"
+			android:key="expert" />
+		<CheckBoxPreference android:title="@string/root_installer"
+			android:defaultValue="false"
+			android:key="rootInstaller" />
+		<CheckBoxPreference android:title="@string/system_installer"
+			android:defaultValue="false"
+			android:key="systemInstaller" />
 	</PreferenceCategory>
 </PreferenceScreen>
