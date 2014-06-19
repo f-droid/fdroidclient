@@ -1,18 +1,18 @@
 ### Upcoming release (2014-06-??)
 
-* added "local repo" support to host an FDroid repo on the device itself, with
-  full signed repo support, icons, and optional HTTPS://
+* Added "local repo" support to host an FDroid repo on the device itself, with
+  full signed repo support, icons, and optional HTTPS
 
-* "Setup Local Repo" UI for setting up the local repo based on choosing from
-  any installed app on the device
+* Ability to set up such a local repo by choosing from any of the installed
+  applications on the device
 
-* find local repos on the same network using Bonjour/mDNS
+* Find local repos on the same network using Bonjour/mDNS
 
-* use FDroid repos on Tor Hidden Services (.onion addresses)
+* Support for FDroid repos on Tor Hidden Services (.onion addresses)
 
-* support for a HTTP Proxy in Preferences
+* HTTP Proxy support in Preferences
 
-* directly send installed apps to other devices via Bluetooth and Android Beam
+* Directly send installed apps to other devices via Bluetooth and Android Beam
   (NFC+Bluetooth), also compatible with Samsung/HTC S-Beam
 
 * Fix some crashes
