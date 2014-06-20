@@ -14,7 +14,7 @@
             android:layout_height="wrap_content" />
 
     <Button
-            android:id="@+id/checkbox_dont_show"
+            android:id="@+id/button_start_swap"
             android:text="START A SWAP"
             style="@style/SwapTheme.AppList.StartButton"
             android:layout_width="match_parent"

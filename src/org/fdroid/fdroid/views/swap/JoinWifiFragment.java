@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
@@ -13,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -33,7 +33,7 @@ public class JoinWifiFragment extends Fragment {
         joinWifiView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Touched view", Toast.LENGTH_LONG);
+                openAvailableNetworks();
             }
         });
         return joinWifiView;
@@ -60,5 +60,9 @@ public class JoinWifiFragment extends Fragment {
             String text = TextUtils.isEmpty(FDroidApp.ssid) ? getString(R.string.swap_no_wifi_network) : FDroidApp.ssid;
             ssidView.setText(text);
         }
+    }
+
+    private void openAvailableNetworks() {
+        startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
     }
 }

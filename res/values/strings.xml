@@ -303,4 +303,6 @@
     <string name="swap">Swap apps</string>
     <string name="swap_no_wifi_network">No network yet</string>
     <string name="swap_view_available_networks">(Tap to open available networks)</string>
+    <string name="swap_wifi_qr_not_working">It\'s not working</string>
+    <string name="open_qr_code_scanner">Open QR Code Scanner</string>
 </resources>
