@@ -1,85 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
+    android:orientation="vertical"
 	android:paddingTop="4dp"
 	android:paddingBottom="8dp"
-	android:baselineAligned="false"
-	android:orientation="vertical" >
-
-    <ImageView
-        android:id="@+id/icon"
-        android:contentDescription="@string/app_icon"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:padding="4dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        tools:src="@drawable/ic_launcher"
-        android:scaleType="fitCenter"
-        />
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
 
     <TextView
-        android:id="@+id/status"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/icon"
-        android:layout_toEndOf="@id/icon"
-        android:layout_alignBottom="@id/icon"
-        android:paddingLeft="4dp"
-        tools:text="Installed"
-        android:textSize="13sp" android:layout_marginBottom="4dp"/>
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:singleLine="false"
-        tools:text="F-Droid"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingLeft="4dp"
-        android:layout_toRightOf="@id/icon"
-        android:layout_above="@id/status" />
-
-    <TextView
-        android:id="@+id/categories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@id/icon"
-        android:paddingLeft="4dp"
-        tools:text="System, Internet"
-        android:textSize="13sp" android:layout_marginBottom="4dp"/>
-
-    <TextView
-        android:id="@+id/license"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@id/categories"
-        android:paddingRight="4dp"
-        tools:text="GPLv3+"
-        android:textSize="13sp" />
-
-	<TextView
 		android:id="@+id/summary"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/icon"
 		android:textStyle="bold"
-        tools:text="Application manager" />
+        tools:text="Application manager"/>
 
 	<TextView
 		android:id="@+id/appid"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/summary"
 		android:textSize="12sp"
         tools:text="org.fdroid.fdroid" />
 
@@ -87,14 +28,12 @@
 		android:id="@+id/signature"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/appid"
 		android:textSize="12sp" />
 
 	<TextView
 		android:id="@+id/antifeatures"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/signature"
 		android:layout_marginTop="6sp"
 		android:textStyle="bold"
 		android:textColor="#ff0000"
@@ -104,7 +43,6 @@
 		android:id="@+id/description"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/antifeatures"
 		android:layout_marginTop="8sp"
 		android:textSize="13sp"
 		android:singleLine="false"
@@ -120,22 +58,20 @@ Android is open in the sense that you are free to install apks from anywhere you
     * Stay safe by checking repo index signatures and apk hashes
 
 Changelog" />
-	
+
 	<TextView
 		android:id="@+id/permissions"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/description"
 		android:layout_marginTop="8sp"
 		android:singleLine="true"
 		android:textStyle="bold"
         tools:text="Permissions for version 1.0" />
-	
+
 	<TextView
 		android:id="@+id/permissions_list"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/permissions"
 		android:textSize="13sp"
 		android:singleLine="false"
         tools:text="    * Full network access
@@ -151,4 +87,4 @@ Changelog" />
     * Full permission to all device features and storage
     * Test access to protected storage" />
 
-</RelativeLayout>
+</LinearLayout>

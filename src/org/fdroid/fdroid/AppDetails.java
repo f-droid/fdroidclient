@@ -1076,19 +1076,10 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     public static class AppDetailsSummaryFragment extends Fragment {
 
         protected final Preferences prefs;
-        protected final DisplayImageOptions displayImageOptions;
         private AppDetailsData data;
 
         public AppDetailsSummaryFragment() {
             prefs = Preferences.get();
-            displayImageOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .imageScaleType(ImageScaleType.NONE)
-                .showImageOnLoading(R.drawable.ic_repo_app_default)
-                .showImageForEmptyUri(R.drawable.ic_repo_app_default)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .build();
         }
 
         @Override
@@ -1128,21 +1119,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
 
         private void setupView(View view) {
-
-            // Set the icon...
-            ImageView iv = (ImageView) view.findViewById(R.id.icon);
-            ImageLoader.getInstance().displayImage(getApp().iconUrl, iv, displayImageOptions);
-
-            // Set the title and other header details...
-            TextView tv = (TextView) view.findViewById(R.id.title);
-            tv.setText(getApp().name);
-            tv = (TextView) view.findViewById(R.id.license);
-            tv.setText(getApp().license);
-
-            if (getApp().categories != null) {
-                tv = (TextView) view.findViewById(R.id.categories);
-                tv.setText(getApp().categories.toString().replaceAll(",", ", "));
-            }
 
             TextView description = (TextView) view.findViewById(R.id.description);
             Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
@@ -1244,17 +1220,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         public void updateViews(View view) {
 
             if (view == null) {
-                Log.e(TAG, "AppDetailsSummaryFragment.refreshApkList - view == null. Oops.");
+                Log.e(TAG, "AppDetailsSummaryFragment.updateViews(): view == null. Oops.");
                 return;
-            }
-
-            TextView statusView = (TextView) view.findViewById(R.id.status);
-            if (getApp().isInstalled()) {
-                statusView.setText(getString(R.string.details_installed, getApp().installedVersionName));
-                NfcBeamManager.setAndroidBeam(getActivity(), getApp().id);
-            } else {
-                statusView.setText(getString(R.string.details_notinstalled));
-                NfcBeamManager.disableAndroidBeam(getActivity());
             }
 
             TextView signatureView = (TextView) view.findViewById(R.id.signature);
@@ -1266,6 +1233,86 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             }
 
         }
+    }
+
+    public static class AppDetailsHeaderFragment extends Fragment {
+
+        private AppDetailsData data;
+        protected final Preferences prefs;
+        protected final DisplayImageOptions displayImageOptions;
+
+        public AppDetailsHeaderFragment() {
+            prefs = Preferences.get();
+            displayImageOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .showImageOnLoading(R.drawable.ic_repo_app_default)
+                .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
+        }
+
+        private App getApp() {
+            return data.getApp();
+        }
+
+        private ApkListAdapter getApks() {
+            return data.getApks();
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.app_details_header, container, false);
+            setupView(view);
+            return view;
+        }
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            data = (AppDetailsData)activity;
+        }
+
+        private void setupView(View view) {
+
+            // Set the icon...
+            ImageView iv = (ImageView) view.findViewById(R.id.icon);
+            ImageLoader.getInstance().displayImage(getApp().iconUrl, iv, displayImageOptions);
+
+            // Set the title and other header details...
+            TextView tv = (TextView) view.findViewById(R.id.title);
+            tv.setText(getApp().name);
+            tv = (TextView) view.findViewById(R.id.license);
+            tv.setText(getApp().license);
+
+            if (getApp().categories != null) {
+                tv = (TextView) view.findViewById(R.id.categories);
+                tv.setText(getApp().categories.toString().replaceAll(",", ", "));
+            }
+
+            updateViews(view);
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            updateViews(getView());
+        }
+
+        public void updateViews(View view) {
+
+            TextView statusView = (TextView) view.findViewById(R.id.status);
+            if (getApp().isInstalled()) {
+                statusView.setText(getString(R.string.details_installed, getApp().installedVersionName));
+                NfcBeamManager.setAndroidBeam(getActivity(), getApp().id);
+            } else {
+                statusView.setText(getString(R.string.details_notinstalled));
+                NfcBeamManager.disableAndroidBeam(getActivity());
+            }
+
+        }
+
     }
 
     public static class AppDetailsListFragment extends ListFragment {
