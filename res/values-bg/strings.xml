@@ -7,7 +7,7 @@
   <string name="installIncompatible">Изглежда този пакет не е съвместим с твоето устойство. Искаш ли да опиташ да го инсталираш въпреки това?</string>
   <string name="installDowngrade">Опитваш се да инсталираш по-стара версия на праложението. Това може да го повреди и дори да изтрие данните ти. Искаш ли да го инсталираш въпреки това?</string>
   <string name="version">Версия</string>
-  <string name="enable_nfc_send">Активирай NFC изпращане...</string>
+  <string name="enable_nfc_send">Активирай NFC изпращане…</string>
   <string name="cache_downloaded">Кеширай свалените приложения</string>
   <string name="updates">Актуализации</string>
   <string name="other">Други</string>
@@ -50,7 +50,7 @@
   <string name="process_update_msg">Обновявани на списъка с приложения…</string>
   <string name="download_server">Взимане на приложението от</string>
   <string name="nfc_is_not_enabled">NFC не е активиран!</string>
-  <string name="go_to_nfc_settings">Отиди в настройките на NFC...</string>
+  <string name="go_to_nfc_settings">Отиди в настройките на NFC…</string>
   <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане, изберете един!</string>
   <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
   <string name="repo_add_url">Адрес на хранилището</string>
@@ -59,7 +59,7 @@
 Искаш ли да ги обновиш?</string>
   <string name="menu_update_repo">Обнови хранилищата</string>
   <string name="menu_manage">Управление на хранилищата</string>
-  <string name="menu_send_apk_bt">Изпрати FDroid.apk чрез Bluetooth...</string>
+  <string name="menu_send_apk_bt">Изпрати FDroid.apk чрез Bluetooth…</string>
   <string name="menu_preferences">Предпочитания</string>
   <string name="menu_about">Относно</string>
   <string name="menu_search">Търсене</string>
@@ -88,7 +88,7 @@
   <string name="category_whatsnew">Какво ново</string>
   <string name="category_recentlyupdated">Обновени наскоро</string>
   <string name="local_repos_title">Локални FDroid хранилища</string>
-  <string name="local_repos_scanning">Откриване на локални FDroid хранилища...</string>
+  <string name="local_repos_scanning">Откриване на локални FDroid хранилища…</string>
   <string name="status_download">Сваляне
  %2$s / %3$s (%4$d%%) от
  %1$s</string>

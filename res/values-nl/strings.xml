@@ -83,7 +83,7 @@ Een bron-adres ziet er ongeveer
 Wilt u ze vernieuwen?</string>
   <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
-  <string name="menu_send_apk_bt">Bluetooth FDroid.apk...</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>
   <string name="menu_search">Zoeken</string>
@@ -130,7 +130,7 @@ Wilt u ze vernieuwen?</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
   <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
-  <string name="local_repos_scanning">Lokale FDroid-bronnen ontdekken...</string>
+  <string name="local_repos_scanning">Lokale FDroid-bronnen ontdekken…</string>
   <string name="status_download">Downloaden
 %2$s / %3$s (%4$d%%) van
 %1$s</string>
