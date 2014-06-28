@@ -28,6 +28,14 @@ import org.fdroid.fdroid.data.App;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -50,15 +58,6 @@ import java.util.Map.Entry;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 public class LocalRepoManager {
     private static final String TAG = "LocalRepoManager";
 
@@ -73,6 +72,12 @@ public class LocalRepoManager {
 
     private String ipAddressString = "UNSET";
     private String uriString = "UNSET";
+
+    private static String[] WEB_ROOT_ASSET_FILES = {
+        "swap-icon.png",
+        "swap-tick-done.png",
+        "swap-tick-not-done.png"
+    };
 
     private Map<String, App> apps = new HashMap<String, App>();
 
@@ -159,27 +164,40 @@ public class LocalRepoManager {
             }
             in.close();
             out.close();
+
+            for (String file : WEB_ROOT_ASSET_FILES) {
+                Utils.copy(assetManager.open(file), new FileOutputStream(new File(webRoot, file)));
+            }
+
             // make symlinks/copies in each subdir of the repo to make sure that
             // the user will always find the bootstrap page.
-            File fdroidDirIndex = new File(fdroidDir, "index.html");
-            fdroidDirIndex.delete();
-            Utils.symlinkOrCopyFile(new File("../index.html"), fdroidDirIndex);
-            File repoDirIndex = new File(repoDir, "index.html");
-            repoDirIndex.delete();
-            Utils.symlinkOrCopyFile(new File("../../index.html"), repoDirIndex);
+            symlinkIndexPageElsewhere("../", fdroidDir);
+            symlinkIndexPageElsewhere("../../", repoDir);
+
             // add in /FDROID/REPO to support bad QR Scanner apps
             File fdroidCAPS = new File(fdroidDir.getParentFile(), "FDROID");
             fdroidCAPS.mkdir();
+
             File repoCAPS = new File(fdroidCAPS, "REPO");
             repoCAPS.mkdir();
-            File fdroidCAPSIndex = new File(fdroidCAPS, "index.html");
-            fdroidCAPSIndex.delete();
-            Utils.symlinkOrCopyFile(new File("../index.html"), fdroidCAPSIndex);
-            File repoCAPSIndex = new File(repoCAPS, "index.html");
-            repoCAPSIndex.delete();
-            Utils.symlinkOrCopyFile(new File("../../index.html"), repoCAPSIndex);
+
+            symlinkIndexPageElsewhere("../", fdroidCAPS);
+            symlinkIndexPageElsewhere("../../", repoCAPS);
+
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void symlinkIndexPageElsewhere(String symlinkPrefix, File directory) {
+        File index = new File(directory, "index.html");
+        index.delete();
+        Utils.symlinkOrCopyFile(new File(symlinkPrefix + "index.html"), index);
+
+        for(String fileName : WEB_ROOT_ASSET_FILES) {
+            File file = new File(directory, fileName);
+            file.delete();
+            Utils.symlinkOrCopyFile(new File(symlinkPrefix + fileName), file);
         }
     }
 
@@ -225,7 +243,7 @@ public class LocalRepoManager {
     public void addApp(Context context, String packageName) {
         App app;
         try {
-            app = new App(context, pm, packageName);
+            app = new App(context.getApplicationContext(), pm, packageName);
             if (!app.isValid())
                 return;
             PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
