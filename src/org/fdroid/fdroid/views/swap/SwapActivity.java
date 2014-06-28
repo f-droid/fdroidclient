@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.fragments.SelectLocalAppsFragment;
 
 public class SwapActivity extends ActionBarActivity implements SwapProcessManager {
 
@@ -21,26 +20,31 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private MenuItem nextMenuItem;
     private String nextMenuItemLabel;
 
-    public void nextStep() {
-        getSupportFragmentManager().popBackStack();
-        FragmentManager.BackStackEntry lastFragment = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1);
-        String name = lastFragment.getName();
-        switch (name) {
-            case STATE_START_SWAP:
-                onSelectApps();
-                break;
-            case STATE_SELECT_APPS:
-                onJoinWifi();
-                break;
-            case STATE_JOIN_WIFI:
-                onAttemptNfc();
-                break;
-            case STATE_NFC:
-                onWifiQr();
-                break;
-            case STATE_WIFI_QR:
+    @Override
+    public void onBackPressed() {
+        if (currentState().equals(STATE_START_SWAP)) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-                break;
+    private String currentState() {
+        FragmentManager.BackStackEntry lastFragment = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1);
+        return lastFragment.getName();
+    }
+
+    public void nextStep() {
+        String current = currentState();
+        if (current.equals(STATE_START_SWAP)) {
+            onSelectApps();
+        } else if (current.equals(STATE_SELECT_APPS)) {
+            onJoinWifi();
+        } else if (current.equals(STATE_JOIN_WIFI)) {
+            onAttemptNfc();
+        } else if (current.equals(STATE_NFC)) {
+            onWifiQr();
+        } else if (current.equals(STATE_WIFI_QR)) {
         }
         supportInvalidateOptionsMenu();
     }
@@ -94,7 +98,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(android.R.id.content, new StartSwapFragment(), STATE_START_SWAP)
+                    .replace(android.R.id.content, new StartSwapFragment(), STATE_START_SWAP)
                     .addToBackStack(STATE_START_SWAP)
                     .commit();
             hideNextButton();
@@ -107,7 +111,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(android.R.id.content, new SelectAppsFragment(), STATE_SELECT_APPS)
+                .replace(android.R.id.content, new SelectAppsFragment(), STATE_SELECT_APPS)
                 .addToBackStack(STATE_SELECT_APPS)
                 .commit();
         showNextButton();
@@ -118,7 +122,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(android.R.id.content, new JoinWifiFragment(), STATE_JOIN_WIFI)
+                .replace(android.R.id.content, new JoinWifiFragment(), STATE_JOIN_WIFI)
                 .addToBackStack(STATE_JOIN_WIFI)
                 .commit();
         showNextButton();
@@ -129,8 +133,8 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         if (Preferences.get().showNfcDuringSwap() && NfcSwapFragment.isNfcSupported(this)) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .addToBackStack(STATE_NFC)
                     .replace(android.R.id.content, new NfcSwapFragment(), STATE_NFC)
+                    .addToBackStack(STATE_NFC)
                     .commit();
             showNextButton();
         } else {
@@ -145,8 +149,8 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     public void onWifiQr() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .addToBackStack(STATE_WIFI_QR)
                 .replace(android.R.id.content, new WifiQrFragment(), STATE_WIFI_QR)
+                .addToBackStack(STATE_WIFI_QR)
                 .commit();
         showNextButton();
     }

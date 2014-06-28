@@ -153,7 +153,7 @@ public class SelectAppsFragment extends ListFragment
             } else {
                 for (String selected : FDroidApp.selectedApps) {
                     if (TextUtils.equals(packageName, selected)) {
-                        listView.setItemChecked(i, true);
+                        listView.setItemChecked(i + 1, true);
                     }
                 }
             }
