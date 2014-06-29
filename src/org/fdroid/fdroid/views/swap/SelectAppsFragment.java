@@ -10,6 +10,7 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.TextUtils;
 import android.view.ActionMode;
 import android.view.ContextThemeWrapper;
@@ -20,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -28,6 +28,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class SelectAppsFragment extends ListFragment
     implements LoaderManager.LoaderCallbacks<Cursor>, SearchView.OnQueryTextListener {
@@ -36,6 +37,43 @@ public class SelectAppsFragment extends ListFragment
     private Drawable defaultAppIcon;
     private ActionMode mActionMode = null;
     private String mCurrentFilterString;
+    private Set<String> previouslySelectedApps = new HashSet<String>();
+
+    public Set<String> getSelectedApps() {
+        return FDroidApp.selectedApps;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        previouslySelectedApps.clear();
+        if (FDroidApp.selectedApps != null) {
+            previouslySelectedApps.addAll(FDroidApp.selectedApps);
+        }
+    }
+
+    public boolean hasSelectionChanged() {
+
+        Set<String> currentlySelected = getSelectedApps();
+        if (currentlySelected.size() != previouslySelectedApps.size()) {
+            return true;
+        }
+
+        for (String current : currentlySelected) {
+            boolean found = false;
+            for (String previous : previouslySelectedApps) {
+                if (current.equals(previous)) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
