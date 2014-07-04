@@ -109,19 +109,49 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!--
-    Buttons down the bottom of the screen, which prompt the user for further
-    info, or to change the process somehow (e.g. Use Bluetooth instead of Wifi).
-    -->
-    <style name="SwapTheme.Wizard.OptionButton">
+    <style name="SwapTheme.Wizard.ButtonBase">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">19dp</item> <!-- 34px * 96dpi / 160dpi -->
         <item name="android:textSize">20.25sp</item> <!-- 36px * 96dpi / 160dpi -->
-        <item name="android:background">@drawable/swap_button_skin</item>
         <item name="android:textColor">#fff</item>
         <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <!--
+    Buttons down the bottom of the screen, which prompt the user for further
+    info, or to change the process somehow (e.g. Use Bluetooth instead of Wifi).
+    -->
+    <style name="SwapTheme.Wizard.OptionButton" parent="SwapTheme.Wizard.ButtonBase">
+        <item name="android:background">@drawable/swap_button_skin</item>
         <item name="android:layout_margin">0dp</item>
+    </style>
+
+    <style name="SwapTheme.Wizard.ReceiveSwap" parent="SwapTheme.Wizard">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--
+    Buttons used to ask the user to confirm they want to receive a swap repo from someone
+    -->
+    <style name="SwapTheme.Wizard.ReceiveSwap.ButtonBase" parent="SwapTheme.Wizard.ButtonBase">
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="SwapTheme.Wizard.ReceiveSwap.Confirm" parent="SwapTheme.Wizard.ReceiveSwap.ButtonBase">
+        <item name="android:background">@drawable/swap_confirm_button_skin</item>
+        <item name="android:layout_marginLeft">7dp</item>
+    </style>
+
+    <style name="SwapTheme.Wizard.ReceiveSwap.Deny" parent="SwapTheme.Wizard.ReceiveSwap.ButtonBase">
+        <item name="android:background">@drawable/swap_deny_button_skin</item>
+        <item name="android:layout_marginRight">7dp</item>
+    </style>
+
+    <style name="SwapTheme.Wizard.ReceiveSwap.MainText" parent="SwapTheme.Wizard.MainText">
+        <item name="android:textSize">33.6sp</item> <!-- 60 * 96dpi / 160dpi -->
+        <item name="android:textStyle">italic</item>
     </style>
 
 </resources>

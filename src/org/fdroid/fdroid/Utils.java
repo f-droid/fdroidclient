@@ -28,10 +28,6 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import org.fdroid.fdroid.data.Repo;
 import org.xml.sax.XMLReader;
@@ -297,6 +293,7 @@ public final class Utils {
             return Uri.parse("http://wifi-not-enabled");
         Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
         Uri.Builder b = uri.buildUpon();
+        b.appendQueryParameter("swap", "1");
         if (!TextUtils.isEmpty(repo.fingerprint))
             b.appendQueryParameter("fingerprint", repo.fingerprint);
         if (!TextUtils.isEmpty(FDroidApp.bssid)) {

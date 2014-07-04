@@ -8,6 +8,10 @@
     <color name="swap_light_blue_pressed">#ff98cce1</color>
     <color name="swap_blue">#1c6bbc</color>
     <color name="swap_blue_pressed">#ff6ca8d5</color>
+    <color name="swap_confirm">#ff27aae1</color>
+    <color name="swap_confirm_pressed">#ff2ed7eb</color>
+    <color name="swap_deny">#ff21488c</color>
+    <color name="swap_deny_pressed">#ff3096b9</color>
     <color name="swap_wifi_may_work">#fbb040</color>
     <color name="swap_wifi_likely_to_work">#00a14b</color>
 

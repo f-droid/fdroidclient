@@ -109,6 +109,22 @@
                 android:name="android.app.default_searchable"
                 android:value=".SearchResults" />
         </activity>
+        <activity
+            android:name=".views.swap.ConnectSwapActivity"
+            android:theme="@style/SwapTheme.Wizard"
+            android:label=""
+            android:parentActivityName=".FDroid">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+            <intent-filter>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+                <data android:path="/FDROID/REPO/SWAP"  />
+                <data android:path="/fdroid/repo/swap"  />
+            </intent-filter>
+        </activity>
         <!--
         The title for ManageReposActivity is "F-Droid" here, but "Repositories"
         when viewing the Activity itself in the app.
@@ -161,6 +177,30 @@
                 <data android:path="/.*/FDROID/REPO" />
                 <data android:path="/.*/.*/FDROID/REPO" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchResults" />
+        </activity>
+        <activity
+            android:name=".views.swap.ConnectSwapActivity"
+            android:theme="@style/SwapTheme.Wizard.ReceiveSwap"
+            android:label=""
+            android:noHistory="true"
+            android:parentActivityName=".FDroid">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+        </activity>
+        <activity
+            android:name=".ManageRepo"
+            android:label="@string/menu_manage"
+            android:launchMode="singleTask"
+            android:parentActivityName=".FDroid" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
