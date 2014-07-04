@@ -3,7 +3,10 @@ package org.fdroid.fdroid.views.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.*;
+import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -17,10 +20,21 @@ import android.support.v4.view.MenuItemCompat;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
-
-import org.fdroid.fdroid.*;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -30,12 +44,11 @@ import org.fdroid.fdroid.net.MDnsHelper.RepoScanListAdapter;
 import org.fdroid.fdroid.views.RepoAdapter;
 import org.fdroid.fdroid.views.RepoDetailsActivity;
 
+import javax.jmdns.ServiceInfo;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Locale;
-
-import javax.jmdns.ServiceInfo;
 
 public class RepoListFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
@@ -46,8 +59,26 @@ public class RepoListFragment extends ListFragment
     private final int UPDATE_REPOS = 2;
     private final int SCAN_FOR_REPOS = 3;
 
+    private UpdateService.UpdateReceiver updateHandler = null;
+
     public boolean hasChanged() {
         return changed;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (updateHandler != null) {
+            updateHandler.showDialog(getActivity());
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (updateHandler != null) {
+            updateHandler.hideDialog();
+        }
     }
 
     @Override
@@ -147,23 +178,25 @@ public class RepoListFragment extends ListFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // Can't do this in the onCreate view, because "onCreateView" which
-        // returns the list view is "called between onCreate and
-        // onActivityCreated" according to the docs.
-        getListView().addHeaderView(createHeaderView(), null, false);
+        if (getListAdapter() == null) {
+            // Can't do this in the onCreate view, because "onCreateView" which
+            // returns the list view is "called between onCreate and
+            // onActivityCreated" according to the docs.
+            getListView().addHeaderView(createHeaderView(), null, false);
 
-        // This could go in onCreate (and used to) but it needs to be called
-        // after addHeaderView, which can only be called after onCreate...
-        repoAdapter = new RepoAdapter(getActivity(), null);
-        repoAdapter.setEnabledListener(this);
-        setListAdapter(repoAdapter);
+            // This could go in onCreate (and used to) but it needs to be called
+            // after addHeaderView, which can only be called after onCreate...
+            repoAdapter = new RepoAdapter(getActivity(), null);
+            repoAdapter.setEnabledListener(this);
+            setListAdapter(repoAdapter);
+        }
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        setRetainInstance(true);
         setHasOptionsMenu(true);
     }
 
@@ -215,13 +248,17 @@ public class RepoListFragment extends ListFragment
     }
 
     private void updateRepos() {
-        UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
+        updateHandler = UpdateService.updateNow(getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
                 if (event.type.equals(UpdateService.EVENT_COMPLETE_AND_SAME) ||
                         event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
                     // No need to prompt to update any more, we just did it!
                     changed = false;
+                }
+
+                if (event.type.equals(UpdateService.EVENT_FINISHED)) {
+                    updateHandler = null;
                 }
             }
         });

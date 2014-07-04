@@ -53,6 +53,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     // while the other uses progress events (string event types).
     public static final String EVENT_COMPLETE_WITH_CHANGES = "repoUpdateComplete (changed)";
     public static final String EVENT_COMPLETE_AND_SAME     = "repoUpdateComplete (not changed)";
+    public static final String EVENT_FINISHED              = "repoUpdateFinished";
     public static final String EVENT_ERROR                 = "repoUpdateError";
     public static final String EVENT_INFO                  = "repoUpdateInfo";
 
@@ -86,14 +87,10 @@ public class UpdateService extends IntentService implements ProgressListener {
         private Context context;
         private ProgressDialog dialog;
         private ProgressListener listener;
+        private String lastShownMessage = null;
 
         public UpdateReceiver(Handler handler) {
             super(handler);
-        }
-
-        public UpdateReceiver setContext(Context context) {
-            this.context = context;
-            return this;
         }
 
         public UpdateReceiver setDialog(ProgressDialog dialog) {
@@ -112,6 +109,29 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
         }
 
+        private void ensureDialog() {
+            if (dialog == null) {
+                String title = context.getString(R.string.process_wait_title);
+                String message = lastShownMessage == null ? context.getString(R.string.process_update_msg) : lastShownMessage;
+                dialog = ProgressDialog.show(context, title, message, true, true);
+                dialog.setIcon(android.R.drawable.ic_dialog_info);
+                dialog.setCanceledOnTouchOutside(false);
+            }
+        }
+
+        public UpdateReceiver showDialog(Context context) {
+            this.context = context;
+            ensureDialog();
+            dialog.show();
+            return this;
+        }
+
+        public void hideDialog() {
+            dialog.hide();
+            dialog.dismiss();
+            dialog = null;
+        }
+
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             String message = resultData.getString(UpdateService.RESULT_MESSAGE);
@@ -128,17 +148,24 @@ public class UpdateService extends IntentService implements ProgressListener {
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_INFO) {
                 forwardEvent(EVENT_INFO);
-                dialog.setMessage(message);
+                if (dialog != null) {
+                    lastShownMessage = message;
+                    dialog.setMessage(message);
+                }
             }
 
-            if (finished && dialog.isShowing())
-                try {
-                    dialog.dismiss();
-                } catch (IllegalArgumentException e) {
-                    // sometimes dialog.isShowing() doesn't work :(
-                    // https://stackoverflow.com/questions/19538282/view-not-attached-to-window-manager-dialog-dismiss
-                    e.printStackTrace();
+            if (finished) {
+                forwardEvent(EVENT_FINISHED);
+                if (dialog.isShowing()) {
+                    try {
+                        dialog.dismiss();
+                    } catch (IllegalArgumentException e) {
+                        // sometimes dialog.isShowing() doesn't work :(
+                        // https://stackoverflow.com/questions/19538282/view-not-attached-to-window-manager-dialog-dismiss
+                        e.printStackTrace();
+                    }
                 }
+            }
         }
     }
 
@@ -147,15 +174,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     public static UpdateReceiver updateRepoNow(String address, Context context) {
-        String title   = context.getString(R.string.process_wait_title);
-        String message = context.getString(R.string.process_update_msg);
-        ProgressDialog dialog = ProgressDialog.show(context, title, message, true, true);
-        dialog.setIcon(android.R.drawable.ic_dialog_info);
-        dialog.setCanceledOnTouchOutside(false);
-
         Intent intent = new Intent(context, UpdateService.class);
         UpdateReceiver receiver = new UpdateReceiver(new Handler());
-        receiver.setContext(context).setDialog(dialog);
+        receiver.showDialog(context);
         intent.putExtra(EXTRA_RECEIVER, receiver);
         if (!TextUtils.isEmpty(address)) {
             intent.putExtra(EXTRA_ADDRESS, address);
