@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.SearchView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
@@ -41,7 +41,7 @@ public class SelectLocalAppsActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.select_local_apps_activity, menu);
         searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
         searchView.setOnQueryTextListener(selectLocalAppsFragment);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
