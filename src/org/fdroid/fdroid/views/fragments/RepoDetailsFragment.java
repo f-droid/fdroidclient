@@ -15,9 +15,21 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
-import org.fdroid.fdroid.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import org.fdroid.fdroid.NfcNotEnabledActivity;
+import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 
@@ -56,7 +68,10 @@ public class RepoDetailsFragment extends Fragment {
     private static final int UPDATE = 1;
     private static final int ENABLE_NFC = 2;
 
+    private static final String TAG = "org.fdroid.fdroid.views.fragments.RepoDetailsFragment";
+
     private MenuItem enableNfc = null;
+    private UpdateService.UpdateReceiver updateHandler = null;
 
     // TODO: Currently initialised in onCreateView. Not sure if that is the
     // best way to go about this...
@@ -65,6 +80,17 @@ public class RepoDetailsFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        if (updateHandler != null) {
+            updateHandler.showDialog(getActivity());
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (updateHandler != null) {
+            updateHandler.hideDialog();
+        }
     }
 
     private long getRepoId() {
@@ -200,12 +226,16 @@ public class RepoDetailsFragment extends Fragment {
         values.put(RepoProvider.DataColumns.IN_USE, 1);
         RepoProvider.Helper.update(getActivity(), repo, values);
 
-        UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
+        updateHandler = UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
                 if (event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
                     repo = loadRepoDetails();
                     updateView((ViewGroup)getView());
+                }
+
+                if (event.type.equals(UpdateService.EVENT_FINISHED)) {
+                    updateHandler = null;
                 }
             }
         });
@@ -355,6 +385,7 @@ public class RepoDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        setRetainInstance(true);
     }
 
     @Override
