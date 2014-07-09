@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.QrGenAsyncTask;
@@ -158,8 +159,6 @@ public class LocalRepoActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.local_repo_activity, menu);
-        if (Build.VERSION.SDK_INT < 14) // TODO remove after including appcompat-v7
-            menu.findItem(R.id.menu_setup_repo).setVisible(false);
         return true;
     }
 
