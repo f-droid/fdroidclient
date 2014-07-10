@@ -30,7 +30,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
@@ -39,13 +38,11 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -87,6 +84,24 @@ public class ManageReposActivity extends ActionBarActivity {
     public static final String REQUEST_UPDATE = "update";
 
     private RepoListFragment listFragment;
+    private AlertDialog addRepoDialog;
+    private static final String DEFAULT_NEW_REPO_TEXT = "https://";
+
+    private enum PositiveAction {
+        ADD_NEW, ENABLE, IGNORE
+    }
+
+    private PositiveAction positiveAction;
+
+    private UpdateService.UpdateReceiver updateHandler = null;
+
+    private static boolean changed = false;
+
+    /**
+     * True if activity started with an intent such as from QR code. False if
+     * opened from, e.g. the main menu.
+     */
+    private boolean isImportingRepo = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,8 +134,19 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (updateHandler != null) {
+            updateHandler.showDialog(this);
+        }
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (updateHandler != null) {
+            updateHandler.hideDialog();
+        }
     }
 
     @Override
@@ -137,7 +163,7 @@ public class ManageReposActivity extends ActionBarActivity {
     }
 
     private boolean hasChanged() {
-        return listFragment != null && listFragment.hasChanged();
+        return changed;
     }
 
     private void markChangedIfRequired(Intent intent) {
@@ -145,6 +171,12 @@ public class ManageReposActivity extends ActionBarActivity {
             Log.i("FDroid", "Repo details have changed, prompting for update.");
             intent.putExtra(REQUEST_UPDATE, true);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.manage_repos, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -156,8 +188,257 @@ public class ManageReposActivity extends ActionBarActivity {
                 setResult(RESULT_OK, destIntent);
                 NavUtils.navigateUpTo(this, destIntent);
                 return true;
+            case R.id.action_add_repo:
+                showAddRepo();
+                return true;
+            case R.id.action_update_repo:
+                updateRepos();
+                return true;
+            case R.id.action_find_local_repos:
+                scanForRepos();
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void updateRepos() {
+        updateHandler = UpdateService.updateNow(this).setListener(
+                new ProgressListener() {
+                    @Override
+                    public void onProgress(Event event) {
+                        if (event.type.equals(UpdateService.EVENT_COMPLETE_AND_SAME) ||
+                                event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
+                            // No need to prompt to update any more, we just
+                            // did it!
+                            changed = false;
+                        }
+
+                        if (event.type.equals(UpdateService.EVENT_FINISHED)) {
+                            updateHandler = null;
+                        }
+                    }
+                });
+    }
+
+    private void scanForRepos() {
+        final RepoScanListAdapter adapter = new RepoScanListAdapter(this);
+        final MDnsHelper mDnsHelper = new MDnsHelper(this, adapter);
+
+        final View view = getLayoutInflater().inflate(R.layout.repodiscoverylist, null);
+        final ListView repoScanList = (ListView) view.findViewById(R.id.reposcanlist);
+
+        final AlertDialog alrt = new AlertDialog.Builder(this).setView(view)
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mDnsHelper.stopDiscovery();
+                        dialog.dismiss();
+                    }
+                }).create();
+
+        alrt.setTitle(R.string.local_repos_title);
+        alrt.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mDnsHelper.stopDiscovery();
+            }
+        });
+
+        repoScanList.setAdapter(adapter);
+        repoScanList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                    int position, long id) {
+
+                final DiscoveredRepo discoveredService =
+                        (DiscoveredRepo) parent.getItemAtPosition(position);
+
+                final ServiceInfo serviceInfo = discoveredService.getServiceInfo();
+                String type = serviceInfo.getPropertyString("type");
+                String protocol = type.contains("fdroidrepos") ? "https:/" : "http:/";
+                String path = serviceInfo.getPropertyString("path");
+                if (TextUtils.isEmpty(path))
+                    path = "/fdroid/repo";
+                String serviceUrl = protocol + serviceInfo.getInetAddresses()[0]
+                        + ":" + serviceInfo.getPort() + path;
+                showAddRepo(serviceUrl, serviceInfo.getPropertyString("fingerprint"));
+            }
+        });
+
+        alrt.show();
+        mDnsHelper.discoverServices();
+    }
+
+    public void importRepo(String uri, String fingerprint) {
+        isImportingRepo = true;
+        showAddRepo(uri, fingerprint);
+    }
+
+    private void showAddRepo() {
+        showAddRepo(getNewRepoUri(), null);
+    }
+
+    private void showAddRepo(String newAddress, String newFingerprint) {
+        final View view = getLayoutInflater().inflate(R.layout.addrepo, null);
+        addRepoDialog = new AlertDialog.Builder(this).setView(view).create();
+        final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
+        final EditText fingerprintEditText = (EditText) view
+                .findViewById(R.id.edit_fingerprint);
+
+        /*
+         * If the "add new repo" dialog is launched by an action outside of
+         * FDroid, i.e. a URL, then check to see if any existing repos match,
+         * and change the action accordingly.
+         */
+        final Repo repo = (newAddress != null && isImportingRepo)
+                ? RepoProvider.Helper.findByAddress(this, newAddress)
+                : null;
+
+        addRepoDialog.setIcon(android.R.drawable.ic_menu_add);
+        addRepoDialog.setTitle(getString(R.string.repo_add_title));
+        addRepoDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                getString(R.string.repo_add_add),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        String fp = fingerprintEditText.getText().toString();
+
+                        // the DB uses null for no fingerprint but the above
+                        // code returns "" rather than null if its blank
+                        if (fp.equals(""))
+                            fp = null;
+
+                        if (positiveAction == PositiveAction.ADD_NEW)
+                            createNewRepo(uriEditText.getText().toString(), fp);
+                        else if (positiveAction == PositiveAction.ENABLE)
+                            createNewRepo(repo);
+                    }
+                });
+
+        addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
+                getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        addRepoDialog.show();
+
+        final TextView overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
+        overwriteMessage.setVisibility(View.GONE);
+        if (repo == null) {
+            // no existing repo, add based on what we have
+            positiveAction = PositiveAction.ADD_NEW;
+        } else {
+            // found the address in the DB of existing repos
+            final Button addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+            addRepoDialog.setTitle(R.string.repo_exists);
+            overwriteMessage.setVisibility(View.VISIBLE);
+            if (newFingerprint != null)
+                newFingerprint = newFingerprint.toUpperCase(Locale.ENGLISH);
+            if (repo.fingerprint == null && newFingerprint != null) {
+                // we're upgrading from unsigned to signed repo
+                overwriteMessage.setText(R.string.repo_exists_add_fingerprint);
+                addButton.setText(R.string.add_key);
+                positiveAction = PositiveAction.ADD_NEW;
+            } else if (newFingerprint == null || newFingerprint.equals(repo.fingerprint)) {
+                // this entry already exists and is not enabled, offer to
+                // enable
+                // it
+                if (repo.inuse) {
+                    addRepoDialog.dismiss();
+                    Toast.makeText(this, R.string.repo_exists_and_enabled,
+                            Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    overwriteMessage.setText(R.string.repo_exists_enable);
+                    addButton.setText(R.string.enable);
+                    positiveAction = PositiveAction.ENABLE;
+                }
+            } else {
+                // same address with different fingerprint, this could be
+                // malicious, so force the user to manually delete the repo
+                // before adding this one
+                overwriteMessage.setTextColor(getResources().getColor(R.color.red));
+                overwriteMessage.setText(R.string.repo_delete_to_overwrite);
+                addButton.setText(R.string.overwrite);
+                addButton.setEnabled(false);
+                positiveAction = PositiveAction.IGNORE;
+            }
+        }
+
+        if (newFingerprint != null)
+            fingerprintEditText.setText(newFingerprint);
+
+        if (newAddress != null) {
+            // This trick of emptying text then appending,
+            // rather than just setting in the first place,
+            // is neccesary to move the cursor to the end of the input.
+            uriEditText.setText("");
+            uriEditText.append(newAddress);
+        }
+    }
+
+    /**
+     * Adds a new repo to the database.
+     */
+    private void createNewRepo(String address, String fingerprint) {
+        ContentValues values = new ContentValues(2);
+        values.put(RepoProvider.DataColumns.ADDRESS, address);
+        if (fingerprint != null && fingerprint.length() > 0) {
+            values.put(RepoProvider.DataColumns.FINGERPRINT,
+                    fingerprint.toUpperCase(Locale.ENGLISH));
+        }
+        RepoProvider.Helper.insert(this, values);
+        finishedAddingRepo();
+    }
+
+    /**
+     * Seeing as this repo already exists, we will force it to be enabled again.
+     */
+    private void createNewRepo(Repo repo) {
+        ContentValues values = new ContentValues(1);
+        values.put(RepoProvider.DataColumns.IN_USE, 1);
+        RepoProvider.Helper.update(this, repo, values);
+        repo.inuse = true;
+        finishedAddingRepo();
+    }
+
+    /**
+     * If started by an intent that expects a result (e.g. QR codes) then we
+     * will set a result and finish. Otherwise, we'll refresh the list of repos
+     * to reflect the newly created repo.
+     */
+    private void finishedAddingRepo() {
+        changed = true;
+        addRepoDialog = null;
+        if (isImportingRepo) {
+            setResult(Activity.RESULT_OK);
+            finish();
+        }
+    }
+
+    /**
+     * If there is text in the clipboard, and it looks like a URL, use that.
+     * Otherwise return "https://".
+     */
+    private String getNewRepoUri() {
+        ClipboardCompat clipboard = ClipboardCompat.create(this);
+        String text = clipboard.getText();
+        if (text != null) {
+            try {
+                new URL(text);
+            } catch (MalformedURLException e) {
+                text = null;
+            }
+        }
+
+        if (text == null) {
+            text = DEFAULT_NEW_REPO_TEXT;
+        }
+        return text;
     }
 
     private void addRepoFromIntent(Intent intent) {
@@ -204,7 +485,7 @@ public class ManageReposActivity extends ActionBarActivity {
                         .replace(uri.getHost(), host) // downcase host name
                         .replace(intent.getScheme(), scheme) // downcase scheme
                         .replace("fdroidrepo", "http"); // proper repo address
-                listFragment.importRepo(uriString, fingerprint);
+                importRepo(uriString, fingerprint);
 
                 // if this is a local repo, check we're on the same wifi
                 String uriBssid = uri.getQueryParameter("bssid");
@@ -232,34 +513,6 @@ public class ManageReposActivity extends ActionBarActivity {
 
     public static class RepoListFragment extends ListFragment
             implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
-
-        private AlertDialog addRepoDialog;
-        private static final String DEFAULT_NEW_REPO_TEXT = "https://";
-        private final int ADD_REPO = 1;
-        private final int UPDATE_REPOS = 2;
-        private final int SCAN_FOR_REPOS = 3;
-
-        private UpdateService.UpdateReceiver updateHandler = null;
-
-        public boolean hasChanged() {
-            return changed;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            if (updateHandler != null) {
-                updateHandler.showDialog(getActivity());
-            }
-        }
-
-        @Override
-        public void onDetach() {
-            super.onDetach();
-            if (updateHandler != null) {
-                updateHandler.hideDialog();
-            }
-        }
 
         @Override
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
@@ -318,21 +571,7 @@ public class ManageReposActivity extends ActionBarActivity {
             }
         }
 
-        private enum PositiveAction {
-            ADD_NEW, ENABLE, IGNORE
-        }
-
-        private PositiveAction positiveAction;
-
-        private boolean changed = false;
-
         private RepoAdapter repoAdapter;
-
-        /**
-         * True if activity started with an intent such as from QR code. False
-         * if opened from, e.g. the main menu.
-         */
-        private boolean isImportingRepo = false;
 
         private View createHeaderView() {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -360,16 +599,18 @@ public class ManageReposActivity extends ActionBarActivity {
             super.onActivityCreated(savedInstanceState);
 
             if (getListAdapter() == null) {
-                // Can't do this in the onCreate view, because "onCreateView"
-                // which
-                // returns the list view is "called between onCreate and
-                // onActivityCreated" according to the docs.
+                /*
+                 * Can't do this in the onCreate view, because "onCreateView"
+                 * which returns the list view is "called between onCreate and
+                 * onActivityCreated" according to the docs.
+                 */
                 getListView().addHeaderView(createHeaderView(), null, false);
 
-                // This could go in onCreate (and used to) but it needs to be
-                // called
-                // after addHeaderView, which can only be called after
-                // onCreate...
+                /*
+                 * This could go in onCreate (and used to) but it needs to be
+                 * called after addHeaderView, which can only be called after
+                 * onCreate...
+                 */
                 repoAdapter = new RepoAdapter(getActivity(), null);
                 repoAdapter.setEnabledListener(this);
                 setListAdapter(repoAdapter);
@@ -401,294 +642,12 @@ public class ManageReposActivity extends ActionBarActivity {
             editRepo(repo);
         }
 
-        @Override
-        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-            super.onCreateOptionsMenu(menu, inflater);
-
-            MenuItem updateItem = menu.add(Menu.NONE, UPDATE_REPOS, 1,
-                    R.string.menu_update_repo).setIcon(R.drawable.ic_menu_refresh);
-            MenuItemCompat.setShowAsAction(updateItem,
-                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
-                            MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-
-            MenuItem addItem = menu.add(Menu.NONE, ADD_REPO, 1, R.string.menu_add_repo).setIcon(
-                    android.R.drawable.ic_menu_add);
-            MenuItemCompat.setShowAsAction(addItem,
-                    MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
-                            MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-
-            if (Build.VERSION.SDK_INT >= 16) {
-                menu.add(Menu.NONE, SCAN_FOR_REPOS, 1, R.string.menu_scan_repo).setIcon(
-                        android.R.drawable.ic_menu_search);
-            }
-        }
-
         public static final int SHOW_REPO_DETAILS = 1;
 
         public void editRepo(Repo repo) {
             Intent intent = new Intent(getActivity(), RepoDetailsActivity.class);
             intent.putExtra(RepoDetailsFragment.ARG_REPO_ID, repo.getId());
             startActivityForResult(intent, SHOW_REPO_DETAILS);
-        }
-
-        private void updateRepos() {
-            updateHandler = UpdateService.updateNow(getActivity()).setListener(
-                    new ProgressListener() {
-                        @Override
-                        public void onProgress(Event event) {
-                            if (event.type.equals(UpdateService.EVENT_COMPLETE_AND_SAME) ||
-                                    event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
-                                // No need to prompt to update any more, we just
-                                // did it!
-                                changed = false;
-                            }
-
-                            if (event.type.equals(UpdateService.EVENT_FINISHED)) {
-                                updateHandler = null;
-                            }
-                        }
-                    });
-        }
-
-        private void scanForRepos() {
-            final Activity activity = getActivity();
-
-            final RepoScanListAdapter adapter = new RepoScanListAdapter(activity);
-            final MDnsHelper mDnsHelper = new MDnsHelper(activity, adapter);
-
-            final View view = getLayoutInflater(null).inflate(R.layout.repodiscoverylist, null);
-            final ListView repoScanList = (ListView) view.findViewById(R.id.reposcanlist);
-
-            final AlertDialog alrt = new AlertDialog.Builder(getActivity()).setView(view)
-                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            mDnsHelper.stopDiscovery();
-                            dialog.dismiss();
-                        }
-                    }).create();
-
-            alrt.setTitle(R.string.local_repos_title);
-            alrt.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    mDnsHelper.stopDiscovery();
-                }
-            });
-
-            repoScanList.setAdapter(adapter);
-            repoScanList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, final View view,
-                        int position, long id) {
-
-                    final DiscoveredRepo discoveredService =
-                            (DiscoveredRepo) parent.getItemAtPosition(position);
-
-                    final ServiceInfo serviceInfo = discoveredService.getServiceInfo();
-                    String type = serviceInfo.getPropertyString("type");
-                    String protocol = type.contains("fdroidrepos") ? "https:/" : "http:/";
-                    String path = serviceInfo.getPropertyString("path");
-                    if (TextUtils.isEmpty(path))
-                        path = "/fdroid/repo";
-                    String serviceUrl = protocol + serviceInfo.getInetAddresses()[0]
-                            + ":" + serviceInfo.getPort() + path;
-                    showAddRepo(serviceUrl, serviceInfo.getPropertyString("fingerprint"));
-                }
-            });
-
-            alrt.show();
-            mDnsHelper.discoverServices();
-        }
-
-        public void importRepo(String uri, String fingerprint) {
-            isImportingRepo = true;
-            showAddRepo(uri, fingerprint);
-        }
-
-        private void showAddRepo() {
-            showAddRepo(getNewRepoUri(), null);
-        }
-
-        private void showAddRepo(String newAddress, String newFingerprint) {
-            View view = getLayoutInflater(null).inflate(R.layout.addrepo, null);
-            addRepoDialog = new AlertDialog.Builder(getActivity()).setView(view).create();
-            final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
-            final EditText fingerprintEditText = (EditText) view
-                    .findViewById(R.id.edit_fingerprint);
-
-            /*
-             * If the "add new repo" dialog is launched by an action outside of
-             * FDroid, i.e. a URL, then check to see if any existing repos
-             * match, and change the action accordingly.
-             */
-            final Repo repo = (newAddress != null && isImportingRepo)
-                    ? RepoProvider.Helper.findByAddress(getActivity(), newAddress)
-                    : null;
-
-            addRepoDialog.setIcon(android.R.drawable.ic_menu_add);
-            addRepoDialog.setTitle(getString(R.string.repo_add_title));
-            addRepoDialog.setButton(DialogInterface.BUTTON_POSITIVE,
-                    getString(R.string.repo_add_add),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            String fp = fingerprintEditText.getText().toString();
-
-                            // the DB uses null for no fingerprint but the above
-                            // code returns "" rather than null if its blank
-                            if (fp.equals(""))
-                                fp = null;
-
-                            if (positiveAction == PositiveAction.ADD_NEW)
-                                createNewRepo(uriEditText.getText().toString(), fp);
-                            else if (positiveAction == PositiveAction.ENABLE)
-                                createNewRepo(repo);
-                        }
-                    });
-
-            addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-                    getString(R.string.cancel),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            addRepoDialog.show();
-
-            final TextView overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
-            overwriteMessage.setVisibility(View.GONE);
-            if (repo == null) {
-                // no existing repo, add based on what we have
-                positiveAction = PositiveAction.ADD_NEW;
-            } else {
-                // found the address in the DB of existing repos
-                final Button addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                addRepoDialog.setTitle(R.string.repo_exists);
-                overwriteMessage.setVisibility(View.VISIBLE);
-                if (newFingerprint != null)
-                    newFingerprint = newFingerprint.toUpperCase(Locale.ENGLISH);
-                if (repo.fingerprint == null && newFingerprint != null) {
-                    // we're upgrading from unsigned to signed repo
-                    overwriteMessage.setText(R.string.repo_exists_add_fingerprint);
-                    addButton.setText(R.string.add_key);
-                    positiveAction = PositiveAction.ADD_NEW;
-                } else if (newFingerprint == null || newFingerprint.equals(repo.fingerprint)) {
-                    // this entry already exists and is not enabled, offer to
-                    // enable
-                    // it
-                    if (repo.inuse) {
-                        addRepoDialog.dismiss();
-                        Toast.makeText(getActivity(), R.string.repo_exists_and_enabled,
-                                Toast.LENGTH_LONG).show();
-                        return;
-                    } else {
-                        overwriteMessage.setText(R.string.repo_exists_enable);
-                        addButton.setText(R.string.enable);
-                        positiveAction = PositiveAction.ENABLE;
-                    }
-                } else {
-                    // same address with different fingerprint, this could be
-                    // malicious, so force the user to manually delete the repo
-                    // before adding this one
-                    overwriteMessage.setTextColor(getResources().getColor(R.color.red));
-                    overwriteMessage.setText(R.string.repo_delete_to_overwrite);
-                    addButton.setText(R.string.overwrite);
-                    addButton.setEnabled(false);
-                    positiveAction = PositiveAction.IGNORE;
-                }
-            }
-
-            if (newFingerprint != null)
-                fingerprintEditText.setText(newFingerprint);
-
-            if (newAddress != null) {
-                // This trick of emptying text then appending,
-                // rather than just setting in the first place,
-                // is neccesary to move the cursor to the end of the input.
-                uriEditText.setText("");
-                uriEditText.append(newAddress);
-            }
-        }
-
-        /**
-         * Adds a new repo to the database.
-         */
-        private void createNewRepo(String address, String fingerprint) {
-            ContentValues values = new ContentValues(2);
-            values.put(RepoProvider.DataColumns.ADDRESS, address);
-            if (fingerprint != null && fingerprint.length() > 0) {
-                values.put(RepoProvider.DataColumns.FINGERPRINT,
-                        fingerprint.toUpperCase(Locale.ENGLISH));
-            }
-            RepoProvider.Helper.insert(getActivity(), values);
-            finishedAddingRepo();
-        }
-
-        /**
-         * Seeing as this repo already exists, we will force it to be enabled
-         * again.
-         */
-        private void createNewRepo(Repo repo) {
-            ContentValues values = new ContentValues(1);
-            values.put(RepoProvider.DataColumns.IN_USE, 1);
-            RepoProvider.Helper.update(getActivity(), repo, values);
-            repo.inuse = true;
-            finishedAddingRepo();
-        }
-
-        /**
-         * If started by an intent that expects a result (e.g. QR codes) then we
-         * will set a result and finish. Otherwise, we'll refresh the list of
-         * repos to reflect the newly created repo.
-         */
-        private void finishedAddingRepo() {
-            changed = true;
-            addRepoDialog = null;
-            if (isImportingRepo) {
-                getActivity().setResult(Activity.RESULT_OK);
-                getActivity().finish();
-            }
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-
-            if (item.getItemId() == ADD_REPO) {
-                showAddRepo();
-                return true;
-            } else if (item.getItemId() == UPDATE_REPOS) {
-                updateRepos();
-                return true;
-            } else if (item.getItemId() == SCAN_FOR_REPOS) {
-                scanForRepos();
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-        }
-
-        /**
-         * If there is text in the clipboard, and it looks like a URL, use that.
-         * Otherwise return "https://".
-         */
-        private String getNewRepoUri() {
-            ClipboardCompat clipboard = ClipboardCompat.create(getActivity());
-            String text = clipboard.getText();
-            if (text != null) {
-                try {
-                    new URL(text);
-                } catch (MalformedURLException e) {
-                    text = null;
-                }
-            }
-
-            if (text == null) {
-                text = DEFAULT_NEW_REPO_TEXT;
-            }
-            return text;
         }
     }
 }

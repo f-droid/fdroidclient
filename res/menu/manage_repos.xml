@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_update_repo"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="@string/menu_update_repo"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/action_add_repo"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/menu_add_repo"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/action_find_local_repos"
+        android:title="@string/menu_scan_repo"
+        app:showAsAction="ifRoom|withText"/>
+
+</menu>
