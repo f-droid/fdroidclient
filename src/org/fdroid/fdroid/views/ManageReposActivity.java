@@ -38,7 +38,6 @@ import android.widget.Toast;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.R.string;
 import org.fdroid.fdroid.views.fragments.RepoListFragment;
 
 import java.util.Locale;
@@ -47,9 +46,8 @@ public class ManageReposActivity extends ActionBarActivity {
 
     /**
      * If we have a new repo added, or the address of a repo has changed, then
-     * we when we're finished, we'll set this boolean to true in the intent
-     * that we finish with, to signify that we want the main list of apps
-     * updated.
+     * we when we're finished, we'll set this boolean to true in the intent that
+     * we finish with, to signify that we want the main list of apps updated.
      */
     public static final String REQUEST_UPDATE = "update";
 
@@ -63,12 +61,16 @@ public class ManageReposActivity extends ActionBarActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         if (fm.findFragmentById(android.R.id.content) == null) {
-            // Need to set a dummy view (which will get overridden by the fragment manager
-            // below) so that we can call setContentView(). This is a work around for
-            // a (bug?) thing in 3.0, 3.1 which requires setContentView to be invoked before
-            // the actionbar is played with:
-            // http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
-            setContentView( new LinearLayout(this) );
+            /*
+             * Need to set a dummy view (which will get overridden by the
+             * fragment manager below) so that we can call setContentView().
+             * This is a work around for a (bug?) thing in 3.0, 3.1 which
+             * requires setContentView to be invoked before the actionbar is
+             * played with:
+             * http://blog.perpetumdesign.com/2011/08/strange-case-of
+             * -dr-action-and-mr-bar.html
+             */
+            setContentView(new LinearLayout(this));
 
             listFragment = new RepoListFragment();
             fm.beginTransaction()

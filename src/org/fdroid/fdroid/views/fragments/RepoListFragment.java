@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.ProgressListener;
@@ -44,11 +45,12 @@ import org.fdroid.fdroid.net.MDnsHelper.RepoScanListAdapter;
 import org.fdroid.fdroid.views.RepoAdapter;
 import org.fdroid.fdroid.views.RepoDetailsActivity;
 
-import javax.jmdns.ServiceInfo;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.jmdns.ServiceInfo;
 
 public class RepoListFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
