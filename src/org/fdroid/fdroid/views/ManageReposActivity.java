@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.views;
 
 import android.app.Activity;
 import android.content.Context;
@@ -34,11 +34,16 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import org.fdroid.fdroid.FDroid;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.R.string;
 import org.fdroid.fdroid.views.fragments.RepoListFragment;
 
 import java.util.Locale;
 
-public class ManageRepo extends ActionBarActivity {
+public class ManageReposActivity extends ActionBarActivity {
 
     /**
      * If we have a new repo added, or the address of a repo has changed, then

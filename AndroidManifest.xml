@@ -108,7 +108,7 @@
                 android:value=".SearchResults" />
         </activity>
         <activity
-            android:name=".ManageRepo"
+            android:name=".views.ManageReposActivity"
             android:label="@string/menu_manage"
             android:launchMode="singleTask"
             android:parentActivityName=".FDroid" >
@@ -218,7 +218,7 @@
         <activity
             android:name=".views.RepoDetailsActivity"
             android:label="@string/menu_manage"
-            android:parentActivityName=".ManageRepo"
+            android:parentActivityName=".views.ManageReposActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -46,6 +46,7 @@ import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
 import org.fdroid.fdroid.views.LocalRepoActivity;
+import org.fdroid.fdroid.views.ManageReposActivity;
 
 public class FDroid extends ActionBarActivity {
 
@@ -135,7 +136,7 @@ public class FDroid extends ActionBarActivity {
                 return true;
 
             case R.id.action_manage_repos:
-                Intent i = new Intent(this, ManageRepo.class);
+                Intent i = new Intent(this, ManageReposActivity.class);
                 startActivityForResult(i, REQUEST_MANAGEREPOS);
                 return true;
 
@@ -226,7 +227,7 @@ public class FDroid extends ActionBarActivity {
         case REQUEST_APPDETAILS:
             break;
         case REQUEST_MANAGEREPOS:
-            if (data != null && data.hasExtra(ManageRepo.REQUEST_UPDATE)) {
+            if (data != null && data.hasExtra(ManageReposActivity.REQUEST_UPDATE)) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
                 ask_alrt.setTitle(getString(R.string.repo_update_title));
                 ask_alrt.setIcon(android.R.drawable.ic_menu_rotate);
