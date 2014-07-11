@@ -44,7 +44,7 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
+import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.LocalRepoActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
 
@@ -276,8 +276,8 @@ public class FDroid extends ActionBarActivity {
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
-        viewPager.setAdapter(viewPageAdapter);
+        AppListFragmentPagerAdapter viewPagerAdapter = new AppListFragmentPagerAdapter(this);
+        viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {

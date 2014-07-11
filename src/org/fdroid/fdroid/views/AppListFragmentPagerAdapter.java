@@ -2,6 +2,7 @@ package org.fdroid.fdroid.views;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
@@ -13,18 +14,18 @@ import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
  * Used by the FDroid activity in conjunction with its ViewPager to support
  * swiping of tabs for both old devices (< 3.0) and new devices.
  */
-public class AppListFragmentPageAdapter extends FragmentPagerAdapter {
+public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private FDroid parent = null;
 
-    public AppListFragmentPageAdapter(FDroid parent) {
+    public AppListFragmentPagerAdapter(FDroid parent) {
         super(parent.getSupportFragmentManager());
         this.parent = parent;
     }
 
     private String getUpdateTabTitle() {
         int updateCount = AppProvider.Helper.count(parent, AppProvider.getCanUpdateUri());
-        
+
         // TODO: Make RTL friendly, probably by having a different string for both tab_updates_none and tab_updates
         return parent.getString(R.string.tab_updates) + " (" + updateCount + ")";
     }
