@@ -60,6 +60,7 @@ import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.compat.ClipboardCompat;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.MDnsHelper;
@@ -443,71 +444,28 @@ public class ManageReposActivity extends ActionBarActivity {
 
     private void addRepoFromIntent(Intent intent) {
         /* an URL from a click, NFC, QRCode scan, etc */
-        Uri uri = intent.getData();
-        if (uri != null) {
-            // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
-            String scheme = intent.getScheme();
-            String host = uri.getHost();
-            if (scheme == null || host == null) {
-                String msg = String.format(getString(R.string.malformed_repo_uri), uri);
+        NewRepoConfig newRepoConfig = new NewRepoConfig(this, intent);
+        if (newRepoConfig.isValidRepo()) {
+            importRepo(newRepoConfig.getUriString(), newRepoConfig.getFingerprint());
+            checkIfNewRepoOnSameWifi(newRepoConfig);
+        } else if (newRepoConfig.getErrorMessage() != null) {
+            Toast.makeText(this, newRepoConfig.getErrorMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
+        // if this is a local repo, check we're on the same wifi
+        if (!TextUtils.isEmpty(newRepo.getBssid())) {
+            WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+            String bssid = wifiInfo.getBSSID().toLowerCase(Locale.ENGLISH);
+            String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
+            if (!bssid.equals(newRepoBssid)) {
+                String msg = String.format(getString(R.string.not_on_same_wifi), newRepo.getSsid());
                 Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-                return;
             }
-            if (scheme.equals("FDROIDREPO") || scheme.equals("FDROIDREPOS")) {
-                /*
-                 * QRCodes are more efficient in all upper case, so QR URIs are
-                 * encoded in all upper case, then forced to lower case.
-                 * Checking if the special F-Droid scheme being all is upper
-                 * case means it should be downcased.
-                 */
-                uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
-            } else if (uri.getPath().startsWith("/FDROID/REPO")) {
-                /*
-                 * some QR scanners chop off the fdroidrepo:// and just try
-                 * http://, then the incoming URI does not get downcased
-                 * properly, and the query string is stripped off. So just
-                 * downcase the path, and carry on to get something working.
-                 */
-                uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
-            }
-            // make scheme and host lowercase so they're readable in dialogs
-            scheme = scheme.toLowerCase(Locale.ENGLISH);
-            host = host.toLowerCase(Locale.ENGLISH);
-            String fingerprint = uri.getQueryParameter("fingerprint");
-            Log.i("RepoListFragment", "onCreate " + fingerprint);
-            if (scheme.equals("fdroidrepos") || scheme.equals("fdroidrepo")
-                    || scheme.equals("https") || scheme.equals("http")) {
-
-                /* sanitize and format for function and readability */
-                String uriString = uri.toString()
-                        .replaceAll("\\?.*$", "") // remove the whole query
-                        .replaceAll("/*$", "") // remove all trailing slashes
-                        .replace(uri.getHost(), host) // downcase host name
-                        .replace(intent.getScheme(), scheme) // downcase scheme
-                        .replace("fdroidrepo", "http"); // proper repo address
-                importRepo(uriString, fingerprint);
-
-                // if this is a local repo, check we're on the same wifi
-                String uriBssid = uri.getQueryParameter("bssid");
-                if (!TextUtils.isEmpty(uriBssid)) {
-                    if (uri.getPort() != 8888
-                            && !host.matches("[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+")) {
-                        Log.i("ManageRepo", "URI is not local repo: " + uri);
-                        return;
-                    }
-                    WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-                    WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-                    String bssid = wifiInfo.getBSSID().toLowerCase(Locale.ENGLISH);
-                    uriBssid = Uri.decode(uriBssid).toLowerCase(Locale.ENGLISH);
-                    if (!bssid.equals(uriBssid)) {
-                        String msg = String.format(getString(R.string.not_on_same_wifi),
-                                uri.getQueryParameter("ssid"));
-                        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-                    }
-                    // TODO we should help the user to the right thing here,
-                    // instead of just showing a message!
-                }
-            }
+            // TODO we should help the user to the right thing here,
+            // instead of just showing a message!
         }
     }
 
