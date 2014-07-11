@@ -156,6 +156,8 @@
                 the QR Code for sending the local repo to another device.
                 -->
                 <data android:path="/FDROID/REPO" />
+                <data android:path="/.*/FDROID/REPO" />
+                <data android:path="/.*/.*/FDROID/REPO" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
