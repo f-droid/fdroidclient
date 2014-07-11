@@ -130,6 +130,8 @@ public class ManageReposActivity extends ActionBarActivity {
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // title is "Repositories" here, but "F-Droid" in VIEW Intent chooser
+        getSupportActionBar().setTitle(R.string.menu_manage);
     }
 
     @Override
