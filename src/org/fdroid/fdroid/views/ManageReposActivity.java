@@ -276,7 +276,31 @@ public class ManageReposActivity extends ActionBarActivity {
     }
 
     private void showAddRepo() {
-        showAddRepo(getNewRepoUri(), null);
+        /*
+         * If there is text in the clipboard, and it looks like a URL, use that.
+         * Otherwise use "https://" as default repo string.
+         */
+        ClipboardCompat clipboard = ClipboardCompat.create(this);
+        String text = clipboard.getText();
+        String fingerprint = null;
+        if (!TextUtils.isEmpty(text)) {
+            try {
+                new URL(text);
+                Uri uri = Uri.parse(text);
+                fingerprint = uri.getQueryParameter("fingerprint");
+                // uri might contain a QR-style, all uppercase URL:
+                if (TextUtils.isEmpty(fingerprint))
+                    fingerprint = uri.getQueryParameter("FINGERPRINT");
+                text = NewRepoConfig.sanitizeRepoUri(uri);
+            } catch (MalformedURLException e) {
+                text = null;
+            }
+        }
+
+        if (TextUtils.isEmpty(text)) {
+            text = DEFAULT_NEW_REPO_TEXT;
+        }
+        showAddRepo(text, fingerprint);
     }
 
     private void showAddRepo(String newAddress, String newFingerprint) {
@@ -419,27 +443,6 @@ public class ManageReposActivity extends ActionBarActivity {
             setResult(Activity.RESULT_OK);
             finish();
         }
-    }
-
-    /**
-     * If there is text in the clipboard, and it looks like a URL, use that.
-     * Otherwise return "https://".
-     */
-    private String getNewRepoUri() {
-        ClipboardCompat clipboard = ClipboardCompat.create(this);
-        String text = clipboard.getText();
-        if (text != null) {
-            try {
-                new URL(text);
-            } catch (MalformedURLException e) {
-                text = null;
-            }
-        }
-
-        if (text == null) {
-            text = DEFAULT_NEW_REPO_TEXT;
-        }
-        return text;
     }
 
     private void addRepoFromIntent(Intent intent) {
