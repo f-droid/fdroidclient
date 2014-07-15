@@ -154,7 +154,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        addRepoFromIntent(intent);
+        setIntent(intent);
     }
 
     @Override
