@@ -23,16 +23,17 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter.ViewBinder;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.text.TextUtils;
-import android.view.ActionMode;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.SimpleCursorAdapter.ViewBinder;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
@@ -125,8 +126,8 @@ public class SelectLocalAppsFragment extends ListFragment
     public void onListItemClick(ListView l, View v, int position, long id) {
         if (mActionMode == null)
             mActionMode = selectLocalAppsActivity
-                    .startActionMode(selectLocalAppsActivity.mActionModeCallback);
-        Cursor c = (Cursor) l.getAdapter().getItem(position);
+                    .startSupportActionMode(selectLocalAppsActivity.mActionModeCallback);
+        Cursor c = (Cursor) getListAdapter().getItem(position);
         String packageName = c.getString(c.getColumnIndex(DataColumns.APP_ID));
         if (FDroidApp.selectedApps.contains(packageName)) {
             FDroidApp.selectedApps.remove(packageName);
@@ -155,7 +156,8 @@ public class SelectLocalAppsFragment extends ListFragment
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        ((SimpleCursorAdapter) this.getListAdapter()).swapCursor(cursor);
+        SimpleCursorAdapter adapter = (SimpleCursorAdapter) getListAdapter();
+        adapter.swapCursor(cursor);
 
         ListView listView = getListView();
         int count = listView.getCount();
@@ -183,7 +185,8 @@ public class SelectLocalAppsFragment extends ListFragment
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        ((SimpleCursorAdapter) this.getListAdapter()).swapCursor(null);
+        SimpleCursorAdapter adapter = (SimpleCursorAdapter) getListAdapter();
+        adapter.swapCursor(null);
     }
 
     @Override

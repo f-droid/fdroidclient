@@ -107,9 +107,13 @@
                 android:name="android.app.default_searchable"
                 android:value=".SearchResults" />
         </activity>
+        <!--
+        The title for ManageReposActivity is "F-Droid" here, but "Repositories"
+        when viewing the Activity itself in the app.
+        -->
         <activity
-            android:name=".ManageRepo"
-            android:label="@string/menu_manage"
+            android:name=".views.ManageReposActivity"
+            android:label="@string/app_name"
             android:launchMode="singleTask"
             android:parentActivityName=".FDroid" >
             <meta-data
@@ -152,6 +156,8 @@
                 the QR Code for sending the local repo to another device.
                 -->
                 <data android:path="/FDROID/REPO" />
+                <data android:path="/.*/FDROID/REPO" />
+                <data android:path="/.*/.*/FDROID/REPO" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -218,7 +224,7 @@
         <activity
             android:name=".views.RepoDetailsActivity"
             android:label="@string/menu_manage"
-            android:parentActivityName=".ManageRepo"
+            android:parentActivityName=".views.ManageReposActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

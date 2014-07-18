@@ -59,12 +59,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+
 import org.fdroid.fdroid.Utils.CommaSeparatedList;
-import org.fdroid.fdroid.compat.ActionBarCompat;
-import org.fdroid.fdroid.compat.MenuManager;
 import org.fdroid.fdroid.compat.PackageManagerCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
@@ -126,18 +126,18 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         TextView added;
         TextView nativecode;
     }
-    
+
     // observer to update view when package has been installed/deleted
     AppObserver myAppObserver;
     class AppObserver extends ContentObserver {
        public AppObserver(Handler handler) {
-          super(handler);           
+          super(handler);
        }
 
        @Override
        public void onChange(boolean selfChange) {
           this.onChange(selfChange, null);
-       }        
+       }
 
        @Override
        public void onChange(boolean selfChange, Uri uri) {
@@ -147,7 +147,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
            }
 
            refreshApkList();
-           MenuManager.create(AppDetails.this).invalidateOptionsMenu();
+           supportInvalidateOptionsMenu();
        }
     }
 
@@ -384,7 +384,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         mPm = getPackageManager();
 
         installer = Installer.getActivityInstaller(this, mPm, myInstallerCallback);
-        
+
         // Get the preferences we're going to use in this Activity...
         ConfigurationChangeHelper previousData = (ConfigurationChangeHelper)getLastCustomNonConfigurationInstance();
         if (previousData != null) {
@@ -409,10 +409,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         // fragments, which rely on data from the activity that is set earlier in this method.
         setContentView(R.layout.app_details);
 
-        // Actionbar cannot be accessed until after setContentView (on 3.0 and 3.1 devices)
-        // see: http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
-        // for reason why.
-        ActionBarCompat.create(this).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Check for the presence of a view which only exists in the landscape view.
         // This seems to be the preferred way to interrogate the view, rather than
@@ -463,7 +460,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     protected void onResumeFragments() {
         super.onResumeFragments();
         refreshApkList();
-        MenuManager.create(this).invalidateOptionsMenu();
+        supportInvalidateOptionsMenu();
     }
 
     /**
@@ -800,6 +797,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     }
 
     // Install the version of this app denoted by 'app.curApk'.
+    @Override
     public void install(final Apk apk) {
         String [] projection = { RepoProvider.DataColumns.ADDRESS };
         Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
@@ -883,7 +881,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         public void onSuccess(final int operation) {
             runOnUiThread(new Runnable() {
                 @Override
-                public void run() {                    
+                public void run() {
                     if (operation == Installer.InstallerCallback.OPERATION_INSTALL) {
                         PackageManagerCompat.setInstaller(mPm, app.id);
                     }
@@ -907,9 +905,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     @Override
                     public void run() {
                         setProgressBarIndeterminateVisibility(false);
-                        
+
                         Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
-                        
+
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
                         alertBuilder.setTitle(R.string.installer_error_title);
                         alertBuilder.setMessage(R.string.installer_error_title);
@@ -1049,7 +1047,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         if (installer.handleOnActivityResult(requestCode, resultCode, data)) {
             return;
         }
-        
+
         switch (requestCode) {
         case REQUEST_ENABLE_BLUETOOTH:
             fdroidApp.sendViaBluetooth(this, resultCode, app.id);
@@ -1057,18 +1055,22 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
     }
 
+    @Override
     public App getApp() {
         return app;
     }
 
+    @Override
     public ApkListAdapter getApks() {
         return adapter;
     }
 
+    @Override
     public Signature getInstalledSignature() {
         return mInstalledSignature;
     }
 
+    @Override
     public String getInstalledSignatureId() {
         return mInstalledSigID;
     }

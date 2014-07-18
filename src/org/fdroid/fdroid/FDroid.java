@@ -32,7 +32,6 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -42,10 +41,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
-import org.fdroid.fdroid.views.AppListFragmentPageAdapter;
+import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.LocalRepoActivity;
+import org.fdroid.fdroid.views.ManageReposActivity;
 
 public class FDroid extends ActionBarActivity {
 
@@ -55,14 +56,6 @@ public class FDroid extends ActionBarActivity {
     public static final int REQUEST_ENABLE_BLUETOOTH = 3;
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
-
-    private static final int UPDATE_REPO = Menu.FIRST;
-    private static final int MANAGE_REPO = Menu.FIRST + 1;
-    private static final int PREFERENCES = Menu.FIRST + 2;
-    private static final int ABOUT = Menu.FIRST + 3;
-    private static final int SEARCH = Menu.FIRST + 4;
-    private static final int BLUETOOTH_APK = Menu.FIRST + 5;
-    private static final int LOCAL_REPO = Menu.FIRST + 6;
 
     private FDroidApp fdroidApp = null;
 
@@ -124,23 +117,13 @@ public class FDroid extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        super.onCreateOptionsMenu(menu);
-        menu.add(Menu.NONE, UPDATE_REPO, 1, R.string.menu_update_repo).setIcon(
-                android.R.drawable.ic_menu_rotate);
-        menu.add(Menu.NONE, MANAGE_REPO, 2, R.string.menu_manage).setIcon(
-                android.R.drawable.ic_menu_agenda);
-        MenuItem search = menu.add(Menu.NONE, SEARCH, 3, R.string.menu_search).setIcon(
-                android.R.drawable.ic_menu_search);
-        if (fdroidApp.bluetoothAdapter != null) // ignore on devices without Bluetooth
-            menu.add(Menu.NONE, BLUETOOTH_APK, 3, R.string.menu_send_apk_bt);
-        menu.add(Menu.NONE, LOCAL_REPO, 4, R.string.local_repo);
-        menu.add(Menu.NONE, PREFERENCES, 4, R.string.menu_preferences).setIcon(
-                android.R.drawable.ic_menu_preferences);
-        menu.add(Menu.NONE, ABOUT, 5, R.string.menu_about).setIcon(
-                android.R.drawable.ic_menu_help);
-        MenuItemCompat.setShowAsAction(search, MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-        return true;
+        getMenuInflater().inflate(R.menu.main, menu);
+        if (fdroidApp.bluetoothAdapter == null) {
+            // ignore on devices without Bluetooth
+            MenuItem btItem = menu.findItem(R.id.action_bluetooth_apk);
+            btItem.setVisible(false);
+        }
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -148,91 +131,91 @@ public class FDroid extends ActionBarActivity {
 
         switch (item.getItemId()) {
 
-        case UPDATE_REPO:
-            updateRepos();
-            return true;
+            case R.id.action_update_repo:
+                updateRepos();
+                return true;
 
-        case MANAGE_REPO:
-            Intent i = new Intent(this, ManageRepo.class);
-            startActivityForResult(i, REQUEST_MANAGEREPOS);
-            return true;
+            case R.id.action_manage_repos:
+                Intent i = new Intent(this, ManageReposActivity.class);
+                startActivityForResult(i, REQUEST_MANAGEREPOS);
+                return true;
 
-        case PREFERENCES:
-            Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
-            startActivityForResult(prefs, REQUEST_PREFS);
-            return true;
+            case R.id.action_settings:
+                Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
+                startActivityForResult(prefs, REQUEST_PREFS);
+                return true;
 
-        case LOCAL_REPO:
-            startActivity(new Intent(this, LocalRepoActivity.class));
-            return true;
+            case R.id.action_local_repo:
+                startActivity(new Intent(this, LocalRepoActivity.class));
+                return true;
 
-        case SEARCH:
-            onSearchRequested();
-            return true;
+            case R.id.action_search:
+                onSearchRequested();
+                return true;
 
-        case BLUETOOTH_APK:
-            /*
-             * If Bluetooth has not been enabled/turned on, then
-             * enabling device discoverability will automatically enable Bluetooth
-             */
-            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
-            startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
-            // if this is successful, the Bluetooth transfer is started
-            return true;
+            case R.id.action_bluetooth_apk:
+                /*
+                 * If Bluetooth has not been enabled/turned on, then enabling
+                 * device discoverability will automatically enable Bluetooth
+                 */
+                Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
+                startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
+                // if this is successful, the Bluetooth transfer is started
+                return true;
 
-        case ABOUT:
-            View view = null;
-            if (Build.VERSION.SDK_INT >= 11) {
-                LayoutInflater li = LayoutInflater.from(this);
-                view = li.inflate(R.layout.about, null);
-            } else {
-                view = View.inflate(
-                        new ContextThemeWrapper(this, R.style.AboutDialogLight),
-                        R.layout.about, null);
-            }
+            case R.id.action_about:
+                View view = null;
+                if (Build.VERSION.SDK_INT >= 11) {
+                    LayoutInflater li = LayoutInflater.from(this);
+                    view = li.inflate(R.layout.about, null);
+                } else {
+                    view = View.inflate(
+                            new ContextThemeWrapper(this, R.style.AboutDialogLight),
+                            R.layout.about, null);
+                }
 
-            // Fill in the version...
-            try {
-                PackageInfo pi = getPackageManager()
-                    .getPackageInfo(getApplicationContext()
-                            .getPackageName(), 0);
-                ((TextView) view.findViewById(R.id.version))
-                    .setText(pi.versionName);
-            } catch (Exception e) {
-            }
+                // Fill in the version...
+                try {
+                    PackageInfo pi = getPackageManager()
+                            .getPackageInfo(getApplicationContext()
+                                    .getPackageName(), 0);
+                    ((TextView) view.findViewById(R.id.version))
+                            .setText(pi.versionName);
+                } catch (Exception e) {
+                }
 
-            Builder p = null;
-            if (Build.VERSION.SDK_INT >= 11) {
-                p = new AlertDialog.Builder(this).setView(view);
-            } else {
-                p = new AlertDialog.Builder(
-                        new ContextThemeWrapper(
-                            this, R.style.AboutDialogLight)
-                        ).setView(view);
-            }
-            final AlertDialog alrt = p.create();
-            alrt.setIcon(R.drawable.ic_launcher);
-            alrt.setTitle(getString(R.string.about_title));
-            alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
-                    getString(R.string.about_website),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            Uri uri = Uri.parse("https://f-droid.org");
-                            startActivity(new Intent(Intent.ACTION_VIEW, uri));
-                        }
-                    });
-            alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                        }
-                    });
-            alrt.show();
-            return true;
+                Builder p = null;
+                if (Build.VERSION.SDK_INT >= 11) {
+                    p = new AlertDialog.Builder(this).setView(view);
+                } else {
+                    p = new AlertDialog.Builder(
+                            new ContextThemeWrapper(
+                                    this, R.style.AboutDialogLight)
+                            ).setView(view);
+                }
+                final AlertDialog alrt = p.create();
+                alrt.setIcon(R.drawable.ic_launcher);
+                alrt.setTitle(getString(R.string.about_title));
+                alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
+                        getString(R.string.about_website),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                    int whichButton) {
+                                Uri uri = Uri.parse("https://f-droid.org");
+                                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                            }
+                        });
+                alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                    int whichButton) {
+                            }
+                        });
+                alrt.show();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -244,7 +227,7 @@ public class FDroid extends ActionBarActivity {
         case REQUEST_APPDETAILS:
             break;
         case REQUEST_MANAGEREPOS:
-            if (data != null && data.hasExtra(ManageRepo.REQUEST_UPDATE)) {
+            if (data != null && data.hasExtra(ManageReposActivity.REQUEST_UPDATE)) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
                 ask_alrt.setTitle(getString(R.string.repo_update_title));
                 ask_alrt.setIcon(android.R.drawable.ic_menu_rotate);
@@ -293,8 +276,8 @@ public class FDroid extends ActionBarActivity {
 
     private void createViews() {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
-        AppListFragmentPageAdapter viewPageAdapter = new AppListFragmentPageAdapter(this);
-        viewPager.setAdapter(viewPageAdapter);
+        AppListFragmentPagerAdapter viewPagerAdapter = new AppListFragmentPagerAdapter(this);
+        viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {

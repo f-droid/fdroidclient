@@ -16,7 +16,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?attr/listPreferredItemHeight"
+    android:background="?android:attr/activatedBackgroundIndicator"
+    android:minHeight="?android:attr/listPreferredItemHeight"
     android:paddingBottom="2dip"
     android:paddingTop="2dip" >
 
@@ -46,8 +47,7 @@
             android:id="@+id/package_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-            android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+            android:layout_alignStart="@+id/application_label"
             android:layout_below="@+id/application_label"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </TwoLineListItem>

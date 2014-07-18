@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="horizontal"
-	android:layout_width="fill_parent"
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:padding="10dp"
-	android:baselineAligned="false" >
+	android:minHeight="?android:attr/listPreferredItemHeight"
+	android:paddingBottom="2dip"
+	android:paddingTop="2dip" >
 
 	<!-- Actual icon size is dependent on preferences and set in
 		AppListAdapater.java:layoutIcon() -->
 	<ImageView
 		android:id="@+id/icon"
 		android:contentDescription="@string/app_icon"
-		android:layout_width="48dp"
-		android:layout_height="48dp"
-		android:layout_gravity="center_vertical"
+		android:layout_width="48dip"
+		android:layout_height="48dip"
+		android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
+		android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+		android:layout_marginTop="6dip"
 		android:scaleType="fitCenter"
 		/>
 
 	<LinearLayout
 		android:orientation="vertical"
-		android:layout_width="fill_parent"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:paddingLeft="10dp"
-		android:paddingStart="10dp"
+		android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd"
+		android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
+		android:layout_marginRight="?attr/listPreferredItemPaddingRight"
+		android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
 		android:layout_gravity="center_vertical"
 		android:baselineAligned="false" >
 
@@ -54,8 +58,8 @@
 				android:layout_weight="1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="8dp"
-				android:layout_marginStart="8dp"
+				android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
+				android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
 				android:layout_gravity="center_vertical"
 				android:gravity="end"
 				android:textAlignment="viewEnd"
@@ -89,8 +93,8 @@
 				android:layout_weight="1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="6sp"
-				android:layout_marginStart="6sp"
+				android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
+				android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
 				android:layout_gravity="center_vertical"
 				android:gravity="end"
 				android:textAlignment="viewEnd"
