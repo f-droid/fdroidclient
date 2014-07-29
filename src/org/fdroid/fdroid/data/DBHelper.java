@@ -193,22 +193,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
         insertRepo(
             db,
-            context.getString(R.string.default_repo_name1),
-            context.getString(R.string.default_repo_address1),
-            context.getString(R.string.default_repo_description1),
-            context.getString(R.string.default_repo_pubkey1),
-            context.getResources().getInteger(R.integer.default_repo_inuse1),
-            context.getResources().getInteger(R.integer.default_repo_priority1)
+            context.getString(R.string.fdroid_repo_name),
+            context.getString(R.string.fdroid_repo_address),
+            context.getString(R.string.fdroid_repo_description),
+            context.getString(R.string.fdroid_repo_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_repo_inuse),
+            context.getResources().getInteger(R.integer.fdroid_repo_priority)
         );
 
         insertRepo(
             db,
-            context.getString(R.string.default_repo_name2),
-            context.getString(R.string.default_repo_address2),
-            context.getString(R.string.default_repo_description2),
-            context.getString(R.string.default_repo_pubkey2),
-            context.getResources().getInteger(R.integer.default_repo_inuse2),
-            context.getResources().getInteger(R.integer.default_repo_priority2)
+            context.getString(R.string.fdroid_archive_name),
+            context.getString(R.string.fdroid_archive_address),
+            context.getString(R.string.fdroid_archive_description),
+            context.getString(R.string.fdroid_archive_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_archive_inuse),
+            context.getResources().getInteger(R.integer.fdroid_archive_priority)
         );
 
         insertRepo(
@@ -336,10 +336,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("alter table " + TABLE_REPO + " add column name text");
             if (!descriptionExists)
                 db.execSQL("alter table " + TABLE_REPO + " add column description text");
-            insertNameAndDescription(db, R.string.default_repo_address1,
-                    R.string.default_repo_name1, R.string.default_repo_description1);
-            insertNameAndDescription(db, R.string.default_repo_address2,
-                    R.string.default_repo_name2, R.string.default_repo_description2);
+            insertNameAndDescription(db, R.string.fdroid_repo_address,
+                    R.string.fdroid_repo_name, R.string.fdroid_repo_description);
+            insertNameAndDescription(db, R.string.fdroid_archive_address,
+                    R.string.fdroid_archive_name, R.string.fdroid_archive_description);
             insertNameAndDescription(db, R.string.guardianproject_repo_address,
                     R.string.guardianproject_repo_name, R.string.guardianproject_repo_description);
             insertNameAndDescription(db, R.string.guardianproject_archive_address,
