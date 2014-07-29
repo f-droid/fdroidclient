@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 
@@ -209,6 +210,26 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getResources().getInteger(R.integer.default_repo_inuse2),
             context.getResources().getInteger(R.integer.default_repo_priority2)
         );
+
+        insertRepo(
+            db,
+            context.getString(R.string.guardianproject_repo_name),
+            context.getString(R.string.guardianproject_repo_address),
+            context.getString(R.string.guardianproject_repo_description),
+            context.getString(R.string.guardianproject_repo_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
+            context.getResources().getInteger(R.integer.guardianproject_repo_priority)
+        );
+
+        insertRepo(
+            db,
+            context.getString(R.string.guardianproject_archive_name),
+            context.getString(R.string.guardianproject_archive_address),
+            context.getString(R.string.guardianproject_archive_description),
+            context.getString(R.string.guardianproject_archive_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
+            context.getResources().getInteger(R.integer.guardianproject_archive_priority)
+        );
     }
 
     private void insertRepo(
@@ -319,6 +340,10 @@ public class DBHelper extends SQLiteOpenHelper {
                     R.string.default_repo_name1, R.string.default_repo_description1);
             insertNameAndDescription(db, R.string.default_repo_address2,
                     R.string.default_repo_name2, R.string.default_repo_description2);
+            insertNameAndDescription(db, R.string.guardianproject_repo_address,
+                    R.string.guardianproject_repo_name, R.string.guardianproject_repo_description);
+            insertNameAndDescription(db, R.string.guardianproject_archive_address,
+                    R.string.guardianproject_archive_name, R.string.guardianproject_archive_description);
         }
 
     }
