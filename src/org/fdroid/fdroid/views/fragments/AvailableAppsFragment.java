@@ -7,13 +7,19 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Spinner;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.ArrayAdapterCompat;
@@ -101,6 +107,9 @@ public class AvailableAppsFragment extends AppListFragment implements
         // Giving it an ID lets the default save/restore state
         // functionality do its stuff.
         categorySpinner.setId(R.id.categorySpinner);
+        // with holo, the menu gets lost since it looks the same as an app list item
+        if (Build.VERSION.SDK_INT >= 14)
+            categorySpinner.setBackgroundDrawable(getResources().getDrawable(android.R.drawable.btn_dropdown));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
             getActivity(), android.R.layout.simple_spinner_item, translatedCategories);
