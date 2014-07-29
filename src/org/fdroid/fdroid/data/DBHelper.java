@@ -292,6 +292,17 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    private void insertNameAndDescription(SQLiteDatabase db,
+            int addressResId, int nameResId, int descriptionResId) {
+        ContentValues values = new ContentValues();
+        values.clear();
+        values.put("name", context.getString(nameResId));
+        values.put("description", context.getString(descriptionResId));
+        db.update(TABLE_REPO, values, "address = ?", new String[] {
+                context.getString(addressResId)
+        });
+    }
+
     /**
      * Add a name and description to the repo table, and updates the two
      * default repos with values from strings.xml.
@@ -304,16 +315,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("alter table " + TABLE_REPO + " add column name text");
             if (!descriptionExists)
                 db.execSQL("alter table " + TABLE_REPO + " add column description text");
-            ContentValues values = new ContentValues();
-            values.put("name", context.getString(R.string.default_repo_name1));
-            values.put("description", context.getString(R.string.default_repo_description1));
-            db.update(TABLE_REPO, values, "address = ?", new String[]{
-                    context.getString(R.string.default_repo_address1)});
-            values.clear();
-            values.put("name", context.getString(R.string.default_repo_name2));
-            values.put("description", context.getString(R.string.default_repo_description2));
-            db.update(TABLE_REPO, values, "address = ?", new String[] {
-                context.getString(R.string.default_repo_address2) });
+            insertNameAndDescription(db, R.string.default_repo_address1,
+                    R.string.default_repo_name1, R.string.default_repo_description1);
+            insertNameAndDescription(db, R.string.default_repo_address2,
+                    R.string.default_repo_name2, R.string.default_repo_description2);
         }
 
     }
