@@ -4,12 +4,15 @@ package org.fdroid.fdroid.localrepo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.*;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
-import android.graphics.*;
+import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
@@ -17,15 +20,32 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.security.cert.CertificateEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
@@ -187,11 +207,13 @@ public class LocalRepoManager {
         for (String packageName : appsToCopy) {
             App app = apps.get(packageName);
 
-            File outFile = new File(repoDir, app.installedApk.apkName);
-            if (app.installedApk == null
-                    || !Utils.symlinkOrCopyFile(app.installedApk.installedFile, outFile)) {
-                throw new IllegalStateException("Unable to copy APK");
+            if (app.installedApk != null) {
+                File outFile = new File(repoDir, app.installedApk.apkName);
+                if (Utils.symlinkOrCopyFile(app.installedApk.installedFile, outFile))
+                    continue;
             }
+            // if we got here, something went wrong
+            throw new IllegalStateException("Unable to copy APK");
         }
     }
 
@@ -246,7 +268,7 @@ public class LocalRepoManager {
 
     /**
      * Extracts the icon from an APK and writes it to the repo as a PNG
-     * 
+     *
      * @return path to the PNG file
      */
     public void copyIconToRepo(Drawable drawable, String packageName, int versionCode) {
