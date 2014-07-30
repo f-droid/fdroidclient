@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:minHeight="?android:attr/listPreferredItemHeight"
-	android:paddingBottom="2dip"
-	android:paddingTop="2dip" >
+	android:padding="10dp"
+	android:baselineAligned="false" >
 
 	<!-- Actual icon size is dependent on preferences and set in
 		AppListAdapater.java:layoutIcon() -->
@@ -13,20 +13,17 @@
 		android:contentDescription="@string/app_icon"
 		android:layout_width="48dip"
 		android:layout_height="48dip"
-		android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-		android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
-		android:layout_marginTop="6dip"
-		android:scaleType="fitCenter"
-		/>
+		android:layout_gravity="center_vertical"
+		android:scaleType="fitCenter" />
 
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd"
-		android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-		android:layout_marginRight="?attr/listPreferredItemPaddingRight"
-		android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+		android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+		android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+		android:paddingRight="?attr/listPreferredItemPaddingRight"
+		android:paddingStart="?android:attr/listPreferredItemPaddingStart"
 		android:layout_gravity="center_vertical"
 		android:baselineAligned="false" >
 
@@ -35,8 +32,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:baselineAligned="false"
-			android:layout_marginBottom="3dp"
-			>
+			android:layout_marginBottom="3dp" >
 
 			<TextView android:id="@+id/name"
 				android:textSize="17sp"
@@ -48,8 +44,7 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_vertical"
 				android:gravity="start"
-				android:textAlignment="viewStart"
-				/>
+				android:textAlignment="viewStart" />
 
 			<TextView android:id="@+id/status"
 				android:textSize="13sp"

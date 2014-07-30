@@ -20,13 +20,13 @@ public class MockFDroidResources extends MockResources {
 
     @Override
     public int getInteger(int id) {
-        if (id == R.integer.default_repo_inuse1) {
+        if (id == R.integer.fdroid_repo_inuse) {
             return 1;
-        } else if (id == R.integer.default_repo_inuse2) {
+        } else if (id == R.integer.fdroid_archive_inuse) {
             return 0;
-        } else if (id == R.integer.default_repo_priority1) {
+        } else if (id == R.integer.fdroid_repo_priority) {
             return 10;
-        } else if (id == R.integer.default_repo_priority2) {
+        } else if (id == R.integer.fdroid_archive_priority) {
             return 20;
         } else {
             return 0;

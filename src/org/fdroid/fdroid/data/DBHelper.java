@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 
@@ -192,22 +193,42 @@ public class DBHelper extends SQLiteOpenHelper {
 
         insertRepo(
             db,
-            context.getString(R.string.default_repo_name1),
-            context.getString(R.string.default_repo_address1),
-            context.getString(R.string.default_repo_description1),
-            context.getString(R.string.default_repo_pubkey1),
-            context.getResources().getInteger(R.integer.default_repo_inuse1),
-            context.getResources().getInteger(R.integer.default_repo_priority1)
+            context.getString(R.string.fdroid_repo_name),
+            context.getString(R.string.fdroid_repo_address),
+            context.getString(R.string.fdroid_repo_description),
+            context.getString(R.string.fdroid_repo_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_repo_inuse),
+            context.getResources().getInteger(R.integer.fdroid_repo_priority)
         );
 
         insertRepo(
             db,
-            context.getString(R.string.default_repo_name2),
-            context.getString(R.string.default_repo_address2),
-            context.getString(R.string.default_repo_description2),
-            context.getString(R.string.default_repo_pubkey2),
-            context.getResources().getInteger(R.integer.default_repo_inuse2),
-            context.getResources().getInteger(R.integer.default_repo_priority2)
+            context.getString(R.string.fdroid_archive_name),
+            context.getString(R.string.fdroid_archive_address),
+            context.getString(R.string.fdroid_archive_description),
+            context.getString(R.string.fdroid_archive_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_archive_inuse),
+            context.getResources().getInteger(R.integer.fdroid_archive_priority)
+        );
+
+        insertRepo(
+            db,
+            context.getString(R.string.guardianproject_repo_name),
+            context.getString(R.string.guardianproject_repo_address),
+            context.getString(R.string.guardianproject_repo_description),
+            context.getString(R.string.guardianproject_repo_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
+            context.getResources().getInteger(R.integer.guardianproject_repo_priority)
+        );
+
+        insertRepo(
+            db,
+            context.getString(R.string.guardianproject_archive_name),
+            context.getString(R.string.guardianproject_archive_address),
+            context.getString(R.string.guardianproject_archive_description),
+            context.getString(R.string.guardianproject_archive_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
+            context.getResources().getInteger(R.integer.guardianproject_archive_priority)
         );
     }
 
@@ -292,6 +313,17 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    private void insertNameAndDescription(SQLiteDatabase db,
+            int addressResId, int nameResId, int descriptionResId) {
+        ContentValues values = new ContentValues();
+        values.clear();
+        values.put("name", context.getString(nameResId));
+        values.put("description", context.getString(descriptionResId));
+        db.update(TABLE_REPO, values, "address = ?", new String[] {
+                context.getString(addressResId)
+        });
+    }
+
     /**
      * Add a name and description to the repo table, and updates the two
      * default repos with values from strings.xml.
@@ -304,16 +336,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("alter table " + TABLE_REPO + " add column name text");
             if (!descriptionExists)
                 db.execSQL("alter table " + TABLE_REPO + " add column description text");
-            ContentValues values = new ContentValues();
-            values.put("name", context.getString(R.string.default_repo_name1));
-            values.put("description", context.getString(R.string.default_repo_description1));
-            db.update(TABLE_REPO, values, "address = ?", new String[]{
-                    context.getString(R.string.default_repo_address1)});
-            values.clear();
-            values.put("name", context.getString(R.string.default_repo_name2));
-            values.put("description", context.getString(R.string.default_repo_description2));
-            db.update(TABLE_REPO, values, "address = ?", new String[] {
-                context.getString(R.string.default_repo_address2) });
+            insertNameAndDescription(db, R.string.fdroid_repo_address,
+                    R.string.fdroid_repo_name, R.string.fdroid_repo_description);
+            insertNameAndDescription(db, R.string.fdroid_archive_address,
+                    R.string.fdroid_archive_name, R.string.fdroid_archive_description);
+            insertNameAndDescription(db, R.string.guardianproject_repo_address,
+                    R.string.guardianproject_repo_name, R.string.guardianproject_repo_description);
+            insertNameAndDescription(db, R.string.guardianproject_archive_address,
+                    R.string.guardianproject_archive_name, R.string.guardianproject_archive_description);
         }
 
     }
