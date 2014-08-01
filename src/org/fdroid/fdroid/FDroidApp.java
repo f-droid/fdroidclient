@@ -23,21 +23,34 @@ import android.app.Activity;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.content.*;
-import android.content.pm.*;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
-import android.os.*;
+import android.os.Build;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import de.duenndns.ssl.MemorizingTrustManager;
+
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
@@ -49,16 +62,14 @@ import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.thoughtcrime.ssl.pinning.PinningTrustManager;
 import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
+import java.io.File;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Set;
+
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
-import java.io.File;
-import java.security.*;
-import java.util.Set;
-
-import javax.net.ssl.*;
 
 public class FDroidApp extends Application {
 
@@ -179,31 +190,27 @@ public class FDroidApp extends Application {
 
         try {
             SSLContext sc = SSLContext.getInstance("TLS");
-            X509TrustManager defaultTrustManager = null;
 
+            // MemorizingTrustManager -> PinningTrustManager -> Prompt User
             /*
-             * init a trust manager factory with a null keystore to access the system trust managers
+             * The current HTTPS trust model is to first check if a site's key
+             * is TOFUed, then check if it is pinned and valid with the CA, then
+             * prompt the user. There is currently no way to only check the CA
+             * for validity. Ultimately, that should probably not be needed if
+             * the repo URLs can include the HTTPS pin info in the same way that
+             * the repo fingerprint is specified. Then it can be added to the
+             * TOFU/POP keystore when the user accepts the Add Repo dialog
              */
-            TrustManagerFactory tmf =
-                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            KeyStore ks = null;
-            tmf.init(ks);
-            TrustManager[] mgrs = tmf.getTrustManagers();
-
-            if(mgrs.length > 0 && mgrs[0] instanceof X509TrustManager)
-                defaultTrustManager = (X509TrustManager) mgrs[0];
+            PinningTrustManager pinMgr = new PinningTrustManager(
+                    SystemKeyStore.getInstance(getApplicationContext()),
+                    FDroidCertPins.getPinList(),
+                    0);
+            MemorizingTrustManager memMgr = new MemorizingTrustManager(getApplicationContext(), pinMgr);
 
             /*
-             * compose a chain of trust managers as follows:
-             * MemorizingTrustManager -> Pinning Trust Manager -> System Trust Manager
-             */
-            PinningTrustManager pinMgr = new PinningTrustManager(SystemKeyStore.getInstance(getApplicationContext()),FDroidCertPins.getPinList(), 0);
-            MemorizingTrustManager memMgr = new MemorizingTrustManager(getApplicationContext(), pinMgr, defaultTrustManager);
-
-            /*
-             * initialize a SSLContext with the outermost trust manager, use this
-             * context to set the default SSL socket factory for the HTTPSURLConnection
-             * class.
+             * initialize a SSLContext with the outermost trust manager, use
+             * this context to set the default SSL socket factory for the
+             * HTTPSURLConnection class.
              */
             sc.init(null, new TrustManager[] {memMgr}, new java.security.SecureRandom());
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
@@ -211,8 +218,6 @@ public class FDroidApp extends Application {
             Log.e("FDroid", "Unable to set up trust manager chain. KeyManagementException");
         } catch (NoSuchAlgorithmException e) {
             Log.e("FDroid", "Unable to set up trust manager chain. NoSuchAlgorithmException");
-        } catch (KeyStoreException e) {
-            Log.e("FDroid", "Unable to set up trust manager chain. KeyStoreException");
         }
 
         // initialized the local repo information
