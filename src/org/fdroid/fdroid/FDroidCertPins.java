@@ -23,13 +23,22 @@ import java.util.Arrays;
 
 public class FDroidCertPins {
     public static final String[] DEFAULT_PINS = {
-        /*
-         * SubjectDN: CN=f-droid.org, OU=PositiveSSL, OU=Domain Control Validated
-         * IssuerDN: CN=PositiveSSL CA 2, O=COMODO CA Limited, L=Salford, ST=Greater Manchester, C=GB
-         * Fingerprint: 84B91CDF2312CB9BA7F3BE803783302F8D8C299F
-         * SPKI Pin: 638F93856E1F5EDFCBD40C46D4160CFF21B0713A
-         */
-        "638F93856E1F5EDFCBD40C46D4160CFF21B0713A",
+
+            // OU=PositiveSSL, CN=f-droid.org
+            // Fingerprint: 84B91CDF2312CB9BA7F3BE803783302F8D8C299F
+            "638F93856E1F5EDFCBD40C46D4160CFF21B0713A",
+
+            // OU=Gandi Standard SSL, CN=guardianproject.info
+            "cf2f8e226027599a1a933701418c58ec688a8305",
+
+            // C=US, ST=Washington, L=Seattle, O=Amazon.com Inc., CN=s3.amazonaws.com
+            "5e77905babb66ca7082979435afbe4edf3f5af12",
+
+            // OU=Domain Control Validated - RapidSSL(R), CN=www.psiphon.ca
+            "3aa1726e64d54bf58bf68fe23208928fd0d9cf8a",
+
+            // OU=EssentialSSL Wildcard, CN=*.panicbutton.io
+            "cdae8cc70af09a55a7642d13f84241cba1c3a3e6",
     };
 
     public static ArrayList<String> PINLIST = null;
