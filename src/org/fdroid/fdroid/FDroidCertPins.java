@@ -36,8 +36,9 @@ public class FDroidCertPins {
 
     public static String[] getPinList() {
         if (PINLIST == null) {
-            PINLIST = new ArrayList<String>();
-            PINLIST.addAll(Arrays.asList(DEFAULT_PINS));
+            ArrayList<String> pinlist = new ArrayList<String>();
+            pinlist.addAll(Arrays.asList(DEFAULT_PINS));
+            PINLIST = pinlist;
         }
 
         return PINLIST.toArray(new String[PINLIST.size()]);
