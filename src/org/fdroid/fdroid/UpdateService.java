@@ -180,7 +180,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             if (finished) {
                 forwardEvent(EVENT_FINISHED);
-                if (dialog.isShowing()) {
+                if (dialog != null && dialog.isShowing()) {
                     try {
                         dialog.dismiss();
                     } catch (IllegalArgumentException e) {
