@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,16 +20,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.util.Locale;
 
 public class WifiQrFragment extends Fragment {
+
+    private static final int CONNECT_TO_SWAP = 1;
 
     private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
@@ -45,17 +53,31 @@ public class WifiQrFragment extends Fragment {
         // Replace all blacks with the background blue.
         qrImage.setColorFilter(new LightingColorFilter(0xffffffff, getResources().getColor(R.color.swap_blue)));
 
-        Button openQr = (Button)view.findViewById(R.id.button);
+        Button openQr = (Button)view.findViewById(R.id.btn_qr_scanner);
         openQr.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: What is the "correct" intent for starting barcode scanner?
-                // I realise that google stuffed up by not standardising this, so
-                // not quite sure the best way to proceed.
+                IntentIntegrator integrator = new IntentIntegrator(WifiQrFragment.this);
+                integrator.initiateScan();
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanResult != null) {
+            NewRepoConfig repoConfig = new NewRepoConfig(getActivity(), scanResult.getContents());
+            if (repoConfig.isValidRepo()) {
+                startActivityForResult(new Intent(FDroid.ACTION_ADD_REPO, Uri.parse(scanResult.getContents()), getActivity(), ConnectSwapActivity.class), CONNECT_TO_SWAP);
+            } else {
+                Toast.makeText(getActivity(), "The QR code you scanned doesn't look like a swap code.", Toast.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
+            getActivity().finish();
+        }
     }
 
     public void onResume() {

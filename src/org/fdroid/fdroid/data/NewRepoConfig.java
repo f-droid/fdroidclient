@@ -26,16 +26,24 @@ public class NewRepoConfig {
     private String bssid;
     private String ssid;
 
+    public NewRepoConfig(Context context, String uri) {
+        init(context, Uri.parse(uri));
+    }
+
     public NewRepoConfig(Context context, Intent intent) {
+        init(context, intent.getData());
+    }
+
+    private void init(Context context, Uri incomingUri) {
         /* an URL from a click, NFC, QRCode scan, etc */
-        uri = intent.getData();
+        uri = incomingUri;
         if (uri == null) {
             isValidRepo = false;
             return;
         }
 
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
-        scheme = intent.getScheme();
+        scheme = uri.getScheme();
         host = uri.getHost();
         port = uri.getPort();
         if (TextUtils.isEmpty(scheme) || TextUtils.isEmpty(host)) {

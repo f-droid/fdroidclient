@@ -44,6 +44,7 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
     }
 
     private void finish() {
+        getActivity().setResult(Activity.RESULT_OK);
         getActivity().finish();
     }
 
