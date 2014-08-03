@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              xmlns:tools="http://schemas.android.com/tools"
-              tools:context=".views.swap.SwapActivity">
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".views.swap.SwapActivity">
 
     <TextView
             android:layout_width="wrap_content"
@@ -23,9 +23,9 @@
             android:id="@+id/wifi_icon"
             android:src="@drawable/wifi"
             android:layout_below="@+id/text_description"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/wifi_ssid"/>
+            android:layout_centerHorizontal="true" />
 
+    <!--
     <Button style="@style/SwapTheme.Wizard.OptionButton"
             android:id="@+id/btn_bluetooth"
             android:text="@string/swap_use_bluetooth"
@@ -35,127 +35,7 @@
             android:text="@string/swap_wifi_help"
             android:layout_above="@id/btn_bluetooth"
             android:id="@+id/btn_learn_more_about_wifi"/>
-
-    <LinearLayout
-            android:id="@+id/wifi_type_descriptions"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/btn_learn_more_about_wifi"
-            android:layout_centerHorizontal="true"
-            android:gravity="bottom"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp">
-
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginRight="10dp">
-
-            <ImageView
-                    android:id="@+id/wifi_icon_public"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/wifi_ap_public"/>
-
-            <TextView
-                    android:id="@+id/wifi_label_public"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Public"/>
-
-            <TextView
-                    android:id="@+id/wifi_warning_public"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="May work"/>
-            
-            <ImageView
-                    android:id="@+id/wifi_status_public"
-                    android:src="@drawable/swap_wifi_may_work"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp">
-
-            <ImageView
-                    android:id="@+id/wifi_icon_private"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/wifi_ap_private" />
-
-            <TextView
-                    android:id="@+id/wifi_label_private"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Private" />
-
-            <TextView
-                    android:id="@+id/wifi_warning_private"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Promising" />
-            
-            <ImageView
-                    android:id="@+id/wifi_status_private"
-                    android:src="@drawable/swap_wifi_likely_to_work"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginLeft="10dp">
-
-            <ImageView
-                    android:id="@+id/wifi_icon_personal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/wifi_ap_personal" />
-
-            <TextView
-                    android:id="@+id/wifi_label_personal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hotspot" />
-
-            <TextView
-                    android:id="@+id/wifi_warning_personal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Best bet" />
-            
-            <ImageView
-                    android:id="@+id/wifi_status_personal"
-                    android:src="@drawable/swap_wifi_likely_to_work"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/swap_view_available_networks"
-            android:id="@+id/wifi_available_networks_prompt"
-            android:layout_above="@id/wifi_type_descriptions"
-            android:layout_centerHorizontal="true" />
+    -->
 
     <TextView
             android:layout_width="wrap_content"
@@ -163,7 +43,18 @@
             tools:text="No network yet"
             android:id="@+id/wifi_ssid"
             style="@style/SwapTheme.Wizard.WifiSSID"
-            android:layout_above="@id/wifi_available_networks_prompt"
+            android:layout_below="@id/wifi_icon"
             android:layout_centerHorizontal="true" />
+    <!--android:layout_above="@id/wifi_available_networks_prompt"-->
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swap_view_available_networks"
+            android:id="@+id/wifi_available_networks_prompt"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/wifi_ssid"
+            android:paddingBottom="20dp"/>
+    <!-- android:layout_above="@id/btn_learn_more_about_wifi" -->
 
 </RelativeLayout>
