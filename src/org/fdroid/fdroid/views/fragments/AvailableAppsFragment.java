@@ -6,10 +6,13 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,8 +100,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         // attempt to translate category names with fallback to default name
         List<String> translatedCategories = new ArrayList<String>(categories.size());
         Resources res = getResources();
-        for (String category : categories)
-        {
+        for (String category : categories) {
             int id = res.getIdentifier(category.replace(" & ", "_"), "string", getActivity().getPackageName());
             translatedCategories.add(id == 0 ? category : getString(id));
         }
@@ -108,8 +110,15 @@ public class AvailableAppsFragment extends AppListFragment implements
         // functionality do its stuff.
         categorySpinner.setId(R.id.categorySpinner);
         // with holo, the menu gets lost since it looks the same as an app list item
-        if (Build.VERSION.SDK_INT >= 14)
-            categorySpinner.setBackgroundDrawable(getResources().getDrawable(android.R.drawable.btn_dropdown));
+        if (Build.VERSION.SDK_INT >= 14) {
+            Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
+            if (TextUtils.equals("dark",
+                    PreferenceManager.getDefaultSharedPreferences(getActivity())
+                            .getString(Preferences.PREF_THEME, "dark"))) {
+                menuButton.setAlpha(32); // make it darker via alpha
+            }
+            categorySpinner.setBackgroundDrawable(menuButton);
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
             getActivity(), android.R.layout.simple_spinner_item, translatedCategories);
