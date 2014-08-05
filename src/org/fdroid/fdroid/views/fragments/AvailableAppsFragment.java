@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.compat.ArrayAdapterCompat;
@@ -112,9 +113,8 @@ public class AvailableAppsFragment extends AppListFragment implements
         // with holo, the menu gets lost since it looks the same as an app list item
         if (Build.VERSION.SDK_INT >= 14) {
             Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
-            if (TextUtils.equals("dark",
-                    PreferenceManager.getDefaultSharedPreferences(getActivity())
-                            .getString(Preferences.PREF_THEME, "dark"))) {
+            if (((FDroidApp)getActivity().getApplication()).getCurTheme()
+                    == FDroidApp.Theme.dark) {
                 menuButton.setAlpha(32); // make it darker via alpha
             }
             categorySpinner.setBackgroundDrawable(menuButton);

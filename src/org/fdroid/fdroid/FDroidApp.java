@@ -86,7 +86,7 @@ public class FDroidApp extends Application {
 
     BluetoothAdapter bluetoothAdapter = null;
 
-    private static enum Theme {
+    public static enum Theme {
         dark, light, lightWithDarkActionBar
     }
 
@@ -110,6 +110,10 @@ public class FDroidApp extends Application {
                 activity.setTheme(R.style.AppThemeLightWithDarkActionBar);
                 break;
         }
+    }
+
+    public static Theme getCurTheme() {
+        return curTheme;
     }
 
     @Override
