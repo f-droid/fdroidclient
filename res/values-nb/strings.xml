@@ -25,7 +25,6 @@
   <string name="notify">Varsle</string>
   <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
   <string name="notify_off">Ikke vis varsel om noen oppdateringer</string>
-  <string name="update_history">Oppdater historie</string>
   <string name="update_history_summ">Dager nytt innhold skal anses som ferskt: %s</string>
   <string name="search_results">Søkeresultater</string>
   <string name="app_details">Programdetaljer</string>
@@ -106,12 +105,8 @@ Lisensiert GNU GPLv3.</string>
   <string name="display">Vis</string>
   <string name="expert">Ekspert</string>
   <string name="expert_on">Hvis ekstra info og skru på ekstra innstillinger</string>
-  <string name="expert_off">Gjem ekstra info for erfarne brukere</string>
   <string name="search_hint">Søk i programliste</string>
   <string name="appcompatibility">Programstøtte</string>
-  <string name="show_incompat_versions">Ukompatible versjoner</string>
-  <string name="show_incompat_versions_on">Vis programvareversjoner som er ukompatible med enheten</string>
-  <string name="show_incompat_versions_off">Gjem programvareversjoner som er ukompatible med enheten</string>
   <string name="rooted">Rot</string>
   <string name="rooted_on">Skyggelegg alle app-er som krever superbruker-tilgang</string>
   <string name="rooted_off">Skyggelegg alle app-er som etterspør superbruker-rettigheter</string>
