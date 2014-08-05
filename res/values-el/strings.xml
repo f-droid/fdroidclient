@@ -8,7 +8,7 @@
   <string name="version">Έκδοση</string>
   <string name="edit">Επεξεργασία</string>
   <string name="delete">Διαγραφή</string>
-  <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC...</string>
+  <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
   <string name="cache_downloaded">Αποθήκευση ληφθέντων εφαρμογών στην προσωρινή μνήμη</string>
   <string name="cache_downloaded_on">Διατήρηση ληφθέντων αρχείων apk στην κάρτα SD</string>
   <string name="cache_downloaded_off">Να μη διατηρηθεί κανένα αρχείο apk</string>
@@ -60,7 +60,7 @@
   <string name="process_wait_title">Παρακαλώ περιμένετε</string>
   <string name="download_server">Λήψη εφαρμογών από</string>
   <string name="nfc_is_not_enabled">NFC δεν είναι ενεργοποιημένο!</string>
-  <string name="go_to_nfc_settings">Μετάβαση στις ρυθμίσεις NFC...</string>
+  <string name="go_to_nfc_settings">Μετάβαση στις ρυθμίσεις NFC…</string>
   <string name="bluetooth_activity_not_found">Καμία μέθοδος αποστολής με Bluetooth δεν βρέθηκε, επιλέξετε μία!</string>
   <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>
   <string name="repo_add_url">Διεύθυνση αποθετηρίου</string>
@@ -118,7 +118,7 @@
   <string name="category_whatsnew">Τι νέο υπάρχει</string>
   <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
   <string name="local_repos_title">Τοπικά αποθετήρια FDroid</string>
-  <string name="local_repos_scanning">Αναζήτηση για τοπικά αποθετήρια FDroid...</string>
+  <string name="local_repos_scanning">Αναζήτηση για τοπικά αποθετήρια FDroid…</string>
   <string name="status_processing_xml">Επεξεργασία εφαρμογής
 %2$d από %3$d από
 %1$s</string>
