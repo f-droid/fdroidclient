@@ -15,6 +15,11 @@
 * Directly send installed apps to other devices via Bluetooth and Android Beam
   (NFC+Bluetooth), also compatible with Samsung/HTC S-Beam
 
+* Initial support for root and system installers, allowing the client to
+  install apks directly on its own
+
+* Switch to Appcompat from the Support library
+
 * Fix some crashes
 
 * Translation updates
