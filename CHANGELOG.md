@@ -1,4 +1,4 @@
-### Upcoming release (2014-06-??)
+### 0.71 (2014-08-05)
 
 * Added "local repo" support to host an FDroid repo on the device itself, with
   full signed repo support, icons, and optional HTTPS
