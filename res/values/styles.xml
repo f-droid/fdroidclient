@@ -40,8 +40,10 @@
     </style>
 
     <style name="SwapTheme.AppList" parent="AppThemeLightWithDarkActionBar">
-        <item name="android:windowBackground">@color/white</item>
         <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="SwapTheme.AppList.ListItem" parent="AppThemeLightWithDarkActionBar">
     </style>
 
     <style name="SwapTheme.AppList.StartButton">

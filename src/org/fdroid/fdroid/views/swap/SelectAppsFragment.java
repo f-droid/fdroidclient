@@ -75,14 +75,26 @@ public class SelectAppsFragment extends ListFragment
         return false;
     }
 
+    /**
+     * Normally we'd just let the baseclass ListFrament.onCreateView() from the support library do its magic.
+     * However, it doesn't allow us to theme it. That is, it always passes getActivity() into the constructor
+     * of widgets. We are more interested in a ContextThemeWrapper, so that the widgets get appropriately
+     * themed. In order to get it working, we need to work around android bug 21742 as well
+     * (https://code.google.com/p/android/issues/detail?id=21742).
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         LayoutInflater themedInflater = (LayoutInflater)new ContextThemeWrapper(inflater.getContext(), R.style.SwapTheme_AppList).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = super.onCreateView(themedInflater, container, savedInstanceState);
+        View view = themedInflater.inflate(R.layout.swap_create, container, false);
         ListView listView = (ListView)view.findViewById(android.R.id.list);
         listView.addHeaderView(themedInflater.inflate(R.layout.swap_create_header, null, false));
+
+        // Workaround for https://code.google.com/p/android/issues/detail?id=21742
+        view.findViewById(android.R.id.empty).setId(0x00ff0001);
+        view.findViewById(R.id.progressContainer).setId(0x00ff0002);
+        view.findViewById(android.R.id.progress).setId(0x00ff0003);
 
         return view;
     }
@@ -98,7 +110,8 @@ public class SelectAppsFragment extends ListFragment
 
         ListView listView = getListView();
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                new ContextThemeWrapper(getActivity(), R.style.SwapTheme_AppList_ListItem),
                 R.layout.select_local_apps_list_item,
                 null,
                 new String[] {
