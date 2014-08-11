@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -146,7 +147,15 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     }
 
     public void onAttemptNfc() {
-        if (Preferences.get().showNfcDuringSwap() && NfcSwapFragment.isNfcSupported(this)) {
+        // TODO: What if NFC is disabled? Hook up with NfcNotEnabledActivity? Or maybe only if they
+        // click a relevant button?
+
+        // Even if they opted to skip the message which says "Touch devices to swap",
+        // we still want to actually enable the feature, so that they could touch
+        // during the wifi qr code being shown too.
+        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(this, FDroidApp.repo));
+
+        if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(android.R.id.content, new NfcSwapFragment(), STATE_NFC)

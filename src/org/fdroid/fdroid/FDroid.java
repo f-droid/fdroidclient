@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
@@ -112,7 +111,7 @@ public class FDroid extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         // AppDetails and RepoDetailsActivity set different NFC actions, so reset here
-        NfcBeamManager.setAndroidBeam(this, getApplication().getPackageName());
+        NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
         checkForAddRepoIntent();
     }
 

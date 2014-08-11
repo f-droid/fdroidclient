@@ -1327,10 +1327,10 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             TextView statusView = (TextView) view.findViewById(R.id.status);
             if (getApp().isInstalled()) {
                 statusView.setText(getString(R.string.details_installed, getApp().installedVersionName));
-                NfcBeamManager.setAndroidBeam(getActivity(), getApp().id);
+                NfcHelper.setAndroidBeam(getActivity(), getApp().id);
             } else {
                 statusView.setText(getString(R.string.details_notinstalled));
-                NfcBeamManager.disableAndroidBeam(getActivity());
+                NfcHelper.disableAndroidBeam(getActivity());
             }
 
         }
