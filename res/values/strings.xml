@@ -192,6 +192,7 @@
 	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same WiFi network.  Then either type the URL above into F-Droid, or scan this QR Code:</string>
 	<string name="qr_code">QR Code</string>
 	<string name="next">Next</string>
+	<string name="skip">Skip</string>
 	<string name="qr_content_description">QR Code of repo URL</string>
 	<string name="qr_wizard_wifi_network_instructions">Scan this QR Code to connect to the same WiFi network as this device.</string>
 	<string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>

@@ -30,7 +30,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private static final String STATE_NFC = "nfc";
     private static final String STATE_WIFI_QR = "wifiQr";
 
-    private MenuItem nextMenuItem;
+    private Menu menu;
     private String nextMenuItemLabel;
     private Timer shutdownLocalRepoTimer;
     private UpdateAsyncTask updateSwappableAppsTask = null;
@@ -69,8 +69,9 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        this.menu = menu;
         getMenuInflater().inflate(R.menu.swap_next, menu);
-        nextMenuItem = menu.getItem(0);
+        MenuItem nextMenuItem = menu.findItem(R.id.action_next);
         nextMenuItem.setVisible(false);
         MenuItemCompat.setShowAsAction(nextMenuItem, MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         return true;
@@ -86,21 +87,30 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         supportInvalidateOptionsMenu();
     }
 
+    private void showSkipButton() {
+        nextMenuItemLabel = getString(R.string.skip);
+        supportInvalidateOptionsMenu();
+    }
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem nextMenuItem = menu.findItem(R.id.action_next);
         if (nextMenuItemLabel == null) {
+            nextMenuItem.setTitle("");
+            nextMenuItem.setTitleCondensed("");
             nextMenuItem.setVisible(false);
-            return false;
+            return true;
         } else {
             nextMenuItem.setVisible(true);
             nextMenuItem.setTitle(nextMenuItemLabel);
+            nextMenuItem.setTitleCondensed(nextMenuItemLabel);
             return true;
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == nextMenuItem.getItemId()) {
+        if (item.getItemId() == R.id.action_next) {
             nextStep();
         }
         return super.onOptionsItemSelected(item);
@@ -161,7 +171,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
                     .replace(android.R.id.content, new NfcSwapFragment(), STATE_NFC)
                     .addToBackStack(STATE_NFC)
                     .commit();
-            showNextButton();
+            showSkipButton();
         } else {
             onWifiQr();
         }
@@ -177,7 +187,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
                 .replace(android.R.id.content, new WifiQrFragment(), STATE_WIFI_QR)
                 .addToBackStack(STATE_WIFI_QR)
                 .commit();
-        showNextButton();
+        hideNextButton();
     }
 
     private void prepareLocalRepo() {
