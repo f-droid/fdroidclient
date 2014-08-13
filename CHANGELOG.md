@@ -1,6 +1,6 @@
 ### 0.71 (2014-08-05)
 
-* Added "local repo" support to host an FDroid repo on the device itself, with
+* Added "local repo" support to host an F-Droid repo on the device itself, with
   full signed repo support, icons, and optional HTTPS
 
 * Ability to set up such a local repo by choosing from any of the installed
@@ -8,7 +8,7 @@
 
 * Find local repos on the same network using Bonjour/mDNS
 
-* Support for FDroid repos on Tor Hidden Services (.onion addresses)
+* Support for F-Droid repos on Tor Hidden Services (.onion addresses)
 
 * HTTP Proxy support in Preferences
 
@@ -49,16 +49,16 @@
 
 ### 0.63 (2014-04-07)
 
-* Support for Network Service Discovery of local FDroid repos on Android 4.1+
+* Support for Network Service Discovery of local F-Droid repos on Android 4.1+
   from the repository management screen
 
 * Always remember the selected category in the list of apps
 
-* Send FDroid via Bluetooth to any device that supports receiving APKs via
+* Send F-Droid via Bluetooth to any device that supports receiving APKs via
   Bluetooth (stock Android blocks APKs, most ROMs allow them)
 
 * NFC support: beam repo configs from the repo detail view (Android 4.0+),
-  beam the FDroid.apk from FDroid's main screen (Android 4.1+)
+  beam the F-Droid.apk from F-Droid's main screen (Android 4.1+)
 
 * Support for repositories using self-signed HTTPS certificates through
   a Trust-on-first-use popup
