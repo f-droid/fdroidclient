@@ -2,7 +2,6 @@ package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -94,10 +93,11 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
 
         if (event.type.equals(UpdateService.EVENT_COMPLETE_AND_SAME) ||
                 event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
-            Intent intent = new Intent();
-            intent.putExtra("category", parser.getHost()); // TODO: Load repo from database to get proper name. This is what the category we want to select will be called.
+            ((ConnectSwapActivity)getActivity()).onRepoUpdated();
+            /*Intent intent = new Intent();
+            intent.putExtra("category", newRepoConfig.getHost()); // TODO: Load repo from database to get proper name. This is what the category we want to select will be called.
             getActivity().setResult(Activity.RESULT_OK, intent);
-            finish();
+            finish();*/
         } else if (event.type.equals(UpdateService.EVENT_ERROR)) {
             // TODO: Show message on this screen (with a big "okay" button that goes back to F-Droid activity)
             // rather than finishing directly.

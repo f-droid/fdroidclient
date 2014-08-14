@@ -22,7 +22,7 @@ public class StartSwapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        LayoutInflater themedInflater = (LayoutInflater)new ContextThemeWrapper(inflater.getContext(), R.style.SwapTheme_AppList).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater themedInflater = (LayoutInflater)new ContextThemeWrapper(inflater.getContext(), R.style.SwapTheme_StartSwap).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = themedInflater.inflate(R.layout.swap_blank, container, false);
         view.findViewById(R.id.button_start_swap).setOnClickListener(new View.OnClickListener() {

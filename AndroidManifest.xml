@@ -331,6 +331,15 @@
                 android:value=".FDroid" />
         </activity>
         <activity
+            android:label="@string/swap"
+            android:name=".views.swap.SwapAppListActivity"
+            android:parentActivityName=".FDroid"
+            android:theme="@style/SwapTheme.AppList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+        </activity>
+        <activity
             android:name=".SearchResults"
             android:label="@string/search_results"
             android:exported="true"

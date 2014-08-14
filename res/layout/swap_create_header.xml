@@ -3,6 +3,6 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/text_description"
         android:text="Tap to select the apps you want to swap."
-        style="@style/SwapTheme.AppList.MainText"
+        style="@style/SwapTheme.StartSwap.MainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

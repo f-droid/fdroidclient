@@ -39,14 +39,17 @@
         <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
     </style>
 
-    <style name="SwapTheme.AppList" parent="AppThemeLightWithDarkActionBar">
+    <style name="SwapTheme.StartSwap" parent="AppThemeLightWithDarkActionBar">
         <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="SwapTheme.AppList" parent="AppThemeLightWithDarkActionBar">
     </style>
 
     <style name="SwapTheme.AppList.ListItem" parent="AppThemeLightWithDarkActionBar">
     </style>
 
-    <style name="SwapTheme.AppList.StartButton">
+    <style name="SwapTheme.StartSwap.StartButton">
         <item name="android:layout_marginLeft">9dp</item> <!-- 16px * 96dpi / 160dpi -->
         <item name="android:layout_marginRight">9dp</item> <!-- 16px * 96dpi / 160dpi -->
         <item name="android:layout_height">63.3dp</item> <!-- 113px * 96dpi / 160dpi -->
@@ -60,7 +63,23 @@
 
     </style>
 
-    <style name="SwapTheme.AppList.MainText">
+    <style name="SwapTheme.AppList.SwapSuccess">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">25.7sp</item> <!-- 46px * 96dpi / 160dpi -->
+        <item name="android:paddingTop">28dp</item> <!-- 50px * 96dpi / 160dpi -->
+        <item name="android:paddingBottom">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="SwapTheme.AppList.SwapSuccessDetails">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20.1sp</item> <!-- 36px * 96dpi / 160dpi -->
+        <item name="android:paddingTop">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
+        <item name="android:paddingBottom">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SwapTheme.StartSwap.MainText">
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">20.1sp</item> <!-- 36px * 96dpi / 160dpi -->
         <item name="android:paddingLeft">28dp</item> <!-- 50px * 96dpi / 160dpi -->

@@ -1,12 +1,10 @@
 package org.fdroid.fdroid.views.swap;
 
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -14,9 +12,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.TextUtils;
 import android.view.ActionMode;
 import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -26,11 +22,12 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.fdroid.fdroid.views.fragments.ThemeableListFragment;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class SelectAppsFragment extends ListFragment
+public class SelectAppsFragment extends ThemeableListFragment
     implements LoaderManager.LoaderCallbacks<Cursor>, SearchView.OnQueryTextListener {
 
     private PackageManager packageManager;
@@ -73,30 +70,6 @@ public class SelectAppsFragment extends ListFragment
         }
 
         return false;
-    }
-
-    /**
-     * Normally we'd just let the baseclass ListFrament.onCreateView() from the support library do its magic.
-     * However, it doesn't allow us to theme it. That is, it always passes getActivity() into the constructor
-     * of widgets. We are more interested in a ContextThemeWrapper, so that the widgets get appropriately
-     * themed. In order to get it working, we need to work around android bug 21742 as well
-     * (https://code.google.com/p/android/issues/detail?id=21742).
-     */
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        LayoutInflater themedInflater = (LayoutInflater)new ContextThemeWrapper(inflater.getContext(), R.style.SwapTheme_AppList).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        View view = themedInflater.inflate(R.layout.swap_create, container, false);
-        ListView listView = (ListView)view.findViewById(android.R.id.list);
-        listView.addHeaderView(themedInflater.inflate(R.layout.swap_create_header, null, false));
-
-        // Workaround for https://code.google.com/p/android/issues/detail?id=21742
-        view.findViewById(android.R.id.empty).setId(0x00ff0001);
-        view.findViewById(R.id.progressContainer).setId(0x00ff0002);
-        view.findViewById(android.R.id.progress).setId(0x00ff0003);
-
-        return view;
     }
 
     @Override
@@ -246,4 +219,13 @@ public class SelectAppsFragment extends ListFragment
         return mCurrentFilterString;
     }
 
+    @Override
+    protected int getThemeStyle() {
+        return R.style.SwapTheme_StartSwap;
+    }
+
+    @Override
+    protected int getHeaderLayout() {
+        return R.layout.swap_create_header;
+    }
 }
