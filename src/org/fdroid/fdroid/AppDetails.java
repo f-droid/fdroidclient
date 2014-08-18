@@ -129,26 +129,32 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     // observer to update view when package has been installed/deleted
     AppObserver myAppObserver;
+
     class AppObserver extends ContentObserver {
-       public AppObserver(Handler handler) {
-          super(handler);
-       }
 
-       @Override
-       public void onChange(boolean selfChange) {
-          this.onChange(selfChange, null);
-       }
+        public AppObserver(Handler handler) {
+           super(handler);
+        }
 
-       @Override
-       public void onChange(boolean selfChange, Uri uri) {
-           if (!reset(app.id)) {
+        @Override
+        public void onChange(boolean selfChange) {
+           onChange(selfChange, null);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            onChange();
+        }
+
+        public void onChange() {
+            if (!reset(app.id)) {
                AppDetails.this.finish();
                return;
-           }
+            }
 
-           refreshApkList();
-           supportInvalidateOptionsMenu();
-       }
+            refreshApkList();
+            supportInvalidateOptionsMenu();
+        }
     }
 
     class ApkListAdapter extends ArrayAdapter<Apk> {
@@ -370,12 +376,15 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
         fdroidApp = ((FDroidApp) getApplication());
         fdroidApp.applyTheme(this);
 
         super.onCreate(savedInstanceState);
+
+        // Must be called *after* super.onCreate(), as that is where the action bar
+        // compat implementation is assigned in the ActionBarActivity base class.
+        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
         if (getIntent().hasExtra(EXTRA_FROM)) {
             setTitle(getIntent().getStringExtra(EXTRA_FROM));
@@ -424,6 +433,13 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         } else {
             listFragment.removeSummaryHeader();
         }
+
+        // Spinner seems to default to visible on Android 4.0.3 and 4.0.4
+        // https://gitlab.com/fdroid/fdroidclient/issues/75
+        // Can't put this in onResume(), because that is called on return from asking
+        // the user permission to use su (in which case we still want to show the
+        // progress indicator after returning from that prompt).
+        setSupportProgressBarIndeterminateVisibility(false);
 
     }
 
@@ -480,7 +496,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
      */
     private void downloadCompleteInstallApk() {
         if (downloadHandler != null) {
-            assert downloadHandler.isComplete();
             installApk(downloadHandler.localFile(), downloadHandler.getApk().id);
             cleanUpFinishedDownload();
         }
@@ -855,23 +870,25 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     }
 
     private void installApk(File file, String packageName) {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
 
         try {
             installer.installPackage(file);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
+            setSupportProgressBarIndeterminateVisibility(false);
         }
     }
 
     @Override
     public void removeApk(String packageName) {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
 
         try {
             installer.deletePackage(packageName);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
+            setSupportProgressBarIndeterminateVisibility(false);
         }
     }
 
@@ -886,7 +903,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                         PackageManagerCompat.setInstaller(mPm, app.id);
                     }
 
-                    setProgressBarIndeterminateVisibility(false);
+                    setSupportProgressBarIndeterminateVisibility(false);
+                    myAppObserver.onChange();
                 }
             });
         }
@@ -897,14 +915,16 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setProgressBarIndeterminateVisibility(false);
+                        setSupportProgressBarIndeterminateVisibility(false);
+                        myAppObserver.onChange();
                     }
                 });
             } else {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setProgressBarIndeterminateVisibility(false);
+                        setSupportProgressBarIndeterminateVisibility(false);
+                        myAppObserver.onChange();
 
                         Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
 
