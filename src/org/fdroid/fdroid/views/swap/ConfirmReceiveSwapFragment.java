@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.RepoIntentParser;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 
 public class ConfirmReceiveSwapFragment extends Fragment implements ProgressListener {
 
-    private RepoIntentParser parser;
+    private NewRepoConfig newRepoConfig;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,10 +49,10 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
 
     public void onResume() {
         super.onResume();
-        parser = new RepoIntentParser(getActivity(), getActivity().getIntent());
-        if (parser.parse()) {
+        newRepoConfig = new NewRepoConfig(getActivity(), getActivity().getIntent());
+        if (newRepoConfig.isValidRepo()) {
             ((TextView) getView().findViewById(R.id.text_description)).setText(
-                getString(R.string.swap_confirm_connect, parser.getHost())
+                getString(R.string.swap_confirm_connect, newRepoConfig.getHost())
             );
         } else {
             // TODO: Show error message on screen (not in popup).
@@ -65,18 +65,18 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
     }
 
     private Repo ensureRepoExists() {
-        // TODO: parser.getUri() will include a fingerprint, which may not match with
+        // TODO: newRepoConfig.getUri() will include a fingerprint, which may not match with
         // the repos address in the database.
-        Repo repo = RepoProvider.Helper.findByAddress(getActivity(), parser.getUri());
+        Repo repo = RepoProvider.Helper.findByAddress(getActivity(), newRepoConfig.getUriString());
         if (repo == null) {
             ContentValues values = new ContentValues(5);
 
              // TODO: i18n and think about most appropriate name. Although ideally, it will not be seen often,
              // because we're whacking a pretty UI over the swap process so they don't need to "Manage repos"...
             values.put(RepoProvider.DataColumns.NAME, "Swap");
-            values.put(RepoProvider.DataColumns.ADDRESS, parser.getUri());
+            values.put(RepoProvider.DataColumns.ADDRESS, newRepoConfig.getUriString());
             values.put(RepoProvider.DataColumns.DESCRIPTION, ""); // TODO;
-            values.put(RepoProvider.DataColumns.FINGERPRINT, parser.getFingerprint());
+            values.put(RepoProvider.DataColumns.FINGERPRINT, newRepoConfig.getFingerprint());
             values.put(RepoProvider.DataColumns.IN_USE, true);
             Uri uri = RepoProvider.Helper.insert(getActivity(), values);
             repo = RepoProvider.Helper.findByUri(getActivity(), uri);

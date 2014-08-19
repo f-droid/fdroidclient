@@ -44,6 +44,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.LocalRepoActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
@@ -119,13 +120,13 @@ public class FDroid extends ActionBarActivity {
         // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
         // http://stackoverflow.com/a/14820849
         if (!getIntent().hasExtra("handled")) {
-            RepoIntentParser parser = new RepoIntentParser(this, getIntent());
-            if (parser.parse()) {
+            NewRepoConfig parser = new NewRepoConfig(this, getIntent());
+            if (parser.isValidRepo()) {
                 getIntent().putExtra("handled", true);
                 if (parser.isFromSwap()) {
                     startActivityForResult(new Intent(ACTION_ADD_REPO, getIntent().getData(), this, ConnectSwapActivity.class), REQUEST_SWAP);
                 } else {
-                    startActivity(new Intent(ACTION_ADD_REPO, getIntent().getData(), this, ManageRepo.class));
+                    startActivity(new Intent(ACTION_ADD_REPO, getIntent().getData(), this, ManageReposActivity.class));
                 }
             } else if (parser.getErrorMessage() != null) {
                 Toast.makeText(this, parser.getErrorMessage(), Toast.LENGTH_LONG).show();
@@ -167,10 +168,6 @@ public class FDroid extends ActionBarActivity {
             case R.id.action_settings:
                 Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
                 startActivityForResult(prefs, REQUEST_PREFS);
-                return true;
-
-            case R.id.action_swap:
-                startActivity(new Intent(this, SwapActivity.class));
                 return true;
 
             case R.id.action_swap:
