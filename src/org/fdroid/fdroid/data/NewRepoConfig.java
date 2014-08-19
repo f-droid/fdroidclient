@@ -13,7 +13,7 @@ import java.util.Locale;
 public class NewRepoConfig {
 
     private String errorMessage;
-    private boolean isValidRepo;
+    private boolean isValidRepo = false;
 
     private String uriString;
     private Uri uri;
@@ -26,7 +26,7 @@ public class NewRepoConfig {
     private boolean fromSwap;
 
     public NewRepoConfig(Context context, String uri) {
-        init(context, Uri.parse(uri));
+        init(context, uri != null ? Uri.parse(uri) : null);
     }
 
     public NewRepoConfig(Context context, Intent intent) {

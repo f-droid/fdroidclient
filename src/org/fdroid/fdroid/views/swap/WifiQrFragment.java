@@ -69,11 +69,13 @@ public class WifiQrFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null) {
-            NewRepoConfig repoConfig = new NewRepoConfig(getActivity(), scanResult.getContents());
-            if (repoConfig.isValidRepo()) {
-                startActivityForResult(new Intent(FDroid.ACTION_ADD_REPO, Uri.parse(scanResult.getContents()), getActivity(), ConnectSwapActivity.class), CONNECT_TO_SWAP);
-            } else {
-                Toast.makeText(getActivity(), "The QR code you scanned doesn't look like a swap code.", Toast.LENGTH_SHORT).show();
+            if (scanResult.getContents() != null) {
+                NewRepoConfig repoConfig = new NewRepoConfig(getActivity(), scanResult.getContents());
+                if (repoConfig.isValidRepo()) {
+                    startActivityForResult(new Intent(FDroid.ACTION_ADD_REPO, Uri.parse(scanResult.getContents()), getActivity(), ConnectSwapActivity.class), CONNECT_TO_SWAP);
+                } else {
+                    Toast.makeText(getActivity(), "The QR code you scanned doesn't look like a swap code.", Toast.LENGTH_SHORT).show();
+                }
             }
         } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
             getActivity().finish();
