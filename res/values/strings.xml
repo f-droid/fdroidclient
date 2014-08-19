@@ -295,4 +295,12 @@
     <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a system-app.</string>
 
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
+    <string name="swap_nfc_description">If your friend has <b>F-Droid and NFC turned on</b> touch your phones together.</string>
+    <string name="swap_join_same_wifi">Join the same Wifi as your friend</string>
+    <string name="swap_use_bluetooth">Use Bluetooth instead</string>
+    <string name="swap_wifi_help">Learn more about Wifi</string>
+    <string name="menu_swap">Swap apps</string>
+    <string name="swap">Swap apps</string>
+    <string name="swap_no_wifi_network">No network yet</string>
+    <string name="swap_view_available_networks">(Tap to open available networks)</string>
 </resources>

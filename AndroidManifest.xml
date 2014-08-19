@@ -282,6 +282,15 @@
                 android:value=".FDroid" />
         </activity>
         <activity
+            android:label="@string/menu_swap"
+            android:name=".views.swap.SwapActivity"
+            android:parentActivityName=".FDroid"
+            android:theme="@style/SwapTheme.Wizard">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+        </activity>
+        <activity
             android:name=".SearchResults"
             android:label="@string/search_results"
             android:exported="true"

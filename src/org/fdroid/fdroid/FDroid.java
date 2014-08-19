@@ -47,6 +47,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.LocalRepoActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
+import org.fdroid.fdroid.views.swap.SwapActivity;
 
 public class FDroid extends ActionBarActivity {
 
@@ -145,8 +146,12 @@ public class FDroid extends ActionBarActivity {
                 startActivityForResult(prefs, REQUEST_PREFS);
                 return true;
 
-            case R.id.action_local_repo:
-                startActivity(new Intent(this, LocalRepoActivity.class));
+            case R.id.action_swap:
+                startActivity(new Intent(this, SwapActivity.class));
+                return true;
+
+            case R.id.action_swap:
+                startActivity(new Intent(this, SwapActivity.class));
                 return true;
 
             case R.id.action_search:

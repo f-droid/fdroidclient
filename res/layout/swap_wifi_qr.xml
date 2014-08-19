@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            tools:text="One person needs to scan the  code, or type the URL of the  other swapper into a browser."
+            style="@style/SwapTheme.Wizard.MainText"/>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/wifi_qr_code"
+            tools:src="@drawable/swap_qr_example"
+            android:layout_below="@+id/textView" android:layout_above="@+id/device_ip_address"/>
+
+    <Button style="@style/SwapTheme.Wizard.OptionButton"
+            android:id="@+id/btn_not_working"
+            android:text="It's not working"
+            android:layout_alignParentBottom="true" />
+
+    <Button style="@style/SwapTheme.Wizard.OptionButton"
+            android:text="Open QR Code Scanner"
+            android:layout_above="@id/btn_not_working" android:layout_gravity="center" android:id="@+id/button"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/device_ip_address"
+            tools:text="192.168.1.1:8888"
+            android:layout_above="@+id/button" android:layout_centerHorizontal="true"
+            style="@style/SwapTheme.Wizard.LocalIpAddress"/>
+
+</RelativeLayout>
