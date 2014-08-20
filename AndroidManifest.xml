@@ -105,15 +105,41 @@
                 <data android:pathPrefix="/repository/browse" />
             </intent-filter>
 
+            <!--
+            This intent serves two purposes: Swapping apps between devices and adding a
+            repo from a website (e.g. https://guardianproject.info/fdroid/repo).
+            We intercept both of these situations in the FDroid activity, and then redirect
+            to the appropriate handler (swap handling, manage repos respectively) from there.
+
+            The reason for this is that the only differentiating factor is the presence
+            of a "swap=1" in the query string, and intent-filter is unable to deal with
+            query parameters. An alternative would be to do something like fdroidswap:// as
+            a scheme, but then we. Need to copy/paste all of this intent-filter stuff and
+            keep it up to date when it changes or a bug is found.
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
+                <!--
+                Android's scheme matcher is case-sensitive, so include
+                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
+                QR Codes have a special ALL CAPS mode that uses a reduced
+                character set, making for more compact QR Codes.
+                -->
                 <data android:scheme="http" />
+                <data android:scheme="HTTP" />
                 <data android:scheme="https" />
+                <data android:scheme="HTTPS" />
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="FDROIDREPO" />
+                <data android:scheme="fdroidrepos" />
+                <data android:scheme="FDROIDREPOS" />
+
                 <data android:host="*" />
+
                 <!--
                 The pattern matcher here is poorly implemented, in particular the * is
                 non-greedy, so you have to do stupid tricks to match patterns that have
@@ -159,10 +185,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
         </activity>
-        <!--
-        The title for ManageReposActivity is "F-Droid" here, but "Repositories"
-        when viewing the Activity itself in the app.
-        -->
         <activity
             android:name=".views.ManageReposActivity"
             android:label="@string/app_name"
@@ -171,24 +193,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <!--
-                Android's scheme matcher is case-sensitive, so include
-                ALL CAPS versions to support ALL CAPS URLs in QR Codes.
-                QR Codes have a special ALL CAPS mode that uses a reduced
-                character set, making for more compact QR Codes.
-                -->
-                <data android:scheme="fdroidrepo" />
-                <data android:scheme="FDROIDREPO" />
-                <data android:scheme="fdroidrepos" />
-                <data android:scheme="FDROIDREPOS" />
-            </intent-filter>
             <!-- Handle NFC tags detected from outside our application -->
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />

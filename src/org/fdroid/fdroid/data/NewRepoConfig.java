@@ -5,12 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import org.fdroid.fdroid.R;
 
 import java.util.Arrays;
 import java.util.Locale;
 
 public class NewRepoConfig {
+
+    private static final String TAG = "org.fdroid.fdroid.data.NewRepoConfig";
 
     private String errorMessage;
     private boolean isValidRepo = false;
@@ -40,6 +43,8 @@ public class NewRepoConfig {
             isValidRepo = false;
             return;
         }
+
+        Log.d(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
 
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
         scheme = uri.getScheme();
