@@ -19,15 +19,15 @@
 
 package org.fdroid.fdroid.installer;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import eu.chainfire.libsuperuser.Shell;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
+import eu.chainfire.libsuperuser.Shell;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Installer using a root shell and "pm install", "pm uninstall" commands
@@ -45,8 +45,8 @@ public class RootInstaller extends Installer {
         Shell.Builder shellBuilder = new Shell.Builder()
                 .useSU()
                 .setWantSTDERR(true)
-                .setWatchdogTimeout(5)
-                .setMinimalLogging(true);
+                .setWatchdogTimeout(30)
+                .setMinimalLogging(false);
 
         return shellBuilder;
     }
