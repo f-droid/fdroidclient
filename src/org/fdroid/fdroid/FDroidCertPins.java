@@ -28,6 +28,9 @@ public class FDroidCertPins {
             // Fingerprint: 84B91CDF2312CB9BA7F3BE803783302F8D8C299F
             "638F93856E1F5EDFCBD40C46D4160CFF21B0713A",
 
+            // OU=PositiveSSL, CN=f-droid.org
+            "83a288fdbf7fb27ca2268d553168eb8f38298910",
+
             // OU=Gandi Standard SSL, CN=guardianproject.info
             "cf2f8e226027599a1a933701418c58ec688a8305",
 
