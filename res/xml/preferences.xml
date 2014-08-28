@@ -65,11 +65,13 @@
         <EditTextPreference
             android:key="proxyHost"
             android:title="@string/proxy_host"
-            android:summary="@string/proxy_host_summary" />
+	    android:summary="@string/proxy_host_summary" 
+	    android:dependency="enableProxy" />
         <EditTextPreference
             android:key="proxyPort"
             android:title="@string/proxy_port"
-            android:summary="@string/proxy_port_summary" />
+            android:summary="@string/proxy_port_summary"
+	    android:dependency="enableProxy" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/other">
 		<CheckBoxPreference android:title="@string/cache_downloaded"

@@ -152,15 +152,6 @@ public class PreferenceFragment
         } else if (key.equals(Preferences.PREF_ENABLE_PROXY)) {
             CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
             pref.setSummary(R.string.enable_proxy_summary);
-            Preference h = findPreference(Preferences.PREF_PROXY_HOST);
-            Preference p = findPreference(Preferences.PREF_PROXY_PORT);
-            if (pref.isChecked()) {
-                h.setEnabled(true);
-                p.setEnabled(true);
-            } else {
-                h.setEnabled(false);
-                p.setEnabled(false);
-            }
 
         } else if (key.equals(Preferences.PREF_PROXY_HOST)) {
             EditTextPreference textPref = (EditTextPreference) findPreference(key);
