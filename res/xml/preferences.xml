@@ -80,9 +80,11 @@
 			android:key="expert" />
 		<CheckBoxPreference android:title="@string/root_installer"
 			android:defaultValue="false"
-			android:key="rootInstaller" />
+			android:key="rootInstaller"
+			android:dependency="expert" />
 		<CheckBoxPreference android:title="@string/system_installer"
 			android:defaultValue="false"
-			android:key="systemInstaller" />
+			android:key="systemInstaller"
+			android:dependency="expert" />
 	</PreferenceCategory>
 </PreferenceScreen>
