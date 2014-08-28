@@ -140,16 +140,6 @@ public class PreferenceFragment
         } else if (key.equals(Preferences.PREF_EXPERT)) {
             onoffSummary(key, R.string.expert_on,
                 R.string.expert_off);
-            CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
-            Preference rinst = findPreference(Preferences.PREF_ROOT_INSTALLER);
-            Preference sinst = findPreference(Preferences.PREF_SYSTEM_INSTALLER);
-            if (pref.isChecked()) {
-                rinst.setEnabled(true);
-                sinst.setEnabled(true);
-            } else {
-                rinst.setEnabled(false);
-                sinst.setEnabled(false);
-            }
 
         } else if (key.equals(Preferences.PREF_ROOT_INSTALLER)) {
             onoffSummary(key, R.string.root_installer_on,
