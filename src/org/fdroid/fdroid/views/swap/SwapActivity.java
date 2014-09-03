@@ -30,7 +30,6 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private static final String STATE_NFC = "nfc";
     private static final String STATE_WIFI_QR = "wifiQr";
 
-    private Menu menu;
     private String nextMenuItemLabel;
     private Timer shutdownLocalRepoTimer;
     private UpdateAsyncTask updateSwappableAppsTask = null;
@@ -69,7 +68,6 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        this.menu = menu;
         getMenuInflater().inflate(R.menu.swap_next, menu);
         MenuItem nextMenuItem = menu.findItem(R.id.action_next);
         nextMenuItem.setVisible(false);
@@ -123,12 +121,18 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         if (savedInstanceState == null) {
 
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(android.R.id.content, new StartSwapFragment(), STATE_START_SWAP)
-                    .addToBackStack(STATE_START_SWAP)
-                    .commit();
-            hideNextButton();
+            if (FDroidApp.isLocalRepoServiceRunnig()) {
+                onWifiQr();
+            } else {
+
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(android.R.id.content, new StartSwapFragment(), STATE_START_SWAP)
+                        .addToBackStack(STATE_START_SWAP)
+                        .commit();
+                hideNextButton();
+
+            }
 
         }
 

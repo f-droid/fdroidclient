@@ -2,26 +2,37 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.annotation.SuppressLint;
-import android.app.*;
-import android.content.*;
-import android.os.*;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
-
-import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Preferences.ChangeListener;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import org.fdroid.fdroid.views.LocalRepoActivity;
+import org.fdroid.fdroid.views.swap.SwapActivity;
 
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 import java.io.IOException;
 import java.net.BindException;
 import java.util.HashMap;
 import java.util.Random;
-
-import javax.jmdns.JmDNS;
-import javax.jmdns.ServiceInfo;
 
 public class LocalRepoService extends Service {
     private static final String TAG = "LocalRepoService";
@@ -109,14 +120,14 @@ public class LocalRepoService extends Service {
     public void onCreate() {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // launch LocalRepoActivity if the user selects this notification
-        Intent intent = new Intent(this, LocalRepoActivity.class);
+        Intent intent = new Intent(this, SwapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_CANCEL_CURRENT);
         notification = new NotificationCompat.Builder(this)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setSmallIcon(R.drawable.ic_swap)
                 .setContentIntent(contentIntent)
                 .build();
         startForeground(NOTIFICATION, notification);
