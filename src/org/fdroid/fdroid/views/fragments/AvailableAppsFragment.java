@@ -10,9 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.LoaderManager;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
@@ -94,9 +91,15 @@ public class AvailableAppsFragment extends AppListFragment implements
         }
     }
 
+    /* Suppress deprecation warnings because:
+     * setBackgroundDrawable(Drawable) -> setBackground(Drawable) was only in API 16, and doesn't
+     * seems to simply delegate to the old method. I guess the deprecation is because of poor
+     * method signature, rather than better functionality in newer versions.
+     */
+    @SuppressWarnings("deprecation")
     private Spinner createCategorySpinner() {
 
-        final List<String> categories = AppProvider.Helper.categories(getActivity());
+        List<String> categories = AppProvider.Helper.categories(getActivity());
 
         // attempt to translate category names with fallback to default name
         List<String> translatedCategories = new ArrayList<String>(categories.size());
@@ -113,8 +116,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         // with holo, the menu gets lost since it looks the same as an app list item
         if (Build.VERSION.SDK_INT >= 14) {
             Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
-            if (((FDroidApp)getActivity().getApplication()).getCurTheme()
-                    == FDroidApp.Theme.dark) {
+            if (FDroidApp.getCurTheme() == FDroidApp.Theme.dark) {
                 menuButton.setAlpha(32); // make it darker via alpha
             }
             categorySpinner.setBackgroundDrawable(menuButton);
@@ -133,7 +135,7 @@ public class AvailableAppsFragment extends AppListFragment implements
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 getListView().setSelection(0);
-                setCurrentCategory(categories.get(pos));
+                setCurrentCategory(categorySpinner.getItemAtPosition(pos).toString());
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
