@@ -121,7 +121,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         if (savedInstanceState == null) {
 
-            if (FDroidApp.isLocalRepoServiceRunnig()) {
+            if (FDroidApp.isLocalRepoServiceRunning()) {
                 onWifiQr();
             } else {
 
@@ -218,9 +218,13 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     }
 
     private void startLocalRepo() {
-        if (!FDroidApp.isLocalRepoServiceRunnig()) {
+        if (!FDroidApp.isLocalRepoServiceRunning()) {
             FDroidApp.startLocalRepoService(this);
+            initLocalRepoTimer(900000); // 15 mins
         }
+    }
+
+    private void initLocalRepoTimer(long timeoutMilliseconds) {
 
         // reset the timer if viewing this Activity again
         if (shutdownLocalRepoTimer != null)
@@ -233,7 +237,19 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
             public void run() {
                 FDroidApp.stopLocalRepoService(SwapActivity.this);
             }
-        }, 900000); // 15 minutes
+        }, timeoutMilliseconds);
+
+    }
+
+    @Override
+    public void stopSwapping() {
+        if (FDroidApp.isLocalRepoServiceRunning()) {
+            if (shutdownLocalRepoTimer != null) {
+                shutdownLocalRepoTimer.cancel();
+            }
+            FDroidApp.stopLocalRepoService(SwapActivity.this);
+        }
+        finish();
     }
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {

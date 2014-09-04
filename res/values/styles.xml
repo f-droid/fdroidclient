@@ -113,7 +113,7 @@
     </style>
 
     <style name="SwapTheme.Wizard.LocalIpAddress" parent="@style/SwapTheme.Wizard.Text">
-        <item name="android:textSize">32.5sp</item> <!-- 58px * 96dpi / 160dpi -->
+        <item name="android:textSize">26.5sp</item> <!-- 58px * 96dpi / 160dpi = 32.5sp (ended up making a bit smaller, because longer addresses didn't fit well) -->
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
         <item name="android:paddingTop">22.5dp</item> <!-- 40px * 96dpi / 160dpi -->

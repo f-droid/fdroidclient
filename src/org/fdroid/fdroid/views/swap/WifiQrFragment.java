@@ -45,6 +45,8 @@ public class WifiQrFragment extends Fragment {
         }
     };
 
+    private SwapProcessManager swapManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.swap_wifi_qr, container, false);
@@ -62,7 +64,20 @@ public class WifiQrFragment extends Fragment {
             }
         });
 
+        Button cancel = (Button)view.findViewById(R.id.btn_cancel_swap);
+        cancel.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swapManager.stopSwapping();
+            }
+        });
         return view;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        swapManager = (SwapProcessManager)activity;
     }
 
     @Override

@@ -58,25 +58,35 @@ public class LocalRepoService extends Service {
 
     final Messenger messenger = new Messenger(new StartStopHandler(this));
 
+    /**
+     * This is most likely going to be created on the UI thread, hence all of
+     * the message handling will take place on a new thread to prevent blocking
+     * the UI.
+     */
     static class StartStopHandler extends Handler {
-        private static LocalRepoService service;
+
+        private final LocalRepoService service;
 
         public StartStopHandler(LocalRepoService service) {
-            StartStopHandler.service = service;
+            this.service = service;
         }
 
         @Override
-        public void handleMessage(Message msg) {
-            if (msg.arg1 == START) {
-                service.startNetworkServices();
-            } else if (msg.arg1 == STOP) {
-                service.stopNetworkServices();
-            } else if (msg.arg1 == RESTART) {
-                service.stopNetworkServices();
-                service.startNetworkServices();
-            } else {
-                Log.e(TAG, "unsupported msg.arg1, ignored");
-            }
+        public void handleMessage(final Message msg) {
+            new Thread() {
+                public void run() {
+                    if (msg.arg1 == START) {
+                        service.startNetworkServices();
+                    } else if (msg.arg1 == STOP) {
+                        service.stopNetworkServices();
+                    } else if (msg.arg1 == RESTART) {
+                        service.stopNetworkServices();
+                        service.startNetworkServices();
+                    } else {
+                        Log.e(TAG, "Unsupported msg.arg1 (" + msg.arg1 + "), ignored");
+                    }
+                }
+            }.start();
         }
     }
 
@@ -116,14 +126,12 @@ public class LocalRepoService extends Service {
         }
     };
 
-    @Override
-    public void onCreate() {
+    private void showNotification() {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // launch LocalRepoActivity if the user selects this notification
         Intent intent = new Intent(this, SwapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         notification = new NotificationCompat.Builder(this)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
@@ -131,6 +139,11 @@ public class LocalRepoService extends Service {
                 .setContentIntent(contentIntent)
                 .build();
         startForeground(NOTIFICATION, notification);
+    }
+
+    @Override
+    public void onCreate() {
+        showNotification();
         startNetworkServices();
         Preferences.get().registerLocalRepoBonjourListeners(localRepoBonjourChangeListener);
 
@@ -147,7 +160,12 @@ public class LocalRepoService extends Service {
 
     @Override
     public void onDestroy() {
-        stopNetworkServices();
+        new Thread() {
+            public void run() {
+                stopNetworkServices();
+            }
+        }.start();
+
         notificationManager.cancel(NOTIFICATION);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
         Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
@@ -159,6 +177,7 @@ public class LocalRepoService extends Service {
     }
 
     private void startNetworkServices() {
+        Log.d(TAG, "Starting local repo network services");
         startWebServer();
         if (Preferences.get().isLocalRepoBonjourEnabled())
             registerMDNSService();
@@ -166,8 +185,13 @@ public class LocalRepoService extends Service {
     }
 
     private void stopNetworkServices() {
+        Log.d(TAG, "Stopping local repo network services");
         Preferences.get().unregisterLocalRepoHttpsListeners(localRepoHttpsChangeListener);
+
+        Log.d(TAG, "Unregistering MDNS service...");
         unregisterMDNSService();
+
+        Log.d(TAG, "Stopping web server...");
         stopWebServer();
     }
 
