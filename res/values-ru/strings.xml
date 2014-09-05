@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="searchres_napps">Найдено совпадений с \'%2$s\' - %1$d:</string>
-  <string name="searchres_oneapp">Найдено одно совпадение с \'%s\':</string>
-  <string name="searchres_noapps">Не найдено ни одного совпадения с \'%s\'</string>
-  <string name="SignatureMismatch">Новая версия подписана ключом отличным от старого. Для установки новой версии, сначала нужно удалить старую программы. А потом попробовать снова. (Замечание: при удалении программы будут удалены все её данные)</string>
-  <string name="installIncompatible">Похоже, что этот пакет не несовместим с Вашим устройством. Вы все ещё хотите попытаться установить его?</string>
+  <string name="searchres_napps">По запросу \'%2$s\' найдено %1$d приложений:</string>
+  <string name="searchres_oneapp">Найдено одно приложение по запросу \'%s\':</string>
+  <string name="searchres_noapps">По запросу \'%s\' ничего не найдено</string>
+  <string name="SignatureMismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии обязательно удалите старую.
+
+Внимание: при удалении программы все её данные будут утрачены</string>
+  <string name="installIncompatible">Похоже, что этот пакет несовместим с Вашим устройством. Всё равно установить?</string>
   <string name="installDowngrade">Вы пытаетесь установить более старую версию приложения. Это может привести к его некорректной работе и даже потере данных. Вы уверены, что хотите продолжить?</string>
   <string name="version">Версия</string>
   <string name="edit">Редактировать</string>
   <string name="delete">Удалить</string>
-  <string name="enable_nfc_send">Включить отправку по NFC…</string>
+  <string name="enable_nfc_send">Включить отправку по NFC...</string>
   <string name="cache_downloaded">Кэшировать загруженные приложения</string>
-  <string name="cache_downloaded_on">Хранить загруженные файлы apk на SD-карте</string>
-  <string name="cache_downloaded_off">Не хранить файлы apk</string>
+  <string name="cache_downloaded_on">Хранить загруженные файлы APK на SD-карте</string>
+  <string name="cache_downloaded_off">Не хранить файлы APK</string>
   <string name="updates">Обновления</string>
   <string name="other">Другой</string>
-  <string name="last_update_check">Обновлено: %s</string>
+  <string name="last_update_check">Последнее обновление: %s</string>
   <string name="never">никогда</string>
   <string name="update_interval">Интервал автоматического обновления</string>
-  <string name="update_interval_zero">Не обновлять автоматически список приложений</string>
+  <string name="update_interval_zero">Не обновлять список приложений автоматически</string>
   <string name="automatic_scan_wifi">Только по Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Обновлять списки приложений автоматически только по Wi-Fi</string>
   <string name="automatic_scan_wifi_off">Всегда автоматически обновлять списки приложений</string>
-  <string name="notify">Уведомление</string>
+  <string name="notify">Уведомления</string>
   <string name="notify_on">Сообщать о наличии обновлений</string>
-  <string name="notify_off">Не уведомлять о любых обновлениях</string>
+  <string name="notify_off">Не уведомлять об обновлениях</string>
   <string name="update_history">История обновлений</string>
-  <string name="update_history_summ">Количество дней, в которые отображаются новые или недавно измененные приложения: %s</string>
+  <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
   <string name="search_results">Результаты поиска</string>
   <string name="app_details">Описание приложения</string>
   <string name="no_such_app">Приложение не найдено</string>
   <string name="about_title">О F-Droid</string>
-  <string name="about_desc">Оригинал основан на Aptoide.
+  <string name="about_desc">Изначально основан на Aptoide.
 Выпущен под лицензией GNU GPLv3.</string>
   <string name="about_site">Сайт:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Версия:</string>
   <string name="about_website">Сайт</string>
-  <string name="no_repo">В настройках не указан репозиторий!
+  <string name="no_repo">В настройках не указано ни одного репозитория!
 
-Репозиторий является источником приложений. Чтобы его добавить нажмите кнопку MENU и введите адрес.
+Репозиторий является источником приложений. Чтобы его добавить, нажмите кнопку MENU и введите адрес.
 
-Адрес репозитория выглядит примерно так: https://f-droid.org/repo</string>
+Пример адреса: https://f-droid.org/repo</string>
   <string name="inst">Установлено</string>
   <string name="not_inst">Не установлено</string>
   <string name="added_on">Добавлено %s</string>
@@ -59,20 +61,20 @@
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Обновления</string>
   <string name="one_update_available">Доступно 1 обновление.</string>
-  <string name="many_updates_available">Обновлений доступно - %d.</string>
+  <string name="many_updates_available">Доступно %d обновлений.</string>
   <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
   <string name="process_wait_title">Подождите</string>
-  <string name="process_update_msg">Список приложений обновляется…</string>
-  <string name="download_server">Взять приложение из</string>
+  <string name="process_update_msg">Список приложений обновляется...</string>
+  <string name="download_server">Загрузка приложения из</string>
   <string name="nfc_is_not_enabled">NFC не включен!</string>
-  <string name="go_to_nfc_settings">Перейти в Настройки NFC…</string>
+  <string name="go_to_nfc_settings">Перейти в Настройки NFC...</string>
   <string name="bluetooth_activity_not_found">Ни один метод отправки по Bluetooth не найден, выберите один из них!</string>
   <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
   <string name="repo_add_url">Адрес репозитория</string>
   <string name="repo_add_fingerprint">Отпечаток ключа (опционально)</string>
   <string name="repo_exists">Этот репозиторий уже существует!</string>
-  <string name="repo_exists_add_fingerprint">Этот репозиторий уже установлен, это действие добавит новую информацию о ключе.</string>
-  <string name="repo_exists_enable">Этот репозиторий уже настроен, убедитесь, что вы хотите снова включить его.</string>
+  <string name="repo_exists_add_fingerprint">Этот репозиторий уже настроен, это действие обновит информацию о ключе.</string>
+  <string name="repo_exists_enable">Этот репозиторий уже настроен, подтвердите, что вы хотите снова включить его.</string>
   <string name="repo_exists_and_enabled">Репозиторий уже настроен и включен!</string>
   <string name="repo_delete_to_overwrite">Вы должны удалить этот репозиторий, прежде чем вы можете добавить новый с другим ключом!</string>
   <string name="malformed_repo_uri">Игнорирование неверного URI репозитория: %s</string>
@@ -80,7 +82,7 @@
 Обновить его?</string>
   <string name="menu_update_repo">Обновить репозитории</string>
   <string name="menu_manage">Репозитории</string>
-  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Передача FDroid.apk по Bluetooth...</string>
   <string name="menu_preferences">Настройки</string>
   <string name="menu_about">О программе</string>
   <string name="menu_search">Поиск</string>
@@ -157,9 +159,16 @@
   <string name="repo_update">Обновить</string>
   <string name="repo_name">Название</string>
   <string name="unsigned_description">Это означает, что список приложений не может быть проверен. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
+  <string name="repo_not_yet_updated">Этот репозиторий еще не использовался.
+
+Обновите репозиторий чтобы получить информацию о доступных приложениях.</string>
+  <string name="repo_delete_details">Вы действительно хотите удалить репозиторий \"{0}\" с {1} приложениями? Установленные приложения не будут удалены, но вы больше не сможете обновить их через F-Droid.</string>
   <string name="unknown">Неизвестный</string>
   <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
-  <string name="repo_disabled_notification">\"%1$s\" отключен. Вам нужно повторно включить этот репозиторий для установки приложений из него.</string>
+  <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.
+
+Примечание: Все ранее установленные приложения останутся на вашем устройстве.</string>
+  <string name="repo_disabled_notification">\"%1$s\" отключен. Для установки приложений из этого репозитория Вам необходимо повторно включить его.</string>
   <string name="minsdk_or_later">%s или позднее</string>
   <string name="up_to_maxsdk">до %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchres_napps">\'%2$s\' にマッチする %1$d アプリケーションが見つかりました:</string>
+  <string name="searchres_oneapp">\'%s\' にマッチする 1 アプリケーションが見つかりました:</string>
+  <string name="searchres_noapps">\'%s\' にマッチするアプリケーションは見つかりませんでした</string>
+  <string name="SignatureMismatch">新しいバージョンは、以前のものと異なるキーで署名されています. 新しいバージョンをインストールするには, まず以前のバージョンをアンインストールする必要があります. その後で再度実行してください. (アプリケーションをアンインストールすると保存したデータが消えることに注意してください)</string>
+  <string name="installIncompatible">このパッケージはあなたのデバイスと互換性がないようです. それでもインストールを続行しますか?</string>
+  <string name="installDowngrade">このアプリケーションをダウングレードしようとしています. これにより不具合を発生させたりデータを失ったりする場合があります. それでもダウングレードを続行しますか?</string>
+  <string name="version">ﾊﾞｰｼﾞｮﾝ</string>
+  <string name="edit">編集</string>
+  <string name="delete">削除</string>
+  <string name="enable_nfc_send">NFC 送信を有効…</string>
+  <string name="cache_downloaded">アプリのキャッシュ</string>
+  <string name="cache_downloaded_on">ダウンロードした apk ファイルを SD カードに残します</string>
+  <string name="cache_downloaded_off">apk ファイルを残しません</string>
+  <string name="updates">更新</string>
+  <string name="other">その他</string>
+  <string name="last_update_check">最新リポジトリ検索: %s</string>
+  <string name="never">なし</string>
+  <string name="update_interval">自動更新間隔</string>
+  <string name="update_interval_zero">アプリリストの自動更新を行いません</string>
+  <string name="automatic_scan_wifi">WiFi接続時のみ</string>
+  <string name="automatic_scan_wifi_on">WiFi接続時のみアプリリストの自動更新を行います</string>
+  <string name="automatic_scan_wifi_off">常にアプリリストの自動更新を行います</string>
+  <string name="notify">通知</string>
+  <string name="notify_on">更新があれば通知します</string>
+  <string name="notify_off">更新を通知しません</string>
+  <string name="update_history">更新履歴</string>
+  <string name="update_history_summ">アプリを新しいものと判断する日数: %s</string>
+  <string name="search_results">検索結果</string>
+  <string name="app_details">アプリ詳細</string>
+  <string name="no_such_app">そのようなアプリはありません</string>
+  <string name="about_title">F-Droid について</string>
+  <string name="about_desc">Aptoide をベースにしています.
+GNU GPLv3 ライセンスに基づいてリリースされました.</string>
+  <string name="about_site">Webサイト</string>
+  <string name="about_mail">電子メール</string>
+  <string name="about_version">バージョン</string>
+  <string name="about_website">Webサイト</string>
+  <string name="no_repo">設定済のリポジトリがありません!
+
+		リポジトリはアプリケーションの元になります. 追加するには, メニュー
+		ボタンを押して URL を入力してください.
+
+リポジトリのアドレスは
+		次のような形式です: https://f-droid.org/repo</string>
+  <string name="inst">ｲﾝｽﾄｰﾙ済</string>
+  <string name="not_inst">未ｲﾝｽﾄｰﾙ</string>
+  <string name="added_on">%s に追加しました</string>
+  <string name="ok">OK</string>
+  <string name="yes">はい</string>
+  <string name="no">いいえ</string>
+  <string name="repo_add_title">新しいリポジトリの追加</string>
+  <string name="repo_add_add">追加</string>
+  <string name="cancel">ｷｬﾝｾﾙ</string>
+  <string name="enable">有効</string>
+  <string name="add_key">キーを追加</string>
+  <string name="overwrite">上書き</string>
+  <string name="repo_delete_title">削除するリポジトリを選択してください</string>
+  <string name="repo_update_title">リポジトリを更新</string>
+  <string name="tab_noninstalled">ｲﾝｽﾄｰﾙ可能</string>
+  <string name="tab_updates">更新</string>
+  <string name="one_update_available">1 つの更新があります.</string>
+  <string name="many_updates_available">%d つの更新があります.</string>
+  <string name="fdroid_updates_available">F-Droid の更新があります</string>
+  <string name="process_wait_title">しばらくお待ちください</string>
+  <string name="process_update_msg">アプリケーションリストを更新中…</string>
+  <string name="download_server">アプリケーションを取得中</string>
+  <string name="nfc_is_not_enabled">NFC が有効ではありません!</string>
+  <string name="go_to_nfc_settings">NFC 設定に移動…</string>
+  <string name="bluetooth_activity_not_found">Bluetooth の送信方法がありません, 選択してください!</string>
+  <string name="choose_bt_send">Bluetooth の送信方法を選択してください</string>
+  <string name="repo_add_url">リポジトリ・アドレス</string>
+  <string name="repo_add_fingerprint">フィンガープリント (オプション)</string>
+  <string name="repo_exists">このリポジトリはすでに存在します!</string>
+  <string name="repo_exists_add_fingerprint">このリポジトリはすでに設定されています, 新しいキー情報を追加します.</string>
+  <string name="repo_exists_enable">このリポジトリはすでに設定されています, 再度有効にするか確認してください.</string>
+  <string name="repo_exists_and_enabled">入力中のリポジトリはすでに設定されて有効にされています!</string>
+  <string name="repo_delete_to_overwrite">異なるキーでリポジトリを追加する前に, このリポジトリを削除する必要があります!</string>
+  <string name="malformed_repo_uri">正しくない形式のリポジトリ URI を無視します: %s</string>
+  <string name="repo_alrt">使用中のリポジトリリストが変更されました.
+更新しますか?</string>
+  <string name="menu_update_repo">リポジトリの更新</string>
+  <string name="menu_manage">リポジトリ</string>
+  <string name="menu_send_apk_bt">Bluetooth 送信 FDroid.apk…</string>
+  <string name="menu_preferences">設定</string>
+  <string name="menu_about">F-Droid について</string>
+  <string name="menu_search">検索</string>
+  <string name="menu_add_repo">新しいリポジトリ</string>
+  <string name="menu_rem_repo">リポジトリを削除</string>
+  <string name="menu_scan_repo">ローカル・リポジトリを検索</string>
+  <string name="menu_launch">実行</string>
+  <string name="menu_share">共有</string>
+  <string name="menu_install">ｲﾝｽﾄｰﾙ</string>
+  <string name="menu_uninstall">アンインストール</string>
+  <string name="menu_ignore_all">すべての更新を無視</string>
+  <string name="menu_ignore_this">この更新を無視</string>
+  <string name="menu_website">Webサイト</string>
+  <string name="menu_issues">問題</string>
+  <string name="menu_source">ソースコード</string>
+  <string name="menu_upgrade">アップグレード</string>
+  <string name="menu_donate">寄付</string>
+  <string name="details_installed">ﾊﾞｰｼﾞｮﾝ %s がｲﾝｽﾄｰﾙ済</string>
+  <string name="details_notinstalled">ｲﾝｽﾄｰﾙされていません</string>
+  <string name="corrupt_download">ダウンロードしたファイルが正しくありません</string>
+  <string name="download_cancelled">ダウンロードがキャンセルされました</string>
+  <string name="antiadslist">このアプリケーションは広告を含んでいます</string>
+  <string name="antitracklist">このアプリケーションはあなたの操作を記録し報告します</string>
+  <string name="antinonfreeadlist">このアプリケーションは有償アドオンを推奨します</string>
+  <string name="antinonfreenetlist">このアプリケーションは有償ネットワーク・サービスを推奨します</string>
+  <string name="antinonfreedeplist">このアプリケーションは他の有償アプリケーションに依存します</string>
+  <string name="antiupstreamnonfreelist">提供されるソースコードは全てがフリーではありません</string>
+  <string name="display">表示</string>
+  <string name="expert">上級者向け</string>
+  <string name="expert_on">拡張情報の表示し, 拡張設定を有効にします</string>
+  <string name="expert_off">経験ユーザー向けに拡張を表示しません</string>
+  <string name="search_hint">アプリケーションの検索</string>
+  <string name="appcompatibility">アプリケーションの互換性</string>
+  <string name="show_incompat_versions">非互換バージョン</string>
+  <string name="show_incompat_versions_on">デバイスと非互換のバージョンのアプリを表示します</string>
+  <string name="show_incompat_versions_off">デバイスと非互換のバージョンのアプリを表示しません</string>
+  <string name="rooted">Root</string>
+  <string name="rooted_on">root 権限を要求するアプリケーションをグレーアウトしません</string>
+  <string name="rooted_off">root 権限を要求するアプリケーションをグレーアウトします</string>
+  <string name="ignoreTouch">タッチスクリーンを無視</string>
+  <string name="ignoreTouch_on">タッチスクリーンを要求するアプリを常に含めます</string>
+  <string name="ignoreTouch_off">一般的にアプリをフィルターします</string>
+  <string name="category_all">すべて</string>
+  <string name="category_whatsnew">新着</string>
+  <string name="category_recentlyupdated">最近の更新</string>
+  <string name="local_repos_title">ローカル FDroid リポジトリ</string>
+  <string name="local_repos_scanning">ローカル FDroid リポジトリの検索中…</string>
+  <string name="status_download">ダウンロード中
+%2$s / %3$s (%4$d%%) ダウンロード元
+%1$s</string>
+  <string name="status_processing_xml">アプリケーションの処理中
+%2$d / %3$d
+%1$s</string>
+  <string name="status_connecting_to_repo">接続中
+%1$s</string>
+  <string name="status_checking_compatibility">あなたのデバイスとアプリケーションの互換性を確認しています…</string>
+  <string name="status_inserting">アプリケーションの詳細を保存しています (%1$d%%)</string>
+  <string name="no_permissions">使用される権限はありません.</string>
+  <string name="permissions_for_long">バージョン %s の権限</string>
+  <string name="showPermissions">権限を表示</string>
+  <string name="showPermissions_on">アプリケーションが要求する権限リストを表示します</string>
+  <string name="showPermissions_off">ダウンロードの前に権限を表示しません</string>
+  <string name="no_handler_app">取り扱うアプリケーションはありません %s</string>
+  <string name="compactlayout">コンパクト・レイアウト</string>
+  <string name="compactlayout_on">アイコンを小さいサイズで表示します</string>
+  <string name="compactlayout_off">アイコンを通常のサイズで表示します</string>
+  <string name="theme">テーマ</string>
+  <string name="unsigned">未署名</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">アプリケーション数</string>
+  <string name="repo_fingerprint">リポジトリ署名キーのフィンガープリント (SHA-256)</string>
+  <string name="repo_description">説明</string>
+  <string name="repo_last_update">最終更新</string>
+  <string name="repo_update">更新</string>
+  <string name="repo_name">名前</string>
+  <string name="unsigned_description">つまりアプリケーションのリストは
+検証されていないことを意味します. 未署名の索引からアプリケーションをダウンロードすることは
+注意が必要です.</string>
+  <string name="repo_not_yet_updated">このリポジトリはまだ使用されていません.
+アプリケーションを表示するためには, リポジトリを更新する必要があります.
+
+更新すると, 説明やその他の詳細がここで有効になります.</string>
+  <string name="repo_delete_details">リポジトリ \"{0}\" を削除してよろしいですか,
+この中には {1} のアプリケーションがあります? インストール済のアプリケーションは
+削除されませんが, もう F-Droid を通じて更新することができなくなります.</string>
+  <string name="unknown">不明</string>
+  <string name="repo_confirm_delete_title">リポジトリを削除しますか?</string>
+  <string name="repo_confirm_delete_body">リポジトリを削除するとアプリケーションは F-Droid からインストールできなくなります.
+
+注: これまでにインストールした全てのアプリケーションはデバイスに残ります.</string>
+  <string name="repo_disabled_notification">\"%1$s\" を無効にしました.
+
+このリポジトリからアプリケーションをインストールするには再度有効にする必要があります.</string>
+  <string name="minsdk_or_later">%s 以降</string>
+  <string name="up_to_maxsdk">最大 %s</string>
+  <string name="minsdk_up_to_maxsdk">%1$s から %2$s</string>
+  <string name="not_on_same_wifi">あなたのデバイスは追加したローカル・リポジトリと同じ WiFi 上にありません! このネットワークに参加してみてください: %s</string>
+  <string name="requires_features">必須: %1$s</string>
+</resources>

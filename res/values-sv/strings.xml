@@ -4,12 +4,12 @@
   <string name="searchres_oneapp">Ett program matchade \'%s\':</string>
   <string name="searchres_noapps">Inga program matchade \'%s\'</string>
   <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. Den gamla versionen måste först avinstalleras. Försök sedan igen. (Observera att data som tillhör programmet kommer att raderas när det avinstalleras.)</string>
-  <string name="installIncompatible">Det verkar som att detta program inte är kompatibelt med enheten. Vill ni försöka installera det ändå?</string>
+  <string name="installIncompatible">Det verkar som att detta program inte är kompatibelt med enheten. Vill du försöka installera det ändå?</string>
   <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller orsaka förlust av dina data. Vill du ändå försöka nedgradera?</string>
   <string name="version">Version</string>
   <string name="edit">Redigera</string>
   <string name="delete">Ta bort</string>
-  <string name="enable_nfc_send">Aktivera NFS-sändning…</string>
+  <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
   <string name="cache_downloaded">Cacha nerladdade appar</string>
   <string name="cache_downloaded_on">Behåll hämtade apk-filer på SD-kort</string>
   <string name="cache_downloaded_off">Behåll inga apk-filer</string>
@@ -20,7 +20,7 @@
   <string name="update_interval">Automatiskt uppdateringsintervall</string>
   <string name="update_interval_zero">Inga automatiska uppdateringar av applistor</string>
   <string name="automatic_scan_wifi">Endast via WiFi</string>
-  <string name="automatic_scan_wifi_on">Uppdatera applistor automatiskt endast över wifi</string>
+  <string name="automatic_scan_wifi_on">Uppdatera applistor automatiskt endast över WiFi</string>
   <string name="automatic_scan_wifi_off">Uppdatera alltid applistor automatiskt</string>
   <string name="notify">Avisering</string>
   <string name="notify_on">Meddela när uppdateringar finns tillgängliga</string>
@@ -29,7 +29,7 @@
   <string name="update_history_summ">Antal dagar som appar betraktas som nya: %s</string>
   <string name="search_results">Sökresultat</string>
   <string name="app_details">Appdetaljer</string>
-  <string name="no_such_app">Ingen sådan app funnen</string>
+  <string name="no_such_app">Ingen sådan app hittad</string>
   <string name="about_title">Om F-Droid</string>
   <string name="about_desc">Ursprungligen baserat på Aptoide.
 Släppt under licensen GNU GPLv3.</string>
@@ -66,7 +66,7 @@ En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="download_server">Hämtar program från</string>
   <string name="nfc_is_not_enabled">NFC är inte aktiverat!</string>
   <string name="go_to_nfc_settings">Gå till NFC-inställningar…</string>
-  <string name="bluetooth_activity_not_found">Ingen sändningsmetod för Bluetooth funnen, välj en!</string>
+  <string name="bluetooth_activity_not_found">Ingen sändningsmetod för Bluetooth hittad, välj en!</string>
   <string name="choose_bt_send">Välj sändningsmetod för Bluetooth</string>
   <string name="repo_add_url">Förrådsadress</string>
   <string name="repo_add_fingerprint">fingeravtryck (valfritt)</string>
@@ -124,7 +124,7 @@ Vill du uppdatera dem?</string>
   <string name="ignoreTouch_off">Filtrera appar normalt</string>
   <string name="category_all">Alla</string>
   <string name="category_whatsnew">Nyheter</string>
-  <string name="category_recentlyupdated">Nyligt uppdaterade</string>
+  <string name="category_recentlyupdated">Nyss uppdaterade</string>
   <string name="local_repos_title">Lokala FDroid-förråd</string>
   <string name="local_repos_scanning">Upptäcker lokala FDroid-förråd…</string>
   <string name="status_download">Hämtar

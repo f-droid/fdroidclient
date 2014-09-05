@@ -3,6 +3,7 @@
   <string name="searchres_napps">Βρέθηκαν %1$d εφαρμογές που συσχετίζονται με \'%2$s\':</string>
   <string name="searchres_oneapp">Βρέθηκε μια εφαρμογή που συσχετίζεται με \'%s\':</string>
   <string name="searchres_noapps">Δε βρέθηκαν εφαρμογές που να συσχετίζονται με το \'%s\'</string>
+  <string name="SignatureMismatch">Η καινούργια έκδοση είναι υπογεγραμμένη με διαφορετικό κλειδί από την παλιά. Για να γίνει η εγκατάσταση της καινούργιας έκδοσης, πρέπει να γίνει πρώτα η απεγκατάσταση της παλιάς έκδοσης. Παρακαλώ όπως το κάνετε αυτό και προσπαθήστε ξανά. (Σημειώστε ότι η απεγκατάσταση θα διαγράψει οποιαδήποτε εσωτερικά δεδομένα που αποθηκεύονται από την εφαρμογή)</string>
   <string name="installIncompatible">Φαίνεται ότι αυτό το πακέτο δεν είναι συμβατό με τη συσκευή σας. Θα θέλατε να δοκιμάσετε να το εγκαταστήσετε ούτως ή άλλως;</string>
   <string name="installDowngrade">Προσπαθείτε να υποβαθμίσετε αυτήν την εφαρμογή. Αν το κάνετε αυτό, μπορεί να προκληθούν προβλήματα στην εφαρμογή ή ακόμα και να χάσετε τα δεδομένα σας. Θέλετε να δοκιμάσετε να την υποβαθμίσετε ούτως ή άλλως;</string>
   <string name="version">Έκδοση</string>
@@ -30,6 +31,8 @@
   <string name="app_details">Λεπτομέρειες Εφαρμογής</string>
   <string name="no_such_app">Δεν βρέθηκε τέτοια εφαρμογή</string>
   <string name="about_title">Σχετικά με το F-Droid</string>
+  <string name="about_desc">Αρχικά βασιζόταν στο Aptoide.
+Κυκλοφόρεί υπό την άδεια GNU GPLv3.</string>
   <string name="about_site">Ιστοσελίδα:</string>
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
   <string name="about_version">Έκδοση:</string>
@@ -57,7 +60,9 @@
   <string name="tab_updates">Ενημερώσεις</string>
   <string name="one_update_available">1 διαθέσιμη ενημερώση.</string>
   <string name="many_updates_available">%d διαθέσιμες ενημερώσεις.</string>
+  <string name="fdroid_updates_available">Υπάρχουν ενημερώσεις του F-Droid</string>
   <string name="process_wait_title">Παρακαλώ περιμένετε</string>
+  <string name="process_update_msg">Ενημέρωση λίστας εφαρμογών…</string>
   <string name="download_server">Λήψη εφαρμογών από</string>
   <string name="nfc_is_not_enabled">NFC δεν είναι ενεργοποιημένο!</string>
   <string name="go_to_nfc_settings">Μετάβαση στις ρυθμίσεις NFC…</string>
@@ -75,6 +80,7 @@
 Θέλετε να ενημερωθούν;</string>
   <string name="menu_update_repo">Ενημέρωση αποθετηρίων</string>
   <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
+  <string name="menu_send_apk_bt">Αποστολή του FDroid.apk με Bluetooth</string>
   <string name="menu_preferences">Προτιμήσεις</string>
   <string name="menu_about">Σχετικά</string>
   <string name="menu_search">Αναζήτηση</string>
@@ -99,6 +105,7 @@
   <string name="antiadslist">Αυτή η εφαρμογή περιέχει διαφημίσεις</string>
   <string name="antitracklist">Αυτή η εφαρμογή παρακολουθεί και αναφέρει την δραστηριότητα σας</string>
   <string name="antinonfreeadlist">Αυτή η εφαρμογή προωθεί μη-ελεύθερα πρόσθετα</string>
+  <string name="antinonfreenetlist">Αυτή η εφαρμογή προωθεί μη ελεύθερες υπηρεσίες δικτύου</string>
   <string name="antinonfreedeplist">Αυτή η εφαρμογή εξαρτάται από άλλες μη-ελεύθερες εφαρμογές.</string>
   <string name="antiupstreamnonfreelist">Ο αρχικός πηγαίος κώδικας δεν είναι εξ ολοκλήρου ελεύθερος</string>
   <string name="display">Εμφάνιση</string>
@@ -110,8 +117,10 @@
   <string name="show_incompat_versions">Μη συμβατές εκδόσεις</string>
   <string name="show_incompat_versions_on">Προβολή εκδόσεων εφαρμογών ασύμβατων με τη συσκευή</string>
   <string name="show_incompat_versions_off">Απόκρυψη εκδόσεων εφαρμογών ασύμβατων με τη συσκευή</string>
+  <string name="rooted">Υπερχρήστης (Root)</string>
   <string name="rooted_on">Να μη γκριζάρονται εφαρμογές που απαιτούν δικαιώματα υπερχρήστη</string>
   <string name="rooted_off">Να γκριζάρονται οι εφαρμογές που απαιτούν δικαιώματα υπερχρήστη</string>
+  <string name="ignoreTouch">Αγνόηση της Οθόνης Επαφής</string>
   <string name="ignoreTouch_on">Πάντα να περιλαμβάνονται εφαρμογές που απαιτούν οθόνη αφής</string>
   <string name="ignoreTouch_off">Κανονικό φιλτράρισμα των εφαρμογών</string>
   <string name="category_all">Όλα</string>
@@ -119,6 +128,9 @@
   <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
   <string name="local_repos_title">Τοπικά αποθετήρια FDroid</string>
   <string name="local_repos_scanning">Αναζήτηση για τοπικά αποθετήρια FDroid…</string>
+  <string name="status_download">Λήψη
+%2$s / %3$s (%4$d%%) από
+%1$s</string>
   <string name="status_processing_xml">Επεξεργασία εφαρμογής
 %2$d από %3$d από
 %1$s</string>
@@ -139,6 +151,7 @@
   <string name="unsigned">Μη υπογεγραμμένη</string>
   <string name="repo_url">Διεύθυνση URL</string>
   <string name="repo_num_apps">Αριθμός των εφαρμογών</string>
+  <string name="repo_fingerprint">Υπογεγραμμένο κλειδί αποθετηρίου (SHA-256)</string>
   <string name="repo_description">Περιγραφή</string>
   <string name="repo_last_update">Τελευταία ενημέρωση</string>
   <string name="repo_update">Ενημέρωση</string>
