@@ -1,14 +1,13 @@
-
-* reverted self-signed support since it was broken, only HTTPS certificates
-  with proper CA signatures will work for now
-
-### 0.71 (2014-08-05)
+### 0.72 (2014-09-??)
 
 * Added "local repo" support to host an F-Droid repo on the device itself, with
   full signed repo support, icons, and optional HTTPS
 
 * Ability to set up such a local repo by choosing from any of the installed
   applications on the device
+
+* Reverted self-signed support since it was broken, only HTTPS certificates
+  with proper CA signatures will work for now
 
 * Find local repos on the same network using Bonjour/mDNS
 
