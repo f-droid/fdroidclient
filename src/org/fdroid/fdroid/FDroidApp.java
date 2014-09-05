@@ -40,7 +40,6 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
@@ -48,8 +47,6 @@ import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
-import de.duenndns.ssl.MemorizingTrustManager;
 
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.compat.PRNGFixes;
@@ -59,17 +56,9 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import org.thoughtcrime.ssl.pinning.PinningTrustManager;
-import org.thoughtcrime.ssl.pinning.SystemKeyStore;
 
 import java.io.File;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Set;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
 
 public class FDroidApp extends Application {
 
@@ -192,37 +181,7 @@ public class FDroidApp extends Application {
             .build();
         ImageLoader.getInstance().init(config);
 
-        try {
-            SSLContext sc = SSLContext.getInstance("TLS");
-
-            // MemorizingTrustManager -> PinningTrustManager -> Prompt User
-            /*
-             * The current HTTPS trust model is to first check if a site's key
-             * is TOFUed, then check if it is pinned and valid with the CA, then
-             * prompt the user. There is currently no way to only check the CA
-             * for validity. Ultimately, that should probably not be needed if
-             * the repo URLs can include the HTTPS pin info in the same way that
-             * the repo fingerprint is specified. Then it can be added to the
-             * TOFU/POP keystore when the user accepts the Add Repo dialog
-             */
-            PinningTrustManager pinMgr = new PinningTrustManager(
-                    SystemKeyStore.getInstance(getApplicationContext()),
-                    FDroidCertPins.getPinList(),
-                    0);
-            MemorizingTrustManager memMgr = new MemorizingTrustManager(getApplicationContext(), pinMgr);
-
-            /*
-             * initialize a SSLContext with the outermost trust manager, use
-             * this context to set the default SSL socket factory for the
-             * HTTPSURLConnection class.
-             */
-            sc.init(null, new TrustManager[] {memMgr}, new java.security.SecureRandom());
-            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-        } catch (KeyManagementException e) {
-            Log.e("FDroid", "Unable to set up trust manager chain. KeyManagementException");
-        } catch (NoSuchAlgorithmException e) {
-            Log.e("FDroid", "Unable to set up trust manager chain. NoSuchAlgorithmException");
-        }
+        // TODO reintroduce PinningTrustManager and MemorizingTrustManager
 
         // initialized the local repo information
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
