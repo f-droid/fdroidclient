@@ -1,3 +1,7 @@
+
+* reverted self-signed support since it was broken, only HTTPS certificates
+  with proper CA signatures will work for now
+
 ### 0.71 (2014-08-05)
 
 * Added "local repo" support to host an F-Droid repo on the device itself, with
