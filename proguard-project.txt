@@ -2,3 +2,12 @@
 -dontwarn javax.naming.**
 -dontnote android.support.**
 -dontnote **ILicensingService
+
+# This increases the size of the .apk by ~800kb, which is clearly
+# undesirable. However, the nature of the Java security suite 
+# implementations are that they use a lot of reflection to instantiate
+# classes. The end result is that proguard excludes classes which 
+# may be required, depending on the security algorithms required
+# by certain certificates.
+#   Reference: https://gitlab.com/fdroid/fdroidclient/issues/88
+-keep class org.spongycastle.**
