@@ -217,6 +217,7 @@
 	<string name="status_connecting_to_repo">Connecting to\n%1$s</string>
 	<string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
     <string name="status_inserting">Saving application details (%1$d%%)</string>
+	<string name="repos_unchanged">No repository has any package updates</string>
 	<string name="no_permissions">No permissions are used.</string>
 	<string name="permissions_for_long">Permissions for version %s</string>
 	<string name="showPermissions">Show permissions</string>
