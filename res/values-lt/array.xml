@@ -7,8 +7,4 @@
     <item>Kas 12 valandų</item>
     <item>Kasdien</item>
   </string-array>
-  <string-array name="themeNames">
-    <item>Tamsi</item>
-    <item>Šviesi</item>
-  </string-array>
 </resources>

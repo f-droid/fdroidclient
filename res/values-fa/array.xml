@@ -7,8 +7,4 @@
     <item>هر ۱۲ ساعت</item>
     <item>روزانه</item>
   </string-array>
-  <string-array name="themeNames">
-    <item>تاریک</item>
-    <item>روشن</item>
-  </string-array>
 </resources>

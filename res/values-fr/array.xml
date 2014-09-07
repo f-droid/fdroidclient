@@ -7,8 +7,4 @@
     <item>Toutes les 12 heures</item>
     <item>Chaque jour</item>
   </string-array>
-  <string-array name="themeNames">
-    <item>Sombre</item>
-    <item>Clair</item>
-  </string-array>
 </resources>

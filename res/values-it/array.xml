@@ -7,8 +7,4 @@
     <item>Ogni 12 ore</item>
     <item>Ogni giorno</item>
   </string-array>
-  <string-array name="themeNames">
-    <item>Scuro</item>
-    <item>Chiaro</item>
-  </string-array>
 </resources>

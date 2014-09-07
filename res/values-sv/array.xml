@@ -7,8 +7,4 @@
     <item>Var tolfte timme</item>
     <item>Dagligen</item>
   </string-array>
-  <string-array name="themeNames">
-    <item>Mörk</item>
-    <item>Ljus</item>
-  </string-array>
 </resources>

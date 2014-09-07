@@ -7,8 +7,4 @@
     <item>Сваких 12 сати</item>
     <item>Једном Дневно</item>
   </string-array>
-  <string-array name="themeNames">
-    <item>Dark</item>
-    <item>Light</item>
-  </string-array>
 </resources>

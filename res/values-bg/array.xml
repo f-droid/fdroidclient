@@ -7,8 +7,4 @@
     <item>През 12 часа</item>
     <item>Всеки ден</item>
   </string-array>
-  <string-array name="themeNames">
-    <item>Dark</item>
-    <item>Light</item>
-  </string-array>
 </resources>
