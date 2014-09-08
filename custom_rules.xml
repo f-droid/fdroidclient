@@ -9,4 +9,11 @@
              doctitle="${ant.project.name}" />
   </target>
 
+  <target name="-debug-obfuscation-check">
+    <property name="proguard.enabled" value="true"/>
+
+    <!--To avoid "Multiple dex files define..."-->
+    <path id="out.dex.jar.input.ref" />
+  </target>
+
 </project>

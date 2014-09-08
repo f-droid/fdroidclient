@@ -100,6 +100,12 @@ android {
 		release {
 			runProguard true
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+			zipAlign true
+		}
+		debug {
+			runProguard true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+			zipAlign true
 		}
 	}
 
