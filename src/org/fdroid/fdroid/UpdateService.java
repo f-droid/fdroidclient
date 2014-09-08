@@ -169,6 +169,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_COMPLETE_AND_SAME) {
                 forwardEvent(EVENT_COMPLETE_AND_SAME);
+                Toast.makeText(context, context.getString(R.string.repos_unchanged), Toast.LENGTH_LONG).show();
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_INFO) {
                 forwardEvent(EVENT_INFO);
