@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="720"
-    android:versionName="0.72" >
+    android:versionCode="730"
+    android:versionName="0.73" >
 
     <uses-sdk
         android:minSdkVersion="7"
