@@ -57,7 +57,9 @@
         android:description="@string/app_description"
         android:allowBackup="true"
         android:theme="@style/AppThemeDark"
-        android:supportsRtl="true" >
+        android:supportsRtl="true"
+        tools:replace="theme, icon, label"
+        >
 
         <provider
             android:authorities="org.fdroid.fdroid.data.AppProvider"
