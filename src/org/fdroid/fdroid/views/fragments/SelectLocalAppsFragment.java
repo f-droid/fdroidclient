@@ -116,7 +116,7 @@ public class SelectLocalAppsFragment extends ListFragment
             for (String filename : LocalRepoManager.get(selectLocalAppsActivity).repoDir.list()) {
                 if (filename.matches(".*\\.apk")) {
                     String packageName = filename.substring(0, filename.indexOf("_"));
-                    FDroidApp.selectedApps.add(packageName);
+                    selectedApps.add(packageName);
                 }
             }
             FDroidApp.selectedApps = selectedApps;
