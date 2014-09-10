@@ -327,6 +327,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             List<Repo> unchangedRepos = new ArrayList<Repo>();
             List<Repo> updatedRepos = new ArrayList<Repo>();
             List<Repo> disabledRepos = new ArrayList<Repo>();
+            List<RepoUpdater.RepoUpdateRememberer> repoUpdateRememberers = new ArrayList<RepoUpdater.RepoUpdateRememberer>();
             boolean changes = false;
             for (Repo repo : repos) {
 
@@ -350,6 +351,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                         apksToUpdate.addAll(updater.getApks());
                         updatedRepos.add(repo);
                         changes = true;
+                        repoUpdateRememberers.add(updater.getRememberer());
                     } else {
                         unchangedRepos.add(repo);
                     }
@@ -388,6 +390,11 @@ public class UpdateService extends IntentService implements ProgressListener {
                 AppProvider.Helper.calcDetailsFromIndex(this);
 
                 notifyContentProviders();
+
+                //we only remember the update if everything has gone well
+                for (RepoUpdater.RepoUpdateRememberer rememberer : repoUpdateRememberers) {
+                    rememberer.rememberUpdate();
+                }
 
                 if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {
                     performUpdateNotification(appsToUpdate.values());
