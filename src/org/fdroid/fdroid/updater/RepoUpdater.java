@@ -49,6 +49,7 @@ abstract public class RepoUpdater {
     protected final Repo repo;
     private List<App> apps = new ArrayList<App>();
     private List<Apk> apks = new ArrayList<Apk>();
+    private RepoUpdateRememberer rememberer = null;
     protected boolean usePubkeyInJar = false;
     protected boolean hasChanged = false;
     protected ProgressListener progressListener;
@@ -170,7 +171,11 @@ abstract public class RepoUpdater {
                 reader.parse(is);
                 apps = handler.getApps();
                 apks = handler.getApks();
-                updateRepo(handler, downloader.getCacheTag());
+
+                rememberer = new RepoUpdateRememberer();
+                rememberer.context = context;
+                rememberer.repo = repo;
+                rememberer.values = prepareRepoDetailsForSaving(handler, downloader.getCacheTag());
             }
         } catch (SAXException e) {
             throw new UpdateException(
@@ -196,7 +201,7 @@ abstract public class RepoUpdater {
         }
     }
 
-    private void updateRepo(RepoXMLHandler handler, String etag) {
+    private ContentValues prepareRepoDetailsForSaving (RepoXMLHandler handler, String etag) {
 
         ContentValues values = new ContentValues();
 
@@ -244,7 +249,23 @@ abstract public class RepoUpdater {
             values.put(RepoProvider.DataColumns.NAME, handler.getName());
         }
 
-        RepoProvider.Helper.update(context, repo, values);
+        return values;
+    }
+
+    public RepoUpdateRememberer getRememberer() {
+        return rememberer;
+    }
+
+    public static class RepoUpdateRememberer {
+
+        private Context context;
+        private Repo repo;
+        private ContentValues values;
+
+        public void rememberUpdate() {
+             RepoProvider.Helper.update(context, repo, values);
+        }
+
     }
 
     public static class UpdateException extends Exception {
