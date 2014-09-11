@@ -11,9 +11,19 @@
 # by certain certificates.
 #   Reference: https://gitlab.com/fdroid/fdroidclient/issues/88
 -keep class org.spongycastle.**
+-keep interface org.spongycastle.**
 
 # This keeps class members used for SystemInstaller IPC.
 #   Reference: https://gitlab.com/fdroid/fdroidclient/issues/79
 -keepclassmembers class * implements android.os.IInterface {
     public *;
 }
+
+# There is a bug where the android.support.widget.SearchView gets
+# removed by proguard which causes breakage. This prevents that
+# from occuring by a bit of a brute force approach. While it would
+# be possible to keep only the class in question, this may leave
+# us open to other bugs in the future. Better to be safe than sorry.
+# http://stackoverflow.com/questions/22136032/action-bar-search-view-android-null-error
+-keep class android.support.** { *; }
+-keep interface android.support.** { *; }
