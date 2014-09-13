@@ -64,13 +64,16 @@ import java.util.Map;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
-    public static final String RESULT_MESSAGE = "msg";
-    public static final String RESULT_EVENT   = "event";
+    public static final String RESULT_MESSAGE     = "msg";
+    public static final String RESULT_EVENT       = "event";
+    public static final String RESULT_REPO_ERRORS = "repoErrors";
 
     public static final int STATUS_COMPLETE_WITH_CHANGES = 0;
     public static final int STATUS_COMPLETE_AND_SAME     = 1;
-    public static final int STATUS_ERROR                 = 2;
-    public static final int STATUS_INFO                  = 3;
+    public static final int STATUS_ERROR_GLOBAL          = 2;
+    public static final int STATUS_ERROR_LOCAL           = 3;
+    public static final int STATUS_ERROR_LOCAL_SMALL     = 4;
+    public static final int STATUS_INFO                  = 5;
 
     // I don't like that I've had to dupliacte the statuses above with strings here, however
     // one method of communication/notification is using ResultReceiver (int status codes)
@@ -160,9 +163,21 @@ public class UpdateService extends IntentService implements ProgressListener {
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             String message = resultData.getString(UpdateService.RESULT_MESSAGE);
             boolean finished = false;
-            if (resultCode == UpdateService.STATUS_ERROR) {
+            if (resultCode == UpdateService.STATUS_ERROR_GLOBAL) {
                 forwardEvent(EVENT_ERROR);
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, context.getString(R.string.global_error_updating_repos) + " " + message, Toast.LENGTH_LONG).show();
+                finished = true;
+            } else if (resultCode == UpdateService.STATUS_ERROR_LOCAL || resultCode == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
+                StringBuilder msgB = new StringBuilder();
+                ArrayList<CharSequence> repoErrors = resultData.getCharSequenceArrayList(UpdateService.RESULT_REPO_ERRORS);
+                for (CharSequence error : repoErrors) {
+                    if (msgB.length() > 0) msgB.append('\n');
+                    msgB.append(error);
+		}
+                if (resultCode == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
+                    msgB.append("\n").append(context.getString(R.string.all_other_repos_fine));
+                }
+                Toast.makeText(context, msgB.toString(), Toast.LENGTH_LONG).show();
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
                 forwardEvent(EVENT_COMPLETE_WITH_CHANGES);
@@ -251,6 +266,14 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
+    protected void sendRepoErrorStatus(int statusCode, ArrayList<CharSequence> repoErrors) {
+        if (receiver != null) {
+            Bundle resultData = new Bundle();
+            resultData.putCharSequenceArrayList(RESULT_REPO_ERRORS, repoErrors);
+            receiver.send(statusCode, resultData);
+        }
+    }
+
     /**
      * We might be doing a scheduled run, or we might have been launched by the
      * app in response to a user's request. If we have a receiver, it's the
@@ -306,7 +329,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         String address = intent.getStringExtra(EXTRA_ADDRESS);
 
         long startTime = System.currentTimeMillis();
-        String errmsg = "";
         try {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
@@ -327,6 +349,8 @@ public class UpdateService extends IntentService implements ProgressListener {
             List<Repo> unchangedRepos = new ArrayList<Repo>();
             List<Repo> updatedRepos = new ArrayList<Repo>();
             List<Repo> disabledRepos = new ArrayList<Repo>();
+            ArrayList<CharSequence> errorRepos = new ArrayList<CharSequence>();
+            ArrayList<CharSequence> repoErrors = new ArrayList<CharSequence>();
             List<RepoUpdater.RepoUpdateRememberer> repoUpdateRememberers = new ArrayList<RepoUpdater.RepoUpdateRememberer>();
             boolean changes = false;
             for (Repo repo : repos) {
@@ -356,7 +380,8 @@ public class UpdateService extends IntentService implements ProgressListener {
                         unchangedRepos.add(repo);
                     }
                 } catch (RepoUpdater.UpdateException e) {
-                    errmsg += (errmsg.length() == 0 ? "" : "\n") + e.getMessage();
+                    errorRepos.add(repo.address);
+                    repoErrors.add(e.getMessage());
                     Log.e("FDroid", "Error updating repository " + repo.address + ": " + e.getMessage());
                     Log.e("FDroid", Log.getStackTraceString(e));
                 }
@@ -404,19 +429,25 @@ public class UpdateService extends IntentService implements ProgressListener {
             Editor e = prefs.edit();
             e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
             e.commit();
-            if (changes) {
-                sendStatus(STATUS_COMPLETE_WITH_CHANGES);
-            } else {
-                sendStatus(STATUS_COMPLETE_AND_SAME);
-            }
 
+            if (errorRepos.isEmpty()) {
+                if (changes) {
+                    sendStatus(STATUS_COMPLETE_WITH_CHANGES);
+                } else {
+                    sendStatus(STATUS_COMPLETE_AND_SAME);
+                }
+            } else {
+                if (updatedRepos.size() + unchangedRepos.size() == 0) {
+                    sendRepoErrorStatus(STATUS_ERROR_LOCAL, repoErrors);
+                } else {
+                    sendRepoErrorStatus(STATUS_ERROR_LOCAL_SMALL, repoErrors);
+                }
+            }
         } catch (Exception e) {
             Log.e("FDroid",
                     "Exception during update processing:\n"
                             + Log.getStackTraceString(e));
-            if (errmsg.length() == 0)
-                errmsg = "Unknown error";
-            sendStatus(STATUS_ERROR, errmsg);
+            sendStatus(STATUS_ERROR_GLOBAL, e.getMessage());
         } finally {
             Log.d("FDroid", "Update took "
                     + ((System.currentTimeMillis() - startTime) / 1000)
