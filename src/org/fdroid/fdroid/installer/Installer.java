@@ -129,9 +129,9 @@ abstract public class Installer {
                 } catch (AndroidNotCompatibleException e) {
                     Log.e(TAG, "Android not compatible with SystemInstaller!", e);
                 }
+            } else {
+                Log.e(TAG, "SystemInstaller is enabled in prefs, but system-perms are not granted!");
             }
-        } else {
-            Log.e(TAG, "SystemInstaller is enabled in prefs, but system-perms are not granted!");
         }
 
         // Fallback -> DefaultInstaller
