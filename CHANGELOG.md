@@ -21,6 +21,8 @@
 * Initial support for root and system installers, allowing the client to
   install apks directly on its own
 
+* Increased performance when updating from repository with many apps
+
 * Switch to Appcompat from the Support library
 
 * Fix some crashes
