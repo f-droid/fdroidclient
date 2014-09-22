@@ -5,10 +5,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import org.fdroid.fdroid.FDroidApp;
@@ -30,7 +29,6 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private static final String STATE_NFC = "nfc";
     private static final String STATE_WIFI_QR = "wifiQr";
 
-    private String nextMenuItemLabel;
     private Timer shutdownLocalRepoTimer;
     private UpdateAsyncTask updateSwappableAppsTask = null;
     private boolean hasPreparedLocalRepo = false;
@@ -52,58 +50,19 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     public void nextStep() {
         String current = currentState();
         if (current.equals(STATE_START_SWAP)) {
-            onSelectApps();
+            showSelectApps();
         } else if (current.equals(STATE_SELECT_APPS)) {
             prepareLocalRepo();
         } else if (current.equals(STATE_JOIN_WIFI)) {
-            startLocalRepo();
-            onAttemptNfc();
+            ensureLocalRepoRunning();
+            if (!attemptToShowNfc()) {
+                showWifiQr();
+            }
         } else if (current.equals(STATE_NFC)) {
-            onWifiQr();
+            showWifiQr();
         } else if (current.equals(STATE_WIFI_QR)) {
         }
         supportInvalidateOptionsMenu();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.swap_next, menu);
-        MenuItem nextMenuItem = menu.findItem(R.id.action_next);
-        nextMenuItem.setVisible(false);
-        MenuItemCompat.setShowAsAction(nextMenuItem, MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
-        return true;
-    }
-
-    private void hideNextButton() {
-        nextMenuItemLabel = null;
-        supportInvalidateOptionsMenu();
-    }
-
-    private void showNextButton() {
-        nextMenuItemLabel = getString(R.string.next);
-        supportInvalidateOptionsMenu();
-    }
-
-    private void showSkipButton() {
-        nextMenuItemLabel = getString(R.string.skip);
-        supportInvalidateOptionsMenu();
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem nextMenuItem = menu.findItem(R.id.action_next);
-        if (nextMenuItemLabel == null) {
-            nextMenuItem.setTitle("");
-            nextMenuItem.setTitleCondensed("");
-            nextMenuItem.setVisible(false);
-            return true;
-        } else {
-            nextMenuItem.setVisible(true);
-            nextMenuItem.setTitle(nextMenuItemLabel);
-            nextMenuItem.setTitleCondensed(nextMenuItemLabel);
-            return true;
-        }
     }
 
     @Override
@@ -121,46 +80,32 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         if (savedInstanceState == null) {
 
+            showFragment(new StartSwapFragment(), STATE_START_SWAP);
+
             if (FDroidApp.isLocalRepoServiceRunning()) {
-                onWifiQr();
-            } else {
-
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(android.R.id.content, new StartSwapFragment(), STATE_START_SWAP)
-                        .addToBackStack(STATE_START_SWAP)
-                        .commit();
-                hideNextButton();
-
+                showSelectApps();
+                showJoinWifi();
+                attemptToShowNfc();
+                showWifiQr();
             }
 
         }
 
     }
 
-    private void onSelectApps() {
+    private void showSelectApps() {
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(android.R.id.content, new SelectAppsFragment(), STATE_SELECT_APPS)
-                .addToBackStack(STATE_SELECT_APPS)
-                .commit();
-        showNextButton();
+        showFragment(new SelectAppsFragment(), STATE_SELECT_APPS);
 
     }
 
-    private void onJoinWifi() {
+    private void showJoinWifi() {
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(android.R.id.content, new JoinWifiFragment(), STATE_JOIN_WIFI)
-                .addToBackStack(STATE_JOIN_WIFI)
-                .commit();
-        showNextButton();
+        showFragment(new JoinWifiFragment(), STATE_JOIN_WIFI);
 
     }
 
-    public void onAttemptNfc() {
+    private boolean attemptToShowNfc() {
         // TODO: What if NFC is disabled? Hook up with NfcNotEnabledActivity? Or maybe only if they
         // click a relevant button?
 
@@ -170,28 +115,27 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(this, FDroidApp.repo));
 
         if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(android.R.id.content, new NfcSwapFragment(), STATE_NFC)
-                    .addToBackStack(STATE_NFC)
-                    .commit();
-            showSkipButton();
+            showFragment(new NfcSwapFragment(), STATE_NFC);
+            return true;
         } else {
-            onWifiQr();
+            return false;
         }
     }
 
-    public void onBluetooth() {
+    private void showBluetooth() {
 
     }
 
-    public void onWifiQr() {
+    private void showWifiQr() {
+        showFragment(new WifiQrFragment(), STATE_WIFI_QR);
+    }
+
+    private void showFragment(Fragment fragment, String name) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(android.R.id.content, new WifiQrFragment(), STATE_WIFI_QR)
-                .addToBackStack(STATE_WIFI_QR)
+                .replace(android.R.id.content, fragment, name)
+                .addToBackStack(name)
                 .commit();
-        hideNextButton();
     }
 
     private void prepareLocalRepo() {
@@ -201,7 +145,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
             updateSwappableAppsTask = new UpdateAsyncTask(this, fragment.getSelectedApps());
             updateSwappableAppsTask.execute();
         } else {
-            onJoinWifi();
+            showJoinWifi();
         }
     }
 
@@ -213,11 +157,11 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         updateSwappableAppsTask = null;
         hasPreparedLocalRepo = true;
-        onJoinWifi();
+        showJoinWifi();
 
     }
 
-    private void startLocalRepo() {
+    private void ensureLocalRepoRunning() {
         if (!FDroidApp.isLocalRepoServiceRunning()) {
             FDroidApp.startLocalRepoService(this);
             initLocalRepoTimer(900000); // 15 mins
