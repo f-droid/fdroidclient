@@ -8,7 +8,7 @@ for Android.
 Building from source
 --------------------
 
-The only required tools are the Android SDK and Apache Ant.
+The only required tools are the [Android SDK](http://developer.android.com/sdk/index.html) and Apache Ant.
 
 Once you have checked out the version you wish to build, run:
 
@@ -87,7 +87,9 @@ the target version specified by one of the dependencies. For example, at the
 time of writing this, UniversalImageLoader uses the "android-16" target API,
 however the default install of the Android SDK will usually only install the
 latest version ("android-19" as of writing). So you will have to install
-the "android-16" target via the SDK manager.
+the "android-16" target via the SDK manager:
+
+$ android update sdk -u -t "android-16"
 
 NOTE: While it may be tempting to add "--target=android-19" to the
 ant-prepare.sh script, it is not the correct solution. Although it may work,
