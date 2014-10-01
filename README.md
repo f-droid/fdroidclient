@@ -86,10 +86,26 @@ The most likely cause of this is that your installed Android SDK is missing
 the target version specified by one of the dependencies. For example, at the
 time of writing this, UniversalImageLoader uses the "android-16" target API,
 however the default install of the Android SDK will usually only install the
-latest version ("android-19" as of writing). So you will have to install
-the "android-16" target via the SDK manager:
+latest version ("android-20" as of writing). So you will have to install
+missings "android-xx" targets via the SDK manager. To get a list of already
+installed SDK targets, run:
 
-$ android update sdk -u -t "android-16"
+```
+$ android list targets
+```
+
+To get a list of targets used by fdroidclient libs, run:
+
+```
+$ for i in $(grep "android update lib-project" ant-prepare.sh | cut -f5 -d' '); do
+grep ^target $i/project.properties | cut -f2 -d'=';
+done | sort | uniq | paste -s -d',' -
+```
+to install missing or all needed targets, for example "android-16" and "android-7" run:
+
+```
+$ android update sdk -u -t "android-16,android-7"
+```
 
 NOTE: While it may be tempting to add "--target=android-19" to the
 ant-prepare.sh script, it is not the correct solution. Although it may work,
