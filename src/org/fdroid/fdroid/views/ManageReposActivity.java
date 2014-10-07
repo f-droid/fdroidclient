@@ -463,7 +463,10 @@ public class ManageReposActivity extends ActionBarActivity {
         if (!TextUtils.isEmpty(newRepo.getBssid())) {
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            String bssid = wifiInfo.getBSSID().toLowerCase(Locale.ENGLISH);
+            String bssid = wifiInfo.getBSSID();
+            if (TextUtils.isEmpty(bssid)) /* not all devices have wifi */
+                return;
+            bssid = bssid.toLowerCase(Locale.ENGLISH);
             String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
             if (!bssid.equals(newRepoBssid)) {
                 String msg = String.format(getString(R.string.not_on_same_wifi), newRepo.getSsid());

@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;
@@ -29,7 +30,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepoXMLHandler extends DefaultHandler {
 
@@ -279,7 +281,8 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (localName.equals("application") && curapp == null) {
             curapp = new App();
             curapp.id = attributes.getValue("", "id");
-            if (progressCounter % (totalAppCount / 25) == 0) {
+            /* show progress for the first 25, then start skipping every 25 */
+            if (totalAppCount < 25 || progressCounter % (totalAppCount / 25) == 0) {
                 Bundle data = new Bundle(1);
                 data.putString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS, repo.address);
                 progressListener.onProgress(
