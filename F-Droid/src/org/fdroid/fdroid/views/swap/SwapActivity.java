@@ -1,7 +1,9 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 import java.util.Set;
 import java.util.Timer;
@@ -31,6 +35,11 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private static final String STATE_JOIN_WIFI = "joinWifi";
     private static final String STATE_NFC = "nfc";
     private static final String STATE_WIFI_QR = "wifiQr";
+    private static final String STATE_BLUETOOTH_DEVICE_LIST = "bluetoothDeviceList";
+
+    private static final int REQUEST_ENABLE_BLUETOOTH = 1;
+
+    private static final String TAG = "org.fdroid.fdroid.views.swap.SwapActivity";
 
     private Timer shutdownLocalRepoTimer;
     private UpdateAsyncTask updateSwappableAppsTask = null;
@@ -141,12 +150,12 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         return false;
     }
 
-    private void showBluetooth() {
-
-    }
-
     private void showWifiQr() {
         showFragment(new WifiQrFragment(), STATE_WIFI_QR);
+    }
+
+    private void showBluetoothDeviceList() {
+        showFragment(new BluetoothDeviceListFragment(), STATE_BLUETOOTH_DEVICE_LIST);
     }
 
     private void showFragment(Fragment fragment, String name) {
@@ -213,6 +222,55 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
             FDroidApp.stopLocalRepoService(SwapActivity.this);
         }
         finish();
+    }
+
+    /**
+     * The process for setting up bluetooth is as follows:
+     *  * Assume we have bluetooth available (otherwise the button which allowed us to start
+     *    the bluetooth process should not have been available). TODO: Remove button if bluetooth unavailable.
+     *  * Ask user to enable (if not enabled yet).
+     *  * Start bluetooth server socket.
+     *  * Enable bluetooth discoverability, so that people can connect to our server socket.
+     *
+     * Note that this is a little different than the usual process for bluetooth _clients_, which
+     * involves pairing and connecting with other devices.
+     */
+    @Override
+    public void connectWithBluetooth() {
+
+        Log.d(TAG, "Initiating Bluetooth swap instead of wifi.");
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if (adapter.isEnabled()) {
+            Log.d(TAG, "Bluetooth enabled, will pair with device.");
+            startBluetoothServer();
+        } else {
+            Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BLUETOOTH);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_ENABLE_BLUETOOTH) {
+
+            if (resultCode == RESULT_OK) {
+                Log.d(TAG, "User enabled Bluetooth, will pair with device.");
+                startBluetoothServer();
+            } else {
+                // Didn't enable bluetooth
+                Log.d(TAG, "User chose not to enable Bluetooth, so doing nothing (i.e. sticking with wifi).");
+            }
+
+        }
+    }
+
+    private void startBluetoothServer() {
+        Log.d(TAG, "Starting bluetooth server.");
+        new BluetoothServer().start();
+        showBluetoothDeviceList();
     }
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {

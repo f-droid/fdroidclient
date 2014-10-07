@@ -1,49 +1,45 @@
-package org.fdroid.fdroid.net.bluetooth;
+package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.util.Log;
-import org.fdroid.fdroid.net.Downloader;
+import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
+import org.fdroid.fdroid.net.bluetooth.FileDetails;
 import org.fdroid.fdroid.net.bluetooth.httpish.Request;
 import org.fdroid.fdroid.net.bluetooth.httpish.Response;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 
 public class BluetoothDownloader extends Downloader {
 
-    private static final String TAG = "org.fdroid.fdroid.net.bluetooth.BluetoothDownloader";
+    private static final String TAG = "org.fdroid.fdroid.net.BluetoothDownloader";
 
     private BluetoothClient client;
     private FileDetails fileDetails;
 
-    public BluetoothDownloader(BluetoothClient client, String destFile, Context ctx) throws FileNotFoundException, MalformedURLException {
+    BluetoothDownloader(BluetoothClient client, String destFile, Context ctx) throws FileNotFoundException, MalformedURLException {
         super(destFile, ctx);
-        this.client = client;
     }
 
-    public BluetoothDownloader(BluetoothClient client, Context ctx) throws IOException {
+    BluetoothDownloader(BluetoothClient client, Context ctx) throws IOException {
         super(ctx);
-        this.client = client;
     }
 
-    public BluetoothDownloader(BluetoothClient client, File destFile) throws FileNotFoundException, MalformedURLException {
+    BluetoothDownloader(BluetoothClient client, File destFile) throws FileNotFoundException, MalformedURLException {
         super(destFile);
-        this.client = client;
     }
 
-    public BluetoothDownloader(BluetoothClient client, File destFile, Context ctx) throws IOException {
-        super(destFile, ctx);
-        this.client = client;
-    }
-
-    public BluetoothDownloader(BluetoothClient client, OutputStream output) throws MalformedURLException {
+    BluetoothDownloader(BluetoothClient client, OutputStream output) throws MalformedURLException {
         super(output);
-        this.client = client;
     }
 
     @Override
-    public InputStream inputStream() throws IOException {
-        Response response = new Request(Request.Methods.GET, client).send();
+    public InputStream getInputStream() throws IOException {
+        Response response = Request.createGET(sourceUrl.getPath(), client.openConnection()).send();
         fileDetails = response.toFileDetails();
         return response.toContentStream();
     }
@@ -58,7 +54,7 @@ public class BluetoothDownloader extends Downloader {
         if (fileDetails == null) {
             Log.d(TAG, "Going to Bluetooth \"server\" to get file details.");
             try {
-                fileDetails = new Request(Request.Methods.HEAD, client).send().toFileDetails();
+                fileDetails = Request.createHEAD(sourceUrl.getPath(), client.openConnection()).send().toFileDetails();
             } catch (IOException e) {
                 Log.e(TAG, "Error getting file details from Bluetooth \"server\": " + e.getMessage());
             }

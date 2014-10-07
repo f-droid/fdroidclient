@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -56,6 +57,15 @@ public class JoinWifiFragment extends Fragment {
                 openAvailableNetworks();
             }
         });
+
+        Button bluetooth = (Button)joinWifiView.findViewById(R.id.btn_bluetooth);
+        bluetooth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((SwapProcessManager)getActivity()).connectWithBluetooth();
+            }
+        });
+
         return joinWifiView;
     }
 

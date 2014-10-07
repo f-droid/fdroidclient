@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+            android:layout_width="394dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/device_ip_address"
+            tools:text="Your device name:\nPete's Nexus 4"
+            style="@style/SwapTheme.BluetoothDeviceList.Heading"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Select from devices below"
+            style="@style/SwapTheme.Wizard.Text"/>
+
+    <ContentLoadingProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loading_indicator"/>
+
+</LinearLayout>

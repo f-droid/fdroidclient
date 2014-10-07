@@ -1,0 +1,21 @@
+One is server, the other is the client (always the case with Bluetooth).
+
+When does the pairing happen? I can think of a few times:
+
+Use case 1 - 
+ * Swapper decides to use bluetooth to send apps to others.
+ * Selects "Use bluetooth instead" on the "join wifi" screen.
+ * Starts a bluetooth server 
+   + Make itself discoverable
+   + Opens a bluetooth server socket
+   + Waits for incoming client connections.
+
+ * Swapee opens swap workflow
+ * Selects the bluetooth option
+ * Is asked to pair with nearby bluetooth devices, using the F-Droid UUID to make sure it doesn't connect to, e.g. bluetooth headphones.
+ * Stays connected in the background
+ * Adds the repo as per usual (with a url such as bluetooth://device-mac-address)
+ * When repo updates, it uses the open connection to get data
+ * If the connection has closed, attempts to reconnect
+ * Same when downloading files
+

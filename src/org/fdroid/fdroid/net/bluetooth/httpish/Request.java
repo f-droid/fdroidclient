@@ -1,37 +1,53 @@
 package org.fdroid.fdroid.net.bluetooth.httpish;
 
-import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
+import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Request {
+
 
     public static interface Methods {
         public static final String HEAD = "HEAD";
         public static final String GET  = "GET";
     }
 
-    private final BluetoothClient client;
-    private final String method;
+    private String method;
+    private String path;
+    private Map<String, String> headers;
 
-    private BluetoothClient.Connection connection;
+    private BluetoothConnection connection;
     private BufferedWriter output;
     private BufferedReader input;
 
-    public Request(String method, BluetoothClient client) {
+    private Request(String method, String path, BluetoothConnection connection) {
         this.method = method;
-        this.client = client;
+        this.path = path;
+        this.connection = connection;
+    }
+
+    public static Request createHEAD(String path, BluetoothConnection connection)
+    {
+        return new Request(Methods.HEAD, path, connection);
+    }
+
+    public static Request createGET(String path, BluetoothConnection connection) {
+        return new Request(Methods.GET, path, connection);
     }
 
     public Response send() throws IOException {
 
-        connection = client.openConnection();
         output = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
         input  = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
         output.write(method);
+        output.write(' ');
+        output.write(path);
+
+        output.write("\n\n");
 
         int responseCode = readResponseCode();
         Map<String, String> headers = readHeaders();
@@ -42,6 +58,40 @@ public class Request {
             return new Response(responseCode, headers, connection.getInputStream());
         }
 
+    }
+
+    /**
+     * Helper function used by listenForRequest().
+     * The reason it is here is because the listenForRequest() is a static function, which would
+     * need to instantiate it's own InputReaders from the bluetooth connection. However, we already
+     * have that happening in a Request, so it is in some ways simpler to delegate to a member
+     * method like this.
+     */
+    private boolean listen() throws IOException {
+
+        String requestLine = input.readLine();
+
+        if (requestLine == null || requestLine.trim().length() == 0)
+            return false;
+
+        String[] parts = requestLine.split("\\s+");
+
+        // First part is the method (GET/HEAD), second is the path (/fdroid/repo/index.jar)
+        if (parts.length < 2)
+            return false;
+
+        method  = parts[0].toUpperCase(Locale.ENGLISH);
+        path    = parts[1];
+        headers = readHeaders();
+        return true;
+    }
+
+    /**
+     * This is a blocking method, which will wait until a full Request is received.
+     */
+    public static Request listenForRequest(BluetoothConnection connection) throws IOException {
+        Request request = new Request("", "", connection);
+        return request.listen() ? request : null;
     }
 
     /**
