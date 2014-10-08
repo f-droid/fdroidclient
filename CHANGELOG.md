@@ -1,4 +1,4 @@
-### 0.75 (2014-10-03)
+### 0.76 (2014-10-08)
 
 * Added "local repo" support to host an F-Droid repo on the device itself, with
   full signed repo support, icons, and optional HTTPS
