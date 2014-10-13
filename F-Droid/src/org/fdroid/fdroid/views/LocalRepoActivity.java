@@ -70,7 +70,7 @@ public class LocalRepoActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         resetNetworkInfo();
-        setRepoSwitchChecked(FDroidApp.isLocalRepoServiceRunning());
+        setRepoSwitchChecked(FDroidApp.localRepoWifi.isRunning());
 
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));
@@ -83,7 +83,7 @@ public class LocalRepoActivity extends ActionBarActivity {
             }).execute();
 
         // start repo by default
-        FDroidApp.startLocalRepoService(LocalRepoActivity.this);
+        FDroidApp.localRepoWifi.start(LocalRepoActivity.this);
         // reset the timer if viewing this Activity again
         if (stopTimer != null)
             stopTimer.cancel();
@@ -93,7 +93,7 @@ public class LocalRepoActivity extends ActionBarActivity {
 
             @Override
             public void run() {
-                FDroidApp.stopLocalRepoService(LocalRepoActivity.this);
+                FDroidApp.localRepoWifi.stop(LocalRepoActivity.this);
             }
         }, 900000); // 15 minutes
     }
@@ -210,9 +210,9 @@ public class LocalRepoActivity extends ActionBarActivity {
             public void onClick(View v) {
                 setRepoSwitchChecked(repoSwitch.isChecked());
                 if (repoSwitch.isChecked()) {
-                    FDroidApp.startLocalRepoService(LocalRepoActivity.this);
+                    FDroidApp.localRepoWifi.start(LocalRepoActivity.this);
                 } else {
-                    FDroidApp.stopLocalRepoService(LocalRepoActivity.this);
+                    FDroidApp.localRepoWifi.stop(LocalRepoActivity.this);
                     stopTimer.cancel(); // disable automatic stop
                 }
             }

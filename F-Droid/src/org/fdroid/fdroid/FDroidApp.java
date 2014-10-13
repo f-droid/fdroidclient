@@ -52,7 +52,9 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.localrepo.LocalRepoProxyService;
 import org.fdroid.fdroid.localrepo.LocalRepoService;
+import org.fdroid.fdroid.localrepo.LocalRepoWifiService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
@@ -73,8 +75,6 @@ public class FDroidApp extends Application {
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
-    private static Messenger localRepoServiceMessenger = null;
-    private static boolean localRepoServiceIsBound = false;
 
     private static final String TAG = "FDroidApp";
 
@@ -90,6 +90,9 @@ public class FDroidApp extends Application {
     }
 
     private static Theme curTheme = Theme.dark;
+
+    public static final LocalRepoServiceManager localRepoWifi = new LocalRepoServiceManager(LocalRepoWifiService.class);
+    public static final LocalRepoServiceManager localRepoProxy = new LocalRepoServiceManager(LocalRepoProxyService.class);
 
     public void reloadTheme() {
         curTheme = Theme.valueOf(PreferenceManager
@@ -302,52 +305,72 @@ public class FDroidApp extends Application {
         }
     }
 
-    private static final ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            localRepoServiceMessenger = new Messenger(service);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName className) {
-            localRepoServiceMessenger = null;
-        }
-    };
-
-    public static void startLocalRepoService(Context context) {
-        if (!localRepoServiceIsBound) {
-            Context app = context.getApplicationContext();
-            Intent service = new Intent(app, LocalRepoService.class);
-            localRepoServiceIsBound = app.bindService(service, serviceConnection, Context.BIND_AUTO_CREATE);
-            if (localRepoServiceIsBound)
-                app.startService(service);
-        }
-    }
-
-    public static void stopLocalRepoService(Context context) {
-        Context app = context.getApplicationContext();
-        if (localRepoServiceIsBound) {
-            app.unbindService(serviceConnection);
-            localRepoServiceIsBound = false;
-        }
-        app.stopService(new Intent(app, LocalRepoService.class));
-    }
-
     /**
-     * Handles checking if the {@link LocalRepoService} is running, and only restarts it if it was running.
+     * Helper class to encapsulate functionality relating to local repo service starting/stopping/restarting.
+     * It used to live as static methods in FDroidApp, but once there were two types of local repos which
+     * could get started (wifi and local proxy for bluetooth) then it got a bit messy. This allows us to
+     * support managing both of these services through two static variables
+     * {@link org.fdroid.fdroid.FDroidApp#localRepoProxy} and {@link org.fdroid.fdroid.FDroidApp#localRepoWifi}.
      */
-    public static void restartLocalRepoServiceIfRunning() {
-        if (localRepoServiceMessenger != null) {
-            try {
-                Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
-                localRepoServiceMessenger.send(msg);
-            } catch (RemoteException e) {
-                e.printStackTrace();
+    public static class LocalRepoServiceManager {
+
+        private Messenger localRepoServiceMessenger = null;
+        private boolean localRepoServiceIsBound = false;
+
+        private final Class<?extends LocalRepoService> serviceType;
+
+        public LocalRepoServiceManager(Class<?extends LocalRepoService> serviceType) {
+            this.serviceType = serviceType;
+        }
+
+        private ServiceConnection serviceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName className, IBinder service) {
+                localRepoServiceMessenger = new Messenger(service);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName className) {
+                localRepoServiceMessenger = null;
+            }
+        };
+
+        public void start(Context context) {
+            if (!localRepoServiceIsBound) {
+                Context app = context.getApplicationContext();
+                Intent service = new Intent(app, serviceType);
+                localRepoServiceIsBound = app.bindService(service, serviceConnection, Context.BIND_AUTO_CREATE);
+                if (localRepoServiceIsBound)
+                    app.startService(service);
             }
         }
-    }
 
-    public static boolean isLocalRepoServiceRunning() {
-        return localRepoServiceIsBound;
+        public void stop(Context context) {
+            Context app = context.getApplicationContext();
+            if (localRepoServiceIsBound) {
+                app.unbindService(serviceConnection);
+                localRepoServiceIsBound = false;
+            }
+            app.stopService(new Intent(app, serviceType));
+        }
+
+        /**
+         * Handles checking if the {@link LocalRepoService} is running, and only restarts it if it was running.
+         */
+        public void restartIfRunning() {
+            if (localRepoServiceMessenger != null) {
+                try {
+                    Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
+                    localRepoServiceMessenger.send(msg);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        public boolean isRunning() {
+            return localRepoServiceIsBound;
+        }
+
     }
 }

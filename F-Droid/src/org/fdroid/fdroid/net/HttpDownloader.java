@@ -2,9 +2,9 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.util.Log;
-
 import org.fdroid.fdroid.Preferences;
 
+import javax.net.ssl.SSLHandshakeException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,8 +16,6 @@ import java.net.Proxy;
 import java.net.SocketAddress;
 import java.net.URL;
 
-import javax.net.ssl.SSLHandshakeException;
-
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
 
@@ -26,6 +24,7 @@ public class HttpDownloader extends Downloader {
 
     protected HttpURLConnection connection;
     private int statusCode = -1;
+    private boolean onlyStream = false;
 
     // The context is required for opening the file to write to.
     HttpDownloader(String source, File destFile)
@@ -39,9 +38,20 @@ public class HttpDownloader extends Downloader {
      * you are done*.
      * @see org.fdroid.fdroid.net.Downloader#getFile()
      */
-    HttpDownloader(String source, Context ctx) throws IOException {
+    public HttpDownloader(String source, Context ctx) throws IOException {
         super(ctx);
         sourceUrl = new URL(source);
+    }
+
+    /**
+     * Calling this makes this downloader not download a file. Instead, it will
+     * only stream the file through the {@link HttpDownloader#getInputStream()}
+     * @return
+     */
+    public HttpDownloader streamDontDownload()
+    {
+        onlyStream = true;
+        return this;
     }
 
     @Override

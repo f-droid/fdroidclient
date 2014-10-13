@@ -456,7 +456,8 @@
 
         <service android:name=".UpdateService" />
         <service android:name=".net.WifiStateChangeService" />
-        <service android:name=".localrepo.LocalRepoService" />
+        <service android:name=".localrepo.LocalRepoWifiService" />
+        <service android:name=".localrepo.LocalRepoProxyService" />
     </application>
 
 </manifest>

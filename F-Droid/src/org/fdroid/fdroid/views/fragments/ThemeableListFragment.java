@@ -21,9 +21,18 @@ public abstract class ThemeableListFragment extends ListFragment {
         return 0;
     }
 
-    protected View getHeaderView(LayoutInflater inflater, ViewGroup container) {
+    protected View getHeaderView() {
+        return headerView;
+    }
+
+    private View headerView = null;
+
+    private View getHeaderView(LayoutInflater inflater, ViewGroup container) {
         if (getHeaderLayout() > 0) {
-            return inflater.inflate(getHeaderLayout(), null, false);
+            if (headerView == null) {
+                headerView = inflater.inflate(getHeaderLayout(), null, false);
+            }
+            return headerView;
         } else {
             return null;
         }

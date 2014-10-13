@@ -33,7 +33,7 @@ public class QrWizardWifiNetworkActivity extends ActionBarActivity {
 
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         wifiManager.setWifiEnabled(true);
-        FDroidApp.startLocalRepoService(this);
+        FDroidApp.localRepoWifi.start(this);
 
         setContentView(R.layout.qr_wizard_activity);
         TextView instructions = (TextView) findViewById(R.id.qrWizardInstructions);

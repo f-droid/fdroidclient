@@ -5,11 +5,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -20,8 +16,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.LocalHTTPD;
@@ -30,13 +24,13 @@ import org.fdroid.fdroid.views.swap.SwapActivity;
 
 import java.io.IOException;
 import java.net.BindException;
-import java.util.HashMap;
 import java.util.Random;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
-public class LocalRepoService extends Service {
+public abstract class LocalRepoService extends Service {
+
     private static final String TAG = "LocalRepoService";
 
     public static final String STATE = "org.fdroid.fdroid.action.LOCAL_REPO_STATE";
@@ -50,9 +44,7 @@ public class LocalRepoService extends Service {
     private final int NOTIFICATION = R.string.local_repo_running;
 
     private Handler webServerThreadHandler = null;
-    private LocalHTTPD localHttpd;
-    private JmDNS jmdns;
-    private ServiceInfo pairService;
+    protected LocalHTTPD localHttpd;
 
     public static final int START = 1111111;
     public static final int STOP = 12345678;
@@ -97,42 +89,6 @@ public class LocalRepoService extends Service {
         }
     }
 
-    private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent i) {
-            stopNetworkServices();
-            startNetworkServices();
-        }
-    };
-
-    private ChangeListener localRepoBonjourChangeListener = new ChangeListener() {
-        @Override
-        public void onPreferenceChange() {
-            if (localHttpd.isAlive())
-                if (Preferences.get().isLocalRepoBonjourEnabled())
-                    registerMDNSService();
-                else
-                    unregisterMDNSService();
-        }
-    };
-
-    private final ChangeListener localRepoHttpsChangeListener = new ChangeListener() {
-        @Override
-        public void onPreferenceChange() {
-            Log.i(TAG, "onPreferenceChange");
-            if (localHttpd.isAlive()) {
-                new AsyncTask<Void, Void, Void>() {
-                    @Override
-                    protected Void doInBackground(Void... params) {
-                        stopNetworkServices();
-                        startNetworkServices();
-                        return null;
-                    }
-                }.execute();
-            }
-        }
-    };
-
     private void showNotification() {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // launch LocalRepoActivity if the user selects this notification
@@ -150,12 +106,10 @@ public class LocalRepoService extends Service {
 
     @Override
     public void onCreate() {
+        super.onCreate();
+
         showNotification();
         startNetworkServices();
-        Preferences.get().registerLocalRepoBonjourListeners(localRepoBonjourChangeListener);
-
-        LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
-                new IntentFilter(WifiStateChangeService.BROADCAST));
     }
 
     @Override
@@ -167,6 +121,7 @@ public class LocalRepoService extends Service {
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         new Thread() {
             public void run() {
                 stopNetworkServices();
@@ -174,8 +129,6 @@ public class LocalRepoService extends Service {
         }.start();
 
         notificationManager.cancel(NOTIFICATION);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
-        Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
     }
 
     @Override
@@ -183,26 +136,40 @@ public class LocalRepoService extends Service {
         return messenger.getBinder();
     }
 
-    private void startNetworkServices() {
+    /**
+     * Called immediately _after_ the webserver is started.
+     */
+    protected abstract void onStartNetworkServices();
+
+    /**
+     * Called immediately _before_ the webserver is stopped.
+     */
+    protected abstract void onStopNetworkServices();
+
+    /**
+     * Whether or not this particular version of LocalRepoService requires a HTTPS
+     * connection. In the local proxy instance, it will not require it, but in the
+     * wifi setting, it should use whatever preference the user selected.
+     */
+    protected abstract boolean useHttps();
+
+    protected void startNetworkServices() {
         Log.d(TAG, "Starting local repo network services");
         startWebServer();
-        if (Preferences.get().isLocalRepoBonjourEnabled())
-            registerMDNSService();
-        Preferences.get().registerLocalRepoHttpsListeners(localRepoHttpsChangeListener);
+
+        onStartNetworkServices();
     }
 
-    private void stopNetworkServices() {
-        Log.d(TAG, "Stopping local repo network services");
-        Preferences.get().unregisterLocalRepoHttpsListeners(localRepoHttpsChangeListener);
-
-        Log.d(TAG, "Unregistering MDNS service...");
-        unregisterMDNSService();
+    protected void stopNetworkServices() {
+        onStopNetworkServices();
 
         Log.d(TAG, "Stopping web server...");
         stopWebServer();
     }
 
-    private void startWebServer() {
+    protected abstract String getIpAddressToBindTo();
+
+    protected void startWebServer() {
         Runnable webServer = new Runnable() {
             // Tell Eclipse this is not a leak because of Looper use.
             @SuppressLint("HandlerLeak")
@@ -210,8 +177,10 @@ public class LocalRepoService extends Service {
             public void run() {
                 localHttpd = new LocalHTTPD(
                         LocalRepoService.this,
+                        getIpAddressToBindTo(),
+                        FDroidApp.port,
                         getFilesDir(),
-                        Preferences.get().isLocalRepoHttpsEnabled());
+                        useHttps());
 
                 Looper.prepare(); // must be run before creating a Handler
                 webServerThreadHandler = new Handler() {
@@ -254,59 +223,5 @@ public class LocalRepoService extends Service {
         LocalBroadcastManager.getInstance(LocalRepoService.this).sendBroadcast(intent);
     }
 
-    private void registerMDNSService() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                /*
-                 * a ServiceInfo can only be registered with a single instance
-                 * of JmDNS, and there is only ever a single LocalHTTPD port to
-                 * advertise anyway.
-                 */
-                if (pairService != null || jmdns != null)
-                    clearCurrentMDNSService();
-                String repoName = Preferences.get().getLocalRepoName();
-                HashMap<String, String> values = new HashMap<>();
-                values.put("path", "/fdroid/repo");
-                values.put("name", repoName);
-                values.put("fingerprint", FDroidApp.repo.fingerprint);
-                String type;
-                if (Preferences.get().isLocalRepoHttpsEnabled()) {
-                    values.put("type", "fdroidrepos");
-                    type = "_https._tcp.local.";
-                } else {
-                    values.put("type", "fdroidrepo");
-                    type = "_http._tcp.local.";
-                }
-                try {
-                    pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
-                    jmdns = JmDNS.create();
-                    jmdns.registerService(pairService);
-                } catch (IOException e) {
-                    Log.e(TAG, "Error while registering jmdns service: " + e);
-                    Log.e(TAG, Log.getStackTraceString(e));
-                }
-            }
-        }).start();
-    }
-
-    private void unregisterMDNSService() {
-        if (localRepoBonjourChangeListener != null) {
-            Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
-            localRepoBonjourChangeListener = null;
-        }
-        clearCurrentMDNSService();
-    }
-
-    private void clearCurrentMDNSService() {
-        if (jmdns != null) {
-            if (pairService != null) {
-                jmdns.unregisterService(pairService);
-                pairService = null;
-            }
-            jmdns.unregisterAllServices();
-            Utils.closeQuietly(jmdns);
-            jmdns = null;
-        }
-    }
 }
+

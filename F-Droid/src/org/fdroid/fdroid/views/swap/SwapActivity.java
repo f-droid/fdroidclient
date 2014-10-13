@@ -37,7 +37,8 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private static final String STATE_WIFI_QR = "wifiQr";
     private static final String STATE_BLUETOOTH_DEVICE_LIST = "bluetoothDeviceList";
 
-    private static final int REQUEST_ENABLE_BLUETOOTH = 1;
+    private static final int REQUEST_BLUETOOTH_ENABLE = 1;
+    private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 2;
 
     private static final String TAG = "org.fdroid.fdroid.views.swap.SwapActivity";
 
@@ -109,7 +110,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
                     showFragment(new StartSwapFragment(), STATE_START_SWAP);
 
-                    if (FDroidApp.isLocalRepoServiceRunning()) {
+                    if (FDroidApp.localRepoWifi.isRunning()) {
                         showSelectApps();
                         showJoinWifi();
                         attemptToShowNfc();
@@ -190,8 +191,8 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     }
 
     private void ensureLocalRepoRunning() {
-        if (!FDroidApp.isLocalRepoServiceRunning()) {
-            FDroidApp.startLocalRepoService(this);
+        if (!FDroidApp.localRepoWifi.isRunning()) {
+            FDroidApp.localRepoWifi.start(this);
             initLocalRepoTimer(900000); // 15 mins
         }
     }
@@ -207,7 +208,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         shutdownLocalRepoTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                FDroidApp.stopLocalRepoService(SwapActivity.this);
+                FDroidApp.localRepoWifi.stop(SwapActivity.this);
             }
         }, timeoutMilliseconds);
 
@@ -215,11 +216,11 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
     @Override
     public void stopSwapping() {
-        if (FDroidApp.isLocalRepoServiceRunning()) {
+        if (FDroidApp.localRepoWifi.isRunning()) {
             if (shutdownLocalRepoTimer != null) {
                 shutdownLocalRepoTimer.cancel();
             }
-            FDroidApp.stopLocalRepoService(SwapActivity.this);
+            FDroidApp.localRepoWifi.stop(SwapActivity.this);
         }
         finish();
     }
@@ -242,11 +243,11 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if (adapter.isEnabled()) {
             Log.d(TAG, "Bluetooth enabled, will pair with device.");
-            startBluetoothServer();
+            ensureBluetoothDiscoverable();
         } else {
             Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BLUETOOTH);
+            startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE);
         }
     }
 
@@ -254,22 +255,51 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_ENABLE_BLUETOOTH) {
+        if (requestCode == REQUEST_BLUETOOTH_ENABLE) {
 
             if (resultCode == RESULT_OK) {
-                Log.d(TAG, "User enabled Bluetooth, will pair with device.");
-                startBluetoothServer();
+                Log.d(TAG, "User enabled Bluetooth, will make sure we are discoverable.");
+                ensureBluetoothDiscoverable();
             } else {
                 // Didn't enable bluetooth
                 Log.d(TAG, "User chose not to enable Bluetooth, so doing nothing (i.e. sticking with wifi).");
             }
 
+        } else if (requestCode == REQUEST_BLUETOOTH_DISCOVERABLE) {
+
+            if (resultCode != RESULT_CANCELED) {
+                Log.d(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
+                startBluetoothServer();
+            } else {
+                Log.d(TAG, "User chose not to make Bluetooth discoverable, so doing nothing (i.e. sticking with wifi).");
+            }
+
+        }
+    }
+
+    private void ensureBluetoothDiscoverable() {
+        Log.d(TAG, "Ensuring Bluetooth is in discoverable mode.");
+        if (BluetoothAdapter.getDefaultAdapter().getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+
+            // TODO: Listen for BluetoothAdapter.ACTION_SCAN_MODE_CHANGED and respond if discovery
+            // is cancelled prematurely.
+
+            Log.d(TAG, "Not currently in discoverable mode, so prompting user to enable.");
+            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+            startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
+        } else {
+            Log.d(TAG, "Bluetooth is already discoverable, so lets start the Bluetooth server.");
+            startBluetoothServer();
         }
     }
 
     private void startBluetoothServer() {
         Log.d(TAG, "Starting bluetooth server.");
-        new BluetoothServer().start();
+        if (!FDroidApp.localRepoProxy.isRunning()) {
+            FDroidApp.localRepoProxy.start(this);
+        }
+        new BluetoothServer(this).start();
         showBluetoothDeviceList();
     }
 

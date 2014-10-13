@@ -1,14 +1,21 @@
 package org.fdroid.fdroid.net.bluetooth.httpish;
 
+import android.util.Log;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 public class Request {
 
+
+    private static final String TAG = "org.fdroid.fdroid.net.bluetooth.httpish.Request";
 
     public static interface Methods {
         public static final String HEAD = "HEAD";
@@ -27,6 +34,9 @@ public class Request {
         this.method = method;
         this.path = path;
         this.connection = connection;
+
+        output = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
+        input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
     }
 
     public static Request createHEAD(String path, BluetoothConnection connection)
@@ -40,8 +50,7 @@ public class Request {
 
     public Response send() throws IOException {
 
-        output = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
-        input  = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        Log.d(TAG, "Sending request to server (" + path + ")");
 
         output.write(method);
         output.write(' ');
@@ -49,12 +58,23 @@ public class Request {
 
         output.write("\n\n");
 
+        output.flush();
+
+        Log.d(TAG, "Finished sending request, now attempting to read response status code...");
+
         int responseCode = readResponseCode();
+
+        Log.d(TAG, "Read response code " + responseCode + " from server, now reading headers...");
+
         Map<String, String> headers = readHeaders();
 
+        Log.d(TAG, "Read " + headers.size() + " headers");
+
         if (method.equals(Methods.HEAD)) {
+            Log.d(TAG, "Request was a " + Methods.HEAD + " request, not including anything other than headers and status...");
             return new Response(responseCode, headers);
         } else {
+            Log.d(TAG, "Request was a " + Methods.GET + " request, so including content stream in response...");
             return new Response(responseCode, headers, connection.getInputStream());
         }
 
@@ -109,9 +129,9 @@ public class Request {
 
         // TODO: Error handling
         int firstSpace = line.indexOf(' ');
-        int secondSpace = line.indexOf(' ', firstSpace);
+        int secondSpace = line.indexOf(' ', firstSpace + 1);
 
-        String status = line.substring(firstSpace, secondSpace);
+        String status = line.substring(firstSpace + 1, secondSpace);
         return Integer.parseInt(status);
     }
 
@@ -135,6 +155,12 @@ public class Request {
         return headers;
     }
 
+    public String getPath() {
+        return path;
+    }
 
+    public String getMethod() {
+        return method;
+    }
 
 }
