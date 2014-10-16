@@ -148,7 +148,7 @@ public class RootInstaller extends Installer {
     }
 
     private void addInstallCommand(List<File> apkFiles) {
-        ArrayList<String> commands = new ArrayList<String>();
+        List<String> commands = new ArrayList<String>();
         String pm = "pm install -r ";
         for (File apkFile : apkFiles) {
             commands.add(pm + apkFile.getAbsolutePath());

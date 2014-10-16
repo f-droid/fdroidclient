@@ -18,6 +18,7 @@
 
 package org.fdroid.fdroid;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,11 +45,11 @@ public class FDroidCertPins {
             "cdae8cc70af09a55a7642d13f84241cba1c3a3e6",
     };
 
-    public static ArrayList<String> PINLIST = null;
+    public static List<String> PINLIST = null;
 
     public static String[] getPinList() {
         if (PINLIST == null) {
-            ArrayList<String> pinlist = new ArrayList<String>();
+            List<String> pinlist = new ArrayList<String>();
             pinlist.addAll(Arrays.asList(DEFAULT_PINS));
             PINLIST = pinlist;
         }
