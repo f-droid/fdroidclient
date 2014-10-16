@@ -275,7 +275,7 @@ public class RepoDetailsFragment extends Fragment {
         update.setIcon(R.drawable.ic_menu_refresh);
         MenuItemCompat.setShowAsAction(update,
             MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
-            MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT );
+            MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
         MenuItem delete = menu.add(Menu.NONE, DELETE, 0, R.string.delete);
         delete.setIcon(android.R.drawable.ic_menu_delete);

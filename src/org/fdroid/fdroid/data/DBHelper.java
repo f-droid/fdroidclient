@@ -122,7 +122,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         ContentValues values = new ContentValues(1);
                         String name = Repo.addressToName(address);
                         values.put("name", name);
-                        String[] args = { Long.toString( id ) };
+                        String[] args = { Long.toString(id) };
                         Log.i("FDroid", "Setting repo name to '" + name + "' for repo " + address);
                         db.update(TABLE_REPO, values, "_id = ?", args);
                         cursor.moveToNext();
@@ -442,7 +442,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static boolean columnExists(SQLiteDatabase db,
             String table, String column) {
-        return (db.rawQuery( "select * from " + table + " limit 0,1", null )
+        return (db.rawQuery("select * from " + table + " limit 0,1", null)
                 .getColumnIndex(column) != -1);
     }
 

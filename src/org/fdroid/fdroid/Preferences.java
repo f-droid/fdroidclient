@@ -215,27 +215,27 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         uninitialize(key);
 
         if (key.equals(PREF_COMPACT_LAYOUT)) {
-            for ( ChangeListener listener : compactLayoutListeners )  {
+            for (ChangeListener listener : compactLayoutListeners)  {
                 listener.onPreferenceChange();
             }
         } else if (key.equals(PREF_ROOTED)) {
-            for ( ChangeListener listener : filterAppsRequiringRootListeners ) {
+            for (ChangeListener listener : filterAppsRequiringRootListeners) {
                 listener.onPreferenceChange();
             }
         } else if (key.equals(PREF_UPD_HISTORY)) {
-            for ( ChangeListener listener : updateHistoryListeners ) {
+            for (ChangeListener listener : updateHistoryListeners) {
                 listener.onPreferenceChange();
             }
         } else if (key.equals(PREF_LOCAL_REPO_BONJOUR)) {
-            for ( ChangeListener listener : localRepoBonjourListeners ) {
+            for (ChangeListener listener : localRepoBonjourListeners) {
                 listener.onPreferenceChange();
             }
         } else if (key.equals(PREF_LOCAL_REPO_NAME)) {
-            for ( ChangeListener listener : localRepoNameListeners ) {
+            for (ChangeListener listener : localRepoNameListeners) {
                 listener.onPreferenceChange();
             }
         } else if (key.equals(PREF_LOCAL_REPO_HTTPS)) {
-            for ( ChangeListener listener : localRepoHttpsListeners ) {
+            for (ChangeListener listener : localRepoHttpsListeners) {
                 listener.onPreferenceChange();
             }
         }

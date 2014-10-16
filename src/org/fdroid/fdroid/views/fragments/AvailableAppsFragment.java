@@ -75,7 +75,7 @@ public class AvailableAppsFragment extends AppListFragment implements
             // Wanted to just do this update here, but android tells
             // me that "Only the original thread that created a view
             // hierarchy can touch its views."
-            getActivity().runOnUiThread( new Runnable() {
+            getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     adapter.clear();

@@ -18,7 +18,7 @@ public abstract class ContextCompat extends Compatibility {
 
     protected final Context context;
 
-    public ContextCompat(Context context ) {
+    public ContextCompat(Context context) {
         this.context = context;
     }
 

@@ -27,7 +27,7 @@ public class QuerySelection {
 
     public QuerySelection(String selection, List<String> args) {
         this.args = new String[ args.size() ];
-        args.toArray( this.args );
+        args.toArray(this.args);
         this.selection = selection;
     }
 
@@ -57,7 +57,7 @@ public class QuerySelection {
             s = " (" + this.selection + ") AND (" + query.getSelection() + ") ";
         } else if (this.hasSelection()) {
             s = this.selection;
-        } else if (query.hasSelection() ) {
+        } else if (query.hasSelection()) {
             s = query.selection;
         }
 

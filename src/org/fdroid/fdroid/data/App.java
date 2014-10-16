@@ -110,7 +110,7 @@ public class App extends ValueObject implements Comparable<App> {
 
         checkCursorPosition(cursor);
 
-        for(int i = 0; i < cursor.getColumnCount(); i ++ ) {
+        for (int i = 0; i < cursor.getColumnCount(); i++) {
             String column = cursor.getColumnName(i);
             if (column.equals(AppProvider.DataColumns.IS_COMPATIBLE)) {
                 compatible = cursor.getInt(i) == 1;

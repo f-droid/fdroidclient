@@ -33,7 +33,7 @@ abstract class PackageReceiver extends BroadcastReceiver {
     abstract protected void handle(Context context, String appId);
 
     protected PackageInfo getPackageInfo(Context context, String appId) {
-        for( PackageInfo info : context.getPackageManager().getInstalledPackages(0)) {
+        for (PackageInfo info : context.getPackageManager().getInstalledPackages(0)) {
             if (info.packageName.equals(appId)) {
                 return info;
             }

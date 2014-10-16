@@ -119,7 +119,7 @@ public class InstalledAppCacheUpdater {
         }
 
         if (cachedInfo.size() > 0) {
-            for (Map.Entry<String, Integer> entry : cachedInfo.entrySet() ) {
+            for (Map.Entry<String, Integer> entry : cachedInfo.entrySet()) {
                 toDelete.add(entry.getKey());
             }
         }

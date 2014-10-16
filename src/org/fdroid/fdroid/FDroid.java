@@ -278,7 +278,7 @@ public class FDroid extends ActionBarActivity {
         viewPager = (ViewPager)findViewById(R.id.main_pager);
         AppListFragmentPagerAdapter viewPagerAdapter = new AppListFragmentPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
-        viewPager.setOnPageChangeListener( new ViewPager.SimpleOnPageChangeListener() {
+        viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 getTabManager().selectTab(position);

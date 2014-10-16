@@ -37,7 +37,7 @@ public class Repo extends ValueObject {
 
         checkCursorPosition(cursor);
 
-        for(int i = 0; i < cursor.getColumnCount(); i ++ ) {
+        for (int i = 0; i < cursor.getColumnCount(); i++) {
             String column = cursor.getColumnName(i);
             if (column.equals(RepoProvider.DataColumns._ID)) {
                 id = cursor.getInt(i);

@@ -165,7 +165,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         public ApkListAdapter(Context context, App app) {
             super(context, 0);
             List<Apk> apks = ApkProvider.Helper.findByApp(context, app.id);
-            for (Apk apk : apks ) {
+            for (Apk apk : apks) {
                 if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
                     add(apk);
                 }
@@ -1169,7 +1169,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             TextView permissionHeader = (TextView) view.findViewById(R.id.permissions);
             boolean curApkCompatible = curApk != null && curApk.compatible;
             if (prefs.showPermissions() && !getApks().isEmpty() &&
-                    ( curApkCompatible || prefs.showIncompatibleVersions() ) ) {
+                    (curApkCompatible || prefs.showIncompatibleVersions())) {
 
                 CommaSeparatedList permsList = getApks().getItem(0).permissions;
                 if (permsList == null) {

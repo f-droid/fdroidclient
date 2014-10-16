@@ -41,7 +41,7 @@ public class SearchResultsFragment extends ListFragment implements LoaderManager
                 query = data.getQueryParameter("q");
                 if (query != null && query.startsWith("pname:"))
                     query = query.substring(6);
-            } else if (data!= null ) {
+            } else if (data!= null) {
                 query = data.getEncodedSchemeSpecificPart();
             }
         }
