@@ -85,9 +85,9 @@ public class InstalledAppProvider extends FDroidProvider {
 
     public static Uri getSearchUri(String keywords) {
         return getContentUri().buildUpon()
-			.appendPath(PATH_SEARCH)
-			.appendPath(keywords)
-			.build();
+            .appendPath(PATH_SEARCH)
+            .appendPath(keywords)
+            .build();
     }
 
     public static String getApplicationLabel(Context context, String packageName) {
@@ -133,9 +133,9 @@ public class InstalledAppProvider extends FDroidProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
-		if (sortOrder == null) {
-			sortOrder = DataColumns.APPLICATION_LABEL;
-		}
+        if (sortOrder == null) {
+            sortOrder = DataColumns.APPLICATION_LABEL;
+        }
 
         QuerySelection selection = new QuerySelection(customSelection, selectionArgs);
         switch (matcher.match(uri)) {

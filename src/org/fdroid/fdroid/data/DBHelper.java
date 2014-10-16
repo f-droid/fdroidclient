@@ -275,7 +275,7 @@ public class DBHelper extends SQLiteOpenHelper {
         addAppLabelToInstalledCache(db, oldVersion);
     }
 
-	/**
+    /**
      * Migrate repo list to new structure. (No way to change primary
      * key in sqlite - table must be recreated).
      */
@@ -432,11 +432,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private void addAppLabelToInstalledCache(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 45) {
             Log.i(TAG, "Adding applicationLabel to installed app table. " +
-					"Turns out we will need to repopulate the cache after doing this, " +
-					"so just dropping and recreating the table (instead of altering and adding a column). " +
-					"This will force the entire cache to be rebuilt, including app names.");
+                    "Turns out we will need to repopulate the cache after doing this, " +
+                    "so just dropping and recreating the table (instead of altering and adding a column). " +
+                    "This will force the entire cache to be rebuilt, including app names.");
             db.execSQL("DROP TABLE fdroid_installedApp;");
-			createInstalledApp(db);
+            createInstalledApp(db);
         }
     }
 

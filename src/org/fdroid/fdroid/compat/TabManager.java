@@ -18,8 +18,8 @@ public class TabManager {
     public static final int INDEX_INSTALLED  = 1;
     public static final int INDEX_CAN_UPDATE = 2;
 
-	private ViewPager pager;
-	private FDroid parent;
+    private ViewPager pager;
+    private FDroid parent;
     private final ActionBar actionBar;
     private Spinner actionBarSpinner = null;
 
@@ -29,8 +29,8 @@ public class TabManager {
 
     public TabManager(FDroid parent, ViewPager pager) {
         actionBar = parent.getSupportActionBar();
-		this.parent = parent;
-		this.pager = pager;
+        this.parent = parent;
+        this.pager = pager;
     }
 
     protected CharSequence getLabel(int index) {
