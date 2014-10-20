@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.util.Log;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.HttpDownloader;
 import org.fdroid.fdroid.net.bluetooth.httpish.Request;
@@ -120,20 +121,21 @@ public class BluetoothServer extends Thread {
             Log.d(TAG, "Received Bluetooth request from client, will process it now.");
 
             try {
-                HttpDownloader downloader = new HttpDownloader("http://127.0.0.1/" + request.getPath(), context);
+                HttpDownloader downloader = new HttpDownloader("http://127.0.0.1:" + ( FDroidApp.port + 1 ) + "/" + request.getPath(), context);
 
-                Response.ResponseBuilder builder;
+                Response.Builder builder;
 
                 if (request.getMethod().equals(Request.Methods.HEAD)) {
-                    builder = new Response.ResponseBuilder();
+                    builder = new Response.Builder();
                 } else {
-                    builder = new Response.ResponseBuilder(downloader.getInputStream());
+                    builder = new Response.Builder(downloader.getInputStream());
                 }
 
                 // TODO: At this stage, will need to download the file to get this info.
                 // However, should be able to make totalDownloadSize and getCacheTag work without downloading.
                 return builder
-                        .setStatusCode(200)
+                        .setStatusCode(downloader.getStatusCode())
+                        .setFileSize(downloader.totalDownloadSize())
                         .build();
 
             } catch (IOException e) {

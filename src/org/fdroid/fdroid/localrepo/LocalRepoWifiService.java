@@ -71,6 +71,11 @@ public class LocalRepoWifiService extends LocalRepoService {
         return FDroidApp.ipAddressString;
     }
 
+    @Override
+    protected int getPortToBindTo() {
+        return FDroidApp.port;
+    }
+
     private Preferences.ChangeListener localRepoBonjourChangeListener = new Preferences.ChangeListener() {
         @Override
         public void onPreferenceChange() {

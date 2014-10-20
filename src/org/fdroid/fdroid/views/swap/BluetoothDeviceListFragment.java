@@ -133,12 +133,14 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
             Log.d(TAG, "Testing bluetooth connection (opening connection first).");
             BluetoothConnection connection = client.openConnection();
             Log.d(TAG, "Creating HEAD request for resource at \"/\"...");
-            Request head = Request.createHEAD("/", connection);
+            Request head = Request.createGET("/", connection);
             Log.d(TAG, "Sending request...");
             Response response = head.send();
             Log.d(TAG, "Response from bluetooth: " + response.getStatusCode());
+            String contents = response.readContents();
+            Log.d(TAG, contents);
         } catch (IOException e) {
-
+            Log.e(TAG, "Error: " + e.getMessage());
         }
 
         /*if (device.getBondState() == BluetoothDevice.BOND_NONE) {

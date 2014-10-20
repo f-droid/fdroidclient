@@ -144,4 +144,8 @@ public class HttpDownloader extends Downloader {
         return this.statusCode != 304;
     }
 
+    public int getStatusCode() {
+        return statusCode;
+    }
+
 }

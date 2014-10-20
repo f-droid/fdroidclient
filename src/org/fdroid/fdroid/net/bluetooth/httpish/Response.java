@@ -6,6 +6,7 @@ import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 import org.fdroid.fdroid.net.bluetooth.FileDetails;
 import org.fdroid.fdroid.net.bluetooth.httpish.headers.Header;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
@@ -39,6 +40,17 @@ public class Response {
 
     public int getStatusCode() {
         return statusCode;
+    }
+
+    public int getFileSize() {
+        if (headers != null) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                if (entry.getKey().toLowerCase().equals("content-length")) {
+                    return Integer.parseInt( entry.getValue()); // TODO: error handling.
+                }
+            }
+        }
+        return -1;
     }
 
     /**
@@ -85,30 +97,47 @@ public class Response {
 
     }
 
-    public static class ResponseBuilder {
+    public String readContents() throws IOException {
+        int size = getFileSize();
+        if (contentStream == null || getFileSize() <= 0) {
+            return null;
+        }
+
+        int pos = 0;
+        byte[] buffer = new byte[4096];
+        ByteArrayOutputStream contents = new ByteArrayOutputStream(size);
+        while (pos < size) {
+            int read = contentStream.read(buffer);
+            pos += read;
+            contents.write(buffer, 0, read);
+        }
+        return contents.toString();
+    }
+
+    public static class Builder {
 
         private InputStream contentStream;
         private int statusCode = 200;
         private int fileSize = -1;
         private String etag = null;
 
-        public ResponseBuilder() {}
+        public Builder() {}
 
-        public ResponseBuilder(InputStream contentStream) {
+        public Builder(InputStream contentStream) {
             this.contentStream = contentStream;
         }
 
-        public ResponseBuilder setStatusCode(int statusCode) {
+        public Builder setStatusCode(int statusCode) {
             this.statusCode = statusCode;
             return this;
         }
 
-        public ResponseBuilder setFileSize(int fileSize) {
+        public Builder setFileSize(int fileSize) {
             this.fileSize = fileSize;
             return this;
         }
 
-        public ResponseBuilder setETag(String etag) {
+        public Builder setETag(String etag) {
             this.etag = etag;
             return this;
         }

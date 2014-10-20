@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.localrepo;
 
+import org.fdroid.fdroid.FDroidApp;
+
 /**
  * Starts the local repo service but bound to 127.0.0.1.
  * Also, it does not care about whether wifi is connected or not,
@@ -25,5 +27,10 @@ public class LocalRepoProxyService extends LocalRepoService {
     @Override
     protected String getIpAddressToBindTo() {
         return "127.0.0.1";
+    }
+
+    @Override
+    protected int getPortToBindTo() {
+        return FDroidApp.port + 1;
     }
 }

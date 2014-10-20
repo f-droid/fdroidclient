@@ -168,6 +168,7 @@ public abstract class LocalRepoService extends Service {
     }
 
     protected abstract String getIpAddressToBindTo();
+    protected abstract int getPortToBindTo();
 
     protected void startWebServer() {
         Runnable webServer = new Runnable() {
@@ -178,7 +179,7 @@ public abstract class LocalRepoService extends Service {
                 localHttpd = new LocalHTTPD(
                         LocalRepoService.this,
                         getIpAddressToBindTo(),
-                        FDroidApp.port,
+                        getPortToBindTo(),
                         getFilesDir(),
                         useHttps());
 
