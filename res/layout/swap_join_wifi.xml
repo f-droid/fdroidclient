@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".views.swap.SwapActivity">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_description"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            style="@style/SwapTheme.Wizard.MainText"
+            android:text="@string/swap_join_same_wifi"/>
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wifi_icon"
+            android:src="@drawable/wifi"
+            android:layout_below="@+id/text_description"
+            android:layout_centerHorizontal="true" />
+
+    <!--
+    <Button style="@style/SwapTheme.Wizard.OptionButton"
+            android:id="@+id/btn_bluetooth"
+            android:text="@string/swap_use_bluetooth"
+            android:layout_alignParentBottom="true" />
+
+    <Button style="@style/SwapTheme.Wizard.OptionButton"
+            android:text="@string/swap_wifi_help"
+            android:layout_above="@id/btn_bluetooth"
+            android:id="@+id/btn_learn_more_about_wifi"/>
+    -->
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="No network yet"
+            android:id="@+id/wifi_ssid"
+            style="@style/SwapTheme.Wizard.WifiSSID"
+            android:layout_below="@id/wifi_icon"
+            android:layout_centerHorizontal="true" />
+    <!--android:layout_above="@id/wifi_available_networks_prompt"-->
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swap_view_available_networks"
+            android:id="@+id/wifi_available_networks_prompt"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/wifi_ssid"
+            android:paddingBottom="20dp"/>
+    <!-- android:layout_above="@id/btn_learn_more_about_wifi" -->
+
+</RelativeLayout>

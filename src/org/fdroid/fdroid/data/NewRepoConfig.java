@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.fdroid.fdroid.R;
 
 import java.util.Arrays;
@@ -14,8 +13,10 @@ import java.util.Locale;
 
 public class NewRepoConfig {
 
+    private static final String TAG = "org.fdroid.fdroid.data.NewRepoConfig";
+
     private String errorMessage;
-    private boolean isValidRepo;
+    private boolean isValidRepo = false;
 
     private String uriString;
     private Uri uri;
@@ -25,22 +26,32 @@ public class NewRepoConfig {
     private String fingerprint;
     private String bssid;
     private String ssid;
+    private boolean fromSwap;
+
+    public NewRepoConfig(Context context, String uri) {
+        init(context, uri != null ? Uri.parse(uri) : null);
+    }
 
     public NewRepoConfig(Context context, Intent intent) {
+        init(context, intent.getData());
+    }
+
+    private void init(Context context, Uri incomingUri) {
         /* an URL from a click, NFC, QRCode scan, etc */
-        uri = intent.getData();
+        uri = incomingUri;
         if (uri == null) {
             isValidRepo = false;
             return;
         }
 
+        Log.d(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
+
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
-        scheme = intent.getScheme();
+        scheme = uri.getScheme();
         host = uri.getHost();
         port = uri.getPort();
         if (TextUtils.isEmpty(scheme) || TextUtils.isEmpty(host)) {
-            errorMessage = String.format(context.getString(R.string.malformed_repo_uri),
-                    uri);
+            errorMessage = String.format(context.getString(R.string.malformed_repo_uri), uri);
             isValidRepo = false;
             return;
         }
@@ -69,13 +80,16 @@ public class NewRepoConfig {
         fingerprint = uri.getQueryParameter("fingerprint");
         bssid = uri.getQueryParameter("bssid");
         ssid = uri.getQueryParameter("ssid");
+        fromSwap = uri.getQueryParameter("swap") != null;
 
-        Log.i("RepoListFragment", "onCreate " + fingerprint);
-        if (Arrays.asList("fdroidrepos", "fdroidrepo", "https", "http").contains(scheme)) {
-            uriString = sanitizeRepoUri(uri);
+        if (!Arrays.asList("fdroidrepos", "fdroidrepo", "https", "http").contains(scheme)) {
+            isValidRepo = false;
+            return;
         }
 
-        this.isValidRepo = true;
+        uriString = sanitizeRepoUri(uri);
+        isValidRepo = true;
+
     }
 
     public String getBssid() {
@@ -94,6 +108,10 @@ public class NewRepoConfig {
         return uriString;
     }
 
+    public Uri getUri() {
+        return uri;
+    }
+
     public String getHost() {
         return host;
     }
@@ -108,6 +126,10 @@ public class NewRepoConfig {
 
     public boolean isValidRepo() {
         return isValidRepo;
+    }
+
+    public boolean isFromSwap() {
+        return fromSwap;
     }
 
     /*

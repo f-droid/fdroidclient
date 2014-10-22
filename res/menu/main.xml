@@ -13,8 +13,8 @@
         android:title="@string/menu_update_repo"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/action_local_repo"
-        android:title="@string/local_repo"
+        android:id="@+id/action_swap"
+        android:title="@string/swap"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_manage_repos"

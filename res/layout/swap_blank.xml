@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/text_description"
+            android:text="Your mobile device becomes an app store with Swap!"
+            style="@style/SwapTheme.StartSwap.MainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    <Button
+            android:id="@+id/button_start_swap"
+            android:text="START A SWAP"
+            style="@style/SwapTheme.StartSwap.StartButton"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/text_description"
+            android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

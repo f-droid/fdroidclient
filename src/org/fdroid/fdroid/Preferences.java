@@ -56,6 +56,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_ENABLE_PROXY = "enableProxy";
     public static final String PREF_PROXY_HOST = "proxyHost";
     public static final String PREF_PROXY_PORT = "proxyPort";
+    public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
@@ -70,6 +71,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_ENABLE_PROXY = false;
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
     public static final int DEFAULT_PROXY_PORT = 8118;
+    public static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
@@ -113,6 +115,14 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean showPermissions() {
         return preferences.getBoolean(PREF_PERMISSIONS, DEFAULT_PERMISSIONS);
+    }
+
+    public boolean showNfcDuringSwap() {
+        return preferences.getBoolean(PREF_SHOW_NFC_DURING_SWAP, DEFAULT_SHOW_NFC_DURING_SWAP);
+    }
+
+    public void setShowNfcDuringSwap(boolean show) {
+        preferences.edit().putBoolean(PREF_SHOW_NFC_DURING_SWAP, show).commit();
     }
 
     public boolean expertMode() {

@@ -74,7 +74,7 @@ public class LocalRepoActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         resetNetworkInfo();
-        setRepoSwitchChecked(FDroidApp.isLocalRepoServiceRunnig());
+        setRepoSwitchChecked(FDroidApp.isLocalRepoServiceRunning());
 
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
                 new IntentFilter(WifiStateChangeService.BROADCAST));

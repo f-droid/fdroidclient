@@ -41,12 +41,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.LocalRepoActivity;
 import org.fdroid.fdroid.views.ManageReposActivity;
+import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
+import org.fdroid.fdroid.views.swap.SwapActivity;
 
 public class FDroid extends ActionBarActivity {
 
@@ -54,8 +57,11 @@ public class FDroid extends ActionBarActivity {
     public static final int REQUEST_MANAGEREPOS = 1;
     public static final int REQUEST_PREFS = 2;
     public static final int REQUEST_ENABLE_BLUETOOTH = 3;
+    public static final int REQUEST_SWAP = 4;
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
+
+    public static final String ACTION_ADD_REPO = "org.fdroid.fdroid.FDroid.ACTION_ADD_REPO";
 
     private FDroidApp fdroidApp = null;
 
@@ -106,7 +112,26 @@ public class FDroid extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         // AppDetails and RepoDetailsActivity set different NFC actions, so reset here
-        NfcBeamManager.setAndroidBeam(this, getApplication().getPackageName());
+        NfcHelper.setAndroidBeam(this, getApplication().getPackageName());
+        checkForAddRepoIntent();
+    }
+
+    private void checkForAddRepoIntent() {
+        // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
+        // http://stackoverflow.com/a/14820849
+        if (!getIntent().hasExtra("handled")) {
+            NewRepoConfig parser = new NewRepoConfig(this, getIntent());
+            if (parser.isValidRepo()) {
+                getIntent().putExtra("handled", true);
+                if (parser.isFromSwap()) {
+                    startActivityForResult(new Intent(ACTION_ADD_REPO, getIntent().getData(), this, ConnectSwapActivity.class), REQUEST_SWAP);
+                } else {
+                    startActivity(new Intent(ACTION_ADD_REPO, getIntent().getData(), this, ManageReposActivity.class));
+                }
+            } else if (parser.getErrorMessage() != null) {
+                Toast.makeText(this, parser.getErrorMessage(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
@@ -145,8 +170,8 @@ public class FDroid extends ActionBarActivity {
                 startActivityForResult(prefs, REQUEST_PREFS);
                 return true;
 
-            case R.id.action_local_repo:
-                startActivity(new Intent(this, LocalRepoActivity.class));
+            case R.id.action_swap:
+                startActivity(new Intent(this, SwapActivity.class));
                 return true;
 
             case R.id.action_search:

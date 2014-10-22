@@ -15,6 +15,8 @@ import java.util.jar.JarFile;
 
 public class SignedRepoUpdater extends RepoUpdater {
 
+    private static final String TAG = "org.fdroid.fdroid.updater.SignedRepoUpdater";
+
     public SignedRepoUpdater(Context ctx, Repo repo) {
         super(ctx, repo);
     }
@@ -25,15 +27,22 @@ public class SignedRepoUpdater extends RepoUpdater {
             throw new UpdateException(repo, "No signature found in index");
         }
 
-        Log.d("FDroid", "Index has " + certs.length + " signature(s)");
+        Log.d(TAG, "Index has " + certs.length + " signature(s)");
         boolean match = false;
         for (Certificate cert : certs) {
             String certdata = Hasher.hex(cert);
-            if (repo.pubkey == null && repo.fingerprint.equals(Utils.calcFingerprint(cert))) {
-                repo.pubkey = certdata;
-                usePubkeyInJar = true;
+            if (repo.pubkey == null && repo.fingerprint != null) {
+                String certFingerprint = Utils.calcFingerprint(cert);
+                Log.d(TAG, "No public key for repo " + repo.address + " yet, but it does have a fingerprint, so comparing them.");
+                Log.d(TAG, "Repo fingerprint: " + repo.fingerprint);
+                Log.d(TAG, "Cert fingerprint: " + certFingerprint);
+                if (repo.fingerprint.equalsIgnoreCase(certFingerprint)) {
+                    repo.pubkey = certdata;
+                    usePubkeyInJar = true;
+                }
             }
             if (repo.pubkey != null && repo.pubkey.equals(certdata)) {
+                Log.d(TAG, "Checking repo public key against cert found in jar.");
                 match = true;
                 break;
             }
@@ -105,7 +114,7 @@ public class SignedRepoUpdater extends RepoUpdater {
     protected File getIndexFromFile(File downloadedFile) throws
             UpdateException {
         Date updateTime = new Date(System.currentTimeMillis());
-        Log.d("FDroid", "Getting signed index from " + repo.address + " at " +
+        Log.d(TAG, "Getting signed index from " + repo.address + " at " +
                 Utils.LOG_DATE_FORMAT.format(updateTime));
 
         File indexJar  = downloadedFile;

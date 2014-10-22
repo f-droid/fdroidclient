@@ -2,26 +2,37 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.annotation.SuppressLint;
-import android.app.*;
-import android.content.*;
-import android.os.*;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
-
-import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Preferences.ChangeListener;
+import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import org.fdroid.fdroid.views.LocalRepoActivity;
+import org.fdroid.fdroid.views.swap.SwapActivity;
 
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 import java.io.IOException;
 import java.net.BindException;
 import java.util.HashMap;
 import java.util.Random;
-
-import javax.jmdns.JmDNS;
-import javax.jmdns.ServiceInfo;
 
 public class LocalRepoService extends Service {
     private static final String TAG = "LocalRepoService";
@@ -47,25 +58,35 @@ public class LocalRepoService extends Service {
 
     final Messenger messenger = new Messenger(new StartStopHandler(this));
 
+    /**
+     * This is most likely going to be created on the UI thread, hence all of
+     * the message handling will take place on a new thread to prevent blocking
+     * the UI.
+     */
     static class StartStopHandler extends Handler {
-        private static LocalRepoService service;
+
+        private final LocalRepoService service;
 
         public StartStopHandler(LocalRepoService service) {
-            StartStopHandler.service = service;
+            this.service = service;
         }
 
         @Override
-        public void handleMessage(Message msg) {
-            if (msg.arg1 == START) {
-                service.startNetworkServices();
-            } else if (msg.arg1 == STOP) {
-                service.stopNetworkServices();
-            } else if (msg.arg1 == RESTART) {
-                service.stopNetworkServices();
-                service.startNetworkServices();
-            } else {
-                Log.e(TAG, "unsupported msg.arg1, ignored");
-            }
+        public void handleMessage(final Message msg) {
+            new Thread() {
+                public void run() {
+                    if (msg.arg1 == START) {
+                        service.startNetworkServices();
+                    } else if (msg.arg1 == STOP) {
+                        service.stopNetworkServices();
+                    } else if (msg.arg1 == RESTART) {
+                        service.stopNetworkServices();
+                        service.startNetworkServices();
+                    } else {
+                        Log.e(TAG, "Unsupported msg.arg1 (" + msg.arg1 + "), ignored");
+                    }
+                }
+            }.start();
         }
     }
 
@@ -105,21 +126,24 @@ public class LocalRepoService extends Service {
         }
     };
 
-    @Override
-    public void onCreate() {
+    private void showNotification() {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // launch LocalRepoActivity if the user selects this notification
-        Intent intent = new Intent(this, LocalRepoActivity.class);
+        Intent intent = new Intent(this, SwapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         notification = new NotificationCompat.Builder(this)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setSmallIcon(R.drawable.ic_swap)
                 .setContentIntent(contentIntent)
                 .build();
         startForeground(NOTIFICATION, notification);
+    }
+
+    @Override
+    public void onCreate() {
+        showNotification();
         startNetworkServices();
         Preferences.get().registerLocalRepoBonjourListeners(localRepoBonjourChangeListener);
 
@@ -136,7 +160,12 @@ public class LocalRepoService extends Service {
 
     @Override
     public void onDestroy() {
-        stopNetworkServices();
+        new Thread() {
+            public void run() {
+                stopNetworkServices();
+            }
+        }.start();
+
         notificationManager.cancel(NOTIFICATION);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
         Preferences.get().unregisterLocalRepoBonjourListeners(localRepoBonjourChangeListener);
@@ -148,6 +177,7 @@ public class LocalRepoService extends Service {
     }
 
     private void startNetworkServices() {
+        Log.d(TAG, "Starting local repo network services");
         startWebServer();
         if (Preferences.get().isLocalRepoBonjourEnabled())
             registerMDNSService();
@@ -155,8 +185,13 @@ public class LocalRepoService extends Service {
     }
 
     private void stopNetworkServices() {
+        Log.d(TAG, "Stopping local repo network services");
         Preferences.get().unregisterLocalRepoHttpsListeners(localRepoHttpsChangeListener);
+
+        Log.d(TAG, "Unregistering MDNS service...");
         unregisterMDNSService();
+
+        Log.d(TAG, "Stopping web server...");
         stopWebServer();
     }
 

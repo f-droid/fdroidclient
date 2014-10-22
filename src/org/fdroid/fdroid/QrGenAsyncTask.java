@@ -70,6 +70,11 @@ public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
     @Override
     protected void onPostExecute(Void v) {
         ImageView qrCodeImageView = (ImageView) activity.findViewById(viewId);
-        qrCodeImageView.setImageBitmap(qrBitmap);
+
+        // If the generation takes too long for whatever reason, then this view, and indeed the entire
+        // activity may not be around any more.
+        if (qrCodeImageView != null) {
+            qrCodeImageView.setImageBitmap(qrBitmap);
+        }
     }
 }

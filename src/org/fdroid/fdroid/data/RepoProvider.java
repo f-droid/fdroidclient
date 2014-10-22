@@ -20,6 +20,12 @@ public class RepoProvider extends FDroidProvider {
 
         private Helper() {}
 
+        public static Repo findByUri(Context context, Uri uri) {
+            ContentResolver resolver = context.getContentResolver();
+            Cursor cursor = resolver.query(uri, DataColumns.ALL, null, null, null);
+            return cursorToRepo(cursor);
+        }
+
         public static Repo findById(Context context, long repoId) {
             return findById(context, repoId, DataColumns.ALL);
         }
@@ -29,15 +35,7 @@ public class RepoProvider extends FDroidProvider {
             ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri(repoId);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
-            Repo repo = null;
-            if (cursor != null) {
-                if (cursor.getCount() > 0) {
-                    cursor.moveToFirst();
-                    repo = new Repo(cursor);
-                }
-                cursor.close();
-            }
-            return repo;
+            return cursorToRepo(cursor);
         }
 
         public static Repo findByAddress(Context context, String address) {
@@ -88,6 +86,18 @@ public class RepoProvider extends FDroidProvider {
                 cursor.close();
             }
             return repos;
+        }
+
+        private static Repo cursorToRepo(Cursor cursor) {
+            Repo repo = null;
+            if (cursor != null) {
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    repo = new Repo(cursor);
+                }
+                cursor.close();
+            }
+            return repo;
         }
 
         public static void update(Context context, Repo repo,
@@ -152,11 +162,11 @@ public class RepoProvider extends FDroidProvider {
          * resolver, but I thought I'd put it here in the interests of having
          * each of the CRUD methods available in the helper class.
          */
-        public static void insert(Context context,
+        public static Uri insert(Context context,
                                   ContentValues values) {
             ContentResolver resolver = context.getContentResolver();
             Uri uri = RepoProvider.getContentUri();
-            resolver.insert(uri, values);
+            return resolver.insert(uri, values);
         }
 
         public static void remove(Context context, long repoId) {

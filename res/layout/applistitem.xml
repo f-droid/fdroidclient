@@ -4,7 +4,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:padding="10dp"
-	android:baselineAligned="false" >
+	android:baselineAligned="false"
+	xmlns:tools="http://schemas.android.com/tools" >
 
 	<!-- Actual icon size is dependent on preferences and set in
 		AppListAdapater.java:layoutIcon() -->
@@ -14,7 +15,8 @@
 		android:layout_width="48dip"
 		android:layout_height="48dip"
 		android:layout_gravity="center_vertical"
-		android:scaleType="fitCenter" />
+		android:scaleType="fitCenter"
+		tools:src="@drawable/ic_launcher" />
 
 	<LinearLayout
 		android:orientation="vertical"
@@ -44,7 +46,8 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_vertical"
 				android:gravity="start"
-				android:textAlignment="viewStart" />
+				android:textAlignment="viewStart"
+				tools:text="F-Droid" />
 
 			<TextView android:id="@+id/status"
 				android:textSize="13sp"
@@ -58,6 +61,7 @@
 				android:layout_gravity="center_vertical"
 				android:gravity="end"
 				android:textAlignment="viewEnd"
+				tools:text="Installed"
 				/>
 
 		</LinearLayout>
@@ -79,6 +83,7 @@
 				android:layout_gravity="center_vertical"
 				android:gravity="start"
 				android:textAlignment="viewStart"
+				tools:text="Application manager"
 				/>
 
 			<TextView android:id="@+id/license"
@@ -93,6 +98,7 @@
 				android:layout_gravity="center_vertical"
 				android:gravity="end"
 				android:textAlignment="viewEnd"
+				tools:text="GPLv3"
 				/>
 
 		</LinearLayout>

@@ -41,13 +41,11 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
@@ -57,6 +55,9 @@ import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 import java.io.File;
 import java.util.Set;
 
@@ -72,6 +73,8 @@ public class FDroidApp extends Application {
 
     private static Messenger localRepoServiceMessenger = null;
     private static boolean localRepoServiceIsBound = false;
+
+    private static final String TAG = "org.fdroid.fdroid.FDroidApp";
 
     BluetoothAdapter bluetoothAdapter = null;
 
@@ -266,8 +269,7 @@ public class FDroidApp extends Application {
         if (!localRepoServiceIsBound) {
             Context app = context.getApplicationContext();
             Intent service = new Intent(app, LocalRepoService.class);
-            localRepoServiceIsBound = app.bindService(service, serviceConnection,
-                    Context.BIND_AUTO_CREATE);
+            localRepoServiceIsBound = app.bindService(service, serviceConnection, Context.BIND_AUTO_CREATE);
             if (localRepoServiceIsBound)
                 app.startService(service);
         }
@@ -285,8 +287,7 @@ public class FDroidApp extends Application {
     public static void restartLocalRepoService() {
         if (localRepoServiceMessenger != null) {
             try {
-                Message msg = Message.obtain(null,
-                        LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
+                Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
                 localRepoServiceMessenger.send(msg);
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -294,7 +295,7 @@ public class FDroidApp extends Application {
         }
     }
 
-    public static boolean isLocalRepoServiceRunnig() {
+    public static boolean isLocalRepoServiceRunning() {
         return localRepoServiceIsBound;
     }
 }

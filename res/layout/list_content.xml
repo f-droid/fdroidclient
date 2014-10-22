@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Ported from the android-19 source. This was necessary so that we could inflate
+the view ourself (and hence theme it), but also get references to the relevant
+widgets (e.g. empty text view, progress bar, list). The list_content view we
+ported this from uses hidden/internal id's that we don't get the privilege of
+using. In the process, we also:
+ * Added tools: attributes.
+ * Changed the names of an id or two so that I can reference them from Java.
+-->
+
+<!--
+/* Copyright 2010, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".views.swap.SwapActivity">
+
+    <LinearLayout android:id="@+id/progressContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:gravity="center">
+
+        <ProgressBar style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@android:id/progress"/>
+
+    </LinearLayout>
+
+    <FrameLayout android:id="@+id/listContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ListView android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawSelectorOnTop="false"
+                tools:listitem="@layout/applistitem"
+                tools:listheader="@layout/swap_create_header" />
+        <TextView android:id="@android:id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+    </FrameLayout>
+
+</FrameLayout>

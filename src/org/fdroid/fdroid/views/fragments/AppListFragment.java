@@ -6,22 +6,21 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
-import org.fdroid.fdroid.*;
+import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.FDroid;
+import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 
-abstract public class AppListFragment extends ListFragment implements
+abstract public class AppListFragment extends ThemeableListFragment implements
         AdapterView.OnItemClickListener,
         Preferences.ChangeListener,
         LoaderManager.LoaderCallbacks<Cursor> {

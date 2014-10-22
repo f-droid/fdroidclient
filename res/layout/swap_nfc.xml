@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:paddingTop="38.8dp"> <!-- 69px * 96dpi / 160dpi -->
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon_nfc"
+            android:src="@drawable/nfc_touch"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+    <TextView
+            android:id="@+id/text_description"
+            android:text="@string/swap_nfc_description"
+            style="@style/SwapTheme.Wizard.MainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon_nfc" />
+
+    <CheckBox
+            android:id="@+id/checkbox_dont_show"
+            android:text="Don't show this again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_description"
+            android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

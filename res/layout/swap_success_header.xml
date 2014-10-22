@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/text_title"
+            android:text="Swap success!"
+            style="@style/SwapTheme.AppList.SwapSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/swap_success"
+            android:layout_gravity="center_horizontal" />
+
+    <TextView
+            android:id="@+id/text_description"
+            android:text="Tap an app for details and to install."
+            style="@style/SwapTheme.AppList.SwapSuccessDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

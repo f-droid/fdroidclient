@@ -5,7 +5,6 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.net.Uri;
 import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
@@ -67,27 +67,18 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
     @TargetApi(14)
     private void setNfc() {
-        if (Build.VERSION.SDK_INT < 14)
-            return;
-        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if (nfcAdapter == null) {
-            return;
+        if (NfcHelper.setPushMessage(this, Utils.getSharingUri(this, repo))) {
+            findViewById(android.R.id.content).post(new Runnable() {
+                @Override
+                public void run() {
+                    onNewIntent(getIntent());
+                }
+            });
         }
-        nfcAdapter.setNdefPushMessage(new NdefMessage(new NdefRecord[] {
-                NdefRecord.createUri(Utils.getSharingUri(this, repo)),
-        }), this);
-        findViewById(android.R.id.content).post(new Runnable() {
-            @Override
-            public void run() {
-                Log.i(TAG, "Runnable.run()");
-                onNewIntent(getIntent());
-            }
-        });
     }
 
     @Override
     public void onResume() {
-        Log.i(TAG, "onResume");
         super.onResume();
         // FDroid.java and AppDetails set different NFC actions, so reset here
         setNfc();
@@ -96,9 +87,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
     @Override
     public void onNewIntent(Intent i) {
-        Log.i(TAG, "onNewIntent");
-        Log.i(TAG, "action: " + i.getAction());
-        Log.i(TAG, "data: " + i.getData());
         // onResume gets called after this to handle the intent
         setIntent(i);
     }
@@ -108,7 +96,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
         if (Build.VERSION.SDK_INT < 9)
             return;
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(i.getAction())) {
-            Log.i(TAG, "ACTION_NDEF_DISCOVERED");
             Parcelable[] rawMsgs =
                     i.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             NdefMessage msg = (NdefMessage) rawMsgs[0];
