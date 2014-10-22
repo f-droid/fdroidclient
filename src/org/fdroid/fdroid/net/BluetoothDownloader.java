@@ -2,7 +2,8 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.util.Log;
-import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
+import org.apache.commons.io.input.BoundedInputStream;
+import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 import org.fdroid.fdroid.net.bluetooth.FileDetails;
 import org.fdroid.fdroid.net.bluetooth.httpish.Request;
 import org.fdroid.fdroid.net.bluetooth.httpish.Response;
@@ -18,30 +19,50 @@ public class BluetoothDownloader extends Downloader {
 
     private static final String TAG = "org.fdroid.fdroid.net.BluetoothDownloader";
 
-    private BluetoothClient client;
+    private final BluetoothConnection connection;
     private FileDetails fileDetails;
+    private final String sourcePath;
 
-    BluetoothDownloader(BluetoothClient client, String destFile, Context ctx) throws FileNotFoundException, MalformedURLException {
+    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, String destFile, Context ctx) throws FileNotFoundException, MalformedURLException {
         super(destFile, ctx);
+        this.connection = connection;
+        this.sourcePath = sourcePath;
     }
 
-    BluetoothDownloader(BluetoothClient client, Context ctx) throws IOException {
+    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, Context ctx) throws IOException {
         super(ctx);
+        this.connection = connection;
+        this.sourcePath = sourcePath;
     }
 
-    BluetoothDownloader(BluetoothClient client, File destFile) throws FileNotFoundException, MalformedURLException {
+    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, File destFile) throws FileNotFoundException, MalformedURLException {
         super(destFile);
+        this.connection = connection;
+        this.sourcePath = sourcePath;
     }
 
-    BluetoothDownloader(BluetoothClient client, OutputStream output) throws MalformedURLException {
+    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, OutputStream output) throws MalformedURLException {
         super(output);
+        this.connection = connection;
+        this.sourcePath = sourcePath;
     }
 
     @Override
     public InputStream getInputStream() throws IOException {
-        Response response = Request.createGET(sourceUrl.getPath(), client.openConnection()).send();
+        Response response = Request.createGET(sourcePath, connection).send();
         fileDetails = response.toFileDetails();
-        return response.toContentStream();
+
+        // TODO: Manage the dependency which includes this class better?
+        // Right now, I only needed the one class from apache commons.
+        // There are countless classes online which provide this functionaligy,
+        // including some which are available from the Android SDK - the only
+        // problem is that they have a funky API which doesn't just wrap a
+        // plain old InputStream (the class is ContentLengthInputStream -
+        // whereas this BoundedInputStream is much more generic and useful
+        // to us).
+        BoundedInputStream stream = new BoundedInputStream(response.toContentStream(), fileDetails.getFileSize());
+        stream.setPropagateClose(false);
+        return stream;
     }
 
     /**
@@ -54,7 +75,7 @@ public class BluetoothDownloader extends Downloader {
         if (fileDetails == null) {
             Log.d(TAG, "Going to Bluetooth \"server\" to get file details.");
             try {
-                fileDetails = Request.createHEAD(sourceUrl.getPath(), client.openConnection()).send().toFileDetails();
+                fileDetails = Request.createHEAD(sourceUrl.getPath(), connection).send().toFileDetails();
             } catch (IOException e) {
                 Log.e(TAG, "Error getting file details from Bluetooth \"server\": " + e.getMessage());
             }
@@ -64,7 +85,7 @@ public class BluetoothDownloader extends Downloader {
 
     @Override
     public boolean hasChanged() {
-        return getFileDetails().getCacheTag().equals(getCacheTag());
+        return getFileDetails().getCacheTag() == null || getFileDetails().getCacheTag().equals(getCacheTag());
     }
 
     @Override

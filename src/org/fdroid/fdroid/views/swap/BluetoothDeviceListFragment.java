@@ -18,12 +18,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
-import org.fdroid.fdroid.net.bluetooth.httpish.Request;
-import org.fdroid.fdroid.net.bluetooth.httpish.Response;
 import org.fdroid.fdroid.views.fragments.ThemeableListFragment;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -132,13 +132,28 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
         try {
             Log.d(TAG, "Testing bluetooth connection (opening connection first).");
             BluetoothConnection connection = client.openConnection();
-            Log.d(TAG, "Creating HEAD request for resource at \"/\"...");
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream(4096);
+            BluetoothDownloader downloader = new BluetoothDownloader(connection, "/", stream);
+            downloader.downloadUninterrupted();
+            String result = stream.toString();
+            Log.d(TAG, "Download complete.");
+            Log.d(TAG, result);
+
+            Log.d(TAG, "Downloading again...");
+            downloader = new BluetoothDownloader(connection, "/fdroid/repo/index.xml", stream);
+            downloader.downloadUninterrupted();
+            result = stream.toString();
+            Log.d(TAG, "Download complete.");
+            Log.d(TAG, result);
+
+            /*Log.d(TAG, "Creating HEAD request for resource at \"/\"...");
             Request head = Request.createGET("/", connection);
             Log.d(TAG, "Sending request...");
             Response response = head.send();
             Log.d(TAG, "Response from bluetooth: " + response.getStatusCode());
             String contents = response.readContents();
-            Log.d(TAG, contents);
+            Log.d(TAG, contents);*/
         } catch (IOException e) {
             Log.e(TAG, "Error: " + e.getMessage());
         }
