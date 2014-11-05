@@ -108,6 +108,10 @@ android {
 
 	compileOptions.encoding = "UTF-8"
 
+	lintOptions {
+		abortOnError false
+	}
+
 }
 
 // TODO: This person took the example code below from another blogpost online, however
