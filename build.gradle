@@ -3,14 +3,18 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:0.12.2'
+		classpath 'com.android.tools.build:gradle:0.14.1'
 	}
 }
 
 apply plugin: 'android'
 
-def toolVersion = "21.1"
-sdkLoc = getSdkPath()
+allprojects {
+	ext {
+		toolVersion = '21.1'
+		sdkLoc = getSdkPath()
+	}
+}
 
 FileCollection getAndroidPrebuilt(String apiLevel) {
 	files("$sdkLoc/platforms/android-$apiLevel/android.jar")
@@ -98,13 +102,11 @@ android {
 
 	buildTypes {
 		release {
-			runProguard false
+			minifyEnabled false
 		}
 	}
 
-	tasks.withType(Compile) { task ->
-		options.encoding = "UTF-8"
-	}
+	compileOptions.encoding = "UTF-8"
 
 }
 
@@ -168,5 +170,5 @@ subprojects {
  * of this method to reflect that.
  */
 def getSdkPath() {
-	new File( "$android.adbExe/../../" ).canonicalPath
+	new File("$android.adbExe/../../").canonicalPath
 }
