@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/application_label"
+            android:layout_alignLeft="@+id/application_label"
             android:layout_below="@+id/application_label"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </TwoLineListItem>
