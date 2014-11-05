@@ -9,7 +9,7 @@ buildscript {
 
 apply plugin: 'android'
 
-def toolVersion = "20.0.0"
+def toolVersion = "21.1"
 sdkLoc = getSdkPath()
 
 FileCollection getAndroidPrebuilt(String apiLevel) {
