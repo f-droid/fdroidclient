@@ -78,7 +78,7 @@ project(':extern:zipsigner') {
 }
 
 android {
-	compileSdkVersion 19
+	compileSdkVersion 21
 	buildToolsVersion toolVersion
 
 	compileOptions {
