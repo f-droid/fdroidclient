@@ -2,9 +2,10 @@
 <resources>
   <string-array name="updateIntervalNames">
     <item>从不</item>
-    <item>每个小时</item>
-    <item>每4个小时</item>
-    <item>每12个小时</item>
     <item>每天</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>暗色</item>
+    <item>亮色</item>
   </string-array>
 </resources>

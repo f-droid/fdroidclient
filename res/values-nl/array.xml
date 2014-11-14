@@ -7,4 +7,8 @@
     <item>Elke 12 uur</item>
     <item>Dagelijks</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Donker</item>
+    <item>Licht</item>
+  </string-array>
 </resources>

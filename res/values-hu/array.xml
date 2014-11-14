@@ -7,4 +7,8 @@
     <item>12 óránként</item>
     <item>Naponta</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Sötét</item>
+    <item>Világos</item>
+  </string-array>
 </resources>

@@ -7,4 +7,8 @@
     <item>Hver 12. time</item>
     <item>Daglig</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Mørkt</item>
+    <item>Lyst</item>
+  </string-array>
 </resources>

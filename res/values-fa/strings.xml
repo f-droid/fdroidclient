@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="searchres_napps">%1$d برنامه مطابق با \'%2$s\' یافت شد:</string>
-  <string name="searchres_oneapp">یک برنامه مطابق با \'%s\' یافت شد:</string>
-  <string name="searchres_noapps">برنامهٔ مطابق با \'%s\' یافت نشد</string>
-  <string name="SignatureMismatch">نسخهٔ جدید با کلید متفاوتی با نسخهٔ قدیم امضا شده‌است. برای نصب نسخهٔ جدید، در ابتدا نسخهٔ قدیمی باید حذف نصب‌شود. لطفاً این را انجام دهید و دوباره تلاش کنید. (در نظر داشته باشید که حذف نصب همهٔ اطلاعات داخلی ذخیره‌شده توسط برنامه را پاک خواهد کرد)</string>
   <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی آزمایش و نصب کنید؟</string>
   <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟</string>
-  <string name="version">نسخه</string>
   <string name="edit">ویرایش</string>
   <string name="delete">حذف</string>
-  <string name="enable_nfc_send">فعال‌سازی ارسال ان‌اف‌سی…</string>
   <string name="cache_downloaded">میانگیری برنامه‌های دریافت‌شده</string>
   <string name="cache_downloaded_on">نگه‌داشتن پرونده‌های ای‌پی‌کی بر روی کارت اس‌دی</string>
   <string name="cache_downloaded_off">هیچ پروندهٔ ای‌پی‌کی را نگه‌ندار</string>
@@ -22,18 +16,13 @@
   <string name="automatic_scan_wifi">فقط هنگام اتصال وای‌فای</string>
   <string name="automatic_scan_wifi_on">به‌روزرسانی فهرست برنامه‌ها خودکار فقط با وای‌فای</string>
   <string name="automatic_scan_wifi_off">همیشه فهرست برنامه‌ها را خودکار به‌روز کن</string>
-  <string name="notify">مطلع‌سازی</string>
   <string name="notify_on">آگاهی‌دادن هنگامی که به‌روزرسانی‌ها موجود هستند</string>
+  <string name="notify_off">هیچکدام از بروزرسانی‌ها را آگاه نکن</string>
   <string name="update_history">به‌روزرسانی تاریخچه</string>
   <string name="search_results">جستجوی نتایج</string>
-  <string name="app_details">مشخصات برنامه</string>
   <string name="no_such_app">چنین برنامه‌ای یافت نشد</string>
   <string name="about_title">دربارهٔ F-Droid</string>
-  <string name="about_desc">در آغاز بر پایهٔ Aptoide بوده‌است.
-منتش شده تحت مجوز GNU GPLv3.</string>
-  <string name="about_site">وب‌گاه:</string>
   <string name="about_mail">رایانامه:</string>
-  <string name="about_version">نسخه:</string>
   <string name="about_website">وب‌گاه</string>
   <string name="no_repo">شما هیچ مخزنی را تنظیم نکرده‌اید!
 
@@ -49,39 +38,35 @@
   <string name="repo_add_title">افزودن مخزنی جدید</string>
   <string name="repo_add_add">افزودن</string>
   <string name="cancel">فسخ</string>
+  <string name="enable">توانا ساختن</string>
+  <string name="add_key">فزودن کلید</string>
+  <string name="overwrite">بازنویسی</string>
   <string name="repo_delete_title">انتخاب مخزن برای حذف</string>
   <string name="repo_update_title">به‌روزرسانی مخازن</string>
-  <string name="tab_noninstalled">موجود</string>
   <string name="tab_updates">به‌روزرسانی‌ها</string>
-  <string name="one_update_available">۱ به‌روزرسانی موجود است.</string>
-  <string name="many_updates_available">%d به‌روزرسانی موجود است.</string>
   <string name="fdroid_updates_available">به‌روزرسانی‌های F-Droid موجود هستند</string>
-  <string name="process_wait_title">لطفاً صبر کنید</string>
   <string name="process_update_msg">به‌روزرسانی فهرست برنامه‌ها…</string>
   <string name="download_server">گرفتن برنامه از</string>
+  <string name="nfc_is_not_enabled">اِن‌اِف‌سی فعال نیست!</string>
+  <string name="go_to_nfc_settings">برو به ساماندهی اِن‌اِف‌سی</string>
+  <string name="bluetooth_activity_not_found">روش فرستادن دندان‌آبی پیدا نشد، یکی را برگزینید!</string>
+  <string name="choose_bt_send">گزینش روش فرستادن دندان‌آبی</string>
   <string name="repo_add_url">نشانی مخزن</string>
+  <string name="repo_add_fingerprint">انگشت‌نگاری (دلبخواهی)</string>
+  <string name="repo_exists">این مخزن هم‌اکنون وجود ندارد!</string>
   <string name="repo_alrt">فهرست مخزن‌ها تغییر یافته‌است.
 آیا می‌خواهید به‌روزرسانی‌شان کنید؟</string>
   <string name="menu_update_repo">به‌روزرسانی مخزن‌ها</string>
   <string name="menu_manage">مدیریت مخزن‌ها</string>
-  <string name="menu_preferences">ترجیحات</string>
   <string name="menu_about">درباره</string>
   <string name="menu_search">جستجو</string>
-  <string name="menu_add_repo">مخزن جدید</string>
   <string name="menu_rem_repo">حذف مخزن</string>
-  <string name="menu_scan_repo">یافتن مخازن محلی</string>
-  <string name="menu_launch">اجرا</string>
   <string name="menu_share">به اشتراک‌گذاری</string>
   <string name="menu_install">نصب</string>
   <string name="menu_uninstall">حذف نصب</string>
-  <string name="menu_ignore_all">در نظر نگرفتن همهٔ به‌روزرسانی‌ها</string>
-  <string name="menu_ignore_this">در نظر نگرفتن این به‌روزرسانی</string>
-  <string name="menu_website">وب‌گاه</string>
   <string name="menu_issues">اشکال‌ها</string>
   <string name="menu_source">کد مبدأ</string>
-  <string name="menu_upgrade">ارتقاع</string>
   <string name="menu_donate">کمک مالی</string>
-  <string name="details_installed">نسخهٔ %s نصب‌شده</string>
   <string name="details_notinstalled">نصب‌نشده</string>
   <string name="corrupt_download">پروندهٔ دریافتی خراب است</string>
   <string name="download_cancelled">دریافت فسخ شد</string>
@@ -90,16 +75,15 @@
   <string name="antinonfreeadlist">این برنامه افزونه‌های غیر آزاد را تبلیغ می‌کند</string>
   <string name="antinonfreenetlist">این برنامه خدمات شبکه‌های غیر آزاد را تبلیغ می‌کند</string>
   <string name="antinonfreedeplist">این برنامه به سایر برنامه‌های غیر آزاد وابسته است</string>
+  <string name="antiupstreamnonfreelist">سرتاسر آزاد نبودن کد منبع بالادستی</string>
   <string name="display">نمایش</string>
-  <string name="expert">خارج‌سازی</string>
+  <string name="expert_on">نمایش داده‌های بیشتر و فعال کردن تنظیمات بیشتر</string>
+  <string name="expert_off">پنهان کردن بیش‌تنظیم‌ها برای کاربرهای کارآزموده</string>
   <string name="search_hint">جستجوی برنامه‌ها</string>
   <string name="appcompatibility">هماهنگی برنامه</string>
-  <string name="show_incompat_versions">نسخه‌های غیرهماهنگ</string>
   <string name="rooted">روت</string>
   <string name="ignoreTouch">صفحهٔ نمایش لمسی را در نظر نگیر</string>
   <string name="category_all">همه</string>
-  <string name="category_whatsnew">چیزهای جدید</string>
-  <string name="category_recentlyupdated">اخیراً به‌روز شده</string>
   <string name="status_download">دریافت
 %2$s / %3$s (%4$d%%) از
 %1$s</string>
@@ -110,9 +94,25 @@
 %1$s</string>
   <string name="status_checking_compatibility">بررسی سازگاری برنامه‌ها با دستگاه شما…</string>
   <string name="no_permissions">دسترسی‌ای استفاده نشده‌است.</string>
-  <string name="permissions_for_long">دسترسی‌های نسخهٔ %s</string>
   <string name="showPermissions">نمایش دسترسی‌ها</string>
-  <string name="no_handler_app">شما برنامه‌ای که بتواند %s را مدیریت کند ندارید</string>
+  <string name="showPermissions_on">نمایش یک فهرست از دسترسی‌هایی که یک برنامه نیاز دارد</string>
+  <string name="showPermissions_off">نمایش ندادن دسترسی‌ها پیش از دریافت کردن</string>
   <string name="compactlayout">طرح‌بندی فشرده</string>
+  <string name="compactlayout_on">نمایش شکلک‌ها در اندازه کوچکتر</string>
+  <string name="compactlayout_off">نمایش شکلک‌ها در اندازه ساده</string>
   <string name="theme">پوسته</string>
+  <string name="unsigned">بدون امضا</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_description">توضیحات</string>
+  <string name="repo_last_update">واپسین بروزرسانی</string>
+  <string name="repo_update">بروزرسانی‌ها</string>
+  <string name="repo_name">نام</string>
+  <string name="unsigned_description">این بدین معنی است که 
+در فهرست برنامه‌های بازبینی شده نیست. شما باید هشیار باشید
+با برنامه‌های دریافت‌شده از فهرست‌های بدون امضا</string>
+  <string name="unknown">ناشناخته</string>
+  <string name="minsdk_or_later">%s یا پس از این</string>
+  <string name="up_to_maxsdk">تا به %s</string>
+  <string name="minsdk_up_to_maxsdk">%1$s تا %2$s</string>
+  <string name="requires_features">نیاز به: %1$s</string>
 </resources>

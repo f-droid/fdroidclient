@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="updateIntervalNames">
-    <item>Mai</item>
-    <item>Cada hora</item>
-    <item>Cada 4 hores</item>
-    <item>Cada 12 hores</item>
-    <item>Cada dia</item>
+    <item>永不</item>
+    <item>每小時</item>
+    <item>每4小時</item>
+    <item>每12小時</item>
+    <item>每天</item>
   </string-array>
   <string-array name="themeNames">
-    <item>Fosc</item>
-    <item>Clar</item>
+    <item>深</item>
+    <item>淺</item>
   </string-array>
 </resources>

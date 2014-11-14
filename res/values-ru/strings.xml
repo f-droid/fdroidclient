@@ -11,7 +11,6 @@
   <string name="version">Версия</string>
   <string name="edit">Редактировать</string>
   <string name="delete">Удалить</string>
-  <string name="enable_nfc_send">Включить отправку по NFC…</string>
   <string name="cache_downloaded">Кэшировать загруженные приложения</string>
   <string name="cache_downloaded_on">Хранить загруженные файлы APK на SD-карте</string>
   <string name="cache_downloaded_off">Не хранить файлы APK</string>
@@ -64,10 +63,8 @@
   <string name="many_updates_available">Доступно %d обновлений.</string>
   <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
   <string name="process_wait_title">Подождите</string>
-  <string name="process_update_msg">Список приложений обновляется…</string>
   <string name="download_server">Загрузка приложения из</string>
   <string name="nfc_is_not_enabled">NFC не включен!</string>
-  <string name="go_to_nfc_settings">Перейти в Настройки NFC…</string>
   <string name="bluetooth_activity_not_found">Ни один метод отправки по Bluetooth не найден, выберите один из них!</string>
   <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
   <string name="repo_add_url">Адрес репозитория</string>
@@ -82,7 +79,6 @@
 Обновить его?</string>
   <string name="menu_update_repo">Обновить репозитории</string>
   <string name="menu_manage">Репозитории</string>
-  <string name="menu_send_apk_bt">Передача FDroid.apk по Bluetooth…</string>
   <string name="menu_preferences">Настройки</string>
   <string name="menu_about">О программе</string>
   <string name="menu_search">Поиск</string>

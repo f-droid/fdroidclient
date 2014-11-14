@@ -34,8 +34,6 @@
   <string name="tab_noninstalled">Prieinamos programos</string>
   <string name="tab_updates">Atnaujinimai</string>
   <string name="process_wait_title">Prašom palaukti</string>
-  <string name="process_update_msg">Atnaujinimas programų sąrašas…</string>
-  <string name="go_to_nfc_settings">Eiti į NFC nustatymus…</string>
   <string name="repo_add_url">Saugyklos adresas</string>
   <string name="repo_exists">Ši saugykla jau pridėta!</string>
   <string name="repo_alrt">Naudojamų saugyklų sąrašas buvo

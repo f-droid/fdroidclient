@@ -9,6 +9,7 @@
   <string name="version">Wersja</string>
   <string name="edit">Edytuj</string>
   <string name="delete">Usuń</string>
+  <string name="enable_nfc_send">Włącz przesył NFC…</string>
   <string name="cache_downloaded">Buforuj pobrane aplikacje</string>
   <string name="cache_downloaded_on">Trzymaj ściągnięte pliki apk na karcie SD</string>
   <string name="cache_downloaded_off">Nie zachowuj żadnych apk</string>
@@ -63,6 +64,10 @@ Przykładowy adres repozytorium: https://f-droid.org/repo</string>
   <string name="process_wait_title">Proszę czekać</string>
   <string name="process_update_msg">Aktualizowanie listy aplikacji…</string>
   <string name="download_server">Pobieranie aplikacji z</string>
+  <string name="nfc_is_not_enabled">NFC nie jest włączone!</string>
+  <string name="go_to_nfc_settings">Przejdź do ustawień NFC…</string>
+  <string name="bluetooth_activity_not_found">Nie znaleziono metody wysyłania Bluetooth, wybierz jedną!</string>
+  <string name="choose_bt_send">Wybierz sposób przesyłania Bluetooth</string>
   <string name="repo_add_url">Adres repozytorium</string>
   <string name="repo_add_fingerprint">Odcisk palca (opcjonalnie)</string>
   <string name="repo_exists">Repozytorium już istnieje!</string>
@@ -70,15 +75,18 @@ Przykładowy adres repozytorium: https://f-droid.org/repo</string>
   <string name="repo_exists_enable">To repozytorium jest już ustawione, potwierdź że chcesz je włączyć ponownie</string>
   <string name="repo_exists_and_enabled">Nadchodzące repozytorium jest już ustawione i włączone!</string>
   <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym kluczem!</string>
+  <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
   <string name="repo_alrt">Lista wykorzystywanych repozytoriów uległa zmianie.
 Czy chcesz je zaktualizować?</string>
   <string name="menu_update_repo">Aktualizuj repozytoria</string>
   <string name="menu_manage">Zarządzaj repozytoriami</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
   <string name="menu_preferences">Ustawienia</string>
   <string name="menu_about">Informacje</string>
   <string name="menu_search">Wyszukaj</string>
   <string name="menu_add_repo">Nowe repozytorium</string>
   <string name="menu_rem_repo">Usuń repozytorium</string>
+  <string name="menu_scan_repo">Znajdź lokalne repozytoria</string>
   <string name="menu_launch">Uruchom</string>
   <string name="menu_share">Udostępnij</string>
   <string name="menu_install">Zainstaluj</string>
@@ -118,11 +126,14 @@ Czy chcesz je zaktualizować?</string>
   <string name="category_all">Wszystkie</string>
   <string name="category_whatsnew">Co nowego</string>
   <string name="category_recentlyupdated">Ostatnio zaktualizowane</string>
+  <string name="local_repos_title">Lokalne repozytoria FDroid</string>
+  <string name="local_repos_scanning">Wykrywanie lokalnych repozytoriów FDroid…</string>
   <string name="status_download">Pobieranie %2$s / %3$s(%4$d%%) z %1$s</string>
   <string name="status_processing_xml">Przetwarzanie aplikacji %2$d / %3$d z %1$s</string>
   <string name="status_connecting_to_repo">Trwa łączenie z
 %1$s</string>
   <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
+  <string name="status_inserting">Zapisywanie szczegółów programu (%1$d%%)</string>
   <string name="no_permissions">Brak użytych uprawnień.</string>
   <string name="permissions_for_long">Uprawnienia dla wersji %s</string>
   <string name="showPermissions">Wyświetl uprawnienia</string>
@@ -136,6 +147,7 @@ Czy chcesz je zaktualizować?</string>
   <string name="unsigned">Niepodpisany</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Liczba aplikacji</string>
+  <string name="repo_fingerprint">Suma kontrolna podpisu cyfrowego repozytorium (SHA-256)</string>
   <string name="repo_description">Opis</string>
   <string name="repo_last_update">Ostatnia modyfikacja</string>
   <string name="repo_update">Aktualizacja</string>
@@ -154,4 +166,8 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
 Aby zainstalować aplikacje z tego repozytorium musisz je włączyć ponownie.</string>
   <string name="minsdk_or_later">%s lub później</string>
+  <string name="up_to_maxsdk">aż do %s</string>
+  <string name="minsdk_up_to_maxsdk">%1$s aż do %2$s</string>
+  <string name="not_on_same_wifi">Twoje urządzenie nie jest podłączone do tej samej sieci WiFi co lokalne repozytorium, które właśnie dodałeś! Spróbuj połączyć się z siecią: %s</string>
+  <string name="requires_features">Wymaga: %1$s</string>
 </resources>

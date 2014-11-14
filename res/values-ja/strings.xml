@@ -158,9 +158,6 @@ GNU GPLv3 ライセンスに基づいてリリースされました.</string>
   <string name="repo_last_update">最終更新</string>
   <string name="repo_update">更新</string>
   <string name="repo_name">名前</string>
-  <string name="unsigned_description">つまりアプリケーションのリストは
-検証されていないことを意味します. 未署名の索引からアプリケーションをダウンロードすることは
-注意が必要です.</string>
   <string name="repo_not_yet_updated">このリポジトリはまだ使用されていません.
 アプリケーションを表示するためには, リポジトリを更新する必要があります.
 

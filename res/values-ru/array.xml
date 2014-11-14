@@ -7,4 +7,8 @@
     <item>Каждые 12 часов</item>
     <item>Ежедневно</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Тёмная</item>
+    <item>Светлая</item>
+  </string-array>
 </resources>

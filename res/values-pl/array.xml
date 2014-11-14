@@ -7,4 +7,8 @@
     <item>Co 12 godzin</item>
     <item>Codziennie</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>Ciemny</item>
+    <item>Jasny</item>
+  </string-array>
 </resources>
