@@ -216,8 +216,12 @@ public final class Utils {
     };
 
     public static String getAndroidVersionName(int sdkLevel) {
-        if (sdkLevel < 0 || sdkLevel >= androidVersionNames.length)
+        if (sdkLevel < 0) {
             return androidVersionNames[0];
+        }
+        if (sdkLevel >= androidVersionNames.length) {
+            return String.format("v%d", sdkLevel);
+        }
         return androidVersionNames[sdkLevel];
     }
 
