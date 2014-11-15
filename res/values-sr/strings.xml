@@ -2,7 +2,7 @@
 <resources>
   <string name="edit">Уреди</string>
   <string name="delete">Обриши</string>
-  <string name="enable_nfc_send">Омогући НФЦ слање...</string>
+  <string name="enable_nfc_send">Омогући НФЦ слање…</string>
   <string name="cache_downloaded_on">Чувај преузете апликације на СД картици</string>
   <string name="cache_downloaded_off">Не чувај апликације</string>
   <string name="never">никада</string>
@@ -22,7 +22,7 @@
   <string name="repo_update_title">Ажурирај ризнице</string>
   <string name="process_wait_title">Сачекајте</string>
   <string name="nfc_is_not_enabled">НФЦ није укључен!</string>
-  <string name="go_to_nfc_settings">Иди на НФЦ поставке...</string>
+  <string name="go_to_nfc_settings">Иди на НФЦ поставке…</string>
   <string name="bluetooth_activity_not_found">Није одређена метода слања блутутом, одредите једну!</string>
   <string name="choose_bt_send">Одредите методу слања блутутом</string>
   <string name="repo_add_url">Адреса ризнице</string>
@@ -34,7 +34,7 @@
   <string name="repo_delete_to_overwrite">Најпре морате да обришете ову ризницу да бисте могли да додате ризницу са другачијим кључем!</string>
   <string name="malformed_repo_uri">Игноришем унакажен УРИ ризнице: %s</string>
   <string name="menu_update_repo">Ажурирај ризнице</string>
-  <string name="menu_send_apk_bt">Пошаљи FDroid.apk блутутом...</string>
+  <string name="menu_send_apk_bt">Пошаљи FDroid.apk блутутом…</string>
   <string name="menu_search">Тражи</string>
   <string name="menu_scan_repo">Нађи локалне ризнице</string>
   <string name="menu_launch">Покрени</string>
@@ -60,7 +60,7 @@
   <string name="category_all">Све</string>
   <string name="category_whatsnew">Ново</string>
   <string name="local_repos_title">Локалне ризнице</string>
-  <string name="local_repos_scanning">Откривам локалне ризнице...</string>
+  <string name="local_repos_scanning">Откривам локалне ризнице…</string>
   <string name="status_inserting">Уписујем детаље апликација (%1$d%%)</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
   <string name="showPermissions_on">Прикажи списак дозвола које апликација захтева</string>

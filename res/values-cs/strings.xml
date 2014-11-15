@@ -3,7 +3,7 @@
   <string name="version">Verze</string>
   <string name="edit">Upravit</string>
   <string name="delete">Smazat</string>
-  <string name="enable_nfc_send">Povolit posílání po NFC...</string>
+  <string name="enable_nfc_send">Povolit posílání po NFC…</string>
   <string name="automatic_scan_wifi">Pouze přes wifi</string>
   <string name="automatic_scan_wifi_on">Aktualizovat seznam aplikací pouze přes wifi</string>
   <string name="automatic_scan_wifi_off">Vždy automaticky aktualizovat seznam aplikací</string>
@@ -39,9 +39,9 @@
   <string name="many_updates_available">%d aktualizací je dostupných.</string>
   <string name="fdroid_updates_available">Dostupné aktualizace F-Droid</string>
   <string name="process_wait_title">Chvilku strpení</string>
-  <string name="process_update_msg">Aktualizace seznamu aplikací...</string>
+  <string name="process_update_msg">Aktualizace seznamu aplikací…</string>
   <string name="nfc_is_not_enabled">NFC není povoleno!</string>
-  <string name="go_to_nfc_settings">Jít do nastavení NFC...</string>
+  <string name="go_to_nfc_settings">Jít do nastavení NFC…</string>
   <string name="repo_exists">Tento repozitář již existuje!</string>
   <string name="menu_update_repo">Aktualizovat repozitáře</string>
   <string name="menu_manage">Repozitáře</string>

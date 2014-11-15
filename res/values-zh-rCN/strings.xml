@@ -6,7 +6,7 @@
   <string name="version">版本</string>
   <string name="edit">编辑</string>
   <string name="delete">删除</string>
-  <string name="enable_nfc_send">启用NFC发送...</string>
+  <string name="enable_nfc_send">启用NFC发送…</string>
   <string name="cache_downloaded_on">将已下载的apk文件保留再SD卡上</string>
   <string name="cache_downloaded_off">不保留任何的apk文件</string>
   <string name="updates">升级</string>
@@ -50,7 +50,7 @@ https://f-droid.org/repo</string>
   <string name="many_updates_available">有 %d 个可用的更新。</string>
   <string name="fdroid_updates_available">有可用的 F-Droid 更新</string>
   <string name="nfc_is_not_enabled">NFC 未启用！</string>
-  <string name="go_to_nfc_settings">前往 NFC 设置...</string>
+  <string name="go_to_nfc_settings">前往 NFC 设置…</string>
   <string name="bluetooth_activity_not_found">未找到蓝牙发送方式，请选择一个！</string>
   <string name="choose_bt_send">选择蓝牙发送方式</string>
   <string name="repo_add_fingerprint">指纹（可选）</string>
@@ -91,7 +91,7 @@ https://f-droid.org/repo</string>
   <string name="category_whatsnew">新鲜货</string>
   <string name="category_recentlyupdated">最近更新</string>
   <string name="local_repos_title">本地FDoid软件仓库</string>
-  <string name="local_repos_scanning">发现本地FDroid软件仓库...</string>
+  <string name="local_repos_scanning">发现本地FDroid软件仓库…</string>
   <string name="status_download">正在从以下位置下载：
 %1$s
 进度：%2$s / %3$s (%4$d%%)</string>
@@ -100,7 +100,7 @@ https://f-droid.org/repo</string>
 进度：%2$d / %3$d</string>
   <string name="status_connecting_to_repo">正在连接到
 %1$s</string>
-  <string name="status_checking_compatibility">正在检查应用程序与您的设备的兼容性...</string>
+  <string name="status_checking_compatibility">正在检查应用程序与您的设备的兼容性…</string>
   <string name="status_inserting">正在保存应用程序的细节 (%1$d%%)</string>
   <string name="no_permissions">未使用任何权限。</string>
   <string name="permissions_for_long">版本 %s 的权限</string>
