@@ -1,165 +1,72 @@
 buildscript {
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath 'com.android.tools.build:gradle:0.14.2'
-	}
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.14.2'
+    }
 }
 
+// We need to apply the android plugin to be able to use $android for getSdkPath
 apply plugin: 'android'
 
 allprojects {
-	ext {
-		toolVersion = '21.1.1'
-		sdkLoc = getSdkPath()
-	}
-}
-
-FileCollection getAndroidPrebuilt(String apiLevel) {
-	files("$sdkLoc/platforms/android-$apiLevel/android.jar")
-}
-
-dependencies {
-	compile project(':support-v4')
-	compile project(':support-appcompat-v7')
-	compile project(':extern:AndroidPinning')
-	compile project(':extern:UniversalImageLoader:library')
-	compile project(':extern:MemorizingTrustManager')
-	compile project(':extern:libsuperuser:libsuperuser')
-	compile project(':extern:nanohttpd:core')
-	compile project(':extern:jmdns')
-	compile project(':extern:zipsigner')
-	compile project(':extern:zxing-core')
-	compile( project(':extern:android-support-v4-preferencefragment') ) {
-		exclude module: 'support-v4'
-	}
+    ext {
+        toolVersion = '21.1.1'
+        sdkLoc = getSdkPath()
+    }
 }
 
 project(':extern:UniversalImageLoader:library') {
-	buildscript {
-		repositories {
-			mavenCentral()
-		}
-		dependencies {
-			classpath 'com.android.tools.build:gradle:0.10.0'
-		}
-	}
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath 'com.android.tools.build:gradle:0.10.0'
+        }
+    }
 
-	apply plugin: 'android-library'
+    apply plugin: 'android-library'
 
-	android {
-		compileSdkVersion 16
-		buildToolsVersion toolVersion
+    android {
+        compileSdkVersion 16
+        buildToolsVersion toolVersion
 
-		sourceSets {
-			main {
-				manifest.srcFile 'AndroidManifest.xml'
-				java.srcDirs = ['src']
-				resources.srcDirs = ['src']
-				aidl.srcDirs = ['src']
-				renderscript.srcDirs = ['src']
-				res.srcDirs = ['res']
-				assets.srcDirs = ['assets']
-			}
-		}
-	}
+        sourceSets {
+            main {
+                manifest.srcFile 'AndroidManifest.xml'
+                java.srcDirs = ['src']
+                resources.srcDirs = ['src']
+                aidl.srcDirs = ['src']
+                renderscript.srcDirs = ['src']
+                res.srcDirs = ['res']
+                assets.srcDirs = ['assets']
+            }
+        }
+    }
 }
 
 project(':extern:zipsigner') {
 
-	apply plugin: 'java'
+    apply plugin: 'java'
 
-	dependencies {
-		compile project(':extern:spongycastle:core')
-		compile project(':extern:spongycastle:pkix')
-		compile project(':extern:spongycastle:prov')
-	}
+    dependencies {
+        compile project(':extern:spongycastle:core')
+        compile project(':extern:spongycastle:pkix')
+        compile project(':extern:spongycastle:prov')
+    }
 }
 
-android {
-	compileSdkVersion 21
-	buildToolsVersion toolVersion
+project(':support-v4') {
 
-	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_1_7
-		targetCompatibility JavaVersion.VERSION_1_7
-	}
+    apply plugin: 'maven'
 
-	sourceSets {
-		main {
-			manifest.srcFile 'AndroidManifest.xml'
-			java.srcDirs = ['src']
-			resources.srcDirs = ['src']
-			aidl.srcDirs = ['src']
-			renderscript.srcDirs = ['src']
-			res.srcDirs = ['res']
-			assets.srcDirs = ['assets']
-		}
+    // The support-v4 library assumes certain things are defined in the 
+    // root project (which is usually the android-support project, but 
+    // this time it is the F-Droid project.
+    rootProject.ext.supportRepoOut = ""
 
-		instrumentTest.setRoot('test')
-	}
-
-	buildTypes {
-		release {
-			minifyEnabled false
-		}
-	}
-
-	compileOptions.encoding = "UTF-8"
-
-	lintOptions {
-		abortOnError false
-	}
-
-}
-
-// TODO: This person took the example code below from another blogpost online, however
-// I lost the reference to it:
-// http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
-android.applicationVariants.all { variant ->
-
-	task("generate${variant.name}Javadoc", type: Javadoc) {
-		title = "$name $version API"
-		description "Generates Javadoc for F-Droid."
-		source = variant.javaCompile.source
-		ext.androidJar = "$sdkLoc/platforms/${android.compileSdkVersion}/android.jar"
-		classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
-		options.links("http://docs.oracle.com/javase/7/docs/api/");
-		options.links("http://d.android.com/reference/");
-		exclude '**/BuildConfig.java'
-		exclude '**/R.java'
-	}
-}
-
-subprojects {
-
-	// The support-v4 library assumes certain things are defined in the 
-	// root project (which is usually the android-support project, but 
-	// this time it is the F-Droid project.
-	if (project.name.equals("support-v4")) {
-		apply plugin: 'maven'
-		rootProject.ext.supportRepoOut = ""
-	}
-
-	// This is the hacky way which we force the subprojects to use the same build tools:
-	// http://stackoverflow.com/a/21032272
-	afterEvaluate {
-		android {
-
-			// The android build task only lets you configure the buildToolsVersion once, so if
-			// we execute the closure below to configure our subprojects, it will fail when it
-			// hits the second subproject. Therefore, we will only do it once, and I guess the
-			// android plubin will re-use the existing value I set. 
-			// https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
-			try {
-				buildToolsVersion toolVersion
-				logger.info("Set buildToolsVersion to $toolVersion")
-			} catch (GradleException e) {
-				logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
-			}
-		}
-	}
 }
 
 /**
@@ -174,5 +81,32 @@ subprojects {
  * of this method to reflect that.
  */
 def getSdkPath() {
-	new File("$android.adbExe/../../").canonicalPath
+    new File("$android.adbExe/../../").canonicalPath
 }
+
+FileCollection getAndroidPrebuilt(String apiLevel) {
+    files("$sdkLoc/platforms/android-$apiLevel/android.jar")
+}
+
+subprojects {
+
+    // This is the hacky way which we force the subprojects to use the same build tools:
+    // http://stackoverflow.com/a/21032272
+    afterEvaluate {
+        android {
+
+            // The android build task only lets you configure the buildToolsVersion once, so if
+            // we execute the closure below to configure our subprojects, it will fail when it
+            // hits the second subproject. Therefore, we will only do it once, and I guess the
+            // android plubin will re-use the existing value I set. 
+            // https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
+            try {
+                buildToolsVersion toolVersion
+                logger.info("Set buildToolsVersion to $toolVersion")
+            } catch (GradleException e) {
+                logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
+            }
+        }
+    }
+}
+

@@ -1,4 +1,4 @@
-rootProject.name = "F-Droid"
+include ':F-Droid:'
 
 include ':extern:AndroidPinning'
 include ':extern:UniversalImageLoader:library'
