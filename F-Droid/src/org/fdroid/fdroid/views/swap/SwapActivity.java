@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -83,15 +84,21 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
             setContentView(R.layout.swap_activity);
 
-            showFragment(new StartSwapFragment(), STATE_START_SWAP);
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
 
-            if (FDroidApp.isLocalRepoServiceRunning()) {
-                showSelectApps();
-                showJoinWifi();
-                attemptToShowNfc();
-                showWifiQr();
-            }
+                    showFragment(new StartSwapFragment(), STATE_START_SWAP);
 
+                    if (FDroidApp.isLocalRepoServiceRunning()) {
+                        showSelectApps();
+                        showJoinWifi();
+                        attemptToShowNfc();
+                        showWifiQr();
+                    }
+
+                }
+            });
         }
 
     }

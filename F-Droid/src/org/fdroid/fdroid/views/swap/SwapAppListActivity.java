@@ -2,8 +2,11 @@ package org.fdroid.fdroid.views.swap;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
+
+import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
@@ -18,10 +21,15 @@ public class SwapAppListActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(android.R.id.content, new SwapAppListFragment())
-                    .commit();
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(android.R.id.content, new SwapAppListFragment())
+                        .commit();
+                }
+            });
         }
 
     }
@@ -55,5 +63,13 @@ public class SwapAppListActivity extends ActionBarActivity {
         }
 
     }
+
+    /**
+     * Here so that the AndroidManifest.xml can specify the "parent" activity from this
+     * can be different form the regular AppDetails. That is - the AppDetails goes back
+     * to the main app list, but the SwapAppDetails will go back to the "Swap app list"
+     * activity.
+     */
+    public static class SwapAppDetails extends AppDetails {}
 
 }
