@@ -35,12 +35,6 @@ import kellinwood.security.zipsigner.ZipSigner;
 
 public class LocalRepoKeyStore {
     private static final String TAG = "KerplappKeyStore";
-
-    static {
-        Security.insertProviderAt(
-                new org.spongycastle.jce.provider.BouncyCastleProvider(), 1);
-    }
-
     public static final String INDEX_CERT_ALIAS = "fdroid";
     public static final String HTTP_CERT_ALIAS = "https";
 

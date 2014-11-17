@@ -55,10 +55,8 @@ import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
 import java.io.File;
+import java.security.Security;
 import java.util.Set;
 
 public class FDroidApp extends Application {
@@ -71,12 +69,19 @@ public class FDroidApp extends Application {
     public static Repo repo = new Repo();
     public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
 
+    // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
+    private static org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
     private static Messenger localRepoServiceMessenger = null;
     private static boolean localRepoServiceIsBound = false;
 
     private static final String TAG = "org.fdroid.fdroid.FDroidApp";
 
     BluetoothAdapter bluetoothAdapter = null;
+
+    static {
+        spongyCastleProvider = new org.spongycastle.jce.provider.BouncyCastleProvider();
+        enableSpongyCastle();
+    }
 
     public static enum Theme {
         dark, light, lightWithDarkActionBar
@@ -106,6 +111,22 @@ public class FDroidApp extends Application {
 
     public static Theme getCurTheme() {
         return curTheme;
+    }
+
+    public static void enableSpongyCastle() {
+        Security.addProvider(spongyCastleProvider);
+    }
+
+    public static void enableSpongyCastleOnLollipop() {
+        if (Build.VERSION.SDK_INT == 21) {
+            Security.addProvider(spongyCastleProvider);
+        }
+    }
+
+    public static void disableSpongyCastleOnLollipop() {
+        if (Build.VERSION.SDK_INT == 21) {
+            Security.removeProvider(spongyCastleProvider.getName());
+        }
     }
 
     @Override
