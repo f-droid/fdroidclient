@@ -82,9 +82,6 @@ public class WifiStateChangeService extends Service {
                     return null;
 
                 Context context = WifiStateChangeService.this.getApplicationContext();
-                LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
-                Certificate localCert = localRepoKeyStore.getCertificate();
-                FDroidApp.repo.fingerprint = Utils.calcFingerprint(localCert);
                 LocalRepoManager lrm = LocalRepoManager.get(context);
                 lrm.setUriString(FDroidApp.repo.address);
                 lrm.writeIndexPage(Utils.getSharingUri(context, FDroidApp.repo).toString());
@@ -92,17 +89,28 @@ public class WifiStateChangeService extends Service {
                 if (isCancelled())
                     return null;
 
-                /*
-                 * Once the IP address is known we need to generate a self
-                 * signed certificate to use for HTTPS that has a CN field set
-                 * to the ipAddressString. This must be run in the background
-                 * because if this is the first time the singleton is run, it
-                 * can take a while to instantiate.
-                 */
-                if (Preferences.get().isLocalRepoHttpsEnabled())
-                    localRepoKeyStore.setupHTTPSCertificate();
+                try {
+                    LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
+                    Certificate localCert = localRepoKeyStore.getCertificate();
+                    FDroidApp.repo.fingerprint = Utils.calcFingerprint(localCert);
+
+                    /*
+                     * Once the IP address is known we need to generate a self
+                     * signed certificate to use for HTTPS that has a CN field set
+                     * to the ipAddressString. This must be run in the background
+                     * because if this is the first time the singleton is run, it
+                     * can take a while to instantiate.
+                     */
+                    if (Preferences.get().isLocalRepoHttpsEnabled())
+                        localRepoKeyStore.setupHTTPSCertificate();
+
+                } catch (LocalRepoKeyStore.InitException e) {
+                    Log.e(TAG, "Unable to configure a fingerprint or HTTPS for the local repo: " + e.getMessage());
+                    Log.e(TAG, Log.getStackTraceString(e));
+                }
+
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Log.e(TAG, Log.getStackTraceString(e));
             }
             return null;
         }

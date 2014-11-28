@@ -185,7 +185,8 @@ public class LocalRepoManager {
             symlinkIndexPageElsewhere("../../", repoCAPS);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error writing local repo index: " + e.getMessage());
+            Log.e(TAG, Log.getStackTraceString(e));
         }
     }
 
@@ -249,13 +250,16 @@ public class LocalRepoManager {
             PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
             app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
         } catch (NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
+            Log.e(TAG, Log.getStackTraceString(e));
             return;
         } catch (CertificateEncodingException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
+            Log.e(TAG, Log.getStackTraceString(e));
             return;
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
+            Log.e(TAG, Log.getStackTraceString(e));
             return;
         }
         Log.i(TAG, "apps.put: " + packageName);
@@ -317,7 +321,7 @@ public class LocalRepoManager {
 
     // TODO this needs to be ported to < android-8
     @TargetApi(8)
-    private void writeIndexXML() throws TransformerException, ParserConfigurationException {
+    private void writeIndexXML() throws TransformerException, ParserConfigurationException, LocalRepoKeyStore.InitException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
@@ -480,12 +484,11 @@ public class LocalRepoManager {
             writeIndexXML();
         } catch (Exception e) {
             Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
-            e.printStackTrace();
+            Log.e(TAG, Log.getStackTraceString(e));
             return;
         }
 
-        BufferedOutputStream bo = new BufferedOutputStream(
-                new FileOutputStream(xmlIndexJarUnsigned));
+        BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
         JarOutputStream jo = new JarOutputStream(bo);
 
         BufferedInputStream bi = new BufferedInputStream(new FileInputStream(xmlIndex));
@@ -504,8 +507,13 @@ public class LocalRepoManager {
         jo.close();
         bo.close();
 
-        LocalRepoKeyStore.get(context).signZip(xmlIndexJarUnsigned, xmlIndexJar);
+        try {
+            LocalRepoKeyStore.get(context).signZip(xmlIndexJarUnsigned, xmlIndexJar);
+        } catch (LocalRepoKeyStore.InitException e) {
+            throw new IOException("Could not sign index - keystore failed to initialize");
+        } finally {
+            xmlIndexJarUnsigned.delete();
+        }
 
-        xmlIndexJarUnsigned.delete();
     }
 }

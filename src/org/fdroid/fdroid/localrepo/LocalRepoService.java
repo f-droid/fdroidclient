@@ -23,6 +23,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapActivity;
@@ -226,7 +227,8 @@ public class LocalRepoService extends Service {
                     Log.w(TAG, "port " + prev + " occupied, trying on " + FDroidApp.port + "!");
                     startService(new Intent(LocalRepoService.this, WifiStateChangeService.class));
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "Could not start local repo HTTP server: " + e);
+                    Log.e(TAG, Log.getStackTraceString(e));
                 }
                 Looper.loop(); // start the message receiving loop
             }
@@ -279,7 +281,8 @@ public class LocalRepoService extends Service {
                     jmdns = JmDNS.create();
                     jmdns.registerService(pairService);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "Error while registering jmdns service: " + e);
+                    Log.e(TAG, Log.getStackTraceString(e));
                 }
             }
         }).start();
@@ -300,11 +303,7 @@ public class LocalRepoService extends Service {
                 pairService = null;
             }
             jmdns.unregisterAllServices();
-            try {
-                jmdns.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Utils.closeQuietly(jmdns);
             jmdns = null;
         }
     }
