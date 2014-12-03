@@ -2,6 +2,7 @@ package org.fdroid.fdroid.updater;
 
 import android.content.Context;
 import android.util.Log;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
@@ -123,7 +124,17 @@ public class SignedRepoUpdater extends RepoUpdater {
         // Don't worry about checking the status code for 200. If it was a
         // successful download, then we will have a file ready to use:
         if (indexJar != null && indexJar.exists()) {
-            indexXml = extractIndexFromJar(indexJar);
+
+            // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
+            // breakage when verifying the signature of the downloaded .jar. For more
+            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
+            try {
+                FDroidApp.disableSpongyCastleOnLollipop();
+                indexXml = extractIndexFromJar(indexJar);
+            } finally {
+                FDroidApp.enableSpongyCastleOnLollipop();
+            }
+
         }
         return indexXml;
     }
