@@ -8,7 +8,7 @@ buildscript {
 }
 
 // We need to apply the android plugin to be able to use $android for getSdkPath
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 allprojects {
     ext {
