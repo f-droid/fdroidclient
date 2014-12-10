@@ -51,6 +51,13 @@ android {
         abortOnError false
     }
 
+    // Enable all java warnings
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:all"
+        }
+    }
+
 }
 
 // TODO: This person took the example code below from another blogpost online, however
