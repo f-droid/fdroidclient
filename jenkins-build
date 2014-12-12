@@ -13,7 +13,17 @@ versionNameDate=`date +%Y-%m-%d_%H.%M.%S`
 sed -i \
     -e "s,android:versionCode=\"[0-9][0-9]*\",android:versionCode=\"$versionCodeDate\"," \
     -e "s,android:versionName=\"\([^\"][^\"]*\)\",android:versionName=\"\1.$versionNameDate\"," \
-    AndroidManifest.xml
+    F-Droid/AndroidManifest.xml
 
-. ~/.android/bashrc
+
+if [ -z $ANDROID_HOME ]; then
+    if [ -e ~/.android/bashrc ]; then
+        . ~/.android/bashrc
+    else
+        echo "ANDROID_HOME must be set!"
+        exit
+    fi
+fi
+
+cd F-Droid
 ./ant-prepare.sh
