@@ -243,7 +243,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.requirements = Utils.CommaSeparatedList.make(str);
             }
         } else if (curel.equals("description")) {
-            description = str;
+            description = cleanWhiteSpace(str);
         }
     }
 
@@ -273,10 +273,10 @@ public class RepoXMLHandler extends DefaultHandler {
 
             String nm = attributes.getValue("", "name");
             if (nm != null)
-                name = nm;
+                name = cleanWhiteSpace(nm);
             String dc = attributes.getValue("", "description");
             if (dc != null)
-                description = dc;
+                description = cleanWhiteSpace(dc);
 
         } else if (localName.equals("application") && curapp == null) {
             curapp = new App();
@@ -305,5 +305,9 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public void setTotalAppCount(int totalAppCount) {
         this.totalAppCount = totalAppCount;
+    }
+
+    private String cleanWhiteSpace(String str) {
+        return str.replaceAll("\n", " ").replaceAll("  ", " ");
     }
 }
