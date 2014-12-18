@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>끔</item>
+    <item>매시간마다</item>
+    <item>4시간마다</item>
+    <item>12시간마다</item>
+    <item>매일</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>어두운</item>
+    <item>밝은</item>
+  </string-array>
+</resources>

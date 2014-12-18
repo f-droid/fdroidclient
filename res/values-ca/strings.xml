@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchres_napps">S\'ha trobat %1$d aplicacions coincidents amb \'%2$s\':</string>
+  <string name="searchres_oneapp">S\'ha trobat una aplicació coincident amb \'%s\':</string>
+  <string name="searchres_noapps">No hi ha aplicacions coincidents amb \'%s\'</string>
+  <string name="SignatureMismatch">La nova versió està signada amb una clau diferent de la vella. Per a d\'instal·lar la nova versió, cal desinstaŀlar primer la vella. Si us plau feu-ho i proveu altre cop. (Sapigueu que desintal·lar-la suprimirà qualsevol dada interna que l\'aplicació hagi desat)</string>
+  <string name="installIncompatible">Sembla que aquest paquet no és compatible amb el vostre dispositiu. Voleu provar a instaŀlar-lo de totes maneres?</string>
+  <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?</string>
+  <string name="version">Versió</string>
+  <string name="edit">Editar</string>
+  <string name="delete">Esborrar</string>
+  <string name="cache_downloaded">Memòria cau de les aplicacions baixades</string>
+  <string name="updates">Actualitzacions</string>
+  <string name="other">Altres</string>
+  <string name="last_update_check">Darrera actualització dels dipòsits: %s</string>
+  <string name="never">mai</string>
+  <string name="automatic_scan_wifi">Només en wifi</string>
+  <string name="notify">Notifica-ho</string>
+  <string name="update_history">Actualitzacions</string>
+  <string name="search_results">Resultats de la cerca</string>
+  <string name="app_details">Detalls de l\'aplicació</string>
+  <string name="no_such_app">No s\'ha trobat l\'aplicació</string>
+  <string name="about_title">Quant a F-Droid</string>
+  <string name="about_desc">Originalment basat en Aptoide.
+Publicat amb la llicència GNU GPL v3.</string>
+  <string name="about_site">Pàgina web:</string>
+  <string name="about_mail">Correu:</string>
+  <string name="about_version">Versió:</string>
+  <string name="about_website">Pàgina web</string>
+  <string name="no_repo">No heu configurat cap dipòsit!
+
+Un dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENÚ i entreu la seva URL.
+
+L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</string>
+  <string name="inst">Instal·lat</string>
+  <string name="not_inst">No està instal·lat</string>
+  <string name="added_on">S\'ha afegit a %s</string>
+  <string name="ok">D\'acord</string>
+  <string name="yes">Sí</string>
+  <string name="no">No</string>
+  <string name="repo_add_title">Afegeix un nou dipòsit</string>
+  <string name="repo_add_add">Afegeix</string>
+  <string name="cancel">Anul·la</string>
+  <string name="enable">Permès</string>
+  <string name="add_key">Afegeix clau</string>
+  <string name="overwrite">Sobreescriu</string>
+  <string name="repo_delete_title">Trieu el dipòsit que voleu suprimir</string>
+  <string name="repo_update_title">Actualitza els dipòsits</string>
+  <string name="tab_noninstalled">Disponible</string>
+  <string name="tab_updates">Actualitzacions</string>
+  <string name="one_update_available">Hi ha 1 actualització disponible.</string>
+  <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
+  <string name="fdroid_updates_available">Hi ha actualitzacions de l\'F-Droid disponibles</string>
+  <string name="process_wait_title">Un moment si us plau</string>
+  <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions…</string>
+  <string name="download_server">S\'està obtenint l\'aplicació des de</string>
+  <string name="repo_add_url">Adreça del dipòsit</string>
+  <string name="repo_exists">Aquest dipòsit ja existeix.</string>
+  <string name="repo_alrt">La llista de dipòsits ha canviat.
+La voleu actualitzar?</string>
+  <string name="menu_update_repo">Actualitza els dipòsits</string>
+  <string name="menu_manage">Gestiona els dipòsits</string>
+  <string name="menu_preferences">Preferències</string>
+  <string name="menu_about">Quant a</string>
+  <string name="menu_search">Cerca</string>
+  <string name="menu_add_repo">Nou dipòsit</string>
+  <string name="menu_rem_repo">Suprimeix el dipòsit</string>
+  <string name="menu_scan_repo">Cerca dipòsits locals</string>
+  <string name="menu_launch">Executa</string>
+  <string name="menu_share">Comparteix</string>
+  <string name="menu_install">Instal·la</string>
+  <string name="menu_uninstall">Desinstal·la</string>
+  <string name="menu_ignore_all">Ignora totes les actualitzacions</string>
+  <string name="menu_ignore_this">Ignora aquesta actualització</string>
+  <string name="menu_website">Pàgina web</string>
+  <string name="menu_issues">Problemes</string>
+  <string name="menu_source">Codi font</string>
+  <string name="menu_upgrade">Actualitza</string>
+  <string name="menu_donate">Féu una donació</string>
+  <string name="details_installed">Versió instal·lada %s</string>
+  <string name="details_notinstalled">No està instal·lat</string>
+  <string name="corrupt_download">El fitxer baixat ha arribat en mal estat</string>
+  <string name="download_cancelled">S\'ha cancel·lat la baixat</string>
+  <string name="antiadslist">Aquesta aplicació conté publicitat</string>
+  <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>
+  <string name="antinonfreeadlist">Aquesta aplicació promou complements no lliures</string>
+  <string name="antinonfreenetlist">Aquesta aplicació promou serveis de xarxa no lliures</string>
+  <string name="antinonfreedeplist">Aquesta aplicació depèn d\'altres aplicacions no lliures</string>
+  <string name="display">Pantalla</string>
+  <string name="expert">Usuari expert</string>
+  <string name="search_hint">Cerca aplicacions</string>
+  <string name="appcompatibility">Compatibilitat de les aplicacions</string>
+  <string name="show_incompat_versions">Versions incompatibles</string>
+  <string name="rooted">Root</string>
+  <string name="ignoreTouch">Ignora la pantalla tàctil</string>
+  <string name="category_all">Tot</string>
+  <string name="category_whatsnew">Novetats</string>
+  <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
+  <string name="status_download">S\'està baixant
+%2$s / %3$s (%4$d%%) des de
+%1$s</string>
+  <string name="status_processing_xml">S\'està processant l\'aplicació
+%2$d de %3$d des de
+%1$s</string>
+  <string name="status_connecting_to_repo">S\'està connectant a
+%1$s</string>
+  <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu…</string>
+  <string name="no_permissions">No es fa servir cap permís.</string>
+  <string name="permissions_for_long">Permisos de la versió %s</string>
+  <string name="showPermissions">Mostra els permisos</string>
+  <string name="no_handler_app">No teniu cap aplicació disponible que pugui gestionar %s</string>
+  <string name="compactlayout">Vista compacta</string>
+  <string name="theme">Tema</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Número d\'aplicacions</string>
+  <string name="repo_description">Descripció</string>
+  <string name="repo_update">Actualitzant</string>
+  <string name="repo_name">Nom</string>
+  <string name="repo_confirm_delete_title">Esborrar dipòsit?</string>
+</resources>

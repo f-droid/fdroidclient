@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Ποτέ</item>
+    <item>Ωριαία</item>
+    <item>Κάθε 4 ώρες</item>
+    <item>Κάθε 12 ώρες</item>
+    <item>Καθημερινά</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Σκοτεινό</item>
+    <item>Φωτεινό</item>
+  </string-array>
+</resources>

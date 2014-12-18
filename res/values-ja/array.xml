@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>なし</item>
+    <item>毎時</item>
+    <item>4 時間毎</item>
+    <item>12 時間毎</item>
+    <item>毎日</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>ダーク</item>
+    <item>ライト</item>
+  </string-array>
+</resources>

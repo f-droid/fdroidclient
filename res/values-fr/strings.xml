@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
+  <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller effacera les données enregistrées par l\'application).</string>
+  <string name="version">Version</string>
+  <string name="edit">Éditer</string>
+  <string name="delete">Supprimer</string>
+  <string name="enable_nfc_send">Activer l\'envoi NFC…</string>
+  <string name="cache_downloaded">Stockage d\'applications téléchargées</string>
+  <string name="cache_downloaded_on">Garder les fichiers apk téléchargés sur la carte SD</string>
+  <string name="cache_downloaded_off">Ne pas garder les fichiers apk</string>
+  <string name="updates">Mises à jour</string>
+  <string name="other">Autres</string>
+  <string name="never">jamais</string>
+  <string name="update_interval">Intervalle de mise à jour automatique</string>
+  <string name="update_interval_zero">Pas de mise à jour automatique de la liste d\'applications</string>
+  <string name="automatic_scan_wifi">Seulement par Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Mettre à jour automatiquement les listes d\'applications uniquement par Wi-Fi</string>
+  <string name="automatic_scan_wifi_off">Toujours mettre à jour automatiquement les listes d\'apps</string>
+  <string name="notify">Notifier</string>
+  <string name="notify_on">Notifier quand des mises à jour sont disponibles</string>
+  <string name="notify_off">Ne pas notifier des mises à jour</string>
+  <string name="update_history">Historique des mises à jour</string>
+  <string name="search_results">Résultats de la recherche</string>
+  <string name="app_details">Détails de l\'application</string>
+  <string name="no_such_app">Pas d\'application trouvée</string>
+  <string name="about_title">À propos de F-Droid</string>
+  <string name="about_desc">Initialement basée sur Aptoide.
+Publiée sous licence GNU GPLv3.</string>
+  <string name="about_website">Site Web</string>
+  <string name="inst">Installée</string>
+  <string name="not_inst">Non installée</string>
+  <string name="added_on">Ajoutée le %s</string>
+  <string name="ok">OK</string>
+  <string name="yes">Oui</string>
+  <string name="no">Non</string>
+  <string name="repo_add_title">Ajouter un nouveau dépôt</string>
+  <string name="repo_add_add">Ajouter</string>
+  <string name="cancel">Annuler</string>
+  <string name="enable">Activer</string>
+  <string name="add_key">Ajouter une clé</string>
+  <string name="overwrite">Écraser</string>
+  <string name="repo_delete_title">Choisissez le dépôt à supprimer</string>
+  <string name="repo_update_title">Mettre à jour les dépôts</string>
+  <string name="tab_noninstalled">Disponibles</string>
+  <string name="tab_updates">Mises à jour</string>
+  <string name="one_update_available">Une mise à jour est disponible.</string>
+  <string name="many_updates_available">%d mises à jour sont disponibles.</string>
+  <string name="fdroid_updates_available">Des mises à jour F-Droid sont disponibles</string>
+  <string name="process_wait_title">Patientez</string>
+  <string name="process_update_msg">Mise à jour de la liste d\'applications…</string>
+  <string name="download_server">Réception d\'application de</string>
+  <string name="go_to_nfc_settings">Allez dans les paramètres NFC…</string>
+  <string name="choose_bt_send">Choisir la méthode d\'envoi Bluetooth</string>
+  <string name="repo_add_url">Adresse du dépôt</string>
+  <string name="repo_add_fingerprint">Empreinte digitale (optionnel)</string>
+  <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, cela va ajouter les informations des nouvelles clés.</string>
+  <string name="repo_exists_enable">Ce dépôt est déja configuré, confirmer que vous voulez le réactiver.</string>
+  <string name="menu_update_repo">Mettre à jour les dépôts</string>
+  <string name="menu_manage">Gestion de dépôts</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+  <string name="menu_preferences">Préférences</string>
+  <string name="menu_about">À propos</string>
+  <string name="menu_search">Rechercher</string>
+  <string name="menu_add_repo">Nouveau dépôt</string>
+  <string name="menu_rem_repo">Supprimer un dépôt</string>
+  <string name="menu_scan_repo">Trouver des dépôts locaux</string>
+  <string name="menu_launch">Lancer</string>
+  <string name="menu_share">Partager</string>
+  <string name="menu_install">Installer</string>
+  <string name="menu_uninstall">Désinstaller</string>
+  <string name="menu_ignore_all">Ignorer toutes les mises à jour</string>
+  <string name="menu_ignore_this">Ignorer cette mise à jour</string>
+  <string name="menu_website">Site Web</string>
+  <string name="menu_issues">Problèmes</string>
+  <string name="menu_source">Code source</string>
+  <string name="menu_upgrade">Mise à jour</string>
+  <string name="menu_donate">Faire un don</string>
+  <string name="details_installed">Version %s installée</string>
+  <string name="details_notinstalled">Non installée</string>
+  <string name="corrupt_download">Le fichier téléchargé est corrompu</string>
+  <string name="download_cancelled">Téléchargement annulé</string>
+  <string name="antiadslist">Cette application contient des publicités</string>
+  <string name="antitracklist">Cette application épie et rapporte votre activité</string>
+  <string name="antinonfreeadlist">Cette application promeut des extensions privatrices</string>
+  <string name="antinonfreenetlist">Cette application promeut des services réseaux privateurs</string>
+  <string name="antinonfreedeplist">Cette application dépend d\'autres applications non libres</string>
+  <string name="antiupstreamnonfreelist">Le code source en amont n\'est pas entièrement libre</string>
+  <string name="display">Affichage</string>
+  <string name="expert">Expert</string>
+  <string name="expert_on">Afficher plus d\'infos et activer des paramètres supplémentaires</string>
+  <string name="expert_off">Cacher des extras pour les utilisateurs avancés</string>
+  <string name="search_hint">Rechercher des applications</string>
+  <string name="appcompatibility">Compatibilité des applications</string>
+  <string name="show_incompat_versions">Versions incompatibles</string>
+  <string name="show_incompat_versions_on">Afficher les versions des applications incompatibles avec l\'appareil</string>
+  <string name="show_incompat_versions_off">Cacher les applications incompatibles avec l\'appareil</string>
+  <string name="rooted">Root</string>
+  <string name="rooted_on">Ne pas griser les applications nécessitant les privilèges root</string>
+  <string name="rooted_off">Griser les applications nécessitant les privilèges root</string>
+  <string name="ignoreTouch">Ignorer l\'écran tactile</string>
+  <string name="ignoreTouch_on">Toujours inclure les apps nécessitant un écran tactile</string>
+  <string name="ignoreTouch_off">Filtrer les apps normalement</string>
+  <string name="category_all">Tout</string>
+  <string name="category_whatsnew">Quoi de neuf ?</string>
+  <string name="category_recentlyupdated">Mis à jour récemment</string>
+  <string name="local_repos_title">Dépôts FDroid locaux</string>
+  <string name="local_repos_scanning">Découverte des dépôts FDroid locaux…</string>
+  <string name="status_download">Téléchargement
+%2$s / %3$s (%4$d%%) de
+%1$s</string>
+  <string name="status_processing_xml">Prise en compte de l\'application
+%2$d de %3$d depuis
+%1$s</string>
+  <string name="status_connecting_to_repo">Connexion à
+%1$s</string>
+  <string name="status_checking_compatibility">Vérification de la compatibilité des applications avec votre appareil…</string>
+  <string name="status_inserting">Sauvegarder les détails de l\'application (%1$d%%)</string>
+  <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
+  <string name="permissions_for_long">Permissions pour la version %s</string>
+  <string name="showPermissions">Afficher les permissions</string>
+  <string name="showPermissions_on">Afficher la liste des permissions qu\'une app requiert</string>
+  <string name="showPermissions_off">Ne pas afficher les permissions avant le téléchargement</string>
+  <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
+  <string name="compactlayout">Affichage compact</string>
+  <string name="compactlayout_on">Montrer les icônes à une taille plus petite</string>
+  <string name="compactlayout_off">Montrer les icônes à une taille normale</string>
+  <string name="theme">Thème</string>
+  <string name="unsigned">Non signé</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Nombre d\'applications</string>
+  <string name="repo_fingerprint">Empreinte digitale de la clef de signature pour le dépôt (SHA-256)</string>
+  <string name="repo_description">Description</string>
+  <string name="repo_last_update">Dernière mise à jour</string>
+  <string name="repo_update">Mise à jour</string>
+  <string name="repo_name">Nom</string>
+  <string name="unsigned_description">Cela signifie que la liste
+        des applications n\'a pu être vérifiée. Vous
+        devriez faire attention avec les
+        applications téléchargées d\'indexes non signés.</string>
+  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé.
+        Pour voir la liste des applications qu\'il
+        offre, vous devez le mettre à jour.
+
+Une fois la mise à jour effectuée, la description 
+        et les autres détails seront affichés ici.</string>
+  <string name="repo_delete_details">Voulez vous supprimer le dépôt \"{0}\", qui a {1} apps ? Toutes les applications installées ne seront pas supprimées, mais vous ne serez plus en mesure de les mettre à jour via F-Droid.</string>
+  <string name="unknown">Inconnu</string>
+  <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
+  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que les apps ne seront plus disponibles via F-Droid.
+
+Note: Toute les apps précédemment installées vont rester sur votre appareil.</string>
+  <string name="repo_disabled_notification">« %1$s » a été désactivé.
+
+Vous devez
+        réactiver ce dépôt afin d\'installer ses applications.</string>
+  <string name="minsdk_or_later">%s ou plus récent</string>
+  <string name="up_to_maxsdk">jusqu\'à %s</string>
+  <string name="minsdk_up_to_maxsdk">De %1$s à %2$s</string>
+</resources>

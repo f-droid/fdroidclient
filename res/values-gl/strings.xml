@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchres_napps">Atopáronse %1$d aplicativos que cadran con \'%2$s\':</string>
+  <string name="searchres_oneapp">Atopouse un aplicativo que cadra con \'%s\':</string>
+  <string name="searchres_noapps">Non se atoparon aplicativos que cadren con \'%s\'</string>
+  <string name="SignatureMismatch">A nova versión está asinada cunha clave diferente da antiga. Para instalar a nova versión, antes débese desinstalar a anterior. Por favor, fágao e téntao de novo. (Ao desinstalar borrarase calquera dato interno gardado pola aplicación)</string>
+  <string name="installIncompatible">Parece que este paquete non é compatíbel co seu dispositivo. Quere facer a proba e instalalo aínda así?</string>
+  <string name="installDowngrade">Está tentando instalar unha versión anterior. Isto pode supoñer un mal funcionamento ou perda de datos. Quere tentalo de todas maneiras?</string>
+  <string name="version">Versión</string>
+  <string name="cache_downloaded">Memorizar as aps descargadas</string>
+  <string name="updates">Actualizacións</string>
+  <string name="other">Outro</string>
+  <string name="last_update_check">Último escaneado do repositorio: %s</string>
+  <string name="never">nunca</string>
+  <string name="automatic_scan_wifi">Soamente no wifi</string>
+  <string name="notify">Notificar</string>
+  <string name="update_history">Histórico de actualizacións</string>
+  <string name="search_results">Resultados da busca</string>
+  <string name="app_details">Detalles da ap</string>
+  <string name="no_such_app">Non se atopa tal ap</string>
+  <string name="about_title">Sobre F-Droid</string>
+  <string name="about_desc">Baseado en Aptoide.
+Publicado con licenza GNU GPLv3.</string>
+  <string name="about_site">Sitio web:</string>
+  <string name="about_mail">Correo:</string>
+  <string name="about_version">Versión:</string>
+  <string name="about_website">Sitio web</string>
+  <string name="no_repo">Non ten ningún repositorio configurado!
+
+Un
+		repositorio é unha fonte de aplicativos. Para engadir un, prema o botón MENU
+		agora e introduza o URL.
+
+Un enderezo a un repositorio sería algo
+		como
+		isto: https://f-droid.org/repo</string>
+  <string name="inst">Instalada</string>
+  <string name="not_inst">Non instalada</string>
+  <string name="added_on">Engadida a %s</string>
+  <string name="ok">Aceptar</string>
+  <string name="yes">Si</string>
+  <string name="no">Non</string>
+  <string name="repo_add_title">Engadir un novo repositorio</string>
+  <string name="repo_add_add">Engadir</string>
+  <string name="cancel">Cancelar</string>
+  <string name="repo_delete_title">Escoller o repositorio que retirar</string>
+  <string name="repo_update_title">Actualizar repositorios</string>
+  <string name="tab_noninstalled">Dispoñíbel</string>
+  <string name="tab_updates">Actualizacións</string>
+  <string name="one_update_available">1 Actualización dispoñíbel</string>
+  <string name="many_updates_available">%d actualizacións dispoñíbeis</string>
+  <string name="fdroid_updates_available">Actualizacións de F-Droid dispoñíbeis</string>
+  <string name="process_wait_title">Agarde por favor</string>
+  <string name="process_update_msg">Actualizando a lista de aplicativos…</string>
+  <string name="download_server">Obtención do aplicativo desde</string>
+  <string name="repo_add_url">Enderezo do repositorio</string>
+  <string name="repo_alrt">Cambiou a lista de repositorios usados.
+Quere actualizalos?</string>
+  <string name="menu_update_repo">Actualizar repositorios</string>
+  <string name="menu_manage">Xestionar repositorios</string>
+  <string name="menu_preferences">Preferencias</string>
+  <string name="menu_about">Sobre</string>
+  <string name="menu_search">Buscar</string>
+  <string name="menu_add_repo">Novo repositorio</string>
+  <string name="menu_rem_repo">Retirar repositorio</string>
+  <string name="menu_launch">Executar</string>
+  <string name="menu_share">Compartir</string>
+  <string name="menu_install">Instalar</string>
+  <string name="menu_uninstall">Desinstalar</string>
+  <string name="menu_ignore_all">Ignorar todas as actualizacións</string>
+  <string name="menu_ignore_this">Ignorar esta actualización</string>
+  <string name="menu_website">Sitio web</string>
+  <string name="menu_issues">Incidencias</string>
+  <string name="menu_source">Código fonte</string>
+  <string name="menu_upgrade">Actualizar</string>
+  <string name="menu_donate">Doar</string>
+  <string name="details_installed">Instalada a versión %s</string>
+  <string name="details_notinstalled">Non instalada</string>
+  <string name="corrupt_download">O ficheiro descargado está corrupto</string>
+  <string name="download_cancelled">Descarga cancelada</string>
+  <string name="antiadslist">Esta ap contén publicidade</string>
+  <string name="antitracklist">Esta ap rexistra e informa da súa actividade</string>
+  <string name="antinonfreeadlist">Esta ap promociona engadidos que non son libres</string>
+  <string name="antinonfreenetlist">Esta ap promove servizos de rede que non son libres</string>
+  <string name="antinonfreedeplist">Esta ap depende doutras aps non libres</string>
+  <string name="display">Amosar</string>
+  <string name="expert">Experto</string>
+  <string name="search_hint">Buscar aplicativos</string>
+  <string name="appcompatibility">Compatibilidade de aplicativos</string>
+  <string name="show_incompat_versions">Versións incompatíbeis</string>
+  <string name="rooted">Root</string>
+  <string name="ignoreTouch">Ignorar a pantalla táctil</string>
+  <string name="category_all">Todos</string>
+  <string name="category_whatsnew">Qué novidades hai</string>
+  <string name="category_recentlyupdated">Actualizado recentemente</string>
+  <string name="status_download">Descargando
+%2$s / %3$s (%4$d%%) desde
+%1$s</string>
+  <string name="status_processing_xml">Procesando o aplicativo
+%2$d de %3$d desde
+%1$s</string>
+  <string name="status_connecting_to_repo">Conectándose con
+%1$s</string>
+  <string name="status_checking_compatibility">Comprobando a compatibilidade das aps con seu aparello</string>
+  <string name="no_permissions">Non se usan permisos</string>
+  <string name="permissions_for_long">Permisos para a versión %s</string>
+  <string name="showPermissions">Amosar permisos</string>
+  <string name="no_handler_app">Non ten ningunha ap dispoñíbel que poida manexar %s</string>
+  <string name="compactlayout">Deseño compacto</string>
+  <string name="theme">Tema</string>
+</resources>

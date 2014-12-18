@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
+  <string name="searchres_oneapp">Één applicatie gevonden die voldoet aan \'%s\':</string>
+  <string name="searchres_noapps">Geen applicaties gevonden die voldoen aan \'%s\'</string>
+  <string name="SignatureMismatch">De nieuwe versie is gesigneerd met een andere sleutel als de oude. Om de nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer het daarna nogmaals. (Let op dat bij het verwijderen de data van de applicatie ook verwijderd wordt)</string>
+  <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
+  <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet uw data kan corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
+  <string name="version">Versie</string>
+  <string name="edit">Bewerken</string>
+  <string name="delete">Verwijderen</string>
+  <string name="enable_nfc_send">Versturen via NFC aanzetten…</string>
+  <string name="cache_downloaded">buffer gedownloade apps</string>
+  <string name="cache_downloaded_on">Gedownloade apk-files bewaren op SD card</string>
+  <string name="cache_downloaded_off">apk-files niet bewaren</string>
+  <string name="updates">Updates</string>
+  <string name="other">Andere</string>
+  <string name="last_update_check">Laatste bronnen scan: %s</string>
+  <string name="never">nooit</string>
+  <string name="update_interval">Automatische update interval</string>
+  <string name="update_interval_zero">Geen automatische app-lijst updates</string>
+  <string name="automatic_scan_wifi">Allen op wifi</string>
+  <string name="automatic_scan_wifi_on">Update app-lijsten automatisch alleen op Wifi.</string>
+  <string name="automatic_scan_wifi_off">App-lijsten altijd automatisch updaten</string>
+  <string name="notify">Verwittigen</string>
+  <string name="notify_on">Meld wanneer updates beschikbaar zijn</string>
+  <string name="notify_off">Geef geen melding van updates</string>
+  <string name="update_history">Vernieuw historie</string>
+  <string name="update_history_summ">Dagen om een app als nieuw of recent te zien: %s</string>
+  <string name="search_results">Zoekresultaten</string>
+  <string name="app_details">App Details</string>
+  <string name="no_such_app">Geen dergelijke app gevonden</string>
+  <string name="about_title">Over F-Droid</string>
+  <string name="about_desc">Gebaseerd op Aptoide.
+Uitgegeven onder de GNU GPLv3 licentie</string>
+  <string name="about_site">Website:</string>
+  <string name="about_mail">E-mail:</string>
+  <string name="about_version">Versie:</string>
+  <string name="about_website">Website</string>
+  <string name="no_repo">U hebt geen bronnen geconfigureerd!
+
+Een
+		bron is een lijst met applicaties. Om er een toe te voegen, druk op de MENU-knop en voer de URL in.
+
+Een bron-adres ziet er ongeveer
+		uit
+		als: https://f-droid.org/repo</string>
+  <string name="inst">Geïnstalleerd</string>
+  <string name="not_inst">Niet geïnstalleerd</string>
+  <string name="added_on">Toegevoegd op %s</string>
+  <string name="ok">OK</string>
+  <string name="yes">Ja</string>
+  <string name="no">Nee</string>
+  <string name="repo_add_title">Voeg nieuwe bron toe</string>
+  <string name="repo_add_add">Toevoegen</string>
+  <string name="cancel">Annuleren</string>
+  <string name="enable">Activeer</string>
+  <string name="add_key">Voeg sleutel toe</string>
+  <string name="overwrite">Overschrijven</string>
+  <string name="repo_delete_title">Kies bron om te verwijderen</string>
+  <string name="repo_update_title">Vernieuw bronnen</string>
+  <string name="tab_noninstalled">Beschikbaar</string>
+  <string name="tab_updates">Updates</string>
+  <string name="one_update_available">1 update beschikbaar</string>
+  <string name="many_updates_available">%d updates beschikbaar</string>
+  <string name="fdroid_updates_available">F-Droid update beschikbaar</string>
+  <string name="process_wait_title">Even geduld aub</string>
+  <string name="process_update_msg">Applicatie-lijst vernieuwen…</string>
+  <string name="download_server">downloaden applicatie van</string>
+  <string name="nfc_is_not_enabled">NFC is niet ingeschakeld!</string>
+  <string name="go_to_nfc_settings">Ga naar NFC instellingen…</string>
+  <string name="bluetooth_activity_not_found">Geen Bluetooth verzendmethode gevonden, kies er een!</string>
+  <string name="choose_bt_send">Kies Bluetooth verzendmethode</string>
+  <string name="repo_add_url">Bron-adres</string>
+  <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
+  <string name="repo_exists">Deze softwarebron bestaat al!</string>
+  <string name="repo_exists_add_fingerprint">De softwarebron is al ingesteld. Nieuwe sleutelinformatie zal worden toegevoegd.</string>
+  <string name="repo_exists_enable">Deze softwarebron is al ingesteld. Bevestig dat u deze weer wilt inschakelen?</string>
+  <string name="repo_exists_and_enabled">De binnenkomende softwarebron is al ingesteld en geactiveerd!</string>
+  <string name="repo_delete_to_overwrite">U moet eerst deze softwarebron verwijderen voordat u er een kan toevoegen met een andere sleutel!</string>
+  <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
+  <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
+Wilt u ze vernieuwen?</string>
+  <string name="menu_update_repo">Vernieuw Bronnen</string>
+  <string name="menu_manage">Beheer bronnen</string>
+  <string name="menu_preferences">Voorkeuren</string>
+  <string name="menu_about">Over</string>
+  <string name="menu_search">Zoeken</string>
+  <string name="menu_add_repo">Nieuwe bron</string>
+  <string name="menu_rem_repo">Verwijder bron</string>
+  <string name="menu_scan_repo">Vind lokale oplagplaatsen</string>
+  <string name="menu_launch">Start</string>
+  <string name="menu_share">Delen</string>
+  <string name="menu_install">Installeren</string>
+  <string name="menu_uninstall">Deinstalleren</string>
+  <string name="menu_ignore_all">Negeer Alle Updates</string>
+  <string name="menu_ignore_this">Negeer Deze Update</string>
+  <string name="menu_website">Website</string>
+  <string name="menu_issues">Problemen</string>
+  <string name="menu_source">Broncode</string>
+  <string name="menu_upgrade">Verbeteren</string>
+  <string name="menu_donate">Doneer</string>
+  <string name="details_installed">Versie %s geïnstalleerd</string>
+  <string name="details_notinstalled">Niet geïnstalleerd</string>
+  <string name="corrupt_download">Gedownloade bestand is corrupt</string>
+  <string name="download_cancelled">Download geannuleerd</string>
+  <string name="antiadslist">Deze app bevat advertenties</string>
+  <string name="antitracklist">Deze app houd je activiteiten bij en rapporteerd deze</string>
+  <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>
+  <string name="antinonfreenetlist">Deze app promoot niet-vrije netwerk diensten</string>
+  <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
+  <string name="antiupstreamnonfreelist">De \'upstream\' broncode is niet helemaal Vrij (open source)</string>
+  <string name="display">Laat zien</string>
+  <string name="expert">Expert</string>
+  <string name="expert_on">Laat extra informatie zien en activeer extra instellingen</string>
+  <string name="expert_off">Verberg extra\'s voor gevorderde gebruikers</string>
+  <string name="search_hint">Zoek applicaties</string>
+  <string name="appcompatibility">Applicatie verenigbaarheid</string>
+  <string name="show_incompat_versions">Onverenigbare versies</string>
+  <string name="show_incompat_versions_on">Laat app-versies zien die niet geschikt zijn voor uw apparaat</string>
+  <string name="show_incompat_versions_off">Verberg app-versies die niet geschikt zijn voor uw apparaat</string>
+  <string name="rooted">Root</string>
+  <string name="rooted_on">Verberg apps niet die root-permissies vereisen</string>
+  <string name="rooted_off">Verberg apps die root-permissies vereisen</string>
+  <string name="ignoreTouch">Negeer aanraakscherm</string>
+  <string name="ignoreTouch_on">Altijd apps meerekenen die een touch screen vereisen</string>
+  <string name="ignoreTouch_off">Filter apps normaal</string>
+  <string name="category_all">Alles</string>
+  <string name="category_whatsnew">Wat is nieuw</string>
+  <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
+  <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
+  <string name="status_download">Downloaden
+%2$s / %3$s (%4$d%%) van
+%1$s</string>
+  <string name="status_processing_xml">Verwerken applicatie
+%2$d van %3$d van
+%1$s</string>
+  <string name="status_connecting_to_repo">Verbinden met %1$s</string>
+  <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
+  <string name="status_inserting">Applicatiedetails opslaan (%1$d%%)</string>
+  <string name="no_permissions">Geen permissies worden gebruikt</string>
+  <string name="permissions_for_long">Permissies voor versie %s</string>
+  <string name="showPermissions">Laat permissies zien</string>
+  <string name="showPermissions_on">Laat een lijst zien van benodigde permissies voor een app</string>
+  <string name="showPermissions_off">Laat geen permissies zien voor het downloaden</string>
+  <string name="no_handler_app">U hebt geen beschikbare app die %s kan verwerken</string>
+  <string name="compactlayout">Compacte Layout</string>
+  <string name="compactlayout_on">Iconen weergeven in klein formaat</string>
+  <string name="compactlayout_off">Iconen weergeven op normale grootte</string>
+  <string name="theme">Thema</string>
+  <string name="unsigned">Ongetekend</string>
+  <string name="repo_url">URL</string>
+  <string name="repo_num_apps">Aantal apps</string>
+  <string name="repo_fingerprint">Vingerafdruk van bronondertekensleutel (SHA-256)</string>
+  <string name="repo_description">Beschrijving</string>
+  <string name="repo_last_update">Meest recente update</string>
+  <string name="repo_update">Update</string>
+  <string name="repo_name">Naam</string>
+  <string name="unsigned_description">Dit betekent dat de lijst van applicaties niet geverifieerd kon worden. U zou voorzichtig moeten zijn met het downloaden van applicaties van ongetekende inhoudsbronnen</string>
+  <string name="repo_not_yet_updated">Deze opslag is nog niet eerder gebruikt. Om de leverbare apps te zien moet u het updaten.
+
+Zodra de update gedaan is ziet u hier de beschrijving en andere details.</string>
+  <string name="repo_delete_details">Weet u zeker dat u de softwarebron \"{0}\" met daarin \"{1}\" apps wilt verwijderen? Reeds geïnstalleerde apps blijven behouden, maar kunnen niet meer worden geüpdate via F-Droid.</string>
+  <string name="unknown">Onbekend</string>
+  <string name="repo_confirm_delete_title">Verwijder softwarebron?</string>
+  <string name="repo_confirm_delete_body">Het verwijderen van een opslag betekent dat apps hierop niet meer beschikbaar zijn voor F-Droid.
+
+Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
+  <string name="repo_disabled_notification">\"%1$s\" uitgeschakeld. U moet deze weer activeren mocht u apps vanuit deze opslag willen installeren.</string>
+  <string name="minsdk_or_later">%s of later</string>
+  <string name="up_to_maxsdk">tot maximaal %s</string>
+  <string name="minsdk_up_to_maxsdk">%1$s tot %2$s</string>
+  <string name="not_on_same_wifi">Uw apparaat zit niet op hetzelfde WiFi-netwerk als de lokale bron die u zojuist heeft toegevoegd! Probeer om bij netwerk %s aan te melden</string>
+  <string name="requires_features">Benodigd: %1$s</string>
+</resources>

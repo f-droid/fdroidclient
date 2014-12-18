@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Neniam</item>
+    <item>Hourly</item>
+    <item>Every 4 Hours</item>
+    <item>Every 12 Hours</item>
+    <item>Daily</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Dark</item>
+    <item>Light</item>
+  </string-array>
+</resources>

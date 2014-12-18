@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Nunca</item>
+    <item>Cada hora</item>
+    <item>Cada 4 horas</item>
+    <item>Cada 12 horas</item>
+    <item>Diariamente</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Oscuro</item>
+    <item>Claro</item>
+  </string-array>
+</resources>

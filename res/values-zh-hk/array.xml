@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>永不</item>
+    <item>每小時</item>
+    <item>每4小時</item>
+    <item>每12小時</item>
+    <item>每天</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>深</item>
+    <item>淺</item>
+  </string-array>
+</resources>

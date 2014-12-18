@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>કદી નહિ</item>
+    <item>દર કલાકે</item>
+    <item>દર 4 કલાકે</item>
+    <item>દર 12 કલાકે</item>
+    <item>દરરોજ</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Dark</item>
+    <item>Light</item>
+  </string-array>
+</resources>

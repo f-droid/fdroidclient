@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="edit">Уреди</string>
+  <string name="delete">Обриши</string>
+  <string name="enable_nfc_send">Омогући НФЦ слање...</string>
+  <string name="cache_downloaded_on">Чувај преузете апликације на СД картици</string>
+  <string name="cache_downloaded_off">Не чувај апликације</string>
+  <string name="never">никада</string>
+  <string name="update_interval">Интервал аутоматског ажурирања</string>
+  <string name="update_interval_zero">Без аутоматског ажурирања списка надоградњи</string>
+  <string name="automatic_scan_wifi_on">Ажурирај списак апликација само на бежичној мрежи</string>
+  <string name="automatic_scan_wifi_off">Увек ажурирај списак апликација аутоматски</string>
+  <string name="notify_on">Обавештавај о доступним надоградњама</string>
+  <string name="notify_off">Не обавештавај о надоградњама</string>
+  <string name="update_history_summ">Колико дана се апликације сматрају новим или недавним: %s</string>
+  <string name="inst">Инсталирана</string>
+  <string name="repo_add_title">Додај нову ризницу</string>
+  <string name="repo_add_add">Додај</string>
+  <string name="enable">Омогући</string>
+  <string name="add_key">Додај кључ</string>
+  <string name="overwrite">Пребриши</string>
+  <string name="repo_update_title">Ажурирај ризнице</string>
+  <string name="process_wait_title">Сачекајте</string>
+  <string name="nfc_is_not_enabled">НФЦ није укључен!</string>
+  <string name="go_to_nfc_settings">Иди на НФЦ поставке...</string>
+  <string name="bluetooth_activity_not_found">Није одређена метода слања блутутом, одредите једну!</string>
+  <string name="choose_bt_send">Одредите методу слања блутутом</string>
+  <string name="repo_add_url">Адреса ризнице</string>
+  <string name="repo_add_fingerprint">Отисак (опционо)</string>
+  <string name="repo_exists">Ова ризница већ постоји!</string>
+  <string name="repo_exists_add_fingerprint">Ова ризница је већ постављена, ово ће да дода нове податке о кључевима.</string>
+  <string name="repo_exists_enable">Ова ризница је већ постављена, потврдите да желите поново да је омогућите.</string>
+  <string name="repo_exists_and_enabled">Ризница је већ постављена и омогућена!</string>
+  <string name="repo_delete_to_overwrite">Најпре морате да обришете ову ризницу да бисте могли да додате ризницу са другачијим кључем!</string>
+  <string name="malformed_repo_uri">Игноришем унакажен УРИ ризнице: %s</string>
+  <string name="menu_update_repo">Ажурирај ризнице</string>
+  <string name="menu_send_apk_bt">Пошаљи FDroid.apk блутутом...</string>
+  <string name="menu_search">Тражи</string>
+  <string name="menu_scan_repo">Нађи локалне ризнице</string>
+  <string name="menu_launch">Покрени</string>
+  <string name="menu_share">Дели</string>
+  <string name="menu_install">Инсталирај</string>
+  <string name="menu_uninstall">Уклони</string>
+  <string name="menu_issues">Проблеми</string>
+  <string name="menu_upgrade">Надогради</string>
+  <string name="antiadslist">Ова апликација садржи огласе</string>
+  <string name="antitracklist">Ова апликација прати и пријављује ваше активности</string>
+  <string name="antiupstreamnonfreelist">Изворни код није у потпуности слободан</string>
+  <string name="expert_on">Прикажи додатне податке и омогући додатне поставке</string>
+  <string name="expert_off">Сакриј додатне податке за искусне кориснике</string>
+  <string name="search_hint">Претрага апликација</string>
+  <string name="appcompatibility">Компатибилност апликације</string>
+  <string name="show_incompat_versions">Некомпатибилна издања</string>
+  <string name="show_incompat_versions_on">Прикажи некомпатибилна издања апликације</string>
+  <string name="show_incompat_versions_off">Сакриј некомпатибилна издања апликације</string>
+  <string name="rooted_on">Нормално прикажи апликације које захтевају корени приступ</string>
+  <string name="rooted_off">Посиви апликације које захтевају корени приступ</string>
+  <string name="ignoreTouch_on">Увек укључи апликације које захтевају додирни екран</string>
+  <string name="ignoreTouch_off">Филтрирај апликације нормално</string>
+  <string name="category_all">Све</string>
+  <string name="category_whatsnew">Ново</string>
+  <string name="local_repos_title">Локалне ризнице</string>
+  <string name="local_repos_scanning">Откривам локалне ризнице...</string>
+  <string name="status_inserting">Уписујем детаље апликација (%1$d%%)</string>
+  <string name="no_permissions">Не захтевају се никакве дозволе.</string>
+  <string name="showPermissions_on">Прикажи списак дозвола које апликација захтева</string>
+  <string name="showPermissions_off">Не приказуј дозволе пре преузимања</string>
+  <string name="compactlayout_on">Прикажи иконе мање величине</string>
+  <string name="compactlayout_off">Прикажи иконе нормалне величине</string>
+  <string name="theme">Теме</string>
+  <string name="unsigned">Непотписана</string>
+  <string name="repo_url">УРЛ</string>
+  <string name="repo_num_apps">Број апликација</string>
+  <string name="repo_fingerprint">Отисак или кључ за потписивање ризнице (SHA-256)</string>
+  <string name="repo_description">Опис</string>
+  <string name="repo_last_update">Последње ажурирање</string>
+  <string name="repo_update">Ажурирај</string>
+  <string name="repo_name">Име</string>
+  <string name="unsigned_description">Ово значи да списак апликација није
+могао бити оверен. Требате бити опрезни са
+апликацијама преузетим са непотписаних индекса.</string>
+  <string name="repo_not_yet_updated">Ова ризница још није коришћена.
+Да бисте видели апликације које садржи, најпре је ажурирајте.
+
+Након тога, описи и остали детаљи ће бити доступни овде.</string>
+  <string name="repo_delete_details">Желите ли да обришете ризницу \"{0}\",
+која има {1} апликација? Инсталиране апликације НЕЋЕ бити
+уклоњене, али више их нећете моћи надоградити преко Ф-дроида.</string>
+  <string name="unknown">Непознато</string>
+  <string name="repo_confirm_delete_title">Да обришем ризницу?</string>
+  <string name="repo_confirm_delete_body">Брисање ризнице значи да њене апликације више неће бити доступне на Ф-дроиду.
+
+Напомена: Све претходно инсталиране апликације ће остати на уређају.</string>
+  <string name="repo_disabled_notification">Онемогућена \"%1$s\".
+
+Мораћете поново да омогућите ову ризницу да бисте инсталирали апликације са ње.</string>
+  <string name="minsdk_or_later">%s или новији</string>
+  <string name="up_to_maxsdk">до %s</string>
+  <string name="minsdk_up_to_maxsdk">од %1$s до %2$s</string>
+  <string name="not_on_same_wifi">Ваш уређај није на истој бежичној мрежи са локалном ризницом коју сте управо додали! Придружите се овој мрежи: %s</string>
+  <string name="requires_features">Захтева: %1$s</string>
+</resources>

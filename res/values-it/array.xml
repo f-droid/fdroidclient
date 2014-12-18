@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="updateIntervalNames">
+    <item>Mai</item>
+    <item>Ogni ora</item>
+    <item>Ogni 4 ore</item>
+    <item>Ogni 12 ore</item>
+    <item>Ogni giorno</item>
+  </string-array>
+  <string-array name="themeNames">
+    <item>Scuro</item>
+    <item>Chiaro</item>
+  </string-array>
+</resources>
