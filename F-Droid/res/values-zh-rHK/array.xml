@@ -7,4 +7,8 @@
     <item>每12小時</item>
     <item>每天</item>
   </string-array>
+  <string-array name="themeNames">
+    <item>深</item>
+    <item>淺</item>
+  </string-array>
 </resources>
