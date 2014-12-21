@@ -47,15 +47,15 @@ android {
 
     compileOptions.encoding = "UTF-8"
 
-    lintOptions {
-        abortOnError false
-    }
-
-    // Enable all java warnings
+    // Enable all Android lint warnings
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile) {
             options.compilerArgs << "-Xlint:all"
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
 }
