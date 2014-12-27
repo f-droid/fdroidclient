@@ -47,6 +47,15 @@ project(':extern:UniversalImageLoader:library') {
     }
 }
 
+project(':support-annotations') {
+
+    // The support-annotations build.gradle uses the mavenDeployer method, which requires
+    // this plugin. Even though no artifacts are being deployed, this is still required
+    // for the build script to work.
+    apply plugin: 'maven'
+
+}
+
 project(':extern:zipsigner') {
 
     apply plugin: 'java'
