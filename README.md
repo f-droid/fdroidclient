@@ -14,6 +14,7 @@ Once you have checked out the version you wish to build, run:
 
 ```
 git submodule update --init
+cd F-Droid
 ./ant-prepare.sh # This runs 'android update' on the libs and the main project
 ant clean release
 ```
@@ -97,7 +98,7 @@ $ android list targets
 To get a list of targets used by fdroidclient libs, run:
 
 ```
-$ for i in $(grep "android update lib-project" ant-prepare.sh | cut -f5 -d' '); do
+$ for i in $(grep "android.library.reference" project.properties | cut -f2 -d'='); do
 grep ^target $i/project.properties | cut -f2 -d'=';
 done | sort | uniq | paste -s -d',' -
 ```
