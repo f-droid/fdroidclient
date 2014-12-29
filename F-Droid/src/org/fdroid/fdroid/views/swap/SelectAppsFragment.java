@@ -198,7 +198,7 @@ public class SelectAppsFragment extends ThemeableListFragment
             Cursor c = ((Cursor) listView.getItemAtPosition(i + 1));
             String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
             if (TextUtils.equals(packageName, fdroid)) {
-                listView.setItemChecked(i, true); // always include FDroid
+                listView.setItemChecked(i + 1, true); // always include FDroid
             } else {
                 for (String selected : FDroidApp.selectedApps) {
                     if (TextUtils.equals(packageName, selected)) {
