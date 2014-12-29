@@ -10,6 +10,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.ActionMode;
 import android.view.ContextThemeWrapper;
@@ -20,7 +21,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
@@ -36,7 +36,6 @@ public class SelectAppsFragment extends ThemeableListFragment
 
     private PackageManager packageManager;
     private Drawable defaultAppIcon;
-    private ActionMode mActionMode = null;
     private String mCurrentFilterString;
     private Set<String> previouslySelectedApps = new HashSet<String>();
 
@@ -52,10 +51,18 @@ public class SelectAppsFragment extends ThemeableListFragment
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
-        menuInflater.inflate(R.menu.swap_next, menu);
+        menuInflater.inflate(R.menu.swap_next_search, menu);
         MenuItem nextMenuItem = menu.findItem(R.id.action_next);
         int flags = MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT;
         MenuItemCompat.setShowAsAction(nextMenuItem, flags);
+
+        SearchView searchView = new SearchView(getActivity());
+
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        MenuItemCompat.setActionView(searchMenuItem, searchView);
+        MenuItemCompat.setShowAsAction(searchMenuItem, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+
+        searchView.setOnQueryTextListener(this);
     }
 
     @Override
