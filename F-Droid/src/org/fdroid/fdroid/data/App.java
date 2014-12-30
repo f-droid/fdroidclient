@@ -63,7 +63,7 @@ public class App extends ValueObject implements Comparable<App> {
      * you need to change suggestedVercode to an apk which is in the apk table.
      */
     private String suggestedVersion;
-    
+
     public int suggestedVercode;
 
     public Date added;

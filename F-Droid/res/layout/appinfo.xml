@@ -40,7 +40,7 @@
 		android:layout_marginTop="8sp"
 		android:textSize="13sp"
 		android:singleLine="false" />
-	
+
 	<TextView
 		android:id="@+id/permissions"
 		android:layout_width="fill_parent"
@@ -48,7 +48,7 @@
 		android:layout_marginTop="8sp"
 		android:singleLine="true"
 		android:textStyle="bold" />
-	
+
 	<TextView
 		android:id="@+id/permissions_list"
 		android:layout_width="fill_parent"

@@ -65,7 +65,7 @@
         <EditTextPreference
             android:key="proxyHost"
             android:title="@string/proxy_host"
-	    android:summary="@string/proxy_host_summary" 
+	    android:summary="@string/proxy_host_summary"
 	    android:dependency="enableProxy" />
         <EditTextPreference
             android:key="proxyPort"

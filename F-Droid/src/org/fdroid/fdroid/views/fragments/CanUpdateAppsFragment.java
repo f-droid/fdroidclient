@@ -60,7 +60,7 @@ public class CanUpdateAppsFragment extends AppListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        
+
         mUpdateAllButton.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -88,7 +88,7 @@ public class CanUpdateAppsFragment extends AppListFragment {
      * Copied from ListFragment and added Button on top of list. We do not use a
      * custom layout here, because this breaks the progress bar functionality of
      * ListFragment.
-     * 
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState

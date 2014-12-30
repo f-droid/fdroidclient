@@ -70,8 +70,8 @@ project(':support-v4') {
 
     apply plugin: 'maven'
 
-    // The support-v4 library assumes certain things are defined in the 
-    // root project (which is usually the android-support project, but 
+    // The support-v4 library assumes certain things are defined in the
+    // root project (which is usually the android-support project, but
     // this time it is the F-Droid project.
     rootProject.ext.supportRepoOut = ""
 
@@ -81,23 +81,23 @@ project(':support-v4') {
  * Finds a reference to the prefered Android SDK directory.
  * Ideally we'd use "android.plugin.sdkFolder" to find this, however this is
  * only possible if we apply the android application plugin. This is not ideal,
- * because it will add a bunch of tasks to do with building an android app, 
+ * because it will add a bunch of tasks to do with building an android app,
  * even tnough this build.gradle is not here to build F-Droid, it is here to
  * apply hacks to play nicely with various upstream projects.
- * 
+ *
  * Adapted from https://android.googlesource.com/platform/tools/base/+/c8b776289ace4189406b59a9a9c8c9de63271cb0/build-system/gradle/src/main/groovy/com/android/build/gradle/internal/SdkHandler.java
  *   Copyright (C) 2014 The Android Open Source Project
- *   Licensed under the Apache License, Version 2.0 
+ *   Licensed under the Apache License, Version 2.0
  *   http://www.apache.org/licenses/LICENSE-2.0i
  */
 def findSdkPath() {
-    
+
     Properties properties = new Properties()
     File propFile = file("local.properties")
     if (propFile.exists()) {
         propFile.withReader { properties.load(it) }
     }
-    
+
     String sdkDirProp = properties.getProperty("sdk.dir");
     if (sdkDirProp != null) {
         return new File(sdkDirProp)
@@ -107,7 +107,7 @@ def findSdkPath() {
     if (envVar != null) {
         return new File(envVar);
     }
-    
+
     String property = System.getProperty("android.home");
     if (property != null) {
         return new File(property);

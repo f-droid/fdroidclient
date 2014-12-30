@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 import org.fdroid.fdroid.views.fragments.PreferenceFragment;
 
 public class PreferencesActivity extends ActionBarActivity {
-    
+
     public static final int RESULT_RESTART = 4;
 
     @Override

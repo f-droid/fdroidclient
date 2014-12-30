@@ -96,7 +96,7 @@ abstract public class Installer {
     /**
      * Creates a new Installer for installing/deleting processes starting from
      * an Activity
-     * 
+     *
      * @param activity
      * @param pm
      * @param callback

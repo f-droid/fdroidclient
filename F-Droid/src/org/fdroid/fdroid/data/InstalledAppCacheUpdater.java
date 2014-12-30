@@ -169,6 +169,6 @@ public class InstalledAppCacheUpdater {
                 notifyProviders();
             }
         }
-    } 
+    }
 
 }
