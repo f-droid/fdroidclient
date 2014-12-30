@@ -1,26 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="version">Издање</string>
   <string name="edit">Уреди</string>
   <string name="delete">Обриши</string>
   <string name="enable_nfc_send">Омогући НФЦ слање…</string>
+  <string name="cache_downloaded">Кеш апликација</string>
   <string name="cache_downloaded_on">Чувај преузете апликације на СД картици</string>
   <string name="cache_downloaded_off">Не чувај апликације</string>
+  <string name="updates">Надоградње</string>
+  <string name="other">Остало</string>
+  <string name="last_update_check">Ризница последњи пут скенирана: %s</string>
   <string name="never">никада</string>
   <string name="update_interval">Интервал аутоматског ажурирања</string>
   <string name="update_interval_zero">Без аутоматског ажурирања списка надоградњи</string>
+  <string name="automatic_scan_wifi">Само на бежичној мрежи</string>
   <string name="automatic_scan_wifi_on">Ажурирај списак апликација само на бежичној мрежи</string>
   <string name="automatic_scan_wifi_off">Увек ажурирај списак апликација аутоматски</string>
+  <string name="notify">Обавештења</string>
   <string name="notify_on">Обавештавај о доступним надоградњама</string>
   <string name="notify_off">Не обавештавај о надоградњама</string>
+  <string name="update_history">Историјат надоградњи</string>
   <string name="update_history_summ">Колико дана се апликације сматрају новим или недавним: %s</string>
+  <string name="search_results">Резултати претраге</string>
+  <string name="app_details">Детаљи апликације</string>
+  <string name="no_such_app">Нема такве апликације</string>
+  <string name="about_title">О Ф-дроиду</string>
+  <string name="about_desc">Оригинално засновано на пројекту Aptoide.
+Објављено под ГНУовом ГПЛв3 лиценцом.</string>
+  <string name="about_site">Вебсајт:</string>
+  <string name="about_mail">Е-адреса:</string>
+  <string name="about_version">Издање:</string>
+  <string name="about_website">Вебсајт</string>
   <string name="inst">Инсталирана</string>
+  <string name="not_inst">Није инсталирана</string>
+  <string name="added_on">Додата %s</string>
+  <string name="ok">У реду</string>
+  <string name="yes">Да</string>
+  <string name="no">Не</string>
   <string name="repo_add_title">Додај нову ризницу</string>
   <string name="repo_add_add">Додај</string>
+  <string name="cancel">Одустани</string>
   <string name="enable">Омогући</string>
   <string name="add_key">Додај кључ</string>
   <string name="overwrite">Пребриши</string>
+  <string name="repo_delete_title">Изаберите ризницу за уклањање</string>
   <string name="repo_update_title">Ажурирај ризнице</string>
+  <string name="tab_noninstalled">Доступно</string>
+  <string name="tab_updates">Надоградње</string>
   <string name="process_wait_title">Сачекајте</string>
+  <string name="process_update_msg">Ажурирам списак апликација...</string>
+  <string name="download_server">Добављам апликацију са</string>
   <string name="nfc_is_not_enabled">НФЦ није укључен!</string>
   <string name="go_to_nfc_settings">Иди на НФЦ поставке…</string>
   <string name="bluetooth_activity_not_found">Није одређена метода слања блутутом, одредите једну!</string>
@@ -34,37 +63,70 @@
   <string name="repo_delete_to_overwrite">Најпре морате да обришете ову ризницу да бисте могли да додате ризницу са другачијим кључем!</string>
   <string name="malformed_repo_uri">Игноришем унакажен УРИ ризнице: %s</string>
   <string name="menu_update_repo">Ажурирај ризнице</string>
+  <string name="menu_manage">Ризнице</string>
   <string name="menu_send_apk_bt">Пошаљи FDroid.apk блутутом…</string>
+  <string name="menu_preferences">Поставке</string>
+  <string name="menu_about">О програму</string>
   <string name="menu_search">Тражи</string>
+  <string name="menu_add_repo">Нова ризница</string>
+  <string name="menu_rem_repo">Уклони ризницу</string>
   <string name="menu_scan_repo">Нађи локалне ризнице</string>
   <string name="menu_launch">Покрени</string>
   <string name="menu_share">Дели</string>
   <string name="menu_install">Инсталирај</string>
   <string name="menu_uninstall">Уклони</string>
+  <string name="menu_ignore_all">Игнориши све надоградње</string>
+  <string name="menu_ignore_this">Игнориши ову надоградњу</string>
+  <string name="menu_website">Вебсајт</string>
   <string name="menu_issues">Проблеми</string>
+  <string name="menu_source">Изворни код</string>
   <string name="menu_upgrade">Надогради</string>
+  <string name="menu_donate">Донирај</string>
+  <string name="details_installed">Инсталирано издање  %s</string>
+  <string name="details_notinstalled">Није инсталирана</string>
+  <string name="corrupt_download">Преузети фајл је покварен</string>
+  <string name="download_cancelled">Преузимање отказано</string>
   <string name="antiadslist">Ова апликација садржи огласе</string>
   <string name="antitracklist">Ова апликација прати и пријављује ваше активности</string>
+  <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>
+  <string name="antinonfreenetlist">Ова апликација промовише неслободне мрежне услуге</string>
+  <string name="antinonfreedeplist">Ова апликација зависи од неслободних апликација</string>
   <string name="antiupstreamnonfreelist">Изворни код није у потпуности слободан</string>
+  <string name="display">Приказ</string>
+  <string name="expert">Стручно</string>
   <string name="expert_on">Прикажи додатне податке и омогући додатне поставке</string>
   <string name="expert_off">Сакриј додатне податке за искусне кориснике</string>
   <string name="search_hint">Претрага апликација</string>
-  <string name="appcompatibility">Компатибилност апликације</string>
   <string name="show_incompat_versions">Некомпатибилна издања</string>
   <string name="show_incompat_versions_on">Прикажи некомпатибилна издања апликације</string>
   <string name="show_incompat_versions_off">Сакриј некомпатибилна издања апликације</string>
+  <string name="rooted">Корен</string>
   <string name="rooted_on">Нормално прикажи апликације које захтевају корени приступ</string>
   <string name="rooted_off">Посиви апликације које захтевају корени приступ</string>
   <string name="ignoreTouch_on">Увек укључи апликације које захтевају додирни екран</string>
   <string name="ignoreTouch_off">Филтрирај апликације нормално</string>
   <string name="category_all">Све</string>
   <string name="category_whatsnew">Ново</string>
+  <string name="category_recentlyupdated">Недавно надограђено</string>
   <string name="local_repos_title">Локалне ризнице</string>
   <string name="local_repos_scanning">Откривам локалне ризнице…</string>
+  <string name="status_download">Преузимам
+%2$s / %3$s (%4$d%%) са
+%1$s</string>
+  <string name="status_processing_xml">Обрађујем апликацију
+%2$d од %3$d са
+%1$s</string>
+  <string name="status_connecting_to_repo">Повезујем се са
+%1$s</string>
+  <string name="status_checking_compatibility">Проверавам компатибилност апликација са вашим уређајем…</string>
   <string name="status_inserting">Уписујем детаље апликација (%1$d%%)</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
+  <string name="permissions_for_long">Дозволе за издање %s</string>
+  <string name="showPermissions">Прикажи дозволе</string>
   <string name="showPermissions_on">Прикажи списак дозвола које апликација захтева</string>
   <string name="showPermissions_off">Не приказуј дозволе пре преузимања</string>
+  <string name="no_handler_app">Немате инсталирану апликацију за %s</string>
+  <string name="compactlayout">Компактни распоред</string>
   <string name="compactlayout_on">Прикажи иконе мање величине</string>
   <string name="compactlayout_off">Прикажи иконе нормалне величине</string>
   <string name="theme">Теме</string>
@@ -79,15 +141,10 @@
   <string name="unsigned_description">Ово значи да списак апликација није
 могао бити оверен. Требате бити опрезни са
 апликацијама преузетим са непотписаних индекса.</string>
-  <string name="repo_not_yet_updated">Ова ризница још није коришћена.
-Да бисте видели апликације које садржи, најпре је ажурирајте.
-
-Након тога, описи и остали детаљи ће бити доступни овде.</string>
   <string name="repo_delete_details">Желите ли да обришете ризницу \"{0}\",
 која има {1} апликација? Инсталиране апликације НЕЋЕ бити
 уклоњене, али више их нећете моћи надоградити преко Ф-дроида.</string>
   <string name="unknown">Непознато</string>
-  <string name="repo_confirm_delete_title">Да обришем ризницу?</string>
   <string name="repo_confirm_delete_body">Брисање ризнице значи да њене апликације више неће бити доступне на Ф-дроиду.
 
 Напомена: Све претходно инсталиране апликације ће остати на уређају.</string>

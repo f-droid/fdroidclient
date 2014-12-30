@@ -2,9 +2,8 @@
 <resources>
   <string-array name="updateIntervalNames">
     <item>Никада</item>
-    <item>Свака 4 сата</item>
     <item>Сваких 12 сати</item>
-    <item>Сваких 12 сати</item>
+    <item>Једном дневно</item>
   </string-array>
   <string-array name="themeNames">
     <item>Тамна</item>
