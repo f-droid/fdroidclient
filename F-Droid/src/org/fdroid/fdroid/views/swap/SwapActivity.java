@@ -80,6 +80,8 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         if (savedInstanceState == null) {
 
+            setContentView(R.layout.swap_activity);
+
             showFragment(new StartSwapFragment(), STATE_START_SWAP);
 
             if (FDroidApp.isLocalRepoServiceRunning()) {
@@ -133,7 +135,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private void showFragment(Fragment fragment, String name) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(android.R.id.content, fragment, name)
+                .replace(R.id.fragment_container, fragment, name)
                 .addToBackStack(name)
                 .commit();
     }

@@ -12,14 +12,14 @@
         <!-- backward-compatibility theme options go here -->
     </style>
 
-	<color name="black">#FF000000</color>
-	<color name="white">#FFFFFFFF</color>
-	<color name="red">#FFFF0000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFFF0000</color>
 
-	<style name="AboutDialogLight" parent="@android:style/Theme.Dialog">
-		<item name="@android:windowBackground">@color/black</item>
-		<item name="@android:textColor">@color/white</item>
-	</style>
+    <style name="AboutDialogLight" parent="@android:style/Theme.Dialog">
+        <item name="@android:windowBackground">@color/black</item>
+        <item name="@android:textColor">@color/white</item>
+    </style>
 
     <style name="AppThemeDark" parent="AppBaseThemeDark">
         <!-- customizations that are not API-level specific go here. -->
@@ -65,6 +65,7 @@
 
     <style name="SwapTheme.AppList.SwapSuccess">
         <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">25.7sp</item> <!-- 46px * 96dpi / 160dpi -->
         <item name="android:paddingTop">28dp</item> <!-- 50px * 96dpi / 160dpi -->
         <item name="android:paddingBottom">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
@@ -73,6 +74,7 @@
 
     <style name="SwapTheme.AppList.SwapSuccessDetails">
         <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">20.1sp</item> <!-- 36px * 96dpi / 160dpi -->
         <item name="android:paddingTop">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
         <item name="android:paddingBottom">20.1dp</item> <!-- 36px * 96dpi / 160dpi -->
@@ -81,6 +83,7 @@
 
     <style name="SwapTheme.StartSwap.MainText">
         <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">20.1sp</item> <!-- 36px * 96dpi / 160dpi -->
         <item name="android:paddingLeft">28dp</item> <!-- 50px * 96dpi / 160dpi -->
         <item name="android:paddingRight">28dp</item> <!-- 50px * 96dpi / 160dpi -->
@@ -90,6 +93,7 @@
 
     <style name="SwapTheme.Wizard.Text">
         <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textColor">#fff</item>
         <item name="android:textColorPrimary">#fff</item>
         <item name="android:textColorSecondary">#fff</item>
