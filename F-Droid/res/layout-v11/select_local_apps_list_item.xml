@@ -22,6 +22,7 @@
     android:paddingTop="2dip" >
 
     <ImageView
+        android:id="@android:id/icon"
         android:layout_width="48dip"
         android:layout_height="48dip"
         android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
