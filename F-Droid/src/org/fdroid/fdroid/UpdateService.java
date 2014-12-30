@@ -173,7 +173,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 for (CharSequence error : repoErrors) {
                     if (msgB.length() > 0) msgB.append('\n');
                     msgB.append(error);
-		}
+                }
                 if (resultCode == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
                     msgB.append("\n").append(context.getString(R.string.all_other_repos_fine));
                 }
