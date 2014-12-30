@@ -61,7 +61,7 @@ https://f-droid.org/repo</string>
   <string name="many_updates_available">有 %d 个可用的更新。</string>
   <string name="fdroid_updates_available">有可用的 F-Droid 更新</string>
   <string name="process_wait_title">请稍等</string>
-  <string name="process_update_msg">正在更新应用程序列表...</string>
+  <string name="process_update_msg">正在更新应用程序列表…</string>
   <string name="download_server">正在下载应用列表从</string>
   <string name="nfc_is_not_enabled">NFC 未启用！</string>
   <string name="go_to_nfc_settings">前往 NFC 设置…</string>
