@@ -1,3 +1,17 @@
+### 0.78 (2014-12-31)
+
+* Fix repo updates on 5.0 (which caused no apps to show on clean installs)
+
+* Be more verbose when encountering repo index update errors
+
+* Bump the Target SDK to 21
+
+* Update Universal-Image-Loader and the Support libraries
+
+* Switch the directory structure to better suit building with gradle
+
+* Translation updates
+
 ### 0.76 (2014-10-08)
 
 * Added "local repo" support to host an F-Droid repo on the device itself, with
