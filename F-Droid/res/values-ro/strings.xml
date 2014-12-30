@@ -64,5 +64,5 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="repo_update">Actualizează</string>
   <string name="repo_name">Nume</string>
   <string name="unknown">Necunoscut</string>
-  <string name="requires_features">Necesită: %1$</string>
+  <string name="requires_features">Necesită: %1$s</string>
 </resources>
