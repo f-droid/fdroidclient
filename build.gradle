@@ -1,3 +1,20 @@
+/**
+ * This is *NOT* the main build script for F-Droid.  The main build.gradle
+ * is in F-Droid/build.gradle. Usually multi-project builds don't have a
+ * build.gradle in the top level directory (http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Dependencies-Android-Libraries-and-Multi-project-setup).
+ *
+ * This build script contains miscellaneous hacks to ensure that all of
+ * F-Droids dependencies can be built from source.
+ * Each hack should be documented, and in the future, may need to be changed
+ * in order to ensure that we keep pace with any changes upstream makes to
+ * their build processes.
+ *
+ *  - Some subprojects don't have gradle build scripts, so they are setup here.
+ *
+ *  - The android support libraries make a lot of dependencies about the project
+ *    two folders up from themselves, which we will have to provide for them.
+ */
+
 buildscript {
     repositories {
         mavenCentral()
@@ -7,31 +24,13 @@ buildscript {
     }
 }
 
-// We need to apply the android plugin to be able to use $android for getSdkPath
-apply plugin: 'com.android.application'
-
-allprojects {
-    ext {
-        toolVersion = '21.1.2'
-        sdkLoc = getSdkPath()
-    }
-}
-
 project(':extern:UniversalImageLoader:library') {
-    buildscript {
-        repositories {
-            mavenCentral()
-        }
-        dependencies {
-            classpath 'com.android.tools.build:gradle:0.10.0'
-        }
-    }
 
     apply plugin: 'android-library'
 
     android {
         compileSdkVersion 16
-        buildToolsVersion toolVersion
+        buildToolsVersion '21.1.2'
 
         sourceSets {
             main {
@@ -45,6 +44,15 @@ project(':extern:UniversalImageLoader:library') {
             }
         }
     }
+}
+
+// The support-annotations build.gradle uses the mavenDeployer method, which requires
+// this plugin. Even though no artifacts are being deployed, this is still required
+// for the build script to work.
+project(':support-annotations') {
+
+    apply plugin: 'maven'
+
 }
 
 project(':extern:zipsigner') {
@@ -70,22 +78,67 @@ project(':support-v4') {
 }
 
 /**
- * Currently a bit hacky, because android.plugin is protected.
- * The end goal is to find something in the android BaseExtension class found here:
- *  https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
- * which ends up asking their Sdk class for it's location. That class knows about
- * both ANDROID_HOME env variables, and also local.properties sdk.loc properties.
+ * Finds a reference to the prefered Android SDK directory.
+ * Ideally we'd use "android.plugin.sdkFolder" to find this, however this is
+ * only possible if we apply the android application plugin. This is not ideal,
+ * because it will add a bunch of tasks to do with building an android app, 
+ * even tnough this build.gradle is not here to build F-Droid, it is here to
+ * apply hacks to play nicely with various upstream projects.
  * 
- * If in the future, the android.adbExe is found to be inappropriate, deprecated,
- * or a better way of finding the sdk path exists, we can change the implementation
- * of this method to reflect that.
+ * Adapted from https://android.googlesource.com/platform/tools/base/+/c8b776289ace4189406b59a9a9c8c9de63271cb0/build-system/gradle/src/main/groovy/com/android/build/gradle/internal/SdkHandler.java
+ *   Copyright (C) 2014 The Android Open Source Project
+ *   Licensed under the Apache License, Version 2.0 
+ *   http://www.apache.org/licenses/LICENSE-2.0i
  */
-def getSdkPath() {
-    new File("$android.adbExe/../../").canonicalPath
+def findSdkPath() {
+    
+    Properties properties = new Properties()
+    File propFile = file("local.properties")
+    if (propFile.exists()) {
+        propFile.withReader { properties.load(it) }
+    }
+    
+    String sdkDirProp = properties.getProperty("sdk.dir");
+    if (sdkDirProp != null) {
+        return new File(sdkDirProp)
+    }
+
+    String envVar = System.getenv("ANDROID_HOME");
+    if (envVar != null) {
+        return new File(envVar);
+    }
+    
+    String property = System.getProperty("android.home");
+    if (property != null) {
+        return new File(property);
+    }
+
+    def error = """
+Couldn't find Android SDK. Looked for (in order of precedence):
+ * sdk.dir in $propFile
+ * ANDROID_HOME environment variable
+ * android.home Java property
+"""
+
+    throw new RuntimeException(error)
 }
 
+// Used by the support-v4 libraries build script.
 FileCollection getAndroidPrebuilt(String apiLevel) {
-    files("$sdkLoc/platforms/android-$apiLevel/android.jar")
+
+    def file = new File("${findSdkPath()}/platforms/android-$apiLevel/android.jar")
+    if (!file.exists()) {
+        def msg = """
+Android SDK for android-$apiLevel not found (required for building support library).
+Expected to find it at $file.
+Do you have that SDK installed?
+(If it is not visible in the Android SDK Manager, "Packages -> Show Obsolete Packages")
+"""
+        throw new RuntimeException(msg)
+    }
+
+    return files(file)
+
 }
 
 subprojects {
@@ -93,20 +146,21 @@ subprojects {
     // This is the hacky way which we force the subprojects to use the same build tools:
     // http://stackoverflow.com/a/21032272
     afterEvaluate {
-        android {
+        if ( it.hasProperty( 'android' ) ) {
+            android {
 
-            // The android build task only lets you configure the buildToolsVersion once, so if
-            // we execute the closure below to configure our subprojects, it will fail when it
-            // hits the second subproject. Therefore, we will only do it once, and I guess the
-            // android plubin will re-use the existing value I set. 
-            // https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
-            try {
-                buildToolsVersion toolVersion
-                logger.info("Set buildToolsVersion to $toolVersion")
-            } catch (GradleException e) {
-                logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
+                // The android build task only lets you configure the buildToolsVersion once, so if
+                // we execute the closure below to configure our subprojects, it will fail when it
+                // hits the second subproject. Therefore, we will only do it once, and I guess the
+                // android plugin will re-use the existing value I set.
+                // https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
+                try {
+                    buildToolsVersion '21.1.2'
+                    logger.info("Set buildToolsVersion to '21.1.2'")
+                } catch (GradleException e) {
+                    logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
+                }
             }
         }
     }
 }
-

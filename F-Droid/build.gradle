@@ -18,7 +18,7 @@ dependencies {
 
 android {
     compileSdkVersion 21
-    buildToolsVersion toolVersion
+    buildToolsVersion '21.1.2'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -69,7 +69,7 @@ android.applicationVariants.all { variant ->
         title = "$name $version API"
         description "Generates Javadoc for F-Droid."
         source = variant.javaCompile.source
-        ext.androidJar = "$sdkLoc/platforms/${android.compileSdkVersion}/android.jar"
+        ext.androidJar = "${android.plugin.sdkFolder}/platforms/${android.compileSdkVersion}/android.jar"
         classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
         options.links("http://docs.oracle.com/javase/7/docs/api/");
         options.links("http://d.android.com/reference/");
