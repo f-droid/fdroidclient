@@ -34,9 +34,11 @@ repo](https://f-droid.org/app/org.fdroid.fdroid).
 Contributing
 ------------
 
-You are welcome to submit Merge Requests via the Gitorious web interface. You
-can also follow our [Issue tracker](https://f-droid.org/repository/issues/)
-and our [Forums](https://f-droid.org/forums/).
+You are welcome to submit
+[Merge Requests](https://gitlab.com/fdroid/fdroidclient/merge_requests)
+via the Gitlab web interface. You can also follow our
+[Issue tracker](https://f-droid.org/repository/issues/) and our
+[Forums](https://f-droid.org/forums/).
 
 
 Translating
