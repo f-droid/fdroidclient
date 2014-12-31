@@ -2,7 +2,7 @@
 
 * Fix repo updates on 5.0 (which caused no apps to show on clean installs)
 
-* "Local repo" has an improved interface making it simpler to swap apps between 
+* "Local repo" has an improved interface making it simpler to swap apps between
   devices. The "Start Swap" menu item opens a wizard to help with the process.
 
 * Be more verbose when encountering repo index update errors

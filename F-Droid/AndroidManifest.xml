@@ -40,16 +40,16 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.NFC" />
-    
+
     <!-- These permissions are only granted when F-Droid is installed as a system-app! -->
-    <uses-permission android:name="android.permission.INSTALL_PACKAGES" 
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"
         tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.DELETE_PACKAGES" 
+    <uses-permission android:name="android.permission.DELETE_PACKAGES"
         tools:ignore="ProtectedPermissions"/>
-    
+
     <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app) -->
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
-    
+
     <application
         android:name="FDroidApp"
         android:icon="@drawable/ic_launcher"
@@ -350,7 +350,7 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        
+
         <!--Used for SSL TOFU, supported by extern/MemorizingTrustManager lib -->
         <activity
                 android:name="de.duenndns.ssl.MemorizingActivity"
