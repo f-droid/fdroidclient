@@ -15,6 +15,8 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -70,16 +72,13 @@ public class LocalRepoManager {
     private final SharedPreferences prefs;
     private final String fdroidPackageName;
 
-    private String ipAddressString = "UNSET";
-    private String uriString = "UNSET";
-
     private static String[] WEB_ROOT_ASSET_FILES = {
         "swap-icon.png",
         "swap-tick-done.png",
         "swap-tick-not-done.png"
     };
 
-    private Map<String, App> apps = new HashMap<String, App>();
+    private Map<String, App> apps = new HashMap<>();
 
     public final SanitizedFile xmlIndex;
     private SanitizedFile xmlIndexJar = null;
@@ -89,8 +88,10 @@ public class LocalRepoManager {
     public final SanitizedFile repoDir;
     public final SanitizedFile iconsDir;
 
+    @Nullable
     private static LocalRepoManager localRepoManager;
 
+    @NonNull
     public static LocalRepoManager get(Context context) {
         if (localRepoManager == null)
             localRepoManager = new LocalRepoManager(context);
@@ -126,10 +127,6 @@ public class LocalRepoManager {
                 Log.e(TAG, "Unable to create icons folder: " + iconsDir);
     }
 
-    public void setUriString(String uriString) {
-        this.uriString = uriString;
-    }
-
     private String writeFdroidApkToWebroot() {
         ApplicationInfo appInfo;
         String fdroidClientURL = "https://f-droid.org/FDroid.apk";
@@ -138,7 +135,7 @@ public class LocalRepoManager {
             appInfo = pm.getApplicationInfo(fdroidPackageName, PackageManager.GET_META_DATA);
             SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
             SanitizedFile fdroidApkLink = new SanitizedFile(webRoot, "fdroid.client.apk");
-            fdroidApkLink.delete();
+            attemptToDelete(fdroidApkLink);
             if (Utils.symlinkOrCopyFile(apkFile, fdroidApkLink))
                 fdroidClientURL = "/" + fdroidApkLink.getName();
         } catch (NameNotFoundException e) {
@@ -176,10 +173,10 @@ public class LocalRepoManager {
 
             // add in /FDROID/REPO to support bad QR Scanner apps
             File fdroidCAPS = new File(fdroidDir.getParentFile(), "FDROID");
-            fdroidCAPS.mkdir();
+            attemptToMkdir(fdroidCAPS);
 
             File repoCAPS = new File(fdroidCAPS, "REPO");
-            repoCAPS.mkdir();
+            attemptToMkdir(repoCAPS);
 
             symlinkIndexPageElsewhere("../", fdroidCAPS);
             symlinkIndexPageElsewhere("../../", repoCAPS);
@@ -190,15 +187,37 @@ public class LocalRepoManager {
         }
     }
 
+    private static void attemptToMkdir(@NonNull File dir) throws IOException {
+        if (dir.exists()) {
+            if (dir.isDirectory()) {
+                return;
+            } else {
+                throw new IOException("Can't make directory " + dir + " - it is already a file.");
+            }
+        }
+
+        if (!dir.mkdir()) {
+            throw new IOException("An error occured trying to create directory " + dir);
+        }
+    }
+
+    private static void attemptToDelete(File file) {
+            Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), fileName), file);
+            if (!file.delete()) {
+                Log.e(TAG, "Could not delete \"" + file.getAbsolutePath() + "\".");
+            }
+        }
+    }
+
     private void symlinkIndexPageElsewhere(String symlinkPrefix, File directory) {
         SanitizedFile index = new SanitizedFile(directory, "index.html");
-        index.delete();
-        Utils.symlinkOrCopyFile(new SanitizedFile(new File(symlinkPrefix), "index.html"), index);
+        attemptToDelete(index);
+        Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), "index.html"), index);
 
         for(String fileName : WEB_ROOT_ASSET_FILES) {
             SanitizedFile file = new SanitizedFile(directory, fileName);
-            file.delete();
-            Utils.symlinkOrCopyFile(new SanitizedFile(new File(symlinkPrefix), fileName), file);
+            attemptToDelete(file);
+            Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), fileName), file);
         }
     }
 
@@ -208,7 +227,7 @@ public class LocalRepoManager {
                 if (file.isDirectory()) {
                     deleteContents(file);
                 } else {
-                    file.delete();
+                    attemptToDelete(file);
                 }
             }
         }
@@ -219,7 +238,7 @@ public class LocalRepoManager {
     }
 
     public void copyApksToRepo() {
-        copyApksToRepo(new ArrayList<String>(apps.keySet()));
+        copyApksToRepo(new ArrayList<>(apps.keySet()));
     }
 
     public void copyApksToRepo(List<String> appsToCopy) {
@@ -236,10 +255,6 @@ public class LocalRepoManager {
         }
     }
 
-    public interface ScanListener {
-        public void processedApp(String packageName, int index, int total);
-    }
-
     @TargetApi(9)
     public void addApp(Context context, String packageName) {
         App app;
@@ -249,15 +264,7 @@ public class LocalRepoManager {
                 return;
             PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
             app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
-        } catch (NameNotFoundException e) {
-            Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-            return;
-        } catch (CertificateEncodingException e) {
-            Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-            return;
-        } catch (IOException e) {
+        } catch (NameNotFoundException | CertificateEncodingException | IOException e) {
             Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
             Log.e(TAG, Log.getStackTraceString(e));
             return;
@@ -266,12 +273,8 @@ public class LocalRepoManager {
         apps.put(packageName, app);
     }
 
-    public void removeApp(String packageName) {
-        apps.remove(packageName);
-    }
-
     public List<String> getApps() {
-        return new ArrayList<String>(apps.keySet());
+        return new ArrayList<>(apps.keySet());
     }
 
     public void copyIconsToRepo() {
@@ -290,8 +293,6 @@ public class LocalRepoManager {
 
     /**
      * Extracts the icon from an APK and writes it to the repo as a PNG
-     *
-     * @return path to the PNG file
      */
     public void copyIconToRepo(Drawable drawable, String packageName, int versionCode) {
         Bitmap bitmap;
@@ -319,8 +320,6 @@ public class LocalRepoManager {
         return new File(iconsDir, packageName + "_" + versionCode + ".png");
     }
 
-    // TODO this needs to be ported to < android-8
-    @TargetApi(8)
     private void writeIndexXML() throws TransformerException, ParserConfigurationException, LocalRepoKeyStore.InitException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -338,7 +337,7 @@ public class LocalRepoManager {
         Element repo = doc.createElement("repo");
         repo.setAttribute("icon", "blah.png");
         repo.setAttribute("maxage", String.valueOf(repoMaxAge));
-        repo.setAttribute("name", repoName + " on " + ipAddressString);
+        repo.setAttribute("name", repoName + " on " + FDroidApp.ipAddressString);
         repo.setAttribute("pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
         long timestamp = System.currentTimeMillis() / 1000L;
         repo.setAttribute("timestamp", String.valueOf(timestamp));
@@ -512,7 +511,7 @@ public class LocalRepoManager {
         } catch (LocalRepoKeyStore.InitException e) {
             throw new IOException("Could not sign index - keystore failed to initialize");
         } finally {
-            xmlIndexJarUnsigned.delete();
+            attemptToDelete(xmlIndexJarUnsigned);
         }
 
     }

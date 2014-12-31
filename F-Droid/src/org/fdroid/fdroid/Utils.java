@@ -59,6 +59,8 @@ import java.util.Locale;
 
 public final class Utils {
 
+    private static final String TAG = "org.fdroid.fdroid.Utils";
+
     public static final int BUFFER_SIZE = 4096;
 
     // The date format used for storing dates (e.g. lastupdated, added) in the
