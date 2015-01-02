@@ -66,7 +66,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
     @TargetApi(14)
     private void setNfc() {
-        if (NfcHelper.setPushMessage(this, Utils.getSharingUri(this, repo))) {
+        if (NfcHelper.setPushMessage(this, Utils.getSharingUri(repo))) {
             findViewById(android.R.id.content).post(new Runnable() {
                 @Override
                 public void run() {

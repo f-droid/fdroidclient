@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 
 public class ConfirmReceiveSwapFragment extends Fragment implements ProgressListener {
+
+    private static final String TAG = "org.fdroid.fdroid.views.swap.ConfirmReceiveSwapFragment";
 
     private NewRepoConfig newRepoConfig;
 
@@ -64,22 +68,29 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
         UpdateService.updateRepoNow(repo.address, getActivity()).setListener(this);
     }
 
+    @NonNull
     private Repo ensureRepoExists() {
         // TODO: newRepoConfig.getUri() will include a fingerprint, which may not match with
         // the repos address in the database.
         Repo repo = RepoProvider.Helper.findByAddress(getActivity(), newRepoConfig.getUriString());
         if (repo == null) {
-            ContentValues values = new ContentValues(5);
+            ContentValues values = new ContentValues(6);
 
-             // TODO: i18n and think about most appropriate name. Although ideally, it will not be seen often,
-             // because we're whacking a pretty UI over the swap process so they don't need to "Manage repos"...
+             // TODO: i18n and think about most appropriate name. Although it wont be visible in
+             // the "Manage repos" UI after being marked as a swap repo here...
             values.put(RepoProvider.DataColumns.NAME, "Swap");
             values.put(RepoProvider.DataColumns.ADDRESS, newRepoConfig.getUriString());
             values.put(RepoProvider.DataColumns.DESCRIPTION, ""); // TODO;
             values.put(RepoProvider.DataColumns.FINGERPRINT, newRepoConfig.getFingerprint());
             values.put(RepoProvider.DataColumns.IN_USE, true);
+            values.put(RepoProvider.DataColumns.IS_SWAP, true);
             Uri uri = RepoProvider.Helper.insert(getActivity(), values);
             repo = RepoProvider.Helper.findByUri(getActivity(), uri);
+        } else if (!repo.isSwap) {
+            Log.d(TAG, "Old local repo being marked as \"Swap\" repo, so that it wont appear in the list of repositories in the future.");
+            ContentValues values = new ContentValues(1);
+            values.put(RepoProvider.DataColumns.IS_SWAP, true);
+            RepoProvider.Helper.update(getActivity(), repo, values);
         }
         return repo;
     }

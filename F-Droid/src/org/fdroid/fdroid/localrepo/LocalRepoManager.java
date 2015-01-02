@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.localrepo;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -255,7 +254,6 @@ public class LocalRepoManager {
         }
     }
 
-    @TargetApi(9)
     public void addApp(Context context, String packageName) {
         App app;
         try {

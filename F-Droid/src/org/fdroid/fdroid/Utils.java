@@ -232,11 +232,7 @@ public final class Utils {
                 }
                 eventType = xml.nextToken();
             }
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (XmlPullParserException e) {
+        } catch (NameNotFoundException | IOException | XmlPullParserException e) {
             e.printStackTrace();
         }
         return 8; // some kind of hopeful default
@@ -284,7 +280,7 @@ public final class Utils {
         return displayFP;
     }
 
-    public static Uri getSharingUri(Context context, Repo repo) {
+    public static Uri getSharingUri(Repo repo) {
         if (TextUtils.isEmpty(repo.address))
             return Uri.parse("http://wifi-not-enabled");
         Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
@@ -347,8 +343,8 @@ public final class Utils {
             digest.update(key);
             byte[] fingerprint = digest.digest();
             Formatter formatter = new Formatter(new StringBuilder());
-            for (int i = 0; i < fingerprint.length; i++) {
-                formatter.format("%02X", fingerprint[i]);
+            for (byte aFingerprint : fingerprint) {
+                formatter.format("%02X", aFingerprint);
             }
             ret = formatter.toString();
             formatter.close();
@@ -434,14 +430,14 @@ public final class Utils {
 
     public static String getBinaryHash(File apk, String algo) {
         FileInputStream fis = null;
-        BufferedInputStream bis = null;
+        BufferedInputStream bis;
         try {
             MessageDigest md = MessageDigest.getInstance(algo);
             fis = new FileInputStream(apk);
             bis = new BufferedInputStream(fis);
 
             byte[] dataBytes = new byte[524288];
-            int nread = 0;
+            int nread;
 
             while ((nread = bis.read(dataBytes)) != -1)
                 md.update(dataBytes, 0, nread);
@@ -485,7 +481,7 @@ public final class Utils {
                     listNum = -1;
                 else
                     output.append('\n');
-            } else if (opening && tag.equals("ol")) {
+            } else if (tag.equals("ol")) {
                 if (opening)
                     listNum = 1;
                 else

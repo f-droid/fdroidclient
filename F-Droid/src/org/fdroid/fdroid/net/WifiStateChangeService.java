@@ -82,7 +82,7 @@ public class WifiStateChangeService extends Service {
 
                 Context context = WifiStateChangeService.this.getApplicationContext();
                 LocalRepoManager lrm = LocalRepoManager.get(context);
-                lrm.writeIndexPage(Utils.getSharingUri(context, FDroidApp.repo).toString());
+                lrm.writeIndexPage(Utils.getSharingUri(FDroidApp.repo).toString());
 
                 if (isCancelled())
                     return null;

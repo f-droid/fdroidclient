@@ -13,7 +13,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.*;
@@ -30,8 +29,13 @@ import java.util.Set;
 public class SelectAppsFragment extends ThemeableListFragment
     implements LoaderManager.LoaderCallbacks<Cursor>, SearchView.OnQueryTextListener {
 
+    @SuppressWarnings("UnusedDeclaration")
+    private static final String TAG = "org.fdroid.fdroid.views.swap.SelectAppsFragment";
+
     private String mCurrentFilterString;
-    private Set<String> previouslySelectedApps = new HashSet<>();
+
+    @NonNull
+    private final Set<String> previouslySelectedApps = new HashSet<>();
 
     public Set<String> getSelectedApps() {
         return FDroidApp.selectedApps;
@@ -120,7 +124,11 @@ public class SelectAppsFragment extends ThemeableListFragment
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        Cursor c = (Cursor) l.getAdapter().getItem(position);
+        toggleAppSelected(position);
+    }
+
+    private void toggleAppSelected(int position) {
+        Cursor c = (Cursor) getListAdapter().getItem(position);
         String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
         if (FDroidApp.selectedApps.contains(packageName)) {
             FDroidApp.selectedApps.remove(packageName);
@@ -208,7 +216,10 @@ public class SelectAppsFragment extends ThemeableListFragment
         return R.layout.swap_create_header;
     }
 
-    private static class AppListAdapter extends CursorAdapter {
+    private class AppListAdapter extends CursorAdapter {
+
+        @SuppressWarnings("UnusedDeclaration")
+        private static final String TAG = "org.fdroid.fdroid.views.swap.SelectAppsFragment.AppListAdapter";
 
         @Nullable
         private LayoutInflater inflater;
@@ -276,12 +287,16 @@ public class SelectAppsFragment extends ThemeableListFragment
             if (checkBoxView != null) {
                 CheckBox checkBox = (CheckBox)checkBoxView;
                 checkBox.setOnCheckedChangeListener(null);
-                checkBox.setChecked(listView.isItemChecked(cursor.getPosition()));
-                final int position = cursor.getPosition();
+
+                final int cursorPosition = cursor.getPosition();
+                final int listPosition = cursor.getPosition() + 1; // To account for the header view.
+
+                checkBox.setChecked(listView.isItemChecked(listPosition));
                 checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        listView.setItemChecked(position, isChecked);
+                        listView.setItemChecked(listPosition, isChecked);
+                        toggleAppSelected(cursorPosition);
                     }
                 });
             }

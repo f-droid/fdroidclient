@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -114,7 +115,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         // Even if they opted to skip the message which says "Touch devices to swap",
         // we still want to actually enable the feature, so that they could touch
         // during the wifi qr code being shown too.
-        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(this, FDroidApp.repo));
+        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
 
         if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
             showFragment(new NfcSwapFragment(), STATE_NFC);
@@ -200,16 +201,16 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
         private static final String TAG = "fdroid.SwapActivity.UpdateAsyncTask";
-        private ProgressDialog progressDialog;
-        private Set<String> selectedApps;
-        private Uri sharingUri;
+        private final ProgressDialog progressDialog;
+        private final Set<String> selectedApps;
+        private final Uri sharingUri;
 
-        public UpdateAsyncTask(Context c, Set<String> apps) {
+        public UpdateAsyncTask(Context c, @NonNull Set<String> apps) {
             selectedApps = apps;
             progressDialog = new ProgressDialog(c);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setTitle(R.string.updating);
-            sharingUri = Utils.getSharingUri(c, FDroidApp.repo);
+            sharingUri = Utils.getSharingUri(FDroidApp.repo);
         }
 
         @Override

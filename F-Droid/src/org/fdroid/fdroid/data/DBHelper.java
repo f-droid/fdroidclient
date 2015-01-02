@@ -33,7 +33,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + "priority integer not null, pubkey text, fingerprint text, "
             + "maxage integer not null default 0, "
             + "version integer not null default 0, "
-            + "lastetag text, lastUpdated string);";
+            + "lastetag text, lastUpdated string,"
+            + "isSwap integer boolean default 0);";
 
     private static final String CREATE_TABLE_APK =
             "CREATE TABLE " + TABLE_APK + " ( "
@@ -98,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 46;
+    private static final int DB_VERSION = 47;
 
     private Context context;
 
@@ -273,6 +274,7 @@ public class DBHelper extends SQLiteOpenHelper {
         populateRepoNames(db, oldVersion);
         if (oldVersion < 43) createInstalledApp(db);
         addAppLabelToInstalledCache(db, oldVersion);
+        addIsSwapToRepo(db, oldVersion);
     }
 
     /**
@@ -397,6 +399,13 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 35 && !columnExists(db, TABLE_REPO, "lastUpdated")) {
             Log.i(TAG, "Adding lastUpdated column to " + TABLE_REPO);
             db.execSQL("Alter table " + TABLE_REPO + " add column lastUpdated string");
+        }
+    }
+
+    private void addIsSwapToRepo(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 47 && !columnExists(db, TABLE_REPO, "isSwap")) {
+            Log.i(TAG, "Adding isSwap field to " + TABLE_REPO + " table in db.");
+            db.execSQL("alter table " + TABLE_REPO + " add column isSwap boolean default 0;");
         }
     }
 

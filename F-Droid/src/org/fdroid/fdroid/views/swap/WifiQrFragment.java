@@ -112,7 +112,7 @@ public class WifiQrFragment extends Fragment {
 
     private void setUIFromWifi() {
 
-        if (TextUtils.isEmpty(FDroidApp.repo.address))
+        if (TextUtils.isEmpty(FDroidApp.repo.address) || getView() == null)
             return;
 
         String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https://" : "http://";
@@ -129,8 +129,8 @@ public class WifiQrFragment extends Fragment {
          * wifi AP to join. Lots of QR Scanners are buggy and do not respect
          * custom URI schemes, so we have to use http:// or https:// :-(
          */
-        Uri sharingUri = Utils.getSharingUri(getActivity(), FDroidApp.repo);
-        String qrUriString = (scheme + sharingUri.getHost()).toUpperCase(Locale.ENGLISH);
+        Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
+        String qrUriString = ( scheme + sharingUri.getHost() ).toUpperCase(Locale.ENGLISH);
         if (sharingUri.getPort() != 80) {
             qrUriString += ":" + sharingUri.getPort();
         }
