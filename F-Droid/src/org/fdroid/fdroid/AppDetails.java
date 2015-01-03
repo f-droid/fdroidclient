@@ -134,12 +134,12 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     class AppObserver extends ContentObserver {
 
         public AppObserver(Handler handler) {
-           super(handler);
+            super(handler);
         }
 
         @Override
         public void onChange(boolean selfChange) {
-           onChange(selfChange, null);
+            onChange(selfChange, null);
         }
 
         @Override
@@ -149,8 +149,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         public void onChange() {
             if (!reset(app.id)) {
-               AppDetails.this.finish();
-               return;
+                AppDetails.this.finish();
+                return;
             }
 
             refreshApkList();
@@ -842,7 +842,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog,
-                            int whichButton) {
+                                int whichButton) {
                             startDownload(apk, repoaddress);
                         }
                     });
