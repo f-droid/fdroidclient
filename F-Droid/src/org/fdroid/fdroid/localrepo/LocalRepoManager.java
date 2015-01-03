@@ -276,7 +276,7 @@ public class LocalRepoManager {
 
     public void copyIconsToRepo() {
         ApplicationInfo appInfo;
-        for (App app : apps.values()) {
+        for (final App app : apps.values()) {
             if (app.installedApk != null) {
                 try {
                     appInfo = pm.getApplicationInfo(app.id, PackageManager.GET_META_DATA);

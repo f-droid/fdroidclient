@@ -301,7 +301,7 @@ public class DBHelper extends SQLiteOpenHelper {
             }
             db.execSQL("drop table " + TABLE_REPO);
             db.execSQL(CREATE_TABLE_REPO);
-            for (Repo repo : oldrepos) {
+            for (final Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
                 values.put("address", repo.address);
                 values.put("inuse", repo.inuse);
@@ -373,7 +373,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 }
                 cursor.close();
             }
-            for (Repo repo : oldrepos) {
+            for (final Repo repo : oldrepos) {
                 ContentValues values = new ContentValues();
                 values.put("fingerprint", Utils.calcFingerprint(repo.pubkey));
                 db.update(TABLE_REPO, values, "address = ?", new String[] { repo.address });

@@ -353,7 +353,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             ArrayList<CharSequence> repoErrors = new ArrayList<CharSequence>();
             List<RepoUpdater.RepoUpdateRememberer> repoUpdateRememberers = new ArrayList<RepoUpdater.RepoUpdateRememberer>();
             boolean changes = false;
-            for (Repo repo : repos) {
+            for (final Repo repo : repos) {
 
                 if (!repo.inuse) {
                     disabledRepos.add(repo);
@@ -369,7 +369,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 try {
                     updater.update();
                     if (updater.hasChanged()) {
-                        for (App app : updater.getApps()) {
+                        for (final App app : updater.getApps()) {
                             appsToUpdate.put(app.id, app);
                         }
                         apksToUpdate.addAll(updater.getApks());
@@ -538,7 +538,7 @@ public class UpdateService extends IntentService implements ProgressListener {
      */
     private List<String> getKnownAppIdsFromProvider(List<App> apps) {
 
-        Uri uri = AppProvider.getContentUri(apps);
+        final Uri uri = AppProvider.getContentUri(apps);
         String[] fields = new String[] { AppProvider.DataColumns.APP_ID };
         Cursor cursor = getContentResolver().query(uri, fields, null, null, null);
 
@@ -579,7 +579,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
         List<String> knownAppIds = getKnownAppIds(appsToUpdate);
-        for (App a : appsToUpdate) {
+        for (final App a : appsToUpdate) {
             boolean known = false;
             for (String knownId : knownAppIds) {
                 if (knownId.equals(a.id)) {
@@ -644,9 +644,9 @@ public class UpdateService extends IntentService implements ProgressListener {
         ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
 
         List<Apk> knownApks = getKnownApks(apksToUpdate);
-        for (Apk apk : apksToUpdate) {
+        for (final Apk apk : apksToUpdate) {
             boolean known = false;
-            for (Apk knownApk : knownApks) {
+            for (final Apk knownApk : knownApks) {
                 if (knownApk.id.equals(apk.id) && knownApk.vercode == apk.vercode) {
                     known = true;
                     break;
@@ -671,13 +671,13 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    private ContentProviderOperation updateExistingApk(Apk apk) {
+    private ContentProviderOperation updateExistingApk(final Apk apk) {
         Uri uri = ApkProvider.getContentUri(apk);
         ContentValues values = apk.toContentValues();
         return ContentProviderOperation.newUpdate(uri).withValues(values).build();
     }
 
-    private ContentProviderOperation insertNewApk(Apk apk) {
+    private ContentProviderOperation insertNewApk(final Apk apk) {
         ContentValues values = apk.toContentValues();
         Uri uri = ApkProvider.getContentUri();
         return ContentProviderOperation.newInsert(uri).withValues(values).build();
@@ -717,9 +717,9 @@ public class UpdateService extends IntentService implements ProgressListener {
             ApkProvider.DataColumns.VERSION,
         };
 
-        for (Repo repo : updatedRepos) {
-            List<Apk> existingApks = ApkProvider.Helper.findByRepo(this, repo, fields);
-            for (Apk existingApk : existingApks) {
+        for (final Repo repo : updatedRepos) {
+            final List<Apk> existingApks = ApkProvider.Helper.findByRepo(this, repo, fields);
+            for (final Apk existingApk : existingApks) {
                 if (!isApkToBeUpdated(existingApk, apksToUpdate)) {
                     toRemove.add(existingApk);
                 }
@@ -735,7 +735,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private static boolean isApkToBeUpdated(Apk existingApk, List<Apk> apksToUpdate) {
-        for (Apk apkToUpdate : apksToUpdate) {
+        for (final Apk apkToUpdate : apksToUpdate) {
             if (apkToUpdate.vercode == existingApk.vercode && apkToUpdate.id.equals(existingApk.id)) {
                 return true;
             }
@@ -744,7 +744,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private void removeApksFromRepos(List<Repo> repos) {
-        for (Repo repo : repos) {
+        for (final Repo repo : repos) {
             Uri uri = ApkProvider.getRepoUri(repo.getId());
             int numDeleted = getContentResolver().delete(uri, null, null);
             Log.d("FDroid", "Removing " + numDeleted + " apks from repo " + repo.address);

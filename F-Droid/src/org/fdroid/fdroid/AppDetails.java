@@ -165,13 +165,12 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         public ApkListAdapter(Context context, App app) {
             super(context, 0);
-            List<Apk> apks = ApkProvider.Helper.findByApp(context, app.id);
-            for (Apk apk : apks) {
+            final List<Apk> apks = ApkProvider.Helper.findByApp(context, app.id);
+            for (final Apk apk : apks) {
                 if (apk.compatible || Preferences.get().showIncompatibleVersions()) {
                     add(apk);
                 }
             }
-
         }
 
         private String getInstalledStatus(final Apk apk) {
