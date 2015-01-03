@@ -119,7 +119,7 @@ public class ApkProvider extends FDroidProvider {
             return cursorToList(cursor);
         }
 
-        public static Apk get(Context context, Uri uri ) {
+        public static Apk get(Context context, Uri uri) {
             return get(context, uri, DataColumns.ALL);
         }
 

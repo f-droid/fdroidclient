@@ -126,7 +126,7 @@ public class WifiQrFragment extends Fragment {
          * custom URI schemes, so we have to use http:// or https:// :-(
          */
         Uri sharingUri = Utils.getSharingUri(getActivity(), FDroidApp.repo);
-        String qrUriString = ( scheme + sharingUri.getHost() ).toUpperCase(Locale.ENGLISH);
+        String qrUriString = (scheme + sharingUri.getHost()).toUpperCase(Locale.ENGLISH);
         if (sharingUri.getPort() != 80) {
             qrUriString += ":" + sharingUri.getPort();
         }

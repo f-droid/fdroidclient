@@ -68,7 +68,7 @@ public class RepoProvider extends FDroidProvider {
             Uri uri = RepoProvider.getContentUri();
             String[] args = { fieldValue };
             Cursor cursor = resolver.query(
-                    uri, projection, fieldName + " = ?", args, null );
+                    uri, projection, fieldName + " = ?", args, null);
             return cursorToList(cursor);
         }
 
@@ -153,7 +153,7 @@ public class RepoProvider extends FDroidProvider {
 
             Uri uri = getContentUri(repo.getId());
             String[] args = { Long.toString(repo.getId()) };
-            resolver.update(uri, values, DataColumns._ID + " = ?", args );
+            resolver.update(uri, values, DataColumns._ID + " = ?", args);
             repo.setValues(values);
         }
 

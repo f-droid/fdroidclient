@@ -78,7 +78,7 @@ public class AppProvider extends FDroidProvider {
             ContentResolver resolver = context.getContentResolver();
             Uri uri = getContentUri();
             String[] projection = { DataColumns.CATEGORIES };
-            Cursor cursor = resolver.query(uri, projection, null, null, null );
+            Cursor cursor = resolver.query(uri, projection, null, null, null);
             Set<String> categorySet = new HashSet<String>();
             if (cursor != null) {
                 if (cursor.getCount() > 0) {

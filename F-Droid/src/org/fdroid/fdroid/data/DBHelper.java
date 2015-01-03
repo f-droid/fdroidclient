@@ -142,7 +142,7 @@ public class DBHelper extends SQLiteOpenHelper {
             try {
                 // http://stackoverflow.com/questions/805363/how-do-i-rename-a-column-in-a-sqlite-database-table#805508
                 String tempTableName = TABLE_REPO + "__temp__";
-                db.execSQL("ALTER TABLE " + TABLE_REPO + " RENAME TO " + tempTableName + ";" );
+                db.execSQL("ALTER TABLE " + TABLE_REPO + " RENAME TO " + tempTableName + ";");
 
                 // I realise this is available in the CREATE_TABLE_REPO above,
                 // however I have a feeling that it will need to be the same as the
