@@ -161,7 +161,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
-            String message = resultData.getString(UpdateService.RESULT_MESSAGE);
+            final String message = resultData.getString(UpdateService.RESULT_MESSAGE);
             boolean finished = false;
             if (resultCode == UpdateService.STATUS_ERROR_GLOBAL) {
                 forwardEvent(EVENT_ERROR);

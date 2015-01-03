@@ -171,7 +171,7 @@ public class FDroidApp extends Application {
             // Things can be null if the SD card is not ready - we'll just
             // ignore that and do it next time.
             if (local_path != null) {
-                File[] files = local_path.listFiles();
+                final File[] files = local_path.listFiles();
                 if (files != null) {
                     for (File f : files) {
                         if (f.getName().endsWith(".apk")) {

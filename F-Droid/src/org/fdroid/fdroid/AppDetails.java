@@ -1158,7 +1158,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
             Apk curApk = null;
             for (int i = 0; i < getApks().getCount(); i ++) {
-                Apk apk = getApks().getItem(i);
+                final Apk apk = getApks().getItem(i);
                 if (apk.vercode == getApp().suggestedVercode) {
                     curApk = apk;
                     break;
@@ -1178,7 +1178,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     Iterator<String> permissions = permsList.iterator();
                     StringBuilder sb = new StringBuilder();
                     while (permissions.hasNext()) {
-                        String permissionName = permissions.next();
+                        final String permissionName = permissions.next();
                         try {
                             Permission permission = new Permission(getActivity(), permissionName);
                             // TODO: Make this list RTL friendly
@@ -1205,7 +1205,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             if (getApp().antiFeatures != null) {
                 StringBuilder sb = new StringBuilder();
                 for (String af : getApp().antiFeatures) {
-                    String afdesc = descAntiFeature(af);
+                    final String afdesc = descAntiFeature(af);
                     if (afdesc != null) {
                         sb.append("\t• ").append(afdesc).append("\n");
                     }

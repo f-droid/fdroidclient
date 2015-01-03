@@ -103,7 +103,7 @@ public class RepoXMLHandler extends DefaultHandler {
             throws SAXException {
 
         super.endElement(uri, localName, qName);
-        String curel = localName;
+        final String curel = localName;
         String str = curchars.toString();
         if (str != null) {
             str = str.trim();
@@ -253,28 +253,28 @@ public class RepoXMLHandler extends DefaultHandler {
         super.startElement(uri, localName, qName, attributes);
 
         if (localName.equals("repo")) {
-            String pk = attributes.getValue("", "pubkey");
+            final String pk = attributes.getValue("", "pubkey");
             if (pk != null)
                 pubkey = pk;
 
-            String maxAgeAttr = attributes.getValue("", "maxage");
+            final String maxAgeAttr = attributes.getValue("", "maxage");
             if (maxAgeAttr != null) {
                 try {
                     maxage = Integer.parseInt(maxAgeAttr);
                 } catch (NumberFormatException nfe) {}
             }
 
-            String versionAttr = attributes.getValue("", "version");
+            final String versionAttr = attributes.getValue("", "version");
             if (versionAttr != null) {
                 try {
                     version = Integer.parseInt(versionAttr);
                 } catch (NumberFormatException nfe) {}
             }
 
-            String nm = attributes.getValue("", "name");
+            final String nm = attributes.getValue("", "name");
             if (nm != null)
                 name = cleanWhiteSpace(nm);
-            String dc = attributes.getValue("", "description");
+            final String dc = attributes.getValue("", "description");
             if (dc != null)
                 description = cleanWhiteSpace(dc);
 
