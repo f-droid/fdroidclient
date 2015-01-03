@@ -19,6 +19,9 @@
         android:xlargeScreens="true" />
 
     <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
         android:name="android.hardware.wifi"
         android:required="false" />
     <uses-feature
