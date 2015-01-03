@@ -286,7 +286,7 @@
     <string name="Security">Security</string>
     <string name="System">System</string>
     <string name="Wallpaper">Wallpaper</string>
-    
+
     <string name="requesting_root_access_title">Root access</string>
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>
