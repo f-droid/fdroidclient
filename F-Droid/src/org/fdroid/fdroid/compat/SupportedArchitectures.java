@@ -5,10 +5,12 @@ import android.os.Build;
 
 public class SupportedArchitectures extends Compatibility {
 
+    @SuppressWarnings("deprecation")
     private static String[] getAbisDonut() {
         return new String[]{Build.CPU_ABI};
     }
 
+    @SuppressWarnings("deprecation")
     @TargetApi(8)
     private static String[] getAbisFroyo() {
         return new String[]{Build.CPU_ABI, Build.CPU_ABI2};
