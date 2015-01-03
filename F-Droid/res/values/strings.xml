@@ -63,6 +63,8 @@
 
 	<string name="inst">Installed</string>
 	<string name="not_inst">Not Installed</string>
+	<string name="inst_known_source">Installed (from %s)</string>
+	<string name="inst_unknown_source">Installed (from unknown source)</string>
 
 	<string name="added_on">Added on %s</string>
 
