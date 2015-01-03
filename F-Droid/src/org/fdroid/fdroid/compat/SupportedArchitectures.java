@@ -1,30 +1,35 @@
 package org.fdroid.fdroid.compat;
 
-import java.util.Set;
-import java.util.HashSet;
-
 import android.annotation.TargetApi;
 import android.os.Build;
 
 public class SupportedArchitectures extends Compatibility {
 
-    private static Set<String> getOneAbi() {
-        Set<String> abis = new HashSet<String>(1);
-        abis.add(Build.CPU_ABI);
-        return abis;
+    private static String[] getAbisDonut() {
+        return new String[]{Build.CPU_ABI};
     }
 
     @TargetApi(8)
-    private static Set<String> getTwoAbis() {
-        Set<String> abis = new HashSet<String>(2);
-        abis.add(Build.CPU_ABI);
-        abis.add(Build.CPU_ABI2);
-        return abis;
+    private static String[] getAbisFroyo() {
+        return new String[]{Build.CPU_ABI, Build.CPU_ABI2};
     }
 
-    public static Set<String> getAbis() {
-        if (hasApi(8)) return getTwoAbis();
-        return getOneAbi();
+    @TargetApi(21)
+    private static String[] getAbisLollipop() {
+        return Build.SUPPORTED_ABIS;
+    }
+
+    /**
+     * The most preferred ABI is the first element in the list.
+     */
+    public static String[] getAbis() {
+        if (hasApi(21)) {
+            return getAbisLollipop();
+        }
+        if (hasApi(8)) {
+            return getAbisFroyo();
+        }
+        return getAbisDonut();
     }
 
 }

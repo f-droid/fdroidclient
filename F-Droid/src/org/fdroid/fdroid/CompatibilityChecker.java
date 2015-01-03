@@ -18,7 +18,7 @@ public class CompatibilityChecker extends Compatibility {
 
     private Context context;
     private Set<String> features;
-    private Set<String> cpuAbis;
+    private String[] cpuAbis;
     private String cpuAbisDesc;
     private boolean ignoreTouchscreen;
 
@@ -59,8 +59,8 @@ public class CompatibilityChecker extends Compatibility {
 
     private boolean compatibleApi(Utils.CommaSeparatedList nativecode) {
         if (nativecode == null) return true;
-        for (String abi : nativecode) {
-            if (cpuAbis.contains(abi)) {
+        for (final String abi : nativecode) {
+            if (Utils.arrayContains(cpuAbis, abi)) {
                 return true;
             }
         }
@@ -79,7 +79,7 @@ public class CompatibilityChecker extends Compatibility {
         }
 
         if (apk.features != null) {
-            for (String feat : apk.features) {
+            for (final String feat : apk.features) {
                 if (ignoreTouchscreen
                         && feat.equals("android.hardware.touchscreen")) {
                     // Don't check it!
