@@ -1,3 +1,9 @@
+### Upcoming release
+
+* Support for future devices with more than two cpu architectures
+
+* Show when packages are installed but not via F-Droid (mismatching signature)
+
 ### 0.78 (2014-12-31)
 
 * Fix repo updates on 5.0 (which caused no apps to show on clean installs)
