@@ -190,11 +190,7 @@ abstract public class Installer {
                 (checkInstallPermission == PackageManager.PERMISSION_GRANTED
                 && checkDeletePermission == PackageManager.PERMISSION_GRANTED);
 
-        if (permissionsGranted) {
-            return true;
-        } else {
-            return false;
-        }
+        return permissionsGranted;
     }
 
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {
