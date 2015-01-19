@@ -160,6 +160,12 @@ subprojects {
                 } catch (GradleException e) {
                     logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
                 }
+
+                // don't abort build on lint errors
+                // http://stackoverflow.com/a/25149514
+                configure(android.lintOptions) {
+                    abortOnError false
+                }
             }
         }
     }
