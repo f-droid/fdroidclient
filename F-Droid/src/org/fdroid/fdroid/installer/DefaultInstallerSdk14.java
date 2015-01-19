@@ -76,26 +76,24 @@ public class DefaultInstallerSdk14 extends Installer {
 
     @Override
     protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
-        // TODO Auto-generated method stub
-
+        // not used
     }
 
     @Override
     protected void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
-        PackageInfo pkgInfo = null;
         try {
-            pkgInfo = mPm.getPackageInfo(packageName, 0);
+            PackageInfo pkgInfo = mPm.getPackageInfo(packageName, 0);
+
+            Uri uri = Uri.fromParts("package", pkgInfo.packageName, null);
+            Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE, uri);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            try {
+                mActivity.startActivityForResult(intent, REQUEST_CODE_DELETE);
+            } catch (ActivityNotFoundException e) {
+                throw new AndroidNotCompatibleException(e);
+            }
         } catch (NameNotFoundException e) {
             // already checked in super class
-        }
-
-        Uri uri = Uri.fromParts("package", pkgInfo.packageName, null);
-        Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE, uri);
-        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-        try {
-            mActivity.startActivityForResult(intent, REQUEST_CODE_DELETE);
-        } catch (ActivityNotFoundException e) {
-            throw new AndroidNotCompatibleException(e);
         }
     }
 

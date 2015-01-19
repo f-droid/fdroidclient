@@ -128,9 +128,8 @@ public class SystemInstaller extends Installer {
     protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
         Uri packageURI = Uri.fromFile(apkFile);
         try {
-            mInstallMethod.invoke(mPm, new Object[] {
-                    packageURI, mInstallObserver, INSTALL_REPLACE_EXISTING, null
-            });
+            mInstallMethod.invoke(mPm, packageURI, mInstallObserver,
+                    INSTALL_REPLACE_EXISTING, null);
         } catch (Exception e) {
             throw new AndroidNotCompatibleException(e);
         }
@@ -138,16 +137,13 @@ public class SystemInstaller extends Installer {
 
     @Override
     protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
-        // TODO Auto-generated method stub
-
+        // not used
     }
 
     @Override
     protected void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
         try {
-            mDeleteMethod.invoke(mPm, new Object[] {
-                    packageName, mDeleteObserver, 0
-            });
+            mDeleteMethod.invoke(mPm, packageName, mDeleteObserver, 0);
         } catch (Exception e) {
             throw new AndroidNotCompatibleException(e);
         }
