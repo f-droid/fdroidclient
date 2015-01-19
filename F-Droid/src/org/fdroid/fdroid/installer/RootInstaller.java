@@ -132,6 +132,16 @@ public class RootInstaller extends Installer {
     }
 
     private void addInstallCommand(File apkFile) {
+        // Like package names, apk files should also only contain letters, numbers, dots, or underscore,
+        // e.g., org.fdroid.fdroid_9.apk
+        if (!isValidPackageName(apkFile.getName())) {
+            Log.e(TAG, "File name is not valid (contains characters other than letters, numbers, dots, or underscore): "
+                    + apkFile.getName());
+            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                    InstallerCallback.ERROR_CODE_OTHER);
+            return;
+        }
+
         rootSession.addCommand("pm install -r \"" + apkFile.getAbsolutePath() + "\"", 0,
                 new Shell.OnCommandResultListener() {
                     public void onCommandResult(int commandCode, int exitCode, List<String> output) {
@@ -153,6 +163,14 @@ public class RootInstaller extends Installer {
         List<String> commands = new ArrayList<String>();
         String pm = "pm install -r ";
         for (File apkFile : apkFiles) {
+            // see addInstallCommand()
+            if (!isValidPackageName(apkFile.getName())) {
+                Log.e(TAG, "File name is not valid (contains characters other than letters, numbers, dots, or underscore): "
+                        + apkFile.getName());
+                mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                        InstallerCallback.ERROR_CODE_OTHER);
+                return;
+            }
             commands.add(pm + "\"" + apkFile.getAbsolutePath() + "\"");
         }
 
@@ -177,7 +195,8 @@ public class RootInstaller extends Installer {
 
     private void addDeleteCommand(String packageName) {
         if (!isValidPackageName(packageName)) {
-            Log.e(TAG, "Package name is not valid (contains characters other than letters, numbers, dots, or underscore): " + packageName);
+            Log.e(TAG, "Package name is not valid (contains characters other than letters, numbers, dots, or underscore): "
+                    + packageName);
             mCallback.onError(InstallerCallback.OPERATION_DELETE,
                     InstallerCallback.ERROR_CODE_OTHER);
             return;
