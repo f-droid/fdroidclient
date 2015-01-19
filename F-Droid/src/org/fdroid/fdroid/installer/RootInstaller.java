@@ -28,6 +28,8 @@ import eu.chainfire.libsuperuser.Shell;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Installer using a root shell and "pm install", "pm uninstall" commands
@@ -174,6 +176,13 @@ public class RootInstaller extends Installer {
     }
 
     private void addDeleteCommand(String packageName) {
+        if (!isValidPackageName(packageName)) {
+            Log.e(TAG, "Package name is not valid (contains characters other than letters, numbers, dots, or underscore): " + packageName);
+            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                    InstallerCallback.ERROR_CODE_OTHER);
+            return;
+        }
+
         rootSession.addCommand("pm uninstall \"" + packageName + "\"", 0,
                 new Shell.OnCommandResultListener() {
                     public void onCommandResult(int commandCode, int exitCode, List<String> output) {
@@ -194,6 +203,20 @@ public class RootInstaller extends Installer {
     @Override
     public boolean supportsUnattendedOperations() {
         return true;
+    }
+
+    private static final Pattern PACKAGE_NAME_BLACKLIST = Pattern.compile("[^a-zA-Z0-9\\.\\_]");
+
+    /**
+     * Package names should only contain letters, numbers, dots, and underscores!
+     * Prevent injection attacks with app names like ";touch $'\057data\057injected'"
+     *
+     * @param packageName
+     * @return
+     */
+    private boolean isValidPackageName(String packageName) {
+        Matcher matcher = PACKAGE_NAME_BLACKLIST.matcher(packageName);
+        return !matcher.find();
     }
 
     /**
