@@ -828,7 +828,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     // Install the version of this app denoted by 'app.curApk'.
     @Override
     public void install(final Apk apk) {
-        String [] projection = { RepoProvider.DataColumns.ADDRESS };
+        String[] projection = { RepoProvider.DataColumns.ADDRESS };
         Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
         if (repo == null || repo.address == null) {
             return;
@@ -1171,7 +1171,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             summaryView.setText(getApp().summary);
 
             Apk curApk = null;
-            for (int i = 0; i < getApks().getCount(); i ++) {
+            for (int i = 0; i < getApks().getCount(); i++) {
                 final Apk apk = getApks().getItem(i);
                 if (apk.vercode == getApp().suggestedVercode) {
                     curApk = apk;
@@ -1206,7 +1206,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                             }
                         }
                     }
-                    if (sb.length() > 0) sb.setLength(sb.length() - 1);
+                    if (sb.length() > 0) {
+                        sb.setLength(sb.length() - 1);
+                    }
                     permissionListView.setText(sb.toString());
                 }
                 permissionHeader.setText(getString(R.string.permissions_for_long, getApks().getItem(0).version));
@@ -1414,9 +1416,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             final Apk apk = getApks().getItem(position - l.getHeaderViewsCount());
-            if (getApp().installedVersionCode == apk.vercode)
+            if (getApp().installedVersionCode == apk.vercode) {
                 remove();
-            else if (getApp().installedVersionCode > apk.vercode) {
+            } else if (getApp().installedVersionCode > apk.vercode) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(getActivity());
                 ask_alrt.setMessage(getString(R.string.installDowngrade));
                 ask_alrt.setPositiveButton(getString(R.string.yes),
@@ -1436,8 +1438,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                         });
                 AlertDialog alert = ask_alrt.create();
                 alert.show();
-            } else
+            } else {
                 install(apk);
+            }
         }
 
         public void removeSummaryHeader() {
