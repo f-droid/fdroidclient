@@ -4,9 +4,23 @@ F-Droid Client
 Client for [F-Droid](https://fdroid.org), the Free Software repository system
 for Android.
 
+Building from source with Gradle
+--------------------------------
 
-Building from source
---------------------
+Once you have checked out the version you wish to build, install gradle on your system and run:
+
+```
+git submodule update --init
+gradle build
+```
+
+Android Studio
+--------------
+
+From Android Studio: File -> Import Project -> Select the cloned top folder
+
+Building from source with Ant
+-----------------------------
 
 The only required tools are the [Android SDK](http://developer.android.com/sdk/index.html) and Apache Ant.
 
@@ -18,10 +32,6 @@ cd F-Droid
 ./ant-prepare.sh # This runs 'android update' on the libs and the main project
 ant clean release
 ```
-
-The project itself supports Gradle, but some of the libraries it uses don't.
-Hence it is currently not possible to build F-Droid with Gradle in a clean way
-without manual interaction.
 
 Direct download
 ---------------
