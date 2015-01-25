@@ -29,7 +29,10 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import org.fdroid.fdroid.compat.FileCompat;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.SanitizedFile;
 import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -122,6 +125,21 @@ public final class Utils {
             return symlink(inFile, outFile);
         } else {
             return copy(inFile, outFile);
+        }
+    }
+
+    /**
+     * Read the input stream until it reaches the end, ignoring any exceptions.
+     */
+    public static void consumeStream(InputStream stream) {
+        final byte buffer[] = new byte[256];
+        try {
+            int read;
+            do {
+                read = stream.read(buffer);
+            } while (read != -1);
+        } catch (IOException e) {
+            // Ignore...
         }
     }
 
@@ -311,12 +329,21 @@ public final class Utils {
         return b.build();
     }
 
+    /**
+     * The directory where .apk files are downloaded (and stored - if the relevant property is enabled).
+     * This must be on internal storage, to prevent other apps with "write external storage" from being
+     * able to change the .apk file between F-Droid requesting the Package Manger to install, and the
+     * Package Manager receiving that request.
+     */
     public static File getApkCacheDir(Context context) {
-        File apkCacheDir = new File(
-                StorageUtils.getCacheDirectory(context, true), "apks");
+        SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, false), "apks");
         if (!apkCacheDir.exists()) {
             apkCacheDir.mkdir();
         }
+
+        // All parent directories of the .apk file need to be executable for the package installer
+        // to be able to have permission to read our world-readable .apk files.
+        FileCompat.setExecutable(apkCacheDir, true, false);
         return apkCacheDir;
     }
 
