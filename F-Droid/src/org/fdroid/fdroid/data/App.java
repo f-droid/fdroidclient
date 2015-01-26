@@ -224,7 +224,7 @@ public class App extends ValueObject implements Comparable<App> {
 
         this.name = (String) appInfo.loadLabel(pm);
 
-        File apkFile = new File(appInfo.publicSourceDir);
+        SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
         Apk apk = new Apk();
         apk.version = packageInfo.versionName;
         apk.vercode = packageInfo.versionCode;

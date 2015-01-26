@@ -25,6 +25,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.SanitizedFile;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -81,13 +82,13 @@ public class LocalRepoManager {
 
     private Map<String, App> apps = new HashMap<String, App>();
 
-    public final File xmlIndex;
-    private File xmlIndexJar = null;
-    private File xmlIndexJarUnsigned = null;
-    public final File webRoot;
-    public final File fdroidDir;
-    public final File repoDir;
-    public final File iconsDir;
+    public final SanitizedFile xmlIndex;
+    private SanitizedFile xmlIndexJar = null;
+    private SanitizedFile xmlIndexJarUnsigned = null;
+    public final SanitizedFile webRoot;
+    public final SanitizedFile fdroidDir;
+    public final SanitizedFile repoDir;
+    public final SanitizedFile iconsDir;
 
     private static LocalRepoManager localRepoManager;
 
@@ -104,14 +105,14 @@ public class LocalRepoManager {
         prefs = PreferenceManager.getDefaultSharedPreferences(c);
         fdroidPackageName = c.getPackageName();
 
-        webRoot = c.getFilesDir();
+        webRoot = SanitizedFile.knownSanitized(c.getFilesDir());
         /* /fdroid/repo is the standard path for user repos */
-        fdroidDir = new File(webRoot, "fdroid");
-        repoDir = new File(fdroidDir, "repo");
-        iconsDir = new File(repoDir, "icons");
-        xmlIndex = new File(repoDir, "index.xml");
-        xmlIndexJar = new File(repoDir, "index.jar");
-        xmlIndexJarUnsigned = new File(repoDir, "index.unsigned.jar");
+        fdroidDir = new SanitizedFile(webRoot, "fdroid");
+        repoDir = new SanitizedFile(fdroidDir, "repo");
+        iconsDir = new SanitizedFile(repoDir, "icons");
+        xmlIndex = new SanitizedFile(repoDir, "index.xml");
+        xmlIndexJar = new SanitizedFile(repoDir, "index.jar");
+        xmlIndexJarUnsigned = new SanitizedFile(repoDir, "index.unsigned.jar");
 
         if (!fdroidDir.exists())
             if (!fdroidDir.mkdir())
@@ -136,8 +137,8 @@ public class LocalRepoManager {
 
         try {
             appInfo = pm.getApplicationInfo(fdroidPackageName, PackageManager.GET_META_DATA);
-            File apkFile = new File(appInfo.publicSourceDir);
-            File fdroidApkLink = new File(webRoot, "fdroid.client.apk");
+            SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
+            SanitizedFile fdroidApkLink = new SanitizedFile(webRoot, "fdroid.client.apk");
             fdroidApkLink.delete();
             if (Utils.symlinkOrCopyFile(apkFile, fdroidApkLink))
                 fdroidClientURL = "/" + fdroidApkLink.getName();
@@ -191,14 +192,14 @@ public class LocalRepoManager {
     }
 
     private void symlinkIndexPageElsewhere(String symlinkPrefix, File directory) {
-        File index = new File(directory, "index.html");
+        SanitizedFile index = new SanitizedFile(directory, "index.html");
         index.delete();
-        Utils.symlinkOrCopyFile(new File(symlinkPrefix + "index.html"), index);
+        Utils.symlinkOrCopyFile(new SanitizedFile(new File(symlinkPrefix), "index.html"), index);
 
         for(String fileName : WEB_ROOT_ASSET_FILES) {
-            File file = new File(directory, fileName);
+            SanitizedFile file = new SanitizedFile(directory, fileName);
             file.delete();
-            Utils.symlinkOrCopyFile(new File(symlinkPrefix + fileName), file);
+            Utils.symlinkOrCopyFile(new SanitizedFile(new File(symlinkPrefix), fileName), file);
         }
     }
 
@@ -227,7 +228,7 @@ public class LocalRepoManager {
             App app = apps.get(packageName);
 
             if (app.installedApk != null) {
-                File outFile = new File(repoDir, app.installedApk.apkName);
+                SanitizedFile outFile = new SanitizedFile(repoDir, app.installedApk.apkName);
                 if (Utils.symlinkOrCopyFile(app.installedApk.installedFile, outFile))
                     continue;
             }

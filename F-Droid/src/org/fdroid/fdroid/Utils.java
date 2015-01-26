@@ -118,14 +118,10 @@ public final class Utils {
     }
 
     /**
-     * use symlinks if they are available, otherwise fall back to copying
+     * Attempt to symlink, but if that fails, it will make a copy of the file.
      */
-    public static boolean symlinkOrCopyFile(File inFile, File outFile) {
-        if (new File("/system/bin/ln").exists()) {
-            return symlink(inFile, outFile);
-        } else {
-            return copy(inFile, outFile);
-        }
+    public static boolean symlinkOrCopyFile(SanitizedFile inFile, SanitizedFile outFile) {
+        return FileCompat.symlink(inFile, outFile) || copy(inFile, outFile);
     }
 
     /**
@@ -141,34 +137,6 @@ public final class Utils {
         } catch (IOException e) {
             // Ignore...
         }
-    }
-
-    public static boolean symlink(File inFile, File outFile) {
-        int exitCode = -1;
-        try {
-            Process sh = Runtime.getRuntime().exec("sh");
-            OutputStream out = sh.getOutputStream();
-            String command = "/system/bin/ln -s " + inFile + " " + outFile
-                    + "\nexit\n";
-            out.write(command.getBytes("ASCII"));
-
-            final char buf[] = new char[40];
-            InputStreamReader reader = new InputStreamReader(sh.getInputStream());
-            while (reader.read(buf) != -1)
-                throw new IOException("stdout: " + new String(buf));
-            reader = new InputStreamReader(sh.getErrorStream());
-            while (reader.read(buf) != -1)
-                throw new IOException("stderr: " + new String(buf));
-
-            exitCode = sh.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return exitCode == 0;
     }
 
     public static boolean copy(File inFile, File outFile) {
