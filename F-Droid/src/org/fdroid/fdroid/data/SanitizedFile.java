@@ -10,6 +10,6 @@ import java.io.File;
  */
 public class SanitizedFile extends File {
     public SanitizedFile(File parent, String name) {
-        super(parent, name.replaceAll("[^A-Za-z0-9.-_]", ""));
+        super(parent, name.replaceAll("[^A-Za-z0-9-._]", ""));
     }
 }
