@@ -19,7 +19,7 @@ public class FileCompat {
 
         if (Compatibility.hasApi(21)) {
             symlinkOs(source, dest);
-        } else if (Compatibility.hasApi(19)) {
+        } else if (Compatibility.hasApi(15)) {
             symlinkLibcore(source, dest);
         } else {
             symlinkRuntime(source, dest);
@@ -28,13 +28,27 @@ public class FileCompat {
         return dest.exists();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    protected static void symlinkOs(SanitizedFile source, SanitizedFile dest) {
-        try {
-            android.system.Os.symlink(source.getAbsolutePath(), dest.getAbsolutePath());
-        } catch (ErrnoException e) {
-            // Do nothing...
+    /**
+     * Moved into a separate class rather than just a method, so that phones without API 21 will
+     * not attempt to load this class at runtime. Otherwise, using the Os.symlink method will cause
+     * a VerifyError to be thrown at runtime when the FileCompat class is first used.
+     */
+    private static class Symlink21 {
+
+        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+        public void symlink(SanitizedFile source, SanitizedFile dest) {
+            try {
+                android.system.Os.symlink(source.getAbsolutePath(), dest.getAbsolutePath());
+            } catch (ErrnoException e) {
+                // Do nothing...
+            }
         }
+
+    }
+
+    @TargetApi(21)
+    protected static void symlinkOs(SanitizedFile source, SanitizedFile dest) {
+        new Symlink21().symlink(source, dest);
     }
 
     protected static void symlinkRuntime(SanitizedFile source, SanitizedFile dest) {
@@ -58,8 +72,10 @@ public class FileCompat {
             Object os = Class.forName("libcore.io.Libcore").getField("os").get(null);
             Method symlink = os.getClass().getMethod("symlink", String.class, String.class);
             symlink.invoke(os, source.getAbsolutePath(), dest.getAbsolutePath());
-        } catch (InvocationTargetException | NoSuchMethodException | ClassNotFoundException | IllegalAccessException | NoSuchFieldException e) {
-            // Do nothing
+        } catch (Exception e) {
+            // Should catch more specific exceptions than just "Exception" here, but there are
+            // some which come from libcore.io.Libcore, which we don't have access to at compile time.
+            Log.e(TAG, "Could not symlink " + source.getAbsolutePath() + " to " + dest.getAbsolutePath() + ": " + e.getMessage());
         }
     }
 
