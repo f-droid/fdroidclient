@@ -29,7 +29,10 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import org.fdroid.fdroid.compat.FileCompat;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.SanitizedFile;
 import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -115,42 +118,25 @@ public final class Utils {
     }
 
     /**
-     * use symlinks if they are available, otherwise fall back to copying
+     * Attempt to symlink, but if that fails, it will make a copy of the file.
      */
-    public static boolean symlinkOrCopyFile(File inFile, File outFile) {
-        if (new File("/system/bin/ln").exists()) {
-            return symlink(inFile, outFile);
-        } else {
-            return copy(inFile, outFile);
-        }
+    public static boolean symlinkOrCopyFile(SanitizedFile inFile, SanitizedFile outFile) {
+        return FileCompat.symlink(inFile, outFile) || copy(inFile, outFile);
     }
 
-    public static boolean symlink(File inFile, File outFile) {
-        int exitCode = -1;
+    /**
+     * Read the input stream until it reaches the end, ignoring any exceptions.
+     */
+    public static void consumeStream(InputStream stream) {
+        final byte buffer[] = new byte[256];
         try {
-            Process sh = Runtime.getRuntime().exec("sh");
-            OutputStream out = sh.getOutputStream();
-            String command = "/system/bin/ln -s " + inFile + " " + outFile
-                    + "\nexit\n";
-            out.write(command.getBytes("ASCII"));
-
-            final char buf[] = new char[40];
-            InputStreamReader reader = new InputStreamReader(sh.getInputStream());
-            while (reader.read(buf) != -1)
-                throw new IOException("stdout: " + new String(buf));
-            reader = new InputStreamReader(sh.getErrorStream());
-            while (reader.read(buf) != -1)
-                throw new IOException("stderr: " + new String(buf));
-
-            exitCode = sh.waitFor();
+            int read;
+            do {
+                read = stream.read(buffer);
+            } while (read != -1);
         } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return false;
+            // Ignore...
         }
-        return exitCode == 0;
     }
 
     public static boolean copy(File inFile, File outFile) {
@@ -311,12 +297,21 @@ public final class Utils {
         return b.build();
     }
 
+    /**
+     * The directory where .apk files are downloaded (and stored - if the relevant property is enabled).
+     * This must be on internal storage, to prevent other apps with "write external storage" from being
+     * able to change the .apk file between F-Droid requesting the Package Manger to install, and the
+     * Package Manager receiving that request.
+     */
     public static File getApkCacheDir(Context context) {
-        File apkCacheDir = new File(
-                StorageUtils.getCacheDirectory(context, true), "apks");
+        SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, false), "apks");
         if (!apkCacheDir.exists()) {
             apkCacheDir.mkdir();
         }
+
+        // All parent directories of the .apk file need to be executable for the package installer
+        // to be able to have permission to read our world-readable .apk files.
+        FileCompat.setExecutable(apkCacheDir, true, false);
         return apkCacheDir;
     }
 

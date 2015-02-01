@@ -8,6 +8,7 @@ import android.test.InstrumentationTestCase;
 import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
+import org.fdroid.fdroid.TestUtils;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.updater.RepoUpdater.UpdateException;
@@ -31,56 +32,17 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
     @Override
     protected void setUp() {
         context = getInstrumentation().getContext();
-        Context target = getInstrumentation().getTargetContext();
-        /* find something that works, many of these often fail on emulators */
-        testFilesDir = context.getFilesDir();
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = context.getCacheDir();
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = context.getExternalCacheDir();
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = context.getExternalFilesDir(null);
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = target.getFilesDir();
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = target.getCacheDir();
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = target.getExternalCacheDir();
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = target.getExternalFilesDir(null);
-        if (testFilesDir == null || !testFilesDir.canWrite())
-            testFilesDir = Environment.getExternalStorageDirectory();
-        Log.i(TAG, "testFilesDir: " + testFilesDir);
+        testFilesDir = TestUtils.getWriteableDir(getInstrumentation());
         Repo repo = new Repo();
         repo.pubkey = this.simpleIndexPubkey;
         repoUpdater = RepoUpdater.createUpdaterFor(context, repo);
     }
 
-    private File getTestFile(String fileName) {
-        File indexFile;
-        InputStream input = null;
-        OutputStream output = null;
-        try {
-            indexFile = File.createTempFile(fileName + "-", ".xml", testFilesDir);
-            Log.i(TAG, "getTestFile indexFile " + indexFile);
-            input = context.getResources().getAssets().open(fileName);
-            output = new FileOutputStream(indexFile);
-            Utils.copy(input, output);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            Utils.closeQuietly(output);
-            Utils.closeQuietly(input);
-        }
-        return indexFile;
-    }
-
     public void testExtractIndexFromJar() {
         if (!testFilesDir.canWrite())
             return;
-        File simpleIndexXml = getTestFile("simpleIndex.xml");
-        File simpleIndexJar = getTestFile("simpleIndex.jar");
+        File simpleIndexXml = TestUtils.copyAssetToDir(context, "simpleIndex.xml", testFilesDir);
+        File simpleIndexJar = TestUtils.copyAssetToDir(context, "simpleIndex.jar", testFilesDir);
         File testFile = null;
 
         // these are supposed to succeed
@@ -103,7 +65,7 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(getTestFile("simpleIndexWithoutSignature.jar"));
+            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithoutSignature.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             // success!
@@ -115,7 +77,7 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(getTestFile("simpleIndexWithCorruptedManifest.jar"));
+            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedManifest.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -130,7 +92,7 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(getTestFile("simpleIndexWithCorruptedSignature.jar"));
+            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedSignature.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -145,7 +107,7 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(getTestFile("simpleIndexWithCorruptedCertificate.jar"));
+            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedCertificate.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -160,7 +122,7 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(getTestFile("simpleIndexWithCorruptedEverything.jar"));
+            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedEverything.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -175,11 +137,9 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(getTestFile("masterKeyIndex.jar"));
+            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "masterKeyIndex.jar", testFilesDir));
             fail();
-        } catch (UpdateException e) {
-            // success!
-        } catch (SecurityException e) {
+        } catch (UpdateException | SecurityException e) {
             // success!
         }
     }

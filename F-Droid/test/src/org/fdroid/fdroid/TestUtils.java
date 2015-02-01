@@ -1,17 +1,23 @@
 package org.fdroid.fdroid;
 
+import android.app.Instrumentation;
 import android.content.*;
 import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 import junit.framework.AssertionFailedError;
 import mock.MockInstallablePackageManager;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class TestUtils {
+
+    private static final String TAG = "org.fdroid.fdroid.TestUtils";
 
     public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedArray) {
         List<T> expectedList = new ArrayList<T>(expectedArray.length);
@@ -175,4 +181,68 @@ public class TestUtils {
 
     }
 
+    public static File copyAssetToDir(Context context, String assetName, File directory) {
+        File tempFile;
+        InputStream input = null;
+        OutputStream output = null;
+        try {
+            tempFile = File.createTempFile(assetName + "-", ".testasset", directory);
+            Log.d(TAG, "Copying asset file " + assetName + " to directory " + directory);
+            input = context.getResources().getAssets().open(assetName);
+            output = new FileOutputStream(tempFile);
+            Utils.copy(input, output);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            Utils.closeQuietly(output);
+            Utils.closeQuietly(input);
+        }
+        return tempFile;
+    }
+
+    /**
+     * Prefer internal over external storage, because external tends to be FAT filesystems,
+     * which don't support symlinks (which we test using this method).
+     */
+    public static File getWriteableDir(Instrumentation instrumentation) {
+        Context context = instrumentation.getContext();
+        Context targetContext = instrumentation.getTargetContext();
+        File dir = context.getCacheDir();
+        Log.d(TAG, "Looking for writeable dir, trying context.getCacheDir()" );
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying context.getFilesDir()");
+            dir = context.getFilesDir();
+        }
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying targetContext.getCacheDir()");
+            dir = targetContext.getCacheDir();
+        }
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying targetContext.getFilesDir()");
+            dir = targetContext.getFilesDir();
+        }
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying context.getExternalCacheDir()");
+            dir = context.getExternalCacheDir();
+        }
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying context.getExternalFilesDir(null)");
+            dir = context.getExternalFilesDir(null);
+        }
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying targetContext.getExternalCacheDir()");
+            dir = targetContext.getExternalCacheDir();
+        }
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying targetContext.getExternalFilesDir(null)");
+            dir = targetContext.getExternalFilesDir(null);
+        }
+        if (dir == null || !dir.canWrite()) {
+            Log.d(TAG, "Looking for writeable dir, trying Environment.getExternalStorageDirectory()");
+            dir = Environment.getExternalStorageDirectory();
+        }
+        Log.d(TAG, "Writeable dir found: " + dir);
+        return dir;
+    }
 }

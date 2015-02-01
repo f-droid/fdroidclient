@@ -25,7 +25,9 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +61,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     private Apk curApk;
     private String repoAddress;
-    private File localFile;
+    private SanitizedFile localFile;
 
     private ProgressListener listener;
     private AsyncDownloadWrapper dlWrapper = null;
@@ -80,13 +82,13 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     public ApkDownloader(Apk apk, String repoAddress, File destDir) {
         curApk = apk;
         this.repoAddress = repoAddress;
-        localFile = new File(destDir, curApk.apkName);
+        localFile = new SanitizedFile(destDir, curApk.apkName);
     }
 
     /**
      * The downloaded APK. Valid only when getStatus() has returned STATUS.DONE.
      */
-    public File localFile() {
+    public SanitizedFile localFile() {
         return localFile;
     }
 
@@ -238,6 +240,13 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             sendError(ERROR_HASH_MISMATCH);
             return;
         }
+
+        // Need the apk to be world readable, so that the installer is able to read it.
+        // Note that saving it into external storage for the purpose of letting the installer
+        // have access is insecure, because apps with permission to write to the external
+        // storage can overwrite the app between F-Droid asking for it to be installed and
+        // the installer actually installing it.
+        FileCompat.setReadable(localFile, true, false);
 
         Log.d("FDroid", "Download finished: " + localFile);
         sendCompleteMessage();
