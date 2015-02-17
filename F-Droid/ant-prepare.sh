@@ -1,5 +1,26 @@
 #!/bin/bash -ex
 
+if ! which android > /dev/null; then
+    if [ -z $ANDROID_HOME ]; then
+        if [ -e ~/.android/bashrc ]; then
+            . ~/.android/bashrc
+        else
+            echo "'android' not found, ANDROID_HOME must be set!"
+            exit
+        fi
+    else
+        export PATH="${ANDROID_HOME}/tools:$PATH"
+    fi
+fi
+
+# set up test signing keys for any `ant release` runs
+if [ -e ~/.android/ant.properties ]; then
+    cp ~/.android/ant.properties ./
+else
+    echo "skipping release ant.properties"
+fi
+
+
 EXTERN=../extern
 
 place_support_v4() {
