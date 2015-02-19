@@ -22,23 +22,23 @@ build script can be run in two modes.
 ## Gradle commands
 
 `gradle build` will build _F-Droid_ from source, but _not the depenencies_ from source. It will instead depend
-on binaries from jcenter where possible, and .jar and .aar files in F-Droid/libs/ elsewhere.
+on binaries from jcenter where possible, and .jar and .aar files in F-Droid/libs/binaryDeps elsewhere.
 
 `gradle -PsourceDeps build` will include all dependencies and build the entire F-Droid binary
 and all of its dependencies from source.
 
 `gradle -PsourceDeps binaryDeps` will build all dependencies from source, and then copy the ones which
-are not found in jcenter to F-Droid/libs/, making sure that the latest versions of the libraries are available
+are not found in jcenter to F-Droid/libs/binaryDeps, making sure that the latest versions of the libraries are available
 for developers wishing to build F-Droid from binary dependencies.
 
 `gradle -PsourceDeps cleanBinaryDeps` will remove all binary dependencies. It shouldn't be neccesary,
-because the `binaryDeps` will copy fresh .jar and .aar files to the F-Droid/libs/ directory when they change.
-It may be handy if you are updating the build script though, as a nice way to empty the F-Droid/libs/ directory.
+because the `binaryDeps` will copy fresh .jar and .aar files to the F-Droid/libs/binaryDeps directory when they change.
+It may be handy if you are updating the build script though, as a nice way to empty the F-Droid/libs/binaryDeps directory.
 
 
 # Adding new dependencies
 
-When adding a new dependency, *DON'T* copy the .jar or .aar file into F-Droid/libs/. This will get deleted
+When adding a new dependency, *DON'T* copy the .jar or .aar file into F-Droid/libs/binaryDeps. This will get deleted
 when somebody runs `gradle -PsourceDeps cleanBinaryDeps`. Also, the version of F-Droid built for distribution
 on https://f-droid.org will be build from source depednencies, so adding a binary is not enough.
 
@@ -47,4 +47,4 @@ the F-Droid/build.gradle file, adding both the source dependency on the project 
 a dependency on its jcenter/mavenCentral artifact. If that artifact is not available, then you should add
 the library to those to be copied using `gradler -PsourceDeps binaryDeps`. Then, you can commit that binary so that
 anyone who clones the F-Droid repo will have all of the dependencies ready in either jcetner or the
-F-Droid/libs/ directory.
+F-Droid/libs/binaryDeps directory.

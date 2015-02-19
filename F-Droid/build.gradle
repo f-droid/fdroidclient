@@ -10,24 +10,21 @@ if ( !hasProperty( 'sourceDeps' ) ) {
         // This is here until we sort out all dependencies from mavenCentral/jcenter. Once all of
         // the dependencies below have been sorted out, this can be removed.
         flatDir {
-            dirs 'libs'
+            dirs 'libs/binaryDeps'
         }
     }
 
     dependencies {
 
-        // TODO: A little hazy as to what commit in the source repo these support libraries
-        // correspond to. As a result, I'm not sure that developers using source dependencies
-        // and those using binary dependencies are even using the same API.
-        compile 'com.android.support:support-v4:18.0.+',
-                'com.android.support:appcompat-v7:18.0.+',
+        compile 'com.android.support:support-v4:20.0.+',
+                'com.android.support:appcompat-v7:20.0.+',
                 'com.android.support:support-annotations:20.0.+',
 
                 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
                 'javax.jmdns:jmdns:3.4.1',
                 'com.nostra13.universalimageloader:universal-image-loader:1.9.3',
                 'com.google.zxing:core:3.1.0',
-                'eu.chainfire:libsuperuser:1.0.0.+',
+                'eu.chainfire:libsuperuser:1.0.0.201501121001',
                 'com.madgag.spongycastle:pkix:1.51.0.0',
                 'com.madgag.spongycastle:prov:1.51.0.0',
                 'com.madgag.spongycastle:core:1.51.0.0'
@@ -52,9 +49,11 @@ if ( !hasProperty( 'sourceDeps' ) ) {
 
     logger.info "Setting up *source* dependencies for F-Droid (because you passed in the -PsourceDeps argument to gradle while building)."
 
+    repositories {
+        jcenter()
+    }
+
     dependencies {
-        compile project(':support-v4')
-        compile project(':support-appcompat-v7')
         compile project(':extern:AndroidPinning')
         compile project(':extern:UniversalImageLoader:library')
         compile project(':extern:libsuperuser:libsuperuser')
@@ -65,6 +64,22 @@ if ( !hasProperty( 'sourceDeps' ) ) {
         compile( project(':extern:android-support-v4-preferencefragment') ) {
             exclude module: 'support-v4'
         }
+
+        // Until the android team updates the gradle plugin version from 0.10.0 to
+        // a newer version, we can't build this from source with our gradle version
+        // of 1.0.0. They use API's which have been moved in the newer plugin.
+        // So yes, this is a little annoying that our "source dependencies" include
+        // a bunch of binaries from jcenter - but the ant build file (which is the
+        // one used to build F-Droid which is distributed on https://f-droid.org
+        // builds these from source - well - not support-v4).
+        //
+        // If the android team gets the build script working with the newer plugin,
+        // then you can find the relevant portions of the ../build.gradle file that
+        // include magic required to make it work at around about the v0.78 git tag.
+        // They have since been removed to clean up the build file.
+        compile 'com.android.support:support-v4:20.0.+',
+                'com.android.support:appcompat-v7:20.0.+',
+                'com.android.support:support-annotations:20.0.+'
 
         // Removed for now, until it is reimplemented.
         // compile project(':extern:MemorizingTrustManager')
