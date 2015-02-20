@@ -12,7 +12,7 @@
 	ignore = dirty
 [submodule "extern/libsuperuser"]
 	path = extern/libsuperuser
-	url = https://github.com/dschuermann/libsuperuser.git
+	url = https://github.com/Chainfire/libsuperuser
 	ignore = dirty
 [submodule "extern/jmdns"]
 	path = extern/jmdns
