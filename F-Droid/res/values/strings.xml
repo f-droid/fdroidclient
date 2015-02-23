@@ -311,5 +311,5 @@
     <string name="swap_wifi_qr_not_working">It\'s not working</string>
     <string name="open_qr_code_scanner">Open QR Code Scanner</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
-    <string name="swap_confirm_connect">Do you ant to get apps from %1$s now?</string>
+    <string name="swap_confirm_connect">Do you want to get apps from %1$s now?</string>
 </resources>
