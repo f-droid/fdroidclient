@@ -2,7 +2,7 @@
 
 # Remove extra translations
 
-sed -n 's@res/values-[^/]\+/\([^\.]\+\)\.xml:.*Error: "\([^"]*\)" is translated here but not found in default locale.*@\1 \2@p' < build/outputs/lint-results.txt | \
+sed -n 's@.*res/values-[^/]\+/\([^\.]\+\)\.xml:.*Error: "\([^"]*\)" is translated here but not found in default locale.*@\1 \2@p' < build/outputs/lint-results.txt | \
 while read file name; do
 	if [[ $file == strings ]]; then
 		sed -i "/name=\"$name\"/d" res/values-*/strings.xml
