@@ -6,10 +6,8 @@
   <string name="enable_nfc_send">Povolit posílání po NFC…</string>
   <string name="automatic_scan_wifi">Pouze přes wifi</string>
   <string name="automatic_scan_wifi_on">Aktualizovat seznam aplikací pouze přes wifi</string>
-  <string name="automatic_scan_wifi_off">Vždy automaticky aktualizovat seznam aplikací</string>
   <string name="notify">Upozornit</string>
   <string name="notify_on">Upozornit pokud jsou dostupné aktualizace</string>
-  <string name="notify_off">Neupozorňovat na žádné aktualizace</string>
   <string name="update_history">Historie aktualizací</string>
   <string name="update_history_summ">Počet dnů po které je aplikace vedena jako nová nebo nedávná: %s</string>
   <string name="search_results">Výsledky hledání</string>

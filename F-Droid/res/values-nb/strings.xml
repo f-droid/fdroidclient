@@ -12,7 +12,6 @@
   <string name="enable_nfc_send">Skru på NFC-sending</string>
   <string name="cache_downloaded">Lagre nedlastede applikasjoner i buffer</string>
   <string name="cache_downloaded_on">Behold nedlastede apk-filer på minnekortet</string>
-  <string name="cache_downloaded_off">Ikke behold noen apk-filer</string>
   <string name="updates">Oppdateringer</string>
   <string name="other">Andre</string>
   <string name="last_update_check">Forrige registeroppdatering: %s</string>
@@ -21,10 +20,8 @@
   <string name="update_interval_zero">Ingen automatiske registerlisteoppdateringer</string>
   <string name="automatic_scan_wifi">Bare på trådløst</string>
   <string name="automatic_scan_wifi_on">Oppdater applikasjoner automatisk kun på trådløst</string>
-  <string name="automatic_scan_wifi_off">Alltid oppdater applikasjonsliste automatisk</string>
   <string name="notify">Varsle</string>
   <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
-  <string name="notify_off">Ikke vis varsel om noen oppdateringer</string>
   <string name="update_history_summ">Dager nytt innhold skal anses som ferskt: %s</string>
   <string name="search_results">Søkeresultater</string>
   <string name="app_details">Programdetaljer</string>
@@ -109,10 +106,8 @@ Lisensiert GNU GPLv3.</string>
   <string name="appcompatibility">Programstøtte</string>
   <string name="rooted">Rot</string>
   <string name="rooted_on">Skyggelegg alle app-er som krever superbruker-tilgang</string>
-  <string name="rooted_off">Skyggelegg alle app-er som etterspør superbruker-rettigheter</string>
   <string name="ignoreTouch">Ignorer pekeskjerm</string>
   <string name="ignoreTouch_on">Alltid inkluder app-er som krever pekeskjerm</string>
-  <string name="ignoreTouch_off">Filtrer app-er som normalt</string>
   <string name="category_all">Alle</string>
   <string name="category_whatsnew">Det som er nytt</string>
   <string name="category_recentlyupdated">Nylig oppdatert</string>
@@ -132,11 +127,9 @@ Lisensiert GNU GPLv3.</string>
   <string name="permissions_for_long">Tillatelser for versjon %s</string>
   <string name="showPermissions">Vis tillatelser</string>
   <string name="showPermissions_on">Vis en liste over rettighetene en app krever</string>
-  <string name="showPermissions_off">Ikke vis rettigheter før nedlasting</string>
   <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_on">Vis ikoner i mindre størrelse</string>
-  <string name="compactlayout_off">Vis ikoner i vanlig størrelse</string>
   <string name="theme">Utseende</string>
   <string name="unsigned">Usignert</string>
   <string name="repo_url">URL</string>
