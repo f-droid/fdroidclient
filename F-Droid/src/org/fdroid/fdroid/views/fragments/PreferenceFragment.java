@@ -48,13 +48,9 @@ public class PreferenceFragment
         addPreferencesFromResource(R.xml.preferences);
     }
 
-    protected void onoffSummary(String key, int on, int off) {
+    protected void checkSummary(String key, int resId) {
         CheckBoxPreference pref = (CheckBoxPreference)findPreference(key);
-        if (pref.isChecked()) {
-            pref.setSummary(on);
-        } else {
-            pref.setSummary(off);
-        }
+        pref.setSummary(resId);
     }
 
     protected void entrySummary(String key) {
@@ -85,23 +81,19 @@ public class PreferenceFragment
             }
 
         } else if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
-            onoffSummary(key, R.string.automatic_scan_wifi_on,
-                    R.string.automatic_scan_wifi_off);
+            checkSummary(key, R.string.automatic_scan_wifi_on);
 
         } else if (key.equals(Preferences.PREF_UPD_NOTIFY)) {
-            onoffSummary(key, R.string.notify_on,
-                R.string.notify_off);
+            checkSummary(key, R.string.notify_on);
 
         } else if (key.equals(Preferences.PREF_UPD_HISTORY)) {
             textSummary(key, R.string.update_history_summ);
 
         } else if (key.equals(Preferences.PREF_PERMISSIONS)) {
-            onoffSummary(key, R.string.showPermissions_on,
-                R.string.showPermissions_off);
+            checkSummary(key, R.string.showPermissions_on);
 
         } else if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
-            onoffSummary(key, R.string.compactlayout_on,
-                R.string.compactlayout_off);
+            checkSummary(key, R.string.compactlayout_on);
 
         } else if (key.equals(Preferences.PREF_THEME)) {
             entrySummary(key);
@@ -111,43 +103,34 @@ public class PreferenceFragment
             }
 
         } else if (key.equals(Preferences.PREF_INCOMP_VER)) {
-            onoffSummary(key, R.string.show_incompat_versions_on,
-                R.string.show_incompat_versions_off);
+            checkSummary(key, R.string.show_incompat_versions_on);
 
         } else if (key.equals(Preferences.PREF_ROOTED)) {
-            onoffSummary(key, R.string.rooted_on,
-                R.string.rooted_off);
+            checkSummary(key, R.string.rooted_on);
 
         } else if (key.equals(Preferences.PREF_IGN_TOUCH)) {
-            onoffSummary(key, R.string.ignoreTouch_on,
-                R.string.ignoreTouch_off);
+            checkSummary(key, R.string.ignoreTouch_on);
 
         } else if (key.equals(Preferences.PREF_LOCAL_REPO_BONJOUR)) {
-            onoffSummary(key, R.string.local_repo_bonjour_on,
-                R.string.local_repo_bonjour_off);
+            checkSummary(key, R.string.local_repo_bonjour_on);
 
         } else if (key.equals(Preferences.PREF_LOCAL_REPO_NAME)) {
             textSummary(key, R.string.local_repo_name_summary);
 
         } else if (key.equals(Preferences.PREF_LOCAL_REPO_HTTPS)) {
-            onoffSummary(key, R.string.local_repo_https_on,
-                R.string.local_repo_https_off);
+            checkSummary(key, R.string.local_repo_https_on);
 
         } else if (key.equals(Preferences.PREF_CACHE_APK)) {
-            onoffSummary(key, R.string.cache_downloaded_on,
-                R.string.cache_downloaded_off);
+            checkSummary(key, R.string.cache_downloaded_on);
 
         } else if (key.equals(Preferences.PREF_EXPERT)) {
-            onoffSummary(key, R.string.expert_on,
-                R.string.expert_off);
+            checkSummary(key, R.string.expert_on);
 
         } else if (key.equals(Preferences.PREF_ROOT_INSTALLER)) {
-            onoffSummary(key, R.string.root_installer_on,
-                    R.string.root_installer_off);
+            checkSummary(key, R.string.root_installer_on);
 
         } else if (key.equals(Preferences.PREF_SYSTEM_INSTALLER)) {
-            onoffSummary(key, R.string.system_installer_on,
-                    R.string.system_installer_off);
+            checkSummary(key, R.string.system_installer_on);
 
         } else if (key.equals(Preferences.PREF_ENABLE_PROXY)) {
             CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);

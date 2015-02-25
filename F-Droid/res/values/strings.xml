@@ -12,7 +12,6 @@
 	<string name="enable_nfc_send">Enable NFC Send…</string>
 	<string name="cache_downloaded">App cache</string>
 	<string name="cache_downloaded_on">Keep downloaded apk files on SD card</string>
-	<string name="cache_downloaded_off">Do not keep any apk files</string>
 	<string name="updates">Updates</string>
 	<string name="other">Other</string>
 	<string name="last_update_check">Last repo scan: %s</string>
@@ -22,26 +21,20 @@
 	<string name="update_interval_zero">No automatic app list updates</string>
 	<string name="automatic_scan_wifi">Only on wifi</string>
 	<string name="automatic_scan_wifi_on">Update app lists automatically only on wifi</string>
-	<string name="automatic_scan_wifi_off">Always update app lists automatically</string>
 	<string name="notify">Notify</string>
 	<string name="notify_on">Notify when updates are available</string>
-	<string name="notify_off">Do not notify of any updates</string>
 	<string name="update_history">Update history</string>
 	<string name="update_history_summ">Days to consider apps new or recent: %s</string>
 	<string name="root_installer">Install using root access</string>
 	<string name="root_installer_on">Request root access to install, update, and remove packages</string>
-	<string name="root_installer_off">Do not request root access to install, update, and remove packages</string>
 	<string name="system_installer">Install using system-permissions</string>
 	<string name="system_installer_on">Use system permissions to install, update, and remove packages</string>
-	<string name="system_installer_off">Do not use system permissions to install, update, and remove packages</string>
 	<string name="local_repo_bonjour">Broadcast Local Repo</string>
 	<string name="local_repo_bonjour_on">Advertise your local repo using Bonjour (mDNS)</string>
-	<string name="local_repo_bonjour_off">Do not advertise your local repo.</string>
 	<string name="local_repo_name">Name of your Local Repo</string>
 	<string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
 	<string name="local_repo_https">Use Private Connection</string>
 	<string name="local_repo_https_on">Use encrypted HTTPS:// connection for local repo</string>
-	<string name="local_repo_https_off">Use insecure HTTP:// connection for local repo</string>
 
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>
@@ -147,20 +140,16 @@
 
 	<string name="expert">Expert</string>
 	<string name="expert_on">Show extra info and enable extra settings</string>
-	<string name="expert_off">Hide extras for experienced users</string>
 
 	<string name="search_hint">Search applications</string>
 
 	<string name="appcompatibility">Application compatibility</string>
 	<string name="show_incompat_versions">Incompatible versions</string>
 	<string name="show_incompat_versions_on">Show app versions incompatible with the device</string>
-	<string name="show_incompat_versions_off">Hide app versions incompatible with the device</string>
 	<string name="rooted">Root</string>
 	<string name="rooted_on">Do not grey out apps requiring root privileges</string>
-	<string name="rooted_off">Grey out apps requiring root privileges</string>
 	<string name="ignoreTouch">Ignore Touchscreen</string>
 	<string name="ignoreTouch_on">Always include apps that require touchscreen</string>
-	<string name="ignoreTouch_off">Filter apps normally</string>
 
 	<string name="category_all">All</string>
 	<string name="category_whatsnew">What\'s New</string>
@@ -227,11 +216,9 @@
 	<string name="permissions_for_long">Permissions for version %s</string>
 	<string name="showPermissions">Show permissions</string>
 	<string name="showPermissions_on">Display a list of permissions an app requires</string>
-	<string name="showPermissions_off">Don\'t show permissions before downloading</string>
 	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
 	<string name="compactlayout">Compact Layout</string>
 	<string name="compactlayout_on">Show icons at a smaller size</string>
-	<string name="compactlayout_off">Show icons at regular size</string>
     <string name="theme">Theme</string>
     <string name="unsigned">Unsigned</string>
     <string name="unverified">Unverified</string>
