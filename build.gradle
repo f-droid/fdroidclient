@@ -17,12 +17,21 @@
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.0'
+
+        // libsuperuser submodule requires these plugins, even though
+        // the F-Droid build process never invokes code from them. It
+        // would be nice to do away with this in the future, so we don't
+        // force people do download stuff they wont use.
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
     }
 }
+
+if ( hasProperty( 'sourceDeps' ) ) {
 
 project(':extern:UniversalImageLoader:library') {
 
@@ -74,6 +83,8 @@ project(':support-v4') {
     // root project (which is usually the android-support project, but
     // this time it is the F-Droid project.
     rootProject.ext.supportRepoOut = ""
+
+}
 
 }
 
