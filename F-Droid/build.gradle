@@ -92,7 +92,7 @@ task cleanBinaryDeps(type: Delete) {
     enabled = project.hasProperty('sourceDeps')
     description = "Removes all .jar and .aar files from F-Droid/libs/. Requires the sourceDeps property to be set (\"gradle -PsourceDeps cleanBinaryDeps\")"
 
-    delete fileTree('libs') {
+    delete fileTree('libs/binaryDeps') {
         include '*.aar'
         include '*.jar'
     }
@@ -113,13 +113,13 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
                 // 'MemorizingTrustManager/build/outputs/aar/MemorizingTrustManager-release.aar'
     }
 
-    into 'libs'
+    into 'libs/binaryDeps'
 
     includeEmptyDirs false
 
     eachFile { FileCopyDetails details ->
-        // Don't copy to a sub folder such as libs/Project/build/outputs/aar/project.aar, but
-        // rather libs/project.aar.
+        // Don't copy to a sub folder such as libs/binaryDeps/Project/build/outputs/aar/project.aar, but
+        // rather libs/binaryDeps/project.aar.
         details.path = details.name
     }
 
