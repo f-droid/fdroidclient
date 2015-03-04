@@ -36,7 +36,7 @@
 	ignore = dirty
 [submodule "extern/android-support-v4-preferencefragment"]
 	path = extern/android-support-v4-preferencefragment
-	url = https://github.com/CyberEagle/android-support-v4-preferencefragment.git
+	url = https://github.com/kolavar/android-support-v4-preferencefragment.git
 	ignore = dirty
 [submodule "extern/zxing-core"]
 	path = extern/zxing-core

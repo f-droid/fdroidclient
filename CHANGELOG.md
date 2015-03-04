@@ -4,6 +4,8 @@
 
 * Show when packages are installed but not via F-Droid (mismatching signature)
 
+* Enable building F-Droid without having to build all dependencies yourself
+
 ### 0.78 (2014-12-31)
 
 * Fix repo updates on 5.0 (which caused no apps to show on clean installs)

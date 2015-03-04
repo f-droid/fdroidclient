@@ -1,19 +1,128 @@
 apply plugin: 'com.android.application'
 
-dependencies {
-    compile project(':support-v4')
-    compile project(':support-appcompat-v7')
-    compile project(':extern:AndroidPinning')
-    compile project(':extern:UniversalImageLoader:library')
-    compile project(':extern:MemorizingTrustManager')
-    compile project(':extern:libsuperuser:libsuperuser')
-    compile project(':extern:nanohttpd:core')
-    compile project(':extern:jmdns')
-    compile project(':extern:zipsigner')
-    compile project(':extern:zxing-core')
-    compile( project(':extern:android-support-v4-preferencefragment') ) {
-        exclude module: 'support-v4'
+if ( !hasProperty( 'sourceDeps' ) ) {
+
+    logger.info "Setting up *binary* dependencies for F-Droid (if you'd prefer to build from source, pass the -PsourceDeps argument to gradle while building)."
+
+    repositories {
+        jcenter()
+
+        // This is here until we sort out all dependencies from mavenCentral/jcenter. Once all of
+        // the dependencies below have been sorted out, this can be removed.
+        flatDir {
+            dirs 'libs/binaryDeps'
+        }
     }
+
+    dependencies {
+
+        compile 'com.android.support:support-v4:20.0.+',
+                'com.android.support:appcompat-v7:20.0.+',
+                'com.android.support:support-annotations:20.0.+',
+
+                'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
+                'javax.jmdns:jmdns:3.4.1',
+                'com.nostra13.universalimageloader:universal-image-loader:1.9.3',
+                'com.google.zxing:core:3.1.0',
+                'eu.chainfire:libsuperuser:1.0.0.201501121001',
+                'com.madgag.spongycastle:pkix:1.51.0.0',
+                'com.madgag.spongycastle:prov:1.51.0.0',
+                'com.madgag.spongycastle:core:1.51.0.0'
+
+        // Upstream doesn't have a binary on mavenCentral/jcenter yet:
+        // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
+        compile(name: 'android-support-v4-preferencefragment-release', ext: 'aar')
+
+        // Fork for F-Droid, including support for https. Not merged into upstream
+        // yet (seems to be a little unsupported as of late), so not using mavenCentral/jcenter.
+        compile(name: 'nanohttpd-2.1.0')
+
+        // Upstream doesn't have a binary on mavenCentral.
+        compile(name: 'zipsigner')
+
+        // Upstream doesn't have a binary on mavenCentral, but we are currently not using this
+        // library due to bugs anyway. In the future, it will likely get included again though.
+        // compile(name: 'MemorizingTrustManager-release', ext: 'aar')
+    }
+
+} else {
+
+    logger.info "Setting up *source* dependencies for F-Droid (because you passed in the -PsourceDeps argument to gradle while building)."
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        compile project(':extern:AndroidPinning')
+        compile project(':extern:UniversalImageLoader:library')
+        compile project(':extern:libsuperuser:libsuperuser')
+        compile project(':extern:nanohttpd:core')
+        compile project(':extern:jmdns')
+        compile project(':extern:zipsigner')
+        compile project(':extern:zxing-core')
+        compile( project(':extern:android-support-v4-preferencefragment') ) {
+            exclude module: 'support-v4'
+        }
+
+        // Until the android team updates the gradle plugin version from 0.10.0 to
+        // a newer version, we can't build this from source with our gradle version
+        // of 1.0.0. They use API's which have been moved in the newer plugin.
+        // So yes, this is a little annoying that our "source dependencies" include
+        // a bunch of binaries from jcenter - but the ant build file (which is the
+        // one used to build F-Droid which is distributed on https://f-droid.org
+        // builds these from source - well - not support-v4).
+        //
+        // If the android team gets the build script working with the newer plugin,
+        // then you can find the relevant portions of the ../build.gradle file that
+        // include magic required to make it work at around about the v0.78 git tag.
+        // They have since been removed to clean up the build file.
+        compile 'com.android.support:support-v4:20.0.+',
+                'com.android.support:appcompat-v7:20.0.+',
+                'com.android.support:support-annotations:20.0.+'
+
+        // Removed for now, until it is reimplemented.
+        // compile project(':extern:MemorizingTrustManager')
+    }
+
+}
+
+task cleanBinaryDeps(type: Delete) {
+
+    enabled = project.hasProperty('sourceDeps')
+    description = "Removes all .jar and .aar files from F-Droid/libs/. Requires the sourceDeps property to be set (\"gradle -PsourceDeps cleanBinaryDeps\")"
+
+    delete fileTree('libs/binaryDeps') {
+        include '*.aar'
+        include '*.jar'
+    }
+}
+
+task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
+
+    enabled = project.hasProperty('sourceDeps')
+    description = "Copies .jar and .aar files from subproject dependencies in extern/ to F-Droid/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
+
+    from ('../extern/' ) {
+        include 'android-support-v4-preferencefragment/build/outputs/aar/android-support-v4-preferencefragment-release.aar',
+                'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar',
+                'zipsigner/build/libs/zipsigner.jar',
+                'Support/v4/build/libs/support-v4.jar'
+
+                // Removed for now, until it is reimplemented.
+                // 'MemorizingTrustManager/build/outputs/aar/MemorizingTrustManager-release.aar'
+    }
+
+    into 'libs/binaryDeps'
+
+    includeEmptyDirs false
+
+    eachFile { FileCopyDetails details ->
+        // Don't copy to a sub folder such as libs/binaryDeps/Project/build/outputs/aar/project.aar, but
+        // rather libs/binaryDeps/project.aar.
+        details.path = details.name
+    }
+
 }
 
 android {
@@ -62,7 +171,7 @@ android {
 
 }
 
-// TODO: This person took the example code below from another blogpost online, however
+// This person took the example code below from another blogpost online, however
 // I lost the reference to it:
 // http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
 android.applicationVariants.all { variant ->

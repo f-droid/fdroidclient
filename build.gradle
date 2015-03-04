@@ -17,12 +17,21 @@
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.0'
+
+        // libsuperuser submodule requires these plugins, even though
+        // the F-Droid build process never invokes code from them. It
+        // would be nice to do away with this in the future, so we don't
+        // force people do download stuff they wont use.
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
     }
 }
+
+if ( hasProperty( 'sourceDeps' ) ) {
 
 project(':extern:UniversalImageLoader:library') {
 
@@ -46,15 +55,6 @@ project(':extern:UniversalImageLoader:library') {
     }
 }
 
-// The support-annotations build.gradle uses the mavenDeployer method, which requires
-// this plugin. Even though no artifacts are being deployed, this is still required
-// for the build script to work.
-project(':support-annotations') {
-
-    apply plugin: 'maven'
-
-}
-
 project(':extern:zipsigner') {
 
     apply plugin: 'java'
@@ -65,79 +65,6 @@ project(':extern:zipsigner') {
         compile project(':extern:spongycastle:prov')
     }
 }
-
-project(':support-v4') {
-
-    apply plugin: 'maven'
-
-    // The support-v4 library assumes certain things are defined in the
-    // root project (which is usually the android-support project, but
-    // this time it is the F-Droid project.
-    rootProject.ext.supportRepoOut = ""
-
-}
-
-/**
- * Finds a reference to the prefered Android SDK directory.
- * Ideally we'd use "android.plugin.sdkFolder" to find this, however this is
- * only possible if we apply the android application plugin. This is not ideal,
- * because it will add a bunch of tasks to do with building an android app,
- * even tnough this build.gradle is not here to build F-Droid, it is here to
- * apply hacks to play nicely with various upstream projects.
- *
- * Adapted from https://android.googlesource.com/platform/tools/base/+/c8b776289ace4189406b59a9a9c8c9de63271cb0/build-system/gradle/src/main/groovy/com/android/build/gradle/internal/SdkHandler.java
- *   Copyright (C) 2014 The Android Open Source Project
- *   Licensed under the Apache License, Version 2.0
- *   http://www.apache.org/licenses/LICENSE-2.0i
- */
-def findSdkPath() {
-
-    Properties properties = new Properties()
-    File propFile = file("local.properties")
-    if (propFile.exists()) {
-        propFile.withReader { properties.load(it) }
-    }
-
-    String sdkDirProp = properties.getProperty("sdk.dir");
-    if (sdkDirProp != null) {
-        return new File(sdkDirProp)
-    }
-
-    String envVar = System.getenv("ANDROID_HOME");
-    if (envVar != null) {
-        return new File(envVar);
-    }
-
-    String property = System.getProperty("android.home");
-    if (property != null) {
-        return new File(property);
-    }
-
-    def error = """
-Couldn't find Android SDK. Looked for (in order of precedence):
- * sdk.dir in $propFile
- * ANDROID_HOME environment variable
- * android.home Java property
-"""
-
-    throw new RuntimeException(error)
-}
-
-// Used by the support-v4 libraries build script.
-FileCollection getAndroidPrebuilt(String apiLevel) {
-
-    def file = new File("${findSdkPath()}/platforms/android-$apiLevel/android.jar")
-    if (!file.exists()) {
-        def msg = """
-Android SDK for android-$apiLevel not found (required for building support library).
-Expected to find it at $file.
-Do you have that SDK installed?
-(If it is not visible in the Android SDK Manager, "Packages -> Show Obsolete Packages")
-"""
-        throw new RuntimeException(msg)
-    }
-
-    return files(file)
 
 }
 
