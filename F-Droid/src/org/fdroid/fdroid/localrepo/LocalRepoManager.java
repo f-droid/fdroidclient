@@ -20,23 +20,17 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+import org.xmlpull.v1.XmlSerializer;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -44,13 +38,17 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.security.cert.CertificateEncodingException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -68,7 +66,6 @@ public class LocalRepoManager {
     private final Context context;
     private final PackageManager pm;
     private final AssetManager assetManager;
-    private final SharedPreferences prefs;
     private final String fdroidPackageName;
 
     private static String[] WEB_ROOT_ASSET_FILES = {
@@ -101,7 +98,6 @@ public class LocalRepoManager {
         context = c.getApplicationContext();
         pm = c.getPackageManager();
         assetManager = c.getAssets();
-        prefs = PreferenceManager.getDefaultSharedPreferences(c);
         fdroidPackageName = c.getPackageName();
 
         webRoot = SanitizedFile.knownSanitized(c.getFilesDir());
@@ -201,10 +197,8 @@ public class LocalRepoManager {
     }
 
     private static void attemptToDelete(File file) {
-            Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), fileName), file);
-            if (!file.delete()) {
-                Log.e(TAG, "Could not delete \"" + file.getAbsolutePath() + "\".");
-            }
+        if (!file.delete()) {
+            Log.e(TAG, "Could not delete \"" + file.getAbsolutePath() + "\".");
         }
     }
 
@@ -318,170 +312,12 @@ public class LocalRepoManager {
         return new File(iconsDir, packageName + "_" + versionCode + ".png");
     }
 
-    private void writeIndexXML() throws TransformerException, ParserConfigurationException, LocalRepoKeyStore.InitException {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-
-        Document doc = builder.newDocument();
-        Element rootElement = doc.createElement("fdroid");
-        doc.appendChild(rootElement);
-
-        // max age is an EditTextPreference, which is always a String
-        int repoMaxAge = Float.valueOf(prefs.getString("max_repo_age_days",
-                DEFAULT_REPO_MAX_AGE_DAYS)).intValue();
-
-        String repoName = Preferences.get().getLocalRepoName();
-
-        Element repo = doc.createElement("repo");
-        repo.setAttribute("icon", "blah.png");
-        repo.setAttribute("maxage", String.valueOf(repoMaxAge));
-        repo.setAttribute("name", repoName + " on " + FDroidApp.ipAddressString);
-        repo.setAttribute("pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
-        long timestamp = System.currentTimeMillis() / 1000L;
-        repo.setAttribute("timestamp", String.valueOf(timestamp));
-        rootElement.appendChild(repo);
-
-        Element repoDesc = doc.createElement("description");
-        repoDesc.setTextContent("A local FDroid repo generated from apps installed on " + repoName);
-        repo.appendChild(repoDesc);
-
-        SimpleDateFormat dateToStr = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-        for (Entry<String, App> entry : apps.entrySet()) {
-            App app = entry.getValue();
-            Element application = doc.createElement("application");
-            application.setAttribute("id", app.id);
-            rootElement.appendChild(application);
-
-            Element appID = doc.createElement("id");
-            appID.setTextContent(app.id);
-            application.appendChild(appID);
-
-            Element added = doc.createElement("added");
-            added.setTextContent(dateToStr.format(app.added));
-            application.appendChild(added);
-
-            Element lastUpdated = doc.createElement("lastupdated");
-            lastUpdated.setTextContent(dateToStr.format(app.lastUpdated));
-            application.appendChild(lastUpdated);
-
-            Element name = doc.createElement("name");
-            name.setTextContent(app.name);
-            application.appendChild(name);
-
-            Element summary = doc.createElement("summary");
-            summary.setTextContent(app.summary);
-            application.appendChild(summary);
-
-            Element desc = doc.createElement("desc");
-            desc.setTextContent(app.description);
-            application.appendChild(desc);
-
-            Element icon = doc.createElement("icon");
-            icon.setTextContent(app.icon);
-            application.appendChild(icon);
-
-            Element license = doc.createElement("license");
-            license.setTextContent("Unknown");
-            application.appendChild(license);
-
-            Element categories = doc.createElement("categories");
-            categories.setTextContent("LocalRepo," + repoName);
-            application.appendChild(categories);
-
-            Element category = doc.createElement("category");
-            category.setTextContent("LocalRepo," + repoName);
-            application.appendChild(category);
-
-            Element web = doc.createElement("web");
-            application.appendChild(web);
-
-            Element source = doc.createElement("source");
-            application.appendChild(source);
-
-            Element tracker = doc.createElement("tracker");
-            application.appendChild(tracker);
-
-            Element marketVersion = doc.createElement("marketversion");
-            marketVersion.setTextContent(app.installedApk.version);
-            application.appendChild(marketVersion);
-
-            Element marketVerCode = doc.createElement("marketvercode");
-            marketVerCode.setTextContent(String.valueOf(app.installedApk.vercode));
-            application.appendChild(marketVerCode);
-
-            Element packageNode = doc.createElement("package");
-
-            Element version = doc.createElement("version");
-            version.setTextContent(app.installedApk.version);
-            packageNode.appendChild(version);
-
-            // F-Droid unfortunately calls versionCode versioncode...
-            Element versioncode = doc.createElement("versioncode");
-            versioncode.setTextContent(String.valueOf(app.installedApk.vercode));
-            packageNode.appendChild(versioncode);
-
-            Element apkname = doc.createElement("apkname");
-            apkname.setTextContent(app.installedApk.apkName);
-            packageNode.appendChild(apkname);
-
-            Element hash = doc.createElement("hash");
-            hash.setAttribute("type", app.installedApk.hashType);
-            hash.setTextContent(app.installedApk.hash.toLowerCase(Locale.US));
-            packageNode.appendChild(hash);
-
-            Element sig = doc.createElement("sig");
-            sig.setTextContent(app.installedApk.sig.toLowerCase(Locale.US));
-            packageNode.appendChild(sig);
-
-            Element size = doc.createElement("size");
-            size.setTextContent(String.valueOf(app.installedApk.installedFile.length()));
-            packageNode.appendChild(size);
-
-            Element sdkver = doc.createElement("sdkver");
-            sdkver.setTextContent(String.valueOf(app.installedApk.minSdkVersion));
-            packageNode.appendChild(sdkver);
-
-            Element apkAdded = doc.createElement("added");
-            apkAdded.setTextContent(dateToStr.format(app.installedApk.added));
-            packageNode.appendChild(apkAdded);
-
-            Element features = doc.createElement("features");
-            if (app.installedApk.features != null)
-                features.setTextContent(Utils.CommaSeparatedList.str(app.installedApk.features));
-            packageNode.appendChild(features);
-
-            Element permissions = doc.createElement("permissions");
-            if (app.installedApk.permissions != null) {
-                StringBuilder buff = new StringBuilder();
-
-                for (String permission : app.installedApk.permissions) {
-                    buff.append(permission.replace("android.permission.", ""));
-                    buff.append(",");
-                }
-                String out = buff.toString();
-                if (!TextUtils.isEmpty(out))
-                    permissions.setTextContent(out.substring(0, out.length() - 1));
-            }
-            packageNode.appendChild(permissions);
-
-            application.appendChild(packageNode);
-        }
-
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-
-        DOMSource domSource = new DOMSource(doc);
-        StreamResult result = new StreamResult(xmlIndex);
-
-        transformer.transform(domSource, result);
-    }
-
     public void writeIndexJar() throws IOException {
         try {
-            writeIndexXML();
+            new IndexXmlBuilder(context, apps).build(new FileWriter(xmlIndex));
         } catch (Exception e) {
-            Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
             Log.e(TAG, Log.getStackTraceString(e));
+            Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -513,4 +349,166 @@ public class LocalRepoManager {
         }
 
     }
+
+    /**
+     * Helper class to aid in constructing index.xml file.
+     * It uses the PullParser API, because the DOM api is only able to be serialized from
+     * API 8 upwards, but we support 7 at time of implementation.
+     */
+    public static class IndexXmlBuilder {
+
+        @NonNull
+        private final XmlSerializer serializer;
+
+        @NonNull
+        private final Map<String, App> apps;
+
+        @NonNull
+        private final Context context;
+
+        @NonNull
+        private final DateFormat dateToStr = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
+        public IndexXmlBuilder(@NonNull Context context, @NonNull Map<String, App> apps) throws XmlPullParserException, IOException {
+            this.context = context;
+            this.apps = apps;
+            serializer = XmlPullParserFactory.newInstance().newSerializer();
+        }
+
+        public void build(Writer output) throws IOException, LocalRepoKeyStore.InitException {
+            serializer.setOutput(output);
+            serializer.startDocument(null, null);
+            tagFdroid();
+            serializer.endDocument();
+        }
+
+        private void tagFdroid() throws IOException, LocalRepoKeyStore.InitException {
+            serializer.startTag("", "fdroid");
+            tagRepo();
+            for (Entry<String, App> entry : apps.entrySet()) {
+                tagApplication(entry.getValue());
+            }
+            serializer.endTag("", "fdroid");
+        }
+
+        private void tagRepo() throws IOException, LocalRepoKeyStore.InitException {
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+            // max age is an EditTextPreference, which is always a String
+            int repoMaxAge = Float.valueOf(prefs.getString("max_repo_age_days", DEFAULT_REPO_MAX_AGE_DAYS)).intValue();
+
+            serializer.startTag("", "repo");
+
+            serializer.attribute("", "icon", "blah.png");
+            serializer.attribute("", "maxage", String.valueOf(repoMaxAge));
+            serializer.attribute("", "name", Preferences.get().getLocalRepoName() + " on " + FDroidApp.ipAddressString);
+            serializer.attribute("", "pubkey", Hasher.hex(LocalRepoKeyStore.get(context).getCertificate()));
+            long timestamp = System.currentTimeMillis() / 1000L;
+            serializer.attribute("", "timestamp", String.valueOf(timestamp));
+
+            tag("description", "A local FDroid repo generated from apps installed on " + Preferences.get().getLocalRepoName());
+
+            serializer.endTag("", "repo");
+
+        }
+
+        /**
+         * Helper function to start a tag called "name", fill it with text "text", and then
+         * end the tag in a more concise manner.
+         */
+        private void tag(String name, String text) throws IOException {
+            serializer.startTag("", name).text(text).endTag("", name);
+        }
+
+        /**
+         * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
+         * That accepts a number instead of string.
+         * @see IndexXmlBuilder#tag(String, String)
+         */
+        private void tag(String name, long number) throws IOException {
+            tag(name, String.valueOf(number));
+        }
+
+        /**
+         * Alias for {@link org.fdroid.fdroid.localrepo.LocalRepoManager.IndexXmlBuilder#tag(String, String)}
+         * that accepts a date instead of a string.
+         * @see IndexXmlBuilder#tag(String, String)
+         */
+        private void tag(String name, Date date) throws IOException {
+            tag(name, dateToStr.format(date));
+        }
+
+        private void tagApplication(App app) throws IOException {
+            serializer.startTag("", "application");
+
+            tag("id", app.id);
+            tag("added", app.added);
+            tag("lastupdated", app.lastUpdated);
+            tag("name", app.name);
+            tag("summary", app.summary);
+            tag("icon", app.icon);
+            tag("desc", app.description);
+            tag("license", "Unknown");
+            tag("categories", "LocalRepo," + Preferences.get().getLocalRepoName());
+            tag("category", "LocalRepo," + Preferences.get().getLocalRepoName());
+            tag("web", "web");
+            tag("source", "source");
+            tag("tracker", "tracker");
+            tag("marketversion", app.installedApk.version);
+            tag("marketvercode", app.installedApk.vercode);
+
+            tagPackage(app);
+
+            serializer.endTag("", "application");
+        }
+
+        private void tagPackage(App app) throws IOException {
+            serializer.startTag("", "package");
+
+            tag("version", app.installedApk.version);
+            tag("versioncode", app.installedApk.vercode);
+            tag("apkname", app.installedApk.apkName);
+            tagHash(app);
+            tag("sig", app.installedApk.sig.toLowerCase(Locale.US));
+            tag("size", app.installedApk.installedFile.length());
+            tag("sdkver", app.installedApk.minSdkVersion);
+            tag("added", app.installedApk.added);
+            tagFeatures(app);
+            tagPermissions(app);
+
+            serializer.endTag("", "package");
+        }
+
+        private void tagPermissions(App app) throws IOException {
+            serializer.startTag("", "permissions");
+            if (app.installedApk.permissions != null) {
+                StringBuilder buff = new StringBuilder();
+
+                for (String permission : app.installedApk.permissions) {
+                    buff.append(permission.replace("android.permission.", ""));
+                    buff.append(",");
+                }
+                String out = buff.toString();
+                if (!TextUtils.isEmpty(out))
+                    serializer.text(out.substring(0, out.length() - 1));
+            }
+            serializer.endTag("", "permissions");
+        }
+
+        private void tagFeatures(App app) throws IOException {
+            serializer.startTag("", "features");
+            if (app.installedApk.features != null)
+                serializer.text(Utils.CommaSeparatedList.str(app.installedApk.features));
+            serializer.endTag("", "features");
+        }
+
+        private void tagHash(App app) throws IOException {
+            serializer.startTag("", "hash");
+            serializer.attribute("", "type", app.installedApk.hashType);
+            serializer.text(app.installedApk.hash.toLowerCase(Locale.US));
+            serializer.endTag("", "hash");
+        }
+    }
+
 }
