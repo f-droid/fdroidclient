@@ -10,5 +10,6 @@
   <string-array name="themeNames">
     <item>Sötét</item>
     <item>Világos</item>
+    <item>Light (with dark action bar)</item>
   </string-array>
 </resources>

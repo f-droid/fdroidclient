@@ -10,5 +10,6 @@
   <string-array name="themeNames">
     <item>Koyu</item>
     <item>Açık</item>
+    <item>Açık renk (koyu işlem çubuğu ile)</item>
   </string-array>
 </resources>

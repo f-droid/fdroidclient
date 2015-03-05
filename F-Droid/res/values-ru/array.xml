@@ -10,5 +10,6 @@
   <string-array name="themeNames">
     <item>Тёмная</item>
     <item>Светлая</item>
+    <item>Светлая (с тёмной панелью)</item>
   </string-array>
 </resources>

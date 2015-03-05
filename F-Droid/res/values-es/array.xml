@@ -10,5 +10,6 @@
   <string-array name="themeNames">
     <item>Oscuro</item>
     <item>Claro</item>
+    <item>Claro (con barra de acciones oscura)</item>
   </string-array>
 </resources>

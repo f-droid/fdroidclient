@@ -10,5 +10,6 @@
   <string-array name="themeNames">
     <item>Ciemny</item>
     <item>Jasny</item>
+    <item>Jasny (z ciemnym paskiem akcji)</item>
   </string-array>
 </resources>

@@ -7,6 +7,7 @@
   <string name="edit">Editează</string>
   <string name="delete">Şterge</string>
   <string name="cache_downloaded">Istoric aplicatii descarcate</string>
+  <string name="cache_downloaded_off">Nu păstra fişierele apk</string>
   <string name="updates">Noutati</string>
   <string name="other">Altele</string>
   <string name="never">niciodata</string>

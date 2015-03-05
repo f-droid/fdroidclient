@@ -1,7 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="about_version">Version:</string>
+  <string name="enable_nfc_send">Enable NFC Send…</string>
+  <string name="root_installer">התקן באמצעות הרשאות מנהל</string>
+  <string name="root_installer_on">Request root access to install, update, and remove packages</string>
+  <string name="system_installer_on">使用系统权限安装，更新和删除包</string>
+  <string name="local_repo_bonjour">Broadcast Local Repo</string>
+  <string name="local_repo_bonjour_on">Advertise your local repo using Bonjour (mDNS)</string>
+  <string name="local_repo_https_off">Use insecure HTTP:// connection for local repo</string>
+  <string name="about_site">Website:</string>
+  <string name="about_mail">E-Mail:</string>
   <string name="enable">Enable</string>
   <string name="add_key">Add Key</string>
   <string name="overwrite">Overwrite</string>
+  <string name="nfc_is_not_enabled">NFC没有启用！</string>
+  <string name="bluetooth_activity_not_found">Δεν βρέθηκε καμία μέθοδος αποστολής μέσω Bluetoot. Επιλέξτε μία.</string>
+  <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής μέσω Bluetooth</string>
+  <string name="send_via_bluetooth">通过蓝牙发送</string>
+  <string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>
+  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+  <string name="menu_scan_repo">Find Local Repos</string>
+  <string name="local_repos_title">Local F-Droid Repos</string>
+  <string name="local_repos_scanning">Discovering local F-Droid repos...</string>
+  <string name="updating">更新中...</string>
+  <string name="deleting_repo">Deleting current repo…</string>
+  <string name="failed_to_create_index">Failed to create the repo index!</string>
+  <string name="no_applications_found">未找到应用程序</string>
+  <string name="fingerprint">指纹:</string>
+  <string name="sharing_uri">Sharing URL:</string>
+  <string name="enable_wifi">打开WiFi</string>
+  <string name="enabling_wifi">打开WiFi中...</string>
+  <string name="qr_code">QR码</string>
+  <string name="next">下一个</string>
+  <string name="skip">Skip</string>
+  <string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
+  <string name="enable_proxy_title">开启http代理</string>
+  <string name="enable_proxy_summary">Configure HTTP Proxy for all network requests</string>
+  <string name="status_inserting">保存应用程序信息中... (%1$d%%)</string>
+  <string name="repo_not_yet_updated">This repository has not been used yet.
+        In order to view the apps it provides, you will need to update
+        it.
+
+Once updated, the description and other details will
+        become available here.</string>
+  <string name="repo_delete_details">Do you want to delete the \"{0}\"
+        repository, which has {1} apps in it? Any installed apps will NOT be
+        removed, but you will not be able to update them through F-Droid any
+        more.</string>
+  <string name="repo_confirm_delete_body">Deleting a repository means
+        apps from it will no longer be available from F-Droid.
+
+Note: All
+        previously installed apps will remain on your device.</string>
+  <string name="repo_disabled_notification">Деактиврано \"%1$s\".
+
+Трябва да
+        активирате това хранилище отново, за да инсталирате приложения от него.</string>
+  <string name="up_to_maxsdk">up to %s</string>
+  <string name="requires_features">Προαπαιτούμενο: %1$s</string>
+  <string name="app_icon">应用图标</string>
+  <string name="Development">开发</string>
+  <string name="Games">游戏</string>
+  <string name="Internet">互联网</string>
+  <string name="Mathematics">מתמטיקה</string>
+  <string name="Multimedia">多媒体</string>
+  <string name="Navigation">ניווט</string>
+  <string name="Reading">קריאה</string>
+  <string name="Science_Education">科学与教育</string>
+  <string name="Security">安全</string>
+  <string name="System">מערכת</string>
+  <string name="Wallpaper">壁纸</string>
+  <string name="requesting_root_access_title">הרשאות מנהל</string>
+  <string name="root_access_denied_title">גישת מנהל נדחתה</string>
+  <string name="update_all">更新全部</string>
+  <string name="swap_use_bluetooth">השתמש בבלוטות\' במקום</string>
 </resources>

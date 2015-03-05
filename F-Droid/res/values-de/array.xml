@@ -10,5 +10,6 @@
   <string-array name="themeNames">
     <item>Dunkel</item>
     <item>Hell</item>
+    <item>Hell (mit dunkler Aktionsleiste)</item>
   </string-array>
 </resources>

@@ -5,12 +5,16 @@
   <string name="delete">Šalinti</string>
   <string name="cache_downloaded">Atsiųstų programų podėlis</string>
   <string name="cache_downloaded_on">Laikyti atsiųstus apk failus SD kortelėje</string>
+  <string name="cache_downloaded_off">Nepalikti atsiųstų apk failų</string>
   <string name="updates">Atnaujinimai</string>
   <string name="other">Kita</string>
   <string name="never">Niekada</string>
+  <string name="update_interval">Automatinis programų sąrašų naujinimas</string>
+  <string name="automatic_scan_wifi">Tik prisijungus prie belaidžio (WiFi)</string>
   <string name="notify">Informuoti</string>
   <string name="notify_on">Pranešti, kai atsiras atnaujinimų</string>
   <string name="update_history">Naujumo nustatymai</string>
+  <string name="local_repo_name">Šio įrenginio saugyklos pavadinimas</string>
   <string name="search_results">Paieškos resultatai</string>
   <string name="about_title">Apie F-Droid</string>
   <string name="about_site">Svetainė:</string>
@@ -19,6 +23,7 @@
   <string name="about_website">Svetainė</string>
   <string name="inst">Įdiegta</string>
   <string name="not_inst">Neįdiegta</string>
+  <string name="added_on">Išleista %s</string>
   <string name="ok">Gerai</string>
   <string name="yes">Taip</string>
   <string name="no">Ne</string>
@@ -32,7 +37,11 @@
   <string name="repo_update_title">Atnaujinti saugyklas</string>
   <string name="tab_noninstalled">Prieinamos programos</string>
   <string name="tab_updates">Atnaujinimai</string>
+  <string name="one_update_available">Atsirado 1 atnaujinimas.</string>
+  <string name="many_updates_available">Galite įdiegti %d atnaujinimus.</string>
   <string name="process_wait_title">Prašom palaukti</string>
+  <string name="process_update_msg">Atnaujinimas programų sąrašas...</string>
+  <string name="send_via_bluetooth">Siųsti per Bluetooth</string>
   <string name="repo_add_url">Saugyklos adresas</string>
   <string name="repo_exists">Ši saugykla jau pridėta!</string>
   <string name="repo_alrt">Naudojamų saugyklų sąrašas buvo
@@ -41,6 +50,7 @@ Ar norite atnaujinti
 		saugyklų informaciją?</string>
   <string name="menu_update_repo">Atnaujinti saugyklas</string>
   <string name="menu_manage">Saugyklos</string>
+  <string name="menu_send_apk_bt">Siųst FDroid.apk per Bluetooth...</string>
   <string name="menu_preferences">Nustatymai</string>
   <string name="menu_about">Apie</string>
   <string name="menu_search">Ieškoti</string>
@@ -52,6 +62,7 @@ Ar norite atnaujinti
   <string name="menu_uninstall">Išmesti</string>
   <string name="menu_website">Svetainė</string>
   <string name="menu_source">Išeities tekstai</string>
+  <string name="menu_upgrade">Atnaujinti</string>
   <string name="menu_donate">Paaukoti</string>
   <string name="details_installed">Įdiegta %s versija</string>
   <string name="details_notinstalled">Neįdiegta</string>
@@ -60,11 +71,22 @@ Ar norite atnaujinti
   <string name="display">Rodymas</string>
   <string name="show_incompat_versions">Nesuderintos versijos</string>
   <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>
+  <string name="show_incompat_versions_off">Slėpti programų laidas, netinkamas šiam įrenginiui</string>
   <string name="rooted">Administratoriaus privilegijos</string>
+  <string name="category_all">Rodyti visas</string>
   <string name="category_whatsnew">Naujienos</string>
   <string name="category_recentlyupdated">Neseniai atnaujinta</string>
+  <string name="waiting_for_ipaddress">laukiama IP adreso...</string>
+  <string name="updating">Atnaujinama...</string>
+  <string name="update_repo">Naujinti saugyklą</string>
+  <string name="deleting_repo">Šalinama pasirinkta saugykla...</string>
+  <string name="enable_wifi">Įjungti belaidį (WiFi)</string>
+  <string name="next">Toliau</string>
+  <string name="send_fdroid_via_wifi">Nusiųsti FDroid programą per WiFi...</string>
   <string name="status_connecting_to_repo">Jungiamasi prie
 %1$s</string>
+  <string name="repos_unchanged">Įjungtose saugyklose nėra nieko naujo</string>
+  <string name="global_error_updating_repos">Klaida naujinant:</string>
   <string name="showPermissions">Rodyti reikalaujamus leidimus</string>
   <string name="theme">Tema</string>
   <string name="repo_num_apps">Programų kiekis</string>
@@ -78,4 +100,9 @@ Ar norite atnaujinti
   <string name="repo_confirm_delete_body">Ištrynus saugyklą, jos programų katalogas nebebus pasiekiamas su F-Droid. Tačiau iki trynimo iš saugyklos įkeltos programos pašalintos nebus.</string>
   <string name="repo_disabled_notification">\"%1$s\" pažymėta kaip nenaudotina. Jei norite įkelti programas iš šios saugyklos, turite pirma leisti tai savo nustatymuose.</string>
   <string name="requires_features">Reikalauja: %1$s</string>
+  <string name="News">Naujienos</string>
+  <string name="Science_Education">Mokslas ir mokymasis</string>
+  <string name="Wallpaper">Fonai, paveikslai, nuotraukos</string>
+  <string name="menu_swap">Dalintis programom</string>
+  <string name="swap_welcome">Sveikiname, jūs naudojate F-Droid!</string>
 </resources>

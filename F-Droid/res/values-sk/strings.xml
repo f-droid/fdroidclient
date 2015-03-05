@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="root_installer">Inštalovať root prístupom</string>
+  <string name="root_installer_on">Žiadať root prístup na inštaláciu, aktualizácie a odstránenie balíkov</string>
+  <string name="root_installer_off">Nežiadať root prístup na inštaláciu, aktualizácie a odstránenie balíkov</string>
+  <string name="system_installer">Inštalovať s povoleniami systému</string>
+  <string name="system_installer_on">Používať systémové povolenia na inštaláciu, aktualizácie a odstránenie balíkov</string>
+  <string name="system_installer_off">Nepoužívať systémové povolenia na inštaláciu, aktualizácie a odstránenie balíkov</string>
+  <string name="local_repo_bonjour">Vysielať miestne repo</string>
+  <string name="local_repo_bonjour_on">Propagovať miesto repo pomocou Bonjour (mDNS)</string>
+  <string name="local_repo_bonjour_off">Nepropagovať miestne repo.</string>
+  <string name="local_repo_name">Meno miestneho repa</string>
+  <string name="local_repo_name_summary">Zverejnený názov miestneho repa: %s</string>
+  <string name="local_repo_https">Použiť bezpečné pripojenie</string>
+  <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestne repo</string>
+  <string name="local_repo_https_off">Použiť nezabezpečené HTTP:// pripojenie pre miestne repo</string>
+  <string name="about_site">Webstránka:</string>
+  <string name="about_mail">Email:</string>
+  <string name="about_version">Verzia:</string>
+  <string name="send_via_bluetooth">Poslať cez Bluetooth</string>
+  <string name="local_repo">Miestne repo</string>
+  <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
+  <string name="waiting_for_ipaddress">čakanie na IP adresu</string>
+  <string name="setup_repo">Nastaviť miestne repo</string>
+  <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše aplikácie.</string>
+  <string name="touch_to_turn_on_local_repo">Ťuknite na zapnutie miestneho repa.</string>
+  <string name="touch_to_turn_off_local_repo">Ťuknite na vypnutie miestneho repa.</string>
+  <string name="updating">Aktualizujeme...</string>
+  <string name="update_repo">Aktualizovať repo</string>
+  <string name="deleting_repo">Mažeme súčasné repo</string>
+  <string name="adding_apks_format">Pridávame %s do repa...</string>
+  <string name="writing_index_jar">Zapisujeme podpísaný súbor indexu (index.jar)...</string>
+  <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repa!</string>
+  <string name="linking_apks">Odkazujeme súbory APK do repa...</string>
+  <string name="copying_icons">Kopírujeme ikony do repa...</string>
+  <string name="updated_local_repo">Aktualizácie miestneho repa dokončené</string>
+  <string name="no_applications_found">Aplikácie sa nenašli</string>
+  <string name="icon">ikona</string>
+  <string name="fingerprint">Odtlačok:</string>
+  <string name="wifi_network">WiFI sieť</string>
+  <string name="sharing_uri">Adresa zdieľania:</string>
+  <string name="enable_wifi">Povoliť WiFi</string>
+  <string name="enabling_wifi">Povoľujeme WiFi</string>
+  <string name="same_wifi_instructions">Ak sa chcete pripojiť k zariadeniam iných ľudí, uistite sa, že obe zariadenia sú na rovnakej WiFi sieti. Potom buď zadajte adresu URL vyššie do F-Droidu, alebo skenujte tento QR kód:</string>
+  <string name="qr_code">QR kód</string>
+  <string name="next">Ďalej</string>
+  <string name="skip">Preskočiť</string>
+  <string name="qr_content_description">QR kód URL adresy repa.</string>
+  <string name="qr_wizard_wifi_network_instructions">Skenujte tento QR kód pre pripojenie k rovnakej WiFi sieti ako toto zariadenie.</string>
+  <string name="qr_wizard_download_instructions">Naskenujte tento QR kód pre pripojenie na webové stránky s inštrukciami na začiatok.</string>
+  <string name="send_fdroid_via_wifi">Odoslať FDroid cez WiFi...</string>
+  <string name="proxy">Proxy</string>
+  <string name="enable_proxy_title">Povoliť HTTP Proxy</string>
+  <string name="enable_proxy_summary">Nastaviť HTTP Proxy na všetky sieťové žiadosti</string>
+  <string name="proxy_host">Hostiteľ proxy</string>
+  <string name="proxy_host_summary">Nastavte názov hostiteľa svojej proxy (napr. 127.0.0.1)</string>
+  <string name="proxy_port">Port proxy</string>
+  <string name="proxy_port_summary">Nastaviť číslo portu proxy (napr. 8118)</string>
+  <string name="repos_unchanged">Repozitáre nemajú aktualizácie balíkov</string>
+  <string name="all_other_repos_fine">Ostatné repá nevytvorili chyby.</string>
+  <string name="global_error_updating_repos">Chyba počas aktualizácie:</string>
+  <string name="unverified">Neoverené</string>
+  <string name="repo_not_yet_updated">Tento repozitár ste ešte nepoužili.
+        Aby ste videli aplikácie, ktoré poskytuje, musíte ho aktualizovať.
+
+Po aktualizácii budú popisy a iné detaily dostupné tu.</string>
+  <string name="repo_delete_details">Chcete vymazať repozitár \"{0}\",
+        ktorý obsahuje {1} aplikácií? Prípadné inštalované aplikácie NEBUDÚ
+        odstránené, ale nebude ich už môcť aktualizovať cez F-Droid.</string>
+  <string name="repo_confirm_delete_body">Odstránenie repozitára znamená,
+       že aplikácie z neho už nebudú z F-Droidu prístupné.
+
+Poznámka: Všetky
+       predtým nainštalované aplikácie ostávajú v zariadení.</string>
+  <string name="repo_disabled_notification">Vypnuté \"%1$s\".
+
+Budete
+        musieť znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
+  <string name="app_icon">Ikona aplikácie</string>
+  <string name="repo_icon">Ikona repa</string>
+  <string name="Children">Deti</string>
+  <string name="Development">Vývoj</string>
+  <string name="Games">Hry</string>
+  <string name="Internet">Internet</string>
+  <string name="Mathematics">Matematika</string>
+  <string name="Multimedia">Multimédiá</string>
+  <string name="Navigation">Navigácia</string>
+  <string name="News">Novinky</string>
+  <string name="Office">Kancelária</string>
+  <string name="Phone_SMS">Telefón a SMS</string>
+  <string name="Reading">Čítanie</string>
+  <string name="Science_Education">Veda a výuka</string>
+  <string name="Security">Bezpečnosť</string>
+  <string name="System">Systém</string>
+  <string name="Wallpaper">Tapeta</string>
+  <string name="requesting_root_access_title">Root prístup</string>
+  <string name="requesting_root_access_body">Žiadame root prístup...</string>
+  <string name="root_access_denied_title">Root prístup zamietnutý</string>
+  <string name="root_access_denied_body">Buď vaše zariadenie s Androidom nemá urobený root alebo ste odmietli root prístup pre F-Droid.</string>
+  <string name="update_all">Aktualizovať všetko</string>
+  <string name="installer_error_title">(Od-)Inštalačná chyba</string>
+  <string name="installer_error_body">(Od-)inštalácia sa nepodarila. Ak používate roota, skúste vypnúť toto nastavenie!</string>
+  <string name="system_permission_denied_title">Systémové povolenia zamietnuté</string>
+  <string name="system_permission_denied_body">Táto možnosť je nedostupná ak nie je F-Droid inštalovaný ako systémová aplikácia.</string>
+  <string name="app_description">F-Droid je inštalovateľný katalóg FOSS (Free a Open Source Software) aplikácií pre platformu Android. Klient umožňuje ľahko prechádzať, inštalovať, a sledovať aktualizácie na vašom zariadení.</string>
+  <string name="swap_nfc_description">Ak máte priateľov, spojte prosím telefóny dohromady.</string>
+  <string name="swap_join_same_wifi">Pripojte sa na rovnaké Wifi ak priateľ</string>
+  <string name="swap_use_bluetooth">Namiesto toho použiť Bluetooth</string>
+  <string name="swap_wifi_help">Dozvedieť sa viac o Wifi</string>
+  <string name="menu_swap">Vymeniť aplikácie</string>
+  <string name="swap">Vymeniť aplikácie</string>
+  <string name="swap_no_wifi_network">Zatiaľ žiadna sieť</string>
+  <string name="swap_view_available_networks">(Ťuknutím otvoríte dostupné siete)</string>
+  <string name="swap_wifi_qr_not_working">Nefunguje to</string>
+  <string name="open_qr_code_scanner">Otvoriť skener QR kódov</string>
+  <string name="swap_welcome">Víta vás F-Droid!</string>
+  <string name="swap_confirm_connect">Chcete získať aplikácie z %1$s hneď?</string>
+</resources>

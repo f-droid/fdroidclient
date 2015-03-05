@@ -10,5 +10,6 @@
   <string-array name="themeNames">
     <item>Mørkt</item>
     <item>Lyst</item>
+    <item>Light (with dark action bar)</item>
   </string-array>
 </resources>

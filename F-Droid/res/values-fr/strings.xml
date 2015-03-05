@@ -12,6 +12,7 @@
   <string name="enable_nfc_send">Activer l\'envoi NFC…</string>
   <string name="cache_downloaded">Stockage d\'applications téléchargées</string>
   <string name="cache_downloaded_on">Garder les fichiers apk téléchargés sur la carte SD</string>
+  <string name="cache_downloaded_off">Ne pas garder les fichiers apk</string>
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
   <string name="last_update_check">Dernière analyse du dépôtu00A0: %s</string>
@@ -20,19 +21,32 @@
   <string name="update_interval_zero">Pas de mise à jour automatique de la liste d\'applications</string>
   <string name="automatic_scan_wifi">Seulement par Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Mettre à jour automatiquement les listes d\'applications uniquement par Wi-Fi</string>
+  <string name="automatic_scan_wifi_off">Toujours mettre à jour automatiquement les listes d\'apps</string>
   <string name="notify">Notifier</string>
   <string name="notify_on">Notifier quand des mises à jour sont disponibles</string>
+  <string name="notify_off">Ne pas notifier des mises à jour</string>
   <string name="update_history">Historique des mises à jour</string>
   <string name="update_history_summ">Jours pour considérer les apps comme nouvelles ou récentesu00A0: %s</string>
+  <string name="root_installer">Installer en utilisant les droits root/SuperUser</string>
+  <string name="root_installer_on">Demander les droits root pour installer, mettre à jour et supprimer des paquets</string>
+  <string name="root_installer_off">Ne pas demander les droits ROOT pour installer, mettre à jour et supprimer des paquets</string>
+  <string name="system_installer">Installer en utilisant les permissions systèmes</string>
+  <string name="system_installer_on">Utiliser les permissions du système pour installer, mettre à jour et supprimer des paquets</string>
+  <string name="system_installer_off">Ne pas utiliser les permissions systèmes pour installer, mettre à jour et supprimer des paquets</string>
+  <string name="local_repo_bonjour">Diffuser votre dépôt local</string>
+  <string name="local_repo_bonjour_on">Annoncer votre dépôt local avec \"Bonjour\" (mDNS)</string>
+  <string name="local_repo_bonjour_off">Ne pas annoncer votre dépôt local.</string>
+  <string name="local_repo_name">Nom de votre dépôt local</string>
+  <string name="local_repo_name_summary">Le nom public de votre dépôt local\u00A0: %s</string>
+  <string name="local_repo_https">Utilisez une connexion privée</string>
+  <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
+  <string name="local_repo_https_off">Utiliser une connexion HTTP non sécurisée pour le dépôt local</string>
   <string name="search_results">Résultats de la recherche</string>
   <string name="app_details">Détails de l\'application</string>
   <string name="no_such_app">Pas d\'application trouvée</string>
   <string name="about_title">À propos de F-Droid</string>
   <string name="about_desc">Initialement basée sur Aptoide.
 Publiée sous licence GNU GPLv3.</string>
-  <string name="about_site">Site Webu00A0:</string>
-  <string name="about_mail">Courrielu00A0:</string>
-  <string name="about_version">Versionu00A0:</string>
   <string name="about_website">Site Web</string>
   <string name="no_repo">Aucun dépôt n\'est configuréu00A0!
 
@@ -65,10 +79,12 @@ L\'adresse d\'un dépôt ressemble à ceciu00A0: https://f-droid.org/repo</strin
   <string name="go_to_nfc_settings">Allez dans les paramètres NFC…</string>
   <string name="bluetooth_activity_not_found">Pas de méthode d\'envoi Bluetooth trouvée, choisissez-en uneu00A0!</string>
   <string name="choose_bt_send">Choisir la méthode d\'envoi Bluetooth</string>
+  <string name="send_via_bluetooth">Envoyer par Bluetooth</string>
   <string name="repo_add_url">Adresse du dépôt</string>
   <string name="repo_add_fingerprint">Empreinte digitale (optionnel)</string>
   <string name="repo_exists">Ce dépôt existe déjàu00A0!</string>
   <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, cela va ajouter les informations des nouvelles clés.</string>
+  <string name="repo_exists_enable">Ce dépôt est déjà configuré, confirmer que vous voulez le réactiver.</string>
   <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activéu00A0!</string>
   <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter avec une clé différenteu00A0!</string>
   <string name="malformed_repo_uri">URI de dépôt malformé ignoréu00A0: %s</string>
@@ -107,18 +123,61 @@ Voulez-vous les mettre à jouru00A0?</string>
   <string name="display">Affichage</string>
   <string name="expert">Expert</string>
   <string name="expert_on">Afficher plus d\'infos et activer des paramètres supplémentaires</string>
+  <string name="expert_off">Cacher des extras pour les utilisateurs avancés</string>
   <string name="search_hint">Rechercher des applications</string>
   <string name="appcompatibility">Compatibilité des applications</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
   <string name="show_incompat_versions_on">Afficher les versions des applications incompatibles avec l\'appareil</string>
+  <string name="show_incompat_versions_off">Cacher les applications incompatibles avec l\'appareil</string>
   <string name="rooted">Root</string>
   <string name="rooted_on">Ne pas griser les applications nécessitant les privilèges root</string>
+  <string name="rooted_off">Griser les applications nécessitant les privilèges root</string>
   <string name="ignoreTouch">Ignorer l\'écran tactile</string>
   <string name="ignoreTouch_on">Toujours inclure les apps nécessitant un écran tactile</string>
+  <string name="ignoreTouch_off">Filtrer les apps normalement</string>
   <string name="category_all">Tout</string>
+  <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
+  <string name="local_repo">Dépôt local</string>
   <string name="local_repos_title">Dépôts FDroid locaux</string>
   <string name="local_repos_scanning">Découverte des dépôts FDroid locaux…</string>
+  <string name="local_repo_running">F-Droid est prêt à être échangé</string>
+  <string name="waiting_for_ipaddress">Attente de l\'adresse IP…</string>
+  <string name="setup_repo">Configurer le dépôt local</string>
+  <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser les autres à échanger des apps</string>
+  <string name="touch_to_turn_on_local_repo">Appuyez pour activer votre dépôt local</string>
+  <string name="touch_to_turn_off_local_repo">Appuyez pour désactiver votre dépôt local</string>
+  <string name="updating">Mise à jour…</string>
+  <string name="update_repo">Mettre à jour le dépôt</string>
+  <string name="deleting_repo">Supprimer le dépôt actuel</string>
+  <string name="adding_apks_format">Ajout de %s au dépôt…</string>
+  <string name="writing_index_jar">Écriture d\'un fichier d\'index signé (index.jar)…</string>
+  <string name="failed_to_create_index">Échec à la création d\'un index de dépôt\u00A0!</string>
+  <string name="linking_apks">Création de liens pour les APKs dans le dépôt…</string>
+  <string name="copying_icons">Copie des icônes des apps dans le dépôt…</string>
+  <string name="updated_local_repo">Fin de la mise à jour du dépôt local</string>
+  <string name="no_applications_found">Aucune application trouvée</string>
+  <string name="icon">icône</string>
+  <string name="fingerprint">Empreinte\u00A0:</string>
+  <string name="wifi_network">Réseau WiFi\u00A0:</string>
+  <string name="sharing_uri">Partager l\'URL\u00A0:</string>
+  <string name="enable_wifi">Activer le WiFi</string>
+  <string name="enabling_wifi">Activation du WiFi…</string>
+  <string name="same_wifi_instructions">Pour se connecter aux appareils d\'autres personnes, assurez vous que vos appareils sont connectés sur le même réseau WiFi. Ensuite, soit tapez l\'URL ci-dessus dans F-Droid, soit scannez ce code QR\u00A0:</string>
+  <string name="qr_code">Code QR</string>
+  <string name="next">Suivant</string>
+  <string name="skip">Passer</string>
+  <string name="qr_content_description">Code QR de l\'URL du dépôt</string>
+  <string name="qr_wizard_wifi_network_instructions">Numérisez ce code QR pour vous connecter au même réseau WiFi que cet appareil.</string>
+  <string name="qr_wizard_download_instructions">Numérisez ce code QR pour vous connecter au site web pour la prise en main.</string>
+  <string name="send_fdroid_via_wifi">Envoyez F-Droid par Wi-Fi…</string>
+  <string name="proxy">Proxy</string>
+  <string name="enable_proxy_title">Activer le proxy HTTP</string>
+  <string name="enable_proxy_summary">Configurer le proxy HTTP pour toutes les requêtes réseaux</string>
+  <string name="proxy_host">Hôte du proxy</string>
+  <string name="proxy_host_summary">Configurer votre nom d\'hôte de proxy (ex. 127.0.0.1)</string>
+  <string name="proxy_port">Port du proxy</string>
+  <string name="proxy_port_summary">Configurer votre numéro de port de proxy (ex. 8118)</string>
   <string name="status_download">Téléchargement
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
@@ -129,15 +188,21 @@ Voulez-vous les mettre à jouru00A0?</string>
 %1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des applications avec votre appareil…</string>
   <string name="status_inserting">Sauvegarder les détails de l\'application (%1$d%%)</string>
+  <string name="repos_unchanged">Aucun dépôt n\'a de mises à jour des paquets</string>
+  <string name="all_other_repos_fine">Tous les autres dépôts n\'ont pas générés d\'erreurs.</string>
+  <string name="global_error_updating_repos">Erreur durant la mise à jour\u00A0:</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Permissions pour la version %s</string>
   <string name="showPermissions">Afficher les permissions</string>
   <string name="showPermissions_on">Afficher la liste des permissions qu\'une app requiert</string>
+  <string name="showPermissions_off">Ne pas afficher les permissions avant le téléchargement</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
   <string name="compactlayout_on">Montrer les icônes à une taille plus petite</string>
+  <string name="compactlayout_off">Montrer les icônes à une taille normale</string>
   <string name="theme">Thème</string>
   <string name="unsigned">Non signé</string>
+  <string name="unverified">Non vérifié</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Nombre d\'applications</string>
   <string name="repo_fingerprint">Empreinte digitale de la clef de signature pour le dépôt (SHA-256)</string>
@@ -155,10 +220,57 @@ Voulez-vous les mettre à jouru00A0?</string>
 
 Une fois la mise à jour effectuée, la description 
         et les autres détails seront affichés ici.</string>
+  <string name="repo_delete_details">Voulez vous supprimer le dépôt \"{0}\", qui a {1} apps ? Aucune application installée ne sera supprimée, mais vous ne serez plus en mesure de les mettre à jour via F-Droid.</string>
   <string name="unknown">Inconnu</string>
+  <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
+  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses apps ne seront plus disponibles via F-Droid.
+
+Note : toutes les apps précédemment installées vont rester sur votre système.</string>
+  <string name="repo_disabled_notification">« %1$s » a été désactivé.
+
+Vous devez
+        réactiver ce dépôt afin d\'installer ses applications.</string>
   <string name="minsdk_or_later">%s ou plus récent</string>
   <string name="up_to_maxsdk">jusqu\'à %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s à %2$s</string>
   <string name="not_on_same_wifi">Votre appareil n\'est sur le même réseau Wi-Fi que le dépôt local que vous venez d\'ajouteru00A0! Essayez de rejoindre ce réseauu00A0: %s</string>
   <string name="requires_features">Nécessiteu00A0: %1$s</string>
+  <string name="app_icon">Icône de l\'application</string>
+  <string name="repo_icon">Icône du dépôt</string>
+  <string name="Children">Enfants</string>
+  <string name="Development">Développement</string>
+  <string name="Games">Jeux</string>
+  <string name="Internet">Internet</string>
+  <string name="Mathematics">Mathématiques</string>
+  <string name="Multimedia">Multimédia</string>
+  <string name="Navigation">Navigation</string>
+  <string name="News">Nouveautés</string>
+  <string name="Office">Bureautique</string>
+  <string name="Phone_SMS"/>
+  <string name="Reading">Lecture</string>
+  <string name="Science_Education"/>
+  <string name="Security">Sécurité</string>
+  <string name="System">Système</string>
+  <string name="Wallpaper">Fond d\'écran</string>
+  <string name="requesting_root_access_title">Droits root</string>
+  <string name="requesting_root_access_body">Demande des droits root…</string>
+  <string name="root_access_denied_title">Droits root refusés</string>
+  <string name="root_access_denied_body">Soit votre système Android n\'a pas les droits root/SuperUser, soit vous les avez refusés à F-Droid.</string>
+  <string name="update_all">Tout mettre à jour</string>
+  <string name="installer_error_title">Erreur de (Dés-)Installation</string>
+  <string name="installer_error_body">Échec de (dés-)installation. Si vous utilisez l\'accès ROOT, essayez de désactiver ce paramètre\u00A0!</string>
+  <string name="system_permission_denied_title">Permissions systèmes refusées</string>
+  <string name="system_permission_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
+  <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>
+  <string name="swap_join_same_wifi">Se connecter au même WiFi que votre ami</string>
+  <string name="swap_use_bluetooth">Utiliser plutôt le Bluetooth</string>
+  <string name="swap_wifi_help">En apprendre plus sur le réseau WiFi</string>
+  <string name="menu_swap">Échanger des apps</string>
+  <string name="swap">Échanger des apps</string>
+  <string name="swap_no_wifi_network">Pas encore de réseau</string>
+  <string name="swap_view_available_networks">(Appuyez pour ouvrir les réseaux disponibles)</string>
+  <string name="swap_wifi_qr_not_working">Ça ne marche pas</string>
+  <string name="open_qr_code_scanner">Ouvrir le scanner QR Code</string>
+  <string name="swap_welcome">Bienvenue sur F-Droid\u00A0!</string>
+  <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenant\u00A0?</string>
 </resources>

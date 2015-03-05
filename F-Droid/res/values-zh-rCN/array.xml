@@ -3,9 +3,11 @@
   <string-array name="updateIntervalNames">
     <item>从不</item>
     <item>每天</item>
+    <item>每天</item>
   </string-array>
   <string-array name="themeNames">
     <item>暗色</item>
     <item>亮色</item>
+    <item>Light (with dark action bar)</item>
   </string-array>
 </resources>

@@ -11,6 +11,7 @@
   <string name="delete">Poista</string>
   <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
   <string name="cache_downloaded_on">Säilytä ladatud aptk-tiedostot SD-kortilla</string>
+  <string name="cache_downloaded_off">Älä säilytä apk-tiedostoja</string>
   <string name="updates">Päivitykset</string>
   <string name="other">Muu</string>
   <string name="last_update_check">Viimeisin sovelluslähteiden skannaus: %s</string>

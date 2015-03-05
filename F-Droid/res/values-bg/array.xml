@@ -8,7 +8,6 @@
     <item>Всеки ден</item>
   </string-array>
   <string-array name="themeNames">
-    <item>Dark</item>
-    <item>Light</item>
+    <item>Светла (с тъмна лента на действията)</item>
   </string-array>
 </resources>
