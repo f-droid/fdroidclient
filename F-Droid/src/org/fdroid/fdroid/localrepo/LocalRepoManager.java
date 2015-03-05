@@ -81,7 +81,9 @@ public class LocalRepoManager {
     private SanitizedFile xmlIndexJarUnsigned = null;
     public final SanitizedFile webRoot;
     public final SanitizedFile fdroidDir;
+    public final SanitizedFile fdroidDirCaps;
     public final SanitizedFile repoDir;
+    public final SanitizedFile repoDirCaps;
     public final SanitizedFile iconsDir;
 
     @Nullable
@@ -103,7 +105,9 @@ public class LocalRepoManager {
         webRoot = SanitizedFile.knownSanitized(c.getFilesDir());
         /* /fdroid/repo is the standard path for user repos */
         fdroidDir = new SanitizedFile(webRoot, "fdroid");
+        fdroidDirCaps = new SanitizedFile(webRoot, "FDROID");
         repoDir = new SanitizedFile(fdroidDir, "repo");
+        repoDirCaps = new SanitizedFile(fdroidDirCaps, "REPO");
         iconsDir = new SanitizedFile(repoDir, "icons");
         xmlIndex = new SanitizedFile(repoDir, "index.xml");
         xmlIndexJar = new SanitizedFile(repoDir, "index.jar");
@@ -163,18 +167,15 @@ public class LocalRepoManager {
 
             // make symlinks/copies in each subdir of the repo to make sure that
             // the user will always find the bootstrap page.
-            symlinkIndexPageElsewhere("../", fdroidDir);
-            symlinkIndexPageElsewhere("../../", repoDir);
+            symlinkEntireWebRootElsewhere("../", fdroidDir);
+            symlinkEntireWebRootElsewhere("../../", repoDir);
 
             // add in /FDROID/REPO to support bad QR Scanner apps
-            File fdroidCAPS = new File(fdroidDir.getParentFile(), "FDROID");
-            attemptToMkdir(fdroidCAPS);
+            attemptToMkdir(fdroidDirCaps);
+            attemptToMkdir(repoDirCaps);
 
-            File repoCAPS = new File(fdroidCAPS, "REPO");
-            attemptToMkdir(repoCAPS);
-
-            symlinkIndexPageElsewhere("../", fdroidCAPS);
-            symlinkIndexPageElsewhere("../../", repoCAPS);
+            symlinkEntireWebRootElsewhere("../", fdroidDirCaps);
+            symlinkEntireWebRootElsewhere("../../", repoDirCaps);
 
         } catch (IOException e) {
             Log.e(TAG, "Error writing local repo index: " + e.getMessage());
@@ -192,26 +193,27 @@ public class LocalRepoManager {
         }
 
         if (!dir.mkdir()) {
-            throw new IOException("An error occured trying to create directory " + dir);
+            throw new IOException("An error occurred trying to create directory " + dir);
         }
     }
 
-    private static void attemptToDelete(File file) {
+    private static void attemptToDelete(@NonNull File file) {
         if (!file.delete()) {
             Log.e(TAG, "Could not delete \"" + file.getAbsolutePath() + "\".");
         }
     }
 
-    private void symlinkIndexPageElsewhere(String symlinkPrefix, File directory) {
-        SanitizedFile index = new SanitizedFile(directory, "index.html");
-        attemptToDelete(index);
-        Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), "index.html"), index);
-
+    private void symlinkEntireWebRootElsewhere(String symlinkPrefix, File directory) {
+        symlinkFileElsewhere("index.html", symlinkPrefix, directory);
         for(String fileName : WEB_ROOT_ASSET_FILES) {
-            SanitizedFile file = new SanitizedFile(directory, fileName);
-            attemptToDelete(file);
-            Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), fileName), file);
+            symlinkFileElsewhere(fileName, symlinkPrefix, directory);
         }
+    }
+
+    private void symlinkFileElsewhere(String fileName, String symlinkPrefix, File directory) {
+        SanitizedFile index = new SanitizedFile(directory, fileName);
+        attemptToDelete(index);
+        Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), fileName), index);
     }
 
     private void deleteContents(File path) {
@@ -441,6 +443,7 @@ public class LocalRepoManager {
 
         private void tagApplication(App app) throws IOException {
             serializer.startTag("", "application");
+            serializer.attribute("", "id", app.id);
 
             tag("id", app.id);
             tag("added", app.added);
