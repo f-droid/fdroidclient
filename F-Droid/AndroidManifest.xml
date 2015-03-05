@@ -4,12 +4,14 @@
     package="org.fdroid.fdroid"
     android:installLocation="auto"
     android:versionCode="790"
-    android:versionName="0.79-test" >
+    android:versionName="0.79-test"
+    >
 
     <uses-sdk
         tools:overrideLibrary="org.thoughtcrime.ssl.pinning"
         android:minSdkVersion="7"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="21"
+        />
 
     <supports-screens
         android:anyDensity="true"
@@ -17,7 +19,8 @@
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true"
-        android:xlargeScreens="true" />
+        android:xlargeScreens="true"
+        />
 
     <uses-feature
         android:name="android.hardware.telephony"
