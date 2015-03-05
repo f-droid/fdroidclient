@@ -20,22 +20,22 @@
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
   <string name="menu_scan_repo">Find Local Repos</string>
   <string name="local_repos_title">Local F-Droid Repos</string>
-  <string name="local_repos_scanning">Discovering local F-Droid repos...</string>
-  <string name="updating">更新中...</string>
+  <string name="local_repos_scanning">Discovering local F-Droid repos…</string>
+  <string name="updating">更新中…</string>
   <string name="deleting_repo">Deleting current repo…</string>
   <string name="failed_to_create_index">Failed to create the repo index!</string>
   <string name="no_applications_found">未找到应用程序</string>
   <string name="fingerprint">指纹:</string>
   <string name="sharing_uri">Sharing URL:</string>
   <string name="enable_wifi">打开WiFi</string>
-  <string name="enabling_wifi">打开WiFi中...</string>
+  <string name="enabling_wifi">打开WiFi中…</string>
   <string name="qr_code">QR码</string>
   <string name="next">下一个</string>
   <string name="skip">Skip</string>
   <string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
   <string name="enable_proxy_title">开启http代理</string>
   <string name="enable_proxy_summary">Configure HTTP Proxy for all network requests</string>
-  <string name="status_inserting">保存应用程序信息中... (%1$d%%)</string>
+  <string name="status_inserting">保存应用程序信息中… (%1$d%%)</string>
   <string name="repo_not_yet_updated">This repository has not been used yet.
         In order to view the apps it provides, you will need to update
         it.

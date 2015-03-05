@@ -132,7 +132,7 @@ Czy chcesz je zaktualizować?</string>
   <string name="qr_content_description">Kod QR z URL repozytorium</string>
   <string name="qr_wizard_wifi_network_instructions">Zeskanuj kod QR, aby połączyć się do sieci Wi-Fi drugiego urządzenia.</string>
   <string name="qr_wizard_download_instructions">Zeskanuj kod QR, aby przejść do strony i dowiedzieć się, jak rozpocząć.</string>
-  <string name="send_fdroid_via_wifi">Wyślij F-Droid przez WiFi...</string>
+  <string name="send_fdroid_via_wifi">Wyślij F-Droid przez WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Włącz proxy HTTP</string>
   <string name="enable_proxy_summary">Konfiguruj proxy HTTP dla żądań sieciowych</string>
