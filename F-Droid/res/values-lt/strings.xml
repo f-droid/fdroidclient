@@ -5,7 +5,6 @@
   <string name="delete">Šalinti</string>
   <string name="cache_downloaded">Atsiųstų programų podėlis</string>
   <string name="cache_downloaded_on">Laikyti atsiųstus apk failus SD kortelėje</string>
-  <string name="cache_downloaded_off">Nepalikti atsiųstų apk failų</string>
   <string name="updates">Atnaujinimai</string>
   <string name="other">Kita</string>
   <string name="never">Niekada</string>
@@ -71,7 +70,6 @@ Ar norite atnaujinti
   <string name="display">Rodymas</string>
   <string name="show_incompat_versions">Nesuderintos versijos</string>
   <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>
-  <string name="show_incompat_versions_off">Slėpti programų laidas, netinkamas šiam įrenginiui</string>
   <string name="rooted">Administratoriaus privilegijos</string>
   <string name="category_all">Rodyti visas</string>
   <string name="category_whatsnew">Naujienos</string>

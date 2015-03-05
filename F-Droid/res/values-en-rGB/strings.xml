@@ -6,7 +6,6 @@
   <string name="system_installer_on">使用系统权限安装，更新和删除包</string>
   <string name="local_repo_bonjour">Broadcast Local Repo</string>
   <string name="local_repo_bonjour_on">Advertise your local repo using Bonjour (mDNS)</string>
-  <string name="local_repo_https_off">Use insecure HTTP:// connection for local repo</string>
   <string name="about_site">Website:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="enable">Enable</string>

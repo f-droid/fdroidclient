@@ -7,7 +7,6 @@
   <string name="enable_nfc_send">Активирай NFC изпращане…</string>
   <string name="cache_downloaded">Кеширай свалените приложения</string>
   <string name="cache_downloaded_on">Запазвай свалените .apk файлове на SD картата</string>
-  <string name="cache_downloaded_off">Без запазване на .apk файловете</string>
   <string name="updates">Актуализации</string>
   <string name="other">Други</string>
   <string name="last_update_check">Последно сканиране на хранилищата: %s</string>
@@ -15,7 +14,6 @@
   <string name="update_interval">Автоматичен интервал за обновяване</string>
   <string name="automatic_scan_wifi">Само през WiFi</string>
   <string name="notify_on">Известие при налична актуализация</string>
-  <string name="notify_off">Без известия за налични актуализации</string>
   <string name="update_history">Актуализирай историята</string>
   <string name="root_installer">Инсталиране през root</string>
   <string name="local_repo_name">Име на локалното хранилище</string>
@@ -69,7 +67,6 @@
   <string name="appcompatibility">Съвместимост на приложенията</string>
   <string name="show_incompat_versions">Несъвместими версии</string>
   <string name="show_incompat_versions_on">Показва и версиите, които са несъвместими с устройството.</string>
-  <string name="show_incompat_versions_off">Скрива версийте, които не са съвместими с устройството.</string>
   <string name="rooted">Root достъп</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>
   <string name="category_all">Всички</string>
