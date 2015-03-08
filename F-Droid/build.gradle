@@ -165,8 +165,6 @@ android {
 
     lintOptions {
         abortOnError false
-        textReport true
-        textOutput file("build/outputs/lint-results.txt")
     }
 
 }
