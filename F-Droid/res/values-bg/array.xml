@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="updateIntervalNames">
-    <item>Никога</item>
-    <item>Всеки час</item>
-    <item>През 4 часа</item>
-    <item>През 12 часа</item>
-    <item>Всеки ден</item>
-  </string-array>
-  <string-array name="themeNames">
-    <item>Светла (с тъмна лента на действията)</item>
-  </string-array>
-</resources>
+  </resources>
