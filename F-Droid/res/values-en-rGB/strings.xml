@@ -6,7 +6,6 @@
   <string name="system_installer_on">Use system permissions to install, update, and remove packages</string>
   <string name="local_repo_bonjour">Broadcast Local Repo</string>
   <string name="local_repo_bonjour_on">Advertise your local repo using Bonjour (mDNS)</string>
-  <string name="local_repo_https_off">Use insecure HTTP:// connection for local repo</string>
   <string name="about_site">Website:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="enable">Enable</string>

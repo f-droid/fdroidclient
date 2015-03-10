@@ -2,18 +2,14 @@
 <resources>
   <string name="root_installer">Inštalovať root prístupom</string>
   <string name="root_installer_on">Žiadať root prístup na inštaláciu, aktualizácie a odstránenie balíkov</string>
-  <string name="root_installer_off">Nežiadať root prístup na inštaláciu, aktualizácie a odstránenie balíkov</string>
   <string name="system_installer">Inštalovať s povoleniami systému</string>
   <string name="system_installer_on">Používať systémové povolenia na inštaláciu, aktualizácie a odstránenie balíkov</string>
-  <string name="system_installer_off">Nepoužívať systémové povolenia na inštaláciu, aktualizácie a odstránenie balíkov</string>
   <string name="local_repo_bonjour">Vysielať miestne repo</string>
   <string name="local_repo_bonjour_on">Propagovať miesto repo pomocou Bonjour (mDNS)</string>
-  <string name="local_repo_bonjour_off">Nepropagovať miestne repo.</string>
   <string name="local_repo_name">Meno miestneho repa</string>
   <string name="local_repo_name_summary">Zverejnený názov miestneho repa: %s</string>
   <string name="local_repo_https">Použiť bezpečné pripojenie</string>
   <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestne repo</string>
-  <string name="local_repo_https_off">Použiť nezabezpečené HTTP:// pripojenie pre miestne repo</string>
   <string name="about_site">Webstránka:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Verzia:</string>

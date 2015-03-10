@@ -9,7 +9,6 @@
   <string name="enable_nfc_send">啟用NFC傳送…</string>
   <string name="cache_downloaded">應用程式快取</string>
   <string name="cache_downloaded_on">將已下載的apk檔案保留在SD卡上</string>
-  <string name="cache_downloaded_off">不要保留任何apk檔案</string>
   <string name="updates">更新</string>
   <string name="other">其他</string>
   <string name="last_update_check">最近的repo掃描：%s</string>
@@ -18,10 +17,8 @@
   <string name="update_interval_zero">不要自動更新應用程式清單</string>
   <string name="automatic_scan_wifi">只透過 Wi-Fi</string>
   <string name="automatic_scan_wifi_on">只透過 Wi-Fi 自動更新應用程式清單</string>
-  <string name="automatic_scan_wifi_off">永遠自動更新應用程式清單</string>
   <string name="notify">通知</string>
   <string name="notify_on">應用程式發佈更新時通知我</string>
-  <string name="notify_off">不要為任何更新發佈作出通知</string>
   <string name="update_history">更新記錄</string>
   <string name="search_results">搜尋結果</string>
   <string name="app_details">應用程式詳細資料</string>
@@ -79,9 +76,7 @@
   <string name="appcompatibility">應用程式相容性</string>
   <string name="show_incompat_versions">不相容的版本</string>
   <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
-  <string name="show_incompat_versions_off">隱藏與裝置不相容的應用程式版本</string>
   <string name="rooted">Root</string>
-  <string name="ignoreTouch_off">正常地篩選應用程式</string>
   <string name="category_all">所有</string>
   <string name="category_whatsnew">最新</string>
   <string name="category_recentlyupdated">最近更新</string>
@@ -93,10 +88,8 @@
   <string name="permissions_for_long">版本%s的存取權</string>
   <string name="showPermissions">顯示存取權</string>
   <string name="showPermissions_on">顯示應用程式所需的存取權</string>
-  <string name="showPermissions_off">下載前不要顯示存取權</string>
   <string name="compactlayout">精簡設計</string>
   <string name="compactlayout_on">顯示小型圖示</string>
-  <string name="compactlayout_off">圖示以正常大小顯示</string>
   <string name="theme">主題</string>
   <string name="repo_url">網址</string>
   <string name="repo_num_apps">應用程式數目</string>
