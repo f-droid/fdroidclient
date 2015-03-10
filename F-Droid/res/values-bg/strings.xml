@@ -78,10 +78,10 @@
   <string name="local_repo">Локално хранилище</string>
   <string name="local_repos_title">Локални FDroid хранилища</string>
   <string name="local_repos_scanning">Откриване на локални FDroid хранилища…</string>
-  <string name="waiting_for_ipaddress">изчакване за IP адрес...</string>
-  <string name="updating">Обновяване...</string>
-  <string name="deleting_repo">Изтриване на хранилището...</string>
-  <string name="adding_apks_format">Добавяне на хранилището %s...</string>
+  <string name="waiting_for_ipaddress">изчакване за IP адрес…</string>
+  <string name="updating">Обновяване…</string>
+  <string name="deleting_repo">Изтриване на хранилището…</string>
+  <string name="adding_apks_format">Добавяне на хранилището %s…</string>
   <string name="no_applications_found">Не са открити приложения</string>
   <string name="icon">икона</string>
   <string name="fingerprint">Отпечатък:</string>
@@ -90,7 +90,7 @@
   <string name="qr_code">QR код</string>
   <string name="qr_content_description">QR код от URL на хранилище</string>
   <string name="qr_wizard_wifi_network_instructions">Сканирайте QR кода, за се свържете към същата WiFi мрежа, в която е и устройството.</string>
-  <string name="send_fdroid_via_wifi">Изпрати FDroid чрез WiFi...</string>
+  <string name="send_fdroid_via_wifi">Изпрати FDroid чрез WiFi…</string>
   <string name="proxy">Прокси</string>
   <string name="proxy_port">Порт за проксито</string>
   <string name="status_download">Сваляне
@@ -142,7 +142,7 @@
   <string name="System">Система</string>
   <string name="Wallpaper">Тапет</string>
   <string name="requesting_root_access_title">Root достъп</string>
-  <string name="requesting_root_access_body">Изискване на Root достъп...</string>
+  <string name="requesting_root_access_body">Изискване на Root достъп…</string>
   <string name="root_access_denied_title">Root достъпът е отказан</string>
   <string name="update_all">Обнови всички</string>
   <string name="installer_error_title">Грешка при (де)инсталирането</string>

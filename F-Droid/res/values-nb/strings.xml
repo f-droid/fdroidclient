@@ -123,7 +123,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="local_repos_scanning">Oppdager lokale FDroid register…</string>
   <string name="touch_to_turn_off_local_repo">Trykk for å skru av din lokale repo.</string>
   <string name="no_applications_found">Ingen applikasjoner funnet</string>
-  <string name="enabling_wifi">Skrur på WiFi...</string>
+  <string name="enabling_wifi">Skrur på WiFi…</string>
   <string name="qr_code">QR Kode</string>
   <string name="skip">Hopp over</string>
   <string name="enable_proxy_title">Skru på HTTP Proxy</string>
