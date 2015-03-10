@@ -12,6 +12,7 @@
   <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
   <string name="cache_downloaded">Anwendungszwischenspeicher</string>
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf der SD-Karte behalten</string>
+  <string name="cache_downloaded_off">Installationsdateien nicht behalten</string>
   <string name="updates">Aktualisierungen</string>
   <string name="other">Andere</string>
   <string name="last_update_check">Letzte Aktualisierung der Paketquellen: %s</string>
@@ -20,20 +21,26 @@
   <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>
   <string name="automatic_scan_wifi_on">Anwendungsliste nur über WLAN automatisch aktualisieren</string>
+  <string name="automatic_scan_wifi_off">Anwendungsliste immer automatisch aktualisieren</string>
   <string name="notify">Benachrichtigen</string>
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
+  <string name="notify_off">Über Aktualisierungen nicht benachrichtigen</string>
   <string name="update_history">Aktualisierungsverlauf</string>
   <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
   <string name="root_installer">Mit Verwendung von root-Zugriff installieren</string>
   <string name="root_installer_on">Root-Rechte anfordern, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
+  <string name="root_installer_off">Keine Root-Rechte anfordern, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="system_installer">Mit Verwendung von Systemberechtigungen installieren</string>
   <string name="system_installer_on">Systemberechtigungen verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
+  <string name="system_installer_off">Keine Systemberechtigungen verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="local_repo_bonjour">Lokale Paketquelle übertragen</string>
   <string name="local_repo_bonjour_on">Die lokale Paketquelle durch Verwendung von Bonjour (mDNS) bewerben</string>
+  <string name="local_repo_bonjour_off">Lokale Paketquelle nicht bewerben</string>
   <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
   <string name="local_repo_name_summary">Der werbende Titel Ihrer lokalen Paketquelle: %s</string>
   <string name="local_repo_https">Gesicherte Verbindung verwenden</string>
   <string name="local_repo_https_on">Verschlüsselte HTTPS://-Verbindung zur lokalen Paketquelle verwenden</string>
+  <string name="local_repo_https_off">Unsichere HTTP://-Verbindung zur lokalen Paketquelle verwenden</string>
   <string name="search_results">Suchergebnisse</string>
   <string name="app_details">Anwendungsdetails</string>
   <string name="no_such_app">Keine passende Anwendung gefunden</string>
@@ -120,14 +127,18 @@ Sollen diese aktualisiert werden?</string>
   <string name="display">Anzeige</string>
   <string name="expert">Experte</string>
   <string name="expert_on">Zusätzliche Informationen anzeigen und zusätzliche Einstellungen aktivieren</string>
+  <string name="expert_off">Experteneinstellungen ausblenden</string>
   <string name="search_hint">Anwendungen suchen</string>
   <string name="appcompatibility">Kompatibilität der Anwendung</string>
   <string name="show_incompat_versions">Inkompatible Versionen</string>
   <string name="show_incompat_versions_on">Mit diesem Gerät inkompatible Anwendungsversionen anzeigen</string>
+  <string name="show_incompat_versions_off">Mit diesem Gerät inkompatible Anwendungsversionen ausblenden</string>
   <string name="rooted">Root</string>
   <string name="rooted_on">Anwendungen, die Root-Rechte verlangen, nicht ausgrauen</string>
+  <string name="rooted_off">Anwendungen ausgrauen, welche Root-Rechte verlangen</string>
   <string name="ignoreTouch">Touchscreen ignorieren</string>
   <string name="ignoreTouch_on">Anwendungen, die einen Touchscreen benötigen, anzeigen</string>
+  <string name="ignoreTouch_off">Anwendungen normal filtern</string>
   <string name="category_all">Alle</string>
   <string name="category_whatsnew">Was gibt es Neues</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
@@ -177,6 +188,8 @@ Sollen diese aktualisiert werden?</string>
   <string name="status_processing_xml">Anwendung wird vorbereitet
 %2$d / %3$d von
 %1$s</string>
+  <string name="status_connecting_to_repo">Mit %1$s
+wird verbunden</string>
   <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>
   <string name="status_inserting">App-Details speichern (%1$d%%)</string>
   <string name="repos_unchanged">Keine Paketquelle hat irgendwelche Paketaktualisierungen</string>
@@ -186,10 +199,13 @@ Sollen diese aktualisiert werden?</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>
   <string name="showPermissions">Berechtigungen anzeigen</string>
   <string name="showPermissions_on">Eine Liste mit Berechtigungen, die von einer Anwendung verlangt werden, anzeigen</string>
+  <string name="showPermissions_off">Zugriffsrechte nicht vor dem Herunterladen anzeigen</string>
   <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann</string>
   <string name="compactlayout">Kompakte Ansicht</string>
   <string name="compactlayout_on">Symbole in einer kleineren Größe anzeigen</string>
+  <string name="compactlayout_off">Symbole in normaler Größe anzeigen</string>
   <string name="theme">Thema</string>
+  <string name="unsigned">Nicht signiert</string>
   <string name="unverified">Ungeprüft</string>
   <string name="repo_url">Adresse</string>
   <string name="repo_num_apps">Anwendungsanzahl</string>

@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="searchres_napps">Löydettiin %1$d sovellusta täsmäten \'%2$s\':</string>
+  <string name="searchres_napps">Löydettiin %1$d sovellusta, jotka täsmäävät \'%2$s\':</string>
   <string name="searchres_oneapp">Löydettiin yksi sovellus, joka täsmää \'%s\':</string>
-  <string name="searchres_noapps">\'%s\':ään täsmääviä sovelluksia ei löytynyt</string>
+  <string name="searchres_noapps">Sovelluksia, jotka täsmäävät \'%s\' ei löytynyt</string>
   <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version, vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen. (Huomaa, että poistaminen poistaa kaiken sovelluksen sisäisen datan)</string>
   <string name="installIncompatible">Tämä paketti ei näytä olevan yhteensopiva laitteesi kanssa. Haluatko silti asentaa sen?</string>
   <string name="installDowngrade">Sovellusta päivitetään vanhempaan versioon. Sovellus voi toimia väärin tai kadottaa tietojasi. Haluatko päivittää vanhempaan versioon?</string>
   <string name="version">Versio</string>
   <string name="edit">Muokkaa</string>
   <string name="delete">Poista</string>
+  <string name="enable_nfc_send">Ota NFC-lähetys käyttöön…</string>
   <string name="cache_downloaded">Säilytä ladatut sovellukset välimuistissa</string>
   <string name="cache_downloaded_on">Säilytä ladatud aptk-tiedostot SD-kortilla</string>
+  <string name="cache_downloaded_off">Älä säilytä apk-tiedostoja</string>
   <string name="updates">Päivitykset</string>
   <string name="other">Muu</string>
   <string name="last_update_check">Viimeisin sovelluslähteiden skannaus: %s</string>
   <string name="never">ei koskaan</string>
   <string name="update_interval">Automaattisen päivityksen tiheys</string>
+  <string name="update_interval_zero">Ei automaattisia sovellusluetteloiden päivityksiä</string>
   <string name="automatic_scan_wifi">Vain wifi-yhteydellä</string>
+  <string name="automatic_scan_wifi_on">Päivitä sovelluslistat automaattisesti vain WiFi-yhteydellä</string>
+  <string name="automatic_scan_wifi_off">Päivitä sovellusluettelot aina automaattisesti</string>
   <string name="notify">Huomauta</string>
+  <string name="notify_on">Ilmoita, kun päivityksiä on saatavissa</string>
+  <string name="notify_off">Älä ilmoita mistään päivityksistä</string>
   <string name="update_history">Päivityshistoria</string>
+  <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
+  <string name="root_installer">Asennus käyttäen root-oikeuksia</string>
+  <string name="root_installer_on">Pyydä root-oikeuksia asennuksiin, päivityksiin ja pakettien poistoon</string>
+  <string name="root_installer_off">Älä pyydä root-oikeuksia pakettien asennuksiin, päivityksiin ja poistoihin.</string>
+  <string name="system_installer">Asenna käytäen järjestelmän oikeuksia</string>
+  <string name="system_installer_on">Käytä järjestelmän oikeuksia asennuksiin, päivityksiin ja pakettien poistoihin.</string>
+  <string name="system_installer_off">Älä käytä järjestelmäoikeuksia pakettien asennuksiin, päivityksiin ja poistoihin.</string>
+  <string name="local_repo_bonjour">Kuuluta paikallista säilöä</string>
+  <string name="local_repo_bonjour_on">Mainosta paikallista säilöäsi Bonjour-palvelua käyttäen (mDNS)</string>
+  <string name="local_repo_bonjour_off">Älä mainosta paikallista säilöäsi</string>
+  <string name="local_repo_name">Paikallisen säilösi nimi</string>
+  <string name="local_repo_name_summary">Paikallisen säilösi mainostettava otsikko: %s</string>
+  <string name="local_repo_https">Käytä yksityistä yhteyttä</string>
+  <string name="local_repo_https_on">Käytä salattua HTTPS:// -yhteyttä paikalliselle säilölle</string>
+  <string name="local_repo_https_off">Käytä turvatonta HTTP:// -yhteyttä paikalliseen säilöön</string>
   <string name="search_results">Hakutulokset</string>
   <string name="app_details">Sovelluksen tiedot</string>
   <string name="no_such_app">Sovellusta ei löytynyt</string>
@@ -49,6 +71,7 @@
   <string name="process_update_msg">Päivitetään sovelluslistaa…</string>
   <string name="download_server">Haetaan sovellusta lähteestä</string>
   <string name="nfc_is_not_enabled">NFC ei ole käytössä.</string>
+  <string name="send_via_bluetooth">Lähetä bluetoothilla</string>
   <string name="repo_add_url">Sovelluslähteen osoite</string>
   <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
   <string name="repo_exists">Tämä sovelluslähde on jo olemassa.</string>
@@ -88,8 +111,106 @@ Tahdotko päivittää ne?</string>
   <string name="category_all">Kaikki</string>
   <string name="category_whatsnew">Uutta</string>
   <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
+  <string name="local_repo">Paikallinen säilö</string>
+  <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
+  <string name="waiting_for_ipaddress">odotetaan IP-osoitetta...</string>
+  <string name="setup_repo">Aseta paikallinen säilö</string>
+  <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa sovelluksiasi.</string>
+  <string name="touch_to_turn_on_local_repo">Kosketa käynnistääksesi paikallisen säilösi.</string>
+  <string name="touch_to_turn_off_local_repo">Kosketa sammuttaaksesi paikallisen säilösi.</string>
+  <string name="updating">Päivitetään...</string>
+  <string name="update_repo">Päivitä säilö</string>
+  <string name="deleting_repo">Poistetaan nykyistä säilöä...</string>
+  <string name="adding_apks_format">Lisätään kohdetta %s säilöön...</string>
+  <string name="writing_index_jar">Kirjoitetan allekirjoitettua hakemistotiedostoa (index.jar)...</string>
+  <string name="failed_to_create_index">Säilöhakemiston luonti epäonnistui!</string>
+  <string name="linking_apks">Linkitetään AKP-tiedostoja säilöön...</string>
+  <string name="copying_icons">Kopioidaan sovelluskuvakkeita säilöön...</string>
+  <string name="updated_local_repo">Paikallisen säilön päivitys valmis</string>
+  <string name="no_applications_found">Sovelluksia ei löytynyt</string>
+  <string name="icon">kuvake</string>
+  <string name="fingerprint">Sormenjälki:</string>
+  <string name="wifi_network">WiFi-verkko</string>
+  <string name="sharing_uri">Jako-URL:</string>
+  <string name="enable_wifi">Ota WiFi käyttöön</string>
+  <string name="enabling_wifi">Otetaan WiFiä käyttöön...</string>
+  <string name="same_wifi_instructions">Yhdistääksesi toisien ihmisten laitteisiin, varmista, että molemmat laitteet ovat samassa WiFi-verkossa. Tämän jälkeen joko kirjoita yllä oleva URL F-Droidiin tai skannaa tämä QR-koodi.</string>
+  <string name="qr_code">QR-koodi</string>
+  <string name="next">Seuraava</string>
+  <string name="skip">Ohita</string>
+  <string name="qr_content_description">Säilön URL:n QR-koodi</string>
+  <string name="qr_wizard_wifi_network_instructions">Skannaa tämä QR-koodi yhdistääksesi samaan WiFi-verkkoon tämän laitteen kanssa.</string>
+  <string name="qr_wizard_download_instructions">Skannaa tämä QR-koodi yhdistääksesi verkkosivuun ja päästäksesi alkuun.</string>
+  <string name="send_fdroid_via_wifi">Lähetä F-Droid WiFin kautta...</string>
+  <string name="proxy">Välityspalvelin</string>
+  <string name="enable_proxy_title">Ota käyttöön HTTP-välityspalvelin</string>
+  <string name="enable_proxy_summary">Määritä HTTP-välityspalvelin kaikille verkkopyynnöille</string>
+  <string name="proxy_host">Välityspalvelimen isäntä</string>
+  <string name="proxy_host_summary">Määritä välityspalvelimesi isäntänimi (esimm. 127.0.0.1)</string>
+  <string name="proxy_port">Välityspalvelimen portti</string>
+  <string name="proxy_port_summary">Määritä välityspalvelimesi porttinumero (esim. 8118)</string>
   <string name="status_checking_compatibility">Tarkistetaan ohjelman yhteensopivuutta laitteesi kanssa…</string>
+  <string name="repos_unchanged">Yhdessäkään säilössä ei ole pakettipäivityksiä</string>
+  <string name="all_other_repos_fine">Muut säilöt eivät luoneet virheitä.</string>
+  <string name="global_error_updating_repos">Päivityksenaikainen virhe:</string>
   <string name="showPermissions">Näytä oikeudet</string>
   <string name="theme">Teema</string>
+  <string name="unverified">Vahvistamaton</string>
+  <string name="repo_not_yet_updated">Tätä säilöä ei ole vielä käytetty.
+        Jotta näkisit sen sisältämät sovellukset, sinun pitää päivittää se.
+
+Kun päivitys on tehty, kuvaus ja muut tiedot
+        tulevat saatavillesi.</string>
+  <string name="repo_delete_details">Haluatko poistaa säilön \"{0}\",
+        jossa on {1} sovellusta? Kaikki asennetut sovellukset säilyvät
+        laitteellasi, mutta et voi enää päivittää niitä F-Droidin kautta.</string>
+  <string name="repo_confirm_delete_body">Säilön poistaminen tarkoittaa,
+        että sieltä olevat sovellukset eivät ole enää saatavissa F-Droidin kautta.
+
+Huomio: Kaikki
+        aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
+  <string name="repo_disabled_notification">\"%1$s\" pois käytöstä.
+
+Sinun pitää
+        ottaa tämä säilö uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
   <string name="requires_features">Vaatii: %1$s</string>
+  <string name="app_icon">Sovelluskuvake</string>
+  <string name="repo_icon">Säilön kuvake</string>
+  <string name="Children">Lapset</string>
+  <string name="Development">Kehitys</string>
+  <string name="Games">Pelit</string>
+  <string name="Internet">Internet</string>
+  <string name="Mathematics">Matematiikka</string>
+  <string name="Multimedia">Multimedia</string>
+  <string name="Navigation">Navigointi</string>
+  <string name="News">Uutiset</string>
+  <string name="Office">Toimisto</string>
+  <string name="Phone_SMS"/>
+  <string name="Reading">Luetaan</string>
+  <string name="Science_Education"/>
+  <string name="Security">Tietoturva</string>
+  <string name="System">Järjestelmä</string>
+  <string name="Wallpaper">Taustakuva</string>
+  <string name="requesting_root_access_title">Root-oikeudet</string>
+  <string name="requesting_root_access_body">Pyydetään root-oikeuksia...</string>
+  <string name="root_access_denied_title">Root-oikeudet kielletty</string>
+  <string name="root_access_denied_body">Joko Android-laitettasi ei ole rootattu tai olet kieltänyt F-Droidin root-oikeuksiin pääsyn.</string>
+  <string name="update_all">Päivitä kaikki</string>
+  <string name="installer_error_title">Asennus(/poisto)virhe</string>
+  <string name="installer_error_body">Asennus (asennuuksen poisto) epäonnistui. Jos käytät root-oikeuksia, kokeile tämän asetuksen poistamista käytöstä.</string>
+  <string name="system_permission_denied_title">Järjestelmäasetukset kielletty</string>
+  <string name="system_permission_denied_body">Tämä asetus on käytössä vain silloin, kun F-Droid on asennettu järjestelmäsovellukseksi.</string>
+  <string name="app_description">F-Droid on asennettava FOSS-sovellusten hakemisto (Free and Open Source Software) Androidille. Asiakasohjelma helpottaa selailemista, asentamista ja laitteesi pitämistä päivitettynä.</string>
+  <string name="swap_nfc_description">Jos ystävälläsi on  koskekaa puhelimianne yhtäaikaa.</string>
+  <string name="swap_join_same_wifi">Liity ystäväsi kanssa samaan WiFi-verkkoon</string>
+  <string name="swap_use_bluetooth">Käytä sen sijaan bluetoothia</string>
+  <string name="swap_wifi_help">Lisää tietoa WiFistä</string>
+  <string name="menu_swap">Vaihda sovelluksia</string>
+  <string name="swap">Vaida sovelluksia</string>
+  <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
+  <string name="swap_view_available_networks">(Napauta avataksesi saatavissa olevat verkot)</string>
+  <string name="swap_wifi_qr_not_working">Se ei toimi</string>
+  <string name="open_qr_code_scanner">Avaa QR-koodiskanneri</string>
+  <string name="swap_welcome">Tervetuloa F-Droidiin!</string>
+  <string name="swap_confirm_connect">Haluatko saada sovellukset kohteesta %1$s nyt?</string>
 </resources>
