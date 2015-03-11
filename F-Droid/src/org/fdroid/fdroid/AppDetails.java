@@ -184,7 +184,13 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 return getString(R.string.inst);
             }
             // Installed the same version, but from someplace else.
-            final String installerPkgName = mPm.getInstallerPackageName(app.id);
+            final String installerPkgName;
+            try {
+                installerPkgName = mPm.getInstallerPackageName(app.id);
+            } catch (IllegalArgumentException e) {
+                Log.w(TAG, "Application " + app.id + " is not installed anymore");
+                return getString(R.string.not_inst);
+            }
             if (installerPkgName != null && installerPkgName.length() > 0) {
                 final String installerLabel = InstalledAppProvider
                     .getApplicationLabel(mctx, installerPkgName);
