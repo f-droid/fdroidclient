@@ -1,50 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="6dp">
 
+    <LinearLayout
+        android:id="@+id/add_repo_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/repo_add_url" />
+
+        <EditText
+            android:id="@+id/edit_uri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            android:maxLines="2"
+            android:text="@string/https" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/repo_add_fingerprint" />
+
+        <EditText
+            android:id="@+id/edit_fingerprint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789ABCDEFabcedf: "
+            android:inputType="textNoSuggestions"
+            android:maxLines="3"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/overwrite_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@android:drawable/ic_dialog_alert"
+            android:drawableStart="@android:drawable/ic_dialog_alert"
+            android:drawablePadding="20dp"
+            android:padding="20dp"
+            android:text="@string/repo_delete_to_overwrite"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
     <TextView
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:id="@+id/text_searching_for_repo"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/repo_add_url" />
+        tools:text="Searching for repository at\nhttps://www.example.com/fdroid/repo/" />
 
-    <EditText
-        android:id="@+id/edit_uri"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textUri"
-        android:maxLines="2"
-        android:text="@string/https" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/repo_add_fingerprint" />
-
-    <EditText
-        android:id="@+id/edit_fingerprint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:digits="0123456789ABCDEFabcedf: "
-        android:inputType="textNoSuggestions"
-        android:maxLines="3"
-        android:typeface="monospace" />
-
-    <TextView
-        android:id="@+id/overwrite_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_dialog_alert"
-        android:drawableStart="@android:drawable/ic_dialog_alert"
-        android:drawablePadding="20dp"
-        android:padding="20dp"
-        android:text="@string/repo_delete_to_overwrite"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:visibility="gone" />
-
-</LinearLayout><!--
+</RelativeLayout><!--
  * Copyright (C) 2009  Roberto Jacinto
  * roberto.jacinto@caixamagica.pt
  *
