@@ -468,15 +468,19 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     private String mInstalledSigID;
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
+    protected void onStart() {
+        super.onStart();
         // register observer to know when install status changes
         myAppObserver = new AppObserver(new Handler());
         getContentResolver().registerContentObserver(
                 AppProvider.getContentUri(app.id),
                 true,
                 myAppObserver);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (downloadHandler != null) {
             if (downloadHandler.isComplete()) {
                 downloadCompleteInstallApk();
@@ -521,12 +525,14 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
     }
 
+    protected void onStop() {
+        super.onStop();
+        getContentResolver().unregisterContentObserver(myAppObserver);
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
-        if (myAppObserver != null) {
-            getContentResolver().unregisterContentObserver(myAppObserver);
-        }
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
             Log.d(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
