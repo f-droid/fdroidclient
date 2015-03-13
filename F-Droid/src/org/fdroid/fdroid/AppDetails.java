@@ -929,6 +929,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     }
 
                     setSupportProgressBarIndeterminateVisibility(false);
+                    myAppObserver.onChange();
                 }
             });
         }
@@ -940,6 +941,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     @Override
                     public void run() {
                         setSupportProgressBarIndeterminateVisibility(false);
+                        myAppObserver.onChange();
                     }
                 });
             } else {
@@ -947,6 +949,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     @Override
                     public void run() {
                         setSupportProgressBarIndeterminateVisibility(false);
+                        myAppObserver.onChange();
 
                         Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
 
