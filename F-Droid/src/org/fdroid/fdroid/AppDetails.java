@@ -144,18 +144,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            onChange();
+            onAppChanged();
         }
 
-        public void onChange() {
-            if (!reset(app.id)) {
-                AppDetails.this.finish();
-                return;
-            }
-
-            refreshApkList();
-            supportInvalidateOptionsMenu();
-        }
     }
 
     class ApkListAdapter extends ArrayAdapter<Apk> {
@@ -546,6 +537,16 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         removeProgressDialog();
     }
 
+    private void onAppChanged() {
+        if (!reset(app.id)) {
+            AppDetails.this.finish();
+            return;
+        }
+
+        refreshApkList();
+        supportInvalidateOptionsMenu();
+    }
+
     public void setIgnoreUpdates(String appId, boolean ignoreAll, int ignoreVersionCode) {
 
         Uri uri = AppProvider.getContentUri(appId);
@@ -929,7 +930,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     }
 
                     setSupportProgressBarIndeterminateVisibility(false);
-                    myAppObserver.onChange();
+                    onAppChanged();
                 }
             });
         }
@@ -941,7 +942,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     @Override
                     public void run() {
                         setSupportProgressBarIndeterminateVisibility(false);
-                        myAppObserver.onChange();
+                        onAppChanged();
                     }
                 });
             } else {
@@ -949,7 +950,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     @Override
                     public void run() {
                         setSupportProgressBarIndeterminateVisibility(false);
-                        myAppObserver.onChange();
+                        onAppChanged();
 
                         Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
 
