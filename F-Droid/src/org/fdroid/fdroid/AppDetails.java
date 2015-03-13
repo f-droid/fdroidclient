@@ -144,18 +144,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-            onChange();
+            onAppChanged();
         }
 
-        public void onChange() {
-            if (!reset(app.id)) {
-                AppDetails.this.finish();
-                return;
-            }
-
-            refreshApkList();
-            supportInvalidateOptionsMenu();
-        }
     }
 
     class ApkListAdapter extends ArrayAdapter<Apk> {
@@ -468,15 +459,19 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     private String mInstalledSigID;
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
+    protected void onStart() {
+        super.onStart();
         // register observer to know when install status changes
         myAppObserver = new AppObserver(new Handler());
         getContentResolver().registerContentObserver(
                 AppProvider.getContentUri(app.id),
                 true,
                 myAppObserver);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (downloadHandler != null) {
             if (downloadHandler.isComplete()) {
                 downloadCompleteInstallApk();
@@ -521,11 +516,14 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
     }
 
+    protected void onStop() {
+        super.onStop();
+        getContentResolver().unregisterContentObserver(myAppObserver);
+    }
+
     @Override
     protected void onPause() {
-        if (myAppObserver != null) {
-            getContentResolver().unregisterContentObserver(myAppObserver);
-        }
+        super.onPause();
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
             Log.d(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
@@ -537,8 +535,16 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
 
         removeProgressDialog();
+    }
 
-        super.onPause();
+    private void onAppChanged() {
+        if (!reset(app.id)) {
+            AppDetails.this.finish();
+            return;
+        }
+
+        refreshApkList();
+        supportInvalidateOptionsMenu();
     }
 
     public void setIgnoreUpdates(String appId, boolean ignoreAll, int ignoreVersionCode) {
@@ -924,7 +930,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     }
 
                     setSupportProgressBarIndeterminateVisibility(false);
-                    myAppObserver.onChange();
+                    onAppChanged();
                 }
             });
         }
@@ -936,7 +942,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     @Override
                     public void run() {
                         setSupportProgressBarIndeterminateVisibility(false);
-                        myAppObserver.onChange();
+                        onAppChanged();
                     }
                 });
             } else {
@@ -944,7 +950,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     @Override
                     public void run() {
                         setSupportProgressBarIndeterminateVisibility(false);
-                        myAppObserver.onChange();
+                        onAppChanged();
 
                         Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
 
