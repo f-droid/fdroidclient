@@ -22,7 +22,7 @@
             <fragment
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/landscape_header"
+                android:id="@+id/header"
                 android:name="org.fdroid.fdroid.AppDetails$AppDetailsHeaderFragment"
                 tools:layout="@layout/app_details_header"/>
 

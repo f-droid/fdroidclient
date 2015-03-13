@@ -491,6 +491,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     protected void onResumeFragments() {
         super.onResumeFragments();
         refreshApkList();
+        refreshHeader();
         supportInvalidateOptionsMenu();
     }
 
@@ -544,6 +545,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
 
         refreshApkList();
+        refreshHeader();
         supportInvalidateOptionsMenu();
     }
 
@@ -641,6 +643,12 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     private void refreshApkList() {
         adapter.notifyDataSetChanged();
+    }
+
+    private void refreshHeader() {
+        AppDetailsHeaderFragment headerFragment = (AppDetailsHeaderFragment)
+                getSupportFragmentManager().findFragmentById(R.id.header);
+        headerFragment.refresh();
     }
 
     @Override
@@ -1347,6 +1355,10 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         @Override
         public void onResume() {
             super.onResume();
+            refresh();
+        }
+
+        public void refresh() {
             updateViews(getView());
         }
 
