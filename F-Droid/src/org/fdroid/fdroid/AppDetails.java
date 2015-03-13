@@ -523,6 +523,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     @Override
     protected void onPause() {
+        super.onPause();
         if (myAppObserver != null) {
             getContentResolver().unregisterContentObserver(myAppObserver);
         }
@@ -537,8 +538,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
 
         removeProgressDialog();
-
-        super.onPause();
     }
 
     public void setIgnoreUpdates(String appId, boolean ignoreAll, int ignoreVersionCode) {
