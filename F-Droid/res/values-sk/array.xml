@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="updateIntervalNames">
-    <item>Nikdy</item>
-    <item>Raz za hodinu</item>
-    <item>Každé 4 hodiny</item>
-    <item>Každých 12 hodín</item>
-    <item>Denne</item>
-  </string-array>
   <string-array name="themeNames">
     <item>Tmavá</item>
     <item>Svetlá</item>
