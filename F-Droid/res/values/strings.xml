@@ -278,6 +278,11 @@
     <string name="System">System</string>
     <string name="Wallpaper">Wallpaper</string>
 
+    <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not available from F-Droid. This could be because you need to update your repositories, or the repositories genuinely don\'t have your apps available.</string>
+    <string name="empty_swap_app_list">No apps available to swap.\n\nEither the device you are swapping with didn\'t offer any apps to swap, or an error occurred while communicating with it.</string>
+    <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating your repositories to get a fresh list of apps.</string>
+    <string name="empty_can_update_app_list">All apps up to date.\n\nCongratulations! All of your apps are up to date (or your repositories are out of date).</string>
+
     <string name="requesting_root_access_title">Root access</string>
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>

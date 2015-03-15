@@ -45,6 +45,11 @@ public class CanUpdateAppsFragment extends AppListFragment {
     }
 
     @Override
+    protected String getEmptyMessage() {
+        return getActivity().getString(R.string.empty_can_update_app_list);
+    }
+
+    @Override
     protected Uri getDataUri() {
         return AppProvider.getCanUpdateUri();
     }
@@ -53,8 +58,7 @@ public class CanUpdateAppsFragment extends AppListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mInstaller = Installer.getActivityInstaller(getActivity(), getActivity()
-                .getPackageManager(), null);
+        mInstaller = Installer.getActivityInstaller(getActivity(), getActivity().getPackageManager(), null);
     }
 
     @Override
