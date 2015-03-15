@@ -78,6 +78,9 @@ public class AvailableAppsFragment extends AppListFragment implements
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    if (adapter == null) {
+                        return;
+                    }
                     adapter.clear();
                     List<String> catList = AppProvider.Helper.categories(getActivity());
                     ArrayAdapterCompat.addAll(adapter, catList);
