@@ -1,10 +1,20 @@
 ### Upcoming release
 
+* Fix possible crashes when installing or uninstalling apps
+
+* Fix issue that caused the installed state label to sometimes not be updated
+
 * Support for future devices with more than two cpu architectures
 
 * Show when packages are installed but not via F-Droid (mismatching signature)
 
+* Fix possible backround crash concerning the category list change listener
+
 * Enable building F-Droid without having to build all dependencies yourself
+
+* Temporarily remove partially translated arrays to avoid potential crashes
+
+* Translation updates
 
 ### 0.78 (2014-12-31)
 
