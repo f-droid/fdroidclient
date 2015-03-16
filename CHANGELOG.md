@@ -10,6 +10,10 @@
 
 * Fix possible backround crash concerning the category list change listener
 
+* Add an option to check for repository updates less often
+
+* Get rid of the confusing checkbox on/off descriptions
+
 * Enable building F-Droid without having to build all dependencies yourself
 
 * Temporarily remove partially translated arrays to avoid potential crashes
