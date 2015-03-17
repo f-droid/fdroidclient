@@ -314,44 +314,6 @@ public class LocalRepoManager {
         return new File(iconsDir, packageName + "_" + versionCode + ".png");
     }
 
-    public void writeIndexJar() throws IOException {
-        try {
-            new IndexXmlBuilder(context, apps).build(new FileWriter(xmlIndex));
-        } catch (Exception e) {
-            Log.e(TAG, Log.getStackTraceString(e));
-            Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
-        JarOutputStream jo = new JarOutputStream(bo);
-
-        BufferedInputStream bi = new BufferedInputStream(new FileInputStream(xmlIndex));
-
-        JarEntry je = new JarEntry("index.xml");
-        jo.putNextEntry(je);
-
-        byte[] buf = new byte[1024];
-        int bytesRead;
-
-        while ((bytesRead = bi.read(buf)) != -1) {
-            jo.write(buf, 0, bytesRead);
-        }
-
-        bi.close();
-        jo.close();
-        bo.close();
-
-        try {
-            LocalRepoKeyStore.get(context).signZip(xmlIndexJarUnsigned, xmlIndexJar);
-        } catch (LocalRepoKeyStore.InitException e) {
-            throw new IOException("Could not sign index - keystore failed to initialize");
-        } finally {
-            attemptToDelete(xmlIndexJarUnsigned);
-        }
-
-    }
-
     /**
      * Helper class to aid in constructing index.xml file.
      * It uses the PullParser API, because the DOM api is only able to be serialized from
@@ -512,6 +474,44 @@ public class LocalRepoManager {
             serializer.text(app.installedApk.hash.toLowerCase(Locale.US));
             serializer.endTag("", "hash");
         }
+    }
+
+    public void writeIndexJar() throws IOException {
+        try {
+            new IndexXmlBuilder(context, apps).build(new FileWriter(xmlIndex));
+        } catch (Exception e) {
+            Log.e(TAG, Log.getStackTraceString(e));
+            Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
+        JarOutputStream jo = new JarOutputStream(bo);
+
+        BufferedInputStream bi = new BufferedInputStream(new FileInputStream(xmlIndex));
+
+        JarEntry je = new JarEntry("index.xml");
+        jo.putNextEntry(je);
+
+        byte[] buf = new byte[1024];
+        int bytesRead;
+
+        while ((bytesRead = bi.read(buf)) != -1) {
+            jo.write(buf, 0, bytesRead);
+        }
+
+        bi.close();
+        jo.close();
+        bo.close();
+
+        try {
+            LocalRepoKeyStore.get(context).signZip(xmlIndexJarUnsigned, xmlIndexJar);
+        } catch (LocalRepoKeyStore.InitException e) {
+            throw new IOException("Could not sign index - keystore failed to initialize");
+        } finally {
+            attemptToDelete(xmlIndexJarUnsigned);
+        }
+
     }
 
 }

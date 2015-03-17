@@ -21,6 +21,8 @@ public class SwapAppListActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
+
+            // Necessary to run on an Android 2.3.[something] device.
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {

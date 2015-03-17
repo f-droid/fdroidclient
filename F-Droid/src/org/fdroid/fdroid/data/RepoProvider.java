@@ -277,6 +277,7 @@ public class RepoProvider extends FDroidProvider {
 
         switch (matcher.match(uri)) {
             case CODE_LIST:
+                // Do nothing (don't restrict query)
                 break;
 
             case CODE_SINGLE:

@@ -23,6 +23,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Html;
@@ -59,6 +60,7 @@ import java.util.Locale;
 
 public final class Utils {
 
+    @SuppressWarnings("UnusedDeclaration")
     private static final String TAG = "org.fdroid.fdroid.Utils";
 
     public static final int BUFFER_SIZE = 4096;
@@ -280,6 +282,7 @@ public final class Utils {
         return displayFP;
     }
 
+    @NonNull
     public static Uri getSharingUri(Repo repo) {
         if (TextUtils.isEmpty(repo.address))
             return Uri.parse("http://wifi-not-enabled");

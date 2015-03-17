@@ -130,7 +130,7 @@ public class WifiQrFragment extends Fragment {
          * custom URI schemes, so we have to use http:// or https:// :-(
          */
         Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
-        String qrUriString = ( scheme + sharingUri.getHost() ).toUpperCase(Locale.ENGLISH);
+        String qrUriString = (scheme + sharingUri.getHost()).toUpperCase(Locale.ENGLISH);
         if (sharingUri.getPort() != 80) {
             qrUriString += ":" + sharingUri.getPort();
         }
@@ -139,7 +139,7 @@ public class WifiQrFragment extends Fragment {
 
         // Andorid provides an API for getting the query parameters and iterating over them:
         //   Uri.getQueryParameterNames()
-        // But it is only available on later Android versions. As such we URLEncodedUtils instead.
+        // But it is only available on later Android versions. As such we use URLEncodedUtils instead.
         List<NameValuePair> parameters = URLEncodedUtils.parse(URI.create(sharingUri.toString()), "UTF-8");
         for (NameValuePair parameter : parameters) {
             if (!parameter.getName().equals("ssid")) {

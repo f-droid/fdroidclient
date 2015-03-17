@@ -84,6 +84,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
             setContentView(R.layout.swap_activity);
 
+            // Necessary to run on an Android 2.3.[something] device.
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {
@@ -207,9 +208,17 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     }
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
+
+        @SuppressWarnings("UnusedDeclaration")
         private static final String TAG = "fdroid.SwapActivity.UpdateAsyncTask";
+
+        @NonNull
         private final ProgressDialog progressDialog;
+
+        @NonNull
         private final Set<String> selectedApps;
+
+        @NonNull
         private final Uri sharingUri;
 
         public UpdateAsyncTask(Context c, @NonNull Set<String> apps) {
