@@ -28,6 +28,10 @@ abstract class QueryBuilder {
         return false;
     }
 
+    protected String groupBy() {
+        return null;
+    }
+
     protected void appendField(String field) {
         appendField(field, null, null);
     }
@@ -85,6 +89,10 @@ abstract class QueryBuilder {
             .append(')');
     }
 
+    private String distinctSql() {
+        return isDistinct() ? " DISTINCT " : "";
+    }
+
     private String fieldsSql() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < fields.size(); i ++) {
@@ -104,12 +112,15 @@ abstract class QueryBuilder {
         return orderBy != null ? " ORDER BY " + orderBy : "";
     }
 
+    private String groupBySql() {
+        return groupBy() != null ? " GROUP BY " + groupBy() : "";
+    }
+
     private String tablesSql() {
         return tables.toString();
     }
 
     public String toString() {
-        String distinct = isDistinct() ? " DISTINCT " : "";
-        return "SELECT " + distinct + fieldsSql() + " FROM " + tablesSql() + whereSql() + orderBySql();
+        return "SELECT " + distinctSql() + fieldsSql() + " FROM " + tablesSql() + whereSql() + groupBySql() + orderBySql();
     }
 }

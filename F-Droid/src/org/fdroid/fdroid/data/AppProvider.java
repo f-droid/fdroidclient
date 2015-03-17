@@ -262,12 +262,23 @@ public class AppProvider extends FDroidProvider {
 
         @Override
         protected String getRequiredTables() {
-            return DBHelper.TABLE_APP;
+            final String app  = DBHelper.TABLE_APP;
+            final String apk  = DBHelper.TABLE_APK;
+            final String repo = DBHelper.TABLE_REPO;
+
+            return app +
+                " LEFT JOIN " + apk + " ON ( " + apk + ".id = " + app + ".id ) " +
+                " LEFT JOIN " + repo + " ON ( " + apk + ".repo = " + repo + "._id )";
         }
 
         @Override
         protected boolean isDistinct() {
             return fieldCount() == 1 && categoryFieldAdded;
+        }
+
+        @Override
+        protected String groupBy() {
+            return DBHelper.TABLE_APP + ".id";
         }
 
         public void addSelection(AppQuerySelection selection) {
@@ -372,6 +383,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_CATEGORY = "category";
     private static final String PATH_IGNORED = "ignored";
     private static final String PATH_CALC_APP_DETAILS_FROM_INDEX = "calcDetailsFromIndex";
+    private static final String PATH_REPO = "repo";
 
     private static final int CAN_UPDATE       = CODE_SINGLE + 1;
     private static final int INSTALLED        = CAN_UPDATE + 1;
@@ -383,6 +395,7 @@ public class AppProvider extends FDroidProvider {
     private static final int CATEGORY         = NEWLY_ADDED + 1;
     private static final int IGNORED          = CATEGORY + 1;
     private static final int CALC_APP_DETAILS_FROM_INDEX = IGNORED + 1;
+    private static final int REPO             = CALC_APP_DETAILS_FROM_INDEX + 1;
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
@@ -392,6 +405,7 @@ public class AppProvider extends FDroidProvider {
         matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         matcher.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         matcher.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH);
+        matcher.addURI(getAuthority(), PATH_REPO + "/#", REPO);
         matcher.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
         matcher.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
         matcher.addURI(getAuthority(), PATH_NO_APKS, NO_APKS);
@@ -436,6 +450,13 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getCanUpdateUri() {
         return Uri.withAppendedPath(getContentUri(), PATH_CAN_UPDATE);
+    }
+
+    public static Uri getRepoUri(Repo repo) {
+        return getContentUri().buildUpon()
+            .appendPath(PATH_REPO)
+            .appendPath(String.valueOf(repo.id))
+            .build();
     }
 
     public static Uri getContentUri(List<App> apps) {
@@ -492,6 +513,12 @@ public class AppProvider extends FDroidProvider {
         String ignore = " ( " + ignoreCurrent + " AND " + ignoreAll + " ) ";
         String where = ignore + " AND fdroid_app." + DataColumns.SUGGESTED_VERSION_CODE + " > installed.versionCode";
         return new AppQuerySelection(where).requireNaturalInstalledTable();
+    }
+
+    private AppQuerySelection queryRepo(long repoId) {
+        String selection = " fdroid_apk.repo = ? ";
+        String[] args = { String.valueOf(repoId) };
+        return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryInstalled() {
@@ -555,6 +582,14 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection);
     }
 
+    private AppQuerySelection queryExcludeSwap() {
+        // fdroid_repo will have null fields if the LEFT JOIN didn't resolve, e.g. due to there
+        // being no apks for the app in the result set. In that case, we can't tell if it is from
+        // a swap repo or not.
+        String selection = " fdroid_repo.isSwap = 0 OR fdroid_repo.isSwap is null ";
+        return new AppQuerySelection(selection);
+    }
+
     private AppQuerySelection queryNewlyAdded() {
         String selection = "fdroid_app.added > ?";
         String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
@@ -599,16 +634,23 @@ public class AppProvider extends FDroidProvider {
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
         Query query = new Query();
         AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
+        boolean includeSwap = false;
         switch (matcher.match(uri)) {
             case CODE_LIST:
                 break;
 
             case CODE_SINGLE:
+                includeSwap = true;
                 selection = selection.add(querySingle(uri.getLastPathSegment()));
                 break;
 
             case CAN_UPDATE:
                 selection = selection.add(queryCanUpdate());
+                break;
+
+            case REPO:
+                includeSwap = true;
+                selection = selection.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
                 break;
 
             case INSTALLED:
@@ -648,6 +690,10 @@ public class AppProvider extends FDroidProvider {
             default:
                 Log.e(TAG, "Invalid URI for app content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
+        }
+
+        if (!includeSwap) {
+            selection = selection.add(queryExcludeSwap());
         }
 
         if (AppProvider.DataColumns.NAME.equals(sortOrder)) {

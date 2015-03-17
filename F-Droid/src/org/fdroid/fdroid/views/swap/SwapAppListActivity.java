@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.views.swap;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,11 +10,17 @@ import android.support.v7.app.ActionBarActivity;
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
 import org.fdroid.fdroid.views.AvailableAppListAdapter;
 import org.fdroid.fdroid.views.fragments.AppListFragment;
 
 public class SwapAppListActivity extends ActionBarActivity {
+
+    public static String EXTRA_REPO_ADDRESS = "repoAddress";
+
+    private Repo repo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +43,27 @@ public class SwapAppListActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        String repoAddress = getIntent().getStringExtra(EXTRA_REPO_ADDRESS);
+        repo = RepoProvider.Helper.findByAddress(this, repoAddress);
+    }
+
+    public Repo getRepo() {
+        return repo;
+    }
+
     public static class SwapAppListFragment extends AppListFragment {
+
+        private Repo repo;
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            repo = ((SwapAppListActivity)activity).getRepo();
+        }
 
         @Override
         protected int getHeaderLayout() {
@@ -61,7 +88,7 @@ public class SwapAppListActivity extends ActionBarActivity {
 
         @Override
         protected Uri getDataUri() {
-            return AppProvider.getCategoryUri("LocalRepo");
+            return AppProvider.getRepoUri(repo);
         }
 
     }
