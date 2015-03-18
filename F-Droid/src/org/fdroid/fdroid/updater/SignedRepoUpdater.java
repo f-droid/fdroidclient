@@ -58,7 +58,7 @@ public class SignedRepoUpdater extends RepoUpdater {
             jarFile = new JarFile(indexJar, true);
             JarEntry indexEntry = (JarEntry)jarFile.getEntry("index.xml");
 
-            indexFile  = File.createTempFile("index-", ".xml", context.getFilesDir());
+            indexFile  = File.createTempFile("index-", "-extracted.xml", context.getCacheDir());
             InputStream input = null;
             OutputStream output = null;
             try {

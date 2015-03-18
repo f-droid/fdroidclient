@@ -166,21 +166,24 @@ public class FDroidApp extends Application {
                 .getDefaultSharedPreferences(getBaseContext());
         curTheme = Theme.valueOf(prefs.getString(Preferences.PREF_THEME, "dark"));
         if (!prefs.getBoolean(Preferences.PREF_CACHE_APK, false)) {
-
-            File local_path = Utils.getApkCacheDir(this);
-            // Things can be null if the SD card is not ready - we'll just
-            // ignore that and do it next time.
-            if (local_path != null) {
-                final File[] files = local_path.listFiles();
-                if (files != null) {
-                    for (File f : files) {
-                        if (f.getName().endsWith(".apk")) {
-                            f.delete();
-                        }
-                    }
-                }
-            }
+            Utils.deleteFiles(Utils.getApkCacheDir(this), null, ".apk");
         }
+
+        // Index files which downloaded, but were not removed (e.g. due to F-Droid being force
+        // closed during processing of the file, before getting a chance to delete). This may
+        // include both "index-*-downloaded" and "index-*-extracted.xml" files. The first is from
+        // either signed or unsigned repos, and the later is from signed repos.
+        Utils.deleteFiles(getCacheDir(), "index-", null);
+
+        // As above, but for legacy F-Droid clients that downloaded under a different name, and
+        // extracted to the files directory rather than the cache directory.
+        // TODO: This can be removed in a a few months or a year (e.g. 2016) because people will
+        // have upgraded their clients, this code will have executed, and they will not have any
+        // left over files any more. Even if they do hold off upgrading until this code is removed,
+        // the only side effect is that they will have a few more MiB of storage taken up on their
+        // device until they uninstall and re-install F-Droid.
+        Utils.deleteFiles(getCacheDir(), "dl-", null);
+        Utils.deleteFiles(getFilesDir(), "index-", null);
 
         UpdateService.schedule(getApplicationContext());
         bluetoothAdapter = getBluetoothAdapter();
