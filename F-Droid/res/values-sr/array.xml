@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string-array name="updateIntervalNames">
+    <item>Никада</item>
+    <item>Сваког сата</item>
+    <item>Свака 4 сата</item>
+    <item>Сваких 12 сати</item>
+    <item>Дневно</item>
+  </string-array>
   <string-array name="themeNames">
     <item>Тамна</item>
     <item>Светла</item>

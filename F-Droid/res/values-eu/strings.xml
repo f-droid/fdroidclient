@@ -10,13 +10,16 @@
   <string name="enable_nfc_send">Gaitu NFC bidez bidaltzea…</string>
   <string name="cache_downloaded">Gorde cache-an deskargatutako aplikazioak</string>
   <string name="cache_downloaded_on">Mantendu deskargatutako apk fitxategiak SD txartelean</string>
+  <string name="cache_downloaded_off">Ez mantendu apk fitxategirik</string>
   <string name="updates">Eguneraketak</string>
   <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
   <string name="never">inoiz ez</string>
   <string name="automatic_scan_wifi">Wifian soilik</string>
   <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki wifian soilik</string>
+  <string name="automatic_scan_wifi_off">Beti eguneratu aplikazioen zerrendak automatikoki</string>
   <string name="notify">Jakinarazi</string>
   <string name="notify_on">Jakinarazi eguneraketak eskuragarri daudenean</string>
+  <string name="notify_off">Ez jakinarazi eguneraketak daudenean</string>
   <string name="update_history">Eguneratu historia</string>
   <string name="search_results">Bilaketaren emaitzak</string>
   <string name="app_details">Aplikazioaren xehetasunak</string>

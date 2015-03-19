@@ -7,6 +7,7 @@
   <string name="enable_nfc_send">Активирай NFC изпращане…</string>
   <string name="cache_downloaded">Кеширай свалените приложения</string>
   <string name="cache_downloaded_on">Запазвай свалените .apk файлове на SD картата</string>
+  <string name="cache_downloaded_off">Без запазване на .apk файловете</string>
   <string name="updates">Актуализации</string>
   <string name="other">Други</string>
   <string name="last_update_check">Последно сканиране на хранилищата: %s</string>
@@ -14,6 +15,7 @@
   <string name="update_interval">Автоматичен интервал за обновяване</string>
   <string name="automatic_scan_wifi">Само през WiFi</string>
   <string name="notify_on">Известие при налична актуализация</string>
+  <string name="notify_off">Без известия за налични актуализации</string>
   <string name="update_history">Актуализирай историята</string>
   <string name="root_installer">Инсталиране през root</string>
   <string name="local_repo_name">Име на локалното хранилище</string>
@@ -68,6 +70,7 @@
   <string name="appcompatibility">Съвместимост на приложенията</string>
   <string name="show_incompat_versions">Несъвместими версии</string>
   <string name="show_incompat_versions_on">Показва и версиите, които са несъвместими с устройството.</string>
+  <string name="show_incompat_versions_off">Скрива версийте, които не са съвместими с устройството.</string>
   <string name="rooted">Root достъп</string>
   <string name="ignoreTouch">Игнорирай сензорния екран</string>
   <string name="category_all">Всички</string>
@@ -75,10 +78,10 @@
   <string name="local_repo">Локално хранилище</string>
   <string name="local_repos_title">Локални FDroid хранилища</string>
   <string name="local_repos_scanning">Откриване на локални FDroid хранилища…</string>
-  <string name="waiting_for_ipaddress">изчакване за IP адрес…</string>
-  <string name="updating">Обновяване…</string>
-  <string name="deleting_repo">Изтриване на хранилището…</string>
-  <string name="adding_apks_format">Добавяне на хранилището %s…</string>
+  <string name="waiting_for_ipaddress">изчакване за IP адрес...</string>
+  <string name="updating">Обновяване...</string>
+  <string name="deleting_repo">Изтриване на хранилището...</string>
+  <string name="adding_apks_format">Добавяне на хранилището %s...</string>
   <string name="no_applications_found">Не са открити приложения</string>
   <string name="icon">икона</string>
   <string name="fingerprint">Отпечатък:</string>
@@ -87,7 +90,7 @@
   <string name="qr_code">QR код</string>
   <string name="qr_content_description">QR код от URL на хранилище</string>
   <string name="qr_wizard_wifi_network_instructions">Сканирайте QR кода, за се свържете към същата WiFi мрежа, в която е и устройството.</string>
-  <string name="send_fdroid_via_wifi">Изпрати FDroid чрез WiFi…</string>
+  <string name="send_fdroid_via_wifi">Изпрати FDroid чрез WiFi...</string>
   <string name="proxy">Прокси</string>
   <string name="proxy_port">Порт за проксито</string>
   <string name="status_download">Сваляне
@@ -139,7 +142,7 @@
   <string name="System">Система</string>
   <string name="Wallpaper">Тапет</string>
   <string name="requesting_root_access_title">Root достъп</string>
-  <string name="requesting_root_access_body">Изискване на Root достъп…</string>
+  <string name="requesting_root_access_body">Изискване на Root достъп...</string>
   <string name="root_access_denied_title">Root достъпът е отказан</string>
   <string name="update_all">Обнови всички</string>
   <string name="installer_error_title">Грешка при (де)инсталирането</string>

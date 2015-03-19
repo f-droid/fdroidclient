@@ -6,6 +6,7 @@
   <string name="delete">حذف</string>
   <string name="cache_downloaded">میانگیری برنامه‌های دریافت‌شده</string>
   <string name="cache_downloaded_on">نگه‌داشتن پرونده‌های ای‌پی‌کی بر روی کارت اس‌دی</string>
+  <string name="cache_downloaded_off">هیچ پروندهٔ ای‌پی‌کی را نگه‌ندار</string>
   <string name="updates">به‌روزرسانی‌ها</string>
   <string name="other">دیگر</string>
   <string name="last_update_check">آخرین اسکن مخزن: %S</string>
@@ -14,7 +15,9 @@
   <string name="update_interval_zero">به‌روزرسانی‌نکردن خودکار فهرست برنامه‌ها</string>
   <string name="automatic_scan_wifi">فقط هنگام اتصال وای‌فای</string>
   <string name="automatic_scan_wifi_on">به‌روزرسانی فهرست برنامه‌ها خودکار فقط با وای‌فای</string>
+  <string name="automatic_scan_wifi_off">همیشه فهرست برنامه‌ها را خودکار به‌روز کن</string>
   <string name="notify_on">آگاهی‌دادن هنگامی که به‌روزرسانی‌ها موجود هستند</string>
+  <string name="notify_off">هیچکدام از بروزرسانی‌ها را آگاه نکن</string>
   <string name="update_history">به‌روزرسانی تاریخچه</string>
   <string name="search_results">جستجوی نتایج</string>
   <string name="no_such_app">چنین برنامه‌ای یافت نشد</string>
@@ -75,6 +78,7 @@
   <string name="antiupstreamnonfreelist">سرتاسر آزاد نبودن کد منبع بالادستی</string>
   <string name="display">نمایش</string>
   <string name="expert_on">نمایش داده‌های بیشتر و فعال کردن تنظیمات بیشتر</string>
+  <string name="expert_off">پنهان کردن بیش‌تنظیم‌ها برای کاربرهای کارآزموده</string>
   <string name="search_hint">جستجوی برنامه‌ها</string>
   <string name="appcompatibility">هماهنگی برنامه</string>
   <string name="rooted">روت</string>
@@ -92,8 +96,10 @@
   <string name="no_permissions">دسترسی‌ای استفاده نشده‌است.</string>
   <string name="showPermissions">نمایش دسترسی‌ها</string>
   <string name="showPermissions_on">نمایش یک فهرست از دسترسی‌هایی که یک برنامه نیاز دارد</string>
+  <string name="showPermissions_off">نمایش ندادن دسترسی‌ها پیش از دریافت کردن</string>
   <string name="compactlayout">طرح‌بندی فشرده</string>
   <string name="compactlayout_on">نمایش شکلک‌ها در اندازه کوچکتر</string>
+  <string name="compactlayout_off">نمایش شکلک‌ها در اندازه ساده</string>
   <string name="theme">پوسته</string>
   <string name="unsigned">بدون امضا</string>
   <string name="repo_url">URL</string>
