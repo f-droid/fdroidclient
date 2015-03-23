@@ -5,7 +5,6 @@
   <string name="delete">Šalinti</string>
   <string name="cache_downloaded">Atsiųstų programų podėlis</string>
   <string name="cache_downloaded_on">Laikyti atsiųstus apk failus SD kortelėje</string>
-  <string name="cache_downloaded_off">Nepalikti atsiųstų apk failų</string>
   <string name="updates">Atnaujinimai</string>
   <string name="other">Kita</string>
   <string name="never">Niekada</string>
@@ -40,7 +39,7 @@
   <string name="one_update_available">Atsirado 1 atnaujinimas.</string>
   <string name="many_updates_available">Galite įdiegti %d atnaujinimus.</string>
   <string name="process_wait_title">Prašom palaukti</string>
-  <string name="process_update_msg">Atnaujinimas programų sąrašas...</string>
+  <string name="process_update_msg">Atnaujinimas programų sąrašas…</string>
   <string name="send_via_bluetooth">Siųsti per Bluetooth</string>
   <string name="repo_add_url">Saugyklos adresas</string>
   <string name="repo_exists">Ši saugykla jau pridėta!</string>
@@ -50,7 +49,7 @@ Ar norite atnaujinti
 		saugyklų informaciją?</string>
   <string name="menu_update_repo">Atnaujinti saugyklas</string>
   <string name="menu_manage">Saugyklos</string>
-  <string name="menu_send_apk_bt">Siųst FDroid.apk per Bluetooth...</string>
+  <string name="menu_send_apk_bt">Siųst FDroid.apk per Bluetooth…</string>
   <string name="menu_preferences">Nustatymai</string>
   <string name="menu_about">Apie</string>
   <string name="menu_search">Ieškoti</string>
@@ -71,18 +70,17 @@ Ar norite atnaujinti
   <string name="display">Rodymas</string>
   <string name="show_incompat_versions">Nesuderintos versijos</string>
   <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>
-  <string name="show_incompat_versions_off">Slėpti programų laidas, netinkamas šiam įrenginiui</string>
   <string name="rooted">Administratoriaus privilegijos</string>
   <string name="category_all">Rodyti visas</string>
   <string name="category_whatsnew">Naujienos</string>
   <string name="category_recentlyupdated">Neseniai atnaujinta</string>
-  <string name="waiting_for_ipaddress">laukiama IP adreso...</string>
-  <string name="updating">Atnaujinama...</string>
+  <string name="waiting_for_ipaddress">laukiama IP adreso…</string>
+  <string name="updating">Atnaujinama…</string>
   <string name="update_repo">Naujinti saugyklą</string>
-  <string name="deleting_repo">Šalinama pasirinkta saugykla...</string>
+  <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>
   <string name="enable_wifi">Įjungti belaidį (WiFi)</string>
   <string name="next">Toliau</string>
-  <string name="send_fdroid_via_wifi">Nusiųsti FDroid programą per WiFi...</string>
+  <string name="send_fdroid_via_wifi">Nusiųsti FDroid programą per WiFi…</string>
   <string name="status_connecting_to_repo">Jungiamasi prie
 %1$s</string>
   <string name="repos_unchanged">Įjungtose saugyklose nėra nieko naujo</string>

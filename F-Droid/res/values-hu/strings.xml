@@ -9,7 +9,6 @@
   <string name="version">Verzió</string>
   <string name="cache_downloaded">App cache</string>
   <string name="cache_downloaded_on">A letöltött apk fájlt megtartja az SD kártyán</string>
-  <string name="cache_downloaded_off">Ne tartson meg semmilyen apk fájlt</string>
   <string name="updates">Frissítések</string>
   <string name="other">egyéb</string>
   <string name="last_update_check">Utolsó vizsgálat: %s</string>
@@ -18,10 +17,8 @@
   <string name="update_interval_zero">Ne frissítsen automatikusan</string>
   <string name="automatic_scan_wifi">Csak Wifin</string>
   <string name="automatic_scan_wifi_on">Automatikus app lista frissítés csak Wifin</string>
-  <string name="automatic_scan_wifi_off">Mindig frissítse az app listákat automatikusan</string>
   <string name="notify">Értesítés</string>
   <string name="notify_on">Értesít ha frissítés érhető el</string>
-  <string name="notify_off">Ne jelezzen semmilyen frissítést</string>
   <string name="update_history">Frissítési előzmények</string>
   <string name="update_history_summ">Hány napig tekintse az appot frissnek vagy újnak: %s</string>
   <string name="search_results">Keresési előzmények</string>
@@ -103,18 +100,14 @@ Szeretné ezeket frissíteni?\"</string>
   <string name="display">Megjelenés</string>
   <string name="expert">Szakértő</string>
   <string name="expert_on">Extra infókat mutat és extra beállításokat engedélyez</string>
-  <string name="expert_off">Extrák elrejtése gyakorlott felhasználók számára</string>
   <string name="search_hint">Alkalmazások keresése</string>
   <string name="appcompatibility">App kompatibilitás</string>
   <string name="show_incompat_versions">Inkompatibilis verzió</string>
   <string name="show_incompat_versions_on">Megjeleníti, ha az app verzió nem kompatibilis a készülékkel</string>
-  <string name="show_incompat_versions_off">Elrejti az app inkompatibilitását az eszközzel</string>
   <string name="rooted">Root</string>
   <string name="rooted_on">Nem szürkíti ki a root jogot igénylő alkalmazásokat</string>
-  <string name="rooted_off">Kiszürkíti a root jogot igénylő alkalmazásokat</string>
   <string name="ignoreTouch">Érintőképernyő ignorálás</string>
   <string name="ignoreTouch_on">Mindig tartalmazza az érintőképernyőt igénylő alkalmazásokat</string>
-  <string name="ignoreTouch_off">Appok normál szűrése</string>
   <string name="category_all">Összes</string>
   <string name="category_whatsnew">\"Újdonságok\"</string>
   <string name="category_recentlyupdated">Legutóbb frissítve</string>
@@ -131,11 +124,9 @@ Szeretné ezeket frissíteni?\"</string>
   <string name="permissions_for_long">Engedélyek erre a verzióra - %s</string>
   <string name="showPermissions">Engedélyek megjelenítése</string>
   <string name="showPermissions_on">Mutassa meg egy listában az app által igényelt engedélyeket</string>
-  <string name="showPermissions_off">\"Ne mutasson listát letöltés előtt\"</string>
   <string name="no_handler_app">\"Nincs semmilyen app, ami képes ezt kezelni %s\"</string>
   <string name="compactlayout">Kompakt elrendezés</string>
   <string name="compactlayout_on">Ikonok kisebb méretben</string>
-  <string name="compactlayout_off">Ikonok normál méretben</string>
   <string name="theme">Téma</string>
   <string name="repo_not_yet_updated">Ezt a repo-t még nem használták.
 Ahhoz, hogy megtekinthesse az alkalmazásokat, fissitenie kell.
