@@ -1,4 +1,4 @@
-### 0.82 (2015-03-??)
+### 0.82 (2015-03-23)
 
 * Fix possible crashes when installing or uninstalling apps
 
