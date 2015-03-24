@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 import junit.framework.AssertionFailedError;
+
+import mock.MockContextSwappableComponents;
 import mock.MockInstallablePackageManager;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
@@ -134,17 +136,12 @@ public class TestUtils {
      * Will tell {@code pm} that we are installing {@code appId}, and then alert the
      * {@link org.fdroid.fdroid.PackageAddedReceiver}. This will in turn update the
      * "installed apps" table in the database.
-     *
-     * Note: in order for this to work, the {@link AppProviderTest#getSwappableContext()}
-     * will need to be aware of the package manager that we have passed in. Therefore,
-     * you will have to have called
-     * {@link mock.MockContextSwappableComponents#setPackageManager(android.content.pm.PackageManager)}
-     * on the {@link AppProviderTest#getSwappableContext()} before invoking this method.
      */
     public static void installAndBroadcast(
-            Context context,  MockInstallablePackageManager pm,
+            MockContextSwappableComponents context,  MockInstallablePackageManager pm,
             String appId, int versionCode, String versionName) {
 
+        context.setPackageManager(pm);
         pm.install(appId, versionCode, versionName);
         Intent installIntent = new Intent(Intent.ACTION_PACKAGE_ADDED);
         installIntent.setData(Uri.parse("package:" + appId));
@@ -153,15 +150,16 @@ public class TestUtils {
     }
 
     /**
-     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(android.content.Context context, mock.MockInstallablePackageManager, String, int, String)
+     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
      */
     public static void upgradeAndBroadcast(
-            Context context, MockInstallablePackageManager pm,
+            MockContextSwappableComponents context, MockInstallablePackageManager pm,
             String appId, int versionCode, String versionName) {
         /*
         removeAndBroadcast(context, pm, appId);
         installAndBroadcast(context, pm, appId, versionCode, versionName);
         */
+        context.setPackageManager(pm);
         pm.install(appId, versionCode, versionName);
         Intent installIntent = new Intent(Intent.ACTION_PACKAGE_CHANGED);
         installIntent.setData(Uri.parse("package:" + appId));
@@ -170,10 +168,11 @@ public class TestUtils {
     }
 
     /**
-     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(android.content.Context context, mock.MockInstallablePackageManager, String, int, String)
+     * @see org.fdroid.fdroid.TestUtils#installAndBroadcast(mock.MockContextSwappableComponents, mock.MockInstallablePackageManager, String, int, String)
      */
-    public static void removeAndBroadcast(Context context, MockInstallablePackageManager pm, String appId) {
+    public static void removeAndBroadcast(MockContextSwappableComponents context, MockInstallablePackageManager pm, String appId) {
 
+        context.setPackageManager(pm);
         pm.remove(appId);
         Intent installIntent = new Intent(Intent.ACTION_PACKAGE_REMOVED);
         installIntent.setData(Uri.parse("package:" + appId));

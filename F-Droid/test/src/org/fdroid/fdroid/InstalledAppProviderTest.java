@@ -37,7 +37,6 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         assertValidUri(InstalledAppProvider.getAppUri("blah"));
     }
 
-/* TODO fix me
     public void testInsert() {
 
         assertResultCount(0, InstalledAppProvider.getContentUri());
@@ -134,7 +133,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         assertIsInstalledVersionInDb("com.example.toKeep", 1, "v0.1");
 
     }
-*/
+
     @Override
     protected String[] getMinimalProjection() {
         return new String[] {
@@ -153,6 +152,7 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
         if (appId != null) {
             values.put(InstalledAppProvider.DataColumns.APP_ID, appId);
         }
+        values.put(InstalledAppProvider.DataColumns.APPLICATION_LABEL, "Mock app: " + appId);
         values.put(InstalledAppProvider.DataColumns.VERSION_CODE, versionCode);
         values.put(InstalledAppProvider.DataColumns.VERSION_NAME, versionNumber);
         return values;
@@ -164,15 +164,15 @@ public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppPro
     }
 
     private void removeAndBroadcast(String appId) {
-        TestUtils.removeAndBroadcast(getMockContext(), getPackageManager(), appId);
+        TestUtils.removeAndBroadcast(getSwappableContext(), getPackageManager(), appId);
     }
 
     private void upgradeAndBroadcast(String appId, int versionCode, String versionName) {
-        TestUtils.upgradeAndBroadcast(getMockContext(), getPackageManager(), appId, versionCode, versionName);
+        TestUtils.upgradeAndBroadcast(getSwappableContext(), getPackageManager(), appId, versionCode, versionName);
     }
 
     private void installAndBroadcast(String appId, int versionCode, String versionName) {
-        TestUtils.installAndBroadcast(getMockContext(), getPackageManager(), appId, versionCode, versionName);
+        TestUtils.installAndBroadcast(getSwappableContext(), getPackageManager(), appId, versionCode, versionName);
     }
 
 }
