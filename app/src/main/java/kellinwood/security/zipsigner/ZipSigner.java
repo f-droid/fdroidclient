@@ -378,10 +378,8 @@ public class ZipSigner
         Manifest input = null;
         ZioEntry manifestEntry = entries.get(JarFile.MANIFEST_NAME);
         if (manifestEntry != null) {
-            InputStream is = manifestEntry.getInputStream();
             input = new Manifest();
-            input.read(is);
-            is.close();
+            input.read( manifestEntry.getInputStream());
         }
         Manifest output = new Manifest();
         Attributes main = output.getMainAttributes();
@@ -645,9 +643,17 @@ public class ZipSigner
         progressHelper.initProgress();        
         progressHelper.progress( ProgressEvent.PRORITY_IMPORTANT, resourceAdapter.getString(ResourceAdapter.Item.PARSING_CENTRAL_DIRECTORY));
         
-        ZipInput input = ZipInput.read( inputZipFilename);
-        signZip( input.getEntries(), new FileOutputStream( outputZipFilename), outputZipFilename);
-        input.close();
+        ZipInput input = null;
+        OutputStream outStream = null;
+        try {
+            input = ZipInput.read( inputZipFilename);
+            outStream = new FileOutputStream( outputZipFilename);
+            signZip(input.getEntries(), outStream, outputZipFilename);
+        }
+        finally {
+            if(input != null) input.close();
+            if(outStream != null) outStream.close();
+        }
     }
     
     /** Sign the 
@@ -750,7 +756,7 @@ public class ZipSigner
             
         }
         finally {
-            zipOutput.close();
+            if (zipOutput != null) zipOutput.close();
             if (canceled) {
                 try {
                     if (outputZipFilename != null) new File( outputZipFilename).delete();

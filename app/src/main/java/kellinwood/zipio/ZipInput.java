@@ -15,6 +15,7 @@
  */
 package kellinwood.zipio;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -37,9 +38,8 @@ import kellinwood.logging.LoggerManager;
 /**
  *
  */
-public class ZipInput 
+public class ZipInput implements Closeable
 {
-
     static LoggerInterface log;
 
     public String inputFilename;
@@ -174,6 +174,7 @@ public class ZipInput
         }    	
     }
 
+    @Override
     public void close() {
         if (in != null) try { in.close(); } catch( Throwable t) {}
     }
@@ -227,7 +228,6 @@ public class ZipInput
     public int read( byte[] b, int offset, int length) throws IOException {
         return in.read( b, offset, length);
     }
-
 }
 
 
