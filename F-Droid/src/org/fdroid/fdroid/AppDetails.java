@@ -768,13 +768,17 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         startActivity(intent);
     }
 
+    protected void navigateUp() {
+        NavUtils.navigateUpFromSameTask(this);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
 
         case android.R.id.home:
-            NavUtils.navigateUpFromSameTask(this);
+            navigateUp();
             return true;
 
         case LAUNCH:

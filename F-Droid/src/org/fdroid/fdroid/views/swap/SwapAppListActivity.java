@@ -1,11 +1,14 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NavUtils;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
@@ -18,7 +21,9 @@ import org.fdroid.fdroid.views.fragments.AppListFragment;
 
 public class SwapAppListActivity extends ActionBarActivity {
 
-    public static String EXTRA_REPO_ADDRESS = "repoAddress";
+    private static final String TAG = "fdroid.SwapAppListActivity";
+
+    public static String EXTRA_REPO_ID = "repoId";
 
     private Repo repo;
 
@@ -47,8 +52,12 @@ public class SwapAppListActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
 
-        String repoAddress = getIntent().getStringExtra(EXTRA_REPO_ADDRESS);
-        repo = RepoProvider.Helper.findByAddress(this, repoAddress);
+        long repoAddress = getIntent().getLongExtra(EXTRA_REPO_ID, -1);
+        repo = RepoProvider.Helper.findById(this, repoAddress);
+        if (repo == null) {
+            Log.e(TAG, "Couldn't show swap app list for repo " + repoAddress);
+            finish();
+        }
     }
 
     public Repo getRepo() {
@@ -91,14 +100,38 @@ public class SwapAppListActivity extends ActionBarActivity {
             return AppProvider.getRepoUri(repo);
         }
 
+        protected Intent getAppDetailsIntent() {
+            Intent intent = new Intent(getActivity(), SwapAppDetails.class);
+            intent.putExtra(EXTRA_REPO_ID, repo.getId());
+            return intent;
+        }
+
     }
 
     /**
-     * Here so that the AndroidManifest.xml can specify the "parent" activity from this
-     * can be different form the regular AppDetails. That is - the AppDetails goes back
-     * to the main app list, but the SwapAppDetails will go back to the "Swap app list"
-     * activity.
+     * Only difference from base class is that it navigates up to a different task.
+     * It will go to the {@link org.fdroid.fdroid.views.swap.SwapAppListActivity}
+     * whereas the baseclass will go back to the main list of apps. Need to juggle
+     * the repoId in order to be able to return to an appropriately configured swap
+     * list (see {@link org.fdroid.fdroid.views.swap.SwapAppListActivity.SwapAppListFragment#getAppDetailsIntent()}).
      */
-    public static class SwapAppDetails extends AppDetails {}
+    public static class SwapAppDetails extends AppDetails {
+
+        private long repoId;
+
+        @Override
+        protected void onResume() {
+            super.onResume();
+            repoId = getIntent().getLongExtra(EXTRA_REPO_ID, -1);
+        }
+
+        @Override
+        protected void navigateUp() {
+            Intent parentIntent = NavUtils.getParentActivityIntent(this);
+            parentIntent.putExtra(EXTRA_REPO_ID, repoId);
+            NavUtils.navigateUpTo(this, parentIntent);
+        }
+
+    }
 
 }

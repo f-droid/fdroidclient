@@ -286,7 +286,7 @@ public class RepoProvider extends FDroidProvider {
                 break;
 
             case CODE_ALL_EXCEPT_SWAP:
-                selection = DataColumns.IS_SWAP + " = 0";
+                selection = DataColumns.IS_SWAP + " = 0 OR " + DataColumns.IS_SWAP + " IS NULL ";
                 break;
 
             default:

@@ -634,31 +634,36 @@ public class AppProvider extends FDroidProvider {
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
         Query query = new Query();
         AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
-        boolean includeSwap = false;
+
+        // Queries which are for the main list of apps should not include swap apps.
+        boolean includeSwap = true;
+
         switch (matcher.match(uri)) {
             case CODE_LIST:
+                includeSwap = false;
                 break;
 
             case CODE_SINGLE:
-                includeSwap = true;
                 selection = selection.add(querySingle(uri.getLastPathSegment()));
                 break;
 
             case CAN_UPDATE:
                 selection = selection.add(queryCanUpdate());
+                includeSwap = false;
                 break;
 
             case REPO:
-                includeSwap = true;
                 selection = selection.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
                 break;
 
             case INSTALLED:
                 selection = selection.add(queryInstalled());
+                includeSwap = false;
                 break;
 
             case SEARCH:
                 selection = selection.add(querySearch(uri.getLastPathSegment()));
+                includeSwap = false;
                 break;
 
             case NO_APKS:
@@ -675,16 +680,19 @@ public class AppProvider extends FDroidProvider {
 
             case CATEGORY:
                 selection = selection.add(queryCategory(uri.getLastPathSegment()));
+                includeSwap = false;
                 break;
 
             case RECENTLY_UPDATED:
                 sortOrder = " fdroid_app.lastUpdated DESC";
                 selection = selection.add(queryRecentlyUpdated());
+                includeSwap = false;
                 break;
 
             case NEWLY_ADDED:
                 sortOrder = " fdroid_app.added DESC";
                 selection = selection.add(queryNewlyAdded());
+                includeSwap = false;
                 break;
 
             default:

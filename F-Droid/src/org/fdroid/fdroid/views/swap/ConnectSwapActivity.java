@@ -44,10 +44,8 @@ public class ConnectSwapActivity extends FragmentActivity {
     }
 
     public void onRepoUpdated(Repo repo) {
-
         Intent intent = new Intent(this, SwapAppListActivity.class);
-        intent.putExtra(SwapAppListActivity.EXTRA_REPO_ADDRESS, repo.address);
+        intent.putExtra(SwapAppListActivity.EXTRA_REPO_ID, repo.getId());
         startActivity(intent);
-
     }
 }
