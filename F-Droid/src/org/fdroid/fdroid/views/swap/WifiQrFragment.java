@@ -145,8 +145,6 @@ public class WifiQrFragment extends Fragment {
             }
         }
 
-        Log.i("QRURI", qrUriString);
-
         // zxing requires >= 8
         // TODO: What about 7? I don't feel comfortable bumping the min version for this...
         // I would suggest show some alternate info, with directions for how to add a new repository manually.

@@ -250,7 +250,6 @@ public class LocalRepoActivity extends ActionBarActivity {
                 .replaceFirst("fdroidrepo", "http")
                 .replaceAll("ssid=[^?]*", "")
                 .toUpperCase(Locale.ENGLISH);
-        Log.i("QRURI", qrUriString);
         if (Build.VERSION.SDK_INT >= 8) // zxing requires >= 8
             new QrGenAsyncTask(this, R.id.repoQrCode).execute(qrUriString);
 
