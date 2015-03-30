@@ -16,7 +16,7 @@ import java.util.jar.JarFile;
 
 public class SignedRepoUpdater extends RepoUpdater {
 
-    private static final String TAG = "org.fdroid.fdroid.updater.SignedRepoUpdater";
+    private static final String TAG = "fdroid.SignedRepoUpdater";
 
     public SignedRepoUpdater(Context ctx, Repo repo) {
         super(ctx, repo);

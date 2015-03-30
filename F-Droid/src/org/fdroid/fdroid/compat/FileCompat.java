@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class FileCompat {
 
-    private static final String TAG = "org.fdroid.fdroid.compat.FileCompat";
+    private static final String TAG = "fdroid.FileCompat";
 
     public static boolean symlink(SanitizedFile source, SanitizedFile dest) {
 

@@ -22,7 +22,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 public class QrWizardWifiNetworkActivity extends ActionBarActivity {
-    private static final String TAG = "org.fdroid.fdroid.QrWizardWifiNetworkActivity";
+    private static final String TAG = "fdroid.QrWizardWifiNetworkActivity";
 
     private WifiManager wifiManager;
 

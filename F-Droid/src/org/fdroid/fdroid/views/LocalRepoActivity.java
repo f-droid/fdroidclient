@@ -46,7 +46,7 @@ import java.util.TimerTask;
 
 public class LocalRepoActivity extends ActionBarActivity {
 
-    private static final String TAG = "org.fdroid.fdroid.LocalRepoActivity";
+    private static final String TAG = "fdroid.LocalRepoActivity";
     private ProgressDialog repoProgress;
 
     private WifiManager wifiManager;
@@ -284,7 +284,7 @@ public class LocalRepoActivity extends ActionBarActivity {
     }
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
-        private static final String TAG = "UpdateAsyncTask";
+        private static final String TAG = "fdroid.LocalRepoActivity.UpdateAsyncTask";
         private ProgressDialog progressDialog;
         private String[] selectedApps;
         private Uri sharingUri;

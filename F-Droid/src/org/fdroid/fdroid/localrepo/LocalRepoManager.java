@@ -60,7 +60,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
 public class LocalRepoManager {
-    private static final String TAG = "LocalRepoManager";
+    private static final String TAG = "fdroid.LocalRepoManager";
 
     // For ref, official F-droid repo presently uses a maxage of 14 days
     private static final String DEFAULT_REPO_MAX_AGE_DAYS = "14";

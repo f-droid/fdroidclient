@@ -36,7 +36,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class LocalRepoService extends Service {
-    private static final String TAG = "LocalRepoService";
+    private static final String TAG = "fdroid.LocalRepoService";
 
     public static final String STATE = "org.fdroid.fdroid.action.LOCAL_REPO_STATE";
     public static final String STARTED = "org.fdroid.fdroid.category.LOCAL_REPO_STARTED";

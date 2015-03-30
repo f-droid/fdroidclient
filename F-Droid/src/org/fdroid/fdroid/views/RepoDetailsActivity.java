@@ -23,7 +23,7 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 public class RepoDetailsActivity extends ActionBarActivity {
-    public static final String TAG = "RepoDetailsActivity";
+    public static final String TAG = "fdroid.RepoDetailsActivity";
 
     private Repo repo;
 

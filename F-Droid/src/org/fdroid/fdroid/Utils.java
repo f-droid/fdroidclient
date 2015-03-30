@@ -73,7 +73,7 @@ public final class Utils {
     public static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
-    private static final String TAG = "org.fdroid.fdroid.Utils";
+    private static final String TAG = "fdroid.Utils";
 
     public static String getIconsDir(Context context) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();

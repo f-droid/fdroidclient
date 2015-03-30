@@ -88,7 +88,7 @@ public class ManageReposActivity extends ActionBarActivity {
      * we finish with, to signify that we want the main list of apps updated.
      */
     public static final String REQUEST_UPDATE = "update";
-    private static final String TAG = "org.fdroid.fdroid.views.ManageReposActivity";
+    private static final String TAG = "fdroid.ManageReposActivity";
 
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
 

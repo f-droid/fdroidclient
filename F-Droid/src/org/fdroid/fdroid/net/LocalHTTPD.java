@@ -17,7 +17,7 @@ import java.util.*;
 import javax.net.ssl.SSLServerSocketFactory;
 
 public class LocalHTTPD extends NanoHTTPD {
-    private static final String TAG = LocalHTTPD.class.getCanonicalName();
+    private static final String TAG = "fdroid.LocalHTTPD";
 
     private final Context context;
     private final File webRoot;

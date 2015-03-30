@@ -41,7 +41,7 @@ abstract public class Installer {
     protected PackageManager mPm;
     protected InstallerCallback mCallback;
 
-    public static final String TAG = "FDroid";
+    public static final String TAG = "fdroid.Installer";
 
     /**
      * This is thrown when an Installer is not compatible with the Android OS it

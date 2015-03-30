@@ -74,7 +74,7 @@ public class FDroidApp extends Application {
     private static Messenger localRepoServiceMessenger = null;
     private static boolean localRepoServiceIsBound = false;
 
-    private static final String TAG = "org.fdroid.fdroid.FDroidApp";
+    private static final String TAG = "fdroid.FDroidApp";
 
     BluetoothAdapter bluetoothAdapter = null;
 
