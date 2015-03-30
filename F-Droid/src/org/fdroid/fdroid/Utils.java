@@ -23,6 +23,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
@@ -45,7 +47,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -71,6 +72,8 @@ public final class Utils {
 
     public static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+
+    private static final String TAG = "org.fdroid.fdroid.Utils";
 
     public static String getIconsDir(Context context) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
@@ -509,6 +512,41 @@ public final class Utils {
             }
         }
         return false;
+    }
+
+    /**
+     * Remove all files from the {@parm directory} either beginning with {@param startsWith}
+     * or ending with {@param endsWith}. Note that if the SD card is not ready, then the
+     * cache directory will probably not be available. In this situation no files will be
+     * deleted (and thus they may still exist after the SD card becomes available).
+     */
+    public static void deleteFiles(@Nullable File directory, @Nullable String startsWith, @Nullable String endsWith) {
+
+        if (directory == null) {
+            return;
+        }
+
+        final File[] files = directory.listFiles();
+        if (files == null) {
+            return;
+        }
+
+        if (startsWith != null) {
+            Log.i(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
+        }
+
+        if (endsWith != null) {
+            Log.i(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
+        }
+
+        for (File f : files) {
+            if ((startsWith != null && f.getName().startsWith(startsWith))
+                || (endsWith != null && f.getName().endsWith(endsWith))) {
+                if (!f.delete()) {
+                    Log.i(TAG, "Couldn't delete cache file " + f);
+                }
+            }
+        }
     }
 
 }

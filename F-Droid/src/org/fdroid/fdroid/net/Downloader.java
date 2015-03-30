@@ -2,6 +2,7 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.fdroid.fdroid.ProgressListener;
@@ -33,13 +34,13 @@ public abstract class Downloader {
     public abstract InputStream getInputStream() throws IOException;
 
     // The context is required for opening the file to write to.
-    Downloader(String destFile, Context ctx)
+    Downloader(String destFile, @NonNull Context ctx)
             throws FileNotFoundException, MalformedURLException {
         this(new File(ctx.getFilesDir() + File.separator + destFile));
     }
 
     // The context is required for opening the file to write to.
-    Downloader(Context ctx) throws IOException {
+    Downloader(@NonNull Context ctx) throws IOException {
         this(File.createTempFile("dl-", "", ctx.getCacheDir()));
     }
 

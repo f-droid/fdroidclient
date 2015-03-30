@@ -82,15 +82,15 @@ abstract public class RepoUpdater {
      *
      * @throws UpdateException All error states will come from here.
      */
-    protected abstract File getIndexFromFile(File downloadedFile) throws
-            UpdateException;
+    protected abstract File getIndexFromFile(File downloadedFile) throws UpdateException;
 
     protected abstract String getIndexAddress();
 
     protected Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
-            downloader = DownloaderFactory.create(getIndexAddress(), context);
+            downloader = DownloaderFactory.create(
+                getIndexAddress(), File.createTempFile("index-", "-downloaded", context.getCacheDir()));
             downloader.setCacheTag(repo.lastetag);
 
             if (progressListener != null) { // interactive session, show progress
@@ -104,18 +104,14 @@ abstract public class RepoUpdater {
             if (downloader.isCached()) {
                 // The index is unchanged since we last read it. We just mark
                 // everything that came from this repo as being updated.
-                Log.d("FDroid", "Repo index for " + getIndexAddress()
-                        + " is up to date (by etag)");
+                Log.d("FDroid", "Repo index for " + getIndexAddress() + " is up to date (by etag)");
             }
 
         } catch (IOException e) {
             if (downloader != null && downloader.getFile() != null) {
                 downloader.getFile().delete();
             }
-            throw new UpdateException(
-                    repo,
-                    "Error getting index file from " + repo.address,
-                    e);
+            throw new UpdateException(repo, "Error getting index file from " + repo.address, e);
         }
         return downloader;
     }
@@ -177,21 +173,10 @@ abstract public class RepoUpdater {
                 rememberer.repo = repo;
                 rememberer.values = prepareRepoDetailsForSaving(handler, downloader.getCacheTag());
             }
-        } catch (SAXException e) {
-            throw new UpdateException(
-                    repo, "Error parsing index for repo " + repo.address, e);
-        } catch (FileNotFoundException e) {
-            throw new UpdateException(
-                    repo, "Error parsing index for repo " + repo.address, e);
-        } catch (ParserConfigurationException e) {
-            throw new UpdateException(
-                    repo, "Error parsing index for repo " + repo.address, e);
-        } catch (IOException e) {
-            throw new UpdateException(
-                    repo, "Error parsing index for repo " + repo.address, e);
+        } catch (SAXException | ParserConfigurationException | IOException e) {
+            throw new UpdateException(repo, "Error parsing index for repo " + repo.address, e);
         } finally {
-            if (downloadedFile != null &&
-                    downloadedFile != indexFile && downloadedFile.exists()) {
+            if (downloadedFile != null && downloadedFile != indexFile && downloadedFile.exists()) {
                 downloadedFile.delete();
             }
             if (indexFile != null && indexFile.exists()) {
