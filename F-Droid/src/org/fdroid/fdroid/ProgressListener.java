@@ -3,7 +3,6 @@ package org.fdroid.fdroid;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.TextUtils;
 
 public interface ProgressListener {
 
