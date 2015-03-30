@@ -4,6 +4,8 @@
 
 * Add empty list views
 
+* Handle amazon.com and play.google.com app links
+
 ### 0.83 (2015-03-26)
 
 * Fix possible crashes when installing or uninstalling apps
