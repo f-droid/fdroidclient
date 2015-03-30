@@ -112,7 +112,7 @@ public class LocalRepoService extends Service {
     private ChangeListener localRepoHttpsChangeListener = new ChangeListener() {
         @Override
         public void onPreferenceChange() {
-            Log.i("localRepoHttpsChangeListener", "onPreferenceChange");
+            Log.i(TAG, "onPreferenceChange");
             if (localHttpd.isAlive()) {
                 new AsyncTask<Void, Void, Void>() {
                     @Override

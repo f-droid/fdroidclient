@@ -113,7 +113,7 @@ public class RepoDetailsFragment extends Fragment {
         repo = loadRepoDetails();
 
         if (repo == null) {
-            Log.e("FDroid", "Error showing details for repo '" + getRepoId() + "'");
+            Log.e(TAG, "Error showing details for repo '" + getRepoId() + "'");
             return new LinearLayout(container.getContext());
         }
 

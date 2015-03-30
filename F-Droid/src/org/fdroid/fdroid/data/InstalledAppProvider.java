@@ -18,6 +18,8 @@ import java.util.Map;
 
 public class InstalledAppProvider extends FDroidProvider {
 
+    private static final String TAG = "fdroid.InstalledAppProvider";
+
     public static class Helper {
 
         /**
@@ -99,7 +101,7 @@ public class InstalledAppProvider extends FDroidProvider {
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         } catch (NotFoundException e) {
-            Log.d("InstalledAppProvider", "getApplicationLabel: " + e.getMessage());
+            Log.d(TAG, "getApplicationLabel: " + e.getMessage());
         }
         return packageName; // all else fails, return id
     }
@@ -154,7 +156,7 @@ public class InstalledAppProvider extends FDroidProvider {
 
             default:
                 String message = "Invalid URI for installed app content provider: " + uri;
-                Log.e("FDroid", message);
+                Log.e(TAG, message);
                 throw new UnsupportedOperationException(message);
         }
 

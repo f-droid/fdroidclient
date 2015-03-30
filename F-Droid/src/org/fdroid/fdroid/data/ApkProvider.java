@@ -13,6 +13,8 @@ import java.util.*;
 
 public class ApkProvider extends FDroidProvider {
 
+    private static final String TAG = "fdroid.ApkProvider";
+
     /**
      * SQLite has a maximum of 999 parameters in a query. Each apk we add
      * requires two (id and vercode) so we can only query half of that. Then,
@@ -369,7 +371,7 @@ public class ApkProvider extends FDroidProvider {
                 break;
 
             default:
-                Log.e("FDroid", "Invalid URI for apk content provider: " + uri);
+                Log.e(TAG, "Invalid URI for apk content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
         }
 
@@ -389,7 +391,7 @@ public class ApkProvider extends FDroidProvider {
         for (Map.Entry<String,String> repoField : REPO_FIELDS.entrySet()) {
             String field = repoField.getKey();
             if (values.containsKey(field)) {
-                Log.i("FDroid", "Cannot insert/update '" + field + "' field " +
+                Log.i(TAG, "Cannot insert/update '" + field + "' field " +
                         "on apk table, as it belongs to the repo table. " +
                         "This field will be ignored.");
                 values.remove(field);
@@ -437,7 +439,7 @@ public class ApkProvider extends FDroidProvider {
                 throw new UnsupportedOperationException("Can't delete individual apks.");
 
             default:
-                Log.e("FDroid", "Invalid URI for apk content provider: " + uri);
+                Log.e(TAG, "Invalid URI for apk content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
         }
 

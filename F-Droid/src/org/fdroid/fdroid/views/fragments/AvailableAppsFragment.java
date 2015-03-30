@@ -33,6 +33,9 @@ import java.util.List;
 
 public class AvailableAppsFragment extends AppListFragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
+
+    private static final String TAG = "fdroid.AvailableAppsFragment";
+
     public static final String PREFERENCES_FILE = "CategorySpinnerPosition";
     public static final String CATEGORY_KEY = "Selection";
     public static String DEFAULT_CATEGORY;
@@ -194,7 +197,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     private void setCurrentCategory(String category) {
         currentCategory = category;
-        Log.d("FDroid", "Category '" + currentCategory + "' selected.");
+        Log.d(TAG, "Category '" + currentCategory + "' selected.");
         getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
     }
 

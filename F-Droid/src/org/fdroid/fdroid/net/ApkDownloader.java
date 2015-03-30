@@ -110,7 +110,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         try {
             hasher = new Hasher(curApk.hashType, localFile);
         } catch (NoSuchAlgorithmException e) {
-            Log.e("FDroid", "Error verifying hash of cached apk at " + localFile + ". " +
+            Log.e(TAG, "Error verifying hash of cached apk at " + localFile + ". " +
                     "I don't understand what the " + curApk.hashType + " hash algorithm is :(");
             hasher = null;
         }
@@ -133,10 +133,10 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     private boolean verifyOrDeleteCachedVersion() {
         if (localFile.exists()) {
             if (hashMatches()) {
-                Log.d("FDroid", "Using cached apk at " + localFile);
+                Log.d(TAG, "Using cached apk at " + localFile);
                 return true;
             } else {
-                Log.d("FDroid", "Not using cached apk at " + localFile);
+                Log.d(TAG, "Not using cached apk at " + localFile);
                 deleteLocalFile();
             }
         }
@@ -228,7 +228,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     @Override
     public void onErrorDownloading(String localisedExceptionDetails) {
-        Log.e("FDroid", "Download failed: " + localisedExceptionDetails);
+        Log.e(TAG, "Download failed: " + localisedExceptionDetails);
         sendError(ERROR_DOWNLOAD_FAILED);
         deleteLocalFile();
     }
@@ -248,7 +248,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         // the installer actually installing it.
         FileCompat.setReadable(localFile, true, false);
 
-        Log.d("FDroid", "Download finished: " + localFile);
+        Log.d(TAG, "Download finished: " + localFile);
         sendCompleteMessage();
     }
 

@@ -28,10 +28,12 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageAddedReceiver extends PackageReceiver {
 
+    private static final String TAG = "fdroid.PackageAddedReceiver";
+
     @Override
     protected boolean toDiscard(Intent intent) {
         if (intent.hasExtra(Intent.EXTRA_REPLACING)) {
-            Log.d("FDroid", "Discarding since this PACKAGE_ADDED is just a PACKAGE_REPLACED");
+            Log.d(TAG, "Discarding since this PACKAGE_ADDED is just a PACKAGE_REPLACED");
             return true;
         }
         return false;
@@ -41,7 +43,7 @@ public class PackageAddedReceiver extends PackageReceiver {
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
 
-        Log.d("FDroid", "Inserting installed app info for '" + appId + "' (v" + info.versionCode + ")");
+        Log.d(TAG, "Inserting installed app info for '" + appId + "' (v" + info.versionCode + ")");
 
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues values = new ContentValues(4);

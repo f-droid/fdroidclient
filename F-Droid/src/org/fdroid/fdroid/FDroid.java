@@ -52,6 +52,8 @@ import org.fdroid.fdroid.views.swap.SwapActivity;
 
 public class FDroid extends ActionBarActivity {
 
+    private static final String TAG = "fdroid.FDroid";
+
     public static final int REQUEST_APPDETAILS = 0;
     public static final int REQUEST_MANAGEREPOS = 1;
     public static final int REQUEST_PREFS = 2;
@@ -321,12 +323,12 @@ public class FDroid extends ActionBarActivity {
         final String TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
         boolean hasTriedEmptyUpdate = getPreferences(MODE_PRIVATE).getBoolean(TRIED_EMPTY_UPDATE, false);
         if (!hasTriedEmptyUpdate) {
-            Log.d("FDroid", "Empty app list, and we haven't done an update yet. Forcing repo update.");
+            Log.d(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
             getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
             updateRepos();
             return true;
         } else {
-            Log.d("FDroid", "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+            Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
             return false;
         }
     }

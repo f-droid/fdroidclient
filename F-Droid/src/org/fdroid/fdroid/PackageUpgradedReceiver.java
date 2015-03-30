@@ -35,6 +35,8 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
  */
 public class PackageUpgradedReceiver extends PackageReceiver {
 
+    private static final String TAG = "fdroid.PackageUpgradedReceiver";
+
     @Override
     protected boolean toDiscard(Intent intent) {
         return false;
@@ -44,7 +46,7 @@ public class PackageUpgradedReceiver extends PackageReceiver {
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
 
-        Log.d("FDroid", "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
+        Log.d(TAG, "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
 
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues values = new ContentValues(4);

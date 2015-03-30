@@ -23,6 +23,8 @@ import java.util.Random;
  */
 public class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private static final String TAG = "fdroid.Preferences";
+
     private final SharedPreferences preferences;
 
     private Preferences(Context context) {
@@ -221,7 +223,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Log.d("FDroid", "Invalidating preference '" + key + "'.");
+        Log.d(TAG, "Invalidating preference '" + key + "'.");
         uninitialize(key);
 
         if (key.equals(PREF_COMPACT_LAYOUT)) {
@@ -293,7 +295,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         if (instance != null) {
             String error = "Attempted to reinitialize preferences after it " +
                     "has already been initialized in FDroidApp";
-            Log.e("FDroid", error);
+            Log.e(TAG, error);
             throw new RuntimeException(error);
         }
         instance = new Preferences(context);
@@ -303,7 +305,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         if (instance == null) {
             String error = "Attempted to access preferences before it " +
                     "has been initialized in FDroidApp";
-            Log.e("FDroid", error);
+            Log.e(TAG, error);
             throw new RuntimeException(error);
         }
         return instance;

@@ -32,6 +32,8 @@ import javax.xml.parsers.SAXParserFactory;
 
 abstract public class RepoUpdater {
 
+    private static final String TAG = "fdroid.RepoUpdater";
+
     public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
 
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
@@ -103,7 +105,7 @@ abstract public class RepoUpdater {
             if (downloader.isCached()) {
                 // The index is unchanged since we last read it. We just mark
                 // everything that came from this repo as being updated.
-                Log.d("FDroid", "Repo index for " + getIndexAddress() + " is up to date (by etag)");
+                Log.d(TAG, "Repo index for " + getIndexAddress() + " is up to date (by etag)");
             }
 
         } catch (IOException e) {
@@ -207,20 +209,20 @@ abstract public class RepoUpdater {
             // next time we update, we have to download the signed index
             // in its entirety, regardless of if it contains the same
             // information as the unsigned one does not...
-            Log.d("FDroid",
+            Log.d(TAG,
                     "Public key found - switching to signed repo for future updates");
             values.put(RepoProvider.DataColumns.PUBLIC_KEY, handler.getPubKey());
             usePubkeyInJar = false;
         }
 
         if (handler.getVersion() != -1 && handler.getVersion() != repo.version) {
-            Log.d("FDroid", "Repo specified a new version: from "
+            Log.d(TAG, "Repo specified a new version: from "
                     + repo.version + " to " + handler.getVersion());
             values.put(RepoProvider.DataColumns.VERSION, handler.getVersion());
         }
 
         if (handler.getMaxAge() != -1 && handler.getMaxAge() != repo.maxage) {
-            Log.d("FDroid",
+            Log.d(TAG,
                     "Repo specified a new maximum age - updated");
             values.put(RepoProvider.DataColumns.MAX_AGE, handler.getMaxAge());
         }

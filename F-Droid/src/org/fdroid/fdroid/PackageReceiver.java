@@ -29,6 +29,8 @@ import org.fdroid.fdroid.data.AppProvider;
 
 abstract class PackageReceiver extends BroadcastReceiver {
 
+    private static final String TAG = "fdroid.PackageReceiver";
+
     abstract protected boolean toDiscard(Intent intent);
     abstract protected void handle(Context context, String appId);
 
@@ -43,7 +45,7 @@ abstract class PackageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("FDroid", "PackageReceiver received [action = '" + intent.getAction() + "', data = '" + intent.getData() + "']");
+        Log.d(TAG, "PackageReceiver received [action = '" + intent.getAction() + "', data = '" + intent.getData() + "']");
         if (toDiscard(intent)) {
             return;
         }

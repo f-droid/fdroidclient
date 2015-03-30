@@ -319,7 +319,7 @@ public final class Utils {
     public static String calcFingerprint(String keyHexString) {
         if (TextUtils.isEmpty(keyHexString)
                 || keyHexString.matches(".*[^a-fA-F0-9].*")) {
-            Log.e("FDroid", "Signing key certificate was blank or contained a non-hex-digit!");
+            Log.e(TAG, "Signing key certificate was blank or contained a non-hex-digit!");
             return null;
         } else
             return calcFingerprint(Hasher.unhex(keyHexString));
@@ -336,7 +336,7 @@ public final class Utils {
     public static String calcFingerprint(byte[] key) {
         String ret = null;
         if (key.length < 256) {
-            Log.e("FDroid", "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
+            Log.e(TAG, "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
             return null;
         }
         try {
@@ -351,7 +351,7 @@ public final class Utils {
             ret = formatter.toString();
             formatter.close();
         } catch (Exception e) {
-            Log.w("FDroid", "Unable to get certificate fingerprint.\n"
+            Log.w(TAG, "Unable to get certificate fingerprint.\n"
                     + Log.getStackTraceString(e));
         }
         return ret;
@@ -425,7 +425,7 @@ public final class Utils {
             md.reset();
             return hash;
         } catch (NoSuchAlgorithmException e) {
-            Log.e("FDroid", "Device does not support " + algo + " MessageDisgest algorithm");
+            Log.e(TAG, "Device does not support " + algo + " MessageDisgest algorithm");
             return null;
         }
     }
@@ -447,11 +447,11 @@ public final class Utils {
             byte[] mdbytes = md.digest();
             return toHexString(mdbytes);
         } catch (IOException e) {
-            Log.e("FDroid", "Error reading \"" + apk.getAbsolutePath()
+            Log.e(TAG, "Error reading \"" + apk.getAbsolutePath()
                     + "\" to compute " + algo + " hash.");
             return null;
         } catch (NoSuchAlgorithmException e) {
-            Log.e("FDroid", "Device does not support " + algo + " MessageDisgest algorithm");
+            Log.e(TAG, "Device does not support " + algo + " MessageDisgest algorithm");
             return null;
         } finally {
             closeQuietly(fis);

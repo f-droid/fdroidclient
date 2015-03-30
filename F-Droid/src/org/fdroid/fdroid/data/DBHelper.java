@@ -109,7 +109,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 37) {
-            Log.i("FDroid", "Populating repo names from the url");
+            Log.i(TAG, "Populating repo names from the url");
             String[] columns = { "address", "_id" };
             Cursor cursor = db.query(TABLE_REPO, columns,
                     "name IS NULL OR name = ''", null, null, null, null);
@@ -123,7 +123,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         String name = Repo.addressToName(address);
                         values.put("name", name);
                         String[] args = { Long.toString(id) };
-                        Log.i("FDroid", "Setting repo name to '" + name + "' for repo " + address);
+                        Log.i(TAG, "Setting repo name to '" + name + "' for repo " + address);
                         db.update(TABLE_REPO, values, "_id = ?", args);
                         cursor.moveToNext();
                     }
@@ -136,7 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private void renameRepoId(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 36 && !columnExists(db, TABLE_REPO, "_id")) {
 
-            Log.d("FDroid", "Renaming " + TABLE_REPO + ".id to _id");
+            Log.d(TAG, "Renaming " + TABLE_REPO + ".id to _id");
             db.beginTransaction();
 
             try {
@@ -178,7 +178,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("DROP TABLE " + tempTableName + ";");
                 db.setTransactionSuccessful();
             } catch (Exception e) {
-                Log.e("FDroid", "Error renaming id to _id: " + e.getMessage());
+                Log.e(TAG, "Error renaming id to _id: " + e.getMessage());
             }
             db.endTransaction();
         }
@@ -247,14 +247,14 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(RepoProvider.DataColumns.PRIORITY, priority);
         values.put(RepoProvider.DataColumns.LAST_ETAG, (String)null);
 
-        Log.i("FDroid", "Adding repository " + name);
+        Log.i(TAG, "Adding repository " + name);
         db.insert(TABLE_REPO, null, values);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        Log.i("FDroid", "Upgrading database from v" + oldVersion + " v"
+        Log.i(TAG, "Upgrading database from v" + oldVersion + " v"
                 + newVersion);
 
         migrateRepoTable(db, oldVersion);
@@ -395,7 +395,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void addLastUpdatedToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 35 && !columnExists(db, TABLE_REPO, "lastUpdated")) {
-            Log.i("FDroid", "Adding lastUpdated column to " + TABLE_REPO);
+            Log.i(TAG, "Adding lastUpdated column to " + TABLE_REPO);
             db.execSQL("Alter table " + TABLE_REPO + " add column lastUpdated string");
         }
     }

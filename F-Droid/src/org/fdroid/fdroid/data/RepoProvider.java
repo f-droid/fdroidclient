@@ -14,6 +14,8 @@ import java.util.List;
 
 public class RepoProvider extends FDroidProvider {
 
+    private static final String TAG = "fdroid.RepoProvider";
+
     public static final class Helper {
 
         public static final String TAG = "fdroid.RepoProvider.Helper";
@@ -179,11 +181,11 @@ public class RepoProvider extends FDroidProvider {
             Uri apkUri = ApkProvider.getRepoUri(repo.getId());
             ContentResolver resolver = context.getContentResolver();
             int apkCount = resolver.delete(apkUri, null, null);
-            Log.d("FDroid", "Removed " + apkCount + " apks from repo " + repo.name);
+            Log.d(TAG, "Removed " + apkCount + " apks from repo " + repo.name);
 
             Uri appUri = AppProvider.getNoApksUri();
             int appCount = resolver.delete(appUri, null, null);
-            Log.d("Log", "Removed " + appCount + " apps with no apks.");
+            Log.d(TAG, "Removed " + appCount + " apps with no apks.");
         }
 
         public static int countAppsForRepo(Context context, long repoId) {
@@ -271,7 +273,7 @@ public class RepoProvider extends FDroidProvider {
                 break;
 
             default:
-                Log.e("FDroid", "Invalid URI for repo content provider: " + uri);
+                Log.e(TAG, "Invalid URI for repo content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
@@ -313,7 +315,7 @@ public class RepoProvider extends FDroidProvider {
         }
 
         long id = write().insertOrThrow(getTableName(), null, values);
-        Log.i("FDroid", "Inserted repo. Notifying provider change: '" + uri + "'.");
+        Log.i(TAG, "Inserted repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return getContentUri(id);
     }
@@ -332,12 +334,12 @@ public class RepoProvider extends FDroidProvider {
                 break;
 
             default:
-                Log.e("FDroid", "Invalid URI for repo content provider: " + uri);
+                Log.e(TAG, "Invalid URI for repo content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for repo content provider: " + uri);
         }
 
         int rowsAffected = write().delete(getTableName(), where, whereArgs);
-        Log.i("FDroid", "Deleted repos. Notifying provider change: '" + uri + "'.");
+        Log.i(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return rowsAffected;
     }
@@ -345,7 +347,7 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         int numRows = write().update(getTableName(), values, where, whereArgs);
-        Log.i("FDroid", "Updated repo. Notifying provider change: '" + uri + "'.");
+        Log.i(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return numRows;
     }

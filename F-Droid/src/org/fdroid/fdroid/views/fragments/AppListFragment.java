@@ -30,6 +30,8 @@ abstract public class AppListFragment extends ThemeableListFragment implements
         Preferences.ChangeListener,
         LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static final String TAG = "fdroid.AppListFragment";
+
     public static final String[] APP_PROJECTION = {
             AppProvider.DataColumns._ID, // Required for cursor loader to work.
             AppProvider.DataColumns.APP_ID,
@@ -122,12 +124,12 @@ abstract public class AppListFragment extends ThemeableListFragment implements
         SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
         boolean hasTriedEmptyUpdate = prefs.getBoolean(TRIED_EMPTY_UPDATE, false);
         if (!hasTriedEmptyUpdate) {
-            Log.d("FDroid", "Empty app list, and we haven't done an update yet. Forcing repo update.");
+            Log.d(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
             prefs.edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
             UpdateService.updateNow(getActivity());
             return true;
         } else {
-            Log.d("FDroid", "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+            Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
             return false;
         }
     }

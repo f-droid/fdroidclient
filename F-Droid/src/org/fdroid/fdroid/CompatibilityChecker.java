@@ -16,6 +16,8 @@ import java.util.*;
     // find reasons why an apk may be incompatible with the user's device.
 public class CompatibilityChecker extends Compatibility {
 
+    private static final String TAG = "fdroid.Compatibility";
+
     private Context context;
     private Set<String> features;
     private String[] cpuAbis;
@@ -54,7 +56,7 @@ public class CompatibilityChecker extends Compatibility {
         }
         cpuAbisDesc = builder.toString();
 
-        Log.d("FDroid", logMsg.toString());
+        Log.d(TAG, logMsg.toString());
     }
 
     private boolean compatibleApi(Utils.CommaSeparatedList nativecode) {
@@ -85,7 +87,7 @@ public class CompatibilityChecker extends Compatibility {
                     // Don't check it!
                 } else if (!features.contains(feat)) {
                     Collections.addAll(incompatibleReasons, feat.split(","));
-                    Log.d("FDroid", apk.id + " vercode " + apk.vercode
+                    Log.d(TAG, apk.id + " vercode " + apk.vercode
                             + " is incompatible based on lack of "
                             + feat);
                 }
@@ -95,7 +97,7 @@ public class CompatibilityChecker extends Compatibility {
             for (String code : apk.nativecode) {
                 incompatibleReasons.add(code);
             }
-            Log.d("FDroid", apk.id + " vercode " + apk.vercode
+            Log.d(TAG, apk.id + " vercode " + apk.vercode
                     + " only supports " + Utils.CommaSeparatedList.str(apk.nativecode)
                     + " while your architectures are " + cpuAbisDesc);
         }

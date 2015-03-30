@@ -13,6 +13,8 @@ import java.util.Date;
 
 public class Repo extends ValueObject {
 
+    private static final String TAG = "fdroid.Repo";
+
     public static final int VERSION_DENSITY_SPECIFIC_ICONS = 11;
 
     protected long id;
@@ -147,7 +149,7 @@ public class Repo extends ValueObject {
                 try {
                     lastUpdated =  Utils.DATE_FORMAT.parse(dateString);
                 } catch (ParseException e) {
-                    Log.e("FDroid", "Error parsing date " + dateString);
+                    Log.e(TAG, "Error parsing date " + dateString);
                 }
             }
         }

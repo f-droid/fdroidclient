@@ -8,12 +8,14 @@ import android.util.Log;
 
 public class PackageManagerCompat extends Compatibility {
 
+    private static final String TAG = "fdroid.PackageManagerCompat";
+
     @TargetApi(11)
     public static void setInstaller(PackageManager mPm, String packageName) {
         if (!hasApi(11)) return;
         try {
             mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid");
-            Log.d("FDroid", "Installer package name for " +
+            Log.d(TAG, "Installer package name for " +
                     packageName + " set successfully");
         } catch (Exception e) {
             // Many problems can occur:
@@ -22,7 +24,7 @@ public class PackageManagerCompat extends Compatibility {
             //  * Another app interfered in the process
             //  * Another app already set the target's installer package
             //  * ...
-            Log.e("FDroid", "Could not set installer package name for " +
+            Log.e(TAG, "Could not set installer package name for " +
                     packageName, e);
         }
     }

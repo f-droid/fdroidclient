@@ -12,6 +12,8 @@ import java.util.*;
 
 public class AppProvider extends FDroidProvider {
 
+    private static final String TAG = "fdroid.AppProvider";
+
     public static final int MAX_APPS_TO_QUERY = 900;
 
     public static final class Helper {
@@ -610,7 +612,7 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             default:
-                Log.e("FDroid", "Invalid URI for app content provider: " + uri);
+                Log.e(TAG, "Invalid URI for app content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
         }
 
@@ -722,7 +724,7 @@ public class AppProvider extends FDroidProvider {
      */
     private void updateSuggestedFromUpstream() {
 
-        Log.d("FDroid", "Calculating suggested versions for all apps which specify an upstream version code.");
+        Log.d(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -754,7 +756,7 @@ public class AppProvider extends FDroidProvider {
      */
     private void updateCompatibleFlags() {
 
-        Log.d("FDroid", "Calculating whether apps are compatible, based on whether any of their apks are compatible");
+        Log.d(TAG, "Calculating whether apps are compatible, based on whether any of their apks are compatible");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -798,7 +800,7 @@ public class AppProvider extends FDroidProvider {
      */
     private void updateSuggestedFromLatest() {
 
-        Log.d("FDroid", "Calculating suggested versions for all apps which don't specify an upstream version code.");
+        Log.d(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -818,9 +820,9 @@ public class AppProvider extends FDroidProvider {
 
     private void updateIconUrls() {
 
-        Log.d("FDroid", "Updating icon paths for apps belonging to repos with version >= " + Repo.VERSION_DENSITY_SPECIFIC_ICONS);
+        Log.d(TAG, "Updating icon paths for apps belonging to repos with version >= " + Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         String iconsDir = Utils.getIconsDir(getContext());
-        Log.d("FDroid", "Using icon dir '"+iconsDir+"'");
+        Log.d(TAG, "Using icon dir '"+iconsDir+"'");
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         String query = getIconUpdateQuery();
         String[] params = { repoVersion, iconsDir };

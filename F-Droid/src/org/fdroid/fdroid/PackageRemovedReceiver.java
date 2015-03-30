@@ -26,10 +26,12 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageRemovedReceiver extends PackageReceiver {
 
+    private static final String TAG = "fdroid.PackageRemovedReceiver";
+
     @Override
     protected boolean toDiscard(Intent intent) {
         if (intent.hasExtra(Intent.EXTRA_REPLACING)) {
-            Log.d("FDroid", "Discarding since this PACKAGE_REMOVED is just a PACKAGE_REPLACED");
+            Log.d(TAG, "Discarding since this PACKAGE_REMOVED is just a PACKAGE_REPLACED");
             return true;
         }
         return false;
@@ -38,7 +40,7 @@ public class PackageRemovedReceiver extends PackageReceiver {
     @Override
     protected void handle(Context context, String appId) {
 
-        Log.d("FDroid", "Removing installed app info for '" + appId + "'");
+        Log.d(TAG, "Removing installed app info for '" + appId + "'");
 
         Uri uri = InstalledAppProvider.getAppUri(appId);
         context.getContentResolver().delete(uri, null, null);

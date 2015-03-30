@@ -64,6 +64,8 @@ import java.util.Map;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
+    private static final String TAG = "fdroid.UpdateService";
+
     public static final String RESULT_MESSAGE     = "msg";
     public static final String RESULT_EVENT       = "event";
     public static final String RESULT_REPO_ERRORS = "repoErrors";
@@ -246,9 +248,9 @@ public class UpdateService extends IntentService implements ProgressListener {
             alarm.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
                     SystemClock.elapsedRealtime() + 5000,
                     AlarmManager.INTERVAL_HOUR, pending);
-            Log.d("FDroid", "Update scheduler alarm set");
+            Log.d(TAG, "Update scheduler alarm set");
         } else {
-            Log.d("FDroid", "Update scheduler alarm not set");
+            Log.d(TAG, "Update scheduler alarm not set");
         }
 
     }
@@ -298,12 +300,12 @@ public class UpdateService extends IntentService implements ProgressListener {
         String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
         int interval = Integer.parseInt(sint);
         if (interval == 0) {
-            Log.d("FDroid", "Skipping update - disabled");
+            Log.d(TAG, "Skipping update - disabled");
             return false;
         }
         long elapsed = System.currentTimeMillis() - lastUpdate;
         if (elapsed < interval * 60 * 60 * 1000) {
-            Log.d("FDroid", "Skipping update - done " + elapsed
+            Log.d(TAG, "Skipping update - done " + elapsed
                     + "ms ago, interval is " + interval + " hours");
             return false;
         }
@@ -315,7 +317,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
             if (wifi != NetworkInfo.State.CONNECTED &&
                     wifi !=  NetworkInfo.State.CONNECTING) {
-                Log.d("FDroid", "Skipping update - wifi not available");
+                Log.d(TAG, "Skipping update - wifi not available");
                 return false;
             }
         }
@@ -334,7 +336,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
             // See if it's time to actually do anything yet...
             if (!isScheduledRun()) {
-                Log.d("FDroid", "Unscheduled (manually requested) update");
+                Log.d(TAG, "Unscheduled (manually requested) update");
             } else if (!verifyIsTimeForScheduledRun()) {
                 return;
             }
@@ -382,13 +384,13 @@ public class UpdateService extends IntentService implements ProgressListener {
                 } catch (RepoUpdater.UpdateException e) {
                     errorRepos.add(repo.address);
                     repoErrors.add(e.getMessage());
-                    Log.e("FDroid", "Error updating repository " + repo.address + ": " + e.getMessage());
-                    Log.e("FDroid", Log.getStackTraceString(e));
+                    Log.e(TAG, "Error updating repository " + repo.address + ": " + e.getMessage());
+                    Log.e(TAG, Log.getStackTraceString(e));
                 }
             }
 
             if (!changes) {
-                Log.d("FDroid", "Not checking app details or compatibility, because all repos were up to date.");
+                Log.d(TAG, "Not checking app details or compatibility, because all repos were up to date.");
             } else {
                 sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
 
@@ -444,12 +446,12 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
         } catch (Exception e) {
-            Log.e("FDroid",
+            Log.e(TAG,
                     "Exception during update processing:\n"
                             + Log.getStackTraceString(e));
             sendStatus(STATUS_ERROR_GLOBAL, e.getMessage());
         } finally {
-            Log.d("FDroid", "Update took "
+            Log.d(TAG, "Update took "
                     + ((System.currentTimeMillis() - startTime) / 1000)
                     + " seconds.");
             receiver = null;
@@ -489,7 +491,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private void showAppUpdatesNotification(int updates) {
-        Log.d("FDroid", "Notifying " + updates + " updates.");
+        Log.d(TAG, "Notifying " + updates + " updates.");
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
                         .setAutoCancel(true)
@@ -595,13 +597,13 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
         }
 
-        Log.d("FDroid", "Updating/inserting " + operations.size() + " apps.");
+        Log.d(TAG, "Updating/inserting " + operations.size() + " apps.");
         try {
             executeBatchWithStatus(AppProvider.getAuthority(), operations, currentCount, totalUpdateCount);
         } catch (RemoteException e) {
-            Log.e("FDroid", e.getMessage());
+            Log.e(TAG, e.getMessage());
         } catch (OperationApplicationException e) {
-            Log.e("FDroid", e.getMessage());
+            Log.e(TAG, e.getMessage());
         }
     }
 
@@ -661,13 +663,13 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
         }
 
-        Log.d("FDroid", "Updating/inserting " + operations.size() + " apks.");
+        Log.d(TAG, "Updating/inserting " + operations.size() + " apks.");
         try {
             executeBatchWithStatus(ApkProvider.getAuthority(), operations, currentCount, totalApksAppsCount);
         } catch (RemoteException e) {
-            Log.e("FDroid", e.getMessage());
+            Log.e(TAG, e.getMessage());
         } catch (OperationApplicationException e) {
-            Log.e("FDroid", e.getMessage());
+            Log.e(TAG, e.getMessage());
         }
     }
 
@@ -727,7 +729,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
 
         long duration = System.currentTimeMillis() - startTime;
-        Log.d("FDroid", "Found " + toRemove.size() + " apks no longer in the updated repos (took " + duration + "ms)");
+        Log.d(TAG, "Found " + toRemove.size() + " apks no longer in the updated repos (took " + duration + "ms)");
 
         if (toRemove.size() > 0) {
             ApkProvider.Helper.deleteApks(this, toRemove);
@@ -747,13 +749,13 @@ public class UpdateService extends IntentService implements ProgressListener {
         for (final Repo repo : repos) {
             Uri uri = ApkProvider.getRepoUri(repo.getId());
             int numDeleted = getContentResolver().delete(uri, null, null);
-            Log.d("FDroid", "Removing " + numDeleted + " apks from repo " + repo.address);
+            Log.d(TAG, "Removing " + numDeleted + " apks from repo " + repo.address);
         }
     }
 
     private void removeAppsWithoutApks() {
         int numDeleted = getContentResolver().delete(AppProvider.getNoApksUri(), null, null);
-        Log.d("FDroid", "Removing " + numDeleted + " apks that don't have any apks");
+        Log.d(TAG, "Removing " + numDeleted + " apks that don't have any apks");
     }
 
 

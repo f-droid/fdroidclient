@@ -174,7 +174,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
     private void markChangedIfRequired(Intent intent) {
         if (hasChanged()) {
-            Log.i("FDroid", "Repo details have changed, prompting for update.");
+            Log.i(TAG, "Repo details have changed, prompting for update.");
             intent.putExtra(REQUEST_UPDATE, true);
         }
     }
@@ -612,7 +612,7 @@ public class ManageReposActivity extends ActionBarActivity {
         @Override
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
             Uri uri = RepoProvider.getContentUri();
-            Log.i("FDroid", "Creating repo loader '" + uri + "'.");
+            Log.i(TAG, "Creating repo loader '" + uri + "'.");
             String[] projection = new String[] {
                     RepoProvider.DataColumns._ID,
                     RepoProvider.DataColumns.NAME,
