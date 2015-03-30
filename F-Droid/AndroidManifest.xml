@@ -410,35 +410,35 @@
                 android:name="de.duenndns.ssl.MemorizingActivity"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <receiver android:name=".StartupReceiver" >
+        <receiver android:name=".receiver.StartupReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
 
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".PackageAddedReceiver" >
+        <receiver android:name=".receiver.PackageAddedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
 
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".PackageUpgradedReceiver" >
+        <receiver android:name=".receiver.PackageUpgradedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
 
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".PackageRemovedReceiver" >
+        <receiver android:name=".receiver.PackageRemovedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
 
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".WifiStateChangeReceiver" >
+        <receiver android:name=".receiver.WifiStateChangeReceiver" >
             <intent-filter>
                 <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>
