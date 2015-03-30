@@ -1,3 +1,9 @@
+### Upcoming release
+
+* Fix an issue where xml files could pile up in the data directory
+
+* Add empty list views
+
 ### 0.83 (2015-03-26)
 
 * Fix possible crashes when installing or uninstalling apps
