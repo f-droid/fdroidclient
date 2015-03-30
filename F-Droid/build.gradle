@@ -127,7 +127,7 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
 
 android {
     compileSdkVersion 21
-    buildToolsVersion '22.0.0'
+    buildToolsVersion '22.0.1'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7

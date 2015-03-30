@@ -39,7 +39,7 @@ project(':extern:UniversalImageLoader:library') {
 
     android {
         compileSdkVersion 16
-        buildToolsVersion '22.0.0'
+        buildToolsVersion '22.0.1'
 
         sourceSets {
             main {
@@ -82,8 +82,8 @@ subprojects {
                 // android plugin will re-use the existing value I set.
                 // https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
                 try {
-                    buildToolsVersion '22.0.0'
-                    logger.info("Set buildToolsVersion to '22.0.0'")
+                    buildToolsVersion '22.0.1'
+                    logger.info("Set buildToolsVersion to '22.0.1'")
                 } catch (GradleException e) {
                     logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
                 }
