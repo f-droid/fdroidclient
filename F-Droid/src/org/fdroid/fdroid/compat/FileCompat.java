@@ -125,12 +125,12 @@ public class FileCompat {
             return file.setExecutable(readable, ownerOnly);
         } else {
             String mode;
-            if ( readable ) {
+            if (readable) {
                 mode = ownerOnly ? "0700" : "0711";
             } else {
                 mode = ownerOnly ? "0600" : "0600";
             }
-            return setMode( file, mode );
+            return setMode(file, mode);
         }
 
     }
