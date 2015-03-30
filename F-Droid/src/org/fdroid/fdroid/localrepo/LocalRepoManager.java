@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid.localrepo;
 
 import android.annotation.TargetApi;

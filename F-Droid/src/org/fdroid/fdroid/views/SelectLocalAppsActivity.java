@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid.views;
 
 import android.content.Intent;

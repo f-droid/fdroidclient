@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid.views.fragments;
 
 import android.content.Context;

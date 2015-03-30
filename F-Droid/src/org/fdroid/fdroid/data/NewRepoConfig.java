@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid.data;
 
 import android.content.Context;

@@ -1,4 +1,3 @@
-
 package org.fdroid.fdroid;
 
 import android.content.BroadcastReceiver;
