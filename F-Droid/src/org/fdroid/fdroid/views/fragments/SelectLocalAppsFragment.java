@@ -42,6 +42,7 @@ import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.views.SelectLocalAppsActivity;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class SelectLocalAppsFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor>, OnQueryTextListener {
@@ -112,7 +113,7 @@ public class SelectLocalAppsFragment extends ListFragment
 
         // build list of existing apps from what is on the file system
         if (FDroidApp.selectedApps == null) {
-            HashSet<String> selectedApps = new HashSet<String>();
+            Set<String> selectedApps = new HashSet<String>();
             for (String filename : LocalRepoManager.get(selectLocalAppsActivity).repoDir.list()) {
                 if (filename.matches(".*\\.apk")) {
                     String packageName = filename.substring(0, filename.indexOf("_"));

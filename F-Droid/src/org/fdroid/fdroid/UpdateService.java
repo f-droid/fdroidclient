@@ -171,7 +171,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 finished = true;
             } else if (resultCode == UpdateService.STATUS_ERROR_LOCAL || resultCode == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
                 StringBuilder msgB = new StringBuilder();
-                ArrayList<CharSequence> repoErrors = resultData.getCharSequenceArrayList(UpdateService.RESULT_REPO_ERRORS);
+                List<CharSequence> repoErrors = resultData.getCharSequenceArrayList(UpdateService.RESULT_REPO_ERRORS);
                 for (CharSequence error : repoErrors) {
                     if (msgB.length() > 0) msgB.append('\n');
                     msgB.append(error);
@@ -351,7 +351,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             List<Repo> unchangedRepos = new ArrayList<Repo>();
             List<Repo> updatedRepos = new ArrayList<Repo>();
             List<Repo> disabledRepos = new ArrayList<Repo>();
-            ArrayList<CharSequence> errorRepos = new ArrayList<CharSequence>();
+            List<CharSequence> errorRepos = new ArrayList<CharSequence>();
             ArrayList<CharSequence> repoErrors = new ArrayList<CharSequence>();
             List<RepoUpdater.RepoUpdateRememberer> repoUpdateRememberers = new ArrayList<RepoUpdater.RepoUpdateRememberer>();
             boolean changes = false;
@@ -579,7 +579,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private void updateOrInsertApps(List<App> appsToUpdate, int totalUpdateCount, int currentCount) {
 
-        ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
+        List<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
         List<String> knownAppIds = getKnownAppIds(appsToUpdate);
         for (final App a : appsToUpdate) {
             boolean known = false;
@@ -608,7 +608,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private void executeBatchWithStatus(String providerAuthority,
-                                        ArrayList<ContentProviderOperation> operations,
+                                        List<ContentProviderOperation> operations,
                                         int currentCount,
                                         int totalUpdateCount)
             throws RemoteException, OperationApplicationException {
@@ -643,7 +643,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private void updateOrInsertApks(List<Apk> apksToUpdate, int totalApksAppsCount, int currentCount) {
 
-        ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
+        List<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
 
         List<Apk> knownApks = getKnownApks(apksToUpdate);
         for (final Apk apk : apksToUpdate) {
