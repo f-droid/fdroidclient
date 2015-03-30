@@ -1,4 +1,4 @@
-package org.fdroid.fdroid;
+package org.fdroid.fdroid.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
