@@ -20,7 +20,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.1'
+        classpath 'com.android.tools.build:gradle:1.1.3'
 
         // libsuperuser submodule requires these plugins, even though
         // the F-Droid build process never invokes code from them. It
