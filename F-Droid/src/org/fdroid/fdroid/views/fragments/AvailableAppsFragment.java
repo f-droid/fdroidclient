@@ -61,6 +61,11 @@ public class AvailableAppsFragment extends AppListFragment implements
         return adapter;
     }
 
+    @Override
+    protected String getEmptyMessage() {
+        return getActivity().getString(R.string.empty_available_app_list);
+    }
+
     private class CategoryObserver extends ContentObserver {
 
         private ArrayAdapter<String> adapter;
