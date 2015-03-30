@@ -372,6 +372,11 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     // market://details?id=app.id
                     // https://play.google.com/store/apps/details?id=app.id
                     appId = data.getQueryParameter("id");
+                } else if (host.equals("apps") || host.equals("amazon.com") ||
+                        host.equals("www.amazon.com")) {
+                    // amzn://apps/android?p=app.id
+                    // http://www.amazon.com/gp/mas/dl/android?p=app.id
+                    appId = data.getQueryParameter("p");
                 } else {
                     // https://f-droid.org/app/app.id
                     appId = data.getLastPathSegment();
