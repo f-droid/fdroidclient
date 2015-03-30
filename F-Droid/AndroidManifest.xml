@@ -294,6 +294,19 @@
                 <data android:host="www.f-droid.org" />
                 <data android:pathPrefix="/app/" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" /> <!-- they don't do www. -->
+                <data android:path="/store/apps/details" />
+            </intent-filter>
+
         </activity>
         <activity
             android:label="@string/menu_preferences"

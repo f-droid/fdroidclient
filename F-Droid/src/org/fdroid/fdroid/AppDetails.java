@@ -348,6 +348,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
      * Various different intents could cause us to show this activity, such as:
      * <ul>
      *     <li>market://details?id=[app_id]</li>
+     *     <li>https://play.google.com/store/apps/details?id=[app_id]</li>
      *     <li>https://f-droid.org/app/[app_id]</li>
      *     <li>fdroid.app:[app_id]</li>
      * </ul>
@@ -362,8 +363,14 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         String appId = null;
         if (data != null) {
             if (data.isHierarchical()) {
-                if (data.getHost() != null && data.getHost().equals("details")) {
+                final String host = data.getHost();
+                if (host == null) {
+                    Log.e(TAG, "Null host found in app link!");
+                    return null;
+                }
+                if (host.equals("details") || host.equals("play.google.com")) {
                     // market://details?id=app.id
+                    // https://play.google.com/store/apps/details?id=app.id
                     appId = data.getQueryParameter("id");
                 } else {
                     // https://f-droid.org/app/app.id
