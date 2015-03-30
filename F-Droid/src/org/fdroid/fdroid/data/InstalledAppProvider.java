@@ -128,7 +128,9 @@ public class InstalledAppProvider extends FDroidProvider {
     }
 
     private QuerySelection querySearch(String keywords) {
-        return new QuerySelection("applicationLabel LIKE ?", new String[]{ "%" + keywords + "%" });
+        keywords = "%" + cleanQueryKeywords(keywords) + "%";
+        return new QuerySelection("applicationLabel LIKE ?",
+                new String[]{ keywords });
     }
 
     @Override

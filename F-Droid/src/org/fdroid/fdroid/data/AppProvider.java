@@ -497,14 +497,14 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection querySearch(String keywords) {
-        keywords = "%" + keywords + "%";
+        keywords = "%" + cleanQueryKeywords(keywords) + "%";
         String selection =
                 "fdroid_app.id like ? OR " +
                 "fdroid_app.name like ? OR " +
                 "fdroid_app.summary like ? OR " +
                 "fdroid_app.description like ? ";
-        String[] args = new String[] { keywords, keywords, keywords, keywords};
-        return new AppQuerySelection(selection, args);
+        return new AppQuerySelection(selection,
+                new String[] { keywords, keywords, keywords, keywords });
     }
 
     private AppQuerySelection querySingle(String id) {
