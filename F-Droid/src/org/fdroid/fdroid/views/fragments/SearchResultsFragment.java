@@ -36,16 +36,25 @@ public class SearchResultsFragment extends ListFragment implements LoaderManager
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             query = intent.getStringExtra(SearchManager.QUERY);
         } else {
-            Uri data = intent.getData();
-            if (data != null && data.isHierarchical()) {
+            final Uri data = intent.getData();
+            if (data == null) {
+                return "";
+            }
+            if (data.isHierarchical()) {
+                // market://search?q=foo
+                // https://play.google.com/store/search?q=foo
                 query = data.getQueryParameter("q");
                 if (query != null && query.startsWith("pname:"))
                     query = query.substring(6);
-            } else if (data!= null) {
+            } else {
+                // fdroid.search:foo
                 query = data.getEncodedSchemeSpecificPart();
             }
         }
-        return query == null ? "" : query;
+        if (query == null) {
+            return "";
+        }
+        return query;
     }
 
     @Override
