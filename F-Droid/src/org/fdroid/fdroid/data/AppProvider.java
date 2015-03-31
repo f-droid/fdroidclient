@@ -21,7 +21,7 @@ public class AppProvider extends FDroidProvider {
         private Helper() {}
 
         public static int count(Context context, Uri uri) {
-            String[] projection = new String[] { AppProvider.DataColumns._COUNT };
+            String[] projection = { AppProvider.DataColumns._COUNT };
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             int count = 0;
             if (cursor != null && cursor.getCount() == 1) {

@@ -94,7 +94,7 @@ public class MDnsHelper implements ServiceListener {
             protected Void doInBackground(Void... params) {
                 try {
                     int ip = wifiManager.getConnectionInfo().getIpAddress();
-                    byte[] byteIp = new byte[] {
+                    byte[] byteIp = {
                             (byte) (ip & 0xff),
                             (byte) (ip >> 8 & 0xff),
                             (byte) (ip >> 16 & 0xff),

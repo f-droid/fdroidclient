@@ -72,11 +72,11 @@ public class SystemInstaller extends Installer {
         mDeleteObserver = new PackageDeleteObserver();
 
         try {
-            Class<?>[] installTypes = new Class[] {
+            Class<?>[] installTypes = {
                     Uri.class, IPackageInstallObserver.class, int.class,
                     String.class
             };
-            Class<?>[] deleteTypes = new Class[] {
+            Class<?>[] deleteTypes = {
                     String.class, IPackageDeleteObserver.class,
                     int.class
             };

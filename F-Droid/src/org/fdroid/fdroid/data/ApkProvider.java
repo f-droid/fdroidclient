@@ -301,13 +301,13 @@ public class ApkProvider extends FDroidProvider {
 
     private QuerySelection queryApp(String appId) {
         String selection = DataColumns.APK_ID + " = ? ";
-        String[] args = new String[] { appId };
+        String[] args = { appId };
         return new QuerySelection(selection, args);
     }
 
     private QuerySelection querySingle(Uri uri) {
         String selection = " vercode = ? and id = ? ";
-        String[] args = new String[] {
+        String[] args = {
             // First (0th) path segment is the word "apk",
             // and we are not interested in it.
             uri.getPathSegments().get(1),
@@ -318,7 +318,7 @@ public class ApkProvider extends FDroidProvider {
 
     private QuerySelection queryRepo(long repoId) {
         String selection = DataColumns.REPO_ID + " = ? ";
-        String[] args = new String[]{ Long.toString(repoId) };
+        String[] args = { Long.toString(repoId) };
         return new QuerySelection(selection, args);
     }
 

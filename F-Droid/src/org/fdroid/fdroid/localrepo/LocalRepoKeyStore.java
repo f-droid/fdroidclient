@@ -271,7 +271,7 @@ public class LocalRepoKeyStore {
     private void addToStore(String alias, KeyPair kp, Certificate cert) throws KeyStoreException,
             NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException,
             UnrecoverableKeyException {
-        Certificate[] chain = new Certificate[] {
+        Certificate[] chain = {
                 cert
         };
         keyStore.setKeyEntry(alias, kp.getPrivate(),
