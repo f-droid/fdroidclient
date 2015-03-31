@@ -522,19 +522,19 @@ public class AppProvider extends FDroidProvider {
         boolean firstColumn = true;
         for (final String column : columns) {
             if (firstColumn) {
-                selection.append("(");
                 firstColumn = false;
             } else {
-                selection.append("OR (");
+                selection.append("OR ");
             }
+            selection.append("(");
             boolean firstKeyword = true;
             for (final String keyword : keywords) {
                 if (firstKeyword) {
-                    selection.append(column + " like ?");
                     firstKeyword = false;
                 } else {
-                    selection.append(" OR " + column + " like ?");
+                    selection.append(" OR ");
                 }
+                selection.append(column + " like ?");
                 selectionKeywords[iKeyword] = keyword;
                 iKeyword++;
             }
