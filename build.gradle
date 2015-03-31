@@ -2,6 +2,17 @@
  * This is *NOT* the main build script for F-Droid.  The main build.gradle
  * is in F-Droid/build.gradle. Usually multi-project builds don't have a
  * build.gradle in the top level directory (http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Dependencies-Android-Libraries-and-Multi-project-setup).
+ *
+ * This build script contains miscellaneous hacks to ensure that all of
+ * F-Droids dependencies can be built from source.
+ * Each hack should be documented, and in the future, may need to be changed
+ * in order to ensure that we keep pace with any changes upstream makes to
+ * their build processes.
+ *
+ *  - Some subprojects don't have gradle build scripts, so they are setup here.
+ *
+ *  - The android support libraries make a lot of dependencies about the project
+ *    two folders up from themselves, which we will have to provide for them.
  */
 
 buildscript {
@@ -10,5 +21,35 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.1.3'
+    }
+}
+
+subprojects {
+
+    // This is the hacky way which we force the subprojects to use the same build tools:
+    // http://stackoverflow.com/a/21032272
+    afterEvaluate {
+        if ( it.hasProperty( 'android' ) ) {
+            android {
+
+                // The android build task only lets you configure the buildToolsVersion once, so if
+                // we execute the closure below to configure our subprojects, it will fail when it
+                // hits the second subproject. Therefore, we will only do it once, and I guess the
+                // android plugin will re-use the existing value I set.
+                // https://android.googlesource.com/platform/tools/build/+/master/gradle/src/main/groovy/com/android/build/gradle/BaseExtension.groovy
+                try {
+                    buildToolsVersion '22.0.1'
+                    logger.info("Set buildToolsVersion to '22.0.1'")
+                } catch (GradleException e) {
+                    logger.info("Tried to set the buildToolsVersion, however we were not allowed to: $e.message")
+                }
+
+                // don't abort build on lint errors
+                // http://stackoverflow.com/a/25149514
+                configure(android.lintOptions) {
+                    abortOnError false
+                }
+            }
+        }
     }
 }
