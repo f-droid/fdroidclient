@@ -1,8 +1,11 @@
 ### Upcoming release
 
+* Show list of apps to in the update notification (on devices with
+  Android 4.1 or higher)
+
 * Fix an issue where xml files could pile up in the data directory
 
-* Add empty list views
+* Show a message to the user when there is no apps to display
 
 * Split up search terms when querying the app database - "fire fox" now
   matches FireFox
