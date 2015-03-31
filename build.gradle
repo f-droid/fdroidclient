@@ -21,13 +21,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.1.3'
-
-        // libsuperuser submodule requires these plugins, even though
-        // the F-Droid build process never invokes code from them. It
-        // would be nice to do away with this in the future, so we don't
-        // force people do download stuff they wont use.
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-        classpath 'com.github.dcendents:android-maven-plugin:1.2'
     }
 }
 
