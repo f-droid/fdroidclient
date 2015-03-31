@@ -1,0 +1,7 @@
+MIDlet-1: MIDPTTest, , org.spongycastle.crypto.examples.MIDPTest
+MIDlet-Name: MIDPTest
+MIDlet-Version: 1.0.0
+MIDlet-Vendor: Jon Eaves
+Created-By: 1.3.1 (Sun Microsystems Inc.)
+MicroEdition-Configuration: CLDC-1.0
+MicroEdition-Profile: MIDP-1.0

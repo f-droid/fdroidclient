@@ -1,0 +1,100 @@
+allprojects {
+    apply plugin: 'idea'
+}
+
+ext {
+    bcTestDataHome = file('core/src/test/data').absolutePath
+}
+
+subprojects {
+    apply plugin: 'eclipse'
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'signing'
+
+    group = 'com.madgag.spongycastle'
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from 'build/docs/javadoc'
+    }
+
+    task sourcesJar(type: Jar) {
+        from sourceSets.main.allSource
+        classifier = 'sources'
+    }
+
+    artifacts {
+        archives jar
+
+        archives javadocJar
+        archives sourcesJar
+    }
+
+    if (project.hasProperty("signing.keyId")) {
+        signing {
+            sign configurations.archives
+        }
+    }
+
+    if (project.hasProperty("sonatypeUsername")) {
+        uploadArchives {
+            repositories {
+                mavenDeployer {
+                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+                    repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                        authentication(userName: sonatypeUsername, password: sonatypePassword)
+                    }
+
+                    pom.project {
+                        name 'Spongy Castle'
+                        packaging 'jar'
+                        description 'Spongy Castle is a package-rename (org.bouncycastle.* to org.spongycastle.*) of Bouncy Castle\n' +
+                                'intended for the Android platform. Android unfortunately ships with a stripped-down version of\n' +
+                                'Bouncy Castle, which prevents easy upgrades - Spongy Castle overcomes this and provides a full,\n' +
+                                'up-to-date version of the Bouncy Castle cryptographic libs.'
+                        url 'http://rtyley.github.io/spongycastle/'
+
+                        scm {
+                            url 'scm:git@github.com:rtyley/spongycastle.git'
+                            connection 'scm:git@github.com:rtyley/spongycastle.git'
+                            developerConnection 'scm:git@github.com:rtyley/spongycastle.git'
+                        }
+
+                        licenses {
+                            license {
+                                name 'Bouncy Castle Licence'
+                                url 'http://www.bouncycastle.org/licence.html'
+                                distribution 'repo'
+                            }
+                        }
+
+                        developers {
+                            developer {
+                                id 'rtyley'
+                                name 'Roberto Tyley'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+
+    sourceCompatibility = 1.5
+    targetCompatibility = 1.5
+    version = '1.50.0.0'
+
+    test {
+        systemProperty 'bc.test.data.home', bcTestDataHome
+    }
+}

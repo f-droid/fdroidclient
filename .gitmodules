@@ -10,10 +10,6 @@
 	path = extern/Support
 	url = https://android.googlesource.com/platform/frameworks/support
 	ignore = dirty
-[submodule "extern/spongycastle"]
-	path = extern/spongycastle
-	url = https://github.com/open-keychain/spongycastle
-	ignore = dirty
 [submodule "extern/nanohttpd"]
 	path = extern/nanohttpd
 	url = https://github.com/eighthave/nanohttpd
