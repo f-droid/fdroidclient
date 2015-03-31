@@ -1,0 +1,105 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.0"
+
+    defaultConfig {
+        minSdkVersion 4
+        targetSdkVersion 21
+    }
+    
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+    }
+}
+
+version = "1.0.0." + (new Date()).format('yyyyMMddHHmm')
+group = "eu.chainfire"
+
+bintray {
+    // in global gradle.properties: "systemProp.bintrayUser=chainfire", etc
+    user = System.properties['bintrayUser']
+    key = System.properties['bintrayApiKey']
+
+    configurations = ['archives']
+    dryRun = false
+    publish = true
+    pkg {
+        repo = 'maven'
+        name = 'libsuperuser'
+        desc = 'libsuperuser'
+        websiteUrl = 'https://github.com/Chainfire/libsuperuser'
+        issueTrackerUrl = 'https://github.com/Chainfire/libsuperuser/issues'
+        vcsUrl = 'https://github.com/Chainfire/libsuperuser.git'
+        licenses = ['Apache-2.0']
+        publicDownloadNumbers = true
+    }
+
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'libsuperuser'
+                url 'https://github.com/Chainfire/libsuperuser'
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'Chainfire'
+                        name 'Jorrit Jongma'
+                    }
+                }
+                scm {
+                    connection 'https://github.com/Chainfire/libsuperuser.git'
+                    developerConnection 'https://github.com/Chainfire/libsuperuser.git'
+                    url 'https://github.com/Chainfire/libsuperuser.git'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
+}
