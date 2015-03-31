@@ -215,6 +215,9 @@ public final class Decoder {
 
     int numDataCodewords = ddata.getNbDatablocks();
     int numCodewords = rawbits.length / codewordSize;
+    if (numCodewords < numDataCodewords) {
+      throw FormatException.getFormatInstance();
+    }
     int offset = rawbits.length % codewordSize;
     int numECCodewords = numCodewords - numDataCodewords;
 
@@ -226,8 +229,8 @@ public final class Decoder {
     try {
       ReedSolomonDecoder rsDecoder = new ReedSolomonDecoder(gf);
       rsDecoder.decode(dataWords, numECCodewords);
-    } catch (ReedSolomonException ignored) {
-      throw FormatException.getFormatInstance();
+    } catch (ReedSolomonException ex) {
+      throw FormatException.getFormatInstance(ex);
     }
 
     // Now perform the unstuffing operation.
@@ -323,7 +326,7 @@ public final class Decoder {
     for (int i = startIndex; i < startIndex + length; i++) {
       res <<= 1;
       if (rawbits[i]) {
-        res++;
+        res |= 0x01;
       }
     }
     return res;
