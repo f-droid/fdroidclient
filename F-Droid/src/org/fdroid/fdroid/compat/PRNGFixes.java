@@ -144,6 +144,7 @@ public final class PRNGFixes {
      * {@code Provider} of {@code SecureRandom} engines which pass through
      * all requests to the Linux PRNG.
      */
+    @SuppressWarnings("serial")
     private static class LinuxPRNGSecureRandomProvider extends Provider {
 
         public LinuxPRNGSecureRandomProvider() {
@@ -164,6 +165,7 @@ public final class PRNGFixes {
      * {@link SecureRandomSpi} which passes all requests to the Linux PRNG
      * ({@code /dev/urandom}).
      */
+    @SuppressWarnings("serial")
     public static class LinuxPRNGSecureRandom extends SecureRandomSpi {
 
         /*

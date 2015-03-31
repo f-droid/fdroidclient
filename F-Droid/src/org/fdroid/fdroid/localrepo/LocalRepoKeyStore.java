@@ -56,6 +56,7 @@ public class LocalRepoKeyStore {
         return localRepoKeyStore;
     }
 
+    @SuppressWarnings("serial")
     public static class InitException extends Exception {
         public InitException(String detailMessage) {
             super(detailMessage);

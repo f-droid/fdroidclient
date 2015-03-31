@@ -15,6 +15,7 @@ import java.io.IOException;
  * to these events, it is important that you execute the download method of this class from the UI thread.
  * That way, all forwarded events will be handled on that thread.
  */
+@SuppressWarnings("serial")
 public class AsyncDownloadWrapper extends Handler {
 
     private static final String TAG = "fdroid.AsyncDownloadWrapper";
