@@ -195,8 +195,7 @@ public class LocalRepoKeyStore {
         try {
             ZipSigner zipSigner = new ZipSigner();
 
-            KeyStore keystore = getKeyStore();
-            X509Certificate cert = (X509Certificate) keystore.getCertificate(INDEX_CERT_ALIAS);
+            X509Certificate cert = (X509Certificate) keyStore.getCertificate(INDEX_CERT_ALIAS);
 
             KeyPair kp = getKerplappKeypair();
             PrivateKey priv = kp.getPrivate();
