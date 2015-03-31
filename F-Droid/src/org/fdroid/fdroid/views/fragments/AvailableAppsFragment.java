@@ -103,9 +103,7 @@ public class AvailableAppsFragment extends AppListFragment implements
     }
 
     /* Suppress deprecation warnings because:
-     * setBackgroundDrawable(Drawable) -> setBackground(Drawable) was only in API 16, and doesn't
-     * seems to simply delegate to the old method. I guess the deprecation is because of poor
-     * method signature, rather than better functionality in newer versions.
+     *  * setBackgroundDrawable(Drawable) -> setBackground(Drawable) was only in API 16
      */
     @SuppressWarnings("deprecation")
     private Spinner createCategorySpinner() {
@@ -130,7 +128,11 @@ public class AvailableAppsFragment extends AppListFragment implements
             if (FDroidApp.getCurTheme() == FDroidApp.Theme.dark) {
                 menuButton.setAlpha(32); // make it darker via alpha
             }
-            categorySpinner.setBackgroundDrawable(menuButton);
+            if (Build.VERSION.SDK_INT >= 16) {
+                categorySpinner.setBackground(menuButton);
+            } else {
+                categorySpinner.setBackgroundDrawable(menuButton);
+            }
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
