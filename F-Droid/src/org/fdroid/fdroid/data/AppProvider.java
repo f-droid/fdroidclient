@@ -498,15 +498,49 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection().requireNaturalInstalledTable();
     }
 
-    private AppQuerySelection querySearch(String keywords) {
-        keywords = "%" + cleanQueryKeywords(keywords) + "%";
-        String selection =
-                "fdroid_app.id like ? OR " +
-                "fdroid_app.name like ? OR " +
-                "fdroid_app.summary like ? OR " +
-                "fdroid_app.description like ? ";
-        return new AppQuerySelection(selection,
-                new String[] { keywords, keywords, keywords, keywords });
+    private AppQuerySelection querySearch(String query) {
+        final String[] columns = {
+            "fdroid_app.id",
+            "fdroid_app.name",
+            "fdroid_app.summary",
+            "fdroid_app.description",
+        };
+
+        // Remove duplicates, surround in % for case insensitive searching
+        Set<String> keywordSet = new HashSet<String>(Arrays.asList(query.split("\\s")));
+        String[] keywords = new String[keywordSet.size()];
+        int iKeyword = 0;
+        for (String keyword : keywordSet) {
+            keywords[iKeyword] = "%" + keyword + "%";
+            iKeyword++;
+        }
+
+        // Build selection string and fill out keyword arguments
+        StringBuilder selection = new StringBuilder();
+        String[] selectionKeywords = new String[columns.length * keywords.length];
+        iKeyword = 0;
+        boolean firstColumn = true;
+        for (final String column : columns) {
+            if (firstColumn) {
+                selection.append("(");
+                firstColumn = false;
+            } else {
+                selection.append("OR (");
+            }
+            boolean firstKeyword = true;
+            for (final String keyword : keywords) {
+                if (firstKeyword) {
+                    selection.append(column + " like ?");
+                    firstKeyword = false;
+                } else {
+                    selection.append(" OR " + column + " like ?");
+                }
+                selectionKeywords[iKeyword] = keyword;
+                iKeyword++;
+            }
+            selection.append(") ");
+        }
+        return new AppQuerySelection(selection.toString(), selectionKeywords);
     }
 
     private AppQuerySelection querySingle(String id) {
