@@ -4,6 +4,9 @@
 
 * Add empty list views
 
+* Split up search terms when querying the app database - "fire fox" now
+  matches FireFox
+
 * Handle amazon.com and play.google.com app links
 
 ### 0.83 (2015-03-26)
