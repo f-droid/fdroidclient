@@ -532,7 +532,7 @@ public class AppProvider extends FDroidProvider {
                 if (firstKeyword) {
                     firstKeyword = false;
                 } else {
-                    selection.append(" OR ");
+                    selection.append(" AND ");
                 }
                 selection.append(column + " like ?");
                 selectionKeywords[iKeyword] = keyword;
