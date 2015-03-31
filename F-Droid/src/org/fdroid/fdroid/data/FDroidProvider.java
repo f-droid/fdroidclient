@@ -142,12 +142,5 @@ public abstract class FDroidProvider extends ContentProvider {
             }
         }
     }
-
-    protected static String cleanQueryKeywords(String keywords) {
-        if (keywords == null) {
-            return null;
-        }
-        return keywords.trim();
-    }
 }
 

@@ -129,10 +129,9 @@ public class InstalledAppProvider extends FDroidProvider {
         return new QuerySelection("appId = ?", new String[]{ appId });
     }
 
-    private QuerySelection querySearch(String keywords) {
-        keywords = "%" + cleanQueryKeywords(keywords) + "%";
+    private QuerySelection querySearch(String query) {
         return new QuerySelection("applicationLabel LIKE ?",
-                new String[]{ keywords });
+                new String[]{ "%" + query + "%" });
     }
 
     @Override
