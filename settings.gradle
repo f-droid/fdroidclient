@@ -8,7 +8,6 @@ if ( hasProperty( 'sourceDeps' ) ) {
 	include ':extern:jmdns'
 	include ':extern:zipsigner'
 	include ':extern:spongycastle:core'
-	include ':extern:spongycastle:pg'
 	include ':extern:spongycastle:pkix'
 	include ':extern:spongycastle:prov'
 	include ':extern:zxing-core'
