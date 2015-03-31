@@ -6,10 +6,6 @@
 	path = extern/MemorizingTrustManager
 	url = https://github.com/ge0rg/MemorizingTrustManager.git
 	ignore = dirty
-[submodule "extern/jmdns"]
-	path = extern/jmdns
-	url = https://gitlab.com/fdroid/jmdns.git
-	ignore = dirty
 [submodule "extern/Support"]
 	path = extern/Support
 	url = https://android.googlesource.com/platform/frameworks/support
