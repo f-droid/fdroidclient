@@ -55,17 +55,6 @@ project(':extern:UniversalImageLoader:library') {
     }
 }
 
-project(':extern:zipsigner') {
-
-    apply plugin: 'java'
-
-    dependencies {
-        compile project(':extern:spongycastle:core')
-        compile project(':extern:spongycastle:pkix')
-        compile project(':extern:spongycastle:prov')
-    }
-}
-
 }
 
 subprojects {
