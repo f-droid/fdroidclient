@@ -65,7 +65,6 @@
         android:allowBackup="true"
         android:theme="@style/AppThemeDark"
         android:supportsRtl="true"
-        tools:replace="theme, icon, label"
         >
 
         <provider
