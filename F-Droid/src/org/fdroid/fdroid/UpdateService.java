@@ -424,7 +424,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
 
                 if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {
-                    performUpdateNotification(appsToUpdate.values());
+                    performUpdateNotification();
                 }
             }
 
@@ -483,36 +483,67 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
     }
 
-    private void performUpdateNotification(Collection<App> apps) {
-        int count = AppProvider.Helper.count(this, AppProvider.getCanUpdateUri());
-        if (count > 0) {
-            showAppUpdatesNotification(count);
+    private void performUpdateNotification() {
+        Cursor cursor = getContentResolver().query(
+                AppProvider.getCanUpdateUri(),
+                AppProvider.DataColumns.ALL,
+                null, null, null);
+        if (cursor.getCount() > 0) {
+            showAppUpdatesNotification(cursor);
         }
     }
 
-    private void showAppUpdatesNotification(int updates) {
-        Log.d(TAG, "Notifying " + updates + " updates.");
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                        .setAutoCancel(true)
-                        .setContentTitle(getString(R.string.fdroid_updates_available));
-        if (Build.VERSION.SDK_INT >= 11) {
-            builder.setSmallIcon(R.drawable.ic_stat_notify_updates);
-        } else {
-            builder.setSmallIcon(R.drawable.ic_launcher);
-        }
-        Intent notifyIntent = new Intent(this, FDroid.class)
-                .putExtra(FDroid.EXTRA_TAB_UPDATE, true);
-        if (updates > 1) {
-            builder.setContentText(getString(R.string.many_updates_available, updates));
-        } else {
-            builder.setContentText(getString(R.string.one_update_available));
-        }
+    private PendingIntent createNotificationIntent() {
+        Intent notifyIntent = new Intent(this, FDroid.class).putExtra(FDroid.EXTRA_TAB_UPDATE, true);
         TaskStackBuilder stackBuilder = TaskStackBuilder
                 .create(this).addParentStack(FDroid.class)
                 .addNextIntent(notifyIntent);
-        PendingIntent pi = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(pi);
+        return stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    private NotificationCompat.Style createNotificationBigStyle(Cursor hasUpdates) {
+
+        final int MAX_UPDATES_TO_SHOW = 5;
+
+        final String contentText = hasUpdates.getCount() > 1
+                ? getString(R.string.many_updates_available, hasUpdates.getCount())
+                : getString(R.string.one_update_available);
+
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+        inboxStyle.setBigContentTitle(contentText);
+        hasUpdates.moveToFirst();
+        for (int i = 0; i < Math.min(hasUpdates.getCount(), MAX_UPDATES_TO_SHOW); i ++) {
+            App app = new App(hasUpdates);
+            hasUpdates.moveToNext();
+            inboxStyle.addLine(app.name + " (" + app.installedVersionName + " → " + app.getSuggestedVersion() + ")");
+        }
+
+        if (hasUpdates.getCount() > MAX_UPDATES_TO_SHOW) {
+            int diff = hasUpdates.getCount() - MAX_UPDATES_TO_SHOW;
+            inboxStyle.setSummaryText(getString(R.string.update_notification_more, diff));
+        }
+
+        return inboxStyle;
+    }
+
+    private void showAppUpdatesNotification(Cursor hasUpdates) {
+        Log.d(TAG, "Notifying " + hasUpdates.getCount() + " updates.");
+
+        final int icon = Build.VERSION.SDK_INT >= 11 ? R.drawable.ic_stat_notify_updates : R.drawable.ic_launcher;
+
+        final String contentText = hasUpdates.getCount() > 1
+                ? getString(R.string.many_updates_available, hasUpdates.getCount())
+                : getString(R.string.one_update_available);
+
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setAutoCancel(true)
+                        .setContentTitle(getString(R.string.fdroid_updates_available))
+                        .setSmallIcon(icon)
+                        .setContentIntent(createNotificationIntent())
+                        .setContentText(contentText)
+                        .setStyle(createNotificationBigStyle(hasUpdates));
+
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         nm.notify(1, builder.build());
     }
