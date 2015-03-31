@@ -41,3 +41,5 @@ proguard/
 *.iml
 out
 .settings/
+
+extern/*/proguard-project.txt
