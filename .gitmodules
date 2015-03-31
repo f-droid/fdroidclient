@@ -6,10 +6,6 @@
 	path = extern/MemorizingTrustManager
 	url = https://github.com/ge0rg/MemorizingTrustManager.git
 	ignore = dirty
-[submodule "extern/AndroidPinning"]
-	path = extern/AndroidPinning
-	url = https://gitlab.com/fdroid/androidpinning.git
-	ignore = dirty
 [submodule "extern/libsuperuser"]
 	path = extern/libsuperuser
 	url = https://github.com/Chainfire/libsuperuser
