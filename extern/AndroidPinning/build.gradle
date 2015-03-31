@@ -12,7 +12,7 @@ apply plugin: 'android-library'
 
 android {
     compileSdkVersion 17
-    buildToolsVersion '17.0.0'
+    buildToolsVersion '22.0.1'
 
     android {
         sourceSets {
