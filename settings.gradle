@@ -3,7 +3,6 @@ include ':F-Droid'
 if ( hasProperty( 'sourceDeps' ) ) {
 	include ':extern:AndroidPinning'
 	include ':extern:UniversalImageLoader:library'
-	include ':extern:MemorizingTrustManager'
 	include ':extern:libsuperuser:libsuperuser'
 	include ':extern:nanohttpd:core'
 	include ':extern:jmdns'

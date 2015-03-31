@@ -32,8 +32,6 @@ android update lib-project --path $EXTERN/UniversalImageLoader/library
 
 android update lib-project --path $EXTERN/AndroidPinning
 
-android update lib-project --path $EXTERN/MemorizingTrustManager
-
 android update lib-project --path $EXTERN/libsuperuser/libsuperuser
 
 android update lib-project --path $EXTERN/zxing-core

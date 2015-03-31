@@ -404,11 +404,6 @@
                 android:resource="@xml/searchable" />
         </activity>
 
-        <!--Used for SSL TOFU, supported by extern/MemorizingTrustManager lib -->
-        <activity
-                android:name="de.duenndns.ssl.MemorizingActivity"
-                android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <receiver android:name=".receiver.StartupReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

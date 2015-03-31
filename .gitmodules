@@ -1,7 +1,3 @@
-[submodule "extern/MemorizingTrustManager"]
-	path = extern/MemorizingTrustManager
-	url = https://github.com/ge0rg/MemorizingTrustManager.git
-	ignore = dirty
 [submodule "extern/Support"]
 	path = extern/Support
 	url = https://android.googlesource.com/platform/frameworks/support
