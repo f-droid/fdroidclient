@@ -24,9 +24,11 @@ public class AppProvider extends FDroidProvider {
             final String[] projection = { AppProvider.DataColumns._COUNT };
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             int count = 0;
-            if (cursor != null && cursor.getCount() == 1) {
-                cursor.moveToFirst();
-                count = cursor.getInt(0);
+            if (cursor != null) {
+                if (cursor.getCount() == 1) {
+                    cursor.moveToFirst();
+                    count = cursor.getInt(0);
+                }
                 cursor.close();
             }
             return count;

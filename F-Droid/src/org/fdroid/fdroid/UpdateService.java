@@ -493,8 +493,11 @@ public class UpdateService extends IntentService implements ProgressListener {
                 AppProvider.getCanUpdateUri(),
                 AppProvider.DataColumns.ALL,
                 null, null, null);
-        if (cursor.getCount() > 0) {
-            showAppUpdatesNotification(cursor);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                showAppUpdatesNotification(cursor);
+            }
+            cursor.close();
         }
     }
 

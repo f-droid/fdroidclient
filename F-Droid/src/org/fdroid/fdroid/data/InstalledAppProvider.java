@@ -34,13 +34,15 @@ public class InstalledAppProvider extends FDroidProvider {
             final String[] projection = InstalledAppProvider.DataColumns.ALL;
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             if (cursor != null) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    cachedInfo.put(
-                        cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)),
-                        cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE))
-                    );
-                    cursor.moveToNext();
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        cachedInfo.put(
+                            cursor.getString(cursor.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID)),
+                            cursor.getInt(cursor.getColumnIndex(InstalledAppProvider.DataColumns.VERSION_CODE))
+                        );
+                        cursor.moveToNext();
+                    }
                 }
                 cursor.close();
             }
