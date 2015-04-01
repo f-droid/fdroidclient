@@ -67,90 +67,111 @@ public class PreferenceFragment
 
         int result = 0;
 
-        if (key.equals(Preferences.PREF_UPD_INTERVAL)) {
-            ListPreference pref = (ListPreference)findPreference(
-                    Preferences.PREF_UPD_INTERVAL);
-            int interval = Integer.parseInt(pref.getValue());
-            Preference onlyOnWifi = findPreference(
-                    Preferences.PREF_UPD_WIFI_ONLY);
-            onlyOnWifi.setEnabled(interval > 0);
-            if (interval == 0) {
-                pref.setSummary(R.string.update_interval_zero);
-            } else {
-                pref.setSummary(pref.getEntry());
-            }
+        switch (key) {
+            case Preferences.PREF_UPD_INTERVAL:
+                ListPreference listPref = (ListPreference)findPreference(
+                        Preferences.PREF_UPD_INTERVAL);
+                int interval = Integer.parseInt(listPref.getValue());
+                Preference onlyOnWifi = findPreference(
+                        Preferences.PREF_UPD_WIFI_ONLY);
+                onlyOnWifi.setEnabled(interval > 0);
+                if (interval == 0) {
+                    listPref.setSummary(R.string.update_interval_zero);
+                } else {
+                    listPref.setSummary(listPref.getEntry());
+                }
+                break;
 
-        } else if (key.equals(Preferences.PREF_UPD_WIFI_ONLY)) {
-            checkSummary(key, R.string.automatic_scan_wifi_on);
+            case Preferences.PREF_UPD_WIFI_ONLY:
+                checkSummary(key, R.string.automatic_scan_wifi_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_UPD_NOTIFY)) {
-            checkSummary(key, R.string.notify_on);
+            case Preferences.PREF_UPD_NOTIFY:
+                checkSummary(key, R.string.notify_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_UPD_HISTORY)) {
-            textSummary(key, R.string.update_history_summ);
+            case Preferences.PREF_UPD_HISTORY:
+                textSummary(key, R.string.update_history_summ);
+                break;
 
-        } else if (key.equals(Preferences.PREF_PERMISSIONS)) {
-            checkSummary(key, R.string.showPermissions_on);
+            case Preferences.PREF_PERMISSIONS:
+                checkSummary(key, R.string.showPermissions_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_COMPACT_LAYOUT)) {
-            checkSummary(key, R.string.compactlayout_on);
+            case Preferences.PREF_COMPACT_LAYOUT:
+                checkSummary(key, R.string.compactlayout_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_THEME)) {
-            entrySummary(key);
-            if (changing) {
-                result |= PreferencesActivity.RESULT_RESTART;
-                getActivity().setResult(result);
-            }
+            case Preferences.PREF_THEME:
+                entrySummary(key);
+                if (changing) {
+                    result |= PreferencesActivity.RESULT_RESTART;
+                    getActivity().setResult(result);
+                }
+                break;
 
-        } else if (key.equals(Preferences.PREF_INCOMP_VER)) {
-            checkSummary(key, R.string.show_incompat_versions_on);
+            case Preferences.PREF_INCOMP_VER:
+                checkSummary(key, R.string.show_incompat_versions_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_ROOTED)) {
-            checkSummary(key, R.string.rooted_on);
+            case Preferences.PREF_ROOTED:
+                checkSummary(key, R.string.rooted_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_IGN_TOUCH)) {
-            checkSummary(key, R.string.ignoreTouch_on);
+            case Preferences.PREF_IGN_TOUCH:
+                checkSummary(key, R.string.ignoreTouch_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_LOCAL_REPO_BONJOUR)) {
-            checkSummary(key, R.string.local_repo_bonjour_on);
+            case Preferences.PREF_LOCAL_REPO_BONJOUR:
+                checkSummary(key, R.string.local_repo_bonjour_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_LOCAL_REPO_NAME)) {
-            textSummary(key, R.string.local_repo_name_summary);
+            case Preferences.PREF_LOCAL_REPO_NAME:
+                textSummary(key, R.string.local_repo_name_summary);
+                break;
 
-        } else if (key.equals(Preferences.PREF_LOCAL_REPO_HTTPS)) {
-            checkSummary(key, R.string.local_repo_https_on);
+            case Preferences.PREF_LOCAL_REPO_HTTPS:
+                checkSummary(key, R.string.local_repo_https_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_CACHE_APK)) {
-            checkSummary(key, R.string.cache_downloaded_on);
+            case Preferences.PREF_CACHE_APK:
+                checkSummary(key, R.string.cache_downloaded_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_EXPERT)) {
-            checkSummary(key, R.string.expert_on);
+            case Preferences.PREF_EXPERT:
+                checkSummary(key, R.string.expert_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_ROOT_INSTALLER)) {
-            checkSummary(key, R.string.root_installer_on);
+            case Preferences.PREF_ROOT_INSTALLER:
+                checkSummary(key, R.string.root_installer_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_SYSTEM_INSTALLER)) {
-            checkSummary(key, R.string.system_installer_on);
+            case Preferences.PREF_SYSTEM_INSTALLER:
+                checkSummary(key, R.string.system_installer_on);
+                break;
 
-        } else if (key.equals(Preferences.PREF_ENABLE_PROXY)) {
-            CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
-            pref.setSummary(R.string.enable_proxy_summary);
+            case Preferences.PREF_ENABLE_PROXY:
+                CheckBoxPreference checkPref = (CheckBoxPreference) findPreference(key);
+                checkPref.setSummary(R.string.enable_proxy_summary);
+                break;
 
-        } else if (key.equals(Preferences.PREF_PROXY_HOST)) {
-            EditTextPreference textPref = (EditTextPreference) findPreference(key);
-            String text = Preferences.get().getProxyHost();
-            if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST))
-                textPref.setSummary(R.string.proxy_host_summary);
-            else
-                textPref.setSummary(text);
+            case Preferences.PREF_PROXY_HOST:
+                EditTextPreference textPref = (EditTextPreference) findPreference(key);
+                String text = Preferences.get().getProxyHost();
+                if (TextUtils.isEmpty(text) || text.equals(Preferences.DEFAULT_PROXY_HOST))
+                    textPref.setSummary(R.string.proxy_host_summary);
+                else
+                    textPref.setSummary(text);
+                break;
 
-        } else if (key.equals(Preferences.PREF_PROXY_PORT)) {
-            EditTextPreference textPref = (EditTextPreference) findPreference(key);
-            int port = Preferences.get().getProxyPort();
-            if (port == Preferences.DEFAULT_PROXY_PORT)
-                textPref.setSummary(R.string.proxy_port_summary);
-            else
-                textPref.setSummary(String.valueOf(port));
+            case Preferences.PREF_PROXY_PORT:
+                EditTextPreference textPref2 = (EditTextPreference) findPreference(key);
+                int port = Preferences.get().getProxyPort();
+                if (port == Preferences.DEFAULT_PROXY_PORT)
+                    textPref2.setSummary(R.string.proxy_port_summary);
+                else
+                    textPref2.setSummary(String.valueOf(port));
+                break;
 
         }
     }

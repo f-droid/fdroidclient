@@ -212,15 +212,16 @@ public class ManageReposActivity extends ActionBarActivity {
                 new ProgressListener() {
                     @Override
                     public void onProgress(Event event) {
-                        if (event.type.equals(UpdateService.EVENT_COMPLETE_AND_SAME) ||
-                                event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
-                            // No need to prompt to update any more, we just
-                            // did it!
-                            changed = false;
-                        }
-
-                        if (event.type.equals(UpdateService.EVENT_FINISHED)) {
-                            updateHandler = null;
+                        switch (event.type) {
+                            case UpdateService.EVENT_COMPLETE_AND_SAME:
+                            case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+                                // No need to prompt to update any more, we just
+                                // did it!
+                                changed = false;
+                                break;
+                            case UpdateService.EVENT_FINISHED:
+                                updateHandler = null;
+                                break;
                         }
                     }
                 });

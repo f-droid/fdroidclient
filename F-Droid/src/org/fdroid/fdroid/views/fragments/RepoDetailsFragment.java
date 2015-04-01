@@ -229,13 +229,14 @@ public class RepoDetailsFragment extends Fragment {
         updateHandler = UpdateService.updateRepoNow(repo.address, getActivity()).setListener(new ProgressListener() {
             @Override
             public void onProgress(Event event) {
-                if (event.type.equals(UpdateService.EVENT_COMPLETE_WITH_CHANGES)) {
-                    repo = loadRepoDetails();
-                    updateView((ViewGroup)getView());
-                }
-
-                if (event.type.equals(UpdateService.EVENT_FINISHED)) {
-                    updateHandler = null;
+                switch (event.type) {
+                    case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+                        repo = loadRepoDetails();
+                        updateView((ViewGroup)getView());
+                        break;
+                    case UpdateService.EVENT_FINISHED:
+                        updateHandler = null;
+                        break;
                 }
             }
         });

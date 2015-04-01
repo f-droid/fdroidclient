@@ -200,11 +200,13 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     }
 
     private void sendProgressEvent(Event event) {
-        if (event.type.equals(Downloader.EVENT_PROGRESS)) {
-            // Keep a copy of these ourselves, so people can interrogate us for the
-            // info (in addition to receiving events with the info).
-            totalSize = event.total;
-            progress  = event.progress;
+        switch (event.type) {
+            case Downloader.EVENT_PROGRESS:
+                // Keep a copy of these ourselves, so people can interrogate us for the
+                // info (in addition to receiving events with the info).
+                totalSize = event.total;
+                progress  = event.progress;
+            break;
         }
 
         event.getData().putLong(EVENT_SOURCE_ID, id);

@@ -63,46 +63,67 @@ public class Apk extends ValueObject implements Comparable<Apk> {
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
             String column = cursor.getColumnName(i);
-            if (column.equals(ApkProvider.DataColumns.HASH)) {
-                hash = cursor.getString(i);
-            } else if (column.equals(ApkProvider.DataColumns.HASH_TYPE)) {
-                hashType = cursor.getString(i);
-            } else if (column.equals(ApkProvider.DataColumns.ADDED_DATE)) {
-                added = ValueObject.toDate(cursor.getString(i));
-            } else if (column.equals(ApkProvider.DataColumns.FEATURES)) {
-                features = Utils.CommaSeparatedList.make(cursor.getString(i));
-            } else if (column.equals(ApkProvider.DataColumns.APK_ID)) {
-                id = cursor.getString(i);
-            } else if (column.equals(ApkProvider.DataColumns.IS_COMPATIBLE)) {
-                compatible = cursor.getInt(i) == 1;
-            } else if (column.equals(ApkProvider.DataColumns.MIN_SDK_VERSION)) {
-                minSdkVersion = cursor.getInt(i);
-            } else if (column.equals(ApkProvider.DataColumns.MAX_SDK_VERSION)) {
-                maxSdkVersion = cursor.getInt(i);
-            } else if (column.equals(ApkProvider.DataColumns.NAME)) {
-                apkName = cursor.getString(i);
-            } else if (column.equals(ApkProvider.DataColumns.PERMISSIONS)) {
-                permissions = Utils.CommaSeparatedList.make(cursor.getString(i));
-            } else if (column.equals(ApkProvider.DataColumns.NATIVE_CODE)) {
-                nativecode = Utils.CommaSeparatedList.make(cursor.getString(i));
-            } else if (column.equals(ApkProvider.DataColumns.INCOMPATIBLE_REASONS)) {
-                incompatible_reasons = Utils.CommaSeparatedList.make(cursor.getString(i));
-            } else if (column.equals(ApkProvider.DataColumns.REPO_ID)) {
-                repo = cursor.getInt(i);
-            } else if (column.equals(ApkProvider.DataColumns.SIGNATURE)) {
-                sig = cursor.getString(i);
-            } else if (column.equals(ApkProvider.DataColumns.SIZE)) {
-                size = cursor.getInt(i);
-            } else if (column.equals(ApkProvider.DataColumns.SOURCE_NAME)) {
-                srcname = cursor.getString(i);
-            } else if (column.equals(ApkProvider.DataColumns.VERSION)) {
-                version = cursor.getString(i);
-            } else if (column.equals(ApkProvider.DataColumns.VERSION_CODE)) {
-                vercode = cursor.getInt(i);
-            } else if (column.equals(ApkProvider.DataColumns.REPO_VERSION)) {
-                repoVersion = cursor.getInt(i);
-            } else if (column.equals(ApkProvider.DataColumns.REPO_ADDRESS)) {
-                repoAddress = cursor.getString(i);
+            switch (cursor.getColumnName(i)) {
+                case ApkProvider.DataColumns.HASH:
+                    hash = cursor.getString(i);
+                    break;
+                case ApkProvider.DataColumns.HASH_TYPE:
+                    hashType = cursor.getString(i);
+                    break;
+                case ApkProvider.DataColumns.ADDED_DATE:
+                    added = ValueObject.toDate(cursor.getString(i));
+                    break;
+                case ApkProvider.DataColumns.FEATURES:
+                    features = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case ApkProvider.DataColumns.APK_ID:
+                    id = cursor.getString(i);
+                    break;
+                case ApkProvider.DataColumns.IS_COMPATIBLE:
+                    compatible = cursor.getInt(i) == 1;
+                    break;
+                case ApkProvider.DataColumns.MIN_SDK_VERSION:
+                    minSdkVersion = cursor.getInt(i);
+                    break;
+                case ApkProvider.DataColumns.MAX_SDK_VERSION:
+                    maxSdkVersion = cursor.getInt(i);
+                    break;
+                case ApkProvider.DataColumns.NAME:
+                    apkName = cursor.getString(i);
+                    break;
+                case ApkProvider.DataColumns.PERMISSIONS:
+                    permissions = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case ApkProvider.DataColumns.NATIVE_CODE:
+                    nativecode = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case ApkProvider.DataColumns.INCOMPATIBLE_REASONS:
+                    incompatible_reasons = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case ApkProvider.DataColumns.REPO_ID:
+                    repo = cursor.getInt(i);
+                    break;
+                case ApkProvider.DataColumns.SIGNATURE:
+                    sig = cursor.getString(i);
+                    break;
+                case ApkProvider.DataColumns.SIZE:
+                    size = cursor.getInt(i);
+                    break;
+                case ApkProvider.DataColumns.SOURCE_NAME:
+                    srcname = cursor.getString(i);
+                    break;
+                case ApkProvider.DataColumns.VERSION:
+                    version = cursor.getString(i);
+                    break;
+                case ApkProvider.DataColumns.VERSION_CODE:
+                    vercode = cursor.getInt(i);
+                    break;
+                case ApkProvider.DataColumns.REPO_VERSION:
+                    repoVersion = cursor.getInt(i);
+                    break;
+                case ApkProvider.DataColumns.REPO_ADDRESS:
+                    repoAddress = cursor.getString(i);
+                    break;
             }
         }
     }

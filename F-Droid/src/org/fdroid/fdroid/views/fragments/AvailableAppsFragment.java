@@ -189,12 +189,11 @@ public class AvailableAppsFragment extends AppListFragment implements
     protected Uri getDataUri() {
         if (currentCategory == null || currentCategory.equals(AppProvider.Helper.getCategoryAll(getActivity())))
             return AppProvider.getContentUri();
-        else if (currentCategory.equals(AppProvider.Helper.getCategoryRecentlyUpdated(getActivity())))
+        if (currentCategory.equals(AppProvider.Helper.getCategoryRecentlyUpdated(getActivity())))
             return AppProvider.getRecentlyUpdatedUri();
-        else if (currentCategory.equals(AppProvider.Helper.getCategoryWhatsNew(getActivity())))
+        if (currentCategory.equals(AppProvider.Helper.getCategoryWhatsNew(getActivity())))
             return AppProvider.getNewlyAddedUri();
-        else
-            return AppProvider.getCategoryUri(currentCategory);
+        return AppProvider.getCategoryUri(currentCategory);
     }
 
     private void setCurrentCategory(String category) {

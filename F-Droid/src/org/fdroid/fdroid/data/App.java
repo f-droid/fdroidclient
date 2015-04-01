@@ -112,65 +112,94 @@ public class App extends ValueObject implements Comparable<App> {
         checkCursorPosition(cursor);
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
-            String column = cursor.getColumnName(i);
-            if (column.equals(AppProvider.DataColumns.IS_COMPATIBLE)) {
-                compatible = cursor.getInt(i) == 1;
-            } else if (column.equals(AppProvider.DataColumns.APP_ID)) {
-                id = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.NAME)) {
-                name = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.SUMMARY)) {
-                summary = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.ICON)) {
-                icon = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.DESCRIPTION)) {
-                description = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.LICENSE)) {
-                license = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.WEB_URL)) {
-                webURL = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.TRACKER_URL)) {
-                trackerURL = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.SOURCE_URL)) {
-                sourceURL = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.DONATE_URL)) {
-                donateURL = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.BITCOIN_ADDR)) {
-                bitcoinAddr = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.LITECOIN_ADDR)) {
-                litecoinAddr = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.DOGECOIN_ADDR)) {
-                dogecoinAddr = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.FLATTR_ID)) {
-                flattrID = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.SuggestedApk.VERSION)) {
-                suggestedVersion = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.SUGGESTED_VERSION_CODE)) {
-                suggestedVercode = cursor.getInt(i);
-            } else if (column.equals(AppProvider.DataColumns.UPSTREAM_VERSION_CODE)) {
-                upstreamVercode = cursor.getInt(i);
-            } else if (column.equals(AppProvider.DataColumns.UPSTREAM_VERSION)) {
-                upstreamVersion = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.ADDED)) {
-                added = ValueObject.toDate(cursor.getString(i));
-            } else if (column.equals(AppProvider.DataColumns.LAST_UPDATED)) {
-                lastUpdated = ValueObject.toDate(cursor.getString(i));
-            } else if (column.equals(AppProvider.DataColumns.CATEGORIES)) {
-                categories = Utils.CommaSeparatedList.make(cursor.getString(i));
-            } else if (column.equals(AppProvider.DataColumns.ANTI_FEATURES)) {
-                antiFeatures = Utils.CommaSeparatedList.make(cursor.getString(i));
-            } else if (column.equals(AppProvider.DataColumns.REQUIREMENTS)) {
-                requirements = Utils.CommaSeparatedList.make(cursor.getString(i));
-            } else if (column.equals(AppProvider.DataColumns.IGNORE_ALLUPDATES)) {
-                ignoreAllUpdates = cursor.getInt(i) == 1;
-            } else if (column.equals(AppProvider.DataColumns.IGNORE_THISUPDATE)) {
-                ignoreThisUpdate = cursor.getInt(i);
-            } else if (column.equals(AppProvider.DataColumns.ICON_URL)) {
-                iconUrl = cursor.getString(i);
-            } else if (column.equals(AppProvider.DataColumns.InstalledApp.VERSION_CODE)) {
-                installedVersionCode = cursor.getInt(i);
-            } else if (column.equals(AppProvider.DataColumns.InstalledApp.VERSION_NAME)) {
-                installedVersionName = cursor.getString(i);
+            switch (cursor.getColumnName(i)) {
+                case AppProvider.DataColumns.IS_COMPATIBLE:
+                    compatible = cursor.getInt(i) == 1;
+                    break;
+                case AppProvider.DataColumns.APP_ID:
+                    id = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.NAME:
+                    name = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SUMMARY:
+                    summary = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.ICON:
+                    icon = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.DESCRIPTION:
+                    description = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.LICENSE:
+                    license = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.WEB_URL:
+                    webURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.TRACKER_URL:
+                    trackerURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SOURCE_URL:
+                    sourceURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.DONATE_URL:
+                    donateURL = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.BITCOIN_ADDR:
+                    bitcoinAddr = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.LITECOIN_ADDR:
+                    litecoinAddr = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.DOGECOIN_ADDR:
+                    dogecoinAddr = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.FLATTR_ID:
+                    flattrID = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SuggestedApk.VERSION:
+                    suggestedVersion = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.SUGGESTED_VERSION_CODE:
+                    suggestedVercode = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.UPSTREAM_VERSION_CODE:
+                    upstreamVercode = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.UPSTREAM_VERSION:
+                    upstreamVersion = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.ADDED:
+                    added = ValueObject.toDate(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.LAST_UPDATED:
+                    lastUpdated = ValueObject.toDate(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.CATEGORIES:
+                    categories = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.ANTI_FEATURES:
+                    antiFeatures = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.REQUIREMENTS:
+                    requirements = Utils.CommaSeparatedList.make(cursor.getString(i));
+                    break;
+                case AppProvider.DataColumns.IGNORE_ALLUPDATES:
+                    ignoreAllUpdates = cursor.getInt(i) == 1;
+                    break;
+                case AppProvider.DataColumns.IGNORE_THISUPDATE:
+                    ignoreThisUpdate = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.ICON_URL:
+                    iconUrl = cursor.getString(i);
+                    break;
+                case AppProvider.DataColumns.InstalledApp.VERSION_CODE:
+                    installedVersionCode = cursor.getInt(i);
+                    break;
+                case AppProvider.DataColumns.InstalledApp.VERSION_NAME:
+                    installedVersionName = cursor.getString(i);
+                    break;
             }
         }
     }

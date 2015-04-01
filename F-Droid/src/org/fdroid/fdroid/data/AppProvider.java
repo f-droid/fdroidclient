@@ -314,19 +314,25 @@ public class AppProvider extends FDroidProvider {
 
         @Override
         public void addField(String field) {
-            if (field.equals(DataColumns.SuggestedApk.VERSION)) {
-                addSuggestedApkVersionField();
-            } else if (field.equals(DataColumns.InstalledApp.VERSION_NAME)) {
-                addInstalledAppVersionName();
-            } else if (field.equals(DataColumns.InstalledApp.VERSION_CODE)) {
-                addInstalledAppVersionCode();
-            } else if (field.equals(DataColumns._COUNT)) {
-                appendCountField();
-            } else {
-                if (field.equals(DataColumns.CATEGORIES)) {
-                    categoryFieldAdded = true;
-                }
-                appendField(field, "fdroid_app");
+            switch (field) {
+                case DataColumns.SuggestedApk.VERSION:
+                    addSuggestedApkVersionField();
+                    break;
+                case DataColumns.InstalledApp.VERSION_NAME:
+                    addInstalledAppVersionName();
+                    break;
+                case DataColumns.InstalledApp.VERSION_CODE:
+                    addInstalledAppVersionCode();
+                    break;
+                case DataColumns._COUNT:
+                    appendCountField();
+                    break;
+                default:
+                    if (field.equals(DataColumns.CATEGORIES)) {
+                        categoryFieldAdded = true;
+                    }
+                    appendField(field, "fdroid_app");
+                    break;
             }
         }
 

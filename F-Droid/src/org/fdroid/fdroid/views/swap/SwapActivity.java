@@ -37,10 +37,13 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
     @Override
     public void onBackPressed() {
-        if (currentState().equals(STATE_START_SWAP)) {
-            finish();
-        } else {
-            super.onBackPressed();
+        switch (currentState()) {
+            case STATE_START_SWAP:
+                finish();
+                break;
+            default:
+                super.onBackPressed();
+                break;
         }
     }
 
@@ -50,19 +53,24 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     }
 
     public void nextStep() {
-        String current = currentState();
-        if (current.equals(STATE_START_SWAP)) {
-            showSelectApps();
-        } else if (current.equals(STATE_SELECT_APPS)) {
-            prepareLocalRepo();
-        } else if (current.equals(STATE_JOIN_WIFI)) {
-            ensureLocalRepoRunning();
-            if (!attemptToShowNfc()) {
+        switch (currentState()) {
+            case STATE_START_SWAP:
+                showSelectApps();
+                break;
+            case STATE_SELECT_APPS:
+                prepareLocalRepo();
+                break;
+            case STATE_JOIN_WIFI:
+                ensureLocalRepoRunning();
+                if (!attemptToShowNfc()) {
+                    showWifiQr();
+                }
+                break;
+            case STATE_NFC:
                 showWifiQr();
-            }
-        } else if (current.equals(STATE_NFC)) {
-            showWifiQr();
-        } else if (current.equals(STATE_WIFI_QR)) {
+                break;
+            case STATE_WIFI_QR:
+                break;
         }
         supportInvalidateOptionsMenu();
     }

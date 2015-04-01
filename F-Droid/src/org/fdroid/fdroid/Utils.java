@@ -477,27 +477,31 @@ public final class Utils {
         @Override
         public void handleTag(boolean opening, String tag, Editable output,
                 XMLReader reader) {
-            if (tag.equals("ul")) {
-                if (opening)
-                    listNum = -1;
-                else
-                    output.append('\n');
-            } else if (tag.equals("ol")) {
-                if (opening)
-                    listNum = 1;
-                else
-                    output.append('\n');
-            } else if (tag.equals("li")) {
-                if (opening) {
-                    if (listNum == -1) {
-                        output.append("\t• ");
+            switch (tag) {
+                case "ul":
+                    if (opening)
+                        listNum = -1;
+                    else
+                        output.append('\n');
+                    break;
+                case "ol":
+                    if (opening)
+                        listNum = 1;
+                    else
+                        output.append('\n');
+                    break;
+                case "li":
+                    if (opening) {
+                        if (listNum == -1) {
+                            output.append("\t• ");
+                        } else {
+                            output.append("\t").append(Integer.toString(listNum)).append(". ");
+                            listNum++;
+                        }
                     } else {
-                        output.append("\t").append(Integer.toString(listNum)).append(". ");
-                        listNum++;
+                        output.append('\n');
                     }
-                } else {
-                    output.append('\n');
-                }
+                    break;
             }
         }
     }

@@ -41,33 +41,46 @@ public class Repo extends ValueObject {
         checkCursorPosition(cursor);
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
-            String column = cursor.getColumnName(i);
-            if (column.equals(RepoProvider.DataColumns._ID)) {
-                id = cursor.getInt(i);
-            } else if (column.equals(RepoProvider.DataColumns.LAST_ETAG)) {
-                lastetag = cursor.getString(i);
-            } else if (column.equals(RepoProvider.DataColumns.ADDRESS)) {
-                address = cursor.getString(i);
-            } else if (column.equals(RepoProvider.DataColumns.DESCRIPTION)) {
-                description = cursor.getString(i);
-            } else if (column.equals(RepoProvider.DataColumns.FINGERPRINT)) {
-                fingerprint = cursor.getString(i);
-            } else if (column.equals(RepoProvider.DataColumns.IN_USE)) {
-                inuse = cursor.getInt(i) == 1;
-            } else if (column.equals(RepoProvider.DataColumns.LAST_UPDATED)) {
-                lastUpdated = toDate(cursor.getString(i));
-            } else if (column.equals(RepoProvider.DataColumns.MAX_AGE)) {
-                maxage = cursor.getInt(i);
-            } else if (column.equals(RepoProvider.DataColumns.VERSION)) {
-                version = cursor.getInt(i);
-            } else if (column.equals(RepoProvider.DataColumns.NAME)) {
-                name = cursor.getString(i);
-            } else if (column.equals(RepoProvider.DataColumns.PUBLIC_KEY)) {
-                pubkey = cursor.getString(i);
-            } else if (column.equals(RepoProvider.DataColumns.PRIORITY)) {
-                priority = cursor.getInt(i);
-            } else if (column.equals(RepoProvider.DataColumns.IS_SWAP)) {
-                isSwap = cursor.getInt(i) == 1;
+            switch (cursor.getColumnName(i)) {
+                case RepoProvider.DataColumns._ID:
+                    id = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.LAST_ETAG:
+                    lastetag = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.ADDRESS:
+                    address = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.DESCRIPTION:
+                    description = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.FINGERPRINT:
+                    fingerprint = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.IN_USE:
+                    inuse = cursor.getInt(i) == 1;
+                    break;
+                case RepoProvider.DataColumns.LAST_UPDATED:
+                    lastUpdated = toDate(cursor.getString(i));
+                    break;
+                case RepoProvider.DataColumns.MAX_AGE:
+                    maxage = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.VERSION:
+                    version = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.NAME:
+                    name = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.PUBLIC_KEY:
+                    pubkey = cursor.getString(i);
+                    break;
+                case RepoProvider.DataColumns.PRIORITY:
+                    priority = cursor.getInt(i);
+                    break;
+                case RepoProvider.DataColumns.IS_SWAP:
+                    isSwap = cursor.getInt(i) == 1;
+                    break;
             }
         }
     }
