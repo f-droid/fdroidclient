@@ -1,14 +1,18 @@
 package org.fdroid.fdroid;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.res.Resources;
 import android.database.Cursor;
 
 import mock.MockCategoryResources;
+import mock.MockContextSwappableComponents;
+import mock.MockInstallablePackageManager;
 
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,6 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
      * the AppProvider used to stumble across this bug when asking for installed apps,
      * and the device had over 1000 apps installed.
      */
-/* TODO fix me
     public void testMaxSqliteParams() {
 
         MockInstallablePackageManager pm = new MockInstallablePackageManager();
@@ -74,7 +77,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         assertResultCount(3, AppProvider.getInstalledUri());
     }
-*/
+
     public void testCantFindApp() {
         assertNull(AppProvider.Helper.findById(getMockContentResolver(), "com.example.doesnt-exist"));
     }
@@ -92,7 +95,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         App app = new App();
         app.id = "org.fdroid.fdroid";
 
-        List<App> apps = new ArrayList<App>(1);
+        List<App> apps = new ArrayList<>(1);
         apps.add(app);
 
         assertValidUri(AppProvider.getContentUri(app));
@@ -105,7 +108,6 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertNotNull(cursor);
     }
 
-/* TODO fix me
     private void insertApps(int count) {
         for (int i = 0; i < count; i ++) {
             insertApp("com.example.test." + i, "Test app " + i);
@@ -122,7 +124,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreVercode);
         insertApp(id, "App: " + id, values);
 
-        TestUtils.installAndBroadcast(getMockContext(), packageManager, id, installedVercode, "v" + installedVercode);
+        TestUtils.installAndBroadcast(getSwappableContext(), packageManager, id, installedVercode, "v" + installedVercode);
     }
 
     public void testCanUpdate() {
@@ -173,7 +175,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 
         Cursor canUpdateCursor = r.query(AppProvider.getCanUpdateUri(), AppProvider.DataColumns.ALL, null, null, null);
         canUpdateCursor.moveToFirst();
-        List<String> canUpdateIds = new ArrayList<String>(canUpdateCursor.getCount());
+        List<String> canUpdateIds = new ArrayList<>(canUpdateCursor.getCount());
         while (!canUpdateCursor.isAfterLast()) {
             canUpdateIds.add(new App(canUpdateCursor).id);
             canUpdateCursor.moveToNext();
@@ -224,7 +226,7 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
     }
 
     private void assertContainsOnlyIds(List<App> actualApps, String[] expectedIds) {
-        List<String> actualIds = new ArrayList<String>(actualApps.size());
+        List<String> actualIds = new ArrayList<>(actualApps.size());
         for (App app : actualApps) {
             actualIds.add(app.id);
         }
@@ -241,12 +243,11 @@ public class AppProviderTest extends FDroidProviderTest<AppProvider> {
         assertResultCount(0, AppProvider.getInstalledUri());
 
         for (int i = 10; i < 20; i ++) {
-            TestUtils.installAndBroadcast(getMockContext(), pm, "com.example.test." + i, i, "v1");
+            TestUtils.installAndBroadcast(getSwappableContext(), pm, "com.example.test." + i, i, "v1");
         }
 
         assertResultCount(10, AppProvider.getInstalledUri());
     }
-*/
 
     public void testInsert() {
 

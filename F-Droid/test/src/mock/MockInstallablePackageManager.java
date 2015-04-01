@@ -1,5 +1,6 @@
 package mock;
 
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.test.mock.MockPackageManager;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class MockInstallablePackageManager extends MockPackageManager {
 
-    private List<PackageInfo> info = new ArrayList<PackageInfo>();
+    private List<PackageInfo> info = new ArrayList<>();
 
     @Override
     public List<PackageInfo> getInstalledPackages(int flags) {
@@ -28,6 +29,11 @@ public class MockInstallablePackageManager extends MockPackageManager {
             p.versionName = versionName;
             info.add(p);
         }
+    }
+
+    @Override
+    public ApplicationInfo getApplicationInfo(String packageName, int flags) throws NameNotFoundException {
+        return new MockApplicationInfo(getPackageInfo(packageName));
     }
 
     public PackageInfo getPackageInfo(String id) {

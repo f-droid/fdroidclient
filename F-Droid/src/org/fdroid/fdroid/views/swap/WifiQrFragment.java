@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.swap;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -23,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -32,11 +33,15 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
+import java.net.URI;
+import java.util.List;
 import java.util.Locale;
 
 public class WifiQrFragment extends Fragment {
 
     private static final int CONNECT_TO_SWAP = 1;
+
+    private static final String TAG = "org.fdroid.fdroid.views.swap.WifiQrFragment";
 
     private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
@@ -105,10 +110,9 @@ public class WifiQrFragment extends Fragment {
                 new IntentFilter(WifiStateChangeService.BROADCAST));
     }
 
-    @TargetApi(14)
     private void setUIFromWifi() {
 
-        if (TextUtils.isEmpty(FDroidApp.repo.address))
+        if (TextUtils.isEmpty(FDroidApp.repo.address) || getView() == null)
             return;
 
         String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https://" : "http://";
@@ -125,25 +129,32 @@ public class WifiQrFragment extends Fragment {
          * wifi AP to join. Lots of QR Scanners are buggy and do not respect
          * custom URI schemes, so we have to use http:// or https:// :-(
          */
-        Uri sharingUri = Utils.getSharingUri(getActivity(), FDroidApp.repo);
+        Uri sharingUri = Utils.getSharingUri(FDroidApp.repo);
         String qrUriString = (scheme + sharingUri.getHost()).toUpperCase(Locale.ENGLISH);
         if (sharingUri.getPort() != 80) {
             qrUriString += ":" + sharingUri.getPort();
         }
         qrUriString += sharingUri.getPath().toUpperCase(Locale.ENGLISH);
         boolean first = true;
-        for (String parameterName : sharingUri.getQueryParameterNames()) {
-            if (!parameterName.equals("ssid")) {
+
+        // Andorid provides an API for getting the query parameters and iterating over them:
+        //   Uri.getQueryParameterNames()
+        // But it is only available on later Android versions. As such we use URLEncodedUtils instead.
+        List<NameValuePair> parameters = URLEncodedUtils.parse(URI.create(sharingUri.toString()), "UTF-8");
+        for (NameValuePair parameter : parameters) {
+            if (!parameter.getName().equals("ssid")) {
                 if (first) {
                     qrUriString += "?";
                     first = false;
                 } else {
                     qrUriString += "&";
                 }
-                qrUriString += parameterName.toUpperCase(Locale.ENGLISH) + "=" +
-                    sharingUri.getQueryParameter(parameterName).toUpperCase(Locale.ENGLISH);
+                qrUriString += parameter.getName().toUpperCase(Locale.ENGLISH) + "=" +
+                    parameter.getValue().toUpperCase(Locale.ENGLISH);
             }
         }
+
+        Log.i(TAG, "Encoded swap URI in QR Code: " + qrUriString);
 
         // zxing requires >= 8
         // TODO: What about 7? I don't feel comfortable bumping the min version for this...

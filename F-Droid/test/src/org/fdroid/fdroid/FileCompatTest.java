@@ -25,8 +25,13 @@ public class FileCompatTest extends InstrumentationTestCase {
     }
 
     public void tearDown() {
-        assertTrue("Can't delete " + sourceFile.getAbsolutePath() + ".", sourceFile.delete());
-        assertTrue("Can't delete " + destFile.getAbsolutePath() + ".", destFile.delete());
+        if (sourceFile.exists()) {
+            assertTrue("Can't delete " + sourceFile.getAbsolutePath() + ".", sourceFile.delete());
+        }
+
+        if (destFile.exists()) {
+            assertTrue("Can't delete " + destFile.getAbsolutePath() + ".", destFile.delete());
+        }
     }
 
     public void testSymlinkRuntime() {

@@ -8,14 +8,14 @@
 
     <TextView
             android:id="@+id/text_description"
-            android:text="Your mobile device becomes an app store with Swap!"
+            android:text="@string/swap_introduction"
             style="@style/SwapTheme.StartSwap.MainText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     <Button
             android:id="@+id/button_start_swap"
-            android:text="START A SWAP"
+            android:text="@string/swap_start"
             style="@style/SwapTheme.StartSwap.StartButton"
             android:layout_width="match_parent"
             android:layout_below="@+id/text_description"

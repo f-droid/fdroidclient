@@ -39,6 +39,8 @@ if ( !hasProperty( 'sourceDeps' ) ) {
 
         // Upstream doesn't have a binary on mavenCentral.
         compile(name: 'zipsigner')
+
+        androidTestCompile 'commons-io:commons-io:2.2'
     }
 
 } else {
@@ -76,6 +78,8 @@ if ( !hasProperty( 'sourceDeps' ) ) {
         compile 'com.android.support:support-v4:20.0.+',
                 'com.android.support:appcompat-v7:20.0.+',
                 'com.android.support:support-annotations:20.0.+'
+
+        androidTestCompile 'commons-io:commons-io:2.2'
     }
 
 }
@@ -135,7 +139,16 @@ android {
             assets.srcDirs = ['assets']
         }
 
-        instrumentTest.setRoot('test')
+        androidTest.setRoot('test')
+        androidTest {
+            manifest.srcFile 'test/AndroidManifest.xml'
+            java.srcDirs = ['test/src']
+            resources.srcDirs = ['test/src']
+            aidl.srcDirs = ['test/src']
+            renderscript.srcDirs = ['test/src']
+            res.srcDirs = ['test/res']
+            assets.srcDirs = ['test/assets']
+        }
     }
 
     buildTypes {

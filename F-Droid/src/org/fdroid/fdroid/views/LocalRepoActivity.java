@@ -246,7 +246,7 @@ public class LocalRepoActivity extends ActionBarActivity {
          * wifi AP to join. Lots of QR Scanners are buggy and do not respect
          * custom URI schemes, so we have to use http:// or https:// :-(
          */
-        final String qrUriString = Utils.getSharingUri(this, FDroidApp.repo).toString()
+        final String qrUriString = Utils.getSharingUri(FDroidApp.repo).toString()
                 .replaceFirst("fdroidrepo", "http")
                 .replaceAll("ssid=[^?]*", "")
                 .toUpperCase(Locale.ENGLISH);
@@ -270,7 +270,7 @@ public class LocalRepoActivity extends ActionBarActivity {
             if (nfcAdapter == null)
                 return;
             nfcAdapter.setNdefPushMessage(new NdefMessage(new NdefRecord[] {
-                    NdefRecord.createUri(Utils.getSharingUri(this, FDroidApp.repo)),
+                    NdefRecord.createUri(Utils.getSharingUri(FDroidApp.repo)),
             }), this);
         }
     }
@@ -292,7 +292,7 @@ public class LocalRepoActivity extends ActionBarActivity {
             progressDialog = new ProgressDialog(c);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setTitle(R.string.updating);
-            sharingUri = Utils.getSharingUri(c, FDroidApp.repo);
+            sharingUri = Utils.getSharingUri(FDroidApp.repo);
         }
 
         @Override

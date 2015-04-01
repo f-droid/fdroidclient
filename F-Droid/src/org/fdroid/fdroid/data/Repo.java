@@ -30,6 +30,7 @@ public class Repo extends ValueObject {
     public int maxage; // maximum age of index that will be accepted - 0 for any
     public String lastetag; // last etag we updated from, null forces update
     public Date lastUpdated;
+    public boolean isSwap;
 
     public Repo() {
 
@@ -65,6 +66,8 @@ public class Repo extends ValueObject {
                 pubkey = cursor.getString(i);
             } else if (column.equals(RepoProvider.DataColumns.PRIORITY)) {
                 priority = cursor.getInt(i);
+            } else if (column.equals(RepoProvider.DataColumns.IS_SWAP)) {
+                isSwap = cursor.getInt(i) == 1;
             }
         }
     }
@@ -140,7 +143,7 @@ public class Repo extends ValueObject {
         }
 
         if (values.containsKey(RepoProvider.DataColumns.IN_USE)) {
-            inuse = toInt(values.getAsInteger(RepoProvider.DataColumns.FINGERPRINT)) == 1;
+            inuse = toInt(values.getAsInteger(RepoProvider.DataColumns.IN_USE)) == 1;
         }
 
         if (values.containsKey(RepoProvider.DataColumns.LAST_UPDATED)) {
@@ -172,6 +175,10 @@ public class Repo extends ValueObject {
 
         if (values.containsKey(RepoProvider.DataColumns.PRIORITY)) {
             priority = toInt(values.getAsInteger(RepoProvider.DataColumns.PRIORITY));
+        }
+
+        if (values.containsKey(RepoProvider.DataColumns.IS_SWAP)) {
+            isSwap= toInt(values.getAsInteger(RepoProvider.DataColumns.IS_SWAP)) == 1;
         }
     }
 }

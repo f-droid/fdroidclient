@@ -307,4 +307,6 @@
     <string name="open_qr_code_scanner">Open QR Code Scanner</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now?</string>
+    <string name="swap_introduction">Your mobile device becomes an app store with Swap!</string>
+    <string name="swap_start">START A SWAP</string>
 </resources>

@@ -142,11 +142,19 @@ abstract public class AppListFragment extends ThemeableListFragment implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        final App app = new App((Cursor)getListView().getItemAtPosition(position));
-        Intent intent = new Intent(getActivity(), AppDetails.class);
-        intent.putExtra(AppDetails.EXTRA_APPID, app.id);
-        intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
-        startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
+        // Cursor is null in the swap list when touching the first item.
+        Cursor cursor = (Cursor)getListView().getItemAtPosition(position);
+        if (cursor != null) {
+            final App app = new App(cursor);
+            Intent intent = getAppDetailsIntent();
+            intent.putExtra(AppDetails.EXTRA_APPID, app.id);
+            intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
+            startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
+        }
+    }
+
+    protected Intent getAppDetailsIntent() {
+        return new Intent(getActivity(), AppDetails.class);
     }
 
     @Override

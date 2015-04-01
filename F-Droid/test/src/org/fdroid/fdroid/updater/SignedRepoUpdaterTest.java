@@ -3,21 +3,15 @@ package org.fdroid.fdroid.updater;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Environment;
 import android.test.InstrumentationTestCase;
-import android.util.Log;
 
 import org.apache.commons.io.FileUtils;
 import org.fdroid.fdroid.TestUtils;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.updater.RepoUpdater.UpdateException;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 @TargetApi(8)
 public class SignedRepoUpdaterTest extends InstrumentationTestCase {

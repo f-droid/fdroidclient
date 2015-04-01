@@ -346,22 +346,27 @@ public class UpdateService extends IntentService implements ProgressListener {
             List<Repo> repos = RepoProvider.Helper.all(this);
 
             // Process each repo...
-            Map<String, App> appsToUpdate = new HashMap<String, App>();
-            List<Apk> apksToUpdate = new ArrayList<Apk>();
-            List<Repo> unchangedRepos = new ArrayList<Repo>();
-            List<Repo> updatedRepos = new ArrayList<Repo>();
-            List<Repo> disabledRepos = new ArrayList<Repo>();
-            List<CharSequence> errorRepos = new ArrayList<CharSequence>();
-            ArrayList<CharSequence> repoErrors = new ArrayList<CharSequence>();
-            List<RepoUpdater.RepoUpdateRememberer> repoUpdateRememberers = new ArrayList<RepoUpdater.RepoUpdateRememberer>();
+            Map<String, App> appsToUpdate = new HashMap<>();
+            List<Apk> apksToUpdate = new ArrayList<>();
+            List<Repo> swapRepos = new ArrayList<>();
+            List<Repo> unchangedRepos = new ArrayList<>();
+            List<Repo> updatedRepos = new ArrayList<>();
+            List<Repo> disabledRepos = new ArrayList<>();
+            List<CharSequence> errorRepos = new ArrayList<>();
+            ArrayList<CharSequence> repoErrors = new ArrayList<>();
+            List<RepoUpdater.RepoUpdateRememberer> repoUpdateRememberers = new ArrayList<>();
             boolean changes = false;
+            boolean singleRepoUpdate = !TextUtils.isEmpty(address);
             for (final Repo repo : repos) {
 
                 if (!repo.inuse) {
                     disabledRepos.add(repo);
                     continue;
-                } else if (!TextUtils.isEmpty(address) && !repo.address.equals(address)) {
+                } else if (singleRepoUpdate && !repo.address.equals(address)) {
                     unchangedRepos.add(repo);
+                    continue;
+                } else if (!singleRepoUpdate && repo.isSwap) {
+                    swapRepos.add(repo);
                     continue;
                 }
 

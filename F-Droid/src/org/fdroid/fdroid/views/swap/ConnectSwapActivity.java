@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
+import org.fdroid.fdroid.data.Repo;
+
 public class ConnectSwapActivity extends FragmentActivity {
 
     private static final String STATE_CONFIRM = "startSwap";
-    private static final String STATE_APP_LIST = "swapAppList";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,9 @@ public class ConnectSwapActivity extends FragmentActivity {
         return lastFragment.getName();
     }
 
-    public void onRepoUpdated() {
-
+    public void onRepoUpdated(Repo repo) {
         Intent intent = new Intent(this, SwapAppListActivity.class);
+        intent.putExtra(SwapAppListActivity.EXTRA_REPO_ID, repo.getId());
         startActivity(intent);
-
     }
 }

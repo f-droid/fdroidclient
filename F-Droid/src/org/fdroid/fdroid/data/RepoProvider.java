@@ -218,19 +218,24 @@ public class RepoProvider extends FDroidProvider {
         public static String LAST_ETAG    = "lastetag";
         public static String LAST_UPDATED = "lastUpdated";
         public static String VERSION      = "version";
+        public static String IS_SWAP      = "isSwap";
 
         public static String[] ALL = {
             _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, PUBLIC_KEY,
-            FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION
+            FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP
         };
     }
 
     private static final String PROVIDER_NAME = "RepoProvider";
+    private static final String PATH_ALL_EXCEPT_SWAP = "allExceptSwap";
+
+    private static final int CODE_ALL_EXCEPT_SWAP = CODE_SINGLE + 1;
 
     private static final UriMatcher matcher = new UriMatcher(-1);
 
     static {
         matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, null, CODE_LIST);
+        matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, PATH_ALL_EXCEPT_SWAP, CODE_ALL_EXCEPT_SWAP);
         matcher.addURI(AUTHORITY + "." + PROVIDER_NAME, "#", CODE_SINGLE);
     }
 
@@ -240,6 +245,12 @@ public class RepoProvider extends FDroidProvider {
 
     public static Uri getContentUri(long repoId) {
         return ContentUris.withAppendedId(getContentUri(), repoId);
+    }
+
+    public static Uri allExceptSwapUri() {
+        return getContentUri().buildUpon()
+                .appendPath(PATH_ALL_EXCEPT_SWAP)
+                .build();
     }
 
     @Override
@@ -260,16 +271,22 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
+        if (TextUtils.isEmpty(sortOrder)) {
+            sortOrder = "_ID ASC";
+        }
+
         switch (matcher.match(uri)) {
             case CODE_LIST:
-                if (TextUtils.isEmpty(sortOrder)) {
-                    sortOrder = "_ID ASC";
-                }
+                // Do nothing (don't restrict query)
                 break;
 
             case CODE_SINGLE:
                 selection = ( selection == null ? "" : selection + " AND " ) +
                         DataColumns._ID + " = " + uri.getLastPathSegment();
+                break;
+
+            case CODE_ALL_EXCEPT_SWAP:
+                selection = DataColumns.IS_SWAP + " = 0 OR " + DataColumns.IS_SWAP + " IS NULL ";
                 break;
 
             default:
