@@ -135,7 +135,7 @@ public class TabManager {
     }
 
     private List<Spinner> traverseViewChildren(ViewGroup parent) {
-        List<Spinner> spinners = new ArrayList<Spinner>();
+        List<Spinner> spinners = new ArrayList<>();
         for (int i = 0; i < parent.getChildCount(); i++) {
             View child = parent.getChildAt(i);
             if (child instanceof Spinner) {

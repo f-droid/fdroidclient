@@ -34,7 +34,7 @@ public class CompatibilityChecker extends Compatibility {
         PackageManager pm = ctx.getPackageManager();
         StringBuilder logMsg = new StringBuilder();
         logMsg.append("Available device features:");
-        features = new HashSet<String>();
+        features = new HashSet<>();
         if (pm != null) {
             final FeatureInfo[] featureArray = pm.getSystemAvailableFeatures();
             if (featureArray != null)
@@ -71,7 +71,7 @@ public class CompatibilityChecker extends Compatibility {
 
     public List<String> getIncompatibleReasons(final Apk apk) {
 
-        List<String> incompatibleReasons = new ArrayList<String>();
+        List<String> incompatibleReasons = new ArrayList<>();
 
         if (!hasApi(apk.minSdkVersion) || !upToApi(apk.maxSdkVersion)) {
             incompatibleReasons.add(

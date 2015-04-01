@@ -160,7 +160,7 @@ public class RootInstaller extends Installer {
     }
 
     private void addInstallCommand(List<File> apkFiles) {
-        List<String> commands = new ArrayList<String>();
+        List<String> commands = new ArrayList<>();
         String pm = "pm install -r ";
         for (File apkFile : apkFiles) {
             // see addInstallCommand()

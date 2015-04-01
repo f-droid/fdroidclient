@@ -50,7 +50,7 @@ public class AppProvider extends FDroidProvider {
 
         private static List<App> cursorToList(Cursor cursor) {
             int knownAppCount = cursor != null ? cursor.getCount() : 0;
-            List<App> apps = new ArrayList<App>(knownAppCount);
+            List<App> apps = new ArrayList<>(knownAppCount);
             if (cursor != null) {
                 if (knownAppCount > 0) {
                     cursor.moveToFirst();
@@ -81,7 +81,7 @@ public class AppProvider extends FDroidProvider {
             Uri uri = getContentUri();
             String[] projection = { DataColumns.CATEGORIES };
             Cursor cursor = resolver.query(uri, projection, null, null, null);
-            Set<String> categorySet = new HashSet<String>();
+            Set<String> categorySet = new HashSet<>();
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -97,7 +97,7 @@ public class AppProvider extends FDroidProvider {
                 }
                 cursor.close();
             }
-            List<String> categories = new ArrayList<String>(categorySet);
+            List<String> categories = new ArrayList<>(categorySet);
             Collections.sort(categories);
 
             // Populate the category list with the real categories, and the
@@ -537,7 +537,7 @@ public class AppProvider extends FDroidProvider {
         };
 
         // Remove duplicates, surround in % for case insensitive searching
-        Set<String> keywordSet = new HashSet<String>(Arrays.asList(query.split("\\s")));
+        Set<String> keywordSet = new HashSet<>(Arrays.asList(query.split("\\s")));
         String[] keywords = new String[keywordSet.size()];
         int iKeyword = 0;
         for (String keyword : keywordSet) {

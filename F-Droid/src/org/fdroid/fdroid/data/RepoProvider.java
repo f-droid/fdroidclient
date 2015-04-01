@@ -76,7 +76,7 @@ public class RepoProvider extends FDroidProvider {
 
         private static List<Repo> cursorToList(Cursor cursor) {
             int knownRepoCount = cursor != null ? cursor.getCount() : 0;
-            List<Repo> repos = new ArrayList<Repo>(knownRepoCount);
+            List<Repo> repos = new ArrayList<>(knownRepoCount);
             if (cursor != null) {
                 if (knownRepoCount > 0) {
                     cursor.moveToFirst();

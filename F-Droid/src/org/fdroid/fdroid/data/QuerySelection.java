@@ -63,7 +63,7 @@ public class QuerySelection {
 
         int thisNumArgs  = this.hasArgs() ? this.args.length : 0;
         int queryNumArgs = query.hasArgs() ? query.args.length : 0;
-        List<String> a = new ArrayList<String>(thisNumArgs + queryNumArgs);
+        List<String> a = new ArrayList<>(thisNumArgs + queryNumArgs);
 
         if (this.hasArgs()) {
             Collections.addAll(a, this.args);

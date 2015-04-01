@@ -28,7 +28,7 @@ public class InstalledAppProvider extends FDroidProvider {
          */
         public static Map<String, Integer> all(Context context) {
 
-            Map<String, Integer> cachedInfo = new HashMap<String, Integer>();
+            Map<String, Integer> cachedInfo = new HashMap<>();
 
             Uri uri = InstalledAppProvider.getContentUri();
             String[] projection = InstalledAppProvider.DataColumns.ALL;

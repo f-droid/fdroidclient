@@ -38,8 +38,8 @@ public class RepoXMLHandler extends DefaultHandler {
     // The repo we're processing.
     private Repo repo;
 
-    private List<App> apps = new ArrayList<App>();
-    private List<Apk> apksList = new ArrayList<Apk>();
+    private List<App> apps = new ArrayList<>();
+    private List<Apk> apksList = new ArrayList<>();
 
     private App curapp = null;
     private Apk curapk = null;

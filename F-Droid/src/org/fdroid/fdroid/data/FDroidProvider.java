@@ -116,7 +116,7 @@ public abstract class FDroidProvider extends ContentProvider {
             return values.keySet();
         }
 
-        Set<String> keySet = new HashSet<String>();
+        Set<String> keySet = new HashSet<>();
         for (Entry<String, Object> item : values.valueSet()) {
             String key = item.getKey();
             keySet.add(key);

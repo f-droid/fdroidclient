@@ -399,7 +399,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             } else {
                 sendStatus(STATUS_INFO, getString(R.string.status_checking_compatibility));
 
-                List<App> listOfAppsToUpdate = new ArrayList<App>();
+                List<App> listOfAppsToUpdate = new ArrayList<>();
                 listOfAppsToUpdate.addAll(appsToUpdate.values());
 
                 calcApkCompatibilityFlags(this, apksToUpdate);
@@ -554,7 +554,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     private List<String> getKnownAppIds(List<App> apps) {
-        List<String> knownAppIds = new ArrayList<String>();
+        List<String> knownAppIds = new ArrayList<>();
         if (apps.size() == 0) {
             // Do nothing
         } else if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
@@ -581,7 +581,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         Cursor cursor = getContentResolver().query(uri, fields, null, null, null);
 
         int knownIdCount = cursor != null ? cursor.getCount() : 0;
-        List<String> knownIds = new ArrayList<String>(knownIdCount);
+        List<String> knownIds = new ArrayList<>(knownIdCount);
         if (cursor != null) {
             if (knownIdCount > 0) {
                 cursor.moveToFirst();
@@ -615,7 +615,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private void updateOrInsertApps(List<App> appsToUpdate, int totalUpdateCount, int currentCount) {
 
-        List<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
+        List<ContentProviderOperation> operations = new ArrayList<>();
         List<String> knownAppIds = getKnownAppIds(appsToUpdate);
         for (final App a : appsToUpdate) {
             boolean known = false;
@@ -651,7 +651,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         int i = 0;
         while (i < operations.size()) {
             int count = Math.min(operations.size() - i, 100);
-            ArrayList<ContentProviderOperation> o = new ArrayList<ContentProviderOperation>(operations.subList(i, i + count));
+            ArrayList<ContentProviderOperation> o = new ArrayList<>(operations.subList(i, i + count));
             sendStatus(STATUS_INFO, getString(
                 R.string.status_inserting,
                 (int)((double)(currentCount + i) / totalUpdateCount * 100)));
@@ -664,7 +664,7 @@ public class UpdateService extends IntentService implements ProgressListener {
      * Return list of apps from the "apks" argument which are already in the database.
      */
     private List<Apk> getKnownApks(List<Apk> apks) {
-        List<Apk> knownApks = new ArrayList<Apk>();
+        List<Apk> knownApks = new ArrayList<>();
         if (apks.size() > ApkProvider.MAX_APKS_TO_QUERY) {
             int middle = apks.size() / 2;
             List<Apk> apks1 = apks.subList(0, middle);
@@ -679,7 +679,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private void updateOrInsertApks(List<Apk> apksToUpdate, int totalApksAppsCount, int currentCount) {
 
-        List<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>();
+        List<ContentProviderOperation> operations = new ArrayList<>();
 
         List<Apk> knownApks = getKnownApks(apksToUpdate);
         for (final Apk apk : apksToUpdate) {
@@ -747,7 +747,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     private void removeApksNoLongerInRepo(List<Apk> apksToUpdate, List<Repo> updatedRepos) {
 
         long startTime = System.currentTimeMillis();
-        List<Apk> toRemove = new ArrayList<Apk>();
+        List<Apk> toRemove = new ArrayList<>();
 
         String[] fields = {
             ApkProvider.DataColumns.APK_ID,

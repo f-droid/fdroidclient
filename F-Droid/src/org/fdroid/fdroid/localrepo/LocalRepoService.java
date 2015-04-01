@@ -263,7 +263,7 @@ public class LocalRepoService extends Service {
                 if (pairService != null || jmdns != null)
                     clearCurrentMDNSService();
                 String repoName = Preferences.get().getLocalRepoName();
-                HashMap<String, String> values = new HashMap<String, String>();
+                HashMap<String, String> values = new HashMap<>();
                 values.put("path", "/fdroid/repo");
                 values.put("name", repoName);
                 values.put("fingerprint", FDroidApp.repo.fingerprint);

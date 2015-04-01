@@ -35,7 +35,7 @@ public class ApkProvider extends FDroidProvider {
 
         public static List<Apk> cursorToList(Cursor cursor) {
             int knownApkCount = cursor != null ? cursor.getCount() : 0;
-            List<Apk> apks = new ArrayList<Apk>(knownApkCount);
+            List<Apk> apks = new ArrayList<>(knownApkCount);
             if (cursor != null) {
                 if (knownApkCount > 0) {
                     cursor.moveToFirst();
@@ -106,7 +106,7 @@ public class ApkProvider extends FDroidProvider {
         public static List<Apk> knownApks(Context context,
                                              List<Apk> apks, String[] fields) {
             if (apks.size() == 0) {
-                return new ArrayList<Apk>();
+                return new ArrayList<>();
             }
             ContentResolver resolver = context.getContentResolver();
             Uri uri = getContentUri(apks);
@@ -185,7 +185,7 @@ public class ApkProvider extends FDroidProvider {
 
     private static final UriMatcher matcher = new UriMatcher(-1);
 
-    public static Map<String,String> REPO_FIELDS = new HashMap<String,String>();
+    public static Map<String,String> REPO_FIELDS = new HashMap<>();
 
     static {
         REPO_FIELDS.put(DataColumns.REPO_VERSION, RepoProvider.DataColumns.VERSION);

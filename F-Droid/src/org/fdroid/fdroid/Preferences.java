@@ -78,14 +78,14 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
 
-    private Map<String,Boolean> initialized = new HashMap<String,Boolean>();
+    private Map<String,Boolean> initialized = new HashMap<>();
 
-    private List<ChangeListener> compactLayoutListeners = new ArrayList<ChangeListener>();
-    private List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<ChangeListener>();
-    private List<ChangeListener> updateHistoryListeners = new ArrayList<ChangeListener>();
-    private List<ChangeListener> localRepoBonjourListeners = new ArrayList<ChangeListener>();
-    private List<ChangeListener> localRepoNameListeners = new ArrayList<ChangeListener>();
-    private List<ChangeListener> localRepoHttpsListeners = new ArrayList<ChangeListener>();
+    private List<ChangeListener> compactLayoutListeners = new ArrayList<>();
+    private List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<>();
+    private List<ChangeListener> updateHistoryListeners = new ArrayList<>();
+    private List<ChangeListener> localRepoBonjourListeners = new ArrayList<>();
+    private List<ChangeListener> localRepoNameListeners = new ArrayList<>();
+    private List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);

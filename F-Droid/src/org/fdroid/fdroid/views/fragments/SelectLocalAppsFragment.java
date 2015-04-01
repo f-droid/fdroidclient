@@ -113,7 +113,7 @@ public class SelectLocalAppsFragment extends ListFragment
 
         // build list of existing apps from what is on the file system
         if (FDroidApp.selectedApps == null) {
-            Set<String> selectedApps = new HashSet<String>();
+            Set<String> selectedApps = new HashSet<>();
             for (String filename : LocalRepoManager.get(selectLocalAppsActivity).repoDir.list()) {
                 if (filename.matches(".*\\.apk")) {
                     String packageName = filename.substring(0, filename.indexOf("_"));

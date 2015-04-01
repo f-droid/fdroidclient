@@ -283,7 +283,7 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     private void migrateRepoTable(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 20) {
-            List<Repo> oldrepos = new ArrayList<Repo>();
+            List<Repo> oldrepos = new ArrayList<>();
             Cursor cursor = db.query(TABLE_REPO,
                     new String[] { "address", "inuse", "pubkey" },
                     null, null, null, null, null);
@@ -358,7 +358,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 44) {
             if (!columnExists(db, TABLE_REPO, "fingerprint"))
                 db.execSQL("alter table " + TABLE_REPO + " add column fingerprint text");
-            List<Repo> oldrepos = new ArrayList<Repo>();
+            List<Repo> oldrepos = new ArrayList<>();
             Cursor cursor = db.query(TABLE_REPO,
                     new String[] { "address", "pubkey" },
                     null, null, null, null, null);

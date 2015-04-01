@@ -244,7 +244,7 @@ public class App extends ValueObject implements Comparable<App> {
         FeatureInfo[] features = packageInfo.reqFeatures;
 
         if (features != null && features.length > 0) {
-            List<String> featureNames = new ArrayList<String>(features.length);
+            List<String> featureNames = new ArrayList<>(features.length);
 
             for (int i = 0; i < features.length; i++)
                 featureNames.add(features[i].name);

@@ -48,8 +48,8 @@ abstract public class RepoUpdater {
 
     protected final Context context;
     protected final Repo repo;
-    private List<App> apps = new ArrayList<App>();
-    private List<Apk> apks = new ArrayList<Apk>();
+    private List<App> apps = new ArrayList<>();
+    private List<Apk> apks = new ArrayList<>();
     private RepoUpdateRememberer rememberer = null;
     protected boolean usePubkeyInJar = false;
     protected boolean hasChanged = false;

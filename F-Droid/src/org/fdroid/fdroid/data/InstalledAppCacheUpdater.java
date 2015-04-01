@@ -26,8 +26,8 @@ public class InstalledAppCacheUpdater {
 
     private Context context;
 
-    private List<PackageInfo> toInsert = new ArrayList<PackageInfo>();
-    private List<String>      toDelete = new ArrayList<String>();
+    private List<PackageInfo> toInsert = new ArrayList<>();
+    private List<String>      toDelete = new ArrayList<>();
 
     protected InstalledAppCacheUpdater(Context context) {
         this.context = context;
@@ -89,7 +89,7 @@ public class InstalledAppCacheUpdater {
 
     private void updateCache() {
 
-        ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
+        ArrayList<ContentProviderOperation> ops = new ArrayList<>();
         ops.addAll(deleteFromCache(toDelete));
         ops.addAll(insertIntoCache(toInsert));
 
@@ -126,7 +126,7 @@ public class InstalledAppCacheUpdater {
     }
 
     private List<ContentProviderOperation> insertIntoCache(List<PackageInfo> appsToInsert) {
-        List<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>(appsToInsert.size());
+        List<ContentProviderOperation> ops = new ArrayList<>(appsToInsert.size());
         if (appsToInsert.size() > 0) {
             Log.d(TAG, "Preparing to cache installed info for " + appsToInsert.size() + " new apps.");
             Uri uri = InstalledAppProvider.getContentUri();
@@ -145,7 +145,7 @@ public class InstalledAppCacheUpdater {
     }
 
     private List<ContentProviderOperation> deleteFromCache(List<String> appIds) {
-        List<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>(appIds.size());
+        List<ContentProviderOperation> ops = new ArrayList<>(appIds.size());
         if (appIds.size() > 0) {
             Log.d(TAG, "Preparing to remove " + appIds.size() + " apps from the installed app cache.");
             for (String appId : appIds) {

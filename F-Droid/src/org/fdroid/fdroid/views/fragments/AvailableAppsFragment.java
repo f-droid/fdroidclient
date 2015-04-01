@@ -111,7 +111,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         List<String> categories = AppProvider.Helper.categories(getActivity());
 
         // attempt to translate category names with fallback to default name
-        List<String> translatedCategories = new ArrayList<String>(categories.size());
+        List<String> translatedCategories = new ArrayList<>(categories.size());
         Resources res = getResources();
         for (String category : categories) {
             int id = res.getIdentifier(category.replace(" & ", "_"), "string", getActivity().getPackageName());
@@ -135,7 +135,7 @@ public class AvailableAppsFragment extends AppListFragment implements
             }
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
             getActivity(), android.R.layout.simple_spinner_item, translatedCategories);
         adapter.setDropDownViewResource(
             android.R.layout.simple_spinner_dropdown_item);
