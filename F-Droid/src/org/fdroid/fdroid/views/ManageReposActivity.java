@@ -188,21 +188,21 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                Intent destIntent = new Intent(this, FDroid.class);
-                markChangedIfRequired(destIntent);
-                setResult(RESULT_OK, destIntent);
-                NavUtils.navigateUpTo(this, destIntent);
-                return true;
-            case R.id.action_add_repo:
-                showAddRepo();
-                return true;
-            case R.id.action_update_repo:
-                updateRepos();
-                return true;
-            case R.id.action_find_local_repos:
-                scanForRepos();
-                return true;
+        case android.R.id.home:
+            Intent destIntent = new Intent(this, FDroid.class);
+            markChangedIfRequired(destIntent);
+            setResult(RESULT_OK, destIntent);
+            NavUtils.navigateUpTo(this, destIntent);
+            return true;
+        case R.id.action_add_repo:
+            showAddRepo();
+            return true;
+        case R.id.action_update_repo:
+            updateRepos();
+            return true;
+        case R.id.action_find_local_repos:
+            scanForRepos();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -213,15 +213,15 @@ public class ManageReposActivity extends ActionBarActivity {
                     @Override
                     public void onProgress(Event event) {
                         switch (event.type) {
-                            case UpdateService.EVENT_COMPLETE_AND_SAME:
-                            case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                                // No need to prompt to update any more, we just
-                                // did it!
-                                changed = false;
-                                break;
-                            case UpdateService.EVENT_FINISHED:
-                                updateHandler = null;
-                                break;
+                        case UpdateService.EVENT_COMPLETE_AND_SAME:
+                        case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+                            // No need to prompt to update any more, we just
+                            // did it!
+                            changed = false;
+                            break;
+                        case UpdateService.EVENT_FINISHED:
+                            updateHandler = null;
+                            break;
                         }
                     }
                 });

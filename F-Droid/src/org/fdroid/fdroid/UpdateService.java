@@ -806,15 +806,15 @@ public class UpdateService extends IntentService implements ProgressListener {
         // now much more general purpose then just repo downloading.
         String repoAddress = event.getData().getString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS);
         switch (event.type) {
-            case Downloader.EVENT_PROGRESS:
-                String downloadedSize = Utils.getFriendlySize(event.progress);
-                String totalSize      = Utils.getFriendlySize(event.total);
-                int percent           = (int)((double)event.progress/event.total * 100);
-                message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
-                break;
-            case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
-                message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
-                break;
+        case Downloader.EVENT_PROGRESS:
+            String downloadedSize = Utils.getFriendlySize(event.progress);
+            String totalSize      = Utils.getFriendlySize(event.total);
+            int percent           = (int)((double)event.progress/event.total * 100);
+            message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
+            break;
+        case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
+            message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
+            break;
         }
         sendStatus(STATUS_INFO, message);
     }

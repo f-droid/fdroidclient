@@ -478,30 +478,30 @@ public final class Utils {
         public void handleTag(boolean opening, String tag, Editable output,
                 XMLReader reader) {
             switch (tag) {
-                case "ul":
-                    if (opening)
-                        listNum = -1;
-                    else
-                        output.append('\n');
-                    break;
-                case "ol":
-                    if (opening)
-                        listNum = 1;
-                    else
-                        output.append('\n');
-                    break;
-                case "li":
-                    if (opening) {
-                        if (listNum == -1) {
-                            output.append("\t• ");
-                        } else {
-                            output.append("\t").append(Integer.toString(listNum)).append(". ");
-                            listNum++;
-                        }
+            case "ul":
+                if (opening)
+                    listNum = -1;
+                else
+                    output.append('\n');
+                break;
+            case "ol":
+                if (opening)
+                    listNum = 1;
+                else
+                    output.append('\n');
+                break;
+            case "li":
+                if (opening) {
+                    if (listNum == -1) {
+                        output.append("\t• ");
                     } else {
-                        output.append('\n');
+                        output.append("\t").append(Integer.toString(listNum)).append(". ");
+                        listNum++;
                     }
-                    break;
+                } else {
+                    output.append('\n');
+                }
+                break;
             }
         }
     }

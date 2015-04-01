@@ -315,24 +315,24 @@ public class AppProvider extends FDroidProvider {
         @Override
         public void addField(String field) {
             switch (field) {
-                case DataColumns.SuggestedApk.VERSION:
-                    addSuggestedApkVersionField();
-                    break;
-                case DataColumns.InstalledApp.VERSION_NAME:
-                    addInstalledAppVersionName();
-                    break;
-                case DataColumns.InstalledApp.VERSION_CODE:
-                    addInstalledAppVersionCode();
-                    break;
-                case DataColumns._COUNT:
-                    appendCountField();
-                    break;
-                default:
-                    if (field.equals(DataColumns.CATEGORIES)) {
-                        categoryFieldAdded = true;
-                    }
-                    appendField(field, "fdroid_app");
-                    break;
+            case DataColumns.SuggestedApk.VERSION:
+                addSuggestedApkVersionField();
+                break;
+            case DataColumns.InstalledApp.VERSION_NAME:
+                addInstalledAppVersionName();
+                break;
+            case DataColumns.InstalledApp.VERSION_CODE:
+                addInstalledAppVersionCode();
+                break;
+            case DataColumns._COUNT:
+                appendCountField();
+                break;
+            default:
+                if (field.equals(DataColumns.CATEGORIES)) {
+                    categoryFieldAdded = true;
+                }
+                appendField(field, "fdroid_app");
+                break;
             }
         }
 
@@ -648,65 +648,65 @@ public class AppProvider extends FDroidProvider {
         boolean includeSwap = true;
 
         switch (matcher.match(uri)) {
-            case CODE_LIST:
-                includeSwap = false;
-                break;
+        case CODE_LIST:
+            includeSwap = false;
+            break;
 
-            case CODE_SINGLE:
-                selection = selection.add(querySingle(uri.getLastPathSegment()));
-                break;
+        case CODE_SINGLE:
+            selection = selection.add(querySingle(uri.getLastPathSegment()));
+            break;
 
-            case CAN_UPDATE:
-                selection = selection.add(queryCanUpdate());
-                includeSwap = false;
-                break;
+        case CAN_UPDATE:
+            selection = selection.add(queryCanUpdate());
+            includeSwap = false;
+            break;
 
-            case REPO:
-                selection = selection.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
-                break;
+        case REPO:
+            selection = selection.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
+            break;
 
-            case INSTALLED:
-                selection = selection.add(queryInstalled());
-                includeSwap = false;
-                break;
+        case INSTALLED:
+            selection = selection.add(queryInstalled());
+            includeSwap = false;
+            break;
 
-            case SEARCH:
-                selection = selection.add(querySearch(uri.getLastPathSegment()));
-                includeSwap = false;
-                break;
+        case SEARCH:
+            selection = selection.add(querySearch(uri.getLastPathSegment()));
+            includeSwap = false;
+            break;
 
-            case NO_APKS:
-                selection = selection.add(queryNoApks());
-                break;
+        case NO_APKS:
+            selection = selection.add(queryNoApks());
+            break;
 
-            case APPS:
-                selection = selection.add(queryApps(uri.getLastPathSegment()));
-                break;
+        case APPS:
+            selection = selection.add(queryApps(uri.getLastPathSegment()));
+            break;
 
-            case IGNORED:
-                selection = selection.add(queryIgnored());
-                break;
+        case IGNORED:
+            selection = selection.add(queryIgnored());
+            break;
 
-            case CATEGORY:
-                selection = selection.add(queryCategory(uri.getLastPathSegment()));
-                includeSwap = false;
-                break;
+        case CATEGORY:
+            selection = selection.add(queryCategory(uri.getLastPathSegment()));
+            includeSwap = false;
+            break;
 
-            case RECENTLY_UPDATED:
-                sortOrder = " fdroid_app.lastUpdated DESC";
-                selection = selection.add(queryRecentlyUpdated());
-                includeSwap = false;
-                break;
+        case RECENTLY_UPDATED:
+            sortOrder = " fdroid_app.lastUpdated DESC";
+            selection = selection.add(queryRecentlyUpdated());
+            includeSwap = false;
+            break;
 
-            case NEWLY_ADDED:
-                sortOrder = " fdroid_app.added DESC";
-                selection = selection.add(queryNewlyAdded());
-                includeSwap = false;
-                break;
+        case NEWLY_ADDED:
+            sortOrder = " fdroid_app.added DESC";
+            selection = selection.add(queryNewlyAdded());
+            includeSwap = false;
+            break;
 
-            default:
-                Log.e(TAG, "Invalid URI for app content provider: " + uri);
-                throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
+        default:
+            Log.e(TAG, "Invalid URI for app content provider: " + uri);
+            throw new UnsupportedOperationException("Invalid URI for app content provider: " + uri);
         }
 
         if (!includeSwap) {
@@ -732,12 +732,12 @@ public class AppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         switch (matcher.match(uri)) {
 
-            case NO_APKS:
-                query = query.add(queryNoApks());
-                break;
+        case NO_APKS:
+            query = query.add(queryNoApks());
+            break;
 
-            default:
-                throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
+        default:
+            throw new UnsupportedOperationException("Delete not supported for " + uri + ".");
 
         }
 
@@ -760,16 +760,16 @@ public class AppProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(where, whereArgs);
         switch (matcher.match(uri)) {
 
-            case CALC_APP_DETAILS_FROM_INDEX:
-                updateAppDetails();
-                return 0;
+        case CALC_APP_DETAILS_FROM_INDEX:
+            updateAppDetails();
+            return 0;
 
-            case CODE_SINGLE:
-                query = query.add(querySingle(uri.getLastPathSegment()));
-                break;
+        case CODE_SINGLE:
+            query = query.add(querySingle(uri.getLastPathSegment()));
+            break;
 
-            default:
-                throw new UnsupportedOperationException("Update not supported for " + uri + ".");
+        default:
+            throw new UnsupportedOperationException("Update not supported for " + uri + ".");
 
         }
         int count = write().update(getTableName(), values, query.getSelection(), query.getArgs());

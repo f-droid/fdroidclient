@@ -107,19 +107,19 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
         // know what we are up to.
 
         switch (event.type) {
-            case UpdateService.EVENT_COMPLETE_AND_SAME:
-            case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                ((ConnectSwapActivity)getActivity()).onRepoUpdated(repo);
-                /*Intent intent = new Intent();
-                intent.putExtra("category", newRepoConfig.getHost()); // TODO: Load repo from database to get proper name. This is what the category we want to select will be called.
-                getActivity().setResult(Activity.RESULT_OK, intent);
-                finish();*/
-                break;
-            case UpdateService.EVENT_ERROR:
-                // TODO: Show message on this screen (with a big "okay" button that goes back to F-Droid activity)
-                // rather than finishing directly.
-                finish();
-                break;
-            }
+        case UpdateService.EVENT_COMPLETE_AND_SAME:
+        case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+            ((ConnectSwapActivity)getActivity()).onRepoUpdated(repo);
+            /*Intent intent = new Intent();
+            intent.putExtra("category", newRepoConfig.getHost()); // TODO: Load repo from database to get proper name. This is what the category we want to select will be called.
+            getActivity().setResult(Activity.RESULT_OK, intent);
+            finish();*/
+            break;
+        case UpdateService.EVENT_ERROR:
+            // TODO: Show message on this screen (with a big "okay" button that goes back to F-Droid activity)
+            // rather than finishing directly.
+            finish();
+            break;
+        }
     }
 }

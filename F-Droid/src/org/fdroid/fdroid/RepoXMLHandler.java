@@ -125,158 +125,158 @@ public class RepoXMLHandler extends DefaultHandler {
             curapk = null;
         } else if (curapk != null && str != null) {
             switch (curel) {
-                case "version":
-                    curapk.version = str;
-                    break;
-                case "versioncode":
-                    try {
-                        curapk.vercode = Integer.parseInt(str);
-                    } catch (NumberFormatException ex) {
-                        curapk.vercode = -1;
-                    }
-                    break;
-                case "size":
-                    try {
-                        curapk.size = Integer.parseInt(str);
-                    } catch (NumberFormatException ex) {
-                        curapk.size = 0;
-                    }
-                    break;
-                case "hash":
-                    if (hashType == null || hashType.equals("md5")) {
-                        if (curapk.hash == null) {
-                            curapk.hash = str;
-                            curapk.hashType = "MD5";
-                        }
-                    } else if (hashType.equals("sha256")) {
+            case "version":
+                curapk.version = str;
+                break;
+            case "versioncode":
+                try {
+                    curapk.vercode = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.vercode = -1;
+                }
+                break;
+            case "size":
+                try {
+                    curapk.size = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.size = 0;
+                }
+                break;
+            case "hash":
+                if (hashType == null || hashType.equals("md5")) {
+                    if (curapk.hash == null) {
                         curapk.hash = str;
-                        curapk.hashType = "SHA-256";
+                        curapk.hashType = "MD5";
                     }
-                    break;
-                case "sig":
-                    curapk.sig = str;
-                    break;
-                case "srcname":
-                    curapk.srcname = str;
-                    break;
-                case "apkname":
-                    curapk.apkName = str;
-                    break;
-                case "sdkver":
-                    try {
-                        curapk.minSdkVersion = Integer.parseInt(str);
-                    } catch (NumberFormatException ex) {
-                        curapk.minSdkVersion = 0;
-                    }
-                    break;
-                case "maxsdkver":
-                    try {
-                        curapk.maxSdkVersion = Integer.parseInt(str);
-                    } catch (NumberFormatException ex) {
-                        curapk.maxSdkVersion = 0;
-                    }
-                    break;
-                case "added":
-                    try {
-                        curapk.added = str.length() == 0 ? null : Utils.DATE_FORMAT
-                                .parse(str);
-                    } catch (ParseException e) {
-                        curapk.added = null;
-                    }
-                    break;
-                case "permissions":
-                    curapk.permissions = Utils.CommaSeparatedList.make(str);
-                    break;
-                case "features":
-                    curapk.features = Utils.CommaSeparatedList.make(str);
-                    break;
-                case "nativecode":
-                    curapk.nativecode = Utils.CommaSeparatedList.make(str);
-                    break;
+                } else if (hashType.equals("sha256")) {
+                    curapk.hash = str;
+                    curapk.hashType = "SHA-256";
+                }
+                break;
+            case "sig":
+                curapk.sig = str;
+                break;
+            case "srcname":
+                curapk.srcname = str;
+                break;
+            case "apkname":
+                curapk.apkName = str;
+                break;
+            case "sdkver":
+                try {
+                    curapk.minSdkVersion = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.minSdkVersion = 0;
+                }
+                break;
+            case "maxsdkver":
+                try {
+                    curapk.maxSdkVersion = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapk.maxSdkVersion = 0;
+                }
+                break;
+            case "added":
+                try {
+                    curapk.added = str.length() == 0 ? null : Utils.DATE_FORMAT
+                            .parse(str);
+                } catch (ParseException e) {
+                    curapk.added = null;
+                }
+                break;
+            case "permissions":
+                curapk.permissions = Utils.CommaSeparatedList.make(str);
+                break;
+            case "features":
+                curapk.features = Utils.CommaSeparatedList.make(str);
+                break;
+            case "nativecode":
+                curapk.nativecode = Utils.CommaSeparatedList.make(str);
+                break;
             }
         } else if (curapp != null && str != null) {
             switch (curel) {
-                case "name":
-                    curapp.name = str;
-                    break;
-                case "icon":
-                    curapp.icon = str;
-                    break;
-                case "description":
-                    // This is the old-style description. We'll read it
-                    // if present, to support old repos, but in newer
-                    // repos it will get overwritten straight away!
-                    curapp.description = "<p>" + str + "</p>";
-                    break;
-                case "desc":
-                    // New-style description.
-                    curapp.description = str;
-                    break;
-                case "summary":
-                    curapp.summary = str;
-                    break;
-                case "license":
-                    curapp.license = str;
-                    break;
-                case "source":
-                    curapp.sourceURL = str;
-                    break;
-                case "donate":
-                    curapp.donateURL = str;
-                    break;
-                case "bitcoin":
-                    curapp.bitcoinAddr = str;
-                    break;
-                case "litecoin":
-                    curapp.litecoinAddr = str;
-                    break;
-                case "dogecoin":
-                    curapp.dogecoinAddr = str;
-                    break;
-                case "flattr":
-                    curapp.flattrID = str;
-                    break;
-                case "web":
-                    curapp.webURL = str;
-                    break;
-                case "tracker":
-                    curapp.trackerURL = str;
-                    break;
-                case "added":
-                    try {
-                        curapp.added = str.length() == 0 ? null : Utils.DATE_FORMAT
-                                .parse(str);
-                    } catch (ParseException e) {
-                        curapp.added = null;
-                    }
-                    break;
-                case "lastupdated":
-                    try {
-                        curapp.lastUpdated = str.length() == 0 ? null
-                                : Utils.DATE_FORMAT.parse(str);
-                    } catch (ParseException e) {
-                        curapp.lastUpdated = null;
-                    }
-                    break;
-                case "marketversion":
-                    curapp.upstreamVersion = str;
-                    break;
-                case "marketvercode":
-                    try {
-                        curapp.upstreamVercode = Integer.parseInt(str);
-                    } catch (NumberFormatException ex) {
-                        curapp.upstreamVercode = -1;
-                    }
-                    break;
-                case "categories":
-                    curapp.categories = Utils.CommaSeparatedList.make(str);
-                    break;
-                case "antifeatures":
-                    curapp.antiFeatures = Utils.CommaSeparatedList.make(str);
-                    break;
-                case "requirements":
-                    curapp.requirements = Utils.CommaSeparatedList.make(str);
-                    break;
+            case "name":
+                curapp.name = str;
+                break;
+            case "icon":
+                curapp.icon = str;
+                break;
+            case "description":
+                // This is the old-style description. We'll read it
+                // if present, to support old repos, but in newer
+                // repos it will get overwritten straight away!
+                curapp.description = "<p>" + str + "</p>";
+                break;
+            case "desc":
+                // New-style description.
+                curapp.description = str;
+                break;
+            case "summary":
+                curapp.summary = str;
+                break;
+            case "license":
+                curapp.license = str;
+                break;
+            case "source":
+                curapp.sourceURL = str;
+                break;
+            case "donate":
+                curapp.donateURL = str;
+                break;
+            case "bitcoin":
+                curapp.bitcoinAddr = str;
+                break;
+            case "litecoin":
+                curapp.litecoinAddr = str;
+                break;
+            case "dogecoin":
+                curapp.dogecoinAddr = str;
+                break;
+            case "flattr":
+                curapp.flattrID = str;
+                break;
+            case "web":
+                curapp.webURL = str;
+                break;
+            case "tracker":
+                curapp.trackerURL = str;
+                break;
+            case "added":
+                try {
+                    curapp.added = str.length() == 0 ? null : Utils.DATE_FORMAT
+                            .parse(str);
+                } catch (ParseException e) {
+                    curapp.added = null;
+                }
+                break;
+            case "lastupdated":
+                try {
+                    curapp.lastUpdated = str.length() == 0 ? null
+                            : Utils.DATE_FORMAT.parse(str);
+                } catch (ParseException e) {
+                    curapp.lastUpdated = null;
+                }
+                break;
+            case "marketversion":
+                curapp.upstreamVersion = str;
+                break;
+            case "marketvercode":
+                try {
+                    curapp.upstreamVercode = Integer.parseInt(str);
+                } catch (NumberFormatException ex) {
+                    curapp.upstreamVercode = -1;
+                }
+                break;
+            case "categories":
+                curapp.categories = Utils.CommaSeparatedList.make(str);
+                break;
+            case "antifeatures":
+                curapp.antiFeatures = Utils.CommaSeparatedList.make(str);
+                break;
+            case "requirements":
+                curapp.requirements = Utils.CommaSeparatedList.make(str);
+                break;
             }
         } else if (curel.equals("description")) {
             description = cleanWhiteSpace(str);

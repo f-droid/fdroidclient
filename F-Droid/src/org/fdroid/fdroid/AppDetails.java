@@ -1090,23 +1090,23 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         boolean finished = false;
         switch (event.type) {
-            case Downloader.EVENT_PROGRESS:
-                updateProgressDialog(event.progress, event.total);
-                break;
-            case ApkDownloader.EVENT_ERROR:
-                final String text;
-                if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
-                    text = getString(R.string.corrupt_download);
-                else
-                    text = getString(R.string.details_notinstalled);
-                // this must be on the main UI thread
-                Toast.makeText(this, text, Toast.LENGTH_LONG).show();
-                finished = true;
-                break;
-            case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                downloadCompleteInstallApk();
-                finished = true;
-                break;
+        case Downloader.EVENT_PROGRESS:
+            updateProgressDialog(event.progress, event.total);
+            break;
+        case ApkDownloader.EVENT_ERROR:
+            final String text;
+            if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
+                text = getString(R.string.corrupt_download);
+            else
+                text = getString(R.string.details_notinstalled);
+            // this must be on the main UI thread
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+            finished = true;
+            break;
+        case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
+            downloadCompleteInstallApk();
+            finished = true;
+            break;
         }
 
         if (finished) {
@@ -1281,18 +1281,18 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         private String descAntiFeature(String af) {
             switch (af) {
-                case "Ads":
-                    return getString(R.string.antiadslist);
-                case "Tracking":
-                    return getString(R.string.antitracklist);
-                case "NonFreeNet":
-                    return getString(R.string.antinonfreenetlist);
-                case "NonFreeAdd":
-                    return getString(R.string.antinonfreeadlist);
-                case "NonFreeDep":
-                    return getString(R.string.antinonfreedeplist);
-                case "UpstreamNonFree":
-                    return getString(R.string.antiupstreamnonfreelist);
+            case "Ads":
+                return getString(R.string.antiadslist);
+            case "Tracking":
+                return getString(R.string.antitracklist);
+            case "NonFreeNet":
+                return getString(R.string.antinonfreenetlist);
+            case "NonFreeAdd":
+                return getString(R.string.antinonfreeadlist);
+            case "NonFreeDep":
+                return getString(R.string.antinonfreedeplist);
+            case "UpstreamNonFree":
+                return getString(R.string.antiupstreamnonfreelist);
             }
             return null;
         }

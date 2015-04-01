@@ -230,13 +230,13 @@ public class RepoDetailsFragment extends Fragment {
             @Override
             public void onProgress(Event event) {
                 switch (event.type) {
-                    case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                        repo = loadRepoDetails();
-                        updateView((ViewGroup)getView());
-                        break;
-                    case UpdateService.EVENT_FINISHED:
-                        updateHandler = null;
-                        break;
+                case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+                    repo = loadRepoDetails();
+                    updateView((ViewGroup)getView());
+                    break;
+                case UpdateService.EVENT_FINISHED:
+                    updateHandler = null;
+                    break;
                 }
             }
         });
@@ -321,16 +321,16 @@ public class RepoDetailsFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case DELETE:
-                promptForDelete();
-                return true;
-            case UPDATE:
-                performUpdate();
-                return true;
-            case ENABLE_NFC:
-                Intent intent = new Intent(getActivity(), NfcNotEnabledActivity.class);
-                startActivity(intent);
-                return true;
+        case DELETE:
+            promptForDelete();
+            return true;
+        case UPDATE:
+            performUpdate();
+            return true;
+        case ENABLE_NFC:
+            Intent intent = new Intent(getActivity(), NfcNotEnabledActivity.class);
+            startActivity(intent);
+            return true;
         }
 
         return false;
