@@ -2,7 +2,3 @@
 	path = extern/Support
 	url = https://android.googlesource.com/platform/frameworks/support
 	ignore = dirty
-[submodule "extern/android-support-v4-preferencefragment"]
-	path = extern/android-support-v4-preferencefragment
-	url = https://github.com/kolavar/android-support-v4-preferencefragment.git
-	ignore = dirty
