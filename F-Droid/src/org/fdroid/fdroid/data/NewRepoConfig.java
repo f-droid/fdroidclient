@@ -73,6 +73,12 @@ public class NewRepoConfig {
             uri = Uri.parse(uri.toString().toLowerCase(Locale.ENGLISH));
         }
 
+        String path = uri.getPath();
+        if (path == null || !(path.contains("/fdroid/archive") || path.contains("/fdroid/repo"))) {
+            isValidRepo = false;
+            return;
+        }
+
         // make scheme and host lowercase so they're readable in dialogs
         scheme = scheme.toLowerCase(Locale.ENGLISH);
         host = host.toLowerCase(Locale.ENGLISH);
