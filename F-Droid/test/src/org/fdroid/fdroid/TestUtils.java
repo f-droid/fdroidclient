@@ -11,6 +11,9 @@ import mock.MockContextSwappableComponents;
 import mock.MockInstallablePackageManager;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.receiver.PackageAddedReceiver;
+import org.fdroid.fdroid.receiver.PackageRemovedReceiver;
+import org.fdroid.fdroid.receiver.PackageUpgradedReceiver;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,7 +22,7 @@ import java.util.List;
 
 public class TestUtils {
 
-    private static final String TAG = "org.fdroid.fdroid.TestUtils";
+    private static final String TAG = "fdroid.TestUtils";
 
     public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedArray) {
         List<T> expectedList = new ArrayList<T>(expectedArray.length);
@@ -134,7 +137,7 @@ public class TestUtils {
 
     /**
      * Will tell {@code pm} that we are installing {@code appId}, and then alert the
-     * {@link org.fdroid.fdroid.PackageAddedReceiver}. This will in turn update the
+     * {@link org.fdroid.fdroid.receiver.PackageAddedReceiver}. This will in turn update the
      * "installed apps" table in the database.
      */
     public static void installAndBroadcast(

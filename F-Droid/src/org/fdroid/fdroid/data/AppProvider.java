@@ -259,6 +259,7 @@ public class AppProvider extends FDroidProvider {
         private boolean isSuggestedApkTableAdded = false;
         private boolean requiresInstalledTable = false;
         private boolean categoryFieldAdded = false;
+        private boolean countFieldAppended = false;
 
         @Override
         protected String getRequiredTables() {
@@ -278,7 +279,8 @@ public class AppProvider extends FDroidProvider {
 
         @Override
         protected String groupBy() {
-            return DBHelper.TABLE_APP + ".id";
+            // If the count field has been requested, then we want to group all rows together.
+            return countFieldAppended ? null : DBHelper.TABLE_APP + ".id";
         }
 
         public void addSelection(AppQuerySelection selection) {
@@ -329,7 +331,8 @@ public class AppProvider extends FDroidProvider {
         }
 
         private void appendCountField() {
-            appendField("COUNT(*) AS " + DataColumns._COUNT);
+            countFieldAppended = true;
+            appendField("COUNT( DISTINCT fdroid_app.id ) AS " + DataColumns._COUNT);
         }
 
         private void addSuggestedApkVersionField() {
