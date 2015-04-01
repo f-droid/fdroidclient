@@ -21,7 +21,6 @@ if ( !hasProperty( 'sourceDeps' ) ) {
                 'com.android.support:support-annotations:20.0.+',
 
                 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
-                'javax.jmdns:jmdns:3.4.1',
                 'com.nostra13.universalimageloader:universal-image-loader:1.9.3',
                 'com.google.zxing:core:3.2.0',
                 'eu.chainfire:libsuperuser:1.0.0.201501121001',
@@ -39,6 +38,9 @@ if ( !hasProperty( 'sourceDeps' ) ) {
 
         // Upstream doesn't have a binary on mavenCentral.
         compile(name: 'zipsigner')
+
+        // Project semi-abandoned, 3.4.1 is from 2011 and we use trunk from 2013
+        compile(name: 'jmdns')
 
         androidTestCompile 'commons-io:commons-io:2.2'
     }
@@ -104,6 +106,7 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
         include 'android-support-v4-preferencefragment/build/outputs/aar/android-support-v4-preferencefragment-release.aar',
                 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar',
                 'zipsigner/build/libs/zipsigner.jar',
+                'jmdns/build/libs/jmdns.jar',
                 'Support/v4/build/libs/support-v4.jar'
     }
 
