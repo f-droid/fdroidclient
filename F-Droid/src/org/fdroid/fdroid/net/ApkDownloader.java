@@ -206,7 +206,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
                 // info (in addition to receiving events with the info).
                 totalSize = event.total;
                 progress  = event.progress;
-            break;
+                break;
         }
 
         event.getData().putLong(EVENT_SOURCE_ID, id);
