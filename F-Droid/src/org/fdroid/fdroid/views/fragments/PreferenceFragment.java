@@ -19,7 +19,7 @@ public class PreferenceFragment
         extends android.support.v4.preference.PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private static String[] summariesToUpdate = {
+    private static final String[] summariesToUpdate = {
         Preferences.PREF_UPD_INTERVAL,
         Preferences.PREF_UPD_WIFI_ONLY,
         Preferences.PREF_UPD_NOTIFY,
@@ -284,7 +284,7 @@ public class PreferenceFragment
 
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
-        for (String key : summariesToUpdate) {
+        for (final String key : summariesToUpdate) {
             updateSummary(key, false);
         }
 

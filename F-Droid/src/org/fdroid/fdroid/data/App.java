@@ -210,14 +210,12 @@ public class App extends ValueObject implements Comparable<App> {
     @TargetApi(9)
     public App(Context context, PackageManager pm, String packageName)
             throws CertificateEncodingException, IOException, NameNotFoundException {
-        ApplicationInfo appInfo;
-        PackageInfo packageInfo;
-        appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
-        packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES
-                | PackageManager.GET_PERMISSIONS);
+        final ApplicationInfo appInfo = pm.getApplicationInfo(packageName,
+                PackageManager.GET_META_DATA);
+        final PackageInfo packageInfo = pm.getPackageInfo(packageName,
+                PackageManager.GET_SIGNATURES | PackageManager.GET_PERMISSIONS);
 
-
-        String installerPackageName = pm.getInstallerPackageName(packageName);
+        final String installerPackageName = pm.getInstallerPackageName(packageName);
         CharSequence installerPackageLabel = null;
         if (!TextUtils.isEmpty(installerPackageName)) {
             try {
@@ -231,7 +229,7 @@ public class App extends ValueObject implements Comparable<App> {
         if (TextUtils.isEmpty(installerPackageLabel))
             installerPackageLabel = installerPackageName;
 
-        CharSequence appDescription = appInfo.loadDescription(pm);
+        final CharSequence appDescription = appInfo.loadDescription(pm);
         if (TextUtils.isEmpty(appDescription))
             this.summary = "(installed by " + installerPackageLabel + ")";
         else
@@ -270,7 +268,7 @@ public class App extends ValueObject implements Comparable<App> {
                     Arrays.asList(packageInfo.requestedPermissions));
         apk.apkName = apk.id + "_" + apk.vercode + ".apk";
 
-        FeatureInfo[] features = packageInfo.reqFeatures;
+        final FeatureInfo[] features = packageInfo.reqFeatures;
 
         if (features != null && features.length > 0) {
             List<String> featureNames = new ArrayList<>(features.length);

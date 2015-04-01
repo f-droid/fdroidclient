@@ -108,7 +108,7 @@ abstract public class AppListAdapter extends CursorAdapter {
         holder.license.setText(app.license);
 
         // Disable it all if it isn't compatible...
-        View[] views = {
+        final View[] views = {
             view,
             holder.status,
             holder.summary,
@@ -131,7 +131,7 @@ abstract public class AppListAdapter extends CursorAdapter {
             return app.getSuggestedVersion();
         }
 
-        String installedVersionString = app.installedVersionName;
+        final String installedVersionString = app.installedVersionName;
         int installedVersionCode = app.installedVersionCode;
 
         if (app.canAndWantToUpdate() && showStatusUpdate()) {

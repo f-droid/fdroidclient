@@ -142,30 +142,30 @@ public class ApkProvider extends FDroidProvider {
 
     public interface DataColumns extends BaseColumns {
 
-        public static String _COUNT_DISTINCT_ID = "countDistinct";
+        public static final String _COUNT_DISTINCT_ID = "countDistinct";
 
-        public static String APK_ID          = "id";
-        public static String VERSION         = "version";
-        public static String REPO_ID         = "repo";
-        public static String HASH            = "hash";
-        public static String VERSION_CODE    = "vercode";
-        public static String NAME            = "apkName";
-        public static String SIZE            = "size";
-        public static String SIGNATURE       = "sig";
-        public static String SOURCE_NAME     = "srcname";
-        public static String MIN_SDK_VERSION = "minSdkVersion";
-        public static String MAX_SDK_VERSION = "maxSdkVersion";
-        public static String PERMISSIONS     = "permissions";
-        public static String FEATURES        = "features";
-        public static String NATIVE_CODE     = "nativecode";
-        public static String HASH_TYPE       = "hashType";
-        public static String ADDED_DATE      = "added";
-        public static String IS_COMPATIBLE   = "compatible";
-        public static String INCOMPATIBLE_REASONS = "incompatibleReasons";
-        public static String REPO_VERSION    = "repoVersion";
-        public static String REPO_ADDRESS    = "repoAddress";
+        public static final String APK_ID          = "id";
+        public static final String VERSION         = "version";
+        public static final String REPO_ID         = "repo";
+        public static final String HASH            = "hash";
+        public static final String VERSION_CODE    = "vercode";
+        public static final String NAME            = "apkName";
+        public static final String SIZE            = "size";
+        public static final String SIGNATURE       = "sig";
+        public static final String SOURCE_NAME     = "srcname";
+        public static final String MIN_SDK_VERSION = "minSdkVersion";
+        public static final String MAX_SDK_VERSION = "maxSdkVersion";
+        public static final String PERMISSIONS     = "permissions";
+        public static final String FEATURES        = "features";
+        public static final String NATIVE_CODE     = "nativecode";
+        public static final String HASH_TYPE       = "hashType";
+        public static final String ADDED_DATE      = "added";
+        public static final String IS_COMPATIBLE   = "compatible";
+        public static final String INCOMPATIBLE_REASONS = "incompatibleReasons";
+        public static final String REPO_VERSION    = "repoVersion";
+        public static final String REPO_ADDRESS    = "repoAddress";
 
-        public static String[] ALL = {
+        public static final String[] ALL = {
             _ID, APK_ID, VERSION, REPO_ID, HASH, VERSION_CODE, NAME, SIZE,
             SIGNATURE, SOURCE_NAME, MIN_SDK_VERSION, MAX_SDK_VERSION,
             PERMISSIONS, FEATURES, NATIVE_CODE, HASH_TYPE, ADDED_DATE,
@@ -376,7 +376,7 @@ public class ApkProvider extends FDroidProvider {
         }
 
         Query queryBuilder = new Query();
-        for (String field : projection) {
+        for (final String field : projection) {
             queryBuilder.addField(field);
         }
         queryBuilder.addSelection(query.getSelection());

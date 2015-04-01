@@ -26,13 +26,16 @@ public class AppFilter {
     // preferences, and false otherwise.
     public boolean filter(App app) {
 
-        boolean dontFilterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
+        final boolean dontFilterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
 
-        if (app.requirements == null || dontFilterRequiringRoot) return false;
+        if (app.requirements == null || dontFilterRequiringRoot) {
+            return false;
+        }
 
-        for (String r : app.requirements) {
-            if (r.equals("root"))
+        for (final String r : app.requirements) {
+            if (r.equals("root")) {
                 return true;
+            }
         }
 
         return false;

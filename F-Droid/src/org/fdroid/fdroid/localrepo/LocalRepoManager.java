@@ -68,7 +68,7 @@ public class LocalRepoManager {
     private final AssetManager assetManager;
     private final String fdroidPackageName;
 
-    private static String[] WEB_ROOT_ASSET_FILES = {
+    private static final String[] WEB_ROOT_ASSET_FILES = {
         "swap-icon.png",
         "swap-tick-done.png",
         "swap-tick-not-done.png"
@@ -161,7 +161,7 @@ public class LocalRepoManager {
             in.close();
             out.close();
 
-            for (String file : WEB_ROOT_ASSET_FILES) {
+            for (final String file : WEB_ROOT_ASSET_FILES) {
                 Utils.copy(assetManager.open(file), new FileOutputStream(new File(webRoot, file)));
             }
 
@@ -205,7 +205,7 @@ public class LocalRepoManager {
 
     private void symlinkEntireWebRootElsewhere(String symlinkPrefix, File directory) {
         symlinkFileElsewhere("index.html", symlinkPrefix, directory);
-        for(String fileName : WEB_ROOT_ASSET_FILES) {
+        for (final String fileName : WEB_ROOT_ASSET_FILES) {
             symlinkFileElsewhere(fileName, symlinkPrefix, directory);
         }
     }
@@ -237,8 +237,8 @@ public class LocalRepoManager {
     }
 
     public void copyApksToRepo(List<String> appsToCopy) {
-        for (String packageName : appsToCopy) {
-            App app = apps.get(packageName);
+        for (final String packageName : appsToCopy) {
+            final App app = apps.get(packageName);
 
             if (app.installedApk != null) {
                 SanitizedFile outFile = new SanitizedFile(repoDir, app.installedApk.apkName);

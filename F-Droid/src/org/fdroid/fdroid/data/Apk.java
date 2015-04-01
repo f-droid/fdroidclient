@@ -62,7 +62,6 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         checkCursorPosition(cursor);
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
-            String column = cursor.getColumnName(i);
             switch (cursor.getColumnName(i)) {
             case ApkProvider.DataColumns.HASH:
                 hash = cursor.getString(i);

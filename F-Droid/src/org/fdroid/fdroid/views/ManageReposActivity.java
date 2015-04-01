@@ -468,16 +468,16 @@ public class ManageReposActivity extends ActionBarActivity {
                 @Override
                 protected String doInBackground(String... params) {
 
-                    String originalAddress = params[0];
-                    String[] pathsToCheck = {"", "fdroid/repo", "repo"};
-                    for (String path : pathsToCheck) {
+                    final String originalAddress = params[0];
+                    final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
+                    for (final String path : pathsToCheck) {
 
                         Log.d(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
                         Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
-                        String addressWithoutIndex = builder.build().toString();
+                        final String addressWithoutIndex = builder.build().toString();
                         publishProgress(addressWithoutIndex);
 
-                        Uri uri = builder.appendPath("index.jar").build();
+                        final Uri uri = builder.appendPath("index.jar").build();
 
                         try {
                             if (checkForRepository(uri)) {

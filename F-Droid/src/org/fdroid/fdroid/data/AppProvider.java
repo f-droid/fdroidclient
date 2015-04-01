@@ -21,7 +21,7 @@ public class AppProvider extends FDroidProvider {
         private Helper() {}
 
         public static int count(Context context, Uri uri) {
-            String[] projection = { AppProvider.DataColumns._COUNT };
+            final String[] projection = { AppProvider.DataColumns._COUNT };
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             int count = 0;
             if (cursor != null && cursor.getCount() == 1) {
@@ -37,13 +37,13 @@ public class AppProvider extends FDroidProvider {
         }
 
         public static List<App> all(ContentResolver resolver, String[] projection) {
-            Uri uri = AppProvider.getContentUri();
+            final Uri uri = AppProvider.getContentUri();
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             return cursorToList(cursor);
         }
 
         public static List<App> findIgnored(Context context, String[] projection) {
-            Uri uri = AppProvider.getIgnoredUri();
+            final Uri uri = AppProvider.getIgnoredUri();
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             return cursorToList(cursor);
         }
@@ -77,18 +77,18 @@ public class AppProvider extends FDroidProvider {
         }
 
         public static List<String> categories(Context context) {
-            ContentResolver resolver = context.getContentResolver();
-            Uri uri = getContentUri();
-            String[] projection = { DataColumns.CATEGORIES };
+            final ContentResolver resolver = context.getContentResolver();
+            final Uri uri = getContentUri();
+            final String[] projection = { DataColumns.CATEGORIES };
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             Set<String> categorySet = new HashSet<>();
             if (cursor != null) {
                 if (cursor.getCount() > 0) {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
-                        String categoriesString = cursor.getString(0);
+                        final String categoriesString = cursor.getString(0);
                         if (categoriesString != null) {
-                            for (String s : Utils.CommaSeparatedList.make(categoriesString)) {
+                            for (final String s : Utils.CommaSeparatedList.make(categoriesString)) {
                                 categorySet.add(s);
                             }
                         }
@@ -116,7 +116,7 @@ public class AppProvider extends FDroidProvider {
 
         public static App findById(ContentResolver resolver, String appId,
                                    String[] projection) {
-            Uri uri = getContentUri(appId);
+            final Uri uri = getContentUri(appId);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             App app = null;
             if (cursor != null) {
@@ -135,7 +135,7 @@ public class AppProvider extends FDroidProvider {
          * I find a better way in the future.
          */
         public static void calcDetailsFromIndex(Context context) {
-            Uri fromUpstream = calcAppDetailsFromIndexUri();
+            final Uri fromUpstream = calcAppDetailsFromIndexUri();
             context.getContentResolver().update(fromUpstream, null, null, null);
         }
 
@@ -181,7 +181,7 @@ public class AppProvider extends FDroidProvider {
             public static final String VERSION_NAME = "installedVersionName";
         }
 
-        public static String[] ALL = {
+        public static final String[] ALL = {
                 IS_COMPATIBLE, APP_ID, NAME, SUMMARY, ICON, DESCRIPTION,
                 LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, DONATE_URL,
                 BITCOIN_ADDR, LITECOIN_ADDR, DOGECOIN_ADDR, FLATTR_ID,
@@ -546,7 +546,7 @@ public class AppProvider extends FDroidProvider {
         Set<String> keywordSet = new HashSet<>(Arrays.asList(query.split("\\s")));
         String[] keywords = new String[keywordSet.size()];
         int iKeyword = 0;
-        for (String keyword : keywordSet) {
+        for (final String keyword : keywordSet) {
             keywords[iKeyword] = "%" + keyword + "%";
             iKeyword++;
         }

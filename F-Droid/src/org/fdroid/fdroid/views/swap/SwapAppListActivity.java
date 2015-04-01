@@ -23,7 +23,7 @@ public class SwapAppListActivity extends ActionBarActivity {
 
     private static final String TAG = "fdroid.SwapAppListActivity";
 
-    public static String EXTRA_REPO_ID = "repoId";
+    public static final String EXTRA_REPO_ID = "repoId";
 
     private Repo repo;
 

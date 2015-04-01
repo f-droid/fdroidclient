@@ -619,7 +619,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         List<String> knownAppIds = getKnownAppIds(appsToUpdate);
         for (final App a : appsToUpdate) {
             boolean known = false;
-            for (String knownId : knownAppIds) {
+            for (final String knownId : knownAppIds) {
                 if (knownId.equals(a.id)) {
                     known = true;
                     break;
@@ -724,7 +724,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     private ContentProviderOperation updateExistingApp(App app) {
         Uri uri = AppProvider.getContentUri(app);
         ContentValues values = app.toContentValues();
-        for (String toIgnore : APP_FIELDS_TO_IGNORE) {
+        for (final String toIgnore : APP_FIELDS_TO_IGNORE) {
             if (values.containsKey(toIgnore)) {
                 values.remove(toIgnore);
             }

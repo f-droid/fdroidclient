@@ -49,9 +49,11 @@ public class CompatibilityChecker extends Compatibility {
 
         StringBuilder builder = new StringBuilder();
         boolean first = true;
-        for (String abi : cpuAbis) {
-            if (first) first = false;
-            else builder.append(", ");
+        for (final String abi : cpuAbis) {
+            if (first)
+                first = false;
+            else
+                builder.append(", ");
             builder.append(abi);
         }
         cpuAbisDesc = builder.toString();
@@ -94,7 +96,7 @@ public class CompatibilityChecker extends Compatibility {
             }
         }
         if (!compatibleApi(apk.nativecode)) {
-            for (String code : apk.nativecode) {
+            for (final String code : apk.nativecode) {
                 incompatibleReasons.add(code);
             }
             Log.d(TAG, apk.id + " vercode " + apk.vercode

@@ -113,7 +113,7 @@ public class AvailableAppsFragment extends AppListFragment implements
         // attempt to translate category names with fallback to default name
         List<String> translatedCategories = new ArrayList<>(categories.size());
         Resources res = getResources();
-        for (String category : categories) {
+        for (final String category : categories) {
             int id = res.getIdentifier(category.replace(" & ", "_"), "string", getActivity().getPackageName());
             translatedCategories.add(id == 0 ? category : getString(id));
         }

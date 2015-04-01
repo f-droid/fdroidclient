@@ -19,7 +19,7 @@ abstract class QueryBuilder {
     }
 
     public void addFields(String[] fields) {
-        for (String field : fields) {
+        for (final String field : fields) {
             addField(field);
         }
     }

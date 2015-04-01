@@ -406,7 +406,7 @@ public final class Utils {
         }
 
         public boolean contains(String v) {
-            for (String s : this) {
+            for (final String s : this) {
                 if (s.equals(v))
                     return true;
             }

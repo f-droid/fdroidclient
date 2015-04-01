@@ -148,7 +148,7 @@ public class InstalledAppCacheUpdater {
         List<ContentProviderOperation> ops = new ArrayList<>(appIds.size());
         if (appIds.size() > 0) {
             Log.d(TAG, "Preparing to remove " + appIds.size() + " apps from the installed app cache.");
-            for (String appId : appIds) {
+            for (final String appId : appIds) {
                 Uri uri = InstalledAppProvider.getAppUri(appId);
                 ops.add(ContentProviderOperation.newDelete(uri).build());
             }

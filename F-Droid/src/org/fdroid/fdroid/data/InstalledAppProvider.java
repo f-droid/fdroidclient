@@ -30,8 +30,8 @@ public class InstalledAppProvider extends FDroidProvider {
 
             Map<String, Integer> cachedInfo = new HashMap<>();
 
-            Uri uri = InstalledAppProvider.getContentUri();
-            String[] projection = InstalledAppProvider.DataColumns.ALL;
+            final Uri uri = InstalledAppProvider.getContentUri();
+            final String[] projection = InstalledAppProvider.DataColumns.ALL;
             Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
             if (cursor != null) {
                 cursor.moveToFirst();
@@ -58,7 +58,7 @@ public class InstalledAppProvider extends FDroidProvider {
         public static final String VERSION_NAME = "versionName";
         public static final String APPLICATION_LABEL = "applicationLabel";
 
-        public static String[] ALL = {
+        public static final String[] ALL = {
                 _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
         };
 

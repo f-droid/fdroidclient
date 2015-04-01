@@ -127,9 +127,9 @@ public abstract class FDroidProvider extends ContentProvider {
 
     protected void validateFields(String[] validFields, ContentValues values)
         throws IllegalArgumentException {
-        for (String key : getKeySet(values)) {
+        for (final String key : getKeySet(values)) {
             boolean isValid = false;
-            for (String validKey : validFields) {
+            for (final String validKey : validFields) {
                 if (validKey.equals(key)) {
                     isValid = true;
                     break;
