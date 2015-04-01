@@ -527,8 +527,8 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryRepo(long repoId) {
-        String selection = " fdroid_apk.repo = ? ";
-        String[] args = { String.valueOf(repoId) };
+        final String selection = " fdroid_apk.repo = ? ";
+        final String[] args = { String.valueOf(repoId) };
         return new AppQuerySelection(selection, args);
     }
 
@@ -582,13 +582,13 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection querySingle(String id) {
-        String selection = "fdroid_app.id = ?";
-        String[] args = { id };
+        final String selection = "fdroid_app.id = ?";
+        final String[] args = { id };
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryIgnored() {
-        String selection = "fdroid_app.ignoreAllUpdates = 1 OR " +
+        final String selection = "fdroid_app.ignoreAllUpdates = 1 OR " +
                 "fdroid_app.ignoreThisUpdate >= fdroid_app.suggestedVercode";
         return new AppQuerySelection(selection);
     }
@@ -597,31 +597,31 @@ public class AppProvider extends FDroidProvider {
         // fdroid_repo will have null fields if the LEFT JOIN didn't resolve, e.g. due to there
         // being no apks for the app in the result set. In that case, we can't tell if it is from
         // a swap repo or not.
-        String selection = " fdroid_repo.isSwap = 0 OR fdroid_repo.isSwap is null ";
+        final String selection = " fdroid_repo.isSwap = 0 OR fdroid_repo.isSwap is null ";
         return new AppQuerySelection(selection);
     }
 
     private AppQuerySelection queryNewlyAdded() {
-        String selection = "fdroid_app.added > ?";
-        String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
+        final String selection = "fdroid_app.added > ?";
+        final String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryRecentlyUpdated() {
-        String selection = "fdroid_app.added != fdroid_app.lastUpdated AND fdroid_app.lastUpdated > ?";
-        String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
+        final String selection = "fdroid_app.added != fdroid_app.lastUpdated AND fdroid_app.lastUpdated > ?";
+        final String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryCategory(String category) {
         // TODO: In the future, add a new table for categories,
         // so we can join onto it.
-        String selection =
+        final String selection =
                 " fdroid_app.categories = ? OR " +    // Only category e.g. "internet"
                 " fdroid_app.categories LIKE ? OR " + // First category e.g. "internet,%"
                 " fdroid_app.categories LIKE ? OR " + // Last category e.g. "%,internet"
                 " fdroid_app.categories LIKE ? ";     // One of many categories e.g. "%,internet,%"
-        String[] args = {
+        final String[] args = {
                 category,
                 category + ",%",
                 "%," + category,
@@ -924,7 +924,7 @@ public class AppProvider extends FDroidProvider {
         Log.d(TAG, "Using icon dir '"+iconsDir+"'");
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         String query = getIconUpdateQuery();
-        String[] params = { repoVersion, iconsDir };
+        final String[] params = { repoVersion, iconsDir };
         write().execSQL(query, params);
     }
 

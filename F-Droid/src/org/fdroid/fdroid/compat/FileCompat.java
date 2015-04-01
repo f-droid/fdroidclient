@@ -99,7 +99,7 @@ public class FileCompat {
 
         // The "file" must be a sanitized file, and hence only contain A-Za-z0-9.-_ already,
         // but it makes no assurances about the parent directory.
-        String[] args = {
+        final String[] args = {
             "/system/bin/chmod",
             mode,
             file.getAbsolutePath()

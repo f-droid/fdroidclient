@@ -111,7 +111,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 37) {
             Log.i(TAG, "Populating repo names from the url");
-            String[] columns = { "address", "_id" };
+            final String[] columns = { "address", "_id" };
             Cursor cursor = db.query(TABLE_REPO, columns,
                     "name IS NULL OR name = ''", null, null, null, null);
             if (cursor != null) {
@@ -123,7 +123,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         ContentValues values = new ContentValues(1);
                         String name = Repo.addressToName(address);
                         values.put("name", name);
-                        String[] args = { Long.toString(id) };
+                        final String[] args = { Long.toString(id) };
                         Log.i(TAG, "Setting repo name to '" + name + "' for repo " + address);
                         db.update(TABLE_REPO, values, "_id = ?", args);
                         cursor.moveToNext();

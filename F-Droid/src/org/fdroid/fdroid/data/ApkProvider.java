@@ -300,14 +300,14 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection queryApp(String appId) {
-        String selection = DataColumns.APK_ID + " = ? ";
-        String[] args = { appId };
+        final String selection = DataColumns.APK_ID + " = ? ";
+        final String[] args = { appId };
         return new QuerySelection(selection, args);
     }
 
     private QuerySelection querySingle(Uri uri) {
-        String selection = " vercode = ? and id = ? ";
-        String[] args = {
+        final String selection = " vercode = ? and id = ? ";
+        final String[] args = {
             // First (0th) path segment is the word "apk",
             // and we are not interested in it.
             uri.getPathSegments().get(1),
@@ -317,14 +317,14 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private QuerySelection queryRepo(long repoId) {
-        String selection = DataColumns.REPO_ID + " = ? ";
-        String[] args = { Long.toString(repoId) };
+        final String selection = DataColumns.REPO_ID + " = ? ";
+        final String[] args = { Long.toString(repoId) };
         return new QuerySelection(selection, args);
     }
 
     private QuerySelection queryApks(String apkKeys) {
-        String[] apkDetails = apkKeys.split(",");
-        String[] args = new String[apkDetails.length * 2];
+        final String[] apkDetails = apkKeys.split(",");
+        final String[] args = new String[apkDetails.length * 2];
         StringBuilder sb = new StringBuilder();
         if (apkDetails.length > MAX_APKS_TO_QUERY) {
             throw new IllegalArgumentException(

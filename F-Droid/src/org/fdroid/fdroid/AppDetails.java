@@ -864,7 +864,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     // Install the version of this app denoted by 'app.curApk'.
     @Override
     public void install(final Apk apk) {
-        String[] projection = { RepoProvider.DataColumns.ADDRESS };
+        final String[] projection = { RepoProvider.DataColumns.ADDRESS };
         Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
         if (repo == null || repo.address == null) {
             return;

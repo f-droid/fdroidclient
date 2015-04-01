@@ -614,7 +614,7 @@ public class ManageReposActivity extends ActionBarActivity {
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
             Uri uri = RepoProvider.allExceptSwapUri();
             Log.i(TAG, "Creating repo loader '" + uri + "'.");
-            String[] projection = {
+            final String[] projection = {
                     RepoProvider.DataColumns._ID,
                     RepoProvider.DataColumns.NAME,
                     RepoProvider.DataColumns.PUBLIC_KEY,

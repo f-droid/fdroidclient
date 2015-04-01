@@ -580,7 +580,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     private List<String> getKnownAppIdsFromProvider(List<App> apps) {
 
         final Uri uri = AppProvider.getContentUri(apps);
-        String[] fields = { AppProvider.DataColumns.APP_ID };
+        final String[] fields = { AppProvider.DataColumns.APP_ID };
         Cursor cursor = getContentResolver().query(uri, fields, null, null, null);
 
         int knownIdCount = cursor != null ? cursor.getCount() : 0;
@@ -608,7 +608,7 @@ public class UpdateService extends IntentService implements ProgressListener {
      * @see org.fdroid.fdroid.UpdateService#getKnownAppIds(java.util.List)
      */
     private List<Apk> getKnownApksFromProvider(List<Apk> apks) {
-        String[] fields = {
+        final String[] fields = {
             ApkProvider.DataColumns.APK_ID,
             ApkProvider.DataColumns.VERSION,
             ApkProvider.DataColumns.VERSION_CODE
@@ -744,7 +744,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         long startTime = System.currentTimeMillis();
         List<Apk> toRemove = new ArrayList<>();
 
-        String[] fields = {
+        final String[] fields = {
             ApkProvider.DataColumns.APK_ID,
             ApkProvider.DataColumns.VERSION_CODE,
             ApkProvider.DataColumns.VERSION,
