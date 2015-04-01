@@ -36,8 +36,8 @@ android update lib-project --path $EXTERN/libsuperuser/libsuperuser
 
 android update lib-project --path $EXTERN/zxing-core
 
-android update lib-project --path $EXTERN/android-support-v4-preferencefragment
-place_support_v4 $EXTERN/android-support-v4-preferencefragment
+android update lib-project --path $EXTERN/support-v4-preferencefragment
+place_support_v4 $EXTERN/support-v4-preferencefragment
 
 android update lib-project --path $EXTERN/Support/v7/appcompat --target android-19
 place_support_v4 $EXTERN/Support/v7/appcompat
