@@ -617,19 +617,11 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         List<ContentProviderOperation> operations = new ArrayList<>();
         List<String> knownAppIds = getKnownAppIds(appsToUpdate);
-        for (final App a : appsToUpdate) {
-            boolean known = false;
-            for (final String knownId : knownAppIds) {
-                if (knownId.equals(a.id)) {
-                    known = true;
-                    break;
-                }
-            }
-
-            if (known) {
-                operations.add(updateExistingApp(a));
+        for (final App app : appsToUpdate) {
+            if (knownAppIds.contains(app.id)) {
+                operations.add(updateExistingApp(app));
             } else {
-                operations.add(insertNewApp(a));
+                operations.add(insertNewApp(app));
             }
         }
 

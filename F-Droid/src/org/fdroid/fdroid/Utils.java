@@ -506,15 +506,6 @@ public final class Utils {
         }
     }
 
-    public static <T> boolean arrayContains(final T[] array, final T v) {
-        for (final T e : array) {
-            if (e == v || v != null && v.equals(e)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * Remove all files from the {@parm directory} either beginning with {@param startsWith}
      * or ending with {@param endsWith}. Note that if the SD card is not ready, then the

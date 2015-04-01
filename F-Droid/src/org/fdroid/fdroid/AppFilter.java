@@ -25,21 +25,17 @@ public class AppFilter {
     // Return true if the given app should be filtered out based on user
     // preferences, and false otherwise.
     public boolean filter(App app) {
-
-        final boolean dontFilterRequiringRoot = Preferences.get().filterAppsRequiringRoot();
-
-        if (app.requirements == null || dontFilterRequiringRoot) {
+        if (app.requirements == null) {
             return false;
         }
 
-        for (final String r : app.requirements) {
-            if (r.equals("root")) {
+        if (!Preferences.get().filterAppsRequiringRoot()) {
+            if (app.requirements.contains("root")) {
                 return true;
             }
         }
 
         return false;
-
     }
 
 }

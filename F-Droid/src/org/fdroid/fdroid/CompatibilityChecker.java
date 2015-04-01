@@ -62,9 +62,11 @@ public class CompatibilityChecker extends Compatibility {
     }
 
     private boolean compatibleApi(Utils.CommaSeparatedList nativecode) {
-        if (nativecode == null) return true;
-        for (final String abi : nativecode) {
-            if (Utils.arrayContains(cpuAbis, abi)) {
+        if (nativecode == null) {
+            return true;
+        }
+        for (final String cpuAbi : cpuAbis) {
+            if (nativecode.contains(cpuAbi)) {
                 return true;
             }
         }
