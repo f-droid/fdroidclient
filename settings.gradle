@@ -11,5 +11,5 @@ if ( hasProperty( 'sourceDeps' ) ) {
 	include ':extern:spongycastle:pkix'
 	include ':extern:spongycastle:prov'
 	include ':extern:zxing-core'
-	include ':extern:android-support-v4-preferencefragment'
+	include ':extern:support-v4-preferencefragment'
 }
