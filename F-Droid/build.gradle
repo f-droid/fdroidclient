@@ -24,6 +24,9 @@ if ( !hasProperty( 'sourceDeps' ) ) {
                 'com.nostra13.universalimageloader:universal-image-loader:1.9.3',
                 'com.google.zxing:core:3.2.0',
                 'eu.chainfire:libsuperuser:1.0.0.201501121001',
+
+                // We use a slightly modified spongycastle, see
+                // openkeychain/spongycastle with some changes on top of 1.51.0.0
                 'com.madgag.spongycastle:pkix:1.51.0.0',
                 'com.madgag.spongycastle:prov:1.51.0.0',
                 'com.madgag.spongycastle:core:1.51.0.0'
