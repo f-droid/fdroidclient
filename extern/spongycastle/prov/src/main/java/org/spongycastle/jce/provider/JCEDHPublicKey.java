@@ -9,9 +9,9 @@ import javax.crypto.interfaces.DHPublicKey;
 import javax.crypto.spec.DHParameterSpec;
 import javax.crypto.spec.DHPublicKeySpec;
 
+import org.spongycastle.asn1.ASN1Integer;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.pkcs.DHParameter;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
@@ -64,10 +64,10 @@ public class JCEDHPublicKey
     {
         this.info = info;
 
-        DERInteger              derY;
+        ASN1Integer              derY;
         try
         {
-            derY = (DERInteger)info.parsePublicKey();
+            derY = (ASN1Integer)info.parsePublicKey();
         }
         catch (IOException e)
         {
@@ -77,7 +77,7 @@ public class JCEDHPublicKey
         this.y = derY.getValue();
 
         ASN1Sequence seq = ASN1Sequence.getInstance(info.getAlgorithmId().getParameters());
-        DERObjectIdentifier id = info.getAlgorithmId().getAlgorithm();
+        ASN1ObjectIdentifier id = info.getAlgorithmId().getAlgorithm();
 
         // we need the PKCS check to handle older keys marked with the X9 oid.
         if (id.equals(PKCSObjectIdentifiers.dhKeyAgreement) || isPKCSParam(seq))
@@ -122,7 +122,7 @@ public class JCEDHPublicKey
             return KeyUtil.getEncodedSubjectPublicKeyInfo(info);
         }
 
-        return KeyUtil.getEncodedSubjectPublicKeyInfo(new AlgorithmIdentifier(PKCSObjectIdentifiers.dhKeyAgreement, new DHParameter(dhSpec.getP(), dhSpec.getG(), dhSpec.getL())), new DERInteger(y));
+        return KeyUtil.getEncodedSubjectPublicKeyInfo(new AlgorithmIdentifier(PKCSObjectIdentifiers.dhKeyAgreement, new DHParameter(dhSpec.getP(), dhSpec.getG(), dhSpec.getL())), new ASN1Integer(y));
     }
 
     public DHParameterSpec getParams()
@@ -147,8 +147,8 @@ public class JCEDHPublicKey
             return false;
         }
 
-        DERInteger l = DERInteger.getInstance(seq.getObjectAt(2));
-        DERInteger p = DERInteger.getInstance(seq.getObjectAt(0));
+        ASN1Integer l = ASN1Integer.getInstance(seq.getObjectAt(2));
+        ASN1Integer p = ASN1Integer.getInstance(seq.getObjectAt(0));
 
         if (l.getValue().compareTo(BigInteger.valueOf(p.getValue().bitLength())) > 0)
         {

@@ -44,6 +44,35 @@ public class ECNamedCurveTable
     }
 
     /**
+     * return the object identifier signified by the passed in name. Null
+     * if there is no object identifier associated with name.
+     *
+     * @return the object identifier associated with name, if present.
+     */
+    public static ASN1ObjectIdentifier getOID(
+        String name)
+    {
+        ASN1ObjectIdentifier oid = X962NamedCurves.getOID(name);
+
+        if (oid == null)
+        {
+            oid = SECNamedCurves.getOID(name);
+        }
+
+        if (oid == null)
+        {
+            oid = TeleTrusTNamedCurves.getOID(name);
+        }
+
+        if (oid == null)
+        {
+            oid = NISTNamedCurves.getOID(name);
+        }
+
+        return oid;
+    }
+
+    /**
      * return a X9ECParameters object representing the passed in named
      * curve.
      *

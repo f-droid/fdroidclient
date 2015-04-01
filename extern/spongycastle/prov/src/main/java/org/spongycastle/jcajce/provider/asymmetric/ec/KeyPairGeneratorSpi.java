@@ -85,22 +85,20 @@ public abstract class KeyPairGeneratorSpi
         {
             this.strength = strength;
             this.random = random;
-            ECGenParameterSpec ecParams = (ECGenParameterSpec)ecParameters.get(Integers.valueOf(strength));
 
-            if (ecParams != null)
-            {
-                try
-                {
-                    initialize(ecParams, random);
-                }
-                catch (InvalidAlgorithmParameterException e)
-                {
-                    throw new InvalidParameterException("key size not configurable.");
-                }
-            }
-            else
+            ECGenParameterSpec ecParams = (ECGenParameterSpec)ecParameters.get(Integers.valueOf(strength));
+            if (ecParams == null)
             {
                 throw new InvalidParameterException("unknown key size.");
+            }
+
+            try
+            {
+                initialize(ecParams, random);
+            }
+            catch (InvalidAlgorithmParameterException e)
+            {
+                throw new InvalidParameterException("key size not configurable.");
             }
         }
 
@@ -109,97 +107,42 @@ public abstract class KeyPairGeneratorSpi
             SecureRandom            random)
             throws InvalidAlgorithmParameterException
         {
-            if (params instanceof ECParameterSpec)
+            if (params == null)
             {
-                ECParameterSpec p = (ECParameterSpec)params;
+                ECParameterSpec implicitCA = configuration.getEcImplicitlyCa();
+                if (implicitCA == null)
+                {
+                    throw new InvalidAlgorithmParameterException("null parameter passed but no implicitCA set");
+                }
+
+                this.ecParams = null;
+                this.param = createKeyGenParamsBC(implicitCA, random);
+            }
+            else if (params instanceof ECParameterSpec)
+            {
                 this.ecParams = params;
-
-                param = new ECKeyGenerationParameters(new ECDomainParameters(p.getCurve(), p.getG(), p.getN()), random);
-
-                engine.init(param);
-                initialised = true;
+                this.param = createKeyGenParamsBC((ECParameterSpec)params, random);
             }
             else if (params instanceof java.security.spec.ECParameterSpec)
             {
-                java.security.spec.ECParameterSpec p = (java.security.spec.ECParameterSpec)params;
                 this.ecParams = params;
-
-                ECCurve curve = EC5Util.convertCurve(p.getCurve());
-                ECPoint g = EC5Util.convertPoint(curve, p.getGenerator(), false);
-
-                param = new ECKeyGenerationParameters(new ECDomainParameters(curve, g, p.getOrder(), BigInteger.valueOf(p.getCofactor())), random);
-
-                engine.init(param);
-                initialised = true;
+                this.param = createKeyGenParamsJCE((java.security.spec.ECParameterSpec)params, random);
             }
-            else if (params instanceof ECGenParameterSpec || params instanceof ECNamedCurveGenParameterSpec)
+            else if (params instanceof ECGenParameterSpec)
             {
-                String curveName;
-
-                if (params instanceof ECGenParameterSpec)
-                {
-                    curveName = ((ECGenParameterSpec)params).getName();
-                }
-                else
-                {
-                    curveName = ((ECNamedCurveGenParameterSpec)params).getName();
-                }
-
-                X9ECParameters  ecP = ECNamedCurveTable.getByName(curveName);
-                if (ecP == null)
-                {
-                    // See if it's actually an OID string (SunJSSE ServerHandshaker setupEphemeralECDHKeys bug)
-                    try
-                    {
-                        ASN1ObjectIdentifier oid = new ASN1ObjectIdentifier(curveName);
-                        ecP = ECNamedCurveTable.getByOID(oid);
-                        if (ecP == null)
-                        {
-                            throw new InvalidAlgorithmParameterException("unknown curve OID: " + curveName);
-                        }
-                    }
-                    catch (IllegalArgumentException ex)
-                    {
-                        throw new InvalidAlgorithmParameterException("unknown curve name: " + curveName);
-                    }
-                }
-
-                this.ecParams = new ECNamedCurveSpec(
-                            curveName,
-                            ecP.getCurve(),
-                            ecP.getG(),
-                            ecP.getN(),
-                            ecP.getH(),
-                            null); // ecP.getSeed());   Work-around JDK bug -- it won't look up named curves properly if seed is present
-
-                java.security.spec.ECParameterSpec p = (java.security.spec.ECParameterSpec)ecParams;
-
-                ECCurve curve = EC5Util.convertCurve(p.getCurve());
-                ECPoint g = EC5Util.convertPoint(curve, p.getGenerator(), false);
-
-                param = new ECKeyGenerationParameters(new ECDomainParameters(curve, g, p.getOrder(), BigInteger.valueOf(p.getCofactor())), random);
-
-                engine.init(param);
-                initialised = true;
+                initializeNamedCurve(((ECGenParameterSpec)params).getName(), random);
             }
-            else if (params == null && configuration.getEcImplicitlyCa() != null)
+            else if (params instanceof ECNamedCurveGenParameterSpec)
             {
-                ECParameterSpec p = configuration.getEcImplicitlyCa();
-                this.ecParams = params;
-
-                param = new ECKeyGenerationParameters(new ECDomainParameters(p.getCurve(), p.getG(), p.getN()), random);
-
-                engine.init(param);
-                initialised = true;
-            }
-            else if (params == null && configuration.getEcImplicitlyCa() == null)
-            {
-                throw new InvalidAlgorithmParameterException("null parameter passed but no implicitCA set");
+                initializeNamedCurve(((ECNamedCurveGenParameterSpec)params).getName(), random);
             }
             else
             {
                 throw new InvalidAlgorithmParameterException("parameter object not a ECParameterSpec");
             }
+
+            engine.init(param);
+            initialised = true;
         }
 
         public KeyPair generateKeyPair()
@@ -234,6 +177,58 @@ public abstract class KeyPairGeneratorSpi
                 
                 return new KeyPair(pubKey, new BCECPrivateKey(algorithm, priv, pubKey, p, configuration));
             }
+        }
+
+        protected ECKeyGenerationParameters createKeyGenParamsBC(ECParameterSpec p, SecureRandom r)
+        {
+            return new ECKeyGenerationParameters(new ECDomainParameters(p.getCurve(), p.getG(), p.getN()), r);
+        }
+
+        protected ECKeyGenerationParameters createKeyGenParamsJCE(java.security.spec.ECParameterSpec p, SecureRandom r)
+        {
+            ECCurve curve = EC5Util.convertCurve(p.getCurve());
+            ECPoint g = EC5Util.convertPoint(curve, p.getGenerator(), false);
+            BigInteger n = p.getOrder();
+            BigInteger h = BigInteger.valueOf(p.getCofactor());
+            ECDomainParameters dp = new ECDomainParameters(curve, g, n, h);
+            return new ECKeyGenerationParameters(dp, r);
+        }
+
+        protected ECNamedCurveSpec createNamedCurveSpec(String curveName)
+            throws InvalidAlgorithmParameterException
+        {
+            // NOTE: Don't bother with custom curves here as the curve will be converted to JCE type shortly
+
+            X9ECParameters p = ECNamedCurveTable.getByName(curveName);
+            if (p == null)
+            {
+                try
+                {
+                    // Check whether it's actually an OID string (SunJSSE ServerHandshaker setupEphemeralECDHKeys bug)
+                    p = ECNamedCurveTable.getByOID(new ASN1ObjectIdentifier(curveName));
+                    if (p == null)
+                    {
+                        throw new InvalidAlgorithmParameterException("unknown curve OID: " + curveName);
+                    }
+                }
+                catch (IllegalArgumentException ex)
+                {
+                    throw new InvalidAlgorithmParameterException("unknown curve name: " + curveName);
+                }
+            }
+
+            // Work-around for JDK bug -- it won't look up named curves properly if seed is present
+            byte[] seed = null; //p.getSeed();
+
+            return new ECNamedCurveSpec(curveName, p.getCurve(), p.getG(), p.getN(), p.getH(), seed);
+        }
+
+        protected void initializeNamedCurve(String curveName, SecureRandom random)
+            throws InvalidAlgorithmParameterException
+        {
+            ECNamedCurveSpec namedCurve = createNamedCurveSpec(curveName);
+            this.ecParams = namedCurve;
+            this.param = createKeyGenParamsJCE(namedCurve, random);
         }
     }
 

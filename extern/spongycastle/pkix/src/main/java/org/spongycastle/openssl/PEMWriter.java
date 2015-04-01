@@ -10,6 +10,7 @@ import org.spongycastle.util.io.pem.PemWriter;
 
 /**
  * General purpose writer for OpenSSL PEM objects.
+ * @deprecated use JcaPEMWriter
  */
 public class PEMWriter
     extends PemWriter
@@ -24,6 +25,9 @@ public class PEMWriter
         super(out);
     }
 
+    /**
+     * @throws IOException
+     */
     public void writeObject(
         Object  obj)
         throws IOException
@@ -31,6 +35,11 @@ public class PEMWriter
         writeObject(obj, null);
     }
 
+    /**
+     * @param obj
+     * @param encryptor
+     * @throws IOException
+     */
     public void writeObject(
         Object  obj,
         PEMEncryptor encryptor)

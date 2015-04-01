@@ -19,7 +19,7 @@ import org.spongycastle.pqc.math.ntru.util.Util;
 import org.spongycastle.util.Arrays;
 
 /**
- * A polynomial with <code>int</code> coefficients.<br/>
+ * A polynomial with <code>int</code> coefficients.<br>
  * Some methods (like <code>add</code>) change the polynomial, others (like <code>mult</code>) do
  * not but return the result as a new polynomial.
  */
@@ -143,7 +143,7 @@ public class IntegerPolynomial
     }
 
     /**
-     * Decodes a byte array to a polynomial with <code>N</code> ternary coefficients<br/>
+     * Decodes a byte array to a polynomial with <code>N</code> ternary coefficients<br>
      * Ignores any excess bytes.
      *
      * @param data an encoded ternary polynomial
@@ -181,8 +181,8 @@ public class IntegerPolynomial
     }
 
     /**
-     * Returns a polynomial with N coefficients between <code>0</code> and <code>q-1</code>.<br/>
-     * <code>q</code> must be a power of 2.<br/>
+     * Returns a polynomial with N coefficients between <code>0</code> and <code>q-1</code>.<br>
+     * <code>q</code> must be a power of 2.<br>
      * Ignores any excess bytes.
      *
      * @param data an encoded ternary polynomial
@@ -196,8 +196,8 @@ public class IntegerPolynomial
     }
 
     /**
-     * Returns a polynomial with N coefficients between <code>0</code> and <code>q-1</code>.<br/>
-     * <code>q</code> must be a power of 2.<br/>
+     * Returns a polynomial with N coefficients between <code>0</code> and <code>q-1</code>.<br>
+     * <code>q</code> must be a power of 2.<br>
      * Ignores any excess bytes.
      *
      * @param is an encoded ternary polynomial
@@ -213,7 +213,7 @@ public class IntegerPolynomial
 
     /**
      * Encodes a polynomial with ternary coefficients to binary.
-     * <code>coeffs[2*i]</code> and <code>coeffs[2*i+1]</code> must not both equal -1 for any integer </code>i<code>,
+     * <code>coeffs[2*i]</code> and <code>coeffs[2*i+1]</code> must not both equal -1 for any integer <code>i</code>,
      * so this method is only safe to use with polynomials produced by <code>fromBinary3Sves()</code>.
      *
      * @return the encoded polynomial
@@ -366,7 +366,7 @@ public class IntegerPolynomial
     }
 
     /**
-     * Computes the inverse mod <code>q; q</code> must be a power of 2.<br/>
+     * Computes the inverse mod <code>q; q</code> must be a power of 2.<br>
      * Returns <code>null</code> if the polynomial is not invertible.
      *
      * @param q the modulus
@@ -572,14 +572,14 @@ public class IntegerPolynomial
 
     /**
      * Resultant of this polynomial with <code>x^n-1</code> using a probabilistic algorithm.
-     * <p/>
+     * <p>
      * Unlike EESS, this implementation does not compute all resultants modulo primes
      * such that their product exceeds the maximum possible resultant, but rather stops
-     * when <code>NUM_EQUAL_RESULTANTS</code> consecutive modular resultants are equal.<br/>
+     * when <code>NUM_EQUAL_RESULTANTS</code> consecutive modular resultants are equal.<br>
      * This means the return value may be incorrect. Experiments show this happens in
      * about 1 out of 100 cases when <code>N=439</code> and <code>NUM_EQUAL_RESULTANTS=2</code>,
      * so the likelyhood of leaving the loop too early is <code>(1/100)^(NUM_EQUAL_RESULTANTS-1)</code>.
-     * <p/>
+     * <p>
      * Because of the above, callers must verify the output and try a different polynomial if necessary.
      *
      * @return <code>(rho, res)</code> satisfying <code>res = rho*this + t*(x^n-1)</code> for some integer <code>t</code>.
@@ -766,7 +766,7 @@ public class IntegerPolynomial
     }
 
     /**
-     * Resultant of this polynomial with <code>x^n-1 mod p</code>.<br/>
+     * Resultant of this polynomial with <code>x^n-1 mod p</code>.
      *
      * @return <code>(rho, res)</code> satisfying <code>res = rho*this + t*(x^n-1) mod p</code> for some integer <code>t</code>.
      */

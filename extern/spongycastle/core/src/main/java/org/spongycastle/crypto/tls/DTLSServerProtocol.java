@@ -46,11 +46,14 @@ public class DTLSServerProtocol
 
         SecurityParameters securityParameters = new SecurityParameters();
         securityParameters.entity = ConnectionEnd.server;
-        securityParameters.serverRandom = TlsProtocol.createRandomBlock(secureRandom);
 
         ServerHandshakeState state = new ServerHandshakeState();
         state.server = server;
         state.serverContext = new TlsServerContextImpl(secureRandom, securityParameters);
+
+        securityParameters.serverRandom = TlsProtocol.createRandomBlock(server.shouldUseGMTUnixTime(),
+            state.serverContext.getNonceRandomGenerator());
+
         server.init(state.serverContext);
 
         DTLSRecordLayer recordLayer = new DTLSRecordLayer(transport, state.serverContext, server, ContentType.handshake);
@@ -340,7 +343,8 @@ public class DTLSServerProtocol
         state.selectedCipherSuite = state.server.getSelectedCipherSuite();
         if (!Arrays.contains(state.offeredCipherSuites, state.selectedCipherSuite)
             || state.selectedCipherSuite == CipherSuite.TLS_NULL_WITH_NULL_NULL
-            || state.selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV)
+            || state.selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+            || !TlsUtils.isValidCipherSuiteForVersion(state.selectedCipherSuite, server_version))
         {
             throw new TlsFatalAlert(AlertDescription.internal_error);
         }
@@ -388,6 +392,8 @@ public class DTLSServerProtocol
 
         if (state.serverExtensions != null)
         {
+            securityParameters.encryptThenMAC = TlsExtensionsUtils.hasEncryptThenMACExtension(state.serverExtensions);
+
             state.maxFragmentLength = evaluateMaxFragmentLengthExtension(state.clientExtensions, state.serverExtensions,
                 AlertDescription.internal_error);
 
@@ -472,10 +478,18 @@ public class DTLSServerProtocol
         TlsProtocol.assertEmpty(buf);
 
         // Verify the CertificateVerify message contains a correct signature.
+        boolean verified = false;
         try
         {
-            // TODO For TLS 1.2, this needs to be the hash specified in the DigitallySigned
-            byte[] certificateVerifyHash = TlsProtocol.getCurrentPRFHash(state.serverContext, prepareFinishHash, null);
+            byte[] certificateVerifyHash;
+            if (TlsUtils.isTLSv12(state.serverContext))
+            {
+                certificateVerifyHash = prepareFinishHash.getFinalHash(clientCertificateVerify.getAlgorithm().getHash());
+            }
+            else
+            {
+                certificateVerifyHash = TlsProtocol.getCurrentPRFHash(state.serverContext, prepareFinishHash, null);
+            }
 
             org.spongycastle.asn1.x509.Certificate x509Cert = state.clientCertificate.getCertificateAt(0);
             SubjectPublicKeyInfo keyInfo = x509Cert.getSubjectPublicKeyInfo();
@@ -483,10 +497,14 @@ public class DTLSServerProtocol
 
             TlsSigner tlsSigner = TlsUtils.createTlsSigner(state.clientCertificateType);
             tlsSigner.init(state.serverContext);
-            tlsSigner.verifyRawSignature(clientCertificateVerify.getAlgorithm(),
+            verified = tlsSigner.verifyRawSignature(clientCertificateVerify.getAlgorithm(),
                 clientCertificateVerify.getSignature(), publicKey, certificateVerifyHash);
         }
         catch (Exception e)
+        {
+        }
+
+        if (!verified)
         {
             throw new TlsFatalAlert(AlertDescription.decrypt_error);
         }

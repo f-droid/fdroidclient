@@ -9,7 +9,9 @@ import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.DERNull;
+import org.spongycastle.asn1.bsi.BSIObjectIdentifiers;
 import org.spongycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import org.spongycastle.asn1.eac.EACObjectIdentifiers;
 import org.spongycastle.asn1.nist.NISTObjectIdentifiers;
 import org.spongycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
@@ -79,7 +81,17 @@ public class DefaultSignatureAlgorithmIdentifierFinder
         algorithms.put("GOST3411WITHECGOST3410", CryptoProObjectIdentifiers.gostR3411_94_with_gostR3410_2001);
         algorithms.put("GOST3411WITHECGOST3410-2001", CryptoProObjectIdentifiers.gostR3411_94_with_gostR3410_2001);
         algorithms.put("GOST3411WITHGOST3410-2001", CryptoProObjectIdentifiers.gostR3411_94_with_gostR3410_2001);
-               
+        algorithms.put("SHA1WITHPLAIN-ECDSA", BSIObjectIdentifiers.ecdsa_plain_SHA1);
+        algorithms.put("SHA224WITHPLAIN-ECDSA", BSIObjectIdentifiers.ecdsa_plain_SHA224);
+        algorithms.put("SHA256WITHPLAIN-ECDSA", BSIObjectIdentifiers.ecdsa_plain_SHA256);
+        algorithms.put("SHA384WITHPLAIN-ECDSA", BSIObjectIdentifiers.ecdsa_plain_SHA384);
+        algorithms.put("SHA512WITHPLAIN-ECDSA", BSIObjectIdentifiers.ecdsa_plain_SHA512);
+        algorithms.put("RIPEMD160WITHPLAIN-ECDSA", BSIObjectIdentifiers.ecdsa_plain_RIPEMD160);
+        algorithms.put("SHA1WITHCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_1);
+        algorithms.put("SHA224WITHPCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_224);
+        algorithms.put("SHA256WITHCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_256);
+        algorithms.put("SHA384WITHCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_384);
+        algorithms.put("SHA512WITHCVC-ECDSA", EACObjectIdentifiers.id_TA_ECDSA_SHA_512);
         //
         // According to RFC 3279, the ASN.1 encoding SHALL (id-dsa-with-sha1) or MUST (ecdsa-with-SHA*) omit the parameters field.
         // The parameters field SHALL be NULL for RSA based signature algorithms.

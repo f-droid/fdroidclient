@@ -2,6 +2,7 @@ package org.spongycastle.cert;
 
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.Locale;
 
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Integer;
@@ -36,11 +37,43 @@ public class X509v3CertificateBuilder
      */
     public X509v3CertificateBuilder(X500Name issuer, BigInteger serial, Date notBefore, Date notAfter, X500Name subject, SubjectPublicKeyInfo publicKeyInfo)
     {
+        this(issuer, serial, new Time(notBefore), new Time(notAfter), subject, publicKeyInfo);
+    }
+
+    /**
+     * Create a builder for a version 3 certificate. You may need to use this constructor if the default locale
+     * doesn't use a Gregorian calender so that the Time produced is compatible with other ASN.1 implementations.
+     *
+     * @param issuer the certificate issuer
+     * @param serial the certificate serial number
+     * @param notBefore the date before which the certificate is not valid
+     * @param notAfter the date after which the certificate is not valid
+     * @param dateLocale locale to be used for date interpretation.
+     * @param subject the certificate subject
+     * @param publicKeyInfo the info structure for the public key to be associated with this certificate.
+     */
+    public X509v3CertificateBuilder(X500Name issuer, BigInteger serial, Date notBefore, Date notAfter, Locale dateLocale, X500Name subject, SubjectPublicKeyInfo publicKeyInfo)
+    {
+        this(issuer, serial, new Time(notBefore, dateLocale), new Time(notAfter, dateLocale), subject, publicKeyInfo);
+    }
+
+    /**
+     * Create a builder for a version 3 certificate.
+     *
+     * @param issuer the certificate issuer
+     * @param serial the certificate serial number
+     * @param notBefore the Time before which the certificate is not valid
+     * @param notAfter the Time after which the certificate is not valid
+     * @param subject the certificate subject
+     * @param publicKeyInfo the info structure for the public key to be associated with this certificate.
+     */
+    public X509v3CertificateBuilder(X500Name issuer, BigInteger serial, Time notBefore, Time notAfter, X500Name subject, SubjectPublicKeyInfo publicKeyInfo)
+    {
         tbsGen = new V3TBSCertificateGenerator();
         tbsGen.setSerialNumber(new ASN1Integer(serial));
         tbsGen.setIssuer(issuer);
-        tbsGen.setStartDate(new Time(notBefore));
-        tbsGen.setEndDate(new Time(notAfter));
+        tbsGen.setStartDate(notBefore);
+        tbsGen.setEndDate(notAfter);
         tbsGen.setSubject(subject);
         tbsGen.setSubjectPublicKeyInfo(publicKeyInfo);
 
@@ -88,6 +121,26 @@ public class X509v3CertificateBuilder
         throws CertIOException
     {
         CertUtils.addExtension(extGenerator, oid, isCritical, value);
+
+        return this;
+    }
+
+    /**
+     * Add a given extension field for the standard extensions tag (tag 3) using a byte encoding of the
+     * extension value.
+     *
+     * @param oid the OID defining the extension type.
+     * @param isCritical true if the extension is critical, false otherwise.
+     * @param encodedValue a byte array representing the encoding of the extension value.
+     * @return this builder object.
+     */
+    public X509v3CertificateBuilder addExtension(
+        ASN1ObjectIdentifier oid,
+        boolean isCritical,
+        byte[] encodedValue)
+        throws CertIOException
+    {
+        extGenerator.addExtension(oid, isCritical, encodedValue);
 
         return this;
     }

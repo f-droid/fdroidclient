@@ -1,6 +1,6 @@
 package org.spongycastle.crypto.prng;
 
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.util.Pack;
 
 public class VMPCRandomGenerator implements RandomGenerator
 {

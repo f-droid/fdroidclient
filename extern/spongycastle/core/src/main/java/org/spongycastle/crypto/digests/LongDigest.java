@@ -1,18 +1,18 @@
 package org.spongycastle.crypto.digests;
 
 import org.spongycastle.crypto.ExtendedDigest;
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Memoable;
+import org.spongycastle.util.Pack;
 
 /**
  * Base class for SHA-384 and SHA-512.
  */
 public abstract class LongDigest
-    implements ExtendedDigest, Memoable
+    implements ExtendedDigest, Memoable, EncodableDigest
 {
     private static final int BYTE_LENGTH = 128;
-    
-    private byte[]  xBuf;
+
+    private byte[] xBuf = new byte[8];
     private int     xBufOff;
 
     private long    byteCount1;
@@ -28,7 +28,6 @@ public abstract class LongDigest
      */
     protected LongDigest()
     {
-        xBuf = new byte[8];
         xBufOff = 0;
 
         reset();
@@ -41,8 +40,6 @@ public abstract class LongDigest
      */
     protected LongDigest(LongDigest t)
     {
-        xBuf = new byte[t.xBuf.length];
-
         copyIn(t);
     }
 
@@ -65,6 +62,56 @@ public abstract class LongDigest
 
         System.arraycopy(t.W, 0, W, 0, t.W.length);
         wOff = t.wOff;
+    }
+
+    protected void populateState(byte[] state)
+    {
+        System.arraycopy(xBuf, 0, state, 0, xBufOff);
+        Pack.intToBigEndian(xBufOff, state, 8);
+        Pack.longToBigEndian(byteCount1, state, 12);
+        Pack.longToBigEndian(byteCount2, state, 20);
+        Pack.longToBigEndian(H1, state, 28);
+        Pack.longToBigEndian(H2, state, 36);
+        Pack.longToBigEndian(H3, state, 44);
+        Pack.longToBigEndian(H4, state, 52);
+        Pack.longToBigEndian(H5, state, 60);
+        Pack.longToBigEndian(H6, state, 68);
+        Pack.longToBigEndian(H7, state, 76);
+        Pack.longToBigEndian(H8, state, 84);
+
+        Pack.intToBigEndian(wOff, state, 92);
+        for (int i = 0; i < wOff; i++)
+        {
+            Pack.longToBigEndian(W[i], state, 96 + (i * 8));
+        }
+    }
+
+    protected void restoreState(byte[] encodedState)
+    {
+        xBufOff = Pack.bigEndianToInt(encodedState, 8);
+        System.arraycopy(encodedState, 0, xBuf, 0, xBufOff);
+        byteCount1 = Pack.bigEndianToLong(encodedState, 12);
+        byteCount2 = Pack.bigEndianToLong(encodedState, 20);
+
+        H1 = Pack.bigEndianToLong(encodedState, 28);
+        H2 = Pack.bigEndianToLong(encodedState, 36);
+        H3 = Pack.bigEndianToLong(encodedState, 44);
+        H4 = Pack.bigEndianToLong(encodedState, 52);
+        H5 = Pack.bigEndianToLong(encodedState, 60);
+        H6 = Pack.bigEndianToLong(encodedState, 68);
+        H7 = Pack.bigEndianToLong(encodedState, 76);
+        H8 = Pack.bigEndianToLong(encodedState, 84);
+
+        wOff = Pack.bigEndianToInt(encodedState, 92);
+        for (int i = 0; i < wOff; i++)
+        {
+            W[i] = Pack.bigEndianToLong(encodedState, 96 + (i * 8));
+        }
+    }
+
+    protected int getEncodedStateSize()
+    {
+        return 96 + (wOff * 8);
     }
 
     public void update(
@@ -165,7 +212,7 @@ public abstract class LongDigest
     {
         return BYTE_LENGTH;
     }
-    
+
     protected void processWord(
         byte[]  in,
         int     inOff)
@@ -228,7 +275,7 @@ public abstract class LongDigest
         long     g = H7;
         long     h = H8;
 
-        int t = 0;     
+        int t = 0;
         for(int i = 0; i < 10; i ++)
         {
           // t = 8 * i
@@ -271,7 +318,7 @@ public abstract class LongDigest
           e += a;
           a += Sum0(b) + Maj(b, c, d);
         }
- 
+
         H1 += a;
         H2 += b;
         H3 += c;
@@ -358,4 +405,5 @@ public abstract class LongDigest
 0x28db77f523047d84L, 0x32caab7b40c72493L, 0x3c9ebe0a15c9bebcL, 0x431d67c49c100d4cL,
 0x4cc5d4becb3e42b6L, 0x597f299cfc657e2aL, 0x5fcb6fab3ad6faecL, 0x6c44198c4a475817L
     };
+
 }

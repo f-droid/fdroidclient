@@ -161,7 +161,7 @@ public class GF2mVector
      * @return <tt>this + addend</tt>
      * @throws ArithmeticException if the other vector is not defined over the same field as
      * this vector.
-     * <p/>
+     * <p>
      * TODO: implement this method
      */
     public Vector add(Vector addend)

@@ -9,13 +9,13 @@ import org.spongycastle.crypto.params.TweakableBlockCipherParameters;
 /**
  * Implementation of the Threefish tweakable large block cipher in 256, 512 and 1024 bit block
  * sizes.
- * <p/>
+ * <p>
  * This is the 1.3 version of Threefish defined in the Skein hash function submission to the NIST
  * SHA-3 competition in October 2010.
- * <p/>
+ * <p>
  * Threefish was designed by Niels Ferguson - Stefan Lucks - Bruce Schneier - Doug Whiting - Mihir
  * Bellare - Tadayoshi Kohno - Jon Callas - Jesse Walker.
- * <p/>
+ * <p>
  * This implementation inlines all round functions, unrolls 8 rounds, and uses 1.2k of static tables
  * to speed up key schedule injection. <br>
  * 2 x block size state is retained by each cipher instance.

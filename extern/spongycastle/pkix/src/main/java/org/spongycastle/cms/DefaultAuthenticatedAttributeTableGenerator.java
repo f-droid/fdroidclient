@@ -1,5 +1,6 @@
 package org.spongycastle.cms;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -57,7 +58,14 @@ public class DefaultAuthenticatedAttributeTableGenerator
     protected Hashtable createStandardAttributeTable(
         Map parameters)
     {
-        Hashtable std = (Hashtable)table.clone();
+        Hashtable std = new Hashtable();
+
+        for (Enumeration en = table.keys(); en.hasMoreElements();)
+        {
+            Object key = en.nextElement();
+
+            std.put(key, table.get(key));
+        }
 
         if (!std.containsKey(CMSAttributes.contentType))
         {

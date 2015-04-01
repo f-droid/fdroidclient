@@ -6,6 +6,9 @@ import java.io.OutputStream;
 
 import org.spongycastle.util.Strings;
 
+/**
+ * Utility class for converting Base64 data to bytes and back again.
+ */
 public class Base64
 {
     private static final Encoder encoder = new Base64Encoder();

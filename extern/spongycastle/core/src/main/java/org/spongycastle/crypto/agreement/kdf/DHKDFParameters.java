@@ -1,7 +1,6 @@
 package org.spongycastle.crypto.agreement.kdf;
 
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.crypto.DerivationParameters;
 
 public class DHKDFParameters
@@ -13,7 +12,7 @@ public class DHKDFParameters
     private byte[] extraInfo;
 
     public DHKDFParameters(
-        DERObjectIdentifier algorithm,
+        ASN1ObjectIdentifier algorithm,
         int keySize,
         byte[] z)
     {
@@ -21,12 +20,12 @@ public class DHKDFParameters
     }
 
     public DHKDFParameters(
-        DERObjectIdentifier algorithm,
+        ASN1ObjectIdentifier algorithm,
         int keySize,
         byte[] z,
         byte[] extraInfo)
     {
-        this.algorithm = new ASN1ObjectIdentifier(algorithm.getId());
+        this.algorithm = algorithm;
         this.keySize = keySize;
         this.z = z;
         this.extraInfo = extraInfo;

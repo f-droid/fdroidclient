@@ -91,7 +91,7 @@ public class VMPCEngine implements StreamCipher
         n = 0;
     }
 
-    public void processBytes(byte[] in, int inOff, int len, byte[] out,
+    public int processBytes(byte[] in, int inOff, int len, byte[] out,
         int outOff)
     {
         if ((inOff + len) > in.length)
@@ -117,6 +117,8 @@ public class VMPCEngine implements StreamCipher
             // xor
             out[i + outOff] = (byte) (in[i + inOff] ^ z);
         }
+
+        return len;
     }
 
     public void reset()

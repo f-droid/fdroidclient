@@ -90,11 +90,11 @@ public class OCSPStatusRequest
     }
 
     /**
-     * Parse a {@link OCSPStatusRequest} from an {@link InputStream}.
+     * Parse an {@link OCSPStatusRequest} from an {@link InputStream}.
      * 
      * @param input
      *            the {@link InputStream} to parse from.
-     * @return a {@link OCSPStatusRequest} object.
+     * @return an {@link OCSPStatusRequest} object.
      * @throws IOException
      */
     public static OCSPStatusRequest parse(InputStream input) throws IOException

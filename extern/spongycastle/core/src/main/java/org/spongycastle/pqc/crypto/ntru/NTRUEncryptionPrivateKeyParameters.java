@@ -14,7 +14,7 @@ import org.spongycastle.pqc.math.ntru.polynomial.SparseTernaryPolynomial;
 /**
  * A NtruEncrypt private key is essentially a polynomial named <code>f</code>
  * which takes different forms depending on whether product-form polynomials are used,
- * and on <code>fastP</code><br/>
+ * and on <code>fastP</code><br>
  * The inverse of <code>f</code> modulo <code>p</code> is precomputed on initialization.
  */
 public class NTRUEncryptionPrivateKeyParameters

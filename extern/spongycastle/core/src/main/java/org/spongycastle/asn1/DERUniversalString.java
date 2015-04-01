@@ -18,7 +18,9 @@ public class DERUniversalString
     /**
      * return a Universal String from the passed in object.
      *
+     * @param obj a DERUniversalString or an object that can be converted into one.
      * @exception IllegalArgumentException if the object cannot be converted.
+     * @return a DERUniversalString instance, or null
      */
     public static DERUniversalString getInstance(
         Object  obj)
@@ -51,6 +53,7 @@ public class DERUniversalString
      *              tagged false otherwise.
      * @exception IllegalArgumentException if the tagged object cannot
      *               be converted.
+     * @return a DERUniversalString instance, or null
      */
     public static DERUniversalString getInstance(
         ASN1TaggedObject obj,

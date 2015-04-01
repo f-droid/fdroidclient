@@ -1,6 +1,6 @@
 package org.spongycastle.x509;
 
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.x509.X509Extensions;
 import org.spongycastle.util.Arrays;
 import org.spongycastle.util.Selector;
@@ -96,14 +96,14 @@ public class X509CRLStoreSelector
             return false;
         }
         X509CRL crl = (X509CRL)obj;
-        DERInteger dci = null;
+        ASN1Integer dci = null;
         try
         {
             byte[] bytes = crl
                 .getExtensionValue(X509Extensions.DeltaCRLIndicator.getId());
             if (bytes != null)
             {
-                dci = DERInteger.getInstance(X509ExtensionUtil
+                dci = ASN1Integer.getInstance(X509ExtensionUtil
                     .fromExtensionValue(bytes));
             }
         }

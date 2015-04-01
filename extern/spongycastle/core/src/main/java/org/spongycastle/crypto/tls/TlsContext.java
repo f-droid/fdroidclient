@@ -2,8 +2,12 @@ package org.spongycastle.crypto.tls;
 
 import java.security.SecureRandom;
 
+import org.spongycastle.crypto.prng.RandomGenerator;
+
 public interface TlsContext
 {
+    RandomGenerator getNonceRandomGenerator();
+
     SecureRandom getSecureRandom();
 
     SecurityParameters getSecurityParameters();
@@ -20,7 +24,7 @@ public interface TlsContext
      * 
      * @return A {@link TlsSession} representing the resumable session used by this connection, or
      *         null if no resumable session available.
-     * @see {@link TlsPeer#notifyHandshakeComplete()}
+     * @see TlsPeer#notifyHandshakeComplete()
      */
     TlsSession getResumableSession();
 

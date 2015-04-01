@@ -14,8 +14,6 @@ import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Encoding;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
 import org.spongycastle.asn1.pkcs.PrivateKeyInfo;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.asn1.x509.DSAParameter;
@@ -57,7 +55,7 @@ public class JDKDSAPrivateKey
         throws IOException
     {
         DSAParameter    params = DSAParameter.getInstance(info.getPrivateKeyAlgorithm().getParameters());
-        DERInteger      derX = ASN1Integer.getInstance(info.parsePrivateKey());
+        ASN1Integer      derX = ASN1Integer.getInstance(info.parsePrivateKey());
 
         this.x = derX.getValue();
         this.dsaSpec = new DSAParameterSpec(params.getP(), params.getQ(), params.getG());
@@ -95,7 +93,7 @@ public class JDKDSAPrivateKey
     {
         try
         {
-            PrivateKeyInfo          info = new PrivateKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_dsa, new DSAParameter(dsaSpec.getP(), dsaSpec.getQ(), dsaSpec.getG())), new DERInteger(getX()));
+            PrivateKeyInfo          info = new PrivateKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_dsa, new DSAParameter(dsaSpec.getP(), dsaSpec.getQ(), dsaSpec.getG())), new ASN1Integer(getX()));
 
             return info.getEncoded(ASN1Encoding.DER);
         }

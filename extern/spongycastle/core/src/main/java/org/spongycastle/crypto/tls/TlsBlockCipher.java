@@ -11,16 +11,15 @@ import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.util.Arrays;
 
 /**
- * A generic TLS 1.0-1.1 / SSLv3 block cipher. This can be used for AES or 3DES for example.
+ * A generic TLS 1.0-1.2 / SSLv3 block cipher. This can be used for AES or 3DES for example.
  */
 public class TlsBlockCipher
     implements TlsCipher
 {
-    private static boolean encryptThenMAC = false;
-
     protected TlsContext context;
     protected byte[] randomData;
     protected boolean useExplicitIV;
+    private boolean encryptThenMAC;
 
     protected BlockCipher encryptCipher;
     protected BlockCipher decryptCipher;
@@ -44,9 +43,10 @@ public class TlsBlockCipher
         this.context = context;
 
         this.randomData = new byte[256];
-        context.getSecureRandom().nextBytes(randomData);
+        context.getNonceRandomGenerator().nextBytes(randomData);
 
         this.useExplicitIV = TlsUtils.isTLSv11(context);
+        this.encryptThenMAC = context.getSecurityParameters().encryptThenMAC;
 
         int key_block_size = (2 * cipherKeySize) + clientWriteDigest.getDigestSize()
             + serverWriteDigest.getDigestSize();
@@ -183,7 +183,7 @@ public class TlsBlockCipher
         if (useExplicitIV)
         {
             byte[] explicitIV = new byte[blockSize];
-            context.getSecureRandom().nextBytes(explicitIV);
+            context.getNonceRandomGenerator().nextBytes(explicitIV);
 
             encryptCipher.init(true, new ParametersWithIV(null, explicitIV));
 

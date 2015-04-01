@@ -1,6 +1,5 @@
 package org.spongycastle.operator.jcajce;
 
-import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.Key;
@@ -17,9 +16,9 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.jcajce.DefaultJcaJceHelper;
-import org.spongycastle.jcajce.NamedJcaJceHelper;
-import org.spongycastle.jcajce.ProviderJcaJceHelper;
+import org.spongycastle.jcajce.util.DefaultJcaJceHelper;
+import org.spongycastle.jcajce.util.NamedJcaJceHelper;
+import org.spongycastle.jcajce.util.ProviderJcaJceHelper;
 import org.spongycastle.operator.AsymmetricKeyUnwrapper;
 import org.spongycastle.operator.GenericKey;
 import org.spongycastle.operator.OperatorException;

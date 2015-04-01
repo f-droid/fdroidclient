@@ -5,19 +5,16 @@ import java.math.BigInteger;
 /**
  * The payload sent/received during the optional third round of a J-PAKE exchange,
  * which is for explicit key confirmation.
- * <p/>
- * <p/>
+ * <p>
  * Each {@link JPAKEParticipant} creates and sends an instance
  * of this payload to the other {@link JPAKEParticipant}.
  * The payload to send should be created via
  * {@link JPAKEParticipant#createRound3PayloadToSend(BigInteger)}
- * <p/>
- * <p/>
+ * <p>
  * Each {@link JPAKEParticipant} must also validate the payload
  * received from the other {@link JPAKEParticipant}.
  * The received payload should be validated via
  * {@link JPAKEParticipant#validateRound3PayloadReceived(JPAKERound3Payload, BigInteger)}
- * <p/>
  */
 public class JPAKERound3Payload
 {

@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -83,6 +86,7 @@ public class TimeStampTokenGenerator
     private List certs = new ArrayList();
     private List crls = new ArrayList();
     private List attrCerts = new ArrayList();
+    private Map otherRevoc = new HashMap();
     private SignerInfoGenerator signerInfoGen;
 
     /**
@@ -228,6 +232,19 @@ public class TimeStampTokenGenerator
         attrCerts.addAll(attrStore.getMatches(null));
     }
 
+    /**
+     * Add a Store of otherRevocationData to the CRL set to be included with the generated TimeStampToken.
+     *
+     * @param otherRevocationInfoFormat the OID specifying the format of the otherRevocationInfo data.
+     * @param otherRevocationInfos a Store of otherRevocationInfo data to add.
+     */
+    public void addOtherRevocationInfo(
+        ASN1ObjectIdentifier   otherRevocationInfoFormat,
+        Store                  otherRevocationInfos)
+    {
+        otherRevoc.put(otherRevocationInfoFormat, otherRevocationInfos.getMatches(null));
+    }
+
     public void setAccuracySeconds(int accuracySeconds)
     {
         this.accuracySeconds = accuracySeconds;
@@ -328,12 +345,19 @@ public class TimeStampTokenGenerator
             {
                 // TODO: do we need to check certs non-empty?
                 signedDataGenerator.addCertificates(new CollectionStore(certs));
-                signedDataGenerator.addCRLs(new CollectionStore(crls));
                 signedDataGenerator.addAttributeCertificates(new CollectionStore(attrCerts));
             }
-            else
+
+            signedDataGenerator.addCRLs(new CollectionStore(crls));
+
+            if (!otherRevoc.isEmpty())
             {
-                signedDataGenerator.addCRLs(new CollectionStore(crls));
+                for (Iterator it = otherRevoc.keySet().iterator(); it.hasNext();)
+                {
+                    ASN1ObjectIdentifier format = (ASN1ObjectIdentifier)it.next();
+
+                    signedDataGenerator.addOtherRevocationInfo(format, new CollectionStore((Collection)otherRevoc.get(format)));
+                }
             }
 
             signedDataGenerator.addSignerInfoGenerator(signerInfoGen);

@@ -13,6 +13,7 @@ import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Set;
+import org.spongycastle.asn1.ASN1TaggedObject;
 import org.spongycastle.asn1.BEROctetStringGenerator;
 import org.spongycastle.asn1.BERSet;
 import org.spongycastle.asn1.DERSet;
@@ -27,6 +28,7 @@ import org.spongycastle.cert.X509CRLHolder;
 import org.spongycastle.cert.X509CertificateHolder;
 import org.spongycastle.operator.DigestCalculator;
 import org.spongycastle.util.Store;
+import org.spongycastle.util.Strings;
 import org.spongycastle.util.io.Streams;
 import org.spongycastle.util.io.TeeInputStream;
 import org.spongycastle.util.io.TeeOutputStream;
@@ -97,22 +99,52 @@ class CMSUtils
     static List getCRLsFromStore(Store crlStore)
         throws CMSException
     {
-        List certs = new ArrayList();
+        List crls = new ArrayList();
 
         try
         {
             for (Iterator it = crlStore.getMatches(null).iterator(); it.hasNext();)
             {
-                X509CRLHolder c = (X509CRLHolder)it.next();
+                Object rev = it.next();
 
-                certs.add(c.toASN1Structure());
+                if (rev instanceof X509CRLHolder)
+                {
+                    X509CRLHolder c = (X509CRLHolder)rev;
+
+                    crls.add(c.toASN1Structure());
+                }
+                else if (rev instanceof OtherRevocationInfoFormat)
+                {
+                    OtherRevocationInfoFormat infoFormat = OtherRevocationInfoFormat.getInstance(rev);
+
+                    validateInfoFormat(infoFormat);
+
+                    crls.add(new DERTaggedObject(false, 1, infoFormat));
+                }
+                else if (rev instanceof ASN1TaggedObject)
+                {
+                    crls.add(rev);
+                }
             }
 
-            return certs;
+            return crls;
         }
         catch (ClassCastException e)
         {
             throw new CMSException("error processing certs", e);
+        }
+    }
+
+    private static void validateInfoFormat(OtherRevocationInfoFormat infoFormat)
+    {
+        if (CMSObjectIdentifiers.id_ri_ocsp_response.equals(infoFormat.getInfoFormat()))
+        {
+            OCSPResponse resp = OCSPResponse.getInstance(infoFormat.getInfo());
+
+            if (resp.getResponseStatus().getValue().intValue() != OCSPResponseStatus.SUCCESSFUL)
+            {
+                throw new IllegalArgumentException("cannot add unsuccessful OCSP response to CMS SignedData");
+            }
         }
     }
 
@@ -123,18 +155,11 @@ class CMSUtils
         for (Iterator it = otherRevocationInfos.getMatches(null).iterator(); it.hasNext();)
         {
             ASN1Encodable info = (ASN1Encodable)it.next();
+            OtherRevocationInfoFormat infoFormat = new OtherRevocationInfoFormat(otherRevocationInfoFormat, info);
 
-            if (CMSObjectIdentifiers.id_ri_ocsp_response.equals(otherRevocationInfoFormat))
-            {
-                OCSPResponse resp = OCSPResponse.getInstance(info);
+            validateInfoFormat(infoFormat);
 
-                if (resp.getResponseStatus().getValue().intValue() != OCSPResponseStatus.SUCCESSFUL)
-                {
-                    throw new IllegalArgumentException("cannot add unsuccessful OCSP response to CMS SignedData");
-                }
-            }
-
-            others.add(new DERTaggedObject(false, 1, new OtherRevocationInfoFormat(otherRevocationInfoFormat, info)));
+            others.add(new DERTaggedObject(false, 1, infoFormat));
         }
 
         return others;
@@ -198,7 +223,64 @@ class CMSUtils
             throw new CMSException("Malformed content.", e);
         }
     }
-    
+
+    static byte[] getPasswordBytes(int scheme, char[] password)
+    {
+        if (scheme == PasswordRecipient.PKCS5_SCHEME2)
+        {
+            return PKCS5PasswordToBytes(password);
+        }
+
+        return PKCS5PasswordToUTF8Bytes(password);
+    }
+
+    /**
+     * converts a password to a byte array according to the scheme in
+     * PKCS5 (ascii, no padding)
+     *
+     * @param password a character array representing the password.
+     * @return a byte array representing the password.
+     */
+    private static byte[] PKCS5PasswordToBytes(
+        char[]  password)
+    {
+        if (password != null)
+        {
+            byte[]  bytes = new byte[password.length];
+
+            for (int i = 0; i != bytes.length; i++)
+            {
+                bytes[i] = (byte)password[i];
+            }
+
+            return bytes;
+        }
+        else
+        {
+            return new byte[0];
+        }
+    }
+
+    /**
+     * converts a password to a byte array according to the scheme in
+     * PKCS5 (UTF-8, no padding)
+     *
+     * @param password a character array representing the password.
+     * @return a byte array representing the password.
+     */
+    private static byte[] PKCS5PasswordToUTF8Bytes(
+        char[]  password)
+    {
+        if (password != null)
+        {
+            return Strings.toUTF8ByteArray(password);
+        }
+        else
+        {
+            return new byte[0];
+        }
+    }
+
     public static byte[] streamToByteArray(
         InputStream in) 
         throws IOException

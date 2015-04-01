@@ -9,8 +9,7 @@ import javax.crypto.interfaces.DHPublicKey;
 import javax.crypto.spec.DHParameterSpec;
 import javax.crypto.spec.DHPublicKeySpec;
 
-import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.oiw.ElGamalParameter;
 import org.spongycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
@@ -75,12 +74,12 @@ public class JCEElGamalPublicKey
     JCEElGamalPublicKey(
         SubjectPublicKeyInfo    info)
     {
-        ElGamalParameter        params = new ElGamalParameter((ASN1Sequence)info.getAlgorithmId().getParameters());
-        DERInteger              derY = null;
+        ElGamalParameter        params = ElGamalParameter.getInstance(info.getAlgorithm().getParameters());
+        ASN1Integer              derY = null;
 
         try
         {
-            derY = (DERInteger)info.parsePublicKey();
+            derY = (ASN1Integer)info.parsePublicKey();
         }
         catch (IOException e)
         {
@@ -103,7 +102,7 @@ public class JCEElGamalPublicKey
 
     public byte[] getEncoded()
     {
-        return KeyUtil.getEncodedSubjectPublicKeyInfo(new AlgorithmIdentifier(OIWObjectIdentifiers.elGamalAlgorithm, new ElGamalParameter(elSpec.getP(), elSpec.getG())), new DERInteger(y));
+        return KeyUtil.getEncodedSubjectPublicKeyInfo(new AlgorithmIdentifier(OIWObjectIdentifiers.elGamalAlgorithm, new ElGamalParameter(elSpec.getP(), elSpec.getG())), new ASN1Integer(y));
     }
 
     public ElGamalParameterSpec getParameters()

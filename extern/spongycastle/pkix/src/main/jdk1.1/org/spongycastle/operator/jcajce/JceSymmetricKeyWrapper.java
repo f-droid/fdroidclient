@@ -9,16 +9,16 @@ import java.security.InvalidKeyException;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.DERNull;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.kisa.KISAObjectIdentifiers;
 import org.spongycastle.asn1.nist.NISTObjectIdentifiers;
 import org.spongycastle.asn1.ntt.NTTObjectIdentifiers;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.jcajce.DefaultJcaJceHelper;
-import org.spongycastle.jcajce.NamedJcaJceHelper;
-import org.spongycastle.jcajce.ProviderJcaJceHelper;
+import org.spongycastle.jcajce.util.DefaultJcaJceHelper;
+import org.spongycastle.jcajce.util.NamedJcaJceHelper;
+import org.spongycastle.jcajce.util.ProviderJcaJceHelper;
 import org.spongycastle.operator.GenericKey;
 import org.spongycastle.operator.OperatorException;
 import org.spongycastle.operator.SymmetricKeyWrapper;
@@ -87,18 +87,18 @@ public class JceSymmetricKeyWrapper
 
         if (algorithm.startsWith("DES"))
         {
-            return new AlgorithmIdentifier(new DERObjectIdentifier(
+            return new AlgorithmIdentifier(new ASN1ObjectIdentifier(
                     "1.2.840.113549.1.9.16.3.6"), new DERNull());
         }
         else if (algorithm.startsWith("RC2"))
         {
-            return new AlgorithmIdentifier(new DERObjectIdentifier(
-                    "1.2.840.113549.1.9.16.3.7"), new DERInteger(58));
+            return new AlgorithmIdentifier(new ASN1ObjectIdentifier(
+                    "1.2.840.113549.1.9.16.3.7"), new ASN1Integer(58));
         }
         else if (algorithm.startsWith("AES"))
         {
             int length = key.getEncoded().length * 8;
-            DERObjectIdentifier wrapOid;
+            ASN1ObjectIdentifier wrapOid;
 
             if (length == 128)
             {
@@ -128,7 +128,7 @@ public class JceSymmetricKeyWrapper
         else if (algorithm.startsWith("Camellia"))
         {
             int length = key.getEncoded().length * 8;
-            DERObjectIdentifier wrapOid;
+            ASN1ObjectIdentifier wrapOid;
 
             if (length == 128)
             {

@@ -44,7 +44,7 @@ import org.spongycastle.asn1.x9.X9ObjectIdentifiers;
 import org.spongycastle.cert.crmf.CRMFException;
 import org.spongycastle.cms.CMSAlgorithm;
 import org.spongycastle.cms.CMSEnvelopedDataGenerator;
-import org.spongycastle.jcajce.JcaJceHelper;
+import org.spongycastle.jcajce.util.JcaJceHelper;
 
 class CRMFHelper
 {

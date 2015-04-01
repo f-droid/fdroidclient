@@ -6,7 +6,6 @@ import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERUTF8String;
 
@@ -45,25 +44,6 @@ public class ContentHints
         {
             contentType = ASN1ObjectIdentifier.getInstance(seq.getObjectAt(0));
         }
-    }
-
-    /**
-     * @deprecated use ASN1ObjectIdentifier
-     */
-    public ContentHints(
-        DERObjectIdentifier contentType)
-    {
-        this(new ASN1ObjectIdentifier(contentType.getId()));
-    }
-
-        /**
-     * @deprecated use ASN1ObjectIdentifier
-     */
-    public ContentHints(
-        DERObjectIdentifier contentType,
-        DERUTF8String contentDescription)
-    {
-        this(new ASN1ObjectIdentifier(contentType.getId()), contentDescription);
     }
 
     public ContentHints(

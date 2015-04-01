@@ -179,7 +179,7 @@ public class Permutation
 
     /**
      * checks if given object is equal to this permutation.
-     * <p/>
+     * <p>
      * The method returns false whenever the given object is not permutation.
      *
      * @param other -

@@ -1,7 +1,7 @@
 package org.spongycastle.crypto.digests;
 
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Memoable;
+import org.spongycastle.util.Pack;
 
 /**
  * implementation of SHA-1 as outlined in "Handbook of Applied Cryptography", pages 346 - 349.
@@ -11,6 +11,7 @@ import org.spongycastle.util.Memoable;
  */
 public class SHA1Digest
     extends GeneralDigest
+    implements EncodableDigest
 {
     private static final int    DIGEST_LENGTH = 20;
 
@@ -36,6 +37,23 @@ public class SHA1Digest
         super(t);
 
         copyIn(t);
+    }
+
+    public SHA1Digest(byte[] encodedState)
+    {
+        super(encodedState);
+
+        H1 = Pack.bigEndianToInt(encodedState, 16);
+        H2 = Pack.bigEndianToInt(encodedState, 20);
+        H3 = Pack.bigEndianToInt(encodedState, 24);
+        H4 = Pack.bigEndianToInt(encodedState, 28);
+        H5 = Pack.bigEndianToInt(encodedState, 32);
+
+        xOff = Pack.bigEndianToInt(encodedState, 36);
+        for (int i = 0; i != xOff; i++)
+        {
+            X[i] = Pack.bigEndianToInt(encodedState, 40 + (i * 4));
+        }
     }
 
     private void copyIn(SHA1Digest t)
@@ -301,6 +319,27 @@ public class SHA1Digest
 
         super.copyIn(d);
         copyIn(d);
+    }
+
+    public byte[] getEncodedState()
+    {
+        byte[] state = new byte[40 + xOff * 4];
+
+        super.populateState(state);
+
+        Pack.intToBigEndian(H1, state, 16);
+        Pack.intToBigEndian(H2, state, 20);
+        Pack.intToBigEndian(H3, state, 24);
+        Pack.intToBigEndian(H4, state, 28);
+        Pack.intToBigEndian(H5, state, 32);
+        Pack.intToBigEndian(xOff, state, 36);
+
+        for (int i = 0; i != xOff; i++)
+        {
+            Pack.intToBigEndian(X[i], state, 40 + (i * 4));
+        }
+
+        return state;
     }
 }
 

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Locale;
 
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.digests.SkeinDigest;
@@ -17,7 +18,7 @@ import org.spongycastle.util.Integers;
 
 /**
  * Parameters for the Skein hash function - a series of byte[] strings identified by integer tags.
- * <p/>
+ * <p>
  * Parameterised Skein can be used for:
  * <ul>
  * <li>MAC generation, by providing a {@link SkeinParameters.Builder#setKey(byte[]) key}.</li>
@@ -179,9 +180,9 @@ public class SkeinParameters
          * Sets a parameters to apply to the Skein hash function.<br>
          * Parameter types must be in the range 0,5..62, and cannot use the value {@value
          * SkeinParameters#PARAM_TYPE_MESSAGE} (reserved for message body).
-         * <p/>
-         * Parameters with type < {@value SkeinParameters#PARAM_TYPE_MESSAGE} are processed before
-         * the message content, parameters with type > {@value SkeinParameters#PARAM_TYPE_MESSAGE}
+         * <p>
+         * Parameters with type &lt; {@value SkeinParameters#PARAM_TYPE_MESSAGE} are processed before
+         * the message content, parameters with type &gt; {@value SkeinParameters#PARAM_TYPE_MESSAGE}
          * are processed after the message and prior to output.
          *
          * @param type  the type of the parameter, in the range 5..62.
@@ -227,14 +228,14 @@ public class SkeinParameters
         /**
          * Implements the recommended personalisation format for Skein defined in Section 4.11 of
          * the Skein 1.3 specification.
-         * <p/>
+         * <p>
          * The format is <code>YYYYMMDD email@address distinguisher</code>, encoded to a byte
          * sequence using UTF-8 encoding.
          *
          * @param date          the date the personalised application of the Skein was defined.
          * @param emailAddress  the email address of the creation of the personalised application.
          * @param distinguisher an arbitrary personalisation string distinguishing the application.
-         * @return
+         * @return the current builder.
          */
         public Builder setPersonalisation(Date date, String emailAddress, String distinguisher)
         {
@@ -256,6 +257,41 @@ public class SkeinParameters
                 throw new IllegalStateException("Byte I/O failed: " + e);
             }
         }
+
+        /**
+          * Implements the recommended personalisation format for Skein defined in Section 4.11 of
+          * the Skein 1.3 specification. You may need to use this method if the default locale
+          * doesn't use a Gregorian calender so that the GeneralizedTime produced is compatible implementations.
+          * <p>
+          * The format is <code>YYYYMMDD email@address distinguisher</code>, encoded to a byte
+          * sequence using UTF-8 encoding.
+          *
+          * @param date          the date the personalised application of the Skein was defined.
+          * @param dateLocale    locale to be used for date interpretation.
+          * @param emailAddress  the email address of the creation of the personalised application.
+          * @param distinguisher an arbitrary personalisation string distinguishing the application.
+          * @return the current builder.
+          */
+         public Builder setPersonalisation(Date date, Locale dateLocale, String emailAddress, String distinguisher)
+         {
+             try
+             {
+                 final ByteArrayOutputStream bout = new ByteArrayOutputStream();
+                 final OutputStreamWriter out = new OutputStreamWriter(bout, "UTF-8");
+                 final DateFormat format = new SimpleDateFormat("YYYYMMDD", dateLocale);
+                 out.write(format.format(date));
+                 out.write(" ");
+                 out.write(emailAddress);
+                 out.write(" ");
+                 out.write(distinguisher);
+                 out.close();
+                 return set(PARAM_TYPE_PERSONALISATION, bout.toByteArray());
+             }
+             catch (IOException e)
+             {
+                 throw new IllegalStateException("Byte I/O failed: " + e);
+             }
+         }
 
         /**
          * Sets the {@link SkeinParameters#PARAM_TYPE_KEY_IDENTIFIER} parameter.

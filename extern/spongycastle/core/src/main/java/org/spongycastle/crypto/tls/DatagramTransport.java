@@ -4,7 +4,6 @@ import java.io.IOException;
 
 public interface DatagramTransport
 {
-
     int getReceiveLimit()
         throws IOException;
 

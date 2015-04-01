@@ -2,10 +2,10 @@ package org.spongycastle.openssl.jcajce;
 
 import java.security.Provider;
 
-import org.spongycastle.jcajce.DefaultJcaJceHelper;
-import org.spongycastle.jcajce.JcaJceHelper;
-import org.spongycastle.jcajce.NamedJcaJceHelper;
-import org.spongycastle.jcajce.ProviderJcaJceHelper;
+import org.spongycastle.jcajce.util.DefaultJcaJceHelper;
+import org.spongycastle.jcajce.util.JcaJceHelper;
+import org.spongycastle.jcajce.util.NamedJcaJceHelper;
+import org.spongycastle.jcajce.util.ProviderJcaJceHelper;
 import org.spongycastle.openssl.PEMDecryptor;
 import org.spongycastle.openssl.PEMDecryptorProvider;
 import org.spongycastle.openssl.PEMException;

@@ -5,9 +5,9 @@ import org.spongycastle.crypto.ExtendedDigest;
 import org.spongycastle.crypto.engines.GOST28147Engine;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.crypto.params.ParametersWithSBox;
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Arrays;
 import org.spongycastle.util.Memoable;
+import org.spongycastle.util.Pack;
 
 /**
  * implementation of GOST R 34.11-94

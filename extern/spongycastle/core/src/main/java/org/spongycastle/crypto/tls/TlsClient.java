@@ -36,9 +36,9 @@ public interface TlsClient
 
     /**
      * Notifies the client of the session_id sent in the ServerHello.
-     * 
+     *
      * @param sessionID
-     * @see {@link TlsContext#getResumableSession()}
+     * @see TlsContext#getResumableSession()
      */
     void notifySessionID(byte[] sessionID);
 
@@ -66,7 +66,7 @@ public interface TlsClient
 
     /**
      * RFC 5077 3.3. NewSessionTicket Handshake Message
-     * <p/>
+     * <p>
      * This method will be called (only) when a NewSessionTicket handshake message is received. The
      * ticket is opaque to the client and clients MUST NOT examine the ticket under the assumption
      * that it complies with e.g. <i>RFC 5077 4. Recommended Ticket Construction</i>.

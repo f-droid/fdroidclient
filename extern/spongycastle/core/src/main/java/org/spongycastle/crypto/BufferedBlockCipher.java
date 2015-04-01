@@ -48,13 +48,13 @@ public class BufferedBlockCipher
 
         pgpCFB = (idx > 0 && name.startsWith("PGP", idx));
 
-        if (pgpCFB)
+        if (pgpCFB || cipher instanceof StreamCipher)
         {
             partialBlockOkay = true;
         }
         else
         {
-            partialBlockOkay = (idx > 0 && (name.startsWith("CFB", idx) || name.startsWith("GCFB", idx) ||name.startsWith("OFB", idx) || name.startsWith("OpenPGP", idx) || name.startsWith("SIC", idx) || name.startsWith("GCTR", idx)));
+            partialBlockOkay = (idx > 0 && (name.startsWith("OpenPGP", idx)));
         }
     }
 

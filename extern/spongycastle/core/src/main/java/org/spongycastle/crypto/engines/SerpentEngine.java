@@ -12,7 +12,7 @@ import org.spongycastle.crypto.params.KeyParameter;
  * secure as three-key triple-DES.
  * <p>
  * Serpent was designed by Ross Anderson, Eli Biham and Lars Knudsen as a
- * candidate algorithm for the NIST AES Quest.>
+ * candidate algorithm for the NIST AES Quest.
  * <p>
  * For full details see the <a href="http://www.cl.cam.ac.uk/~rja14/serpent.html">The Serpent home page</a>
  */

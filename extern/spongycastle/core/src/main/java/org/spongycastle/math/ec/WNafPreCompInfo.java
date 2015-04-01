@@ -10,47 +10,47 @@ public class WNafPreCompInfo implements PreCompInfo
      * Array holding the precomputed <code>ECPoint</code>s used for a Window
      * NAF multiplication.
      */
-    private ECPoint[] preComp = null;
+    protected ECPoint[] preComp = null;
 
     /**
      * Array holding the negations of the precomputed <code>ECPoint</code>s used
      * for a Window NAF multiplication.
      */
-    private ECPoint[] preCompNeg = null;
+    protected ECPoint[] preCompNeg = null;
 
     /**
      * Holds an <code>ECPoint</code> representing twice(this). Used for the
      * Window NAF multiplication to create or extend the precomputed values.
      */
-    private ECPoint twiceP = null;
+    protected ECPoint twice = null;
 
-    protected ECPoint[] getPreComp()
+    public ECPoint[] getPreComp()
     {
         return preComp;
     }
 
-    protected ECPoint[] getPreCompNeg()
-    {
-        return preCompNeg;
-    }
-
-    protected void setPreComp(ECPoint[] preComp)
+    public void setPreComp(ECPoint[] preComp)
     {
         this.preComp = preComp;
     }
 
-    protected void setPreCompNeg(ECPoint[] preCompNeg)
+    public ECPoint[] getPreCompNeg()
+    {
+        return preCompNeg;
+    }
+
+    public void setPreCompNeg(ECPoint[] preCompNeg)
     {
         this.preCompNeg = preCompNeg;
     }
 
-    protected ECPoint getTwiceP()
+    public ECPoint getTwice()
     {
-        return twiceP;
+        return twice;
     }
 
-    protected void setTwiceP(ECPoint twiceP)
+    public void setTwice(ECPoint twice)
     {
-        this.twiceP = twiceP;
+        this.twice = twice;
     }
 }

@@ -11,28 +11,28 @@ import org.spongycastle.asn1.x509.GeneralName;
 
 /**
  * Attribute to indicate admissions to certain professions.
- * <p/>
+ *
  * <pre>
  *     AdmissionSyntax ::= SEQUENCE
  *     {
  *       admissionAuthority GeneralName OPTIONAL,
  *       contentsOfAdmissions SEQUENCE OF Admissions
  *     }
- * <p/>
+ *
  *     Admissions ::= SEQUENCE
  *     {
  *       admissionAuthority [0] EXPLICIT GeneralName OPTIONAL
  *       namingAuthority [1] EXPLICIT NamingAuthority OPTIONAL
  *       professionInfos SEQUENCE OF ProfessionInfo
  *     }
- * <p/>
+ *
  *     NamingAuthority ::= SEQUENCE
  *     {
  *       namingAuthorityId OBJECT IDENTIFIER OPTIONAL,
  *       namingAuthorityUrl IA5String OPTIONAL,
  *       namingAuthorityText DirectoryString(SIZE(1..128)) OPTIONAL
  *     }
- * <p/>
+ *
  *     ProfessionInfo ::= SEQUENCE
  *     {
  *       namingAuthority [0] EXPLICIT NamingAuthority OPTIONAL,
@@ -42,8 +42,7 @@ import org.spongycastle.asn1.x509.GeneralName;
  *       addProfessionInfo OCTET STRING OPTIONAL
  *     }
  * </pre>
- * <p/>
- * <p/>
+ * <p>
  * ISIS-MTT PROFILE: The relatively complex structure of AdmissionSyntax
  * supports the following concepts and requirements:
  * <ul>
@@ -68,7 +67,7 @@ import org.spongycastle.asn1.x509.GeneralName;
  * component namingAuthorityId are grouped under the OID-branch
  * id-isis-at-namingAuthorities and must be applied for.
  * <li>See
- * http://www.teletrust.de/anwend.asp?Id=30200&Sprache=E_&HomePG=0 for
+ * http://www.teletrust.de/anwend.asp?Id=30200&amp;Sprache=E_&amp;HomePG=0 for
  * an application form and http://www.teletrust.de/links.asp?id=30220,11
  * for an overview of registered naming authorities.
  * <li> By means of the data type ProfessionInfo certain professions,
@@ -80,7 +79,7 @@ import org.spongycastle.asn1.x509.GeneralName;
  * addProfessionInfo may contain additional applicationspecific information in
  * DER-encoded form.
  * </ul>
- * <p/>
+ * <p>
  * By means of different namingAuthority-OIDs or profession OIDs hierarchies of
  * professions, specializations, disciplines, fields of activity, etc. can be
  * expressed. The issuing admission authority should always be indicated (field
@@ -89,9 +88,7 @@ import org.spongycastle.asn1.x509.GeneralName;
  * naming authority by the exclusive use of the component professionItems. In
  * this case the certification authority is responsible for the verification of
  * the admission information.
- * <p/>
- * <p/>
- * <p/>
+ * <p>
  * This attribute is single-valued. Still, several admissions can be captured in
  * the sequence structure of the component contentsOfAdmissions of
  * AdmissionSyntax or in the component professionInfos of Admissions. The
@@ -102,7 +99,7 @@ import org.spongycastle.asn1.x509.GeneralName;
  * value for the component namingAuthority of ProfessionInfo. Within the latter
  * component the default value can be overwritten, in case that another naming
  * authority needs to be recorded.
- * <p/>
+ * <p>
  * The length of the string objects is limited to 128 characters. It is
  * recommended to indicate a namingAuthorityURL in all issued attribute
  * certificates. If a namingAuthorityURL is indicated, the field professionItems
@@ -209,30 +206,29 @@ public class AdmissionSyntax
 
     /**
      * Produce an object suitable for an ASN1OutputStream.
-     * <p/>
+     * <p>
      * Returns:
-     * <p/>
      * <pre>
      *     AdmissionSyntax ::= SEQUENCE
      *     {
      *       admissionAuthority GeneralName OPTIONAL,
      *       contentsOfAdmissions SEQUENCE OF Admissions
      *     }
-     * <p/>
+     *
      *     Admissions ::= SEQUENCE
      *     {
      *       admissionAuthority [0] EXPLICIT GeneralName OPTIONAL
      *       namingAuthority [1] EXPLICIT NamingAuthority OPTIONAL
      *       professionInfos SEQUENCE OF ProfessionInfo
      *     }
-     * <p/>
+     *
      *     NamingAuthority ::= SEQUENCE
      *     {
      *       namingAuthorityId OBJECT IDENTIFIER OPTIONAL,
      *       namingAuthorityUrl IA5String OPTIONAL,
      *       namingAuthorityText DirectoryString(SIZE(1..128)) OPTIONAL
      *     }
-     * <p/>
+     *
      *     ProfessionInfo ::= SEQUENCE
      *     {
      *       namingAuthority [0] EXPLICIT NamingAuthority OPTIONAL,

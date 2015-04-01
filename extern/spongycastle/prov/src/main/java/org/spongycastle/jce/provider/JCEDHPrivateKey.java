@@ -12,10 +12,9 @@ import javax.crypto.spec.DHPrivateKeySpec;
 
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Encoding;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.pkcs.DHParameter;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.spongycastle.asn1.pkcs.PrivateKeyInfo;
@@ -61,8 +60,8 @@ public class JCEDHPrivateKey
         throws IOException
     {
         ASN1Sequence    seq = ASN1Sequence.getInstance(info.getAlgorithmId().getParameters());
-        DERInteger      derX = DERInteger.getInstance(info.parsePrivateKey());
-        DERObjectIdentifier id = info.getAlgorithmId().getAlgorithm();
+        ASN1Integer      derX = ASN1Integer.getInstance(info.parsePrivateKey());
+        ASN1ObjectIdentifier id = info.getAlgorithmId().getAlgorithm();
 
         this.info = info;
         this.x = derX.getValue();
@@ -129,7 +128,7 @@ public class JCEDHPrivateKey
                 return info.getEncoded(ASN1Encoding.DER);
             }
 
-            PrivateKeyInfo          info = new PrivateKeyInfo(new AlgorithmIdentifier(PKCSObjectIdentifiers.dhKeyAgreement, new DHParameter(dhSpec.getP(), dhSpec.getG(), dhSpec.getL())), new DERInteger(getX()));
+            PrivateKeyInfo          info = new PrivateKeyInfo(new AlgorithmIdentifier(PKCSObjectIdentifiers.dhKeyAgreement, new DHParameter(dhSpec.getP(), dhSpec.getG(), dhSpec.getL())), new ASN1Integer(getX()));
 
             return info.getEncoded(ASN1Encoding.DER);
         }

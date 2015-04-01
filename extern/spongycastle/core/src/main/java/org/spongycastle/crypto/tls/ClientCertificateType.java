@@ -2,7 +2,6 @@ package org.spongycastle.crypto.tls;
 
 public class ClientCertificateType
 {
-
     /*
      *  RFC 4346 7.4.4
      */

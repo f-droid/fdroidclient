@@ -22,7 +22,7 @@ import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.DERBitString;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -40,7 +40,7 @@ import org.spongycastle.jce.provider.X509CertificateObject;
 public class X509V1CertificateGenerator
 {
     private V1TBSCertificateGenerator   tbsGen;
-    private DERObjectIdentifier         sigOID;
+    private ASN1ObjectIdentifier         sigOID;
     private AlgorithmIdentifier         sigAlgId;
     private String                      signatureAlgorithm;
 

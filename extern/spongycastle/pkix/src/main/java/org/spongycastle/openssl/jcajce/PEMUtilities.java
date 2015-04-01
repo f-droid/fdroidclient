@@ -14,14 +14,13 @@ import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.nist.NISTObjectIdentifiers;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.spongycastle.crypto.PBEParametersGenerator;
 import org.spongycastle.crypto.generators.OpenSSLPBEParametersGenerator;
 import org.spongycastle.crypto.generators.PKCS5S2ParametersGenerator;
 import org.spongycastle.crypto.params.KeyParameter;
-import org.spongycastle.jcajce.JcaJceHelper;
+import org.spongycastle.jcajce.util.JcaJceHelper;
 import org.spongycastle.openssl.EncryptionException;
 import org.spongycastle.openssl.PEMException;
 import org.spongycastle.util.Integers;
@@ -63,7 +62,7 @@ class PEMUtilities
         return ((Integer)KEYSIZES.get(algorithm)).intValue();
     }
 
-    static boolean isPKCS5Scheme1(DERObjectIdentifier algOid)
+    static boolean isPKCS5Scheme1(ASN1ObjectIdentifier algOid)
     {
         return PKCS5_SCHEME_1.contains(algOid);
     }
@@ -73,7 +72,7 @@ class PEMUtilities
         return PKCS5_SCHEME_2.contains(algOid);
     }
 
-    public static boolean isPKCS12(DERObjectIdentifier algOid)
+    public static boolean isPKCS12(ASN1ObjectIdentifier algOid)
     {
         return algOid.getId().startsWith(PKCSObjectIdentifiers.pkcs_12PbeIds.getId());
     }

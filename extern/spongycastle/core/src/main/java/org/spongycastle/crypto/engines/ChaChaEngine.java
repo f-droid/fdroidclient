@@ -1,13 +1,12 @@
 package org.spongycastle.crypto.engines;
 
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.util.Pack;
 
 /**
  * Implementation of Daniel J. Bernstein's ChaCha stream cipher.
  */
 public class ChaChaEngine extends Salsa20Engine
 {
-
     /**
      * Creates a 20 rounds ChaCha engine.
      */
@@ -38,6 +37,24 @@ public class ChaChaEngine extends Salsa20Engine
         }
     }
 
+    protected void retreatCounter()
+    {
+        if (engineState[12] == 0 && engineState[13] == 0)
+        {
+            throw new IllegalStateException("attempt to reduce counter past zero.");
+        }
+
+        if (--engineState[12] == -1)
+        {
+            --engineState[13];
+        }
+    }
+
+    protected long getCounter()
+    {
+        return ((long)engineState[13] << 32) | (engineState[12] & 0xffffffffL);
+    }
+
     protected void resetCounter()
     {
         engineState[12] = engineState[13] = 0;
@@ -45,41 +62,42 @@ public class ChaChaEngine extends Salsa20Engine
 
     protected void setKey(byte[] keyBytes, byte[] ivBytes)
     {
-        if ((keyBytes.length != 16) && (keyBytes.length != 32))
+        if (keyBytes != null)
         {
-            throw new IllegalArgumentException(getAlgorithmName() + " requires 128 bit or 256 bit key");
+            if ((keyBytes.length != 16) && (keyBytes.length != 32))
+            {
+                throw new IllegalArgumentException(getAlgorithmName() + " requires 128 bit or 256 bit key");
+            }
+
+            // Key
+            engineState[4] = Pack.littleEndianToInt(keyBytes, 0);
+            engineState[5] = Pack.littleEndianToInt(keyBytes, 4);
+            engineState[6] = Pack.littleEndianToInt(keyBytes, 8);
+            engineState[7] = Pack.littleEndianToInt(keyBytes, 12);
+
+            byte[] constants;
+            int offset;
+            if (keyBytes.length == 32)
+            {
+                constants = sigma;
+                offset = 16;
+            }
+            else
+            {
+                constants = tau;
+                offset = 0;
+            }
+
+            engineState[8] = Pack.littleEndianToInt(keyBytes, offset);
+            engineState[9] = Pack.littleEndianToInt(keyBytes, offset + 4);
+            engineState[10] = Pack.littleEndianToInt(keyBytes, offset + 8);
+            engineState[11] = Pack.littleEndianToInt(keyBytes, offset + 12);
+
+            engineState[0] = Pack.littleEndianToInt(constants, 0);
+            engineState[1] = Pack.littleEndianToInt(constants, 4);
+            engineState[2] = Pack.littleEndianToInt(constants, 8);
+            engineState[3] = Pack.littleEndianToInt(constants, 12);
         }
-
-        int offset = 0;
-        byte[] constants;
-
-        // Key
-        engineState[4] = Pack.littleEndianToInt(keyBytes, 0);
-        engineState[5] = Pack.littleEndianToInt(keyBytes, 4);
-        engineState[6] = Pack.littleEndianToInt(keyBytes, 8);
-        engineState[7] = Pack.littleEndianToInt(keyBytes, 12);
-
-        if (keyBytes.length == 32)
-        {
-            constants = sigma;
-            offset = 16;
-        } else
-        {
-            constants = tau;
-        }
-
-        engineState[8] = Pack.littleEndianToInt(keyBytes, offset);
-        engineState[9] = Pack.littleEndianToInt(keyBytes, offset + 4);
-        engineState[10] = Pack.littleEndianToInt(keyBytes, offset + 8);
-        engineState[11] = Pack.littleEndianToInt(keyBytes, offset + 12);
-
-        engineState[0] = Pack.littleEndianToInt(constants, 0);
-        engineState[1] = Pack.littleEndianToInt(constants, 4);
-        engineState[2] = Pack.littleEndianToInt(constants, 8);
-        engineState[3] = Pack.littleEndianToInt(constants, 12);
-
-        // Counter
-        engineState[12] = engineState[13] = 0;
 
         // IV
         engineState[14] = Pack.littleEndianToInt(ivBytes, 0);
@@ -96,18 +114,19 @@ public class ChaChaEngine extends Salsa20Engine
      * ChacCha function
      *
      * @param   input   input data
-     *
-     * @return  keystream
      */    
     public static void chachaCore(int rounds, int[] input, int[] x)
     {
-        if (input.length != 16) {
+        if (input.length != 16)
+        {
             throw new IllegalArgumentException();
         }
-        if (x.length != 16) {
+        if (x.length != 16)
+        {
             throw new IllegalArgumentException();
         }
-        if (rounds % 2 != 0) {
+        if (rounds % 2 != 0)
+        {
             throw new IllegalArgumentException("Number of rounds must be even");
         }
 
@@ -182,5 +201,4 @@ public class ChaChaEngine extends Salsa20Engine
         x[14] = x14 + input[14];
         x[15] = x15 + input[15];
     }
-
 }

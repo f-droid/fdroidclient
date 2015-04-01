@@ -11,13 +11,13 @@ import java.util.Enumeration;
  * <h3>8: Basic encoding rules</h3>
  * <h4>8.11 Encoding of a set value </h4>
  * <b>8.11.1</b> The encoding of a set value shall be constructed
- * <p/>
+ * <p>
  * <b>8.11.2</b> The contents octets shall consist of the complete
  * encoding of a data value from each of the types listed in the
  * ASN.1 definition of the set type, in an order chosen by the sender,
  * unless the type was referenced with the keyword
  * <b>OPTIONAL</b> or the keyword <b>DEFAULT</b>.
- * <p/>
+ * <p>
  * <b>8.11.3</b> The encoding of a data value may, but need not,
  * be present for a type which was referenced with the keyword
  * <b>OPTIONAL</b> or the keyword <b>DEFAULT</b>.

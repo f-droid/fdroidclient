@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 
 import org.spongycastle.util.Arrays;
@@ -246,6 +247,41 @@ public class SkeinParameterSpec
                 throw new IllegalStateException("Byte I/O failed: " + e);
             }
         }
+
+        /**
+          * Implements the recommended personalisation format for Skein defined in Section 4.11 of
+          * the Skein 1.3 specification. You may need to use this method if the default locale
+          * doesn't use a Gregorian calender so that the GeneralizedTime produced is compatible implementations.
+          * <p>
+          * The format is <code>YYYYMMDD email@address distinguisher</code>, encoded to a byte
+          * sequence using UTF-8 encoding.
+          *
+          * @param date          the date the personalised application of the Skein was defined.
+          * @param dateLocale    locale to be used for date interpretation.
+          * @param emailAddress  the email address of the creation of the personalised application.
+          * @param distinguisher an arbitrary personalisation string distinguishing the application.
+          * @return the current builder.
+          */
+         public Builder setPersonalisation(Date date, Locale dateLocale, String emailAddress, String distinguisher)
+         {
+             try
+             {
+                 final ByteArrayOutputStream bout = new ByteArrayOutputStream();
+                 final OutputStreamWriter out = new OutputStreamWriter(bout, "UTF-8");
+                 final DateFormat format = new SimpleDateFormat("YYYYMMDD", dateLocale);
+                 out.write(format.format(date));
+                 out.write(" ");
+                 out.write(emailAddress);
+                 out.write(" ");
+                 out.write(distinguisher);
+                 out.close();
+                 return set(PARAM_TYPE_PERSONALISATION, bout.toByteArray());
+             }
+             catch (IOException e)
+             {
+                 throw new IllegalStateException("Byte I/O failed: " + e);
+             }
+         }
 
         /**
          * Sets the {@link org.spongycastle.jcajce.spec.SkeinParameterSpec#PARAM_TYPE_KEY_IDENTIFIER} parameter.

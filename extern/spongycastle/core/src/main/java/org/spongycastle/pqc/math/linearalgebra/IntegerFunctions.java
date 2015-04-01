@@ -38,8 +38,8 @@ public final class IntegerFunctions
      * Computes the value of the Jacobi symbol (A|B). The following properties
      * hold for the Jacobi symbol which makes it a very efficient way to
      * evaluate the Legendre symbol
-     * <p/>
-     * (A|B) = 0 IF gcd(A,B) > 1<br>
+     * <p>
+     * (A|B) = 0 IF gcd(A,B) &gt; 1<br>
      * (-1|B) = 1 IF n = 1 (mod 1)<br>
      * (-1|B) = -1 IF n = 3 (mod 4)<br>
      * (A|B) (C|B) = (AC|B)<br>
@@ -47,7 +47,6 @@ public final class IntegerFunctions
      * (A|B) = (C|B) IF A = C (mod B)<br>
      * (2|B) = 1 IF N = 1 OR 7 (mod 8)<br>
      * (2|B) = 1 IF N = 3 OR 5 (mod 8)
-     * <p/>
      *
      * @param A integer value
      * @param B integer value
@@ -493,10 +492,10 @@ public final class IntegerFunctions
     }
 
     /**
-     * determines the order of g modulo p, p prime and 1 < g < p. This algorithm
+     * determines the order of g modulo p, p prime and 1 &lt; g &lt; p. This algorithm
      * is only efficient for small p (see X9.62-1998, p. 68).
      *
-     * @param g an integer with 1 < g < p
+     * @param g an integer with 1 &lt; g &lt; p
      * @param p a prime
      * @return the order k of g (that is k is the smallest integer with
      *         g<sup>k</sup> = 1 mod p
@@ -743,7 +742,7 @@ public final class IntegerFunctions
      * Find and return the least non-trivial divisor of an integer <tt>a</tt>.
      *
      * @param a - the integer
-     * @return divisor p >1 or 1 if a = -1,0,1
+     * @return divisor p &gt;1 or 1 if a = -1,0,1
      */
     public static int leastDiv(int a)
     {
@@ -1008,11 +1007,11 @@ public final class IntegerFunctions
     }
 
     /**
-     * Computes the binomial coefficient (n|t) ("n over t"). Formula:<br/>
+     * Computes the binomial coefficient (n|t) ("n over t"). Formula:
      * <ul>
      * <li>if n !=0 and t != 0 then (n|t) = Mult(i=1, t): (n-(i-1))/i</li>
      * <li>if t = 0 then (n|t) = 1</li>
-     * <li>if n = 0 and t > 0 then (n|t) = 0</li>
+     * <li>if n = 0 and t &gt; 0 then (n|t) = 0</li>
      * </ul>
      *
      * @param n - the "upper" integer
@@ -1225,7 +1224,7 @@ public final class IntegerFunctions
     /**
      * calculate the logarithm to the base 2.
      *
-     * @param x any long value >=1
+     * @param x any long value &gt;=1
      * @return log_2(x)
      * @deprecated use MathFunctions.log(long) instead
      */

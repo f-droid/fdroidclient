@@ -18,7 +18,9 @@ public class DERT61String
     /**
      * return a T61 string from the passed in object.
      *
+     * @param obj a DERT61String or an object that can be converted into one.
      * @exception IllegalArgumentException if the object cannot be converted.
+     * @return a DERT61String instance, or null
      */
     public static DERT61String getInstance(
         Object  obj)
@@ -51,6 +53,7 @@ public class DERT61String
      *              tagged false otherwise.
      * @exception IllegalArgumentException if the tagged object cannot
      *               be converted.
+     * @return a DERT61String instance, or null
      */
     public static DERT61String getInstance(
         ASN1TaggedObject obj,
@@ -70,6 +73,8 @@ public class DERT61String
 
     /**
      * basic constructor - string encoded as a sequence of bytes.
+     *
+     * @param string the byte encoding of the string to be wrapped.
      */
     public DERT61String(
         byte[]   string)
@@ -79,6 +84,8 @@ public class DERT61String
 
     /**
      * basic constructor - with string 8 bit assumed.
+     *
+     * @param string the string to be wrapped.
      */
     public DERT61String(
         String   string)

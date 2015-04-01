@@ -4,7 +4,6 @@ import java.io.IOException;
 
 public interface TlsCipherFactory
 {
-
     /**
      * See enumeration classes EncryptionAlgorithm, MACAlgorithm for appropriate argument values
      */

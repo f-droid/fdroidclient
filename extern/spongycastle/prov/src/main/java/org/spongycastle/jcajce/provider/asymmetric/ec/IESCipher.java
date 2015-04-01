@@ -18,6 +18,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.ShortBufferException;
 
+import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.InvalidCipherTextException;
 import org.spongycastle.crypto.KeyEncoder;
 import org.spongycastle.crypto.agreement.ECDHBasicAgreement;
@@ -29,14 +30,15 @@ import org.spongycastle.crypto.generators.ECKeyPairGenerator;
 import org.spongycastle.crypto.generators.EphemeralKeyPairGenerator;
 import org.spongycastle.crypto.generators.KDF2BytesGenerator;
 import org.spongycastle.crypto.macs.HMac;
+import org.spongycastle.crypto.modes.CBCBlockCipher;
 import org.spongycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import org.spongycastle.crypto.params.AsymmetricKeyParameter;
 import org.spongycastle.crypto.params.ECDomainParameters;
 import org.spongycastle.crypto.params.ECKeyGenerationParameters;
 import org.spongycastle.crypto.params.ECKeyParameters;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;
-import org.spongycastle.crypto.params.IESParameters;
 import org.spongycastle.crypto.params.IESWithCipherParameters;
+import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.crypto.parsers.ECIESPublicKeyParser;
 import org.spongycastle.jcajce.provider.asymmetric.util.ECUtil;
 import org.spongycastle.jcajce.provider.asymmetric.util.IESUtil;
@@ -52,6 +54,7 @@ import org.spongycastle.util.Strings;
 public class IESCipher
     extends CipherSpi
 {
+    private int ivLength;
     private IESEngine engine;
     private int state = -1;
     private ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -65,8 +68,14 @@ public class IESCipher
     public IESCipher(IESEngine engine)
     {
         this.engine = engine;
+        this.ivLength = 0;
     }
 
+    public IESCipher(IESEngine engine, int ivLength)
+    {
+        this.engine = engine;
+        this.ivLength = ivLength;
+    }
 
     public int engineGetBlockSize()
     {
@@ -98,7 +107,6 @@ public class IESCipher
     {
         return null;
     }
-
 
     public AlgorithmParameters engineGetParameters()
     {
@@ -259,6 +267,20 @@ public class IESCipher
             throw new InvalidAlgorithmParameterException("must be passed IES parameters");
         }
 
+        byte[] nonce = this.engineSpec.getNonce();
+
+        if (nonce != null)
+        {
+            if (ivLength == 0)
+            {
+                throw new InvalidAlgorithmParameterException("NONCE present in IES Parameters when none required");
+            }
+            else if (nonce.length != ivLength)
+            {
+                throw new InvalidAlgorithmParameterException("NONCE in IES Parameters needs to be " + ivLength + " bytes long");
+            }
+        }
+
         // Parse the recipient's key
         if (opmode == Cipher.ENCRYPT_MODE || opmode == Cipher.WRAP_MODE)
         {
@@ -368,10 +390,15 @@ public class IESCipher
         buffer.reset();
 
         // Convert parameters for use in IESEngine
-        IESParameters params = new IESWithCipherParameters(engineSpec.getDerivationV(),
+        CipherParameters params = new IESWithCipherParameters(engineSpec.getDerivationV(),
             engineSpec.getEncodingV(),
             engineSpec.getMacKeySize(),
             engineSpec.getCipherKeySize());
+
+        if (engineSpec.getNonce() != null)
+        {
+            params = new ParametersWithIV(params, engineSpec.getNonce());
+        }
 
         final ECDomainParameters ecParams = ((ECKeyParameters)key).getParameters();
 
@@ -496,6 +523,30 @@ public class IESCipher
                 new KDF2BytesGenerator(new SHA1Digest()),
                 new HMac(new SHA1Digest()),
                 new PaddedBufferedBlockCipher(new AESEngine())));
+        }
+    }
+
+    static public class ECIESwithDESedeCBC
+        extends IESCipher
+    {
+        public ECIESwithDESedeCBC()
+        {
+            super(new IESEngine(new ECDHBasicAgreement(),
+                new KDF2BytesGenerator(new SHA1Digest()),
+                new HMac(new SHA1Digest()),
+                new PaddedBufferedBlockCipher(new CBCBlockCipher(new DESedeEngine()))), 8);
+        }
+    }
+
+    static public class ECIESwithAESCBC
+        extends IESCipher
+    {
+        public ECIESwithAESCBC()
+        {
+            super(new IESEngine(new ECDHBasicAgreement(),
+                new KDF2BytesGenerator(new SHA1Digest()),
+                new HMac(new SHA1Digest()),
+                new PaddedBufferedBlockCipher(new CBCBlockCipher(new AESEngine()))), 16);
         }
     }
 }

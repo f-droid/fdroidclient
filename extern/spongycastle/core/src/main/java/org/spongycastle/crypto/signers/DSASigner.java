@@ -45,18 +45,19 @@ public class DSASigner
         boolean                 forSigning,
         CipherParameters        param)
     {
+        SecureRandom providedRandom = null;
+
         if (forSigning)
         {
             if (param instanceof ParametersWithRandom)
             {
-                ParametersWithRandom    rParam = (ParametersWithRandom)param;
+                ParametersWithRandom rParam = (ParametersWithRandom)param;
 
-                this.random = rParam.getRandom();
                 this.key = (DSAPrivateKeyParameters)rParam.getParameters();
+                providedRandom = rParam.getRandom();
             }
             else
             {
-                this.random = new SecureRandom();
                 this.key = (DSAPrivateKeyParameters)param;
             }
         }
@@ -64,6 +65,8 @@ public class DSASigner
         {
             this.key = (DSAPublicKeyParameters)param;
         }
+
+        this.random = initSecureRandom(forSigning && !kCalculator.isDeterministic(), providedRandom);
     }
 
     /**
@@ -156,5 +159,10 @@ public class DSASigner
 
             return new BigInteger(1, trunc);
         }
+    }
+
+    protected SecureRandom initSecureRandom(boolean needed, SecureRandom provided)
+    {
+        return !needed ? null : (provided != null) ? provided : new SecureRandom();
     }
 }

@@ -50,12 +50,17 @@ public abstract class TlsDSASigner
 
     public Signer createSigner(SignatureAndHashAlgorithm algorithm, AsymmetricKeyParameter privateKey)
     {
-        return makeSigner(algorithm, false, true, new ParametersWithRandom(privateKey, this.context.getSecureRandom()));
+        return makeSigner(algorithm, false, true, privateKey);
     }
 
     public Signer createVerifyer(SignatureAndHashAlgorithm algorithm, AsymmetricKeyParameter publicKey)
     {
         return makeSigner(algorithm, false, false, publicKey);
+    }
+
+    protected CipherParameters makeInitParameters(boolean forSigning, CipherParameters cp)
+    {
+        return cp;
     }
 
     protected Signer makeSigner(SignatureAndHashAlgorithm algorithm, boolean raw, boolean forSigning,
@@ -66,20 +71,22 @@ public abstract class TlsDSASigner
             throw new IllegalStateException();
         }
 
+        // TODO For TLS 1.2+, lift the SHA-1 restriction here
         if (algorithm != null
             && (algorithm.getHash() != HashAlgorithm.sha1 || algorithm.getSignature() != getSignatureAlgorithm()))
         {
             throw new IllegalStateException();
         }
 
-        Digest d = raw ? new NullDigest() : TlsUtils.createHash(HashAlgorithm.sha1);
+        short hashAlgorithm = algorithm == null ? HashAlgorithm.sha1 : algorithm.getHash();
+        Digest d = raw ? new NullDigest() : TlsUtils.createHash(hashAlgorithm);
 
-        Signer s = new DSADigestSigner(createDSAImpl(), d);
-        s.init(forSigning, cp);
+        Signer s = new DSADigestSigner(createDSAImpl(hashAlgorithm), d);
+        s.init(forSigning, makeInitParameters(forSigning, cp));
         return s;
     }
 
     protected abstract short getSignatureAlgorithm();
 
-    protected abstract DSA createDSAImpl();
+    protected abstract DSA createDSAImpl(short hashAlgorithm);
 }

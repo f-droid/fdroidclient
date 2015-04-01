@@ -23,13 +23,27 @@ public class ElGamalParameter
         this.g = new ASN1Integer(g);
     }
 
-    public ElGamalParameter(
+    private ElGamalParameter(
         ASN1Sequence  seq)
     {
         Enumeration     e = seq.getObjects();
 
         p = (ASN1Integer)e.nextElement();
         g = (ASN1Integer)e.nextElement();
+    }
+
+    public static ElGamalParameter getInstance(Object o)
+    {
+        if (o instanceof ElGamalParameter)
+        {
+            return (ElGamalParameter)o;
+        }
+        else if (o != null)
+        {
+            return new ElGamalParameter(ASN1Sequence.getInstance(o));
+        }
+
+        return null;
     }
 
     public BigInteger getP()

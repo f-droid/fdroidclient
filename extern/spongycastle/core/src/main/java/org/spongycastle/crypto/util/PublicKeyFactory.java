@@ -10,7 +10,6 @@ import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Primitive;
-import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.oiw.ElGamalParameter;
 import org.spongycastle.asn1.oiw.OIWObjectIdentifiers;
@@ -29,6 +28,7 @@ import org.spongycastle.asn1.x9.X962Parameters;
 import org.spongycastle.asn1.x9.X9ECParameters;
 import org.spongycastle.asn1.x9.X9ECPoint;
 import org.spongycastle.asn1.x9.X9ObjectIdentifiers;
+import org.spongycastle.crypto.ec.CustomNamedCurves;
 import org.spongycastle.crypto.params.AsymmetricKeyParameter;
 import org.spongycastle.crypto.params.DHParameters;
 import org.spongycastle.crypto.params.DHPublicKeyParameters;
@@ -36,6 +36,7 @@ import org.spongycastle.crypto.params.DHValidationParameters;
 import org.spongycastle.crypto.params.DSAParameters;
 import org.spongycastle.crypto.params.DSAPublicKeyParameters;
 import org.spongycastle.crypto.params.ECDomainParameters;
+import org.spongycastle.crypto.params.ECNamedDomainParameters;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;
 import org.spongycastle.crypto.params.ElGamalParameters;
 import org.spongycastle.crypto.params.ElGamalPublicKeyParameters;
@@ -134,7 +135,7 @@ public class PublicKeyFactory
         }
         else if (algId.getAlgorithm().equals(OIWObjectIdentifiers.elGamalAlgorithm))
         {
-            ElGamalParameter params = new ElGamalParameter((ASN1Sequence)algId.getParameters());
+            ElGamalParameter params = ElGamalParameter.getInstance(algId.getParameters());
             ASN1Integer derY = (ASN1Integer)keyInfo.parsePublicKey();
 
             return new ElGamalPublicKeyParameters(derY.getValue(), new ElGamalParameters(
@@ -160,23 +161,29 @@ public class PublicKeyFactory
             X962Parameters params = X962Parameters.getInstance(algId.getParameters());
 
             X9ECParameters x9;
+            ECDomainParameters dParams;
+
             if (params.isNamedCurve())
             {
                 ASN1ObjectIdentifier oid = (ASN1ObjectIdentifier)params.getParameters();
-                x9 = ECNamedCurveTable.getByOID(oid);
+
+                x9 = CustomNamedCurves.getByOID(oid);
+                if (x9 == null)
+                {
+                    x9 = ECNamedCurveTable.getByOID(oid);
+                }
+                dParams = new ECNamedDomainParameters(
+                         oid, x9.getCurve(), x9.getG(), x9.getN(), x9.getH(), x9.getSeed());
             }
             else
             {
                 x9 = X9ECParameters.getInstance(params.getParameters());
+                dParams = new ECDomainParameters(
+                         x9.getCurve(), x9.getG(), x9.getN(), x9.getH(), x9.getSeed());
             }
 
             ASN1OctetString key = new DEROctetString(keyInfo.getPublicKeyData().getBytes());
             X9ECPoint derQ = new X9ECPoint(x9.getCurve(), key);
-
-            // TODO We lose any named parameters here
-            
-            ECDomainParameters dParams = new ECDomainParameters(
-                    x9.getCurve(), x9.getG(), x9.getN(), x9.getH(), x9.getSeed());
 
             return new ECPublicKeyParameters(derQ.getPoint(), dParams);
         }

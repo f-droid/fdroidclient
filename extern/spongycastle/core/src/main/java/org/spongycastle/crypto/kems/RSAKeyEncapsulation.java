@@ -38,7 +38,6 @@ public class RSAKeyEncapsulation
         this.rnd = rnd;
     }
 
-
     /**
      * Initialise the RSA-KEM.
      *
@@ -51,12 +50,9 @@ public class RSAKeyEncapsulation
         {
             throw new IllegalArgumentException("RSA key required");
         }
-        else
-        {
-            this.key = (RSAKeyParameters)key;
-        }
-    }
 
+        this.key = (RSAKeyParameters)key;
+    }
 
     /**
      * Generate and encapsulate a random session key.
@@ -79,24 +75,14 @@ public class RSAKeyEncapsulation
 
         // Generate the ephemeral random and encode it    
         BigInteger r = BigIntegers.createRandomInRange(ZERO, n.subtract(ONE), rnd);
-        byte[] R = BigIntegers.asUnsignedByteArray((n.bitLength() + 7) / 8, r);
 
         // Encrypt the random and encode it     
         BigInteger c = r.modPow(e, n);
         byte[] C = BigIntegers.asUnsignedByteArray((n.bitLength() + 7) / 8, c);
         System.arraycopy(C, 0, out, outOff, C.length);
 
-
-        // Initialise the KDF
-        kdf.init(new KDFParameters(R, null));
-
-        // Generate the secret key
-        byte[] K = new byte[keyLen];
-        kdf.generateBytes(K, 0, K.length);
-
-        return new KeyParameter(K);
+        return generateKey(n, r, keyLen);
     }
-
 
     /**
      * Generate and encapsulate a random session key.
@@ -109,7 +95,6 @@ public class RSAKeyEncapsulation
     {
         return encrypt(out, 0, keyLen);
     }
-
 
     /**
      * Decrypt an encapsulated session key.
@@ -138,16 +123,8 @@ public class RSAKeyEncapsulation
 
         // Decrypt the ephemeral random and encode it
         BigInteger r = c.modPow(d, n);
-        byte[] R = BigIntegers.asUnsignedByteArray((n.bitLength() + 7) / 8, r);
 
-        // Initialise the KDF
-        kdf.init(new KDFParameters(R, null));
-
-        // Generate the secret key
-        byte[] K = new byte[keyLen];
-        kdf.generateBytes(K, 0, K.length);
-
-        return new KeyParameter(K);
+        return generateKey(n, r, keyLen);
     }
 
     /**
@@ -160,5 +137,19 @@ public class RSAKeyEncapsulation
     public CipherParameters decrypt(byte[] in, int keyLen)
     {
         return decrypt(in, 0, in.length, keyLen);
+    }
+
+    protected KeyParameter generateKey(BigInteger n, BigInteger r, int keyLen)
+    {
+        byte[] R = BigIntegers.asUnsignedByteArray((n.bitLength() + 7) / 8, r);
+
+        // Initialise the KDF
+        kdf.init(new KDFParameters(R, null));
+
+        // Generate the secret key
+        byte[] K = new byte[keyLen];
+        kdf.generateBytes(K, 0, K.length);
+
+        return new KeyParameter(K);
     }
 }

@@ -11,7 +11,7 @@ import org.spongycastle.crypto.params.KeyParameter;
 /**
  * HMAC-based Extract-and-Expand Key Derivation Function (HKDF) implemented
  * according to IETF RFC 5869, May 2010 as specified by H. Krawczyk, IBM
- * Research & P. Eronen, Nokia. It uses a HMac internally to compute de OKM
+ * Research &amp; P. Eronen, Nokia. It uses a HMac internally to compute de OKM
  * (output keying material) and is likely to have better security properties
  * than KDF's based on just a hash function.
  */

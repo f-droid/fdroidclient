@@ -1,5 +1,6 @@
 package org.spongycastle.asn1.x9;
 
+import java.math.BigInteger;
 import java.util.Enumeration;
 
 import org.spongycastle.asn1.ASN1Encodable;
@@ -36,6 +37,29 @@ public class DHDomainParameters
 
         throw new IllegalArgumentException("Invalid DHDomainParameters: "
             + obj.getClass().getName());
+    }
+
+    public DHDomainParameters(BigInteger p, BigInteger g, BigInteger q, BigInteger j,
+        DHValidationParms validationParms)
+    {
+        if (p == null)
+        {
+            throw new IllegalArgumentException("'p' cannot be null");
+        }
+        if (g == null)
+        {
+            throw new IllegalArgumentException("'g' cannot be null");
+        }
+        if (q == null)
+        {
+            throw new IllegalArgumentException("'q' cannot be null");
+        }
+
+        this.p = new ASN1Integer(p);
+        this.g = new ASN1Integer(g);
+        this.q = new ASN1Integer(q);
+        this.j = new ASN1Integer(j);
+        this.validationParms = validationParms;
     }
 
     public DHDomainParameters(ASN1Integer p, ASN1Integer g, ASN1Integer q, ASN1Integer j,

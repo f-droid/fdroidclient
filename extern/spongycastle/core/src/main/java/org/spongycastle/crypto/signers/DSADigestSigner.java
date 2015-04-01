@@ -5,9 +5,9 @@ import java.math.BigInteger;
 
 import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1Encoding;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DSA;
@@ -142,8 +142,8 @@ public class DSADigestSigner
         throws IOException
     {
         ASN1EncodableVector v = new ASN1EncodableVector();
-        v.add(new DERInteger(r));
-        v.add(new DERInteger(s));
+        v.add(new ASN1Integer(r));
+        v.add(new ASN1Integer(s));
 
         return new DERSequence(v).getEncoded(ASN1Encoding.DER);
     }
@@ -156,8 +156,8 @@ public class DSADigestSigner
 
         return new BigInteger[]
         {
-            ((DERInteger)s.getObjectAt(0)).getValue(),
-            ((DERInteger)s.getObjectAt(1)).getValue()
+            ((ASN1Integer)s.getObjectAt(0)).getValue(),
+            ((ASN1Integer)s.getObjectAt(1)).getValue()
         };
     }
 }

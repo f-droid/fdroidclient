@@ -4,16 +4,64 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Vector;
 
+/**
+ * ASN.1 <code>SEQUENCE</code> and <code>SEQUENCE OF</code> constructs.
+ * <p>
+ * DER form is always definite form length fields, while
+ * BER support uses indefinite form.
+ * <hr>
+ * <p><b>X.690</b></p>
+ * <p><b>8: Basic encoding rules</b></p>
+ * <p><b>8.9 Encoding of a sequence value </b></p>
+ * 8.9.1 The encoding of a sequence value shall be constructed.
+ * <p>
+ * <b>8.9.2</b> The contents octets shall consist of the complete
+ * encoding of one data value from each of the types listed in
+ * the ASN.1 definition of the sequence type, in the order of
+ * their appearance in the definition, unless the type was referenced
+ * with the keyword <b>OPTIONAL</b> or the keyword <b>DEFAULT</b>.
+ * </p><p>
+ * <b>8.9.3</b> The encoding of a data value may, but need not,
+ * be present for a type which was referenced with the keyword
+ * <b>OPTIONAL</b> or the keyword <b>DEFAULT</b>.
+ * If present, it shall appear in the encoding at the point
+ * corresponding to the appearance of the type in the ASN.1 definition.
+ * </p><p>
+ * <b>8.10 Encoding of a sequence-of value </b>
+ * </p><p>
+ * <b>8.10.1</b> The encoding of a sequence-of value shall be constructed.
+ * <p>
+ * <b>8.10.2</b> The contents octets shall consist of zero,
+ * one or more complete encodings of data values from the type listed in
+ * the ASN.1 definition.
+ * <p>
+ * <b>8.10.3</b> The order of the encodings of the data values shall be
+ * the same as the order of the data values in the sequence-of value to
+ * be encoded.
+ * </p>
+ * <p><b>9: Canonical encoding rules</b></p>
+ * <p><b>9.1 Length forms</b></p>
+ * If the encoding is constructed, it shall employ the indefinite length form.
+ * If the encoding is primitive, it shall include the fewest length octets necessary.
+ * [Contrast with 8.1.3.2 b).]
+ *
+ * <p><b>11: Restrictions on BER employed by both CER and DER</b></p>
+ * <p><b>11.5 Set and sequence components with default value</b></p>
+ * The encoding of a set value or sequence value shall not include
+ * an encoding for any component value which is equal to
+ * its default value.
+ */
 public abstract class ASN1Sequence
     extends ASN1Primitive
 {
     protected Vector seq = new Vector();
 
     /**
-     * return an ASN1Sequence from the given object.
+     * Return an ASN1Sequence from the given object.
      *
      * @param obj the object we want converted.
      * @exception IllegalArgumentException if the object cannot be converted.
+     * @return an ASN1Sequence instance, or null.
      */
     public static ASN1Sequence getInstance(
         Object  obj)
@@ -65,6 +113,7 @@ public abstract class ASN1Sequence
      *          false otherwise.
      * @exception IllegalArgumentException if the tagged object cannot
      *          be converted.
+     * @return an ASN1Sequence instance.
      */
     public static ASN1Sequence getInstance(
         ASN1TaggedObject    obj,
@@ -110,14 +159,15 @@ public abstract class ASN1Sequence
     }
 
     /**
-     * create an empty sequence
+     * Create an empty sequence
      */
     protected ASN1Sequence()
     {
     }
 
     /**
-     * create a sequence containing one object
+     * Create a sequence containing one object
+     * @param obj the object to be put in the SEQUENCE.
      */
     protected ASN1Sequence(
         ASN1Encodable obj)
@@ -126,7 +176,8 @@ public abstract class ASN1Sequence
     }
 
     /**
-     * create a sequence containing a vector of objects.
+     * Create a sequence containing a vector of objects.
+     * @param v the vector of objects to be put in the SEQUENCE
      */
     protected ASN1Sequence(
         ASN1EncodableVector v)
@@ -138,7 +189,7 @@ public abstract class ASN1Sequence
     }
 
     /**
-     * create a sequence containing a vector of objects.
+     * Create a sequence containing a vector of objects.
      */
     protected ASN1Sequence(
         ASN1Encodable[]   array)
@@ -209,7 +260,7 @@ public abstract class ASN1Sequence
     }
 
     /**
-     * return the object at the sequence position indicated by index.
+     * Return the object at the sequence position indicated by index.
      *
      * @param index the sequence number (starting at zero) of the object
      * @return the object at the sequence position indicated by index.
@@ -221,7 +272,7 @@ public abstract class ASN1Sequence
     }
 
     /**
-     * return the number of objects in this sequence.
+     * Return the number of objects in this sequence.
      *
      * @return the number of objects in this sequence.
      */
@@ -290,6 +341,10 @@ public abstract class ASN1Sequence
         return encObj;
     }
 
+    /**
+     * Change current SEQUENCE object to be encoded as {@link DERSequence}.
+     * This is part of Distinguished Encoding Rules form serialization.
+     */
     ASN1Primitive toDERObject()
     {
         ASN1Sequence derSeq = new DERSequence();
@@ -299,6 +354,10 @@ public abstract class ASN1Sequence
         return derSeq;
     }
 
+    /**
+     * Change current SEQUENCE object to be encoded as {@link DLSequence}.
+     * This is part of Direct Length form serialization.
+     */
     ASN1Primitive toDLObject()
     {
         ASN1Sequence dlSeq = new DLSequence();

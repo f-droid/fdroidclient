@@ -38,6 +38,20 @@ public class X9FieldID
      * @param m  The exponent <code>m</code> of
      * <code>F<sub>2<sup>m</sup></sub></code>.
      * @param k1 The integer <code>k1</code> where <code>x<sup>m</sup> +
+     * x<sup>k1</sup> + 1</code>
+     * represents the reduction polynomial <code>f(z)</code>.
+     */
+    public X9FieldID(int m, int k1)
+    {
+        this(m, k1, 0, 0);
+    }
+
+    /**
+     * Constructor for elliptic curves over binary fields
+     * <code>F<sub>2<sup>m</sup></sub></code>.
+     * @param m  The exponent <code>m</code> of
+     * <code>F<sub>2<sup>m</sup></sub></code>.
+     * @param k1 The integer <code>k1</code> where <code>x<sup>m</sup> +
      * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
      * represents the reduction polynomial <code>f(z)</code>.
      * @param k2 The integer <code>k2</code> where <code>x<sup>m</sup> +
@@ -55,11 +69,21 @@ public class X9FieldID
         
         if (k2 == 0) 
         {
+            if (k3 != 0)
+            {
+                throw new IllegalArgumentException("inconsistent k values");
+            }
+
             fieldIdParams.add(tpBasis);
             fieldIdParams.add(new ASN1Integer(k1));
         } 
         else 
         {
+            if (k2 <= k1 || k3 <= k2)
+            {
+                throw new IllegalArgumentException("inconsistent k values");
+            }
+
             fieldIdParams.add(ppBasis);
             ASN1EncodableVector pentanomialParams = new ASN1EncodableVector();
             pentanomialParams.add(new ASN1Integer(k1));

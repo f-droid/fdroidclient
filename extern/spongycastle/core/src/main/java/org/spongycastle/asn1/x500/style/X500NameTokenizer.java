@@ -6,7 +6,7 @@ package org.spongycastle.asn1.x500.style;
  * lightweight Java environment don't support classes like
  * StringTokenizer.
  */
-class X500NameTokenizer
+public class X500NameTokenizer
 {
     private String          value;
     private int             index;

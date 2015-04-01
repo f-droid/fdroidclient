@@ -2,11 +2,11 @@ package org.spongycastle.asn1.x509;
 
 import java.io.IOException;
 
+import org.spongycastle.asn1.ASN1Boolean;
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Primitive;
-import org.spongycastle.asn1.DERBoolean;
 
 /**
  * an object for the elements in the X.509 V3 extension block.
@@ -173,7 +173,7 @@ public class X509Extension
     ASN1OctetString     value;
 
     public X509Extension(
-        DERBoolean              critical,
+        ASN1Boolean             critical,
         ASN1OctetString         value)
     {
         this.critical = critical.isTrue();

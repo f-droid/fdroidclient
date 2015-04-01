@@ -10,7 +10,7 @@ import java.util.List;
 import org.spongycastle.util.Arrays;
 
 /**
- * A polynomial with {@link BigInteger} coefficients.<br/>
+ * A polynomial with {@link BigInteger} coefficients.<br>
  * Some methods (like <code>add</code>) change the polynomial, others (like <code>mult</code>) do
  * not but return the result as a new polynomial.
  */
@@ -95,7 +95,7 @@ public class BigIntPolynomial
 
     /**
      * Multiplies the polynomial by another, taking the indices mod N. Does not
-     * change this polynomial but returns the result as a new polynomial.<br/>
+     * change this polynomial but returns the result as a new polynomial.<br>
      * Both polynomials must have the same number of coefficients.
      *
      * @param poly2 the polynomial to multiply by
@@ -257,7 +257,7 @@ public class BigIntPolynomial
     }
 
     /**
-     * Divides each coefficient by a <code>BigInteger</code> and rounds the result to the nearest whole number.<br/>
+     * Divides each coefficient by a <code>BigInteger</code> and rounds the result to the nearest whole number.<br>
      * Does not return a new polynomial but modifies this polynomial.
      *
      * @param divisor the number to divide by

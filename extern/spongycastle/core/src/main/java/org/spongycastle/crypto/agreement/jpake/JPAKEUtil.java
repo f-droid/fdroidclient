@@ -14,13 +14,11 @@ import org.spongycastle.util.Strings;
 
 /**
  * Primitives needed for a J-PAKE exchange.
- * <p/>
- * <p/>
+ * <p>
  * The recommended way to perform a J-PAKE exchange is by using
  * two {@link JPAKEParticipant}s.  Internally, those participants
  * call these primitive operations in {@link JPAKEUtil}.
- * <p/>
- * <p/>
+ * <p>
  * The primitives, however, can be used without a {@link JPAKEParticipant}
  * if needed.
  */
@@ -31,8 +29,7 @@ public class JPAKEUtil
 
     /**
      * Return a value that can be used as x1 or x3 during round 1.
-     * <p/>
-     * <p/>
+     * <p>
      * The returned value is a random value in the range <tt>[0, q-1]</tt>.
      */
     public static BigInteger generateX1(
@@ -46,8 +43,7 @@ public class JPAKEUtil
 
     /**
      * Return a value that can be used as x2 or x4 during round 1.
-     * <p/>
-     * <p/>
+     * <p>
      * The returned value is a random value in the range <tt>[1, q-1]</tt>.
      */
     public static BigInteger generateX2(
@@ -188,10 +184,9 @@ public class JPAKEUtil
 
     /**
      * Validates that ga is not 1.
-     * <p/>
-     * <p/>
+     * <p>
      * As described by Feng Hao...
-     * <p/>
+     * <p>
      * <blockquote>
      * Alice could simply check ga != 1 to ensure it is a generator.
      * In fact, as we will explain in Section 3, (x1 + x3 + x4 ) is random over Zq even in the face of active attacks.
@@ -250,8 +245,6 @@ public class JPAKEUtil
      * Calculates the keying material, which can be done after round 2 has completed.
      * A session key must be derived from this key material using a secure key derivation function (KDF).
      * The KDF used to derive the key is handled externally (i.e. not by {@link JPAKEParticipant}).
-     * <p/>
-     * <p/>
      * <pre>
      * KeyingMaterial = (B/g^{x2*x4*s})^x2
      * </pre>
@@ -326,8 +319,6 @@ public class JPAKEUtil
      * Calculates the MacTag (to be used for key confirmation), as defined by
      * <a href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST SP 800-56A Revision 1</a>,
      * Section 8.2 Unilateral Key Confirmation for Key Agreement Schemes.
-     * <p/>
-     * <p/>
      * <pre>
      * MacTag = HMAC(MacKey, MacLen, MacData)
      *
@@ -339,10 +330,9 @@ public class JPAKEUtil
      * is always the initiator for key confirmation.
      *
      * HMAC = {@link HMac} used with the given {@link Digest}
-     * H = The given {@link Digest}</li>
+     * H = The given {@link Digest}
      * MacLen = length of MacTag
      * </pre>
-     * <p/>
      */
     public static BigInteger calculateMacTag(
         String participantId,
@@ -383,8 +373,6 @@ public class JPAKEUtil
 
     /**
      * Calculates the MacKey (i.e. the key to use when calculating the MagTag for key confirmation).
-     * <p/>
-     * <p/>
      * <pre>
      * MacKey = H(K || "JPAKE_KC")
      * </pre>
@@ -407,7 +395,6 @@ public class JPAKEUtil
 
     /**
      * Validates the MacTag received from the partner participant.
-     * <p/>
      *
      * @param partnerMacTag the MacTag received from the partner.
      * @throws CryptoException if the participantId strings are equal.

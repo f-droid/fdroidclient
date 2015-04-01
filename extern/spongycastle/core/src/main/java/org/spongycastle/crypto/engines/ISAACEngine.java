@@ -5,7 +5,7 @@ import org.spongycastle.crypto.DataLengthException;
 import org.spongycastle.crypto.OutputLengthException;
 import org.spongycastle.crypto.StreamCipher;
 import org.spongycastle.crypto.params.KeyParameter;
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.util.Pack;
 
 /**
  * Implementation of Bob Jenkin's ISAAC (Indirection Shift Accumulate Add and Count).
@@ -69,7 +69,7 @@ public class ISAACEngine
         return out;
     }
     
-    public void processBytes(
+    public int processBytes(
         byte[]  in, 
         int     inOff, 
         int     len, 
@@ -101,6 +101,8 @@ public class ISAACEngine
             out[i+outOff] = (byte)(keyStream[index]^in[i+inOff]);
             index = (index + 1) & 1023;
         }
+
+        return len;
     }
     
     public String getAlgorithmName()

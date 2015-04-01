@@ -2,6 +2,8 @@ package org.spongycastle.jce.spec;
 
 import java.security.spec.AlgorithmParameterSpec;
 
+import org.spongycastle.util.Arrays;
+
 /**
  * Parameter spec for an integrated encryptor, as in IEEE P1363a
  */
@@ -12,6 +14,7 @@ public class IESParameterSpec
     private byte[] encoding;
     private int macKeySize;
     private int cipherKeySize;
+    private byte[] nonce;
 
 
     /**
@@ -44,6 +47,25 @@ public class IESParameterSpec
         int macKeySize,
         int cipherKeySize)
     {
+        this(derivation, encoding, macKeySize, cipherKeySize, null);
+    }
+
+    /**
+     * Set the IES engine parameters.
+     *
+     * @param derivation    the optional derivation vector for the KDF.
+     * @param encoding      the optional encoding vector for the KDF.
+     * @param macKeySize    the key size (in bits) for the MAC.
+     * @param cipherKeySize the key size (in bits) for the block cipher.
+     * @param nonce         an IV to use initialising the block cipher.
+     */
+    public IESParameterSpec(
+        byte[] derivation,
+        byte[] encoding,
+        int macKeySize,
+        int cipherKeySize,
+        byte[] nonce)
+    {
         if (derivation != null)
         {
             this.derivation = new byte[derivation.length];
@@ -66,15 +88,15 @@ public class IESParameterSpec
 
         this.macKeySize = macKeySize;
         this.cipherKeySize = cipherKeySize;
+        this.nonce = Arrays.clone(nonce);
     }
-
 
     /**
      * return the derivation vector.
      */
     public byte[] getDerivationV()
     {
-        return derivation;
+        return Arrays.clone(derivation);
     }
 
     /**
@@ -82,7 +104,7 @@ public class IESParameterSpec
      */
     public byte[] getEncodingV()
     {
-        return encoding;
+        return Arrays.clone(encoding);
     }
 
     /**
@@ -101,4 +123,13 @@ public class IESParameterSpec
         return cipherKeySize;
     }
 
+    /**
+     * Return the nonce (IV) value to be associated with message.
+     *
+     * @return block cipher IV for message.
+     */
+    public byte[] getNonce()
+    {
+        return Arrays.clone(nonce);
+    }
 }

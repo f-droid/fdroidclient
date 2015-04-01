@@ -11,6 +11,31 @@ import org.spongycastle.crypto.params.KeyParameter;
 
 /**
  * This KDF has been defined by the publicly available NIST SP 800-108 specification.
+ * NIST SP800-108 allows for alternative orderings of the input fields, meaning that the input can be formated in multiple ways.
+ * There are 3 supported formats:  - Below [i]_2 is a counter of r-bits length concatenated to the fixedInputData.
+ * <ul>
+ * <li>1: K(i) := PRF( KI, [i]_2 || Label || 0x00 || Context || [L]_2 ) with the counter at the very beginning of the fixedInputData (The default implementation has this format)</li>
+ * <li>2: K(i) := PRF( KI, Label || 0x00 || Context || [L]_2 || [i]_2 ) with the counter at the very end of the fixedInputData</li>
+ * <li>3a: K(i) := PRF( KI, Label || 0x00 || [i]_2 || Context || [L]_2 ) OR:</li>
+ * <li>3b: K(i) := PRF( KI, Label || 0x00 || [i]_2 || [L]_2 || Context ) OR:</li>
+ * <li>3c: K(i) := PRF( KI, Label || [i]_2 || 0x00 || Context || [L]_2 ) etc... with the counter somewhere in the 'middle' of the fixedInputData.</li>
+ * </ul>
+ * </p>
+ * <p>
+ * This function must be called with the following KDFCounterParameters():
+ *  - KI      <br/>
+ *  - The part of the fixedInputData that comes BEFORE the counter OR null  <br/>
+ *  - the part of the fixedInputData that comes AFTER the counter OR null <br/>
+ *  - the length of the counter in bits (not bytes)
+ *  </p>
+ * Resulting function calls assuming an 8 bit counter.
+ * <ul>
+ * <li>1.  KDFCounterParameters(ki, 	null, 									"Label || 0x00 || Context || [L]_2]",	8);</li>
+ * <li>2.  KDFCounterParameters(ki, 	"Label || 0x00 || Context || [L]_2]", 	null,									8);</li>
+ * <li>3a. KDFCounterParameters(ki, 	"Label || 0x00",						"Context || [L]_2]",					8);</li>
+ * <li>3b. KDFCounterParameters(ki, 	"Label || 0x00",						"[L]_2] || Context",					8);</li>
+ * <li>3c. KDFCounterParameters(ki, 	"Label", 								"0x00 || Context || [L]_2]",			8);</li>
+ * </ul>
  */
 public class KDFCounterBytesGenerator
     implements MacDerivationFunction
@@ -27,7 +52,8 @@ public class KDFCounterBytesGenerator
     private final int h;
 
     // fields set by init
-    private byte[] fixedInputData;
+    private byte[] fixedInputDataCtrPrefix;
+    private byte[] fixedInputData_afterCtr;
     private int maxSizeExcl;
     // ios is i defined as an octet string (the binary representation)
     private byte[] ios;
@@ -61,7 +87,8 @@ public class KDFCounterBytesGenerator
 
         // --- set arguments ---
 
-        this.fixedInputData = kdfParams.getFixedInputData();
+        this.fixedInputDataCtrPrefix = kdfParams.getFixedInputDataCounterPrefix();
+        this.fixedInputData_afterCtr = kdfParams.getFixedInputDataCounterSuffix();
 
         int r = kdfParams.getR();
         this.ios = new byte[r / 8];
@@ -145,8 +172,9 @@ public class KDFCounterBytesGenerator
 
 
         // special case for K(0): K(0) is empty, so no update
+        prf.update(fixedInputDataCtrPrefix, 0, fixedInputDataCtrPrefix.length);
         prf.update(ios, 0, ios.length);
-        prf.update(fixedInputData, 0, fixedInputData.length);
+        prf.update(fixedInputData_afterCtr, 0, fixedInputData_afterCtr.length);
         prf.doFinal(k, 0);
     }
 }

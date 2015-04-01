@@ -7,6 +7,7 @@ import org.spongycastle.crypto.params.GOST3410KeyGenerationParameters;
 import org.spongycastle.crypto.params.GOST3410Parameters;
 import org.spongycastle.crypto.params.GOST3410PrivateKeyParameters;
 import org.spongycastle.crypto.params.GOST3410PublicKeyParameters;
+import org.spongycastle.math.ec.WNafUtil;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -19,8 +20,6 @@ import java.security.SecureRandom;
 public class GOST3410KeyPairGenerator
         implements AsymmetricCipherKeyPairGenerator
     {
-        private static final BigInteger ZERO = BigInteger.valueOf(0);
-
         private GOST3410KeyGenerationParameters param;
 
         public void init(
@@ -39,11 +38,29 @@ public class GOST3410KeyPairGenerator
             p = GOST3410Params.getP();
             a = GOST3410Params.getA();
 
-            do
+            int minWeight = 64;
+            for (;;)
             {
                 x = new BigInteger(256, random);
+
+                if (x.signum() < 1 || x.compareTo(q) >= 0)
+                {
+                    continue;
+                }
+
+                /*
+                 * Require a minimum weight of the NAF representation, since low-weight primes may be
+                 * weak against a version of the number-field-sieve for the discrete-logarithm-problem.
+                 * 
+                 * See "The number field sieve for integers of low weight", Oliver Schirokauer.
+                 */
+                if (WNafUtil.getNafWeight(x) < minWeight)
+                {
+                    continue;
+                }
+
+                break;
             }
-            while (x.equals(ZERO) || x.compareTo(q) >= 0);
 
             //
             // calculate the public key.

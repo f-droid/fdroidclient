@@ -5,22 +5,23 @@ import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
 import org.spongycastle.crypto.InvalidCipherTextException;
 import org.spongycastle.crypto.Mac;
+import org.spongycastle.crypto.OutputLengthException;
 import org.spongycastle.crypto.macs.CMac;
 import org.spongycastle.crypto.params.AEADParameters;
 import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.util.Arrays;
 
 /**
- * A Two-Pass Authenticated-Encryption Scheme Optimized for Simplicity and 
+ * A Two-Pass Authenticated-Encryption Scheme Optimized for Simplicity and
  * Efficiency - by M. Bellare, P. Rogaway, D. Wagner.
- * 
+ *
  * http://www.cs.ucdavis.edu/~rogaway/papers/eax.pdf
- * 
- * EAX is an AEAD scheme based on CTR and OMAC1/CMAC, that uses a single block 
- * cipher to encrypt and authenticate data. It's on-line (the length of a 
+ *
+ * EAX is an AEAD scheme based on CTR and OMAC1/CMAC, that uses a single block
+ * cipher to encrypt and authenticate data. It's on-line (the length of a
  * message isn't needed to begin processing it), has good performances, it's
  * simple and provably secure (provided the underlying block cipher is secure).
- * 
+ *
  * Of course, this implementations is NOT thread-safe.
  */
 public class EAXBlockCipher
@@ -43,7 +44,7 @@ public class EAXBlockCipher
     private byte[] nonceMac;
     private byte[] associatedTextMac;
     private byte[] macBlock;
-    
+
     private int macSize;
     private byte[] bufBlock;
     private int bufOff;
@@ -61,7 +62,6 @@ public class EAXBlockCipher
         blockSize = cipher.getBlockSize();
         mac = new CMac(cipher);
         macBlock = new byte[blockSize];
-        bufBlock = new byte[blockSize * 2];
         associatedTextMac = new byte[mac.getMacSize()];
         nonceMac = new byte[mac.getMacSize()];
         this.cipher = new SICBlockCipher(cipher);
@@ -113,6 +113,8 @@ public class EAXBlockCipher
             throw new IllegalArgumentException("invalid parameters passed to EAX");
         }
 
+        bufBlock = new byte[forEncryption ? blockSize : (blockSize + macSize)];
+
         byte[] tag = new byte[blockSize];
 
         // Key reuse implemented in CBC mode of underlying CMac
@@ -123,9 +125,9 @@ public class EAXBlockCipher
         mac.update(nonce, 0, nonce.length);
         mac.doFinal(nonceMac, 0);
 
-        // Same BlockCipher underlies this and the mac, so reuse last key on cipher 
+        // Same BlockCipher underlies this and the mac, so reuse last key on cipher
         cipher.init(true, new ParametersWithIV(null, nonceMac));
-        
+
         reset();
     }
 
@@ -218,6 +220,11 @@ public class EAXBlockCipher
     {
         initCipher();
 
+        if (in.length < (inOff + len))
+        {
+            throw new DataLengthException("Input buffer too short");
+        }
+
         int resultLen = 0;
 
         for (int i = 0; i != len; i++)
@@ -240,12 +247,11 @@ public class EAXBlockCipher
 
         if (forEncryption)
         {
-            if (out.length < (outOff + extra))
+            if (out.length < (outOff + extra + macSize))
             {
-                throw new DataLengthException("Output buffer too short");
+                throw new OutputLengthException("Output buffer too short");
             }
             cipher.processBlock(bufBlock, 0, tmp, 0);
-            cipher.processBlock(bufBlock, blockSize, tmp, blockSize);
 
             System.arraycopy(tmp, 0, out, outOff, extra);
 
@@ -261,6 +267,10 @@ public class EAXBlockCipher
         }
         else
         {
+            if (out.length < (outOff + extra - macSize))
+            {
+                throw new OutputLengthException("Output buffer too short");
+            }
             if (extra < macSize)
             {
                 throw new InvalidCipherTextException("data too short");
@@ -270,7 +280,6 @@ public class EAXBlockCipher
                 mac.update(bufBlock, 0, extra - macSize);
 
                 cipher.processBlock(bufBlock, 0, tmp, 0);
-                cipher.processBlock(bufBlock, blockSize, tmp, blockSize);
 
                 System.arraycopy(tmp, 0, out, outOff, extra - macSize);
             }
@@ -329,6 +338,10 @@ public class EAXBlockCipher
 
         if (bufOff == bufBlock.length)
         {
+            if (out.length < (outOff + blockSize))
+            {
+                throw new OutputLengthException("Output buffer is too short");
+            }
             // TODO Could move the processByte(s) calls to here
 //            initCipher();
 
@@ -347,8 +360,12 @@ public class EAXBlockCipher
                 size = cipher.processBlock(bufBlock, 0, out, outOff);
             }
 
-            bufOff = blockSize;
-            System.arraycopy(bufBlock, blockSize, bufBlock, 0, blockSize);
+            bufOff = 0;
+            if (!forEncryption)
+            {
+                System.arraycopy(bufBlock, blockSize, bufBlock, 0, macSize);
+                bufOff = macSize;
+            }
 
             return size;
         }

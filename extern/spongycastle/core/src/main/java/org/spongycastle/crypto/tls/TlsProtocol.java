@@ -12,6 +12,7 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 import org.spongycastle.crypto.Digest;
+import org.spongycastle.crypto.prng.RandomGenerator;
 import org.spongycastle.util.Arrays;
 import org.spongycastle.util.Integers;
 
@@ -52,6 +53,7 @@ public abstract class TlsProtocol
     private ByteQueue applicationDataQueue = new ByteQueue();
     private ByteQueue alertQueue = new ByteQueue(2);
     private ByteQueue handshakeQueue = new ByteQueue();
+//    private ByteQueue heartbeatQueue = new ByteQueue();
 
     /*
      * The Record Stream we use
@@ -227,7 +229,13 @@ public abstract class TlsProtocol
         }
         case ContentType.heartbeat:
         {
+            if (!appDataReady)
+            {
+                throw new TlsFatalAlert(AlertDescription.unexpected_message);
+            }
             // TODO[RFC 6520]
+//            heartbeatQueue.addData(buf, offset, len);
+//            processHeartbeat();
         }
         default:
             /*
@@ -378,17 +386,25 @@ public abstract class TlsProtocol
                 throw new TlsFatalAlert(AlertDescription.decode_error);
             }
 
-            if (this.receivedChangeCipherSpec)
+            if (this.receivedChangeCipherSpec
+                || alertQueue.size() > 0
+                || handshakeQueue.size() > 0)
             {
                 throw new TlsFatalAlert(AlertDescription.unexpected_message);
             }
 
+            recordStream.receivedReadCipherSpec();
+
             this.receivedChangeCipherSpec = true;
 
-            recordStream.receivedReadCipherSpec();
-    
             handleChangeCipherSpecMessage();
         }
+    }
+
+    protected int applicationDataAvailable()
+        throws IOException
+    {
+        return applicationDataQueue.size();
     }
 
     /**
@@ -822,18 +838,16 @@ public abstract class TlsProtocol
         }
     }
 
-    protected static byte[] createRandomBlock(SecureRandom random)
+    protected static byte[] createRandomBlock(boolean useGMTUnixTime, RandomGenerator randomGenerator)
     {
-        random.setSeed(System.currentTimeMillis());
-
         byte[] result = new byte[32];
-        random.nextBytes(result);
-        /*
-         * The consensus seems to be that using the time here is neither all that useful, nor
-         * secure. Perhaps there could be an option to (re-)enable it. Instead, we seed the random
-         * source with the current time to retain it's main benefit.
-         */
-//        TlsUtils.writeGMTUnixTime(result, 0);
+        randomGenerator.nextBytes(result);
+
+        if (useGMTUnixTime)
+        {
+            TlsUtils.writeGMTUnixTime(result, 0);
+        }
+
         return result;
     }
 
@@ -987,18 +1001,31 @@ public abstract class TlsProtocol
 
         switch (ciphersuite)
         {
+        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256:
         case CipherSuite.TLS_DH_DSS_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_DH_DSS_WITH_AES_128_GCM_SHA256:
         case CipherSuite.TLS_DH_DSS_WITH_AES_256_CBC_SHA256:
+        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256:
         case CipherSuite.TLS_DH_RSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_DH_RSA_WITH_AES_128_GCM_SHA256:
         case CipherSuite.TLS_DH_RSA_WITH_AES_256_CBC_SHA256:
+        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256:
         case CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_DHE_DSS_WITH_AES_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_DSS_WITH_AES_256_CBC_SHA256:
+        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CCM:
+        case CipherSuite.TLS_DHE_PSK_WITH_CAMELLIA_128_GCM_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_128_CCM_8:
@@ -1006,14 +1033,28 @@ public abstract class TlsProtocol
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA256:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_CCM_8:
+        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256:
+        case CipherSuite.TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256:
         case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256:
+        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256:
+        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:
+        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:
+        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:
         case CipherSuite.TLS_PSK_DHE_WITH_AES_128_CCM_8:
         case CipherSuite.TLS_PSK_DHE_WITH_AES_256_CCM_8:
         case CipherSuite.TLS_PSK_WITH_AES_128_CCM:
@@ -1021,7 +1062,9 @@ public abstract class TlsProtocol
         case CipherSuite.TLS_PSK_WITH_AES_128_GCM_SHA256:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM:
         case CipherSuite.TLS_PSK_WITH_AES_256_CCM_8:
+        case CipherSuite.TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256:
         case CipherSuite.TLS_RSA_PSK_WITH_AES_128_GCM_SHA256:
+        case CipherSuite.TLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256:
         case CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA256:
         case CipherSuite.TLS_RSA_WITH_AES_128_CCM:
         case CipherSuite.TLS_RSA_WITH_AES_128_CCM_8:
@@ -1029,6 +1072,9 @@ public abstract class TlsProtocol
         case CipherSuite.TLS_RSA_WITH_AES_256_CBC_SHA256:
         case CipherSuite.TLS_RSA_WITH_AES_256_CCM:
         case CipherSuite.TLS_RSA_WITH_AES_256_CCM_8:
+        case CipherSuite.TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256:
+        case CipherSuite.TLS_RSA_WITH_CAMELLIA_128_GCM_SHA256:
+        case CipherSuite.TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256:
         case CipherSuite.TLS_RSA_WITH_NULL_SHA256:
         {
             if (isTLSv12)
@@ -1038,22 +1084,39 @@ public abstract class TlsProtocol
             throw new TlsFatalAlert(AlertDescription.illegal_parameter);
         }
 
+        case CipherSuite.TLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_DH_DSS_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_DH_RSA_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_DHE_DSS_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_DHE_DSS_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_DHE_PSK_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_DHE_RSA_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:
+        case CipherSuite.TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384:
+        case CipherSuite.TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384:
+        case CipherSuite.TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384:
+        case CipherSuite.TLS_ECDHE_RSA_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_PSK_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_PSK_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_RSA_PSK_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384:
         case CipherSuite.TLS_RSA_WITH_AES_256_GCM_SHA384:
+        case CipherSuite.TLS_RSA_WITH_CAMELLIA_256_GCM_SHA384:
         {
             if (isTLSv12)
             {
@@ -1063,12 +1126,16 @@ public abstract class TlsProtocol
         }
 
         case CipherSuite.TLS_DHE_PSK_WITH_AES_256_CBC_SHA384:
+        case CipherSuite.TLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:
         case CipherSuite.TLS_DHE_PSK_WITH_NULL_SHA384:
         case CipherSuite.TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384:
+        case CipherSuite.TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384:
         case CipherSuite.TLS_ECDHE_PSK_WITH_NULL_SHA384:
         case CipherSuite.TLS_PSK_WITH_AES_256_CBC_SHA384:
+        case CipherSuite.TLS_PSK_WITH_CAMELLIA_256_CBC_SHA384:
         case CipherSuite.TLS_PSK_WITH_NULL_SHA384:
         case CipherSuite.TLS_RSA_PSK_WITH_AES_256_CBC_SHA384:
+        case CipherSuite.TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384:
         case CipherSuite.TLS_RSA_PSK_WITH_NULL_SHA384:
         {
             if (isTLSv12)

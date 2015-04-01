@@ -6,7 +6,7 @@ import org.spongycastle.crypto.Digest;
 import org.spongycastle.crypto.DigestDerivationFunction;
 import org.spongycastle.crypto.params.ISO18033KDFParameters;
 import org.spongycastle.crypto.params.KDFParameters;
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.util.Pack;
 
 /**
  * Basic KDF generator for derived keys and ivs as defined by IEEE P1363a/ISO

@@ -7,8 +7,8 @@ import org.spongycastle.asn1.ASN1Choice;
 import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERGeneralizedTime;
-import org.spongycastle.asn1.DERUTCTime;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
+import org.spongycastle.asn1.ASN1UTCTime;
 
 public class Time
     extends ASN1Object
@@ -26,8 +26,8 @@ public class Time
     public Time(
         ASN1Primitive   time)
     {
-        if (!(time instanceof DERUTCTime)
-            && !(time instanceof DERGeneralizedTime))
+        if (!(time instanceof ASN1UTCTime)
+            && !(time instanceof ASN1GeneralizedTime))
         {
             throw new IllegalArgumentException("unknown object passed to Time");
         }
@@ -51,11 +51,11 @@ public class Time
 
         if (year < 1950 || year > 2049)
         {
-            time = new DERGeneralizedTime(date);
+            time = new ASN1GeneralizedTime(date);
         }
         else
         {
-            time = new DERUTCTime(date);
+            time = new ASN1UTCTime(date);
         }
     }
 
@@ -66,13 +66,13 @@ public class Time
         {
             return (Time)obj;
         }
-        else if (obj instanceof DERUTCTime)
+        else if (obj instanceof ASN1UTCTime)
         {
-            return new Time((DERUTCTime)obj);
+            return new Time((ASN1UTCTime)obj);
         }
-        else if (obj instanceof DERGeneralizedTime)
+        else if (obj instanceof ASN1GeneralizedTime)
         {
-            return new Time((DERGeneralizedTime)obj);
+            return new Time((ASN1GeneralizedTime)obj);
         }
 
         throw new IllegalArgumentException("unknown object in factory: " + obj.getClass().getName());
@@ -80,25 +80,25 @@ public class Time
 
     public String getTime()
     {
-        if (time instanceof DERUTCTime)
+        if (time instanceof ASN1UTCTime)
         {
-            return ((DERUTCTime)time).getAdjustedTime();
+            return ((ASN1UTCTime)time).getAdjustedTime();
         }
         else
         {
-            return ((DERGeneralizedTime)time).getTime();
+            return ((ASN1GeneralizedTime)time).getTime();
         }
     }
 
     public Date getDate()
     {
-        if (time instanceof DERUTCTime)
+        if (time instanceof ASN1UTCTime)
         {
-            return ((DERUTCTime)time).getAdjustedDate();
+            return ((ASN1UTCTime)time).getAdjustedDate();
         }
         else
         {
-            return ((DERGeneralizedTime)time).getDate();
+            return ((ASN1GeneralizedTime)time).getDate();
         }
     }
 

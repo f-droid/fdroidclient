@@ -56,19 +56,19 @@ public class CRLBag
 
     /**
      * <pre>
-     CRLBag ::= SEQUENCE {
-     crlId  BAG-TYPE.&id ({CRLTypes}),
-     crlValue  [0] EXPLICIT BAG-TYPE.&Type ({CRLTypes}{@crlId})
-     }
-
-     x509CRL BAG-TYPE ::= {OCTET STRING IDENTIFIED BY {certTypes 1}
-     -- DER-encoded X.509 CRL stored in OCTET STRING
-
-     CRLTypes BAG-TYPE ::= {
-     x509CRL,
-     ... -- For future extensions
-     }
-       </pre>
+     * CRLBag ::= SEQUENCE {
+     * crlId  BAG-TYPE.&amp;id ({CRLTypes}),
+     * crlValue  [0] EXPLICIT BAG-TYPE.&amp;Type ({CRLTypes}{@crlId})
+     * }
+     *
+     * x509CRL BAG-TYPE ::= {OCTET STRING IDENTIFIED BY {certTypes 1}
+     * -- DER-encoded X.509 CRL stored in OCTET STRING
+	 *
+     * CRLTypes BAG-TYPE ::= {
+     * x509CRL,
+     * ... -- For future extensions
+     * }
+     * </pre>
      */
     public ASN1Primitive toASN1Primitive()
     {

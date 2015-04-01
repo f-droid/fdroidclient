@@ -1,5 +1,6 @@
 package org.spongycastle.jcajce.provider.asymmetric.rsa;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -153,6 +154,10 @@ public class BCRSAPublicKey
             algorithmIdentifier = AlgorithmIdentifier.getInstance(in.readObject());
         }
         catch (OptionalDataException e)
+        {
+            algorithmIdentifier = DEFAULT_ALGORITHM_IDENTIFIER;
+        }
+        catch (EOFException e)
         {
             algorithmIdentifier = DEFAULT_ALGORITHM_IDENTIFIER;
         }

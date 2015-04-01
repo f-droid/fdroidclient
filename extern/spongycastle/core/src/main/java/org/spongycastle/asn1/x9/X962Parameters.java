@@ -74,7 +74,7 @@ public class X962Parameters
      * <pre>
      * Parameters ::= CHOICE {
      *    ecParameters ECParameters,
-     *    namedCurve   CURVES.&id({CurveNames}),
+     *    namedCurve   CURVES.&amp;id({CurveNames}),
      *    implicitlyCA NULL
      * }
      * </pre>

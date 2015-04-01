@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1Encoding;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERTaggedObject;
@@ -12,7 +12,7 @@ import org.spongycastle.crypto.DataLengthException;
 import org.spongycastle.crypto.DerivationFunction;
 import org.spongycastle.crypto.DerivationParameters;
 import org.spongycastle.crypto.Digest;
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.util.Pack;
 
 /**
  * RFC 2631 Diffie-hellman KEK derivation function.
@@ -22,7 +22,7 @@ public class DHKEKGenerator
 {
     private final Digest digest;
 
-    private DERObjectIdentifier algorithm;
+    private ASN1ObjectIdentifier algorithm;
     private int                 keySize;
     private byte[]              z;
     private byte[]              partyAInfo;

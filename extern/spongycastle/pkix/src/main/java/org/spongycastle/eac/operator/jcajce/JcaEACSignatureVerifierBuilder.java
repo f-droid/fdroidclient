@@ -12,8 +12,8 @@ import java.security.Signature;
 import java.security.SignatureException;
 
 import org.spongycastle.asn1.ASN1EncodableVector;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.DERInteger;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.eac.EACObjectIdentifiers;
 import org.spongycastle.eac.operator.EACSignatureVerifier;
@@ -116,8 +116,8 @@ public class JcaEACSignatureVerifierBuilder
         System.arraycopy(rawSign, len, s, 0, len);
 
         ASN1EncodableVector v = new ASN1EncodableVector();
-        v.add(new DERInteger(new BigInteger(1, r)));
-        v.add(new DERInteger(new BigInteger(1, s)));
+        v.add(new ASN1Integer(new BigInteger(1, r)));
+        v.add(new ASN1Integer(new BigInteger(1, s)));
 
         DERSequence seq = new DERSequence(v);
         return seq.getEncoded();

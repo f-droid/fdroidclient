@@ -54,12 +54,6 @@ class SimpleBigDecimal
         this.scale = scale;
     }
 
-    private SimpleBigDecimal(SimpleBigDecimal limBigDec)
-    {
-        bigInt = limBigDec.bigInt;
-        scale = limBigDec.scale;
-    }
-
     private void checkScale(SimpleBigDecimal b)
     {
         if (scale != b.scale)
@@ -78,7 +72,7 @@ class SimpleBigDecimal
 
         if (newScale == scale)
         {
-            return new SimpleBigDecimal(this);
+            return this;
         }
 
         return new SimpleBigDecimal(bigInt.shiftLeft(newScale - scale),

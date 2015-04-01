@@ -60,6 +60,12 @@ public class AuthorityInformationAccess
         }
     }
 
+    public AuthorityInformationAccess(
+        AccessDescription description)
+    {
+        this.descriptions = new AccessDescription[]{ description };
+    }
+
     /**
      * create an AuthorityInformationAccess with the oid and location provided.
      */
@@ -67,11 +73,8 @@ public class AuthorityInformationAccess
         ASN1ObjectIdentifier oid,
         GeneralName location)
     {
-        descriptions = new AccessDescription[1];
-        
-        descriptions[0] = new AccessDescription(oid, location);
+        this(new AccessDescription(oid, location));
     }
-
 
     /**
      * 

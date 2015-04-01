@@ -3,7 +3,10 @@ package org.spongycastle.asn1.util;
 import java.io.IOException;
 import java.util.Enumeration;
 
+import org.spongycastle.asn1.ASN1Boolean;
 import org.spongycastle.asn1.ASN1Encodable;
+import org.spongycastle.asn1.ASN1Enumerated;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1OctetString;
@@ -11,8 +14,8 @@ import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1Set;
 import org.spongycastle.asn1.ASN1TaggedObject;
+import org.spongycastle.asn1.ASN1UTCTime;
 import org.spongycastle.asn1.BERApplicationSpecific;
-import org.spongycastle.asn1.BERConstructedOctetString;
 import org.spongycastle.asn1.BEROctetString;
 import org.spongycastle.asn1.BERSequence;
 import org.spongycastle.asn1.BERSet;
@@ -21,16 +24,12 @@ import org.spongycastle.asn1.BERTags;
 import org.spongycastle.asn1.DERApplicationSpecific;
 import org.spongycastle.asn1.DERBMPString;
 import org.spongycastle.asn1.DERBitString;
-import org.spongycastle.asn1.DERBoolean;
-import org.spongycastle.asn1.DEREnumerated;
 import org.spongycastle.asn1.DERExternal;
-import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DERIA5String;
 import org.spongycastle.asn1.DERNull;
 import org.spongycastle.asn1.DERPrintableString;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERT61String;
-import org.spongycastle.asn1.DERUTCTime;
 import org.spongycastle.asn1.DERUTF8String;
 import org.spongycastle.asn1.DERVisibleString;
 import org.spongycastle.util.encoders.Hex;
@@ -172,7 +171,7 @@ public class ASN1Dump
         {
             ASN1OctetString oct = (ASN1OctetString)obj;
 
-            if (obj instanceof BEROctetString || obj instanceof  BERConstructedOctetString)
+            if (obj instanceof BEROctetString)
             {
                 buf.append(indent + "BER Constructed Octet String" + "[" + oct.getOctets().length + "] ");
             }
@@ -193,9 +192,9 @@ public class ASN1Dump
         {
             buf.append(indent + "ObjectIdentifier(" + ((ASN1ObjectIdentifier)obj).getId() + ")" + nl);
         }
-        else if (obj instanceof DERBoolean)
+        else if (obj instanceof ASN1Boolean)
         {
-            buf.append(indent + "Boolean(" + ((DERBoolean)obj).isTrue() + ")" + nl);
+            buf.append(indent + "Boolean(" + ((ASN1Boolean)obj).isTrue() + ")" + nl);
         }
         else if (obj instanceof ASN1Integer)
         {
@@ -238,13 +237,13 @@ public class ASN1Dump
         {
             buf.append(indent + "T61String(" + ((DERT61String)obj).getString() + ") " + nl);
         }
-        else if (obj instanceof DERUTCTime)
+        else if (obj instanceof ASN1UTCTime)
         {
-            buf.append(indent + "UTCTime(" + ((DERUTCTime)obj).getTime() + ") " + nl);
+            buf.append(indent + "UTCTime(" + ((ASN1UTCTime)obj).getTime() + ") " + nl);
         }
-        else if (obj instanceof DERGeneralizedTime)
+        else if (obj instanceof ASN1GeneralizedTime)
         {
-            buf.append(indent + "GeneralizedTime(" + ((DERGeneralizedTime)obj).getTime() + ") " + nl);
+            buf.append(indent + "GeneralizedTime(" + ((ASN1GeneralizedTime)obj).getTime() + ") " + nl);
         }
         else if (obj instanceof BERApplicationSpecific)
         {
@@ -254,9 +253,9 @@ public class ASN1Dump
         {
             buf.append(outputApplicationSpecific("DER", indent, verbose, obj, nl));
         }
-        else if (obj instanceof DEREnumerated)
+        else if (obj instanceof ASN1Enumerated)
         {
-            DEREnumerated en = (DEREnumerated) obj;
+            ASN1Enumerated en = (ASN1Enumerated) obj;
             buf.append(indent + "DER Enumerated(" + en.getValue() + ")" + nl);
         }
         else if (obj instanceof DERExternal)

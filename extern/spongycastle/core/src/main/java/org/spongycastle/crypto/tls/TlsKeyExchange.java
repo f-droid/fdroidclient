@@ -9,7 +9,6 @@ import java.io.OutputStream;
  */
 public interface TlsKeyExchange
 {
-
     void init(TlsContext context);
 
     void skipServerCredentials()

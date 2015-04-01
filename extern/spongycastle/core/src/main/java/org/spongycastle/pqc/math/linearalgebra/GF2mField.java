@@ -7,9 +7,9 @@ import java.security.SecureRandom;
  * GF(2^m). ( GF(2^m)= GF(2)[A] where A is a root of irreducible polynomial with
  * degree m, each field element B has a polynomial basis representation, i.e. it
  * is represented by a different binary polynomial of degree less than m, B =
- * poly(A) ) All operations are defined only for field with 1< m <32. For the
- * representation of field elements the map f: F->Z, poly(A)->poly(2) is used,
- * where integers have the binary representation. For example: A^7+A^3+A+1 ->
+ * poly(A) ) All operations are defined only for field with 1&lt; m &lt;32. For the
+ * representation of field elements the map f: F-&gt;Z, poly(A)-&gt;poly(2) is used,
+ * where integers have the binary representation. For example: A^7+A^3+A+1 -&gt;
  * (00...0010001011)=139 Also for elements type Integer is used.
  *
  * @see PolynomialRingGF2
@@ -291,7 +291,7 @@ public class GF2mField
 
     /**
      * checks if given object is equal to this field.
-     * <p/>
+     * <p>
      * The method returns false whenever the given object is not GF2m.
      *
      * @param other object
@@ -322,7 +322,6 @@ public class GF2mField
 
     /**
      * Returns a human readable form of this field.
-     * <p/>
      *
      * @return a human readable form of this field.
      */

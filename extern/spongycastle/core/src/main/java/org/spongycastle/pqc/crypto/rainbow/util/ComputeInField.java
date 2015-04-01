@@ -2,7 +2,7 @@ package org.spongycastle.pqc.crypto.rainbow.util;
 
 /**
  * This class offers different operations on matrices in field GF2^8.
- * <p/>
+ * <p>
  * Implemented are functions:
  * - finding inverse of a matrix
  * - solving linear equation systems using the Gauss-Elimination method
@@ -88,7 +88,7 @@ public class ComputeInField
     /**
      * This function computes the inverse of a given matrix using the Gauss-
      * Elimination method.
-     * <p/>
+     * <p>
      * An exception is thrown if the matrix has no inverse
      *
      * @param coef the matrix which inverse matrix is needed
@@ -345,7 +345,7 @@ public class ComputeInField
 
     /**
      * This function multiplies a given matrix with a one-dimensional array.
-     * <p/>
+     * <p>
      * An exception is thrown, if the number of columns in the matrix and
      * the number of rows in the one-dim. array differ.
      *

@@ -13,8 +13,6 @@ import javax.crypto.spec.DHPrivateKeySpec;
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
 import org.spongycastle.asn1.oiw.ElGamalParameter;
 import org.spongycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.spongycastle.asn1.pkcs.PrivateKeyInfo;
@@ -74,8 +72,8 @@ public class JCEElGamalPrivateKey
         PrivateKeyInfo  info)
         throws IOException
     {
-        ElGamalParameter     params = new ElGamalParameter((ASN1Sequence)info.getAlgorithmId().getParameters());
-        DERInteger      derX = ASN1Integer.getInstance(info.parsePrivateKey());
+        ElGamalParameter     params = ElGamalParameter.getInstance(info.getPrivateKeyAlgorithm().getParameters());
+        ASN1Integer      derX = ASN1Integer.getInstance(info.parsePrivateKey());
 
         this.x = derX.getValue();
         this.elSpec = new ElGamalParameterSpec(params.getP(), params.getG());
@@ -111,7 +109,7 @@ public class JCEElGamalPrivateKey
      */
     public byte[] getEncoded()
     {
-        return KeyUtil.getEncodedPrivateKeyInfo(new AlgorithmIdentifier(OIWObjectIdentifiers.elGamalAlgorithm, new ElGamalParameter(elSpec.getP(), elSpec.getG())), new DERInteger(getX()));
+        return KeyUtil.getEncodedPrivateKeyInfo(new AlgorithmIdentifier(OIWObjectIdentifiers.elGamalAlgorithm, new ElGamalParameter(elSpec.getP(), elSpec.getG())), new ASN1Integer(getX()));
     }
 
     public ElGamalParameterSpec getParameters()

@@ -15,7 +15,7 @@ import org.spongycastle.asn1.DERTaggedObject;
 
 /**
  * A declaration of majority.
- * <p/>
+ *
  * <pre>
  *           DeclarationOfMajoritySyntax ::= CHOICE
  *           {
@@ -28,7 +28,7 @@ import org.spongycastle.asn1.DERTaggedObject;
  *             dateOfBirth [2] IMPLICIT GeneralizedTime
  *           }
  * </pre>
- * <p/>
+ * <p>
  * fullAgeAtCountry indicates the majority of the owner with respect to the laws
  * of a specific country.
  */
@@ -101,9 +101,8 @@ public class DeclarationOfMajority
 
     /**
      * Produce an object suitable for an ASN1OutputStream.
-     * <p/>
+     * <p>
      * Returns:
-     * <p/>
      * <pre>
      *           DeclarationOfMajoritySyntax ::= CHOICE
      *           {

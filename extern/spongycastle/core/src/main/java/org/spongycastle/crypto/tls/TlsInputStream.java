@@ -17,6 +17,12 @@ class TlsInputStream
         this.handler = handler;
     }
 
+    public int available()
+        throws IOException
+    {
+        return this.handler.applicationDataAvailable();
+    }
+
     public int read(byte[] buf, int offset, int len)
         throws IOException
     {

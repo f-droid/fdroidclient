@@ -4,7 +4,7 @@ import org.spongycastle.util.Arrays;
 
 /**
  * A polynomial class that combines two coefficients into one <code>long</code> value for
- * faster multiplication in 64 bit environments.<br/>
+ * faster multiplication in 64 bit environments.<br>
  * Coefficients can be between 0 and 2047 and are stored in pairs in the bits 0..10 and 24..34 of a <code>long</code> number.
  */
 public class LongPolynomial2

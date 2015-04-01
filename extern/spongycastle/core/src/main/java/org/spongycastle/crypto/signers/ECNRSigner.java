@@ -101,7 +101,7 @@ public class ECNRSigner
 
             //    BigInteger Vx = tempPair.getPublic().getW().getAffineX();
             ECPublicKeyParameters V = (ECPublicKeyParameters)tempPair.getPublic();        // get temp's public key
-            BigInteger Vx = V.getQ().normalize().getAffineXCoord().toBigInteger();        // get the point's x coordinate
+            BigInteger Vx = V.getQ().getAffineXCoord().toBigInteger();                    // get the point's x coordinate
 
             r = Vx.add(e).mod(n);
         }

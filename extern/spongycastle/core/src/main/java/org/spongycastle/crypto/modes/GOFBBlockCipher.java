@@ -3,17 +3,19 @@ package org.spongycastle.crypto.modes;
 import org.spongycastle.crypto.BlockCipher;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
+import org.spongycastle.crypto.StreamBlockCipher;
 import org.spongycastle.crypto.params.ParametersWithIV;
 
 /**
  * implements the GOST 28147 OFB counter mode (GCTR).
  */
 public class GOFBBlockCipher
-    implements BlockCipher
+    extends StreamBlockCipher
 {
     private byte[]          IV;
     private byte[]          ofbV;
     private byte[]          ofbOutV;
+    private int             byteCount;
 
     private final int             blockSize;
     private final BlockCipher     cipher;
@@ -34,6 +36,8 @@ public class GOFBBlockCipher
     public GOFBBlockCipher(
         BlockCipher cipher)
     {
+        super(cipher);
+
         this.cipher = cipher;
         this.blockSize = cipher.getBlockSize();
         
@@ -45,16 +49,6 @@ public class GOFBBlockCipher
         this.IV = new byte[cipher.getBlockSize()];
         this.ofbV = new byte[cipher.getBlockSize()];
         this.ofbOutV = new byte[cipher.getBlockSize()];
-    }
-
-    /**
-     * return the underlying block cipher that we are wrapping.
-     *
-     * @return the underlying block cipher that we are wrapping.
-     */
-    public BlockCipher getUnderlyingCipher()
-    {
-        return cipher;
     }
 
     /**
@@ -127,7 +121,6 @@ public class GOFBBlockCipher
         return cipher.getAlgorithmName() + "/GCTR";
     }
 
-    
     /**
      * return the block size we are operating at (in bytes).
      *
@@ -158,44 +151,7 @@ public class GOFBBlockCipher
         int         outOff)
         throws DataLengthException, IllegalStateException
     {
-        if ((inOff + blockSize) > in.length)
-        {
-            throw new DataLengthException("input buffer too short");
-        }
-
-        if ((outOff + blockSize) > out.length)
-        {
-            throw new DataLengthException("output buffer too short");
-        }
-
-        if (firstStep)
-        {
-            firstStep = false;
-            cipher.processBlock(ofbV, 0, ofbOutV, 0);
-            N3 = bytesToint(ofbOutV, 0);
-            N4 = bytesToint(ofbOutV, 4);
-        }
-        N3 += C2;
-        N4 += C1;
-        intTobytes(N3, ofbV, 0);
-        intTobytes(N4, ofbV, 4);
-
-        cipher.processBlock(ofbV, 0, ofbOutV, 0);
-
-        //
-        // XOR the ofbV with the plaintext producing the cipher text (and
-        // the next input block).
-        //
-        for (int i = 0; i < blockSize; i++)
-        {
-            out[outOff + i] = (byte)(ofbOutV[i] ^ in[inOff + i]);
-        }
-
-        //
-        // change over the input block.
-        //
-        System.arraycopy(ofbV, blockSize, ofbV, 0, ofbV.length - blockSize);
-        System.arraycopy(ofbOutV, 0, ofbV, ofbV.length - blockSize, blockSize);
+        processBytes(in, inOff, blockSize, out, outOff);
 
         return blockSize;
     }
@@ -210,7 +166,7 @@ public class GOFBBlockCipher
         N3 = 0;
         N4 = 0;
         System.arraycopy(IV, 0, ofbV, 0, IV.length);
-
+        byteCount = 0;
         cipher.reset();
     }
 
@@ -233,5 +189,40 @@ public class GOFBBlockCipher
             out[outOff + 2] = (byte)(num >>> 16);
             out[outOff + 1] = (byte)(num >>> 8);
             out[outOff] =     (byte)num;
+    }
+
+    protected byte calculateByte(byte b)
+    {
+        if (byteCount == 0)
+        {
+            if (firstStep)
+            {
+                firstStep = false;
+                cipher.processBlock(ofbV, 0, ofbOutV, 0);
+                N3 = bytesToint(ofbOutV, 0);
+                N4 = bytesToint(ofbOutV, 4);
+            }
+            N3 += C2;
+            N4 += C1;
+            intTobytes(N3, ofbV, 0);
+            intTobytes(N4, ofbV, 4);
+
+            cipher.processBlock(ofbV, 0, ofbOutV, 0);
+        }
+
+        byte rv = (byte)(ofbOutV[byteCount++] ^ b);
+
+        if (byteCount == blockSize)
+        {
+            byteCount = 0;
+
+            //
+            // change over the input block.
+            //
+            System.arraycopy(ofbV, blockSize, ofbV, 0, ofbV.length - blockSize);
+            System.arraycopy(ofbOutV, 0, ofbV, ofbV.length - blockSize, blockSize);
+        }
+
+        return rv;
     }
 }

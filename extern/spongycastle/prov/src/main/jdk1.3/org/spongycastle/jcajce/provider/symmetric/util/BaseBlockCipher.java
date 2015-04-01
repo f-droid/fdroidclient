@@ -333,7 +333,9 @@ public class BaseBlockCipher
         {
             if (engineProvider != null)
             {
-                // Nonce restricted to max 120 bits over 128 bit block cipher since draft-irtf-cfrg-ocb-03
+                /*
+                 * RFC 7253 4.2. Nonce is a string of no more than 120 bits
+                 */
                 ivLength = 15;
                 cipher = new AEADGenericBlockCipher(new OCBBlockCipher(baseEngine, engineProvider.get()));
             }

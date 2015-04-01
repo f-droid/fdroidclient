@@ -4,7 +4,6 @@ import java.util.Vector;
 
 class DTLSReassembler
 {
-
     private final short msg_type;
     private final byte[] body;
 
@@ -28,9 +27,8 @@ class DTLSReassembler
     }
 
     void contributeFragment(short msg_type, int length, byte[] buf, int off, int fragment_offset,
-                            int fragment_length)
+        int fragment_length)
     {
-
         int fragment_end = fragment_offset + fragment_length;
 
         if (this.msg_type != msg_type || this.body.length != length || fragment_end > length)
@@ -104,7 +102,6 @@ class DTLSReassembler
 
     private static class Range
     {
-
         private int start, end;
 
         Range(int start, int end)

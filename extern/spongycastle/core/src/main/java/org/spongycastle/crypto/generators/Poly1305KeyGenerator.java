@@ -53,7 +53,7 @@ public class Poly1305KeyGenerator
      * <li>r[4], r[8], r[12] have bottom two bits clear (i.e., are in {0, 4, 8, . . . , 252})</li>
      * </ul>
      *
-     * @param a 32 byte key value <code>k[0] ... k[15], r[0] ... r[15]</code>
+     * @param key a 32 byte key value <code>k[0] ... k[15], r[0] ... r[15]</code>
      */
     public static void clamp(byte[] key)
     {

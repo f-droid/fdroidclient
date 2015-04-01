@@ -16,7 +16,7 @@ import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.x509.X509Extensions;
 import org.spongycastle.asn1.x509.X509Name;
 import org.spongycastle.jce.PrincipalUtil;
@@ -562,7 +562,7 @@ public class X509CRLSelector implements CRLSelector
                         ((ASN1OctetString)derInputStream.readObject())
                                 .getOctets());
                 derInputStream = new ASN1InputStream(inStream);
-                BigInteger crlNumber = ((DERInteger)derInputStream.readObject())
+                BigInteger crlNumber = ((ASN1Integer)derInputStream.readObject())
                         .getPositiveValue();
                 if (minCRL != null && minCRL.compareTo(crlNumber) > 0)
                 {

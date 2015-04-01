@@ -2,6 +2,9 @@ package org.spongycastle.asn1;
 
 import java.io.IOException;
 
+/**
+ * Base class for ASN.1 primitive objects. These are the actual objects used to generate byte encodings.
+ */
 public abstract class ASN1Primitive
     extends ASN1Object
 {
@@ -47,11 +50,21 @@ public abstract class ASN1Primitive
         return this;
     }
 
+    /**
+     * Return the current object as one which encodes using Distinguished Encoding Rules.
+     *
+     * @return a DER version of this.
+     */
     ASN1Primitive toDERObject()
     {
         return this;
     }
 
+    /**
+     * Return the current object as one which encodes using Definite Length encoding.
+     *
+     * @return a DL version of this.
+     */
     ASN1Primitive toDLObject()
     {
         return this;

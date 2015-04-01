@@ -137,7 +137,16 @@ public class KeyFactorySpi
 
         if (RSAUtil.isRsaOid(algOid))
         {
-            return new BCRSAPrivateCrtKey(keyInfo);
+            RSAPrivateKey rsaPrivKey = RSAPrivateKey.getInstance(keyInfo.parsePrivateKey());
+
+            if (rsaPrivKey.getCoefficient().intValue() == 0)
+            {
+                return new BCRSAPrivateKey(rsaPrivKey);
+            }
+            else
+            {
+                return new BCRSAPrivateCrtKey(keyInfo);
+            }
         }
         else
         {

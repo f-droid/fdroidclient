@@ -124,6 +124,12 @@ public class ASN1InputStream
 
     /**
      * build an object given its tag and the number of bytes to construct it from.
+     *
+     * @param tag the full tag details.
+     * @param tagNo the tagNo defined.
+     * @param length the length of the object.
+     * @return the resulting primitive.
+     * @throws java.io.IOException on processing exception.
      */
     protected ASN1Primitive buildObject(
         int       tag,
@@ -438,7 +444,7 @@ public class ASN1InputStream
             case IA5_STRING:
                 return new DERIA5String(defIn.toByteArray());
             case INTEGER:
-                return new ASN1Integer(defIn.toByteArray());
+                return new ASN1Integer(defIn.toByteArray(), false);
             case NULL:
                 return DERNull.INSTANCE;   // actual content is ignored (enforce 0 length?)
             case NUMERIC_STRING:

@@ -5,7 +5,94 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Vector;
 
-abstract public class ASN1Set
+/**
+ * ASN.1 <code>SET</code> and <code>SET OF</code> constructs.
+ * <p>
+ * Note: This does not know which syntax the set is!
+ * (The difference: ordering of SET elements or not ordering.)
+ * <p>
+ * DER form is always definite form length fields, while
+ * BER support uses indefinite form.
+ * <p>
+ * The CER form support does not exist.
+ * <p>
+ * <hr>
+ * <h2>X.690</h2>
+ * <h3>8: Basic encoding rules</h3>
+ * <h4>8.11 Encoding of a set value </h4>
+ * <b>8.11.1</b> The encoding of a set value shall be constructed
+ * <p>
+ * <b>8.11.2</b> The contents octets shall consist of the complete
+ * encoding of a data value from each of the types listed in the
+ * ASN.1 definition of the set type, in an order chosen by the sender,
+ * unless the type was referenced with the keyword
+ * <b>OPTIONAL</b> or the keyword <b>DEFAULT</b>.
+ * <p>
+ * <b>8.11.3</b> The encoding of a data value may, but need not,
+ * be present for a type which was referenced with the keyword
+ * <b>OPTIONAL</b> or the keyword <b>DEFAULT</b>.
+ * <blockquote>
+ * NOTE &mdash; The order of data values in a set value is not significant,
+ * and places no constraints on the order during transfer
+ * </blockquote>
+ * <h4>8.12 Encoding of a set-of value</h4>
+ * <b>8.12.1</b> The encoding of a set-of value shall be constructed.
+ * <p>
+ * <b>8.12.2</b> The text of 8.10.2 applies:
+ * <i>The contents octets shall consist of zero,
+ * one or more complete encodings of data values from the type listed in
+ * the ASN.1 definition.</i>
+ * <p>
+ * <b>8.12.3</b> The order of data values need not be preserved by
+ * the encoding and subsequent decoding.
+ *
+ * <h3>9: Canonical encoding rules</h3>
+ * <h4>9.1 Length forms</h4>
+ * If the encoding is constructed, it shall employ the indefinite length form.
+ * If the encoding is primitive, it shall include the fewest length octets necessary.
+ * [Contrast with 8.1.3.2 b).]
+ * <h4>9.3 Set components</h4>
+ * The encodings of the component values of a set value shall
+ * appear in an order determined by their tags as specified
+ * in 8.6 of ITU-T Rec. X.680 | ISO/IEC 8824-1.
+ * Additionally, for the purposes of determining the order in which
+ * components are encoded when one or more component is an untagged
+ * choice type, each untagged choice type is ordered as though it
+ * has a tag equal to that of the smallest tag in that choice type
+ * or any untagged choice types nested within.
+ *
+ * <h3>10: Distinguished encoding rules</h3>
+ * <h4>10.1 Length forms</h4>
+ * The definite form of length encoding shall be used,
+ * encoded in the minimum number of octets.
+ * [Contrast with 8.1.3.2 b).]
+ * <h4>10.3 Set components</h4>
+ * The encodings of the component values of a set value shall appear
+ * in an order determined by their tags as specified
+ * in 8.6 of ITU-T Rec. X.680 | ISO/IEC 8824-1.
+ * <blockquote>
+ * NOTE &mdash; Where a component of the set is an untagged choice type,
+ * the location of that component in the ordering will depend on
+ * the tag of the choice component being encoded.
+ * </blockquote>
+ *
+ * <h3>11: Restrictions on BER employed by both CER and DER</h3>
+ * <h4>11.5 Set and sequence components with default value </h4>
+ * The encoding of a set value or sequence value shall not include
+ * an encoding for any component value which is equal to
+ * its default value.
+ * <h4>11.6 Set-of components </h4>
+ * <p>
+ * The encodings of the component values of a set-of value
+ * shall appear in ascending order, the encodings being compared
+ * as octet strings with the shorter components being padded at
+ * their trailing end with 0-octets.
+ * <blockquote>
+ * NOTE &mdash; The padding octets are for comparison purposes only
+ * and do not appear in the encodings.
+ * </blockquote>
+ */
+public abstract class ASN1Set
     extends ASN1Primitive
 {
     private Vector set = new Vector();
@@ -16,6 +103,7 @@ abstract public class ASN1Set
      *
      * @param obj the object we want converted.
      * @exception IllegalArgumentException if the object cannot be converted.
+     * @return an ASN1Set instance, or null.
      */
     public static ASN1Set getInstance(
         Object  obj)
@@ -67,6 +155,7 @@ abstract public class ASN1Set
      *          false otherwise.
      * @exception IllegalArgumentException if the tagged object cannot
      *          be converted.
+     * @return an ASN1Set instance.
      */
     public static ASN1Set getInstance(
         ASN1TaggedObject    obj,
@@ -135,6 +224,7 @@ abstract public class ASN1Set
 
     /**
      * create a sequence containing one object
+     * @param obj object to be added to the SET.
      */
     protected ASN1Set(
         ASN1Encodable obj)
@@ -144,6 +234,8 @@ abstract public class ASN1Set
 
     /**
      * create a sequence containing a vector of objects.
+     * @param v a vector of objects to make up the SET.
+     * @param doSort true if should be sorted DER style, false otherwise.
      */
     protected ASN1Set(
         ASN1EncodableVector v,
@@ -275,6 +367,10 @@ abstract public class ASN1Set
         return hashCode;
     }
 
+    /**
+     * Change current SET object to be encoded as {@link DERSet}.
+     * This is part of Distinguished Encoding Rules form serialization.
+     */
     ASN1Primitive toDERObject()
     {
         if (isSorted)
@@ -304,6 +400,10 @@ abstract public class ASN1Set
         }
     }
 
+    /**
+     * Change current SET object to be encoded as {@link DLSet}.
+     * This is part of Direct Length form serialization.
+     */
     ASN1Primitive toDLObject()
     {
         ASN1Set derSet = new DLSet();

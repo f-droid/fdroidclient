@@ -78,7 +78,7 @@ public interface TlsServer
 
     /**
      * RFC 5077 3.3. NewSessionTicket Handshake Message.
-     * <p/>
+     * <p>
      * This method will be called (only) if a NewSessionTicket extension was sent by the server. See
      * <i>RFC 5077 4. Recommended Ticket Construction</i> for recommended format and protection.
      *

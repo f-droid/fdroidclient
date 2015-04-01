@@ -6,7 +6,7 @@ import java.security.Provider;
 import javax.crypto.SecretKey;
 
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.jcajce.ProviderJcaJceHelper;
+import org.spongycastle.jcajce.util.ProviderJcaJceHelper;
 import org.spongycastle.operator.SymmetricKeyUnwrapper;
 import org.spongycastle.operator.jcajce.JceAsymmetricKeyUnwrapper;
 import org.spongycastle.operator.jcajce.JceSymmetricKeyUnwrapper;

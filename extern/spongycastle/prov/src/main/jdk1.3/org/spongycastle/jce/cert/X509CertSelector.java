@@ -27,6 +27,7 @@ import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
 import org.spongycastle.asn1.DERGeneralizedTime;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.DEROutputStream;
 import org.spongycastle.asn1.util.ASN1Dump;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
@@ -2155,7 +2156,7 @@ public class X509CertSelector implements CertSelector
                     // TODO fix this, Sequence contains tagged objects
                     ASN1Sequence derObject = (ASN1Sequence)derInputStream
                             .readObject();
-                    DERGeneralizedTime derDate = DERGeneralizedTime
+                    ASN1GeneralizedTime derDate = ASN1GeneralizedTime
                             .getInstance(derObject.getObjectAt(0));
                     SimpleDateFormat dateF = new SimpleDateFormat(
                             "yyyyMMddHHmmssZ");
@@ -2163,7 +2164,7 @@ public class X509CertSelector implements CertSelector
                     {
                         return false;
                     }
-                    derDate = DERGeneralizedTime.getInstance(derObject
+                    derDate = ASN1GeneralizedTime.getInstance(derObject
                             .getObjectAt(1));
                     if (privateKeyValid.after(dateF.parse(derDate.getTime())))
                     {

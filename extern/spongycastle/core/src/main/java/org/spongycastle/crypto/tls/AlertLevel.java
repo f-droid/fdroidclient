@@ -1,7 +1,7 @@
 package org.spongycastle.crypto.tls;
 
 /**
- * RFC 2246 7.2
+ * RFC 5246 7.2
  */
 public class AlertLevel
 {

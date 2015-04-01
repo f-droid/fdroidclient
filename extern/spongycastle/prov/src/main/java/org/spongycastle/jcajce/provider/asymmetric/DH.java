@@ -1,5 +1,8 @@
 package org.spongycastle.jcajce.provider.asymmetric;
 
+import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.spongycastle.asn1.x9.X9ObjectIdentifiers;
+import org.spongycastle.jcajce.provider.asymmetric.dh.KeyFactorySpi;
 import org.spongycastle.jcajce.provider.config.ConfigurableProvider;
 import org.spongycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
 
@@ -36,6 +39,9 @@ public class DH
             provider.addAlgorithm("Cipher.DHIESwithAES", PREFIX + "IESCipher$IESwithAES");
             provider.addAlgorithm("Cipher.DHIESWITHAES", PREFIX + "IESCipher$IESwithAES");
             provider.addAlgorithm("Cipher.DHIESWITHDESEDE", PREFIX + "IESCipher$IESwithDESede");
+
+            registerOid(provider, PKCSObjectIdentifiers.dhKeyAgreement, "DH", new KeyFactorySpi());
+            registerOid(provider, X9ObjectIdentifiers.dhpublicnumber, "DH", new KeyFactorySpi());
         }
     }
 }

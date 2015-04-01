@@ -13,7 +13,6 @@ import org.spongycastle.asn1.DEROctetString;
 
 /**
  * an Iso7816CertificateBody structure.
- * <p/>
  * <pre>
  *  CertificateBody ::= SEQUENCE {
  *      // version of the certificate format. Must be 0 (version 1)
@@ -128,7 +127,6 @@ public class CertificateBody
      * @param certificateHolderAuthorization
      * @param certificateEffectiveDate
      * @param certificateExpirationDate
-     * @throws IOException
      */
     public CertificateBody(
         DERApplicationSpecific certificateProfileIdentifier,
@@ -276,7 +274,6 @@ public class CertificateBody
      * create a "request" or "profile" type Iso7816CertificateBody according to the variables sets.
      *
      * @return return the ASN1Primitive representing the "request" or "profile" type certificate body.
-     * @throws IOException if the DERApplicationSpecific cannot be created or if data are missings to create a valid certificate.
      */
     public ASN1Primitive toASN1Primitive()
     {

@@ -23,7 +23,7 @@ import org.spongycastle.util.Strings;
  *         ASN1ObjectIdentifier  oid,
  *         String               value)
  *     {
- *         if (str.length() != 0 && str.charAt(0) == '#')
+ *         if (str.length() != 0 &amp;&amp; str.charAt(0) == '#')
  *         {
  *             return convertHexEncoded(str, 1);
  *         }
@@ -45,6 +45,7 @@ import org.spongycastle.util.Strings;
  *         }
  *     }
  * }
+ * </pre>
  */
 public abstract class X509NameEntryConverter
 {

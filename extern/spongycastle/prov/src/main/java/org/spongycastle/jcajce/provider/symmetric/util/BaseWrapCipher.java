@@ -32,6 +32,7 @@ import org.spongycastle.crypto.InvalidCipherTextException;
 import org.spongycastle.crypto.Wrapper;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.crypto.params.ParametersWithIV;
+import org.spongycastle.crypto.params.ParametersWithRandom;
 import org.spongycastle.jce.provider.BouncyCastleProvider;
 
 public abstract class BaseWrapCipher
@@ -162,6 +163,11 @@ public abstract class BaseWrapCipher
             iv = new byte[ivSize];
             random.nextBytes(iv);
             param = new ParametersWithIV(param, iv);
+        }
+
+        if (random != null)
+        {
+            param = new ParametersWithRandom(param, random);
         }
 
         switch (opmode)

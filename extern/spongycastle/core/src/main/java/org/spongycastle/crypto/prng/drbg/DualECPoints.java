@@ -19,7 +19,7 @@ public class DualECPoints
      * <pre>
      *     max_outlen = largest multiple of 8 less than ((field size in bits) - (13 + log2(cofactor))
      * </pre>
-     * </p>
+     *
      * @param securityStrength maximum security strength to be associated with these parameters
      * @param p the P point.
      * @param q the Q point.

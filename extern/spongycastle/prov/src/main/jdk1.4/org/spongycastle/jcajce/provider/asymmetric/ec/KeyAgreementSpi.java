@@ -15,7 +15,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.ShortBufferException;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.nist.NISTObjectIdentifiers;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.spongycastle.asn1.x9.X9IntegerConverter;
@@ -185,7 +185,7 @@ public class KeyAgreementSpi
             
             int    keySize = ((Integer)algorithms.get(algorithm)).intValue();
 
-            DHKDFParameters params = new DHKDFParameters(new DERObjectIdentifier(algorithm), keySize, secret);
+            DHKDFParameters params = new DHKDFParameters(new ASN1ObjectIdentifier(algorithm), keySize, secret);
 
             byte[] keyBytes = new byte[keySize / 8];
             kdf.init(params);

@@ -13,7 +13,7 @@ import org.spongycastle.asn1.x509.Certificate;
 /**
  * The CscaMasterList object. This object can be wrapped in a
  * CMSSignedData to be published in LDAP.
- * <p/>
+ *
  * <pre>
  * CscaMasterList ::= SEQUENCE {
  *   version                CscaMasterListVersion,

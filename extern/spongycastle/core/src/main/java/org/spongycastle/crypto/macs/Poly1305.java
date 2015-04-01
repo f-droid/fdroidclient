@@ -7,7 +7,7 @@ import org.spongycastle.crypto.Mac;
 import org.spongycastle.crypto.generators.Poly1305KeyGenerator;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.crypto.params.ParametersWithIV;
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.util.Pack;
 
 /**
  * Poly1305 message authentication code, designed by D. J. Bernstein.
@@ -53,6 +53,14 @@ public class Poly1305
     private int h0, h1, h2, h3, h4;
 
     /**
+     * Constructs a Poly1305 MAC, where the key passed to init() will be used directly.
+     */
+    public Poly1305()
+    {
+        this.cipher = null;
+    }
+
+    /**
      * Constructs a Poly1305 MAC, using a 128 bit block cipher.
      */
     public Poly1305(final BlockCipher cipher)
@@ -66,35 +74,48 @@ public class Poly1305
 
     /**
      * Initialises the Poly1305 MAC.
-     *
-     * @param a {@link ParametersWithIV} containing a 128 bit nonce and a {@link KeyParameter} with
-     *            a 256 bit key complying to the {@link Poly1305KeyGenerator Poly1305 key format}.
+     * 
+     * @param params if used with a block cipher, then a {@link ParametersWithIV} containing a 128 bit
+     *        nonce and a {@link KeyParameter} with a 256 bit key complying to the
+     *        {@link Poly1305KeyGenerator Poly1305 key format}, otherwise just the
+     *        {@link KeyParameter}.
      */
-    public void init(final CipherParameters params)
+    public void init(CipherParameters params)
         throws IllegalArgumentException
     {
-        final byte[] nonce;
-        final byte[] key;
-        if ((params instanceof ParametersWithIV) && ((ParametersWithIV)params).getParameters() instanceof KeyParameter)
+        byte[] nonce = null;
+
+        if (cipher != null)
         {
-            nonce = ((ParametersWithIV)params).getIV();
-            key = ((KeyParameter)((ParametersWithIV)params).getParameters()).getKey();
-        }
-        else
-        {
-            throw new IllegalArgumentException("Poly1305 requires a key and and IV.");
+            if (!(params instanceof ParametersWithIV))
+            {
+                throw new IllegalArgumentException("Poly1305 requires an IV when used with a block cipher.");
+            }
+            
+            ParametersWithIV ivParams = (ParametersWithIV)params;
+            nonce = ivParams.getIV();
+            params = ivParams.getParameters();
         }
 
-        setKey(key, nonce);
+        if (!(params instanceof KeyParameter))
+        {
+            throw new IllegalArgumentException("Poly1305 requires a key.");
+        }
+
+        KeyParameter keyParams = (KeyParameter)params;
+
+        setKey(keyParams.getKey(), nonce);
+
         reset();
     }
 
     private void setKey(final byte[] key, final byte[] nonce)
     {
-        if (nonce.length != BLOCK_SIZE)
+        if (cipher != null && (nonce == null || nonce.length != BLOCK_SIZE))
         {
             throw new IllegalArgumentException("Poly1305 requires a 128 bit IV.");
         }
+
         Poly1305KeyGenerator.checkKey(key);
 
         // Extract r portion of key
@@ -115,22 +136,28 @@ public class Poly1305
         s3 = r3 * 5;
         s4 = r4 * 5;
 
-        // Compute encrypted nonce
-        final byte[] cipherKey = new byte[BLOCK_SIZE];
-        System.arraycopy(key, 0, cipherKey, 0, cipherKey.length);
+        final byte[] kBytes;
+        if (cipher == null)
+        {
+            kBytes = key;
+        }
+        else
+        {
+            // Compute encrypted nonce
+            kBytes = new byte[BLOCK_SIZE];
+            cipher.init(true, new KeyParameter(key, 0, BLOCK_SIZE));
+            cipher.processBlock(nonce, 0, kBytes, 0);
+        }
 
-        cipher.init(true, new KeyParameter(cipherKey));
-        cipher.processBlock(nonce, 0, cipherKey, 0);
-
-        k0 = Pack.littleEndianToInt(cipherKey, 0);
-        k1 = Pack.littleEndianToInt(cipherKey, 4);
-        k2 = Pack.littleEndianToInt(cipherKey, 8);
-        k3 = Pack.littleEndianToInt(cipherKey, 12);
+        k0 = Pack.littleEndianToInt(kBytes, 0);
+        k1 = Pack.littleEndianToInt(kBytes, 4);
+        k2 = Pack.littleEndianToInt(kBytes, 8);
+        k3 = Pack.littleEndianToInt(kBytes, 12);
     }
 
     public String getAlgorithmName()
     {
-        return "Poly1305-" + cipher.getAlgorithmName();
+        return cipher == null ? "Poly1305" : "Poly1305-" + cipher.getAlgorithmName();
     }
 
     public int getMacSize()

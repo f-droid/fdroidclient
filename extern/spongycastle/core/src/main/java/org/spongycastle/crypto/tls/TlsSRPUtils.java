@@ -1,7 +1,6 @@
 package org.spongycastle.crypto.tls;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 

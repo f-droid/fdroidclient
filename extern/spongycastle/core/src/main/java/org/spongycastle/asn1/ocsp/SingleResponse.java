@@ -6,7 +6,6 @@ import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERTaggedObject;
 import org.spongycastle.asn1.x509.Extensions;
@@ -32,29 +31,11 @@ public class SingleResponse
     public SingleResponse(
         CertID              certID,
         CertStatus          certStatus,
-        DERGeneralizedTime  thisUpdate,
-        DERGeneralizedTime  nextUpdate,
+        ASN1GeneralizedTime thisUpdate,
+        ASN1GeneralizedTime nextUpdate,
         X509Extensions singleExtensions)
     {
         this(certID, certStatus, thisUpdate, nextUpdate, Extensions.getInstance(singleExtensions));
-    }
-
-    /**
-     * @deprecated use method taking ASN1GeneralizedTime and Extensions
-     * @param certID
-     * @param certStatus
-     * @param thisUpdate
-     * @param nextUpdate
-     * @param singleExtensions
-     */
-    public SingleResponse(
-        CertID              certID,
-        CertStatus          certStatus,
-        DERGeneralizedTime thisUpdate,
-        DERGeneralizedTime nextUpdate,
-        Extensions          singleExtensions)
-    {
-        this(certID, certStatus, ASN1GeneralizedTime.getInstance(thisUpdate), ASN1GeneralizedTime.getInstance(nextUpdate), Extensions.getInstance(singleExtensions));
     }
 
     public SingleResponse(

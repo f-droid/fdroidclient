@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.spongycastle.crypto.Digest;
-
 /**
  * An implementation of the TLS 1.0/1.1/1.2 record layer, allowing downgrade to SSLv3.
  */
@@ -219,6 +217,12 @@ class RecordStream
     protected void writeRecord(short type, byte[] plaintext, int plaintextOffset, int plaintextLength)
         throws IOException
     {
+        // Never send anything until a valid ClientHello has been received
+        if (writeVersion == null)
+        {
+            return;
+        }
+
         /*
          * RFC 5264 6. Implementations MUST NOT send record types not defined in this document
          * unless negotiated by some extension.

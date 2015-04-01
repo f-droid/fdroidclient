@@ -26,7 +26,7 @@ public class TlsMac
      * @param digest  The digest to use.
      * @param key     A byte-array where the key for this MAC is located.
      * @param keyOff  The number of bytes to skip, before the key starts in the buffer.
-     * @param len     The length of the key.
+     * @param keyLen  The length of the key.
      */
     public TlsMac(TlsContext context, Digest digest, byte[] key, int keyOff, int keyLen)
     {
@@ -105,15 +105,6 @@ public class TlsMac
      */
     public byte[] calculateMac(long seqNo, short type, byte[] message, int offset, int length)
     {
-        /*
-         * TODO[draft-josefsson-salsa20-tls-02] 3. Moreover, in order to accommodate MAC algorithms
-         * like UMAC that require a nonce as part of their operation, the document extends the MAC
-         * algorithm as specified in the TLS protocol. The extended MAC includes a nonce as a second
-         * parameter. MAC algorithms that do not require a nonce, such as HMAC, are assumed to
-         * ignore the nonce input value. The MAC in a GenericStreamCipher is then calculated as
-         * follows.
-         */
-
         ProtocolVersion serverVersion = context.getServerVersion();
         boolean isSSL = serverVersion.isSSL();
 

@@ -50,7 +50,7 @@ public class HeartbeatMessage
         output.write(payload);
 
         byte[] padding = new byte[paddingLength];
-        context.getSecureRandom().nextBytes(padding);
+        context.getNonceRandomGenerator().nextBytes(padding);
         output.write(padding);
     }
 
@@ -87,6 +87,9 @@ public class HeartbeatMessage
 
         int padding_length = buf.size() - payload.length;
 
+        /*
+         * RFC 6520 4. The padding of a received HeartbeatMessage message MUST be ignored
+         */
         return new HeartbeatMessage(type, payload, padding_length);
     }
 

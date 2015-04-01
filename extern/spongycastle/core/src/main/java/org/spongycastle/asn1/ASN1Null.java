@@ -3,18 +3,26 @@ package org.spongycastle.asn1;
 import java.io.IOException;
 
 /**
- * A NULL object.
+ * A NULL object - use DERNull.INSTANCE for populating structures.
  */
 public abstract class ASN1Null
     extends ASN1Primitive
 {
     /**
-     * @deprecated use DERNull.INSTANCE
+     * Return an instance of ASN.1 NULL from the passed in object.
+     * <p>
+     * Accepted inputs:
+     * <ul>
+     * <li> null &rarr; null
+     * <li> {@link ASN1Null} object
+     * <li> a byte[] containing ASN.1 NULL object
+     * </ul>
+     * </p>
+     *
+     * @param o object to be converted.
+     * @return an instance of ASN1Null, or null.
+     * @exception IllegalArgumentException if the object cannot be converted.
      */
-    public ASN1Null()
-    {
-    }
-
     public static ASN1Null getInstance(Object o)
     {
         if (o instanceof ASN1Null)

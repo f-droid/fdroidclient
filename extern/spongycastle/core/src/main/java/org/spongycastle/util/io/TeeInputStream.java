@@ -4,12 +4,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * An input stream which copies anything read through it to another stream.
+ */
 public class TeeInputStream
     extends InputStream
 {
     private final InputStream input;
     private final OutputStream output;
 
+    /**
+     * Base constructor.
+     *
+     * @param input input stream to be wrapped.
+     * @param output output stream to copy any input read to.
+     */
     public TeeInputStream(InputStream input, OutputStream output)
     {
         this.input = input;

@@ -55,6 +55,12 @@ public class BCRSAPrivateKey
         this.privateExponent = key.getPrivateExponent();
     }
 
+    BCRSAPrivateKey(org.spongycastle.asn1.pkcs.RSAPrivateKey key)
+    {
+        this.modulus = key.getModulus();
+        this.privateExponent = key.getPrivateExponent();
+    }
+
     public BigInteger getModulus()
     {
         return modulus;

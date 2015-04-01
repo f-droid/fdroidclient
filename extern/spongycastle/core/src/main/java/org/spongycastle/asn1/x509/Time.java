@@ -3,12 +3,15 @@ package org.spongycastle.asn1.x509;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.SimpleTimeZone;
 
 import org.spongycastle.asn1.ASN1Choice;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1TaggedObject;
+import org.spongycastle.asn1.ASN1UTCTime;
 import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DERUTCTime;
 
@@ -28,8 +31,8 @@ public class Time
     public Time(
         ASN1Primitive   time)
     {
-        if (!(time instanceof DERUTCTime)
-            && !(time instanceof DERGeneralizedTime))
+        if (!(time instanceof ASN1UTCTime)
+            && !(time instanceof ASN1GeneralizedTime))
         {
             throw new IllegalArgumentException("unknown object passed to Time");
         }
@@ -38,28 +41,61 @@ public class Time
     }
 
     /**
-     * creates a time object from a given date - if the date is between 1950
+     * Creates a time object from a given date - if the date is between 1950
      * and 2049 a UTCTime object is generated, otherwise a GeneralizedTime
      * is used.
+     *
+     * @param time a date object representing the time of interest.
      */
     public Time(
-        Date    date)
+        Date    time)
     {
         SimpleTimeZone      tz = new SimpleTimeZone(0, "Z");
         SimpleDateFormat    dateF = new SimpleDateFormat("yyyyMMddHHmmss");
 
         dateF.setTimeZone(tz);
 
-        String  d = dateF.format(date) + "Z";
+        String  d = dateF.format(time) + "Z";
         int     year = Integer.parseInt(d.substring(0, 4));
 
         if (year < 1950 || year > 2049)
         {
-            time = new DERGeneralizedTime(d);
+            this.time = new DERGeneralizedTime(d);
         }
         else
         {
-            time = new DERUTCTime(d.substring(2));
+            this.time = new DERUTCTime(d.substring(2));
+        }
+    }
+
+    /**
+     * Creates a time object from a given date and locale - if the date is between 1950
+     * and 2049 a UTCTime object is generated, otherwise a GeneralizedTime
+     * is used. You may need to use this constructor if the default locale
+     * doesn't use a Gregorian calender so that the GeneralizedTime produced is compatible with other ASN.1 implementations.
+     *
+     * @param time a date object representing the time of interest.
+     * @param locale an appropriate Locale for producing an ASN.1 GeneralizedTime value.
+     */
+    public Time(
+        Date    time,
+        Locale locale)
+    {
+        SimpleTimeZone      tz = new SimpleTimeZone(0, "Z");
+        SimpleDateFormat    dateF = new SimpleDateFormat("yyyyMMddHHmmss", locale);
+
+        dateF.setTimeZone(tz);
+
+        String  d = dateF.format(time) + "Z";
+        int     year = Integer.parseInt(d.substring(0, 4));
+
+        if (year < 1950 || year > 2049)
+        {
+            this.time = new DERGeneralizedTime(d);
+        }
+        else
+        {
+            this.time = new DERUTCTime(d.substring(2));
         }
     }
 
@@ -70,13 +106,13 @@ public class Time
         {
             return (Time)obj;
         }
-        else if (obj instanceof DERUTCTime)
+        else if (obj instanceof ASN1UTCTime)
         {
-            return new Time((DERUTCTime)obj);
+            return new Time((ASN1UTCTime)obj);
         }
-        else if (obj instanceof DERGeneralizedTime)
+        else if (obj instanceof ASN1GeneralizedTime)
         {
-            return new Time((DERGeneralizedTime)obj);
+            return new Time((ASN1GeneralizedTime)obj);
         }
 
         throw new IllegalArgumentException("unknown object in factory: " + obj.getClass().getName());
@@ -84,13 +120,13 @@ public class Time
 
     public String getTime()
     {
-        if (time instanceof DERUTCTime)
+        if (time instanceof ASN1UTCTime)
         {
-            return ((DERUTCTime)time).getAdjustedTime();
+            return ((ASN1UTCTime)time).getAdjustedTime();
         }
         else
         {
-            return ((DERGeneralizedTime)time).getTime();
+            return ((ASN1GeneralizedTime)time).getTime();
         }
     }
 
@@ -98,13 +134,13 @@ public class Time
     {
         try
         {
-            if (time instanceof DERUTCTime)
+            if (time instanceof ASN1UTCTime)
             {
-                return ((DERUTCTime)time).getAdjustedDate();
+                return ((ASN1UTCTime)time).getAdjustedDate();
             }
             else
             {
-                return ((DERGeneralizedTime)time).getDate();
+                return ((ASN1GeneralizedTime)time).getDate();
             }
         }
         catch (ParseException e)

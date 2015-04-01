@@ -1,7 +1,7 @@
 package org.spongycastle.crypto.digests;
 
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Memoable;
+import org.spongycastle.util.Pack;
 
 
 /**
@@ -34,6 +34,11 @@ public class SHA384Digest
     public SHA384Digest(SHA384Digest t)
     {
         super(t);
+    }
+
+    public SHA384Digest(byte[] encodedState)
+    {
+        restoreState(encodedState);
     }
 
     public String getAlgorithmName()
@@ -95,5 +100,12 @@ public class SHA384Digest
         SHA384Digest d = (SHA384Digest)other;
 
         super.copyIn(d);
+    }
+
+    public byte[] getEncodedState()
+    {
+        byte[] encoded = new byte[getEncodedStateSize()];
+        super.populateState(encoded);
+        return encoded;
     }
 }

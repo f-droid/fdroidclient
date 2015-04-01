@@ -32,7 +32,7 @@ public interface Polynomial
 
     /**
      * Multiplies the polynomial by a <code>BigIntPolynomial</code>, taking the indices mod N. Does not
-     * change this polynomial but returns the result as a new polynomial.<br/>
+     * change this polynomial but returns the result as a new polynomial.<br>
      * Both polynomials must have the same number of coefficients.
      *
      * @param poly2 the polynomial to multiply by

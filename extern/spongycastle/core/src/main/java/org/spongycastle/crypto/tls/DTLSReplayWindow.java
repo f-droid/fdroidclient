@@ -7,7 +7,6 @@ package org.spongycastle.crypto.tls;
  */
 class DTLSReplayWindow
 {
-
     private static final long VALID_SEQ_MASK = 0x0000FFFFFFFFFFFFL;
 
     private static final long WINDOW_SIZE = 64L;

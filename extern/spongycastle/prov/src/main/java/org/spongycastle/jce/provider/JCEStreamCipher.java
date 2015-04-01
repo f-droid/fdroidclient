@@ -28,15 +28,12 @@ import javax.crypto.spec.RC5ParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.spongycastle.asn1.pkcs.PrivateKeyInfo;
-import org.spongycastle.crypto.BlockCipher;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
-import org.spongycastle.crypto.StreamBlockCipher;
 import org.spongycastle.crypto.StreamCipher;
 import org.spongycastle.crypto.engines.BlowfishEngine;
 import org.spongycastle.crypto.engines.DESEngine;
 import org.spongycastle.crypto.engines.DESedeEngine;
-import org.spongycastle.crypto.engines.RC4Engine;
 import org.spongycastle.crypto.engines.SkipjackEngine;
 import org.spongycastle.crypto.engines.TwofishEngine;
 import org.spongycastle.crypto.modes.CFBBlockCipher;
@@ -77,15 +74,6 @@ public class JCEStreamCipher
     {
         cipher = engine;
         this.ivLength = ivLength;
-    }
-        
-    protected JCEStreamCipher(
-        BlockCipher engine,
-        int         ivLength)
-    {
-        this.ivLength = ivLength;
-
-        cipher = new StreamBlockCipher(engine);
     }
 
     protected int engineGetBlockSize() 

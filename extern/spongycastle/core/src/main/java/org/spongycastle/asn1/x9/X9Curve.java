@@ -11,6 +11,7 @@ import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.DERBitString;
 import org.spongycastle.asn1.DERSequence;
+import org.spongycastle.math.ec.ECAlgorithms;
 import org.spongycastle.math.ec.ECCurve;
 
 /**
@@ -46,6 +47,8 @@ public class X9Curve
         X9FieldID     fieldID,
         ASN1Sequence  seq)
     {
+        // TODO Is it possible to get the order(n) and cofactor(h) too?
+
         fieldIdentifier = fieldID.getIdentifier();
         if (fieldIdentifier.equals(prime_field))
         {
@@ -86,7 +89,6 @@ public class X9Curve
             }
             X9FieldElement x9A = new X9FieldElement(m, k1, k2, k3, (ASN1OctetString)seq.getObjectAt(0));
             X9FieldElement x9B = new X9FieldElement(m, k1, k2, k3, (ASN1OctetString)seq.getObjectAt(1));
-            // TODO Is it possible to get the order (n) and cofactor(h) too?
             curve = new ECCurve.F2m(m, k1, k2, k3, x9A.getValue().toBigInteger(), x9B.getValue().toBigInteger());
         }
         else
@@ -102,11 +104,11 @@ public class X9Curve
 
     private void setFieldIdentifier()
     {
-        if (curve instanceof ECCurve.Fp)
+        if (ECAlgorithms.isFpCurve(curve))
         {
             fieldIdentifier = prime_field;
         }
-        else if (curve instanceof ECCurve.F2m)
+        else if (ECAlgorithms.isF2mCurve(curve))
         {
             fieldIdentifier = characteristic_two_field;
         }

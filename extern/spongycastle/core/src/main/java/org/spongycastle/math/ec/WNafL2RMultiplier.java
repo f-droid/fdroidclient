@@ -31,7 +31,7 @@ public class WNafL2RMultiplier extends AbstractECMultiplier
         int i = wnaf.length;
 
         /*
-         * NOTE This code optimizes the first window using the precomputed points to substitute an
+         * NOTE: We try to optimize the first window using the precomputed points to substitute an
          * addition for 2 or more doublings.
          */
         if (i > 1)
@@ -42,19 +42,14 @@ public class WNafL2RMultiplier extends AbstractECMultiplier
             int n = Math.abs(digit);
             ECPoint[] table = digit < 0 ? preCompNeg : preComp;
 
-            /*
-             * NOTE: We use this optimization conservatively, since some coordinate systems have
-             * significantly cheaper doubling relative to addition.
-             * 
-             * (n << 2) selects precomputed values in the lower half of the table
-             * (n << 3) selects precomputed values in the lower quarter of the table
-             */
-            //if ((n << 2) < (1 << width))
-            if ((n << 3) < (1 << width))
+            // Optimization can only be used for values in the lower half of the table
+            if ((n << 2) < (1 << width))
             {
                 int highest = LongArray.bitLengths[n];
-                int lowBits =  n ^ (1 << (highest - 1));
+
+                // TODO Get addition/doubling cost ratio from curve and compare to 'scale' to see if worth substituting?
                 int scale = width - highest;
+                int lowBits =  n ^ (1 << (highest - 1));
 
                 int i1 = ((1 << (width - 1)) - 1);
                 int i2 = (lowBits << scale) + 1;

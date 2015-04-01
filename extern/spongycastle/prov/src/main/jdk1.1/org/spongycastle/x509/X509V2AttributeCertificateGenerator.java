@@ -20,7 +20,7 @@ import org.spongycastle.asn1.DERBitString;
 import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.DERNull;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.DEROutputStream;
 import org.spongycastle.asn1.DERSequence;
@@ -40,7 +40,7 @@ import org.spongycastle.util.Strings;
 public class X509V2AttributeCertificateGenerator
 {
     private V2AttributeCertificateInfoGenerator   acInfoGen;
-    private DERObjectIdentifier         sigOID;
+    private ASN1ObjectIdentifier         sigOID;
     private AlgorithmIdentifier         sigAlgId;
     private String                      signatureAlgorithm;
     private Hashtable                   extensions = null;
@@ -49,18 +49,18 @@ public class X509V2AttributeCertificateGenerator
 
     static
     {
-        algorithms.put("MD2WITHRSAENCRYPTION", new DERObjectIdentifier("1.2.840.113549.1.1.2"));
-        algorithms.put("MD2WITHRSA", new DERObjectIdentifier("1.2.840.113549.1.1.2"));
-        algorithms.put("MD5WITHRSAENCRYPTION", new DERObjectIdentifier("1.2.840.113549.1.1.4"));
-        algorithms.put("MD5WITHRSA", new DERObjectIdentifier("1.2.840.113549.1.1.4"));
-        algorithms.put("SHA1WITHRSAENCRYPTION", new DERObjectIdentifier("1.2.840.113549.1.1.5"));
-        algorithms.put("SHA1WITHRSA", new DERObjectIdentifier("1.2.840.113549.1.1.5"));
-        algorithms.put("RIPEMD160WITHRSAENCRYPTION", new DERObjectIdentifier("1.3.36.3.3.1.2"));
-        algorithms.put("RIPEMD160WITHRSA", new DERObjectIdentifier("1.3.36.3.3.1.2"));
-        algorithms.put("SHA1WITHDSA", new DERObjectIdentifier("1.2.840.10040.4.3"));
-        algorithms.put("DSAWITHSHA1", new DERObjectIdentifier("1.2.840.10040.4.3"));
-        algorithms.put("SHA1WITHECDSA", new DERObjectIdentifier("1.2.840.10045.4.1"));
-        algorithms.put("ECDSAWITHSHA1", new DERObjectIdentifier("1.2.840.10045.4.1"));
+        algorithms.put("MD2WITHRSAENCRYPTION", new ASN1ObjectIdentifier("1.2.840.113549.1.1.2"));
+        algorithms.put("MD2WITHRSA", new ASN1ObjectIdentifier("1.2.840.113549.1.1.2"));
+        algorithms.put("MD5WITHRSAENCRYPTION", new ASN1ObjectIdentifier("1.2.840.113549.1.1.4"));
+        algorithms.put("MD5WITHRSA", new ASN1ObjectIdentifier("1.2.840.113549.1.1.4"));
+        algorithms.put("SHA1WITHRSAENCRYPTION", new ASN1ObjectIdentifier("1.2.840.113549.1.1.5"));
+        algorithms.put("SHA1WITHRSA", new ASN1ObjectIdentifier("1.2.840.113549.1.1.5"));
+        algorithms.put("RIPEMD160WITHRSAENCRYPTION", new ASN1ObjectIdentifier("1.3.36.3.3.1.2"));
+        algorithms.put("RIPEMD160WITHRSA", new ASN1ObjectIdentifier("1.3.36.3.3.1.2"));
+        algorithms.put("SHA1WITHDSA", new ASN1ObjectIdentifier("1.2.840.10040.4.3"));
+        algorithms.put("DSAWITHSHA1", new ASN1ObjectIdentifier("1.2.840.10040.4.3"));
+        algorithms.put("SHA1WITHECDSA", new ASN1ObjectIdentifier("1.2.840.10045.4.1"));
+        algorithms.put("ECDSAWITHSHA1", new ASN1ObjectIdentifier("1.2.840.10045.4.1"));
     }
 
     public X509V2AttributeCertificateGenerator()
@@ -131,7 +131,7 @@ public class X509V2AttributeCertificateGenerator
     {
         this.signatureAlgorithm = signatureAlgorithm;
 
-        sigOID = (DERObjectIdentifier)algorithms.get(Strings.toUpperCase(signatureAlgorithm));
+        sigOID = (ASN1ObjectIdentifier)algorithms.get(Strings.toUpperCase(signatureAlgorithm));
 
         if (sigOID == null)
         {
@@ -188,7 +188,7 @@ public class X509V2AttributeCertificateGenerator
             extOrdering = new Vector();
         }
 
-        DERObjectIdentifier oid = new DERObjectIdentifier(OID);
+        ASN1ObjectIdentifier oid = new ASN1ObjectIdentifier(OID);
         
         extensions.put(oid, new X509Extension(critical, new DEROctetString(value)));
         extOrdering.addElement(oid);

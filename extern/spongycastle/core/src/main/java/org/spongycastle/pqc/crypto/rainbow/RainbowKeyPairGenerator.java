@@ -12,7 +12,7 @@ import org.spongycastle.pqc.crypto.rainbow.util.GF2Field;
  * This class implements AsymmetricCipherKeyPairGenerator. It is used
  * as a generator for the private and public key of the Rainbow Signature
  * Scheme.
- * <p/>
+ * <p>
  * Detailed information about the key generation is to be found in the paper of
  * Jintai Ding, Dieter Schmidt: Rainbow, a New Multivariable Polynomial
  * Signature Scheme. ACNS 2005: 164-175 (http://dx.doi.org/10.1007/11496137_12)
@@ -49,7 +49,6 @@ public class RainbowKeyPairGenerator
     /**
      * The standard constructor tries to generate the Rainbow algorithm identifier
      * with the corresponding OID.
-     * <p/>
      */
     public RainbowKeyPairGenerator()
     {

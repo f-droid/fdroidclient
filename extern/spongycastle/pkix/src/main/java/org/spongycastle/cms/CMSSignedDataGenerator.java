@@ -140,7 +140,7 @@ public class CMSSignedDataGenerator
 
         ASN1OctetString octs = null;
 
-        if (content != null)
+        if (content.getContent() != null)
         {
             ByteArrayOutputStream bOut = null;
 

@@ -371,6 +371,23 @@ class LongArray
         }
     }
 
+    public boolean isOne()
+    {
+        long[] a = m_ints;
+        if (a[0] != 1L)
+        {
+            return false;
+        }
+        for (int i = 1; i < a.length; ++i)
+        {
+            if (a[i] != 0L)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean isZero()
     {
         long[] a = m_ints;
@@ -822,12 +839,12 @@ class LongArray
             add(c, cOff, b, 0, bLen);
         }
         int k = 1;
-        while ((a >>>= 1) != 0)
+        while ((a >>>= 1) != 0L)
         {
             if ((a & 1L) != 0L)
             {
                 long carry = addShiftedUp(c, cOff, b, 0, bLen, k);
-                if (carry != 0)
+                if (carry != 0L)
                 {
                     c[cOff + bLen] ^= carry;
                 }
@@ -871,8 +888,8 @@ class LongArray
 
         if (aLen == 1)
         {
-            long a = A.m_ints[0];
-            if (a == 1L)
+            long a0 = A.m_ints[0];
+            if (a0 == 1L)
             {
                 return B;
             }
@@ -880,13 +897,13 @@ class LongArray
             /*
              * Fast path for small A, with performance dependent only on the number of set bits
              */
-            long[] c = new long[cLen];
-            multiplyWord(a, B.m_ints, bLen, c, 0);
+            long[] c0 = new long[cLen];
+            multiplyWord(a0, B.m_ints, bLen, c0, 0);
 
             /*
              * Reduce the raw answer against the reduction coefficients
              */
-            return reduceResult(c, 0, cLen, m, ks);
+            return reduceResult(c0, 0, cLen, m, ks);
         }
 
         /*
@@ -1003,8 +1020,8 @@ class LongArray
 
         if (aLen == 1)
         {
-            long a = A.m_ints[0];
-            if (a == 1L)
+            long a0 = A.m_ints[0];
+            if (a0 == 1L)
             {
                 return B;
             }
@@ -1012,13 +1029,13 @@ class LongArray
             /*
              * Fast path for small A, with performance dependent only on the number of set bits
              */
-            long[] c = new long[cLen];
-            multiplyWord(a, B.m_ints, bLen, c, 0);
+            long[] c0 = new long[cLen];
+            multiplyWord(a0, B.m_ints, bLen, c0, 0);
 
             /*
              * Reduce the raw answer against the reduction coefficients
              */
-            return reduceResult(c, 0, cLen, m, ks);
+            return reduceResult(c0, 0, cLen, m, ks);
         }
 
         /*
@@ -1077,7 +1094,8 @@ class LongArray
                 aVal >>>= 4;
                 int v = (int)aVal & MASK;
                 addBoth(c, cOff, T0, ti[u], T1, ti[v], bMax);
-                if ((aVal >>>= 4) == 0L)
+                aVal >>>= 4;
+                if (aVal == 0L)
                 {
                     break;
                 }
@@ -1085,10 +1103,12 @@ class LongArray
             }
         }
 
-        int cOff = c.length;
-        while ((cOff -= cLen) != 0)
         {
-            addShiftedUp(c, cOff - cLen, c, cOff, cLen, 8);
+            int cOff = c.length;
+            while ((cOff -= cLen) != 0)
+            {
+                addShiftedUp(c, cOff - cLen, c, cOff, cLen, 8);
+            }
         }
 
         /*
@@ -1132,8 +1152,8 @@ class LongArray
 
         if (aLen == 1)
         {
-            long a = A.m_ints[0];
-            if (a == 1L)
+            long a0 = A.m_ints[0];
+            if (a0 == 1L)
             {
                 return B;
             }
@@ -1141,13 +1161,13 @@ class LongArray
             /*
              * Fast path for small A, with performance dependent only on the number of set bits
              */
-            long[] c = new long[cLen];
-            multiplyWord(a, B.m_ints, bLen, c, 0);
+            long[] c0 = new long[cLen];
+            multiplyWord(a0, B.m_ints, bLen, c0, 0);
 
             /*
              * Reduce the raw answer against the reduction coefficients
              */
-            return reduceResult(c, 0, cLen, m, ks);
+            return reduceResult(c0, 0, cLen, m, ks);
         }
 
         // NOTE: This works, but is slower than width 4 processing
@@ -1314,6 +1334,158 @@ class LongArray
         return reduceResult(c, ci[1], cLen, m, ks);
     }
 
+    public LongArray modReduce(int m, int[] ks)
+    {
+        long[] buf = Arrays.clone(m_ints);
+        int rLen = reduceInPlace(buf, 0, buf.length, m, ks);
+        return new LongArray(buf, 0, rLen);
+    }
+
+    public LongArray multiply(LongArray other, int m, int[] ks)
+    {
+        /*
+         * Find out the degree of each argument and handle the zero cases
+         */
+        int aDeg = degree();
+        if (aDeg == 0)
+        {
+            return this;
+        }
+        int bDeg = other.degree();
+        if (bDeg == 0)
+        {
+            return other;
+        }
+
+        /*
+         * Swap if necessary so that A is the smaller argument
+         */
+        LongArray A = this, B = other;
+        if (aDeg > bDeg)
+        {
+            A = other; B = this;
+            int tmp = aDeg; aDeg = bDeg; bDeg = tmp;
+        }
+
+        /*
+         * Establish the word lengths of the arguments and result
+         */
+        int aLen = (aDeg + 63) >>> 6;
+        int bLen = (bDeg + 63) >>> 6;
+        int cLen = (aDeg + bDeg + 62) >>> 6;
+
+        if (aLen == 1)
+        {
+            long a0 = A.m_ints[0];
+            if (a0 == 1L)
+            {
+                return B;
+            }
+
+            /*
+             * Fast path for small A, with performance dependent only on the number of set bits
+             */
+            long[] c0 = new long[cLen];
+            multiplyWord(a0, B.m_ints, bLen, c0, 0);
+
+            /*
+             * Reduce the raw answer against the reduction coefficients
+             */
+//            return reduceResult(c0, 0, cLen, m, ks);
+            return new LongArray(c0, 0, cLen);
+        }
+
+        /*
+         * Determine if B will get bigger during shifting
+         */
+        int bMax = (bDeg + 7 + 63) >>> 6;
+
+        /*
+         * Lookup table for the offset of each B in the tables
+         */
+        int[] ti = new int[16];
+
+        /*
+         * Precompute table of all 4-bit products of B
+         */
+        long[] T0 = new long[bMax << 4];
+        int tOff = bMax;
+        ti[1] = tOff;
+        System.arraycopy(B.m_ints, 0, T0, tOff, bLen);
+        for (int i = 2; i < 16; ++i)
+        {
+            ti[i] = (tOff += bMax);
+            if ((i & 1) == 0)
+            {
+                shiftUp(T0, tOff >>> 1, T0, tOff, bMax, 1);
+            }
+            else
+            {
+                add(T0, bMax, T0, tOff - bMax, T0, tOff, bMax);
+            }
+        }
+
+        /*
+         * Second table with all 4-bit products of B shifted 4 bits
+         */
+        long[] T1 = new long[T0.length];
+        shiftUp(T0, 0, T1, 0, T0.length, 4);
+//        shiftUp(T0, bMax, T1, bMax, tOff, 4);
+
+        long[] a = A.m_ints;
+        long[] c = new long[cLen << 3];
+
+        int MASK = 0xF;
+
+        /*
+         * Lopez-Dahab (Modified) algorithm
+         */
+
+        for (int aPos = 0; aPos < aLen; ++aPos)
+        {
+            long aVal = a[aPos];
+            int cOff = aPos;
+            for (;;)
+            {
+                int u = (int)aVal & MASK;
+                aVal >>>= 4;
+                int v = (int)aVal & MASK;
+                addBoth(c, cOff, T0, ti[u], T1, ti[v], bMax);
+                aVal >>>= 4;
+                if (aVal == 0L)
+                {
+                    break;
+                }
+                cOff += cLen;
+            }
+        }
+
+        {
+            int cOff = c.length;
+            while ((cOff -= cLen) != 0)
+            {
+                addShiftedUp(c, cOff - cLen, c, cOff, cLen, 8);
+            }
+        }
+
+        /*
+         * Finally the raw answer is collected, reduce it against the reduction coefficients
+         */
+//        return reduceResult(c, 0, cLen, m, ks);
+        return new LongArray(c, 0, cLen);
+    }
+
+    public void reduce(int m, int[] ks)
+    {
+        long[] buf = m_ints;
+        int rLen = reduceInPlace(buf, 0, buf.length, m, ks);
+        if (rLen < buf.length)
+        {
+            m_ints = new long[rLen];
+            System.arraycopy(buf, 0, m_ints, 0, rLen);
+        }
+    }
+
     private static LongArray reduceResult(long[] buf, int off, int len, int m, int[] ks)
     {
         int rLen = reduceInPlace(buf, off, len, m, ks);
@@ -1405,13 +1577,13 @@ class LongArray
     private static void reduceBit(long[] buf, int off, int bit, int m, int[] ks)
     {
         flipBit(buf, off, bit);
-        int base = bit - m;
+        int n = bit - m;
         int j = ks.length;
         while (--j >= 0)
         {
-            flipBit(buf, off, ks[j] + base);
+            flipBit(buf, off, ks[j] + n);
         }
-        flipBit(buf, off, base);
+        flipBit(buf, off, n);
     }
 
     private static void reduceWordWise(long[] buf, int off, int len, int toBit, int m, int[] ks)
@@ -1428,12 +1600,14 @@ class LongArray
             }
         }
 
-        int partial = toBit & 0x3F;
-        long word = buf[off + toPos] >>> partial;
-        if (word != 0)
         {
-            buf[off + toPos] ^= word << partial;
-            reduceWord(buf, off, toBit, word, m, ks);
+            int partial = toBit & 0x3F;
+            long word = buf[off + toPos] >>> partial;
+            if (word != 0)
+            {
+                buf[off + toPos] ^= word << partial;
+                reduceWord(buf, off, toBit, word, m, ks);
+            }
         }
     }
 
@@ -1502,37 +1676,59 @@ class LongArray
         return new LongArray(r, 0, reduceInPlace(r, 0, r.length, m, ks));
     }
 
-//    private LongArray modSquareN(int n, int m, int[] ks)
-//    {
-//        int len = getUsedLength();
-//        if (len == 0)
-//        {
-//            return this;
-//        }
-//
-//        int mLen = (m + 63) >>> 6;
-//        long[] r = new long[mLen << 1];
-//        System.arraycopy(m_ints, 0, r, 0, len);
-//
-//        while (--n >= 0)
-//        {
-//            squareInPlace(r, len, m, ks);
-//            len = reduceInPlace(r, 0, r.length, m, ks);
-//        }
-//
-//        return new LongArray(r, 0, len);
-//    }
-//
-//    private static void squareInPlace(long[] x, int xLen, int m, int[] ks)
-//    {
-//        int pos = xLen << 1;
-//        while (--xLen >= 0)
-//        {
-//            long xVal = x[xLen];
-//            x[--pos] = interleave2_32to64((int)(xVal >>> 32));
-//            x[--pos] = interleave2_32to64((int)xVal);
-//        }
-//    }
+    public LongArray modSquareN(int n, int m, int[] ks)
+    {
+        int len = getUsedLength();
+        if (len == 0)
+        {
+            return this;
+        }
+
+        int mLen = (m + 63) >>> 6;
+        long[] r = new long[mLen << 1];
+        System.arraycopy(m_ints, 0, r, 0, len);
+
+        while (--n >= 0)
+        {
+            squareInPlace(r, len, m, ks);
+            len = reduceInPlace(r, 0, r.length, m, ks);
+        }
+
+        return new LongArray(r, 0, len);
+    }
+
+    public LongArray square(int m, int[] ks)
+    {
+        int len = getUsedLength();
+        if (len == 0)
+        {
+            return this;
+        }
+
+        int _2len = len << 1;
+        long[] r = new long[_2len];
+
+        int pos = 0;
+        while (pos < _2len)
+        {
+            long mi = m_ints[pos >>> 1];
+            r[pos++] = interleave2_32to64((int)mi);
+            r[pos++] = interleave2_32to64((int)(mi >>> 32));
+        }
+
+        return new LongArray(r, 0, r.length);
+    }
+
+    private static void squareInPlace(long[] x, int xLen, int m, int[] ks)
+    {
+        int pos = xLen << 1;
+        while (--xLen >= 0)
+        {
+            long xVal = x[xLen];
+            x[--pos] = interleave2_32to64((int)(xVal >>> 32));
+            x[--pos] = interleave2_32to64((int)xVal);
+        }
+    }
 
     private static void interleave(long[] x, int xOff, long[] z, int zOff, int count, int width)
     {
@@ -1856,6 +2052,10 @@ class LongArray
          * Output: a(z)^(-1) mod f(z)
          */
         int uzDegree = degree();
+        if (uzDegree == 0)
+        {
+            throw new IllegalStateException();
+        }
         if (uzDegree == 1)
         {
             return this;

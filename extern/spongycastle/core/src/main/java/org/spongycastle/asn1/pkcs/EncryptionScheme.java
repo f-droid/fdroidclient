@@ -25,7 +25,7 @@ public class EncryptionScheme
         this.algId = AlgorithmIdentifier.getInstance(seq);
     }
 
-    public static final EncryptionScheme getInstance(Object obj)
+    public static EncryptionScheme getInstance(Object obj)
     {
         if (obj instanceof EncryptionScheme)
         {

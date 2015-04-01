@@ -10,10 +10,10 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
 import org.spongycastle.asn1.ASN1InputStream;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.DERNull;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.DEROutputStream;
 import org.spongycastle.asn1.pkcs.ContentInfo;
@@ -104,7 +104,7 @@ public class PKCS12Util
     }
 
     private static byte[] calculatePbeMac(
-        DERObjectIdentifier oid,
+        ASN1ObjectIdentifier oid,
         byte[]              salt,
         int                 itCount,
         char[]              password,

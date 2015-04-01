@@ -7,9 +7,9 @@ import org.spongycastle.math.ec.ECPoint;
 
 /**
  * specification signifying that the curve parameters can also be
- * refered to by name.
+ * referred to by name.
  * <p>
- * If you are using JDK 1.5 you should be looking at ECNamedCurveSpec.
+ * If you are using JDK 1.5 you should be looking at {@link ECNamedCurveSpec}.
  */
 public class ECNamedCurveParameterSpec
     extends ECParameterSpec

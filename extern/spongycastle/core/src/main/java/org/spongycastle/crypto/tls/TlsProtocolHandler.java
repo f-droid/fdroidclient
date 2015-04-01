@@ -10,7 +10,6 @@ import java.security.SecureRandom;
 public class TlsProtocolHandler
     extends TlsClientProtocol
 {
-
     public TlsProtocolHandler(InputStream is, OutputStream os)
     {
         super(is, os);

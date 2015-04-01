@@ -2,6 +2,8 @@ package org.spongycastle.crypto.tls;
 
 import java.io.IOException;
 
+import org.spongycastle.util.Strings;
+
 public final class ProtocolVersion
 {
     public static final ProtocolVersion SSLv3 = new ProtocolVersion(0x0300, "SSL 3.0");
@@ -45,6 +47,11 @@ public final class ProtocolVersion
         return this == SSLv3;
     }
 
+    public boolean isTLS()
+    {
+        return getMajorVersion() == 0x03;
+    }
+
     public ProtocolVersion getEquivalentTLSVersion()
     {
         if (!isDTLS())
@@ -78,9 +85,14 @@ public final class ProtocolVersion
         return isDTLS() ? diffMinorVersion > 0 : diffMinorVersion < 0;
     }
 
-    public boolean equals(Object obj)
+    public boolean equals(Object other)
     {
-        return this == obj;
+        return this == other || (other instanceof ProtocolVersion && equals((ProtocolVersion)other));
+    }
+
+    public boolean equals(ProtocolVersion other)
+    {
+        return other != null && this.version == other.version;
     }
 
     public int hashCode()
@@ -94,6 +106,7 @@ public final class ProtocolVersion
         switch (major)
         {
         case 0x03:
+        {
             switch (minor)
             {
             case 0x00:
@@ -105,21 +118,41 @@ public final class ProtocolVersion
             case 0x03:
                 return TLSv12;
             }
+            return getUnknownVersion(major, minor, "TLS");
+        }
         case 0xFE:
+        {
             switch (minor)
             {
             case 0xFF:
                 return DTLSv10;
+            case 0xFE:
+                throw new TlsFatalAlert(AlertDescription.illegal_parameter);
             case 0xFD:
                 return DTLSv12;
             }
+            return getUnknownVersion(major, minor, "DTLS");
         }
-
-        throw new TlsFatalAlert(AlertDescription.illegal_parameter);
+        default:
+        {
+            throw new TlsFatalAlert(AlertDescription.illegal_parameter);
+        }
+        }
     }
 
     public String toString()
     {
         return name;
+    }
+
+    private static ProtocolVersion getUnknownVersion(int major, int minor, String prefix)
+        throws IOException
+    {
+        TlsUtils.checkUint8(major);
+        TlsUtils.checkUint8(minor);
+
+        int v = (major << 8) | minor;
+        String hex = Strings.toUpperCase(Integer.toHexString(0x10000 | v).substring(1));
+        return new ProtocolVersion(v, prefix + " 0x" + hex);
     }
 }

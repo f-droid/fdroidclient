@@ -24,7 +24,9 @@ import javax.crypto.Cipher;
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.DERNull;
+import org.spongycastle.asn1.bsi.BSIObjectIdentifiers;
 import org.spongycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
+import org.spongycastle.asn1.eac.EACObjectIdentifiers;
 import org.spongycastle.asn1.kisa.KISAObjectIdentifiers;
 import org.spongycastle.asn1.nist.NISTObjectIdentifiers;
 import org.spongycastle.asn1.ntt.NTTObjectIdentifiers;
@@ -36,8 +38,8 @@ import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.spongycastle.asn1.x9.X9ObjectIdentifiers;
 import org.spongycastle.cert.X509CertificateHolder;
-import org.spongycastle.jcajce.JcaJceHelper;
-import org.spongycastle.jcajce.JcaJceUtils;
+import org.spongycastle.jcajce.util.JcaJceHelper;
+import org.spongycastle.jcajce.util.JcaJceUtils;
 import org.spongycastle.operator.OperatorCreationException;
 
 class OperatorHelper
@@ -59,6 +61,17 @@ class OperatorHelper
         oids.put(PKCSObjectIdentifiers.sha512WithRSAEncryption, "SHA512WITHRSA");
         oids.put(CryptoProObjectIdentifiers.gostR3411_94_with_gostR3410_94, "GOST3411WITHGOST3410");
         oids.put(CryptoProObjectIdentifiers.gostR3411_94_with_gostR3410_2001, "GOST3411WITHECGOST3410");
+        oids.put(BSIObjectIdentifiers.ecdsa_plain_SHA1, "SHA1WITHPLAIN-ECDSA");
+        oids.put(BSIObjectIdentifiers.ecdsa_plain_SHA224, "SHA224WITHPLAIN-ECDSA");
+        oids.put(BSIObjectIdentifiers.ecdsa_plain_SHA256, "SHA256WITHPLAIN-ECDSA");
+        oids.put(BSIObjectIdentifiers.ecdsa_plain_SHA384, "SHA384WITHPLAIN-ECDSA");
+        oids.put(BSIObjectIdentifiers.ecdsa_plain_SHA512, "SHA512WITHPLAIN-ECDSA");
+        oids.put(BSIObjectIdentifiers.ecdsa_plain_RIPEMD160, "RIPEMD160WITHPLAIN-ECDSA");
+        oids.put(EACObjectIdentifiers.id_TA_ECDSA_SHA_1, "SHA1WITHCVC-ECDSA");
+        oids.put(EACObjectIdentifiers.id_TA_ECDSA_SHA_224, "SHA224WITHCVC-ECDSA");
+        oids.put(EACObjectIdentifiers.id_TA_ECDSA_SHA_256, "SHA256WITHCVC-ECDSA");
+        oids.put(EACObjectIdentifiers.id_TA_ECDSA_SHA_384, "SHA384WITHCVC-ECDSA");
+        oids.put(EACObjectIdentifiers.id_TA_ECDSA_SHA_512, "SHA512WITHCVC-ECDSA");
 
         oids.put(new ASN1ObjectIdentifier("1.2.840.113549.1.1.4"), "MD5WITHRSA");
         oids.put(new ASN1ObjectIdentifier("1.2.840.113549.1.1.2"), "MD2WITHRSA");
@@ -78,9 +91,9 @@ class OperatorHelper
         oids.put(NISTObjectIdentifiers.id_sha256, "SHA-256");
         oids.put(NISTObjectIdentifiers.id_sha384, "SHA-384");
         oids.put(NISTObjectIdentifiers.id_sha512, "SHA-512");
-        oids.put(TeleTrusTObjectIdentifiers.ripemd128, "RIPEMD-128");
-        oids.put(TeleTrusTObjectIdentifiers.ripemd160, "RIPEMD-160");
-        oids.put(TeleTrusTObjectIdentifiers.ripemd256, "RIPEMD-256");
+        oids.put(TeleTrusTObjectIdentifiers.ripemd128, "RIPEMD128");
+        oids.put(TeleTrusTObjectIdentifiers.ripemd160, "RIPEMD160");
+        oids.put(TeleTrusTObjectIdentifiers.ripemd256, "RIPEMD256");
 
         asymmetricWrapperAlgNames.put(PKCSObjectIdentifiers.rsaEncryption, "RSA/ECB/PKCS1Padding");
 
@@ -229,7 +242,7 @@ class OperatorHelper
 
         try
         {
-            dig = helper.createDigest(getDigestAlgName(digAlgId.getAlgorithm()));
+            dig = helper.createDigest(JcaJceUtils.getDigestAlgName(digAlgId.getAlgorithm()));
         }
         catch (NoSuchAlgorithmException e)
         {
@@ -323,7 +336,7 @@ class OperatorHelper
             if (sigAlgId.getAlgorithm().equals(PKCSObjectIdentifiers.id_RSASSA_PSS))
             {
                 RSASSAPSSparams rsaParams = RSASSAPSSparams.getInstance(params);
-                return getDigestAlgName(rsaParams.getHashAlgorithm().getAlgorithm()) + "WITHRSAANDMGF1";
+                return JcaJceUtils.getDigestAlgName(rsaParams.getHashAlgorithm().getAlgorithm()) + "WITHRSAANDMGF1";
             }
         }
 
@@ -333,55 +346,6 @@ class OperatorHelper
         }
 
         return sigAlgId.getAlgorithm().getId();
-    }
-
-    private static String getDigestAlgName(
-        ASN1ObjectIdentifier digestAlgOID)
-    {
-        if (PKCSObjectIdentifiers.md5.equals(digestAlgOID))
-        {
-            return "MD5";
-        }
-        else if (OIWObjectIdentifiers.idSHA1.equals(digestAlgOID))
-        {
-            return "SHA1";
-        }
-        else if (NISTObjectIdentifiers.id_sha224.equals(digestAlgOID))
-        {
-            return "SHA224";
-        }
-        else if (NISTObjectIdentifiers.id_sha256.equals(digestAlgOID))
-        {
-            return "SHA256";
-        }
-        else if (NISTObjectIdentifiers.id_sha384.equals(digestAlgOID))
-        {
-            return "SHA384";
-        }
-        else if (NISTObjectIdentifiers.id_sha512.equals(digestAlgOID))
-        {
-            return "SHA512";
-        }
-        else if (TeleTrusTObjectIdentifiers.ripemd128.equals(digestAlgOID))
-        {
-            return "RIPEMD128";
-        }
-        else if (TeleTrusTObjectIdentifiers.ripemd160.equals(digestAlgOID))
-        {
-            return "RIPEMD160";
-        }
-        else if (TeleTrusTObjectIdentifiers.ripemd256.equals(digestAlgOID))
-        {
-            return "RIPEMD256";
-        }
-        else if (CryptoProObjectIdentifiers.gostR3411.equals(digestAlgOID))
-        {
-            return "GOST3411";
-        }
-        else
-        {
-            return digestAlgOID.getId();
-        }
     }
 
     public X509Certificate convertCertificate(X509CertificateHolder certHolder)

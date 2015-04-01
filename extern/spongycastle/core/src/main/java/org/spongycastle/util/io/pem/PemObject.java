@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A generic PEM object - type, header properties, and byte content.
+ */
 public class PemObject
     implements PemObjectGenerator
 {

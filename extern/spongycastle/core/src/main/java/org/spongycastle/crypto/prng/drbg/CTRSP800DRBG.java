@@ -310,6 +310,16 @@ public class CTRSP800DRBG
     }
 
     /**
+     * Return the block size (in bits) of the DRBG.
+     *
+     * @return the number of bits produced on each internal round of the DRBG.
+     */
+    public int getBlockSize()
+    {
+        return _V.length * 8;
+    }
+
+    /**
      * Populate a passed in array with random data.
      *
      * @param output output array for generated bits.

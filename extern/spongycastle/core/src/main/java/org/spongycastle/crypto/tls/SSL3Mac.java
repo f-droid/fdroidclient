@@ -8,9 +8,9 @@ import org.spongycastle.util.Arrays;
 
 /**
  * HMAC implementation based on original internet draft for HMAC (RFC 2104)
- * <p/>
+ * <p>
  * The difference is that padding is concatenated versus XORed with the key
- * <p/>
+ * <p>
  * H(K + opad, H(K + ipad, text))
  */
 public class SSL3Mac

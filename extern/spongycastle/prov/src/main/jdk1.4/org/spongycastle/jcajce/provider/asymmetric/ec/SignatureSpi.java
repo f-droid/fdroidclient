@@ -11,7 +11,7 @@ import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1Encoding;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.spongycastle.crypto.CipherParameters;
@@ -270,8 +270,8 @@ public class SignatureSpi
         {
             ASN1EncodableVector v = new ASN1EncodableVector();
 
-            v.add(new DERInteger(r));
-            v.add(new DERInteger(s));
+            v.add(new ASN1Integer(r));
+            v.add(new ASN1Integer(s));
 
             return new DERSequence(v).getEncoded(ASN1Encoding.DER);
         }
@@ -283,8 +283,8 @@ public class SignatureSpi
             ASN1Sequence s = (ASN1Sequence)ASN1Primitive.fromByteArray(encoding);
             BigInteger[] sig = new BigInteger[2];
 
-            sig[0] = ((DERInteger)s.getObjectAt(0)).getValue();
-            sig[1] = ((DERInteger)s.getObjectAt(1)).getValue();
+            sig[0] = ((ASN1Integer)s.getObjectAt(0)).getValue();
+            sig[1] = ((ASN1Integer)s.getObjectAt(1)).getValue();
 
             return sig;
         }

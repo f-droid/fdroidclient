@@ -57,7 +57,7 @@ public class TlsECDHEKeyExchange
             for (int i = 0; i < namedCurves.length; ++i)
             {
                 int entry = namedCurves[i];
-                if (TlsECCUtils.isSupportedNamedCurve(entry))
+                if (NamedCurve.isValid(entry) && TlsECCUtils.isSupportedNamedCurve(entry))
                 {
                     namedCurve = entry;
                     break;

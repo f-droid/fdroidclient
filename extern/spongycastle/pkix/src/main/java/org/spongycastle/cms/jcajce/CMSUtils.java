@@ -13,7 +13,7 @@ import org.spongycastle.asn1.x509.Certificate;
 import org.spongycastle.asn1.x509.Extension;
 import org.spongycastle.asn1.x509.TBSCertificateStructure;
 import org.spongycastle.cms.CMSException;
-import org.spongycastle.jcajce.JcaJceUtils;
+import org.spongycastle.jcajce.util.JcaJceUtils;
 
 class CMSUtils
 {

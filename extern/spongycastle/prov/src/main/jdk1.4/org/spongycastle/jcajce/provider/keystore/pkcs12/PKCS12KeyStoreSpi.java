@@ -71,6 +71,8 @@ import org.spongycastle.asn1.x509.Extension;
 import org.spongycastle.asn1.x509.SubjectKeyIdentifier;
 import org.spongycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.spongycastle.asn1.x509.X509ObjectIdentifiers;
+import org.spongycastle.crypto.Digest;
+import org.spongycastle.crypto.digests.SHA1Digest;
 import org.spongycastle.jcajce.provider.symmetric.util.BCPBEKey;
 import org.spongycastle.jcajce.provider.util.SecretKeyUtil;
 import org.spongycastle.jce.interfaces.BCKeyStore;
@@ -191,12 +193,23 @@ public class PKCS12KeyStoreSpi
             SubjectPublicKeyInfo info = new SubjectPublicKeyInfo(
                 (ASN1Sequence)ASN1Primitive.fromByteArray(pubKey.getEncoded()));
 
-            return new SubjectKeyIdentifier(info);
+            return new SubjectKeyIdentifier(getDigest(info));
         }
         catch (Exception e)
         {
             throw new RuntimeException("error creating key");
         }
+    }
+
+    private static byte[] getDigest(SubjectPublicKeyInfo spki)
+    {
+        Digest digest = new SHA1Digest();
+        byte[]  resBuf = new byte[digest.getDigestSize()];
+
+        byte[] bytes = spki.getPublicKeyData().getBytes();
+        digest.update(bytes, 0, bytes.length);
+        digest.doFinal(resBuf, 0);
+        return resBuf;
     }
 
     public void setRandom(

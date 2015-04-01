@@ -14,7 +14,6 @@ import java.util.Set;
 
 import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.cmp.PKIFailureInfo;
 import org.spongycastle.asn1.tsp.TimeStampReq;
 import org.spongycastle.asn1.x509.Extension;
@@ -162,7 +161,7 @@ public class TimeStampRequest
             Enumeration en = this.getExtensions().oids();
             while(en.hasMoreElements())
             {
-                String  oid = ((DERObjectIdentifier)en.nextElement()).getId();
+                String  oid = ((ASN1ObjectIdentifier)en.nextElement()).getId();
                 if (!extensions.contains(oid))
                 {
                     throw new TSPValidationException("request contains unknown extension.", PKIFailureInfo.unacceptedExtension);

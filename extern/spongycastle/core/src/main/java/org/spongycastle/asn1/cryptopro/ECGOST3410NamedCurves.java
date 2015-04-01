@@ -6,8 +6,8 @@ import java.util.Hashtable;
 
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.crypto.params.ECDomainParameters;
+import org.spongycastle.math.ec.ECConstants;
 import org.spongycastle.math.ec.ECCurve;
-import org.spongycastle.math.ec.ECPoint;
 
 /**
  * table of the available named parameters for GOST 3410-2001.
@@ -26,7 +26,9 @@ public class ECGOST3410NamedCurves
         ECCurve.Fp curve = new ECCurve.Fp(
             mod_p, // p
             new BigInteger("115792089237316195423570985008687907853269984665640564039457584007913129639316"), // a
-            new BigInteger("166")); // b
+            new BigInteger("166"), // b
+            mod_q,
+            ECConstants.ONE);
 
         ECDomainParameters ecParams = new ECDomainParameters(
             curve,
@@ -43,7 +45,9 @@ public class ECGOST3410NamedCurves
         curve = new ECCurve.Fp(
             mod_p, // p
             new BigInteger("115792089237316195423570985008687907853269984665640564039457584007913129639316"),
-            new BigInteger("166"));
+            new BigInteger("166"),
+            mod_q,
+            ECConstants.ONE);
 
         ecParams = new ECDomainParameters(
             curve,
@@ -60,7 +64,9 @@ public class ECGOST3410NamedCurves
         curve = new ECCurve.Fp(
             mod_p, // p
             new BigInteger("57896044618658097711785492504343953926634992332820282019728792003956564823190"), // a
-            new BigInteger("28091019353058090096996979000309560759124368558014865957655842872397301267595")); // b
+            new BigInteger("28091019353058090096996979000309560759124368558014865957655842872397301267595"), // b
+            mod_q,
+            ECConstants.ONE);
 
         ecParams = new ECDomainParameters(
             curve,
@@ -77,7 +83,9 @@ public class ECGOST3410NamedCurves
         curve = new ECCurve.Fp(
             mod_p, // p
             new BigInteger("70390085352083305199547718019018437841079516630045180471284346843705633502616"),
-            new BigInteger("32858"));
+            new BigInteger("32858"),
+            mod_q,
+            ECConstants.ONE);
 
         ecParams = new ECDomainParameters(
             curve,
@@ -93,7 +101,9 @@ public class ECGOST3410NamedCurves
         curve = new ECCurve.Fp(
             mod_p, // p
             new BigInteger("70390085352083305199547718019018437841079516630045180471284346843705633502616"), // a
-            new BigInteger("32858")); // b
+            new BigInteger("32858"), // b
+            mod_q,
+            ECConstants.ONE);
 
         ecParams = new ECDomainParameters(
             curve,

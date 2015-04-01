@@ -4,7 +4,12 @@ import java.math.BigInteger;
 
 public abstract class WNafUtil
 {
-    private static int[] DEFAULT_WINDOW_SIZE_CUTOFFS = new int[]{ 13, 41, 121, 337, 897, 2305 };
+    public static final String PRECOMP_NAME = "bc_wnaf";
+
+    private static final int[] DEFAULT_WINDOW_SIZE_CUTOFFS = new int[]{ 13, 41, 121, 337, 897, 2305 };
+
+    private static final byte[] EMPTY_BYTES = new byte[0];
+    private static final int[] EMPTY_INTS = new int[0];
 
     public static int[] generateCompactNaf(BigInteger k)
     {
@@ -12,29 +17,34 @@ public abstract class WNafUtil
         {
             throw new IllegalArgumentException("'k' must have bitlength < 2^16");
         }
+        if (k.signum() == 0)
+        {
+            return EMPTY_INTS;
+        }
 
         BigInteger _3k = k.shiftLeft(1).add(k);
 
-        int digits = _3k.bitLength() - 1;
-        int[] naf = new int[(digits + 1) >> 1];
+        int bits = _3k.bitLength();
+        int[] naf = new int[bits >> 1];
 
-        int length = 0, zeroes = 0;
-        for (int i = 1; i <= digits; ++i)
+        BigInteger diff = _3k.xor(k);
+
+        int highBit = bits - 1, length = 0, zeroes = 0;
+        for (int i = 1; i < highBit; ++i)
         {
-            boolean _3kBit = _3k.testBit(i);
-            boolean kBit = k.testBit(i);
-
-            if (_3kBit == kBit)
+            if (!diff.testBit(i))
             {
                 ++zeroes;
+                continue;
             }
-            else
-            {
-                int digit  = kBit ? -1 : 1;
-                naf[length++] = (digit << 16) | zeroes;
-                zeroes = 0;
-            }
+
+            int digit  = k.testBit(i) ? -1 : 1;
+            naf[length++] = (digit << 16) | zeroes;
+            zeroes = 1;
+            ++i;
         }
+
+        naf[length++] = (1 << 16) | zeroes;
 
         if (naf.length > length)
         {
@@ -58,6 +68,10 @@ public abstract class WNafUtil
         if ((k.bitLength() >>> 16) != 0)
         {
             throw new IllegalArgumentException("'k' must have bitlength < 2^16");
+        }
+        if (k.signum() == 0)
+        {
+            return EMPTY_INTS;
         }
 
         int[] wnaf = new int[k.bitLength() / width + 1];
@@ -114,9 +128,10 @@ public abstract class WNafUtil
         BigInteger k0 = g, k1 = h;
         int j = 0, d0 = 0, d1 = 0;
 
-        while (k0.signum() > 0 || k1.signum() > 0 || d0 > 0 || d1 > 0)
+        int offset = 0;
+        while ((d0 | d1) != 0 || k0.bitLength() > offset || k1.bitLength() > offset)
         {
-            int n0 = (k0.intValue() + d0) & 7, n1 = (k1.intValue() + d1) & 7;
+            int n0 = ((k0.intValue() >>> offset) + d0) & 7, n1 = ((k1.intValue() >>> offset) + d1) & 7;
 
             int u0 = n0 & 1;
             if (u0 != 0)
@@ -140,15 +155,19 @@ public abstract class WNafUtil
 
             if ((d0 << 1) == 1 + u0)
             {
-                d0 = 1 - d0;
+                d0 ^= 1;
             }
             if ((d1 << 1) == 1 + u1)
             {
-                d1 = 1 - d1;
+                d1 ^= 1;
             }
 
-            k0 = k0.shiftRight(1);
-            k1 = k1.shiftRight(1);
+            if (++offset == 30)
+            {
+                offset = 0;
+                k0 = k0.shiftRight(30);
+                k1 = k1.shiftRight(30);
+            }
 
             jsf[j++] = (byte)((u0 << 4) | (u1 & 0xF));
         }
@@ -164,18 +183,28 @@ public abstract class WNafUtil
 
     public static byte[] generateNaf(BigInteger k)
     {
+        if (k.signum() == 0)
+        {
+            return EMPTY_BYTES;
+        }
+
         BigInteger _3k = k.shiftLeft(1).add(k);
 
         int digits = _3k.bitLength() - 1;
         byte[] naf = new byte[digits];
 
-        for (int i = 1; i <= digits; ++i)
-        {
-            boolean _3kBit = _3k.testBit(i);
-            boolean kBit = k.testBit(i);
+        BigInteger diff = _3k.xor(k);
 
-            naf[i - 1] = (byte)(_3kBit == kBit ? 0 : kBit ? -1 : 1);
+        for (int i = 1; i < digits; ++i)
+        {
+            if (diff.testBit(i))
+            {
+                naf[i - 1] = (byte)(k.testBit(i) ? -1 : 1);
+                ++i;
+            }
         }
+
+        naf[digits - 1] = 1;
 
         return naf;
     }
@@ -202,6 +231,10 @@ public abstract class WNafUtil
         if (width < 2 || width > 8)
         {
             throw new IllegalArgumentException("'width' must be in the range [2, 8]");
+        }
+        if (k.signum() == 0)
+        {
+            return EMPTY_BYTES;
         }
 
         byte[] wnaf = new byte[k.bitLength() + 1];
@@ -250,6 +283,24 @@ public abstract class WNafUtil
         return wnaf;
     }
 
+    public static int getNafWeight(BigInteger k)
+    {
+        if (k.signum() == 0)
+        {
+            return 0;
+        }
+
+        BigInteger _3k = k.shiftLeft(1).add(k);
+        BigInteger diff = _3k.xor(k);
+
+        return diff.bitCount();
+    }
+
+    public static WNafPreCompInfo getWNafPreCompInfo(ECPoint p)
+    {
+        return getWNafPreCompInfo(p.getCurve().getPreCompInfo(p, PRECOMP_NAME));
+    }
+
     public static WNafPreCompInfo getWNafPreCompInfo(PreCompInfo preCompInfo)
     {
         if ((preCompInfo != null) && (preCompInfo instanceof WNafPreCompInfo))
@@ -291,10 +342,49 @@ public abstract class WNafUtil
         return w + 2;
     }
 
+    public static ECPoint mapPointWithPrecomp(ECPoint p, int width, boolean includeNegated,
+        ECPointMap pointMap)
+    {
+        ECCurve c = p.getCurve();
+        WNafPreCompInfo wnafPreCompP = precompute(p, width, includeNegated);
+
+        ECPoint q = pointMap.map(p);
+        WNafPreCompInfo wnafPreCompQ = getWNafPreCompInfo(c.getPreCompInfo(q, PRECOMP_NAME));
+
+        ECPoint twiceP = wnafPreCompP.getTwice();
+        if (twiceP != null)
+        {
+            ECPoint twiceQ = pointMap.map(twiceP);
+            wnafPreCompQ.setTwice(twiceQ);
+        }
+
+        ECPoint[] preCompP = wnafPreCompP.getPreComp();
+        ECPoint[] preCompQ = new ECPoint[preCompP.length];
+        for (int i = 0; i < preCompP.length; ++i)
+        {
+            preCompQ[i] = pointMap.map(preCompP[i]);
+        }
+        wnafPreCompQ.setPreComp(preCompQ);
+
+        if (includeNegated)
+        {
+            ECPoint[] preCompNegQ = new ECPoint[preCompQ.length];
+            for (int i = 0; i < preCompNegQ.length; ++i)
+            {
+                preCompNegQ[i] = preCompQ[i].negate();
+            }
+            wnafPreCompQ.setPreCompNeg(preCompNegQ);
+        }
+
+        c.setPreCompInfo(q, PRECOMP_NAME, wnafPreCompQ);
+
+        return q;
+    }
+
     public static WNafPreCompInfo precompute(ECPoint p, int width, boolean includeNegated)
     {
         ECCurve c = p.getCurve();
-        WNafPreCompInfo wnafPreCompInfo = getWNafPreCompInfo(c.getPreCompInfo(p));
+        WNafPreCompInfo wnafPreCompInfo = getWNafPreCompInfo(c.getPreCompInfo(p, PRECOMP_NAME));
 
         ECPoint[] preComp = wnafPreCompInfo.getPreComp();
         if (preComp == null)
@@ -307,26 +397,28 @@ public abstract class WNafUtil
 
         if (preCompLen < reqPreCompLen)
         {
-            ECPoint twiceP = wnafPreCompInfo.getTwiceP();
-            if (twiceP == null)
-            {
-                twiceP = preComp[0].twice().normalize();
-                wnafPreCompInfo.setTwiceP(twiceP);
-            }
-
             preComp = resizeTable(preComp, reqPreCompLen);
-
-            /*
-             * TODO Okeya/Sakurai paper has precomputation trick and  "Montgomery's Trick" to speed this up.
-             * Also, co-Z arithmetic could avoid the subsequent normalization too.
-             */
-            for (int i = preCompLen; i < reqPreCompLen; i++)
+            if (reqPreCompLen == 2)
             {
-                /*
-                 * Compute the new ECPoints for the precomputation array. The values 1, 3, 5, ...,
-                 * 2^(width-1)-1 times p are computed
-                 */
-                preComp[i] = twiceP.add(preComp[i - 1]);
+                preComp[1] = preComp[0].threeTimes();
+            }
+            else
+            {
+                ECPoint twiceP = wnafPreCompInfo.getTwice();
+                if (twiceP == null)
+                {
+                    twiceP = preComp[0].twice();
+                    wnafPreCompInfo.setTwice(twiceP);
+                }
+
+                for (int i = preCompLen; i < reqPreCompLen; i++)
+                {
+                    /*
+                     * Compute the new ECPoints for the precomputation array. The values 1, 3, 5, ...,
+                     * 2^(width-1)-1 times p are computed
+                     */
+                    preComp[i] = twiceP.add(preComp[i - 1]);
+                }
             }
 
             /*
@@ -365,7 +457,7 @@ public abstract class WNafUtil
             wnafPreCompInfo.setPreCompNeg(preCompNeg);
         }
 
-        c.setPreCompInfo(p, wnafPreCompInfo);
+        c.setPreCompInfo(p, PRECOMP_NAME, wnafPreCompInfo);
 
         return wnafPreCompInfo;
     }

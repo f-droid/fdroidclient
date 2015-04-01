@@ -54,9 +54,8 @@ public class AdditionalInformationSyntax
 
     /**
      * Produce an object suitable for an ASN1OutputStream.
-     * <p/>
+     * <p>
      * Returns:
-     * <p/>
      * <pre>
      *   AdditionalInformationSyntax ::= DirectoryString (SIZE(1..2048))
      * </pre>

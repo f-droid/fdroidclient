@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.spongycastle.crypto.params.DHParameters;
+import org.spongycastle.math.ec.WNafUtil;
 import org.spongycastle.util.BigIntegers;
 
 class DHKeyGeneratorHelper
@@ -19,12 +20,19 @@ class DHKeyGeneratorHelper
 
     BigInteger calculatePrivate(DHParameters dhParams, SecureRandom random)
     {
-        BigInteger p = dhParams.getP();
         int limit = dhParams.getL();
 
         if (limit != 0)
         {
-            return new BigInteger(limit, random).setBit(limit - 1);
+            int minWeight = limit >>> 2;
+            for (;;)
+            {
+                BigInteger x = new BigInteger(limit, random).setBit(limit - 1);
+                if (WNafUtil.getNafWeight(x) >= minWeight)
+                {
+                    return x;
+                }
+            }
         }
 
         BigInteger min = TWO;
@@ -34,14 +42,22 @@ class DHKeyGeneratorHelper
             min = ONE.shiftLeft(m - 1);
         }
 
-        BigInteger max = p.subtract(TWO);
         BigInteger q = dhParams.getQ();
-        if (q != null)
+        if (q == null)
         {
-            max = q.subtract(TWO);
+            q = dhParams.getP();
         }
+        BigInteger max = q.subtract(TWO);
 
-        return BigIntegers.createRandomInRange(min, max, random);
+        int minWeight = max.bitLength() >>> 2;
+        for (;;)
+        {
+            BigInteger x = BigIntegers.createRandomInRange(min, max, random);
+            if (WNafUtil.getNafWeight(x) >= minWeight)
+            {
+                return x;
+            }
+        }
     }
 
     BigInteger calculatePublic(DHParameters dhParams, BigInteger x)

@@ -6,7 +6,9 @@ import org.spongycastle.asn1.nist.NISTNamedCurves;
 import org.spongycastle.crypto.Digest;
 import org.spongycastle.crypto.prng.EntropySource;
 import org.spongycastle.math.ec.ECCurve;
+import org.spongycastle.math.ec.ECMultiplier;
 import org.spongycastle.math.ec.ECPoint;
+import org.spongycastle.math.ec.FixedPointCombMultiplier;
 import org.spongycastle.util.Arrays;
 import org.spongycastle.util.BigIntegers;
 
@@ -70,6 +72,7 @@ public class DualECSP800DRBG
     private ECPoint                _Q;
     private byte[]                 _s;
     private int                    _sLength;
+    private ECMultiplier           _fixedPointMultiplier = new FixedPointCombMultiplier();
 
     /**
      * Construct a SP800-90A Dual EC DRBG.
@@ -146,6 +149,16 @@ public class DualECSP800DRBG
     }
 
     /**
+     * Return the block size (in bits) of the DRBG.
+     *
+     * @return the number of bits produced on each internal round of the DRBG.
+     */
+    public int getBlockSize()
+    {
+        return _outlen * 8;
+    }
+
+    /**
      * Populate a passed in array with random data.
      *
      * @param output output array for generated bits.
@@ -199,7 +212,7 @@ public class DualECSP800DRBG
 
             //System.err.println("S: " + new String(Hex.encode(_s)));
 
-            byte[] r = _Q.multiply(s).normalize().getAffineXCoord().toBigInteger().toByteArray();
+            byte[] r = getScalarMultipleXCoord(_Q, s).toByteArray();
 
             if (r.length > _outlen)
             {
@@ -220,7 +233,7 @@ public class DualECSP800DRBG
         {
             s = getScalarMultipleXCoord(_P, s);
 
-            byte[] r = _Q.multiply(s).normalize().getAffineXCoord().toBigInteger().toByteArray();
+            byte[] r = getScalarMultipleXCoord(_Q, s).toByteArray();
 
             int required = output.length - outOffset;
 
@@ -237,7 +250,7 @@ public class DualECSP800DRBG
         }
 
         // Need to preserve length of S as unsigned int.
-        _s = BigIntegers.asUnsignedByteArray(_sLength, _P.multiply(s).normalize().getAffineXCoord().toBigInteger());
+        _s = BigIntegers.asUnsignedByteArray(_sLength, getScalarMultipleXCoord(_P, s));
 
         return numberOfBits;
     }
@@ -302,6 +315,6 @@ public class DualECSP800DRBG
 
     private BigInteger getScalarMultipleXCoord(ECPoint p, BigInteger s)
     {
-        return p.multiply(s).normalize().getAffineXCoord().toBigInteger();
+        return _fixedPointMultiplier.multiply(p, s).normalize().getAffineXCoord().toBigInteger();
     }
 }

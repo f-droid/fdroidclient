@@ -43,6 +43,9 @@ public class TlsClientProtocol
         return random;
     }
 
+    /**
+     * @deprecated use alternate constructor taking an explicit {@link SecureRandom}
+     */
     public TlsClientProtocol(InputStream input, OutputStream output)
     {
         this(input, output, createSecureRandom());
@@ -74,9 +77,12 @@ public class TlsClientProtocol
 
         this.securityParameters = new SecurityParameters();
         this.securityParameters.entity = ConnectionEnd.client;
-        this.securityParameters.clientRandom = createRandomBlock(secureRandom);
 
         this.tlsClientContext = new TlsClientContextImpl(secureRandom, securityParameters);
+
+        this.securityParameters.clientRandom = createRandomBlock(tlsClient.shouldUseGMTUnixTime(),
+            tlsClientContext.getNonceRandomGenerator());
+
         this.tlsClient.init(tlsClientContext);
         this.recordStream.init(tlsClientContext);
 
@@ -214,6 +220,19 @@ public class TlsClientProtocol
             switch (this.connection_state)
             {
             case CS_CLIENT_FINISHED:
+            {
+                if (this.expectSessionTicket)
+                {
+                    /*
+                     * RFC 5077 3.3. This message MUST be sent if the server included a
+                     * SessionTicket extension in the ServerHello.
+                     */
+                    throw new TlsFatalAlert(AlertDescription.unexpected_message);
+                }
+
+                // NB: Fall through to next case label
+            }
+            case CS_SERVER_SESSION_TICKET:
             {
                 processFinishedMessage(buf);
                 this.connection_state = CS_SERVER_FINISHED;
@@ -621,12 +640,13 @@ public class TlsClientProtocol
 
         /*
          * Find out which CipherSuite the server has chosen and check that it was one of the offered
-         * ones.
+         * ones, and is a valid selection for the negotiated version.
          */
         int selectedCipherSuite = TlsUtils.readUint16(buf);
         if (!Arrays.contains(this.offeredCipherSuites, selectedCipherSuite)
             || selectedCipherSuite == CipherSuite.TLS_NULL_WITH_NULL_NULL
-            || selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV)
+            || selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+            || !TlsUtils.isValidCipherSuiteForVersion(selectedCipherSuite, server_version))
         {
             throw new TlsFatalAlert(AlertDescription.illegal_parameter);
         }
@@ -755,6 +775,19 @@ public class TlsClientProtocol
 
         if (sessionServerExtensions != null)
         {
+            /*
+             * draft-ietf-tls-encrypt-then-mac-03 3. If a server receives an encrypt-then-MAC
+             * request extension from a client and then selects a stream or AEAD cipher suite, it
+             * MUST NOT send an encrypt-then-MAC response extension back to the client.
+             */
+            boolean serverSentEncryptThenMAC = TlsExtensionsUtils.hasEncryptThenMACExtension(sessionServerExtensions);
+            if (serverSentEncryptThenMAC && !TlsUtils.isBlockCipherSuite(selectedCipherSuite))
+            {
+                throw new TlsFatalAlert(AlertDescription.illegal_parameter);
+            }
+
+            this.securityParameters.encryptThenMAC = serverSentEncryptThenMAC;
+
             this.securityParameters.maxFragmentLength = processMaxFragmentLengthExtension(sessionClientExtensions,
                 sessionServerExtensions, AlertDescription.illegal_parameter);
 

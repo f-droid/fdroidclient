@@ -38,6 +38,8 @@ import org.spongycastle.jce.interfaces.ECPointEncoder;
 import org.spongycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.spongycastle.jce.spec.ECNamedCurveSpec;
 import org.spongycastle.math.ec.ECCurve;
+import org.spongycastle.math.ec.custom.sec.SecP256K1Point;
+import org.spongycastle.math.ec.custom.sec.SecP256R1Point;
 
 public class JCEECPublicKey
     implements ECPublicKey, org.spongycastle.jce.interfaces.ECPublicKey, ECPointEncoder
@@ -439,14 +441,7 @@ public class JCEECPublicKey
     {
         if (ecSpec == null)
         {
-            if (q instanceof org.spongycastle.math.ec.ECPoint.Fp)
-            {
-                return new org.spongycastle.math.ec.ECPoint.Fp(null, q.getAffineXCoord(), q.getAffineYCoord());
-            }
-            else
-            {
-                return new org.spongycastle.math.ec.ECPoint.F2m(null, q.getAffineXCoord(), q.getAffineYCoord());
-            }
+            return q.getDetachedPoint();
         }
 
         return q;

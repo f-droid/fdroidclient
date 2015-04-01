@@ -5,7 +5,6 @@ import java.io.IOException;
 public class DTLSTransport
     implements DatagramTransport
 {
-
     private final DTLSRecordLayer recordLayer;
 
     DTLSTransport(DTLSRecordLayer recordLayer)

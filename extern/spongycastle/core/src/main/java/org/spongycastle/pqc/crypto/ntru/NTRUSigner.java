@@ -8,8 +8,12 @@ import org.spongycastle.pqc.math.ntru.polynomial.IntegerPolynomial;
 import org.spongycastle.pqc.math.ntru.polynomial.Polynomial;
 
 /**
- * Signs, verifies data and generates key pairs.
- */
+* Signs, verifies data and generates key pairs.
+* @deprecated the NTRUSigner algorithm was broken in 2012 by Ducas and Nguyen. See
+* <a href="http://www.di.ens.fr/~ducas/NTRUSign_Cryptanalysis/DucasNguyen_Learning.pdf">
+* http://www.di.ens.fr/~ducas/NTRUSign_Cryptanalysis/DucasNguyen_Learning.pdf</a>
+* for details.
+*/
 public class NTRUSigner
 {
     private NTRUSigningParameters params;

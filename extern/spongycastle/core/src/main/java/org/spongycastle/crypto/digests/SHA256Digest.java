@@ -1,8 +1,8 @@
 package org.spongycastle.crypto.digests;
 
 
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Memoable;
+import org.spongycastle.util.Pack;
 
 
 /**
@@ -18,6 +18,7 @@ import org.spongycastle.util.Memoable;
  */
 public class SHA256Digest
     extends GeneralDigest
+    implements EncodableDigest
 {
     private static final int    DIGEST_LENGTH = 32;
 
@@ -61,6 +62,27 @@ public class SHA256Digest
         System.arraycopy(t.X, 0, X, 0, t.X.length);
         xOff = t.xOff;
     }
+
+    public SHA256Digest(byte[] encodedState)
+    {
+        super(encodedState);
+
+        H1 = Pack.bigEndianToInt(encodedState, 16);
+        H2 = Pack.bigEndianToInt(encodedState, 20);
+        H3 = Pack.bigEndianToInt(encodedState, 24);
+        H4 = Pack.bigEndianToInt(encodedState, 28);
+        H5 = Pack.bigEndianToInt(encodedState, 32);
+        H6 = Pack.bigEndianToInt(encodedState, 36);
+        H7 = Pack.bigEndianToInt(encodedState, 40);
+        H8 = Pack.bigEndianToInt(encodedState, 44);
+
+        xOff = Pack.bigEndianToInt(encodedState, 48);
+        for (int i = 0; i != xOff; i++)
+        {
+            X[i] = Pack.bigEndianToInt(encodedState, 52 + (i * 4));
+        }
+    }
+
 
     public String getAlgorithmName()
     {
@@ -309,6 +331,30 @@ public class SHA256Digest
         SHA256Digest d = (SHA256Digest)other;
 
         copyIn(d);
+    }
+
+    public byte[] getEncodedState()
+    {
+        byte[] state = new byte[52 + xOff * 4];
+
+        super.populateState(state);
+
+        Pack.intToBigEndian(H1, state, 16);
+        Pack.intToBigEndian(H2, state, 20);
+        Pack.intToBigEndian(H3, state, 24);
+        Pack.intToBigEndian(H4, state, 28);
+        Pack.intToBigEndian(H5, state, 32);
+        Pack.intToBigEndian(H6, state, 36);
+        Pack.intToBigEndian(H7, state, 40);
+        Pack.intToBigEndian(H8, state, 44);
+        Pack.intToBigEndian(xOff, state, 48);
+
+        for (int i = 0; i != xOff; i++)
+        {
+            Pack.intToBigEndian(X[i], state, 52 + (i * 4));
+        }
+
+        return state;
     }
 }
 

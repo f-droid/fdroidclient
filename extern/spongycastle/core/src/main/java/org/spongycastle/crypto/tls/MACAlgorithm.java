@@ -2,7 +2,7 @@ package org.spongycastle.crypto.tls;
 
 /**
  * RFC 2246
- * <p/>
+ * <p>
  * Note that the values here are implementation-specific and arbitrary. It is recommended not to
  * depend on the particular values (e.g. serialization).
  */
@@ -20,9 +20,4 @@ public class MACAlgorithm
     public static final int hmac_sha256 = 3;
     public static final int hmac_sha384 = 4;
     public static final int hmac_sha512 = 5;
-
-    /*
-     * TBD[draft-josefsson-salsa20-tls-02] 
-     */
-    static final int umac96 = 100;
 }

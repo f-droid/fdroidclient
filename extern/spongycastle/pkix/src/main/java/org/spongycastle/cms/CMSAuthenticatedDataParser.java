@@ -109,7 +109,7 @@ public class CMSAuthenticatedDataParser
         this.authData = new AuthenticatedDataParser((ASN1SequenceParser)_contentInfo.getContent(BERTags.SEQUENCE));
 
         // TODO Validate version?
-        //DERInteger version = this.authData.getVersion();
+        //ASN1Integer version = this.authData.getVersion();
 
         OriginatorInfo info = authData.getOriginatorInfo();
 

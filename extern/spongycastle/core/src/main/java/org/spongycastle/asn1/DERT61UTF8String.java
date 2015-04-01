@@ -18,7 +18,9 @@ public class DERT61UTF8String
     /**
      * return a T61 string from the passed in object. UTF-8 Encoding is assumed in this case.
      *
+     * @param obj a DERT61UTF8String or an object that can be converted into one.
      * @throws IllegalArgumentException if the object cannot be converted.
+     * @return a DERT61UTF8String instance, or null
      */
     public static DERT61UTF8String getInstance(
         Object obj)
@@ -56,6 +58,7 @@ public class DERT61UTF8String
      *                 tagged false otherwise.
      * @throws IllegalArgumentException if the tagged object cannot
      * be converted.
+     * @return a DERT61UTF8String instance, or null
      */
     public static DERT61UTF8String getInstance(
         ASN1TaggedObject obj,

@@ -15,7 +15,6 @@ import org.spongycastle.asn1.DEROctetString;
 
 /**
  * an iso7816Certificate structure.
- * <p/>
  * <pre>
  *  Certificate ::= SEQUENCE {
  *      CertificateBody         Iso7816CertificateBody,
@@ -85,7 +84,6 @@ public class CVCertificate
      * Create an iso7816Certificate structure from an ASN1InputStream.
      *
      * @param aIS the byte stream to parse.
-     * @return the Iso7816CertificateStructure represented by the byte stream.
      * @throws IOException if there is a problem parsing the data.
      */
     public CVCertificate(ASN1InputStream aIS)
@@ -129,7 +127,6 @@ public class CVCertificate
      *
      * @param body the Iso7816CertificateBody object containing the body.
      * @param signature   the byte array containing the signature
-     * @return the Iso7816CertificateStructure
      * @throws IOException if there is a problem parsing the data.
      */
     public CVCertificate(CertificateBody body, byte[] signature)
@@ -147,7 +144,6 @@ public class CVCertificate
      *
      * @param obj the Object to extract the certificate from.
      * @return the Iso7816CertificateStructure represented by the byte stream.
-     * @throws IOException if there is a problem parsing the data.
      */
     public static CVCertificate getInstance(Object obj)
     {

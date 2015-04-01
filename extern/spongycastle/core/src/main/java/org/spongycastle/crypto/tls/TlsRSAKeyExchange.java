@@ -130,7 +130,7 @@ public class TlsRSAKeyExchange
             encryptedPreMasterSecret = TlsUtils.readOpaque16(input);
         }
 
-        this.premasterSecret = TlsRSAUtils.safeDecryptPreMasterSecret(context, serverCredentials, encryptedPreMasterSecret);
+        this.premasterSecret = serverCredentials.decryptPreMasterSecret(encryptedPreMasterSecret);
     }
 
     public byte[] generatePremasterSecret()

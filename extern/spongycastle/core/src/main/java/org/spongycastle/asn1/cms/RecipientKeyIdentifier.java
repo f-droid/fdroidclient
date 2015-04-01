@@ -1,12 +1,12 @@
 package org.spongycastle.asn1.cms;
 
 import org.spongycastle.asn1.ASN1EncodableVector;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.DERSequence;
 
@@ -28,12 +28,12 @@ public class RecipientKeyIdentifier
     extends ASN1Object
 {
     private ASN1OctetString      subjectKeyIdentifier;
-    private DERGeneralizedTime   date;
+    private ASN1GeneralizedTime  date;
     private OtherKeyAttribute    other;
 
     public RecipientKeyIdentifier(
         ASN1OctetString         subjectKeyIdentifier,
-        DERGeneralizedTime      date,
+        ASN1GeneralizedTime     date,
         OtherKeyAttribute       other)
     {
         this.subjectKeyIdentifier = subjectKeyIdentifier;
@@ -43,7 +43,7 @@ public class RecipientKeyIdentifier
 
     public RecipientKeyIdentifier(
         byte[]                  subjectKeyIdentifier,
-        DERGeneralizedTime      date,
+        ASN1GeneralizedTime     date,
         OtherKeyAttribute       other)
     {
         this.subjectKeyIdentifier = new DEROctetString(subjectKeyIdentifier);
@@ -71,9 +71,9 @@ public class RecipientKeyIdentifier
         case 1:
             break;
         case 2:
-            if (seq.getObjectAt(1) instanceof DERGeneralizedTime)
+            if (seq.getObjectAt(1) instanceof ASN1GeneralizedTime)
             {
-                date = (DERGeneralizedTime)seq.getObjectAt(1); 
+                date = ASN1GeneralizedTime.getInstance(seq.getObjectAt(1));
             }
             else
             {
@@ -81,7 +81,7 @@ public class RecipientKeyIdentifier
             }
             break;
         case 3:
-            date  = (DERGeneralizedTime)seq.getObjectAt(1);
+            date  = ASN1GeneralizedTime.getInstance(seq.getObjectAt(1));
             other = OtherKeyAttribute.getInstance(seq.getObjectAt(2));
             break;
         default:
@@ -136,7 +136,7 @@ public class RecipientKeyIdentifier
         return subjectKeyIdentifier;
     }
 
-    public DERGeneralizedTime getDate()
+    public ASN1GeneralizedTime getDate()
     {
         return date;
     }

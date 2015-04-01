@@ -15,7 +15,7 @@ public interface ConfigurableProvider
     static final String THREAD_LOCAL_EC_IMPLICITLY_CA = "threadLocalEcImplicitlyCa";
 
     /**
-     * Elliptic Curve CA parameters - thread local version
+     * Elliptic Curve CA parameters - VM wide version
      */
     static final String EC_IMPLICITLY_CA = "ecImplicitlyCa";
 

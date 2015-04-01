@@ -14,9 +14,8 @@ import org.spongycastle.pqc.crypto.rainbow.util.RainbowUtil;
 
 /**
  * Return the key data to encode in the PrivateKeyInfo structure.
- * <p/>
+ * <p>
  * The ASN.1 definition of the key structure is
- * <p/>
  * <pre>
  *   RainbowPrivateKey ::= SEQUENCE {
  *         CHOICE

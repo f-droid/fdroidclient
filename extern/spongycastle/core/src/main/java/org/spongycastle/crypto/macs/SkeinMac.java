@@ -10,13 +10,12 @@ import org.spongycastle.crypto.params.SkeinParameters;
 /**
  * Implementation of the Skein parameterised MAC function in 256, 512 and 1024 bit block sizes,
  * based on the {@link ThreefishEngine Threefish} tweakable block cipher.
- * <p/>
+ * <p>
  * This is the 1.3 version of Skein defined in the Skein hash function submission to the NIST SHA-3
  * competition in October 2010.
- * <p/>
+ * <p>
  * Skein was designed by Niels Ferguson - Stefan Lucks - Bruce Schneier - Doug Whiting - Mihir
  * Bellare - Tadayoshi Kohno - Jon Callas - Jesse Walker.
- * <p/>
  *
  * @see SkeinEngine
  * @see SkeinParameters

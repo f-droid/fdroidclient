@@ -4,7 +4,7 @@ import org.spongycastle.util.Arrays;
 
 /**
  * A polynomial class that combines five coefficients into one <code>long</code> value for
- * faster multiplication by a ternary polynomial.<br/>
+ * faster multiplication by a ternary polynomial.<br>
  * Coefficients can be between 0 and 2047 and are stored in bits 0..11, 12..23, ..., 48..59 of a <code>long</code> number.
  */
 public class LongPolynomial5

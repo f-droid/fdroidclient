@@ -12,7 +12,6 @@ import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1OutputStream;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.jce.interfaces.PKCS12BagAttributeCarrier;
 
 public class PKCS12BagAttributeCarrierImpl
@@ -90,7 +89,7 @@ public class PKCS12BagAttributeCarrierImpl
 
             while (e.hasMoreElements())
             {
-                DERObjectIdentifier    oid = (DERObjectIdentifier)e.nextElement();
+                ASN1ObjectIdentifier    oid = (ASN1ObjectIdentifier)e.nextElement();
 
                 aOut.writeObject(oid);
                 aOut.writeObject((ASN1Encodable)pkcs12Attributes.get(oid));

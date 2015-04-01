@@ -3,6 +3,7 @@ package org.spongycastle.asn1.eac;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.SimpleTimeZone;
 
 import org.spongycastle.util.Arrays;
@@ -21,12 +22,32 @@ public class PackedDate
     }
 
     /**
-     * base constructer from a java.util.date object
+     * Base constructor from a java.util.date object.
+     *
+     * @param time a date object representing the time of interest.
      */
     public PackedDate(
         Date time)
     {
         SimpleDateFormat dateF = new SimpleDateFormat("yyMMdd'Z'");
+
+        dateF.setTimeZone(new SimpleTimeZone(0,"Z"));
+
+        this.time = convert(dateF.format(time));
+    }
+
+    /**
+     * Base constructor from a java.util.date object. You may need to use this constructor if the default locale
+     * doesn't use a Gregorian calender so that the PackedDate produced is compatible with other ASN.1 implementations.
+     *
+     * @param time a date object representing the time of interest.
+     * @param locale an appropriate Locale for producing an ASN.1 GeneralizedTime value.
+     */
+    public PackedDate(
+        Date time,
+        Locale locale)
+    {
+        SimpleDateFormat dateF = new SimpleDateFormat("yyMMdd'Z'", locale);
 
         dateF.setTimeZone(new SimpleTimeZone(0,"Z"));
 

@@ -8,21 +8,12 @@ import java.io.IOException;
  * expose invalid ciphertext errors.
  */
 public class InvalidCipherTextIOException
-    extends IOException
+    extends CipherIOException
 {
     private static final long serialVersionUID = 1L;
 
-    private final Throwable cause;
-
     public InvalidCipherTextIOException(String message, Throwable cause)
     {
-        super(message);
-
-        this.cause = cause;
-    }
-
-    public Throwable getCause()
-    {
-        return cause;
+        super(message, cause);
     }
 }

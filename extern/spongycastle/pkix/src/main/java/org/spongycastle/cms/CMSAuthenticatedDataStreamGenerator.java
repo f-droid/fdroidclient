@@ -9,11 +9,11 @@ import java.util.Map;
 
 import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1Encoding;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Set;
 import org.spongycastle.asn1.BERSequenceGenerator;
 import org.spongycastle.asn1.BERSet;
-import org.spongycastle.asn1.DERInteger;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.DERSet;
 import org.spongycastle.asn1.DERTaggedObject;
@@ -161,7 +161,7 @@ public class CMSAuthenticatedDataStreamGenerator
             //
             BERSequenceGenerator authGen = new BERSequenceGenerator(cGen.getRawOutputStream(), 0, true);
 
-            authGen.addObject(new DERInteger(AuthenticatedData.calculateVersion(originatorInfo)));
+            authGen.addObject(new ASN1Integer(AuthenticatedData.calculateVersion(originatorInfo)));
 
             if (originatorInfo != null)
             {

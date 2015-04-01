@@ -14,18 +14,18 @@ import org.spongycastle.util.Memoable;
 /**
  * Implementation of the Skein family of parameterised hash functions in 256, 512 and 1024 bit block
  * sizes, based on the {@link ThreefishEngine Threefish} tweakable block cipher.
- * <p/>
+ * <p>
  * This is the 1.3 version of Skein defined in the Skein hash function submission to the NIST SHA-3
  * competition in October 2010.
- * <p/>
+ * <p>
  * Skein was designed by Niels Ferguson - Stefan Lucks - Bruce Schneier - Doug Whiting - Mihir
  * Bellare - Tadayoshi Kohno - Jon Callas - Jesse Walker.
- * <p/>
+ * <p>
  * This implementation is the basis for {@link SkeinDigest} and {@link SkeinMac}, implementing the
  * parameter based configuration system that allows Skein to be adapted to multiple applications. <br>
  * Initialising the engine with {@link SkeinParameters} allows standard and arbitrary parameters to
  * be applied during the Skein hash function.
- * <p/>
+ * <p>
  * Implemented:
  * <ul>
  * <li>256, 512 and 1024 bit internal states.</li>
@@ -34,7 +34,7 @@ import org.spongycastle.util.Memoable;
  * parameters.</li>
  * <li>Arbitrary output size in 1 byte intervals.</li>
  * </ul>
- * <p/>
+ * <p>
  * Not implemented:
  * <ul>
  * <li>Sub-byte length input (bit padding).</li>

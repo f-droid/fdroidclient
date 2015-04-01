@@ -8,9 +8,9 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.jcajce.DefaultJcaJceHelper;
-import org.spongycastle.jcajce.NamedJcaJceHelper;
-import org.spongycastle.jcajce.ProviderJcaJceHelper;
+import org.spongycastle.jcajce.util.DefaultJcaJceHelper;
+import org.spongycastle.jcajce.util.NamedJcaJceHelper;
+import org.spongycastle.jcajce.util.ProviderJcaJceHelper;
 import org.spongycastle.operator.GenericKey;
 import org.spongycastle.operator.OperatorException;
 import org.spongycastle.operator.SymmetricKeyUnwrapper;

@@ -113,37 +113,28 @@ public class HMacDSAKCalculator
 
                 hMac.doFinal(V, 0);
 
-                if (t.length - tOff < V.length)
-                {
-                    System.arraycopy(V, 0, t, tOff, t.length - tOff);
-                    tOff += t.length - tOff;
-                }
-                else
-                {
-                    System.arraycopy(V, 0, t, tOff, V.length);
-                    tOff += V.length;
-                }
+                int len = Math.min(t.length - tOff, V.length);
+                System.arraycopy(V, 0, t, tOff, len);
+                tOff += len;
             }
 
             BigInteger k = bitsToInt(t);
 
-            if (k.equals(ZERO) || k.compareTo(n) >= 0)
-            {
-                hMac.update(V, 0, V.length);
-                hMac.update((byte)0x00);
-
-                hMac.doFinal(K, 0);
-
-                hMac.init(new KeyParameter(K));
-
-                hMac.update(V, 0, V.length);
-
-                hMac.doFinal(V, 0);
-            }
-            else
+            if (k.compareTo(ZERO) > 0 && k.compareTo(n) < 0)
             {
                 return k;
             }
+
+            hMac.update(V, 0, V.length);
+            hMac.update((byte)0x00);
+
+            hMac.doFinal(K, 0);
+
+            hMac.init(new KeyParameter(K));
+
+            hMac.update(V, 0, V.length);
+
+            hMac.doFinal(V, 0);
         }
     }
 

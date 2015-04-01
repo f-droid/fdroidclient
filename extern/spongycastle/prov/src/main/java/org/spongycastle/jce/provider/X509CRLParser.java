@@ -10,10 +10,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.spongycastle.asn1.ASN1InputStream;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1Set;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.spongycastle.asn1.pkcs.SignedData;
 import org.spongycastle.asn1.x509.CertificateList;
@@ -37,7 +37,7 @@ public class X509CRLParser
         ASN1Sequence seq = (ASN1Sequence)dIn.readObject();
 
         if (seq.size() > 1
-                && seq.getObjectAt(0) instanceof DERObjectIdentifier)
+                && seq.getObjectAt(0) instanceof ASN1ObjectIdentifier)
         {
             if (seq.getObjectAt(0).equals(PKCSObjectIdentifiers.signedData))
             {

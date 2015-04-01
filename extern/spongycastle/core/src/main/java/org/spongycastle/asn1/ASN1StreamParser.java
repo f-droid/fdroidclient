@@ -4,6 +4,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * A parser for ASN.1 streams which also returns, where possible, parsers for the objects it encounters.
+ */
 public class ASN1StreamParser
 {
     private final InputStream _in;

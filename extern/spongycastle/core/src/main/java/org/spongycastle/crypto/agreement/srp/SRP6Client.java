@@ -25,6 +25,10 @@ public class SRP6Client
     protected BigInteger u;
     protected BigInteger S;
 
+    protected BigInteger M1;
+	protected BigInteger M2;
+	protected BigInteger Key;
+	
     protected Digest digest;
     protected SecureRandom random;
 
@@ -64,7 +68,7 @@ public class SRP6Client
     }
 
     /**
-     * Generates client's verification message given the server's credentials
+     * Generates the secret S given the server's credentials
      * @param serverB The server's credentials
      * @return Client's verification message for the server
      * @throws CryptoException If server's credentials are invalid
@@ -90,4 +94,57 @@ public class SRP6Client
         BigInteger tmp = g.modPow(x, N).multiply(k).mod(N);
         return B.subtract(tmp).mod(N).modPow(exp, N);
     }
+    
+    /**
+	 * Computes the client evidence message M1 using the previously received values.
+	 * To be called after calculating the secret S.
+	 * @return M1: the client side generated evidence message
+	 * @throws CryptoException
+	 */
+	public BigInteger calculateClientEvidenceMessage() throws CryptoException{
+		// verify pre-requirements
+		if ((this.A==null)||(this.B==null)||(this.S==null)){
+			throw new CryptoException("Impossible to compute M1: " +
+					"some data are missing from the previous operations (A,B,S)");
+		}
+		// compute the client evidence message 'M1'
+		this.M1 = SRP6Util.calculateM1(digest, N, A, B, S);  
+		return M1;
+	}
+
+	/** Authenticates the server evidence message M2 received and saves it only if correct.
+	 * @param M2: the server side generated evidence message
+	 * @return A boolean indicating if the server message M2 was the expected one.
+	 * @throws CryptoException
+	 */
+	public boolean verifyServerEvidenceMessage(BigInteger serverM2) throws CryptoException{
+		//verify pre-requirements
+		if ((this.A==null)||(this.M1==null)||(this.S==null)){
+			throw new CryptoException("Impossible to compute and verify M2: " +
+					"some data are missing from the previous operations (A,M1,S)");
+		}
+		// Compute the own server evidence message 'M2'
+		BigInteger computedM2 = SRP6Util.calculateM2(digest, N, A, M1, S);
+		if (computedM2.equals(serverM2)){
+			this.M2 = serverM2;
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Computes the final session key as a result of the SRP successful mutual authentication
+	 * To be called after verifying the server evidence message M2.
+	 * @return Key: the mutually authenticated symmetric session key
+	 * @throws CryptoException
+	 */
+	public BigInteger calculateSessionKey() throws CryptoException{
+		//verify pre-requirements (here we enforce a previous calculation of M1 and M2)
+		if ((this.S==null)||(this.M1==null)||(this.M2==null)){
+			throw new CryptoException("Impossible to compute Key: " +
+					"some data are missing from the previous operations (S,M1,M2)");
+		}
+		this.Key = SRP6Util.calculateKey(digest, N, S);
+		return Key;
+	}
 }

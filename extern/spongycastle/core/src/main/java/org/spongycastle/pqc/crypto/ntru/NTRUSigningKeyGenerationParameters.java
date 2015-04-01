@@ -29,22 +29,22 @@ public class NTRUSigningKeyGenerationParameters
     /**
      * Gives 128 bits of security
      */
-    public static final NTRUSigningKeyGenerationParameters APR2011_439 = new NTRUSigningKeyGenerationParameters(439, 2048, 146, 1, BASIS_TYPE_TRANSPOSE, 0.165, 400, 280, false, true, KEY_GEN_ALG_RESULTANT, new SHA256Digest());
+    public static final NTRUSigningKeyGenerationParameters APR2011_439 = new NTRUSigningKeyGenerationParameters(439, 2048, 146, 1, BASIS_TYPE_TRANSPOSE, 0.165, 490, 280, false, true, KEY_GEN_ALG_RESULTANT, new SHA256Digest());
 
     /**
      * Like <code>APR2011_439</code>, this parameter set gives 128 bits of security but uses product-form polynomials
      */
-    public static final NTRUSigningKeyGenerationParameters APR2011_439_PROD = new NTRUSigningKeyGenerationParameters(439, 2048, 9, 8, 5, 1, BASIS_TYPE_TRANSPOSE, 0.165, 400, 280, false, true, KEY_GEN_ALG_RESULTANT, new SHA256Digest());
+    public static final NTRUSigningKeyGenerationParameters APR2011_439_PROD = new NTRUSigningKeyGenerationParameters(439, 2048, 9, 8, 5, 1, BASIS_TYPE_TRANSPOSE, 0.165, 490, 280, false, true, KEY_GEN_ALG_RESULTANT, new SHA256Digest());
 
     /**
      * Gives 256 bits of security
      */
-    public static final NTRUSigningKeyGenerationParameters APR2011_743 = new NTRUSigningKeyGenerationParameters(743, 2048, 248, 1, BASIS_TYPE_TRANSPOSE, 0.127, 405, 360, true, false, KEY_GEN_ALG_RESULTANT, new SHA512Digest());
+    public static final NTRUSigningKeyGenerationParameters APR2011_743 = new NTRUSigningKeyGenerationParameters(743, 2048, 248, 1, BASIS_TYPE_TRANSPOSE, 0.127, 560, 360, true, false, KEY_GEN_ALG_RESULTANT, new SHA512Digest());
 
     /**
      * Like <code>APR2011_439</code>, this parameter set gives 256 bits of security but uses product-form polynomials
      */
-    public static final NTRUSigningKeyGenerationParameters APR2011_743_PROD = new NTRUSigningKeyGenerationParameters(743, 2048, 11, 11, 15, 1, BASIS_TYPE_TRANSPOSE, 0.127, 405, 360, true, false, KEY_GEN_ALG_RESULTANT, new SHA512Digest());
+    public static final NTRUSigningKeyGenerationParameters APR2011_743_PROD = new NTRUSigningKeyGenerationParameters(743, 2048, 11, 11, 15, 1, BASIS_TYPE_TRANSPOSE, 0.127, 560, 360, true, false, KEY_GEN_ALG_RESULTANT, new SHA512Digest());
 
     /**
      * Generates key pairs quickly. Use for testing only.
@@ -75,7 +75,7 @@ public class NTRUSigningKeyGenerationParameters
     public int polyType;
 
     /**
-     * Constructs a parameter set that uses ternary private keys (i.e. </code>polyType=SIMPLE</code>).
+     * Constructs a parameter set that uses ternary private keys (i.e. <code>polyType=SIMPLE</code>).
      *
      * @param N            number of polynomial coefficients
      * @param q            modulus
@@ -110,7 +110,7 @@ public class NTRUSigningKeyGenerationParameters
     }
 
     /**
-     * Constructs a parameter set that uses product-form private keys (i.e. </code>polyType=PRODUCT</code>).
+     * Constructs a parameter set that uses product-form private keys (i.e. <code>polyType=PRODUCT</code>).
      *
      * @param N            number of polynomial coefficients
      * @param q            modulus

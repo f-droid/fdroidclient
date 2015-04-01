@@ -8,7 +8,6 @@ import java.util.List;
 import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.DERInteger;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.cms.ContentInfo;
 import org.spongycastle.asn1.oiw.OIWObjectIdentifiers;
@@ -21,7 +20,6 @@ import org.spongycastle.cert.X509AttributeCertificateHolder;
 import org.spongycastle.cert.X509CRLHolder;
 import org.spongycastle.cert.X509CertificateHolder;
 import org.spongycastle.pkcs.PKCS10CertificationRequest;
-import org.spongycastle.pkcs.PKCS8EncryptedPrivateKeyInfo;
 import org.spongycastle.util.Strings;
 import org.spongycastle.util.io.pem.PemGenerationException;
 import org.spongycastle.util.io.pem.PemHeader;
@@ -105,16 +103,16 @@ public class MiscPEMGenerator
                 DSAParameter p = DSAParameter.getInstance(info.getPrivateKeyAlgorithm().getParameters());
                 ASN1EncodableVector v = new ASN1EncodableVector();
 
-                v.add(new DERInteger(0));
-                v.add(new DERInteger(p.getP()));
-                v.add(new DERInteger(p.getQ()));
-                v.add(new DERInteger(p.getG()));
+                v.add(new ASN1Integer(0));
+                v.add(new ASN1Integer(p.getP()));
+                v.add(new ASN1Integer(p.getQ()));
+                v.add(new ASN1Integer(p.getG()));
 
                 BigInteger x = ASN1Integer.getInstance(info.parsePrivateKey()).getValue();
                 BigInteger y = p.getG().modPow(x, p.getP());
 
-                v.add(new DERInteger(y));
-                v.add(new DERInteger(x));
+                v.add(new ASN1Integer(y));
+                v.add(new ASN1Integer(x));
 
                 encoding = new DERSequence(v).getEncoded();
             }

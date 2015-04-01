@@ -12,9 +12,9 @@ import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.spongycastle.cert.crmf.CRMFException;
 import org.spongycastle.cert.crmf.CertificateRequestMessage;
-import org.spongycastle.jcajce.DefaultJcaJceHelper;
-import org.spongycastle.jcajce.NamedJcaJceHelper;
-import org.spongycastle.jcajce.ProviderJcaJceHelper;
+import org.spongycastle.jcajce.util.DefaultJcaJceHelper;
+import org.spongycastle.jcajce.util.NamedJcaJceHelper;
+import org.spongycastle.jcajce.util.ProviderJcaJceHelper;
 
 public class JcaCertificateRequestMessage
     extends CertificateRequestMessage

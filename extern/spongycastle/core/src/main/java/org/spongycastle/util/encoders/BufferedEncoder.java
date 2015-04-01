@@ -2,7 +2,7 @@ package org.spongycastle.util.encoders;
 
 
 /**
- * a buffering class to allow translation from one format to another to
+ * A buffering class to allow translation from one format to another to
  * be done in discrete chunks.
  */
 public class BufferedEncoder

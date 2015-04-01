@@ -25,7 +25,7 @@ public class KeyDerivationFunc
         this.algId = AlgorithmIdentifier.getInstance(seq);
     }
 
-    public static final KeyDerivationFunc getInstance(Object obj)
+    public static KeyDerivationFunc getInstance(Object obj)
     {
         if (obj instanceof KeyDerivationFunc)
         {

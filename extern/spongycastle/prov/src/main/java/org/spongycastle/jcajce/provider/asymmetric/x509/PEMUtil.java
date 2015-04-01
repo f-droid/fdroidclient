@@ -33,11 +33,6 @@ public class PEMUtil
         {
             while (((c = in.read()) != '\r') && c != '\n' && (c >= 0))
             {
-                if (c == '\r')
-                {
-                    continue;
-                }
-
                 l.append((char)c);
             }
         }

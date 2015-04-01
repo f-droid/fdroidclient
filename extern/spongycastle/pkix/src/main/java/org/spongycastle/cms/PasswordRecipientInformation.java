@@ -6,11 +6,7 @@ import java.util.Map;
 
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.cms.PasswordRecipientInfo;
-import org.spongycastle.asn1.pkcs.PBKDF2Params;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.crypto.PBEParametersGenerator;
-import org.spongycastle.crypto.generators.PKCS5S2ParametersGenerator;
-import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.util.Integers;
 
 /**
@@ -109,27 +105,12 @@ public class PasswordRecipientInformation
         AlgorithmIdentifier kekAlg = AlgorithmIdentifier.getInstance(info.getKeyEncryptionAlgorithm());
         AlgorithmIdentifier kekAlgParams = AlgorithmIdentifier.getInstance(kekAlg.getParameters());
 
-        byte[] passwordBytes = getPasswordBytes(pbeRecipient.getPasswordConversionScheme(),
-            pbeRecipient.getPassword());
-        PBKDF2Params params = PBKDF2Params.getInstance(info.getKeyDerivationAlgorithm().getParameters());
-
-        PKCS5S2ParametersGenerator gen = new PKCS5S2ParametersGenerator();
-        gen.init(passwordBytes, params.getSalt(), params.getIterationCount().intValue());
+        byte[] passwordBytes = CMSUtils.getPasswordBytes(pbeRecipient.getPasswordConversionScheme(), pbeRecipient.getPassword());
 
         int keySize = ((Integer)KEYSIZES.get(kekAlgParams.getAlgorithm())).intValue();
 
-        byte[] derivedKey = ((KeyParameter)gen.generateDerivedParameters(keySize)).getKey();
+        byte[] derivedKey = pbeRecipient.calculateDerivedKey(passwordBytes, this.getKeyDerivationAlgorithm(), keySize);
 
         return pbeRecipient.getRecipientOperator(kekAlgParams, messageAlgorithm, derivedKey, info.getEncryptedKey().getOctets());
-    }
-    
-    protected byte[] getPasswordBytes(int scheme, char[] password)
-    {
-        if (scheme == PasswordRecipient.PKCS5_SCHEME2)
-        {
-            return PBEParametersGenerator.PKCS5PasswordToBytes(password);
-        }
-
-        return PBEParametersGenerator.PKCS5PasswordToUTF8Bytes(password);
     }
 }

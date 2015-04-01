@@ -17,7 +17,7 @@ import org.spongycastle.util.Integers;
 
 /**
  * ISO9796-2 - mechanism using a hash function with recovery (scheme 2 and 3).
- * <p/>
+ * <p>
  * Note: the usual length for the salt is the length of the hash
  * function used in bytes.
  */

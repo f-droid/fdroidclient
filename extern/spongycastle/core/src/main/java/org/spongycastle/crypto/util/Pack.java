@@ -1,5 +1,8 @@
 package org.spongycastle.crypto.util;
 
+/**
+ * @deprecated use org.spongycastle.util.pack
+ */
 public abstract class Pack
 {
     public static int bigEndianToInt(byte[] bs, int off)
@@ -111,6 +114,15 @@ public abstract class Pack
         {
             ns[i] = littleEndianToInt(bs, off);
             off += 4;
+        }
+    }
+
+    public static void littleEndianToInt(byte[] bs, int bOff, int[] ns, int nOff, int count)
+    {
+        for (int i = 0; i < count; ++i)
+        {
+            ns[nOff + i] = littleEndianToInt(bs, bOff);
+            bOff += 4;
         }
     }
 

@@ -13,7 +13,10 @@ import org.spongycastle.crypto.params.ECPublicKeyParameters;
 import org.spongycastle.crypto.params.KDFParameters;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.math.ec.ECCurve;
+import org.spongycastle.math.ec.ECMultiplier;
 import org.spongycastle.math.ec.ECPoint;
+import org.spongycastle.math.ec.FixedPointCombMultiplier;
+import org.spongycastle.util.Arrays;
 import org.spongycastle.util.BigIntegers;
 
 /**
@@ -120,8 +123,10 @@ public class ECIESKeyEncapsulation
         // Compute the static-ephemeral key agreement
         BigInteger rPrime = CofactorMode ? r.multiply(h).mod(n) : r;
 
+        ECMultiplier basePointMultiplier = createBasePointMultiplier();
+
         ECPoint[] ghTilde = new ECPoint[]{ 
-            ecParams.getG().multiply(r),
+            basePointMultiplier.multiply(ecParams.getG(), r),
             ecPubKey.getQ().multiply(rPrime)
         };
 
@@ -138,18 +143,7 @@ public class ECIESKeyEncapsulation
         byte[] PEH = hTilde.getAffineXCoord().getEncoded();
 
         // Initialise the KDF
-        byte[] kdfInput;
-        if (SingleHashMode)
-        {
-            kdfInput = new byte[C.length + PEH.length];
-            System.arraycopy(C, 0, kdfInput, 0, C.length);
-            System.arraycopy(PEH, 0, kdfInput, C.length, PEH.length);
-        }
-        else
-        {
-            kdfInput = PEH;
-        }
-
+        byte[] kdfInput = SingleHashMode ? Arrays.concatenate(C, PEH) : PEH;
         kdf.init(new KDFParameters(kdfInput, null));
 
         // Generate the secret key
@@ -221,17 +215,7 @@ public class ECIESKeyEncapsulation
         byte[] PEH = hTilde.getAffineXCoord().getEncoded();
 
         // Initialise the KDF
-        byte[] kdfInput;
-        if (SingleHashMode)
-        {
-            kdfInput = new byte[C.length + PEH.length];
-            System.arraycopy(C, 0, kdfInput, 0, C.length);
-            System.arraycopy(PEH, 0, kdfInput, C.length, PEH.length);
-        }
-        else
-        {
-            kdfInput = PEH;
-        }
+        byte[] kdfInput = SingleHashMode ? Arrays.concatenate(C, PEH) : PEH;
         kdf.init(new KDFParameters(kdfInput, null));
 
         // Generate the secret key
@@ -251,5 +235,10 @@ public class ECIESKeyEncapsulation
     public CipherParameters decrypt(byte[] in, int keyLen)
     {
         return decrypt(in, 0, in.length, keyLen);
+    }
+
+    protected ECMultiplier createBasePointMultiplier()
+    {
+        return new FixedPointCombMultiplier();
     }
 }

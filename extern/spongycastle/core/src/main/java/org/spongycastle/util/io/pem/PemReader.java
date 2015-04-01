@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.spongycastle.util.encoders.Base64;
 
+/**
+ * A generic PEM reader, based on the format outlined in RFC 1421
+ */
 public class PemReader
     extends BufferedReader
 {

@@ -18,6 +18,7 @@ import org.spongycastle.crypto.params.AsymmetricKeyParameter;
 import org.spongycastle.crypto.params.DSAParameters;
 import org.spongycastle.crypto.params.DSAPrivateKeyParameters;
 import org.spongycastle.crypto.params.ECDomainParameters;
+import org.spongycastle.crypto.params.ECNamedDomainParameters;
 import org.spongycastle.crypto.params.ECPrivateKeyParameters;
 import org.spongycastle.crypto.params.RSAKeyParameters;
 import org.spongycastle.crypto.params.RSAPrivateCrtKeyParameters;
@@ -55,10 +56,13 @@ public class PrivateKeyInfoFactory
             ECDomainParameters domainParams = priv.getParameters();
             ASN1Encodable params;
 
-            // TODO: need to handle named curves
             if (domainParams == null)
             {
                 params = new X962Parameters(DERNull.INSTANCE);      // Implicitly CA
+            }
+            else if (domainParams instanceof ECNamedDomainParameters)
+            {
+                params = new X962Parameters(((ECNamedDomainParameters)domainParams).getName());
             }
             else
             {

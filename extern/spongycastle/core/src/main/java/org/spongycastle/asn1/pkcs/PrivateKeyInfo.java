@@ -68,7 +68,7 @@ public class PrivateKeyInfo
     }
 
     /**
-     * @deprectaed use PrivateKeyInfo.getInstance()
+     * @deprecated use PrivateKeyInfo.getInstance()
      * @param seq
      */
     public PrivateKeyInfo(

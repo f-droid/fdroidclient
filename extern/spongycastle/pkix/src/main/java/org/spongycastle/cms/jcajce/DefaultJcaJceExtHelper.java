@@ -5,7 +5,7 @@ import java.security.PrivateKey;
 import javax.crypto.SecretKey;
 
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.jcajce.DefaultJcaJceHelper;
+import org.spongycastle.jcajce.util.DefaultJcaJceHelper;
 import org.spongycastle.operator.SymmetricKeyUnwrapper;
 import org.spongycastle.operator.jcajce.JceAsymmetricKeyUnwrapper;
 import org.spongycastle.operator.jcajce.JceSymmetricKeyUnwrapper;

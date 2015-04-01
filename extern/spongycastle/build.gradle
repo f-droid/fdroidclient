@@ -9,5 +9,5 @@ subprojects {
 
     sourceCompatibility = 1.5
     targetCompatibility = 1.5
-    version = '1.50.0.0'
+    version = '1.51.0.0'
 }

@@ -12,7 +12,6 @@ import org.spongycastle.asn1.DERSequence;
 
 /**
  * an Iso7816RSAPublicKeyStructure structure.
- * <p/>
  * <pre>
  *  Certificate Holder Authorization ::= SEQUENCE {
  *      // modulus should be at least 1024bit and a multiple of 512.

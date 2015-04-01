@@ -90,7 +90,7 @@ public final class GOST28147
             SecureRandom random)
             throws InvalidAlgorithmParameterException
         {
-            throw new InvalidAlgorithmParameterException("No supported AlgorithmParameterSpec for AES parameter generation.");
+            throw new InvalidAlgorithmParameterException("No supported AlgorithmParameterSpec for GOST28147 parameter generation.");
         }
 
         protected AlgorithmParameters engineGenerateParameters()

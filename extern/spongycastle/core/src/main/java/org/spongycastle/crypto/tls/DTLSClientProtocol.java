@@ -32,11 +32,14 @@ public class DTLSClientProtocol
 
         SecurityParameters securityParameters = new SecurityParameters();
         securityParameters.entity = ConnectionEnd.client;
-        securityParameters.clientRandom = TlsProtocol.createRandomBlock(secureRandom);
 
         ClientHandshakeState state = new ClientHandshakeState();
         state.client = client;
         state.clientContext = new TlsClientContextImpl(secureRandom, securityParameters);
+
+        securityParameters.clientRandom = TlsProtocol.createRandomBlock(client.shouldUseGMTUnixTime(),
+            state.clientContext.getNonceRandomGenerator());
+
         client.init(state.clientContext);
 
         DTLSRecordLayer recordLayer = new DTLSRecordLayer(transport, state.clientContext, client, ContentType.handshake);
@@ -618,7 +621,8 @@ public class DTLSClientProtocol
         state.selectedCipherSuite = TlsUtils.readUint16(buf);
         if (!Arrays.contains(state.offeredCipherSuites, state.selectedCipherSuite)
             || state.selectedCipherSuite == CipherSuite.TLS_NULL_WITH_NULL_NULL
-            || state.selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV)
+            || state.selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+            || !TlsUtils.isValidCipherSuiteForVersion(state.selectedCipherSuite, server_version))
         {
             throw new TlsFatalAlert(AlertDescription.illegal_parameter);
         }
@@ -713,6 +717,19 @@ public class DTLSClientProtocol
                     }
                 }
             }
+
+            /*
+             * draft-ietf-tls-encrypt-then-mac-03 3. If a server receives an encrypt-then-MAC
+             * request extension from a client and then selects a stream or AEAD cipher suite, it
+             * MUST NOT send an encrypt-then-MAC response extension back to the client.
+             */
+            boolean serverSentEncryptThenMAC = TlsExtensionsUtils.hasEncryptThenMACExtension(serverExtensions);
+            if (serverSentEncryptThenMAC && !TlsUtils.isBlockCipherSuite(state.selectedCipherSuite))
+            {
+                throw new TlsFatalAlert(AlertDescription.illegal_parameter);
+            }
+
+            securityParameters.encryptThenMAC = serverSentEncryptThenMAC;
 
             state.maxFragmentLength = evaluateMaxFragmentLengthExtension(state.clientExtensions, serverExtensions,
                 AlertDescription.illegal_parameter);

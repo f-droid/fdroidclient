@@ -535,45 +535,36 @@ class Tnaf
         int m = curve.getM();
         int a = curve.getA().toBigInteger().intValue();
         byte mu = curve.getMu();
-        int h = curve.getH().intValue();
+        int shifts = getShiftsForCofactor(curve.getCofactor());
         int index = m + 3 - a;
         BigInteger[] ui = getLucas(mu, index, false);
-
-        BigInteger dividend0;
-        BigInteger dividend1;
         if (mu == 1)
         {
-            dividend0 = ECConstants.ONE.subtract(ui[1]);
-            dividend1 = ECConstants.ONE.subtract(ui[0]);
-        }
-        else if (mu == -1)
-        {
-            dividend0 = ECConstants.ONE.add(ui[1]);
-            dividend1 = ECConstants.ONE.add(ui[0]);
-        }
-        else
-        {
-            throw new IllegalArgumentException("mu must be 1 or -1");
+            ui[0] = ui[0].negate();
+            ui[1] = ui[1].negate();
         }
 
-        BigInteger[] si = new BigInteger[2];
+        BigInteger dividend0 = ECConstants.ONE.add(ui[1]).shiftRight(shifts);
+        BigInteger dividend1 = ECConstants.ONE.add(ui[0]).shiftRight(shifts).negate();
 
-        if (h == 2)
+        return new BigInteger[] { dividend0, dividend1 };
+    }
+
+    protected static int getShiftsForCofactor(BigInteger h)
+    {
+        if (h != null)
         {
-            si[0] = dividend0.shiftRight(1);
-            si[1] = dividend1.shiftRight(1).negate();
-        }
-        else if (h == 4)
-        {
-            si[0] = dividend0.shiftRight(2);
-            si[1] = dividend1.shiftRight(2).negate();
-        }
-        else
-        {
-            throw new IllegalArgumentException("h (Cofactor) must be 2 or 4");
+            if (h.equals(ECConstants.TWO))
+            {
+                return 1;
+            }
+            if (h.equals(ECConstants.FOUR))
+            {
+                return 2;
+            }
         }
 
-        return si;
+        throw new IllegalArgumentException("h (Cofactor) must be 2 or 4");
     }
 
     /**

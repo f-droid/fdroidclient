@@ -4,14 +4,65 @@ import org.spongycastle.crypto.PBEParametersGenerator;
 import org.spongycastle.crypto.digests.SHA256Digest;
 import org.spongycastle.crypto.engines.Salsa20Engine;
 import org.spongycastle.crypto.params.KeyParameter;
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Arrays;
+import org.spongycastle.util.Pack;
 
+/**
+ * Implementation of the scrypt a password-based key derivation function.
+ * <p>
+ * Scrypt was created by Colin Percival and is specified in <a
+ * href="http://tools.ietf.org/html/draft-josefsson-scrypt-kdf-01">draft-josefsson-scrypt-kd</a>
+ *
+ */
 public class SCrypt
 {
-    // TODO Validate arguments
+    /**
+     * Generate a key using the scrypt key derivation function.
+     * 
+     * @param P the bytes of the pass phrase.
+     * @param S the salt to use for this invocation.
+     * @param N CPU/Memory cost parameter. Must be larger than 1, a power of 2 and less than
+     *            <code>2^(128 * r / 8)</code>.
+     * @param r the block size, must be >= 1.
+     * @param p Parallelization parameter. Must be a positive integer less than or equal to
+     *            <code>Integer.MAX_VALUE / (128 * r * 8)</code>.
+     * 
+     * @param dkLen the length of the key to generate.
+     * @return the generated key.
+     */
     public static byte[] generate(byte[] P, byte[] S, int N, int r, int p, int dkLen)
     {
+        if (P== null)
+        {
+            throw new IllegalArgumentException("Passphrase P must be provided.");
+        }
+        if (S == null)
+        {
+            throw new IllegalArgumentException("Salt S must be provided.");
+        }
+        if (N <= 1)
+        {
+            throw new IllegalArgumentException("Cost parameter N must be > 1.");
+        }
+        // Only value of r that cost (as an int) could be exceeded for is 1
+        if (r == 1 && N > 65536)
+        {
+            throw new IllegalArgumentException("Cost parameter N must be > 1 and < 65536.");
+        }
+        if (r < 1)
+        {
+            throw new IllegalArgumentException("Block size r must be >= 1.");
+        }
+        int maxParallel = Integer.MAX_VALUE / (128 * r * 8);
+        if (p < 1 || p > maxParallel)
+        {
+            throw new IllegalArgumentException("Parallelisation parameter p must be >= 1 and <= " + maxParallel
+                + " (based on block size r of " + r + ")");
+        }
+        if (dkLen < 1)
+        {
+            throw new IllegalArgumentException("Generated key length dkLen must be >= 1.");
+        }
         return MFcrypt(P, S, N, r, p, dkLen);
     }
 

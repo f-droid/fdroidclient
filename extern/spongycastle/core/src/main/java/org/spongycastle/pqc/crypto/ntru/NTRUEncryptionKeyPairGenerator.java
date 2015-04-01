@@ -10,7 +10,7 @@ import org.spongycastle.pqc.math.ntru.polynomial.ProductFormPolynomial;
 import org.spongycastle.pqc.math.ntru.util.Util;
 
 /**
- * Generates key pairs.<br/>
+ * Generates key pairs.<br>
  * The parameter p is hardcoded to 3.
  */
 public class NTRUEncryptionKeyPairGenerator

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
+import org.spongycastle.util.Arrays;
 
 public class CMSAuthenticatedGenerator
     extends CMSEnvelopedGenerator
@@ -34,7 +35,7 @@ public class CMSAuthenticatedGenerator
         Map param = new HashMap();
         param.put(CMSAttributeTableGenerator.CONTENT_TYPE, contentType);
         param.put(CMSAttributeTableGenerator.DIGEST_ALGORITHM_IDENTIFIER, digAlgId);
-        param.put(CMSAttributeTableGenerator.DIGEST,  hash.clone());
+        param.put(CMSAttributeTableGenerator.DIGEST,  Arrays.clone(hash));
         return param;
     }
 }

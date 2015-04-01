@@ -1,7 +1,7 @@
 package org.spongycastle.crypto.modes.gcm;
 
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Arrays;
+import org.spongycastle.util.Pack;
 
 public class Tables64kGCMMultiplier implements GCMMultiplier
 {

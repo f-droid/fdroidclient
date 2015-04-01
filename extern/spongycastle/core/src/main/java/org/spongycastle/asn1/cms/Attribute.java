@@ -7,7 +7,6 @@ import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1Set;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DERSequence;
 
 /**
@@ -71,17 +70,6 @@ public class Attribute
     {
         attrType = (ASN1ObjectIdentifier)seq.getObjectAt(0);
         attrValues = (ASN1Set)seq.getObjectAt(1);
-    }
-
-    /**
-     * @deprecated use ASN1ObjectIdentifier
-     */
-    public Attribute(
-        DERObjectIdentifier attrType,
-        ASN1Set             attrValues)
-    {
-        this.attrType = new ASN1ObjectIdentifier(attrType.getId());
-        this.attrValues = attrValues;
     }
 
     public Attribute(

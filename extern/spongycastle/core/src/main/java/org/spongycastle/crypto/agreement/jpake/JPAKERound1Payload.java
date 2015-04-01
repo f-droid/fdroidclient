@@ -6,19 +6,16 @@ import org.spongycastle.util.Arrays;
 
 /**
  * The payload sent/received during the first round of a J-PAKE exchange.
- * <p/>
- * <p/>
+ * <p>
  * Each {@link JPAKEParticipant} creates and sends an instance
  * of this payload to the other {@link JPAKEParticipant}.
  * The payload to send should be created via
  * {@link JPAKEParticipant#createRound1PayloadToSend()}.
- * <p/>
- * <p/>
+ * <p>
  * Each {@link JPAKEParticipant} must also validate the payload
  * received from the other {@link JPAKEParticipant}.
  * The received payload should be validated via
  * {@link JPAKEParticipant#validateRound1PayloadReceived(JPAKERound1Payload)}.
- * <p/>
  */
 public class JPAKERound1Payload
 {

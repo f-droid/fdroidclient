@@ -41,35 +41,35 @@ public interface TeleTrusTObjectIdentifiers
     static final ASN1ObjectIdentifier ecc_brainpool = teleTrusTAlgorithm.branch("3.2.8");
     /** 1.3.36.3.3.2.8.1 */
     static final ASN1ObjectIdentifier ellipticCurve = ecc_brainpool.branch("1");
-    /** 1.3.36.3.3.2.8.1 */
+    /** 1.3.36.3.3.2.8.1.1 */
     static final ASN1ObjectIdentifier versionOne = ellipticCurve.branch("1");
 
-    /** 1.3.36.3.3.2.8.1.1 */
+    /** 1.3.36.3.3.2.8.1.1.1 */
     static final ASN1ObjectIdentifier brainpoolP160r1 = versionOne.branch("1");
-    /** 1.3.36.3.3.2.8.1.2 */
+    /** 1.3.36.3.3.2.8.1.1.2 */
     static final ASN1ObjectIdentifier brainpoolP160t1 = versionOne.branch("2");
-    /** 1.3.36.3.3.2.8.1.3 */
+    /** 1.3.36.3.3.2.8.1.1.3 */
     static final ASN1ObjectIdentifier brainpoolP192r1 = versionOne.branch("3");
-    /** 1.3.36.3.3.2.8.1.4 */
+    /** 1.3.36.3.3.2.8.1.1.4 */
     static final ASN1ObjectIdentifier brainpoolP192t1 = versionOne.branch("4");
-    /** 1.3.36.3.3.2.8.1.5 */
+    /** 1.3.36.3.3.2.8.1.1.5 */
     static final ASN1ObjectIdentifier brainpoolP224r1 = versionOne.branch("5");
-    /** 1.3.36.3.3.2.8.1.6 */
+    /** 1.3.36.3.3.2.8.1.1.6 */
     static final ASN1ObjectIdentifier brainpoolP224t1 = versionOne.branch("6");
-    /** 1.3.36.3.3.2.8.1.7 */
+    /** 1.3.36.3.3.2.8.1.1.7 */
     static final ASN1ObjectIdentifier brainpoolP256r1 = versionOne.branch("7");
-    /** 1.3.36.3.3.2.8.1.8 */
+    /** 1.3.36.3.3.2.8.1.1.8 */
     static final ASN1ObjectIdentifier brainpoolP256t1 = versionOne.branch("8");
-    /** 1.3.36.3.3.2.8.1.9 */
+    /** 1.3.36.3.3.2.8.1.1.9 */
     static final ASN1ObjectIdentifier brainpoolP320r1 = versionOne.branch("9");
-    /** 1.3.36.3.3.2.8.1.10 */
+    /** 1.3.36.3.3.2.8.1.1.10 */
     static final ASN1ObjectIdentifier brainpoolP320t1 = versionOne.branch("10");
-    /** 1.3.36.3.3.2.8.1.11 */
+    /** 1.3.36.3.3.2.8.1.1.11 */
     static final ASN1ObjectIdentifier brainpoolP384r1 = versionOne.branch("11");
-    /** 1.3.36.3.3.2.8.1.12 */
+    /** 1.3.36.3.3.2.8.1.1.12 */
     static final ASN1ObjectIdentifier brainpoolP384t1 = versionOne.branch("12");
-    /** 1.3.36.3.3.2.8.1.13 */
+    /** 1.3.36.3.3.2.8.1.1.13 */
     static final ASN1ObjectIdentifier brainpoolP512r1 = versionOne.branch("13");
-    /** 1.3.36.3.3.2.8.1.14 */
+    /** 1.3.36.3.3.2.8.1.1.14 */
     static final ASN1ObjectIdentifier brainpoolP512t1 = versionOne.branch("14");
 }

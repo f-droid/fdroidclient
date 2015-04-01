@@ -23,7 +23,7 @@ public class GMac implements Mac
 
     /**
      * Creates a GMAC based on the operation of a block cipher in GCM mode.
-     * <p/>
+     * <p>
      * This will produce an authentication code the length of the block size of the cipher.
      * 
      * @param cipher
@@ -40,7 +40,8 @@ public class GMac implements Mac
      * Creates a GMAC based on the operation of a 128 bit block cipher in GCM mode.
      * 
      * @param macSizeBits
-     *            the mac size to generate, in bits. Must be a multiple of 8 and >= 96 and <= 128.
+     *            the mac size to generate, in bits. Must be a multiple of 8 and &gt;= 32 and &lt;= 128.
+     *            Sizes less than 96 are not recommended, but are supported for specialized applications.
      * @param cipher
      *            the cipher to be used in GCM mode to generate the MAC.
      */

@@ -20,6 +20,7 @@ import org.spongycastle.crypto.CipherKeyGenerator;
 import org.spongycastle.crypto.engines.AESFastEngine;
 import org.spongycastle.crypto.engines.AESWrapEngine;
 import org.spongycastle.crypto.engines.RFC3211WrapEngine;
+import org.spongycastle.crypto.engines.RFC5649WrapEngine;
 import org.spongycastle.crypto.generators.Poly1305KeyGenerator;
 import org.spongycastle.crypto.macs.CMac;
 import org.spongycastle.crypto.macs.GMac;
@@ -153,7 +154,15 @@ public final class AES
         }
     }
 
-    
+    public static class RFC5649Wrap
+        extends BaseWrapCipher
+    {
+        public RFC5649Wrap()
+        {
+            super(new RFC5649WrapEngine(new AESFastEngine()));
+        }
+    }
+
     /**
      * PBEWithAES-CBC
      */
@@ -433,9 +442,9 @@ public final class AES
             {
                 try
                 {
-                    Constructor constructor = gcmSpecClass.getConstructor(new Class[] { byte[].class, Integer.class });
+                    Constructor constructor = gcmSpecClass.getConstructor(new Class[] { Integer.TYPE, byte[].class });
 
-                    return (AlgorithmParameterSpec)constructor.newInstance(new Object[] { gcmParams.getNonce(), Integers.valueOf(gcmParams.getIcvLen()) });
+                    return (AlgorithmParameterSpec)constructor.newInstance(new Object[] { Integers.valueOf(gcmParams.getIcvLen()), gcmParams.getNonce() });
                 }
                 catch (NoSuchMethodException e)
                 {
@@ -512,7 +521,9 @@ public final class AES
             provider.addAlgorithm("Alg.Alias.Cipher." + NISTObjectIdentifiers.id_aes128_wrap, "AESWRAP");
             provider.addAlgorithm("Alg.Alias.Cipher." + NISTObjectIdentifiers.id_aes192_wrap, "AESWRAP");
             provider.addAlgorithm("Alg.Alias.Cipher." + NISTObjectIdentifiers.id_aes256_wrap, "AESWRAP");
+
             provider.addAlgorithm("Cipher.AESRFC3211WRAP", PREFIX + "$RFC3211Wrap");
+            provider.addAlgorithm("Cipher.AESRFC5649WRAP", PREFIX + "$RFC5649Wrap");
 
             provider.addAlgorithm("Cipher.GCM", PREFIX + "$GCM");
             provider.addAlgorithm("Alg.Alias.Cipher." + NISTObjectIdentifiers.id_aes128_GCM, "GCM");

@@ -4,15 +4,12 @@ import java.math.BigInteger;
 
 /**
  * A pre-computed prime order group for use during a J-PAKE exchange.
- * <p/>
- * <p/>
+ * <p>
  * Typically a Schnorr group is used.  In general, J-PAKE can use any prime order group
  * that is suitable for public key cryptography, including elliptic curve cryptography.
- * <p/>
- * <p/>
+ * <p>
  * See {@link JPAKEPrimeOrderGroups} for convenient standard groups.
- * <p/>
- * <p/>
+ * <p>
  * NIST <a href="http://csrc.nist.gov/groups/ST/toolkit/documents/Examples/DSA2_All.pdf">publishes</a>
  * many groups that can be used for the desired level of security.
  */
@@ -24,12 +21,10 @@ public class JPAKEPrimeOrderGroup
 
     /**
      * Constructs a new {@link JPAKEPrimeOrderGroup}.
-     * <p/>
-     * <p/>
+     * <p>
      * In general, you should use one of the pre-approved groups from
      * {@link JPAKEPrimeOrderGroups}, rather than manually constructing one.
-     * <p/>
-     * <p/>
+     * <p>
      * The following basic checks are performed:
      * <ul>
      * <li>p-1 must be evenly divisible by q</li>
@@ -38,12 +33,10 @@ public class JPAKEPrimeOrderGroup
      * <li>p must be prime (within reasonably certainty)</li>
      * <li>q must be prime (within reasonably certainty)</li>
      * </ul>
-     * <p/>
-     * <p/>
+     * <p>
      * The prime checks are performed using {@link BigInteger#isProbablePrime(int)},
      * and are therefore subject to the same probability guarantees.
-     * <p/>
-     * <p/>
+     * <p>
      * These checks prevent trivial mistakes.
      * However, due to the small uncertainties if p and q are not prime,
      * advanced attacks are not prevented.

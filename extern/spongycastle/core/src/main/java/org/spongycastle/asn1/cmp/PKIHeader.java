@@ -4,13 +4,13 @@ import java.util.Enumeration;
 
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1EncodableVector;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERTaggedObject;
 import org.spongycastle.asn1.x500.X500Name;
@@ -31,7 +31,7 @@ public class PKIHeader
     private ASN1Integer pvno;
     private GeneralName sender;
     private GeneralName recipient;
-    private DERGeneralizedTime messageTime;
+    private ASN1GeneralizedTime messageTime;
     private AlgorithmIdentifier protectionAlg;
     private ASN1OctetString senderKID;       // KeyIdentifier
     private ASN1OctetString recipKID;        // KeyIdentifier
@@ -56,7 +56,7 @@ public class PKIHeader
             switch (tObj.getTagNo())
             {
             case 0:
-                messageTime = DERGeneralizedTime.getInstance(tObj, true);
+                messageTime = ASN1GeneralizedTime.getInstance(tObj, true);
                 break;
             case 1:
                 protectionAlg = AlgorithmIdentifier.getInstance(tObj, true);
@@ -136,7 +136,7 @@ public class PKIHeader
         return recipient;
     }
 
-    public DERGeneralizedTime getMessageTime()
+    public ASN1GeneralizedTime getMessageTime()
     {
         return messageTime;
     }

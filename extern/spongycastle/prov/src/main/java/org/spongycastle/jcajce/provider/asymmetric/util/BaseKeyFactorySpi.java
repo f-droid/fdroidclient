@@ -1,6 +1,5 @@
 package org.spongycastle.jcajce.provider.asymmetric.util;
 
-import java.io.IOException;
 import java.security.Key;
 import java.security.PrivateKey;
 import java.security.PublicKey;

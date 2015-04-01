@@ -19,8 +19,6 @@ import org.spongycastle.asn1.x509.AlgorithmIdentifier;
  * the expiry of the corresponding certificate. Hence, clients MUST support this
  * extension. If a positive statement of availability is to be delivered, this
  * extension syntax and OID MUST be used.
- * <p/>
- * <p/>
  * <pre>
  *     CertHash ::= SEQUENCE {
  *       hashAlgorithm AlgorithmIdentifier,
@@ -102,9 +100,8 @@ public class CertHash
 
     /**
      * Produce an object suitable for an ASN1OutputStream.
-     * <p/>
+     * <p>
      * Returns:
-     * <p/>
      * <pre>
      *     CertHash ::= SEQUENCE {
      *       hashAlgorithm AlgorithmIdentifier,

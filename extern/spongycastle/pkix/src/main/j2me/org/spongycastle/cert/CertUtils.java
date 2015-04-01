@@ -14,7 +14,7 @@ import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.DERBitString;
-import org.spongycastle.asn1.DERGeneralizedTime;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.DERNull;
 import org.spongycastle.asn1.DEROutputStream;
 import org.spongycastle.asn1.DERSequence;
@@ -199,7 +199,7 @@ class CertUtils
         return null;
     }
 
-    static Date recoverDate(DERGeneralizedTime time)
+    static Date recoverDate(ASN1GeneralizedTime time)
     {
         return time.getDate();
     }

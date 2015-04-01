@@ -8,7 +8,6 @@ import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
 import org.spongycastle.asn1.DERNull;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DERSequence;
 
 public class AlgorithmIdentifier
@@ -62,30 +61,6 @@ public class AlgorithmIdentifier
         String     objectId)
     {
         this.objectId = new ASN1ObjectIdentifier(objectId);
-    }
-
-    /**
-     * @deprecated use ASN1ObjectIdentifier
-     * @param objectId
-     */
-    public AlgorithmIdentifier(
-        DERObjectIdentifier    objectId)
-    {
-        this.objectId = new ASN1ObjectIdentifier(objectId.getId());
-    }
-
-    /**
-     * @deprecated use ASN1ObjectIdentifier
-     * @param objectId
-     * @param parameters
-     */
-    public AlgorithmIdentifier(
-        DERObjectIdentifier objectId,
-        ASN1Encodable           parameters)
-    {
-        parametersDefined = true;
-        this.objectId = new ASN1ObjectIdentifier(objectId.getId());
-        this.parameters = parameters;
     }
 
     public AlgorithmIdentifier(

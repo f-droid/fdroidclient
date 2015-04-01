@@ -471,7 +471,7 @@ public class CMSSignedData
      * @param signedData the signed data object to be used as a base.
      * @param certificates the new certificates to be used.
      * @param attrCerts the new attribute certificates to be used.
-     * @param crls the new CRLs to be used.
+     * @param revocations the new CRLs to be used - a collection of X509CRLHolder objects, OtherRevocationInfoFormat, or both.
      * @return a new signed data object.
      * @exception CMSException if there is an error processing the CertStore
      */
@@ -479,7 +479,7 @@ public class CMSSignedData
         CMSSignedData   signedData,
         Store           certificates,
         Store           attrCerts,
-        Store           crls)
+        Store           revocations)
         throws CMSException
     {
         //
@@ -488,7 +488,7 @@ public class CMSSignedData
         CMSSignedData   cms = new CMSSignedData(signedData);
 
         //
-        // replace the certs and crls in the SignedData object
+        // replace the certs and revocations in the SignedData object
         //
         ASN1Set certSet = null;
         ASN1Set crlSet = null;
@@ -514,9 +514,9 @@ public class CMSSignedData
             }
         }
 
-        if (crls != null)
+        if (revocations != null)
         {
-            ASN1Set set = CMSUtils.createBerSetFromList(CMSUtils.getCRLsFromStore(crls));
+            ASN1Set set = CMSUtils.createBerSetFromList(CMSUtils.getCRLsFromStore(revocations));
 
             if (set.size() != 0)
             {

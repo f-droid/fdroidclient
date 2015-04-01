@@ -4,6 +4,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import org.spongycastle.asn1.ASN1Boolean;
 import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
@@ -11,8 +12,6 @@ import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERBoolean;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DERSequence;
 
 /**
@@ -259,7 +258,7 @@ public class X509Extensions
 
             if (s.size() == 3)
             {
-                extensions.put(s.getObjectAt(0), new X509Extension(DERBoolean.getInstance(s.getObjectAt(1)), ASN1OctetString.getInstance(s.getObjectAt(2))));
+                extensions.put(s.getObjectAt(0), new X509Extension(ASN1Boolean.getInstance(s.getObjectAt(1)), ASN1OctetString.getInstance(s.getObjectAt(2))));
             }
             else if (s.size() == 2)
             {
@@ -369,17 +368,6 @@ public class X509Extensions
      * @return the extension if it's present, null otherwise.
      */
     public X509Extension getExtension(
-        DERObjectIdentifier oid)
-    {
-        return (X509Extension)extensions.get(oid);
-    }
-
-    /**
-     * @deprecated
-     * @param oid
-     * @return
-     */
-    public X509Extension getExtension(
         ASN1ObjectIdentifier oid)
     {
         return (X509Extension)extensions.get(oid);
@@ -410,7 +398,7 @@ public class X509Extensions
 
             if (ext.isCritical())
             {
-                v.add(DERBoolean.TRUE);
+                v.add(ASN1Boolean.TRUE);
             }
 
             v.add(ext.getValue());

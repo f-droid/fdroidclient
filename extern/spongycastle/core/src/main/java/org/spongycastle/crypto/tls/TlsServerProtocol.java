@@ -52,9 +52,12 @@ public class TlsServerProtocol
 
         this.securityParameters = new SecurityParameters();
         this.securityParameters.entity = ConnectionEnd.server;
-        this.securityParameters.serverRandom = createRandomBlock(secureRandom);
 
         this.tlsServerContext = new TlsServerContextImpl(secureRandom, securityParameters);
+
+        this.securityParameters.serverRandom = createRandomBlock(tlsServer.shouldUseGMTUnixTime(),
+            tlsServerContext.getNonceRandomGenerator());
+
         this.tlsServer.init(tlsServerContext);
         this.recordStream.init(tlsServerContext);
 
@@ -430,10 +433,18 @@ public class TlsServerProtocol
         assertEmpty(buf);
 
         // Verify the CertificateVerify message contains a correct signature.
+        boolean verified = false;
         try
         {
-            // TODO For TLS 1.2, this needs to be the hash specified in the DigitallySigned
-            byte[] certificateVerifyHash = getCurrentPRFHash(getContext(), prepareFinishHash, null);
+            byte[] certificateVerifyHash;
+            if (TlsUtils.isTLSv12(getContext()))
+            {
+                certificateVerifyHash = prepareFinishHash.getFinalHash(clientCertificateVerify.getAlgorithm().getHash());
+            }
+            else
+            {
+                certificateVerifyHash = TlsProtocol.getCurrentPRFHash(getContext(), prepareFinishHash, null);
+            }
 
             org.spongycastle.asn1.x509.Certificate x509Cert = this.peerCertificate.getCertificateAt(0);
             SubjectPublicKeyInfo keyInfo = x509Cert.getSubjectPublicKeyInfo();
@@ -441,10 +452,14 @@ public class TlsServerProtocol
 
             TlsSigner tlsSigner = TlsUtils.createTlsSigner(this.clientCertificateType);
             tlsSigner.init(getContext());
-            tlsSigner.verifyRawSignature(clientCertificateVerify.getAlgorithm(),
+            verified = tlsSigner.verifyRawSignature(clientCertificateVerify.getAlgorithm(),
                 clientCertificateVerify.getSignature(), publicKey, certificateVerifyHash);
         }
         catch (Exception e)
+        {
+        }
+
+        if (!verified)
         {
             throw new TlsFatalAlert(AlertDescription.decrypt_error);
         }
@@ -641,7 +656,8 @@ public class TlsServerProtocol
         int selectedCipherSuite = tlsServer.getSelectedCipherSuite();
         if (!Arrays.contains(this.offeredCipherSuites, selectedCipherSuite)
             || selectedCipherSuite == CipherSuite.TLS_NULL_WITH_NULL_NULL
-            || selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV)
+            || selectedCipherSuite == CipherSuite.TLS_EMPTY_RENEGOTIATION_INFO_SCSV
+            || !TlsUtils.isValidCipherSuiteForVersion(selectedCipherSuite, server_version))
         {
             throw new TlsFatalAlert(AlertDescription.internal_error);
         }
@@ -694,6 +710,8 @@ public class TlsServerProtocol
 
         if (this.serverExtensions != null)
         {
+            this.securityParameters.encryptThenMAC = TlsExtensionsUtils.hasEncryptThenMACExtension(this.serverExtensions);
+
             this.securityParameters.maxFragmentLength = processMaxFragmentLengthExtension(clientExtensions,
                 this.serverExtensions, AlertDescription.internal_error);
 

@@ -1339,7 +1339,7 @@ public class GF2Polynomial
 
     /**
      * Checks if <i>this</i> is irreducible, according to IEEE P1363, A.5.5,
-     * p103. <br />
+     * p103.<br>
      * Note: The algorithm from IEEE P1363, A5.5 can be used to check a
      * polynomial with coefficients in GF(2^r) for irreducibility. As this class
      * only represents polynomials with coefficients in GF(2), the algorithm is
@@ -1635,7 +1635,7 @@ public class GF2Polynomial
      * Does a vector-multiplication modulo 2 and returns the result as boolean.
      *
      * @param b GF2Polynomial
-     * @return this x <i>b</i> as boolean (1->true, 0->false)
+     * @return this x <i>b</i> as boolean (1-&gt;true, 0-&gt;false)
      * @throws PolynomialsHaveDifferentLengthException if <i>this</i> and <i>b</i> have a different length and
      * thus cannot be vector-multiplied
      */
@@ -1730,7 +1730,7 @@ public class GF2Polynomial
      * Sets the bit at position <i>i</i>.
      *
      * @param i int
-     * @throws BitDoesNotExistException if (<i>i</i> < 0) || (<i>i</i> > (len - 1))
+     * @throws BitDoesNotExistException if (<i>i</i> &lt; 0) || (<i>i</i> &gt; (len - 1))
      */
     public void setBit(int i)
         throws RuntimeException
@@ -1767,7 +1767,7 @@ public class GF2Polynomial
      * Resets the bit at position <i>i</i>.
      *
      * @param i int
-     * @throws BitDoesNotExistException if (<i>i</i> < 0) || (<i>i</i> > (len - 1))
+     * @throws BitDoesNotExistException if (<i>i</i> &lt; 0) || (<i>i</i> &gt; (len - 1))
      */
     public void resetBit(int i)
         throws RuntimeException
@@ -1787,7 +1787,7 @@ public class GF2Polynomial
      * Xors the bit at position <i>i</i>.
      *
      * @param i int
-     * @throws BitDoesNotExistException if (<i>i</i> < 0) || (<i>i</i> > (len - 1))
+     * @throws BitDoesNotExistException if (<i>i</i> &lt; 0) || (<i>i</i> &gt; (len - 1))
      */
     public void xorBit(int i)
         throws RuntimeException
@@ -1808,7 +1808,7 @@ public class GF2Polynomial
      *
      * @param i the position of the bit to be tested
      * @return true if the bit at position <i>i</i> is set (a(<i>i</i>) ==
-     *         1). False if (<i>i</i> < 0) || (<i>i</i> > (len - 1))
+     *         1). False if (<i>i</i> &lt; 0) || (<i>i</i> &gt; (len - 1))
      */
     public boolean testBit(int i)
     {
@@ -1822,7 +1822,7 @@ public class GF2Polynomial
     /**
      * Returns this GF2Polynomial shift-left by 1 in a new GF2Polynomial.
      *
-     * @return a new GF2Polynomial (this << 1)
+     * @return a new GF2Polynomial (this &lt;&lt; 1)
      */
     public GF2Polynomial shiftLeft()
     {
@@ -1878,7 +1878,7 @@ public class GF2Polynomial
      * GF2Polynomial.
      *
      * @param k int
-     * @return a new GF2Polynomial (this << <i>k</i>)
+     * @return a new GF2Polynomial (this &lt;&lt; <i>k</i>)
      */
     public GF2Polynomial shiftLeft(int k)
     {
@@ -1996,7 +1996,7 @@ public class GF2Polynomial
     /**
      * Returns this GF2Polynomial shift-right by 1 in a new GF2Polynomial.
      *
-     * @return a new GF2Polynomial (this << 1)
+     * @return a new GF2Polynomial (this &lt;&lt; 1)
      */
     public GF2Polynomial shiftRight()
     {

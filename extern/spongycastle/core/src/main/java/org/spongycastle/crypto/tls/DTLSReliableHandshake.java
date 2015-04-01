@@ -107,7 +107,7 @@ class DTLSReliableHandshake
         // TODO Check the conditions under which we should reset this
         int readTimeoutMillis = 1000;
 
-        for (; ; )
+        for (;;)
         {
             int receiveLimit = recordLayer.getReceiveLimit();
             if (buf == null || buf.length < receiveLimit)
@@ -160,13 +160,11 @@ class DTLSReliableHandshake
                                 .valueOf(seq));
                             if (reassembler != null)
                             {
-
                                 reassembler.contributeFragment(msg_type, length, buf, 12, fragment_offset,
                                     fragment_length);
 
                                 if (checkAll(previousInboundFlight))
                                 {
-
                                     resendOutboundFlight();
 
                                     /*
@@ -182,7 +180,6 @@ class DTLSReliableHandshake
                     }
                     else
                     {
-
                         DTLSReassembler reassembler = (DTLSReassembler)currentInboundFlight.get(Integers.valueOf(seq));
                         if (reassembler == null)
                         {

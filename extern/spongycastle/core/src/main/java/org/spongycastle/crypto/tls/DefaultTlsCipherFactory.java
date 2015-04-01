@@ -4,20 +4,18 @@ import java.io.IOException;
 
 import org.spongycastle.crypto.BlockCipher;
 import org.spongycastle.crypto.Digest;
-import org.spongycastle.crypto.Mac;
 import org.spongycastle.crypto.StreamCipher;
 import org.spongycastle.crypto.digests.MD5Digest;
 import org.spongycastle.crypto.digests.SHA1Digest;
 import org.spongycastle.crypto.digests.SHA256Digest;
 import org.spongycastle.crypto.digests.SHA384Digest;
 import org.spongycastle.crypto.digests.SHA512Digest;
-import org.spongycastle.crypto.engines.AESFastEngine;
+import org.spongycastle.crypto.engines.AESEngine;
 import org.spongycastle.crypto.engines.CamelliaEngine;
 import org.spongycastle.crypto.engines.DESedeEngine;
 import org.spongycastle.crypto.engines.RC4Engine;
 import org.spongycastle.crypto.engines.SEEDEngine;
 import org.spongycastle.crypto.engines.Salsa20Engine;
-import org.spongycastle.crypto.macs.HMac;
 import org.spongycastle.crypto.modes.AEADBlockCipher;
 import org.spongycastle.crypto.modes.CBCBlockCipher;
 import org.spongycastle.crypto.modes.CCMBlockCipher;
@@ -33,6 +31,9 @@ public class DefaultTlsCipherFactory
         {
         case EncryptionAlgorithm._3DES_EDE_CBC:
             return createDESedeCipher(context, macAlgorithm);
+        case EncryptionAlgorithm.AEAD_CHACHA20_POLY1305:
+            // NOTE: Ignores macAlgorithm
+            return createChaCha20Poly1305(context);
         case EncryptionAlgorithm.AES_128_CBC:
             return createAESCipher(context, 16, macAlgorithm);
         case EncryptionAlgorithm.AES_128_CCM:
@@ -57,8 +58,14 @@ public class DefaultTlsCipherFactory
             return createCipher_AES_GCM(context, 32, 16);
         case EncryptionAlgorithm.CAMELLIA_128_CBC:
             return createCamelliaCipher(context, 16, macAlgorithm);
+        case EncryptionAlgorithm.CAMELLIA_128_GCM:
+            // NOTE: Ignores macAlgorithm
+            return createCipher_Camellia_GCM(context, 16, 16);
         case EncryptionAlgorithm.CAMELLIA_256_CBC:
             return createCamelliaCipher(context, 32, macAlgorithm);
+        case EncryptionAlgorithm.CAMELLIA_256_GCM:
+            // NOTE: Ignores macAlgorithm
+            return createCipher_Camellia_GCM(context, 32, 16);
         case EncryptionAlgorithm.ESTREAM_SALSA20:
             return createSalsa20Cipher(context, 12, 32, macAlgorithm);
         case EncryptionAlgorithm.NULL:
@@ -81,6 +88,19 @@ public class DefaultTlsCipherFactory
             createHMACDigest(macAlgorithm), createHMACDigest(macAlgorithm), cipherKeySize);
     }
 
+    protected TlsBlockCipher createCamelliaCipher(TlsContext context, int cipherKeySize, int macAlgorithm)
+        throws IOException
+    {
+        return new TlsBlockCipher(context, createCamelliaBlockCipher(),
+            createCamelliaBlockCipher(), createHMACDigest(macAlgorithm),
+            createHMACDigest(macAlgorithm), cipherKeySize);
+    }
+
+    protected TlsCipher createChaCha20Poly1305(TlsContext context) throws IOException
+    {
+        return new Chacha20Poly1305(context);
+    }
+
     protected TlsAEADCipher createCipher_AES_CCM(TlsContext context, int cipherKeySize, int macSize)
         throws IOException
     {
@@ -95,12 +115,11 @@ public class DefaultTlsCipherFactory
             createAEADBlockCipher_AES_GCM(), cipherKeySize, macSize);
     }
 
-    protected TlsBlockCipher createCamelliaCipher(TlsContext context, int cipherKeySize, int macAlgorithm)
+    protected TlsAEADCipher createCipher_Camellia_GCM(TlsContext context, int cipherKeySize, int macSize)
         throws IOException
     {
-        return new TlsBlockCipher(context, createCamelliaBlockCipher(),
-            createCamelliaBlockCipher(), createHMACDigest(macAlgorithm),
-            createHMACDigest(macAlgorithm), cipherKeySize);
+        return new TlsAEADCipher(context, createAEADBlockCipher_Camellia_GCM(),
+            createAEADBlockCipher_Camellia_GCM(), cipherKeySize, macSize);
     }
 
     protected TlsBlockCipher createDESedeCipher(TlsContext context, int macAlgorithm)
@@ -121,18 +140,14 @@ public class DefaultTlsCipherFactory
         throws IOException
     {
         return new TlsStreamCipher(context, createRC4StreamCipher(), createRC4StreamCipher(),
-            createHMACDigest(macAlgorithm), createHMACDigest(macAlgorithm), cipherKeySize);
+            createHMACDigest(macAlgorithm), createHMACDigest(macAlgorithm), cipherKeySize, false);
     }
 
     protected TlsStreamCipher createSalsa20Cipher(TlsContext context, int rounds, int cipherKeySize, int macAlgorithm)
         throws IOException
     {
-        /*
-         * TODO To be able to support UMAC96, we need to give the TlsStreamCipher a Mac instead of
-         * assuming HMAC and passing a digest.
-         */
         return new TlsStreamCipher(context, createSalsa20StreamCipher(rounds), createSalsa20StreamCipher(rounds),
-            createHMACDigest(macAlgorithm), createHMACDigest(macAlgorithm), cipherKeySize);
+            createHMACDigest(macAlgorithm), createHMACDigest(macAlgorithm), cipherKeySize, true);
     }
 
     protected TlsBlockCipher createSEEDCipher(TlsContext context, int macAlgorithm)
@@ -142,25 +157,41 @@ public class DefaultTlsCipherFactory
             createHMACDigest(macAlgorithm), createHMACDigest(macAlgorithm), 16);
     }
 
+    protected BlockCipher createAESEngine()
+    {
+        return new AESEngine();
+    }
+
+    protected BlockCipher createCamelliaEngine()
+    {
+        return new CamelliaEngine();
+    }
+
     protected BlockCipher createAESBlockCipher()
     {
-        return new CBCBlockCipher(new AESFastEngine());
+        return new CBCBlockCipher(createAESEngine());
     }
 
     protected AEADBlockCipher createAEADBlockCipher_AES_CCM()
     {
-        return new CCMBlockCipher(new AESFastEngine());
+        return new CCMBlockCipher(createAESEngine());
     }
 
     protected AEADBlockCipher createAEADBlockCipher_AES_GCM()
     {
         // TODO Consider allowing custom configuration of multiplier
-        return new GCMBlockCipher(new AESFastEngine());
+        return new GCMBlockCipher(createAESEngine());
+    }
+
+    protected AEADBlockCipher createAEADBlockCipher_Camellia_GCM()
+    {
+        // TODO Consider allowing custom configuration of multiplier
+        return new GCMBlockCipher(createCamelliaEngine());
     }
 
     protected BlockCipher createCamelliaBlockCipher()
     {
-        return new CBCBlockCipher(new CamelliaEngine());
+        return new CBCBlockCipher(createCamelliaEngine());
     }
 
     protected BlockCipher createDESedeBlockCipher()
@@ -190,29 +221,17 @@ public class DefaultTlsCipherFactory
         case MACAlgorithm._null:
             return null;
         case MACAlgorithm.hmac_md5:
-            return new MD5Digest();
+            return TlsUtils.createHash(HashAlgorithm.md5);
         case MACAlgorithm.hmac_sha1:
-            return new SHA1Digest();
+            return TlsUtils.createHash(HashAlgorithm.sha1);
         case MACAlgorithm.hmac_sha256:
-            return new SHA256Digest();
+            return TlsUtils.createHash(HashAlgorithm.sha256);
         case MACAlgorithm.hmac_sha384:
-            return new SHA384Digest();
+            return TlsUtils.createHash(HashAlgorithm.sha384);
         case MACAlgorithm.hmac_sha512:
-            return new SHA512Digest();
+            return TlsUtils.createHash(HashAlgorithm.sha512);
         default:
             throw new TlsFatalAlert(AlertDescription.internal_error);
-        }
-    }
-
-    protected Mac createMac(int macAlgorithm) throws IOException
-    {
-        switch (macAlgorithm)
-        {
-        // TODO Need an implementation of UMAC
-//        case MACAlgorithm.umac96:
-//            return
-        default:
-            return new HMac(createHMACDigest(macAlgorithm));
         }
     }
 }

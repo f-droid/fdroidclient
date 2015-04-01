@@ -20,7 +20,6 @@ public class WinternitzOTSVerify
 
     /**
      * The constructor
-     * <p/>
      *
      * @param digest the name of the hash function used by the OTS and the provider
      *               name of the hash function

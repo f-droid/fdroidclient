@@ -1,5 +1,8 @@
 package org.spongycastle.crypto.engines;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+
 import org.spongycastle.crypto.AsymmetricBlockCipher;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
@@ -8,9 +11,6 @@ import org.spongycastle.crypto.params.ElGamalPrivateKeyParameters;
 import org.spongycastle.crypto.params.ElGamalPublicKeyParameters;
 import org.spongycastle.crypto.params.ParametersWithRandom;
 import org.spongycastle.util.BigIntegers;
-
-import java.math.BigInteger;
-import java.security.SecureRandom;
 
 /**
  * this does your basic ElGamal algorithm.
@@ -170,7 +170,7 @@ public class ElGamalEngine
 
             BigInteger input = new BigInteger(1, block);
 
-            if (input.bitLength() >= p.bitLength())
+            if (input.compareTo(p) >= 0)
             {
                 throw new DataLengthException("input too large for ElGamal cipher.\n");
             }

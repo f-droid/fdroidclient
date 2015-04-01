@@ -36,8 +36,7 @@ import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.spongycastle.asn1.x9.X9ObjectIdentifiers;
 import org.spongycastle.cert.X509CertificateHolder;
-import org.spongycastle.jcajce.JcaJceHelper;
-import org.spongycastle.jcajce.JcaJceUtils;
+import org.spongycastle.jcajce.util.JcaJceHelper;
 import org.spongycastle.operator.OperatorCreationException;
 
 class OperatorHelper

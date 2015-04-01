@@ -7,7 +7,6 @@ import java.util.Vector;
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Encoding;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DEROctetString;
 
 /**
@@ -26,28 +25,6 @@ public class X509ExtensionsGenerator
     {
         extensions = new Hashtable();
         extOrdering = new Vector();
-    }
-
-    /**
-     * @deprecated use ASN1ObjectIdentifier
-     */
-    public void addExtension(
-        DERObjectIdentifier oid,
-        boolean             critical,
-        ASN1Encodable       value)
-    {
-        addExtension(new ASN1ObjectIdentifier(oid.getId()), critical, value);
-    }
-
-    /**
-     * @deprecated use ASN1ObjectIdentifier
-     */
-    public void addExtension(
-        DERObjectIdentifier oid,
-        boolean             critical,
-        byte[]              value)
-    {
-        addExtension(new ASN1ObjectIdentifier(oid.getId()), critical, value);
     }
 
     /**

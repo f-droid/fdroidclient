@@ -17,10 +17,8 @@ import javax.crypto.spec.PBEParameterSpec;
 import javax.crypto.spec.RC2ParameterSpec;
 import javax.crypto.spec.RC5ParameterSpec;
 
-import org.spongycastle.crypto.BlockCipher;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
-import org.spongycastle.crypto.StreamBlockCipher;
 import org.spongycastle.crypto.StreamCipher;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.crypto.params.ParametersWithIV;
@@ -55,15 +53,6 @@ public class BaseStreamCipher
     {
         cipher = engine;
         this.ivLength = ivLength;
-    }
-
-    protected BaseStreamCipher(
-        BlockCipher engine,
-        int ivLength)
-    {
-        this.ivLength = ivLength;
-
-        cipher = new StreamBlockCipher(engine);
     }
 
     protected int engineGetBlockSize()

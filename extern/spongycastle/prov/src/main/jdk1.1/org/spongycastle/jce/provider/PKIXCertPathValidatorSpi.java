@@ -39,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
+import java.text.SimpleDateFormat;
 
 import org.spongycastle.jce.X509Principal;
 import org.spongycastle.jce.PrincipalUtil;
@@ -49,11 +50,11 @@ import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
 import org.spongycastle.asn1.BERConstructedOctetString;
 import org.spongycastle.asn1.ASN1Encodable;
-import org.spongycastle.asn1.DEREnumerated;
+import org.spongycastle.asn1.ASN1Enumerated;
 import org.spongycastle.asn1.DERIA5String;
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1Primitive;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.asn1.x509.BasicConstraints;
 import org.spongycastle.asn1.x509.GeneralName;
@@ -564,7 +565,7 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
     private boolean processCertD1i(
         int                 index,
         List     []            policyNodes,
-        DERObjectIdentifier pOid,
+        ASN1ObjectIdentifier pOid,
         Set                 pq)
     {
         List       policyNodeVec = policyNodes[index - 1];
@@ -599,7 +600,7 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
     private void processCertD1ii(
         int                 index,
         List     []            policyNodes,
-        DERObjectIdentifier _poid,
+        ASN1ObjectIdentifier _poid,
         Set _pq)
     {
         List       policyNodeVec = policyNodes[index - 1];
@@ -799,7 +800,7 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
         }
 
         AlgorithmIdentifier workingAlgId = getAlgorithmIdentifier(workingPublicKey);
-        DERObjectIdentifier workingPublicKeyAlgorithm = workingAlgId.getObjectId();
+        ASN1ObjectIdentifier workingPublicKeyAlgorithm = workingAlgId.getObjectId();
         ASN1Encodable        workingPublicKeyParameters = workingAlgId.getParameters();
     
         //
@@ -970,7 +971,7 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                     while (e.hasMoreElements())
                     {
                         PolicyInformation   pInfo = PolicyInformation.getInstance(e.nextElement());
-                        DERObjectIdentifier pOid = pInfo.getPolicyIdentifier();
+                        ASN1ObjectIdentifier pOid = pInfo.getPolicyIdentifier();
                         
                         pols.add(pOid.getId());
     
@@ -1039,9 +1040,9 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                                         {
                                             _policy = (String)_tmp;
                                         }
-                                        else if (_tmp instanceof DERObjectIdentifier)
+                                        else if (_tmp instanceof ASN1ObjectIdentifier)
                                         {
-                                            _policy = ((DERObjectIdentifier)_tmp).getId();
+                                            _policy = ((ASN1ObjectIdentifier)_tmp).getId();
                                         }
                                         else
                                         {
@@ -1163,8 +1164,8 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                         {
                             ASN1Sequence    mapping = (ASN1Sequence)mappings.getObjectAt(j);
     
-                            DERObjectIdentifier issuerDomainPolicy = (DERObjectIdentifier)mapping.getObjectAt(0);
-                            DERObjectIdentifier subjectDomainPolicy = (DERObjectIdentifier)mapping.getObjectAt(1);
+                            ASN1ObjectIdentifier issuerDomainPolicy = (ASN1ObjectIdentifier)mapping.getObjectAt(0);
+                            ASN1ObjectIdentifier subjectDomainPolicy = (ASN1ObjectIdentifier)mapping.getObjectAt(1);
     
                             if (ANY_POLICY.equals(issuerDomainPolicy.getId()))
                             {
@@ -1191,8 +1192,8 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                         for (int j = 0; j < mappings.size(); j++)
                         {
                             ASN1Sequence mapping = (ASN1Sequence)mappings.getObjectAt(j);
-                            String id_p = ((DERObjectIdentifier)mapping.getObjectAt(0)).getId();
-                            String sd_p = ((DERObjectIdentifier)mapping.getObjectAt(1)).getId();
+                            String id_p = ((ASN1ObjectIdentifier)mapping.getObjectAt(0)).getId();
+                            String sd_p = ((ASN1ObjectIdentifier)mapping.getObjectAt(1)).getId();
                             Set tmp;
                             
                             if (!m_idp.containsKey(id_p))
@@ -1417,14 +1418,14 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                             switch (constraint.getTagNo())
                             {
                             case 0:
-                                tmpInt = DERInteger.getInstance(constraint).getValue().intValue();
+                                tmpInt = ASN1Integer.getInstance(constraint).getValue().intValue();
                                 if (tmpInt < explicitPolicy)
                                 {
                                     explicitPolicy = tmpInt;
                                 }
                                 break;
                             case 1:
-                                tmpInt = DERInteger.getInstance(constraint).getValue().intValue();
+                                tmpInt = ASN1Integer.getInstance(constraint).getValue().intValue();
                                 if (tmpInt < policyMapping)
                                 {
                                     policyMapping = tmpInt;
@@ -1437,7 +1438,7 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                     //
                     // (j)
                     //
-                    DERInteger iap = (DERInteger)getExtensionValue(cert, INHIBIT_ANY_POLICY);
+                    ASN1Integer iap = (ASN1Integer)getExtensionValue(cert, INHIBIT_ANY_POLICY);
                 
                     if (iap != null)
                     {
@@ -1593,7 +1594,7 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                     switch (constraint.getTagNo())
                     {
                     case 0:
-                        tmpInt = DERInteger.getInstance(constraint).getValue().intValue();
+                        tmpInt = ASN1Integer.getInstance(constraint).getValue().intValue();
                         if (tmpInt == 0)
                         {
                             explicitPolicy = 0;
@@ -1893,7 +1894,7 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                     
                     if (crl_entry.hasExtensions())
                     {
-                        DEREnumerated reasonCode = DEREnumerated.getInstance(getExtensionValue(crl_entry, X509Extensions.ReasonCode.getId()));
+                        ASN1Enumerated reasonCode = ASN1Enumerated.getInstance(getExtensionValue(crl_entry, X509Extensions.ReasonCode.getId()));
                         if (reasonCode != null)
                         {
                             reason = crlReasons[reasonCode.getValue().intValue()];
@@ -1931,8 +1932,8 @@ public class PKIXCertPathValidatorSpi extends CertPathValidatorSpi
                         throw new AnnotatedException("can't extract issuer from certificate: " + e, e);
                     }
 
-                    baseSelect.setMinCRLNumber(((DERInteger)dci).getPositiveValue());
-                    baseSelect.setMaxCRLNumber(((DERInteger)getExtensionValue(crl, CRL_NUMBER)).getPositiveValue().subtract(BigInteger.valueOf(1)));
+                    baseSelect.setMinCRLNumber(((ASN1Integer)dci).getPositiveValue());
+                    baseSelect.setMaxCRLNumber(((ASN1Integer)getExtensionValue(crl, CRL_NUMBER)).getPositiveValue().subtract(BigInteger.valueOf(1)));
                     
                     boolean  foundBase = false;
                     Iterator it  = findCRLs(baseSelect, paramsPKIX.getCertStores()).iterator();

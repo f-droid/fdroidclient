@@ -13,7 +13,6 @@ import org.spongycastle.util.Arrays;
 /**
  * This class implements an ASN.1 encoded GMSS public key. The ASN.1 definition
  * of this structure is:
- * <p/>
  * <pre>
  *  GMSSPublicKey        ::= SEQUENCE{
  *      version         INTEGER

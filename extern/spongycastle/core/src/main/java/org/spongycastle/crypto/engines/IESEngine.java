@@ -18,9 +18,10 @@ import org.spongycastle.crypto.params.IESParameters;
 import org.spongycastle.crypto.params.IESWithCipherParameters;
 import org.spongycastle.crypto.params.KDFParameters;
 import org.spongycastle.crypto.params.KeyParameter;
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.util.Arrays;
 import org.spongycastle.util.BigIntegers;
+import org.spongycastle.util.Pack;
 
 /**
  * Support class for constructing integrated encryption ciphers
@@ -42,7 +43,7 @@ public class IESEngine
     byte[] V;
     private EphemeralKeyPairGenerator keyPairGenerator;
     private KeyParser keyParser;
-
+    private byte[] IV;
 
     /**
      * set up for use with stream mode, where the key derivation function
@@ -87,26 +88,26 @@ public class IESEngine
         this.cipher = cipher;
     }
 
-
     /**
      * Initialise the encryptor.
      *
      * @param forEncryption whether or not this is encryption/decryption.
      * @param privParam     our private key parameters
      * @param pubParam      the recipient's/sender's public key parameters
-     * @param param         encoding and derivation parameters.
+     * @param params        encoding and derivation parameters, may be wrapped to include an IV for an underlying block cipher.
      */
     public void init(
         boolean forEncryption,
         CipherParameters privParam,
         CipherParameters pubParam,
-        CipherParameters param)
+        CipherParameters params)
     {
         this.forEncryption = forEncryption;
         this.privParam = privParam;
         this.pubParam = pubParam;
-        this.param = (IESParameters)param;
         this.V = new byte[0];
+
+        extractParams(params);
     }
 
 
@@ -114,30 +115,46 @@ public class IESEngine
      * Initialise the encryptor.
      *
      * @param publicKey      the recipient's/sender's public key parameters
-     * @param params         encoding and derivation parameters.
+     * @param params         encoding and derivation parameters, may be wrapped to include an IV for an underlying block cipher.
      * @param ephemeralKeyPairGenerator             the ephemeral key pair generator to use.
      */
     public void init(AsymmetricKeyParameter publicKey, CipherParameters params, EphemeralKeyPairGenerator ephemeralKeyPairGenerator)
     {
         this.forEncryption = true;
         this.pubParam = publicKey;
-        this.param = (IESParameters)params;
         this.keyPairGenerator = ephemeralKeyPairGenerator;
+
+        extractParams(params);
     }
 
     /**
      * Initialise the encryptor.
      *
      * @param privateKey      the recipient's private key.
-     * @param params          encoding and derivation parameters.
+     * @param params          encoding and derivation parameters, may be wrapped to include an IV for an underlying block cipher.
      * @param publicKeyParser the parser for reading the ephemeral public key.
      */
     public void init(AsymmetricKeyParameter privateKey, CipherParameters params, KeyParser publicKeyParser)
     {
         this.forEncryption = false;
         this.privParam = privateKey;
-        this.param = (IESParameters)params;
         this.keyParser = publicKeyParser;
+
+        extractParams(params);
+    }
+
+    private void extractParams(CipherParameters params)
+    {
+        if (params instanceof ParametersWithIV)
+        {
+            this.IV = ((ParametersWithIV)params).getIV();
+            this.param = (IESParameters)((ParametersWithIV)params).getParameters();
+        }
+        else
+        {
+            this.IV = null;
+            this.param = (IESParameters)params;
+        }
     }
 
     public BufferedBlockCipher getCipher()
@@ -198,7 +215,16 @@ public class IESEngine
             System.arraycopy(K, 0, K1, 0, K1.length);
             System.arraycopy(K, K1.length, K2, 0, K2.length);
 
-            cipher.init(true, new KeyParameter(K1));
+            // If iv provided use it to initialise the cipher
+            if (IV != null)
+            {
+                cipher.init(true, new ParametersWithIV(new KeyParameter(K1), IV));
+            }
+            else
+            {
+                cipher.init(true, new KeyParameter(K1));    
+            }
+            
             C = new byte[cipher.getOutputSize(inLen)];
             len = cipher.processBytes(in, inOff, inLen, C, 0);
             len += cipher.doFinal(C, len);
@@ -247,6 +273,12 @@ public class IESEngine
         byte[] M = null, K = null, K1 = null, K2 = null;
         int len;
 
+        // Ensure that the length of the input is greater than the MAC in bytes
+        if (inLen <= (param.getMacKeySize() / 8))
+        {
+            throw new InvalidCipherTextException("Length of input must be greater than the MAC");
+        }
+
         if (cipher == null)
         {
             // Streaming mode.
@@ -287,7 +319,15 @@ public class IESEngine
             System.arraycopy(K, 0, K1, 0, K1.length);
             System.arraycopy(K, K1.length, K2, 0, K2.length);
 
-            cipher.init(false, new KeyParameter(K1));
+            // If IV provide use it to initialize the cipher
+            if (IV != null)
+            {
+                cipher.init(false, new ParametersWithIV(new KeyParameter(K1), IV));
+            }
+            else
+            {
+                cipher.init(false, new KeyParameter(K1));    
+            }
 
             M = new byte[cipher.getOutputSize(inLen - V.length - mac.getMacSize())];
             len = cipher.processBytes(in_enc, inOff + V.length, inLen - V.length - mac.getMacSize(), M, 0);

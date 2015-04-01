@@ -16,7 +16,7 @@ import org.spongycastle.crypto.Digest;
 import org.spongycastle.crypto.DigestDerivationFunction;
 import org.spongycastle.crypto.generators.KDF2BytesGenerator;
 import org.spongycastle.crypto.params.KDFParameters;
-import org.spongycastle.crypto.util.Pack;
+import org.spongycastle.util.Pack;
 
 /**
  * X9.63 based key derivation function for ECDH CMS.

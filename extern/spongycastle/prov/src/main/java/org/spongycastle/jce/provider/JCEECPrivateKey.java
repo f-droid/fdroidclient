@@ -13,13 +13,12 @@ import java.util.Enumeration;
 
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Encoding;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.DERBitString;
-import org.spongycastle.asn1.DERInteger;
 import org.spongycastle.asn1.DERNull;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import org.spongycastle.asn1.cryptopro.ECGOST3410NamedCurves;
 import org.spongycastle.asn1.pkcs.PrivateKeyInfo;
@@ -250,9 +249,9 @@ public class JCEECPrivateKey
         }
 
         ASN1Encodable privKey = info.parsePrivateKey();
-        if (privKey instanceof DERInteger)
+        if (privKey instanceof ASN1Integer)
         {
-            DERInteger          derD = DERInteger.getInstance(privKey);
+            ASN1Integer          derD = ASN1Integer.getInstance(privKey);
 
             this.d = derD.getValue();
         }
@@ -292,10 +291,10 @@ public class JCEECPrivateKey
 
         if (ecSpec instanceof ECNamedCurveSpec)
         {
-            DERObjectIdentifier curveOid = ECUtil.getNamedCurveOid(((ECNamedCurveSpec)ecSpec).getName());
+            ASN1ObjectIdentifier curveOid = ECUtil.getNamedCurveOid(((ECNamedCurveSpec)ecSpec).getName());
             if (curveOid == null)  // guess it's the OID
             {
-                curveOid = new DERObjectIdentifier(((ECNamedCurveSpec)ecSpec).getName());
+                curveOid = new ASN1ObjectIdentifier(((ECNamedCurveSpec)ecSpec).getName());
             }
             params = new X962Parameters(curveOid);
         }

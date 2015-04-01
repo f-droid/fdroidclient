@@ -7,7 +7,6 @@ import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERTaggedObject;
 import org.spongycastle.asn1.x509.Extensions;
@@ -49,7 +48,7 @@ public class ResponseData
      */
     public ResponseData(
         ResponderID         responderID,
-        DERGeneralizedTime  producedAt,
+        ASN1GeneralizedTime  producedAt,
         ASN1Sequence        responses,
         X509Extensions responseExtensions)
     {

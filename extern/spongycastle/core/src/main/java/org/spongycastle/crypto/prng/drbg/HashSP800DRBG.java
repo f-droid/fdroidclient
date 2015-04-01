@@ -88,6 +88,16 @@ public class HashSP800DRBG
     }
 
     /**
+     * Return the block size (in bits) of the DRBG.
+     *
+     * @return the number of bits produced on each internal round of the DRBG.
+     */
+    public int getBlockSize()
+    {
+        return _digest.getDigestSize() * 8;
+    }
+
+    /**
      * Populate a passed in array with random data.
      *
      * @param output output array for generated bits.
@@ -226,12 +236,17 @@ public class HashSP800DRBG
     
     private byte[] hash(byte[] input)
     {
-        _digest.update(input, 0, input.length);
         byte[] hash = new byte[_digest.getDigestSize()];
-        _digest.doFinal(hash, 0);
+        doHash(input, hash);
         return hash;
     }
-    
+
+    private void doHash(byte[] input, byte[] output)
+    {
+        _digest.update(input, 0, input.length);
+        _digest.doFinal(output, 0);
+    }
+
     // 1. m = [requested_number_of_bits / outlen]
     // 2. data = V.
     // 3. W = the Null string.
@@ -251,10 +266,10 @@ public class HashSP800DRBG
 
         byte[] W = new byte[lengthInBits / 8];
 
-        byte[] dig;
+        byte[] dig = new byte[_digest.getDigestSize()];
         for (int i = 0; i <= m; i++)
         {
-            dig = hash(data);
+            doHash(data, dig);
 
             int bytesToCopy = ((W.length - i * dig.length) > dig.length)
                     ? dig.length

@@ -16,7 +16,7 @@ import org.spongycastle.asn1.x509.Certificate;
  * ISIS-MTT-Optional: The certificate requested by the client by inserting the
  * RetrieveIfAllowed extension in the request, will be returned in this
  * extension.
- * <p/>
+ * <p>
  * ISIS-MTT-SigG: The signature act allows publishing certificates only then,
  * when the certificate owner gives his explicit permission. Accordingly, there
  * may be �nondownloadable� certificates, about which the responder must provide
@@ -36,7 +36,6 @@ import org.spongycastle.asn1.x509.Certificate;
  * Clients requesting RetrieveIfAllowed MUST be able to handle these cases. If
  * any of the OCTET STRING options is used, it MUST contain the DER encoding of
  * the requested certificate.
- * <p/>
  * <pre>
  *            RequestedCertificate ::= CHOICE {
  *              Certificate Certificate,
@@ -105,7 +104,7 @@ public class RequestedCertificate
 
     /**
      * Constructor from a given details.
-     * <p/>
+     * <p>
      * Only one parameter can be given. All other must be <code>null</code>.
      *
      * @param certificate          Given as Certificate
@@ -155,9 +154,8 @@ public class RequestedCertificate
     
     /**
      * Produce an object suitable for an ASN1OutputStream.
-     * <p/>
+     * <p>
      * Returns:
-     * <p/>
      * <pre>
      *            RequestedCertificate ::= CHOICE {
      *              Certificate Certificate,

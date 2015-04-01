@@ -1,6 +1,6 @@
 package org.spongycastle.tsp;
 
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.tsp.Accuracy;
 
 public class GenTimeAccuracy
@@ -28,7 +28,7 @@ public class GenTimeAccuracy
     }
 
     private int getTimeComponent(
-        DERInteger time)
+        ASN1Integer time)
     {
         if (time != null)
         {

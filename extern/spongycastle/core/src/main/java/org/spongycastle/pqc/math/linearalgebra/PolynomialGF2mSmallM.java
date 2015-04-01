@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 /**
  * This class describes operations with polynomials from the ring R =
- * GF(2^m)[X], where 2 <= m <=31.
+ * GF(2^m)[X], where 2 &lt;= m &lt;=31.
  *
  * @see GF2mField
  * @see PolynomialRingGF2m
@@ -948,10 +948,10 @@ public class PolynomialGF2mSmallM
 
     /**
      * Compute a polynomial pair (a,b) from this polynomial and the given
-     * polynomial g with the property b*this = a mod g and deg(a)<=deg(g)/2.
+     * polynomial g with the property b*this = a mod g and deg(a)&lt;=deg(g)/2.
      *
      * @param g the reduction polynomial
-     * @return PolynomialGF2mSmallM[] {a,b} with b*this = a mod g and deg(a)<=
+     * @return PolynomialGF2mSmallM[] {a,b} with b*this = a mod g and deg(a)&lt;=
      *         deg(g)/2
      */
     public PolynomialGF2mSmallM[] modPolynomialToFracton(PolynomialGF2mSmallM g)
@@ -978,7 +978,7 @@ public class PolynomialGF2mSmallM
 
     /**
      * checks if given object is equal to this polynomial.
-     * <p/>
+     * <p>
      * The method returns false whenever the given object is not polynomial over
      * GF(2^m).
      *
@@ -1045,7 +1045,6 @@ public class PolynomialGF2mSmallM
 
     /**
      * Returns a human readable form of the polynomial.
-     * <p/>
      *
      * @return a human readable form of the polynomial.
      */

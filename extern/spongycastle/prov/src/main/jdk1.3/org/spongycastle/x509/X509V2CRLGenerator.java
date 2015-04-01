@@ -24,7 +24,6 @@ import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.DERBitString;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.asn1.x509.CertificateList;
@@ -35,7 +34,6 @@ import org.spongycastle.asn1.x509.V2TBSCertListGenerator;
 import org.spongycastle.asn1.x509.X509Extensions;
 import org.spongycastle.asn1.x509.X509ExtensionsGenerator;
 import org.spongycastle.asn1.x509.X509Name;
-import org.spongycastle.jce.X509Principal;
 import org.spongycastle.jce.provider.X509CRLObject;
 
 /**
@@ -45,7 +43,7 @@ import org.spongycastle.jce.provider.X509CRLObject;
 public class X509V2CRLGenerator
 {
     private V2TBSCertListGenerator      tbsGen;
-    private DERObjectIdentifier         sigOID;
+    private ASN1ObjectIdentifier         sigOID;
     private AlgorithmIdentifier         sigAlgId;
     private String                      signatureAlgorithm;
     private X509ExtensionsGenerator     extGenerator;
@@ -178,14 +176,14 @@ public class X509V2CRLGenerator
         boolean         critical,
         ASN1Encodable    value)
     {
-        this.addExtension(new DERObjectIdentifier(oid), critical, value);
+        this.addExtension(new ASN1ObjectIdentifier(oid), critical, value);
     }
 
     /**
      * add a given extension field for the standard extensions tag (tag 0)
      */
     public void addExtension(
-        DERObjectIdentifier oid,
+        ASN1ObjectIdentifier oid,
         boolean             critical,
         ASN1Encodable value)
     {
@@ -200,14 +198,14 @@ public class X509V2CRLGenerator
         boolean         critical,
         byte[]          value)
     {
-        this.addExtension(new DERObjectIdentifier(oid), critical, value);
+        this.addExtension(new ASN1ObjectIdentifier(oid), critical, value);
     }
 
     /**
      * add a given extension field for the standard extensions tag (tag 0)
      */
     public void addExtension(
-        DERObjectIdentifier oid,
+        ASN1ObjectIdentifier oid,
         boolean             critical,
         byte[]              value)
     {

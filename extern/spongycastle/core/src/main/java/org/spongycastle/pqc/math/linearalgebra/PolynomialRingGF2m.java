@@ -2,7 +2,7 @@ package org.spongycastle.pqc.math.linearalgebra;
 
 /**
  * This class represents polynomial rings <tt>GF(2^m)[X]/p(X)</tt> for
- * <tt>m&lt<;32</tt>. If <tt>p(X)</tt> is irreducible, the polynomial ring
+ * <tt>m&lt;32</tt>. If <tt>p(X)</tt> is irreducible, the polynomial ring
  * is in fact an extension field of <tt>GF(2^m)</tt>.
  */
 public class PolynomialRingGF2m

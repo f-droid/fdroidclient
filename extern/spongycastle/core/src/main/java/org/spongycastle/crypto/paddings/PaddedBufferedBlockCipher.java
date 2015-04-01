@@ -125,7 +125,7 @@ public class PaddedBufferedBlockCipher
 
         if (leftOver == 0)
         {
-            return total - buf.length;
+            return Math.max(0, total - buf.length);
         }
 
         return total - leftOver;

@@ -12,11 +12,10 @@ import org.spongycastle.asn1.x500.X500Name;
 
 /**
  * Parsing and encoding of a <i>CertificateRequest</i> struct from RFC 4346.
- * <p/>
  * <pre>
  * struct {
- *     ClientCertificateType certificate_types<1..2^8-1>;
- *     DistinguishedName certificate_authorities<3..2^16-1>;
+ *     ClientCertificateType certificate_types&lt;1..2^8-1&gt;;
+ *     DistinguishedName certificate_authorities&lt;3..2^16-1&gt;;
  * } CertificateRequest;
  * </pre>
  *
@@ -28,11 +27,6 @@ public class CertificateRequest
     protected short[] certificateTypes;
     protected Vector supportedSignatureAlgorithms;
     protected Vector certificateAuthorities;
-
-    /*
-     * TODO RFC 5264 7.4.4 A list of the hash/signature algorithm pairs that the server is able to
-     * verify, listed in descending order of preference.
-     */
 
     /**
      * @param certificateTypes       see {@link ClientCertificateType} for valid constants.
@@ -47,7 +41,7 @@ public class CertificateRequest
 
     /**
      * @return an array of certificate types
-     * @see {@link ClientCertificateType}
+     * @see ClientCertificateType
      */
     public short[] getCertificateTypes()
     {
@@ -108,7 +102,7 @@ public class CertificateRequest
                 X500Name certificateAuthority = (X500Name)certificateAuthorities.elementAt(i);
                 byte[] derEncoding = certificateAuthority.getEncoded(ASN1Encoding.DER);
                 derEncodings.addElement(derEncoding);
-                totalLength += derEncoding.length;
+                totalLength += derEncoding.length + 2;
             }
 
             TlsUtils.checkUint16(totalLength);
@@ -116,8 +110,8 @@ public class CertificateRequest
 
             for (int i = 0; i < derEncodings.size(); ++i)
             {
-                byte[] encDN = (byte[])derEncodings.elementAt(i);
-                output.write(encDN);
+                byte[] derEncoding = (byte[])derEncodings.elementAt(i);
+                TlsUtils.writeOpaque16(derEncoding, output);
             }
         }
     }

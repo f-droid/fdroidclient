@@ -12,7 +12,7 @@ import org.spongycastle.pqc.crypto.rainbow.util.GF2Field;
  * It implements the sign and verify functions for the Rainbow Signature Scheme.
  * Here the message, which has to be signed, is updated. The use of
  * different hash functions is possible.
- * <p/>
+ * <p>
  * Detailed information about the signature and the verify-method is to be found
  * in the paper of Jintai Ding, Dieter Schmidt: Rainbow, a New Multivariable
  * Polynomial Signature Scheme. ACNS 2005: 164-175
@@ -96,10 +96,10 @@ public class RainbowSigner
     /**
      * This function signs the message that has been updated, making use of the
      * private key.
-     * <p/>
+     * <p>
      * For computing the signature, L1 and L2 are needed, as well as LES should
      * be solved for each layer in order to find the Oil-variables in the layer.
-     * <p/>
+     * <p>
      * The Vinegar-variables of the first layer are random generated.
      *
      * @param message the message

@@ -3,9 +3,9 @@ package org.spongycastle.pqc.math.linearalgebra;
 /**
  * This class describes operations with polynomials over finite field GF(2), i e
  * polynomial ring R = GF(2)[X]. All operations are defined only for polynomials
- * with degree <=32. For the polynomial representation the map f: R->Z,
- * poly(X)->poly(2) is used, where integers have the binary representation. For
- * example: X^7+X^3+X+1 -> (00...0010001011)=139 Also for polynomials type
+ * with degree &lt;=32. For the polynomial representation the map f: R-&gt;Z,
+ * poly(X)-&gt;poly(2) is used, where integers have the binary representation. For
+ * example: X^7+X^3+X+1 -&gt; (00...0010001011)=139 Also for polynomials type
  * Integer is used.
  *
  * @see GF2mField

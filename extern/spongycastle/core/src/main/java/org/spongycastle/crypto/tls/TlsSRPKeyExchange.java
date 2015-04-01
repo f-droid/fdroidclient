@@ -163,7 +163,7 @@ public class TlsSRPKeyExchange extends AbstractTlsKeyExchange
             throw new TlsFatalAlert(AlertDescription.illegal_parameter);
         }
 
-        this.srpClient.init(N, g, new SHA1Digest(), context.getSecureRandom());
+        this.srpClient.init(N, g, TlsUtils.createHash(HashAlgorithm.sha1), context.getSecureRandom());
     }
 
     public void validateCertificateRequest(CertificateRequest certificateRequest) throws IOException

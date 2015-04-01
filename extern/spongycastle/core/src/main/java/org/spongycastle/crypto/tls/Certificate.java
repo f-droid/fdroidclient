@@ -11,12 +11,11 @@ import org.spongycastle.asn1.ASN1Primitive;
 
 /**
  * Parsing and encoding of a <i>Certificate</i> struct from RFC 4346.
- * <p/>
  * <pre>
- * opaque ASN.1Cert<2^24-1>;
+ * opaque ASN.1Cert&lt;2^24-1&gt;;
  *
  * struct {
- *     ASN.1Cert certificate_list<0..2^24-1>;
+ *     ASN.1Cert certificate_list&lt;0..2^24-1&gt;;
  * } Certificate;
  * </pre>
  *

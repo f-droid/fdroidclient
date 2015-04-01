@@ -4,6 +4,7 @@ import org.spongycastle.crypto.BlockCipher;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
 import org.spongycastle.crypto.InvalidCipherTextException;
+import org.spongycastle.crypto.OutputLengthException;
 import org.spongycastle.crypto.modes.gcm.GCMExponentiator;
 import org.spongycastle.crypto.modes.gcm.GCMMultiplier;
 import org.spongycastle.crypto.modes.gcm.Tables1kGCMExponentiator;
@@ -11,8 +12,8 @@ import org.spongycastle.crypto.modes.gcm.Tables8kGCMMultiplier;
 import org.spongycastle.crypto.params.AEADParameters;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.crypto.params.ParametersWithIV;
-import org.spongycastle.crypto.util.Pack;
 import org.spongycastle.util.Arrays;
+import org.spongycastle.util.Pack;
 
 /**
  * Implements the Galois/Counter mode (GCM) detailed in
@@ -23,7 +24,7 @@ public class GCMBlockCipher
 {
     private static final int BLOCK_SIZE = 16;
 
-    // not final due to a compiler bug 
+    // not final due to a compiler bug
     private BlockCipher   cipher;
     private GCMMultiplier multiplier;
     private GCMExponentiator exp;
@@ -81,6 +82,10 @@ public class GCMBlockCipher
         return cipher.getAlgorithmName() + "/GCM";
     }
 
+    /**
+     * NOTE: MAC sizes from 32 bits to 128 bits (must be a multiple of 8) are supported. The default is 128 bits.
+     * Sizes less than 96 are not recommended, but are supported for specialized applications.
+     */
     public void init(boolean forEncryption, CipherParameters params)
         throws IllegalArgumentException
     {
@@ -97,12 +102,12 @@ public class GCMBlockCipher
             initialAssociatedText = param.getAssociatedText();
 
             int macSizeBits = param.getMacSize();
-            if (macSizeBits < 96 || macSizeBits > 128 || macSizeBits % 8 != 0)
+            if (macSizeBits < 32 || macSizeBits > 128 || macSizeBits % 8 != 0)
             {
                 throw new IllegalArgumentException("Invalid value for MAC size: " + macSizeBits);
             }
 
-            macSize = macSizeBits / 8; 
+            macSize = macSizeBits / 8;
             keyParam = param.getKey();
         }
         else if (params instanceof ParametersWithIV)
@@ -119,7 +124,7 @@ public class GCMBlockCipher
             throw new IllegalArgumentException("invalid parameters passed to GCM");
         }
 
-        int bufLength = forEncryption ? BLOCK_SIZE : (BLOCK_SIZE + macSize); 
+        int bufLength = forEncryption ? BLOCK_SIZE : (BLOCK_SIZE + macSize);
         this.bufBlock = new byte[bufLength];
 
         if (nonce == null || nonce.length < 1)
@@ -127,9 +132,7 @@ public class GCMBlockCipher
             throw new IllegalArgumentException("IV must be at least 1 byte");
         }
 
-        // TODO This should be configurable by init parameters
-        // (but must be 16 if nonce length not 12) (BLOCK_SIZE?)
-//        this.tagLength = 16;
+        // TODO Restrict macSize to 16 if nonce length not 12?
 
         // Cipher always used in forward mode
         // if keyParam is null we're reusing the last key.
@@ -143,6 +146,10 @@ public class GCMBlockCipher
             // GCMMultiplier tables don't change unless the key changes (and are expensive to init)
             multiplier.init(H);
             exp = null;
+        }
+        else if (this.H == null)
+        {
+            throw new IllegalArgumentException("Key must be specified in initial init");
         }
 
         this.J0 = new byte[BLOCK_SIZE];
@@ -188,7 +195,7 @@ public class GCMBlockCipher
 
         if (forEncryption)
         {
-             return totalData + macSize;
+            return totalData + macSize;
         }
 
         return totalData < macSize ? 0 : totalData - macSize;
@@ -271,6 +278,10 @@ public class GCMBlockCipher
     public int processBytes(byte[] in, int inOff, int len, byte[] out, int outOff)
         throws DataLengthException
     {
+        if (in.length < (inOff + len))
+        {
+            throw new DataLengthException("Input buffer too short");
+        }
         int resultLen = 0;
 
         for (int i = 0; i < len; ++i)
@@ -288,6 +299,10 @@ public class GCMBlockCipher
 
     private void outputBlock(byte[] output, int offset)
     {
+        if (output.length < (offset + BLOCK_SIZE))
+        {
+            throw new OutputLengthException("Output buffer too short");
+        }
         if (totalLength == 0)
         {
             initCipher();
@@ -324,6 +339,10 @@ public class GCMBlockCipher
 
         if (extra > 0)
         {
+            if (out.length < (outOff + extra))
+            {
+                throw new OutputLengthException("Output buffer too short");
+            }
             gCTRPartial(bufBlock, 0, extra, out, outOff);
         }
 
@@ -376,7 +395,6 @@ public class GCMBlockCipher
 
         gHASHBlock(S, X);
 
-        // TODO Fix this if tagLength becomes configurable
         // T = MSBt(GCTRk(J0,S))
         byte[] tag = new byte[BLOCK_SIZE];
         cipher.processBlock(J0, 0, tag, 0);
@@ -390,6 +408,10 @@ public class GCMBlockCipher
 
         if (forEncryption)
         {
+            if (out.length < (outOff + extra + macSize))
+            {
+                throw new OutputLengthException("Output buffer too short");
+            }
             // Append T to the message
             System.arraycopy(macBlock, 0, out, outOff + bufOff, macSize);
             resultLen += macSize;

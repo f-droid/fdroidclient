@@ -6,6 +6,7 @@ import org.spongycastle.crypto.KeyGenerationParameters;
 import org.spongycastle.crypto.params.RSAKeyGenerationParameters;
 import org.spongycastle.crypto.params.RSAKeyParameters;
 import org.spongycastle.crypto.params.RSAPrivateCrtKeyParameters;
+import org.spongycastle.math.ec.WNafUtil;
 
 import java.math.BigInteger;
 
@@ -19,83 +20,43 @@ public class RSAKeyPairGenerator
 
     private RSAKeyGenerationParameters param;
 
-    public void init(
-        KeyGenerationParameters param)
+    public void init(KeyGenerationParameters param)
     {
         this.param = (RSAKeyGenerationParameters)param;
     }
 
     public AsymmetricCipherKeyPair generateKeyPair()
     {
-        BigInteger    p, q, n, d, e, pSub1, qSub1, phi;
+        BigInteger p, q, n, d, e, pSub1, qSub1, phi;
 
         //
         // p and q values should have a length of half the strength in bits
         //
         int strength = param.getStrength();
-        int pbitlength = (strength + 1) / 2;
-        int qbitlength = strength - pbitlength;
+        int qBitlength = strength >>> 1;
+        int pBitlength = strength - qBitlength;
         int mindiffbits = strength / 3;
+        int minWeight = strength >>> 2;
 
         e = param.getPublicExponent();
 
         // TODO Consider generating safe primes for p, q (see DHParametersHelper.generateSafePrimes)
         // (then p-1 and q-1 will not consist of only small factors - see "Pollard's algorithm")
 
-        //
-        // generate p, prime and (p-1) relatively prime to e
-        //
-        for (;;)
-        {
-            p = new BigInteger(pbitlength, 1, param.getRandom());
-            
-            if (p.mod(e).equals(ONE))
-            {
-                continue;
-            }
-            
-            if (!p.isProbablePrime(param.getCertainty()))
-            {
-                continue;
-            }
-            
-            if (e.gcd(p.subtract(ONE)).equals(ONE)) 
-            {
-                break;
-            }
-        }
+        p = chooseRandomPrime(pBitlength, e);
 
         //
         // generate a modulus of the required length
         //
         for (;;)
         {
-            // generate q, prime and (q-1) relatively prime to e,
-            // and not equal to p
-            //
-            for (;;)
-            {
-                q = new BigInteger(qbitlength, 1, param.getRandom());
+            q = chooseRandomPrime(qBitlength, e);
 
-                if (q.subtract(p).abs().bitLength() < mindiffbits)
-                {
-                    continue;
-                }
-                
-                if (q.mod(e).equals(ONE))
-                {
-                    continue;
-                }
-            
-                if (!q.isProbablePrime(param.getCertainty()))
-                {
-                    continue;
-                }
-            
-                if (e.gcd(q.subtract(ONE)).equals(ONE)) 
-                {
-                    break;
-                } 
+            // p and q should not be too close together (or equal!)
+            BigInteger diff = q.subtract(p).abs();
+            if (diff.bitLength() < mindiffbits)
+            {
+                continue;
             }
 
             //
@@ -103,16 +64,29 @@ public class RSAKeyPairGenerator
             //
             n = p.multiply(q);
 
-            if (n.bitLength() == param.getStrength()) 
+            if (n.bitLength() != strength) 
             {
-                break;
+                //
+                // if we get here our primes aren't big enough, make the largest
+                // of the two p and try again
+                //
+                p = p.max(q);
+                continue;
             } 
 
-            //
-            // if we get here our primes aren't big enough, make the largest
-            // of the two p and try again
-            //
-            p = p.max(q);
+            /*
+             * Require a minimum weight of the NAF representation, since low-weight composites may
+             * be weak against a version of the number-field-sieve for factoring.
+             * 
+             * See "The number field sieve for integers of low weight", Oliver Schirokauer.
+             */
+            if (WNafUtil.getNafWeight(n) < minWeight)
+            {
+                p = chooseRandomPrime(pBitlength, e);
+                continue;
+            }
+
+            break;
         }
 
         if (p.compareTo(q) < 0)
@@ -134,14 +108,46 @@ public class RSAKeyPairGenerator
         //
         // calculate the CRT factors
         //
-        BigInteger    dP, dQ, qInv;
+        BigInteger dP, dQ, qInv;
 
         dP = d.remainder(pSub1);
         dQ = d.remainder(qSub1);
         qInv = q.modInverse(p);
 
         return new AsymmetricCipherKeyPair(
-                new RSAKeyParameters(false, n, e),
-                new RSAPrivateCrtKeyParameters(n, e, d, p, q, dP, dQ, qInv));
+            new RSAKeyParameters(false, n, e),
+            new RSAPrivateCrtKeyParameters(n, e, d, p, q, dP, dQ, qInv));
+    }
+
+    /**
+     * Choose a random prime value for use with RSA
+     * 
+     * @param bitlength the bit-length of the returned prime
+     * @param e the RSA public exponent
+     * @return a prime p, with (p-1) relatively prime to e
+     */
+    protected BigInteger chooseRandomPrime(int bitlength, BigInteger e)
+    {
+        for (;;)
+        {
+            BigInteger p = new BigInteger(bitlength, 1, param.getRandom());
+            
+            if (p.mod(e).equals(ONE))
+            {
+                continue;
+            }
+            
+            if (!p.isProbablePrime(param.getCertainty()))
+            {
+                continue;
+            }
+
+            if (!e.gcd(p.subtract(ONE)).equals(ONE)) 
+            {
+                continue;
+            }
+            
+            return p;
+        }
     }
 }

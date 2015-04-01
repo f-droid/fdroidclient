@@ -39,8 +39,8 @@ public class BasicOCSPRespBuilder
     {
         CertificateID         certId;
         CertStatus            certStatus;
-        DERGeneralizedTime    thisUpdate;
-        DERGeneralizedTime    nextUpdate;
+        ASN1GeneralizedTime   thisUpdate;
+        ASN1GeneralizedTime   nextUpdate;
         Extensions        extensions;
 
         public ResponseObject(

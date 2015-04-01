@@ -8,7 +8,7 @@ import java.security.SignatureException;
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Null;
 import org.spongycastle.asn1.DERNull;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import org.spongycastle.asn1.nist.NISTObjectIdentifiers;
 import org.spongycastle.asn1.oiw.OIWObjectIdentifiers;
@@ -75,7 +75,7 @@ class X509SignatureUtil
      * representations rather the the algorithm identifier (if possible).
      */
     private static String getDigestAlgName(
-        DERObjectIdentifier digestAlgOID)
+        ASN1ObjectIdentifier digestAlgOID)
     {
         if (PKCSObjectIdentifiers.md5.equals(digestAlgOID))
         {

@@ -12,7 +12,7 @@ import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.DERBitString;
 import org.spongycastle.asn1.DERNull;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 import org.spongycastle.asn1.cryptopro.ECGOST3410NamedCurves;
@@ -320,11 +320,11 @@ public class BCECGOST3410PublicKey
             X962Parameters          params = null;
             if (ecSpec instanceof ECNamedCurveParameterSpec)
             {
-                DERObjectIdentifier curveOid = ECUtil.getNamedCurveOid(((ECNamedCurveParameterSpec)ecSpec).getName());
+                ASN1ObjectIdentifier curveOid = ECUtil.getNamedCurveOid(((ECNamedCurveParameterSpec)ecSpec).getName());
 
                 if (curveOid == null)
                 {
-                    curveOid = new DERObjectIdentifier(((ECNamedCurveParameterSpec)ecSpec).getName());
+                    curveOid = new ASN1ObjectIdentifier(((ECNamedCurveParameterSpec)ecSpec).getName());
                 }
                 params = new X962Parameters(curveOid);
             }

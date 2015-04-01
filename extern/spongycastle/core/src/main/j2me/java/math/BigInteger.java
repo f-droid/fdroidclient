@@ -1460,11 +1460,11 @@ public class BigInteger
                 bitsCorrect <<= 1;
             }
             while (bitsCorrect < pow);
+        }
 
-            if (x.sign < 0)
-            {
-                x = x.add(m);
-            }
+        if (x.sign < 0)
+        {
+            x = x.add(m);
         }
 
         return x;

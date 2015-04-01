@@ -68,7 +68,7 @@ public class RC4Engine implements StreamCipher
         return (byte)(in ^ engineState[(engineState[x] + engineState[y]) & 0xff]);
     }
 
-    public void processBytes(
+    public int processBytes(
         byte[]     in, 
         int     inOff, 
         int     len, 
@@ -99,6 +99,8 @@ public class RC4Engine implements StreamCipher
             out[i+outOff] = (byte)(in[i + inOff]
                     ^ engineState[(engineState[x] + engineState[y]) & 0xff]);
         }
+
+        return len;
     }
 
     public void reset()

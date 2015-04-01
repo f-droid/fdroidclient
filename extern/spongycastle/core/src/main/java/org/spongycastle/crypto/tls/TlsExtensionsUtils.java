@@ -9,6 +9,7 @@ import org.spongycastle.util.Integers;
 
 public class TlsExtensionsUtils
 {
+    public static final Integer EXT_encrypt_then_mac = Integers.valueOf(ExtensionType.encrypt_then_mac);
     public static final Integer EXT_heartbeat = Integers.valueOf(ExtensionType.heartbeat);
     public static final Integer EXT_max_fragment_length = Integers.valueOf(ExtensionType.max_fragment_length);
     public static final Integer EXT_server_name = Integers.valueOf(ExtensionType.server_name);
@@ -18,6 +19,11 @@ public class TlsExtensionsUtils
     public static Hashtable ensureExtensionsInitialised(Hashtable extensions)
     {
         return extensions == null ? new Hashtable() : extensions;
+    }
+
+    public static void addEncryptThenMACExtension(Hashtable extensions)
+    {
+        extensions.put(EXT_encrypt_then_mac, createEncryptThenMACExtension());
     }
 
     public static void addHeartbeatExtension(Hashtable extensions, HeartbeatExtension heartbeatExtension)
@@ -77,6 +83,12 @@ public class TlsExtensionsUtils
         return extensionData == null ? null : readStatusRequestExtension(extensionData);
     }
 
+    public static boolean hasEncryptThenMACExtension(Hashtable extensions) throws IOException
+    {
+        byte[] extensionData = TlsUtils.getExtensionData(extensions, EXT_encrypt_then_mac);
+        return extensionData == null ? false : readEncryptThenMACExtension(extensionData);
+    }
+
     public static boolean hasTruncatedHMacExtension(Hashtable extensions) throws IOException
     {
         byte[] extensionData = TlsUtils.getExtensionData(extensions, EXT_truncated_hmac);
@@ -86,6 +98,11 @@ public class TlsExtensionsUtils
     public static byte[] createEmptyExtensionData()
     {
         return TlsUtils.EMPTY_BYTES;
+    }
+
+    public static byte[] createEncryptThenMACExtension()
+    {
+        return createEmptyExtensionData();
     }
 
     public static byte[] createHeartbeatExtension(HeartbeatExtension heartbeatExtension)
@@ -147,6 +164,26 @@ public class TlsExtensionsUtils
     public static byte[] createTruncatedHMacExtension()
     {
         return createEmptyExtensionData();
+    }
+
+    private static boolean readEmptyExtensionData(byte[] extensionData) throws IOException
+    {
+        if (extensionData == null)
+        {
+            throw new IllegalArgumentException("'extensionData' cannot be null");
+        }
+
+        if (extensionData.length != 0)
+        {
+            throw new TlsFatalAlert(AlertDescription.illegal_parameter);
+        }
+
+        return true;
+    }
+
+    public static boolean readEncryptThenMACExtension(byte[] extensionData) throws IOException
+    {
+        return readEmptyExtensionData(extensionData);
     }
 
     public static HeartbeatExtension readHeartbeatExtension(byte[] extensionData)
@@ -223,18 +260,8 @@ public class TlsExtensionsUtils
         return statusRequest;
     }
 
-    private static boolean readTruncatedHMacExtension(byte[] extensionData) throws IOException
+    public static boolean readTruncatedHMacExtension(byte[] extensionData) throws IOException
     {
-        if (extensionData == null)
-        {
-            throw new IllegalArgumentException("'extensionData' cannot be null");
-        }
-
-        if (extensionData.length != 0)
-        {
-            throw new TlsFatalAlert(AlertDescription.illegal_parameter);
-        }
-
-        return true;
+        return readEmptyExtensionData(extensionData);
     }
 }

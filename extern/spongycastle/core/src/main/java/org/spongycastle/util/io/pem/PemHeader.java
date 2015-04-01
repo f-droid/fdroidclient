@@ -1,10 +1,19 @@
 package org.spongycastle.util.io.pem;
 
+/**
+ * Class representing a PEM header (name, value) pair.
+ */
 public class PemHeader
 {
     private String name;
     private String value;
 
+    /**
+     * Base constructor.
+     *
+     * @param name name of the header property.
+     * @param value value of the header property.
+     */
     public PemHeader(String name, String value)
     {
         this.name = name;

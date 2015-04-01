@@ -5,7 +5,7 @@ import org.spongycastle.util.Arrays;
 
 /**
  * implementation of SHA-3 based on following KeccakNISTInterface.c from http://keccak.noekeon.org/
- * <p/>
+ * <p>
  * Following the naming conventions used in the C source code to enable easy review of the implementation.
  */
 public class SHA3Digest

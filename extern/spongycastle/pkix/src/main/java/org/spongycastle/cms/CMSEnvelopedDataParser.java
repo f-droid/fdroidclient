@@ -78,7 +78,7 @@ public class CMSEnvelopedDataParser
         this.envelopedData = new EnvelopedDataParser((ASN1SequenceParser)_contentInfo.getContent(BERTags.SEQUENCE));
 
         // TODO Validate version?
-        //DERInteger version = this._envelopedData.getVersion();
+        //ASN1Integer version = this._envelopedData.getVersion();
 
         OriginatorInfo info = this.envelopedData.getOriginatorInfo();
 

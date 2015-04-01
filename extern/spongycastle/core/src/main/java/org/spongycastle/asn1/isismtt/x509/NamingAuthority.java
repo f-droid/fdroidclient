@@ -11,7 +11,6 @@ import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1String;
 import org.spongycastle.asn1.ASN1TaggedObject;
 import org.spongycastle.asn1.DERIA5String;
-import org.spongycastle.asn1.DERObjectIdentifier;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.isismtt.ISISMTTObjectIdentifiers;
 import org.spongycastle.asn1.x500.DirectoryString;
@@ -173,27 +172,9 @@ public class NamingAuthority
         return namingAuthorityUrl;
     }
 
-        /**
-     * Constructor from given details.
-     * <p/>
-     * All parameters can be combined.
-     *
-     * @param namingAuthorityId   ObjectIdentifier for naming authority.
-     * @param namingAuthorityUrl  URL for naming authority.
-     * @param namingAuthorityText Textual representation of naming authority.
-         * @deprecated use ASN1ObjectIdentifier method
-     */
-    public NamingAuthority(DERObjectIdentifier namingAuthorityId,
-                           String namingAuthorityUrl, DirectoryString namingAuthorityText)
-    {
-        this.namingAuthorityId = new ASN1ObjectIdentifier(namingAuthorityId.getId());
-        this.namingAuthorityUrl = namingAuthorityUrl;
-        this.namingAuthorityText = namingAuthorityText;
-    }
-
     /**
      * Constructor from given details.
-     * <p/>
+     * <p>
      * All parameters can be combined.
      *
      * @param namingAuthorityId   ObjectIdentifier for naming authority.
@@ -210,9 +191,8 @@ public class NamingAuthority
 
     /**
      * Produce an object suitable for an ASN1OutputStream.
-     * <p/>
+     * <p>
      * Returns:
-     * <p/>
      * <pre>
      *             NamingAuthority ::= SEQUENCE
      *             {

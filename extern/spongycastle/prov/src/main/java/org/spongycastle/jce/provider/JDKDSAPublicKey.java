@@ -11,8 +11,7 @@ import java.security.spec.DSAPublicKeySpec;
 
 import org.spongycastle.asn1.ASN1Encodable;
 import org.spongycastle.asn1.ASN1Encoding;
-import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.DERNull;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.asn1.x509.DSAParameter;
@@ -61,11 +60,11 @@ public class JDKDSAPublicKey
         SubjectPublicKeyInfo    info)
     {
 
-        DERInteger              derY;
+        ASN1Integer              derY;
 
         try
         {
-            derY = (DERInteger)info.parsePublicKey();
+            derY = (ASN1Integer)info.parsePublicKey();
         }
         catch (IOException e)
         {
@@ -103,10 +102,10 @@ public class JDKDSAPublicKey
         {
             if (dsaSpec == null)
             {
-                return new SubjectPublicKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_dsa), new DERInteger(y)).getEncoded(ASN1Encoding.DER);
+                return new SubjectPublicKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_dsa), new ASN1Integer(y)).getEncoded(ASN1Encoding.DER);
             }
 
-            return new SubjectPublicKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_dsa, new DSAParameter(dsaSpec.getP(), dsaSpec.getQ(), dsaSpec.getG())), new DERInteger(y)).getEncoded(ASN1Encoding.DER);
+            return new SubjectPublicKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_dsa, new DSAParameter(dsaSpec.getP(), dsaSpec.getQ(), dsaSpec.getG())), new ASN1Integer(y)).getEncoded(ASN1Encoding.DER);
         }
         catch (IOException e)
         {

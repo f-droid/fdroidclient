@@ -10,22 +10,12 @@ import org.spongycastle.crypto.params.KeyParameter;
  * A class that provides a basic International Data Encryption Algorithm (IDEA) engine.
  * <p>
  * This implementation is based on the "HOWTO: INTERNATIONAL DATA ENCRYPTION ALGORITHM"
- * implementation summary by Fauzan Mirza (F.U.Mirza@sheffield.ac.uk). (baring 1 typo at the
+ * implementation summary by Fauzan Mirza (F.U.Mirza@sheffield.ac.uk). (barring 1 typo at the
  * end of the mulinv function!).
  * <p>
  * It can be found at ftp://ftp.funet.fi/pub/crypt/cryptography/symmetric/idea/
  * <p>
- * Note 1: This algorithm is patented in the USA, Japan, and Europe including
- * at least Austria, France, Germany, Italy, Netherlands, Spain, Sweden, Switzerland
- * and the United Kingdom. Non-commercial use is free, however any commercial
- * products are liable for royalties. Please see
- * <a href="http://www.mediacrypt.com">www.mediacrypt.com</a> for
- * further details. This announcement has been included at the request of
- * the patent holders.
- * <p>
- * Note 2: Due to the requests concerning the above, this algorithm is now only
- * included in the extended Bouncy Castle provider and JCE signed jars. It is
- * not included in the default distributions.
+ * Note: This algorithm was patented in the USA, Japan and Europe. These patents expired in 2011/2012. 
  */
 public class IDEAEngine
     implements BlockCipher

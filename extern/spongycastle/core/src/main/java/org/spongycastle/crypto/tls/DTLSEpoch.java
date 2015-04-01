@@ -2,7 +2,6 @@ package org.spongycastle.crypto.tls;
 
 class DTLSEpoch
 {
-
     private final DTLSReplayWindow replayWindow = new DTLSReplayWindow();
 
     private final int epoch;

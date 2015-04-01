@@ -5,7 +5,6 @@ package org.spongycastle.crypto.tls;
  */
 public class UseSRTPData
 {
-
     private int[] protectionProfiles;
     private byte[] mki;
 
@@ -15,7 +14,6 @@ public class UseSRTPData
      */
     public UseSRTPData(int[] protectionProfiles, byte[] mki)
     {
-
         if (protectionProfiles == null || protectionProfiles.length < 1
             || protectionProfiles.length >= (1 << 15))
         {

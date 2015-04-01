@@ -13,7 +13,9 @@ import org.spongycastle.crypto.params.ParametersWithRandom;
 import org.spongycastle.math.ec.ECAlgorithms;
 import org.spongycastle.math.ec.ECCurve;
 import org.spongycastle.math.ec.ECFieldElement;
+import org.spongycastle.math.ec.ECMultiplier;
 import org.spongycastle.math.ec.ECPoint;
+import org.spongycastle.math.ec.FixedPointCombMultiplier;
 import org.spongycastle.util.Arrays;
 
 /**
@@ -57,9 +59,9 @@ public class DSTU4145Signer
 
     public BigInteger[] generateSignature(byte[] message)
     {
-        ECDomainParameters parameters = key.getParameters();
+        ECDomainParameters ec = key.getParameters();
 
-        ECCurve curve = parameters.getCurve();
+        ECCurve curve = ec.getCurve();
 
         ECFieldElement h = hash2FieldElement(curve, message);
         if (h.isZero())
@@ -67,9 +69,13 @@ public class DSTU4145Signer
             h = curve.fromBigInteger(ONE);
         }
 
-        BigInteger n = parameters.getN();
+        BigInteger n = ec.getN();
         BigInteger e, r, s;
         ECFieldElement Fe, y;
+
+        BigInteger d = ((ECPrivateKeyParameters)key).getD();
+
+        ECMultiplier basePointMultiplier = createBasePointMultiplier();
 
         do
         {
@@ -78,7 +84,7 @@ public class DSTU4145Signer
                 do
                 {
                     e = generateRandomInteger(n, random);
-                    Fe = parameters.getG().multiply(e).normalize().getAffineXCoord();
+                    Fe = basePointMultiplier.multiply(ec.getG(), e).normalize().getAffineXCoord();
                 }
                 while (Fe.isZero());
 
@@ -87,7 +93,7 @@ public class DSTU4145Signer
             }
             while (r.signum() == 0);
 
-            s = r.multiply(((ECPrivateKeyParameters)key).getD()).add(e).mod(n);
+            s = r.multiply(d).add(e).mod(n);
         }
         while (s.signum() == 0);
 
@@ -129,6 +135,11 @@ public class DSTU4145Signer
         return fieldElement2Integer(n, y).compareTo(r) == 0;
     }
 
+    protected ECMultiplier createBasePointMultiplier()
+    {
+        return new FixedPointCombMultiplier();
+    }
+
     /**
      * Generates random integer such, than its bit length is less than that of n
      */
@@ -136,40 +147,24 @@ public class DSTU4145Signer
     {
         return new BigInteger(n.bitLength() - 1, random);
     }
-    
-    private static void reverseBytes(byte[] bytes)
-    {
-        byte tmp;
-        
-        for (int i=0; i<bytes.length/2; i++)
-        {
-            tmp=bytes[i];
-            bytes[i]=bytes[bytes.length-1-i];
-            bytes[bytes.length-1-i]=tmp;
-        }
-    }
 
     private static ECFieldElement hash2FieldElement(ECCurve curve, byte[] hash)
     {
-        byte[] data = Arrays.clone(hash);
-        reverseBytes(data);
-        BigInteger num = new BigInteger(1, data);
-        while (num.bitLength() > curve.getFieldSize())
-        {
-            num = num.clearBit(num.bitLength() - 1);
-        }
-
-        return curve.fromBigInteger(num);
+        byte[] data = Arrays.reverse(hash);
+        return curve.fromBigInteger(truncate(new BigInteger(1, data), curve.getFieldSize()));
     }
 
-    private static BigInteger fieldElement2Integer(BigInteger n, ECFieldElement fieldElement)
+    private static BigInteger fieldElement2Integer(BigInteger n, ECFieldElement fe)
     {
-        BigInteger num = fieldElement.toBigInteger();
-        while (num.bitLength() >= n.bitLength())
-        {
-            num = num.clearBit(num.bitLength() - 1);
-        }
+        return truncate(fe.toBigInteger(), n.bitLength() - 1);
+    }
 
-        return num;
+    private static BigInteger truncate(BigInteger x, int bitLength)
+    {
+        if (x.bitLength() > bitLength)
+        {
+            x = x.mod(ONE.shiftLeft(bitLength));
+        }
+        return x;
     }
 }

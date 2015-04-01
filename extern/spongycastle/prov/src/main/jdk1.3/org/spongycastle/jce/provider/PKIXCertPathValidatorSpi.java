@@ -21,7 +21,7 @@ import java.util.Set;
 import org.spongycastle.jce.X509Principal;
 
 import org.spongycastle.asn1.ASN1Encodable;
-import org.spongycastle.asn1.DERObjectIdentifier;
+import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
 import org.spongycastle.jce.exception.ExtCertPathValidatorException;
 import org.spongycastle.x509.ExtendedPKIXParameters;
@@ -218,7 +218,7 @@ public class PKIXCertPathValidatorSpi
             throw new ExtCertPathValidatorException(
                     "Algorithm identifier of public key of trust anchor could not be read.", e, certPath, -1);
         }
-        DERObjectIdentifier workingPublicKeyAlgorithm = workingAlgId.getObjectId();
+        ASN1ObjectIdentifier workingPublicKeyAlgorithm = workingAlgId.getObjectId();
         ASN1Encodable workingPublicKeyParameters = workingAlgId.getParameters();
 
         //

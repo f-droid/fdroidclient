@@ -7,22 +7,46 @@ import java.security.spec.ECFieldFp;
 import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPoint;
 import java.security.spec.EllipticCurve;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.spongycastle.asn1.x9.ECNamedCurveTable;
+import org.spongycastle.asn1.x9.X9ECParameters;
+import org.spongycastle.crypto.ec.CustomNamedCurves;
 import org.spongycastle.jce.spec.ECNamedCurveParameterSpec;
 import org.spongycastle.jce.spec.ECNamedCurveSpec;
+import org.spongycastle.math.ec.ECAlgorithms;
 import org.spongycastle.math.ec.ECCurve;
 
 public class EC5Util
 {
+    private static Map customCurves = new HashMap();
+
+    static
+    {
+        Enumeration e = CustomNamedCurves.getNames();
+        while (e.hasMoreElements())
+        {
+            String name = (String)e.nextElement();
+
+            X9ECParameters curveParams = ECNamedCurveTable.getByName(name);
+            if (curveParams != null)  // there may not be a regular curve, may just be a custom curve.
+            {
+                customCurves.put(curveParams.getCurve(), CustomNamedCurves.getByName(name).getCurve());
+            }
+        }
+    }
+
     public static EllipticCurve convertCurve(
         ECCurve curve, 
         byte[]  seed)
     {
         // TODO: the Sun EC implementation doesn't currently handle the seed properly
         // so at the moment it's set to null. Should probably look at making this configurable
-        if (curve instanceof ECCurve.Fp)
+        if (ECAlgorithms.isFpCurve(curve))
         {
-            return new EllipticCurve(new ECFieldFp(((ECCurve.Fp)curve).getQ()), curve.getA().toBigInteger(), curve.getB().toBigInteger(), null);
+            return new EllipticCurve(new ECFieldFp(curve.getField().getCharacteristic()), curve.getA().toBigInteger(), curve.getB().toBigInteger(), null);
         }
         else
         {
@@ -53,7 +77,14 @@ public class EC5Util
 
         if (field instanceof ECFieldFp)
         {
-            return new ECCurve.Fp(((ECFieldFp)field).getP(), a, b);
+            ECCurve.Fp curve = new ECCurve.Fp(((ECFieldFp)field).getP(), a, b);
+
+            if (customCurves.containsKey(curve))
+            {
+                return (ECCurve)customCurves.get(curve);
+            }
+
+            return curve;
         }
         else
         {

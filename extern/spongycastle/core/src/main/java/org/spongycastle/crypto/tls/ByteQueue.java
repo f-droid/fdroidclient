@@ -8,7 +8,7 @@ public class ByteQueue
     /**
      * @return The smallest number which can be written as 2^x which is bigger than i.
      */
-    public static final int nextTwoPow(int i)
+    public static int nextTwoPow(int i)
     {
         /*
          * This code is based of a lot of code I found on the Internet which mostly
@@ -30,7 +30,7 @@ public class ByteQueue
     /**
      * The buffer where we store our data.
      */
-    private byte[] databuf;;
+    private byte[] databuf;
 
     /**
      * How many bytes at the beginning of the buffer are skipped.
@@ -62,14 +62,14 @@ public class ByteQueue
      */
     public void read(byte[] buf, int offset, int len, int skip)
     {
-        if ((available - skip) < len)
-        {
-            throw new TlsRuntimeException("Not enough data to read");
-        }
         if ((buf.length - offset) < len)
         {
-            throw new TlsRuntimeException("Buffer size of " + buf.length
+            throw new IllegalArgumentException("Buffer size of " + buf.length
                 + " is too small for a read of " + len + " bytes");
+        }
+        if ((available - skip) < len)
+        {
+            throw new IllegalStateException("Not enough data to read");
         }
         System.arraycopy(databuf, skipped + skip, buf, offset, len);
     }
@@ -112,7 +112,7 @@ public class ByteQueue
     {
         if (i > available)
         {
-            throw new TlsRuntimeException("Cannot remove " + i + " bytes, only got " + available);
+            throw new IllegalStateException("Cannot remove " + i + " bytes, only got " + available);
         }
 
         /*

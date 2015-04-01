@@ -17,7 +17,9 @@ public class DERIA5String
     /**
      * return a IA5 string from the passed in object
      *
+     * @param obj a DERIA5String or an object that can be converted into one.
      * @exception IllegalArgumentException if the object cannot be converted.
+     * @return a DERIA5String instance, or null.
      */
     public static DERIA5String getInstance(
         Object  obj)
@@ -50,6 +52,7 @@ public class DERIA5String
      *              tagged false otherwise.
      * @exception IllegalArgumentException if the tagged object cannot
      *               be converted.
+     * @return a DERIA5String instance, or null.
      */
     public static DERIA5String getInstance(
         ASN1TaggedObject obj,
@@ -69,6 +72,7 @@ public class DERIA5String
 
     /**
      * basic constructor - with bytes.
+     * @param string the byte encoding of the characters making up the string.
      */
     DERIA5String(
         byte[]   string)
@@ -78,6 +82,7 @@ public class DERIA5String
 
     /**
      * basic constructor - without validation.
+     * @param string the base string to use..
      */
     public DERIA5String(
         String   string)
@@ -163,7 +168,8 @@ public class DERIA5String
      * return true if the passed in String can be represented without
      * loss as an IA5String, false otherwise.
      *
-     * @return true if in printable set, false otherwise.
+     * @param str the string to check.
+     * @return true if character set in IA5String set, false otherwise.
      */
     public static boolean isIA5String(
         String  str)

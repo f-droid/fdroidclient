@@ -10,19 +10,16 @@ import org.spongycastle.util.Arrays;
 
 /**
  * A participant in a Password Authenticated Key Exchange by Juggling (J-PAKE) exchange.
- * <p/>
- * <p/>
+ * <p>
  * The J-PAKE exchange is defined by Feng Hao and Peter Ryan in the paper
  * <a href="http://grouper.ieee.org/groups/1363/Research/contributions/hao-ryan-2008.pdf">
  * "Password Authenticated Key Exchange by Juggling, 2008."</a>
- * <p/>
- * <p/>
+ * <p>
  * The J-PAKE protocol is symmetric.
  * There is no notion of a <i>client</i> or <i>server</i>, but rather just two <i>participants</i>.
  * An instance of {@link JPAKEParticipant} represents one participant, and
  * is the primary interface for executing the exchange.
- * <p/>
- * <p/>
+ * <p>
  * To execute an exchange, construct a {@link JPAKEParticipant} on each end,
  * and call the following 7 methods
  * (once and only once, in the given order, for each participant, sending messages between them as described):
@@ -35,36 +32,29 @@ import org.spongycastle.util.Arrays;
  * <li>{@link #createRound3PayloadToSend(BigInteger)} - and send the payload to the other participant</li>
  * <li>{@link #validateRound3PayloadReceived(JPAKERound3Payload, BigInteger)} - use the payload received from the other participant</li>
  * </ol>
- * <p/>
- * <p/>
+ * <p>
  * Each side should derive a session key from the keying material returned by {@link #calculateKeyingMaterial()}.
  * The caller is responsible for deriving the session key using a secure key derivation function (KDF).
- * <p/>
- * <p/>
+ * <p>
  * Round 3 is an optional key confirmation process.
  * If you do not execute round 3, then there is no assurance that both participants are using the same key.
  * (i.e. if the participants used different passwords, then their session keys will differ.)
- * <p/>
- * <p/>
+ * <p>
  * If the round 3 validation succeeds, then the keys are guaranteed to be the same on both sides.
- * <p/>
- * <p/>
+ * <p>
  * The symmetric design can easily support the asymmetric cases when one party initiates the communication.
  * e.g. Sometimes the round1 payload and round2 payload may be sent in one pass.
  * Also, in some cases, the key confirmation payload can be sent together with the round2 payload.
  * These are the trivial techniques to optimize the communication.
- * <p/>
- * <p/>
+ * <p>
  * The key confirmation process is implemented as specified in
  * <a href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST SP 800-56A Revision 1</a>,
  * Section 8.2 Unilateral Key Confirmation for Key Agreement Schemes.
- * <p/>
- * <p/>
+ * <p>
  * This class is stateful and NOT threadsafe.
  * Each instance should only be used for ONE complete J-PAKE exchange
  * (i.e. a new {@link JPAKEParticipant} should be constructed for each new J-PAKE exchange).
- * <p/>
- * <p/>
+ * <p>
  * See {@link JPAKEExample} for example usage.
  */
 public class JPAKEParticipant
@@ -155,7 +145,7 @@ public class JPAKEParticipant
      * Convenience constructor for a new {@link JPAKEParticipant} that uses
      * the {@link JPAKEPrimeOrderGroups#NIST_3072} prime order group,
      * a SHA-256 digest, and a default {@link SecureRandom} implementation.
-     * <p/>
+     * <p>
      * After construction, the {@link #getState() state} will be  {@link #STATE_INITIALIZED}.
      *
      * @param participantId unique identifier of this participant.
@@ -180,7 +170,7 @@ public class JPAKEParticipant
     /**
      * Convenience constructor for a new {@link JPAKEParticipant} that uses
      * a SHA-256 digest and a default {@link SecureRandom} implementation.
-     * <p/>
+     * <p>
      * After construction, the {@link #getState() state} will be  {@link #STATE_INITIALIZED}.
      *
      * @param participantId unique identifier of this participant.
@@ -209,7 +199,7 @@ public class JPAKEParticipant
 
     /**
      * Construct a new {@link JPAKEParticipant}.
-     * <p/>
+     * <p>
      * After construction, the {@link #getState() state} will be  {@link #STATE_INITIALIZED}.
      *
      * @param participantId unique identifier of this participant.
@@ -278,8 +268,7 @@ public class JPAKEParticipant
 
     /**
      * Creates and returns the payload to send to the other participant during round 1.
-     * <p/>
-     * <p/>
+     * <p>
      * After execution, the {@link #getState() state} will be  {@link #STATE_ROUND_1_CREATED}.
      */
     public JPAKERound1Payload createRound1PayloadToSend()
@@ -304,11 +293,9 @@ public class JPAKEParticipant
 
     /**
      * Validates the payload received from the other participant during round 1.
-     * <p/>
-     * <p/>
+     * <p>
      * Must be called prior to {@link #createRound2PayloadToSend()}.
-     * <p/>
-     * <p/>
+     * <p>
      * After execution, the {@link #getState() state} will be  {@link #STATE_ROUND_1_VALIDATED}.
      *
      * @throws CryptoException if validation fails.
@@ -338,11 +325,9 @@ public class JPAKEParticipant
 
     /**
      * Creates and returns the payload to send to the other participant during round 2.
-     * <p/>
-     * <p/>
+     * <p>
      * {@link #validateRound1PayloadReceived(JPAKERound1Payload)} must be called prior to this method.
-     * <p/>
-     * <p/>
+     * <p>
      * After execution, the {@link #getState() state} will be  {@link #STATE_ROUND_2_CREATED}.
      *
      * @throws IllegalStateException if called prior to {@link #validateRound1PayloadReceived(JPAKERound1Payload)}, or multiple times
@@ -370,16 +355,13 @@ public class JPAKEParticipant
 
     /**
      * Validates the payload received from the other participant during round 2.
-     * <p/>
-     * <p/>
+     * <p>
      * Note that this DOES NOT detect a non-common password.
      * The only indication of a non-common password is through derivation
      * of different keys (which can be detected explicitly by executing round 3 and round 4)
-     * <p/>
-     * <p/>
+     * <p>
      * Must be called prior to {@link #calculateKeyingMaterial()}.
-     * <p/>
-     * <p/>
+     * <p>
      * After execution, the {@link #getState() state} will be  {@link #STATE_ROUND_2_VALIDATED}.
      *
      * @throws CryptoException if validation fails.
@@ -412,8 +394,7 @@ public class JPAKEParticipant
      * Calculates and returns the key material.
      * A session key must be derived from this key material using a secure key derivation function (KDF).
      * The KDF used to derive the key is handled externally (i.e. not by {@link JPAKEParticipant}).
-     * <p/>
-     * <p/>
+     * <p>
      * The keying material will be identical for each participant if and only if
      * each participant's password is the same.  i.e. If the participants do not
      * share the same password, then each participant will derive a different key.
@@ -422,17 +403,13 @@ public class JPAKEParticipant
      * If you want to handle this detection explicitly, you can optionally perform
      * rounds 3 and 4.  See {@link JPAKEParticipant} for details on how to execute
      * rounds 3 and 4.
-     * <p/>
-     * <p/>
+     * <p>
      * The keying material will be in the range <tt>[0, p-1]</tt>.
-     * <p/>
-     * <p/>
+     * <p>
      * {@link #validateRound2PayloadReceived(JPAKERound2Payload)} must be called prior to this method.
-     * <p/>
-     * <p/>
+     * <p>
      * As a side effect, the internal {@link #password} array is cleared, since it is no longer needed.
-     * <p/>
-     * <p/>
+     * <p>
      * After execution, the {@link #getState() state} will be  {@link #STATE_KEY_CALCULATED}.
      *
      * @throws IllegalStateException if called prior to {@link #validateRound2PayloadReceived(JPAKERound2Payload)},
@@ -484,11 +461,9 @@ public class JPAKEParticipant
 
     /**
      * Creates and returns the payload to send to the other participant during round 3.
-     * <p/>
-     * <p/>
+     * <p>
      * See {@link JPAKEParticipant} for more details on round 3.
-     * <p/>
-     * <p/>
+     * <p>
      * After execution, the {@link #getState() state} will be  {@link #STATE_ROUND_3_CREATED}.
      *
      * @param keyingMaterial The keying material as returned from {@link #calculateKeyingMaterial()}.
@@ -522,11 +497,9 @@ public class JPAKEParticipant
 
     /**
      * Validates the payload received from the other participant during round 3.
-     * <p/>
-     * <p/>
+     * <p>
      * See {@link JPAKEParticipant} for more details on round 3.
-     * <p/>
-     * <p/>
+     * <p>
      * After execution, the {@link #getState() state} will be {@link #STATE_ROUND_3_VALIDATED}.
      *
      * @param keyingMaterial The keying material as returned from {@link #calculateKeyingMaterial()}.

@@ -75,8 +75,8 @@ public class SignatureAndHashAlgorithm
     public void encode(OutputStream output)
         throws IOException
     {
-        TlsUtils.writeUint8(hash, output);
-        TlsUtils.writeUint8(signature, output);
+        TlsUtils.writeUint8(getHash(), output);
+        TlsUtils.writeUint8(getSignature(), output);
     }
 
     /**

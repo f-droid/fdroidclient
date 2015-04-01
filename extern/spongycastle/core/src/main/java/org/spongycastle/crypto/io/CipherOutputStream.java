@@ -14,7 +14,7 @@ import org.spongycastle.crypto.modes.AEADBlockCipher;
  * the written data with the cipher, and the output of the cipher is in turn written to the
  * underlying OutputStream. The cipher must be fully initialized before being used by a
  * CipherInputStream.
- * <p/>
+ * <p>
  * For example, if the cipher is initialized for encryption, the CipherOutputStream will encrypt the
  * data before writing the encrypted data to the underlying stream.
  */
@@ -86,7 +86,7 @@ public class CipherOutputStream
     /**
      * Writes <code>b.length</code> bytes from the specified byte array
      * to this output stream.
-     * <p/>
+     * <p>
      * The <code>write</code> method of
      * <code>CipherOutputStream</code> calls the <code>write</code>
      * method of three arguments with the three arguments
@@ -118,7 +118,7 @@ public class CipherOutputStream
         int len)
         throws IOException
     {
-        ensureCapacity(len);
+        ensureCapacity(len, false);
 
         if (bufferedBlockCipher != null)
         {
@@ -149,24 +149,35 @@ public class CipherOutputStream
     /**
      * Ensure the ciphertext buffer has space sufficient to accept an upcoming output.
      *
-     * @param outputSize the size of the pending update.
+     * @param updateSize the size of the pending update.
+     * @param finalOutput <code>true</code> iff this the cipher is to be finalised.
      */
-    private void ensureCapacity(int outputSize)
+    private void ensureCapacity(int updateSize, boolean finalOutput)
     {
-        // This overestimates buffer on updates for AEAD/padded, but keeps it simple.
-        int bufLen;
-        if (bufferedBlockCipher != null)
+        int bufLen = updateSize;
+        if (finalOutput)
         {
-            bufLen = bufferedBlockCipher.getOutputSize(outputSize);
-        }
-        else if (aeadBlockCipher != null)
-        {
-            bufLen = aeadBlockCipher.getOutputSize(outputSize);
+            if (bufferedBlockCipher != null)
+            {
+                bufLen = bufferedBlockCipher.getOutputSize(updateSize);
+            }
+            else if (aeadBlockCipher != null)
+            {
+                bufLen = aeadBlockCipher.getOutputSize(updateSize);
+            }
         }
         else
         {
-            bufLen = outputSize;
+            if (bufferedBlockCipher != null)
+            {
+                bufLen = bufferedBlockCipher.getUpdateOutputSize(updateSize);
+            }
+            else if (aeadBlockCipher != null)
+            {
+                bufLen = aeadBlockCipher.getUpdateOutputSize(updateSize);
+            }
         }
+
         if ((buf == null) || (buf.length < bufLen))
         {
             buf = new byte[bufLen];
@@ -177,8 +188,7 @@ public class CipherOutputStream
      * Flushes this output stream by forcing any buffered output bytes
      * that have already been processed by the encapsulated cipher object
      * to be written out.
-     * <p/>
-     * <p/>
+     * <p>
      * Any bytes buffered by the encapsulated cipher
      * and waiting to be processed by it will not be written out. For example,
      * if the encapsulated cipher is a block cipher, and the total number of
@@ -196,12 +206,12 @@ public class CipherOutputStream
     /**
      * Closes this output stream and releases any system resources
      * associated with this stream.
-     * <p/>
+     * <p>
      * This method invokes the <code>doFinal</code> method of the encapsulated
      * cipher object, which causes any bytes buffered by the encapsulated
      * cipher to be processed. The result is written out by calling the
      * <code>flush</code> method of this output stream.
-     * <p/>
+     * <p>
      * This method resets the encapsulated cipher object to its initial state
      * and calls the <code>close</code> method of the underlying output
      * stream.
@@ -213,7 +223,7 @@ public class CipherOutputStream
     public void close()
         throws IOException
     {
-        ensureCapacity(0);
+        ensureCapacity(0, true);
         IOException error = null;
         try
         {
@@ -242,7 +252,7 @@ public class CipherOutputStream
         }
         catch (Exception e)
         {
-            error = new IOException("Error closing stream: " + e);
+            error = new CipherIOException("Error closing stream: ", e);
         }
 
         try

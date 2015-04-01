@@ -2,7 +2,6 @@ package org.spongycastle.crypto.tls;
 
 public class ClientAuthenticationType
 {
-
     /*
      * RFC 5077 4
      */

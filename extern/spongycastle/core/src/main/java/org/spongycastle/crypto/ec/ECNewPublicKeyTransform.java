@@ -4,9 +4,12 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import org.spongycastle.crypto.CipherParameters;
+import org.spongycastle.crypto.params.ECDomainParameters;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;
 import org.spongycastle.crypto.params.ParametersWithRandom;
+import org.spongycastle.math.ec.ECMultiplier;
 import org.spongycastle.math.ec.ECPoint;
+import org.spongycastle.math.ec.FixedPointCombMultiplier;
 
 /**
  * this does your basic Elgamal encryption algorithm using EC
@@ -49,7 +52,7 @@ public class ECNewPublicKeyTransform
     }
 
     /**
-     * Transform an existing cipher test pair using the ElGamal algorithm. Note: the input cipherText will
+     * Transform an existing cipher text pair using the ElGamal algorithm. Note: the input cipherText will
      * need to be preserved in order to complete the transformation to the new public key.
      *
      * @param cipherText the EC point to process.
@@ -62,13 +65,24 @@ public class ECNewPublicKeyTransform
             throw new IllegalStateException("ECNewPublicKeyTransform not initialised");
         }
 
-        BigInteger             n = key.getParameters().getN();
-        BigInteger             k = ECUtil.generateK(n, random);
+        ECDomainParameters ec = key.getParameters();
+        BigInteger n = ec.getN();
 
-        ECPoint  g = key.getParameters().getG();
-        ECPoint  gamma = g.multiply(k);
-        ECPoint  phi = key.getQ().multiply(k).add(cipherText.getY());
+        ECMultiplier basePointMultiplier = createBasePointMultiplier();
+        BigInteger k = ECUtil.generateK(n, random);
 
-        return new ECPair(gamma.normalize(), phi.normalize());
+        ECPoint[] gamma_phi = new ECPoint[]{
+            basePointMultiplier.multiply(ec.getG(), k),
+            key.getQ().multiply(k).add(cipherText.getY())
+        };
+
+        ec.getCurve().normalizeAll(gamma_phi);
+
+        return new ECPair(gamma_phi[0], gamma_phi[1]);
+    }
+
+    protected ECMultiplier createBasePointMultiplier()
+    {
+        return new FixedPointCombMultiplier();
     }
 }

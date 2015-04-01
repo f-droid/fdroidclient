@@ -9,8 +9,10 @@ import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.DERSequence;
+import org.spongycastle.math.ec.ECAlgorithms;
 import org.spongycastle.math.ec.ECCurve;
 import org.spongycastle.math.ec.ECPoint;
+import org.spongycastle.math.field.PolynomialExtensionField;
 
 /**
  * ASN.1 def for Elliptic-Curve ECParameters structure. See
@@ -108,18 +110,30 @@ public class X9ECParameters
         this.h = h;
         this.seed = seed;
 
-        if (curve instanceof ECCurve.Fp)
+        if (ECAlgorithms.isFpCurve(curve))
         {
-            this.fieldID = new X9FieldID(((ECCurve.Fp)curve).getQ());
+            this.fieldID = new X9FieldID(curve.getField().getCharacteristic());
+        }
+        else if (ECAlgorithms.isF2mCurve(curve))
+        {
+            PolynomialExtensionField field = (PolynomialExtensionField)curve.getField();
+            int[] exponents = field.getMinimalPolynomial().getExponentsPresent();
+            if (exponents.length == 3)
+            {
+                this.fieldID = new X9FieldID(exponents[2], exponents[1]);
+            }
+            else if (exponents.length == 5)
+            {
+                this.fieldID = new X9FieldID(exponents[4], exponents[1], exponents[2], exponents[3]);
+            }
+            else
+            {
+                throw new IllegalArgumentException("Only trinomial and pentomial curves are supported");
+            }
         }
         else
         {
-            if (curve instanceof ECCurve.F2m)
-            {
-                ECCurve.F2m curveF2m = (ECCurve.F2m)curve;
-                this.fieldID = new X9FieldID(curveF2m.getM(), curveF2m.getK1(),
-                    curveF2m.getK2(), curveF2m.getK3());
-            }
+            throw new IllegalArgumentException("'curve' is of an unsupported type");
         }
     }
 

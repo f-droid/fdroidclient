@@ -2,7 +2,7 @@ package org.spongycastle.crypto.tls;
 
 /**
  * RFC 4492 5.1.1
- * <p/>
+ * <p>
  * The named curves defined here are those specified in SEC 2 [13]. Note that many of these curves
  * are also recommended in ANSI X9.62 [7] and FIPS 186-2 [11]. Values 0xFE00 through 0xFEFF are
  * reserved for private use. Values 0xFF01 and 0xFF02 indicate that the client supports arbitrary
@@ -51,6 +51,12 @@ public class NamedCurve
     public static final int arbitrary_explicit_prime_curves = 0xFF01;
     public static final int arbitrary_explicit_char2_curves = 0xFF02;
 
+    public static boolean isValid(int namedCurve)
+    {
+        return (namedCurve >= sect163k1 && namedCurve <= brainpoolP512r1)
+            || (namedCurve >= arbitrary_explicit_prime_curves && namedCurve <= arbitrary_explicit_char2_curves);
+    }
+
     public static boolean refersToASpecificNamedCurve(int namedCurve)
     {
         switch (namedCurve)
@@ -62,5 +68,4 @@ public class NamedCurve
             return true;
         }
     }
-
 }

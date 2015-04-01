@@ -2,13 +2,16 @@ package org.spongycastle.crypto.signers;
 
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DSA;
+import org.spongycastle.crypto.params.ECDomainParameters;
 import org.spongycastle.crypto.params.ECKeyParameters;
 import org.spongycastle.crypto.params.ECPrivateKeyParameters;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;
 import org.spongycastle.crypto.params.ParametersWithRandom;
 import org.spongycastle.math.ec.ECAlgorithms;
 import org.spongycastle.math.ec.ECConstants;
+import org.spongycastle.math.ec.ECMultiplier;
 import org.spongycastle.math.ec.ECPoint;
+import org.spongycastle.math.ec.FixedPointCombMultiplier;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -63,17 +66,20 @@ public class ECGOST3410Signer
         {
             mRev[i] = message[mRev.length - 1 - i];
         }
-        
-        BigInteger e = new BigInteger(1, mRev);
-        BigInteger n = key.getParameters().getN();
 
-        BigInteger r = null;
-        BigInteger s = null;
+        BigInteger e = new BigInteger(1, mRev);
+
+        ECDomainParameters ec = key.getParameters();
+        BigInteger n = ec.getN();
+        BigInteger d = ((ECPrivateKeyParameters)key).getD();
+
+        BigInteger r, s;
+
+        ECMultiplier basePointMultiplier = createBasePointMultiplier();
 
         do // generate s
         {
-            BigInteger k = null;
-
+            BigInteger k;
             do // generate r
             {
                 do
@@ -82,26 +88,17 @@ public class ECGOST3410Signer
                 }
                 while (k.equals(ECConstants.ZERO));
 
-                ECPoint p = key.getParameters().getG().multiply(k).normalize();
+                ECPoint p = basePointMultiplier.multiply(ec.getG(), k).normalize();
 
-                BigInteger x = p.getAffineXCoord().toBigInteger();
-
-                r = x.mod(n);
+                r = p.getAffineXCoord().toBigInteger().mod(n);
             }
             while (r.equals(ECConstants.ZERO));
-
-            BigInteger d = ((ECPrivateKeyParameters)key).getD();
 
             s = (k.multiply(e)).add(d.multiply(r)).mod(n);
         }
         while (s.equals(ECConstants.ZERO));
 
-        BigInteger[]  res = new BigInteger[2];
-
-        res[0] = r;
-        res[1] = s;
-
-        return res;
+        return new BigInteger[]{ r, s };
     }
 
     /**
@@ -154,5 +151,10 @@ public class ECGOST3410Signer
         BigInteger R = point.getAffineXCoord().toBigInteger().mod(n);
 
         return R.equals(r);
+    }
+
+    protected ECMultiplier createBasePointMultiplier()
+    {
+        return new FixedPointCombMultiplier();
     }
 }

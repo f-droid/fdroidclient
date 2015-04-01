@@ -2,13 +2,12 @@ package org.spongycastle.crypto.tls;
 
 /**
  * RFC 2246
- * <p/>
+ * <p>
  * Note that the values here are implementation-specific and arbitrary. It is recommended not to
  * depend on the particular values (e.g. serialization).
  */
 public class BulkCipherAlgorithm
 {
-
     public static final int _null = 0;
     public static final int rc4 = 1;
     public static final int rc2 = 2;

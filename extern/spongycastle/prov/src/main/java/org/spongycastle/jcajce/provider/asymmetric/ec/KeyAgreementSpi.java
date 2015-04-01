@@ -17,6 +17,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.nist.NISTObjectIdentifiers;
+import org.spongycastle.asn1.oiw.OIWObjectIdentifiers;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.spongycastle.asn1.x9.X9IntegerConverter;
 import org.spongycastle.crypto.BasicAgreement;
@@ -28,6 +29,7 @@ import org.spongycastle.crypto.agreement.ECMQVBasicAgreement;
 import org.spongycastle.crypto.agreement.kdf.DHKDFParameters;
 import org.spongycastle.crypto.agreement.kdf.ECDHKEKGenerator;
 import org.spongycastle.crypto.digests.SHA1Digest;
+import org.spongycastle.crypto.params.DESParameters;
 import org.spongycastle.crypto.params.ECDomainParameters;
 import org.spongycastle.crypto.params.ECPrivateKeyParameters;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;
@@ -39,6 +41,7 @@ import org.spongycastle.jce.interfaces.ECPublicKey;
 import org.spongycastle.jce.interfaces.MQVPrivateKey;
 import org.spongycastle.jce.interfaces.MQVPublicKey;
 import org.spongycastle.util.Integers;
+import org.spongycastle.util.Strings;
 
 /**
  * Diffie-Hellman key agreement using elliptic curve keys, ala IEEE P1363
@@ -51,9 +54,12 @@ public class KeyAgreementSpi
 {
     private static final X9IntegerConverter converter = new X9IntegerConverter();
     private static final Hashtable algorithms = new Hashtable();
+    private static final Hashtable oids = new Hashtable();
+    private static final Hashtable des = new Hashtable();
 
     static
     {
+        Integer i64 = Integers.valueOf(64);
         Integer i128 = Integers.valueOf(128);
         Integer i192 = Integers.valueOf(192);
         Integer i256 = Integers.valueOf(256);
@@ -65,6 +71,18 @@ public class KeyAgreementSpi
         algorithms.put(NISTObjectIdentifiers.id_aes192_wrap.getId(), i192);
         algorithms.put(NISTObjectIdentifiers.id_aes256_wrap.getId(), i256);
         algorithms.put(PKCSObjectIdentifiers.id_alg_CMS3DESwrap.getId(), i192);
+        algorithms.put(PKCSObjectIdentifiers.des_EDE3_CBC.getId(), i192);
+        algorithms.put(OIWObjectIdentifiers.desCBC.getId(), i64);
+
+        oids.put("DESEDE", PKCSObjectIdentifiers.des_EDE3_CBC);
+        oids.put("AES", NISTObjectIdentifiers.id_aes256_CBC);
+        oids.put("DES", OIWObjectIdentifiers.desCBC);
+
+        des.put("DES", "DES");
+        des.put("DESEDE", "DES");
+        des.put(OIWObjectIdentifiers.desCBC.getId(), "DES");
+        des.put(PKCSObjectIdentifiers.des_EDE3_CBC.getId(), "DES");
+        des.put(PKCSObjectIdentifiers.id_alg_CMS3DESwrap.getId(), "DES");
     }
 
     private String                 kaAlgorithm;
@@ -76,7 +94,7 @@ public class KeyAgreementSpi
     private byte[] bigIntToBytes(
         BigInteger    r)
     {
-        return converter.integerToBytes(r, converter.getByteLength(parameters.getG().getAffineXCoord()));
+        return converter.integerToBytes(r, converter.getByteLength(parameters.getCurve()));
     }
 
     protected KeyAgreementSpi(
@@ -175,17 +193,24 @@ public class KeyAgreementSpi
         throws NoSuchAlgorithmException
     {
         byte[] secret = bigIntToBytes(result);
+        String algKey = Strings.toUpperCase(algorithm);
+        String oidAlgorithm = algorithm;
+
+        if (oids.containsKey(algKey))
+        {
+            oidAlgorithm = ((ASN1ObjectIdentifier)oids.get(algKey)).getId();
+        }
 
         if (kdf != null)
         {
-            if (!algorithms.containsKey(algorithm))
+            if (!algorithms.containsKey(oidAlgorithm))
             {
                 throw new NoSuchAlgorithmException("unknown algorithm encountered: " + algorithm);
             }
             
-            int    keySize = ((Integer)algorithms.get(algorithm)).intValue();
+            int    keySize = ((Integer)algorithms.get(oidAlgorithm)).intValue();
 
-            DHKDFParameters params = new DHKDFParameters(new ASN1ObjectIdentifier(algorithm), keySize, secret);
+            DHKDFParameters params = new DHKDFParameters(new ASN1ObjectIdentifier(oidAlgorithm), keySize, secret);
 
             byte[] keyBytes = new byte[keySize / 8];
             kdf.init(params);
@@ -194,7 +219,21 @@ public class KeyAgreementSpi
         }
         else
         {
-            // TODO Should we be ensuring the key is the right length?
+            if (algorithms.containsKey(oidAlgorithm))
+            {
+                Integer length = (Integer)algorithms.get(oidAlgorithm);
+
+                byte[] key = new byte[length.intValue() / 8];
+
+                System.arraycopy(secret, 0, key, 0, key.length);
+
+                secret = key;
+            }
+        }
+
+        if (des.containsKey(oidAlgorithm))
+        {
+            DESParameters.setOddParity(secret);
         }
 
         return new SecretKeySpec(secret, algorithm);
@@ -206,6 +245,11 @@ public class KeyAgreementSpi
         SecureRandom            random) 
         throws InvalidKeyException, InvalidAlgorithmParameterException
     {
+        if (params != null)
+        {
+            throw new InvalidAlgorithmParameterException("No algorithm parameters supported");
+        }
+
         initFromKey(key);
     }
 

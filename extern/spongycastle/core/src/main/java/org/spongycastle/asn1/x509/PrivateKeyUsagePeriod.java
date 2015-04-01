@@ -3,11 +3,11 @@ package org.spongycastle.asn1.x509;
 import java.util.Enumeration;
 
 import org.spongycastle.asn1.ASN1EncodableVector;
+import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.ASN1Object;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.ASN1TaggedObject;
-import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERTaggedObject;
 
@@ -36,7 +36,7 @@ public class PrivateKeyUsagePeriod
         return null;
     }
 
-    private DERGeneralizedTime _notBefore, _notAfter;
+    private ASN1GeneralizedTime _notBefore, _notAfter;
 
     private PrivateKeyUsagePeriod(ASN1Sequence seq)
     {
@@ -47,21 +47,21 @@ public class PrivateKeyUsagePeriod
 
             if (tObj.getTagNo() == 0)
             {
-                _notBefore = DERGeneralizedTime.getInstance(tObj, false);
+                _notBefore = ASN1GeneralizedTime.getInstance(tObj, false);
             }
             else if (tObj.getTagNo() == 1)
             {
-                _notAfter = DERGeneralizedTime.getInstance(tObj, false);
+                _notAfter = ASN1GeneralizedTime.getInstance(tObj, false);
             }
         }
     }
 
-    public DERGeneralizedTime getNotBefore()
+    public ASN1GeneralizedTime getNotBefore()
     {
         return _notBefore;
     }
 
-    public DERGeneralizedTime getNotAfter()
+    public ASN1GeneralizedTime getNotAfter()
     {
         return _notAfter;
     }

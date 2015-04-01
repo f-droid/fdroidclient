@@ -2,7 +2,6 @@ package org.spongycastle.crypto.tls;
 
 /**
  * A certificate verifyer, that will always return true.
- * <p/>
  * <pre>
  * DO NOT USE THIS FILE UNLESS YOU KNOW EXACTLY WHAT YOU ARE DOING.
  * </pre>

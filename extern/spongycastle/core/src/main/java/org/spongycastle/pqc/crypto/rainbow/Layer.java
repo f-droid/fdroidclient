@@ -10,14 +10,14 @@ import org.spongycastle.util.Arrays;
 /**
  * This class represents a layer of the Rainbow Oil- and Vinegar Map. Each Layer
  * consists of oi polynomials with their coefficients, generated at random.
- * <p/>
+ * <p>
  * To sign a document, we solve a LES (linear equation system) for each layer in
  * order to find the oil variables of that layer and to be able to use the
  * variables to compute the signature. This functionality is implemented in the
  * RainbowSignature-class, by the aid of the private key.
- * <p/>
+ * <p>
  * Each layer is a part of the private key.
- * <p/>
+ * <p>
  * More information about the layer can be found in the paper of Jintai Ding,
  * Dieter Schmidt: Rainbow, a New Multivariable Polynomial Signature Scheme.
  * ACNS 2005: 164-175 (http://dx.doi.org/10.1007/11496137_12)
@@ -124,7 +124,7 @@ public class Layer
      * This method plugs in the vinegar variables into the polynomials of this
      * layer and computes the coefficients of the Oil-variables as well as the
      * free coefficient in each polynomial.
-     * <p/>
+     * <p>
      * It is needed for computing the Oil variables while signing.
      *
      * @param x vinegar variables of this layer that should be plugged into

@@ -13,7 +13,6 @@ import org.spongycastle.util.Integers;
 
 /**
  * an Iso7816CertificateHolderAuthorization structure.
- * <p/>
  * <pre>
  *  Certificate Holder Authorization ::= SEQUENCE {
  *      // specifies the format and the rules for the evaluation of the authorization

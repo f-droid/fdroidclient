@@ -1048,7 +1048,7 @@ public class GF2nONBElement
     /**
      * Returns a String representation of this element. <tt>radix</tt>
      * specifies the radix of the String representation.<br>
-     * NOTE: ONLY <tt>radix = 2</tt> or <tt>radix = 16</tt> IS IMPLEMENTED>
+     * NOTE: ONLY <tt>radix = 2</tt> or <tt>radix = 16</tt> IS IMPLEMENTED
      *
      * @param radix specifies the radix of the String representation
      * @return String representation of this element with the specified radix

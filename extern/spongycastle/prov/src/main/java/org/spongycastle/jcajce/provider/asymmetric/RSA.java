@@ -80,6 +80,10 @@ public class RSA
             provider.addAlgorithm("Signature." + PKCSObjectIdentifiers.id_RSASSA_PSS, PREFIX + "PSSSignatureSpi$PSSwithRSA");
             provider.addAlgorithm("Signature.OID." + PKCSObjectIdentifiers.id_RSASSA_PSS, PREFIX + "PSSSignatureSpi$PSSwithRSA");
 
+            provider.addAlgorithm("Signature.SHA224WITHRSAANDMGF1", PREFIX + "PSSSignatureSpi$SHA224withRSA");
+            provider.addAlgorithm("Signature.SHA256WITHRSAANDMGF1", PREFIX + "PSSSignatureSpi$SHA256withRSA");
+            provider.addAlgorithm("Signature.SHA384WITHRSAANDMGF1", PREFIX + "PSSSignatureSpi$SHA384withRSA");
+            provider.addAlgorithm("Signature.SHA512WITHRSAANDMGF1", PREFIX + "PSSSignatureSpi$SHA512withRSA");
             provider.addAlgorithm("Signature.SHA224withRSA/PSS", PREFIX + "PSSSignatureSpi$SHA224withRSA");
             provider.addAlgorithm("Signature.SHA256withRSA/PSS", PREFIX + "PSSSignatureSpi$SHA256withRSA");
             provider.addAlgorithm("Signature.SHA384withRSA/PSS", PREFIX + "PSSSignatureSpi$SHA384withRSA");
@@ -101,10 +105,6 @@ public class RSA
             provider.addAlgorithm("Alg.Alias.Signature.SHA256withRSAandMGF1", "SHA256withRSA/PSS");
             provider.addAlgorithm("Alg.Alias.Signature.SHA384withRSAandMGF1", "SHA384withRSA/PSS");
             provider.addAlgorithm("Alg.Alias.Signature.SHA512withRSAandMGF1", "SHA512withRSA/PSS");
-            provider.addAlgorithm("Alg.Alias.Signature.SHA224WITHRSAANDMGF1", "SHA224withRSA/PSS");
-            provider.addAlgorithm("Alg.Alias.Signature.SHA256WITHRSAANDMGF1", "SHA256withRSA/PSS");
-            provider.addAlgorithm("Alg.Alias.Signature.SHA384WITHRSAANDMGF1", "SHA384withRSA/PSS");
-            provider.addAlgorithm("Alg.Alias.Signature.SHA512WITHRSAANDMGF1", "SHA512withRSA/PSS");
 
             if (provider.hasAlgorithm("MessageDigest", "MD2"))
             {

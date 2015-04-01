@@ -18,7 +18,8 @@ public class DERBitString
     protected int         padBits;
 
     /**
-     * return the correct number of pad bits for a bit string defined in
+     * @param bitString an int containing the BIT STRING
+     * @return the correct number of pad bits for a bit string defined in
      * a 32 bit constant
      */
     static protected int getPadBits(
@@ -66,7 +67,8 @@ public class DERBitString
     }
 
     /**
-     * return the correct number of bytes for a bit string defined in
+     * @param bitString an int containing the BIT STRING
+     * @return the correct number of bytes for a bit string defined in
      * a 32 bit constant
      */
     static protected byte[] getBytes(int bitString)
@@ -93,7 +95,9 @@ public class DERBitString
     /**
      * return a Bit String from the passed in object
      *
+     * @param obj a DERBitString or an object that can be converted into one.
      * @exception IllegalArgumentException if the object cannot be converted.
+     * @return a DERBitString instance, or null.
      */
     public static DERBitString getInstance(
         Object  obj)
@@ -114,6 +118,7 @@ public class DERBitString
      *              tagged false otherwise.
      * @exception IllegalArgumentException if the tagged object cannot
      *               be converted.
+     * @return a DERBitString instance, or null.
      */
     public static DERBitString getInstance(
         ASN1TaggedObject obj,

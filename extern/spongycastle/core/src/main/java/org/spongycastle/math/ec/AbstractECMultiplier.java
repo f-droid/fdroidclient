@@ -13,7 +13,13 @@ public abstract class AbstractECMultiplier implements ECMultiplier
         }
 
         ECPoint positive = multiplyPositive(p, k.abs());
-        return sign > 0 ? positive : positive.negate();
+        ECPoint result = sign > 0 ? positive : positive.negate();
+
+        /*
+         * Although the various multipliers ought not to produce invalid output under normal
+         * circumstances, a final check here is advised to guard against fault attacks.
+         */
+        return ECAlgorithms.validatePoint(result);
     }
 
     protected abstract ECPoint multiplyPositive(ECPoint p, BigInteger k);

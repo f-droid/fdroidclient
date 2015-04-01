@@ -43,6 +43,6 @@ public class ECElGamalDecryptor
 
         ECPoint tmp = pair.getX().multiply(key.getD());
 
-        return pair.getY().add(tmp.negate()).normalize();
+        return pair.getY().subtract(tmp).normalize();
     }
 }

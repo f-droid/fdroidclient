@@ -235,26 +235,14 @@ public class BCECPrivateKey
         }
         else
         {
-            ECParameterSpec         p = (ECParameterSpec)ecSpec;
-            ECCurve curve = p.getG().getCurve();
-            ECPoint generator;
-            
-            if (curve instanceof ECCurve.Fp) 
-            {
-                generator = new ECPoint.Fp(curve, p.getG().getX(), p.getG().getY(), withCompression);
-            } 
-            else if (curve instanceof ECCurve.F2m) 
-            {
-                generator = new ECPoint.F2m(curve, p.getG().getX(), p.getG().getY(), withCompression);
-            }
-            else 
-            {
-                throw new UnsupportedOperationException("Subclass of ECPoint " + curve.getClass().toString() + "not supported");
-            }
-            
+            ECParameterSpec p = (ECParameterSpec)ecSpec;
+
+            ECPoint pG = p.getG().normalize();
+            ECPoint g = pG.getCurve().createPoint(pG.getAffineXCoord().toBigInteger(), pG.getAffineYCoord().toBigInteger());
+
             X9ECParameters ecP = new X9ECParameters(
                   p.getCurve(),
-                  generator,
+                  g,
                   p.getN(),
                   p.getH(),
                   p.getSeed());

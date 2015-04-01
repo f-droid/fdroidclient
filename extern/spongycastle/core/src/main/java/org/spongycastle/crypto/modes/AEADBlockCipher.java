@@ -7,6 +7,16 @@ import org.spongycastle.crypto.InvalidCipherTextException;
 
 /**
  * A block cipher mode that includes authenticated encryption with a streaming mode and optional associated data.
+ * <p>
+ * Implementations of this interface may operate in a packet mode (where all input data is buffered and 
+ * processed dugin the call to {@link #doFinal(byte[], int)}), or in a streaming mode (where output data is
+ * incrementally produced with each call to {@link #processByte(byte, byte[], int)} or 
+ * {@link #processBytes(byte[], int, int, byte[], int)}.
+ * </p>
+ * This is important to consider during decryption: in a streaming mode, unauthenticated plaintext data
+ * may be output prior to the call to {@link #doFinal(byte[], int)} that results in an authentication
+ * failure. The higher level protocol utilising this cipher must ensure the plaintext data is handled 
+ * appropriately until the end of data is reached and the entire ciphertext is authenticated.
  * @see org.spongycastle.crypto.params.AEADParameters
  */
 public interface AEADBlockCipher
@@ -101,6 +111,11 @@ public interface AEADBlockCipher
     /**
      * return the size of the output buffer required for a processBytes
      * an input of len bytes.
+     * <p>
+     * The returned size may be dependent on the initialisation of this cipher
+     * and may not be accurate once subsequent input data is processed - this method
+     * should be invoked immediately prior to input data being processed.
+     * </p>
      *
      * @param len the length of the input.
      * @return the space required to accommodate a call to processBytes
@@ -111,7 +126,12 @@ public interface AEADBlockCipher
     /**
      * return the size of the output buffer required for a processBytes plus a
      * doFinal with an input of len bytes.
-     *
+     * <p>
+     * The returned size may be dependent on the initialisation of this cipher
+     * and may not be accurate once subsequent input data is processed - this method
+     * should be invoked immediately prior to a call to final processing of input data
+     * and a call to {@link #doFinal(byte[], int)}.
+     * </p>
      * @param len the length of the input.
      * @return the space required to accommodate a call to processBytes and doFinal
      * with len bytes of input.

@@ -3,6 +3,7 @@ package org.spongycastle.crypto.modes;
 import org.spongycastle.crypto.BlockCipher;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
+import org.spongycastle.crypto.StreamBlockCipher;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.crypto.params.ParametersWithIV;
 import org.spongycastle.crypto.params.ParametersWithRandom;
@@ -12,7 +13,7 @@ import org.spongycastle.crypto.params.ParametersWithSBox;
  * An implementation of the GOST CFB mode with CryptoPro key meshing as described in RFC 4357.
  */
 public class GCFBBlockCipher
-    implements BlockCipher
+    extends StreamBlockCipher
 {
     private static final byte[] C =
         {
@@ -30,6 +31,8 @@ public class GCFBBlockCipher
 
     public GCFBBlockCipher(BlockCipher engine)
     {
+        super(engine);
+
         this.cfbEngine = new CFBBlockCipher(engine, engine.getBlockSize() * 8);
     }
 
@@ -61,7 +64,8 @@ public class GCFBBlockCipher
 
     public String getAlgorithmName()
     {
-        return "G" + cfbEngine.getAlgorithmName();
+        String name = cfbEngine.getAlgorithmName();
+        return name.substring(0, name.indexOf('/') - 1) + "/G" + name.substring(name.indexOf('/') + 1);
     }
 
     public int getBlockSize()
@@ -71,6 +75,13 @@ public class GCFBBlockCipher
 
     public int processBlock(byte[] in, int inOff, byte[] out, int outOff)
         throws DataLengthException, IllegalStateException
+    {
+        this.processBytes(in, inOff, cfbEngine.getBlockSize(), out, outOff);
+
+        return cfbEngine.getBlockSize();
+    }
+
+    protected byte calculateByte(byte b)
     {
         if (counter > 0 && counter % 1024 == 0)
         {
@@ -87,18 +98,18 @@ public class GCFBBlockCipher
 
             key = new KeyParameter(nextKey);
 
-            byte[] iv = new byte[8];
-
             base.init(true, key);
 
-            base.processBlock(cfbEngine.getCurrentIV(), 0, iv, 0);
+            byte[] iv = cfbEngine.getCurrentIV();
+
+            base.processBlock(iv, 0, iv, 0);
 
             cfbEngine.init(forEncryption, new ParametersWithIV(key, iv));
         }
 
-        counter += cfbEngine.getBlockSize();
+        counter++;
 
-        return cfbEngine.processBlock(in, inOff, out, outOff);
+        return cfbEngine.calculateByte(b);
     }
 
     public void reset()

@@ -40,9 +40,10 @@ public interface StreamCipher
      * @param len the number of bytes to be processed.
      * @param out the output buffer the processed bytes go into.
      * @param outOff the offset into the output byte array the processed data starts at.
+     * @return the number of bytes produced - should always be len.
      * @exception DataLengthException if the output buffer is too small.
      */
-    public void processBytes(byte[] in, int inOff, int len, byte[] out, int outOff)
+    public int processBytes(byte[] in, int inOff, int len, byte[] out, int outOff)
         throws DataLengthException;
 
     /**

@@ -17,6 +17,7 @@ import org.spongycastle.asn1.x9.X9ObjectIdentifiers;
 import org.spongycastle.crypto.params.AsymmetricKeyParameter;
 import org.spongycastle.crypto.params.DSAPublicKeyParameters;
 import org.spongycastle.crypto.params.ECDomainParameters;
+import org.spongycastle.crypto.params.ECNamedDomainParameters;
 import org.spongycastle.crypto.params.ECPublicKeyParameters;
 import org.spongycastle.crypto.params.RSAKeyParameters;
 
@@ -52,10 +53,13 @@ public class SubjectPublicKeyInfoFactory
             ECDomainParameters domainParams = pub.getParameters();
             ASN1Encodable      params;
 
-            // TODO: need to handle named curves
             if (domainParams == null)
             {
                 params = new X962Parameters(DERNull.INSTANCE);      // Implicitly CA
+            }
+            else if (domainParams instanceof ECNamedDomainParameters)
+            {
+                params = new X962Parameters(((ECNamedDomainParameters)domainParams).getName());
             }
             else
             {

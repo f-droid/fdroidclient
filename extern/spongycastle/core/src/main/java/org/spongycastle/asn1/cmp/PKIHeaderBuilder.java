@@ -6,7 +6,6 @@ import org.spongycastle.asn1.ASN1GeneralizedTime;
 import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERGeneralizedTime;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.DERSequence;
 import org.spongycastle.asn1.DERTaggedObject;
@@ -44,16 +43,6 @@ public class PKIHeaderBuilder
         this.pvno = pvno;
         this.sender = sender;
         this.recipient = recipient;
-    }
-
-    /**
-     * @deprecated use ASN1GeneralizedTime
-     */
-    public PKIHeaderBuilder setMessageTime(DERGeneralizedTime time)
-    {
-        messageTime = ASN1GeneralizedTime.getInstance(time);
-
-        return this;
     }
 
     public PKIHeaderBuilder setMessageTime(ASN1GeneralizedTime time)

@@ -2,7 +2,6 @@ package org.spongycastle.operator.jcajce;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 import java.security.PrivateKey;
 import java.security.Provider;
@@ -11,10 +10,9 @@ import java.security.Signature;
 import java.security.SignatureException;
 
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.jcajce.JcaJceHelper;
-import org.spongycastle.jcajce.DefaultJcaJceHelper;
-import org.spongycastle.jcajce.NamedJcaJceHelper;
-import org.spongycastle.jcajce.ProviderJcaJceHelper;
+import org.spongycastle.jcajce.util.DefaultJcaJceHelper;
+import org.spongycastle.jcajce.util.NamedJcaJceHelper;
+import org.spongycastle.jcajce.util.ProviderJcaJceHelper;
 import org.spongycastle.operator.ContentSigner;
 import org.spongycastle.operator.DefaultSignatureAlgorithmIdentifierFinder;
 import org.spongycastle.operator.OperatorCreationException;

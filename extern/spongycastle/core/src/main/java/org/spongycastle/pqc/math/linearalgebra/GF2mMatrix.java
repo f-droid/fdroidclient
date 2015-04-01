@@ -2,7 +2,7 @@ package org.spongycastle.pqc.math.linearalgebra;
 
 /**
  * This class describes some operations with matrices over finite field <i>GF(2<sup>m</sup>)</i>
- * with small <i>m</i> (1< m <32).
+ * with small <i>m</i> (1&lt; m &lt;32).
  *
  * @see Matrix
  */

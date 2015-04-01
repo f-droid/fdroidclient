@@ -12,7 +12,7 @@ import java.util.Set;
 import org.spongycastle.asn1.ASN1Encoding;
 import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
-import org.spongycastle.asn1.DEREnumerated;
+import org.spongycastle.asn1.ASN1Enumerated;
 import org.spongycastle.asn1.util.ASN1Dump;
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.asn1.x509.CRLReason;
@@ -262,7 +262,7 @@ class X509CRLEntryObject extends X509CRLEntry
                         {
                             if (oid.equals(X509Extension.reasonCode))
                             {
-                                buf.append(CRLReason.getInstance(DEREnumerated.getInstance(dIn.readObject()))).append(nl);
+                                buf.append(CRLReason.getInstance(ASN1Enumerated.getInstance(dIn.readObject()))).append(nl);
                             }
                             else if (oid.equals(X509Extension.certificateIssuer))
                             {

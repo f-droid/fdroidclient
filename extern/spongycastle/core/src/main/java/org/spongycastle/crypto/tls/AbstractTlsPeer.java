@@ -5,6 +5,17 @@ import java.io.IOException;
 public abstract class AbstractTlsPeer
     implements TlsPeer
 {
+    public boolean shouldUseGMTUnixTime()
+    {
+        /*
+         * draft-mathewson-no-gmtunixtime-00 2. For the reasons we discuss above, we recommend that
+         * TLS implementors MUST by default set the entire value the ClientHello.Random and
+         * ServerHello.Random fields, including gmt_unix_time, to a cryptographically random
+         * sequence.
+         */
+        return false;
+    }
+
     public void notifySecureRenegotiation(boolean secureRenegotiation) throws IOException
     {
         if (!secureRenegotiation)

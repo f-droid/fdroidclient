@@ -6,6 +6,13 @@ package org.spongycastle.crypto.prng.drbg;
 public interface SP80090DRBG
 {
     /**
+     * Return the block size of the DRBG.
+     *
+     * @return the block size (in bits) produced by each round of the DRBG.
+     */
+    int getBlockSize();
+
+    /**
      * Populate a passed in array with random data.
      *
      * @param output output array for generated bits.

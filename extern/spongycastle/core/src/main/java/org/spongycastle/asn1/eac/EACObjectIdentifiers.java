@@ -4,17 +4,17 @@ import org.spongycastle.asn1.ASN1ObjectIdentifier;
 
 /**
  * German Federal Office for Information Security
- * (Bundesamt für Sicherheit in der Informationstechnik)
+ * (Bundesamt f&uuml;r Sicherheit in der Informationstechnik)
  * <a href="http://www.bsi.bund.de/">http://www.bsi.bund.de/</a>
  * <p>
  * <a href="https://www.bsi.bund.de/EN/Publications/TechnicalGuidelines/TR03110/BSITR03110.html">BSI TR-03110</a>
  * Technical Guideline Advanced Security Mechanisms for Machine Readable Travel Documents
  * <p>
- * <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TR03110/TR-03110_v2.1_P3pdf.pdf?__blob=publicationFile">Technical Guideline TR-03110-3</a>
+ * <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TR03110/TR-03110_v2.1_P3pdf.pdf">
+ * Technical Guideline TR-03110-3</a>
  * Advanced Security Mechanisms for Machine Readable Travel Documents;
  * Part 3: Common Specifications.
  */
-
 public interface EACObjectIdentifiers
 {
     /**

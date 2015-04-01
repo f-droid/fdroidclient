@@ -5,6 +5,7 @@ import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.DataLengthException;
 import org.spongycastle.crypto.OutputLengthException;
 import org.spongycastle.crypto.params.KeyParameter;
+import org.spongycastle.util.Pack;
 
 /**
  * an implementation of the AES (Rijndael), from FIPS-197.
@@ -110,8 +111,9 @@ public class AESFastEngine
          0x2f, 0x5e, 0xbc, 0x63, 0xc6, 0x97, 0x35, 0x6a, 0xd4, 0xb3, 0x7d, 0xfa, 0xef, 0xc5, 0x91 };
 
     // precomputation tables of calculations for rounds
-    private static final int[] T0 =
+    private static final int[] T =
     {
+     // T0
      0xa56363c6, 0x847c7cf8, 0x997777ee, 0x8d7b7bf6, 0x0df2f2ff, 
      0xbd6b6bd6, 0xb16f6fde, 0x54c5c591, 0x50303060, 0x03010102, 
      0xa96767ce, 0x7d2b2b56, 0x19fefee7, 0x62d7d7b5, 0xe6abab4d, 
@@ -163,10 +165,9 @@ public class AESFastEngine
      0x8f8c8c03, 0xf8a1a159, 0x80898909, 0x170d0d1a, 0xdabfbf65, 
      0x31e6e6d7, 0xc6424284, 0xb86868d0, 0xc3414182, 0xb0999929, 
      0x772d2d5a, 0x110f0f1e, 0xcbb0b07b, 0xfc5454a8, 0xd6bbbb6d, 
-     0x3a16162c};
+     0x3a16162c, 
 
-    private static final int[] T1 =
-    {
+     // T1
      0x6363c6a5, 0x7c7cf884, 0x7777ee99, 0x7b7bf68d, 0xf2f2ff0d, 
      0x6b6bd6bd, 0x6f6fdeb1, 0xc5c59154, 0x30306050, 0x01010203, 
      0x6767cea9, 0x2b2b567d, 0xfefee719, 0xd7d7b562, 0xabab4de6, 
@@ -218,10 +219,9 @@ public class AESFastEngine
      0x8c8c038f, 0xa1a159f8, 0x89890980, 0x0d0d1a17, 0xbfbf65da, 
      0xe6e6d731, 0x424284c6, 0x6868d0b8, 0x414182c3, 0x999929b0, 
      0x2d2d5a77, 0x0f0f1e11, 0xb0b07bcb, 0x5454a8fc, 0xbbbb6dd6, 
-     0x16162c3a};
+     0x16162c3a, 
 
-    private static final int[] T2 =
-    {
+     // T2
      0x63c6a563, 0x7cf8847c, 0x77ee9977, 0x7bf68d7b, 0xf2ff0df2, 
      0x6bd6bd6b, 0x6fdeb16f, 0xc59154c5, 0x30605030, 0x01020301, 
      0x67cea967, 0x2b567d2b, 0xfee719fe, 0xd7b562d7, 0xab4de6ab, 
@@ -273,10 +273,9 @@ public class AESFastEngine
      0x8c038f8c, 0xa159f8a1, 0x89098089, 0x0d1a170d, 0xbf65dabf, 
      0xe6d731e6, 0x4284c642, 0x68d0b868, 0x4182c341, 0x9929b099, 
      0x2d5a772d, 0x0f1e110f, 0xb07bcbb0, 0x54a8fc54, 0xbb6dd6bb, 
-     0x162c3a16};
+     0x162c3a16, 
 
-    private static final int[] T3 =
-    {
+     // T3
      0xc6a56363, 0xf8847c7c, 0xee997777, 0xf68d7b7b, 0xff0df2f2, 
      0xd6bd6b6b, 0xdeb16f6f, 0x9154c5c5, 0x60503030, 0x02030101, 
      0xcea96767, 0x567d2b2b, 0xe719fefe, 0xb562d7d7, 0x4de6abab, 
@@ -330,8 +329,9 @@ public class AESFastEngine
      0x5a772d2d, 0x1e110f0f, 0x7bcbb0b0, 0xa8fc5454, 0x6dd6bbbb, 
      0x2c3a1616};
 
-    private static final int[] Tinv0 =
+    private static final int[] Tinv =
     {
+     // Tinv0
      0x50a7f451, 0x5365417e, 0xc3a4171a, 0x965e273a, 0xcb6bab3b, 
      0xf1459d1f, 0xab58faac, 0x9303e34b, 0x55fa3020, 0xf66d76ad, 
      0x9176cc88, 0x254c02f5, 0xfcd7e54f, 0xd7cb2ac5, 0x80443526, 
@@ -383,10 +383,9 @@ public class AESFastEngine
      0x81f3afca, 0x3ec468b9, 0x2c342438, 0x5f40a3c2, 0x72c31d16, 
      0x0c25e2bc, 0x8b493c28, 0x41950dff, 0x7101a839, 0xdeb30c08, 
      0x9ce4b4d8, 0x90c15664, 0x6184cb7b, 0x70b632d5, 0x745c6c48, 
-     0x4257b8d0};
+     0x4257b8d0, 
 
-    private static final int[] Tinv1 =
-    {
+     // Tinv1
      0xa7f45150, 0x65417e53, 0xa4171ac3, 0x5e273a96, 0x6bab3bcb, 
      0x459d1ff1, 0x58faacab, 0x03e34b93, 0xfa302055, 0x6d76adf6, 
      0x76cc8891, 0x4c02f525, 0xd7e54ffc, 0xcb2ac5d7, 0x44352680, 
@@ -438,10 +437,9 @@ public class AESFastEngine
      0xf3afca81, 0xc468b93e, 0x3424382c, 0x40a3c25f, 0xc31d1672, 
      0x25e2bc0c, 0x493c288b, 0x950dff41, 0x01a83971, 0xb30c08de, 
      0xe4b4d89c, 0xc1566490, 0x84cb7b61, 0xb632d570, 0x5c6c4874, 
-     0x57b8d042};
+     0x57b8d042, 
 
-    private static final int[] Tinv2 =
-    {
+     // Tinv2
      0xf45150a7, 0x417e5365, 0x171ac3a4, 0x273a965e, 0xab3bcb6b, 
      0x9d1ff145, 0xfaacab58, 0xe34b9303, 0x302055fa, 0x76adf66d, 
      0xcc889176, 0x02f5254c, 0xe54ffcd7, 0x2ac5d7cb, 0x35268044, 
@@ -493,10 +491,9 @@ public class AESFastEngine
      0xafca81f3, 0x68b93ec4, 0x24382c34, 0xa3c25f40, 0x1d1672c3, 
      0xe2bc0c25, 0x3c288b49, 0x0dff4195, 0xa8397101, 0x0c08deb3, 
      0xb4d89ce4, 0x566490c1, 0xcb7b6184, 0x32d570b6, 0x6c48745c, 
-     0xb8d04257};
+     0xb8d04257, 
 
-    private static final int[] Tinv3 =
-    {
+     // Tinv3
      0x5150a7f4, 0x7e536541, 0x1ac3a417, 0x3a965e27, 0x3bcb6bab, 
      0x1ff1459d, 0xacab58fa, 0x4b9303e3, 0x2055fa30, 0xadf66d76, 
      0x889176cc, 0xf5254c02, 0x4ffcd7e5, 0xc5d7cb2a, 0x26804435, 
@@ -586,10 +583,11 @@ public class AESFastEngine
         return f2 ^ f4 ^ f8 ^ shift(f2 ^ f9, 8) ^ shift(f4 ^ f9, 16) ^ shift(f9, 24);
     }
 
-
     private static int subWord(int x)
     {
-        return (S[x&255]&255 | ((S[(x>>8)&255]&255)<<8) | ((S[(x>>16)&255]&255)<<16) | S[(x>>24)&255]<<24);
+        int i0 = x, i1 = x >>> 8, i2 = x >>> 16, i3 = x >>> 24;
+        i0 = S[i0 & 255] & 255; i1 = S[i1 & 255] & 255; i2 = S[i2 & 255] & 255; i3 = S[i3 & 255] & 255;
+        return i0 | i1 << 8 | i2 << 16 | i3 << 24;
     }
 
     /**
@@ -727,18 +725,18 @@ public class AESFastEngine
             throw new OutputLengthException("output buffer too short");
         }
 
+        unpackBlock(in, inOff);
+
         if (forEncryption)
         {
-            unpackBlock(in, inOff);
             encryptBlock(WorkingKey);
-            packBlock(out, outOff);
         }
         else
         {
-            unpackBlock(in, inOff);
             decryptBlock(WorkingKey);
-            packBlock(out, outOff);
         }
+
+        packBlock(out, outOff);
 
         return BLOCK_SIZE;
     }
@@ -747,129 +745,184 @@ public class AESFastEngine
     {
     }
 
-    private void unpackBlock(
-        byte[]      bytes,
-        int         off)
+    private void unpackBlock(byte[] bytes, int off)
     {
-        int     index = off;
-
-        C0 = (bytes[index++] & 0xff);
-        C0 |= (bytes[index++] & 0xff) << 8;
-        C0 |= (bytes[index++] & 0xff) << 16;
-        C0 |= bytes[index++] << 24;
-
-        C1 = (bytes[index++] & 0xff);
-        C1 |= (bytes[index++] & 0xff) << 8;
-        C1 |= (bytes[index++] & 0xff) << 16;
-        C1 |= bytes[index++] << 24;
-
-        C2 = (bytes[index++] & 0xff);
-        C2 |= (bytes[index++] & 0xff) << 8;
-        C2 |= (bytes[index++] & 0xff) << 16;
-        C2 |= bytes[index++] << 24;
-
-        C3 = (bytes[index++] & 0xff);
-        C3 |= (bytes[index++] & 0xff) << 8;
-        C3 |= (bytes[index++] & 0xff) << 16;
-        C3 |= bytes[index++] << 24;
+        this.C0 = Pack.littleEndianToInt(bytes, off);
+        this.C1 = Pack.littleEndianToInt(bytes, off + 4);
+        this.C2 = Pack.littleEndianToInt(bytes, off + 8);
+        this.C3 = Pack.littleEndianToInt(bytes, off + 12);
     }
 
-    private void packBlock(
-        byte[]      bytes,
-        int         off)
+    private void packBlock(byte[] bytes, int off)
     {
-        int     index = off;
-
-        bytes[index++] = (byte)C0;
-        bytes[index++] = (byte)(C0 >> 8);
-        bytes[index++] = (byte)(C0 >> 16);
-        bytes[index++] = (byte)(C0 >> 24);
-
-        bytes[index++] = (byte)C1;
-        bytes[index++] = (byte)(C1 >> 8);
-        bytes[index++] = (byte)(C1 >> 16);
-        bytes[index++] = (byte)(C1 >> 24);
-
-        bytes[index++] = (byte)C2;
-        bytes[index++] = (byte)(C2 >> 8);
-        bytes[index++] = (byte)(C2 >> 16);
-        bytes[index++] = (byte)(C2 >> 24);
-
-        bytes[index++] = (byte)C3;
-        bytes[index++] = (byte)(C3 >> 8);
-        bytes[index++] = (byte)(C3 >> 16);
-        bytes[index++] = (byte)(C3 >> 24);
+        Pack.intToLittleEndian(this.C0, bytes, off);
+        Pack.intToLittleEndian(this.C1, bytes, off + 4);
+        Pack.intToLittleEndian(this.C2, bytes, off + 8);
+        Pack.intToLittleEndian(this.C3, bytes, off + 12);
     }
 
     private void encryptBlock(int[][] KW)
     {
-        int r, r0, r1, r2, r3;
-        
-        C0 ^= KW[0][0];
-        C1 ^= KW[0][1];
-        C2 ^= KW[0][2];
-        C3 ^= KW[0][3];
+        int t0 = this.C0 ^ KW[0][0];
+        int t1 = this.C1 ^ KW[0][1];
+        int t2 = this.C2 ^ KW[0][2];
 
-        r = 1;
+        /*
+         * Fast engine has precomputed rotr(T0, 8/16/24) tables T1/T2/T3.
+         *
+         * Placing all precomputes in one array requires offsets additions for 8/16/24 rotations but
+         * avoids additional array range checks on 3 more arrays (which on HotSpot are more
+         * expensive than the offset additions).
+         */
+        int r = 1, r0, r1, r2, r3 = this.C3 ^ KW[0][3];
+        int i0, i1, i2, i3;
+
         while (r < ROUNDS - 1)
         {
-            r0 = T0[C0&255] ^ T1[(C1>>8)&255] ^ T2[(C2>>16)&255] ^ T3[(C3>>24)&255] ^ KW[r][0];
-            r1 = T0[C1&255] ^ T1[(C2>>8)&255] ^ T2[(C3>>16)&255] ^ T3[(C0>>24)&255] ^ KW[r][1];
-            r2 = T0[C2&255] ^ T1[(C3>>8)&255] ^ T2[(C0>>16)&255] ^ T3[(C1>>24)&255] ^ KW[r][2];
-            r3 = T0[C3&255] ^ T1[(C0>>8)&255] ^ T2[(C1>>16)&255] ^ T3[(C2>>24)&255] ^ KW[r++][3];
-            C0 = T0[r0&255] ^ T1[(r1>>8)&255] ^ T2[(r2>>16)&255] ^ T3[(r3>>24)&255] ^ KW[r][0];
-            C1 = T0[r1&255] ^ T1[(r2>>8)&255] ^ T2[(r3>>16)&255] ^ T3[(r0>>24)&255] ^ KW[r][1];
-            C2 = T0[r2&255] ^ T1[(r3>>8)&255] ^ T2[(r0>>16)&255] ^ T3[(r1>>24)&255] ^ KW[r][2];
-            C3 = T0[r3&255] ^ T1[(r0>>8)&255] ^ T2[(r1>>16)&255] ^ T3[(r2>>24)&255] ^ KW[r++][3];
+            i0 = t0; i1 = t1 >>> 8; i2 = t2 >>> 16; i3 = r3 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r0 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][0];
+
+            i0 = t1; i1 = t2 >>> 8; i2 = r3 >>> 16; i3 = t0 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r1 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][1];
+
+            i0 = t2; i1 = r3 >>> 8; i2 = t0 >>> 16; i3 = t1 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r2 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][2];
+
+            i0 = r3; i1 = t0 >>> 8; i2 = t1 >>> 16; i3 = t2 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r3 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r++][3];
+
+            i0 = r0; i1 = r1 >>> 8; i2 = r2 >>> 16; i3 = r3 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            t0 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][0];
+
+            i0 = r1; i1 = r2 >>> 8; i2 = r3 >>> 16; i3 = r0 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            t1 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][1];
+
+            i0 = r2; i1 = r3 >>> 8; i2 = r0 >>> 16; i3 = r1 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            t2 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][2];
+
+            i0 = r3; i1 = r0 >>> 8; i2 = r1 >>> 16; i3 = r2 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r3 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r++][3];
         }
 
-        r0 = T0[C0&255] ^ T1[(C1>>8)&255] ^ T2[(C2>>16)&255] ^ T3[(C3>>24)&255] ^ KW[r][0];
-        r1 = T0[C1&255] ^ T1[(C2>>8)&255] ^ T2[(C3>>16)&255] ^ T3[(C0>>24)&255] ^ KW[r][1];
-        r2 = T0[C2&255] ^ T1[(C3>>8)&255] ^ T2[(C0>>16)&255] ^ T3[(C1>>24)&255] ^ KW[r][2];
-        r3 = T0[C3&255] ^ T1[(C0>>8)&255] ^ T2[(C1>>16)&255] ^ T3[(C2>>24)&255] ^ KW[r++][3];
-        
+        i0 = t0; i1 = t1 >>> 8; i2 = t2 >>> 16; i3 = r3 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r0 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][0];
+
+        i0 = t1; i1 = t2 >>> 8; i2 = r3 >>> 16; i3 = t0 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r1 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][1];
+
+        i0 = t2; i1 = r3 >>> 8; i2 = t0 >>> 16; i3 = t1 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r2 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r][2];
+
+        i0 = r3; i1 = t0 >>> 8; i2 = t1 >>> 16; i3 = t2 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r3 = T[i0] ^ T[256 + i1] ^ T[512 + i2] ^ T[768 + i3] ^ KW[r++][3];
+
         // the final round's table is a simple function of S so we don't use a whole other four tables for it
 
-        C0 = (S[r0&255]&255) ^ ((S[(r1>>8)&255]&255)<<8) ^ ((S[(r2>>16)&255]&255)<<16) ^ (S[(r3>>24)&255]<<24) ^ KW[r][0];
-        C1 = (S[r1&255]&255) ^ ((S[(r2>>8)&255]&255)<<8) ^ ((S[(r3>>16)&255]&255)<<16) ^ (S[(r0>>24)&255]<<24) ^ KW[r][1];
-        C2 = (S[r2&255]&255) ^ ((S[(r3>>8)&255]&255)<<8) ^ ((S[(r0>>16)&255]&255)<<16) ^ (S[(r1>>24)&255]<<24) ^ KW[r][2];
-        C3 = (S[r3&255]&255) ^ ((S[(r0>>8)&255]&255)<<8) ^ ((S[(r1>>16)&255]&255)<<16) ^ (S[(r2>>24)&255]<<24) ^ KW[r][3];
+        i0 = r0; i1 = r1 >>> 8; i2 = r2 >>> 16; i3 = r3 >>> 24;
+        i0 = S[i0 & 255] & 255; i1 = S[i1 & 255] & 255; i2 = S[i2 & 255] & 255; i3 = S[i3 & 255] & 255;
+        this.C0 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[r][0];
 
+        i0 = r1; i1 = r2 >>> 8; i2 = r3 >>> 16; i3 = r0 >>> 24;
+        i0 = S[i0 & 255] & 255; i1 = S[i1 & 255] & 255; i2 = S[i2 & 255] & 255; i3 = S[i3 & 255] & 255;
+        this.C1 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[r][1];
+
+        i0 = r2; i1 = r3 >>> 8; i2 = r0 >>> 16; i3 = r1 >>> 24;
+        i0 = S[i0 & 255] & 255; i1 = S[i1 & 255] & 255; i2 = S[i2 & 255] & 255; i3 = S[i3 & 255] & 255;
+        this.C2 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[r][2];
+
+        i0 = r3; i1 = r0 >>> 8; i2 = r1 >>> 16; i3 = r2 >>> 24;
+        i0 = S[i0 & 255] & 255; i1 = S[i1 & 255] & 255; i2 = S[i2 & 255] & 255; i3 = S[i3 & 255] & 255;
+        this.C3 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[r][3];
     }
 
     private void decryptBlock(int[][] KW)
     {
-        int r0, r1, r2, r3;
+        int t0 = this.C0 ^ KW[ROUNDS][0];
+        int t1 = this.C1 ^ KW[ROUNDS][1];
+        int t2 = this.C2 ^ KW[ROUNDS][2];
 
-        C0 ^= KW[ROUNDS][0];
-        C1 ^= KW[ROUNDS][1];
-        C2 ^= KW[ROUNDS][2];
-        C3 ^= KW[ROUNDS][3];
+        int r = ROUNDS - 1, r0, r1, r2, r3 = this.C3 ^ KW[ROUNDS][3];
+        int i0, i1, i2, i3;
 
-        int r = ROUNDS-1; 
-        
-        while (r>1) 
+        while (r > 1)
         {
-            r0 = Tinv0[C0&255] ^ Tinv1[(C3>>8)&255] ^ Tinv2[(C2>>16)&255] ^ Tinv3[(C1>>24)&255] ^ KW[r][0];
-            r1 = Tinv0[C1&255] ^ Tinv1[(C0>>8)&255] ^ Tinv2[(C3>>16)&255] ^ Tinv3[(C2>>24)&255] ^ KW[r][1];
-            r2 = Tinv0[C2&255] ^ Tinv1[(C1>>8)&255] ^ Tinv2[(C0>>16)&255] ^ Tinv3[(C3>>24)&255] ^ KW[r][2];
-            r3 = Tinv0[C3&255] ^ Tinv1[(C2>>8)&255] ^ Tinv2[(C1>>16)&255] ^ Tinv3[(C0>>24)&255] ^ KW[r--][3];
-            C0 = Tinv0[r0&255] ^ Tinv1[(r3>>8)&255] ^ Tinv2[(r2>>16)&255] ^ Tinv3[(r1>>24)&255] ^ KW[r][0];
-            C1 = Tinv0[r1&255] ^ Tinv1[(r0>>8)&255] ^ Tinv2[(r3>>16)&255] ^ Tinv3[(r2>>24)&255] ^ KW[r][1];
-            C2 = Tinv0[r2&255] ^ Tinv1[(r1>>8)&255] ^ Tinv2[(r0>>16)&255] ^ Tinv3[(r3>>24)&255] ^ KW[r][2];
-            C3 = Tinv0[r3&255] ^ Tinv1[(r2>>8)&255] ^ Tinv2[(r1>>16)&255] ^ Tinv3[(r0>>24)&255] ^ KW[r--][3];
+            i0 = t0; i1 = r3 >>> 8; i2 = t2 >>> 16; i3 = t1 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r0 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r][0];
+
+            i0 = t1; i1 = t0 >>> 8; i2 = r3 >>> 16; i3 = t2 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r1 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r][1];
+
+            i0 = t2; i1 = t1 >>> 8; i2 = t0 >>> 16; i3 = r3 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r2 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r][2];
+
+            i0 = r3; i1 = t2 >>> 8; i2 = t1 >>> 16; i3 = t0 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r3 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r--][3];
+
+            i0 = r0; i1 = r3 >>> 8; i2 = r2 >>> 16; i3 = r1 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            t0 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r][0];
+
+            i0 = r1; i1 = r0 >>> 8; i2 = r3 >>> 16; i3 = r2 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            t1 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r][1];
+
+            i0 = r2; i1 = r1 >>> 8; i2 = r0 >>> 16; i3 = r3 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            t2 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r][2];
+
+            i0 = r3; i1 = r2 >>> 8; i2 = r1 >>> 16; i3 = r0 >>> 24;
+            i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+            r3 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[r--][3];
         }
 
-        r0 = Tinv0[C0&255] ^ Tinv1[(C3>>8)&255] ^ Tinv2[(C2>>16)&255] ^ Tinv3[(C1>>24)&255] ^ KW[r][0];
-        r1 = Tinv0[C1&255] ^ Tinv1[(C0>>8)&255] ^ Tinv2[(C3>>16)&255] ^ Tinv3[(C2>>24)&255] ^ KW[r][1];
-        r2 = Tinv0[C2&255] ^ Tinv1[(C1>>8)&255] ^ Tinv2[(C0>>16)&255] ^ Tinv3[(C3>>24)&255] ^ KW[r][2];
-        r3 = Tinv0[C3&255] ^ Tinv1[(C2>>8)&255] ^ Tinv2[(C1>>16)&255] ^ Tinv3[(C0>>24)&255] ^ KW[r][3];
-        
+        i0 = t0; i1 = r3 >>> 8; i2 = t2 >>> 16; i3 = t1 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r0 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[1][0];
+
+        i0 = t1; i1 = t0 >>> 8; i2 = r3 >>> 16; i3 = t2 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r1 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[1][1];
+
+        i0 = t2; i1 = t1 >>> 8; i2 = t0 >>> 16; i3 = r3 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r2 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[1][2];
+
+        i0 = r3; i1 = t2 >>> 8; i2 = t1 >>> 16; i3 = t0 >>> 24;
+        i0 &= 255; i1 &= 255; i2 &= 255; i3 &= 255;
+        r3 = Tinv[i0] ^ Tinv[256 + i1] ^ Tinv[512 + i2] ^ Tinv[768 + i3] ^ KW[1][3];
+
         // the final round's table is a simple function of Si so we don't use a whole other four tables for it
 
-        C0 = (Si[r0&255]&255) ^ ((Si[(r3>>8)&255]&255)<<8) ^ ((Si[(r2>>16)&255]&255)<<16) ^ (Si[(r1>>24)&255]<<24) ^ KW[0][0];
-        C1 = (Si[r1&255]&255) ^ ((Si[(r0>>8)&255]&255)<<8) ^ ((Si[(r3>>16)&255]&255)<<16) ^ (Si[(r2>>24)&255]<<24) ^ KW[0][1];
-        C2 = (Si[r2&255]&255) ^ ((Si[(r1>>8)&255]&255)<<8) ^ ((Si[(r0>>16)&255]&255)<<16) ^ (Si[(r3>>24)&255]<<24) ^ KW[0][2];
-        C3 = (Si[r3&255]&255) ^ ((Si[(r2>>8)&255]&255)<<8) ^ ((Si[(r1>>16)&255]&255)<<16) ^ (Si[(r0>>24)&255]<<24) ^ KW[0][3];
+        i0 = r0; i1 = r3 >>> 8; i2 = r2 >>> 16; i3 = r1 >>> 24;
+        i0 = Si[i0 & 255] & 255; i1 = Si[i1 & 255] & 255; i2 = Si[i2 & 255] & 255; i3 = Si[i3 & 255] & 255;
+        this.C0 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[0][0];
+
+        i0 = r1; i1 = r0 >>> 8; i2 = r3 >>> 16; i3 = r2 >>> 24;
+        i0 = Si[i0 & 255] & 255; i1 = Si[i1 & 255] & 255; i2 = Si[i2 & 255] & 255; i3 = Si[i3 & 255] & 255;
+        this.C1 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[0][1];
+
+        i0 = r2; i1 = r1 >>> 8; i2 = r0 >>> 16; i3 = r3 >>> 24;
+        i0 = Si[i0 & 255] & 255; i1 = Si[i1 & 255] & 255; i2 = Si[i2 & 255] & 255; i3 = Si[i3 & 255] & 255;
+        this.C2 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[0][2];
+
+        i0 = r3; i1 = r2 >>> 8; i2 = r1 >>> 16; i3 = r0 >>> 24;
+        i0 = Si[i0 & 255] & 255; i1 = Si[i1 & 255] & 255; i2 = Si[i2 & 255] & 255; i3 = Si[i3 & 255] & 255;
+        this.C3 = i0 ^ i1 << 8 ^ i2 << 16 ^ i3 << 24 ^ KW[0][3];
     }
 }

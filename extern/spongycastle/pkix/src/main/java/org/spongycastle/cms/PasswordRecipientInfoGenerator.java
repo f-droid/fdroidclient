@@ -12,9 +12,6 @@ import org.spongycastle.asn1.cms.RecipientInfo;
 import org.spongycastle.asn1.pkcs.PBKDF2Params;
 import org.spongycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.spongycastle.asn1.x509.AlgorithmIdentifier;
-import org.spongycastle.crypto.PBEParametersGenerator;
-import org.spongycastle.crypto.generators.PKCS5S2ParametersGenerator;
-import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.operator.GenericKey;
 
 public abstract class PasswordRecipientInfoGenerator
@@ -96,25 +93,9 @@ public abstract class PasswordRecipientInfoGenerator
             keyDerivationAlgorithm = new AlgorithmIdentifier(PKCSObjectIdentifiers.id_PBKDF2, new PBKDF2Params(salt, 1024));
         }
 
-        PBKDF2Params params = PBKDF2Params.getInstance(keyDerivationAlgorithm.getParameters());
-        byte[] derivedKey;
+        byte[] encodedPassword = CMSUtils.getPasswordBytes(schemeID, password);
 
-        if (schemeID == PasswordRecipient.PKCS5_SCHEME2)
-        {
-            PKCS5S2ParametersGenerator gen = new PKCS5S2ParametersGenerator();
-
-            gen.init(PBEParametersGenerator.PKCS5PasswordToBytes(password), params.getSalt(), params.getIterationCount().intValue());
-
-            derivedKey = ((KeyParameter)gen.generateDerivedParameters(keySize)).getKey();
-        }
-        else
-        {
-            PKCS5S2ParametersGenerator gen = new PKCS5S2ParametersGenerator();
-
-            gen.init(PBEParametersGenerator.PKCS5PasswordToUTF8Bytes(password), params.getSalt(), params.getIterationCount().intValue());
-
-            derivedKey = ((KeyParameter)gen.generateDerivedParameters(keySize)).getKey();
-        }
+        byte[] derivedKey = calculateDerivedKey(encodedPassword, keyDerivationAlgorithm, keySize);
 
         AlgorithmIdentifier kekAlgorithmId = new AlgorithmIdentifier(kekAlgorithm, new DEROctetString(iv));
 
@@ -132,6 +113,9 @@ public abstract class PasswordRecipientInfoGenerator
         return new RecipientInfo(new PasswordRecipientInfo(keyDerivationAlgorithm,
             keyEncryptionAlgorithm, encryptedKey));
     }
+
+    protected abstract byte[] calculateDerivedKey(byte[] encodedPassword, AlgorithmIdentifier derivationAlgorithm, int keySize)
+        throws CMSException;
 
     protected abstract byte[] generateEncryptedBytes(AlgorithmIdentifier algorithm, byte[] derivedKey, GenericKey contentEncryptionKey)
         throws CMSException;

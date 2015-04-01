@@ -3,10 +3,10 @@ package org.spongycastle.pqc.crypto.rainbow.util;
 /**
  * This class provides the basic operations like addition, multiplication and
  * finding the multiplicative inverse of an element in GF2^8.
- * <p/>
+ * <p>
  * The operations are implemented using the irreducible polynomial
  * 1+x^2+x^3+x^6+x^8 ( 1 0100 1101 = 0x14d )
- * <p/>
+ * <p>
  * This class makes use of lookup tables(exps and logs) for implementing the
  * operations in order to increase the efficiency of Rainbow.
  */

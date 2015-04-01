@@ -70,8 +70,7 @@ public final class IntUtils
      * Sorts this array of integers according to the Quicksort algorithm. After
      * calling this method this array is sorted in ascending order with the
      * smallest integer taking position 0 in the array.
-     * <p/>
-     * <p/>
+     * <p>
      * This implementation is based on the quicksort algorithm as described in
      * <code>Data Structures In Java</code> by Thomas A. Standish, Chapter 10,
      * ISBN 0-201-30564-X.

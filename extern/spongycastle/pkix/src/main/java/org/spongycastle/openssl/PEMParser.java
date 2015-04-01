@@ -63,6 +63,7 @@ public class PEMParser
         parsers.put("CERTIFICATE REQUEST", new PKCS10CertificationRequestParser());
         parsers.put("NEW CERTIFICATE REQUEST", new PKCS10CertificationRequestParser());
         parsers.put("CERTIFICATE", new X509CertificateParser());
+        parsers.put("TRUSTED CERTIFICATE", new X509CertificateParser());
         parsers.put("X509 CERTIFICATE", new X509CertificateParser());
         parsers.put("X509 CRL", new X509CRLParser());
         parsers.put("PKCS7", new PKCS7Parser());

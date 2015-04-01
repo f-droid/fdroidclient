@@ -42,7 +42,7 @@ public class NTRUEncryptionParameters
     public Digest hashAlg;
 
     /**
-     * Constructs a parameter set that uses ternary private keys (i.e. </code>polyType=SIMPLE</code>).
+     * Constructs a parameter set that uses ternary private keys (i.e. <code>polyType=SIMPLE</code>).
      *
      * @param N            number of polynomial coefficients
      * @param q            modulus
@@ -78,7 +78,7 @@ public class NTRUEncryptionParameters
     }
 
     /**
-     * Constructs a parameter set that uses product-form private keys (i.e. </code>polyType=PRODUCT</code>).
+     * Constructs a parameter set that uses product-form private keys (i.e. <code>polyType=PRODUCT</code>).
      *
      * @param N            number of polynomial coefficients
      * @param q            modulus

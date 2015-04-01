@@ -14,7 +14,7 @@ import org.spongycastle.asn1.ASN1EncodableVector;
 import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1OctetString;
 import org.spongycastle.asn1.ASN1Sequence;
-import org.spongycastle.asn1.DERInteger;
+import org.spongycastle.asn1.ASN1Integer;
 import org.spongycastle.asn1.DEROctetString;
 import org.spongycastle.asn1.DEROutputStream;
 import org.spongycastle.asn1.DERSequence;
@@ -547,7 +547,7 @@ public abstract class JDKAlgorithmParameters
 
                 v.add(new DEROctetString(currentSpec.getDerivationV()));
                 v.add(new DEROctetString(currentSpec.getEncodingV()));
-                v.add(new DERInteger(currentSpec.getMacKeySize()));
+                v.add(new ASN1Integer(currentSpec.getMacKeySize()));
 
                 dOut.writeObject(new DERSequence(v));
                 dOut.close();
@@ -608,7 +608,7 @@ public abstract class JDKAlgorithmParameters
                 this.currentSpec = new IESParameterSpec(
                                         ((ASN1OctetString)s.getObjectAt(0)).getOctets(),
                                         ((ASN1OctetString)s.getObjectAt(0)).getOctets(),
-                                        ((DERInteger)s.getObjectAt(0)).getValue().intValue());
+                                        ((ASN1Integer)s.getObjectAt(0)).getValue().intValue());
             }
             catch (ClassCastException e)
             {
