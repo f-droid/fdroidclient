@@ -30,7 +30,7 @@ public class SelectAppsFragment extends ThemeableListFragment
     implements LoaderManager.LoaderCallbacks<Cursor>, SearchView.OnQueryTextListener {
 
     @SuppressWarnings("UnusedDeclaration")
-    private static final String TAG = "org.fdroid.fdroid.views.swap.SelectAppsFragment";
+    private static final String TAG = "fdroid.SwapAppsList";
 
     private String mCurrentFilterString;
 
@@ -124,11 +124,14 @@ public class SelectAppsFragment extends ThemeableListFragment
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        toggleAppSelected(position);
+        // Ignore the headerView at position 0.
+        if (position > 0) {
+            toggleAppSelected(position);
+        }
     }
 
     private void toggleAppSelected(int position) {
-        Cursor c = (Cursor) getListAdapter().getItem(position);
+        Cursor c = (Cursor) getListAdapter().getItem(position - 1);
         String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
         if (FDroidApp.selectedApps.contains(packageName)) {
             FDroidApp.selectedApps.remove(packageName);
@@ -254,7 +257,7 @@ public class SelectAppsFragment extends ThemeableListFragment
 
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            View view = getInflater(context).inflate(R.layout.select_local_apps_list_item, null);
+            View view = getInflater(context).inflate(R.layout.select_local_apps_list_item, parent, false);
             bindView(view, context, cursor);
             return view;
         }
@@ -288,7 +291,6 @@ public class SelectAppsFragment extends ThemeableListFragment
                 CheckBox checkBox = (CheckBox)checkBoxView;
                 checkBox.setOnCheckedChangeListener(null);
 
-                final int cursorPosition = cursor.getPosition();
                 final int listPosition = cursor.getPosition() + 1; // To account for the header view.
 
                 checkBox.setChecked(listView.isItemChecked(listPosition));
@@ -296,7 +298,7 @@ public class SelectAppsFragment extends ThemeableListFragment
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         listView.setItemChecked(listPosition, isChecked);
-                        toggleAppSelected(cursorPosition);
+                        toggleAppSelected(listPosition);
                     }
                 });
             }
