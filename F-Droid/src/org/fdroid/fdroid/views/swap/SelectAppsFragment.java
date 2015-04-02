@@ -222,7 +222,7 @@ public class SelectAppsFragment extends ThemeableListFragment
     private class AppListAdapter extends CursorAdapter {
 
         @SuppressWarnings("UnusedDeclaration")
-        private static final String TAG = "org.fdroid.fdroid.views.swap.SelectAppsFragment.AppListAdapter";
+        private static final String TAG = "fdroid.AppListAdapter";
 
         @Nullable
         private LayoutInflater inflater;

@@ -41,7 +41,7 @@ public class WifiQrFragment extends Fragment {
 
     private static final int CONNECT_TO_SWAP = 1;
 
-    private static final String TAG = "org.fdroid.fdroid.views.swap.WifiQrFragment";
+    private static final String TAG = "fdroid.WifiQrFragment";
 
     private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override

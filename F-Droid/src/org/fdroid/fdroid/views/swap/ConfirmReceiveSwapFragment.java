@@ -21,7 +21,7 @@ import org.fdroid.fdroid.data.RepoProvider;
 
 public class ConfirmReceiveSwapFragment extends Fragment implements ProgressListener {
 
-    private static final String TAG = "org.fdroid.fdroid.views.swap.ConfirmReceiveSwapFragment";
+    private static final String TAG = "fdroid.ConfirmReceiveSwapFragment";
 
     private NewRepoConfig newRepoConfig;
 
