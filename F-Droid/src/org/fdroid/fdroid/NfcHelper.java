@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -48,7 +47,7 @@ public class NfcHelper {
                         Uri.parse("file://" + appInfo.publicSourceDir),
                 };
                 nfcAdapter.setBeamPushUris(uris, activity);
-            } catch (NameNotFoundException e) {
+            } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
         }

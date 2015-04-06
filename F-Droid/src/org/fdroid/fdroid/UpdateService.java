@@ -29,7 +29,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -433,7 +432,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
 
-            Editor e = prefs.edit();
+            SharedPreferences.Editor e = prefs.edit();
             e.putLong(Preferences.PREF_UPD_LAST, System.currentTimeMillis());
             e.commit();
 

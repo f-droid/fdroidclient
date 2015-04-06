@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -53,7 +52,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
@@ -137,7 +135,7 @@ public class LocalRepoManager {
             attemptToDelete(fdroidApkLink);
             if (Utils.symlinkOrCopyFile(apkFile, fdroidApkLink))
                 fdroidClientURL = "/" + fdroidApkLink.getName();
-        } catch (NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
         return fdroidClientURL;
@@ -258,7 +256,7 @@ public class LocalRepoManager {
                 return;
             PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
             app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
-        } catch (NameNotFoundException | CertificateEncodingException | IOException e) {
+        } catch (PackageManager.NameNotFoundException | CertificateEncodingException | IOException e) {
             Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
             Log.e(TAG, Log.getStackTraceString(e));
             return;
@@ -278,7 +276,7 @@ public class LocalRepoManager {
                 try {
                     appInfo = pm.getApplicationInfo(app.id, PackageManager.GET_META_DATA);
                     copyIconToRepo(appInfo.loadIcon(pm), app.id, app.installedApk.vercode);
-                } catch (NameNotFoundException e) {
+                } catch (PackageManager.NameNotFoundException e) {
                     e.printStackTrace();
                 }
             }
@@ -349,7 +347,7 @@ public class LocalRepoManager {
         private void tagFdroid() throws IOException, LocalRepoKeyStore.InitException {
             serializer.startTag("", "fdroid");
             tagRepo();
-            for (Entry<String, App> entry : apps.entrySet()) {
+            for (Map.Entry<String, App> entry : apps.entrySet()) {
                 tagApplication(entry.getValue());
             }
             serializer.endTag("", "fdroid");

@@ -3,8 +3,10 @@ package org.fdroid.fdroid.data;
 import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.pm.*;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.FeatureInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Build;
 import android.text.TextUtils;
@@ -19,7 +21,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -209,7 +214,7 @@ public class App extends ValueObject implements Comparable<App> {
      */
     @TargetApi(9)
     public App(Context context, PackageManager pm, String packageName)
-            throws CertificateEncodingException, IOException, NameNotFoundException {
+            throws CertificateEncodingException, IOException, PackageManager.NameNotFoundException {
         final ApplicationInfo appInfo = pm.getApplicationInfo(packageName,
                 PackageManager.GET_META_DATA);
         final PackageInfo packageInfo = pm.getPackageInfo(packageName,
@@ -222,7 +227,7 @@ public class App extends ValueObject implements Comparable<App> {
                 ApplicationInfo installerAppInfo = pm.getApplicationInfo(installerPackageName,
                         PackageManager.GET_META_DATA);
                 installerPackageLabel = installerAppInfo.loadLabel(pm);
-            } catch (NameNotFoundException e) {
+            } catch (PackageManager.NameNotFoundException e) {
                 Log.d(getClass().getCanonicalName(), e.getMessage());
             }
         }

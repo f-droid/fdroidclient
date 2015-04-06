@@ -29,7 +29,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
@@ -644,7 +643,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 mInstalledSignature = pi.signatures[0];
                 Hasher hash = new Hasher("MD5", mInstalledSignature.toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
-            } catch (NameNotFoundException e) {
+            } catch (PackageManager.NameNotFoundException e) {
                 Log.d(TAG, "Failed to get installed signature");
             } catch (NoSuchAlgorithmException e) {
                 Log.d(TAG, "Failed to calculate signature MD5 sum");
@@ -1237,7 +1236,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                             Permission permission = new Permission(getActivity(), permissionName);
                             // TODO: Make this list RTL friendly
                             sb.append("\t• ").append(permission.getName()).append('\n');
-                        } catch (NameNotFoundException e) {
+                        } catch (PackageManager.NameNotFoundException e) {
                             if (permissionName.equals("ACCESS_SUPERUSER")) {
                                 // TODO: i18n this string, but surely it is already translated somewhere?
                                 sb.append("\t• Full permissions to all device features and storage\n");

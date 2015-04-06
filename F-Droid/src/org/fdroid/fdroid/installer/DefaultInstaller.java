@@ -27,7 +27,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 
 /**
@@ -79,7 +78,7 @@ public class DefaultInstaller extends Installer {
             } catch (ActivityNotFoundException e) {
                 throw new AndroidNotCompatibleException(e);
             }
-        } catch (NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             // already checked in super class
         }
     }

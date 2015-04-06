@@ -1,14 +1,23 @@
 package org.fdroid.fdroid.data;
 
-import android.content.*;
+import android.content.Context;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-
-import java.util.*;
 
 public class AppProvider extends FDroidProvider {
 

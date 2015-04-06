@@ -29,7 +29,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 
 /**
@@ -219,7 +218,7 @@ abstract public class Installer {
         // check if package exists before proceeding...
         try {
             mPm.getPackageInfo(packageName, 0);
-        } catch (NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Couldn't find package " + packageName + " to delete.");
             return;
         }

@@ -19,7 +19,7 @@
 package org.fdroid.fdroid;
 
 import android.content.Context;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
@@ -233,7 +233,7 @@ public final class Utils {
                 }
                 eventType = xml.nextToken();
             }
-        } catch (NameNotFoundException | IOException | XmlPullParserException e) {
+        } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
             e.printStackTrace();
         }
         return 8; // some kind of hopeful default

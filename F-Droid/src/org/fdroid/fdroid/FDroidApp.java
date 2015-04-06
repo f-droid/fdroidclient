@@ -30,7 +30,6 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -263,7 +262,7 @@ public class FDroidApp extends Application {
                     break;
                 }
             }
-        } catch (NameNotFoundException e1) {
+        } catch (PackageManager.NameNotFoundException e1) {
             e1.printStackTrace();
             found = false;
         }

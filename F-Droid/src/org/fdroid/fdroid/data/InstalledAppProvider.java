@@ -5,8 +5,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources.NotFoundException;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
@@ -100,9 +99,9 @@ public class InstalledAppProvider extends FDroidProvider {
         try {
             appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
             return appInfo.loadLabel(pm).toString();
-        } catch (NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-        } catch (NotFoundException e) {
+        } catch (Resources.NotFoundException e) {
             Log.d(TAG, "getApplicationLabel: " + e.getMessage());
         }
         return packageName; // all else fails, return id

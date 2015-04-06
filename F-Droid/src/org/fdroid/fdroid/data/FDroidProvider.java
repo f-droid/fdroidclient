@@ -9,7 +9,7 @@ import android.os.Build;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Map.Entry;
+import java.util.Map;
 
 public abstract class FDroidProvider extends ContentProvider {
 
@@ -117,7 +117,7 @@ public abstract class FDroidProvider extends ContentProvider {
         }
 
         Set<String> keySet = new HashSet<>();
-        for (Entry<String, Object> item : values.valueSet()) {
+        for (Map.Entry<String, Object> item : values.valueSet()) {
             String key = item.getKey();
             keySet.add(key);
         }
