@@ -9,14 +9,15 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.text.TextUtils;
 
+import android.support.v4.preference.PreferenceFragment;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.CheckRootAsyncTask;
 import org.fdroid.fdroid.installer.Installer;
 
-public class PreferenceFragment
-        extends android.support.v4.preference.PreferenceFragment
+public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String[] summariesToUpdate = {

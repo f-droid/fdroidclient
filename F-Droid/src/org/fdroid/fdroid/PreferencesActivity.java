@@ -24,7 +24,8 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
-import org.fdroid.fdroid.views.fragments.PreferenceFragment;
+
+import org.fdroid.fdroid.views.fragments.PreferencesFragment;
 
 public class PreferencesActivity extends ActionBarActivity {
 
@@ -45,9 +46,9 @@ public class PreferencesActivity extends ActionBarActivity {
             // http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
             setContentView(new LinearLayout(this));
 
-            PreferenceFragment preferenceFragment = new PreferenceFragment();
+            PreferencesFragment preferencesFragment = new PreferencesFragment();
             fm.beginTransaction()
-                    .add(android.R.id.content, preferenceFragment)
+                    .add(android.R.id.content, preferencesFragment)
                     .commit();
         }
 
