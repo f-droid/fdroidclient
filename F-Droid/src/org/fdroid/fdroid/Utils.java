@@ -201,7 +201,8 @@ public final class Utils {
         "4.3",   // 18
         "4.4",   // 19
         "4.4W",  // 20
-        "5.0"    // 21
+        "5.0",   // 21
+        "5.1"    // 22
     };
 
     public static String getAndroidVersionName(int sdkLevel) {
