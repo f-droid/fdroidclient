@@ -185,7 +185,7 @@ public class ApkProvider extends FDroidProvider {
 
     private static final UriMatcher matcher = new UriMatcher(-1);
 
-    public static Map<String,String> REPO_FIELDS = new HashMap<>();
+    public static final Map<String,String> REPO_FIELDS = new HashMap<>();
 
     static {
         REPO_FIELDS.put(DataColumns.REPO_VERSION, RepoProvider.DataColumns.VERSION);

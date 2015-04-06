@@ -52,9 +52,9 @@ public class LocalRepoService extends Service {
     private JmDNS jmdns;
     private ServiceInfo pairService;
 
-    public static int START = 1111111;
-    public static int STOP = 12345678;
-    public static int RESTART = 87654;
+    public static final int START = 1111111;
+    public static final int STOP = 12345678;
+    public static final int RESTART = 87654;
 
     final Messenger messenger = new Messenger(new StartStopHandler(this));
 
