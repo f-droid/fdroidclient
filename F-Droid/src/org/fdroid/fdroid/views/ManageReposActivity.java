@@ -31,6 +31,7 @@ import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
@@ -125,7 +126,9 @@ public class ManageReposActivity extends ActionBarActivity {
              * http://blog.perpetumdesign.com/2011/08/strange-case-of
              * -dr-action-and-mr-bar.html
              */
-            setContentView(new LinearLayout(this));
+            if (Build.VERSION.SDK_INT >= 11 && Build.VERSION.SDK_INT <= 13) {
+                setContentView(new LinearLayout(this));
+            }
 
             fm.beginTransaction()
                     .add(android.R.id.content, new RepoListFragment())

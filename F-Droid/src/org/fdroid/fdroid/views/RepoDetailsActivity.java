@@ -43,7 +43,9 @@ public class RepoDetailsActivity extends ActionBarActivity {
             // a (bug?) thing in 3.0, 3.1 which requires setContentView to be invoked before
             // the actionbar is played with:
             // http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
-            setContentView(new LinearLayout(this));
+            if (Build.VERSION.SDK_INT >= 11 && Build.VERSION.SDK_INT <= 13) {
+                setContentView(new LinearLayout(this));
+            }
 
             RepoDetailsFragment fragment = new RepoDetailsFragment();
             fragment.setArguments(getIntent().getExtras());
