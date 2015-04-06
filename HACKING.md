@@ -4,18 +4,23 @@ F-Droid Client Hacking Doc
 Style
 -----
 
-We follow the [Google Java style](https://google-styleguide.googlecode.com/svn/trunk/javaguide.html).
-Some of its points are:
+We loosely follow the [Google Java style](https://google-styleguide.googlecode.com/svn/trunk/javaguide.html).
+Some of the points we follow the most are:
 
  * Four space indentation
  * UTF-8 source files
  * Exactly one top-level class per file
  * No wildcard imports
- * Braces are always used and follow K&R
- * Commented fallthroughs
+ * One statement per line
+ * K&R spacings with braces and parenthesis
 
-We didn't follow any style before but generally it was more or less like
-Google's. As we make the switch, we encourage devs to follow this new format.
+Some other interesting additions we might use in the future:
+
+ * Commented fallthroughs
+ * Braces are always used after if, for and while
+
+We don't strictly follow the entire style spec, but when in doubt you should
+follow it.
 
 Building
 --------
