@@ -23,7 +23,7 @@ public interface ProgressListener {
         // that function can initialize "total" and progressively
         // update "progress"
         public int progress;
-        public int total;
+        public final int total;
 
         public Event(String type) {
             this(type, NO_VALUE, NO_VALUE, null);

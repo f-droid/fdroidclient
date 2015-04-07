@@ -36,14 +36,14 @@ import java.util.List;
 public class RepoXMLHandler extends DefaultHandler {
 
     // The repo we're processing.
-    private Repo repo;
+    private final Repo repo;
 
-    private List<App> apps = new ArrayList<>();
-    private List<Apk> apksList = new ArrayList<>();
+    private final List<App> apps = new ArrayList<>();
+    private final List<Apk> apksList = new ArrayList<>();
 
     private App curapp = null;
     private Apk curapk = null;
-    private StringBuilder curchars = new StringBuilder();
+    private final StringBuilder curchars = new StringBuilder();
 
     // After processing the XML, these will be -1 if the index didn't specify
     // them - otherwise it will be the value specified.
@@ -61,7 +61,7 @@ public class RepoXMLHandler extends DefaultHandler {
     private String hashType;
 
     private int progressCounter = 0;
-    private ProgressListener progressListener;
+    private final ProgressListener progressListener;
 
     private int totalAppCount;
 

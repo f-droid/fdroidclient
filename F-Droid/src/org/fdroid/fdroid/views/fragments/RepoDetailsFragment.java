@@ -293,7 +293,7 @@ public class RepoDetailsFragment extends Fragment {
 
     @TargetApi(16)
     private void prepareNfcMenuItems(Menu menu) {
-        boolean needsEnableNfcMenuItem = false;
+        boolean needsEnableNfcMenuItem;
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
         if (nfcAdapter == null) {
             return;

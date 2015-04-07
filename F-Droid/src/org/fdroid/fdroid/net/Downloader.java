@@ -24,7 +24,7 @@ public abstract class Downloader {
 
     private ProgressListener progressListener = null;
     private Bundle eventData = null;
-    private File outputFile;
+    private final File outputFile;
 
     protected URL sourceUrl;
     protected String cacheTag = null;

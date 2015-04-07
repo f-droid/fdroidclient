@@ -58,7 +58,7 @@ public class SelectLocalAppsActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+    public final ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {

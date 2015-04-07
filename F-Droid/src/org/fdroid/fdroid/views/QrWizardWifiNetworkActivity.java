@@ -63,7 +63,7 @@ public class QrWizardWifiNetworkActivity extends ActionBarActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
     }
 
-    private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
             Log.i(TAG, "onWifiChange.onReceive()");

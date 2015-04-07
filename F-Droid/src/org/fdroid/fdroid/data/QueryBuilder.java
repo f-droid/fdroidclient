@@ -5,8 +5,8 @@ import java.util.List;
 
 abstract class QueryBuilder {
 
-    private List<String> fields = new ArrayList<>();
-    private StringBuilder tables = new StringBuilder(getRequiredTables());
+    private final List<String> fields = new ArrayList<>();
+    private final StringBuilder tables = new StringBuilder(getRequiredTables());
     private String selection = null;
     private String orderBy = null;
 

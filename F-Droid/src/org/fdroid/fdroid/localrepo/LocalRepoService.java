@@ -45,7 +45,7 @@ public class LocalRepoService extends Service {
     private Notification notification;
     // Unique Identification Number for the Notification.
     // We use it on Notification start, and to cancel it.
-    private int NOTIFICATION = R.string.local_repo_running;
+    private final int NOTIFICATION = R.string.local_repo_running;
 
     private Handler webServerThreadHandler = null;
     private LocalHTTPD localHttpd;
@@ -90,7 +90,7 @@ public class LocalRepoService extends Service {
         }
     }
 
-    private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
             stopNetworkServices();
@@ -109,7 +109,7 @@ public class LocalRepoService extends Service {
         }
     };
 
-    private ChangeListener localRepoHttpsChangeListener = new ChangeListener() {
+    private final ChangeListener localRepoHttpsChangeListener = new ChangeListener() {
         @Override
         public void onPreferenceChange() {
             Log.i(TAG, "onPreferenceChange");

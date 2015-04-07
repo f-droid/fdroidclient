@@ -150,7 +150,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     class ApkListAdapter extends ArrayAdapter<Apk> {
 
-        private LayoutInflater mInflater = (LayoutInflater) mctx.getSystemService(
+        private final LayoutInflater mInflater = (LayoutInflater) mctx.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
 
         public ApkListAdapter(Context context, App app) {
@@ -331,8 +331,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
      */
     private static class ConfigurationChangeHelper {
 
-        public ApkDownloader downloader;
-        public App app;
+        public final ApkDownloader downloader;
+        public final App app;
 
         public ConfigurationChangeHelper(ApkDownloader downloader, App app) {
             this.downloader = downloader;
@@ -941,7 +941,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
     }
 
-    Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
+    final Installer.InstallerCallback myInstallerCallback = new Installer.InstallerCallback() {
 
         @Override
         public void onSuccess(final int operation) {

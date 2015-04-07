@@ -72,7 +72,7 @@ public class LocalRepoManager {
         "swap-tick-not-done.png"
     };
 
-    private Map<String, App> apps = new HashMap<>();
+    private final Map<String, App> apps = new HashMap<>();
 
     public final SanitizedFile xmlIndex;
     private SanitizedFile xmlIndexJar = null;

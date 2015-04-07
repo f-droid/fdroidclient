@@ -36,9 +36,9 @@ import android.util.Log;
  * instantiate a working Installer based on F-Droids granted permissions.
  */
 abstract public class Installer {
-    protected Context mContext;
-    protected PackageManager mPm;
-    protected InstallerCallback mCallback;
+    protected final Context mContext;
+    protected final PackageManager mPm;
+    protected final InstallerCallback mCallback;
 
     public static final String TAG = "fdroid.Installer";
 

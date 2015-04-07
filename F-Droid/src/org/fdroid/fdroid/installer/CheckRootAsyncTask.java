@@ -28,8 +28,8 @@ import android.os.AsyncTask;
 
 public class CheckRootAsyncTask extends AsyncTask<Void, Void, Boolean> {
     ProgressDialog mDialog;
-    Context mContext;
-    CheckRootCallback mCallback;
+    final Context mContext;
+    final CheckRootCallback mCallback;
 
     public interface CheckRootCallback {
         public void onRootCheck(boolean rootGranted);

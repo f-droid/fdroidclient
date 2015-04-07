@@ -18,8 +18,8 @@ public class TabManager {
     public static final int INDEX_INSTALLED  = 1;
     public static final int INDEX_CAN_UPDATE = 2;
 
-    private ViewPager pager;
-    private FDroid parent;
+    private final ViewPager pager;
+    private final FDroid parent;
     private final ActionBar actionBar;
     private Spinner actionBarSpinner = null;
 

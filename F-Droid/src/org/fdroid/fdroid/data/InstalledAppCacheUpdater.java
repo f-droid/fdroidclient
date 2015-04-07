@@ -24,10 +24,10 @@ public class InstalledAppCacheUpdater {
 
     private static final String TAG = "fdroid.InstalledAppCacheUpdater";
 
-    private Context context;
+    private final Context context;
 
-    private List<PackageInfo> toInsert = new ArrayList<>();
-    private List<String>      toDelete = new ArrayList<>();
+    private final List<PackageInfo> toInsert = new ArrayList<>();
+    private final List<String>      toDelete = new ArrayList<>();
 
     protected InstalledAppCacheUpdater(Context context) {
         this.context = context;

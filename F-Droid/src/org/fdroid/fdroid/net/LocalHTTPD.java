@@ -40,15 +40,19 @@ public class LocalHTTPD extends NanoHTTPD {
         StringTokenizer st = new StringTokenizer(uri, "/ ", true);
         while (st.hasMoreTokens()) {
             String tok = st.nextToken();
-            if (tok.equals("/"))
+            switch (tok) {
+            case "/":
                 newUri += "/";
-            else if (tok.equals(" "))
+                break;
+            case " ":
                 newUri += "%20";
-            else {
+                break;
+            default:
                 try {
                     newUri += URLEncoder.encode(tok, "UTF-8");
                 } catch (UnsupportedEncodingException ignored) {
                 }
+                break;
             }
         }
         return newUri;
@@ -147,8 +151,7 @@ public class LocalHTTPD extends NanoHTTPD {
             }
         }
 
-        Response response = null;
-        response = serveFile(uri, headers, f, getMimeTypeForFile(uri));
+        Response response = serveFile(uri, headers, f, getMimeTypeForFile(uri));
         return response != null ? response :
                 createResponse(Response.Status.NOT_FOUND, NanoHTTPD.MIME_PLAINTEXT,
                         "Error 404, file not found.");

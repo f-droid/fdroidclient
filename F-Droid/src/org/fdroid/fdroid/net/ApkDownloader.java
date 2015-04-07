@@ -59,9 +59,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      */
     public static final String EVENT_DATA_ERROR_TYPE = "apkDownloadErrorType";
 
-    private Apk curApk;
-    private String repoAddress;
-    private SanitizedFile localFile;
+    private final Apk curApk;
+    private final String repoAddress;
+    private final SanitizedFile localFile;
 
     private ProgressListener listener;
     private AsyncDownloadWrapper dlWrapper = null;
@@ -69,7 +69,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     private int totalSize = 0;
     private boolean isComplete = false;
 
-    private long id = ++downloadIdCounter;
+    private final long id = ++downloadIdCounter;
 
     public void setProgressListener(ProgressListener listener) {
         this.listener = listener;

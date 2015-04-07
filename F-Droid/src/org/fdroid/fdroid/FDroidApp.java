@@ -65,11 +65,11 @@ public class FDroidApp extends Application {
     public static String ipAddressString = null;
     public static String ssid = "";
     public static String bssid = "";
-    public static Repo repo = new Repo();
+    public static final Repo repo = new Repo();
     public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
-    private static org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
+    private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
     private static Messenger localRepoServiceMessenger = null;
     private static boolean localRepoServiceIsBound = false;
 
@@ -276,7 +276,7 @@ public class FDroidApp extends Application {
         }
     }
 
-    private static ServiceConnection serviceConnection = new ServiceConnection() {
+    private static final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
             localRepoServiceMessenger = new Messenger(service);

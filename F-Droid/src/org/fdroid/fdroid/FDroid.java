@@ -191,7 +191,7 @@ public class FDroid extends ActionBarActivity {
                 return true;
 
             case R.id.action_about:
-                View view = null;
+                View view;
                 if (Build.VERSION.SDK_INT >= 11) {
                     LayoutInflater li = LayoutInflater.from(this);
                     view = li.inflate(R.layout.about, null);
@@ -211,7 +211,7 @@ public class FDroid extends ActionBarActivity {
                 } catch (Exception e) {
                 }
 
-                Builder p = null;
+                Builder p;
                 if (Build.VERSION.SDK_INT >= 11) {
                     p = new AlertDialog.Builder(this).setView(view);
                 } else {

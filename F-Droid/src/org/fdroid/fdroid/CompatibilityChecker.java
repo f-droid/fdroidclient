@@ -18,11 +18,11 @@ public class CompatibilityChecker extends Compatibility {
 
     private static final String TAG = "fdroid.Compatibility";
 
-    private Context context;
-    private Set<String> features;
-    private String[] cpuAbis;
-    private String cpuAbisDesc;
-    private boolean ignoreTouchscreen;
+    private final Context context;
+    private final Set<String> features;
+    private final String[] cpuAbis;
+    private final String cpuAbisDesc;
+    private final boolean ignoreTouchscreen;
 
     public CompatibilityChecker(Context ctx) {
 

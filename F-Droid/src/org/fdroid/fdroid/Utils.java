@@ -143,8 +143,8 @@ public final class Utils {
     }
 
     public static boolean copy(File inFile, File outFile) {
-        InputStream input = null;
-        OutputStream output = null;
+        InputStream input;
+        OutputStream output;
         try {
             input = new FileInputStream(inFile);
             output = new FileOutputStream(outFile);
@@ -358,7 +358,7 @@ public final class Utils {
     }
 
     public static class CommaSeparatedList implements Iterable<String> {
-        private String value;
+        private final String value;
 
         private CommaSeparatedList(String list) {
             value = list;

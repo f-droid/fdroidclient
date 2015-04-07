@@ -20,8 +20,8 @@ import com.google.zxing.encode.QRCodeEncoder;
 public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
     private static final String TAG = "fdroid.QrGenAsyncTask";
 
-    private Activity activity;
-    private int viewId;
+    private final Activity activity;
+    private final int viewId;
     private Bitmap qrBitmap;
 
     public QrGenAsyncTask(Activity activity, int viewId) {
@@ -63,7 +63,7 @@ public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
         } catch (WriterException e) {
             Log.e(TAG, e.getMessage());
         }
-        return (Void) null;
+        return null;
     }
 
     @Override

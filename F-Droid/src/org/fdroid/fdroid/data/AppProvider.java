@@ -581,7 +581,7 @@ public class AppProvider extends FDroidProvider {
                 } else {
                     selection.append(" AND ");
                 }
-                selection.append(column + " like ?");
+                selection.append(column).append(" like ?");
                 selectionKeywords[iKeyword] = keyword;
                 iKeyword++;
             }

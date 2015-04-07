@@ -1,4 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
 
     <style name="AppBaseThemeDark" parent="Theme.AppCompat">
         <!-- API 11 theme customizations go here -->

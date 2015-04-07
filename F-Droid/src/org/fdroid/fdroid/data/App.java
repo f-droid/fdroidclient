@@ -278,8 +278,9 @@ public class App extends ValueObject implements Comparable<App> {
         if (features != null && features.length > 0) {
             List<String> featureNames = new ArrayList<>(features.length);
 
-            for (int i = 0; i < features.length; i++)
-                featureNames.add(features[i].name);
+            for (FeatureInfo feature : features) {
+                featureNames.add(feature.name);
+            }
 
             apk.features = Utils.CommaSeparatedList.make(featureNames);
         }

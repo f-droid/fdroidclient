@@ -54,8 +54,8 @@ public class LocalRepoActivity extends ActionBarActivity {
 
     private Timer stopTimer;
 
-    private int SET_IP_ADDRESS = 7345;
-    private int UPDATE_REPO = 7346;
+    private final int SET_IP_ADDRESS = 7345;
+    private final int UPDATE_REPO = 7346;
 
     /** Called when the activity is first created. */
     @Override
@@ -108,14 +108,14 @@ public class LocalRepoActivity extends ActionBarActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onLocalRepoChange);
     }
 
-    private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
             resetNetworkInfo();
         }
     };
 
-    private BroadcastReceiver onLocalRepoChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onLocalRepoChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
             String state = i.getStringExtra(LocalRepoService.STATE);
@@ -185,7 +185,7 @@ public class LocalRepoActivity extends ActionBarActivity {
             setUIFromWifi();
         } else if (requestCode == UPDATE_REPO) {
             setUIFromWifi();
-            new UpdateAsyncTask(this, FDroidApp.selectedApps.toArray(new String[0]))
+            new UpdateAsyncTask(this, FDroidApp.selectedApps.toArray(new String[FDroidApp.selectedApps.size()]))
                     .execute();
         }
     }
@@ -277,9 +277,9 @@ public class LocalRepoActivity extends ActionBarActivity {
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
         private static final String TAG = "fdroid.LocalRepoActivity.UpdateAsyncTask";
-        private ProgressDialog progressDialog;
-        private String[] selectedApps;
-        private Uri sharingUri;
+        private final ProgressDialog progressDialog;
+        private final String[] selectedApps;
+        private final Uri sharingUri;
 
         public UpdateAsyncTask(Context c, String[] apps) {
             selectedApps = apps;

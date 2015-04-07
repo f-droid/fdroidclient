@@ -43,7 +43,7 @@ public class WifiQrFragment extends Fragment {
 
     private static final String TAG = "fdroid.WifiQrFragment";
 
-    private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
             setUIFromWifi();

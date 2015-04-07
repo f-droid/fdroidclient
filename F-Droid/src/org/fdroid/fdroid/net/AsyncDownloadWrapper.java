@@ -26,8 +26,8 @@ public class AsyncDownloadWrapper extends Handler {
     private static final int MSG_ERROR              = 4;
     private static final String MSG_DATA            = "data";
 
-    private Downloader downloader;
-    private Listener listener;
+    private final Downloader downloader;
+    private final Listener listener;
     private DownloadThread downloadThread = null;
 
     /**

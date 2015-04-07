@@ -98,7 +98,7 @@ public class Hasher {
     }
 
     public static String hex(Certificate cert) {
-        byte[] encoded = null;
+        byte[] encoded;
         try {
             encoded = cert.getEncoded();
         } catch(CertificateEncodingException e) {

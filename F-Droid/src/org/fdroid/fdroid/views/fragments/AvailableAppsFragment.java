@@ -71,7 +71,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     private class CategoryObserver extends ContentObserver {
 
-        private ArrayAdapter<String> adapter;
+        private final ArrayAdapter<String> adapter;
 
         public CategoryObserver(ArrayAdapter<String> adapter) {
             super(null);

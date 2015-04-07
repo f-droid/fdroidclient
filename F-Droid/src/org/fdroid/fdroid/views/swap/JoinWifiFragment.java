@@ -24,7 +24,7 @@ import org.fdroid.fdroid.net.WifiStateChangeService;
 
 public class JoinWifiFragment extends Fragment {
 
-    private BroadcastReceiver onWifiChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             refreshWifiState();

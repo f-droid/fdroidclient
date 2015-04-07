@@ -127,9 +127,9 @@ public class MDnsHelper implements ServiceListener {
     }
 
     public static class RepoScanListAdapter extends BaseAdapter {
-        private Context mContext;
-        private LayoutInflater mLayoutInflater;
-        private List<DiscoveredRepo> mEntries = new ArrayList<>();
+        private final Context mContext;
+        private final LayoutInflater mLayoutInflater;
+        private final List<DiscoveredRepo> mEntries = new ArrayList<>();
 
         public RepoScanListAdapter(Context context) {
             mContext = context;
