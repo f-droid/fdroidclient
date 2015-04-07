@@ -612,13 +612,13 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection queryNewlyAdded() {
         final String selection = "fdroid_app.added > ?";
-        final String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
+        final String[] args = { Utils.formatDate(Preferences.get().calcMaxHistory(), "") };
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryRecentlyUpdated() {
         final String selection = "fdroid_app.added != fdroid_app.lastUpdated AND fdroid_app.lastUpdated > ?";
-        final String[] args = { Utils.DATE_FORMAT.format(Preferences.get().calcMaxHistory()) };
+        final String[] args = { Utils.formatDate(Preferences.get().calcMaxHistory(), "") };
         return new AppQuerySelection(selection, args);
     }
 

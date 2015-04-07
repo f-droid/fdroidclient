@@ -9,7 +9,6 @@ import org.fdroid.fdroid.Utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.ParseException;
 import java.util.Date;
 
 public class Repo extends ValueObject {
@@ -34,7 +33,6 @@ public class Repo extends ValueObject {
     public boolean isSwap;
 
     public Repo() {
-
     }
 
     public Repo(Cursor cursor) {
@@ -62,7 +60,7 @@ public class Repo extends ValueObject {
                 inuse = cursor.getInt(i) == 1;
                 break;
             case RepoProvider.DataColumns.LAST_UPDATED:
-                lastUpdated = toDate(cursor.getString(i));
+                lastUpdated = Utils.parseDate(cursor.getString(i), null);
                 break;
             case RepoProvider.DataColumns.MAX_AGE:
                 maxage = cursor.getInt(i);
@@ -129,9 +127,8 @@ public class Repo extends ValueObject {
     private static int toInt(Integer value) {
         if (value == null) {
             return 0;
-        } else {
-            return value;
         }
+        return value;
     }
 
     public void setValues(ContentValues values) {
@@ -161,14 +158,8 @@ public class Repo extends ValueObject {
         }
 
         if (values.containsKey(RepoProvider.DataColumns.LAST_UPDATED)) {
-            String dateString = values.getAsString(RepoProvider.DataColumns.LAST_UPDATED);
-            if (dateString != null) {
-                try {
-                    lastUpdated =  Utils.DATE_FORMAT.parse(dateString);
-                } catch (ParseException e) {
-                    Log.e(TAG, "Error parsing date " + dateString);
-                }
-            }
+            final String dateString = values.getAsString(RepoProvider.DataColumns.LAST_UPDATED);
+            lastUpdated = Utils.parseDate(dateString, null);
         }
 
         if (values.containsKey(RepoProvider.DataColumns.MAX_AGE)) {

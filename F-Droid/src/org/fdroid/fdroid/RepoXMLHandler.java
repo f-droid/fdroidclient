@@ -29,7 +29,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,18 +128,10 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.version = str;
                 break;
             case "versioncode":
-                try {
-                    curapk.vercode = Integer.parseInt(str);
-                } catch (NumberFormatException ex) {
-                    curapk.vercode = -1;
-                }
+                curapk.vercode = Utils.parseInt(str, -1);
                 break;
             case "size":
-                try {
-                    curapk.size = Integer.parseInt(str);
-                } catch (NumberFormatException ex) {
-                    curapk.size = 0;
-                }
+                curapk.size = Utils.parseInt(str, 0);
                 break;
             case "hash":
                 if (hashType == null || hashType.equals("md5")) {
@@ -163,26 +154,13 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.apkName = str;
                 break;
             case "sdkver":
-                try {
-                    curapk.minSdkVersion = Integer.parseInt(str);
-                } catch (NumberFormatException ex) {
-                    curapk.minSdkVersion = 0;
-                }
+                curapk.minSdkVersion = Utils.parseInt(str, 0);
                 break;
             case "maxsdkver":
-                try {
-                    curapk.maxSdkVersion = Integer.parseInt(str);
-                } catch (NumberFormatException ex) {
-                    curapk.maxSdkVersion = 0;
-                }
+                curapk.maxSdkVersion = Utils.parseInt(str, 0);
                 break;
             case "added":
-                try {
-                    curapk.added = str.length() == 0 ? null : Utils.DATE_FORMAT
-                            .parse(str);
-                } catch (ParseException e) {
-                    curapk.added = null;
-                }
+                curapk.added = Utils.parseDate(str, null);
                 break;
             case "permissions":
                 curapk.permissions = Utils.CommaSeparatedList.make(str);
@@ -243,30 +221,16 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.trackerURL = str;
                 break;
             case "added":
-                try {
-                    curapp.added = str.length() == 0 ? null : Utils.DATE_FORMAT
-                            .parse(str);
-                } catch (ParseException e) {
-                    curapp.added = null;
-                }
+                curapp.added = Utils.parseDate(str, null);
                 break;
             case "lastupdated":
-                try {
-                    curapp.lastUpdated = str.length() == 0 ? null
-                            : Utils.DATE_FORMAT.parse(str);
-                } catch (ParseException e) {
-                    curapp.lastUpdated = null;
-                }
+                curapp.lastUpdated = Utils.parseDate(str, null);
                 break;
             case "marketversion":
                 curapp.upstreamVersion = str;
                 break;
             case "marketvercode":
-                try {
-                    curapp.upstreamVercode = Integer.parseInt(str);
-                } catch (NumberFormatException ex) {
-                    curapp.upstreamVercode = -1;
-                }
+                curapp.upstreamVercode = Utils.parseInt(str, -1);
                 break;
             case "categories":
                 curapp.categories = Utils.CommaSeparatedList.make(str);
@@ -293,19 +257,8 @@ public class RepoXMLHandler extends DefaultHandler {
             if (pk != null)
                 pubkey = pk;
 
-            final String maxAgeAttr = attributes.getValue("", "maxage");
-            if (maxAgeAttr != null) {
-                try {
-                    maxage = Integer.parseInt(maxAgeAttr);
-                } catch (NumberFormatException nfe) {}
-            }
-
-            final String versionAttr = attributes.getValue("", "version");
-            if (versionAttr != null) {
-                try {
-                    version = Integer.parseInt(versionAttr);
-                } catch (NumberFormatException nfe) {}
-            }
+            maxage = Utils.parseInt(attributes.getValue("", "maxage"), -1);
+            version = Utils.parseInt(attributes.getValue("", "version"), -1);
 
             final String nm = attributes.getValue("", "name");
             if (nm != null)

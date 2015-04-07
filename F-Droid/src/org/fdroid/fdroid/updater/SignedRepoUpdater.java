@@ -121,7 +121,7 @@ public class SignedRepoUpdater extends RepoUpdater {
             UpdateException {
         Date updateTime = new Date(System.currentTimeMillis());
         Log.d(TAG, "Getting signed index from " + repo.address + " at " +
-                Utils.LOG_DATE_FORMAT.format(updateTime));
+                Utils.formatLogDate(updateTime));
 
         File indexJar  = downloadedFile;
         File indexXml  = null;

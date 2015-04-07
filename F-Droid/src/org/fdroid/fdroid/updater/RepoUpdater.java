@@ -191,7 +191,7 @@ abstract public class RepoUpdater {
 
         ContentValues values = new ContentValues();
 
-        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.DATE_FORMAT.format(new Date()));
+        values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
 
         if (repo.lastetag == null || !repo.lastetag.equals(etag)) {
             values.put(RepoProvider.DataColumns.LAST_ETAG, etag);

@@ -71,7 +71,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
                 hashType = cursor.getString(i);
                 break;
             case ApkProvider.DataColumns.ADDED_DATE:
-                added = ValueObject.toDate(cursor.getString(i));
+                added = Utils.parseDate(cursor.getString(i), null);
                 break;
             case ApkProvider.DataColumns.FEATURES:
                 features = Utils.CommaSeparatedList.make(cursor.getString(i));
@@ -147,7 +147,7 @@ public class Apk extends ValueObject implements Comparable<Apk> {
         values.put(ApkProvider.DataColumns.NAME, apkName);
         values.put(ApkProvider.DataColumns.MIN_SDK_VERSION, minSdkVersion);
         values.put(ApkProvider.DataColumns.MAX_SDK_VERSION, maxSdkVersion);
-        values.put(ApkProvider.DataColumns.ADDED_DATE, added == null ? "" : Utils.DATE_FORMAT.format(added));
+        values.put(ApkProvider.DataColumns.ADDED_DATE, Utils.formatDate(added, ""));
         values.put(ApkProvider.DataColumns.PERMISSIONS, Utils.CommaSeparatedList.str(permissions));
         values.put(ApkProvider.DataColumns.FEATURES, Utils.CommaSeparatedList.str(features));
         values.put(ApkProvider.DataColumns.NATIVE_CODE, Utils.CommaSeparatedList.str(nativecode));

@@ -176,10 +176,10 @@ public class App extends ValueObject implements Comparable<App> {
                 upstreamVersion = cursor.getString(i);
                 break;
             case AppProvider.DataColumns.ADDED:
-                added = ValueObject.toDate(cursor.getString(i));
+                added = Utils.parseDate(cursor.getString(i), null);
                 break;
             case AppProvider.DataColumns.LAST_UPDATED:
-                lastUpdated = ValueObject.toDate(cursor.getString(i));
+                lastUpdated = Utils.parseDate(cursor.getString(i), null);
                 break;
             case AppProvider.DataColumns.CATEGORIES:
                 categories = Utils.CommaSeparatedList.make(cursor.getString(i));
@@ -383,8 +383,8 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.LITECOIN_ADDR, litecoinAddr);
         values.put(AppProvider.DataColumns.DOGECOIN_ADDR, dogecoinAddr);
         values.put(AppProvider.DataColumns.FLATTR_ID, flattrID);
-        values.put(AppProvider.DataColumns.ADDED, added == null ? "" : Utils.DATE_FORMAT.format(added));
-        values.put(AppProvider.DataColumns.LAST_UPDATED, added == null ? "" : Utils.DATE_FORMAT.format(lastUpdated));
+        values.put(AppProvider.DataColumns.ADDED, Utils.formatDate(added, ""));
+        values.put(AppProvider.DataColumns.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
         values.put(AppProvider.DataColumns.SUGGESTED_VERSION_CODE, suggestedVercode);
         values.put(AppProvider.DataColumns.UPSTREAM_VERSION, upstreamVersion);
         values.put(AppProvider.DataColumns.UPSTREAM_VERSION_CODE, upstreamVercode);

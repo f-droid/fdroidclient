@@ -54,7 +54,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
 import java.util.List;
@@ -69,12 +71,12 @@ public final class Utils {
 
     // The date format used for storing dates (e.g. lastupdated, added) in the
     // database.
-    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
 
-    public static final SimpleDateFormat LOG_DATE_FORMAT =
+    private static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
     public static String getIconsDir(Context context) {
@@ -470,6 +472,45 @@ public final class Utils {
         return String.format("%0" + (bytes.length << 1) + "X", bi);
     }
 
+    public static int parseInt(String str, int fallback) {
+        if (str == null || str.length() == 0) {
+            return fallback;
+        }
+        int result;
+        try {
+            result = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            result = fallback;
+        }
+        return result;
+    }
+
+    public static Date parseDate(String str, Date fallback) {
+        if (str == null || str.length() == 0) {
+            return fallback;
+        }
+        Date result;
+        try {
+            result = DATE_FORMAT.parse(str);
+        } catch (ParseException e) {
+            result = fallback;
+        }
+        return result;
+    }
+
+    public static String formatDate(Date date, String fallback) {
+        if (date == null) {
+            return fallback;
+        }
+        return DATE_FORMAT.format(date);
+    }
+
+    public static String formatLogDate(Date date) {
+        if (date == null) {
+            return "(unknown)";
+        }
+        return LOG_DATE_FORMAT.format(date);
+    }
 
     // Need this to add the unimplemented support for ordered and unordered
     // lists to Html.fromHtml().
