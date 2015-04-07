@@ -285,14 +285,25 @@ public final class Utils {
     }
 
     @NonNull
+    public static Uri getLocalRepoUri(Repo repo) {
+        if (TextUtils.isEmpty(repo.address))
+            return Uri.parse("http://wifi-not-enabled");
+        Uri uri = Uri.parse(repo.address);
+        Uri.Builder b = uri.buildUpon();
+        if (!TextUtils.isEmpty(repo.fingerprint))
+            b.appendQueryParameter("fingerprint", repo.fingerprint);
+        String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https" : "http";
+        b.scheme(scheme);
+        return b.build();
+    }
+
     public static Uri getSharingUri(Repo repo) {
         if (TextUtils.isEmpty(repo.address))
             return Uri.parse("http://wifi-not-enabled");
-        Uri uri = Uri.parse(repo.address.replaceFirst("http", "fdroidrepo"));
-        Uri.Builder b = uri.buildUpon();
+        Uri localRepoUri = getLocalRepoUri(repo);
+        Uri.Builder b = localRepoUri.buildUpon();
+        b.scheme(localRepoUri.getScheme().replaceFirst("http", "fdroidrepo"));
         b.appendQueryParameter("swap", "1");
-        if (!TextUtils.isEmpty(repo.fingerprint))
-            b.appendQueryParameter("fingerprint", repo.fingerprint);
         if (!TextUtils.isEmpty(FDroidApp.bssid)) {
             b.appendQueryParameter("bssid", Uri.encode(FDroidApp.bssid));
             if (!TextUtils.isEmpty(FDroidApp.ssid))

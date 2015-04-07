@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -27,6 +28,7 @@ public class NewRepoConfig {
     private String bssid;
     private String ssid;
     private boolean fromSwap;
+    private boolean preventFurtherSwaps;
 
     public NewRepoConfig(Context context, String uri) {
         init(context, uri != null ? Uri.parse(uri) : null);
@@ -34,6 +36,7 @@ public class NewRepoConfig {
 
     public NewRepoConfig(Context context, Intent intent) {
         init(context, intent.getData());
+        preventFurtherSwaps = intent.getBooleanExtra(ConnectSwapActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, false);
     }
 
     private void init(Context context, Uri incomingUri) {
@@ -110,12 +113,26 @@ public class NewRepoConfig {
         return port;
     }
 
-    public String getUriString() {
+    public String getRepoUriString() {
         return uriString;
     }
 
-    public Uri getUri() {
+    /**
+     * This is the URI which was passed to the NewRepoConfig for parsing.
+     * Not that it may be an fdroidrepo:// or http:// scheme, and it may also have
+     * ssid, bssid, and perhaps other query parameters. If you want the actual repo
+     * URL, then you will probably want {@link org.fdroid.fdroid.data.NewRepoConfig#getRepoUri()}.
+     */
+    public Uri getParsedUri() {
         return uri;
+    }
+
+    public Uri getRepoUri() {
+        if (uriString == null) {
+            return null;
+        } else {
+            return Uri.parse(uriString);
+        }
     }
 
     public String getHost() {
@@ -136,6 +153,10 @@ public class NewRepoConfig {
 
     public boolean isFromSwap() {
         return fromSwap;
+    }
+
+    public boolean preventFurtherSwaps() {
+        return preventFurtherSwaps;
     }
 
     /*

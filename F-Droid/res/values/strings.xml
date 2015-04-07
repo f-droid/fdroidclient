@@ -301,6 +301,7 @@
     <string name="swap_wifi_help">Learn more about Wifi</string>
     <string name="menu_swap">Swap apps</string>
     <string name="swap">Swap apps</string>
+    <string name="swap_repo_name">Swap</string>
     <string name="swap_no_wifi_network">No network yet</string>
     <string name="swap_view_available_networks">(Tap to open available networks)</string>
     <string name="swap_wifi_qr_not_working">It\'s not working</string>
@@ -309,4 +310,5 @@
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now?</string>
     <string name="swap_introduction">Your mobile device becomes an app store with Swap!</string>
     <string name="swap_start">START A SWAP</string>
+    <string name="swap_reciprocate_failed">An error occurred while attempting to swap with another device. We will still try to get apps from them, but they may not be able to get apps from us.</string>
 </resources>

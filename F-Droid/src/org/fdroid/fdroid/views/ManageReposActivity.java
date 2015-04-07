@@ -584,7 +584,7 @@ public class ManageReposActivity extends ActionBarActivity {
         /* an URL from a click, NFC, QRCode scan, etc */
         NewRepoConfig newRepoConfig = new NewRepoConfig(this, intent);
         if (newRepoConfig.isValidRepo()) {
-            importRepo(newRepoConfig.getUriString(), newRepoConfig.getFingerprint());
+            importRepo(newRepoConfig.getRepoUriString(), newRepoConfig.getFingerprint());
             checkIfNewRepoOnSameWifi(newRepoConfig);
         } else if (newRepoConfig.getErrorMessage() != null) {
             Toast.makeText(this, newRepoConfig.getErrorMessage(), Toast.LENGTH_LONG).show();

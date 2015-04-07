@@ -1,11 +1,14 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
+import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,6 +22,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import javax.net.ssl.SSLServerSocketFactory;
@@ -68,8 +72,54 @@ public class LocalHTTPD extends NanoHTTPD {
         return newUri;
     }
 
+    private void requestSwap(String repo) {
+        Log.d(TAG, "Received request to swap with " + repo);
+        Log.d(TAG, "Showing confirm screen to check whether that is okay with the user.");
+
+        Uri repoUri = Uri.parse(repo);
+        Intent intent = new Intent(context, ConnectSwapActivity.class);
+        intent.setData(repoUri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(ConnectSwapActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
+        context.startActivity(intent);
+    }
+
     @Override
     public Response serve(IHTTPSession session) {
+
+        if (session.getMethod() == Method.POST) {
+            try {
+                session.parseBody(new HashMap<String, String>());
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage());
+                return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "Internal server error, check logcat on server for details.");
+            } catch (ResponseException re) {
+                return new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
+            }
+
+            return handlePost(session);
+        } else {
+            return handleGet(session);
+        }
+    }
+
+    private Response handlePost(IHTTPSession session) {
+        Uri uri = Uri.parse(session.getUri());
+        switch(uri.getPath()) {
+        case "/request-swap":
+            if (!session.getParms().containsKey("repo")) {
+                Log.e(TAG, "Malformed /request-swap request to local repo HTTP server. Should have posted a 'repo' parameter." );
+                return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "Requires 'repo' parameter to be posted.");
+            } else {
+                requestSwap(session.getParms().get("repo"));
+                return new Response(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
+            }
+        }
+        return new Response("");
+    }
+
+    private Response handleGet(IHTTPSession session) {
+
         Map<String, String> header = session.getHeaders();
         Map<String, String> parms = session.getParms();
         String uri = session.getUri();

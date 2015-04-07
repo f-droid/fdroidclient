@@ -198,7 +198,9 @@ public class FDroid extends ActionBarActivity {
             if (parser.isValidRepo()) {
                 intent.putExtra("handled", true);
                 if (parser.isFromSwap()) {
-                    startActivityForResult(new Intent(ACTION_ADD_REPO, intent.getData(), this, ConnectSwapActivity.class), REQUEST_SWAP);
+                    Intent confirmIntent = new Intent(this, ConnectSwapActivity.class);
+                    confirmIntent.setData(intent.getData());
+                    startActivityForResult(confirmIntent, REQUEST_SWAP);
                 } else {
                     startActivity(new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class));
                 }
