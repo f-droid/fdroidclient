@@ -54,11 +54,6 @@ public class SelectLocalAppsFragment extends ListFragment
     private String mCurrentFilterString;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 

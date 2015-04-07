@@ -1454,11 +1454,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
 
         @Override
-        public void onResume() {
-            super.onResume();
-        }
-
-        @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             final Apk apk = getApks().getItem(position - l.getHeaderViewsCount());
             if (getApp().installedVersionCode == apk.vercode) {

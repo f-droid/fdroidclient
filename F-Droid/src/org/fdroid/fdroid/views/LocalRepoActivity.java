@@ -275,12 +275,6 @@ public class LocalRepoActivity extends ActionBarActivity {
         }
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        // ignore orientation/keyboard change
-        super.onConfigurationChanged(newConfig);
-    }
-
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
         private static final String TAG = "fdroid.LocalRepoActivity.UpdateAsyncTask";
         private ProgressDialog progressDialog;
