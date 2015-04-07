@@ -77,15 +77,20 @@ public class LocalRepoService extends Service {
         public void handleMessage(final Message msg) {
             new Thread() {
                 public void run() {
-                    if (msg.arg1 == START) {
+                    switch (msg.arg1) {
+                    case START:
                         service.startNetworkServices();
-                    } else if (msg.arg1 == STOP) {
+                        break;
+                    case STOP:
                         service.stopNetworkServices();
-                    } else if (msg.arg1 == RESTART) {
+                        break;
+                    case RESTART:
                         service.stopNetworkServices();
                         service.startNetworkServices();
-                    } else {
+                        break;
+                    default:
                         Log.e(TAG, "Unsupported msg.arg1 (" + msg.arg1 + "), ignored");
+                        break;
                     }
                 }
             }.start();

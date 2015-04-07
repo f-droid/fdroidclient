@@ -86,16 +86,21 @@ public class AsyncDownloadWrapper extends Handler {
      * @param message
      */
     public void handleMessage(Message message) {
-        if (message.arg1 == MSG_PROGRESS) {
+        switch (message.arg1) {
+        case MSG_PROGRESS:
             Bundle data = message.getData();
             ProgressListener.Event event = data.getParcelable(MSG_DATA);
             listener.onProgress(event);
-        } else if (message.arg1 == MSG_DOWNLOAD_COMPLETE) {
+            break;
+        case MSG_DOWNLOAD_COMPLETE:
             listener.onDownloadComplete();
-        } else if (message.arg1 == MSG_DOWNLOAD_CANCELLED) {
+            break;
+        case MSG_DOWNLOAD_CANCELLED:
             listener.onDownloadCancelled();
-        } else if (message.arg1 == MSG_ERROR) {
+            break;
+        case MSG_ERROR:
             listener.onErrorDownloading(message.getData().getString(MSG_DATA));
+            break;
         }
     }
 

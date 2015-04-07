@@ -161,37 +161,44 @@ public class UpdateService extends IntentService implements ProgressListener {
 
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
-            final String message = resultData.getString(UpdateService.RESULT_MESSAGE);
+            final String message = resultData.getString(RESULT_MESSAGE);
             boolean finished = false;
-            if (resultCode == UpdateService.STATUS_ERROR_GLOBAL) {
+            switch (resultCode) {
+            case STATUS_ERROR_GLOBAL:
                 forwardEvent(EVENT_ERROR);
                 Toast.makeText(context, context.getString(R.string.global_error_updating_repos) + " " + message, Toast.LENGTH_LONG).show();
                 finished = true;
-            } else if (resultCode == UpdateService.STATUS_ERROR_LOCAL || resultCode == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
+                break;
+            case STATUS_ERROR_LOCAL:
+            case STATUS_ERROR_LOCAL_SMALL:
                 StringBuilder msgB = new StringBuilder();
-                List<CharSequence> repoErrors = resultData.getCharSequenceArrayList(UpdateService.RESULT_REPO_ERRORS);
+                List<CharSequence> repoErrors = resultData.getCharSequenceArrayList(RESULT_REPO_ERRORS);
                 for (CharSequence error : repoErrors) {
                     if (msgB.length() > 0) msgB.append('\n');
                     msgB.append(error);
                 }
-                if (resultCode == UpdateService.STATUS_ERROR_LOCAL_SMALL) {
+                if (resultCode == STATUS_ERROR_LOCAL_SMALL) {
                     msgB.append("\n").append(context.getString(R.string.all_other_repos_fine));
                 }
                 Toast.makeText(context, msgB.toString(), Toast.LENGTH_LONG).show();
                 finished = true;
-            } else if (resultCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES) {
+                break;
+            case STATUS_COMPLETE_WITH_CHANGES:
                 forwardEvent(EVENT_COMPLETE_WITH_CHANGES);
                 finished = true;
-            } else if (resultCode == UpdateService.STATUS_COMPLETE_AND_SAME) {
+                break;
+            case STATUS_COMPLETE_AND_SAME:
                 forwardEvent(EVENT_COMPLETE_AND_SAME);
                 Toast.makeText(context, context.getString(R.string.repos_unchanged), Toast.LENGTH_LONG).show();
                 finished = true;
-            } else if (resultCode == UpdateService.STATUS_INFO) {
+                break;
+            case STATUS_INFO:
                 forwardEvent(EVENT_INFO);
                 if (dialog != null) {
                     lastShownMessage = message;
                     dialog.setMessage(message);
                 }
+                break;
             }
 
             if (finished) {
