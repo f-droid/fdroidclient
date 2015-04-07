@@ -18,6 +18,8 @@
 * Split up search terms when querying the app database - "fire fox" now
   matches FireFox
 
+* Fixed bug where categories were always empty on non-english locales
+
 * Misc fixes to the "swap" workflow (especially on Android 2.3 devices)
 
 ### 0.83 (2015-03-26)

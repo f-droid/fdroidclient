@@ -41,6 +41,7 @@ public class AvailableAppsFragment extends AppListFragment implements
     public static final String CATEGORY_KEY = "Selection";
     public static String DEFAULT_CATEGORY;
 
+    private List<String> categories;
     private Spinner categorySpinner;
     private String currentCategory = null;
     private AppListAdapter adapter = null;
@@ -103,43 +104,53 @@ public class AvailableAppsFragment extends AppListFragment implements
         }
     }
 
-    /* Suppress deprecation warnings because:
-     *  * setBackgroundDrawable(Drawable) -> setBackground(Drawable) was only in API 16
+    /**
+     * Attempt to translate category names with fallback to default name if no translation available
      */
-    @SuppressWarnings("deprecation")
-    private Spinner createCategorySpinner() {
-
-        List<String> categories = AppProvider.Helper.categories(getActivity());
-
-        // attempt to translate category names with fallback to default name
+    private List<String> translateCategories(List<String> categories) {
         List<String> translatedCategories = new ArrayList<>(categories.size());
         Resources res = getResources();
         for (final String category : categories) {
             int id = res.getIdentifier(category.replace(" & ", "_"), "string", getActivity().getPackageName());
             translatedCategories.add(id == 0 ? category : getString(id));
         }
+        return translatedCategories;
+    }
 
-        categorySpinner = new Spinner(getActivity());
-        // Giving it an ID lets the default save/restore state
-        // functionality do its stuff.
-        categorySpinner.setId(R.id.categorySpinner);
-        // with holo, the menu gets lost since it looks the same as an app list item
+    /**
+     * With holo, the menu gets lost since it looks the same as an app list item.
+     * Suppress deprecation warnings because:
+     *  * setBackgroundDrawable(Drawable) -> setBackground(Drawable) was only in API 16
+     */
+    @SuppressWarnings("deprecation")
+    private void styleSpinner(Spinner spinner) {
         if (Build.VERSION.SDK_INT >= 14) {
             Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
             if (FDroidApp.getCurTheme() == FDroidApp.Theme.dark) {
                 menuButton.setAlpha(32); // make it darker via alpha
             }
             if (Build.VERSION.SDK_INT >= 16) {
-                categorySpinner.setBackground(menuButton);
+                spinner.setBackground(menuButton);
             } else {
-                categorySpinner.setBackgroundDrawable(menuButton);
+                spinner.setBackgroundDrawable(menuButton);
             }
         }
+    }
+
+    private Spinner createCategorySpinner() {
+
+        categories = AppProvider.Helper.categories(getActivity());
+
+        categorySpinner = new Spinner(getActivity());
+
+        // Giving it an ID lets the default save/restore state functionality do its stuff.
+        categorySpinner.setId(R.id.categorySpinner);
+
+        styleSpinner(categorySpinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
-            getActivity(), android.R.layout.simple_spinner_item, translatedCategories);
-        adapter.setDropDownViewResource(
-            android.R.layout.simple_spinner_dropdown_item);
+            getActivity(), android.R.layout.simple_spinner_item, translateCategories(categories));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
 
         getActivity().getContentResolver().registerContentObserver(
@@ -149,7 +160,8 @@ public class AvailableAppsFragment extends AppListFragment implements
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 getListView().setSelection(0);
-                setCurrentCategory(categorySpinner.getItemAtPosition(pos).toString());
+                Log.d(TAG, "Selected category: " + categories.get(pos));
+                setCurrentCategory(categories.get(pos));
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
