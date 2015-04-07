@@ -19,15 +19,15 @@
 
 package org.fdroid.fdroid.installer;
 
-import java.io.File;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * For Android < 4: Default Installer using the public PackageManager API of

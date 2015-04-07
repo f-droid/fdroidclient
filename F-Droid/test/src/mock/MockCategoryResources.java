@@ -1,8 +1,8 @@
 package mock;
 
 import android.content.Context;
-import android.test.mock.*;
-import org.fdroid.fdroid.*;
+
+import org.fdroid.fdroid.R;
 
 public class MockCategoryResources extends MockFDroidResources {
 

@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.compat;
 
-import java.lang.Exception;
-
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.util.Log;

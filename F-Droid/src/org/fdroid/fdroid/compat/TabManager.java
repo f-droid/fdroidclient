@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
+
 import org.fdroid.fdroid.FDroid;
 
 import java.util.ArrayList;

@@ -19,10 +19,6 @@
 
 package org.fdroid.fdroid.installer;
 
-import java.io.File;
-import java.lang.reflect.Method;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.IPackageDeleteObserver;
@@ -31,6 +27,10 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.RemoteException;
 import android.util.Log;
+
+import java.io.File;
+import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Installer based on using internal hidden APIs of the Android OS, which are

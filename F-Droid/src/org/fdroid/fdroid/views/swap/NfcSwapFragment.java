@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 

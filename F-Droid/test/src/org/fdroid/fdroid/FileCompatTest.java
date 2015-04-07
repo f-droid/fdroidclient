@@ -3,6 +3,7 @@ package org.fdroid.fdroid;
 import android.os.Build;
 import android.test.InstrumentationTestCase;
 import android.util.Log;
+
 import org.fdroid.fdroid.compat.FileCompatForTest;
 import org.fdroid.fdroid.data.SanitizedFile;
 

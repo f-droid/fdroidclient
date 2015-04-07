@@ -19,12 +19,13 @@
 
 package org.fdroid.fdroid.installer;
 
-import org.fdroid.fdroid.R;
-
-import eu.chainfire.libsuperuser.Shell;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+
+import org.fdroid.fdroid.R;
+
+import eu.chainfire.libsuperuser.Shell;
 
 public class CheckRootAsyncTask extends AsyncTask<Void, Void, Boolean> {
     ProgressDialog mDialog;

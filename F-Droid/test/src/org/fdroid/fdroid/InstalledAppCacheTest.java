@@ -1,8 +1,8 @@
 package org.fdroid.fdroid;
 
-import mock.MockInstallablePackageManager;
-
 import org.fdroid.fdroid.data.InstalledAppProvider;
+
+import mock.MockInstallablePackageManager;
 
 /**
  * Tests the ability of the {@link  org.fdroid.fdroid.data.InstalledAppCacheUpdater} to stay in sync with

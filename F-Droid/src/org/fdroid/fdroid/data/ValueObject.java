@@ -2,6 +2,7 @@ package org.fdroid.fdroid.data;
 
 import android.database.Cursor;
 import android.util.Log;
+
 import org.fdroid.fdroid.Utils;
 
 import java.text.ParseException;

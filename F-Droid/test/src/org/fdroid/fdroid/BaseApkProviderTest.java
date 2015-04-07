@@ -3,6 +3,7 @@ package org.fdroid.fdroid;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.ApkProvider;
 

@@ -5,10 +5,6 @@ import android.content.ContentValues;
 import android.content.res.Resources;
 import android.database.Cursor;
 
-import mock.MockCategoryResources;
-import mock.MockContextSwappableComponents;
-import mock.MockInstallablePackageManager;
-
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
@@ -16,6 +12,10 @@ import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import mock.MockCategoryResources;
+import mock.MockContextSwappableComponents;
+import mock.MockInstallablePackageManager;
 
 public class AppProviderTest extends FDroidProviderTest<AppProvider> {
 

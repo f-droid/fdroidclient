@@ -2,13 +2,8 @@ package org.fdroid.fdroid.compat;
 
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.system.ErrnoException;
-import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.SanitizedFile;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import org.fdroid.fdroid.data.SanitizedFile;
 
 /**
  * Used to expose the protected methods from FileCompat in a public manner so

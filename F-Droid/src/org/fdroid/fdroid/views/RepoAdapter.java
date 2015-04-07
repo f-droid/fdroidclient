@@ -6,13 +6,13 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.compat.SwitchCompat;
 import org.fdroid.fdroid.compat.LayoutCompat;
+import org.fdroid.fdroid.compat.SwitchCompat;
 import org.fdroid.fdroid.data.Repo;
 
 public class RepoAdapter extends CursorAdapter {

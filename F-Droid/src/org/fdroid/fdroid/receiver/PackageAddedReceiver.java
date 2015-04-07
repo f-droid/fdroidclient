@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.util.Log;
+
 import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageAddedReceiver extends PackageReceiver {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
+
 import org.fdroid.fdroid.R;
 
 import java.util.Arrays;

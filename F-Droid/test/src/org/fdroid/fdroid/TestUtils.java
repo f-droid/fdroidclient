@@ -1,24 +1,33 @@
 package org.fdroid.fdroid;
 
 import android.app.Instrumentation;
-import android.content.*;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+
 import junit.framework.AssertionFailedError;
 
-import mock.MockContextSwappableComponents;
-import mock.MockInstallablePackageManager;
 import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.receiver.PackageAddedReceiver;
 import org.fdroid.fdroid.receiver.PackageRemovedReceiver;
 import org.fdroid.fdroid.receiver.PackageUpgradedReceiver;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import mock.MockContextSwappableComponents;
+import mock.MockInstallablePackageManager;
 
 public class TestUtils {
 

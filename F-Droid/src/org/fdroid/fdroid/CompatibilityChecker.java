@@ -6,11 +6,16 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
 import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.SupportedArchitectures;
 import org.fdroid.fdroid.data.Apk;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 // Call getIncompatibleReasons(apk) on an instance of this class to
     // find reasons why an apk may be incompatible with the user's device.

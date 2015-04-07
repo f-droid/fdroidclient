@@ -10,13 +10,17 @@ import android.os.Build;
 import android.provider.ContactsContract;
 import android.test.ProviderTestCase2MockContext;
 
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.FDroidProvider;
+import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.RepoProvider;
+
+import java.util.List;
+
 import mock.MockContextEmptyComponents;
 import mock.MockContextSwappableComponents;
 import mock.MockFDroidResources;
-
-import org.fdroid.fdroid.data.*;
-
-import java.util.List;
 
 public abstract class FDroidProviderTest<T extends FDroidProvider> extends ProviderTestCase2MockContext<T> {
 

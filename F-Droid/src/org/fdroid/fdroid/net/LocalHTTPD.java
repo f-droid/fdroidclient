@@ -4,16 +4,26 @@ import android.content.Context;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
-import fi.iki.elonen.NanoHTTPD;
-
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.net.ssl.SSLServerSocketFactory;
+
+import fi.iki.elonen.NanoHTTPD;
 
 public class LocalHTTPD extends NanoHTTPD {
     private static final String TAG = "fdroid.LocalHTTPD";

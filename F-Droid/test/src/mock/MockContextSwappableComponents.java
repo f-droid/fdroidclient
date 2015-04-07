@@ -2,7 +2,8 @@ package mock;
 
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.test.mock.*;
+import android.test.mock.MockContentResolver;
+import android.test.mock.MockContext;
 
 public class MockContextSwappableComponents extends MockContext {
 

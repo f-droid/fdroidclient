@@ -2,9 +2,12 @@ package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 
-import mock.MockInstallablePackageManager;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.AppProvider;
+import org.fdroid.fdroid.data.InstalledAppProvider;
+import org.fdroid.fdroid.data.RepoProvider;
 
-import org.fdroid.fdroid.data.*;
+import mock.MockInstallablePackageManager;
 
 public class InstalledAppProviderTest extends FDroidProviderTest<InstalledAppProvider> {
 

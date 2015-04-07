@@ -19,17 +19,17 @@
 
 package org.fdroid.fdroid.installer;
 
-import java.io.File;
-import java.util.List;
-
-import org.fdroid.fdroid.Preferences;
-
 import android.Manifest.permission;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
+
+import org.fdroid.fdroid.Preferences;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * Abstract Installer class. Also provides static methods to automatically

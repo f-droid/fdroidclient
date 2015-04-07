@@ -19,9 +19,6 @@
 
 package org.fdroid.fdroid.installer;
 
-import java.io.File;
-import java.util.List;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -30,6 +27,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * For Android >= 4.0: Default Installer using the public PackageManager API of

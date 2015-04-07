@@ -23,13 +23,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
-import eu.chainfire.libsuperuser.Shell;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import eu.chainfire.libsuperuser.Shell;
 
 /**
  * Installer using a root shell and "pm install", "pm uninstall" commands

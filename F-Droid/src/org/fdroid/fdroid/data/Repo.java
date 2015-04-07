@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
+
 import org.fdroid.fdroid.Utils;
 
 import java.net.MalformedURLException;

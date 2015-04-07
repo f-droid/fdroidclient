@@ -1,6 +1,7 @@
 package org.fdroid.fdroid;
 
 import android.test.AndroidTestCase;
+
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;

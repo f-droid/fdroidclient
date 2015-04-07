@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.views.fragments;
 
 import android.net.Uri;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;

@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+
 import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageRemovedReceiver extends PackageReceiver {
