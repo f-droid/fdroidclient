@@ -929,7 +929,7 @@ public class AppProvider extends FDroidProvider {
     private void updateIconUrls() {
 
         Log.d(TAG, "Updating icon paths for apps belonging to repos with version >= " + Repo.VERSION_DENSITY_SPECIFIC_ICONS);
-        String iconsDir = Utils.getIconsDir(getContext());
+        final String iconsDir = Utils.getIconsDir(getContext());
         Log.d(TAG, "Using icon dir '"+iconsDir+"'");
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         String query = getIconUpdateQuery();

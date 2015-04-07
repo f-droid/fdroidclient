@@ -79,21 +79,22 @@ public final class Utils {
 
     public static String getIconsDir(Context context) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        String iconsDir;
         if (metrics.densityDpi >= 640) {
-            iconsDir = "/icons-640/";
-        } else if (metrics.densityDpi >= 480) {
-            iconsDir = "/icons-480/";
-        } else if (metrics.densityDpi >= 320) {
-            iconsDir = "/icons-320/";
-        } else if (metrics.densityDpi >= 240) {
-            iconsDir = "/icons-240/";
-        } else if (metrics.densityDpi >= 160) {
-            iconsDir = "/icons-160/";
-        } else {
-            iconsDir = "/icons-120/";
+            return "/icons-640/";
         }
-        return iconsDir;
+        if (metrics.densityDpi >= 480) {
+            return "/icons-480/";
+        }
+        if (metrics.densityDpi >= 320) {
+            return "/icons-320/";
+        }
+        if (metrics.densityDpi >= 240) {
+            return "/icons-240/";
+        }
+        if (metrics.densityDpi >= 160) {
+            return "/icons-160/";
+        }
+        return "/icons-120/";
     }
 
     public static void copy(InputStream input, OutputStream output)
@@ -224,12 +225,10 @@ public final class Utils {
             XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
             int eventType = xml.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG) {
-                    if (xml.getName().equals("uses-sdk")) {
-                        for (int j = 0; j < xml.getAttributeCount(); j++) {
-                            if (xml.getAttributeName(j).equals("minSdkVersion")) {
-                                return Integer.parseInt(xml.getAttributeValue(j));
-                            }
+                if (eventType == XmlPullParser.START_TAG && xml.getName().equals("uses-sdk")) {
+                    for (int j = 0; j < xml.getAttributeCount(); j++) {
+                        if (xml.getAttributeName(j).equals("minSdkVersion")) {
+                            return Integer.parseInt(xml.getAttributeValue(j));
                         }
                     }
                 }
@@ -254,9 +253,9 @@ public final class Utils {
 
                 for (char c : buffer) {
                     if (c == substring.charAt(currentSubstringIndex)) {
-                        currentSubstringIndex ++;
+                        currentSubstringIndex++;
                         if (currentSubstringIndex == substring.length()) {
-                            count ++;
+                            count++;
                             currentSubstringIndex = 0;
                         }
                     } else {

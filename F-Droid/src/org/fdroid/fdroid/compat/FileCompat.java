@@ -11,15 +11,15 @@ import org.fdroid.fdroid.data.SanitizedFile;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class FileCompat {
+public class FileCompat extends Compatibility {
 
     private static final String TAG = "fdroid.FileCompat";
 
     public static boolean symlink(SanitizedFile source, SanitizedFile dest) {
 
-        if (Compatibility.hasApi(21)) {
+        if (hasApi(21)) {
             symlinkOs(source, dest);
-        } else if (Compatibility.hasApi(15)) {
+        } else if (hasApi(15)) {
             symlinkLibcore(source, dest);
         } else {
             symlinkRuntime(source, dest);
@@ -82,17 +82,16 @@ public class FileCompat {
     @TargetApi(9)
     public static boolean setReadable(SanitizedFile file, boolean readable, boolean ownerOnly) {
 
-        if (Compatibility.hasApi(9)) {
+        if (hasApi(9)) {
             return file.setReadable(readable, ownerOnly);
-        } else {
-            String mode;
-            if (readable) {
-                mode = ownerOnly ? "0600" : "0644";
-            } else {
-                mode = "0000";
-            }
-            return setMode(file, mode);
         }
+        String mode;
+        if (readable) {
+            mode = ownerOnly ? "0600" : "0644";
+        } else {
+            mode = "0000";
+        }
+        return setMode(file, mode);
 
     }
 
@@ -121,17 +120,16 @@ public class FileCompat {
     @TargetApi(9)
     public static boolean setExecutable(SanitizedFile file, boolean readable, boolean ownerOnly) {
 
-        if (Compatibility.hasApi(9)) {
+        if (hasApi(9)) {
             return file.setExecutable(readable, ownerOnly);
-        } else {
-            String mode;
-            if (readable) {
-                mode = ownerOnly ? "0700" : "0711";
-            } else {
-                mode = ownerOnly ? "0600" : "0600";
-            }
-            return setMode(file, mode);
         }
+        String mode;
+        if (readable) {
+            mode = ownerOnly ? "0700" : "0711";
+        } else {
+            mode = ownerOnly ? "0600" : "0600";
+        }
+        return setMode(file, mode);
 
     }
 

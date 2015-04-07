@@ -7,9 +7,8 @@ public abstract class LayoutCompat extends Compatibility {
     public static LayoutCompat create() {
         if (hasApi(17)) {
             return new JellyBeanMr1LayoutCompatImpl();
-        } else {
-            return new OldLayoutCompatImpl();
         }
+        return new OldLayoutCompatImpl();
     }
 
     private static final LayoutCompat impl = LayoutCompat.create();
