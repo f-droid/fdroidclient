@@ -10,11 +10,15 @@ import android.preference.Preference;
 import android.support.v4.preference.PreferenceFragment;
 import android.text.TextUtils;
 
+import org.fdroid.fdroid.FDroid;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.CheckRootAsyncTask;
 import org.fdroid.fdroid.installer.Installer;
+
+import java.util.Locale;
 
 public class PreferencesFragment extends PreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -33,6 +37,7 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_LOCAL_REPO_BONJOUR,
         Preferences.PREF_LOCAL_REPO_NAME,
         Preferences.PREF_LOCAL_REPO_HTTPS,
+        Preferences.PREF_LANGUAGE,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
         Preferences.PREF_ROOT_INSTALLER,
@@ -132,6 +137,16 @@ public class PreferencesFragment extends PreferenceFragment
 
         case Preferences.PREF_LOCAL_REPO_HTTPS:
             checkSummary(key, R.string.local_repo_https_on);
+            break;
+
+        case Preferences.PREF_LANGUAGE:
+            langSpinner(key);
+            entrySummary(key);
+            if (changing) {
+                result |= PreferencesActivity.RESULT_RESTART;
+                getActivity().setResult(result);
+                FDroidApp.updateLanguage(this.getActivity());
+            }
             break;
 
         case Preferences.PREF_CACHE_APK:
@@ -276,6 +291,18 @@ public class PreferencesFragment extends PreferenceFragment
                 return true;
             }
         });
+    }
+
+    private void langSpinner(String key) {
+        ListPreference pref = (ListPreference)findPreference(key);
+        final String[] langValues = getResources().getStringArray(R.array.languageValues);
+        String[] langNames = new String[langValues.length];
+        langNames[0] = getString(R.string.pref_language_default);
+        for (int i = 1; i < langValues.length; i++) {
+            Locale appLoc = new Locale(langValues[i]);
+            langNames[i] = appLoc.getDisplayLanguage(appLoc);
+        }
+        pref.setEntries(langNames);
     }
 
     @Override

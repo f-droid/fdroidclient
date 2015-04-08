@@ -31,6 +31,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -39,6 +40,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
@@ -58,6 +60,7 @@ import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.io.File;
 import java.security.Security;
+import java.util.Locale;
 import java.util.Set;
 
 public class FDroidApp extends Application {
@@ -130,8 +133,25 @@ public class FDroidApp extends Application {
         }
     }
 
+    public static void updateLanguage(Context c) {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(c);
+        String lang = prefs.getString("language", "");
+        updateLanguage(c, lang);
+    }
+
+    public static void updateLanguage(Context c, String lang) {
+        Configuration cfg = new Configuration();
+        if (!TextUtils.isEmpty(lang))
+            cfg.locale = new Locale(lang);
+        else
+            cfg.locale = Locale.getDefault();
+        c.getResources().updateConfiguration(cfg, null);
+    }
+
     @Override
     public void onCreate() {
+        updateLanguage(this);
         super.onCreate();
 
         // Needs to be setup before anything else tries to access it.
