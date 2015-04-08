@@ -161,6 +161,7 @@ public class FDroid extends ActionBarActivity {
                 // amzn://apps/android?p=app.id
                 // http://amazon.com/gp/mas/dl/android?p=app.id
                 appId = data.getQueryParameter("p");
+                query = data.getQueryParameter("s");
                 break;
             }
         } else if (scheme.equals("fdroid.app")) {
