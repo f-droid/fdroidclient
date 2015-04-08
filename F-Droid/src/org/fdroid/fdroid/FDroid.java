@@ -22,6 +22,7 @@ package org.fdroid.fdroid;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
+import android.app.SearchManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -55,11 +56,10 @@ public class FDroid extends ActionBarActivity {
 
     private static final String TAG = "fdroid.FDroid";
 
-    public static final int REQUEST_APPDETAILS = 0;
-    public static final int REQUEST_MANAGEREPOS = 1;
-    public static final int REQUEST_PREFS = 2;
-    public static final int REQUEST_ENABLE_BLUETOOTH = 3;
-    public static final int REQUEST_SWAP = 4;
+    public static final int REQUEST_MANAGEREPOS = 0;
+    public static final int REQUEST_PREFS = 1;
+    public static final int REQUEST_ENABLE_BLUETOOTH = 2;
+    public static final int REQUEST_SWAP = 3;
 
     public static final String EXTRA_TAB_UPDATE = "extraTab";
 
@@ -86,24 +86,17 @@ public class FDroid extends ActionBarActivity {
         // Start a search by just typing
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
-        Intent i = getIntent();
-        Uri data = i.getData();
-        String appid = null;
-        if (data != null) {
-            if (data.isHierarchical()) {
-                // http(s)://f-droid.org/repository/browse?fdid=app.id
-                appid = data.getQueryParameter("fdid");
-            }
-        } else if (i.hasExtra(EXTRA_TAB_UPDATE)) {
-            boolean showUpdateTab = i.getBooleanExtra(EXTRA_TAB_UPDATE, false);
+        Intent intent = getIntent();
+
+        // If the intent can be handled via AppDetails or SearchResults, it
+        // will call finish() and the rest of the code won't execute
+        handleIntent(intent);
+
+        if (intent.hasExtra(EXTRA_TAB_UPDATE)) {
+            boolean showUpdateTab = intent.getBooleanExtra(EXTRA_TAB_UPDATE, false);
             if (showUpdateTab) {
                 getTabManager().selectTab(2);
             }
-        }
-        if (appid != null && appid.length() > 0) {
-            Intent call = new Intent(this, AppDetails.class);
-            call.putExtra(AppDetails.EXTRA_APPID, appid);
-            startActivityForResult(call, REQUEST_APPDETAILS);
         }
 
         Uri uri = AppProvider.getContentUri();
@@ -118,17 +111,95 @@ public class FDroid extends ActionBarActivity {
         checkForAddRepoIntent();
     }
 
+    private void handleIntent(Intent intent) {
+        final Uri data = intent.getData();
+        if (data == null) {
+            return;
+        }
+        final String scheme = data.getScheme();
+        final String path = data.getPath();
+        String appId = null;
+        String query = null;
+        if (data.isHierarchical()) {
+            final String host = data.getHost();
+            if (host == null) {
+                return;
+            }
+            switch (host) {
+            case "f-droid.org":
+                // http://f-droid.org/app/app.id
+                if (path.startsWith("/repository/browse")) {
+                    // http://f-droid.org/repository/browse?fdid=app.id
+                    appId = data.getQueryParameter("fdid");
+                } else if (path.startsWith("/app")) {
+                    appId = data.getLastPathSegment();
+                    if (appId != null && appId.equals("app")) {
+                        appId = null;
+                    }
+                }
+                break;
+            case "details":
+                // market://details?id=app.id
+                appId = data.getQueryParameter("id");
+                break;
+            case "search":
+                // market://search?q=query
+                query = data.getQueryParameter("q");
+                break;
+            case "play.google.com":
+                if (path.startsWith("/store/apps/details")) {
+                    // http://play.google.com/store/apps/details?id=app.id
+                    appId = data.getQueryParameter("id");
+                } else if (path.startsWith("/store/search")) {
+                    // http://play.google.com/store/search?q=foo
+                    query = data.getQueryParameter("q");
+                }
+                break;
+            case "apps":
+            case "amazon.com":
+            case "www.amazon.com":
+                // amzn://apps/android?p=app.id
+                // http://amazon.com/gp/mas/dl/android?p=app.id
+                appId = data.getQueryParameter("p");
+                break;
+            }
+        } else if (scheme.equals("fdroid.app")) {
+            // fdroid.app:app.id
+            appId = data.getSchemeSpecificPart();
+        } else if (scheme.equals("fdroid.search")) {
+            // fdroid.search:query
+            query = data.getSchemeSpecificPart();
+        }
+
+        Intent call = null;
+        if (appId != null && appId.length() > 0) {
+            Log.d(TAG, "FDroid launched via app link for '" + appId + "'");
+            call = new Intent(this, AppDetails.class);
+            call.putExtra(AppDetails.EXTRA_APPID, appId);
+        } else if (query != null && query.length() > 0) {
+            Log.d(TAG, "FDroid launched via search link for '" + query + "'");
+            call = new Intent(this, SearchResults.class);
+            call.setAction(Intent.ACTION_SEARCH);
+            call.putExtra(SearchManager.QUERY, query);
+        }
+        if (call != null) {
+            startActivity(call);
+            finish();
+        }
+    }
+
     private void checkForAddRepoIntent() {
         // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
         // http://stackoverflow.com/a/14820849
-        if (!getIntent().hasExtra("handled")) {
-            NewRepoConfig parser = new NewRepoConfig(this, getIntent());
+        Intent intent = getIntent();
+        if (intent.hasExtra("handled")) {
+            NewRepoConfig parser = new NewRepoConfig(this, intent);
             if (parser.isValidRepo()) {
-                getIntent().putExtra("handled", true);
+                intent.putExtra("handled", true);
                 if (parser.isFromSwap()) {
-                    startActivityForResult(new Intent(ACTION_ADD_REPO, getIntent().getData(), this, ConnectSwapActivity.class), REQUEST_SWAP);
+                    startActivityForResult(new Intent(ACTION_ADD_REPO, intent.getData(), this, ConnectSwapActivity.class), REQUEST_SWAP);
                 } else {
-                    startActivity(new Intent(ACTION_ADD_REPO, getIntent().getData(), this, ManageReposActivity.class));
+                    startActivity(new Intent(ACTION_ADD_REPO, intent.getData(), this, ManageReposActivity.class));
                 }
             } else if (parser.getErrorMessage() != null) {
                 Toast.makeText(this, parser.getErrorMessage(), Toast.LENGTH_LONG).show();
@@ -251,8 +322,6 @@ public class FDroid extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         switch (requestCode) {
-        case REQUEST_APPDETAILS:
-            break;
         case REQUEST_MANAGEREPOS:
             if (data != null && data.hasExtra(ManageReposActivity.REQUEST_UPDATE)) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);

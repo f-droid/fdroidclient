@@ -75,7 +75,6 @@ public class SearchResults extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         super.onCreateOptionsMenu(menu);
         MenuItem search = menu.add(Menu.NONE, SEARCH, 1, R.string.menu_search).setIcon(
                 android.R.drawable.ic_menu_search);
@@ -85,7 +84,6 @@ public class SearchResults extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
 
         case android.R.id.home:

@@ -36,21 +36,6 @@ public class SearchResultsFragment extends ListFragment implements LoaderManager
         String query = null;
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             query = intent.getStringExtra(SearchManager.QUERY);
-        } else {
-            final Uri data = intent.getData();
-            if (data == null) {
-                return "";
-            }
-            if (data.isHierarchical()) {
-                // market://search?q=foo
-                // https://play.google.com/store/search?q=foo
-                query = data.getQueryParameter("q");
-                if (query != null && query.startsWith("pname:"))
-                    query = query.substring(6);
-            } else {
-                // fdroid.search:foo
-                query = data.getEncodedSchemeSpecificPart();
-            }
         }
         if (query == null) {
             return "";
@@ -121,8 +106,7 @@ public class SearchResultsFragment extends ListFragment implements LoaderManager
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        final App app;
-        app = new App((Cursor) adapter.getItem(position));
+        final App app = new App((Cursor) adapter.getItem(position));
 
         Intent intent = new Intent(getActivity(), AppDetails.class);
         intent.putExtra(AppDetails.EXTRA_APPID, app.id);

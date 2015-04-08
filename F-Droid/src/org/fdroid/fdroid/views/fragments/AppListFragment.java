@@ -17,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.AppDetails;
-import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -31,6 +30,8 @@ abstract public class AppListFragment extends ThemeableListFragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String TAG = "fdroid.AppListFragment";
+
+    private static final int REQUEST_APPDETAILS = 0;
 
     public static final String[] APP_PROJECTION = {
             AppProvider.DataColumns._ID, // Required for cursor loader to work.
@@ -149,7 +150,7 @@ abstract public class AppListFragment extends ThemeableListFragment implements
             Intent intent = getAppDetailsIntent();
             intent.putExtra(AppDetails.EXTRA_APPID, app.id);
             intent.putExtra(AppDetails.EXTRA_FROM, getFromTitle());
-            startActivityForResult(intent, FDroid.REQUEST_APPDETAILS);
+            startActivityForResult(intent, REQUEST_APPDETAILS);
         }
     }
 

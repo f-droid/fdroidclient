@@ -344,56 +344,18 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     /**
      * Attempt to extract the appId from the intent which launched this activity.
-     * Various different intents could cause us to show this activity, such as:
-     * <ul>
-     *     <li>market://details?id=[app_id]</li>
-     *     <li>https://play.google.com/store/apps/details?id=[app_id]</li>
-     *     <li>https://f-droid.org/app/[app_id]</li>
-     *     <li>fdroid.app:[app_id]</li>
-     * </ul>
-     * @return May return null, if we couldn't find the appId. In this case, you will
-     * probably want to do something drastic like finish the activity and show some
-     * feedback to the user (this method will <em>not</em> do that, it will just return
-     * null).
+     * @return May return null, if we couldn't find the appId. This should
+     * never happen as AppDetails is only to be called by the FDroid activity
+     * and not externally.
      */
     private String getAppIdFromIntent() {
         Intent i = getIntent();
         Uri data = i.getData();
-        String appId = null;
-        if (data != null) {
-            if (data.isHierarchical()) {
-                final String host = data.getHost();
-                if (host == null) {
-                    Log.e(TAG, "Null host found in app link!");
-                    return null;
-                }
-                if (host.equals("details") || host.equals("play.google.com")) {
-                    // market://details?id=app.id
-                    // https://play.google.com/store/apps/details?id=app.id
-                    appId = data.getQueryParameter("id");
-                } else if (host.equals("apps") || host.equals("amazon.com") ||
-                        host.equals("www.amazon.com")) {
-                    // amzn://apps/android?p=app.id
-                    // http://www.amazon.com/gp/mas/dl/android?p=app.id
-                    appId = data.getQueryParameter("p");
-                } else {
-                    // https://f-droid.org/app/app.id
-                    appId = data.getLastPathSegment();
-                    if (appId != null && appId.equals("app")) {
-                        appId = null;
-                    }
-                }
-            } else {
-                // fdroid.app:app.id
-                appId = data.getEncodedSchemeSpecificPart();
-            }
-            Log.d(TAG, "AppDetails launched from link, for '" + appId + "'");
-        } else if (!i.hasExtra(EXTRA_APPID)) {
-            Log.e(TAG, "No application ID in AppDetails!?");
-        } else {
-            appId = i.getStringExtra(EXTRA_APPID);
+        if (!i.hasExtra(EXTRA_APPID)) {
+            Log.e(TAG, "No application ID found in the intent!");
+            return null;
         }
-        return appId;
+        return i.getStringExtra(EXTRA_APPID);
     }
 
     @Override
