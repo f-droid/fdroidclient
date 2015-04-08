@@ -5,12 +5,18 @@
 
 * Fix an issue where xml files could pile up in the data directory
 
+* Improve app and search link handling while also adding supporting for Amazon
+  and Google Play links
+
+* Fix regression where F-Droid web repo links would trigger an "Add new repo"
+  action
+
 * Show a message to the user when there is no apps to display
+
+* Small UI fixes to avoid overlapping text and improve app version ellipsizing
 
 * Split up search terms when querying the app database - "fire fox" now
   matches FireFox
-
-* Handle amazon.com and play.google.com app links
 
 * Misc fixes to the "swap" workflow (especially on Android 2.3 devices)
 
