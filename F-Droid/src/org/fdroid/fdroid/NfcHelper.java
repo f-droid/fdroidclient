@@ -43,7 +43,7 @@ public class NfcHelper {
             ApplicationInfo appInfo;
             try {
                 appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
-                Uri uris[] = {
+                Uri[] uris = {
                         Uri.parse("file://" + appInfo.publicSourceDir),
                 };
                 nfcAdapter.setBeamPushUris(uris, activity);

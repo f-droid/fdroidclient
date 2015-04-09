@@ -276,7 +276,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             }
 
             // Disable it all if it isn't compatible...
-            View[] views = {
+            final View[] views = {
                 convertView,
                 holder.version,
                 holder.status,
@@ -287,7 +287,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 holder.nativecode
             };
 
-            for (View v : views) {
+            for (final View v : views) {
                 v.setEnabled(apk.compatible);
             }
 
@@ -295,21 +295,21 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
     }
 
-    private static final int INSTALL = Menu.FIRST;
-    private static final int UNINSTALL = Menu.FIRST + 1;
-    private static final int IGNOREALL = Menu.FIRST + 2;
-    private static final int IGNORETHIS = Menu.FIRST + 3;
-    private static final int WEBSITE = Menu.FIRST + 4;
-    private static final int ISSUES = Menu.FIRST + 5;
-    private static final int SOURCE = Menu.FIRST + 6;
-    private static final int LAUNCH = Menu.FIRST + 7;
-    private static final int SHARE = Menu.FIRST + 8;
-    private static final int DONATE = Menu.FIRST + 9;
-    private static final int BITCOIN = Menu.FIRST + 10;
-    private static final int LITECOIN = Menu.FIRST + 11;
-    private static final int DOGECOIN = Menu.FIRST + 12;
-    private static final int FLATTR = Menu.FIRST + 13;
-    private static final int DONATE_URL = Menu.FIRST + 14;
+    private static final int INSTALL            = Menu.FIRST;
+    private static final int UNINSTALL          = Menu.FIRST + 1;
+    private static final int IGNOREALL          = Menu.FIRST + 2;
+    private static final int IGNORETHIS         = Menu.FIRST + 3;
+    private static final int WEBSITE            = Menu.FIRST + 4;
+    private static final int ISSUES             = Menu.FIRST + 5;
+    private static final int SOURCE             = Menu.FIRST + 6;
+    private static final int LAUNCH             = Menu.FIRST + 7;
+    private static final int SHARE              = Menu.FIRST + 8;
+    private static final int DONATE             = Menu.FIRST + 9;
+    private static final int BITCOIN            = Menu.FIRST + 10;
+    private static final int LITECOIN           = Menu.FIRST + 11;
+    private static final int DOGECOIN           = Menu.FIRST + 12;
+    private static final int FLATTR             = Menu.FIRST + 13;
+    private static final int DONATE_URL         = Menu.FIRST + 14;
     private static final int SEND_VIA_BLUETOOTH = Menu.FIRST + 15;
 
     private App app;

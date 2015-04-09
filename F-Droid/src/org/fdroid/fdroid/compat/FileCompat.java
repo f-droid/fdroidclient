@@ -52,7 +52,7 @@ public class FileCompat extends Compatibility {
     }
 
     protected static void symlinkRuntime(SanitizedFile source, SanitizedFile dest) {
-        String commands[] = {
+        String[] commands = {
             "/system/bin/ln",
             source.getAbsolutePath(),
             dest.getAbsolutePath()

@@ -177,7 +177,7 @@ public class LocalRepoActivity extends ActionBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != Activity.RESULT_OK)
+        if (resultCode != RESULT_OK)
             return;
         if (requestCode == SET_IP_ADDRESS) {
             setUIFromWifi();

@@ -136,7 +136,7 @@ public final class Utils {
      * Read the input stream until it reaches the end, ignoring any exceptions.
      */
     public static void consumeStream(InputStream stream) {
-        final byte buffer[] = new byte[256];
+        final byte[] buffer = new byte[256];
         try {
             int read;
             do {

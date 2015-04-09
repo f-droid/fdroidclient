@@ -56,7 +56,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
                     .commit();
         }
 
-        String[] projection = {
+        final String[] projection = {
                 RepoProvider.DataColumns.NAME,
                 RepoProvider.DataColumns.ADDRESS,
                 RepoProvider.DataColumns.FINGERPRINT

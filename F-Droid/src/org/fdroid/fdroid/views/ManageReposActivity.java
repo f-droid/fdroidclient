@@ -167,7 +167,7 @@ public class ManageReposActivity extends ActionBarActivity {
     public void finish() {
         Intent ret = new Intent();
         markChangedIfRequired(ret);
-        setResult(Activity.RESULT_OK, ret);
+        setResult(RESULT_OK, ret);
         super.finish();
     }
 
@@ -573,7 +573,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 addRepoDialog.dismiss();
             }
             if (isImportingRepo) {
-                setResult(Activity.RESULT_OK);
+                setResult(RESULT_OK);
                 finish();
             }
         }
