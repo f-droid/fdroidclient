@@ -167,6 +167,8 @@ public final class PRNGFixes extends Compatibility {
     @SuppressWarnings("serial")
     public static class LinuxPRNGSecureRandom extends SecureRandomSpi {
 
+        private static final String TAG = "fdroid.PRNGFixes.LinuxPRNGSecureRandom";
+
         /*
          * IMPLEMENTATION NOTE: Requests to generate bytes and to mix in a seed
          * are passed through to the Linux PRNG (/dev/urandom). Instances of
@@ -218,8 +220,7 @@ public final class PRNGFixes extends Compatibility {
             } catch (IOException e) {
                 // On a small fraction of devices /dev/urandom is not writable.
                 // Log and ignore.
-                Log.w(PRNGFixes.class.getSimpleName(),
-                        "Failed to mix seed into " + URANDOM_FILE);
+                Log.w(TAG, "Failed to mix seed into " + URANDOM_FILE);
             } finally {
                 mSeeded = true;
             }

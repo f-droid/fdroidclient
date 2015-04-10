@@ -37,17 +37,22 @@ public class CompatibilityChecker extends Compatibility {
         ignoreTouchscreen = prefs.getBoolean(Preferences.PREF_IGN_TOUCH, false);
 
         PackageManager pm = ctx.getPackageManager();
-        StringBuilder logMsg = new StringBuilder();
-        logMsg.append("Available device features:");
+
         features = new HashSet<>();
         if (pm != null) {
             final FeatureInfo[] featureArray = pm.getSystemAvailableFeatures();
-            if (featureArray != null)
+            if (featureArray != null) {
+                if (BuildConfig.DEBUG) {
+                    StringBuilder logMsg = new StringBuilder("Available device features:");
+                    for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
+                        logMsg.append('\n').append(fi.name);
+                    }
+                    Log.d(TAG, logMsg.toString());
+                }
                 for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
                     features.add(fi.name);
-                    logMsg.append('\n');
-                    logMsg.append(fi.name);
                 }
+            }
         }
 
         cpuAbis = SupportedArchitectures.getAbis();
@@ -62,8 +67,6 @@ public class CompatibilityChecker extends Compatibility {
             builder.append(abi);
         }
         cpuAbisDesc = builder.toString();
-
-        Log.d(TAG, logMsg.toString());
     }
 
     private boolean compatibleApi(Utils.CommaSeparatedList nativecode) {
@@ -96,9 +99,10 @@ public class CompatibilityChecker extends Compatibility {
                     // Don't check it!
                 } else if (!features.contains(feat)) {
                     Collections.addAll(incompatibleReasons, feat.split(","));
-                    Log.d(TAG, apk.id + " vercode " + apk.vercode
-                            + " is incompatible based on lack of "
-                            + feat);
+                    if (BuildConfig.DEBUG) {
+                        Log.d(TAG, apk.id + " vercode " + apk.vercode
+                                + " is incompatible based on lack of " + feat);
+                    }
                 }
             }
         }
@@ -106,9 +110,11 @@ public class CompatibilityChecker extends Compatibility {
             for (final String code : apk.nativecode) {
                 incompatibleReasons.add(code);
             }
-            Log.d(TAG, apk.id + " vercode " + apk.vercode
-                    + " only supports " + Utils.CommaSeparatedList.str(apk.nativecode)
-                    + " while your architectures are " + cpuAbisDesc);
+            if (BuildConfig.DEBUG) {
+                Log.d(TAG, apk.id + " vercode " + apk.vercode
+                        + " only supports " + Utils.CommaSeparatedList.str(apk.nativecode)
+                        + " while your architectures are " + cpuAbisDesc);
+            }
         }
 
         return incompatibleReasons;

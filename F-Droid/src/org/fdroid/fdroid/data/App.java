@@ -30,6 +30,8 @@ import java.util.jar.JarFile;
 
 public class App extends ValueObject implements Comparable<App> {
 
+    private static final String TAG = "fdroid.App";
+
     // True if compatible with the device (i.e. if at least one apk is)
     public boolean compatible;
     public boolean includeInRepo = false;
@@ -228,7 +230,7 @@ public class App extends ValueObject implements Comparable<App> {
                         PackageManager.GET_META_DATA);
                 installerPackageLabel = installerAppInfo.loadLabel(pm);
             } catch (PackageManager.NameNotFoundException e) {
-                Log.d(getClass().getCanonicalName(), e.getMessage());
+                Log.d(TAG, e.getMessage());
             }
         }
         if (TextUtils.isEmpty(installerPackageLabel))

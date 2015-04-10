@@ -37,6 +37,8 @@ import eu.chainfire.libsuperuser.Shell;
  */
 public class RootInstaller extends Installer {
 
+    private static final String TAG = "fdroid.RootInstaller";
+
     Shell.Interactive rootSession;
 
     public RootInstaller(Context context, PackageManager pm, InstallerCallback callback)

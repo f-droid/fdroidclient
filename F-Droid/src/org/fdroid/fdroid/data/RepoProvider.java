@@ -23,7 +23,7 @@ public class RepoProvider extends FDroidProvider {
 
     public static final class Helper {
 
-        public static final String TAG = "fdroid.RepoProvider.Helper";
+        private static final String TAG = "fdroid.RepoProvider.Helper";
 
         private Helper() {}
 

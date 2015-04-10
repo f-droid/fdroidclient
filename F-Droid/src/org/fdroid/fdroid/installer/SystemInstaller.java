@@ -58,6 +58,8 @@ import java.util.List;
  */
 public class SystemInstaller extends Installer {
 
+    private static final String TAG = "fdroid.SystemInstaller";
+
     private PackageInstallObserver mInstallObserver;
     private PackageDeleteObserver mDeleteObserver;
     private Method mInstallMethod;
