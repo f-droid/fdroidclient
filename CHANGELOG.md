@@ -3,6 +3,8 @@
 * Show list of apps to in the update notification (on devices with
   Android 4.1 or higher)
 
+* Locale can now be changed from F-Droid preferences
+
 * Fix an issue where xml files could pile up in the data directory
 
 * Improve app and search link handling while also adding supporting for Amazon
@@ -19,6 +21,9 @@
   matches FireFox
 
 * Fixed bug where categories were always empty on non-english locales
+
+* Swapping is now two way. Connecting to a swap on one device will
+  initiate a swap on the other device.
 
 * Misc fixes to the "swap" workflow (especially on Android 2.3 devices)
 
