@@ -30,4 +30,45 @@
 		<item>lightWithDarkActionBar</item>
 	</string-array>
 
+    <string-array name="languageValues">
+        <item></item>
+        <item>ar</item>
+        <item>bg</item>
+        <item>ca</item>
+        <item>cs</item>
+        <item>de</item>
+        <item>el</item>
+        <item>en-rGB</item>
+        <item>eo</item>
+        <item>es</item>
+        <item>eu</item>
+        <item>fa</item>
+        <item>fi</item>
+        <item>fr</item>
+        <item>gl</item>
+        <item>gu</item>
+        <item>he</item>
+        <item>hu</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>ko</item>
+        <item>lt</item>
+        <item>nb</item>
+        <item>nl</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ro</item>
+        <item>ru</item>
+        <item>sk</item>
+        <item>sl</item>
+        <item>sr</item>
+        <item>sv</item>
+        <item>tr</item>
+        <item>ug</item>
+        <item>uk</item>
+        <item>zh</item>
+        <item>zh-rCN</item>
+        <item>zh-rHK</item>
+    </string-array>
+
 </resources>
