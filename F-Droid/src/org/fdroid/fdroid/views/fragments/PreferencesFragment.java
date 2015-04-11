@@ -7,6 +7,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.support.annotation.Nullable;
 import android.support.v4.preference.PreferenceFragment;
 import android.text.TextUtils;
 
@@ -299,8 +300,12 @@ public class PreferencesFragment extends PreferenceFragment
         String[] langNames = new String[langValues.length];
         langNames[0] = getString(R.string.pref_language_default);
         for (int i = 1; i < langValues.length; i++) {
-            Locale appLoc = new Locale(langValues[i]);
-            langNames[i] = appLoc.getDisplayLanguage(appLoc);
+            try {
+                final Locale appLoc = Locale.forLanguageTag(langValues[i]);
+                langNames[i] = appLoc.getDisplayName(appLoc);
+            } catch (Exception e) {
+                langNames[i] = langValues[i];
+            }
         }
         pref.setEntries(langNames);
     }
