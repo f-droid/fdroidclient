@@ -7,10 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,14 +33,42 @@ import java.util.List;
 
 public class BluetoothDeviceListFragment extends ThemeableListFragment {
 
-    private static final String TAG = "org.fdroid.fdroid.views.swap.BluetoothDeviceListFragment";
+    private static final String TAG = "fdroid.BluetoothList";
 
     private Adapter adapter = null;
+
+    private MenuItem scanMenuItem;
+    private MenuItem cancelMenuItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(false);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.swap_scan, menu);
+
+        final int flags = MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT;
+
+        scanMenuItem = menu.findItem(R.id.action_scan);
+        scanMenuItem.setVisible(true);
+        MenuItemCompat.setShowAsAction(scanMenuItem, flags);
+
+        cancelMenuItem = menu.findItem(R.id.action_cancel);
+        cancelMenuItem.setVisible(false);
+        MenuItemCompat.setShowAsAction(cancelMenuItem, flags);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_scan) {
+            initiateBluetoothScan();
+        } else if (item.getItemId() == R.id.action_cancel) {
+            cancelBluetoothScan();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -50,7 +82,7 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
             R.layout.select_local_apps_list_item
         );
 
-        populateDeviceList();
+        populateBondedDevices();
 
         setListAdapter(adapter);
         setListShown(false); // start out with a progress indicator
@@ -63,25 +95,54 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
         if (headerView == null) {
             Log.e(TAG, "Could not find header view, although we expected one to exist.");
         } else {
-            headerView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    initiateBluetoothScan();
-                    return true;
-                }
-            });
+            final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
+
+            final TextView deviceName = (TextView)headerView.findViewById(R.id.device_name);
+            deviceName.setText(bluetooth.getName());
+
+            final TextView address = (TextView)headerView.findViewById(R.id.device_address);
+            address.setText(bluetooth.getAddress());
         }
         return view;
     }
 
+    private void cancelBluetoothScan() {
+
+        Log.d(TAG, "Cancelling bluetooth scan.");
+
+        cancelMenuItem.setVisible(false);
+        scanMenuItem.setVisible(true);
+
+        final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
+        bluetooth.cancelDiscovery();
+
+        getLoadingIndicator().hide();
+
+    }
+
+    private ContentLoadingProgressBar getLoadingIndicator() {
+        return ((ContentLoadingProgressBar)getView().findViewById(R.id.loading_indicator));
+    }
+
     private void initiateBluetoothScan()
     {
-        BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
-        BroadcastReceiver deviceFoundReceiver = new BroadcastReceiver() {
+        Log.d(TAG, "Starting bluetooth scan...");
+
+        cancelMenuItem.setVisible(true);
+        scanMenuItem.setVisible(false);
+
+        final ContentLoadingProgressBar loadingBar = getLoadingIndicator();
+
+        loadingBar.show();
+
+
+        final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
+        final BroadcastReceiver deviceFoundReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
                     BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                    Log.d(TAG, "Found bluetooth device: " + device.toString());
                     boolean exists = false;
                     for (int i = 0; i < adapter.getCount(); i ++) {
                         if (adapter.getItem(i).getAddress().equals(device.getAddress())) {
@@ -97,8 +158,18 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
             }
         };
 
-        ((ContentLoadingProgressBar)getView().findViewById(R.id.loading_indicator)).show();
+        final BroadcastReceiver scanCompleteReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "Scan complete: " + intent.getAction());
+                loadingBar.hide();
+                cancelMenuItem.setVisible(false);
+                scanMenuItem.setVisible(true);
+            }
+        };
+
         getActivity().registerReceiver(deviceFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+        getActivity().registerReceiver(scanCompleteReceiver, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
 
         if (!bluetooth.startDiscovery()) {
             // TODO: Discovery did not start for some reason :(
@@ -106,7 +177,7 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
         }
     }
 
-    private void populateDeviceList()
+    private void populateBondedDevices()
     {
         for (BluetoothDevice device : BluetoothAdapter.getDefaultAdapter().getBondedDevices()) {
             adapter.add(device);
@@ -220,7 +291,7 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
             TextView addressView = (TextView)view.findViewById(android.R.id.text2);
             TextView descriptionView = (TextView)view.findViewById(R.id.text3);
 
-            nameView.setText(device.getName());
+            nameView.setText(device.getName() == null ? getString(R.string.unknown) : device.getName());
             addressView.setText(device.getAddress());
             descriptionView.setText(bondStateToLabel(device.getBondState()));
 

@@ -12,42 +12,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/device_name_prefix"
-            android:text="Your device is"
-            tools:text="Your device is"
-            android:textAlignment="center"
-            style="@style/SwapTheme.BluetoothDeviceList.Heading" android:paddingTop="10dp"
-            android:paddingBottom="10dp" android:textSize="24sp"/>
+            android:text="@string/swap_bluetooth_your_device"
+            android:gravity="center_horizontal"
+            style="@style/SwapTheme.BluetoothDeviceList.Heading"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="24sp"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/device_name"
-            android:text="Pete's Nexus 4"
-            tools:text="Pete's Nexus 4"
-            android:textAlignment="center"
-            style="@style/SwapTheme.BluetoothDeviceList.Heading" android:paddingBottom="10dp"/>
+            tools:text="Phone v2.0"
+            android:gravity="center_horizontal"
+            style="@style/SwapTheme.BluetoothDeviceList.Heading"
+            android:paddingBottom="10dp"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/device_address"
-            android:text="(01:02:03:ab:cd:ef)"
             tools:text="(01:02:03:ab:cd:ef)"
-            android:textAlignment="center"
-            style="@style/SwapTheme.BluetoothDeviceList.Heading" android:paddingBottom="20dp" android:textSize="24sp"/>
+            android:gravity="center_horizontal"
+            style="@style/SwapTheme.BluetoothDeviceList.Heading"
+            android:paddingBottom="20dp"
+            android:textSize="24sp"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select from devices below, or tap here to scan for more devices..."
-            tools:text="Select from devices below, or tap here to scan for more devices..."
-            android:textAlignment="center"
-            style="@style/SwapTheme.BluetoothDeviceList.Text" android:paddingLeft="20dp" android:paddingRight="20dp"
+            android:text="@string/swap_bluetooth_select_or_scan"
+            android:gravity="center_horizontal"
+            style="@style/SwapTheme.BluetoothDeviceList.Text"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:paddingBottom="10dp"/>
 
     <android.support.v4.widget.ContentLoadingProgressBar
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/loading_indicator"/>
+            android:id="@+id/loading_indicator"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:visibility="gone"
+            android:indeterminate="true"
+            style="?android:attr/android:progressBarStyleHorizontal"/>
 
 </LinearLayout>
