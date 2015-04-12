@@ -139,6 +139,7 @@ public class CanUpdateAppsFragment extends AppListFragment {
         mUpdateAllButton.setText(R.string.update_all);
         mUpdateAllButton.setCompoundDrawablesWithIntrinsicBounds(
                 getResources().getDrawable(R.drawable.ic_menu_refresh), null, null, null);
+        mUpdateAllButton.setVisibility(View.GONE);
 
         linearLayout.addView(mUpdateAllButton, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));

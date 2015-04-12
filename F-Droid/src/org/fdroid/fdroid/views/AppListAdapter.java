@@ -31,6 +31,11 @@ abstract public class AppListAdapter extends CursorAdapter {
         init(context);
     }
 
+    @Override
+    public boolean isEmpty() {
+        return mDataValid && super.isEmpty();
+    }
+
     public AppListAdapter(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
         init(context);
