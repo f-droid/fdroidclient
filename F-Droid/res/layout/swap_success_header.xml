@@ -7,7 +7,7 @@
 
     <TextView
             android:id="@+id/text_title"
-            android:text="Swap success!"
+            android:text="@string/swap_success"
             style="@style/SwapTheme.AppList.SwapSuccess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
 
     <TextView
             android:id="@+id/text_description"
-            android:text="Tap an app for details and to install."
+            android:text="@string/swap_tap_for_details_and_install"
             style="@style/SwapTheme.AppList.SwapSuccessDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
