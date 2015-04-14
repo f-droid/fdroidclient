@@ -43,7 +43,8 @@ out
 .settings/
 
 # Imported libs
-extern/*/proguard-project.txt
-extern/*/*/proguard-project.txt
 extern/*/libs/
 extern/*/*/libs/
+
+# We don't use proguard anywhere
+proguard-project.txt
