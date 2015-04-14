@@ -241,7 +241,9 @@ Sie müssen
   <string name="Navigation">Navigation</string>
   <string name="News">Nachrichten</string>
   <string name="Office">Büro</string>
+  <string name="Phone_SMS"/>
   <string name="Reading">Wird gelesen</string>
+  <string name="Science_Education"/>
   <string name="Security">Sicherheit</string>
   <string name="System">System</string>
   <string name="Wallpaper">Hintergrundbild</string>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
-  <string name="searchres_oneapp">Één applicatie gevonden die voldoet aan \'%s\':</string>
+  <string name="searchres_oneapp">Eén applicatie gevonden die voldoet aan \'%s\':</string>
   <string name="searchres_noapps">Geen applicaties gevonden die voldoen aan \'%s\'</string>
-  <string name="SignatureMismatch">De nieuwe versie is gesigneerd met een andere sleutel als de oude. Om de nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer het daarna nogmaals. (Let op dat bij het verwijderen de data van de applicatie ook verwijderd wordt)</string>
+  <string name="SignatureMismatch">De nieuwe versie is gesigneerd met een andere sleutel dan de oude. Om de nieuwe versie te installeren moet eerst de oude verwijderd worden. Probeer het daarna nogmaals. (Let op dat bij het verwijderen de data van de applicatie ook verwijderd wordt)</string>
   <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
-  <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet uw data kan corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
+  <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet kan uw data corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
   <string name="version">Versie</string>
   <string name="edit">Bewerken</string>
   <string name="delete">Verwijderen</string>
@@ -102,9 +102,9 @@ Wilt u ze vernieuwen?</string>
   <string name="corrupt_download">Gedownloade bestand is corrupt</string>
   <string name="download_cancelled">Download geannuleerd</string>
   <string name="antiadslist">Deze app bevat advertenties</string>
-  <string name="antitracklist">Deze app houd je activiteiten bij en rapporteerd deze</string>
+  <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert deze</string>
   <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>
-  <string name="antinonfreenetlist">Deze app promoot niet-vrije netwerk diensten</string>
+  <string name="antinonfreenetlist">Deze app promoot niet-vrije netwerkdiensten</string>
   <string name="antinonfreedeplist">Deze app vereist andere niet-vrije apps</string>
   <string name="antiupstreamnonfreelist">De \'upstream\' broncode is niet helemaal Vrij (open source)</string>
   <string name="display">Laat zien</string>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="version">Versione</string>
+  <string name="edit">Modìfica</string>
+  <string name="delete">Burra</string>
+  <string name="enable_nfc_send">Abìlita imbiu NFC...</string>
+  <string name="cache_downloaded_on">Mantene sos documentos apk iscarrigados in s\'ischeda SD</string>
+  <string name="updates">Agiornamentos</string>
+  <string name="other">Àteru</string>
+  <string name="last_update_check">Ùrtima iscansidura depòsitos: %s</string>
+  <string name="never">mai</string>
+  <string name="update_interval">Intervallu agiornamentu automàticu</string>
+  <string name="notify">Notìfica</string>
+  <string name="notify_on">Averte cando bi sunt agiornamentos disponìbiles</string>
+  <string name="update_history">Istòria de sos agiornamentos</string>
+  <string name="root_installer">Installa impreande s\'atzessu root</string>
+  <string name="root_installer_on">Pedi s\'atzessu root pro installare, agiornare, e remòvrere pachetos</string>
+  <string name="system_installer">Installa impreande sos permissos de sistema</string>
+  <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos</string>
+  <string name="local_repo_bonjour">Cumpartzi su depòsitu locale</string>
+  <string name="local_repo_bonjour_on">Pùblica su depòsitu tuo impreande Bonjour (mDNS)</string>
+  <string name="local_repo_name">Nùmene de su Depòsitu Locale tuo</string>
+  <string name="local_repo_name_summary">Su nùmene pùblicu de su depòsitu locale tuo: %s</string>
+  <string name="local_repo_https">Imprea una cunnessione privada</string>
+  <string name="local_repo_https_on">Imprea sa cunnessione criptada HTTPS:// pro sos depòsitu locale</string>
+  <string name="about_site">Giassu/situ web:</string>
+  <string name="about_mail">E-lìtera:</string>
+  <string name="about_version">Versione:</string>
+  <string name="ok">Andat bene</string>
+  <string name="yes">Eja</string>
+  <string name="no">Nono</string>
+  <string name="repo_add_title">Annanghe unu depòsitu nou</string>
+  <string name="repo_add_add">Annanghe</string>
+  <string name="cancel">Annudda</string>
+  <string name="enable">Abìlita</string>
+  <string name="add_key">Annanghe crae</string>
+  <string name="tab_noninstalled">Disponìbile</string>
+  <string name="tab_updates">Agiornamentos</string>
+  <string name="one_update_available">1 agiornamentu est disponìbile.</string>
+  <string name="many_updates_available">%d agiornamentos sunt disponìbiles.</string>
+  <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
+  <string name="process_wait_title">Iseta, pro piaghere</string>
+  <string name="process_update_msg">Agiornande sa lista de sos aplicos...</string>
+  <string name="download_server">Iscarrigande s\'aplicu dae</string>
+  <string name="nfc_is_not_enabled">Su NFC no est abilitadu!</string>
+  <string name="go_to_nfc_settings">Bae a sas impostaduras NFC...</string>
+  <string name="send_via_bluetooth">Imbia tramite Bluetooth</string>
+  <string name="menu_update_repo">Agiorna sos depòsitos</string>
+  <string name="menu_manage">Depòsitos</string>
+  <string name="local_repo">Depòsitu locale</string>
+  <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
+  <string name="waiting_for_ipaddress">isetande pro s\'indiritzu IP</string>
+  <string name="setup_repo">Ammània unu depòsitu locale</string>
+  <string name="touch_to_configure_local_repo">Toca pro bìere sas minujas e permìtere a àteros de retzire sos aplicos tuos.</string>
+  <string name="touch_to_turn_on_local_repo">Toca pro allùere su depòsitu locale tuo.</string>
+  <string name="touch_to_turn_off_local_repo">Toca pro istudare su depòsitu locale tuo.</string>
+  <string name="updating">Agiornande…</string>
+  <string name="update_repo">Agiorna depòsitu</string>
+  <string name="deleting_repo">Burrande su depòsitu atuale...</string>
+  <string name="adding_apks_format">Annanghende %s a su depòsitu...</string>
+  <string name="writing_index_jar">Iscriende su documentu de ìnditze firmadu (index.jar)...</string>
+  <string name="failed_to_create_index">Sa creatzione de s\'inditze de sos depòsitos est faddida!</string>
+  <string name="linking_apks">Cullegande sos APK in su depòsitu...</string>
+  <string name="copying_icons">Copiande sas iconas de sos aplicos in su depòsitu...</string>
+  <string name="updated_local_repo">Agiornamentu depòsitu locale finidu</string>
+  <string name="no_applications_found">Perunu aplicu agatadu</string>
+  <string name="icon">icona</string>
+  <string name="fingerprint">Arrastu/imprenta:</string>
+  <string name="wifi_network">Retza WiFi:</string>
+  <string name="sharing_uri">URL de cumpartzidura:</string>
+  <string name="enable_wifi">Abìlita su Wifi</string>
+  <string name="enabling_wifi">Abilitande su WiFi…</string>
+  <string name="same_wifi_instructions">Pro ti cunnèttere a sos dispositivos de calicun\'àteru, assegura•di chi ambos sos dispositivos siant in sa matessi retza WiFi. A pustis, inserta su URL in supra in F-Droid, o iscansi custu còdighe QR:</string>
+  <string name="qr_code">Còdighe QR</string>
+  <string name="next">Imbeniente</string>
+  <string name="skip">Brinca</string>
+  <string name="qr_content_description">Còdighe QR de s\'URL de su depòsitu</string>
+  <string name="qr_wizard_wifi_network_instructions">Iscansi custu còdighe QR pro ti cunnèttere a sa matessi retza Wifi de custu dispositivu.</string>
+  <string name="qr_wizard_download_instructions">Iscansi custu còdighe QR pro ti cunnèttere a su giassu/situ ìnternet in ue podes incumentzare.</string>
+  <string name="send_fdroid_via_wifi">Imbia F-Droid tramite WiFi...</string>
+  <string name="proxy">Proxy</string>
+  <string name="enable_proxy_title">Abìlita proky HTTP</string>
+  <string name="enable_proxy_summary">Cunfigura proxy HTTP pro totu sas rechestas de sa retza</string>
+  <string name="proxy_host">Host proxy</string>
+  <string name="proxy_host_summary">Cunfigura su nùmene de s\'host de su proxy tuo (e.g. 127.0.0.1)</string>
+  <string name="proxy_port">Ghenna proxy</string>
+  <string name="proxy_port_summary">Cunfigura su nùmeru de sa ghenna de su proxy tuo (es. 8118)</string>
+  <string name="repos_unchanged">Perunu depòsitu tenet agiornamentos de pachetos</string>
+  <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creados errores.</string>
+  <string name="global_error_updating_repos">Faddina durante s\'agiornamentu</string>
+  <string name="unverified">Non verificadu</string>
+  <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu.
+        Pro che bìdere sos aplicos in intro, lu depes agiornare.
+
+A pustis, sa descritzione e sos àteros detallios ant a 
+        èssere disponìbiles inoghe.</string>
+  <string name="repo_delete_details">Boles burrare su depòsitu \"{0}\",
+        chi in intro tenet {1} aplicos? Sos aplicos installados No ant a èssere
+        removidos, ma no as a tènnere prus sa possibilidade de los agiornare tràmite F-Droid.</string>
+  <string name="repo_confirm_delete_body">Burrare unu depòsitu bolet nàrrere
+        chi sos aplicos in intro no ant a èssere prus disponìbiles tràmite F-Droid.
+
+Nota: Totu
+        sos aplicos giai installados ant a abarrare in su dispositivu tuo.</string>
+  <string name="repo_disabled_notification">\"%1$s\" est disabilitadu.
+
+Depes
+        torrare ad abilitare custu depòsitu pro installare sos aplicos chi bi sunt in intro.</string>
+  <string name="app_icon">Icona de s\'aplicu</string>
+  <string name="repo_icon">Icona depòsitu</string>
+  <string name="Children">Pitzinnos</string>
+  <string name="Development">Isvilupu</string>
+  <string name="Games">Giogos</string>
+  <string name="Internet">Ìnternet</string>
+  <string name="Mathematics">Matemàticas</string>
+  <string name="Multimedia">Multimedia</string>
+  <string name="Navigation">Nàvigu</string>
+  <string name="News">Noas</string>
+  <string name="Office">Ufìtziu</string>
+  <string name="Phone_SMS"/>
+  <string name="Reading">Leghidura</string>
+  <string name="Science_Education">Iscièntzia e educatzione</string>
+  <string name="Security">Seguràntzia</string>
+  <string name="System">Sistema</string>
+  <string name="Wallpaper">Isfundu</string>
+  <string name="requesting_root_access_title">Atzessu root</string>
+  <string name="requesting_root_access_body">Pedinde s\'atzessu root…</string>
+  <string name="root_access_denied_title">Atzessu root dennegadu</string>
+  <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a F-droid.</string>
+  <string name="update_all">Agiorna totu</string>
+  <string name="installer_error_title">Errore de (Dis-)Installatzione</string>
+  <string name="installer_error_body">Sa (dis-)installatzione st faddida. Si ses impreande s\'atzessu root, proa a che lu disabilitare!</string>
+  <string name="system_permission_denied_title">Permissos de sistema dennegados</string>
+  <string name="system_permission_denied_body">Custa optzione st disponìbile petzi cando F-Droid est installadu comente aplicu de sistema.</string>
+  <string name="app_description">F-Droid est unu catàlogu installàbile de FOSS (Free and Open Source Software - Aplicos lìberos e a mitza aberta) pro Android. S\'aplicu-client permitit de chircare, installare, e compidare sos agiornamentos in su dispositivu tuo.</string>
+  <string name="swap_join_same_wifi">Cunnete•ti a sa matessi Wifi de s\'amigu tuo</string>
+  <string name="swap_use_bluetooth">Imprea su Bluetooth imbetzes</string>
+  <string name="swap_wifi_help">Àteras informatziones pro su WiFi</string>
+  <string name="menu_swap">Imbia aplicos</string>
+  <string name="swap">Imbia aplicos</string>
+  <string name="swap_no_wifi_network">Peruna retza disponìbile</string>
+  <string name="swap_view_available_networks">(Toca pro ammustrare sas retzas disponìbiles)</string>
+  <string name="swap_wifi_qr_not_working">No est funtzionande</string>
+  <string name="open_qr_code_scanner">Aberi s\'iscansidore de còdighes QR</string>
+  <string name="swap_welcome">Benènnidu in F-Droid!</string>
+  <string name="swap_confirm_connect">Boles retzire como sos aplicos dae %1$s?</string>
+</resources>

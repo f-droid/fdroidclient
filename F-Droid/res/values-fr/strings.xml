@@ -233,7 +233,9 @@ Vous devez
   <string name="Navigation">Navigation</string>
   <string name="News">Nouveautés</string>
   <string name="Office">Bureautique</string>
+  <string name="Phone_SMS"/>
   <string name="Reading">Lecture</string>
+  <string name="Science_Education"/>
   <string name="Security">Sécurité</string>
   <string name="System">Système</string>
   <string name="Wallpaper">Fond d\'écran</string>

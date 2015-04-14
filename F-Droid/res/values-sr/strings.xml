@@ -29,6 +29,7 @@
   <string name="system_installer">Користи системске дозволе</string>
   <string name="system_installer_on">Користи системске дозволе за инсталирање, надоградњу и уклањање пакета</string>
   <string name="local_repo_name">Име ваше локалне ризнице</string>
+  <string name="local_repo_https">Користи приватну везу</string>
   <string name="local_repo_https_on">Користи шифровану ХТТПС:// везу за ову ризницу</string>
   <string name="search_results">Резултати претраге</string>
   <string name="app_details">Детаљи апликације</string>
@@ -45,8 +46,8 @@
 Ризница је извор апликација. Да би сте додали једну, притисните дугме МЕНИ и унесите УРЛ.
 
 Адреса ризнице изгледа овако: https://f-droid.org/repo</string>
-  <string name="inst">Инсталирана</string>
-  <string name="not_inst">Није инсталирана</string>
+  <string name="inst">Инсталирано</string>
+  <string name="not_inst">Није инсталирано</string>
   <string name="added_on">Додата %s</string>
   <string name="ok">У реду</string>
   <string name="yes">Да</string>
@@ -99,11 +100,11 @@
   <string name="menu_ignore_this">Игнориши ову надоградњу</string>
   <string name="menu_website">Вебсајт</string>
   <string name="menu_issues">Проблеми</string>
-  <string name="menu_source">Изворни код</string>
+  <string name="menu_source">Изворни кôд</string>
   <string name="menu_upgrade">Надогради</string>
   <string name="menu_donate">Донирај</string>
   <string name="details_installed">Инсталирано издање  %s</string>
-  <string name="details_notinstalled">Није инсталирана</string>
+  <string name="details_notinstalled">Није инсталирано</string>
   <string name="corrupt_download">Преузети фајл је покварен</string>
   <string name="download_cancelled">Преузимање отказано</string>
   <string name="antiadslist">Ова апликација садржи огласе</string>
@@ -111,7 +112,7 @@
   <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>
   <string name="antinonfreenetlist">Ова апликација промовише неслободне мрежне услуге</string>
   <string name="antinonfreedeplist">Ова апликација зависи од неслободних апликација</string>
-  <string name="antiupstreamnonfreelist">Изворни код није у потпуности слободан</string>
+  <string name="antiupstreamnonfreelist">Изворни кôд није у потпуности слободан</string>
   <string name="display">Приказ</string>
   <string name="expert">Стручно</string>
   <string name="expert_on">Прикажи додатне податке и омогући додатне поставке</string>
@@ -129,12 +130,21 @@
   <string name="local_repo">Локална ризница</string>
   <string name="local_repos_title">Локалне ризнице</string>
   <string name="local_repos_scanning">Откривам локалне ризнице…</string>
+  <string name="local_repo_running">Ф-дроид је спреман за размену</string>
   <string name="waiting_for_ipaddress">чекам ИП адресу…</string>
   <string name="setup_repo">Постави локалну ризницу</string>
+  <string name="touch_to_configure_local_repo">Тапните за приказ детаља и да дозволите другима да размењују ваше апликације.</string>
+  <string name="touch_to_turn_on_local_repo">Тапните да омогућите вашу локалну ризницу.</string>
+  <string name="touch_to_turn_off_local_repo">Тапните да онемогућите вашу локалну ризницу.</string>
   <string name="updating">Ажурирам…</string>
   <string name="update_repo">Ажурирај ризницу</string>
   <string name="deleting_repo">Бришем тренутну ризницу…</string>
   <string name="adding_apks_format">Додајем %s у ризницу…</string>
+  <string name="writing_index_jar">Уписујем потписани фајл индекса (index.jar)…</string>
+  <string name="failed_to_create_index">Неуспех стварања индекса ризнице!</string>
+  <string name="linking_apks">Повезујем АПК фајлове у ризницу…</string>
+  <string name="copying_icons">Копирам иконе апликација у ризницу…</string>
+  <string name="updated_local_repo">Завршено ажурирање локалне ризнице</string>
   <string name="no_applications_found">Нема апликација</string>
   <string name="icon">икона</string>
   <string name="fingerprint">Отисак:</string>
@@ -142,10 +152,13 @@
   <string name="sharing_uri">УРЛ дељења:</string>
   <string name="enable_wifi">Омогући бежични</string>
   <string name="enabling_wifi">Омогућујем бежични…</string>
-  <string name="qr_code">Бар-код</string>
+  <string name="same_wifi_instructions">Да бисте се могли повезати са уређајима других људи, уверите се да су сви уређаји на истој бежичној мрежи.  Затим, или укуцајте УРЛ изнад у Ф-дроид, или очитајте овај бар-кôд:</string>
+  <string name="qr_code">Бар-кôд</string>
   <string name="next">Следеће</string>
   <string name="skip">Прескочи</string>
-  <string name="qr_content_description">Бар-код УРЛ-а ризнице</string>
+  <string name="qr_content_description">Бар-кôд УРЛ-а ризнице</string>
+  <string name="qr_wizard_wifi_network_instructions">Очитајте овај бар-кôд да бисте се повезали на исту бежичну мрежу као и овај уређај.</string>
+  <string name="qr_wizard_download_instructions">Очитајте овај бар-кôд како бисте се повезали на вебсајт да бисте почели.</string>
   <string name="send_fdroid_via_wifi">Пошаљи FDroid.apk бежичним…</string>
   <string name="proxy">Прокси</string>
   <string name="enable_proxy_title">Омогући ХТТП прокси</string>
@@ -233,13 +246,16 @@
   <string name="installer_error_body">Инсталација/уклањање није успело. Ако користите корени приступ покушајте да га онемогућите.</string>
   <string name="system_permission_denied_title">Системске дозволе одбијене</string>
   <string name="system_permission_denied_body">Ова опција доступна само када је Ф-дроид инсталиран као системска апликација.</string>
-  <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кода) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>
+  <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кôда) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>
+  <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
   <string name="swap_use_bluetooth">Користи блутут</string>
   <string name="swap_wifi_help">Сазнајте више о бежичном</string>
+  <string name="menu_swap">Размена</string>
+  <string name="swap">Размена</string>
   <string name="swap_no_wifi_network">Још нема мреже</string>
   <string name="swap_view_available_networks">(Тапните за доступне мреже)</string>
   <string name="swap_wifi_qr_not_working">Не ради</string>
-  <string name="open_qr_code_scanner">Отвори читач бар-кода</string>
+  <string name="open_qr_code_scanner">Отвори читач бар-кôда</string>
   <string name="swap_welcome">Добро дошли у Ф-дроид!</string>
   <string name="swap_confirm_connect">Желите ли да добавите апликације са %1$s одмах?</string>
 </resources>

@@ -24,11 +24,12 @@
   <string name="root_installer_on">Vyžádat si oprávnění roota k instalaci, aktualizaci či odstraňování balíčků</string>
   <string name="system_installer">Instalovat s použitím systémových oprávnění</string>
   <string name="system_installer_on">Použít systémová oprávnění k instalování, aktualizaci a odebírání balíčků</string>
-  <string name="local_repo_bonjour">Oznamovat místní repositář</string>
-  <string name="local_repo_bonjour_on">Oznamovat místní repositář pomocí Bonjour (mDNS)</string>
-  <string name="local_repo_name">Název místního repositáře</string>
-  <string name="local_repo_name_summary">Oznamovaný název místního repositáře: %s</string>
-  <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repositář</string>
+  <string name="local_repo_bonjour">Oznamovat místní repozitář</string>
+  <string name="local_repo_bonjour_on">Oznamovat místní repozitář pomocí Bonjour (mDNS)</string>
+  <string name="local_repo_name">Název místního repozitáře</string>
+  <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
+  <string name="local_repo_https">Použít soukromé připojení</string>
+  <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
   <string name="search_results">Výsledky hledání</string>
   <string name="app_details">Detaily aplikace</string>
   <string name="no_such_app">Žádná taková aplikace nebyla nalezena</string>
@@ -104,22 +105,22 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="category_all">Vše</string>
   <string name="category_whatsnew">Novinky</string>
   <string name="category_recentlyupdated">Nedávno aktualizované</string>
-  <string name="local_repo">Místní repositář</string>
+  <string name="local_repo">Místní repozitář</string>
   <string name="local_repo_running">F-Droid je připraven k výměně</string>
   <string name="waiting_for_ipaddress">čekám na IP adresu…</string>
-  <string name="setup_repo">Nastavit místní repositář</string>
+  <string name="setup_repo">Nastavit místní repozitář</string>
   <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním  si přetáhnout tvé aplikace.</string>
-  <string name="touch_to_turn_on_local_repo">Dotykem zapni místní repositář.</string>
-  <string name="touch_to_turn_off_local_repo">Dotykem vypni místní repositář</string>
+  <string name="touch_to_turn_on_local_repo">Dotykem zapni místní repozitář.</string>
+  <string name="touch_to_turn_off_local_repo">Dotykem vypni místní repozitář</string>
   <string name="updating">Aktualizuji…</string>
-  <string name="update_repo">Aktualizovat repositář</string>
-  <string name="deleting_repo">Odstraňuji místní repositář…</string>
-  <string name="adding_apks_format">Přidávám %s do repositáře…</string>
+  <string name="update_repo">Aktualizovat repozitář</string>
+  <string name="deleting_repo">Odstraňuji místní repozitář…</string>
+  <string name="adding_apks_format">Přidávám %s do repozitáře…</string>
   <string name="writing_index_jar">Zapisuji podepsaný soubor s indexem (index.jar)…</string>
-  <string name="failed_to_create_index">Nezdařilo se vytvořit index repositáře!</string>
-  <string name="linking_apks">Linkuji APK do repositáře…</string>
-  <string name="copying_icons">Kopíruji ikony aplikací do repositáře…</string>
-  <string name="updated_local_repo">Místní repositář byl aktualizován</string>
+  <string name="failed_to_create_index">Nezdařilo se vytvořit index repozitáře!</string>
+  <string name="linking_apks">Linkuji APK do repozitáře…</string>
+  <string name="copying_icons">Kopíruji ikony aplikací do repozitáře…</string>
+  <string name="updated_local_repo">Místní repozitář byl aktualizován</string>
   <string name="no_applications_found">Žádné aplikace nenalezeny</string>
   <string name="icon">ikona</string>
   <string name="fingerprint">Fingerprint:</string>
@@ -130,18 +131,19 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="qr_code">QR kód</string>
   <string name="next">Další</string>
   <string name="skip">Přeskočit</string>
-  <string name="qr_content_description">QR kód pro URL repositáře</string>
+  <string name="qr_content_description">QR kód pro URL repozitáře</string>
   <string name="qr_wizard_wifi_network_instructions">Načti tento QR kód pro připojení ke stejné WiFi síti jako je toto zařízení.</string>
   <string name="send_fdroid_via_wifi">Poslat F-Droid přes WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Povolit HTTP proxy</string>
   <string name="enable_proxy_summary">Nastavit HTTP proxy pro všechny síťové požadavky</string>
   <string name="proxy_host">Proxy server</string>
+  <string name="proxy_host_summary">Nakonfigurovat hostname proxy (např. 127.0.0.1)</string>
   <string name="proxy_port">Proxy port</string>
   <string name="status_connecting_to_repo">Připojuji se k %1$s</string>
   <string name="status_checking_compatibility">Kontroluji kompatibilitu aplikací s tímto zařízením…</string>
   <string name="status_inserting">Ukládám podrobnosti o aplikacích (%1$d%%)</string>
-  <string name="repos_unchanged">V žádném repositáři nejsou dostupné aktualizace balíčků</string>
+  <string name="repos_unchanged">V žádném repozitáři nejsou dostupné aktualizace balíčků</string>
   <string name="global_error_updating_repos">Chyba při aktualizaci:</string>
   <string name="no_permissions">Žádná oprávnění nejsou použita.</string>
   <string name="permissions_for_long">Oprávnění pro verzi %s</string>
@@ -159,22 +161,22 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="repo_last_update">Poslední aktualizace</string>
   <string name="repo_name">Název</string>
   <string name="unsigned_description">Toto znamená, že seznam aplikací nemohl být verifikován. Buď opatrný s aplikacemi z nepodepsaných indexů.</string>
-  <string name="repo_not_yet_updated">Tento repositář ještě nebyl použit.
+  <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit.
 Aby byly zobrazeny z něj dostupné aplikace, je nutné ho nejprve aktualizovat.
 
-Jakmile bude aktualizován, popis a další detail se zobrazí zde.</string>
-  <string name="repo_delete_details">Přeješ si odebrat repositář \"{0}\", ze kterého je nainstalováno {1} aplikací?Nainstalované aplikace NEbudou odinstalovány, ale nebude je možné aktualizovat přes F-Droid.</string>
+Jakmile bude aktualizován, popis a další detaily se zobrazí zde.</string>
+  <string name="repo_delete_details">Přeješ si odebrat repozitář \"{0}\", ze kterého je nainstalováno {1} aplikací?Nainstalované aplikace NEbudou odinstalovány, ale nebude je možné aktualizovat přes F-Droid.</string>
   <string name="repo_confirm_delete_title">Odebrat repositář?</string>
-  <string name="repo_confirm_delete_body">Po odebrání repositáře nebudou v něm umístěné aplikace nadále dostupné v F-Droidu.
+  <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou v něm umístěné aplikace nadále dostupné v F-Droidu.
 
 Pozn.: Všechny aplikace nainstalované na tomto zařízení budou ponechány beze změn.</string>
   <string name="repo_disabled_notification">\"%1$s\" zakázáno.
 
-Tento repositář bude nutné znovu povolit, aby z něj mohly být instalovány aplikace.</string>
+Tento repozitář bude nutné znovu povolit, aby z něj mohly být instalovány aplikace.</string>
   <string name="minsdk_or_later">%s nebo novější</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikace</string>
-  <string name="repo_icon">Ikona repositáře</string>
+  <string name="repo_icon">Ikona repozitáře</string>
   <string name="Children">Děti</string>
   <string name="Development">Vývoj</string>
   <string name="Games">Hry</string>
@@ -184,7 +186,9 @@ Tento repositář bude nutné znovu povolit, aby z něj mohly být instalovány 
   <string name="Navigation">Navigace</string>
   <string name="News">Zpravodajství</string>
   <string name="Office">Kancelář</string>
+  <string name="Phone_SMS"/>
   <string name="Reading">Čtení</string>
+  <string name="Science_Education"/>
   <string name="Security">Bezpečnost</string>
   <string name="System">Systém</string>
   <string name="Wallpaper">Tapety na pozadí</string>
@@ -193,14 +197,17 @@ Tento repositář bude nutné znovu povolit, aby z něj mohly být instalovány 
   <string name="root_access_denied_title">Root přístup odepřen</string>
   <string name="root_access_denied_body">Buď toto Android zařízení není rootnuté, nebo jsi odepřel F-Droidu opránění roota.</string>
   <string name="update_all">Aktualizovat vše</string>
+  <string name="installer_error_title">(De-)instalační chyba</string>
   <string name="system_permission_denied_title">Systémová oprávnění odepřena</string>
   <string name="system_permission_denied_body">Tato volba je dostupná pouze, pokud je F-Droid nainstalován jako systémová aplikace.</string>
   <string name="swap_join_same_wifi">Připoj se na stejnou WiFi jako tvůj přítel</string>
   <string name="swap_use_bluetooth">Použít Bluetooth</string>
   <string name="swap_wifi_help">Více o WiFi</string>
+  <string name="menu_swap">Přepnout aplikace</string>
   <string name="swap_no_wifi_network">Zatím žádná síť</string>
   <string name="swap_view_available_networks">(Dotykem zobraz dostupné sítě)</string>
   <string name="swap_wifi_qr_not_working">Máchale, spadlo ti to.</string>
   <string name="open_qr_code_scanner">Otevřít čtečku QR kódů</string>
+  <string name="swap_welcome">Vítejte v aplikaci F-Droid!</string>
   <string name="swap_confirm_connect">Chceš nyní stáhnout aplikace z %1$s?</string>
 </resources>

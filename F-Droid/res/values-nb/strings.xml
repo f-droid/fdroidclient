@@ -33,7 +33,7 @@
   <string name="local_repo_name">Navn på lokal pakkebrønn</string>
   <string name="local_repo_name_summary">Offentliggjort tittel for din lokale pakkebrønn: %s</string>
   <string name="local_repo_https">Bruk privat tilkobling</string>
-  <string name="local_repo_https_on">Bruk sikret HTTP:// -tilkobling for lokal pakkebrønn</string>
+  <string name="local_repo_https_on">Bruk sikret HTTP://-tilkobling for lokal pakkebrønn</string>
   <string name="search_results">Søkeresultater</string>
   <string name="app_details">Programdetaljer</string>
   <string name="no_such_app">Program ikke funnet</string>
@@ -44,9 +44,11 @@ Lisensiert GNU GPLv3.</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Versjon:</string>
   <string name="about_website">Nettside</string>
-  <string name="no_repo">Du har ikke konfigurert noen pakkebrønner! En pakkebrønn er en kilde til applikasjoner. For å legge til en pakkebrønn, trykk på MENY-knappen nå, og skriv inn adresse. En pakkebrønn-adresse ser slik ut: https://f-droid.org/repo</string>
+  <string name="no_repo">Du har ikke angitt noen pakkebrønner! En pakkebrønn er en kilde til applikasjoner. For å legge til en pakkebrønn, trykk på MENY-knappen nå, og skriv inn adresse. En pakkebrønnsadresse ser slik ut: https://f-droid.org/repo</string>
   <string name="inst">Installert</string>
   <string name="not_inst">Ikke installert</string>
+  <string name="inst_known_source">Installert (fra %s)</string>
+  <string name="inst_unknown_source">Installert (fra ukjent kilde)</string>
   <string name="added_on">Lagt til %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -134,14 +136,14 @@ Lisensiert GNU GPLv3.</string>
   <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>
   <string name="touch_to_turn_on_local_repo">Trykk for å skru på din lokale pakkebrønn.</string>
   <string name="touch_to_turn_off_local_repo">Trykk for å skru av din lokale repo.</string>
-  <string name="updating">Oppdaterer…</string>
+  <string name="updating">Oppdaterer...</string>
   <string name="update_repo">Oppdater pakkebrønn</string>
-  <string name="deleting_repo">Sletter gjeldende pakkebrønn…</string>
-  <string name="adding_apks_format">Legger til %s til pakkebrønn…</string>
-  <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)…</string>
+  <string name="deleting_repo">Sletter gjeldende pakkebrønn...</string>
+  <string name="adding_apks_format">Legger til %s til pakkebrønn...</string>
+  <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)...</string>
   <string name="failed_to_create_index">Klarte ikke å indeksere pakkebrønn!</string>
-  <string name="linking_apks">Lenker APK-er inn i pakkebrønn…</string>
-  <string name="copying_icons">Kopierer program-ikoner til pakkebrønnen…</string>
+  <string name="linking_apks">Lenker APK-er inn i pakkebrønn...</string>
+  <string name="copying_icons">Kopierer program-ikoner til pakkebrønnen...</string>
   <string name="updated_local_repo">Ferdig med oppdatering av lokal pakkebrønn</string>
   <string name="no_applications_found">Ingen applikasjoner funnet</string>
   <string name="icon">ikon</string>
@@ -149,7 +151,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="wifi_network">Wi-Fi-nettverk:</string>
   <string name="sharing_uri">Delings-nettadresse:</string>
   <string name="enable_wifi">Skru på Wi-Fi</string>
-  <string name="enabling_wifi">Skrur på WiFi…</string>
+  <string name="enabling_wifi">Skrur på WiFi...</string>
   <string name="same_wifi_instructions">Sørg for å være på samme Wi-Fi-nettverk som de enhetene du vil koble til. Skriv enten inn nettadressen ovenfor i F-droid, eller skann denne QR-koden:</string>
   <string name="qr_code">QR Kode</string>
   <string name="next">Neste</string>
@@ -157,14 +159,14 @@ Lisensiert GNU GPLv3.</string>
   <string name="qr_content_description">QR-kode for pakkebrønnens nettadresse</string>
   <string name="qr_wizard_wifi_network_instructions">Skann denne QR-koden for å koble til samme Wi-Fi nettverk som denne enheten.</string>
   <string name="qr_wizard_download_instructions">Skann denne QR-koden for å koble til nettsiden for å komme i gang.</string>
-  <string name="send_fdroid_via_wifi">Send F-Droid over Wi-Fi…</string>
+  <string name="send_fdroid_via_wifi">Send F-Droid over Wi-Fi...</string>
   <string name="proxy">Mellomtjener</string>
-  <string name="enable_proxy_title">Skru på HTTP Proxy</string>
-  <string name="enable_proxy_summary">Konfigurer HTTP Proxy for alle nettverks forespørsler.</string>
+  <string name="enable_proxy_title">Skru på HTTP-mellomtjener</string>
+  <string name="enable_proxy_summary">Konfigurer HTTP-mellomtjener for alle nettverksforespørsler.</string>
   <string name="proxy_host">Mellomtjener-vert</string>
-  <string name="proxy_host_summary">Sett opp din mellomtjeners tjenernavn (f.eks. 127.0.0.1)</string>
+  <string name="proxy_host_summary">Sett opp tjenernavn for din mellomtjener (f.eks. 127.0.0.1)</string>
   <string name="proxy_port">Mellomtjener-port</string>
-  <string name="proxy_port_summary">Sett opp din mellomtjeners portnummer (f.eks. 8118)</string>
+  <string name="proxy_port_summary">Sett opp portnummer for din mellomtjener (f.eks. 8118)</string>
   <string name="status_download">Laster ned
 %2$s / %3$s (%4$d%%) fra
 %1$s</string>
@@ -214,6 +216,8 @@ Merk: Alle
 
 Du må
        skru på dette registeret igjen for å installere applikasjoner fra det.</string>
+  <string name="repo_added">Lagret F-Droid-pakkebrønn %1$s</string>
+  <string name="repo_searching_address">Ser etter F-Droid-pakkebrønn på %1$s</string>
   <string name="minsdk_or_later">%s eller senere</string>
   <string name="up_to_maxsdk">opptil %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s opptil %2$s</string>
@@ -232,11 +236,12 @@ Du må
   <string name="Office">Kontor</string>
   <string name="Phone_SMS">Telefon og SMS</string>
   <string name="Reading">Leser</string>
+  <string name="Science_Education"/>
   <string name="Security">Sikkerhet</string>
   <string name="System">System</string>
   <string name="Wallpaper">Bakgrunn</string>
   <string name="requesting_root_access_title">Root tilgang</string>
-  <string name="requesting_root_access_body">Etterspørr root-tilgang…</string>
+  <string name="requesting_root_access_body">Etterspørr root-tilgang...</string>
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>
   <string name="update_all">Oppdater alle</string>
