@@ -76,7 +76,7 @@ public class InstalledAppCacheUpdater {
     }
 
     protected void startBackgroundWorker() {
-        new Worker().execute();
+        new PostponedWorker().execute();
     }
 
     /**
@@ -156,10 +156,18 @@ public class InstalledAppCacheUpdater {
         return ops;
     }
 
-    private class Worker extends AsyncTask<Void, Void, Boolean> {
+    /**
+     * Waits 5 seconds before beginning to update cache of installed apps.
+     * This is due to a bug where the database was locked as F-Droid was starting,
+     * which caused a crash.
+     */
+    private class PostponedWorker extends AsyncTask<Void, Void, Boolean> {
 
         @Override
         protected Boolean doInBackground(Void... params) {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {}
             return update();
         }
 

@@ -164,7 +164,8 @@ public class FDroidApp extends Application {
         // e.g. if we crashed/ran out of battery half way through responding
         // to a package installed intent. It doesn't really matter where
         // we put this in the bootstrap process, because it runs on a different
-        // thread. In fact, we may as well start early for this reason.
+        // thread, which will be delayed by some seconds to avoid an error where
+        // the database is locked due to the database updater.
         InstalledAppCacheUpdater.updateInBackground(getApplicationContext());
 
         // If the user changes the preference to do with filtering rooted apps,
