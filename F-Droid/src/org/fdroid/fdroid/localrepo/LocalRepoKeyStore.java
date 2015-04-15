@@ -19,7 +19,6 @@ import org.spongycastle.operator.jcajce.JcaContentSignerBuilder;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -245,8 +244,7 @@ public class LocalRepoKeyStore {
     }
 
     private void addToStore(String alias, KeyPair kp, Certificate cert) throws KeyStoreException,
-            NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException,
-            UnrecoverableKeyException {
+            NoSuchAlgorithmException, CertificateException, IOException, UnrecoverableKeyException {
         Certificate[] chain = {
                 cert
         };
