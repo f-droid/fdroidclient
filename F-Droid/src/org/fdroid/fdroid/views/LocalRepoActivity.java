@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;

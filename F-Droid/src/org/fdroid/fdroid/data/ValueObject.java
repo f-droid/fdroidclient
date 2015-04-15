@@ -2,8 +2,6 @@ package org.fdroid.fdroid.data;
 
 import android.database.Cursor;
 
-import org.fdroid.fdroid.Utils;
-
 abstract class ValueObject {
 
     private static final String TAG = "fdroid.ValueObject";
