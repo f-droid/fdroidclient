@@ -212,10 +212,6 @@ public class LocalRepoService extends Service {
                         LocalRepoService.this,
                         getFilesDir(),
                         Preferences.get().isLocalRepoHttpsEnabled());
-                if (localHttpd == null) {
-                    Log.e(TAG, "localHttpd == null!");
-                    return;
-                }
 
                 Looper.prepare(); // must be run before creating a Handler
                 webServerThreadHandler = new Handler() {

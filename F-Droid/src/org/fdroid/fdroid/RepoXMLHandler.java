@@ -103,10 +103,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
         super.endElement(uri, localName, qName);
         final String curel = localName;
-        String str = curchars.toString();
-        if (str != null) {
-            str = str.trim();
-        }
+        String str = curchars.toString().trim();
 
         if (curel.equals("application") && curapp != null) {
             apps.add(curapp);
@@ -122,7 +119,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (curel.equals("package") && curapk != null && curapp != null) {
             apksList.add(curapk);
             curapk = null;
-        } else if (curapk != null && str != null) {
+        } else if (curapk != null) {
             switch (curel) {
             case "version":
                 curapk.version = str;
@@ -172,7 +169,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.nativecode = Utils.CommaSeparatedList.make(str);
                 break;
             }
-        } else if (curapp != null && str != null) {
+        } else if (curapp != null) {
             switch (curel) {
             case "name":
                 curapp.name = str;
