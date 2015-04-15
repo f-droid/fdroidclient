@@ -72,6 +72,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_EXPERT = false;
     private static final boolean DEFAULT_PERMISSIONS = false;
     private static final boolean DEFAULT_ENABLE_PROXY = false;
+    public static final String DEFAULT_THEME = "light";
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
     public static final int DEFAULT_PROXY_PORT = 8118;
     public static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;

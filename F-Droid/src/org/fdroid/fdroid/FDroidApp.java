@@ -184,7 +184,7 @@ public class FDroidApp extends Application {
         // because the install intent says it's finished when it hasn't.
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext());
-        curTheme = Theme.valueOf(prefs.getString(Preferences.PREF_THEME, "dark"));
+        curTheme = Theme.valueOf(prefs.getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
         if (!prefs.getBoolean(Preferences.PREF_CACHE_APK, false)) {
             Utils.deleteFiles(Utils.getApkCacheDir(this), null, ".apk");
         }

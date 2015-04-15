@@ -32,7 +32,7 @@
             android:key="compactlayout"/>
 		<ListPreference android:title="@string/theme"
 			android:key="theme"
-			android:defaultValue="dark"
+			android:defaultValue="light"
 			android:entries="@array/themeNames"
 			android:entryValues="@array/themeValues" />
 	</PreferenceCategory>
