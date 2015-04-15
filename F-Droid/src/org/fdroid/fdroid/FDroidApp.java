@@ -141,11 +141,9 @@ public class FDroidApp extends Application {
     }
 
     public static void updateLanguage(Context c, String lang) {
-        Configuration cfg = new Configuration();
-        if (!TextUtils.isEmpty(lang))
-            cfg.locale = new Locale(lang);
-        else
-            cfg.locale = Locale.getDefault();
+        final Configuration cfg = new Configuration();
+        final Locale newLocale = Utils.getLocaleFromAndroidLangTag(lang);
+        cfg.locale = newLocale == null ? Locale.getDefault() : newLocale;
         c.getResources().updateConfiguration(cfg, null);
     }
 

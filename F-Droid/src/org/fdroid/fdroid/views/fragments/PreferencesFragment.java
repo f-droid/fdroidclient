@@ -14,6 +14,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.CheckRootAsyncTask;
 import org.fdroid.fdroid.installer.Installer;
 
@@ -293,17 +294,13 @@ public class PreferencesFragment extends PreferenceFragment
     }
 
     private void langSpinner(String key) {
-        ListPreference pref = (ListPreference)findPreference(key);
+        final ListPreference pref = (ListPreference)findPreference(key);
         final String[] langValues = getResources().getStringArray(R.array.languageValues);
         String[] langNames = new String[langValues.length];
         langNames[0] = getString(R.string.pref_language_default);
         for (int i = 1; i < langValues.length; i++) {
-            try {
-                final Locale appLoc = Locale.forLanguageTag(langValues[i]);
-                langNames[i] = appLoc.getDisplayName(appLoc);
-            } catch (Exception e) {
-                langNames[i] = langValues[i];
-            }
+            final Locale appLoc = Utils.getLocaleFromAndroidLangTag(langValues[i]);
+            langNames[i] = appLoc == null ? langValues[i] : appLoc.getDisplayName(appLoc);
         }
         pref.setEntries(langNames);
     }
