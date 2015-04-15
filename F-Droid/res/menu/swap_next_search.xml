@@ -2,13 +2,13 @@
 
     <item
         android:id="@+id/action_next"
-        android:title="Next"
-        android:titleCondensed="Next"/>
+        android:title="@string/next"
+        android:titleCondensed="@string/next"/>
 
     <item
         android:id="@+id/action_search"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="Search"
-        android:titleCondensed="Search"/>
+        android:title="@string/menu_search"
+        android:titleCondensed="@string/menu_search"/>
 
 </menu>

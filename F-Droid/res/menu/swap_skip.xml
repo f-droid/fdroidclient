@@ -2,8 +2,8 @@
 
     <item
         android:id="@+id/action_next"
-        android:title="Skip"
-        android:titleCondensed="Skip"/>
+        android:title="@string/skip"
+        android:titleCondensed="@string/skip"/>
 
     <!-- Currently in a style, but that style probably wont work on 8 -> 11 devices -->
     <!--android:drawable="@drawable/swap_action_button_skin"-->

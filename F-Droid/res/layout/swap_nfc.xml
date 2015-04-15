@@ -24,7 +24,7 @@
 
     <CheckBox
             android:id="@+id/checkbox_dont_show"
-            android:text="Don't show this again"
+            android:text="@string/swap_dont_show_again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_description"

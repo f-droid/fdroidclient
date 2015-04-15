@@ -30,13 +30,13 @@
                 android:id="@+id/wifi_label_public"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Public"/>
+                android:text="@string/wifi_ap_public"/>
 
         <TextView
                 android:id="@+id/wifi_warning_public"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="May work"/>
+                android:text="@string/wifi_warning_public"/>
 
         <ImageView
                 android:id="@+id/wifi_status_public"
@@ -64,13 +64,13 @@
                 android:id="@+id/wifi_label_private"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Private" />
+                android:text="@string/wifi_ap_private" />
 
         <TextView
                 android:id="@+id/wifi_warning_private"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Promising" />
+                android:text="@string/wifi_warning_private" />
 
         <ImageView
                 android:id="@+id/wifi_status_private"
@@ -99,13 +99,13 @@
                 android:id="@+id/wifi_label_personal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hotspot" />
+                android:text="@string/wifi_ap_personal" />
 
         <TextView
                 android:id="@+id/wifi_warning_personal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Best bet" />
+                android:text="@string/wifi_warning_personal" />
 
         <ImageView
                 android:id="@+id/wifi_status_personal"
