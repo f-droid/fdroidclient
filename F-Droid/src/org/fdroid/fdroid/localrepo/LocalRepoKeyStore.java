@@ -155,22 +155,7 @@ public class LocalRepoKeyStore {
             keyManagers = new KeyManager[] {
                     wrappedKeyManager
             };
-        } catch (UnrecoverableKeyException e) {
-            Log.e(TAG, "Error loading keystore: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (KeyStoreException e) {
-            Log.e(TAG, "Error loading keystore: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (NoSuchAlgorithmException e) {
-            Log.e(TAG, "Error loading keystore: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (CertificateException e) {
-            Log.e(TAG, "Error loading keystore: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (OperatorCreationException e) {
-            Log.e(TAG, "Error loading keystore: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (IOException e) {
+        } catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException | CertificateException | OperatorCreationException | IOException e) {
             Log.e(TAG, "Error loading keystore: " + e.getMessage());
             Log.e(TAG, Log.getStackTraceString(e));
         }
@@ -222,28 +207,7 @@ public class LocalRepoKeyStore {
             zipSigner.setKeys("kerplapp", cert, priv, DEFAULT_SIG_ALG, null);
             zipSigner.signZip(input.getAbsolutePath(), output.getAbsolutePath());
 
-        } catch (ClassNotFoundException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (IllegalAccessException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (InstantiationException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (KeyStoreException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (UnrecoverableKeyException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (NoSuchAlgorithmException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (IOException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (GeneralSecurityException e) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | GeneralSecurityException | IOException e) {
             Log.e(TAG, "Unable to sign local repo index: " + e);
             Log.e(TAG, Log.getStackTraceString(e));
         }
@@ -273,13 +237,7 @@ public class LocalRepoKeyStore {
             Key key = keyStore.getKey(INDEX_CERT_ALIAS, "".toCharArray());
             if (key instanceof PrivateKey)
                 return keyStore.getCertificate(INDEX_CERT_ALIAS);
-        } catch (KeyStoreException e) {
-            Log.e(TAG, "Unable to get certificate for local repo: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (UnrecoverableKeyException e) {
-            Log.e(TAG, "Unable to get certificate for local repo: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (NoSuchAlgorithmException e) {
+        } catch (GeneralSecurityException e) {
             Log.e(TAG, "Unable to get certificate for local repo: " + e);
             Log.e(TAG, Log.getStackTraceString(e));
         }

@@ -180,8 +180,6 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             dlWrapper.download();
             return true;
 
-        } catch (MalformedURLException e) {
-            onErrorDownloading(e.getLocalizedMessage());
         } catch (IOException e) {
             onErrorDownloading(e.getLocalizedMessage());
         }

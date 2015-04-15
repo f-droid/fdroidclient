@@ -45,10 +45,7 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
             assertTrue(testFile.length() == simpleIndexXml.length());
             assertEquals(FileUtils.readFileToString(testFile),
                     FileUtils.readFileToString(simpleIndexXml));
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail();
-        } catch (UpdateException e) {
+        } catch (IOException | UpdateException e) {
             e.printStackTrace();
             fail();
         }

@@ -636,9 +636,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         Log.d(TAG, "Updating/inserting " + operations.size() + " apps.");
         try {
             executeBatchWithStatus(AppProvider.getAuthority(), operations, currentCount, totalUpdateCount);
-        } catch (RemoteException e) {
-            Log.e(TAG, e.getMessage());
-        } catch (OperationApplicationException e) {
+        } catch (RemoteException | OperationApplicationException e) {
             Log.e(TAG, e.getMessage());
         }
     }
@@ -702,9 +700,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         Log.d(TAG, "Updating/inserting " + operations.size() + " apks.");
         try {
             executeBatchWithStatus(ApkProvider.getAuthority(), operations, currentCount, totalApksAppsCount);
-        } catch (RemoteException e) {
-            Log.e(TAG, e.getMessage());
-        } catch (OperationApplicationException e) {
+        } catch (RemoteException | OperationApplicationException e) {
             Log.e(TAG, e.getMessage());
         }
     }

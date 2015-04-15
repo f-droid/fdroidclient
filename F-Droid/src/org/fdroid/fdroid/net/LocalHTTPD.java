@@ -154,10 +154,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     localRepoKeyStore.getKeyStore(),
                     localRepoKeyStore.getKeyManagers());
             makeSecure(factory);
-        } catch (IOException e) {
-            Log.e(TAG, "Could not enable HTTPS: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
-        } catch (LocalRepoKeyStore.InitException e) {
+        } catch (LocalRepoKeyStore.InitException | IOException e) {
             Log.e(TAG, "Could not enable HTTPS: " + e.getMessage());
             Log.e(TAG, Log.getStackTraceString(e));
         }
