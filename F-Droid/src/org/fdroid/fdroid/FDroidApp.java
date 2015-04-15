@@ -288,13 +288,15 @@ public class FDroidApp extends Application {
             e1.printStackTrace();
             found = false;
         }
-        if (!found) {
-            Toast.makeText(this, R.string.bluetooth_activity_not_found,
-                    Toast.LENGTH_SHORT).show();
-            activity.startActivity(Intent.createChooser(sendBt, getString(R.string.choose_bt_send)));
-        } else {
-            sendBt.setClassName(bluetoothPackageName, className);
-            activity.startActivity(sendBt);
+        if (sendBt != null) {
+            if (!found) {
+                Toast.makeText(this, R.string.bluetooth_activity_not_found,
+                        Toast.LENGTH_SHORT).show();
+                activity.startActivity(Intent.createChooser(sendBt, getString(R.string.choose_bt_send)));
+            } else {
+                sendBt.setClassName(bluetoothPackageName, className);
+                activity.startActivity(sendBt);
+            }
         }
     }
 
