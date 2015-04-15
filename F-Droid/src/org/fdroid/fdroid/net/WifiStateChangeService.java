@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
@@ -44,14 +45,18 @@ public class WifiStateChangeService extends Service {
                 while (!wifiManager.isWifiEnabled()) {
                     if (isCancelled())
                         return null;
-                    Log.i(TAG, "waiting for the wifi to be enabled...");
+                    if (BuildConfig.DEBUG) {
+                        Log.d(TAG, "waiting for the wifi to be enabled...");
+                    }
                     Thread.sleep(1000);
                 }
                 int ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                 while (ipAddress == 0) {
                     if (isCancelled())
                         return null;
-                    Log.i(TAG, "waiting for an IP address...");
+                    if (BuildConfig.DEBUG) {
+                        Log.d(TAG, "waiting for an IP address...");
+                    }
                     Thread.sleep(1000);
                     ipAddress = wifiManager.getConnectionInfo().getIpAddress();
                 }
