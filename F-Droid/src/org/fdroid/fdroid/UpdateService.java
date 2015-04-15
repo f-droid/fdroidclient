@@ -353,7 +353,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             // Process each repo...
             Map<String, App> appsToUpdate = new HashMap<>();
             List<Apk> apksToUpdate = new ArrayList<>();
-            List<Repo> swapRepos = new ArrayList<>();
+            //List<Repo> swapRepos = new ArrayList<>();
             List<Repo> unchangedRepos = new ArrayList<>();
             List<Repo> updatedRepos = new ArrayList<>();
             List<Repo> disabledRepos = new ArrayList<>();
@@ -371,7 +371,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     unchangedRepos.add(repo);
                     continue;
                 } else if (!singleRepoUpdate && repo.isSwap) {
-                    swapRepos.add(repo);
+                    //swapRepos.add(repo);
                     continue;
                 }
 
