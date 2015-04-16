@@ -160,9 +160,7 @@ public class MDnsHelper implements ServiceListener {
             DiscoveredRepo service = mEntries.get(position);
             ServiceInfo serviceInfo = service.getServiceInfo();
             InetAddress[] addresses = serviceInfo.getInetAddresses();
-            if (addresses != null && addresses.length > 0)
-                return true;
-            return false;
+            return (addresses != null && addresses.length > 0);
         }
 
         @Override
