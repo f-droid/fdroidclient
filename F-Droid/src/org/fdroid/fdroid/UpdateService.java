@@ -525,7 +525,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.setBigContentTitle(contentText);
         hasUpdates.moveToFirst();
-        for (int i = 0; i < Math.min(hasUpdates.getCount(), MAX_UPDATES_TO_SHOW); i ++) {
+        for (int i = 0; i < Math.min(hasUpdates.getCount(), MAX_UPDATES_TO_SHOW); i++) {
             App app = new App(hasUpdates);
             hasUpdates.moveToNext();
             inboxStyle.addLine(app.name + " (" + app.installedVersionName + " → " + app.getSuggestedVersion() + ")");

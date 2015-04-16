@@ -44,7 +44,7 @@ public class TabManager {
 
     public void createTabs() {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        for (int i = 0; i < pager.getAdapter().getCount(); i ++) {
+        for (int i = 0; i < pager.getAdapter().getCount(); i++) {
             CharSequence label = pager.getAdapter().getPageTitle(i);
             actionBar.addTab(
                 actionBar.newTab()

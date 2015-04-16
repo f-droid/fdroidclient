@@ -69,7 +69,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     private int totalSize = 0;
     private boolean isComplete = false;
 
-    private final long id = ++downloadIdCounter;
+    private final long id =++downloadIdCounter;
 
     public void setProgressListener(ProgressListener listener) {
         this.listener = listener;

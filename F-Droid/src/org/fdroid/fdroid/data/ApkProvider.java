@@ -240,7 +240,7 @@ public class ApkProvider extends FDroidProvider {
 
     public static Uri getContentUri(List<Apk> apks) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < apks.size(); i ++) {
+        for (int i = 0; i < apks.size(); i++) {
             if (i != 0) {
                 builder.append(',');
             }
@@ -334,7 +334,7 @@ public class ApkProvider extends FDroidProvider {
                 "Cannot query more than " + MAX_APKS_TO_QUERY + ". " +
                 "You tried to query " + apkDetails.length);
         }
-        for (int i = 0; i < apkDetails.length; i ++) {
+        for (int i = 0; i < apkDetails.length; i++) {
             String[] parts = apkDetails[i].split(":");
             String id = parts[0];
             String verCode = parts[1];

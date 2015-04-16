@@ -105,7 +105,7 @@ public abstract class FDroidProvider extends ContentProvider {
 
     protected String generateQuestionMarksForInClause(int num) {
         StringBuilder sb = new StringBuilder(num * 2);
-        for (int i = 0; i < num; i ++) {
+        for (int i = 0; i < num; i++) {
             if (i != 0) {
                 sb.append(',');
             }

@@ -95,7 +95,7 @@ abstract class QueryBuilder {
 
     private String fieldsSql() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < fields.size(); i ++) {
+        for (int i = 0; i < fields.size(); i++) {
             if (i > 0) {
                 sb.append(',');
             }

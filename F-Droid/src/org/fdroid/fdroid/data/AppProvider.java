@@ -481,7 +481,7 @@ public class AppProvider extends FDroidProvider {
 
     public static Uri getContentUri(List<App> apps) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < apps.size(); i ++) {
+        for (int i = 0; i < apps.size(); i++) {
             if (i != 0) {
                 builder.append(',');
             }

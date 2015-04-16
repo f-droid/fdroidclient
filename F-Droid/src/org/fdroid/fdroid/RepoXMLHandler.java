@@ -276,7 +276,7 @@ public class RepoXMLHandler extends DefaultHandler {
                         RepoUpdater.PROGRESS_TYPE_PROCESS_XML,
                         progressCounter, totalAppCount, data));
             }
-            progressCounter ++;
+            progressCounter++;
         } else if (localName.equals("package") && curapp != null && curapk == null) {
             curapk = new Apk();
             curapk.id = curapp.id;
