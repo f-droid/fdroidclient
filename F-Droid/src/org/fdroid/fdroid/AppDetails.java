@@ -350,7 +350,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
      */
     private String getAppIdFromIntent() {
         Intent i = getIntent();
-        Uri data = i.getData();
         if (!i.hasExtra(EXTRA_APPID)) {
             Log.e(TAG, "No application ID found in the intent!");
             return null;
