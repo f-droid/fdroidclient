@@ -85,14 +85,10 @@ public class Repo extends ValueObject {
 
     public long getId() { return id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     @Override
-    public String toString() {
-        return address;
-    }
+    public String toString() { return address; }
 
     public boolean isSigned() {
         return !TextUtils.isEmpty(this.pubkey);

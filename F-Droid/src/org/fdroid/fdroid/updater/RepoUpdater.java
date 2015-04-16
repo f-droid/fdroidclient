@@ -64,17 +64,11 @@ abstract public class RepoUpdater {
         this.progressListener = progressListener;
     }
 
-    public boolean hasChanged() {
-        return hasChanged;
-    }
+    public boolean hasChanged() { return hasChanged; }
 
-    public List<App> getApps() {
-        return apps;
-    }
+    public List<App> getApps() { return apps; }
 
-    public List<Apk> getApks() {
-        return apks;
-    }
+    public List<Apk> getApks() { return apks; }
 
     /**
      * For example, you may want to unzip a jar file to get the index inside,
@@ -238,9 +232,7 @@ abstract public class RepoUpdater {
         return values;
     }
 
-    public RepoUpdateRememberer getRememberer() {
-        return rememberer;
-    }
+    public RepoUpdateRememberer getRememberer() { return rememberer; }
 
     public static class RepoUpdateRememberer {
 

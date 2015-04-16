@@ -101,21 +101,13 @@ public class NewRepoConfig {
 
     }
 
-    public String getBssid() {
-        return bssid;
-    }
+    public String getBssid() { return bssid; }
 
-    public String getSsid() {
-        return ssid;
-    }
+    public String getSsid() { return ssid; }
 
-    public int getPort() {
-        return port;
-    }
+    public int getPort() { return port; }
 
-    public String getRepoUriString() {
-        return uriString;
-    }
+    public String getRepoUriString() { return uriString; }
 
     /**
      * This is the URI which was passed to the NewRepoConfig for parsing.
@@ -123,9 +115,7 @@ public class NewRepoConfig {
      * ssid, bssid, and perhaps other query parameters. If you want the actual repo
      * URL, then you will probably want {@link org.fdroid.fdroid.data.NewRepoConfig#getRepoUri()}.
      */
-    public Uri getParsedUri() {
-        return uri;
-    }
+    public Uri getParsedUri() { return uri; }
 
     public Uri getRepoUri() {
         if (uriString == null) {
@@ -135,29 +125,17 @@ public class NewRepoConfig {
         }
     }
 
-    public String getHost() {
-        return host;
-    }
+    public String getHost() { return host; }
 
-    public String getScheme() {
-        return scheme;
-    }
+    public String getScheme() { return scheme; }
 
-    public String getFingerprint() {
-        return fingerprint;
-    }
+    public String getFingerprint() { return fingerprint; }
 
-    public boolean isValidRepo() {
-        return isValidRepo;
-    }
+    public boolean isValidRepo() { return isValidRepo; }
 
-    public boolean isFromSwap() {
-        return fromSwap;
-    }
+    public boolean isFromSwap() { return fromSwap; }
 
-    public boolean preventFurtherSwaps() {
-        return preventFurtherSwaps;
-    }
+    public boolean preventFurtherSwaps() { return preventFurtherSwaps; }
 
     /*
      * The port starts out as 8888, but if there is a conflict, it will be
@@ -167,9 +145,7 @@ public class NewRepoConfig {
         return (port >= 8888 && host.matches("[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+"));
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
+    public String getErrorMessage() { return errorMessage; }
 
     /** Sanitize and format an incoming repo URI for function and readability */
     public static String sanitizeRepoUri(Uri uri) {

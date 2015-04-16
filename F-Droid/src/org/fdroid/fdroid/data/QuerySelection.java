@@ -31,13 +31,9 @@ public class QuerySelection {
         this.selection = selection;
     }
 
-    public String[] getArgs() {
-        return args;
-    }
+    public String[] getArgs() { return args; }
 
-    public String getSelection() {
-        return selection;
-    }
+    public String getSelection() { return selection; }
 
     public boolean hasSelection() {
         return selection != null && selection.length() > 0;

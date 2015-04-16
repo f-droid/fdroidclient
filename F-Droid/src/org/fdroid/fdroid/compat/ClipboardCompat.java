@@ -45,7 +45,5 @@ class HoneycombClipboard extends ClipboardCompat {
 class OldClipboard extends ClipboardCompat {
 
     @Override
-    public String getText() {
-        return null;
-    }
+    public String getText() { return null; }
 }

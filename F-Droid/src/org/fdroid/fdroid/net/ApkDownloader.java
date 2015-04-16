@@ -272,15 +272,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         }
     }
 
-    public Apk getApk() {
-        return curApk;
-    }
+    public Apk getApk() { return curApk; }
 
-    public int getProgress() {
-        return progress;
-    }
+    public int getProgress() { return progress; }
 
-    public int getTotalSize() {
-        return totalSize;
-    }
+    public int getTotalSize() { return totalSize; }
 }

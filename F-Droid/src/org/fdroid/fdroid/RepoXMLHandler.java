@@ -72,13 +72,9 @@ public class RepoXMLHandler extends DefaultHandler {
         progressListener = listener;
     }
 
-    public List<App> getApps() {
-        return apps;
-    }
+    public List<App> getApps() { return apps; }
 
-    public List<Apk> getApks() {
-        return apksList;
-    }
+    public List<Apk> getApks() { return apksList; }
 
     public int getMaxAge() { return maxage; }
 
@@ -88,9 +84,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public String getName() { return name; }
 
-    public String getPubKey() {
-        return pubkey;
-    }
+    public String getPubKey() { return pubkey; }
 
     @Override
     public void characters(char[] ch, int start, int length) {
