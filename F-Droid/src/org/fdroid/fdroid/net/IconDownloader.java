@@ -20,12 +20,12 @@ public class IconDownloader extends BaseImageDownloader {
     @Override
     public InputStream getStream(String imageUri, Object extra) throws IOException {
         switch (Scheme.ofUri(imageUri)) {
-            case HTTP:
-            case HTTPS:
-                Downloader downloader = DownloaderFactory.create(imageUri, context);
-                return downloader.getInputStream();
-            default:
-                return super.getStream(imageUri, extra);
+        case HTTP:
+        case HTTPS:
+            Downloader downloader = DownloaderFactory.create(imageUri, context);
+            return downloader.getInputStream();
+        default:
+            return super.getStream(imageUri, extra);
         }
     }
 }

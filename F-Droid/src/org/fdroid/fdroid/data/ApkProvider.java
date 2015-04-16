@@ -354,28 +354,28 @@ public class ApkProvider extends FDroidProvider {
         QuerySelection query = new QuerySelection(selection, selectionArgs);
 
         switch (matcher.match(uri)) {
-            case CODE_LIST:
-                break;
+        case CODE_LIST:
+            break;
 
-            case CODE_SINGLE:
-                query = query.add(querySingle(uri));
-                break;
+        case CODE_SINGLE:
+            query = query.add(querySingle(uri));
+            break;
 
-            case CODE_APP:
-                query = query.add(queryApp(uri.getLastPathSegment()));
-                break;
+        case CODE_APP:
+            query = query.add(queryApp(uri.getLastPathSegment()));
+            break;
 
-            case CODE_APKS:
-                query = query.add(queryApks(uri.getLastPathSegment()));
-                break;
+        case CODE_APKS:
+            query = query.add(queryApks(uri.getLastPathSegment()));
+            break;
 
-            case CODE_REPO:
-                query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
-                break;
+        case CODE_REPO:
+            query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
+            break;
 
-            default:
-                Log.e(TAG, "Invalid URI for apk content provider: " + uri);
-                throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
+        default:
+            Log.e(TAG, "Invalid URI for apk content provider: " + uri);
+            throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
         }
 
         Query queryBuilder = new Query();
@@ -423,27 +423,27 @@ public class ApkProvider extends FDroidProvider {
 
         switch (matcher.match(uri)) {
 
-            case CODE_REPO:
-                query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
-                break;
+        case CODE_REPO:
+            query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
+            break;
 
-            case CODE_APP:
-                query = query.add(queryApp(uri.getLastPathSegment()));
-                break;
+        case CODE_APP:
+            query = query.add(queryApp(uri.getLastPathSegment()));
+            break;
 
-            case CODE_APKS:
-                query = query.add(queryApks(uri.getLastPathSegment()));
-                break;
+        case CODE_APKS:
+            query = query.add(queryApks(uri.getLastPathSegment()));
+            break;
 
-            case CODE_LIST:
-                throw new UnsupportedOperationException("Can't delete all apks.");
+        case CODE_LIST:
+            throw new UnsupportedOperationException("Can't delete all apks.");
 
-            case CODE_SINGLE:
-                throw new UnsupportedOperationException("Can't delete individual apks.");
+        case CODE_SINGLE:
+            throw new UnsupportedOperationException("Can't delete individual apks.");
 
-            default:
-                Log.e(TAG, "Invalid URI for apk content provider: " + uri);
-                throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
+        default:
+            Log.e(TAG, "Invalid URI for apk content provider: " + uri);
+            throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
         }
 
         int rowsAffected = write().delete(getTableName(), query.getSelection(), query.getArgs());

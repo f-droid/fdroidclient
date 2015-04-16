@@ -91,16 +91,16 @@ public class DefaultInstaller extends Installer {
          * never executed on Androids before 4.0
          */
         switch (requestCode) {
-            case REQUEST_CODE_INSTALL:
-                mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+        case REQUEST_CODE_INSTALL:
+            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
 
-                return true;
-            case REQUEST_CODE_DELETE:
-                mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
+            return true;
+        case REQUEST_CODE_DELETE:
+            mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
 
-                return true;
-            default:
-                return false;
+            return true;
+        default:
+            return false;
         }
     }
 

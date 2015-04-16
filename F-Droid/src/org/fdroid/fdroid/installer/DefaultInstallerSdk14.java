@@ -99,34 +99,34 @@ public class DefaultInstallerSdk14 extends Installer {
     @Override
     public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case REQUEST_CODE_INSTALL:
-                if (resultCode == Activity.RESULT_OK) {
-                    mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                            InstallerCallback.ERROR_CODE_CANCELED);
-                } else {
-                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                            InstallerCallback.ERROR_CODE_OTHER);
-                }
+        case REQUEST_CODE_INSTALL:
+            if (resultCode == Activity.RESULT_OK) {
+                mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                        InstallerCallback.ERROR_CODE_CANCELED);
+            } else {
+                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                        InstallerCallback.ERROR_CODE_OTHER);
+            }
 
-                return true;
-            case REQUEST_CODE_DELETE:
-                if (resultCode == Activity.RESULT_OK) {
-                    mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    mCallback.onError(InstallerCallback.OPERATION_DELETE,
-                            InstallerCallback.ERROR_CODE_CANCELED);
-                } else {
-                    // UninstallAppProgress actually returns
-                    // Activity.RESULT_FIRST_USER if something breaks
-                    mCallback.onError(InstallerCallback.OPERATION_DELETE,
-                            InstallerCallback.ERROR_CODE_OTHER);
-                }
+            return true;
+        case REQUEST_CODE_DELETE:
+            if (resultCode == Activity.RESULT_OK) {
+                mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                        InstallerCallback.ERROR_CODE_CANCELED);
+            } else {
+                // UninstallAppProgress actually returns
+                // Activity.RESULT_FIRST_USER if something breaks
+                mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                        InstallerCallback.ERROR_CODE_OTHER);
+            }
 
-                return true;
-            default:
-                return false;
+            return true;
+        default:
+            return false;
         }
     }
 

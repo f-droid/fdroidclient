@@ -101,15 +101,15 @@ public class FDroidApp extends Application {
 
     public void applyTheme(Activity activity) {
         switch (curTheme) {
-            case dark:
-                activity.setTheme(R.style.AppThemeDark);
-                break;
-            case light:
-                activity.setTheme(R.style.AppThemeLight);
-                break;
-            case lightWithDarkActionBar:
-                activity.setTheme(R.style.AppThemeLightWithDarkActionBar);
-                break;
+        case dark:
+            activity.setTheme(R.style.AppThemeDark);
+            break;
+        case light:
+            activity.setTheme(R.style.AppThemeLight);
+            break;
+        case lightWithDarkActionBar:
+            activity.setTheme(R.style.AppThemeLightWithDarkActionBar);
+            break;
         }
     }
 

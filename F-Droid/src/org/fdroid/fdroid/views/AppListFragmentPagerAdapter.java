@@ -32,31 +32,30 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        if (i == 0) {
+        switch (i) {
+        case 0:
             return new AvailableAppsFragment();
-        }
-        if (i == 1) {
+        case 1:
             return new InstalledAppsFragment();
+        default:
+            return new CanUpdateAppsFragment();
         }
-        return new CanUpdateAppsFragment();
     }
 
     @Override
-    public int getCount() {
-        return 3;
-    }
+    public int getCount() { return 3; }
 
     @Override
     public String getPageTitle(int i) {
-        switch(i) {
-            case 0:
-                return parent.getString(R.string.tab_noninstalled);
-            case 1:
-                return parent.getString(R.string.inst);
-            case 2:
-                return getUpdateTabTitle();
-            default:
-                return "";
+        switch (i) {
+        case 0:
+            return parent.getString(R.string.tab_noninstalled);
+        case 1:
+            return parent.getString(R.string.inst);
+        case 2:
+            return getUpdateTabTitle();
+        default:
+            return "";
         }
     }
 

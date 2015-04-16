@@ -87,16 +87,14 @@ public abstract class FDroidProvider extends ContentProvider {
     @Override
     public String getType(Uri uri) {
         String type;
-        switch(getMatcher().match(uri)) {
-            case CODE_LIST:
-                type = "dir";
-                break;
-
-            case CODE_SINGLE:
-            default:
-                type = "item";
-                break;
-
+        switch (getMatcher().match(uri)) {
+        case CODE_LIST:
+            type = "dir";
+            break;
+        case CODE_SINGLE:
+        default:
+            type = "item";
+            break;
         }
         return "vnd.android.cursor." + type + "/vnd." + AUTHORITY + "." + getProviderName();
     }

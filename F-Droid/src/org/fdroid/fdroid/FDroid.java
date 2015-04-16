@@ -232,91 +232,91 @@ public class FDroid extends ActionBarActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.action_update_repo:
-                updateRepos();
-                return true;
+        case R.id.action_update_repo:
+            updateRepos();
+            return true;
 
-            case R.id.action_manage_repos:
-                Intent i = new Intent(this, ManageReposActivity.class);
-                startActivityForResult(i, REQUEST_MANAGEREPOS);
-                return true;
+        case R.id.action_manage_repos:
+            Intent i = new Intent(this, ManageReposActivity.class);
+            startActivityForResult(i, REQUEST_MANAGEREPOS);
+            return true;
 
-            case R.id.action_settings:
-                Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
-                startActivityForResult(prefs, REQUEST_PREFS);
-                return true;
+        case R.id.action_settings:
+            Intent prefs = new Intent(getBaseContext(), PreferencesActivity.class);
+            startActivityForResult(prefs, REQUEST_PREFS);
+            return true;
 
-            case R.id.action_swap:
-                startActivity(new Intent(this, SwapActivity.class));
-                return true;
+        case R.id.action_swap:
+            startActivity(new Intent(this, SwapActivity.class));
+            return true;
 
-            case R.id.action_search:
-                onSearchRequested();
-                return true;
+        case R.id.action_search:
+            onSearchRequested();
+            return true;
 
-            case R.id.action_bluetooth_apk:
-                /*
-                 * If Bluetooth has not been enabled/turned on, then enabling
-                 * device discoverability will automatically enable Bluetooth
-                 */
-                Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
-                startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
-                // if this is successful, the Bluetooth transfer is started
-                return true;
+        case R.id.action_bluetooth_apk:
+            /*
+             * If Bluetooth has not been enabled/turned on, then enabling
+             * device discoverability will automatically enable Bluetooth
+             */
+            Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 121);
+            startActivityForResult(discoverBt, REQUEST_ENABLE_BLUETOOTH);
+            // if this is successful, the Bluetooth transfer is started
+            return true;
 
-            case R.id.action_about:
-                View view;
-                if (Build.VERSION.SDK_INT >= 11) {
-                    LayoutInflater li = LayoutInflater.from(this);
-                    view = li.inflate(R.layout.about, null);
-                } else {
-                    view = View.inflate(
-                            new ContextThemeWrapper(this, R.style.AboutDialogLight),
-                            R.layout.about, null);
-                }
+        case R.id.action_about:
+            View view;
+            if (Build.VERSION.SDK_INT >= 11) {
+                LayoutInflater li = LayoutInflater.from(this);
+                view = li.inflate(R.layout.about, null);
+            } else {
+                view = View.inflate(
+                        new ContextThemeWrapper(this, R.style.AboutDialogLight),
+                        R.layout.about, null);
+            }
 
-                // Fill in the version...
-                try {
-                    PackageInfo pi = getPackageManager()
-                            .getPackageInfo(getApplicationContext()
-                                    .getPackageName(), 0);
-                    ((TextView) view.findViewById(R.id.version))
-                            .setText(pi.versionName);
-                } catch (Exception e) {
-                }
+            // Fill in the version...
+            try {
+                PackageInfo pi = getPackageManager()
+                        .getPackageInfo(getApplicationContext()
+                                .getPackageName(), 0);
+                ((TextView) view.findViewById(R.id.version))
+                        .setText(pi.versionName);
+            } catch (Exception e) {
+            }
 
-                Builder p;
-                if (Build.VERSION.SDK_INT >= 11) {
-                    p = new AlertDialog.Builder(this).setView(view);
-                } else {
-                    p = new AlertDialog.Builder(
-                            new ContextThemeWrapper(
-                                    this, R.style.AboutDialogLight)
-                            ).setView(view);
-                }
-                final AlertDialog alrt = p.create();
-                alrt.setIcon(R.drawable.ic_launcher);
-                alrt.setTitle(getString(R.string.about_title));
-                alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
-                        getString(R.string.about_website),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                    int whichButton) {
-                                Uri uri = Uri.parse("https://f-droid.org");
-                                startActivity(new Intent(Intent.ACTION_VIEW, uri));
-                            }
-                        });
-                alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                    int whichButton) {
-                            }
-                        });
-                alrt.show();
-                return true;
+            Builder p;
+            if (Build.VERSION.SDK_INT >= 11) {
+                p = new AlertDialog.Builder(this).setView(view);
+            } else {
+                p = new AlertDialog.Builder(
+                        new ContextThemeWrapper(
+                                this, R.style.AboutDialogLight)
+                        ).setView(view);
+            }
+            final AlertDialog alrt = p.create();
+            alrt.setIcon(R.drawable.ic_launcher);
+            alrt.setTitle(getString(R.string.about_title));
+            alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
+                    getString(R.string.about_website),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                            Uri uri = Uri.parse("https://f-droid.org");
+                            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                        }
+                    });
+            alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                int whichButton) {
+                        }
+                    });
+            alrt.show();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

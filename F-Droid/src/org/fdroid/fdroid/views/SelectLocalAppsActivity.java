@@ -47,13 +47,13 @@ public class SelectLocalAppsActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                setResult(RESULT_CANCELED);
-                finish();
-                return true;
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferencesActivity.class));
-                return true;
+        case android.R.id.home:
+            setResult(RESULT_CANCELED);
+            finish();
+            return true;
+        case R.id.action_settings:
+            startActivity(new Intent(this, PreferencesActivity.class));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -75,12 +75,12 @@ public class SelectLocalAppsActivity extends ActionBarActivity {
         @Override
         public boolean onActionItemClicked(final ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.action_update_repo:
-                    setResult(RESULT_OK);
-                    finish();
-                    return true;
-                default:
-                    return false;
+            case R.id.action_update_repo:
+                setResult(RESULT_OK);
+                finish();
+                return true;
+            default:
+                return false;
             }
         }
 

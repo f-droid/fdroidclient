@@ -161,15 +161,15 @@ public class LocalRepoActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_setup_repo:
-                startActivityForResult(new Intent(this, SelectLocalAppsActivity.class), UPDATE_REPO);
-                return true;
-            case R.id.menu_send_fdroid_via_wifi:
-                startActivity(new Intent(this, QrWizardWifiNetworkActivity.class));
-                return true;
-            case R.id.menu_settings:
-                startActivityForResult(new Intent(this, PreferencesActivity.class), SET_IP_ADDRESS);
-                return true;
+        case R.id.menu_setup_repo:
+            startActivityForResult(new Intent(this, SelectLocalAppsActivity.class), UPDATE_REPO);
+            return true;
+        case R.id.menu_send_fdroid_via_wifi:
+            startActivity(new Intent(this, QrWizardWifiNetworkActivity.class));
+            return true;
+        case R.id.menu_settings:
+            startActivityForResult(new Intent(this, PreferencesActivity.class), SET_IP_ADDRESS);
+            return true;
         }
         return false;
     }
@@ -190,17 +190,17 @@ public class LocalRepoActivity extends ActionBarActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case 0:
-                repoProgress = new ProgressDialog(this);
-                repoProgress.setMessage("Scanning Apps. Please wait...");
-                repoProgress.setIndeterminate(false);
-                repoProgress.setMax(100);
-                repoProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                repoProgress.setCancelable(false);
-                repoProgress.show();
-                return repoProgress;
-            default:
-                return null;
+        case 0:
+            repoProgress = new ProgressDialog(this);
+            repoProgress.setMessage("Scanning Apps. Please wait...");
+            repoProgress.setIndeterminate(false);
+            repoProgress.setMax(100);
+            repoProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            repoProgress.setCancelable(false);
+            repoProgress.show();
+            return repoProgress;
+        default:
+            return null;
         }
     }
 
