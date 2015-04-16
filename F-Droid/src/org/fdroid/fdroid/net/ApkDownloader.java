@@ -20,11 +20,15 @@
 
 package org.fdroid.fdroid.net;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.fdroid.fdroid.Hasher;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.SanitizedFile;
@@ -58,9 +62,10 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      */
     public static final String EVENT_DATA_ERROR_TYPE = "apkDownloadErrorType";
 
-    private final Apk curApk;
-    private final String repoAddress;
-    private final SanitizedFile localFile;
+    @NonNull private final Apk curApk;
+    @NonNull private final String repoAddress;
+    @NonNull private final SanitizedFile localFile;
+    @NonNull private final SanitizedFile potentiallyCachedFile;
 
     private ProgressListener listener;
     private AsyncDownloadWrapper dlWrapper = null;
@@ -68,7 +73,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     private int totalSize = 0;
     private boolean isComplete = false;
 
-    private final long id =++downloadIdCounter;
+    private final long id = ++downloadIdCounter;
 
     public void setProgressListener(ProgressListener listener) {
         this.listener = listener;
@@ -78,10 +83,11 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         setProgressListener(null);
     }
 
-    public ApkDownloader(Apk apk, String repoAddress, File destDir) {
+    public ApkDownloader(@NonNull final Context context, @NonNull final Apk apk, @NonNull final String repoAddress) {
         curApk = apk;
         this.repoAddress = repoAddress;
-        localFile = new SanitizedFile(destDir, curApk.apkName);
+        localFile = new SanitizedFile(Utils.getApkDownloadDir(context), apk.apkName);
+        potentiallyCachedFile = new SanitizedFile(Utils.getApkCacheDir(context), apk.apkName);
     }
 
     /**
@@ -104,23 +110,23 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
          return repoAddress + "/" + curApk.apkName.replace(" ", "%20");
     }
 
-    private Hasher createHasher() {
+    private Hasher createHasher(File apkFile) {
         Hasher hasher;
         try {
-            hasher = new Hasher(curApk.hashType, localFile);
+            hasher = new Hasher(curApk.hashType, apkFile);
         } catch (NoSuchAlgorithmException e) {
-            Log.e(TAG, "Error verifying hash of cached apk at " + localFile + ". " +
+            Log.e(TAG, "Error verifying hash of cached apk at " + apkFile + ". " +
                     "I don't understand what the " + curApk.hashType + " hash algorithm is :(");
             hasher = null;
         }
         return hasher;
     }
 
-    private boolean hashMatches() {
-        if (!localFile.exists()) {
+    private boolean hashMatches(@NonNull final File apkFile) {
+        if (!apkFile.exists()) {
             return false;
         }
-        Hasher hasher = createHasher();
+        Hasher hasher = createHasher(apkFile);
         return hasher != null && hasher.match(curApk.hash);
     }
 
@@ -129,25 +135,35 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      * want to download, then we will return true. Otherwise, we return false
      * (and remove the cached file - if it exists and didn't match the correct hash).
      */
-    private boolean verifyOrDeleteCachedVersion() {
-        if (localFile.exists()) {
-            if (hashMatches()) {
-                Log.d(TAG, "Using cached apk at " + localFile);
+    private boolean verifyOrDelete(@NonNull final File apkFile) {
+        if (apkFile.exists()) {
+            if (hashMatches(apkFile)) {
+                Log.d(TAG, "Using cached apk at " + apkFile);
                 return true;
             }
-            Log.d(TAG, "Not using cached apk at " + localFile);
-            deleteLocalFile();
+            Log.d(TAG, "Not using cached apk at " + apkFile + "(hash doesn't match, will delete file)");
+            delete(apkFile);
         }
         return false;
     }
 
-    private void deleteLocalFile() {
-        if (localFile != null && localFile.exists()) {
-            localFile.delete();
+    private void delete(@NonNull final File file) {
+        if (file.exists()) {
+            if (!file.delete()) {
+                Log.w(TAG, "Could not delete file " + file);
+            }
         }
     }
 
-    private void sendCompleteMessage() {
+    private void prepareApkFileAndSendCompleteMessage() {
+
+        // Need the apk to be world readable, so that the installer is able to read it.
+        // Note that saving it into external storage for the purpose of letting the installer
+        // have access is insecure, because apps with permission to write to the external
+        // storage can overwrite the app between F-Droid asking for it to be installed and
+        // the installer actually installing it.
+        FileCompat.setReadable(localFile, true, false);
+
         isComplete = true;
         sendMessage(EVENT_APK_DOWNLOAD_COMPLETE);
     }
@@ -164,13 +180,15 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     public boolean download() {
 
         // Can we use the cached version?
-        if (verifyOrDeleteCachedVersion()) {
-            sendCompleteMessage();
+        if (verifyOrDelete(potentiallyCachedFile)) {
+            delete(localFile);
+            Utils.copy(potentiallyCachedFile, localFile);
+            prepareApkFileAndSendCompleteMessage();
             return false;
         }
 
         String remoteAddress = getRemoteAddress();
-        Log.d(TAG, "Downloading apk from " + remoteAddress);
+        Log.d(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
             Downloader downloader = DownloaderFactory.create(remoteAddress, localFile);
@@ -228,26 +246,28 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     public void onErrorDownloading(String localisedExceptionDetails) {
         Log.e(TAG, "Download failed: " + localisedExceptionDetails);
         sendError(ERROR_DOWNLOAD_FAILED);
-        deleteLocalFile();
+        delete(localFile);
+    }
+
+    private void cacheIfRequired() {
+        if (Preferences.get().shouldCacheApks()) {
+            Log.i(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
+            Utils.copy(localFile, potentiallyCachedFile);
+        }
     }
 
     @Override
     public void onDownloadComplete() {
 
-        if (!verifyOrDeleteCachedVersion()) {
+        if (!verifyOrDelete(localFile)) {
             sendError(ERROR_HASH_MISMATCH);
             return;
         }
 
-        // Need the apk to be world readable, so that the installer is able to read it.
-        // Note that saving it into external storage for the purpose of letting the installer
-        // have access is insecure, because apps with permission to write to the external
-        // storage can overwrite the app between F-Droid asking for it to be installed and
-        // the installer actually installing it.
-        FileCompat.setReadable(localFile, true, false);
+        cacheIfRequired();
 
         Log.d(TAG, "Download finished: " + localFile);
-        sendCompleteMessage();
+        prepareApkFileAndSendCompleteMessage();
     }
 
     @Override

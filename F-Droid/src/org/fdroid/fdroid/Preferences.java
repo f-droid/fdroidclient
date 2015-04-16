@@ -67,6 +67,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_ROOT_INSTALLER = false;
     private static final boolean DEFAULT_SYSTEM_INSTALLER = false;
     private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
+    private static final boolean DEFAULT_CACHE_APK = false;
     private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
     private static final boolean DEFAULT_INCOMP_VER = false;
     private static final boolean DEFAULT_EXPERT = false;
@@ -111,6 +112,10 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean isLocalRepoBonjourEnabled() {
         return preferences.getBoolean(PREF_LOCAL_REPO_BONJOUR, DEFAULT_LOCAL_REPO_BONJOUR);
+    }
+
+    public boolean shouldCacheApks() {
+        return preferences.getBoolean(PREF_CACHE_APK, DEFAULT_CACHE_APK);
     }
 
     public boolean showIncompatibleVersions() {

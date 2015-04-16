@@ -313,13 +313,24 @@ public final class Utils {
     }
 
     /**
+     * See {@link Utils#getApkDownloadDir(android.content.Context)} for why this is "unsafe".
+     */
+    public static SanitizedFile getApkCacheDir(Context context) {
+        final SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, true), "apks");
+        if (!apkCacheDir.exists()) {
+            apkCacheDir.mkdir();
+        }
+        return apkCacheDir;
+    }
+
+    /**
      * The directory where .apk files are downloaded (and stored - if the relevant property is enabled).
      * This must be on internal storage, to prevent other apps with "write external storage" from being
      * able to change the .apk file between F-Droid requesting the Package Manger to install, and the
      * Package Manager receiving that request.
      */
-    public static File getApkCacheDir(Context context) {
-        SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, false), "apks");
+    public static File getApkDownloadDir(Context context) {
+        final SanitizedFile apkCacheDir = new SanitizedFile(StorageUtils.getCacheDirectory(context, false), "temp");
         if (!apkCacheDir.exists()) {
             apkCacheDir.mkdir();
         }
