@@ -385,26 +385,6 @@ public class FDroid extends ActionBarActivity {
         });
     }
 
-    /**
-     * The first time the app is run, we will have an empty app list.
-     * If this is the case, we will attempt to update with the default repo.
-     * However, if we have tried this at least once, then don't try to do
-     * it automatically again, because the repos or internet connection may
-     * be bad.
-     */
-    public boolean updateEmptyRepos() {
-        final String TRIED_EMPTY_UPDATE = "triedEmptyUpdate";
-        boolean hasTriedEmptyUpdate = getPreferences(MODE_PRIVATE).getBoolean(TRIED_EMPTY_UPDATE, false);
-        if (!hasTriedEmptyUpdate) {
-            Log.d(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
-            getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
-            updateRepos();
-            return true;
-        }
-        Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
-        return false;
-    }
-
     // Force a repo update now. A progress dialog is shown and the UpdateService
     // is told to do the update, which will result in the database changing. The
     // UpdateReceiver class should get told when this is finished.
