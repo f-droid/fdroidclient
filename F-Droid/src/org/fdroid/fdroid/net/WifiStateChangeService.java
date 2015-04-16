@@ -70,7 +70,10 @@ public class WifiStateChangeService extends Service {
                         (ipAddress >> 16 & 0xff),
                         (ipAddress >> 24 & 0xff));
 
-                FDroidApp.ssid = wifiInfo.getSSID().replaceAll("^\"(.*)\"$", "$1");
+                FDroidApp.ssid = wifiInfo.getSSID();
+                if (FDroidApp.ssid != null) {
+                    FDroidApp.ssid.replaceAll("^\"(.*)\"$", "$1");
+                }
                 FDroidApp.bssid = wifiInfo.getBSSID();
 
                 String scheme;
