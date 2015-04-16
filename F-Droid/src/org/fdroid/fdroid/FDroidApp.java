@@ -40,7 +40,6 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;

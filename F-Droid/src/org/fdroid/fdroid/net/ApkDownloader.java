@@ -31,7 +31,6 @@ import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.security.NoSuchAlgorithmException;
 
 /**
