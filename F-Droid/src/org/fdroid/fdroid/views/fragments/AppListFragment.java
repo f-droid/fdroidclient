@@ -129,10 +129,9 @@ abstract public class AppListFragment extends ThemeableListFragment implements
             prefs.edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
             UpdateService.updateNow(getActivity());
             return true;
-        } else {
-            Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
-            return false;
         }
+        Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+        return false;
     }
 
     @Override

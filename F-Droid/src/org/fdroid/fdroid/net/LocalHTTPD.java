@@ -98,9 +98,8 @@ public class LocalHTTPD extends NanoHTTPD {
             }
 
             return handlePost(session);
-        } else {
-            return handleGet(session);
         }
+        return handleGet(session);
     }
 
     private Response handlePost(IHTTPSession session) {
@@ -110,10 +109,9 @@ public class LocalHTTPD extends NanoHTTPD {
             if (!session.getParms().containsKey("repo")) {
                 Log.e(TAG, "Malformed /request-swap request to local repo HTTP server. Should have posted a 'repo' parameter." );
                 return new Response(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "Requires 'repo' parameter to be posted.");
-            } else {
-                requestSwap(session.getParms().get("repo"));
-                return new Response(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
             }
+            requestSwap(session.getParms().get("repo"));
+            return new Response(Response.Status.OK, MIME_PLAINTEXT, "Swap request received.");
         }
         return new Response("");
     }

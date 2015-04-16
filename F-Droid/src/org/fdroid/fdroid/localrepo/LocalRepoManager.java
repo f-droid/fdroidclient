@@ -185,9 +185,8 @@ public class LocalRepoManager {
         if (dir.exists()) {
             if (dir.isDirectory()) {
                 return;
-            } else {
-                throw new IOException("Can't make directory " + dir + " - it is already a file.");
             }
+            throw new IOException("Can't make directory " + dir + " - it is already a file.");
         }
 
         if (!dir.mkdir()) {

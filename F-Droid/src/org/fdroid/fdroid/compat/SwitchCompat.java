@@ -19,9 +19,8 @@ public abstract class SwitchCompat extends Compatibility {
     public static SwitchCompat create(Context context) {
         if (hasApi(14)) {
             return new IceCreamSwitch(context);
-        } else {
-            return new OldSwitch(context);
         }
+        return new OldSwitch(context);
     }
 
 }

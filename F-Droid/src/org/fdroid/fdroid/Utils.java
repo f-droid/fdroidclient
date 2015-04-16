@@ -335,8 +335,8 @@ public final class Utils {
                 || keyHexString.matches(".*[^a-fA-F0-9].*")) {
             Log.e(TAG, "Signing key certificate was blank or contained a non-hex-digit!");
             return null;
-        } else
-            return calcFingerprint(Hasher.unhex(keyHexString));
+        }
+        return calcFingerprint(Hasher.unhex(keyHexString));
     }
 
     public static String calcFingerprint(Certificate cert) {
@@ -385,7 +385,8 @@ public final class Utils {
         final String[] parts = languageTag.split("-");
         if (parts.length == 1) {
             return new Locale(parts[0]);
-        } else if (parts.length == 2) {
+        }
+        if (parts.length == 2) {
             String country = parts[1];
             // Some languages have an "r" before the country as per the values folders, such
             // as "zh-rCN". As far as the Locale class is concerned, the "r" is
@@ -395,10 +396,9 @@ public final class Utils {
                 country = country.substring(1);
             }
             return new Locale(parts[0], country);
-        } else {
-            Log.e(TAG, "Locale could not be parsed from language tag: " + languageTag);
-            return new Locale(languageTag);
         }
+        Log.e(TAG, "Locale could not be parsed from language tag: " + languageTag);
+        return new Locale(languageTag);
     }
 
     public static class CommaSeparatedList implements Iterable<String> {
@@ -411,23 +411,20 @@ public final class Utils {
         public static CommaSeparatedList make(List<String> list) {
             if (list == null || list.size() == 0)
                 return null;
-            else {
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < list.size(); i++) {
-                    if (i > 0) {
-                        sb.append(',');
-                    }
-                    sb.append(list.get(i));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < list.size(); i++) {
+                if (i > 0) {
+                    sb.append(',');
                 }
-                return new CommaSeparatedList(sb.toString());
+                sb.append(list.get(i));
             }
+            return new CommaSeparatedList(sb.toString());
         }
 
         public static CommaSeparatedList make(String list) {
             if (list == null || list.length() == 0)
                 return null;
-            else
-                return new CommaSeparatedList(list);
+            return new CommaSeparatedList(list);
         }
 
         public static String str(CommaSeparatedList instance) {

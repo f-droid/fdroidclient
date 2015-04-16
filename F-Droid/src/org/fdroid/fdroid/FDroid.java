@@ -400,10 +400,9 @@ public class FDroid extends ActionBarActivity {
             getPreferences(MODE_PRIVATE).edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
             updateRepos();
             return true;
-        } else {
-            Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
-            return false;
         }
+        Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+        return false;
     }
 
     // Force a repo update now. A progress dialog is shown and the UpdateService

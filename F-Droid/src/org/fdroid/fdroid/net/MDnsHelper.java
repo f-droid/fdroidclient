@@ -162,8 +162,7 @@ public class MDnsHelper implements ServiceListener {
             InetAddress[] addresses = serviceInfo.getInetAddresses();
             if (addresses != null && addresses.length > 0)
                 return true;
-            else
-                return false;
+            return false;
         }
 
         @Override

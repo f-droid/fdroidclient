@@ -11,18 +11,16 @@ public class DownloaderFactory {
             throws IOException {
         if (isOnionAddress(url)) {
             return new TorHttpDownloader(url, context);
-        } else {
-            return new HttpDownloader(url, context);
         }
+        return new HttpDownloader(url, context);
     }
 
     public static Downloader create(String url, File destFile)
             throws IOException {
         if (isOnionAddress(url)) {
             return new TorHttpDownloader(url, destFile);
-        } else {
-            return new HttpDownloader(url, destFile);
         }
+        return new HttpDownloader(url, destFile);
     }
 
     private static boolean isOnionAddress(String url) {

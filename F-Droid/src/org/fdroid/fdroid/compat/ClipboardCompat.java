@@ -12,9 +12,8 @@ public abstract class ClipboardCompat extends Compatibility {
     public static ClipboardCompat create(Context context) {
         if (hasApi(11)) {
             return new HoneycombClipboard(context);
-        } else {
-            return new OldClipboard();
         }
+        return new OldClipboard();
     }
 
 }

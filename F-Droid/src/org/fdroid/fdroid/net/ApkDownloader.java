@@ -135,10 +135,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             if (hashMatches()) {
                 Log.d(TAG, "Using cached apk at " + localFile);
                 return true;
-            } else {
-                Log.d(TAG, "Not using cached apk at " + localFile);
-                deleteLocalFile();
             }
+            Log.d(TAG, "Not using cached apk at " + localFile);
+            deleteLocalFile();
         }
         return false;
     }

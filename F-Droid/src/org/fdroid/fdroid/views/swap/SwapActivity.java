@@ -137,9 +137,8 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
             showFragment(new NfcSwapFragment(), STATE_NFC);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private void showBluetooth() {

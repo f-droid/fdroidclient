@@ -120,9 +120,8 @@ public class NewRepoConfig {
     public Uri getRepoUri() {
         if (uriString == null) {
             return null;
-        } else {
-            return Uri.parse(uriString);
         }
+        return Uri.parse(uriString);
     }
 
     public String getHost() { return host; }

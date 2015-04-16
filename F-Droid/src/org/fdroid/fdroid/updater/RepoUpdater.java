@@ -41,9 +41,8 @@ abstract public class RepoUpdater {
     public static RepoUpdater createUpdaterFor(Context ctx, Repo repo) {
         if (repo.fingerprint == null && repo.pubkey == null) {
             return new UnsignedRepoUpdater(ctx, repo);
-        } else {
-            return new SignedRepoUpdater(ctx, repo);
         }
+        return new SignedRepoUpdater(ctx, repo);
     }
 
     protected final Context context;
