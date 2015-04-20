@@ -92,8 +92,8 @@ public class AvailableAppsFragment extends AppListFragment implements
                         return;
                     }
                     adapter.clear();
-                    List<String> catList = AppProvider.Helper.categories(getActivity());
-                    ArrayAdapterCompat.addAll(adapter, catList);
+                    categories = AppProvider.Helper.categories(getActivity());
+                    ArrayAdapterCompat.addAll(adapter, translateCategories(categories));
                 }
             });
         }
