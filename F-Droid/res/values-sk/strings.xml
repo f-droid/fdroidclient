@@ -21,14 +21,14 @@
   <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše aplikácie.</string>
   <string name="touch_to_turn_on_local_repo">Ťuknite na zapnutie miestneho repa.</string>
   <string name="touch_to_turn_off_local_repo">Ťuknite na vypnutie miestneho repa.</string>
-  <string name="updating">Aktualizujeme...</string>
+  <string name="updating">Aktualizujeme…</string>
   <string name="update_repo">Aktualizovať repo</string>
   <string name="deleting_repo">Mažeme súčasné repo</string>
-  <string name="adding_apks_format">Pridávame %s do repa...</string>
-  <string name="writing_index_jar">Zapisujeme podpísaný súbor indexu (index.jar)...</string>
+  <string name="adding_apks_format">Pridávame %s do repa…</string>
+  <string name="writing_index_jar">Zapisujeme podpísaný súbor indexu (index.jar)…</string>
   <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repa!</string>
-  <string name="linking_apks">Odkazujeme súbory APK do repa...</string>
-  <string name="copying_icons">Kopírujeme ikony do repa...</string>
+  <string name="linking_apks">Odkazujeme súbory APK do repa…</string>
+  <string name="copying_icons">Kopírujeme ikony do repa…</string>
   <string name="updated_local_repo">Aktualizácie miestneho repa dokončené</string>
   <string name="no_applications_found">Aplikácie sa nenašli</string>
   <string name="icon">ikona</string>
@@ -44,7 +44,7 @@
   <string name="qr_content_description">QR kód URL adresy repa.</string>
   <string name="qr_wizard_wifi_network_instructions">Skenujte tento QR kód pre pripojenie k rovnakej WiFi sieti ako toto zariadenie.</string>
   <string name="qr_wizard_download_instructions">Naskenujte tento QR kód pre pripojenie na webové stránky s inštrukciami na začiatok.</string>
-  <string name="send_fdroid_via_wifi">Odoslať FDroid cez WiFi...</string>
+  <string name="send_fdroid_via_wifi">Odoslať FDroid cez WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Povoliť HTTP Proxy</string>
   <string name="enable_proxy_summary">Nastaviť HTTP Proxy na všetky sieťové žiadosti</string>
@@ -90,7 +90,7 @@ Budete
   <string name="System">Systém</string>
   <string name="Wallpaper">Tapeta</string>
   <string name="requesting_root_access_title">Root prístup</string>
-  <string name="requesting_root_access_body">Žiadame root prístup...</string>
+  <string name="requesting_root_access_body">Žiadame root prístup…</string>
   <string name="root_access_denied_title">Root prístup zamietnutý</string>
   <string name="root_access_denied_body">Buď vaše zariadenie s Androidom nemá urobený root alebo ste odmietli root prístup pre F-Droid.</string>
   <string name="update_all">Aktualizovať všetko</string>
