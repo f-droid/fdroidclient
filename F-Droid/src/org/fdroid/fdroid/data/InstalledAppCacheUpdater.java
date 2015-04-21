@@ -167,7 +167,7 @@ public class InstalledAppCacheUpdater {
         protected Boolean doInBackground(Void... params) {
             try {
                 Thread.sleep(10000);
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException ignored) {}
             return update();
         }
 

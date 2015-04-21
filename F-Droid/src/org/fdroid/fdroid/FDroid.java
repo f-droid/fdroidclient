@@ -283,7 +283,7 @@ public class FDroid extends ActionBarActivity {
                                 .getPackageName(), 0);
                 ((TextView) view.findViewById(R.id.version))
                         .setText(pi.versionName);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
 
             Builder p;
