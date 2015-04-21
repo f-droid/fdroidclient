@@ -18,6 +18,7 @@ public class TabManager {
     public static final int INDEX_AVAILABLE  = 0;
     public static final int INDEX_INSTALLED  = 1;
     public static final int INDEX_CAN_UPDATE = 2;
+    public static final int INDEX_COUNT      = 3;
 
     private final ViewPager pager;
     private final FDroid parent;

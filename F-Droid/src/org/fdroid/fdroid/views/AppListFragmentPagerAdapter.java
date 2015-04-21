@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.fragments.AvailableAppsFragment;
 import org.fdroid.fdroid.views.fragments.CanUpdateAppsFragment;
@@ -33,9 +34,9 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int i) {
         switch (i) {
-        case 0:
+        case TabManager.INDEX_AVAILABLE:
             return new AvailableAppsFragment();
-        case 1:
+        case TabManager.INDEX_INSTALLED:
             return new InstalledAppsFragment();
         default:
             return new CanUpdateAppsFragment();
@@ -43,16 +44,16 @@ public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public int getCount() { return 3; }
+    public int getCount() { return TabManager.INDEX_COUNT; }
 
     @Override
     public String getPageTitle(int i) {
         switch (i) {
-        case 0:
+        case TabManager.INDEX_AVAILABLE:
             return parent.getString(R.string.tab_noninstalled);
-        case 1:
+        case TabManager.INDEX_INSTALLED:
             return parent.getString(R.string.inst);
-        case 2:
+        case TabManager.INDEX_CAN_UPDATE:
             return getUpdateTabTitle();
         default:
             return "";
