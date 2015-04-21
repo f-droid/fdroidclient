@@ -148,11 +148,9 @@ public final class Utils {
     }
 
     public static boolean copy(File inFile, File outFile) {
-        InputStream input;
-        OutputStream output;
         try {
-            input = new FileInputStream(inFile);
-            output = new FileOutputStream(outFile);
+            InputStream input = new FileInputStream(inFile);
+            OutputStream output = new FileOutputStream(outFile);
             Utils.copy(input, output);
             output.close();
             input.close();
@@ -473,15 +471,13 @@ public final class Utils {
 
     public static String getBinaryHash(File apk, String algo) {
         FileInputStream fis = null;
-        BufferedInputStream bis;
         try {
             MessageDigest md = MessageDigest.getInstance(algo);
             fis = new FileInputStream(apk);
-            bis = new BufferedInputStream(fis);
+            BufferedInputStream bis = new BufferedInputStream(fis);
 
             byte[] dataBytes = new byte[524288];
             int nread;
-
             while ((nread = bis.read(dataBytes)) != -1)
                 md.update(dataBytes, 0, nread);
 
