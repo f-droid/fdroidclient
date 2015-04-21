@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -124,27 +123,24 @@ public class AvailableAppsFragment extends AppListFragment implements
      */
     @SuppressWarnings("deprecation")
     private void styleSpinner(Spinner spinner) {
-        if (Build.VERSION.SDK_INT >= 14) {
-            Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
-            if (FDroidApp.getCurTheme() == FDroidApp.Theme.dark) {
-                menuButton.setAlpha(32); // make it darker via alpha
-            }
-            if (Build.VERSION.SDK_INT >= 16) {
-                spinner.setBackground(menuButton);
-            } else {
-                spinner.setBackgroundDrawable(menuButton);
-            }
+
+        Drawable menuButton = getResources().getDrawable(android.R.drawable.btn_dropdown);
+        if (FDroidApp.getCurTheme() == FDroidApp.Theme.dark) {
+            menuButton.setAlpha(32); // make it darker via alpha
+        }
+        if (Build.VERSION.SDK_INT >= 16) {
+            spinner.setBackground(menuButton);
+        } else {
+            spinner.setBackgroundDrawable(menuButton);
         }
     }
 
-    private Spinner createCategorySpinner() {
+    private Spinner setupCategorySpinner(Spinner spinner) {
+
+        categorySpinner = spinner;
+        categorySpinner.setId(R.id.category_spinner);
 
         categories = AppProvider.Helper.categories(getActivity());
-
-        categorySpinner = new Spinner(getActivity());
-
-        // Giving it an ID lets the default save/restore state functionality do its stuff.
-        categorySpinner.setId(R.id.categorySpinner);
 
         styleSpinner(categorySpinner);
 
@@ -173,24 +169,11 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout view = new LinearLayout(getActivity());
-        view.setOrientation(LinearLayout.VERTICAL);
+        View view = inflater.inflate(R.layout.available_app_list, container, false);
 
-        view.addView(
-                createCategorySpinner(),
-                new ViewGroup.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
+        setupCategorySpinner((Spinner)view.findViewById(R.id.category_spinner));
 
-        ListView list = new ListView(getActivity());
-        list.setId(android.R.id.list);
-        list.setFastScrollEnabled(true);
-        list.setOnItemClickListener(this);
-        view.addView(
-                list,
-                new ViewGroup.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT));
+        ((ListView)view.findViewById(android.R.id.list)).setOnItemClickListener(this);
 
         // R.string.category_whatsnew is the default set in AppListManager
         DEFAULT_CATEGORY = getActivity().getString(R.string.category_whatsnew);
