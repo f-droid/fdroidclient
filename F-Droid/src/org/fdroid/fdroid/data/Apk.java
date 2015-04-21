@@ -40,15 +40,11 @@ public class Apk extends ValueObject implements Comparable<Apk> {
     // build - otherwise it's built from source.
     public String srcname;
 
-    // Used internally for tracking during repo updates.
-    public boolean updated;
-
     public int repoVersion;
     public String repoAddress;
     public Utils.CommaSeparatedList incompatible_reasons;
 
     public Apk() {
-        updated = false;
         size = 0;
         added = null;
         repo = 0;

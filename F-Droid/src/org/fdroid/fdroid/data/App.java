@@ -34,7 +34,6 @@ public class App extends ValueObject implements Comparable<App> {
 
     // True if compatible with the device (i.e. if at least one apk is)
     public boolean compatible;
-    public boolean includeInRepo = false;
 
     public String id = "unknown";
     public String name = "Unknown";
@@ -93,9 +92,6 @@ public class App extends ValueObject implements Comparable<App> {
 
     // True if the current update for this app is to be ignored
     public int ignoreThisUpdate;
-
-    // Used internally for tracking during repo updates.
-    public boolean updated;
 
     public String iconUrl;
 
