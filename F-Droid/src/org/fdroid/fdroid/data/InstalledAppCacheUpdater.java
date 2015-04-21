@@ -97,9 +97,7 @@ public class InstalledAppCacheUpdater {
             try {
                 context.getContentResolver().applyBatch(InstalledAppProvider.getAuthority(), ops);
                 Log.d(TAG, "Finished executing " + ops.size() + " CRUD operations on installed app cache.");
-            } catch (RemoteException e) {
-                Log.e(TAG, "Error updating installed app cache: " + e);
-            } catch (OperationApplicationException e) {
+            } catch (RemoteException | OperationApplicationException e) {
                 Log.e(TAG, "Error updating installed app cache: " + e);
             }
         }

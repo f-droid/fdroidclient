@@ -64,7 +64,7 @@ public class Hasher {
             return hashCache;
         else if (file != null) {
             byte[] buffer = new byte[1024];
-            int read = 0;
+            int read;
             InputStream input = null;
             try {
                 input = new BufferedInputStream(new FileInputStream(file));

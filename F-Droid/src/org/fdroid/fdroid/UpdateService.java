@@ -564,8 +564,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     private List<String> getKnownAppIds(List<App> apps) {
         List<String> knownAppIds = new ArrayList<>();
         if (apps.size() == 0) {
-            // Do nothing
-        } else if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
+            return knownAppIds;
+        }
+        if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {
             int middle = apps.size() / 2;
             List<App> apps1 = apps.subList(0, middle);
             List<App> apps2 = apps.subList(middle, apps.size());

@@ -94,10 +94,10 @@ public class CompatibilityChecker extends Compatibility {
 
         if (apk.features != null) {
             for (final String feat : apk.features) {
-                if (ignoreTouchscreen
-                        && feat.equals("android.hardware.touchscreen")) {
-                    // Don't check it!
-                } else if (!features.contains(feat)) {
+                if (ignoreTouchscreen && feat.equals("android.hardware.touchscreen")) {
+                    continue;
+                }
+                if (!features.contains(feat)) {
                     Collections.addAll(incompatibleReasons, feat.split(","));
                     if (BuildConfig.DEBUG) {
                         Log.d(TAG, apk.id + " vercode " + apk.vercode
