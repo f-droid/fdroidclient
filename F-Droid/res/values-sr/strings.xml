@@ -48,6 +48,8 @@
 Адреса ризнице изгледа овако: https://f-droid.org/repo</string>
   <string name="inst">Инсталирано</string>
   <string name="not_inst">Није инсталирано</string>
+  <string name="inst_known_source">Инсталирано (са %s)</string>
+  <string name="inst_unknown_source">Инсталирано (са непознатог извора)</string>
   <string name="added_on">Додата %s</string>
   <string name="ok">У реду</string>
   <string name="yes">Да</string>
@@ -215,6 +217,9 @@
   <string name="repo_disabled_notification">Онемогућена \"%1$s\".
 
 Мораћете поново да омогућите ову ризницу да бисте инсталирали апликације са ње.</string>
+  <string name="repo_added">Сачувана Ф-дроид ризница %1$s</string>
+  <string name="repo_searching_address">Тражим Ф-дроид ризницу на
+%1$s</string>
   <string name="minsdk_or_later">%s или новији</string>
   <string name="up_to_maxsdk">до %s</string>
   <string name="minsdk_up_to_maxsdk">од %1$s до %2$s</string>
@@ -247,6 +252,7 @@
   <string name="system_permission_denied_title">Системске дозволе одбијене</string>
   <string name="system_permission_denied_body">Ова опција доступна само када је Ф-дроид инсталиран као системска апликација.</string>
   <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кôда) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>
+  <string name="swap_nfc_description">Ако ваш пријатељ има НФЦ, спојите телефоне.</string>
   <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
   <string name="swap_use_bluetooth">Користи блутут</string>
   <string name="swap_wifi_help">Сазнајте више о бежичном</string>
