@@ -522,10 +522,10 @@ public class AppProvider extends FDroidProvider {
     protected UriMatcher getMatcher() { return matcher; }
 
     private AppQuerySelection queryCanUpdate() {
-        String ignoreCurrent = " fdroid_app.ignoreThisUpdate != fdroid_app.suggestedVercode ";
-        String ignoreAll = " fdroid_app.ignoreAllUpdates != 1 ";
-        String ignore = " ( " + ignoreCurrent + " AND " + ignoreAll + " ) ";
-        String where = ignore + " AND fdroid_app." + DataColumns.SUGGESTED_VERSION_CODE + " > installed.versionCode";
+        final String ignoreCurrent = " fdroid_app.ignoreThisUpdate != fdroid_app.suggestedVercode ";
+        final String ignoreAll = " fdroid_app.ignoreAllUpdates != 1 ";
+        final String ignore = " ( " + ignoreCurrent + " AND " + ignoreAll + " ) ";
+        final String where = ignore + " AND fdroid_app." + DataColumns.SUGGESTED_VERSION_CODE + " > installed.versionCode";
         return new AppQuerySelection(where).requireNaturalInstalledTable();
     }
 
@@ -548,8 +548,8 @@ public class AppProvider extends FDroidProvider {
         };
 
         // Remove duplicates, surround in % for case insensitive searching
-        Set<String> keywordSet = new HashSet<>(Arrays.asList(query.split("\\s")));
-        String[] keywords = new String[keywordSet.size()];
+        final Set<String> keywordSet = new HashSet<>(Arrays.asList(query.split("\\s")));
+        final String[] keywords = new String[keywordSet.size()];
         int iKeyword = 0;
         for (final String keyword : keywordSet) {
             keywords[iKeyword] = "%" + keyword + "%";
@@ -557,8 +557,8 @@ public class AppProvider extends FDroidProvider {
         }
 
         // Build selection string and fill out keyword arguments
-        StringBuilder selection = new StringBuilder();
-        String[] selectionKeywords = new String[columns.length * keywords.length];
+        final StringBuilder selection = new StringBuilder();
+        final String[] selectionKeywords = new String[columns.length * keywords.length];
         iKeyword = 0;
         boolean firstColumn = true;
         for (final String column : columns) {

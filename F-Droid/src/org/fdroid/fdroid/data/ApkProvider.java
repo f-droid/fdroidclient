@@ -54,19 +54,19 @@ public class ApkProvider extends FDroidProvider {
 
         public static int deleteApksByRepo(Context context, Repo repo) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getRepoUri(repo.getId());
+            final Uri uri = getRepoUri(repo.getId());
             return resolver.delete(uri, null, null);
         }
 
         public static void deleteApksByApp(Context context, App app) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getAppUri(app.id);
+            final Uri uri = getAppUri(app.id);
             resolver.delete(uri, null, null);
         }
 
         public static void deleteApks(Context context, List<Apk> apks) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getContentUri(apks);
+            final Uri uri = getContentUri(apks);
             resolver.delete(uri, null, null);
         }
 
@@ -76,7 +76,7 @@ public class ApkProvider extends FDroidProvider {
 
         public static Apk find(Context context, String id, int versionCode, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getContentUri(id, versionCode);
+            final Uri uri = getContentUri(id, versionCode);
             Cursor cursor = resolver.query(uri, projection, null, null, null);
             Apk apk = null;
             if (cursor != null) {
@@ -96,8 +96,8 @@ public class ApkProvider extends FDroidProvider {
         public static List<Apk> findByApp(Context context,
                                           String appId, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getAppUri(appId);
-            String sort = ApkProvider.DataColumns.VERSION_CODE + " DESC";
+            final Uri uri = getAppUri(appId);
+            final String sort = ApkProvider.DataColumns.VERSION_CODE + " DESC";
             Cursor cursor = resolver.query(uri, projection, null, null, sort);
             return cursorToList(cursor);
         }
@@ -112,14 +112,14 @@ public class ApkProvider extends FDroidProvider {
                 return new ArrayList<>();
             }
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getContentUri(apks);
+            final Uri uri = getContentUri(apks);
             Cursor cursor = resolver.query(uri, fields, null, null, null);
             return cursorToList(cursor);
         }
 
         public static List<Apk> findByRepo(Context context, Repo repo, String[] fields) {
             ContentResolver resolver = context.getContentResolver();
-            Uri uri = getRepoUri(repo.getId());
+            final Uri uri = getRepoUri(repo.getId());
             Cursor cursor = resolver.query(uri, fields, null, null, null);
             return cursorToList(cursor);
         }
@@ -244,7 +244,7 @@ public class ApkProvider extends FDroidProvider {
             if (i != 0) {
                 builder.append(',');
             }
-            Apk a = apks.get(i);
+            final Apk a = apks.get(i);
             builder.append(a.id).append(':').append(a.vercode);
         }
         return getContentUri().buildUpon()
@@ -392,7 +392,7 @@ public class ApkProvider extends FDroidProvider {
 
     private static void removeRepoFields(ContentValues values) {
         for (Map.Entry<String,String> repoField : REPO_FIELDS.entrySet()) {
-            String field = repoField.getKey();
+            final String field = repoField.getKey();
             if (values.containsKey(field)) {
                 Log.i(TAG, "Cannot insert/update '" + field + "' field " +
                         "on apk table, as it belongs to the repo table. " +

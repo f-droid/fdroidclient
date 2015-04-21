@@ -259,7 +259,7 @@ public class App extends ValueObject implements Comparable<App> {
         this.name = (String) appInfo.loadLabel(pm);
 
         SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
-        Apk apk = new Apk();
+        final Apk apk = new Apk();
         apk.version = packageInfo.versionName;
         apk.vercode = packageInfo.versionCode;
         apk.hashType = "sha256";
