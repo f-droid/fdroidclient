@@ -87,12 +87,12 @@ public class FDroidApp extends Application {
         dark, light, lightWithDarkActionBar
     }
 
-    private static Theme curTheme = Theme.dark;
+    private static Theme curTheme = Theme.light;
 
     public void reloadTheme() {
         curTheme = Theme.valueOf(PreferenceManager
                 .getDefaultSharedPreferences(getBaseContext())
-                .getString(Preferences.PREF_THEME, "dark"));
+                .getString(Preferences.PREF_THEME, Preferences.DEFAULT_THEME));
     }
 
     public void applyTheme(Activity activity) {
