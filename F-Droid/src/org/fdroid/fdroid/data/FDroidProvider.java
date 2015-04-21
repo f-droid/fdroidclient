@@ -146,4 +146,3 @@ public abstract class FDroidProvider extends ContentProvider {
         }
     }
 }
-
