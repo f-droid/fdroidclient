@@ -20,6 +20,8 @@
 * Split up search terms when querying the app database - "fire fox" now
   matches FireFox
 
+* Ignore trailing paces in search terms introduced by some input methods
+
 * Fixed bug where categories were always empty on non-english locales
 
 * Swapping is now two way. Connecting to a swap on one device will
