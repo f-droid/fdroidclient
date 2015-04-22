@@ -1,9 +1,10 @@
-### Upcoming release
+### 0.88 (2015-04-2?)
 
 * Show list of apps to in the update notification (on devices with
   Android 4.1 or higher)
 
-* Locale can now be changed from F-Droid preferences
+* User interface language can now be changed from inside the F-Droid
+  preferences without changing the system language (locale)
 
 * Fix an issue where xml files could pile up in the data directory
 
@@ -15,6 +16,9 @@
 
 * Show a message to the user when there is no apps to display
 
+* Swapping is now two way. Connecting to a swap on one device will
+  initiate a swap on the other device.
+
 * Small UI fixes to avoid overlapping text and improve app version ellipsizing
 
 * Split up search terms when querying the app database - "fire fox" now
@@ -24,8 +28,7 @@
 
 * Fixed bug where categories were always empty on non-english locales
 
-* Swapping is now two way. Connecting to a swap on one device will
-  initiate a swap on the other device.
+* Only log some verbose messages that are of little use to users in debug builds
 
 * Misc fixes to the "swap" workflow (especially on Android 2.3 devices)
 
