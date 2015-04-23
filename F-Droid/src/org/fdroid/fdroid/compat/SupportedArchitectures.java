@@ -11,12 +11,12 @@ public class SupportedArchitectures extends Compatibility {
     @SuppressWarnings("deprecation")
     public static String[] getAbis() {
         if (hasApi(21)) {
-            return new String[]{Build.CPU_ABI};
+            return Build.SUPPORTED_ABIS;
         }
         if (hasApi(8)) {
             return new String[]{Build.CPU_ABI, Build.CPU_ABI2};
         }
-        return Build.SUPPORTED_ABIS;
+        return new String[]{Build.CPU_ABI};
     }
 
 }
