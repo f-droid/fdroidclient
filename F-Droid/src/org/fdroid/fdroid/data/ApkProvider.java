@@ -24,7 +24,7 @@ public class ApkProvider extends FDroidProvider {
      * we may want to add additional constraints, so we give our self some
      * room by saying only 450 apks can be queried at once.
      */
-    public static final int MAX_APKS_TO_QUERY = 450;
+    protected static final int MAX_APKS_TO_QUERY = 450;
 
     public static final class Helper {
 
@@ -64,7 +64,19 @@ public class ApkProvider extends FDroidProvider {
             resolver.delete(uri, null, null);
         }
 
-        public static void deleteApks(Context context, List<Apk> apks) {
+        public static void deleteApks(final Context context, final List<Apk> apks) {
+            if (apks.size() > ApkProvider.MAX_APKS_TO_QUERY) {
+                int middle = apks.size() / 2;
+                List<Apk> apks1 = apks.subList(0, middle);
+                List<Apk> apks2 = apks.subList(middle, apks.size());
+                deleteApks(context, apks1);
+                deleteApks(context, apks2);
+            } else {
+                deleteApksSafely(context, apks);
+            }
+        }
+
+        private static void deleteApksSafely(final Context context, final List<Apk> apks) {
             ContentResolver resolver = context.getContentResolver();
             final Uri uri = getContentUri(apks);
             resolver.delete(uri, null, null);
@@ -106,11 +118,26 @@ public class ApkProvider extends FDroidProvider {
          * Returns apks in the database, which have the same id and version as
          * one of the apks in the "apks" argument.
          */
-        public static List<Apk> knownApks(Context context,
-                                             List<Apk> apks, String[] fields) {
+        public static List<Apk> knownApks(Context context, List<Apk> apks, String[] fields) {
             if (apks.size() == 0) {
                 return new ArrayList<>();
             }
+
+            List<Apk> knownApks = new ArrayList<>();
+            if (apks.size() > ApkProvider.MAX_APKS_TO_QUERY) {
+                int middle = apks.size() / 2;
+                List<Apk> apks1 = apks.subList(0, middle);
+                List<Apk> apks2 = apks.subList(middle, apks.size());
+                knownApks.addAll(knownApks(context, apks1, fields));
+                knownApks.addAll(knownApks(context,apks2, fields));
+            } else {
+                knownApks.addAll(knownApksSafe(context,apks, fields));
+            }
+            return knownApks;
+
+        }
+
+        private static List<Apk> knownApksSafe(final Context context, final List<Apk> apks, final String[] fields) {
             ContentResolver resolver = context.getContentResolver();
             final Uri uri = getContentUri(apks);
             Cursor cursor = resolver.query(uri, fields, null, null, null);
@@ -238,7 +265,13 @@ public class ApkProvider extends FDroidProvider {
             .build();
     }
 
-    public static Uri getContentUri(List<Apk> apks) {
+    /**
+     * Intentionally left protected because it will break if apks is larger than
+     * {@link org.fdroid.fdroid.data.ApkProvider#MAX_APKS_TO_QUERY}. Instead of using
+     * this directly, think about using
+     * {@link org.fdroid.fdroid.data.ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
+     */
+    protected static Uri getContentUri(List<Apk> apks) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < apks.size(); i++) {
             if (i != 0) {

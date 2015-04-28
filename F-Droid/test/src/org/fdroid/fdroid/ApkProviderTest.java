@@ -16,6 +16,19 @@ import java.util.List;
 
 public class ApkProviderTest extends BaseApkProviderTest {
 
+    /**
+     * I want to test the protected {@link org.fdroid.fdroid.data.ApkProvider#getContentUri(java.util.List)}
+     * method, but don't want to make it public. This exposes it.
+     */
+    private static class PublicApkProvider extends ApkProvider {
+
+        public static final int MAX_APKS_TO_QUERY = ApkProvider.MAX_APKS_TO_QUERY;
+
+        public static Uri getContentUri(List<Apk> apks) {
+            return ApkProvider.getContentUri(apks);
+        }
+    }
+
     public void testUris() {
         assertInvalidUri(ApkProvider.getAuthority());
         assertInvalidUri(RepoProvider.getContentUri());
@@ -29,15 +42,15 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertValidUri(ApkProvider.getAppUri("org.fdroid.fdroid"));
         assertValidUri(ApkProvider.getContentUri(new MockApk("org.fdroid.fdroid", 100)));
         assertValidUri(ApkProvider.getContentUri());
-        assertValidUri(ApkProvider.getContentUri(apks));
+        assertValidUri(PublicApkProvider.getContentUri(apks));
         assertValidUri(ApkProvider.getContentUri("org.fdroid.fdroid", 100));
         assertValidUri(ApkProvider.getRepoUri(1000));
 
-        List<Apk> manyApks = new ArrayList<Apk>(ApkProvider.MAX_APKS_TO_QUERY - 5);
-        for (int i = 0; i < ApkProvider.MAX_APKS_TO_QUERY - 1; i ++) {
+        List<Apk> manyApks = new ArrayList<Apk>(PublicApkProvider.MAX_APKS_TO_QUERY - 5);
+        for (int i = 0; i < PublicApkProvider.MAX_APKS_TO_QUERY - 1; i ++) {
             manyApks.add(new MockApk("com.example." + i, i));
         }
-        assertValidUri(ApkProvider.getContentUri(manyApks));
+        assertValidUri(PublicApkProvider.getContentUri(manyApks));
 
         manyApks.add(new MockApk("org.fdroid.fdroid.1", 1));
         manyApks.add(new MockApk("org.fdroid.fdroid.2", 2));
@@ -46,7 +59,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
             // throw an UnsupportedOperationException. However it
             // is still not okay (we run out of bindable parameters
             // in the sqlite query.
-            assertValidUri(ApkProvider.getContentUri(manyApks));
+            assertValidUri(PublicApkProvider.getContentUri(manyApks));
             fail();
         } catch (IllegalArgumentException e) {
             // This is the expected error behaviour.
@@ -93,7 +106,7 @@ public class ApkProviderTest extends BaseApkProviderTest {
         assertCantUpdate(ApkProvider.getContentUri());
         assertCantUpdate(ApkProvider.getAppUri("org.fdroid.fdroid"));
         assertCantUpdate(ApkProvider.getRepoUri(1));
-        assertCantUpdate(ApkProvider.getContentUri(apks));
+        assertCantUpdate(PublicApkProvider.getContentUri(apks));
         assertCantUpdate(Uri.withAppendedPath(ApkProvider.getContentUri(), "some-random-path"));
 
         // The only valid ones are:

@@ -605,23 +605,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         return knownIds;
     }
 
-    /**
-     * If you call this with too many apks, then it will likely hit limit of
-     * parameters allowed for sqlite3 query. Rather, you should use
-     * {@link org.fdroid.fdroid.UpdateService#getKnownApks(java.util.List)}
-     * instead, which will only call this with the right number of apks at
-     * a time.
-     * @see org.fdroid.fdroid.UpdateService#getKnownAppIds(java.util.List)
-     */
-    private List<Apk> getKnownApksFromProvider(List<Apk> apks) {
-        final String[] fields = {
-            ApkProvider.DataColumns.APK_ID,
-            ApkProvider.DataColumns.VERSION,
-            ApkProvider.DataColumns.VERSION_CODE
-        };
-        return ApkProvider.Helper.knownApks(this, apks, fields);
-    }
-
     private void updateOrInsertApps(List<App> appsToUpdate, int totalUpdateCount, int currentCount) {
 
         List<ContentProviderOperation> operations = new ArrayList<>();
@@ -663,17 +646,12 @@ public class UpdateService extends IntentService implements ProgressListener {
      * Return list of apps from the "apks" argument which are already in the database.
      */
     private List<Apk> getKnownApks(List<Apk> apks) {
-        List<Apk> knownApks = new ArrayList<>();
-        if (apks.size() > ApkProvider.MAX_APKS_TO_QUERY) {
-            int middle = apks.size() / 2;
-            List<Apk> apks1 = apks.subList(0, middle);
-            List<Apk> apks2 = apks.subList(middle, apks.size());
-            knownApks.addAll(getKnownApks(apks1));
-            knownApks.addAll(getKnownApks(apks2));
-        } else {
-            knownApks.addAll(getKnownApksFromProvider(apks));
-        }
-        return knownApks;
+        final String[] fields = {
+                ApkProvider.DataColumns.APK_ID,
+                ApkProvider.DataColumns.VERSION,
+                ApkProvider.DataColumns.VERSION_CODE
+        };
+        return ApkProvider.Helper.knownApks(this, apks, fields);
     }
 
     private void updateOrInsertApks(List<Apk> apksToUpdate, int totalApksAppsCount, int currentCount) {
