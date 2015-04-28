@@ -872,7 +872,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     }
 
     private void startDownload(Apk apk, String repoAddress) {
-        downloadHandler = new ApkDownloader(apk, repoAddress, Utils.getApkCacheDir(getBaseContext()));
+        downloadHandler = new ApkDownloader(getBaseContext(), apk, repoAddress);
         downloadHandler.setProgressListener(this);
         if (downloadHandler.download()) {
             updateProgressDialog();
