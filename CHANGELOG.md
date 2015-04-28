@@ -1,4 +1,4 @@
-### 0.88 (2015-04-2?)
+### 0.88 (2015-04-28)
 
 * Show list of apps to in the update notification (on devices with
   Android 4.1 or higher)
