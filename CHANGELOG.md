@@ -1,6 +1,6 @@
 ### 0.88 (2015-04-28)
 
-* Show list of apps to in the update notification (on devices with
+* Show list of apps in the update notification (on devices with
   Android 4.1 or higher)
 
 * User interface language can now be changed from inside the F-Droid
@@ -14,7 +14,7 @@
 * Fix regression where F-Droid web repo links would trigger an "Add new repo"
   action
 
-* Show a message to the user when there is no apps to display
+* Show a message to the user when there are no apps to display.
 
 * Swapping is now two way. Connecting to a swap on one device will
   initiate a swap on the other device.
