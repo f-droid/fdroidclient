@@ -88,7 +88,6 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
         }
     }
 
-    @NonNull
     private Repo ensureRepoExists() {
         if (!newRepoConfig.isValidRepo()) {
             return null;

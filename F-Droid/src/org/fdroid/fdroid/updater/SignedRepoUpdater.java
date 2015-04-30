@@ -119,12 +119,12 @@ public class SignedRepoUpdater extends RepoUpdater {
     @Override
     protected File getIndexFromFile(File downloadedFile) throws
             UpdateException {
-        Date updateTime = new Date(System.currentTimeMillis());
+        final Date updateTime = new Date(System.currentTimeMillis());
         Log.d(TAG, "Getting signed index from " + repo.address + " at " +
                 Utils.formatLogDate(updateTime));
 
-        File indexJar  = downloadedFile;
-        File indexXml  = null;
+        final File indexJar = downloadedFile;
+        File indexXml = null;
 
         // Don't worry about checking the status code for 200. If it was a
         // successful download, then we will have a file ready to use:

@@ -141,14 +141,13 @@ public class SelectLocalAppsFragment extends ListFragment
         } else {
             baseUri = InstalledAppProvider.getSearchUri(mCurrentFilterString);
         }
-        CursorLoader loader = new CursorLoader(
+        return new CursorLoader(
                 this.getActivity(),
                 baseUri,
                 InstalledAppProvider.DataColumns.ALL,
                 null,
                 null,
                 InstalledAppProvider.DataColumns.APPLICATION_LABEL);
-        return loader;
     }
 
     @Override

@@ -47,13 +47,11 @@ public class RootInstaller extends Installer {
     }
 
     private Shell.Builder createShellBuilder() {
-        Shell.Builder shellBuilder = new Shell.Builder()
+        return new Shell.Builder()
                 .useSU()
                 .setWantSTDERR(true)
                 .setWatchdogTimeout(30)
                 .setMinimalLogging(false);
-
-        return shellBuilder;
     }
 
     @Override

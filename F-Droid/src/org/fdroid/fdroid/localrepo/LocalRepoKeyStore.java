@@ -272,8 +272,7 @@ public class LocalRepoKeyStore {
     private KeyPair generateRandomKeypair() throws NoSuchAlgorithmException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(DEFAULT_KEY_ALGO);
         keyPairGenerator.initialize(DEFAULT_KEY_BITS);
-        KeyPair keyPair = keyPairGenerator.generateKeyPair();
-        return keyPair;
+        return keyPairGenerator.generateKeyPair();
     }
 
     private Certificate generateSelfSignedCertChain(KeyPair kp, X500Name subject)
