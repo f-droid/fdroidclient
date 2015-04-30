@@ -82,34 +82,39 @@ public final class QRCodeEncoder {
     }
 
     private void encodeQRCodeContents(String data, Bundle bundle, String type) {
-        if (type.equals(Contents.Type.TEXT)) {
+        switch (type) {
+        case Contents.Type.TEXT:
             if (data != null && data.length() > 0) {
                 contents = data;
                 displayContents = data;
                 title = "Text";
             }
-        } else if (type.equals(Contents.Type.EMAIL)) {
+            break;
+        case Contents.Type.EMAIL:
             data = trim(data);
             if (data != null) {
                 contents = "mailto:" + data;
                 displayContents = data;
                 title = "E-Mail";
             }
-        } else if (type.equals(Contents.Type.PHONE)) {
+            break;
+        case Contents.Type.PHONE:
             data = trim(data);
             if (data != null) {
                 contents = "tel:" + data;
                 displayContents = PhoneNumberUtils.formatNumber(data);
                 title = "Phone";
             }
-        } else if (type.equals(Contents.Type.SMS)) {
+            break;
+        case Contents.Type.SMS:
             data = trim(data);
             if (data != null) {
                 contents = "sms:" + data;
                 displayContents = PhoneNumberUtils.formatNumber(data);
                 title = "SMS";
             }
-        } else if (type.equals(Contents.Type.CONTACT)) {
+            break;
+        case Contents.Type.CONTACT:
             if (bundle != null) {
                 StringBuilder newContents = new StringBuilder(100);
                 StringBuilder newDisplayContents = new StringBuilder(100);
@@ -128,7 +133,7 @@ public final class QRCodeEncoder {
                     newDisplayContents.append('\n').append(address);
                 }
 
-                Collection<String> uniquePhones = new HashSet<String>(Contents.PHONE_KEYS.length);
+                Collection<String> uniquePhones = new HashSet<>(Contents.PHONE_KEYS.length);
                 for (int x = 0; x < Contents.PHONE_KEYS.length; x++) {
                     String phone = trim(bundle.getString(Contents.PHONE_KEYS[x]));
                     if (phone != null) {
@@ -140,7 +145,7 @@ public final class QRCodeEncoder {
                     newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
                 }
 
-                Collection<String> uniqueEmails = new HashSet<String>(Contents.EMAIL_KEYS.length);
+                Collection<String> uniqueEmails = new HashSet<>(Contents.EMAIL_KEYS.length);
                 for (int x = 0; x < Contents.EMAIL_KEYS.length; x++) {
                     String email = trim(bundle.getString(Contents.EMAIL_KEYS[x]));
                     if (email != null) {
@@ -177,7 +182,8 @@ public final class QRCodeEncoder {
                 }
 
             }
-        } else if (type.equals(Contents.Type.LOCATION)) {
+            break;
+        case Contents.Type.LOCATION:
             if (bundle != null) {
                 // These must use Bundle.getFloat(), not getDouble(), it's part of the API.
                 float latitude = bundle.getFloat("LAT", Float.MAX_VALUE);
@@ -188,6 +194,7 @@ public final class QRCodeEncoder {
                     title = "Location";
                 }
             }
+            break;
         }
     }
 
@@ -197,7 +204,7 @@ public final class QRCodeEncoder {
         Map<EncodeHintType, Object> hints = null;
         String encoding = guessAppropriateEncoding(contents);
         if (encoding != null) {
-            hints = new EnumMap<EncodeHintType, Object>(EncodeHintType.class);
+            hints = new EnumMap<>(EncodeHintType.class);
             hints.put(EncodeHintType.CHARACTER_SET, encoding);
         }
         MultiFormatWriter writer = new MultiFormatWriter();
