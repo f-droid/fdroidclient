@@ -106,9 +106,7 @@ public class App extends ValueObject implements Comparable<App> {
         return name.compareToIgnoreCase(app.name);
     }
 
-    public App() {
-
-    }
+    public App() { }
 
     public App(Cursor cursor) {
 
@@ -254,7 +252,7 @@ public class App extends ValueObject implements Comparable<App> {
 
         this.name = (String) appInfo.loadLabel(pm);
 
-        SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
+        final SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
         final Apk apk = new Apk();
         apk.version = packageInfo.versionName;
         apk.vercode = packageInfo.versionCode;
@@ -274,7 +272,7 @@ public class App extends ValueObject implements Comparable<App> {
         final FeatureInfo[] features = packageInfo.reqFeatures;
 
         if (features != null && features.length > 0) {
-            List<String> featureNames = new ArrayList<>(features.length);
+            final List<String> featureNames = new ArrayList<>(features.length);
 
             for (FeatureInfo feature : features) {
                 featureNames.add(feature.name);
@@ -287,8 +285,8 @@ public class App extends ValueObject implements Comparable<App> {
 
         byte[] rawCertBytes;
 
-        JarFile apkJar = new JarFile(apkFile);
-        JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
+        final JarFile apkJar = new JarFile(apkFile);
+        final JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
 
         if (aSignedEntry == null) {
             apkJar.close();
@@ -300,7 +298,7 @@ public class App extends ValueObject implements Comparable<App> {
         // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
         try {
             FDroidApp.disableSpongyCastleOnLollipop();
-            InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
+            final InputStream tmpIn = apkJar.getInputStream(aSignedEntry);
             byte[] buff = new byte[2048];
             while (tmpIn.read(buff, 0, buff.length) != -1) {
                 /*
@@ -316,7 +314,7 @@ public class App extends ValueObject implements Comparable<App> {
                 throw new CertificateEncodingException("No Certificates found!");
             }
 
-            Certificate signer = aSignedEntry.getCertificates()[0];
+            final Certificate signer = aSignedEntry.getCertificates()[0];
             rawCertBytes = signer.getEncoded();
         } finally {
             FDroidApp.enableSpongyCastleOnLollipop();
@@ -332,7 +330,7 @@ public class App extends ValueObject implements Comparable<App> {
          * if I'm right... If I'm not right, I really don't know! see lines
          * 67->75 in getsig.java bundled with Fdroidserver
          */
-        byte[] fdroidSig = new byte[rawCertBytes.length * 2];
+        final byte[] fdroidSig = new byte[rawCertBytes.length * 2];
         for (int j = 0; j < rawCertBytes.length; j++) {
             byte v = rawCertBytes[j];
             int d = (v >> 4) & 0xF;
@@ -356,7 +354,7 @@ public class App extends ValueObject implements Comparable<App> {
         if (TextUtils.isEmpty(this.installedApk.sig))
             return false;
 
-        File apkFile = this.installedApk.installedFile;
+        final File apkFile = this.installedApk.installedFile;
         if (apkFile == null || !apkFile.canRead())
             return false;
 
@@ -365,7 +363,7 @@ public class App extends ValueObject implements Comparable<App> {
 
     public ContentValues toContentValues() {
 
-        ContentValues values = new ContentValues();
+        final ContentValues values = new ContentValues();
         values.put(AppProvider.DataColumns.APP_ID, id);
         values.put(AppProvider.DataColumns.NAME, name);
         values.put(AppProvider.DataColumns.SUMMARY, summary);

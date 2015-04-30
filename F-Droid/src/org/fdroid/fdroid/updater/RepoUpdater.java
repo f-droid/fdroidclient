@@ -135,7 +135,7 @@ abstract public class RepoUpdater {
         File indexFile = null;
         try {
 
-            Downloader downloader = downloadIndex();
+            final Downloader downloader = downloadIndex();
             hasChanged = downloader.hasChanged();
 
             if (hasChanged) {
@@ -144,9 +144,9 @@ abstract public class RepoUpdater {
                 indexFile = getIndexFromFile(downloadedFile);
 
                 // Process the index...
-                SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-                XMLReader reader = parser.getXMLReader();
-                RepoXMLHandler handler = new RepoXMLHandler(repo, progressListener);
+                final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+                final XMLReader reader = parser.getXMLReader();
+                final RepoXMLHandler handler = new RepoXMLHandler(repo, progressListener);
 
                 if (progressListener != null) {
                     // Only bother spending the time to count the expected apps

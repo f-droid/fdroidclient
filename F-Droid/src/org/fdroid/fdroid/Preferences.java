@@ -160,7 +160,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     }
 
     public int getProxyPort() {
-        String port = preferences.getString(PREF_PROXY_PORT, String.valueOf(DEFAULT_PROXY_PORT));
+        final String port = preferences.getString(PREF_PROXY_PORT, String.valueOf(DEFAULT_PROXY_PORT));
         try {
             return Integer.parseInt(port);
         } catch (NumberFormatException e) {
@@ -194,7 +194,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
      * Updated...
      */
     public Date calcMaxHistory() {
-        String daysString = preferences.getString(PREF_UPD_HISTORY, Integer.toString(DEFAULT_UPD_HISTORY));
+        final String daysString = preferences.getString(PREF_UPD_HISTORY, Integer.toString(DEFAULT_UPD_HISTORY));
         int maxHistoryDays;
         try {
             maxHistoryDays = Integer.parseInt(daysString);
@@ -307,7 +307,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public static void setup(Context context) {
         if (instance != null) {
-            String error = "Attempted to reinitialize preferences after it " +
+            final String error = "Attempted to reinitialize preferences after it " +
                     "has already been initialized in FDroidApp";
             Log.e(TAG, error);
             throw new RuntimeException(error);
@@ -317,7 +317,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public static Preferences get() {
         if (instance == null) {
-            String error = "Attempted to access preferences before it " +
+            final String error = "Attempted to access preferences before it " +
                     "has been initialized in FDroidApp";
             Log.e(TAG, error);
             throw new RuntimeException(error);

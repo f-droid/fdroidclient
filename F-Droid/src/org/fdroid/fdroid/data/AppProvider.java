@@ -108,7 +108,7 @@ public class AppProvider extends FDroidProvider {
                 }
                 cursor.close();
             }
-            List<String> categories = new ArrayList<>(categorySet);
+            final List<String> categories = new ArrayList<>(categorySet);
             Collections.sort(categories);
 
             // Populate the category list with the real categories, and the

@@ -28,14 +28,14 @@ public class SignedRepoUpdater extends RepoUpdater {
     }
 
     private boolean verifyCerts(JarEntry item) throws UpdateException {
-        Certificate[] certs = item.getCertificates();
+        final Certificate[] certs = item.getCertificates();
         if (certs == null || certs.length == 0) {
             throw new UpdateException(repo, "No signature found in index");
         }
 
         Log.d(TAG, "Index has " + certs.length + " signature(s)");
         boolean match = false;
-        for (Certificate cert : certs) {
+        for (final Certificate cert : certs) {
             String certdata = Hasher.hex(cert);
             if (repo.pubkey == null && repo.fingerprint != null) {
                 String certFingerprint = Utils.calcFingerprint(cert);

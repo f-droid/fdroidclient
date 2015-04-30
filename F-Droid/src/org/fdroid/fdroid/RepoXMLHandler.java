@@ -97,7 +97,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
         super.endElement(uri, localName, qName);
         final String curel = localName;
-        String str = curchars.toString().trim();
+        final String str = curchars.toString().trim();
 
         if (curel.equals("application") && curapp != null) {
             apps.add(curapp);
