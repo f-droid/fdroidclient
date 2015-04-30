@@ -71,9 +71,10 @@ public class ConfirmReceiveSwapFragment extends Fragment implements ProgressList
         super.onResume();
         newRepoConfig = new NewRepoConfig(getActivity(), getActivity().getIntent());
         if (newRepoConfig.isValidRepo()) {
-            ((TextView) getView().findViewById(R.id.text_description)).setText(
-                getString(R.string.swap_confirm_connect, newRepoConfig.getHost())
-            );
+            TextView tv = (TextView) getView().findViewById(R.id.text_description);
+            if (tv != null) {
+                tv.setText(getString(R.string.swap_confirm_connect, newRepoConfig.getHost()));
+            }
         } else {
             // TODO: Show error message on screen (not in popup).
             // TODO: I don't think we want to continue with this at all if the repo config is invalid,
