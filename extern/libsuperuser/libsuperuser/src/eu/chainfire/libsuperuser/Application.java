@@ -74,6 +74,7 @@ public class Application extends android.app.Application {
             // this makes sure AsyncTask's internal handler is created from the right (main) thread
             Class.forName("android.os.AsyncTask");
         } catch (ClassNotFoundException e) {
+            // will never happen
         }
     }
 }

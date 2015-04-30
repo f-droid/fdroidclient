@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion '22.0.1'
+    buildToolsVersion "21.1.0"
 
     defaultConfig {
         minSdkVersion 4
@@ -19,6 +19,9 @@ android {
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
     }
 }
 

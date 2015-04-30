@@ -39,7 +39,7 @@ public class StreamGobbler extends Thread {
          * 
          * @param line String that was gobbled
          */
-        public void onLine(String line);
+        void onLine(String line);
     }
 
     private String shell = null;
@@ -85,19 +85,21 @@ public class StreamGobbler extends Thread {
     public void run() {
         // keep reading the InputStream until it ends (or an error occurs)
         try {
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 Debug.logOutput(String.format("[%s] %s", shell, line));
                 if (writer != null) writer.add(line);
                 if (listener != null) listener.onLine(line);
             }
         } catch (IOException e) {
+            // reader probably closed, expected exit condition
         }
 
         // make sure our stream is closed and resources will be freed
         try {
             reader.close();
-        } catch (IOException e) {			
+        } catch (IOException e) {
+            // read already closed
         }
     }
 }

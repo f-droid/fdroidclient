@@ -35,7 +35,7 @@ public class Debug {
      * builds and disabled for exported APKs - see
      * BuildConfig.DEBUG</p>
      * 
-     * @param enabled Enable debug mode ?
+     * @param enable Enable debug mode ?
      */	
     public static void setDebug(boolean enable) { 
         debug = enable; 
@@ -53,7 +53,7 @@ public class Debug {
     // ----- LOGGING -----
 
     public interface OnLogListener {
-        public void onLog(int type, String typeIndicator, String message);
+        void onLog(int type, String typeIndicator, String message);
     }
 
     public static final String TAG = "libsuperuser";
@@ -130,7 +130,7 @@ public class Debug {
      * occur.</p>
      * 
      * @param type LOG_* constants
-     * @param enabled Enable or disable
+     * @param enable Enable or disable
      */
     public static void setLogTypeEnabled(int type, boolean enable) { 
         if (enable) {
@@ -199,7 +199,7 @@ public class Debug {
      * <p>Enables or disables the library crashing when su is called 
      * from the main thread.</p>
      * 
-     * @param enabled Enable or disable
+     * @param enable Enable or disable
      */
     public static void setSanityChecksEnabled(boolean enable) {
         sanityChecks = enable;
