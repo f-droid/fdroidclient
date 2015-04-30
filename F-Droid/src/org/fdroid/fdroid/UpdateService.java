@@ -480,9 +480,9 @@ public class UpdateService extends IntentService implements ProgressListener {
      * in order to see if, and why an apk is not compatible.
      */
     private static void calcApkCompatibilityFlags(Context context, List<Apk> apks) {
-        CompatibilityChecker checker = new CompatibilityChecker(context);
-        for (Apk apk : apks) {
-            List<String> reasons = checker.getIncompatibleReasons(apk);
+        final CompatibilityChecker checker = new CompatibilityChecker(context);
+        for (final Apk apk : apks) {
+            final List<String> reasons = checker.getIncompatibleReasons(apk);
             if (reasons.size() > 0) {
                 apk.compatible = false;
                 apk.incompatible_reasons = Utils.CommaSeparatedList.make(reasons);

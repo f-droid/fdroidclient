@@ -262,26 +262,17 @@ public class App extends ValueObject implements Comparable<App> {
         apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
         apk.id = this.id;
         apk.installedFile = apkFile;
-        if (packageInfo.requestedPermissions == null)
-            apk.permissions = null;
-        else
-            apk.permissions = Utils.CommaSeparatedList.make(
-                    Arrays.asList(packageInfo.requestedPermissions));
+        apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
         apk.apkName = apk.id + "_" + apk.vercode + ".apk";
 
         final FeatureInfo[] features = packageInfo.reqFeatures;
-
         if (features != null && features.length > 0) {
-            final List<String> featureNames = new ArrayList<>(features.length);
-
-            for (FeatureInfo feature : features) {
-                featureNames.add(feature.name);
+            final String[] featureNames = new String[features.length];
+            for (int i = 0; i < features.length; i++) {
+                featureNames[i] = features[i].name;
             }
-
             apk.features = Utils.CommaSeparatedList.make(featureNames);
         }
-
-        // Signature[] sigs = pkgInfo.signatures;
 
         byte[] rawCertBytes;
 

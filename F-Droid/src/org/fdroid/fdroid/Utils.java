@@ -430,6 +430,19 @@ public final class Utils {
             return new CommaSeparatedList(sb.toString());
         }
 
+        public static CommaSeparatedList make(String[] list) {
+            if (list == null || list.length == 0)
+                return null;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < list.length; i++) {
+                if (i > 0) {
+                    sb.append(',');
+                }
+                sb.append(list[i]);
+            }
+            return new CommaSeparatedList(sb.toString());
+        }
+
         public static CommaSeparatedList make(String list) {
             if (list == null || list.length() == 0)
                 return null;
