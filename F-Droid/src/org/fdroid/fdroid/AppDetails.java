@@ -1262,11 +1262,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     public static class AppDetailsHeaderFragment extends Fragment {
 
         private AppDetailsData data;
-        protected final Preferences prefs;
         protected final DisplayImageOptions displayImageOptions;
 
         public AppDetailsHeaderFragment() {
-            prefs = Preferences.get();
             displayImageOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)

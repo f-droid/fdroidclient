@@ -4,8 +4,6 @@ import android.database.Cursor;
 
 abstract class ValueObject {
 
-    private static final String TAG = "fdroid.ValueObject";
-
     protected void checkCursorPosition(Cursor cursor) throws IllegalArgumentException {
         if (cursor.getPosition() == -1) {
             throw new IllegalArgumentException(

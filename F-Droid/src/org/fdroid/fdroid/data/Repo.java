@@ -12,8 +12,6 @@ import java.util.Date;
 
 public class Repo extends ValueObject {
 
-    private static final String TAG = "fdroid.Repo";
-
     public static final int VERSION_DENSITY_SPECIFIC_ICONS = 11;
 
     protected long id;
