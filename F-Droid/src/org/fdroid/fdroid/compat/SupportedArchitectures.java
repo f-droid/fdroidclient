@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.compat;
 
+import android.annotation.TargetApi;
 import android.os.Build;
 
 public class SupportedArchitectures extends Compatibility {
