@@ -18,7 +18,7 @@ import org.fdroid.fdroid.data.Repo;
 public class RepoAdapter extends CursorAdapter {
 
     public interface EnabledListener {
-        public void onSetEnabled(Repo repo, boolean isEnabled);
+        void onSetEnabled(Repo repo, boolean isEnabled);
     }
 
     private static final int SWITCH_ID = 10000;

@@ -299,8 +299,8 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         localRepoHttpsListeners.remove(listener);
     }
 
-    public static interface ChangeListener {
-        public void onPreferenceChange();
+    public interface ChangeListener {
+        void onPreferenceChange();
     }
 
     private static Preferences instance;

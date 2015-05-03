@@ -212,20 +212,20 @@ public class RepoProvider extends FDroidProvider {
 
     public interface DataColumns extends BaseColumns {
 
-        public static final String ADDRESS      = "address";
-        public static final String NAME         = "name";
-        public static final String DESCRIPTION  = "description";
-        public static final String IN_USE       = "inuse";
-        public static final String PRIORITY     = "priority";
-        public static final String PUBLIC_KEY   = "pubkey";
-        public static final String FINGERPRINT  = "fingerprint";
-        public static final String MAX_AGE      = "maxage";
-        public static final String LAST_ETAG    = "lastetag";
-        public static final String LAST_UPDATED = "lastUpdated";
-        public static final String VERSION      = "version";
-        public static final String IS_SWAP      = "isSwap";
+        String ADDRESS      = "address";
+        String NAME         = "name";
+        String DESCRIPTION  = "description";
+        String IN_USE       = "inuse";
+        String PRIORITY     = "priority";
+        String PUBLIC_KEY   = "pubkey";
+        String FINGERPRINT  = "fingerprint";
+        String MAX_AGE      = "maxage";
+        String LAST_ETAG    = "lastetag";
+        String LAST_UPDATED = "lastUpdated";
+        String VERSION      = "version";
+        String IS_SWAP      = "isSwap";
 
-        public static final String[] ALL = {
+        String[] ALL = {
             _ID, ADDRESS, NAME, DESCRIPTION, IN_USE, PRIORITY, PUBLIC_KEY,
             FINGERPRINT, MAX_AGE, LAST_UPDATED, LAST_ETAG, VERSION, IS_SWAP
         };

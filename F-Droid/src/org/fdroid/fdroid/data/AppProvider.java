@@ -154,45 +154,45 @@ public class AppProvider extends FDroidProvider {
 
     public interface DataColumns {
 
-        public static final String _ID = "rowid as _id"; // Required for CursorLoaders
-        public static final String _COUNT = "_count";
-        public static final String IS_COMPATIBLE = "compatible";
-        public static final String APP_ID = "id";
-        public static final String NAME = "name";
-        public static final String SUMMARY = "summary";
-        public static final String ICON = "icon";
-        public static final String DESCRIPTION = "description";
-        public static final String LICENSE = "license";
-        public static final String WEB_URL = "webURL";
-        public static final String TRACKER_URL = "trackerURL";
-        public static final String SOURCE_URL = "sourceURL";
-        public static final String DONATE_URL = "donateURL";
-        public static final String BITCOIN_ADDR = "bitcoinAddr";
-        public static final String LITECOIN_ADDR = "litecoinAddr";
-        public static final String DOGECOIN_ADDR = "dogecoinAddr";
-        public static final String FLATTR_ID = "flattrID";
-        public static final String SUGGESTED_VERSION_CODE = "suggestedVercode";
-        public static final String UPSTREAM_VERSION = "upstreamVersion";
-        public static final String UPSTREAM_VERSION_CODE = "upstreamVercode";
-        public static final String ADDED = "added";
-        public static final String LAST_UPDATED = "lastUpdated";
-        public static final String CATEGORIES = "categories";
-        public static final String ANTI_FEATURES = "antiFeatures";
-        public static final String REQUIREMENTS = "requirements";
-        public static final String IGNORE_ALLUPDATES = "ignoreAllUpdates";
-        public static final String IGNORE_THISUPDATE = "ignoreThisUpdate";
-        public static final String ICON_URL = "iconUrl";
+        String _ID = "rowid as _id"; // Required for CursorLoaders
+        String _COUNT = "_count";
+        String IS_COMPATIBLE = "compatible";
+        String APP_ID = "id";
+        String NAME = "name";
+        String SUMMARY = "summary";
+        String ICON = "icon";
+        String DESCRIPTION = "description";
+        String LICENSE = "license";
+        String WEB_URL = "webURL";
+        String TRACKER_URL = "trackerURL";
+        String SOURCE_URL = "sourceURL";
+        String DONATE_URL = "donateURL";
+        String BITCOIN_ADDR = "bitcoinAddr";
+        String LITECOIN_ADDR = "litecoinAddr";
+        String DOGECOIN_ADDR = "dogecoinAddr";
+        String FLATTR_ID = "flattrID";
+        String SUGGESTED_VERSION_CODE = "suggestedVercode";
+        String UPSTREAM_VERSION = "upstreamVersion";
+        String UPSTREAM_VERSION_CODE = "upstreamVercode";
+        String ADDED = "added";
+        String LAST_UPDATED = "lastUpdated";
+        String CATEGORIES = "categories";
+        String ANTI_FEATURES = "antiFeatures";
+        String REQUIREMENTS = "requirements";
+        String IGNORE_ALLUPDATES = "ignoreAllUpdates";
+        String IGNORE_THISUPDATE = "ignoreThisUpdate";
+        String ICON_URL = "iconUrl";
 
-        public interface SuggestedApk {
-            public static final String VERSION = "suggestedApkVersion";
+        interface SuggestedApk {
+            String VERSION = "suggestedApkVersion";
         }
 
-        public interface InstalledApp {
-            public static final String VERSION_CODE = "installedVersionCode";
-            public static final String VERSION_NAME = "installedVersionName";
+        interface InstalledApp {
+            String VERSION_CODE = "installedVersionCode";
+            String VERSION_NAME = "installedVersionName";
         }
 
-        public static final String[] ALL = {
+        String[] ALL = {
                 IS_COMPATIBLE, APP_ID, NAME, SUMMARY, ICON, DESCRIPTION,
                 LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, DONATE_URL,
                 BITCOIN_ADDR, LITECOIN_ADDR, DOGECOIN_ADDR, FLATTR_ID,

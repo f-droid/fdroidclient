@@ -53,13 +53,13 @@ public class InstalledAppProvider extends FDroidProvider {
 
     public interface DataColumns {
 
-        public static final String _ID = "rowid as _id"; // Required for CursorLoaders
-        public static final String APP_ID = "appId";
-        public static final String VERSION_CODE = "versionCode";
-        public static final String VERSION_NAME = "versionName";
-        public static final String APPLICATION_LABEL = "applicationLabel";
+        String _ID = "rowid as _id"; // Required for CursorLoaders
+        String APP_ID = "appId";
+        String VERSION_CODE = "versionCode";
+        String VERSION_NAME = "versionName";
+        String APPLICATION_LABEL = "applicationLabel";
 
-        public static final String[] ALL = {
+        String[] ALL = {
                 _ID, APP_ID, VERSION_CODE, VERSION_NAME, APPLICATION_LABEL,
         };
 

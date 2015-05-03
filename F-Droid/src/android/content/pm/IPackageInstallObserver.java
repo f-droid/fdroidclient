@@ -24,7 +24,7 @@ package android.content.pm;
  */
 public interface IPackageInstallObserver extends android.os.IInterface {
 
-    public abstract static class Stub extends android.os.Binder implements
+    abstract class Stub extends android.os.Binder implements
             android.content.pm.IPackageInstallObserver {
         public Stub() {
             throw new RuntimeException("Stub!");
@@ -44,6 +44,6 @@ public interface IPackageInstallObserver extends android.os.IInterface {
         }
     }
 
-    public abstract void packageInstalled(java.lang.String packageName, int returnCode)
+    void packageInstalled(java.lang.String packageName, int returnCode)
             throws android.os.RemoteException;
 }

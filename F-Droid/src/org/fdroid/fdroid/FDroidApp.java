@@ -86,7 +86,7 @@ public class FDroidApp extends Application {
         enableSpongyCastle();
     }
 
-    public static enum Theme {
+    public enum Theme {
         dark, light, lightWithDarkActionBar
     }
 

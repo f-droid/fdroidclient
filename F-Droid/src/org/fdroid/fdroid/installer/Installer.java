@@ -74,15 +74,15 @@ abstract public class Installer {
      */
     public interface InstallerCallback {
 
-        public static final int OPERATION_INSTALL = 1;
-        public static final int OPERATION_DELETE = 2;
+        int OPERATION_INSTALL = 1;
+        int OPERATION_DELETE = 2;
 
-        public static final int ERROR_CODE_CANCELED = 1;
-        public static final int ERROR_CODE_OTHER = 2;
+        int ERROR_CODE_CANCELED = 1;
+        int ERROR_CODE_OTHER = 2;
 
-        public void onSuccess(int operation);
+        void onSuccess(int operation);
 
-        public void onError(int operation, int errorCode);
+        void onError(int operation, int errorCode);
     }
 
     public Installer(Context context, PackageManager pm, InstallerCallback callback)

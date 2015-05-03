@@ -7,6 +7,6 @@ package org.fdroid.fdroid.views.swap;
  * (e.g. when a "Cancel" button is pressed).
  */
 public interface SwapProcessManager {
-    public void nextStep();
-    public void stopSwapping();
+    void nextStep();
+    void stopSwapping();
 }

@@ -343,10 +343,8 @@ public class App extends ValueObject implements Comparable<App> {
             return false;
 
         final File apkFile = this.installedApk.installedFile;
-        if (apkFile == null || !apkFile.canRead())
-            return false;
+        return !(apkFile == null || !apkFile.canRead());
 
-        return true;
     }
 
     public ContentValues toContentValues() {

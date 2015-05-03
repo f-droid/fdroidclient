@@ -24,7 +24,7 @@ package android.content.pm;
  */
 public interface IPackageDeleteObserver extends android.os.IInterface {
 
-    public abstract static class Stub extends android.os.Binder implements
+    abstract class Stub extends android.os.Binder implements
             android.content.pm.IPackageDeleteObserver {
         public Stub() {
             throw new RuntimeException("Stub!");
@@ -44,6 +44,6 @@ public interface IPackageDeleteObserver extends android.os.IInterface {
         }
     }
 
-    public abstract void packageDeleted(java.lang.String packageName, int returnCode)
+    void packageDeleted(java.lang.String packageName, int returnCode)
             throws android.os.RemoteException;
 }

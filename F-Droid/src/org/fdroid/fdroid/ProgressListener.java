@@ -6,12 +6,12 @@ import android.os.Parcelable;
 
 public interface ProgressListener {
 
-    public void onProgress(Event event);
+    void onProgress(Event event);
 
     // I went a bit overboard with the overloaded constructors, but they all
     // seemed potentially useful and unambiguous, so I just put them in there
     // while I'm here.
-    public static class Event implements Parcelable {
+    class Event implements Parcelable {
 
         public static final int NO_VALUE = Integer.MIN_VALUE;
 

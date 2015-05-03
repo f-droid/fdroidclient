@@ -84,10 +84,10 @@ import java.util.Iterator;
 import java.util.List;
 
 interface AppDetailsData {
-    public App getApp();
-    public AppDetails.ApkListAdapter getApks();
-    public Signature getInstalledSignature();
-    public String getInstalledSignatureId();
+    App getApp();
+    AppDetails.ApkListAdapter getApks();
+    Signature getInstalledSignature();
+    String getInstalledSignatureId();
 }
 
 /**
@@ -99,8 +99,8 @@ interface AppDetailsData {
  * activity communication possible.
  */
 interface AppInstallListener {
-    public void install(final Apk apk);
-    public void removeApk(String packageName);
+    void install(final Apk apk);
+    void removeApk(String packageName);
 }
 
 public class AppDetails extends ActionBarActivity implements ProgressListener, AppDetailsData, AppInstallListener {

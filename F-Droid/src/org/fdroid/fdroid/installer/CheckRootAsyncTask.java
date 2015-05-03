@@ -33,7 +33,7 @@ public class CheckRootAsyncTask extends AsyncTask<Void, Void, Boolean> {
     final CheckRootCallback mCallback;
 
     public interface CheckRootCallback {
-        public void onRootCheck(boolean rootGranted);
+        void onRootCheck(boolean rootGranted);
     }
 
     public CheckRootAsyncTask(Context context, CheckRootCallback callback) {
