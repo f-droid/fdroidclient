@@ -14,8 +14,8 @@ import java.io.File;
 import java.io.IOException;
 
 @TargetApi(8)
-public class SignedRepoUpdaterTest extends InstrumentationTestCase {
-    private static final String TAG = "SignedRepoUpdaterTest";
+public class RepoUpdaterTest extends InstrumentationTestCase {
+    private static final String TAG = "RepoUpdaterTest";
 
     private Context context;
     private RepoUpdater repoUpdater;
@@ -29,7 +29,7 @@ public class SignedRepoUpdaterTest extends InstrumentationTestCase {
         testFilesDir = TestUtils.getWriteableDir(getInstrumentation());
         Repo repo = new Repo();
         repo.pubkey = this.simpleIndexPubkey;
-        repoUpdater = RepoUpdater.createUpdaterFor(context, repo);
+        repoUpdater = new RepoUpdater(context, repo);
     }
 
     public void testExtractIndexFromJar() {

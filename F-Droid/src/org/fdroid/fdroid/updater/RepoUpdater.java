@@ -2,9 +2,12 @@ package org.fdroid.fdroid.updater;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.RepoXMLHandler;
 import org.fdroid.fdroid.Utils;
@@ -20,30 +23,28 @@ import org.xml.sax.XMLReader;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-abstract public class RepoUpdater {
+public class RepoUpdater {
 
     private static final String TAG = "fdroid.RepoUpdater";
 
     public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
-
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
-
-    public static RepoUpdater createUpdaterFor(Context ctx, Repo repo) {
-        if (repo.fingerprint == null && repo.pubkey == null) {
-            return new UnsignedRepoUpdater(ctx, repo);
-        }
-        return new SignedRepoUpdater(ctx, repo);
-    }
 
     protected final Context context;
     protected final Repo repo;
@@ -70,15 +71,47 @@ abstract public class RepoUpdater {
     public List<Apk> getApks() { return apks; }
 
     /**
-     * For example, you may want to unzip a jar file to get the index inside,
-     * or if the file is not compressed, you can just return a reference to
-     * the downloaded file.
+     * All repos are represented by a signed jar file, {@code index.jar}, which contains
+     * a single file, {@code index.xml}.  This takes the {@code index.jar}, verifies the
+     * signature, then returns the unzipped {@code index.xml}.
      *
      * @throws UpdateException All error states will come from here.
      */
-    protected abstract File getIndexFromFile(File downloadedFile) throws UpdateException;
+    protected File getIndexFromFile(File downloadedFile) throws UpdateException {
+        final Date updateTime = new Date(System.currentTimeMillis());
+        Log.d(TAG, "Getting signed index from " + repo.address + " at " +
+                Utils.formatLogDate(updateTime));
 
-    protected abstract String getIndexAddress();
+        final File indexJar = downloadedFile;
+        File indexXml = null;
+
+        // Don't worry about checking the status code for 200. If it was a
+        // successful download, then we will have a file ready to use:
+        if (indexJar != null && indexJar.exists()) {
+
+            // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
+            // breakage when verifying the signature of the downloaded .jar. For more
+            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
+            try {
+                FDroidApp.disableSpongyCastleOnLollipop();
+                indexXml = extractIndexFromJar(indexJar);
+            } finally {
+                FDroidApp.enableSpongyCastleOnLollipop();
+            }
+
+        }
+        return indexXml;
+    }
+
+    protected String getIndexAddress() {
+        try {
+            String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+            return repo.address + "/index.jar?client_version=" + versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return repo.address + "/index.jar";
+    }
 
     protected Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
@@ -127,7 +160,6 @@ abstract public class RepoUpdater {
         }
         return count;
     }
-
 
     public void update() throws UpdateException {
 
@@ -259,6 +291,86 @@ abstract public class RepoUpdater {
             super(message, cause);
             this.repo = repo;
         }
+    }
+
+    private boolean verifyCerts(JarEntry item) throws UpdateException {
+        final Certificate[] certs = item.getCertificates();
+        if (certs == null || certs.length == 0) {
+            throw new UpdateException(repo, "No signature found in index");
+        }
+
+        Log.d(TAG, "Index has " + certs.length + " signature(s)");
+        boolean match = false;
+        for (final Certificate cert : certs) {
+            String certdata = Hasher.hex(cert);
+            if (repo.pubkey == null && repo.fingerprint != null) {
+                String certFingerprint = Utils.calcFingerprint(cert);
+                Log.d(TAG, "No public key for repo " + repo.address + " yet, but it does have a fingerprint, so comparing them.");
+                Log.d(TAG, "Repo fingerprint: " + repo.fingerprint);
+                Log.d(TAG, "Cert fingerprint: " + certFingerprint);
+                if (repo.fingerprint.equalsIgnoreCase(certFingerprint)) {
+                    repo.pubkey = certdata;
+                    usePubkeyInJar = true;
+                }
+            }
+            if (repo.pubkey != null && repo.pubkey.equals(certdata)) {
+                Log.d(TAG, "Checking repo public key against cert found in jar.");
+                match = true;
+                break;
+            }
+        }
+        return match;
+    }
+
+    protected File extractIndexFromJar(File indexJar) throws UpdateException {
+        File indexFile = null;
+        JarFile jarFile = null;
+        try {
+            jarFile = new JarFile(indexJar, true);
+            JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
+
+            indexFile = File.createTempFile("index-", "-extracted.xml", context.getCacheDir());
+            InputStream input = null;
+            OutputStream output = null;
+            try {
+                /*
+                 * JarFile.getInputStream() provides the signature check, even
+                 * though the Android docs do not mention this, the Java docs do
+                 * and Android seems to implement it the same:
+                 * http://docs.oracle.com/javase/6/docs/api/java/util/jar/JarFile.html#getInputStream(java.util.zip.ZipEntry)
+                 * https://developer.android.com/reference/java/util/jar/JarFile.html#getInputStream(java.util.zip.ZipEntry)
+                 */
+                input = jarFile.getInputStream(indexEntry);
+                output = new FileOutputStream(indexFile);
+                Utils.copy(input, output);
+            } finally {
+                Utils.closeQuietly(output);
+                Utils.closeQuietly(input);
+            }
+
+            // Can only read certificates from jar after it has been read
+            // completely, so we put it after the copy above...
+            if (!verifyCerts(indexEntry)) {
+                indexFile.delete();
+                throw new UpdateException(repo, "Index signature mismatch");
+            }
+        } catch (IOException e) {
+            if (indexFile != null) {
+                indexFile.delete();
+            }
+            throw new UpdateException(
+                    repo, "Error opening signed index", e);
+        } finally {
+            if (jarFile != null) {
+                try {
+                    jarFile.close();
+                } catch (IOException ioe) {
+                    // ignore
+                }
+            }
+        }
+
+        return indexFile;
     }
 
 }

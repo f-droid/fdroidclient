@@ -376,7 +376,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
 
                 sendStatus(STATUS_INFO, getString(R.string.status_connecting_to_repo, repo.address));
-                RepoUpdater updater = RepoUpdater.createUpdaterFor(getBaseContext(), repo);
+                RepoUpdater updater = new RepoUpdater(getBaseContext(), repo);
                 updater.setProgressListener(this);
                 try {
                     updater.update();
