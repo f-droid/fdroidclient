@@ -2,7 +2,6 @@
 <resources>
 
 	<string name="app_name">F-Droid</string>
-	<string name="version_name">0.88</string>
 
 	<string name="about_sitec">https://f-droid.org</string>
 	<string name="about_mailc">team@f-droid.org</string>

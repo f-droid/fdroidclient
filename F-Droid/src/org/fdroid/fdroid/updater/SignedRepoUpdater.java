@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.updater;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -109,7 +110,13 @@ public class SignedRepoUpdater extends RepoUpdater {
 
     @Override
     protected String getIndexAddress() {
-        return repo.address + "/index.jar?client_version=" + context.getString(R.string.version_name);
+        try {
+            String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+            return repo.address + "/index.jar?client_version=" + versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return repo.address + "/index.jar";
     }
 
     /**
