@@ -8,6 +8,10 @@
 
 * Properly cache apk files on the SD card if configured this way
 
+* Add support for special search terms like "pub:" and "pname:"
+
+* Fix regression where adding repos via URLs would not actually add a new repo
+
 ### 0.88 (2015-04-28)
 
 * Show list of apps in the update notification (on devices with
