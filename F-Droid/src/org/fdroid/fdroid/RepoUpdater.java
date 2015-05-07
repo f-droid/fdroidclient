@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.updater;
+package org.fdroid.fdroid;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,11 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Hasher;
-import org.fdroid.fdroid.ProgressListener;
-import org.fdroid.fdroid.RepoXMLHandler;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.Repo;

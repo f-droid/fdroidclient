@@ -53,7 +53,6 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.Downloader;
-import org.fdroid.fdroid.updater.RepoUpdater;
 
 import java.util.ArrayList;
 import java.util.HashMap;
