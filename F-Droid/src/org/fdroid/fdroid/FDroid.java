@@ -193,7 +193,7 @@ public class FDroid extends ActionBarActivity {
         // Don't handle the intent after coming back to this view (e.g. after hitting the back button)
         // http://stackoverflow.com/a/14820849
         Intent intent = getIntent();
-        if (intent.hasExtra("handled")) {
+        if (!intent.hasExtra("handled")) {
             NewRepoConfig parser = new NewRepoConfig(this, intent);
             if (parser.isValidRepo()) {
                 intent.putExtra("handled", true);
