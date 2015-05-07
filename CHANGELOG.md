@@ -1,3 +1,13 @@
+### Upcoming release
+
+* Don't request the "Write to external storage" permission on 4.4 and later
+  since it's not needed to use our own external app directory
+
+* Fix a crash occuring if the user triggered a repo update that got rid of
+  more than 450 apks at once
+
+* Properly cache apk files on the SD card if configured this way
+
 ### 0.88 (2015-04-28)
 
 * Show list of apps in the update notification (on devices with
