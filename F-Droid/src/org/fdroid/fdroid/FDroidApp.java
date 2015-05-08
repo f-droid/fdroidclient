@@ -241,8 +241,7 @@ public class FDroidApp extends Application {
         FDroidApp.initWifiSettings();
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         int wifiState = wifiManager.getWifiState();
-        if (wifiState == WifiManager.WIFI_STATE_ENABLING
-                || wifiState == WifiManager.WIFI_STATE_ENABLED)
+        if (wifiState == WifiManager.WIFI_STATE_ENABLED)
             startService(new Intent(this, WifiStateChangeService.class));
         // if the HTTPS pref changes, then update all affected things
         Preferences.get().registerLocalRepoHttpsListeners(new ChangeListener() {
