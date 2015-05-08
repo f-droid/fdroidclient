@@ -36,7 +36,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 public class RepoUpdater {
 
-    private static final String TAG = "fdroid.RepoUpdater";
+    private static final String TAG = "RepoUpdater";
 
     public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";

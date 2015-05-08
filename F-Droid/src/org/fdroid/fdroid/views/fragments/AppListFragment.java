@@ -29,7 +29,7 @@ abstract public class AppListFragment extends ThemeableListFragment implements
         Preferences.ChangeListener,
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final String TAG = "fdroid.AppListFragment";
+    private static final String TAG = "AppListFragment";
 
     private static final int REQUEST_APPDETAILS = 0;
 

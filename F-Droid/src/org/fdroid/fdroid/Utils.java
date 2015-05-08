@@ -65,7 +65,7 @@ import java.util.Locale;
 public final class Utils {
 
     @SuppressWarnings("UnusedDeclaration")
-    private static final String TAG = "fdroid.Utils";
+    private static final String TAG = "Utils";
 
     public static final int BUFFER_SIZE = 4096;
 

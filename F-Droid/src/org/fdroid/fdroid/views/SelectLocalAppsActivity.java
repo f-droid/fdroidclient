@@ -17,7 +17,7 @@ import org.fdroid.fdroid.views.fragments.SelectLocalAppsFragment;
 
 public class SelectLocalAppsActivity extends ActionBarActivity {
 
-    private static final String TAG = "fdroid.SelectLocalAppsActivity";
+    private static final String TAG = "SelectLocalAppsActivity";
     private SelectLocalAppsFragment selectLocalAppsFragment = null;
     private SearchView searchView;
 

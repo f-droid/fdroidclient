@@ -35,7 +35,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
  */
 public class PackageUpgradedReceiver extends PackageReceiver {
 
-    private static final String TAG = "fdroid.PackageUpgradedReceiver";
+    private static final String TAG = "PackageUpgradedReceiver";
 
     @Override
     protected boolean toDiscard(Intent intent) {

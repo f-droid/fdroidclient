@@ -51,7 +51,7 @@ import kellinwood.security.zipsigner.ZipSigner;
 
 public class LocalRepoKeyStore {
 
-    private static final String TAG = "fdroid.LocalRepoKeyStore";
+    private static final String TAG = "LocalRepoKeyStore";
 
     public static final String INDEX_CERT_ALIAS = "fdroid";
     public static final String HTTP_CERT_ALIAS = "https";

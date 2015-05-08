@@ -44,7 +44,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
-    private static final String TAG = "fdroid.ApkDownloader";
+    private static final String TAG = "ApkDownloader";
 
     public static final String EVENT_APK_DOWNLOAD_COMPLETE = "apkDownloadComplete";
     public static final String EVENT_APK_DOWNLOAD_CANCELLED = "apkDownloadCancelled";

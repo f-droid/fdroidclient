@@ -35,7 +35,7 @@ import java.util.List;
 public class AvailableAppsFragment extends AppListFragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final String TAG = "fdroid.AvailableAppsFragment";
+    private static final String TAG = "AvailableAppsFragment";
 
     public static final String PREFERENCES_FILE = "CategorySpinnerPosition";
     public static final String CATEGORY_KEY = "Selection";

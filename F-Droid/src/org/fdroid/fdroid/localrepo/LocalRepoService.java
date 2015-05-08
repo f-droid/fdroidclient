@@ -37,7 +37,7 @@ import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
 public class LocalRepoService extends Service {
-    private static final String TAG = "fdroid.LocalRepoService";
+    private static final String TAG = "LocalRepoService";
 
     public static final String STATE = "org.fdroid.fdroid.action.LOCAL_REPO_STATE";
     public static final String STARTED = "org.fdroid.fdroid.category.LOCAL_REPO_STARTED";

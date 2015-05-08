@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = "fdroid.DBHelper";
+    private static final String TAG = "DBHelper";
 
     public static final String DATABASE_NAME = "fdroid";
 

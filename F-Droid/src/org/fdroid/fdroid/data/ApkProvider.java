@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class ApkProvider extends FDroidProvider {
 
-    private static final String TAG = "fdroid.ApkProvider";
+    private static final String TAG = "ApkProvider";
 
     /**
      * SQLite has a maximum of 999 parameters in a query. Each apk we add

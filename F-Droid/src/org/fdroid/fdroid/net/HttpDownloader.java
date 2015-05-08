@@ -19,7 +19,7 @@ import java.net.URL;
 import javax.net.ssl.SSLHandshakeException;
 
 public class HttpDownloader extends Downloader {
-    private static final String TAG = "fdroid.HttpDownloader";
+    private static final String TAG = "HttpDownloader";
 
     protected static final String HEADER_IF_NONE_MATCH = "If-None-Match";
     protected static final String HEADER_FIELD_ETAG = "ETag";

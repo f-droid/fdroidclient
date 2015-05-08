@@ -25,7 +25,7 @@ import org.fdroid.fdroid.views.AvailableAppListAdapter;
 
 public class SearchResultsFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final String TAG = "fdroid.SearchResultsFragment";
+    private static final String TAG = "SearchResultsFragment";
 
     private static final int REQUEST_APPDETAILS = 0;
 

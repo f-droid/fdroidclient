@@ -105,7 +105,7 @@ interface AppInstallListener {
 
 public class AppDetails extends ActionBarActivity implements ProgressListener, AppDetailsData, AppInstallListener {
 
-    private static final String TAG = "fdroid.AppDetails";
+    private static final String TAG = "AppDetails";
 
     public static final int REQUEST_ENABLE_BLUETOOTH = 2;
 

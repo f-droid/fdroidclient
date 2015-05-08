@@ -35,7 +35,7 @@ public class WifiStateChangeService extends Service {
     }
 
     public class WaitForWifiAsyncTask extends AsyncTask<Void, Void, Void> {
-        private static final String TAG = "fdroid.WifiStateChangeService.WaitForWifiAsyncTask";
+        private static final String TAG = "WifiStateChangeService.WaitForWifiAsyncTask";
         private WifiManager wifiManager;
 
         @Override

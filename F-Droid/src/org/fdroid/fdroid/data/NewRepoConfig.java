@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class NewRepoConfig {
 
-    private static final String TAG = "fdroid.NewRepoConfig";
+    private static final String TAG = "NewRepoConfig";
 
     private String errorMessage;
     private boolean isValidRepo = false;

@@ -19,11 +19,11 @@ import java.util.List;
 
 public class RepoProvider extends FDroidProvider {
 
-    private static final String TAG = "fdroid.RepoProvider";
+    private static final String TAG = "RepoProvider";
 
     public static final class Helper {
 
-        private static final String TAG = "fdroid.RepoProvider.Helper";
+        private static final String TAG = "RepoProvider.Helper";
 
         private Helper() {}
 

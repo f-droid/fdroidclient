@@ -33,3 +33,10 @@ You have three options:
 
 Any will work, but if you use gradle, remember that you can use --daemon to
 not have to watch gradle load every time.
+
+Debugging
+---------
+
+To get all the logcat messages by F-Droid, you can run:
+
+    adb logcat | grep `adb shell ps | grep org.fdroid.fdroid | cut -c10-15`

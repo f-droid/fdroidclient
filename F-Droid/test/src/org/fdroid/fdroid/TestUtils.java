@@ -31,7 +31,7 @@ import mock.MockInstallablePackageManager;
 
 public class TestUtils {
 
-    private static final String TAG = "fdroid.TestUtils";
+    private static final String TAG = "TestUtils";
 
     public static <T extends Comparable> void assertContainsOnly(List<T> actualList, T[] expectedArray) {
         List<T> expectedList = new ArrayList<T>(expectedArray.length);

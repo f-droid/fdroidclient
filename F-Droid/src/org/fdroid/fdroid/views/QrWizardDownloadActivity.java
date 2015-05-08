@@ -22,7 +22,7 @@ import org.fdroid.fdroid.net.WifiStateChangeService;
 
 public class QrWizardDownloadActivity extends ActionBarActivity {
 
-    private static final String TAG = "fdroid.QrWizardDownloadActivity";
+    private static final String TAG = "QrWizardDownloadActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

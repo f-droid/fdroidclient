@@ -21,7 +21,7 @@ import java.util.Set;
     // find reasons why an apk may be incompatible with the user's device.
 public class CompatibilityChecker extends Compatibility {
 
-    private static final String TAG = "fdroid.Compatibility";
+    private static final String TAG = "Compatibility";
 
     private final Context context;
     private final Set<String> features;

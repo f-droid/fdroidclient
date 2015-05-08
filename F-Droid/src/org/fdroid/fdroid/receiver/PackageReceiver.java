@@ -30,7 +30,7 @@ import org.fdroid.fdroid.data.AppProvider;
 
 abstract class PackageReceiver extends BroadcastReceiver {
 
-    private static final String TAG = "fdroid.PackageReceiver";
+    private static final String TAG = "PackageReceiver";
 
     abstract protected boolean toDiscard(Intent intent);
     abstract protected void handle(Context context, String appId);

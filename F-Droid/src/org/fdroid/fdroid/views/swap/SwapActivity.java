@@ -218,7 +218,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
 
         @SuppressWarnings("UnusedDeclaration")
-        private static final String TAG = "fdroid.SwapActivity.UpdateAsyncTask";
+        private static final String TAG = "SwapActivity.UpdateAsyncTask";
 
         @NonNull
         private final ProgressDialog progressDialog;

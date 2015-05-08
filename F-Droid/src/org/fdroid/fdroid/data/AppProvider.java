@@ -21,7 +21,7 @@ import java.util.Set;
 
 public class AppProvider extends FDroidProvider {
 
-    private static final String TAG = "fdroid.AppProvider";
+    private static final String TAG = "AppProvider";
 
     public static final int MAX_APPS_TO_QUERY = 900;
 

@@ -30,7 +30,7 @@ import javax.net.ssl.SSLServerSocketFactory;
 import fi.iki.elonen.NanoHTTPD;
 
 public class LocalHTTPD extends NanoHTTPD {
-    private static final String TAG = "fdroid.LocalHTTPD";
+    private static final String TAG = "LocalHTTPD";
 
     private final Context context;
     private final File webRoot;

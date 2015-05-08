@@ -21,7 +21,7 @@ import org.fdroid.fdroid.views.fragments.AppListFragment;
 
 public class SwapAppListActivity extends ActionBarActivity {
 
-    private static final String TAG = "fdroid.SwapAppListActivity";
+    private static final String TAG = "SwapAppListActivity";
 
     public static final String EXTRA_REPO_ID = "repoId";
 

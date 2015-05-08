@@ -19,7 +19,7 @@ import java.io.IOException;
 @SuppressWarnings("serial")
 public class AsyncDownloadWrapper extends Handler {
 
-    private static final String TAG = "fdroid.AsyncDownloadWrapper";
+    private static final String TAG = "AsyncDownloadWrapper";
 
     private static final int MSG_PROGRESS           = 1;
     private static final int MSG_DOWNLOAD_COMPLETE  = 2;

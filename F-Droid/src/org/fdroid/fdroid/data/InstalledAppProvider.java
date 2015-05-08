@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class InstalledAppProvider extends FDroidProvider {
 
-    private static final String TAG = "fdroid.InstalledAppProvider";
+    private static final String TAG = "InstalledAppProvider";
 
     public static class Helper {
 

@@ -61,7 +61,7 @@ import java.util.Map;
 
 public class UpdateService extends IntentService implements ProgressListener {
 
-    private static final String TAG = "fdroid.UpdateService";
+    private static final String TAG = "UpdateService";
 
     public static final String RESULT_MESSAGE     = "msg";
     public static final String RESULT_EVENT       = "event";

@@ -27,7 +27,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageRemovedReceiver extends PackageReceiver {
 
-    private static final String TAG = "fdroid.PackageRemovedReceiver";
+    private static final String TAG = "PackageRemovedReceiver";
 
     @Override
     protected boolean toDiscard(Intent intent) {

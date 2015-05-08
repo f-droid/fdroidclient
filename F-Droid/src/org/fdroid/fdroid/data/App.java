@@ -27,7 +27,7 @@ import java.util.jar.JarFile;
 
 public class App extends ValueObject implements Comparable<App> {
 
-    private static final String TAG = "fdroid.App";
+    private static final String TAG = "App";
 
     // True if compatible with the device (i.e. if at least one apk is)
     public boolean compatible;

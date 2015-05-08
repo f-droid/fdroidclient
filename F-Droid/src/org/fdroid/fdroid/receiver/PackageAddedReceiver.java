@@ -29,7 +29,7 @@ import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageAddedReceiver extends PackageReceiver {
 
-    private static final String TAG = "fdroid.PackageAddedReceiver";
+    private static final String TAG = "PackageAddedReceiver";
 
     @Override
     protected boolean toDiscard(Intent intent) {

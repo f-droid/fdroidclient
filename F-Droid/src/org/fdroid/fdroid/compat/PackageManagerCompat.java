@@ -6,7 +6,7 @@ import android.util.Log;
 
 public class PackageManagerCompat extends Compatibility {
 
-    private static final String TAG = "fdroid.PackageManagerCompat";
+    private static final String TAG = "PackageManagerCompat";
 
     @TargetApi(11)
     public static void setInstaller(PackageManager mPm, String packageName) {

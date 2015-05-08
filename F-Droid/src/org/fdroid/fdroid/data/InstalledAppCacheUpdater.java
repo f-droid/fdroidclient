@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class InstalledAppCacheUpdater {
 
-    private static final String TAG = "fdroid.InstalledAppCacheUpdater";
+    private static final String TAG = "InstalledAppCacheUpdater";
 
     private final Context context;
 

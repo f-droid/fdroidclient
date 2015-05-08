@@ -19,7 +19,7 @@ import java.net.URL;
 
 public abstract class Downloader {
 
-    private static final String TAG = "fdroid.Downloader";
+    private static final String TAG = "Downloader";
     private OutputStream outputStream;
 
     private ProgressListener progressListener = null;

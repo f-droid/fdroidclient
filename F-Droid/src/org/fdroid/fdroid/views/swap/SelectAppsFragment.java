@@ -41,7 +41,7 @@ public class SelectAppsFragment extends ThemeableListFragment
     implements LoaderManager.LoaderCallbacks<Cursor>, SearchView.OnQueryTextListener {
 
     @SuppressWarnings("UnusedDeclaration")
-    private static final String TAG = "fdroid.SwapAppsList";
+    private static final String TAG = "SwapAppsList";
 
     private String mCurrentFilterString;
 
@@ -233,7 +233,7 @@ public class SelectAppsFragment extends ThemeableListFragment
     private class AppListAdapter extends CursorAdapter {
 
         @SuppressWarnings("UnusedDeclaration")
-        private static final String TAG = "fdroid.AppListAdapter";
+        private static final String TAG = "AppListAdapter";
 
         @Nullable
         private LayoutInflater inflater;

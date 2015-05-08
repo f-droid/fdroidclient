@@ -23,7 +23,7 @@ import java.util.Random;
  */
 public class Preferences implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private static final String TAG = "fdroid.Preferences";
+    private static final String TAG = "Preferences";
 
     private final SharedPreferences preferences;
 

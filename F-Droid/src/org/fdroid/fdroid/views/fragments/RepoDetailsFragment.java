@@ -69,7 +69,7 @@ public class RepoDetailsFragment extends Fragment {
     private static final int UPDATE = 1;
     private static final int ENABLE_NFC = 2;
 
-    private static final String TAG = "fdroid.RepoDetailsFragment";
+    private static final String TAG = "RepoDetailsFragment";
 
     private MenuItem enableNfc = null;
     private UpdateService.UpdateReceiver updateHandler = null;

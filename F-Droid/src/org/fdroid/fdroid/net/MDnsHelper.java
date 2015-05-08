@@ -28,7 +28,7 @@ import javax.jmdns.ServiceListener;
 
 public class MDnsHelper implements ServiceListener {
 
-    private static final String TAG = "fdroid.MDnsHelper";
+    private static final String TAG = "MDnsHelper";
     public static final String HTTP_SERVICE_TYPE = "_http._tcp.local.";
     public static final String HTTPS_SERVICE_TYPE = "_https._tcp.local.";
 

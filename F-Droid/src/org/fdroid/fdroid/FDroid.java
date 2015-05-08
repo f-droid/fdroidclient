@@ -55,7 +55,7 @@ import org.fdroid.fdroid.views.swap.SwapActivity;
 
 public class FDroid extends ActionBarActivity {
 
-    private static final String TAG = "fdroid.FDroid";
+    private static final String TAG = "FDroid";
 
     public static final int REQUEST_MANAGEREPOS = 0;
     public static final int REQUEST_PREFS = 1;
