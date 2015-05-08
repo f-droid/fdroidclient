@@ -65,10 +65,10 @@ import java.util.Set;
 public class FDroidApp extends Application {
 
     // for the local repo on this device, all static since there is only one
-    public static int port = 8888;
-    public static String ipAddressString = null;
-    public static String ssid = "";
-    public static String bssid = "";
+    public static int port;
+    public static String ipAddressString;
+    public static String ssid ;
+    public static String bssid;
     public static final Repo repo = new Repo();
     public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
 
@@ -130,6 +130,13 @@ public class FDroidApp extends Application {
         if (Build.VERSION.SDK_INT == 21) {
             Security.removeProvider(spongyCastleProvider.getName());
         }
+    }
+
+    public static void initWifiSettings() {
+        port = 8888;
+        ipAddressString = null;
+        ssid = "";
+        bssid = "";
     }
 
     public static void updateLanguage(Context c) {
@@ -231,6 +238,7 @@ public class FDroidApp extends Application {
         // TODO reintroduce PinningTrustManager and MemorizingTrustManager
 
         // initialized the local repo information
+        FDroidApp.initWifiSettings();
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         int wifiState = wifiManager.getWifiState();
         if (wifiState == WifiManager.WIFI_STATE_ENABLING

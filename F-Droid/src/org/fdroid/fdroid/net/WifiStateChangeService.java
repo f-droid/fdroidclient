@@ -43,6 +43,7 @@ public class WifiStateChangeService extends Service {
             wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
             try {
                 while (!wifiManager.isWifiEnabled()) {
+                    FDroidApp.initWifiSettings();
                     if (isCancelled())
                         return null;
                     if (BuildConfig.DEBUG) {
