@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
@@ -33,6 +34,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
@@ -40,7 +42,9 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
@@ -92,15 +96,16 @@ public class ManageReposActivity extends ActionBarActivity {
 
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
 
-    private enum PositiveAction {
-        ADD_NEW, ENABLE, IGNORE
+    private enum AddRepoState {
+        DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_FINGERPRINT_MATCH,
+        EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED
     }
-
-    private PositiveAction positiveAction;
 
     private UpdateService.UpdateReceiver updateHandler = null;
 
     private static boolean changed = false;
+
+    private RepoListFragment listFragment;
 
     /**
      * True if activity started with an intent such as from QR code. False if
@@ -129,8 +134,10 @@ public class ManageReposActivity extends ActionBarActivity {
                 setContentView(new LinearLayout(this));
             }
 
+            listFragment = new RepoListFragment();
+
             fm.beginTransaction()
-                    .add(android.R.id.content, new RepoListFragment())
+                    .add(android.R.id.content, listFragment)
                     .commit();
         }
 
@@ -323,6 +330,12 @@ public class ManageReposActivity extends ActionBarActivity {
         private final Context context;
         private final AlertDialog addRepoDialog;
 
+        private final TextView overwriteMessage;
+        private final ColorStateList defaultTextColour;
+        private final Button addButton;
+
+        private AddRepoState addRepoState;
+
         public AddRepo(String newAddress, String newFingerprint) {
 
             context = ManageReposActivity.this;
@@ -331,13 +344,6 @@ public class ManageReposActivity extends ActionBarActivity {
             addRepoDialog = new AlertDialog.Builder(context).setView(view).create();
             final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
             final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
-
-            // If the "add new repo" dialog is launched by an action outside of
-            // FDroid, i.e. a URL, then check to see if any existing repos match,
-            // and change the action accordingly.
-            final Repo repo = (newAddress != null && isImportingRepo)
-                    ? RepoProvider.Helper.findByAddress(context, newAddress)
-                    : null;
 
             addRepoDialog.setIcon(android.R.drawable.ic_menu_add);
             addRepoDialog.setTitle(getString(R.string.repo_add_title));
@@ -382,70 +388,136 @@ public class ManageReposActivity extends ActionBarActivity {
                     public void onClick(View v) {
 
                         String fp = fingerprintEditText.getText().toString();
+                        String url = uriEditText.getText().toString();
 
-                        // the DB uses null for no fingerprint but the above
-                        // code returns "" rather than null if its blank
-                        if (fp.equals(""))
-                            fp = null;
+                        switch(addRepoState) {
+                            case DOESNT_EXIST:
+                                prepareToCreateNewRepo(url, fp);
+                                break;
 
-                        if (positiveAction == PositiveAction.ADD_NEW)
-                            prepareToCreateNewRepo(uriEditText.getText().toString(), fp);
-                        else if (positiveAction == PositiveAction.ENABLE) {
-                            enableExistingRepo(repo);
-                            finishedAddingRepo();
+                            case EXISTS_DISABLED:
+                            case EXISTS_UPGRADABLE_TO_SIGNED:
+                            case EXISTS_FINGERPRINT_MATCH:
+                                updateAndEnableExistingRepo(url, fp);
+                                finishedAddingRepo();
+                                break;
+
+                            default:
+                                finishedAddingRepo();
+                                break;
                         }
                     }
                 }
             );
 
-            final TextView overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
+            addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+            overwriteMessage = (TextView) view.findViewById(R.id.overwrite_message);
             overwriteMessage.setVisibility(View.GONE);
-            if (repo == null) {
-                // no existing repo, add based on what we have
-                positiveAction = PositiveAction.ADD_NEW;
-            } else {
-                // found the address in the DB of existing repos
-                final Button addButton = addRepoDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                addRepoDialog.setTitle(R.string.repo_exists);
-                overwriteMessage.setVisibility(View.VISIBLE);
-                if (newFingerprint != null)
-                    newFingerprint = newFingerprint.toUpperCase(Locale.ENGLISH);
-                if (repo.fingerprint == null && newFingerprint != null) {
-                    // we're upgrading from unsigned to signed repo
-                    overwriteMessage.setText(R.string.repo_exists_add_fingerprint);
-                    addButton.setText(R.string.add_key);
-                    positiveAction = PositiveAction.ADD_NEW;
-                } else if (newFingerprint == null || newFingerprint.equals(repo.fingerprint)) {
-                    // this entry already exists and is not enabled, offer to enable it
-                    if (repo.inuse) {
-                        addRepoDialog.dismiss();
-                        Toast.makeText(context, R.string.repo_exists_and_enabled, Toast.LENGTH_LONG).show();
-                        return;
-                    } else {
-                        overwriteMessage.setText(R.string.repo_exists_enable);
-                        addButton.setText(R.string.enable);
-                        positiveAction = PositiveAction.ENABLE;
-                    }
-                } else {
-                    // same address with different fingerprint, this could be
-                    // malicious, so force the user to manually delete the repo
-                    // before adding this one
-                    overwriteMessage.setTextColor(getResources().getColor(R.color.red));
-                    overwriteMessage.setText(R.string.repo_delete_to_overwrite);
-                    addButton.setText(R.string.overwrite);
-                    addButton.setEnabled(false);
-                    positiveAction = PositiveAction.IGNORE;
-                }
-            }
+            defaultTextColour = overwriteMessage.getTextColors();
 
-            if (newFingerprint != null)
+            if (newFingerprint != null) {
                 fingerprintEditText.setText(newFingerprint);
+            }
 
             if (newAddress != null) {
                 // This trick of emptying text then appending, rather than just setting in
                 // the first place, is necessary to move the cursor to the end of the input.
                 uriEditText.setText("");
                 uriEditText.append(newAddress);
+            }
+
+            final TextWatcher textChangedListener = new TextWatcher() {
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    validateRepoDetails(uriEditText.getText().toString(), fingerprintEditText.getText().toString());
+                }
+            };
+
+            uriEditText.addTextChangedListener(textChangedListener);
+            fingerprintEditText.addTextChangedListener(textChangedListener);
+            validateRepoDetails(newAddress == null ? "" : newAddress, newFingerprint == null ? "" : newFingerprint);
+        }
+
+        /**
+         * Compare the repo and the fingerprint against existing repositories, to see if this
+         * repo matches and display a relevant message to the user if that is the case.
+         */
+        private void validateRepoDetails(@NonNull final String uri, @NonNull String fingerprint) {
+
+            final Repo repo = uri.length() > 0 ? RepoProvider.Helper.findByAddress(context, uri) : null;
+
+            if (repo == null) {
+                repoDoesntExist();
+            } else {
+                if (repo.fingerprint == null && fingerprint.length() > 0) {
+                    upgradingToSigned();
+                } else if (repo.fingerprint != null && !repo.fingerprint.equalsIgnoreCase(fingerprint)) {
+                    repoFingerprintDoesntMatch();
+                } else {
+                    // Could be either an unsigned repo, and no fingerprint was supplied,
+                    // or it could be a signed repo with a matching fingerprint.
+                    if (repo.inuse) {
+                        repoExistsAndEnabled();
+                    } else {
+                        repoExistsAndDisabled();
+                    }
+                }
+            }
+        }
+
+        private void repoDoesntExist() {
+            updateUi(AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
+        }
+
+        /**
+         * Same address with different fingerprint, this could be malicious, so display a message
+         * force the user to manually delete the repo before adding this one.
+         */
+        private void repoFingerprintDoesntMatch() {
+            updateUi(AddRepoState.EXISTS_FINGERPRINT_MISMATCH, R.string.repo_delete_to_overwrite,
+                    true, R.string.overwrite, false);
+        }
+
+        private void repoExistsAndDisabled() {
+            updateUi(AddRepoState.EXISTS_DISABLED,
+                    R.string.repo_exists_enable, false, R.string.enable, true);
+        }
+
+        private void repoExistsAndEnabled() {
+            updateUi(AddRepoState.EXISTS_ENABLED, R.string.repo_exists_and_enabled, false,
+                    R.string.ok, true);
+        }
+
+        private void upgradingToSigned() {
+            updateUi(AddRepoState.EXISTS_UPGRADABLE_TO_SIGNED, R.string.repo_exists_add_fingerprint,
+                    false, R.string.add_key, true);
+        }
+
+        private void updateUi(AddRepoState state, int messageRes, boolean redMessage, int addTextRes, boolean addEnabled) {
+            if (addRepoState != state) {
+                addRepoState = state;
+
+                if (messageRes > 0) {
+                    overwriteMessage.setText(messageRes);
+                    overwriteMessage.setVisibility(View.VISIBLE);
+                    if (redMessage) {
+                        overwriteMessage.setTextColor(getResources().getColor(R.color.red));
+                    } else {
+                        overwriteMessage.setTextColor(defaultTextColour);
+                    }
+                } else {
+                    overwriteMessage.setVisibility(View.GONE);
+                }
+
+                addButton.setText(addTextRes);
+                addButton.setEnabled(addEnabled);
             }
         }
 
@@ -548,11 +620,23 @@ public class ManageReposActivity extends ActionBarActivity {
         /**
          * Seeing as this repo already exists, we will force it to be enabled again.
          */
-        private void enableExistingRepo(Repo repo) {
-            ContentValues values = new ContentValues(1);
+        private void updateAndEnableExistingRepo(String url, String fingerprint) {
+            if (fingerprint != null) {
+                fingerprint = fingerprint.trim();
+                if (fingerprint.length() == 0) {
+                    fingerprint = null;
+                } else {
+                    fingerprint = fingerprint.toUpperCase(Locale.ENGLISH);
+                }
+            }
+
+            Log.d(TAG, "Enabling existing repo: " + url);
+            Repo repo = RepoProvider.Helper.findByAddress(context, url);
+            ContentValues values = new ContentValues(2);
             values.put(RepoProvider.DataColumns.IN_USE, 1);
+            values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint);
             RepoProvider.Helper.update(context, repo, values);
-            repo.inuse = true;
+            listFragment.notifyDataSetChanged();
             finishedAddingRepo();
         }
 
@@ -742,6 +826,16 @@ public class ManageReposActivity extends ActionBarActivity {
             Intent intent = new Intent(getActivity(), RepoDetailsActivity.class);
             intent.putExtra(RepoDetailsFragment.ARG_REPO_ID, repo.getId());
             startActivityForResult(intent, SHOW_REPO_DETAILS);
+        }
+
+        /**
+         * This is necessary because even though the list will listen to content changes
+         * in the RepoProvider, it doesn't update the list items if they are changed (but not
+         * added or removed. The example which made this necessary was enabling an existing
+         * repo, and wanting the switch to be changed to on).
+         */
+        private void notifyDataSetChanged() {
+            getLoaderManager().restartLoader(0, null, this);
         }
     }
 }
