@@ -92,6 +92,7 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
     }
 
     @Override
+    @SuppressWarnings("fallthrough")
     public void onProgress(Event event) {
         // TODO: Show progress, but we can worry about that later.
         // Might be nice to have it nicely embedded in the UI, rather than as
