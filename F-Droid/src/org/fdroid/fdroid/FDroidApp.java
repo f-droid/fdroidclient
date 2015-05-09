@@ -67,7 +67,7 @@ public class FDroidApp extends Application {
     // for the local repo on this device, all static since there is only one
     public static int port;
     public static String ipAddressString;
-    public static String ssid ;
+    public static String ssid;
     public static String bssid;
     public static final Repo repo = new Repo();
     public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
@@ -337,7 +337,10 @@ public class FDroidApp extends Application {
         app.stopService(new Intent(app, LocalRepoService.class));
     }
 
-    public static void restartLocalRepoService() {
+    /**
+     * Handles checking if the {@link LocalRepoService} is running, and only restarts it if it was running.
+     */
+    public static void restartLocalRepoServiceIfRunning() {
         if (localRepoServiceMessenger != null) {
             try {
                 Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
