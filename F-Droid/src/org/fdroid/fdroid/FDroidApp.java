@@ -33,7 +33,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Message;
@@ -239,10 +238,7 @@ public class FDroidApp extends Application {
 
         // initialized the local repo information
         FDroidApp.initWifiSettings();
-        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-        int wifiState = wifiManager.getWifiState();
-        if (wifiState == WifiManager.WIFI_STATE_ENABLED)
-            startService(new Intent(this, WifiStateChangeService.class));
+        startService(new Intent(this, WifiStateChangeService.class));
         // if the HTTPS pref changes, then update all affected things
         Preferences.get().registerLocalRepoHttpsListeners(new ChangeListener() {
             @Override

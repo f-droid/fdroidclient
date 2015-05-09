@@ -21,26 +21,48 @@ import java.security.cert.Certificate;
 import java.util.Locale;
 
 public class WifiStateChangeService extends Service {
+    private static final String TAG = "WifiStateChangeService";
+
     public static final String BROADCAST = "org.fdroid.fdroid.action.WIFI_CHANGE";
 
+    private WifiManager wifiManager;
     private static WaitForWifiAsyncTask asyncTask;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (asyncTask != null)
-            asyncTask.cancel(true);
-        asyncTask = new WaitForWifiAsyncTask();
-        asyncTask.execute();
+        NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        if (ni == null) {
+            // this app just started up, NetworkInfo is only passed via WifiStateChangeReceiver
+            int wifiState = wifiManager.getWifiState();
+            if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
+                startAsyncTask();
+            }
+        } else if (ni.isConnected()) {
+            Log.i(TAG, "ni.isConnected()");
+            startAsyncTask();
+        } else {
+            Log.i("WifiStateChangeReceiver", "ni != null && !ni.isConnected()");
+            FDroidApp.initWifiSettings();
+        }
         return START_NOT_STICKY;
     }
 
+    private void startAsyncTask() {
+        Log.i(TAG, "startAsyncTask");
+        if (asyncTask != null) {
+            Log.i(TAG, "asyncTask.cancel");
+            asyncTask.cancel(true);
+        }
+        asyncTask = new WaitForWifiAsyncTask();
+        asyncTask.execute();
+    }
+
     public class WaitForWifiAsyncTask extends AsyncTask<Void, Void, Void> {
-        private static final String TAG = "WifiStateChangeService.WaitForWifiAsyncTask";
-        private WifiManager wifiManager;
+        private static final String TAG = "WaitForWifiAsyncTask";
 
         @Override
         protected Void doInBackground(Void... params) {
-            wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
             try {
                 while (!wifiManager.isWifiEnabled()) {
                     FDroidApp.initWifiSettings();
