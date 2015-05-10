@@ -55,9 +55,6 @@
     <uses-permission android:name="android.permission.DELETE_PACKAGES"
         tools:ignore="ProtectedPermissions"/>
 
-    <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app) -->
-    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
-
     <application
         android:name="FDroidApp"
         android:icon="@drawable/ic_launcher"
