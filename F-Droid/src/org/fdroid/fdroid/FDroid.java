@@ -20,7 +20,6 @@
 package org.fdroid.fdroid;
 
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.NotificationManager;
 import android.app.SearchManager;
 import android.bluetooth.BluetoothAdapter;
@@ -297,16 +296,16 @@ public class FDroid extends ActionBarActivity {
             } catch (Exception ignored) {
             }
 
-            Builder p;
+            AlertDialog.Builder builder;
             if (Build.VERSION.SDK_INT >= 11) {
-                p = new AlertDialog.Builder(this).setView(view);
+                builder = new AlertDialog.Builder(this).setView(view);
             } else {
-                p = new AlertDialog.Builder(
+                builder = new AlertDialog.Builder(
                         new ContextThemeWrapper(
                                 this, R.style.AboutDialogLight)
                         ).setView(view);
             }
-            final AlertDialog alrt = p.create();
+            final AlertDialog alrt = builder.create();
             alrt.setIcon(R.drawable.ic_launcher);
             alrt.setTitle(getString(R.string.about_title));
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
