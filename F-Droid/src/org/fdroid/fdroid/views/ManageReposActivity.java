@@ -78,6 +78,8 @@ import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Locale;
@@ -98,7 +100,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
     private enum AddRepoState {
         DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_FINGERPRINT_MATCH,
-        EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED
+        EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL
     }
 
     private UpdateService.UpdateReceiver updateHandler = null;
@@ -390,6 +392,13 @@ public class ManageReposActivity extends ActionBarActivity {
                         String fp = fingerprintEditText.getText().toString();
                         String url = uriEditText.getText().toString();
 
+                        try {
+                            url = normalizeUrl(url);
+                        } catch (URISyntaxException e) {
+                            invalidUrl();
+                            return;
+                        }
+
                         switch(addRepoState) {
                             case DOESNT_EXIST:
                                 prepareToCreateNewRepo(url, fp);
@@ -449,7 +458,15 @@ public class ManageReposActivity extends ActionBarActivity {
          * Compare the repo and the fingerprint against existing repositories, to see if this
          * repo matches and display a relevant message to the user if that is the case.
          */
-        private void validateRepoDetails(@NonNull final String uri, @NonNull String fingerprint) {
+        private void validateRepoDetails(@NonNull String uri, @NonNull String fingerprint) {
+
+            try {
+                uri = normalizeUrl(uri);
+            } catch (URISyntaxException e) {
+                // Don't bother dealing with this exception yet, as this is called every time
+                // a letter is added to the repo URL text input. We don't want to display a message
+                // to the user until they try to save the repo.
+            }
 
             final Repo repo = uri.length() > 0 ? RepoProvider.Helper.findByAddress(context, uri) : null;
 
@@ -483,6 +500,11 @@ public class ManageReposActivity extends ActionBarActivity {
         private void repoFingerprintDoesntMatch() {
             updateUi(AddRepoState.EXISTS_FINGERPRINT_MISMATCH, R.string.repo_delete_to_overwrite,
                     true, R.string.overwrite, false);
+        }
+
+        private void invalidUrl() {
+            updateUi(AddRepoState.INVALID_URL, R.string.invalid_url, true,
+                    R.string.repo_add_add, false);
         }
 
         private void repoExistsAndDisabled() {
@@ -604,6 +626,31 @@ public class ManageReposActivity extends ActionBarActivity {
             });
 
             checker.execute(originalAddress);
+        }
+
+        /**
+         * Some basic sanitization of URLs, so that two URLs which have the same semantic meaning
+         * are represented by the exact same string by F-Droid. This will help to make sure that,
+         * e.g. "http://10.0.1.50" and "http://10.0.1.50/" are not two different repositories.
+         *
+         * Currently it normalizes the path so that "/./" are removed and "test/../" is collapsed.
+         * This is done using {@link URI#normalize()}. It also removes multiple consecutive forward
+         * slashes in the path and replaces them with one. Finally, it removes trailing slashes.
+         */
+        private String normalizeUrl(String urlString) throws URISyntaxException {
+            URI uri = new URI(urlString);
+            if (!uri.isAbsolute()) {
+                throw new URISyntaxException(urlString, "Must provide an absolute URI for repositories");
+            }
+
+            uri = uri.normalize();
+            String path = uri.getPath().replaceAll("//*/", "/"); // Collapse multiple forward slashes into 1.
+            if (path.length() > 0 && path.charAt(path.length() - 1) == '/') {
+                path = path.substring(0, path.length() - 1);
+            }
+
+            return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
+                    path, uri.getQuery(), uri.getFragment()).toString();
         }
 
         private void createNewRepo(String address, String fingerprint) {
