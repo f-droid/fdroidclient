@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -74,10 +75,31 @@ public class JoinWifiFragment extends Fragment {
     }
 
     private void refreshWifiState() {
-        if (getView() != null) {
-            TextView ssidView = (TextView) getView().findViewById(R.id.wifi_ssid);
-            String text = TextUtils.isEmpty(FDroidApp.ssid) ? getString(R.string.swap_no_wifi_network) : FDroidApp.ssid;
-            ssidView.setText(text);
+        View view = getView();
+        if (view != null) {
+            TextView descriptionView = (TextView) view.findViewById(R.id.text_description);
+            ImageView wifiIcon = (ImageView) view.findViewById(R.id.wifi_icon);
+            TextView ssidView = (TextView) view.findViewById(R.id.wifi_ssid);
+            TextView tapView = (TextView) view.findViewById(R.id.wifi_available_networks_prompt);
+            if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
+                // empty bssid with an ipAddress means hotspot mode
+                descriptionView.setText(R.string.swap_join_this_hotspot);
+                wifiIcon.setImageDrawable(getResources().getDrawable(R.drawable.hotspot));
+                ssidView.setText(R.string.swap_active_hotspot);
+                tapView.setText(R.string.swap_switch_to_wifi);
+            } else if (TextUtils.isEmpty(FDroidApp.ssid)) {
+                // not connected to or setup with any wifi network
+                descriptionView.setText(R.string.swap_join_same_wifi);
+                wifiIcon.setImageDrawable(getResources().getDrawable(R.drawable.wifi));
+                ssidView.setText(R.string.swap_no_wifi_network);
+                tapView.setText(R.string.swap_view_available_networks);
+            } else {
+                // connected to a regular wifi network
+                descriptionView.setText(R.string.swap_join_same_wifi);
+                wifiIcon.setImageDrawable(getResources().getDrawable(R.drawable.wifi));
+                ssidView.setText(FDroidApp.ssid);
+                tapView.setText(R.string.swap_view_available_networks);
+            }
         }
     }
 

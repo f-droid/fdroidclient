@@ -299,6 +299,7 @@
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
     <string name="swap_nfc_description">If your friend has <b>F-Droid and NFC turned on</b> touch your phones together.</string>
     <string name="swap_join_same_wifi">Join the same Wifi as your friend</string>
+    <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <string name="swap_use_bluetooth">Use Bluetooth instead</string>
     <string name="swap_wifi_help">Learn more about Wifi</string>
     <string name="menu_swap">Swap apps</string>
@@ -306,7 +307,9 @@
     <string name="swap_repo_name">Swap</string>
     <string name="swap_success">Swap success!</string>
     <string name="swap_no_wifi_network">No network yet</string>
+    <string name="swap_active_hotspot">Your hotspot is active</string>
     <string name="swap_view_available_networks">(Tap to open available networks)</string>
+    <string name="swap_switch_to_wifi">(Tap to switch to a WiFi network)</string>
     <string name="swap_wifi_qr_not_working">It\'s not working</string>
     <string name="open_qr_code_scanner">Open QR Code Scanner</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
