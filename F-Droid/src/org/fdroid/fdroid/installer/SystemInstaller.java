@@ -19,8 +19,11 @@
 
 package org.fdroid.fdroid.installer;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.IPackageDeleteObserver;
 import android.content.pm.IPackageInstallObserver;
 import android.content.pm.PackageManager;
@@ -31,6 +34,8 @@ import android.util.Log;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
+
+import org.fdroid.fdroid.R;
 
 /**
  * Installer based on using internal hidden APIs of the Android OS, which are
@@ -137,13 +142,62 @@ public class SystemInstaller extends Installer {
         }
     }
 
+
     @Override
-    protected void installPackageInternal(List<File> apkFiles) throws AndroidNotCompatibleException {
+    protected void installPackageInternal(List<File> apkFiles)
+            throws AndroidNotCompatibleException {
         // not used
     }
 
     @Override
-    protected void deletePackageInternal(String packageName) throws AndroidNotCompatibleException {
+    protected void deletePackageInternal(final String packageName)
+            throws AndroidNotCompatibleException {
+        ApplicationInfo appInfo;
+        try {
+            appInfo = mPm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d(TAG, "Failed to get ApplicationInfo for uninstalling");
+            return;
+        }
+
+        final boolean isUpdate = ((appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0);
+        int messageId;
+        if (isUpdate) {
+            messageId = R.string.uninstall_update_confirm;
+        } else {
+            messageId = R.string.uninstall_application_confirm;
+        }
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setTitle(appInfo.loadLabel(mPm));
+        builder.setIcon(appInfo.loadIcon(mPm));
+        builder.setPositiveButton(android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            doDeletePackageInternal(packageName);
+                        } catch (AndroidNotCompatibleException e) {
+                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                                    InstallerCallback.ERROR_CODE_OTHER);
+                        }
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                                InstallerCallback.ERROR_CODE_CANCELED);
+                    }
+                });
+        builder.setMessage(messageId);
+        builder.create().show();
+    }
+
+    private void doDeletePackageInternal(final String packageName)
+            throws AndroidNotCompatibleException {
         try {
             mDeleteMethod.invoke(mPm, packageName, mDeleteObserver, 0);
         } catch (Exception e) {

@@ -341,4 +341,7 @@
     <string name="wifi_warning_public">May work</string>
     <string name="wifi_warning_private">Promising</string>
     <string name="wifi_warning_personal">Best bet</string>
+
+    <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
+    <string name="uninstall_application_confirm">Do you want to uninstall this app?</string>
 </resources>
