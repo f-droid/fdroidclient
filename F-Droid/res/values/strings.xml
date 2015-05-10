@@ -29,6 +29,8 @@
 	<string name="root_installer_on">Request root access to install, update, and remove packages</string>
 	<string name="system_installer">Install using system-permissions</string>
 	<string name="system_installer_on">Use system permissions to install, update, and remove packages</string>
+	<string name="uninstall_system">Uninstall F-Droid</string>
+	<string name="uninstall_system_summary">Uninstall F-Droid when installed as a system-app.</string>
 	<string name="local_repo_bonjour">Broadcast Local Repo</string>
 	<string name="local_repo_bonjour_on">Advertise your local repo using Bonjour (mDNS)</string>
 	<string name="local_repo_name">Name of your Local Repo</string>
@@ -287,7 +289,6 @@
     <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating your repositories to get a fresh list of apps.</string>
     <string name="empty_can_update_app_list">All apps up to date.\n\nCongratulations! All of your apps are up to date (or your repositories are out of date).</string>
 
-    <string name="requesting_root_access_title">Root access</string>
     <string name="requesting_root_access_body">Requesting root access…</string>
     <string name="root_access_denied_title">Root access denied</string>
     <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
@@ -296,6 +297,19 @@
     <string name="installer_error_body">The (de-)installation failed. If you are using root access, try disabling this setting!</string>
     <string name="system_permission_denied_title">System permissions denied</string>
     <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a system-app.</string>
+    <string name="system_permission_install_via_root">Install as system-app</string>
+    <string name="system_install_post_success">Successful installation as system-app</string>
+    <string name="system_install_post_fail">Installation as system-app failed</string>
+    <string name="system_install_post_success_message">F-Droid has been successfully installed into the system partition. This enables extended features, such as automatic app updates.</string>
+    <string name="system_install_post_fail_message">The installation of F-Droid into the system partition failed. The installation method is not supported by all Android distributions, please consult the F-Droid bug tracker for more information.</string>
+    <string name="system_install_installing">installing…</string>
+    <string name="system_install_uninstalling">uninstalling…</string>
+    <string name="system_install_question">Do you want to install F-Droid as a system-app?\nThis takes up to 10 seconds where &lt;b>no user interface&lt;/b> is shown.</string>
+    <string name="system_install_question_lollipop">Do you want to install F-Droid as a system-app?\nThis takes up to 10 seconds where &lt;b>no user interface&lt;/b> is shown and the device will be &lt;b>rebooted&lt;/b> afterwards.</string>
+    <string name="system_install_first_time_message">Looks like you have root access on your device. You could install F-Droid as a system-app to enable extended features, such as automatic app updates.</string>
+    <string name="system_uninstall">Do you want to uninstall F-Droid?</string>
+    <string name="system_uninstall_message">This will uninstall F-Droid completely.</string>
+    <string name="system_uninstall_button">Uninstall</string>
 
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
     <string name="swap_nfc_description">If your friend has <b>F-Droid and NFC turned on</b> touch your phones together.</string>

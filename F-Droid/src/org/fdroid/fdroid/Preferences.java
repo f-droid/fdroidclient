@@ -52,6 +52,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_UPD_LAST = "lastUpdateCheck";
     public static final String PREF_ROOT_INSTALLER = "rootInstaller";
     public static final String PREF_SYSTEM_INSTALLER = "systemInstaller";
+    public static final String PREF_UNINSTALL_SYSTEM_APP = "uninstallSystemApp";
     public static final String PREF_LOCAL_REPO_BONJOUR = "localRepoBonjour";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
@@ -60,6 +61,8 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_PROXY_HOST = "proxyHost";
     public static final String PREF_PROXY_PORT = "proxyPort";
     public static final String PREF_SHOW_NFC_DURING_SWAP = "showNfcDuringSwap";
+    public static final String PREF_FIRST_TIME = "firstTime";
+    public static final String PREF_POST_SYSTEM_INSTALL = "postSystemInstall";
 
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
@@ -77,6 +80,8 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
     public static final int DEFAULT_PROXY_PORT = 8118;
     public static final boolean DEFAULT_SHOW_NFC_DURING_SWAP = true;
+    private static final boolean DEFAULT_FIRST_TIME = true;
+    private static final boolean DEFAULT_POST_SYSTEM_INSTALL = false;
 
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
@@ -108,6 +113,26 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean isSystemInstallerEnabled() {
         return preferences.getBoolean(PREF_SYSTEM_INSTALLER, DEFAULT_SYSTEM_INSTALLER);
+    }
+
+    public void setSystemInstallerEnabled(boolean enable) {
+        preferences.edit().putBoolean(PREF_SYSTEM_INSTALLER, enable).commit();
+    }
+
+    public boolean isFirstTime() {
+        return preferences.getBoolean(PREF_FIRST_TIME, DEFAULT_FIRST_TIME);
+    }
+
+    public void setFirstTime(boolean firstTime) {
+        preferences.edit().putBoolean(PREF_FIRST_TIME, firstTime).commit();
+    }
+
+    public boolean isPostSystemInstall() {
+        return preferences.getBoolean(PREF_POST_SYSTEM_INSTALL, DEFAULT_POST_SYSTEM_INSTALL);
+    }
+
+    public void setPostSystemInstall(boolean postInstall) {
+        preferences.edit().putBoolean(PREF_POST_SYSTEM_INSTALL, postInstall).commit();
     }
 
     public boolean isLocalRepoBonjourEnabled() {

@@ -47,6 +47,7 @@ import android.widget.Toast;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.installer.InstallIntoSystemDialogActivity;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
@@ -101,6 +102,12 @@ public class FDroid extends ActionBarActivity {
 
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
+
+        if (Preferences.get().isFirstTime()) {
+            Intent installIntent = new Intent(this, InstallIntoSystemDialogActivity.class);
+            installIntent.setAction(InstallIntoSystemDialogActivity.ACTION_FIRST_TIME);
+            startActivity(installIntent);
+        }
     }
 
     @Override

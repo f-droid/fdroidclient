@@ -403,6 +403,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
         </activity>
+        <!-- Note: Theme.NoDisplay, this activity shows dialogs only -->
+        <activity
+            android:name=".installer.InstallIntoSystemDialogActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+        <receiver
+            android:name=".installer.InstallIntoSystemBootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".SearchResults"
             android:label="@string/search_results"

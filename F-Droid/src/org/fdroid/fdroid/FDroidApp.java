@@ -98,21 +98,24 @@ public class FDroidApp extends Application {
     }
 
     public void applyTheme(Activity activity) {
-        switch (curTheme) {
-        case dark:
-            activity.setTheme(R.style.AppThemeDark);
-            break;
-        case light:
-            activity.setTheme(R.style.AppThemeLight);
-            break;
-        case lightWithDarkActionBar:
-            activity.setTheme(R.style.AppThemeLightWithDarkActionBar);
-            break;
-        }
+            activity.setTheme(getCurThemeResId());
     }
 
     public static Theme getCurTheme() {
         return curTheme;
+    }
+
+    public static int getCurThemeResId() {
+        switch (curTheme) {
+            case dark:
+                return R.style.AppThemeDark;
+            case light:
+                return R.style.AppThemeLight;
+            case lightWithDarkActionBar:
+                return R.style.AppThemeLightWithDarkActionBar;
+            default:
+                return R.style.AppThemeDark;
+        }
     }
 
     public static void enableSpongyCastle() {

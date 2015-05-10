@@ -22,7 +22,9 @@ package org.fdroid.fdroid.installer;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.ContextThemeWrapper;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 
 import eu.chainfire.libsuperuser.Shell;
@@ -46,8 +48,11 @@ public class CheckRootAsyncTask extends AsyncTask<Void, Void, Boolean> {
     protected void onPreExecute() {
         super.onPreExecute();
 
-        mDialog = new ProgressDialog(mContext);
-        mDialog.setTitle(R.string.requesting_root_access_title);
+        // if the dialog is displayed from the application class, design is missing
+        // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
+        ContextThemeWrapper theme = new ContextThemeWrapper(mContext, FDroidApp.getCurThemeResId());
+
+        mDialog = new ProgressDialog(theme);
         mDialog.setMessage(mContext.getString(R.string.requesting_root_access_body));
         mDialog.setIndeterminate(true);
         mDialog.setCancelable(false);
