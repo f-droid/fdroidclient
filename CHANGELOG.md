@@ -8,7 +8,9 @@
 
 * Properly cache apk files on the SD card if configured this way
 
-* Add support for special search terms like "pub:" and "pname:"
+* Provide better feedback when adding repos with same name of existing repo
+
+* Add support for special Google Play search terms like "pub:" and "pname:"
 
 * Fix regression where adding repos via URLs would not actually add a new repo
 
