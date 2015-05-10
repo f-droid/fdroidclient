@@ -143,7 +143,7 @@ public class RootInstaller extends Installer {
             return;
         }
 
-        rootSession.addCommand("pm install -r \"" + apkFile.getAbsolutePath() + "\"", 0,
+        rootSession.addCommand("pm install -dr \"" + apkFile.getAbsolutePath() + "\"", 0,
                 new Shell.OnCommandResultListener() {
                     public void onCommandResult(int commandCode, int exitCode, List<String> output) {
                         // close su shell
@@ -162,7 +162,7 @@ public class RootInstaller extends Installer {
 
     private void addInstallCommand(List<File> apkFiles) {
         List<String> commands = new ArrayList<>();
-        String pm = "pm install -r ";
+        String pm = "pm install -dr ";
         for (File apkFile : apkFiles) {
             // see addInstallCommand()
             if (!isValidPackageName(apkFile.getName())) {
