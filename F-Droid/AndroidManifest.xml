@@ -293,6 +293,14 @@
                 android:value=".FDroid" />
         </activity>
         <activity
+            android:name=".installer.InstallConfirmActivity"
+            android:label=""
+            android:parentActivityName=".FDroid">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+        </activity>
+        <activity
             android:name=".views.ManageReposActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"

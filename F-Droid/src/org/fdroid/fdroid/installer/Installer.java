@@ -140,18 +140,6 @@ abstract public class Installer {
         return null;
     }
 
-    public static Installer getUnattendedInstaller(Context context, PackageManager pm,
-            InstallerCallback callback) throws AndroidNotCompatibleException {
-
-        if (hasSystemPermissions(context, pm)) {
-            // we have system permissions!
-            return new SystemInstaller(context, pm, callback);
-        } else {
-            // nope!
-            throw new AndroidNotCompatibleException();
-        }
-    }
-
     public static boolean hasSystemPermissions(Context context, PackageManager pm) {
         boolean hasInstallPermission =
                 (pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName())

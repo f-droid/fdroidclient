@@ -6,8 +6,8 @@ import android.content.Context;
 import android.test.InstrumentationTestCase;
 
 import org.apache.commons.io.FileUtils;
-import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.RepoUpdater.UpdateException;
+import org.fdroid.fdroid.data.Repo;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 Dominik Schürmann <dominik@dominikschuermann.de>
+ * Copyright (C) 2015 Daniel Martí <mvdan@mvdan.cc>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,8 +20,8 @@
 
 package org.fdroid.fdroid.installer;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -31,11 +32,11 @@ import android.net.Uri;
 import android.os.RemoteException;
 import android.util.Log;
 
+import org.fdroid.fdroid.R;
+
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
-
-import org.fdroid.fdroid.R;
 
 /**
  * Installer based on using internal hidden APIs of the Android OS, which are
@@ -65,14 +66,18 @@ public class SystemInstaller extends Installer {
 
     private static final String TAG = "SystemInstaller";
 
+    private Activity mActivity;
     private final PackageInstallObserver mInstallObserver;
     private final PackageDeleteObserver mDeleteObserver;
     private Method mInstallMethod;
     private Method mDeleteMethod;
 
-    public SystemInstaller(Context context, PackageManager pm,
+    public static final int REQUEST_CONFIRM_PERMS = 0;
+
+    public SystemInstaller(Activity activity, PackageManager pm,
             InstallerCallback callback) throws AndroidNotCompatibleException {
-        super(context, pm, callback);
+        super(activity, pm, callback);
+        this.mActivity = activity;
 
         // create internal callbacks
         mInstallObserver = new PackageInstallObserver();
@@ -133,7 +138,12 @@ public class SystemInstaller extends Installer {
 
     @Override
     protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
-        Uri packageURI = Uri.fromFile(apkFile);
+        Intent intent = new Intent(mContext, InstallConfirmActivity.class);
+        intent.setData(Uri.fromFile(apkFile));
+        mActivity.startActivityForResult(intent, REQUEST_CONFIRM_PERMS);
+    }
+
+    private void doInstallPackageInternal(Uri packageURI) throws AndroidNotCompatibleException {
         try {
             mInstallMethod.invoke(mPm, packageURI, mInstallObserver,
                     INSTALL_REPLACE_EXISTING, null);
@@ -165,7 +175,7 @@ public class SystemInstaller extends Installer {
         if (isUpdate) {
             messageId = R.string.uninstall_update_confirm;
         } else {
-            messageId = R.string.uninstall_application_confirm;
+            messageId = R.string.uninstall_confirm;
         }
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
@@ -207,8 +217,24 @@ public class SystemInstaller extends Installer {
 
     @Override
     public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
-        // no need to handle onActivityResult
-        return false;
+        switch (requestCode) {
+        case REQUEST_CONFIRM_PERMS:
+            if (resultCode == Activity.RESULT_OK) {
+                final Uri packageURI = data.getData();
+                try {
+                    doInstallPackageInternal(packageURI);
+                } catch (AndroidNotCompatibleException e) {
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                            InstallerCallback.ERROR_CODE_OTHER);
+                }
+            } else {
+                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                        InstallerCallback.ERROR_CODE_CANCELED);
+            }
+            return true;
+        default:
+            return false;
+        }
     }
 
     @Override
