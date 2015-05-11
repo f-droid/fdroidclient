@@ -274,13 +274,13 @@ public class RepoDetailsFragment extends Fragment {
         menu.clear();
 
         MenuItem update = menu.add(Menu.NONE, UPDATE, 0, R.string.repo_update);
-        update.setIcon(R.drawable.ic_menu_refresh);
+        update.setIcon(R.drawable.ic_refresh_white);
         MenuItemCompat.setShowAsAction(update,
             MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
         MenuItem delete = menu.add(Menu.NONE, DELETE, 0, R.string.delete);
-        delete.setIcon(android.R.drawable.ic_menu_delete);
+        delete.setIcon(R.drawable.ic_delete_white);
         MenuItemCompat.setShowAsAction(delete,
             MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
@@ -307,7 +307,7 @@ public class RepoDetailsFragment extends Fragment {
             if (enableNfc != null)
                 return; // already created
             enableNfc = menu.add(Menu.NONE, ENABLE_NFC, 0, R.string.enable_nfc_send);
-            enableNfc.setIcon(android.R.drawable.ic_menu_preferences);
+            enableNfc.setIcon(R.drawable.ic_nfc_white);
             MenuItemCompat.setShowAsAction(enableNfc,
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);

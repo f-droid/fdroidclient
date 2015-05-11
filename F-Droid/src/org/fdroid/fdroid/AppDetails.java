@@ -633,7 +633,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         if (app.canAndWantToUpdate()) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 0, R.string.menu_upgrade)
-                        .setIcon(R.drawable.ic_menu_refresh),
+                        .setIcon(R.drawable.ic_refresh_white),
                     MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
@@ -643,20 +643,20 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 adapter.getCount() > 0) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, INSTALL, 1, R.string.menu_install)
-                        .setIcon(android.R.drawable.ic_menu_add),
+                        .setIcon(R.drawable.ic_add_white),
                     MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         } else if (app.isInstalled()) {
             MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall)
-                        .setIcon(android.R.drawable.ic_menu_delete),
+                        .setIcon(R.drawable.ic_delete_white),
                     MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                     MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
             if (mPm.getLaunchIntentForPackage(app.id) != null) {
                 MenuItemCompat.setShowAsAction(menu.add(
                             Menu.NONE, LAUNCH, 1, R.string.menu_launch)
-                            .setIcon(android.R.drawable.ic_media_play),
+                            .setIcon(R.drawable.ic_play_arrow_white),
                         MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                         MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
             }
@@ -664,32 +664,32 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         MenuItemCompat.setShowAsAction(menu.add(
                     Menu.NONE, SHARE, 1, R.string.menu_share)
-                    .setIcon(android.R.drawable.ic_menu_share),
+                    .setIcon(R.drawable.ic_share_white),
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                 MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
         menu.add(Menu.NONE, IGNOREALL, 2, R.string.menu_ignore_all)
-                    .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
+                    .setIcon(R.drawable.ic_do_not_disturb_white)
                     .setCheckable(true)
                     .setChecked(app.ignoreAllUpdates);
 
         if (app.hasUpdates()) {
             menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
-                        .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
+                        .setIcon(R.drawable.ic_do_not_disturb_white)
                         .setCheckable(true)
                         .setChecked(app.ignoreThisUpdate >= app.suggestedVercode);
         }
         if (app.webURL.length() > 0) {
             menu.add(Menu.NONE, WEBSITE, 3, R.string.menu_website).setIcon(
-                    android.R.drawable.ic_menu_view);
+                    R.drawable.ic_info_white);
         }
         if (app.trackerURL.length() > 0) {
             menu.add(Menu.NONE, ISSUES, 4, R.string.menu_issues).setIcon(
-                    android.R.drawable.ic_menu_view);
+                    R.drawable.ic_info_white);
         }
         if (app.sourceURL.length() > 0) {
             menu.add(Menu.NONE, SOURCE, 5, R.string.menu_source).setIcon(
-                    android.R.drawable.ic_menu_view);
+                    R.drawable.ic_info_white);
         }
 
         if (app.bitcoinAddr != null || app.litecoinAddr != null ||
@@ -697,7 +697,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 app.flattrID != null || app.donateURL != null) {
             SubMenu donate = menu.addSubMenu(Menu.NONE, DONATE, 7,
                     R.string.menu_donate).setIcon(
-                    android.R.drawable.ic_menu_send);
+                    R.drawable.ic_attach_money_white);
             if (app.bitcoinAddr != null)
                 donate.add(Menu.NONE, BITCOIN, 8, R.string.menu_bitcoin);
             if (app.litecoinAddr != null)
@@ -710,7 +710,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 donate.add(Menu.NONE, DONATE_URL, 10, R.string.menu_website);
         }
         if (app.isInstalled() && fdroidApp.bluetoothAdapter != null) { // ignore on devices without Bluetooth
-            menu.add(Menu.NONE, SEND_VIA_BLUETOOTH, 6, R.string.send_via_bluetooth);
+            menu.add(Menu.NONE, SEND_VIA_BLUETOOTH, 6, R.string.send_via_bluetooth).setIcon(R.drawable.ic_bluetooth_white);
         }
 
         return true;
