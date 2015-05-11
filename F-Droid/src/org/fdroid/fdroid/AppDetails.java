@@ -632,14 +632,14 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         MenuItemCompat.setShowAsAction(menu.add(
                         Menu.NONE, SHARE, 1, R.string.menu_share)
-                        .setIcon(android.R.drawable.ic_menu_share),
+                        .setIcon(R.drawable.ic_share_white),
                 MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                         MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
 
         if (app.isInstalled()) {
             MenuItemCompat.setShowAsAction(menu.add(
                             Menu.NONE, UNINSTALL, 1, R.string.menu_uninstall)
-                            .setIcon(android.R.drawable.ic_menu_delete),
+                            .setIcon(R.drawable.ic_delete_white),
                     MenuItemCompat.SHOW_AS_ACTION_IF_ROOM |
                             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
@@ -647,19 +647,19 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         if (mPm.getLaunchIntentForPackage(app.id) != null && app.canAndWantToUpdate()) {
             MenuItemCompat.setShowAsAction(menu.add(
                             Menu.NONE, LAUNCH, 1, R.string.menu_launch)
-                            .setIcon(android.R.drawable.ic_media_play),
+                            .setIcon(R.drawable.ic_play_arrow_white),
                     MenuItemCompat.SHOW_AS_ACTION_ALWAYS |
                             MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
         }
 
         menu.add(Menu.NONE, IGNOREALL, 2, R.string.menu_ignore_all)
-                    .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
+                    .setIcon(R.drawable.ic_do_not_disturb_white)
                     .setCheckable(true)
                     .setChecked(app.ignoreAllUpdates);
 
         if (app.hasUpdates()) {
             menu.add(Menu.NONE, IGNORETHIS, 2, R.string.menu_ignore_this)
-                    .setIcon(android.R.drawable.ic_menu_close_clear_cancel)
+                    .setIcon(R.drawable.ic_do_not_disturb_white)
                     .setCheckable(true)
                     .setChecked(app.ignoreThisUpdate >= app.suggestedVercode);
         }
@@ -667,7 +667,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         // Ignore on devices without Bluetooth
         if (app.isInstalled() && fdroidApp.bluetoothAdapter != null) {
             menu.add(Menu.NONE, SEND_VIA_BLUETOOTH, 3, R.string.send_via_bluetooth)
-                    .setIcon(android.R.drawable.stat_sys_data_bluetooth);
+                    .setIcon(R.drawable.ic_bluetooth_white);
         }
         return true;
     }
