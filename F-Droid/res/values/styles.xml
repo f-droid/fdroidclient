@@ -53,6 +53,7 @@
         <item name="android:layout_marginRight">9dp</item> <!-- 16px * 96dpi / 160dpi -->
         <item name="android:layout_height">63.3dp</item> <!-- 113px * 96dpi / 160dpi -->
         <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@android:color/white</item>
 
         <item name="android:textSize">18.5sp</item> <!-- 33px * 96dpi / 160dpi -->
         <item name="android:background">@drawable/swap_start_button_skin</item>
