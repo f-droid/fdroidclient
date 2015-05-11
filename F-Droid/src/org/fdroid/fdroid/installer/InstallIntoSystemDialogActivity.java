@@ -164,6 +164,8 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                InstallIntoSystemDialogActivity.this.finish();
             }
         });
         builder.create().show();
@@ -222,7 +224,13 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme);
                     alertBuilder.setTitle(R.string.root_access_denied_title);
                     alertBuilder.setMessage(getString(R.string.root_access_denied_body));
-                    alertBuilder.setNeutralButton(android.R.string.ok, null);
+                    alertBuilder.setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                            InstallIntoSystemDialogActivity.this.finish();
+                        }
+                    });
                     alertBuilder.create().show();
                 }
             }
@@ -314,13 +322,25 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                     checkRootTask.execute();
                 }
             });
-            builder.setNegativeButton(R.string.cancel, null);
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                    InstallIntoSystemDialogActivity.this.finish();
+                }
+            });
             builder.create().show();
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(theme);
             builder.setTitle(R.string.system_permission_denied_title);
             builder.setMessage(getString(R.string.system_permission_denied_body));
-            builder.setPositiveButton(R.string.ok, null);
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                    InstallIntoSystemDialogActivity.this.finish();
+                }
+            });
             builder.create().show();
         }
     }
