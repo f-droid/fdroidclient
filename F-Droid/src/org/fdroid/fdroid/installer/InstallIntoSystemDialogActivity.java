@@ -22,6 +22,7 @@ package org.fdroid.fdroid.installer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -36,6 +37,9 @@ import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
 
@@ -62,55 +66,6 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
     public static final String ACTION_UNINSTALL = "uninstall";
     public static final String ACTION_POST_INSTALL = "post_install";
     public static final String ACTION_FIRST_TIME = "first_time";
-
-    private static String SYSTEM_FOLDER;
-
-    static {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            SYSTEM_FOLDER = "/system/app/";
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
-                && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            // new folder introduced in
-            // https://github.com/android/platform_frameworks_base/commit/ccbf84f44c9e6a5ed3c08673614826bb237afc54
-            SYSTEM_FOLDER = "/system/priv-app/";
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            // new cluster based installation and app dirs
-            SYSTEM_FOLDER = "/system/priv-app/FDroid/";
-        }
-    }
-
-    private static final String APK_NAME = "FDroid.apk";
-
-    private static final String CMD_SCRIPT_KITKAT = "mount -o rw,remount /system\n" +
-            "cat %s > " + SYSTEM_FOLDER + APK_NAME + ".tmp\n" +
-            "chmod 655 " + SYSTEM_FOLDER + APK_NAME + ".tmp\n" +
-            "pm uninstall -k %s\n" + // -k to retain data
-            "mv " + SYSTEM_FOLDER + APK_NAME + ".tmp " + SYSTEM_FOLDER + APK_NAME + "\n" +
-            "pm install -r " + SYSTEM_FOLDER + APK_NAME + "\n" +
-            "sleep 5\n" +
-            "mount -o ro,remount /system\n" +
-            "am start -n org.fdroid.fdroid/.installer.InstallIntoSystemDialogActivity --ez post_install true";
-
-    // TODO: Currently only works with reboot. Find a way how this could work without.
-    // See http://stackoverflow.com/q/26487750
-    private static final String CMD_SCRIPT_LOLLIPOP_REBOOT = "am broadcast -a android.intent.action.ACTION_SHUTDOWN\n" +
-            "sleep 1\n" +
-            "reboot";
-
-    private static final String CMD_SCRIPT_LOLLIPOP = "mount -o rw,remount /system\n" +
-            "mkdir " + SYSTEM_FOLDER + "\n" + // cluster based app directories
-            "cat %s > " + SYSTEM_FOLDER + APK_NAME + ".tmp\n" +
-            "chmod 655 " + SYSTEM_FOLDER + APK_NAME + ".tmp\n" +
-            "pm uninstall -k %s\n" + // -k to retain data
-            "mv " + SYSTEM_FOLDER + APK_NAME + ".tmp " + SYSTEM_FOLDER + APK_NAME + "\n" +
-            "pm install -r " + SYSTEM_FOLDER + APK_NAME + "\n" +
-            "sleep 5\n" + CMD_SCRIPT_LOLLIPOP_REBOOT;
-
-    private static final String CMD_UNINSTALL = "mount -o rw,remount /system\n" +
-            "pm uninstall %s\n" +
-            "rm -f " + SYSTEM_FOLDER + APK_NAME + "\n" +
-            "sleep 5\n" +
-            "mount -o ro,remount /system";
 
     String action;
 
@@ -147,13 +102,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme);
-        String message = getString(R.string.system_install_first_time_message) +
-                "<br/><br/>";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            message += getString(R.string.system_install_question_lollipop);
-        } else {
-            message += getString(R.string.system_install_question);
-        }
+        String message = getString(R.string.system_install_first_time_message) + "<br/><br/>" + InstallFDroidAsSystem.create(getApplicationContext()).getWarningInfo();
         builder.setMessage(Html.fromHtml(message));
         builder.setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
             @Override
@@ -260,22 +209,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                // execute postInstall after reboot
-                Preferences.get().setPostSystemInstall(true);
-
-                Shell.SU.run(String.format(CMD_SCRIPT_LOLLIPOP,
-                        new String[]{
-                                InstallIntoSystemDialogActivity.this.getPackageCodePath(),
-                                InstallIntoSystemDialogActivity.this.getPackageName()
-                        }));
-            } else {
-                Shell.SU.run(String.format(CMD_SCRIPT_KITKAT,
-                        new String[]{
-                                InstallIntoSystemDialogActivity.this.getPackageCodePath(),
-                                InstallIntoSystemDialogActivity.this.getPackageName()
-                        }));
-            }
+            InstallFDroidAsSystem.create(getApplicationContext()).performInstall();
             return null;
         }
     };
@@ -365,10 +299,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            Shell.SU.run(String.format(CMD_UNINSTALL,
-                    new String[]{
-                            InstallIntoSystemDialogActivity.this.getPackageName()
-                    }));
+            InstallFDroidAsSystem.create(getApplicationContext()).performUninstall();
             return null;
         }
 
