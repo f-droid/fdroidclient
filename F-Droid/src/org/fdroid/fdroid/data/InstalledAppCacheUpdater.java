@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class InstalledAppCacheUpdater {
 
-    private static final String TAG = "InstalledAppCacheUpdater";
+    private static final String TAG = "InstalledAppCache";
 
     private final Context context;
 

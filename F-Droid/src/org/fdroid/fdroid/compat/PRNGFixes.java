@@ -167,7 +167,7 @@ public final class PRNGFixes extends Compatibility {
     @SuppressWarnings("serial")
     public static class LinuxPRNGSecureRandom extends SecureRandomSpi {
 
-        private static final String TAG = "PRNGFixes.LinuxPRNGSecureRandom";
+        private static final String TAG = "PRNGFixes";
 
         /*
          * IMPLEMENTATION NOTE: Requests to generate bytes and to mix in a seed
