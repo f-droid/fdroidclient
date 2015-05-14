@@ -6,8 +6,8 @@ LOCAL_MODULE := F-Droid
 LOCAL_MODULE_TAGS := optional
 LOCAL_PACKAGE_NAME := F-Droid
 
-fdroid_dir := $(LOCAL_PATH)
-fdroid_apk := F-Droid/build/outputs/apk/F-Droid-release-unsigned.apk
+fdroid_dir := $(LOCAL_PATH)/F-Droid
+fdroid_apk := build/outputs/apk/F-Droid-release-unsigned.apk
 
 $(LOCAL_PATH)/$(fdroid_apk):
 	cd $(fdroid_dir) && gradle assembleRelease
