@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -41,13 +42,18 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
 import android.text.Spanned;
 import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -717,7 +723,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     }
 
 
-    public void tryOpenUri(String s) {
+    private void tryOpenUri(String s) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(s));
         if (intent.resolveActivity(getPackageManager()) == null) {
             Toast.makeText(this,
@@ -726,6 +732,62 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             return;
         }
         startActivity(intent);
+    }
+
+    private static class SafeLinkMovementMethod extends LinkMovementMethod {
+
+        private static SafeLinkMovementMethod instance;
+
+        private final Context ctx;
+
+        private SafeLinkMovementMethod(Context ctx) {
+            this.ctx = ctx;
+        }
+
+        public static SafeLinkMovementMethod getInstance(Context ctx) {
+            if (instance == null) {
+                instance = new SafeLinkMovementMethod(ctx);
+            }
+            return instance;
+        }
+
+        private static CharSequence getLink(TextView widget, Spannable buffer,
+                MotionEvent event) {
+            int x = (int) event.getX();
+            int y = (int) event.getY();
+            x -= widget.getTotalPaddingLeft();
+            y -= widget.getTotalPaddingTop();
+            x += widget.getScrollX();
+            y += widget.getScrollY();
+
+            Layout layout = widget.getLayout();
+            final int line = layout.getLineForVertical(y);
+            final int off = layout.getOffsetForHorizontal(line, x);
+            final ClickableSpan[] links = buffer.getSpans(off, off, ClickableSpan.class);
+
+            if (links.length > 0) {
+                final ClickableSpan link = links[0];
+                final Spanned s = (Spanned) widget.getText();
+                return s.subSequence(s.getSpanStart(link), s.getSpanEnd(link));
+            }
+            return "null";
+        }
+
+        @Override
+        public boolean onTouchEvent(TextView widget, Spannable buffer,
+                MotionEvent event) {
+            try {
+                return super.onTouchEvent(widget, buffer, event);
+            } catch (ActivityNotFoundException ex) {
+                Selection.removeSelection(buffer);
+                final CharSequence link = getLink(widget, buffer, event);
+                Toast.makeText(ctx,
+                        ctx.getString(R.string.no_handler_app, link),
+                        Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+
     }
 
     protected void navigateUp() {
@@ -1142,7 +1204,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
             TextView description = (TextView) view.findViewById(R.id.description);
             Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
-            description.setMovementMethod(LinkMovementMethod.getInstance());
+            description.setMovementMethod(SafeLinkMovementMethod.getInstance(getActivity()));
             description.setText(desc.subSequence(0, desc.length() - 2));
 
             TextView appIdView = (TextView) view.findViewById(R.id.appid);

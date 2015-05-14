@@ -16,6 +16,8 @@
 
 * Normalize and check URLs of repos being added
 
+* Don't crash if links on descriptions cannot be handled by any application
+
 * Support building as part of a ROM via an Android.mk using gradle
 
 ### 0.88 (2015-04-28)
