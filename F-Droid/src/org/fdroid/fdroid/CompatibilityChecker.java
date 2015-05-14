@@ -85,11 +85,14 @@ public class CompatibilityChecker extends Compatibility {
 
         List<String> incompatibleReasons = new ArrayList<>();
 
-        if (!hasApi(apk.minSdkVersion) || !upToApi(apk.maxSdkVersion)) {
-            incompatibleReasons.add(
-                context.getResources().getString(
+        if (!hasApi(apk.minSdkVersion)) {
+            incompatibleReasons.add(context.getString(
                     R.string.minsdk_or_later,
                     Utils.getAndroidVersionName(apk.minSdkVersion)));
+        } else if (!upToApi(apk.maxSdkVersion)) {
+            incompatibleReasons.add(context.getString(
+                    R.string.up_to_maxsdk,
+                    Utils.getAndroidVersionName(apk.maxSdkVersion)));
         }
 
         if (apk.features != null) {
