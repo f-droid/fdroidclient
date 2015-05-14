@@ -7,7 +7,8 @@ import java.io.IOException;
 
 public class BluetoothClient {
 
-    private static final String TAG = "org.fdroid.fdroid.net.bluetooth.BluetoothClient";
+    @SuppressWarnings("unused")
+    private static final String TAG = "BluetoothClient";
 
     private BluetoothDevice device;
 

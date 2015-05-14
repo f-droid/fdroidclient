@@ -40,7 +40,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     private static final int REQUEST_BLUETOOTH_ENABLE = 1;
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 2;
 
-    private static final String TAG = "org.fdroid.fdroid.views.swap.SwapActivity";
+    private static final String TAG = "SwapActivity";
 
     private Timer shutdownLocalRepoTimer;
     private UpdateAsyncTask updateSwappableAppsTask = null;
@@ -241,6 +241,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
         Log.d(TAG, "Initiating Bluetooth swap instead of wifi.");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        // TODO: May be null (e.g. on an emulator).
         if (adapter.isEnabled()) {
             Log.d(TAG, "Bluetooth enabled, will pair with device.");
             ensureBluetoothDiscoverable();

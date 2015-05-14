@@ -151,6 +151,7 @@ public class WifiStateChangeService extends Service {
             Intent intent = new Intent(BROADCAST);
             LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
             WifiStateChangeService.this.stopSelf();
+            FDroidApp.localRepoWifi.restartIfRunning();
         }
     }
 

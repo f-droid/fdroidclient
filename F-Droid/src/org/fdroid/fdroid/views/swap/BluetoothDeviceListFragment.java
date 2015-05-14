@@ -304,12 +304,12 @@ public class BluetoothDeviceListFragment extends ThemeableListFragment {
                 // TODO: Is the term "Bonded device" common parlance among phone users?
                 // It sounds a bit technical to me, maybe something more lay like "Previously connected".
                 // Although it is technically not as accurate, it would make sense to more people...
-                return "Bonded";
+                return getString(R.string.swap_bluetooth_bonded_device);
             } else if (deviceBondState == BluetoothDevice.BOND_BONDING) {
-                return "Currently bonding...";
+                return getString(R.string.swap_bluetooth_bonding_device);
             } else {
                 // TODO: Might be a little bit harsh, makes it sound more malicious than it should.
-                return "Unknown device";
+                return getString(R.string.swap_bluetooth_unknown_device);
             }
         }
     }

@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
@@ -21,10 +22,10 @@ import java.util.List;
  */
 public class BluetoothServer extends Thread {
 
-    private static final String TAG = "org.fdroid.fdroid.net.bluetooth.BluetoothServer";
+    private static final String TAG = "BluetoothServer";
 
     private BluetoothServerSocket serverSocket;
-    private List<Connection> clients = new ArrayList<Connection>();
+    private List<Connection> clients = new ArrayList<>();
 
     private final Context context;
 
@@ -74,8 +75,6 @@ public class BluetoothServer extends Thread {
 
     private static class Connection extends Thread
     {
-
-        private static final String TAG = "org.fdroid.fdroid.net.bluetooth.BluetoothServer.Connection";
 
         private final Context context;
         private final BluetoothSocket socket;
@@ -139,7 +138,13 @@ public class BluetoothServer extends Thread {
                         .build();
 
             } catch (IOException e) {
-                throw new IOException("Error getting file " + request.getPath() + " from local repo proxy - " + e.getMessage(), e);
+                if (Build.VERSION.SDK_INT <= 9) {
+                    // Would like to use the specific IOException below with a "cause", but it is
+                    // only supported on SDK 9, so I guess this is the next most useful thing.
+                    throw e;
+                } else {
+                    throw new IOException("Error getting file " + request.getPath() + " from local repo proxy - " + e.getMessage(), e);
+                }
             }
 
         }

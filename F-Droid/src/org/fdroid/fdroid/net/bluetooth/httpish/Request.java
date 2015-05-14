@@ -15,11 +15,11 @@ import java.util.Map;
 public class Request {
 
 
-    private static final String TAG = "org.fdroid.fdroid.net.bluetooth.httpish.Request";
+    private static final String TAG = "bluetooth.Request";
 
-    public static interface Methods {
-        public static final String HEAD = "HEAD";
-        public static final String GET  = "GET";
+    public interface Methods {
+        String HEAD = "HEAD";
+        String GET  = "GET";
     }
 
     private String method;
@@ -46,6 +46,10 @@ public class Request {
 
     public static Request createGET(String path, BluetoothConnection connection) {
         return new Request(Methods.GET, path, connection);
+    }
+
+    public String getHeaderValue(String header) {
+        return headers.containsKey(header) ? headers.get(header) : null;
     }
 
     public Response send() throws IOException {
@@ -141,7 +145,7 @@ public class Request {
      * our HTTP-ish implementation.
      */
     private Map<String, String> readHeaders() throws IOException {
-        Map<String, String> headers = new HashMap<String, String>();
+        Map<String, String> headers = new HashMap<>();
         String responseLine = input.readLine();
         while (responseLine != null && responseLine.length() > 0) {
 

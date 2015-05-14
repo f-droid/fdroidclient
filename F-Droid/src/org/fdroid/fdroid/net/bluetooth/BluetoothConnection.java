@@ -12,7 +12,7 @@ import java.io.OutputStream;
 
 public class BluetoothConnection {
 
-    private static final String TAG = "org.fdroid.fdroid.net.bluetooth.BluetoothConnection";
+    private static final String TAG = "BluetoothConnection";
 
     private InputStream input = null;
     private OutputStream output = null;

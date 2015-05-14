@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class Response {
 
-    private static final String TAG = "org.fdroid.fdroid.net.bluetooth.httpish.Response";
+    private static final String TAG = "bluetooth.Response";
 
     private int statusCode;
     private Map<String, String> headers;

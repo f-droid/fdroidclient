@@ -17,17 +17,11 @@ import java.net.MalformedURLException;
 
 public class BluetoothDownloader extends Downloader {
 
-    private static final String TAG = "org.fdroid.fdroid.net.BluetoothDownloader";
+    private static final String TAG = "BluetoothDownloader";
 
     private final BluetoothConnection connection;
     private FileDetails fileDetails;
     private final String sourcePath;
-
-    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, String destFile, Context ctx) throws FileNotFoundException, MalformedURLException {
-        super(destFile, ctx);
-        this.connection = connection;
-        this.sourcePath = sourcePath;
-    }
 
     public BluetoothDownloader(BluetoothConnection connection, String sourcePath, Context ctx) throws IOException {
         super(ctx);
@@ -54,7 +48,7 @@ public class BluetoothDownloader extends Downloader {
 
         // TODO: Manage the dependency which includes this class better?
         // Right now, I only needed the one class from apache commons.
-        // There are countless classes online which provide this functionaligy,
+        // There are countless classes online which provide this functionality,
         // including some which are available from the Android SDK - the only
         // problem is that they have a funky API which doesn't just wrap a
         // plain old InputStream (the class is ContentLengthInputStream -
@@ -67,7 +61,7 @@ public class BluetoothDownloader extends Downloader {
 
     /**
      * May return null if an error occurred while getting file details.
-     * TODO: Should we throw an exception? Everywhere else in this blue package throws IO exceptions weely neely.
+     * TODO: Should we throw an exception? Everywhere else in this blue package throws IO exceptions weelx`x`xy-neely.
      * Will probably require some thought as to how the API looks, with regards to all of the public methods
      * and their signatures.
      */
