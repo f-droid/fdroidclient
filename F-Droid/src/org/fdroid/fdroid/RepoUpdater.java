@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
@@ -41,16 +44,16 @@ public class RepoUpdater {
     public static final String PROGRESS_TYPE_PROCESS_XML = "processingXml";
     public static final String PROGRESS_DATA_REPO_ADDRESS = "repoAddress";
 
-    protected final Context context;
-    protected final Repo repo;
+    @NonNull protected final Context context;
+    @NonNull protected final Repo repo;
     private List<App> apps = new ArrayList<>();
     private List<Apk> apks = new ArrayList<>();
     private RepoUpdateRememberer rememberer = null;
     protected boolean usePubkeyInJar = false;
     protected boolean hasChanged = false;
-    protected ProgressListener progressListener;
+    @Nullable protected ProgressListener progressListener;
 
-    public RepoUpdater(Context ctx, Repo repo) {
+    public RepoUpdater(@NonNull Context ctx, @NonNull Repo repo) {
         this.context = ctx;
         this.repo    = repo;
     }
@@ -207,7 +210,7 @@ public class RepoUpdater {
         }
     }
 
-    private ContentValues prepareRepoDetailsForSaving (RepoXMLHandler handler, String etag) {
+    private ContentValues prepareRepoDetailsForSaving(RepoXMLHandler handler, String etag) {
 
         ContentValues values = new ContentValues();
 
@@ -218,19 +221,11 @@ public class RepoUpdater {
         }
 
         /*
-         * We read an unsigned index that indicates that a signed version
-         * is available. Or we received a repo config that included the
-         * fingerprint, so we need to save the pubkey now.
+         * We received a repo config that included the fingerprint, so we need to save
+         * the pubkey now.
          */
-        if (handler.getPubKey() != null &&
-                (repo.pubkey == null || usePubkeyInJar)) {
-            // TODO: Spend the time *now* going to get the etag of the signed
-            // repo, so that we can prevent downloading it next time. Otherwise
-            // next time we update, we have to download the signed index
-            // in its entirety, regardless of if it contains the same
-            // information as the unsigned one does not...
-            Log.d(TAG,
-                    "Public key found - switching to signed repo for future updates");
+        if (handler.getPubKey() != null && (repo.pubkey == null || usePubkeyInJar)) {
+            Log.d(TAG, "Public key found - saving in the database.");
             values.put(RepoProvider.DataColumns.PUBLIC_KEY, handler.getPubKey());
             usePubkeyInJar = false;
         }
@@ -345,7 +340,11 @@ public class RepoUpdater {
 
             // Can only read certificates from jar after it has been read
             // completely, so we put it after the copy above...
-            if (!verifyCerts(indexEntry)) {
+            if (isTofuRequest()) {
+                Log.i(TAG, "Implicitly trusting the signature of index.jar, because this is a TOFU request");
+                // Note that later on in the process we will save the pubkey against they repo, so
+                // that future requests verify against the signature we got this time.
+            } else if (!verifyCerts(indexEntry)) {
                 indexFile.delete();
                 throw new UpdateException(repo, "Index signature mismatch");
             }
@@ -366,6 +365,16 @@ public class RepoUpdater {
         }
 
         return indexFile;
+    }
+
+    /**
+     * If the repo doesn't have a fingerprint, then this is a "Trust On First Use" (TOFU)
+     * request. In that case, we will not verify the certificate, but rather implicitly trust
+     * the file we downloaded. We'll extract the certificate from the jar, and then use that
+     * to verify future requests to the same repository.
+     */
+    private boolean isTofuRequest() {
+        return TextUtils.isEmpty(repo.fingerprint);
     }
 
 }
