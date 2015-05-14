@@ -219,7 +219,8 @@ public final class Utils {
     }
 
     /* PackageManager doesn't give us minSdkVersion, so we have to parse it */
-    public static int getMinSdkVersion(Context context, String packageName) {
+    private static int getMinMaxSdkVersion(Context context, String packageName,
+            String attrName) {
         try {
             AssetManager am = context.createPackageContext(packageName, 0).getAssets();
             XmlResourceParser xml = am.openXmlResourceParser("AndroidManifest.xml");
@@ -227,7 +228,7 @@ public final class Utils {
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 if (eventType == XmlPullParser.START_TAG && xml.getName().equals("uses-sdk")) {
                     for (int j = 0; j < xml.getAttributeCount(); j++) {
-                        if (xml.getAttributeName(j).equals("minSdkVersion")) {
+                        if (xml.getAttributeName(j).equals(attrName)) {
                             return Integer.parseInt(xml.getAttributeValue(j));
                         }
                     }
@@ -237,7 +238,15 @@ public final class Utils {
         } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
             e.printStackTrace();
         }
-        return 8; // some kind of hopeful default
+        return 0;
+    }
+
+    public static int getMinSdkVersion(Context context, String packageName) {
+        return getMinMaxSdkVersion(context, packageName, "minSdkVersion");
+    }
+
+    public static int getMaxSdkVersion(Context context, String packageName) {
+        return getMinMaxSdkVersion(context, packageName, "maxSdkVersion");
     }
 
     public static int countSubstringOccurrence(File file, String substring) throws IOException {

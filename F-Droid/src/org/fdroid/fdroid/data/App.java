@@ -257,6 +257,7 @@ public class App extends ValueObject implements Comparable<App> {
         apk.hash = Utils.getBinaryHash(apkFile, apk.hashType);
         apk.added = this.added;
         apk.minSdkVersion = Utils.getMinSdkVersion(context, packageName);
+        apk.maxSdkVersion = Utils.getMaxSdkVersion(context, packageName);
         apk.id = this.id;
         apk.installedFile = apkFile;
         apk.permissions = Utils.CommaSeparatedList.make(packageInfo.requestedPermissions);
