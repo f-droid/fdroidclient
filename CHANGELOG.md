@@ -14,6 +14,10 @@
 
 * Fix regression where adding repos via URLs would not actually add a new repo
 
+* Normalize and check URLs of repos being added
+
+* Support building as part of a ROM via an Android.mk using gradle
+
 ### 0.88 (2015-04-28)
 
 * Show list of apps in the update notification (on devices with
