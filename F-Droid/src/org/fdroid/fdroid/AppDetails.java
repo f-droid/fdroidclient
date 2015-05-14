@@ -1182,12 +1182,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                             // TODO: Make this list RTL friendly
                             sb.append("\t• ").append(permission.getName()).append('\n');
                         } catch (PackageManager.NameNotFoundException e) {
-                            if (permissionName.equals("ACCESS_SUPERUSER")) {
-                                // TODO: i18n this string, but surely it is already translated somewhere?
-                                sb.append("\t• Full permissions to all device features and storage\n");
-                            } else {
-                                Log.e(TAG, "Permission not yet available: " + permissionName);
-                            }
+                            Log.e(TAG, "Ignoring unknown permission: " + permissionName);
                         }
                     }
                     if (sb.length() > 0) {
