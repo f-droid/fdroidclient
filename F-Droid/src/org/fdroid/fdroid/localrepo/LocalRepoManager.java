@@ -435,6 +435,7 @@ public class LocalRepoManager {
             tag("sig", app.installedApk.sig.toLowerCase(Locale.US));
             tag("size", app.installedApk.installedFile.length());
             tag("sdkver", app.installedApk.minSdkVersion);
+            tag("maxsdkver", app.installedApk.maxSdkVersion);
             tag("added", app.installedApk.added);
             tagFeatures(app);
             tagPermissions(app);

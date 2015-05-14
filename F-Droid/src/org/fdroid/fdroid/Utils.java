@@ -218,7 +218,8 @@ public final class Utils {
         return androidVersionNames[sdkLevel];
     }
 
-    /* PackageManager doesn't give us minSdkVersion, so we have to parse it */
+    /* PackageManager doesn't give us the min and max sdk versions, so we have
+     * to parse it */
     private static int getMinMaxSdkVersion(Context context, String packageName,
             String attrName) {
         try {
