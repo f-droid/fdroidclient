@@ -8,6 +8,8 @@
 
 * Properly cache apk files on the SD card if configured this way
 
+* Drop support for unsigned repos in favour of signed ones and TOFU support
+
 * Provide better feedback when adding repos with same name of existing repo
 
 * Add support for special Google Play search terms like "pub:" and "pname:"
