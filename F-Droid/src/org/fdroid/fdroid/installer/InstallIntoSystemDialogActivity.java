@@ -22,11 +22,9 @@ package org.fdroid.fdroid.installer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
@@ -38,25 +36,10 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import eu.chainfire.libsuperuser.Shell;
 
 /**
  * Note: This activity has no view on its own, it displays consecutive dialogs.
- * <p/>
- * Partly based on https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
- * http://omerjerk.in/2014/08/how-to-install-an-app-to-system-partition/
- * <p/>
- * Info for lollipop:
- * http://stackoverflow.com/q/26487750
- * <p/>
- * Removed apk observers in
- * https://github.com/android/platform_frameworks_base/commit/84e71d1d61c53cd947becc7879e05947be681103
- * <p/>
- * History of PackageManagerService:
- * https://github.com/android/platform_frameworks_base/commits/lollipop-release/services/core/java/com/android/server/pm/PackageManagerService.java
  */
 public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
@@ -209,7 +192,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallFDroidAsSystem.create(getApplicationContext()).performInstall();
+            InstallFDroidAsSystem.create(getApplicationContext()).runInstall();
             return null;
         }
     };
@@ -299,7 +282,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallFDroidAsSystem.create(getApplicationContext()).performUninstall();
+            InstallFDroidAsSystem.create(getApplicationContext()).runUninstall();
             return null;
         }
 

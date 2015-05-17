@@ -1,5 +1,25 @@
+/*
+ * Copyright (C) 2015 Dominik Schürmann <dominik@dominikschuermann.de>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 package org.fdroid.fdroid.installer;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 
@@ -11,6 +31,12 @@ import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
 
+/**
+ * Partly based on
+ * http://omerjerk.in/2014/08/how-to-install-an-app-to-system-partition/
+ * https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
+ */
+@TargetApi(Build.VERSION_CODES.FROYO)
 abstract class InstallFDroidAsSystem {
 
     protected final Context context;
@@ -39,59 +65,47 @@ abstract class InstallFDroidAsSystem {
         return context.getString(R.string.system_install_question);
     }
 
-    final void performUninstall() {
+    final void runUninstall() {
         final String[] commands = {
                 "mount -o rw,remount /system",
                 "pm uninstall " + context.getPackageName(),
-                "rm -f " + installPath(),
+                "rm -f " + getInstallPath(),
                 "sleep 5",
                 "mount -o ro,remount /system"
         };
         Shell.SU.run(commands);
     }
 
-    final void performInstall() {
+    final void runInstall() {
         onPreInstall();
-        Shell.SU.run(getCommands());
+        Shell.SU.run(getInstallCommands());
     }
 
-    private String installPath() {
+    protected String getInstallPath() {
         return getSystemFolder() + "FDroid.apk";
     }
 
-    private List<String> getCommands() {
+    private List<String> getInstallCommands() {
         final List<String> commands = new ArrayList<>();
-        commands.add(makePartitionWriteable());
-        commands.add(copyApkToPartition());
-        commands.add(uninstallFDroid());
-        commands.addAll(reinstallFDroidAsSystem());
-        commands.addAll(makePartitionReadOnly());
-        return commands;
-    }
-
-    protected String makePartitionWriteable() {
-        return "mount -o rw,remount /system";
-    }
-
-    protected String copyApkToPartition() {
-        return "cat " + context.getPackageCodePath() + " > " + installPath() + ".tmp";
-    }
-
-    protected String uninstallFDroid() {
-        return "pm uninstall -k " + context.getPackageName();
-    }
-
-    protected List<String> reinstallFDroidAsSystem() {
-        final List<String> commands = new ArrayList<>(3);
-        commands.add("mv " + installPath() + ".tmp " + installPath());
-        commands.add("pm install -r " + installPath());
-        commands.add("sleep 5");
-        return commands;
-    }
-
-    protected List<String> makePartitionReadOnly() {
-        final List<String> commands = new ArrayList<>(2);
+        commands.add("mount -o rw,remount /system");
+        commands.addAll(getCopyToSystemCommands());
+        commands.add("pm uninstall -k " + context.getPackageName()); // -k to retain data
+        commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
+        commands.add("pm install -r " + getInstallPath());
+        commands.add("sleep 5"); // wait until the app is really installed
         commands.add("mount -o ro,remount /system");
+        commands.addAll(getPostInstallCommands());
+        return commands;
+    }
+
+    protected List<String> getCopyToSystemCommands() {
+        final List<String> commands = new ArrayList<>(1);
+        commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+        return commands;
+    }
+
+    protected List<String> getPostInstallCommands() {
+        final List<String> commands = new ArrayList<>(1);
         commands.add("am start -n org.fdroid.fdroid/.installer.InstallIntoSystemDialogActivity --ez post_install true");
         return commands;
     }
@@ -116,7 +130,7 @@ abstract class InstallFDroidAsSystem {
         }
 
         /**
-         * New folder introduced in
+         * On KitKat, "Some system apps are more system than others"
          * https://github.com/android/platform_frameworks_base/commit/ccbf84f44c9e6a5ed3c08673614826bb237afc54
          */
         @Override
@@ -126,33 +140,17 @@ abstract class InstallFDroidAsSystem {
 
     }
 
+    /**
+     * History of PackageManagerService in Lollipop:
+     * https://github.com/android/platform_frameworks_base/commits/lollipop-release/services/core/java/com/android/server/pm/PackageManagerService.java
+     */
     private static class LollipopImpl extends InstallFDroidAsSystem {
 
         public LollipopImpl(Context context) {
             super(context);
         }
 
-        /**
-         * New cluster based installation and app dirs
-         */
         @Override
-        protected String getSystemFolder() {
-            return "/system/priv-app/FDroid/";
-        }
-
-        /**
-         * TODO: Currently only works with reboot. Find a way how this could work without.
-         * See http://stackoverflow.com/q/26487750
-         */
-        @Override
-        protected List<String> makePartitionReadOnly() {
-            List<String> commands = new ArrayList<>(3);
-            commands.add("am broadcast -a android.intent.action.ACTION_SHUTDOWN");
-            commands.add("sleep 1");
-            commands.add("reboot");
-            return commands;
-        }
-
         protected void onPreInstall() {
             // Setup preference to execute postInstall after reboot
             Preferences.get().setPostSystemInstall(true);
@@ -160,6 +158,43 @@ abstract class InstallFDroidAsSystem {
 
         public String getWarningInfo() {
             return context.getString(R.string.system_install_question_lollipop);
+        }
+
+        /**
+         * Cluster-style layout where each app is placed in a unique directory
+         */
+        @Override
+        protected String getSystemFolder() {
+            return "/system/priv-app/FDroid/";
+        }
+
+        /**
+         * Create app directory
+         */
+        @Override
+        protected List<String> getCopyToSystemCommands() {
+            List<String> commands = new ArrayList<>(2);
+            commands.add("mkdir " + getSystemFolder()); // create app directory if not existing
+            commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+            return commands;
+        }
+
+        /**
+         * TODO: Currently only works with reboot
+         * <p/>
+         * File observers on /system/priv-app/ have been removed because they don't work with the new
+         * cluser-style layout. See
+         * https://github.com/android/platform_frameworks_base/commit/84e71d1d61c53cd947becc7879e05947be681103
+         * <p/>
+         * Related stack overflow post: http://stackoverflow.com/q/26487750
+         */
+        @Override
+        protected List<String> getPostInstallCommands() {
+            List<String> commands = new ArrayList<>(3);
+            commands.add("am broadcast -a android.intent.action.ACTION_SHUTDOWN");
+            commands.add("sleep 1");
+            commands.add("reboot");
+            return commands;
         }
 
     }
