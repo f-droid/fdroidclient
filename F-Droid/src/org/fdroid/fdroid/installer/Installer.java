@@ -181,15 +181,14 @@ abstract public class Installer {
     }
 
     public static boolean hasSystemPermissions(Context context, PackageManager pm) {
-        int checkInstallPermission =
-                pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName());
-        int checkDeletePermission =
-                pm.checkPermission(permission.DELETE_PACKAGES, context.getPackageName());
-        boolean permissionsGranted =
-                (checkInstallPermission == PackageManager.PERMISSION_GRANTED
-                && checkDeletePermission == PackageManager.PERMISSION_GRANTED);
+        boolean hasInstallPermission =
+                (pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName())
+                        == PackageManager.PERMISSION_GRANTED);
+        boolean hasDeletePermission =
+                (pm.checkPermission(permission.DELETE_PACKAGES, context.getPackageName())
+                        == PackageManager.PERMISSION_GRANTED);
 
-        return permissionsGranted;
+        return (hasInstallPermission && hasDeletePermission);
     }
 
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {
