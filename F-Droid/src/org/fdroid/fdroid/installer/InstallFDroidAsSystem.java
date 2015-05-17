@@ -99,8 +99,9 @@ abstract class InstallFDroidAsSystem {
     }
 
     protected List<String> getCopyToSystemCommands() {
-        final List<String> commands = new ArrayList<>(1);
+        final List<String> commands = new ArrayList<>(2);
         commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+        commands.add("chmod 655 " + getInstallPath() + ".tmp");
         return commands;
     }
 
@@ -173,9 +174,10 @@ abstract class InstallFDroidAsSystem {
          */
         @Override
         protected List<String> getCopyToSystemCommands() {
-            List<String> commands = new ArrayList<>(2);
+            List<String> commands = new ArrayList<>(3);
             commands.add("mkdir " + getSystemFolder()); // create app directory if not existing
             commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+            commands.add("chmod 655 " + getInstallPath() + ".tmp");
             return commands;
         }
 
