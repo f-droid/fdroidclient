@@ -37,15 +37,15 @@ import eu.chainfire.libsuperuser.Shell;
  * https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
  */
 @TargetApi(Build.VERSION_CODES.FROYO)
-abstract class InstallFDroidAsSystem {
+abstract class InstallIntoSystem {
 
     protected final Context context;
 
-    public InstallFDroidAsSystem(final Context context) {
+    public InstallIntoSystem(final Context context) {
         this.context = context;
     }
 
-    public static InstallFDroidAsSystem create(final Context context) {
+    public static InstallIntoSystem create(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return new LollipopImpl(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -111,7 +111,7 @@ abstract class InstallFDroidAsSystem {
         return commands;
     }
 
-    private static class PreKitKatImpl extends InstallFDroidAsSystem {
+    private static class PreKitKatImpl extends InstallIntoSystem {
 
         public PreKitKatImpl(Context context) {
             super(context);
@@ -124,7 +124,7 @@ abstract class InstallFDroidAsSystem {
 
     }
 
-    private static class KitKatToLollipopImpl extends InstallFDroidAsSystem {
+    private static class KitKatToLollipopImpl extends InstallIntoSystem {
 
         public KitKatToLollipopImpl(Context context) {
             super(context);
@@ -145,7 +145,7 @@ abstract class InstallFDroidAsSystem {
      * History of PackageManagerService in Lollipop:
      * https://github.com/android/platform_frameworks_base/commits/lollipop-release/services/core/java/com/android/server/pm/PackageManagerService.java
      */
-    private static class LollipopImpl extends InstallFDroidAsSystem {
+    private static class LollipopImpl extends InstallIntoSystem {
 
         public LollipopImpl(Context context) {
             super(context);

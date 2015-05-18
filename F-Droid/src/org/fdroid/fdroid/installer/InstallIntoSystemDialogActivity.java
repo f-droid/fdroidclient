@@ -85,7 +85,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme);
-        String message = getString(R.string.system_install_first_time_message) + "<br/><br/>" + InstallFDroidAsSystem.create(getApplicationContext()).getWarningInfo();
+        String message = getString(R.string.system_install_first_time_message) + "<br/><br/>" + InstallIntoSystem.create(getApplicationContext()).getWarningInfo();
         builder.setMessage(Html.fromHtml(message));
         builder.setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
             @Override
@@ -192,7 +192,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallFDroidAsSystem.create(getApplicationContext()).runInstall();
+            InstallIntoSystem.create(getApplicationContext()).runInstall();
             return null;
         }
     };
@@ -282,7 +282,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallFDroidAsSystem.create(getApplicationContext()).runUninstall();
+            InstallIntoSystem.create(getApplicationContext()).runUninstall();
             return null;
         }
 
