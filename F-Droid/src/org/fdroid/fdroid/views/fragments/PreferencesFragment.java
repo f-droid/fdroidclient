@@ -19,7 +19,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.installer.CheckRootAsyncTask;
 import org.fdroid.fdroid.installer.InstallIntoSystemDialogActivity;
 import org.fdroid.fdroid.installer.Installer;
 
@@ -45,7 +44,6 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_LANGUAGE,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
-        Preferences.PREF_ROOT_INSTALLER,
         Preferences.PREF_SYSTEM_INSTALLER,
         Preferences.PREF_ENABLE_PROXY,
         Preferences.PREF_PROXY_HOST,
@@ -162,10 +160,6 @@ public class PreferencesFragment extends PreferenceFragment
             checkSummary(key, R.string.expert_on);
             break;
 
-        case Preferences.PREF_ROOT_INSTALLER:
-            checkSummary(key, R.string.root_installer_on);
-            break;
-
         case Preferences.PREF_SYSTEM_INSTALLER:
             checkSummary(key, R.string.system_installer_on);
             break;
@@ -194,61 +188,6 @@ public class PreferencesFragment extends PreferenceFragment
             break;
 
         }
-    }
-
-    /**
-     * Initializes RootInstaller preference. This method ensures that the preference can only be checked and persisted
-     * when the user grants root access for F-Droid.
-     */
-    protected void initRootInstallerPreference() {
-        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_ROOT_INSTALLER);
-
-        // we are handling persistence ourself!
-        pref.setPersistent(false);
-
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                final CheckBoxPreference pref = (CheckBoxPreference) preference;
-
-                if (pref.isChecked()) {
-                    CheckRootAsyncTask checkTask = new CheckRootAsyncTask(getActivity(), new CheckRootAsyncTask.CheckRootCallback() {
-
-                        @Override
-                        public void onRootCheck(boolean rootGranted) {
-                            if (rootGranted) {
-                                // root access granted
-                                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                                editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, true);
-                                editor.commit();
-                                pref.setChecked(true);
-                            } else {
-                                // root access denied
-                                SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                                editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, false);
-                                editor.commit();
-                                pref.setChecked(false);
-
-                                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-                                alertBuilder.setTitle(R.string.root_access_denied_title);
-                                alertBuilder.setMessage(getActivity().getString(R.string.root_access_denied_body));
-                                alertBuilder.setNeutralButton(android.R.string.ok, null);
-                                alertBuilder.create().show();
-                            }
-                        }
-                    });
-                    checkTask.execute();
-                } else {
-                    SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                    editor.putBoolean(Preferences.PREF_ROOT_INSTALLER, false);
-                    editor.commit();
-                    pref.setChecked(false);
-                }
-
-                return true;
-            }
-        });
     }
 
     /**
@@ -352,7 +291,6 @@ public class PreferencesFragment extends PreferenceFragment
             updateSummary(key, false);
         }
 
-        initRootInstallerPreference();
         initSystemInstallerPreference();
         initUninstallSystemAppPreference();
     }

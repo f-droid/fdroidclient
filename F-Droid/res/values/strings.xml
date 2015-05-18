@@ -25,8 +25,6 @@
 	<string name="notify_on">Notify when updates are available</string>
 	<string name="update_history">Update history</string>
 	<string name="update_history_summ">Days to consider apps new or recent: %s</string>
-	<string name="root_installer">Install using root access</string>
-	<string name="root_installer_on">Request root access to install, update, and remove packages</string>
 	<string name="system_installer">Install using system-permissions</string>
 	<string name="system_installer_on">Use system permissions to install, update, and remove packages</string>
 	<string name="uninstall_system">Uninstall F-Droid</string>

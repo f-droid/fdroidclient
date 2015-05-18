@@ -50,7 +50,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_CACHE_APK = "cacheDownloaded";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_UPD_LAST = "lastUpdateCheck";
-    public static final String PREF_ROOT_INSTALLER = "rootInstaller";
     public static final String PREF_SYSTEM_INSTALLER = "systemInstaller";
     public static final String PREF_UNINSTALL_SYSTEM_APP = "uninstallSystemApp";
     public static final String PREF_LOCAL_REPO_BONJOUR = "localRepoBonjour";
@@ -67,7 +66,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_COMPACT_LAYOUT = false;
     private static final boolean DEFAULT_ROOTED = true;
     private static final int DEFAULT_UPD_HISTORY = 14;
-    private static final boolean DEFAULT_ROOT_INSTALLER = false;
     private static final boolean DEFAULT_SYSTEM_INSTALLER = false;
     private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final boolean DEFAULT_CACHE_APK = false;
@@ -105,10 +103,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     private void uninitialize(String key) {
         initialized.put(key, false);
-    }
-
-    public boolean isRootInstallerEnabled() {
-        return preferences.getBoolean(PREF_ROOT_INSTALLER, DEFAULT_ROOT_INSTALLER);
     }
 
     public boolean isSystemInstallerEnabled() {

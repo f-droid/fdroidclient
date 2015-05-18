@@ -95,27 +95,9 @@ abstract public class Installer {
     /**
      * Creates a new Installer for installing/deleting processes starting from
      * an Activity
-     *
-     * @param activity
-     * @param pm
-     * @param callback
-     * @return
-     * @throws AndroidNotCompatibleException
      */
     public static Installer getActivityInstaller(Activity activity, PackageManager pm,
             InstallerCallback callback) {
-
-        // if root installer has been activated in preferences -> RootInstaller
-        boolean isRootInstallerEnabled = Preferences.get().isRootInstallerEnabled();
-        if (isRootInstallerEnabled) {
-            Log.d(TAG, "root installer preference enabled -> RootInstaller");
-
-            try {
-                return new RootInstaller(activity, pm, callback);
-            } catch (AndroidNotCompatibleException e) {
-                Log.e(TAG, "Android not compatible with RootInstaller!", e);
-            }
-        }
 
         // system permissions and pref enabled -> SystemInstaller
         boolean isSystemInstallerEnabled = Preferences.get().isSystemInstallerEnabled();
@@ -160,16 +142,6 @@ abstract public class Installer {
 
     public static Installer getUnattendedInstaller(Context context, PackageManager pm,
             InstallerCallback callback) throws AndroidNotCompatibleException {
-
-        // if root installer has been activated in preferences -> RootInstaller
-        boolean useRootInstaller = Preferences.get().isRootInstallerEnabled();
-        if (useRootInstaller) {
-            try {
-                return new RootInstaller(context, pm, callback);
-            } catch (AndroidNotCompatibleException e) {
-                Log.e(TAG, "Android not compatible with RootInstaller!", e);
-            }
-        }
 
         if (hasSystemPermissions(context, pm)) {
             // we have system permissions!
