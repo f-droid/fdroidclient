@@ -1,4 +1,4 @@
-### Upcoming release
+### 0.91 (2015-05-18)
 
 * Don't request the "Write to external storage" permission on 4.4 and later
   since it's not needed to use our own external app directory
