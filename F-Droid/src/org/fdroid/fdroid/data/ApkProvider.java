@@ -129,9 +129,9 @@ public class ApkProvider extends FDroidProvider {
                 List<Apk> apks1 = apks.subList(0, middle);
                 List<Apk> apks2 = apks.subList(middle, apks.size());
                 knownApks.addAll(knownApks(context, apks1, fields));
-                knownApks.addAll(knownApks(context,apks2, fields));
+                knownApks.addAll(knownApks(context, apks2, fields));
             } else {
-                knownApks.addAll(knownApksSafe(context,apks, fields));
+                knownApks.addAll(knownApksSafe(context, apks, fields));
             }
             return knownApks;
 
@@ -215,7 +215,7 @@ public class ApkProvider extends FDroidProvider {
 
     private static final UriMatcher matcher = new UriMatcher(-1);
 
-    public static final Map<String,String> REPO_FIELDS = new HashMap<>();
+    public static final Map<String, String> REPO_FIELDS = new HashMap<>();
 
     static {
         REPO_FIELDS.put(DataColumns.REPO_VERSION, RepoProvider.DataColumns.VERSION);
@@ -424,7 +424,7 @@ public class ApkProvider extends FDroidProvider {
     }
 
     private static void removeRepoFields(ContentValues values) {
-        for (Map.Entry<String,String> repoField : REPO_FIELDS.entrySet()) {
+        for (Map.Entry<String, String> repoField : REPO_FIELDS.entrySet()) {
             final String field = repoField.getKey();
             if (values.containsKey(field)) {
                 Log.i(TAG, "Cannot insert/update '" + field + "' field " +

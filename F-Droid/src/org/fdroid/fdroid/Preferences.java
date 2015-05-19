@@ -81,7 +81,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private boolean compactLayout = DEFAULT_COMPACT_LAYOUT;
     private boolean filterAppsRequiringRoot = DEFAULT_ROOTED;
 
-    private final Map<String,Boolean> initialized = new HashMap<>();
+    private final Map<String, Boolean> initialized = new HashMap<>();
 
     private final List<ChangeListener> compactLayoutListeners = new ArrayList<>();
     private final List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<>();
