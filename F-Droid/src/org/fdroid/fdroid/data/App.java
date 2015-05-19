@@ -8,7 +8,6 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -233,13 +232,8 @@ public class App extends ValueObject implements Comparable<App> {
         else
             this.summary = (String) appDescription.subSequence(0, 40);
         this.id = appInfo.packageName;
-        if (Build.VERSION.SDK_INT > 8) {
-            this.added = new Date(packageInfo.firstInstallTime);
-            this.lastUpdated = new Date(packageInfo.lastUpdateTime);
-        } else {
-            this.added = new Date(System.currentTimeMillis());
-            this.lastUpdated = this.added;
-        }
+        this.added = new Date(packageInfo.firstInstallTime);
+        this.lastUpdated = new Date(packageInfo.lastUpdateTime);
         this.description = "<p>";
         if (!TextUtils.isEmpty(appDescription))
             this.description += appDescription + "\n";

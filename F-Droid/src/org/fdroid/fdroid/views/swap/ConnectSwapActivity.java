@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.views.swap;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -170,7 +169,6 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
         }
 
         new AsyncTask<Void, Void, Void>() {
-            @TargetApi(8)
             @Override
             protected Void doInBackground(Void... args) {
                 Uri repoUri = newRepoConfig.getRepoUri();

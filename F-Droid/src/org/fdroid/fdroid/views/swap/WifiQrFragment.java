@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
@@ -158,11 +157,7 @@ public class WifiQrFragment extends Fragment {
 
         Log.i(TAG, "Encoded swap URI in QR Code: " + qrUriString);
 
-        // zxing requires >= 8
-        // TODO: What about 7? I don't feel comfortable bumping the min version for this...
-        // I would suggest show some alternate info, with directions for how to add a new repository manually.
-        if (Build.VERSION.SDK_INT >= 8)
-            new QrGenAsyncTask(getActivity(), R.id.wifi_qr_code).execute(qrUriString);
+        new QrGenAsyncTask(getActivity(), R.id.wifi_qr_code).execute(qrUriString);
 
     }
 
