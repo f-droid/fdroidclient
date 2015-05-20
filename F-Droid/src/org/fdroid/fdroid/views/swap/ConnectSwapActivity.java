@@ -149,11 +149,6 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
             values.put(RepoProvider.DataColumns.IS_SWAP, true);
             Uri uri = RepoProvider.Helper.insert(this, values);
             repo = RepoProvider.Helper.findByUri(this, uri);
-        } else if (!repo.isSwap) {
-            Log.d(TAG, "Old local repo being marked as \"Swap\" repo, so that it wont appear in the list of repositories in the future.");
-            ContentValues values = new ContentValues(1);
-            values.put(RepoProvider.DataColumns.IS_SWAP, true);
-            RepoProvider.Helper.update(this, repo, values);
         }
 
         // Only ask server to swap with us, if we are actually running a local repo service.

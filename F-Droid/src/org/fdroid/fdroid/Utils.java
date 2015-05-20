@@ -21,6 +21,7 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -281,11 +282,11 @@ public final class Utils {
     }
 
     // return a fingerprint formatted for display
-    public static String formatFingerprint(String fingerprint) {
+    public static String formatFingerprint(Context context, String fingerprint) {
         if (TextUtils.isEmpty(fingerprint)
                 || fingerprint.length() != 64  // SHA-256 is 64 hex chars
                 || fingerprint.matches(".*[^0-9a-fA-F].*")) // its a hex string
-            return "BAD FINGERPRINT";
+            return context.getString(R.string.bad_fingerprint);
         String displayFP = fingerprint.substring(0, 2);
         for (int i = 2; i < fingerprint.length(); i = i + 2)
             displayFP += " " + fingerprint.substring(i, i + 2);
