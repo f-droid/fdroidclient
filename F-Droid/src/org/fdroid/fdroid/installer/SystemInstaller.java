@@ -138,9 +138,32 @@ public class SystemInstaller extends Installer {
 
     @Override
     protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
-        Intent intent = new Intent(mContext, InstallConfirmActivity.class);
-        intent.setData(Uri.fromFile(apkFile));
-        mActivity.startActivityForResult(intent, REQUEST_CONFIRM_PERMS);
+        Uri packageUri = Uri.fromFile(apkFile);
+        if (hasNewPermissions(packageUri)) {
+            Intent intent = new Intent(mContext, InstallConfirmActivity.class);
+            intent.setData(packageUri);
+            mActivity.startActivityForResult(intent, REQUEST_CONFIRM_PERMS);
+        } else {
+            try {
+                doInstallPackageInternal(packageUri);
+            } catch (AndroidNotCompatibleException e) {
+                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                        InstallerCallback.ERROR_CODE_OTHER);
+            }
+        }
+    }
+
+    private boolean hasNewPermissions(Uri packageUri) {
+        AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
+        if (appDiff.mPkgInfo != null) {
+            AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
+            if (appDiff.mAppInfo != null) { // it is an update to an existing app
+                // return false if there are no new permissions
+                return (perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0);
+            }
+        }
+        // default: show install confirm activity
+        return true;
     }
 
     private void doInstallPackageInternal(Uri packageURI) throws AndroidNotCompatibleException {
@@ -220,9 +243,9 @@ public class SystemInstaller extends Installer {
         switch (requestCode) {
         case REQUEST_CONFIRM_PERMS:
             if (resultCode == Activity.RESULT_OK) {
-                final Uri packageURI = data.getData();
+                final Uri packageUri = data.getData();
                 try {
-                    doInstallPackageInternal(packageURI);
+                    doInstallPackageInternal(packageUri);
                 } catch (AndroidNotCompatibleException e) {
                     mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                             InstallerCallback.ERROR_CODE_OTHER);

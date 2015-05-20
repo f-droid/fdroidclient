@@ -15,6 +15,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
+
 package org.fdroid.fdroid.installer;
 
 import android.app.Activity;
@@ -23,9 +24,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,9 +46,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
     private Intent intent;
 
     PackageManager mPm;
-    PackageInfo mPkgInfo;
 
-    private ApplicationInfo mAppInfo = null;
+    AppDiff mAppDiff;
 
     // View for install progress
     View mInstallConfirm;
@@ -64,8 +62,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
 
     private void startInstallConfirm() {
 
-        final Drawable appIcon = mPkgInfo.applicationInfo.loadIcon(mPm);
-        final String appLabel = (String) mPkgInfo.applicationInfo.loadLabel(mPm);
+        final Drawable appIcon = mAppDiff.mPkgInfo.applicationInfo.loadIcon(mPm);
+        final String appLabel = (String) mAppDiff.mPkgInfo.applicationInfo.loadLabel(mPm);
 
         View appSnippet = findViewById(R.id.app_snippet);
         ((ImageView) appSnippet.findViewById(R.id.app_icon)).setImageDrawable(appIcon);
@@ -85,12 +83,12 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         mScrollView = null;
         mOkCanInstall = false;
         int msg = 0;
-        if (mPkgInfo != null) {
-            AppSecurityPermissions perms = new AppSecurityPermissions(this, mPkgInfo);
+        if (mAppDiff.mPkgInfo != null) {
+            AppSecurityPermissions perms = new AppSecurityPermissions(this, mAppDiff.mPkgInfo);
             final int NP = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
             final int ND = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
-            if (mAppInfo != null) {
-                msg = (mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+            if (mAppDiff.mAppInfo != null) {
+                msg = (mAppDiff.mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                         ? R.string.install_confirm_update_system
                         : R.string.install_confirm_update;
                 mScrollView = new CaffeinatedScrollView(this);
@@ -139,10 +137,10 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             }
         }
         if (!permVisible) {
-            if (mAppInfo != null) {
+            if (mAppDiff.mAppInfo != null) {
                 // This is an update to an application, but there are no
                 // permissions at all.
-                msg = (mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                msg = (mAppDiff.mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                         ? R.string.install_confirm_update_system_no_perms
                         : R.string.install_confirm_update_no_perms;
             } else {
@@ -178,33 +176,6 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         }
     }
 
-    private void initiateInstall() {
-        String pkgName = mPkgInfo.packageName;
-        // Check if there is already a package on the device with this name
-        // but it has been renamed to something else.
-        final String[] oldName = mPm.canonicalToCurrentPackageNames(new String[] { pkgName });
-        if (oldName != null && oldName.length > 0 && oldName[0] != null) {
-            pkgName = oldName[0];
-            mPkgInfo.packageName = pkgName;
-            mPkgInfo.applicationInfo.packageName = pkgName;
-        }
-        // Check if package is already installed. display confirmation dialog if replacing pkg
-        try {
-            // This is a little convoluted because we want to get all uninstalled
-            // apps, but this may include apps with just data, and if it is just
-            // data we still want to count it as "installed".
-            mAppInfo = mPm.getApplicationInfo(pkgName,
-                    PackageManager.GET_UNINSTALLED_PACKAGES);
-            if ((mAppInfo.flags&ApplicationInfo.FLAG_INSTALLED) == 0) {
-                mAppInfo = null;
-            }
-        } catch (NameNotFoundException e) {
-            mAppInfo = null;
-        }
-
-        startInstallConfirm();
-    }
-
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -214,18 +185,15 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         mPm = getPackageManager();
 
         intent = getIntent();
-        Uri mPackageURI = intent.getData();
-        final String pkgPath = mPackageURI.getPath();
+        Uri packageURI = intent.getData();
 
-        mPkgInfo = mPm.getPackageArchiveInfo(pkgPath, PackageManager.GET_PERMISSIONS);
-        mPkgInfo.applicationInfo.sourceDir = pkgPath;
-        mPkgInfo.applicationInfo.publicSourceDir = pkgPath;
+        mAppDiff = new AppDiff(mPm, packageURI);
 
         setContentView(R.layout.install_start);
         mInstallConfirm = findViewById(R.id.install_confirm_panel);
         mInstallConfirm.setVisibility(View.INVISIBLE);
 
-        initiateInstall();
+        startInstallConfirm();
     }
 
     @Override
