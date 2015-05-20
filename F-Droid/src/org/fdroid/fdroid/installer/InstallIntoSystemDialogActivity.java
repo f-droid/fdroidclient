@@ -156,22 +156,23 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(theme);
         String message = getString(R.string.system_install_first_time_message) + "<br/><br/>" + InstallIntoSystem.create(getApplicationContext()).getWarningInfo();
-        builder.setMessage(Html.fromHtml(message));
-        builder.setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                installTask.execute();
-            }
-        });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                InstallIntoSystemDialogActivity.this.finish();
-            }
-        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(theme)
+                .setMessage(Html.fromHtml(message))
+                .setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        installTask.execute();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                        InstallIntoSystemDialogActivity.this.finish();
+                    }
+                });
         builder.create().show();
     }
 
@@ -225,16 +226,16 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                     ContextThemeWrapper theme = new ContextThemeWrapper(InstallIntoSystemDialogActivity.this,
                             FDroidApp.getCurThemeResId());
 
-                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme);
-                    alertBuilder.setTitle(R.string.root_access_denied_title);
-                    alertBuilder.setMessage(getString(R.string.root_access_denied_body));
-                    alertBuilder.setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                            InstallIntoSystemDialogActivity.this.finish();
-                        }
-                    });
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme)
+                            .setTitle(R.string.root_access_denied_title)
+                            .setMessage(getString(R.string.root_access_denied_body))
+                            .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                                    InstallIntoSystemDialogActivity.this.finish();
+                                }
+                            });
                     alertBuilder.create().show();
                 }
             }
@@ -281,17 +282,18 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         // enable system installer on installation success
         Preferences.get().setSystemInstallerEnabled(success);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(theme);
-        builder.setTitle(success ? R.string.system_install_post_success : R.string.system_install_post_fail);
-        builder.setMessage(success ? R.string.system_install_post_success_message : R.string.system_install_post_fail_message);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                InstallIntoSystemDialogActivity.this.setResult(success ? Activity.RESULT_OK : Activity.RESULT_CANCELED);
-                InstallIntoSystemDialogActivity.this.finish();
-                startActivity(new Intent(InstallIntoSystemDialogActivity.this, FDroid.class));
-            }
-        });
+        AlertDialog.Builder builder = new AlertDialog.Builder(theme)
+                .setTitle(success ? R.string.system_install_post_success : R.string.system_install_post_fail)
+                .setMessage(success ? R.string.system_install_post_success_message : R.string.system_install_post_fail_message)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        InstallIntoSystemDialogActivity.this.setResult(success ? Activity.RESULT_OK : Activity.RESULT_CANCELED);
+                        InstallIntoSystemDialogActivity.this.finish();
+                        startActivity(new Intent(InstallIntoSystemDialogActivity.this, FDroid.class));
+                    }
+                })
+                .setCancelable(false);
         builder.create().show();
     }
 
@@ -302,34 +304,34 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         final boolean systemApp = Installer.hasSystemPermissions(this, this.getPackageManager());
 
         if (systemApp) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(theme);
-            builder.setTitle(R.string.system_uninstall);
-            builder.setMessage(R.string.system_uninstall_message);
-            builder.setPositiveButton(R.string.system_uninstall_button, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    checkRootTask.execute();
-                }
-            });
-            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                    InstallIntoSystemDialogActivity.this.finish();
-                }
-            });
+            AlertDialog.Builder builder = new AlertDialog.Builder(theme)
+                    .setTitle(R.string.system_uninstall)
+                    .setMessage(R.string.system_uninstall_message)
+                    .setPositiveButton(R.string.system_uninstall_button, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            checkRootTask.execute();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                            InstallIntoSystemDialogActivity.this.finish();
+                        }
+                    });
             builder.create().show();
         } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(theme);
-            builder.setTitle(R.string.system_permission_denied_title);
-            builder.setMessage(getString(R.string.system_permission_denied_body));
-            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                    InstallIntoSystemDialogActivity.this.finish();
-                }
-            });
+            AlertDialog.Builder builder = new AlertDialog.Builder(theme)
+                    .setTitle(R.string.system_permission_denied_title)
+                    .setMessage(getString(R.string.system_permission_denied_body))
+                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                            InstallIntoSystemDialogActivity.this.finish();
+                        }
+                    });
             builder.create().show();
         }
     }

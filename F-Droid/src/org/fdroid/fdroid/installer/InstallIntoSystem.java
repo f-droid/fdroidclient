@@ -67,6 +67,8 @@ abstract class InstallIntoSystem {
 
     final void runUninstall() {
         final String[] commands = {
+                "am force-stop org.fdroid.fdroid",
+                "pm clear org.fdroid.fdroid",
                 "mount -o rw,remount /system",
                 "pm uninstall " + context.getPackageName(),
                 "rm -f " + getInstallPath(),
@@ -94,6 +96,7 @@ abstract class InstallIntoSystem {
         commands.add("pm install -r " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
         commands.add("mount -o ro,remount /system");
+        commands.add("am force-stop org.fdroid.fdroid");
         commands.addAll(getPostInstallCommands());
         return commands;
     }
