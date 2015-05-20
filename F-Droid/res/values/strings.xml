@@ -297,8 +297,8 @@
     <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a privileged app.</string>
     <string name="system_permission_install_via_root">Install as a privileged app</string>
     <string name="system_install_first_time_notification">Install privileged F-Droid?</string>
-    <string name="system_install_first_time_notification_message_short">Click here for more information.</string>
-    <string name="system_install_first_time_notification_message">Click here to install F-Droid as a privileged app, tightly coupled with the Android operating system. This enables extended features, such as automatic app updates.\nYou can also do this later from F-Droid\'s preferences.</string>
+    <string name="system_install_first_time_notification_message_short">Touch for more information.</string>
+    <string name="system_install_first_time_notification_message">Touch to install F-Droid as a privileged app, tightly coupled with the Android operating system. This enables extended features, such as automatic app updates.\nYou can also do this later from F-Droid\'s preferences.</string>
     <string name="system_install_post_success">Successful installation as a privileged app</string>
     <string name="system_install_post_fail">Installation as a privileged app failed</string>
     <string name="system_install_post_success_message">F-Droid has been successfully installed as a privileged app. This enables extended features, such as automatic app updates.</string>
