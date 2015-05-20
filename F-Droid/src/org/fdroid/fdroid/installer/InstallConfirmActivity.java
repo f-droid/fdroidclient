@@ -100,11 +100,7 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
                     mScrollView.addView(perms.getPermissionsView(
                             AppSecurityPermissions.WHICH_NEW));
                 } else {
-                    LayoutInflater inflater = (LayoutInflater) getSystemService(
-                            Context.LAYOUT_INFLATER_SERVICE);
-                    TextView label = (TextView) inflater.inflate(R.layout.label, null);
-                    label.setText(R.string.no_new_perms);
-                    mScrollView.addView(label);
+                    throw new RuntimeException("This should not happen. No new permissions were found but InstallConfirmActivity has been started!");
                 }
                 adapter.addTab(tabHost.newTabSpec(TAB_ID_NEW).setIndicator(
                         getText(R.string.newPerms)), mScrollView);
