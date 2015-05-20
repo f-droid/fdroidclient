@@ -156,7 +156,10 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
             RepoProvider.Helper.update(this, repo, values);
         }
 
-        if (!newRepoConfig.preventFurtherSwaps()) {
+        // Only ask server to swap with us, if we are actually running a local repo service.
+        // It is possible to have a swap initiated without first starting a swap, in which
+        // case swapping back is pointless.
+        if (!newRepoConfig.preventFurtherSwaps() && FDroidApp.isLocalRepoServiceRunning()) {
             askServerToSwapWithUs();
         }
 

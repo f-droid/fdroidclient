@@ -210,6 +210,20 @@
                 <data android:path="/store/search" />
             </intent-filter>
 
+            <!-- Handle NFC tags detected from outside our application -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--
+                URIs that come in via NFC have scheme/host normalized to all lower case
+                https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
+                -->
+                <data android:scheme="fdroidrepo" />
+                <data android:scheme="fdroidrepos" />
+            </intent-filter>
+
             <!-- Repo URLs -->
 
             <!--
@@ -301,19 +315,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
-            <!-- Handle NFC tags detected from outside our application -->
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <!--
-                URIs that come in via NFC have scheme/host normalized to all lower case
-                https://developer.android.com/reference/android/nfc/NfcAdapter.html#ACTION_NDEF_DISCOVERED
-                -->
-                <data android:scheme="fdroidrepo" />
-                <data android:scheme="fdroidrepos" />
-            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
