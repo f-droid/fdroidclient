@@ -57,8 +57,7 @@ public class Hasher {
 
     // Calculate hash (as lowercase hexadecimal string) for the file
     // specified in the constructor. This will return a cached value
-    // on subsequent invocations, unless reset() in called. Returns
-    // the empty string on failure.
+    // on subsequent invocations. Returns the empty string on failure.
     public String getHash() {
         if (hashCache != null)
             return hashCache;
@@ -92,16 +91,11 @@ public class Hasher {
         return hashCache.equals(otherHash.toLowerCase(Locale.ENGLISH));
     }
 
-    public void reset() {
-        hashCache = null;
-        digest.reset();
-    }
-
     public static String hex(Certificate cert) {
         byte[] encoded;
         try {
             encoded = cert.getEncoded();
-        } catch(CertificateEncodingException e) {
+        } catch (CertificateEncodingException e) {
             encoded = new byte[0];
         }
         return hex(encoded);
