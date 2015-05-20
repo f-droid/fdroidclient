@@ -28,7 +28,7 @@ public class AppDiff {
     PackageManager mPm;
     PackageInfo mPkgInfo;
 
-    ApplicationInfo mAppInfo = null;
+    ApplicationInfo mInstalledAppInfo = null;
 
     public AppDiff(PackageManager mPm, Uri mPackageURI) {
         this.mPm = mPm;
@@ -52,18 +52,18 @@ public class AppDiff {
             mPkgInfo.packageName = pkgName;
             mPkgInfo.applicationInfo.packageName = pkgName;
         }
-        // Check if package is already installed. display confirmation dialog if replacing pkg
+        // Check if package is already installed
         try {
             // This is a little convoluted because we want to get all uninstalled
             // apps, but this may include apps with just data, and if it is just
             // data we still want to count it as "installed".
-            mAppInfo = mPm.getApplicationInfo(pkgName,
+            mInstalledAppInfo = mPm.getApplicationInfo(pkgName,
                     PackageManager.GET_UNINSTALLED_PACKAGES);
-            if ((mAppInfo.flags&ApplicationInfo.FLAG_INSTALLED) == 0) {
-                mAppInfo = null;
+            if ((mInstalledAppInfo.flags&ApplicationInfo.FLAG_INSTALLED) == 0) {
+                mInstalledAppInfo = null;
             }
         } catch (PackageManager.NameNotFoundException e) {
-            mAppInfo = null;
+            mInstalledAppInfo = null;
         }
     }
 }

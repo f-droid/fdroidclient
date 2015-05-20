@@ -157,7 +157,7 @@ public class SystemInstaller extends Installer {
         AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
         if (appDiff.mPkgInfo != null) {
             AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
-            if (appDiff.mAppInfo != null) { // it is an update to an existing app
+            if (appDiff.mInstalledAppInfo != null) { // it is an update to an existing app
                 // return false if there are no new permissions
                 return (perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0);
             }

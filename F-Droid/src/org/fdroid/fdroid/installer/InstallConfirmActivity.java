@@ -87,8 +87,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             AppSecurityPermissions perms = new AppSecurityPermissions(this, mAppDiff.mPkgInfo);
             final int NP = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
             final int ND = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
-            if (mAppDiff.mAppInfo != null) {
-                msg = (mAppDiff.mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+            if (mAppDiff.mInstalledAppInfo != null) {
+                msg = (mAppDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                         ? R.string.install_confirm_update_system
                         : R.string.install_confirm_update;
                 mScrollView = new CaffeinatedScrollView(this);
@@ -133,10 +133,10 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             }
         }
         if (!permVisible) {
-            if (mAppDiff.mAppInfo != null) {
+            if (mAppDiff.mInstalledAppInfo != null) {
                 // This is an update to an application, but there are no
                 // permissions at all.
-                msg = (mAppDiff.mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                msg = (mAppDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                         ? R.string.install_confirm_update_system_no_perms
                         : R.string.install_confirm_update_no_perms;
             } else {

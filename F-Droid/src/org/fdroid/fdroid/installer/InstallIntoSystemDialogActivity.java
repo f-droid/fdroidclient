@@ -21,12 +21,18 @@ package org.fdroid.fdroid.installer;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -70,11 +76,82 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         } else if (ACTION_INSTALL.equals(action)) {
             checkRootTask.execute();
         } else if (ACTION_FIRST_TIME.equals(action)) {
-            Preferences.get().setFirstTime(false);
             checkRootTask.execute();
         } else if (ACTION_POST_INSTALL.equals(action)) {
             postInstall();
         }
+    }
+
+    public static void firstTime(final Context context) {
+        if (Preferences.get().isFirstTime()) {
+            Preferences.get().setFirstTime(false);
+            
+            if (Installer.hasSystemPermissions(context, context.getPackageManager())) {
+                Preferences.get().setSystemInstallerEnabled(true);
+            } else {
+                runFirstTime(context);
+            }
+        }
+    }
+
+    public static void runFirstTime(final Context context) {
+        // don't do a "real" root access, just look up if "su" is present and has a version!
+        // a real check would annoy the user
+        AsyncTask<Void, Void, Boolean> checkRoot = new AsyncTask<Void, Void, Boolean>() {
+
+            @Override
+            protected Boolean doInBackground(Void... params) {
+                return (Shell.SU.version(true) != null);
+            }
+
+            @Override
+            protected void onPostExecute(Boolean probablyRoot) {
+                super.onPostExecute(probablyRoot);
+
+                if (probablyRoot) {
+                    // looks like we have root, at least su has a version number and is present
+
+                    // final int icon = Build.VERSION.SDK_INT >= 11 ? R.drawable.ic_stat_notify_updates : R.drawable.ic_launcher;
+                    final int icon = R.drawable.ic_launcher;
+
+                    Intent installIntent = new Intent(context, InstallIntoSystemDialogActivity.class);
+                    installIntent.setAction(InstallIntoSystemDialogActivity.ACTION_FIRST_TIME);
+                    installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    PendingIntent resultPendingIntent =
+                            PendingIntent.getActivity(
+                                    context,
+                                    0,
+                                    installIntent,
+                                    PendingIntent.FLAG_UPDATE_CURRENT
+                            );
+
+                    String msg = context.getString(R.string.system_install_first_time_notification_message);
+
+                    NotificationCompat.Builder builder =
+                            new NotificationCompat.Builder(context)
+                                    .setContentIntent(resultPendingIntent)
+                                    .setSmallIcon(icon)
+                                    .setContentTitle(context.getString(R.string.system_install_first_time_notification))
+                                    .setContentText(msg)
+                                    .setDefaults(Notification.DEFAULT_ALL)
+                                    .setAutoCancel(true)
+                                    /*
+                                     * Sets the big view "big text" style and supplies the
+                                     * text (the user's reminder message) that will be displayed
+                                     * in the detail area of the expanded notification.
+                                     * These calls are ignored by the support library for
+                                     * pre-4.1 devices.
+                                     */
+                                    .setStyle(new NotificationCompat.BigTextStyle()
+                                            .bigText(msg));
+
+                    NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    nm.notify(42, builder.build());
+                }
+            }
+        };
+        checkRoot.execute();
     }
 
     /**

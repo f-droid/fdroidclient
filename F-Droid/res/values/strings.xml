@@ -296,6 +296,8 @@
     <string name="system_permission_denied_title">System permissions denied</string>
     <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a system-app.</string>
     <string name="system_permission_install_via_root">Install as system-app</string>
+    <string name="system_install_first_time_notification">Install F-Droid as a system-app?</string>
+    <string name="system_install_first_time_notification_message">Looks like you have root access on your device. You could install F-Droid as a system-app to enable extended features, such as automatic app updates.\nYou can also do this later from F-Droid\'s preferences.</string>
     <string name="system_install_post_success">Successful installation as system-app</string>
     <string name="system_install_post_fail">Installation as system-app failed</string>
     <string name="system_install_post_success_message">F-Droid has been successfully installed into the system partition. This enables extended features, such as automatic app updates.</string>
@@ -358,7 +360,6 @@
     <string name="install_confirm_update_system_no_perms">Do you want to install an update
             to this built-in application?  Your existing data will not
             be lost.  It does not require any special access.</string>
-    <!--<string name="no_permissions_required">No permissions required</string>-->
     <string name="newPerms">New</string>
     <string name="allPerms">All</string>
     <string name="privacyPerms">Privacy</string>

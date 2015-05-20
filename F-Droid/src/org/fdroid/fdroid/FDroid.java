@@ -104,16 +104,7 @@ public class FDroid extends ActionBarActivity {
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
 
-        if (Preferences.get().isFirstTime()) {
-            if (Installer.hasSystemPermissions(this, this.getPackageManager())) {
-                Preferences.get().setSystemInstallerEnabled(true);
-                Preferences.get().setFirstTime(false);
-            } else {
-                Intent installIntent = new Intent(this, InstallIntoSystemDialogActivity.class);
-                installIntent.setAction(InstallIntoSystemDialogActivity.ACTION_FIRST_TIME);
-                startActivity(installIntent);
-            }
-        }
+        InstallIntoSystemDialogActivity.firstTime(this);
     }
 
     @Override
