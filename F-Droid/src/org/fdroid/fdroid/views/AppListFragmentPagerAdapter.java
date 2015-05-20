@@ -17,7 +17,7 @@ import org.fdroid.fdroid.views.fragments.InstalledAppsFragment;
  */
 public class AppListFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private FDroid parent = null;
+    private final FDroid parent;
 
     public AppListFragmentPagerAdapter(FDroid parent) {
         super(parent.getSupportFragmentManager());

@@ -40,7 +40,7 @@ import java.util.List;
  */
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class DefaultInstallerSdk14 extends Installer {
-    private Activity mActivity;
+    private final Activity mActivity;
 
     public DefaultInstallerSdk14(Activity activity, PackageManager pm, InstallerCallback callback)
             throws AndroidNotCompatibleException {

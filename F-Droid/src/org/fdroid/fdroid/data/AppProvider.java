@@ -567,7 +567,7 @@ public class AppProvider extends FDroidProvider {
             } else {
                 selection.append("OR ");
             }
-            selection.append("(");
+            selection.append('(');
             boolean firstKeyword = true;
             for (final String keyword : keywords) {
                 if (firstKeyword) {

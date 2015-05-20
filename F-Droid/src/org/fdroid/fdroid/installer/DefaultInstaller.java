@@ -37,7 +37,7 @@ import java.util.List;
  * unattended installations.
  */
 public class DefaultInstaller extends Installer {
-    private Activity mActivity;
+    private final Activity mActivity;
 
     public DefaultInstaller(Activity activity, PackageManager pm, InstallerCallback callback)
             throws AndroidNotCompatibleException {

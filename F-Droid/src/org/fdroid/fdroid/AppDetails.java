@@ -1264,7 +1264,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 for (final String af : getApp().antiFeatures) {
                     final String afdesc = descAntiFeature(af);
                     if (afdesc != null) {
-                        sb.append("\t• ").append(afdesc).append("\n");
+                        sb.append("\t• ").append(afdesc).append('\n');
                     }
                 }
                 if (sb.length() > 0) {

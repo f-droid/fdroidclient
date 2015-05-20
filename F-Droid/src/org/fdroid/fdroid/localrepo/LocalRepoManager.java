@@ -450,7 +450,7 @@ public class LocalRepoManager {
 
                 for (String permission : app.installedApk.permissions) {
                     buff.append(permission.replace("android.permission.", ""));
-                    buff.append(",");
+                    buff.append(',');
                 }
                 String out = buff.toString();
                 if (!TextUtils.isEmpty(out))

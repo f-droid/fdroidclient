@@ -177,7 +177,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     msgB.append(error);
                 }
                 if (resultCode == STATUS_ERROR_LOCAL_SMALL) {
-                    msgB.append("\n").append(context.getString(R.string.all_other_repos_fine));
+                    msgB.append('\n').append(context.getString(R.string.all_other_repos_fine));
                 }
                 Toast.makeText(context, msgB.toString(), Toast.LENGTH_LONG).show();
                 finished = true;
