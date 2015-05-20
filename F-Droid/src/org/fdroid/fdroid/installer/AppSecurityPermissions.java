@@ -421,7 +421,7 @@ public class AppSecurityPermissions {
 
     private boolean isDisplayablePermission(PermissionInfo pInfo, int newReqFlags,
             int existingReqFlags) {
-        final int base = pInfo.protectionLevel & PermissionInfo.PROTECTION_MASK_BASE;
+        final int base = pInfo.protectionLevel&PermissionInfo.PROTECTION_MASK_BASE;
         final boolean isNormal = (base == PermissionInfo.PROTECTION_NORMAL);
         final boolean isDangerous = (base == PermissionInfo.PROTECTION_DANGEROUS);
         final boolean isRequired =

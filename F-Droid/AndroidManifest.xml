@@ -294,7 +294,7 @@
         </activity>
         <activity
             android:name=".installer.InstallConfirmActivity"
-            android:label=""
+            android:label="@string/menu_install"
             android:parentActivityName=".FDroid">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

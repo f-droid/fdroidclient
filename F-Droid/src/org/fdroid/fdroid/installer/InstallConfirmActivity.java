@@ -39,6 +39,7 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 
 public class InstallConfirmActivity extends Activity implements OnCancelListener, OnClickListener {
@@ -207,6 +208,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        ((FDroidApp) getApplication()).applyTheme(this);
 
         mPm = getPackageManager();
 
