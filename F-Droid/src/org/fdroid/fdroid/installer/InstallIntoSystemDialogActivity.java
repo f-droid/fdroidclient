@@ -85,7 +85,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
     public static void firstTime(final Context context) {
         if (Preferences.get().isFirstTime()) {
             Preferences.get().setFirstTime(false);
-            
+
             if (Installer.hasSystemPermissions(context, context.getPackageManager())) {
                 Preferences.get().setSystemInstallerEnabled(true);
             } else {
@@ -111,9 +111,6 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                 if (probablyRoot) {
                     // looks like we have root, at least su has a version number and is present
 
-                    // final int icon = Build.VERSION.SDK_INT >= 11 ? R.drawable.ic_stat_notify_updates : R.drawable.ic_launcher;
-                    final int icon = R.drawable.ic_launcher;
-
                     Intent installIntent = new Intent(context, InstallIntoSystemDialogActivity.class);
                     installIntent.setAction(InstallIntoSystemDialogActivity.ACTION_FIRST_TIME);
                     installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -126,14 +123,12 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                                     PendingIntent.FLAG_UPDATE_CURRENT
                             );
 
-                    String msg = context.getString(R.string.system_install_first_time_notification_message);
-
                     NotificationCompat.Builder builder =
                             new NotificationCompat.Builder(context)
                                     .setContentIntent(resultPendingIntent)
-                                    .setSmallIcon(icon)
+                                    .setSmallIcon(R.drawable.ic_launcher)
                                     .setContentTitle(context.getString(R.string.system_install_first_time_notification))
-                                    .setContentText(msg)
+                                    .setContentText(context.getString(R.string.system_install_first_time_notification_message_short))
                                     .setDefaults(Notification.DEFAULT_ALL)
                                     .setAutoCancel(true)
                                     /*
@@ -144,7 +139,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                                      * pre-4.1 devices.
                                      */
                                     .setStyle(new NotificationCompat.BigTextStyle()
-                                            .bigText(msg));
+                                            .bigText(context.getString(R.string.system_install_first_time_notification_message)));
 
                     NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                     nm.notify(42, builder.build());
