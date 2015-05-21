@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<org.fdroid.fdroid.views.swap.views.StartSwapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -18,7 +18,6 @@
             android:text="@string/swap_start"
             style="@style/SwapTheme.StartSwap.StartButton"
             android:layout_width="match_parent"
-            android:layout_below="@+id/text_description"
-            android:layout_centerHorizontal="true"/>
+            android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+</org.fdroid.fdroid.views.swap.views.StartSwapView>

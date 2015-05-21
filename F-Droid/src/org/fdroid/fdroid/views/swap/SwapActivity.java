@@ -113,7 +113,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
     }
 
-    private void showSelectApps() {
+    public void showSelectApps() {
 
         showFragment(new SelectAppsFragment(), STATE_SELECT_APPS);
 

@@ -13,27 +13,10 @@ import org.fdroid.fdroid.R;
 
 public class StartSwapFragment extends Fragment {
 
-    private SwapProcessManager manager;
-
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        manager = (SwapProcessManager)activity;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         LayoutInflater themedInflater = (LayoutInflater)new ContextThemeWrapper(inflater.getContext(), R.style.SwapTheme_StartSwap).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        View view = themedInflater.inflate(R.layout.swap_blank, container, false);
-        view.findViewById(R.id.button_start_swap).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                manager.nextStep();
-            }
-        });
-
-        return view;
+        return themedInflater.inflate(R.layout.swap_blank, container, false);
     }
 
 }
