@@ -3,18 +3,18 @@ package org.fdroid.fdroid.views.swap.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.views.swap.SwapActivity;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
-import java.util.Set;
-
-public class StartSwapView extends LinearLayout {
+public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
     public StartSwapView(Context context) {
         super(context);
@@ -36,9 +36,9 @@ public class StartSwapView extends LinearLayout {
 
 
 
-    private SwapActivity getActivity() {
+    private SwapWorkflowActivity getActivity() {
         // TODO: Try and find a better way to get to the SwapActivity, which makes less asumptions.
-        return (SwapActivity)((ContextThemeWrapper)getContext()).getBaseContext();
+        return (SwapWorkflowActivity)getContext();
     }
 
     @Override
@@ -54,4 +54,8 @@ public class StartSwapView extends LinearLayout {
 
     }
 
+    @Override
+    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
+        return false;
+    }
 }

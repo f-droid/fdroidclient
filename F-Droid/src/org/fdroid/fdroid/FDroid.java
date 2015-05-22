@@ -51,6 +51,7 @@ import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
 import org.fdroid.fdroid.views.swap.SwapActivity;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 public class FDroid extends ActionBarActivity {
 
@@ -257,7 +258,7 @@ public class FDroid extends ActionBarActivity {
             return true;
 
         case R.id.action_swap:
-            startActivity(new Intent(this, SwapActivity.class));
+            startActivity(new Intent(this, SwapWorkflowActivity.class));
             return true;
 
         case R.id.action_search:
