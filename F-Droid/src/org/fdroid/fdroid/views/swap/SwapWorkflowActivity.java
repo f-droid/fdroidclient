@@ -16,11 +16,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.NfcHelper;
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SwapWorkflowActivity extends FragmentActivity {
 
@@ -39,6 +43,7 @@ public class SwapWorkflowActivity extends FragmentActivity {
     private InnerView currentView;
     private boolean hasPreparedLocalRepo = false;
     private UpdateAsyncTask updateSwappableAppsTask = null;
+    private Timer shutdownLocalRepoTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,10 +113,60 @@ public class SwapWorkflowActivity extends FragmentActivity {
     }
 
     public void onJoinWifiComplete() {
-        /*ensureLocalRepoRunning();
+        ensureLocalRepoRunning();
         if (!attemptToShowNfc()) {
-            showWifiQr();
-        }*/
+            // showWifiQr();
+        }
+    }
+
+    private boolean attemptToShowNfc() {
+        // TODO: What if NFC is disabled? Hook up with NfcNotEnabledActivity? Or maybe only if they
+        // click a relevant button?
+
+        // Even if they opted to skip the message which says "Touch devices to swap",
+        // we still want to actually enable the feature, so that they could touch
+        // during the wifi qr code being shown too.
+        boolean nfcMessageReady = NfcHelper.setPushMessage(this, Utils.getSharingUri(FDroidApp.repo));
+
+        if (Preferences.get().showNfcDuringSwap() && nfcMessageReady) {
+            inflateInnerView(R.layout.swap_nfc);
+            return true;
+        }
+        return false;
+    }
+
+    private void ensureLocalRepoRunning() {
+        if (!FDroidApp.isLocalRepoServiceRunning()) {
+            FDroidApp.startLocalRepoService(this);
+            initLocalRepoTimer(900000); // 15 mins
+        }
+    }
+
+    private void initLocalRepoTimer(long timeoutMilliseconds) {
+
+        // reset the timer if viewing this Activity again
+        if (shutdownLocalRepoTimer != null)
+            shutdownLocalRepoTimer.cancel();
+
+        // automatically turn off after 15 minutes
+        shutdownLocalRepoTimer = new Timer();
+        shutdownLocalRepoTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                FDroidApp.stopLocalRepoService(SwapWorkflowActivity.this);
+            }
+        }, timeoutMilliseconds);
+
+    }
+
+    public void stopSwapping() {
+        if (FDroidApp.isLocalRepoServiceRunning()) {
+            if (shutdownLocalRepoTimer != null) {
+                shutdownLocalRepoTimer.cancel();
+            }
+            FDroidApp.stopLocalRepoService(SwapWorkflowActivity.this);
+        }
+        finish();
     }
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
