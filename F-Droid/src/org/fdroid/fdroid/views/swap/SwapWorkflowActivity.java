@@ -49,6 +49,7 @@ public class SwapWorkflowActivity extends FragmentActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
         boolean parent = super.onPrepareOptionsMenu(menu);
         boolean inner  = currentView.buildMenu(menu, getMenuInflater());
         return parent || inner;
@@ -104,6 +105,13 @@ public class SwapWorkflowActivity extends FragmentActivity {
 
     private void showJoinWifi() {
         inflateInnerView(R.layout.swap_join_wifi);
+    }
+
+    public void onJoinWifiComplete() {
+        /*ensureLocalRepoRunning();
+        if (!attemptToShowNfc()) {
+            showWifiQr();
+        }*/
     }
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
