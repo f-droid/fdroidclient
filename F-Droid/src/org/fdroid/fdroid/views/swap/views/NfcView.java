@@ -36,6 +36,11 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
+    private SwapWorkflowActivity getActivity() {
+        // TODO: Try and find a better way to get to the SwapActivity, which makes less asumptions.
+        return (SwapWorkflowActivity)getContext();
+    }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -56,7 +61,7 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                // TODO: Show QR Code.
+                getActivity().showWifiQr();
                 return true;
             }
         });

@@ -1,7 +1,9 @@
 package org.fdroid.fdroid.views.swap;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,11 +17,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 
 import java.util.Set;
@@ -38,6 +45,8 @@ public class SwapWorkflowActivity extends FragmentActivity {
         /** @return True if the menu should be shown. */
         boolean buildMenu(Menu menu, @NonNull MenuInflater inflater);
     }
+
+    private static final int CONNECT_TO_SWAP = 1;
 
     private State currentState = State.INTRO;
     private InnerView currentView;
@@ -115,8 +124,12 @@ public class SwapWorkflowActivity extends FragmentActivity {
     public void onJoinWifiComplete() {
         ensureLocalRepoRunning();
         if (!attemptToShowNfc()) {
-            // showWifiQr();
+            showWifiQr();
         }
+    }
+
+    public void showWifiQr() {
+        inflateInnerView(R.layout.swap_wifi_qr);
     }
 
     private boolean attemptToShowNfc() {
@@ -167,6 +180,23 @@ public class SwapWorkflowActivity extends FragmentActivity {
             FDroidApp.stopLocalRepoService(SwapWorkflowActivity.this);
         }
         finish();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanResult != null) {
+            if (scanResult.getContents() != null) {
+                NewRepoConfig repoConfig = new NewRepoConfig(this, scanResult.getContents());
+                if (repoConfig.isValidRepo()) {
+                    startActivityForResult(new Intent(FDroid.ACTION_ADD_REPO, Uri.parse(scanResult.getContents()), this, ConnectSwapActivity.class), CONNECT_TO_SWAP);
+                } else {
+                    Toast.makeText(this, "The QR code you scanned doesn't look like a swap code.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
+            finish();
+        }
     }
 
     class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
