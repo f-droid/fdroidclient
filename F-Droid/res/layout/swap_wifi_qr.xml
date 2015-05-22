@@ -3,6 +3,7 @@
 <org.fdroid.fdroid.views.swap.views.WifiQrView
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/swap_blue"
     android:layout_height="match_parent"
     android:layout_width="wrap_content">
 

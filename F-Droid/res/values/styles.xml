@@ -33,9 +33,9 @@
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
-    <style name="SwapTheme.Wizard" parent="AppThemeDark">
-        <item name="android:windowBackground">@drawable/swap_window_background</item>
-        <item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
+    <style name="SwapTheme.Wizard" parent="AppThemeLightWithDarkActionBar">
+        <!--<item name="android:windowBackground">@drawable/swap_window_background</item>-->
+        <!--<item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>-->
         <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
     </style>
 
