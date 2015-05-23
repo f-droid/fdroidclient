@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.localrepo.SwapState;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
@@ -34,8 +35,6 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-
-
     private SwapWorkflowActivity getActivity() {
         // TODO: Try and find a better way to get to the SwapActivity, which makes less asumptions.
         return (SwapWorkflowActivity)getContext();
@@ -57,5 +56,10 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
     @Override
     public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
         return false;
+    }
+
+    @Override
+    public int getStep() {
+        return SwapState.STEP_INTRO;
     }
 }

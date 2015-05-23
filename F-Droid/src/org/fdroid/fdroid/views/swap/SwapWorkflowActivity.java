@@ -28,6 +28,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.fdroid.fdroid.localrepo.SwapState;
 
 import java.util.Set;
 import java.util.Timer;
@@ -37,18 +38,20 @@ public class SwapWorkflowActivity extends FragmentActivity {
 
     private ViewGroup container;
 
-    private enum State {
-        INTRO, SELECT_APPS, JOIN_WIFI
-    }
-
     public interface InnerView {
         /** @return True if the menu should be shown. */
         boolean buildMenu(Menu menu, @NonNull MenuInflater inflater);
+
+        /** @return The step that this view represents. */
+        @SwapState.SwapStep int getStep();
+
+        // TODO: Handle back presses with a method like this:
+        // @SwapState.SwapStep int getPreviousStep();
     }
 
     private static final int CONNECT_TO_SWAP = 1;
 
-    private State currentState = State.INTRO;
+    private SwapState state;
     private InnerView currentView;
     private boolean hasPreparedLocalRepo = false;
     private UpdateAsyncTask updateSwappableAppsTask = null;
@@ -57,8 +60,10 @@ public class SwapWorkflowActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        state = SwapState.load(this);
         setContentView(R.layout.swap_activity);
         container = (ViewGroup) findViewById(R.id.fragment_container);
+        showRelevantView();
     }
 
     @Override
@@ -72,12 +77,37 @@ public class SwapWorkflowActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        showView();
+        showRelevantView();
     }
 
-    private void showView() {
-        if (currentState == State.INTRO) {
-            showIntro();
+    private void showRelevantView() {
+        if (currentView != null && currentView.getStep() == state.getStep()) {
+            // Already showing the currect step, so don't bother changing anything.
+            return;
+        }
+
+        switch(state.getStep()) {
+            case SwapState.STEP_INTRO:
+                showIntro();
+                break;
+            case SwapState.STEP_SELECT_APPS:
+                showSelectApps();
+                break;
+            case SwapState.STEP_SHOW_NFC:
+                showNfc();
+                break;
+            case SwapState.STEP_JOIN_WIFI:
+                showJoinWifi();
+                break;
+            case SwapState.STEP_WIFI_QR:
+                showWifiQr();
+                break;
+        }
+    }
+
+    private void showNfc() {
+        if (!attemptToShowNfc()) {
+            showWifiQr();
         }
     }
 
@@ -85,6 +115,7 @@ public class SwapWorkflowActivity extends FragmentActivity {
         container.removeAllViews();
         View view = ((LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
         currentView = (InnerView)view;
+        state.setStep(currentView.getStep());
         container.addView(view);
         supportInvalidateOptionsMenu();
     }

@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.localrepo.SwapState;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
@@ -116,5 +117,10 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
             }
         });
         return true;
+    }
+
+    @Override
+    public int getStep() {
+        return SwapState.STEP_JOIN_WIFI;
     }
 }

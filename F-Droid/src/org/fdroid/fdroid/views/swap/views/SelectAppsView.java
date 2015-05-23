@@ -36,6 +36,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.fdroid.fdroid.localrepo.SwapState;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.util.HashSet;
@@ -140,6 +141,11 @@ public class SelectAppsView extends ListView implements
 
         searchView.setOnQueryTextListener(this);
         return true;
+    }
+
+    @Override
+    public int getStep() {
+        return SwapState.STEP_SELECT_APPS;
     }
 
     private void toggleAppSelected(int position) {
