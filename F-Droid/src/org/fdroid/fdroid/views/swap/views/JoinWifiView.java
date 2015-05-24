@@ -46,7 +46,6 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
     }
 
     private SwapWorkflowActivity getActivity() {
-        // TODO: Try and find a better way to get to the SwapActivity, which makes less asumptions.
         return (SwapWorkflowActivity)getContext();
     }
 
@@ -61,7 +60,8 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
         });
         refreshWifiState();
 
-        // TODO: Listen for "Connecting..." state and reflect that in the view too.
+        // TODO: This is effectively swap state management code, shouldn't be isolated to the
+        // WifiStateChangeService, but should be bundled with the main swap state handling code.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 new BroadcastReceiver() {
                     @Override
@@ -74,6 +74,7 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
 
     }
 
+    // TODO: Listen for "Connecting..." state and reflect that in the view too.
     private void refreshWifiState() {
         TextView descriptionView = (TextView) findViewById(R.id.text_description);
         ImageView wifiIcon = (ImageView) findViewById(R.id.wifi_icon);
@@ -122,5 +123,10 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
     @Override
     public int getStep() {
         return SwapState.STEP_JOIN_WIFI;
+    }
+
+    @Override
+    public int getPreviousStep() {
+        return SwapState.STEP_SELECT_APPS;
     }
 }

@@ -32,14 +32,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapState;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
-
-import java.util.HashSet;
 
 public class SelectAppsView extends ListView implements
         SwapWorkflowActivity.InnerView,
@@ -65,6 +61,10 @@ public class SelectAppsView extends ListView implements
 
     private SwapWorkflowActivity getActivity() {
         return (SwapWorkflowActivity)getContext();
+    }
+
+    private SwapState getState() {
+        return getActivity().getState();
     }
 
     private static final int LOADER_INSTALLED_APPS = 253341534;
@@ -95,17 +95,6 @@ public class SelectAppsView extends ListView implements
         // either reconnect with an existing loader or start a new one
         getActivity().getSupportLoaderManager().initLoader(LOADER_INSTALLED_APPS, null, this);
 
-        // build list of existing apps from what is on the file system
-        if (FDroidApp.selectedApps == null) {
-            FDroidApp.selectedApps = new HashSet<>();
-            for (String filename : LocalRepoManager.get(getActivity()).repoDir.list()) {
-                if (filename.matches(".*\\.apk")) {
-                    String packageName = filename.substring(0, filename.indexOf("_"));
-                    FDroidApp.selectedApps.add(packageName);
-                }
-            }
-        }
-
         setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 if (position > 0) {
@@ -128,7 +117,7 @@ public class SelectAppsView extends ListView implements
         nextMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                getActivity().onAppsSelected(FDroidApp.selectedApps);
+                getActivity().onAppsSelected();
                 return true;
             }
         });
@@ -148,13 +137,18 @@ public class SelectAppsView extends ListView implements
         return SwapState.STEP_SELECT_APPS;
     }
 
+    @Override
+    public int getPreviousStep() {
+        return SwapState.STEP_INTRO;
+    }
+
     private void toggleAppSelected(int position) {
         Cursor c = (Cursor) adapter.getItem(position - 1);
         String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
-        if (FDroidApp.selectedApps.contains(packageName)) {
-            FDroidApp.selectedApps.remove(packageName);
+        if (getState().hasSelectedPackage(packageName)) {
+            getState().deselectPackage(packageName);
         } else {
-            FDroidApp.selectedApps.add(packageName);
+            getState().selectPackage(packageName);
         }
     }
 
@@ -179,17 +173,13 @@ public class SelectAppsView extends ListView implements
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         adapter.swapCursor(cursor);
 
-        String fdroid = loader.getContext().getPackageName();
         for (int i = 0; i < getCount() - 1; i++) {
             Cursor c = ((Cursor) getItemAtPosition(i + 1));
             String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
-            if (TextUtils.equals(packageName, fdroid)) {
-                setItemChecked(i + 1, true); // always include FDroid
-            } else {
-                for (String selected : FDroidApp.selectedApps) {
-                    if (TextUtils.equals(packageName, selected)) {
-                        setItemChecked(i + 1, true);
-                    }
+            getState().ensureFDroidSelected();
+            for (String selected : getState().getAppsToSwap()) {
+                if (TextUtils.equals(packageName, selected)) {
+                    setItemChecked(i + 1, true);
                 }
             }
         }

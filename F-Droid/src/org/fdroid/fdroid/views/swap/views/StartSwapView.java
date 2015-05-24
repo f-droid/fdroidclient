@@ -17,6 +17,12 @@ import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
+    // TODO: Is there a way to guarangee which of these constructors the inflater will call?
+    // Especially on different API levels? It would be nice to only have the one which accepts
+    // a Context, but I'm not sure if that is correct or not. As it stands, this class provides
+    // constructurs which match each of the ones available in the parent class.
+    // The same is true for the other views in the swap process too.
+
     public StartSwapView(Context context) {
         super(context);
     }
@@ -60,6 +66,15 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
 
     @Override
     public int getStep() {
+        return SwapState.STEP_INTRO;
+    }
+
+    @Override
+    public int getPreviousStep() {
+        // TODO: Currently this is handleed by the SwapWorkflowActivity as a special case, where
+        // if getStep is STEP_INTRO, don't even bother asking for getPreviousStep. But that is a
+        // bit messy. It would be nicer if this was handled using the same mechanism as everything
+        // else.
         return SwapState.STEP_INTRO;
     }
 }

@@ -60,7 +60,6 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
     }
 
     private SwapWorkflowActivity getActivity() {
-        // TODO: Try and find a better way to get to the SwapActivity, which makes less asumptions.
         return (SwapWorkflowActivity)getContext();
     }
 
@@ -78,6 +77,9 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         openQr.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO: Should probably ask the activity or some other class to do this for us.
+                // The view should be dumb and only know how to show things and delegate things to
+                // other classes that know how to do things.
                 IntentIntegrator integrator = new IntentIntegrator(getActivity());
                 integrator.initiateScan();
             }
@@ -91,6 +93,9 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
             }
         });
 
+        // TODO: As with the JoinWifiView, this should be refactored to be part of the SwapState.
+        // Otherwise, we are left with SwapState, LocalRepoService, WifiStateChangeService, and
+        // some static variables in FDroidApp all which manage the state for swap.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 new BroadcastReceiver() {
                     @Override
@@ -110,6 +115,12 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
     @Override
     public int getStep() {
         return SwapState.STEP_WIFI_QR;
+    }
+
+    @Override
+    public int getPreviousStep() {
+        // TODO: Find a way to make this optionally go back to the NFC screen if appropriate.
+        return SwapState.STEP_JOIN_WIFI;
     }
 
     private void setUIFromWifi() {

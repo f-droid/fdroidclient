@@ -38,7 +38,6 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
     }
 
     private SwapWorkflowActivity getActivity() {
-        // TODO: Try and find a better way to get to the SwapActivity, which makes less asumptions.
         return (SwapWorkflowActivity)getContext();
     }
 
@@ -72,5 +71,10 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
     @Override
     public int getStep() {
         return SwapState.STEP_SHOW_NFC;
+    }
+
+    @Override
+    public int getPreviousStep() {
+        return SwapState.STEP_JOIN_WIFI;
     }
 }

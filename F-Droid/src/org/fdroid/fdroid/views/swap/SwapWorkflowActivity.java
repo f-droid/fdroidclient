@@ -45,8 +45,7 @@ public class SwapWorkflowActivity extends FragmentActivity {
         /** @return The step that this view represents. */
         @SwapState.SwapStep int getStep();
 
-        // TODO: Handle back presses with a method like this:
-        // @SwapState.SwapStep int getPreviousStep();
+        @SwapState.SwapStep int getPreviousStep();
     }
 
     private static final int CONNECT_TO_SWAP = 1;
@@ -56,6 +55,17 @@ public class SwapWorkflowActivity extends FragmentActivity {
     private boolean hasPreparedLocalRepo = false;
     private UpdateAsyncTask updateSwappableAppsTask = null;
     private Timer shutdownLocalRepoTimer;
+
+    @Override
+    public void onBackPressed() {
+        if (currentView.getStep() == SwapState.STEP_INTRO) {
+            finish();
+        } else {
+            int nextStep = currentView.getPreviousStep();
+            state.setStep(nextStep);
+            showRelevantView();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +115,10 @@ public class SwapWorkflowActivity extends FragmentActivity {
         }
     }
 
+    public SwapState getState() {
+        return state;
+    }
+
     private void showNfc() {
         if (!attemptToShowNfc()) {
             showWifiQr();
@@ -128,10 +142,12 @@ public class SwapWorkflowActivity extends FragmentActivity {
         inflateInnerView(R.layout.swap_select_apps);
     }
 
-    // TODO: Pass in the selected apps, then we can figure out whether they have changed.
-    public void onAppsSelected(Set<String> selectedApps) {
+    // TODO: Figure out whether they have changed since last time UpdateAsyncTask was run.
+    // If the local repo is running, then we can ask it what apps it is swapping and compare with that.
+    // Otherwise, probably will need to scan the file system.
+    public void onAppsSelected() {
         if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
-            updateSwappableAppsTask = new UpdateAsyncTask(this, selectedApps);
+            updateSwappableAppsTask = new UpdateAsyncTask(state.getAppsToSwap());
             updateSwappableAppsTask.execute();
         } else {
             showJoinWifi();
@@ -247,10 +263,10 @@ public class SwapWorkflowActivity extends FragmentActivity {
         @NonNull
         private final Context context;
 
-        public UpdateAsyncTask(Context c, @NonNull Set<String> apps) {
+        public UpdateAsyncTask(@NonNull Set<String> apps) {
             context = SwapWorkflowActivity.this.getApplicationContext();
             selectedApps = apps;
-            progressDialog = new ProgressDialog(c);
+            progressDialog = new ProgressDialog(context);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setTitle(R.string.updating);
             sharingUri = Utils.getSharingUri(FDroidApp.repo);
