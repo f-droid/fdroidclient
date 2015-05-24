@@ -1,7 +1,14 @@
 package org.fdroid.fdroid.localrepo;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 
@@ -31,7 +38,7 @@ public class SwapState {
     private int step;
 
     private SwapState(@NonNull Context context, @SwapStep int step, @NonNull Set<String> appsToSwap) {
-        this.context = context;
+        this.context = context.getApplicationContext();
         this.step = step;
         this.appsToSwap = appsToSwap;
     }
@@ -145,4 +152,59 @@ public class SwapState {
     @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep {}
+
+
+    // ==========================================
+    //   Local repo stop/start/restart handling
+    // ==========================================
+
+    private Messenger localRepoServiceMessenger = null;
+    private boolean localRepoServiceIsBound = false;
+
+    private final ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            localRepoServiceMessenger = new Messenger(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName className) {
+            localRepoServiceMessenger = null;
+        }
+    };
+
+    public void startLocalRepoService() {
+        if (!localRepoServiceIsBound) {
+            Intent service = new Intent(context, LocalRepoService.class);
+            localRepoServiceIsBound = context.bindService(service, serviceConnection, Context.BIND_AUTO_CREATE);
+            if (localRepoServiceIsBound)
+                context.startService(service);
+        }
+    }
+
+    public void stopLocalRepoService() {
+        if (localRepoServiceIsBound) {
+            context.unbindService(serviceConnection);
+            localRepoServiceIsBound = false;
+        }
+        context.stopService(new Intent(context, LocalRepoService.class));
+    }
+
+    /**
+     * Handles checking if the {@link LocalRepoService} is running, and only restarts it if it was running.
+     */
+    public void restartLocalRepoServiceIfRunning() {
+        if (localRepoServiceMessenger != null) {
+            try {
+                Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
+                localRepoServiceMessenger.send(msg);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public boolean isLocalRepoServiceRunning() {
+        return localRepoServiceIsBound;
+    }
 }

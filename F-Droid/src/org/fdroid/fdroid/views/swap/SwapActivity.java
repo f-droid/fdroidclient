@@ -19,6 +19,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
+import org.fdroid.fdroid.localrepo.SwapState;
 
 import java.util.Set;
 import java.util.Timer;
@@ -100,7 +101,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
                     showFragment(new StartSwapFragment(), STATE_START_SWAP);
 
-                    if (FDroidApp.isLocalRepoServiceRunning()) {
+                    if (getState().isLocalRepoServiceRunning()) {
                         showSelectApps();
                         showJoinWifi();
                         attemptToShowNfc();
@@ -181,10 +182,14 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
     }
 
     private void ensureLocalRepoRunning() {
-        if (!FDroidApp.isLocalRepoServiceRunning()) {
-            FDroidApp.startLocalRepoService(this);
+        if (!getState().isLocalRepoServiceRunning()) {
+            getState().startLocalRepoService();
             initLocalRepoTimer(900000); // 15 mins
         }
+    }
+
+    private SwapState getState() {
+        return SwapState.load(this);
     }
 
     private void initLocalRepoTimer(long timeoutMilliseconds) {
@@ -198,7 +203,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
         shutdownLocalRepoTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                FDroidApp.stopLocalRepoService(SwapActivity.this);
+                getState().stopLocalRepoService();
             }
         }, timeoutMilliseconds);
 
@@ -206,11 +211,11 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
 
     @Override
     public void stopSwapping() {
-        if (FDroidApp.isLocalRepoServiceRunning()) {
+        if (getState().isLocalRepoServiceRunning()) {
             if (shutdownLocalRepoTimer != null) {
                 shutdownLocalRepoTimer.cancel();
             }
-            FDroidApp.stopLocalRepoService(SwapActivity.this);
+            getState().stopLocalRepoService();
         }
         finish();
     }

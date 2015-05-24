@@ -73,9 +73,8 @@ public class FDroidApp extends Application {
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
-    private static Messenger localRepoServiceMessenger = null;
-    private static boolean localRepoServiceIsBound = false;
 
+    @SuppressWarnings("unused")
     private static final String TAG = "FDroidApp";
 
     BluetoothAdapter bluetoothAdapter = null;
@@ -300,54 +299,5 @@ public class FDroidApp extends Application {
                 activity.startActivity(sendBt);
             }
         }
-    }
-
-    private static final ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            localRepoServiceMessenger = new Messenger(service);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName className) {
-            localRepoServiceMessenger = null;
-        }
-    };
-
-    public static void startLocalRepoService(Context context) {
-        if (!localRepoServiceIsBound) {
-            Context app = context.getApplicationContext();
-            Intent service = new Intent(app, LocalRepoService.class);
-            localRepoServiceIsBound = app.bindService(service, serviceConnection, Context.BIND_AUTO_CREATE);
-            if (localRepoServiceIsBound)
-                app.startService(service);
-        }
-    }
-
-    public static void stopLocalRepoService(Context context) {
-        Context app = context.getApplicationContext();
-        if (localRepoServiceIsBound) {
-            app.unbindService(serviceConnection);
-            localRepoServiceIsBound = false;
-        }
-        app.stopService(new Intent(app, LocalRepoService.class));
-    }
-
-    /**
-     * Handles checking if the {@link LocalRepoService} is running, and only restarts it if it was running.
-     */
-    public static void restartLocalRepoServiceIfRunning() {
-        if (localRepoServiceMessenger != null) {
-            try {
-                Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
-                localRepoServiceMessenger.send(msg);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static boolean isLocalRepoServiceRunning() {
-        return localRepoServiceIsBound;
     }
 }

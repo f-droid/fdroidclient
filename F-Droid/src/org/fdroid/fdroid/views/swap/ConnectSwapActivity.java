@@ -27,6 +27,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.localrepo.SwapState;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -154,7 +155,7 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
         // Only ask server to swap with us, if we are actually running a local repo service.
         // It is possible to have a swap initiated without first starting a swap, in which
         // case swapping back is pointless.
-        if (!newRepoConfig.preventFurtherSwaps() && FDroidApp.isLocalRepoServiceRunning()) {
+        if (!newRepoConfig.preventFurtherSwaps() && SwapState.load(this).isLocalRepoServiceRunning()) {
             askServerToSwapWithUs();
         }
 

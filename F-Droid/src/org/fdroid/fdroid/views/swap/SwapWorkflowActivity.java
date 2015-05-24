@@ -196,8 +196,8 @@ public class SwapWorkflowActivity extends FragmentActivity {
     }
 
     private void ensureLocalRepoRunning() {
-        if (!FDroidApp.isLocalRepoServiceRunning()) {
-            FDroidApp.startLocalRepoService(this);
+        if (!getState().isLocalRepoServiceRunning()) {
+            getState().startLocalRepoService();
             initLocalRepoTimer(900000); // 15 mins
         }
     }
@@ -213,18 +213,18 @@ public class SwapWorkflowActivity extends FragmentActivity {
         shutdownLocalRepoTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                FDroidApp.stopLocalRepoService(SwapWorkflowActivity.this);
+                getState().stopLocalRepoService();
             }
         }, timeoutMilliseconds);
 
     }
 
     public void stopSwapping() {
-        if (FDroidApp.isLocalRepoServiceRunning()) {
+        if (getState().isLocalRepoServiceRunning()) {
             if (shutdownLocalRepoTimer != null) {
                 shutdownLocalRepoTimer.cancel();
             }
-            FDroidApp.stopLocalRepoService(SwapWorkflowActivity.this);
+            getState().stopLocalRepoService();
         }
         finish();
     }
