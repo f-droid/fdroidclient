@@ -22,46 +22,6 @@ public class SwapState {
 
     private static final String SHARED_PREFERENCES = "swap-state";
 
-    public static final int STEP_INTRO       = 1;
-    public static final int STEP_SELECT_APPS = 2;
-    public static final int STEP_JOIN_WIFI   = 3;
-    public static final int STEP_SHOW_NFC    = 4;
-    public static final int STEP_WIFI_QR     = 5;
-
-
-    @NonNull
-    private final Context context;
-
-    @NonNull
-    private Set<String> appsToSwap;
-
-    private int step;
-
-    private SwapState(@NonNull Context context, @SwapStep int step, @NonNull Set<String> appsToSwap) {
-        this.context = context.getApplicationContext();
-        this.step = step;
-        this.appsToSwap = appsToSwap;
-    }
-
-    /**
-     * Current screen that the swap process is up to.
-     * Will be one of the SwapState.STEP_* values.
-     */
-    @SwapStep
-    public int getStep() {
-        return step;
-    }
-
-    public SwapState setStep(@SwapStep int step) {
-        this.step = step;
-        persistStep();
-        return this;
-    }
-
-    public Set<String> getAppsToSwap() {
-        return appsToSwap;
-    }
-
     private static final String KEY_STEP         = "step";
     private static final String KEY_APPS_TO_SWAP = "appsToSwap";
 
@@ -81,13 +41,78 @@ public class SwapState {
         return instance;
     }
 
+    @NonNull
+    private final Context context;
+
+    @NonNull
+    private Set<String> appsToSwap;
+
+    private SwapState(@NonNull Context context, @SwapStep int step, @NonNull Set<String> appsToSwap) {
+        this.context = context.getApplicationContext();
+        this.step = step;
+        this.appsToSwap = appsToSwap;
+    }
+
+    /**
+     * Where relevant, the state of the swap process will be saved to disk using preferences.
+     * Note that this is not always useful, for example saving the "current wifi network" is
+     * bound to cause trouble when the user opens the swap process again and is connected to
+     * a different network.
+     */
     private SharedPreferences persistence() {
         return context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_APPEND);
+    }
+
+    // ==========================================================
+    //                 Manage the current step
+    // ("Step" refers to the current view being shown in the UI)
+    // ==========================================================
+
+    public static final int STEP_INTRO       = 1;
+    public static final int STEP_SELECT_APPS = 2;
+    public static final int STEP_JOIN_WIFI   = 3;
+    public static final int STEP_SHOW_NFC    = 4;
+    public static final int STEP_WIFI_QR     = 5;
+
+    private @SwapStep int step;
+
+    /**
+     * Current screen that the swap process is up to.
+     * Will be one of the SwapState.STEP_* values.
+     */
+    @SwapStep
+    public int getStep() {
+        return step;
+    }
+
+    public SwapState setStep(@SwapStep int step) {
+        this.step = step;
+        persistStep();
+        return this;
+    }
+
+    public @NonNull Set<String> getAppsToSwap() {
+        return appsToSwap;
     }
 
     private void persistStep() {
         persistence().edit().putInt(KEY_STEP, step).commit();
     }
+
+    /**
+     * Ensure that we don't get put into an incorrect state, by forcing people to pass valid
+     * states to setStep. Ideally this would be done by requiring an enum or something to
+     * be passed rather than in integer, however that is harder to persist on disk than an int.
+     * This is the same as, e.g. {@link Context#getSystemService(String)}
+     */
+    @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface SwapStep {}
+
+
+    // ==========================================
+    //      Remember apps user wants to swap
+    // ==========================================
 
     private void persistAppsToSwap() {
         persistence().edit().putString(KEY_APPS_TO_SWAP, serializePackages(appsToSwap)).commit();
@@ -142,16 +167,6 @@ public class SwapState {
         }
         persistAppsToSwap();
     }
-
-    /**
-     * Ensure that we don't get put into an incorrect state, by forcing people to pass valid
-     * states to setStep. Ideally this would be done by requiring an enum or something to
-     * be passed rather than in integer, however that is harder to persist on disk than an int.
-     * This is the same as, e.g. {@link Context#getSystemService(String)}
-     */
-    @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface SwapStep {}
 
 
     // ==========================================
