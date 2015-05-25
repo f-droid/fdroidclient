@@ -69,7 +69,6 @@ public class FDroidApp extends Application {
     public static String ssid;
     public static String bssid;
     public static final Repo repo = new Repo();
-    public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;

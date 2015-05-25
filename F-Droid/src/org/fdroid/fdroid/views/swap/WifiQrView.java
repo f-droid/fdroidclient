@@ -1,126 +1,138 @@
 package org.fdroid.fdroid.views.swap;
 
-import android.app.Activity;
+import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
-import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.localrepo.SwapState;
 import org.fdroid.fdroid.net.WifiStateChangeService;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.net.URI;
 import java.util.List;
 import java.util.Locale;
 
-public class WifiQrFragment extends Fragment {
+public class WifiQrView extends ScrollView implements SwapWorkflowActivity.InnerView {
 
-    private static final int CONNECT_TO_SWAP = 1;
+    private static final String TAG = "WifiQrView";
 
-    private static final String TAG = "WifiQrFragment";
+    public WifiQrView(Context context) {
+        super(context);
+    }
 
-    private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent i) {
-            setUIFromWifi();
-        }
-    };
+    public WifiQrView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-    private SwapProcessManager swapManager;
+    public WifiQrView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public WifiQrView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    private SwapWorkflowActivity getActivity() {
+        return (SwapWorkflowActivity)getContext();
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.swap_wifi_qr, container, false);
-        ImageView qrImage = (ImageView)view.findViewById(R.id.wifi_qr_code);
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        setUIFromWifi();
+
+        ImageView qrImage = (ImageView)findViewById(R.id.wifi_qr_code);
 
         // Replace all blacks with the background blue.
         qrImage.setColorFilter(new LightingColorFilter(0xffffffff, getResources().getColor(R.color.swap_blue)));
 
-        Button openQr = (Button)view.findViewById(R.id.btn_qr_scanner);
+        Button openQr = (Button)findViewById(R.id.btn_qr_scanner);
         openQr.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentIntegrator integrator = new IntentIntegrator(WifiQrFragment.this);
+                // TODO: Should probably ask the activity or some other class to do this for us.
+                // The view should be dumb and only know how to show things and delegate things to
+                // other classes that know how to do things.
+                IntentIntegrator integrator = new IntentIntegrator(getActivity());
                 integrator.initiateScan();
             }
         });
 
-        Button cancel = (Button)view.findViewById(R.id.btn_cancel_swap);
+        Button cancel = (Button)findViewById(R.id.btn_cancel_swap);
         cancel.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                swapManager.stopSwapping();
+                getActivity().stopSwapping();
             }
         });
-        return view;
+
+        // TODO: As with the JoinWifiView, this should be refactored to be part of the SwapState.
+        // Otherwise, we are left with SwapState, LocalRepoService, WifiStateChangeService, and
+        // some static variables in FDroidApp all which manage the state for swap.
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+                new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        setUIFromWifi();
+                    }
+                },
+                new IntentFilter(WifiStateChangeService.BROADCAST)
+        );
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        swapManager = (SwapProcessManager)activity;
+    public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {
+        return false;
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanResult != null) {
-            if (scanResult.getContents() != null) {
-                NewRepoConfig repoConfig = new NewRepoConfig(getActivity(), scanResult.getContents());
-                if (repoConfig.isValidRepo()) {
-                    startActivityForResult(new Intent(FDroid.ACTION_ADD_REPO, Uri.parse(scanResult.getContents()), getActivity(), ConnectSwapActivity.class), CONNECT_TO_SWAP);
-                } else {
-                    Toast.makeText(getActivity(), "The QR code you scanned doesn't look like a swap code.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
-            getActivity().finish();
-        }
+    public int getStep() {
+        return SwapState.STEP_WIFI_QR;
     }
 
-    public void onResume() {
-        super.onResume();
-        setUIFromWifi();
-
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(onWifiChange,
-                new IntentFilter(WifiStateChangeService.BROADCAST));
+    @Override
+    public int getPreviousStep() {
+        // TODO: Find a way to make this optionally go back to the NFC screen if appropriate.
+        return SwapState.STEP_JOIN_WIFI;
     }
 
     private void setUIFromWifi() {
 
-        if (TextUtils.isEmpty(FDroidApp.repo.address) || getView() == null)
+        if (TextUtils.isEmpty(FDroidApp.repo.address))
             return;
 
         String scheme = Preferences.get().isLocalRepoHttpsEnabled() ? "https://" : "http://";
 
         // the fingerprint is not useful on the button label
         String buttonLabel = scheme + FDroidApp.ipAddressString + ":" + FDroidApp.port;
-        TextView ipAddressView = (TextView) getView().findViewById(R.id.device_ip_address);
+        TextView ipAddressView = (TextView) findViewById(R.id.device_ip_address);
         ipAddressView.setText(buttonLabel);
 
         /*
@@ -151,7 +163,7 @@ public class WifiQrFragment extends Fragment {
                     qrUriString += "&";
                 }
                 qrUriString += parameter.getName().toUpperCase(Locale.ENGLISH) + "=" +
-                    parameter.getValue().toUpperCase(Locale.ENGLISH);
+                        parameter.getValue().toUpperCase(Locale.ENGLISH);
             }
         }
 

@@ -1,4 +1,4 @@
-package org.fdroid.fdroid.views.swap.views;
+package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
 import android.content.Context;

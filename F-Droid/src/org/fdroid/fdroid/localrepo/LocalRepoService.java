@@ -26,7 +26,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import org.fdroid.fdroid.views.swap.SwapActivity;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.io.IOException;
 import java.net.BindException;
@@ -136,7 +136,7 @@ public class LocalRepoService extends Service {
     private void showNotification() {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // launch LocalRepoActivity if the user selects this notification
-        Intent intent = new Intent(this, SwapActivity.class);
+        Intent intent = new Intent(this, SwapWorkflowActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         notification = new NotificationCompat.Builder(this)

@@ -50,7 +50,6 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
-import org.fdroid.fdroid.views.swap.SwapActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 public class FDroid extends ActionBarActivity {
