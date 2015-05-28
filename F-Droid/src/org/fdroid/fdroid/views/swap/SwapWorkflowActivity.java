@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -264,7 +265,7 @@ public class SwapWorkflowActivity extends FragmentActivity {
         private final Context context;
 
         public UpdateAsyncTask(@NonNull Set<String> apps) {
-            context = SwapWorkflowActivity.this.getApplicationContext();
+            context = SwapWorkflowActivity.this;
             selectedApps = apps;
             progressDialog = new ProgressDialog(context);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

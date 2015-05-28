@@ -87,8 +87,11 @@ public class SelectAppsView extends ListView implements
         super.onFinishInflate();
         adapter = new AppListAdapter(this, getContext(),
                 getContext().getContentResolver().query(InstalledAppProvider.getContentUri(), InstalledAppProvider.DataColumns.ALL, null, null, null));
-        setAdapter(adapter);
+
+        // Has to be _before_ "setAdapter()", as per the API docs.
         addHeaderView(inflate(getContext(), R.layout.swap_create_header, null), null, false);
+
+        setAdapter(adapter);
         setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         // either reconnect with an existing loader or start a new one

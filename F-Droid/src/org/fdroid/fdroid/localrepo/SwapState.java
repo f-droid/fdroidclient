@@ -31,11 +31,8 @@ public class SwapState {
     public static SwapState load(@NonNull Context context) {
         if (instance == null) {
             SharedPreferences preferences = context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
-
-            @SwapStep int step = preferences.getInt(KEY_STEP, STEP_INTRO);
             Set<String> appsToSwap = deserializePackages(preferences.getString(KEY_APPS_TO_SWAP, ""));
-
-            instance = new SwapState(context, step, appsToSwap);
+            instance = new SwapState(context, appsToSwap);
         }
 
         return instance;
@@ -47,9 +44,8 @@ public class SwapState {
     @NonNull
     private Set<String> appsToSwap;
 
-    private SwapState(@NonNull Context context, @SwapStep int step, @NonNull Set<String> appsToSwap) {
+    private SwapState(@NonNull Context context, @NonNull Set<String> appsToSwap) {
         this.context = context.getApplicationContext();
-        this.step = step;
         this.appsToSwap = appsToSwap;
     }
 
@@ -74,7 +70,7 @@ public class SwapState {
     public static final int STEP_SHOW_NFC    = 4;
     public static final int STEP_WIFI_QR     = 5;
 
-    private @SwapStep int step;
+    private @SwapStep int step = STEP_INTRO;
 
     /**
      * Current screen that the swap process is up to.
@@ -87,16 +83,11 @@ public class SwapState {
 
     public SwapState setStep(@SwapStep int step) {
         this.step = step;
-        persistStep();
         return this;
     }
 
     public @NonNull Set<String> getAppsToSwap() {
         return appsToSwap;
-    }
-
-    private void persistStep() {
-        persistence().edit().putInt(KEY_STEP, step).commit();
     }
 
     /**
