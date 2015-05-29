@@ -21,7 +21,7 @@ if ( !hasProperty( 'sourceDeps' ) ) {
                 'com.android.support:support-annotations:20.0.0',
 
                 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
-                'com.nostra13.universalimageloader:universal-image-loader:1.9.3',
+                'com.nostra13.universalimageloader:universal-image-loader:1.9.4',
                 'com.google.zxing:core:3.2.0',
                 'eu.chainfire:libsuperuser:1.0.0.201504231659',
 

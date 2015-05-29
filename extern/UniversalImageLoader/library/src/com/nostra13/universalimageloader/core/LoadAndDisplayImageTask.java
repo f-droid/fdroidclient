@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2011-2013 Sergey Tarasevich
+ * Copyright 2011-2014 Sergey Tarasevich
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,6 +68,7 @@ final class LoadAndDisplayImageTask implements Runnable, IoUtils.CopyListener {
 	private static final String LOG_TASK_CANCELLED_IMAGEAWARE_COLLECTED = "ImageAware was collected by GC. Task is cancelled. [%s]";
 	private static final String LOG_TASK_INTERRUPTED = "Task was interrupted [%s]";
 
+	private static final String ERROR_NO_IMAGE_STREAM = "No stream for image [%s]";
 	private static final String ERROR_PRE_PROCESSOR_NULL = "Pre-processor returned null [%s]";
 	private static final String ERROR_POST_PROCESSOR_NULL = "Post-processor returned null [%s]";
 	private static final String ERROR_PROCESSOR_FOR_DISK_CACHE_NULL = "Bitmap processor for disk cache returned null [%s]";
@@ -214,7 +215,7 @@ final class LoadAndDisplayImageTask implements Runnable, IoUtils.CopyListener {
 		Bitmap bitmap = null;
 		try {
 			File imageFile = configuration.diskCache.get(uri);
-			if (imageFile != null && imageFile.exists()) {
+			if (imageFile != null && imageFile.exists() && imageFile.length() > 0) {
 				L.d(LOG_LOAD_IMAGE_FROM_DISK_CACHE, memoryCacheKey);
 				loadedFrom = LoadedFrom.DISC_CACHE;
 
@@ -288,7 +289,16 @@ final class LoadAndDisplayImageTask implements Runnable, IoUtils.CopyListener {
 
 	private boolean downloadImage() throws IOException {
 		InputStream is = getDownloader().getStream(uri, options.getExtraForDownloader());
-		return configuration.diskCache.save(uri, is, this);
+		if (is == null) {
+			L.e(ERROR_NO_IMAGE_STREAM, memoryCacheKey);
+			return false;
+		} else {
+			try {
+				return configuration.diskCache.save(uri, is, this);
+			} finally {
+				IoUtils.closeSilently(is);
+			}
+		}
 	}
 
 	/** Decodes image file into Bitmap, resize it and save it back */

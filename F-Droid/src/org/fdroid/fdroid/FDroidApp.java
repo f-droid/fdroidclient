@@ -41,7 +41,7 @@ import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
+import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -216,7 +216,7 @@ public class FDroidApp extends Application {
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
             .imageDownloader(new IconDownloader(getApplicationContext()))
-            .diskCache(new LimitedAgeDiscCache(
+            .diskCache(new LimitedAgeDiskCache(
                         new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
                             "icons"),
                         null,
