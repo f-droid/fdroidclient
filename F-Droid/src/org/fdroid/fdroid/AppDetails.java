@@ -34,6 +34,7 @@ import android.content.pm.Signature;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -1030,6 +1031,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         if (progressDialog == null) {
             final ProgressDialog pd = new ProgressDialog(this);
             pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            if (Build.VERSION.SDK_INT >= 11) {
+                pd.setProgressNumberFormat("%1d/%2d KiB");
+            }
             pd.setMessage(getString(R.string.download_server) + ":\n " + file);
             pd.setCancelable(true);
             pd.setCanceledOnTouchOutside(false);
@@ -1082,11 +1086,11 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             ProgressDialog pd = getProgressDialog(downloadHandler.getRemoteAddress());
             if (total > 0) {
                 pd.setIndeterminate(false);
-                pd.setProgress(progress);
-                pd.setMax(total);
+                pd.setProgress(progress/1024);
+                pd.setMax(total/1024);
             } else {
                 pd.setIndeterminate(true);
-                pd.setProgress(progress);
+                pd.setProgress(progress/1024);
                 pd.setMax(0);
             }
             if (!pd.isShowing()) {
