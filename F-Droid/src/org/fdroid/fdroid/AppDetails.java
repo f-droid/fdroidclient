@@ -611,9 +611,9 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 Hasher hash = new Hasher("MD5", mInstalledSignature.toCharsString().getBytes());
                 mInstalledSigID = hash.getHash();
             } catch (PackageManager.NameNotFoundException e) {
-                Log.d(TAG, "Failed to get installed signature");
+                Log.w(TAG, "Failed to get installed signature");
             } catch (NoSuchAlgorithmException e) {
-                Log.d(TAG, "Failed to calculate signature MD5 sum");
+                Log.w(TAG, "Failed to calculate signature MD5 sum");
                 mInstalledSignature = null;
             }
         }
