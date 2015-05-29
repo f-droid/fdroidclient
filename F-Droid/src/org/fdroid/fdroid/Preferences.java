@@ -230,7 +230,9 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Log.d(TAG, "Invalidating preference '" + key + "'.");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "Invalidating preference '" + key + "'.");
+        }
         uninitialize(key);
 
         switch (key) {
