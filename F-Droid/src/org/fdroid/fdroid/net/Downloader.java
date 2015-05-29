@@ -173,12 +173,12 @@ public abstract class Downloader {
             int count = input.read(buffer);
             throwExceptionIfInterrupted();
 
-            bytesRead += count;
-            sendProgress(bytesRead, totalBytes);
             if (count == -1) {
                 Log.d(TAG, "Finished downloading from stream");
                 break;
             }
+            bytesRead += count;
+            sendProgress(bytesRead, totalBytes);
             outputStream.write(buffer, 0, count);
         }
         outputStream.flush();
