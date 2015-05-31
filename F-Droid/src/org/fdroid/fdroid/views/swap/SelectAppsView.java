@@ -34,7 +34,7 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.localrepo.SwapState;
+import org.fdroid.fdroid.localrepo.SwapManager;
 
 public class SelectAppsView extends ListView implements
         SwapWorkflowActivity.InnerView,
@@ -62,7 +62,7 @@ public class SelectAppsView extends ListView implements
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapState getState() {
+    private SwapManager getState() {
         return getActivity().getState();
     }
 
@@ -136,12 +136,12 @@ public class SelectAppsView extends ListView implements
 
     @Override
     public int getStep() {
-        return SwapState.STEP_SELECT_APPS;
+        return SwapManager.STEP_SELECT_APPS;
     }
 
     @Override
     public int getPreviousStep() {
-        return SwapState.STEP_INTRO;
+        return SwapManager.STEP_INTRO;
     }
 
     private void toggleAppSelected(int position) {

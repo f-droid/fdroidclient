@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,37 +28,40 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.SwapState;
+import org.fdroid.fdroid.localrepo.SwapManager;
 
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SwapWorkflowActivity extends FragmentActivity {
 
     private ViewGroup container;
 
+    /**
+     * A UI component (subclass of {@link View}) which forms part of the swap workflow.
+     * There is a one to one mapping between an {@link org.fdroid.fdroid.views.swap.SwapWorkflowActivity.InnerView}
+     * and a {@link org.fdroid.fdroid.localrepo.SwapManager.SwapStep}, and these views know what
+     * the previous view before them should be.
+     */
     public interface InnerView {
         /** @return True if the menu should be shown. */
         boolean buildMenu(Menu menu, @NonNull MenuInflater inflater);
 
         /** @return The step that this view represents. */
-        @SwapState.SwapStep int getStep();
+        @SwapManager.SwapStep int getStep();
 
-        @SwapState.SwapStep int getPreviousStep();
+        @SwapManager.SwapStep int getPreviousStep();
     }
 
     private static final int CONNECT_TO_SWAP = 1;
 
-    private SwapState state;
+    private SwapManager state;
     private InnerView currentView;
     private boolean hasPreparedLocalRepo = false;
     private UpdateAsyncTask updateSwappableAppsTask = null;
-    private Timer shutdownLocalRepoTimer;
 
     @Override
     public void onBackPressed() {
-        if (currentView.getStep() == SwapState.STEP_INTRO) {
+        if (currentView.getStep() == SwapManager.STEP_INTRO) {
             finish();
         } else {
             int nextStep = currentView.getPreviousStep();
@@ -71,7 +73,7 @@ public class SwapWorkflowActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        state = SwapState.load(this);
+        state = SwapManager.load(this);
         setContentView(R.layout.swap_activity);
         container = (ViewGroup) findViewById(R.id.fragment_container);
         showRelevantView();
@@ -98,25 +100,25 @@ public class SwapWorkflowActivity extends FragmentActivity {
         }
 
         switch(state.getStep()) {
-            case SwapState.STEP_INTRO:
+            case SwapManager.STEP_INTRO:
                 showIntro();
                 break;
-            case SwapState.STEP_SELECT_APPS:
+            case SwapManager.STEP_SELECT_APPS:
                 showSelectApps();
                 break;
-            case SwapState.STEP_SHOW_NFC:
+            case SwapManager.STEP_SHOW_NFC:
                 showNfc();
                 break;
-            case SwapState.STEP_JOIN_WIFI:
+            case SwapManager.STEP_JOIN_WIFI:
                 showJoinWifi();
                 break;
-            case SwapState.STEP_WIFI_QR:
+            case SwapManager.STEP_WIFI_QR:
                 showWifiQr();
                 break;
         }
     }
 
-    public SwapState getState() {
+    public SwapManager getState() {
         return state;
     }
 
@@ -197,36 +199,11 @@ public class SwapWorkflowActivity extends FragmentActivity {
     }
 
     private void ensureLocalRepoRunning() {
-        if (!getState().isLocalRepoServiceRunning()) {
-            getState().startLocalRepoService();
-            initLocalRepoTimer(900000); // 15 mins
-        }
-    }
-
-    private void initLocalRepoTimer(long timeoutMilliseconds) {
-
-        // reset the timer if viewing this Activity again
-        if (shutdownLocalRepoTimer != null)
-            shutdownLocalRepoTimer.cancel();
-
-        // automatically turn off after 15 minutes
-        shutdownLocalRepoTimer = new Timer();
-        shutdownLocalRepoTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                getState().stopLocalRepoService();
-            }
-        }, timeoutMilliseconds);
-
+        getState().enableSwapping();
     }
 
     public void stopSwapping() {
-        if (getState().isLocalRepoServiceRunning()) {
-            if (shutdownLocalRepoTimer != null) {
-                shutdownLocalRepoTimer.cancel();
-            }
-            getState().stopLocalRepoService();
-        }
+        getState().disableSwapping();
         finish();
     }
 

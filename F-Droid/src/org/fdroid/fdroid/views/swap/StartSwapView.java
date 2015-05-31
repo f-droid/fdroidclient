@@ -5,15 +5,13 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.localrepo.SwapState;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
+import org.fdroid.fdroid.localrepo.SwapManager;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
@@ -66,7 +64,7 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
 
     @Override
     public int getStep() {
-        return SwapState.STEP_INTRO;
+        return SwapManager.STEP_INTRO;
     }
 
     @Override
@@ -75,6 +73,6 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         // if getStep is STEP_INTRO, don't even bother asking for getPreviousStep. But that is a
         // bit messy. It would be nicer if this was handled using the same mechanism as everything
         // else.
-        return SwapState.STEP_INTRO;
+        return SwapManager.STEP_INTRO;
     }
 }

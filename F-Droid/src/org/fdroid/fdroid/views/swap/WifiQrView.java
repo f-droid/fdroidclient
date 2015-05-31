@@ -30,9 +30,8 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.localrepo.SwapState;
+import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.net.WifiStateChangeService;
-import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.net.URI;
 import java.util.List;
@@ -114,13 +113,13 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
 
     @Override
     public int getStep() {
-        return SwapState.STEP_WIFI_QR;
+        return SwapManager.STEP_WIFI_QR;
     }
 
     @Override
     public int getPreviousStep() {
         // TODO: Find a way to make this optionally go back to the NFC screen if appropriate.
-        return SwapState.STEP_JOIN_WIFI;
+        return SwapManager.STEP_JOIN_WIFI;
     }
 
     private void setUIFromWifi() {

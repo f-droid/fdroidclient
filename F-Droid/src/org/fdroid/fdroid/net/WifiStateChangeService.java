@@ -17,7 +17,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.SwapState;
+import org.fdroid.fdroid.localrepo.SwapManager;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -152,7 +152,7 @@ public class WifiStateChangeService extends Service {
             Intent intent = new Intent(BROADCAST);
             LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
             WifiStateChangeService.this.stopSelf();
-            SwapState.load(WifiStateChangeService.this).restartLocalRepoServiceIfRunning();
+            SwapManager.load(WifiStateChangeService.this).restartIfEnabled();
         }
     }
 

@@ -23,10 +23,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -34,10 +32,6 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
@@ -52,14 +46,12 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.io.File;
 import java.security.Security;
 import java.util.Locale;
-import java.util.Set;
 
 public class FDroidApp extends Application {
 
