@@ -31,7 +31,6 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_ROOTED,
         Preferences.PREF_INCOMP_VER,
         Preferences.PREF_THEME,
-        Preferences.PREF_PERMISSIONS,
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_LOCAL_REPO_BONJOUR,
@@ -97,10 +96,6 @@ public class PreferencesFragment extends PreferenceFragment
 
         case Preferences.PREF_UPD_HISTORY:
             textSummary(key, R.string.update_history_summ);
-            break;
-
-        case Preferences.PREF_PERMISSIONS:
-            checkSummary(key, R.string.showPermissions_on);
             break;
 
         case Preferences.PREF_COMPACT_LAYOUT:

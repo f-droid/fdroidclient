@@ -67,6 +67,8 @@
 	<string name="no">No</string>
 	<string name="repo_add_title">Add new repository</string>
 	<string name="repo_add_add">Add</string>
+	<string name="links">Links</string>
+	<string name="content_description_view_more">View more</string>
 
 	<string name="cancel">Cancel</string>
 	<string name="enable">Enable</string>

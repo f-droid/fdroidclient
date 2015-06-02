@@ -788,7 +788,7 @@ public class AppProvider extends FDroidProvider {
         updateCompatibleFlags();
         updateSuggestedFromLatest();
         updateSuggestedFromUpstream();
-        updateIconUrls();
+        updateIconUrls(1.0);
     }
 
     /**
@@ -920,10 +920,14 @@ public class AppProvider extends FDroidProvider {
         write().execSQL(updateSql);
     }
 
-    private void updateIconUrls() {
-
+    /**
+     * Updates URLs to icons
+     *
+     * @param dpiMultiplier Lets you grab icons for densities larger or smaller than that of your device by some fraction. Useful, for example, if you want to display a 48dp image at twice the size, 96dp, in which case you'd use a dpiMultiplier of 2.0 to get an image twice as big.
+     */
+    public void updateIconUrls(final double dpiMultiplier) {
         Log.d(TAG, "Updating icon paths for apps belonging to repos with version >= " + Repo.VERSION_DENSITY_SPECIFIC_ICONS);
-        final String iconsDir = Utils.getIconsDir(getContext());
+        final String iconsDir = Utils.getIconsDir(getContext(), dpiMultiplier);
         Log.d(TAG, "Using icon dir '"+iconsDir+"'");
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         String query = getIconUpdateQuery();

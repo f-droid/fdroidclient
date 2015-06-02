@@ -44,7 +44,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_ROOTED = "rooted";
     public static final String PREF_INCOMP_VER = "incompatibleVersions";
     public static final String PREF_THEME = "theme";
-    public static final String PREF_PERMISSIONS = "showPermissions";
     public static final String PREF_COMPACT_LAYOUT = "compactlayout";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
     public static final String PREF_CACHE_APK = "cacheDownloaded";
@@ -120,10 +119,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean showIncompatibleVersions() {
         return preferences.getBoolean(PREF_INCOMP_VER, DEFAULT_INCOMP_VER);
-    }
-
-    public boolean showPermissions() {
-        return preferences.getBoolean(PREF_PERMISSIONS, DEFAULT_PERMISSIONS);
     }
 
     public boolean showNfcDuringSwap() {

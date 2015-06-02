@@ -79,23 +79,25 @@ public final class Utils {
     private static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
-    public static String getIconsDir(Context context) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        if (metrics.densityDpi >= 640) {
+    public static String getIconsDir(final Context context, final double dpiMultiplier) {
+        final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        final double dpi = metrics.densityDpi * dpiMultiplier;
+        if (dpi >= 640) {
             return "/icons-640/";
         }
-        if (metrics.densityDpi >= 480) {
+        if (dpi >= 480) {
             return "/icons-480/";
         }
-        if (metrics.densityDpi >= 320) {
+        if (dpi >= 320) {
             return "/icons-320/";
         }
-        if (metrics.densityDpi >= 240) {
+        if (dpi >= 240) {
             return "/icons-240/";
         }
-        if (metrics.densityDpi >= 160) {
+        if (dpi >= 160) {
             return "/icons-160/";
         }
+
         return "/icons-120/";
     }
 

@@ -133,3 +133,9 @@ will. Specifically you can redistribute and/or modify it under the terms of the
 [GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
 published by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
+
+Some icons are made by [Picol](http://www.flaticon.com/authors/picol),
+[Icomoon](http://www.flaticon.com/authors/icomoon) or
+[Dave Gandy](http://www.flaticon.com/authors/dave-gandy) from
+[Flaticon](http://www.flaticon.com) and are licensed by
+[Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
