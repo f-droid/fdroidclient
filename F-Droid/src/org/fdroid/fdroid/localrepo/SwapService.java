@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -101,13 +102,25 @@ public class SwapService extends Service {
 
     private boolean enabled = false;
 
+    /**
+     * Ensures that the webserver is running, as are the other services which make swap work.
+     * Will only do all this if it is not already running, and will run on a background thread.'
+     * TODO: What about an "enabling" status? Not sure if it will be useful or not.
+     */
     public void enableSwapping() {
         if (!enabled) {
-            nfcType.start();
-            webServerType.start();
-            bonjourType.start();
-            startForeground(NOTIFICATION, createNotification());
-            enabled = true;
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    enableSwappingSynchronous();
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    enabled = true;
+                }
+            }.execute();
         }
 
         // Regardless of whether it was previously enabled, start the timer again. This ensures that
@@ -116,17 +129,49 @@ public class SwapService extends Service {
         initTimer();
     }
 
+    /**
+     * The guts of this class - responsible for enabling the relevant services for swapping.
+     *  * Doesn't know anything about enabled/disabled.
+     *  * Runs synchronously on the thread it was called.
+     */
+    private void enableSwappingSynchronous() {
+        nfcType.start();
+        webServerType.start();
+        bonjourType.start();
+        startForeground(NOTIFICATION, createNotification());
+    }
+
     public void disableSwapping() {
         if (enabled) {
-            bonjourType.stop();
-            webServerType.stop();
-            nfcType.stop();
-            stopForeground(true);
-            if (timer != null) {
-                timer.cancel();
-            }
-            enabled = false;
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    disableSwappingSynchronous();
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    // TODO: Does this  need to be run before the background task, so that the timer
+                    // can't kick in while we are shutting down everything?
+                    if (timer != null) {
+                        timer.cancel();
+                    }
+
+                    enabled = false;
+                }
+            }.execute();
         }
+    }
+
+    /**
+     * @see SwapService#enableSwappingSynchronous()
+     */
+    private void disableSwappingSynchronous() {
+        bonjourType.stop();
+        webServerType.stop();
+        nfcType.stop();
+        stopForeground(true);
     }
 
     public boolean isEnabled() {
@@ -135,8 +180,14 @@ public class SwapService extends Service {
 
     public void restartIfEnabled() {
         if (enabled) {
-            disableSwapping();
-            enableSwapping();
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    disableSwappingSynchronous();
+                    enableSwappingSynchronous();
+                    return null;
+                }
+            }.execute();
         }
     }
 
