@@ -65,11 +65,6 @@ public class WebServerType implements SwapType {
             }
         };
         new Thread(webServer).start();
-
-        // TODO: Don't think these were ever being received by anyone...
-        /*Intent intent = new Intent(STATE);
-        intent.putExtra(STATE, STARTED);
-        LocalBroadcastManager.getInstance(LocalRepoService.this).sendBroadcast(intent);*/
     }
 
     @Override
@@ -78,14 +73,10 @@ public class WebServerType implements SwapType {
             Log.i(TAG, "null handler in stopWebServer");
             return;
         }
+        Log.d(TAG, "Sending message to swap webserver to stop it.");
         Message msg = webServerThreadHandler.obtainMessage();
         msg.obj = webServerThreadHandler.getLooper().getThread().getName() + " says stop";
         webServerThreadHandler.sendMessage(msg);
-
-        // TODO: Don't think these were ever being received by anyone...
-        /*Intent intent = new Intent(STATE);
-        intent.putExtra(STATE, STOPPED);
-        LocalBroadcastManager.getInstance(LocalRepoService.this).sendBroadcast(intent);*/
     }
 
     @Override

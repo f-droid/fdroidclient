@@ -52,9 +52,11 @@ public class BonjourType implements SwapType {
             type = "_http._tcp.local.";
         }
         try {
+            Log.d(TAG, "Starting bonjour service...");
             pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
             jmdns = JmDNS.create();
             jmdns.registerService(pairService);
+            Log.d(TAG, "... Bounjour service started.");
         } catch (IOException e) {
             Log.e(TAG, "Error while registering jmdns service: " + e);
             Log.e(TAG, Log.getStackTraceString(e));

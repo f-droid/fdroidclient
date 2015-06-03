@@ -69,8 +69,8 @@ public class SwapService extends Service {
 
     public void onCreate() {
         super.onCreate();
-
-        Preferences.get().unregisterLocalRepoBonjourListeners(bonjourEnabledListener);
+        Log.d(TAG, "Creating service, will register appropriate listeners.");
+        Preferences.get().registerLocalRepoBonjourListeners(bonjourEnabledListener);
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange,
@@ -85,7 +85,11 @@ public class SwapService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
         disableSwapping();
+        Preferences.get().unregisterLocalRepoBonjourListeners(bonjourEnabledListener);
+        Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
     }
 
     private Notification createNotification() {
@@ -112,12 +116,15 @@ public class SwapService extends Service {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
+                    Log.d(TAG, "Started background task to enable swapping.");
                     enableSwappingSynchronous();
                     return null;
                 }
 
                 @Override
                 protected void onPostExecute(Void aVoid) {
+                    Log.d(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed.");
+                    startForeground(NOTIFICATION, createNotification());
                     enabled = true;
                 }
             }.execute();
@@ -138,7 +145,6 @@ public class SwapService extends Service {
         nfcType.start();
         webServerType.start();
         bonjourType.start();
-        startForeground(NOTIFICATION, createNotification());
     }
 
     public void disableSwapping() {
@@ -146,12 +152,15 @@ public class SwapService extends Service {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
+                    Log.d(TAG, "Started background task to disable swapping.");
                     disableSwappingSynchronous();
                     return null;
                 }
 
                 @Override
                 protected void onPostExecute(Void aVoid) {
+                    Log.d(TAG, "Finished background task to disable swapping.");
+
                     // TODO: Does this  need to be run before the background task, so that the timer
                     // can't kick in while we are shutting down everything?
                     if (timer != null) {
@@ -159,6 +168,9 @@ public class SwapService extends Service {
                     }
 
                     enabled = false;
+
+                    Log.d(TAG, "Moving SwapService to background so that it can be GC'ed if required.");
+                    stopForeground(true);
                 }
             }.execute();
         }
@@ -168,10 +180,10 @@ public class SwapService extends Service {
      * @see SwapService#enableSwappingSynchronous()
      */
     private void disableSwappingSynchronous() {
+        Log.d(TAG, "Disabling SwapService (bonjour, webserver, etc)");
         bonjourType.stop();
         webServerType.stop();
         nfcType.stop();
-        stopForeground(true);
     }
 
     public boolean isEnabled() {
@@ -183,6 +195,7 @@ public class SwapService extends Service {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
+                    Log.d(TAG, "Restarting swap services.");
                     disableSwappingSynchronous();
                     enableSwappingSynchronous();
                     return null;
@@ -192,14 +205,18 @@ public class SwapService extends Service {
     }
 
     private void initTimer() {
-        if (timer != null)
+        if (timer != null) {
+            Log.d(TAG, "Cancelling existing timer");
             timer.cancel();
+        }
 
         // automatically turn off after 15 minutes
+        Log.d(TAG, "Initializing timer to 15 minutes");
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                Log.d(TAG, "Disabling swap because " + TIMEOUT + "ms passed.");
                 disableSwapping();
             }
         }, TIMEOUT);
