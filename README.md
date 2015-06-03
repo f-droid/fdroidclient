@@ -133,3 +133,8 @@ will. Specifically you can redistribute and/or modify it under the terms of the
 [GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
 published by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
+
+Some icons are from the Material Design Icon set
+(https://github.com/google/material-design-icons) released under an
+Attribution 4.0 International license (http://creativecommons.org/licenses/by/4.0/)
+

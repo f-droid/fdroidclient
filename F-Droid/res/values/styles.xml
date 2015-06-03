@@ -2,14 +2,17 @@
 
     <style name="AppBaseThemeDark" parent="Theme.AppCompat">
         <!-- backward-compatibility theme options go here -->
+
+        <item name="colorPrimary">@color/fdroid_blue</item>
+        <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
+
     </style>
 
-    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light">
+    <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- backward-compatibility theme options go here -->
-    </style>
 
-    <style name="AppBaseThemeLightWithDarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- backward-compatibility theme options go here -->
+        <item name="colorPrimary">@color/fdroid_blue</item>
+        <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
     </style>
 
     <color name="black">#FF000000</color>
@@ -29,24 +32,20 @@
         <!-- customizations that are not API-level specific go here. -->
     </style>
 
-    <style name="AppThemeLightWithDarkActionBar" parent="AppBaseThemeLightWithDarkActionBar">
-        <!-- customizations that are not API-level specific go here. -->
-    </style>
-
-    <style name="SwapTheme.Wizard" parent="AppThemeLightWithDarkActionBar">
+    <style name="SwapTheme.Wizard" parent="AppThemeLight">
         <!--<item name="android:windowBackground">@drawable/swap_window_background</item>-->
         <!--<item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>-->
         <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
     </style>
 
-    <style name="SwapTheme.StartSwap" parent="AppThemeLightWithDarkActionBar">
+    <style name="SwapTheme.StartSwap" parent="AppThemeLight">
         <item name="android:background">@color/white</item>
     </style>
 
-    <style name="SwapTheme.AppList" parent="AppThemeLightWithDarkActionBar">
+    <style name="SwapTheme.AppList" parent="AppThemeLight">
     </style>
 
-    <style name="SwapTheme.AppList.ListItem" parent="AppThemeLightWithDarkActionBar">
+    <style name="SwapTheme.AppList.ListItem" parent="AppThemeLight">
     </style>
 
     <style name="SwapTheme.StartSwap.StartButton">
@@ -54,10 +53,10 @@
         <item name="android:layout_marginRight">9dp</item> <!-- 16px * 96dpi / 160dpi -->
         <item name="android:layout_height">63.3dp</item> <!-- 113px * 96dpi / 160dpi -->
         <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@android:color/white</item>
 
         <item name="android:textSize">18.5sp</item> <!-- 33px * 96dpi / 160dpi -->
         <item name="android:background">@drawable/swap_start_button_skin</item>
-        <item name="android:textColor">#fff</item>
         <item name="android:drawableLeft">@drawable/ic_swap</item>
         <item name="android:paddingLeft">10dp</item>
 
@@ -105,7 +104,6 @@
         <item name="android:paddingRight">10dp</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
-        <item name="android:background">@drawable/swap_action_button_skin</item>
     </style>
 
     <style name="SwapTheme.Wizard.MainText" parent="@style/SwapTheme.Wizard.Text">

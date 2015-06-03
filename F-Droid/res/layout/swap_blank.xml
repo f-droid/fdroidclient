@@ -17,7 +17,7 @@
             android:id="@+id/button_start_swap"
             android:text="@string/swap_start"
             style="@style/SwapTheme.StartSwap.StartButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
 
 </org.fdroid.fdroid.views.swap.StartSwapView>
