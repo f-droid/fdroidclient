@@ -153,8 +153,6 @@
     </style>
 
     <style name="SwapTheme.Wizard.ReceiveSwap" parent="SwapTheme.Wizard">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
     <!--

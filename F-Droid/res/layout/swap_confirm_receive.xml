@@ -5,6 +5,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/swap_blue"
         android:padding="18dp">
     <!-- Padding is 32px * 0.56 = 18dip -->
 
