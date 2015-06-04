@@ -189,6 +189,9 @@ public class RepoXMLHandler extends DefaultHandler {
             case "source":
                 curapp.sourceURL = str;
                 break;
+            case "changelog":
+                curapp.changelogURL = str;
+                break;
             case "donate":
                 curapp.donateURL = str;
                 break;

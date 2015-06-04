@@ -154,6 +154,18 @@ Changelog" />
                 tools:text="@string/menu_issues" />
 
             <TextView
+                android:id="@+id/changelog"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_issues"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_issues"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_changelog"
+                tools:text="@string/menu_changelog" />
+
+            <TextView
                 android:id="@+id/website"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

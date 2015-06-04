@@ -71,6 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "webURL text, "
             + "trackerURL text, "
             + "sourceURL text, "
+            + "changelogURL text, "
             + "suggestedVercode text,"
             + "upstreamVersion text,"
             + "upstreamVercode integer,"
@@ -99,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 47;
+    private static final int DB_VERSION = 48;
 
     private final Context context;
 
@@ -251,7 +252,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(RepoProvider.DataColumns.VERSION, version);
         values.put(RepoProvider.DataColumns.IN_USE, inUse);
         values.put(RepoProvider.DataColumns.PRIORITY, priority);
-        values.put(RepoProvider.DataColumns.LAST_ETAG, (String)null);
+        values.put(RepoProvider.DataColumns.LAST_ETAG, (String) null);
 
         Log.i(TAG, "Adding repository " + name);
         db.insert(TABLE_REPO, null, values);
@@ -280,6 +281,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 43) createInstalledApp(db);
         addAppLabelToInstalledCache(db, oldVersion);
         addIsSwapToRepo(db, oldVersion);
+        addChangelogToRepo(db, oldVersion);
     }
 
     /**
@@ -411,6 +413,13 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 47 && !columnExists(db, TABLE_REPO, "isSwap")) {
             Log.i(TAG, "Adding isSwap field to " + TABLE_REPO + " table in db.");
             db.execSQL("alter table " + TABLE_REPO + " add column isSwap boolean default 0;");
+        }
+    }
+
+    private void addChangelogToRepo(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 48 && !columnExists(db, TABLE_APP, "changelogURL")) {
+            Log.i(TAG, "Adding changelogURL column to " + TABLE_APP);
+            db.execSQL("Alter table " + TABLE_APP + " add column changelogURL text");
         }
     }
 

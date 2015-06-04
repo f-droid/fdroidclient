@@ -124,6 +124,7 @@
 	<string name="menu_ignore_this">Ignore This Update</string>
 	<string name="menu_website">Website</string>
 	<string name="menu_issues">Issues</string>
+	<string name="menu_changelog">Changelog</string>
 	<string name="menu_source">Source Code</string>
 	<string name="menu_upgrade">Upgrade</string>
 	<string name="menu_donate">Donate</string>

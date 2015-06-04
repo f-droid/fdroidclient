@@ -166,6 +166,7 @@ public class AppProvider extends FDroidProvider {
         String WEB_URL = "webURL";
         String TRACKER_URL = "trackerURL";
         String SOURCE_URL = "sourceURL";
+        String CHANGELOG_URL = "changelogURL";
         String DONATE_URL = "donateURL";
         String BITCOIN_ADDR = "bitcoinAddr";
         String LITECOIN_ADDR = "litecoinAddr";
@@ -194,7 +195,7 @@ public class AppProvider extends FDroidProvider {
 
         String[] ALL = {
                 IS_COMPATIBLE, APP_ID, NAME, SUMMARY, ICON, DESCRIPTION,
-                LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, DONATE_URL,
+                LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, CHANGELOG_URL, DONATE_URL,
                 BITCOIN_ADDR, LITECOIN_ADDR, DOGECOIN_ADDR, FLATTR_ID,
                 UPSTREAM_VERSION, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
                 CATEGORIES, ANTI_FEATURES, REQUIREMENTS, IGNORE_ALLUPDATES,

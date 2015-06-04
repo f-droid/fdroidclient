@@ -1206,6 +1206,13 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             else
                 tv.setVisibility(View.GONE);
 
+            // Changelog button
+            tv = (TextView) view.findViewById(R.id.changelog);
+            if (getApp().changelogURL != null)
+                tv.setOnClickListener(mOnClickListener);
+            else
+                tv.setVisibility(View.GONE);
+
             // Donate button
             tv = (TextView) view.findViewById(R.id.donate);
             if (getApp().donateURL != null)
@@ -1312,6 +1319,10 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
                     case R.id.issues:
                         ((AppDetails) getActivity()).tryOpenUri(getApp().trackerURL);
+                        break;
+
+                    case R.id.changelog:
+                        ((AppDetails) getActivity()).tryOpenUri(getApp().changelogURL);
                         break;
 
                     case R.id.donate:

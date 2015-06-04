@@ -46,6 +46,8 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String sourceURL;
 
+    public String changelogURL;
+
     public String donateURL;
 
     public String bitcoinAddr;
@@ -139,6 +141,9 @@ public class App extends ValueObject implements Comparable<App> {
                 break;
             case AppProvider.DataColumns.SOURCE_URL:
                 sourceURL = cursor.getString(i);
+                break;
+            case AppProvider.DataColumns.CHANGELOG_URL:
+                changelogURL = cursor.getString(i);
                 break;
             case AppProvider.DataColumns.DONATE_URL:
                 donateURL = cursor.getString(i);
@@ -355,6 +360,7 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.WEB_URL, webURL);
         values.put(AppProvider.DataColumns.TRACKER_URL, trackerURL);
         values.put(AppProvider.DataColumns.SOURCE_URL, sourceURL);
+        values.put(AppProvider.DataColumns.CHANGELOG_URL, changelogURL);
         values.put(AppProvider.DataColumns.DONATE_URL, donateURL);
         values.put(AppProvider.DataColumns.BITCOIN_ADDR, bitcoinAddr);
         values.put(AppProvider.DataColumns.LITECOIN_ADDR, litecoinAddr);
