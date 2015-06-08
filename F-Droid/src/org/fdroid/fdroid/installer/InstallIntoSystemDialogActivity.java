@@ -126,7 +126,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                     NotificationCompat.Builder builder =
                             new NotificationCompat.Builder(context)
                                     .setContentIntent(resultPendingIntent)
-                                    .setSmallIcon(R.drawable.ic_launcher)
+                                    .setSmallIcon(R.drawable.ic_stat_notify)
                                     .setContentTitle(context.getString(R.string.system_install_first_time_notification))
                                     .setContentText(context.getString(R.string.system_install_first_time_notification_message_short))
                                     .setDefaults(Notification.DEFAULT_ALL)
