@@ -4,6 +4,7 @@
     <!-- 1 - https://f-droid.org/repo -->
     <string name="fdroid_repo_name" formatted="false" translatable="false">F-Droid</string>
 
+    <integer name="fdroid_repo_version">12</integer>
     <integer name="fdroid_repo_inuse">1</integer>
     <integer name="fdroid_repo_priority">10</integer>
 
@@ -14,6 +15,7 @@
     <!-- 2 - https://f-droid.org/archive -->
     <string name="fdroid_archive_name" formatted="false" translatable="false">F-Droid Archive</string>
 
+    <integer name="fdroid_archive_version">12</integer>
     <integer name="fdroid_archive_inuse">0</integer>
     <integer name="fdroid_archive_priority">20</integer>
 
@@ -24,6 +26,7 @@
     <!-- https://guardianproject.info/fdroid/repo -->
     <string name="guardianproject_repo_name" formatted="false" translatable="false">Guardian Project</string>
 
+    <integer name="guardianproject_repo_version">12</integer>
     <integer name="guardianproject_repo_inuse">0</integer>
     <integer name="guardianproject_repo_priority">10</integer>
 
@@ -34,6 +37,7 @@
     <!-- https://guardianproject.info/fdroid/archive -->
     <string name="guardianproject_archive_name" formatted="false" translatable="false">Guardian Project Archive</string>
 
+    <integer name="guardianproject_archive_version">12</integer>
     <integer name="guardianproject_archive_inuse">0</integer>
     <integer name="guardianproject_archive_priority">20</integer>
 

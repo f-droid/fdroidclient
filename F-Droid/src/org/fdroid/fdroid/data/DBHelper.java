@@ -198,6 +198,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.fdroid_repo_address),
             context.getString(R.string.fdroid_repo_description),
             context.getString(R.string.fdroid_repo_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_repo_version),
             context.getResources().getInteger(R.integer.fdroid_repo_inuse),
             context.getResources().getInteger(R.integer.fdroid_repo_priority)
         );
@@ -208,6 +209,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.fdroid_archive_address),
             context.getString(R.string.fdroid_archive_description),
             context.getString(R.string.fdroid_archive_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_archive_version),
             context.getResources().getInteger(R.integer.fdroid_archive_inuse),
             context.getResources().getInteger(R.integer.fdroid_archive_priority)
         );
@@ -218,6 +220,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.guardianproject_repo_address),
             context.getString(R.string.guardianproject_repo_description),
             context.getString(R.string.guardianproject_repo_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_repo_version),
             context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
             context.getResources().getInteger(R.integer.guardianproject_repo_priority)
         );
@@ -228,6 +231,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.guardianproject_archive_address),
             context.getString(R.string.guardianproject_archive_description),
             context.getString(R.string.guardianproject_archive_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_archive_version),
             context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
             context.getResources().getInteger(R.integer.guardianproject_archive_priority)
         );
@@ -235,7 +239,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void insertRepo(
         SQLiteDatabase db, String name, String address, String description,
-        String pubKey, int inUse, int priority) {
+        String pubKey, int version, int inUse, int priority) {
 
         ContentValues values = new ContentValues();
         values.put(RepoProvider.DataColumns.ADDRESS, address);
@@ -244,6 +248,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(RepoProvider.DataColumns.PUBLIC_KEY, pubKey);
         values.put(RepoProvider.DataColumns.FINGERPRINT, Utils.calcFingerprint(pubKey));
         values.put(RepoProvider.DataColumns.MAX_AGE, 0);
+        values.put(RepoProvider.DataColumns.VERSION, version);
         values.put(RepoProvider.DataColumns.IN_USE, inUse);
         values.put(RepoProvider.DataColumns.PRIORITY, priority);
         values.put(RepoProvider.DataColumns.LAST_ETAG, (String)null);
