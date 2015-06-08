@@ -371,7 +371,6 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.IS_COMPATIBLE, compatible ? 1 : 0);
         values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAllUpdates ? 1 : 0);
         values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreThisUpdate);
-        values.put(AppProvider.DataColumns.ICON_URL, iconUrl);
 
         return values;
     }
