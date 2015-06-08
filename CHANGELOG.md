@@ -1,3 +1,16 @@
+### 0.92 (2015-06-08)
+
+* Make swap only in portrait mode to prevent crashes and issues where UI elements are obscured
+
+* Update Universal-Image-Loader to 1.9.4
+
+* Make Apk downloads progress be measured in kilobytes instead of bytes
+
+* Add missing Sardinian language to the preferences
+
+* Fix minimum SDK to be 8 (2.2) instead of 7 (2.1) since support for version 7
+  was dropped long ago
+
 ### 0.91 (2015-05-18)
 
 * Don't request the "Write to external storage" permission on 4.4 and later
