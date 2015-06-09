@@ -89,6 +89,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "ignoreAllUpdates int not null,"
             + "ignoreThisUpdate int not null,"
             + "iconUrl text, "
+            + "iconUrlLarge text, "
             + "primary key(id));";
 
     public static final String TABLE_INSTALLED_APP = "fdroid_installedApp";
@@ -100,7 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 48;
+    private static final int DB_VERSION = 49;
 
     private final Context context;
 
@@ -281,7 +282,8 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 43) createInstalledApp(db);
         addAppLabelToInstalledCache(db, oldVersion);
         addIsSwapToRepo(db, oldVersion);
-        addChangelogToRepo(db, oldVersion);
+        addChangelogToApp(db, oldVersion);
+        addIconUrlLargeToApp(db, oldVersion);
     }
 
     /**
@@ -416,10 +418,17 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    private void addChangelogToRepo(SQLiteDatabase db, int oldVersion) {
+    private void addChangelogToApp(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 48 && !columnExists(db, TABLE_APP, "changelogURL")) {
             Log.i(TAG, "Adding changelogURL column to " + TABLE_APP);
-            db.execSQL("Alter table " + TABLE_APP + " add column changelogURL text");
+            db.execSQL("alter table " + TABLE_APP + " add column changelogURL text");
+        }
+    }
+
+    private void addIconUrlLargeToApp(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 49 && !columnExists(db, TABLE_APP, "iconUrlLarge")) {
+            Log.i(TAG, "Adding iconUrlLarge columns to " + TABLE_APP);
+            db.execSQL("alter table " + TABLE_APP + " add column iconUrlLarge text");
         }
     }
 

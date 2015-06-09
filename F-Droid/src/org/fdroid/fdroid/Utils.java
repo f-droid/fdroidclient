@@ -79,6 +79,14 @@ public final class Utils {
     private static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
+    public static final String FALLBACK_ICONS_DIR = "/icons/";
+
+    /*
+     * @param dpiMultiplier Lets you grab icons for densities larger or
+     * smaller than that of your device by some fraction. Useful, for example,
+     * if you want to display a 48dp image at twice the size, 96dp, in which
+     * case you'd use a dpiMultiplier of 2.0 to get an image twice as big.
+     */
     public static String getIconsDir(final Context context, final double dpiMultiplier) {
         final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         final double dpi = metrics.densityDpi * dpiMultiplier;

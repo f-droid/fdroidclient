@@ -91,7 +91,10 @@ public class App extends ValueObject implements Comparable<App> {
     // True if the current update for this app is to be ignored
     public int ignoreThisUpdate;
 
+    // To be displayed at 48dp (x1.0)
     public String iconUrl;
+    // To be displayed at 72dp (x1.5)
+    public String iconUrlLarge;
 
     public String installedVersionName;
 
@@ -195,6 +198,9 @@ public class App extends ValueObject implements Comparable<App> {
                 break;
             case AppProvider.DataColumns.ICON_URL:
                 iconUrl = cursor.getString(i);
+                break;
+            case AppProvider.DataColumns.ICON_URL_LARGE:
+                iconUrlLarge = cursor.getString(i);
                 break;
             case AppProvider.DataColumns.InstalledApp.VERSION_CODE:
                 installedVersionCode = cursor.getInt(i);
@@ -355,6 +361,7 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.SUMMARY, summary);
         values.put(AppProvider.DataColumns.ICON, icon);
         values.put(AppProvider.DataColumns.ICON_URL, iconUrl);
+        values.put(AppProvider.DataColumns.ICON_URL_LARGE, iconUrlLarge);
         values.put(AppProvider.DataColumns.DESCRIPTION, description);
         values.put(AppProvider.DataColumns.LICENSE, license);
         values.put(AppProvider.DataColumns.WEB_URL, webURL);

@@ -363,10 +363,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         fdroidApp = ((FDroidApp) getApplication());
         fdroidApp.applyTheme(this);
 
-        /* TODO:
-        AppProvider.updateIconUrls(1.5);
-         */
-
         super.onCreate(savedInstanceState);
 
         // Must be called *after* super.onCreate(), as that is where the action bar
@@ -553,9 +549,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             }
         }
         inProcessOfChangingConfiguration = false;
-        /* TODO
-        AppProvider.updateIconUrls(1.0);
-         */
         super.onDestroy();
     }
 
@@ -1492,7 +1485,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
             // Set the icon...
             ImageView iv = (ImageView) view.findViewById(R.id.icon);
-            ImageLoader.getInstance().displayImage(getApp().iconUrl, iv, displayImageOptions);
+            ImageLoader.getInstance().displayImage(getApp().iconUrlLarge, iv,
+                    displayImageOptions);
 
             // Set the title
             TextView tv = (TextView) view.findViewById(R.id.title);
