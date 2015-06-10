@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -149,9 +150,12 @@ public class SelectAppsView extends ListView implements
         String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
         if (getState().hasSelectedPackage(packageName)) {
             getState().deselectPackage(packageName);
+            adapter.updateCheckedIndicatorView(position, false);
         } else {
             getState().selectPackage(packageName);
+            adapter.updateCheckedIndicatorView(position, true);
         }
+
     }
 
     @Override
@@ -275,6 +279,8 @@ public class SelectAppsView extends ListView implements
             labelView.setText(appLabel);
             iconView.setImageDrawable(icon);
 
+            final int listPosition = cursor.getPosition() + 1; // To account for the header view.
+
             // Since v11, the Android SDK provided the ability to show selected list items
             // by highlighting their background. Prior to this, we need to handle this ourselves
             // by adding a checkbox which can toggle selected items.
@@ -282,8 +288,6 @@ public class SelectAppsView extends ListView implements
             if (checkBoxView != null) {
                 CheckBox checkBox = (CheckBox)checkBoxView;
                 checkBox.setOnCheckedChangeListener(null);
-
-                final int listPosition = cursor.getPosition() + 1; // To account for the header view.
 
                 checkBox.setChecked(listView.isItemChecked(listPosition));
                 checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -293,6 +297,35 @@ public class SelectAppsView extends ListView implements
                         toggleAppSelected(listPosition);
                     }
                 });
+            }
+
+            updateCheckedIndicatorView(view, listView.isItemChecked(listPosition));
+        }
+
+        public void updateCheckedIndicatorView(int position, boolean checked) {
+            final int firstListItemPosition = listView.getFirstVisiblePosition();
+            final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+            if (position >= firstListItemPosition && position <= lastListItemPosition ) {
+                final int childIndex = position - firstListItemPosition;
+                updateCheckedIndicatorView(listView.getChildAt(childIndex), checked);
+            }
+        }
+
+        private void updateCheckedIndicatorView(View view, boolean checked) {
+            ImageView imageView = (ImageView)view.findViewById(R.id.checked);
+            if (imageView != null) {
+                int resource;
+                int colour;
+                if (checked) {
+                    resource = R.drawable.ic_check_circle_white;
+                    colour = getResources().getColor(R.color.fdroid_blue);
+                } else {
+                    resource = R.drawable.ic_add_circle_outline_white;
+                    colour = 0xFFD0D0D4;
+                }
+                imageView.setImageDrawable(getResources().getDrawable(resource));
+                imageView.setColorFilter(colour, PorterDuff.Mode.MULTIPLY);
             }
         }
     }
