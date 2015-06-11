@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.swap;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.view.MenuItemCompat;
 import android.util.AttributeSet;
@@ -75,5 +76,15 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
     @Override
     public int getPreviousStep() {
         return SwapManager.STEP_JOIN_WIFI;
+    }
+
+    @ColorRes
+    public int getToolbarColour() {
+        return getResources().getColor(R.color.swap_blue);
+    }
+
+    @Override
+    public String getToolbarTitle() {
+        return getResources().getString(R.string.swap_nfc_title);
     }
 }

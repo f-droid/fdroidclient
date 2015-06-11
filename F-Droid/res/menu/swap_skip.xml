@@ -2,6 +2,7 @@
 
     <item
         android:id="@+id/action_next"
+        android:icon="@drawable/ic_arrow_forward_white"
         android:title="@string/skip"
         android:titleCondensed="@string/skip"/>
 

@@ -207,6 +207,7 @@ public class SwapManager {
         } else {
             Log.e(TAG, "Couldn't disable swap, because service was not running.");
         }
+        setStep(STEP_INTRO);
     }
 
     /**

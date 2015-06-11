@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,10 +53,15 @@ public class SwapWorkflowActivity extends ActionBarActivity {
         @SwapManager.SwapStep int getStep();
 
         @SwapManager.SwapStep int getPreviousStep();
+
+        @ColorRes int getToolbarColour();
+
+        String getToolbarTitle();
     }
 
     private static final int CONNECT_TO_SWAP = 1;
 
+    private Toolbar toolbar;
     private SwapManager state;
     private InnerView currentView;
     private boolean hasPreparedLocalRepo = false;
@@ -76,6 +83,11 @@ public class SwapWorkflowActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         state = SwapManager.load(this);
         setContentView(R.layout.swap_activity);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextAppearance(getApplicationContext(), R.style.SwapTheme_Wizard_Text_Toolbar);
+        setSupportActionBar(toolbar);
+
         container = (ViewGroup) findViewById(R.id.fragment_container);
         showRelevantView();
     }
@@ -134,8 +146,22 @@ public class SwapWorkflowActivity extends ActionBarActivity {
         View view = ((LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
         currentView = (InnerView)view;
         state.setStep(currentView.getStep());
+        toolbar.setBackgroundColor(currentView.getToolbarColour());
+        toolbar.setTitle(currentView.getToolbarTitle());
+        toolbar.setNavigationIcon(R.drawable.ic_close_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onToolbarCancel();
+            }
+        });
         container.addView(view);
         supportInvalidateOptionsMenu();
+    }
+
+    private void onToolbarCancel() {
+        SwapManager.load(this).disableSwapping();
+        finish();
     }
 
     private void showIntro() {

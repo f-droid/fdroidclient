@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.swap;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.Menu;
@@ -74,5 +75,16 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         // bit messy. It would be nicer if this was handled using the same mechanism as everything
         // else.
         return SwapManager.STEP_INTRO;
+    }
+
+    @Override
+    @ColorRes
+    public int getToolbarColour() {
+        return getResources().getColor(R.color.swap_bright_blue);
+    }
+
+    @Override
+    public String getToolbarTitle() {
+        return getResources().getString(R.string.swap_start);
     }
 }

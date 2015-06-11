@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -89,9 +90,6 @@ public class SelectAppsView extends ListView implements
         adapter = new AppListAdapter(this, getContext(),
                 getContext().getContentResolver().query(InstalledAppProvider.getContentUri(), InstalledAppProvider.DataColumns.ALL, null, null, null));
 
-        // Has to be _before_ "setAdapter()", as per the API docs.
-        addHeaderView(inflate(getContext(), R.layout.swap_create_header, null), null, false);
-
         setAdapter(adapter);
         setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
@@ -100,10 +98,7 @@ public class SelectAppsView extends ListView implements
 
         setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                if (position > 0) {
-                    // Ignore the headerView at position 0.
-                    toggleAppSelected(position);
-                }
+                toggleAppSelected(position);
             }
         });
 
@@ -145,8 +140,18 @@ public class SelectAppsView extends ListView implements
         return SwapManager.STEP_INTRO;
     }
 
+    @ColorRes
+    public int getToolbarColour() {
+        return getResources().getColor(R.color.swap_bright_blue);
+    }
+
+    @Override
+    public String getToolbarTitle() {
+        return getResources().getString(R.string.swap_choose_apps);
+    }
+
     private void toggleAppSelected(int position) {
-        Cursor c = (Cursor) adapter.getItem(position - 1);
+        Cursor c = (Cursor) adapter.getItem(position);
         String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
         if (getState().hasSelectedPackage(packageName)) {
             getState().deselectPackage(packageName);
@@ -179,13 +184,13 @@ public class SelectAppsView extends ListView implements
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         adapter.swapCursor(cursor);
 
-        for (int i = 0; i < getCount() - 1; i++) {
-            Cursor c = ((Cursor) getItemAtPosition(i + 1));
+        for (int i = 0; i < getCount(); i++) {
+            Cursor c = ((Cursor) getItemAtPosition(i));
             String packageName = c.getString(c.getColumnIndex(InstalledAppProvider.DataColumns.APP_ID));
             getState().ensureFDroidSelected();
             for (String selected : getState().getAppsToSwap()) {
                 if (TextUtils.equals(packageName, selected)) {
-                    setItemChecked(i + 1, true);
+                    setItemChecked(i, true);
                 }
             }
         }
@@ -279,7 +284,7 @@ public class SelectAppsView extends ListView implements
             labelView.setText(appLabel);
             iconView.setImageDrawable(icon);
 
-            final int listPosition = cursor.getPosition() + 1; // To account for the header view.
+            final int listPosition = cursor.getPosition();
 
             // Since v11, the Android SDK provided the ability to show selected list items
             // by highlighting their background. Prior to this, we need to handle this ourselves
@@ -319,7 +324,7 @@ public class SelectAppsView extends ListView implements
                 int colour;
                 if (checked) {
                     resource = R.drawable.ic_check_circle_white;
-                    colour = getResources().getColor(R.color.fdroid_blue);
+                    colour = getResources().getColor(R.color.swap_bright_blue);
                 } else {
                     resource = R.drawable.ic_add_circle_outline_white;
                     colour = 0xFFD0D0D4;

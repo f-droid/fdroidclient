@@ -48,7 +48,7 @@ function download {
 
 RES_DIR=$1
 CATEGORY=$2
-ICON="${3}_black"
+ICON="${3}_white"
 BASE_URL="https://raw.githubusercontent.com/google/material-design-icons/master"
 SCREENS="mdpi hdpi xhdpi xxhdpi xxxhdpi"
 

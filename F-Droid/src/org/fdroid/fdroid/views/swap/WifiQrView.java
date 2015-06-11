@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
@@ -120,6 +121,16 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
     public int getPreviousStep() {
         // TODO: Find a way to make this optionally go back to the NFC screen if appropriate.
         return SwapManager.STEP_JOIN_WIFI;
+    }
+
+    @ColorRes
+    public int getToolbarColour() {
+        return getResources().getColor(R.color.swap_blue);
+    }
+
+    @Override
+    public String getToolbarTitle() {
+        return getResources().getString(R.string.swap_scan_qr);
     }
 
     private void setUIFromWifi() {

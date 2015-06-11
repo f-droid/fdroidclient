@@ -12,19 +12,19 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView"
-                android:text="@string/swap_scan_or_type_url"
-                style="@style/SwapTheme.Wizard.MainText"/>
-
         <ImageView
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:maxHeight="20dp"
                 android:id="@+id/wifi_qr_code"
                 tools:src="@drawable/swap_qr_example"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:text="@string/swap_scan_or_type_url"
+            style="@style/SwapTheme.Wizard.MainText"/>
 
         <!--
         <Button style="@style/SwapTheme.Wizard.OptionButton"
@@ -45,8 +45,11 @@
                 android:layout_gravity="center"
                 android:id="@+id/btn_qr_scanner"/>
 
+        <!-- Mark as "gone" for now, until it appears in a future mockup. Don't comment it out,
+             because then we'd need to modify the code which adds a listener for it too. -->
         <Button style="@style/SwapTheme.Wizard.OptionButton"
                 android:id="@+id/btn_cancel_swap"
+                android:visibility="gone"
                 android:text="@string/cancel" />
 
     </LinearLayout>

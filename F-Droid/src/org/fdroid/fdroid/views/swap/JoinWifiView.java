@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
@@ -127,5 +128,15 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
     @Override
     public int getPreviousStep() {
         return SwapManager.STEP_SELECT_APPS;
+    }
+
+    @ColorRes
+    public int getToolbarColour() {
+        return getResources().getColor(R.color.swap_blue);
+    }
+
+    @Override
+    public String getToolbarTitle() {
+        return getResources().getString(R.string.swap_join_same_wifi);
     }
 }
