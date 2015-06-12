@@ -71,9 +71,6 @@ import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.net.MDnsHelper;
-import org.fdroid.fdroid.net.MDnsHelper.DiscoveredRepo;
-import org.fdroid.fdroid.net.MDnsHelper.RepoScanListAdapter;
 import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 import java.io.IOException;
@@ -83,8 +80,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Locale;
-
-import javax.jmdns.ServiceInfo;
 
 public class ManageReposActivity extends ActionBarActivity {
 
@@ -212,9 +207,6 @@ public class ManageReposActivity extends ActionBarActivity {
         case R.id.action_update_repo:
             updateRepos();
             return true;
-        case R.id.action_find_local_repos:
-            scanForRepos();
-            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -237,55 +229,6 @@ public class ManageReposActivity extends ActionBarActivity {
                         }
                     }
                 });
-    }
-
-    private void scanForRepos() {
-        final RepoScanListAdapter adapter = new RepoScanListAdapter(this);
-        final MDnsHelper mDnsHelper = new MDnsHelper(this, adapter);
-
-        final View view = getLayoutInflater().inflate(R.layout.repodiscoverylist, null);
-        final ListView repoScanList = (ListView) view.findViewById(R.id.reposcanlist);
-
-        final AlertDialog alrt = new AlertDialog.Builder(this).setView(view)
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mDnsHelper.stopDiscovery();
-                        dialog.dismiss();
-                    }
-                }).create();
-
-        alrt.setTitle(R.string.local_repos_title);
-        alrt.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                mDnsHelper.stopDiscovery();
-            }
-        });
-
-        repoScanList.setAdapter(adapter);
-        repoScanList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                    int position, long id) {
-
-                final DiscoveredRepo discoveredService =
-                        (DiscoveredRepo) parent.getItemAtPosition(position);
-
-                final ServiceInfo serviceInfo = discoveredService.getServiceInfo();
-                String type = serviceInfo.getPropertyString("type");
-                String protocol = type.contains("fdroidrepos") ? "https:/" : "http:/";
-                String path = serviceInfo.getPropertyString("path");
-                if (TextUtils.isEmpty(path))
-                    path = "/fdroid/repo";
-                String serviceUrl = protocol + serviceInfo.getInetAddresses()[0]
-                        + ":" + serviceInfo.getPort() + path;
-                showAddRepo(serviceUrl, serviceInfo.getPropertyString("fingerprint"));
-            }
-        });
-
-        alrt.show();
-        mDnsHelper.discoverServices();
     }
 
     private void showAddRepo() {

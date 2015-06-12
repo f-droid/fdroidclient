@@ -113,7 +113,6 @@
 	<string name="menu_search">Search</string>
 	<string name="menu_add_repo">New Repository</string>
 	<string name="menu_rem_repo">Remove Repository</string>
-	<string name="menu_scan_repo">Find Local Repos</string>
 
 	<string name="menu_launch">Run</string>
 	<string name="menu_share">Share</string>

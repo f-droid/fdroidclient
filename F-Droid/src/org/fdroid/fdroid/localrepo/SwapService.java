@@ -16,6 +16,12 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
+import org.fdroid.fdroid.localrepo.peers.BluetoothPeer;
+import org.fdroid.fdroid.localrepo.peers.BonjourFinder;
+import org.fdroid.fdroid.localrepo.peers.BonjourPeer;
+import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import org.fdroid.fdroid.localrepo.type.BonjourType;
 import org.fdroid.fdroid.localrepo.type.NfcType;
 import org.fdroid.fdroid.localrepo.type.WebServerType;
@@ -42,6 +48,10 @@ public class SwapService extends Service {
     private final BonjourType bonjourType;
     private final WebServerType webServerType;
 
+    private final BonjourFinder bonjourFinder;
+    private final BluetoothFinder bluetoothFinder;
+
+
     // TODO: The NFC type can't really be managed by the service, because it is intrinsically tied
     // to a specific _Activity_, and will only be active while that activity is shown. This service
     // knows nothing about activities.
@@ -65,6 +75,22 @@ public class SwapService extends Service {
         nfcType = new NfcType(this);
         bonjourType = new BonjourType(this);
         webServerType = new WebServerType(this);
+
+        bonjourFinder = new BonjourFinder(this);
+        bluetoothFinder = new BluetoothFinder(this);
+
+        bonjourFinder.setListener(new PeerFinder.Listener<BonjourPeer>() {
+            @Override
+            public void onPeerFound(BonjourPeer peer) {
+                SwapManager.load(SwapService.this).onPeerFound(peer);
+            }
+        });
+        bluetoothFinder.setListener(new PeerFinder.Listener<BluetoothPeer>() {
+            @Override
+            public void onPeerFound(BluetoothPeer peer) {
+                SwapManager.load(SwapService.this).onPeerFound(peer);
+            }
+        });
     }
 
     public void onCreate() {
@@ -102,6 +128,20 @@ public class SwapService extends Service {
                 .setSmallIcon(R.drawable.ic_swap)
                 .setContentIntent(contentIntent)
                 .build();
+    }
+
+    public void scanForPeers() {
+        bonjourFinder.scan();
+        bluetoothFinder.scan();
+    }
+
+    public void cancelScanningForPeers() {
+        bonjourFinder.cancel();
+        bluetoothFinder.cancel();
+    }
+
+    public void onPeerFound(Peer peer) {
+        SwapManager.load(this).onPeerFound(peer);
     }
 
     private boolean enabled = false;

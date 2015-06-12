@@ -165,6 +165,7 @@ public class SwapWorkflowActivity extends ActionBarActivity {
     }
 
     private void showIntro() {
+        SwapManager.load(this).scanForPeers();
         inflateInnerView(R.layout.swap_blank);
     }
 

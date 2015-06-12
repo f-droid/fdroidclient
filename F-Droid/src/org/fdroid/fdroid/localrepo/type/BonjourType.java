@@ -15,7 +15,7 @@ import javax.jmdns.ServiceInfo;
 
 public class BonjourType implements SwapType {
 
-    private static final String TAG = "BonjourType";
+    private static final String TAG = "BonjourBroadcastType";
 
     private JmDNS jmdns;
     private ServiceInfo pairService;

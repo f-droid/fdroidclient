@@ -12,8 +12,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.localrepo.peers.PeerFinder;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,9 +48,13 @@ public class SwapManager {
     @NonNull
     private Set<String> appsToSwap;
 
+    @NonNull
+    private Collection<Peer> peers;
+
     private SwapManager(@NonNull Context context, @NonNull Set<String> appsToSwap) {
         this.context = context.getApplicationContext();
         this.appsToSwap = appsToSwap;
+        this.peers = new ArrayList<>();
 
         setupService();
     }
@@ -59,6 +68,32 @@ public class SwapManager {
     private SharedPreferences persistence() {
         return context.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_APPEND);
     }
+
+    // ==========================================================
+    //                 Search for peers to swap
+    // ==========================================================
+
+    public void scanForPeers() {
+        if (service != null) {
+            Log.d(TAG, "Scanning for nearby devices to swap with...");
+            service.scanForPeers();
+        } else {
+            Log.e(TAG, "Couldn't scan for peers, because service was not running.");
+        }
+    }
+
+    public void cancelScanningForPeers() {
+        if (service != null) {
+            service.cancelScanningForPeers();
+        } else {
+            Log.e(TAG, "Couldn't cancel scanning for peers, because service was not running.");
+        }
+    }
+
+    public void onPeerFound(Peer peer) {
+        peers.add(peer);
+    }
+
 
     // ==========================================================
     //                 Manage the current step

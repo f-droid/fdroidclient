@@ -12,9 +12,5 @@
         android:icon="@drawable/ic_add_white"
         android:title="@string/menu_add_repo"
         app:showAsAction="always|withText"/>
-    <item
-        android:id="@+id/action_find_local_repos"
-        android:title="@string/menu_scan_repo"
-        app:showAsAction="ifRoom|withText"/>
 
 </menu>
