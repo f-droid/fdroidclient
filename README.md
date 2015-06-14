@@ -137,5 +137,5 @@ published by the Free Software Foundation, either version 3 of the License, or
 Some icons are made by [Picol](http://www.flaticon.com/authors/picol),
 [Icomoon](http://www.flaticon.com/authors/icomoon) or
 [Dave Gandy](http://www.flaticon.com/authors/dave-gandy) from
-[Flaticon](http://www.flaticon.com) and are licensed by
+[Flaticon](http://www.flaticon.com) or by Google and are licensed by
 [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
