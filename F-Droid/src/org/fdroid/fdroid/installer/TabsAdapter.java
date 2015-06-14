@@ -27,6 +27,7 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is a helper class that implements the management of tabs and all
@@ -44,19 +45,9 @@ public class TabsAdapter extends PagerAdapter
     private final Context mContext;
     private final TabHost mTabHost;
     private final ViewPager mViewPager;
-    private final ArrayList<TabInfo> mTabs = new ArrayList<>();
+    private final List<View> mTabs = new ArrayList<>();
     private final Rect mTempRect = new Rect();
     private TabHost.OnTabChangeListener mOnTabChangeListener;
-
-    static final class TabInfo {
-        private final String tag;
-        private final View view;
-
-        TabInfo(String _tag, View _view) {
-            tag = _tag;
-            view = _view;
-        }
-    }
 
     static class DummyTabFactory implements TabHost.TabContentFactory {
         private final Context mContext;
@@ -87,8 +78,7 @@ public class TabsAdapter extends PagerAdapter
         tabSpec.setContent(new DummyTabFactory(mContext));
         String tag = tabSpec.getTag();
 
-        TabInfo info = new TabInfo(tag, view);
-        mTabs.add(info);
+        mTabs.add(view);
         mTabHost.addTab(tabSpec);
         notifyDataSetChanged();
     }
@@ -100,7 +90,7 @@ public class TabsAdapter extends PagerAdapter
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = mTabs.get(position).view;
+        View view = mTabs.get(position);
         container.addView(view);
         return view;
     }
@@ -151,7 +141,7 @@ public class TabsAdapter extends PagerAdapter
         widget.requestRectangleOnScreen(mTempRect, false);
 
         // Make sure the scrollbars are visible for a moment after selection
-        final View contentView = mTabs.get(position).view;
+        final View contentView = mTabs.get(position);
         if (contentView instanceof CaffeinatedScrollView) {
             ((CaffeinatedScrollView) contentView).awakenScrollBars();
         }
