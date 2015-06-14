@@ -81,13 +81,13 @@
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false"
 			android:key="expert" />
-		<CheckBoxPreference android:title="@string/root_installer"
-			android:defaultValue="false"
-			android:key="rootInstaller"
-			android:dependency="expert" />
 		<CheckBoxPreference android:title="@string/system_installer"
 			android:defaultValue="false"
 			android:key="systemInstaller"
+			android:dependency="expert" />
+		<Preference android:title="@string/uninstall_system"
+			android:summary="@string/uninstall_system_summary"
+			android:key="uninstallSystemApp"
 			android:dependency="expert" />
 	</PreferenceCategory>
 </PreferenceScreen>

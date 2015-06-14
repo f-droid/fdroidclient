@@ -44,7 +44,6 @@ public class LocalRepoService extends Service {
     public static final String STOPPED = "org.fdroid.fdroid.category.LOCAL_REPO_STOPPED";
 
     private NotificationManager notificationManager;
-    private Notification notification;
     // Unique Identification Number for the Notification.
     // We use it on Notification start, and to cancel it.
     private final int NOTIFICATION = R.string.local_repo_running;
@@ -139,7 +138,7 @@ public class LocalRepoService extends Service {
         Intent intent = new Intent(this, SwapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-        notification = new NotificationCompat.Builder(this)
+        Notification notification = new NotificationCompat.Builder(this)
                 .setContentTitle(getText(R.string.local_repo_running))
                 .setContentText(getText(R.string.touch_to_configure_local_repo))
                 .setSmallIcon(R.drawable.ic_swap)
