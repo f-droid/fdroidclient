@@ -322,7 +322,6 @@ public class AppSecurityPermissions {
                         if (group == null) {
                             group = new MyPermissionGroupInfo(tmpPermInfo);
                         }
-                        group = new MyPermissionGroupInfo(tmpPermInfo);
                     }
                     mPermGroups.put(tmpPermInfo.group, group);
                 }
