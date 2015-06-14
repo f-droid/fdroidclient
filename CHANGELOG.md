@@ -1,3 +1,14 @@
+### Upcoming release
+
+* Redesign the App Details view with larger icons, expandable description and
+  links with icons
+
+* Add ability to make F-Droid install itself as a privileged app on /system
+  via root, allowing the use of the system installer
+
+* Remove the root installer, since the system installer is safer, more stable
+  and now easy to set up with root privileges
+
 ### 0.92 (2015-06-08)
 
 * Make swap only in portrait mode to prevent crashes and issues where UI elements are obscured
