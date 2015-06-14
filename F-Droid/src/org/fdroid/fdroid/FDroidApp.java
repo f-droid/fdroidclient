@@ -109,8 +109,6 @@ public class FDroidApp extends Application {
                 return R.style.AppThemeDark;
             case light:
                 return R.style.AppThemeLight;
-            case lightWithDarkActionBar:
-                return R.style.AppThemeLightWithDarkActionBar;
             default:
                 return R.style.AppThemeDark;
         }
