@@ -179,7 +179,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
     /**
      * 1. Check for root access
      */
-    public AsyncTask<Void, Void, Boolean> checkRootTask = new AsyncTask<Void, Void, Boolean>() {
+    public final AsyncTask<Void, Void, Boolean> checkRootTask = new AsyncTask<Void, Void, Boolean>() {
         ProgressDialog mProgressDialog;
 
         @Override
@@ -245,7 +245,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
     /**
      * 2. Install into system
      */
-    AsyncTask<Void, Void, Void> installTask = new AsyncTask<Void, Void, Void>() {
+    final AsyncTask<Void, Void, Void> installTask = new AsyncTask<Void, Void, Void>() {
         ProgressDialog mProgressDialog;
 
         @Override
@@ -336,7 +336,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         }
     }
 
-    AsyncTask<Void, Void, Void> uninstallTask = new AsyncTask<Void, Void, Void>() {
+    final AsyncTask<Void, Void, Void> uninstallTask = new AsyncTask<Void, Void, Void>() {
         ProgressDialog mProgressDialog;
 
         @Override

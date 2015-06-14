@@ -25,8 +25,8 @@ import android.net.Uri;
 
 public class AppDiff {
 
-    PackageManager mPm;
-    PackageInfo mPkgInfo;
+    final PackageManager mPm;
+    final PackageInfo mPkgInfo;
 
     ApplicationInfo mInstalledAppInfo = null;
 

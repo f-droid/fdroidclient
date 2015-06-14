@@ -1299,7 +1299,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             updateViews(view);
         }
 
-        private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 switch(v.getId()) {
                     case R.id.website:
@@ -1341,7 +1341,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             }
         };
 
-        private View.OnClickListener expander_description = new View.OnClickListener() {
+        private final View.OnClickListener expander_description = new View.OnClickListener() {
             public void onClick(View v) {
                 final TextView description = (TextView) ll_view_more_description.findViewById(R.id.description);
                 final ImageView view_more_permissions = (ImageView) ll_view_more_description.findViewById(R.id.view_more_description);
@@ -1357,7 +1357,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             }
         };
 
-        private View.OnClickListener expander_information = new View.OnClickListener() {
+        private final View.OnClickListener expander_information = new View.OnClickListener() {
             public void onClick(View v) {
                 final TextView informationHeader = (TextView) ll_view_more_information.findViewById(R.id.information);
                 final LinearLayout information_content = (LinearLayout) ll_view_more_information.findViewById(R.id.ll_information_content);
@@ -1373,7 +1373,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             }
         };
 
-        private View.OnClickListener expander_permissions = new View.OnClickListener() {
+        private final View.OnClickListener expander_permissions = new View.OnClickListener() {
             public void onClick(View v) {
                 final TextView permissionHeader = (TextView) ll_view_more_permissions.findViewById(R.id.permissions);
                 final TextView permissionListView = (TextView) ll_view_more_permissions.findViewById(R.id.permissions_list);
@@ -1551,7 +1551,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         }
 
-        private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 if (updateWanted) {
                     if (getApp().suggestedVercode > 0) {
