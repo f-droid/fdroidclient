@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.data.Apk;
@@ -68,39 +67,6 @@ public class RepoUpdater {
 
     public List<Apk> getApks() { return apks; }
 
-    /**
-     * All repos are represented by a signed jar file, {@code index.jar}, which contains
-     * a single file, {@code index.xml}.  This takes the {@code index.jar}, verifies the
-     * signature, then returns the unzipped {@code index.xml}.
-     *
-     * @throws UpdateException All error states will come from here.
-     */
-    protected File getIndexFromFile(File downloadedFile) throws UpdateException {
-        final Date updateTime = new Date(System.currentTimeMillis());
-        Log.d(TAG, "Getting signed index from " + repo.address + " at " +
-                Utils.formatLogDate(updateTime));
-
-        final File indexJar = downloadedFile;
-        File indexXml = null;
-
-        // Don't worry about checking the status code for 200. If it was a
-        // successful download, then we will have a file ready to use:
-        if (indexJar != null && indexJar.exists()) {
-
-            // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
-            // breakage when verifying the signature of the downloaded .jar. For more
-            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
-            try {
-                FDroidApp.disableSpongyCastleOnLollipop();
-                indexXml = extractIndexFromJar(indexJar);
-            } finally {
-                FDroidApp.enableSpongyCastleOnLollipop();
-            }
-
-        }
-        return indexXml;
-    }
-
     protected String getIndexAddress() {
         try {
             String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
@@ -111,7 +77,7 @@ public class RepoUpdater {
         return repo.address + "/index.jar";
     }
 
-    protected Downloader downloadIndex() throws UpdateException {
+    Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
             downloader = DownloaderFactory.create(
@@ -170,8 +136,17 @@ public class RepoUpdater {
 
             if (hasChanged) {
 
+                // Don't worry about checking the status code for 200. If it was a
+                // successful download, then we will have a file ready to use:
                 downloadedFile = downloader.getFile();
-                indexFile = getIndexFromFile(downloadedFile);
+
+                if (downloadedFile != null && downloadedFile.exists()) {
+                    indexFile = getIndexFromJar(downloadedFile);
+                }
+
+                if (indexXmlFile == null || !indexXmlFile.canRead()) {
+                    throw new UpdateException(repo, "Failed to get index for " + repo.address);
+                }
 
                 // Process the index...
                 final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
@@ -200,7 +175,7 @@ public class RepoUpdater {
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index for repo " + repo.address, e);
         } finally {
-            if (downloadedFile != null && downloadedFile != indexFile && downloadedFile.exists()) {
+            if (downloadedFile != null && downloadedFile.exists()) {
                 downloadedFile.delete();
             }
             if (indexFile != null && indexFile.exists()) {
@@ -312,11 +287,27 @@ public class RepoUpdater {
         return match;
     }
 
-    protected File extractIndexFromJar(File indexJar) throws UpdateException {
+    /**
+     * All repos are represented by a signed jar file, {@code index.jar}, which contains
+     * a single file, {@code index.xml}.  This takes the {@code index.jar}, verifies the
+     * signature, then returns the unzipped {@code index.xml}.
+     *
+     * @throws UpdateException All error states will come from here.
+     */
+    protected File getIndexFromJar(File f) throws UpdateException {
+        final Date updateTime = new Date(System.currentTimeMillis());
+        Log.d(TAG, "Getting signed index from " + repo.address + " at " +
+                Utils.formatLogDate(updateTime));
+
         File indexFile = null;
         JarFile jarFile = null;
         try {
-            jarFile = new JarFile(indexJar, true);
+            // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
+            // breakage when verifying the signature of the downloaded .jar. For more
+            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
+            FDroidApp.disableSpongyCastleOnLollipop();
+
+            jarFile = new JarFile(f, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
 
             indexFile = File.createTempFile("index-", "-extracted.xml", context.getCacheDir());
@@ -340,11 +331,7 @@ public class RepoUpdater {
 
             // Can only read certificates from jar after it has been read
             // completely, so we put it after the copy above...
-            if (isTofuRequest()) {
-                Log.i(TAG, "Implicitly trusting the signature of index.jar, because this is a TOFU request");
-                // Note that later on in the process we will save the pubkey against they repo, so
-                // that future requests verify against the signature we got this time.
-            } else if (!verifyCerts(indexEntry)) {
+            if (!verifyCerts(indexEntry)) {
                 indexFile.delete();
                 throw new UpdateException(repo, "Index signature mismatch");
             }
@@ -352,9 +339,9 @@ public class RepoUpdater {
             if (indexFile != null) {
                 indexFile.delete();
             }
-            throw new UpdateException(
-                    repo, "Error opening signed index", e);
+            throw new UpdateException(repo, "Error opening signed index", e);
         } finally {
+            FDroidApp.enableSpongyCastleOnLollipop();
             if (jarFile != null) {
                 try {
                     jarFile.close();
@@ -365,16 +352,6 @@ public class RepoUpdater {
         }
 
         return indexFile;
-    }
-
-    /**
-     * If the repo doesn't have a fingerprint, then this is a "Trust On First Use" (TOFU)
-     * request. In that case, we will not verify the certificate, but rather implicitly trust
-     * the file we downloaded. We'll extract the certificate from the jar, and then use that
-     * to verify future requests to the same repository.
-     */
-    private boolean isTofuRequest() {
-        return TextUtils.isEmpty(repo.fingerprint);
     }
 
 }

@@ -40,7 +40,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
 
         // these are supposed to succeed
         try {
-            testFile = repoUpdater.getIndexFromFile(simpleIndexJar);
+            testFile = repoUpdater.getIndexFromJar(simpleIndexJar);
             assertTrue(testFile.length() == simpleIndexXml.length());
             assertEquals(FileUtils.readFileToString(testFile),
                     FileUtils.readFileToString(simpleIndexXml));
@@ -55,7 +55,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithoutSignature.jar", testFilesDir));
+            repoUpdater.getIndexFromJar(TestUtils.copyAssetToDir(context, "simpleIndexWithoutSignature.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             // success!
@@ -67,7 +67,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedManifest.jar", testFilesDir));
+            repoUpdater.getIndexFromJar(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedManifest.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedSignature.jar", testFilesDir));
+            repoUpdater.getIndexFromJar(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedSignature.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -97,7 +97,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedCertificate.jar", testFilesDir));
+            repoUpdater.getIndexFromJar(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedCertificate.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -112,7 +112,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedEverything.jar", testFilesDir));
+            repoUpdater.getIndexFromJar(TestUtils.copyAssetToDir(context, "simpleIndexWithCorruptedEverything.jar", testFilesDir));
             fail();
         } catch (UpdateException e) {
             e.printStackTrace();
@@ -127,7 +127,7 @@ public class RepoUpdaterTest extends InstrumentationTestCase {
             return;
         // this is supposed to fail
         try {
-            repoUpdater.getIndexFromFile(TestUtils.copyAssetToDir(context, "masterKeyIndex.jar", testFilesDir));
+            repoUpdater.getIndexFromJar(TestUtils.copyAssetToDir(context, "masterKeyIndex.jar", testFilesDir));
             fail();
         } catch (UpdateException | SecurityException e) {
             // success!
