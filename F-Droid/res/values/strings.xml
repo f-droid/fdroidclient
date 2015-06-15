@@ -99,6 +99,7 @@
 	<string name="repo_exists_enable">This repo is already setup, confirm that you want to re-enable it.</string>
 	<string name="repo_exists_and_enabled">The incoming repo is already setup and enabled.</string>
 	<string name="repo_delete_to_overwrite">You must first delete this repo before you can add one with a different key.</string>
+	<string name="bad_fingerprint">BAD FINGERPRINT</string>
 	<string name="invalid_url">This is not a valid URL.</string>
 	<string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>
 

@@ -100,7 +100,8 @@ public class ManageReposActivity extends ActionBarActivity {
 
     private enum AddRepoState {
         DOESNT_EXIST, EXISTS_FINGERPRINT_MISMATCH, EXISTS_FINGERPRINT_MATCH,
-        EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL
+        EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL,
+        IS_SWAP
     }
 
     private UpdateService.UpdateReceiver updateHandler = null;
@@ -404,6 +405,13 @@ public class ManageReposActivity extends ActionBarActivity {
                                 prepareToCreateNewRepo(url, fp);
                                 break;
 
+                            case IS_SWAP:
+                                Log.i(TAG, "Removing existing swap repo " + url + " before adding new repo.");
+                                Repo repo = RepoProvider.Helper.findByAddress(context, url);
+                                RepoProvider.Helper.remove(context, repo.getId());
+                                prepareToCreateNewRepo(url, fp);
+                                break;
+
                             case EXISTS_DISABLED:
                             case EXISTS_UPGRADABLE_TO_SIGNED:
                             case EXISTS_FINGERPRINT_MATCH:
@@ -473,7 +481,9 @@ public class ManageReposActivity extends ActionBarActivity {
             if (repo == null) {
                 repoDoesntExist();
             } else {
-                if (repo.fingerprint == null && fingerprint.length() > 0) {
+                if (repo.isSwap) {
+                    repoIsSwap();
+                } else if (repo.fingerprint == null && fingerprint.length() > 0) {
                     upgradingToSigned();
                 } else if (repo.fingerprint != null && !repo.fingerprint.equalsIgnoreCase(fingerprint)) {
                     repoFingerprintDoesntMatch();
@@ -491,6 +501,10 @@ public class ManageReposActivity extends ActionBarActivity {
 
         private void repoDoesntExist() {
             updateUi(AddRepoState.DOESNT_EXIST, 0, false, R.string.repo_add_add, true);
+        }
+
+        private void repoIsSwap() {
+            updateUi(AddRepoState.IS_SWAP, 0, false, R.string.repo_add_add, true);
         }
 
         /**
@@ -654,6 +668,11 @@ public class ManageReposActivity extends ActionBarActivity {
         }
 
         private void createNewRepo(String address, String fingerprint) {
+            try {
+                address = normalizeUrl(address);
+            } catch (URISyntaxException e) {
+                // Leave address as it was.
+            }
             ContentValues values = new ContentValues(2);
             values.put(RepoProvider.DataColumns.ADDRESS, address);
             if (fingerprint != null && fingerprint.length() > 0) {
