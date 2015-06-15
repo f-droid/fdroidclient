@@ -9,6 +9,11 @@
 * Remove the root installer, since the system installer is safer, more stable
   and now easy to set up with root privileges
 
+* Can now manually add swap repo via "Repositories" screen
+
+* Using NFC during swap now initiates a proper swap, rather than redirecting to
+  the "Repositories" screen
+
 ### 0.92 (2015-06-08)
 
 * Make swap only in portrait mode to prevent crashes and issues where UI elements are obscured
