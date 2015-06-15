@@ -18,13 +18,11 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
+import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,13 +46,18 @@ public class RepoUpdater {
     private List<App> apps = new ArrayList<>();
     private List<Apk> apks = new ArrayList<>();
     private RepoUpdateRememberer rememberer = null;
-    protected boolean usePubkeyInJar = false;
     protected boolean hasChanged = false;
     @Nullable protected ProgressListener progressListener;
 
-    public RepoUpdater(@NonNull Context ctx, @NonNull Repo repo) {
-        this.context = ctx;
-        this.repo    = repo;
+    /**
+     * Updates an app repo as read out of the database into a {@link Repo} instance.
+     *
+     * @param context
+     * @param repo    a {@link Repo} read out of the local database
+     */
+    public RepoUpdater(@NonNull Context context, @NonNull Repo repo) {
+        this.context = context;
+        this.repo = repo;
     }
 
     public void setProgressListener(ProgressListener progressListener) {
@@ -107,86 +110,74 @@ public class RepoUpdater {
         return downloader;
     }
 
-    private int estimateAppCount(File indexFile) {
-        int count = -1;
-        try {
-            // A bit of a hack, this might return false positives if an apps description
-            // or some other part of the XML file contains this, but it is a pretty good
-            // estimate and makes the progress counter more informative.
-            // As with asking the server about the size of the index before downloading,
-            // this also has a time tradeoff. It takes about three seconds to iterate
-            // through the file and count 600 apps on a slow emulator (v17), but if it is
-            // taking two minutes to update, the three second wait may be worth it.
-            final String APPLICATION = "<application";
-            count = Utils.countSubstringOccurrence(indexFile, APPLICATION);
-        } catch (IOException e) {
-            // Do nothing. Leave count at default -1 value.
-        }
-        return count;
-    }
-
+    /**
+     * All repos are represented by a signed jar file, {@code index.jar}, which contains
+     * a single file, {@code index.xml}.  This takes the {@code index.jar}, verifies the
+     * signature, then returns the unzipped {@code index.xml}.
+     *
+     * @throws UpdateException All error states will come from here.
+     */
     public void update() throws UpdateException {
 
-        File downloadedFile = null;
-        File indexFile = null;
+        final Downloader downloader = downloadIndex();
+        hasChanged = downloader.hasChanged();
+
+        if (hasChanged) {
+            // Don't worry about checking the status code for 200. If it was a
+            // successful download, then we will have a file ready to use:
+            processDownloadedFile(downloader.getFile(), downloader.getCacheTag());
+        }
+    }
+
+    void processDownloadedFile(File downloadedFile, String cacheTag) throws UpdateException {
+        InputStream indexInputStream = null;
         try {
+            boolean storePubKey = false;
+            if (repo.pubkey == null) // new repo, no signing certificate stored
+                storePubKey = true;
 
-            final Downloader downloader = downloadIndex();
-            hasChanged = downloader.hasChanged();
-
-            if (hasChanged) {
-
-                // Don't worry about checking the status code for 200. If it was a
-                // successful download, then we will have a file ready to use:
-                downloadedFile = downloader.getFile();
-
-                if (downloadedFile != null && downloadedFile.exists()) {
-                    indexFile = getIndexFromJar(downloadedFile);
-                }
-
-                if (indexXmlFile == null || !indexXmlFile.canRead()) {
-                    throw new UpdateException(repo, "Failed to get index for " + repo.address);
-                }
-
-                // Process the index...
-                final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-                final XMLReader reader = parser.getXMLReader();
-                final RepoXMLHandler handler = new RepoXMLHandler(repo, progressListener);
-
-                if (progressListener != null) {
-                    // Only bother spending the time to count the expected apps
-                    // if we can show that to the user...
-                    handler.setTotalAppCount(estimateAppCount(indexFile));
-                }
-
-                reader.setContentHandler(handler);
-                InputSource is = new InputSource(
-                        new BufferedReader(new FileReader(indexFile)));
-
-                reader.parse(is);
-                apps = handler.getApps();
-                apks = handler.getApks();
-
-                rememberer = new RepoUpdateRememberer();
-                rememberer.context = context;
-                rememberer.repo = repo;
-                rememberer.values = prepareRepoDetailsForSaving(handler, downloader.getCacheTag());
+            JarEntry indexEntry = null;
+            if (downloadedFile != null && downloadedFile.exists()) {
+                JarFile jarFile = new JarFile(downloadedFile, true);
+                indexEntry = (JarEntry) jarFile.getEntry("index.xml");
+                indexInputStream = new BufferedInputStream(jarFile.getInputStream(indexEntry));
             }
+
+            // Process the index...
+            final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+            final XMLReader reader = parser.getXMLReader();
+            final RepoXMLHandler repoXMLHandler = new RepoXMLHandler(repo);
+            reader.setContentHandler(repoXMLHandler);
+            reader.parse(new InputSource(indexInputStream));
+
+            /* JarEntry can only read certificates after the file represented by that JarEntry
+             * has been read completely, so verification can run until now... */
+            verifyCerts(indexEntry, storePubKey);
+
+            apps = repoXMLHandler.getApps();
+            apks = repoXMLHandler.getApks();
+
+            rememberer = new RepoUpdateRememberer();
+            rememberer.context = context;
+            rememberer.repo = repo;
+            rememberer.values = prepareRepoDetailsForSaving(repoXMLHandler, cacheTag, storePubKey);
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index for repo " + repo.address, e);
         } finally {
-            if (downloadedFile != null && downloadedFile.exists()) {
+            if (indexInputStream != null) {
+                try {
+                    indexInputStream.close();
+                } catch (IOException e) {
+                    // ignored
+                }
+            }
+            if (downloadedFile != null) {
                 downloadedFile.delete();
             }
-            if (indexFile != null && indexFile.exists()) {
-                indexFile.delete();
-            }
-
         }
     }
 
-    private ContentValues prepareRepoDetailsForSaving(RepoXMLHandler handler, String etag) {
-
+    private ContentValues prepareRepoDetailsForSaving(RepoXMLHandler handler, String etag, boolean storePubKey) {
         ContentValues values = new ContentValues();
 
         values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
@@ -199,10 +190,9 @@ public class RepoUpdater {
          * We received a repo config that included the fingerprint, so we need to save
          * the pubkey now.
          */
-        if (handler.getPubKey() != null && (repo.pubkey == null || usePubkeyInJar)) {
+        if (storePubKey && repo.pubkey != null && repo.pubkey.equals(handler.getPubKey())) {
             Log.d(TAG, "Public key found - saving in the database.");
             values.put(RepoProvider.DataColumns.PUBLIC_KEY, handler.getPubKey());
-            usePubkeyInJar = false;
         }
 
         if (handler.getVersion() != -1 && handler.getVersion() != repo.version) {
@@ -258,100 +248,44 @@ public class RepoUpdater {
         }
     }
 
-    private boolean verifyCerts(JarEntry item) throws UpdateException {
-        final Certificate[] certs = item.getCertificates();
-        if (certs == null || certs.length == 0) {
+    private void verifyCerts(JarEntry jarEntry, boolean storePubKey) throws UpdateException {
+        final CodeSigner[] codeSigners = jarEntry.getCodeSigners();
+        if (codeSigners == null || codeSigners.length == 0) {
             throw new UpdateException(repo, "No signature found in index");
         }
+        /* we could in theory support more than 1, but as of now we do not */
+        if (codeSigners.length > 1) {
+            throw new UpdateException(repo, "index.jar must be signed by a single code signer!");
+        }
+        List<? extends Certificate> certs = codeSigners[0].getSignerCertPath().getCertificates();
+        if (certs.size() != 1) {
+            throw new UpdateException(repo, "index.jar code signers must only have a single certificate!");
+        }
+        Certificate cert = certs.get(0);
 
-        Log.d(TAG, "Index has " + certs.length + " signature(s)");
-        boolean match = false;
-        for (final Certificate cert : certs) {
-            String certdata = Hasher.hex(cert);
-            if (repo.pubkey == null && repo.fingerprint != null) {
-                String certFingerprint = Utils.calcFingerprint(cert);
-                Log.d(TAG, "No public key for repo " + repo.address + " yet, but it does have a fingerprint, so comparing them.");
-                Log.d(TAG, "Repo fingerprint: " + repo.fingerprint);
-                Log.d(TAG, "Cert fingerprint: " + certFingerprint);
-                if (repo.fingerprint.equalsIgnoreCase(certFingerprint)) {
-                    repo.pubkey = certdata;
-                    usePubkeyInJar = true;
-                }
-            }
-            if (repo.pubkey != null && repo.pubkey.equals(certdata)) {
-                Log.d(TAG, "Checking repo public key against cert found in jar.");
-                match = true;
-                break;
+        // though its called repo.pubkey, its actually a X509 certificate
+        String pubkey = Hasher.hex(cert);
+
+        /* The first time a repo is added, it can be added with the signing key's
+           fingerprint.  In that case, check that fingerprint against what is
+           actually in the index.jar itself */
+        if (repo.pubkey == null && repo.fingerprint != null) {
+            String certFingerprint = Utils.calcFingerprint(cert);
+            if (repo.fingerprint.equalsIgnoreCase(certFingerprint)) {
+                storePubKey = true;
+            } else {
+                throw new UpdateException(repo, "Supplied certificate fingerprint does not match!");
             }
         }
-        return match;
-    }
-
-    /**
-     * All repos are represented by a signed jar file, {@code index.jar}, which contains
-     * a single file, {@code index.xml}.  This takes the {@code index.jar}, verifies the
-     * signature, then returns the unzipped {@code index.xml}.
-     *
-     * @throws UpdateException All error states will come from here.
-     */
-    protected File getIndexFromJar(File f) throws UpdateException {
-        final Date updateTime = new Date(System.currentTimeMillis());
-        Log.d(TAG, "Getting signed index from " + repo.address + " at " +
-                Utils.formatLogDate(updateTime));
-
-        File indexFile = null;
-        JarFile jarFile = null;
-        try {
-            // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
-            // breakage when verifying the signature of the downloaded .jar. For more
-            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
-            FDroidApp.disableSpongyCastleOnLollipop();
-
-            jarFile = new JarFile(f, true);
-            JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
-
-            indexFile = File.createTempFile("index-", "-extracted.xml", context.getCacheDir());
-            InputStream input = null;
-            OutputStream output = null;
-            try {
-                /*
-                 * JarFile.getInputStream() provides the signature check, even
-                 * though the Android docs do not mention this, the Java docs do
-                 * and Android seems to implement it the same:
-                 * http://docs.oracle.com/javase/6/docs/api/java/util/jar/JarFile.html#getInputStream(java.util.zip.ZipEntry)
-                 * https://developer.android.com/reference/java/util/jar/JarFile.html#getInputStream(java.util.zip.ZipEntry)
-                 */
-                input = jarFile.getInputStream(indexEntry);
-                output = new FileOutputStream(indexFile);
-                Utils.copy(input, output);
-            } finally {
-                Utils.closeQuietly(output);
-                Utils.closeQuietly(input);
-            }
-
-            // Can only read certificates from jar after it has been read
-            // completely, so we put it after the copy above...
-            if (!verifyCerts(indexEntry)) {
-                indexFile.delete();
-                throw new UpdateException(repo, "Index signature mismatch");
-            }
-        } catch (IOException e) {
-            if (indexFile != null) {
-                indexFile.delete();
-            }
-            throw new UpdateException(repo, "Error opening signed index", e);
-        } finally {
-            FDroidApp.enableSpongyCastleOnLollipop();
-            if (jarFile != null) {
-                try {
-                    jarFile.close();
-                } catch (IOException ioe) {
-                    // ignore
-                }
-            }
+        /* This storePubKey business makes me uncomfortable, but there seems no way around it
+         * since writing the pubkey to the database happens far from here in RepoUpdateRememberer */
+        if (storePubKey) {
+            repo.pubkey = pubkey;
+            return;
+        } else if (repo.pubkey != null && repo.pubkey.equals(pubkey)) {
+            return;  // we have a match!
         }
-
-        return indexFile;
+        throw new UpdateException(repo, "Signing certificate does not match!");
     }
 
 }
