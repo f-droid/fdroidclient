@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 
@@ -36,7 +35,6 @@ import eu.chainfire.libsuperuser.Shell;
  * http://omerjerk.in/2014/08/how-to-install-an-app-to-system-partition/
  * https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
  */
-@TargetApi(Build.VERSION_CODES.FROYO)
 abstract class InstallIntoSystem {
 
     protected final Context context;
