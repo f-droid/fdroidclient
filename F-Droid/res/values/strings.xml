@@ -331,6 +331,11 @@
     <string name="wifi_warning_public">May work</string>
     <string name="wifi_warning_private">Promising</string>
     <string name="wifi_warning_personal">Best bet</string>
+	<string name="swap_bluetooth_your_device">Your device is</string>
+	<string name="swap_bluetooth_select_or_scan">Select from devices below, or press \"Scan\" from the menu to find more devices.</string>
+	<string name="swap_bluetooth_bonded_device">Bonded</string>
+	<string name="swap_bluetooth_bonding_device">Currently bonding...</string>
+	<string name="swap_bluetooth_unknown_device">Unknown device</string>
 	<string name="swap_choose_apps">Choose Apps</string>
 	<string name="swap_scan_qr">Scan QR Code</string>
 </resources>

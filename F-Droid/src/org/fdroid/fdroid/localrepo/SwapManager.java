@@ -69,6 +69,7 @@ public class SwapManager {
     public static final int STEP_JOIN_WIFI   = 3;
     public static final int STEP_SHOW_NFC    = 4;
     public static final int STEP_WIFI_QR     = 5;
+    public static final int STEP_BLUETOOTH   = 6;
 
     private @SwapStep int step = STEP_INTRO;
 
@@ -96,7 +97,7 @@ public class SwapManager {
      * be passed rather than in integer, however that is harder to persist on disk than an int.
      * This is the same as, e.g. {@link Context#getSystemService(String)}
      */
-    @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR})
+    @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR, STEP_BLUETOOTH})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep {}
 

@@ -39,6 +39,8 @@ public class WebServerType implements SwapType {
             public void run() {
                 localHttpd = new LocalHTTPD(
                         context,
+                        FDroidApp.ipAddressString,
+                        FDroidApp.port,
                         context.getFilesDir(),
                         Preferences.get().isLocalRepoHttpsEnabled());
 

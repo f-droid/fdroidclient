@@ -36,8 +36,8 @@ public class LocalHTTPD extends NanoHTTPD {
     private final File webRoot;
     private final boolean logRequests;
 
-    public LocalHTTPD(Context context, File webRoot, boolean useHttps) {
-        super(FDroidApp.ipAddressString, FDroidApp.port);
+    public LocalHTTPD(Context context, String hostname, int port, File webRoot, boolean useHttps) {
+        super(hostname, port);
         this.logRequests = false;
         this.webRoot = webRoot;
         this.context = context.getApplicationContext();
