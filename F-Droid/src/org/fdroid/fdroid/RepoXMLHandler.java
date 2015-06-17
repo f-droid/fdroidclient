@@ -97,6 +97,7 @@ public class RepoXMLHandler extends DefaultHandler {
         super.endElement(uri, localName, qName);
         final String curel = localName;
         final String str = curchars.toString().trim();
+        final boolean empty = (str == null || str.length() == 0);
 
         if (curel.equals("application") && curapp != null) {
             apps.add(curapp);
@@ -112,7 +113,7 @@ public class RepoXMLHandler extends DefaultHandler {
         } else if (curel.equals("package") && curapk != null && curapp != null) {
             apksList.add(curapk);
             curapk = null;
-        } else if (curapk != null) {
+        } else if (!empty && curapk != null) {
             switch (curel) {
             case "version":
                 curapk.version = str;
@@ -162,7 +163,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapk.nativecode = Utils.CommaSeparatedList.make(str);
                 break;
             }
-        } else if (curapp != null) {
+        } else if (!empty && curapp != null) {
             switch (curel) {
             case "name":
                 curapp.name = str;
@@ -235,7 +236,7 @@ public class RepoXMLHandler extends DefaultHandler {
                 curapp.requirements = Utils.CommaSeparatedList.make(str);
                 break;
             }
-        } else if (curel.equals("description")) {
+        } else if (!empty && curel.equals("description")) {
             description = cleanWhiteSpace(str);
         }
     }
