@@ -24,8 +24,6 @@
   <string name="notify_on">当更新可用时显示通知</string>
   <string name="update_history">更新历史</string>
   <string name="update_history_summ">相隔多少天的应用程序将会被当作较新的程序：%s</string>
-  <string name="root_installer">用root权限安装</string>
-  <string name="root_installer_on">在安装、更新或删除时请求root权限</string>
   <string name="system_installer">用系统权限安装</string>
   <string name="search_results">搜索结果</string>
   <string name="app_details">应用程序详情</string>
@@ -205,7 +203,6 @@ https://f-droid.org/repo</string>
   <string name="Security">安全</string>
   <string name="System">系统</string>
   <string name="Wallpaper">壁纸</string>
-  <string name="requesting_root_access_title">root权限</string>
   <string name="requesting_root_access_body">正在请求root权限…</string>
   <string name="root_access_denied_title">root权限取得失败</string>
   <string name="update_all">更新全部</string>

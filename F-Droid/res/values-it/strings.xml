@@ -24,8 +24,6 @@
   <string name="notify_on">Notifica gli aggiornamenti disponibili</string>
   <string name="update_history">Aggiorna i repository</string>
   <string name="update_history_summ">Numero di giorni per considerare le applicazioni nuove o recenti: %s</string>
-  <string name="root_installer">Installa con permessi di root</string>
-  <string name="root_installer_on">Richiedi il root per installare,aggiornare e rimuovere i pacchetti</string>
   <string name="system_installer">Installa usando i permessi di sistema</string>
   <string name="system_installer_on">Usa i permessi di sistema per installare,aggiornare e rimuovere i pacchetti</string>
   <string name="local_repo_bonjour">Condividi la Repo locale</string>
@@ -233,7 +231,6 @@ Prova a collegarti a questa rete: %s</string>
   <string name="Security">Sicurezza</string>
   <string name="System">Sistema</string>
   <string name="Wallpaper">Wallpaper</string>
-  <string name="requesting_root_access_title">Accesso Root</string>
   <string name="requesting_root_access_body">Richiedo i permessi root…</string>
   <string name="root_access_denied_title">Accesso Root negato</string>
   <string name="root_access_denied_body">Il tuo telefono non ha i permessi di root oppure li hai negati ad F-Droid.</string>

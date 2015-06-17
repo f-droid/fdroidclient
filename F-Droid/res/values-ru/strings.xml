@@ -26,8 +26,6 @@
   <string name="notify_on">Сообщать о наличии обновлений</string>
   <string name="update_history">История обновлений</string>
   <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
-  <string name="root_installer">Установить используя root доступ</string>
-  <string name="root_installer_on">Запрашивать права root пользователя для установки, обновления и удаления приложений</string>
   <string name="system_installer">Устанавливать используя системные привилегии</string>
   <string name="system_installer_on">Использовать системные привилегии для установки, обновления и удаления приложений</string>
   <string name="local_repo_bonjour">Транслировать локальный репозиторий</string>
@@ -234,7 +232,6 @@
   <string name="Security">Безопасность</string>
   <string name="System">Системные</string>
   <string name="Wallpaper">Обои</string>
-  <string name="requesting_root_access_title">Root доступ</string>
   <string name="requesting_root_access_body">Запрос root доступа…</string>
   <string name="root_access_denied_title">Отказано в root доступе</string>
   <string name="root_access_denied_body">Либо у вашего устройства нет root доступа, либо вы отклонили запрос от F-Droid.</string>

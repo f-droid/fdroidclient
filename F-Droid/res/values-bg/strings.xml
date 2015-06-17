@@ -15,7 +15,6 @@
   <string name="automatic_scan_wifi">Само през WiFi</string>
   <string name="notify_on">Известие при налична актуализация</string>
   <string name="update_history">Актуализирай историята</string>
-  <string name="root_installer">Инсталиране през root</string>
   <string name="local_repo_name">Име на локалното хранилище</string>
   <string name="search_results">Резултати от търсенето</string>
   <string name="app_details">Детайли за приложението</string>
@@ -138,7 +137,6 @@
   <string name="Security">Сигурност</string>
   <string name="System">Система</string>
   <string name="Wallpaper">Тапет</string>
-  <string name="requesting_root_access_title">Root достъп</string>
   <string name="requesting_root_access_body">Изискване на Root достъп…</string>
   <string name="root_access_denied_title">Root достъпът е отказан</string>
   <string name="update_all">Обнови всички</string>

@@ -24,8 +24,6 @@
   <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
   <string name="update_history">Oppdater historikk</string>
   <string name="update_history_summ">Dager nytt innhold skal anses som ferskt: %s</string>
-  <string name="root_installer">Installer ved bruk av root-tilgang</string>
-  <string name="root_installer_on">Spør etter root tilgang for å installere, oppdatere, og fjerne applikasjoner.</string>
   <string name="system_installer">Installer ved bruk av system-tilgang</string>
   <string name="system_installer_on">Bruk system rettigheter til å installere, oppdatere, og fjerne applikasjoner.</string>
   <string name="local_repo_bonjour">Kringkast lokal pakkebrønn</string>
@@ -239,7 +237,6 @@ Du må
   <string name="Security">Sikkerhet</string>
   <string name="System">System</string>
   <string name="Wallpaper">Bakgrunn</string>
-  <string name="requesting_root_access_title">Root tilgang</string>
   <string name="requesting_root_access_body">Etterspørr root-tilgang…</string>
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>

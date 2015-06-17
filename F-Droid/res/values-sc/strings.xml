@@ -13,8 +13,6 @@
   <string name="notify">Notìfica</string>
   <string name="notify_on">Averte cando bi sunt agiornamentos disponìbiles</string>
   <string name="update_history">Istòria de sos agiornamentos</string>
-  <string name="root_installer">Installa impreande s\'atzessu root</string>
-  <string name="root_installer_on">Pedi s\'atzessu root pro installare, agiornare, e remòvrere pachetos</string>
   <string name="system_installer">Installa impreande sos permissos de sistema</string>
   <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos</string>
   <string name="local_repo_bonjour">Cumpartzi su depòsitu locale</string>
@@ -122,7 +120,6 @@ Depes
   <string name="Security">Seguràntzia</string>
   <string name="System">Sistema</string>
   <string name="Wallpaper">Isfundu</string>
-  <string name="requesting_root_access_title">Atzessu root</string>
   <string name="requesting_root_access_body">Pedinde s\'atzessu root…</string>
   <string name="root_access_denied_title">Atzessu root dennegadu</string>
   <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a F-droid.</string>

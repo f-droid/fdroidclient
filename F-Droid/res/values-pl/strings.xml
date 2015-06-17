@@ -13,8 +13,6 @@
   <string name="notify">Powiadom</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
-  <string name="root_installer">Instaluj na uprawnieniach roota</string>
-  <string name="root_installer_on">Żądaj dostępu roota do instalacji, aktualizacji i usuwania pakietów</string>
   <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
   <string name="system_installer_on">Używaj uprawnień systemowych do instalacji, aktualizacji i usuwania pakietów</string>
   <string name="local_repo_bonjour">Widoczność repozytorium</string>
@@ -179,7 +177,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="Security">Bezpieczeństwo</string>
   <string name="System">System</string>
   <string name="Wallpaper">Tapeta</string>
-  <string name="requesting_root_access_title">Dostęp roota</string>
   <string name="requesting_root_access_body">Żądanie uprawnień roota…</string>
   <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
   <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.</string>

@@ -24,8 +24,6 @@
   <string name="notify_on">Notificar cuando hay actualizaciones</string>
   <string name="update_history">Historial de actualizaciones</string>
   <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
-  <string name="root_installer">Instalar usando acceso root</string>
-  <string name="root_installer_on">Pedir acceso root para instalar, actualizar y borrar paquetes</string>
   <string name="system_installer">Instalar usando permisos de sistema</string>
   <string name="system_installer_on">Utilice permisos de sistema para instalar , actualizar y eliminar paquetes</string>
   <string name="local_repo_bonjour">Transmitir repositorio local</string>
@@ -240,7 +238,6 @@ Necesitarás volver a habilitar este repositorio para instalar aplicaciones desd
   <string name="Security">Seguridad</string>
   <string name="System">Sistema</string>
   <string name="Wallpaper">Fondo de pantalla</string>
-  <string name="requesting_root_access_title">Acceso Root</string>
   <string name="requesting_root_access_body">Solicitando acceso root…</string>
   <string name="root_access_denied_title">Acceso Root denegado</string>
   <string name="root_access_denied_body">Puede ser que el dispositivo Android no este rooteado o se ha denegado el acceso root para F-Droid.</string>

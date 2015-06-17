@@ -24,8 +24,6 @@
   <string name="notify_on">更新があれば通知します</string>
   <string name="update_history">更新履歴</string>
   <string name="update_history_summ">ｱﾌﾟﾘを新しいものと判断する日数: %s</string>
-  <string name="root_installer">管理者権限を使用してｲﾝｽﾄｰﾙ</string>
-  <string name="root_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除に管理者権限を要求する</string>
   <string name="system_installer">ｼｽﾃﾑｱｸｾｽ許可を使用してｲﾝｽﾄｰﾙ</string>
   <string name="system_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除にｼｽﾃﾑｱｸｾｽ許可を使用する</string>
   <string name="local_repo_bonjour">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘをﾌﾞﾛｰﾄﾞｷｬｽﾄ</string>
@@ -240,7 +238,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました.</string>
   <string name="Security">ｾｷｭﾘﾃｨ</string>
   <string name="System">ｼｽﾃﾑ</string>
   <string name="Wallpaper">壁紙･背景</string>
-  <string name="requesting_root_access_title">管理者権限(root)で許可</string>
   <string name="requesting_root_access_body">管理者権限の要求中…</string>
   <string name="root_access_denied_title">管理者権限での接続が拒絶されました</string>
   <string name="root_access_denied_body">お使いのAndroid端末はroot化されていないか､F-Droidの管理者権限要求が拒絶されされました.</string>

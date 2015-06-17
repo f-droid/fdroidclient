@@ -20,8 +20,6 @@
   <string name="notify_on">Upozornit pokud jsou dostupné aktualizace</string>
   <string name="update_history">Historie aktualizací</string>
   <string name="update_history_summ">Počet dnů po které je aplikace vedena jako nová nebo nedávná: %s</string>
-  <string name="root_installer">Instalovat s použitím oprávnění roota</string>
-  <string name="root_installer_on">Vyžádat si oprávnění roota k instalaci, aktualizaci či odstraňování balíčků</string>
   <string name="system_installer">Instalovat s použitím systémových oprávnění</string>
   <string name="system_installer_on">Použít systémová oprávnění k instalování, aktualizaci a odebírání balíčků</string>
   <string name="local_repo_bonjour">Oznamovat místní repozitář</string>
@@ -190,7 +188,6 @@ Tento repozitář bude nutné znovu povolit, aby z něj mohly být instalovány 
   <string name="Security">Bezpečnost</string>
   <string name="System">Systém</string>
   <string name="Wallpaper">Tapety na pozadí</string>
-  <string name="requesting_root_access_title">Root přístup</string>
   <string name="requesting_root_access_body">Získávám root oprávnění…</string>
   <string name="root_access_denied_title">Root přístup odepřen</string>
   <string name="root_access_denied_body">Buď toto Android zařízení není rootnuté, nebo jsi odepřel F-Droidu opránění roota.</string>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="root_installer">Inštalovať root prístupom</string>
-  <string name="root_installer_on">Žiadať root prístup na inštaláciu, aktualizácie a odstránenie balíkov</string>
   <string name="system_installer">Inštalovať s povoleniami systému</string>
   <string name="system_installer_on">Používať systémové povolenia na inštaláciu, aktualizácie a odstránenie balíkov</string>
   <string name="local_repo_bonjour">Vysielať miestne repo</string>
@@ -89,7 +87,6 @@ Budete
   <string name="Security">Bezpečnosť</string>
   <string name="System">Systém</string>
   <string name="Wallpaper">Tapeta</string>
-  <string name="requesting_root_access_title">Root prístup</string>
   <string name="requesting_root_access_body">Žiadame root prístup…</string>
   <string name="root_access_denied_title">Root prístup zamietnutý</string>
   <string name="root_access_denied_body">Buď vaše zariadenie s Androidom nemá urobený root alebo ste odmietli root prístup pre F-Droid.</string>
