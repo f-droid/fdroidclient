@@ -74,7 +74,6 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.net.MDnsHelper;
 import org.fdroid.fdroid.net.MDnsHelper.DiscoveredRepo;
 import org.fdroid.fdroid.net.MDnsHelper.RepoScanListAdapter;
-import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -888,7 +887,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
         public void editRepo(Repo repo) {
             Intent intent = new Intent(getActivity(), RepoDetailsActivity.class);
-            intent.putExtra(RepoDetailsFragment.ARG_REPO_ID, repo.getId());
+            intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getId());
             startActivityForResult(intent, SHOW_REPO_DETAILS);
         }
 

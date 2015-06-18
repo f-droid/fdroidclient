@@ -1,6 +1,8 @@
 package org.fdroid.fdroid.views;
 
 import android.annotation.TargetApi;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.nfc.NdefMessage;
@@ -8,26 +10,76 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.app.AlertDialog;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
+import org.fdroid.fdroid.NfcNotEnabledActivity;
+import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 public class RepoDetailsActivity extends ActionBarActivity {
     private static final String TAG = "RepoDetailsActivity";
 
-    private Repo repo;
+    public static final String MIME_TYPE = "application/vnd.org.fdroid.fdroid.repo";
+    public static final String ARG_REPO_ID = "repo_id";
 
-    static final String MIME_TYPE = "application/vnd.org.fdroid.fdroid.repo";
+    /**
+     * If the repo has been updated at least once, then we will show
+     * all of this info, otherwise they will be hidden.
+     */
+    private static final int[] SHOW_IF_EXISTS = {
+            R.id.label_repo_name,
+            R.id.text_repo_name,
+            R.id.label_description,
+            R.id.text_description,
+            R.id.label_num_apps,
+            R.id.text_num_apps,
+            R.id.label_last_update,
+            R.id.text_last_update,
+            R.id.label_repo_fingerprint,
+            R.id.text_repo_fingerprint,
+            R.id.text_repo_fingerprint_description
+    };
+    /**
+     * If the repo has <em>not</em> been updated yet, then we only show
+     * these, otherwise they are hidden.
+     */
+    private static final int[] HIDE_IF_EXISTS = {
+            R.id.text_not_yet_updated,
+            R.id.btn_update
+    };
+    private Repo repo;
+    private long repoId;
+    private View repoView;
+
+    /**
+     * Help function to make switching between two view states easier.
+     * Perhaps there is a better way to do this. I recall that using Adobe
+     * Flex, there was a thing called "ViewStates" for exactly this. Wonder if
+     * that exists in  Android?
+     */
+    private static void setMultipleViewVisibility(View parent,
+                                                  int[] viewIds,
+                                                  int visibility) {
+        for (int viewId : viewIds) {
+            parent.findViewById(viewId).setVisibility(visibility);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,27 +87,11 @@ public class RepoDetailsActivity extends ActionBarActivity {
         ((FDroidApp) getApplication()).applyTheme(this);
         super.onCreate(savedInstanceState);
 
-        long repoId = getIntent().getLongExtra(RepoDetailsFragment.ARG_REPO_ID, 0);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.repodetails);
+        repoView = findViewById(R.id.repoView);
 
-        if (savedInstanceState == null) {
-
-            // Need to set a dummy view (which will get overridden by the fragment manager
-            // below) so that we can call setContentView(). This is a work around for
-            // a (bug?) thing in 3.0, 3.1 which requires setContentView to be invoked before
-            // the actionbar is played with:
-            // http://blog.perpetumdesign.com/2011/08/strange-case-of-dr-action-and-mr-bar.html
-            if (Build.VERSION.SDK_INT >= 11 && Build.VERSION.SDK_INT <= 13) {
-                setContentView(new LinearLayout(this));
-            }
-
-            RepoDetailsFragment fragment = new RepoDetailsFragment();
-            fragment.setArguments(getIntent().getExtras());
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(android.R.id.content, fragment)
-                    .commit();
-        }
-
+        repoId = getIntent().getLongExtra(ARG_REPO_ID, 0);
         final String[] projection = {
                 RepoProvider.DataColumns.NAME,
                 RepoProvider.DataColumns.ADDRESS,
@@ -63,8 +99,18 @@ public class RepoDetailsActivity extends ActionBarActivity {
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle(repo.getName());
+        setTitle(repo.name);
+
+        TextView inputUrl = (TextView) findViewById(R.id.input_repo_url);
+        inputUrl.setText(repo.address);
+
+        Button update = (Button) repoView.findViewById(R.id.btn_update);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performUpdate();
+            }
+        });
     }
 
     @TargetApi(14)
@@ -82,6 +128,16 @@ public class RepoDetailsActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
+
+        /*
+         * After, for example, a repo update, the details will have changed in the
+         * database. However, or local reference to the Repo object will not
+         * have been updated. The safest way to deal with this is to reload the
+         * repo object directly from the database.
+         */
+        repo = RepoProvider.Helper.findById(this, repoId);
+        updateRepoView();
+
         // FDroid.java and AppDetails set different NFC actions, so reset here
         setNfc();
         processIntent(getIntent());
@@ -113,13 +169,176 @@ public class RepoDetailsActivity extends ActionBarActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.repo_details_activity, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case android.R.id.home:
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.menu_update:
+                performUpdate();
+                return true;
+            case R.id.menu_delete:
+                promptForDelete();
+                return true;
+            case R.id.menu_enable_nfc:
+                Intent intent = new Intent(this, NfcNotEnabledActivity.class);
+                startActivity(intent);
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (Build.VERSION.SDK_INT >= 14) {
+            prepareNfcMenuItems(menu);
+        }
+        return true;
+    }
+
+    @TargetApi(16)
+    private void prepareNfcMenuItems(Menu menu) {
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if (nfcAdapter == null) {
+            return;
+        }
+
+        boolean needsEnableNfcMenuItem;
+        if (Build.VERSION.SDK_INT < 16) {
+            needsEnableNfcMenuItem = !nfcAdapter.isEnabled();
+        } else {
+            needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
+        }
+
+        MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
+        menuItem.setVisible(needsEnableNfcMenuItem);
+    }
+
+    private void setupDescription(View parent, Repo repo) {
+
+        TextView descriptionLabel = (TextView) parent.findViewById(R.id.label_description);
+        TextView description = (TextView) parent.findViewById(R.id.text_description);
+
+        if (TextUtils.isEmpty(repo.description)) {
+            descriptionLabel.setVisibility(View.GONE);
+            description.setVisibility(View.GONE);
+            description.setText("");
+        } else {
+            descriptionLabel.setVisibility(View.VISIBLE);
+            description.setVisibility(View.VISIBLE);
+            description.setText(repo.description.replaceAll("\n", " "));
+        }
+    }
+
+    private void setupRepoFingerprint(View parent, Repo repo) {
+        TextView repoFingerprintView = (TextView) parent.findViewById(R.id.text_repo_fingerprint);
+        TextView repoFingerprintDescView = (TextView) parent.findViewById(R.id.text_repo_fingerprint_description);
+
+        String repoFingerprint;
+        int repoFingerprintColor;
+
+        // TODO show the current state of the signature check, not just whether there is a key or not
+        if (TextUtils.isEmpty(repo.fingerprint) && TextUtils.isEmpty(repo.pubkey)) {
+            repoFingerprint = getResources().getString(R.string.unsigned);
+            repoFingerprintColor = getResources().getColor(R.color.unsigned);
+            repoFingerprintDescView.setVisibility(View.VISIBLE);
+            repoFingerprintDescView.setText(getResources().getString(R.string.unsigned_description));
+        } else {
+            // this is based on repo.fingerprint always existing, which it should
+            repoFingerprint = Utils.formatFingerprint(this, repo.fingerprint);
+            repoFingerprintColor = getResources().getColor(R.color.signed);
+            repoFingerprintDescView.setVisibility(View.GONE);
+        }
+
+        repoFingerprintView.setText(repoFingerprint);
+        repoFingerprintView.setTextColor(repoFingerprintColor);
+    }
+
+    private void updateRepoView() {
+
+        if (repo.hasBeenUpdated()) {
+            updateViewForExistingRepo(repoView);
+        } else {
+            updateViewForNewRepo(repoView);
+        }
+
+    }
+
+    private void updateViewForNewRepo(View repoView) {
+        setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.VISIBLE);
+        setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.GONE);
+    }
+
+    private void updateViewForExistingRepo(View repoView) {
+        setMultipleViewVisibility(repoView, SHOW_IF_EXISTS, View.VISIBLE);
+        setMultipleViewVisibility(repoView, HIDE_IF_EXISTS, View.GONE);
+
+        TextView name = (TextView) repoView.findViewById(R.id.text_repo_name);
+        TextView numApps = (TextView) repoView.findViewById(R.id.text_num_apps);
+        TextView lastUpdated = (TextView) repoView.findViewById(R.id.text_last_update);
+
+        name.setText(repo.name);
+
+        int appCount = RepoProvider.Helper.countAppsForRepo(this, repoId);
+        numApps.setText(Integer.toString(appCount));
+
+        setupDescription(repoView, repo);
+        setupRepoFingerprint(repoView, repo);
+
+        // Repos that existed before this feature was supported will have an
+        // "Unknown" last update until next time they update...
+        String lastUpdate = repo.lastUpdated != null
+                ? repo.lastUpdated.toString() : getString(R.string.unknown);
+        lastUpdated.setText(lastUpdate);
+    }
+
+    /**
+     * When an update is performed, notify the listener so that the repo
+     * list can be updated. We will perform the update ourselves though.
+     */
+    private void performUpdate() {
+        // Ensure repo is enabled before updating...
+        ContentValues values = new ContentValues(1);
+        values.put(RepoProvider.DataColumns.IN_USE, 1);
+        RepoProvider.Helper.update(this, repo, values);
+
+        UpdateService.updateRepoNow(repo.address, this).setListener(new ProgressListener() {
+            @Override
+            public void onProgress(Event event) {
+                switch (event.type) {
+                    case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+                        updateRepoView();
+                        break;
+                }
+            }
+        });
+    }
+
+    private void promptForDelete() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.repo_confirm_delete_title)
+                .setMessage(R.string.repo_confirm_delete_body)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        RepoProvider.Helper.remove(getApplicationContext(), repoId);
+                        finish();
+                    }
+                }).setNegativeButton(android.R.string.cancel,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing...
+                    }
+                }
+        ).show();
     }
 
 }
