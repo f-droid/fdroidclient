@@ -12,6 +12,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,8 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapManager;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 public class SwapWorkflowActivity extends AppCompatActivity {
@@ -48,7 +51,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         /** @return True if the menu should be shown. */
         boolean buildMenu(Menu menu, @NonNull MenuInflater inflater);
 
-        /** @return The steap that this view represents. */
+        /** @return The step that this view represents. */
         @SwapManager.SwapStep int getStep();
 
         @SwapManager.SwapStep int getPreviousStep();
@@ -58,13 +61,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         String getToolbarTitle();
     }
 
+    private static final String TAG = "SwapWorkflowActivity";
     private static final int CONNECT_TO_SWAP = 1;
 
     private Toolbar toolbar;
     private SwapManager state;
     private InnerView currentView;
     private boolean hasPreparedLocalRepo = false;
-    private UpdateAsyncTask updateSwappableAppsTask = null;
+    private PrepareSwapRepo updateSwappableAppsTask = null;
 
     @Override
     public void onBackPressed() {
@@ -164,6 +168,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void showIntro() {
+        if (!state.isEnabled()) {
+            prepareInitialRepo();
+        }
         SwapManager.load(this).scanForPeers();
         inflateInnerView(R.layout.swap_blank);
     }
@@ -177,11 +184,21 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     // Otherwise, probably will need to scan the file system.
     public void onAppsSelected() {
         if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
-            updateSwappableAppsTask = new UpdateAsyncTask(state.getAppsToSwap());
+            updateSwappableAppsTask = new PrepareFullSwapRepo(state.getAppsToSwap());
             updateSwappableAppsTask.execute();
         } else {
             showJoinWifi();
         }
+    }
+
+    private void prepareInitialRepo() {
+        // TODO: Make it so that this and updateSwappableAppsTask (the _real_ swap repo task)
+        // don't stomp on eachothers toes. The other one should wait for this to finish, or cancel
+        // this, but this should never take precedence over the other.
+        // TODO: Also don't allow this to run multiple times (e.g. if a user keeps navigating back
+        // to the main screen.
+        Log.d(TAG, "Preparing initial repo with only F-Droid, until we have allowed the user to configure their own repo.");
+        new PrepareInitialSwapRepo().execute();
     }
 
     /**
@@ -251,35 +268,68 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
-    class UpdateAsyncTask extends AsyncTask<Void, String, Void> {
+    class PrepareInitialSwapRepo extends PrepareSwapRepo {
+        public PrepareInitialSwapRepo() {
+            super(new HashSet<>(Arrays.asList(new String[] { "org.fdroid.fdroid" })));
+        }
 
-        @SuppressWarnings("UnusedDeclaration")
-        private static final String TAG = "UpdateAsyncTask";
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            state.enableSwapping();
+        }
+    }
+
+    class PrepareFullSwapRepo extends PrepareSwapRepo {
 
         @NonNull
         private final ProgressDialog progressDialog;
 
-        @NonNull
-        private final Set<String> selectedApps;
-
-        @NonNull
-        private final Uri sharingUri;
-
-        @NonNull
-        private final Context context;
-
-        public UpdateAsyncTask(@NonNull Set<String> apps) {
-            context = SwapWorkflowActivity.this;
-            selectedApps = apps;
+        public PrepareFullSwapRepo(@NonNull Set<String> apps) {
+            super(apps);
             progressDialog = new ProgressDialog(context);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setTitle(R.string.updating);
-            sharingUri = Utils.getSharingUri(FDroidApp.repo);
         }
 
         @Override
         protected void onPreExecute() {
             progressDialog.show();
+        }
+
+        @Override
+        protected void onProgressUpdate(String... progress) {
+            super.onProgressUpdate(progress);
+            progressDialog.setMessage(progress[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            progressDialog.dismiss();
+            Toast.makeText(context, R.string.updated_local_repo, Toast.LENGTH_SHORT).show();
+            onLocalRepoPrepared();
+        }
+
+    }
+
+    abstract class PrepareSwapRepo extends AsyncTask<Void, String, Void> {
+
+        @SuppressWarnings("UnusedDeclaration")
+        private static final String TAG = "UpdateAsyncTask";
+
+        @NonNull
+        protected final Set<String> selectedApps;
+
+        @NonNull
+        protected final Uri sharingUri;
+
+        @NonNull
+        protected final Context context;
+
+        public PrepareSwapRepo(@NonNull Set<String> apps) {
+            context = SwapWorkflowActivity.this;
+            selectedApps = apps;
+            sharingUri = Utils.getSharingUri(FDroidApp.repo);
         }
 
         @Override
@@ -316,14 +366,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(String... progress) {
             super.onProgressUpdate(progress);
-            progressDialog.setMessage(progress[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            progressDialog.dismiss();
-            Toast.makeText(context, R.string.updated_local_repo, Toast.LENGTH_SHORT).show();
-            onLocalRepoPrepared();
+            Log.d(TAG, progress[0]);
         }
     }
 
