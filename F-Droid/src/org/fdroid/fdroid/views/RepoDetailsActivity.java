@@ -169,8 +169,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
             Log.i(TAG, "Got this URL: " + url);
             Toast.makeText(this, "Got this URL: " + url, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            String packageName = getPackageName();
-            intent.setClassName(packageName, packageName + ".ManageRepo");
+            intent.setClass(this, ManageReposActivity.class);
             startActivity(intent);
             finish();
         }
