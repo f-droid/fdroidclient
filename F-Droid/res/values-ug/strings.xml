@@ -92,9 +92,6 @@
   <string name="status_download">چۈشۈرۈۋاتىدۇ
 %2$s / %3$s (%4$d%%)
 %1$s</string>
-  <string name="status_processing_xml">ئەپنى بىر تەرەپ قىلىۋاتىدۇ
-%2$d of %3$d
-%1$s</string>
   <string name="status_connecting_to_repo">%1$s غا 
 باغلىنىۋاتىدۇ</string>
   <string name="status_checking_compatibility">ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…</string>

@@ -96,9 +96,6 @@ Quere actualizalos?</string>
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) desde
 %1$s</string>
-  <string name="status_processing_xml">Procesando o aplicativo
-%2$d de %3$d desde
-%1$s</string>
   <string name="status_connecting_to_repo">Conectándose con
 %1$s</string>
   <string name="status_checking_compatibility">Comprobando a compatibilidade das aps con seu aparello</string>

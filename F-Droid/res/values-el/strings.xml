@@ -124,9 +124,6 @@
   <string name="status_download">Λήψη
 %2$s / %3$s (%4$d%%) από
 %1$s</string>
-  <string name="status_processing_xml">Επεξεργασία εφαρμογής
-%2$d από %3$d από
-%1$s</string>
   <string name="status_connecting_to_repo">Σύνδεση με
 %1$s</string>
   <string name="status_checking_compatibility">Έλεγχος συμβατότητας εφαρμογών με τη συσκευή σας…</string>

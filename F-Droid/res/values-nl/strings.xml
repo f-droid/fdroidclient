@@ -125,9 +125,6 @@ Wilt u ze vernieuwen?</string>
   <string name="status_download">Downloaden
 %2$s / %3$s (%4$d%%) van
 %1$s</string>
-  <string name="status_processing_xml">Verwerken applicatie
-%2$d van %3$d van
-%1$s</string>
   <string name="status_connecting_to_repo">Verbinden met %1$s</string>
   <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
   <string name="status_inserting">Applicatiedetails opslaan (%1$d%%)</string>

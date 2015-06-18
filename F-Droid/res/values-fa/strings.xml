@@ -83,9 +83,6 @@
   <string name="status_download">دریافت
 %2$s / %3$s (%4$d%%) از
 %1$s</string>
-  <string name="status_processing_xml">پردازش برنامه
-%2$d از %3$d از
-%1$s</string>
   <string name="status_connecting_to_repo">اتصال به
 %1$s</string>
   <string name="status_checking_compatibility">بررسی سازگاری برنامه‌ها با دستگاه شما…</string>

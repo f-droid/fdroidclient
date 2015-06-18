@@ -171,9 +171,6 @@ Vill du uppdatera dem?</string>
   <string name="status_download">Hämtar
 %2$s / %3$s (%4$d%%) från
 %1$s</string>
-  <string name="status_processing_xml">Bearbetar program
-%2$d av %3$d från
-%1$s</string>
   <string name="status_connecting_to_repo">Ansluter till
 %1$s</string>
   <string name="status_checking_compatibility">Kontrollerar appars kompatibilitet med din enhet…</string>

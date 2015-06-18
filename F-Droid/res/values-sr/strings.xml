@@ -170,9 +170,6 @@
   <string name="status_download">Преузимам
 %2$s / %3$s (%4$d%%) са
 %1$s</string>
-  <string name="status_processing_xml">Обрађујем апликацију
-%2$d од %3$d са
-%1$s</string>
   <string name="status_connecting_to_repo">Повезујем се са
 %1$s</string>
   <string name="status_checking_compatibility">Проверавам компатибилност апликација са вашим уређајем…</string>

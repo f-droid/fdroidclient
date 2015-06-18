@@ -172,9 +172,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="status_download">Herunterladen
 %2$s / %3$s (%4$d%%) von
 %1$s</string>
-  <string name="status_processing_xml">Anwendung wird vorbereitet
-%2$d / %3$d von
-%1$s</string>
   <string name="status_connecting_to_repo">Mit %1$s
 wird verbunden</string>
   <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>

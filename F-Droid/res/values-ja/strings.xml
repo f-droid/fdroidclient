@@ -173,9 +173,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました.</string>
   <string name="status_download">ﾀﾞｳﾝﾛｰﾄﾞ中
 %2$s / %3$s (%4$d%%) ﾀﾞｳﾝﾛｰﾄﾞ元
 %1$s</string>
-  <string name="status_processing_xml">ｱﾌﾟﾘｹｰｼｮﾝの処理中
-%2$d / %3$d
-%1$s</string>
   <string name="status_connecting_to_repo">接続中
 %1$s</string>
   <string name="status_checking_compatibility">あなたの端末とｱﾌﾟﾘｹｰｼｮﾝの互換性を確認しています…</string>
