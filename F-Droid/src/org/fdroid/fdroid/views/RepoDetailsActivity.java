@@ -26,11 +26,14 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.NfcNotEnabledActivity;
 import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+
+import java.util.Locale;
 
 public class RepoDetailsActivity extends ActionBarActivity {
     private static final String TAG = "RepoDetailsActivity";
@@ -111,6 +114,11 @@ public class RepoDetailsActivity extends ActionBarActivity {
                 performUpdate();
             }
         });
+
+        Uri uri = Uri.parse(repo.address);
+        uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).build();
+        String qrUriString = uri.toString().toUpperCase(Locale.ENGLISH);
+        new QrGenAsyncTask(this, R.id.qr_code).execute(uri.toString());
     }
 
     @TargetApi(14)

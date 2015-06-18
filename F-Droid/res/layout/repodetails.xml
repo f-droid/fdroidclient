@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    android:id="@+id/repoView"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingTop="@dimen/padding_top"
     android:paddingLeft="@dimen/padding_side"
     android:paddingStart="@dimen/padding_side"
     android:paddingRight="@dimen/padding_side"
     android:paddingEnd="@dimen/padding_side">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/repoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <TextView
         android:layout_width="fill_parent"
@@ -132,4 +138,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_not_yet_updated"/>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/qr_code"
+        android:src="@drawable/swap_qr_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>
