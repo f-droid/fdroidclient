@@ -8,10 +8,11 @@ import org.fdroid.fdroid.compat.FileCompatForTest;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
+import java.util.UUID;
 
 public class FileCompatTest extends InstrumentationTestCase {
 
-    private static final String TAG = "org.fdroid.fdroid.FileCompatTest";
+    private static final String TAG = "FileCompatTest";
 
     private File dir;
     private SanitizedFile sourceFile;
@@ -20,25 +21,22 @@ public class FileCompatTest extends InstrumentationTestCase {
     public void setUp() {
         dir = TestUtils.getWriteableDir(getInstrumentation());
         sourceFile = SanitizedFile.knownSanitized(TestUtils.copyAssetToDir(getInstrumentation().getContext(), "simpleIndex.jar", dir));
-        destFile = new SanitizedFile(dir, "dest.txt");
-        assertTrue(!destFile.exists());
+        destFile = new SanitizedFile(dir, "dest-" + UUID.randomUUID() + ".testproduct");
+        assertFalse(destFile.exists());
         assertTrue(sourceFile.getAbsolutePath() + " should exist.", sourceFile.exists());
     }
 
     public void tearDown() {
-        if (sourceFile.exists()) {
-            assertTrue("Can't delete " + sourceFile.getAbsolutePath() + ".", sourceFile.delete());
+        if (!sourceFile.delete()) {
+            System.out.println("Can't delete " + sourceFile.getAbsolutePath() + ".");
         }
 
-        if (destFile.exists()) {
-            assertTrue("Can't delete " + destFile.getAbsolutePath() + ".", destFile.delete());
+        if (!destFile.delete()) {
+            System.out.println("Can't delete " + destFile.getAbsolutePath() + ".");
         }
     }
 
     public void testSymlinkRuntime() {
-        SanitizedFile destFile = new SanitizedFile(dir, "dest.txt");
-        assertFalse(destFile.exists());
-
         FileCompatForTest.symlinkRuntimeTest(sourceFile, destFile);
         assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
     }
@@ -46,9 +44,6 @@ public class FileCompatTest extends InstrumentationTestCase {
     public void testSymlinkLibcore() {
 
         if (Build.VERSION.SDK_INT >= 19) {
-            SanitizedFile destFile = new SanitizedFile(dir, "dest.txt");
-            assertFalse(destFile.exists());
-
             FileCompatForTest.symlinkLibcoreTest(sourceFile, destFile);
             assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
         } else {
@@ -59,9 +54,6 @@ public class FileCompatTest extends InstrumentationTestCase {
     public void testSymlinkOs() {
 
         if (Build.VERSION.SDK_INT >= 21 ) {
-            SanitizedFile destFile = new SanitizedFile(dir, "dest.txt");
-            assertFalse(destFile.exists());
-
             FileCompatForTest.symlinkOsTest(sourceFile, destFile);
             assertTrue(destFile.getAbsolutePath() + " should exist after symlinking", destFile.exists());
         } else {
