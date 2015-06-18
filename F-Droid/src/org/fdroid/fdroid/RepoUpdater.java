@@ -18,7 +18,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -136,12 +135,13 @@ public class RepoUpdater {
             if (repo.pubkey == null) // new repo, no signing certificate stored
                 storePubKey = true;
 
-            JarEntry indexEntry = null;
-            if (downloadedFile != null && downloadedFile.exists()) {
-                JarFile jarFile = new JarFile(downloadedFile, true);
-                indexEntry = (JarEntry) jarFile.getEntry("index.xml");
-                indexInputStream = new BufferedInputStream(jarFile.getInputStream(indexEntry));
-            }
+            if (downloadedFile == null || !downloadedFile.exists())
+                throw new UpdateException(repo, downloadedFile + " does not exist!");
+
+            JarFile jarFile = new JarFile(downloadedFile, true);
+            JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
+            indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
+                    progressListener, repo, (int)indexEntry.getSize());
 
             // Process the index...
             final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
