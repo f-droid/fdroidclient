@@ -18,6 +18,7 @@
             android:text="@string/swap_start"
             style="@style/SwapTheme.StartSwap.StartButton"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/text_description"
             android:layout_centerHorizontal="true"/>
 

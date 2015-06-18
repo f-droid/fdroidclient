@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/action_search"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_search_white"
         android:title="@string/menu_search"
         app:showAsAction="always"/>
     <item
         android:id="@+id/action_update_repo"
-        android:icon="@drawable/ic_menu_refresh"
+        android:icon="@drawable/ic_refresh_white"
         android:title="@string/menu_update_repo"
         app:showAsAction="ifRoom"/>
     <item
@@ -18,22 +18,22 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_manage_repos"
-        android:icon="@android:drawable/ic_menu_agenda"
+        android:icon="@drawable/ic_view_headline_white"
         android:title="@string/menu_manage"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_bluetooth_apk"
-        android:icon="@android:drawable/stat_sys_data_bluetooth"
+        android:icon="@drawable/ic_bluetooth_white"
         android:title="@string/menu_send_apk_bt"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_settings"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@drawable/ic_settings_white"
         android:title="@string/menu_preferences"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_about"
-        android:icon="@android:drawable/ic_menu_help"
+        android:icon="@drawable/ic_help_white"
         android:title="@string/menu_about"
         app:showAsAction="ifRoom"/>
 

@@ -139,3 +139,8 @@ Some icons are made by [Picol](http://www.flaticon.com/authors/picol),
 [Dave Gandy](http://www.flaticon.com/authors/dave-gandy) from
 [Flaticon](http://www.flaticon.com) or by Google and are licensed by
 [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
+
+Other icons are from the
+[Material Design Icon set](https://github.com/google/material-design-icons)
+released under an
+[Attribution 4.0 International license](http://creativecommons.org/licenses/by/4.0/).
