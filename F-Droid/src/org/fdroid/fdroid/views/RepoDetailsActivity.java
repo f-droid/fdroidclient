@@ -1,9 +1,12 @@
 package org.fdroid.fdroid.views;
 
 import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -12,6 +15,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,7 +29,6 @@ import android.widget.Toast;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.NfcNotEnabledActivity;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.QrGenAsyncTask;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
@@ -146,6 +149,9 @@ public class RepoDetailsActivity extends ActionBarActivity {
         repo = RepoProvider.Helper.findById(this, repoId);
         updateRepoView();
 
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,
+                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+
         // FDroid.java and AppDetails set different NFC actions, so reset here
         setNfc();
         processIntent(getIntent());
@@ -173,6 +179,21 @@ public class RepoDetailsActivity extends ActionBarActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+            if (statusCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES)
+                updateRepoView();
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -316,16 +337,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         values.put(RepoProvider.DataColumns.IN_USE, 1);
         RepoProvider.Helper.update(this, repo, values);
 
-        UpdateService.updateRepoNow(repo.address, this).setListener(new ProgressListener() {
-            @Override
-            public void onProgress(Event event) {
-                switch (event.type) {
-                    case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                        updateRepoView();
-                        break;
-                }
-            }
-        });
+        UpdateService.updateRepoNow(repo.address, this);
     }
 
     private void promptForDelete() {

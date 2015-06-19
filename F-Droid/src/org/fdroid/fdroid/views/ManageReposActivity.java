@@ -19,10 +19,12 @@
 
 package org.fdroid.fdroid.views;
 
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
@@ -40,6 +42,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
@@ -64,7 +67,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.compat.ClipboardCompat;
@@ -102,8 +104,6 @@ public class ManageReposActivity extends ActionBarActivity {
         EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL,
         IS_SWAP
     }
-
-    private UpdateService.UpdateReceiver updateHandler = null;
 
     private static boolean changed = false;
 
@@ -151,9 +151,10 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (updateHandler != null) {
-            updateHandler.showDialog(this);
-        }
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,
+                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
     }
@@ -161,9 +162,7 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (updateHandler != null) {
-            updateHandler.hideDialog();
-        }
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -209,7 +208,7 @@ public class ManageReposActivity extends ActionBarActivity {
             showAddRepo();
             return true;
         case R.id.action_update_repo:
-            updateRepos();
+            UpdateService.updateNow(this);
             return true;
         case R.id.action_find_local_repos:
             scanForRepos();
@@ -218,25 +217,16 @@ public class ManageReposActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateRepos() {
-        updateHandler = UpdateService.updateNow(this).setListener(
-                new ProgressListener() {
-                    @Override
-                    public void onProgress(Event event) {
-                        switch (event.type) {
-                        case UpdateService.EVENT_COMPLETE_AND_SAME:
-                        case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                            // No need to prompt to update any more, we just
-                            // did it!
-                            changed = false;
-                            break;
-                        case UpdateService.EVENT_FINISHED:
-                            updateHandler = null;
-                            break;
-                        }
-                    }
-                });
-    }
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+            if (statusCode == UpdateService.STATUS_COMPLETE_AND_SAME
+                    || statusCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES)
+                // No need to prompt to update any more, we just did it!
+                changed = false;
+        }
+    };
 
     private void scanForRepos() {
         final RepoScanListAdapter adapter = new RepoScanListAdapter(this);
