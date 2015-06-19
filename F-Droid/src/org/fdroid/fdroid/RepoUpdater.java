@@ -3,7 +3,6 @@ package org.fdroid.fdroid;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -90,13 +89,6 @@ public class RepoUpdater {
             downloader = DownloaderFactory.create(context,
                 getIndexAddress(), File.createTempFile("index-", "-downloaded", context.getCacheDir()));
             downloader.setCacheTag(repo.lastetag);
-
-            if (progressListener != null) { // interactive session, show progress
-                Bundle data = new Bundle(1);
-                data.putString(PROGRESS_DATA_REPO_ADDRESS, repo.address);
-                downloader.setProgressListener(progressListener, data);
-            }
-
             downloader.downloadUninterrupted();
 
             if (downloader.isCached()) {

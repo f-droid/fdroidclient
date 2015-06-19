@@ -24,10 +24,12 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -40,6 +42,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
@@ -316,6 +319,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
     private App app;
     private PackageManager mPm;
     private ApkDownloader downloadHandler;
+    private LocalBroadcastManager localBroadcastManager;
 
     private boolean startingIgnoreAll;
     private int startingIgnoreThis;
@@ -425,6 +429,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         // progress indicator after returning from that prompt).
         setSupportProgressBarIndeterminateVisibility(false);
 
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
     }
 
     // The signature of the installed version.
@@ -449,6 +454,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             if (downloadHandler.isComplete()) {
                 downloadCompleteInstallApk();
             } else {
+                localBroadcastManager.registerReceiver(downloaderProgressReceiver,
+                        new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
                 downloadHandler.setProgressListener(this);
 
                 // Show the progress dialog, if for no other reason than to prevent them attempting
@@ -504,12 +511,21 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             setIgnoreUpdates(app.id, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
 
+        localBroadcastManager.unregisterReceiver(downloaderProgressReceiver);
         if (downloadHandler != null) {
             downloadHandler.removeProgressListener();
         }
 
         removeProgressDialog();
     }
+
+    private final BroadcastReceiver downloaderProgressReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            updateProgressDialog(intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1),
+                    intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1));
+        }
+    };
 
     private void onAppChanged() {
         if (!reset(app.id)) {
@@ -854,6 +870,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     private void startDownload(Apk apk, String repoAddress) {
         downloadHandler = new ApkDownloader(getBaseContext(), apk, repoAddress);
+        localBroadcastManager.registerReceiver(downloaderProgressReceiver,
+                new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
         downloadHandler.setProgressListener(this);
         if (downloadHandler.download()) {
             updateProgressDialog();
@@ -1034,9 +1052,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         boolean finished = false;
         switch (event.type) {
-        case Downloader.EVENT_PROGRESS:
-            updateProgressDialog(event.progress, event.total);
-            break;
         case ApkDownloader.EVENT_ERROR:
             final String text;
             if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)

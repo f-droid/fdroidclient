@@ -36,7 +36,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -78,6 +77,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     public static final int STATUS_ERROR_LOCAL = 3;
     public static final int STATUS_ERROR_LOCAL_SMALL = 4;
     public static final int STATUS_INFO = 5;
+
+    private LocalBroadcastManager localBroadcastManager;
 
     private static final int NOTIFY_ID_UPDATING = 0;
     private static final int NOTIFY_ID_UPDATES_AVAILABLE = 1;
@@ -147,8 +148,11 @@ public class UpdateService extends IntentService implements ProgressListener {
     public void onCreate() {
         super.onCreate();
 
-        LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(this);
-        lbm.registerReceiver(localBroadcastReceiver, new IntentFilter(LOCAL_ACTION_STATUS));
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
+        localBroadcastManager.registerReceiver(downloadProgressReceiver,
+                new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
+        localBroadcastManager.registerReceiver(updateStatusReceiver,
+                new IntentFilter(LOCAL_ACTION_STATUS));
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -164,6 +168,8 @@ public class UpdateService extends IntentService implements ProgressListener {
     public void onDestroy() {
         super.onDestroy();
         notificationManager.cancel(NOTIFY_ID_UPDATING);
+        localBroadcastManager.unregisterReceiver(downloadProgressReceiver);
+        localBroadcastManager.unregisterReceiver(updateStatusReceiver);
     }
 
     protected void sendStatus(int statusCode) {
@@ -185,14 +191,35 @@ public class UpdateService extends IntentService implements ProgressListener {
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
-    // For receiving results from the UpdateService when we've told it to
+    private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (TextUtils.isEmpty(action))
+                return;
+
+            if (!action.equals(Downloader.LOCAL_ACTION_PROGRESS))
+                return;
+
+            String repoAddress = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
+            int downloadedSize = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, -1);
+            int totalSize = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, -1);
+            int percent = (int) ((double) downloadedSize / totalSize * 100);
+            sendStatus(STATUS_INFO,
+                    getString(R.string.status_download, repoAddress,
+                            Utils.getFriendlySize(downloadedSize),
+                            Utils.getFriendlySize(totalSize), percent));
+        }
+    };
+
+        // For receiving results from the UpdateService when we've told it to
     // update in response to a user request.
-    private BroadcastReceiver localBroadcastReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver updateStatusReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (action == null)
+            if (TextUtils.isEmpty(action))
                 return;
 
             if (!action.equals(LOCAL_ACTION_STATUS))
@@ -733,9 +760,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         String totalSize = Utils.getFriendlySize(event.total);
         int percent = (int) ((double) event.progress / event.total * 100);
         switch (event.type) {
-            case Downloader.EVENT_PROGRESS:
-                message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
-                break;
             case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
                 message = getString(R.string.status_processing_xml_percent, repoAddress, downloadedSize, totalSize, percent);
                 break;

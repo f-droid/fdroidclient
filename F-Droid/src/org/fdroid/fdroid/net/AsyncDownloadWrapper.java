@@ -21,7 +21,6 @@ public class AsyncDownloadWrapper extends Handler {
 
     private static final String TAG = "AsyncDownloadWrapper";
 
-    private static final int MSG_PROGRESS           = 1;
     private static final int MSG_DOWNLOAD_COMPLETE  = 2;
     private static final int MSG_DOWNLOAD_CANCELLED = 3;
     private static final int MSG_ERROR              = 4;
@@ -61,11 +60,6 @@ public class AsyncDownloadWrapper extends Handler {
      */
     public void handleMessage(Message message) {
         switch (message.arg1) {
-        case MSG_PROGRESS:
-            Bundle data = message.getData();
-            ProgressListener.Event event = data.getParcelable(MSG_DATA);
-            listener.onProgress(event);
-            break;
         case MSG_DOWNLOAD_COMPLETE:
             listener.onDownloadComplete();
             break;
@@ -84,11 +78,10 @@ public class AsyncDownloadWrapper extends Handler {
         void onDownloadCancelled();
     }
 
-    private class DownloadThread extends Thread implements ProgressListener {
+    private class DownloadThread extends Thread {
 
         public void run() {
             try {
-                downloader.setProgressListener(this);
                 downloader.download();
                 sendMessage(MSG_DOWNLOAD_COMPLETE);
             } catch (InterruptedException e) {
@@ -109,16 +102,5 @@ public class AsyncDownloadWrapper extends Handler {
             message.arg1 = messageType;
             AsyncDownloadWrapper.this.sendMessage(message);
         }
-
-        @Override
-        public void onProgress(Event event) {
-            Message message = new Message();
-            Bundle  data    = new Bundle();
-            data.putParcelable(MSG_DATA, event);
-            message.setData(data);
-            message.arg1 = MSG_PROGRESS;
-            AsyncDownloadWrapper.this.sendMessage(message);
-        }
     }
-
 }
