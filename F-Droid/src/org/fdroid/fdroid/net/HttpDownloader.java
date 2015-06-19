@@ -1,6 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
@@ -31,16 +30,6 @@ public class HttpDownloader extends Downloader {
     HttpDownloader(String source, File destFile)
             throws FileNotFoundException, MalformedURLException {
         super(destFile);
-        sourceUrl = new URL(source);
-    }
-
-    /**
-     * Downloads to a temporary file, which *you must delete yourself when
-     * you are done*.
-     * @see org.fdroid.fdroid.net.Downloader#getFile()
-     */
-    HttpDownloader(String source, Context ctx) throws IOException {
-        super(ctx);
         sourceUrl = new URL(source);
     }
 

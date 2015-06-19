@@ -7,12 +7,17 @@ import java.io.IOException;
 
 public class DownloaderFactory {
 
+    /**
+     * Downloads to a temporary file, which *you must delete yourself when
+     * you are done
+     */
     public static Downloader create(String url, Context context)
             throws IOException {
+        File destFile = File.createTempFile("dl-", "", context.getCacheDir());
         if (isOnionAddress(url)) {
-            return new TorHttpDownloader(url, context);
+            return new TorHttpDownloader(url, destFile);
         }
-        return new HttpDownloader(url, context);
+        return new HttpDownloader(url, destFile);
     }
 
     public static Downloader create(String url, File destFile)
