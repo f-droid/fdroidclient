@@ -43,16 +43,6 @@ public class AsyncDownloadWrapper extends Handler {
         this.listener   = listener;
     }
 
-    public void fetchTotalDownloadSize() {
-        int size = downloader.totalDownloadSize();
-        listener.onReceiveTotalDownloadSize(size);
-    }
-
-    public void fetchCacheTag() {
-        String cacheTag = downloader.getCacheTag();
-        listener.onReceiveCacheTag(cacheTag);
-    }
-
     public void download() {
         downloadThread = new DownloadThread();
         downloadThread.start();
@@ -62,22 +52,6 @@ public class AsyncDownloadWrapper extends Handler {
         if (downloadThread != null) {
             downloadThread.interrupt();
         }
-    }
-
-    public static class NotDownloadingException extends Exception {
-        public NotDownloadingException(String message) {
-            super(message);
-        }
-    }
-
-    public void cancelDownload() throws NotDownloadingException {
-        if (downloadThread == null) {
-            throw new RuntimeException("Can't cancel download, it hasn't started yet.");
-        } else if (!downloadThread.isAlive()) {
-            throw new RuntimeException("Can't cancel download, it is already finished.");
-        }
-
-        downloadThread.interrupt();
     }
 
     /**
@@ -105,8 +79,6 @@ public class AsyncDownloadWrapper extends Handler {
     }
 
     public interface Listener extends ProgressListener {
-        void onReceiveTotalDownloadSize(int size);
-        void onReceiveCacheTag(String cacheTag);
         void onErrorDownloading(String localisedExceptionDetails);
         void onDownloadComplete();
         void onDownloadCancelled();

@@ -233,18 +233,6 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     }
 
     @Override
-    public void onReceiveTotalDownloadSize(int size) {
-        // Do nothing...
-        // Rather, we will obtain the total download size from the progress events
-        // when they start coming through.
-    }
-
-    @Override
-    public void onReceiveCacheTag(String cacheTag) {
-        // Do nothing...
-    }
-
-    @Override
     public void onErrorDownloading(String localisedExceptionDetails) {
         Log.e(TAG, "Download failed: " + localisedExceptionDetails);
         sendError(ERROR_DOWNLOAD_FAILED);
