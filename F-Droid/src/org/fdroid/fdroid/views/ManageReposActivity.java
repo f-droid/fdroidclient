@@ -19,12 +19,10 @@
 
 package org.fdroid.fdroid.views;
 
-import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
@@ -42,7 +40,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
@@ -88,13 +85,6 @@ import java.util.Locale;
 import javax.jmdns.ServiceInfo;
 
 public class ManageReposActivity extends ActionBarActivity {
-
-    /**
-     * If we have a new repo added, or the address of a repo has changed, then
-     * we when we're finished, we'll set this boolean to true in the intent that
-     * we finish with, to signify that we want the main list of apps updated.
-     */
-    public static final String REQUEST_UPDATE = "update";
     private static final String TAG = "ManageReposActivity";
 
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
@@ -104,8 +94,6 @@ public class ManageReposActivity extends ActionBarActivity {
         EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL,
         IS_SWAP
     }
-
-    private static boolean changed = false;
 
     private RepoListFragment listFragment;
 
@@ -152,17 +140,8 @@ public class ManageReposActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,
-                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
-
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -173,20 +152,8 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     public void finish() {
         Intent ret = new Intent();
-        markChangedIfRequired(ret);
         setResult(RESULT_OK, ret);
         super.finish();
-    }
-
-    private boolean hasChanged() {
-        return changed;
-    }
-
-    private void markChangedIfRequired(Intent intent) {
-        if (hasChanged()) {
-            Log.i(TAG, "Repo details have changed, prompting for update.");
-            intent.putExtra(REQUEST_UPDATE, true);
-        }
     }
 
     @Override
@@ -200,7 +167,6 @@ public class ManageReposActivity extends ActionBarActivity {
         switch (item.getItemId()) {
         case android.R.id.home:
             Intent destIntent = new Intent(this, FDroid.class);
-            markChangedIfRequired(destIntent);
             setResult(RESULT_OK, destIntent);
             NavUtils.navigateUpTo(this, destIntent);
             return true;
@@ -216,17 +182,6 @@ public class ManageReposActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
-            if (statusCode == UpdateService.STATUS_COMPLETE_AND_SAME
-                    || statusCode == UpdateService.STATUS_COMPLETE_WITH_CHANGES)
-                // No need to prompt to update any more, we just did it!
-                changed = false;
-        }
-    };
 
     private void scanForRepos() {
         final RepoScanListAdapter adapter = new RepoScanListAdapter(this);
@@ -699,7 +654,7 @@ public class ManageReposActivity extends ActionBarActivity {
          * to reflect the newly created repo.
          */
         private void finishedAddingRepo() {
-            changed = true;
+            UpdateService.updateNow(ManageReposActivity.this);
             if (addRepoDialog.isShowing()) {
                 addRepoDialog.dismiss();
             }
@@ -792,7 +747,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 RepoProvider.Helper.update(getActivity(), repo, values);
 
                 if (isEnabled) {
-                    changed = true;
+                    UpdateService.updateNow(getActivity());
                 } else {
                     FDroidApp app = (FDroidApp) getActivity().getApplication();
                     RepoProvider.Helper.purgeApps(getActivity(), repo, app);
