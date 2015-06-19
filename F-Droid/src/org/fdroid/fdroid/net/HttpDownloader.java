@@ -27,10 +27,9 @@ public class HttpDownloader extends Downloader {
     protected HttpURLConnection connection;
     private int statusCode = -1;
 
-    HttpDownloader(Context context, String source, File destFile)
+    HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        super(context, destFile);
-        sourceUrl = new URL(source);
+        super(context, url, destFile);
     }
 
     @Override

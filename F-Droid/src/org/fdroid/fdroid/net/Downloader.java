@@ -33,9 +33,10 @@ public abstract class Downloader {
 
     public abstract InputStream getInputStream() throws IOException;
 
-    Downloader(Context context, File destFile)
+    Downloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
         this.context = context;
+        this.sourceUrl = url;
         outputFile = destFile;
         outputStream = new FileOutputStream(outputFile);
     }

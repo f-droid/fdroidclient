@@ -10,10 +10,11 @@ import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.SocketAddress;
+import java.net.URL;
 
 public class TorHttpDownloader extends HttpDownloader {
 
-    TorHttpDownloader(Context context, String url, File destFile)
+    TorHttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
         super(context, url, destFile);
     }

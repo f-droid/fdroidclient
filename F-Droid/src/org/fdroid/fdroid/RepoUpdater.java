@@ -22,6 +22,8 @@ import org.xml.sax.XMLReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -71,14 +73,15 @@ public class RepoUpdater {
 
     public List<Apk> getApks() { return apks; }
 
-    protected String getIndexAddress() {
+    protected URL getIndexAddress() throws MalformedURLException {
+        String urlString = repo.address + "/index.jar";
         try {
             String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-            return repo.address + "/index.jar?client_version=" + versionName;
+            urlString += "?client_version=" + versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        return repo.address + "/index.jar";
+        return new URL(urlString);
     }
 
     Downloader downloadIndex() throws UpdateException {
