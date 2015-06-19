@@ -63,6 +63,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     public static final String EVENT_DATA_ERROR_TYPE = "apkDownloadErrorType";
 
     @NonNull private final Apk curApk;
+    @NonNull private final Context context;
     @NonNull private final String repoAddress;
     @NonNull private final SanitizedFile localFile;
     @NonNull private final SanitizedFile potentiallyCachedFile;
@@ -84,6 +85,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     }
 
     public ApkDownloader(@NonNull final Context context, @NonNull final Apk apk, @NonNull final String repoAddress) {
+        this.context = context;
         curApk = apk;
         this.repoAddress = repoAddress;
         localFile = new SanitizedFile(Utils.getApkDownloadDir(context), apk.apkName);
@@ -191,7 +193,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         Log.d(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            Downloader downloader = DownloaderFactory.create(remoteAddress, localFile);
+            Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
             dlWrapper = new AsyncDownloadWrapper(downloader, this);
             dlWrapper.download();
             return true;

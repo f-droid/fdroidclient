@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
@@ -26,10 +27,9 @@ public class HttpDownloader extends Downloader {
     protected HttpURLConnection connection;
     private int statusCode = -1;
 
-    // The context is required for opening the file to write to.
-    HttpDownloader(String source, File destFile)
+    HttpDownloader(Context context, String source, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        super(destFile);
+        super(context, destFile);
         sourceUrl = new URL(source);
     }
 

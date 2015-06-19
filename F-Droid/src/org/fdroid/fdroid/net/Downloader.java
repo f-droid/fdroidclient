@@ -23,6 +23,7 @@ public abstract class Downloader {
 
     private ProgressListener progressListener = null;
     private Bundle eventData = null;
+    private final Context context;
     private final File outputFile;
 
     protected URL sourceUrl;
@@ -32,8 +33,9 @@ public abstract class Downloader {
 
     public abstract InputStream getInputStream() throws IOException;
 
-    Downloader(File destFile)
+    Downloader(Context context, File destFile)
             throws FileNotFoundException, MalformedURLException {
+        this.context = context;
         outputFile = destFile;
         outputStream = new FileOutputStream(outputFile);
     }

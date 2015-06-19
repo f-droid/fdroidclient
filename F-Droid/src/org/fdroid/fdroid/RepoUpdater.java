@@ -84,7 +84,7 @@ public class RepoUpdater {
     Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
-            downloader = DownloaderFactory.create(
+            downloader = DownloaderFactory.create(context,
                 getIndexAddress(), File.createTempFile("index-", "-downloaded", context.getCacheDir()));
             downloader.setCacheTag(repo.lastetag);
 

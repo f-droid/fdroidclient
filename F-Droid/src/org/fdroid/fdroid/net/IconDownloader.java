@@ -22,7 +22,7 @@ public class IconDownloader extends BaseImageDownloader {
         switch (Scheme.ofUri(imageUri)) {
         case HTTP:
         case HTTPS:
-            Downloader downloader = DownloaderFactory.create(imageUri, context);
+            Downloader downloader = DownloaderFactory.create(context, imageUri);
             return downloader.getInputStream();
         default:
             return super.getStream(imageUri, extra);

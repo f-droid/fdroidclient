@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.net;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,9 +13,9 @@ import java.net.SocketAddress;
 
 public class TorHttpDownloader extends HttpDownloader {
 
-    TorHttpDownloader(String url, File destFile)
+    TorHttpDownloader(Context context, String url, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        super(url, destFile);
+        super(context, url, destFile);
     }
 
     @Override
