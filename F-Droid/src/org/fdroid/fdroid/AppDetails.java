@@ -326,6 +326,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
     private final Context mctx = this;
     private Installer installer;
+    private static Button mainButton;
 
     /**
      * Stores relevant data that we want to keep track of when destroying the activity
@@ -987,6 +988,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                     } else {
                         Log.e(TAG, "Tried to cancel, but the downloadHandler doesn't exist.");
                     }
+                    if (mainButton != null)
+                        mainButton.setEnabled(true);
                     progressDialog = null;
                     Toast.makeText(AppDetails.this, getString(R.string.download_cancelled), Toast.LENGTH_LONG).show();
                 }
@@ -1487,6 +1490,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.app_details_header, container, false);
+            mainButton = (Button) view.findViewById(R.id.btn_main);
             setupView(view);
             return view;
         }
@@ -1523,8 +1527,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
         public void updateViews(View view) {
             TextView statusView = (TextView) view.findViewById(R.id.status);
-            Button btMain = (Button) view.findViewById(R.id.btn_main);
-            btMain.setVisibility(View.VISIBLE);
+            mainButton.setVisibility(View.VISIBLE);
+            mainButton.setEnabled(true);
 
             /*
             Check count > 0 due to incompatible apps resulting in an empty list.
@@ -1535,8 +1539,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 statusView.setText(getString(R.string.details_notinstalled));
                 NfcHelper.disableAndroidBeam(getActivity());
                 // Set Install button and hide second button
-                btMain.setText(R.string.menu_install);
-                btMain.setOnClickListener(mOnClickListener);
+                mainButton.setText(R.string.menu_install);
+                mainButton.setOnClickListener(mOnClickListener);
             }
             // If App is installed
             else if (getApp().isInstalled()) {
@@ -1545,24 +1549,24 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 NfcHelper.setAndroidBeam(getActivity(), getApp().id);
                 if (getApp().canAndWantToUpdate()) {
                     updateWanted = true;
-                    btMain.setText(R.string.menu_upgrade);
+                    mainButton.setText(R.string.menu_upgrade);
                 }else {
                     updateWanted = false;
                     if (((AppDetails)getActivity()).mPm.getLaunchIntentForPackage(getApp().id) != null){
-                        btMain.setText(R.string.menu_launch);
+                        mainButton.setText(R.string.menu_launch);
                     }
                     else {
-                        btMain.setText(R.string.menu_uninstall);
+                        mainButton.setText(R.string.menu_uninstall);
                     }
                 }
-                btMain.setOnClickListener(mOnClickListener);
+                mainButton.setOnClickListener(mOnClickListener);
             }
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
             if (!getApks().isEmpty()) {
                 currentVersion.setText(getApks().getItem(0).version);
             }else {
                 currentVersion.setVisibility(View.GONE);
-                btMain.setVisibility(View.GONE);
+                mainButton.setVisibility(View.GONE);
             }
 
         }
@@ -1589,6 +1593,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
                 // If not installed, install
                 else if (getApp().suggestedVercode > 0) {
+                    mainButton.setEnabled(false);
+                    mainButton.setText(R.string.system_install_installing);
                     final Apk apkToInstall = ApkProvider.Helper.find(getActivity(), getApp().id, getApp().suggestedVercode);
                     ((AppDetails)getActivity()).install(apkToInstall);
                 }
