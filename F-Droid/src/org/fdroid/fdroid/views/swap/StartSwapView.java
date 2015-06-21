@@ -1,17 +1,24 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.compat.SwitchCompat;
 import org.fdroid.fdroid.localrepo.SwapManager;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
@@ -45,16 +52,51 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         return (SwapWorkflowActivity)getContext();
     }
 
+    private SwapManager getManager() {
+        return getActivity().getState();
+    }
+
+    @Nullable /* Emulators typically don't have bluetooth adapters */
+    private final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
+
+    private TextView viewBluetoothId;
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        findViewById(R.id.button_start_swap).setOnClickListener(new View.OnClickListener() {
+        if (bluetooth != null) {
+
+            viewBluetoothId = (TextView)findViewById(R.id.device_id_bluetooth);
+            viewBluetoothId.setText(bluetooth.getName());
+
+            Switch bluetoothSwitch = ((Switch) findViewById(R.id.switch_bluetooth));
+            bluetoothSwitch.setChecked(getManager().isBluetoothDiscoverable());
+            bluetoothSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        getManager().ensureBluetoothDiscoverable();
+                    } else {
+                        // disableBluetooth();
+                    }
+                }
+            });
+        } else {
+            findViewById(R.id.bluetooth_info).setVisibility(View.GONE);
+        }
+
+        ((Switch)findViewById(R.id.switch_wifi)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                getActivity().showSelectApps();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    enableWifi();
+                } else {
+                    disableWifi();
+                }
             }
         });
+
 
     }
 
@@ -85,6 +127,19 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
 
     @Override
     public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_start);
+        return getResources().getString(R.string.swap_nearby);
+    }
+
+
+    // ========================================================================
+    //                            Wifi stuff
+    // ========================================================================
+
+    private void enableWifi() {
+
+    }
+
+    private void disableWifi() {
+
     }
 }

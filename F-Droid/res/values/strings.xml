@@ -317,8 +317,6 @@
     <string name="open_qr_code_scanner">Open QR Scanner</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now?</string>
-    <string name="swap_introduction">Your mobile device becomes an app store with Swap!</string>
-    <string name="swap_start">START A SWAP</string>
     <string name="swap_reciprocate_failed">An error occurred while attempting to swap with another device. We will still try to get apps from them, but they may not be able to get apps from us.</string>
     <string name="swap_tap_to_select_apps">Tap to select the apps you want to swap.</string>
     <string name="swap_dont_show_again">Don\'t show this again</string>
@@ -333,4 +331,5 @@
     <string name="wifi_warning_personal">Best bet</string>
 	<string name="swap_choose_apps">Choose Apps</string>
 	<string name="swap_scan_qr">Scan QR Code</string>
+	<string name="swap_nearby">Nearby Swap</string>
 </resources>

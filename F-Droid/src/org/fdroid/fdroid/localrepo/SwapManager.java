@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.localrepo;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -222,4 +223,37 @@ public class SwapManager {
     public boolean isEnabled() {
         return service != null && service.isEnabled();
     }
+
+    // ==========================================
+    //    Interacting with Bluetooth adapter
+    // ==========================================
+
+    @Nullable /* Emulators tend not to have bluetooth adapters. */
+    private final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
+
+    public boolean isBluetoothDiscoverable() {
+        return bluetooth != null &&
+                bluetooth.getScanMode() == BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE;
+    }
+
+    public void ensureBluetoothDiscoverable() {
+
+        if (bluetooth == null) {
+            return;
+        }
+
+        if (!bluetooth.isEnabled()) {
+            if (!bluetooth.enable()) {
+
+            }
+        }
+
+        if (bluetooth.isEnabled()) {
+            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+            context.startActivity(discoverableIntent);
+        }
+
+    }
+
 }
