@@ -10,12 +10,13 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="130dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            android:scaleType="centerCrop"
+            android:src="@drawable/swap_start_header"/>
 
         <ImageView
             android:layout_width="24dp"
@@ -36,7 +37,8 @@
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
             android:textAlignment="center"
-            tools:text="Connect and trade apps with people near you."
+            android:text="@string/swap_intro"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </RelativeLayout>
@@ -51,13 +53,14 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            tools:src="@drawable/ic_bluetooth_white" />
+            android:tint="@color/swap_grey_icon"
+            android:src="@drawable/ic_bluetooth_white" />
 
         <TextView
             android:paddingStart="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Visible via Bluetooth"
+            android:text="@string/swap_visible_bluetooth"
             android:textSize="18sp" />
 
         <TextView
@@ -65,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="SP-120"
+            android:textColor="@color/swap_light_text"
             android:layout_weight="1.00"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
@@ -85,7 +89,8 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            tools:src="@drawable/ic_network_wifi_white" />
+            android:tint="@color/swap_grey_icon"
+            android:src="@drawable/ic_network_wifi_white" />
 
         <LinearLayout
             android:paddingStart="15dp"
@@ -96,21 +101,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Not visible via WiFi"
+                android:text="@string/swap_not_visible_wifi"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="wifi network name"
+                android:textColor="@color/swap_light_text"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="Device Name"
+            android:text="@string/swap_wifi_device_name"
+            android:textColor="@color/swap_light_text"
             android:layout_weight="1.00"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
@@ -125,15 +132,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="15dp"
-        android:paddingTop="35dp">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="20dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="People Nearby"
+            android:text="@string/swap_people_nearby"
+            android:textColor="@color/swap_light_text"
             android:layout_weight="1.00"/>
 
         <ProgressBar
@@ -144,9 +152,27 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/no_people_nearby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/swap_light_text"
+        android:text="@string/swap_no_peers_nearby"/>
+
+    <ListView
+        android:id="@+id/list_people_nearby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Can't find who you're looking for?" />
+        android:text="@string/swap_cant_find_peers"
+        android:paddingStart="20dp"
+        android:textColor="@color/swap_light_text" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -157,16 +183,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.00"
-            android:drawableStart="@drawable/ic_launcher"
-            tools:text="SEND F-DROID"
+            android:drawableStart="@drawable/ic_fdroid_grey"
+            android:drawablePadding="10dp"
+            android:paddingStart="20dp"
+            android:background="@android:color/transparent"
+            android:text="@string/swap_send_fdroid"
             android:gravity="start|center_vertical" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.00"
-            android:drawableStart="@drawable/ic_launcher"
-            tools:text="SCAN QR CODE"
+            android:drawableStart="@drawable/ic_qr_grey"
+            android:drawablePadding="10dp"
+            android:paddingStart="20dp"
+            android:background="@android:color/transparent"
+            android:text="@string/swap_scan_qr"
             android:gravity="start|center_vertical" />
 
     </LinearLayout>

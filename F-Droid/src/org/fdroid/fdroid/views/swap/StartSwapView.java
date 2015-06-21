@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -60,10 +61,16 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
     private final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
 
     private TextView viewBluetoothId;
+    private View noPeopleNearby;
+    private ListView peopleNearby;
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+
+        noPeopleNearby = findViewById(R.id.no_people_nearby);
+        peopleNearby = (ListView)findViewById(R.id.list_people_nearby);
+        peopleNearby.setVisibility(View.GONE);
 
         if (bluetooth != null) {
 

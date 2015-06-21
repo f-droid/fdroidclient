@@ -19,5 +19,7 @@
     <color name="swap_wifi_may_work">#fbb040</color>
     <color name="swap_wifi_likely_to_work">#00a14b</color>
     <color name="swap_bright_blue">#00b9e6</color>
+    <color name="swap_light_text">#bbbbbb</color>
+    <color name="swap_grey_icon">#4a4a4a</color>
 
 </resources>
