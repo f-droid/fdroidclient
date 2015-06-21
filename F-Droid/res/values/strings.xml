@@ -162,8 +162,8 @@
 	<string name="category_recentlyupdated">Recently Updated</string>
 
 	<string name="local_repo">Local Repo</string>
-	<string name="local_repos_title">Local FDroid Repos</string>
-	<string name="local_repos_scanning">Discovering local FDroid repos&#8230;</string>
+	<string name="local_repos_title">Local F-Droid Repos</string>
+	<string name="local_repos_scanning">Discovering local F-Droid repos&#8230;</string>
 	<string name="local_repo_running">F-Droid is ready to swap</string>
 	<string name="waiting_for_ipaddress">waiting for IP address…</string>
 	<string name="setup_repo">Setup Local Repo</string>
@@ -193,7 +193,7 @@
 	<string name="qr_content_description">QR Code of repo URL</string>
 	<string name="qr_wizard_wifi_network_instructions">Scan this QR Code to connect to the same WiFi network as this device.</string>
 	<string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
-	<string name="send_fdroid_via_wifi">Send FDroid via WiFi&#8230;</string>
+	<string name="send_fdroid_via_wifi">Send F-Droid via WiFi&#8230;</string>
 
 	<string name="proxy">Proxy</string>
 	<string name="enable_proxy_title">Enable HTTP Proxy</string>
