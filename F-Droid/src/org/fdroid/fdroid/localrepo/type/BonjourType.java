@@ -28,7 +28,7 @@ public class BonjourType implements SwapType {
     @Override
     public void start() {
 
-        if (Preferences.get().isLocalRepoBonjourEnabled())
+        if (!Preferences.get().isLocalRepoBonjourEnabled())
             return;
 
         /*

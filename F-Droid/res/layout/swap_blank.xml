@@ -181,26 +181,11 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.00"
-            android:drawableStart="@drawable/ic_fdroid_grey"
-            android:drawablePadding="10dp"
-            android:paddingStart="20dp"
-            android:background="@android:color/transparent"
-            android:text="@string/swap_send_fdroid"
-            android:gravity="start|center_vertical" />
+            android:layout_height="wrap_content" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.00"
-            android:drawableStart="@drawable/ic_qr_grey"
-            android:drawablePadding="10dp"
-            android:paddingStart="20dp"
-            android:background="@android:color/transparent"
-            android:text="@string/swap_scan_qr"
-            android:gravity="start|center_vertical" />
-
-    </LinearLayout>
+            android:layout_width="match_parent"/>
 
 </org.fdroid.fdroid.views.swap.StartSwapView>

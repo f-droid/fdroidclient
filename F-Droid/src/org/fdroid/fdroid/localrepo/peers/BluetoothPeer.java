@@ -21,4 +21,9 @@ public class BluetoothPeer implements Peer {
         return android.R.drawable.stat_sys_data_bluetooth;
     }
 
+    @Override
+    public boolean equals(Peer peer) {
+        return peer != null && peer instanceof BluetoothPeer && ((BluetoothPeer)peer).device.getAddress() == device.getAddress();
+    }
+
 }

@@ -49,7 +49,7 @@ public class SwapWorkflowActivity extends ActionBarActivity {
         /** @return True if the menu should be shown. */
         boolean buildMenu(Menu menu, @NonNull MenuInflater inflater);
 
-        /** @return The step that this view represents. */
+        /** @return The steap that this view represents. */
         @SwapManager.SwapStep int getStep();
 
         @SwapManager.SwapStep int getPreviousStep();

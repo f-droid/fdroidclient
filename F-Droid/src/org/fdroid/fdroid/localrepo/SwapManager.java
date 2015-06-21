@@ -18,9 +18,9 @@ import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SwapManager {
@@ -49,7 +49,7 @@ public class SwapManager {
     private Set<String> appsToSwap;
 
     @NonNull
-    private Collection<Peer> peers;
+    private List<Peer> peers;
 
     private SwapManager(@NonNull Context context, @NonNull Set<String> appsToSwap) {
         this.context = context.getApplicationContext();
@@ -73,6 +73,12 @@ public class SwapManager {
     //                 Search for peers to swap
     // ==========================================================
 
+    private PeerFinder.Listener<Peer> peerListener;
+
+    public void setPeerListener(PeerFinder.Listener<Peer> listener) {
+        this.peerListener = listener;
+    }
+
     public void scanForPeers() {
         if (service != null) {
             Log.d(TAG, "Scanning for nearby devices to swap with...");
@@ -91,7 +97,17 @@ public class SwapManager {
     }
 
     public void onPeerFound(Peer peer) {
-        peers.add(peer);
+        if (!peers.contains(peer)) {
+            peers.add(peer);
+            if (peerListener != null) {
+                peerListener.onPeerFound(peer);
+            }
+        }
+    }
+
+    @NonNull
+    public List<Peer> getPeers() {
+        return peers;
     }
 
 

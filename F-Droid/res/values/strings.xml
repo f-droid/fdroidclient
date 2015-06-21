@@ -321,6 +321,10 @@
     <string name="swap_dont_show_again">Don\'t show this again</string>
     <string name="swap_tap_for_details_and_install">Tap an app for details and to install.</string>
     <string name="swap_scan_or_type_url">One person needs to scan the code, or type the URL of the other in a browser.</string>
+	<string name="swap_choose_apps">Choose Apps</string>
+	<string name="swap_scan_qr">Scan QR Code</string>
+	<string name="swap_people_nearby">People Nearby</string>
+
     <!-- WiFi AP status for Swap flow -->
     <string name="wifi_ap_public">Public</string>
     <string name="wifi_ap_private">Private</string>
@@ -328,8 +332,6 @@
     <string name="wifi_warning_public">May work</string>
     <string name="wifi_warning_private">Promising</string>
     <string name="wifi_warning_personal">Best bet</string>
-	<string name="swap_choose_apps">Choose Apps</string>
-	<string name="swap_scan_qr">Scan QR Code</string>
 	<string name="swap_nearby">Nearby Swap</string>
 	<string name="swap_intro">Connect and trade apps with people near you.</string>
 	<string name="swap_visible_bluetooth">Visible via Bluetooth</string>

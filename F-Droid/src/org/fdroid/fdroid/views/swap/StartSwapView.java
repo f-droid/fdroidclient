@@ -1,26 +1,21 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.compat.SwitchCompat;
 import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
@@ -46,6 +41,27 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public StartSwapView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    private class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
+
+        public PeopleNearbyAdapter(Context context) {
+            super(context, 0, SwapManager.load(context).getPeers());
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.two_line_list_item, parent, false);
+            }
+
+            Peer peer = getItem(position);
+            ((TextView)convertView.findViewById(android.R.id.text1)).setText(peer.getName());
+
+            return convertView;
+        }
+
+
     }
 
     private SwapWorkflowActivity getActivity() {
@@ -101,6 +117,18 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
                 } else {
                     disableWifi();
                 }
+            }
+        });
+
+        final PeopleNearbyAdapter adapter = new PeopleNearbyAdapter(getContext());
+
+        peopleNearbyList = (ListView)findViewById(R.id.people_nearby);
+        peopleNearbyList.setAdapter(adapter);
+
+        SwapManager.load(getActivity()).setPeerListener(new PeerFinder.Listener<Peer>() {
+            @Override
+            public void onPeerFound(Peer peer) {
+                adapter.notifyDataSetChanged();
             }
         });
 

@@ -22,4 +22,14 @@ public class BonjourPeer implements Peer {
         return R.drawable.wifi;
     }
 
+    @Override
+    public boolean equals(Peer peer) {
+        if (peer != null && peer instanceof BonjourPeer) {
+            BonjourPeer that = (BonjourPeer)peer;
+            // TODO: Don't us "name" for comparing, but rather fingerprint of the swap repo.
+            return that.serviceInfo.getName().equals(this.serviceInfo.getName());
+        }
+        return false;
+    }
+
 }

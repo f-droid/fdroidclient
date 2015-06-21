@@ -8,4 +8,6 @@ public interface Peer {
 
     @DrawableRes int getIcon();
 
+    boolean equals(Peer peer);
+
 }

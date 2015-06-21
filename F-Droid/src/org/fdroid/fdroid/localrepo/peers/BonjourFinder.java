@@ -62,7 +62,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
 
             @Override
             protected void onPostExecute(Void result) {
-                Log.d(TAG, "Cleaning up mDNS service listeners.");
+                Log.d(TAG, "Adding mDNS service listeners.");
                 if (mJmdns != null) {
                     mJmdns.addServiceListener(HTTP_SERVICE_TYPE, BonjourFinder.this);
                     mJmdns.addServiceListener(HTTPS_SERVICE_TYPE, BonjourFinder.this);
@@ -78,6 +78,14 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
 
     @Override
     public void serviceAdded(final ServiceEvent event) {
+        // TODO: Get clarification, but it looks like this is:
+        //   1) Identifying that there is _a_ bonjour service available
+        //   2) Adding it to the list to give some sort of feedback to the user
+        //   3) Requesting more detailed info in an async manner
+        //   4) If that is in fact an fdroid repo (after requesting info), then add it again
+        //      so that more detailed info can be shown to the user.
+        //
+        //    If so, when is the old one removed?
         addFDroidService(event);
         new AsyncTask<Void, Void, Void>() {
             @Override

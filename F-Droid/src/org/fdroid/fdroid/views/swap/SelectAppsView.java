@@ -72,17 +72,6 @@ public class SelectAppsView extends ListView implements
 
     private AppListAdapter adapter;
     private String mCurrentFilterString;
-    private final Presenter presenter = new Presenter();
-
-    public static class Presenter {
-
-        private SelectAppsView view;
-
-        public void setView(@NonNull SelectAppsView view) {
-            this.view = view;
-        }
-
-    }
 
     @Override
     protected void onFinishInflate() {
@@ -101,8 +90,6 @@ public class SelectAppsView extends ListView implements
                 toggleAppSelected(position);
             }
         });
-
-        presenter.setView(this);
     }
 
     @Override
