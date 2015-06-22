@@ -136,6 +136,11 @@ public class RepoUpdater {
             if (downloadedFile == null || !downloadedFile.exists())
                 throw new UpdateException(repo, downloadedFile + " does not exist!");
 
+            // Due to a bug in Android 5.0 Lollipop, the inclusion of spongycastle causes
+            // breakage when verifying the signature of the downloaded .jar. For more
+            // details, check out https://gitlab.com/fdroid/fdroidclient/issues/111.
+            FDroidApp.disableSpongyCastleOnLollipop();
+
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
@@ -170,6 +175,7 @@ public class RepoUpdater {
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index for repo " + repo.address, e);
         } finally {
+            FDroidApp.enableSpongyCastleOnLollipop();
             Utils.closeQuietly(indexInputStream);
             if (downloadedFile != null) {
                 downloadedFile.delete();
