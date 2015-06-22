@@ -52,8 +52,8 @@ public class RepoXMLHandler extends DefaultHandler {
     private int version = -1;
     private int maxage = -1;
 
-    /** the pubkey stored in the header of index.xml */
-    private String pubkey;
+    /** the X.509 signing certificate stored in the header of index.xml */
+    private String signingCertFromIndexXml;
 
     private String name;
     private String description;
@@ -61,7 +61,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public RepoXMLHandler(Repo repo) {
         this.repo = repo;
-        pubkey = null;
+        signingCertFromIndexXml = null;
         name = null;
         description = null;
     }
@@ -78,7 +78,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     public String getName() { return name; }
 
-    public String getPubKey() { return pubkey; }
+    public String getSigningCertFromIndexXml() { return signingCertFromIndexXml; }
 
     @Override
     public void characters(char[] ch, int start, int length) {
@@ -242,10 +242,7 @@ public class RepoXMLHandler extends DefaultHandler {
         super.startElement(uri, localName, qName, attributes);
 
         if (localName.equals("repo")) {
-            final String pk = attributes.getValue("", "pubkey");
-            if (pk != null)
-                pubkey = pk;
-
+            signingCertFromIndexXml = attributes.getValue("", "pubkey");
             maxage = Utils.parseInt(attributes.getValue("", "maxage"), -1);
             version = Utils.parseInt(attributes.getValue("", "version"), -1);
 
