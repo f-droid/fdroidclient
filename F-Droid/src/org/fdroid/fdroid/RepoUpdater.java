@@ -164,13 +164,7 @@ public class RepoUpdater {
         } catch (SAXException | ParserConfigurationException | IOException e) {
             throw new UpdateException(repo, "Error parsing index for repo " + repo.address, e);
         } finally {
-            if (indexInputStream != null) {
-                try {
-                    indexInputStream.close();
-                } catch (IOException e) {
-                    // ignored
-                }
-            }
+            Utils.closeQuietly(indexInputStream);
             if (downloadedFile != null) {
                 downloadedFile.delete();
             }
