@@ -1,1 +1,0 @@
-../../../../spongycastle/prov/src/main/java/org/spongycastle/jce/ECGOST3410NamedCurveTable.java
