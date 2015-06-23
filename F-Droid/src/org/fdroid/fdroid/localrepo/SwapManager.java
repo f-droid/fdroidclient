@@ -10,8 +10,11 @@ import android.os.IBinder;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 
+import org.fdroid.fdroid.FDroid;
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 
@@ -184,7 +187,9 @@ public class SwapManager {
      */
     private static Set<String> deserializePackages(String packages) {
         Set<String> set = new HashSet<>();
-        Collections.addAll(set, packages.split(","));
+        if (!TextUtils.isEmpty(packages)) {
+            Collections.addAll(set, packages.split(","));
+        }
         return set;
     }
 
@@ -288,7 +293,6 @@ public class SwapManager {
     }
 
     public void ensureBluetoothDiscoverable() {
-
         if (bluetooth == null) {
             return;
         }
@@ -302,9 +306,34 @@ public class SwapManager {
         if (bluetooth.isEnabled()) {
             Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
             discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+
+            // TODO: Hmm, don't like the idea of a background service being able to do this :(
+            discoverableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
             context.startActivity(discoverableIntent);
         }
+    }
 
+    public void makeBluetoothNonDiscoverable() {
+        if (bluetooth == null) {
+            return;
+        }
+
+        if (isBluetoothDiscoverable()) {
+            // TODO: How to disable this?
+        }
+    }
+
+    private boolean isWifiConnected() {
+        return !TextUtils.isEmpty(FDroidApp.ssid);
+    }
+
+    public boolean isBonjourDiscoverable() {
+        return isWifiConnected() && service != null && service.isEnabled();
+    }
+
+    public boolean isScanningForPeers() {
+        return service != null && service.isScanningForPeers();
     }
 
 }

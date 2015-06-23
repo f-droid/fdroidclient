@@ -38,6 +38,12 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
             mMulticastLock.setReferenceCounted(false);
         }
 
+        if (isScanning) {
+            Log.d(TAG, "Requested Bonjour scan, but already scanning, so will ignore request.");
+            return;
+        }
+
+        isScanning = true;
         mMulticastLock.acquire();
         new AsyncTask<Void, Void, Void>() {
 
@@ -116,6 +122,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         mJmdns.removeServiceListener(HTTP_SERVICE_TYPE, this);
         mJmdns.removeServiceListener(HTTPS_SERVICE_TYPE, this);
         mJmdns = null;
+        isScanning = false;
 
     }
 

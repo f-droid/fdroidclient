@@ -29,6 +29,15 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
             return;
         }
 
+        if (isScanning) {
+            // TODO: Can we reset the discovering timeout, so that it doesn't, e.g. time out
+            // in 3 seconds because we had already almost completed the previous scan?
+            Log.d(TAG, "Requested bluetooth scan when already scanning, will ignore request.");
+            return;
+        }
+
+        isScanning = true;
+
         final BroadcastReceiver deviceFoundReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -43,6 +52,7 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Log.d(TAG, "Scan complete: " + intent.getAction());
+                isScanning = false;
             }
         };
 
@@ -61,6 +71,8 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
             Log.d(TAG, "Stopping bluetooth discovery.");
             adapter.cancelDiscovery();
         }
+
+        isScanning = false;
     }
 
     private void onDeviceFound(BluetoothDevice device) {

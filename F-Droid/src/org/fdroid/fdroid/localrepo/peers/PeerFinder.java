@@ -19,8 +19,14 @@ public abstract class PeerFinder<T extends Peer> {
 
     private Listener<T> listener;
 
+    protected boolean isScanning = false;
+
     public abstract void scan();
     public abstract void cancel();
+
+    public boolean isScanning() {
+        return isScanning;
+    }
 
     protected void foundPeer(T peer) {
         Log.i(TAG, "Found peer " + peer.getName());

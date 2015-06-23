@@ -57,6 +57,7 @@
             android:src="@drawable/ic_bluetooth_white" />
 
         <TextView
+            android:id="@+id/bluetooth_visible"
             android:paddingStart="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,15 +106,17 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/wifi_network"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="wifi network name"
-                android:textColor="@color/swap_light_text"
+                android:textColor="@color/swap_bright_blue"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/device_id_wifi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/swap_wifi_device_name"
@@ -138,6 +141,7 @@
         android:paddingTop="20dp">
 
         <TextView
+            android:id="@+id/text_people_nearby"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/swap_people_nearby"
@@ -145,20 +149,12 @@
             android:layout_weight="1.00"/>
 
         <ProgressBar
+            android:id="@+id/searching_people_nearby"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:indeterminate="true" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/no_people_nearby"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:textStyle="italic"
-        android:textColor="@color/swap_light_text"
-        android:text="@string/swap_no_peers_nearby"/>
 
     <ListView
         android:id="@+id/list_people_nearby"
@@ -181,11 +177,22 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_fdroid_grey"
+            android:text="@string/swap_send_fdroid"
+            android:drawablePadding="10dp"
+            android:padding="25dp"
+            android:background="@android:color/transparent" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"/>
+            android:drawableStart="@drawable/ic_qr_grey"
+            android:text="@string/swap_scan_qr_code"
+            android:drawablePadding="10dp"
+            android:padding="25dp"
+            android:background="@android:color/transparent" />
+
+    </LinearLayout>
 
 </org.fdroid.fdroid.views.swap.StartSwapView>

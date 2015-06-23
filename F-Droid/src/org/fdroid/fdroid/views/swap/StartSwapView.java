@@ -1,17 +1,28 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Switch;
+import android.widget.TextView;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.localrepo.peers.Peer;
@@ -77,18 +88,64 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
     private final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
 
     private TextView viewBluetoothId;
-    private View noPeopleNearby;
-    private ListView peopleNearby;
+    private TextView viewWifiId;
+    private TextView viewWifiNetwork;
+    private TextView peopleNearbyText;
+    private ListView peopleNearbyList;
+    private ProgressBar peopleNearbyProgress;
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        noPeopleNearby = findViewById(R.id.no_people_nearby);
-        peopleNearby = (ListView)findViewById(R.id.list_people_nearby);
-        peopleNearby.setVisibility(View.GONE);
+        uiInitPeers();
+        uiInitBluetooth();
+        uiInitWifi();
+    }
 
+    /**
+     * Setup the list of nearby peers with an adapter, and hide or show it and the associated
+     * message for when no peers are nearby depending on what is happening.
+     */
+    private void uiInitPeers() {
+
+        peopleNearbyText = (TextView)findViewById(R.id.text_people_nearby);
+        peopleNearbyList = (ListView)findViewById(R.id.list_people_nearby);
+        peopleNearbyProgress = (ProgressBar)findViewById(R.id.searching_people_nearby);
+
+        final PeopleNearbyAdapter adapter = new PeopleNearbyAdapter(getContext());
+        peopleNearbyList.setAdapter(adapter);
+        uiUpdatePeersInfo();
+
+        SwapManager.load(getActivity()).setPeerListener(new PeerFinder.Listener<Peer>() {
+            @Override
+            public void onPeerFound(Peer peer) {
+                adapter.notifyDataSetChanged();
+                uiUpdatePeersInfo();
+            }
+        });
+
+    }
+
+    private void uiUpdatePeersInfo() {
+        if (getManager().isScanningForPeers()) {
+            peopleNearbyText.setText(getContext().getString(R.string.swap_scanning_for_peers));
+            peopleNearbyProgress.setVisibility(View.VISIBLE);
+        } else {
+            peopleNearbyProgress.setVisibility(View.GONE);
+            if (peopleNearbyList.getAdapter().getCount() > 0) {
+                peopleNearbyText.setText(getContext().getString(R.string.swap_people_nearby));
+            } else {
+                peopleNearbyText.setText(getContext().getString(R.string.swap_no_peers_nearby));
+            }
+        }
+
+    }
+
+    private void uiInitBluetooth() {
         if (bluetooth != null) {
+
+            final TextView textBluetoothVisible = (TextView)findViewById(R.id.bluetooth_visible);
 
             viewBluetoothId = (TextView)findViewById(R.id.device_id_bluetooth);
             viewBluetoothId.setText(bluetooth.getName());
@@ -100,39 +157,61 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         getManager().ensureBluetoothDiscoverable();
+                        getManager().scanForPeers();
+                        textBluetoothVisible.setText(getContext().getString(R.string.swap_visible_bluetooth));
+                        uiUpdatePeersInfo();
+                        // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
                     } else {
-                        // disableBluetooth();
+                        getManager().cancelScanningForPeers();
+                        getManager().makeBluetoothNonDiscoverable();
+                        textBluetoothVisible.setText(getContext().getString(R.string.swap_not_visible_bluetooth));
+                        uiUpdatePeersInfo();
                     }
                 }
             });
         } else {
             findViewById(R.id.bluetooth_info).setVisibility(View.GONE);
         }
+    }
 
-        ((Switch)findViewById(R.id.switch_wifi)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    private void uiInitWifi() {
+
+        final TextView textBluetoothVisible = (TextView)findViewById(R.id.bluetooth_visible);
+
+        viewWifiId = (TextView)findViewById(R.id.device_id_wifi);
+        viewWifiNetwork = (TextView)findViewById(R.id.wifi_network);
+
+        Switch wifiSwitch = (Switch)findViewById(R.id.switch_wifi);
+        wifiSwitch.setChecked(getManager().isBonjourDiscoverable());
+        wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    enableWifi();
+                    textBluetoothVisible.setText(getContext().getString(R.string.swap_visible_wifi));
+                    uiUpdatePeersInfo();
                 } else {
-                    disableWifi();
+                    textBluetoothVisible.setText(getContext().getString(R.string.swap_not_visible_wifi));
+                    uiUpdatePeersInfo();
                 }
             }
         });
 
-        final PeopleNearbyAdapter adapter = new PeopleNearbyAdapter(getContext());
+        uiUpdateWifi();
+    }
 
-        peopleNearbyList = (ListView)findViewById(R.id.people_nearby);
-        peopleNearbyList.setAdapter(adapter);
+    private void uiUpdateWifi() {
+        viewWifiId.setText(FDroidApp.ipAddressString);
 
-        SwapManager.load(getActivity()).setPeerListener(new PeerFinder.Listener<Peer>() {
-            @Override
-            public void onPeerFound(Peer peer) {
-                adapter.notifyDataSetChanged();
-            }
-        });
-
-
+        if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
+            // empty bssid with an ipAddress means hotspot mode
+            viewWifiNetwork.setText(getContext().getString(R.string.swap_active_hotspot));
+        } else if (TextUtils.isEmpty(FDroidApp.ssid)) {
+            // not connected to or setup with any wifi network
+            viewWifiNetwork.setText(getContext().getString(R.string.swap_no_wifi_network));
+        } else {
+            // connected to a regular wifi network
+            viewWifiNetwork.setText(FDroidApp.ssid);
+        }
     }
 
     @Override
@@ -165,16 +244,4 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         return getResources().getString(R.string.swap_nearby);
     }
 
-
-    // ========================================================================
-    //                            Wifi stuff
-    // ========================================================================
-
-    private void enableWifi() {
-
-    }
-
-    private void disableWifi() {
-
-    }
 }

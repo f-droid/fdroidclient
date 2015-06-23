@@ -65,6 +65,10 @@ public class SwapService extends Service {
     @Nullable
     private Timer timer;
 
+    public boolean isScanningForPeers() {
+        return bonjourFinder.isScanning() || bluetoothFinder.isScanning();
+    }
+
     public class Binder extends android.os.Binder {
         public SwapService getService() {
             return SwapService.this;
@@ -138,10 +142,6 @@ public class SwapService extends Service {
     public void cancelScanningForPeers() {
         bonjourFinder.cancel();
         bluetoothFinder.cancel();
-    }
-
-    public void onPeerFound(Peer peer) {
-        SwapManager.load(this).onPeerFound(peer);
     }
 
     private boolean enabled = false;
