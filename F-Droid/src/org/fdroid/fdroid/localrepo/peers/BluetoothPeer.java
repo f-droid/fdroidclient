@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.localrepo.peers;
 
 import android.bluetooth.BluetoothDevice;
+import android.os.Parcel;
 
 // TODO: Still to be implemented.
 public class BluetoothPeer implements Peer {
@@ -25,5 +26,29 @@ public class BluetoothPeer implements Peer {
     public boolean equals(Peer peer) {
         return peer != null && peer instanceof BluetoothPeer && ((BluetoothPeer)peer).device.getAddress() == device.getAddress();
     }
+    
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.device, 0);
+    }
+
+    protected BluetoothPeer(Parcel in) {
+        this.device = in.readParcelable(BluetoothDevice.class.getClassLoader());
+    }
+
+    public static final Creator<BluetoothPeer> CREATOR = new Creator<BluetoothPeer>() {
+        public BluetoothPeer createFromParcel(Parcel source) {
+            return new BluetoothPeer(source);
+        }
+
+        public BluetoothPeer[] newArray(int size) {
+            return new BluetoothPeer[size];
+        }
+    };
 
 }

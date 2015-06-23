@@ -1,10 +1,9 @@
 package org.fdroid.fdroid.localrepo.peers;
 
+import android.os.Parcelable;
 import android.support.annotation.DrawableRes;
 
-import java.io.Serializable;
-
-public interface Peer extends Serializable {
+public interface Peer extends Parcelable {
 
     String getName();
 

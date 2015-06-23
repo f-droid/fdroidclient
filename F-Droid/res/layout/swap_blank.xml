@@ -61,7 +61,7 @@
             android:paddingStart="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/swap_visible_bluetooth"
+            tools:text="@string/swap_visible_bluetooth"
             android:textSize="18sp" />
 
         <TextView
@@ -77,6 +77,7 @@
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:checked="true"
             android:id="@+id/switch_bluetooth" />
 
     </LinearLayout>
@@ -100,9 +101,10 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/wifi_visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/swap_not_visible_wifi"
+                tools:text="@string/swap_not_visible_wifi"
                 android:textSize="18sp" />
 
             <TextView
@@ -128,6 +130,7 @@
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:checked="false"
             android:id="@+id/switch_wifi" />
 
     </LinearLayout>
@@ -176,6 +179,7 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/btn_send_fdroid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_fdroid_grey"
@@ -185,6 +189,7 @@
             android:background="@android:color/transparent" />
 
         <Button
+            android:id="@+id/btn_qr_scanner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_qr_grey"

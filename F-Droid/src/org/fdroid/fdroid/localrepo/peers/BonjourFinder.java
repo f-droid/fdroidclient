@@ -115,7 +115,10 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
 
     @Override
     public void cancel() {
-        mMulticastLock.release();
+        if (mMulticastLock != null) {
+            mMulticastLock.release();
+        }
+
         if (mJmdns == null)
             return;
         mJmdns.removeServiceListener(HTTP_SERVICE_TYPE, this);

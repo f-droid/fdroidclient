@@ -179,6 +179,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         inflateInnerView(R.layout.swap_select_apps);
     }
 
+    public void sendFDroid() {
+        // TODO: What is availble here? Currently we support Bluetooth (see main menu in F-Droid)
+        // and Android Beam (try touching two devices together when in the app details view).
+    }
+
     // TODO: Figure out whether they have changed since last time UpdateAsyncTask was run.
     // If the local repo is running, then we can ask it what apps it is swapping and compare with that.
     // Otherwise, probably will need to scan the file system.

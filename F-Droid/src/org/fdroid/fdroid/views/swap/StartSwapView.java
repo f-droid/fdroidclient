@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -30,7 +31,6 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
@@ -107,6 +107,23 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         uiInitPeers();
         uiInitBluetooth();
         uiInitWifi();
+        uiInitButtons();
+    }
+
+    private void uiInitButtons() {
+        findViewById(R.id.btn_send_fdroid).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().sendFDroid();
+            }
+        });
+
+        findViewById(R.id.btn_qr_scanner).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().showSelectApps();
+            }
+        });
     }
 
     /**
@@ -184,7 +201,7 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
 
     private void uiInitWifi() {
 
-        final TextView textBluetoothVisible = (TextView)findViewById(R.id.bluetooth_visible);
+        final TextView textWifiVisible = (TextView)findViewById(R.id.wifi_visible);
 
         viewWifiId = (TextView)findViewById(R.id.device_id_wifi);
         viewWifiNetwork = (TextView)findViewById(R.id.wifi_network);
@@ -195,10 +212,10 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    textBluetoothVisible.setText(getContext().getString(R.string.swap_visible_wifi));
+                    textWifiVisible.setText(getContext().getString(R.string.swap_visible_wifi));
                     uiUpdatePeersInfo();
                 } else {
-                    textBluetoothVisible.setText(getContext().getString(R.string.swap_not_visible_wifi));
+                    textWifiVisible.setText(getContext().getString(R.string.swap_not_visible_wifi));
                     uiUpdatePeersInfo();
                 }
             }
