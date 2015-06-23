@@ -17,11 +17,7 @@ import android.util.Log;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
-import org.fdroid.fdroid.localrepo.peers.BluetoothPeer;
 import org.fdroid.fdroid.localrepo.peers.BonjourFinder;
-import org.fdroid.fdroid.localrepo.peers.BonjourPeer;
-import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 import org.fdroid.fdroid.localrepo.type.BonjourType;
 import org.fdroid.fdroid.localrepo.type.NfcType;
 import org.fdroid.fdroid.localrepo.type.WebServerType;
@@ -79,22 +75,8 @@ public class SwapService extends Service {
         nfcType = new NfcType(this);
         bonjourType = new BonjourType(this);
         webServerType = new WebServerType(this);
-
         bonjourFinder = new BonjourFinder(this);
         bluetoothFinder = new BluetoothFinder(this);
-
-        bonjourFinder.setListener(new PeerFinder.Listener<BonjourPeer>() {
-            @Override
-            public void onPeerFound(BonjourPeer peer) {
-                SwapManager.load(SwapService.this).onPeerFound(peer);
-            }
-        });
-        bluetoothFinder.setListener(new PeerFinder.Listener<BluetoothPeer>() {
-            @Override
-            public void onPeerFound(BluetoothPeer peer) {
-                SwapManager.load(SwapService.this).onPeerFound(peer);
-            }
-        });
     }
 
     public void onCreate() {

@@ -20,13 +20,12 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
     public static final String HTTP_SERVICE_TYPE = "_http._tcp.local.";
     public static final String HTTPS_SERVICE_TYPE = "_https._tcp.local.";
 
-    private final Context context;
     private JmDNS mJmdns;
     private WifiManager wifiManager;
     private WifiManager.MulticastLock mMulticastLock;
 
     public BonjourFinder(Context context) {
-        this.context = context;
+        super(context);
     }
 
     @Override

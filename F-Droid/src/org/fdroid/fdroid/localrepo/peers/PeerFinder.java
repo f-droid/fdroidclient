@@ -1,28 +1,30 @@
 package org.fdroid.fdroid.localrepo.peers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
+
+import org.fdroid.fdroid.localrepo.SwapManager;
 
 /**
  * Searches for other devices in the vicinity, using specific technologies.
- * Once found, alerts a listener through the
- * {@link org.fdroid.fdroid.localrepo.peers.PeerFinder.Listener#onPeerFound(Object)}
- * method. Note that this could have instead been done with {@link android.content.Context#sendBroadcast(Intent)}
- * and {@link android.content.BroadcastReceiver}, but that would require making the {@link Peer}s
- * {@link android.os.Parcelable}, which is difficult. The main reason it is difficult is because
- * they encapsulate information about network connectivity, such as {@link android.bluetooth.BluetoothDevice}
- * and {@link javax.jmdns.ServiceInfo}, which may be difficult to serialize and reconstruct again.
+ * Once found, sends an {@link SwapManager#ACTION_PEER_FOUND} intent with the {@link SwapManager#EXTRA_PEER}
+ * extra attribute set to the subclass of {@link Peer} that was found.
  */
 public abstract class PeerFinder<T extends Peer> {
 
     private static final String TAG = "PeerFinder";
 
-    private Listener<T> listener;
-
     protected boolean isScanning = false;
+    protected final Context context;
 
     public abstract void scan();
     public abstract void cancel();
+
+    public PeerFinder(Context context) {
+        this.context = context;
+    }
 
     public boolean isScanning() {
         return isScanning;
@@ -30,18 +32,9 @@ public abstract class PeerFinder<T extends Peer> {
 
     protected void foundPeer(T peer) {
         Log.i(TAG, "Found peer " + peer.getName());
-        if (listener != null) {
-            listener.onPeerFound(peer);
-        }
-    }
-
-    public void setListener(Listener<T> listener) {
-        this.listener = listener;
-    }
-
-    public interface Listener<T> {
-        void onPeerFound(T peer);
-        // TODO: What about peers removed, e.g. as with jmdns ServiceListener#serviceRemoved()
+        Intent intent = new Intent(SwapManager.ACTION_PEER_FOUND);
+        intent.putExtra(SwapManager.EXTRA_PEER, peer);
+        context.sendBroadcast(intent);
     }
 
 }

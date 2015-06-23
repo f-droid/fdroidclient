@@ -13,11 +13,10 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
 
     private static final String TAG = "BluetoothFinder";
 
-    private final Context context;
     private final BluetoothAdapter adapter;
 
     public BluetoothFinder(Context context) {
-        this.context = context;
+        super(context);
         adapter = BluetoothAdapter.getDefaultAdapter();
     }
 

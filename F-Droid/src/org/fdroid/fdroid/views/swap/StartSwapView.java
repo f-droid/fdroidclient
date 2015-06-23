@@ -2,13 +2,17 @@ package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +33,8 @@ import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
+
+    private static final String TAG = "StartSwapView";
 
     // TODO: Is there a way to guarangee which of these constructors the inflater will call?
     // Especially on different API levels? It would be nice to only have the one which accepts
@@ -57,7 +63,7 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
     private class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
 
         public PeopleNearbyAdapter(Context context) {
-            super(context, 0, SwapManager.load(context).getPeers());
+            super(context, 0, new Peer[] {});
         }
 
         @Override
@@ -117,13 +123,15 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         peopleNearbyList.setAdapter(adapter);
         uiUpdatePeersInfo();
 
-        SwapManager.load(getActivity()).setPeerListener(new PeerFinder.Listener<Peer>() {
+        getContext().registerReceiver(new BroadcastReceiver() {
             @Override
-            public void onPeerFound(Peer peer) {
-                adapter.notifyDataSetChanged();
+            public void onReceive(Context context, Intent intent) {
+                Peer peer = intent.getParcelableExtra(SwapManager.EXTRA_PEER);
+                Log.d(TAG, "Found peer: " + peer + ", adding to list of peers in UI.");
+                adapter.add(peer);
                 uiUpdatePeersInfo();
             }
-        });
+        }, new IntentFilter(SwapManager.ACTION_PEER_FOUND));
 
     }
 

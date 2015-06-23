@@ -1,9 +1,11 @@
 package org.fdroid.fdroid.localrepo;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.IBinder;
@@ -13,10 +15,8 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.localrepo.peers.PeerFinder;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -59,6 +59,16 @@ public class SwapManager {
         this.appsToSwap = appsToSwap;
         this.peers = new ArrayList<>();
 
+        context.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Peer peer = (Peer) intent.getSerializableExtra(EXTRA_PEER);
+                if (!peers.contains(peer)) {
+                    peers.add(peer);
+                }
+            }
+        }, new IntentFilter(ACTION_PEER_FOUND));
+
         setupService();
     }
 
@@ -76,12 +86,6 @@ public class SwapManager {
     //                 Search for peers to swap
     // ==========================================================
 
-    private PeerFinder.Listener<Peer> peerListener;
-
-    public void setPeerListener(PeerFinder.Listener<Peer> listener) {
-        this.peerListener = listener;
-    }
-
     public void scanForPeers() {
         if (service != null) {
             Log.d(TAG, "Scanning for nearby devices to swap with...");
@@ -96,15 +100,6 @@ public class SwapManager {
             service.cancelScanningForPeers();
         } else {
             Log.e(TAG, "Couldn't cancel scanning for peers, because service was not running.");
-        }
-    }
-
-    public void onPeerFound(Peer peer) {
-        if (!peers.contains(peer)) {
-            peers.add(peer);
-            if (peerListener != null) {
-                peerListener.onPeerFound(peer);
-            }
         }
     }
 
@@ -336,4 +331,6 @@ public class SwapManager {
         return service != null && service.isScanningForPeers();
     }
 
+    public static final String ACTION_PEER_FOUND = "org.fdroid.fdroid.SwapManager.ACTION_PEER_FOUND";
+    public static final String EXTRA_PEER = "EXTRA_PEER";
 }

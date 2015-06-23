@@ -10,8 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,7 +34,7 @@ import org.fdroid.fdroid.localrepo.SwapManager;
 
 import java.util.Set;
 
-public class SwapWorkflowActivity extends ActionBarActivity {
+public class SwapWorkflowActivity extends AppCompatActivity {
 
     private ViewGroup container;
 
