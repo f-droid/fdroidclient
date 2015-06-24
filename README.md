@@ -56,6 +56,18 @@ would like to contribute.
 Running the test suite
 ----------------------
 
+In order to run the F-Droid test suite, you will need to have either a real device
+connected via `adb`, or an emulator running. Then, execute the following from the
+command line:
+
+> `gradle connectedAndroidTest`
+
+This will build and install F-Droid and the test apk, then execute the entire
+test suite on the device or emulator.
+
+See the [Android Gradle user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Testing) for more details, including how to use Android Studio to run tests (which provides
+more useful feedback than the command line).
+
 
 License
 -------
