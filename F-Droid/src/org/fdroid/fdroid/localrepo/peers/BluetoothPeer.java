@@ -13,6 +13,11 @@ public class BluetoothPeer implements Peer {
     }
 
     @Override
+    public String toString() {
+        return getName();
+    }
+
+    @Override
     public String getName() {
         return "Bluetooth: " + device.getName();
     }
@@ -24,9 +29,14 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public boolean equals(Peer peer) {
-        return peer != null && peer instanceof BluetoothPeer && ((BluetoothPeer)peer).device.getAddress() == device.getAddress();
+        return peer != null && peer instanceof BluetoothPeer && ((BluetoothPeer)peer).device.getAddress().equals(device.getAddress());
     }
-    
+
+    @Override
+    public String getRepoAddress() {
+        return "bluetooth://" + device.getAddress() + "/fdroid/repo";
+    }
+
     @Override
     public int describeContents() {
         return 0;

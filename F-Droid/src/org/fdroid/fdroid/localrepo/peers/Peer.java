@@ -11,4 +11,5 @@ public interface Peer extends Parcelable {
 
     boolean equals(Peer peer);
 
+    String getRepoAddress();
 }

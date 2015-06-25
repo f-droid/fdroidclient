@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -31,6 +32,8 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.localrepo.peers.Peer;
+
+import java.util.ArrayList;
 
 public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
@@ -63,7 +66,7 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
     private class PeopleNearbyAdapter extends ArrayAdapter<Peer> {
 
         public PeopleNearbyAdapter(Context context) {
-            super(context, 0, new Peer[] {});
+            super(context, 0, new ArrayList<Peer>());
         }
 
         @Override
@@ -108,6 +111,8 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         uiInitBluetooth();
         uiInitWifi();
         uiInitButtons();
+        uiUpdatePeersInfo();
+
     }
 
     private void uiInitButtons() {
@@ -139,6 +144,14 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         final PeopleNearbyAdapter adapter = new PeopleNearbyAdapter(getContext());
         peopleNearbyList.setAdapter(adapter);
         uiUpdatePeersInfo();
+
+        peopleNearbyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Peer peer = adapter.getItem(position);
+                onPeerSelected(peer);
+            }
+        });
 
         getContext().registerReceiver(new BroadcastReceiver() {
             @Override
@@ -175,6 +188,9 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
             viewBluetoothId = (TextView)findViewById(R.id.device_id_bluetooth);
             viewBluetoothId.setText(bluetooth.getName());
 
+            int textResource = getManager().isBluetoothDiscoverable() ? R.string.swap_visible_bluetooth : R.string.swap_not_visible_bluetooth;
+            textBluetoothVisible.setText(textResource);
+
             Switch bluetoothSwitch = ((Switch) findViewById(R.id.switch_bluetooth));
             bluetoothSwitch.setChecked(getManager().isBluetoothDiscoverable());
             bluetoothSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -183,13 +199,13 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
                     if (isChecked) {
                         getManager().ensureBluetoothDiscoverable();
                         getManager().scanForPeers();
-                        textBluetoothVisible.setText(getContext().getString(R.string.swap_visible_bluetooth));
+                        textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
                         uiUpdatePeersInfo();
                         // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
                     } else {
                         getManager().cancelScanningForPeers();
                         getManager().makeBluetoothNonDiscoverable();
-                        textBluetoothVisible.setText(getContext().getString(R.string.swap_not_visible_bluetooth));
+                        textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
                         uiUpdatePeersInfo();
                     }
                 }
@@ -206,16 +222,19 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         viewWifiId = (TextView)findViewById(R.id.device_id_wifi);
         viewWifiNetwork = (TextView)findViewById(R.id.wifi_network);
 
+        int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
+        textWifiVisible.setText(textResource);
+
         Switch wifiSwitch = (Switch)findViewById(R.id.switch_wifi);
         wifiSwitch.setChecked(getManager().isBonjourDiscoverable());
         wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    textWifiVisible.setText(getContext().getString(R.string.swap_visible_wifi));
+                    textWifiVisible.setText(R.string.swap_visible_wifi);
                     uiUpdatePeersInfo();
                 } else {
-                    textWifiVisible.setText(getContext().getString(R.string.swap_not_visible_wifi));
+                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
                     uiUpdatePeersInfo();
                 }
             }
@@ -237,6 +256,10 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
             // connected to a regular wifi network
             viewWifiNetwork.setText(FDroidApp.ssid);
         }
+    }
+
+    private void onPeerSelected(Peer peer) {
+        getActivity().swapWith(peer);
     }
 
     @Override

@@ -16,6 +16,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.ProgressListener;
+import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 
 import java.lang.annotation.Retention;
@@ -119,6 +121,7 @@ public class SwapManager {
     public static final int STEP_JOIN_WIFI   = 3;
     public static final int STEP_SHOW_NFC    = 4;
     public static final int STEP_WIFI_QR     = 5;
+    public static final int STEP_CONNECTING  = 6;
 
     private @SwapStep int step = STEP_INTRO;
 
@@ -140,15 +143,46 @@ public class SwapManager {
         return appsToSwap;
     }
 
+    public UpdateService.UpdateReceiver connectTo(@NonNull Peer peer) {
+        if (peer != this.peer) {
+            Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
+        }
+
+        return UpdateService.updateRepoNow(peer.getRepoAddress(), context);
+    }
+
     /**
      * Ensure that we don't get put into an incorrect state, by forcing people to pass valid
      * states to setStep. Ideally this would be done by requiring an enum or something to
      * be passed rather than in integer, however that is harder to persist on disk than an int.
      * This is the same as, e.g. {@link Context#getSystemService(String)}
      */
-    @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR})
+    @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
+        STEP_CONNECTING})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep {}
+
+
+    // =================================================
+    //    Have selected a specific peer to swap with
+    //  (Rather than showing a generic QR code to scan)
+    // =================================================
+
+    @Nullable
+    private Peer peer;
+
+    public void swapWith(Peer peer) {
+        this.peer = peer;
+    }
+
+    public boolean isConnectingWithPeer() {
+        return peer != null;
+    }
+
+    @Nullable
+    public Peer getPeer() {
+        return peer;
+    }
 
 
     // ==========================================

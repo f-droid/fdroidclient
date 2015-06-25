@@ -32,6 +32,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.peers.Peer;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -191,8 +192,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
             updateSwappableAppsTask = new PrepareFullSwapRepo(state.getAppsToSwap());
             updateSwappableAppsTask.execute();
-        } else {
-            showJoinWifi();
+        } else if (!attemptToShowNfc()) {
+            showWifiQr();
         }
     }
 
@@ -208,23 +209,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     /**
      * Once the UpdateAsyncTask has finished preparing our repository index, we can
-     * show the next screen to the user.
+     * show the next screen to the user. This will be one of two things:
+     *  * If we directly selected a peer to swap with initially, we will skip straight to getting
+     *    the list of apps from that device.
+     *  * Alternatively, if we didn't have a person to connect to, and instead clicked "Scan QR Code",
+     *    then we want to show a QR code or NFC dialog.
      */
     private void onLocalRepoPrepared() {
         updateSwappableAppsTask = null;
         hasPreparedLocalRepo = true;
-        showJoinWifi();
+        if (state.isConnectingWithPeer()) {
+            startSwappingWithPeer();
+        } else if (!attemptToShowNfc()) {
+            showWifiQr();
+        };
+    }
+
+    private void startSwappingWithPeer() {
+        inflateInnerView(R.layout.swap_connecting);
     }
 
     private void showJoinWifi() {
         inflateInnerView(R.layout.swap_join_wifi);
-    }
-
-    public void onJoinWifiComplete() {
-        ensureLocalRepoRunning();
-        if (!attemptToShowNfc()) {
-            showWifiQr();
-        }
     }
 
     public void showWifiQr() {
@@ -247,13 +253,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         return false;
     }
 
-    private void ensureLocalRepoRunning() {
-        getState().enableSwapping();
-    }
-
     public void stopSwapping() {
         getState().disableSwapping();
         finish();
+    }
+
+    public void swapWith(Peer peer) {
+        state.swapWith(peer);
+        showSelectApps();
     }
 
     @Override

@@ -113,7 +113,7 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
         next.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                getActivity().onJoinWifiComplete();
+                getActivity().showSelectApps();
                 return true;
             }
         });
@@ -127,7 +127,7 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
 
     @Override
     public int getPreviousStep() {
-        return SwapManager.STEP_SELECT_APPS;
+        return SwapManager.STEP_INTRO;
     }
 
     @ColorRes

@@ -15,6 +15,11 @@ public class BonjourPeer implements Peer {
     }
 
     @Override
+    public String toString() {
+        return getName();
+    }
+
+    @Override
     public String getName() {
         return "Bonjour: " + serviceInfo.getName();
     }
@@ -34,6 +39,10 @@ public class BonjourPeer implements Peer {
         return false;
     }
 
+    @Override
+    public String getRepoAddress() {
+        return serviceInfo.getURL();
+    }
 
     @Override
     public int describeContents() {
