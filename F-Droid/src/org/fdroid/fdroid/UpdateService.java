@@ -153,9 +153,11 @@ public class UpdateService extends IntentService implements ProgressListener {
         }
 
         public void hideDialog() {
-            dialog.hide();
-            dialog.dismiss();
-            dialog = null;
+            if (dialog != null) {
+                dialog.hide();
+                dialog.dismiss();
+                dialog = null;
+            }
         }
 
         @Override
@@ -220,9 +222,15 @@ public class UpdateService extends IntentService implements ProgressListener {
     }
 
     public static UpdateReceiver updateRepoNow(String address, Context context) {
+        return updateRepoNow(address, context, true);
+    }
+
+    public static UpdateReceiver updateRepoNow(String address, Context context, boolean showDialog) {
         Intent intent = new Intent(context, UpdateService.class);
         UpdateReceiver receiver = new UpdateReceiver(new Handler());
-        receiver.showDialog(context);
+        if (showDialog) {
+            receiver.showDialog(context);
+        }
         intent.putExtra(EXTRA_RECEIVER, receiver);
         if (!TextUtils.isEmpty(address)) {
             intent.putExtra(EXTRA_ADDRESS, address);

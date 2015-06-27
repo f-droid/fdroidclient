@@ -3,6 +3,8 @@ package org.fdroid.fdroid.localrepo.peers;
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
 
+import org.fdroid.fdroid.R;
+
 // TODO: Still to be implemented.
 public class BluetoothPeer implements Peer {
 
@@ -19,12 +21,12 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public String getName() {
-        return "Bluetooth: " + device.getName();
+        return device.getName();
     }
 
     @Override
     public int getIcon() {
-        return android.R.drawable.stat_sys_data_bluetooth;
+        return R.drawable.ic_bluetooth_white;
     }
 
     @Override

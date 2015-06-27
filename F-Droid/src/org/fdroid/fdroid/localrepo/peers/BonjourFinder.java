@@ -5,6 +5,10 @@ import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
+
 import java.io.IOException;
 import java.net.InetAddress;
 
@@ -106,9 +110,18 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         addFDroidService(event);
     }
 
+    /**
+     * Broadcasts the fact that a Bonjour peer was found to swap with.
+     * Checks that the service is an F-Droid service, and also that it is not the F-Droid service
+     * for this device (by comparing its signing fingerprint to our signing fingerprint).
+     */
     private void addFDroidService(ServiceEvent event) {
         final ServiceInfo serviceInfo = event.getInfo();
-        if (serviceInfo.getPropertyString("type").startsWith("fdroidrepo")) {
+        final String type = serviceInfo.getPropertyString("type");
+        final String fingerprint = serviceInfo.getPropertyString("fingerprint");
+        final boolean isFDroid = type != null && type.startsWith("fdroidrepo");
+        final boolean isSelf = FDroidApp.repo != null && fingerprint != null && fingerprint.equalsIgnoreCase(FDroidApp.repo.fingerprint);
+        if (isFDroid && !isSelf) {
             foundPeer(new BonjourPeer(serviceInfo));
         }
     }

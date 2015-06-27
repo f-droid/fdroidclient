@@ -148,7 +148,7 @@ public class SwapManager {
             Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
         }
 
-        return UpdateService.updateRepoNow(peer.getRepoAddress(), context);
+        return UpdateService.updateRepoNow(peer.getRepoAddress(), context, false);
     }
 
     /**

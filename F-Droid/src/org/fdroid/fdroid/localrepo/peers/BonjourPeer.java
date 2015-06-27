@@ -21,12 +21,12 @@ public class BonjourPeer implements Peer {
 
     @Override
     public String getName() {
-        return "Bonjour: " + serviceInfo.getName();
+        return serviceInfo.getName();
     }
 
     @Override
     public int getIcon() {
-        return R.drawable.wifi;
+        return R.drawable.ic_network_wifi_white;
     }
 
     @Override

@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
@@ -22,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -72,11 +75,12 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.two_line_list_item, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.swap_peer_list_item, parent, false);
             }
 
             Peer peer = getItem(position);
-            ((TextView)convertView.findViewById(android.R.id.text1)).setText(peer.getName());
+            ((TextView)convertView.findViewById(R.id.peer_name)).setText(peer.getName());
+            ((ImageView)convertView.findViewById(R.id.icon)).setImageDrawable(getResources().getDrawable(peer.getIcon()));
 
             return convertView;
         }
