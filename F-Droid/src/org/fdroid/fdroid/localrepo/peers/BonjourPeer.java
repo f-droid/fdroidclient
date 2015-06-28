@@ -4,14 +4,19 @@ import android.os.Parcel;
 
 import org.fdroid.fdroid.R;
 
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+
+import javax.jmdns.impl.FDroidServiceInfo;
 import javax.jmdns.ServiceInfo;
+import javax.jmdns.impl.ServiceInfoImpl;
 
 public class BonjourPeer implements Peer {
 
-    private ServiceInfo serviceInfo;
+    private FDroidServiceInfo serviceInfo;
 
     public BonjourPeer(ServiceInfo serviceInfo) {
-        this.serviceInfo = serviceInfo;
+        this.serviceInfo = new FDroidServiceInfo(serviceInfo);
     }
 
     @Override
@@ -30,18 +35,22 @@ public class BonjourPeer implements Peer {
     }
 
     @Override
-    public boolean equals(Peer peer) {
+    public boolean equals(Object peer) {
         if (peer != null && peer instanceof BonjourPeer) {
             BonjourPeer that = (BonjourPeer)peer;
-            // TODO: Don't use "name" for comparing, but rather fingerprint of the swap repo.
-            return that.serviceInfo.getName().equals(this.serviceInfo.getName());
+            return this.getFingerprint().equals(that.getFingerprint());
         }
         return false;
     }
 
     @Override
     public String getRepoAddress() {
-        return serviceInfo.getURL();
+        return serviceInfo.getURL(); // Automatically appends the "path" property if present, so no need to do it ourselves.
+    }
+
+    @Override
+    public String getFingerprint() {
+        return serviceInfo.getPropertyString("fingerprint");
     }
 
     @Override
@@ -51,27 +60,11 @@ public class BonjourPeer implements Peer {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(serviceInfo.getType());
-        dest.writeString(serviceInfo.getName());
-        dest.writeString(serviceInfo.getSubtype());
-        dest.writeInt(serviceInfo.getPort());
-        dest.writeInt(serviceInfo.getWeight());
-        dest.writeInt(serviceInfo.getPriority());
-        dest.writeByte(serviceInfo.isPersistent() ? (byte) 1 : (byte) 0);
-        dest.writeString(serviceInfo.getTextString());
+        dest.writeParcelable(serviceInfo, flags);
     }
 
     protected BonjourPeer(Parcel in) {
-        String type = in.readString();
-        String name = in.readString();
-        String subtype = in.readString();
-        int port = in.readInt();
-        int weight = in.readInt();
-        int priority = in.readInt();
-        boolean persistent = in.readByte() != 0;
-        String text = in.readString();
-
-        this.serviceInfo = ServiceInfo.create(type, name, subtype, port, weight, priority, persistent, text);
+        this.serviceInfo = in.readParcelable(FDroidServiceInfo.class.getClassLoader());
     }
 
     public static final Creator<BonjourPeer> CREATOR = new Creator<BonjourPeer>() {

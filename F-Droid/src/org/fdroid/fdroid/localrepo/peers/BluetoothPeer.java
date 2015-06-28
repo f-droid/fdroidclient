@@ -30,13 +30,19 @@ public class BluetoothPeer implements Peer {
     }
 
     @Override
-    public boolean equals(Peer peer) {
+    public boolean equals(Object peer) {
         return peer != null && peer instanceof BluetoothPeer && ((BluetoothPeer)peer).device.getAddress().equals(device.getAddress());
     }
 
     @Override
     public String getRepoAddress() {
         return "bluetooth://" + device.getAddress() + "/fdroid/repo";
+    }
+
+    @Override
+    public String getFingerprint() {
+        // TODO: Get fingerprint somehow over bluetooth.
+        return "";
     }
 
     @Override

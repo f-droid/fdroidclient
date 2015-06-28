@@ -16,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.ProgressListener;
@@ -23,6 +24,8 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.localrepo.peers.Peer;
+
+import java.util.List;
 
 public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
@@ -77,6 +80,31 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
             @Override
             public void onProgress(Event event) {
                 ((TextView) findViewById(R.id.progress)).setText(event.data.getString(UpdateService.EXTRA_ADDRESS));
+                boolean finished = false;
+                boolean error = false;
+                switch (event.type) {
+                    case UpdateService.EVENT_ERROR:
+                        finished = true;
+                        error = true;
+                        break;
+                    case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+                        finished = true;
+                        break;
+                    case UpdateService.EVENT_COMPLETE_AND_SAME:
+                        finished = true;
+                        break;
+                    case UpdateService.EVENT_INFO:
+                        break;
+                }
+
+                if (finished) {
+                    if (error) {
+                        // TODO: Feedback to user about error, suggest fixes.
+                    } else {
+                        getActivity().showSwapConnected();
+                    }
+                }
+
             }
         });
     }

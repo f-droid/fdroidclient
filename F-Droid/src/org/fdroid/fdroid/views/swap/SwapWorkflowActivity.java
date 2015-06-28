@@ -237,6 +237,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         inflateInnerView(R.layout.swap_wifi_qr);
     }
 
+    public void showSwapConnected() {
+        inflateInnerView(R.layout.swap_success);
+    }
+
     private boolean attemptToShowNfc() {
         // TODO: What if NFC is disabled? Hook up with NfcNotEnabledActivity? Or maybe only if they
         // click a relevant button?
@@ -286,9 +290,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Void v) {
-            super.onPostExecute(v);
+        protected void onPreExecute() {
             state.enableSwapping();
+            super.onPreExecute();
         }
     }
 

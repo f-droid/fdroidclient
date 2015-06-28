@@ -193,7 +193,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         String[] ALL = {
-                IS_COMPATIBLE, APP_ID, NAME, SUMMARY, ICON, DESCRIPTION,
+                _ID, IS_COMPATIBLE, APP_ID, NAME, SUMMARY, ICON, DESCRIPTION,
                 LICENSE, WEB_URL, TRACKER_URL, SOURCE_URL, DONATE_URL,
                 BITCOIN_ADDR, LITECOIN_ADDR, DOGECOIN_ADDR, FLATTR_ID,
                 UPSTREAM_VERSION, UPSTREAM_VERSION_CODE, ADDED, LAST_UPDATED,
@@ -396,6 +396,7 @@ public class AppProvider extends FDroidProvider {
     private static final String PATH_INSTALLED = "installed";
     private static final String PATH_CAN_UPDATE = "canUpdate";
     private static final String PATH_SEARCH = "search";
+    private static final String PATH_SEARCH_REPO = "searchRepo";
     private static final String PATH_NO_APKS = "noApks";
     private static final String PATH_APPS = "apps";
     private static final String PATH_RECENTLY_UPDATED = "recentlyUpdated";
@@ -416,6 +417,7 @@ public class AppProvider extends FDroidProvider {
     private static final int IGNORED          = CATEGORY + 1;
     private static final int CALC_APP_DETAILS_FROM_INDEX = IGNORED + 1;
     private static final int REPO             = CALC_APP_DETAILS_FROM_INDEX + 1;
+    private static final int SEARCH_REPO      = REPO + 1;
 
     static {
         matcher.addURI(getAuthority(), null, CODE_LIST);
@@ -425,6 +427,7 @@ public class AppProvider extends FDroidProvider {
         matcher.addURI(getAuthority(), PATH_NEWLY_ADDED, NEWLY_ADDED);
         matcher.addURI(getAuthority(), PATH_CATEGORY + "/*", CATEGORY);
         matcher.addURI(getAuthority(), PATH_SEARCH + "/*", SEARCH);
+        matcher.addURI(getAuthority(), PATH_SEARCH_REPO + "/*/*", SEARCH_REPO);
         matcher.addURI(getAuthority(), PATH_REPO + "/#", REPO);
         matcher.addURI(getAuthority(), PATH_CAN_UPDATE, CAN_UPDATE);
         matcher.addURI(getAuthority(), PATH_INSTALLED, INSTALLED);
@@ -504,6 +507,14 @@ public class AppProvider extends FDroidProvider {
     public static Uri getSearchUri(String query) {
         return getContentUri().buildUpon()
             .appendPath(PATH_SEARCH)
+            .appendPath(query)
+            .build();
+    }
+
+    public static Uri getSearchUri(Repo repo, String query) {
+        return getContentUri().buildUpon()
+            .appendPath(PATH_SEARCH_REPO)
+            .appendPath(repo.id + "")
             .appendPath(query)
             .build();
     }
@@ -678,6 +689,11 @@ public class AppProvider extends FDroidProvider {
         case SEARCH:
             selection = selection.add(querySearch(uri.getLastPathSegment()));
             includeSwap = false;
+            break;
+
+        case SEARCH_REPO:
+            selection = selection.add(querySearch(uri.getPathSegments().get(1)));
+            selection = selection.add(queryRepo(Long.parseLong(uri.getPathSegments().get(0))));
             break;
 
         case NO_APKS:

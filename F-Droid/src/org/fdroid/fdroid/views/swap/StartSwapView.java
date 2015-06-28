@@ -12,6 +12,7 @@ import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -28,17 +29,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.util.ArrayList;
 
-public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.InnerView {
+public class StartSwapView extends ScrollView implements SwapWorkflowActivity.InnerView {
 
     private static final String TAG = "StartSwapView";
 
@@ -111,12 +115,23 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
     protected void onFinishInflate() {
         super.onFinishInflate();
 
+        getManager().scanForPeers();
+
         uiInitPeers();
         uiInitBluetooth();
         uiInitWifi();
         uiInitButtons();
         uiUpdatePeersInfo();
 
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+                new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        uiUpdateWifi();
+                    }
+                },
+                new IntentFilter(WifiStateChangeService.BROADCAST)
+        );
     }
 
     private void uiInitButtons() {
@@ -161,9 +176,13 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
             @Override
             public void onReceive(Context context, Intent intent) {
                 Peer peer = intent.getParcelableExtra(SwapManager.EXTRA_PEER);
-                Log.d(TAG, "Found peer: " + peer + ", adding to list of peers in UI.");
-                adapter.add(peer);
-                uiUpdatePeersInfo();
+                if (adapter.getPosition(peer) >= 0) {
+                    Log.d(TAG, "Found peer: " + peer + ", ignoring though, because it is already in our list.");
+                } else {
+                    Log.d(TAG, "Found peer: " + peer + ", adding to list of peers in UI.");
+                    adapter.add(peer);
+                    uiUpdatePeersInfo();
+                }
             }
         }, new IntentFilter(SwapManager.ACTION_PEER_FOUND));
 
@@ -191,29 +210,51 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
 
             viewBluetoothId = (TextView)findViewById(R.id.device_id_bluetooth);
             viewBluetoothId.setText(bluetooth.getName());
+            viewBluetoothId.setVisibility(bluetooth.isEnabled() ? View.VISIBLE : View.GONE);
 
             int textResource = getManager().isBluetoothDiscoverable() ? R.string.swap_visible_bluetooth : R.string.swap_not_visible_bluetooth;
             textBluetoothVisible.setText(textResource);
 
-            Switch bluetoothSwitch = ((Switch) findViewById(R.id.switch_bluetooth));
+            final Switch bluetoothSwitch = ((Switch) findViewById(R.id.switch_bluetooth));
             bluetoothSwitch.setChecked(getManager().isBluetoothDiscoverable());
             bluetoothSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         getManager().ensureBluetoothDiscoverable();
-                        getManager().scanForPeers();
                         textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
+                        viewBluetoothId.setVisibility(View.VISIBLE);
                         uiUpdatePeersInfo();
                         // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
                     } else {
-                        getManager().cancelScanningForPeers();
                         getManager().makeBluetoothNonDiscoverable();
                         textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
+                        viewBluetoothId.setVisibility(View.GONE);
                         uiUpdatePeersInfo();
                     }
                 }
             });
+
+            LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
+                        Log.d(TAG, "Bluetooth service is starting...");
+                        bluetoothSwitch.setEnabled(false);
+                        bluetoothSwitch.setChecked(true);
+                    } else {
+                        bluetoothSwitch.setEnabled(true);
+                        if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
+                            Log.d(TAG, "Bluetooth service has started.");
+                            bluetoothSwitch.setChecked(true);
+                        } else {
+                            Log.d(TAG, "Bluetooth service has stopped.");
+                            bluetoothSwitch.setChecked(false);
+                        }
+                    }
+                }
+            }, new IntentFilter(SwapService.BLUETOOTH_STATE_CHANGE));
+
         } else {
             findViewById(R.id.bluetooth_info).setVisibility(View.GONE);
         }
@@ -221,34 +262,56 @@ public class StartSwapView extends LinearLayout implements SwapWorkflowActivity.
 
     private void uiInitWifi() {
 
-        final TextView textWifiVisible = (TextView)findViewById(R.id.wifi_visible);
-
         viewWifiId = (TextView)findViewById(R.id.device_id_wifi);
         viewWifiNetwork = (TextView)findViewById(R.id.wifi_network);
 
-        int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
-        textWifiVisible.setText(textResource);
-
-        Switch wifiSwitch = (Switch)findViewById(R.id.switch_wifi);
+        final Switch wifiSwitch = (Switch)findViewById(R.id.switch_wifi);
         wifiSwitch.setChecked(getManager().isBonjourDiscoverable());
         wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    textWifiVisible.setText(R.string.swap_visible_wifi);
-                    uiUpdatePeersInfo();
+                    getManager().ensureBonjourDiscoverable();
                 } else {
-                    textWifiVisible.setText(R.string.swap_not_visible_wifi);
-                    uiUpdatePeersInfo();
+                    getManager().makeBonjourNotDiscoverable();
                 }
+                uiUpdatePeersInfo();
+                uiUpdateWifi();
             }
         });
+
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
+                    Log.d(TAG, "Bonjour service is starting...");
+                    wifiSwitch.setEnabled(false);
+                    wifiSwitch.setChecked(true);
+                } else {
+                    wifiSwitch.setEnabled(true);
+                    if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
+                        Log.d(TAG, "Bonjour service has started.");
+                        wifiSwitch.setChecked(true);
+                    } else {
+                        Log.d(TAG, "Bonjour service has stopped.");
+                        wifiSwitch.setChecked(false);
+                    }
+                }
+                uiUpdateWifi();
+            }
+        }, new IntentFilter(SwapService.BONJOUR_STATE_CHANGE));
 
         uiUpdateWifi();
     }
 
     private void uiUpdateWifi() {
+
+        final TextView textWifiVisible = (TextView)findViewById(R.id.wifi_visible);
+        int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
+        textWifiVisible.setText(textResource);
+
         viewWifiId.setText(FDroidApp.ipAddressString);
+        viewWifiId.setVisibility(TextUtils.isEmpty(FDroidApp.ipAddressString) ? View.GONE : View.VISIBLE);
 
         if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
             // empty bssid with an ipAddress means hotspot mode

@@ -9,7 +9,9 @@ public interface Peer extends Parcelable {
 
     @DrawableRes int getIcon();
 
-    boolean equals(Peer peer);
+    boolean equals(Object peer);
 
     String getRepoAddress();
+
+    String getFingerprint();
 }

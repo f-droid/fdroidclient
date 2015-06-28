@@ -37,4 +37,8 @@ public abstract class PeerFinder<T extends Peer> {
         context.sendBroadcast(intent);
     }
 
+    protected void removePeer(T peer) {
+        // TODO: Broadcast messages when peers are removed too.
+    }
+
 }

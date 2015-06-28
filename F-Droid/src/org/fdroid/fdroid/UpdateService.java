@@ -40,6 +40,7 @@ import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.text.TextUtils;
@@ -110,13 +111,14 @@ public class UpdateService extends IntentService implements ProgressListener {
     // update in response to a user request.
     public static class UpdateReceiver extends ResultReceiver {
 
-        private Context context;
+        private final Context context;
         private ProgressDialog dialog;
         private ProgressListener listener;
         private String lastShownMessage = null;
 
-        public UpdateReceiver(Handler handler) {
+        public UpdateReceiver(@NonNull Context context, Handler handler) {
             super(handler);
+            this.context = context;
         }
 
         public UpdateReceiver setDialog(ProgressDialog dialog) {
@@ -145,8 +147,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             }
         }
 
-        public UpdateReceiver showDialog(Context context) {
-            this.context = context;
+        public UpdateReceiver showDialog() {
             ensureDialog();
             dialog.show();
             return this;
@@ -227,9 +228,9 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     public static UpdateReceiver updateRepoNow(String address, Context context, boolean showDialog) {
         Intent intent = new Intent(context, UpdateService.class);
-        UpdateReceiver receiver = new UpdateReceiver(new Handler());
+        UpdateReceiver receiver = new UpdateReceiver(context, new Handler());
         if (showDialog) {
-            receiver.showDialog(context);
+            receiver.showDialog();
         }
         intent.putExtra(EXTRA_RECEIVER, receiver);
         if (!TextUtils.isEmpty(address)) {

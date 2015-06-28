@@ -38,6 +38,7 @@ public class WifiStateChangeService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "WiFi change service started, clearing info about wifi state until we have figured it out again.");
         FDroidApp.initWifiSettings();
         NetworkInfo ni = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
@@ -66,6 +67,7 @@ public class WifiStateChangeService extends Service {
         @Override
         protected Void doInBackground(Void... params) {
             try {
+                Log.d(TAG, "Checking wifi state (in background thread).");
                 WifiInfo wifiInfo = null;
 
                 wifiState = wifiManager.getWifiState();
@@ -85,9 +87,12 @@ public class WifiStateChangeService extends Service {
                     } else {  // a hotspot can be active during WIFI_STATE_UNKNOWN
                         FDroidApp.ipAddressString = getIpAddressFromNetworkInterface();
                     }
-                    Thread.sleep(1000);
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "waiting for an IP address...");
+
+                    if (FDroidApp.ipAddressString == null) {
+                        Thread.sleep(1000);
+                        if (BuildConfig.DEBUG) {
+                            Log.d(TAG, "waiting for an IP address...");
+                        }
                     }
                 }
                 if (isCancelled())  // can be canceled by a change via WifiStateChangeReceiver
@@ -95,6 +100,7 @@ public class WifiStateChangeService extends Service {
 
                 if (wifiInfo != null) {
                     String ssid = wifiInfo.getSSID();
+                    Log.d(TAG, "Have wifi info, connected to " + ssid);
                     if (ssid != null) {
                         FDroidApp.ssid = ssid.replaceAll("^\"(.*)\"$", "$1");
                     }
@@ -104,6 +110,7 @@ public class WifiStateChangeService extends Service {
                     }
                 }
 
+                // TODO: Can this be moved to the swap service instead?
                 String scheme;
                 if (Preferences.get().isLocalRepoHttpsEnabled())
                     scheme = "https";

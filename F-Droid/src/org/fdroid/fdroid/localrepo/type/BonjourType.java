@@ -3,33 +3,44 @@ package org.fdroid.fdroid.localrepo.type;
 import android.content.Context;
 import android.util.Log;
 
+import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.localrepo.SwapService;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.HashMap;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
-public class BonjourType implements SwapType {
+/**
+ * Sends a {@link SwapService#BONJOUR_STATE_CHANGE} broadcasts when starting, started or stopped.
+ */
+public class BonjourType extends SwapType {
 
-    private static final String TAG = "BonjourBroadcastType";
+    private static final String TAG = "BonjourSwapService";
 
     private JmDNS jmdns;
     private ServiceInfo pairService;
-    private final Context context;
 
     public BonjourType(Context context) {
-        this.context = context;
+        super(context);
     }
 
     @Override
     public void start() {
 
-        if (!Preferences.get().isLocalRepoBonjourEnabled())
+        Log.d(TAG, "Preparing to start Bonjour service.");
+        if (!Preferences.get().isLocalRepoBonjourEnabled()) {
+            // TODO: Remove this preference completely, it is now dealt with in the start swap screen.
+            Log.i(TAG, "Not going to start Bonjour swap service because disabled via preferences.");
             return;
+        }
+
+        sendBroadcast(SwapService.EXTRA_STARTING);
 
         /*
          * a ServiceInfo can only be registered with a single instance
@@ -54,12 +65,14 @@ public class BonjourType implements SwapType {
         try {
             Log.d(TAG, "Starting bonjour service...");
             pairService = ServiceInfo.create(type, repoName, FDroidApp.port, 0, 0, values);
-            jmdns = JmDNS.create();
+            jmdns = JmDNS.create(InetAddress.getByName(FDroidApp.ipAddressString));
             jmdns.registerService(pairService);
+            setConnected(true);
             Log.d(TAG, "... Bounjour service started.");
         } catch (IOException e) {
             Log.e(TAG, "Error while registering jmdns service: " + e);
             Log.e(TAG, Log.getStackTraceString(e));
+            setConnected(false);
         }
     }
 
@@ -67,6 +80,7 @@ public class BonjourType implements SwapType {
     public void stop() {
         Log.d(TAG, "Unregistering MDNS service...");
         clearCurrentMDNSService();
+        setConnected(false);
     }
 
     private void clearCurrentMDNSService() {
@@ -82,8 +96,8 @@ public class BonjourType implements SwapType {
     }
 
     @Override
-    public void restart() {
-
+    public String getBroadcastAction() {
+        return SwapService.BONJOUR_STATE_CHANGE;
     }
 
 }

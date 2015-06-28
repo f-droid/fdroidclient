@@ -1,11 +1,73 @@
 package org.fdroid.fdroid.localrepo.type;
 
-public interface SwapType {
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.support.v4.content.LocalBroadcastManager;
 
-    void start();
+import org.fdroid.fdroid.localrepo.SwapService;
 
-    void stop();
+/**
+ * There is lots of common functionality, and a common API among different communication protocols
+ * associated with the swap process. This includes Bluetooth visability, Bonjour visability,
+ * and the web server which serves info for swapping. This class provides a common API for
+ * starting and stopping these services. In addition, it helps with the process of sending broadcast
+ * intents in response to the thing starting or stopping.
+ */
+public abstract class SwapType {
 
-    void restart();
+    private boolean isConnected;
 
+    @NonNull
+    protected final Context context;
+
+    public SwapType(@NonNull Context context) {
+        this.context = context;
+    }
+
+    abstract public void start();
+
+    abstract public void stop();
+
+    protected String getBroadcastAction() {
+        return null;
+    }
+
+    protected final void setConnected(boolean connected) {
+        if (connected) {
+            isConnected = true;
+            sendBroadcast(SwapService.EXTRA_STARTED);
+        } else {
+            isConnected = false;
+            sendBroadcast(SwapService.EXTRA_STOPPED);
+        }
+    }
+
+    /**
+     * Sends either a {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTING},
+     * {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTED} or
+     * {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STOPPED} broadcast.
+     */
+    protected final void sendBroadcast(String extra) {
+        if (getBroadcastAction() != null) {
+            Intent intent = new Intent(getBroadcastAction());
+            intent.putExtra(extra, true);
+            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+        }
+    }
+
+    public final boolean isConnected() {
+        return isConnected;
+    }
+
+    public void startInBackground() {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                start();
+                return null;
+            }
+        }.execute();
+    }
 }

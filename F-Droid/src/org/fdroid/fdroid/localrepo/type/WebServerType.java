@@ -17,21 +17,21 @@ import java.io.IOException;
 import java.net.BindException;
 import java.util.Random;
 
-public class WebServerType implements SwapType {
+public class WebServerType extends SwapType {
 
     private static final String TAG = "WebServerType";
 
     private Handler webServerThreadHandler = null;
     private LocalHTTPD localHttpd;
-    private final Context context;
 
     public WebServerType(Context context) {
-        this.context = context;
+        super(context);
     }
 
     @Override
     public void start() {
 
+        Log.d(TAG, "Preparing swap webserver.");
         Runnable webServer = new Runnable() {
             // Tell Eclipse this is not a leak because of Looper use.
             @SuppressLint("HandlerLeak")
@@ -51,7 +51,9 @@ public class WebServerType implements SwapType {
                     }
                 };
                 try {
+                    Log.d(TAG, "Starting swap webserver...");
                     localHttpd.start();
+                    Log.d(TAG, "Swap webserver started.");
                 } catch (BindException e) {
                     int prev = FDroidApp.port;
                     FDroidApp.port = FDroidApp.port + new Random().nextInt(1111);
@@ -77,11 +79,6 @@ public class WebServerType implements SwapType {
         Message msg = webServerThreadHandler.obtainMessage();
         msg.obj = webServerThreadHandler.getLooper().getThread().getName() + " says stop";
         webServerThreadHandler.sendMessage(msg);
-    }
-
-    @Override
-    public void restart() {
-
     }
 
 }

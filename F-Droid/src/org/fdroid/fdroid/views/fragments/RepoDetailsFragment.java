@@ -82,7 +82,7 @@ public class RepoDetailsFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         if (updateHandler != null) {
-            updateHandler.showDialog(getActivity());
+            updateHandler.showDialog();
         }
     }
 

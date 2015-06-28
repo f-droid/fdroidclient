@@ -148,7 +148,7 @@ public class ManageReposActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         if (updateHandler != null) {
-            updateHandler.showDialog(this);
+            updateHandler.showDialog();
         }
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());

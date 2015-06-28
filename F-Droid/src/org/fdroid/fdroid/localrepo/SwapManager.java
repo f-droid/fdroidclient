@@ -1,13 +1,14 @@
 package org.fdroid.fdroid.localrepo;
 
-import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
@@ -16,8 +17,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.Repo;
+import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 
 import java.lang.annotation.Retention;
@@ -116,12 +119,14 @@ public class SwapManager {
     // ("Step" refers to the current view being shown in the UI)
     // ==========================================================
 
-    public static final int STEP_INTRO       = 1;
-    public static final int STEP_SELECT_APPS = 2;
-    public static final int STEP_JOIN_WIFI   = 3;
-    public static final int STEP_SHOW_NFC    = 4;
-    public static final int STEP_WIFI_QR     = 5;
-    public static final int STEP_CONNECTING  = 6;
+    public static final int STEP_INTRO        = 1;
+    public static final int STEP_SELECT_APPS  = 2;
+    public static final int STEP_JOIN_WIFI    = 3;
+    public static final int STEP_SHOW_NFC     = 4;
+    public static final int STEP_WIFI_QR      = 5;
+    public static final int STEP_CONNECTING   = 6;
+    public static final int STEP_SUCCESS      = 7;
+    public static final int STEP_CONFIRM_SWAP = 8;
 
     private @SwapStep int step = STEP_INTRO;
 
@@ -143,12 +148,107 @@ public class SwapManager {
         return appsToSwap;
     }
 
+    @Nullable
+    public UpdateService.UpdateReceiver refreshSwap() {
+        return this.peer != null ? connectTo(peer) : null;
+    }
+
+    @NonNull
     public UpdateService.UpdateReceiver connectTo(@NonNull Peer peer) {
         if (peer != this.peer) {
             Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
         }
 
+        peerRepo = ensureRepoExists(peer);
+
+        // Only ask server to swap with us, if we are actually running a local repo service.
+        // It is possible to have a swap initiated without first starting a swap, in which
+        // case swapping back is pointless.
+        /*if (!newRepoConfig.preventFurtherSwaps() && isEnabled()) {
+            askServerToSwapWithUs();
+        }*/
+
         return UpdateService.updateRepoNow(peer.getRepoAddress(), context, false);
+    }
+/*
+    private void askServerToSwapWithUs() {
+        if (!newRepoConfig.isValidRepo()) {
+            return;
+        }
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... args) {
+                Uri repoUri = newRepoConfig.getRepoUri();
+                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
+
+                AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", ConnectSwapActivity.this);
+                HttpPost request = new HttpPost("/request-swap");
+                HttpHost host = new HttpHost(repoUri.getHost(), repoUri.getPort(), repoUri.getScheme());
+
+                try {
+                    Log.d(TAG, "Asking server at " + newRepoConfig.getRepoUriString() + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
+                    populatePostParams(swapBackUri, request);
+                    client.execute(host, request);
+                } catch (IOException e) {
+                    notifyOfErrorOnUiThread();
+                    Log.e(TAG, "Error while asking server to swap with us: " + e.getMessage());
+                } finally {
+                    client.close();
+                }
+                return null;
+            }
+
+            private void populatePostParams(String swapBackUri, HttpPost request) throws UnsupportedEncodingException {
+                List<NameValuePair> params = new ArrayList<>();
+                params.add(new BasicNameValuePair("repo", swapBackUri));
+                UrlEncodedFormEntity encodedParams = new UrlEncodedFormEntity(params);
+                request.setEntity(encodedParams);
+            }
+
+            private void notifyOfErrorOnUiThread() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(
+                                ConnectSwapActivity.this,
+                                R.string.swap_reciprocate_failed,
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                });
+            }
+        }.execute();
+    }*/
+    private Repo ensureRepoExists(@NonNull Peer peer) {
+        // TODO: newRepoConfig.getParsedUri() will include a fingerprint, which may not match with
+        // the repos address in the database. Not sure on best behaviour in this situation.
+        Repo repo = RepoProvider.Helper.findByAddress(context, peer.getRepoAddress());
+        if (repo == null) {
+            ContentValues values = new ContentValues(6);
+
+            // TODO: i18n and think about most appropriate name. Although it wont be visible in
+            // the "Manage repos" UI after being marked as a swap repo here...
+            values.put(RepoProvider.DataColumns.NAME, peer.getName());
+            values.put(RepoProvider.DataColumns.ADDRESS, peer.getRepoAddress());
+            values.put(RepoProvider.DataColumns.DESCRIPTION, ""); // TODO;
+            values.put(RepoProvider.DataColumns.FINGERPRINT, peer.getFingerprint());
+            values.put(RepoProvider.DataColumns.IN_USE, true);
+            values.put(RepoProvider.DataColumns.IS_SWAP, true);
+            Uri uri = RepoProvider.Helper.insert(context, values);
+            repo = RepoProvider.Helper.findByUri(context, uri);
+        }
+
+        return repo;
+    }
+
+    @Nullable
+    public Repo getPeerRepo() {
+        return peerRepo;
+    }
+
+    public void install(@NonNull final App app) {
+
     }
 
     /**
@@ -158,7 +258,7 @@ public class SwapManager {
      * This is the same as, e.g. {@link Context#getSystemService(String)}
      */
     @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
-        STEP_CONNECTING})
+        STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep {}
 
@@ -170,6 +270,9 @@ public class SwapManager {
 
     @Nullable
     private Peer peer;
+
+    @Nullable
+    private Repo peerRepo;
 
     public void swapWith(Peer peer) {
         this.peer = peer;
@@ -313,43 +416,19 @@ public class SwapManager {
     //    Interacting with Bluetooth adapter
     // ==========================================
 
-    @Nullable /* Emulators tend not to have bluetooth adapters. */
-    private final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
-
     public boolean isBluetoothDiscoverable() {
-        return bluetooth != null &&
-                bluetooth.getScanMode() == BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE;
+        return service != null && service.getBluetooth().isConnected();
     }
 
     public void ensureBluetoothDiscoverable() {
-        if (bluetooth == null) {
-            return;
-        }
-
-        if (!bluetooth.isEnabled()) {
-            if (!bluetooth.enable()) {
-
-            }
-        }
-
-        if (bluetooth.isEnabled()) {
-            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
-
-            // TODO: Hmm, don't like the idea of a background service being able to do this :(
-            discoverableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            context.startActivity(discoverableIntent);
+        if (service != null) {
+            service.getBluetooth().start();
         }
     }
 
     public void makeBluetoothNonDiscoverable() {
-        if (bluetooth == null) {
-            return;
-        }
-
-        if (isBluetoothDiscoverable()) {
-            // TODO: How to disable this?
+        if (service != null) {
+            service.getBluetooth().stop();
         }
     }
 
@@ -359,6 +438,18 @@ public class SwapManager {
 
     public boolean isBonjourDiscoverable() {
         return isWifiConnected() && service != null && service.isEnabled();
+    }
+
+    public void ensureBonjourDiscoverable() {
+        if (!isBonjourDiscoverable()) {
+            // TODO: Enable bonjour (currently it is enabled by default when the service starts)
+        }
+    }
+
+    public void makeBonjourNotDiscoverable() {
+        if (service != null) {
+            // TODO: Disable bonjour (currently it is enabled by default when the service starts)
+        }
     }
 
     public boolean isScanningForPeers() {

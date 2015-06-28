@@ -18,8 +18,9 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
 import org.fdroid.fdroid.localrepo.peers.BonjourFinder;
+import org.fdroid.fdroid.localrepo.type.BluetoothType;
 import org.fdroid.fdroid.localrepo.type.BonjourType;
-import org.fdroid.fdroid.localrepo.type.NfcType;
+import org.fdroid.fdroid.localrepo.type.SwapType;
 import org.fdroid.fdroid.localrepo.type.WebServerType;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -31,27 +32,26 @@ import java.util.TimerTask;
  * Central service which manages all of the different moving parts of swap which are required
  * to enable p2p swapping of apps. Currently manages WiFi and NFC. Will manage Bluetooth in
  * the future.
- *
- * TODO: Manage threading correctly.
  */
 public class SwapService extends Service {
 
     private static final String TAG = "SwapService";
 
+    public static final String BONJOUR_STATE_CHANGE = "org.fdroid.fdroid.BONJOUR_STATE_CHANGE";
+    public static final String BLUETOOTH_STATE_CHANGE = "org.fdroid.fdroid.BLUETOOTH_STATE_CHANGE";
+    public static final String EXTRA_STARTING = "STARTING";
+    public static final String EXTRA_STARTED = "STARTED";
+    public static final String EXTRA_STOPPED = "STOPPED";
+
     private static final int NOTIFICATION = 1;
 
     private final Binder binder = new Binder();
-    private final BonjourType bonjourType;
-    private final WebServerType webServerType;
+    private SwapType bonjourType;
+    private SwapType bluetoothType;
+    private SwapType webServerType;
 
-    private final BonjourFinder bonjourFinder;
-    private final BluetoothFinder bluetoothFinder;
-
-
-    // TODO: The NFC type can't really be managed by the service, because it is intrinsically tied
-    // to a specific _Activity_, and will only be active while that activity is shown. This service
-    // knows nothing about activities.
-    private final NfcType nfcType;
+    private BonjourFinder bonjourFinder;
+    private BluetoothFinder bluetoothFinder;
 
     private final static int TIMEOUT = 900000; // 15 mins
 
@@ -65,22 +65,29 @@ public class SwapService extends Service {
         return bonjourFinder.isScanning() || bluetoothFinder.isScanning();
     }
 
+    public SwapType getBluetooth() {
+        return bluetoothType;
+    }
+
+    public SwapType getBonjour() {
+        return bluetoothType;
+    }
+
     public class Binder extends android.os.Binder {
         public SwapService getService() {
             return SwapService.this;
         }
     }
 
-    public SwapService() {
-        nfcType = new NfcType(this);
+    public void onCreate() {
+        super.onCreate();
+
         bonjourType = new BonjourType(this);
+        bluetoothType = BluetoothType.create(this);
         webServerType = new WebServerType(this);
         bonjourFinder = new BonjourFinder(this);
         bluetoothFinder = new BluetoothFinder(this);
-    }
 
-    public void onCreate() {
-        super.onCreate();
         Log.d(TAG, "Creating service, will register appropriate listeners.");
         Preferences.get().registerLocalRepoBonjourListeners(bonjourEnabledListener);
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
@@ -139,7 +146,7 @@ public class SwapService extends Service {
                 @Override
                 protected Void doInBackground(Void... params) {
                     Log.d(TAG, "Started background task to enable swapping.");
-                    enableSwappingSynchronous();
+                    enableSwappingAsynchronous();
                     return null;
                 }
 
@@ -160,13 +167,13 @@ public class SwapService extends Service {
 
     /**
      * The guts of this class - responsible for enabling the relevant services for swapping.
-     *  * Doesn't know anything about enabled/disabled.
-     *  * Runs synchronously on the thread it was called.
+     * Doesn't know anything about enabled/disabled state, you should check that before invoking
+     * this method so it doesn't start something that is already started.
+     * Runs asynchronously on several background threads.
      */
-    private void enableSwappingSynchronous() {
-        nfcType.start();
-        webServerType.start();
-        bonjourType.start();
+    private void enableSwappingAsynchronous() {
+        webServerType.startInBackground();
+        bonjourType.startInBackground();
     }
 
     public void disableSwapping() {
@@ -199,13 +206,12 @@ public class SwapService extends Service {
     }
 
     /**
-     * @see SwapService#enableSwappingSynchronous()
+     * @see SwapService#enableSwappingAsynchronous()
      */
     private void disableSwappingSynchronous() {
         Log.d(TAG, "Disabling SwapService (bonjour, webserver, etc)");
         bonjourType.stop();
         webServerType.stop();
-        nfcType.stop();
     }
 
     public boolean isEnabled() {
@@ -219,7 +225,7 @@ public class SwapService extends Service {
                 protected Void doInBackground(Void... params) {
                     Log.d(TAG, "Restarting swap services.");
                     disableSwappingSynchronous();
-                    enableSwappingSynchronous();
+                    enableSwappingAsynchronous();
                     return null;
                 }
             }.execute();
@@ -245,6 +251,7 @@ public class SwapService extends Service {
     }
 
     @SuppressWarnings("FieldCanBeLocal") // The constructor will get bloated if these are all local...
+    // TODO: Remove this preference...
     private final Preferences.ChangeListener bonjourEnabledListener = new Preferences.ChangeListener() {
         @Override
         public void onPreferenceChange() {

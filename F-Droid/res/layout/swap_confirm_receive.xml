@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<org.fdroid.fdroid.views.swap.ConfirmReceive
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -43,31 +43,34 @@
             <!-- 46px * 0.56 = 25.76sp -->
 
     <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/text_description"
+            android:layout_centerInParent="true"
             android:layout_marginTop="45dp">
             <!-- 80px * 0.56 = 45dp -->
 
+            <!-- TODO: Remove associated style files style="@style/SwapTheme.Wizard.ReceiveSwap.Deny"-->
         <Button
                 android:id="@+id/no_button"
                 android:text="@string/no"
-                style="@style/SwapTheme.Wizard.ReceiveSwap.Deny"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:background="@color/swap_deny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
                 />
 
-
+        <!-- TODO: Remove associated style files style="@style/SwapTheme.Wizard.ReceiveSwap.Confirm" -->
         <Button
                 android:id="@+id/yes_button"
                 android:text="@string/yes"
-                style="@style/SwapTheme.Wizard.ReceiveSwap.Confirm"
-                android:layout_width="0dp"
-                android:layout_weight="1"/>
+                android:background="@color/swap_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
     </LinearLayout>
 
-</RelativeLayout>
+</org.fdroid.fdroid.views.swap.ConfirmReceive>
