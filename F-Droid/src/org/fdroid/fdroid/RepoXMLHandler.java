@@ -20,6 +20,7 @@
 package org.fdroid.fdroid;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
@@ -97,7 +98,7 @@ public class RepoXMLHandler extends DefaultHandler {
         super.endElement(uri, localName, qName);
         final String curel = localName;
         final String str = curchars.toString().trim();
-        final boolean empty = (str == null || str.length() == 0);
+        final boolean empty = TextUtils.isEmpty(str);
 
         if (curel.equals("application") && curapp != null) {
             apps.add(curapp);

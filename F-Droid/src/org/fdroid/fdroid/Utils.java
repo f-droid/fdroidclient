@@ -465,7 +465,7 @@ public final class Utils {
         }
 
         public static CommaSeparatedList make(String list) {
-            if (list == null || list.length() == 0)
+            if (TextUtils.isEmpty(list))
                 return null;
             return new CommaSeparatedList(list);
         }

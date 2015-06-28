@@ -187,11 +187,11 @@ public class FDroid extends ActionBarActivity {
         }
 
         Intent call = null;
-        if (appId != null && appId.length() > 0) {
+        if (!TextUtils.isEmpty(appId)) {
             Log.d(TAG, "FDroid launched via app link for '" + appId + "'");
             call = new Intent(this, AppDetails.class);
             call.putExtra(AppDetails.EXTRA_APPID, appId);
-        } else if (query != null && query.length() > 0) {
+        } else if (!TextUtils.isEmpty(query)) {
             Log.d(TAG, "FDroid launched via search link for '" + query + "'");
             call = new Intent(this, SearchResults.class);
             call.setAction(Intent.ACTION_SEARCH);

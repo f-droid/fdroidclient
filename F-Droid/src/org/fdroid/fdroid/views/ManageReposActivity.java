@@ -476,7 +476,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 // to the user until they try to save the repo.
             }
 
-            final Repo repo = uri.length() > 0 ? RepoProvider.Helper.findByAddress(context, uri) : null;
+            final Repo repo = !TextUtils.isEmpty(uri) ? RepoProvider.Helper.findByAddress(context, uri) : null;
 
             if (repo == null) {
                 repoDoesntExist();
@@ -675,7 +675,7 @@ public class ManageReposActivity extends ActionBarActivity {
             }
             ContentValues values = new ContentValues(2);
             values.put(RepoProvider.DataColumns.ADDRESS, address);
-            if (fingerprint != null && fingerprint.length() > 0) {
+            if (!TextUtils.isEmpty(fingerprint)) {
                 values.put(RepoProvider.DataColumns.FINGERPRINT, fingerprint.toUpperCase(Locale.ENGLISH));
             }
             RepoProvider.Helper.insert(context, values);
@@ -689,7 +689,7 @@ public class ManageReposActivity extends ActionBarActivity {
         private void updateAndEnableExistingRepo(String url, String fingerprint) {
             if (fingerprint != null) {
                 fingerprint = fingerprint.trim();
-                if (fingerprint.length() == 0) {
+                if (TextUtils.isEmpty(fingerprint)) {
                     fingerprint = null;
                 } else {
                     fingerprint = fingerprint.toUpperCase(Locale.ENGLISH);

@@ -266,8 +266,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     protected void sendStatus(int statusCode, String message) {
         if (receiver != null) {
             Bundle resultData = new Bundle();
-            if (message != null && message.length() > 0)
+            if (!TextUtils.isEmpty(message)) {
                 resultData.putString(RESULT_MESSAGE, message);
+            }
             receiver.send(statusCode, resultData);
         }
     }

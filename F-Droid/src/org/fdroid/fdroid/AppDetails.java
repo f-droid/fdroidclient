@@ -48,6 +48,7 @@ import android.text.Layout;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -190,12 +191,12 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 Log.w(TAG, "Application " + app.id + " is not installed anymore");
                 return getString(R.string.not_inst);
             }
-            if (installerPkgName != null && installerPkgName.length() > 0) {
-                final String installerLabel = InstalledAppProvider
-                    .getApplicationLabel(mctx, installerPkgName);
-                return getString(R.string.inst_known_source, installerLabel);
+            if (TextUtils.isEmpty(installerPkgName)) {
+                return getString(R.string.inst_unknown_source);
             }
-            return getString(R.string.inst_unknown_source);
+            final String installerLabel = InstalledAppProvider
+                .getApplicationLabel(mctx, installerPkgName);
+            return getString(R.string.inst_known_source, installerLabel);
         }
 
         @Override
@@ -567,7 +568,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         Log.d(TAG, "Getting application details for " + appId);
         App newApp = null;
 
-        if (appId != null && appId.length() > 0) {
+        if (!TextUtils.isEmpty(appId)) {
             newApp = AppProvider.Helper.findById(getContentResolver(), appId);
         }
 
@@ -1180,63 +1181,63 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
 
             // Website button
             TextView tv = (TextView) view.findViewById(R.id.website);
-            if (getApp().webURL != null)
+            if (!TextUtils.isEmpty(getApp().webURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Source button
             tv = (TextView) view.findViewById(R.id.source);
-            if (getApp().sourceURL != null)
+            if (!TextUtils.isEmpty(getApp().sourceURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Issues button
             tv = (TextView) view.findViewById(R.id.issues);
-            if (getApp().trackerURL != null)
+            if (!TextUtils.isEmpty(getApp().trackerURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Changelog button
             tv = (TextView) view.findViewById(R.id.changelog);
-            if (getApp().changelogURL != null)
+            if (!TextUtils.isEmpty(getApp().changelogURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Donate button
             tv = (TextView) view.findViewById(R.id.donate);
-            if (getApp().donateURL != null)
+            if (!TextUtils.isEmpty(getApp().donateURL))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Bitcoin
             tv = (TextView) view.findViewById(R.id.bitcoin);
-            if (getApp().bitcoinAddr != null)
+            if (!TextUtils.isEmpty(getApp().bitcoinAddr))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Litecoin
             tv = (TextView) view.findViewById(R.id.litecoin);
-            if (getApp().litecoinAddr != null)
+            if (!TextUtils.isEmpty(getApp().litecoinAddr))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Dogecoin
             tv = (TextView) view.findViewById(R.id.dogecoin);
-            if (getApp().dogecoinAddr != null)
+            if (!TextUtils.isEmpty(getApp().dogecoinAddr))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
 
             // Flattr
             tv = (TextView) view.findViewById(R.id.flattr);
-            if (getApp().flattrID != null)
+            if (!TextUtils.isEmpty(getApp().flattrID))
                 tv.setOnClickListener(mOnClickListener);
             else
                 tv.setVisibility(View.GONE);
