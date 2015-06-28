@@ -76,8 +76,6 @@ public class TabsAdapter extends PagerAdapter
 
     public void addTab(TabHost.TabSpec tabSpec, View view) {
         tabSpec.setContent(new DummyTabFactory(mContext));
-        String tag = tabSpec.getTag();
-
         mTabs.add(view);
         mTabHost.addTab(tabSpec);
         notifyDataSetChanged();
