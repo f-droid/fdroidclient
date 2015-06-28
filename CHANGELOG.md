@@ -1,5 +1,7 @@
 ### Upcoming release
 
+* Adapt UI to use Material Design
+
 * Redesign the App Details view with larger icons, expandable description and
   links with icons
 
