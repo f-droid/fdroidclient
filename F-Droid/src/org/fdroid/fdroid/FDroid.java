@@ -48,7 +48,6 @@ import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.installer.InstallIntoSystemDialogActivity;
-import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.ConnectSwapActivity;

@@ -21,7 +21,6 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.support.annotation.NonNull;
