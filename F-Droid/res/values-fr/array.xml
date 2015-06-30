@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="themeNames">
-    <item>Sombre</item>
-    <item>Clair</item>
-    <item>Clair (avec barre d\'action sombre)</item>
-  </string-array>
-</resources>
+  </resources>
