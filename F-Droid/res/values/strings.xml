@@ -347,4 +347,5 @@
     <string name="wifi_warning_public">May work</string>
     <string name="wifi_warning_private">Promising</string>
     <string name="wifi_warning_personal">Best bet</string>
+	<string name="loading">Loading...</string>
 </resources>

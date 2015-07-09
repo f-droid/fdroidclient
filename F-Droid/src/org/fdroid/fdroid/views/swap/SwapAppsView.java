@@ -20,7 +20,6 @@ import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,7 +38,7 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -70,7 +69,7 @@ public class SwapAppsView extends ListView implements
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapManager getState() {
+    private SwapService getState() {
         return getActivity().getState();
     }
 
@@ -175,12 +174,12 @@ public class SwapAppsView extends ListView implements
 
     @Override
     public int getStep() {
-        return SwapManager.STEP_SUCCESS;
+        return SwapService.STEP_SUCCESS;
     }
 
     @Override
     public int getPreviousStep() {
-        return SwapManager.STEP_INTRO;
+        return SwapService.STEP_INTRO;
     }
 
     @ColorRes

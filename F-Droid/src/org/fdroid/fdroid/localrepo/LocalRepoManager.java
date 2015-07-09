@@ -56,7 +56,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 
 /**
- * The {@link SwapManager} deals with managing the entire workflow from selecting apps to
+ * The {@link SwapService} deals with managing the entire workflow from selecting apps to
  * swap, to invoking this class to prepare the webroot, to enabling various communication protocols.
  * This class deals specifically with the webroot side of things, ensuring we have a valid index.jar
  * and the relevant .apk and icon files available.

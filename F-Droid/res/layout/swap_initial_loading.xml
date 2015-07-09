@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<org.fdroid.fdroid.views.swap.InitialLoadingView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/swap_blue"
+    android:paddingTop="38.8dp"> <!-- 69px * 96dpi / 160dpi -->
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading"
+        android:textSize="18sp"
+        android:layout_below="@+id/progress"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true" />
+
+</org.fdroid.fdroid.views.swap.InitialLoadingView>

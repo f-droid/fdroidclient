@@ -2,14 +2,18 @@ package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -31,7 +35,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 
 import java.util.Arrays;
@@ -45,7 +49,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     /**
      * A UI component (subclass of {@link View}) which forms part of the swap workflow.
      * There is a one to one mapping between an {@link org.fdroid.fdroid.views.swap.SwapWorkflowActivity.InnerView}
-     * and a {@link org.fdroid.fdroid.localrepo.SwapManager.SwapStep}, and these views know what
+     * and a {@link SwapService.SwapStep}, and these views know what
      * the previous view before them should be.
      */
     public interface InnerView {
@@ -53,9 +57,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         boolean buildMenu(Menu menu, @NonNull MenuInflater inflater);
 
         /** @return The step that this view represents. */
-        @SwapManager.SwapStep int getStep();
+        @SwapService.SwapStep int getStep();
 
-        @SwapManager.SwapStep int getPreviousStep();
+        @SwapService.SwapStep int getPreviousStep();
 
         @ColorRes int getToolbarColour();
 
@@ -66,18 +70,57 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final int CONNECT_TO_SWAP = 1;
 
     private Toolbar toolbar;
-    private SwapManager state;
     private InnerView currentView;
     private boolean hasPreparedLocalRepo = false;
     private PrepareSwapRepo updateSwappableAppsTask = null;
 
+    @Nullable
+    private SwapService service = null;
+
+    @NonNull
+    public SwapService getService() {
+        if (service == null) {
+            // *Slightly* more informative than a null-pointer error that would otherwise happen.
+            throw new IllegalStateException("Trying to access swap service before it was initialized.");
+        }
+        return service;
+    }
+
+    private void setupService() {
+
+        ServiceConnection serviceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName className, IBinder binder) {
+                Log.d(TAG, "Swap service connected, enabling SwapManager to communicate with SwapService.");
+                service = ((SwapService.Binder)binder).getService();
+                showRelevantView();
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName className) {
+                Log.d(TAG, "Swap service disconnected");
+                service = null;
+                // TODO: What to do about the UI in this instance?
+            }
+        };
+
+        // The server should not be doing anything or occupying any (noticeable) resources
+        // until we actually ask it to enable swapping. Therefore, we will start it nice and
+        // early so we don't have to wait until it is connected later.
+        Intent service = new Intent(this, SwapService.class);
+        if (bindService(service, serviceConnection, Context.BIND_AUTO_CREATE)) {
+            startService(service);
+        }
+
+    }
+
     @Override
     public void onBackPressed() {
-        if (currentView.getStep() == SwapManager.STEP_INTRO) {
+        if (currentView.getStep() == SwapService.STEP_INTRO) {
             finish();
         } else {
             int nextStep = currentView.getPreviousStep();
-            state.setStep(nextStep);
+            getService().setStep(nextStep);
             showRelevantView();
         }
     }
@@ -85,7 +128,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        state = SwapManager.load(this);
+
+        setupService();
+
         setContentView(R.layout.swap_activity);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -93,14 +138,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         container = (ViewGroup) findViewById(R.id.fragment_container);
-        showRelevantView();
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         boolean parent = super.onPrepareOptionsMenu(menu);
-        boolean inner  = currentView.buildMenu(menu, getMenuInflater());
+        boolean inner  = currentView != null && currentView.buildMenu(menu, getMenuInflater());
         return parent || inner;
     }
 
@@ -111,32 +155,38 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void showRelevantView() {
-        if (currentView != null && currentView.getStep() == state.getStep()) {
-            // Already showing the currect step, so don't bother changing anything.
+
+        if (service == null) {
+            showInitialLoading();
             return;
         }
 
-        switch(state.getStep()) {
-            case SwapManager.STEP_INTRO:
+        if (container.getVisibility() == View.GONE || currentView != null && currentView.getStep() == service.getStep()) {
+            // Already showing the correct step, so don't bother changing anything.
+            return;
+        }
+
+        switch(service.getStep()) {
+            case SwapService.STEP_INTRO:
                 showIntro();
                 break;
-            case SwapManager.STEP_SELECT_APPS:
+            case SwapService.STEP_SELECT_APPS:
                 showSelectApps();
                 break;
-            case SwapManager.STEP_SHOW_NFC:
+            case SwapService.STEP_SHOW_NFC:
                 showNfc();
                 break;
-            case SwapManager.STEP_JOIN_WIFI:
+            case SwapService.STEP_JOIN_WIFI:
                 showJoinWifi();
                 break;
-            case SwapManager.STEP_WIFI_QR:
+            case SwapService.STEP_WIFI_QR:
                 showWifiQr();
                 break;
         }
     }
 
-    public SwapManager getState() {
-        return state;
+    public SwapService getState() {
+        return service;
     }
 
     private void showNfc() {
@@ -149,7 +199,16 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         container.removeAllViews();
         View view = ((LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
         currentView = (InnerView)view;
-        state.setStep(currentView.getStep());
+
+        // Don't actually set the step to STEP_INITIAL_LOADING, as we are going to use this view
+        // purely as a placeholder for _whatever view is meant to be shown_.
+        if (currentView.getStep() != SwapService.STEP_INITIAL_LOADING) {
+            if (service == null) {
+                throw new IllegalStateException("We are not in the STEP_INITIAL_LOADING state, but the service is not ready.");
+            }
+            service.setStep(currentView.getStep());
+        }
+
         toolbar.setBackgroundColor(currentView.getToolbarColour());
         toolbar.setTitle(currentView.getToolbarTitle());
         toolbar.setNavigationIcon(R.drawable.ic_close_white);
@@ -164,15 +223,19 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void onToolbarCancel() {
-        SwapManager.load(this).disableSwapping();
+        getService().disableSwapping();
         finish();
     }
 
+    private void showInitialLoading() {
+        inflateInnerView(R.layout.swap_initial_loading);
+    }
+
     private void showIntro() {
-        if (!state.isEnabled()) {
+        if (!getService().isEnabled()) {
             prepareInitialRepo();
         }
-        SwapManager.load(this).scanForPeers();
+        getService().scanForPeers();
         inflateInnerView(R.layout.swap_blank);
     }
 
@@ -190,7 +253,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     // Otherwise, probably will need to scan the file system.
     public void onAppsSelected() {
         if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
-            updateSwappableAppsTask = new PrepareFullSwapRepo(state.getAppsToSwap());
+            updateSwappableAppsTask = new PrepareFullSwapRepo(getService().getAppsToSwap());
             updateSwappableAppsTask.execute();
         } else if (!attemptToShowNfc()) {
             showWifiQr();
@@ -218,11 +281,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void onLocalRepoPrepared() {
         updateSwappableAppsTask = null;
         hasPreparedLocalRepo = true;
-        if (state.isConnectingWithPeer()) {
+        if (getService().isConnectingWithPeer()) {
             startSwappingWithPeer();
         } else if (!attemptToShowNfc()) {
             showWifiQr();
-        };
+        }
     }
 
     private void startSwappingWithPeer() {
@@ -263,7 +326,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void swapWith(Peer peer) {
-        state.swapWith(peer);
+        getService().swapWith(peer);
         showSelectApps();
     }
 
@@ -291,7 +354,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            state.enableSwapping();
+            getService().enableSwapping();
             super.onPreExecute();
         }
     }

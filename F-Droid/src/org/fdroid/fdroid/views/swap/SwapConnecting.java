@@ -5,27 +5,18 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
-import android.support.v4.view.MenuItemCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-
-import java.util.List;
 
 public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
@@ -52,7 +43,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapManager getManager() {
+    private SwapService getManager() {
         return getActivity().getState();
     }
 
@@ -116,12 +107,12 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
 
     @Override
     public int getStep() {
-        return SwapManager.STEP_CONNECTING;
+        return SwapService.STEP_CONNECTING;
     }
 
     @Override
     public int getPreviousStep() {
-        return SwapManager.STEP_SELECT_APPS;
+        return SwapService.STEP_SELECT_APPS;
     }
 
     @ColorRes

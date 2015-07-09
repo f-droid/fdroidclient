@@ -2,14 +2,13 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.util.Log;
 
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 
 /**
  * Searches for other devices in the vicinity, using specific technologies.
- * Once found, sends an {@link SwapManager#ACTION_PEER_FOUND} intent with the {@link SwapManager#EXTRA_PEER}
+ * Once found, sends an {@link SwapService#ACTION_PEER_FOUND} intent with the {@link SwapService#EXTRA_PEER}
  * extra attribute set to the subclass of {@link Peer} that was found.
  */
 public abstract class PeerFinder<T extends Peer> {
@@ -32,8 +31,8 @@ public abstract class PeerFinder<T extends Peer> {
 
     protected void foundPeer(T peer) {
         Log.i(TAG, "Found peer " + peer.getName());
-        Intent intent = new Intent(SwapManager.ACTION_PEER_FOUND);
-        intent.putExtra(SwapManager.EXTRA_PEER, peer);
+        Intent intent = new Intent(SwapService.ACTION_PEER_FOUND);
+        intent.putExtra(SwapService.EXTRA_PEER, peer);
         context.sendBroadcast(intent);
     }
 

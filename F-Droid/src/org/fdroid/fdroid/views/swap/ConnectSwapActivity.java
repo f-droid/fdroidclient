@@ -1,12 +1,15 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -27,7 +30,7 @@ import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -152,14 +155,37 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
             repo = RepoProvider.Helper.findByUri(this, uri);
         }
 
-        // Only ask server to swap with us, if we are actually running a local repo service.
-        // It is possible to have a swap initiated without first starting a swap, in which
-        // case swapping back is pointless.
-        if (!newRepoConfig.preventFurtherSwaps() && SwapManager.load(this).isEnabled()) {
-            askServerToSwapWithUs();
-        }
+        attemptSwapBack();
 
         return repo;
+    }
+
+    /**
+     * Only ask server to swap with us, if we are actually running a local repo service.
+     * It is possible to have a swap initiated without first starting a swap, in which
+     * case swapping back is pointless.
+     */
+    private void attemptSwapBack() {
+
+        if (newRepoConfig.preventFurtherSwaps()) {
+            return;
+        }
+
+        ServiceConnection connection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder binder) {
+                SwapService service = ((SwapService.Binder) binder).getService();
+                if (service.isEnabled()) {
+                    askServerToSwapWithUs();
+                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {}
+        };
+
+        Intent intent = new Intent(this, SwapService.class);
+        bindService(intent, connection, BIND_AUTO_CREATE);
     }
 
     private void askServerToSwapWithUs() {

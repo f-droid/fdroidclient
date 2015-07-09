@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 
 public class NfcView extends RelativeLayout implements SwapWorkflowActivity.InnerView {
 
@@ -70,12 +70,12 @@ public class NfcView extends RelativeLayout implements SwapWorkflowActivity.Inne
 
     @Override
     public int getStep() {
-        return SwapManager.STEP_SHOW_NFC;
+        return SwapService.STEP_SHOW_NFC;
     }
 
     @Override
     public int getPreviousStep() {
-        return SwapManager.STEP_JOIN_WIFI;
+        return SwapService.STEP_JOIN_WIFI;
     }
 
     @ColorRes

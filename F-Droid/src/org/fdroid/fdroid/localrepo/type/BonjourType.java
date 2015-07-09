@@ -3,7 +3,6 @@ package org.fdroid.fdroid.localrepo.type;
 import android.content.Context;
 import android.util.Log;
 
-import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;

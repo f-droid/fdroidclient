@@ -5,46 +5,40 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
+import android.support.v4.view.MenuItemCompat;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 
+import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapService;
 
-public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivity.InnerView {
+public class InitialLoadingView extends RelativeLayout implements SwapWorkflowActivity.InnerView {
 
-    public ConfirmReceive(Context context) {
+    public InitialLoadingView(Context context) {
         super(context);
     }
 
-    public ConfirmReceive(Context context, AttributeSet attrs) {
+    public InitialLoadingView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public ConfirmReceive(Context context, AttributeSet attrs, int defStyleAttr) {
+    public InitialLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public ConfirmReceive(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public InitialLoadingView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     private SwapWorkflowActivity getActivity() {
         return (SwapWorkflowActivity)getContext();
-    }
-
-    private SwapService getManager() {
-        return getActivity().getState();
-    }
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-
-
     }
 
     @Override
@@ -54,12 +48,12 @@ public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivi
 
     @Override
     public int getStep() {
-        return SwapService.STEP_CONFIRM_SWAP;
+        return SwapService.STEP_INITIAL_LOADING;
     }
 
     @Override
     public int getPreviousStep() {
-        return SwapService.STEP_INTRO;
+        return SwapService.STEP_JOIN_WIFI;
     }
 
     @ColorRes
@@ -69,6 +63,6 @@ public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivi
 
     @Override
     public String getToolbarTitle() {
-        return getResources().getString(R.string.swap_confirm);
+        return getResources().getString(R.string.swap);
     }
 }

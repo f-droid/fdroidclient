@@ -36,7 +36,7 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.data.InstalledAppProvider;
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 
 public class SelectAppsView extends ListView implements
         SwapWorkflowActivity.InnerView,
@@ -64,7 +64,7 @@ public class SelectAppsView extends ListView implements
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapManager getState() {
+    private SwapService getState() {
         return getActivity().getState();
     }
 
@@ -119,12 +119,12 @@ public class SelectAppsView extends ListView implements
 
     @Override
     public int getStep() {
-        return SwapManager.STEP_SELECT_APPS;
+        return SwapService.STEP_SELECT_APPS;
     }
 
     @Override
     public int getPreviousStep() {
-        return getState().isConnectingWithPeer() ? SwapManager.STEP_JOIN_WIFI : SwapManager.STEP_INTRO;
+        return getState().isConnectingWithPeer() ? SwapService.STEP_JOIN_WIFI : SwapService.STEP_INTRO;
     }
 
     @ColorRes

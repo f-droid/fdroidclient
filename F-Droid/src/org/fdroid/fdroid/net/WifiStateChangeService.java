@@ -1,8 +1,10 @@
 package org.fdroid.fdroid.net;
 
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -17,7 +19,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
-import org.fdroid.fdroid.localrepo.SwapManager;
+import org.fdroid.fdroid.localrepo.SwapService;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -159,7 +161,17 @@ public class WifiStateChangeService extends Service {
             Intent intent = new Intent(BROADCAST);
             LocalBroadcastManager.getInstance(WifiStateChangeService.this).sendBroadcast(intent);
             WifiStateChangeService.this.stopSelf();
-            SwapManager.load(WifiStateChangeService.this).restartIfEnabled();
+
+            Intent swapService = new Intent(WifiStateChangeService.this, SwapService.class);
+            bindService(swapService, new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName name, IBinder service) {
+                    ((SwapService.Binder)service).getService().restartIfEnabled();
+                }
+
+                @Override
+                public void onServiceDisconnected(ComponentName name) {}
+            }, BIND_AUTO_CREATE);
         }
     }
 

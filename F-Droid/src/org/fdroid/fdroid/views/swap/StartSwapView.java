@@ -6,8 +6,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
@@ -23,10 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -35,7 +31,6 @@ import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -97,7 +92,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapManager getManager() {
+    private SwapService getManager() {
         return getActivity().getState();
     }
 
@@ -175,7 +170,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         getContext().registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Peer peer = intent.getParcelableExtra(SwapManager.EXTRA_PEER);
+                Peer peer = intent.getParcelableExtra(SwapService.EXTRA_PEER);
                 if (adapter.getPosition(peer) >= 0) {
                     Log.d(TAG, "Found peer: " + peer + ", ignoring though, because it is already in our list.");
                 } else {
@@ -184,7 +179,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                     uiUpdatePeersInfo();
                 }
             }
-        }, new IntentFilter(SwapManager.ACTION_PEER_FOUND));
+        }, new IntentFilter(SwapService.ACTION_PEER_FOUND));
 
     }
 
@@ -241,12 +236,12 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                     if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
                         Log.d(TAG, "Bluetooth service is starting...");
                         bluetoothSwitch.setEnabled(false);
-                        bluetoothSwitch.setChecked(true);
+                        // bluetoothSwitch.setChecked(true);
                     } else {
                         bluetoothSwitch.setEnabled(true);
                         if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
                             Log.d(TAG, "Bluetooth service has started.");
-                            bluetoothSwitch.setChecked(true);
+                            // bluetoothSwitch.setChecked(true);
                         } else {
                             Log.d(TAG, "Bluetooth service has stopped.");
                             bluetoothSwitch.setChecked(false);
@@ -336,7 +331,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
 
     @Override
     public int getStep() {
-        return SwapManager.STEP_INTRO;
+        return SwapService.STEP_INTRO;
     }
 
     @Override
@@ -345,7 +340,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         // if getStep is STEP_INTRO, don't even bother asking for getPreviousStep. But that is a
         // bit messy. It would be nicer if this was handled using the same mechanism as everything
         // else.
-        return SwapManager.STEP_INTRO;
+        return SwapService.STEP_INTRO;
     }
 
     @Override
