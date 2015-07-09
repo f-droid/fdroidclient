@@ -64,7 +64,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         String heading = getContext().getString(R.string.status_connecting_to_repo, getActivity().getState().getPeer().getName());
         ((TextView) findViewById(R.id.heading)).setText(heading);
 
-        UpdateService.UpdateReceiver receiver = getManager().connectTo(peer);
+        UpdateService.UpdateReceiver receiver = getManager().connectTo(peer, true);
 
         receiver.hideDialog();
         receiver.setListener(new ProgressListener() {
@@ -117,7 +117,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
 
     @ColorRes
     public int getToolbarColour() {
-        return getResources().getColor(R.color.swap_blue);
+        return getResources().getColor(R.color.swap_bright_blue);
     }
 
     @Override

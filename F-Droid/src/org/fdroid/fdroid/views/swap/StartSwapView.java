@@ -167,7 +167,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             }
         });
 
-        getContext().registerReceiver(new BroadcastReceiver() {
+        LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Peer peer = intent.getParcelableExtra(SwapService.EXTRA_PEER);

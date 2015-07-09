@@ -30,4 +30,6 @@
             tools:text="Downloading index from http://10.0.0.4:8888/fdroid/repo"
             android:padding="30dp" />
 
+    <!-- TODO: Add button for "Retry" and show an error message when failed connecting. -->
+
 </org.fdroid.fdroid.views.swap.SwapConnecting>

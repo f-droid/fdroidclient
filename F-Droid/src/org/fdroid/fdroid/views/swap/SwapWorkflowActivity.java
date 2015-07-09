@@ -74,6 +74,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private boolean hasPreparedLocalRepo = false;
     private PrepareSwapRepo updateSwappableAppsTask = null;
 
+    @NonNull
+    private final ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder binder) {
+            Log.d(TAG, "Swap service connected, enabling SwapManager to communicate with SwapService.");
+            service = ((SwapService.Binder)binder).getService();
+            showRelevantView();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName className) {
+            Log.d(TAG, "Swap service disconnected");
+            service = null;
+            // TODO: What to do about the UI in this instance?
+        }
+    };
+
     @Nullable
     private SwapService service = null;
 
@@ -84,34 +101,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             throw new IllegalStateException("Trying to access swap service before it was initialized.");
         }
         return service;
-    }
-
-    private void setupService() {
-
-        ServiceConnection serviceConnection = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName className, IBinder binder) {
-                Log.d(TAG, "Swap service connected, enabling SwapManager to communicate with SwapService.");
-                service = ((SwapService.Binder)binder).getService();
-                showRelevantView();
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName className) {
-                Log.d(TAG, "Swap service disconnected");
-                service = null;
-                // TODO: What to do about the UI in this instance?
-            }
-        };
-
-        // The server should not be doing anything or occupying any (noticeable) resources
-        // until we actually ask it to enable swapping. Therefore, we will start it nice and
-        // early so we don't have to wait until it is connected later.
-        Intent service = new Intent(this, SwapService.class);
-        if (bindService(service, serviceConnection, Context.BIND_AUTO_CREATE)) {
-            startService(service);
-        }
-
     }
 
     @Override
@@ -129,7 +118,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setupService();
+        // The server should not be doing anything or occupying any (noticeable) resources
+        // until we actually ask it to enable swapping. Therefore, we will start it nice and
+        // early so we don't have to wait until it is connected later.
+        Intent service = new Intent(this, SwapService.class);
+        if (bindService(service, serviceConnection, Context.BIND_AUTO_CREATE)) {
+            startService(service);
+        }
 
         setContentView(R.layout.swap_activity);
 
@@ -138,6 +133,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         container = (ViewGroup) findViewById(R.id.fragment_container);
+    }
+
+    @Override
+    protected void onDestroy() {
+        unbindService(serviceConnection);
+        super.onDestroy();
     }
 
     @Override

@@ -167,6 +167,7 @@ public class WifiStateChangeService extends Service {
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder service) {
                     ((SwapService.Binder)service).getService().restartIfEnabled();
+                    unbindService(this);
                 }
 
                 @Override

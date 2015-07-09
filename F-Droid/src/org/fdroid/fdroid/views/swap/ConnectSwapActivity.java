@@ -6,8 +6,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.Uri;
-import android.net.http.AndroidHttpClient;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -15,32 +13,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.apache.http.HttpHost;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
-import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.localrepo.SwapService;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ConnectSwapActivity extends ActionBarActivity implements ProgressListener {
-    private static final String TAG = "ConnectSwapActivity";
 
-    private static final String STATE_CONFIRM = "startSwap";
+    private static final String TAG = "ConnectSwapActivity";
 
     /**
      * When connecting to a swap, we then go and initiate a connection with that
@@ -167,7 +151,7 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
      */
     private void attemptSwapBack() {
 
-        if (newRepoConfig.preventFurtherSwaps()) {
+        if (!newRepoConfig.isValidRepo() || newRepoConfig.preventFurtherSwaps()) {
             return;
         }
 
@@ -176,8 +160,9 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
             public void onServiceConnected(ComponentName name, IBinder binder) {
                 SwapService service = ((SwapService.Binder) binder).getService();
                 if (service.isEnabled()) {
-                    askServerToSwapWithUs();
+                    service.askServerToSwapWithUs(newRepoConfig);
                 }
+                unbindService(this);
             }
 
             @Override
@@ -186,55 +171,5 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
 
         Intent intent = new Intent(this, SwapService.class);
         bindService(intent, connection, BIND_AUTO_CREATE);
-    }
-
-    private void askServerToSwapWithUs() {
-        if (!newRepoConfig.isValidRepo()) {
-            return;
-        }
-
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... args) {
-                Uri repoUri = newRepoConfig.getRepoUri();
-                String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
-
-                AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", ConnectSwapActivity.this);
-                HttpPost request = new HttpPost("/request-swap");
-                HttpHost host = new HttpHost(repoUri.getHost(), repoUri.getPort(), repoUri.getScheme());
-
-                try {
-                    Log.d(TAG, "Asking server at " + newRepoConfig.getRepoUriString() + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
-                    populatePostParams(swapBackUri, request);
-                    client.execute(host, request);
-                } catch (IOException e) {
-                    notifyOfErrorOnUiThread();
-                    Log.e(TAG, "Error while asking server to swap with us: " + e.getMessage());
-                } finally {
-                    client.close();
-                }
-                return null;
-            }
-
-            private void populatePostParams(String swapBackUri, HttpPost request) throws UnsupportedEncodingException {
-                List<NameValuePair> params = new ArrayList<>();
-                params.add(new BasicNameValuePair("repo", swapBackUri));
-                UrlEncodedFormEntity encodedParams = new UrlEncodedFormEntity(params);
-                request.setEntity(encodedParams);
-            }
-
-            private void notifyOfErrorOnUiThread() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(
-                                ConnectSwapActivity.this,
-                                R.string.swap_reciprocate_failed,
-                                Toast.LENGTH_LONG
-                        ).show();
-                    }
-                });
-            }
-        }.execute();
     }
 }

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.IntDef;
@@ -20,11 +21,18 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.apache.http.HttpHost;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.message.BasicNameValuePair;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
@@ -37,11 +45,14 @@ import org.fdroid.fdroid.localrepo.type.WebServerType;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -134,11 +145,11 @@ public class SwapService extends Service {
 
     @Nullable
     public UpdateService.UpdateReceiver refreshSwap() {
-        return this.peer != null ? connectTo(peer) : null;
+        return this.peer != null ? connectTo(peer, false) : null;
     }
 
     @NonNull
-    public UpdateService.UpdateReceiver connectTo(@NonNull Peer peer) {
+    public UpdateService.UpdateReceiver connectTo(@NonNull Peer peer, boolean requestSwapBack) {
         if (peer != this.peer) {
             Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
         }
@@ -148,30 +159,34 @@ public class SwapService extends Service {
         // Only ask server to swap with us, if we are actually running a local repo service.
         // It is possible to have a swap initiated without first starting a swap, in which
         // case swapping back is pointless.
-        /*if (!newRepoConfig.preventFurtherSwaps() && isEnabled()) {
-            askServerToSwapWithUs();
-        }*/
+        if (isEnabled()) {
+            askServerToSwapWithUs(peerRepo);
+        }
 
         return UpdateService.updateRepoNow(peer.getRepoAddress(), this, false);
     }
-/*
-    private void askServerToSwapWithUs() {
-        if (!newRepoConfig.isValidRepo()) {
-            return;
-        }
 
+    private void askServerToSwapWithUs(final Repo repo) {
+        askServerToSwapWithUs(repo.address);
+    }
+
+    public void askServerToSwapWithUs(final NewRepoConfig config) {
+        askServerToSwapWithUs(config.getRepoUriString());
+    }
+
+    private void askServerToSwapWithUs(final String address) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... args) {
-                Uri repoUri = newRepoConfig.getRepoUri();
+                Uri repoUri = Uri.parse(address);
                 String swapBackUri = Utils.getLocalRepoUri(FDroidApp.repo).toString();
 
-                AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", ConnectSwapActivity.this);
+                AndroidHttpClient client = AndroidHttpClient.newInstance("F-Droid", SwapService.this);
                 HttpPost request = new HttpPost("/request-swap");
                 HttpHost host = new HttpHost(repoUri.getHost(), repoUri.getPort(), repoUri.getScheme());
 
                 try {
-                    Log.d(TAG, "Asking server at " + newRepoConfig.getRepoUriString() + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
+                    Log.d(TAG, "Asking server at " + address + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
                     populatePostParams(swapBackUri, request);
                     client.execute(host, request);
                 } catch (IOException e) {
@@ -191,19 +206,21 @@ public class SwapService extends Service {
             }
 
             private void notifyOfErrorOnUiThread() {
-                runOnUiThread(new Runnable() {
+                // TODO: Broadcast error message so that whoever wants to can display a relevant
+                // message in the UI. This service doesn't understand the concept of UI.
+                /*runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(
-                                ConnectSwapActivity.this,
+                                SwapService.this,
                                 R.string.swap_reciprocate_failed,
                                 Toast.LENGTH_LONG
                         ).show();
                     }
-                });
+                });*/
             }
         }.execute();
-    }*/
+    }
 
     private Repo ensureRepoExists(@NonNull Peer peer) {
         // TODO: newRepoConfig.getParsedUri() will include a fingerprint, which may not match with
