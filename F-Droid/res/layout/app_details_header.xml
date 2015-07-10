@@ -16,7 +16,7 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/icon_and_title"
     android:layout_width="match_parent"
@@ -40,6 +40,7 @@
         android:layout_gravity="center_vertical"
         android:baselineAligned="false"
         android:orientation="vertical"
+        android:layout_toRightOf="@id/icon"
         android:paddingLeft="16dp"
         android:paddingStart="16dp">
 
@@ -109,7 +110,50 @@
 
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon"
+        android:gravity="center">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal" />
+            <TextView
+                android:id="@+id/progress_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/progress_bar"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/progress_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/progress_bar"
+                android:textSize="12sp"/>
+        </RelativeLayout>
+        <ImageButton
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="0"
+            android:visibility="gone"
+            android:src="@drawable/ic_clear"
+            android:background="@null"/>
+    </LinearLayout>
+</RelativeLayout>
 
 
 

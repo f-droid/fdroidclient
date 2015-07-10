@@ -706,7 +706,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
         /**
          * If started by an intent that expects a result (e.g. QR codes) then we
-         * will set a result and finish. Otherwise, we'll refresh the list of repos
+         * will set a result and finish. Otherwise, we'll updateViews the list of repos
          * to reflect the newly created repo.
          */
         private void finishedAddingRepo() {
@@ -783,7 +783,7 @@ public class ManageReposActivity extends ActionBarActivity {
         /**
          * NOTE: If somebody toggles a repo off then on again, it will have
          * removed all apps from the index when it was toggled off, so when it
-         * is toggled on again, then it will require a refresh. Previously, I
+         * is toggled on again, then it will require a updateViews. Previously, I
          * toyed with the idea of remembering whether they had toggled on or
          * off, and then only actually performing the function when the activity
          * stopped, but I think that will be problematic. What about when they

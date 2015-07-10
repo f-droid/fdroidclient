@@ -375,4 +375,13 @@
 
     <string name="perms_new_perm_prefix"><font size="12" fgcolor="#ff33b5e5">NEW: </font></string>
     <string name="perms_description_app">Provided by %1$s.</string>
+    <string name="downloading">Downloading...</string>
+
+    <string-array name="file_size_units">
+        <item>B</item>
+        <item>KiB</item>
+        <item>MiB</item>
+        <item>GiB</item>
+        <item>TiB</item>
+    </string-array>
 </resources>
