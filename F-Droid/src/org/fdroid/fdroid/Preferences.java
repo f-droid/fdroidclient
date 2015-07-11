@@ -71,7 +71,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
     private static final boolean DEFAULT_INCOMP_VER = false;
     private static final boolean DEFAULT_EXPERT = false;
-    private static final boolean DEFAULT_PERMISSIONS = false;
     private static final boolean DEFAULT_ENABLE_PROXY = false;
     public static final String DEFAULT_THEME = "light";
     public static final String DEFAULT_PROXY_HOST = "127.0.0.1";
