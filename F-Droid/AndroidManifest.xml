@@ -359,12 +359,12 @@
 
         </activity>
         <activity
-            android:name=".views.swap.SwapAppListActivity$SwapAppDetails"
+            android:name=".views.swap.SwapWorkflowActivity$SwapAppDetails"
             android:label="@string/app_details"
-            android:parentActivityName=".views.swap.SwapAppListActivity" >
+            android:parentActivityName=".views.swap.SwapWorkflowActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.swap.SwapAppListActivity" />
+                android:value=".views.swap.SwapWorkflowActivity" />
         </activity>
         <activity
             android:label="@string/menu_preferences"
@@ -379,17 +379,6 @@
             android:name=".views.swap.SwapWorkflowActivity"
             android:parentActivityName=".FDroid"
             android:theme="@style/SwapTheme.Wizard"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FDroid" />
-        </activity>
-        <activity
-            android:label="@string/swap"
-            android:name=".views.swap.SwapAppListActivity"
-            android:parentActivityName=".FDroid"
-            android:theme="@style/SwapTheme.AppList"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
             <meta-data

@@ -8,6 +8,7 @@
     <color name="fdroid_blue_dark">#ff4b7195</color>
     <color name="fdroid_green">#FFAAD024</color>
 
+    <color name="swap_incompatible">#ff7900</color>
     <color name="swap_light_blue">#27aae1</color>
     <color name="swap_light_blue_pressed">#ff98cce1</color>
     <color name="swap_blue">#1c6bbc</color>

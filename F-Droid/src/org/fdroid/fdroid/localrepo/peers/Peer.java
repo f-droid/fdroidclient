@@ -14,4 +14,6 @@ public interface Peer extends Parcelable {
     String getRepoAddress();
 
     String getFingerprint();
+
+    boolean shouldPromptForSwapBack();
 }

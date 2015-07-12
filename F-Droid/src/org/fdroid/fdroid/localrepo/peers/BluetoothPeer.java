@@ -46,6 +46,11 @@ public class BluetoothPeer implements Peer {
     }
 
     @Override
+    public boolean shouldPromptForSwapBack() {
+        return false;
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }

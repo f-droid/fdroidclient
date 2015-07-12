@@ -14,6 +14,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -41,6 +43,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * This activity will do its best to show the most relevant screen about swapping to the user.
+ * The problem comes when there are two competing goals - 1) Show the user a list of apps from another
+ * device to download and install, and 2) Prepare your own list of apps to share.
+ */
 public class SwapWorkflowActivity extends AppCompatActivity {
 
     /**
@@ -52,6 +59,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public static final String EXTRA_PREVENT_FURTHER_SWAP_REQUESTS = "preventFurtherSwap";
     public static final String EXTRA_CONFIRM = "EXTRA_CONFIRM";
+    public static final String EXTRA_REPO_ID = "repoId";
 
     private ViewGroup container;
 
@@ -212,6 +220,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 break;
             case SwapService.STEP_WIFI_QR:
                 showWifiQr();
+                break;
+            case SwapService.STEP_SUCCESS:
+                showSwapConnected();
                 break;
         }
     }
@@ -375,9 +386,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      */
     public void swapWith(NewRepoConfig repoConfig) {
         getService().swapWith(repoConfig.toPeer());
-        if (!repoConfig.preventFurtherSwaps()) {
-            startSwappingWithPeer();
-        }
+        startSwappingWithPeer();
     }
 
     public void denySwap() {
@@ -502,6 +511,32 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             super.onProgressUpdate(progress);
             Log.d(TAG, progress[0]);
         }
+    }
+
+    /**
+     * Only difference from base class is that it navigates up to a different task.
+     * It will go to the {@link org.fdroid.fdroid.views.swap.SwapWorkflowActivity}
+     * whereas the base-class will go back to the main list of apps. Need to juggle
+     * the repoId in order to be able to return to an appropriately configured swap
+     * list.
+     */
+    public static class SwapAppDetails extends AppDetails {
+
+        private long repoId;
+
+        @Override
+        protected void onResume() {
+            super.onResume();
+            repoId = getIntent().getLongExtra(EXTRA_REPO_ID, -1);
+        }
+
+        @Override
+        protected void navigateUp() {
+            Intent parentIntent = NavUtils.getParentActivityIntent(this);
+            parentIntent.putExtra(EXTRA_REPO_ID, repoId);
+            NavUtils.navigateUpTo(this, parentIntent);
+        }
+
     }
 
 }

@@ -32,9 +32,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
@@ -47,6 +51,8 @@ public class SwapAppsView extends ListView implements
         SwapWorkflowActivity.InnerView,
         LoaderManager.LoaderCallbacks<Cursor>,
         SearchView.OnQueryTextListener {
+
+    private DisplayImageOptions displayImageOptions;
 
     public SwapAppsView(Context context) {
         super(context);
@@ -103,6 +109,8 @@ public class SwapAppsView extends ListView implements
                 showAppDetails(position);
             }
         });
+
+        displayImageOptions = Utils.getImageLoadingOptions().build();
 
         schedulePollForUpdates();
     }
@@ -279,46 +287,45 @@ public class SwapAppsView extends ListView implements
 
             TextView nameView = (TextView)view.findViewById(R.id.name);
             ImageView iconView = (ImageView)view.findViewById(android.R.id.icon);
-            Button button = (Button)view.findViewById(R.id.button);
-            TextView status = (TextView)view.findViewById(R.id.status);
+            Button btnInstall = (Button)view.findViewById(R.id.btn_install);
+            TextView btnAttemptInstall = (TextView)view.findViewById(R.id.btn_attempt_install);
+            TextView statusInstalled = (TextView)view.findViewById(R.id.status_installed);
+            TextView statusIncompatible = (TextView)view.findViewById(R.id.status_incompatible);
 
             final App app = new App(cursor);
 
             nameView.setText(app.name);
-            iconView.setImageDrawable(getDefaultAppIcon(context)); // TODO: Load icon from repo properly using UIL.
+            ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
+
+            btnInstall.setVisibility(View.GONE);
+            btnAttemptInstall.setVisibility(View.GONE);
+            statusInstalled.setVisibility(View.GONE);
+            statusIncompatible.setVisibility(View.GONE);
 
             if (app.hasUpdates()) {
-                button.setText(R.string.menu_upgrade);
-                button.setEnabled(true);
-                button.setBackgroundColor(getResources().getColor(R.color.fdroid_blue));
-                button.setVisibility(View.VISIBLE);
-                status.setVisibility(View.GONE);
+                btnInstall.setText(R.string.menu_upgrade);
+                btnInstall.setVisibility(View.VISIBLE);
             } else if (app.isInstalled()) {
-                status.setText(R.string.inst);
-                status.setTextColor(getResources().getColor(R.color.fdroid_green));
-                status.setVisibility(View.VISIBLE);
-                button.setVisibility(View.GONE);
+                statusInstalled.setVisibility(View.VISIBLE);
             } else if (!app.compatible) {
-                status.setText(R.string.incompatible);
-                status.setTextColor(getResources().getColor(R.color.swap_light_grey_icon));
-                status.setVisibility(View.VISIBLE);
-                button.setVisibility(View.GONE);
+                btnAttemptInstall.setVisibility(View.VISIBLE);
+                statusIncompatible.setVisibility(View.VISIBLE);
             } else {
-                button.setText(R.string.menu_install);
-                button.setEnabled(true);
-                button.setBackgroundColor(getResources().getColor(R.color.fdroid_green));
-                button.setVisibility(View.VISIBLE);
-                status.setVisibility(View.GONE);
+                btnInstall.setText(R.string.menu_install);
+                btnInstall.setVisibility(View.VISIBLE);
             }
 
-            button.setOnClickListener(new OnClickListener() {
+            OnClickListener installListener = new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (app.hasUpdates() || app.compatible) {
                         getState().install(app);
                     }
                 }
-            });
+            };
+
+            btnInstall.setOnClickListener(installListener);
+            btnAttemptInstall.setOnClickListener(installListener);
 
         }
     }

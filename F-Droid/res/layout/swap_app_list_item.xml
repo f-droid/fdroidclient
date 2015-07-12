@@ -16,30 +16,47 @@
         android:layout_alignParentStart="true"
         tools:src="@drawable/ic_launcher" />
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/button_or_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="end"
         android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_install"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@color/fdroid_green"
+            android:backgroundTint="@color/swap_light_blue"
             android:textColor="@android:color/white"
-            tools:text="Install"/>
+            android:text="@string/menu_install"/>
 
         <TextView
-            android:id="@+id/status"
+            android:id="@+id/status_installed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/fdroid_green"
-            tools:text="Installed" />
+            android:textStyle="italic"
+            android:text="@string/inst" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/status_incompatible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textColor="@color/swap_incompatible"
+            android:text="@string/incompatible" />
+
+        <TextView
+            android:id="@+id/btn_attempt_install"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/swap_light_blue"
+            android:text="@string/swap_attempt_install" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/name"

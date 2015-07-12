@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.localrepo.peers;
 
+import android.net.Uri;
 import android.os.Parcel;
 
 import javax.jmdns.impl.FDroidServiceInfo;
@@ -11,6 +12,8 @@ public class BonjourPeer extends WifiPeer {
 
     public BonjourPeer(ServiceInfo serviceInfo) {
         this.serviceInfo = new FDroidServiceInfo(serviceInfo);
+        this.name = serviceInfo.getDomain();
+        this.uri = Uri.parse(this.serviceInfo.getRepoAddress());
     }
 
     @Override

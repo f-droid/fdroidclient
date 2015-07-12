@@ -10,18 +10,20 @@ public class WifiPeer implements Peer {
 
     protected String name;
     protected Uri uri;
+    protected boolean shouldPromptForSwapBack;
 
     public WifiPeer() {
 
     }
 
     public WifiPeer(NewRepoConfig config) {
-        this(config.getRepoUri(), config.getHost());
+        this(config.getRepoUri(), config.getHost(), !config.preventFurtherSwaps());
     }
 
-    protected WifiPeer(Uri uri, String name) {
+    protected WifiPeer(Uri uri, String name, boolean shouldPromptForSwapBack) {
         this.name = name;
         this.uri = uri;
+        this.shouldPromptForSwapBack = shouldPromptForSwapBack;
     }
 
     @Override
@@ -45,6 +47,12 @@ public class WifiPeer implements Peer {
     }
 
     @Override
+    public boolean shouldPromptForSwapBack() {
+        return shouldPromptForSwapBack;
+    }
+
+
+    @Override
     public int describeContents() {
         return 0;
     }
@@ -53,10 +61,11 @@ public class WifiPeer implements Peer {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(uri.toString());
+        dest.writeByte(shouldPromptForSwapBack ? (byte) 1 : (byte) 0);
     }
 
     protected WifiPeer(Parcel in) {
-        this(Uri.parse(in.readString()), in.readString());
+        this(Uri.parse(in.readString()), in.readString(), in.readByte() == 1);
     }
 
     public static final Creator<WifiPeer> CREATOR = new Creator<WifiPeer>() {

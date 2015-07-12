@@ -61,10 +61,10 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
             return;
         }
 
-        String heading = getContext().getString(R.string.status_connecting_to_repo, getActivity().getState().getPeer().getName());
+        String heading = getContext().getString(R.string.status_connecting_to_repo, peer.getName());
         ((TextView) findViewById(R.id.heading)).setText(heading);
 
-        UpdateService.UpdateReceiver receiver = getManager().connectTo(peer, true);
+        UpdateService.UpdateReceiver receiver = getManager().connectTo(peer, peer.shouldPromptForSwapBack());
 
         receiver.hideDialog();
         receiver.setListener(new ProgressListener() {
