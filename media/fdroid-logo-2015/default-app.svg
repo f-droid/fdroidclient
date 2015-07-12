@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   viewBox="0 0 48.000001 48.000001"
+   id="svg4230"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="default-app.svg">
+  <defs
+     id="defs4232" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8.0000004"
+     inkscape:cx="3.3147453"
+     inkscape:cy="21.582138"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4135"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     gridtolerance="10000" />
+  <metadata
+     id="metadata4235">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1004.3622)">
+    <g
+       id="g4135">
+      <path
+         style="opacity:1;fill:#595959;fill-opacity:0.50588223;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:3;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="M 24 2 A 22 22 0 0 0 2 24 A 22 22 0 0 0 24 46 A 22 22 0 0 0 46 24 A 22 22 0 0 0 24 2 z M 10.492188 9.78125 A 0.78955263 0.78955263 0 0 1 11.103516 10.095703 L 13.271484 12.902344 C 13.467722 12.834044 13.676335 12.789062 13.896484 12.789062 L 34.107422 12.789062 C 34.327161 12.789062 34.53454 12.834344 34.730469 12.902344 L 36.896484 10.095703 A 0.78955263 0.78955263 0 0 1 37.484375 9.78125 A 0.78955263 0.78955263 0 0 1 38.146484 11.0625 L 35.871094 14.005859 C 35.951926 14.216959 36.001953 14.443394 36.001953 14.683594 L 36.001953 14.769531 L 36.001953 16.578125 L 36.001953 19.105469 C 36.001953 20.155169 35.157106 21 34.107422 21 L 13.896484 21 C 12.8468 21 12.001953 20.155169 12.001953 19.105469 L 12.001953 19.019531 L 12.001953 17.210938 L 12.001953 14.683594 C 12.001953 14.444294 12.048706 14.218213 12.128906 14.007812 L 9.8535156 11.0625 A 0.78955263 0.78955263 0 0 1 10.492188 9.78125 z M 17.921875 15.158203 A 2.131579 2.131579 0 0 0 15.789062 17.289062 A 2.131579 2.131579 0 0 0 17.921875 19.421875 A 2.131579 2.131579 0 0 0 20.052734 17.289062 A 2.131579 2.131579 0 0 0 17.921875 15.158203 z M 30.236328 15.158203 A 2.131579 2.131579 0 0 0 28.105469 17.289062 A 2.131579 2.131579 0 0 0 30.236328 19.421875 A 2.131579 2.131579 0 0 0 32.369141 17.289062 A 2.131579 2.131579 0 0 0 30.236328 15.158203 z M 13.894531 22 L 34.105469 22 C 34.23668 22 34.364713 22.013109 34.488281 22.037109 C 35.353235 22.207009 36 22.941625 36 23.828125 L 36 23.84375 L 36 36.154297 C 36 37.177197 35.155153 38 34.105469 38 L 13.894531 38 C 12.844846 38 12 37.177197 12 36.154297 L 12 36.035156 L 12 36.019531 L 12 23.845703 L 12 23.828125 C 12 22.941725 12.646766 22.207309 13.511719 22.037109 C 13.635281 22.012109 13.76332 22 13.894531 22 z "
+         id="path4141"
+         transform="translate(0,1004.3622)" />
+    </g>
+  </g>
+</svg>
