@@ -27,7 +27,6 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -43,6 +42,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SwapWorkflowActivity extends AppCompatActivity {
+
+    /**
+     * When connecting to a swap, we then go and initiate a connection with that
+     * device and ask if it would like to swap with us. Upon receiving that request
+     * and agreeing, we don't then want to be asked whether we want to swap back.
+     * This flag protects against two devices continually going back and forth
+     * among each other offering swaps.
+     */
+    public static final String EXTRA_PREVENT_FURTHER_SWAP_REQUESTS = "preventFurtherSwap";
+    public static final String EXTRA_CONFIRM = "EXTRA_CONFIRM";
 
     private ViewGroup container;
 
@@ -73,6 +82,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private InnerView currentView;
     private boolean hasPreparedLocalRepo = false;
     private PrepareSwapRepo updateSwappableAppsTask = null;
+    private NewRepoConfig confirmSwapConfig = null;
 
     @NonNull
     private final ServiceConnection serviceConnection = new ServiceConnection() {
@@ -152,13 +162,33 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        checkIncomingIntent();
         showRelevantView();
+    }
+
+    private void checkIncomingIntent() {
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra(EXTRA_CONFIRM, false)) {
+            // Storing config in this variable will ensure that when showRelevantView() is next
+            // run, it will show the connect swap view (if the service is available).
+            confirmSwapConfig = new NewRepoConfig(this, intent);
+        }
     }
 
     private void showRelevantView() {
 
         if (service == null) {
             showInitialLoading();
+            return;
+        }
+
+        // This is separate from the switch statement below, because it is usually populated
+        // during onResume, when there is a high probability of not having a swap service
+        // available. Thus, we were unable to set the state of the swap service appropriately.
+        if (confirmSwapConfig != null) {
+            showConfirmSwap(confirmSwapConfig);
+            confirmSwapConfig = null;
             return;
         }
 
@@ -196,7 +226,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
-    private void inflateInnerView(@LayoutRes int viewRes) {
+    private InnerView inflateInnerView(@LayoutRes int viewRes) {
         container.removeAllViews();
         View view = ((LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(viewRes, container, false);
         currentView = (InnerView)view;
@@ -221,6 +251,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         });
         container.addView(view);
         supportInvalidateOptionsMenu();
+
+        return currentView;
     }
 
     private void onToolbarCancel() {
@@ -238,6 +270,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
         getService().scanForPeers();
         inflateInnerView(R.layout.swap_blank);
+    }
+
+    private void showConfirmSwap(@NonNull NewRepoConfig config) {
+        ((ConfirmReceive)inflateInnerView(R.layout.swap_confirm_receive)).setup(config);
     }
 
     public void showSelectApps() {
@@ -331,6 +367,23 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         showSelectApps();
     }
 
+    /**
+     * When swapping with a peer that is identified by a NewRepoConfig, that means that they
+     * came from a QR Code scan. In this situation, we should already have a full swap repo
+     * ready to go.
+     * TODO: What if we scanned the repo but do not have a repo running yet?
+     */
+    public void swapWith(NewRepoConfig repoConfig) {
+        getService().swapWith(repoConfig.toPeer());
+        if (!repoConfig.preventFurtherSwaps()) {
+            startSwappingWithPeer();
+        }
+    }
+
+    public void denySwap() {
+        showIntro();
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -338,7 +391,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             if (scanResult.getContents() != null) {
                 NewRepoConfig repoConfig = new NewRepoConfig(this, scanResult.getContents());
                 if (repoConfig.isValidRepo()) {
-                    startActivityForResult(new Intent(FDroid.ACTION_ADD_REPO, Uri.parse(scanResult.getContents()), this, ConnectSwapActivity.class), CONNECT_TO_SWAP);
+                    confirmSwapConfig = repoConfig;
+                    showRelevantView();
                 } else {
                     Toast.makeText(this, "The QR code you scanned doesn't look like a swap code.", Toast.LENGTH_SHORT).show();
                 }

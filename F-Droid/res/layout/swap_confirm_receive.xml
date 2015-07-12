@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<org.fdroid.fdroid.views.swap.ConfirmReceive
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/swap_blue"
-        android:padding="18dp">
+<org.fdroid.fdroid.views.swap.ConfirmReceive xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/swap_blue"
+    android:padding="18dp">
     <!-- Padding is 32px * 0.56 = 18dip -->
 
     <ImageView
@@ -34,7 +35,7 @@
 
     <TextView
             android:id="@+id/text_description"
-            android:text="@string/swap_confirm_connect"
+            tools:text="@string/swap_confirm_connect"
             style="@style/SwapTheme.Wizard.Text"
             android:layout_below="@id/text_title"
             android:layout_width="match_parent"
@@ -55,7 +56,7 @@
         <Button
                 android:id="@+id/no_button"
                 android:text="@string/no"
-                android:background="@color/swap_deny"
+                app:backgroundTint="@color/swap_deny"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
@@ -66,7 +67,7 @@
         <Button
                 android:id="@+id/yes_button"
                 android:text="@string/yes"
-                android:background="@color/swap_confirm"
+                app:backgroundTint="@color/swap_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />

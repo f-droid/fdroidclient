@@ -21,6 +21,14 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         super(info);
     }
 
+    public String getFingerprint() {
+        return getPropertyString("fingerprint");
+    }
+
+    public String getRepoAddress() {
+        return getURL(); // Automatically appends the "path" property if present, so no need to do it ourselves.
+    }
+
     private static byte[] readBytes(Parcel in) {
         byte[] bytes = new byte[in.readInt()];
         in.readByteArray(bytes);

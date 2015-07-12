@@ -8,7 +8,7 @@ import android.webkit.MimeTypeMap;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
-import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -77,10 +77,11 @@ public class LocalHTTPD extends NanoHTTPD {
         Log.d(TAG, "Showing confirm screen to check whether that is okay with the user.");
 
         Uri repoUri = Uri.parse(repo);
-        Intent intent = new Intent(context, ConnectSwapActivity.class);
+        Intent intent = new Intent(context, SwapWorkflowActivity.class);
         intent.setData(repoUri);
+        intent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
+        intent.putExtra(SwapWorkflowActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(ConnectSwapActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
         context.startActivity(intent);
     }
 

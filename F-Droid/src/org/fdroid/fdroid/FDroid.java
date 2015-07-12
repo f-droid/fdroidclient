@@ -49,7 +49,6 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
-import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 public class FDroid extends ActionBarActivity {
@@ -208,7 +207,8 @@ public class FDroid extends ActionBarActivity {
             if (parser.isValidRepo()) {
                 intent.putExtra("handled", true);
                 if (parser.isFromSwap()) {
-                    Intent confirmIntent = new Intent(this, ConnectSwapActivity.class);
+                    Intent confirmIntent = new Intent(this, SwapWorkflowActivity.class);
+                    confirmIntent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
                     confirmIntent.setData(intent.getData());
                     startActivityForResult(confirmIntent, REQUEST_SWAP);
                 } else {

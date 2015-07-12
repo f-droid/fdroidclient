@@ -8,12 +8,17 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.SwapService;
 
 public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivity.InnerView {
+
+    private NewRepoConfig config;
 
     public ConfirmReceive(Context context) {
         super(context);
@@ -36,15 +41,23 @@ public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivi
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapService getManager() {
-        return getActivity().getState();
-    }
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
 
+        findViewById(R.id.no_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().denySwap();
+            }
+        });
 
+        findViewById(R.id.yes_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().swapWith(config);
+            }
+        });
     }
 
     @Override
@@ -70,5 +83,11 @@ public class ConfirmReceive extends RelativeLayout implements SwapWorkflowActivi
     @Override
     public String getToolbarTitle() {
         return getResources().getString(R.string.swap_confirm);
+    }
+
+    public void setup(NewRepoConfig config) {
+        this.config = config;
+        TextView descriptionTextView = (TextView) findViewById(R.id.text_description);
+        descriptionTextView.setText(getResources().getString(R.string.swap_confirm_connect, config.getHost()));
     }
 }

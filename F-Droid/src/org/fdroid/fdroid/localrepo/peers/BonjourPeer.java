@@ -2,16 +2,10 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.os.Parcel;
 
-import org.fdroid.fdroid.R;
-
-import java.net.Inet4Address;
-import java.net.Inet6Address;
-
 import javax.jmdns.impl.FDroidServiceInfo;
 import javax.jmdns.ServiceInfo;
-import javax.jmdns.impl.ServiceInfoImpl;
 
-public class BonjourPeer implements Peer {
+public class BonjourPeer extends WifiPeer {
 
     private FDroidServiceInfo serviceInfo;
 
@@ -30,11 +24,6 @@ public class BonjourPeer implements Peer {
     }
 
     @Override
-    public int getIcon() {
-        return R.drawable.ic_network_wifi_white;
-    }
-
-    @Override
     public boolean equals(Object peer) {
         if (peer != null && peer instanceof BonjourPeer) {
             BonjourPeer that = (BonjourPeer)peer;
@@ -45,12 +34,12 @@ public class BonjourPeer implements Peer {
 
     @Override
     public String getRepoAddress() {
-        return serviceInfo.getURL(); // Automatically appends the "path" property if present, so no need to do it ourselves.
+        return serviceInfo.getRepoAddress();
     }
 
     @Override
     public String getFingerprint() {
-        return serviceInfo.getPropertyString("fingerprint");
+        return serviceInfo.getFingerprint();
     }
 
     @Override
