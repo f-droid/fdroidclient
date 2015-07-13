@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.io.StringBufferInputStream;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +37,23 @@ public class Response {
         this.statusCode = statusCode;
         this.headers = headers;
         this.contentStream = contentStream;
+    }
+
+    public Response(int statusCode, String mimeType, String content) {
+        this.statusCode = statusCode;
+        this.headers = new HashMap<String,String>();
+        this.contentStream = new StringBufferInputStream(content);
+    }
+
+    public Response(int statusCode, String mimeType, InputStream contentStream) {
+        this.statusCode = statusCode;
+        this.headers = new HashMap<String,String>();
+        this.contentStream = contentStream;
+    }
+
+    public void addHeader (String key, String value)
+    {
+        headers.put(key, value);
     }
 
     public int getStatusCode() {

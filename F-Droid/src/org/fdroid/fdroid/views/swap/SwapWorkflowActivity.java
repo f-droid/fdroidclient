@@ -331,7 +331,7 @@ public class SwapWorkflowActivity extends ActionBarActivity {
         if (!state.isEnabled()) {
             state.enableSwapping();
         }
-        new BluetoothServer(this).start();
+        new BluetoothServer(this,getFilesDir()).start();
         showBluetoothDeviceList();
     }
 
