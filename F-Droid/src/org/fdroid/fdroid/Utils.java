@@ -45,7 +45,6 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -258,36 +257,6 @@ public final class Utils {
 
     public static int getMaxSdkVersion(Context context, String packageName) {
         return getMinMaxSdkVersion(context, packageName, "maxSdkVersion");
-    }
-
-    public static int countSubstringOccurrence(File file, String substring) throws IOException {
-        int count = 0;
-        FileReader input = null;
-        try {
-            int currentSubstringIndex = 0;
-            char[] buffer = new char[4096];
-
-            input = new FileReader(file);
-            int numRead = input.read(buffer);
-            while(numRead != -1) {
-
-                for (char c : buffer) {
-                    if (c == substring.charAt(currentSubstringIndex)) {
-                        currentSubstringIndex++;
-                        if (currentSubstringIndex == substring.length()) {
-                            count++;
-                            currentSubstringIndex = 0;
-                        }
-                    } else {
-                        currentSubstringIndex = 0;
-                    }
-                }
-                numRead = input.read(buffer);
-            }
-        } finally {
-            closeQuietly(input);
-        }
-        return count;
     }
 
     // return a fingerprint formatted for display

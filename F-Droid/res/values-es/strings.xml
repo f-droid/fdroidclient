@@ -171,9 +171,6 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
-  <string name="status_processing_xml">Procesando la aplicación
-%2$d de %3$d desde
-%1$s</string>
   <string name="status_connecting_to_repo">Conectando a
 %1$s</string>
   <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo…</string>

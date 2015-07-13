@@ -139,9 +139,6 @@ Você deseja atualizá-los?</string>
   <string name="status_download">Baixando
 %2$s / %3$s (%4$d%%) de 
 %1$s</string>
-  <string name="status_processing_xml">Processando aplicativo
-%2$d de %3$d, de 
-%1$s</string>
   <string name="status_connecting_to_repo">Conectando-se a
 %1$s</string>
   <string name="status_checking_compatibility">Verificando compatibilidade de aplicativos com o seu dispositivo…</string>

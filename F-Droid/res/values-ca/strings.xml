@@ -99,9 +99,6 @@ La voleu actualitzar?</string>
   <string name="status_download">S\'està baixant
 %2$s / %3$s (%4$d%%) des de
 %1$s</string>
-  <string name="status_processing_xml">S\'està processant l\'aplicació
-%2$d de %3$d des de
-%1$s</string>
   <string name="status_connecting_to_repo">S\'està connectant a
 %1$s</string>
   <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu…</string>

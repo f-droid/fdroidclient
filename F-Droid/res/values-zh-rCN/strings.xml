@@ -140,9 +140,6 @@ https://f-droid.org/repo</string>
   <string name="status_download">正在从以下位置下载：
 %1$s
 进度：%2$s / %3$s (%4$d%%)</string>
-  <string name="status_processing_xml">正在处理以下位置的应用程序：
-%1$s
-进度：%2$d / %3$d</string>
   <string name="status_connecting_to_repo">正在连接到
 %1$s</string>
   <string name="status_checking_compatibility">正在检查应用程序与您的设备的兼容性…</string>

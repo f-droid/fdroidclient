@@ -172,9 +172,6 @@
   <string name="status_download">Загрузка
 %2$s / %3$s (%4$d%%) из
 %1$s</string>
-  <string name="status_processing_xml">Обработка приложения
-%2$d из %3$d от
-%1$s</string>
   <string name="status_connecting_to_repo">Соединение с
 %1$s</string>
   <string name="status_checking_compatibility">Проверка совместимости приложений с вашим устройством…</string>

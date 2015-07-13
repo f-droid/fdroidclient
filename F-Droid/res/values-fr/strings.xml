@@ -168,9 +168,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="status_download">Téléchargement
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
-  <string name="status_processing_xml">Prise en compte de l\'application
-%2$d de %3$d depuis
-%1$s</string>
   <string name="status_connecting_to_repo">Connexion à
 %1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des applications avec votre appareil…</string>

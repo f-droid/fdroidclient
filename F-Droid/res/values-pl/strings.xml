@@ -129,7 +129,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="proxy_host_summary">Skonfiguruj host proxy</string>
   <string name="proxy_port">Port proxy</string>
   <string name="proxy_port_summary">Skonfiguruj port proxy</string>
-  <string name="status_processing_xml">Przetwarzanie aplikacji %2$d / %3$d z %1$s</string>
   <string name="status_connecting_to_repo">Trwa łączenie z
 %1$s</string>
   <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>

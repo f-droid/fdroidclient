@@ -171,9 +171,6 @@ Vuoi aggiornarlo?</string>
   <string name="status_download">Scaricamento
 %2$s / %3$s (%4$d%%) da
 %1$s</string>
-  <string name="status_processing_xml">Elaborazione applicazione
-%2$d di %3$d da
-%1$s</string>
   <string name="status_connecting_to_repo">Connessione a
 %1$s</string>
   <string name="status_checking_compatibility">Controllo compatibilità applicazioni con il tuo dispositivo…</string>

@@ -154,9 +154,6 @@ Güncellemek ister misiniz?</string>
   <string name="status_download">İndiriliyor
 %2$s / %3$s (%4$d%%) şuradan
 %1$s</string>
-  <string name="status_processing_xml">Uygulama ele alınıyor
-%2$d toplam %3$d şuradan
-%1$s</string>
   <string name="status_connecting_to_repo">%1$s konumuna
 bağlanılıyor</string>
   <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>

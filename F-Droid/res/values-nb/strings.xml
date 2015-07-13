@@ -165,14 +165,8 @@ Lisensiert GNU GPLv3.</string>
   <string name="proxy_host_summary">Sett opp tjenernavn for din mellomtjener (f.eks. 127.0.0.1)</string>
   <string name="proxy_port">Mellomtjener-port</string>
   <string name="proxy_port_summary">Sett opp portnummer for din mellomtjener (f.eks. 8118)</string>
-  <string name="status_download">Laster ned
-%2$s / %3$s (%4$d%%) fra
-%1$s</string>
-  <string name="status_processing_xml">Prosesserer applikasjon
-%2$d of %3$d fra
-%1$s</string>
-  <string name="status_connecting_to_repo">Kobler til
-%1$s</string>
+  <string name="status_download">Laster ned\n%2$s / %3$s (%4$d%%) fra\n%1$s</string>
+  <string name="status_connecting_to_repo">Kobler til\n%1$s</string>
   <string name="status_checking_compatibility">Sjekker programstøtte for ditt utstyr…</string>
   <string name="status_inserting">Lagrer programdata (%1$d%%)</string>
   <string name="repos_unchanged">Ingen av pakkebrønnene hadde noen oppdateringer</string>
