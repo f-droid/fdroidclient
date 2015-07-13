@@ -296,15 +296,16 @@ public class SwapWorkflowActivity extends ActionBarActivity {
 
         Log.d(TAG, "Initiating Bluetooth swap instead of wifi.");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        // TODO: May be null (e.g. on an emulator).
-        if (adapter.isEnabled()) {
-            Log.d(TAG, "Bluetooth enabled, will pair with device.");
-            ensureBluetoothDiscoverable();
-        } else {
-            Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE);
-        }
+
+        if (adapter != null)
+            if (adapter.isEnabled()) {
+                Log.d(TAG, "Bluetooth enabled, will pair with device.");
+                ensureBluetoothDiscoverable();
+            } else {
+                Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE);
+            }
     }
 
     private void ensureBluetoothDiscoverable() {
@@ -318,10 +319,11 @@ public class SwapWorkflowActivity extends ActionBarActivity {
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
             intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
-        } else {
-            Log.d(TAG, "Bluetooth is already discoverable, so lets start the Bluetooth server.");
-            startBluetoothServer();
         }
+
+        Log.d(TAG, "Staring the Bluetooth Server whether we are discoverable or not, since paired devices can still connect.");
+        startBluetoothServer();
+
     }
 
     private void startBluetoothServer() {
