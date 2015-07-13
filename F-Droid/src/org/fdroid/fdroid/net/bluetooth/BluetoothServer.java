@@ -29,6 +29,9 @@ public class BluetoothServer extends Thread {
 
     private final Context context;
 
+    private String deviceBluetoothName = null;
+    public final static String BLUETOOTH_NAME_TAG = "FDroid:";
+
     public BluetoothServer(Context context) {
         this.context = context.getApplicationContext();
     }
@@ -43,14 +46,26 @@ public class BluetoothServer extends Thread {
             Utils.closeQuietly(serverSocket);
         }
 
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        adapter.setName(deviceBluetoothName.replace(BLUETOOTH_NAME_TAG,""));
+
     }
 
     @Override
     public void run() {
 
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+
+
+        //store the original bluetoothname, and update this one to be unique
+        deviceBluetoothName = adapter.getName();
+
+        if (!deviceBluetoothName.contains(BLUETOOTH_NAME_TAG))
+            adapter.setName(BLUETOOTH_NAME_TAG + deviceBluetoothName);
+
+
         try {
-            serverSocket = adapter.listenUsingRfcommWithServiceRecord("FDroid App Swap", BluetoothConstants.fdroidUuid());
+            serverSocket = adapter.listenUsingInsecureRfcommWithServiceRecord("FDroid App Swap", BluetoothConstants.fdroidUuid());
         } catch (IOException e) {
             Log.e(TAG, "Error starting Bluetooth server socket, will stop the server now - " + e.getMessage());
             return;
