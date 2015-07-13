@@ -26,6 +26,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.net.BluetoothDownloader;
@@ -47,6 +49,8 @@ public class BluetoothDeviceListView extends ListView implements
 
     private MenuItem scanMenuItem;
     private MenuItem cancelMenuItem;
+
+    private boolean firstScan = true;
 
     public BluetoothDeviceListView(Context context) {
         super(context);
@@ -132,6 +136,7 @@ public class BluetoothDeviceListView extends ListView implements
         addHeaderView(headerView);
 
         setAdapter(adapter);
+        setOnItemClickListener(this);
 
         final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
 
@@ -146,6 +151,8 @@ public class BluetoothDeviceListView extends ListView implements
        // populateBondedDevices();
 
     }
+
+
 
     private void cancelBluetoothScan() {
 
@@ -178,49 +185,62 @@ public class BluetoothDeviceListView extends ListView implements
 
         loadingBar.show();
 
-
         final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
-        final BroadcastReceiver deviceFoundReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
-                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    Log.d(TAG, "Found bluetooth device: " + device.toString());
 
-                    if (device != null && device.getName() != null)
-                        if (device.getName().contains(BluetoothServer.BLUETOOTH_NAME_TAG)) {
-                            boolean exists = false;
-                            for (int i = 0; i < adapter.getCount(); i++) {
-                                if (adapter.getItem(i).getAddress().equals(device.getAddress())) {
-                                    exists = true;
-                                    break;
+        if (firstScan) {
+            final BroadcastReceiver deviceFoundReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+
+                    if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
+                        BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                        Log.d(TAG, "Found bluetooth device: " + device.toString());
+
+                        if (device != null && device.getName() != null)
+                            if (device.getName().contains(BluetoothServer.BLUETOOTH_NAME_TAG)) {
+                                boolean exists = false;
+                                for (int i = 0; i < adapter.getCount(); i++) {
+                                    if (adapter.getItem(i).getAddress().equals(device.getAddress())) {
+                                        exists = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!exists) {
+                                    adapter.add(device);
                                 }
                             }
-
-                            if (!exists) {
-                                adapter.add(device);
-                            }
-                        }
+                    }
                 }
-            }
-        };
+            };
 
-        final BroadcastReceiver scanCompleteReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Log.d(TAG, "Scan complete: " + intent.getAction());
-                loadingBar.hide();
-                cancelMenuItem.setVisible(false);
-                scanMenuItem.setVisible(true);
-            }
-        };
+            final BroadcastReceiver scanCompleteReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    Log.d(TAG, "Scan complete: " + intent.getAction());
+                    loadingBar.hide();
+                    cancelMenuItem.setVisible(false);
+                    scanMenuItem.setVisible(true);
+                }
+            };
 
-        getContext().registerReceiver(deviceFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-        getContext().registerReceiver(scanCompleteReceiver, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
+            getContext().registerReceiver(deviceFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+            getContext().registerReceiver(scanCompleteReceiver, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
+
+            firstScan = false;
+        }
+        else
+        {
+            if (bluetooth.isDiscovering())
+            {
+                bluetooth.cancelDiscovery();
+            }
+        }
 
         if (!bluetooth.startDiscovery()) {
             // TODO: Discovery did not start for some reason :(
             Log.e(TAG, "Could not start bluetooth discovery, but am not sure why :(");
+            Toast.makeText(getContext(),"There was a problem looking for Bluetooth devices",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -230,6 +250,8 @@ public class BluetoothDeviceListView extends ListView implements
             adapter.add(device);
         }
     }
+
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -327,11 +349,11 @@ public class BluetoothDeviceListView extends ListView implements
             BluetoothDevice device = getItem(position);
             TextView nameView = (TextView)view.findViewById(android.R.id.text1);
             TextView addressView = (TextView)view.findViewById(android.R.id.text2);
-            TextView descriptionView = (TextView)view.findViewById(R.id.text3);
+            //TextView descriptionView = (TextView)view.findViewById(R.id.text3);
 
             nameView.setText(device.getName() == null ? getContext().getString(R.string.unknown) : device.getName());
             addressView.setText(device.getAddress());
-            descriptionView.setText(bondStateToLabel(device.getBondState()));
+            //descriptionView.setText(bondStateToLabel(device.getBondState()));
 
             return view;
         }
