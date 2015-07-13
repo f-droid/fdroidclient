@@ -31,6 +31,7 @@ import org.fdroid.fdroid.localrepo.SwapManager;
 import org.fdroid.fdroid.net.BluetoothDownloader;
 import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
+import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 import org.fdroid.fdroid.views.fragments.ThemeableListFragment;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -134,13 +135,15 @@ public class BluetoothDeviceListView extends ListView implements
 
         final BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();
 
-        final TextView deviceName = (TextView)headerView.findViewById(R.id.device_name);
+        final TextView deviceName = (TextView) headerView.findViewById(R.id.device_name);
         deviceName.setText(bluetooth.getName());
 
-        final TextView address = (TextView)headerView.findViewById(R.id.device_address);
+        final TextView address = (TextView) headerView.findViewById(R.id.device_address);
         address.setText(bluetooth.getAddress());
 
-        populateBondedDevices();
+        initiateBluetoothScan();
+
+       // populateBondedDevices();
 
     }
 
@@ -166,8 +169,10 @@ public class BluetoothDeviceListView extends ListView implements
     {
         Log.d(TAG, "Starting bluetooth scan...");
 
-        cancelMenuItem.setVisible(true);
-        scanMenuItem.setVisible(false);
+        if (cancelMenuItem != null) {
+            cancelMenuItem.setVisible(true);
+            scanMenuItem.setVisible(false);
+        }
 
         final ContentLoadingProgressBar loadingBar = getLoadingIndicator();
 
@@ -181,17 +186,21 @@ public class BluetoothDeviceListView extends ListView implements
                 if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
                     BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                     Log.d(TAG, "Found bluetooth device: " + device.toString());
-                    boolean exists = false;
-                    for (int i = 0; i < adapter.getCount(); i ++) {
-                        if (adapter.getItem(i).getAddress().equals(device.getAddress())) {
-                            exists = true;
-                            break;
-                        }
-                    }
 
-                    if (!exists) {
-                        adapter.add(device);
-                    }
+                    if (device != null && device.getName() != null)
+                        if (device.getName().contains(BluetoothServer.BLUETOOTH_NAME_TAG)) {
+                            boolean exists = false;
+                            for (int i = 0; i < adapter.getCount(); i++) {
+                                if (adapter.getItem(i).getAddress().equals(device.getAddress())) {
+                                    exists = true;
+                                    break;
+                                }
+                            }
+
+                            if (!exists) {
+                                adapter.add(device);
+                            }
+                        }
                 }
             }
         };
