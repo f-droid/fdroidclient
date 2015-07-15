@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -72,6 +73,15 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
                 new IntentFilter(WifiStateChangeService.BROADCAST)
         );
 
+        Button bluetooth = (Button)findViewById(R.id.btn_bluetooth);
+        bluetooth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        getActivity().connectWithBluetooth();
+                    }
+            }
+        );
+
     }
 
     // TODO: Listen for "Connecting..." state and reflect that in the view too.
@@ -117,7 +127,7 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
                 return true;
             }
         });
-        return true;
+        return  true;
     }
 
     @Override

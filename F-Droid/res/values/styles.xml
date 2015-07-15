@@ -43,6 +43,22 @@
         <item name="android:background">@color/white</item>
     </style>
 
+    <style name="SwapTheme.StartSwap.Text" parent="@style/SwapTheme.StartSwap">
+    </style>
+
+    <style name="SwapTheme.BluetoothDeviceList" parent="@style/SwapTheme.Wizard">
+    </style>
+
+    <style name="SwapTheme.BluetoothDeviceList.ListItem" parent="AppThemeDark">
+    </style>
+
+    <style name="SwapTheme.BluetoothDeviceList.Text" parent="@style/SwapTheme.BluetoothDeviceList">
+    </style>
+
+    <style name="SwapTheme.BluetoothDeviceList.Heading" parent="@style/SwapTheme.BluetoothDeviceList.Text">
+        <item name="android:textSize">32.5dp</item> <!-- 58px * 96dpi / 160dpi = 32.5sp -->
+    </style>
+
     <style name="SwapTheme.AppList" parent="AppThemeLight">
     </style>
 

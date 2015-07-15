@@ -26,12 +26,12 @@
             android:layout_below="@+id/text_description"
             android:layout_centerHorizontal="true" />
 
-    <!--
     <Button style="@style/SwapTheme.Wizard.OptionButton"
             android:id="@+id/btn_bluetooth"
             android:text="@string/swap_use_bluetooth"
             android:layout_alignParentBottom="true" />
 
+    <!--
     <Button style="@style/SwapTheme.Wizard.OptionButton"
             android:text="@string/swap_wifi_help"
             android:layout_above="@id/btn_bluetooth"

@@ -115,6 +115,8 @@ public class SwapService extends Service {
     public static final int STEP_SUCCESS         = 7;
     public static final int STEP_CONFIRM_SWAP    = 8;
 
+    public static final int STEP_BLUETOOTH       = 1000; // TODO: Remove this once nathans code is merged and the UI is migrated to the nearby peers screen.
+
     /**
      * Special view, that we don't really want to actually store against the
      * {@link SwapService#step}. Rather, we use it for the purpose of specifying
@@ -260,7 +262,7 @@ public class SwapService extends Service {
      * This is the same as, e.g. {@link Context#getSystemService(String)}
      */
     @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
-        STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
+        STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING, STEP_BLUETOOTH})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep {}
 

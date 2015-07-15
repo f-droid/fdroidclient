@@ -3,6 +3,7 @@ package org.fdroid.fdroid.views.swap;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -38,6 +39,7 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -84,7 +86,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private static final String TAG = "SwapWorkflowActivity";
+
     private static final int CONNECT_TO_SWAP = 1;
+    private static final int REQUEST_BLUETOOTH_ENABLE = 2;
+    private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
 
     private Toolbar toolbar;
     private InnerView currentView;
@@ -344,6 +349,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         inflateInnerView(R.layout.swap_join_wifi);
     }
 
+    private void showBluetoothDeviceList() {
+        inflateInnerView(R.layout.swap_bluetooth_devices);
+    }
+
     public void showWifiQr() {
         inflateInnerView(R.layout.swap_wifi_qr);
     }
@@ -408,8 +417,87 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
             finish();
+        } else if (requestCode == REQUEST_BLUETOOTH_ENABLE) {
+
+            if (resultCode == RESULT_OK) {
+                Log.d(TAG, "User enabled Bluetooth, will make sure we are discoverable.");
+                ensureBluetoothDiscoverable();
+            } else {
+                // Didn't enable bluetooth
+                Log.d(TAG, "User chose not to enable Bluetooth, so doing nothing (i.e. sticking with wifi).");
+            }
+
+        } else if (requestCode == REQUEST_BLUETOOTH_DISCOVERABLE) {
+
+            if (resultCode != RESULT_CANCELED) {
+                Log.d(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
+                startBluetoothServer();
+            } else {
+                Log.d(TAG, "User chose not to make Bluetooth discoverable, so doing nothing (i.e. sticking with wifi).");
+            }
+
         }
     }
+
+    /**
+     * The process for setting up bluetooth is as follows:
+     *  * Assume we have bluetooth available (otherwise the button which allowed us to start
+     *    the bluetooth process should not have been available). TODO: Remove button if bluetooth unavailable.
+     *  * Ask user to enable (if not enabled yet).
+     *  * Start bluetooth server socket.
+     *  * Enable bluetooth discoverability, so that people can connect to our server socket.
+     *
+     * Note that this is a little different than the usual process for bluetooth _clients_, which
+     * involves pairing and connecting with other devices.
+     */
+    public void connectWithBluetooth() {
+
+        Log.d(TAG, "Initiating Bluetooth swap instead of wifi.");
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+
+        if (adapter != null)
+            if (adapter.isEnabled()) {
+                Log.d(TAG, "Bluetooth enabled, will pair with device.");
+                ensureBluetoothDiscoverable();
+            } else {
+                Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE);
+            }
+    }
+
+    private void ensureBluetoothDiscoverable() {
+        Log.d(TAG, "Ensuring Bluetooth is in discoverable mode.");
+        if (BluetoothAdapter.getDefaultAdapter().getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+
+            // TODO: Listen for BluetoothAdapter.ACTION_SCAN_MODE_CHANGED and respond if discovery
+            // is cancelled prematurely.
+
+            Log.d(TAG, "Not currently in discoverable mode, so prompting user to enable.");
+            Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+            startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
+        }
+
+        Log.d(TAG, "Staring the Bluetooth Server whether we are discoverable or not, since paired devices can still connect.");
+        startBluetoothServer();
+
+    }
+
+    private void startBluetoothServer() {
+        Log.d(TAG, "Starting bluetooth server.");
+        if (service == null) {
+            throw new IllegalStateException("We are attempting to do bluetooth stuff, but the service is not ready.");
+        }
+
+        if (!service.isEnabled()) {
+            service.enableSwapping();
+        }
+
+        new BluetoothServer(this,getFilesDir()).start();
+        showBluetoothDeviceList();
+    }
+
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {
         public PrepareInitialSwapRepo() {
