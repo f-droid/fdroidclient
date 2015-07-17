@@ -26,12 +26,12 @@ public abstract class Downloader {
     public static final String EXTRA_BYTES_READ = "extraBytesRead";
     public static final String EXTRA_TOTAL_BYTES = "extraTotalBytes";
 
-    private OutputStream outputStream;
+    private final OutputStream outputStream;
 
-    private LocalBroadcastManager localBroadcastManager;
+    private final LocalBroadcastManager localBroadcastManager;
     private final File outputFile;
 
-    protected URL sourceUrl;
+    protected final URL sourceUrl;
     protected String cacheTag = null;
 
     public abstract InputStream getInputStream() throws IOException;
