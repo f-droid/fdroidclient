@@ -29,8 +29,6 @@
 	<string name="root_installer_on">Request root access to install, update, and remove packages</string>
 	<string name="system_installer">Install using system-permissions</string>
 	<string name="system_installer_on">Use system permissions to install, update, and remove packages</string>
-	<string name="local_repo_bonjour">Broadcast Local Repo</string>
-	<string name="local_repo_bonjour_on">Advertise your local repo using Bonjour (mDNS)</string>
 	<string name="local_repo_name">Name of your Local Repo</string>
 	<string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
 	<string name="local_repo_https">Use Private Connection</string>

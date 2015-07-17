@@ -34,7 +34,6 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_PERMISSIONS,
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
-        Preferences.PREF_LOCAL_REPO_BONJOUR,
         Preferences.PREF_LOCAL_REPO_NAME,
         Preferences.PREF_LOCAL_REPO_HTTPS,
         Preferences.PREF_LANGUAGE,
@@ -125,10 +124,6 @@ public class PreferencesFragment extends PreferenceFragment
 
         case Preferences.PREF_IGN_TOUCH:
             checkSummary(key, R.string.ignoreTouch_on);
-            break;
-
-        case Preferences.PREF_LOCAL_REPO_BONJOUR:
-            checkSummary(key, R.string.local_repo_bonjour_on);
             break;
 
         case Preferences.PREF_LOCAL_REPO_NAME:

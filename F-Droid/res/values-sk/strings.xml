@@ -4,8 +4,6 @@
   <string name="root_installer_on">Žiadať root prístup na inštaláciu, aktualizácie a odstránenie balíkov</string>
   <string name="system_installer">Inštalovať s povoleniami systému</string>
   <string name="system_installer_on">Používať systémové povolenia na inštaláciu, aktualizácie a odstránenie balíkov</string>
-  <string name="local_repo_bonjour">Vysielať miestne repo</string>
-  <string name="local_repo_bonjour_on">Propagovať miesto repo pomocou Bonjour (mDNS)</string>
   <string name="local_repo_name">Meno miestneho repa</string>
   <string name="local_repo_name_summary">Zverejnený názov miestneho repa: %s</string>
   <string name="local_repo_https">Použiť bezpečné pripojenie</string>

@@ -28,8 +28,6 @@
   <string name="root_installer_on">Spør etter root tilgang for å installere, oppdatere, og fjerne applikasjoner.</string>
   <string name="system_installer">Installer ved bruk av system-tilgang</string>
   <string name="system_installer_on">Bruk system rettigheter til å installere, oppdatere, og fjerne applikasjoner.</string>
-  <string name="local_repo_bonjour">Kringkast lokal pakkebrønn</string>
-  <string name="local_repo_bonjour_on">Reklamer for din lokale pakkebrønn ved bruk av Bonjour (mDNS)</string>
   <string name="local_repo_name">Navn på lokal pakkebrønn</string>
   <string name="local_repo_name_summary">Offentliggjort tittel for din lokale pakkebrønn: %s</string>
   <string name="local_repo_https">Bruk privat tilkobling</string>

@@ -28,8 +28,6 @@
   <string name="root_installer_on">Pyydä root-oikeuksia asennuksiin, päivityksiin ja pakettien poistoon</string>
   <string name="system_installer">Asenna käytäen järjestelmän oikeuksia</string>
   <string name="system_installer_on">Käytä järjestelmän oikeuksia asennuksiin, päivityksiin ja pakettien poistoihin.</string>
-  <string name="local_repo_bonjour">Kuuluta paikallista säilöä</string>
-  <string name="local_repo_bonjour_on">Mainosta paikallista säilöäsi Bonjour-palvelua käyttäen (mDNS)</string>
   <string name="local_repo_name">Paikallisen säilösi nimi</string>
   <string name="local_repo_name_summary">Paikallisen säilösi mainostettava otsikko: %s</string>
   <string name="local_repo_https">Käytä yksityistä yhteyttä</string>

@@ -70,4 +70,20 @@ public abstract class SwapType {
             }
         }.execute();
     }
+
+    public void ensureRunning() {
+        if (!isConnected()) {
+            start();
+        }
+    }
+
+    public void ensureRunningInBackground() {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                ensureRunning();
+                return null;
+            }
+        }.execute();
+    }
 }

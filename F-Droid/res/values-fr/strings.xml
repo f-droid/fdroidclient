@@ -28,8 +28,6 @@
   <string name="root_installer_on">Demander les droits root pour installer, mettre à jour et supprimer des paquets</string>
   <string name="system_installer">Installer en utilisant les permissions systèmes</string>
   <string name="system_installer_on">Utiliser les permissions du système pour installer, mettre à jour et supprimer des paquets</string>
-  <string name="local_repo_bonjour">Diffuser votre dépôt local</string>
-  <string name="local_repo_bonjour_on">Annoncer votre dépôt local avec \"Bonjour\" (mDNS)</string>
   <string name="local_repo_name">Nom de votre dépôt local</string>
   <string name="local_repo_name_summary">Le nom public de votre dépôt local: %s</string>
   <string name="local_repo_https">Utilisez une connexion privée</string>

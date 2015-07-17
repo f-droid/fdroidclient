@@ -17,15 +17,17 @@ import java.io.IOException;
 import java.net.BindException;
 import java.util.Random;
 
-public class WebServerType extends SwapType {
+public class WifiSwap extends SwapType {
 
     private static final String TAG = "WebServerType";
 
     private Handler webServerThreadHandler = null;
     private LocalHTTPD localHttpd;
+    private final SwapType bonjourBroadcast;
 
-    public WebServerType(Context context) {
+    public WifiSwap(Context context) {
         super(context);
+        bonjourBroadcast = new BonjourBroadcast(context);
     }
 
     @Override
@@ -69,6 +71,7 @@ public class WebServerType extends SwapType {
             }
         };
         new Thread(webServer).start();
+        bonjourBroadcast.start();
     }
 
     @Override
@@ -81,6 +84,7 @@ public class WebServerType extends SwapType {
         Message msg = webServerThreadHandler.obtainMessage();
         msg.obj = webServerThreadHandler.getLooper().getThread().getName() + " says stop";
         webServerThreadHandler.sendMessage(msg);
+        bonjourBroadcast.stop();
     }
 
 }

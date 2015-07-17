@@ -28,8 +28,6 @@
   <string name="root_installer_on">Richiedi il root per installare,aggiornare e rimuovere i pacchetti</string>
   <string name="system_installer">Installa usando i permessi di sistema</string>
   <string name="system_installer_on">Usa i permessi di sistema per installare,aggiornare e rimuovere i pacchetti</string>
-  <string name="local_repo_bonjour">Condividi la Repo locale</string>
-  <string name="local_repo_bonjour_on">Lancia la tua repo usando Bonjour (mDNS)</string>
   <string name="local_repo_name">Nome della tua Repo Locale</string>
   <string name="local_repo_name_summary">Il testo pubblico della tua repo: %s</string>
   <string name="local_repo_https">Usa una Connessione Privata</string>

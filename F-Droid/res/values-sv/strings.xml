@@ -28,8 +28,6 @@
   <string name="root_installer_on">Efterfråga root-åtkomst för att installera, uppdatera och ta bort paket</string>
   <string name="system_installer">Installera med systembehörigheter</string>
   <string name="system_installer_on">Använd systembehörigheter för att installera, uppdatera och ta bort paket</string>
-  <string name="local_repo_bonjour">Annonsera lokalt förråd</string>
-  <string name="local_repo_bonjour_on">Annonsera ditt lokala förråd med Bonjour (mDNS)</string>
   <string name="local_repo_name">Namn på ditt lokala förråd</string>
   <string name="local_repo_name_summary">Annonserad titel på ditt lokala förråd: %s</string>
   <string name="local_repo_https">Använd privat anslutning</string>

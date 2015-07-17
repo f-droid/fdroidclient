@@ -18,14 +18,14 @@ import javax.jmdns.ServiceInfo;
 /**
  * Sends a {@link SwapService#BONJOUR_STATE_CHANGE} broadcasts when starting, started or stopped.
  */
-public class BonjourType extends SwapType {
+public class BonjourBroadcast extends SwapType {
 
     private static final String TAG = "BonjourSwapService";
 
     private JmDNS jmdns;
     private ServiceInfo pairService;
 
-    public BonjourType(Context context) {
+    public BonjourBroadcast(Context context) {
         super(context);
     }
 
@@ -33,12 +33,6 @@ public class BonjourType extends SwapType {
     public void start() {
 
         Log.d(TAG, "Preparing to start Bonjour service.");
-        if (!Preferences.get().isLocalRepoBonjourEnabled()) {
-            // TODO: Remove this preference completely, it is now dealt with in the start swap screen.
-            Log.i(TAG, "Not going to start Bonjour swap service because disabled via preferences.");
-            return;
-        }
-
         sendBroadcast(SwapService.EXTRA_STARTING);
 
         /*

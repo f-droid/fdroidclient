@@ -19,8 +19,6 @@
   <string name="root_installer_on">Solicitar acesso root para instalar, atualizar e remover pacotes</string>
   <string name="system_installer">Instalar usando permissões do sistema</string>
   <string name="system_installer_on">Usar permissões do sistema para instalar, atualizar e remover pacotes</string>
-  <string name="local_repo_bonjour">Transmitir repositório local</string>
-  <string name="local_repo_bonjour_on">Anunciar seu repositório local usando Bonjour (mDNS)</string>
   <string name="local_repo_name">Nome do seu repositório local</string>
   <string name="local_repo_name_summary">Título anunciado do seu repositório local: %s</string>
   <string name="local_repo_https">Usar conexão privada</string>

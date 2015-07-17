@@ -45,13 +45,6 @@
                 android:layout_gravity="center"
                 android:id="@+id/btn_qr_scanner"/>
 
-        <!-- Mark as "gone" for now, until it appears in a future mockup. Don't comment it out,
-             because then we'd need to modify the code which adds a listener for it too. -->
-        <Button style="@style/SwapTheme.Wizard.OptionButton"
-                android:id="@+id/btn_cancel_swap"
-                android:visibility="gone"
-                android:text="@string/cancel" />
-
     </LinearLayout>
 
 </org.fdroid.fdroid.views.swap.WifiQrView>

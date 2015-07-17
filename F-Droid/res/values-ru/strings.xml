@@ -30,8 +30,6 @@
   <string name="root_installer_on">Запрашивать права root пользователя для установки, обновления и удаления приложений</string>
   <string name="system_installer">Устанавливать используя системные привилегии</string>
   <string name="system_installer_on">Использовать системные привилегии для установки, обновления и удаления приложений</string>
-  <string name="local_repo_bonjour">Транслировать локальный репозиторий</string>
-  <string name="local_repo_bonjour_on">Рекламировать ваш репозиторий используя Bonjour (mDNS)</string>
   <string name="local_repo_name">Название вашего локального репозитория</string>
   <string name="local_repo_name_summary">Ваш локальный репозиторий рекламируется под именем: %s</string>
   <string name="local_repo_https">Использовать частное соединение</string>

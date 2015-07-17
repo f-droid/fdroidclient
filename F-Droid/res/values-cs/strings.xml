@@ -24,8 +24,6 @@
   <string name="root_installer_on">Vyžádat si oprávnění roota k instalaci, aktualizaci či odstraňování balíčků</string>
   <string name="system_installer">Instalovat s použitím systémových oprávnění</string>
   <string name="system_installer_on">Použít systémová oprávnění k instalování, aktualizaci a odebírání balíčků</string>
-  <string name="local_repo_bonjour">Oznamovat místní repozitář</string>
-  <string name="local_repo_bonjour_on">Oznamovat místní repozitář pomocí Bonjour (mDNS)</string>
   <string name="local_repo_name">Název místního repozitáře</string>
   <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
   <string name="local_repo_https">Použít soukromé připojení</string>

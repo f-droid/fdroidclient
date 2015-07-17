@@ -52,7 +52,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_UPD_LAST = "lastUpdateCheck";
     public static final String PREF_ROOT_INSTALLER = "rootInstaller";
     public static final String PREF_SYSTEM_INSTALLER = "systemInstaller";
-    public static final String PREF_LOCAL_REPO_BONJOUR = "localRepoBonjour";
     public static final String PREF_LOCAL_REPO_NAME = "localRepoName";
     public static final String PREF_LOCAL_REPO_HTTPS = "localRepoHttps";
     public static final String PREF_LANGUAGE = "language";
@@ -86,7 +85,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private final List<ChangeListener> compactLayoutListeners = new ArrayList<>();
     private final List<ChangeListener> filterAppsRequiringRootListeners = new ArrayList<>();
     private final List<ChangeListener> updateHistoryListeners = new ArrayList<>();
-    private final List<ChangeListener> localRepoBonjourListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
 
@@ -108,10 +106,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean isSystemInstallerEnabled() {
         return preferences.getBoolean(PREF_SYSTEM_INSTALLER, DEFAULT_SYSTEM_INSTALLER);
-    }
-
-    public boolean isLocalRepoBonjourEnabled() {
-        return preferences.getBoolean(PREF_LOCAL_REPO_BONJOUR, DEFAULT_LOCAL_REPO_BONJOUR);
     }
 
     public boolean shouldCacheApks() {
@@ -249,11 +243,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
                 listener.onPreferenceChange();
             }
             break;
-        case PREF_LOCAL_REPO_BONJOUR:
-            for (ChangeListener listener : localRepoBonjourListeners) {
-                listener.onPreferenceChange();
-            }
-            break;
         case PREF_LOCAL_REPO_NAME:
             for (ChangeListener listener : localRepoNameListeners) {
                 listener.onPreferenceChange();
@@ -273,14 +262,6 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public void unregisterUpdateHistoryListener(ChangeListener listener) {
         updateHistoryListeners.remove(listener);
-    }
-
-    public void registerLocalRepoBonjourListeners(ChangeListener listener) {
-        localRepoBonjourListeners.add(listener);
-    }
-
-    public void unregisterLocalRepoBonjourListeners(ChangeListener listener) {
-        localRepoBonjourListeners.remove(listener);
     }
 
     public void registerLocalRepoNameListeners(ChangeListener listener) {

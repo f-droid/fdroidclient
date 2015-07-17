@@ -17,8 +17,6 @@
   <string name="root_installer_on">Żądaj dostępu roota do instalacji, aktualizacji i usuwania pakietów</string>
   <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
   <string name="system_installer_on">Używaj uprawnień systemowych do instalacji, aktualizacji i usuwania pakietów</string>
-  <string name="local_repo_bonjour">Widoczność repozytorium</string>
-  <string name="local_repo_bonjour_on">Udostępniaj repozytorium lokalne przez Bonjour (mDNS)</string>
   <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
   <string name="local_repo_name_summary">Wyświetlana nazwa repozytorium lokalnego: %s</string>
   <string name="local_repo_https">Użyj zabezpieczonego połączenia</string>

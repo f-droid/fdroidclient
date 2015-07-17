@@ -216,13 +216,13 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
-                        getActivity().connectWithBluetooth();
+                        getActivity().startBluetoothSwap();
                         textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
                         viewBluetoothId.setVisibility(View.VISIBLE);
                         uiUpdatePeersInfo();
                         // TODO: When they deny the request for enabling bluetooth, we need to disable this switch...
                     } else {
-                        getManager().makeBluetoothNonDiscoverable();
+                        getManager().getBluetoothSwap().stop();
                         textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
                         viewBluetoothId.setVisibility(View.GONE);
                         uiUpdatePeersInfo();
@@ -266,9 +266,9 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    getManager().ensureBonjourDiscoverable();
+                    getManager().getWifiSwap().ensureRunningInBackground();
                 } else {
-                    getManager().makeBonjourNotDiscoverable();
+                    getManager().getWifiSwap().stop();
                 }
                 uiUpdatePeersInfo();
                 uiUpdateWifi();
@@ -279,16 +279,16 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
-                    Log.d(TAG, "Bonjour service is starting...");
+                    Log.d(TAG, "Bonjour/WiFi service is starting...");
                     wifiSwitch.setEnabled(false);
                     wifiSwitch.setChecked(true);
                 } else {
                     wifiSwitch.setEnabled(true);
                     if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
-                        Log.d(TAG, "Bonjour service has started.");
+                        Log.d(TAG, "Bonjour/WiFi service has started.");
                         wifiSwitch.setChecked(true);
                     } else {
-                        Log.d(TAG, "Bonjour service has stopped.");
+                        Log.d(TAG, "Bonjour/WiFi service has stopped.");
                         wifiSwitch.setChecked(false);
                     }
                 }

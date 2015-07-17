@@ -272,7 +272,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void onToolbarCancel() {
-        getService().disableSwapping();
+        getService().disableAllSwapping();
         finish();
     }
 
@@ -377,11 +377,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         return false;
     }
 
-    public void stopSwapping() {
-        getState().disableSwapping();
-        finish();
-    }
-
     public void swapWith(Peer peer) {
         getService().swapWith(peer);
         showSelectApps();
@@ -431,7 +426,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             if (resultCode != RESULT_CANCELED) {
                 Log.d(TAG, "User made Bluetooth discoverable, will proceed to start bluetooth server.");
-                startBluetoothServer();
+                getState().getBluetoothSwap().startInBackground();
             } else {
                 Log.d(TAG, "User chose not to make Bluetooth discoverable, so doing nothing (i.e. sticking with wifi).");
             }
@@ -450,14 +445,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      * Note that this is a little different than the usual process for bluetooth _clients_, which
      * involves pairing and connecting with other devices.
      */
-    public void connectWithBluetooth() {
+    public void startBluetoothSwap() {
 
-        Log.d(TAG, "Initiating Bluetooth swap instead of wifi.");
+        Log.d(TAG, "Initiating Bluetooth swap, will ensure the Bluetooth devices is enabled and discoverable before starting server.");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 
         if (adapter != null)
             if (adapter.isEnabled()) {
-                Log.d(TAG, "Bluetooth enabled, will pair with device.");
+                Log.d(TAG, "Bluetooth enabled, will check if device is discoverable with device.");
                 ensureBluetoothDiscoverableThenStart();
             } else {
                 Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
@@ -483,33 +478,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             throw new IllegalStateException("Can't start Bluetooth swap because service is null for some strange reason.");
         }
 
-        service.getBluetooth().startInBackground();
+        service.getBluetoothSwap().startInBackground();
     }
-
-    private void startBluetoothServer() {
-        Log.d(TAG, "Starting bluetooth server.");
-        if (service == null) {
-            throw new IllegalStateException("We are attempting to do bluetooth stuff, but the service is not ready.");
-        }
-
-        if (!service.isEnabled()) {
-            service.enableSwapping();
-        }
-
-        new BluetoothServer(this,getFilesDir()).start();
-        showBluetoothDeviceList();
-    }
-
 
     class PrepareInitialSwapRepo extends PrepareSwapRepo {
         public PrepareInitialSwapRepo() {
             super(new HashSet<>(Arrays.asList(new String[] { "org.fdroid.fdroid" })));
-        }
-
-        @Override
-        protected void onPreExecute() {
-            getService().enableSwapping();
-            super.onPreExecute();
         }
     }
 

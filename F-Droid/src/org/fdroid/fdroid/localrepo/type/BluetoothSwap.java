@@ -11,7 +11,7 @@ import android.util.Log;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
-public class BluetoothType extends SwapType {
+public class BluetoothSwap extends SwapType {
 
     private static final String TAG = "BluetoothBroadcastType";
 
@@ -25,11 +25,11 @@ public class BluetoothType extends SwapType {
         if (adapter == null) {
             return new NoBluetoothType(context);
         } else {
-            return new BluetoothType(context, adapter);
+            return new BluetoothSwap(context, adapter);
         }
     };
 
-    private BluetoothType(@NonNull Context context, @NonNull BluetoothAdapter adapter) {
+    private BluetoothSwap(@NonNull Context context, @NonNull BluetoothAdapter adapter) {
         super(context);
         this.adapter = adapter;
         this.server = new BluetoothServer(context, context.getFilesDir());

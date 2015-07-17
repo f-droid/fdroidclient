@@ -38,10 +38,9 @@ import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
 import org.fdroid.fdroid.localrepo.peers.BonjourFinder;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.localrepo.type.BluetoothType;
-import org.fdroid.fdroid.localrepo.type.BonjourType;
+import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 import org.fdroid.fdroid.localrepo.type.SwapType;
-import org.fdroid.fdroid.localrepo.type.WebServerType;
+import org.fdroid.fdroid.localrepo.type.WifiSwap;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
@@ -361,25 +360,13 @@ public class SwapService extends Service {
      * Ensures that the webserver is running, as are the other services which make swap work.
      * Will only do all this if it is not already running, and will run on a background thread.'
      * TODO: What about an "enabling" status? Not sure if it will be useful or not.
+     *
+     *
+     * TODO: Call this at the relevant time, when wifi or bluetooth is enabled.
      */
-    public void enableSwapping() {
-        if (!enabled) {
-            new AsyncTask<Void, Void, Void>() {
-                @Override
-                protected Void doInBackground(Void... params) {
-                    Log.d(TAG, "Started background task to enable swapping.");
-                    enableSwappingAsynchronous();
-                    return null;
-                }
-
-                @Override
-                protected void onPostExecute(Void aVoid) {
-                    Log.d(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed.");
-                    startForeground(NOTIFICATION, createNotification());
-                    enabled = true;
-                }
-            }.execute();
-        }
+    private void attachService() {
+        Log.d(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed.");
+        startForeground(NOTIFICATION, createNotification());
 
         // Regardless of whether it was previously enabled, start the timer again. This ensures that
         // if, e.g. a person views the swap activity again, it will attempt to enable swapping if
@@ -387,46 +374,26 @@ public class SwapService extends Service {
         initTimer();
     }
 
-    public void disableSwapping() {
-        if (enabled) {
-            new AsyncTask<Void, Void, Void>() {
-                @Override
-                protected Void doInBackground(Void... params) {
-                    Log.d(TAG, "Started background task to disable swapping.");
-                    disableSwappingSynchronous();
-                    return null;
-                }
-
-                @Override
-                protected void onPostExecute(Void aVoid) {
-                    Log.d(TAG, "Finished background task to disable swapping.");
-
-                    // TODO: Does this  need to be run before the background task, so that the timer
-                    // can't kick in while we are shutting down everything?
-                    if (timer != null) {
-                        timer.cancel();
-                    }
-
-                    enabled = false;
-
-                    Log.d(TAG, "Moving SwapService to background so that it can be GC'ed if required.");
-                    stopForeground(true);
-                }
-            }.execute();
+    private void detachService() {
+        if (timer != null) {
+            timer.cancel();
         }
+
+        Log.d(TAG, "Moving SwapService to background so that it can be GC'ed if required.");
+        stopForeground(true);
     }
 
     /**
      * Handles checking if the {@link SwapService} is running, and only restarts it if it was running.
      */
-    public void restartIfEnabled() {
-        if (enabled) {
+    public void restartWifiIfEnabled() {
+        if (wifiSwap.isConnected()) {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
-                    Log.d(TAG, "Restarting swap services.");
-                    disableSwappingSynchronous();
-                    enableSwappingAsynchronous();
+                    Log.d(TAG, "Restarting WiFi swap service");
+                    wifiSwap.stop();
+                    wifiSwap.start();
                     return null;
                 }
             }.execute();
@@ -434,7 +401,7 @@ public class SwapService extends Service {
     }
 
     public boolean isEnabled() {
-        return enabled;
+        return bluetoothSwap.isConnected() || wifiSwap.isConnected();
     }
 
     // ==========================================
@@ -442,15 +409,7 @@ public class SwapService extends Service {
     // ==========================================
 
     public boolean isBluetoothDiscoverable() {
-        return bluetoothType.isConnected();
-    }
-
-    public void ensureBluetoothDiscoverable() {
-        bluetoothType.start();
-    }
-
-    public void makeBluetoothNonDiscoverable() {
-        bluetoothType.stop();
+        return bluetoothSwap.isConnected();
     }
 
     private boolean isWifiConnected() {
@@ -459,16 +418,6 @@ public class SwapService extends Service {
 
     public boolean isBonjourDiscoverable() {
         return isWifiConnected() && isEnabled();
-    }
-
-    public void ensureBonjourDiscoverable() {
-        if (!isBonjourDiscoverable()) {
-            // TODO: Enable bonjour (currently it is enabled by default when the service starts)
-        }
-    }
-
-    public void makeBonjourNotDiscoverable() {
-        // TODO: Disable bonjour (currently it is enabled by default when the service starts)
     }
 
     public boolean isScanningForPeers() {
@@ -492,9 +441,8 @@ public class SwapService extends Service {
     private static final int NOTIFICATION = 1;
 
     private final Binder binder = new Binder();
-    private SwapType bonjourType;
-    private SwapType bluetoothType;
-    private SwapType webServerType;
+    private SwapType bluetoothSwap;
+    private WifiSwap wifiSwap;
 
     private BonjourFinder bonjourFinder;
     private BluetoothFinder bluetoothFinder;
@@ -507,12 +455,12 @@ public class SwapService extends Service {
     @Nullable
     private Timer timer;
 
-    public SwapType getBluetooth() {
-        return bluetoothType;
+    public SwapType getBluetoothSwap() {
+        return bluetoothSwap;
     }
 
-    public SwapType getBonjour() {
-        return bluetoothType;
+    public SwapType getWifiSwap() {
+        return wifiSwap;
     }
 
     public class Binder extends android.os.Binder {
@@ -529,13 +477,11 @@ public class SwapService extends Service {
         SharedPreferences preferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
         appsToSwap.addAll(deserializePackages(preferences.getString(KEY_APPS_TO_SWAP, "")));
-        bonjourType = new BonjourType(this);
-        bluetoothType = BluetoothType.create(this);
-        webServerType = new WebServerType(this);
+        bluetoothSwap = BluetoothSwap.create(this);
+        wifiSwap = new WifiSwap(this);
         bonjourFinder = new BonjourFinder(this);
         bluetoothFinder = new BluetoothFinder(this);
 
-        Preferences.get().registerLocalRepoBonjourListeners(bonjourEnabledListener);
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange, new IntentFilter(WifiStateChangeService.BROADCAST));
@@ -552,12 +498,23 @@ public class SwapService extends Service {
         return binder;
     }
 
+    public void disableAllSwapping() {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                getBluetoothSwap().stop();
+                getWifiSwap().stop();
+                detachService();
+                return null;
+            }
+        }.execute();
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
-        disableSwapping();
-        Preferences.get().unregisterLocalRepoBonjourListeners(bonjourEnabledListener);
+        disableAllSwapping();
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
     }
@@ -574,29 +531,6 @@ public class SwapService extends Service {
                 .build();
     }
 
-    private boolean enabled = false;
-
-    /**
-     * The guts of this class - responsible for enabling the relevant services for swapping.
-     * Doesn't know anything about enabled/disabled state, you should check that before invoking
-     * this method so it doesn't start something that is already started.
-     * Runs asynchronously on several background threads.
-     */
-    private void enableSwappingAsynchronous() {
-        webServerType.startInBackground();
-        bonjourType.startInBackground();
-        bluetoothType.startInBackground();
-    }
-
-    /**
-     * @see SwapService#enableSwappingAsynchronous()
-     */
-    private void disableSwappingSynchronous() {
-        Log.d(TAG, "Disabling SwapService (bonjour, webserver, etc)");
-        bonjourType.stop();
-        webServerType.stop();
-    }
-
     private void initTimer() {
         if (timer != null) {
             Log.d(TAG, "Cancelling existing timer");
@@ -610,31 +544,17 @@ public class SwapService extends Service {
             @Override
             public void run() {
                 Log.d(TAG, "Disabling swap because " + TIMEOUT + "ms passed.");
-                disableSwapping();
+                disableAllSwapping();
             }
         }, TIMEOUT);
     }
-
-    @SuppressWarnings("FieldCanBeLocal") // The constructor will get bloated if these are all local...
-    // TODO: Remove this preference...
-    private final Preferences.ChangeListener bonjourEnabledListener = new Preferences.ChangeListener() {
-        @Override
-        public void onPreferenceChange() {
-            Log.i(TAG, "Use Bonjour while swapping preference changed.");
-            if (enabled)
-                if (Preferences.get().isLocalRepoBonjourEnabled())
-                    bonjourType.start();
-                else
-                    bonjourType.stop();
-        }
-    };
 
     @SuppressWarnings("FieldCanBeLocal") // The constructor will get bloated if these are all local...
     private final Preferences.ChangeListener httpsEnabledListener = new Preferences.ChangeListener() {
         @Override
         public void onPreferenceChange() {
             Log.i(TAG, "Swap over HTTPS preference changed.");
-            restartIfEnabled();
+            restartWifiIfEnabled();
         }
     };
 
@@ -642,7 +562,7 @@ public class SwapService extends Service {
     private final BroadcastReceiver onWifiChange = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent i) {
-            restartIfEnabled();
+            restartWifiIfEnabled();
         }
     };
 

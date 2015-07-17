@@ -17,8 +17,6 @@
   <string name="root_installer_on">Pedi s\'atzessu root pro installare, agiornare, e remòvrere pachetos</string>
   <string name="system_installer">Installa impreande sos permissos de sistema</string>
   <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos</string>
-  <string name="local_repo_bonjour">Cumpartzi su depòsitu locale</string>
-  <string name="local_repo_bonjour_on">Pùblica su depòsitu tuo impreande Bonjour (mDNS)</string>
   <string name="local_repo_name">Nùmene de su Depòsitu Locale tuo</string>
   <string name="local_repo_name_summary">Su nùmene pùblicu de su depòsitu locale tuo: %s</string>
   <string name="local_repo_https">Imprea una cunnessione privada</string>

@@ -28,8 +28,6 @@
   <string name="root_installer_on">Root-Rechte anfordern, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="system_installer">Mit Verwendung von Systemberechtigungen installieren</string>
   <string name="system_installer_on">Systemberechtigungen verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
-  <string name="local_repo_bonjour">Lokale Paketquelle übertragen</string>
-  <string name="local_repo_bonjour_on">Die lokale Paketquelle durch Verwendung von Bonjour (mDNS) bewerben</string>
   <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
   <string name="local_repo_name_summary">Der werbende Titel Ihrer lokalen Paketquelle: %s</string>
   <string name="local_repo_https">Gesicherte Verbindung verwenden</string>

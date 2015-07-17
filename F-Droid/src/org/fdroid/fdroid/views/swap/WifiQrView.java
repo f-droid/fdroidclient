@@ -85,14 +85,6 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
             }
         });
 
-        Button cancel = (Button)findViewById(R.id.btn_cancel_swap);
-        cancel.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().stopSwapping();
-            }
-        });
-
         // TODO: As with the JoinWifiView, this should be refactored to be part of the SwapState.
         // Otherwise, we are left with SwapState, LocalRepoService, WifiStateChangeService, and
         // some static variables in FDroidApp all which manage the state for swap.

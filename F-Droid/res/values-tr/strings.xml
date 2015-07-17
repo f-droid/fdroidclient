@@ -26,7 +26,6 @@
   <string name="update_history_summ">Uygulamaların yeni sayılacağı gün sayısı: %s</string>
   <string name="root_installer">Root erişimi kullanarak yükle</string>
   <string name="system_installer">Sistem-izinlerini kullanarak yükle</string>
-  <string name="local_repo_bonjour_on">Bonjour (mDNS) kullanarak yerel reponu duyur</string>
   <string name="local_repo_name">Yerel Deponun Adı</string>
   <string name="local_repo_name_summary">Yerel deponun duyrulan adı: %s</string>
   <string name="local_repo_https_on">Yerel depo için güvenli HTTPS:// bağlantı kullan</string>

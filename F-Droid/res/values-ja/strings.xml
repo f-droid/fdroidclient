@@ -28,8 +28,6 @@
   <string name="root_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除に管理者権限を要求する</string>
   <string name="system_installer">ｼｽﾃﾑｱｸｾｽ許可を使用してｲﾝｽﾄｰﾙ</string>
   <string name="system_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除にｼｽﾃﾑｱｸｾｽ許可を使用する</string>
-  <string name="local_repo_bonjour">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘをﾌﾞﾛｰﾄﾞｷｬｽﾄ</string>
-  <string name="local_repo_bonjour_on">Bonjour (mDNS) を使用してﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを公開する</string>
   <string name="local_repo_name">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの名前</string>
   <string name="local_repo_name_summary">公開するﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの題名: %s</string>
   <string name="local_repo_https">ﾌﾟﾗｲﾍﾞｰﾄ接続を使用する</string>
