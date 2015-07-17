@@ -309,7 +309,6 @@ public class FDroid extends ActionBarActivity {
                         ).setView(view);
             }
             final AlertDialog alrt = builder.create();
-            alrt.setIcon(R.drawable.ic_launcher);
             alrt.setTitle(getString(R.string.about_title));
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
                     getString(R.string.about_website),
@@ -342,7 +341,6 @@ public class FDroid extends ActionBarActivity {
             if (data != null && data.hasExtra(ManageReposActivity.REQUEST_UPDATE)) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
                 ask_alrt.setTitle(getString(R.string.repo_update_title));
-                ask_alrt.setIcon(android.R.drawable.ic_menu_rotate);
                 ask_alrt.setMessage(getString(R.string.repo_alrt));
                 ask_alrt.setPositiveButton(getString(R.string.yes),
                         new DialogInterface.OnClickListener() {

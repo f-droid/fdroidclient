@@ -348,9 +348,7 @@ public class ManageReposActivity extends ActionBarActivity {
             final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
             final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
-            addRepoDialog.setIcon(android.R.drawable.ic_menu_add);
             addRepoDialog.setTitle(getString(R.string.repo_add_title));
-
             addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
                 getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {

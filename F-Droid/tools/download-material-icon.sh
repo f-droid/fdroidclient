@@ -17,7 +17,7 @@ function usage {
 function download {
 	REMOTE_DRAWABLE_DIR=$1
 	LOCAL_DRAWABLE_DIR=$2
-	FILE="ic_${ICON}_48dp.png"
+	FILE="ic_${ICON}_24dp.png"
 	URL="$BASE_URL/$CATEGORY/$REMOTE_DRAWABLE_DIR/$FILE"
 	DIR="$RES_DIR/$LOCAL_DRAWABLE_DIR"
 

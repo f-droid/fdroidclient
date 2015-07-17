@@ -340,7 +340,6 @@ public class RepoDetailsFragment extends Fragment {
     private void promptForDelete() {
         new AlertDialog.Builder(getActivity())
             .setTitle(R.string.repo_confirm_delete_title)
-            .setIcon(android.R.drawable.ic_menu_delete)
             .setMessage(R.string.repo_confirm_delete_body)
             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 @Override
