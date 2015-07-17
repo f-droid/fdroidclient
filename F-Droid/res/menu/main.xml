@@ -18,7 +18,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_manage_repos"
-        android:icon="@drawable/ic_view_headline_white"
+        android:icon="@drawable/ic_toc_white"
         android:title="@string/menu_manage"
         app:showAsAction="ifRoom"/>
     <item
