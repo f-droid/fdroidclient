@@ -585,6 +585,7 @@ public class SwapService extends Service {
     private void enableSwappingAsynchronous() {
         webServerType.startInBackground();
         bonjourType.startInBackground();
+        bluetoothType.startInBackground();
     }
 
     /**

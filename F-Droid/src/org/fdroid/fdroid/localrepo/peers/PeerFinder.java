@@ -2,6 +2,7 @@ package org.fdroid.fdroid.localrepo.peers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.localrepo.SwapService;
@@ -33,7 +34,7 @@ public abstract class PeerFinder<T extends Peer> {
         Log.i(TAG, "Found peer " + peer.getName());
         Intent intent = new Intent(SwapService.ACTION_PEER_FOUND);
         intent.putExtra(SwapService.EXTRA_PEER, peer);
-        context.sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     protected void removePeer(T peer) {

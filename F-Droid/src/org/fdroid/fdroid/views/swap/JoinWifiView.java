@@ -72,16 +72,6 @@ public class JoinWifiView extends RelativeLayout implements SwapWorkflowActivity
                 },
                 new IntentFilter(WifiStateChangeService.BROADCAST)
         );
-
-        Button bluetooth = (Button)findViewById(R.id.btn_bluetooth);
-        bluetooth.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                        getActivity().connectWithBluetooth();
-                    }
-            }
-        );
-
     }
 
     // TODO: Listen for "Connecting..." state and reflect that in the view too.

@@ -216,7 +216,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
-                        getManager().ensureBluetoothDiscoverable();
+                        getActivity().connectWithBluetooth();
                         textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
                         viewBluetoothId.setVisibility(View.VISIBLE);
                         uiUpdatePeersInfo();

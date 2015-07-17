@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 public class BluetoothType extends SwapType {
 
@@ -16,6 +17,8 @@ public class BluetoothType extends SwapType {
 
     @NonNull
     private final BluetoothAdapter adapter;
+
+    private final BluetoothServer server;
 
     public static SwapType create(@NonNull Context context) {
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
@@ -29,6 +32,7 @@ public class BluetoothType extends SwapType {
     private BluetoothType(@NonNull Context context, @NonNull BluetoothAdapter adapter) {
         super(context);
         this.adapter = adapter;
+        this.server = new BluetoothServer(context, context.getFilesDir());
 
         context.registerReceiver(new BroadcastReceiver() {
             @Override
@@ -50,6 +54,11 @@ public class BluetoothType extends SwapType {
 
     @Override
     public void start() {
+        if (server.isAlive()) {
+            Log.d(TAG, "Attempting to start Bluetooth swap, but it appears to be running already.");
+            return;
+        }
+
         sendBroadcast(SwapService.EXTRA_STARTING);
 
         if (!adapter.isEnabled()) {
@@ -60,26 +69,22 @@ public class BluetoothType extends SwapType {
         }
 
         if (adapter.isEnabled()) {
-            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
-
-            // TODO: Hmm, don't like the idea of a background service being able to do this :(
-            discoverableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            // Can't get notified if they cancel this, because we are not an activity and thus
-            // can't start an activity for a result :(
-            context.startActivity(discoverableIntent);
-
-            // Don't setConnected(true) yet, wait for the broadcast to come from the BluetoothAdapter
-            // saying its state has changed.
+            server.start();
+            setConnected(true);
+        } else {
+            Log.i(TAG, "Didn't start Bluetooth swapping server, because Bluetooth is disabled and couldn't be enabled.");
+            setConnected(false);
         }
     }
 
     @Override
     public void stop() {
-        Log.d(TAG, "Making bluetooth non-discoverable.");
-        adapter.cancelDiscovery();
-        setConnected(false);
+        if (server.isAlive()) {
+            server.close();
+            setConnected(false);
+        } else {
+            Log.i(TAG, "Attempting to stop Bluetooth swap, but it is not currently running.");
+        }
     }
 
     @Override

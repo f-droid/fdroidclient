@@ -421,7 +421,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 Log.d(TAG, "User enabled Bluetooth, will make sure we are discoverable.");
-                ensureBluetoothDiscoverable();
+                ensureBluetoothDiscoverableThenStart();
             } else {
                 // Didn't enable bluetooth
                 Log.d(TAG, "User chose not to enable Bluetooth, so doing nothing (i.e. sticking with wifi).");
@@ -458,7 +458,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (adapter != null)
             if (adapter.isEnabled()) {
                 Log.d(TAG, "Bluetooth enabled, will pair with device.");
-                ensureBluetoothDiscoverable();
+                ensureBluetoothDiscoverableThenStart();
             } else {
                 Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -466,7 +466,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
     }
 
-    private void ensureBluetoothDiscoverable() {
+    private void ensureBluetoothDiscoverableThenStart() {
         Log.d(TAG, "Ensuring Bluetooth is in discoverable mode.");
         if (BluetoothAdapter.getDefaultAdapter().getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
 
@@ -475,13 +475,15 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             Log.d(TAG, "Not currently in discoverable mode, so prompting user to enable.");
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300); // TODO: What about when this expires? What if user manually disables discovery?
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
         }
 
-        Log.d(TAG, "Staring the Bluetooth Server whether we are discoverable or not, since paired devices can still connect.");
-        startBluetoothServer();
+        if (service == null) {
+            throw new IllegalStateException("Can't start Bluetooth swap because service is null for some strange reason.");
+        }
 
+        service.getBluetooth().startInBackground();
     }
 
     private void startBluetoothServer() {

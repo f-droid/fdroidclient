@@ -56,6 +56,8 @@ public class BluetoothServer extends Thread {
             connection.interrupt();
         }
 
+        interrupt();
+
         if (serverSocket != null) {
             Utils.closeQuietly(serverSocket);
         }
@@ -86,6 +88,10 @@ public class BluetoothServer extends Thread {
         }
 
         while (true) {
+            if (isInterrupted()) {
+                break;
+            }
+
             try {
                 BluetoothSocket clientSocket = serverSocket.accept();
                 if (clientSocket != null && !isInterrupted()) {
