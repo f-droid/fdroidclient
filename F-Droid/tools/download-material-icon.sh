@@ -15,11 +15,10 @@ function usage {
 }
 
 function download {
-	REMOTE_DRAWABLE_DIR=$1
-	LOCAL_DRAWABLE_DIR=$2
+	DRAWABLE_DIR=$1
 	FILE="ic_${ICON}_24dp.png"
-	URL="$BASE_URL/$CATEGORY/$REMOTE_DRAWABLE_DIR/$FILE"
-	DIR="$RES_DIR/$LOCAL_DRAWABLE_DIR"
+	URL="$BASE_URL/$CATEGORY/$DRAWABLE_DIR/$FILE"
+	DIR="$RES_DIR/$DRAWABLE_DIR"
 
 	if [ ! -d $DIR ]
 	then
@@ -60,10 +59,9 @@ then
 	exit
 fi
 
-download drawable-mdpi drawable
 for SCREEN in $SCREENS
 do
-	download "drawable-$SCREEN" "drawable-$SCREEN"
+	download "drawable-$SCREEN"
 done
 
 echo ""
