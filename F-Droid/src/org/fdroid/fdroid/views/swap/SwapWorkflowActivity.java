@@ -42,8 +42,12 @@ import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * This activity will do its best to show the most relevant screen about swapping to the user.
@@ -156,6 +160,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         container = (ViewGroup) findViewById(R.id.fragment_container);
+
+        new SwapDebug().logStatus();
     }
 
     @Override
@@ -601,6 +607,52 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             NavUtils.navigateUpTo(this, parentIntent);
         }
 
+    }
+
+    class SwapDebug {
+
+        private StringBuilder status = new StringBuilder("\n");
+
+        public void logStatus() {
+            append("service = " + service);
+            if (service != null) {
+                append("Swap Services:");
+                append("  service.getBluetoothSwap() = " + service.getBluetoothSwap());
+                append("  service.getBluetoothSwap().isConnected() = " + service.getBluetoothSwap().isConnected());
+                append("  service.getWifiSwap() = " + service.getWifiSwap());
+                append("  service.getWifiSwap().isConnected() = " + service.getWifiSwap().isConnected());
+                append("  service.getWifiSwap().getBonjour() = " + service.getWifiSwap().getBonjour());
+                append("  service.getWifiSwap().getBonjour().isConnected() = " + service.getWifiSwap().getBonjour().isConnected());
+                append("Discovering Services:");
+
+                BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+                if (adapter != null) {
+
+                    Map<Integer, String> scanModes = new HashMap<>(3);
+                    scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "SCAN_MODE_CONNECTABLE");
+                    scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "SCAN_MODE_CONNECTABLE_DISCOVERABLE");
+                    scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "SCAN_MODE_NONE");
+
+                    append("  Bluetooth.isEnabled() = " + adapter.isEnabled());
+                    append("  Bluetooth.isDiscovering() = " + adapter.isDiscovering());
+                    append("  Bluetooth.getScanMode() = " + scanModes.get(adapter.getScanMode()));
+                }
+            }
+            Log.d("SwapStatus", status.toString());
+
+            new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        new SwapDebug().logStatus();
+                    }
+                },
+                2000
+            );
+        }
+
+        private void append(String line) {
+            status.append("  ").append(line).append("\n");
+        }
     }
 
 }

@@ -39,6 +39,7 @@ import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
 import org.fdroid.fdroid.localrepo.peers.BonjourFinder;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
+import org.fdroid.fdroid.localrepo.type.BonjourBroadcast;
 import org.fdroid.fdroid.localrepo.type.SwapType;
 import org.fdroid.fdroid.localrepo.type.WifiSwap;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -412,12 +413,8 @@ public class SwapService extends Service {
         return bluetoothSwap.isConnected();
     }
 
-    private boolean isWifiConnected() {
-        return !TextUtils.isEmpty(FDroidApp.ssid);
-    }
-
     public boolean isBonjourDiscoverable() {
-        return isWifiConnected() && isEnabled();
+        return wifiSwap.isConnected() && wifiSwap.getBonjour().isConnected();
     }
 
     public boolean isScanningForPeers() {
@@ -434,6 +431,7 @@ public class SwapService extends Service {
 
     public static final String BONJOUR_STATE_CHANGE = "org.fdroid.fdroid.BONJOUR_STATE_CHANGE";
     public static final String BLUETOOTH_STATE_CHANGE = "org.fdroid.fdroid.BLUETOOTH_STATE_CHANGE";
+    public static final String WIFI_STATE_CHANGE = "org.fdroid.fdroid.WIFI_STATE_CHANGE";
     public static final String EXTRA_STARTING = "STARTING";
     public static final String EXTRA_STARTED = "STARTED";
     public static final String EXTRA_STOPPED = "STOPPED";
@@ -459,7 +457,7 @@ public class SwapService extends Service {
         return bluetoothSwap;
     }
 
-    public SwapType getWifiSwap() {
+    public WifiSwap getWifiSwap() {
         return wifiSwap;
     }
 
@@ -485,7 +483,30 @@ public class SwapService extends Service {
         Preferences.get().registerLocalRepoHttpsListeners(httpsEnabledListener);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(onWifiChange, new IntentFilter(WifiStateChangeService.BROADCAST));
+
+        IntentFilter filter = new IntentFilter(BLUETOOTH_STATE_CHANGE);
+        filter.addAction(WIFI_STATE_CHANGE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiveSwapStatusChanged, filter);
     }
+
+    /**
+     * Responsible for moving the service into the foreground or the background, depending on
+     * whether or not there are any swap services (i.e. bluetooth or wifi) running or not.
+     */
+    private final BroadcastReceiver receiveSwapStatusChanged = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.hasExtra(EXTRA_STARTED)) {
+                if (getWifiSwap().isConnected() || getBluetoothSwap().isConnected()) {
+                    attachService();
+                }
+            } else if (intent.hasExtra(EXTRA_STOPPED)) {
+                if (!getWifiSwap().isConnected() && !getBluetoothSwap().isConnected()) {
+                    detachService();
+                }
+            }
+        }
+    };
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -517,6 +538,7 @@ public class SwapService extends Service {
         disableAllSwapping();
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiveSwapStatusChanged);
     }
 
     private Notification createNotification() {

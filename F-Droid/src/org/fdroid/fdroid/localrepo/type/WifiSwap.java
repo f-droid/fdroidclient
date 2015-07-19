@@ -10,6 +10,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.net.LocalHTTPD;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
@@ -23,11 +24,19 @@ public class WifiSwap extends SwapType {
 
     private Handler webServerThreadHandler = null;
     private LocalHTTPD localHttpd;
-    private final SwapType bonjourBroadcast;
+    private final BonjourBroadcast bonjourBroadcast;
 
     public WifiSwap(Context context) {
         super(context);
         bonjourBroadcast = new BonjourBroadcast(context);
+    }
+
+    protected String getBroadcastAction() {
+        return SwapService.WIFI_STATE_CHANGE;
+    }
+
+    public BonjourBroadcast getBonjour() {
+        return bonjourBroadcast;
     }
 
     @Override

@@ -30,9 +30,7 @@ public abstract class SwapType {
 
     abstract public void stop();
 
-    protected String getBroadcastAction() {
-        return null;
-    }
+    abstract protected String getBroadcastAction();
 
     protected final void setConnected(boolean connected) {
         if (connected) {

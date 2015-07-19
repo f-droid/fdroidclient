@@ -63,7 +63,7 @@ public class BluetoothServer extends Thread {
         }
 
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        adapter.setName(deviceBluetoothName.replace(BLUETOOTH_NAME_TAG,""));
+        adapter.setName(deviceBluetoothName.replaceAll("/^" + BLUETOOTH_NAME_TAG + "/",""));
 
     }
 
@@ -76,7 +76,7 @@ public class BluetoothServer extends Thread {
         //store the original bluetoothname, and update this one to be unique
         deviceBluetoothName = adapter.getName();
 
-        if (!deviceBluetoothName.contains(BLUETOOTH_NAME_TAG))
+        if (!deviceBluetoothName.startsWith(BLUETOOTH_NAME_TAG))
             adapter.setName(BLUETOOTH_NAME_TAG + deviceBluetoothName);
 
 

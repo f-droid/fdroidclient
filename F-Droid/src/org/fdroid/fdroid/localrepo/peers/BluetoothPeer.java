@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 // TODO: Still to be implemented.
 public class BluetoothPeer implements Peer {
@@ -21,7 +22,7 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public String getName() {
-        return device.getName();
+        return device.getName().replaceAll("^" + BluetoothServer.BLUETOOTH_NAME_TAG, "");
     }
 
     @Override

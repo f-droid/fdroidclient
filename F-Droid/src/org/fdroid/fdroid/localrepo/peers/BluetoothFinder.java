@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
+import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
+
 // TODO: Still to be implemented
 public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
 
@@ -20,6 +22,9 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
         adapter = BluetoothAdapter.getDefaultAdapter();
     }
 
+    private BroadcastReceiver deviceFoundReceiver;
+    private BroadcastReceiver scanCompleteReceiver;
+
     @Override
     public void scan() {
 
@@ -28,35 +33,45 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
             return;
         }
 
-        if (isScanning) {
-            // TODO: Can we reset the discovering timeout, so that it doesn't, e.g. time out
-            // in 3 seconds because we had already almost completed the previous scan?
-            Log.d(TAG, "Requested bluetooth scan when already scanning, will ignore request.");
-            return;
-        }
-
         isScanning = true;
 
-        final BroadcastReceiver deviceFoundReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
-                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    onDeviceFound(device);
+        if (deviceFoundReceiver == null) {
+            deviceFoundReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (BluetoothDevice.ACTION_FOUND.equals(intent.getAction())) {
+                        BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                        onDeviceFound(device);
+                    }
                 }
-            }
-        };
+            };
+            context.registerReceiver(deviceFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+        }
 
-        final BroadcastReceiver scanCompleteReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Log.d(TAG, "Scan complete: " + intent.getAction());
-                isScanning = false;
-            }
-        };
+        if (scanCompleteReceiver == null) {
+            scanCompleteReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (isScanning) {
+                        Log.d(TAG, "Scan complete, but we haven't been asked to stop scanning yet, so will restart scan.");
+                        startDiscovery();
+                    }
+                }
+            };
+            context.registerReceiver(scanCompleteReceiver, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
+        }
 
-        context.registerReceiver(deviceFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-        context.registerReceiver(scanCompleteReceiver, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
+        startDiscovery();
+    }
+
+    private void startDiscovery() {
+
+        if (adapter.isDiscovering()) {
+            // TODO: Can we reset the discovering timeout, so that it doesn't, e.g. time out
+            // in 3 seconds because we had already almost completed the previous scan?
+            Log.d(TAG, "Requested bluetooth scan when already scanning, will cancel previous scan before continuing.");
+            adapter.cancelDiscovery();
+        }
 
         if (!adapter.startDiscovery()) {
             Log.e(TAG, "Couldn't start bluetooth scanning.");
@@ -75,7 +90,9 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
     }
 
     private void onDeviceFound(BluetoothDevice device) {
-        foundPeer(new BluetoothPeer(device));
+        if (device != null && device.getName() != null && device.getName().startsWith(BluetoothServer.BLUETOOTH_NAME_TAG)) {
+            foundPeer(new BluetoothPeer(device));
+        }
     }
 
 }
