@@ -114,7 +114,8 @@ public class App extends ValueObject implements Comparable<App> {
         checkCursorPosition(cursor);
 
         for (int i = 0; i < cursor.getColumnCount(); i++) {
-            switch (cursor.getColumnName(i)) {
+            String n = cursor.getColumnName(i);
+            switch (n) {
             case AppProvider.DataColumns.IS_COMPATIBLE:
                 compatible = cursor.getInt(i) == 1;
                 break;
@@ -208,6 +209,10 @@ public class App extends ValueObject implements Comparable<App> {
             case AppProvider.DataColumns.InstalledApp.VERSION_NAME:
                 installedVersionName = cursor.getString(i);
                 break;
+            case "_id":
+                break;
+            default:
+                Log.e(TAG, "Unknown column name " + n);
             }
         }
     }
