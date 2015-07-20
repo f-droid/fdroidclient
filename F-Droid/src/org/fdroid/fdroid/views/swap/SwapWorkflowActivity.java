@@ -39,9 +39,9 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
-import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -105,11 +105,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName className, IBinder binder) {
-            Log.d(TAG, "Swap service connected, enabling SwapManager to communicate with SwapService.");
+            Log.d(TAG, "Swap service connected. Will hold onto it so we can talk to it regularly.");
             service = ((SwapService.Binder)binder).getService();
             showRelevantView();
         }
 
+        // TODO: What causes this? Do we need to stop swapping explicitly when this is invoked?
         @Override
         public void onServiceDisconnected(ComponentName className) {
             Log.d(TAG, "Swap service disconnected");
@@ -133,6 +134,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (currentView.getStep() == SwapService.STEP_INTRO) {
+            if (service != null) {
+                service.disableAllSwapping();
+            }
             finish();
         } else {
             int nextStep = currentView.getPreviousStep();
@@ -235,6 +239,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             case SwapService.STEP_SUCCESS:
                 showSwapConnected();
                 break;
+            case SwapService.STEP_CONNECTING:
+                // TODO: Properly decide what to do here...
+                inflateInnerView(R.layout.swap_blank);
+                break;
         }
     }
 
@@ -287,6 +295,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void showIntro() {
+        // If we were previously swapping with a specific client, forget that we were doing that,
+        // as we are starting over now.
+        getService().swapWith(null);
+
         if (!getService().isEnabled()) {
             prepareInitialRepo();
         }
@@ -303,7 +315,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void sendFDroid() {
-        // TODO: What is availble here? Currently we support Bluetooth (see main menu in F-Droid)
+        // TODO: What is available here? Currently we support Bluetooth (see main menu in F-Droid)
         // and Android Beam (try touching two devices together when in the app details view).
     }
 
@@ -314,8 +326,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
             updateSwappableAppsTask = new PrepareFullSwapRepo(getService().getAppsToSwap());
             updateSwappableAppsTask.execute();
-        } else if (!attemptToShowNfc()) {
-            showWifiQr();
+        } else {
+            onLocalRepoPrepared();
         }
     }
 
@@ -355,10 +367,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         inflateInnerView(R.layout.swap_join_wifi);
     }
 
-    private void showBluetoothDeviceList() {
-        inflateInnerView(R.layout.swap_bluetooth_devices);
-    }
-
     public void showWifiQr() {
         inflateInnerView(R.layout.swap_wifi_qr);
     }
@@ -384,6 +392,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void swapWith(Peer peer) {
+        getService().stopScanningForPeers();
         getService().swapWith(peer);
         showSelectApps();
     }
@@ -443,7 +452,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     /**
      * The process for setting up bluetooth is as follows:
      *  * Assume we have bluetooth available (otherwise the button which allowed us to start
-     *    the bluetooth process should not have been available). TODO: Remove button if bluetooth unavailable.
+     *    the bluetooth process should not have been available).
      *  * Ask user to enable (if not enabled yet).
      *  * Start bluetooth server socket.
      *  * Enable bluetooth discoverability, so that people can connect to our server socket.
@@ -609,36 +618,53 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Helper class to try and make sense of what the swap workflow is currently doing.
+     * The more technologies are involved in the process (e.g. Bluetooth/Wifi/NFC/etc)
+     * the harder it becomes to reason about and debug the whole thing. Thus,this class
+     * will periodically dump the state to logcat so that it is easier to see when certain
+     * protocols are enabled/disabled.
+     *
+     * To view only this output from logcat:
+     *
+     *  adb logcat | grep 'Swap Status'
+     *
+     * To exclude this output from logcat (it is very noisy):
+     *
+     *  adb logcat | grep -v 'Swap Status'
+     *
+     */
     class SwapDebug {
 
-        private StringBuilder status = new StringBuilder("\n");
-
         public void logStatus() {
-            append("service = " + service);
-            if (service != null) {
-                append("Swap Services:");
-                append("  service.getBluetoothSwap() = " + service.getBluetoothSwap());
-                append("  service.getBluetoothSwap().isConnected() = " + service.getBluetoothSwap().isConnected());
-                append("  service.getWifiSwap() = " + service.getWifiSwap());
-                append("  service.getWifiSwap().isConnected() = " + service.getWifiSwap().isConnected());
-                append("  service.getWifiSwap().getBonjour() = " + service.getWifiSwap().getBonjour());
-                append("  service.getWifiSwap().getBonjour().isConnected() = " + service.getWifiSwap().getBonjour().isConnected());
-                append("Discovering Services:");
+            String message = "";
+            if (service == null) {
+                message = "No swap service";
+            } else {
+                {
+                    String bluetooth = service.getBluetoothSwap().isConnected() ? "Yes" : " No";
+                    String wifi = service.getWifiSwap().isConnected() ? "Yes" : " No";
+                    String mdns = service.getWifiSwap().getBonjour().isConnected() ? "Yes" : " No";
+                     message += "Broadcast { BT: " + bluetooth + ", WiFi: " + wifi + ", mDNS: " + mdns + "}, ";
+                }
 
-                BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                if (adapter != null) {
+                {
+                    BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+                    String bluetooth = "N/A";
+                    if (adapter != null) {
+                        Map<Integer, String> scanModes = new HashMap<>(3);
+                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "CONNECTABLE");
+                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "CONNECTABLE_DISCOVERABLE");
+                        scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "NONE");
+                        bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
+                    }
 
-                    Map<Integer, String> scanModes = new HashMap<>(3);
-                    scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "SCAN_MODE_CONNECTABLE");
-                    scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "SCAN_MODE_CONNECTABLE_DISCOVERABLE");
-                    scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "SCAN_MODE_NONE");
-
-                    append("  Bluetooth.isEnabled() = " + adapter.isEnabled());
-                    append("  Bluetooth.isDiscovering() = " + adapter.isDiscovering());
-                    append("  Bluetooth.getScanMode() = " + scanModes.get(adapter.getScanMode()));
+                    String wifi = service.getBonjourFinder().isScanning() ? "Yes" : " No";
+                    message += "Discover { BT: " + bluetooth + ", WiFi: " + wifi + "}";
                 }
             }
-            Log.d("SwapStatus", status.toString());
+
+            Log.d("Swap Status", new Date().toLocaleString() + " " + message);
 
             new Timer().schedule(new TimerTask() {
                     @Override
@@ -646,12 +672,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                         new SwapDebug().logStatus();
                     }
                 },
-                2000
+                1000
             );
-        }
-
-        private void append(String line) {
-            status.append("  ").append(line).append("\n");
         }
     }
 

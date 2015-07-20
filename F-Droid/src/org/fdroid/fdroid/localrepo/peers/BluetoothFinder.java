@@ -8,9 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
+import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 
-// TODO: Still to be implemented
 public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
 
     private static final String TAG = "BluetoothFinder";
@@ -69,8 +68,8 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
         if (adapter.isDiscovering()) {
             // TODO: Can we reset the discovering timeout, so that it doesn't, e.g. time out
             // in 3 seconds because we had already almost completed the previous scan?
-            Log.d(TAG, "Requested bluetooth scan when already scanning, will cancel previous scan before continuing.");
-            adapter.cancelDiscovery();
+            Log.d(TAG, "Requested bluetooth scan when already scanning, so will ignore request.");
+            return;
         }
 
         if (!adapter.startDiscovery()) {
@@ -90,7 +89,7 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
     }
 
     private void onDeviceFound(BluetoothDevice device) {
-        if (device != null && device.getName() != null && device.getName().startsWith(BluetoothServer.BLUETOOTH_NAME_TAG)) {
+        if (device != null && device.getName() != null && device.getName().startsWith(BluetoothSwap.BLUETOOTH_NAME_TAG)) {
             foundPeer(new BluetoothPeer(device));
         }
     }

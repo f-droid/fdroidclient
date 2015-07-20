@@ -2,6 +2,7 @@ package org.fdroid.fdroid.localrepo.type;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -38,9 +39,12 @@ public abstract class SwapType {
             sendBroadcast(SwapService.EXTRA_STARTED);
         } else {
             isConnected = false;
+            onStopped();
             sendBroadcast(SwapService.EXTRA_STOPPED);
         }
     }
+
+    protected void onStopped() {}
 
     /**
      * Sends either a {@link org.fdroid.fdroid.localrepo.SwapService#EXTRA_STARTING},
@@ -55,7 +59,7 @@ public abstract class SwapType {
         }
     }
 
-    public final boolean isConnected() {
+    public boolean isConnected() {
         return isConnected;
     }
 
@@ -84,4 +88,15 @@ public abstract class SwapType {
             }
         }.execute();
     }
+
+    public void stopInBackground() {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                stop();
+                return null;
+            }
+        }.execute();
+    }
+
 }

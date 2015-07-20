@@ -60,19 +60,24 @@ public class WifiSwap extends SwapType {
                     @Override
                     public void handleMessage(Message msg) {
                         Log.i(TAG, "we've been asked to stop the webserver: " + msg.obj);
+                        setConnected(false);
                         localHttpd.stop();
                     }
                 };
                 try {
                     Log.d(TAG, "Starting swap webserver...");
+                    sendBroadcast(SwapService.EXTRA_STARTING);
                     localHttpd.start();
+                    setConnected(true);
                     Log.d(TAG, "Swap webserver started.");
                 } catch (BindException e) {
                     int prev = FDroidApp.port;
                     FDroidApp.port = FDroidApp.port + new Random().nextInt(1111);
+                    setConnected(false);
                     Log.w(TAG, "port " + prev + " occupied, trying on " + FDroidApp.port + "!");
                     context.startService(new Intent(context, WifiStateChangeService.class));
                 } catch (IOException e) {
+                    setConnected(false);
                     Log.e(TAG, "Could not start local repo HTTP server: " + e);
                     Log.e(TAG, Log.getStackTraceString(e));
                 }

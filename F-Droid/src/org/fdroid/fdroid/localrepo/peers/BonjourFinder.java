@@ -68,6 +68,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
 
             @Override
             protected void onPostExecute(Void result) {
+                // TODO: This is not threadsafe - cancelling the discovery will make jmdns null, but it could happen after this check and before call to addServiceListener().
                 if (jmdns != null) {
                     Log.d(TAG, "Adding mDNS service listeners for " + HTTP_SERVICE_TYPE + " and " + HTTPS_SERVICE_TYPE);
                     jmdns.addServiceListener(HTTP_SERVICE_TYPE, BonjourFinder.this);
@@ -80,13 +81,16 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
     }
 
     private void listServices() {
+
+        final JmDNS mdns = jmdns;
+
         new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... params) {
                 Log.d(TAG, "Explicitly querying for services, in addition to waiting for notifications.");
-                addFDroidServices(jmdns.list(HTTP_SERVICE_TYPE));
-                addFDroidServices(jmdns.list(HTTPS_SERVICE_TYPE));
+                addFDroidServices(mdns.list(HTTP_SERVICE_TYPE));
+                addFDroidServices(mdns.list(HTTPS_SERVICE_TYPE));
                 return null;
             }
 

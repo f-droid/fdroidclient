@@ -124,7 +124,7 @@ public class SelectAppsView extends ListView implements
 
     @Override
     public int getPreviousStep() {
-        return getState().isConnectingWithPeer() ? SwapService.STEP_JOIN_WIFI : SwapService.STEP_INTRO;
+        return getState().isConnectingWithPeer() ? SwapService.STEP_INTRO : SwapService.STEP_JOIN_WIFI;
     }
 
     @ColorRes

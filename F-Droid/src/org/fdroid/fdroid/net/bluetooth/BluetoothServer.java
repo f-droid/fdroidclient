@@ -3,25 +3,19 @@ package org.fdroid.fdroid.net.bluetooth;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
-import android.os.Build;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.net.HttpDownloader;
+import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 import org.fdroid.fdroid.net.bluetooth.httpish.Request;
 import org.fdroid.fdroid.net.bluetooth.httpish.Response;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,23 +31,23 @@ public class BluetoothServer extends Thread {
     private static final String TAG = "BluetoothServer";
 
     private BluetoothServerSocket serverSocket;
-    private List<Connection> clients = new ArrayList<>();
+    private List<ClientConnection> clients = new ArrayList<>();
 
-    private final Context context;
-
-    private String deviceBluetoothName = null;
-    public final static String BLUETOOTH_NAME_TAG = "FDroid:";
     private final File webRoot;
+    private final BluetoothSwap swap;
+    private boolean isRunning = false;
 
-    public BluetoothServer(Context context, File webRoot) {
-        this.context = context.getApplicationContext();
+    public BluetoothServer(BluetoothSwap swap, File webRoot) {
         this.webRoot = webRoot;
+        this.swap = swap;
     }
+
+    public boolean isRunning() { return isRunning; }
 
     public void close() {
 
-        for (Connection connection : clients) {
-            connection.interrupt();
+        for (ClientConnection clientConnection : clients) {
+            clientConnection.interrupt();
         }
 
         interrupt();
@@ -61,61 +55,53 @@ public class BluetoothServer extends Thread {
         if (serverSocket != null) {
             Utils.closeQuietly(serverSocket);
         }
-
-        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        adapter.setName(deviceBluetoothName.replaceAll("/^" + BLUETOOTH_NAME_TAG + "/",""));
-
     }
 
     @Override
     public void run() {
 
+        isRunning = true;
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-
-
-        //store the original bluetoothname, and update this one to be unique
-        deviceBluetoothName = adapter.getName();
-
-        if (!deviceBluetoothName.startsWith(BLUETOOTH_NAME_TAG))
-            adapter.setName(BLUETOOTH_NAME_TAG + deviceBluetoothName);
-
 
         try {
             serverSocket = adapter.listenUsingInsecureRfcommWithServiceRecord("FDroid App Swap", BluetoothConstants.fdroidUuid());
         } catch (IOException e) {
-            Log.e(TAG, "Error starting Bluetooth server socket, will stop the server now - " + e.getMessage());
+            Log.e(TAG, "Error starting Bluetooth server socket, will stop the server now: " + e.getMessage());
+            swap.stop();
+            isRunning = false;
             return;
         }
 
         while (true) {
             if (isInterrupted()) {
+                Log.d(TAG, "Server stopped so will terminate loop looking for client connections.");
                 break;
             }
 
             try {
                 BluetoothSocket clientSocket = serverSocket.accept();
-                if (clientSocket != null && !isInterrupted()) {
-                    Connection client = new Connection(context, clientSocket, webRoot);
+                if (clientSocket != null) {
+                    if (!isInterrupted()) {
+                        Log.d(TAG, "Server stopped after socket accepted from client, but before initiating connection.");
+                        break;
+                    }
+                    ClientConnection client = new ClientConnection(clientSocket, webRoot);
                     client.start();
                     clients.add(client);
-                } else {
-                    break;
                 }
             } catch (IOException e) {
-                Log.e(TAG, "Error receiving client connection over Bluetooth server socket, will continue listening for other clients - " + e.getMessage());
+                Log.e(TAG, "Error receiving client connection over Bluetooth server socket, will continue listening for other clients: " + e.getMessage());
             }
         }
-
+        isRunning = false;
     }
 
-    private static class Connection extends Thread {
+    private static class ClientConnection extends Thread {
 
-        private final Context context;
         private final BluetoothSocket socket;
         private final File webRoot;
 
-        public Connection(Context context, BluetoothSocket socket, File webRoot) {
-            this.context = context.getApplicationContext();
+        public ClientConnection(BluetoothSocket socket, File webRoot) {
             this.socket = socket;
             this.webRoot = webRoot;
         }
@@ -142,13 +128,11 @@ public class BluetoothServer extends Thread {
                     handleRequest(incomingRequest).send(connection);
                 } catch (IOException e) {
                     Log.e(TAG, "Error receiving incoming connection over bluetooth - " + e.getMessage());
-
-
+                    break;
                 }
 
                 if (isInterrupted())
                     break;
-
             }
 
         }
@@ -160,7 +144,6 @@ public class BluetoothServer extends Thread {
             Response.Builder builder = null;
 
             try {
-//                HttpDownloader downloader = new HttpDownloader("http://127.0.0.1:" + ( FDroidApp.port) + "/" + request.getPath(), context);
                 int statusCode = 404;
                 int totalSize = -1;
 

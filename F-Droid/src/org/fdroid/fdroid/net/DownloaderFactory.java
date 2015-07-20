@@ -11,8 +11,8 @@ public class DownloaderFactory {
     public static Downloader create(String url, Context context) throws IOException {
         Uri uri = Uri.parse(url);
         if (isBluetoothAddress(uri)) {
-            // TODO: Don't pass null!!!
-            return new BluetoothDownloader(null, uri.getPath(), context);
+            String macAddress = uri.getHost().replace("-", ":");
+            return new BluetoothDownloader(macAddress, uri.getPath(), context);
         } else if (isOnionAddress(url)) {
             return new TorHttpDownloader(url, context);
         } else {
@@ -23,8 +23,8 @@ public class DownloaderFactory {
     public static Downloader create(String url, File destFile) throws IOException {
         Uri uri = Uri.parse(url);
         if (isBluetoothAddress(uri)) {
-            // TODO: Don't pass null!!!
-            return new BluetoothDownloader(null, uri.getPath(), destFile);
+            String macAddress = uri.getHost().replace("-", ":");
+            return new BluetoothDownloader(macAddress, uri.getPath(), destFile);
         } else if (isOnionAddress(url)) {
             return new TorHttpDownloader(url, destFile);
         } else {

@@ -3,6 +3,7 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 import android.util.Log;
 import org.apache.commons.io.input.BoundedInputStream;
+import org.fdroid.fdroid.net.bluetooth.BluetoothClient;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 import org.fdroid.fdroid.net.bluetooth.FileDetails;
 import org.fdroid.fdroid.net.bluetooth.httpish.Request;
@@ -23,21 +24,15 @@ public class BluetoothDownloader extends Downloader {
     private FileDetails fileDetails;
     private final String sourcePath;
 
-    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, Context ctx) throws IOException {
+    public BluetoothDownloader(String macAddress, String sourcePath, Context ctx) throws IOException {
         super(ctx);
-        this.connection = connection;
+        this.connection = new BluetoothClient(macAddress).openConnection();
         this.sourcePath = sourcePath;
     }
 
-    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, File destFile) throws FileNotFoundException, MalformedURLException {
+    public BluetoothDownloader(String macAddress, String sourcePath, File destFile) throws IOException {
         super(destFile);
-        this.connection = connection;
-        this.sourcePath = sourcePath;
-    }
-
-    public BluetoothDownloader(BluetoothConnection connection, String sourcePath, OutputStream output) throws MalformedURLException {
-        super(output);
-        this.connection = connection;
+        this.connection = new BluetoothClient(macAddress).openConnection();
         this.sourcePath = sourcePath;
     }
 

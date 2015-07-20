@@ -4,9 +4,8 @@ import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.net.bluetooth.BluetoothServer;
+import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 
-// TODO: Still to be implemented.
 public class BluetoothPeer implements Peer {
 
     private BluetoothDevice device;
@@ -22,7 +21,7 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public String getName() {
-        return device.getName().replaceAll("^" + BluetoothServer.BLUETOOTH_NAME_TAG, "");
+        return device.getName().replaceAll("^" + BluetoothSwap.BLUETOOTH_NAME_TAG, "");
     }
 
     @Override
@@ -37,7 +36,7 @@ public class BluetoothPeer implements Peer {
 
     @Override
     public String getRepoAddress() {
-        return "bluetooth://" + device.getAddress() + "/fdroid/repo";
+        return "bluetooth://" + device.getAddress().replace(':', '-') + "/fdroid/repo";
     }
 
     @Override

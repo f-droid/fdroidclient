@@ -39,7 +39,6 @@ import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
 import org.fdroid.fdroid.localrepo.peers.BonjourFinder;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
-import org.fdroid.fdroid.localrepo.type.BonjourBroadcast;
 import org.fdroid.fdroid.localrepo.type.SwapType;
 import org.fdroid.fdroid.localrepo.type.WifiSwap;
 import org.fdroid.fdroid.net.WifiStateChangeService;
@@ -65,8 +64,10 @@ import java.util.TimerTask;
 public class SwapService extends Service {
 
     private static final String TAG = "SwapManager";
-    private static final String SHARED_PREFERENCES = "swap-state";
+    public static final String SHARED_PREFERENCES = "swap-state";
     private static final String KEY_APPS_TO_SWAP = "appsToSwap";
+    private static final String KEY_BLUETOOTH_ENABLED = "bluetoothEnabled";
+    private static final String KEY_WIFI_ENABLED = "wifiEnabled";
 
     @NonNull
     private Set<String> appsToSwap = new HashSet<>();
@@ -353,6 +354,25 @@ public class SwapService extends Service {
     }
 
 
+    // =============================================================
+    //   Remember which swap technologies a user used in the past
+    // =============================================================
+
+    private void persistPreferredSwapTypes() {
+        persistence().edit()
+            .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
+            .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
+            .commit();
+    }
+
+    private boolean wasBluetoothEnabled() {
+        return persistence().getBoolean(KEY_BLUETOOTH_ENABLED, false);
+    }
+
+    private boolean wasWifiEnabled() {
+        return persistence().getBoolean(KEY_WIFI_ENABLED, false);
+    }
+
     // ==========================================
     //   Local repo stop/start/restart handling
     // ==========================================
@@ -408,6 +428,14 @@ public class SwapService extends Service {
     // ==========================================
     //    Interacting with Bluetooth adapter
     // ==========================================
+
+    public BonjourFinder getBonjourFinder() {
+        return bonjourFinder;
+    }
+
+    public BluetoothFinder getBluetoothFinder() {
+        return bluetoothFinder;
+    }
 
     public boolean isBluetoothDiscoverable() {
         return bluetoothSwap.isConnected();
@@ -487,6 +515,16 @@ public class SwapService extends Service {
         IntentFilter filter = new IntentFilter(BLUETOOTH_STATE_CHANGE);
         filter.addAction(WIFI_STATE_CHANGE);
         LocalBroadcastManager.getInstance(this).registerReceiver(receiveSwapStatusChanged, filter);
+
+        if (wasBluetoothEnabled()) {
+            Log.d(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
+            bluetoothSwap.startInBackground();
+        }
+
+        if (wasWifiEnabled()) {
+            Log.d(TAG, "Previously the user enabled Wifi swap, so enabling again automatically.");
+            wifiSwap.startInBackground();
+        }
     }
 
     /**
@@ -505,6 +543,7 @@ public class SwapService extends Service {
                     detachService();
                 }
             }
+            persistPreferredSwapTypes();
         }
     };
 
@@ -520,15 +559,10 @@ public class SwapService extends Service {
     }
 
     public void disableAllSwapping() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                getBluetoothSwap().stop();
-                getWifiSwap().stop();
-                detachService();
-                return null;
-            }
-        }.execute();
+        Log.i(TAG, "Asked to stop swapping, will stop bluetooth, wifi, and move service to BG for GC.");
+        getBluetoothSwap().stopInBackground();
+        getWifiSwap().stopInBackground();
+        detachService();
     }
 
     @Override
