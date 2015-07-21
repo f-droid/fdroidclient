@@ -75,15 +75,15 @@ provides more useful feedback than the command line).
 Versioning
 ----------
 
-Each stable version follows the X.Y pattern. Hotfix releases - i.e. when a
+Each stable version follows the `X.Y` pattern. Hotfix releases - i.e. when a
 stable has an important bug that needs immediate fixing - will follow the
-X.Y.Z pattern.
+`X.Y.Z` pattern.
 
 Before each stable release, a number of alpha releases will be released. They
-will follow the pattern X.Y-alphaN, where N is the current alpha number. These
-will usually include changes and new features that have not been tested enough
-for a stable release, so use at your own risk. Testers and reporters are very
-welcome.
+will follow the pattern `X.Y-alphaN`, where `N` is the current alpha number.
+These will usually include changes and new features that have not been tested
+enough for a stable release, so use at your own risk. Testers and reporters
+are very welcome.
 
 The version codes use a number of digits per each of these keys: `XYYZNN`.
 So for example, 1.3.1 would be `103100` and 0.95-alpha13 would be `95013`
