@@ -72,6 +72,35 @@ for more details, including how to use Android Studio to run tests (which
 provides more useful feedback than the command line).
 
 
+Versioning
+----------
+
+Each stable version follows the X.Y pattern. Hotfix releases - i.e. when a
+stable has an important bug that needs immediate fixing - will follow the
+X.Y.Z pattern.
+
+Before each stable release, a number of alpha releases will be released. They
+will follow the pattern X.Y-alphaN, where N is the current alpha number. These
+will usually include changes and new features that have not been tested enough
+for a stable release, so use at your own risk. Testers and reporters are very
+welcome.
+
+The version codes use a number of digits per each of these keys: `XYYZNN`.
+So for example, 1.3.1 would be `103100` and 0.95-alpha13 would be `95013`
+(leading zeros are omitted).
+
+This is an example of a release process for release **0.95**:
+
+* We are currently at stable **0.94**
+* **0.95-alpha1** is released
+* **0.95-alpha2** is released
+* **0.95-alpha3** is released
+* Testing process (1-2 weeks) during which no new features are merged in
+* **0.95** is released
+* A bug is reported on the stable release and fixed
+* **0.95.1** is released
+
+
 License
 -------
 
