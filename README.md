@@ -7,7 +7,8 @@ for Android.
 Building from source with Gradle
 --------------------------------
 
-The only required tools are the [Android SDK](http://developer.android.com/sdk/index.html) and Gradle.
+The only required tools are the [Android
+SDK](http://developer.android.com/sdk/index.html) and Gradle.
 
 You should use a relatively new version of Gradle, such as 2.4, or use the
 gradle wrapper.
@@ -65,8 +66,10 @@ command line:
 This will build and install F-Droid and the test apk, then execute the entire
 test suite on the device or emulator.
 
-See the [Android Gradle user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Testing) for more details, including how to use Android Studio to run tests (which provides
-more useful feedback than the command line).
+See the [Android Gradle user
+guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Testing)
+for more details, including how to use Android Studio to run tests (which
+provides more useful feedback than the command line).
 
 
 License
