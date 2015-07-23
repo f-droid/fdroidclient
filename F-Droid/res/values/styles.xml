@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/fdroid_blue</item>
         <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
         <item name="colorAccent">@color/fdroid_green</item>
+        <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeDark</item>
     </style>
 
@@ -15,6 +16,7 @@
         <item name="colorPrimary">@color/fdroid_blue</item>
         <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
         <item name="colorAccent">@color/fdroid_green</item>
+        <item name="android:textColorLink">@color/fdroid_green</item>
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
     </style>
 
