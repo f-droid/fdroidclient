@@ -18,7 +18,6 @@
 package org.fdroid.fdroid.installer;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -29,6 +28,7 @@ import android.content.pm.PermissionInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
+import android.support.v7.app.AlertDialog;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.util.AttributeSet;

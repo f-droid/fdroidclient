@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid;
 
-import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.SearchManager;
 import android.bluetooth.BluetoothAdapter;
@@ -30,13 +29,12 @@ import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -279,16 +277,7 @@ public class FDroid extends ActionBarActivity {
             return true;
 
         case R.id.action_about:
-            View view;
-            if (Build.VERSION.SDK_INT >= 11) {
-                LayoutInflater li = LayoutInflater.from(this);
-                view = li.inflate(R.layout.about, null);
-            } else {
-                view = View.inflate(
-                        new ContextThemeWrapper(this, R.style.AboutDialogLight),
-                        R.layout.about, null);
-            }
-
+            View view = LayoutInflater.from(this).inflate(R.layout.about, null);
             // Fill in the version...
             try {
                 PackageInfo pi = getPackageManager()
@@ -299,15 +288,7 @@ public class FDroid extends ActionBarActivity {
             } catch (Exception ignored) {
             }
 
-            AlertDialog.Builder builder;
-            if (Build.VERSION.SDK_INT >= 11) {
-                builder = new AlertDialog.Builder(this).setView(view);
-            } else {
-                builder = new AlertDialog.Builder(
-                        new ContextThemeWrapper(
-                                this, R.style.AboutDialogLight)
-                        ).setView(view);
-            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(view);
             final AlertDialog alrt = builder.create();
             alrt.setTitle(getString(R.string.about_title));
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
