@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-# Jenkins uses this script to set up the ant build.  Jenkins will then call
-# ant itself once this script has completed.
+# Jenkins uses this script to set up the gradle build. Jenkins will then call
+# gradle itself once this script has completed.
 
 set -e
 set -x
@@ -15,7 +15,6 @@ sed -i \
     -e "s,android:versionName=\"\([^\"][^\"]*\)\",android:versionName=\"\1.$versionNameDate\"," \
     F-Droid/AndroidManifest.xml
 
-
 if [ -z $ANDROID_HOME ]; then
     if [ -e ~/.android/bashrc ]; then
         . ~/.android/bashrc
@@ -26,4 +25,3 @@ if [ -z $ANDROID_HOME ]; then
 fi
 
 cd F-Droid
-./ant-prepare.sh
