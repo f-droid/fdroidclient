@@ -29,10 +29,6 @@ You have three options:
 
  * Build with gradle
  * Build with gradle from source
- * Build with ant from source
-
-Any will work, but if you use gradle, remember that you can use --daemon to
-not have to watch gradle load every time.
 
 Debugging
 ---------
