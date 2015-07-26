@@ -1,6 +1,6 @@
 ### Upcoming release
 
-* Adapt UI to use Material Design
+* Switch UI to Material Design, including a new launcher icon
 
 * Redesign the App Details view with larger icons, expandable description and
   links with icons
@@ -11,10 +11,15 @@
 * Remove the root installer, since the system installer is safer, more stable
   and now easy to set up with root privileges
 
+* Speed up and simplify repo update process by streaming the data out of the
+  jar file directly
+
 * Can now manually add swap repo via "Repositories" screen
 
 * Using NFC during swap now initiates a proper swap, rather than redirecting to
   the "Repositories" screen
+
+* Drop ant support to greatly simplify the build process and its maintenance
 
 ### 0.92 (2015-06-08)
 
