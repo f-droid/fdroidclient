@@ -118,11 +118,12 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         uiInitButtons();
         uiUpdatePeersInfo();
 
+        // TODO: Unregister this receiver at some point.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 new BroadcastReceiver() {
                     @Override
                     public void onReceive(Context context, Intent intent) {
-                        uiUpdateWifi();
+                        uiUpdateWifiNetwork();
                     }
                 },
                 new IntentFilter(WifiStateChangeService.BROADCAST)
@@ -230,20 +231,24 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                 }
             });
 
+            // TODO: Unregister receiver correctly...
             LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
                         Log.d(TAG, "Bluetooth service is starting...");
                         bluetoothSwitch.setEnabled(false);
+                        textBluetoothVisible.setText(R.string.swap_setting_up_bluetooth);
                         // bluetoothSwitch.setChecked(true);
                     } else {
                         bluetoothSwitch.setEnabled(true);
                         if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
                             Log.d(TAG, "Bluetooth service has started.");
+                            textBluetoothVisible.setText(R.string.swap_visible_bluetooth);
                             // bluetoothSwitch.setChecked(true);
                         } else {
                             Log.d(TAG, "Bluetooth service has stopped.");
+                            textBluetoothVisible.setText(R.string.swap_not_visible_bluetooth);
                             bluetoothSwitch.setChecked(false);
                         }
                     }
@@ -271,39 +276,41 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                     getManager().getWifiSwap().stop();
                 }
                 uiUpdatePeersInfo();
-                uiUpdateWifi();
+                uiUpdateWifiNetwork();
             }
         });
 
+        final TextView textWifiVisible = (TextView)findViewById(R.id.wifi_visible);
+
+        // TODO: Unregister receiver correctly...
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.hasExtra(SwapService.EXTRA_STARTING)) {
                     Log.d(TAG, "Bonjour/WiFi service is starting...");
+                    textWifiVisible.setText(R.string.swap_setting_up_wifi);
                     wifiSwitch.setEnabled(false);
                     wifiSwitch.setChecked(true);
                 } else {
                     wifiSwitch.setEnabled(true);
                     if (intent.hasExtra(SwapService.EXTRA_STARTED)) {
                         Log.d(TAG, "Bonjour/WiFi service has started.");
+                        textWifiVisible.setText(R.string.swap_visible_wifi);
                         wifiSwitch.setChecked(true);
                     } else {
                         Log.d(TAG, "Bonjour/WiFi service has stopped.");
+                        textWifiVisible.setText(R.string.swap_not_visible_wifi);
                         wifiSwitch.setChecked(false);
                     }
                 }
-                uiUpdateWifi();
+                uiUpdateWifiNetwork();
             }
         }, new IntentFilter(SwapService.BONJOUR_STATE_CHANGE));
 
-        uiUpdateWifi();
+        uiUpdateWifiNetwork();
     }
 
-    private void uiUpdateWifi() {
-
-        final TextView textWifiVisible = (TextView)findViewById(R.id.wifi_visible);
-        int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
-        textWifiVisible.setText(textResource);
+    private void uiUpdateWifiNetwork() {
 
         viewWifiId.setText(FDroidApp.ipAddressString);
         viewWifiId.setVisibility(TextUtils.isEmpty(FDroidApp.ipAddressString) ? View.GONE : View.VISIBLE);
