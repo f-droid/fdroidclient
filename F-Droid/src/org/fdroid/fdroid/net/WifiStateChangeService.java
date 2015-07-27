@@ -163,11 +163,11 @@ public class WifiStateChangeService extends Service {
             WifiStateChangeService.this.stopSelf();
 
             Intent swapService = new Intent(WifiStateChangeService.this, SwapService.class);
-            bindService(swapService, new ServiceConnection() {
+            getApplicationContext().bindService(swapService, new ServiceConnection() {
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder service) {
-                    ((SwapService.Binder)service).getService().restartWifiIfEnabled();
-                    unbindService(this);
+                    ((SwapService.Binder) service).getService().restartWifiIfEnabled();
+                    getApplicationContext().unbindService(this);
                 }
 
                 @Override

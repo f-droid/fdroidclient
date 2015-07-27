@@ -34,13 +34,11 @@
     </style>
 
     <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--<item name="android:windowBackground">@drawable/swap_window_background</item>-->
-        <!--<item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>-->
-        <item name="actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
         <item name="colorButtonNormal">@color/swap_bright_blue</item>
-        <item name="android:windowBackground">@drawable/swap_window_background</item>
         <item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
         <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
+        <item name="actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
+        <item name="actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
     </style>
 
     <style name="SwapTheme.StartSwap" parent="AppThemeLight">
@@ -51,16 +49,6 @@
     </style>
 
     <style name="SwapTheme.BluetoothDeviceList" parent="@style/SwapTheme.Wizard">
-    </style>
-
-    <style name="SwapTheme.BluetoothDeviceList.ListItem" parent="AppThemeDark">
-    </style>
-
-    <style name="SwapTheme.BluetoothDeviceList.Text" parent="@style/SwapTheme.BluetoothDeviceList">
-    </style>
-
-    <style name="SwapTheme.BluetoothDeviceList.Heading" parent="@style/SwapTheme.BluetoothDeviceList.Text">
-        <item name="android:textSize">32.5dp</item> <!-- 58px * 96dpi / 160dpi = 32.5sp -->
     </style>
 
     <style name="SwapTheme.AppList" parent="AppThemeLight">

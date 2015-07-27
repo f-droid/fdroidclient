@@ -66,6 +66,7 @@ import java.util.TimerTask;
  * TODO: Remove peers from list of peers when no longer "visible".
  * TODO: Show feedback for "Setting up (wifi|bluetooth)" in start swap view.
  * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
+ * TODO: Disable the Scan QR button unless visible via something. Could equally show relevant feedback.
  *
  */
 public class SwapService extends Service {

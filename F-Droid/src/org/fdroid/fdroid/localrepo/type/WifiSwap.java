@@ -43,6 +43,8 @@ public class WifiSwap extends SwapType {
     public void start() {
 
         Log.d(TAG, "Preparing swap webserver.");
+        sendBroadcast(SwapService.EXTRA_STARTING);
+
         Runnable webServer = new Runnable() {
             // Tell Eclipse this is not a leak because of Looper use.
             @SuppressLint("HandlerLeak")
@@ -66,7 +68,6 @@ public class WifiSwap extends SwapType {
                 };
                 try {
                     Log.d(TAG, "Starting swap webserver...");
-                    sendBroadcast(SwapService.EXTRA_STARTING);
                     localHttpd.start();
                     setConnected(true);
                     Log.d(TAG, "Swap webserver started.");
@@ -92,12 +93,12 @@ public class WifiSwap extends SwapType {
     public void stop() {
         if (webServerThreadHandler == null) {
             Log.i(TAG, "null handler in stopWebServer");
-            return;
+        } else {
+            Log.d(TAG, "Sending message to swap webserver to stop it.");
+            Message msg = webServerThreadHandler.obtainMessage();
+            msg.obj = webServerThreadHandler.getLooper().getThread().getName() + " says stop";
+            webServerThreadHandler.sendMessage(msg);
         }
-        Log.d(TAG, "Sending message to swap webserver to stop it.");
-        Message msg = webServerThreadHandler.obtainMessage();
-        msg.obj = webServerThreadHandler.getLooper().getThread().getName() + " says stop";
-        webServerThreadHandler.sendMessage(msg);
         bonjourBroadcast.stop();
     }
 

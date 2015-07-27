@@ -11,6 +11,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -26,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.FDroidApp;
@@ -168,6 +168,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             }
         });
 
+        // TODO: Unregister this receiver at the right time.
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -211,7 +212,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             int textResource = getManager().isBluetoothDiscoverable() ? R.string.swap_visible_bluetooth : R.string.swap_not_visible_bluetooth;
             textBluetoothVisible.setText(textResource);
 
-            final Switch bluetoothSwitch = ((Switch) findViewById(R.id.switch_bluetooth));
+            final SwitchCompat bluetoothSwitch = ((SwitchCompat) findViewById(R.id.switch_bluetooth));
             bluetoothSwitch.setChecked(getManager().isBluetoothDiscoverable());
             bluetoothSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -265,7 +266,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         viewWifiId = (TextView)findViewById(R.id.device_id_wifi);
         viewWifiNetwork = (TextView)findViewById(R.id.wifi_network);
 
-        final Switch wifiSwitch = (Switch)findViewById(R.id.switch_wifi);
+        final SwitchCompat wifiSwitch = (SwitchCompat)findViewById(R.id.switch_wifi);
         wifiSwitch.setChecked(getManager().isBonjourDiscoverable());
         wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -281,6 +282,8 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         });
 
         final TextView textWifiVisible = (TextView)findViewById(R.id.wifi_visible);
+        int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
+        textWifiVisible.setText(textResource);
 
         // TODO: Unregister receiver correctly...
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
