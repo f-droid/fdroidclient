@@ -16,11 +16,13 @@
 
 package android.test;
 
+import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.DatabaseUtils;
+import android.os.Build;
 import android.test.mock.MockContentResolver;
 import android.test.mock.MockContext;
 
@@ -154,9 +156,17 @@ public abstract class ProviderTestCase2MockContext<T extends ContentProvider> ex
      */
     @Override
     protected void tearDown() throws Exception {
-        mProvider.shutdown();
+        shutdownProvider();
         super.tearDown();
     }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void shutdownProvider() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            mProvider.shutdown();
+        }
+    }
+
 
     /**
      * Gets the {@link MockContentResolver} created by this class during initialization. You

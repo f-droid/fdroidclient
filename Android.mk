@@ -8,9 +8,14 @@ LOCAL_PACKAGE_NAME := F-Droid
 
 fdroid_root  := $(LOCAL_PATH)
 fdroid_dir   := F-Droid
+fdroid_out   := $(OUT_DIR)/target/common/obj/APPS/$(LOCAL_MODULE)_intermediates
+fdroid_build := $(fdroid_root)/$(fdroid_dir)/build
 fdroid_apk   := build/outputs/apk/F-Droid-release-unsigned.apk
 
 $(fdroid_root)/$(fdroid_dir)/$(fdroid_apk):
+	rm -Rf $(fdroid_build)
+	mkdir -p $(fdroid_out)
+	ln -s $(fdroid_out) $(fdroid_build)
 	cd $(fdroid_root)/$(fdroid_dir) && gradle assembleRelease
 
 LOCAL_CERTIFICATE := platform

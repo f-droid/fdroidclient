@@ -1,97 +1,115 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/icon_and_title"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:paddingTop="2dp">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2015 Nico Alt, nicoalt@posteo.org
+
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 3
+    of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/icon_and_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:padding="2dp">
 
     <ImageView
-            android:id="@+id/icon"
-            android:contentDescription="@string/app_icon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_centerVertical="true"
-            android:padding="4dp"
-            android:scaleType="fitCenter"
-            tools:src="@drawable/ic_launcher"
-            />
+        android:id="@+id/icon"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/app_icon"
+        android:scaleType="fitCenter"
+        tools:src="@drawable/ic_launcher" />
 
-    <RelativeLayout
-            android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/icon"
-            android:layout_toEndOf="@id/icon"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="F-Droid" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:baselineAligned="false"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:orientation="vertical"
-            >
+            android:orientation="horizontal">
 
-        <TextView
-                android:id="@+id/license"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:layout_marginLeft="6sp"
-                android:layout_marginStart="6sp"
-                android:textSize="12sp"
-                tools:text="GPLv3+"
-                />
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:orientation="vertical">
 
-        <TextView
-                android:id="@+id/title"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:singleLine="true"
-                android:ellipsize="end"
+                <TextView
+                    android:id="@+id/current_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:textSize="13sp"
+                    tools:text="1.24" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:textSize="13sp"
+                    tools:text="Version 1.23 installed" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:gravity="start"
-                android:textAlignment="viewStart"
-                android:layout_toLeftOf="@id/license"
-                android:layout_toStartOf="@id/license"
-                tools:text="F-Droid"/>
+                android:layout_gravity="end"
+                android:layout_weight="0"
+                android:baselineAligned="false"
+                tools:text="Open" />
 
-        <TextView
-                android:id="@+id/categories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginLeft="6sp"
-                android:layout_marginStart="6sp"
-                android:layout_below="@id/title"
-                android:textSize="12sp"
-                tools:text="System"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
 
-        <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:textSize="12sp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:gravity="start"
-                android:textAlignment="viewStart"
-                android:layout_toLeftOf="@id/categories"
-                android:layout_toStartOf="@id/categories"
-                android:layout_below="@id/title"
-                tools:text="Installed"/>
 
-    </RelativeLayout>
-</RelativeLayout>
 

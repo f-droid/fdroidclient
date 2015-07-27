@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="910"
-    android:versionName="0.91"
+    android:versionCode="940"
+    android:versionName="0.94-test"
     >
 
     <uses-sdk
@@ -55,9 +55,6 @@
         tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.DELETE_PACKAGES"
         tools:ignore="ProtectedPermissions"/>
-
-    <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app) -->
-    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
 
     <application
         android:name="FDroidApp"
@@ -299,6 +296,14 @@
                 android:value=".SearchResults" />
         </activity>
         <activity
+            android:name=".installer.InstallConfirmActivity"
+            android:label="@string/menu_install"
+            android:parentActivityName=".FDroid">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FDroid" />
+        </activity>
+        <activity
             android:name=".views.ManageReposActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
@@ -385,6 +390,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FDroid" />
         </activity>
+        <!-- Note: Theme.NoDisplay, this activity shows dialogs only -->
+        <activity
+            android:name=".installer.InstallIntoSystemDialogActivity"
+            android:theme="@android:style/Theme.NoDisplay" />
+        <receiver
+            android:name=".installer.InstallIntoSystemBootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".SearchResults"
             android:label="@string/search_results"

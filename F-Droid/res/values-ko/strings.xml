@@ -78,9 +78,6 @@
   <string name="category_recentlyupdated">최근 업데이트</string>
   <string name="status_download">%1$s 에서 다운로드 중입니다.
 %2$s / %3$s (%4$d%%)</string>
-  <string name="status_processing_xml">응용 프로그램 처리중
-%1$s
-%2$d / %3$d</string>
   <string name="status_connecting_to_repo">%1$s에 접속중</string>
   <string name="status_checking_compatibility">장치와 응용프로그램의 호환성 확인중…</string>
   <string name="no_permissions">사용된 권한이 없습니다.</string>

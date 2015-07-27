@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.data;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -36,7 +38,7 @@ public class QuerySelection {
     public String getSelection() { return selection; }
 
     public boolean hasSelection() {
-        return selection != null && selection.length() > 0;
+        return !TextUtils.isEmpty(selection);
     }
 
     public boolean hasArgs() {

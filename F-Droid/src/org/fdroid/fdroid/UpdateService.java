@@ -275,8 +275,9 @@ public class UpdateService extends IntentService implements ProgressListener {
     protected void sendStatus(int statusCode, String message) {
         if (receiver != null) {
             Bundle resultData = new Bundle();
-            if (message != null && message.length() > 0)
+            if (!TextUtils.isEmpty(message)) {
                 resultData.putString(RESULT_MESSAGE, message);
+            }
             receiver.send(statusCode, resultData);
         }
     }
@@ -777,7 +778,6 @@ public class UpdateService extends IntentService implements ProgressListener {
         Log.d(TAG, "Removing " + numDeleted + " apks that don't have any apks");
     }
 
-
     /**
      * Received progress event from the RepoXMLHandler. It could be progress
      * downloading from the repo, or perhaps processing the info from the repo.
@@ -788,16 +788,16 @@ public class UpdateService extends IntentService implements ProgressListener {
         // TODO: Switch to passing through Bundles of data with the event, rather than a repo address. They are
         // now much more general purpose then just repo downloading.
         String repoAddress = event.getData().getString(RepoUpdater.PROGRESS_DATA_REPO_ADDRESS);
+        String downloadedSize = Utils.getFriendlySize(event.progress);
+        String totalSize = Utils.getFriendlySize(event.total);
+        int percent = (int) ((double) event.progress / event.total * 100);
         switch (event.type) {
-        case Downloader.EVENT_PROGRESS:
-            String downloadedSize = Utils.getFriendlySize(event.progress);
-            String totalSize      = Utils.getFriendlySize(event.total);
-            int percent           = (int)((double)event.progress/event.total * 100);
-            message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
-            break;
-        case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
-            message = getString(R.string.status_processing_xml, repoAddress, event.progress, event.total);
-            break;
+            case Downloader.EVENT_PROGRESS:
+                message = getString(R.string.status_download, repoAddress, downloadedSize, totalSize, percent);
+                break;
+            case RepoUpdater.PROGRESS_TYPE_PROCESS_XML:
+                message = getString(R.string.status_processing_xml_percent, repoAddress, downloadedSize, totalSize, percent);
+                break;
         }
         sendStatus(STATUS_INFO, message);
     }

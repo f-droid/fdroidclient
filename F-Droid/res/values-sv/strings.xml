@@ -24,8 +24,6 @@
   <string name="notify_on">Meddela när uppdateringar finns tillgängliga</string>
   <string name="update_history">Uppdateringshistorik</string>
   <string name="update_history_summ">Antal dagar som appar betraktas som nya: %s</string>
-  <string name="root_installer">Installera med root-åtkomst</string>
-  <string name="root_installer_on">Efterfråga root-åtkomst för att installera, uppdatera och ta bort paket</string>
   <string name="system_installer">Installera med systembehörigheter</string>
   <string name="system_installer_on">Använd systembehörigheter för att installera, uppdatera och ta bort paket</string>
   <string name="local_repo_name">Namn på ditt lokala förråd</string>
@@ -171,9 +169,6 @@ Vill du uppdatera dem?</string>
   <string name="status_download">Hämtar
 %2$s / %3$s (%4$d%%) från
 %1$s</string>
-  <string name="status_processing_xml">Bearbetar program
-%2$d av %3$d från
-%1$s</string>
   <string name="status_connecting_to_repo">Ansluter till
 %1$s</string>
   <string name="status_checking_compatibility">Kontrollerar appars kompatibilitet med din enhet…</string>
@@ -225,7 +220,6 @@ Vill du uppdatera dem?</string>
   <string name="Security">Säkerhet</string>
   <string name="System">System</string>
   <string name="Wallpaper">Bakgrundsbild</string>
-  <string name="requesting_root_access_title">Root-åtkomst</string>
   <string name="requesting_root_access_body">Efterfrågar root-åtkomst…</string>
   <string name="root_access_denied_title">Root-åtkomst nekad</string>
   <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat root-åtkomst för F-Droid.</string>

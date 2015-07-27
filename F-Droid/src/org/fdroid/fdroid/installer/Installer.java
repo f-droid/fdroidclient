@@ -95,27 +95,9 @@ abstract public class Installer {
     /**
      * Creates a new Installer for installing/deleting processes starting from
      * an Activity
-     *
-     * @param activity
-     * @param pm
-     * @param callback
-     * @return
-     * @throws AndroidNotCompatibleException
      */
     public static Installer getActivityInstaller(Activity activity, PackageManager pm,
             InstallerCallback callback) {
-
-        // if root installer has been activated in preferences -> RootInstaller
-        boolean isRootInstallerEnabled = Preferences.get().isRootInstallerEnabled();
-        if (isRootInstallerEnabled) {
-            Log.d(TAG, "root installer preference enabled -> RootInstaller");
-
-            try {
-                return new RootInstaller(activity, pm, callback);
-            } catch (AndroidNotCompatibleException e) {
-                Log.e(TAG, "Android not compatible with RootInstaller!", e);
-            }
-        }
 
         // system permissions and pref enabled -> SystemInstaller
         boolean isSystemInstallerEnabled = Preferences.get().isSystemInstallerEnabled();
@@ -133,7 +115,7 @@ abstract public class Installer {
             }
         }
 
-        // Fallback -> DefaultInstaller
+        // else -> DefaultInstaller
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             // Default installer on Android >= 4.0
             try {
@@ -158,38 +140,15 @@ abstract public class Installer {
         return null;
     }
 
-    public static Installer getUnattendedInstaller(Context context, PackageManager pm,
-            InstallerCallback callback) throws AndroidNotCompatibleException {
-
-        // if root installer has been activated in preferences -> RootInstaller
-        boolean useRootInstaller = Preferences.get().isRootInstallerEnabled();
-        if (useRootInstaller) {
-            try {
-                return new RootInstaller(context, pm, callback);
-            } catch (AndroidNotCompatibleException e) {
-                Log.e(TAG, "Android not compatible with RootInstaller!", e);
-            }
-        }
-
-        if (hasSystemPermissions(context, pm)) {
-            // we have system permissions!
-            return new SystemInstaller(context, pm, callback);
-        } else {
-            // nope!
-            throw new AndroidNotCompatibleException();
-        }
-    }
-
     public static boolean hasSystemPermissions(Context context, PackageManager pm) {
-        int checkInstallPermission =
-                pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName());
-        int checkDeletePermission =
-                pm.checkPermission(permission.DELETE_PACKAGES, context.getPackageName());
-        boolean permissionsGranted =
-                (checkInstallPermission == PackageManager.PERMISSION_GRANTED
-                && checkDeletePermission == PackageManager.PERMISSION_GRANTED);
+        boolean hasInstallPermission =
+                (pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName())
+                        == PackageManager.PERMISSION_GRANTED);
+        boolean hasDeletePermission =
+                (pm.checkPermission(permission.DELETE_PACKAGES, context.getPackageName())
+                        == PackageManager.PERMISSION_GRANTED);
 
-        return permissionsGranted;
+        return (hasInstallPermission && hasDeletePermission);
     }
 
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {

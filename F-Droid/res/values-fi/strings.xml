@@ -24,8 +24,6 @@
   <string name="notify_on">Ilmoita, kun päivityksiä on saatavissa</string>
   <string name="update_history">Päivityshistoria</string>
   <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
-  <string name="root_installer">Asennus käyttäen root-oikeuksia</string>
-  <string name="root_installer_on">Pyydä root-oikeuksia asennuksiin, päivityksiin ja pakettien poistoon</string>
   <string name="system_installer">Asenna käytäen järjestelmän oikeuksia</string>
   <string name="system_installer_on">Käytä järjestelmän oikeuksia asennuksiin, päivityksiin ja pakettien poistoihin.</string>
   <string name="local_repo_name">Paikallisen säilösi nimi</string>
@@ -180,7 +178,6 @@ Sinun pitää
   <string name="Security">Tietoturva</string>
   <string name="System">Järjestelmä</string>
   <string name="Wallpaper">Taustakuva</string>
-  <string name="requesting_root_access_title">Root-oikeudet</string>
   <string name="requesting_root_access_body">Pyydetään root-oikeuksia…</string>
   <string name="root_access_denied_title">Root-oikeudet kielletty</string>
   <string name="root_access_denied_body">Joko Android-laitettasi ei ole rootattu tai olet kieltänyt F-Droidin root-oikeuksiin pääsyn.</string>

@@ -1,52 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    Copyright (C) 2015 Nico Alt, nicoalt@posteo.org
+
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 3
+    of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-	android:paddingTop="4dp"
-	android:paddingBottom="8dp"
+    android:paddingBottom="8dp"
     android:paddingLeft="5dp"
-    android:paddingRight="5dp">
+    android:paddingRight="5dp"
+    android:paddingTop="4dp">
 
     <TextView
-		android:id="@+id/summary"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textStyle="bold"
-        tools:text="Application manager"/>
+        android:id="@+id/summary"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        tools:text="Application manager" />
 
-	<TextView
-		android:id="@+id/appid"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textSize="12sp"
+    <TextView
+        android:id="@+id/appid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
         tools:text="org.fdroid.fdroid" />
 
-	<TextView
-		android:id="@+id/signature"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textSize="12sp" />
+    <TextView
+        android:id="@+id/signature"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp" />
 
-	<TextView
-		android:id="@+id/antifeatures"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="6sp"
-		android:textStyle="bold"
-		android:textColor="#ff0000"
+    <!-- android:visibility="gone" because not needed in app details imho (but maybe will get used in another place soon) -->
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:visibility="gone"
+        tools:text="System" />
+
+    <TextView
+        android:id="@+id/antifeatures"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:textColor="#ff0000"
+        android:textStyle="bold"
         tools:text="Feeds you too much chocolate" />
 
-	<TextView
-		android:id="@+id/description"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="8sp"
-		android:textSize="13sp"
-		android:singleLine="false"
-        tools:text="Connects to F-Droid compatible repositories. The default repo is hosted at f-droid.org, which contains only bona fide FOSS.
+    <LinearLayout
+        android:id="@+id/ll_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:singleLine="false"
+            android:textSize="13sp"
+            tools:text="Connects to F-Droid compatible repositories. The default repo is hosted at f-droid.org, which contains only bona fide FOSS.
 
 Android is open in the sense that you are free to install apks from anywhere you wish, but there are many good reasons for using a client/repository setup:
 
@@ -59,22 +91,183 @@ Android is open in the sense that you are free to install apks from anywhere you
 
 Changelog" />
 
-	<TextView
-		android:id="@+id/permissions"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="8sp"
-		android:singleLine="true"
-		android:textStyle="bold"
-        tools:text="Permissions for version 1.0" />
+        <ImageView
+            android:id="@+id/view_more_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:contentDescription="@string/content_description_view_more"
+            android:src="@drawable/ic_expand_more_grey600"
+            tools:src="@drawable/ic_expand_more_grey600" />
 
-	<TextView
-		android:id="@+id/permissions_list"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textSize="13sp"
-		android:singleLine="false"
-        tools:text="    * Full network access
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_information"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:drawableRight="@drawable/ic_expand_more_grey600"
+            android:drawablePadding="4dp"
+            android:drawableEnd="@drawable/ic_expand_more_grey600"
+            android:singleLine="true"
+            android:text="@string/links"
+            android:textStyle="bold"
+            tools:text="@string/links"
+            tools:drawableRight="@drawable/ic_expand_more_grey600"/>
+
+        <LinearLayout
+            android:id="@+id/ll_information_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/source"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_source_code"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_source_code"
+                android:gravity="center_vertical"
+                android:text="@string/menu_source"
+                tools:text="@string/menu_source" />
+
+            <TextView
+                android:id="@+id/issues"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_issues"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_issues"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_issues"
+                tools:text="@string/menu_issues" />
+
+            <TextView
+                android:id="@+id/changelog"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_changelog"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_changelog"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_changelog"
+                tools:text="@string/menu_changelog" />
+
+            <TextView
+                android:id="@+id/website"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_website"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_website"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_website"
+                tools:text="@string/menu_website" />
+
+            <TextView
+                android:id="@+id/donate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_donate"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_donate"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_donate"
+                tools:text="@string/menu_donate" />
+
+            <TextView
+                android:id="@+id/bitcoin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_bitcoin"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_bitcoin"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_bitcoin"
+                tools:text="@string/menu_bitcoin" />
+
+            <TextView
+                android:id="@+id/litecoin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_litecoin"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_litecoin"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_litecoin"
+                tools:text="@string/menu_litecoin" />
+
+            <TextView
+                android:id="@+id/dogecoin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_dogecoin"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_dogecoin"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_dogecoin"
+                tools:text="@string/menu_dogecoin" />
+
+            <TextView
+                android:id="@+id/flattr"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_flattr"
+                android:drawablePadding="4dp"
+                android:drawableStart="@drawable/ic_flattr"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:text="@string/menu_flattr"
+                tools:text="@string/menu_flattr" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_permissions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/permissions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:drawablePadding="4dp"
+            android:drawableEnd="@drawable/ic_expand_more_grey600"
+            android:drawableRight="@drawable/ic_expand_more_grey600"
+            android:singleLine="true"
+            android:textStyle="bold"
+            tools:text="Permissions for version 1.0"
+            tools:drawableRight="@drawable/ic_expand_more_grey600"/>
+
+        <TextView
+            android:id="@+id/permissions_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:textSize="13sp"
+            tools:text="    * Full network access
     * View network connections
     * View Wi-Fi connections
     * Connect and disconnect from Wi-Fi
@@ -86,5 +279,7 @@ Changelog" />
     * Delete apps
     * Full permission to all device features and storage
     * Test access to protected storage" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -46,6 +46,8 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String sourceURL;
 
+    public String changelogURL;
+
     public String donateURL;
 
     public String bitcoinAddr;
@@ -89,7 +91,10 @@ public class App extends ValueObject implements Comparable<App> {
     // True if the current update for this app is to be ignored
     public int ignoreThisUpdate;
 
+    // To be displayed at 48dp (x1.0)
     public String iconUrl;
+    // To be displayed at 72dp (x1.5)
+    public String iconUrlLarge;
 
     public String installedVersionName;
 
@@ -139,6 +144,9 @@ public class App extends ValueObject implements Comparable<App> {
                 break;
             case AppProvider.DataColumns.SOURCE_URL:
                 sourceURL = cursor.getString(i);
+                break;
+            case AppProvider.DataColumns.CHANGELOG_URL:
+                changelogURL = cursor.getString(i);
                 break;
             case AppProvider.DataColumns.DONATE_URL:
                 donateURL = cursor.getString(i);
@@ -190,6 +198,9 @@ public class App extends ValueObject implements Comparable<App> {
                 break;
             case AppProvider.DataColumns.ICON_URL:
                 iconUrl = cursor.getString(i);
+                break;
+            case AppProvider.DataColumns.ICON_URL_LARGE:
+                iconUrlLarge = cursor.getString(i);
                 break;
             case AppProvider.DataColumns.InstalledApp.VERSION_CODE:
                 installedVersionCode = cursor.getInt(i);
@@ -350,11 +361,13 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.SUMMARY, summary);
         values.put(AppProvider.DataColumns.ICON, icon);
         values.put(AppProvider.DataColumns.ICON_URL, iconUrl);
+        values.put(AppProvider.DataColumns.ICON_URL_LARGE, iconUrlLarge);
         values.put(AppProvider.DataColumns.DESCRIPTION, description);
         values.put(AppProvider.DataColumns.LICENSE, license);
         values.put(AppProvider.DataColumns.WEB_URL, webURL);
         values.put(AppProvider.DataColumns.TRACKER_URL, trackerURL);
         values.put(AppProvider.DataColumns.SOURCE_URL, sourceURL);
+        values.put(AppProvider.DataColumns.CHANGELOG_URL, changelogURL);
         values.put(AppProvider.DataColumns.DONATE_URL, donateURL);
         values.put(AppProvider.DataColumns.BITCOIN_ADDR, bitcoinAddr);
         values.put(AppProvider.DataColumns.LITECOIN_ADDR, litecoinAddr);
@@ -371,7 +384,6 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.IS_COMPATIBLE, compatible ? 1 : 0);
         values.put(AppProvider.DataColumns.IGNORE_ALLUPDATES, ignoreAllUpdates ? 1 : 0);
         values.put(AppProvider.DataColumns.IGNORE_THISUPDATE, ignoreThisUpdate);
-        values.put(AppProvider.DataColumns.ICON_URL, iconUrl);
 
         return values;
     }

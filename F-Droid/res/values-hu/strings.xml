@@ -114,9 +114,6 @@ Szeretné ezeket frissíteni?\"</string>
   <string name="status_download">\"Letöltés
 %2$s / %3$s (%4$d%%) innen
 %1$s\"</string>
-  <string name="status_processing_xml">\"Feldolgozási kérelem
-%2$d of %3$d innen
-%1$s\"</string>
   <string name="status_connecting_to_repo">\"Kapcsolódás
 %1$s\"</string>
   <string name="status_checking_compatibility">Alkalmazások eszközkompatibilitási ellenőrzése…</string>

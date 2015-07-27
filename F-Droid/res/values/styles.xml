@@ -5,7 +5,7 @@
 
         <item name="colorPrimary">@color/fdroid_blue</item>
         <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
-
+        <item name="colorAccent">@color/fdroid_green</item>
     </style>
 
     <style name="AppBaseThemeLight" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -13,6 +13,7 @@
 
         <item name="colorPrimary">@color/fdroid_blue</item>
         <item name="colorPrimaryDark">@color/fdroid_blue_dark</item>
+        <item name="colorAccent">@color/fdroid_green</item>
     </style>
 
     <color name="black">#FF000000</color>
@@ -37,6 +38,9 @@
         <!--<item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>-->
         <item name="actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
         <item name="colorButtonNormal">@color/swap_bright_blue</item>
+        <item name="android:windowBackground">@drawable/swap_window_background</item>
+        <item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
+        <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
     </style>
 
     <style name="SwapTheme.StartSwap" parent="AppThemeLight">

@@ -1,3 +1,34 @@
+### Upcoming release
+
+* Adapt UI to use Material Design
+
+* Redesign the App Details view with larger icons, expandable description and
+  links with icons
+
+* Add ability to make F-Droid install itself as a privileged app on /system
+  via root, allowing the use of the system installer
+
+* Remove the root installer, since the system installer is safer, more stable
+  and now easy to set up with root privileges
+
+* Can now manually add swap repo via "Repositories" screen
+
+* Using NFC during swap now initiates a proper swap, rather than redirecting to
+  the "Repositories" screen
+
+### 0.92 (2015-06-08)
+
+* Make swap only in portrait mode to prevent crashes and issues where UI elements are obscured
+
+* Update Universal-Image-Loader to 1.9.4
+
+* Make Apk downloads progress be measured in kilobytes instead of bytes
+
+* Add missing Sardinian language to the preferences
+
+* Fix minimum SDK to be 8 (2.2) instead of 7 (2.1) since support for version 7
+  was dropped long ago
+
 ### 0.91 (2015-05-18)
 
 * Don't request the "Write to external storage" permission on 4.4 and later

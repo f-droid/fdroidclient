@@ -21,7 +21,6 @@ package org.fdroid.fdroid;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -50,7 +49,6 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -84,23 +82,33 @@ public final class Utils {
     private static final SimpleDateFormat LOG_DATE_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
-    public static String getIconsDir(Context context) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        if (metrics.densityDpi >= 640) {
+    public static final String FALLBACK_ICONS_DIR = "/icons/";
+
+    /*
+     * @param dpiMultiplier Lets you grab icons for densities larger or
+     * smaller than that of your device by some fraction. Useful, for example,
+     * if you want to display a 48dp image at twice the size, 96dp, in which
+     * case you'd use a dpiMultiplier of 2.0 to get an image twice as big.
+     */
+    public static String getIconsDir(final Context context, final double dpiMultiplier) {
+        final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        final double dpi = metrics.densityDpi * dpiMultiplier;
+        if (dpi >= 640) {
             return "/icons-640/";
         }
-        if (metrics.densityDpi >= 480) {
+        if (dpi >= 480) {
             return "/icons-480/";
         }
-        if (metrics.densityDpi >= 320) {
+        if (dpi >= 320) {
             return "/icons-320/";
         }
-        if (metrics.densityDpi >= 240) {
+        if (dpi >= 240) {
             return "/icons-240/";
         }
-        if (metrics.densityDpi >= 160) {
+        if (dpi >= 160) {
             return "/icons-160/";
         }
+
         return "/icons-120/";
     }
 
@@ -253,36 +261,6 @@ public final class Utils {
 
     public static int getMaxSdkVersion(Context context, String packageName) {
         return getMinMaxSdkVersion(context, packageName, "maxSdkVersion");
-    }
-
-    public static int countSubstringOccurrence(File file, String substring) throws IOException {
-        int count = 0;
-        FileReader input = null;
-        try {
-            int currentSubstringIndex = 0;
-            char[] buffer = new char[4096];
-
-            input = new FileReader(file);
-            int numRead = input.read(buffer);
-            while(numRead != -1) {
-
-                for (char c : buffer) {
-                    if (c == substring.charAt(currentSubstringIndex)) {
-                        currentSubstringIndex++;
-                        if (currentSubstringIndex == substring.length()) {
-                            count++;
-                            currentSubstringIndex = 0;
-                        }
-                    } else {
-                        currentSubstringIndex = 0;
-                    }
-                }
-                numRead = input.read(buffer);
-            }
-        } finally {
-            closeQuietly(input);
-        }
-        return count;
     }
 
     // return a fingerprint formatted for display
@@ -459,7 +437,7 @@ public final class Utils {
         }
 
         public static CommaSeparatedList make(String list) {
-            if (list == null || list.length() == 0)
+            if (TextUtils.isEmpty(list))
                 return null;
             return new CommaSeparatedList(list);
         }

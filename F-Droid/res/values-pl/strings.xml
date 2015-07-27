@@ -13,8 +13,6 @@
   <string name="notify">Powiadom</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
-  <string name="root_installer">Instaluj na uprawnieniach roota</string>
-  <string name="root_installer_on">Żądaj dostępu roota do instalacji, aktualizacji i usuwania pakietów</string>
   <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
   <string name="system_installer_on">Używaj uprawnień systemowych do instalacji, aktualizacji i usuwania pakietów</string>
   <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
@@ -129,7 +127,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="proxy_host_summary">Skonfiguruj host proxy</string>
   <string name="proxy_port">Port proxy</string>
   <string name="proxy_port_summary">Skonfiguruj port proxy</string>
-  <string name="status_processing_xml">Przetwarzanie aplikacji %2$d / %3$d z %1$s</string>
   <string name="status_connecting_to_repo">Trwa łączenie z
 %1$s</string>
   <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
@@ -177,7 +174,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="Security">Bezpieczeństwo</string>
   <string name="System">System</string>
   <string name="Wallpaper">Tapeta</string>
-  <string name="requesting_root_access_title">Dostęp roota</string>
   <string name="requesting_root_access_body">Żądanie uprawnień roota…</string>
   <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
   <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.</string>

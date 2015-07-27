@@ -71,6 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "webURL text, "
             + "trackerURL text, "
             + "sourceURL text, "
+            + "changelogURL text, "
             + "suggestedVercode text,"
             + "upstreamVersion text,"
             + "upstreamVercode integer,"
@@ -88,6 +89,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + "ignoreAllUpdates int not null,"
             + "ignoreThisUpdate int not null,"
             + "iconUrl text, "
+            + "iconUrlLarge text, "
             + "primary key(id));";
 
     public static final String TABLE_INSTALLED_APP = "fdroid_installedApp";
@@ -99,7 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 47;
+    private static final int DB_VERSION = 49;
 
     private final Context context;
 
@@ -198,6 +200,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.fdroid_repo_address),
             context.getString(R.string.fdroid_repo_description),
             context.getString(R.string.fdroid_repo_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_repo_version),
             context.getResources().getInteger(R.integer.fdroid_repo_inuse),
             context.getResources().getInteger(R.integer.fdroid_repo_priority)
         );
@@ -208,6 +211,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.fdroid_archive_address),
             context.getString(R.string.fdroid_archive_description),
             context.getString(R.string.fdroid_archive_pubkey),
+            context.getResources().getInteger(R.integer.fdroid_archive_version),
             context.getResources().getInteger(R.integer.fdroid_archive_inuse),
             context.getResources().getInteger(R.integer.fdroid_archive_priority)
         );
@@ -218,6 +222,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.guardianproject_repo_address),
             context.getString(R.string.guardianproject_repo_description),
             context.getString(R.string.guardianproject_repo_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_repo_version),
             context.getResources().getInteger(R.integer.guardianproject_repo_inuse),
             context.getResources().getInteger(R.integer.guardianproject_repo_priority)
         );
@@ -228,6 +233,7 @@ public class DBHelper extends SQLiteOpenHelper {
             context.getString(R.string.guardianproject_archive_address),
             context.getString(R.string.guardianproject_archive_description),
             context.getString(R.string.guardianproject_archive_pubkey),
+            context.getResources().getInteger(R.integer.guardianproject_archive_version),
             context.getResources().getInteger(R.integer.guardianproject_archive_inuse),
             context.getResources().getInteger(R.integer.guardianproject_archive_priority)
         );
@@ -235,7 +241,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void insertRepo(
         SQLiteDatabase db, String name, String address, String description,
-        String pubKey, int inUse, int priority) {
+        String pubKey, int version, int inUse, int priority) {
 
         ContentValues values = new ContentValues();
         values.put(RepoProvider.DataColumns.ADDRESS, address);
@@ -244,9 +250,10 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(RepoProvider.DataColumns.PUBLIC_KEY, pubKey);
         values.put(RepoProvider.DataColumns.FINGERPRINT, Utils.calcFingerprint(pubKey));
         values.put(RepoProvider.DataColumns.MAX_AGE, 0);
+        values.put(RepoProvider.DataColumns.VERSION, version);
         values.put(RepoProvider.DataColumns.IN_USE, inUse);
         values.put(RepoProvider.DataColumns.PRIORITY, priority);
-        values.put(RepoProvider.DataColumns.LAST_ETAG, (String)null);
+        values.put(RepoProvider.DataColumns.LAST_ETAG, (String) null);
 
         Log.i(TAG, "Adding repository " + name);
         db.insert(TABLE_REPO, null, values);
@@ -275,6 +282,8 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 43) createInstalledApp(db);
         addAppLabelToInstalledCache(db, oldVersion);
         addIsSwapToRepo(db, oldVersion);
+        addChangelogToApp(db, oldVersion);
+        addIconUrlLargeToApp(db, oldVersion);
     }
 
     /**
@@ -406,6 +415,20 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 47 && !columnExists(db, TABLE_REPO, "isSwap")) {
             Log.i(TAG, "Adding isSwap field to " + TABLE_REPO + " table in db.");
             db.execSQL("alter table " + TABLE_REPO + " add column isSwap boolean default 0;");
+        }
+    }
+
+    private void addChangelogToApp(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 48 && !columnExists(db, TABLE_APP, "changelogURL")) {
+            Log.i(TAG, "Adding changelogURL column to " + TABLE_APP);
+            db.execSQL("alter table " + TABLE_APP + " add column changelogURL text");
+        }
+    }
+
+    private void addIconUrlLargeToApp(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 49 && !columnExists(db, TABLE_APP, "iconUrlLarge")) {
+            Log.i(TAG, "Adding iconUrlLarge columns to " + TABLE_APP);
+            db.execSQL("alter table " + TABLE_APP + " add column iconUrlLarge text");
         }
     }
 

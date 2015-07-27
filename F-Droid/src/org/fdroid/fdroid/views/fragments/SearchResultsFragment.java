@@ -9,6 +9,7 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,7 +88,7 @@ public class SearchResultsFragment extends ListFragment implements LoaderManager
         if (query != null)
             query = query.trim();
 
-        if (query == null || query.length() == 0)
+        if (TextUtils.isEmpty(query))
             getActivity().finish();
 
         TextView tv = (TextView) view.findViewById(R.id.description);

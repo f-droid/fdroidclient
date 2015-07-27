@@ -24,7 +24,6 @@
   <string name="notify_on">Güncellemeler bulunduğunda bunu bildir</string>
   <string name="update_history">Güncelleme tarihçesi</string>
   <string name="update_history_summ">Uygulamaların yeni sayılacağı gün sayısı: %s</string>
-  <string name="root_installer">Root erişimi kullanarak yükle</string>
   <string name="system_installer">Sistem-izinlerini kullanarak yükle</string>
   <string name="local_repo_name">Yerel Deponun Adı</string>
   <string name="local_repo_name_summary">Yerel deponun duyrulan adı: %s</string>
@@ -154,9 +153,6 @@ Güncellemek ister misiniz?</string>
   <string name="status_download">İndiriliyor
 %2$s / %3$s (%4$d%%) şuradan
 %1$s</string>
-  <string name="status_processing_xml">Uygulama ele alınıyor
-%2$d toplam %3$d şuradan
-%1$s</string>
   <string name="status_connecting_to_repo">%1$s konumuna
 bağlanılıyor</string>
   <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>
@@ -213,7 +209,6 @@ Ondan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</
   <string name="Security">Güvenlik</string>
   <string name="System">Sistem</string>
   <string name="Wallpaper">Duvar Kağıdı</string>
-  <string name="requesting_root_access_title">Root erişimi</string>
   <string name="requesting_root_access_body">Root erişimi isteniyor…</string>
   <string name="root_access_denied_title">Root erişimi engellendi</string>
   <string name="root_access_denied_body">Ya Android cihazınız rootlu değil ya da F-Droid için root erişimini engellediniz.</string>

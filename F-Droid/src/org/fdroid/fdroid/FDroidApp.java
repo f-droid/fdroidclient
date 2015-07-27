@@ -35,7 +35,7 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache;
+import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -66,8 +66,6 @@ public class FDroidApp extends Application {
     private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
 
     @SuppressWarnings("unused")
-    private static final String TAG = "FDroidApp";
-
     BluetoothAdapter bluetoothAdapter = null;
 
     static {
@@ -88,18 +86,22 @@ public class FDroidApp extends Application {
     }
 
     public void applyTheme(Activity activity) {
-        switch (curTheme) {
-        case dark:
-            activity.setTheme(R.style.AppThemeDark);
-            break;
-        default:
-            activity.setTheme(R.style.AppThemeLight);
-            break;
-        }
+            activity.setTheme(getCurThemeResId());
     }
 
     public static Theme getCurTheme() {
         return curTheme;
+    }
+
+    public static int getCurThemeResId() {
+        switch (curTheme) {
+            case dark:
+                return R.style.AppThemeDark;
+            case light:
+                return R.style.AppThemeLight;
+            default:
+                return R.style.AppThemeDark;
+        }
     }
 
     public static void enableSpongyCastle() {
@@ -203,7 +205,7 @@ public class FDroidApp extends Application {
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
             .imageDownloader(new IconDownloader(getApplicationContext()))
-            .diskCache(new LimitedAgeDiscCache(
+            .diskCache(new LimitedAgeDiskCache(
                         new File(StorageUtils.getCacheDirectory(getApplicationContext(), true),
                             "icons"),
                         null,

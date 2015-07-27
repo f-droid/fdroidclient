@@ -24,8 +24,6 @@
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
   <string name="update_history">Aktualisierungsverlauf</string>
   <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
-  <string name="root_installer">Mit Verwendung von root-Zugriff installieren</string>
-  <string name="root_installer_on">Root-Rechte anfordern, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="system_installer">Mit Verwendung von Systemberechtigungen installieren</string>
   <string name="system_installer_on">Systemberechtigungen verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
@@ -172,9 +170,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="status_download">Herunterladen
 %2$s / %3$s (%4$d%%) von
 %1$s</string>
-  <string name="status_processing_xml">Anwendung wird vorbereitet
-%2$d / %3$d von
-%1$s</string>
   <string name="status_connecting_to_repo">Mit %1$s
 wird verbunden</string>
   <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>
@@ -243,7 +238,6 @@ Sie müssen
   <string name="Security">Sicherheit</string>
   <string name="System">System</string>
   <string name="Wallpaper">Hintergrundbild</string>
-  <string name="requesting_root_access_title">Root-Zugriff</string>
   <string name="requesting_root_access_body">Root-Rechte werden angefordert …</string>
   <string name="root_access_denied_title">Root-Zugriff verweigert</string>
   <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff für F-Droid verweigert.</string>

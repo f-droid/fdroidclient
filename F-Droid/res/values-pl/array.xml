@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="themeNames">
-    <item>Ciemny</item>
-    <item>Jasny</item>
-    <item>Jasny (z ciemnym paskiem akcji)</item>
-  </string-array>
-</resources>
+  </resources>

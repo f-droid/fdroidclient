@@ -4,9 +4,9 @@
     <color name="unsigned">#ffCC0000</color>
     <color name="unverified">#ff999999</color>
 
-    <color name="fdroid_blue">#FF6097C5</color>
-    <color name="fdroid_blue_dark">#ff4b7195</color>
-    <color name="fdroid_green">#FFAAD024</color>
+    <color name="fdroid_blue">#ff1976d2</color>
+    <color name="fdroid_blue_dark">#ff0d47a1</color>
+    <color name="fdroid_green">#ff8ab000</color>
 
     <color name="swap_incompatible">#ff7900</color>
     <color name="swap_light_blue">#27aae1</color>
@@ -23,5 +23,10 @@
     <color name="swap_light_text">#bbbbbb</color>
     <color name="swap_grey_icon">#4a4a4a</color>
     <color name="swap_light_grey_icon">#bbbbbb</color>
+
+    <color name="shadow">#cc222222</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="perms_costs_money">#fff4511e</color>
 
 </resources>

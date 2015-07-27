@@ -47,6 +47,7 @@ import android.widget.Toast;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.installer.InstallIntoSystemDialogActivity;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -100,6 +101,8 @@ public class FDroid extends ActionBarActivity {
 
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
+
+        InstallIntoSystemDialogActivity.firstTime(this);
     }
 
     @Override
@@ -182,11 +185,11 @@ public class FDroid extends ActionBarActivity {
         }
 
         Intent call = null;
-        if (appId != null && appId.length() > 0) {
+        if (!TextUtils.isEmpty(appId)) {
             Log.d(TAG, "FDroid launched via app link for '" + appId + "'");
             call = new Intent(this, AppDetails.class);
             call.putExtra(AppDetails.EXTRA_APPID, appId);
-        } else if (query != null && query.length() > 0) {
+        } else if (!TextUtils.isEmpty(query)) {
             Log.d(TAG, "FDroid launched via search link for '" + query + "'");
             call = new Intent(this, SearchResults.class);
             call.setAction(Intent.ACTION_SEARCH);
