@@ -150,7 +150,7 @@ public class BluetoothServer extends Thread {
                 if (request.getMethod().equals(Request.Methods.HEAD)) {
                     builder = new Response.Builder();
                 } else {
-                    HashMap<String, String> headers = new HashMap<String, String>();
+                    HashMap<String, String> headers = new HashMap<>();
                     Response resp = respond(headers, "/" + request.getPath());
 
                     builder = new Response.Builder(resp.toContentStream());

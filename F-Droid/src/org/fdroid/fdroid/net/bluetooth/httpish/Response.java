@@ -64,7 +64,11 @@ public class Response {
         if (headers != null) {
             for (Map.Entry<String, String> entry : headers.entrySet()) {
                 if (entry.getKey().toLowerCase().equals("content-length")) {
-                    return Integer.parseInt( entry.getValue()); // TODO: error handling.
+                    try {
+                        return Integer.parseInt(entry.getValue());
+                    } catch (NumberFormatException e) {
+                        return -1;
+                    }
                 }
             }
         }

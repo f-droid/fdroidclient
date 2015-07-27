@@ -398,18 +398,37 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     /**
-     * When swapping with a peer that is identified by a NewRepoConfig, that means that they
-     * came from a QR Code scan. In this situation, we should already have a full swap repo
-     * ready to go.
-     * TODO: What if we scanned the repo but do not have a repo running yet?
+     * This is for when we initiate a swap by viewing the "Are you sure you want to swap with" view
+     * This can arise either:
+     *   * As a result of scanning a QR code (in which case we likely already have a repo setup) or
+     *   * As a result of the other device selecting our device in the "start swap" screen, in which
+     *     case we are likely just sitting on the start swap screen also, and haven't configured
+     *     anything yet.
      */
     public void swapWith(NewRepoConfig repoConfig) {
-        getService().swapWith(repoConfig.toPeer());
-        startSwappingWithPeer();
+        Peer peer = repoConfig.toPeer();
+        if (getService().getStep() == SwapService.STEP_INTRO || getService().getStep() == SwapService.STEP_CONFIRM_SWAP) {
+            // This will force the "Select apps to swap" workflow to begin.
+            // TODO: Find a better way to decide whether we need to select the apps. Not sure if we
+            //       can or cannot be in STEP_INTRO with a full blown repo ready to swap.
+            swapWith(peer);
+        } else {
+            getService().swapWith(repoConfig.toPeer());
+            startSwappingWithPeer();
+        }
     }
 
     public void denySwap() {
         showIntro();
+    }
+
+    /**
+     * Attempts to open a QR code scanner, in the hope a user will then scan the QR code of another
+     * device configured to swapp apps with us. Delegates to the zxing library to do so.
+     */
+    public void initiateQrScan() {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.initiateScan();
     }
 
     @Override
@@ -642,10 +661,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 message = "No swap service";
             } else {
                 {
-                    String bluetooth = service.getBluetoothSwap().isConnected() ? "Yes" : " No";
-                    String wifi = service.getWifiSwap().isConnected() ? "Yes" : " No";
-                    String mdns = service.getWifiSwap().getBonjour().isConnected() ? "Yes" : " No";
-                     message += "Broadcast { BT: " + bluetooth + ", WiFi: " + wifi + ", mDNS: " + mdns + "}, ";
+                    String bluetooth = service.getBluetoothSwap().isConnected() ? "Y" : " N";
+                    String wifi = service.getWifiSwap().isConnected() ? "Y" : " N";
+                    String mdns = service.getWifiSwap().getBonjour().isConnected() ? "Y" : " N";
+                     message += "Swap { BT: " + bluetooth + ", WiFi: " + wifi + ", mDNS: " + mdns + "}, ";
                 }
 
                 {
@@ -653,18 +672,19 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     String bluetooth = "N/A";
                     if (adapter != null) {
                         Map<Integer, String> scanModes = new HashMap<>(3);
-                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "CONNECTABLE");
-                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "CONNECTABLE_DISCOVERABLE");
+                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE, "CON");
+                        scanModes.put(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, "CON_DISC");
                         scanModes.put(BluetoothAdapter.SCAN_MODE_NONE, "NONE");
                         bluetooth = "\"" + adapter.getName() + "\" - " + scanModes.get(adapter.getScanMode());
                     }
 
-                    String wifi = service.getBonjourFinder().isScanning() ? "Yes" : " No";
-                    message += "Discover { BT: " + bluetooth + ", WiFi: " + wifi + "}";
+                    String wifi = service.getBonjourFinder().isScanning() ? "Y" : " N";
+                    message += "Find { BT: " + bluetooth + ", WiFi: " + wifi + "}";
                 }
             }
 
-            Log.d("Swap Status", new Date().toLocaleString() + " " + message);
+            Date now = new Date();
+            Log.d("Swap Status", now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " " + message);
 
             new Timer().schedule(new TimerTask() {
                     @Override

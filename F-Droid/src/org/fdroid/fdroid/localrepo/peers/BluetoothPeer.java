@@ -39,9 +39,13 @@ public class BluetoothPeer implements Peer {
         return "bluetooth://" + device.getAddress().replace(':', '-') + "/fdroid/repo";
     }
 
+    /**
+     * Bluetooth will exclusively be TOFU. Once a device is connected to a bluetooth socket,
+     * if we trust it enough to accept a fingerprint from it somehow, then we may as well trust it
+     * enough to receive an index from it that contains a fingerprint we can use.
+     */
     @Override
     public String getFingerprint() {
-        // TODO: Get fingerprint somehow over bluetooth.
         return "";
     }
 

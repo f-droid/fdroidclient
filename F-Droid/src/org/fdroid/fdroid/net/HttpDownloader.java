@@ -2,6 +2,9 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+
 import org.fdroid.fdroid.Preferences;
 
 import javax.net.ssl.SSLHandshakeException;
@@ -54,10 +57,17 @@ public class HttpDownloader extends Downloader {
         return this;
     }
 
+    /**
+     * Note: Doesn't follow redirects (as far as I'm aware).
+     * {@link BaseImageDownloader#getStreamFromNetwork(String, Object)} has an implementation worth
+     * checking out that follows redirects up to a certain point. I guess though the correct way
+     * is probably to check for a loop (keep a list of all URLs redirected to and if you hit the
+     * same one twice, bail with an exception).
+     * @throws IOException
+     */
     @Override
     public InputStream getInputStream() throws IOException {
         setupConnection();
-        // TODO check out BaseImageDownloader.getStreamFromNetwork() for optims
         return connection.getInputStream();
     }
 

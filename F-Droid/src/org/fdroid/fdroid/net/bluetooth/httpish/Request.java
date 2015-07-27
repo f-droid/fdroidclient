@@ -119,7 +119,7 @@ public class Request {
     }
 
     /**
-     * First line of a HTTP response is the status line:
+     * First line of a HTTP 1.1 response is the status line:
      * http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1
      * The first part is the HTTP version, followed by a space, then the status code, then
      * a space, and then the status label (which may contain spaces).

@@ -82,6 +82,8 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
 
     private void listServices() {
 
+        // The member variable is likely to get set to null if a swap process starts, thus we hold
+        // a reference for the benefit of the background task so it doesn't have to synchronoize on it.
         final JmDNS mdns = jmdns;
 
         new AsyncTask<Void, Void, Void>() {
@@ -93,20 +95,6 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
                 addFDroidServices(mdns.list(HTTPS_SERVICE_TYPE));
                 return null;
             }
-
-            // TODO: Remove once stable, added here for testing because it is easier to see the
-            // data being broadcast over mDNS.
-            /*@Override
-            protected void onPostExecute(Void v) {
-                Log.d(TAG, "Queuing up another poll in 2 secs.");
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        Log.d(TAG, "Time to poll for services again.");
-                        listServices();
-                    }
-                }, 2000);
-            }*/
         }.execute();
     }
 
@@ -125,10 +113,14 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
         //
         //    If so, when is the old one removed?
         addFDroidService(event.getInfo());
+
+        // The member variable is likely to get set to null if a swap process starts, thus we hold
+        // a reference for the benefit of the background task so it doesn't have to synchronoize on it.
+        final JmDNS mdns = jmdns;
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                jmdns.requestServiceInfo(event.getType(), event.getName(), true);
+                mdns.requestServiceInfo(event.getType(), event.getName(), true);
                 return null;
             }
         }.execute();

@@ -14,6 +14,7 @@ public class BonjourPeer extends WifiPeer {
         this.serviceInfo = new FDroidServiceInfo(serviceInfo);
         this.name = serviceInfo.getDomain();
         this.uri = Uri.parse(this.serviceInfo.getRepoAddress());
+        this.shouldPromptForSwapBack = true;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class BonjourPeer extends WifiPeer {
     }
 
     protected BonjourPeer(Parcel in) {
-        this.serviceInfo = in.readParcelable(FDroidServiceInfo.class.getClassLoader());
+        this((ServiceInfo)in.readParcelable(FDroidServiceInfo.class.getClassLoader()));
     }
 
     public static final Creator<BonjourPeer> CREATOR = new Creator<BonjourPeer>() {

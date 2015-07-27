@@ -57,6 +57,8 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
                     }
                 }
             };
+
+            // TODO: Unregister this receiver at the appropriate time.
             context.registerReceiver(scanCompleteReceiver, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
         }
 
@@ -66,8 +68,9 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
     private void startDiscovery() {
 
         if (adapter.isDiscovering()) {
-            // TODO: Can we reset the discovering timeout, so that it doesn't, e.g. time out
-            // in 3 seconds because we had already almost completed the previous scan?
+            // TODO: Can we reset the discovering timeout, so that it doesn't, e.g. time out in 3
+            // seconds because we had already almost completed the previous scan? We could
+            // cancelDiscovery(), but then it will probably prompt the user again.
             Log.d(TAG, "Requested bluetooth scan when already scanning, so will ignore request.");
             return;
         }

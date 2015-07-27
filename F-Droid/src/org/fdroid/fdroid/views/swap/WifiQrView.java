@@ -77,17 +77,11 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
         openQr.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Should probably ask the activity or some other class to do this for us.
-                // The view should be dumb and only know how to show things and delegate things to
-                // other classes that know how to do things.
-                IntentIntegrator integrator = new IntentIntegrator(getActivity());
-                integrator.initiateScan();
+                getActivity().initiateQrScan();
             }
         });
 
-        // TODO: As with the JoinWifiView, this should be refactored to be part of the SwapState.
-        // Otherwise, we are left with SwapState, LocalRepoService, WifiStateChangeService, and
-        // some static variables in FDroidApp all which manage the state for swap.
+        // TODO: Unregister this receiver properly.
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
                 new BroadcastReceiver() {
                     @Override

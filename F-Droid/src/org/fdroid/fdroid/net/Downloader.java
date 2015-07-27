@@ -127,7 +127,6 @@ public abstract class Downloader {
             // we were interrupted before proceeding to the download.
             throwExceptionIfInterrupted();
 
-            // TODO: Check side effects of changing this second getInputStream() to input.
             copyInputToOutputStream(input);
         } finally {
             Utils.closeQuietly(outputStream);

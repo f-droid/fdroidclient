@@ -56,7 +56,7 @@ public class BluetoothDownloader extends Downloader {
 
     /**
      * May return null if an error occurred while getting file details.
-     * TODO: Should we throw an exception? Everywhere else in this blue package throws IO exceptions weelx`x`xy-neely.
+     * TODO: Should we throw an exception? Everywhere else in this blue package throws IO exceptions weely-neely.
      * Will probably require some thought as to how the API looks, with regards to all of the public methods
      * and their signatures.
      */

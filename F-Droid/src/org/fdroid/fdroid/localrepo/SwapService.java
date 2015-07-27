@@ -60,6 +60,13 @@ import java.util.TimerTask;
  * Central service which manages all of the different moving parts of swap which are required
  * to enable p2p swapping of apps. Currently manages WiFi and NFC. Will manage Bluetooth in
  * the future.
+ *
+ * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
+ * TODO: Handle not connected to wifi more gracefully. For example, Bonjour discovery falls over.
+ * TODO: Remove peers from list of peers when no longer "visible".
+ * TODO: Show feedback for "Setting up (wifi|bluetooth)" in start swap view.
+ * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
+ *
  */
 public class SwapService extends Service {
 
@@ -115,8 +122,6 @@ public class SwapService extends Service {
     public static final int STEP_CONNECTING      = 6;
     public static final int STEP_SUCCESS         = 7;
     public static final int STEP_CONFIRM_SWAP    = 8;
-
-    public static final int STEP_BLUETOOTH       = 1000; // TODO: Remove this once nathans code is merged and the UI is migrated to the nearby peers screen.
 
     /**
      * Special view, that we don't really want to actually store against the
@@ -232,11 +237,13 @@ public class SwapService extends Service {
         if (repo == null) {
             ContentValues values = new ContentValues(6);
 
-            // TODO: i18n and think about most appropriate name. Although it wont be visible in
-            // the "Manage repos" UI after being marked as a swap repo here...
+            // The name/description is not really required, as swap repos are not shown in the
+            // "Manage repos" UI on other device. Doesn't hurt to put something there though,
+            // on the off chance that somebody is looking through the sqlite database which
+            // contains the repos...
             values.put(RepoProvider.DataColumns.NAME, peer.getName());
             values.put(RepoProvider.DataColumns.ADDRESS, peer.getRepoAddress());
-            values.put(RepoProvider.DataColumns.DESCRIPTION, ""); // TODO;
+            values.put(RepoProvider.DataColumns.DESCRIPTION, "");
             values.put(RepoProvider.DataColumns.FINGERPRINT, peer.getFingerprint());
             values.put(RepoProvider.DataColumns.IN_USE, true);
             values.put(RepoProvider.DataColumns.IS_SWAP, true);
@@ -263,7 +270,7 @@ public class SwapService extends Service {
      * This is the same as, e.g. {@link Context#getSystemService(String)}
      */
     @IntDef({STEP_INTRO, STEP_SELECT_APPS, STEP_JOIN_WIFI, STEP_SHOW_NFC, STEP_WIFI_QR,
-        STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING, STEP_BLUETOOTH})
+        STEP_CONNECTING, STEP_SUCCESS, STEP_CONFIRM_SWAP, STEP_INITIAL_LOADING})
     @Retention(RetentionPolicy.SOURCE)
     public @interface SwapStep {}
 
@@ -378,12 +385,7 @@ public class SwapService extends Service {
     // ==========================================
 
     /**
-     * Ensures that the webserver is running, as are the other services which make swap work.
-     * Will only do all this if it is not already running, and will run on a background thread.'
-     * TODO: What about an "enabling" status? Not sure if it will be useful or not.
-     *
-     *
-     * TODO: Call this at the relevant time, when wifi or bluetooth is enabled.
+     * Moves the service to the forground and [re]starts the timeout timer.
      */
     private void attachService() {
         Log.d(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed.");
@@ -562,6 +564,10 @@ public class SwapService extends Service {
         Log.i(TAG, "Asked to stop swapping, will stop bluetooth, wifi, and move service to BG for GC.");
         getBluetoothSwap().stopInBackground();
         getWifiSwap().stopInBackground();
+
+        // Ensure the user is sent back go the first screen when returning if we have just forceably
+        // cancelled all swapping.
+        setStep(STEP_INTRO);
         detachService();
     }
 
@@ -589,12 +595,11 @@ public class SwapService extends Service {
 
     private void initTimer() {
         if (timer != null) {
-            Log.d(TAG, "Cancelling existing timer");
+            Log.d(TAG, "Cancelling existing timeout timer so timeout can be reset.");
             timer.cancel();
         }
 
-        // automatically turn off after 15 minutes
-        Log.d(TAG, "Initializing timer to 15 minutes");
+        Log.d(TAG, "Initializing swap timeout to " + TIMEOUT + "ms minutes");
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
