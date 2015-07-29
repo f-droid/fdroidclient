@@ -59,7 +59,6 @@ Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="enable">Abilita</string>
   <string name="add_key">Aggiungi chiave</string>
   <string name="overwrite">Sovrascrivi</string>
-  <string name="repo_delete_title">Rimuovi repository</string>
   <string name="repo_update_title">Aggiorna i repository</string>
   <string name="tab_noninstalled">Disponibile</string>
   <string name="tab_updates">Aggiornamenti</string>
@@ -180,8 +179,6 @@ Vuoi aggiornarlo?</string>
   <string name="global_error_updating_repos">Errore nell\'aggiornamento:</string>
   <string name="no_permissions">Non viene usata alcuna autorizzazione.</string>
   <string name="permissions_for_long">Autorizzazioni per la versione %s</string>
-  <string name="showPermissions">Mostra autorizzazioni</string>
-  <string name="showPermissions_on">Mostra l\'elenco dei permessi richiesti da un\'applicazione</string>
   <string name="no_handler_app">Non hai alcuna app disponibile che può gestire %s</string>
   <string name="compactlayout">Layout Compatto</string>
   <string name="compactlayout_on">Mostra le icone a dimensione ridotta</string>

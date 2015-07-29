@@ -86,8 +86,6 @@
   <string name="status_inserting">儲存應用程式詳情中（%1$d%%）</string>
   <string name="no_permissions">沒有使用任何存取權。</string>
   <string name="permissions_for_long">版本%s的存取權</string>
-  <string name="showPermissions">顯示存取權</string>
-  <string name="showPermissions_on">顯示應用程式所需的存取權</string>
   <string name="compactlayout">精簡設計</string>
   <string name="compactlayout_on">顯示小型圖示</string>
   <string name="theme">主題</string>

@@ -47,7 +47,6 @@ Um endereço do repositório é algo similar a isto: https://f-droid.org/repo</s
   <string name="repo_add_title">Adicionar novo repositório</string>
   <string name="repo_add_add">Adicionar</string>
   <string name="cancel">Cancelar</string>
-  <string name="repo_delete_title">Escolha o repositório para remover</string>
   <string name="repo_update_title">Atualizar repositórios</string>
   <string name="tab_noninstalled">Disponível</string>
   <string name="tab_updates">Atualizações</string>
@@ -147,7 +146,6 @@ Você deseja atualizá-los?</string>
   <string name="global_error_updating_repos">Erro durante a atualização:</string>
   <string name="no_permissions">Nenhuma permissão utilizada.</string>
   <string name="permissions_for_long">Permissões para a versão %s</string>
-  <string name="showPermissions">Mostrar permissões</string>
   <string name="no_handler_app">Você não tem aplicativo instalado que lide com %s</string>
   <string name="compactlayout">Leiaute compacto</string>
   <string name="theme">Tema</string>

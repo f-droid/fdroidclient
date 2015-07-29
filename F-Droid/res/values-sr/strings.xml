@@ -58,7 +58,6 @@
   <string name="enable">Омогући</string>
   <string name="add_key">Додај кључ</string>
   <string name="overwrite">Пребриши</string>
-  <string name="repo_delete_title">Изаберите ризницу за уклањање</string>
   <string name="repo_update_title">Ажурирај ризнице</string>
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Надоградње</string>
@@ -179,8 +178,6 @@
   <string name="global_error_updating_repos">Грешка приликом ажурирања:</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
   <string name="permissions_for_long">Дозволе за издање %s</string>
-  <string name="showPermissions">Прикажи дозволе</string>
-  <string name="showPermissions_on">Прикажи списак дозвола које апликација захтева</string>
   <string name="no_handler_app">Немате инсталирану апликацију за %s</string>
   <string name="compactlayout">Компактни распоред</string>
   <string name="compactlayout_on">Прикажи иконе мање величине</string>

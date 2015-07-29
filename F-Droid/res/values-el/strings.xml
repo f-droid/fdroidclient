@@ -51,7 +51,6 @@
   <string name="enable">Ενεργοποίηση</string>
   <string name="add_key">Προσθήκη κλειδιού</string>
   <string name="overwrite">Αντικατάσταση</string>
-  <string name="repo_delete_title">Επιλογή αποθετηρίου για διαγραφή</string>
   <string name="repo_update_title">Ενημέρωση αποθετηρίων</string>
   <string name="tab_noninstalled">Διαθέσιμα</string>
   <string name="tab_updates">Ενημερώσεις</string>
@@ -130,8 +129,6 @@
   <string name="status_inserting">Αποθήκευση λεπτομερειών των εφαρμογών</string>
   <string name="no_permissions">Δεν χρησιμοποιείται καμία άδεια.</string>
   <string name="permissions_for_long">Άδειες για την έκδοση %s</string>
-  <string name="showPermissions">Εμφάνιση αδειών</string>
-  <string name="showPermissions_on">Εμφάνιση μιας λίστας με τις άδειες που απαιτεί η εφαρμογή</string>
   <string name="no_handler_app">Δεν έχεται καμία διαθέσιμη εφαρμογή που να μπορεί να χειριστεί %s</string>
   <string name="compactlayout">Συμπτυγμένη Διάταξη</string>
   <string name="compactlayout_on">Εμφάνιση εικονιδίων σε μικρότερο μέγεθος</string>

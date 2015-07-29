@@ -50,7 +50,6 @@ A repo cím valahogy így néz ki: https://f-droid.org/repo\"</string>
   <string name="enable">Engedélyez</string>
   <string name="add_key">Kulcs hozzáadás</string>
   <string name="overwrite">Felülírás</string>
-  <string name="repo_delete_title">Válasszon ki repo-t az eltávolításhoz</string>
   <string name="repo_update_title">Repo-k frissítése</string>
   <string name="tab_noninstalled">Elérhető</string>
   <string name="tab_updates">Frissítések</string>
@@ -119,8 +118,6 @@ Szeretné ezeket frissíteni?\"</string>
   <string name="status_checking_compatibility">Alkalmazások eszközkompatibilitási ellenőrzése…</string>
   <string name="no_permissions">Nincsenek engedélyei.</string>
   <string name="permissions_for_long">Engedélyek erre a verzióra - %s</string>
-  <string name="showPermissions">Engedélyek megjelenítése</string>
-  <string name="showPermissions_on">Mutassa meg egy listában az app által igényelt engedélyeket</string>
   <string name="no_handler_app">\"Nincs semmilyen app, ami képes ezt kezelni %s\"</string>
   <string name="compactlayout">Kompakt elrendezés</string>
   <string name="compactlayout_on">Ikonok kisebb méretben</string>

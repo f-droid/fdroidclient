@@ -50,7 +50,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="enable">Povolit</string>
   <string name="add_key">Přidat klíč</string>
   <string name="overwrite">Přepsat</string>
-  <string name="repo_delete_title">Vybrat repozitář k odebrání</string>
   <string name="repo_update_title">Aktualizovat repozitáře</string>
   <string name="tab_noninstalled">Dostupné</string>
   <string name="tab_updates">Aktualizace</string>
@@ -145,8 +144,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="global_error_updating_repos">Chyba při aktualizaci:</string>
   <string name="no_permissions">Žádná oprávnění nejsou použita.</string>
   <string name="permissions_for_long">Oprávnění pro verzi %s</string>
-  <string name="showPermissions">Zobrazit oprávnění</string>
-  <string name="showPermissions_on">Zobrazit seznam oprávnění požadovaný aplikací</string>
   <string name="compactlayout">Úsporné rozvržení</string>
   <string name="compactlayout_on">Zobrazit menší ikonky</string>
   <string name="theme">Téma</string>

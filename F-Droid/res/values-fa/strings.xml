@@ -38,7 +38,6 @@
   <string name="enable">توانا ساختن</string>
   <string name="add_key">فزودن کلید</string>
   <string name="overwrite">بازنویسی</string>
-  <string name="repo_delete_title">انتخاب مخزن برای حذف</string>
   <string name="repo_update_title">به‌روزرسانی مخازن</string>
   <string name="tab_updates">به‌روزرسانی‌ها</string>
   <string name="fdroid_updates_available">به‌روزرسانی‌های F-Droid موجود هستند</string>
@@ -87,8 +86,6 @@
 %1$s</string>
   <string name="status_checking_compatibility">بررسی سازگاری برنامه‌ها با دستگاه شما…</string>
   <string name="no_permissions">دسترسی‌ای استفاده نشده‌است.</string>
-  <string name="showPermissions">نمایش دسترسی‌ها</string>
-  <string name="showPermissions_on">نمایش یک فهرست از دسترسی‌هایی که یک برنامه نیاز دارد</string>
   <string name="compactlayout">طرح‌بندی فشرده</string>
   <string name="compactlayout_on">نمایش شکلک‌ها در اندازه کوچکتر</string>
   <string name="theme">پوسته</string>

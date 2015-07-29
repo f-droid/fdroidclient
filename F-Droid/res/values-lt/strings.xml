@@ -32,7 +32,6 @@
   <string name="enable">Įjungti</string>
   <string name="add_key">Pridėti raktą</string>
   <string name="overwrite">Perrašyti</string>
-  <string name="repo_delete_title">Pasirinkite saugyklą, kurią pašalinti</string>
   <string name="repo_update_title">Atnaujinti saugyklas</string>
   <string name="tab_noninstalled">Prieinamos programos</string>
   <string name="tab_updates">Atnaujinimai</string>
@@ -85,7 +84,6 @@ Ar norite atnaujinti
 %1$s</string>
   <string name="repos_unchanged">Įjungtose saugyklose nėra nieko naujo</string>
   <string name="global_error_updating_repos">Klaida naujinant:</string>
-  <string name="showPermissions">Rodyti reikalaujamus leidimus</string>
   <string name="theme">Tema</string>
   <string name="repo_num_apps">Programų kiekis</string>
   <string name="repo_description">Aprašymas</string>

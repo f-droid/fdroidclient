@@ -57,7 +57,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="enable">Skru på</string>
   <string name="add_key">Legg til nøkkel</string>
   <string name="overwrite">Overskriv</string>
-  <string name="repo_delete_title">Velg pakkebrønnen du vil fjerne</string>
   <string name="repo_update_title">Oppdater registerne</string>
   <string name="tab_noninstalled">Tilgjengelig</string>
   <string name="tab_updates">Oppdateringer</string>
@@ -174,8 +173,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="global_error_updating_repos">Feil under oppdatering:</string>
   <string name="no_permissions">Krever ingen tillatelser.</string>
   <string name="permissions_for_long">Tillatelser for versjon %s</string>
-  <string name="showPermissions">Vis tillatelser</string>
-  <string name="showPermissions_on">Vis en liste over rettighetene en app krever</string>
   <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_on">Vis ikoner i mindre størrelse</string>
