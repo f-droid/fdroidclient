@@ -74,7 +74,6 @@
 	<string name="enable">Enable</string>
 	<string name="add_key">Add Key</string>
 	<string name="overwrite">Overwrite</string>
-	<string name="repo_delete_title">Choose repository to remove</string>
 
 	<string name="repo_update_title">Update repositories</string>
 	<string name="tab_noninstalled">Available</string>
@@ -220,8 +219,6 @@
         <string name="global_error_updating_repos">Error during update:</string>
 	<string name="no_permissions">No permissions are used.</string>
 	<string name="permissions_for_long">Permissions for version %s</string>
-	<string name="showPermissions">Show permissions</string>
-	<string name="showPermissions_on">Display a list of permissions an app requires</string>
 	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
 	<string name="compactlayout">Compact Layout</string>
 	<string name="compactlayout_on">Show icons at a smaller size</string>
