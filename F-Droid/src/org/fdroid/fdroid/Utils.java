@@ -432,7 +432,8 @@ public final class Utils {
             return new CommaSeparatedList(sb.toString());
         }
 
-        public static CommaSeparatedList make(String list) {
+        @Nullable
+        public static CommaSeparatedList make(@Nullable String list) {
             if (TextUtils.isEmpty(list))
                 return null;
             return new CommaSeparatedList(list);

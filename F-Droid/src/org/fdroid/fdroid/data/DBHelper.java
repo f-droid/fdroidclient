@@ -101,7 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 49;
+    private static final int DB_VERSION = 50;
 
     private final Context context;
 
@@ -284,6 +284,7 @@ public class DBHelper extends SQLiteOpenHelper {
         addIsSwapToRepo(db, oldVersion);
         addChangelogToApp(db, oldVersion);
         addIconUrlLargeToApp(db, oldVersion);
+        updateIconUrlLarge(db, oldVersion);
     }
 
     /**
@@ -429,6 +430,13 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 49 && !columnExists(db, TABLE_APP, "iconUrlLarge")) {
             Log.i(TAG, "Adding iconUrlLarge columns to " + TABLE_APP);
             db.execSQL("alter table " + TABLE_APP + " add column iconUrlLarge text");
+        }
+    }
+
+    private void updateIconUrlLarge(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 50) {
+            Log.i(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
+            AppProvider.UpgradeHelper.updateIconUrls(context, db);
         }
     }
 
