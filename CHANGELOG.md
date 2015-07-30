@@ -1,11 +1,9 @@
 ### Upcoming release
 
-* Switch UI to Material Design, including a new launcher icon
+* Start porting UI to Material Design, including a new launcher icon
 
-* Add support for showing changelogs of apps under the "Links" section of
-  the new App Details view. These will become visible for apps whose metadata
-  supports changelogs, and requires repositories to be updated in the client
-  before being available.
+* Add support for app changelog links, which will appear for apps that have
+  them once the repositories have been updated again
 
 * Redesign the App Details view with larger icons, expandable description and
   links with icons
