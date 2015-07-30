@@ -101,7 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + InstalledAppProvider.DataColumns.APPLICATION_LABEL + " TEXT NOT NULL "
             + " );";
 
-    private static final int DB_VERSION = 49;
+    private static final int DB_VERSION = 50;
 
     private final Context context;
 
@@ -284,6 +284,7 @@ public class DBHelper extends SQLiteOpenHelper {
         addIsSwapToRepo(db, oldVersion);
         addChangelogToApp(db, oldVersion);
         addIconUrlLargeToApp(db, oldVersion);
+        updateIconUrlLarge(db, oldVersion);
     }
 
     /**
@@ -432,6 +433,24 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    private void updateIconUrlLarge(SQLiteDatabase db, int oldVersion) {
+        if (oldVersion < 50) {
+            Log.i(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
+            AppProvider.UpgradeHelper.updateIconUrls(context, db);
+            clearRepoEtags(db);
+        }
+    }
+
+    /**
+     * By clearing the etags stored in the repo table, it means that next time the user updates
+     * their repos (either manually or on a scheduled task), they will update regardless of whether
+     * they have changed since last update or not.
+     */
+    private void clearRepoEtags(SQLiteDatabase db) {
+        Log.i(TAG, "Clearing repo etags, so next update will not be skipped with \"Repos up to date\".");
+        db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
+    }
+
     private void resetTransient(SQLiteDatabase db, int oldVersion) {
         // Before version 42, only transient info was stored in here. As of some time
         // just before 42 (F-Droid 0.60ish) it now has "ignore this version" info which
@@ -443,7 +462,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     .putBoolean("triedEmptyUpdate", false).commit();
             db.execSQL("drop table " + TABLE_APP);
             db.execSQL("drop table " + TABLE_APK);
-            db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
+            clearRepoEtags(db);
             createAppApk(db);
         }
     }
