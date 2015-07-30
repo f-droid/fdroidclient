@@ -47,6 +47,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     public static final String PREF_COMPACT_LAYOUT = "compactlayout";
     public static final String PREF_IGN_TOUCH = "ignoreTouchscreen";
     public static final String PREF_CACHE_APK = "cacheDownloaded";
+    public static final String PREF_BETA_UPDATES = "betaUpdates";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_UPD_LAST = "lastUpdateCheck";
     public static final String PREF_SYSTEM_INSTALLER = "systemInstaller";
@@ -68,6 +69,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private static final boolean DEFAULT_SYSTEM_INSTALLER = false;
     private static final boolean DEFAULT_LOCAL_REPO_BONJOUR = true;
     private static final boolean DEFAULT_CACHE_APK = false;
+    private static final boolean DEFAULT_BETA_UPDATES = false;
     private static final boolean DEFAULT_LOCAL_REPO_HTTPS = false;
     private static final boolean DEFAULT_INCOMP_VER = false;
     private static final boolean DEFAULT_EXPERT = false;
@@ -90,6 +92,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     private final List<ChangeListener> localRepoBonjourListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoNameListeners = new ArrayList<>();
     private final List<ChangeListener> localRepoHttpsListeners = new ArrayList<>();
+    private final List<ChangeListener> betaUpdatesListeners = new ArrayList<>();
 
     private boolean isInitialized(String key) {
         return initialized.containsKey(key) && initialized.get(key);
@@ -133,6 +136,10 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
 
     public boolean shouldCacheApks() {
         return preferences.getBoolean(PREF_CACHE_APK, DEFAULT_CACHE_APK);
+    }
+
+    public boolean getBetaUpdates() {
+        return preferences.getBoolean(PREF_BETA_UPDATES, DEFAULT_BETA_UPDATES);
     }
 
     public boolean showIncompatibleVersions() {
@@ -241,6 +248,14 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
         filterAppsRequiringRootListeners.remove(listener);
     }
 
+    public void registerBetaUpdatesChangeListener(ChangeListener listener) {
+        betaUpdatesListeners.add(listener);
+    }
+
+    public void unregisterBetaUpdatesChangeListener(ChangeListener listener) {
+        betaUpdatesListeners.remove(listener);
+    }
+
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (BuildConfig.DEBUG) {
@@ -276,6 +291,10 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
             break;
         case PREF_LOCAL_REPO_HTTPS:
             for (ChangeListener listener : localRepoHttpsListeners) {
+                listener.onPreferenceChange();
+            }
+        case PREF_BETA_UPDATES:
+            for (ChangeListener listener : betaUpdatesListeners) {
                 listener.onPreferenceChange();
             }
             break;
