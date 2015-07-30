@@ -437,7 +437,18 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 50) {
             Log.i(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
             AppProvider.UpgradeHelper.updateIconUrls(context, db);
+            clearRepoEtags(db);
         }
+    }
+
+    /**
+     * By clearing the etags stored in the repo table, it means that next time the user updates
+     * their repos (either manually or on a scheduled task), they will update regardless of whether
+     * they have changed since last update or not.
+     */
+    private void clearRepoEtags(SQLiteDatabase db) {
+        Log.i(TAG, "Clearing repo etags, so next update will not be skipped with \"Repos up to date\".");
+        db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
     }
 
     private void resetTransient(SQLiteDatabase db, int oldVersion) {
@@ -451,7 +462,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     .putBoolean("triedEmptyUpdate", false).commit();
             db.execSQL("drop table " + TABLE_APP);
             db.execSQL("drop table " + TABLE_APK);
-            db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
+            clearRepoEtags(db);
             createAppApk(db);
         }
     }
