@@ -109,8 +109,7 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
         include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar',
                 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar',
                 'zipsigner/build/libs/zipsigner.jar',
-                'jmdns/build/libs/jmdns.jar',
-                'Support/v4/build/libs/support-v4.jar'
+                'jmdns/build/libs/jmdns.jar'
     }
 
     into 'libs/binaryDeps'
