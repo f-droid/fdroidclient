@@ -187,7 +187,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     protected void sendRepoErrorStatus(int statusCode, ArrayList<CharSequence> repoErrors) {
         Intent intent = new Intent(LOCAL_ACTION_STATUS);
         intent.putExtra(EXTRA_STATUS_CODE, statusCode);
-        intent.putExtra(EXTRA_REPO_ERRORS, repoErrors);
+        intent.putExtra(EXTRA_REPO_ERRORS, repoErrors.toArray(new CharSequence[repoErrors.size()]));
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
