@@ -66,20 +66,6 @@
     <style name="SwapTheme.AppList.ListItem" parent="AppThemeLight">
     </style>
 
-    <style name="SwapTheme.StartSwap.StartButton">
-        <item name="android:layout_marginLeft">9dp</item> <!-- 16px * 96dpi / 160dpi -->
-        <item name="android:layout_marginRight">9dp</item> <!-- 16px * 96dpi / 160dpi -->
-        <item name="android:layout_height">63.3dp</item> <!-- 113px * 96dpi / 160dpi -->
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:textColor">@android:color/white</item>
-
-        <item name="android:textSize">18.5sp</item> <!-- 33px * 96dpi / 160dpi -->
-        <item name="android:background">@drawable/swap_start_button_skin</item>
-        <item name="android:drawableLeft">@drawable/ic_swap</item>
-        <item name="android:paddingLeft">10dp</item>
-
-    </style>
-
     <style name="SwapTheme.AppList.SwapSuccess">
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center</item>
@@ -180,19 +166,6 @@
     <!--
     Buttons used to ask the user to confirm they want to receive a swap repo from someone
     -->
-    <style name="SwapTheme.Wizard.ReceiveSwap.ButtonBase" parent="SwapTheme.Wizard.ButtonBase">
-        <item name="android:layout_width">0dp</item>
-    </style>
-
-    <style name="SwapTheme.Wizard.ReceiveSwap.Confirm" parent="SwapTheme.Wizard.ReceiveSwap.ButtonBase">
-        <item name="android:background">@drawable/swap_confirm_button_skin</item>
-        <item name="android:layout_marginLeft">7dp</item>
-    </style>
-
-    <style name="SwapTheme.Wizard.ReceiveSwap.Deny" parent="SwapTheme.Wizard.ReceiveSwap.ButtonBase">
-        <item name="android:background">@drawable/swap_deny_button_skin</item>
-        <item name="android:layout_marginRight">7dp</item>
-    </style>
 
     <style name="SwapTheme.Wizard.ReceiveSwap.MainText" parent="SwapTheme.Wizard.MainText">
         <item name="android:textSize">33.6sp</item> <!-- 60 * 96dpi / 160dpi -->

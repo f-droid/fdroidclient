@@ -87,7 +87,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
 
             int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
 
-            TextView progressText = ((TextView) findViewById(R.id.progress));
+            TextView progressText = ((TextView) findViewById(R.id.heading));
             TextView errorText    = ((TextView) findViewById(R.id.error));
             Button   backButton   = ((Button) findViewById(R.id.back));
 
