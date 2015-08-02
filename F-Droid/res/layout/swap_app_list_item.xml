@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/swap_light_blue"
-            backgroundTint="@color/swap_light_blue"
+            app:backgroundTint="@color/swap_light_blue"
             android:textColor="@android:color/white"
             android:text="@string/menu_install"/>
 

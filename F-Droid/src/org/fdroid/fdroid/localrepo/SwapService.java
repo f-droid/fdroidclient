@@ -260,10 +260,6 @@ public class SwapService extends Service {
         return peerRepo;
     }
 
-    public void install(@NonNull final App app) {
-
-    }
-
     /**
      * Ensure that we don't get put into an incorrect state, by forcing people to pass valid
      * states to setStep. Ideally this would be done by requiring an enum or something to

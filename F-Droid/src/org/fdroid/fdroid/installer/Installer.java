@@ -92,6 +92,10 @@ abstract public class Installer {
         this.mCallback = callback;
     }
 
+    public static Installer getActivityInstaller(Activity activity, InstallerCallback callback) {
+        return getActivityInstaller(activity, activity.getPackageManager(), callback);
+    }
+
     /**
      * Creates a new Installer for installing/deleting processes starting from
      * an Activity

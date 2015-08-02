@@ -23,6 +23,7 @@ import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 
+// TODO: Use this for the "Preparing local repo" dialog also.
 public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
     private final static String TAG = "SwapConnecting";

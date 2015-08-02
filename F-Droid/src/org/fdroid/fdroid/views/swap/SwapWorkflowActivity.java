@@ -33,18 +33,26 @@ import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
+import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
 import org.fdroid.fdroid.localrepo.peers.Peer;
+import org.fdroid.fdroid.net.ApkDownloader;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -200,6 +208,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void showRelevantView() {
+        showRelevantView(false);
+    }
+
+    private void showRelevantView(boolean forceReload) {
 
         if (service == null) {
             showInitialLoading();
@@ -215,9 +227,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return;
         }
 
-        if (container.getVisibility() == View.GONE || currentView != null && currentView.getStep() == service.getStep()) {
-            // Already showing the correct step, so don't bother changing anything.
-            return;
+        if (!forceReload) {
+            if (container.getVisibility() == View.GONE || currentView != null && currentView.getStep() == service.getStep()) {
+                // Already showing the correct step, so don't bother changing anything.
+                return;
+            }
         }
 
         switch(service.getStep()) {
@@ -694,6 +708,45 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 },
                 1000
             );
+        }
+    }
+
+    public void install(@NonNull final App app) {
+        final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
+        final ApkDownloader downloader = new ApkDownloader(this, apkToInstall, apkToInstall.repoAddress);
+        downloader.setProgressListener(new ProgressListener() {
+            @Override
+            public void onProgress(Event event) {
+                switch (event.type) {
+                    case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
+                        handleDownloadComplete(downloader.localFile());
+                        break;
+                    case ApkDownloader.EVENT_ERROR:
+                        break;
+                }
+            }
+        });
+        downloader.download();
+    }
+
+    private void handleDownloadComplete(File apkFile) {
+
+        try {
+            Installer.getActivityInstaller(SwapWorkflowActivity.this, new Installer.InstallerCallback() {
+                @Override
+                public void onSuccess(int operation) {
+                    // TODO: Don't reload the view weely-neely, but rather get the view to listen
+                    // for broadcasts that say the install was complete.
+                    showRelevantView(true);
+                }
+
+                @Override
+                public void onError(int operation, int errorCode) {
+                    // TODO: Boo!
+                }
+            }).installPackage(apkFile);
+        } catch (Installer.AndroidNotCompatibleException e) {
+            // TODO: Handle exception properly
         }
     }
 

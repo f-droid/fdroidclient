@@ -77,10 +77,6 @@ public class SwapAppsView extends ListView implements
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapService getState() {
-        return getActivity().getState();
-    }
-
     private static final int LOADER_SWAPABLE_APPS = 759283741;
     private static final String TAG = "SwapAppsView";
 
@@ -127,7 +123,7 @@ public class SwapAppsView extends ListView implements
         }
 
         Log.d(TAG, "Polling swap repo to see if it has any updates.");
-        getState().refreshSwap();
+        getActivity().getService().refreshSwap();
         if (pollForUpdatesReceiver != null) {
             pollForUpdatesReceiver = new BroadcastReceiver() {
                 @Override
@@ -200,7 +196,7 @@ public class SwapAppsView extends ListView implements
 
     @ColorRes
     public int getToolbarColour() {
-        return getResources().getColor(R.color.swap_bright_blue);
+        return R.color.swap_bright_blue;
     }
 
     @Override
@@ -327,7 +323,7 @@ public class SwapAppsView extends ListView implements
                 @Override
                 public void onClick(View v) {
                     if (app.hasUpdates() || app.compatible) {
-                        getState().install(app);
+                        getActivity().install(app);
                     }
                 }
             };
