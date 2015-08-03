@@ -37,13 +37,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Layout;
 import android.text.Selection;
@@ -117,7 +118,7 @@ interface AppInstallListener {
     void removeApk(String packageName);
 }
 
-public class AppDetails extends ActionBarActivity implements ProgressListener, AppDetailsData, AppInstallListener {
+public class AppDetails extends AppCompatActivity implements ProgressListener, AppDetailsData, AppInstallListener {
 
     private static final String TAG = "AppDetails";
 
@@ -425,13 +426,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
             listFragment.removeSummaryHeader();
         }
 
-        // Spinner seems to default to visible on Android 4.0.3 and 4.0.4
-        // https://gitlab.com/fdroid/fdroidclient/issues/75
-        // Can't put this in onResume(), because that is called on return from asking
-        // the user permission to use su (in which case we still want to show the
-        // progress indicator after returning from that prompt).
-        setSupportProgressBarIndeterminateVisibility(false);
-
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
     }
 
@@ -489,7 +483,7 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
      */
     private void downloadCompleteInstallApk() {
         if (downloadHandler != null) {
-            installApk(downloadHandler.localFile(), downloadHandler.getApk().id);
+            installApk(downloadHandler.localFile());
             cleanUpFinishedDownload();
         }
     }
@@ -732,8 +726,8 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
 
         @Override
-        public boolean onTouchEvent(TextView widget, Spannable buffer,
-                MotionEvent event) {
+        public boolean onTouchEvent(@NonNull TextView widget, @NonNull Spannable buffer,
+                @NonNull MotionEvent event) {
             try {
                 return super.onTouchEvent(widget, buffer, event);
             } catch (ActivityNotFoundException ex) {
@@ -873,26 +867,20 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
         }
     }
 
-    private void installApk(File file, String packageName) {
-        setSupportProgressBarIndeterminateVisibility(true);
-
+    private void installApk(File file) {
         try {
             installer.installPackage(file);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
-            setSupportProgressBarIndeterminateVisibility(false);
         }
     }
 
     @Override
     public void removeApk(String packageName) {
-        setSupportProgressBarIndeterminateVisibility(true);
-
         try {
             installer.deletePackage(packageName);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
-            setSupportProgressBarIndeterminateVisibility(false);
         }
     }
 
@@ -907,7 +895,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                         PackageManagerCompat.setInstaller(mPm, app.id);
                     }
 
-                    setSupportProgressBarIndeterminateVisibility(false);
                     onAppChanged();
                 }
             });
@@ -919,7 +906,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setSupportProgressBarIndeterminateVisibility(false);
                         onAppChanged();
                     }
                 });
@@ -927,7 +913,6 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setSupportProgressBarIndeterminateVisibility(false);
                         onAppChanged();
 
                         Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
