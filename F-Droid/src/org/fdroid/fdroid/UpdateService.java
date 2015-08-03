@@ -20,7 +20,6 @@ package org.fdroid.fdroid;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -239,7 +238,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 case STATUS_ERROR_GLOBAL:
                     text = context.getString(R.string.global_error_updating_repos) + " " + message;
                     notificationBuilder.setContentText(text)
-                            .setCategory(Notification.CATEGORY_ERROR)
+                            .setCategory(NotificationCompat.CATEGORY_ERROR)
                             .setSmallIcon(android.R.drawable.ic_dialog_alert);
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     Toast.makeText(context, text, Toast.LENGTH_LONG).show();
@@ -257,7 +256,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     }
                     text = msgBuilder.toString();
                     notificationBuilder.setContentText(text)
-                            .setCategory(Notification.CATEGORY_ERROR)
+                            .setCategory(NotificationCompat.CATEGORY_ERROR)
                             .setSmallIcon(android.R.drawable.ic_dialog_info);
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     Toast.makeText(context, text, Toast.LENGTH_LONG).show();
