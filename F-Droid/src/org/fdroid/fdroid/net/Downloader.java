@@ -33,6 +33,8 @@ public abstract class Downloader {
 
     protected final URL sourceUrl;
     protected String cacheTag = null;
+    protected int bytesRead = 0;
+    protected int totalBytes = 0;
 
     public abstract InputStream getInputStream() throws IOException;
 
@@ -145,7 +147,7 @@ public abstract class Downloader {
 
         byte[] buffer = new byte[Utils.BUFFER_SIZE];
         int bytesRead = 0;
-        int totalBytes = totalDownloadSize();
+        this.totalBytes = totalDownloadSize();
 
         // Getting the total download size could potentially take time, depending on how
         // it is implemented, so we may as well check this before we proceed.
@@ -169,6 +171,7 @@ public abstract class Downloader {
     }
 
     protected void sendProgress(int bytesRead, int totalBytes) {
+        this.bytesRead = bytesRead;
         Intent intent = new Intent(LOCAL_ACTION_PROGRESS);
         intent.putExtra(EXTRA_ADDRESS, sourceUrl.toString());
         intent.putExtra(EXTRA_BYTES_READ, bytesRead);
@@ -176,4 +179,11 @@ public abstract class Downloader {
         localBroadcastManager.sendBroadcast(intent);
     }
 
+    public int getBytesRead() {
+        return bytesRead;
+    }
+
+    public int getTotalBytes() {
+        return totalBytes;
+    }
 }

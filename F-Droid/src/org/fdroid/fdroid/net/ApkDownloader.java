@@ -52,7 +52,6 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     public static final int ERROR_HASH_MISMATCH = 101;
     public static final int ERROR_DOWNLOAD_FAILED = 102;
-    public static final int ERROR_UNKNOWN = 103;
 
     private static final String EVENT_SOURCE_ID = "sourceId";
     private static long downloadIdCounter = 0;
@@ -70,8 +69,6 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     private ProgressListener listener;
     private AsyncDownloadWrapper dlWrapper = null;
-    private int progress  = 0;
-    private int totalSize = 0;
     private boolean isComplete = false;
 
     private final long id = ++downloadIdCounter;
@@ -274,7 +271,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     public Apk getApk() { return curApk; }
 
-    public int getProgress() { return progress; }
+    public int getBytesRead() { return dlWrapper != null ? dlWrapper.getBytesRead() : 0; }
 
-    public int getTotalSize() { return totalSize; }
+    public int getTotalBytes() { return dlWrapper != null ? dlWrapper.getTotalBytes() : 0; }
 }

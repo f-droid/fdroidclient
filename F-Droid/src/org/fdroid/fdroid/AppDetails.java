@@ -464,11 +464,10 @@ public class AppDetails extends ActionBarActivity implements ProgressListener, A
                         new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
                 downloadHandler.setProgressListener(this);
 
-                if (downloadHandler.getTotalSize() == 0)
+                if (downloadHandler.getTotalBytes() == 0)
                     mHeaderFragment.startProgress();
                 else
-                    mHeaderFragment.updateProgress(downloadHandler.getProgress(),
-                            downloadHandler.getTotalSize());
+                    mHeaderFragment.updateProgress(downloadHandler.getBytesRead(), downloadHandler.getTotalBytes());
             }
         }
     }

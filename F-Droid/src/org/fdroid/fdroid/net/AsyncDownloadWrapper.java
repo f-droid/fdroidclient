@@ -72,6 +72,14 @@ public class AsyncDownloadWrapper extends Handler {
         }
     }
 
+    public int getBytesRead() {
+        return downloader.getBytesRead();
+    }
+
+    public int getTotalBytes() {
+        return downloader.getTotalBytes();
+    }
+
     public interface Listener extends ProgressListener {
         void onErrorDownloading(String localisedExceptionDetails);
         void onDownloadComplete();
