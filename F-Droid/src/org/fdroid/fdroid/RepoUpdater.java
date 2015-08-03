@@ -53,16 +53,14 @@ public class RepoUpdater {
 
     /**
      * Updates an app repo as read out of the database into a {@link Repo} instance.
-     *
-     * @param context
-     * @param repo    a {@link Repo} read out of the local database
+     * @param repo A {@link Repo} read out of the local database
      */
     public RepoUpdater(@NonNull Context context, @NonNull Repo repo) {
         this.context = context;
         this.repo = repo;
     }
 
-    public void setProgressListener(ProgressListener progressListener) {
+    public void setProgressListener(@Nullable ProgressListener progressListener) {
         this.progressListener = progressListener;
     }
 
