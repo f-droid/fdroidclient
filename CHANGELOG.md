@@ -1,4 +1,4 @@
-### 0.95 (2015-08-??)
+### 0.95 (2015-08-04)
 
 * Start porting UI to Material Design, including a new launcher icon
 
