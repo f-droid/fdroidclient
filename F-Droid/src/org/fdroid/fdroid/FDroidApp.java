@@ -84,7 +84,8 @@ public class FDroidApp extends Application {
     }
 
     public enum Theme {
-        dark, light, lightWithDarkActionBar
+        dark,
+        light,
     }
 
     private static Theme curTheme = Theme.light;
