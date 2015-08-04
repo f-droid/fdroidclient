@@ -86,8 +86,11 @@ enough for a stable release, so use at your own risk. Testers and reporters
 are very welcome.
 
 The version codes use a number of digits per each of these keys: `XYYZNN`.
-So for example, 1.3.1 would be `103100` and 0.95-alpha13 would be `95013`
+So for example, 1.3.1 would be `103150` and 0.95-alpha13 would be `95013`
 (leading zeros are omitted).
+
+Note that we use a trailing `50` for actual stable releases, so alphas are
+limited to `-alpha49`.
 
 This is an example of a release process for release **0.95**:
 
