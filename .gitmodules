@@ -1,4 +1,0 @@
-[submodule "extern/Support"]
-	path = extern/Support
-	url = https://android.googlesource.com/platform/frameworks/support
-	ignore = dirty

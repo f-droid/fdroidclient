@@ -16,7 +16,6 @@ gradle wrapper.
 Once you have checked out the version you wish to build, run:
 
 ```
-git submodule update --init
 cd F-Droid
 gradle clean assembleRelease
 ```
