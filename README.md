@@ -15,16 +15,23 @@ gradle wrapper.
 
 Once you have checked out the version you wish to build, run:
 
-```
-cd F-Droid
-gradle clean assembleRelease
-```
+        cd F-Droid
+        gradle assembleRelease
+
+The resulting apk will be in `build/outputs/apk/`.
 
 Android Studio
 --------------
 
 From Android Studio: File -> Import Project -> Select the cloned top folder
 
+
+Building tips
+-------------
+
+* Use `gradle --daemon` if you are going to build F-Droid multiple times.
+* If you get a message like `Could not find com.android.support:support-...`,
+  make sure that you have the latest Android support maven repository
 
 Direct download
 ---------------
