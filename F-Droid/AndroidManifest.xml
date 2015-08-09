@@ -10,7 +10,7 @@
     <uses-sdk
         tools:overrideLibrary="org.thoughtcrime.ssl.pinning"
         android:minSdkVersion="8"
-        android:targetSdkVersion="21"
+        android:targetSdkVersion="22"
         />
 
     <supports-screens
