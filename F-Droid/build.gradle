@@ -16,9 +16,9 @@ if ( !hasProperty( 'sourceDeps' ) ) {
 
     dependencies {
 
-        compile 'com.android.support:support-v4:22.1.0',
-                'com.android.support:appcompat-v7:22.1.0',
-                'com.android.support:support-annotations:22.1.0',
+        compile 'com.android.support:support-v4:22.2.1',
+                'com.android.support:appcompat-v7:22.2.1',
+                'com.android.support:support-annotations:22.2.1',
 
                 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
                 'com.nostra13.universalimageloader:universal-image-loader:1.9.4',
@@ -80,9 +80,9 @@ if ( !hasProperty( 'sourceDeps' ) ) {
         // then you can find the relevant portions of the ../build.gradle file that
         // include magic required to make it work at around about the v0.78 git tag.
         // They have since been removed to clean up the build file.
-        compile 'com.android.support:support-v4:22.1.0',
-                'com.android.support:appcompat-v7:22.1.0',
-                'com.android.support:support-annotations:22.1.0'
+        compile 'com.android.support:support-v4:22.2.1',
+                'com.android.support:appcompat-v7:22.2.1',
+                'com.android.support:support-annotations:22.2.1'
 
         androidTestCompile 'commons-io:commons-io:2.2'
     }
@@ -125,7 +125,7 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
 }
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion '22.0.1'
 
     sourceSets {
