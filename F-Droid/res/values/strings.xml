@@ -210,6 +210,7 @@
 	  - Percentage complete (int between 0-100)
 	-->
 	<string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
+	<string name="update_notification_title">Updating repositories</string>
 	<string name="status_processing_xml_percent">Processing %2$s / %3$s (%4$d%%) from %1$s</string>
 	<string name="status_connecting_to_repo">Connecting to\n%1$s</string>
 	<string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
@@ -372,4 +373,13 @@
 
     <string name="perms_new_perm_prefix"><font size="12" fgcolor="#ff33b5e5">NEW: </font></string>
     <string name="perms_description_app">Provided by %1$s.</string>
+    <string name="downloading">Downloading...</string>
+
+    <string-array name="file_size_units">
+        <item>B</item>
+        <item>KiB</item>
+        <item>MiB</item>
+        <item>GiB</item>
+        <item>TiB</item>
+    </string-array>
 </resources>

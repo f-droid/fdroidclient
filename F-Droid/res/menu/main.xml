@@ -8,11 +8,6 @@
         android:title="@string/menu_search"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/action_update_repo"
-        android:icon="@drawable/ic_refresh_white"
-        android:title="@string/menu_update_repo"
-        app:showAsAction="ifRoom"/>
-    <item
         android:id="@+id/action_swap"
         android:title="@string/swap"
         app:showAsAction="ifRoom"/>
@@ -25,6 +20,11 @@
         android:id="@+id/action_bluetooth_apk"
         android:icon="@drawable/ic_bluetooth_white"
         android:title="@string/menu_send_apk_bt"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_update_repo"
+        android:icon="@drawable/ic_refresh_white"
+        android:title="@string/menu_update_repo"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_settings"

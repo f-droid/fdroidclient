@@ -1,13 +1,17 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +24,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -33,7 +36,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConnectSwapActivity extends ActionBarActivity implements ProgressListener {
+public class ConnectSwapActivity extends ActionBarActivity {
     private static final String TAG = "ConnectSwapActivity";
 
     private static final String STATE_CONFIRM = "startSwap";
@@ -79,6 +82,10 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
     @Override
     protected void onResume() {
         super.onResume();
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,
+                new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+
         // Only confirm the action, and then return a result...
         newRepoConfig = new NewRepoConfig(this, getIntent());
         if (newRepoConfig.isValidRepo()) {
@@ -91,40 +98,48 @@ public class ConnectSwapActivity extends ActionBarActivity implements ProgressLi
     }
 
     @Override
-    @SuppressWarnings("fallthrough")
-    public void onProgress(Event event) {
-        // TODO: Show progress, but we can worry about that later.
-        // Might be nice to have it nicely embedded in the UI, rather than as
-        // an additional dialog. E.g. White text on blue, letting the user
-        // know what we are up to.
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
+    }
 
-        switch (event.type) {
-            case UpdateService.EVENT_COMPLETE_AND_SAME:
-                Log.i(TAG, "EVENT_COMPLETE_AND_SAME");
-            case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                Log.i(TAG, "EVENT_COMPLETE_WITH_CHANGES");
-                Intent intent = new Intent(this, SwapAppListActivity.class);
-                intent.putExtra(SwapAppListActivity.EXTRA_REPO_ID, repo.getId());
-                startActivity(intent);
-                finish();
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO: Show progress, but we can worry about that later.
+            // Might be nice to have it nicely embedded in the UI, rather than as
+            // an additional dialog. E.g. White text on blue, letting the user
+            // know what we are up to.
+            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+
+            switch (statusCode) {
+                case UpdateService.STATUS_COMPLETE_AND_SAME:
+                    Log.i(TAG, "STATUS_COMPLETE_AND_SAME");
+                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
+                    Log.i(TAG, "STATUS_COMPLETE_WITH_CHANGES");
+                    Intent salIntent = new Intent(getBaseContext(), SwapAppListActivity.class);
+                    salIntent.putExtra(SwapAppListActivity.EXTRA_REPO_ID, repo.getId());
+                    startActivity(salIntent);
+                    finish();
             /*
             // TODO: Load repo from database to get proper name. This is what the category we want to select will be called.
             intent.putExtra("category", newRepoConfig.getHost());
             getActivity().setResult(Activity.RESULT_OK, intent);
             */
-                break;
-            case UpdateService.EVENT_ERROR:
-                // TODO: Show message on this screen (with a big "okay" button that goes back to F-Droid activity)
-                // rather than finishing directly.
-                finish();
-                break;
+                    break;
+                case UpdateService.STATUS_ERROR_GLOBAL:
+                    // TODO: Show message on this screen (with a big "okay" button that goes back to F-Droid activity)
+                    // rather than finishing directly.
+                    finish();
+                    break;
+            }
         }
-    }
+    };
 
     private void confirm() {
         repo = ensureRepoExists();
         if (repo != null) {
-            UpdateService.updateRepoNow(repo.address, this).setListener(this);
+            UpdateService.updateRepoNow(repo.address, this);
         }
     }
 

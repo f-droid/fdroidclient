@@ -1,11 +1,10 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 
 import java.io.File;
@@ -20,49 +19,31 @@ import java.net.URL;
 public abstract class Downloader {
 
     private static final String TAG = "Downloader";
-    private OutputStream outputStream;
 
-    private ProgressListener progressListener = null;
-    private Bundle eventData = null;
+    public static final String LOCAL_ACTION_PROGRESS = "Downloader.PROGRESS";
+
+    public static final String EXTRA_ADDRESS = "extraAddress";
+    public static final String EXTRA_BYTES_READ = "extraBytesRead";
+    public static final String EXTRA_TOTAL_BYTES = "extraTotalBytes";
+
+    private final OutputStream outputStream;
+
+    private final LocalBroadcastManager localBroadcastManager;
     private final File outputFile;
 
-    protected URL sourceUrl;
+    protected final URL sourceUrl;
     protected String cacheTag = null;
-
-    public static final String EVENT_PROGRESS = "downloadProgress";
+    protected int bytesRead = 0;
+    protected int totalBytes = 0;
 
     public abstract InputStream getInputStream() throws IOException;
 
-    // The context is required for opening the file to write to.
-    Downloader(String destFile, @NonNull Context ctx)
+    Downloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        this(new File(ctx.getFilesDir() + File.separator + destFile));
-    }
-
-    // The context is required for opening the file to write to.
-    Downloader(@NonNull Context ctx) throws IOException {
-        this(File.createTempFile("dl-", "", ctx.getCacheDir()));
-    }
-
-    Downloader(File destFile)
-            throws FileNotFoundException, MalformedURLException {
+        this.sourceUrl = url;
         outputFile = destFile;
         outputStream = new FileOutputStream(outputFile);
-    }
-
-    Downloader(OutputStream output)
-            throws MalformedURLException {
-        outputStream = output;
-        outputFile   = null;
-    }
-
-    public void setProgressListener(ProgressListener listener) {
-        setProgressListener(listener, null);
-    }
-
-    public void setProgressListener(ProgressListener listener, Bundle eventData) {
-        this.progressListener = listener;
-        this.eventData = eventData;
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
     /**
@@ -157,11 +138,16 @@ public abstract class Downloader {
         }
     }
 
+    /**
+     * This copies the downloaded data from the InputStream to the OutputStream,
+     * keeping track of the number of bytes that have flowed through for the
+     * progress counter.
+     */
     protected void copyInputToOutputStream(InputStream input) throws IOException, InterruptedException {
 
         byte[] buffer = new byte[Utils.BUFFER_SIZE];
         int bytesRead = 0;
-        int totalBytes = totalDownloadSize();
+        this.totalBytes = totalDownloadSize();
 
         // Getting the total download size could potentially take time, depending on how
         // it is implemented, so we may as well check this before we proceed.
@@ -185,13 +171,19 @@ public abstract class Downloader {
     }
 
     protected void sendProgress(int bytesRead, int totalBytes) {
-        sendProgress(new ProgressListener.Event(EVENT_PROGRESS, bytesRead, totalBytes, eventData));
+        this.bytesRead = bytesRead;
+        Intent intent = new Intent(LOCAL_ACTION_PROGRESS);
+        intent.putExtra(EXTRA_ADDRESS, sourceUrl.toString());
+        intent.putExtra(EXTRA_BYTES_READ, bytesRead);
+        intent.putExtra(EXTRA_TOTAL_BYTES, totalBytes);
+        localBroadcastManager.sendBroadcast(intent);
     }
 
-    protected void sendProgress(ProgressListener.Event event) {
-        if (progressListener != null) {
-            progressListener.onProgress(event);
-        }
+    public int getBytesRead() {
+        return bytesRead;
     }
 
+    public int getTotalBytes() {
+        return totalBytes;
+    }
 }
