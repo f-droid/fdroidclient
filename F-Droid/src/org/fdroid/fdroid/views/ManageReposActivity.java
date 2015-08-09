@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid.views;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -42,6 +41,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -64,14 +64,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
-import org.fdroid.fdroid.views.fragments.RepoDetailsFragment;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -82,13 +80,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class ManageReposActivity extends ActionBarActivity {
-
-    /**
-     * If we have a new repo added, or the address of a repo has changed, then
-     * we when we're finished, we'll set this boolean to true in the intent that
-     * we finish with, to signify that we want the main list of apps updated.
-     */
-    public static final String REQUEST_UPDATE = "update";
     private static final String TAG = "ManageReposActivity";
 
     private static final String DEFAULT_NEW_REPO_TEXT = "https://";
@@ -98,10 +89,6 @@ public class ManageReposActivity extends ActionBarActivity {
         EXISTS_DISABLED, EXISTS_ENABLED, EXISTS_UPGRADABLE_TO_SIGNED, INVALID_URL,
         IS_SWAP
     }
-
-    private UpdateService.UpdateReceiver updateHandler = null;
-
-    private static boolean changed = false;
 
     private RepoListFragment listFragment;
 
@@ -147,19 +134,9 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (updateHandler != null) {
-            updateHandler.showDialog();
-        }
+
         /* let's see if someone is trying to send us a new repo */
         addRepoFromIntent(getIntent());
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (updateHandler != null) {
-            updateHandler.hideDialog();
-        }
     }
 
     @Override
@@ -170,20 +147,8 @@ public class ManageReposActivity extends ActionBarActivity {
     @Override
     public void finish() {
         Intent ret = new Intent();
-        markChangedIfRequired(ret);
         setResult(RESULT_OK, ret);
         super.finish();
-    }
-
-    private boolean hasChanged() {
-        return changed;
-    }
-
-    private void markChangedIfRequired(Intent intent) {
-        if (hasChanged()) {
-            Log.i(TAG, "Repo details have changed, prompting for update.");
-            intent.putExtra(REQUEST_UPDATE, true);
-        }
     }
 
     @Override
@@ -197,7 +162,6 @@ public class ManageReposActivity extends ActionBarActivity {
         switch (item.getItemId()) {
         case android.R.id.home:
             Intent destIntent = new Intent(this, FDroid.class);
-            markChangedIfRequired(destIntent);
             setResult(RESULT_OK, destIntent);
             NavUtils.navigateUpTo(this, destIntent);
             return true;
@@ -205,30 +169,10 @@ public class ManageReposActivity extends ActionBarActivity {
             showAddRepo();
             return true;
         case R.id.action_update_repo:
-            updateRepos();
+            UpdateService.updateNow(this);
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void updateRepos() {
-        updateHandler = UpdateService.updateNow(this).setListener(
-                new ProgressListener() {
-                    @Override
-                    public void onProgress(Event event) {
-                        switch (event.type) {
-                        case UpdateService.EVENT_COMPLETE_AND_SAME:
-                        case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                            // No need to prompt to update any more, we just
-                            // did it!
-                            changed = false;
-                            break;
-                        case UpdateService.EVENT_FINISHED:
-                            updateHandler = null;
-                            break;
-                        }
-                    }
-                });
     }
 
     private void showAddRepo() {
@@ -291,9 +235,7 @@ public class ManageReposActivity extends ActionBarActivity {
             final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
             final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
-            addRepoDialog.setIcon(android.R.drawable.ic_menu_add);
             addRepoDialog.setTitle(getString(R.string.repo_add_title));
-
             addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
                 getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
@@ -651,11 +593,11 @@ public class ManageReposActivity extends ActionBarActivity {
 
         /**
          * If started by an intent that expects a result (e.g. QR codes) then we
-         * will set a result and finish. Otherwise, we'll refresh the list of repos
+         * will set a result and finish. Otherwise, we'll updateViews the list of repos
          * to reflect the newly created repo.
          */
         private void finishedAddingRepo() {
-            changed = true;
+            UpdateService.updateNow(ManageReposActivity.this);
             if (addRepoDialog.isShowing()) {
                 addRepoDialog.dismiss();
             }
@@ -728,7 +670,7 @@ public class ManageReposActivity extends ActionBarActivity {
         /**
          * NOTE: If somebody toggles a repo off then on again, it will have
          * removed all apps from the index when it was toggled off, so when it
-         * is toggled on again, then it will require a refresh. Previously, I
+         * is toggled on again, then it will require a updateViews. Previously, I
          * toyed with the idea of remembering whether they had toggled on or
          * off, and then only actually performing the function when the activity
          * stopped, but I think that will be problematic. What about when they
@@ -748,7 +690,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 RepoProvider.Helper.update(getActivity(), repo, values);
 
                 if (isEnabled) {
-                    changed = true;
+                    UpdateService.updateNow(getActivity());
                 } else {
                     FDroidApp app = (FDroidApp) getActivity().getApplication();
                     RepoProvider.Helper.purgeApps(getActivity(), repo, app);
@@ -833,7 +775,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
         public void editRepo(Repo repo) {
             Intent intent = new Intent(getActivity(), RepoDetailsActivity.class);
-            intent.putExtra(RepoDetailsFragment.ARG_REPO_ID, repo.getId());
+            intent.putExtra(RepoDetailsActivity.ARG_REPO_ID, repo.getId());
             startActivityForResult(intent, SHOW_REPO_DETAILS);
         }
 

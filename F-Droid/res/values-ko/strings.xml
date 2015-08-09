@@ -32,7 +32,6 @@
   <string name="repo_add_title">새로운 저장소 추가</string>
   <string name="repo_add_add">추가</string>
   <string name="cancel">취소</string>
-  <string name="repo_delete_title">제거할 저장소 선택</string>
   <string name="repo_update_title">저장소 업데이트</string>
   <string name="tab_updates">업데이트</string>
   <string name="one_update_available">1개의 업데이트를 사용할 수 있습니다.</string>
@@ -82,7 +81,6 @@
   <string name="status_checking_compatibility">장치와 응용프로그램의 호환성 확인중…</string>
   <string name="no_permissions">사용된 권한이 없습니다.</string>
   <string name="permissions_for_long">%s 버전에 대한 권한</string>
-  <string name="showPermissions">권한 표시</string>
   <string name="no_handler_app">%s을(를) 처리할 수 있는 응용프로그램이 없습니다.</string>
   <string name="compactlayout">컴팩트 레이아웃</string>
   <string name="theme">테마</string>

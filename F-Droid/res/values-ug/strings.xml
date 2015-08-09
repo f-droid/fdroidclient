@@ -39,7 +39,6 @@
   <string name="repo_add_title">يېڭى خەزىنە قوش</string>
   <string name="repo_add_add">قوش</string>
   <string name="cancel">ۋاز كەچ</string>
-  <string name="repo_delete_title">چىقىرىۋېتىدىغان خەزىنەنى تاللاڭ</string>
   <string name="repo_update_title">خەزىنە يېڭىلا</string>
   <string name="tab_noninstalled">ئىشلىتىشچان</string>
   <string name="tab_updates">يېڭىلانمىلار</string>
@@ -97,7 +96,6 @@
   <string name="status_checking_compatibility">ئەپلەرنىڭ ئۈسكۈنىڭىز بىلەن ماسلىشىشچانلىقىنى تەكشۈرۈۋاتىدۇ…</string>
   <string name="no_permissions">ھېچقانداق ھوقۇق ئىشلەتمەيدۇ.</string>
   <string name="permissions_for_long">%s نەشرىنىڭ ھوقۇقلىرى</string>
-  <string name="showPermissions">ھوقۇقلارنى كۆرسەت</string>
   <string name="no_handler_app">سىز %s نى بىر تەرەپ قىلالايدىغان ھېچقانداق ئەپ ئورناتمىغان</string>
   <string name="compactlayout">ئىخچام جايلاشتۇرۇش</string>
   <string name="theme">ئۆرنەك</string>

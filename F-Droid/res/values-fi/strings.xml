@@ -49,7 +49,6 @@
   <string name="enable">Ota käyttöön</string>
   <string name="add_key">Lisää avain</string>
   <string name="overwrite">Korvaa</string>
-  <string name="repo_delete_title">Valitse sovelluslähde, jonka tahdot poistaa</string>
   <string name="repo_update_title">Päivitä sovelluslähteet</string>
   <string name="tab_noninstalled">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
@@ -142,7 +141,6 @@ Tahdotko päivittää ne?</string>
   <string name="repos_unchanged">Yhdessäkään säilössä ei ole pakettipäivityksiä</string>
   <string name="all_other_repos_fine">Muut säilöt eivät luoneet virheitä.</string>
   <string name="global_error_updating_repos">Päivityksenaikainen virhe:</string>
-  <string name="showPermissions">Näytä oikeudet</string>
   <string name="theme">Teema</string>
   <string name="unverified">Vahvistamaton</string>
   <string name="repo_not_yet_updated">Tätä säilöä ei ole vielä käytetty.

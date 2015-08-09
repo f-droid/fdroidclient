@@ -29,21 +29,9 @@ public class HttpDownloader extends Downloader {
     private int statusCode = -1;
     private boolean onlyStream = false;
 
-    // The context is required for opening the file to write to.
-    HttpDownloader(String source, File destFile)
+    HttpDownloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
-        super(destFile);
-        sourceUrl = new URL(source);
-    }
-
-    /**
-     * Downloads to a temporary file, which *you must delete yourself when
-     * you are done*.
-     * @see org.fdroid.fdroid.net.Downloader#getFile()
-     */
-    public HttpDownloader(String source, Context ctx) throws IOException {
-        super(ctx);
-        sourceUrl = new URL(source);
+        super(context, url, destFile);
     }
 
     /**

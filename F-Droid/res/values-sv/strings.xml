@@ -57,7 +57,6 @@ En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="enable">Aktivera</string>
   <string name="add_key">Lägg till nyckel</string>
   <string name="overwrite">Skriv över</string>
-  <string name="repo_delete_title">Välj förråd att ta bort</string>
   <string name="repo_update_title">Uppdatera förråd</string>
   <string name="tab_noninstalled">Tillgängliga</string>
   <string name="tab_updates">Uppdateringar</string>
@@ -178,8 +177,6 @@ Vill du uppdatera dem?</string>
   <string name="global_error_updating_repos">Fel under uppdatering:</string>
   <string name="no_permissions">Inga behörigheter används.</string>
   <string name="permissions_for_long">Behörigheter för version %s</string>
-  <string name="showPermissions">Visa behörigheter</string>
-  <string name="showPermissions_on">Visa en lista över behörigheter en app behöver</string>
   <string name="no_handler_app">Du har inte någon app tillgänglig för hantering av %s</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_on">Visa ikoner i en mindre storlek</string>

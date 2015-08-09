@@ -294,7 +294,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         inflateInnerView(R.layout.swap_initial_loading);
     }
 
-    private void showIntro() {
+    public void showIntro() {
         // If we were previously swapping with a specific client, forget that we were doing that,
         // as we are starting over now.
         getService().swapWith(null);

@@ -54,7 +54,6 @@ Een bron-adres ziet er ongeveer
   <string name="enable">Activeer</string>
   <string name="add_key">Voeg sleutel toe</string>
   <string name="overwrite">Overschrijven</string>
-  <string name="repo_delete_title">Kies bron om te verwijderen</string>
   <string name="repo_update_title">Vernieuw bronnen</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
@@ -130,8 +129,6 @@ Wilt u ze vernieuwen?</string>
   <string name="status_inserting">Applicatiedetails opslaan (%1$d%%)</string>
   <string name="no_permissions">Geen permissies worden gebruikt</string>
   <string name="permissions_for_long">Permissies voor versie %s</string>
-  <string name="showPermissions">Laat permissies zien</string>
-  <string name="showPermissions_on">Laat een lijst zien van benodigde permissies voor een app</string>
   <string name="no_handler_app">U hebt geen beschikbare app die %s kan verwerken</string>
   <string name="compactlayout">Compacte Layout</string>
   <string name="compactlayout_on">Iconen weergeven in klein formaat</string>

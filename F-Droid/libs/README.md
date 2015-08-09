@@ -1,8 +1,10 @@
 # Licenses
 
-To see which license any one of these libraries is under, consult the extern/ directory.
-If you have checked out the source for all dependencies (`git submodule update --init` from the root directory),
-then you should be able to find the relevant LICENSE file for each, or else you can consult upstream.
+To see which license any one of these libraries is under, consult the extern/
+directory. If you have checked out the source for all dependencies (`git
+submodule update --init` from the root directory if there are any submodules),
+then you should be able to find the relevant LICENSE file for each, or else
+you can consult upstream.
 
 
 # Building libraries from source

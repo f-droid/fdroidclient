@@ -54,7 +54,6 @@ L\'adresse d\'un dépôt ressemble à ceci: https://f-droid.org/repo</string>
   <string name="enable">Activer</string>
   <string name="add_key">Ajouter une clé</string>
   <string name="overwrite">Écraser</string>
-  <string name="repo_delete_title">Choisissez le dépôt à supprimer</string>
   <string name="repo_update_title">Mettre à jour les dépôts</string>
   <string name="tab_noninstalled">Disponibles</string>
   <string name="tab_updates">Mises à jour</string>
@@ -175,8 +174,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="global_error_updating_repos">Erreur durant la mise à jour:</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Permissions pour la version %s</string>
-  <string name="showPermissions">Afficher les permissions</string>
-  <string name="showPermissions_on">Afficher la liste des permissions qu\'une app requiert</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
   <string name="compactlayout_on">Montrer les icônes à une taille plus petite</string>

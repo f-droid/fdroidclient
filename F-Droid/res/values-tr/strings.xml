@@ -54,7 +54,6 @@ Bir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="enable">Etkinleştir</string>
   <string name="add_key">Anahtar ekle</string>
   <string name="overwrite">Üzerine yaz</string>
-  <string name="repo_delete_title">Kaldırılacak depoyu seç</string>
   <string name="repo_update_title">Depoları güncelle</string>
   <string name="tab_noninstalled">Mevcut</string>
   <string name="tab_updates">Güncellemeler</string>
@@ -159,8 +158,6 @@ bağlanılıyor</string>
   <string name="status_inserting">Uygulama detayları kaydediliyor (%1$d%%)</string>
   <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
   <string name="permissions_for_long">%s sürümü için izinler</string>
-  <string name="showPermissions">İzinleri göster</string>
-  <string name="showPermissions_on">Uygulamaların gerektirdiği izinlerin listesini göster</string>
   <string name="no_handler_app">%s unsurunu yönetecek hiçbir mevcut uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
   <string name="compactlayout_on">İkonları daha küçük boyutta görüntüle</string>

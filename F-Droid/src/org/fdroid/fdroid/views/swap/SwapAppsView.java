@@ -1,7 +1,9 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -14,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v7.widget.SearchView;
@@ -35,7 +38,6 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -115,6 +117,8 @@ public class SwapAppsView extends ListView implements
         schedulePollForUpdates();
     }
 
+    private BroadcastReceiver pollForUpdatesReceiver;
+
     private void pollForUpdates() {
         if (adapter.getCount() > 1 ||
                 (adapter.getCount() == 1 && !new App((Cursor)adapter.getItem(0)).id.equals("org.fdroid.fdroid"))) {
@@ -123,13 +127,14 @@ public class SwapAppsView extends ListView implements
         }
 
         Log.d(TAG, "Polling swap repo to see if it has any updates.");
-        UpdateService.UpdateReceiver receiver = getState().refreshSwap();
-        if (receiver != null) {
-            receiver.setListener(new ProgressListener() {
+        getState().refreshSwap();
+        if (pollForUpdatesReceiver != null) {
+            pollForUpdatesReceiver = new BroadcastReceiver() {
                 @Override
-                public void onProgress(Event event) {
-                    switch (event.type) {
-                        case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
+                public void onReceive(Context context, Intent intent) {
+                    int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+                    switch (statusCode) {
+                        case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
                             Log.d(TAG, "Swap repo has updates, notifying the list adapter.");
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
@@ -137,19 +142,22 @@ public class SwapAppsView extends ListView implements
                                     adapter.notifyDataSetChanged();
                                 }
                             });
+                            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
                             break;
 
-                        case UpdateService.EVENT_ERROR:
+                        case UpdateService.STATUS_ERROR_GLOBAL:
                             // TODO: Well, if we can't get the index, we probably can't swapp apps.
                             // Tell the user somethign helpful?
                             break;
 
-                        case UpdateService.EVENT_COMPLETE_AND_SAME:
+                        case UpdateService.STATUS_COMPLETE_AND_SAME:
                             schedulePollForUpdates();
                             break;
                     }
                 }
-            });
+            };
+            // TODO: Unregister this properly, not just when successful (see swithc statement above)
+            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(pollForUpdatesReceiver);
         }
     }
 

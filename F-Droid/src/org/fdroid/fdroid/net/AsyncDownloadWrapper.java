@@ -21,7 +21,6 @@ public class AsyncDownloadWrapper extends Handler {
 
     private static final String TAG = "AsyncDownloadWrapper";
 
-    private static final int MSG_PROGRESS           = 1;
     private static final int MSG_DOWNLOAD_COMPLETE  = 2;
     private static final int MSG_DOWNLOAD_CANCELLED = 3;
     private static final int MSG_ERROR              = 4;
@@ -43,16 +42,6 @@ public class AsyncDownloadWrapper extends Handler {
         this.listener   = listener;
     }
 
-    public void fetchTotalDownloadSize() {
-        int size = downloader.totalDownloadSize();
-        listener.onReceiveTotalDownloadSize(size);
-    }
-
-    public void fetchCacheTag() {
-        String cacheTag = downloader.getCacheTag();
-        listener.onReceiveCacheTag(cacheTag);
-    }
-
     public void download() {
         downloadThread = new DownloadThread();
         downloadThread.start();
@@ -64,22 +53,6 @@ public class AsyncDownloadWrapper extends Handler {
         }
     }
 
-    public static class NotDownloadingException extends Exception {
-        public NotDownloadingException(String message) {
-            super(message);
-        }
-    }
-
-    public void cancelDownload() throws NotDownloadingException {
-        if (downloadThread == null) {
-            throw new RuntimeException("Can't cancel download, it hasn't started yet.");
-        } else if (!downloadThread.isAlive()) {
-            throw new RuntimeException("Can't cancel download, it is already finished.");
-        }
-
-        downloadThread.interrupt();
-    }
-
     /**
      * Receives "messages" from the download thread, and passes them onto the
      * relevant {@link org.fdroid.fdroid.net.AsyncDownloadWrapper.Listener}
@@ -87,11 +60,6 @@ public class AsyncDownloadWrapper extends Handler {
      */
     public void handleMessage(Message message) {
         switch (message.arg1) {
-        case MSG_PROGRESS:
-            Bundle data = message.getData();
-            ProgressListener.Event event = data.getParcelable(MSG_DATA);
-            listener.onProgress(event);
-            break;
         case MSG_DOWNLOAD_COMPLETE:
             listener.onDownloadComplete();
             break;
@@ -104,19 +72,24 @@ public class AsyncDownloadWrapper extends Handler {
         }
     }
 
+    public int getBytesRead() {
+        return downloader.getBytesRead();
+    }
+
+    public int getTotalBytes() {
+        return downloader.getTotalBytes();
+    }
+
     public interface Listener extends ProgressListener {
-        void onReceiveTotalDownloadSize(int size);
-        void onReceiveCacheTag(String cacheTag);
         void onErrorDownloading(String localisedExceptionDetails);
         void onDownloadComplete();
         void onDownloadCancelled();
     }
 
-    private class DownloadThread extends Thread implements ProgressListener {
+    private class DownloadThread extends Thread {
 
         public void run() {
             try {
-                downloader.setProgressListener(this);
                 downloader.download();
                 sendMessage(MSG_DOWNLOAD_COMPLETE);
             } catch (InterruptedException e) {
@@ -137,16 +110,5 @@ public class AsyncDownloadWrapper extends Handler {
             message.arg1 = messageType;
             AsyncDownloadWrapper.this.sendMessage(message);
         }
-
-        @Override
-        public void onProgress(Event event) {
-            Message message = new Message();
-            Bundle  data    = new Bundle();
-            data.putParcelable(MSG_DATA, event);
-            message.setData(data);
-            message.arg1 = MSG_PROGRESS;
-            AsyncDownloadWrapper.this.sendMessage(message);
-        }
     }
-
 }

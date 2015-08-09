@@ -3,7 +3,6 @@ package org.fdroid.fdroid;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -22,6 +21,8 @@ import org.xml.sax.XMLReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.CodeSigner;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -52,16 +53,14 @@ public class RepoUpdater {
 
     /**
      * Updates an app repo as read out of the database into a {@link Repo} instance.
-     *
-     * @param context
-     * @param repo    a {@link Repo} read out of the local database
+     * @param repo A {@link Repo} read out of the local database
      */
     public RepoUpdater(@NonNull Context context, @NonNull Repo repo) {
         this.context = context;
         this.repo = repo;
     }
 
-    public void setProgressListener(ProgressListener progressListener) {
+    public void setProgressListener(@Nullable ProgressListener progressListener) {
         this.progressListener = progressListener;
     }
 
@@ -71,29 +70,23 @@ public class RepoUpdater {
 
     public List<Apk> getApks() { return apks; }
 
-    protected String getIndexAddress() {
+    protected URL getIndexAddress() throws MalformedURLException {
+        String urlString = repo.address + "/index.jar";
         try {
             String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-            return repo.address + "/index.jar?client_version=" + versionName;
+            urlString += "?client_version=" + versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        return repo.address + "/index.jar";
+        return new URL(urlString);
     }
 
     Downloader downloadIndex() throws UpdateException {
         Downloader downloader = null;
         try {
-            downloader = DownloaderFactory.create(
+            downloader = DownloaderFactory.create(context,
                 getIndexAddress(), File.createTempFile("index-", "-downloaded", context.getCacheDir()));
             downloader.setCacheTag(repo.lastetag);
-
-            if (progressListener != null) { // interactive session, show progress
-                Bundle data = new Bundle(1);
-                data.putString(PROGRESS_DATA_REPO_ADDRESS, repo.address);
-                downloader.setProgressListener(progressListener, data);
-            }
-
             downloader.downloadUninterrupted();
 
             if (downloader.isCached()) {

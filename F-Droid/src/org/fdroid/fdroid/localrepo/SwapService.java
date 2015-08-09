@@ -152,13 +152,13 @@ public class SwapService extends Service {
         return appsToSwap;
     }
 
-    @Nullable
-    public UpdateService.UpdateReceiver refreshSwap() {
-        return this.peer != null ? connectTo(peer, false) : null;
+    public void refreshSwap() {
+        if (peer != null) {
+            connectTo(peer, false);
+        }
     }
 
-    @NonNull
-    public UpdateService.UpdateReceiver connectTo(@NonNull Peer peer, boolean requestSwapBack) {
+    public void connectTo(@NonNull Peer peer, boolean requestSwapBack) {
         if (peer != this.peer) {
             Log.e(TAG, "Oops, got a different peer to swap with than initially planned.");
         }
@@ -172,7 +172,7 @@ public class SwapService extends Service {
             askServerToSwapWithUs(peerRepo);
         }
 
-        return UpdateService.updateRepoNow(peer.getRepoAddress(), this, false);
+        UpdateService.updateRepoNow(peer.getRepoAddress(), this);
     }
 
     private void askServerToSwapWithUs(final Repo repo) {

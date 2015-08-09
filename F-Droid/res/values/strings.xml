@@ -69,11 +69,11 @@
 	<string name="links">Links</string>
 	<string name="content_description_view_more">View more</string>
 
+	<string name="back">Back</string>
 	<string name="cancel">Cancel</string>
 	<string name="enable">Enable</string>
 	<string name="add_key">Add Key</string>
 	<string name="overwrite">Overwrite</string>
-	<string name="repo_delete_title">Choose repository to remove</string>
 
 	<string name="repo_update_title">Update repositories</string>
 	<string name="tab_noninstalled">Available</string>
@@ -209,6 +209,7 @@
 	  - Percentage complete (int between 0-100)
 	-->
 	<string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
+	<string name="update_notification_title">Updating repositories</string>
 	<string name="status_processing_xml_percent">Processing %2$s / %3$s (%4$d%%) from %1$s</string>
 	<string name="status_connecting_to_repo">Connecting to\n%1$s</string>
 	<string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
@@ -218,8 +219,6 @@
         <string name="global_error_updating_repos">Error during update:</string>
 	<string name="no_permissions">No permissions are used.</string>
 	<string name="permissions_for_long">Permissions for version %s</string>
-	<string name="showPermissions">Show permissions</string>
-	<string name="showPermissions_on">Display a list of permissions an app requires</string>
 	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
 	<string name="compactlayout">Compact Layout</string>
 	<string name="compactlayout_on">Show icons at a smaller size</string>
@@ -368,10 +367,11 @@
 	<string name="swap_bluetooth_your_device">Your device is</string>
 	<string name="swap_bluetooth_select_or_scan">Select from devices below, or press \"Scan\" from the menu to find more devices.</string>
 	<string name="swap_bluetooth_bonded_device">Bonded</string>
-	<string name="swap_bluetooth_bonding_device">Currently bonding...</string>
+	<string name="swap_bluetooth_bonding_device">Currently bonding…</string>
 	<string name="swap_bluetooth_unknown_device">Unknown device</string>
-	<string name="loading">Loading...</string>
+	<string name="loading">Loading…</string>
 	<string name="swap_attempt_install">TRY TO INSTALL</string>
+	<string name="swap_connection_misc_error">An error occurred while connecting to device, we can\'t seem to swap with it :(</string>
 
     <string name="install_confirm">Do you want to install this application?
             It will get access to:</string>
@@ -399,4 +399,13 @@
 
     <string name="perms_new_perm_prefix"><font size="12" fgcolor="#ff33b5e5">NEW: </font></string>
     <string name="perms_description_app">Provided by %1$s.</string>
+    <string name="downloading">Downloading…</string>
+
+    <string-array name="file_size_units">
+        <item>B</item>
+        <item>KiB</item>
+        <item>MiB</item>
+        <item>GiB</item>
+        <item>TiB</item>
+    </string-array>
 </resources>

@@ -10,11 +10,9 @@ import org.fdroid.fdroid.net.bluetooth.httpish.Request;
 import org.fdroid.fdroid.net.bluetooth.httpish.Response;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
+import java.net.URL;
 
 public class BluetoothDownloader extends Downloader {
 
@@ -24,16 +22,10 @@ public class BluetoothDownloader extends Downloader {
     private FileDetails fileDetails;
     private final String sourcePath;
 
-    public BluetoothDownloader(String macAddress, String sourcePath, Context ctx) throws IOException {
-        super(ctx);
+    public BluetoothDownloader(Context context, String macAddress, URL sourceUrl, File destFile) throws IOException {
+        super(context, sourceUrl, destFile);
         this.connection = new BluetoothClient(macAddress).openConnection();
-        this.sourcePath = sourcePath;
-    }
-
-    public BluetoothDownloader(String macAddress, String sourcePath, File destFile) throws IOException {
-        super(destFile);
-        this.connection = new BluetoothClient(macAddress).openConnection();
-        this.sourcePath = sourcePath;
+        this.sourcePath = sourceUrl.getPath();
     }
 
     @Override

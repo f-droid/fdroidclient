@@ -74,7 +74,8 @@ public class FDroidApp extends Application {
     }
 
     public enum Theme {
-        dark, light, lightWithDarkActionBar
+        dark,
+        light,
     }
 
     private static Theme curTheme = Theme.light;
@@ -100,7 +101,7 @@ public class FDroidApp extends Application {
             case light:
                 return R.style.AppThemeLight;
             default:
-                return R.style.AppThemeDark;
+                return R.style.AppThemeLight;
         }
     }
 

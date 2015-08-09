@@ -7,24 +7,31 @@ for Android.
 Building from source with Gradle
 --------------------------------
 
-The only required tools are the [Android SDK](http://developer.android.com/sdk/index.html) and Gradle.
+The only required tools are the [Android
+SDK](http://developer.android.com/sdk/index.html) and Gradle.
 
 You should use a relatively new version of Gradle, such as 2.4, or use the
 gradle wrapper.
 
 Once you have checked out the version you wish to build, run:
 
-```
-git submodule update --init
-cd F-Droid
-gradle clean assembleRelease
-```
+        cd F-Droid
+        gradle assembleRelease
+
+The resulting apk will be in `build/outputs/apk/`.
 
 Android Studio
 --------------
 
 From Android Studio: File -> Import Project -> Select the cloned top folder
 
+
+Building tips
+-------------
+
+* Use `gradle --daemon` if you are going to build F-Droid multiple times.
+* If you get a message like `Could not find com.android.support:support-...`,
+  make sure that you have the latest Android support maven repository
 
 Direct download
 ---------------
@@ -65,8 +72,42 @@ command line:
 This will build and install F-Droid and the test apk, then execute the entire
 test suite on the device or emulator.
 
-See the [Android Gradle user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Testing) for more details, including how to use Android Studio to run tests (which provides
-more useful feedback than the command line).
+See the [Android Gradle user
+guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Testing)
+for more details, including how to use Android Studio to run tests (which
+provides more useful feedback than the command line).
+
+
+Versioning
+----------
+
+Each stable version follows the `X.Y` pattern. Hotfix releases - i.e. when a
+stable has an important bug that needs immediate fixing - will follow the
+`X.Y.Z` pattern.
+
+Before each stable release, a number of alpha releases will be released. They
+will follow the pattern `X.Y-alphaN`, where `N` is the current alpha number.
+These will usually include changes and new features that have not been tested
+enough for a stable release, so use at your own risk. Testers and reporters
+are very welcome.
+
+The version codes use a number of digits per each of these keys: `XYYZNN`.
+So for example, 1.3.1 would be `103150` and 0.95-alpha13 would be `95013`
+(leading zeros are omitted).
+
+Note that we use a trailing `50` for actual stable releases, so alphas are
+limited to `-alpha49`.
+
+This is an example of a release process for release **0.95**:
+
+* We are currently at stable **0.94**
+* **0.95-alpha1** is released
+* **0.95-alpha2** is released
+* **0.95-alpha3** is released
+* Testing process (1-2 weeks) during which no new features are merged in
+* **0.95** is released
+* A bug is reported on the stable release and fixed
+* **0.95.1** is released
 
 
 License

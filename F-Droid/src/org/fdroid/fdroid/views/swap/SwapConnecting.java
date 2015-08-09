@@ -1,18 +1,23 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.localrepo.SwapService;
@@ -55,8 +60,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         if (peer == null) {
             Log.e(TAG, "Cannot find the peer to connect to.");
 
-            // TODO: Don't go to the selected apps, rather show a Toast message and then
-            // go to the intro screen.
+            // TODO: Don't go to the selected apps, rather show a Toast message and then go to the intro screen.
             getActivity().showSelectApps();
             return;
         }
@@ -64,41 +68,67 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         String heading = getContext().getString(R.string.status_connecting_to_repo, peer.getName());
         ((TextView) findViewById(R.id.heading)).setText(heading);
 
-        UpdateService.UpdateReceiver receiver = getManager().connectTo(peer, peer.shouldPromptForSwapBack());
-
-        receiver.hideDialog();
-        receiver.setListener(new ProgressListener() {
+        findViewById(R.id.back).setOnClickListener(new OnClickListener() {
             @Override
-            public void onProgress(Event event) {
-                ((TextView) findViewById(R.id.progress)).setText(event.data.getString(UpdateService.EXTRA_ADDRESS));
-                boolean finished = false;
-                boolean error = false;
-                switch (event.type) {
-                    case UpdateService.EVENT_ERROR:
-                        finished = true;
-                        error = true;
-                        break;
-                    case UpdateService.EVENT_COMPLETE_WITH_CHANGES:
-                        finished = true;
-                        break;
-                    case UpdateService.EVENT_COMPLETE_AND_SAME:
-                        finished = true;
-                        break;
-                    case UpdateService.EVENT_INFO:
-                        break;
-                }
-
-                if (finished) {
-                    if (error) {
-                        // TODO: Feedback to user about error, suggest fixes.
-                    } else {
-                        getActivity().showSwapConnected();
-                    }
-                }
-
+            public void onClick(View v) {
+                getActivity().showIntro();
             }
         });
+
+        // TODO: Unregister correctly, not just when being notified of completion or errors.
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(repoUpdateReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+        getManager().connectTo(peer, peer.shouldPromptForSwapBack());
+
     }
+
+    private BroadcastReceiver repoUpdateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+
+            TextView progressText = ((TextView) findViewById(R.id.progress));
+            TextView errorText    = ((TextView) findViewById(R.id.error));
+            Button   backButton   = ((Button) findViewById(R.id.back));
+
+            if (intent.hasExtra(UpdateService.EXTRA_MESSAGE)) {
+                progressText.setText(intent.getStringExtra(UpdateService.EXTRA_MESSAGE));
+            }
+
+            boolean finished = false;
+            boolean error = false;
+
+            progressText.setVisibility(View.VISIBLE);
+            errorText.setVisibility(View.GONE);
+            backButton.setVisibility(View.GONE);
+
+            switch (statusCode) {
+                case UpdateService.STATUS_ERROR_GLOBAL:
+                    finished = true;
+                    error = true;
+                    break;
+                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
+                    finished = true;
+                    break;
+                case UpdateService.STATUS_COMPLETE_AND_SAME:
+                    finished = true;
+                    break;
+                case UpdateService.STATUS_INFO:
+                    break;
+            }
+
+            if (finished) {
+                LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(repoUpdateReceiver);
+                if (error) {
+                    progressText.setVisibility(View.GONE);
+                    errorText.setVisibility(View.VISIBLE);
+                    backButton.setVisibility(View.VISIBLE);
+                } else {
+                    getActivity().showSwapConnected();
+                }
+            }
+        }
+    };
 
     @Override
     public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {

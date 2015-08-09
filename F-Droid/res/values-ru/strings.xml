@@ -59,7 +59,6 @@
   <string name="enable">Включить</string>
   <string name="add_key">Добавить ключ</string>
   <string name="overwrite">Перезаписать</string>
-  <string name="repo_delete_title">Удалить репозиторий</string>
   <string name="repo_update_title">Обновить репозитории</string>
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Обновления</string>
@@ -179,8 +178,6 @@
   <string name="global_error_updating_repos">Ошибка во время обновления:</string>
   <string name="no_permissions">Разрешений не требуется.</string>
   <string name="permissions_for_long">Разрешения для версии %s</string>
-  <string name="showPermissions">Показывать разрешения</string>
-  <string name="showPermissions_on">Отображение списка разрешений, которые требуются приложению</string>
   <string name="no_handler_app">У вас нет установленного приложения для обработки %s</string>
   <string name="compactlayout">Компактный вид</string>
   <string name="compactlayout_on">Показать иконки в меньшем размере</string>

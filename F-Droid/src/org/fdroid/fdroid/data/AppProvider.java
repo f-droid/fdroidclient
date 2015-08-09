@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
@@ -98,8 +99,9 @@ public class AppProvider extends FDroidProvider {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         final String categoriesString = cursor.getString(0);
-                        if (categoriesString != null) {
-                            for (final String s : Utils.CommaSeparatedList.make(categoriesString)) {
+                        Utils.CommaSeparatedList categoriesList = Utils.CommaSeparatedList.make(categoriesString);
+                        if (categoriesList != null) {
+                            for (final String s : categoriesList) {
                                 categorySet.add(s);
                             }
                         }
@@ -148,6 +150,22 @@ public class AppProvider extends FDroidProvider {
         public static void calcDetailsFromIndex(Context context) {
             final Uri fromUpstream = calcAppDetailsFromIndexUri();
             context.getContentResolver().update(fromUpstream, null, null, null);
+        }
+
+    }
+
+    /**
+     * Class that only exists to call private methods in the {@link AppProvider} without having
+     * to go via a Context/ContentResolver. The reason is that if the {@link DBHelper} class
+     * was to try and use its getContext().getContentResolver() in order to access the app
+     * provider, then the AppProvider will end up creating a new instance of a writeable
+     * SQLiteDatabase. This causes problems because the {@link DBHelper} still has its reference
+     * open and locks certain tables.
+     */
+    static final class UpgradeHelper {
+
+        public static void updateIconUrls(Context context, SQLiteDatabase db) {
+            AppProvider.updateIconUrls(context, db);
         }
 
     }
@@ -806,7 +824,7 @@ public class AppProvider extends FDroidProvider {
         updateCompatibleFlags();
         updateSuggestedFromLatest();
         updateSuggestedFromUpstream();
-        updateIconUrls();
+        updateIconUrls(getContext(), write());
     }
 
     /**
@@ -939,11 +957,13 @@ public class AppProvider extends FDroidProvider {
     }
 
     /**
-     * Updates URLs to icons
+     * Made static so that the {@link org.fdroid.fdroid.data.AppProvider.UpgradeHelper} can access
+     * it without instantiating an {@link AppProvider}. This is also the reason it needs to accept
+     * the context and database as arguments.
      */
-    public void updateIconUrls() {
-        final String iconsDir = Utils.getIconsDir(getContext(), 1.0);
-        final String iconsDirLarge = Utils.getIconsDir(getContext(), 1.5);
+    private static void updateIconUrls(Context context, SQLiteDatabase db) {
+        final String iconsDir = Utils.getIconsDir(context, 1.0);
+        final String iconsDirLarge = Utils.getIconsDir(context, 1.5);
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
         Log.d(TAG, "Updating icon paths for apps belonging to repos with version >= "
                 + repoVersion);
@@ -953,7 +973,7 @@ public class AppProvider extends FDroidProvider {
         final String[] params = {
             repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
             repoVersion, iconsDirLarge, Utils.FALLBACK_ICONS_DIR };
-        write().execSQL(query, params);
+        db.execSQL(query, params);
     }
 
     /**
@@ -961,7 +981,7 @@ public class AppProvider extends FDroidProvider {
      *  1) The repo version that introduced density specific icons
      *  2) The dir to density specific icons for the current device.
      */
-    private String getIconUpdateQuery() {
+    private static String getIconUpdateQuery() {
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
