@@ -173,6 +173,10 @@ android {
         checkReleaseBuilds false
         abortOnError false
 
+        htmlReport true
+        xmlReport false
+        textReport false
+
         // Our translations are crowd-sourced
         disable 'MissingTranslation'
     }
