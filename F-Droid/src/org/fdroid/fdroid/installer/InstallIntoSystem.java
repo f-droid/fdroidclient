@@ -120,7 +120,7 @@ abstract class InstallIntoSystem {
 
         @Override
         protected String getSystemFolder() {
-            return "/system/app";
+            return "/system/app/";
         }
 
     }
