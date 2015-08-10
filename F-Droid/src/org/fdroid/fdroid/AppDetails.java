@@ -967,6 +967,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 text = getString(R.string.details_notinstalled);
             // this must be on the main UI thread
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+            cleanUpFinishedDownload();
             finished = true;
             break;
         case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
