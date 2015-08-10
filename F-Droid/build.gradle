@@ -152,13 +152,12 @@ android {
     }
 
     buildTypes {
-        release {
+        all {
             minifyEnabled false
+            shrinkResources false // requires minify (proguard)
         }
-        buildTypes {
-            debug {
-                debuggable true
-            }
+        debug {
+            debuggable true
         }
     }
 
