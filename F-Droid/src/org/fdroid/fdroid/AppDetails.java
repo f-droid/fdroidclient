@@ -1074,8 +1074,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
                         view_more_description.setImageResource(R.drawable.ic_expand_more_grey600);
                         view_more_description.setOnClickListener(expander_description);
-                    }
-                    else {
+                    } else {
                         view_more_description.setVisibility(View.GONE);
                     }
                 }
@@ -1226,7 +1225,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
-                switch(v.getId()) {
+                switch (v.getId()) {
                     case R.id.website:
                         ((AppDetails) getActivity()).tryOpenUri(getApp().webURL);
                         break;
@@ -1522,12 +1521,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (activity.downloadHandler != null) {
                 btMain.setText(R.string.downloading);
                 btMain.setEnabled(false);
-            }
-            /*
-            Check count > 0 due to incompatible apps resulting in an empty list.
-            If App isn't installed
-             */
-            else if (!getApp().isInstalled() && getApp().suggestedVercode > 0 &&
+            // Check count > 0 due to incompatible apps resulting in an empty list.
+            // If App isn't installed
+            } else if (!getApp().isInstalled() && getApp().suggestedVercode > 0 &&
                     ((AppDetails)getActivity()).adapter.getCount() > 0) {
                 installed = false;
                 statusView.setText(getString(R.string.details_notinstalled));
@@ -1536,22 +1532,23 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 btMain.setText(R.string.menu_install);
                 btMain.setOnClickListener(mOnClickListener);
                 btMain.setEnabled(true);
-            }
             // If App is installed
-            else if (getApp().isInstalled()) {
+            } else if (getApp().isInstalled()) {
                 installed = true;
                 statusView.setText(getString(R.string.details_installed, getApp().installedVersionName));
                 NfcHelper.setAndroidBeam(getActivity(), getApp().id);
                 if (getApp().canAndWantToUpdate()) {
                     updateWanted = true;
                     btMain.setText(R.string.menu_upgrade);
-                }else {
+                } else {
                     updateWanted = false;
                     if (((AppDetails)getActivity()).mPm.getLaunchIntentForPackage(getApp().id) != null){
                         btMain.setText(R.string.menu_launch);
-                    }
-                    else {
+                    } else {
                         btMain.setText(R.string.menu_uninstall);
+                        if (!getApp().uninstallable) {
+                            btMain.setVisibility(View.GONE);
+                        }
                     }
                 }
                 btMain.setOnClickListener(mOnClickListener);
@@ -1560,7 +1557,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             TextView currentVersion = (TextView) view.findViewById(R.id.current_version);
             if (!getApks().isEmpty()) {
                 currentVersion.setText(getApks().getItem(0).version);
-            }else {
+            } else {
                 currentVersion.setVisibility(View.GONE);
                 btMain.setVisibility(View.GONE);
             }
@@ -1581,14 +1578,11 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     // If "launchable", launch
                     if (((AppDetails)getActivity()).mPm.getLaunchIntentForPackage(getApp().id) != null) {
                         ((AppDetails)getActivity()).launchApk(getApp().id);
-                    }
-                    else {
+                    } else {
                         ((AppDetails)getActivity()).removeApk(getApp().id);
                     }
-                }
-
                 // If not installed, install
-                else if (getApp().suggestedVercode > 0) {
+                } else if (getApp().suggestedVercode > 0) {
                     btMain.setEnabled(false);
                     btMain.setText(R.string.system_install_installing);
                     final Apk apkToInstall = ApkProvider.Helper.find(getActivity(), getApp().id, getApp().suggestedVercode);
