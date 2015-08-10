@@ -586,7 +586,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private void setApp(App newApp) {
 
         if (newApp == null) {
-            Toast.makeText(this, getString(R.string.no_such_app), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.no_such_app, Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -820,8 +820,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         if (!apk.compatible) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
-            ask_alrt.setMessage(getString(R.string.installIncompatible));
-            ask_alrt.setPositiveButton(getString(R.string.yes),
+            ask_alrt.setMessage(R.string.installIncompatible);
+            ask_alrt.setPositiveButton(R.string.yes,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog,
@@ -829,7 +829,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                             startDownload(apk, repoaddress);
                         }
                     });
-            ask_alrt.setNegativeButton(getString(R.string.no),
+            ask_alrt.setNegativeButton(R.string.no,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog,
@@ -844,7 +844,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 && !apk.sig.equals(mInstalledSigID)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(R.string.SignatureMismatch).setPositiveButton(
-                    getString(R.string.ok),
+                    R.string.ok,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
@@ -975,13 +975,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         boolean finished = false;
         switch (event.type) {
         case ApkDownloader.EVENT_ERROR:
-            final String text;
+            final int res;
             if (event.getData().getInt(ApkDownloader.EVENT_DATA_ERROR_TYPE) == ApkDownloader.ERROR_HASH_MISMATCH)
-                text = getString(R.string.corrupt_download);
+                res = R.string.corrupt_download;
             else
-                text = getString(R.string.details_notinstalled);
+                res = R.string.details_notinstalled;
             // this must be on the main UI thread
-            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, res, Toast.LENGTH_LONG).show();
             cleanUpFinishedDownload();
             finished = true;
             break;
@@ -1324,7 +1324,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                     view_all_permissions = false;
                     CommaSeparatedList permsList = getApks().getItem(0).permissions;
                     if (permsList == null) {
-                        permissionListView.setText(getString(R.string.no_permissions));
+                        permissionListView.setText(R.string.no_permissions);
                     } else {
                         Iterator<String> permissions = permsList.iterator();
                         StringBuilder sb = new StringBuilder();
@@ -1541,7 +1541,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             } else if (!getApp().isInstalled() && getApp().suggestedVercode > 0 &&
                     ((AppDetails)getActivity()).adapter.getCount() > 0) {
                 installed = false;
-                statusView.setText(getString(R.string.details_notinstalled));
+                statusView.setText(R.string.details_notinstalled);
                 NfcHelper.disableAndroidBeam(getActivity());
                 // Set Install button and hide second button
                 btMain.setText(R.string.menu_install);
@@ -1665,8 +1665,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 remove();
             } else if (getApp().installedVersionCode > apk.vercode) {
                 AlertDialog.Builder ask_alrt = new AlertDialog.Builder(getActivity());
-                ask_alrt.setMessage(getString(R.string.installDowngrade));
-                ask_alrt.setPositiveButton(getString(R.string.yes),
+                ask_alrt.setMessage(R.string.installDowngrade);
+                ask_alrt.setPositiveButton(R.string.yes,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog,
@@ -1674,7 +1674,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                                 install(apk);
                             }
                         });
-                ask_alrt.setNegativeButton(getString(R.string.no),
+                ask_alrt.setNegativeButton(R.string.no,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog,
