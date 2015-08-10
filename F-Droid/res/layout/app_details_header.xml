@@ -133,6 +133,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/progress_bar"
+                android:visibility="gone"
                 android:textSize="12sp"/>
             <TextView
                 android:id="@+id/progress_percentage"
@@ -141,6 +142,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/progress_bar"
+                android:visibility="gone"
                 android:textSize="12sp"/>
         </RelativeLayout>
         <ImageButton
