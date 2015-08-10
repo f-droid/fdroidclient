@@ -111,6 +111,16 @@ public class AppSecurityPermissions {
             }
             return null;
         }
+
+        public int flags() {
+            if (Build.VERSION.SDK_INT < 17) return 0;
+            return flags;
+        }
+
+        public int priority() {
+            if (Build.VERSION.SDK_INT < 17) return 0;
+            return priority;
+        }
     }
 
     private static class MyPermissionInfo extends PermissionInfo {
@@ -411,6 +421,7 @@ public class AppSecurityPermissions {
     private PermissionItemView getPermissionItemView(MyPermissionGroupInfo grp,
             MyPermissionInfo perm, boolean first, CharSequence newPermPrefix) {
         PermissionItemView permView = (PermissionItemView) mInflater.inflate(
+                Build.VERSION.SDK_INT >= 17 &&
                 (perm.flags & PermissionInfo.FLAG_COSTS_MONEY) != 0
                 ? R.layout.app_permission_item_money : R.layout.app_permission_item,
                 null);
@@ -434,7 +445,8 @@ public class AppSecurityPermissions {
 
         // Dangerous and normal permissions are always shown to the user if the permission
         // is required, or it was previously granted
-        if ((isNormal || isDangerous) && (isRequired || wasGranted || isGranted)) {
+        if ((isNormal || isDangerous) && (isRequired || wasGranted || isGranted ||
+            Build.VERSION.SDK_INT < 16)) {
             return true;
         }
 
@@ -452,11 +464,11 @@ public class AppSecurityPermissions {
         PermissionGroupInfoComparator() {
         }
         public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
-            if (((a.flags^b.flags)&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
-                return ((a.flags&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) ? -1 : 1;
+            if (((a.flags()^b.flags())&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
+                return ((a.flags()&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) ? -1 : 1;
             }
-            if (a.priority != b.priority) {
-                return a.priority > b.priority ? -1 : 1;
+            if (a.priority() != b.priority()) {
+                return a.priority() > b.priority() ? -1 : 1;
             }
             return sCollator.compare(a.mLabel, b.mLabel);
         }
@@ -497,7 +509,7 @@ public class AppSecurityPermissions {
                     if (pInfo.mNew) {
                         addPermToList(group.mNewPermissions, pInfo);
                     }
-                    if ((group.flags&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
+                    if ((group.flags()&PermissionGroupInfo.FLAG_PERSONAL_INFO) != 0) {
                         addPermToList(group.mPersonalPermissions, pInfo);
                     } else {
                         addPermToList(group.mDevicePermissions, pInfo);
