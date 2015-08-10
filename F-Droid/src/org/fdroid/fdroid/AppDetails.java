@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
+ * Copyright (C) 2013-15 Daniel Martí <mvdan@mvdan.cc>
  * Copyright (C) 2013 Stefan Völkel, bd@bc-bd.org
  * Copyright (C) 2015 Nico Alt, nicoalt@posteo.org
  *
@@ -909,22 +910,36 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                         onAppChanged();
                     }
                 });
-            } else {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        onAppChanged();
-
-                        Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
-
-                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
-                        alertBuilder.setTitle(R.string.installer_error_title);
-                        alertBuilder.setMessage(R.string.installer_error_title);
-                        alertBuilder.setNeutralButton(android.R.string.ok, null);
-                        alertBuilder.create().show();
-                    }
-                });
+                return;
             }
+            final int title, body;
+            if (operation == InstallerCallback.OPERATION_INSTALL) {
+                title = R.string.install_error_title;
+            } else {
+                title = R.string.uninstall_error_title;
+            }
+            switch (errorCode) {
+            default:
+                if (operation == InstallerCallback.OPERATION_INSTALL) {
+                    body = R.string.install_error_unknown;
+                } else {
+                    body = R.string.uninstall_error_unknown;
+                }
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    onAppChanged();
+
+                    Log.e(TAG, "Installer aborted with errorCode: " + errorCode);
+
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(AppDetails.this);
+                    alertBuilder.setTitle(title);
+                    alertBuilder.setMessage(body);
+                    alertBuilder.setNeutralButton(android.R.string.ok, null);
+                    alertBuilder.create().show();
+                }
+            });
         }
     };
 
