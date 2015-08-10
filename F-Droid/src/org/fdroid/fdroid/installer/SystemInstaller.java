@@ -193,7 +193,16 @@ public class SystemInstaller extends Installer {
             return;
         }
 
+        final boolean isSystem = ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
         final boolean isUpdate = ((appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0);
+
+        if (isSystem && !isUpdate) {
+            // Cannot remove system apps unless we're uninstalling updates
+            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                    InstallerCallback.ERROR_CODE_OTHER);
+            return;
+        }
+
         int messageId;
         if (isUpdate) {
             messageId = R.string.uninstall_update_confirm;
