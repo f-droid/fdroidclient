@@ -1,3 +1,15 @@
+### 0.95.1 (2015-08-10)
+
+* Disable prompt to install F-Droid into system until it's more stable
+
+* Fix crash when updating from an older release if using the "Light with dark
+  ActionBar" theme
+
+* Re-add SuperUser third-party permission to the manifest since some systems
+  require it
+
+* Fix privileged installer confirmation screen crash on Android < 3.0
+
 ### 0.95 (2015-08-04)
 
 * Start porting UI to Material Design, including a new launcher icon
