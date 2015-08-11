@@ -1,3 +1,27 @@
+### 0.96 (2015-09-??)
+
+* Add feature to offer beta (non-stable) updates for apps
+
+* Move the repo index update to a notification
+
+* Handle apk downloads without a dialog
+
+* Add timeouts for HTTP requests to avoid ever-lasting downloads
+
+* Don't let users try to uninstall system apps that haven't been updated
+
+* Various bugfixes regarding the process to install F-Droid as a system app
+
+* Disable prompt to install F-Droid into system until it's more stable
+
+* Fix crash when updating from an older release if using the "Light with dark
+  ActionBar" theme
+
+* Re-add SuperUser third-party permission to the manifest since some systems
+  require it
+
+* Fix privileged installer confirmation screen issues on Android 2.X/3.X/4.X
+
 ### 0.95.1 (2015-08-10)
 
 * Disable prompt to install F-Droid into system until it's more stable
