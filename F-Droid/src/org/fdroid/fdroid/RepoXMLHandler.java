@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid;
 
-import android.os.Bundle;
 import android.text.TextUtils;
 
 import org.fdroid.fdroid.data.Apk;

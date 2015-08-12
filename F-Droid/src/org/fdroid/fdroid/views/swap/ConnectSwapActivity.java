@@ -103,7 +103,7 @@ public class ConnectSwapActivity extends ActionBarActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+    final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             // TODO: Show progress, but we can worry about that later.
