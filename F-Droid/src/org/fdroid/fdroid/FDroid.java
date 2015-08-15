@@ -288,7 +288,7 @@ public class FDroid extends ActionBarActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(view);
             final AlertDialog alrt = builder.create();
-            alrt.setTitle(getString(R.string.about_title));
+            alrt.setTitle(R.string.about_title);
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
                     getString(R.string.about_website),
                     new DialogInterface.OnClickListener() {

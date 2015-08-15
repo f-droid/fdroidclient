@@ -292,7 +292,7 @@ public class ManageReposActivity extends ActionBarActivity {
             final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
             final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
-            addRepoDialog.setTitle(getString(R.string.repo_add_title));
+            addRepoDialog.setTitle(R.string.repo_add_title);
             addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
                 getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
@@ -566,7 +566,7 @@ public class ManageReposActivity extends ActionBarActivity {
             };
 
             Button skip = addRepoDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-            skip.setText(getString(R.string.skip));
+            skip.setText(R.string.skip);
             skip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

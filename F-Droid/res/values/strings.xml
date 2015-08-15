@@ -295,8 +295,10 @@
     <string name="root_access_denied_title">Root access denied</string>
     <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
     <string name="update_all">Update all</string>
-    <string name="installer_error_title">(De-)Installation Error</string>
-    <string name="installer_error_body">The (de-)installation failed. If you are using F-Droid as a privileged app, try disabling this setting!</string>
+    <string name="install_error_title">Install error</string>
+    <string name="install_error_unknown">Failed to install due to an unknown error</string>
+    <string name="uninstall_error_title">Uninstall error</string>
+    <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="system_permission_denied_title">System permissions denied</string>
     <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a privileged app.</string>
     <string name="system_permission_install_via_root">Install as a privileged app</string>
