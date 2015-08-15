@@ -284,7 +284,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             service.setStep(currentView.getStep());
         }
 
-        toolbar.setBackgroundColor(currentView.getToolbarColour());
+        toolbar.setBackgroundColor(getResources().getColor(currentView.getToolbarColour()));
         toolbar.setTitle(currentView.getToolbarTitle());
         toolbar.setNavigationIcon(R.drawable.ic_close_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -604,6 +604,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 lrm.copyApksToRepo();
                 publishProgress(getString(R.string.copying_icons));
                 // run the icon copy without progress, its not a blocker
+                // TODO: Fix lint error about this being run from a worker thread, says it should be
+                // run on a main thread.
                 new AsyncTask<Void, Void, Void>() {
 
                     @Override

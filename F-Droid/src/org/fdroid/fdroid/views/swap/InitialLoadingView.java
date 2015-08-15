@@ -58,7 +58,7 @@ public class InitialLoadingView extends RelativeLayout implements SwapWorkflowAc
 
     @ColorRes
     public int getToolbarColour() {
-        return getResources().getColor(R.color.swap_blue);
+        return R.color.swap_blue;
     }
 
     @Override

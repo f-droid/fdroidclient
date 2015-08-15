@@ -68,6 +68,9 @@ import java.util.TimerTask;
  * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
  * TODO: Disable the Scan QR button unless visible via something. Could equally show relevant feedback.
  *
+ * TODO: Starting wifi after cancelling swap and beginning again doesn't work properly
+ * TODO: Scan QR hangs when updating repoo
+ *
  */
 public class SwapService extends Service {
 

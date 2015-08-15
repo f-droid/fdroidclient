@@ -148,7 +148,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
 
     @ColorRes
     public int getToolbarColour() {
-        return getResources().getColor(R.color.swap_bright_blue);
+        return R.color.swap_bright_blue;
     }
 
     @Override

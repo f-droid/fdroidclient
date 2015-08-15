@@ -124,12 +124,13 @@ public class SelectAppsView extends ListView implements
 
     @Override
     public int getPreviousStep() {
+        // TODO: The STEP_JOIN_WIFI step isn't shown first, need to make it so that it is, or so that this doesn't go back there.
         return getState().isConnectingWithPeer() ? SwapService.STEP_INTRO : SwapService.STEP_JOIN_WIFI;
     }
 
     @ColorRes
     public int getToolbarColour() {
-        return getResources().getColor(R.color.swap_bright_blue);
+        return R.color.swap_bright_blue;
     }
 
     @Override

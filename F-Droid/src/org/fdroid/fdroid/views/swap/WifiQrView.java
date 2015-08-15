@@ -111,7 +111,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
 
     @ColorRes
     public int getToolbarColour() {
-        return getResources().getColor(R.color.swap_blue);
+        return R.color.swap_blue;
     }
 
     @Override
