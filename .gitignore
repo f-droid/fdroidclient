@@ -45,6 +45,3 @@ out
 # Imported libs
 extern/*/libs/
 extern/*/*/libs/
-
-# We don't use proguard anywhere
-proguard-project.txt
