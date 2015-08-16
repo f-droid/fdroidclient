@@ -635,32 +635,6 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     /**
-     * Only difference from base class is that it navigates up to a different task.
-     * It will go to the {@link org.fdroid.fdroid.views.swap.SwapWorkflowActivity}
-     * whereas the base-class will go back to the main list of apps. Need to juggle
-     * the repoId in order to be able to return to an appropriately configured swap
-     * list.
-     */
-    public static class SwapAppDetails extends AppDetails {
-
-        private long repoId;
-
-        @Override
-        protected void onResume() {
-            super.onResume();
-            repoId = getIntent().getLongExtra(EXTRA_REPO_ID, -1);
-        }
-
-        @Override
-        protected void navigateUp() {
-            Intent parentIntent = NavUtils.getParentActivityIntent(this);
-            parentIntent.putExtra(EXTRA_REPO_ID, repoId);
-            NavUtils.navigateUpTo(this, parentIntent);
-        }
-
-    }
-
-    /**
      * Helper class to try and make sense of what the swap workflow is currently doing.
      * The more technologies are involved in the process (e.g. Bluetooth/Wifi/NFC/etc)
      * the harder it becomes to reason about and debug the whole thing. Thus,this class

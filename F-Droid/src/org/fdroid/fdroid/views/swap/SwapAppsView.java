@@ -277,7 +277,27 @@ public class SwapAppsView extends ListView implements
             TextView statusInstalled;
             TextView statusIncompatible;
 
-            private BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+            private BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    Apk apk = getApkToInstall();
+                    String broadcastUrl = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
+                    if (!TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
+                        return;
+                    }
+
+                    int read = intent.getIntExtra(Downloader.EXTRA_BYTES_READ, 0);
+                    int total = intent.getIntExtra(Downloader.EXTRA_TOTAL_BYTES, 0);
+                    if (total > 0) {
+                        int progress = (int) ((double) read / total * 100);
+                        progressView.setIndeterminate(false);
+                        progressView.setMax(100);
+                        progressView.setProgress(progress);
+                    }
+                }
+            };
+
+            private BroadcastReceiver apkDownloadReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     Apk apk = getApkToInstall();
@@ -315,9 +335,12 @@ public class SwapAppsView extends ListView implements
             };
 
             public ViewHolder() {
-                // TODO: Unregister receiver correctly...
-                IntentFilter filter = new IntentFilter(ApkDownloader.ACTION_STATUS);
-                LocalBroadcastManager.getInstance(getActivity()).registerReceiver(downloadReceiver, filter);
+                // TODO: Unregister receivers correctly...
+                IntentFilter apkFilter = new IntentFilter(ApkDownloader.ACTION_STATUS);
+                LocalBroadcastManager.getInstance(getActivity()).registerReceiver(apkDownloadReceiver, apkFilter);
+
+                IntentFilter progressFilter = new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS);
+                LocalBroadcastManager.getInstance(getActivity()).registerReceiver(downloadProgressReceiver, progressFilter);
             }
 
             public void setApp(@NonNull App app) {
@@ -351,6 +374,7 @@ public class SwapAppsView extends ListView implements
             private void resetView() {
 
                 progressView.setVisibility(View.GONE);
+                progressView.setIndeterminate(true);
                 nameView.setText(app.name);
                 ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
 

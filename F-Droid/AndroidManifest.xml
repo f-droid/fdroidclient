@@ -364,14 +364,6 @@
 
         </activity>
         <activity
-            android:name=".views.swap.SwapWorkflowActivity$SwapAppDetails"
-            android:label="@string/app_details"
-            android:parentActivityName=".views.swap.SwapWorkflowActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.swap.SwapWorkflowActivity" />
-        </activity>
-        <activity
             android:label="@string/menu_preferences"
             android:name=".PreferencesActivity"
             android:parentActivityName=".FDroid" >
