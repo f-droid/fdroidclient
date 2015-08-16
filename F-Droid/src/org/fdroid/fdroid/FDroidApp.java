@@ -33,6 +33,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
@@ -50,8 +51,13 @@ import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.io.File;
+import java.net.URL;
+import java.net.URLStreamHandler;
+import java.net.URLStreamHandlerFactory;
 import java.security.Security;
 import java.util.Locale;
+
+import sun.net.www.protocol.bluetooth.Handler;
 
 public class FDroidApp extends Application {
 
@@ -170,6 +176,16 @@ public class FDroidApp extends Application {
             @Override
             public void onPreferenceChange() {
                 getContentResolver().notifyChange(AppProvider.getContentUri(), null);
+            }
+        });
+
+        // This is added so that the bluetooth:// scheme we use for URLs the BluetoothDownloader
+        // understands is not treated as invalid by the java.net.URL class. The actual Handler does
+        // nothing, but its presence is enough.
+        URL.setURLStreamHandlerFactory(new URLStreamHandlerFactory() {
+            @Override
+            public URLStreamHandler createURLStreamHandler(String protocol) {
+                return TextUtils.equals(protocol, "bluetooth") ? new Handler() : null;
             }
         });
 

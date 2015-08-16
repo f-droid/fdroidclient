@@ -70,7 +70,7 @@ public class RepoUpdater {
 
     public List<Apk> getApks() { return apks; }
 
-    protected URL getIndexAddress() throws MalformedURLException {
+    private URL getIndexAddress() throws MalformedURLException {
         String urlString = repo.address + "/index.jar";
         try {
             String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
