@@ -64,12 +64,13 @@ import java.util.TimerTask;
  * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
  * TODO: Handle not connected to wifi more gracefully. For example, Bonjour discovery falls over.
  * TODO: Remove peers from list of peers when no longer "visible".
- * TODO: Show feedback for "Setting up (wifi|bluetooth)" in start swap view.
+ * TODO: Feedback for "Setting up (wifi|bluetooth)" in start swap view is not as immediate as I had hoped.
  * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
  * TODO: Disable the Scan QR button unless visible via something. Could equally show relevant feedback.
  *
  * TODO: Starting wifi after cancelling swap and beginning again doesn't work properly
- * TODO: Scan QR hangs when updating repoo
+ * TODO: Scan QR hangs when updating repoo. Swapper was 2.3.3 and Swappee was 5.0
+ * TODO: Search in "touch to install apps" screen is busted, causes crash.
  *
  */
 public class SwapService extends Service {

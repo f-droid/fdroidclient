@@ -38,6 +38,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.fdroid.fdroid.compat.FileCompat;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xml.sax.XMLReader;
@@ -401,6 +402,14 @@ public final class Utils {
         }
         Log.e(TAG, "Locale could not be parsed from language tag: " + languageTag);
         return new Locale(languageTag);
+    }
+
+    public static String getApkUrl(Apk apk) {
+        return getApkUrl(apk.repoAddress, apk);
+    }
+
+    public static String getApkUrl(String repoAddress, Apk apk) {
+        return repoAddress + "/" + apk.apkName.replace(" ", "%20");
     }
 
     public static class CommaSeparatedList implements Iterable<String> {

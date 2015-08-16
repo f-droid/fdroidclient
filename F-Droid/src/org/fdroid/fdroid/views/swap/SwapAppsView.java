@@ -4,11 +4,14 @@ import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
@@ -33,6 +36,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -41,10 +45,14 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.net.ApkDownloader;
+import org.fdroid.fdroid.net.Downloader;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -254,6 +262,140 @@ public class SwapAppsView extends ListView implements
         @SuppressWarnings("UnusedDeclaration")
         private static final String TAG = "AppListAdapter";
 
+        private class ViewHolder {
+
+            private App app;
+
+            @Nullable
+            private Apk apkToInstall;
+
+            ProgressBar progressView;
+            TextView nameView;
+            ImageView iconView;
+            Button btnInstall;
+            TextView btnAttemptInstall;
+            TextView statusInstalled;
+            TextView statusIncompatible;
+
+            private BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    Apk apk = getApkToInstall();
+
+                    // Note: This can also be done by using the build in IntentFilter.matchData()
+                    // functionality, matching against the Intent.getData() of the incoming intent.
+                    // I've chosen to do this way, because otherwise we need to query the database
+                    // once for each ViewHolder in order to get the repository address for the
+                    // apkToInstall. This way, we can wait until we receive an incoming intent (if
+                    // at all) and then lazily load the apk to install.
+                    String broadcastUrl = intent.getStringExtra(ApkDownloader.EXTRA_URL);
+                    if (!TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
+                        return;
+                    }
+
+                    switch(intent.getStringExtra(ApkDownloader.EXTRA_TYPE)) {
+                        // Fallthrough for each of these "downloader no longer going" events...
+                        case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
+                        case ApkDownloader.EVENT_APK_DOWNLOAD_CANCELLED:
+                        case ApkDownloader.EVENT_ERROR:
+                        case ApkDownloader.EVENT_DATA_ERROR_TYPE:
+                            resetView();
+                            break;
+                    }
+                }
+            };
+
+            private ContentObserver appObserver = new ContentObserver(new Handler()) {
+                @Override
+                public void onChange(boolean selfChange) {
+                    app = AppProvider.Helper.findById(getActivity().getContentResolver(), app.id);
+                    apkToInstall = null; // Force lazy loading to fetch correct apk next time.
+                    resetView();
+                }
+            };
+
+            public ViewHolder() {
+                // TODO: Unregister receiver correctly...
+                IntentFilter filter = new IntentFilter(ApkDownloader.ACTION_STATUS);
+                LocalBroadcastManager.getInstance(getActivity()).registerReceiver(downloadReceiver, filter);
+            }
+
+            public void setApp(@NonNull App app) {
+                if (this.app == null || !this.app.id.equals(app.id)) {
+                    this.app = app;
+                    apkToInstall = null; // Force lazy loading to fetch the correct apk next time.
+
+                    // NOTE: Instead of continually unregistering and reregistering the observer
+                    // (with a different URI), this could equally be done by only having one
+                    // registration in the constructor, and using the ContentObserver.onChange(boolean, URI)
+                    // method and inspecting the URI to see if it maches. However, this was only
+                    // implemented on API-16, so leaving like this for now.
+                    getActivity().getContentResolver().unregisterContentObserver(appObserver);
+                    getActivity().getContentResolver().registerContentObserver(
+                            AppProvider.getContentUri(this.app.id), true, appObserver);
+                }
+                resetView();
+            }
+
+            /**
+             * Lazily load the apk from the database the first time it is requested. Means it wont
+             * be loaded unless we receive a download event from the {@link ApkDownloader}.
+             */
+            private Apk getApkToInstall() {
+                if (apkToInstall == null) {
+                    apkToInstall = ApkProvider.Helper.find(getActivity(), app.id, app.suggestedVercode);
+                }
+                return apkToInstall;
+            }
+
+            private void resetView() {
+
+                progressView.setVisibility(View.GONE);
+                nameView.setText(app.name);
+                ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
+
+                btnInstall.setVisibility(View.GONE);
+                btnAttemptInstall.setVisibility(View.GONE);
+                statusInstalled.setVisibility(View.GONE);
+                statusIncompatible.setVisibility(View.GONE);
+
+                if (app.hasUpdates()) {
+                    btnInstall.setText(R.string.menu_upgrade);
+                    btnInstall.setVisibility(View.VISIBLE);
+                } else if (app.isInstalled()) {
+                    statusInstalled.setVisibility(View.VISIBLE);
+                } else if (!app.compatible) {
+                    btnAttemptInstall.setVisibility(View.VISIBLE);
+                    statusIncompatible.setVisibility(View.VISIBLE);
+                } else {
+                    btnInstall.setText(R.string.menu_install);
+                    btnInstall.setVisibility(View.VISIBLE);
+                }
+
+                OnClickListener installListener = new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (app.hasUpdates() || app.compatible) {
+                            getActivity().install(app);
+                            showProgress();
+                        }
+                    }
+                };
+
+                btnInstall.setOnClickListener(installListener);
+                btnAttemptInstall.setOnClickListener(installListener);
+
+            }
+
+            private void showProgress() {
+                progressView.setVisibility(View.VISIBLE);
+                btnInstall.setVisibility(View.GONE);
+                btnAttemptInstall.setVisibility(View.GONE);
+                statusInstalled.setVisibility(View.GONE);
+                statusIncompatible.setVisibility(View.GONE);
+            }
+        }
+
         @Nullable
         private LayoutInflater inflater;
 
@@ -282,55 +424,27 @@ public class SwapAppsView extends ListView implements
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
             View view = getInflater(context).inflate(R.layout.swap_app_list_item, parent, false);
+
+            ViewHolder holder = new ViewHolder();
+
+            holder.progressView = (ProgressBar)view.findViewById(R.id.progress);
+            holder.nameView = (TextView)view.findViewById(R.id.name);
+            holder.iconView = (ImageView)view.findViewById(android.R.id.icon);
+            holder.btnInstall = (Button)view.findViewById(R.id.btn_install);
+            holder.btnAttemptInstall = (TextView)view.findViewById(R.id.btn_attempt_install);
+            holder.statusInstalled = (TextView)view.findViewById(R.id.status_installed);
+            holder.statusIncompatible = (TextView)view.findViewById(R.id.status_incompatible);
+
+            view.setTag(holder);
             bindView(view, context, cursor);
             return view;
         }
 
         @Override
         public void bindView(final View view, final Context context, final Cursor cursor) {
-
-            TextView nameView = (TextView)view.findViewById(R.id.name);
-            ImageView iconView = (ImageView)view.findViewById(android.R.id.icon);
-            Button btnInstall = (Button)view.findViewById(R.id.btn_install);
-            TextView btnAttemptInstall = (TextView)view.findViewById(R.id.btn_attempt_install);
-            TextView statusInstalled = (TextView)view.findViewById(R.id.status_installed);
-            TextView statusIncompatible = (TextView)view.findViewById(R.id.status_incompatible);
-
+            ViewHolder holder = (ViewHolder)view.getTag();
             final App app = new App(cursor);
-
-            nameView.setText(app.name);
-            ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
-
-            btnInstall.setVisibility(View.GONE);
-            btnAttemptInstall.setVisibility(View.GONE);
-            statusInstalled.setVisibility(View.GONE);
-            statusIncompatible.setVisibility(View.GONE);
-
-            if (app.hasUpdates()) {
-                btnInstall.setText(R.string.menu_upgrade);
-                btnInstall.setVisibility(View.VISIBLE);
-            } else if (app.isInstalled()) {
-                statusInstalled.setVisibility(View.VISIBLE);
-            } else if (!app.compatible) {
-                btnAttemptInstall.setVisibility(View.VISIBLE);
-                statusIncompatible.setVisibility(View.VISIBLE);
-            } else {
-                btnInstall.setText(R.string.menu_install);
-                btnInstall.setVisibility(View.VISIBLE);
-            }
-
-            OnClickListener installListener = new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (app.hasUpdates() || app.compatible) {
-                        getActivity().install(app);
-                    }
-                }
-            };
-
-            btnInstall.setOnClickListener(installListener);
-            btnAttemptInstall.setOnClickListener(installListener);
-
+            holder.setApp(app);
         }
     }
 
