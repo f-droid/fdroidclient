@@ -70,7 +70,6 @@ import java.util.TimerTask;
  *
  * TODO: Starting wifi after cancelling swap and beginning again doesn't work properly
  * TODO: Scan QR hangs when updating repoo. Swapper was 2.3.3 and Swappee was 5.0
- * TODO: Search in "touch to install apps" screen is busted, causes crash.
  *
  */
 public class SwapService extends Service {

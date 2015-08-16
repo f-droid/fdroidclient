@@ -712,8 +712,8 @@ public class AppProvider extends FDroidProvider {
             break;
 
         case SEARCH_REPO:
-            selection = selection.add(querySearch(uri.getPathSegments().get(1)));
-            selection = selection.add(queryRepo(Long.parseLong(uri.getPathSegments().get(0))));
+            selection = selection.add(querySearch(uri.getPathSegments().get(2)));
+            selection = selection.add(queryRepo(Long.parseLong(uri.getPathSegments().get(1))));
             break;
 
         case NO_APKS:
