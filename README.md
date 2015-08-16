@@ -15,8 +15,8 @@ gradle wrapper.
 
 Once you have checked out the version you wish to build, run:
 
-        cd F-Droid
-        gradle assembleRelease
+	cd F-Droid
+	gradle assembleRelease
 
 The resulting apk will be in `build/outputs/apk/`.
 
