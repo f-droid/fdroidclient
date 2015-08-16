@@ -58,8 +58,7 @@ import java.util.TimerTask;
 
 /**
  * Central service which manages all of the different moving parts of swap which are required
- * to enable p2p swapping of apps. Currently manages WiFi and NFC. Will manage Bluetooth in
- * the future.
+ * to enable p2p swapping of apps.
  *
  * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
  * TODO: Handle "not connected to wifi" more gracefully. For example, Bonjour discovery falls over.
@@ -68,6 +67,7 @@ import java.util.TimerTask;
  * TODO: Feedback for "Setting up (wifi|bluetooth)" in start swap view is not as immediate as I had hoped.
  * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
  * TODO: Disable the Scan QR button unless visible via something. Could equally show relevant feedback.
+ * TODO: Implement "Send F-Droid" on the main page.
  *
  * TODO: Starting wifi after cancelling swap and beginning again doesn't work properly
  * TODO: Scan QR hangs when updating repoo. Swapper was 2.3.3 and Swappee was 5.0

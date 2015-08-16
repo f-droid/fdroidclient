@@ -141,7 +141,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         findViewById(R.id.btn_qr_scanner).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().showSelectApps();
+                getActivity().startQrWorkflow();
             }
         });
     }
