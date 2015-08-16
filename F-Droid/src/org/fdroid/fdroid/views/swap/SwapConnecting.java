@@ -49,26 +49,11 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         return (SwapWorkflowActivity)getContext();
     }
 
-    private SwapService getManager() {
-        return getActivity().getState();
-    }
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        Peer peer = getManager().getPeer();
-        if (peer == null) {
-            Log.e(TAG, "Cannot find the peer to connect to.");
-
-            // TODO: Don't go to the selected apps, rather show a Toast message and then go to the intro screen.
-            getActivity().showSelectApps();
-            return;
-        }
-
-        String heading = getContext().getString(R.string.status_connecting_to_repo, peer.getName());
-        ((TextView) findViewById(R.id.heading)).setText(heading);
-
+        ((TextView) findViewById(R.id.heading)).setText(R.string.swap_connecting);
         findViewById(R.id.back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,56 +62,119 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         });
 
         // TODO: Unregister correctly, not just when being notified of completion or errors.
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(repoUpdateReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
-        getManager().connectTo(peer, peer.shouldPromptForSwapBack());
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+                repoUpdateReceiver, new IntentFilter(UpdateService.LOCAL_ACTION_STATUS));
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+                prepareSwapReceiver, new IntentFilter(SwapWorkflowActivity.PrepareSwapRepo.ACTION));
+    }
+
+    private BroadcastReceiver repoUpdateReceiver = new ConnectSwapReceiver();
+    private BroadcastReceiver prepareSwapReceiver = new PrepareSwapReceiver();
+
+    /**
+     * Listens for feedback about a local repository being prepared:
+     *  * Apk files copied to the LocalHTTPD webroot
+     *  * index.html file prepared
+     *  * Icons will be copied to the webroot in the background and so are not part of this process.
+     */
+    class PrepareSwapReceiver extends Receiver {
+
+        @Override
+        protected String getMessageExtra() {
+            return SwapWorkflowActivity.PrepareSwapRepo.EXTRA_MESSAGE;
+        }
+
+        protected int getType(Intent intent) {
+            return intent.getIntExtra(SwapWorkflowActivity.PrepareSwapRepo.EXTRA_TYPE, -1);
+        }
+
+        @Override
+        protected boolean isComplete(Intent intent) {
+            return getType(intent) == SwapWorkflowActivity.PrepareSwapRepo.TYPE_COMPLETE;
+        }
+
+        @Override
+        protected boolean isError(Intent intent) {
+            return getType(intent) == SwapWorkflowActivity.PrepareSwapRepo.TYPE_ERROR;
+        }
+
+        @Override
+        protected void onComplete() {
+            getActivity().onLocalRepoPrepared();
+        }
+    }
+
+    /**
+     * Listens for feedback about a repo update process taking place.
+     *  * Tracks an index.jar download and show the progress messages
+     */
+    class ConnectSwapReceiver extends Receiver {
+
+        @Override
+        protected String getMessageExtra() {
+            return UpdateService.EXTRA_MESSAGE;
+        }
+
+        protected int getStatusCode(Intent intent) {
+            return intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
+        }
+
+        @Override
+        protected boolean isComplete(Intent intent) {
+            int status = getStatusCode(intent);
+            return status == UpdateService.STATUS_COMPLETE_AND_SAME ||
+                    status == UpdateService.STATUS_COMPLETE_WITH_CHANGES;
+        }
+        @Override
+        protected boolean isError(Intent intent) {
+            int status = getStatusCode(intent);
+            return status == UpdateService.STATUS_ERROR_GLOBAL ||
+                    status == UpdateService.STATUS_ERROR_LOCAL ||
+                    status == UpdateService.STATUS_ERROR_LOCAL_SMALL;
+        }
+
+        @Override
+        protected void onComplete() {
+            getActivity().showSwapConnected();
+        }
 
     }
 
-    private BroadcastReceiver repoUpdateReceiver = new BroadcastReceiver() {
+    abstract class Receiver extends BroadcastReceiver {
+
+        protected abstract String getMessageExtra();
+        protected abstract boolean isComplete(Intent intent);
+        protected abstract boolean isError(Intent intent);
+        protected abstract void onComplete();
+
         @Override
         public void onReceive(Context context, Intent intent) {
-
-            int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
 
             TextView progressText = ((TextView) findViewById(R.id.heading));
             TextView errorText    = ((TextView) findViewById(R.id.error));
             Button   backButton   = ((Button) findViewById(R.id.back));
 
-            if (intent.hasExtra(UpdateService.EXTRA_MESSAGE)) {
-                progressText.setText(intent.getStringExtra(UpdateService.EXTRA_MESSAGE));
+            String message = null;
+            if (intent.hasExtra(getMessageExtra())) {
+                message = intent.getStringExtra(getMessageExtra());
+                if (message != null) {
+                    progressText.setText(message);
+                }
             }
-
-            boolean finished = false;
-            boolean error = false;
 
             progressText.setVisibility(View.VISIBLE);
             errorText.setVisibility(View.GONE);
             backButton.setVisibility(View.GONE);
 
-            switch (statusCode) {
-                case UpdateService.STATUS_ERROR_GLOBAL:
-                    finished = true;
-                    error = true;
-                    break;
-                case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
-                    finished = true;
-                    break;
-                case UpdateService.STATUS_COMPLETE_AND_SAME:
-                    finished = true;
-                    break;
-                case UpdateService.STATUS_INFO:
-                    break;
+            if (isError(intent)) {
+                progressText.setVisibility(View.GONE);
+                errorText.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.VISIBLE);
+                return;
             }
 
-            if (finished) {
-                LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(repoUpdateReceiver);
-                if (error) {
-                    progressText.setVisibility(View.GONE);
-                    errorText.setVisibility(View.VISIBLE);
-                    backButton.setVisibility(View.VISIBLE);
-                } else {
-                    getActivity().showSwapConnected();
-                }
+            if (isComplete(intent)) {
+                onComplete();
             }
         }
     };

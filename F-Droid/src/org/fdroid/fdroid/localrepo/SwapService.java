@@ -62,7 +62,7 @@ import java.util.TimerTask;
  * the future.
  *
  * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
- * TODO: Handle not connected to wifi more gracefully. For example, Bonjour discovery falls over.
+ * TODO: Handle "not connected to wifi" more gracefully. For example, Bonjour discovery falls over.
  * TODO: Remove peers from list of peers when no longer "visible".
  * TODO: Feedback for "Setting up (wifi|bluetooth)" in start swap view is not as immediate as I had hoped.
  * TODO: Turn off bluetooth after cancelling/timing out if we turned it on.
@@ -160,6 +160,13 @@ public class SwapService extends Service {
         if (peer != null) {
             connectTo(peer, false);
         }
+    }
+
+    public void connectToPeer() {
+        if (getPeer() == null) {
+            throw new IllegalStateException("Cannot connect to peer, no peer has been selected.");
+        }
+        connectTo(getPeer(), getPeer().shouldPromptForSwapBack());
     }
 
     public void connectTo(@NonNull Peer peer, boolean requestSwapBack) {

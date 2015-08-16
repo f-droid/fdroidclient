@@ -16,6 +16,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -261,7 +262,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 showSwapConnected();
                 break;
             case SwapService.STEP_CONNECTING:
-                // TODO: Properly decide what to do here...
+                // TODO: Properly decide what to do here (i.e. returning to the activity after it was connecting)...
                 inflateInnerView(R.layout.swap_blank);
                 break;
         }
@@ -345,8 +346,10 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     // Otherwise, probably will need to scan the file system.
     public void onAppsSelected() {
         if (updateSwappableAppsTask == null && !hasPreparedLocalRepo) {
-            updateSwappableAppsTask = new PrepareFullSwapRepo(getService().getAppsToSwap());
+            updateSwappableAppsTask = new PrepareSwapRepo(getService().getAppsToSwap());
             updateSwappableAppsTask.execute();
+            getService().setStep(SwapService.STEP_CONNECTING);
+            inflateInnerView(R.layout.swap_connecting);
         } else {
             onLocalRepoPrepared();
         }
@@ -370,7 +373,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
      *  * Alternatively, if we didn't have a person to connect to, and instead clicked "Scan QR Code",
      *    then we want to show a QR code or NFC dialog.
      */
-    private void onLocalRepoPrepared() {
+    public void onLocalRepoPrepared() {
         updateSwappableAppsTask = null;
         hasPreparedLocalRepo = true;
         if (getService().isConnectingWithPeer()) {
@@ -381,6 +384,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private void startSwappingWithPeer() {
+        getService().connectToPeer();
         inflateInnerView(R.layout.swap_connecting);
     }
 
@@ -542,39 +546,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
-    class PrepareFullSwapRepo extends PrepareSwapRepo {
+    class PrepareSwapRepo extends AsyncTask<Void, Void, Void> {
 
-        @NonNull
-        private final ProgressDialog progressDialog;
-
-        public PrepareFullSwapRepo(@NonNull Set<String> apps) {
-            super(apps);
-            progressDialog = new ProgressDialog(context);
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setTitle(R.string.updating);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            progressDialog.show();
-        }
-
-        @Override
-        protected void onProgressUpdate(String... progress) {
-            super.onProgressUpdate(progress);
-            progressDialog.setMessage(progress[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            progressDialog.dismiss();
-            Toast.makeText(context, R.string.updated_local_repo, Toast.LENGTH_SHORT).show();
-            onLocalRepoPrepared();
-        }
-
-    }
-
-    abstract class PrepareSwapRepo extends AsyncTask<Void, String, Void> {
+        public static final String ACTION = "PrepareSwapRepo.Action";
+        public static final String EXTRA_MESSAGE = "PrepareSwapRepo.Status.Message";
+        public static final String EXTRA_TYPE = "PrepareSwapRepo.Action.Type";
+        public static final int TYPE_STATUS = 0;
+        public static final int TYPE_COMPLETE = 1;
+        public static final int TYPE_ERROR = 2;
 
         @SuppressWarnings("UnusedDeclaration")
         private static final String TAG = "UpdateAsyncTask";
@@ -594,22 +573,36 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             sharingUri = Utils.getSharingUri(FDroidApp.repo);
         }
 
+        private void broadcast(int type) {
+            broadcast(type, null);
+        }
+
+        private void broadcast(int type, String message) {
+            Intent intent = new Intent(ACTION);
+            intent.putExtra(EXTRA_TYPE, type);
+            if (message != null) {
+                Log.d(TAG, "Preparing swap: " + message);
+                intent.putExtra(EXTRA_MESSAGE, message);
+            }
+            LocalBroadcastManager.getInstance(SwapWorkflowActivity.this).sendBroadcast(intent);
+        }
+
         @Override
         protected Void doInBackground(Void... params) {
             try {
                 final LocalRepoManager lrm = LocalRepoManager.get(context);
-                publishProgress(getString(R.string.deleting_repo));
+                broadcast(TYPE_STATUS, getString(R.string.deleting_repo));
                 lrm.deleteRepo();
                 for (String app : selectedApps) {
-                    publishProgress(String.format(getString(R.string.adding_apks_format), app));
+                    broadcast(TYPE_STATUS, String.format(getString(R.string.adding_apks_format), app));
                     lrm.addApp(context, app);
                 }
                 lrm.writeIndexPage(sharingUri.toString());
-                publishProgress(getString(R.string.writing_index_jar));
+                broadcast(TYPE_STATUS, getString(R.string.writing_index_jar));
                 lrm.writeIndexJar();
-                publishProgress(getString(R.string.linking_apks));
+                broadcast(TYPE_STATUS, getString(R.string.linking_apks));
                 lrm.copyApksToRepo();
-                publishProgress(getString(R.string.copying_icons));
+                broadcast(TYPE_STATUS, getString(R.string.copying_icons));
                 // run the icon copy without progress, its not a blocker
                 // TODO: Fix lint error about this being run from a worker thread, says it should be
                 // run on a main thread.
@@ -621,16 +614,13 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                         return null;
                     }
                 }.execute();
+
+                broadcast(TYPE_COMPLETE);
             } catch (Exception e) {
+                broadcast(TYPE_ERROR);
                 e.printStackTrace();
             }
             return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(String... progress) {
-            super.onProgressUpdate(progress);
-            Log.d(TAG, progress[0]);
         }
     }
 
