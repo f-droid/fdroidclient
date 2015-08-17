@@ -20,7 +20,6 @@
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
     </style>
 
-    <color name="white">#FFFFFFFF</color>
     <color name="red">#FFFF0000</color>
 
     <style name="AppThemeDark" parent="AppBaseThemeDark">
@@ -48,7 +47,7 @@
     </style>
 
     <style name="SwapTheme.StartSwap" parent="AppThemeLight">
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@android:color/white</item>
     </style>
 
     <style name="SwapTheme.AppList" parent="AppThemeLight">
