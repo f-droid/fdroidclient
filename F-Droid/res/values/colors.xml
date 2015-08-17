@@ -3,6 +3,7 @@
     <color name="signed">#ffcccccc</color>
     <color name="unsigned">#ffCC0000</color>
     <color name="unverified">#ff999999</color>
+    <color name="red">#ffdd2c00</color>
 
     <color name="fdroid_blue">#ff1976d2</color>
     <color name="fdroid_blue_dark">#ff0d47a1</color>
@@ -20,7 +21,6 @@
     <color name="swap_wifi_likely_to_work">#00a14b</color>
 
     <color name="shadow">#cc222222</color>
-    <color name="transparent">#00000000</color>
 
     <color name="perms_costs_money">#fff4511e</color>
 
