@@ -89,7 +89,6 @@ Vill du uppdatera dem?</string>
   <string name="menu_search">Sök</string>
   <string name="menu_add_repo">Nytt förråd</string>
   <string name="menu_rem_repo">Ta bort förråd</string>
-  <string name="menu_scan_repo">Hitta lokala förråd</string>
   <string name="menu_launch">Kör</string>
   <string name="menu_share">Dela</string>
   <string name="menu_install">Installera</string>
@@ -126,8 +125,6 @@ Vill du uppdatera dem?</string>
   <string name="category_whatsnew">Nyheter</string>
   <string name="category_recentlyupdated">Nyss uppdaterade</string>
   <string name="local_repo">Lokalt förråd</string>
-  <string name="local_repos_title">Lokala FDroid-förråd</string>
-  <string name="local_repos_scanning">Upptäcker lokala FDroid-förråd…</string>
   <string name="local_repo_running">F-Droid är redo att byta</string>
   <string name="waiting_for_ipaddress">väntar på IP-adress…</string>
   <string name="setup_repo">Initiera lokalt förråd</string>
@@ -142,7 +139,6 @@ Vill du uppdatera dem?</string>
   <string name="failed_to_create_index">Kunde inte skapa förrådsindex!</string>
   <string name="linking_apks">Länkar APK:er till förrådet…</string>
   <string name="copying_icons">Kopierar appikoner till förrådet…</string>
-  <string name="updated_local_repo">Lokalt förråd uppdaterades</string>
   <string name="no_applications_found">Inga program hittades</string>
   <string name="icon">ikon</string>
   <string name="fingerprint">Fingeravtryck:</string>

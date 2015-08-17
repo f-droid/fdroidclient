@@ -86,7 +86,6 @@ Güncellemek ister misiniz?</string>
   <string name="menu_search">Arama</string>
   <string name="menu_add_repo">Yeni Depo</string>
   <string name="menu_rem_repo">Depoyu kaldır</string>
-  <string name="menu_scan_repo">Yerel depoları bul</string>
   <string name="menu_launch">Çalıştır</string>
   <string name="menu_share">Paylaş</string>
   <string name="menu_install">Kur</string>
@@ -123,8 +122,6 @@ Güncellemek ister misiniz?</string>
   <string name="category_whatsnew">Yeni olanlar</string>
   <string name="category_recentlyupdated">Yakın geçmişte güncellenen</string>
   <string name="local_repo">Yerel Depo</string>
-  <string name="local_repos_title">Yerel FDroid depoları</string>
-  <string name="local_repos_scanning">Yerel FDroid depoları keşfediliyor…</string>
   <string name="local_repo_running">F-Droid değiş-tokuşa hazır</string>
   <string name="waiting_for_ipaddress">IP adres bekleniyor…</string>
   <string name="touch_to_turn_off_local_repo">Yerel deponu kapatmak için dokunun.</string>
@@ -133,7 +130,6 @@ Güncellemek ister misiniz?</string>
   <string name="deleting_repo">Mevcut depo siliniyor…</string>
   <string name="adding_apks_format">%s depoya ekleniyor…</string>
   <string name="linking_apks">APK\'ler depo içine bağlanıyor</string>
-  <string name="updated_local_repo">Yerel depo güncellemesi bitti</string>
   <string name="no_applications_found">Uygulama bulunamadı</string>
   <string name="wifi_network">WiFi Ağı:</string>
   <string name="enable_wifi">WiFi Etkinleştir</string>

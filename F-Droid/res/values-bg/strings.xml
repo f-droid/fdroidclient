@@ -52,7 +52,6 @@
   <string name="menu_search">Търсене</string>
   <string name="menu_add_repo">Ново хранилище</string>
   <string name="menu_rem_repo">Премахни хранилище</string>
-  <string name="menu_scan_repo">Намиране на локални хранилища</string>
   <string name="menu_share">Сподели</string>
   <string name="menu_install">Инсталирай</string>
   <string name="menu_website">Уебсайт</string>
@@ -72,8 +71,6 @@
   <string name="category_all">Всички</string>
   <string name="category_whatsnew">Какво ново</string>
   <string name="local_repo">Локално хранилище</string>
-  <string name="local_repos_title">Локални FDroid хранилища</string>
-  <string name="local_repos_scanning">Откриване на локални FDroid хранилища…</string>
   <string name="waiting_for_ipaddress">изчакване за IP адрес…</string>
   <string name="updating">Обновяване…</string>
   <string name="deleting_repo">Изтриване на хранилището…</string>

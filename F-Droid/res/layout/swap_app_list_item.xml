@@ -14,8 +14,10 @@
         android:layout_width="48dip"
         android:layout_height="48dip"
         android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="6dip"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         tools:src="@drawable/ic_launcher" />
 
     <LinearLayout
@@ -23,10 +25,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:gravity="end"
-        android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd">
+        android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:layout_marginRight="10dp">
 
         <Button
             android:id="@+id/btn_install"
@@ -35,7 +39,8 @@
             android:backgroundTint="@color/swap_light_blue"
             app:backgroundTint="@color/swap_light_blue"
             android:textColor="@android:color/white"
-            android:text="@string/menu_install"/>
+            android:text="@string/menu_install"
+            tools:ignore="UnusedAttribute" />
 
         <TextView
             android:id="@+id/status_installed"
@@ -64,10 +69,13 @@
     <TextView
         android:id="@+id/name"
         android:layout_toEndOf="@android:id/icon"
+        android:layout_toRightOf="@android:id/icon"
         android:layout_toStartOf="@+id/button_or_text"
+        android:layout_toLeftOf="@+id/button_or_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="6dip"
         android:layout_marginBottom="6dip"
         android:textAppearance="?android:attr/textAppearanceMedium"

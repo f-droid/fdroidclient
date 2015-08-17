@@ -90,7 +90,6 @@
   <string name="menu_search">Тражи</string>
   <string name="menu_add_repo">Нова ризница</string>
   <string name="menu_rem_repo">Уклони ризницу</string>
-  <string name="menu_scan_repo">Нађи локалне ризнице</string>
   <string name="menu_launch">Покрени</string>
   <string name="menu_share">Дели</string>
   <string name="menu_install">Инсталирај</string>
@@ -127,8 +126,6 @@
   <string name="category_whatsnew">Ново</string>
   <string name="category_recentlyupdated">Недавно надограђено</string>
   <string name="local_repo">Локална ризница</string>
-  <string name="local_repos_title">Локалне ризнице</string>
-  <string name="local_repos_scanning">Откривам локалне ризнице…</string>
   <string name="local_repo_running">Ф-дроид је спреман за размену</string>
   <string name="waiting_for_ipaddress">чекам ИП адресу…</string>
   <string name="setup_repo">Постави локалну ризницу</string>
@@ -143,7 +140,6 @@
   <string name="failed_to_create_index">Неуспех стварања индекса ризнице!</string>
   <string name="linking_apks">Повезујем АПК фајлове у ризницу…</string>
   <string name="copying_icons">Копирам иконе апликација у ризницу…</string>
-  <string name="updated_local_repo">Завршено ажурирање локалне ризнице</string>
   <string name="no_applications_found">Нема апликација</string>
   <string name="icon">икона</string>
   <string name="fingerprint">Отисак:</string>

@@ -104,7 +104,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="failed_to_create_index">Błąd przy tworzeniu indeksu repozytorium!</string>
   <string name="linking_apks">Linkowanie APK do repozytorium…</string>
   <string name="copying_icons">Kopiowanie ikon aplikacji do repozytorium…</string>
-  <string name="updated_local_repo">Zakończono aktualizację repozytorium lokalnego</string>
   <string name="no_applications_found">Nie znaleziono aplikacji</string>
   <string name="icon">ikona</string>
   <string name="fingerprint">Odcisk palca:</string>

@@ -14,6 +14,7 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Response {
@@ -73,7 +74,7 @@ public class Response {
     public int getFileSize() {
         if (headers != null) {
             for (Map.Entry<String, String> entry : headers.entrySet()) {
-                if (entry.getKey().toLowerCase().equals("content-length")) {
+                if (entry.getKey().toLowerCase(Locale.ENGLISH).equals("content-length")) {
                     try {
                         return Integer.parseInt(entry.getValue());
                     } catch (NumberFormatException e) {

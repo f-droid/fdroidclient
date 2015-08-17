@@ -32,6 +32,7 @@
         tools:src="@drawable/ic_launcher"
         tools:ignore="ContentDescription" />
 
+    <!-- Suppress InconsistentLayout because the lower API levels use a checkbox rather than this -->p
     <ImageView
         android:id="@+id/checked"
         android:layout_width="32dip"
@@ -41,6 +42,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
+        tools:suppress="InconsistentLayout"
         android:src="@drawable/ic_add_circle_outline_white" />
 
     <TwoLineListItem

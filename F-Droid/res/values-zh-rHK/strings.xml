@@ -80,7 +80,6 @@
   <string name="category_all">所有</string>
   <string name="category_whatsnew">最新</string>
   <string name="category_recentlyupdated">最近更新</string>
-  <string name="local_repos_title">本地的F-Droid Repo</string>
   <string name="status_connecting_to_repo">正在連接至%1$s</string>
   <string name="status_checking_compatibility">正在檢查應用程式與裝置的相容性…</string>
   <string name="status_inserting">儲存應用程式詳情中（%1$d%%）</string>

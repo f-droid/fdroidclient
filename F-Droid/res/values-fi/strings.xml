@@ -114,7 +114,6 @@ Tahdotko päivittää ne?</string>
   <string name="failed_to_create_index">Säilöhakemiston luonti epäonnistui!</string>
   <string name="linking_apks">Linkitetään AKP-tiedostoja säilöön…</string>
   <string name="copying_icons">Kopioidaan sovelluskuvakkeita säilöön…</string>
-  <string name="updated_local_repo">Paikallisen säilön päivitys valmis</string>
   <string name="no_applications_found">Sovelluksia ei löytynyt</string>
   <string name="icon">kuvake</string>
   <string name="fingerprint">Sormenjälki:</string>

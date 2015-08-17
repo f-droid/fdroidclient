@@ -10,7 +10,6 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -21,11 +20,11 @@ import android.widget.TextView;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.localrepo.SwapService;
-import org.fdroid.fdroid.localrepo.peers.Peer;
 
 // TODO: Use this for the "Preparing local repo" dialog also.
 public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity.InnerView {
 
+    @SuppressWarnings("unused")
     private final static String TAG = "SwapConnecting";
 
     public SwapConnecting(Context context) {
@@ -36,6 +35,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
         super(context, attrs);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public SwapConnecting(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
@@ -154,7 +154,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
             TextView errorText    = ((TextView) findViewById(R.id.error));
             Button   backButton   = ((Button) findViewById(R.id.back));
 
-            String message = null;
+            String message;
             if (intent.hasExtra(getMessageExtra())) {
                 message = intent.getStringExtra(getMessageExtra());
                 if (message != null) {
@@ -177,7 +177,7 @@ public class SwapConnecting extends LinearLayout implements SwapWorkflowActivity
                 onComplete();
             }
         }
-    };
+    }
 
     @Override
     public boolean buildMenu(Menu menu, @NonNull MenuInflater inflater) {

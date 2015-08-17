@@ -20,7 +20,6 @@
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
     </style>
 
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FFFF0000</color>
 

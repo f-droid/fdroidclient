@@ -48,10 +48,12 @@
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:paddingEnd="30dp"
+                android:gravity="center"
                 android:textAlignment="center"
                 android:text="@string/swap_intro"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="UnusedAttribute" />
 
         </RelativeLayout>
 
@@ -69,12 +71,13 @@
                 android:src="@drawable/ic_bluetooth_white" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="15dp"
                 android:paddingStart="15dp"
-                android:layout_weight="1.00">
+                android:layout_weight="1.00"
+                tools:ignore="RtlSymmetry">
 
                 <TextView
                     android:id="@+id/bluetooth_visible"
@@ -113,12 +116,13 @@
                 android:src="@drawable/ic_network_wifi_white" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="15dp"
                 android:paddingStart="15dp"
-                android:layout_weight="1.00">
+                android:layout_weight="1.00"
+                tools:ignore="RtlSymmetry">
 
                 <TextView
                     android:id="@+id/wifi_visible"
@@ -188,6 +192,9 @@
             android:layout_height="wrap_content"
             android:text="@string/swap_cant_find_peers"
             android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
             android:paddingTop="20dp"
             android:textColor="@color/swap_light_text" />
 

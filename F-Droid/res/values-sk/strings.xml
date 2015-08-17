@@ -25,7 +25,6 @@
   <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repa!</string>
   <string name="linking_apks">Odkazujeme súbory APK do repa…</string>
   <string name="copying_icons">Kopírujeme ikony do repa…</string>
-  <string name="updated_local_repo">Aktualizácie miestneho repa dokončené</string>
   <string name="no_applications_found">Aplikácie sa nenašli</string>
   <string name="icon">ikona</string>
   <string name="fingerprint">Odtlačok:</string>

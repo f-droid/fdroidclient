@@ -110,7 +110,6 @@ Você deseja atualizá-los?</string>
   <string name="failed_to_create_index">Falha ao criar o índice do repositório!</string>
   <string name="linking_apks">Vinculando APKs no repositório…</string>
   <string name="copying_icons">Copiando ícones de aplicativos no repositório…</string>
-  <string name="updated_local_repo">Atualização do repositório local concluída</string>
   <string name="no_applications_found">Nenhuma aplicação encontrada</string>
   <string name="icon">ícone</string>
   <string name="fingerprint">Fingerprint:</string>

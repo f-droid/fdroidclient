@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
                 android:layout_marginRight="25dp"
-                />
+                tools:ignore="UnusedAttribute" />
 
         <!-- TODO: Remove associated style files style="@style/SwapTheme.Wizard.ReceiveSwap.Confirm" -->
         <Button
@@ -72,7 +72,7 @@
                 app:backgroundTint="@color/swap_light_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                tools:ignore="UnusedAttribute" />
 
     </LinearLayout>
 

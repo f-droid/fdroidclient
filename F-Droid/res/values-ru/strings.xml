@@ -91,7 +91,6 @@
   <string name="menu_search">Поиск</string>
   <string name="menu_add_repo">Новый репозиторий</string>
   <string name="menu_rem_repo">Удалить репозиторий</string>
-  <string name="menu_scan_repo">Найти локальные репозитории</string>
   <string name="menu_launch">Запустить</string>
   <string name="menu_share">Поделиться</string>
   <string name="menu_install">Установить</string>
@@ -128,8 +127,6 @@
   <string name="category_whatsnew">Что Нового</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
   <string name="local_repo">Локальный репозиторий</string>
-  <string name="local_repos_title">Локальные репозитории FDroid</string>
-  <string name="local_repos_scanning">Обнаружение локальных репозиториев FDroid…</string>
   <string name="local_repo_running">F-Droid готов для обмена</string>
   <string name="waiting_for_ipaddress">ожидание IP-адреса…</string>
   <string name="setup_repo">Настройка локального репозитория</string>
@@ -143,7 +140,6 @@
   <string name="failed_to_create_index">Произошла ошибка во время формирования индекса репозитория!</string>
   <string name="linking_apks">Включение APK-файлов в репозиторий…</string>
   <string name="copying_icons">Копирование иконок приложений в репозиторий…</string>
-  <string name="updated_local_repo">Обновление репозитория завершено</string>
   <string name="no_applications_found">Приложения не найдены</string>
   <string name="icon">иконка</string>
   <string name="fingerprint">Отпечаток:</string>

@@ -62,7 +62,6 @@ Eguneratu nahi dituzu?</string>
   <string name="menu_search">Bilatu</string>
   <string name="menu_add_repo">Biltegi berria</string>
   <string name="menu_rem_repo">Ezabatu biltegia</string>
-  <string name="menu_scan_repo">Bilatu biltegi lokalak</string>
   <string name="menu_launch">Exekutatu</string>
   <string name="menu_share">Partekatu</string>
   <string name="menu_install">Instalatu</string>
@@ -89,7 +88,6 @@ Eguneratu nahi dituzu?</string>
   <string name="category_all">Guztia</string>
   <string name="category_whatsnew">Zer da berria</string>
   <string name="category_recentlyupdated">Azkenaldian eguneratua</string>
-  <string name="local_repos_title">FDroid biltegi lokalak</string>
   <string name="status_connecting_to_repo">%1$s(e)ra
 konektatzen</string>
   <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen…</string>

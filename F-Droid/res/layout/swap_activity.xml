@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -12,7 +13,8 @@
         android:titleTextAppearance="@style/SwapTheme.Wizard.Text"
         titleTextAppearance="@style/SwapTheme.Wizard.Text"
         android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:background="?attr/colorPrimary"
+        tools:ignore="UnusedAttribute" />
 
     <FrameLayout
         android:id="@+id/fragment_container"

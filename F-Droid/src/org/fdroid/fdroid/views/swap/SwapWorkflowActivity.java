@@ -486,7 +486,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     confirmSwapConfig = repoConfig;
                     showRelevantView();
                 } else {
-                    Toast.makeText(this, "The QR code you scanned doesn't look like a swap code.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.swap_qr_isnt_for_swap, Toast.LENGTH_SHORT).show();
                 }
             }
         } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {

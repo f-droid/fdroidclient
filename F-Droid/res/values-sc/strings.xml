@@ -58,7 +58,6 @@
   <string name="failed_to_create_index">Sa creatzione de s\'inditze de sos depòsitos est faddida!</string>
   <string name="linking_apks">Cullegande sos APK in su depòsitu…</string>
   <string name="copying_icons">Copiande sas iconas de sos aplicos in su depòsitu…</string>
-  <string name="updated_local_repo">Agiornamentu depòsitu locale finidu</string>
   <string name="no_applications_found">Perunu aplicu agatadu</string>
   <string name="icon">icona</string>
   <string name="fingerprint">Arrastu/imprenta:</string>
