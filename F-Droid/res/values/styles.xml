@@ -20,8 +20,6 @@
         <item name="alertDialogTheme">@style/AlertDialogThemeLight</item>
     </style>
 
-    <color name="red">#FFFF0000</color>
-
     <style name="AppThemeDark" parent="AppBaseThemeDark">
         <!-- customizations that are not API-level specific go here. -->
     </style>

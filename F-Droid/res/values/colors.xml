@@ -3,6 +3,7 @@
     <color name="signed">#ffcccccc</color>
     <color name="unsigned">#ffCC0000</color>
     <color name="unverified">#ff999999</color>
+    <color name="red">#FFFF0000</color>
 
     <color name="fdroid_blue">#ff1976d2</color>
     <color name="fdroid_blue_dark">#ff0d47a1</color>
