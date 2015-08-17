@@ -6,11 +6,12 @@ import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 import org.fdroid.fdroid.net.bluetooth.FileDetails;
 import org.fdroid.fdroid.net.bluetooth.httpish.headers.Header;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringBufferInputStream;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,13 +42,22 @@ public class Response {
 
     public Response(int statusCode, String mimeType, String content) {
         this.statusCode = statusCode;
-        this.headers = new HashMap<String,String>();
-        this.contentStream = new StringBufferInputStream(content);
+        this.headers = new HashMap<>();
+        this.headers.put("Content-Type", mimeType);
+        try {
+            this.contentStream = new ByteArrayInputStream(content.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            // Not quite sure what to do in the case of a phone not supporting UTF-8, so lets
+            // throw a runtime exception and hope that we get good bug reports if this ever happens.
+            Log.e(TAG, "Device does not support UTF-8: " + e.getMessage());
+            throw new IllegalStateException("Device does not support UTF-8.", e);
+        }
     }
 
     public Response(int statusCode, String mimeType, InputStream contentStream) {
         this.statusCode = statusCode;
-        this.headers = new HashMap<String,String>();
+        this.headers = new HashMap<>();
+        this.headers.put("Content-Type", mimeType);
         this.contentStream = contentStream;
     }
 
