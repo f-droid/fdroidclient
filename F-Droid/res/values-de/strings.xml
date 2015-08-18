@@ -241,8 +241,6 @@ Sie müssen
   <string name="root_access_denied_title">Root-Zugriff verweigert</string>
   <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff für F-Droid verweigert.</string>
   <string name="update_all">Alle aktualisieren</string>
-  <string name="installer_error_title">(De-)Installationsfehler</string>
-  <string name="installer_error_body">Die (De-)Installation schlug fehl. Wenn Sie Root-Zugriff benutzen, versuchen Sie diese Einstellung zu deaktivieren!</string>
   <string name="system_permission_denied_title">Systemberechtigungen verweigert</string>
   <string name="system_permission_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert wurde.</string>
   <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS (Freie und Quelloffene Software) Anwendungen für die Android-Plattform. Der Client macht es auf deinem Gerät einfach zu durchsuchen, zu installieren und Aktualisierungen zu verfolgen.</string>

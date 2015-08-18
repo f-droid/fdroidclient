@@ -91,8 +91,6 @@ Budete
   <string name="root_access_denied_title">Root prístup zamietnutý</string>
   <string name="root_access_denied_body">Buď vaše zariadenie s Androidom nemá urobený root alebo ste odmietli root prístup pre F-Droid.</string>
   <string name="update_all">Aktualizovať všetko</string>
-  <string name="installer_error_title">(Od-)Inštalačná chyba</string>
-  <string name="installer_error_body">(Od-)inštalácia sa nepodarila. Ak používate roota, skúste vypnúť toto nastavenie!</string>
   <string name="system_permission_denied_title">Systémové povolenia zamietnuté</string>
   <string name="system_permission_denied_body">Táto možnosť je nedostupná ak nie je F-Droid inštalovaný ako systémová aplikácia.</string>
   <string name="app_description">F-Droid je inštalovateľný katalóg FOSS (Free a Open Source Software) aplikácií pre platformu Android. Klient umožňuje ľahko prechádzať, inštalovať, a sledovať aktualizácie na vašom zariadení.</string>

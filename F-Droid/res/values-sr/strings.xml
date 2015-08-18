@@ -238,8 +238,6 @@
   <string name="root_access_denied_title">Корени приступ одбијен</string>
   <string name="root_access_denied_body">Или ваш Андроид уређај није рутован или сте Ф-дроиду одбили корени приступ.</string>
   <string name="update_all">Надогради све</string>
-  <string name="installer_error_title">Грешка инсталера</string>
-  <string name="installer_error_body">Инсталација/уклањање није успело. Ако користите корени приступ покушајте да га онемогућите.</string>
   <string name="system_permission_denied_title">Системске дозволе одбијене</string>
   <string name="system_permission_denied_body">Ова опција доступна само када је Ф-дроид инсталиран као системска апликација.</string>
   <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кôда) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>

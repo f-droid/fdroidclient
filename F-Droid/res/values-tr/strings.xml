@@ -211,7 +211,6 @@ Ondan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</
   <string name="root_access_denied_title">Root erişimi engellendi</string>
   <string name="root_access_denied_body">Ya Android cihazınız rootlu değil ya da F-Droid için root erişimini engellediniz.</string>
   <string name="update_all">Tümünü güncelle</string>
-  <string name="installer_error_body">Kurulum(kaldırma) başarısız oldu. Eğer root erişimi kullanıyorsanız, bu ayarı devre dışı bırakmayı deneyin!</string>
   <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağda bulunun</string>
   <string name="swap_wifi_help">Wifi hakkında daha fazla öğren</string>
   <string name="menu_swap">Değiş-Tokuş uygulamalar</string>

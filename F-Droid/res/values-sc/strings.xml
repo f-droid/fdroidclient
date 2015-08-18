@@ -124,8 +124,6 @@ Depes
   <string name="root_access_denied_title">Atzessu root dennegadu</string>
   <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a F-droid.</string>
   <string name="update_all">Agiorna totu</string>
-  <string name="installer_error_title">Errore de (Dis-)Installatzione</string>
-  <string name="installer_error_body">Sa (dis-)installatzione st faddida. Si ses impreande s\'atzessu root, proa a che lu disabilitare!</string>
   <string name="system_permission_denied_title">Permissos de sistema dennegados</string>
   <string name="system_permission_denied_body">Custa optzione st disponìbile petzi cando F-Droid est installadu comente aplicu de sistema.</string>
   <string name="app_description">F-Droid est unu catàlogu installàbile de FOSS (Free and Open Source Software - Aplicos lìberos e a mitza aberta) pro Android. S\'aplicu-client permitit de chircare, installare, e compidare sos agiornamentos in su dispositivu tuo.</string>

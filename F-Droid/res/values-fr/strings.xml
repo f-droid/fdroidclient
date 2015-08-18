@@ -233,8 +233,6 @@ Vous devez
   <string name="root_access_denied_title">Droits root refusés</string>
   <string name="root_access_denied_body">Soit votre système Android n\'a pas les droits root/SuperUser, soit vous les avez refusés à F-Droid.</string>
   <string name="update_all">Tout mettre à jour</string>
-  <string name="installer_error_title">Erreur de (Dés-)Installation</string>
-  <string name="installer_error_body">Échec de (dés-)installation. Si vous utilisez l\'accès ROOT, essayez de désactiver ce paramètre\u00A0!</string>
   <string name="system_permission_denied_title">Permissions systèmes refusées</string>
   <string name="system_permission_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
   <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>

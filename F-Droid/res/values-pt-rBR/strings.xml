@@ -178,8 +178,6 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
   <string name="root_access_denied_title">Acesso root negado</string>
   <string name="root_access_denied_body">Ou o seu dispositivo Android não está \"rooteado\" ou você recusou o acesso root para o F-Droid.</string>
   <string name="update_all">Atualizar tudo</string>
-  <string name="installer_error_title">Erro na desinstalação</string>
-  <string name="installer_error_body">A desinstalação falhou. Caso você esteja usando acesso root, tente desativar essa configuração.</string>
   <string name="system_permission_denied_title">Permissões do sistema negadas</string>
   <string name="system_permission_denied_body">Esta opção só está disponível quando o F-Droid está instalado como um aplicativo de sistema.</string>
   <string name="app_description">F-Droid é um catálogo instalável de aplicativos FOSS (Software Livre e de Código Aberto) para a plataforma Android. O cliente faz com que seja fácil navegar, instalar e manter o controle das atualizações no seu dispositivo.</string>

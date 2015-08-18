@@ -236,8 +236,6 @@ Necesitarás volver a habilitar este repositorio para instalar aplicaciones desd
   <string name="root_access_denied_title">Acceso Root denegado</string>
   <string name="root_access_denied_body">Puede ser que el dispositivo Android no este rooteado o se ha denegado el acceso root para F-Droid.</string>
   <string name="update_all">Actualizar todo</string>
-  <string name="installer_error_title">Error de (des)instalación</string>
-  <string name="installer_error_body">La (des)instalación falló. Si se está usando acceso root, ¡prueba a deshabilitar esta opción!</string>
   <string name="system_permission_denied_title">Permisos de Sistema denegados</string>
   <string name="system_permission_denied_body">Esta opción sólo está disponible cuando F-Droid se instala como una aplicación de sistema.</string>
   <string name="app_description">F-Droid es un catálogo instalable de aplicaciones FOSS (Software libre y de Código Abierto) para la plataforma Android. El cliente hace que sea fácil navegar, instalar y mantener un registro de cambios en el dispositivo.</string>

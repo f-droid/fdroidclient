@@ -232,8 +232,6 @@ Du må
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>
   <string name="update_all">Oppdater alle</string>
-  <string name="installer_error_title">(Av-)Installasjons-feil</string>
-  <string name="installer_error_body">(Av-)installasjon feilet. Hvis du bruker root-tilgang, prøv å skru av dette!</string>
   <string name="system_permission_denied_title">System-rettigheter avslått</string>
   <string name="system_permission_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som system-program.</string>
   <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut, installere og holde øye med oppdateringer på din enhet.</string>
