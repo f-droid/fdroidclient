@@ -234,7 +234,10 @@ public class RepoDetailsActivity extends ActionBarActivity {
     @TargetApi(16)
     private void prepareNfcMenuItems(Menu menu) {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
+
         if (nfcAdapter == null) {
+            menuItem.setVisible(false);
             return;
         }
 
@@ -245,7 +248,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
             needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
         }
 
-        MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
         menuItem.setVisible(needsEnableNfcMenuItem);
     }
 
