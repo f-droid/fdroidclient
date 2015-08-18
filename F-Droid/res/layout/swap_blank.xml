@@ -27,6 +27,10 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/swap_start_header"/>
 
+            <!--
+            Removed for now, because there is no UI to hook this up to.
+            However, the general principle of having a help screen made accessible from the
+            start swap screen is still desirable, and so should be revisited in the future.
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -37,7 +41,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
-                />
+                />-->
 
             <TextView
                 android:layout_width="wrap_content"
