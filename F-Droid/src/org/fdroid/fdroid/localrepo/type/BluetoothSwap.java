@@ -47,7 +47,9 @@ public class BluetoothSwap extends SwapType {
                         break;
 
                     case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
-                        setConnected(true);
+                        if (server != null && server.isRunning()) {
+                            setConnected(true);
+                        }
                         break;
 
                     // Only other is BluetoothAdapter.SCAN_MODE_CONNECTABLE. For now don't handle that.

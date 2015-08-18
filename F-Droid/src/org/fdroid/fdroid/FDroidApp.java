@@ -264,7 +264,7 @@ public class FDroidApp extends Application {
             return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
-    void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
+    public void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
         if (resultCode == Activity.RESULT_CANCELED)
             return;
         String bluetoothPackageName = null;

@@ -63,7 +63,6 @@ import java.util.TimerTask;
  * The following UI elements don't do anything:
  *  + TODO: Change wifi by touching network name during swap start screen
  *  + TODO: The "?" button in the top right of the swap start screen doesn't do anything
- *  + TODO: The "Send F-Droid" button doesn't do anything
  *
  * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
  * TODO: Handle "not connected to wifi" more gracefully. For example, Bonjour discovery falls over.

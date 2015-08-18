@@ -1,7 +1,6 @@
 package org.fdroid.fdroid.views.swap;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -16,7 +15,6 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +30,6 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.NfcHelper;
 import org.fdroid.fdroid.Preferences;
@@ -55,7 +52,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -109,8 +105,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private static final String TAG = "SwapWorkflowActivity";
 
     private static final int CONNECT_TO_SWAP = 1;
-    private static final int REQUEST_BLUETOOTH_ENABLE = 2;
+    private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SWAP = 2;
     private static final int REQUEST_BLUETOOTH_DISCOVERABLE = 3;
+    private static final int REQUEST_BLUETOOTH_ENABLE_FOR_SEND = 4;
 
     private Toolbar toolbar;
     private InnerView currentView;
@@ -357,8 +354,22 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     public void sendFDroid() {
-        // TODO: What is available here? Currently we support Bluetooth (see main menu in F-Droid)
-        // and Android Beam (try touching two devices together when in the app details view).
+        // If Bluetooth has not been enabled/turned on, then enabling device discoverability
+        // will automatically enable Bluetooth.
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if (adapter != null) {
+            if (adapter.getState() != BluetoothAdapter.STATE_ON) {
+                Intent discoverBt = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                discoverBt.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
+                startActivityForResult(discoverBt, REQUEST_BLUETOOTH_ENABLE_FOR_SEND);
+            } else {
+                sendFDroidApk();
+            }
+        }
+    }
+
+    private void sendFDroidApk() {
+        ((FDroidApp) getApplication()).sendViaBluetooth(this, Activity.RESULT_OK, "org.fdroid.fdroid");
     }
 
     // TODO: Figure out whether they have changed since last time UpdateAsyncTask was run.
@@ -491,7 +502,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             }
         } else if (requestCode == CONNECT_TO_SWAP && resultCode == Activity.RESULT_OK) {
             finish();
-        } else if (requestCode == REQUEST_BLUETOOTH_ENABLE) {
+        } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SWAP) {
 
             if (resultCode == RESULT_OK) {
                 Log.d(TAG, "User enabled Bluetooth, will make sure we are discoverable.");
@@ -510,6 +521,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 Log.d(TAG, "User chose not to make Bluetooth discoverable, so doing nothing (i.e. sticking with wifi).");
             }
 
+        } else if (requestCode == REQUEST_BLUETOOTH_ENABLE_FOR_SEND) {
+            sendFDroidApk();
         }
     }
 
@@ -536,7 +549,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             } else {
                 Log.d(TAG, "Bluetooth disabled, asking user to enable it.");
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_BLUETOOTH_ENABLE_FOR_SWAP);
             }
     }
 
