@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -55,6 +56,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import cc.mvdan.accesspoint.WifiApControl;
 
 /**
  * This activity will do its best to show the most relevant screen about swapping to the user.
@@ -214,6 +217,55 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
+    public void promptToSelectWifiNetwork() {
+        //
+        // On Android >= 5.0, the neutral button is the one by itself off to the left of a dialog
+        // (not the negative button). Thus, the layout of this dialogs buttons should be:
+        //
+        // |                                 |
+        // +---------------------------------+
+        // | Cancel           Hotspot   WiFi |
+        // +---------------------------------+
+        //
+        // TODO: Investigate if this should be set dynamically for earlier APIs.
+        //
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.swap_join_same_wifi)
+                .setMessage(R.string.swap_join_same_wifi_desc)
+                .setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Do nothing
+                            }
+                        }
+                ).setPositiveButton(R.string.wifi, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
+                        }
+                    }
+                ).setNegativeButton(R.string.wifi_ap, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        promptToSetupWifiAP();
+                    }
+                }
+        ).create().show();
+    }
+
+    private void promptToSetupWifiAP() {
+        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        WifiApControl ap = WifiApControl.getInstance(this);
+        wifiManager.setWifiEnabled(false);
+        if (!ap.enable()) {
+            Log.e(TAG, "Could not enable WiFi AP.");
+            // TODO: Feedback to user?
+        } else {
+            Log.d(TAG, "WiFi AP enabled.");
+            // TODO: Seems to be broken some times...
+        }
+    }
+
     private void showRelevantView() {
         showRelevantView(false);
     }
@@ -365,6 +417,17 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             } else {
                 sendFDroidApk();
             }
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.bluetooth_unavailable)
+                    .setMessage(R.string.swap_cant_send_no_bluetooth)
+                    .setNegativeButton(
+                            R.string.cancel,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {}
+                            }
+                    ).create().show();
         }
     }
 
@@ -676,6 +739,9 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     class SwapDebug {
 
         public void logStatus() {
+
+            if (true) return;
+
             String message = "";
             if (service == null) {
                 message = "No swap service";

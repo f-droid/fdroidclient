@@ -20,6 +20,8 @@ if ( !hasProperty( 'sourceDeps' ) ) {
                 'com.android.support:appcompat-v7:22.1.0',
                 'com.android.support:support-annotations:22.1.0',
 
+                'cc.mvdan.accesspoint:library:0.1.1',
+
                 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
                 'com.nostra13.universalimageloader:universal-image-loader:1.9.4',
                 'com.google.zxing:core:3.2.0',

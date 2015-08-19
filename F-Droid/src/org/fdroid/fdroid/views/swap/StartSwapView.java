@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.wifi.WifiConfiguration;
 import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
@@ -36,6 +37,8 @@ import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.util.ArrayList;
+
+import cc.mvdan.accesspoint.WifiApControl;
 
 public class StartSwapView extends ScrollView implements SwapWorkflowActivity.InnerView {
 
@@ -310,6 +313,13 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
             }
         }, new IntentFilter(SwapService.BONJOUR_STATE_CHANGE));
 
+        viewWifiNetwork.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().promptToSelectWifiNetwork();
+            }
+        });
+
         uiUpdateWifiNetwork();
     }
 
@@ -318,12 +328,13 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         viewWifiId.setText(FDroidApp.ipAddressString);
         viewWifiId.setVisibility(TextUtils.isEmpty(FDroidApp.ipAddressString) ? View.GONE : View.VISIBLE);
 
-        if (TextUtils.isEmpty(FDroidApp.bssid) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
-            // empty bssid with an ipAddress means hotspot mode
-            viewWifiNetwork.setText(getContext().getString(R.string.swap_active_hotspot));
+        WifiApControl wifiAp = WifiApControl.getInstance(getActivity());
+        if (wifiAp.isWifiApEnabled()) {
+            WifiConfiguration config = wifiAp.getConfiguration();
+            viewWifiNetwork.setText(getContext().getString(R.string.swap_active_hotspot, config.SSID));
         } else if (TextUtils.isEmpty(FDroidApp.ssid)) {
             // not connected to or setup with any wifi network
-            viewWifiNetwork.setText(getContext().getString(R.string.swap_no_wifi_network));
+            viewWifiNetwork.setText(R.string.swap_no_wifi_network);
         } else {
             // connected to a regular wifi network
             viewWifiNetwork.setText(FDroidApp.ssid);

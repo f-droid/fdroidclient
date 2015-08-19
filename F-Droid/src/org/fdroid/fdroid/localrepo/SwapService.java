@@ -61,8 +61,9 @@ import java.util.TimerTask;
  * to enable p2p swapping of apps.
  *
  * The following UI elements don't do anything:
- *  + TODO: Change wifi by touching network name during swap start screen
+ *  + TODO: Be notified of changes to wifi state correctly, particularly from the WiFi AP (https://github.com/mvdan/accesspoint/issues/5)
  *  + TODO: The "?" button in the top right of the swap start screen doesn't do anything
+ *          (This has been commented out for now, but it is still preferable to have a working help mechanism)
  *
  * TODO: Show "Waiting for other device to finish setting up swap" when only F-Droid shown in swap
  * TODO: Handle "not connected to wifi" more gracefully. For example, Bonjour discovery falls over.

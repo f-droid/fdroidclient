@@ -263,6 +263,8 @@
 
     <string name="app_icon">App icon</string>
     <string name="repo_icon">Repo icon</string>
+    <string name="wifi">WiFi</string>
+    <string name="wifi_ap">Hotspot</string>
 
     <string name="Children">Children</string>
     <string name="Development">Development</string>
@@ -314,6 +316,7 @@
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has <b>F-Droid and NFC turned on</b> touch your phones together.</string>
     <string name="swap_join_same_wifi">Join the same WiFi</string>
+    <string name="swap_join_same_wifi_desc">To swap using WiFi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a WiFi Hotspot.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <string name="swap_use_bluetooth">Use Bluetooth instead</string>
     <string name="swap_wifi_help">Learn more about Wifi</string>
@@ -321,7 +324,7 @@
     <string name="swap">Swap apps</string>
     <string name="swap_success">Swap success!</string>
     <string name="swap_no_wifi_network">No network yet</string>
-    <string name="swap_active_hotspot">Your hotspot is active</string>
+    <string name="swap_active_hotspot">%1$s (your hotspot)</string>
     <string name="swap_view_available_networks">Tap to open available networks</string>
     <string name="swap_switch_to_wifi">Tap to switch to a WiFi network</string>
     <string name="swap_wifi_qr_not_working">It\'s not working</string>
@@ -352,8 +355,8 @@
     <string name="swap_connecting">Connecting</string>
     <string name="swap_confirm">Confirm swap</string>
     <string name="swap_qr_isnt_for_swap">The QR code you scanned doesn\'t look like a swap code.</string>
-
-    <!-- WiFi AP status for Swap flow -->
+    <string name="bluetooth_unavailable">Bluetooth unavailable</string>
+    <string name="swap_cant_send_no_bluetooth">Cannot send F-Droid, because Bluetooth is unavailable on this device.</string>
     <string name="loading">Loading…</string>
     <string name="swap_attempt_install">TRY TO INSTALL</string>
     <string name="swap_connection_misc_error">An error occurred while connecting to device, we can\'t seem to swap with it :(</string>
@@ -388,7 +391,7 @@
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
 
-    <string-array name="file_size_units">
+	<string-array name="file_size_units">
         <item>B</item>
         <item>KiB</item>
         <item>MiB</item>
