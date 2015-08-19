@@ -22,6 +22,8 @@
 
 * Fix privileged installer confirmation screen issues on Android 2.X/3.X/4.X
 
+* Fix a few crashes, including package receivers and NFC actions
+
 ### 0.95.1 (2015-08-10)
 
 * Disable prompt to install F-Droid into system until it's more stable

@@ -45,6 +45,10 @@ public class PackageUpgradedReceiver extends PackageReceiver {
     @Override
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
+        if (info == null) {
+            Log.d(TAG, "Could not get package info on '" + appId + "' - skipping.");
+            return;
+        }
 
         Log.d(TAG, "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
 

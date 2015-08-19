@@ -43,6 +43,10 @@ public class PackageAddedReceiver extends PackageReceiver {
     @Override
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
+        if (info == null) {
+            Log.d(TAG, "Could not get package info on '" + appId + "' - skipping.");
+            return;
+        }
 
         Log.d(TAG, "Inserting installed app info for '" + appId + "' (v" + info.versionCode + ")");
 
