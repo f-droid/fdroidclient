@@ -16,20 +16,20 @@ if ( !hasProperty( 'sourceDeps' ) ) {
 
     dependencies {
 
-        compile 'com.android.support:support-v4:22.2.1',
-                'com.android.support:appcompat-v7:22.2.1',
-                'com.android.support:support-annotations:22.2.1',
+        compile 'com.android.support:support-v4:22.2.1'
+        compile 'com.android.support:appcompat-v7:22.2.1'
+        compile 'com.android.support:support-annotations:22.2.1'
 
-                'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
-                'com.nostra13.universalimageloader:universal-image-loader:1.9.4',
-                'com.google.zxing:core:3.2.0',
-                'eu.chainfire:libsuperuser:1.0.0.201504231659',
+        compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
+        compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+        compile 'com.google.zxing:core:3.2.0'
+        compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
 
-                // We use a slightly modified spongycastle, see
-                // openkeychain/spongycastle with some changes on top of 1.51.0.0
-                'com.madgag.spongycastle:pkix:1.51.0.0',
-                'com.madgag.spongycastle:prov:1.51.0.0',
-                'com.madgag.spongycastle:core:1.51.0.0'
+        // We use a slightly modified spongycastle, see
+        // openkeychain/spongycastle with some changes on top of 1.51.0.0
+        compile 'com.madgag.spongycastle:pkix:1.51.0.0'
+        compile 'com.madgag.spongycastle:prov:1.51.0.0'
+        compile 'com.madgag.spongycastle:core:1.51.0.0'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
