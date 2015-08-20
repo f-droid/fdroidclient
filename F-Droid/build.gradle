@@ -70,18 +70,6 @@ if ( !hasProperty( 'sourceDeps' ) ) {
             exclude module: 'support-v4'
         }
 
-        // Until the android team updates the gradle plugin version from 0.10.0 to
-        // a newer version, we can't build this from source with our gradle version
-        // of 1.0.0. They use API's which have been moved in the newer plugin.
-        // So yes, this is a little annoying that our "source dependencies" include
-        // a bunch of binaries from jcenter - but the ant build file (which is the
-        // one used to build F-Droid which is distributed on https://f-droid.org
-        // builds these from source - well - not support-v4).
-        //
-        // If the android team gets the build script working with the newer plugin,
-        // then you can find the relevant portions of the ../build.gradle file that
-        // include magic required to make it work at around about the v0.78 git tag.
-        // They have since been removed to clean up the build file.
         compile 'com.android.support:support-v4:22.2.1',
                 'com.android.support:appcompat-v7:22.2.1',
                 'com.android.support:support-annotations:22.2.1'
