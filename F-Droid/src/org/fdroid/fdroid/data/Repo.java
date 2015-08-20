@@ -104,7 +104,7 @@ public class Repo extends ValueObject {
     /**
      * If we haven't run an update for this repo yet, then the name
      * will be unknown, in which case we will just take a guess at an
-     * appropriate name based on the url (e.g. "fdroid.org/archive")
+     * appropriate name based on the url (e.g. "f-droid.org/archive")
      */
     public static String addressToName(String address) {
         String tempName;

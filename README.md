@@ -1,7 +1,7 @@
 F-Droid Client
 ==============
 
-Client for [F-Droid](https://fdroid.org), the Free Software repository system
+Client for [F-Droid](https://f-droid.org), the Free Software repository system
 for Android.
 
 Building from source with Gradle
