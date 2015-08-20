@@ -10,9 +10,9 @@
 
 * Don't let users try to uninstall system apps that haven't been updated
 
-* Various bugfixes regarding the process to install F-Droid as a system app
+* Disable prompt to install F-Droid as a privileged app until it's more stable
 
-* Disable prompt to install F-Droid into system until it's more stable
+* Various bugfixes in the process that installs F-Droid as a privileged app
 
 * Fix crash when updating from an older release if using the "Light with dark
   ActionBar" theme
