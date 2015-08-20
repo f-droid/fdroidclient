@@ -47,8 +47,8 @@ Contributing
 You are welcome to submit
 [Merge Requests](https://gitlab.com/fdroid/fdroidclient/merge_requests)
 via the Gitlab web interface. You can also follow our
-[Issue tracker](https://f-droid.org/repository/issues/) and our
-[Forums](https://f-droid.org/forums/).
+[Issue tracker](https://gitlab.com/fdroid/fdroidclient/issues) and our
+[Forums](https://f-droid.org/forums).
 
 
 Translating
