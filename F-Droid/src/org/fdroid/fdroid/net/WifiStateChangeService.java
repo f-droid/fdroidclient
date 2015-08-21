@@ -85,9 +85,7 @@ public class WifiStateChangeService extends Service {
                         FDroidApp.ipAddressString = getIpAddressFromNetworkInterface();
                     }
                     Thread.sleep(1000);
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "waiting for an IP address...");
-                    }
+                    Utils.DebugLog(TAG, "waiting for an IP address...");
                 }
                 if (isCancelled())  // can be canceled by a change via WifiStateChangeReceiver
                     return null;

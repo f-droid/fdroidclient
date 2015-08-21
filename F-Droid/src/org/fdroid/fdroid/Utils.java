@@ -633,4 +633,16 @@ public final class Utils {
         }
     }
 
+    public static void DebugLog(String tag, String msg) {
+        if (BuildConfig.DEBUG) {
+            Log.d(tag, msg);
+        }
+    }
+
+    public static void DebugLog(String tag, String msg, Throwable tr) {
+        if (BuildConfig.DEBUG) {
+            Log.d(tag, msg, tr);
+        }
+    }
+
 }
