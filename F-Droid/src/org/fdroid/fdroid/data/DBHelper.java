@@ -139,7 +139,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private void renameRepoId(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 36 && !columnExists(db, TABLE_REPO, "_id")) {
 
-            Log.d(TAG, "Renaming " + TABLE_REPO + ".id to _id");
+            Utils.DebugLog(TAG, "Renaming " + TABLE_REPO + ".id to _id");
             db.beginTransaction();
 
             try {
@@ -476,7 +476,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private void createInstalledApp(SQLiteDatabase db) {
-        Log.d(TAG, "Creating 'installed app' database table.");
+        Utils.DebugLog(TAG, "Creating 'installed app' database table.");
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 

@@ -183,7 +183,7 @@ public class LocalRepoService extends Service {
     }
 
     private void startNetworkServices() {
-        Log.d(TAG, "Starting local repo network services");
+        Utils.DebugLog(TAG, "Starting local repo network services");
         startWebServer();
         if (Preferences.get().isLocalRepoBonjourEnabled())
             registerMDNSService();
@@ -191,13 +191,13 @@ public class LocalRepoService extends Service {
     }
 
     private void stopNetworkServices() {
-        Log.d(TAG, "Stopping local repo network services");
+        Utils.DebugLog(TAG, "Stopping local repo network services");
         Preferences.get().unregisterLocalRepoHttpsListeners(localRepoHttpsChangeListener);
 
-        Log.d(TAG, "Unregistering MDNS service...");
+        Utils.DebugLog(TAG, "Unregistering MDNS service...");
         unregisterMDNSService();
 
-        Log.d(TAG, "Stopping web server...");
+        Utils.DebugLog(TAG, "Stopping web server...");
         stopWebServer();
     }
 

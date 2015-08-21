@@ -192,7 +192,8 @@ public class ConnectSwapActivity extends ActionBarActivity {
                 HttpHost host = new HttpHost(repoUri.getHost(), repoUri.getPort(), repoUri.getScheme());
 
                 try {
-                    Log.d(TAG, "Asking server at " + newRepoConfig.getRepoUriString() + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
+                    Utils.DebugLog(TAG, "Asking server at " + newRepoConfig.getRepoUriString() +
+                            " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
                     populatePostParams(swapBackUri, request);
                     client.execute(host, request);
                 } catch (IOException e) {

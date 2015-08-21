@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ArrayAdapterCompat;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
@@ -156,7 +157,7 @@ public class AvailableAppsFragment extends AppListFragment implements
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 getListView().setSelection(0);
-                Log.d(TAG, "Selected category: " + categories.get(pos));
+                Utils.DebugLog(TAG, "Selected category: " + categories.get(pos));
                 setCurrentCategory(categories.get(pos));
             }
             @Override
@@ -194,7 +195,7 @@ public class AvailableAppsFragment extends AppListFragment implements
 
     private void setCurrentCategory(String category) {
         currentCategory = category;
-        Log.d(TAG, "Category '" + currentCategory + "' selected.");
+        Utils.DebugLog(TAG, "Category '" + currentCategory + "' selected.");
         getLoaderManager().restartLoader(0, null, AvailableAppsFragment.this);
     }
 

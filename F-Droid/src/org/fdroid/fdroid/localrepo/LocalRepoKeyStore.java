@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
 import org.spongycastle.asn1.ASN1Sequence;
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.asn1.x509.GeneralName;
@@ -84,15 +85,15 @@ public class LocalRepoKeyStore {
         try {
             File appKeyStoreDir = context.getDir("keystore", Context.MODE_PRIVATE);
 
-            Log.d(TAG, "Generating LocalRepoKeyStore instance: " + appKeyStoreDir.getAbsolutePath());
+            Utils.DebugLog(TAG, "Generating LocalRepoKeyStore instance: " + appKeyStoreDir.getAbsolutePath());
             this.keyStoreFile = new File(appKeyStoreDir, "kerplapp.bks");
 
-            Log.d(TAG, "Using default KeyStore type: " + KeyStore.getDefaultType());
+            Utils.DebugLog(TAG, "Using default KeyStore type: " + KeyStore.getDefaultType());
             this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 
             if (keyStoreFile.exists()) {
                 try {
-                    Log.d(TAG, "Keystore already exists, loading...");
+                    Utils.DebugLog(TAG, "Keystore already exists, loading...");
                     keyStore.load(new FileInputStream(keyStoreFile), "".toCharArray());
                 } catch (IOException e) {
                     Log.e(TAG, "Error while loading existing keystore. Will delete and create a new one.");
@@ -109,7 +110,7 @@ public class LocalRepoKeyStore {
                 // If there isn't a persisted BKS keystore on disk we need to
                 // create a new empty keystore
                 // Init a new keystore with a blank passphrase
-                Log.d(TAG, "Keystore doesn't exist, creating...");
+                Utils.DebugLog(TAG, "Keystore doesn't exist, creating...");
                 keyStore.load(null, "".toCharArray());
             }
 

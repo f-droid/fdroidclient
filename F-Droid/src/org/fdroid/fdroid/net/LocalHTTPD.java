@@ -7,6 +7,7 @@ import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import org.fdroid.fdroid.FDroidApp;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
 
@@ -73,8 +74,8 @@ public class LocalHTTPD extends NanoHTTPD {
     }
 
     private void requestSwap(String repo) {
-        Log.d(TAG, "Received request to swap with " + repo);
-        Log.d(TAG, "Showing confirm screen to check whether that is okay with the user.");
+        Utils.DebugLog(TAG, "Received request to swap with " + repo);
+        Utils.DebugLog(TAG, "Showing confirm screen to check whether that is okay with the user.");
 
         Uri repoUri = Uri.parse(repo);
         Intent intent = new Intent(context, ConnectSwapActivity.class);

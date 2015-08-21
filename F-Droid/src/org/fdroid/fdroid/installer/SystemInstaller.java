@@ -33,6 +33,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -107,7 +108,7 @@ public class SystemInstaller extends Installer {
         public void packageInstalled(String packageName, int returnCode) throws RemoteException {
             // TODO: propagate other return codes?
             if (returnCode == INSTALL_SUCCEEDED) {
-                Log.d(TAG, "Install succeeded");
+                Utils.DebugLog(TAG, "Install succeeded");
 
                 mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
             } else {
@@ -125,7 +126,7 @@ public class SystemInstaller extends Installer {
         public void packageDeleted(String packageName, int returnCode) throws RemoteException {
             // TODO: propagate other return codes?
             if (returnCode == DELETE_SUCCEEDED) {
-                Log.d(TAG, "Delete succeeded");
+                Utils.DebugLog(TAG, "Delete succeeded");
 
                 mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
             } else {

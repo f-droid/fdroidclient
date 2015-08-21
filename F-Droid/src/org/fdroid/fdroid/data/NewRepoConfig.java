@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
 
 import java.util.Arrays;
@@ -47,7 +48,7 @@ public class NewRepoConfig {
             return;
         }
 
-        Log.d(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
+        Utils.DebugLog(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
 
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
         scheme = uri.getScheme();

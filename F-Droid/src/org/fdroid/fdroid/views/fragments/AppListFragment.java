@@ -20,6 +20,7 @@ import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.views.AppListAdapter;
@@ -125,12 +126,12 @@ abstract public class AppListFragment extends ThemeableListFragment implements
         SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
         boolean hasTriedEmptyUpdate = prefs.getBoolean(TRIED_EMPTY_UPDATE, false);
         if (!hasTriedEmptyUpdate) {
-            Log.d(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
+            Utils.DebugLog(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
             prefs.edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
             UpdateService.updateNow(getActivity());
             return true;
         }
-        Log.d(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+        Utils.DebugLog(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
         return false;
     }
 

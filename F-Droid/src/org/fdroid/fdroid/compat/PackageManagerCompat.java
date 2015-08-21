@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
+
 public class PackageManagerCompat extends Compatibility {
 
     private static final String TAG = "PackageManagerCompat";
@@ -13,8 +15,7 @@ public class PackageManagerCompat extends Compatibility {
         if (!hasApi(11)) return;
         try {
             mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid");
-            Log.d(TAG, "Installer package name for " +
-                    packageName + " set successfully");
+            Utils.DebugLog(TAG, "Installer package name for " + packageName + " set successfully");
         } catch (Exception e) {
             // Many problems can occur:
             //  * App wasn't installed due to incompatibility

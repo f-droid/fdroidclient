@@ -390,10 +390,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         // Get the preferences we're going to use in this Activity...
         ConfigurationChangeHelper previousData = (ConfigurationChangeHelper)getLastCustomNonConfigurationInstance();
         if (previousData != null) {
-            Log.d(TAG, "Recreating view after configuration change.");
+            Utils.DebugLog(TAG, "Recreating view after configuration change.");
             downloadHandler = previousData.downloader;
             if (downloadHandler != null) {
-                Log.d(TAG, "Download was in progress before the configuration change, so we will start to listen to its events again.");
+                Utils.DebugLog(TAG, "Download was in progress before the configuration change, so we will start to listen to its events again.");
             }
             app = previousData.app;
             setApp(app);
@@ -499,7 +499,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         super.onPause();
         if (app != null && (app.ignoreAllUpdates != startingIgnoreAll
                 || app.ignoreThisUpdate != startingIgnoreThis)) {
-            Log.d(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
+            Utils.DebugLog(TAG, "Updating 'ignore updates', as it has changed since we started the activity...");
             setIgnoreUpdates(app.id, app.ignoreAllUpdates, app.ignoreThisUpdate);
         }
 
@@ -567,7 +567,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     // Return true if the app was found, false otherwise.
     private boolean reset(String appId) {
 
-        Log.d(TAG, "Getting application details for " + appId);
+        Utils.DebugLog(TAG, "Getting application details for " + appId);
         App newApp = null;
 
         if (!TextUtils.isEmpty(appId)) {
@@ -968,7 +968,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // the download thread to make sure that we check for cancellations before
             // sending events, but it is not possible to be perfect, because the interruption
             // which triggers the download can happen after the check to see if
-            Log.d(TAG, "Discarding downloader event \"" + event.type + "\" as it is from an old (probably cancelled) downloader.");
+            Utils.DebugLog(TAG, "Discarding downloader event \"" + event.type + "\" as it is from an old (probably cancelled) downloader.");
             return;
         }
 

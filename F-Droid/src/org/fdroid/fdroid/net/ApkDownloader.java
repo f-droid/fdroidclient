@@ -137,10 +137,10 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     private boolean verifyOrDelete(@NonNull final File apkFile) {
         if (apkFile.exists()) {
             if (hashMatches(apkFile)) {
-                Log.d(TAG, "Using cached apk at " + apkFile);
+                Utils.DebugLog(TAG, "Using cached apk at " + apkFile);
                 return true;
             }
-            Log.d(TAG, "Not using cached apk at " + apkFile + "(hash doesn't match, will delete file)");
+            Utils.DebugLog(TAG, "Not using cached apk at " + apkFile + "(hash doesn't match, will delete file)");
             delete(apkFile);
         }
         return false;
@@ -187,7 +187,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         }
 
         String remoteAddress = getRemoteAddress();
-        Log.d(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
+        Utils.DebugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
             Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
@@ -245,7 +245,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
         cacheIfRequired();
 
-        Log.d(TAG, "Download finished: " + localFile);
+        Utils.DebugLog(TAG, "Download finished: " + localFile);
         prepareApkFileAndSendCompleteMessage();
     }
 

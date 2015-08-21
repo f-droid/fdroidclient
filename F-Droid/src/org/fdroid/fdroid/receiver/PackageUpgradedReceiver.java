@@ -25,6 +25,7 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 
 /**
@@ -46,11 +47,11 @@ public class PackageUpgradedReceiver extends PackageReceiver {
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
         if (info == null) {
-            Log.d(TAG, "Could not get package info on '" + appId + "' - skipping.");
+            Utils.DebugLog(TAG, "Could not get package info on '" + appId + "' - skipping.");
             return;
         }
 
-        Log.d(TAG, "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
+        Utils.DebugLog(TAG, "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
 
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues values = new ContentValues(4);

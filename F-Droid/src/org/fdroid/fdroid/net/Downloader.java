@@ -99,7 +99,7 @@ public abstract class Downloader {
     public abstract boolean isCached();
 
     protected void downloadFromStream() throws IOException, InterruptedException {
-        Log.d(TAG, "Downloading from stream");
+        Utils.DebugLog(TAG, "Downloading from stream");
         InputStream input = null;
         try {
             input = getInputStream();
@@ -133,7 +133,7 @@ public abstract class Downloader {
      */
     private void throwExceptionIfInterrupted() throws InterruptedException {
         if (Thread.interrupted()) {
-            Log.d(TAG, "Received interrupt, cancelling download");
+            Utils.DebugLog(TAG, "Received interrupt, cancelling download");
             throw new InterruptedException();
         }
     }
@@ -160,7 +160,7 @@ public abstract class Downloader {
             throwExceptionIfInterrupted();
 
             if (count == -1) {
-                Log.d(TAG, "Finished downloading from stream");
+                Utils.DebugLog(TAG, "Finished downloading from stream");
                 break;
             }
             bytesRead += count;

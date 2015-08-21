@@ -186,11 +186,11 @@ public class RepoProvider extends FDroidProvider {
             Uri apkUri = ApkProvider.getRepoUri(repo.getId());
             ContentResolver resolver = context.getContentResolver();
             int apkCount = resolver.delete(apkUri, null, null);
-            Log.d(TAG, "Removed " + apkCount + " apks from repo " + repo.name);
+            Utils.DebugLog(TAG, "Removed " + apkCount + " apks from repo " + repo.name);
 
             Uri appUri = AppProvider.getNoApksUri();
             int appCount = resolver.delete(appUri, null, null);
-            Log.d(TAG, "Removed " + appCount + " apps with no apks.");
+            Utils.DebugLog(TAG, "Removed " + appCount + " apps with no apks.");
         }
 
         public static int countAppsForRepo(Context context, long repoId) {

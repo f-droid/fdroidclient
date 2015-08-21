@@ -66,6 +66,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
@@ -519,7 +520,7 @@ public class ManageReposActivity extends ActionBarActivity {
                     final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
                     for (final String path : pathsToCheck) {
 
-                        Log.d(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
+                        Utils.DebugLog(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
                         Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
                         final String addressWithoutIndex = builder.build().toString();
                         publishProgress(addressWithoutIndex);
@@ -537,7 +538,7 @@ public class ManageReposActivity extends ActionBarActivity {
                         }
 
                         if (isCancelled()) {
-                            Log.d(TAG, "Not checking any more repo addresses, because process was skipped.");
+                            Utils.DebugLog(TAG, "Not checking any more repo addresses, because process was skipped.");
                             break;
                         }
                     }
@@ -638,7 +639,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 }
             }
 
-            Log.d(TAG, "Enabling existing repo: " + url);
+            Utils.DebugLog(TAG, "Enabling existing repo: " + url);
             Repo repo = RepoProvider.Helper.findByAddress(context, url);
             ContentValues values = new ContentValues(2);
             values.put(RepoProvider.DataColumns.IN_USE, 1);
