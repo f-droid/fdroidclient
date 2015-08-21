@@ -288,12 +288,12 @@ public class UpdateService extends IntentService implements ProgressListener {
         String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
         int interval = Integer.parseInt(sint);
         if (interval == 0) {
-            Log.d(TAG, "Skipping update - disabled");
+            Log.i(TAG, "Skipping update - disabled");
             return false;
         }
         long elapsed = System.currentTimeMillis() - lastUpdate;
         if (elapsed < interval * 60 * 60 * 1000) {
-            Log.d(TAG, "Skipping update - done " + elapsed
+            Log.i(TAG, "Skipping update - done " + elapsed
                     + "ms ago, interval is " + interval + " hours");
             return false;
         }
@@ -305,7 +305,7 @@ public class UpdateService extends IntentService implements ProgressListener {
             NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
             if (wifi != NetworkInfo.State.CONNECTED &&
                     wifi !=  NetworkInfo.State.CONNECTING) {
-                Log.d(TAG, "Skipping update - wifi not available");
+                Log.i(TAG, "Skipping update - wifi not available");
                 return false;
             }
         }

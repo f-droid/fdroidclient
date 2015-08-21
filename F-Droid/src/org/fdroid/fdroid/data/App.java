@@ -241,7 +241,7 @@ public class App extends ValueObject implements Comparable<App> {
                         PackageManager.GET_META_DATA);
                 installerPackageLabel = installerAppInfo.loadLabel(pm);
             } catch (PackageManager.NameNotFoundException e) {
-                Log.d(TAG, e.getMessage());
+                Log.w(TAG, "Could not get app info", e);
             }
         }
         if (TextUtils.isEmpty(installerPackageLabel))

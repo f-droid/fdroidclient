@@ -189,7 +189,7 @@ public class SystemInstaller extends Installer {
         try {
             appInfo = mPm.getApplicationInfo(packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
         } catch (PackageManager.NameNotFoundException e) {
-            Log.d(TAG, "Failed to get ApplicationInfo for uninstalling");
+            Log.w(TAG, "Failed to get ApplicationInfo for uninstalling");
             return;
         }
 
