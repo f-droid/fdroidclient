@@ -39,6 +39,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
@@ -62,6 +63,8 @@ import java.util.Locale;
 import java.util.Set;
 
 public class FDroidApp extends Application {
+
+    private static final String TAG = "FDroidApp";
 
     // for the local repo on this device, all static since there is only one
     public static int port;
@@ -295,8 +298,8 @@ public class FDroidApp extends Application {
                     break;
                 }
             }
-        } catch (PackageManager.NameNotFoundException e1) {
-            e1.printStackTrace();
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Could not get application info to send via bluetooth", e);
             found = false;
         }
         if (sendBt != null) {
@@ -351,7 +354,7 @@ public class FDroidApp extends Application {
                 Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
                 localRepoServiceMessenger.send(msg);
             } catch (RemoteException e) {
-                e.printStackTrace();
+                Log.e(TAG, "Could not reset local repo service", e);
             }
         }
     }

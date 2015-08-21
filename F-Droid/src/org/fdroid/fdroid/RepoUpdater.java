@@ -76,7 +76,7 @@ public class RepoUpdater {
             String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
             urlString += "?client_version=" + versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Could not get client version name", e);
         }
         return new URL(urlString);
     }

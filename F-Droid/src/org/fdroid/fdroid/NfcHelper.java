@@ -10,8 +10,11 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Build;
+import android.util.Log;
 
 public class NfcHelper {
+
+    private static final String TAG = "NfcHelper";
 
     @TargetApi(14)
     private static NfcAdapter getAdapter(Context context) {
@@ -48,7 +51,7 @@ public class NfcHelper {
                 };
                 nfcAdapter.setBeamPushUris(uris, activity);
             } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
+                Log.e(TAG, "Could not get application info", e);
             }
         }
     }

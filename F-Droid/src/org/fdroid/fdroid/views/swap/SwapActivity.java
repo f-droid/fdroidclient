@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -268,7 +269,7 @@ public class SwapActivity extends ActionBarActivity implements SwapProcessManage
                     }
                 }.execute();
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.e(TAG, "An error occured while setting up the local repo", e);
             }
             return null;
         }

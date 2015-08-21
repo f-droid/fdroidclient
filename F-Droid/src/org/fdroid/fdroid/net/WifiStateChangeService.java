@@ -171,8 +171,8 @@ public class WifiStateChangeService extends Service {
                     }
                 }
             }
-        } catch (SocketException ex) {
-            ex.printStackTrace();
+        } catch (SocketException e) {
+            Log.e(TAG, "Could not get ip address", e);
         }
 
         return null;

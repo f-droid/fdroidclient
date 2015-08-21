@@ -7,6 +7,7 @@ import android.net.wifi.WifiManager.MulticastLock;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,7 +106,7 @@ public class MDnsHelper implements ServiceListener {
                     };
                     mJmdns = JmDNS.create(InetAddress.getByAddress(byteIp));
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "An error occured while discovering services", e);
                 }
                 return null;
             }

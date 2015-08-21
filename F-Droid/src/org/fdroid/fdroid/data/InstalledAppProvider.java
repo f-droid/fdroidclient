@@ -100,9 +100,7 @@ public class InstalledAppProvider extends FDroidProvider {
         try {
             appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
             return appInfo.loadLabel(pm).toString();
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (Resources.NotFoundException e) {
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
             Utils.DebugLog(TAG, "Could not get application label", e);
         }
         return packageName; // all else fails, return id
