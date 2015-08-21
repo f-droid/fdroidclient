@@ -533,7 +533,7 @@ public class ManageReposActivity extends ActionBarActivity {
                                 return addressWithoutIndex;
                             }
                         } catch (IOException e) {
-                            Log.e(TAG, "Error while searching for repo at " + addressWithoutIndex + ": " + e.getMessage());
+                            Log.e(TAG, "Error while searching for repo at " + addressWithoutIndex, e);
                             return originalAddress;
                         }
 

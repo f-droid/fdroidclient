@@ -76,7 +76,7 @@ public class FileCompat extends Compatibility {
         } catch (Exception e) {
             // Should catch more specific exceptions than just "Exception" here, but there are
             // some which come from libcore.io.Libcore, which we don't have access to at compile time.
-            Log.e(TAG, "Could not symlink " + source.getAbsolutePath() + " to " + dest.getAbsolutePath() + ": " + e.getMessage());
+            Log.e(TAG, "Could not symlink " + source.getAbsolutePath() + " to " + dest.getAbsolutePath(), e);
         }
     }
 

@@ -376,8 +376,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 } catch (RepoUpdater.UpdateException e) {
                     errorRepos.add(repo.address);
                     repoErrors.add(e.getMessage());
-                    Log.e(TAG, "Error updating repository " + repo.address + ": " + e.getMessage());
-                    Log.e(TAG, Log.getStackTraceString(e));
+                    Log.e(TAG, "Error updating repository " + repo.address, e);
                 }
             }
 
@@ -438,9 +437,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 }
             }
         } catch (Exception e) {
-            Log.e(TAG,
-                    "Exception during update processing:\n"
-                            + Log.getStackTraceString(e));
+            Log.e(TAG, "Exception during update processing", e);
             sendStatus(STATUS_ERROR_GLOBAL, e.getMessage());
         }
     }
@@ -597,7 +594,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         try {
             executeBatchWithStatus(AppProvider.getAuthority(), operations, currentCount, totalUpdateCount);
         } catch (RemoteException | OperationApplicationException e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "Could not update or insert apps", e);
         }
     }
 
@@ -656,7 +653,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         try {
             executeBatchWithStatus(ApkProvider.getAuthority(), operations, currentCount, totalApksAppsCount);
         } catch (RemoteException | OperationApplicationException e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "Could not update/insert apps", e);
         }
     }
 

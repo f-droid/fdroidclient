@@ -59,7 +59,7 @@ public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
         try {
             qrBitmap = qrCodeEncoder.encodeAsBitmap();
         } catch (WriterException e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "Could not encode QR as bitmap", e);
         }
         return null;
     }

@@ -95,7 +95,7 @@ public class AsyncDownloadWrapper extends Handler {
             } catch (InterruptedException e) {
                 sendMessage(MSG_DOWNLOAD_CANCELLED);
             } catch (IOException e) {
-                Log.e(TAG, e.getMessage() + ": " + Log.getStackTraceString(e));
+                Log.e(TAG, "I/O exception in download thread", e);
                 Bundle data = new Bundle(1);
                 data.putString(MSG_DATA, e.getLocalizedMessage());
                 Message message = new Message();

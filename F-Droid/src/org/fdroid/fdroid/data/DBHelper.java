@@ -181,7 +181,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.execSQL("DROP TABLE " + tempTableName + ";");
                 db.setTransactionSuccessful();
             } catch (Exception e) {
-                Log.e(TAG, "Error renaming id to _id: " + e.getMessage());
+                Log.e(TAG, "Error renaming id to _id", e);
             }
             db.endTransaction();
         }

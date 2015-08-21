@@ -156,12 +156,10 @@ public class LocalRepoKeyStore {
                     wrappedKeyManager
             };
         } catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException | CertificateException | OperatorCreationException | IOException e) {
-            Log.e(TAG, "Error loading keystore: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Error loading keystore", e);
         // TODO: Remove once we have a proper fix for #334
         } catch (IllegalArgumentException e) {
-            Log.e(TAG, "Error loading keystore: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Error loading keystore", e);
             Log.e(TAG, "See https://gitlab.com/fdroid/fdroidclient/issues/334");
         }
     }
@@ -183,8 +181,7 @@ public class LocalRepoKeyStore {
                     FDroidApp.ipAddressString);
             addToStore(HTTP_CERT_ALIAS, kerplappKeypair, indexCert);
         } catch (Exception e) {
-            Log.e(TAG, "Failed to setup HTTPS certificate: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Failed to setup HTTPS certificate", e);
         }
     }
 
@@ -213,8 +210,7 @@ public class LocalRepoKeyStore {
             zipSigner.signZip(input.getAbsolutePath(), output.getAbsolutePath());
 
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | GeneralSecurityException | IOException e) {
-            Log.e(TAG, "Unable to sign local repo index: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Unable to sign local repo index", e);
         }
     }
 
@@ -243,8 +239,7 @@ public class LocalRepoKeyStore {
             if (key instanceof PrivateKey)
                 return keyStore.getCertificate(INDEX_CERT_ALIAS);
         } catch (GeneralSecurityException e) {
-            Log.e(TAG, "Unable to get certificate for local repo: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Unable to get certificate for local repo", e);
         }
         return null;
     }

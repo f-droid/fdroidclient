@@ -103,7 +103,7 @@ public class InstalledAppProvider extends FDroidProvider {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         } catch (Resources.NotFoundException e) {
-            Utils.DebugLog(TAG, "getApplicationLabel: " + e.getMessage());
+            Utils.DebugLog(TAG, "Could not get application label", e);
         }
         return packageName; // all else fails, return id
     }

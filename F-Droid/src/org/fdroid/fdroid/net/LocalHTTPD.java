@@ -91,7 +91,7 @@ public class LocalHTTPD extends NanoHTTPD {
             try {
                 session.parseBody(new HashMap<String, String>());
             } catch (IOException e) {
-                Log.e(TAG, e.getMessage());
+                Log.e(TAG, "An error occured while parsing the POST body", e);
                 return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "Internal server error, check logcat on server for details.");
             } catch (ResponseException re) {
                 return new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
@@ -153,8 +153,7 @@ public class LocalHTTPD extends NanoHTTPD {
                     localRepoKeyStore.getKeyManagers());
             makeSecure(factory);
         } catch (LocalRepoKeyStore.InitException | IOException e) {
-            Log.e(TAG, "Could not enable HTTPS: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Could not enable HTTPS", e);
         }
     }
 

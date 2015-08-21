@@ -135,11 +135,8 @@ public class WifiStateChangeService extends Service {
                 if (Preferences.get().isLocalRepoHttpsEnabled())
                     localRepoKeyStore.setupHTTPSCertificate();
 
-            } catch (LocalRepoKeyStore.InitException e) {
-                Log.e(TAG, "Unable to configure a fingerprint or HTTPS for the local repo: " + e.getMessage());
-                Log.e(TAG, Log.getStackTraceString(e));
-            } catch (InterruptedException e) {
-                Log.e(TAG, Log.getStackTraceString(e));
+            } catch (LocalRepoKeyStore.InitException | InterruptedException e) {
+                Log.e(TAG, "Unable to configure a fingerprint or HTTPS for the local repo", e);
             }
             return null;
         }

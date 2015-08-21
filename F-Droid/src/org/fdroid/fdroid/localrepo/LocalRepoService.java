@@ -228,8 +228,7 @@ public class LocalRepoService extends Service {
                     Log.w(TAG, "port " + prev + " occupied, trying on " + FDroidApp.port + "!");
                     startService(new Intent(LocalRepoService.this, WifiStateChangeService.class));
                 } catch (IOException e) {
-                    Log.e(TAG, "Could not start local repo HTTP server: " + e);
-                    Log.e(TAG, Log.getStackTraceString(e));
+                    Log.e(TAG, "Could not start local repo HTTP server", e);
                 }
                 Looper.loop(); // start the message receiving loop
             }
@@ -282,8 +281,7 @@ public class LocalRepoService extends Service {
                     jmdns = JmDNS.create();
                     jmdns.registerService(pairService);
                 } catch (IOException e) {
-                    Log.e(TAG, "Error while registering jmdns service: " + e);
-                    Log.e(TAG, Log.getStackTraceString(e));
+                    Log.e(TAG, "Error while registering jmdns service", e);
                 }
             }
         }).start();

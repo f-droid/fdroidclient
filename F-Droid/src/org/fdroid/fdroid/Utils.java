@@ -165,7 +165,7 @@ public final class Utils {
             input.close();
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "I/O error when copying a file", e);
             return false;
         }
     }
@@ -247,7 +247,7 @@ public final class Utils {
                 eventType = xml.nextToken();
             }
         } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Could not get min/max sdk version", e);
         }
         return 0;
     }
@@ -364,8 +364,7 @@ public final class Utils {
             ret = formatter.toString();
             formatter.close();
         } catch (Exception e) {
-            Log.w(TAG, "Unable to get certificate fingerprint.\n"
-                    + Log.getStackTraceString(e));
+            Log.w(TAG, "Unable to get certificate fingerprint", e);
         }
         return ret;
     }
