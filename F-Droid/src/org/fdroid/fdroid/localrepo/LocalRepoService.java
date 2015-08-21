@@ -118,7 +118,7 @@ public class LocalRepoService extends Service {
     private final ChangeListener localRepoHttpsChangeListener = new ChangeListener() {
         @Override
         public void onPreferenceChange() {
-            Log.i(TAG, "onPreferenceChange");
+            Utils.DebugLog(TAG, "onPreferenceChange");
             if (localHttpd.isAlive()) {
                 new AsyncTask<Void, Void, Void>() {
                     @Override
@@ -216,7 +216,7 @@ public class LocalRepoService extends Service {
                 webServerThreadHandler = new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
-                        Log.i(TAG, "we've been asked to stop the webserver: " + msg.obj);
+                        Utils.DebugLog(TAG, "we've been asked to stop the webserver: " + msg.obj);
                         localHttpd.stop();
                     }
                 };
@@ -242,7 +242,7 @@ public class LocalRepoService extends Service {
 
     private void stopWebServer() {
         if (webServerThreadHandler == null) {
-            Log.i(TAG, "null handler in stopWebServer");
+            Utils.DebugLog(TAG, "null handler in stopWebServer");
             return;
         }
         Message msg = webServerThreadHandler.obtainMessage();

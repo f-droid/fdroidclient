@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
@@ -35,11 +36,9 @@ public class LocalHTTPD extends NanoHTTPD {
 
     private final Context context;
     private final File webRoot;
-    private final boolean logRequests;
 
     public LocalHTTPD(Context context, File webRoot, boolean useHttps) {
         super(FDroidApp.ipAddressString, FDroidApp.port);
-        this.logRequests = false;
         this.webRoot = webRoot;
         this.context = context.getApplicationContext();
         if (useHttps)
@@ -123,18 +122,18 @@ public class LocalHTTPD extends NanoHTTPD {
         Map<String, String> parms = session.getParms();
         String uri = session.getUri();
 
-        if (logRequests) {
-            Log.i(TAG, session.getMethod() + " '" + uri + "' ");
+        if (BuildConfig.DEBUG) {
+            Utils.DebugLog(TAG, session.getMethod() + " '" + uri + "' ");
 
             Iterator<String> e = header.keySet().iterator();
             while (e.hasNext()) {
                 String value = e.next();
-                Log.i(TAG, "  HDR: '" + value + "' = '" + header.get(value) + "'");
+                Utils.DebugLog(TAG, "  HDR: '" + value + "' = '" + header.get(value) + "'");
             }
             e = parms.keySet().iterator();
             while (e.hasNext()) {
                 String value = e.next();
-                Log.i(TAG, "  PRM: '" + value + "' = '" + parms.get(value) + "'");
+                Utils.DebugLog(TAG, "  PRM: '" + value + "' = '" + parms.get(value) + "'");
             }
         }
 

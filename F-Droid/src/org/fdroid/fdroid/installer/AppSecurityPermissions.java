@@ -345,7 +345,7 @@ public class AppSecurityPermissions {
                 myPerm.mNew = newPerm;
                 permSet.add(myPerm);
             } catch (NameNotFoundException e) {
-                Log.i(TAG, "Ignoring unknown permission:"+permName);
+                Log.i(TAG, "Ignoring unknown permission:" + permName);
             }
         }
     }

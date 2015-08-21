@@ -616,18 +616,18 @@ public final class Utils {
         }
 
         if (startsWith != null) {
-            Log.i(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
+            DebugLog(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
         }
 
         if (endsWith != null) {
-            Log.i(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
+            DebugLog(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
         }
 
         for (File f : files) {
             if ((startsWith != null && f.getName().startsWith(startsWith))
                 || (endsWith != null && f.getName().endsWith(endsWith))) {
                 if (!f.delete()) {
-                    Log.i(TAG, "Couldn't delete cache file " + f);
+                    Log.w(TAG, "Couldn't delete cache file " + f);
                 }
             }
         }

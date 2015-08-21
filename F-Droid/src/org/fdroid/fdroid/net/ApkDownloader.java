@@ -230,7 +230,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     private void cacheIfRequired() {
         if (Preferences.get().shouldCacheApks()) {
-            Log.i(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
+            Utils.DebugLog(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
             Utils.copy(localFile, potentiallyCachedFile);
         }
     }

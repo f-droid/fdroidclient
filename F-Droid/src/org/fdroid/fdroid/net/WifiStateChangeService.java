@@ -44,7 +44,7 @@ public class WifiStateChangeService extends Service {
         if (ni == null || ni.isConnected()) {
             /* started on app start or from WifiStateChangeReceiver,
                NetworkInfo is only passed via WifiStateChangeReceiver */
-            Log.i(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
+            Utils.DebugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
             if (wifiState == WifiManager.WIFI_STATE_ENABLED
                     || wifiState == WifiManager.WIFI_STATE_DISABLING   // might be switching to hotspot
                     || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot

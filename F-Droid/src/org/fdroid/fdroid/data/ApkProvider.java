@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.fdroid.fdroid.Utils;
+
 public class ApkProvider extends FDroidProvider {
 
     private static final String TAG = "ApkProvider";
@@ -427,7 +429,7 @@ public class ApkProvider extends FDroidProvider {
         for (Map.Entry<String, String> repoField : REPO_FIELDS.entrySet()) {
             final String field = repoField.getKey();
             if (values.containsKey(field)) {
-                Log.i(TAG, "Cannot insert/update '" + field + "' field " +
+                Utils.DebugLog(TAG, "Cannot insert/update '" + field + "' field " +
                         "on apk table, as it belongs to the repo table. " +
                         "This field will be ignored.");
                 values.remove(field);

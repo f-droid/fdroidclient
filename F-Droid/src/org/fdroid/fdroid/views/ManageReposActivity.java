@@ -343,13 +343,13 @@ public class ManageReposActivity extends ActionBarActivity {
                             return;
                         }
 
-                        switch(addRepoState) {
+                        switch (addRepoState) {
                             case DOESNT_EXIST:
                                 prepareToCreateNewRepo(url, fp);
                                 break;
 
                             case IS_SWAP:
-                                Log.i(TAG, "Removing existing swap repo " + url + " before adding new repo.");
+                                Utils.DebugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
                                 Repo repo = RepoProvider.Helper.findByAddress(context, url);
                                 RepoProvider.Helper.remove(context, repo.getId());
                                 prepareToCreateNewRepo(url, fp);
@@ -529,7 +529,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
                         try {
                             if (checkForRepository(uri)) {
-                                Log.i(TAG, "Found F-Droid repo at " + addressWithoutIndex);
+                                Utils.DebugLog(TAG, "Found F-Droid repo at " + addressWithoutIndex);
                                 return addressWithoutIndex;
                             }
                         } catch (IOException e) {
@@ -704,7 +704,7 @@ public class ManageReposActivity extends ActionBarActivity {
         @Override
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
             Uri uri = RepoProvider.allExceptSwapUri();
-            Log.i(TAG, "Creating repo loader '" + uri + "'.");
+            Utils.DebugLog(TAG, "Creating repo loader '" + uri + "'.");
             final String[] projection = {
                     RepoProvider.DataColumns._ID,
                     RepoProvider.DataColumns.NAME,

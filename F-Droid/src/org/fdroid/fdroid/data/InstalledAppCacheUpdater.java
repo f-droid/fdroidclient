@@ -72,7 +72,7 @@ public class InstalledAppCacheUpdater {
     }
 
     protected void notifyProviders() {
-        Log.i(TAG, "Installed app cache has changed, notifying content providers (so they can update the relevant views).");
+        Utils.DebugLog(TAG, "Installed app cache has changed, notifying content providers (so they can update the relevant views).");
         context.getContentResolver().notifyChange(AppProvider.getContentUri(), null);
         context.getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
     }

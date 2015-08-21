@@ -337,7 +337,7 @@ public class RepoProvider extends FDroidProvider {
         }
 
         long id = write().insertOrThrow(getTableName(), null, values);
-        Log.i(TAG, "Inserted repo. Notifying provider change: '" + uri + "'.");
+        Utils.DebugLog(TAG, "Inserted repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return getContentUri(id);
     }
@@ -361,7 +361,7 @@ public class RepoProvider extends FDroidProvider {
         }
 
         int rowsAffected = write().delete(getTableName(), where, whereArgs);
-        Log.i(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
+        Utils.DebugLog(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return rowsAffected;
     }
@@ -369,7 +369,7 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         int numRows = write().update(getTableName(), values, where, whereArgs);
-        Log.i(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
+        Utils.DebugLog(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return numRows;
     }

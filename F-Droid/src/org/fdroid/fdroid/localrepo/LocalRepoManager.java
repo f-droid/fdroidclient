@@ -260,7 +260,7 @@ public class LocalRepoManager {
             Log.e(TAG, Log.getStackTraceString(e));
             return;
         }
-        Log.i(TAG, "apps.put: " + packageName);
+        Utils.DebugLog(TAG, "apps.put: " + packageName);
         apps.put(packageName, app);
     }
 

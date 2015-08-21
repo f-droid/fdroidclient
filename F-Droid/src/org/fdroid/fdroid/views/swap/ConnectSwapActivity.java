@@ -114,9 +114,9 @@ public class ConnectSwapActivity extends ActionBarActivity {
 
             switch (statusCode) {
                 case UpdateService.STATUS_COMPLETE_AND_SAME:
-                    Log.i(TAG, "STATUS_COMPLETE_AND_SAME");
+                    Utils.DebugLog(TAG, "STATUS_COMPLETE_AND_SAME");
                 case UpdateService.STATUS_COMPLETE_WITH_CHANGES:
-                    Log.i(TAG, "STATUS_COMPLETE_WITH_CHANGES");
+                    Utils.DebugLog(TAG, "STATUS_COMPLETE_WITH_CHANGES");
                     Intent salIntent = new Intent(getBaseContext(), SwapAppListActivity.class);
                     salIntent.putExtra(SwapAppListActivity.EXTRA_REPO_ID, repo.getId());
                     startActivity(salIntent);
