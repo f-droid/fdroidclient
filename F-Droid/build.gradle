@@ -172,13 +172,6 @@ android {
         disable 'MissingTranslation'
     }
 
-    // Enable all Android lint warnings
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:all"
-        }
-    }
-
 }
 
 // This person took the example code below from another blogpost online, however
