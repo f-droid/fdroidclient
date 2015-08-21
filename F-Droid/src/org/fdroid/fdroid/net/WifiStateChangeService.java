@@ -123,6 +123,10 @@ public class WifiStateChangeService extends Service {
                 // the fingerprint for the local repo's signing key
                 LocalRepoKeyStore localRepoKeyStore = LocalRepoKeyStore.get(context);
                 Certificate localCert = localRepoKeyStore.getCertificate();
+                // We were not able to generate/get a certificate
+                if (localCert == null) {
+                    return null;
+                }
                 FDroidApp.repo.fingerprint = Utils.calcFingerprint(localCert);
 
                 /*
