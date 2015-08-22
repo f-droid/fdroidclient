@@ -13,8 +13,6 @@
 	<string name="cache_downloaded">App cache</string>
 	<string name="cache_downloaded_on">Keep downloaded .apk files on device</string>
 	<string name="updates">Updates</string>
-	<string name="updates_summary">Get updates newer than suggested version</string>
-	<string name="beta_updates">Beta updates</string>
 	<string name="other">Other</string>
 	<string name="last_update_check">Last repo scan: %s</string>
 	<string name="never">never</string>
