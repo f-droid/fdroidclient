@@ -78,11 +78,6 @@
 		<CheckBoxPreference android:title="@string/cache_downloaded"
 			android:defaultValue="false"
 			android:key="cacheDownloaded" />
-		<CheckBoxPreference
-			android:key="betaUpdates"
-			android:title="@string/beta_updates"
-			android:summary="@string/updates_summary"
-			android:defaultValue="false" />
 		<CheckBoxPreference android:title="@string/expert"
 			android:defaultValue="false"
 			android:key="expert" />
