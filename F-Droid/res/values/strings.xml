@@ -317,7 +317,7 @@
     <string name="system_uninstall_button">Uninstall</string>
 
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
-    <string name="swap_nfc_description">If your friend has <b>F-Droid and NFC turned on</b> touch your phones together.</string>
+    <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your phones together.</string>
     <string name="swap_join_same_wifi">Join the same Wifi as your friend</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <string name="swap_use_bluetooth">Use Bluetooth instead</string>
