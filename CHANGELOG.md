@@ -1,12 +1,8 @@
 ### 0.96 (2015-09-??)
 
-* Add feature to offer beta (non-stable) updates for apps
-
 * Move the repo index update to a notification
 
 * Handle apk downloads without a dialog
-
-* Add timeouts for HTTP requests to avoid ever-lasting downloads
 
 * Don't let users try to uninstall system apps that haven't been updated
 
@@ -23,6 +19,8 @@
 * Fix privileged installer confirmation screen issues on Android 2.X/3.X/4.X
 
 * Fix a few crashes, including package receivers and NFC actions
+
+* Translation updates
 
 ### 0.95.1 (2015-08-10)
 
