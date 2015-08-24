@@ -214,7 +214,7 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
   <string name="repo_added">Repositório F-Droid %1$s salvo</string>
   <string name="repo_searching_address">Procurando por repositório F-Droid em
 %1$s</string>
-  <string name="minsdk_or_later">%$ ou posterior</string>
+  <string name="minsdk_or_later">%s ou posterior</string>
   <string name="up_to_maxsdk">até %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s até %2$s</string>
   <string name="not_on_same_wifi">O seu dispositivo não está na mesma WiFi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
