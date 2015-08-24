@@ -24,8 +24,6 @@
   <string name="notify_on">Ilmoita, kun päivityksiä on saatavissa</string>
   <string name="update_history">Päivityshistoria</string>
   <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
-  <string name="root_installer">Asennus käyttäen root-oikeuksia</string>
-  <string name="root_installer_on">Pyydä root-oikeuksia asennuksiin, päivityksiin ja pakettien poistoon</string>
   <string name="system_installer">Asenna käytäen järjestelmän oikeuksia</string>
   <string name="system_installer_on">Käytä järjestelmän oikeuksia asennuksiin, päivityksiin ja pakettien poistoihin.</string>
   <string name="local_repo_bonjour">Kuuluta paikallista säilöä</string>
@@ -58,7 +56,6 @@ käyttöehtojen mukaisesti.</string>
   <string name="enable">Ota käyttöön</string>
   <string name="add_key">Lisää avain</string>
   <string name="overwrite">Korvaa</string>
-  <string name="repo_delete_title">Valitse sovelluslähde, jonka tahdot poistaa</string>
   <string name="repo_update_title">Päivitä sovelluslähteet</string>
   <string name="tab_noninstalled">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
@@ -157,7 +154,6 @@ Tahdotko päivittää ne?</string>
   <string name="repos_unchanged">Yhdessäkään säilössä ei ole pakettipäivityksiä</string>
   <string name="all_other_repos_fine">Muut säilöt eivät luoneet virheitä.</string>
   <string name="global_error_updating_repos">Päivityksenaikainen virhe:</string>
-  <string name="showPermissions">Näytä oikeudet</string>
   <string name="theme">Teema</string>
   <string name="unverified">Vahvistamaton</string>
   <string name="repo_not_yet_updated">Tätä säilöä ei ole vielä käytetty.
@@ -193,13 +189,10 @@ Sinun pitää
   <string name="Security">Tietoturva</string>
   <string name="System">Järjestelmä</string>
   <string name="Wallpaper">Taustakuva</string>
-  <string name="requesting_root_access_title">Root-oikeudet</string>
   <string name="requesting_root_access_body">Pyydetään root-oikeuksia...</string>
   <string name="root_access_denied_title">Root-oikeudet kielletty</string>
   <string name="root_access_denied_body">Joko Android-laitettasi ei ole rootattu tai olet kieltänyt F-Droidin root-oikeuksiin pääsyn.</string>
   <string name="update_all">Päivitä kaikki</string>
-  <string name="installer_error_title">Asennus(/poisto)virhe</string>
-  <string name="installer_error_body">Asennus (asennuuksen poisto) epäonnistui. Jos käytät root-oikeuksia, kokeile tämän asetuksen poistamista käytöstä.</string>
   <string name="system_permission_denied_title">Järjestelmäasetukset kielletty</string>
   <string name="system_permission_denied_body">Tämä asetus on käytössä vain silloin, kun F-Droid on asennettu järjestelmäsovellukseksi.</string>
   <string name="app_description">F-Droid on asennettava FOSS-sovellusten hakemisto (Free and Open Source Software) Androidille. Asiakasohjelma helpottaa selailemista, asentamista ja laitteesi pitämistä päivitettynä.</string>

@@ -60,8 +60,6 @@
   <string name="qr_code">كود QR</string>
   <string name="next">التالي</string>
   <string name="skip">تخطي</string>
-  <string name="showPermissions">إظهار التصريحات</string>
-  <string name="showPermissions_on">إظهار قائمة بالتصريحات التي يطلبها التطبيق</string>
   <string name="theme">السمة</string>
   <string name="unsigned">غير موقعة</string>
   <string name="unverified">غير متحقق</string>

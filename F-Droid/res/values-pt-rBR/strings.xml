@@ -24,8 +24,6 @@
   <string name="notify_on">Notificar quando houver atualizações disponíveis</string>
   <string name="update_history">Atualizar histórico</string>
   <string name="update_history_summ">Dias para considerar os aplicativos novos ou recentes: %s</string>
-  <string name="root_installer">Instalar usando acesso root</string>
-  <string name="root_installer_on">Solicitar acesso root para instalar, atualizar e remover pacotes</string>
   <string name="system_installer">Instalar usando permissões do sistema</string>
   <string name="system_installer_on">Usar permissões do sistema para instalar, atualizar e remover pacotes</string>
   <string name="local_repo_bonjour">Transmitir repositório local</string>
@@ -63,7 +61,6 @@ Um endereço do repositório é algo similar a isto: https://f-droid.org/repo</s
   <string name="enable">Ativar</string>
   <string name="add_key">Adicionar chave</string>
   <string name="overwrite">Sobrescrever</string>
-  <string name="repo_delete_title">Escolha o repositório para remover</string>
   <string name="repo_update_title">Atualizar repositórios</string>
   <string name="tab_noninstalled">Disponível</string>
   <string name="tab_updates">Atualizações</string>
@@ -175,9 +172,6 @@ Você quer atualizá-los?</string>
   <string name="status_download">Baixando
 %2$s / %3$s (%4$d%%) de 
 %1$s</string>
-  <string name="status_processing_xml">Processando aplicativo
-%2$d de %3$d, de 
-%1$s</string>
   <string name="status_connecting_to_repo">Conectando-se a
 %1$s</string>
   <string name="status_checking_compatibility">Verificando compatibilidade de aplicativos com o seu dispositivo…</string>
@@ -187,8 +181,6 @@ Você quer atualizá-los?</string>
   <string name="global_error_updating_repos">Erro durante a atualização:</string>
   <string name="no_permissions">Nenhuma permissão utilizada.</string>
   <string name="permissions_for_long">Permissões para a versão %s</string>
-  <string name="showPermissions">Mostrar permissões</string>
-  <string name="showPermissions_on">Mostrar uma lista das permissões que uma aplicativo requer</string>
   <string name="no_handler_app">Você não tem aplicativo instalado que possa lidar com %s</string>
   <string name="compactlayout">Leiaute compacto</string>
   <string name="compactlayout_on">Mostrar ícones em um tamanho menor</string>
@@ -244,13 +236,10 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
   <string name="Security">Segurança</string>
   <string name="System">Sistema</string>
   <string name="Wallpaper">Fundo de tela</string>
-  <string name="requesting_root_access_title">Acesso root</string>
   <string name="requesting_root_access_body">Solicitando acesso root...</string>
   <string name="root_access_denied_title">Acesso root negado</string>
   <string name="root_access_denied_body">Ou o seu dispositivo Android não está \"rooteado\" ou você recusou o acesso root para o F-Droid.</string>
   <string name="update_all">Atualizar tudo</string>
-  <string name="installer_error_title">Erro na desinstalação</string>
-  <string name="installer_error_body">A desinstalação falhou. Caso você esteja usando acesso root, tente desativar essa configuração.</string>
   <string name="system_permission_denied_title">Permissões do sistema negadas</string>
   <string name="system_permission_denied_body">Esta opção só está disponível quando o F-Droid está instalado como um aplicativo de sistema.</string>
   <string name="app_description">F-Droid é um catálogo instalável de aplicativos FOSS (Software Livre e de Código Aberto) para a plataforma Android. O cliente faz com que seja fácil navegar, instalar e manter o controle das atualizações no seu dispositivo.</string>

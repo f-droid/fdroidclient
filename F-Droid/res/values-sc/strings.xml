@@ -24,8 +24,6 @@
   <string name="notify_on">Averte cando bi sunt agiornamentos disponìbiles</string>
   <string name="update_history">Istòria de sos agiornamentos</string>
   <string name="update_history_summ">Nùmeru de dies pro che cunsiderare sas aplicatzione noas o reghentes: %s</string>
-  <string name="root_installer">Installa impreande s\'atzessu root</string>
-  <string name="root_installer_on">Pedi s\'atzessu root pro installare, agiornare, e remòvrere pachetos</string>
   <string name="system_installer">Installa impreande sos permissos de sistema</string>
   <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos</string>
   <string name="local_repo_bonjour">Cumpartzi su depòsitu locale</string>
@@ -68,7 +66,6 @@ S\'indiritzu de unu depòsitu paret una cosa
   <string name="enable">Abìlita</string>
   <string name="add_key">Annanghe crae</string>
   <string name="overwrite">Subraiscrie</string>
-  <string name="repo_delete_title">Issèbera su depòsitu de burrare</string>
   <string name="repo_update_title">Agiorna depòsitos</string>
   <string name="tab_noninstalled">Disponìbiles</string>
   <string name="tab_updates">Agiornamentos</string>
@@ -182,9 +179,6 @@ Los
   <string name="status_download">Iscarrigande
 %2$s / %3$s (%4$d%%) dae
 %1$s</string>
-  <string name="status_processing_xml">Protzessande aplicatzione
-%2$d de %3$d dae
-%1$s</string>
   <string name="status_connecting_to_repo">Cunnessione a
 %1$s</string>
   <string name="status_checking_compatibility">Verificande sa cumpatibilidade cun su dispositivu tuo...</string>
@@ -194,8 +188,6 @@ Los
   <string name="global_error_updating_repos">Faddina durante s\'agiornamentu</string>
   <string name="no_permissions">Perunu permissu impreadu.</string>
   <string name="permissions_for_long">Permissos pro sa versione %s</string>
-  <string name="showPermissions">Ammustra permissos</string>
-  <string name="showPermissions_on">Ammustra una lista de sos permissos pedidos dae un\'aplicu</string>
   <string name="no_handler_app">Non tenes peruna aplicatzione disponìbile pro gestire %s</string>
   <string name="compactlayout">Aspetu cumpatu</string>
   <string name="compactlayout_on">Ammustra sas iconas cun una mannària minimada</string>
@@ -255,13 +247,10 @@ Depes
   <string name="Security">Seguràntzia</string>
   <string name="System">Sistema</string>
   <string name="Wallpaper">Isfundu</string>
-  <string name="requesting_root_access_title">Atzessu root</string>
   <string name="requesting_root_access_body">Pedinde s\'atzessu root…</string>
   <string name="root_access_denied_title">Atzessu root dennegadu</string>
   <string name="root_access_denied_body">Su dispositivu tuo non tenet sos permissos de root o non los as datu a F-droid.</string>
   <string name="update_all">Agiorna totu</string>
-  <string name="installer_error_title">Errore de (Dis-)Installatzione</string>
-  <string name="installer_error_body">Sa (dis-)installatzione st faddida. Si ses impreande s\'atzessu root, proa a che lu disabilitare!</string>
   <string name="system_permission_denied_title">Permissos de sistema dennegados</string>
   <string name="system_permission_denied_body">Custa optzione st disponìbile petzi cando F-Droid est installadu comente aplicatzione de sistema.</string>
   <string name="app_description">F-Droid est unu catàlogu installàbile de FOSS (Free and Open Source Software - Aplicatziones lìberas e a mitza aberta) pro Android. S\'aplicatzione-client permitit de chircare, installare, e compidare sos agiornamentos in su dispositivu tuo.</string>

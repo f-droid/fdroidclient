@@ -26,8 +26,6 @@
   <string name="notify_on">Сообщать о наличии обновлений</string>
   <string name="update_history">История обновлений</string>
   <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
-  <string name="root_installer">Установить используя root доступ</string>
-  <string name="root_installer_on">Запрашивать права root пользователя для установки, обновления и удаления приложений</string>
   <string name="system_installer">Устанавливать используя системные привилегии</string>
   <string name="system_installer_on">Использовать системные привилегии для установки, обновления и удаления приложений</string>
   <string name="local_repo_bonjour">Транслировать локальный репозиторий</string>
@@ -65,7 +63,6 @@
   <string name="enable">Включить</string>
   <string name="add_key">Добавить ключ</string>
   <string name="overwrite">Перезаписать</string>
-  <string name="repo_delete_title">Удалить репозиторий</string>
   <string name="repo_update_title">Обновить репозитории</string>
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Обновления</string>
@@ -176,9 +173,6 @@
   <string name="status_download">Загрузка
 %2$s / %3$s (%4$d%%) из
 %1$s</string>
-  <string name="status_processing_xml">Обработка приложения
-%2$d из %3$d от
-%1$s</string>
   <string name="status_connecting_to_repo">Соединение с
 %1$s</string>
   <string name="status_checking_compatibility">Проверка совместимости приложений с вашим устройством…</string>
@@ -188,8 +182,6 @@
   <string name="global_error_updating_repos">Ошибка во время обновления:</string>
   <string name="no_permissions">Разрешений не требуется.</string>
   <string name="permissions_for_long">Разрешения для версии %s</string>
-  <string name="showPermissions">Показывать разрешения</string>
-  <string name="showPermissions_on">Отображение списка разрешений, которые требуются приложению</string>
   <string name="no_handler_app">У вас нет установленного приложения для обработки %s</string>
   <string name="compactlayout">Компактный вид</string>
   <string name="compactlayout_on">Показать иконки в меньшем размере</string>
@@ -236,12 +228,10 @@
   <string name="Security">Безопасность</string>
   <string name="System">Системные</string>
   <string name="Wallpaper">Обои</string>
-  <string name="requesting_root_access_title">Root доступ</string>
   <string name="requesting_root_access_body">Запрос root доступа...</string>
   <string name="root_access_denied_title">Отказано в root доступе</string>
   <string name="root_access_denied_body">Либо у вашего устройства нет root доступа, либо вы отклонили запрос от F-Droid.</string>
   <string name="update_all">Обновить всё</string>
-  <string name="installer_error_title">Ошибка установки/удаления</string>
   <string name="system_permission_denied_title">Запрос на системные привилегии отклонён</string>
   <string name="system_permission_denied_body">Данная опция доступна только если F-Droid установлен как системное приложение.</string>
   <string name="app_description">F-Droid — каталог FOSS (свободного и открытого программного обеспечения) для платформы Android. Клиент позволяет с лёгкостью просматривать, устанавливать и обновлять приложение на вашем устройстве.</string>

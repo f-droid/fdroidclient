@@ -24,8 +24,6 @@
   <string name="notify_on">Обавештавај о доступним надоградњама</string>
   <string name="update_history">Историјат надоградњи</string>
   <string name="update_history_summ">Колико дана се апликације сматрају новим или недавним: %s</string>
-  <string name="root_installer">Користи корени приступ</string>
-  <string name="root_installer_on">Захтевај корени приступ за инсталирање, надоградњу и уклањање пакета</string>
   <string name="system_installer">Користи системске дозволе</string>
   <string name="system_installer_on">Користи системске дозволе за инсталирање, надоградњу и уклањање пакета</string>
   <string name="local_repo_name">Име ваше локалне ризнице</string>
@@ -60,7 +58,6 @@
   <string name="enable">Омогући</string>
   <string name="add_key">Додај кључ</string>
   <string name="overwrite">Пребриши</string>
-  <string name="repo_delete_title">Изаберите ризницу за уклањање</string>
   <string name="repo_update_title">Ажурирај ризнице</string>
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Надоградње</string>
@@ -172,9 +169,6 @@
   <string name="status_download">Преузимам
 %2$s / %3$s (%4$d%%) са
 %1$s</string>
-  <string name="status_processing_xml">Обрађујем апликацију
-%2$d од %3$d са
-%1$s</string>
   <string name="status_connecting_to_repo">Повезујем се са
 %1$s</string>
   <string name="status_checking_compatibility">Проверавам компатибилност апликација са вашим уређајем…</string>
@@ -184,8 +178,6 @@
   <string name="global_error_updating_repos">Грешка приликом ажурирања:</string>
   <string name="no_permissions">Не захтевају се никакве дозволе.</string>
   <string name="permissions_for_long">Дозволе за издање %s</string>
-  <string name="showPermissions">Прикажи дозволе</string>
-  <string name="showPermissions_on">Прикажи списак дозвола које апликација захтева</string>
   <string name="no_handler_app">Немате инсталирану апликацију за %s</string>
   <string name="compactlayout">Компактни распоред</string>
   <string name="compactlayout_on">Прикажи иконе мање величине</string>
@@ -242,13 +234,10 @@
   <string name="Security">Безбедност</string>
   <string name="System">Систем</string>
   <string name="Wallpaper">Тапет</string>
-  <string name="requesting_root_access_title">Корени приступ</string>
   <string name="requesting_root_access_body">Захтевам корени приступ…</string>
   <string name="root_access_denied_title">Корени приступ одбијен</string>
   <string name="root_access_denied_body">Или ваш Андроид уређај није рутован или сте Ф-дроиду одбили корени приступ.</string>
   <string name="update_all">Надогради све</string>
-  <string name="installer_error_title">Грешка инсталера</string>
-  <string name="installer_error_body">Инсталација/уклањање није успело. Ако користите корени приступ покушајте да га онемогућите.</string>
   <string name="system_permission_denied_title">Системске дозволе одбијене</string>
   <string name="system_permission_denied_body">Ова опција доступна само када је Ф-дроид инсталиран као системска апликација.</string>
   <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кôда) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>

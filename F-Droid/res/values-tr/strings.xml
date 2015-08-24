@@ -24,8 +24,6 @@
   <string name="notify_on">Güncellemeler bulunduğunda bunu bildir</string>
   <string name="update_history">Güncelleme tarihçesi</string>
   <string name="update_history_summ">Uygulamaların yeni sayılacağı gün sayısı: %s</string>
-  <string name="root_installer">Root erişimi kullanarak yükle</string>
-  <string name="root_installer_on">Paket kurmak, güncellemek ve kaldırmak için root müsaadesini talep et</string>
   <string name="system_installer">Sistem-izinlerini kullanarak yükle</string>
   <string name="system_installer_on">Paket kurmak, güncellemek ve kaldırmak için sistem izinlerini kullan</string>
   <string name="local_repo_bonjour">Yerel Depoyu Yayınla</string>
@@ -63,7 +61,6 @@ Bir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="enable">Etkinleştir</string>
   <string name="add_key">Anahtar ekle</string>
   <string name="overwrite">Üzerine yaz</string>
-  <string name="repo_delete_title">Kaldırılacak depoyu seç</string>
   <string name="repo_update_title">Depoları güncelle</string>
   <string name="tab_noninstalled">Mevcut</string>
   <string name="tab_updates">Güncellemeler</string>
@@ -175,9 +172,6 @@ Güncellemek ister misiniz?</string>
   <string name="status_download">İndiriliyor
 %2$s / %3$s (%4$d%%) şuradan
 %1$s</string>
-  <string name="status_processing_xml">Uygulama ele alınıyor
-%2$d toplam %3$d şuradan
-%1$s</string>
   <string name="status_connecting_to_repo">%1$s konumuna
 bağlanılıyor</string>
   <string name="status_checking_compatibility">Uygulamaların cihazınızla uyumluluğu kontrol ediliyor…</string>
@@ -187,8 +181,6 @@ bağlanılıyor</string>
   <string name="global_error_updating_repos">Güncelleme sırasında hata:</string>
   <string name="no_permissions">Hiçbir izin kullanılmıyor.</string>
   <string name="permissions_for_long">%s sürümü için izinler</string>
-  <string name="showPermissions">İzinleri göster</string>
-  <string name="showPermissions_on">Uygulamaların gerektirdiği izinlerin listesini göster</string>
   <string name="no_handler_app">%s unsurunu yönetecek hiçbir mevcut uygulamanız yok</string>
   <string name="compactlayout">Yoğun düzen</string>
   <string name="compactlayout_on">İkonları daha küçük boyutta görüntüle</string>
@@ -243,13 +235,10 @@ Ondan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</
   <string name="Security">Güvenlik</string>
   <string name="System">Sistem</string>
   <string name="Wallpaper">Duvar Kağıdı</string>
-  <string name="requesting_root_access_title">Root erişimi</string>
   <string name="requesting_root_access_body">Root erişimi isteniyor...</string>
   <string name="root_access_denied_title">Root erişimi engellendi</string>
   <string name="root_access_denied_body">Ya Android cihazınız rootlu değil ya da F-Droid için root erişimini engellediniz.</string>
   <string name="update_all">Tümünü güncelle</string>
-  <string name="installer_error_title">Kurulum veya Kaldırma Hatası</string>
-  <string name="installer_error_body">Kurulum(kaldırma) başarısız oldu. Eğer root erişimi kullanıyorsanız, bu ayarı devre dışı bırakmayı deneyin!</string>
   <string name="system_permission_denied_title">Sistem izinleri reddedildi</string>
   <string name="system_permission_denied_body">Bu seçenek sadece F-Droid bir sistem uygulaması olarak kurulduğunda mevcuttur.</string>
   <string name="app_description">F-Droid, Android platformu için kurulabilir Özgür ve Açık Kaynaklı Yazılım kataloğudur. İstemci cihazınızda uygulama taramayı, kurmayı ve güncellemeyi kolaylaştırır.</string>

@@ -24,8 +24,6 @@
   <string name="notify_on">Varsle når nye oppdateringer er tilgjengelige</string>
   <string name="update_history">Oppdater historikk</string>
   <string name="update_history_summ">Dager nytt innhold skal anses som ferskt: %s</string>
-  <string name="root_installer">Installer ved bruk av root-tilgang</string>
-  <string name="root_installer_on">Spør etter root tilgang for å installere, oppdatere, og fjerne applikasjoner.</string>
   <string name="system_installer">Installer ved bruk av system-tilgang</string>
   <string name="system_installer_on">Bruk system rettigheter til å installere, oppdatere, og fjerne applikasjoner.</string>
   <string name="local_repo_bonjour">Kringkast lokal pakkebrønn</string>
@@ -59,7 +57,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="enable">Skru på</string>
   <string name="add_key">Legg til nøkkel</string>
   <string name="overwrite">Overskriv</string>
-  <string name="repo_delete_title">Velg pakkebrønnen du vil fjerne</string>
   <string name="repo_update_title">Oppdater registerne</string>
   <string name="tab_noninstalled">Tilgjengelig</string>
   <string name="tab_updates">Oppdateringer</string>
@@ -170,9 +167,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="status_download">Laster ned
 %2$s / %3$s (%4$d%%) fra
 %1$s</string>
-  <string name="status_processing_xml">Prosesserer applikasjon
-%2$d of %3$d fra
-%1$s</string>
   <string name="status_connecting_to_repo">Kobler til
 %1$s</string>
   <string name="status_checking_compatibility">Sjekker programstøtte for ditt utstyr…</string>
@@ -182,8 +176,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="global_error_updating_repos">Feil under oppdatering:</string>
   <string name="no_permissions">Krever ingen tillatelser.</string>
   <string name="permissions_for_long">Tillatelser for versjon %s</string>
-  <string name="showPermissions">Vis tillatelser</string>
-  <string name="showPermissions_on">Vis en liste over rettighetene en app krever</string>
   <string name="no_handler_app">Du har ingen tilgjengelige applikasjoner som kan håndtere %s</string>
   <string name="compactlayout">Kompakt layout</string>
   <string name="compactlayout_on">Vis ikoner i mindre størrelse</string>
@@ -239,13 +231,10 @@ Du må
   <string name="Security">Sikkerhet</string>
   <string name="System">System</string>
   <string name="Wallpaper">Bakgrunn</string>
-  <string name="requesting_root_access_title">Root tilgang</string>
   <string name="requesting_root_access_body">Etterspørr root-tilgang...</string>
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>
   <string name="update_all">Oppdater alle</string>
-  <string name="installer_error_title">(Av-)Installasjons-feil</string>
-  <string name="installer_error_body">(Av-)installasjon feilet. Hvis du bruker root-tilgang, prøv å skru av dette!</string>
   <string name="system_permission_denied_title">System-rettigheter avslått</string>
   <string name="system_permission_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som system-program.</string>
   <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut, installere og holde øye med oppdateringer på din enhet.</string>

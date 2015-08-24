@@ -20,8 +20,6 @@
   <string name="notify">通知</string>
   <string name="notify_on">應用程式發佈更新時通知我</string>
   <string name="update_history">更新記錄</string>
-  <string name="root_installer">使用 root 權限安裝</string>
-  <string name="root_installer_on">安裝、更新，及移除軟件包時要求 root 權限</string>
   <string name="system_installer">使用系統權限安裝</string>
   <string name="system_installer_on">安裝、更新，及移除軟件包時使用系統權限</string>
   <string name="local_repo_bonjour">廣播本地倉庫</string>
@@ -51,7 +49,6 @@
   <string name="enable">啟用</string>
   <string name="add_key">添加鑰匙</string>
   <string name="overwrite">蓋寫</string>
-  <string name="repo_delete_title">選擇要移除的軟件倉庫</string>
   <string name="repo_update_title">更新所有軟件倉庫</string>
   <string name="tab_noninstalled">可用</string>
   <string name="tab_updates">更新</string>
@@ -145,8 +142,6 @@
   <string name="global_error_updating_repos">更新時出現的問題：</string>
   <string name="no_permissions">沒有使用任何存取權。</string>
   <string name="permissions_for_long">版本 %s 的存取權</string>
-  <string name="showPermissions">顯示存取權</string>
-  <string name="showPermissions_on">顯示應用程式所需的存取權</string>
   <string name="compactlayout">濃縮設計</string>
   <string name="compactlayout_on">顯示小型圖示</string>
   <string name="theme">主題</string>
@@ -186,7 +181,6 @@
   <string name="Security">安全性</string>
   <string name="System">系統</string>
   <string name="Wallpaper">牆紙</string>
-  <string name="requesting_root_access_title">Root 權限</string>
   <string name="requesting_root_access_body">要求 root 權限中...</string>
   <string name="root_access_denied_title">Root 權限被拒絕</string>
   <string name="update_all">更新所有應用程式</string>

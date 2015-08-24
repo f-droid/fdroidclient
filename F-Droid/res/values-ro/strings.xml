@@ -28,7 +28,6 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="repo_add_add">Adauga</string>
   <string name="cancel">Anuleaza</string>
   <string name="enable">Activează</string>
-  <string name="repo_delete_title">Alegeti depozitul pentru stergere</string>
   <string name="repo_update_title">Actualizare depozit aplicatii</string>
   <string name="tab_noninstalled">Disponibil</string>
   <string name="tab_updates">Actualizare</string>
@@ -55,7 +54,6 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="category_all">Tot</string>
   <string name="category_whatsnew">Ce este nou</string>
   <string name="category_recentlyupdated">Actualizat recent</string>
-  <string name="showPermissions">Arată permisiunile</string>
   <string name="theme">Temă</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Număr de aplicaţii</string>

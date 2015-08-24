@@ -24,8 +24,6 @@
   <string name="notify_on">새로운 업데이트가 가능할 때 알림</string>
   <string name="update_history">이력 업데이트</string>
   <string name="update_history_summ">최신 앱이라고 간주할 날짜: %s</string>
-  <string name="root_installer">루트 권한을 사용해 설치</string>
-  <string name="root_installer_on">패키지의 설치, 업데이트, 제거를 위해 루트 권한 요구</string>
   <string name="system_installer">시스템 권한을 사용해 설치</string>
   <string name="system_installer_on">패키지의 설치, 업데이트, 제거를 위해 시스템 권한 사용</string>
   <string name="local_repo_bonjour">로컬 저장소 방송</string>
@@ -62,7 +60,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="enable">사용</string>
   <string name="add_key">키 추가</string>
   <string name="overwrite">덮어쓰기</string>
-  <string name="repo_delete_title">제거할 저장소 선택</string>
   <string name="repo_update_title">저장소 업데이트</string>
   <string name="tab_noninstalled">사용 가능</string>
   <string name="tab_updates">업데이트</string>
@@ -173,9 +170,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="proxy_port_summary">프록시의 포트 번호를 설정 (예시: 8118)</string>
   <string name="status_download">%1$s 에서 다운로드 중입니다.
 %2$s / %3$s (%4$d%%)</string>
-  <string name="status_processing_xml">응용 프로그램 처리중
-%1$s
-%2$d / %3$d</string>
   <string name="status_connecting_to_repo">%1$s에 접속중</string>
   <string name="status_checking_compatibility">장치와 응용프로그램의 호환성 확인중…</string>
   <string name="status_inserting">앱 상세 정보 저장하는 중 (%1$d%%)</string>
@@ -184,8 +178,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="global_error_updating_repos">업데이트 도중 오류:</string>
   <string name="no_permissions">사용된 권한이 없습니다.</string>
   <string name="permissions_for_long">%s 버전에 대한 권한</string>
-  <string name="showPermissions">권한 표시</string>
-  <string name="showPermissions_on">앱이 요구하는 권한의 목록 표시</string>
   <string name="no_handler_app">%s을(를) 처리할 수 있는 응용프로그램이 없습니다.</string>
   <string name="compactlayout">컴팩트 레이아웃</string>
   <string name="compactlayout_on">아이콘을 작게 표시</string>
@@ -232,13 +224,10 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="Security">보안</string>
   <string name="System">시스템</string>
   <string name="Wallpaper">배경화면</string>
-  <string name="requesting_root_access_title">루트 권한</string>
   <string name="requesting_root_access_body">루트 권한 요청하는 중...</string>
   <string name="root_access_denied_title">루트 권한 거부됨</string>
   <string name="root_access_denied_body">기기가 루팅되지 않았거나 F-Droid의 루트 권한 요청을 거부한 경우입니다.</string>
   <string name="update_all">모두 업데이트</string>
-  <string name="installer_error_title">설치 해제 오류</string>
-  <string name="installer_error_body">설치 해제에 실패했습니다. 루트 권한을 사용중이라면 이 설정을 비활성화 해보세요!</string>
   <string name="system_permission_denied_title">시스템 권한 거부됨</string>
   <string name="system_permission_denied_body">이 옵션은 F-Droid가 시스템 앱으로 설치된 경우에만 사용 가능합니다.</string>
   <string name="app_description">F-Droid는 안드로이드 플랫폼을 위한 \'오픈 소스 및 자유 소프트웨어(FOSS)\' 앱들의 설치 목록입니다. F-Droid는 기기에서 앱들을 쉽게 검색, 설치, 업데이트를 할 수 있게 해줍니다.</string>

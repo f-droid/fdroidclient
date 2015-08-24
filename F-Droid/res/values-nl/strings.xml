@@ -24,8 +24,6 @@
   <string name="notify_on">Meld wanneer updates beschikbaar zijn</string>
   <string name="update_history">Vernieuw historie</string>
   <string name="update_history_summ">Dagen om een app als nieuw of recent te zien: %s</string>
-  <string name="root_installer">Installeer met root toegang</string>
-  <string name="root_installer_on">Vraag root toegang om pakketten te installeren, updaten of te verwijderen</string>
   <string name="system_installer">Installeer met systeem-rechten</string>
   <string name="system_installer_on">Gebruik systeem rechten om pakketten te installeren, updaten en verwijderen</string>
   <string name="local_repo_bonjour">Maak gedeelde apps zichtbaar in netwerk</string>
@@ -66,7 +64,6 @@ Een bron-adres ziet er ongeveer
   <string name="enable">Activeer</string>
   <string name="add_key">Voeg sleutel toe</string>
   <string name="overwrite">Overschrijven</string>
-  <string name="repo_delete_title">Kies bron om te verwijderen</string>
   <string name="repo_update_title">Vernieuw bronnen</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
@@ -177,9 +174,6 @@ Wilt u ze vernieuwen?</string>
   <string name="status_download">Downloaden
 %2$s / %3$s (%4$d%%) van
 %1$s</string>
-  <string name="status_processing_xml">Verwerken applicatie
-%2$d van %3$d van
-%1$s</string>
   <string name="status_connecting_to_repo">Verbinden met %1$s</string>
   <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
   <string name="status_inserting">Applicatiedetails opslaan (%1$d%%)</string>
@@ -188,8 +182,6 @@ Wilt u ze vernieuwen?</string>
   <string name="global_error_updating_repos">Fout tijdens update:</string>
   <string name="no_permissions">Geen permissies worden gebruikt</string>
   <string name="permissions_for_long">Permissies voor versie %s</string>
-  <string name="showPermissions">Laat permissies zien</string>
-  <string name="showPermissions_on">Laat een lijst zien van benodigde permissies voor een app</string>
   <string name="no_handler_app">U hebt geen beschikbare app die %s kan verwerken</string>
   <string name="compactlayout">Compacte Layout</string>
   <string name="compactlayout_on">Iconen weergeven in klein formaat</string>
@@ -236,13 +228,10 @@ Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
   <string name="Security">Beveiliging</string>
   <string name="System">Systeem</string>
   <string name="Wallpaper">Achtergrond</string>
-  <string name="requesting_root_access_title">Root toegang</string>
   <string name="requesting_root_access_body">Root toegang aanvragen…</string>
   <string name="root_access_denied_title">Root toegang geweigerd</string>
   <string name="root_access_denied_body">Uw Android apparaat is niet geroot, of u heeft F-Droid geen root toegang gegeven.</string>
   <string name="update_all">Update alles</string>
-  <string name="installer_error_title">(De)installatiefout</string>
-  <string name="installer_error_body">De (de)installatie faalde. Indien je root toegang gebruikt, probeer deze instelling uit te schakelen.</string>
   <string name="system_permission_denied_title">Systeemrechten geweigerd</string>
   <string name="system_permission_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd is.</string>
   <string name="app_description">F-Droid is een installeerbare cataloges van FOSS (Vrije en Open Source Software) apps voor Android. Het programma maakt het gemakkelijk om door apps te bladeren, te installeren en up-to-date te houden.</string>

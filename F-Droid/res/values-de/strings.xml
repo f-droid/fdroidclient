@@ -24,8 +24,6 @@
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
   <string name="update_history">Aktualisierungsverlauf</string>
   <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
-  <string name="root_installer">Mit Verwendung von root-Zugriff installieren</string>
-  <string name="root_installer_on">Root-Rechte anfordern, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="system_installer">Mit Verwendung von Systemberechtigungen installieren</string>
   <string name="system_installer_on">Systemberechtigungen verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="local_repo_bonjour">Lokale Paketquelle übertragen</string>
@@ -64,7 +62,6 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
   <string name="enable">Aktivieren</string>
   <string name="add_key">Schlüssel hinzufügen</string>
   <string name="overwrite">Überschreiben</string>
-  <string name="repo_delete_title">Zu entfernende Paketquelle auswählen</string>
   <string name="repo_update_title">Paketquellen aktualisieren</string>
   <string name="tab_noninstalled">Verfügbar</string>
   <string name="tab_updates">Aktualisierungen</string>
@@ -176,9 +173,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="status_download">%2$s / %3$s (%4$d%%) von
 %1$s
 wird heruntergeladen</string>
-  <string name="status_processing_xml">Anwendung wird vorbereitet
-%2$d / %3$d von
-%1$s</string>
   <string name="status_connecting_to_repo">Mit %1$s
 wird verbunden</string>
   <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>
@@ -188,8 +182,6 @@ wird verbunden</string>
   <string name="global_error_updating_repos">Fehler während der Aktualisierung:</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>
-  <string name="showPermissions">Berechtigungen anzeigen</string>
-  <string name="showPermissions_on">Eine Liste mit Berechtigungen, die von einer Anwendung verlangt werden, anzeigen</string>
   <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann</string>
   <string name="compactlayout">Kompakte Ansicht</string>
   <string name="compactlayout_on">Symbole in einer kleineren Größe anzeigen</string>
@@ -250,13 +242,10 @@ Sie müssen
   <string name="Security">Sicherheit</string>
   <string name="System">System</string>
   <string name="Wallpaper">Hintergrundbild</string>
-  <string name="requesting_root_access_title">Root-Zugriff</string>
   <string name="requesting_root_access_body">Root-Rechte werden angefordert …</string>
   <string name="root_access_denied_title">Root-Zugriff verweigert</string>
   <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff für F-Droid verweigert.</string>
   <string name="update_all">Alle aktualisieren</string>
-  <string name="installer_error_title">(De-)Installationsfehler</string>
-  <string name="installer_error_body">Die (De-)Installation schlug fehl. Wenn Sie Root-Zugriff benutzen, versuchen Sie diese Einstellung zu deaktivieren!</string>
   <string name="system_permission_denied_title">Systemberechtigungen verweigert</string>
   <string name="system_permission_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert wurde.</string>
   <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS (Freie und Quelloffene Software) Anwendungen für die Android-Plattform. Der Client macht es auf deinem Gerät einfach zu durchsuchen, zu installieren und Aktualisierungen zu verfolgen.</string>

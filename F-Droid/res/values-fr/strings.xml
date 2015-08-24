@@ -24,8 +24,6 @@
   <string name="notify_on">Notifier quand des mises à jour sont disponibles</string>
   <string name="update_history">Historique des mises à jour</string>
   <string name="update_history_summ">Jours pour considérer les apps comme nouvelles ou récentes: %s</string>
-  <string name="root_installer">Installer en utilisant les droits root/SuperUser</string>
-  <string name="root_installer_on">Demander les droits root pour installer, mettre à jour et supprimer des paquets</string>
   <string name="system_installer">Installer en utilisant les permissions systèmes</string>
   <string name="system_installer_on">Utiliser les permissions du système pour installer, mettre à jour et supprimer des paquets</string>
   <string name="local_repo_bonjour">Diffuser votre dépôt local</string>
@@ -63,7 +61,6 @@ L\'adresse d\'un dépôt ressemble à ceci: https://f-droid.org/repo</string>
   <string name="enable">Activer</string>
   <string name="add_key">Ajouter une clé</string>
   <string name="overwrite">Écraser</string>
-  <string name="repo_delete_title">Choisissez le dépôt à supprimer</string>
   <string name="repo_update_title">Mettre à jour les dépôts</string>
   <string name="tab_noninstalled">Disponibles</string>
   <string name="tab_updates">Mises à jour</string>
@@ -175,9 +172,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="status_download">Téléchargement
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
-  <string name="status_processing_xml">Prise en compte de l\'application
-%2$d de %3$d depuis
-%1$s</string>
   <string name="status_connecting_to_repo">Connexion à
 %1$s</string>
   <string name="status_checking_compatibility">Vérification de la compatibilité des applications avec votre appareil…</string>
@@ -187,8 +181,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="global_error_updating_repos">Erreur durant la mise à jour:</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Permissions pour la version %s</string>
-  <string name="showPermissions">Afficher les permissions</string>
-  <string name="showPermissions_on">Afficher la liste des permissions qu\'une app requiert</string>
   <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
   <string name="compactlayout">Affichage compact</string>
   <string name="compactlayout_on">Montrer les icônes à une taille plus petite</string>
@@ -242,13 +234,10 @@ Vous devez
   <string name="Security">Sécurité</string>
   <string name="System">Système</string>
   <string name="Wallpaper">Fond d\'écran</string>
-  <string name="requesting_root_access_title">Droits root</string>
   <string name="requesting_root_access_body">Demande des droits root…</string>
   <string name="root_access_denied_title">Droits root refusés</string>
   <string name="root_access_denied_body">Soit votre système Android n\'a pas les droits root/SuperUser, soit vous les avez refusés à F-Droid.</string>
   <string name="update_all">Tout mettre à jour</string>
-  <string name="installer_error_title">Erreur de (Dés-)Installation</string>
-  <string name="installer_error_body">Échec de (dés-)installation. Si vous utilisez l\'accès ROOT, essayez de désactiver ce paramètre\u00A0!</string>
   <string name="system_permission_denied_title">Permissions systèmes refusées</string>
   <string name="system_permission_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
   <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>

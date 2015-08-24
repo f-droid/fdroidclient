@@ -24,8 +24,6 @@
   <string name="notify_on">更新があれば通知します</string>
   <string name="update_history">更新履歴</string>
   <string name="update_history_summ">ｱﾌﾟﾘｹｰｼｮﾝが新しいものだと判断する日数:%s日</string>
-  <string name="root_installer">管理者権限を使用してｲﾝｽﾄｰﾙ</string>
-  <string name="root_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除に管理者権限を要求する</string>
   <string name="system_installer">ｼｽﾃﾑｱｸｾｽ許可を使用してｲﾝｽﾄｰﾙ</string>
   <string name="system_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除にｼｽﾃﾑｱｸｾｽ許可を使用する</string>
   <string name="local_repo_bonjour">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘをﾌﾞﾛｰﾄﾞｷｬｽﾄ</string>
@@ -65,7 +63,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="enable">有効</string>
   <string name="add_key">ｷｰを追加</string>
   <string name="overwrite">上書き</string>
-  <string name="repo_delete_title">削除するﾘﾎﾟｼﾞﾄﾘを選択してください</string>
   <string name="repo_update_title">ﾘﾎﾟｼﾞﾄﾘを更新</string>
   <string name="tab_noninstalled">入手可能</string>
   <string name="tab_updates">更新</string>
@@ -177,9 +174,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="status_download">ﾀﾞｳﾝﾛｰﾄﾞ中
 %2$s / %3$s (%4$d%%) ﾀﾞｳﾝﾛｰﾄﾞ元
 %1$s</string>
-  <string name="status_processing_xml">ｱﾌﾟﾘｹｰｼｮﾝの処理中
-%2$d / %3$d
-%1$s</string>
   <string name="status_connecting_to_repo">接続中
 %1$s</string>
   <string name="status_checking_compatibility">あなたの端末とｱﾌﾟﾘｹｰｼｮﾝの互換性を確認しています…</string>
@@ -189,8 +183,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="global_error_updating_repos">更新中に問題発生:</string>
   <string name="no_permissions">使用される権限はありません｡</string>
   <string name="permissions_for_long">ﾊﾞｰｼﾞｮﾝ %s の権限</string>
-  <string name="showPermissions">権限を表示</string>
-  <string name="showPermissions_on">ｱﾌﾟﾘｹｰｼｮﾝが要求する権限リストを表示します</string>
   <string name="no_handler_app">取り扱うｱﾌﾟﾘｹｰｼｮﾝはありません %s</string>
   <string name="compactlayout">ｺﾝﾊﾟｸﾄ･ﾚｲｱｳﾄ</string>
   <string name="compactlayout_on">ｱｲｺﾝを小さいｻｲｽﾞで表示します</string>
@@ -244,13 +236,10 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="Security">ｾｷｭﾘﾃｨ</string>
   <string name="System">ｼｽﾃﾑ</string>
   <string name="Wallpaper">壁紙･背景</string>
-  <string name="requesting_root_access_title">管理者権限(root)で許可</string>
   <string name="requesting_root_access_body">管理者権限の要求中…</string>
   <string name="root_access_denied_title">管理者権限での接続が拒絶されました</string>
   <string name="root_access_denied_body">お使いのAndroid端末はroot化されていないか､F-Droidの管理者権限要求が拒絶されされました.</string>
   <string name="update_all">全て更新</string>
-  <string name="installer_error_title">(ｱﾝ)ｲﾝｽﾄｰﾙｴﾗｰ</string>
-  <string name="installer_error_body">(ｱﾝ)ｲﾝｽﾄｰﾙに失敗しました｡管理者権限を使用している場合は､この設定を無効にしてみてください｡</string>
   <string name="system_permission_denied_title">ｼｽﾃﾑｱｸｾｽ許可が拒絶されました</string>
   <string name="system_permission_denied_body">この設定は､F-Droidがｼｽﾃﾑｱﾌﾟﾘとしてｲﾝｽﾄｰﾙされているときのみ有効です｡</string>
   <string name="app_description">F-DroidはAndroidﾌﾟﾗｯﾄﾌｫｰﾑ向けFOSS(ﾌﾘｰのｵｰﾌﾟﾝｿｰｽｿﾌﾄｳｪｱ) ｱﾌﾟﾘｹｰｼｮﾝのｲﾝｽﾄｰﾙ可能なｶﾀﾛｸﾞです｡このｸﾗｲｱﾝﾄで、お使いの端末で簡単に参照､ｲﾝｽﾄｰﾙ､および更新履歴を記録することができます｡</string>

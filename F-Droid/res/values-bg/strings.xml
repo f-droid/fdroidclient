@@ -24,8 +24,6 @@
   <string name="notify_on">Известява за наличие на актуализация.</string>
   <string name="update_history">История на актуализациите</string>
   <string name="update_history_summ">Счита за нови или скорошни приложенията от преди (дни): %s</string>
-  <string name="root_installer">Инсталиране през root</string>
-  <string name="root_installer_on">Изисква Roоt достъп, за инсталиране, актуализиране и премахване на пакети.</string>
   <string name="system_installer">Инсталиране чрез системни разрешения</string>
   <string name="system_installer_on">Ползване на системни права за инсталиране, актуализиране и премахване на пакети.</string>
   <string name="local_repo_bonjour">Обявяване на лок. хранилище</string>
@@ -60,7 +58,6 @@
   <string name="repo_add_add">Добавяне</string>
   <string name="cancel">Отказ</string>
   <string name="add_key">Добавете ключ</string>
-  <string name="repo_delete_title">Изберете хранилище за премахване</string>
   <string name="repo_update_title">Актуализиране на хранилищата</string>
   <string name="tab_noninstalled">Налични</string>
   <string name="tab_updates">Актуализации</string>
@@ -155,9 +152,6 @@
   <string name="status_download">Сваляне
 %2$s / %3$s (%4$d%%) от
 %1$s</string>
-  <string name="status_processing_xml">Обработка на приложения
-%2$d от %3$d от
-%1$s</string>
   <string name="status_connecting_to_repo">Свързване към
 %1$s</string>
   <string name="status_checking_compatibility">Проверка за съвместимост с устройството…</string>
@@ -166,8 +160,6 @@
   <string name="global_error_updating_repos">Грешка при актуализирането:</string>
   <string name="no_permissions">Не изисква разрешения.</string>
   <string name="permissions_for_long">Разрешения за версия %s</string>
-  <string name="showPermissions">Показване на разрешенията</string>
-  <string name="showPermissions_on">Показва списък на разрешенията, които се изискват от отделните приложения.</string>
   <string name="no_handler_app">Никое инсталирано приложение не може да изпълни %s</string>
   <string name="compactlayout">Компактно оформление</string>
   <string name="compactlayout_on">Показва по-малки икони.</string>
@@ -210,12 +202,9 @@
   <string name="Security">Сигурност</string>
   <string name="System">Система</string>
   <string name="Wallpaper">Тапет</string>
-  <string name="requesting_root_access_title">Root достъп</string>
   <string name="requesting_root_access_body">Изисква Root достъп…</string>
   <string name="root_access_denied_title">Root достъпът е отказан</string>
   <string name="update_all">Актуализирай всички</string>
-  <string name="installer_error_title">Грешка при (де)инсталирането</string>
-  <string name="installer_error_body">(Де)Инсталирането се провали. Ако работите с Root достъп, моля изключете го.</string>
   <string name="system_permission_denied_body">Опцията е налична само когато сте инсталирали F-Droid като системно приложение.</string>
   <string name="swap_nfc_description">Ако приятелят ви има &lt;b&gt;F-Droid и е включил NFC&lt;/b&gt; можете да докоснете телефоните си.</string>
   <string name="swap_join_same_wifi">Свържете се към една и съща WiFi мрежа с приятеля си.</string>
