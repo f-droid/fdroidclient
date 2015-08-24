@@ -24,6 +24,16 @@
   <string name="notify_on">Meld wanneer updates beschikbaar zijn</string>
   <string name="update_history">Vernieuw historie</string>
   <string name="update_history_summ">Dagen om een app als nieuw of recent te zien: %s</string>
+  <string name="root_installer">Installeer met root toegang</string>
+  <string name="root_installer_on">Vraag root toegang om pakketten te installeren, updaten of te verwijderen</string>
+  <string name="system_installer">Installeer met systeem-rechten</string>
+  <string name="system_installer_on">Gebruik systeem rechten om pakketten te installeren, updaten en verwijderen</string>
+  <string name="local_repo_bonjour">Maak gedeelde apps zichtbaar in netwerk</string>
+  <string name="local_repo_bonjour_on">Adverteer gedeelde apps met behulp van Bonjour (mDNS)</string>
+  <string name="local_repo_name">Naam van collectie gedeelde apps</string>
+  <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
+  <string name="local_repo_https">Gebruik beveiligde verbinding</string>
+  <string name="local_repo_https_on">Gebruik versleutelde HTTPS:// verbinding voor gedeelde apps</string>
   <string name="search_results">Zoekresultaten</string>
   <string name="app_details">App Details</string>
   <string name="no_such_app">Geen dergelijke app gevonden</string>
@@ -44,6 +54,8 @@ Een bron-adres ziet er ongeveer
 		als: https://f-droid.org/repo</string>
   <string name="inst">Geïnstalleerd</string>
   <string name="not_inst">Niet geïnstalleerd</string>
+  <string name="inst_known_source">Geïnstalleerd (van %s)</string>
+  <string name="inst_unknown_source">Geïnstalleerd (van onbekende bron)</string>
   <string name="added_on">Toegevoegd op %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -54,6 +66,7 @@ Een bron-adres ziet er ongeveer
   <string name="enable">Activeer</string>
   <string name="add_key">Voeg sleutel toe</string>
   <string name="overwrite">Overschrijven</string>
+  <string name="repo_delete_title">Kies bron om te verwijderen</string>
   <string name="repo_update_title">Vernieuw bronnen</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
@@ -67,6 +80,7 @@ Een bron-adres ziet er ongeveer
   <string name="go_to_nfc_settings">Ga naar NFC instellingen…</string>
   <string name="bluetooth_activity_not_found">Geen Bluetooth verzendmethode gevonden, kies er een!</string>
   <string name="choose_bt_send">Kies Bluetooth verzendmethode</string>
+  <string name="send_via_bluetooth">Verstuur via Bluetooth</string>
   <string name="repo_add_url">Bron-adres</string>
   <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
   <string name="repo_exists">Deze softwarebron bestaat al!</string>
@@ -79,6 +93,7 @@ Een bron-adres ziet er ongeveer
 Wilt u ze vernieuwen?</string>
   <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
+  <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth…</string>
   <string name="menu_preferences">Voorkeuren</string>
   <string name="menu_about">Over</string>
   <string name="menu_search">Zoeken</string>
@@ -94,7 +109,7 @@ Wilt u ze vernieuwen?</string>
   <string name="menu_website">Website</string>
   <string name="menu_issues">Problemen</string>
   <string name="menu_source">Broncode</string>
-  <string name="menu_upgrade">Verbeteren</string>
+  <string name="menu_upgrade">Vernieuwen</string>
   <string name="menu_donate">Doneer</string>
   <string name="details_installed">Versie %s geïnstalleerd</string>
   <string name="details_notinstalled">Niet geïnstalleerd</string>
@@ -120,20 +135,67 @@ Wilt u ze vernieuwen?</string>
   <string name="category_all">Alles</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
+  <string name="local_repo">Collectie gedeelde apps</string>
   <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
+  <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
+  <string name="waiting_for_ipaddress">wachten op IP adres...</string>
+  <string name="setup_repo">Collectie gedeelde apps instellen</string>
+  <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>
+  <string name="touch_to_turn_on_local_repo">Raak aan om apps te delen.</string>
+  <string name="touch_to_turn_off_local_repo">Raak aan om apps niet langer te delen.</string>
+  <string name="updating">Bezig met updaten...</string>
+  <string name="update_repo">Vernieuw Bronnen</string>
+  <string name="deleting_repo">Bron verwijderen…</string>
+  <string name="adding_apks_format">%s aan gedeelde app collectie toevoegen…</string>
+  <string name="writing_index_jar">Gesigneerd index bestand (index.jar) aan het schrijven…</string>
+  <string name="failed_to_create_index">Kon indexbestand voor gedeelde apps niet aanmaken!</string>
+  <string name="linking_apks">APKs aan collectie toevoegen…</string>
+  <string name="copying_icons">App iconen aan collectie toevoegen…</string>
+  <string name="updated_local_repo">Collectie gedeelde apps geüpdatet</string>
+  <string name="no_applications_found">Geen apps gevonden</string>
+  <string name="icon">icoon</string>
+  <string name="fingerprint">Vingerafdruk:</string>
+  <string name="wifi_network">WiFi Netwerk:</string>
+  <string name="sharing_uri">Deeladres:</string>
+  <string name="enable_wifi">Schakel WiFi in</string>
+  <string name="enabling_wifi">WiFi inschakelen…</string>
+  <string name="same_wifi_instructions">Om apps te delen, zorg dat beide apparaten op hetzelfde WiFi netwerk zitten. Type dan het bovenstaande webadres in F-Droid, of scan deze QR code:</string>
+  <string name="qr_code">QR code</string>
+  <string name="next">Volgende</string>
+  <string name="skip">Overslaan</string>
+  <string name="qr_content_description">QR code of appcollectie webadres</string>
+  <string name="qr_wizard_wifi_network_instructions">Scan deze QR code om het hetzelfde WiFi netwerk als dit apparaat te verbinden.</string>
+  <string name="qr_wizard_download_instructions">Scan deze QR code om met de website met startinstructies te verbinden.</string>
+  <string name="send_fdroid_via_wifi">Verstuur F-Droid via WiFi…</string>
+  <string name="proxy">Proxy</string>
+  <string name="enable_proxy_title">Schakel HTTP proxy in</string>
+  <string name="enable_proxy_summary">Stel HTTP proxy voor alle netwerkverbindingen in</string>
+  <string name="proxy_host">Proxy host</string>
+  <string name="proxy_host_summary">Stel de proxy\'s hostname in (bijv. 127.0.0.1)</string>
+  <string name="proxy_port">Proxy poort</string>
+  <string name="proxy_port_summary">Stel het poortnummer van de proxy in (bijv. 8118)</string>
   <string name="status_download">Downloaden
 %2$s / %3$s (%4$d%%) van
+%1$s</string>
+  <string name="status_processing_xml">Verwerken applicatie
+%2$d van %3$d van
 %1$s</string>
   <string name="status_connecting_to_repo">Verbinden met %1$s</string>
   <string name="status_checking_compatibility">Controleer app compatibiliteit met uw apparaat…</string>
   <string name="status_inserting">Applicatiedetails opslaan (%1$d%%)</string>
+  <string name="repos_unchanged">Geen enkele bron heeft updates voor apps</string>
+  <string name="all_other_repos_fine">Alle andere bronnen hebben geen fouten veroorzaakt.</string>
+  <string name="global_error_updating_repos">Fout tijdens update:</string>
   <string name="no_permissions">Geen permissies worden gebruikt</string>
   <string name="permissions_for_long">Permissies voor versie %s</string>
+  <string name="showPermissions">Laat permissies zien</string>
+  <string name="showPermissions_on">Laat een lijst zien van benodigde permissies voor een app</string>
   <string name="no_handler_app">U hebt geen beschikbare app die %s kan verwerken</string>
   <string name="compactlayout">Compacte Layout</string>
   <string name="compactlayout_on">Iconen weergeven in klein formaat</string>
   <string name="theme">Thema</string>
   <string name="unsigned">Ongetekend</string>
+  <string name="unverified">Onbevestigd</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Aantal apps</string>
   <string name="repo_fingerprint">Vingerafdruk van bronondertekensleutel (SHA-256)</string>
@@ -152,9 +214,49 @@ Zodra de update gedaan is ziet u hier de beschrijving en andere details.</string
 
 Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
   <string name="repo_disabled_notification">\"%1$s\" uitgeschakeld. U moet deze weer activeren mocht u apps vanuit deze opslag willen installeren.</string>
+  <string name="repo_added">F-Droid bron %1$s opgeslagen</string>
+  <string name="repo_searching_address">Zoeker naar F-Droid bron op %1$s</string>
   <string name="minsdk_or_later">%s of later</string>
   <string name="up_to_maxsdk">tot maximaal %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s tot %2$s</string>
   <string name="not_on_same_wifi">Uw apparaat zit niet op hetzelfde WiFi-netwerk als de lokale bron die u zojuist heeft toegevoegd! Probeer om bij netwerk %s aan te melden</string>
   <string name="requires_features">Benodigd: %1$s</string>
+  <string name="app_icon">App icoon</string>
+  <string name="repo_icon">Bron icoon</string>
+  <string name="Children">Kinderen</string>
+  <string name="Development">Ontwikkeling</string>
+  <string name="Games">Spellen</string>
+  <string name="Internet">Internet</string>
+  <string name="Mathematics">Wiskunde</string>
+  <string name="Multimedia">Multimedia</string>
+  <string name="Navigation">Navigatie</string>
+  <string name="News">Nieuws</string>
+  <string name="Office">Kantoor</string>
+  <string name="Phone_SMS"/>
+  <string name="Reading">Lezen</string>
+  <string name="Science_Education"/>
+  <string name="Security">Beveiliging</string>
+  <string name="System">Systeem</string>
+  <string name="Wallpaper">Achtergrond</string>
+  <string name="requesting_root_access_title">Root toegang</string>
+  <string name="requesting_root_access_body">Root toegang aanvragen…</string>
+  <string name="root_access_denied_title">Root toegang geweigerd</string>
+  <string name="root_access_denied_body">Uw Android apparaat is niet geroot, of u heeft F-Droid geen root toegang gegeven.</string>
+  <string name="update_all">Update alles</string>
+  <string name="installer_error_title">(De)installatiefout</string>
+  <string name="installer_error_body">De (de)installatie faalde. Indien je root toegang gebruikt, probeer deze instelling uit te schakelen.</string>
+  <string name="system_permission_denied_title">Systeemrechten geweigerd</string>
+  <string name="system_permission_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd is.</string>
+  <string name="app_description">F-Droid is een installeerbare cataloges van FOSS (Vrije en Open Source Software) apps voor Android. Het programma maakt het gemakkelijk om door apps te bladeren, te installeren en up-to-date te houden.</string>
+  <string name="swap_join_same_wifi">Verbind met hetzelfe WiFi netwerk als uw vriend</string>
+  <string name="swap_use_bluetooth">Gebruik Bluetooth</string>
+  <string name="swap_wifi_help">Leer meer over WiFi</string>
+  <string name="menu_swap">Deel apps</string>
+  <string name="swap">Deel apps</string>
+  <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
+  <string name="swap_view_available_networks">(Raak aan om een lijst van beschikbare netwerken te openen)</string>
+  <string name="swap_wifi_qr_not_working">Het werkt niet</string>
+  <string name="open_qr_code_scanner">Open QR code scanner</string>
+  <string name="swap_welcome">Welkom bij F-Droid!</string>
+  <string name="swap_confirm_connect">Wilt u nu apps van %1$s ontvangen?</string>
 </resources>

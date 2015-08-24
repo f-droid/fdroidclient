@@ -44,6 +44,7 @@ L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</stri
   <string name="enable">Permès</string>
   <string name="add_key">Afegeix clau</string>
   <string name="overwrite">Sobreescriu</string>
+  <string name="repo_delete_title">Trieu el dipòsit que voleu suprimir</string>
   <string name="repo_update_title">Actualitza els dipòsits</string>
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Actualitzacions</string>
@@ -98,11 +99,15 @@ La voleu actualitzar?</string>
   <string name="status_download">S\'està baixant
 %2$s / %3$s (%4$d%%) des de
 %1$s</string>
+  <string name="status_processing_xml">S\'està processant l\'aplicació
+%2$d de %3$d des de
+%1$s</string>
   <string name="status_connecting_to_repo">S\'està connectant a
 %1$s</string>
   <string name="status_checking_compatibility">S\'està comprovant la compatibilitat de les aplicacions amb el vostre dispositiu…</string>
   <string name="no_permissions">No es fa servir cap permís.</string>
   <string name="permissions_for_long">Permisos de la versió %s</string>
+  <string name="showPermissions">Mostra els permisos</string>
   <string name="no_handler_app">No teniu cap aplicació disponible que pugui gestionar %s</string>
   <string name="compactlayout">Vista compacta</string>
   <string name="theme">Tema</string>

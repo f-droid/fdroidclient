@@ -24,6 +24,8 @@
   <string name="notify_on">Notificar cuando hay actualizaciones</string>
   <string name="update_history">Historial de actualizaciones</string>
   <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
+  <string name="root_installer">Instalar usando acceso root</string>
+  <string name="root_installer_on">Pedir acceso root para instalar, actualizar y borrar paquetes</string>
   <string name="system_installer">Instalar usando permisos de sistema</string>
   <string name="system_installer_on">Utilice permisos de sistema para instalar , actualizar y eliminar paquetes</string>
   <string name="local_repo_bonjour">Transmitir repositorio local</string>
@@ -49,6 +51,8 @@ Un repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón 
 La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">No instalado</string>
+  <string name="inst_known_source">Instalado (desde %s)</string>
+  <string name="inst_unknown_source">Instalado (desde origen desconocido)</string>
   <string name="added_on">Agregado el %s</string>
   <string name="ok">OK</string>
   <string name="yes">Sí</string>
@@ -59,6 +63,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="enable">Habilitar</string>
   <string name="add_key">Añadir clave</string>
   <string name="overwrite">Sobreescribir</string>
+  <string name="repo_delete_title">Elige el repositorio a eliminar</string>
   <string name="repo_update_title">Actualizar repositorios</string>
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Actualizaciones</string>
@@ -131,19 +136,19 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="local_repos_title">Repos de FDroid locales</string>
   <string name="local_repos_scanning">Descubriendo repos locales de FDroid…</string>
   <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
-  <string name="waiting_for_ipaddress">Esperando la dirección IP…</string>
+  <string name="waiting_for_ipaddress">Esperando la dirección IP...</string>
   <string name="setup_repo">Configurar Repositorio Local</string>
   <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
   <string name="touch_to_turn_on_local_repo">Pulsa para activar tu repo local</string>
   <string name="touch_to_turn_off_local_repo">Toca para desactivar tu repo local</string>
-  <string name="updating">Actualizando…</string>
+  <string name="updating">Actualizando...</string>
   <string name="update_repo">Actualizar Repo</string>
   <string name="deleting_repo">Borrando repositorio actual</string>
-  <string name="adding_apks_format">Agregando %s al repositorio…</string>
-  <string name="writing_index_jar">Escribiendo archivo firmado de índice (index.jar)…</string>
+  <string name="adding_apks_format">Agregando %s al repositorio...</string>
+  <string name="writing_index_jar">Escribiendo archivo firmado de índice (index.jar)...</string>
   <string name="failed_to_create_index">Fallo al crear el indice de repositorios</string>
-  <string name="linking_apks">Enlazando APKs en el repositorio…</string>
-  <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio…</string>
+  <string name="linking_apks">Enlazando APKs en el repositorio...</string>
+  <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio...</string>
   <string name="updated_local_repo">Finalizada la actualización del repositorio local</string>
   <string name="no_applications_found">No se ha encontrado la aplicasión</string>
   <string name="icon">icono</string>
@@ -151,7 +156,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="wifi_network">Red Wi-Fi:</string>
   <string name="sharing_uri">Compartir URL:</string>
   <string name="enable_wifi">Encender WiFi</string>
-  <string name="enabling_wifi">Habilitando WIFI…</string>
+  <string name="enabling_wifi">Habilitando WIFI...</string>
   <string name="same_wifi_instructions">Para conectarse a dispositivos de otras personas, asegúrese de que ambos dispositivos están en la misma red WiFi. A continuación, escriba la dirección URL anterior en F-Droid, o escanear este código QR​​:</string>
   <string name="qr_code">Código QR</string>
   <string name="next">Siguiente</string>
@@ -159,7 +164,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="qr_content_description">Código QR de la URL del repositorio</string>
   <string name="qr_wizard_wifi_network_instructions">Escanear este Código QR ​​para conectarse a la misma red Wi-Fi que este dispositivo.</string>
   <string name="qr_wizard_download_instructions">Escanea este Código QR para conectar con el sitio web y asi empezar</string>
-  <string name="send_fdroid_via_wifi">Enviar FDroid vía Wi-Fi…</string>
+  <string name="send_fdroid_via_wifi">Enviar FDroid vía Wi-Fi...</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Habilitar proxy HTTP</string>
   <string name="enable_proxy_summary">Configurar proxy HTTP para todas las solicitudes de red</string>
@@ -170,6 +175,9 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) de
 %1$s</string>
+  <string name="status_processing_xml">Procesando la aplicación
+%2$d de %3$d desde
+%1$s</string>
   <string name="status_connecting_to_repo">Conectando a
 %1$s</string>
   <string name="status_checking_compatibility">Comprobando la compatibilidad de las aplicaciones con tu dispositivo…</string>
@@ -179,6 +187,8 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="global_error_updating_repos">Error en la Actualización:</string>
   <string name="no_permissions">No se usan permisos.</string>
   <string name="permissions_for_long">Permisos para la versión %s</string>
+  <string name="showPermissions">Mostrar permisos</string>
+  <string name="showPermissions_on">Mostrar una lista de los permisos que requiere una aplicación</string>
   <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s</string>
   <string name="compactlayout">Diseño compacto</string>
   <string name="compactlayout_on">Mostrar iconos en tamaño menor</string>
@@ -210,6 +220,9 @@ Nota: todas las aplicaciones previamente instaladas se quedarán en tu dispositi
   <string name="repo_disabled_notification">\"%1$s\" deshabilitado.
 
 Necesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
+  <string name="repo_added">Guardado el repositorio de F-Droid %1$s</string>
+  <string name="repo_searching_address">BUscando repositorio de F-Droid en
+%1$s</string>
   <string name="minsdk_or_later">%s o posterior</string>
   <string name="up_to_maxsdk">hasta %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
@@ -232,10 +245,13 @@ Necesitarás volver a habilitar este repositorio para instalar aplicaciones desd
   <string name="Security">Seguridad</string>
   <string name="System">Sistema</string>
   <string name="Wallpaper">Fondo de pantalla</string>
-  <string name="requesting_root_access_body">Solicitando acceso root…</string>
+  <string name="requesting_root_access_title">Acceso Root</string>
+  <string name="requesting_root_access_body">Solicitando acceso root...</string>
   <string name="root_access_denied_title">Acceso Root denegado</string>
   <string name="root_access_denied_body">Puede ser que el dispositivo Android no este rooteado o se ha denegado el acceso root para F-Droid.</string>
   <string name="update_all">Actualizar todo</string>
+  <string name="installer_error_title">Error de (des)instalación</string>
+  <string name="installer_error_body">La (des)instalación falló. Si se está usando acceso root, ¡prueba a deshabilitar esta opción!</string>
   <string name="system_permission_denied_title">Permisos de Sistema denegados</string>
   <string name="system_permission_denied_body">Esta opción sólo está disponible cuando F-Droid se instala como una aplicación de sistema.</string>
   <string name="app_description">F-Droid es un catálogo instalable de aplicaciones FOSS (Software libre y de Código Abierto) para la plataforma Android. El cliente hace que sea fácil navegar, instalar y mantener un registro de cambios en el dispositivo.</string>

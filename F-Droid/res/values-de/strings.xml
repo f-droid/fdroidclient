@@ -24,6 +24,8 @@
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
   <string name="update_history">Aktualisierungsverlauf</string>
   <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
+  <string name="root_installer">Mit Verwendung von root-Zugriff installieren</string>
+  <string name="root_installer_on">Root-Rechte anfordern, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="system_installer">Mit Verwendung von Systemberechtigungen installieren</string>
   <string name="system_installer_on">Systemberechtigungen verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
   <string name="local_repo_bonjour">Lokale Paketquelle übertragen</string>
@@ -50,6 +52,8 @@ Um eine Paketquelle hinzuzufügen drücken Sie jetzt den Menüknopf und geben Si
 Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/repo</string>
   <string name="inst">Installiert</string>
   <string name="not_inst">Nicht installiert</string>
+  <string name="inst_known_source">Installiert (aus %s)</string>
+  <string name="inst_unknown_source">Installiert (aus unbekannter Quelle)</string>
   <string name="added_on">Hinzugefügt am %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -60,6 +64,7 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
   <string name="enable">Aktivieren</string>
   <string name="add_key">Schlüssel hinzufügen</string>
   <string name="overwrite">Überschreiben</string>
+  <string name="repo_delete_title">Zu entfernende Paketquelle auswählen</string>
   <string name="repo_update_title">Paketquellen aktualisieren</string>
   <string name="tab_noninstalled">Verfügbar</string>
   <string name="tab_updates">Aktualisierungen</string>
@@ -81,7 +86,7 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
   <string name="repo_exists_enable">Diese Paketquelle ist bereits eingerichtet, bestätigen, dass Sie diese wieder aktivieren möchten.</string>
   <string name="repo_exists_and_enabled">Die eingehende Paketquelle ist bereits eingerichtet und aktiviert!</string>
   <string name="repo_delete_to_overwrite">Sie müssen diese Paketquelle zuerst löschen, bevor Sie eine mit einem anderen Schlüssel hinzuzufügen!</string>
-  <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse ignorieren: %s</string>
+  <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
   <string name="repo_alrt">Die Liste der genutzten Paketquellen hat sich geändert.
 Sollen diese aktualisiert werden?</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
@@ -130,7 +135,7 @@ Sollen diese aktualisiert werden?</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
   <string name="local_repo">Lokale Paketquelle</string>
   <string name="local_repos_title">Lokale F-Droid-Paketquellen</string>
-  <string name="local_repos_scanning">Lokale F-Droid-Paketquellen entdecken …</string>
+  <string name="local_repos_scanning">Lokale F-Droid-Paketquellen werden entdeckt …</string>
   <string name="local_repo_running">F-Droid ist bereit zum Tauschen</string>
   <string name="waiting_for_ipaddress">Auf IP-Adresse wird gewartet …</string>
   <string name="setup_repo">Lokale Paketquelle einrichten</string>
@@ -168,18 +173,23 @@ Sollen diese aktualisiert werden?</string>
   <string name="proxy_host_summary">Konfigurieren Sie Ihren Proxy-Hostnamen (z.B. 127.0.0.1)</string>
   <string name="proxy_port">Proxy-Port</string>
   <string name="proxy_port_summary">Konfigurieren Sie Ihren Proxy-Port (z.B. 8818)</string>
-  <string name="status_download">Herunterladen
-%2$s / %3$s (%4$d%%) von
+  <string name="status_download">%2$s / %3$s (%4$d%%) von
+%1$s
+wird heruntergeladen</string>
+  <string name="status_processing_xml">Anwendung wird vorbereitet
+%2$d / %3$d von
 %1$s</string>
   <string name="status_connecting_to_repo">Mit %1$s
 wird verbunden</string>
   <string name="status_checking_compatibility">Kompatibilität mit Ihrem Gerät wird überprüft …</string>
-  <string name="status_inserting">App-Details speichern (%1$d%%)</string>
+  <string name="status_inserting">App-Details werden gespeichert (%1$d%%)</string>
   <string name="repos_unchanged">Keine Paketquelle hat irgendwelche Paketaktualisierungen</string>
   <string name="all_other_repos_fine">Alle anderen Paketquellen erzeugen keine Fehler.</string>
   <string name="global_error_updating_repos">Fehler während der Aktualisierung:</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>
+  <string name="showPermissions">Berechtigungen anzeigen</string>
+  <string name="showPermissions_on">Eine Liste mit Berechtigungen, die von einer Anwendung verlangt werden, anzeigen</string>
   <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann</string>
   <string name="compactlayout">Kompakte Ansicht</string>
   <string name="compactlayout_on">Symbole in einer kleineren Größe anzeigen</string>
@@ -191,7 +201,7 @@ wird verbunden</string>
   <string name="repo_fingerprint">Fingerabdruck des Paketquellensignaturschlüssels (SHA-256)</string>
   <string name="repo_description">Beschreibung</string>
   <string name="repo_last_update">Letzte Aktualisierung</string>
-  <string name="repo_update">Aktualisierung</string>
+  <string name="repo_update">Aktualisieren</string>
   <string name="repo_name">Name</string>
   <string name="unsigned_description">Das bedeutet, dass die Liste von
         Anwendungen nicht verifiziert werden konnte. 
@@ -217,6 +227,9 @@ Bemerkung: Alle
 
 Sie müssen
         diese Paketquelle wieder aktivieren, um Anwendungen daraus installieren zu können.</string>
+  <string name="repo_added">F-Droid-Paketquelle %1$s gespeichert</string>
+  <string name="repo_searching_address">Nach F-Droid-Paketquelle wird unter
+%1$s gesucht</string>
   <string name="minsdk_or_later">%s oder später</string>
   <string name="up_to_maxsdk">bis zu %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s bis zu %2$s</string>
@@ -233,14 +246,19 @@ Sie müssen
   <string name="Navigation">Navigation</string>
   <string name="News">Nachrichten</string>
   <string name="Office">Büro</string>
-  <string name="Reading">Wird gelesen</string>
+  <string name="Phone_SMS"/>
+  <string name="Reading">Lesen</string>
+  <string name="Science_Education"/>
   <string name="Security">Sicherheit</string>
   <string name="System">System</string>
   <string name="Wallpaper">Hintergrundbild</string>
+  <string name="requesting_root_access_title">Root-Zugriff</string>
   <string name="requesting_root_access_body">Root-Rechte werden angefordert …</string>
   <string name="root_access_denied_title">Root-Zugriff verweigert</string>
   <string name="root_access_denied_body">Entweder ist Ihr Android-Gerät nicht gerootet oder Sie haben den Root-Zugriff für F-Droid verweigert.</string>
   <string name="update_all">Alle aktualisieren</string>
+  <string name="installer_error_title">(De-)Installationsfehler</string>
+  <string name="installer_error_body">Die (De-)Installation schlug fehl. Wenn Sie Root-Zugriff benutzen, versuchen Sie diese Einstellung zu deaktivieren!</string>
   <string name="system_permission_denied_title">Systemberechtigungen verweigert</string>
   <string name="system_permission_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert wurde.</string>
   <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS (Freie und Quelloffene Software) Anwendungen für die Android-Plattform. Der Client macht es auf deinem Gerät einfach zu durchsuchen, zu installieren und Aktualisierungen zu verfolgen.</string>

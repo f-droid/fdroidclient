@@ -23,6 +23,7 @@
   <string name="repo_add_title">Новий репозиторій</string>
   <string name="repo_add_add">Додати</string>
   <string name="cancel">Назад</string>
+  <string name="repo_delete_title">Видалити репозиторій</string>
   <string name="repo_update_title">Оновити репозиторії?</string>
   <string name="tab_noninstalled">Наявне</string>
   <string name="tab_updates">Оновлення</string>

@@ -13,6 +13,8 @@
   <string name="notify">Powiadom</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
+  <string name="root_installer">Instaluj na uprawnieniach roota</string>
+  <string name="root_installer_on">Żądaj dostępu roota do instalacji, aktualizacji i usuwania pakietów</string>
   <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
   <string name="system_installer_on">Używaj uprawnień systemowych do instalacji, aktualizacji i usuwania pakietów</string>
   <string name="local_repo_bonjour">Widoczność repozytorium</string>
@@ -121,7 +123,7 @@ Czy chcesz je zaktualizować?</string>
   <string name="qr_content_description">Kod QR z URL repozytorium</string>
   <string name="qr_wizard_wifi_network_instructions">Zeskanuj kod QR, aby połączyć się do sieci Wi-Fi drugiego urządzenia.</string>
   <string name="qr_wizard_download_instructions">Zeskanuj kod QR, aby przejść do strony i dowiedzieć się, jak rozpocząć.</string>
-  <string name="send_fdroid_via_wifi">Wyślij F-Droid przez WiFi…</string>
+  <string name="send_fdroid_via_wifi">Wyślij F-Droid przez WiFi...</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Włącz proxy HTTP</string>
   <string name="enable_proxy_summary">Konfiguruj proxy HTTP dla żądań sieciowych</string>
@@ -129,6 +131,7 @@ Czy chcesz je zaktualizować?</string>
   <string name="proxy_host_summary">Skonfiguruj host proxy</string>
   <string name="proxy_port">Port proxy</string>
   <string name="proxy_port_summary">Skonfiguruj port proxy</string>
+  <string name="status_processing_xml">Przetwarzanie aplikacji %2$d / %3$d z %1$s</string>
   <string name="status_connecting_to_repo">Trwa łączenie z
 %1$s</string>
   <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
@@ -136,6 +139,8 @@ Czy chcesz je zaktualizować?</string>
   <string name="all_other_repos_fine">Pozostałe repozytoria nie zgłosiły błędów.</string>
   <string name="global_error_updating_repos">Błąd podczas aktualizacji:</string>
   <string name="permissions_for_long">Uprawnienia dla wersji %s</string>
+  <string name="showPermissions">Wyświetl uprawnienia</string>
+  <string name="showPermissions_on">Wyświetl listę uprawnień wymaganych przez aplikację</string>
   <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s</string>
   <string name="compactlayout">Widok kompaktowy</string>
   <string name="compactlayout_on">Pokaż ikony w mniejszym rozmiarze</string>
@@ -174,10 +179,13 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="Security">Bezpieczeństwo</string>
   <string name="System">System</string>
   <string name="Wallpaper">Tapeta</string>
+  <string name="requesting_root_access_title">Dostęp roota</string>
   <string name="requesting_root_access_body">Żądanie uprawnień roota…</string>
   <string name="root_access_denied_title">Odmówiono uprawnień roota</string>
   <string name="root_access_denied_body">Urządzenie nie zostało zrootowane lub odmówiono uprawnień roota F-Droidowi.</string>
   <string name="update_all">Uaktualnij wszystko</string>
+  <string name="installer_error_title">Błąd de/instalacji</string>
+  <string name="installer_error_body">Błąd de/instalacji. Jeżeli używasz uprawnień roota, spróbuj wyłączyć tę opcję.</string>
   <string name="system_permission_denied_title">Odmówiono uprawnień systemowych</string>
   <string name="system_permission_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako aplikacja systemowa.</string>
   <string name="app_description">F-Droid jest katalogiem aplikacji FOSS (Wolne i Otwarte Oprogramowanie) dla platformy Android. Aplikacja kliencka umożliwia łatwe przeglądanie, instalację i zarządzanie aktualizacjami na Twoim urządzeniu.</string>

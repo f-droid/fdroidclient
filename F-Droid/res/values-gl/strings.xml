@@ -43,6 +43,7 @@ Un enderezo a un repositorio sería algo
   <string name="repo_add_title">Engadir un novo repositorio</string>
   <string name="repo_add_add">Engadir</string>
   <string name="cancel">Cancelar</string>
+  <string name="repo_delete_title">Escoller o repositorio que retirar</string>
   <string name="repo_update_title">Actualizar repositorios</string>
   <string name="tab_noninstalled">Dispoñíbel</string>
   <string name="tab_updates">Actualizacións</string>
@@ -95,11 +96,15 @@ Quere actualizalos?</string>
   <string name="status_download">Descargando
 %2$s / %3$s (%4$d%%) desde
 %1$s</string>
+  <string name="status_processing_xml">Procesando o aplicativo
+%2$d de %3$d desde
+%1$s</string>
   <string name="status_connecting_to_repo">Conectándose con
 %1$s</string>
   <string name="status_checking_compatibility">Comprobando a compatibilidade das aps con seu aparello</string>
   <string name="no_permissions">Non se usan permisos</string>
   <string name="permissions_for_long">Permisos para a versión %s</string>
+  <string name="showPermissions">Amosar permisos</string>
   <string name="no_handler_app">Non ten ningunha ap dispoñíbel que poida manexar %s</string>
   <string name="compactlayout">Deseño compacto</string>
   <string name="theme">Tema</string>

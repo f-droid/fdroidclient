@@ -24,6 +24,8 @@
   <string name="notify_on">当更新可用时显示通知</string>
   <string name="update_history">更新历史</string>
   <string name="update_history_summ">相隔多少天的应用程序将会被当作较新的程序：%s</string>
+  <string name="root_installer">用root权限安装</string>
+  <string name="root_installer_on">在安装、更新或删除时请求root权限</string>
   <string name="system_installer">用系统权限安装</string>
   <string name="search_results">搜索结果</string>
   <string name="app_details">应用程序详情</string>
@@ -54,6 +56,7 @@ https://f-droid.org/repo</string>
   <string name="enable">启用</string>
   <string name="add_key">添加密钥</string>
   <string name="overwrite">覆盖</string>
+  <string name="repo_delete_title">选择要移除的软件源</string>
   <string name="repo_update_title">更新软件源</string>
   <string name="tab_noninstalled">可安装</string>
   <string name="tab_updates">更新</string>
@@ -106,6 +109,7 @@ https://f-droid.org/repo</string>
   <string name="antinonfreeadlist">该应用程序会推广非自由免费的插件或扩展</string>
   <string name="antinonfreenetlist">该应用程序会推广非自由的网络服务</string>
   <string name="antinonfreedeplist">该应用程序依赖于其它非自由的应用程序</string>
+  <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
   <string name="display">显示</string>
   <string name="expert">高级</string>
   <string name="expert_on">显示额外信息并启用额外选项</string>
@@ -123,9 +127,9 @@ https://f-droid.org/repo</string>
   <string name="local_repo">本地软件源</string>
   <string name="local_repos_title">本地FDoid软件仓库</string>
   <string name="local_repos_scanning">发现本地FDroid软件仓库…</string>
-  <string name="updating">更新中…</string>
+  <string name="updating">更新中...</string>
   <string name="update_repo">更新软件源</string>
-  <string name="deleting_repo">正在删除当前软件源…</string>
+  <string name="deleting_repo">正在删除当前软件源...</string>
   <string name="icon">图标</string>
   <string name="wifi_network">WiFi网络:</string>
   <string name="sharing_uri">共享URL:</string>
@@ -139,12 +143,17 @@ https://f-droid.org/repo</string>
   <string name="status_download">正在从以下位置下载：
 %1$s
 进度：%2$s / %3$s (%4$d%%)</string>
+  <string name="status_processing_xml">正在处理以下位置的应用程序：
+%1$s
+进度：%2$d / %3$d</string>
   <string name="status_connecting_to_repo">正在连接到
 %1$s</string>
   <string name="status_checking_compatibility">正在检查应用程序与您的设备的兼容性…</string>
   <string name="status_inserting">正在保存应用程序的细节 (%1$d%%)</string>
   <string name="no_permissions">未使用任何权限。</string>
   <string name="permissions_for_long">版本 %s 的权限</string>
+  <string name="showPermissions">显示权限</string>
+  <string name="showPermissions_on">显示应用程序所需的权限清单</string>
   <string name="no_handler_app">你没有可处理 %s 的应用程序</string>
   <string name="compactlayout">紧凑布局</string>
   <string name="compactlayout_on">显示小图标</string>
@@ -197,7 +206,8 @@ https://f-droid.org/repo</string>
   <string name="Security">安全</string>
   <string name="System">系统</string>
   <string name="Wallpaper">壁纸</string>
-  <string name="requesting_root_access_body">正在请求root权限…</string>
+  <string name="requesting_root_access_title">root权限</string>
+  <string name="requesting_root_access_body">正在请求root权限...</string>
   <string name="root_access_denied_title">root权限取得失败</string>
   <string name="update_all">更新全部</string>
   <string name="swap_welcome">欢迎来到F-Droid！</string>

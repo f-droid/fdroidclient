@@ -40,6 +40,7 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="enable">Gaitu</string>
   <string name="add_key">Gehitu gakoa</string>
   <string name="overwrite">Gainidatzi</string>
+  <string name="repo_delete_title">Aukeratu biltegia ezabatzeko</string>
   <string name="repo_update_title">Eguneratu biltegiak</string>
   <string name="tab_noninstalled">Eskuragarri</string>
   <string name="tab_updates">Eguneraketak</string>
@@ -95,6 +96,7 @@ konektatzen</string>
   <string name="status_checking_compatibility">Aplikazioak zure gailuarekin bateragarriak diren egiaztatzen…</string>
   <string name="no_permissions">Ez da baimenik erabiltzen.</string>
   <string name="permissions_for_long">%s bertsioarentzako baimenak</string>
+  <string name="showPermissions">Erakutsi baimenak</string>
   <string name="compactlayout">Diseinu trinkoa</string>
   <string name="theme">Gaia</string>
   <string name="unsigned">Sinatu gabea</string>
