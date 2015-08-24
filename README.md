@@ -4,8 +4,8 @@ F-Droid Client
 Client for [F-Droid](https://f-droid.org), the Free Software repository system
 for Android.
 
-Building from source with Gradle
---------------------------------
+Building with Gradle
+--------------------
 
 The only required tools are the [Android
 SDK](http://developer.android.com/sdk/index.html) and Gradle.
@@ -17,6 +17,11 @@ Once you have checked out the version you wish to build, run:
 
 	cd F-Droid
 	gradle assembleRelease
+
+If you would like to build from source, add `-PsourceDeps`:
+
+	cd F-Droid
+	gradle assembleDebug -PsourceDeps
 
 The resulting apk will be in `build/outputs/apk/`.
 
@@ -37,8 +42,7 @@ Direct download
 ---------------
 
 You can [download the application](https://f-droid.org/FDroid.apk) directly
-from our site or [browse it in the
-repo](https://f-droid.org/app/org.fdroid.fdroid).
+from our site or [browse it in the repo](https://f-droid.org/app/org.fdroid.fdroid).
 
 
 Contributing
