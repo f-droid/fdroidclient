@@ -128,7 +128,7 @@
   <string name="updating">Обновяване…</string>
   <string name="update_repo">Актуализиране на хранилището</string>
   <string name="deleting_repo">Изтриване на хранилището…</string>
-  <string name="adding_apks_format">Добавяне на %s към хранилището %s…</string>
+  <string name="adding_apks_format">Добавяне на %s към хранилището…</string>
   <string name="updated_local_repo">Актуализирането на локалното хранилище приключи</string>
   <string name="no_applications_found">Не са открити приложения</string>
   <string name="icon">икона</string>
