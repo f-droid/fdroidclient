@@ -72,8 +72,6 @@ public class HttpDownloader extends Downloader {
         } else {
             connection = (HttpURLConnection) sourceUrl.openConnection();
         }
-        connection.setConnectTimeout(10000);
-        connection.setReadTimeout(40000);
     }
 
     protected void doDownload() throws IOException, InterruptedException {
