@@ -76,7 +76,7 @@ Repozitorija adrese izskatās, aptuveni, šādi: https://f-droid.org/repo</strin
   <string name="repo_alrt">Izmantoto Repozitoriju saraksts izmainīts, vai atjaunot?</string>
   <string name="menu_update_repo">Atjauno Repozitorijus</string>
   <string name="menu_manage">Repozitoriji</string>
-  <string name="menu_send_apk_bt">Bluesūta FDroid.apk...</string>
+  <string name="menu_send_apk_bt">Bluesūta FDroid.apk…</string>
   <string name="menu_preferences">Iestatījumi</string>
   <string name="menu_about">Par</string>
   <string name="menu_search">Meklēt</string>

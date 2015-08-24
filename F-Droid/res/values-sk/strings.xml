@@ -9,7 +9,7 @@
   <string name="version">Verzia</string>
   <string name="edit">Upraviť</string>
   <string name="delete">Vymazať</string>
-  <string name="enable_nfc_send">Zapnúť NFC odoslanie...</string>
+  <string name="enable_nfc_send">Zapnúť NFC odoslanie…</string>
   <string name="cache_downloaded">Vyr. pamäť aplikácií</string>
   <string name="cache_downloaded_on">Nechať stiahnuté apk súbory na SD karte</string>
   <string name="updates">Aktualizácie</string>
@@ -70,10 +70,10 @@ Adresa repozitára vyzerá napríklad takto:
   <string name="many_updates_available">Dostupné aktualizácie: %d ks</string>
   <string name="fdroid_updates_available">Dostupné aktualizácie F-Droidu</string>
   <string name="process_wait_title">Prosím čakajte</string>
-  <string name="process_update_msg">Aktualizácia zoznamu aplikácií...</string>
+  <string name="process_update_msg">Aktualizácia zoznamu aplikácií…</string>
   <string name="download_server">Aplikácie získavame z</string>
   <string name="nfc_is_not_enabled">NFC je vypnuté!</string>
-  <string name="go_to_nfc_settings">Ísť do nastavení NFC...</string>
+  <string name="go_to_nfc_settings">Ísť do nastavení NFC…</string>
   <string name="send_via_bluetooth">Poslať cez Bluetooth</string>
   <string name="repo_add_url">Adresa repozitára</string>
   <string name="repo_add_fingerprint">Odtlačok (voliteľný)</string>
@@ -130,21 +130,21 @@ Chcete ich aktualizovať?</string>
   <string name="category_recentlyupdated">Nedávno aktualizované</string>
   <string name="local_repo">Miestne repo</string>
   <string name="local_repos_title">Miestne repá F-Droidu</string>
-  <string name="local_repos_scanning">Zisťovanie miestnych repozitárov F-Droidu...</string>
+  <string name="local_repos_scanning">Zisťovanie miestnych repozitárov F-Droidu…</string>
   <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
   <string name="waiting_for_ipaddress">čakanie na IP adresu</string>
   <string name="setup_repo">Nastaviť miestne repo</string>
   <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše aplikácie.</string>
   <string name="touch_to_turn_on_local_repo">Ťuknite na zapnutie miestneho repa.</string>
   <string name="touch_to_turn_off_local_repo">Ťuknite na vypnutie miestneho repa.</string>
-  <string name="updating">Aktualizujeme...</string>
+  <string name="updating">Aktualizujeme…</string>
   <string name="update_repo">Aktualizovať repo</string>
   <string name="deleting_repo">Mažeme súčasné repo</string>
-  <string name="adding_apks_format">Pridávame %s do repa...</string>
-  <string name="writing_index_jar">Zapisujeme podpísaný súbor indexu (index.jar)...</string>
+  <string name="adding_apks_format">Pridávame %s do repa…</string>
+  <string name="writing_index_jar">Zapisujeme podpísaný súbor indexu (index.jar)…</string>
   <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repa!</string>
-  <string name="linking_apks">Odkazujeme súbory APK do repa...</string>
-  <string name="copying_icons">Kopírujeme ikony do repa...</string>
+  <string name="linking_apks">Odkazujeme súbory APK do repa…</string>
+  <string name="copying_icons">Kopírujeme ikony do repa…</string>
   <string name="updated_local_repo">Aktualizácie miestneho repa dokončené</string>
   <string name="no_applications_found">Aplikácie sa nenašli</string>
   <string name="icon">ikona</string>
@@ -160,7 +160,7 @@ Chcete ich aktualizovať?</string>
   <string name="qr_content_description">QR kód URL adresy repa.</string>
   <string name="qr_wizard_wifi_network_instructions">Skenujte tento QR kód pre pripojenie k rovnakej WiFi sieti ako toto zariadenie.</string>
   <string name="qr_wizard_download_instructions">Naskenujte tento QR kód pre pripojenie na webové stránky s inštrukciami na začiatok.</string>
-  <string name="send_fdroid_via_wifi">Odoslať FDroid cez WiFi...</string>
+  <string name="send_fdroid_via_wifi">Odoslať FDroid cez WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Povoliť HTTP Proxy</string>
   <string name="enable_proxy_summary">Nastaviť HTTP Proxy na všetky sieťové žiadosti</string>
@@ -172,7 +172,7 @@ Chcete ich aktualizovať?</string>
 %1$s</string>
   <string name="status_connecting_to_repo">Pripájanie na
 %1$s</string>
-  <string name="status_checking_compatibility">Kontroluje sa kompatibilita aplikácií s vašim zariadením...</string>
+  <string name="status_checking_compatibility">Kontroluje sa kompatibilita aplikácií s vašim zariadením…</string>
   <string name="status_inserting">Ukladám detaily aplikácie (%1$d%%)</string>
   <string name="repos_unchanged">Repozitáre nemajú aktualizácie balíkov</string>
   <string name="all_other_repos_fine">Ostatné repá nevytvorili chyby.</string>
@@ -235,7 +235,7 @@ Budete
   <string name="Security">Bezpečnosť</string>
   <string name="System">Systém</string>
   <string name="Wallpaper">Tapeta</string>
-  <string name="requesting_root_access_body">Žiadame root prístup...</string>
+  <string name="requesting_root_access_body">Žiadame root prístup…</string>
   <string name="root_access_denied_title">Root prístup zamietnutý</string>
   <string name="root_access_denied_body">Buď vaše zariadenie s Androidom nemá urobený root alebo ste odmietli root prístup pre F-Droid.</string>
   <string name="update_all">Aktualizovať všetko</string>

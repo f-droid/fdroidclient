@@ -9,7 +9,7 @@
   <string name="version">버전</string>
   <string name="edit">편집</string>
   <string name="delete">삭제</string>
-  <string name="enable_nfc_send">NFC 전송 사용...</string>
+  <string name="enable_nfc_send">NFC 전송 사용…</string>
   <string name="cache_downloaded">다운로드된 설치파일 저장</string>
   <string name="cache_downloaded_on">다운로드한 APK 파일을 SD 카드에 계속 보관</string>
   <string name="updates">업데이트</string>
@@ -70,7 +70,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="process_update_msg">응용 프로그램 목록 업데이트중…</string>
   <string name="download_server">다음으로부터 응용프로그램을 가져옵니다:</string>
   <string name="nfc_is_not_enabled">NFC가 해제되어 있습니다!</string>
-  <string name="go_to_nfc_settings">NFC 설정으로...</string>
+  <string name="go_to_nfc_settings">NFC 설정으로…</string>
   <string name="bluetooth_activity_not_found">블루투스 전송 방법을 찾을 수 없습니다. 선택하세요!</string>
   <string name="choose_bt_send">블루투스 전송 방법 선택</string>
   <string name="send_via_bluetooth">블루투스를 통해 전송</string>
@@ -86,7 +86,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
 업데이트 하시겠습니까?</string>
   <string name="menu_update_repo">저장소 업데이트</string>
   <string name="menu_manage">저장소 관리</string>
-  <string name="menu_send_apk_bt">FDroid.apk 파일을 블루투스로 전송...</string>
+  <string name="menu_send_apk_bt">FDroid.apk 파일을 블루투스로 전송…</string>
   <string name="menu_preferences">설정</string>
   <string name="menu_about">대하여</string>
   <string name="menu_search">검색</string>
@@ -130,21 +130,21 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="category_recentlyupdated">최근 업데이트</string>
   <string name="local_repo">로컬 저장소</string>
   <string name="local_repos_title">로컬 FDroid 저장소</string>
-  <string name="local_repos_scanning">로컬 FDroid 저장소 찾는 중...</string>
+  <string name="local_repos_scanning">로컬 FDroid 저장소 찾는 중…</string>
   <string name="local_repo_running">F-Droid는 교환할 준비가 되었습니다</string>
-  <string name="waiting_for_ipaddress">IP 주소 기다리는 중...</string>
+  <string name="waiting_for_ipaddress">IP 주소 기다리는 중…</string>
   <string name="setup_repo">로컬 저장소 설정</string>
   <string name="touch_to_configure_local_repo">자세한 정보를 보고, 타인이 당신과 앱을 교환할 수 있도록 하려면 여기를 누르세요.</string>
   <string name="touch_to_turn_on_local_repo">로컬 저장소를 켜기 위해 여기를 누르세요.</string>
   <string name="touch_to_turn_off_local_repo">로컬 저장소를 끄기 위해 여기를 누르세요.</string>
-  <string name="updating">업데이트 중...</string>
+  <string name="updating">업데이트 중…</string>
   <string name="update_repo">저장소 업데이트</string>
-  <string name="deleting_repo">현재의 저장소 삭제중...</string>
-  <string name="adding_apks_format">%s 을(를) 저장소에 추가하는 중...</string>
-  <string name="writing_index_jar">서명된 색인 파일(index.jar) 작성 중...</string>
+  <string name="deleting_repo">현재의 저장소 삭제중…</string>
+  <string name="adding_apks_format">%s 을(를) 저장소에 추가하는 중…</string>
+  <string name="writing_index_jar">서명된 색인 파일(index.jar) 작성 중…</string>
   <string name="failed_to_create_index">저장소 색인을 만드는 데 실패했습니다!</string>
-  <string name="linking_apks">APK 파일을 저장소에 연결하는 중...</string>
-  <string name="copying_icons">앱 아이콘을 저장소에 복사하는 중...</string>
+  <string name="linking_apks">APK 파일을 저장소에 연결하는 중…</string>
+  <string name="copying_icons">앱 아이콘을 저장소에 복사하는 중…</string>
   <string name="updated_local_repo">로컬 저장소 업데이트 완료</string>
   <string name="no_applications_found">앱이 발견되지 않음</string>
   <string name="icon">아이콘</string>
@@ -152,7 +152,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="wifi_network">WiFi 네트워크:</string>
   <string name="sharing_uri">공유 URL:</string>
   <string name="enable_wifi">WiFi 사용</string>
-  <string name="enabling_wifi">WiFi 활성화 중...</string>
+  <string name="enabling_wifi">WiFi 활성화 중…</string>
   <string name="same_wifi_instructions">타인의 기기에 접속하려면 두 기기가 모두 같은 WiFi 네트워크에 연결되어 있는지를 확인하세요. 그리고 위의 URL 주소를 F-Droid에 입력하거나 이 QR코드를 스캔하세요.</string>
   <string name="qr_code">QR 코드</string>
   <string name="next">다음</string>
@@ -160,7 +160,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="qr_content_description">저장소 URL의 QR 코드</string>
   <string name="qr_wizard_wifi_network_instructions">이 기기와 같은 WiFi 네트워크에 접속하려면 이 QR 코드를 스캔하기</string>
   <string name="qr_wizard_download_instructions">시작하기 위한 웹사이트에 접속하려면 이 QR 코드를 스캔하기</string>
-  <string name="send_fdroid_via_wifi">FDroid를 WiFi를 통해 전송...</string>
+  <string name="send_fdroid_via_wifi">FDroid를 WiFi를 통해 전송…</string>
   <string name="proxy">프록시</string>
   <string name="enable_proxy_title">HTTP 프록시 사용</string>
   <string name="enable_proxy_summary">모든 네트워크 요청 사항에 사용할 HTTP 프록시 설정</string>
@@ -224,7 +224,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="Security">보안</string>
   <string name="System">시스템</string>
   <string name="Wallpaper">배경화면</string>
-  <string name="requesting_root_access_body">루트 권한 요청하는 중...</string>
+  <string name="requesting_root_access_body">루트 권한 요청하는 중…</string>
   <string name="root_access_denied_title">루트 권한 거부됨</string>
   <string name="root_access_denied_body">기기가 루팅되지 않았거나 F-Droid의 루트 권한 요청을 거부한 경우입니다.</string>
   <string name="update_all">모두 업데이트</string>

@@ -9,7 +9,7 @@
   <string name="version">Versión</string>
   <string name="edit">Editar</string>
   <string name="delete">Desaniciar</string>
-  <string name="enable_nfc_send">Habilitar unviu per NFC...</string>
+  <string name="enable_nfc_send">Habilitar unviu per NFC…</string>
   <string name="cache_downloaded">Caché d\'aplicaciones</string>
   <string name="cache_downloaded_on">Caltién na tarxeta SD les apk baxaes</string>
   <string name="updates">Anovamientos</string>
@@ -68,10 +68,10 @@ La direición del repositoriu paezse como a esto: https://f-droid.org/repo</stri
   <string name="many_updates_available">%d anovamientos disponibles.</string>
   <string name="fdroid_updates_available">Anovamientos de F-Droid disponibles</string>
   <string name="process_wait_title">Espera por favor</string>
-  <string name="process_update_msg">Anovando\'l llistáu d\'aplicaciones...</string>
+  <string name="process_update_msg">Anovando\'l llistáu d\'aplicaciones…</string>
   <string name="download_server">Consiguiendo\'l formulariu d\'applicaciones</string>
   <string name="nfc_is_not_enabled">¡El NFC nun ta habilitáu!</string>
-  <string name="go_to_nfc_settings">Dir a los axustes de NFC...</string>
+  <string name="go_to_nfc_settings">Dir a los axustes de NFC…</string>
   <string name="bluetooth_activity_not_found">¡Nun hai dengún métodu d\'unviu per Bluetooth, escueyi ún!</string>
   <string name="choose_bt_send">Escoyer métodu d\'unviu per Bluetooth</string>
   <string name="send_via_bluetooth">Unviar pente Bluetooth</string>
@@ -131,21 +131,21 @@ La direición del repositoriu paezse como a esto: https://f-droid.org/repo</stri
   <string name="category_recentlyupdated">Anovao apocayá</string>
   <string name="local_repo">Repositoriu llocal</string>
   <string name="local_repos_title">Repositorios FDroid llocales</string>
-  <string name="local_repos_scanning">Descubriendo repositorios FDroid llocales...</string>
+  <string name="local_repos_scanning">Descubriendo repositorios FDroid llocales…</string>
   <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
-  <string name="waiting_for_ipaddress">esperando pola direición IP...</string>
+  <string name="waiting_for_ipaddress">esperando pola direición IP…</string>
   <string name="setup_repo">Configurar repositoriu llocal</string>
   <string name="touch_to_configure_local_repo">Toca pa ver los detalles y almitir a otros intercambiar les tos aplicaciones.</string>
   <string name="touch_to_turn_on_local_repo">Toca p\'activar el to repositoriu llocal.</string>
   <string name="touch_to_turn_off_local_repo">Toca pa desactivar el to repositoriu llocal.</string>
-  <string name="updating">Anovando...</string>
+  <string name="updating">Anovando…</string>
   <string name="update_repo">Anovar reposotoriu</string>
   <string name="deleting_repo">Desaniciando\'l repositoriu llocal</string>
-  <string name="adding_apks_format">Amestando %s al repositoriu...</string>
-  <string name="writing_index_jar">Escribiendo\'l ficheru d\'índiz robláu (index.jar)...</string>
+  <string name="adding_apks_format">Amestando %s al repositoriu…</string>
+  <string name="writing_index_jar">Escribiendo\'l ficheru d\'índiz robláu (index.jar)…</string>
   <string name="failed_to_create_index">¡Fallu al crear l\'índiz del repositoriu!</string>
-  <string name="linking_apks">Enllazando APKs nel repositoriu...</string>
-  <string name="copying_icons">Copiando iconos d\'aplicaciones al repositoriu...</string>
+  <string name="linking_apks">Enllazando APKs nel repositoriu…</string>
+  <string name="copying_icons">Copiando iconos d\'aplicaciones al repositoriu…</string>
   <string name="updated_local_repo">Finóse l\'anovamientu del repositoriu llocal</string>
   <string name="no_applications_found">Nun s\'alcontraron aplicaciones</string>
   <string name="icon">iconu</string>
@@ -153,7 +153,7 @@ La direición del repositoriu paezse como a esto: https://f-droid.org/repo</stri
   <string name="wifi_network">Rede WiFi:</string>
   <string name="sharing_uri">URL de compartición:</string>
   <string name="enable_wifi">Habilitar WiFi</string>
-  <string name="enabling_wifi">Habilitando\'l WiFi...</string>
+  <string name="enabling_wifi">Habilitando\'l WiFi…</string>
   <string name="same_wifi_instructions">Pa coneutar a los preseos d\'otra xente, asegúrate qu\'entrambos preseos tán na mesma rede WiFi. Dempués escribi la URL d\'enriba o escania esti códigu QR:</string>
   <string name="qr_code">Códigu QR</string>
   <string name="next">Siguiente</string>
@@ -161,7 +161,7 @@ La direición del repositoriu paezse como a esto: https://f-droid.org/repo</stri
   <string name="qr_content_description">Códigu QR de la URL del repositoriu</string>
   <string name="qr_wizard_wifi_network_instructions">Escania esti códigu QR pa coneutar a la mesma rede WiFi d\'esti preséu.</string>
   <string name="qr_wizard_download_instructions">Escania esti códigu QR pa coneutar al sitiu web p\'aniciase.</string>
-  <string name="send_fdroid_via_wifi">Unviar FDroid pente WiFi...</string>
+  <string name="send_fdroid_via_wifi">Unviar FDroid pente WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Habilitar proxy HTTP</string>
   <string name="enable_proxy_summary">Configurar el proxy HTTP pa toles peticiones de rede</string>
@@ -174,7 +174,7 @@ La direición del repositoriu paezse como a esto: https://f-droid.org/repo</stri
 %1$s</string>
   <string name="status_connecting_to_repo">Coneutándose a
 %1$s</string>
-  <string name="status_checking_compatibility">Comprobando la compatibilidá d\'aplicaciones col to preséu...</string>
+  <string name="status_checking_compatibility">Comprobando la compatibilidá d\'aplicaciones col to preséu…</string>
   <string name="status_inserting">Guardando los detalles de les aplicaciones (%1$d%%)</string>
   <string name="repos_unchanged">Dengún repositoriu tien anovamientos de paquetes</string>
   <string name="all_other_repos_fine">Tolos otros repositorios nun crearon fallos.</string>
@@ -235,7 +235,7 @@ d\'amestar! Intenta xunite a esta rede: %s</string>
   <string name="Security">Seguranza</string>
   <string name="System">Sistema</string>
   <string name="Wallpaper">Fondos de pantalla</string>
-  <string name="requesting_root_access_body">Solicitando l\'accesu root...</string>
+  <string name="requesting_root_access_body">Solicitando l\'accesu root…</string>
   <string name="root_access_denied_title">Refugóse l\'accesu root</string>
   <string name="root_access_denied_body">O\'l to preséu Android nun ta rooteáu o refuguesti l\'accesu root pa F-Droid.</string>
   <string name="update_all">Anovar too</string>

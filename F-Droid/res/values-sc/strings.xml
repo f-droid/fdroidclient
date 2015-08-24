@@ -9,7 +9,7 @@
   <string name="version">Versione</string>
   <string name="edit">Modìfica</string>
   <string name="delete">Burra</string>
-  <string name="enable_nfc_send">Abìlita imbiu NFC...</string>
+  <string name="enable_nfc_send">Abìlita imbiu NFC…</string>
   <string name="cache_downloaded">Cache aplicatzione</string>
   <string name="cache_downloaded_on">Mantene sos documentos apk iscarrigados in s\'ischeda SD</string>
   <string name="updates">Agiornamentos</string>
@@ -73,10 +73,10 @@ S\'indiritzu de unu depòsitu paret una cosa
   <string name="many_updates_available">%d agiornamentos sunt disponìbiles.</string>
   <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
   <string name="process_wait_title">Iseta, pro piaghere</string>
-  <string name="process_update_msg">Agiornande sa lista de sas aplicatziones...</string>
+  <string name="process_update_msg">Agiornande sa lista de sas aplicatziones…</string>
   <string name="download_server">Iscarrigande s\'aplicatzione dae</string>
   <string name="nfc_is_not_enabled">Su NFC no est abilitadu!</string>
-  <string name="go_to_nfc_settings">Bae a sas impostaduras NFC...</string>
+  <string name="go_to_nfc_settings">Bae a sas impostaduras NFC…</string>
   <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
   <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
   <string name="send_via_bluetooth">Imbia tramite Bluetooth</string>
@@ -138,7 +138,7 @@ Los
   <string name="category_recentlyupdated">Agiornadas dae pagu</string>
   <string name="local_repo">Depòsitu locale</string>
   <string name="local_repos_title">Depòsitos FDroid locales</string>
-  <string name="local_repos_scanning">Iscoberinde sos depòsitos FDroid locales...</string>
+  <string name="local_repos_scanning">Iscoberinde sos depòsitos FDroid locales…</string>
   <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
   <string name="waiting_for_ipaddress">isetande pro s\'indiritzu IP</string>
   <string name="setup_repo">Ammània unu depòsitu locale</string>
@@ -147,12 +147,12 @@ Los
   <string name="touch_to_turn_off_local_repo">Toca pro istudare su depòsitu locale tuo.</string>
   <string name="updating">Agiornande…</string>
   <string name="update_repo">Agiorna depòsitu</string>
-  <string name="deleting_repo">Burrande su depòsitu atuale...</string>
-  <string name="adding_apks_format">Annanghende %s a su depòsitu...</string>
-  <string name="writing_index_jar">Iscriende su documentu de ìnditze firmadu (index.jar)...</string>
+  <string name="deleting_repo">Burrande su depòsitu atuale…</string>
+  <string name="adding_apks_format">Annanghende %s a su depòsitu…</string>
+  <string name="writing_index_jar">Iscriende su documentu de ìnditze firmadu (index.jar)…</string>
   <string name="failed_to_create_index">Sa creatzione de s\'inditze de sos depòsitos est faddida!</string>
-  <string name="linking_apks">Cullegande sos APK in su depòsitu...</string>
-  <string name="copying_icons">Copiande sas iconas de sas aplicatziones in su depòsitu...</string>
+  <string name="linking_apks">Cullegande sos APK in su depòsitu…</string>
+  <string name="copying_icons">Copiande sas iconas de sas aplicatziones in su depòsitu…</string>
   <string name="updated_local_repo">Agiornamentu depòsitu locale finidu</string>
   <string name="no_applications_found">Peruna aplicatzione agatada</string>
   <string name="icon">icona</string>
@@ -168,7 +168,7 @@ Los
   <string name="qr_content_description">Còdighe QR de s\'URL de su depòsitu</string>
   <string name="qr_wizard_wifi_network_instructions">Iscansi custu còdighe QR pro ti cunnèttere a sa matessi retza Wifi de custu dispositivu.</string>
   <string name="qr_wizard_download_instructions">Iscansi custu còdighe QR pro ti cunnèttere a su giassu/situ ìnternet in ue podes incumentzare.</string>
-  <string name="send_fdroid_via_wifi">Imbia F-Droid tramite WiFi...</string>
+  <string name="send_fdroid_via_wifi">Imbia F-Droid tramite WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Abìlita proky HTTP</string>
   <string name="enable_proxy_summary">Cunfigura proxy HTTP pro totu sas rechestas de sa retza</string>
@@ -181,7 +181,7 @@ Los
 %1$s</string>
   <string name="status_connecting_to_repo">Cunnessione a
 %1$s</string>
-  <string name="status_checking_compatibility">Verificande sa cumpatibilidade cun su dispositivu tuo...</string>
+  <string name="status_checking_compatibility">Verificande sa cumpatibilidade cun su dispositivu tuo…</string>
   <string name="status_inserting">Sarbande minujas/detàllios aplicatziones (%1$d%%)</string>
   <string name="repos_unchanged">Perunu depòsitu tenet agiornamentos de pachetos</string>
   <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creados errores.</string>

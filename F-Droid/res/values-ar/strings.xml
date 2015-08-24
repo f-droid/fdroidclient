@@ -51,12 +51,12 @@
   <string name="category_all">الكل</string>
   <string name="category_whatsnew">مالجديد</string>
   <string name="local_repo">مستودع محلي</string>
-  <string name="updating">يتم التحديث...</string>
+  <string name="updating">يتم التحديث…</string>
   <string name="update_repo">تحديث المستودع</string>
-  <string name="deleting_repo">يتم حذف المستودع الحالي...</string>
+  <string name="deleting_repo">يتم حذف المستودع الحالي…</string>
   <string name="fingerprint">البصمة:</string>
   <string name="enable_wifi">تمكين الإتصال اللاسلكي</string>
-  <string name="enabling_wifi">يتم تمكين الإتصال اللاسلكي...</string>
+  <string name="enabling_wifi">يتم تمكين الإتصال اللاسلكي…</string>
   <string name="qr_code">كود QR</string>
   <string name="next">التالي</string>
   <string name="skip">تخطي</string>

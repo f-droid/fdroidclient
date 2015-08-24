@@ -135,12 +135,12 @@ Wilt u ze vernieuwen?</string>
   <string name="local_repo">Collectie gedeelde apps</string>
   <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
   <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
-  <string name="waiting_for_ipaddress">wachten op IP adres...</string>
+  <string name="waiting_for_ipaddress">wachten op IP adres…</string>
   <string name="setup_repo">Collectie gedeelde apps instellen</string>
   <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>
   <string name="touch_to_turn_on_local_repo">Raak aan om apps te delen.</string>
   <string name="touch_to_turn_off_local_repo">Raak aan om apps niet langer te delen.</string>
-  <string name="updating">Bezig met updaten...</string>
+  <string name="updating">Bezig met updaten…</string>
   <string name="update_repo">Vernieuw Bronnen</string>
   <string name="deleting_repo">Bron verwijderen…</string>
   <string name="adding_apks_format">%s aan gedeelde app collectie toevoegen…</string>

@@ -133,14 +133,14 @@ Lisensiert GNU GPLv3.</string>
   <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>
   <string name="touch_to_turn_on_local_repo">Trykk for å skru på din lokale pakkebrønn.</string>
   <string name="touch_to_turn_off_local_repo">Trykk for å skru av din lokale repo.</string>
-  <string name="updating">Oppdaterer...</string>
+  <string name="updating">Oppdaterer…</string>
   <string name="update_repo">Oppdater pakkebrønn</string>
-  <string name="deleting_repo">Sletter gjeldende pakkebrønn...</string>
-  <string name="adding_apks_format">Legger til %s til pakkebrønn...</string>
-  <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)...</string>
+  <string name="deleting_repo">Sletter gjeldende pakkebrønn…</string>
+  <string name="adding_apks_format">Legger til %s til pakkebrønn…</string>
+  <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)…</string>
   <string name="failed_to_create_index">Klarte ikke å indeksere pakkebrønn!</string>
-  <string name="linking_apks">Lenker APK-er inn i pakkebrønn...</string>
-  <string name="copying_icons">Kopierer program-ikoner til pakkebrønnen...</string>
+  <string name="linking_apks">Lenker APK-er inn i pakkebrønn…</string>
+  <string name="copying_icons">Kopierer program-ikoner til pakkebrønnen…</string>
   <string name="updated_local_repo">Ferdig med oppdatering av lokal pakkebrønn</string>
   <string name="no_applications_found">Ingen applikasjoner funnet</string>
   <string name="icon">ikon</string>
@@ -148,7 +148,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="wifi_network">Wi-Fi-nettverk:</string>
   <string name="sharing_uri">Delings-nettadresse:</string>
   <string name="enable_wifi">Skru på Wi-Fi</string>
-  <string name="enabling_wifi">Skrur på WiFi...</string>
+  <string name="enabling_wifi">Skrur på WiFi…</string>
   <string name="same_wifi_instructions">Sørg for å være på samme Wi-Fi-nettverk som de enhetene du vil koble til. Skriv enten inn nettadressen ovenfor i F-droid, eller skann denne QR-koden:</string>
   <string name="qr_code">QR Kode</string>
   <string name="next">Neste</string>
@@ -156,7 +156,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="qr_content_description">QR-kode for pakkebrønnens nettadresse</string>
   <string name="qr_wizard_wifi_network_instructions">Skann denne QR-koden for å koble til samme Wi-Fi nettverk som denne enheten.</string>
   <string name="qr_wizard_download_instructions">Skann denne QR-koden for å koble til nettsiden for å komme i gang.</string>
-  <string name="send_fdroid_via_wifi">Send F-Droid over Wi-Fi...</string>
+  <string name="send_fdroid_via_wifi">Send F-Droid over Wi-Fi…</string>
   <string name="proxy">Mellomtjener</string>
   <string name="enable_proxy_title">Skru på HTTP-mellomtjener</string>
   <string name="enable_proxy_summary">Konfigurer HTTP-mellomtjener for alle nettverksforespørsler.</string>
@@ -231,7 +231,7 @@ Du må
   <string name="Security">Sikkerhet</string>
   <string name="System">System</string>
   <string name="Wallpaper">Bakgrunn</string>
-  <string name="requesting_root_access_body">Etterspørr root-tilgang...</string>
+  <string name="requesting_root_access_body">Etterspørr root-tilgang…</string>
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>
   <string name="update_all">Oppdater alle</string>
