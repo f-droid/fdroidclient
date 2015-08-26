@@ -21,13 +21,13 @@ package org.fdroid.fdroid.privileged;
 
 import org.fdroid.fdroid.privileged.IPrivilegedCallback;
 
-/**
- * Asynchronous (oneway) IPC calls!
- */
-oneway interface IPrivilegedService {
+interface IPrivilegedService {
+
+    boolean hasPrivilegedPermissions();
 
     /**
-     * Docs based on PackageManager.installPackage()
+     * - Docs based on PackageManager.installPackage()
+     * - Asynchronous (oneway) IPC calls!
      *
      * Install a package. Since this may take a little while, the result will
      * be posted back to the given callback. An installation will fail if the
@@ -43,12 +43,13 @@ oneway interface IPrivilegedService {
      * @param callback An callback to get notified when the package installation is
      * complete.
      */
-    void installPackage(in Uri packageURI, in int flags, in String installerPackageName,
+    oneway void installPackage(in Uri packageURI, in int flags, in String installerPackageName,
                         in IPrivilegedCallback callback);
 
 
     /**
-     * Docs based on PackageManager.deletePackage()
+     * - Docs based on PackageManager.deletePackage()
+     * - Asynchronous (oneway) IPC calls!
      *
      * Attempts to delete a package.  Since this may take a little while, the result will
      * be posted back to the given observer.  A deletion will fail if the
@@ -60,6 +61,6 @@ oneway interface IPrivilegedService {
      * @param callback An callback to get notified when the package deletion is
      * complete.
      */
-    void deletePackage(in String packageName, in int flags, in IPrivilegedCallback callback);
+    oneway void deletePackage(in String packageName, in int flags, in IPrivilegedCallback callback);
 
 }

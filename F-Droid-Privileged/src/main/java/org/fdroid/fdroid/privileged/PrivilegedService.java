@@ -19,7 +19,10 @@
 
 package org.fdroid.fdroid.privileged;
 
+import android.*;
+import android.Manifest;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.IPackageDeleteObserver;
 import android.content.pm.IPackageInstallObserver;
@@ -40,6 +43,17 @@ public class PrivilegedService extends Service {
 
     private Method mInstallMethod;
     private Method mDeleteMethod;
+
+    private boolean hasPrivilegedPermissionsImpl() {
+        boolean hasInstallPermission =
+                (getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, getPackageName())
+                        == PackageManager.PERMISSION_GRANTED);
+        boolean hasDeletePermission =
+                (getPackageManager().checkPermission(Manifest.permission.DELETE_PACKAGES, getPackageName())
+                        == PackageManager.PERMISSION_GRANTED);
+
+        return (hasInstallPermission && hasDeletePermission);
+    }
 
     private void installPackageImpl(Uri packageURI, int flags, String installerPackageName,
                                     final IPrivilegedCallback callback) {
@@ -101,6 +115,11 @@ public class PrivilegedService extends Service {
     }
 
     private final IPrivilegedService.Stub mBinder = new IPrivilegedService.Stub() {
+        @Override
+        public boolean hasPrivilegedPermissions() {
+            return hasPrivilegedPermissionsImpl();
+        }
+
         @Override
         public void installPackage(Uri packageURI, int flags, String installerPackageName,
                                    IPrivilegedCallback callback) {
