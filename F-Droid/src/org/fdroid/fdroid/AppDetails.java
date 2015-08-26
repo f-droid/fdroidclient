@@ -1644,7 +1644,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // the last opportunity to set the list adapter. As such, we use the headerView
             // as a mechanism to optionally allow adding a header in the future.
             if (headerView == null) {
-                headerView = new FrameLayout(getActivity().getApplicationContext());
+                headerView = new FrameLayout(getActivity());
                 headerView.setId(R.id.appDetailsSummaryHeader);
             } else {
                 Fragment summaryFragment = getChildFragmentManager().findFragmentByTag(SUMMARY_TAG);
