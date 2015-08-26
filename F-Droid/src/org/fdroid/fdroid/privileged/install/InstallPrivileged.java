@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.fdroid.fdroid.privileged.install;
 
 import android.content.Context;
 import android.os.Build;
@@ -35,15 +35,15 @@ import eu.chainfire.libsuperuser.Shell;
  * http://omerjerk.in/2014/08/how-to-install-an-app-to-system-partition/
  * https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
  */
-abstract class InstallIntoSystem {
+abstract class InstallPrivileged {
 
     protected final Context context;
 
-    public InstallIntoSystem(final Context context) {
+    public InstallPrivileged(final Context context) {
         this.context = context;
     }
 
-    public static InstallIntoSystem create(final Context context) {
+    public static InstallPrivileged create(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return new LollipopImpl(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -112,7 +112,7 @@ abstract class InstallIntoSystem {
         return commands;
     }
 
-    private static class PreKitKatImpl extends InstallIntoSystem {
+    private static class PreKitKatImpl extends InstallPrivileged {
 
         public PreKitKatImpl(Context context) {
             super(context);
@@ -125,7 +125,7 @@ abstract class InstallIntoSystem {
 
     }
 
-    private static class KitKatToLollipopImpl extends InstallIntoSystem {
+    private static class KitKatToLollipopImpl extends InstallPrivileged {
 
         public KitKatToLollipopImpl(Context context) {
             super(context);
@@ -146,7 +146,7 @@ abstract class InstallIntoSystem {
      * History of PackageManagerService in Lollipop:
      * https://github.com/android/platform_frameworks_base/commits/lollipop-release/services/core/java/com/android/server/pm/PackageManagerService.java
      */
-    private static class LollipopImpl extends InstallIntoSystem {
+    private static class LollipopImpl extends InstallPrivileged {
 
         public LollipopImpl(Context context) {
             super(context);

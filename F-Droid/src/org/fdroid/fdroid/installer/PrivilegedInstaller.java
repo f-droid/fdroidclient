@@ -34,6 +34,9 @@ import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.privileged.views.AppDiff;
+import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -63,20 +66,20 @@ import java.util.List;
  * https://android.googlesource.com/platform
  * /frameworks/base/+/ccbf84f44c9e6a5ed3c08673614826bb237afc54
  */
-public class SystemInstaller extends Installer {
+public class PrivilegedInstaller extends Installer {
 
-    private static final String TAG = "SystemInstaller";
+    private static final String TAG = "PrivilegedInstaller";
 
     private Activity mActivity;
-    private final PackageInstallObserver mInstallObserver;
-    private final PackageDeleteObserver mDeleteObserver;
-    private Method mInstallMethod;
-    private Method mDeleteMethod;
+//    private final PackageInstallObserver mInstallObserver;
+//    private final PackageDeleteObserver mDeleteObserver;
+//    private Method mInstallMethod;
+//    private Method mDeleteMethod;
 
     public static final int REQUEST_CONFIRM_PERMS = 0;
 
-    public SystemInstaller(Activity activity, PackageManager pm,
-            InstallerCallback callback) throws AndroidNotCompatibleException {
+    public PrivilegedInstaller(Activity activity, PackageManager pm,
+                               InstallerCallback callback) throws AndroidNotCompatibleException {
         super(activity, pm, callback);
         this.mActivity = activity;
 

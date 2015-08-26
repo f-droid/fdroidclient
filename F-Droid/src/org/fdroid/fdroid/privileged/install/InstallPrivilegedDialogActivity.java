@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.fdroid.fdroid.privileged.install;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -40,13 +40,14 @@ import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.installer.Installer;
 
 import eu.chainfire.libsuperuser.Shell;
 
 /**
  * Note: This activity has no view on its own, it displays consecutive dialogs.
  */
-public class InstallIntoSystemDialogActivity extends FragmentActivity {
+public class InstallPrivilegedDialogActivity extends FragmentActivity {
 
     private static final String TAG = "InstallIntoSystem";
 
@@ -112,8 +113,8 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                 if (false && probablyRoot) {
                     // looks like we have root, at least su has a version number and is present
 
-                    Intent installIntent = new Intent(context, InstallIntoSystemDialogActivity.class);
-                    installIntent.setAction(InstallIntoSystemDialogActivity.ACTION_FIRST_TIME);
+                    Intent installIntent = new Intent(context, InstallPrivilegedDialogActivity.class);
+                    installIntent.setAction(InstallPrivilegedDialogActivity.ACTION_FIRST_TIME);
                     installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     PendingIntent resultPendingIntent =
@@ -157,7 +158,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
         // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        String message = getString(R.string.system_install_first_time_message) + "<br/><br/>" + InstallIntoSystem.create(getApplicationContext()).getWarningInfo();
+        String message = getString(R.string.system_install_first_time_message) + "<br/><br/>" + InstallPrivileged.create(getApplicationContext()).getWarningInfo();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                 .setMessage(Html.fromHtml(message))
@@ -170,8 +171,8 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                        InstallIntoSystemDialogActivity.this.finish();
+                        InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                        InstallPrivilegedDialogActivity.this.finish();
                     }
                 });
         builder.create().show();
@@ -188,7 +189,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
             super.onPreExecute();
 
             // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-            ContextThemeWrapper theme = new ContextThemeWrapper(InstallIntoSystemDialogActivity.this,
+            ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
             mProgressDialog = new ProgressDialog(theme);
@@ -224,7 +225,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
                 if (!ACTION_FIRST_TIME.equals(action)) {
                     // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-                    ContextThemeWrapper theme = new ContextThemeWrapper(InstallIntoSystemDialogActivity.this,
+                    ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
                             FDroidApp.getCurThemeResId());
 
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(theme)
@@ -233,8 +234,8 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                             .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                                    InstallIntoSystemDialogActivity.this.finish();
+                                    InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                                    InstallPrivilegedDialogActivity.this.finish();
                                 }
                             });
                     alertBuilder.create().show();
@@ -254,7 +255,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
             super.onPreExecute();
 
             // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-            ContextThemeWrapper theme = new ContextThemeWrapper(InstallIntoSystemDialogActivity.this,
+            ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
             mProgressDialog = new ProgressDialog(theme);
@@ -266,7 +267,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallIntoSystem.create(getApplicationContext()).runInstall();
+            InstallPrivileged.create(getApplicationContext()).runInstall();
             return null;
         }
     };
@@ -289,9 +290,9 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        InstallIntoSystemDialogActivity.this.setResult(success ? Activity.RESULT_OK : Activity.RESULT_CANCELED);
-                        InstallIntoSystemDialogActivity.this.finish();
-                        startActivity(new Intent(InstallIntoSystemDialogActivity.this, FDroid.class));
+                        InstallPrivilegedDialogActivity.this.setResult(success ? Activity.RESULT_OK : Activity.RESULT_CANCELED);
+                        InstallPrivilegedDialogActivity.this.finish();
+                        startActivity(new Intent(InstallPrivilegedDialogActivity.this, FDroid.class));
                     }
                 })
                 .setCancelable(false);
@@ -317,8 +318,8 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                     .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                            InstallIntoSystemDialogActivity.this.finish();
+                            InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                            InstallPrivilegedDialogActivity.this.finish();
                         }
                     });
             builder.create().show();
@@ -329,8 +330,8 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            InstallIntoSystemDialogActivity.this.setResult(Activity.RESULT_CANCELED);
-                            InstallIntoSystemDialogActivity.this.finish();
+                            InstallPrivilegedDialogActivity.this.setResult(Activity.RESULT_CANCELED);
+                            InstallPrivilegedDialogActivity.this.finish();
                         }
                     });
             builder.create().show();
@@ -345,7 +346,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
             super.onPreExecute();
 
             // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
-            ContextThemeWrapper theme = new ContextThemeWrapper(InstallIntoSystemDialogActivity.this,
+            ContextThemeWrapper theme = new ContextThemeWrapper(InstallPrivilegedDialogActivity.this,
                     FDroidApp.getCurThemeResId());
 
             mProgressDialog = new ProgressDialog(theme);
@@ -357,7 +358,7 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallIntoSystem.create(getApplicationContext()).runUninstall();
+            InstallPrivileged.create(getApplicationContext()).runUninstall();
             return null;
         }
 

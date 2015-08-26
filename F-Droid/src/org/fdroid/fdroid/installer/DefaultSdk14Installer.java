@@ -39,10 +39,10 @@ import java.util.List;
  * unattended installations.
  */
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-public class DefaultInstallerSdk14 extends Installer {
+public class DefaultSdk14Installer extends Installer {
     private final Activity mActivity;
 
-    public DefaultInstallerSdk14(Activity activity, PackageManager pm, InstallerCallback callback)
+    public DefaultSdk14Installer(Activity activity, PackageManager pm, InstallerCallback callback)
             throws AndroidNotCompatibleException {
         super(activity, pm, callback);
         this.mActivity = activity;

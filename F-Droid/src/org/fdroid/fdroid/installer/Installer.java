@@ -113,7 +113,7 @@ abstract public class Installer {
                 Utils.DebugLog(TAG, "system permissions -> SystemInstaller");
 
                 try {
-                    return new SystemInstaller(activity, pm, callback);
+                    return new PrivilegedInstaller(activity, pm, callback);
                 } catch (AndroidNotCompatibleException e) {
                     Log.e(TAG, "Android not compatible with SystemInstaller!", e);
                 }
@@ -128,7 +128,7 @@ abstract public class Installer {
             try {
                 Utils.DebugLog(TAG, "try default installer for Android >= 4");
 
-                return new DefaultInstallerSdk14(activity, pm, callback);
+                return new DefaultSdk14Installer(activity, pm, callback);
             } catch (AndroidNotCompatibleException e) {
                 Log.e(TAG, "Android not compatible with DefaultInstallerSdk14!", e);
             }

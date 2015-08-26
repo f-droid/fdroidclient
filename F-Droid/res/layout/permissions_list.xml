@@ -17,7 +17,7 @@
 <!--
 This is the structure for the list of all permissions.
 -->
-<org.fdroid.fdroid.installer.CaffeinatedScrollView
+<org.fdroid.fdroid.privileged.views.CaffeinatedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollview"
     android:fillViewport="true">
@@ -50,4 +50,4 @@ This is the structure for the list of all permissions.
                 android:text="@string/devicePerms" />
         </LinearLayout>
     </LinearLayout>
-</org.fdroid.fdroid.installer.CaffeinatedScrollView>
+</org.fdroid.fdroid.privileged.views.CaffeinatedScrollView>

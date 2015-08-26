@@ -19,7 +19,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.installer.InstallIntoSystemDialogActivity;
+import org.fdroid.fdroid.privileged.install.InstallPrivilegedDialogActivity;
 import org.fdroid.fdroid.installer.Installer;
 
 import java.util.Locale;
@@ -221,8 +221,8 @@ public class PreferencesFragment extends PreferenceFragment
                         alertBuilder.setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent installIntent = new Intent(getActivity(), InstallIntoSystemDialogActivity.class);
-                                installIntent.setAction(InstallIntoSystemDialogActivity.ACTION_INSTALL);
+                                Intent installIntent = new Intent(getActivity(), InstallPrivilegedDialogActivity.class);
+                                installIntent.setAction(InstallPrivilegedDialogActivity.ACTION_INSTALL);
                                 startActivity(installIntent);
                             }
                         });
@@ -249,8 +249,8 @@ public class PreferencesFragment extends PreferenceFragment
 
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Intent uninstallIntent = new Intent(getActivity(), InstallIntoSystemDialogActivity.class);
-                uninstallIntent.setAction(InstallIntoSystemDialogActivity.ACTION_UNINSTALL);
+                Intent uninstallIntent = new Intent(getActivity(), InstallPrivilegedDialogActivity.class);
+                uninstallIntent.setAction(InstallPrivilegedDialogActivity.ACTION_UNINSTALL);
                 startActivity(uninstallIntent);
 
                 return true;

@@ -16,7 +16,7 @@
 ** limitations under the License.
 */
 
-package org.fdroid.fdroid.installer;
+package org.fdroid.fdroid.privileged.views;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -25,10 +25,10 @@ import android.net.Uri;
 
 public class AppDiff {
 
-    final PackageManager mPm;
-    final PackageInfo mPkgInfo;
+    public final PackageManager mPm;
+    public final PackageInfo mPkgInfo;
 
-    ApplicationInfo mInstalledAppInfo = null;
+    public ApplicationInfo mInstalledAppInfo = null;
 
     public AppDiff(PackageManager mPm, Uri mPackageURI) {
         this.mPm = mPm;
