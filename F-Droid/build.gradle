@@ -15,6 +15,7 @@ if ( !hasProperty( 'sourceDeps' ) ) {
     }
 
     dependencies {
+        compile project(':privileged-api-lib')
 
         compile 'com.android.support:support-v4:22.2.1'
         compile 'com.android.support:appcompat-v7:22.1.1'
@@ -60,6 +61,7 @@ if ( !hasProperty( 'sourceDeps' ) ) {
     }
 
     dependencies {
+        compile project(':privileged-api-lib')
         compile project(':extern:AndroidPinning')
         compile project(':extern:UniversalImageLoader:library')
         compile project(':extern:libsuperuser:libsuperuser')
