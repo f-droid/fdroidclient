@@ -305,18 +305,28 @@ public class UpdateService extends IntentService implements ProgressListener {
             return false;
         }
 
-        // If we are to update the repos only on wifi, make sure that
-        // connection is active
-        if (prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
-            ConnectivityManager conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo.State wifi = conMan.getNetworkInfo(1).getState();
-            if (wifi != NetworkInfo.State.CONNECTED &&
-                    wifi !=  NetworkInfo.State.CONNECTING) {
-                Log.i(TAG, "Skipping update - wifi not available");
-                return false;
-            }
+        return isNetworkAvailableForUpdate(this);
+    }
+
+    /**
+     * If we are to update the repos only on wifi, make sure that connection is active
+     */
+    public static boolean isNetworkAvailableForUpdate(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // this could be cellular or wifi
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork == null)
+            return false;
+
+        if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI
+                && prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
+            Log.i(TAG, "Skipping update - wifi not available");
+            return false;
+        } else {
+            return activeNetwork.isConnectedOrConnecting();
         }
-        return true;
     }
 
     @Override

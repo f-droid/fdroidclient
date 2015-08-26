@@ -34,7 +34,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -100,6 +99,10 @@ public class FDroid extends ActionBarActivity {
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
 
         InstallIntoSystemDialogActivity.firstTime(this);
+
+        if (UpdateService.isNetworkAvailableForUpdate(this)) {
+            UpdateService.updateNow(this);
+        }
     }
 
     @Override
