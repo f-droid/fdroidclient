@@ -10,6 +10,7 @@ import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.asn1.x509.GeneralName;
 import org.spongycastle.asn1.x509.GeneralNames;
 import org.spongycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.spongycastle.asn1.x509.Time;
 import org.spongycastle.asn1.x509.X509Extension;
 import org.spongycastle.cert.X509CertificateHolder;
 import org.spongycastle.cert.X509v3CertificateBuilder;
@@ -41,6 +42,8 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -291,17 +294,22 @@ public class LocalRepoKeyStore {
         SubjectPublicKeyInfo subPubKeyInfo = new SubjectPublicKeyInfo(
                 ASN1Sequence.getInstance(pubKey.getEncoded()));
 
-        Date startDate = new Date(); // now
+        Date now = new Date(); // now
 
-        Calendar c = Calendar.getInstance();
-        c.setTime(startDate);
+        /* force it to use a English/Gregorian dates for the cert, hardly anyone
+           ever looks at the cert metadata anyway, and its very likely that they
+           understand English/Gregorian dates */
+        Calendar c = new GregorianCalendar(Locale.ENGLISH);
+        c.setTime(now);
         c.add(Calendar.YEAR, 1);
-        Date endDate = c.getTime();
+        Time startTime = new Time(now, Locale.ENGLISH);
+        Time endTime = new Time(c.getTime(), Locale.ENGLISH);
 
         X509v3CertificateBuilder v3CertGen = new X509v3CertificateBuilder(
                 subject,
                 BigInteger.valueOf(rand.nextLong()),
-                startDate, endDate,
+                startTime,
+                endTime,
                 subject,
                 subPubKeyInfo);
 
