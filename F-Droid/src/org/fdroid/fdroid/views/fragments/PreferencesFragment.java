@@ -19,6 +19,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.privileged.install.InstallPrivilegedDialogActivity;
 import org.fdroid.fdroid.installer.Installer;
 
@@ -195,7 +196,7 @@ public class PreferencesFragment extends PreferenceFragment
                 final CheckBoxPreference pref = (CheckBoxPreference) preference;
 
                 if (pref.isChecked()) {
-                    if (Installer.hasSystemPermissions(getActivity(), getActivity().getPackageManager())) {
+                    if (PrivilegedInstaller.isAvailable(getActivity())) {
                         // system-permission are granted, i.e. F-Droid is a system-app
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, true);

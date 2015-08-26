@@ -38,18 +38,22 @@ import eu.chainfire.libsuperuser.Shell;
 abstract class InstallPrivileged {
 
     protected final Context context;
+    protected final String apkPath;
 
-    public InstallPrivileged(final Context context) {
+    private static final String PACKAGE_NAME = "org.fdroid.fdroid.privileged";
+
+    public InstallPrivileged(final Context context, final String apkPath) {
         this.context = context;
+        this.apkPath = apkPath;
     }
 
-    public static InstallPrivileged create(final Context context) {
+    public static InstallPrivileged create(final Context context, final String apkPath) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return new LollipopImpl(context);
+            return new LollipopImpl(context, apkPath);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            return new KitKatToLollipopImpl(context);
+            return new KitKatToLollipopImpl(context, apkPath);
         } else {
-            return new PreKitKatImpl(context);
+            return new PreKitKatImpl(context, apkPath);
         }
     }
 
@@ -65,10 +69,10 @@ abstract class InstallPrivileged {
 
     final void runUninstall() {
         final String[] commands = {
-                "am force-stop org.fdroid.fdroid",
-                "pm clear org.fdroid.fdroid",
+                "am force-stop " + PACKAGE_NAME,
+                "pm clear " + PACKAGE_NAME,
                 "mount -o rw,remount /system",
-                "pm uninstall " + context.getPackageName(),
+                "pm uninstall " + PACKAGE_NAME,
                 "rm -f " + getInstallPath(),
                 "sleep 5",
                 "mount -o ro,remount /system"
@@ -82,26 +86,26 @@ abstract class InstallPrivileged {
     }
 
     protected String getInstallPath() {
-        return getSystemFolder() + "FDroid.apk";
+        return getSystemFolder() + "FDroidPrivileged.apk";
     }
 
     private List<String> getInstallCommands() {
         final List<String> commands = new ArrayList<>();
         commands.add("mount -o rw,remount /system");
         commands.addAll(getCopyToSystemCommands());
-        commands.add("pm uninstall -k " + context.getPackageName()); // -k to retain data
+        commands.add("pm uninstall " + PACKAGE_NAME);
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
         commands.add("pm install -r " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
         commands.add("mount -o ro,remount /system");
-        commands.add("am force-stop org.fdroid.fdroid");
+        commands.add("am force-stop " + PACKAGE_NAME);
         commands.addAll(getPostInstallCommands());
         return commands;
     }
 
     protected List<String> getCopyToSystemCommands() {
         final List<String> commands = new ArrayList<>(2);
-        commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+        commands.add("cat " + apkPath + " > " + getInstallPath() + ".tmp");
         commands.add("chmod 644 " + getInstallPath() + ".tmp");
         return commands;
     }
@@ -114,8 +118,8 @@ abstract class InstallPrivileged {
 
     private static class PreKitKatImpl extends InstallPrivileged {
 
-        public PreKitKatImpl(Context context) {
-            super(context);
+        public PreKitKatImpl(Context context, String apkPath) {
+            super(context, apkPath);
         }
 
         @Override
@@ -127,8 +131,8 @@ abstract class InstallPrivileged {
 
     private static class KitKatToLollipopImpl extends InstallPrivileged {
 
-        public KitKatToLollipopImpl(Context context) {
-            super(context);
+        public KitKatToLollipopImpl(Context context, String apkPath) {
+            super(context, apkPath);
         }
 
         /**
@@ -148,8 +152,8 @@ abstract class InstallPrivileged {
      */
     private static class LollipopImpl extends InstallPrivileged {
 
-        public LollipopImpl(Context context) {
-            super(context);
+        public LollipopImpl(Context context, String apkPath) {
+            super(context, apkPath);
         }
 
         @Override
@@ -167,7 +171,7 @@ abstract class InstallPrivileged {
          */
         @Override
         protected String getSystemFolder() {
-            return "/system/priv-app/FDroid/";
+            return "/system/priv-app/FDroidPrivileged/";
         }
 
         /**
@@ -178,13 +182,13 @@ abstract class InstallPrivileged {
             List<String> commands = new ArrayList<>(3);
             commands.add("mkdir -p " + getSystemFolder()); // create app directory if not existing
             commands.add("chmod 755 " + getSystemFolder());
-            commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+            commands.add("cat " + apkPath + " > " + getInstallPath() + ".tmp");
             commands.add("chmod 644 " + getInstallPath() + ".tmp");
             return commands;
         }
 
         /**
-         * TODO: Currently only works with reboot
+         * NOTE: Only works with reboot
          * <p/>
          * File observers on /system/priv-app/ have been removed because they don't work with the new
          * cluser-style layout. See

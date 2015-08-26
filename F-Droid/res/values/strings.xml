@@ -308,8 +308,8 @@
     <string name="system_install_post_fail_message">The installation of F-Droid as a privileged app failed. The installation method is not supported by all Android distributions, please consult the F-Droid bug tracker for more information.</string>
     <string name="system_install_installing">installing…</string>
     <string name="system_install_uninstalling">uninstalling…</string>
-    <string name="system_install_question">Do you want to install F-Droid as a privileged app?\nThis takes up to 10 seconds where &lt;b>no user interface&lt;/b> is shown.</string>
-    <string name="system_install_question_lollipop">Do you want to install F-Droid as a privileged app?\nThis takes up to 10 seconds where &lt;b>no user interface&lt;/b> is shown and the device will be &lt;b>rebooted&lt;/b> afterwards.</string>
+    <string name="system_install_question">Do you want to install F-Droid as a privileged app?\nThis takes up to 10 seconds.</string>
+    <string name="system_install_question_lollipop">Do you want to install F-Droid as a privileged app?\nThis takes up to 10 seconds and the device will be &lt;b>rebooted&lt;/b> afterwards.</string>
     <string name="system_install_first_time_message">Looks like you have root access on your device. You can now install F-Droid as a privileged app, tightly coupled with the Android operating system. This allows F-Droid to install, upgrade and uninstall apps on its own.</string>
     <string name="system_uninstall">Do you want to uninstall F-Droid?</string>
     <string name="system_uninstall_message">This will uninstall F-Droid completely.</string>

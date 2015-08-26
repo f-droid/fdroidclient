@@ -41,6 +41,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.Installer;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 import eu.chainfire.libsuperuser.Shell;
 
@@ -86,7 +87,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         if (Preferences.get().isFirstTime()) {
             Preferences.get().setFirstTime(false);
 
-            if (Installer.hasSystemPermissions(context, context.getPackageManager())) {
+            if (PrivilegedInstaller.isAvailable(context)) {
                 Preferences.get().setSystemInstallerEnabled(true);
             } else {
                 runFirstTime(context);
@@ -158,7 +159,8 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        String message = getString(R.string.system_install_first_time_message) + "<br/><br/>" + InstallPrivileged.create(getApplicationContext()).getWarningInfo();
+        String message = getString(R.string.system_install_first_time_message) + "<br/><br/>"
+                + InstallPrivileged.create(getApplicationContext(), null).getWarningInfo();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                 .setMessage(Html.fromHtml(message))
@@ -279,7 +281,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        final boolean success = Installer.hasSystemPermissions(this, this.getPackageManager());
+        final boolean success = PrivilegedInstaller.isAvailable(this);
 
         // enable system installer on installation success
         Preferences.get().setSystemInstallerEnabled(success);
@@ -303,7 +305,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        final boolean systemApp = Installer.hasSystemPermissions(this, this.getPackageManager());
+        final boolean systemApp = PrivilegedInstaller.isAvailable(this);
 
         if (systemApp) {
             AlertDialog.Builder builder = new AlertDialog.Builder(theme)

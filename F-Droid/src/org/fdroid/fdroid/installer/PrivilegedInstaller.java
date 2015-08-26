@@ -29,6 +29,7 @@ import android.content.ServiceConnection;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AlertDialog;
@@ -84,7 +85,54 @@ public class PrivilegedInstaller extends Installer {
                                InstallerCallback callback) throws AndroidNotCompatibleException {
         super(activity, pm, callback);
         this.mActivity = activity;
+    }
 
+    public static boolean isAvailable(Context context) {
+
+        // check if installed
+        PackageManager pm = context.getPackageManager();
+        try {
+            pm.getPackageInfo(PRIVILEGED_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+
+        // check if it has the privileged permissions granted
+        final Object mutex = new Object();
+        final Bundle returnBundle = new Bundle();
+        ServiceConnection mServiceConnection = new ServiceConnection() {
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
+
+                try {
+                    boolean hasPermissions = privService.hasPrivilegedPermissions();
+                    returnBundle.putBoolean("has_permissions", hasPermissions);
+                } catch (RemoteException e) {
+                    Log.e(TAG, "RemoteException", e);
+                }
+
+                synchronized (mutex) {
+                    mutex.notify();
+                }
+            }
+
+            public void onServiceDisconnected(ComponentName name) {
+            }
+        };
+        Intent serviceIntent = new Intent(PRIVILEGED_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
+        context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+                Context.BIND_AUTO_CREATE);
+
+        synchronized (mutex) {
+            try {
+                mutex.wait(3000);
+            } catch (InterruptedException e) {
+                // don't care
+            }
+        }
+
+        return (returnBundle.getBoolean("has_permission", false));
     }
 
     @Override

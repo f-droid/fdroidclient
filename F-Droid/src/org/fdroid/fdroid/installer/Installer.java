@@ -109,7 +109,7 @@ abstract public class Installer {
         // system permissions and pref enabled -> SystemInstaller
         boolean isSystemInstallerEnabled = Preferences.get().isSystemInstallerEnabled();
         if (isSystemInstallerEnabled) {
-            if (hasSystemPermissions(activity, pm)) {
+            if (PrivilegedInstaller.isAvailable(activity)) {
                 Utils.DebugLog(TAG, "system permissions -> SystemInstaller");
 
                 try {
@@ -145,17 +145,6 @@ abstract public class Installer {
 
         // this should not happen!
         return null;
-    }
-
-    public static boolean hasSystemPermissions(Context context, PackageManager pm) {
-        boolean hasInstallPermission =
-                (pm.checkPermission(permission.INSTALL_PACKAGES, context.getPackageName())
-                        == PackageManager.PERMISSION_GRANTED);
-        boolean hasDeletePermission =
-                (pm.checkPermission(permission.DELETE_PACKAGES, context.getPackageName())
-                        == PackageManager.PERMISSION_GRANTED);
-
-        return (hasInstallPermission && hasDeletePermission);
     }
 
     public void installPackage(File apkFile) throws AndroidNotCompatibleException {
