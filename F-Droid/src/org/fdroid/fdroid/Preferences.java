@@ -152,7 +152,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     }
 
     public boolean isLocalRepoHttpsEnabled() {
-        return preferences.getBoolean(PREF_LOCAL_REPO_HTTPS, DEFAULT_LOCAL_REPO_HTTPS);
+        return false; // disabled until it works well
     }
 
     private String getDefaultLocalRepoName() {
