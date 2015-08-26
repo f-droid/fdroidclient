@@ -11,6 +11,14 @@
         android:name="android.permission.DELETE_PACKAGES"
         tools:ignore="ProtectedPermissions" />
 
+    <!--
+        Only apps signed with the same key can use this permission!
+        Never presented to the user due to the protectionLevel.
+     -->
+    <permission
+        android:name="org.fdroid.fdroid.privileged.USE_SERVICE"
+        android:protectionLevel="signature" />
+
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
@@ -22,7 +30,7 @@
             android:enabled="true"
             android:exported="true"
             android:process=":fdroid_privileged"
-            tools:ignore="ExportedService">
+            android:permission="org.fdroid.fdroid.privileged.USE_SERVICE">
             <intent-filter>
                 <action android:name="org.fdroid.fdroid.privileged.IPrivilegedService" />
             </intent-filter>
