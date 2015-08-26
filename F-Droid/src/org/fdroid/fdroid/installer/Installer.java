@@ -19,7 +19,6 @@
 
 package org.fdroid.fdroid.installer;
 
-import android.Manifest.permission;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -107,7 +106,7 @@ abstract public class Installer {
             InstallerCallback callback) {
 
         // system permissions and pref enabled -> SystemInstaller
-        boolean isSystemInstallerEnabled = Preferences.get().isSystemInstallerEnabled();
+        boolean isSystemInstallerEnabled = Preferences.get().isPrivilegedInstallerEnabled();
         if (isSystemInstallerEnabled) {
             if (PrivilegedInstaller.isAvailable(activity)) {
                 Utils.DebugLog(TAG, "system permissions -> SystemInstaller");

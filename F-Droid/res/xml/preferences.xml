@@ -75,11 +75,11 @@
 			android:key="expert" />
 		<CheckBoxPreference android:title="@string/system_installer"
 			android:defaultValue="false"
-			android:key="systemInstaller"
+			android:key="privilegedInstaller"
 			android:dependency="expert" />
 		<Preference android:title="@string/uninstall_system"
 			android:summary="@string/uninstall_system_summary"
-			android:key="uninstallSystemApp"
+			android:key="uninstallPrivilegedApp"
 			android:dependency="expert" />
 	</PreferenceCategory>
 </PreferenceScreen>

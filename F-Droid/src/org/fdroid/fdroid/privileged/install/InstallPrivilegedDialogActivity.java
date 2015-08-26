@@ -40,7 +40,6 @@ import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 import eu.chainfire.libsuperuser.Shell;
@@ -88,7 +87,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
             Preferences.get().setFirstTime(false);
 
             if (PrivilegedInstaller.isAvailable(context)) {
-                Preferences.get().setSystemInstallerEnabled(true);
+                Preferences.get().setPrivilegedInstallerEnabled(true);
             } else {
                 runFirstTime(context);
             }
@@ -160,7 +159,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
         String message = getString(R.string.system_install_first_time_message) + "<br/><br/>"
-                + InstallPrivileged.create(getApplicationContext(), null).getWarningInfo();
+                + InstallPrivileged.create(getApplicationContext()).getWarningInfo();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                 .setMessage(Html.fromHtml(message))
@@ -269,7 +268,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallPrivileged.create(getApplicationContext()).runInstall();
+            InstallPrivileged.create(getApplicationContext()).runInstall("test"); // TODO
             return null;
         }
     };
@@ -284,7 +283,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         final boolean success = PrivilegedInstaller.isAvailable(this);
 
         // enable system installer on installation success
-        Preferences.get().setSystemInstallerEnabled(success);
+        Preferences.get().setPrivilegedInstallerEnabled(success);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                 .setTitle(success ? R.string.system_install_post_success : R.string.system_install_post_fail)

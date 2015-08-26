@@ -28,7 +28,7 @@
 	<string name="system_installer">Enable privileged F-Droid</string>
 	<string name="system_installer_on">Use privileged permissions to install, update, and remove packages</string>
 	<string name="uninstall_system">Uninstall privileged F-Droid</string>
-	<string name="uninstall_system_summary">Uninstall F-Droid when installed as a privileged app</string>
+	<string name="uninstall_system_summary">Uninstalls the additional privileged F-Droid app</string>
 	<string name="local_repo_name">Name of your Local Repo</string>
 	<string name="local_repo_name_summary">The advertised title of your local repo: %s</string>
 	<string name="local_repo_https">Use Private Connection</string>

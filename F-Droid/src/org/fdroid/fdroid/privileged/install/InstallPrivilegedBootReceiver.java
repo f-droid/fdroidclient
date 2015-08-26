@@ -30,8 +30,8 @@ public class InstallPrivilegedBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-            if (Preferences.get().isPostSystemInstall()) {
-                Preferences.get().setPostSystemInstall(false);
+            if (Preferences.get().isPostPrivilegedInstall()) {
+                Preferences.get().setPostPrivilegedInstall(false);
 
                 Intent postInstall = new Intent(context.getApplicationContext(), InstallPrivilegedDialogActivity.class);
                 postInstall.setAction(InstallPrivilegedDialogActivity.ACTION_POST_INSTALL);

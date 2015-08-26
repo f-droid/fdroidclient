@@ -38,22 +38,20 @@ import eu.chainfire.libsuperuser.Shell;
 abstract class InstallPrivileged {
 
     protected final Context context;
-    protected final String apkPath;
 
     private static final String PACKAGE_NAME = "org.fdroid.fdroid.privileged";
 
-    public InstallPrivileged(final Context context, final String apkPath) {
+    public InstallPrivileged(final Context context) {
         this.context = context;
-        this.apkPath = apkPath;
     }
 
-    public static InstallPrivileged create(final Context context, final String apkPath) {
+    public static InstallPrivileged create(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return new LollipopImpl(context, apkPath);
+            return new LollipopImpl(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            return new KitKatToLollipopImpl(context, apkPath);
+            return new KitKatToLollipopImpl(context);
         } else {
-            return new PreKitKatImpl(context, apkPath);
+            return new PreKitKatImpl(context);
         }
     }
 
@@ -80,19 +78,19 @@ abstract class InstallPrivileged {
         Shell.SU.run(commands);
     }
 
-    final void runInstall() {
+    final void runInstall(String apkPath) {
         onPreInstall();
-        Shell.SU.run(getInstallCommands());
+        Shell.SU.run(getInstallCommands(apkPath));
     }
 
     protected String getInstallPath() {
         return getSystemFolder() + "FDroidPrivileged.apk";
     }
 
-    private List<String> getInstallCommands() {
+    private List<String> getInstallCommands(String apkPath) {
         final List<String> commands = new ArrayList<>();
         commands.add("mount -o rw,remount /system");
-        commands.addAll(getCopyToSystemCommands());
+        commands.addAll(getCopyToSystemCommands(apkPath));
         commands.add("pm uninstall " + PACKAGE_NAME);
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
         commands.add("pm install -r " + getInstallPath());
@@ -103,7 +101,7 @@ abstract class InstallPrivileged {
         return commands;
     }
 
-    protected List<String> getCopyToSystemCommands() {
+    protected List<String> getCopyToSystemCommands(String apkPath) {
         final List<String> commands = new ArrayList<>(2);
         commands.add("cat " + apkPath + " > " + getInstallPath() + ".tmp");
         commands.add("chmod 644 " + getInstallPath() + ".tmp");
@@ -118,8 +116,8 @@ abstract class InstallPrivileged {
 
     private static class PreKitKatImpl extends InstallPrivileged {
 
-        public PreKitKatImpl(Context context, String apkPath) {
-            super(context, apkPath);
+        public PreKitKatImpl(Context context) {
+            super(context);
         }
 
         @Override
@@ -131,8 +129,8 @@ abstract class InstallPrivileged {
 
     private static class KitKatToLollipopImpl extends InstallPrivileged {
 
-        public KitKatToLollipopImpl(Context context, String apkPath) {
-            super(context, apkPath);
+        public KitKatToLollipopImpl(Context context) {
+            super(context);
         }
 
         /**
@@ -152,14 +150,14 @@ abstract class InstallPrivileged {
      */
     private static class LollipopImpl extends InstallPrivileged {
 
-        public LollipopImpl(Context context, String apkPath) {
-            super(context, apkPath);
+        public LollipopImpl(Context context) {
+            super(context);
         }
 
         @Override
         protected void onPreInstall() {
             // Setup preference to execute postInstall after reboot
-            Preferences.get().setPostSystemInstall(true);
+            Preferences.get().setPostPrivilegedInstall(true);
         }
 
         public String getWarningInfo() {
@@ -178,7 +176,7 @@ abstract class InstallPrivileged {
          * Create app directory
          */
         @Override
-        protected List<String> getCopyToSystemCommands() {
+        protected List<String> getCopyToSystemCommands(String apkPath) {
             List<String> commands = new ArrayList<>(3);
             commands.add("mkdir -p " + getSystemFolder()); // create app directory if not existing
             commands.add("chmod 755 " + getSystemFolder());

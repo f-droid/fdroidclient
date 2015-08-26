@@ -21,7 +21,6 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 import org.fdroid.fdroid.privileged.install.InstallPrivilegedDialogActivity;
-import org.fdroid.fdroid.installer.Installer;
 
 import java.util.Locale;
 
@@ -42,7 +41,7 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_LANGUAGE,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,
-        Preferences.PREF_SYSTEM_INSTALLER,
+        Preferences.PREF_PRIVILEGED_INSTALLER,
         Preferences.PREF_ENABLE_PROXY,
         Preferences.PREF_PROXY_HOST,
         Preferences.PREF_PROXY_PORT,
@@ -150,7 +149,7 @@ public class PreferencesFragment extends PreferenceFragment
             checkSummary(key, R.string.expert_on);
             break;
 
-        case Preferences.PREF_SYSTEM_INSTALLER:
+        case Preferences.PREF_PRIVILEGED_INSTALLER:
             checkSummary(key, R.string.system_installer_on);
             break;
 
@@ -183,8 +182,8 @@ public class PreferencesFragment extends PreferenceFragment
     /**
      * Initializes SystemInstaller preference, which can only be enabled when F-Droid is installed as a system-app
      */
-    protected void initSystemInstallerPreference() {
-        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_SYSTEM_INSTALLER);
+    protected void initPrivilegedInstallerPreference() {
+        CheckBoxPreference pref = (CheckBoxPreference) findPreference(Preferences.PREF_PRIVILEGED_INSTALLER);
 
         // we are handling persistence ourself!
         pref.setPersistent(false);
@@ -199,13 +198,13 @@ public class PreferencesFragment extends PreferenceFragment
                     if (PrivilegedInstaller.isAvailable(getActivity())) {
                         // system-permission are granted, i.e. F-Droid is a system-app
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                        editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, true);
+                        editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, true);
                         editor.commit();
                         pref.setChecked(true);
                     } else {
                         // system-permission not available
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                        editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, false);
+                        editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
                         editor.commit();
                         pref.setChecked(false);
 
@@ -232,7 +231,7 @@ public class PreferencesFragment extends PreferenceFragment
                     }
                 } else {
                     SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
-                    editor.putBoolean(Preferences.PREF_SYSTEM_INSTALLER, false);
+                    editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
                     editor.commit();
                     pref.setChecked(false);
                 }
@@ -242,8 +241,8 @@ public class PreferencesFragment extends PreferenceFragment
         });
     }
 
-    protected void initUninstallSystemAppPreference() {
-        Preference pref = findPreference(Preferences.PREF_UNINSTALL_SYSTEM_APP);
+    protected void initUninstallPrivilegedAppPreference() {
+        Preference pref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
         pref.setPersistent(false);
 
         pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -281,8 +280,8 @@ public class PreferencesFragment extends PreferenceFragment
             updateSummary(key, false);
         }
 
-        initSystemInstallerPreference();
-        initUninstallSystemAppPreference();
+        initPrivilegedInstallerPreference();
+        initUninstallPrivilegedAppPreference();
     }
 
     @Override
