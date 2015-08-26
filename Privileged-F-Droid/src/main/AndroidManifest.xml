@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.fdroid.fdroid.privileged">
+
+    <!-- These permissions are only granted when this apk is installed as a privileged app! -->
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.DELETE_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name">
+
+        <!-- API -->
+        <service
+            android:name=".PrivilegedService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":fdroid_privileged"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="org.fdroid.fdroid.privileged.IPrivilegedService" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

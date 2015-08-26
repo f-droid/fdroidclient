@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.1'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '23.0.0'
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        compileOptions.encoding = "UTF-8"
+
+        // Use Java 1.7, requires minSdk 8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+
+            // Reference them in the java files with e.g. BuildConfig.F_DROID_CERT_SHA512.
+            buildConfigField "String", "F_DROID_CERT_SHA512", "\"9ba5d51a0d5c3627e270c2542b761937c721b0d8a1caed88bd3b2f21add138c2f16e295ce67bef21b21e0b75d5a0c6fd13d67efeb85c198cffa365755c94f4c2\""
+        }
+
+        debug {
+        
+            // Reference them in the java files with e.g. BuildConfig.F_DROID_CERT_SHA512.
+            buildConfigField "String", "F_DROID_CERT_SHA512", "\"9ba5d51a0d5c3627e270c2542b761937c721b0d8a1caed88bd3b2f21add138c2f16e295ce67bef21b21e0b75d5a0c6fd13d67efeb85c198cffa365755c94f4c2\""
+        }
+    }
+
+    lintOptions {
+        // Do not abort build if lint finds errors
+        abortOnError false
+    }
+
+}
