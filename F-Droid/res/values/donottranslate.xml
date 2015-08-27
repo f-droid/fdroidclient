@@ -31,6 +31,7 @@
     <string-array name="languageValues">
         <item></item>
         <item>ar</item>
+        <item>ast</item>
         <item>bg</item>
         <item>ca</item>
         <item>cs</item>
@@ -51,6 +52,7 @@
         <item>ja</item>
         <item>ko</item>
         <item>lt</item>
+        <item>lv</item>
         <item>nb</item>
         <item>nl</item>
         <item>pl</item>
@@ -65,6 +67,7 @@
         <item>tr</item>
         <item>ug</item>
         <item>uk</item>
+        <item>vi</item>
         <item>zh</item>
         <item>zh-rCN</item>
         <item>zh-rHK</item>
