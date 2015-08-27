@@ -54,6 +54,8 @@ via the Gitlab web interface. You can also follow our
 [Issue tracker](https://gitlab.com/fdroid/fdroidclient/issues) and our
 [Forums](https://f-droid.org/forums).
 
+Also see our [Contributing doc](CONTRIBUTING.md).
+
 
 Translating
 -----------
