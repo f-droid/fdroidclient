@@ -52,10 +52,6 @@
 		<EditTextPreference
 		    android:key="localRepoName"
 		    android:title="@string/local_repo_name" />
-		<CheckBoxPreference
-		    android:defaultValue="false"
-		    android:key="localRepoHttps"
-		    android:title="@string/local_repo_https" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/proxy" >
         <CheckBoxPreference

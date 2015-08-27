@@ -339,6 +339,8 @@ public final class Utils {
     }
 
     public static String calcFingerprint(Certificate cert) {
+        if (cert == null)
+            return null;
         try {
             return calcFingerprint(cert.getEncoded());
         } catch (CertificateEncodingException e) {
@@ -347,6 +349,8 @@ public final class Utils {
     }
 
     public static String calcFingerprint(byte[] key) {
+        if (key == null)
+            return null;
         String ret = null;
         if (key.length < 256) {
             Log.e(TAG, "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
