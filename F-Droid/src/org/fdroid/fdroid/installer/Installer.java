@@ -27,6 +27,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.privileged.install.InstallPrivilegedDialogActivity;
 
 import java.io.File;
 import java.util.List;
@@ -146,10 +147,27 @@ abstract public class Installer {
         return null;
     }
 
-    public void installPackage(File apkFile) throws AndroidNotCompatibleException {
+    public void installPackage(File apkFile, String packageName) throws AndroidNotCompatibleException {
         // check if file exists...
         if (!apkFile.exists()) {
             Log.e(TAG, "Couldn't find file " + apkFile + " to install.");
+            return;
+        }
+
+        // special case: Install F-Droid Privileged
+        if (packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
+            Activity activity;
+            try {
+                activity = (Activity) mContext;
+            } catch (ClassCastException e) {
+                Log.d(TAG, "F-Droid Privileged can only be updated using an activity!");
+                return;
+            }
+
+            Intent installIntent = new Intent(activity, InstallPrivilegedDialogActivity.class);
+            installIntent.setAction(InstallPrivilegedDialogActivity.ACTION_INSTALL);
+            installIntent.putExtra(InstallPrivilegedDialogActivity.EXTRA_INSTALL_APK, apkFile.getAbsolutePath());
+            activity.startActivity(installIntent);
             return;
         }
 

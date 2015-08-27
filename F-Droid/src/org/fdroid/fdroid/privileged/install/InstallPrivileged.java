@@ -24,6 +24,7 @@ import android.os.Build;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ abstract class InstallPrivileged {
 
     protected final Context context;
 
-    private static final String PACKAGE_NAME = "org.fdroid.fdroid.privileged";
+    private static final String APK_FILE_NAME = "FDroidPrivileged.apk";
 
     public InstallPrivileged(final Context context) {
         this.context = context;
@@ -67,10 +68,10 @@ abstract class InstallPrivileged {
 
     final void runUninstall() {
         final String[] commands = {
-                "am force-stop " + PACKAGE_NAME,
-                "pm clear " + PACKAGE_NAME,
+                "am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
+                "pm clear " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
                 "mount -o rw,remount /system",
-                "pm uninstall " + PACKAGE_NAME,
+                "pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
                 "rm -f " + getInstallPath(),
                 "sleep 5",
                 "mount -o ro,remount /system"
@@ -84,19 +85,19 @@ abstract class InstallPrivileged {
     }
 
     protected String getInstallPath() {
-        return getSystemFolder() + "FDroidPrivileged.apk";
+        return getSystemFolder() + APK_FILE_NAME;
     }
 
     private List<String> getInstallCommands(String apkPath) {
         final List<String> commands = new ArrayList<>();
         commands.add("mount -o rw,remount /system");
         commands.addAll(getCopyToSystemCommands(apkPath));
-        commands.add("pm uninstall " + PACKAGE_NAME);
+        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
         commands.add("pm install -r " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
         commands.add("mount -o ro,remount /system");
-        commands.add("am force-stop " + PACKAGE_NAME);
+        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
         commands.addAll(getPostInstallCommands());
         return commands;
     }

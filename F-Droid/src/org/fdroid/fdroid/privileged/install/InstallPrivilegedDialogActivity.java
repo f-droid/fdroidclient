@@ -36,11 +36,14 @@ import android.text.Html;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 
+import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
+
+import java.io.File;
 
 import eu.chainfire.libsuperuser.Shell;
 
@@ -52,11 +55,14 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
     private static final String TAG = "InstallIntoSystem";
 
     public static final String ACTION_INSTALL = "install";
+    public static final String EXTRA_INSTALL_APK = "apk_file";
+
     public static final String ACTION_UNINSTALL = "uninstall";
     public static final String ACTION_POST_INSTALL = "post_install";
     public static final String ACTION_FIRST_TIME = "first_time";
 
     String action;
+    String apkFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +75,8 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
             finish();
             return;
         }
+
+        apkFile = getIntent().getStringExtra(EXTRA_INSTALL_APK);
 
         action = getIntent().getAction();
         if (ACTION_UNINSTALL.equals(action)) {
@@ -166,7 +174,11 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
                 .setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        installTask.execute();
+                        // Open details of F-Droid Privileged
+                        Intent intent = new Intent(InstallPrivilegedDialogActivity.this, AppDetails.class);
+                        intent.putExtra(AppDetails.EXTRA_APPID,
+                                PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -268,7 +280,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            InstallPrivileged.create(getApplicationContext()).runInstall("test"); // TODO
+            InstallPrivileged.create(getApplicationContext()).runInstall(apkFile);
             return null;
         }
     };
@@ -304,9 +316,9 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
         // hack to get holo design (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        final boolean systemApp = PrivilegedInstaller.isAvailable(this);
+        final boolean isAvailable = PrivilegedInstaller.isAvailable(this);
 
-        if (systemApp) {
+        if (isAvailable) {
             AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                     .setTitle(R.string.system_uninstall)
                     .setMessage(R.string.system_uninstall_message)

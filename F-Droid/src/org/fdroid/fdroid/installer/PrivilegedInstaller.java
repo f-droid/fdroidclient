@@ -74,8 +74,8 @@ public class PrivilegedInstaller extends Installer {
 
     private static final String TAG = "PrivilegedInstaller";
 
-    private static final String PRIVILEGED_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
-    private static final String PRIVILEGED_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
+    private static final String PRIVILEGED_SERVICE_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
+    public static final String PRIVILEGED_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
 
     private Activity mActivity;
 
@@ -119,7 +119,7 @@ public class PrivilegedInstaller extends Installer {
             public void onServiceDisconnected(ComponentName name) {
             }
         };
-        Intent serviceIntent = new Intent(PRIVILEGED_INTENT);
+        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
         context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);
@@ -210,7 +210,7 @@ public class PrivilegedInstaller extends Installer {
             }
         };
 
-        Intent serviceIntent = new Intent(PRIVILEGED_INTENT);
+        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
         mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);
@@ -316,7 +316,7 @@ public class PrivilegedInstaller extends Installer {
             }
         };
 
-        Intent serviceIntent = new Intent(PRIVILEGED_INTENT);
+        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
         mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);

@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.text.TextUtils;
 
+import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.PreferencesActivity;
@@ -221,9 +222,11 @@ public class PreferencesFragment extends PreferenceFragment
                         alertBuilder.setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent installIntent = new Intent(getActivity(), InstallPrivilegedDialogActivity.class);
-                                installIntent.setAction(InstallPrivilegedDialogActivity.ACTION_INSTALL);
-                                startActivity(installIntent);
+                                // Open details of F-Droid Privileged
+                                Intent intent = new Intent(getActivity(), AppDetails.class);
+                                intent.putExtra(AppDetails.EXTRA_APPID,
+                                        PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+                                startActivity(intent);
                             }
                         });
                         alertBuilder.setNegativeButton(R.string.cancel, null);
