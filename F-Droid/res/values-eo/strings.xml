@@ -119,7 +119,7 @@
   <string name="repo_searching_address">Serĉi F-Droidan deponejon ĉe %1$s</string>
   <string name="minsdk_or_later">%s aŭ posta</string>
   <string name="up_to_maxsdk">ĝis %s</string>
-  <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2Ss</string>
+  <string name="minsdk_up_to_maxsdk">De %1$s ĝis %2$s</string>
   <string name="requires_features">Postulas: %1$s</string>
   <string name="app_icon">Aplikaĵemblemo</string>
   <string name="repo_icon">Deponejemblemo</string>
