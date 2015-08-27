@@ -1,21 +1,23 @@
 before_script:
-  - echo " == Installing Java"
-  - java -Xmx32m -version
+  - apt-get update -qy
+  - apt-get install -qy wget tar unzip lib32stdc++6 lib32z1
+  - echo " == Installing OpenJDK 7"
+  - apt-get install -qy openjdk-7-jdk
   - echo " == Installing the Android SDK"
-  - wget -o android-sdk-linux.tgz https://dl.google.com/android/android-sdk_r24.3.4-linux.tgz
-  - tar -xf android-sdk-linux
+  - wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.3.4-linux.tgz
+  - tar -x -z -f android-sdk.tgz
   - mv android-sdk-linux android-sdk
-  - export ANDROID_SDK=$PWD/android-sdk
-  - export PATH="$ANDROID_SDK/tools:$PATH"
+  - export ANDROID_HOME=$PWD/android-sdk
+  - export PATH="$ANDROID_HOME/tools:$PATH"
   - echo " == Installing Android SDK components"
-  - android update sdk --no-ui -a -t platform-tools
-  - android update sdk --no-ui -a -t tools
-  - android update sdk --no-ui -a -t build-tools-23.0.0
-  - android update sdk --no-ui -a -t android-22
-  - android update sdk --no-ui -a -t extra-android-m2repository
+  - echo y | android -s update sdk --no-ui -a -t platform-tools
+  - echo y | android -s update sdk --no-ui -a -t tools
+  - echo y | android -s update sdk --no-ui -a -t build-tools-23.0.0
+  - echo y | android -s update sdk --no-ui -a -t android-22
+  - echo y | android -s update sdk --no-ui -a -t extra-android-m2repository
   - echo " == Installing Gradle"
-  - wget https://services.gradle.org/distributions/gradle-2.4-bin.zip
-  - unzip gradle-2.4-bin.zip
+  - wget -q -O gradle.zip https://services.gradle.org/distributions/gradle-2.4-bin.zip
+  - unzip -q gradle.zip
   - export PATH="$PWD/gradle-2.4/bin:$PATH"
 
 build:
