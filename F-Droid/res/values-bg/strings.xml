@@ -206,6 +206,7 @@
   <string name="root_access_denied_title">Root достъпът е отказан</string>
   <string name="update_all">Актуализирай всички</string>
   <string name="system_permission_denied_body">Опцията е налична само когато сте инсталирали F-Droid като системно приложение.</string>
+  <string name="swap_nfc_description">Ако приятелят ви има &lt;b&gt;F-Droid и е включил NFC&lt;/b&gt; можете да докоснете телефоните си.</string>
   <string name="swap_join_same_wifi">Свържете се към една и съща WiFi мрежа с приятеля си.</string>
   <string name="swap_wifi_help">Научете повече относно WiFi</string>
   <string name="menu_swap">Размяна на приложения</string>
