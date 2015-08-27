@@ -1,6 +1,8 @@
 F-Droid Client
 ==============
 
+[![build status](https://ci.gitlab.com/projects/6571/status.png?ref=master)](https://ci.gitlab.com/projects/6571?ref=master)
+
 Client for [F-Droid](https://f-droid.org), the Free Software repository system
 for Android.
 
