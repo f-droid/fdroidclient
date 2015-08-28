@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
-
-if ( !hasProperty( 'sourceDeps' ) ) {
+if (!hasProperty('sourceDeps')) {
 
     logger.info "Setting up *binary* dependencies for F-Droid (if you'd prefer to build from source, pass the -PsourceDeps argument to gradle while building)."
 
@@ -67,7 +66,7 @@ if ( !hasProperty( 'sourceDeps' ) ) {
         compile project(':extern:jmdns')
         compile project(':extern:zipsigner')
         compile project(':extern:zxing-core')
-        compile( project(':extern:support-v4-preferencefragment') ) {
+        compile(project(':extern:support-v4-preferencefragment')) {
             exclude module: 'support-v4'
         }
 
@@ -79,7 +78,6 @@ if ( !hasProperty( 'sourceDeps' ) ) {
     }
 
 }
-
 task cleanBinaryDeps(type: Delete) {
 
     enabled = project.hasProperty('sourceDeps')
@@ -90,13 +88,12 @@ task cleanBinaryDeps(type: Delete) {
         include '*.jar'
     }
 }
-
 task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
 
     enabled = project.hasProperty('sourceDeps')
     description = "Copies .jar and .aar files from subproject dependencies in extern/ to F-Droid/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
 
-    from ('../extern/' ) {
+    from('../extern/') {
         include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar',
                 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar',
                 'zipsigner/build/libs/zipsigner.jar',
@@ -114,7 +111,6 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
     }
 
 }
-
 android {
     compileSdkVersion 22
     buildToolsVersion '23.0.1'
@@ -174,7 +170,6 @@ android {
     }
 
 }
-
 // This person took the example code below from another blogpost online, however
 // I lost the reference to it:
 // http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation
