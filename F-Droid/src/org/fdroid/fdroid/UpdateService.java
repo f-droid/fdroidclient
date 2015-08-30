@@ -139,11 +139,16 @@ public class UpdateService extends IntentService implements ProgressListener {
                 .setOngoing(true)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setContentTitle(getString(R.string.update_notification_title));
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            Intent intent = new Intent(this, FDroid.class);
-            // TODO: Is this the correct FLAG?
-            notificationBuilder.setContentIntent(PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+        
+        // Android docs are a little sketchy, however it seems that Gingerbread is the last
+        // sdk that made a content intent mandatory:
+        //
+        //   http://stackoverflow.com/a/20032920
+        //
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
+            Intent pendingIntent = new Intent(this, FDroid.class);
+            pendingIntent.addFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
+            notificationBuilder.setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, PendingIntent.FLAG_UPDATE_CURRENT));
         }
 
         notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
@@ -324,6 +329,7 @@ public class UpdateService extends IntentService implements ProgressListener {
     @Override
     protected void onHandleIntent(Intent intent) {
 
+        final long startTime = System.currentTimeMillis();
         String address = intent.getStringExtra(EXTRA_ADDRESS);
         boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
 
@@ -341,16 +347,12 @@ public class UpdateService extends IntentService implements ProgressListener {
             // database while we do all the downloading, etc...
             List<Repo> repos = RepoProvider.Helper.all(this);
 
-            // Process each repo...
-            RepoPersister appSaver = new RepoPersister(this);
-
             //List<Repo> swapRepos = new ArrayList<>();
             List<Repo> unchangedRepos = new ArrayList<>();
             List<Repo> updatedRepos = new ArrayList<>();
             List<Repo> disabledRepos = new ArrayList<>();
             List<CharSequence> errorRepos = new ArrayList<>();
             ArrayList<CharSequence> repoErrors = new ArrayList<>();
-            List<RepoUpdater.RepoUpdateRememberer> repoUpdateRememberers = new ArrayList<>();
             boolean changes = false;
             boolean singleRepoUpdate = !TextUtils.isEmpty(address);
             for (final Repo repo : repos) {
@@ -374,10 +376,8 @@ public class UpdateService extends IntentService implements ProgressListener {
                 try {
                     updater.update();
                     if (updater.hasChanged()) {
-                        appSaver.queueUpdater(updater);
                         updatedRepos.add(repo);
                         changes = true;
-                        repoUpdateRememberers.add(updater.getRememberer());
                     } else {
                         unchangedRepos.add(repo);
                     }
@@ -392,15 +392,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                 Utils.debugLog(TAG, "Not checking app details or compatibility, because all repos were up to date.");
             } else {
                 sendStatus(this, STATUS_INFO, getString(R.string.status_checking_compatibility));
-
-                appSaver.save(disabledRepos);
-
                 notifyContentProviders();
-
-                //we only remember the update if everything has gone well
-                for (RepoUpdater.RepoUpdateRememberer rememberer : repoUpdateRememberers) {
-                    rememberer.rememberUpdate();
-                }
 
                 if (prefs.getBoolean(Preferences.PREF_UPD_NOTIFY, true)) {
                     performUpdateNotification();
@@ -428,6 +420,9 @@ public class UpdateService extends IntentService implements ProgressListener {
             Log.e(TAG, "Exception during update processing", e);
             sendStatus(this, STATUS_ERROR_GLOBAL, e.getMessage());
         }
+
+        long time = System.currentTimeMillis() - startTime;
+        Log.i(TAG, "Updating repo(s) complete, took " + time / 1000 + " seconds to complete.");
     }
 
     private void notifyContentProviders() {

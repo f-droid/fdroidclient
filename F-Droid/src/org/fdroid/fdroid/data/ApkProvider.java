@@ -88,6 +88,24 @@ public class ApkProvider extends FDroidProvider {
             return find(context, id, versionCode, DataColumns.ALL);
         }
 
+        /**
+         * Find all apks for a particular app, but limit it to those originating from the
+         * specified repo.
+         */
+        public static List<Apk> find(Context context, Repo repo, List<App> apps, String[] projection) {
+            ContentResolver resolver = context.getContentResolver();
+            final Uri uri = getContentUriForApps(repo, apps);
+            Cursor cursor = resolver.query(uri, projection, null, null, null);
+            return cursorToList(cursor);
+        }
+
+        /**
+         * @see org.fdroid.fdroid.data.ApkProvider.Helper#find(Context, Repo, List, String[])
+         */
+        public static List<Apk> find(Context context, Repo repo, List<App> apps) {
+            return find(context, repo, apps, DataColumns.ALL);
+        }
+
         public static Apk find(Context context, String id, int versionCode, String[] projection) {
             ContentResolver resolver = context.getContentResolver();
             final Uri uri = getContentUri(id, versionCode);
@@ -208,12 +226,16 @@ public class ApkProvider extends FDroidProvider {
     private static final int CODE_APP = CODE_SINGLE + 1;
     private static final int CODE_REPO = CODE_APP + 1;
     private static final int CODE_APKS = CODE_REPO + 1;
+    private static final int CODE_REPO_APPS = CODE_APKS + 1;
+    private static final int CODE_REPO_APK = CODE_REPO_APPS + 1;
 
-    private static final String PROVIDER_NAME = "ApkProvider";
-    private static final String PATH_APK  = "apk";
-    private static final String PATH_APKS = "apks";
-    private static final String PATH_APP  = "app";
-    private static final String PATH_REPO = "repo";
+    private static final String PROVIDER_NAME  = "ApkProvider";
+    private static final String PATH_APK       = "apk";
+    private static final String PATH_APKS      = "apks";
+    private static final String PATH_APP       = "app";
+    private static final String PATH_REPO      = "repo";
+    private static final String PATH_REPO_APPS = "repo-apps";
+    private static final String PATH_REPO_APK  = "repo-apk";
 
     private static final UriMatcher matcher = new UriMatcher(-1);
 
@@ -227,6 +249,8 @@ public class ApkProvider extends FDroidProvider {
         matcher.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
         matcher.addURI(getAuthority(), PATH_APKS + "/*", CODE_APKS);
         matcher.addURI(getAuthority(), PATH_APP + "/*", CODE_APP);
+        matcher.addURI(getAuthority(), PATH_REPO_APPS + "/#/*", CODE_REPO_APPS);
+        matcher.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
         matcher.addURI(getAuthority(), null, CODE_LIST);
     }
 
@@ -267,6 +291,24 @@ public class ApkProvider extends FDroidProvider {
             .build();
     }
 
+    public static Uri getContentUriForApps(Repo repo, List<App> apps) {
+        return getContentUri()
+            .buildUpon()
+            .appendPath(PATH_REPO_APPS)
+            .appendPath(Long.toString(repo.id))
+            .appendPath(buildAppString(apps))
+            .build();
+    }
+
+    public static Uri getContentUriForApks(Repo repo, List<Apk> apks) {
+        return getContentUri()
+            .buildUpon()
+            .appendPath(PATH_REPO_APK)
+            .appendPath(Long.toString(repo.id))
+            .appendPath(buildApkString(apks))
+            .build();
+    }
+
     /**
      * Intentionally left protected because it will break if apks is larger than
      * {@link org.fdroid.fdroid.data.ApkProvider#MAX_APKS_TO_QUERY}. Instead of using
@@ -274,6 +316,13 @@ public class ApkProvider extends FDroidProvider {
      * {@link org.fdroid.fdroid.data.ApkProvider.Helper#knownApks(android.content.Context, java.util.List, String[])}
      */
     protected static Uri getContentUri(List<Apk> apks) {
+        return getContentUri().buildUpon()
+                .appendPath(PATH_APKS)
+                .appendPath(buildApkString(apks))
+                .build();
+    }
+
+    private static String buildApkString(List<Apk> apks) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < apks.size(); i++) {
             if (i != 0) {
@@ -282,10 +331,18 @@ public class ApkProvider extends FDroidProvider {
             final Apk a = apks.get(i);
             builder.append(a.id).append(':').append(a.vercode);
         }
-        return getContentUri().buildUpon()
-                .appendPath(PATH_APKS)
-                .appendPath(builder.toString())
-                .build();
+        return builder.toString();
+    }
+
+    private static String buildAppString(List<App> apks) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < apks.size(); i++) {
+            if (i != 0) {
+                builder.append(',');
+            }
+            builder.append(apks.get(0).id);
+        }
+        return builder.toString();
     }
 
     @Override
@@ -360,6 +417,10 @@ public class ApkProvider extends FDroidProvider {
         return new QuerySelection(selection, args);
     }
 
+    private QuerySelection queryRepoApps(long repoId, String appIds) {
+        return queryRepo(repoId).add(AppProvider.queryApps(appIds, DataColumns.APK_ID));
+    }
+
     private QuerySelection queryApks(String apkKeys) {
         final String[] apkDetails = apkKeys.split(",");
         if (apkDetails.length > MAX_APKS_TO_QUERY) {
@@ -408,6 +469,11 @@ public class ApkProvider extends FDroidProvider {
                 query = query.add(queryRepo(Long.parseLong(uri.getLastPathSegment())));
                 break;
 
+            case CODE_REPO_APPS:
+                List<String> pathSegments = uri.getPathSegments();
+                query = query.add(queryRepoApps(Long.parseLong(pathSegments.get(1)), pathSegments.get(2)));
+                break;
+    
             default:
                 Log.e(TAG, "Invalid URI for apk content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
@@ -468,6 +534,12 @@ public class ApkProvider extends FDroidProvider {
 
             case CODE_APKS:
                 query = query.add(queryApks(uri.getLastPathSegment()));
+                break;
+    
+            // TODO: Add tests for this.
+            case CODE_REPO_APK:
+                List<String> pathSegments = uri.getPathSegments();
+                query = query.add(queryRepo(Long.parseLong(pathSegments.get(1)))).add(queryApks(pathSegments.get(2)));
                 break;
 
             case CODE_LIST:

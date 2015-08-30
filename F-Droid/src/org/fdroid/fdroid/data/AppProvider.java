@@ -686,10 +686,14 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection);
     }
 
-    private AppQuerySelection queryApps(String appIds) {
+    static AppQuerySelection queryApps(String appIds, String idField) {
         String[] args = appIds.split(",");
-        String selection = "fdroid_app.id IN (" + generateQuestionMarksForInClause(args.length) + ")";
+        String selection = idField + " IN (" + generateQuestionMarksForInClause(args.length) + ")";
         return new AppQuerySelection(selection, args);
+    }
+
+    private static AppQuerySelection queryApps(String appIds) {
+        return queryApps(appIds, "fdroid_app.id");
     }
 
     @Override
