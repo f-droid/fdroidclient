@@ -10,11 +10,10 @@
 -dontnote android.support.**
 -dontnote **ILicensingService
 
-# The nature of the Java security suite implementations are that they use a
-# lot of reflection to instantiate classes. The end result is that proguard
-# excludes classes which may be required, depending on the security algorithms
-# required by certain certificates.
-#   Reference: https://gitlab.com/fdroid/fdroidclient/issues/88
+# These libraries are known to break if minification is enabled on them. They
+# use reflection to instantiate classes, for example. If the keep flags are
+# removed, proguard will strip classes which are required, which may result in
+# crashes.
 -keep class kellinwood.** {*;}
 -keep class javax.jmdns.** {*;}
 -keep class org.spongycastle.** {*;}
