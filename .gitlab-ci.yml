@@ -1,9 +1,11 @@
 before_script:
   - apt-get -q update -y
-  - echo " == Installing required packages"
-  - apt-get -q install -y wget tar unzip lib32stdc++6 lib32z1
+  - echo " == Installing packages required by this CI script"
+  - apt-get -q install -y wget tar unzip
   - echo " == Installing OpenJDK 7"
   - apt-get -q install -y openjdk-7-jdk
+  - echo " == Installing packages required by the 32-bit SDK"
+  - apt-get -q install -y lib32stdc++6 lib32z1
   - echo " == Installing the Android SDK"
   - wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.3.4-linux.tgz
   - tar -x -z -f android-sdk.tgz
