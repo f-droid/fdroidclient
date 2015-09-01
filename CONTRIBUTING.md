@@ -1,6 +1,12 @@
 Contributing
 ============
 
+IRC
+---
+
+We are on `#fdroid` and `#fdroid-dev` on Freenode. We hold weekly dev meetings
+on `#fdroid-dev` on Tuesdays at 21h UTC, which usually last half an hour.
+
 Reporting issues
 ----------------
 
