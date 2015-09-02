@@ -14,11 +14,26 @@ before_script:
   - export PATH="$ANDROID_HOME/tools:$PATH"
   - echo " == Installing Android SDK components"
   - echo y | android -s update sdk --no-ui -a -t platform-tools,tools,build-tools-23.0.0,android-22,extra-android-m2repository
+  - export PATH="$ANDROID_HOME/platform-tools:$PATH"
+  - export PATH="$ANDROID_HOME/build-tools/23.0.0:$PATH"
+  - echo " == Installing emulator system images"
+  - echo y | android -s update sdk --no-ui -a -t android-10
   - echo " == Installing Gradle"
   - wget -q -O gradle.zip https://services.gradle.org/distributions/gradle-2.4-bin.zip
   - unzip -q gradle.zip
   - export PATH="$PWD/gradle-2.4/bin:$PATH"
 
-build:
+test:
   script:
-    - gradle build
+    - cd F-Droid
+    - echo " == Building via gradle"
+    - gradle clean assemble
+    - echo " == Setting up Android 2.3.7 emulator"
+    - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
+    - echo " == Starting Android 2.3.7 emulator"
+    - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
+    - ./tools/wait-for-emulator
+    - echo " == Running Android tests"
+    - gradle connectedAndroidTest
+    - echo " == Stopping Android 2.3.7 emulator"
+    - kill $!

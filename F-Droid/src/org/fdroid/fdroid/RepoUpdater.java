@@ -123,7 +123,7 @@ public class RepoUpdater {
         }
     }
 
-    void processDownloadedFile(File downloadedFile, String cacheTag) throws UpdateException {
+    protected void processDownloadedFile(File downloadedFile, String cacheTag) throws UpdateException {
         InputStream indexInputStream = null;
         try {
             if (downloadedFile == null || !downloadedFile.exists())
