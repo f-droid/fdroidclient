@@ -170,7 +170,7 @@ public final class Utils {
             input.close();
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "I/O error when copying a file", e);
             return false;
         }
     }
@@ -219,7 +219,8 @@ public final class Utils {
         "4.4",   // 19
         "4.4W",  // 20
         "5.0",   // 21
-        "5.1"    // 22
+        "5.1",   // 22
+        "6.0"    // 23
     };
 
     public static String getAndroidVersionName(int sdkLevel) {
@@ -251,7 +252,7 @@ public final class Utils {
                 eventType = xml.nextToken();
             }
         } catch (PackageManager.NameNotFoundException | IOException | XmlPullParserException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Could not get min/max sdk version", e);
         }
         return 0;
     }
@@ -343,6 +344,8 @@ public final class Utils {
     }
 
     public static String calcFingerprint(Certificate cert) {
+        if (cert == null)
+            return null;
         try {
             return calcFingerprint(cert.getEncoded());
         } catch (CertificateEncodingException e) {
@@ -351,6 +354,8 @@ public final class Utils {
     }
 
     public static String calcFingerprint(byte[] key) {
+        if (key == null)
+            return null;
         String ret = null;
         if (key.length < 256) {
             Log.e(TAG, "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
@@ -368,8 +373,7 @@ public final class Utils {
             ret = formatter.toString();
             formatter.close();
         } catch (Exception e) {
-            Log.w(TAG, "Unable to get certificate fingerprint.\n"
-                    + Log.getStackTraceString(e));
+            Log.w(TAG, "Unable to get certificate fingerprint", e);
         }
         return ret;
     }
@@ -639,20 +643,32 @@ public final class Utils {
         }
 
         if (startsWith != null) {
-            Log.i(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
+            DebugLog(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
         }
 
         if (endsWith != null) {
-            Log.i(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
+            DebugLog(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
         }
 
         for (File f : files) {
             if ((startsWith != null && f.getName().startsWith(startsWith))
                 || (endsWith != null && f.getName().endsWith(endsWith))) {
                 if (!f.delete()) {
-                    Log.i(TAG, "Couldn't delete cache file " + f);
+                    Log.w(TAG, "Couldn't delete cache file " + f);
                 }
             }
+        }
+    }
+
+    public static void DebugLog(String tag, String msg) {
+        if (BuildConfig.DEBUG) {
+            Log.d(tag, msg);
+        }
+    }
+
+    public static void DebugLog(String tag, String msg, Throwable tr) {
+        if (BuildConfig.DEBUG) {
+            Log.d(tag, msg, tr);
         }
     }
 

@@ -9,8 +9,7 @@ import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 
 // aka Android 4.0 aka Ice Cream Sandwich
-public class NfcNotEnabledActivity extends ActionBarActivity
-{
+public class NfcNotEnabledActivity extends ActionBarActivity {
 
     /*
      * ACTION_NFC_SETTINGS was added in 4.1 aka Jelly Bean MR1 as a
@@ -21,7 +20,11 @@ public class NfcNotEnabledActivity extends ActionBarActivity
      */
     @TargetApi(16)
     private void doOnJellybean(Intent intent) {
-        if (NfcAdapter.getDefaultAdapter(this).isEnabled())
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if (nfcAdapter == null) {
+            return;
+        }
+        if (nfcAdapter.isEnabled())
             intent.setAction(Settings.ACTION_NFCSHARING_SETTINGS);
         else
             intent.setAction(Settings.ACTION_NFC_SETTINGS);

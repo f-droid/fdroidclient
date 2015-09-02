@@ -183,11 +183,11 @@ public class FDroid extends ActionBarActivity {
 
         Intent call = null;
         if (!TextUtils.isEmpty(appId)) {
-            Log.d(TAG, "FDroid launched via app link for '" + appId + "'");
+            Utils.DebugLog(TAG, "FDroid launched via app link for '" + appId + "'");
             call = new Intent(this, AppDetails.class);
             call.putExtra(AppDetails.EXTRA_APPID, appId);
         } else if (!TextUtils.isEmpty(query)) {
-            Log.d(TAG, "FDroid launched via search link for '" + query + "'");
+            Utils.DebugLog(TAG, "FDroid launched via search link for '" + query + "'");
             call = new Intent(this, SearchResults.class);
             call.setAction(Intent.ACTION_SEARCH);
             call.putExtra(SearchManager.QUERY, query);
@@ -288,7 +288,7 @@ public class FDroid extends ActionBarActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(view);
             final AlertDialog alrt = builder.create();
-            alrt.setTitle(getString(R.string.about_title));
+            alrt.setTitle(R.string.about_title);
             alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
                     getString(R.string.about_website),
                     new DialogInterface.OnClickListener() {

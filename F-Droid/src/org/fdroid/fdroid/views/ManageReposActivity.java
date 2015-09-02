@@ -66,6 +66,7 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.ClipboardCompat;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
@@ -235,7 +236,7 @@ public class ManageReposActivity extends ActionBarActivity {
             final EditText uriEditText = (EditText) view.findViewById(R.id.edit_uri);
             final EditText fingerprintEditText = (EditText) view.findViewById(R.id.edit_fingerprint);
 
-            addRepoDialog.setTitle(getString(R.string.repo_add_title));
+            addRepoDialog.setTitle(R.string.repo_add_title);
             addRepoDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
                 getString(R.string.cancel),
                 new DialogInterface.OnClickListener() {
@@ -285,13 +286,13 @@ public class ManageReposActivity extends ActionBarActivity {
                             return;
                         }
 
-                        switch(addRepoState) {
+                        switch (addRepoState) {
                             case DOESNT_EXIST:
                                 prepareToCreateNewRepo(url, fp);
                                 break;
 
                             case IS_SWAP:
-                                Log.i(TAG, "Removing existing swap repo " + url + " before adding new repo.");
+                                Utils.DebugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
                                 Repo repo = RepoProvider.Helper.findByAddress(context, url);
                                 RepoProvider.Helper.remove(context, repo.getId());
                                 prepareToCreateNewRepo(url, fp);
@@ -462,7 +463,7 @@ public class ManageReposActivity extends ActionBarActivity {
                     final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
                     for (final String path : pathsToCheck) {
 
-                        Log.d(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
+                        Utils.DebugLog(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
                         Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
                         final String addressWithoutIndex = builder.build().toString();
                         publishProgress(addressWithoutIndex);
@@ -471,16 +472,16 @@ public class ManageReposActivity extends ActionBarActivity {
 
                         try {
                             if (checkForRepository(uri)) {
-                                Log.i(TAG, "Found F-Droid repo at " + addressWithoutIndex);
+                                Utils.DebugLog(TAG, "Found F-Droid repo at " + addressWithoutIndex);
                                 return addressWithoutIndex;
                             }
                         } catch (IOException e) {
-                            Log.e(TAG, "Error while searching for repo at " + addressWithoutIndex + ": " + e.getMessage());
+                            Log.e(TAG, "Error while searching for repo at " + addressWithoutIndex, e);
                             return originalAddress;
                         }
 
                         if (isCancelled()) {
-                            Log.d(TAG, "Not checking any more repo addresses, because process was skipped.");
+                            Utils.DebugLog(TAG, "Not checking any more repo addresses, because process was skipped.");
                             break;
                         }
                     }
@@ -509,7 +510,7 @@ public class ManageReposActivity extends ActionBarActivity {
             };
 
             Button skip = addRepoDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-            skip.setText(getString(R.string.skip));
+            skip.setText(R.string.skip);
             skip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -581,7 +582,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 }
             }
 
-            Log.d(TAG, "Enabling existing repo: " + url);
+            Utils.DebugLog(TAG, "Enabling existing repo: " + url);
             Repo repo = RepoProvider.Helper.findByAddress(context, url);
             ContentValues values = new ContentValues(2);
             values.put(RepoProvider.DataColumns.IN_USE, 1);
@@ -646,7 +647,7 @@ public class ManageReposActivity extends ActionBarActivity {
         @Override
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
             Uri uri = RepoProvider.allExceptSwapUri();
-            Log.i(TAG, "Creating repo loader '" + uri + "'.");
+            Utils.DebugLog(TAG, "Creating repo loader '" + uri + "'.");
             final String[] projection = {
                     RepoProvider.DataColumns._ID,
                     RepoProvider.DataColumns.NAME,

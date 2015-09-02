@@ -34,18 +34,23 @@
   <string name="app_details">Sovelluksen tiedot</string>
   <string name="no_such_app">Sovellusta ei löytynyt</string>
   <string name="about_title">Tietoa F-Droidista</string>
+  <string name="about_desc">Pohjautuu alkujaan Aptoideen.
+Julkaistu GNU GPLv3 -lisenssin
+käyttöehtojen mukaisesti.</string>
   <string name="about_site">Verkkosivu:</string>
   <string name="about_mail">Sähköposti:</string>
   <string name="about_version">Versio:</string>
   <string name="about_website">Verkkosivu</string>
   <string name="inst">Asennettu</string>
   <string name="not_inst">Ei asennettu</string>
+  <string name="inst_unknown_source">Asennettu (tuntemattomasta lähteestä)</string>
   <string name="added_on">Lisätty %s</string>
   <string name="ok">OK</string>
   <string name="yes">Kyllä</string>
   <string name="no">Ei</string>
   <string name="repo_add_title">Lisää uusi sovelluslähde</string>
   <string name="repo_add_add">Lisää</string>
+  <string name="cancel">Peruuta</string>
   <string name="enable">Ota käyttöön</string>
   <string name="add_key">Lisää avain</string>
   <string name="overwrite">Korvaa</string>
@@ -59,6 +64,9 @@
   <string name="process_update_msg">Päivitetään sovelluslistaa…</string>
   <string name="download_server">Haetaan sovellusta lähteestä</string>
   <string name="nfc_is_not_enabled">NFC ei ole käytössä.</string>
+  <string name="go_to_nfc_settings">NFC-asetukset…</string>
+  <string name="bluetooth_activity_not_found">Bluetooth-läheystapaa ei löytynyt, valitse yksi!</string>
+  <string name="choose_bt_send">Valitse Bluetooth-lähetystapa</string>
   <string name="send_via_bluetooth">Lähetä bluetoothilla</string>
   <string name="repo_add_url">Sovelluslähteen osoite</string>
   <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
@@ -86,9 +94,12 @@ Tahdotko päivittää ne?</string>
   <string name="details_installed">Versio %s asennettu</string>
   <string name="details_notinstalled">Ei asennettu</string>
   <string name="corrupt_download">Ladattu tiedosto on viallinen</string>
+  <string name="download_cancelled">Lataus peruutettu</string>
   <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
   <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
+  <string name="antinonfreeadlist">Tämä sovellus suosittelee ei-avoimia lisäosia</string>
   <string name="antinonfreenetlist">Tämä sovellus mainostaa epävapaita verkkopalveluja</string>
+  <string name="antinonfreedeplist">Tämä sovellus vaatii toimiakseen jonkin muun, ei-avoimen sovelluksen</string>
   <string name="display">Näyttö</string>
   <string name="expert">Asiantuntija</string>
   <string name="search_hint">Etsi sovelluksia</string>
@@ -171,7 +182,9 @@ Sinun pitää
   <string name="Navigation">Navigointi</string>
   <string name="News">Uutiset</string>
   <string name="Office">Toimisto</string>
+  <string name="Phone_SMS">Puhelin &amp; SMS</string>
   <string name="Reading">Luetaan</string>
+  <string name="Science_Education">Tiede &amp; koulutus</string>
   <string name="Security">Tietoturva</string>
   <string name="System">Järjestelmä</string>
   <string name="Wallpaper">Taustakuva</string>
@@ -179,8 +192,6 @@ Sinun pitää
   <string name="root_access_denied_title">Root-oikeudet kielletty</string>
   <string name="root_access_denied_body">Joko Android-laitettasi ei ole rootattu tai olet kieltänyt F-Droidin root-oikeuksiin pääsyn.</string>
   <string name="update_all">Päivitä kaikki</string>
-  <string name="installer_error_title">Asennus(/poisto)virhe</string>
-  <string name="installer_error_body">Asennus (asennuuksen poisto) epäonnistui. Jos käytät root-oikeuksia, kokeile tämän asetuksen poistamista käytöstä.</string>
   <string name="system_permission_denied_title">Järjestelmäasetukset kielletty</string>
   <string name="system_permission_denied_body">Tämä asetus on käytössä vain silloin, kun F-Droid on asennettu järjestelmäsovellukseksi.</string>
   <string name="app_description">F-Droid on asennettava FOSS-sovellusten hakemisto (Free and Open Source Software) Androidille. Asiakasohjelma helpottaa selailemista, asentamista ja laitteesi pitämistä päivitettynä.</string>
@@ -189,7 +200,7 @@ Sinun pitää
   <string name="swap_use_bluetooth">Käytä sen sijaan bluetoothia</string>
   <string name="swap_wifi_help">Lisää tietoa WiFistä</string>
   <string name="menu_swap">Vaihda sovelluksia</string>
-  <string name="swap">Vaida sovelluksia</string>
+  <string name="swap">Vaihda sovelluksia</string>
   <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
   <string name="swap_view_available_networks">(Napauta avataksesi saatavissa olevat verkot)</string>
   <string name="swap_wifi_qr_not_working">Se ei toimi</string>

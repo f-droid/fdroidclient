@@ -102,6 +102,11 @@ public class App extends ValueObject implements Comparable<App> {
 
     public Apk installedApk; // might be null if not installed
 
+    public boolean system;
+    public boolean updatedSystemApp;
+
+    public boolean uninstallable;
+
     @Override
     public int compareTo(App app) {
         return name.compareToIgnoreCase(app.name);
@@ -236,7 +241,7 @@ public class App extends ValueObject implements Comparable<App> {
                         PackageManager.GET_META_DATA);
                 installerPackageLabel = installerAppInfo.loadLabel(pm);
             } catch (PackageManager.NameNotFoundException e) {
-                Log.d(TAG, e.getMessage());
+                Log.w(TAG, "Could not get app info", e);
             }
         }
         if (TextUtils.isEmpty(installerPackageLabel))
@@ -340,6 +345,9 @@ public class App extends ValueObject implements Comparable<App> {
         apk.sig = Utils.hashBytes(fdroidSig, "md5");
 
         this.installedApk = apk;
+        this.system = ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
+        this.updatedSystemApp = ((appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0);
+        this.uninstallable = !this.system || this.updatedSystemApp;
     }
 
     public boolean isValid() {

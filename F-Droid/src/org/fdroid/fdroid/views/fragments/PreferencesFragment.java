@@ -38,7 +38,6 @@ public class PreferencesFragment extends PreferenceFragment
         Preferences.PREF_COMPACT_LAYOUT,
         Preferences.PREF_IGN_TOUCH,
         Preferences.PREF_LOCAL_REPO_NAME,
-        Preferences.PREF_LOCAL_REPO_HTTPS,
         Preferences.PREF_LANGUAGE,
         Preferences.PREF_CACHE_APK,
         Preferences.PREF_EXPERT,

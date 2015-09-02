@@ -47,6 +47,8 @@ Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en 
 En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="inst">Installerad</string>
   <string name="not_inst">Inte installerad</string>
+  <string name="inst_known_source">Installerad (från %s)</string>
+  <string name="inst_unknown_source">Installerad (från okänd källa)</string>
   <string name="added_on">Tillagd %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -209,7 +211,9 @@ Vill du uppdatera dem?</string>
   <string name="Navigation">Navigation</string>
   <string name="News">Nyheter</string>
   <string name="Office">Kontor</string>
+  <string name="Phone_SMS">Telefon &amp; SMS</string>
   <string name="Reading">Läsning</string>
+  <string name="Science_Education">Vetenskap &amp; utbildning</string>
   <string name="Security">Säkerhet</string>
   <string name="System">System</string>
   <string name="Wallpaper">Bakgrundsbild</string>
@@ -217,8 +221,6 @@ Vill du uppdatera dem?</string>
   <string name="root_access_denied_title">Root-åtkomst nekad</string>
   <string name="root_access_denied_body">Antingen är din Android-enhet inte rootad eller så har du nekat root-åtkomst för F-Droid.</string>
   <string name="update_all">Uppdatera alla</string>
-  <string name="installer_error_title">Fel vid (av-)installation</string>
-  <string name="installer_error_body">(Av-)installationen misslyckades. Försök att inaktivera root-åtkomst om du använder denna inställning!</string>
   <string name="system_permission_denied_title">Systembehörigheter nekade</string>
   <string name="system_permission_denied_body">Detta val är endast tillgängligt när F-Droid installerats som en system-app.</string>
   <string name="app_description">F-Droid är en installerbar katalog av fri och öppen källkodsprogramvara (FOSS) för Android-plattformen. Klienten gör det enkelt att bläddra bland, installera och hålla koll på uppdateringar på din enhet.</string>

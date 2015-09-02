@@ -142,7 +142,7 @@ public class LocalRepoManager {
             if (Utils.symlinkOrCopyFile(apkFile, fdroidApkLink))
                 fdroidClientURL = "/" + fdroidApkLink.getName();
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Could not set up F-Droid apk in the webroot", e);
         }
         return fdroidClientURL;
     }
@@ -182,8 +182,7 @@ public class LocalRepoManager {
             symlinkEntireWebRootElsewhere("../../", repoDirCaps);
 
         } catch (IOException e) {
-            Log.e(TAG, "Error writing local repo index: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Error writing local repo index", e);
         }
     }
 
@@ -262,11 +261,10 @@ public class LocalRepoManager {
             PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_META_DATA);
             app.icon = getIconFile(packageName, packageInfo.versionCode).getName();
         } catch (PackageManager.NameNotFoundException | CertificateEncodingException | IOException e) {
-            Log.e(TAG, "Error adding app to local repo: " + e.getMessage());
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Error adding app to local repo", e);
             return;
         }
-        Log.i(TAG, "apps.put: " + packageName);
+        Utils.DebugLog(TAG, "apps.put: " + packageName);
         apps.put(packageName, app);
     }
 
@@ -282,7 +280,7 @@ public class LocalRepoManager {
                     appInfo = pm.getApplicationInfo(app.id, PackageManager.GET_META_DATA);
                     copyIconToRepo(appInfo.loadIcon(pm), app.id, app.installedApk.vercode);
                 } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "Error getting app icon", e);
                 }
             }
         }
@@ -309,7 +307,7 @@ public class LocalRepoManager {
             bitmap.compress(CompressFormat.PNG, 100, out);
             out.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error copying icon to repo", e);
         }
     }
 
@@ -484,7 +482,7 @@ public class LocalRepoManager {
         try {
             new IndexXmlBuilder(context, apps).build(new FileWriter(xmlIndex));
         } catch (Exception e) {
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Could not write index jar", e);
             Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
             return;
         }

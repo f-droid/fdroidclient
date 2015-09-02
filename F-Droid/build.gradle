@@ -16,22 +16,21 @@ if ( !hasProperty( 'sourceDeps' ) ) {
 
     dependencies {
 
-        compile 'com.android.support:support-v4:22.1.0',
-                'com.android.support:appcompat-v7:22.1.0',
-                'com.android.support:support-annotations:22.1.0',
+        compile 'com.android.support:support-v4:22.2.1'
+        compile 'com.android.support:appcompat-v7:22.1.1'
+        compile 'com.android.support:support-annotations:22.2.1'
 
-                'cc.mvdan.accesspoint:library:0.1.1',
+        compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
+        compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+        compile 'com.google.zxing:core:3.2.0'
+        compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
+        compile 'cc.mvdan.accesspoint:library:0.1.1'
 
-                'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0',
-                'com.nostra13.universalimageloader:universal-image-loader:1.9.4',
-                'com.google.zxing:core:3.2.0',
-                'eu.chainfire:libsuperuser:1.0.0.201504231659',
-
-                // We use a slightly modified spongycastle, see
-                // openkeychain/spongycastle with some changes on top of 1.51.0.0
-                'com.madgag.spongycastle:pkix:1.51.0.0',
-                'com.madgag.spongycastle:prov:1.51.0.0',
-                'com.madgag.spongycastle:core:1.51.0.0'
+        // We use a slightly modified spongycastle, see
+        // openkeychain/spongycastle with some changes on top of 1.51.0.0
+        compile 'com.madgag.spongycastle:pkix:1.51.0.0'
+        compile 'com.madgag.spongycastle:prov:1.51.0.0'
+        compile 'com.madgag.spongycastle:core:1.51.0.0'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
@@ -41,10 +40,12 @@ if ( !hasProperty( 'sourceDeps' ) ) {
         // yet (seems to be a little unsupported as of late), so not using mavenCentral/jcenter.
         compile(name: 'nanohttpd-2.1.0')
 
-        // Upstream doesn't have a binary on mavenCentral.
+        // Upstream doesn't have a binary on mavenCentral. Looks discontinued.
         compile(name: 'zipsigner')
 
         // Project semi-abandoned, 3.4.1 is from 2011 and we use trunk from 2013
+        // TODO: active again and 3.4.2 now released, switch when available in jcenter:
+        // https://github.com/openhab/jmdns/issues/6
         compile(name: 'jmdns')
 
         androidTestCompile 'commons-io:commons-io:2.2'
@@ -70,21 +71,9 @@ if ( !hasProperty( 'sourceDeps' ) ) {
             exclude module: 'support-v4'
         }
 
-        // Until the android team updates the gradle plugin version from 0.10.0 to
-        // a newer version, we can't build this from source with our gradle version
-        // of 1.0.0. They use API's which have been moved in the newer plugin.
-        // So yes, this is a little annoying that our "source dependencies" include
-        // a bunch of binaries from jcenter - but the ant build file (which is the
-        // one used to build F-Droid which is distributed on https://f-droid.org
-        // builds these from source - well - not support-v4).
-        //
-        // If the android team gets the build script working with the newer plugin,
-        // then you can find the relevant portions of the ../build.gradle file that
-        // include magic required to make it work at around about the v0.78 git tag.
-        // They have since been removed to clean up the build file.
-        compile 'com.android.support:support-v4:22.1.0',
-                'com.android.support:appcompat-v7:22.1.0',
-                'com.android.support:support-annotations:22.1.0'
+        compile 'com.android.support:support-v4:22.2.1',
+                'com.android.support:appcompat-v7:22.1.1',
+                'com.android.support:support-annotations:22.2.1'
 
         androidTestCompile 'commons-io:commons-io:2.2'
     }
@@ -127,8 +116,8 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
 }
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 22
+    buildToolsVersion '23.0.0'
 
     sourceSets {
         main {
@@ -154,13 +143,13 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
+        all {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        buildTypes {
-            debug {
-                debuggable true
-            }
+        debug {
+            debuggable true
         }
     }
 
@@ -176,15 +165,12 @@ android {
         checkReleaseBuilds false
         abortOnError false
 
+        htmlReport true
+        xmlReport false
+        textReport false
+
         // Our translations are crowd-sourced
         disable 'MissingTranslation'
-    }
-
-    // Enable all Android lint warnings
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:all"
-        }
     }
 
 }

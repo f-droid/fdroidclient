@@ -13,10 +13,10 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v7.app.AlertDialog;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -172,7 +172,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
                     i.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             NdefMessage msg = (NdefMessage) rawMsgs[0];
             String url = new String(msg.getRecords()[0].getPayload());
-            Log.i(TAG, "Got this URL: " + url);
+            Utils.DebugLog(TAG, "Got this URL: " + url);
             Toast.makeText(this, "Got this URL: " + url, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             intent.setClass(this, ManageReposActivity.class);
@@ -181,7 +181,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         }
     }
 
-    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             int statusCode = intent.getIntExtra(UpdateService.EXTRA_STATUS_CODE, -1);
@@ -234,7 +234,10 @@ public class RepoDetailsActivity extends ActionBarActivity {
     @TargetApi(16)
     private void prepareNfcMenuItems(Menu menu) {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
+
         if (nfcAdapter == null) {
+            menuItem.setVisible(false);
             return;
         }
 
@@ -245,7 +248,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
             needsEnableNfcMenuItem = !nfcAdapter.isNdefPushEnabled();
         }
 
-        MenuItem menuItem = menu.findItem(R.id.menu_enable_nfc);
         menuItem.setVisible(needsEnableNfcMenuItem);
     }
 

@@ -102,7 +102,7 @@ abstract class InstallIntoSystem {
     protected List<String> getCopyToSystemCommands() {
         final List<String> commands = new ArrayList<>(2);
         commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
-        commands.add("chmod 655 " + getInstallPath() + ".tmp");
+        commands.add("chmod 644 " + getInstallPath() + ".tmp");
         return commands;
     }
 
@@ -120,7 +120,7 @@ abstract class InstallIntoSystem {
 
         @Override
         protected String getSystemFolder() {
-            return "/system/app";
+            return "/system/app/";
         }
 
     }
@@ -176,9 +176,10 @@ abstract class InstallIntoSystem {
         @Override
         protected List<String> getCopyToSystemCommands() {
             List<String> commands = new ArrayList<>(3);
-            commands.add("mkdir " + getSystemFolder()); // create app directory if not existing
+            commands.add("mkdir -p " + getSystemFolder()); // create app directory if not existing
+            commands.add("chmod 755 " + getSystemFolder());
             commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
-            commands.add("chmod 655 " + getInstallPath() + ".tmp");
+            commands.add("chmod 644 " + getInstallPath() + ".tmp");
             return commands;
         }
 

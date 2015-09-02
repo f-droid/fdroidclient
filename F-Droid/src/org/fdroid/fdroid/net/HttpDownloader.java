@@ -6,6 +6,7 @@ import android.util.Log;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Utils;
 
 import javax.net.ssl.SSLHandshakeException;
 import java.io.File;
@@ -96,14 +97,14 @@ public class HttpDownloader extends Downloader {
     protected void doDownload() throws IOException, InterruptedException {
         if (wantToCheckCache()) {
             setupCacheCheck();
-            Log.i(TAG, "Checking cached status of " + sourceUrl);
+            Utils.DebugLog(TAG, "Checking cached status of " + sourceUrl);
             statusCode = connection.getResponseCode();
         }
 
         if (isCached()) {
-            Log.i(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
+            Utils.DebugLog(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
         } else {
-            Log.i(TAG, "Downloading from " + sourceUrl);
+            Utils.DebugLog(TAG, "Downloading from " + sourceUrl);
             downloadFromStream();
             updateCacheCheck();
         }

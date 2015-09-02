@@ -166,21 +166,21 @@
 	<string name="touch_to_configure_local_repo">Touch to view details and allow others to swap your apps.</string>
 	<string name="touch_to_turn_on_local_repo">Touch to turn on your local repo.</string>
 	<string name="touch_to_turn_off_local_repo">Touch to turn off your local repo.</string>
-	<string name="updating">Updating&#8230;</string>
+	<string name="updating">Updating…</string>
 	<string name="update_repo">Update Repo</string>
-	<string name="deleting_repo">Deleting current repo&#8230;</string>
-	<string name="adding_apks_format">Adding %s to repo&#8230;</string>
-	<string name="writing_index_jar">Writing signed index file (index.jar)&#8230;</string>
+	<string name="deleting_repo">Deleting current repo…</string>
+	<string name="adding_apks_format">Adding %s to repo…</string>
+	<string name="writing_index_jar">Writing signed index file (index.jar)…</string>
 	<string name="failed_to_create_index">Failed to create the repo index!</string>
-	<string name="linking_apks">Linking APKs into the repo&#8230;</string>
-	<string name="copying_icons">Copying app icons into the repo&#8230;</string>
+	<string name="linking_apks">Linking APKs into the repo…</string>
+	<string name="copying_icons">Copying app icons into the repo…</string>
 	<string name="no_applications_found">No applications found</string>
 	<string name="icon">icon</string>
 	<string name="fingerprint">Fingerprint:</string>
 	<string name="wifi_network">WiFi Network:</string>
 	<string name="sharing_uri">Sharing URL:</string>
 	<string name="enable_wifi">Enable WiFi</string>
-	<string name="enabling_wifi">Enabling WiFi&#8230;</string>
+	<string name="enabling_wifi">Enabling WiFi…</string>
 	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same WiFi network.  Then either type the URL above into F-Droid, or scan this QR Code:</string>
 	<string name="qr_code">QR Code</string>
 	<string name="next">Next</string>
@@ -188,7 +188,7 @@
 	<string name="qr_content_description">QR Code of repo URL</string>
 	<string name="qr_wizard_wifi_network_instructions">Scan this QR Code to connect to the same WiFi network as this device.</string>
 	<string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
-	<string name="send_fdroid_via_wifi">Send F-Droid via WiFi&#8230;</string>
+	<string name="send_fdroid_via_wifi">Send F-Droid via WiFi…</string>
 
 	<string name="proxy">Proxy</string>
 	<string name="enable_proxy_title">Enable HTTP Proxy</string>
@@ -211,7 +211,7 @@
 	<string name="status_connecting_to_repo">Connecting to\n%1$s</string>
 	<string name="status_checking_compatibility">Checking apps compatibility with your device…</string>
     <string name="status_inserting">Saving application details (%1$d%%)</string>
-	<string name="repos_unchanged">No repository has any package updates</string>
+	<string name="repos_unchanged">All repositories are up to date</string>
         <string name="all_other_repos_fine">All other repos didn\'t create errors.</string>
         <string name="global_error_updating_repos">Error during update:</string>
 	<string name="no_permissions">No permissions are used.</string>
@@ -291,8 +291,10 @@
     <string name="root_access_denied_title">Root access denied</string>
     <string name="root_access_denied_body">Either your Android device is not rooted or you have denied root access for F-Droid.</string>
     <string name="update_all">Update all</string>
-    <string name="installer_error_title">(De-)Installation Error</string>
-    <string name="installer_error_body">The (de-)installation failed. If you are using F-Droid as a privileged app, try disabling this setting!</string>
+    <string name="install_error_title">Install error</string>
+    <string name="install_error_unknown">Failed to install due to an unknown error</string>
+    <string name="uninstall_error_title">Uninstall error</string>
+    <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="system_permission_denied_title">System permissions denied</string>
     <string name="system_permission_denied_body">This option is only available when F-Droid is installed as a privileged app.</string>
     <string name="system_permission_install_via_root">Install as a privileged app</string>
@@ -314,8 +316,8 @@
 
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
     <string name="swap_nfc_title">Touch to swap</string>
-    <string name="swap_nfc_description">If your friend has <b>F-Droid and NFC turned on</b> touch your phones together.</string>
-    <string name="swap_join_same_wifi">Join the same WiFi</string>
+    <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your phones together.</string>
+    <string name="swap_join_same_wifi">Join the same WiFi as your friend</string>
     <string name="swap_join_same_wifi_desc">To swap using WiFi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a WiFi Hotspot.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <string name="swap_use_bluetooth">Use Bluetooth instead</string>
@@ -387,7 +389,7 @@
     <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
     <string name="uninstall_confirm">Do you want to uninstall this app?</string>
 
-    <string name="perms_new_perm_prefix"><font size="12" fgcolor="#ff33b5e5">NEW: </font></string>
+    <string name="perms_new_perm_prefix">NEW: </string>
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
 

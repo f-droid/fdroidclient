@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageRemovedReceiver extends PackageReceiver {
@@ -32,7 +33,7 @@ public class PackageRemovedReceiver extends PackageReceiver {
     @Override
     protected boolean toDiscard(Intent intent) {
         if (intent.hasExtra(Intent.EXTRA_REPLACING)) {
-            Log.d(TAG, "Discarding since this PACKAGE_REMOVED is just a PACKAGE_REPLACED");
+            Utils.DebugLog(TAG, "Discarding since this PACKAGE_REMOVED is just a PACKAGE_REPLACED");
             return true;
         }
         return false;
@@ -41,7 +42,7 @@ public class PackageRemovedReceiver extends PackageReceiver {
     @Override
     protected void handle(Context context, String appId) {
 
-        Log.d(TAG, "Removing installed app info for '" + appId + "'");
+        Utils.DebugLog(TAG, "Removing installed app info for '" + appId + "'");
 
         Uri uri = InstalledAppProvider.getAppUri(appId);
         context.getContentResolver().delete(uri, null, null);

@@ -1,0 +1,22 @@
+before_script:
+  - apt-get -q update -y
+  - echo " == Installing required packages"
+  - apt-get -q install -y wget tar unzip lib32stdc++6 lib32z1
+  - echo " == Installing OpenJDK 7"
+  - apt-get -q install -y openjdk-7-jdk
+  - echo " == Installing the Android SDK"
+  - wget -q -O android-sdk.tgz https://dl.google.com/android/android-sdk_r24.3.4-linux.tgz
+  - tar -x -z -f android-sdk.tgz
+  - mv android-sdk-linux android-sdk
+  - export ANDROID_HOME=$PWD/android-sdk
+  - export PATH="$ANDROID_HOME/tools:$PATH"
+  - echo " == Installing Android SDK components"
+  - echo y | android -s update sdk --no-ui -a -t platform-tools,tools,build-tools-23.0.0,android-22,extra-android-m2repository
+  - echo " == Installing Gradle"
+  - wget -q -O gradle.zip https://services.gradle.org/distributions/gradle-2.4-bin.zip
+  - unzip -q gradle.zip
+  - export PATH="$PWD/gradle-2.4/bin:$PATH"
+
+build:
+  script:
+    - gradle build

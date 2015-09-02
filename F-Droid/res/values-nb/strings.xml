@@ -158,8 +158,11 @@ Lisensiert GNU GPLv3.</string>
   <string name="proxy_host_summary">Sett opp tjenernavn for din mellomtjener (f.eks. 127.0.0.1)</string>
   <string name="proxy_port">Mellomtjener-port</string>
   <string name="proxy_port_summary">Sett opp portnummer for din mellomtjener (f.eks. 8118)</string>
-  <string name="status_download">Laster ned\n%2$s / %3$s (%4$d%%) fra\n%1$s</string>
-  <string name="status_connecting_to_repo">Kobler til\n%1$s</string>
+  <string name="status_download">Laster ned
+%2$s / %3$s (%4$d%%) fra
+%1$s</string>
+  <string name="status_connecting_to_repo">Kobler til
+%1$s</string>
   <string name="status_checking_compatibility">Sjekker programstøtte for ditt utstyr…</string>
   <string name="status_inserting">Lagrer programdata (%1$d%%)</string>
   <string name="repos_unchanged">Ingen av pakkebrønnene hadde noen oppdateringer</string>
@@ -219,6 +222,7 @@ Du må
   <string name="Office">Kontor</string>
   <string name="Phone_SMS">Telefon og SMS</string>
   <string name="Reading">Leser</string>
+  <string name="Science_Education">Vitenskap &amp; Opplæring</string>
   <string name="Security">Sikkerhet</string>
   <string name="System">System</string>
   <string name="Wallpaper">Bakgrunn</string>
@@ -226,8 +230,6 @@ Du må
   <string name="root_access_denied_title">Root tilgang nektet</string>
   <string name="root_access_denied_body">Enten mangler din Android-enhet superbrukertilgang, eller så har du nektet F-droid root-tilgang.</string>
   <string name="update_all">Oppdater alle</string>
-  <string name="installer_error_title">(Av-)Installasjons-feil</string>
-  <string name="installer_error_body">(Av-)installasjon feilet. Hvis du bruker root-tilgang, prøv å skru av dette!</string>
   <string name="system_permission_denied_title">System-rettigheter avslått</string>
   <string name="system_permission_denied_body">Dette valget er bare tilgjengelig når F-Droid er installert som system-program.</string>
   <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut, installere og holde øye med oppdateringer på din enhet.</string>

@@ -47,6 +47,8 @@ Un repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón 
 La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">No instalado</string>
+  <string name="inst_known_source">Instalado (desde %s)</string>
+  <string name="inst_unknown_source">Instalado (desde origen desconocido)</string>
   <string name="added_on">Agregado el %s</string>
   <string name="ok">OK</string>
   <string name="yes">Sí</string>
@@ -204,6 +206,9 @@ Nota: todas las aplicaciones previamente instaladas se quedarán en tu dispositi
   <string name="repo_disabled_notification">\"%1$s\" deshabilitado.
 
 Necesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
+  <string name="repo_added">Guardado el repositorio de F-Droid %1$s</string>
+  <string name="repo_searching_address">BUscando repositorio de F-Droid en
+%1$s</string>
   <string name="minsdk_or_later">%s o posterior</string>
   <string name="up_to_maxsdk">hasta %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
@@ -230,8 +235,6 @@ Necesitarás volver a habilitar este repositorio para instalar aplicaciones desd
   <string name="root_access_denied_title">Acceso Root denegado</string>
   <string name="root_access_denied_body">Puede ser que el dispositivo Android no este rooteado o se ha denegado el acceso root para F-Droid.</string>
   <string name="update_all">Actualizar todo</string>
-  <string name="installer_error_title">Error de (des)instalación</string>
-  <string name="installer_error_body">La (des)instalación falló. Si se está usando acceso root, ¡prueba a deshabilitar esta opción!</string>
   <string name="system_permission_denied_title">Permisos de Sistema denegados</string>
   <string name="system_permission_denied_body">Esta opción sólo está disponible cuando F-Droid se instala como una aplicación de sistema.</string>
   <string name="app_description">F-Droid es un catálogo instalable de aplicaciones FOSS (Software libre y de Código Abierto) para la plataforma Android. El cliente hace que sea fácil navegar, instalar y mantener un registro de cambios en el dispositivo.</string>

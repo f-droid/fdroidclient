@@ -48,7 +48,7 @@ public class WifiStateChangeService extends Service {
         if (ni == null || ni.isConnected()) {
             /* started on app start or from WifiStateChangeReceiver,
                NetworkInfo is only passed via WifiStateChangeReceiver */
-            Log.i(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
+            Utils.DebugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
             if (wifiState == WifiManager.WIFI_STATE_ENABLED
                     || wifiState == WifiManager.WIFI_STATE_DISABLING   // might be switching to hotspot
                     || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
@@ -93,7 +93,7 @@ public class WifiStateChangeService extends Service {
                     if (FDroidApp.ipAddressString == null) {
                         Thread.sleep(1000);
                         if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "waiting for an IP address...");
+                            Utils.DebugLog(TAG, "waiting for an IP address...");
                         }
                     }
                 }
@@ -147,11 +147,8 @@ public class WifiStateChangeService extends Service {
                 if (Preferences.get().isLocalRepoHttpsEnabled())
                     localRepoKeyStore.setupHTTPSCertificate();
 
-            } catch (LocalRepoKeyStore.InitException e) {
-                Log.e(TAG, "Unable to configure a fingerprint or HTTPS for the local repo: " + e.getMessage());
-                Log.e(TAG, Log.getStackTraceString(e));
-            } catch (InterruptedException e) {
-                Log.e(TAG, Log.getStackTraceString(e));
+            } catch (LocalRepoKeyStore.InitException | InterruptedException e) {
+                Log.e(TAG, "Unable to configure a fingerprint or HTTPS for the local repo", e);
             }
             return null;
         }
@@ -171,7 +168,8 @@ public class WifiStateChangeService extends Service {
                 }
 
                 @Override
-                public void onServiceDisconnected(ComponentName name) {}
+                public void onServiceDisconnected(ComponentName name) {
+                }
             }, BIND_AUTO_CREATE);
         }
     }
@@ -197,8 +195,8 @@ public class WifiStateChangeService extends Service {
                     }
                 }
             }
-        } catch (SocketException ex) {
-            ex.printStackTrace();
+        } catch (SocketException e) {
+            Log.e(TAG, "Could not get ip address", e);
         }
 
         return null;

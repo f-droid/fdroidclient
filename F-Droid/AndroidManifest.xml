@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.fdroid.fdroid"
     android:installLocation="auto"
-    android:versionCode="95050"
-    android:versionName="0.95"
+    android:versionCode="96006"
+    android:versionName="0.96-alpha6"
     >
 
     <uses-sdk
         tools:overrideLibrary="org.thoughtcrime.ssl.pinning"
         android:minSdkVersion="8"
-        android:targetSdkVersion="21"
+        android:targetSdkVersion="22"
         />
 
     <supports-screens
@@ -56,6 +56,11 @@
         tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.DELETE_PACKAGES"
         tools:ignore="ProtectedPermissions"/>
+
+    <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app)
+         This permission is deprecated, but necessary for some old superuser
+         apps to actually grant superuser access to F-Droid. -->
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
 
     <application
         android:name="FDroidApp"

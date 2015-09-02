@@ -55,7 +55,7 @@
                 android:gravity="center"
                 android:textAlignment="center"
                 android:text="@string/swap_intro"
-                android:textColor="@color/white"
+                android:textColor="@android:color/white"
                 android:textSize="18sp"
                 tools:ignore="UnusedAttribute" />
 

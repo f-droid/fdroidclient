@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -99,10 +100,8 @@ public class InstalledAppProvider extends FDroidProvider {
         try {
             appInfo = pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
             return appInfo.loadLabel(pm).toString();
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (Resources.NotFoundException e) {
-            Log.d(TAG, "getApplicationLabel: " + e.getMessage());
+        } catch (PackageManager.NameNotFoundException | Resources.NotFoundException e) {
+            Utils.DebugLog(TAG, "Could not get application label", e);
         }
         return packageName; // all else fails, return id
     }

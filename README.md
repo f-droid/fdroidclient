@@ -1,11 +1,13 @@
 F-Droid Client
 ==============
 
-Client for [F-Droid](https://fdroid.org), the Free Software repository system
+[![build status](https://ci.gitlab.com/projects/6571/status.png?ref=master)](https://ci.gitlab.com/projects/6571?ref=master)
+
+Client for [F-Droid](https://f-droid.org), the Free Software repository system
 for Android.
 
-Building from source with Gradle
---------------------------------
+Building with Gradle
+--------------------
 
 The only required tools are the [Android
 SDK](http://developer.android.com/sdk/index.html) and Gradle.
@@ -15,8 +17,13 @@ gradle wrapper.
 
 Once you have checked out the version you wish to build, run:
 
-        cd F-Droid
-        gradle assembleRelease
+	cd F-Droid
+	gradle assembleRelease
+
+If you would like to build from source, add `-PsourceDeps`:
+
+	cd F-Droid
+	gradle assembleDebug -PsourceDeps
 
 The resulting apk will be in `build/outputs/apk/`.
 
@@ -37,8 +44,7 @@ Direct download
 ---------------
 
 You can [download the application](https://f-droid.org/FDroid.apk) directly
-from our site or [browse it in the
-repo](https://f-droid.org/app/org.fdroid.fdroid).
+from our site or [browse it in the repo](https://f-droid.org/app/org.fdroid.fdroid).
 
 
 Contributing
@@ -47,8 +53,10 @@ Contributing
 You are welcome to submit
 [Merge Requests](https://gitlab.com/fdroid/fdroidclient/merge_requests)
 via the Gitlab web interface. You can also follow our
-[Issue tracker](https://f-droid.org/repository/issues/) and our
-[Forums](https://f-droid.org/forums/).
+[Issue tracker](https://gitlab.com/fdroid/fdroidclient/issues) and our
+[Forums](https://f-droid.org/forums).
+
+Also see our [Contributing doc](CONTRIBUTING.md).
 
 
 Translating
@@ -67,7 +75,7 @@ In order to run the F-Droid test suite, you will need to have either a real devi
 connected via `adb`, or an emulator running. Then, execute the following from the
 command line:
 
-> `gradle connectedAndroidTest`
+	gradle connectedAndroidTest
 
 This will build and install F-Droid and the test apk, then execute the entire
 test suite on the device or emulator.

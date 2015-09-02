@@ -25,6 +25,7 @@ import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.InstalledAppProvider;
 
 public class PackageAddedReceiver extends PackageReceiver {
@@ -34,7 +35,7 @@ public class PackageAddedReceiver extends PackageReceiver {
     @Override
     protected boolean toDiscard(Intent intent) {
         if (intent.hasExtra(Intent.EXTRA_REPLACING)) {
-            Log.d(TAG, "Discarding since this PACKAGE_ADDED is just a PACKAGE_REPLACED");
+            Utils.DebugLog(TAG, "Discarding since this PACKAGE_ADDED is just a PACKAGE_REPLACED");
             return true;
         }
         return false;
@@ -43,8 +44,12 @@ public class PackageAddedReceiver extends PackageReceiver {
     @Override
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
+        if (info == null) {
+            Utils.DebugLog(TAG, "Could not get package info on '" + appId + "' - skipping.");
+            return;
+        }
 
-        Log.d(TAG, "Inserting installed app info for '" + appId + "' (v" + info.versionCode + ")");
+        Utils.DebugLog(TAG, "Inserting installed app info for '" + appId + "' (v" + info.versionCode + ")");
 
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues values = new ContentValues(4);

@@ -36,7 +36,10 @@
   <string name="about_title">À propos de F-Droid</string>
   <string name="about_desc">Initialement basée sur Aptoide.
 Publiée sous licence GNU GPLv3.</string>
-  <string name="about_website">Site Web</string>
+  <string name="about_site">Site web :</string>
+  <string name="about_mail">Courriel :</string>
+  <string name="about_version">Version :</string>
+  <string name="about_website">Site web</string>
   <string name="no_repo">Aucun dépôt n\'est configuré!
 
 Un dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenant sur le bouton MENU et entrez l\'adresse URL.
@@ -44,6 +47,8 @@ Un dépôt est une source d\'applications. Pour en ajouter un, appuyez maintenan
 L\'adresse d\'un dépôt ressemble à ceci: https://f-droid.org/repo</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Non installée</string>
+  <string name="inst_known_source">Installé (depuis %s)</string>
+  <string name="inst_unknown_source">Installé (depuis une source inconnue)</string>
   <string name="added_on">Ajoutée le %s</string>
   <string name="ok">OK</string>
   <string name="yes">Oui</string>
@@ -178,7 +183,7 @@ Voulez-vous les mettre à jour?</string>
   <string name="unverified">Non vérifié</string>
   <string name="repo_url">URL</string>
   <string name="repo_num_apps">Nombre d\'applications</string>
-  <string name="repo_fingerprint">Empreinte digitale de la clef de signature pour le dépôt (SHA-256)</string>
+  <string name="repo_fingerprint">Empreinte numérique de la clef de signature pour le dépôt (SHA-256)</string>
   <string name="repo_description">Description</string>
   <string name="repo_last_update">Dernière mise à jour</string>
   <string name="repo_update">Mise à jour</string>
@@ -219,7 +224,9 @@ Vous devez
   <string name="Navigation">Navigation</string>
   <string name="News">Nouveautés</string>
   <string name="Office">Bureautique</string>
+  <string name="Phone_SMS">Téléphone &amp; SMS</string>
   <string name="Reading">Lecture</string>
+  <string name="Science_Education">Science &amp; Éducation</string>
   <string name="Security">Sécurité</string>
   <string name="System">Système</string>
   <string name="Wallpaper">Fond d\'écran</string>
@@ -227,8 +234,6 @@ Vous devez
   <string name="root_access_denied_title">Droits root refusés</string>
   <string name="root_access_denied_body">Soit votre système Android n\'a pas les droits root/SuperUser, soit vous les avez refusés à F-Droid.</string>
   <string name="update_all">Tout mettre à jour</string>
-  <string name="installer_error_title">Erreur de (Dés-)Installation</string>
-  <string name="installer_error_body">Échec de (dés-)installation. Si vous utilisez l\'accès ROOT, essayez de désactiver ce paramètre\u00A0!</string>
   <string name="system_permission_denied_title">Permissions systèmes refusées</string>
   <string name="system_permission_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
   <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>
@@ -241,6 +246,6 @@ Vous devez
   <string name="swap_view_available_networks">(Appuyez pour ouvrir les réseaux disponibles)</string>
   <string name="swap_wifi_qr_not_working">Ça ne marche pas</string>
   <string name="open_qr_code_scanner">Ouvrir le scanner QR Code</string>
-  <string name="swap_welcome">Bienvenue sur F-Droid\u00A0!</string>
-  <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenant\u00A0?</string>
+  <string name="swap_welcome">Bienvenue sur F-Droid/u00A0!</string>
+  <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenantu00A0?</string>
 </resources>

@@ -34,6 +34,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
@@ -61,6 +62,8 @@ import sun.net.www.protocol.bluetooth.Handler;
 
 public class FDroidApp extends Application {
 
+    private static final String TAG = "FDroidApp";
+
     // for the local repo on this device, all static since there is only one
     public static int port;
     public static String ipAddressString;
@@ -82,6 +85,7 @@ public class FDroidApp extends Application {
     public enum Theme {
         dark,
         light,
+        lightWithDarkActionBar, // Obsolete
     }
 
     private static Theme curTheme = Theme.light;
@@ -292,8 +296,8 @@ public class FDroidApp extends Application {
                     break;
                 }
             }
-        } catch (PackageManager.NameNotFoundException e1) {
-            e1.printStackTrace();
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Could not get application info to send via bluetooth", e);
             found = false;
         }
         if (sendBt != null) {

@@ -1,4 +1,4 @@
-#!/bin/env python2
+#!/usr/bin/env python2
 
 # List supported languages missing from the preference array
 

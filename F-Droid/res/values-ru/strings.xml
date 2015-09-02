@@ -49,6 +49,8 @@
 Пример адреса: https://f-droid.org/repo</string>
   <string name="inst">Установлено</string>
   <string name="not_inst">Не установлено</string>
+  <string name="inst_known_source">Установлено (из %s)</string>
+  <string name="inst_unknown_source">Установлено (из неизвестного источника)</string>
   <string name="added_on">Добавлено %s</string>
   <string name="ok">ОК</string>
   <string name="yes">Да</string>
@@ -124,7 +126,7 @@
   <string name="ignoreTouch">Игнорировать Тачскрин</string>
   <string name="ignoreTouch_on">Всегда включать приложения, которые требуют сенсорный экран</string>
   <string name="category_all">Все</string>
-  <string name="category_whatsnew">Что Нового</string>
+  <string name="category_whatsnew">Новинки</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
   <string name="local_repo">Локальный репозиторий</string>
   <string name="local_repo_running">F-Droid готов для обмена</string>
@@ -224,7 +226,6 @@
   <string name="root_access_denied_title">Отказано в root доступе</string>
   <string name="root_access_denied_body">Либо у вашего устройства нет root доступа, либо вы отклонили запрос от F-Droid.</string>
   <string name="update_all">Обновить всё</string>
-  <string name="installer_error_title">Ошибка установки/удаления</string>
   <string name="system_permission_denied_title">Запрос на системные привилегии отклонён</string>
   <string name="system_permission_denied_body">Данная опция доступна только если F-Droid установлен как системное приложение.</string>
   <string name="app_description">F-Droid — каталог FOSS (свободного и открытого программного обеспечения) для платформы Android. Клиент позволяет с лёгкостью просматривать, устанавливать и обновлять приложение на вашем устройстве.</string>

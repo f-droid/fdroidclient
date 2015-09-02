@@ -1,3 +1,39 @@
+### 0.96 (2015-09-??)
+
+* Move the repo index update to a notification
+
+* Handle apk downloads without a dialog
+
+* Don't let users try to uninstall system apps that haven't been updated
+
+* Disable prompt to install F-Droid as a privileged app until it's more stable
+
+* Various bugfixes in the process that installs F-Droid as a privileged app
+
+* Fix crash when updating from an older release if using the "Light with dark
+  ActionBar" theme
+
+* Re-add SuperUser third-party permission to the manifest since some systems
+  require it
+
+* Fix privileged installer confirmation screen issues on Android 2.X/3.X/4.X
+
+* Fix a few crashes, including package receivers and NFC actions
+
+* Translation updates
+
+### 0.95.1 (2015-08-10)
+
+* Disable prompt to install F-Droid into system until it's more stable
+
+* Fix crash when updating from an older release if using the "Light with dark
+  ActionBar" theme
+
+* Re-add SuperUser third-party permission to the manifest since some systems
+  require it
+
+* Fix privileged installer confirmation screen crash on Android < 3.0
+
 ### 0.95 (2015-08-04)
 
 * Start porting UI to Material Design, including a new launcher icon

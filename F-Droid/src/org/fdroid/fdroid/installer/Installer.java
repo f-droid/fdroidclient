@@ -27,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
+import org.fdroid.fdroid.Utils;
 
 import java.io.File;
 import java.util.List;
@@ -107,7 +108,7 @@ abstract public class Installer {
         boolean isSystemInstallerEnabled = Preferences.get().isSystemInstallerEnabled();
         if (isSystemInstallerEnabled) {
             if (hasSystemPermissions(activity, pm)) {
-                Log.d(TAG, "system permissions -> SystemInstaller");
+                Utils.DebugLog(TAG, "system permissions -> SystemInstaller");
 
                 try {
                     return new SystemInstaller(activity, pm, callback);
@@ -123,7 +124,7 @@ abstract public class Installer {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             // Default installer on Android >= 4.0
             try {
-                Log.d(TAG, "try default installer for Android >= 4");
+                Utils.DebugLog(TAG, "try default installer for Android >= 4");
 
                 return new DefaultInstallerSdk14(activity, pm, callback);
             } catch (AndroidNotCompatibleException e) {
@@ -132,7 +133,7 @@ abstract public class Installer {
         } else {
             // Default installer on Android < 4.0
             try {
-                Log.d(TAG, "try default installer for Android < 4");
+                Utils.DebugLog(TAG, "try default installer for Android < 4");
 
                 return new DefaultInstaller(activity, pm, callback);
             } catch (AndroidNotCompatibleException e) {

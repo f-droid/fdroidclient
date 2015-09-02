@@ -105,6 +105,7 @@ https://f-droid.org/repo</string>
   <string name="antinonfreeadlist">该应用程序会推广非自由免费的插件或扩展</string>
   <string name="antinonfreenetlist">该应用程序会推广非自由的网络服务</string>
   <string name="antinonfreedeplist">该应用程序依赖于其它非自由的应用程序</string>
+  <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
   <string name="display">显示</string>
   <string name="expert">高级</string>
   <string name="expert_on">显示额外信息并启用额外选项</string>

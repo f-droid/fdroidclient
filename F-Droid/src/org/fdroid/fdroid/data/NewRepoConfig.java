@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.peers.WifiPeer;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
@@ -46,7 +46,7 @@ public class NewRepoConfig {
             return;
         }
 
-        Log.d(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
+        Utils.DebugLog(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
 
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
         String scheme = uri.getScheme();

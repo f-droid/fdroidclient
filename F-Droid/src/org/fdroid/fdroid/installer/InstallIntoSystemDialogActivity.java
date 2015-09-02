@@ -107,7 +107,9 @@ public class InstallIntoSystemDialogActivity extends FragmentActivity {
             protected void onPostExecute(Boolean probablyRoot) {
                 super.onPostExecute(probablyRoot);
 
-                if (probablyRoot) {
+                // TODO: remove false condition once the install into system
+                // process is stable - #294, #346, #347, #348
+                if (false && probablyRoot) {
                     // looks like we have root, at least su has a version number and is present
 
                     Intent installIntent = new Intent(context, InstallIntoSystemDialogActivity.class);
