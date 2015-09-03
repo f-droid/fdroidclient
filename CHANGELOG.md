@@ -1,4 +1,4 @@
-### 0.96 (2015-09-??)
+### 0.96 (2015-09-03)
 
 * Move the repo index update to a notification
 
@@ -6,17 +6,11 @@
 
 * Don't let users try to uninstall system apps that haven't been updated
 
-* Disable prompt to install F-Droid as a privileged app until it's more stable
-
 * Various bugfixes in the process that installs F-Droid as a privileged app
 
-* Fix crash when updating from an older release if using the "Light with dark
-  ActionBar" theme
-
-* Re-add SuperUser third-party permission to the manifest since some systems
-  require it
-
 * Fix privileged installer confirmation screen issues on Android 2.X/3.X/4.X
+
+* Disable HTTPS support in swap until it's stable
 
 * Fix a few crashes, including package receivers and NFC actions
 
