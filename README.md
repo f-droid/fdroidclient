@@ -106,16 +106,21 @@ So for example, 1.3.1 would be `103150` and 0.95-alpha13 would be `95013`
 Note that we use a trailing `50` for actual stable releases, so alphas are
 limited to `-alpha49`.
 
-This is an example of a release process for release **0.95**:
+This is an example of a release process for **0.95**:
 
 * We are currently at stable **0.94**
 * **0.95-alpha1** is released
 * **0.95-alpha2** is released
 * **0.95-alpha3** is released
-* Testing process (1-2 weeks) during which no new features are merged in
+* `stable-v0.95` is branched and frozen
 * **0.95** is released
 * A bug is reported on the stable release and fixed
-* **0.95.1** is released
+* **0.95.1** is released with only that fix
+
+As soon as a stable is tagged, master will move on to `-alpha0` on the next
+version. This is a temporary measure - until `-alpha1` is released - so that
+moving from stable to master doesn't require a downgrade. `-alpha0` versions
+will not be tagged nor released.
 
 
 License
