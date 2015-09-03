@@ -51,7 +51,7 @@ public class DownloaderFactory {
         return "bluetooth".equalsIgnoreCase(url.getProtocol());
     }
 
-    private static boolean isOnionAddress(URL url) {
+    static boolean isOnionAddress(URL url) {
         return url.getHost().endsWith(".onion");
     }
 }

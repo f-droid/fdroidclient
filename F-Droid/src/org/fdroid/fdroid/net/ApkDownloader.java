@@ -21,8 +21,8 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.os.Build;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -38,6 +38,7 @@ import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -193,16 +194,33 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         Utils.DebugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
-            dlWrapper = new AsyncDownloadWrapper(downloader, this);
+            if (canUseDownloadManager(new URL(remoteAddress))) {
+                // If we can use Android's DownloadManager, let's use it, because
+                // of better OS integration, reliability, and async ability
+                dlWrapper = new AsyncDownloader(context, this, curApk.apkName, remoteAddress, localFile);
+            } else {
+                Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
+                dlWrapper = new AsyncDownloadWrapper(downloader, this);
+            }
+
             dlWrapper.download();
             return true;
-
         } catch (IOException e) {
             onErrorDownloading(e.getLocalizedMessage());
         }
 
         return false;
+    }
+
+    /**
+     * Tests to see if we can use Android's DownloadManager to download the APK, instead of
+     * a downloader returned from DownloadFactory.
+     * @param url
+     * @return
+     */
+    private boolean canUseDownloadManager(URL url) {
+        return Build.VERSION.SDK_INT > Build.VERSION_CODES.FROYO
+                && !DownloaderFactory.isOnionAddress(url);
     }
 
     private void sendMessage(String type) {
