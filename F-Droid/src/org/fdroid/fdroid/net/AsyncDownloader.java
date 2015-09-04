@@ -85,8 +85,12 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
     }
 
     @Override
-    public void attemptCancel() {
-        if (downloadId >= 0) dm.remove(downloadId);
+    public void attemptCancel(boolean userRequested) {
+        if (userRequested && downloadId >= 0) {
+            dm.remove(downloadId);
+        }
+
+        context.unregisterReceiver(downloadReceiver);
     }
 
     // Broadcast receiver to receive broadcasts from the download manager

@@ -554,7 +554,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     protected void onDestroy() {
         if (downloadHandler != null) {
             if (!inProcessOfChangingConfiguration) {
-                downloadHandler.cancel();
+                downloadHandler.cancel(false);
                 cleanUpFinishedDownload();
             }
         }
@@ -1517,7 +1517,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (activity == null || activity.downloadHandler == null)
                 return;
 
-            activity.downloadHandler.cancel();
+            activity.downloadHandler.cancel(true);
             activity.cleanUpFinishedDownload();
             setProgressVisible(false);
             updateViews();
