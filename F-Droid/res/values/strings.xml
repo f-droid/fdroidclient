@@ -295,6 +295,7 @@
     <string name="update_all">Update all</string>
     <string name="install_error_title">Install error</string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
+    <string name="install_error_cannot_parse">An error occurred while parsing the package</string>
     <string name="uninstall_error_title">Uninstall error</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="system_permission_denied_title">System permissions denied</string>

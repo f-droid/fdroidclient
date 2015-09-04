@@ -909,15 +909,20 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             final int title, body;
             if (operation == InstallerCallback.OPERATION_INSTALL) {
                 title = R.string.install_error_title;
-            } else {
-                title = R.string.uninstall_error_title;
-            }
-            switch (errorCode) {
-            default:
-                if (operation == InstallerCallback.OPERATION_INSTALL) {
+                switch (errorCode) {
+                case ERROR_CODE_CANNOT_PARSE:
+                    body = R.string.install_error_cannot_parse;
+                    break;
+                default: // ERROR_CODE_OTHER
                     body = R.string.install_error_unknown;
-                } else {
-                    body = R.string.uninstall_error_unknown;
+                    break;
+                }
+            } else { // InstallerCallback.OPERATION_DELETE
+                title = R.string.uninstall_error_title;
+                switch (errorCode) {
+                default: // ERROR_CODE_OTHER
+                    body = R.string.install_error_unknown;
+                    break;
                 }
             }
             runOnUiThread(new Runnable() {

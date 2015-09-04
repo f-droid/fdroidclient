@@ -76,10 +76,12 @@ abstract public class Installer {
     public interface InstallerCallback {
 
         int OPERATION_INSTALL = 1;
-        int OPERATION_DELETE = 2;
+        int OPERATION_DELETE  = 2;
 
-        int ERROR_CODE_CANCELED = 1;
-        int ERROR_CODE_OTHER = 2;
+        // Avoid using [-1,1] as they may conflict with Activity.RESULT_*
+        int ERROR_CODE_CANCELED     = 2;
+        int ERROR_CODE_OTHER        = 3;
+        int ERROR_CODE_CANNOT_PARSE = 4;
 
         void onSuccess(int operation);
 

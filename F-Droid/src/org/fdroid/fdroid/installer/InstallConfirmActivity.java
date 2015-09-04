@@ -43,6 +43,8 @@ import org.fdroid.fdroid.R;
 
 public class InstallConfirmActivity extends Activity implements OnCancelListener, OnClickListener {
 
+    public static final int RESULT_CANNOT_PARSE = RESULT_FIRST_USER + 1;
+
     private Intent intent;
 
     PackageManager mPm;
@@ -83,55 +85,54 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         mScrollView = null;
         mOkCanInstall = false;
         int msg = 0;
-        if (mAppDiff.mPkgInfo != null) {
-            AppSecurityPermissions perms = new AppSecurityPermissions(this, mAppDiff.mPkgInfo);
-            final int NP = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
-            final int ND = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
-            if (mAppDiff.mInstalledAppInfo != null) {
-                msg = (mAppDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
-                        ? R.string.install_confirm_update_system
-                        : R.string.install_confirm_update;
-                mScrollView = new CaffeinatedScrollView(this);
-                mScrollView.setFillViewport(true);
-                final boolean newPermissionsFound =
-                        (perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0);
-                if (newPermissionsFound) {
-                    permVisible = true;
-                    mScrollView.addView(perms.getPermissionsView(
-                            AppSecurityPermissions.WHICH_NEW));
-                } else {
-                    throw new RuntimeException("This should not happen. No new permissions were found but InstallConfirmActivity has been started!");
-                }
-                adapter.addTab(tabHost.newTabSpec(TAB_ID_NEW).setIndicator(
-                        getText(R.string.newPerms)), mScrollView);
-            } else  {
-                findViewById(R.id.tabscontainer).setVisibility(View.GONE);
-                findViewById(R.id.divider).setVisibility(View.VISIBLE);
-            }
-            if (NP > 0 || ND > 0) {
+        AppSecurityPermissions perms = new AppSecurityPermissions(this, mAppDiff.mPkgInfo);
+        final int NP = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
+        final int ND = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
+        if (mAppDiff.mInstalledAppInfo != null) {
+            msg = (mAppDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                    ? R.string.install_confirm_update_system
+                    : R.string.install_confirm_update;
+            mScrollView = new CaffeinatedScrollView(this);
+            mScrollView.setFillViewport(true);
+            final boolean newPermissionsFound =
+                    (perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0);
+            if (newPermissionsFound) {
                 permVisible = true;
-                LayoutInflater inflater = (LayoutInflater) getSystemService(
-                        Context.LAYOUT_INFLATER_SERVICE);
-                View root = inflater.inflate(R.layout.permissions_list, null);
-                if (mScrollView == null) {
-                    mScrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
-                }
-                final ViewGroup privacyList = (ViewGroup) root.findViewById(R.id.privacylist);
-                if (NP > 0) {
-                    privacyList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_PERSONAL));
-                } else {
-                    privacyList.setVisibility(View.GONE);
-                }
-                final ViewGroup deviceList = (ViewGroup) root.findViewById(R.id.devicelist);
-                if (ND > 0) {
-                    deviceList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_DEVICE));
-                } else {
-                    root.findViewById(R.id.devicelist).setVisibility(View.GONE);
-                }
-                adapter.addTab(tabHost.newTabSpec(TAB_ID_ALL).setIndicator(
-                        getText(R.string.allPerms)), root);
+                mScrollView.addView(perms.getPermissionsView(
+                        AppSecurityPermissions.WHICH_NEW));
+            } else {
+                throw new RuntimeException("This should not happen. No new permissions were found but InstallConfirmActivity has been started!");
             }
+            adapter.addTab(tabHost.newTabSpec(TAB_ID_NEW).setIndicator(
+                    getText(R.string.newPerms)), mScrollView);
+        } else  {
+            findViewById(R.id.tabscontainer).setVisibility(View.GONE);
+            findViewById(R.id.divider).setVisibility(View.VISIBLE);
         }
+        if (NP > 0 || ND > 0) {
+            permVisible = true;
+            LayoutInflater inflater = (LayoutInflater) getSystemService(
+                    Context.LAYOUT_INFLATER_SERVICE);
+            View root = inflater.inflate(R.layout.permissions_list, null);
+            if (mScrollView == null) {
+                mScrollView = (CaffeinatedScrollView) root.findViewById(R.id.scrollview);
+            }
+            final ViewGroup privacyList = (ViewGroup) root.findViewById(R.id.privacylist);
+            if (NP > 0) {
+                privacyList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_PERSONAL));
+            } else {
+                privacyList.setVisibility(View.GONE);
+            }
+            final ViewGroup deviceList = (ViewGroup) root.findViewById(R.id.devicelist);
+            if (ND > 0) {
+                deviceList.addView(perms.getPermissionsView(AppSecurityPermissions.WHICH_DEVICE));
+            } else {
+                root.findViewById(R.id.devicelist).setVisibility(View.GONE);
+            }
+            adapter.addTab(tabHost.newTabSpec(TAB_ID_ALL).setIndicator(
+                    getText(R.string.allPerms)), root);
+        }
+
         if (!permVisible) {
             if (mAppDiff.mInstalledAppInfo != null) {
                 // This is an update to an application, but there are no
@@ -184,6 +185,10 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         Uri packageURI = intent.getData();
 
         mAppDiff = new AppDiff(mPm, packageURI);
+        if (mAppDiff.mPkgInfo == null) {
+            setResult(RESULT_CANNOT_PARSE, intent);
+            finish();
+        }
 
         setContentView(R.layout.install_start);
         mInstallConfirm = findViewById(R.id.install_confirm_panel);
