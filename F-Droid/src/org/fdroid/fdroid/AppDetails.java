@@ -365,6 +365,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private String getAppIdFromIntent() {
         Intent i = getIntent();
         if (!i.hasExtra(EXTRA_APPID)) {
+            Log.e(TAG, "No application ID found in the intent!");
             return null;
         }
 
