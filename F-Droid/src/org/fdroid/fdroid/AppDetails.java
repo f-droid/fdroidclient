@@ -365,21 +365,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private String getAppIdFromIntent() {
         Intent i = getIntent();
         if (!i.hasExtra(EXTRA_APPID)) {
-            if (i.hasExtra(DownloadManager.EXTRA_DOWNLOAD_ID)) {
-                // we have been passed a DownloadManager download id, so get the app id for it
-                long downloadId = i.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-                return AsyncDownloader.getAppId(this, downloadId);
-            }
-
-            if (i.hasExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS)) {
-                // we have been passed a DownloadManager download id, so get the app id for it
-                long[] downloadIds = i.getLongArrayExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS);
-                if (downloadIds != null && downloadIds.length > 0) {
-                    return AsyncDownloader.getAppId(this, downloadIds[0]);
-                }
-            }
-
-            Log.e(TAG, "No application ID found in the intent!");
             return null;
         }
 

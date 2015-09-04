@@ -150,10 +150,21 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
      */
     public static long getDownloadId(Intent intent) {
         if (intent != null) {
-            return intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
-        } else {
-            return -1;
+            if (intent.hasExtra(DownloadManager.EXTRA_DOWNLOAD_ID)) {
+                // we have been passed a DownloadManager download id, so get the app id for it
+                return intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+            }
+
+            if (intent.hasExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS)) {
+                // we have been passed a DownloadManager download id, so get the app id for it
+                long[] downloadIds = intent.getLongArrayExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS);
+                if (downloadIds != null && downloadIds.length > 0) {
+                    return downloadIds[0];
+                }
+            }
         }
+
+        return -1;
     }
 
     /**
