@@ -6,10 +6,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
 
+import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.ByteArrayOutputStream;
@@ -30,6 +32,7 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
     private SanitizedFile localFile;
     private String remoteAddress;
     private String appName;
+    private String appId;
     private Listener listener;
 
     private long downloadId = -1;
@@ -43,10 +46,11 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
      *
      * @param listener
      */
-    public AsyncDownloader(Context context, Listener listener, String appName, String remoteAddress, SanitizedFile localFile) {
+    public AsyncDownloader(Context context, Listener listener, String appName, String appId, String remoteAddress, SanitizedFile localFile) {
         super(null, listener);
         this.context = context;
         this.appName = appName;
+        this.appId = appId;
         this.remoteAddress = remoteAddress;
         this.listener = listener;
         this.localFile = localFile;
@@ -63,6 +67,7 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
         // set up download request
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(remoteAddress));
         request.setTitle(appName);
+        request.setDescription(appId); // we will retrieve this later from the description field
 
         if (listener != null) {
             IntentFilter intentFilter = new IntentFilter();
@@ -97,7 +102,10 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
     private BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (listener == null) return; // no point if no-one is listening
+            if (listener == null) {
+                // without a listener, install UI won't come up, so ignore this
+                return;
+            }
 
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
                 long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
@@ -135,4 +143,18 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
             }
         }
     };
+
+    public static String getAppId(Context context, long downloadId) {
+        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(downloadId);
+        Cursor c = dm.query(query);
+        if (c.moveToFirst()) {
+            // we use the description column to store the app id
+            int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
+            return c.getString(columnIndex);
+        }
+
+        return null;
+    }
 }

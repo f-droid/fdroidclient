@@ -22,6 +22,7 @@
 package org.fdroid.fdroid;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -34,6 +35,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.database.ContentObserver;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -91,6 +93,7 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.fdroid.fdroid.net.ApkDownloader;
+import org.fdroid.fdroid.net.AsyncDownloader;
 import org.fdroid.fdroid.net.Downloader;
 
 import java.io.File;
@@ -361,9 +364,16 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     private String getAppIdFromIntent() {
         Intent i = getIntent();
         if (!i.hasExtra(EXTRA_APPID)) {
+            if (i.hasExtra(DownloadManager.EXTRA_DOWNLOAD_ID)) {
+                // we have been passed a DownloadManager download id, so get the app id for it
+                long downloadId = i.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+                return AsyncDownloader.getAppId(this, downloadId);
+            }
+
             Log.e(TAG, "No application ID found in the intent!");
             return null;
         }
+
         return i.getStringExtra(EXTRA_APPID);
     }
 
@@ -451,6 +461,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         refreshApkList();
         refreshHeader();
         supportInvalidateOptionsMenu();
+
         if (downloadHandler != null) {
             if (downloadHandler.isComplete()) {
                 downloadCompleteInstallApk();

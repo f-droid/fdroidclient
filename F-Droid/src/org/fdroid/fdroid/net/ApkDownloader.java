@@ -197,7 +197,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             if (canUseDownloadManager(new URL(remoteAddress))) {
                 // If we can use Android's DownloadManager, let's use it, because
                 // of better OS integration, reliability, and async ability
-                dlWrapper = new AsyncDownloader(context, this, curApk.apkName, remoteAddress, localFile);
+                dlWrapper = new AsyncDownloader(context, this, curApk.apkName, curApk.id, remoteAddress, localFile);
             } else {
                 Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
                 dlWrapper = new AsyncDownloadWrapper(downloader, this);
