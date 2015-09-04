@@ -185,7 +185,7 @@
 	<string name="sharing_uri">Sharing URL:</string>
 	<string name="enable_wifi">Enable WiFi</string>
 	<string name="enabling_wifi">Enabling WiFi…</string>
-	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same WiFi network.  Then either type the URL above into F-Droid, or scan this QR Code:</string>
+	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same WiFi network. Then either type the URL above into F-Droid, or scan this QR Code:</string>
 	<string name="qr_code">QR Code</string>
 	<string name="next">Next</string>
 	<string name="skip">Skip</string>
@@ -355,16 +355,16 @@
             It does not require any special access.</string>
     <string name="install_confirm_update">Do you want to install an update
             to this existing application?  Your existing data will not
-            be lost.  The updated application will get access to:</string>
+            be lost. The updated application will get access to:</string>
     <string name="install_confirm_update_system">Do you want to install an update
             to this built-in application?  Your existing data will not
-            be lost.  The updated application will get access to:</string>
+            be lost. The updated application will get access to:</string>
     <string name="install_confirm_update_no_perms">Do you want to install an update
             to this existing application?  Your existing data will not
-            be lost.  It does not require any special access.</string>
+            be lost. It does not require any special access.</string>
     <string name="install_confirm_update_system_no_perms">Do you want to install an update
             to this built-in application?  Your existing data will not
-            be lost.  It does not require any special access.</string>
+            be lost. It does not require any special access.</string>
     <string name="newPerms">New</string>
     <string name="allPerms">All</string>
     <string name="privacyPerms">Privacy</string>
