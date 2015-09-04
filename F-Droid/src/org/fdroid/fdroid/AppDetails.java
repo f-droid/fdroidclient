@@ -41,6 +41,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
@@ -438,6 +439,17 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
+
+        // Check if a download is running for this app
+        if (AsyncDownloader.isDownloading(this, app.id) >= 0) {
+            // call install to re-setup the listeners and downloaders
+            // the AsyncDownloader will not restart the download since the download is running
+            refreshHeader();
+            refreshApkList();
+            final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
+            install(apkToInstall);
+        }
+
     }
 
     // The signature of the installed version.
@@ -822,12 +834,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         if (downloadHandler != null && !downloadHandler.isComplete())
             return;
 
-        final String[] projection = { RepoProvider.DataColumns.ADDRESS };
-        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
-        if (repo == null || repo.address == null) {
-            return;
-        }
-        final String repoaddress = repo.address;
+        final String repoaddress = getRepoAddress(apk);
+        if (repoaddress == null) return;
 
         if (!apk.compatible) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
@@ -867,6 +875,17 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             return;
         }
         startDownload(apk, repoaddress);
+    }
+
+    @Nullable
+    private String getRepoAddress(Apk apk) {
+        final String[] projection = { RepoProvider.DataColumns.ADDRESS };
+        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
+        if (repo == null || repo.address == null) {
+            return null;
+        }
+        final String repoaddress = repo.address;
+        return repoaddress;
     }
 
     private void startDownload(Apk apk, String repoAddress) {
