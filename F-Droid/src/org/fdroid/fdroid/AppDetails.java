@@ -904,12 +904,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         @Override
         public void onError(int operation, final int errorCode) {
             if (errorCode == InstallerCallback.ERROR_CODE_CANCELED) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        onAppChanged();
-                    }
-                });
                 return;
             }
             final int title, body;
