@@ -371,6 +371,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 return AsyncDownloader.getAppId(this, downloadId);
             }
 
+            if (i.hasExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS)) {
+                // we have been passed a DownloadManager download id, so get the app id for it
+                long[] downloadIds = i.getLongArrayExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS);
+                if (downloadIds != null && downloadIds.length > 0) {
+                    return AsyncDownloader.getAppId(this, downloadIds[0]);
+                }
+            }
+
             Log.e(TAG, "No application ID found in the intent!");
             return null;
         }
@@ -442,8 +450,9 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         // Check if a download is running for this app
         if (AsyncDownloader.isDownloading(this, app.id) >= 0) {
-            // call install to re-setup the listeners and downloaders
-            // the AsyncDownloader will not restart the download since the download is running
+            // call install() to re-setup the listeners and downloaders
+            // the AsyncDownloader will not restart the download since the download is running,
+            // and thus the version we pass to install() is not important
             refreshHeader();
             refreshApkList();
             final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
