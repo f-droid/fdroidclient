@@ -22,7 +22,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-public class RepoXMLHandlerTest extends AndroidTestCase implements ProgressListener {
+public class RepoXMLHandlerTest extends AndroidTestCase {
     private static final String TAG = "RepoXMLHandlerTest";
 
     private Repo repo;
@@ -610,10 +610,10 @@ public class RepoXMLHandlerTest extends AndroidTestCase implements ProgressListe
 
     private void handlerTestSuite(Repo repo, RepoXMLHandler handler, int appCount, int apkCount) {
         assertNotNull(handler);
-        assertFalse(TextUtils.isEmpty(handler.getPubKey()));
-        assertEquals(repo.pubkey.length(), handler.getPubKey().length());
-        assertEquals(repo.pubkey, handler.getPubKey());
-        assertFalse(fakePubkey.equals(handler.getPubKey()));
+        assertFalse(TextUtils.isEmpty(handler.getSigningCertFromIndexXml()));
+        assertEquals(repo.pubkey.length(), handler.getSigningCertFromIndexXml().length());
+        assertEquals(repo.pubkey, handler.getSigningCertFromIndexXml());
+        assertFalse(fakePubkey.equals(handler.getSigningCertFromIndexXml()));
 
         assertFalse(TextUtils.isEmpty(handler.getName()));
         assertEquals(repo.name.length(), handler.getName().length());
@@ -637,7 +637,7 @@ public class RepoXMLHandlerTest extends AndroidTestCase implements ProgressListe
         try {
             parser = SAXParserFactory.newInstance().newSAXParser();
             XMLReader reader = parser.getXMLReader();
-            RepoXMLHandler handler = new RepoXMLHandler(repo, this);
+            RepoXMLHandler handler = new RepoXMLHandler(repo);
             reader.setContentHandler(handler);
             String resName = "assets/" + indexFilename;
             Log.i(TAG, "test file: " + getClass().getClassLoader().getResource(resName));
@@ -661,8 +661,4 @@ public class RepoXMLHandlerTest extends AndroidTestCase implements ProgressListe
         return null;
     }
 
-    @Override
-    public void onProgress(Event event) {
-        // Log.i(TAG, "onProgress " + event.toString());
-    }
 }

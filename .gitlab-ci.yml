@@ -25,15 +25,14 @@ before_script:
 
 test:
   script:
-    - cd F-Droid
     - echo " == Building via gradle"
-    - gradle clean assemble
+    - gradle build
     - echo " == Setting up Android 2.3.7 emulator"
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
     - echo " == Starting Android 2.3.7 emulator"
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
-    - ./tools/wait-for-emulator
+    - ./F-Droid/tools/wait-for-emulator
     - echo " == Running Android tests"
-    - gradle connectedAndroidTest
+    - gradle connectedCheck
     - echo " == Stopping Android 2.3.7 emulator"
     - kill $!
