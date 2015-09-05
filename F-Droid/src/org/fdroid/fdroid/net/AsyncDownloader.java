@@ -10,6 +10,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.ProgressListener;
@@ -68,6 +70,7 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
 
     @Override
     public void download() {
+        // Check if the download is complete
         if ((downloadId = isDownloadComplete(context, appId)) > 0) {
             // clear the notification
             dm.remove(downloadId);
@@ -80,19 +83,25 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
             } catch (IOException e) {
                 listener.onErrorDownloading(e.getLocalizedMessage());
             }
-
             return;
         }
 
-        downloadId = isDownloading(context, appId);
-        if (downloadId >= 0) return;
+        // Check if the download is still in progress
+        if (downloadId < 0) {
+            downloadId = isDownloading(context, appId);
+        }
 
-        // set up download request
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(remoteAddress));
-        request.setTitle(appName);
-        request.setDescription(appId); // we will retrieve this later from the description field
+        // Start a new download
+        if (downloadId < 0) {
+            // set up download request
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(remoteAddress));
+            request.setTitle(appName);
+            request.setDescription(appId); // we will retrieve this later from the description field
+            this.downloadId = dm.enqueue(request);
+        }
 
-        this.downloadId = dm.enqueue(request);
+        context.registerReceiver(receiver,
+                new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
     }
 
     /**
@@ -161,6 +170,12 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
 
     @Override
     public void attemptCancel(boolean userRequested) {
+        try {
+            context.unregisterReceiver(receiver);
+        } catch (Exception e) {
+            // ignore if receiver already unregistered
+        }
+
         if (userRequested && downloadId >= 0) {
             dm.remove(downloadId);
         }
@@ -182,6 +197,31 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
             if (c.moveToFirst()) {
                 // we use the description column to store the app id
                 int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
+                return c.getString(columnIndex);
+            }
+        } finally {
+            c.close();
+        }
+
+        return null;
+    }
+
+    /**
+     * Extract the download title from a given download id.
+     * @param context
+     * @param downloadId
+     * @return - title or null if not found
+     */
+    public static String getDownloadTitle(Context context, long downloadId) {
+        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(downloadId);
+        Cursor c = dm.query(query);
+
+        try {
+            if (c.moveToFirst()) {
+                // we use the description column to store the app id
+                int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_TITLE);
                 return c.getString(columnIndex);
             }
         } finally {
@@ -267,4 +307,29 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
 
         return -1;
     }
+
+    /**
+     * Broadcast receiver to listen for ACTION_DOWNLOAD_COMPLETE broadcasts
+     */
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
+                long dId = getDownloadId(intent);
+                String appId = getAppId(context, dId);
+                if (listener != null && dId == downloadId && appId != null) {
+                    // our current download has just completed, so let's throw up install dialog
+                    // immediately
+                    try {
+                        context.unregisterReceiver(receiver);
+                    } catch (Exception e) {
+                        // ignore if receiver already unregistered
+                    }
+
+                    // call download() to copy the file and start the installer
+                    download();
+                }
+            }
+        }
+    };
 }
