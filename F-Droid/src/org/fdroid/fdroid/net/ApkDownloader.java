@@ -34,6 +34,7 @@ import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -69,6 +70,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      */
     public static final String EVENT_DATA_ERROR_TYPE = "apkDownloadErrorType";
 
+    @NonNull private final App app;
     @NonNull private final Apk curApk;
     @NonNull private final Context context;
     @NonNull private final String repoAddress;
@@ -89,8 +91,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         setProgressListener(null);
     }
 
-    public ApkDownloader(@NonNull final Context context, @NonNull final Apk apk, @NonNull final String repoAddress) {
+    public ApkDownloader(@NonNull final Context context, @NonNull final App app, @NonNull final Apk apk, @NonNull final String repoAddress) {
         this.context = context;
+        this.app = app;
         curApk = apk;
         this.repoAddress = repoAddress;
         localFile = new SanitizedFile(Utils.getApkDownloadDir(context), apk.apkName);
@@ -197,7 +200,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             if (canUseDownloadManager(new URL(remoteAddress))) {
                 // If we can use Android's DownloadManager, let's use it, because
                 // of better OS integration, reliability, and async ability
-                dlWrapper = new AsyncDownloader(context, this, curApk.apkName, curApk.id, remoteAddress, localFile);
+                dlWrapper = new AsyncDownloader(context, this,
+                        app.name + " " + curApk.version, curApk.id,
+                        remoteAddress, localFile);
             } else {
                 Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
                 dlWrapper = new AsyncDownloadWrapper(downloader, this);

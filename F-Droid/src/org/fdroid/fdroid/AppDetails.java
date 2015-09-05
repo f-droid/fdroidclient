@@ -884,7 +884,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     }
 
     private void startDownload(Apk apk, String repoAddress) {
-        downloadHandler = new ApkDownloader(getBaseContext(), apk, repoAddress);
+        downloadHandler = new ApkDownloader(getBaseContext(), app, apk, repoAddress);
         localBroadcastManager.registerReceiver(downloaderProgressReceiver,
                 new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
         downloadHandler.setProgressListener(this);
