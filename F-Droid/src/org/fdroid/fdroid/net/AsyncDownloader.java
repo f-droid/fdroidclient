@@ -12,12 +12,14 @@ import android.os.Build;
 import android.os.ParcelFileDescriptor;
 
 import org.fdroid.fdroid.AppDetails;
+import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -73,15 +75,7 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
             try {
                 // write the downloaded file to the expected location
                 ParcelFileDescriptor fd = dm.openDownloadedFile(downloadId);
-                InputStream is = new FileInputStream(fd.getFileDescriptor());
-                OutputStream os = new FileOutputStream(localFile);
-                byte[] buffer = new byte[1024];
-                int count = 0;
-                while ((count = is.read(buffer, 0, buffer.length)) > 0) {
-                    os.write(buffer, 0, count);
-                }
-                os.close();
-
+                copyFile(fd.getFileDescriptor(), localFile);
                 listener.onDownloadComplete();
             } catch (IOException e) {
                 listener.onErrorDownloading(e.getLocalizedMessage());
@@ -101,13 +95,67 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
         this.downloadId = dm.enqueue(request);
     }
 
+    /**
+     * Copy input file to output file
+     * @param inputFile
+     * @param outputFile
+     * @throws IOException
+     */
+    private void copyFile(FileDescriptor inputFile, SanitizedFile outputFile) throws IOException {
+        InputStream is = new FileInputStream(inputFile);
+        OutputStream os = new FileOutputStream(outputFile);
+        byte[] buffer = new byte[1024];
+        int count = 0;
+
+        try {
+            while ((count = is.read(buffer, 0, buffer.length)) > 0) {
+                os.write(buffer, 0, count);
+            }
+        } finally {
+            os.close();
+            is.close();
+        }
+    }
+
     @Override
     public int getBytesRead() {
+        if (downloadId < 0) return 0;
+
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(downloadId);
+        Cursor c = dm.query(query);
+
+        try {
+            if (c.moveToFirst()) {
+                // we use the description column to store the app id
+                int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR);
+                return c.getInt(columnIndex);
+            }
+        } finally {
+            c.close();
+        }
+
         return 0;
     }
 
     @Override
     public int getTotalBytes() {
+        if (downloadId < 0) return 0;
+
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(downloadId);
+        Cursor c = dm.query(query);
+
+        try {
+            if (c.moveToFirst()) {
+                // we use the description column to store the app id
+                int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES);
+                return c.getInt(columnIndex);
+            }
+        } finally {
+            c.close();
+        }
+
         return 0;
     }
 
@@ -156,7 +204,7 @@ public class AsyncDownloader extends AsyncDownloadWrapper {
             }
 
             if (intent.hasExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS)) {
-                // we have been passed a DownloadManager download id, so get the app id for it
+                // we have been passed multiple download id's - just return the first one
                 long[] downloadIds = intent.getLongArrayExtra(DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS);
                 if (downloadIds != null && downloadIds.length > 0) {
                     return downloadIds[0];
