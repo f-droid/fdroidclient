@@ -22,8 +22,6 @@
   <string name="update_history_summ">Počet dnů po které je aplikace vedena jako nová nebo nedávná: %s</string>
   <string name="system_installer">Instalovat s použitím systémových oprávnění</string>
   <string name="system_installer_on">Použít systémová oprávnění k instalování, aktualizaci a odebírání balíčků</string>
-  <string name="local_repo_bonjour">Oznamovat místní repozitář</string>
-  <string name="local_repo_bonjour_on">Oznamovat místní repozitář pomocí Bonjour (mDNS)</string>
   <string name="local_repo_name">Název místního repozitáře</string>
   <string name="local_repo_name_summary">Oznamovaný název místního repozitáře: %s</string>
   <string name="local_repo_https">Použít soukromé připojení</string>
@@ -73,7 +71,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="menu_search">Hledat</string>
   <string name="menu_add_repo">Nový repozitář</string>
   <string name="menu_rem_repo">Odstranit repozitář</string>
-  <string name="menu_scan_repo">Najít místní repozitáře</string>
   <string name="menu_launch">Spustit</string>
   <string name="menu_share">Sdílet</string>
   <string name="menu_install">Instalovat</string>
@@ -117,7 +114,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="failed_to_create_index">Nezdařilo se vytvořit index repozitáře!</string>
   <string name="linking_apks">Linkuji APK do repozitáře…</string>
   <string name="copying_icons">Kopíruji ikony aplikací do repozitáře…</string>
-  <string name="updated_local_repo">Místní repozitář byl aktualizován</string>
   <string name="no_applications_found">Žádné aplikace nenalezeny</string>
   <string name="icon">ikona</string>
   <string name="fingerprint">Fingerprint:</string>

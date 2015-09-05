@@ -15,8 +15,6 @@
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
   <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
   <string name="system_installer_on">Używaj uprawnień systemowych do instalacji, aktualizacji i usuwania pakietów</string>
-  <string name="local_repo_bonjour">Widoczność repozytorium</string>
-  <string name="local_repo_bonjour_on">Udostępniaj repozytorium lokalne przez Bonjour (mDNS)</string>
   <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
   <string name="local_repo_name_summary">Wyświetlana nazwa repozytorium lokalnego: %s</string>
   <string name="local_repo_https">Użyj zabezpieczonego połączenia</string>
@@ -106,7 +104,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="failed_to_create_index">Błąd przy tworzeniu indeksu repozytorium!</string>
   <string name="linking_apks">Linkowanie APK do repozytorium…</string>
   <string name="copying_icons">Kopiowanie ikon aplikacji do repozytorium…</string>
-  <string name="updated_local_repo">Zakończono aktualizację repozytorium lokalnego</string>
   <string name="no_applications_found">Nie znaleziono aplikacji</string>
   <string name="icon">ikona</string>
   <string name="fingerprint">Odcisk palca:</string>

@@ -26,8 +26,6 @@
   <string name="update_history_summ">Dager nytt innhold skal anses som ferskt: %s</string>
   <string name="system_installer">Installer ved bruk av system-tilgang</string>
   <string name="system_installer_on">Bruk system rettigheter til å installere, oppdatere, og fjerne applikasjoner.</string>
-  <string name="local_repo_bonjour">Kringkast lokal pakkebrønn</string>
-  <string name="local_repo_bonjour_on">Reklamer for din lokale pakkebrønn ved bruk av Bonjour (mDNS)</string>
   <string name="local_repo_name">Navn på lokal pakkebrønn</string>
   <string name="local_repo_name_summary">Offentliggjort tittel for din lokale pakkebrønn: %s</string>
   <string name="local_repo_https">Bruk privat tilkobling</string>
@@ -88,7 +86,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="menu_search">Søk</string>
   <string name="menu_add_repo">Nytt register</string>
   <string name="menu_rem_repo">Fjern register</string>
-  <string name="menu_scan_repo">Finn lokale register</string>
   <string name="menu_launch">Kjør</string>
   <string name="menu_share">Del</string>
   <string name="menu_install">Installer</string>
@@ -125,8 +122,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="category_whatsnew">Det som er nytt</string>
   <string name="category_recentlyupdated">Nylig oppdatert</string>
   <string name="local_repo">Lokal pakkebrønn</string>
-  <string name="local_repos_title">Lokale F-Droid register</string>
-  <string name="local_repos_scanning">Oppdager lokale FDroid register…</string>
   <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
   <string name="waiting_for_ipaddress">venter på IP-adresse:</string>
   <string name="setup_repo">Sett opp lokal pakkebrønn</string>
@@ -141,7 +136,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="failed_to_create_index">Klarte ikke å indeksere pakkebrønn!</string>
   <string name="linking_apks">Lenker APK-er inn i pakkebrønn…</string>
   <string name="copying_icons">Kopierer program-ikoner til pakkebrønnen…</string>
-  <string name="updated_local_repo">Ferdig med oppdatering av lokal pakkebrønn</string>
   <string name="no_applications_found">Ingen applikasjoner funnet</string>
   <string name="icon">ikon</string>
   <string name="fingerprint">Fingeravtrykk:</string>

@@ -26,8 +26,6 @@
   <string name="update_history_summ">Dagen om een app als nieuw of recent te zien: %s</string>
   <string name="system_installer">Installeer met systeem-rechten</string>
   <string name="system_installer_on">Gebruik systeem rechten om pakketten te installeren, updaten en verwijderen</string>
-  <string name="local_repo_bonjour">Maak gedeelde apps zichtbaar in netwerk</string>
-  <string name="local_repo_bonjour_on">Adverteer gedeelde apps met behulp van Bonjour (mDNS)</string>
   <string name="local_repo_name">Naam van collectie gedeelde apps</string>
   <string name="local_repo_name_summary">De geadverteerde titel van jouw collectie gedeelde apps: %s</string>
   <string name="local_repo_https">Gebruik beveiligde verbinding</string>
@@ -96,7 +94,6 @@ Wilt u ze vernieuwen?</string>
   <string name="menu_search">Zoeken</string>
   <string name="menu_add_repo">Nieuwe bron</string>
   <string name="menu_rem_repo">Verwijder bron</string>
-  <string name="menu_scan_repo">Vind lokale oplagplaatsen</string>
   <string name="menu_launch">Start</string>
   <string name="menu_share">Delen</string>
   <string name="menu_install">Installeren</string>
@@ -133,7 +130,6 @@ Wilt u ze vernieuwen?</string>
   <string name="category_whatsnew">Wat is nieuw</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
   <string name="local_repo">Collectie gedeelde apps</string>
-  <string name="local_repos_title">Lokale FDroid opslagplaatsen</string>
   <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
   <string name="waiting_for_ipaddress">wachten op IP adres…</string>
   <string name="setup_repo">Collectie gedeelde apps instellen</string>
@@ -148,7 +144,6 @@ Wilt u ze vernieuwen?</string>
   <string name="failed_to_create_index">Kon indexbestand voor gedeelde apps niet aanmaken!</string>
   <string name="linking_apks">APKs aan collectie toevoegen…</string>
   <string name="copying_icons">App iconen aan collectie toevoegen…</string>
-  <string name="updated_local_repo">Collectie gedeelde apps geüpdatet</string>
   <string name="no_applications_found">Geen apps gevonden</string>
   <string name="icon">icoon</string>
   <string name="fingerprint">Vingerafdruk:</string>

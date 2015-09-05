@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<org.fdroid.fdroid.views.swap.SwapConnecting
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="30dp"
+            android:textAlignment="center"
+            tools:text="Connecting with Nexus 4"
+            tools:ignore="UnusedAttribute" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/error"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:text="@string/swap_connection_misc_error"
+            android:visibility="gone"
+            android:padding="30dp"
+            tools:ignore="UnusedAttribute" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back"
+            android:backgroundTint="@color/swap_light_blue"
+            app:backgroundTint="@color/swap_light_blue"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:text="@string/back"
+            tools:ignore="UnusedAttribute" />
+
+</org.fdroid.fdroid.views.swap.SwapConnecting>

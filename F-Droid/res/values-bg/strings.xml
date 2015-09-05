@@ -26,8 +26,6 @@
   <string name="update_history_summ">Счита за нови или скорошни приложенията от преди (дни): %s</string>
   <string name="system_installer">Инсталиране чрез системни разрешения</string>
   <string name="system_installer_on">Ползване на системни права за инсталиране, актуализиране и премахване на пакети.</string>
-  <string name="local_repo_bonjour">Обявяване на лок. хранилище</string>
-  <string name="local_repo_bonjour_on">Известяване за лок. хранилище чрез Bonjour (mDNS).</string>
   <string name="local_repo_name">Име на локалното хранилище</string>
   <string name="local_repo_name_summary">Обявява хранилището под името: %s.</string>
   <string name="local_repo_https_on">Ползва криптирана HTTPS:// връзка за комуникацията с локалното хранилище.</string>
@@ -86,7 +84,6 @@
   <string name="menu_search">Търсене</string>
   <string name="menu_add_repo">Ново хранилище</string>
   <string name="menu_rem_repo">Премахни хранилището</string>
-  <string name="menu_scan_repo">Намиране на локални хранилища</string>
   <string name="menu_launch">Стартирай</string>
   <string name="menu_share">Сподели</string>
   <string name="menu_install">Инсталирай</string>
@@ -122,14 +119,11 @@
   <string name="category_whatsnew">Какво ново</string>
   <string name="category_recentlyupdated">Обновени наскоро</string>
   <string name="local_repo">Локално хранилище</string>
-  <string name="local_repos_title">Локални хранилища на FDroid</string>
-  <string name="local_repos_scanning">Търсене…</string>
   <string name="waiting_for_ipaddress">изчакване за IP адрес…</string>
   <string name="updating">Обновяване…</string>
   <string name="update_repo">Актуализиране на хранилището</string>
   <string name="deleting_repo">Изтриване на хранилището…</string>
   <string name="adding_apks_format">Добавяне на %s към хранилището…</string>
-  <string name="updated_local_repo">Актуализирането на локалното хранилище приключи</string>
   <string name="no_applications_found">Не са открити приложения</string>
   <string name="icon">икона</string>
   <string name="fingerprint">Отпечатък:</string>

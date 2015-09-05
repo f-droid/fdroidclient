@@ -38,34 +38,28 @@
         <item name="colorAccent">@color/fdroid_green</item>
     </style>
 
-    <style name="SwapTheme.Wizard" parent="AppThemeDark">
-        <item name="android:windowBackground">@drawable/swap_window_background</item>
+    <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorButtonNormal">@color/swap_bright_blue</item>
         <item name="android:actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
         <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
+        <item name="actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
+        <item name="actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid</item>
     </style>
 
     <style name="SwapTheme.StartSwap" parent="AppThemeLight">
         <item name="android:background">@android:color/white</item>
     </style>
 
+    <style name="SwapTheme.StartSwap.Text" parent="@style/SwapTheme.StartSwap">
+    </style>
+
+    <style name="SwapTheme.BluetoothDeviceList" parent="@style/SwapTheme.Wizard">
+    </style>
+
     <style name="SwapTheme.AppList" parent="AppThemeLight">
     </style>
 
     <style name="SwapTheme.AppList.ListItem" parent="AppThemeLight">
-    </style>
-
-    <style name="SwapTheme.StartSwap.StartButton">
-        <item name="android:layout_marginLeft">9dp</item> <!-- 16px * 96dpi / 160dpi -->
-        <item name="android:layout_marginRight">9dp</item> <!-- 16px * 96dpi / 160dpi -->
-        <item name="android:layout_height">63.3dp</item> <!-- 113px * 96dpi / 160dpi -->
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:textColor">@android:color/white</item>
-
-        <item name="android:textSize">18.5sp</item> <!-- 33px * 96dpi / 160dpi -->
-        <item name="android:background">@drawable/swap_start_button_skin</item>
-        <item name="android:drawableLeft">@drawable/ic_swap</item>
-        <item name="android:paddingLeft">10dp</item>
-
     </style>
 
     <style name="SwapTheme.AppList.SwapSuccess">
@@ -104,6 +98,10 @@
         <item name="android:textColorSecondary">#fff</item>
     </style>
 
+    <style name="SwapTheme.Wizard.Text.Toolbar" parent="SwapTheme.Wizard.Text">
+        <item name="android:textSize">22sp</item>
+    </style>
+
     <style name="SwapTheme.Wizard.ActionButton" parent="Widget.AppCompat.ActionButton">
         <item name="android:textAppearance">@style/SwapTheme.Wizard.Text</item>
         <item name="android:paddingLeft">10dp</item>
@@ -115,17 +113,16 @@
     <style name="SwapTheme.Wizard.MainText" parent="@style/SwapTheme.Wizard.Text">
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
-        <item name="android:paddingTop">39.3dp</item> <!-- 70px * 96dpi / 160dpi -->
-        <item name="android:paddingBottom">29.25dp</item> <!-- 52px * 96dpi / 160dpi -->
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">15dp</item>
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
     <style name="SwapTheme.Wizard.LocalIpAddress" parent="@style/SwapTheme.Wizard.Text">
-        <item name="android:textSize">26.5sp</item> <!-- 58px * 96dpi / 160dpi = 32.5sp (ended up making a bit smaller, because longer addresses didn't fit well) -->
+        <item name="android:textSize">20sp</item>
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
-        <item name="android:paddingTop">22.5dp</item> <!-- 40px * 96dpi / 160dpi -->
-        <item name="android:paddingBottom">42.5dp</item> <!-- 75px * 96dpi / 160dpi -->
+        <item name="android:paddingBottom">15dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -138,7 +135,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SwapTheme.Wizard.ButtonBase">
+    <style name="SwapTheme.Wizard.ButtonBase" parent="Widget.AppCompat.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">19dp</item> <!-- 34px * 96dpi / 160dpi -->
@@ -151,32 +148,20 @@
     Buttons down the bottom of the screen, which prompt the user for further
     info, or to change the process somehow (e.g. Use Bluetooth instead of Wifi).
     -->
-    <style name="SwapTheme.Wizard.OptionButton" parent="SwapTheme.Wizard.ButtonBase">
-        <item name="android:background">@drawable/swap_button_skin</item>
+    <!--<style name="SwapTheme.Wizard.OptionButton" parent="SwapTheme.Wizard.ButtonBase">-->
+    <style name="SwapTheme.Wizard.OptionButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">0dp</item>
     </style>
 
     <style name="SwapTheme.Wizard.ReceiveSwap" parent="SwapTheme.Wizard">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
     <!--
     Buttons used to ask the user to confirm they want to receive a swap repo from someone
     -->
-    <style name="SwapTheme.Wizard.ReceiveSwap.ButtonBase" parent="SwapTheme.Wizard.ButtonBase">
-        <item name="android:layout_width">0dp</item>
-    </style>
-
-    <style name="SwapTheme.Wizard.ReceiveSwap.Confirm" parent="SwapTheme.Wizard.ReceiveSwap.ButtonBase">
-        <item name="android:background">@drawable/swap_confirm_button_skin</item>
-        <item name="android:layout_marginLeft">7dp</item>
-    </style>
-
-    <style name="SwapTheme.Wizard.ReceiveSwap.Deny" parent="SwapTheme.Wizard.ReceiveSwap.ButtonBase">
-        <item name="android:background">@drawable/swap_deny_button_skin</item>
-        <item name="android:layout_marginRight">7dp</item>
-    </style>
 
     <style name="SwapTheme.Wizard.ReceiveSwap.MainText" parent="SwapTheme.Wizard.MainText">
         <item name="android:textSize">33.6sp</item> <!-- 60 * 96dpi / 160dpi -->

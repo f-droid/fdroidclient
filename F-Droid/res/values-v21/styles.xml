@@ -15,4 +15,8 @@
         <item name="android:colorEdgeEffect">@color/fdroid_blue</item>
     </style>
 
+    <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorButtonNormal">#04b9e6</item>
+    </style>
+
 </resources>

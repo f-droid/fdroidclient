@@ -26,8 +26,6 @@
   <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
   <string name="system_installer">Instalar usando permisos de sistema</string>
   <string name="system_installer_on">Utilice permisos de sistema para instalar , actualizar y eliminar paquetes</string>
-  <string name="local_repo_bonjour">Transmitir repositorio local</string>
-  <string name="local_repo_bonjour_on">Publicar repositorio local usando Bonjour(mDNS)</string>
   <string name="local_repo_name">Nombre de tu repo local</string>
   <string name="local_repo_name_summary">El título que se publicita para el repo local: %s</string>
   <string name="local_repo_https">Usar Conexión Privada</string>
@@ -93,7 +91,6 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="menu_search">Buscar</string>
   <string name="menu_add_repo">Repositorio nuevo</string>
   <string name="menu_rem_repo">Borrar Repositorio</string>
-  <string name="menu_scan_repo">Buscar repos locales</string>
   <string name="menu_launch">Ejecutar</string>
   <string name="menu_share">Compartir</string>
   <string name="menu_install">Instalar</string>
@@ -130,8 +127,6 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="category_whatsnew">Novedades</string>
   <string name="category_recentlyupdated">Recientemente actualizados</string>
   <string name="local_repo">Repo Local</string>
-  <string name="local_repos_title">Repos de FDroid locales</string>
-  <string name="local_repos_scanning">Descubriendo repos locales de FDroid…</string>
   <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
   <string name="waiting_for_ipaddress">Esperando la dirección IP…</string>
   <string name="setup_repo">Configurar Repositorio Local</string>
@@ -146,7 +141,6 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="failed_to_create_index">Fallo al crear el indice de repositorios</string>
   <string name="linking_apks">Enlazando APKs en el repositorio…</string>
   <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio…</string>
-  <string name="updated_local_repo">Finalizada la actualización del repositorio local</string>
   <string name="no_applications_found">No se ha encontrado la aplicasión</string>
   <string name="icon">icono</string>
   <string name="fingerprint">Huella digital:</string>

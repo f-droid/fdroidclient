@@ -48,7 +48,6 @@
   <string name="menu_search">Serĉi</string>
   <string name="menu_add_repo">Nova deponejo</string>
   <string name="menu_rem_repo">Forigi deponejon</string>
-  <string name="menu_scan_repo">Trovi lokajn reponejojn</string>
   <string name="menu_launch">Lanĉi</string>
   <string name="menu_install">Instali</string>
   <string name="menu_uninstall">Malinstali</string>
@@ -84,8 +83,6 @@
   <string name="category_whatsnew">Novaĵoj</string>
   <string name="category_recentlyupdated">Juŝ giŝdatigitaj</string>
   <string name="local_repo">Loka deponejo</string>
-  <string name="local_repos_title">Lokaj F-Droidaj deponejoj</string>
-  <string name="local_repos_scanning">Malkovranta lokajn F-Droidajn deponejojn…</string>
   <string name="touch_to_turn_on_local_repo">Tuŝu por ŝalti vian lokan deponejon.</string>
   <string name="touch_to_turn_off_local_repo">Tuŝu por malŝalti vian lokan deponejon.</string>
   <string name="updating">Ĝisdatiganta…</string>

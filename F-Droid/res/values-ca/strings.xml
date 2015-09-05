@@ -64,7 +64,6 @@ La voleu actualitzar?</string>
   <string name="menu_search">Cerca</string>
   <string name="menu_add_repo">Nou dipòsit</string>
   <string name="menu_rem_repo">Suprimeix el dipòsit</string>
-  <string name="menu_scan_repo">Cerca dipòsits locals</string>
   <string name="menu_launch">Executa</string>
   <string name="menu_share">Comparteix</string>
   <string name="menu_install">Instal·la</string>

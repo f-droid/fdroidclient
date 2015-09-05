@@ -26,8 +26,6 @@
   <string name="update_history_summ">ｱﾌﾟﾘｹｰｼｮﾝが新しいものだと判断する日数:%s日</string>
   <string name="system_installer">ｼｽﾃﾑｱｸｾｽ許可を使用してｲﾝｽﾄｰﾙ</string>
   <string name="system_installer_on">ﾊﾟｯｹｰｼﾞのｲﾝｽﾄｰﾙ､更新､および削除にｼｽﾃﾑｱｸｾｽ許可を使用する</string>
-  <string name="local_repo_bonjour">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘをﾌﾞﾛｰﾄﾞｷｬｽﾄ</string>
-  <string name="local_repo_bonjour_on">Bonjour (mDNS) を使用してﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを公開する</string>
   <string name="local_repo_name">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの名前</string>
   <string name="local_repo_name_summary">公開するﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの題名: %s</string>
   <string name="local_repo_https">ﾌﾟﾗｲﾍﾞｰﾄ接続を使用する</string>
@@ -95,7 +93,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="menu_search">検索</string>
   <string name="menu_add_repo">新しいﾘﾎﾟｼﾞﾄﾘ</string>
   <string name="menu_rem_repo">ﾘﾎﾟｼﾞﾄﾘを削除</string>
-  <string name="menu_scan_repo">ﾛｰｶﾙ･ﾘﾎﾟｼﾞﾄﾘを検索</string>
   <string name="menu_launch">実行</string>
   <string name="menu_share">共有</string>
   <string name="menu_install">ｲﾝｽﾄｰﾙ</string>
@@ -132,8 +129,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="category_whatsnew">新着</string>
   <string name="category_recentlyupdated">最近の更新</string>
   <string name="local_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘ</string>
-  <string name="local_repos_title">ﾛｰｶﾙFDroidﾘﾎﾟｼﾞﾄﾘ</string>
-  <string name="local_repos_scanning">ﾛｰｶﾙFDroidﾘﾎﾟｼﾞﾄﾘの検索中…</string>
   <string name="local_repo_running">F-Droidは切り替え準備ができました</string>
   <string name="waiting_for_ipaddress">IPｱﾄﾞﾚｽを待機中…</string>
   <string name="setup_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを設定</string>
@@ -148,7 +143,6 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="failed_to_create_index">ﾘﾎﾟｼﾞﾄﾘの索引の作成に失敗しました</string>
   <string name="linking_apks">ﾘﾎﾟｼﾞﾄﾘにAPKをﾘﾝｸ中…</string>
   <string name="copying_icons">ﾘﾎﾟｼﾞﾄﾘにｱﾌﾟﾘｹｰｼｮﾝのｱｲｺﾝを複製中…</string>
-  <string name="updated_local_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘの更新が完了しました</string>
   <string name="no_applications_found">ｱﾌﾟﾘｹｰｼｮﾝが見つかりません｡</string>
   <string name="icon">ｱｲｺﾝ</string>
   <string name="fingerprint">ﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ:</string>

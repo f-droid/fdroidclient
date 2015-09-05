@@ -19,7 +19,6 @@
   <string name="update_history">Atjauninājumu vēsture</string>
   <string name="system_installer">Instalēt izmantojot sistēmas piekļuvi</string>
   <string name="system_installer_on">Izmantot sistēmas piekļuvi instalējot, atjauninot, dzēšot pakotnes</string>
-  <string name="local_repo_bonjour">Sūtīt Lokālo Repozitoriju</string>
   <string name="local_repo_name">Lokālā Repozitorija nosaukums</string>
   <string name="local_repo_https">Izmantot privātu savienojumu</string>
   <string name="local_repo_https_on">Izmantot kriptētu HTTPS:// savienojumu</string>
@@ -82,7 +81,6 @@ Repozitorija adrese izskatās, aptuveni, šādi: https://f-droid.org/repo</strin
   <string name="menu_search">Meklēt</string>
   <string name="menu_add_repo">Jauns Repozitorijs</string>
   <string name="menu_rem_repo">Dzēst Repozitoriju</string>
-  <string name="menu_scan_repo">Meklēt lokālos Repozitorijus</string>
   <string name="menu_launch">Palaist</string>
   <string name="menu_share">Dalīties</string>
   <string name="menu_install">Instalēt</string>

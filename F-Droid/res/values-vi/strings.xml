@@ -80,7 +80,6 @@
   <string name="menu_search">Tìm kiếm</string>
   <string name="menu_add_repo">Thêm kho ứng dụng mới</string>
   <string name="menu_rem_repo">Xoá kho ứng dụng</string>
-  <string name="menu_scan_repo">Tìm kho nội bộ</string>
   <string name="menu_launch">Chạy</string>
   <string name="menu_share">Chia sẻ</string>
   <string name="menu_install">Cài đặt</string>
@@ -117,8 +116,6 @@
   <string name="category_whatsnew">Mới</string>
   <string name="category_recentlyupdated">Mới cập nhật</string>
   <string name="local_repo">Kho nội bộ</string>
-  <string name="local_repos_title">Kho F-Droid nội bộ</string>
-  <string name="local_repos_scanning">Đang tìm kiếm các kho F-Droid nội bộ…</string>
   <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
   <string name="waiting_for_ipaddress">đang đợi địa chỉ IP…</string>
   <string name="setup_repo">Cài đặt kho nội bộ</string>
@@ -130,7 +127,6 @@
   <string name="deleting_repo">Đang xoá kho hiện tại…</string>
   <string name="adding_apks_format">Đang thêm %s vào kho…</string>
   <string name="copying_icons">Đang sao chép biểu tượng ứng dụng vào kho…</string>
-  <string name="updated_local_repo">Đã cập nhật xong kho nội bộ</string>
   <string name="no_applications_found">Không tìm thấy ứng dụng nào</string>
   <string name="icon">biểu tượng</string>
   <string name="wifi_network">Mạng WiFi:</string>

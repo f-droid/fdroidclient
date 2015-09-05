@@ -9,16 +9,14 @@
     <color name="fdroid_blue_dark">#ff0d47a1</color>
     <color name="fdroid_green">#ff8ab000</color>
 
+    <color name="swap_incompatible">#ff7900</color>
     <color name="swap_light_blue">#27aae1</color>
-    <color name="swap_light_blue_pressed">#ff98cce1</color>
     <color name="swap_blue">#1c6bbc</color>
-    <color name="swap_blue_pressed">#ff6ca8d5</color>
-    <color name="swap_confirm">#ff27aae1</color>
-    <color name="swap_confirm_pressed">#ff2ed7eb</color>
     <color name="swap_deny">#ff21488c</color>
-    <color name="swap_deny_pressed">#ff3096b9</color>
-    <color name="swap_wifi_may_work">#fbb040</color>
-    <color name="swap_wifi_likely_to_work">#00a14b</color>
+    <color name="swap_bright_blue">#00b9e6</color>
+    <color name="swap_light_text">#bbbbbb</color>
+    <color name="swap_grey_icon">#4a4a4a</color>
+    <color name="swap_light_grey_icon">#bbbbbb</color>
 
     <color name="shadow">#cc222222</color>
 

@@ -26,8 +26,6 @@
   <string name="update_history_summ">Počet dní, kedy sú aplikácie brané ako nové alebo nedávne: %s</string>
   <string name="system_installer">Inštalovať s povoleniami systému</string>
   <string name="system_installer_on">Používať systémové povolenia na inštaláciu, aktualizácie a odstránenie balíkov</string>
-  <string name="local_repo_bonjour">Vysielať miestne repo</string>
-  <string name="local_repo_bonjour_on">Propagovať miesto repo pomocou Bonjour (mDNS)</string>
   <string name="local_repo_name">Meno miestneho repa</string>
   <string name="local_repo_name_summary">Zverejnený názov miestneho repa: %s</string>
   <string name="local_repo_https">Použiť bezpečné pripojenie</string>
@@ -92,7 +90,6 @@ Chcete ich aktualizovať?</string>
   <string name="menu_search">Hľadať</string>
   <string name="menu_add_repo">Nové repo</string>
   <string name="menu_rem_repo">Zmazať repo</string>
-  <string name="menu_scan_repo">Nájsť miestne repo</string>
   <string name="menu_launch">Spustiť</string>
   <string name="menu_share">Zdieľať</string>
   <string name="menu_install">Inštalovať</string>
@@ -129,8 +126,6 @@ Chcete ich aktualizovať?</string>
   <string name="category_whatsnew">Čo je nové</string>
   <string name="category_recentlyupdated">Nedávno aktualizované</string>
   <string name="local_repo">Miestne repo</string>
-  <string name="local_repos_title">Miestne repá F-Droidu</string>
-  <string name="local_repos_scanning">Zisťovanie miestnych repozitárov F-Droidu…</string>
   <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
   <string name="waiting_for_ipaddress">čakanie na IP adresu</string>
   <string name="setup_repo">Nastaviť miestne repo</string>
@@ -145,7 +140,6 @@ Chcete ich aktualizovať?</string>
   <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repa!</string>
   <string name="linking_apks">Odkazujeme súbory APK do repa…</string>
   <string name="copying_icons">Kopírujeme ikony do repa…</string>
-  <string name="updated_local_repo">Aktualizácie miestneho repa dokončené</string>
   <string name="no_applications_found">Aplikácie sa nenašli</string>
   <string name="icon">ikona</string>
   <string name="fingerprint">Odtlačok:</string>

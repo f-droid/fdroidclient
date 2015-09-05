@@ -26,8 +26,6 @@
   <string name="update_history_summ">Jours pour considérer les apps comme nouvelles ou récentes: %s</string>
   <string name="system_installer">Installer en utilisant les permissions systèmes</string>
   <string name="system_installer_on">Utiliser les permissions du système pour installer, mettre à jour et supprimer des paquets</string>
-  <string name="local_repo_bonjour">Diffuser votre dépôt local</string>
-  <string name="local_repo_bonjour_on">Annoncer votre dépôt local avec \"Bonjour\" (mDNS)</string>
   <string name="local_repo_name">Nom de votre dépôt local</string>
   <string name="local_repo_name_summary">Le nom public de votre dépôt local: %s</string>
   <string name="local_repo_https">Utilisez une connexion privée</string>
@@ -93,7 +91,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="menu_search">Rechercher</string>
   <string name="menu_add_repo">Nouveau dépôt</string>
   <string name="menu_rem_repo">Supprimer un dépôt</string>
-  <string name="menu_scan_repo">Trouver des dépôts locaux</string>
   <string name="menu_launch">Lancer</string>
   <string name="menu_share">Partager</string>
   <string name="menu_install">Installer</string>
@@ -130,8 +127,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="category_whatsnew">Quoi de neuf ?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
   <string name="local_repo">Dépôt local</string>
-  <string name="local_repos_title">Dépôts FDroid locaux</string>
-  <string name="local_repos_scanning">Découverte des dépôts FDroid locaux…</string>
   <string name="local_repo_running">F-Droid est prêt à être échangé</string>
   <string name="waiting_for_ipaddress">Attente de l\'adresse IP…</string>
   <string name="setup_repo">Configurer le dépôt local</string>
@@ -146,7 +141,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="failed_to_create_index">Échec à la création d\'un index de dépôt!</string>
   <string name="linking_apks">Création de liens pour les APKs dans le dépôt…</string>
   <string name="copying_icons">Copie des icônes des apps dans le dépôt…</string>
-  <string name="updated_local_repo">Fin de la mise à jour du dépôt local</string>
   <string name="no_applications_found">Aucune application trouvée</string>
   <string name="icon">icône</string>
   <string name="fingerprint">Empreinte:</string>

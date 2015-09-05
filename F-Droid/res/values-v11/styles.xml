@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="SwapTheme.Wizard" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:actionButtonStyle">@style/SwapTheme.Wizard.ActionButton</item>
+    </style>
+
     <style name="AlertDialogBaseThemeDark" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
         <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>

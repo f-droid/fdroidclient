@@ -28,8 +28,6 @@
   <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
   <string name="system_installer">Устанавливать используя системные привилегии</string>
   <string name="system_installer_on">Использовать системные привилегии для установки, обновления и удаления приложений</string>
-  <string name="local_repo_bonjour">Транслировать локальный репозиторий</string>
-  <string name="local_repo_bonjour_on">Рекламировать ваш репозиторий используя Bonjour (mDNS)</string>
   <string name="local_repo_name">Название вашего локального репозитория</string>
   <string name="local_repo_name_summary">Ваш локальный репозиторий рекламируется под именем: %s</string>
   <string name="local_repo_https">Использовать частное соединение</string>
@@ -95,7 +93,6 @@
   <string name="menu_search">Поиск</string>
   <string name="menu_add_repo">Новый репозиторий</string>
   <string name="menu_rem_repo">Удалить репозиторий</string>
-  <string name="menu_scan_repo">Найти локальные репозитории</string>
   <string name="menu_launch">Запустить</string>
   <string name="menu_share">Поделиться</string>
   <string name="menu_install">Установить</string>
@@ -132,8 +129,6 @@
   <string name="category_whatsnew">Новинки</string>
   <string name="category_recentlyupdated">Недавно обновлённые</string>
   <string name="local_repo">Локальный репозиторий</string>
-  <string name="local_repos_title">Локальные репозитории FDroid</string>
-  <string name="local_repos_scanning">Обнаружение локальных репозиториев FDroid…</string>
   <string name="local_repo_running">F-Droid готов для обмена</string>
   <string name="waiting_for_ipaddress">ожидание IP-адреса…</string>
   <string name="setup_repo">Настройка локального репозитория</string>
@@ -147,7 +142,6 @@
   <string name="failed_to_create_index">Произошла ошибка во время формирования индекса репозитория!</string>
   <string name="linking_apks">Включение APK-файлов в репозиторий…</string>
   <string name="copying_icons">Копирование иконок приложений в репозиторий…</string>
-  <string name="updated_local_repo">Обновление репозитория завершено</string>
   <string name="no_applications_found">Приложения не найдены</string>
   <string name="icon">иконка</string>
   <string name="fingerprint">Отпечаток:</string>

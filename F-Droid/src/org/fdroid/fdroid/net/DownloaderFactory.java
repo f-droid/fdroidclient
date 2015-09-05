@@ -37,10 +37,18 @@ public class DownloaderFactory {
 
     public static Downloader create(Context context, URL url, File destFile)
             throws IOException {
-        if (isOnionAddress(url)) {
+        if (isBluetoothAddress(url)) {
+            String macAddress = url.getHost().replace("-", ":");
+            return new BluetoothDownloader(context, macAddress, url, destFile);
+        } else if (isOnionAddress(url)) {
             return new TorHttpDownloader(context, url, destFile);
+        } else {
+            return new HttpDownloader(context, url, destFile);
         }
-        return new HttpDownloader(context, url, destFile);
+    }
+
+    private static boolean isBluetoothAddress(URL url) {
+        return "bluetooth".equalsIgnoreCase(url.getProtocol());
     }
 
     private static boolean isOnionAddress(URL url) {

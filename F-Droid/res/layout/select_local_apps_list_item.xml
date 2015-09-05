@@ -12,18 +12,13 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?attr/listPreferredItemHeight"
+    android:minHeight="?android:attr/listPreferredItemHeight"
     android:paddingBottom="2dip"
-    android:paddingTop="2dip" >
-
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:paddingTop="2dip">
 
     <ImageView
         android:id="@android:id/icon"
@@ -32,30 +27,49 @@
         android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
         android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
         android:layout_marginTop="6dip"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        tools:src="@drawable/ic_launcher"
         tools:ignore="ContentDescription" />
 
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
+        android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true" />
+
     <TwoLineListItem
-        android:layout_width="match_parent"
+        android:layout_toRightOf="@android:id/icon"
+        android:layout_toEndOf="@android:id/icon"
+        android:layout_toLeftOf="@id/checkbox"
+        android:layout_toStartOf="@id/checkbox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:mode="twoLine" >
 
         <TextView
             android:id="@+id/application_label"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
             android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
             android:layout_marginTop="6dip"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:text="F-Droid" />
 
         <TextView
             android:id="@+id/package_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="?attr/listPreferredItemPaddingLeft"
-            android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+            android:layout_alignStart="@+id/application_label"
+            android:layout_alignLeft="@+id/application_label"
             android:layout_below="@+id/application_label"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            tools:text="Application Manager" />
     </TwoLineListItem>
 
-</LinearLayout>
+</RelativeLayout>

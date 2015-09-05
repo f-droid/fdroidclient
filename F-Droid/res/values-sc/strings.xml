@@ -26,8 +26,6 @@
   <string name="update_history_summ">Nùmeru de dies pro che cunsiderare sas aplicatzione noas o reghentes: %s</string>
   <string name="system_installer">Installa impreande sos permissos de sistema</string>
   <string name="system_installer_on">Imprea sos permissos de sistema pro installare, agiornare, e remòvere pachetos</string>
-  <string name="local_repo_bonjour">Cumpartzi su depòsitu locale</string>
-  <string name="local_repo_bonjour_on">Pùblica su depòsitu tuo impreande Bonjour (mDNS)</string>
   <string name="local_repo_name">Nùmene de su Depòsitu Locale tuo</string>
   <string name="local_repo_name_summary">Su nùmene pùblicu de su depòsitu locale tuo: %s</string>
   <string name="local_repo_https">Imprea una cunnessione privada</string>
@@ -100,7 +98,6 @@ Los
   <string name="menu_search">Chirca</string>
   <string name="menu_add_repo">Depòsitu nou</string>
   <string name="menu_rem_repo">Burra depòsitu</string>
-  <string name="menu_scan_repo">Agata depòsitos locales</string>
   <string name="menu_launch">Inghitza/avia</string>
   <string name="menu_share">Cumpartzi</string>
   <string name="menu_install">Installa</string>
@@ -137,8 +134,6 @@ Los
   <string name="category_whatsnew">Novidades</string>
   <string name="category_recentlyupdated">Agiornadas dae pagu</string>
   <string name="local_repo">Depòsitu locale</string>
-  <string name="local_repos_title">Depòsitos FDroid locales</string>
-  <string name="local_repos_scanning">Iscoberinde sos depòsitos FDroid locales…</string>
   <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
   <string name="waiting_for_ipaddress">isetande pro s\'indiritzu IP</string>
   <string name="setup_repo">Ammània unu depòsitu locale</string>
@@ -153,7 +148,6 @@ Los
   <string name="failed_to_create_index">Sa creatzione de s\'inditze de sos depòsitos est faddida!</string>
   <string name="linking_apks">Cullegande sos APK in su depòsitu…</string>
   <string name="copying_icons">Copiande sas iconas de sas aplicatziones in su depòsitu…</string>
-  <string name="updated_local_repo">Agiornamentu depòsitu locale finidu</string>
   <string name="no_applications_found">Peruna aplicatzione agatada</string>
   <string name="icon">icona</string>
   <string name="fingerprint">Arrastu/imprenta:</string>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<org.fdroid.fdroid.views.swap.JoinWifiView xmlns:android="http://schemas.android.com/apk/res/android"
       android:orientation="vertical"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       xmlns:tools="http://schemas.android.com/tools"
+      android:background="@color/swap_blue"
       tools:context=".views.swap.SwapActivity">
 
     <TextView
@@ -27,13 +28,8 @@
 
     <!--
     <Button style="@style/SwapTheme.Wizard.OptionButton"
-            android:id="@+id/btn_bluetooth"
-            android:text="@string/swap_use_bluetooth"
-            android:layout_alignParentBottom="true" />
-
-    <Button style="@style/SwapTheme.Wizard.OptionButton"
             android:text="@string/swap_wifi_help"
-            android:layout_above="@id/btn_bluetooth"
+            android:layout_alignParentBottom="true"
             android:id="@+id/btn_learn_more_about_wifi"/>
     -->
 
@@ -52,9 +48,10 @@
             android:layout_height="wrap_content"
             android:text="@string/swap_view_available_networks"
             android:id="@+id/wifi_available_networks_prompt"
+            style="@style/SwapTheme.Wizard.Text"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/wifi_ssid"
             android:paddingBottom="20dp"/>
     <!-- android:layout_above="@id/btn_learn_more_about_wifi" -->
 
-</RelativeLayout>
+</org.fdroid.fdroid.views.swap.JoinWifiView>

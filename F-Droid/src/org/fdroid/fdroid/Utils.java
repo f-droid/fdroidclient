@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,9 +32,13 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import org.fdroid.fdroid.compat.FileCompat;
+import org.fdroid.fdroid.data.Apk;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.SanitizedFile;
 import org.xml.sax.XMLReader;
@@ -403,6 +408,14 @@ public final class Utils {
         return new Locale(languageTag);
     }
 
+    public static String getApkUrl(Apk apk) {
+        return getApkUrl(apk.repoAddress, apk);
+    }
+
+    public static String getApkUrl(String repoAddress, Apk apk) {
+        return repoAddress + "/" + apk.apkName.replace(" ", "%20");
+    }
+
     public static class CommaSeparatedList implements Iterable<String> {
         private final String value;
 
@@ -470,6 +483,17 @@ public final class Utils {
             }
             return false;
         }
+    }
+
+    public static DisplayImageOptions.Builder getImageLoadingOptions() {
+        return new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .imageScaleType(ImageScaleType.NONE)
+                .showImageOnLoading(R.drawable.ic_repo_app_default)
+                .showImageForEmptyUri(R.drawable.ic_repo_app_default)
+                .displayer(new FadeInBitmapDisplayer(200, true, true, false))
+                .bitmapConfig(Bitmap.Config.RGB_565);
     }
 
     // this is all new stuff being added

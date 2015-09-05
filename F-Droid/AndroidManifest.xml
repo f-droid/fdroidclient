@@ -42,8 +42,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
@@ -300,18 +302,6 @@
                 android:value=".SearchResults" />
         </activity>
         <activity
-            android:name=".views.swap.ConnectSwapActivity"
-            android:theme="@style/SwapTheme.Wizard.ReceiveSwap"
-            android:label=""
-            android:noHistory="true"
-            android:parentActivityName=".FDroid"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FDroid" />
-        </activity>
-        <activity
             android:name=".installer.InstallConfirmActivity"
             android:label="@string/menu_install"
             android:parentActivityName=".FDroid">
@@ -380,14 +370,6 @@
 
         </activity>
         <activity
-            android:name=".views.swap.SwapAppListActivity$SwapAppDetails"
-            android:label="@string/app_details"
-            android:parentActivityName=".views.swap.SwapAppListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.swap.SwapAppListActivity" />
-        </activity>
-        <activity
             android:label="@string/menu_preferences"
             android:name=".PreferencesActivity"
             android:parentActivityName=".FDroid" >
@@ -397,20 +379,9 @@
         </activity>
         <activity
             android:label="@string/menu_swap"
-            android:name=".views.swap.SwapActivity"
+            android:name=".views.swap.SwapWorkflowActivity"
             android:parentActivityName=".FDroid"
             android:theme="@style/SwapTheme.Wizard"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FDroid" />
-        </activity>
-        <activity
-            android:label="@string/swap"
-            android:name=".views.swap.SwapAppListActivity"
-            android:parentActivityName=".FDroid"
-            android:theme="@style/SwapTheme.AppList"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
             <meta-data
@@ -482,7 +453,7 @@
 
         <service android:name=".UpdateService" />
         <service android:name=".net.WifiStateChangeService" />
-        <service android:name=".localrepo.LocalRepoService" />
+        <service android:name=".localrepo.SwapService" />
     </application>
 
 </manifest>

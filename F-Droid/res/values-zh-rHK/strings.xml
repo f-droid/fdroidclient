@@ -22,7 +22,6 @@
   <string name="update_history">更新記錄</string>
   <string name="system_installer">使用系統權限安裝</string>
   <string name="system_installer_on">安裝、更新，及移除軟件包時使用系統權限</string>
-  <string name="local_repo_bonjour">廣播本地倉庫</string>
   <string name="local_repo_name">您的本地倉庫名稱</string>
   <string name="local_repo_name_summary">您本地倉庫對外公開的名稱：</string>
   <string name="local_repo_https">使用私人連線</string>
@@ -72,7 +71,6 @@
   <string name="menu_search">搜尋</string>
   <string name="menu_add_repo">新增軟件倉庫</string>
   <string name="menu_rem_repo">移除軟件倉庫</string>
-  <string name="menu_scan_repo">尋找本地倉庫</string>
   <string name="menu_launch">執行</string>
   <string name="menu_share">分享</string>
   <string name="menu_install">安裝</string>
@@ -108,8 +106,6 @@
   <string name="category_whatsnew">最新</string>
   <string name="category_recentlyupdated">最近更新</string>
   <string name="local_repo">本地倉庫</string>
-  <string name="local_repos_title">本地的 F-Droid 倉庫</string>
-  <string name="local_repos_scanning">正在搜索本地的 F-Droid 倉庫…</string>
   <string name="local_repo_running">F-Droid 隨時可以進行交換</string>
   <string name="waiting_for_ipaddress">正等待 IP 地址…</string>
   <string name="setup_repo">設置本地倉庫</string>
@@ -121,7 +117,6 @@
   <string name="deleting_repo">正在刪除此倉庫…</string>
   <string name="adding_apks_format">正在添加 %s 至倉庫…</string>
   <string name="copying_icons">正在複製應用程式圖示至倉庫…</string>
-  <string name="updated_local_repo">已完成更新本地倉庫</string>
   <string name="no_applications_found">找不到任何應用程式</string>
   <string name="icon">圖示</string>
   <string name="fingerprint">指模：</string>

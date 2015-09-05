@@ -26,8 +26,6 @@
   <string name="update_history_summ">Numero di giorni per considerare le applicazioni nuove o recenti: %s</string>
   <string name="system_installer">Installa usando i permessi di sistema</string>
   <string name="system_installer_on">Usa i permessi di sistema per installare,aggiornare e rimuovere i pacchetti</string>
-  <string name="local_repo_bonjour">Condividi la Repo locale</string>
-  <string name="local_repo_bonjour_on">Lancia la tua repo usando Bonjour (mDNS)</string>
   <string name="local_repo_name">Nome della tua Repo Locale</string>
   <string name="local_repo_name_summary">Il titolo visualizzato della tua repo: %s</string>
   <string name="local_repo_https">Usa una Connessione Privata</string>
@@ -91,7 +89,6 @@ Vuoi aggiornarlo?</string>
   <string name="menu_search">Cerca</string>
   <string name="menu_add_repo">Nuovo Repository</string>
   <string name="menu_rem_repo">Rimuovi Repository</string>
-  <string name="menu_scan_repo">Trova dei Repository locali</string>
   <string name="menu_launch">Avvia</string>
   <string name="menu_share">Condividi</string>
   <string name="menu_install">Installa</string>
@@ -128,8 +125,6 @@ Vuoi aggiornarlo?</string>
   <string name="category_whatsnew">Novità</string>
   <string name="category_recentlyupdated">Aggiornate di Recente</string>
   <string name="local_repo">Repo Locale</string>
-  <string name="local_repos_title">Repo FDroid Locali</string>
-  <string name="local_repos_scanning">Rilevazione repo FDroid locali…</string>
   <string name="local_repo_running">F-Droid è pronto per inviare con swap</string>
   <string name="waiting_for_ipaddress">attendo un indirizzo IP…</string>
   <string name="setup_repo">Prepara una Repo locale</string>
@@ -144,7 +139,6 @@ Vuoi aggiornarlo?</string>
   <string name="failed_to_create_index">Creazione dell\'indice della repo fallita!</string>
   <string name="linking_apks">Aggiungo gli APK nella repo…</string>
   <string name="copying_icons">Copio le icone delle app nella repo…</string>
-  <string name="updated_local_repo">Aggiornamento della repo locale completato</string>
   <string name="no_applications_found">Nessuna applicazione trovata</string>
   <string name="icon">icona</string>
   <string name="fingerprint">Impronta:</string>

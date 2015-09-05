@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<org.fdroid.fdroid.views.swap.NfcView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/swap_blue"
     android:paddingTop="38.8dp"> <!-- 69px * 96dpi / 160dpi -->
 
     <ImageView
@@ -25,9 +26,10 @@
     <CheckBox
             android:id="@+id/checkbox_dont_show"
             android:text="@string/swap_dont_show_again"
+            style="@style/SwapTheme.Wizard.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_description"
             android:layout_centerHorizontal="true"/>
 
-</RelativeLayout>
+</org.fdroid.fdroid.views.swap.NfcView>

@@ -26,8 +26,6 @@
   <string name="update_history_summ">Päivien määrä, jolloin sovellus näytetään uutena: %s</string>
   <string name="system_installer">Asenna käytäen järjestelmän oikeuksia</string>
   <string name="system_installer_on">Käytä järjestelmän oikeuksia asennuksiin, päivityksiin ja pakettien poistoihin.</string>
-  <string name="local_repo_bonjour">Kuuluta paikallista säilöä</string>
-  <string name="local_repo_bonjour_on">Mainosta paikallista säilöäsi Bonjour-palvelua käyttäen (mDNS)</string>
   <string name="local_repo_name">Paikallisen säilösi nimi</string>
   <string name="local_repo_name_summary">Paikallisen säilösi mainostettava otsikko: %s</string>
   <string name="local_repo_https">Käytä yksityistä yhteyttä</string>
@@ -127,7 +125,6 @@ Tahdotko päivittää ne?</string>
   <string name="failed_to_create_index">Säilöhakemiston luonti epäonnistui!</string>
   <string name="linking_apks">Linkitetään AKP-tiedostoja säilöön…</string>
   <string name="copying_icons">Kopioidaan sovelluskuvakkeita säilöön…</string>
-  <string name="updated_local_repo">Paikallisen säilön päivitys valmis</string>
   <string name="no_applications_found">Sovelluksia ei löytynyt</string>
   <string name="icon">kuvake</string>
   <string name="fingerprint">Sormenjälki:</string>

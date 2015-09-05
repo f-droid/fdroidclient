@@ -108,7 +108,7 @@ public abstract class Downloader {
             // we were interrupted before proceeding to the download.
             throwExceptionIfInterrupted();
 
-            copyInputToOutputStream(getInputStream());
+            copyInputToOutputStream(input);
         } finally {
             Utils.closeQuietly(outputStream);
             Utils.closeQuietly(input);
@@ -163,6 +163,7 @@ public abstract class Downloader {
                 Utils.DebugLog(TAG, "Finished downloading from stream");
                 break;
             }
+
             bytesRead += count;
             sendProgress(bytesRead, totalBytes);
             outputStream.write(buffer, 0, count);

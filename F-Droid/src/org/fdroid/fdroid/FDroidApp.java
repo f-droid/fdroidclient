@@ -23,10 +23,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -34,11 +32,8 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -53,14 +48,17 @@ import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.InstalledAppCacheUpdater;
 import org.fdroid.fdroid.data.Repo;
-import org.fdroid.fdroid.localrepo.LocalRepoService;
 import org.fdroid.fdroid.net.IconDownloader;
 import org.fdroid.fdroid.net.WifiStateChangeService;
 
 import java.io.File;
+import java.net.URL;
+import java.net.URLStreamHandler;
+import java.net.URLStreamHandlerFactory;
 import java.security.Security;
 import java.util.Locale;
-import java.util.Set;
+
+import sun.net.www.protocol.bluetooth.Handler;
 
 public class FDroidApp extends Application {
 
@@ -72,13 +70,11 @@ public class FDroidApp extends Application {
     public static String ssid;
     public static String bssid;
     public static final Repo repo = new Repo();
-    public static Set<String> selectedApps = null; // init in SelectLocalAppsFragment
 
     // Leaving the fully qualified class name here to help clarify the difference between spongy/bouncy castle.
     private static final org.spongycastle.jce.provider.BouncyCastleProvider spongyCastleProvider;
-    private static Messenger localRepoServiceMessenger = null;
-    private static boolean localRepoServiceIsBound = false;
 
+    @SuppressWarnings("unused")
     BluetoothAdapter bluetoothAdapter = null;
 
     static {
@@ -187,6 +183,16 @@ public class FDroidApp extends Application {
             }
         });
 
+        // This is added so that the bluetooth:// scheme we use for URLs the BluetoothDownloader
+        // understands is not treated as invalid by the java.net.URL class. The actual Handler does
+        // nothing, but its presence is enough.
+        URL.setURLStreamHandlerFactory(new URLStreamHandlerFactory() {
+            @Override
+            public URLStreamHandler createURLStreamHandler(String protocol) {
+                return TextUtils.equals(protocol, "bluetooth") ? new Handler() : null;
+            }
+        });
+
         // Clear cached apk files. We used to just remove them after they'd
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),
@@ -262,7 +268,7 @@ public class FDroidApp extends Application {
             return ((BluetoothManager) getSystemService(BLUETOOTH_SERVICE)).getAdapter();
     }
 
-    void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
+    public void sendViaBluetooth(Activity activity, int resultCode, String packageName) {
         if (resultCode == Activity.RESULT_CANCELED)
             return;
         String bluetoothPackageName = null;
@@ -304,54 +310,5 @@ public class FDroidApp extends Application {
                 activity.startActivity(sendBt);
             }
         }
-    }
-
-    private static final ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            localRepoServiceMessenger = new Messenger(service);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName className) {
-            localRepoServiceMessenger = null;
-        }
-    };
-
-    public static void startLocalRepoService(Context context) {
-        if (!localRepoServiceIsBound) {
-            Context app = context.getApplicationContext();
-            Intent service = new Intent(app, LocalRepoService.class);
-            localRepoServiceIsBound = app.bindService(service, serviceConnection, Context.BIND_AUTO_CREATE);
-            if (localRepoServiceIsBound)
-                app.startService(service);
-        }
-    }
-
-    public static void stopLocalRepoService(Context context) {
-        Context app = context.getApplicationContext();
-        if (localRepoServiceIsBound) {
-            app.unbindService(serviceConnection);
-            localRepoServiceIsBound = false;
-        }
-        app.stopService(new Intent(app, LocalRepoService.class));
-    }
-
-    /**
-     * Handles checking if the {@link LocalRepoService} is running, and only restarts it if it was running.
-     */
-    public static void restartLocalRepoServiceIfRunning() {
-        if (localRepoServiceMessenger != null) {
-            try {
-                Message msg = Message.obtain(null, LocalRepoService.RESTART, LocalRepoService.RESTART, 0);
-                localRepoServiceMessenger.send(msg);
-            } catch (RemoteException e) {
-                Log.e(TAG, "Could not reset local repo service", e);
-            }
-        }
-    }
-
-    public static boolean isLocalRepoServiceRunning() {
-        return localRepoServiceIsBound;
     }
 }

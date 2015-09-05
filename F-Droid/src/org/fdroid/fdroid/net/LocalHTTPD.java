@@ -10,7 +10,7 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
-import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,8 +37,8 @@ public class LocalHTTPD extends NanoHTTPD {
     private final Context context;
     private final File webRoot;
 
-    public LocalHTTPD(Context context, File webRoot, boolean useHttps) {
-        super(FDroidApp.ipAddressString, FDroidApp.port);
+    public LocalHTTPD(Context context, String hostname, int port, File webRoot, boolean useHttps) {
+        super(hostname, port);
         this.webRoot = webRoot;
         this.context = context.getApplicationContext();
         if (useHttps)
@@ -77,10 +77,11 @@ public class LocalHTTPD extends NanoHTTPD {
         Utils.DebugLog(TAG, "Showing confirm screen to check whether that is okay with the user.");
 
         Uri repoUri = Uri.parse(repo);
-        Intent intent = new Intent(context, ConnectSwapActivity.class);
+        Intent intent = new Intent(context, SwapWorkflowActivity.class);
         intent.setData(repoUri);
+        intent.putExtra(SwapWorkflowActivity.EXTRA_CONFIRM, true);
+        intent.putExtra(SwapWorkflowActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(ConnectSwapActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, true);
         context.startActivity(intent);
     }
 

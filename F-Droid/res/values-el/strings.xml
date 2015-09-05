@@ -82,7 +82,6 @@
   <string name="menu_search">Αναζήτηση</string>
   <string name="menu_add_repo">Νέο Αποθετήριο</string>
   <string name="menu_rem_repo">Αφαίρεση Αποθετηρίου</string>
-  <string name="menu_scan_repo">Εύρεση τοπικών αποθετηρίων</string>
   <string name="menu_launch">Εκτέλεση</string>
   <string name="menu_share">Διαμοιρασμός</string>
   <string name="menu_install">Εγκατάσταση</string>
@@ -118,8 +117,6 @@
   <string name="category_all">Όλα</string>
   <string name="category_whatsnew">Τι νέο υπάρχει</string>
   <string name="category_recentlyupdated">Πρόσφατα Ενημερωμένες</string>
-  <string name="local_repos_title">Τοπικά αποθετήρια FDroid</string>
-  <string name="local_repos_scanning">Αναζήτηση για τοπικά αποθετήρια FDroid…</string>
   <string name="status_download">Λήψη
 %2$s / %3$s (%4$d%%) από
 %1$s</string>

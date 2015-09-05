@@ -26,8 +26,6 @@
   <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
   <string name="system_installer">Mit Verwendung von Systemberechtigungen installieren</string>
   <string name="system_installer_on">Systemberechtigungen verwenden, um Pakete zu installieren, zu aktualisieren und zu entfernen</string>
-  <string name="local_repo_bonjour">Lokale Paketquelle übertragen</string>
-  <string name="local_repo_bonjour_on">Die lokale Paketquelle durch Verwendung von Bonjour (mDNS) bewerben</string>
   <string name="local_repo_name">Name Ihrer lokalen Paketquelle</string>
   <string name="local_repo_name_summary">Der werbende Titel Ihrer lokalen Paketquelle: %s</string>
   <string name="local_repo_https">Gesicherte Verbindung verwenden</string>
@@ -94,7 +92,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="menu_search">Suchen</string>
   <string name="menu_add_repo">Paketquelle hinzufügen</string>
   <string name="menu_rem_repo">Paketquelle entfernen</string>
-  <string name="menu_scan_repo">Lokale Paketquellen finden</string>
   <string name="menu_launch">Starten</string>
   <string name="menu_share">Empfehlen</string>
   <string name="menu_install">Installieren</string>
@@ -131,8 +128,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="category_whatsnew">Was gibt es Neues</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
   <string name="local_repo">Lokale Paketquelle</string>
-  <string name="local_repos_title">Lokale F-Droid-Paketquellen</string>
-  <string name="local_repos_scanning">Lokale F-Droid-Paketquellen werden entdeckt …</string>
   <string name="local_repo_running">F-Droid ist bereit zum Tauschen</string>
   <string name="waiting_for_ipaddress">Auf IP-Adresse wird gewartet …</string>
   <string name="setup_repo">Lokale Paketquelle einrichten</string>
@@ -147,7 +142,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="failed_to_create_index">Paketquellenverzeichnis konnte nicht erstellt werden!</string>
   <string name="linking_apks">APKs werden mit der Paketquelle verknüpft …</string>
   <string name="copying_icons">Anwendungssymbole werden in die Paketquelle kopiert …</string>
-  <string name="updated_local_repo">Aktualisierung der lokalen Paketquelle abgeschlossen</string>
   <string name="no_applications_found">Keine Anwendungen gefunden</string>
   <string name="icon">Symbol</string>
   <string name="fingerprint">Fingerabdruck:</string>

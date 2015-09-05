@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.views.swap.ConnectSwapActivity;
+import org.fdroid.fdroid.localrepo.peers.WifiPeer;
+import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -21,10 +21,8 @@ public class NewRepoConfig {
     private boolean isValidRepo = false;
 
     private String uriString;
-    private Uri uri;
     private String host;
     private int port = -1;
-    private String scheme;
     private String fingerprint;
     private String bssid;
     private String ssid;
@@ -37,12 +35,12 @@ public class NewRepoConfig {
 
     public NewRepoConfig(Context context, Intent intent) {
         init(context, intent.getData());
-        preventFurtherSwaps = intent.getBooleanExtra(ConnectSwapActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, false);
+        preventFurtherSwaps = intent.getBooleanExtra(SwapWorkflowActivity.EXTRA_PREVENT_FURTHER_SWAP_REQUESTS, false);
     }
 
     private void init(Context context, Uri incomingUri) {
         /* an URL from a click, NFC, QRCode scan, etc */
-        uri = incomingUri;
+        Uri uri = incomingUri;
         if (uri == null) {
             isValidRepo = false;
             return;
@@ -51,7 +49,7 @@ public class NewRepoConfig {
         Utils.DebugLog(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
 
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
-        scheme = uri.getScheme();
+        String scheme = uri.getScheme();
         host = uri.getHost();
         port = uri.getPort();
         if (TextUtils.isEmpty(scheme) || TextUtils.isEmpty(host)) {
@@ -110,14 +108,6 @@ public class NewRepoConfig {
 
     public String getRepoUriString() { return uriString; }
 
-    /**
-     * This is the URI which was passed to the NewRepoConfig for parsing.
-     * Not that it may be an fdroidrepo:// or http:// scheme, and it may also have
-     * ssid, bssid, and perhaps other query parameters. If you want the actual repo
-     * URL, then you will probably want {@link org.fdroid.fdroid.data.NewRepoConfig#getRepoUri()}.
-     */
-    public Uri getParsedUri() { return uri; }
-
     public Uri getRepoUri() {
         if (uriString == null) {
             return null;
@@ -127,8 +117,6 @@ public class NewRepoConfig {
 
     public String getHost() { return host; }
 
-    public String getScheme() { return scheme; }
-
     public String getFingerprint() { return fingerprint; }
 
     public boolean isValidRepo() { return isValidRepo; }
@@ -136,14 +124,6 @@ public class NewRepoConfig {
     public boolean isFromSwap() { return fromSwap; }
 
     public boolean preventFurtherSwaps() { return preventFurtherSwaps; }
-
-    /*
-     * The port starts out as 8888, but if there is a conflict, it will be
-     * incremented until there is a free port found.
-     */
-    public boolean looksLikeLocalRepo() {
-        return (port >= 8888 && host.matches("[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+"));
-    }
 
     public String getErrorMessage() { return errorMessage; }
 
@@ -158,5 +138,9 @@ public class NewRepoConfig {
                 .replace(scheme, scheme.toLowerCase(Locale.ENGLISH))
                 .replace("fdroidrepo", "http") // proper repo address
                 .replace("/FDROID/REPO", "/fdroid/repo"); // for QR FDroid path
+    }
+
+    public WifiPeer toPeer() {
+        return new WifiPeer(this);
     }
 }

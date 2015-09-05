@@ -85,7 +85,6 @@ https://f-droid.org/repo</string>
   <string name="menu_search">搜索</string>
   <string name="menu_add_repo">添加新软件源</string>
   <string name="menu_rem_repo">移除软件源</string>
-  <string name="menu_scan_repo">查找本地软件仓库</string>
   <string name="menu_launch">运行</string>
   <string name="menu_share">分享</string>
   <string name="menu_install">安装</string>
@@ -122,8 +121,6 @@ https://f-droid.org/repo</string>
   <string name="category_whatsnew">新鲜货</string>
   <string name="category_recentlyupdated">最近更新</string>
   <string name="local_repo">本地软件源</string>
-  <string name="local_repos_title">本地FDoid软件仓库</string>
-  <string name="local_repos_scanning">发现本地FDroid软件仓库…</string>
   <string name="updating">更新中…</string>
   <string name="update_repo">更新软件源</string>
   <string name="deleting_repo">正在删除当前软件源…</string>

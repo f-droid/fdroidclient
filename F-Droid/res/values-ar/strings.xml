@@ -39,7 +39,6 @@
   <string name="menu_about">حول</string>
   <string name="menu_search">بحث</string>
   <string name="menu_rem_repo">إزالة المستودع</string>
-  <string name="menu_scan_repo">البحث عن مستودعات محلية</string>
   <string name="menu_launch">تشغيل</string>
   <string name="menu_share">مشاركة</string>
   <string name="menu_install">تثبيت</string>

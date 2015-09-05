@@ -1,25 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+<!-- TODO: Add paddingStart in places where there is only paddingLeft. However Android Studio lint
+     gives an error, which is discussed here:
+     http://stackoverflow.com/questions/27449776/conflicting-lint-messages-regarding-paddingstart-usage?lq=1
+     -->
+<org.fdroid.fdroid.views.swap.StartSwapView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/text_description"
-            android:text="@string/swap_introduction"
-            style="@style/SwapTheme.StartSwap.MainText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
 
-    <Button
-            android:id="@+id/button_start_swap"
-            android:text="@string/swap_start"
-            style="@style/SwapTheme.StartSwap.StartButton"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/swap_start_header"/>
+
+            <!--
+            Removed for now, because there is no UI to hook this up to.
+            However, the general principle of having a help screen made accessible from the
+            start swap screen is still desirable, and so should be revisited in the future.
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_info_white"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                />-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:padding="20dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingEnd="30dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="@string/swap_intro"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                tools:ignore="UnusedAttribute" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/bluetooth_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_description"
-            android:layout_centerHorizontal="true"/>
+            android:padding="10dp"
+            android:orientation="horizontal">
 
-</RelativeLayout>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:tint="@color/swap_grey_icon"
+                android:src="@drawable/ic_bluetooth_white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"
+                android:layout_weight="1.00"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    android:id="@+id/bluetooth_visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/swap_visible_bluetooth"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/device_id_bluetooth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="SP-120"
+                    android:textColor="@color/swap_light_text" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:checked="true"
+                android:id="@+id/switch_bluetooth" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:tint="@color/swap_grey_icon"
+                android:src="@drawable/ic_network_wifi_white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"
+                android:layout_weight="1.00"
+                tools:ignore="RtlSymmetry">
+
+                <TextView
+                    android:id="@+id/wifi_visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/swap_not_visible_wifi"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/device_id_wifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/swap_wifi_device_name"
+                    android:textColor="@color/swap_light_text" />
+
+                <TextView
+                    android:id="@+id/wifi_network"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="wifi network name"
+                    android:textColor="@color/swap_bright_blue"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:checked="false"
+                android:id="@+id/switch_wifi" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/text_people_nearby"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/swap_people_nearby"
+                android:textColor="@color/swap_light_text"
+                android:layout_weight="1.00"/>
+
+            <ProgressBar
+                android:id="@+id/searching_people_nearby"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:indeterminate="true" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_people_nearby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swap_cant_find_peers"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/swap_light_text" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_send_fdroid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_fdroid_grey"
+                android:drawableStart="@drawable/ic_fdroid_grey"
+                android:text="@string/swap_send_fdroid"
+                android:drawablePadding="10dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingEnd="25dp"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:id="@+id/btn_qr_scanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_qr_grey"
+                android:drawableStart="@drawable/ic_qr_grey"
+                android:text="@string/swap_scan_qr_code"
+                android:drawablePadding="10dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingEnd="25dp"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</org.fdroid.fdroid.views.swap.StartSwapView>

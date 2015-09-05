@@ -21,8 +21,11 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.fdroid.fdroid.Hasher;
@@ -49,6 +52,10 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     public static final String EVENT_APK_DOWNLOAD_COMPLETE = "apkDownloadComplete";
     public static final String EVENT_APK_DOWNLOAD_CANCELLED = "apkDownloadCancelled";
     public static final String EVENT_ERROR = "apkDownloadError";
+
+    public static final String ACTION_STATUS = "apkDownloadStatus";
+    public static final String EXTRA_TYPE = "apkDownloadStatusType";
+    public static final String EXTRA_URL = "apkDownloadUrl";
 
     public static final int ERROR_HASH_MISMATCH = 101;
     public static final int ERROR_DOWNLOAD_FAILED = 102;
@@ -103,10 +110,6 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      */
     public boolean isEventFromThis(Event event) {
         return event.getData().containsKey(EVENT_SOURCE_ID) && event.getData().getLong(EVENT_SOURCE_ID) == id;
-    }
-
-    public String getRemoteAddress() {
-         return repoAddress + "/" + curApk.apkName.replace(" ", "%20");
     }
 
     private Hasher createHasher(File apkFile) {
@@ -186,7 +189,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
             return false;
         }
 
-        String remoteAddress = getRemoteAddress();
+        String remoteAddress = Utils.getApkUrl(repoAddress, curApk);
         Utils.DebugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
@@ -212,6 +215,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         sendProgressEvent(new Event(EVENT_ERROR, data));
     }
 
+    // TODO: Completely remove progress listener, only use broadcasts...
     private void sendProgressEvent(Event event) {
 
         event.getData().putLong(EVENT_SOURCE_ID, id);
@@ -219,6 +223,12 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         if (listener != null) {
             listener.onProgress(event);
         }
+
+        Intent intent = new Intent(ACTION_STATUS);
+        intent.putExtras(event.getData());
+        intent.putExtra(EXTRA_TYPE, event.type);
+        intent.putExtra(EXTRA_URL, Utils.getApkUrl(repoAddress, curApk));
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override

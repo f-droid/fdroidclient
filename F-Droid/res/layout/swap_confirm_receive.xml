@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="18dp">
+<org.fdroid.fdroid.views.swap.ConfirmReceive xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/swap_blue"
+    android:padding="18dp">
     <!-- Padding is 32px * 0.56 = 18dip -->
 
     <ImageView
@@ -33,7 +35,7 @@
 
     <TextView
             android:id="@+id/text_description"
-            android:text="@string/swap_confirm_connect"
+            tools:text="@string/swap_confirm_connect"
             style="@style/SwapTheme.Wizard.Text"
             android:layout_below="@id/text_title"
             android:layout_width="match_parent"
@@ -42,31 +44,36 @@
             <!-- 46px * 0.56 = 25.76sp -->
 
     <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/text_description"
+            android:layout_centerInParent="true"
             android:layout_marginTop="45dp">
             <!-- 80px * 0.56 = 45dp -->
 
+            <!-- TODO: Remove associated style files style="@style/SwapTheme.Wizard.ReceiveSwap.Deny"-->
         <Button
                 android:id="@+id/no_button"
                 android:text="@string/no"
-                style="@style/SwapTheme.Wizard.ReceiveSwap.Deny"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                />
+                android:backgroundTint="@color/swap_deny"
+                app:backgroundTint="@color/swap_deny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                tools:ignore="UnusedAttribute" />
 
-
+        <!-- TODO: Remove associated style files style="@style/SwapTheme.Wizard.ReceiveSwap.Confirm" -->
         <Button
                 android:id="@+id/yes_button"
                 android:text="@string/yes"
-                style="@style/SwapTheme.Wizard.ReceiveSwap.Confirm"
-                android:layout_width="0dp"
-                android:layout_weight="1"/>
+                android:backgroundTint="@color/swap_light_blue"
+                app:backgroundTint="@color/swap_light_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="UnusedAttribute" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</org.fdroid.fdroid.views.swap.ConfirmReceive>
