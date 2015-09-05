@@ -286,7 +286,7 @@ public class AppProvider extends FDroidProvider {
 
     }
 
-    private static class Query extends QueryBuilder {
+    private class Query extends QueryBuilder {
 
         private boolean isSuggestedApkTableAdded;
         private boolean requiresInstalledTable;
@@ -366,14 +366,14 @@ public class AppProvider extends FDroidProvider {
                     if (field.equals(DataColumns.CATEGORIES)) {
                         categoryFieldAdded = true;
                     }
-                    appendField(field, "fdroid_app");
+                    appendField(field, getTableName());
                     break;
             }
         }
 
         private void appendCountField() {
             countFieldAppended = true;
-            appendField("COUNT( DISTINCT fdroid_app.id ) AS " + DataColumns._COUNT);
+            appendField("COUNT( DISTINCT " + getTableName() + ".id ) AS " + DataColumns._COUNT);
         }
 
         private void addSuggestedApkVersionField() {
@@ -388,7 +388,7 @@ public class AppProvider extends FDroidProvider {
                 leftJoin(
                     DBHelper.TABLE_APK,
                     "suggestedApk",
-                    "fdroid_app.suggestedVercode = suggestedApk.vercode AND fdroid_app.id = suggestedApk.id");
+                        getTableName() + ".suggestedVercode = suggestedApk.vercode AND " + getTableName() + ".id = suggestedApk.id");
             }
             appendField(fieldName, "suggestedApk", alias);
         }
@@ -570,15 +570,15 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryCanUpdate() {
-        final String ignoreCurrent = " fdroid_app.ignoreThisUpdate != fdroid_app.suggestedVercode ";
-        final String ignoreAll = " fdroid_app.ignoreAllUpdates != 1 ";
+        final String ignoreCurrent = getTableName() + ".ignoreThisUpdate != " + getTableName() + ".suggestedVercode ";
+        final String ignoreAll = getTableName() + ".ignoreAllUpdates != 1 ";
         final String ignore = " ( " + ignoreCurrent + " AND " + ignoreAll + " ) ";
-        final String where = ignore + " AND fdroid_app." + DataColumns.SUGGESTED_VERSION_CODE + " > installed.versionCode";
+        final String where = ignore + " AND " + getTableName() + "." + DataColumns.SUGGESTED_VERSION_CODE + " > installed.versionCode";
         return new AppQuerySelection(where).requireNaturalInstalledTable();
     }
 
     private AppQuerySelection queryRepo(long repoId) {
-        final String selection = " fdroid_apk.repo = ? ";
+        final String selection = DBHelper.TABLE_APK + ".repo = ? ";
         final String[] args = {String.valueOf(repoId)};
         return new AppQuerySelection(selection, args);
     }
@@ -589,10 +589,10 @@ public class AppProvider extends FDroidProvider {
 
     private AppQuerySelection querySearch(String query) {
         final String[] columns = {
-            "fdroid_app.id",
-            "fdroid_app.name",
-            "fdroid_app.summary",
-            "fdroid_app.description",
+                getTableName() + ".id",
+                getTableName() + ".name",
+                getTableName() + ".summary",
+                getTableName() + ".description",
         };
 
         // Remove duplicates, surround in % for case insensitive searching
@@ -632,15 +632,16 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection.toString(), selectionKeywords);
     }
 
-    private AppQuerySelection querySingle(String id) {
-        final String selection = "fdroid_app.id = ?";
+    protected AppQuerySelection querySingle(String id) {
+        final String selection = getTableName() + ".id = ?";
         final String[] args = {id};
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryIgnored() {
-        final String selection = "fdroid_app.ignoreAllUpdates = 1 OR " +
-                "fdroid_app.ignoreThisUpdate >= fdroid_app.suggestedVercode";
+        final String table = getTableName();
+        final String selection = table + ".ignoreAllUpdates = 1 OR " +
+                table + ".ignoreThisUpdate >= " + table + ".suggestedVercode";
         return new AppQuerySelection(selection);
     }
 
@@ -653,13 +654,13 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryNewlyAdded() {
-        final String selection = "fdroid_app.added > ?";
+        final String selection = getTableName() + ".added > ?";
         final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
         return new AppQuerySelection(selection, args);
     }
 
     private AppQuerySelection queryRecentlyUpdated() {
-        final String selection = "fdroid_app.added != fdroid_app.lastUpdated AND fdroid_app.lastUpdated > ?";
+        final String selection = getTableName() + ".added != fdroid_app.lastUpdated AND fdroid_app.lastUpdated > ?";
         final String[] args = {Utils.formatDate(Preferences.get().calcMaxHistory(), "")};
         return new AppQuerySelection(selection, args);
     }
@@ -668,10 +669,10 @@ public class AppProvider extends FDroidProvider {
         // TODO: In the future, add a new table for categories,
         // so we can join onto it.
         final String selection =
-                " fdroid_app.categories = ? OR " +    // Only category e.g. "internet"
-                " fdroid_app.categories LIKE ? OR " + // First category e.g. "internet,%"
-                " fdroid_app.categories LIKE ? OR " + // Last category e.g. "%,internet"
-                " fdroid_app.categories LIKE ? ";     // One of many categories e.g. "%,internet,%"
+                getTableName() + ".categories = ? OR " +    // Only category e.g. "internet"
+                getTableName() + ".categories LIKE ? OR " + // First category e.g. "internet,%"
+                getTableName() + ".categories LIKE ? OR " + // Last category e.g. "%,internet"
+                getTableName() + ".categories LIKE ? ";     // One of many categories e.g. "%,internet,%"
         final String[] args = {
             category,
             category + ",%",
@@ -682,7 +683,7 @@ public class AppProvider extends FDroidProvider {
     }
 
     private AppQuerySelection queryNoApks() {
-        String selection = "(SELECT COUNT(*) FROM fdroid_apk WHERE fdroid_apk.id = fdroid_app.id) = 0";
+        String selection = "(SELECT COUNT(*) FROM " + DBHelper.TABLE_APK + " WHERE " + DBHelper.TABLE_APK + ".id = " + getTableName() + ".id) = 0";
         return new AppQuerySelection(selection);
     }
 
@@ -692,8 +693,8 @@ public class AppProvider extends FDroidProvider {
         return new AppQuerySelection(selection, args);
     }
 
-    private static AppQuerySelection queryApps(String appIds) {
-        return queryApps(appIds, "fdroid_app.id");
+    private AppQuerySelection queryApps(String appIds) {
+        return queryApps(appIds, getTableName() + ".id");
     }
 
     @Override
@@ -754,13 +755,13 @@ public class AppProvider extends FDroidProvider {
                 break;
 
             case RECENTLY_UPDATED:
-                sortOrder = " fdroid_app.lastUpdated DESC";
+                sortOrder = getTableName() + ".lastUpdated DESC";
                 selection = selection.add(queryRecentlyUpdated());
                 includeSwap = false;
                 break;
 
             case NEWLY_ADDED:
-                sortOrder = " fdroid_app.added DESC";
+                sortOrder = getTableName() + ".added DESC";
                 selection = selection.add(queryNewlyAdded());
                 includeSwap = false;
                 break;
@@ -775,7 +776,7 @@ public class AppProvider extends FDroidProvider {
         }
 
         if (AppProvider.DataColumns.NAME.equals(sortOrder)) {
-            sortOrder = " fdroid_app." + sortOrder + " COLLATE LOCALIZED ";
+            sortOrder = getTableName() + sortOrder + " COLLATE LOCALIZED ";
         }
 
         Query query = new Query();

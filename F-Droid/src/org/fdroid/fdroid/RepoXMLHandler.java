@@ -45,12 +45,12 @@ public class RepoXMLHandler extends DefaultHandler {
     private App curapp;
     private Apk curapk;
 
-    private String currentApkHashType = null;
+    private String currentApkHashType;
 
     // After processing the XML, these will be -1 if the index didn't specify
     // them - otherwise it will be the value specified.
     private int repoMaxAge = -1;
-    private int repoVersion = 0;
+    private int repoVersion;
     private String repoDescription;
     private String repoName;
 
@@ -61,6 +61,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     interface IndexReceiver {
         void receiveRepo(String name, String description, String signingCert, int maxage, int version);
+
         void receiveApp(App app, List<Apk> packages);
     }
 
@@ -78,7 +79,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName)
-            throws SAXException {
+        throws SAXException {
 
         if ("application".equals(localName) && curapp != null) {
             onApplicationParsed();
@@ -94,53 +95,53 @@ public class RepoXMLHandler extends DefaultHandler {
         final String str = curchars.toString().trim();
         if (curapk != null) {
             switch (localName) {
-            case "version":
-                curapk.version = str;
-                break;
-            case "versioncode":
-                curapk.vercode = Utils.parseInt(str, -1);
-                break;
-            case "size":
-                curapk.size = Utils.parseInt(str, 0);
-                break;
-            case "hash":
-                if (currentApkHashType == null || currentApkHashType.equals("md5")) {
-                    if (curapk.hash == null) {
+                case "version":
+                    curapk.version = str;
+                    break;
+                case "versioncode":
+                    curapk.vercode = Utils.parseInt(str, -1);
+                    break;
+                case "size":
+                    curapk.size = Utils.parseInt(str, 0);
+                    break;
+                case "hash":
+                    if (currentApkHashType == null || "md5".equals(currentApkHashType)) {
+                        if (curapk.hash == null) {
+                            curapk.hash = str;
+                            curapk.hashType = "SHA-256";
+                        }
+                    } else if ("sha256".equals(currentApkHashType)) {
                         curapk.hash = str;
                         curapk.hashType = "SHA-256";
                     }
-                } else if (currentApkHashType.equals("sha256")) {
-                    curapk.hash = str;
-                    curapk.hashType = "SHA-256";
-                }
-                break;
-            case "sig":
-                curapk.sig = str;
-                break;
-            case "srcname":
-                curapk.srcname = str;
-                break;
-            case "apkname":
-                curapk.apkName = str;
-                break;
-            case "sdkver":
-                curapk.minSdkVersion = Utils.parseInt(str, 0);
-                break;
-            case "maxsdkver":
-                curapk.maxSdkVersion = Utils.parseInt(str, 0);
-                break;
-            case "added":
-                curapk.added = Utils.parseDate(str, null);
-                break;
-            case "permissions":
-                curapk.permissions = Utils.CommaSeparatedList.make(str);
-                break;
-            case "features":
-                curapk.features = Utils.CommaSeparatedList.make(str);
-                break;
-            case "nativecode":
-                curapk.nativecode = Utils.CommaSeparatedList.make(str);
-                break;
+                    break;
+                case "sig":
+                    curapk.sig = str;
+                    break;
+                case "srcname":
+                    curapk.srcname = str;
+                    break;
+                case "apkname":
+                    curapk.apkName = str;
+                    break;
+                case "sdkver":
+                    curapk.minSdkVersion = Utils.parseInt(str, 0);
+                    break;
+                case "maxsdkver":
+                    curapk.maxSdkVersion = Utils.parseInt(str, 0);
+                    break;
+                case "added":
+                    curapk.added = Utils.parseDate(str, null);
+                    break;
+                case "permissions":
+                    curapk.permissions = Utils.CommaSeparatedList.make(str);
+                    break;
+                case "features":
+                    curapk.features = Utils.CommaSeparatedList.make(str);
+                    break;
+                case "nativecode":
+                    curapk.nativecode = Utils.CommaSeparatedList.make(str);
+                    break;
             }
         } else if (curapp != null) {
             switch (localName) {
@@ -237,7 +238,7 @@ public class RepoXMLHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName,
-            Attributes attributes) throws SAXException {
+                             Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
 
         if ("repo".equals(localName)) {

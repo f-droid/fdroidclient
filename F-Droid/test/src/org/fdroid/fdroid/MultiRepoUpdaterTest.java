@@ -20,6 +20,8 @@ import org.fdroid.fdroid.data.ApkProvider;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
+import org.fdroid.fdroid.data.TempApkProvider;
+import org.fdroid.fdroid.data.TempAppProvider;
 
 import java.io.File;
 import java.util.List;
@@ -82,6 +84,8 @@ public class MultiRepoUpdaterTest extends InstrumentationTestCase {
             resolver.addProvider(AppProvider.getAuthority(), prepareProvider(new AppProvider()));
             resolver.addProvider(ApkProvider.getAuthority(), prepareProvider(new ApkProvider()));
             resolver.addProvider(RepoProvider.getAuthority(), prepareProvider(new RepoProvider()));
+            resolver.addProvider(TempAppProvider.getAuthority(), prepareProvider(new TempAppProvider()));
+            resolver.addProvider(TempApkProvider.getAuthority(), prepareProvider(new TempApkProvider()));
         }
 
         private ContentProvider prepareProvider(ContentProvider provider) {

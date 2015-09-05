@@ -88,7 +88,6 @@ public class TempApkProvider extends ApkProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         int code = matcher.match(uri);
-
         if (code == CODE_INIT) {
             initTable();
             return null;
@@ -100,6 +99,40 @@ public class TempApkProvider extends ApkProvider {
         }
     }
 
+    @Override
+    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+
+        if (matcher.match(uri) != CODE_SINGLE) {
+            throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
+        }
+
+        return performUpdateUnchecked(uri, values, where, whereArgs);
+    }
+
+    @Override
+    public int delete(Uri uri, String where, String[] whereArgs) {
+
+        QuerySelection query = new QuerySelection(where, whereArgs);
+
+        switch (matcher.match(uri)) {
+            case CODE_REPO_APK:
+                List<String> pathSegments = uri.getPathSegments();
+                query = query.add(queryRepo(Long.parseLong(pathSegments.get(1)))).add(queryApks(pathSegments.get(2)));
+                break;
+
+            default:
+                Log.e(TAG, "Invalid URI for apk content provider: " + uri);
+                throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
+        }
+
+        int rowsAffected = write().delete(getTableName(), query.getSelection(), query.getArgs());
+        if (!isApplyingBatch()) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+        return rowsAffected;
+
+    }
+
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
         write().execSQL("CREATE TEMPORARY TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
@@ -109,5 +142,6 @@ public class TempApkProvider extends ApkProvider {
         Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APK + " so they can be copied from " + getTableName());
         write().execSQL("DELETE FROM " + DBHelper.TABLE_APK);
         write().execSQL("INSERT INTO " + DBHelper.TABLE_APK + " SELECT * FROM " + getTableName());
+        getContext().getContentResolver().notifyChange(ApkProvider.getContentUri(), null);
     }
 }

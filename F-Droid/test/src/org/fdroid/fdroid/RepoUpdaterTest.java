@@ -8,7 +8,6 @@ import org.fdroid.fdroid.RepoUpdater.UpdateException;
 import org.fdroid.fdroid.data.Repo;
 
 import java.io.File;
-import java.util.UUID;
 
 public class RepoUpdaterTest extends InstrumentationTestCase {
     private static final String TAG = "RepoUpdaterTest";

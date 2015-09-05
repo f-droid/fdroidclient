@@ -229,10 +229,10 @@ public class ApkProvider extends FDroidProvider {
     private static final int CODE_REPO_APPS = CODE_APKS + 1;
     protected static final int CODE_REPO_APK = CODE_REPO_APPS + 1;
 
-    private static final String PROVIDER_NAME  = "ApkProvider";
-    protected static final String PATH_APK       = "apk";
-    private static final String PATH_APKS      = "apks";
-    private static final String PATH_APP       = "app";
+    private static final String PROVIDER_NAME = "ApkProvider";
+    protected static final String PATH_APK = "apk";
+    private static final String PATH_APKS = "apks";
+    private static final String PATH_APP = "app";
     private static final String PATH_REPO      = "repo";
     private static final String PATH_REPO_APPS = "repo-apps";
     protected static final String PATH_REPO_APK  = "repo-apk";
@@ -411,7 +411,7 @@ public class ApkProvider extends FDroidProvider {
         return new QuerySelection(selection, args);
     }
 
-    private QuerySelection queryRepo(long repoId) {
+    protected QuerySelection queryRepo(long repoId) {
         final String selection = DataColumns.REPO_ID + " = ? ";
         final String[] args = {Long.toString(repoId)};
         return new QuerySelection(selection, args);
@@ -421,7 +421,7 @@ public class ApkProvider extends FDroidProvider {
         return queryRepo(repoId).add(AppProvider.queryApps(appIds, DataColumns.APK_ID));
     }
 
-    private QuerySelection queryApks(String apkKeys) {
+    protected QuerySelection queryApks(String apkKeys) {
         final String[] apkDetails = apkKeys.split(",");
         if (apkDetails.length > MAX_APKS_TO_QUERY) {
             throw new IllegalArgumentException(
@@ -473,7 +473,7 @@ public class ApkProvider extends FDroidProvider {
                 List<String> pathSegments = uri.getPathSegments();
                 query = query.add(queryRepoApps(Long.parseLong(pathSegments.get(1)), pathSegments.get(2)));
                 break;
-    
+
             default:
                 Log.e(TAG, "Invalid URI for apk content provider: " + uri);
                 throw new UnsupportedOperationException("Invalid URI for apk content provider: " + uri);
@@ -535,7 +535,7 @@ public class ApkProvider extends FDroidProvider {
             case CODE_APKS:
                 query = query.add(queryApks(uri.getLastPathSegment()));
                 break;
-    
+
             // TODO: Add tests for this.
             case CODE_REPO_APK:
                 List<String> pathSegments = uri.getPathSegments();
@@ -561,11 +561,13 @@ public class ApkProvider extends FDroidProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-
         if (matcher.match(uri) != CODE_SINGLE) {
             throw new UnsupportedOperationException("Cannot update anything other than a single apk.");
         }
+        return performUpdateUnchecked(uri, values, where, whereArgs);
+    }
 
+    protected int performUpdateUnchecked(Uri uri, ContentValues values, String where, String[] whereArgs) {
         validateFields(DataColumns.ALL, values);
         removeRepoFields(values);
 
@@ -577,7 +579,6 @@ public class ApkProvider extends FDroidProvider {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return numRows;
-
     }
 
 }

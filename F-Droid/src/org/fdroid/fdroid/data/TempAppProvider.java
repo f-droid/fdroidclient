@@ -83,6 +83,25 @@ public class TempAppProvider extends AppProvider {
         }
     }
 
+    @Override
+    public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+        QuerySelection query = new QuerySelection(where, whereArgs);
+        switch (matcher.match(uri)) {
+            case CODE_SINGLE:
+                query = query.add(querySingle(uri.getLastPathSegment()));
+                break;
+
+            default:
+                throw new UnsupportedOperationException("Update not supported for " + uri + ".");
+        }
+
+        int count = write().update(getTableName(), values, query.getSelection(), query.getArgs());
+        if (!isApplyingBatch()) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+        return count;
+    }
+
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
         write().execSQL("CREATE TEMPORARY TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
@@ -92,5 +111,6 @@ public class TempAppProvider extends AppProvider {
         Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APP + " so they can be copied from " + getTableName());
         write().execSQL("DELETE FROM " + DBHelper.TABLE_APP);
         write().execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + getTableName());
+        getContext().getContentResolver().notifyChange(AppProvider.getContentUri(), null);
     }
 }

@@ -46,7 +46,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 /**
- *
  * Responsible for updating an individual repository. This will:
  *  * Download the index.jar
  *  * Verify that it is signed correctly and by the correct certificate
@@ -74,19 +73,23 @@ public class RepoUpdater {
      * is essentially completely transient, and can be nuked at any time.
      */
     private static final String[] APP_FIELDS_TO_IGNORE = {
-            AppProvider.DataColumns.IGNORE_ALLUPDATES,
-            AppProvider.DataColumns.IGNORE_THISUPDATE
+        AppProvider.DataColumns.IGNORE_ALLUPDATES,
+        AppProvider.DataColumns.IGNORE_THISUPDATE,
     };
 
-    @NonNull protected final Context context;
-    @NonNull protected final Repo repo;
-    protected boolean hasChanged = false;
-    @Nullable protected ProgressListener progressListener;
+    @NonNull
+    protected final Context context;
+    @NonNull
+    protected final Repo repo;
+    protected boolean hasChanged;
+    @Nullable
+    protected ProgressListener progressListener;
     private String cacheTag;
     private X509Certificate signingCertFromJar;
 
     /**
      * Updates an app repo as read out of the database into a {@link Repo} instance.
+     *
      * @param repo A {@link Repo} read out of the local database
      */
     public RepoUpdater(@NonNull Context context, @NonNull Repo repo) {
@@ -160,8 +163,8 @@ public class RepoUpdater {
         }
     }
 
-    private ContentValues repoDetailsToSave = null;
-    private String signingCertFromIndexXml = null;
+    private ContentValues repoDetailsToSave;
+    private String signingCertFromIndexXml;
 
     private RepoXMLHandler.IndexReceiver createIndexReceiver() {
         return new RepoXMLHandler.IndexReceiver() {
@@ -184,12 +187,12 @@ public class RepoUpdater {
 
     /**
      * My crappy benchmark with a Nexus 4, Android 5.0 on a fairly crappy internet connection I get:
-     *  * 25 = 37 seconds
-     *  * 50 = 33 seconds
-     *  * 100 = 30 seconds
-     *  * 200 = 32 seconds
-     *  Raising this means more memory consumption, so we'd like it to be low, but not
-     *  so low that it takes too long.
+     * * 25 = 37 seconds
+     * * 50 = 33 seconds
+     * * 100 = 30 seconds
+     * * 200 = 32 seconds
+     * Raising this means more memory consumption, so we'd like it to be low, but not
+     * so low that it takes too long.
      */
     private static final int MAX_APP_BUFFER = 50;
 
@@ -242,7 +245,7 @@ public class RepoUpdater {
 
         try {
             context.getContentResolver().applyBatch(TempAppProvider.getAuthority(), appOperations);
-        } catch (RemoteException|OperationApplicationException e) {
+        } catch (RemoteException | OperationApplicationException e) {
             throw new UpdateException(repo, "An internal error occured while updating the database", e);
         }
     }
@@ -320,7 +323,7 @@ public class RepoUpdater {
      * array.
      */
     private boolean isAppInDatabase(App app) {
-        String[] fields = { AppProvider.DataColumns.APP_ID };
+        String[] fields = {AppProvider.DataColumns.APP_ID};
         App found = AppProvider.Helper.findById(context.getContentResolver(), app.id, fields);
         return found != null;
     }
@@ -429,7 +432,7 @@ public class RepoUpdater {
             JarFile jarFile = new JarFile(downloadedFile, true);
             JarEntry indexEntry = (JarEntry) jarFile.getEntry("index.xml");
             indexInputStream = new ProgressBufferedInputStream(jarFile.getInputStream(indexEntry),
-                    progressListener, repo, (int) indexEntry.getSize());
+                progressListener, repo, (int) indexEntry.getSize());
 
             // Process the index...
             final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
@@ -558,7 +561,7 @@ public class RepoUpdater {
      * check that the signing certificate in the jar matches that fingerprint.
      */
     private void verifyAndStoreTOFUCerts(String certFromIndexXml, X509Certificate rawCertFromJar)
-            throws SigningException {
+        throws SigningException {
         if (repo.pubkey != null)
             return; // there is a repo.pubkey already, nothing to TOFU
 
@@ -570,7 +573,7 @@ public class RepoUpdater {
             String fingerprintFromIndexXml = Utils.calcFingerprint(certFromIndexXml);
             String fingerprintFromJar = Utils.calcFingerprint(rawCertFromJar);
             if (!repo.fingerprint.equalsIgnoreCase(fingerprintFromIndexXml)
-                    || !repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
+                || !repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
                 throw new SigningException(repo, "Supplied certificate fingerprint does not match!");
             }
         } // else - no info to check things are valid, so just Trust On First Use
@@ -600,14 +603,14 @@ public class RepoUpdater {
 
         // repo and repo.pubkey must be pre-loaded from the database
         if (TextUtils.isEmpty(repo.pubkey)
-                || TextUtils.isEmpty(certFromJar)
-                || TextUtils.isEmpty(certFromIndexXml))
+            || TextUtils.isEmpty(certFromJar)
+            || TextUtils.isEmpty(certFromIndexXml))
             throw new SigningException(repo, "A empty repo or signing certificate is invalid!");
 
         // though its called repo.pubkey, its actually a X509 certificate
         if (repo.pubkey.equals(certFromJar)
-                && repo.pubkey.equals(certFromIndexXml)
-                && certFromIndexXml.equals(certFromJar)) {
+            && repo.pubkey.equals(certFromIndexXml)
+            && certFromIndexXml.equals(certFromJar)) {
             return;  // we have a match!
         }
         throw new SigningException(repo, "Signing certificate does not match!");
