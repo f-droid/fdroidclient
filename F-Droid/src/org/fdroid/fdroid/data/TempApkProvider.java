@@ -1,20 +1,12 @@
 package org.fdroid.fdroid.data;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.BaseColumns;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
@@ -27,7 +19,6 @@ public class TempApkProvider extends ApkProvider {
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
-    private static final String PATH_ROLLBACK = "rollback";
 
     private static final int CODE_INIT = 10000;
     private static final int CODE_COMMIT = CODE_INIT + 1;
@@ -118,9 +109,5 @@ public class TempApkProvider extends ApkProvider {
         Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APK + " so they can be copied from " + getTableName());
         write().execSQL("DELETE FROM " + DBHelper.TABLE_APK);
         write().execSQL("INSERT INTO " + DBHelper.TABLE_APK + " SELECT * FROM " + getTableName());
-    }
-
-    private void removeTable() {
-        write().execSQL("DROP TABLE IF EXISTS " + getTableName());
     }
 }

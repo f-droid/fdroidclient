@@ -6,8 +6,6 @@ import android.content.UriMatcher;
 import android.net.Uri;
 import android.util.Log;
 
-import java.util.List;
-
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
@@ -19,7 +17,6 @@ public class TempAppProvider extends AppProvider {
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
-    private static final String PATH_ROLLBACK = "rollback";
 
     private static final int CODE_INIT = 10000;
     private static final int CODE_COMMIT = CODE_INIT + 1;
@@ -95,9 +92,5 @@ public class TempAppProvider extends AppProvider {
         Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APP + " so they can be copied from " + getTableName());
         write().execSQL("DELETE FROM " + DBHelper.TABLE_APP);
         write().execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + getTableName());
-    }
-
-    private void removeTable() {
-
     }
 }

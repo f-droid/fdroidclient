@@ -184,10 +184,12 @@ public class RepoUpdater {
 
     /**
      * My crappy benchmark with a Nexus 4, Android 5.0 on a fairly crappy internet connection I get:
-     *  * 25 = { 39, 35 } seconds
-     *  * 50 = { 36, 30 } seconds
-     *  * 100 = { 33, 27 } seconds
-     *  * 200 = { 30, 33 } seconds
+     *  * 25 = 37 seconds
+     *  * 50 = 33 seconds
+     *  * 100 = 30 seconds
+     *  * 200 = 32 seconds
+     *  Raising this means more memory consumption, so we'd like it to be low, but not
+     *  so low that it takes too long.
      */
     private static final int MAX_APP_BUFFER = 50;
 
@@ -241,8 +243,7 @@ public class RepoUpdater {
         try {
             context.getContentResolver().applyBatch(TempAppProvider.getAuthority(), appOperations);
         } catch (RemoteException|OperationApplicationException e) {
-            Log.e(TAG, "Error updating apps", e);
-            throw new UpdateException(repo, "Error updating apps: " + e.getMessage(), e);
+            throw new UpdateException(repo, "An internal error occured while updating the database", e);
         }
     }
 
@@ -378,7 +379,6 @@ public class RepoUpdater {
             }
         }
 
-        // TODO: Deal with more than MAX_QUERY_PARAMS...
         if (toDelete.size() > 0) {
             Uri uri = TempApkProvider.getApksUri(repo, toDelete);
             return ContentProviderOperation.newDelete(uri).build();

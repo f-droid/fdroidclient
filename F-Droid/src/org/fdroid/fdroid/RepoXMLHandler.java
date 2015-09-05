@@ -34,17 +34,6 @@ import java.util.List;
 
 /**
  * Parses the index.xml into Java data structures.
- *
- * For streaming apks from an index file, it is helpful if the index has the <repo> tag before
- * any <application> tags. This means that apps and apks can be saved instantly by the RepoUpdater,
- * without having to buffer them at all, saving memory. The XML spec doesn't mandate order like
- * this, though it is almost always a fair assumption:
- *
- *   http://www.ibm.com/developerworks/library/x-eleord/index.html
- *
- * This is doubly so, as repo indices are likely from fdroidserver, which will output everybodys
- * repo the same way. Having said that, this also should not be _forced_ upon people, but we can
- * at least consider rejecting malformed indexes.
  */
 public class RepoXMLHandler extends DefaultHandler {
 
