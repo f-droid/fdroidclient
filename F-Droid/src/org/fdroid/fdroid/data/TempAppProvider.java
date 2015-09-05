@@ -1,29 +1,21 @@
 package org.fdroid.fdroid.data;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.BaseColumns;
 import android.util.Log;
 
-import org.fdroid.fdroid.Utils;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class does all of its operations in a temporary sqlite table.
  */
-public class TempApkProvider extends ApkProvider {
+public class TempAppProvider extends AppProvider {
 
-    private static final String TAG = "TempApkProvider";
+    private static final String TAG = "TempAppProvider";
 
-    private static final String PROVIDER_NAME = "TempApkProvider";
+    private static final String PROVIDER_NAME = "TempAppProvider";
 
     private static final String PATH_INIT = "init";
     private static final String PATH_COMMIT = "commit";
@@ -37,8 +29,7 @@ public class TempApkProvider extends ApkProvider {
     static {
         matcher.addURI(getAuthority(), PATH_INIT, CODE_INIT);
         matcher.addURI(getAuthority(), PATH_COMMIT, CODE_COMMIT);
-        matcher.addURI(getAuthority(), PATH_APK + "/#/*", CODE_SINGLE);
-        matcher.addURI(getAuthority(), PATH_REPO_APK + "/#/*", CODE_REPO_APK);
+        matcher.addURI(getAuthority(), "*", CODE_SINGLE);
     }
 
     @Override
@@ -54,22 +45,8 @@ public class TempApkProvider extends ApkProvider {
         return Uri.parse("content://" + getAuthority());
     }
 
-    public static Uri getApkUri(Apk apk) {
-        return getContentUri()
-                .buildUpon()
-                .appendPath(PATH_APK)
-                .appendPath(Integer.toString(apk.vercode))
-                .appendPath(apk.id)
-                .build();
-    }
-
-    public static Uri getApksUri(Repo repo, List<Apk> apks) {
-        return getContentUri()
-                .buildUpon()
-                .appendPath(PATH_REPO_APK)
-                .appendPath(Long.toString(repo.id))
-                .appendPath(buildApkString(apks))
-                .build();
+    public static Uri getAppUri(App app) {
+        return Uri.withAppendedPath(getContentUri(), app.id);
     }
 
     public static class Helper {
@@ -111,16 +88,16 @@ public class TempApkProvider extends ApkProvider {
 
     private void initTable() {
         write().execSQL("DROP TABLE IF EXISTS " + getTableName());
-        write().execSQL("CREATE TEMPORARY TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APK);
+        write().execSQL("CREATE TEMPORARY TABLE " + getTableName() + " AS SELECT * FROM " + DBHelper.TABLE_APP);
     }
 
     private void commitTable() {
-        Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APK + " so they can be copied from " + getTableName());
-        write().execSQL("DELETE FROM " + DBHelper.TABLE_APK);
-        write().execSQL("INSERT INTO " + DBHelper.TABLE_APK + " SELECT * FROM " + getTableName());
+        Log.d(TAG, "Deleting all apks from " + DBHelper.TABLE_APP + " so they can be copied from " + getTableName());
+        write().execSQL("DELETE FROM " + DBHelper.TABLE_APP);
+        write().execSQL("INSERT INTO " + DBHelper.TABLE_APP + " SELECT * FROM " + getTableName());
     }
 
     private void removeTable() {
-        write().execSQL("DROP TABLE IF EXISTS " + getTableName());
+
     }
 }

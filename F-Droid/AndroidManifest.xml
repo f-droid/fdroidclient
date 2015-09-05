@@ -89,6 +89,11 @@
             android:exported="false"/>
 
         <provider
+            android:authorities="org.fdroid.fdroid.data.TempAppProvider"
+            android:name="org.fdroid.fdroid.data.TempAppProvider"
+            android:exported="false"/>
+
+        <provider
             android:authorities="org.fdroid.fdroid.data.InstalledAppProvider"
             android:name="org.fdroid.fdroid.data.InstalledAppProvider"
             android:exported="false"/>

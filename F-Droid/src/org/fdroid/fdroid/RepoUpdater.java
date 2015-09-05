@@ -18,6 +18,7 @@ import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;
 import org.fdroid.fdroid.data.TempApkProvider;
+import org.fdroid.fdroid.data.TempAppProvider;
 import org.fdroid.fdroid.net.Downloader;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.xml.sax.InputSource;
@@ -203,11 +204,13 @@ public class RepoUpdater {
     }
 
     private void flushBufferToDb() throws UpdateException {
-        Log.d(TAG, "Flushing details of " + MAX_APP_BUFFER + " and their packages to the database.");
-        flushAppsToDbInBatch();
-        flushApksToDbInBatch();
-        apksToSave.clear();
-        appsToSave.clear();
+        if (apksToSave.size() > 0 || appsToSave.size() > 0) {
+            Log.d(TAG, "Flushing details of up to " + MAX_APP_BUFFER + " apps and their packages to the database.");
+            flushAppsToDbInBatch();
+            flushApksToDbInBatch();
+            apksToSave.clear();
+            appsToSave.clear();
+        }
     }
 
     private void flushApksToDbInBatch() throws UpdateException {
@@ -236,7 +239,7 @@ public class RepoUpdater {
         ArrayList<ContentProviderOperation> appOperations = insertOrUpdateApps(appsToSave);
 
         try {
-            context.getContentResolver().applyBatch(AppProvider.getAuthority(), appOperations);
+            context.getContentResolver().applyBatch(TempAppProvider.getAuthority(), appOperations);
         } catch (RemoteException|OperationApplicationException e) {
             Log.e(TAG, "Error updating apps", e);
             throw new UpdateException(repo, "Error updating apps: " + e.getMessage(), e);
@@ -290,7 +293,7 @@ public class RepoUpdater {
      * <strong>Does not do any checks to see if the app already exists or not.</strong>
      */
     private ContentProviderOperation updateExistingApp(App app) {
-        Uri uri = AppProvider.getContentUri(app);
+        Uri uri = TempAppProvider.getAppUri(app);
         ContentValues values = app.toContentValues();
         for (final String toIgnore : APP_FIELDS_TO_IGNORE) {
             if (values.containsKey(toIgnore)) {
@@ -306,7 +309,7 @@ public class RepoUpdater {
      */
     private ContentProviderOperation insertNewApp(App app) {
         ContentValues values = app.toContentValues();
-        Uri uri = AppProvider.getContentUri();
+        Uri uri = TempAppProvider.getContentUri();
         return ContentProviderOperation.newInsert(uri).withValues(values).build();
     }
 
@@ -415,6 +418,7 @@ public class RepoUpdater {
             // the index was signed with until we've finished reading it - and we don't
             // want to put stuff in the real database until we are sure it is from a
             // trusted source.
+            TempAppProvider.Helper.init(context);
             TempApkProvider.Helper.init(context);
 
             // Due to a bug in Android 5.0 Lollipop, the inclusion of spongycastle causes
@@ -433,12 +437,17 @@ public class RepoUpdater {
             final RepoXMLHandler repoXMLHandler = new RepoXMLHandler(repo, createIndexReceiver());
             reader.setContentHandler(repoXMLHandler);
             reader.parse(new InputSource(indexInputStream));
+
+            flushBufferToDb();
+
             signingCertFromJar = getSigningCertFromJar(indexEntry);
 
             // JarEntry can only read certificates after the file represented by that JarEntry
             // has been read completely, so verification cannot run until now...
             assertSigningCertFromXmlCorrect();
 
+            Log.i(TAG, "Repo signature verified, saving app metadata to database.");
+            TempAppProvider.Helper.commit(context);
             TempApkProvider.Helper.commit(context);
             RepoProvider.Helper.update(context, repo, repoDetailsToSave);
 
