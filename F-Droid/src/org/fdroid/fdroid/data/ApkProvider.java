@@ -227,15 +227,15 @@ public class ApkProvider extends FDroidProvider {
     private static final int CODE_REPO = CODE_APP + 1;
     private static final int CODE_APKS = CODE_REPO + 1;
     private static final int CODE_REPO_APPS = CODE_APKS + 1;
-    private static final int CODE_REPO_APK = CODE_REPO_APPS + 1;
+    protected static final int CODE_REPO_APK = CODE_REPO_APPS + 1;
 
     private static final String PROVIDER_NAME  = "ApkProvider";
-    private static final String PATH_APK       = "apk";
+    protected static final String PATH_APK       = "apk";
     private static final String PATH_APKS      = "apks";
     private static final String PATH_APP       = "app";
     private static final String PATH_REPO      = "repo";
     private static final String PATH_REPO_APPS = "repo-apps";
-    private static final String PATH_REPO_APK  = "repo-apk";
+    protected static final String PATH_REPO_APK  = "repo-apk";
 
     private static final UriMatcher matcher = new UriMatcher(-1);
 
@@ -322,7 +322,7 @@ public class ApkProvider extends FDroidProvider {
                 .build();
     }
 
-    private static String buildApkString(List<Apk> apks) {
+    protected static String buildApkString(List<Apk> apks) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < apks.size(); i++) {
             if (i != 0) {
