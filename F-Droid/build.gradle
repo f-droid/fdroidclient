@@ -22,7 +22,7 @@ if ( !hasProperty( 'sourceDeps' ) ) {
 
         compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
         compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
-        compile 'com.google.zxing:core:3.2.0'
+        compile 'com.google.zxing:core:3.2.1'
         compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
         compile 'cc.mvdan.accesspoint:library:0.1.1'
 

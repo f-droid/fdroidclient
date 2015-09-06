@@ -25,7 +25,10 @@ package com.google.zxing;
  */
 public final class FormatException extends ReaderException {
 
-  private static final FormatException instance = new FormatException();
+  private static final FormatException INSTANCE = new FormatException();
+  static {
+    INSTANCE.setStackTrace(NO_TRACE); // since it's meaningless
+  }
 
   private FormatException() {
   }
@@ -35,18 +38,10 @@ public final class FormatException extends ReaderException {
   }
 
   public static FormatException getFormatInstance() {
-    if (isStackTrace) {
-      return new FormatException();
-    } else {
-      return instance;
-    }
+    return isStackTrace ? new FormatException() : INSTANCE;
   }
   
   public static FormatException getFormatInstance(Throwable cause) {
-    if (isStackTrace) {
-      return new FormatException(cause);
-    } else {
-      return instance;
-    }
+    return isStackTrace ? new FormatException(cause) : INSTANCE;
   }
 }
