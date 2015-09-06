@@ -161,8 +161,7 @@ public class FDroidApp extends Application {
                     .penaltyLog()
                     .build());
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .detectLeakedSqlLiteObjects()
-                    .detectLeakedClosableObjects()
+                    .detectAll()
                     .penaltyLog()
                     .build());
         }
