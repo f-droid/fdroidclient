@@ -140,7 +140,13 @@ public class SystemInstaller extends Installer {
     @Override
     protected void installPackageInternal(File apkFile) throws AndroidNotCompatibleException {
         Uri packageUri = Uri.fromFile(apkFile);
-        if (hasNewPermissions(packageUri)) {
+        int count = newPermissionCount(packageUri);
+        if (count < 0) {
+            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                    InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+            return;
+        }
+        if (count > 0) {
             Intent intent = new Intent(mContext, InstallConfirmActivity.class);
             intent.setData(packageUri);
             mActivity.startActivityForResult(intent, REQUEST_CONFIRM_PERMS);
@@ -154,17 +160,20 @@ public class SystemInstaller extends Installer {
         }
     }
 
-    private boolean hasNewPermissions(Uri packageUri) {
+    private int newPermissionCount(Uri packageUri) {
         AppDiff appDiff = new AppDiff(mContext.getPackageManager(), packageUri);
-        if (appDiff.mPkgInfo != null) {
-            AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
-            if (appDiff.mInstalledAppInfo != null) { // it is an update to an existing app
-                // return false if there are no new permissions
-                return (perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW) > 0);
-            }
+        if (appDiff.mPkgInfo == null) {
+            // could not get diff because we couldn't parse the package
+            return -1;
         }
-        // default: show install confirm activity
-        return true;
+        AppSecurityPermissions perms = new AppSecurityPermissions(mContext, appDiff.mPkgInfo);
+        if (appDiff.mInstalledAppInfo != null) {
+            // update to an existing app
+            return perms.getPermissionCount(AppSecurityPermissions.WHICH_NEW);
+        }
+        // default: even if there aren't any permissions, we want to make the
+        // user always confirm installing new apps
+        return 1;
     }
 
     private void doInstallPackageInternal(Uri packageURI) throws AndroidNotCompatibleException {
@@ -260,7 +269,10 @@ public class SystemInstaller extends Installer {
                     mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                             InstallerCallback.ERROR_CODE_OTHER);
                 }
-            } else {
+            } else if (resultCode == InstallConfirmActivity.RESULT_CANNOT_PARSE) {
+                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                        InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+            } else { // Activity.RESULT_CANCELED
                 mCallback.onError(InstallerCallback.OPERATION_INSTALL,
                         InstallerCallback.ERROR_CODE_CANCELED);
             }

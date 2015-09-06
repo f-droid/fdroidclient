@@ -36,6 +36,15 @@ public class AppDiff {
         final String pkgPath = mPackageURI.getPath();
 
         mPkgInfo = mPm.getPackageArchiveInfo(pkgPath, PackageManager.GET_PERMISSIONS);
+        // We could not get the package info from the file. This means that we
+        // could not parse the file, which can happen if the file cannot be
+        // read or the minSdk is not satisfied.
+        // Since we can't return an error from a constructor, we refuse to
+        // continue. The caller must check if mPkgInfo is null to see if the
+        // AppDiff was initialised correctly.
+        if (mPkgInfo == null) {
+            return;
+        }
         mPkgInfo.applicationInfo.sourceDir = pkgPath;
         mPkgInfo.applicationInfo.publicSourceDir = pkgPath;
 
