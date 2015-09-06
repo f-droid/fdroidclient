@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.net.Socket;
 import java.security.GeneralSecurityException;
@@ -95,9 +96,11 @@ public class LocalRepoKeyStore {
             this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 
             if (keyStoreFile.exists()) {
+                InputStream in = null;
                 try {
                     Utils.DebugLog(TAG, "Keystore already exists, loading...");
-                    keyStore.load(new FileInputStream(keyStoreFile), "".toCharArray());
+                    in = new FileInputStream(keyStoreFile);
+                    keyStore.load(in, "".toCharArray());
                 } catch (IOException e) {
                     Log.e(TAG, "Error while loading existing keystore. Will delete and create a new one.");
 
@@ -106,6 +109,8 @@ public class LocalRepoKeyStore {
                     // that you have swapped apps with in the past, then you would really want the
                     // signature to be the same as last time.
                     throw new InitException("Could not initialize local repo keystore: " + e);
+                } finally {
+                    Utils.closeQuietly(in);
                 }
             }
 
