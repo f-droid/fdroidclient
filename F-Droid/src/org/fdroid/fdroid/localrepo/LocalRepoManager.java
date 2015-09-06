@@ -39,6 +39,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -166,7 +167,11 @@ public class LocalRepoManager {
             out.close();
 
             for (final String file : WEB_ROOT_ASSET_FILES) {
-                Utils.copy(assetManager.open(file), new FileOutputStream(new File(webRoot, file)));
+                InputStream assetIn = assetManager.open(file);
+                OutputStream assetOut = new FileOutputStream(new File(webRoot, file));
+                Utils.copy(assetIn, assetOut);
+                assetIn.close();
+                assetOut.close();
             }
 
             // make symlinks/copies in each subdir of the repo to make sure that
