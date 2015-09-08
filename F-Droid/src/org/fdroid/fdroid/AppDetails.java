@@ -22,7 +22,6 @@
 package org.fdroid.fdroid;
 
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -35,7 +34,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.database.ContentObserver;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,7 +92,7 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.fdroid.fdroid.net.ApkDownloader;
-import org.fdroid.fdroid.net.AsyncDownloader;
+import org.fdroid.fdroid.net.AsyncDownloaderFromAndroid;
 import org.fdroid.fdroid.net.Downloader;
 
 import java.io.File;
@@ -435,7 +433,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         // Check if a download is running for this app
-        if (AsyncDownloader.isDownloading(this, app.id) >= 0) {
+        if (AsyncDownloaderFromAndroid.isDownloading(this, app.id) >= 0) {
             // call install() to re-setup the listeners and downloaders
             // the AsyncDownloader will not restart the download since the download is running,
             // and thus the version we pass to install() is not important

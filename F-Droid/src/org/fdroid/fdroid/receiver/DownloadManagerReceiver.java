@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationCompat;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.net.AsyncDownloader;
+import org.fdroid.fdroid.net.AsyncDownloaderFromAndroid;
 
 /**
  * Receive notifications from the Android DownloadManager and pass them onto the
@@ -21,8 +21,8 @@ public class DownloadManagerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // work out the app Id to send to the AppDetails Screen
-        long downloadId = AsyncDownloader.getDownloadId(intent);
-        String appId = AsyncDownloader.getAppId(context, downloadId);
+        long downloadId = AsyncDownloaderFromAndroid.getDownloadId(intent);
+        String appId = AsyncDownloaderFromAndroid.getAppId(context, downloadId);
 
         if (appId == null) {
             // bogus broadcast (e.g. download cancelled, but system sent a DOWNLOAD_COMPLETE)
@@ -41,7 +41,7 @@ public class DownloadManagerReceiver extends BroadcastReceiver {
                     context, 1, appDetails, PendingIntent.FLAG_ONE_SHOT);
 
             // launch LocalRepoActivity if the user selects this notification
-            String downloadTitle = AsyncDownloader.getDownloadTitle(context, downloadId);
+            String downloadTitle = AsyncDownloaderFromAndroid.getDownloadTitle(context, downloadId);
             Notification notif = new NotificationCompat.Builder(context)
                     .setContentTitle(downloadTitle)
                     .setContentText(context.getString(R.string.tap_to_install))

@@ -47,7 +47,7 @@ import java.security.NoSuchAlgorithmException;
  * If the file has previously been downloaded, it will make use of that
  * instead, without going to the network to download a new one.
  */
-public class ApkDownloader implements AsyncDownloadWrapper.Listener {
+public class ApkDownloader implements AsyncDownloader.Listener {
 
     private static final String TAG = "ApkDownloader";
 
@@ -78,7 +78,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     @NonNull private final SanitizedFile potentiallyCachedFile;
 
     private ProgressListener listener;
-    private AsyncDownloadWrapper dlWrapper = null;
+    private AsyncDownloader dlWrapper = null;
     private boolean isComplete = false;
 
     private final long id = ++downloadIdCounter;
@@ -197,17 +197,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         Utils.DebugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            if (canUseDownloadManager(new URL(remoteAddress))) {
-                // If we can use Android's DownloadManager, let's use it, because
-                // of better OS integration, reliability, and async ability
-                dlWrapper = new AsyncDownloader(context, this,
-                        app.name + " " + curApk.version, curApk.id,
-                        remoteAddress, localFile);
-            } else {
-                Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
-                dlWrapper = new AsyncDownloadWrapper(downloader, this);
-            }
-
+            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, app.name + " " + curApk.version, curApk.id, this);
             dlWrapper.download();
             return true;
         } catch (IOException e) {
@@ -215,17 +205,6 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         }
 
         return false;
-    }
-
-    /**
-     * Tests to see if we can use Android's DownloadManager to download the APK, instead of
-     * a downloader returned from DownloadFactory.
-     * @param url
-     * @return
-     */
-    private boolean canUseDownloadManager(URL url) {
-        return Build.VERSION.SDK_INT > Build.VERSION_CODES.FROYO
-                && !DownloaderFactory.isOnionAddress(url);
     }
 
     private void sendMessage(String type) {
