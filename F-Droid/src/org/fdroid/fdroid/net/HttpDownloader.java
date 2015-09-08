@@ -8,7 +8,6 @@ import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 
-import javax.net.ssl.SSLHandshakeException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,6 +18,10 @@ import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.SocketAddress;
 import java.net.URL;
+
+import javax.net.ssl.SSLHandshakeException;
+
+import info.guardianproject.netcipher.NetCipher;
 
 public class HttpDownloader extends Downloader {
     private static final String TAG = "HttpDownloader";
@@ -88,10 +91,11 @@ public class HttpDownloader extends Downloader {
         if (prefs.isProxyEnabled()) {
             SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
             Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
-            connection = (HttpURLConnection) sourceUrl.openConnection(proxy);
+            NetCipher.setProxy(proxy);
         } else {
-            connection = (HttpURLConnection) sourceUrl.openConnection();
+            NetCipher.setProxy(null);
         }
+        connection = NetCipher.getHttpURLConnection(sourceUrl);
     }
 
     protected void doDownload() throws IOException, InterruptedException {

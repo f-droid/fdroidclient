@@ -24,6 +24,7 @@ if (!hasProperty('sourceDeps')) {
         compile 'com.google.zxing:core:3.2.1'
         compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
         compile 'cc.mvdan.accesspoint:library:0.1.1'
+        compile 'info.guardianproject.netcipher:netcipher:1.2'
 
         // We use a slightly modified spongycastle, see
         // openkeychain/spongycastle with some changes on top of 1.51.0.0
