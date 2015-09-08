@@ -43,6 +43,18 @@ public class FDroidCertPins {
 
             // OU=EssentialSSL Wildcard, CN=*.panicbutton.io
             "cdae8cc70af09a55a7642d13f84241cba1c3a3e6",
+
+            // C=IL, O=StartCom Ltd., OU=Secure Digital Certificate Signing, CN=StartCom Certification Authority
+            // https://cert.startcom.org/
+            "234b71255613e130dde34269c9cc30d46f0841e0",
+
+            // C=US, O=Internet Security Research Group, CN=ISRG Root X1
+            // https://letsencrypt.org
+            "f816513cfd1b449f2e6b28a197221fb81f514e3c",
+
+            // C=US, O=IdenTrust, CN=IdenTrust Commercial Root CA 1
+            // cross-signer for https://letsencrypt.org
+            "87e3bf322427c1405d2736c381e01d1a71d4a039",
     };
 
     public static List<String> PINLIST = null;

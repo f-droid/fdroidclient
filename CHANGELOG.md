@@ -3,6 +3,11 @@
 * Fix crash when trying to install incompatible apps with the privileged
   installer
 
+* add support for free Certificate Authorities: https://cert.startcom.org and
+  https://letsencrypt.org
+
+* enable TLS v1.2 on all Android versions that support it
+
 ### 0.96 (2015-09-03)
 
 * Move the repo index update to a notification
