@@ -879,8 +879,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         if (repo == null || repo.address == null) {
             return null;
         }
-        final String repoaddress = repo.address;
-        return repoaddress;
+        return repo.address;
     }
 
     private void startDownload(Apk apk, String repoAddress) {
