@@ -20,11 +20,6 @@ Once you have checked out the version you wish to build, run:
 	cd F-Droid
 	gradle assembleRelease
 
-If you would like to build from source, add `-PsourceDeps`:
-
-	cd F-Droid
-	gradle assembleRelease -PsourceDeps
-
 The resulting apk will be in `build/outputs/apk/`.
 
 Android Studio

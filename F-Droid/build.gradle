@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 if (!hasProperty('sourceDeps')) {
 
-    logger.info "Setting up *binary* dependencies for F-Droid (if you'd prefer to build from source, pass the -PsourceDeps argument to gradle while building)."
-
     repositories {
         jcenter()
 
@@ -25,9 +23,6 @@ if (!hasProperty('sourceDeps')) {
         compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
         compile 'cc.mvdan.accesspoint:library:0.1.1'
         compile 'info.guardianproject.netcipher:netcipher:1.2'
-
-        // We use a slightly modified spongycastle, see
-        // openkeychain/spongycastle with some changes on top of 1.51.0.0
         compile 'com.madgag.spongycastle:pkix:1.51.0.0'
         compile 'com.madgag.spongycastle:prov:1.51.0.0'
         compile 'com.madgag.spongycastle:core:1.51.0.0'
@@ -60,34 +55,27 @@ if (!hasProperty('sourceDeps')) {
     }
 
     dependencies {
-        compile project(':extern:AndroidPinning')
-        compile project(':extern:UniversalImageLoader:library')
-        compile project(':extern:libsuperuser:libsuperuser')
-        compile project(':extern:nanohttpd:core')
-        compile project(':extern:jmdns')
-        compile project(':extern:zipsigner')
-        compile project(':extern:zxing-core')
+        compile 'com.android.support:support-v4:22.2.1'
+        compile 'com.android.support:appcompat-v7:22.1.1'
+        compile 'com.android.support:support-annotations:22.2.1'
+
+        compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
+        compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+        compile 'com.google.zxing:core:3.2.1'
+        compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
+        compile 'cc.mvdan.accesspoint:library:0.1.1'
+        compile 'info.guardianproject.netcipher:netcipher:1.2'
+
         compile(project(':extern:support-v4-preferencefragment')) {
             exclude module: 'support-v4'
         }
-
-        compile 'com.android.support:support-v4:22.2.1',
-                'com.android.support:appcompat-v7:22.1.1',
-                'com.android.support:support-annotations:22.2.1'
+        compile project(':extern:nanohttpd:core')
+        compile project(':extern:zipsigner')
+        compile project(':extern:jmdns')
 
         androidTestCompile 'commons-io:commons-io:2.2'
     }
 
-}
-task cleanBinaryDeps(type: Delete) {
-
-    enabled = project.hasProperty('sourceDeps')
-    description = "Removes all .jar and .aar files from F-Droid/libs/. Requires the sourceDeps property to be set (\"gradle -PsourceDeps cleanBinaryDeps\")"
-
-    delete fileTree('libs/binaryDeps') {
-        include '*.aar'
-        include '*.jar'
-    }
 }
 task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
 
@@ -95,14 +83,13 @@ task binaryDeps(type: Copy, dependsOn: ':F-Droid:prepareReleaseDependencies') {
     description = "Copies .jar and .aar files from subproject dependencies in extern/ to F-Droid/libs. Requires the sourceDeps property to be set (\"gradle -PsourceDeps binaryDeps\")"
 
     from('../extern/') {
-        include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar',
-                'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar',
-                'zipsigner/build/libs/zipsigner.jar',
-                'jmdns/build/libs/jmdns.jar'
+        include 'support-v4-preferencefragment/build/outputs/aar/support-v4-preferencefragment-release.aar'
+        include 'nanohttpd/core/build/libs/nanohttpd-2.1.0.jar'
+        include 'zipsigner/build/libs/zipsigner.jar'
+        include 'jmdns/build/libs/jmdns.jar'
     }
 
     into 'libs/binaryDeps'
-
     includeEmptyDirs false
 
     eachFile { FileCopyDetails details ->

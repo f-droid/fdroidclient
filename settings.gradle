@@ -1,15 +1,12 @@
 include ':F-Droid'
-
-if ( hasProperty( 'sourceDeps' ) ) {
-	include ':extern:AndroidPinning'
-	include ':extern:UniversalImageLoader:library'
-	include ':extern:libsuperuser:libsuperuser'
+if (hasProperty('sourceDeps')) {
+	include ':extern:support-v4-preferencefragment'
 	include ':extern:nanohttpd:core'
-	include ':extern:jmdns'
 	include ':extern:zipsigner'
+	include ':extern:jmdns'
+
+        // Needed for zipsigner
 	include ':extern:spongycastle:core'
 	include ':extern:spongycastle:pkix'
 	include ':extern:spongycastle:prov'
-	include ':extern:zxing-core'
-	include ':extern:support-v4-preferencefragment'
 }
