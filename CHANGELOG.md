@@ -1,3 +1,8 @@
+### 0.97 (2015-10-??)
+
+* Fix crash when trying to install incompatible apps with the privileged
+  installer
+
 ### 0.96 (2015-09-03)
 
 * Move the repo index update to a notification
