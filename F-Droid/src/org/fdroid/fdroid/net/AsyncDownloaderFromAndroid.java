@@ -40,8 +40,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
      * sense to have an async task without any way to notify the outside
      * world about completion. Therefore, we require the listener as a
      * parameter to the constructor.
-     *
-     * @param listener
      */
     public AsyncDownloaderFromAndroid(Context context, Listener listener, String appName, String appId, String remoteAddress, File localFile) {
         super(null, listener);
@@ -97,8 +95,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
 
     /**
      * Copy input file to output file
-     * @param inputFile
-     * @param outputFile
      * @throws IOException
      */
     private void copyFile(FileDescriptor inputFile, File outputFile) throws IOException {
@@ -174,8 +170,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
 
     /**
      * Extract the appId from a given download id.
-     * @param context
-     * @param downloadId
      * @return - appId or null if not found
      */
     public static String getAppId(Context context, long downloadId) {
@@ -199,8 +193,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
 
     /**
      * Extract the download title from a given download id.
-     * @param context
-     * @param downloadId
      * @return - title or null if not found
      */
     public static String getDownloadTitle(Context context, long downloadId) {
@@ -224,8 +216,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
 
     /**
      * Get the downloadId from an Intent sent by the DownloadManagerReceiver
-     * @param intent
-     * @return
      */
     public static long getDownloadId(Intent intent) {
         if (intent != null) {
@@ -248,8 +238,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
 
     /**
      * Check if a download is running for the app
-     * @param context
-     * @param appId
      * @return -1 if not downloading, else the downloadId
      */
     public static long isDownloading(Context context, String appId) {
@@ -274,8 +262,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
 
     /**
      * Check if a download for an app is complete.
-     * @param context
-     * @param appId
      * @return -1 if download is not complete, otherwise the download id
      */
     public static long isDownloadComplete(Context context, String appId) {
