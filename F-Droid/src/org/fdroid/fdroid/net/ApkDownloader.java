@@ -21,7 +21,6 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
-import android.os.Build;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -39,7 +38,6 @@ import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -188,7 +186,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         // Can we use the cached version?
         if (verifyOrDelete(potentiallyCachedFile)) {
             delete(localFile);
-            Utils.copy(potentiallyCachedFile, localFile);
+            Utils.copyQuietly(potentiallyCachedFile, localFile);
             prepareApkFileAndSendCompleteMessage();
             return false;
         }
@@ -243,7 +241,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     private void cacheIfRequired() {
         if (Preferences.get().shouldCacheApks()) {
             Utils.DebugLog(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
-            Utils.copy(localFile, potentiallyCachedFile);
+            Utils.copyQuietly(localFile, potentiallyCachedFile);
         }
     }
 
