@@ -5,7 +5,6 @@ import android.os.Build;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DownloaderFactory {
@@ -62,7 +61,7 @@ public class DownloaderFactory {
         if (canUseDownloadManager(url)) {
             return new AsyncDownloaderFromAndroid(context, listener, title, id, url.toString(), destFile);
         } else {
-            return new AsyncDownloader(create(context, url, destFile), listener);
+            return new AsyncDownloadWrapper(create(context, url, destFile), listener);
         }
     }
 

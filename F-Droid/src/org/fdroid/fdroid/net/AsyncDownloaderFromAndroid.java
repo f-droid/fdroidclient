@@ -23,7 +23,7 @@ import java.io.OutputStream;
  * A downloader that uses Android's DownloadManager to perform a download.
  */
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-public class AsyncDownloaderFromAndroid extends AsyncDownloader {
+public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     private final Context context;
     private final DownloadManager dm;
     private File localFile;
@@ -42,7 +42,6 @@ public class AsyncDownloaderFromAndroid extends AsyncDownloader {
      * parameter to the constructor.
      */
     public AsyncDownloaderFromAndroid(Context context, Listener listener, String appName, String appId, String remoteAddress, File localFile) {
-        super(null, listener);
         this.context = context;
         this.appName = appName;
         this.appId = appId;
