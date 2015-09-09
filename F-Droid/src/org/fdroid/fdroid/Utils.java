@@ -48,6 +48,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -162,16 +163,19 @@ public final class Utils {
     }
 
     public static boolean copy(File inFile, File outFile) {
+        InputStream input = null;
+        OutputStream output = null;
         try {
-            InputStream input = new FileInputStream(inFile);
-            OutputStream output = new FileOutputStream(outFile);
+            input  = new FileInputStream(inFile);
+            output = new FileOutputStream(outFile);
             Utils.copy(input, output);
-            output.close();
-            input.close();
             return true;
         } catch (IOException e) {
             Log.e(TAG, "I/O error when copying a file", e);
             return false;
+        } finally {
+            closeQuietly(output);
+            closeQuietly(input);
         }
     }
 

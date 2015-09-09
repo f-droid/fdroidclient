@@ -10,6 +10,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
+import android.text.TextUtils;
+import android.util.Log;
+
+import org.fdroid.fdroid.Utils;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -49,7 +53,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         this.listener = listener;
         this.localFile = localFile;
 
-        if (downloadTitle == null || downloadTitle.trim().length() == 0) {
+        if (TextUtils.isEmpty(downloadTitle)) {
             this.downloadTitle = remoteAddress;
         }
 
@@ -97,18 +101,15 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
      * @throws IOException
      */
     private void copyFile(FileDescriptor inputFile, File outputFile) throws IOException {
-        InputStream is = new FileInputStream(inputFile);
-        OutputStream os = new FileOutputStream(outputFile);
-        byte[] buffer = new byte[1024];
-        int count = 0;
-
+        InputStream input = null;
+        OutputStream output = null;
         try {
-            while ((count = is.read(buffer, 0, buffer.length)) > 0) {
-                os.write(buffer, 0, count);
-            }
+            input  = new FileInputStream(inputFile);
+            output = new FileOutputStream(outputFile);
+            Utils.copy(input, output);
         } finally {
-            os.close();
-            is.close();
+            Utils.closeQuietly(output);
+            Utils.closeQuietly(input);
         }
     }
 
