@@ -21,7 +21,7 @@ if (!hasProperty('sourceDeps')) {
         compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
         compile 'com.google.zxing:core:3.2.1'
         compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
-        compile 'cc.mvdan.accesspoint:library:0.1.1'
+        compile 'cc.mvdan.accesspoint:library:0.1.2'
         compile 'info.guardianproject.netcipher:netcipher:1.2'
         compile 'com.madgag.spongycastle:pkix:1.51.0.0'
         compile 'com.madgag.spongycastle:prov:1.51.0.0'
