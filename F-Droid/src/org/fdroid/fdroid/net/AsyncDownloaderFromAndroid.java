@@ -28,11 +28,11 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     private final DownloadManager dm;
     private File localFile;
     private String remoteAddress;
-    private String appName;
-    private String appId;
+    private String downloadTitle;
+    private String uniqueDownloadId;
     private Listener listener;
 
-    private long downloadId = -1;
+    private long downloadManagerId = -1;
 
     /**
      * Normally the listener would be provided using a setListener method.
@@ -41,16 +41,16 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
      * world about completion. Therefore, we require the listener as a
      * parameter to the constructor.
      */
-    public AsyncDownloaderFromAndroid(Context context, Listener listener, String appName, String appId, String remoteAddress, File localFile) {
+    public AsyncDownloaderFromAndroid(Context context, Listener listener, String downloadTitle, String downloadId, String remoteAddress, File localFile) {
         this.context = context;
-        this.appName = appName;
-        this.appId = appId;
+        this.downloadTitle = downloadTitle;
+        this.uniqueDownloadId = downloadId;
         this.remoteAddress = remoteAddress;
         this.listener = listener;
         this.localFile = localFile;
 
-        if (appName == null || appName.trim().length() == 0) {
-            this.appName = remoteAddress;
+        if (downloadTitle == null || downloadTitle.trim().length() == 0) {
+            this.downloadTitle = remoteAddress;
         }
 
         dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
@@ -59,13 +59,13 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     @Override
     public void download() {
         // Check if the download is complete
-        if ((downloadId = isDownloadComplete(context, appId)) > 0) {
+        if ((downloadManagerId = isDownloadComplete(context, uniqueDownloadId)) > 0) {
             // clear the notification
-            dm.remove(downloadId);
+            dm.remove(downloadManagerId);
 
             try {
                 // write the downloaded file to the expected location
-                ParcelFileDescriptor fd = dm.openDownloadedFile(downloadId);
+                ParcelFileDescriptor fd = dm.openDownloadedFile(downloadManagerId);
                 copyFile(fd.getFileDescriptor(), localFile);
                 listener.onDownloadComplete();
             } catch (IOException e) {
@@ -75,17 +75,17 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         }
 
         // Check if the download is still in progress
-        if (downloadId < 0) {
-            downloadId = isDownloading(context, appId);
+        if (downloadManagerId < 0) {
+            downloadManagerId = isDownloading(context, uniqueDownloadId);
         }
 
         // Start a new download
-        if (downloadId < 0) {
+        if (downloadManagerId < 0) {
             // set up download request
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(remoteAddress));
-            request.setTitle(appName);
-            request.setDescription(appId); // we will retrieve this later from the description field
-            this.downloadId = dm.enqueue(request);
+            request.setTitle(downloadTitle);
+            request.setDescription(uniqueDownloadId); // we will retrieve this later from the description field
+            this.downloadManagerId = dm.enqueue(request);
         }
 
         context.registerReceiver(receiver,
@@ -114,15 +114,15 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
 
     @Override
     public int getBytesRead() {
-        if (downloadId < 0) return 0;
+        if (downloadManagerId < 0) return 0;
 
         DownloadManager.Query query = new DownloadManager.Query();
-        query.setFilterById(downloadId);
+        query.setFilterById(downloadManagerId);
         Cursor c = dm.query(query);
 
         try {
             if (c.moveToFirst()) {
-                // we use the description column to store the app id
+                // we use the description column to store the unique id of this download
                 int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR);
                 return c.getInt(columnIndex);
             }
@@ -135,15 +135,15 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
 
     @Override
     public int getTotalBytes() {
-        if (downloadId < 0) return 0;
+        if (downloadManagerId < 0) return 0;
 
         DownloadManager.Query query = new DownloadManager.Query();
-        query.setFilterById(downloadId);
+        query.setFilterById(downloadManagerId);
         Cursor c = dm.query(query);
 
         try {
             if (c.moveToFirst()) {
-                // we use the description column to store the app id
+                // we use the description column to store the unique id for this download
                 int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES);
                 return c.getInt(columnIndex);
             }
@@ -162,16 +162,16 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
             // ignore if receiver already unregistered
         }
 
-        if (userRequested && downloadId >= 0) {
-            dm.remove(downloadId);
+        if (userRequested && downloadManagerId >= 0) {
+            dm.remove(downloadManagerId);
         }
     }
 
     /**
-     * Extract the appId from a given download id.
-     * @return - appId or null if not found
+     * Extract the uniqueDownloadId from a given download id.
+     * @return - uniqueDownloadId or null if not found
      */
-    public static String getAppId(Context context, long downloadId) {
+    public static String getDownloadId(Context context, long downloadId) {
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
         query.setFilterById(downloadId);
@@ -179,7 +179,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
 
         try {
             if (c.moveToFirst()) {
-                // we use the description column to store the app id
+                // we use the description column to store the unique id for this download
                 int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
                 return c.getString(columnIndex);
             }
@@ -202,7 +202,6 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
 
         try {
             if (c.moveToFirst()) {
-                // we use the description column to store the app id
                 int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_TITLE);
                 return c.getString(columnIndex);
             }
@@ -214,12 +213,12 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     }
 
     /**
-     * Get the downloadId from an Intent sent by the DownloadManagerReceiver
+     * Get the downloadManagerId from an Intent sent by the DownloadManagerReceiver
      */
     public static long getDownloadId(Intent intent) {
         if (intent != null) {
             if (intent.hasExtra(DownloadManager.EXTRA_DOWNLOAD_ID)) {
-                // we have been passed a DownloadManager download id, so get the app id for it
+                // we have been passed a DownloadManager download id, so get the unique id for that download
                 return intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
             }
 
@@ -236,19 +235,19 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     }
 
     /**
-     * Check if a download is running for the app
-     * @return -1 if not downloading, else the downloadId
+     * Check if a download is running for the specified id
+     * @return -1 if not downloading, else the id from the Android download manager
      */
-    public static long isDownloading(Context context, String appId) {
+    public static long isDownloading(Context context, String uniqueDownloadId) {
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
         Cursor c = dm.query(query);
-        int columnAppId = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
+        int columnUniqueDownloadId = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
         int columnId = c.getColumnIndex(DownloadManager.COLUMN_ID);
 
         try {
             while (c.moveToNext()) {
-                if (appId.equals(c.getString(columnAppId))) {
+                if (uniqueDownloadId.equals(c.getString(columnUniqueDownloadId))) {
                     return c.getLong(columnId);
                 }
             }
@@ -260,20 +259,20 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     }
 
     /**
-     * Check if a download for an app is complete.
+     * Check if a specific download is complete.
      * @return -1 if download is not complete, otherwise the download id
      */
-    public static long isDownloadComplete(Context context, String appId) {
+    public static long isDownloadComplete(Context context, String uniqueDownloadId) {
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
         query.setFilterByStatus(DownloadManager.STATUS_SUCCESSFUL);
         Cursor c = dm.query(query);
-        int columnAppId = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
+        int columnUniqueDownloadId = c.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION);
         int columnId = c.getColumnIndex(DownloadManager.COLUMN_ID);
 
         try {
             while (c.moveToNext()) {
-                if (appId.equals(c.getString(columnAppId))) {
+                if (uniqueDownloadId.equals(c.getString(columnUniqueDownloadId))) {
                     return c.getLong(columnId);
                 }
             }
@@ -292,8 +291,8 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         public void onReceive(Context context, Intent intent) {
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {
                 long dId = getDownloadId(intent);
-                String appId = getAppId(context, dId);
-                if (listener != null && dId == downloadId && appId != null) {
+                String downloadId = getDownloadId(context, dId);
+                if (listener != null && dId == AsyncDownloaderFromAndroid.this.downloadManagerId && downloadId != null) {
                     // our current download has just completed, so let's throw up install dialog
                     // immediately
                     try {

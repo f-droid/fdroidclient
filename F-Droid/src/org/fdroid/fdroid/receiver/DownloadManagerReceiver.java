@@ -22,7 +22,7 @@ public class DownloadManagerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // work out the app Id to send to the AppDetails Screen
         long downloadId = AsyncDownloaderFromAndroid.getDownloadId(intent);
-        String appId = AsyncDownloaderFromAndroid.getAppId(context, downloadId);
+        String appId = AsyncDownloaderFromAndroid.getDownloadId(context, downloadId);
 
         if (appId == null) {
             // bogus broadcast (e.g. download cancelled, but system sent a DOWNLOAD_COMPLETE)
