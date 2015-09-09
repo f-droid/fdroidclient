@@ -1,5 +1,8 @@
 ### 0.97 (2015-10-??)
 
+* Resumeable, simultaneous app downloads in the background using
+  Android's DownloadManager
+
 * Fix crash when trying to install incompatible apps with the privileged
   installer
 
