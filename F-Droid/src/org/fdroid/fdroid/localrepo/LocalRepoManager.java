@@ -140,7 +140,7 @@ public class LocalRepoManager {
             SanitizedFile apkFile = SanitizedFile.knownSanitized(appInfo.publicSourceDir);
             SanitizedFile fdroidApkLink = new SanitizedFile(webRoot, "fdroid.client.apk");
             attemptToDelete(fdroidApkLink);
-            if (Utils.symlinkOrCopyFile(apkFile, fdroidApkLink))
+            if (Utils.symlinkOrCopyFileQuietly(apkFile, fdroidApkLink))
                 fdroidClientURL = "/" + fdroidApkLink.getName();
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Could not set up F-Droid apk in the webroot", e);
@@ -220,7 +220,7 @@ public class LocalRepoManager {
     private void symlinkFileElsewhere(String fileName, String symlinkPrefix, File directory) {
         SanitizedFile index = new SanitizedFile(directory, fileName);
         attemptToDelete(index);
-        Utils.symlinkOrCopyFile(new SanitizedFile(new File(directory, symlinkPrefix), fileName), index);
+        Utils.symlinkOrCopyFileQuietly(new SanitizedFile(new File(directory, symlinkPrefix), fileName), index);
     }
 
     private void deleteContents(File path) {
@@ -249,7 +249,7 @@ public class LocalRepoManager {
 
             if (app.installedApk != null) {
                 SanitizedFile outFile = new SanitizedFile(repoDir, app.installedApk.apkName);
-                if (Utils.symlinkOrCopyFile(app.installedApk.installedFile, outFile))
+                if (Utils.symlinkOrCopyFileQuietly(app.installedApk.installedFile, outFile))
                     continue;
             }
             // if we got here, something went wrong

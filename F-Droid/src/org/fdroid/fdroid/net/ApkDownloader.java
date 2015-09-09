@@ -22,7 +22,6 @@ package org.fdroid.fdroid.net;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -34,6 +33,7 @@ import org.fdroid.fdroid.ProgressListener;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.compat.FileCompat;
 import org.fdroid.fdroid.data.Apk;
+import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.SanitizedFile;
 
 import java.io.File;
@@ -45,7 +45,7 @@ import java.security.NoSuchAlgorithmException;
  * If the file has previously been downloaded, it will make use of that
  * instead, without going to the network to download a new one.
  */
-public class ApkDownloader implements AsyncDownloadWrapper.Listener {
+public class ApkDownloader implements AsyncDownloader.Listener {
 
     private static final String TAG = "ApkDownloader";
 
@@ -68,6 +68,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
      */
     public static final String EVENT_DATA_ERROR_TYPE = "apkDownloadErrorType";
 
+    @NonNull private final App app;
     @NonNull private final Apk curApk;
     @NonNull private final Context context;
     @NonNull private final String repoAddress;
@@ -75,7 +76,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     @NonNull private final SanitizedFile potentiallyCachedFile;
 
     private ProgressListener listener;
-    private AsyncDownloadWrapper dlWrapper = null;
+    private AsyncDownloader dlWrapper = null;
     private boolean isComplete = false;
 
     private final long id = ++downloadIdCounter;
@@ -88,8 +89,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         setProgressListener(null);
     }
 
-    public ApkDownloader(@NonNull final Context context, @NonNull final Apk apk, @NonNull final String repoAddress) {
+    public ApkDownloader(@NonNull final Context context, @NonNull final App app, @NonNull final Apk apk, @NonNull final String repoAddress) {
         this.context = context;
+        this.app = app;
         curApk = apk;
         this.repoAddress = repoAddress;
         localFile = new SanitizedFile(Utils.getApkDownloadDir(context), apk.apkName);
@@ -184,7 +186,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         // Can we use the cached version?
         if (verifyOrDelete(potentiallyCachedFile)) {
             delete(localFile);
-            Utils.copy(potentiallyCachedFile, localFile);
+            Utils.copyQuietly(potentiallyCachedFile, localFile);
             prepareApkFileAndSendCompleteMessage();
             return false;
         }
@@ -193,11 +195,9 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
         Utils.DebugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
-            Downloader downloader = DownloaderFactory.create(context, remoteAddress, localFile);
-            dlWrapper = new AsyncDownloadWrapper(downloader, this);
+            dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, app.name + " " + curApk.version, curApk.id, this);
             dlWrapper.download();
             return true;
-
         } catch (IOException e) {
             onErrorDownloading(e.getLocalizedMessage());
         }
@@ -241,7 +241,7 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
     private void cacheIfRequired() {
         if (Preferences.get().shouldCacheApks()) {
             Utils.DebugLog(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
-            Utils.copy(localFile, potentiallyCachedFile);
+            Utils.copyQuietly(localFile, potentiallyCachedFile);
         }
     }
 
@@ -271,11 +271,13 @@ public class ApkDownloader implements AsyncDownloadWrapper.Listener {
 
     /**
      * Attempts to cancel the download (if in progress) and also removes the progress
-     * listener (to prevent
+     * listener
+     *
+     * @param userRequested - true if the user requested the cancel (via button click), otherwise false.
      */
-    public void cancel() {
+    public void cancel(boolean userRequested) {
         if (dlWrapper != null) {
-            dlWrapper.attemptCancel();
+            dlWrapper.attemptCancel(userRequested);
         }
     }
 

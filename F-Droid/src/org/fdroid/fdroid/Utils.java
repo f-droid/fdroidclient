@@ -142,8 +142,8 @@ public final class Utils {
     /**
      * Attempt to symlink, but if that fails, it will make a copy of the file.
      */
-    public static boolean symlinkOrCopyFile(SanitizedFile inFile, SanitizedFile outFile) {
-        return FileCompat.symlink(inFile, outFile) || copy(inFile, outFile);
+    public static boolean symlinkOrCopyFileQuietly(SanitizedFile inFile, SanitizedFile outFile) {
+        return FileCompat.symlink(inFile, outFile) || copyQuietly(inFile, outFile);
     }
 
     /**
@@ -161,17 +161,20 @@ public final class Utils {
         }
     }
 
-    public static boolean copy(File inFile, File outFile) {
+    public static boolean copyQuietly(File inFile, File outFile) {
+        InputStream input = null;
+        OutputStream output = null;
         try {
-            InputStream input = new FileInputStream(inFile);
-            OutputStream output = new FileOutputStream(outFile);
+            input  = new FileInputStream(inFile);
+            output = new FileOutputStream(outFile);
             Utils.copy(input, output);
-            output.close();
-            input.close();
             return true;
         } catch (IOException e) {
             Log.e(TAG, "I/O error when copying a file", e);
             return false;
+        } finally {
+            closeQuietly(output);
+            closeQuietly(input);
         }
     }
 

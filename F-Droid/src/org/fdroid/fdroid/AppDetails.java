@@ -39,6 +39,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
@@ -91,6 +92,7 @@ import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.installer.Installer.AndroidNotCompatibleException;
 import org.fdroid.fdroid.installer.Installer.InstallerCallback;
 import org.fdroid.fdroid.net.ApkDownloader;
+import org.fdroid.fdroid.net.AsyncDownloaderFromAndroid;
 import org.fdroid.fdroid.net.Downloader;
 
 import java.io.File;
@@ -364,6 +366,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             Log.e(TAG, "No application ID found in the intent!");
             return null;
         }
+
         return i.getStringExtra(EXTRA_APPID);
     }
 
@@ -428,6 +431,18 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         }
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
+
+        // Check if a download is running for this app
+        if (AsyncDownloaderFromAndroid.isDownloading(this, app.id) >= 0) {
+            // call install() to re-setup the listeners and downloaders
+            // the AsyncDownloader will not restart the download since the download is running,
+            // and thus the version we pass to install() is not important
+            refreshHeader();
+            refreshApkList();
+            final Apk apkToInstall = ApkProvider.Helper.find(this, app.id, app.suggestedVercode);
+            install(apkToInstall);
+        }
+
     }
 
     // The signature of the installed version.
@@ -451,6 +466,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         refreshApkList();
         refreshHeader();
         supportInvalidateOptionsMenu();
+
         if (downloadHandler != null) {
             if (downloadHandler.isComplete()) {
                 downloadCompleteInstallApk();
@@ -554,7 +570,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
     protected void onDestroy() {
         if (downloadHandler != null) {
             if (!inProcessOfChangingConfiguration) {
-                downloadHandler.cancel();
+                downloadHandler.cancel(false);
                 cleanUpFinishedDownload();
             }
         }
@@ -811,12 +827,8 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         if (downloadHandler != null && !downloadHandler.isComplete())
             return;
 
-        final String[] projection = { RepoProvider.DataColumns.ADDRESS };
-        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
-        if (repo == null || repo.address == null) {
-            return;
-        }
-        final String repoaddress = repo.address;
+        final String repoaddress = getRepoAddress(apk);
+        if (repoaddress == null) return;
 
         if (!apk.compatible) {
             AlertDialog.Builder ask_alrt = new AlertDialog.Builder(this);
@@ -858,8 +870,18 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         startDownload(apk, repoaddress);
     }
 
+    @Nullable
+    private String getRepoAddress(Apk apk) {
+        final String[] projection = { RepoProvider.DataColumns.ADDRESS };
+        Repo repo = RepoProvider.Helper.findById(this, apk.repo, projection);
+        if (repo == null || repo.address == null) {
+            return null;
+        }
+        return repo.address;
+    }
+
     private void startDownload(Apk apk, String repoAddress) {
-        downloadHandler = new ApkDownloader(getBaseContext(), apk, repoAddress);
+        downloadHandler = new ApkDownloader(getBaseContext(), app, apk, repoAddress);
         localBroadcastManager.registerReceiver(downloaderProgressReceiver,
                 new IntentFilter(Downloader.LOCAL_ACTION_PROGRESS));
         downloadHandler.setProgressListener(this);
@@ -1517,7 +1539,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             if (activity == null || activity.downloadHandler == null)
                 return;
 
-            activity.downloadHandler.cancel();
+            activity.downloadHandler.cancel(true);
             activity.cleanUpFinishedDownload();
             setProgressVisible(false);
             updateViews();

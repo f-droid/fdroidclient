@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net;
 
 import android.content.Context;
+import android.os.Build;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +52,29 @@ public class DownloaderFactory {
         return "bluetooth".equalsIgnoreCase(url.getProtocol());
     }
 
-    private static boolean isOnionAddress(URL url) {
+    public static AsyncDownloader createAsync(Context context, String urlString, File destFile, String title, String id, AsyncDownloader.Listener listener) throws IOException {
+        return createAsync(context, new URL(urlString), destFile, title, id, listener);
+    }
+
+    public static AsyncDownloader createAsync(Context context, URL url, File destFile, String title, String id, AsyncDownloader.Listener listener)
+            throws IOException {
+        if (canUseDownloadManager(url)) {
+            return new AsyncDownloaderFromAndroid(context, listener, title, id, url.toString(), destFile);
+        } else {
+            return new AsyncDownloadWrapper(create(context, url, destFile), listener);
+        }
+    }
+
+    static boolean isOnionAddress(URL url) {
         return url.getHost().endsWith(".onion");
     }
+
+    /**
+     * Tests to see if we can use Android's DownloadManager to download the APK, instead of
+     * a downloader returned from DownloadFactory.
+     */
+    private static boolean canUseDownloadManager(URL url) {
+        return Build.VERSION.SDK_INT > Build.VERSION_CODES.FROYO && !isOnionAddress(url);
+    }
+
 }
