@@ -19,13 +19,25 @@ public class IconDownloader extends BaseImageDownloader {
 
     @Override
     public InputStream getStream(String imageUri, Object extra) throws IOException {
-        switch (Scheme.ofUri(imageUri)) {
-        case HTTP:
-        case HTTPS:
+
+        Scheme scheme = Scheme.ofUri(imageUri);
+
+        switch (scheme) {
+            case HTTP:
+            case HTTPS:
+                Downloader downloader = DownloaderFactory.create(context, imageUri);
+                return downloader.getInputStream();
+        }
+
+        //bluetooth isn't a scheme in the Scheme. library, so we can add a check here
+        if (imageUri.toLowerCase().startsWith("bluetooth"))
+        {
             Downloader downloader = DownloaderFactory.create(context, imageUri);
             return downloader.getInputStream();
-        default:
-            return super.getStream(imageUri, extra);
         }
+
+
+        return super.getStream(imageUri, extra);
+
     }
 }

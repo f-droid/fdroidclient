@@ -282,7 +282,8 @@ public class SwapAppsView extends ListView implements
                 public void onReceive(Context context, Intent intent) {
                     Apk apk = getApkToInstall();
                     String broadcastUrl = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
-                    if (!TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl)) {
+
+                    if (apk.repoAddress != null && (!TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl))) {
                         return;
                     }
 
