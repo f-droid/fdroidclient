@@ -1,5 +1,6 @@
 package org.fdroid.fdroid.net;
 
+import android.annotation.TargetApi;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,10 +10,13 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.util.Log;
 
+import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -23,6 +27,7 @@ import org.fdroid.fdroid.localrepo.SwapService;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
+import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.security.cert.Certificate;
@@ -80,14 +85,17 @@ public class WifiStateChangeService extends Service {
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         wifiInfo = wifiManager.getConnectionInfo();
                         FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
+                        String netmask = formatIpAddress(wifiManager.getDhcpInfo().netmask);
+                        if (!TextUtils.isEmpty(FDroidApp.ipAddressString))
+                            FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING) {
                         // try once to see if its a hotspot
-                        FDroidApp.ipAddressString = getIpAddressFromNetworkInterface();
+                        setIpInfoFromNetworkInterface();
                         if (FDroidApp.ipAddressString == null)
                             return null;
                     } else {  // a hotspot can be active during WIFI_STATE_UNKNOWN
-                        FDroidApp.ipAddressString = getIpAddressFromNetworkInterface();
+                        setIpInfoFromNetworkInterface();
                     }
 
                     if (FDroidApp.ipAddressString == null) {
@@ -179,7 +187,8 @@ public class WifiStateChangeService extends Service {
         return null;
     }
 
-    public String getIpAddressFromNetworkInterface() {
+    @TargetApi(9)
+    public void setIpInfoFromNetworkInterface() {
         try {
             for (Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces(); networkInterfaces.hasMoreElements(); ) {
                 NetworkInterface netIf = networkInterfaces.nextElement();
@@ -191,15 +200,23 @@ public class WifiStateChangeService extends Service {
                     } else if (netIf.getDisplayName().contains("wlan0")
                             || netIf.getDisplayName().contains("eth0")
                             || netIf.getDisplayName().contains("ap0")) {
-                        return inetAddress.getHostAddress();
+                        FDroidApp.ipAddressString = inetAddress.getHostAddress();
+                        if (Build.VERSION.SDK_INT < 9)
+                            return;
+                        // the following methods were not added until android-9/Gingerbread
+                        for (InterfaceAddress address : netIf.getInterfaceAddresses()) {
+                            if (inetAddress.equals(address.getAddress()) && ! TextUtils.isEmpty(FDroidApp.ipAddressString)) {
+                                String cidr = String.format("%s/%i", FDroidApp.ipAddressString, address.getNetworkPrefixLength());
+                                FDroidApp.subnetInfo = (new SubnetUtils(cidr)).getInfo();
+                                break;
+                            }
+                        }
                     }
                 }
             }
         } catch (SocketException e) {
             Log.e(TAG, "Could not get ip address", e);
         }
-
-        return null;
     }
 
     private String formatIpAddress(int ipAddress) {

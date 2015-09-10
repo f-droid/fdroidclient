@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
+import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 
@@ -84,11 +85,18 @@ public class HttpDownloader extends Downloader {
         }
     }
 
+    boolean isSwapUrl() {
+        String host = sourceUrl.getHost();
+        return sourceUrl.getPort() > 1023 // only root can use <= 1023, so never a swap repo
+                && host.matches("[0-9.]+") // host must be an IP address
+                && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
+    }
+
     protected void setupConnection() throws IOException {
         if (connection != null)
             return;
         Preferences prefs = Preferences.get();
-        if (prefs.isProxyEnabled()) {
+        if (prefs.isProxyEnabled() && ! isSwapUrl()) {
             SocketAddress sa = new InetSocketAddress(prefs.getProxyHost(), prefs.getProxyPort());
             Proxy proxy = new Proxy(Proxy.Type.HTTP, sa);
             NetCipher.setProxy(proxy);

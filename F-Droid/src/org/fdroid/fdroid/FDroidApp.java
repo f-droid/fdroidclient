@@ -44,6 +44,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
+import org.apache.commons.net.util.SubnetUtils;
 import org.fdroid.fdroid.Preferences.ChangeListener;
 import org.fdroid.fdroid.compat.PRNGFixes;
 import org.fdroid.fdroid.data.AppProvider;
@@ -68,6 +69,7 @@ public class FDroidApp extends Application {
     // for the local repo on this device, all static since there is only one
     public static int port;
     public static String ipAddressString;
+    public static SubnetUtils.SubnetInfo subnetInfo;
     public static String ssid;
     public static String bssid;
     public static final Repo repo = new Repo();
@@ -135,6 +137,7 @@ public class FDroidApp extends Application {
     public static void initWifiSettings() {
         port = 8888;
         ipAddressString = null;
+        subnetInfo = (new SubnetUtils("0.0.0.0/32").getInfo());
         ssid = "";
         bssid = "";
     }
