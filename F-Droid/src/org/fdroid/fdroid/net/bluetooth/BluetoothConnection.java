@@ -53,12 +53,6 @@ public class BluetoothConnection {
     }
 
     public void close() throws IOException {
-        if (input == null || output == null) {
-            throw new RuntimeException("Cannot close() a BluetoothConnection before calling open()" );
-        }
-
-        input.close();
-        output.close();
-        socket.close();
+        closeQuietly();
     }
 }

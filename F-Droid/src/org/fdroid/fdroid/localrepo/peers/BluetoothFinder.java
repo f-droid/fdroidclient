@@ -15,6 +15,8 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
 
     private static final String TAG = "BluetoothFinder";
 
+    public final static int DISCOVERABLE_TIMEOUT = 3600;
+
     private final BluetoothAdapter adapter;
 
     public BluetoothFinder(Context context) {

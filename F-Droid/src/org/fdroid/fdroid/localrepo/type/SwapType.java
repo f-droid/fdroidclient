@@ -33,6 +33,11 @@ public abstract class SwapType {
 
     abstract protected String getBroadcastAction();
 
+    public boolean isDiscoverable ()
+    {
+        return isConnected();
+    }
+
     protected final void setConnected(boolean connected) {
         if (connected) {
             isConnected = true;

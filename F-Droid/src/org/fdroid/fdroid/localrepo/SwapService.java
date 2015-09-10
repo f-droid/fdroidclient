@@ -456,7 +456,7 @@ public class SwapService extends Service {
     }
 
     public boolean isBluetoothDiscoverable() {
-        return bluetoothSwap.isConnected();
+        return bluetoothSwap.isDiscoverable();
     }
 
     public boolean isBonjourDiscoverable() {

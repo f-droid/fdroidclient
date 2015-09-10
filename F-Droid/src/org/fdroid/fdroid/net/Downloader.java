@@ -40,6 +40,7 @@ public abstract class Downloader {
     protected int totalBytes = 0;
 
     public abstract InputStream getInputStream() throws IOException;
+    public abstract void close();
 
     Downloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {

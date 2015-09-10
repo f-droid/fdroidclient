@@ -23,6 +23,7 @@ public class BluetoothSwap extends SwapType {
     @NonNull
     private final BluetoothAdapter adapter;
     private BroadcastReceiver receiver;
+    private boolean isDiscoverable = false;
 
     @Nullable
     private BluetoothServer server;
@@ -49,6 +50,11 @@ public class BluetoothSwap extends SwapType {
     }
 
     @Override
+    public boolean isDiscoverable () {
+        return isDiscoverable;
+    }
+
+    @Override
     public boolean isConnected() {
         return server != null && server.isRunning() && super.isConnected();
     }
@@ -68,6 +74,7 @@ public class BluetoothSwap extends SwapType {
                         break;
 
                     case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
+                        isDiscoverable = true;
                         if (server != null && server.isRunning()) {
                             setConnected(true);
                         }
@@ -163,5 +170,6 @@ public class BluetoothSwap extends SwapType {
         protected String getBroadcastAction() {
             return null;
         }
+
     }
 }

@@ -48,6 +48,7 @@ public class BluetoothDownloader extends Downloader {
         // to us).
         BoundedInputStream stream = new BoundedInputStream(response.toContentStream(), fileDetails.getFileSize());
         stream.setPropagateClose(false);
+
         return stream;
     }
 
@@ -93,6 +94,13 @@ public class BluetoothDownloader extends Downloader {
             details.getCacheTag() != null &&
             details.getCacheTag().equals(getCacheTag())
         );
+    }
+
+    @Override
+    public void close ()
+    {
+        if (connection != null)
+            connection.closeQuietly();
     }
 
 }

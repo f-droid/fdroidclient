@@ -44,6 +44,7 @@ import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.installer.Installer;
 import org.fdroid.fdroid.localrepo.LocalRepoManager;
 import org.fdroid.fdroid.localrepo.SwapService;
+import org.fdroid.fdroid.localrepo.peers.BluetoothFinder;
 import org.fdroid.fdroid.localrepo.peers.Peer;
 import org.fdroid.fdroid.net.ApkDownloader;
 
@@ -625,7 +626,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             Log.d(TAG, "Not currently in discoverable mode, so prompting user to enable.");
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 3600); // 3600 is new maximum! TODO: What about when this expires? What if user manually disables discovery?
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, BluetoothFinder.DISCOVERABLE_TIMEOUT); // 3600 is new maximum! TODO: What about when this expires? What if user manually disables discovery?
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
         }
 

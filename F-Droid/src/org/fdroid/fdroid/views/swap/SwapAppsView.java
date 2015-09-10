@@ -283,7 +283,7 @@ public class SwapAppsView extends ListView implements
                     Apk apk = getApkToInstall();
                     String broadcastUrl = intent.getStringExtra(Downloader.EXTRA_ADDRESS);
 
-                    if (apk.repoAddress != null && (!TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl))) {
+                    if (apk != null && apk.repoAddress != null && (!TextUtils.equals(Utils.getApkUrl(apk.repoAddress, apk), broadcastUrl))) {
                         return;
                     }
 
@@ -374,9 +374,15 @@ public class SwapAppsView extends ListView implements
 
             private void resetView() {
 
+                if (app == null)
+                    return;
+
                 progressView.setVisibility(View.GONE);
                 progressView.setIndeterminate(true);
-                nameView.setText(app.name);
+
+                if (app.name != null)
+                    nameView.setText(app.name);
+
                 ImageLoader.getInstance().displayImage(app.iconUrl, iconView, displayImageOptions);
 
                 btnInstall.setVisibility(View.GONE);

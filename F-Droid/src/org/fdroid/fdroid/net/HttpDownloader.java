@@ -167,4 +167,8 @@ public class HttpDownloader extends Downloader {
         return statusCode;
     }
 
+    public void close ()
+    {
+        connection.disconnect();
+    }
 }

@@ -137,6 +137,8 @@ public class BluetoothServer extends Thread {
                     break;
             }
 
+            connection.closeQuietly();
+
         }
 
         private Response handleRequest(Request request) throws IOException {
