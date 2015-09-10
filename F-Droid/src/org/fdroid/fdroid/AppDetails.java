@@ -892,7 +892,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
     private void installApk(File file) {
         try {
-            installer.installPackage(file);
+            installer.installPackage(file, app.id);
         } catch (AndroidNotCompatibleException e) {
             Log.e(TAG, "Android not compatible with this Installer!", e);
         }

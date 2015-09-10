@@ -14,7 +14,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
-package org.fdroid.fdroid.installer;
+package org.fdroid.fdroid.privileged.views;
 
 import android.app.Activity;
 import android.content.Context;

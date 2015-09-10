@@ -51,11 +51,7 @@
         android:maxSdkVersion="18" />
     <uses-permission android:name="android.permission.NFC" />
 
-    <!-- These permissions are only granted when F-Droid is installed as a system-app! -->
-    <uses-permission android:name="android.permission.INSTALL_PACKAGES"
-        tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.DELETE_PACKAGES"
-        tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="org.fdroid.fdroid.privileged.USE_SERVICE" />
 
     <!-- Indicate that F-Droid may request root access (introduced by Koush's Superuser app)
          This permission is deprecated, but necessary for some old superuser
@@ -302,7 +298,7 @@
                 android:value=".SearchResults" />
         </activity>
         <activity
-            android:name=".installer.InstallConfirmActivity"
+            android:name=".privileged.views.InstallConfirmActivity"
             android:label="@string/menu_install"
             android:parentActivityName=".FDroid">
             <meta-data
@@ -390,10 +386,10 @@
         </activity>
         <!-- Note: Theme.NoDisplay, this activity shows dialogs only -->
         <activity
-            android:name=".installer.InstallIntoSystemDialogActivity"
+            android:name=".privileged.install.InstallPrivilegedDialogActivity"
             android:theme="@android:style/Theme.NoDisplay" />
         <receiver
-            android:name=".installer.InstallIntoSystemBootReceiver" >
+            android:name=".privileged.install.InstallPrivilegedBootReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

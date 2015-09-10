@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.fdroid.fdroid.privileged.install;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,16 +25,16 @@ import android.content.Intent;
 
 import org.fdroid.fdroid.Preferences;
 
-public class InstallIntoSystemBootReceiver extends BroadcastReceiver {
+public class InstallPrivilegedBootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-            if (Preferences.get().isPostSystemInstall()) {
-                Preferences.get().setPostSystemInstall(false);
+            if (Preferences.get().isPostPrivilegedInstall()) {
+                Preferences.get().setPostPrivilegedInstall(false);
 
-                Intent postInstall = new Intent(context.getApplicationContext(), InstallIntoSystemDialogActivity.class);
-                postInstall.setAction(InstallIntoSystemDialogActivity.ACTION_POST_INSTALL);
+                Intent postInstall = new Intent(context.getApplicationContext(), InstallPrivilegedDialogActivity.class);
+                postInstall.setAction(InstallPrivilegedDialogActivity.ACTION_POST_INSTALL);
                 postInstall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(postInstall);
             }

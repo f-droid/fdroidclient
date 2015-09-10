@@ -12,6 +12,7 @@ if (!hasProperty('sourceDeps')) {
     }
 
     dependencies {
+        compile project(':privileged-api-lib')
 
         compile 'com.android.support:support-v4:22.2.1'
         compile 'com.android.support:appcompat-v7:22.1.1'
@@ -58,6 +59,8 @@ if (!hasProperty('sourceDeps')) {
         compile 'com.android.support:support-v4:22.2.1'
         compile 'com.android.support:appcompat-v7:22.1.1'
         compile 'com.android.support:support-annotations:22.2.1'
+
+        compile project(':privileged-api-lib')
 
         compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
         compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'

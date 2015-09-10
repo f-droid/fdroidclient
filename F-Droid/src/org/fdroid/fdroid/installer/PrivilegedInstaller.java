@@ -21,22 +21,29 @@
 package org.fdroid.fdroid.installer;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.IPackageDeleteObserver;
-import android.content.pm.IPackageInstallObserver;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
+import org.fdroid.fdroid.privileged.IPrivilegedCallback;
+import org.fdroid.fdroid.privileged.IPrivilegedService;
+import org.fdroid.fdroid.privileged.views.AppDiff;
+import org.fdroid.fdroid.privileged.views.AppSecurityPermissions;
+import org.fdroid.fdroid.privileged.views.InstallConfirmActivity;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -63,78 +70,69 @@ import java.util.List;
  * https://android.googlesource.com/platform
  * /frameworks/base/+/ccbf84f44c9e6a5ed3c08673614826bb237afc54
  */
-public class SystemInstaller extends Installer {
+public class PrivilegedInstaller extends Installer {
 
-    private static final String TAG = "SystemInstaller";
+    private static final String TAG = "PrivilegedInstaller";
+
+    private static final String PRIVILEGED_SERVICE_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
+    public static final String PRIVILEGED_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
 
     private Activity mActivity;
-    private final PackageInstallObserver mInstallObserver;
-    private final PackageDeleteObserver mDeleteObserver;
-    private Method mInstallMethod;
-    private Method mDeleteMethod;
 
     public static final int REQUEST_CONFIRM_PERMS = 0;
 
-    public SystemInstaller(Activity activity, PackageManager pm,
-            InstallerCallback callback) throws AndroidNotCompatibleException {
+    public PrivilegedInstaller(Activity activity, PackageManager pm,
+                               InstallerCallback callback) throws AndroidNotCompatibleException {
         super(activity, pm, callback);
         this.mActivity = activity;
+    }
 
-        // create internal callbacks
-        mInstallObserver = new PackageInstallObserver();
-        mDeleteObserver = new PackageDeleteObserver();
+    public static boolean isAvailable(Context context) {
 
+        // check if installed
+        PackageManager pm = context.getPackageManager();
         try {
-            Class<?>[] installTypes = {
-                    Uri.class, IPackageInstallObserver.class, int.class,
-                    String.class
-            };
-            Class<?>[] deleteTypes = {
-                    String.class, IPackageDeleteObserver.class,
-                    int.class
-            };
-
-            mInstallMethod = mPm.getClass().getMethod("installPackage", installTypes);
-            mDeleteMethod = mPm.getClass().getMethod("deletePackage", deleteTypes);
-        } catch (NoSuchMethodException e) {
-            throw new AndroidNotCompatibleException(e);
+            pm.getPackageInfo(PRIVILEGED_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
-    }
 
-    /**
-     * Internal install callback from the system
-     */
-    class PackageInstallObserver extends IPackageInstallObserver.Stub {
-        public void packageInstalled(String packageName, int returnCode) throws RemoteException {
-            // TODO: propagate other return codes?
-            if (returnCode == INSTALL_SUCCEEDED) {
-                Utils.DebugLog(TAG, "Install succeeded");
+        // check if it has the privileged permissions granted
+        final Object mutex = new Object();
+        final Bundle returnBundle = new Bundle();
+        ServiceConnection mServiceConnection = new ServiceConnection() {
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
 
-                mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
-            } else {
-                Log.e(TAG, "Install failed with returnCode " + returnCode);
-                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                        InstallerCallback.ERROR_CODE_OTHER);
+                try {
+                    boolean hasPermissions = privService.hasPrivilegedPermissions();
+                    returnBundle.putBoolean("has_permissions", hasPermissions);
+                } catch (RemoteException e) {
+                    Log.e(TAG, "RemoteException", e);
+                }
+
+                synchronized (mutex) {
+                    mutex.notify();
+                }
+            }
+
+            public void onServiceDisconnected(ComponentName name) {
+            }
+        };
+        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
+        context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+                Context.BIND_AUTO_CREATE);
+
+        synchronized (mutex) {
+            try {
+                mutex.wait(3000);
+            } catch (InterruptedException e) {
+                // don't care
             }
         }
-    }
 
-    /**
-     * Internal delete callback from the system
-     */
-    class PackageDeleteObserver extends IPackageDeleteObserver.Stub {
-        public void packageDeleted(String packageName, int returnCode) throws RemoteException {
-            // TODO: propagate other return codes?
-            if (returnCode == DELETE_SUCCEEDED) {
-                Utils.DebugLog(TAG, "Delete succeeded");
-
-                mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
-            } else {
-                Log.e(TAG, "Delete failed with returnCode " + returnCode);
-                mCallback.onError(InstallerCallback.OPERATION_DELETE,
-                        InstallerCallback.ERROR_CODE_OTHER);
-            }
-        }
+        return (returnBundle.getBoolean("has_permission", false));
     }
 
     @Override
@@ -176,15 +174,47 @@ public class SystemInstaller extends Installer {
         return 1;
     }
 
-    private void doInstallPackageInternal(Uri packageURI) throws AndroidNotCompatibleException {
-        try {
-            mInstallMethod.invoke(mPm, packageURI, mInstallObserver,
-                    INSTALL_REPLACE_EXISTING, null);
-        } catch (Exception e) {
-            throw new AndroidNotCompatibleException(e);
-        }
-    }
+    private void doInstallPackageInternal(final Uri packageURI) throws AndroidNotCompatibleException {
+        ServiceConnection mServiceConnection = new ServiceConnection() {
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
 
+                IPrivilegedCallback callback = new IPrivilegedCallback() {
+                    @Override
+                    public void handleResult(String packageName, int returnCode) throws RemoteException {
+                        // TODO: propagate other return codes?
+                        if (returnCode == INSTALL_SUCCEEDED) {
+                            Utils.DebugLog(TAG, "Install succeeded");
+                            mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
+                        } else {
+                            Log.e(TAG, "Install failed with returnCode " + returnCode);
+                            mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                                    InstallerCallback.ERROR_CODE_OTHER);
+                        }
+                    }
+
+                    @Override
+                    public IBinder asBinder() {
+                        return null;
+                    }
+                };
+
+                try {
+                    privService.installPackage(packageURI, INSTALL_REPLACE_EXISTING, null, callback);
+                } catch (RemoteException e) {
+                    Log.e(TAG, "RemoteException", e);
+                }
+            }
+
+            public void onServiceDisconnected(ComponentName name) {
+            }
+        };
+
+        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
+        mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+                Context.BIND_AUTO_CREATE);
+    }
 
     @Override
     protected void installPackageInternal(List<File> apkFiles)
@@ -250,35 +280,70 @@ public class SystemInstaller extends Installer {
 
     private void doDeletePackageInternal(final String packageName)
             throws AndroidNotCompatibleException {
-        try {
-            mDeleteMethod.invoke(mPm, packageName, mDeleteObserver, 0);
-        } catch (Exception e) {
-            throw new AndroidNotCompatibleException(e);
-        }
+        ServiceConnection mServiceConnection = new ServiceConnection() {
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                IPrivilegedService privService = IPrivilegedService.Stub.asInterface(service);
+
+                IPrivilegedCallback callback = new IPrivilegedCallback() {
+                    @Override
+                    public void handleResult(String packageName, int returnCode) throws RemoteException {
+                        // TODO: propagate other return codes?
+                        if (returnCode == DELETE_SUCCEEDED) {
+                            Utils.DebugLog(TAG, "Delete succeeded");
+
+                            mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
+                        } else {
+                            Log.e(TAG, "Delete failed with returnCode " + returnCode);
+                            mCallback.onError(InstallerCallback.OPERATION_DELETE,
+                                    InstallerCallback.ERROR_CODE_OTHER);
+                        }
+                    }
+
+                    @Override
+                    public IBinder asBinder() {
+                        return null;
+                    }
+                };
+
+                try {
+                    privService.deletePackage(packageName, 0, callback);
+                } catch (RemoteException e) {
+                    Log.e(TAG, "RemoteException", e);
+                }
+            }
+
+            public void onServiceDisconnected(ComponentName name) {
+            }
+        };
+
+        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
+        mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+                Context.BIND_AUTO_CREATE);
     }
 
     @Override
     public boolean handleOnActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-        case REQUEST_CONFIRM_PERMS:
-            if (resultCode == Activity.RESULT_OK) {
-                final Uri packageUri = data.getData();
-                try {
-                    doInstallPackageInternal(packageUri);
-                } catch (AndroidNotCompatibleException e) {
+            case REQUEST_CONFIRM_PERMS:
+                if (resultCode == Activity.RESULT_OK) {
+                    final Uri packageUri = data.getData();
+                    try {
+                        doInstallPackageInternal(packageUri);
+                    } catch (AndroidNotCompatibleException e) {
+                        mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                                InstallerCallback.ERROR_CODE_OTHER);
+                    }
+                } else if (resultCode == InstallConfirmActivity.RESULT_CANNOT_PARSE) {
                     mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                            InstallerCallback.ERROR_CODE_OTHER);
+                            InstallerCallback.ERROR_CODE_CANNOT_PARSE);
+                } else { // Activity.RESULT_CANCELED
+                    mCallback.onError(InstallerCallback.OPERATION_INSTALL,
+                            InstallerCallback.ERROR_CODE_CANCELED);
                 }
-            } else if (resultCode == InstallConfirmActivity.RESULT_CANNOT_PARSE) {
-                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                        InstallerCallback.ERROR_CODE_CANNOT_PARSE);
-            } else { // Activity.RESULT_CANCELED
-                mCallback.onError(InstallerCallback.OPERATION_INSTALL,
-                        InstallerCallback.ERROR_CODE_CANCELED);
-            }
-            return true;
-        default:
-            return false;
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -579,7 +644,7 @@ public class SystemInstaller extends Installer {
      * {@link #installPackage(android.net.Uri, IPackageInstallObserver, int)}
      * if the system failed to install the package because it is attempting to define a
      * permission that is already defined by some existing package.
-     *
+     * <p/>
      * <p>The package name of the app which has already defined the permission is passed to
      * a {@link PackageInstallObserver}, if any, as the {@link #EXTRA_EXISTING_PACKAGE}
      * string extra; and the name of the permission being redefined is passed in the

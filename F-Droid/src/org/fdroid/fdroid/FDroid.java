@@ -44,7 +44,7 @@ import android.widget.Toast;
 import org.fdroid.fdroid.compat.TabManager;
 import org.fdroid.fdroid.data.AppProvider;
 import org.fdroid.fdroid.data.NewRepoConfig;
-import org.fdroid.fdroid.installer.InstallIntoSystemDialogActivity;
+import org.fdroid.fdroid.privileged.install.InstallPrivilegedDialogActivity;
 import org.fdroid.fdroid.views.AppListFragmentPagerAdapter;
 import org.fdroid.fdroid.views.ManageReposActivity;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;
@@ -98,7 +98,7 @@ public class FDroid extends ActionBarActivity {
         Uri uri = AppProvider.getContentUri();
         getContentResolver().registerContentObserver(uri, true, new AppObserver());
 
-        InstallIntoSystemDialogActivity.firstTime(this);
+        InstallPrivilegedDialogActivity.firstTime(this);
 
         if (UpdateService.isNetworkAvailableForUpdate(this)) {
             UpdateService.updateNow(this);

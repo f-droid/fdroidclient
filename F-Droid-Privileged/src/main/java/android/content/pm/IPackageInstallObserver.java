@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Dominik Schürmann <dominik@dominikschuermann.de>
+ * Copyright (C) 2015 Dominik Schürmann <dominik@dominikschuermann.de>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,31 +19,36 @@
 
 package android.content.pm;
 
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.RemoteException;
+
 /**
  * Just a non-working implementation of this Stub to satisfy compiler!
  */
-public interface IPackageDeleteObserver extends android.os.IInterface {
+public interface IPackageInstallObserver extends IInterface {
 
-    abstract class Stub extends android.os.Binder implements
-            android.content.pm.IPackageDeleteObserver {
+    abstract class Stub extends Binder implements android.content.pm.IPackageInstallObserver {
+
         public Stub() {
             throw new RuntimeException("Stub!");
         }
 
-        public static android.content.pm.IPackageDeleteObserver asInterface(android.os.IBinder obj) {
+        public static android.content.pm.IPackageInstallObserver asInterface(IBinder obj) {
             throw new RuntimeException("Stub!");
         }
 
-        public android.os.IBinder asBinder() {
+        public IBinder asBinder() {
             throw new RuntimeException("Stub!");
         }
 
-        public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply,
-                int flags) throws android.os.RemoteException {
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags)
+                throws RemoteException {
             throw new RuntimeException("Stub!");
         }
     }
 
-    void packageDeleted(java.lang.String packageName, int returnCode)
-            throws android.os.RemoteException;
+    void packageInstalled(String packageName, int returnCode) throws RemoteException;
 }

@@ -17,13 +17,14 @@
  * MA 02110-1301, USA.
  */
 
-package org.fdroid.fdroid.installer;
+package org.fdroid.fdroid.privileged.install;
 
 import android.content.Context;
 import android.os.Build;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
+import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +36,17 @@ import eu.chainfire.libsuperuser.Shell;
  * http://omerjerk.in/2014/08/how-to-install-an-app-to-system-partition/
  * https://github.com/omerjerk/RemoteDroid/blob/master/app/src/main/java/in/omerjerk/remotedroid/app/MainActivity.java
  */
-abstract class InstallIntoSystem {
+abstract class InstallPrivileged {
 
     protected final Context context;
 
-    public InstallIntoSystem(final Context context) {
+    private static final String APK_FILE_NAME = "FDroidPrivileged.apk";
+
+    public InstallPrivileged(final Context context) {
         this.context = context;
     }
 
-    public static InstallIntoSystem create(final Context context) {
+    public static InstallPrivileged create(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return new LollipopImpl(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -65,10 +68,10 @@ abstract class InstallIntoSystem {
 
     final void runUninstall() {
         final String[] commands = {
-                "am force-stop org.fdroid.fdroid",
-                "pm clear org.fdroid.fdroid",
+                "am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
+                "pm clear " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
                 "mount -o rw,remount /system",
-                "pm uninstall " + context.getPackageName(),
+                "pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME,
                 "rm -f " + getInstallPath(),
                 "sleep 5",
                 "mount -o ro,remount /system"
@@ -76,32 +79,32 @@ abstract class InstallIntoSystem {
         Shell.SU.run(commands);
     }
 
-    final void runInstall() {
+    final void runInstall(String apkPath) {
         onPreInstall();
-        Shell.SU.run(getInstallCommands());
+        Shell.SU.run(getInstallCommands(apkPath));
     }
 
     protected String getInstallPath() {
-        return getSystemFolder() + "FDroid.apk";
+        return getSystemFolder() + APK_FILE_NAME;
     }
 
-    private List<String> getInstallCommands() {
+    private List<String> getInstallCommands(String apkPath) {
         final List<String> commands = new ArrayList<>();
         commands.add("mount -o rw,remount /system");
-        commands.addAll(getCopyToSystemCommands());
-        commands.add("pm uninstall -k " + context.getPackageName()); // -k to retain data
+        commands.addAll(getCopyToSystemCommands(apkPath));
+        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
         commands.add("pm install -r " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
         commands.add("mount -o ro,remount /system");
-        commands.add("am force-stop org.fdroid.fdroid");
+        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
         commands.addAll(getPostInstallCommands());
         return commands;
     }
 
-    protected List<String> getCopyToSystemCommands() {
+    protected List<String> getCopyToSystemCommands(String apkPath) {
         final List<String> commands = new ArrayList<>(2);
-        commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+        commands.add("cat " + apkPath + " > " + getInstallPath() + ".tmp");
         commands.add("chmod 644 " + getInstallPath() + ".tmp");
         return commands;
     }
@@ -112,7 +115,7 @@ abstract class InstallIntoSystem {
         return commands;
     }
 
-    private static class PreKitKatImpl extends InstallIntoSystem {
+    private static class PreKitKatImpl extends InstallPrivileged {
 
         public PreKitKatImpl(Context context) {
             super(context);
@@ -125,7 +128,7 @@ abstract class InstallIntoSystem {
 
     }
 
-    private static class KitKatToLollipopImpl extends InstallIntoSystem {
+    private static class KitKatToLollipopImpl extends InstallPrivileged {
 
         public KitKatToLollipopImpl(Context context) {
             super(context);
@@ -146,7 +149,7 @@ abstract class InstallIntoSystem {
      * History of PackageManagerService in Lollipop:
      * https://github.com/android/platform_frameworks_base/commits/lollipop-release/services/core/java/com/android/server/pm/PackageManagerService.java
      */
-    private static class LollipopImpl extends InstallIntoSystem {
+    private static class LollipopImpl extends InstallPrivileged {
 
         public LollipopImpl(Context context) {
             super(context);
@@ -155,7 +158,7 @@ abstract class InstallIntoSystem {
         @Override
         protected void onPreInstall() {
             // Setup preference to execute postInstall after reboot
-            Preferences.get().setPostSystemInstall(true);
+            Preferences.get().setPostPrivilegedInstall(true);
         }
 
         public String getWarningInfo() {
@@ -167,24 +170,24 @@ abstract class InstallIntoSystem {
          */
         @Override
         protected String getSystemFolder() {
-            return "/system/priv-app/FDroid/";
+            return "/system/priv-app/FDroidPrivileged/";
         }
 
         /**
          * Create app directory
          */
         @Override
-        protected List<String> getCopyToSystemCommands() {
+        protected List<String> getCopyToSystemCommands(String apkPath) {
             List<String> commands = new ArrayList<>(3);
             commands.add("mkdir -p " + getSystemFolder()); // create app directory if not existing
             commands.add("chmod 755 " + getSystemFolder());
-            commands.add("cat " + context.getPackageCodePath() + " > " + getInstallPath() + ".tmp");
+            commands.add("cat " + apkPath + " > " + getInstallPath() + ".tmp");
             commands.add("chmod 644 " + getInstallPath() + ".tmp");
             return commands;
         }
 
         /**
-         * TODO: Currently only works with reboot
+         * NOTE: Only works with reboot
          * <p/>
          * File observers on /system/priv-app/ have been removed because they don't work with the new
          * cluser-style layout. See
