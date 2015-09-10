@@ -791,7 +791,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             public void onProgress(Event event) {
                 switch (event.type) {
                     case ApkDownloader.EVENT_APK_DOWNLOAD_COMPLETE:
-                        handleDownloadComplete(downloader.localFile());
+                        handleDownloadComplete(downloader.localFile(), app.id);
                         break;
                     case ApkDownloader.EVENT_ERROR:
                         break;
@@ -801,7 +801,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         downloader.download();
     }
 
-    private void handleDownloadComplete(File apkFile) {
+    private void handleDownloadComplete(File apkFile, String packageName) {
 
         try {
             Installer.getActivityInstaller(SwapWorkflowActivity.this, new Installer.InstallerCallback() {
@@ -816,7 +816,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 public void onError(int operation, int errorCode) {
                     // TODO: Boo!
                 }
-            }).installPackage(apkFile);
+            }).installPackage(apkFile, packageName);
         } catch (Installer.AndroidNotCompatibleException e) {
             // TODO: Handle exception properly
         }

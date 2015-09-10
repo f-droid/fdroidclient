@@ -155,7 +155,7 @@ abstract public class Installer {
         }
 
         // special case: Install F-Droid Privileged
-        if (packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
+        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
             Activity activity;
             try {
                 activity = (Activity) mContext;
