@@ -45,3 +45,6 @@ out
 # Imported libs
 extern/*/libs/
 extern/*/*/libs/
+
+# Tests
+junit-report.xml
