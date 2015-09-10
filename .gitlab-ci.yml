@@ -34,7 +34,7 @@ test:
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./F-Droid/tools/wait-for-emulator
     - echo " == Running Android tests on the 2.3.7 emulator"
-    - gradle connectedCheck
+    - ADB_INSTALL_TIMEOUT=8 gradle connectedCheck
     - echo " == Stopping Android 2.3.7 emulator"
     - kill $!
     - echo " == Creating Android 4.4.4 emulator"
@@ -43,6 +43,6 @@ test:
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./F-Droid/tools/wait-for-emulator
     - echo " == Running Android tests on the 4.4.4 emulator"
-    - gradle connectedCheck
+    - ADB_INSTALL_TIMEOUT=8 gradle connectedCheck
     - echo " == Stopping Android 4.4.4 emulator"
     - kill $!
