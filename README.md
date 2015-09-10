@@ -9,7 +9,7 @@ for Android.
 Building with Gradle
 --------------------
 
-The only required tools are the [Android SDK](http://developer.android.com/sdk/index.html)
+The only required tools are the [Android SDK](https://developer.android.com/sdk/index.html)
 and Gradle.
 
 You should use a relatively new version of Gradle, such as 2.4, or use the
@@ -33,7 +33,7 @@ Building tips
 
 * Use `gradle --daemon` if you are going to build F-Droid multiple times.
 * If you get a message like `Could not find com.android.support:support-...`,
-  make sure that you have the latest Android support maven repository
+  make sure that you have the latest Android support maven repository.
 
 Direct download
 ---------------
@@ -58,7 +58,7 @@ Translating
 -----------
 
 The `res/values-*` dirs are kept up to date automatically via [MediaWiki's
-Translate Extension](http://www.mediawiki.org/wiki/Extension:Translate). See
+Translate Extension](https://www.mediawiki.org/wiki/Extension:Translate). See
 [our translation page](https://f-droid.org/wiki/page/Special:Translate) if you
 would like to contribute.
 
@@ -130,9 +130,9 @@ Some icons are made by [Picol](http://www.flaticon.com/authors/picol),
 [Icomoon](http://www.flaticon.com/authors/icomoon) or
 [Dave Gandy](http://www.flaticon.com/authors/dave-gandy) from
 [Flaticon](http://www.flaticon.com) or by Google and are licensed by
-[Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
+[Creative Commons BY 3.0](https://creativecommons.org/licenses/by/3.0/).
 
 Other icons are from the
 [Material Design Icon set](https://github.com/google/material-design-icons)
 released under an
-[Attribution 4.0 International license](http://creativecommons.org/licenses/by/4.0/).
+[Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
