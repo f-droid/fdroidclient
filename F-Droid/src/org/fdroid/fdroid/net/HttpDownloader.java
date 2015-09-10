@@ -34,6 +34,7 @@ public class HttpDownloader extends Downloader {
     protected static final String HEADER_FIELD_ETAG = "ETag";
 
     protected HttpURLConnection connection;
+    private InputStream stream;
     private int statusCode = -1;
     private boolean onlyStream = false;
 
@@ -64,7 +65,8 @@ public class HttpDownloader extends Downloader {
 
     public InputStream getInputStream() throws IOException {
         setupConnection();
-        return new BufferedInputStream(connection.getInputStream());
+        stream = new BufferedInputStream(connection.getInputStream());
+        return stream;
     }
 
     public BufferedReader getBufferedReader () throws IOException
@@ -169,6 +171,12 @@ public class HttpDownloader extends Downloader {
 
     public void close ()
     {
+        try {
+            if (stream != null)
+                stream.close();
+        }
+        catch (IOException e) {}
+        
         connection.disconnect();
     }
 }

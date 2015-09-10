@@ -184,6 +184,7 @@ public abstract class Downloader {
 
         }
         outputStream.flush();
+        outputStream.close();
     }
 
     protected void sendProgress(int bytesRead, int totalBytes) {
