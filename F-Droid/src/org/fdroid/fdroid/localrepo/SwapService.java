@@ -106,7 +106,7 @@ public class SwapService extends Service {
     // ==========================================================
 
     public void scanForPeers() {
-        Log.d(TAG, "Scanning for nearby devices to swap with...");
+        Utils.debugLog(TAG, "Scanning for nearby devices to swap with...");
         bonjourFinder.scan();
         bluetoothFinder.scan();
     }
@@ -209,7 +209,7 @@ public class SwapService extends Service {
                 HttpHost host = new HttpHost(repoUri.getHost(), repoUri.getPort(), repoUri.getScheme());
 
                 try {
-                    Log.d(TAG, "Asking server at " + address + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
+                    Utils.debugLog(TAG, "Asking server at " + address + " to swap with us in return (by POSTing to \"/request-swap\" with repo \"" + swapBackUri + "\")...");
                     populatePostParams(swapBackUri, request);
                     client.execute(host, request);
                 } catch (IOException e) {
@@ -377,6 +377,8 @@ public class SwapService extends Service {
     // =============================================================
 
     private void persistPreferredSwapTypes() {
+        Utils.debugLog(TAG, "Remembering that Bluetooth swap " + ( bluetoothSwap.isConnected() ? "IS" : "is NOT" ) +
+                " connected and WiFi swap " + (wifiSwap.isConnected() ? "IS" : "is NOT" ) + " connected.");
         persistence().edit()
             .putBoolean(KEY_BLUETOOTH_ENABLED, bluetoothSwap.isConnected())
             .putBoolean(KEY_WIFI_ENABLED, wifiSwap.isConnected())
@@ -399,7 +401,7 @@ public class SwapService extends Service {
      * Moves the service to the forground and [re]starts the timeout timer.
      */
     private void attachService() {
-        Log.d(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed.");
+        Utils.debugLog(TAG, "Moving SwapService to foreground so that it hangs around even when F-Droid is closed (may already be foregrounded).");
         startForeground(NOTIFICATION, createNotification());
 
         // Regardless of whether it was previously enabled, start the timer again. This ensures that
@@ -413,7 +415,7 @@ public class SwapService extends Service {
             timer.cancel();
         }
 
-        Log.d(TAG, "Moving SwapService to background so that it can be GC'ed if required.");
+        Utils.debugLog(TAG, "Moving SwapService to background so that it can be GC'ed if required.");
         stopForeground(true);
     }
 
@@ -425,7 +427,7 @@ public class SwapService extends Service {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
-                    Log.d(TAG, "Restarting WiFi swap service");
+                    Utils.debugLog(TAG, "Restarting WiFi swap service");
                     wifiSwap.stop();
                     wifiSwap.start();
                     return null;
@@ -511,7 +513,7 @@ public class SwapService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        Log.d(TAG, "Creating swap service.");
+        Utils.debugLog(TAG, "Creating swap service.");
 
         SharedPreferences preferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -531,13 +533,15 @@ public class SwapService extends Service {
 
         /**
         if (wasBluetoothEnabled()) {
-            Log.d(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
+            Utils.debugLog(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
             bluetoothSwap.startInBackground();
         }*/
 
         if (wasWifiEnabled()) {
-            Log.d(TAG, "Previously the user enabled Wifi swap, so enabling again automatically.");
+            Utils.debugLog(TAG, "Previously the user enabled WiFi swap, so enabling again automatically.");
             wifiSwap.startInBackground();
+        } else {
+            Utils.debugLog(TAG, "WiFi was NOT enabled last time user swapped, so starting with WiFi not visible.");
         }
     }
 
@@ -586,7 +590,7 @@ public class SwapService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
+        Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
         disableAllSwapping();
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onWifiChange);
@@ -607,16 +611,16 @@ public class SwapService extends Service {
 
     private void initTimer() {
         if (timer != null) {
-            Log.d(TAG, "Cancelling existing timeout timer so timeout can be reset.");
+            Utils.debugLog(TAG, "Cancelling existing timeout timer so timeout can be reset.");
             timer.cancel();
         }
 
-        Log.d(TAG, "Initializing swap timeout to " + TIMEOUT + "ms minutes");
+        Utils.debugLog(TAG, "Initializing swap timeout to " + TIMEOUT + "ms minutes");
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Log.d(TAG, "Disabling swap because " + TIMEOUT + "ms passed.");
+                Utils.debugLog(TAG, "Disabling swap because " + TIMEOUT + "ms passed.");
                 disableAllSwapping();
             }
         }, TIMEOUT);
