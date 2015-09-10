@@ -153,9 +153,10 @@ public class FDroidApp extends Application {
         c.getResources().updateConfiguration(cfg, null);
     }
 
+    @TargetApi(9)
     @Override
     public void onCreate() {
-        if (BuildConfig.DEBUG) {
+        if (Build.VERSION.SDK_INT >= 9 && BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
