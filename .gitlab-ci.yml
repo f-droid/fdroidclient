@@ -16,8 +16,9 @@ before_script:
   - echo y | android -s update sdk --no-ui -a -t platform-tools,tools,build-tools-23.0.1,android-22,extra-android-m2repository
   - export PATH="$ANDROID_HOME/platform-tools:$PATH"
   - export PATH="$ANDROID_HOME/build-tools/23.0.1:$PATH"
-  - echo " == Installing emulator system images"
-  - echo y | android -s update sdk --no-ui -a -t android-10
+  - echo " == Installing Android emulator images"
+  - echo y | android -s update sdk --no-ui -a -t android-10,android-19
+  - echo y | android -s update sdk --no-ui -a -t sys-img-armeabi-v7a-android-19
   - echo " == Installing Gradle"
   - wget -q -O gradle.zip https://services.gradle.org/distributions/gradle-2.4-bin.zip
   - unzip -q gradle.zip
@@ -27,12 +28,24 @@ test:
   script:
     - echo " == Building via gradle"
     - gradle build
-    - echo " == Setting up Android 2.3.7 emulator"
+    - echo " == Creating Android 2.3.7 emulator"
     - echo no | android create avd --force -n fcl-test -t android-10 -b armeabi
     - echo " == Starting Android 2.3.7 emulator"
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./F-Droid/tools/wait-for-emulator
-    - echo " == Running Android tests"
-    - gradle connectedCheck
+    - adb shell input keyevent 82
+    - echo " == Running Android tests on the 2.3.7 emulator"
+    - ADB_INSTALL_TIMEOUT=8 gradle connectedCheck
     - echo " == Stopping Android 2.3.7 emulator"
+    - kill $!
+    - echo " == Creating Android 4.4.4 emulator"
+    - echo no | android create avd --force -n fcl-test -t android-19 -b armeabi-v7a
+    - echo " == Starting Android 4.4.4 emulator"
+    - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
+    - ./F-Droid/tools/wait-for-emulator
+    - adb shell input keyevent 82
+    - sleep 30 # 4.4 says it's ready before it actually is
+    - echo " == Running Android tests on the 4.4.4 emulator"
+    - ADB_INSTALL_TIMEOUT=8 gradle connectedCheck
+    - echo " == Stopping Android 4.4.4 emulator"
     - kill $!
