@@ -64,13 +64,15 @@ public abstract class SwapType {
     }
 
     public void startInBackground() {
+        start();
+        /**
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
                 start();
                 return null;
             }
-        }.execute();
+        }.execute();*/
     }
 
     public void ensureRunning() {

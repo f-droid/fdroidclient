@@ -9,10 +9,13 @@ import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
@@ -58,10 +61,15 @@ public class HttpDownloader extends Downloader {
      * same one twice, bail with an exception).
      * @throws IOException
      */
-    @Override
+
     public InputStream getInputStream() throws IOException {
         setupConnection();
-        return connection.getInputStream();
+        return new BufferedInputStream(connection.getInputStream());
+    }
+
+    public BufferedReader getBufferedReader () throws IOException
+    {
+        return new BufferedReader(new InputStreamReader(getInputStream()));
     }
 
     // Get a remote file. Returns the HTTP response code.
@@ -117,7 +125,7 @@ public class HttpDownloader extends Downloader {
             Utils.DebugLog(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
         } else {
             Utils.DebugLog(TAG, "Downloading from " + sourceUrl);
-            downloadFromStream();
+            downloadFromStream(4096);
             updateCacheCheck();
         }
     }

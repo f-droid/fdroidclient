@@ -40,6 +40,8 @@ public class BluetoothServer extends Thread {
     public BluetoothServer(BluetoothSwap swap, File webRoot) {
         this.webRoot = webRoot;
         this.swap = swap;
+
+        start();
     }
 
     public boolean isRunning() { return isRunning; }
@@ -81,7 +83,7 @@ public class BluetoothServer extends Thread {
             try {
                 BluetoothSocket clientSocket = serverSocket.accept();
                 if (clientSocket != null) {
-                    if (!isInterrupted()) {
+                    if (isInterrupted()) {
                         Log.d(TAG, "Server stopped after socket accepted from client, but before initiating connection.");
                         break;
                     }

@@ -25,6 +25,8 @@ public class BluetoothClient {
     }
 
     public BluetoothConnection openConnection() throws IOException {
+
+
         BluetoothSocket socket = null;
         try {
             socket = device.createInsecureRfcommSocketToServiceRecord(BluetoothConstants.fdroidUuid());

@@ -625,7 +625,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
             Log.d(TAG, "Not currently in discoverable mode, so prompting user to enable.");
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300); // TODO: What about when this expires? What if user manually disables discovery?
+            intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 3600); // 3600 is new maximum! TODO: What about when this expires? What if user manually disables discovery?
             startActivityForResult(intent, REQUEST_BLUETOOTH_DISCOVERABLE);
         }
 

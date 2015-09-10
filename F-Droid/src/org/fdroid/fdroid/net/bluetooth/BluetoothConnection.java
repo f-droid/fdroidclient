@@ -7,6 +7,8 @@ import android.os.Build;
 import android.util.Log;
 import org.fdroid.fdroid.Utils;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,8 +41,8 @@ public class BluetoothConnection {
             socket.connect();
         }
 
-        input  = socket.getInputStream();
-        output = socket.getOutputStream();
+        input  = new BufferedInputStream(socket.getInputStream());
+        output = new BufferedOutputStream(socket.getOutputStream());
         Log.d(TAG, "Opened connection to Bluetooth device");
     }
 

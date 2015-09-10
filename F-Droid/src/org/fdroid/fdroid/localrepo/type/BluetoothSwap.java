@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -17,8 +18,11 @@ public class BluetoothSwap extends SwapType {
     private static final String TAG = "BluetoothBroadcastType";
     public final static String BLUETOOTH_NAME_TAG = "FDroid:";
 
+    private static BluetoothSwap mInstance = null;
+
     @NonNull
     private final BluetoothAdapter adapter;
+    private BroadcastReceiver receiver;
 
     @Nullable
     private BluetoothServer server;
@@ -30,7 +34,10 @@ public class BluetoothSwap extends SwapType {
         if (adapter == null) {
             return new NoBluetoothType(context);
         } else {
-            return new BluetoothSwap(context, adapter);
+            if (mInstance == null)
+                mInstance = new BluetoothSwap(context, adapter);
+
+            return mInstance;
         }
     }
 
@@ -38,7 +45,21 @@ public class BluetoothSwap extends SwapType {
         super(context);
         this.adapter = adapter;
 
-        context.registerReceiver(new BroadcastReceiver() {
+
+    }
+
+    @Override
+    public boolean isConnected() {
+        return server != null && server.isRunning() && super.isConnected();
+    }
+
+    @Override
+    public synchronized void start() {
+
+        if (isConnected())
+            return;
+
+        receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 switch (intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, -1)) {
@@ -55,29 +76,25 @@ public class BluetoothSwap extends SwapType {
                     // Only other is BluetoothAdapter.SCAN_MODE_CONNECTABLE. For now don't handle that.
                 }
             }
-        }, new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
-    }
+        };
+        context.registerReceiver(receiver, new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
 
-    @Override
-    public boolean isConnected() {
-        return server != null && server.isRunning() && super.isConnected();
-    }
-
-    @Override
-    public void start() {
+        /*
         if (server != null) {
             Log.d(TAG, "Attempting to start Bluetooth swap, but it appears to be running already. Will cancel it so it can be restarted.");
             server.close();
             server = null;
-        }
+        }*/
 
-        server = new BluetoothServer(this, context.getFilesDir());
+        if (server == null)
+            server = new BluetoothServer(this, context.getFilesDir());
 
         sendBroadcast(SwapService.EXTRA_STARTING);
 
         //store the original bluetoothname, and update this one to be unique
         deviceBluetoothName = adapter.getName();
 
+        /*
         Log.d(TAG, "Prefixing Bluetooth adapter name with " + BLUETOOTH_NAME_TAG + " to make it identifiable as a swap device.");
         if (!deviceBluetoothName.startsWith(BLUETOOTH_NAME_TAG))
             adapter.setName(BLUETOOTH_NAME_TAG + deviceBluetoothName);
@@ -85,7 +102,7 @@ public class BluetoothSwap extends SwapType {
         if (!adapter.getName().startsWith(BLUETOOTH_NAME_TAG)) {
             Log.e(TAG, "Couldn't change the name of the Bluetooth adapter, it will not get recognized by other swap clients.");
             // TODO: Should we bail here?
-        }
+        }*/
 
         if (!adapter.isEnabled()) {
             Log.d(TAG, "Bluetooth adapter is disabled, attempting to enable.");
@@ -96,8 +113,8 @@ public class BluetoothSwap extends SwapType {
             }
         }
 
-        if (adapter.isEnabled()) {
-            server.start();
+        if (adapter.isEnabled())
+        {
             setConnected(true);
         } else {
             Log.i(TAG, "Didn't start Bluetooth swapping server, because Bluetooth is disabled and couldn't be enabled.");
@@ -110,6 +127,11 @@ public class BluetoothSwap extends SwapType {
         if (server != null && server.isAlive()) {
             server.close();
             setConnected(false);
+
+  //          if (receiver != null) {
+//                context.unregisterReceiver(receiver);
+    //            receiver = null;
+      //      }
         } else {
             Log.i(TAG, "Attempting to stop Bluetooth swap, but it is not currently running.");
         }
