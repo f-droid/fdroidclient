@@ -120,7 +120,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         Uri uri = Uri.parse(repo.address);
         uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).build();
         String qrUriString = uri.toString().toUpperCase(Locale.ENGLISH);
-        new QrGenAsyncTask(this, R.id.qr_code).execute(uri.toString());
+        new QrGenAsyncTask(this, R.id.qr_code).execute(qrUriString);
     }
 
     @TargetApi(14)
