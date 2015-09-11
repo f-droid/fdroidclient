@@ -108,17 +108,13 @@ public class SwapService extends Service {
 
     public void scanForPeers() {
         Log.d(TAG, "Scanning for nearby devices to swap with...");
-
         bonjourFinder.scan();
         bluetoothFinder.scan();
-
     }
 
     public void stopScanningForPeers() {
-
         bonjourFinder.cancel();
         bluetoothFinder.cancel();
-
     }
 
 
@@ -579,7 +575,7 @@ public class SwapService extends Service {
 
     public void disableAllSwapping() {
         Log.i(TAG, "Asked to stop swapping, will stop bluetooth, wifi, and move service to BG for GC.");
-     //   getBluetoothSwap().stopInBackground();
+        //getBluetoothSwap().stopInBackground();
         getWifiSwap().stopInBackground();
 
         // Ensure the user is sent back go the first screen when returning if we have just forceably

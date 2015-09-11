@@ -135,10 +135,12 @@ public class BluetoothSwap extends SwapType {
             server.close();
             setConnected(false);
 
-  //          if (receiver != null) {
-//                context.unregisterReceiver(receiver);
-    //            receiver = null;
-      //      }
+            /*
+            if (receiver != null) {
+                context.unregisterReceiver(receiver);
+                receiver = null;
+            }
+            */
         } else {
             Log.i(TAG, "Attempting to stop Bluetooth swap, but it is not currently running.");
         }
