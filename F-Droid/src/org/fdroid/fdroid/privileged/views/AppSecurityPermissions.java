@@ -453,10 +453,7 @@ public class AppSecurityPermissions {
         // Development permissions are only shown to the user if they are already
         // granted to the app -- if we are installing an app and they are not
         // already granted, they will not be granted as part of the install.
-        if (isDevelopment && wasGranted) {
-            return true;
-        }
-        return false;
+        return isDevelopment && wasGranted;
     }
 
     private static class PermissionGroupInfoComparator implements Comparator<MyPermissionGroupInfo> {
