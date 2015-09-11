@@ -44,7 +44,7 @@ test:
     - emulator -force-32bit -avd fcl-test -no-skin -no-audio -no-window &
     - ./F-Droid/tools/wait-for-emulator
     - adb shell input keyevent 82
-    - sleep 30 # 4.4 says it's ready before it actually is
+    - sleep 60 # 4.4 says it's ready before it actually is
     - echo " == Running Android tests on the 4.4.4 emulator"
     - ADB_INSTALL_TIMEOUT=8 gradle connectedCheck || { adb logcat -d '*:W'; exit 1; }
     - echo " == Stopping Android 4.4.4 emulator"
