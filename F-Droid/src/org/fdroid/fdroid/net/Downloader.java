@@ -7,12 +7,15 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -37,6 +40,7 @@ public abstract class Downloader {
     protected int totalBytes = 0;
 
     public abstract InputStream getInputStream() throws IOException;
+    public abstract void close();
 
     Downloader(Context context, URL url, File destFile)
             throws FileNotFoundException, MalformedURLException {
@@ -98,7 +102,7 @@ public abstract class Downloader {
 
     public abstract boolean isCached();
 
-    protected void downloadFromStream() throws IOException, InterruptedException {
+    protected void downloadFromStream(int bufferSize) throws IOException, InterruptedException {
         Utils.DebugLog(TAG, "Downloading from stream");
         InputStream input = null;
         try {
@@ -108,7 +112,7 @@ public abstract class Downloader {
             // we were interrupted before proceeding to the download.
             throwExceptionIfInterrupted();
 
-            copyInputToOutputStream(input);
+            copyInputToOutputStream(input, bufferSize);
         } finally {
             Utils.closeQuietly(outputStream);
             Utils.closeQuietly(input);
@@ -143,20 +147,30 @@ public abstract class Downloader {
      * keeping track of the number of bytes that have flowed through for the
      * progress counter.
      */
-    protected void copyInputToOutputStream(InputStream input) throws IOException, InterruptedException {
+    protected void copyInputToOutputStream(InputStream input, int bufferSize) throws IOException, InterruptedException {
 
-        byte[] buffer = new byte[Utils.BUFFER_SIZE];
         int bytesRead = 0;
         this.totalBytes = totalDownloadSize();
+        byte[] buffer = new byte[bufferSize];
 
         // Getting the total download size could potentially take time, depending on how
         // it is implemented, so we may as well check this before we proceed.
         throwExceptionIfInterrupted();
 
         sendProgress(bytesRead, totalBytes);
-        while (true) {
+        while (bytesRead < totalBytes) {
 
-            int count = input.read(buffer);
+            int count = -1;
+
+            if (input.available()>0) {
+
+                int readLength = Math.min(input.available(), buffer.length);
+                count = input.read(buffer, 0, readLength);
+            }
+            else {
+                count = input.read(buffer);
+            }
+
             throwExceptionIfInterrupted();
 
             if (count == -1) {
@@ -167,8 +181,10 @@ public abstract class Downloader {
             bytesRead += count;
             sendProgress(bytesRead, totalBytes);
             outputStream.write(buffer, 0, count);
+
         }
         outputStream.flush();
+        outputStream.close();
     }
 
     protected void sendProgress(int bytesRead, int totalBytes) {

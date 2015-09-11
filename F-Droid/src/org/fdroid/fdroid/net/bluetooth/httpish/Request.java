@@ -5,9 +5,14 @@ import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -27,16 +32,16 @@ public class Request {
     private Map<String, String> headers;
 
     private BluetoothConnection connection;
-    private BufferedWriter output;
-    private BufferedReader input;
+    private Writer output;
+    private InputStream input;
 
     private Request(String method, String path, BluetoothConnection connection) {
         this.method = method;
         this.path = path;
         this.connection = connection;
 
-        output = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
-        input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        output = new OutputStreamWriter(connection.getOutputStream());
+        input = connection.getInputStream();
     }
 
     public static Request createHEAD(String path, BluetoothConnection connection)
@@ -93,7 +98,7 @@ public class Request {
      */
     private boolean listen() throws IOException {
 
-        String requestLine = input.readLine();
+        String requestLine = readLine();
 
         if (requestLine == null || requestLine.trim().length() == 0)
             return false;
@@ -125,11 +130,8 @@ public class Request {
      * a space, and then the status label (which may contain spaces).
      */
     private int readResponseCode() throws IOException {
-        String line = input.readLine();
-        if (line == null) {
-            // TODO: What to do?
-            return -1;
-        }
+
+        String line = readLine();
 
         // TODO: Error handling
         int firstSpace = line.indexOf(' ');
@@ -139,6 +141,36 @@ public class Request {
         return Integer.parseInt(status);
     }
 
+    private String readLine () throws IOException
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        String line = null;
+
+        while (line == null) {
+
+            while (input.available()>0) {
+
+                int b = input.read();
+
+
+                if (((char)b) == '\n') {
+                    if (baos.size() > 0)
+                        line = new String(baos.toByteArray());
+
+                    return line;
+                }
+
+                baos.write(b);
+
+            }
+
+            try { Thread.sleep(100); }
+            catch (Exception e){};
+        }
+
+        return line;
+    }
+
     /**
      * Subsequent lines (after the status line) represent the headers, which are case
      * insensitive and may be multi-line. We don't deal with multi-line headers in
@@ -146,15 +178,22 @@ public class Request {
      */
     private Map<String, String> readHeaders() throws IOException {
         Map<String, String> headers = new HashMap<>();
-        String responseLine = input.readLine();
-        while (responseLine != null && responseLine.length() > 0) {
+        String responseLine = readLine();
+        while (responseLine != null) {
 
             // TODO: Error handling
             String[] parts = responseLine.split(":");
-            String header = parts[0].trim();
-            String value  = parts[1].trim();
-            headers.put(header, value);
-            responseLine = input.readLine();
+            if (parts.length > 1) {
+                String header = parts[0].trim();
+                String value = parts[1].trim();
+                headers.put(header, value);
+            }
+
+            if (input.available()>0)
+                responseLine = readLine();
+            else
+                break;
+
         }
         return headers;
     }

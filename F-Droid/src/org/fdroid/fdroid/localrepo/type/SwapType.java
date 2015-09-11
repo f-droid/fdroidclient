@@ -33,6 +33,11 @@ public abstract class SwapType {
 
     abstract protected String getBroadcastAction();
 
+    public boolean isDiscoverable ()
+    {
+        return isConnected();
+    }
+
     protected final void setConnected(boolean connected) {
         if (connected) {
             isConnected = true;
@@ -64,13 +69,15 @@ public abstract class SwapType {
     }
 
     public void startInBackground() {
+        start();
+        /**
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
                 start();
                 return null;
             }
-        }.execute();
+        }.execute();*/
     }
 
     public void ensureRunning() {

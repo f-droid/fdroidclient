@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.localrepo.peers;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,6 +14,8 @@ import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
 
     private static final String TAG = "BluetoothFinder";
+
+    public final static int DISCOVERABLE_TIMEOUT = 3600;
 
     private final BluetoothAdapter adapter;
 
@@ -92,9 +95,17 @@ public class BluetoothFinder extends PeerFinder<BluetoothPeer> {
     }
 
     private void onDeviceFound(BluetoothDevice device) {
-        if (device != null && device.getName() != null && device.getName().startsWith(BluetoothSwap.BLUETOOTH_NAME_TAG)) {
+
+        if(device != null && device.getName() != null &&
+                (device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_HANDHELD_PC_PDA||
+                device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.COMPUTER_PALM_SIZE_PC_PDA||
+                device.getBluetoothClass().getDeviceClass() == BluetoothClass.Device.PHONE_SMART))
+        {
             foundPeer(new BluetoothPeer(device));
         }
+       // if (device != null && device.getName() != null && device.getName().startsWith(BluetoothSwap.BLUETOOTH_NAME_TAG)) {
+        //    foundPeer(new BluetoothPeer(device));
+       // }
     }
 
 }

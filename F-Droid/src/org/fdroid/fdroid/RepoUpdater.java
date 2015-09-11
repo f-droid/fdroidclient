@@ -98,7 +98,9 @@ public class RepoUpdater {
         } catch (IOException e) {
             if (downloader != null && downloader.getFile() != null) {
                 downloader.getFile().delete();
+                downloader.close();
             }
+
             throw new UpdateException(repo, "Error getting index file from " + repo.address, e);
         }
         return downloader;
@@ -121,6 +123,8 @@ public class RepoUpdater {
             // successful download, then we will have a file ready to use:
             processDownloadedFile(downloader.getFile(), downloader.getCacheTag());
         }
+
+        downloader.close();
     }
 
     protected void processDownloadedFile(File downloadedFile, String cacheTag) throws UpdateException {
@@ -278,7 +282,7 @@ public class RepoUpdater {
          * actually in the index.jar itself.  If no fingerprint, just store the
          * signing certificate */
         boolean trustNewSigningCertificate = false;
-        if (repo.fingerprint == null) {
+        if (repo.fingerprint == null || TextUtils.isEmpty(repo.fingerprint)) {
             // no info to check things are valid, so just Trust On First Use
             trustNewSigningCertificate = true;
         } else {

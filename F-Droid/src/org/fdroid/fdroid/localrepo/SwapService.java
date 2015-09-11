@@ -108,13 +108,17 @@ public class SwapService extends Service {
 
     public void scanForPeers() {
         Log.d(TAG, "Scanning for nearby devices to swap with...");
+
         bonjourFinder.scan();
         bluetoothFinder.scan();
+
     }
 
     public void stopScanningForPeers() {
+
         bonjourFinder.cancel();
         bluetoothFinder.cancel();
+
     }
 
 
@@ -452,7 +456,7 @@ public class SwapService extends Service {
     }
 
     public boolean isBluetoothDiscoverable() {
-        return bluetoothSwap.isConnected();
+        return bluetoothSwap.isDiscoverable();
     }
 
     public boolean isBonjourDiscoverable() {
@@ -530,10 +534,11 @@ public class SwapService extends Service {
         filter.addAction(WIFI_STATE_CHANGE);
         LocalBroadcastManager.getInstance(this).registerReceiver(receiveSwapStatusChanged, filter);
 
+        /**
         if (wasBluetoothEnabled()) {
             Log.d(TAG, "Previously the user enabled Bluetooth swap, so enabling again automatically.");
             bluetoothSwap.startInBackground();
-        }
+        }*/
 
         if (wasWifiEnabled()) {
             Log.d(TAG, "Previously the user enabled Wifi swap, so enabling again automatically.");
@@ -574,7 +579,7 @@ public class SwapService extends Service {
 
     public void disableAllSwapping() {
         Log.i(TAG, "Asked to stop swapping, will stop bluetooth, wifi, and move service to BG for GC.");
-        getBluetoothSwap().stopInBackground();
+     //   getBluetoothSwap().stopInBackground();
         getWifiSwap().stopInBackground();
 
         // Ensure the user is sent back go the first screen when returning if we have just forceably

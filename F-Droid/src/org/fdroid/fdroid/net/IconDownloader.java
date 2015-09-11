@@ -3,7 +3,10 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.nostra13.universalimageloader.utils.IoUtils;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -19,13 +22,41 @@ public class IconDownloader extends BaseImageDownloader {
 
     @Override
     public InputStream getStream(String imageUri, Object extra) throws IOException {
-        switch (Scheme.ofUri(imageUri)) {
-        case HTTP:
-        case HTTPS:
-            Downloader downloader = DownloaderFactory.create(context, imageUri);
-            return downloader.getInputStream();
-        default:
-            return super.getStream(imageUri, extra);
+
+        Scheme scheme = Scheme.ofUri(imageUri);
+
+        switch (scheme) {
+            case HTTP:
+            case HTTPS:
+                Downloader downloader = DownloaderFactory.create(context, imageUri);
+                return downloader.getInputStream();
         }
+
+        //bluetooth isn't a scheme in the Scheme. library, so we can add a check here
+        if (imageUri.toLowerCase().startsWith("bluetooth"))
+        {
+            Downloader downloader = DownloaderFactory.create(context, imageUri);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            InputStream is = downloader.getInputStream();
+
+            int b = -1;
+
+            while ((b = is.read())!=-1)
+                baos.write(b);
+
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+
+            downloader.close();
+
+            return bais;
+
+        }
+
+
+        return super.getStream(imageUri, extra);
+
     }
+
+
 }
