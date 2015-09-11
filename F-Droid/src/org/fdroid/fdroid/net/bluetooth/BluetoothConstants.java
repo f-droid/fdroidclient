@@ -13,8 +13,6 @@ public class BluetoothConstants {
         // want to do so.
         // This UUID is just from mashing random hex characters on the keyboard.
         return UUID.fromString("cd59ba31-5729-b3bb-cb29-732b59eb61aa");
-
-
     }
 
 }
