@@ -36,6 +36,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+/**
+ * Handles getting the index metadata for an app repo, then verifying the
+ * signature on the index metdata, implementing as a JAR signature.
+ * <p/>
+ * <b>WARNING</b>: this class is the central piece of the entire security model of
+ * FDroid!  Avoid modifying it when possible, if you absolutely must, be very,
+ * very careful with the changes that you are making!
+ */
 public class RepoUpdater {
 
     private static final String TAG = "RepoUpdater";
@@ -280,7 +288,8 @@ public class RepoUpdater {
          * actually in the index.jar itself.  If no fingerprint, just store the
          * signing certificate */
         boolean trustNewSigningCertificate = false;
-        if (TextUtils.isEmpty(repo.fingerprint)) {
+        // If the fingerprint has never been set, it will be null (never "" or something else)
+        if (repo.fingerprint == null) {
             // no info to check things are valid, so just Trust On First Use
             trustNewSigningCertificate = true;
         } else {
@@ -290,7 +299,8 @@ public class RepoUpdater {
                     && repo.fingerprint.equalsIgnoreCase(fingerprintFromJar)) {
                 trustNewSigningCertificate = true;
             } else {
-                throw new UpdateException(repo, "Supplied certificate fingerprint does not match!");
+                throw new UpdateException(repo, "Supplied certificate fingerprint does not match: '"
+                            + repo.fingerprint + "' '" + fingerprintFromIndexXml + "' '" + fingerprintFromJar + "'");
             }
         }
 

@@ -2,6 +2,7 @@ package javax.jmdns.impl;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import java.net.Inet4Address;
 import java.net.Inet6Address;
@@ -21,8 +22,21 @@ public class FDroidServiceInfo extends ServiceInfoImpl implements Parcelable {
         super(info);
     }
 
+    /**
+     * Return the fingerprint of the signing key, or {@code null} if it is not set.
+     */
     public String getFingerprint() {
-        return getPropertyString("fingerprint");
+        // getPropertyString() will return "true" if the value is a zero-length byte array
+        // so we just do a custom version using getPropertyBytes()
+        byte[] data = getPropertyBytes("fingerprint");
+        if (data == null || data.length == 0) {
+            return null;
+        }
+        String fingerprint = this.readUTF(data, 0, data.length);
+        if (TextUtils.isEmpty(fingerprint)) {
+            return null;
+        }
+        return fingerprint;
     }
 
     public String getRepoAddress() {
