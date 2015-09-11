@@ -429,7 +429,7 @@ public class ApkProvider extends FDroidProvider {
         for (Map.Entry<String, String> repoField : REPO_FIELDS.entrySet()) {
             final String field = repoField.getKey();
             if (values.containsKey(field)) {
-                Utils.DebugLog(TAG, "Cannot insert/update '" + field + "' field " +
+                Utils.debugLog(TAG, "Cannot insert/update '" + field + "' field " +
                         "on apk table, as it belongs to the repo table. " +
                         "This field will be ignored.");
                 values.remove(field);

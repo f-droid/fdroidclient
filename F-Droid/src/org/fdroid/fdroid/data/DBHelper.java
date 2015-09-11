@@ -112,7 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void populateRepoNames(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 37) {
-            Utils.DebugLog(TAG, "Populating repo names from the url");
+            Utils.debugLog(TAG, "Populating repo names from the url");
             final String[] columns = { "address", "_id" };
             Cursor cursor = db.query(TABLE_REPO, columns,
                     "name IS NULL OR name = ''", null, null, null, null);
@@ -126,7 +126,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         String name = Repo.addressToName(address);
                         values.put("name", name);
                         final String[] args = { Long.toString(id) };
-                        Utils.DebugLog(TAG, "Setting repo name to '" + name + "' for repo " + address);
+                        Utils.debugLog(TAG, "Setting repo name to '" + name + "' for repo " + address);
                         db.update(TABLE_REPO, values, "_id = ?", args);
                         cursor.moveToNext();
                     }
@@ -139,7 +139,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private void renameRepoId(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 36 && !columnExists(db, TABLE_REPO, "_id")) {
 
-            Utils.DebugLog(TAG, "Renaming " + TABLE_REPO + ".id to _id");
+            Utils.debugLog(TAG, "Renaming " + TABLE_REPO + ".id to _id");
             db.beginTransaction();
 
             try {
@@ -255,14 +255,14 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(RepoProvider.DataColumns.PRIORITY, priority);
         values.put(RepoProvider.DataColumns.LAST_ETAG, (String) null);
 
-        Utils.DebugLog(TAG, "Adding repository " + name);
+        Utils.debugLog(TAG, "Adding repository " + name);
         db.insert(TABLE_REPO, null, values);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        Utils.DebugLog(TAG, "Upgrading database from v" + oldVersion + " v" + newVersion);
+        Utils.debugLog(TAG, "Upgrading database from v" + oldVersion + " v" + newVersion);
 
         migrateRepoTable(db, oldVersion);
 
@@ -406,35 +406,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void addLastUpdatedToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 35 && !columnExists(db, TABLE_REPO, "lastUpdated")) {
-            Utils.DebugLog(TAG, "Adding lastUpdated column to " + TABLE_REPO);
+            Utils.debugLog(TAG, "Adding lastUpdated column to " + TABLE_REPO);
             db.execSQL("Alter table " + TABLE_REPO + " add column lastUpdated string");
         }
     }
 
     private void addIsSwapToRepo(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 47 && !columnExists(db, TABLE_REPO, "isSwap")) {
-            Utils.DebugLog(TAG, "Adding isSwap field to " + TABLE_REPO + " table in db.");
+            Utils.debugLog(TAG, "Adding isSwap field to " + TABLE_REPO + " table in db.");
             db.execSQL("alter table " + TABLE_REPO + " add column isSwap boolean default 0;");
         }
     }
 
     private void addChangelogToApp(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 48 && !columnExists(db, TABLE_APP, "changelogURL")) {
-            Utils.DebugLog(TAG, "Adding changelogURL column to " + TABLE_APP);
+            Utils.debugLog(TAG, "Adding changelogURL column to " + TABLE_APP);
             db.execSQL("alter table " + TABLE_APP + " add column changelogURL text");
         }
     }
 
     private void addIconUrlLargeToApp(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 49 && !columnExists(db, TABLE_APP, "iconUrlLarge")) {
-            Utils.DebugLog(TAG, "Adding iconUrlLarge columns to " + TABLE_APP);
+            Utils.debugLog(TAG, "Adding iconUrlLarge columns to " + TABLE_APP);
             db.execSQL("alter table " + TABLE_APP + " add column iconUrlLarge text");
         }
     }
 
     private void updateIconUrlLarge(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 50) {
-            Utils.DebugLog(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
+            Utils.debugLog(TAG, "Recalculating app icon URLs so that the newly added large icons will get updated.");
             AppProvider.UpgradeHelper.updateIconUrls(context, db);
             clearRepoEtags(db);
         }
@@ -446,7 +446,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * they have changed since last update or not.
      */
     private void clearRepoEtags(SQLiteDatabase db) {
-        Utils.DebugLog(TAG, "Clearing repo etags, so next update will not be skipped with \"Repos up to date\".");
+        Utils.debugLog(TAG, "Clearing repo etags, so next update will not be skipped with \"Repos up to date\".");
         db.execSQL("update " + TABLE_REPO + " set lastetag = NULL");
     }
 
@@ -475,13 +475,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private void createInstalledApp(SQLiteDatabase db) {
-        Utils.DebugLog(TAG, "Creating 'installed app' database table.");
+        Utils.debugLog(TAG, "Creating 'installed app' database table.");
         db.execSQL(CREATE_TABLE_INSTALLED_APP);
     }
 
     private void addAppLabelToInstalledCache(SQLiteDatabase db, int oldVersion) {
         if (oldVersion < 45) {
-            Utils.DebugLog(TAG, "Adding applicationLabel to installed app table. " +
+            Utils.debugLog(TAG, "Adding applicationLabel to installed app table. " +
                     "Turns out we will need to repopulate the cache after doing this, " +
                     "so just dropping and recreating the table (instead of altering and adding a column). " +
                     "This will force the entire cache to be rebuilt, including app names.");

@@ -89,16 +89,16 @@ public class LocalRepoKeyStore {
         try {
             File appKeyStoreDir = context.getDir("keystore", Context.MODE_PRIVATE);
 
-            Utils.DebugLog(TAG, "Generating LocalRepoKeyStore instance: " + appKeyStoreDir.getAbsolutePath());
+            Utils.debugLog(TAG, "Generating LocalRepoKeyStore instance: " + appKeyStoreDir.getAbsolutePath());
             this.keyStoreFile = new File(appKeyStoreDir, "kerplapp.bks");
 
-            Utils.DebugLog(TAG, "Using default KeyStore type: " + KeyStore.getDefaultType());
+            Utils.debugLog(TAG, "Using default KeyStore type: " + KeyStore.getDefaultType());
             this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 
             if (keyStoreFile.exists()) {
                 InputStream in = null;
                 try {
-                    Utils.DebugLog(TAG, "Keystore already exists, loading...");
+                    Utils.debugLog(TAG, "Keystore already exists, loading...");
                     in = new FileInputStream(keyStoreFile);
                     keyStore.load(in, "".toCharArray());
                 } catch (IOException e) {
@@ -118,7 +118,7 @@ public class LocalRepoKeyStore {
                 // If there isn't a persisted BKS keystore on disk we need to
                 // create a new empty keystore
                 // Init a new keystore with a blank passphrase
-                Utils.DebugLog(TAG, "Keystore doesn't exist, creating...");
+                Utils.debugLog(TAG, "Keystore doesn't exist, creating...");
                 keyStore.load(null, "".toCharArray());
             }
 

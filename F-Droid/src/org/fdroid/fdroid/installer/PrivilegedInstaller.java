@@ -184,7 +184,7 @@ public class PrivilegedInstaller extends Installer {
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
                         // TODO: propagate other return codes?
                         if (returnCode == INSTALL_SUCCEEDED) {
-                            Utils.DebugLog(TAG, "Install succeeded");
+                            Utils.debugLog(TAG, "Install succeeded");
                             mCallback.onSuccess(InstallerCallback.OPERATION_INSTALL);
                         } else {
                             Log.e(TAG, "Install failed with returnCode " + returnCode);
@@ -289,7 +289,7 @@ public class PrivilegedInstaller extends Installer {
                     public void handleResult(String packageName, int returnCode) throws RemoteException {
                         // TODO: propagate other return codes?
                         if (returnCode == DELETE_SUCCEEDED) {
-                            Utils.DebugLog(TAG, "Delete succeeded");
+                            Utils.debugLog(TAG, "Delete succeeded");
 
                             mCallback.onSuccess(InstallerCallback.OPERATION_DELETE);
                         } else {

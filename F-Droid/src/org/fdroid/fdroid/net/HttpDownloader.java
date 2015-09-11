@@ -116,14 +116,14 @@ public class HttpDownloader extends Downloader {
     protected void doDownload() throws IOException, InterruptedException {
         if (wantToCheckCache()) {
             setupCacheCheck();
-            Utils.DebugLog(TAG, "Checking cached status of " + sourceUrl);
+            Utils.debugLog(TAG, "Checking cached status of " + sourceUrl);
             statusCode = connection.getResponseCode();
         }
 
         if (isCached()) {
-            Utils.DebugLog(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
+            Utils.debugLog(TAG, sourceUrl + " is cached, so not downloading (HTTP " + statusCode + ")");
         } else {
-            Utils.DebugLog(TAG, "Downloading from " + sourceUrl);
+            Utils.debugLog(TAG, "Downloading from " + sourceUrl);
             downloadFromStream(4096);
             updateCacheCheck();
         }

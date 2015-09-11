@@ -46,7 +46,7 @@ abstract class PackageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Utils.DebugLog(TAG, "PackageReceiver received [action = '" + intent.getAction() + "', data = '" + intent.getData() + "']");
+        Utils.debugLog(TAG, "PackageReceiver received [action = '" + intent.getAction() + "', data = '" + intent.getData() + "']");
         if (toDiscard(intent)) {
             return;
         }

@@ -160,7 +160,7 @@ public class WifiQrView extends ScrollView implements SwapWorkflowActivity.Inner
             }
         }
 
-        Utils.DebugLog(TAG, "Encoded swap URI in QR Code: " + qrUriString);
+        Utils.debugLog(TAG, "Encoded swap URI in QR Code: " + qrUriString);
 
         new QrGenAsyncTask(getActivity(), R.id.wifi_qr_code).execute(qrUriString);
 

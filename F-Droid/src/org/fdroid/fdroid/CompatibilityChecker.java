@@ -46,7 +46,7 @@ public class CompatibilityChecker extends Compatibility {
                     for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
                         logMsg.append('\n').append(fi.name);
                     }
-                    Utils.DebugLog(TAG, logMsg.toString());
+                    Utils.debugLog(TAG, logMsg.toString());
                 }
                 for (FeatureInfo fi : pm.getSystemAvailableFeatures()) {
                     features.add(fi.name);
@@ -101,7 +101,7 @@ public class CompatibilityChecker extends Compatibility {
                 }
                 if (!features.contains(feat)) {
                     Collections.addAll(incompatibleReasons, feat.split(","));
-                    Utils.DebugLog(TAG, apk.id + " vercode " + apk.vercode
+                    Utils.debugLog(TAG, apk.id + " vercode " + apk.vercode
                             + " is incompatible based on lack of " + feat);
                 }
             }
@@ -110,7 +110,7 @@ public class CompatibilityChecker extends Compatibility {
             for (final String code : apk.nativecode) {
                 incompatibleReasons.add(code);
             }
-            Utils.DebugLog(TAG, apk.id + " vercode " + apk.vercode
+            Utils.debugLog(TAG, apk.id + " vercode " + apk.vercode
                     + " only supports " + Utils.CommaSeparatedList.str(apk.nativecode)
                     + " while your architectures are " + cpuAbisDesc);
         }

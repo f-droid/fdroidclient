@@ -15,7 +15,7 @@ public class PackageManagerCompat extends Compatibility {
         if (!hasApi(11)) return;
         try {
             mPm.setInstallerPackageName(packageName, "org.fdroid.fdroid");
-            Utils.DebugLog(TAG, "Installer package name for " + packageName + " set successfully");
+            Utils.debugLog(TAG, "Installer package name for " + packageName + " set successfully");
         } catch (Exception e) {
             // Many problems can occur:
             //  * App wasn't installed due to incompatibility

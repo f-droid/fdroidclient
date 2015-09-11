@@ -92,7 +92,7 @@ public class RepoUpdater {
             if (downloader.isCached()) {
                 // The index is unchanged since we last read it. We just mark
                 // everything that came from this repo as being updated.
-                Utils.DebugLog(TAG, "Repo index for " + getIndexAddress() + " is up to date (by etag)");
+                Utils.debugLog(TAG, "Repo index for " + getIndexAddress() + " is up to date (by etag)");
             }
 
         } catch (IOException e) {
@@ -194,13 +194,13 @@ public class RepoUpdater {
         }
 
         if (handler.getVersion() != -1 && handler.getVersion() != repo.version) {
-            Utils.DebugLog(TAG, "Repo specified a new version: from "
+            Utils.debugLog(TAG, "Repo specified a new version: from "
                     + repo.version + " to " + handler.getVersion());
             values.put(RepoProvider.DataColumns.VERSION, handler.getVersion());
         }
 
         if (handler.getMaxAge() != -1 && handler.getMaxAge() != repo.maxage) {
-            Utils.DebugLog(TAG, "Repo specified a new maximum age - updated");
+            Utils.debugLog(TAG, "Repo specified a new maximum age - updated");
             values.put(RepoProvider.DataColumns.MAX_AGE, handler.getMaxAge());
         }
 
@@ -297,7 +297,7 @@ public class RepoUpdater {
         }
 
         if (trustNewSigningCertificate) {
-            Utils.DebugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
+            Utils.debugLog(TAG, "Saving new signing certificate in the database for " + repo.address);
             ContentValues values = new ContentValues(2);
             values.put(RepoProvider.DataColumns.LAST_UPDATED, Utils.formatDate(new Date(), ""));
             values.put(RepoProvider.DataColumns.PUBLIC_KEY, Hasher.hex(rawCertFromJar));

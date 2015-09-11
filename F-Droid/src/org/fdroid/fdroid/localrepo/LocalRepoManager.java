@@ -269,7 +269,7 @@ public class LocalRepoManager {
             Log.e(TAG, "Error adding app to local repo", e);
             return;
         }
-        Utils.DebugLog(TAG, "apps.put: " + packageName);
+        Utils.debugLog(TAG, "apps.put: " + packageName);
         apps.put(packageName, app);
     }
 

@@ -186,11 +186,11 @@ public class RepoProvider extends FDroidProvider {
             Uri apkUri = ApkProvider.getRepoUri(repo.getId());
             ContentResolver resolver = context.getContentResolver();
             int apkCount = resolver.delete(apkUri, null, null);
-            Utils.DebugLog(TAG, "Removed " + apkCount + " apks from repo " + repo.name);
+            Utils.debugLog(TAG, "Removed " + apkCount + " apks from repo " + repo.name);
 
             Uri appUri = AppProvider.getNoApksUri();
             int appCount = resolver.delete(appUri, null, null);
-            Utils.DebugLog(TAG, "Removed " + appCount + " apps with no apks.");
+            Utils.debugLog(TAG, "Removed " + appCount + " apps with no apks.");
         }
 
         public static int countAppsForRepo(Context context, long repoId) {
@@ -337,7 +337,7 @@ public class RepoProvider extends FDroidProvider {
         }
 
         long id = write().insertOrThrow(getTableName(), null, values);
-        Utils.DebugLog(TAG, "Inserted repo. Notifying provider change: '" + uri + "'.");
+        Utils.debugLog(TAG, "Inserted repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return getContentUri(id);
     }
@@ -361,7 +361,7 @@ public class RepoProvider extends FDroidProvider {
         }
 
         int rowsAffected = write().delete(getTableName(), where, whereArgs);
-        Utils.DebugLog(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
+        Utils.debugLog(TAG, "Deleted repos. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return rowsAffected;
     }
@@ -369,7 +369,7 @@ public class RepoProvider extends FDroidProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         int numRows = write().update(getTableName(), values, where, whereArgs);
-        Utils.DebugLog(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
+        Utils.debugLog(TAG, "Updated repo. Notifying provider change: '" + uri + "'.");
         getContext().getContentResolver().notifyChange(uri, null);
         return numRows;
     }

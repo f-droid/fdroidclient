@@ -46,11 +46,11 @@ public class PackageUpgradedReceiver extends PackageReceiver {
     protected void handle(Context context, String appId) {
         PackageInfo info = getPackageInfo(context, appId);
         if (info == null) {
-            Utils.DebugLog(TAG, "Could not get package info on '" + appId + "' - skipping.");
+            Utils.debugLog(TAG, "Could not get package info on '" + appId + "' - skipping.");
             return;
         }
 
-        Utils.DebugLog(TAG, "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
+        Utils.debugLog(TAG, "Updating installed app info for '" + appId + "' to v" + info.versionCode + " (" + info.versionName + ")");
 
         Uri uri = InstalledAppProvider.getContentUri();
         ContentValues values = new ContentValues(4);

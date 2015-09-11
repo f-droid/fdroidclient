@@ -110,7 +110,7 @@ abstract public class Installer {
         boolean isSystemInstallerEnabled = Preferences.get().isPrivilegedInstallerEnabled();
         if (isSystemInstallerEnabled) {
             if (PrivilegedInstaller.isAvailable(activity)) {
-                Utils.DebugLog(TAG, "system permissions -> SystemInstaller");
+                Utils.debugLog(TAG, "system permissions -> SystemInstaller");
 
                 try {
                     return new PrivilegedInstaller(activity, pm, callback);
@@ -126,7 +126,7 @@ abstract public class Installer {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             // Default installer on Android >= 4.0
             try {
-                Utils.DebugLog(TAG, "try default installer for Android >= 4");
+                Utils.debugLog(TAG, "try default installer for Android >= 4");
 
                 return new DefaultSdk14Installer(activity, pm, callback);
             } catch (AndroidNotCompatibleException e) {
@@ -135,7 +135,7 @@ abstract public class Installer {
         } else {
             // Default installer on Android < 4.0
             try {
-                Utils.DebugLog(TAG, "try default installer for Android < 4");
+                Utils.debugLog(TAG, "try default installer for Android < 4");
 
                 return new DefaultInstaller(activity, pm, callback);
             } catch (AndroidNotCompatibleException e) {

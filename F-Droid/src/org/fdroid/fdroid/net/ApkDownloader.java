@@ -142,10 +142,10 @@ public class ApkDownloader implements AsyncDownloader.Listener {
     private boolean verifyOrDelete(@NonNull final File apkFile) {
         if (apkFile.exists()) {
             if (hashMatches(apkFile)) {
-                Utils.DebugLog(TAG, "Using cached apk at " + apkFile);
+                Utils.debugLog(TAG, "Using cached apk at " + apkFile);
                 return true;
             }
-            Utils.DebugLog(TAG, "Not using cached apk at " + apkFile + "(hash doesn't match, will delete file)");
+            Utils.debugLog(TAG, "Not using cached apk at " + apkFile + "(hash doesn't match, will delete file)");
             delete(apkFile);
         }
         return false;
@@ -192,7 +192,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
         }
 
         String remoteAddress = Utils.getApkUrl(repoAddress, curApk);
-        Utils.DebugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
+        Utils.debugLog(TAG, "Downloading apk from " + remoteAddress + " to " + localFile);
 
         try {
             dlWrapper = DownloaderFactory.createAsync(context, remoteAddress, localFile, app.name + " " + curApk.version, curApk.id, this);
@@ -240,7 +240,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
     private void cacheIfRequired() {
         if (Preferences.get().shouldCacheApks()) {
-            Utils.DebugLog(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
+            Utils.debugLog(TAG, "Copying .apk file to cache at " + potentiallyCachedFile.getAbsolutePath());
             Utils.copyQuietly(localFile, potentiallyCachedFile);
         }
     }
@@ -255,7 +255,7 @@ public class ApkDownloader implements AsyncDownloader.Listener {
 
         cacheIfRequired();
 
-        Utils.DebugLog(TAG, "Download finished: " + localFile);
+        Utils.debugLog(TAG, "Download finished: " + localFile);
         prepareApkFileAndSendCompleteMessage();
     }
 

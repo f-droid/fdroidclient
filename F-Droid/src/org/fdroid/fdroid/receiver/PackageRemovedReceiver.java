@@ -32,7 +32,7 @@ public class PackageRemovedReceiver extends PackageReceiver {
     @Override
     protected boolean toDiscard(Intent intent) {
         if (intent.hasExtra(Intent.EXTRA_REPLACING)) {
-            Utils.DebugLog(TAG, "Discarding since this PACKAGE_REMOVED is just a PACKAGE_REPLACED");
+            Utils.debugLog(TAG, "Discarding since this PACKAGE_REMOVED is just a PACKAGE_REPLACED");
             return true;
         }
         return false;
@@ -41,7 +41,7 @@ public class PackageRemovedReceiver extends PackageReceiver {
     @Override
     protected void handle(Context context, String appId) {
 
-        Utils.DebugLog(TAG, "Removing installed app info for '" + appId + "'");
+        Utils.debugLog(TAG, "Removing installed app info for '" + appId + "'");
 
         Uri uri = InstalledAppProvider.getAppUri(appId);
         context.getContentResolver().delete(uri, null, null);

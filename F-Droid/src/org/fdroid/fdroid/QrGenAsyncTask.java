@@ -52,7 +52,7 @@ public class QrGenAsyncTask extends AsyncTask<String, Void, Void> {
             qrCodeDimension = x;
         else
             qrCodeDimension = y;
-        Utils.DebugLog(TAG, "generating QRCode Bitmap of " + qrCodeDimension + "x" + qrCodeDimension);
+        Utils.debugLog(TAG, "generating QRCode Bitmap of " + qrCodeDimension + "x" + qrCodeDimension);
         QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(qrData, null,
                 Contents.Type.TEXT, BarcodeFormat.QR_CODE.toString(), qrCodeDimension);
 

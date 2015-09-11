@@ -53,7 +53,7 @@ public class WifiStateChangeService extends Service {
         if (ni == null || ni.isConnected()) {
             /* started on app start or from WifiStateChangeReceiver,
                NetworkInfo is only passed via WifiStateChangeReceiver */
-            Utils.DebugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
+            Utils.debugLog(TAG, "ni == " + ni + "  wifiState == " + printWifiState(wifiState));
             if (wifiState == WifiManager.WIFI_STATE_ENABLED
                     || wifiState == WifiManager.WIFI_STATE_DISABLING   // might be switching to hotspot
                     || wifiState == WifiManager.WIFI_STATE_DISABLED   // might be hotspot
@@ -101,7 +101,7 @@ public class WifiStateChangeService extends Service {
                     if (FDroidApp.ipAddressString == null) {
                         Thread.sleep(1000);
                         if (BuildConfig.DEBUG) {
-                            Utils.DebugLog(TAG, "waiting for an IP address...");
+                            Utils.debugLog(TAG, "waiting for an IP address...");
                         }
                     }
                 }

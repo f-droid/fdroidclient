@@ -125,12 +125,12 @@ abstract public class AppListFragment extends ThemeableListFragment implements
         SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
         boolean hasTriedEmptyUpdate = prefs.getBoolean(TRIED_EMPTY_UPDATE, false);
         if (!hasTriedEmptyUpdate) {
-            Utils.DebugLog(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
+            Utils.debugLog(TAG, "Empty app list, and we haven't done an update yet. Forcing repo update.");
             prefs.edit().putBoolean(TRIED_EMPTY_UPDATE, true).commit();
             UpdateService.updateNow(getActivity());
             return true;
         }
-        Utils.DebugLog(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
+        Utils.debugLog(TAG, "Empty app list, but it looks like we've had an update previously. Will not force repo update.");
         return false;
     }
 

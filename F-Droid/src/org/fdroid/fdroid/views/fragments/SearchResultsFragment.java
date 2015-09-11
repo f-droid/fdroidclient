@@ -102,7 +102,7 @@ public class SearchResultsFragment extends ListFragment implements LoaderManager
             headerText = getString(R.string.searchres_napps, count, query);
         }
         tv.setText(headerText);
-        Utils.DebugLog(TAG, "Search for '" + query + "' returned " + count + " results");
+        Utils.debugLog(TAG, "Search for '" + query + "' returned " + count + " results");
     }
 
     @Override

@@ -646,11 +646,11 @@ public final class Utils {
         }
 
         if (startsWith != null) {
-            DebugLog(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
+            debugLog(TAG, "Cleaning up files in " + directory + " that start with \"" + startsWith + "\"");
         }
 
         if (endsWith != null) {
-            DebugLog(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
+            debugLog(TAG, "Cleaning up files in " + directory + " that end with \"" + endsWith + "\"");
         }
 
         for (File f : files) {
@@ -663,13 +663,13 @@ public final class Utils {
         }
     }
 
-    public static void DebugLog(String tag, String msg) {
+    public static void debugLog(String tag, String msg) {
         if (BuildConfig.DEBUG) {
             Log.d(tag, msg);
         }
     }
 
-    public static void DebugLog(String tag, String msg, Throwable tr) {
+    public static void debugLog(String tag, String msg, Throwable tr) {
         if (BuildConfig.DEBUG) {
             Log.d(tag, msg, tr);
         }

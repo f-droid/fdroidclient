@@ -171,7 +171,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
                     i.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             NdefMessage msg = (NdefMessage) rawMsgs[0];
             String url = new String(msg.getRecords()[0].getPayload());
-            Utils.DebugLog(TAG, "Got this URL: " + url);
+            Utils.debugLog(TAG, "Got this URL: " + url);
             Toast.makeText(this, "Got this URL: " + url, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             intent.setClass(this, ManageReposActivity.class);

@@ -46,7 +46,7 @@ public class NewRepoConfig {
             return;
         }
 
-        Utils.DebugLog(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
+        Utils.debugLog(TAG, "Parsing incoming intent looking for repo: " + incomingUri);
 
         // scheme and host should only ever be pure ASCII aka Locale.ENGLISH
         String scheme = uri.getScheme();

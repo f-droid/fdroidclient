@@ -291,7 +291,7 @@ public class ManageReposActivity extends ActionBarActivity {
                                 break;
 
                             case IS_SWAP:
-                                Utils.DebugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
+                                Utils.debugLog(TAG, "Removing existing swap repo " + url + " before adding new repo.");
                                 Repo repo = RepoProvider.Helper.findByAddress(context, url);
                                 RepoProvider.Helper.remove(context, repo.getId());
                                 prepareToCreateNewRepo(url, fp);
@@ -462,7 +462,7 @@ public class ManageReposActivity extends ActionBarActivity {
                     final String[] pathsToCheck = {"", "fdroid/repo", "repo"};
                     for (final String path : pathsToCheck) {
 
-                        Utils.DebugLog(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
+                        Utils.debugLog(TAG, "Checking for repo at " + originalAddress + " with suffix \"" + path + "\".");
                         Uri.Builder builder = Uri.parse(originalAddress).buildUpon().appendEncodedPath(path);
                         final String addressWithoutIndex = builder.build().toString();
                         publishProgress(addressWithoutIndex);
@@ -471,7 +471,7 @@ public class ManageReposActivity extends ActionBarActivity {
 
                         try {
                             if (checkForRepository(uri)) {
-                                Utils.DebugLog(TAG, "Found F-Droid repo at " + addressWithoutIndex);
+                                Utils.debugLog(TAG, "Found F-Droid repo at " + addressWithoutIndex);
                                 return addressWithoutIndex;
                             }
                         } catch (IOException e) {
@@ -480,7 +480,7 @@ public class ManageReposActivity extends ActionBarActivity {
                         }
 
                         if (isCancelled()) {
-                            Utils.DebugLog(TAG, "Not checking any more repo addresses, because process was skipped.");
+                            Utils.debugLog(TAG, "Not checking any more repo addresses, because process was skipped.");
                             break;
                         }
                     }
@@ -581,7 +581,7 @@ public class ManageReposActivity extends ActionBarActivity {
                 }
             }
 
-            Utils.DebugLog(TAG, "Enabling existing repo: " + url);
+            Utils.debugLog(TAG, "Enabling existing repo: " + url);
             Repo repo = RepoProvider.Helper.findByAddress(context, url);
             ContentValues values = new ContentValues(2);
             values.put(RepoProvider.DataColumns.IN_USE, 1);
@@ -646,7 +646,7 @@ public class ManageReposActivity extends ActionBarActivity {
         @Override
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
             Uri uri = RepoProvider.allExceptSwapUri();
-            Utils.DebugLog(TAG, "Creating repo loader '" + uri + "'.");
+            Utils.debugLog(TAG, "Creating repo loader '" + uri + "'.");
             final String[] projection = {
                     RepoProvider.DataColumns._ID,
                     RepoProvider.DataColumns.NAME,

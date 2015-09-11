@@ -862,7 +862,7 @@ public class AppProvider extends FDroidProvider {
      */
     private void updateSuggestedFromUpstream() {
 
-        Utils.DebugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
+        Utils.debugLog(TAG, "Calculating suggested versions for all apps which specify an upstream version code.");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -894,7 +894,7 @@ public class AppProvider extends FDroidProvider {
      */
     private void updateCompatibleFlags() {
 
-        Utils.DebugLog(TAG, "Calculating whether apps are compatible, based on whether any of their apks are compatible");
+        Utils.debugLog(TAG, "Calculating whether apps are compatible, based on whether any of their apks are compatible");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -938,7 +938,7 @@ public class AppProvider extends FDroidProvider {
      */
     private void updateSuggestedFromLatest() {
 
-        Utils.DebugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
+        Utils.debugLog(TAG, "Calculating suggested versions for all apps which don't specify an upstream version code.");
 
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
@@ -965,10 +965,10 @@ public class AppProvider extends FDroidProvider {
         final String iconsDir = Utils.getIconsDir(context, 1.0);
         final String iconsDirLarge = Utils.getIconsDir(context, 1.5);
         String repoVersion = Integer.toString(Repo.VERSION_DENSITY_SPECIFIC_ICONS);
-        Utils.DebugLog(TAG, "Updating icon paths for apps belonging to repos with version >= "
+        Utils.debugLog(TAG, "Updating icon paths for apps belonging to repos with version >= "
                 + repoVersion);
-        Utils.DebugLog(TAG, "Using icons dir '" + iconsDir + "'");
-        Utils.DebugLog(TAG, "Using large icons dir '" + iconsDirLarge + "'");
+        Utils.debugLog(TAG, "Using icons dir '" + iconsDir + "'");
+        Utils.debugLog(TAG, "Using large icons dir '" + iconsDirLarge + "'");
         String query = getIconUpdateQuery();
         final String[] params = {
             repoVersion, iconsDir, Utils.FALLBACK_ICONS_DIR,
