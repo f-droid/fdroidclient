@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -30,11 +31,14 @@ import java.io.OutputStream;
 public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     private final Context context;
     private final DownloadManager dm;
+    private final LocalBroadcastManager localBroadcastManager;
     private File localFile;
     private String remoteAddress;
     private String downloadTitle;
     private String uniqueDownloadId;
     private Listener listener;
+    private Thread progressThread;
+    private boolean isCancelled;
 
     private long downloadManagerId = -1;
 
@@ -58,10 +62,13 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         }
 
         dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        localBroadcastManager = LocalBroadcastManager.getInstance(context);
     }
 
     @Override
     public void download() {
+        isCancelled = false;
+
         // Check if the download is complete
         if ((downloadManagerId = isDownloadComplete(context, uniqueDownloadId)) > 0) {
             // clear the notification
@@ -94,6 +101,17 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
 
         context.registerReceiver(receiver,
                 new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
+        progressThread = new Thread() {
+            @Override
+            public void run() {
+                while (!isCancelled && isDownloading(context, uniqueDownloadId) >= 0) {
+                    try { Thread.sleep(1000); } catch (Exception e) {}
+                    sendProgress(getBytesRead(), getTotalBytes());
+                }
+            }
+        };
+        progressThread.start();
     }
 
     /**
@@ -155,8 +173,17 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         return 0;
     }
 
+    protected void sendProgress(int bytesRead, int totalBytes) {
+        Intent intent = new Intent(Downloader.LOCAL_ACTION_PROGRESS);
+        intent.putExtra(Downloader.EXTRA_ADDRESS, remoteAddress);
+        intent.putExtra(Downloader.EXTRA_BYTES_READ, bytesRead);
+        intent.putExtra(Downloader.EXTRA_TOTAL_BYTES, totalBytes);
+        localBroadcastManager.sendBroadcast(intent);
+    }
+
     @Override
     public void attemptCancel(boolean userRequested) {
+        isCancelled = true;
         try {
             context.unregisterReceiver(receiver);
         } catch (Exception e) {
