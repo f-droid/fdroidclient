@@ -156,8 +156,7 @@ public abstract class Downloader {
         sendProgress(bytesRead, totalBytes);
         while (bytesRead < totalBytes) {
 
-            int count = -1;
-
+            int count;
             if (input.available()>0) {
 
                 int readLength = Math.min(input.available(), buffer.length);

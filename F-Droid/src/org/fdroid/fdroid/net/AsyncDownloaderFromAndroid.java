@@ -31,12 +31,11 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     private final Context context;
     private final DownloadManager dm;
     private final LocalBroadcastManager localBroadcastManager;
-    private File localFile;
-    private String remoteAddress;
-    private String downloadTitle;
-    private String uniqueDownloadId;
-    private Listener listener;
-    private Thread progressThread;
+    private final File localFile;
+    private final String remoteAddress;
+    private final String downloadTitle;
+    private final String uniqueDownloadId;
+    private final Listener listener;
     private boolean isCancelled;
 
     private long downloadManagerId = -1;
@@ -50,7 +49,6 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
      */
     public AsyncDownloaderFromAndroid(Context context, Listener listener, String downloadTitle, String downloadId, String remoteAddress, File localFile) {
         this.context = context;
-        this.downloadTitle = downloadTitle;
         this.uniqueDownloadId = downloadId;
         this.remoteAddress = remoteAddress;
         this.listener = listener;
@@ -58,6 +56,8 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
 
         if (TextUtils.isEmpty(downloadTitle)) {
             this.downloadTitle = remoteAddress;
+        } else {
+            this.downloadTitle = downloadTitle;
         }
 
         dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
@@ -101,11 +101,14 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
         context.registerReceiver(receiver,
                 new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
-        progressThread = new Thread() {
+        Thread progressThread = new Thread() {
             @Override
             public void run() {
                 while (!isCancelled && isDownloading(context, uniqueDownloadId) >= 0) {
-                    try { Thread.sleep(1000); } catch (Exception e) {}
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                    }
                     sendProgress(getBytesRead(), getTotalBytes());
                 }
             }
@@ -313,7 +316,7 @@ public class AsyncDownloaderFromAndroid implements AsyncDownloader {
     /**
      * Broadcast receiver to listen for ACTION_DOWNLOAD_COMPLETE broadcasts
      */
-    BroadcastReceiver receiver = new BroadcastReceiver() {
+    final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(intent.getAction())) {

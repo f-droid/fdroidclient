@@ -197,7 +197,8 @@ public class WifiStateChangeService extends Service {
                     InetAddress inetAddress = inetAddresses.nextElement();
                     if (inetAddress.isLoopbackAddress() || inetAddress instanceof Inet6Address) {
                         continue;
-                    } else if (netIf.getDisplayName().contains("wlan0")
+                    }
+                    if (netIf.getDisplayName().contains("wlan0")
                             || netIf.getDisplayName().contains("eth0")
                             || netIf.getDisplayName().contains("ap0")) {
                         FDroidApp.ipAddressString = inetAddress.getHostAddress();
