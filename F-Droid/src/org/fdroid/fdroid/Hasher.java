@@ -59,9 +59,10 @@ public class Hasher {
     // specified in the constructor. This will return a cached value
     // on subsequent invocations. Returns the empty string on failure.
     public String getHash() {
-        if (hashCache != null)
+        if (hashCache != null) {
             return hashCache;
-        else if (file != null) {
+        }
+        if (file != null) {
             byte[] buffer = new byte[1024];
             int read;
             InputStream input = null;
@@ -85,9 +86,12 @@ public class Hasher {
     // returning true if they are equal. The empty string and null are
     // considered non-matching.
     public boolean match(String otherHash) {
-        if (hashCache == null) getHash();
-        if (otherHash == null || hashCache.equals(""))
+        if (otherHash == null) {
             return false;
+        }
+        if (hashCache == null) {
+            getHash();
+        }
         return hashCache.equals(otherHash.toLowerCase(Locale.ENGLISH));
     }
 
