@@ -345,8 +345,7 @@ public class LocalRepoManager {
             serializer = XmlPullParserFactory.newInstance().newSerializer();
         }
 
-        public void build(File file) throws IOException, LocalRepoKeyStore.InitException {
-            Writer output = new FileWriter(file);
+        public void build(FileWriter output) throws IOException, LocalRepoKeyStore.InitException {
             serializer.setOutput(output);
             serializer.startDocument(null, null);
             tagFdroid();
