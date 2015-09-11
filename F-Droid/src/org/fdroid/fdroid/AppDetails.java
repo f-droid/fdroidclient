@@ -1489,6 +1489,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
          * Updates progress bar and captions to new values (in bytes).
          */
         public void updateProgress(long progress, long total) {
+            // Avoid division by zero and other weird values
+            if (progress < 0 || total <= 0) {
+                return;
+            }
             long percent = progress * 100 / total;
             setProgressVisible(true);
             progressBar.setIndeterminate(false);
