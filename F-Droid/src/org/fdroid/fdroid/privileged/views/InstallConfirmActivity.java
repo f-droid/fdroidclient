@@ -86,8 +86,6 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
         mOkCanInstall = false;
         int msg = 0;
         AppSecurityPermissions perms = new AppSecurityPermissions(this, mAppDiff.mPkgInfo);
-        final int NP = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
-        final int ND = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
         if (mAppDiff.mInstalledAppInfo != null) {
             msg = (mAppDiff.mInstalledAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                     ? R.string.install_confirm_update_system
@@ -109,6 +107,8 @@ public class InstallConfirmActivity extends Activity implements OnCancelListener
             findViewById(R.id.tabscontainer).setVisibility(View.GONE);
             findViewById(R.id.divider).setVisibility(View.VISIBLE);
         }
+        final int NP = perms.getPermissionCount(AppSecurityPermissions.WHICH_PERSONAL);
+        final int ND = perms.getPermissionCount(AppSecurityPermissions.WHICH_DEVICE);
         if (NP > 0 || ND > 0) {
             permVisible = true;
             LayoutInflater inflater = (LayoutInflater) getSystemService(

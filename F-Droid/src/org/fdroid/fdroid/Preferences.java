@@ -150,7 +150,7 @@ public class Preferences implements SharedPreferences.OnSharedPreferenceChangeLi
     }
 
     private String getDefaultLocalRepoName() {
-        return (Build.BRAND + " " + Build.MODEL + String.valueOf(new Random().nextInt(9999)))
+        return (Build.BRAND + " " + Build.MODEL + new Random().nextInt(9999))
                 .replaceAll(" ", "-");
     }
 

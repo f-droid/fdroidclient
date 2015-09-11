@@ -352,7 +352,7 @@ public class PrivilegedInstaller extends Installer {
         return false;
     }
 
-    public final int INSTALL_REPLACE_EXISTING = 2;
+    public static final int INSTALL_REPLACE_EXISTING = 2;
 
     /**
      * Following return codes are copied from Android 5.1 source code

@@ -287,8 +287,6 @@ public class App extends ValueObject implements Comparable<App> {
             apk.features = Utils.CommaSeparatedList.make(featureNames);
         }
 
-        byte[] rawCertBytes;
-
         final JarFile apkJar = new JarFile(apkFile);
         final JarEntry aSignedEntry = (JarEntry) apkJar.getEntry("AndroidManifest.xml");
 
@@ -296,6 +294,8 @@ public class App extends ValueObject implements Comparable<App> {
             apkJar.close();
             throw new CertificateEncodingException("null signed entry!");
         }
+
+        byte[] rawCertBytes;
 
         // Due to a bug in android 5.0 lollipop, the inclusion of BouncyCastle causes
         // breakage when verifying the signature of most .jars. For more

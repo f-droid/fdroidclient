@@ -436,8 +436,6 @@ public class AppSecurityPermissions {
         final boolean isDangerous = (base == PermissionInfo.PROTECTION_DANGEROUS);
         final boolean isRequired =
                 ((newReqFlags&PackageInfo.REQUESTED_PERMISSION_REQUIRED) != 0);
-        final boolean isDevelopment =
-                ((pInfo.protectionLevel&PermissionInfo.PROTECTION_FLAG_DEVELOPMENT) != 0);
         final boolean wasGranted =
                 ((existingReqFlags&PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0);
         final boolean isGranted =
@@ -449,6 +447,9 @@ public class AppSecurityPermissions {
             Build.VERSION.SDK_INT < 16)) {
             return true;
         }
+
+        final boolean isDevelopment =
+                ((pInfo.protectionLevel&PermissionInfo.PROTECTION_FLAG_DEVELOPMENT) != 0);
 
         // Development permissions are only shown to the user if they are already
         // granted to the app -- if we are installing an app and they are not

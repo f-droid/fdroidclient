@@ -677,7 +677,6 @@ public class AppProvider extends FDroidProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String customSelection, String[] selectionArgs, String sortOrder) {
-        Query query = new Query();
         AppQuerySelection selection = new AppQuerySelection(customSelection, selectionArgs);
 
         // Queries which are for the main list of apps should not include swap apps.
@@ -757,6 +756,8 @@ public class AppProvider extends FDroidProvider {
         if (AppProvider.DataColumns.NAME.equals(sortOrder)) {
             sortOrder = " lower( fdroid_app." + sortOrder + " ) ";
         }
+
+        Query query = new Query();
 
         query.addSelection(selection);
         query.addFields(projection); // TODO: Make the order of addFields/addSelection not dependent on each other...

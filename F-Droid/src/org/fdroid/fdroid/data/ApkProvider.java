@@ -121,7 +121,7 @@ public class ApkProvider extends FDroidProvider {
          * one of the apks in the "apks" argument.
          */
         public static List<Apk> knownApks(Context context, List<Apk> apks, String[] fields) {
-            if (apks.size() == 0) {
+            if (apks.isEmpty()) {
                 return new ArrayList<>();
             }
 
@@ -362,13 +362,13 @@ public class ApkProvider extends FDroidProvider {
 
     private QuerySelection queryApks(String apkKeys) {
         final String[] apkDetails = apkKeys.split(",");
-        final String[] args = new String[apkDetails.length * 2];
-        StringBuilder sb = new StringBuilder();
         if (apkDetails.length > MAX_APKS_TO_QUERY) {
             throw new IllegalArgumentException(
                 "Cannot query more than " + MAX_APKS_TO_QUERY + ". " +
                 "You tried to query " + apkDetails.length);
         }
+        final String[] args = new String[apkDetails.length * 2];
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < apkDetails.length; i++) {
             String[] parts = apkDetails[i].split(":");
             String id = parts[0];

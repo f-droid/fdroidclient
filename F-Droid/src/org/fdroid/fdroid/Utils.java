@@ -359,11 +359,11 @@ public final class Utils {
     public static String calcFingerprint(byte[] key) {
         if (key == null)
             return null;
-        String ret = null;
         if (key.length < 256) {
             Log.e(TAG, "key was shorter than 256 bytes (" + key.length + "), cannot be valid!");
             return null;
         }
+        String ret = null;
         try {
             // keytool -list -v gives you the SHA-256 fingerprint
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -427,7 +427,7 @@ public final class Utils {
         }
 
         public static CommaSeparatedList make(List<String> list) {
-            if (list == null || list.size() == 0)
+            if (list == null || list.isEmpty())
                 return null;
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < list.size(); i++) {

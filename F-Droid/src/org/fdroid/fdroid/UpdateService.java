@@ -291,13 +291,13 @@ public class UpdateService extends IntentService implements ProgressListener {
      */
     private boolean verifyIsTimeForScheduledRun() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
         String sint = prefs.getString(Preferences.PREF_UPD_INTERVAL, "0");
         int interval = Integer.parseInt(sint);
         if (interval == 0) {
             Log.i(TAG, "Skipping update - disabled");
             return false;
         }
+        long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
         long elapsed = System.currentTimeMillis() - lastUpdate;
         if (elapsed < interval * 60 * 60 * 1000) {
             Log.i(TAG, "Skipping update - done " + elapsed
@@ -312,7 +312,6 @@ public class UpdateService extends IntentService implements ProgressListener {
      * If we are to update the repos only on wifi, make sure that connection is active
      */
     public static boolean isNetworkAvailableForUpdate(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // this could be cellular or wifi
@@ -320,6 +319,7 @@ public class UpdateService extends IntentService implements ProgressListener {
         if (activeNetwork == null)
             return false;
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         if (activeNetwork.getType() != ConnectivityManager.TYPE_WIFI
                 && prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
             Log.i(TAG, "Skipping update - wifi not available");
@@ -336,14 +336,14 @@ public class UpdateService extends IntentService implements ProgressListener {
         boolean manualUpdate = intent.getBooleanExtra(EXTRA_MANUAL_UPDATE, false);
 
         try {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
             // See if it's time to actually do anything yet...
             if (manualUpdate) {
                 Utils.debugLog(TAG, "Unscheduled (manually requested) update");
             } else if (!verifyIsTimeForScheduledRun()) {
                 return;
             }
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
             // Grab some preliminary information, then we can release the
             // database while we do all the downloading, etc...
@@ -505,9 +505,9 @@ public class UpdateService extends IntentService implements ProgressListener {
         return stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    private NotificationCompat.Style createNotificationBigStyle(Cursor hasUpdates) {
+    private static final int MAX_UPDATES_TO_SHOW = 5;
 
-        final int MAX_UPDATES_TO_SHOW = 5;
+    private NotificationCompat.Style createNotificationBigStyle(Cursor hasUpdates) {
 
         final String contentText = hasUpdates.getCount() > 1
                 ? getString(R.string.many_updates_available, hasUpdates.getCount())
@@ -553,7 +553,7 @@ public class UpdateService extends IntentService implements ProgressListener {
 
     private List<String> getKnownAppIds(List<App> apps) {
         List<String> knownAppIds = new ArrayList<>();
-        if (apps.size() == 0) {
+        if (apps.isEmpty()) {
             return knownAppIds;
         }
         if (apps.size() > AppProvider.MAX_APPS_TO_QUERY) {

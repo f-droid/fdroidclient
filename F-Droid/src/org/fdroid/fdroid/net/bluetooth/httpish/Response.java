@@ -132,7 +132,7 @@ public class Response {
 
     public String readContents() throws IOException {
         int size = getFileSize();
-        if (contentStream == null || getFileSize() <= 0) {
+        if (contentStream == null || size <= 0) {
             return null;
         }
 

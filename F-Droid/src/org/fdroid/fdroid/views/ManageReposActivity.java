@@ -275,7 +275,6 @@ public class ManageReposActivity extends ActionBarActivity {
                     @Override
                     public void onClick(View v) {
 
-                        String fp = fingerprintEditText.getText().toString();
                         String url = uriEditText.getText().toString();
 
                         try {
@@ -284,6 +283,8 @@ public class ManageReposActivity extends ActionBarActivity {
                             invalidUrl();
                             return;
                         }
+
+                        String fp = fingerprintEditText.getText().toString();
 
                         switch (addRepoState) {
                             case DOESNT_EXIST:
