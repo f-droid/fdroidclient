@@ -378,8 +378,10 @@ public class ZipSigner
         Manifest input = null;
         ZioEntry manifestEntry = entries.get(JarFile.MANIFEST_NAME);
         if (manifestEntry != null) {
+            InputStream is = manifestEntry.getInputStream();
             input = new Manifest();
-            input.read( manifestEntry.getInputStream());
+            input.read(is);
+            is.close();
         }
         Manifest output = new Manifest();
         Attributes main = output.getMainAttributes();
@@ -645,6 +647,7 @@ public class ZipSigner
         
         ZipInput input = ZipInput.read( inputZipFilename);
         signZip( input.getEntries(), new FileOutputStream( outputZipFilename), outputZipFilename);
+        input.close();
     }
     
     /** Sign the 

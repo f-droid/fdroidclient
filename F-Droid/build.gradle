@@ -27,6 +27,7 @@ if (!hasProperty('sourceDeps')) {
         compile 'com.madgag.spongycastle:pkix:1.51.0.0'
         compile 'com.madgag.spongycastle:prov:1.51.0.0'
         compile 'com.madgag.spongycastle:core:1.51.0.0'
+        compile 'commons-net:commons-net:3.3'
 
         // Upstream doesn't have a binary on mavenCentral/jcenter yet:
         // https://github.com/kolavar/android-support-v4-preferencefragment/issues/13
@@ -36,7 +37,9 @@ if (!hasProperty('sourceDeps')) {
         // yet (seems to be a little unsupported as of late), so not using mavenCentral/jcenter.
         compile(name: 'nanohttpd-2.1.0')
 
-        // Upstream doesn't have a binary on mavenCentral. Looks discontinued.
+        // Upstream doesn't have a binary on mavenCentral, and it is an SVN repo on
+        // Google Code.  We include this code directly in this repo, and have made
+        // modifications that should be pushed to anyone who wants to maintain it.
         compile(name: 'zipsigner')
 
         // Project semi-abandoned, 3.4.1 is from 2011 and we use trunk from 2013
@@ -68,6 +71,7 @@ if (!hasProperty('sourceDeps')) {
         compile 'eu.chainfire:libsuperuser:1.0.0.201504231659'
         compile 'cc.mvdan.accesspoint:library:0.1.1'
         compile 'info.guardianproject.netcipher:netcipher:1.2'
+        compile 'commons-net:commons-net:3.3'
 
         compile(project(':extern:support-v4-preferencefragment')) {
             exclude module: 'support-v4'
