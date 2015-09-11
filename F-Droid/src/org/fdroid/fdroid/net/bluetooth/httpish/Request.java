@@ -44,8 +44,7 @@ public class Request {
         input = connection.getInputStream();
     }
 
-    public static Request createHEAD(String path, BluetoothConnection connection)
-    {
+    public static Request createHEAD(String path, BluetoothConnection connection) {
         return new Request(Methods.HEAD, path, connection);
     }
 
@@ -141,8 +140,7 @@ public class Request {
         return Integer.parseInt(status);
     }
 
-    private String readLine () throws IOException
-    {
+    private String readLine() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         String line = null;
 

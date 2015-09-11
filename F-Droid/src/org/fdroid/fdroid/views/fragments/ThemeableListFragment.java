@@ -38,8 +38,7 @@ public abstract class ThemeableListFragment extends ListFragment {
         }
     }
 
-    private LayoutInflater getThemedInflater(Context context)
-    {
+    private LayoutInflater getThemedInflater(Context context) {
         Context c = (getThemeStyle() == 0) ? context : new ContextThemeWrapper(context, getThemeStyle());
         return (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

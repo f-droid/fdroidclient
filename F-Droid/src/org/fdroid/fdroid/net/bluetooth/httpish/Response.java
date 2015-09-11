@@ -62,8 +62,7 @@ public class Response {
         this.contentStream = contentStream;
     }
 
-    public void addHeader (String key, String value)
-    {
+    public void addHeader (String key, String value) {
         headers.put(key, value);
     }
 

@@ -166,8 +166,7 @@ public abstract class Downloader {
 
                 int readLength = Math.min(input.available(), buffer.length);
                 count = input.read(buffer, 0, readLength);
-            }
-            else {
+            } else {
                 count = input.read(buffer);
             }
 

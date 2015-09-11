@@ -48,8 +48,7 @@ public class HttpDownloader extends Downloader {
      * only stream the file through the {@link HttpDownloader#getInputStream()}
      * @return
      */
-    public HttpDownloader streamDontDownload()
-    {
+    public HttpDownloader streamDontDownload() {
         onlyStream = true;
         return this;
     }
@@ -69,8 +68,7 @@ public class HttpDownloader extends Downloader {
         return stream;
     }
 
-    public BufferedReader getBufferedReader () throws IOException
-    {
+    public BufferedReader getBufferedReader() throws IOException {
         return new BufferedReader(new InputStreamReader(getInputStream()));
     }
 
@@ -169,14 +167,13 @@ public class HttpDownloader extends Downloader {
         return statusCode;
     }
 
-    public void close ()
-    {
+    public void close() {
         try {
             if (stream != null)
                 stream.close();
         }
         catch (IOException e) {}
-        
+
         connection.disconnect();
     }
 }

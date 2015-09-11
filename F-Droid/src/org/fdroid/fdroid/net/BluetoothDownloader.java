@@ -97,8 +97,7 @@ public class BluetoothDownloader extends Downloader {
     }
 
     @Override
-    public void close ()
-    {
+    public void close() {
         if (connection != null)
             connection.closeQuietly();
     }

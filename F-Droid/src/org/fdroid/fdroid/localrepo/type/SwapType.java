@@ -33,8 +33,7 @@ public abstract class SwapType {
 
     abstract protected String getBroadcastAction();
 
-    public boolean isDiscoverable ()
-    {
+    public boolean isDiscoverable() {
         return isConnected();
     }
 

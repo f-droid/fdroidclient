@@ -50,7 +50,7 @@ public class BluetoothSwap extends SwapType {
     }
 
     @Override
-    public boolean isDiscoverable () {
+    public boolean isDiscoverable() {
         return isDiscoverable;
     }
 
@@ -120,8 +120,7 @@ public class BluetoothSwap extends SwapType {
             }
         }
 
-        if (adapter.isEnabled())
-        {
+        if (adapter.isEnabled()) {
             setConnected(true);
         } else {
             Log.i(TAG, "Didn't start Bluetooth swapping server, because Bluetooth is disabled and couldn't be enabled.");

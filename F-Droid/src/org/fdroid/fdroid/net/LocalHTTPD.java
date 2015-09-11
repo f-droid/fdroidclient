@@ -276,9 +276,9 @@ public class LocalHTTPD extends NanoHTTPD {
                     res.addHeader("ETag", etag);
                 }
             } else {
-                if (etag.equals(header.get("if-none-match")))
+                if (etag.equals(header.get("if-none-match"))) {
                     res = createResponse(Response.Status.NOT_MODIFIED, mime, "");
-                else {
+                } else {
                     res = createResponse(Response.Status.OK, mime, new FileInputStream(file));
                     res.addHeader("Content-Length", "" + fileLen);
                     res.addHeader("ETag", etag);
