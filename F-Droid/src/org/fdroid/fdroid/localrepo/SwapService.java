@@ -31,7 +31,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.NewRepoConfig;
 import org.fdroid.fdroid.data.Repo;
 import org.fdroid.fdroid.data.RepoProvider;

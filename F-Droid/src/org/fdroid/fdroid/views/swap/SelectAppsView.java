@@ -299,7 +299,7 @@ public class SelectAppsView extends ListView implements
             final int firstListItemPosition = listView.getFirstVisiblePosition();
             final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
-            if (position >= firstListItemPosition && position <= lastListItemPosition ) {
+            if (position >= firstListItemPosition && position <= lastListItemPosition) {
                 final int childIndex = position - firstListItemPosition;
                 updateCheckedIndicatorView(listView.getChildAt(childIndex), checked);
             }

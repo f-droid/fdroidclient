@@ -183,7 +183,7 @@ public class Response {
             }
 
             if (etag != null) {
-                headers.put( "ETag", etag);
+                headers.put("ETag", etag);
             }
 
             return new Response(statusCode, headers, contentStream);

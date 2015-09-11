@@ -9,10 +9,7 @@ import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
 
 import java.io.IOException;
-import java.net.Inet4Address;
 import java.net.InetAddress;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
