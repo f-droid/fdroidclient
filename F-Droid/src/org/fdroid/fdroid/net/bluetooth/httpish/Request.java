@@ -1,17 +1,13 @@
 package org.fdroid.fdroid.net.bluetooth.httpish;
 
 import android.util.Log;
+
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Locale;

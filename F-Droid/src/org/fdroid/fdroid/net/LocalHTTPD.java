@@ -7,7 +7,6 @@ import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import org.fdroid.fdroid.BuildConfig;
-import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.LocalRepoKeyStore;
 import org.fdroid.fdroid.views.swap.SwapWorkflowActivity;

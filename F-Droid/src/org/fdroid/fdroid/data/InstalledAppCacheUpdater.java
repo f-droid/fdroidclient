@@ -9,11 +9,11 @@ import android.os.AsyncTask;
 import android.os.RemoteException;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import org.fdroid.fdroid.Utils;
 
 /**
  * Compares what is in the fdroid_installedApp SQLite database table with the package

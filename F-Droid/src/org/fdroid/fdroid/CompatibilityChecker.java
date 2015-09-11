@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import org.fdroid.fdroid.compat.Compatibility;
 import org.fdroid.fdroid.compat.SupportedArchitectures;

@@ -1,6 +1,7 @@
 package org.fdroid.fdroid.net.bluetooth.httpish;
 
 import android.util.Log;
+
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.net.bluetooth.BluetoothConnection;
 import org.fdroid.fdroid.net.bluetooth.FileDetails;

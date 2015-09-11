@@ -9,12 +9,12 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.fdroid.fdroid.Utils;
 
 public class ApkProvider extends FDroidProvider {
 

@@ -23,7 +23,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.ApkProvider;

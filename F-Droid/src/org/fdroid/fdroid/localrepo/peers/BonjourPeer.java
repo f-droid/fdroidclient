@@ -3,8 +3,8 @@ package org.fdroid.fdroid.localrepo.peers;
 import android.net.Uri;
 import android.os.Parcel;
 
-import javax.jmdns.impl.FDroidServiceInfo;
 import javax.jmdns.ServiceInfo;
+import javax.jmdns.impl.FDroidServiceInfo;
 
 public class BonjourPeer extends WifiPeer {
 

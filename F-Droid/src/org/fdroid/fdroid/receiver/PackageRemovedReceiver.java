@@ -21,7 +21,6 @@ package org.fdroid.fdroid.receiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.InstalledAppProvider;

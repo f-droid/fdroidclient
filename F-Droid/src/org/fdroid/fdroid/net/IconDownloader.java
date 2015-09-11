@@ -3,7 +3,6 @@ package org.fdroid.fdroid.net;
 import android.content.Context;
 
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-import com.nostra13.universalimageloader.utils.IoUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

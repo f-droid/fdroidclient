@@ -1,10 +1,10 @@
 package org.fdroid.fdroid.net.bluetooth;
 
 import android.annotation.TargetApi;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Build;
 import android.util.Log;
+
 import org.fdroid.fdroid.Utils;
 
 import java.io.BufferedInputStream;

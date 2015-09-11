@@ -43,8 +43,6 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
 
-import java.io.File;
-
 import eu.chainfire.libsuperuser.Shell;
 
 /**
