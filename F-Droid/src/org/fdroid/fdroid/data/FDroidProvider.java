@@ -33,7 +33,6 @@ public abstract class FDroidProvider extends ContentProvider {
 
     /**
      * Should always be the same as the provider:name in the AndroidManifest
-     * @return
      */
     public final String getName() {
         return AUTHORITY + "." + getProviderName();
@@ -44,7 +43,6 @@ public abstract class FDroidProvider extends ContentProvider {
      * decide not to notify the content resolver of changes,
      * every single time we do something during many operations.
      * Based on http://stackoverflow.com/a/15886915.
-     * @return
      */
     protected final boolean isApplyingBatch() {
         return this.isApplyingBatch;

@@ -91,11 +91,6 @@ public class CanUpdateAppsFragment extends AppListFragment {
      * Copied from ListFragment and added Button on top of list. We do not use a
      * custom layout here, because this breaks the progress bar functionality of
      * ListFragment.
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

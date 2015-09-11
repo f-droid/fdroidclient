@@ -629,7 +629,7 @@ public final class Utils {
     }
 
     /**
-     * Remove all files from the {@parm directory} either beginning with {@param startsWith}
+     * Remove all files from the {@param directory} either beginning with {@param startsWith}
      * or ending with {@param endsWith}. Note that if the SD card is not ready, then the
      * cache directory will probably not be available. In this situation no files will be
      * deleted (and thus they may still exist after the SD card becomes available).

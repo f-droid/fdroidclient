@@ -46,7 +46,6 @@ public class HttpDownloader extends Downloader {
     /**
      * Calling this makes this downloader not download a file. Instead, it will
      * only stream the file through the {@link HttpDownloader#getInputStream()}
-     * @return
      */
     public HttpDownloader streamDontDownload() {
         onlyStream = true;
