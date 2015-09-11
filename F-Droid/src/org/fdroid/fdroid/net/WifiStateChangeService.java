@@ -205,8 +205,8 @@ public class WifiStateChangeService extends Service {
                             return;
                         // the following methods were not added until android-9/Gingerbread
                         for (InterfaceAddress address : netIf.getInterfaceAddresses()) {
-                            if (inetAddress.equals(address.getAddress()) && ! TextUtils.isEmpty(FDroidApp.ipAddressString)) {
-                                String cidr = String.format("%s/%i", FDroidApp.ipAddressString, address.getNetworkPrefixLength());
+                            if (inetAddress.equals(address.getAddress()) && !TextUtils.isEmpty(FDroidApp.ipAddressString)) {
+                                String cidr = String.format("%s/%d", FDroidApp.ipAddressString, address.getNetworkPrefixLength());
                                 FDroidApp.subnetInfo = (new SubnetUtils(cidr)).getInfo();
                                 break;
                             }
