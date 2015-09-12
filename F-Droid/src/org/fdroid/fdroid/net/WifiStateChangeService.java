@@ -86,7 +86,7 @@ public class WifiStateChangeService extends Service {
                         wifiInfo = wifiManager.getConnectionInfo();
                         FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
                         String netmask = formatIpAddress(wifiManager.getDhcpInfo().netmask);
-                        if (!TextUtils.isEmpty(FDroidApp.ipAddressString))
+                        if (!TextUtils.isEmpty(FDroidApp.ipAddressString) && netmask != null)
                             FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING) {
