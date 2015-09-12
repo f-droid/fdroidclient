@@ -271,4 +271,16 @@ Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
     <string name="uninstall_error_title">Verwijderingsfout</string>
     <string name="uninstall_error_unknown">Kon de app niet verwijderen door een onbekende fout</string>
     <string name="system_install_first_time_notification_message_short">Raak aan voor meer informatie.</string>
+    <string name="system_install_installing">installeren…</string>
+    <string name="system_install_uninstalling">verwijderen…</string>
+    <string name="system_uninstall_button">Verwijder</string>
+
+    <string name="swap_nfc_title">Raak aan om te swappen</string>
+    <string name="swap_nfc_description">Indien jouw vriend F-Droid en NFC ingeschakeld heeft, houd de telefoons tegen elkaar.</string>
+    <string name="swap_join_same_wifi_desc">Om via WiFi te swappen, moeten jullie beiden op hetzelfde netwerk zitten. Indien je geen toegang hebt tot hetzelfde network, kan iemand een WiFi hotspot aanmaken.</string>
+    <string name="swap_join_this_hotspot">Help jouw vriend jouw hotspot bij te treden</string>
+    <string name="swap_success">Swap succesvol!</string>
+    <string name="swap_active_hotspot">%1$s (jouw hotspot)</string>
+    <string name="swap_switch_to_wifi">Raak aan om naar een WiFi netwerk over te schakelen</string>
+    <string name="swap_reciprocate_failed">Er ging iets fout tijdens het swappen met het andere apparaat. We zullen proberen apps te ontvangen, maar het kan zijn dat wij geen apps kunnen verzenden.</string>
     </resources>
