@@ -127,6 +127,14 @@ public class BluetoothSwap extends SwapType {
         }
     }
 
+    /**
+     * Don't try to start BT in the background. you can only start/stop a BT server once, else new connections don't work.
+     */
+    @Override
+    public void stopInBackground() {
+        stop();
+    }
+
     @Override
     public void stop() {
         if (server != null && server.isAlive()) {

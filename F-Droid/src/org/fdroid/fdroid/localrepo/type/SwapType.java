@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
+import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.localrepo.SwapService;
 
 /**
@@ -16,6 +18,8 @@ import org.fdroid.fdroid.localrepo.SwapService;
  * intents in response to the thing starting or stopping.
  */
 public abstract class SwapType {
+
+    private final static String TAG = "SwapType";
 
     private boolean isConnected;
 
@@ -58,6 +62,7 @@ public abstract class SwapType {
         if (getBroadcastAction() != null) {
             Intent intent = new Intent(getBroadcastAction());
             intent.putExtra(extra, true);
+            Utils.debugLog(TAG, "Sending broadcast " + extra + " from " + getClass().getSimpleName());
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
         }
     }
@@ -67,15 +72,12 @@ public abstract class SwapType {
     }
 
     public void startInBackground() {
-        start();
-        /**
-        new AsyncTask<Void, Void, Void>() {
+        new Thread() {
             @Override
-            protected Void doInBackground(Void... params) {
-                start();
-                return null;
+            public void run() {
+                SwapType.this.start();
             }
-        }.execute();*/
+        }.start();
     }
 
     public void ensureRunning() {
@@ -85,23 +87,21 @@ public abstract class SwapType {
     }
 
     public void ensureRunningInBackground() {
-        new AsyncTask<Void, Void, Void>() {
+        new Thread() {
             @Override
-            protected Void doInBackground(Void... params) {
+            public void run() {
                 ensureRunning();
-                return null;
             }
-        }.execute();
+        }.start();
     }
 
     public void stopInBackground() {
-        new AsyncTask<Void, Void, Void>() {
+        new Thread() {
             @Override
-            protected Void doInBackground(Void... params) {
-                stop();
-                return null;
+            public void run() {
+                SwapType.this.stop();
             }
-        }.execute();
+        }.run();
     }
 
 }
