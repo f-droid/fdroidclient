@@ -76,15 +76,19 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
 
         apkFile = getIntent().getStringExtra(EXTRA_INSTALL_APK);
 
-        action = getIntent().getAction();
-        if (ACTION_UNINSTALL.equals(action)) {
-            uninstall();
-        } else if (ACTION_INSTALL.equals(action)) {
-            checkRootTask.execute();
-        } else if (ACTION_FIRST_TIME.equals(action)) {
-            checkRootTask.execute();
-        } else if (ACTION_POST_INSTALL.equals(action)) {
-            postInstall();
+        switch (getIntent().getAction()) {
+            case ACTION_UNINSTALL:
+                uninstall();
+                break;
+            case ACTION_INSTALL:
+                checkRootTask.execute();
+                break;
+            case ACTION_FIRST_TIME:
+                checkRootTask.execute();
+                break;
+            case ACTION_POST_INSTALL:
+                postInstall();
+                break;
         }
     }
 
@@ -224,12 +228,16 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
             if (rootGranted) {
                 // root access granted
 
-                if (ACTION_UNINSTALL.equals(action)) {
-                    uninstallTask.execute();
-                } else if (ACTION_INSTALL.equals(action)) {
-                    installTask.execute();
-                } else if (ACTION_FIRST_TIME.equals(action)) {
-                    firstTime();
+                switch (action) {
+                    case ACTION_UNINSTALL:
+                        uninstallTask.execute();
+                        break;
+                    case ACTION_INSTALL:
+                        installTask.execute();
+                        break;
+                    case ACTION_FIRST_TIME:
+                        firstTime();
+                        break;
                 }
             } else {
                 // root access denied
