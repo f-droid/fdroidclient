@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="installIncompatible">Wygląda na to, że ta aplikacja nie jest kompatybilna z twoim urządzeniem. Zainstalować mimo to?</string>
   <string name="version">Wersja</string>
@@ -190,4 +190,55 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="open_qr_code_scanner">Otwórz skaner kodów QR</string>
   <string name="swap_welcome">Witaj w F-Droid!</string>
   <string name="swap_confirm_connect">Czy wymienić aplikacje z %1$s?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="searchres_napps">Znaleziono %1$d wyników pasujących do zapytania \'%2$s\':</string>
+	<string name="searchres_oneapp">Znaleziono jedną aplikację pasującą do zapytania \'%s\':</string>
+	<string name="searchres_noapps">Nie znaleziono żadnych wyników dla zapytania \'%s\'</string>
+	<string name="SignatureMismatch">Nowa wersja jest podpisana cyfrowo z innym kluczem niż obecna wersja. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje usunięcie jej danych i ustawień)</string>
+	<string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?</string>
+	<string name="cache_downloaded_on">Zachowaj pobrane apliki .apk</string>
+	<string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
+	<string name="automatic_scan_wifi">Aktualizuj tylko przez WiFi</string>
+	<string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez WiFi (oszczędza dane mobilne)</string>
+	<string name="notify_on">Powiadamiaj o dostępnych aktualizacjach</string>
+	<string name="uninstall_system">Odinstaluj uprzywilejowany tryb F-Droida</string>
+	<string name="uninstall_system_summary">Odinstaluj dodatkowe uprzywilejowane aplikacje F-Droida</string>
+	<string name="about_desc">Oryginalnie bazuje na Aptiode.\nWydano pod licencją GNU GPLv3.</string>
+	<string name="about_mail">"Email: "</string>
+	<string name="no_repo">Nie masz skonfigurowanych żadnych repozytoriów!\n\nRepozytorium jest źródłem skąd pobierasz aplikacje. Aby dodać jedno, wybierz przycisk MENU i wpisz URL nowego repozytorium.\n\nAdres repozytorium powinien wyglądać podobnie do: https://f-droid.org/repo</string>
+
+	<string name="incompatible">Niekompatybilne</string>
+	<string name="inst">Zainstalowano</string>
+	<string name="inst_known_source">Zainstalowano (z %s)</string>
+	<string name="inst_unknown_source">Zainstalowano (z nieznanego źródła)</string>
+
+	<string name="links">Linki</string>
+	<string name="content_description_view_more">Zobacz więcej</string>
+
+	<string name="back">Powrót</string>
+	<string name="many_updates_available">Liczba dostępnych aktualizacji: %d.</string>
+	<string name="update_notification_more">+%1$d więcej…</string>
+	<string name="nfc_is_not_enabled">NFC jest wyłączone!</string>
+	<string name="bluetooth_activity_not_found">Nie znaleziono metody do wysłania przez Bluetooth. Wybierz jedną!</string>
+	<string name="choose_bt_send">Wybierz metodę wysłania przez Bluetooth</string>
+	<string name="repo_exists_add_fingerprint">To repozytorium jest już dodane. Klucz zostanie zaktualizowany.</string>
+	<string name="repo_exists_enable">To repozytorium jest już dodane, potwierdź czy chcesz je włączyć.</string>
+	<string name="repo_exists_and_enabled">To repozytorium jest już dodane i jest włączone.</string>
+	<string name="bad_fingerprint">NIEPOPRAWNY PODPIS CYFROWY</string>
+	<string name="invalid_url">Niepoprawny URL.</string>
+	<string name="menu_manage">Repozytoria</string>
+	<string name="menu_send_apk_bt">Prześlij FDroid.apk przez Bluetooth…</string>
+	<string name="menu_ignore_all">Ignoruj przyszłe aktualizacje</string>
+	<string name="menu_issues">Problemy</string>
+	<string name="menu_changelog">Lista zmian</string>
+	<string name="menu_source">Kod źródłowy</string>
+	<string name="menu_donate">Dotacja</string>
+
+	<string name="antitracklist">Ta aplikacja śledzi i raportuje Twoją aktywność</string>
+	<string name="show_incompat_versions_on">Pokazuj aplikacje niekompatybilne z tym urządzeniem</string>
+	<string name="status_download">Pobieranie\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
+	<string name="update_notification_title">Aktualizowanie repozytoriów</string>
+	<string name="status_processing_xml_percent">"Przetwarzanie  %2$s / %3$s (%4$d%%) z %1$s"</string>
+	<string name="status_inserting">Zapisywanie szczegółów aplikacji (%1$d%%)</string>
+	</resources>
