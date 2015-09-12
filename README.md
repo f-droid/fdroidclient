@@ -57,10 +57,9 @@ Also see our [Contributing doc](CONTRIBUTING.md).
 Translating
 -----------
 
-The `res/values-*` dirs are kept up to date automatically via [MediaWiki's
-Translate Extension](https://www.mediawiki.org/wiki/Extension:Translate). See
-[our translation page](https://f-droid.org/wiki/page/Special:Translate) if you
-would like to contribute.
+The strings are translated using [Weblate](https://weblate.org/en/). Follow
+[these instructions](https://hosted.weblate.org/engage/f-droid/) if you would
+like to contribute.
 
 
 Running the test suite
