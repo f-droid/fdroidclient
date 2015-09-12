@@ -72,15 +72,12 @@ public abstract class SwapType {
     }
 
     public void startInBackground() {
-        start();
-        /**
-        new AsyncTask<Void, Void, Void>() {
+        new Thread() {
             @Override
-            protected Void doInBackground(Void... params) {
-                start();
-                return null;
+            public void run() {
+                SwapType.this.start();
             }
-        }.execute();*/
+        }.start();
     }
 
     public void ensureRunning() {
@@ -90,23 +87,21 @@ public abstract class SwapType {
     }
 
     public void ensureRunningInBackground() {
-        new AsyncTask<Void, Void, Void>() {
+        new Thread() {
             @Override
-            protected Void doInBackground(Void... params) {
+            public void run() {
                 ensureRunning();
-                return null;
             }
-        }.execute();
+        }.start();
     }
 
     public void stopInBackground() {
-        new AsyncTask<Void, Void, Void>() {
+        new Thread() {
             @Override
-            protected Void doInBackground(Void... params) {
-                stop();
-                return null;
+            public void run() {
+                SwapType.this.stop();
             }
-        }.execute();
+        }.run();
     }
 
 }
