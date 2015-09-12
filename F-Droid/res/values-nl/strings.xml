@@ -283,4 +283,5 @@ Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
     <string name="swap_active_hotspot">%1$s (jouw hotspot)</string>
     <string name="swap_switch_to_wifi">Raak aan om naar een WiFi netwerk over te schakelen</string>
     <string name="swap_reciprocate_failed">Er ging iets fout tijdens het swappen met het andere apparaat. We zullen proberen apps te ontvangen, maar het kan zijn dat wij geen apps kunnen verzenden.</string>
+    <string name="swap_tap_to_select_apps">Raak de apps aan die je wilt swappen.</string>
     </resources>
