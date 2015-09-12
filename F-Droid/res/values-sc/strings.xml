@@ -268,4 +268,5 @@ Depes
 	<string name="content_description_view_more">Ammustra àteru</string>
 
 	<string name="back">In dae segus</string>
+	<string name="update_notification_more">+%1$d àteru(os)…</string>
 	</resources>
