@@ -27,8 +27,6 @@
     <string name="system_installer_on">השתמש בהרשאות מיוחדות כדי להתקין, לעדכן, ולהסיר חבילות</string>
     <string name="uninstall_system">בטל התקנת F-Droid מועדף</string>
     <string name="uninstall_system_summary">הסר התקנת F-Droid כאשר מותקן בתור אפליקציה מועדפת</string>
-    <string name="local_repo_bonjour">שדר מאגר מקומי</string>
-    <string name="local_repo_bonjour_on">פרסם את המאגר המקומי שלך באמצעות Bonjour‏ (mDNS)</string>
     <string name="local_repo_name">שם המאגר המקומי שלך</string>
     <string name="local_repo_name_summary">הכותרת המעודכנת של המאגר המקומי שלך: %s</string>
     <string name="local_repo_https">השתמש בחיבור פרטי</string>
@@ -108,8 +106,6 @@
     <string name="menu_search">חפש</string>
     <string name="menu_add_repo">מאגר חדש</string>
     <string name="menu_rem_repo">הסר מאגר</string>
-    <string name="menu_scan_repo">מצא מאגרים מקומיים</string>
-
     <string name="menu_launch">הרץ</string>
     <string name="menu_share">שתף</string>
     <string name="menu_install">התקן</string>
@@ -155,8 +151,6 @@
     <string name="category_recentlyupdated">עודכנו לאחרונה</string>
 
     <string name="local_repo">מאגר מקומי</string>
-    <string name="local_repos_title">מאגרי F-Droid מקומיים</string>
-    <string name="local_repos_scanning">כעת מגלה מאגרי F-Droid מקומיים…</string>
     <string name="local_repo_running">F-Droid הינו מוכן להחליף</string>
     <string name="waiting_for_ipaddress">כעת ממתין לכתובת IP…</string>
     <string name="setup_repo">הגדר מאגר מקומי</string>
@@ -171,7 +165,6 @@
     <string name="failed_to_create_index">נכשל ליצור אינדקס מאגר!</string>
     <string name="linking_apks">כעת מקשר APK לתוך המאגר…</string>
     <string name="copying_icons">כעת מעתיק סמלי אפליקציה לתוך המאגר…</string>
-    <string name="updated_local_repo">סיים לעדכן מאגר מקומי</string>
     <string name="no_applications_found">לא נמצאו אפליקציות</string>
     <string name="icon">סמל</string>
     <string name="fingerprint">טביעת אצבע:</string>
@@ -196,13 +189,7 @@
     <string name="proxy_port">פורט פרוקסי</string>
     <string name="proxy_port_summary">הגדר מספר פורט פרוקסי (דוגמא 8118)</string>
 
-    <!--
-    status_download takes four parameters:
-      - Repository (url)
-      - Downloaded size (human readable)
-      - Total size (human readable)
-      - Percentage complete (int between 0-100)
-    -->
+
     <string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
     <string name="update_notification_title">כעת מעדכן מאגרים</string>
     <string name="status_processing_xml_percent">כעת מעבד %2$s / %3$s (%4$d%%) מתוך %1$s</string>
@@ -280,8 +267,8 @@
     <string name="system_install_post_fail_message">ההתקנה של F-Droid בתור אפליקציה מועדפת נכשלה. שיטת ההתקנה אינה נתמכת על ידי כל הפצות Android, אנא פנה למערכת מעקב באגים של F-Droid לצורך מידע נוסף.</string>
     <string name="system_install_installing">כעת מתקין…</string>
     <string name="system_install_uninstalling">כעת מבטל התקנה…</string>
-    <string name="system_install_question">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות מקום בו &lt;b>שום ממשק משתמש&lt;/b> לא מוצג.</string>
-    <string name="system_install_question_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות מקום בו &lt;b>שום ממשק משתמש&lt;/b> לא מוצג והמכשיר &lt;b>יאותחל&lt;/b> לאחר מכן.</string>
+    <string name="system_install_question">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות מקום בו &lt;b&gt;שום ממשק משתמש&lt;/b&gt; לא מוצג.</string>
+    <string name="system_install_question_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות מקום בו &lt;b&gt;שום ממשק משתמש&lt;/b&gt; לא מוצג והמכשיר &lt;b&gt;יאותחל&lt;/b&gt; לאחר מכן.</string>
     <string name="system_install_first_time_message">נראה כי יש לך גישת שורש במכשירך. באפשרותך להתקין את F-Droid בתור אפליקציה מועדפת, מקושרת בחוזקה עם מערכת הפעלה Android. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.</string>
     <string name="system_uninstall">האם ברצונך לבטל את התקנת F-Droid?</string>
     <string name="system_uninstall_message">פעולה זו תסיר את F-Droid לגמרי.</string>
@@ -295,7 +282,6 @@
     <string name="swap_wifi_help">למדו עוד אודות Wifi</string>
     <string name="menu_swap">החלף אפליקציה</string>
     <string name="swap">החלף אפליקציה</string>
-    <string name="swap_repo_name">Swap</string>
     <string name="swap_success">החלף צלח!</string>
     <string name="swap_no_wifi_network">עדיין אין רשת</string>
     <string name="swap_active_hotspot">נקודה החמה שלך הינה פעילה</string>
@@ -305,20 +291,10 @@
     <string name="open_qr_code_scanner">פתח סורק קוד QR</string>
     <string name="swap_welcome">ברוכים הבאים לחנות F-Droid!</string>
     <string name="swap_confirm_connect">האם ברצונך לקבל אפליקציות מתוך %1$s כעת?</string>
-    <string name="swap_introduction">ההתקן הנייד שלך הופך לחנות אפליקציות עם Swap!</string>
-    <string name="swap_start">התחל הֶחְלֵף</string>
     <string name="swap_reciprocate_failed">אירעה שגיאה במהלך ניסיון החלף עם התקן אחר. אנחנו עדיין ננסה להשיג אפליקציות מהם, אך הם אולי לא יוכלו להשיג אפליקציות מאיתנו.</string>
     <string name="swap_tap_to_select_apps">הקש כדי לבחור את האפליקציות אשר ברצונך להחליף.</string>
     <string name="swap_dont_show_again">אל תציג זאת שוב</string>
-    <string name="swap_tap_for_details_and_install">הקש על אפליקציה לקבלת פרטים ולהתקנה.</string>
     <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד URL של המחליף האחר לתוך דפדפן.</string>
-    <!-- WiFi AP status for Swap flow -->
-    <string name="wifi_ap_public">פומבי</string>
-    <string name="wifi_ap_private">פרטי</string>
-    <string name="wifi_ap_personal">נקודה חמה</string>
-    <string name="wifi_warning_public">עשוי לעבוד</string>
-    <string name="wifi_warning_private">מבטיח</string>
-    <string name="wifi_warning_personal">ההימור המוצלח ביותר</string>
 
     <string name="install_confirm">האם ברצונך להתקין את אפליקציה זו?
             זו תקבל גישה אל:</string>
