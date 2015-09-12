@@ -15,6 +15,10 @@
 
 * Make the GitLab CI run the tests in an emulator as well as testing the build
 
+* Switched to Weblate for translations
+
+* Translation updates
+
 ### 0.96 (2015-09-03)
 
 * Move the repo index update to a notification
