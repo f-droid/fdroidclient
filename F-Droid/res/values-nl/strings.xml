@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
   <string name="searchres_oneapp">Eén applicatie gevonden die voldoet aan \'%s\':</string>
@@ -243,4 +243,29 @@ Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
   <string name="open_qr_code_scanner">Open QR code scanner</string>
   <string name="swap_welcome">Welkom bij F-Droid!</string>
   <string name="swap_confirm_connect">Wilt u nu apps van %1$s ontvangen?</string>
-</resources>
+<string name="incompatible">Incompatibel</string>
+	<string name="links">Links</string>
+	<string name="content_description_view_more">Bekijk meer</string>
+
+	<string name="back">Terug</string>
+	<string name="update_notification_more">+%1$d meer…</string>
+	<string name="bad_fingerprint">SLECHTE VINGERAFDRUK</string>
+	<string name="invalid_url">Dit is geen correcte URL.</string>
+	<string name="menu_changelog">Lijst van veranderingen</string>
+	<string name="update_notification_title">Bronnen updaten</string>
+	<string name="status_processing_xml_percent">Verwerken %2$s / %3$s (%4$d%%) van %1$s</string>
+	<string name="pref_language">Taal</string>
+    <string name="pref_language_default">Systeemstandaard</string>
+
+    <string name="wifi">WiFi</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="empty_installed_app_list">Geen apps geïnstalleerd.\n\nEr staan apps op dit apparaat, maar deze komen niet van F-Droid af. Het kan zijn dat je jouw bronnen moet updaten, of dat de bronnen geen van jouw apps beschikbaar stellen.</string>
+    <string name="empty_swap_app_list">Geen apps beschikbaar om te swappen.\n\nHet apparaat waarmee je wilt swappen heeft geen apps aangeboden, of er is een fout opgetreden tijdens het communiceren.</string>
+    <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of update je bronnen om de lijst van apps te verversen.</string>
+    <string name="empty_can_update_app_list">Alle apps zijn up to date.\n\nGefeliciteerd! Al jouw apps zijn up to date (of je bronnen zijn verouderd).</string>
+
+    <string name="install_error_title">Installatiefout</string>
+    <string name="install_error_unknown">Kon de app niet installeren door een onbekende fout</string>
+    <string name="install_error_cannot_parse">Een fout trad op tijdens het lezen van het pakket</string>
+    </resources>
