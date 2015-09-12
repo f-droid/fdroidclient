@@ -177,17 +177,17 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="update_all">Uaktualnij wszystko</string>
   <string name="system_permission_denied_title">Odmówiono uprawnień systemowych</string>
   <string name="system_permission_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako aplikacja systemowa.</string>
-  <string name="app_description">F-Droid jest katalogiem aplikacji FOSS (Wolne i Otwarte Oprogramowanie) dla platformy Android. Aplikacja kliencka umożliwia łatwe przeglądanie, instalację i zarządzanie aktualizacjami na Twoim urządzeniu.</string>
-  <string name="swap_nfc_description">Zbliż telefony, jeżeli funkcja  jest dostępna.</string>
-  <string name="swap_join_same_wifi">Dołącz do wspólnego Wi-Fi z telefonem docelowym</string>
+  <string name="app_description">F-Droid jest katalogiem aplikacji FOSS (Wolne i Otwarte Oprogramowanie) dla platformy Android. Klient umożliwia łatwe przeglądanie, instalowanie i zarządzanie aktualizacjami na Twoim urządzeniu.</string>
+  <string name="swap_nfc_description">Jeśli oba urządzenie mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
+  <string name="swap_join_same_wifi">Połącz się z tym samym Wi-Fi</string>
   <string name="swap_use_bluetooth">Korzystaj z Bluetooth</string>
   <string name="swap_wifi_help">Dowiedz się więcej o Wi-Fi</string>
   <string name="menu_swap">Wymień aplikacje</string>
   <string name="swap">Wymień aplikacje</string>
   <string name="swap_no_wifi_network">Brak sieci</string>
-  <string name="swap_view_available_networks">(Dotknij i przeglądaj dostępne sieci)</string>
-  <string name="swap_wifi_qr_not_working">Nie działa</string>
-  <string name="open_qr_code_scanner">Otwórz skaner kodów QR</string>
+  <string name="swap_view_available_networks">Dotknij i sprawdź dostępne sieci</string>
+  <string name="swap_wifi_qr_not_working">Wymiana przez WiFi z kodem Qr nie powiodła się</string>
+  <string name="open_qr_code_scanner">Otwórz skaner QR</string>
   <string name="swap_welcome">Witaj w F-Droid!</string>
   <string name="swap_confirm_connect">Czy wymienić aplikacje z %1$s?</string>
 <string name="app_name">F-Droid</string>
@@ -241,4 +241,51 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="update_notification_title">Aktualizowanie repozytoriów</string>
 	<string name="status_processing_xml_percent">"Przetwarzanie  %2$s / %3$s (%4$d%%) z %1$s"</string>
 	<string name="status_inserting">Zapisywanie szczegółów aplikacji (%1$d%%)</string>
-	</resources>
+	<string name="no_permissions">Brak wymaganych pozwoleń.</string>
+	<string name="unsigned">Brak podpisu</string>
+    <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Musisz uważać pobierając aplikacje z nieznanych źródeł.</string>
+    <string name="repo_not_yet_updated">"To repozytorium nie zostało jeszcze użyte. By zobaczyć jakie aplikacje posiada, musisz je zaktualizować.\n\nGdy je zaktualizujesz, tutaj zobaczysz jego opis i więcej informacji. "</string>
+    <string name="repo_delete_details">"Czy chcesz usunąć repozytorium \"{0}\", które ma {1} aplikacji? Zainstalowane aplikacje nie zostaną usunięte, ale więcej aktualizacji dla tych aplikacji. "</string>
+    <string name="repo_disabled_notification">"Wyłączono %1$a.\n\nAby ponownie móc instalować z niego aplikacje musisz je włączyć ponownie. "</string>
+    <string name="repo_added">Dodano repozytorium %1$s</string>
+    <string name="repo_searching_address"/>
+    <string name="pref_language">Język aplikacji</string>
+    <string name="pref_language_default">Domyślny systemowy</string>
+
+    <string name="wifi">WiFi</string>
+    <string name="wifi_ap">HotSpot</string>
+
+    <string name="empty_installed_app_list">Brak zainstalowanych aplikacji.\n\nMasz na swoim urządzeniu aplikacje, ale nie zostały one zainstalowane przez F-Droida. Być może musisz zaktualizować swoje repozytoria.</string>
+    <string name="empty_swap_app_list">Brak aplikacji do wymiany.\n\nUrządzenie z którym się wymieniasz nie zaoferowało żadnej aplikacji lub wystąpił błąd w komunikacji.</string>
+    <string name="empty_available_app_list">Brak aplikacji w tej kategorii.\n\nSpróbuj wybrać inną kategorię lub zaktualizować swoje repozytoria.</string>
+    <string name="empty_can_update_app_list">Wszystkie aplikacje są w najnowszych wersjach.\n\nGratulacje! Wszystkie Twoje aplikacje są w najnowszych wersjach (lub repozytoria nie mają najnowszych wersji).</string>
+
+    <string name="install_error_title">Błąd instalacji</string>
+    <string name="install_error_unknown">Instalacja nie powiodła się przez nieznany nam problem</string>
+    <string name="install_error_cannot_parse">Wystąpił błąd podczas odczytywania paczki</string>
+    <string name="uninstall_error_title">Błąd odinstalowywania</string>
+    <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>
+    <string name="system_permission_install_via_root">Zainstaluj F-Droida w trybie uprzywilejowanym</string>
+    <string name="system_install_first_time_notification">Przejść w tryb uprzywilejowany?</string>
+    <string name="system_install_first_time_notification_message_short">Dotknij czy dowiedzieć się więcej.</string>
+    <string name="system_install_first_time_notification_message">Dotknij by zainstalować F-Droida w trybie uprzywilejowanym. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.\nMożesz ustawić to później w ustawieniach F-Droida.</string>
+    <string name="system_install_post_success">Przejście w tryb uprzywilejowany zakończone sukcesem</string>
+    <string name="system_install_post_fail">Przejście w tryb uprzywilejowany nie powiodło się</string>
+    <string name="system_install_post_success_message">Przejście w tryb uprzywilejowany zakończone sukcesem. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.</string>
+    <string name="system_install_post_fail_message">Przejście w tryb uprzywilejowany nie powiodło się. Metoda instalacji może nie być wspierana przez Twój system. Proszę sprawdzić listę problemów F-Droida by dowiedzieć się więcej.</string>
+    <string name="system_install_installing">Intalowanie…</string>
+    <string name="system_install_uninstalling">Odinstalowywanie…</string>
+    <string name="system_install_question">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund.</string>
+    <string name="system_install_question_lollipop">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b>.</string>
+    <string name="system_install_first_time_message">Wygląda na to, że masz dostęp do roota na swoim urządzeniu. Możesz zainstalować F-Droida w trybie uprzywilejowanym. Pozwala to na automatyczne instalowanie, aktualizowanie i odinstalowywanie aplikacji przez F-Droida.</string>
+    <string name="system_uninstall">Czy chcesz przejść w tryb uprzywilejowany?</string>
+    <string name="system_uninstall_message">Tryb uprzywilejowany zostanie wyłączony.</string>
+    <string name="system_uninstall_button">Odinstaluj</string>
+
+    <string name="swap_nfc_title">Dotknij by dokonać wymiany</string>
+    <string name="swap_join_same_wifi_desc">By dokonać wymiany przez WiFi musisz upewnić się, że oba urządzenia są w tej samej sieci. Jeśli nie macie dostępu do tej samej sieci, możesz utworzyć Hotspota.</string>
+    <string name="swap_join_this_hotspot">Pomóż drugiemu urządzeniu dołączyć do tego samego hotspota</string>
+    <string name="swap_success">Wymiana powiodła się!</string>
+    <string name="swap_active_hotspot">%1$1 (Twój hostpot)</string>
+    <string name="swap_switch_to_wifi">Dotknij by przejść do innej sieci WiFi</string>
+    </resources>
