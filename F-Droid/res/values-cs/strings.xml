@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_oneapp">Nalezena jedna aplikace odpovídající \'%s\':</string>
   <string name="searchres_noapps">Nenalezeny žádné aplikace odpovídající \'%s\'</string>
@@ -32,9 +32,9 @@
   <string name="about_title">O aplikaci F-Droid</string>
   <string name="about_desc">Původně založeno na Aptoide.
 Uvolněno pod GPLv3 licencí.</string>
-  <string name="about_site">Webová stránka:</string>
-  <string name="about_mail">Email:</string>
-  <string name="about_version">Verze:</string>
+  <string name="about_site">"Webová stránka: "</string>
+  <string name="about_mail">"Email: "</string>
+  <string name="about_version">"Verze: "</string>
   <string name="about_website">Webová stránka</string>
   <string name="inst">Je nainstalováno</string>
   <string name="not_inst">Není nainstalováno</string>
@@ -65,7 +65,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="repo_exists">Tento repozitář již existuje!</string>
   <string name="menu_update_repo">Aktualizovat repozitáře</string>
   <string name="menu_manage">Repozitáře</string>
-  <string name="menu_send_apk_bt">Poslat FDroid.apk přes bluetooth</string>
+  <string name="menu_send_apk_bt">Poslat FDroid.apk přes bluetooth…</string>
   <string name="menu_preferences">Nastavení</string>
   <string name="menu_about">O aplikaci</string>
   <string name="menu_search">Hledat</string>
@@ -105,7 +105,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="setup_repo">Nastavit místní repozitář</string>
   <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním  si přetáhnout tvé aplikace.</string>
   <string name="touch_to_turn_on_local_repo">Dotykem zapni místní repozitář.</string>
-  <string name="touch_to_turn_off_local_repo">Dotykem vypni místní repozitář</string>
+  <string name="touch_to_turn_off_local_repo">Dotykem vypni místní repozitář.</string>
   <string name="updating">Aktualizuji…</string>
   <string name="update_repo">Aktualizovat repozitář</string>
   <string name="deleting_repo">Odstraňuji místní repozitář…</string>
@@ -152,18 +152,12 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="repo_last_update">Poslední aktualizace</string>
   <string name="repo_name">Název</string>
   <string name="unsigned_description">Toto znamená, že seznam aplikací nemohl být verifikován. Buď opatrný s aplikacemi z nepodepsaných indexů.</string>
-  <string name="repo_not_yet_updated">Tento repozitář ještě nebyl použit.
-Aby byly zobrazeny z něj dostupné aplikace, je nutné ho nejprve aktualizovat.
-
-Jakmile bude aktualizován, popis a další detaily se zobrazí zde.</string>
-  <string name="repo_delete_details">Přeješ si odebrat repozitář \"{0}\", ze kterého je nainstalováno {1} aplikací?Nainstalované aplikace NEbudou odinstalovány, ale nebude je možné aktualizovat přes F-Droid.</string>
+  <string name="repo_not_yet_updated">"Tento repozitář ještě nebyl použit. Aby byly zobrazeny z něj dostupné aplikace, je nutné ho nejprve aktualizovat.\n\n Jakmile bude aktualizován, popis a další detaily se zobrazí zde. "</string>
+  <string name="repo_delete_details">"Přeješ si odebrat repozitář \"{0}\", ze kterého je nainstalováno {1} aplikací?Nainstalované aplikace NEbudou odinstalovány, ale nebude je možné aktualizovat přes F-Droid. "</string>
   <string name="repo_confirm_delete_title">Odebrat repositář?</string>
-  <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou v něm umístěné aplikace nadále dostupné v F-Droidu.
-
-Pozn.: Všechny aplikace nainstalované na tomto zařízení budou ponechány beze změn.</string>
-  <string name="repo_disabled_notification">\"%1$s\" zakázáno.
-
-Tento repozitář bude nutné znovu povolit, aby z něj mohly být instalovány aplikace.</string>
+  <string name="repo_confirm_delete_body">"Po odebrání repozitáře nebudou v něm umístěné aplikace nadále dostupné v F-Droidu.\n\nPozn.: Všechny aplikace nainstalované na tomto zařízení budou ponechány beze změn. "</string>
+  <string name="repo_disabled_notification">"\"%1$s\" zakázáno.
+\n\nTento repozitář bude nutné znovu povolit, aby z něj mohly být instalovány aplikace. "</string>
   <string name="minsdk_or_later">%s nebo novější</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikace</string>
