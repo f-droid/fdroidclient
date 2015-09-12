@@ -394,4 +394,15 @@
     <string name="perms_new_perm_prefix">NEW: </string>
     <string name="perms_description_app">Provided by %1$s.</string>
     <string name="downloading">Downloading…</string>
+
+    <string name="interval_never">Never</string>
+    <string name="interval_1h">Hourly</string>
+    <string name="interval_4h">Every 4 hours</string>
+    <string name="interval_12h">Every 12 hours</string>
+    <string name="interval_1d">Daily</string>
+    <string name="interval_1w">Weekly</string>
+    <string name="interval_2w">Every 2 weeks</string>
+
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
 </resources>

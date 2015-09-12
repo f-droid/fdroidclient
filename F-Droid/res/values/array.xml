@@ -1,25 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-	<string-array name="updateIntervalNames">
-		<item>Never</item>
-		<item>Hourly</item>
-		<item>Every 4 Hours</item>
-		<item>Every 12 Hours</item>
-		<item>Daily</item>
-		<item>Weekly</item>
-		<item>Every 2 Weeks</item>
-	</string-array>
+    <string-array name="updateIntervalNames">
+        <item>@string/interval_never</item>
+        <item>@string/interval_1h</item>
+        <item>@string/interval_4h</item>
+        <item>@string/interval_12h</item>
+        <item>@string/interval_1d</item>
+        <item>@string/interval_1w</item>
+        <item>@string/interval_2w</item>
+    </string-array>
 
-	<string-array name="themeNames">
-		<item>Dark</item>
-		<item>Light</item>
-	</string-array>
+    <string-array name="themeNames">
+        <item>@string/theme_light</item>
+        <item>@string/theme_dark</item>
+    </string-array>
 
-        <string-array name="file_size_units">
-            <item>B</item>
-            <item>KiB</item>
-            <item>MiB</item>
-            <item>GiB</item>
-            <item>TiB</item>
-        </string-array>
 </resources>
