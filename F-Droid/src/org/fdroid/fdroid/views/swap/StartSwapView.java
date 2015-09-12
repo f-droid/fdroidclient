@@ -295,6 +295,10 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
         int textResource = getManager().isBonjourDiscoverable() ? R.string.swap_visible_wifi : R.string.swap_not_visible_wifi;
         textWifiVisible.setText(textResource);
 
+        // Note that this is only listening for the WifiSwap, whereas we start both the WifiSwap
+        // and the Bonjour service at the same time. Technically swap will work fine without
+        // Bonjour, and that is more of a convenience. Thus, we should show feedback once wifi
+        // is ready, even if Bonjour is not yet.
         // TODO: Unregister receiver correctly...
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(new BroadcastReceiver() {
             @Override
@@ -318,7 +322,7 @@ public class StartSwapView extends ScrollView implements SwapWorkflowActivity.In
                 }
                 uiUpdateWifiNetwork();
             }
-        }, new IntentFilter(SwapService.BONJOUR_STATE_CHANGE));
+        }, new IntentFilter(SwapService.WIFI_STATE_CHANGE));
 
         viewWifiNetwork.setOnClickListener(new OnClickListener() {
             @Override
