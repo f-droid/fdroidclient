@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Agatadas %1$d aplicatziones currispondentes cun \'%2$s\':</string>
   <string name="searchres_oneapp">Agatada una aplicatzione currispondente cun \'%s\':</string>
@@ -261,4 +261,11 @@ Depes
   <string name="open_qr_code_scanner">Aberi s\'iscansidore de còdighes QR</string>
   <string name="swap_welcome">Benènnidu in F-Droid!</string>
   <string name="swap_confirm_connect">Boles retzire como sas aplicatziones dae %1$s?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="incompatible">Non cumpatìbile</string>
+	<string name="links">Ligòngios</string>
+	<string name="content_description_view_more">Ammustra àteru</string>
+
+	<string name="back">In dae segus</string>
+	</resources>
