@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <string-array name="file_size_units">
+        <item>ב</item>
+        <item>קי״ב</item>
+        <item>מי״ב</item>
+        <item>גי״ב</item>
+        <item>טי״ב</item>
+    </string-array>
 <resources/>
