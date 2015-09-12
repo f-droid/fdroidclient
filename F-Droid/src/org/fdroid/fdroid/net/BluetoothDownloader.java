@@ -62,7 +62,7 @@ public class BluetoothDownloader extends Downloader {
             try {
                 fileDetails = Request.createHEAD(sourceUrl.getPath(), connection).send().toFileDetails();
             } catch (IOException e) {
-                Log.e(TAG, "Error getting file details from Bluetooth \"server\": " + e.getMessage());
+                Log.e(TAG, "Error getting file details from Bluetooth \"server\"", e);
             }
         }
         return fileDetails;

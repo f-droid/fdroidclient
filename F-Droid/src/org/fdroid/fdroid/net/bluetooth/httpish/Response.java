@@ -51,7 +51,7 @@ public class Response {
         } catch (UnsupportedEncodingException e) {
             // Not quite sure what to do in the case of a phone not supporting UTF-8, so lets
             // throw a runtime exception and hope that we get good bug reports if this ever happens.
-            Log.e(TAG, "Device does not support UTF-8: " + e.getMessage());
+            Log.e(TAG, "Device does not support UTF-8", e);
             throw new IllegalStateException("Device does not support UTF-8.", e);
         }
     }

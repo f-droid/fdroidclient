@@ -530,7 +530,7 @@ public final class Utils {
             return toHexString(mdbytes);
         } catch (IOException e) {
             Log.e(TAG, "Error reading \"" + apk.getAbsolutePath()
-                    + "\" to compute " + algo + " hash.");
+                    + "\" to compute " + algo + " hash.", e);
             return null;
         } catch (NoSuchAlgorithmException e) {
             Log.e(TAG, "Device does not support " + algo + " MessageDisgest algorithm");

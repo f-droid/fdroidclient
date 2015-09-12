@@ -715,7 +715,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 broadcast(TYPE_COMPLETE);
             } catch (Exception e) {
                 broadcast(TYPE_ERROR);
-                e.printStackTrace();
+                Log.e(TAG, "", e);
             }
             return null;
         }

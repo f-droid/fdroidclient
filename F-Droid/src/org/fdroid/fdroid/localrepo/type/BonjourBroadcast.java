@@ -63,8 +63,7 @@ public class BonjourBroadcast extends SwapType {
             setConnected(true);
             Log.d(TAG, "... Bounjour service started.");
         } catch (IOException e) {
-            Log.e(TAG, "Error while registering jmdns service: " + e);
-            Log.e(TAG, Log.getStackTraceString(e));
+            Log.e(TAG, "Error while registering jmdns service", e);
             setConnected(false);
         }
     }

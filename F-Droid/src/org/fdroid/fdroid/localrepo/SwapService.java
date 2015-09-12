@@ -214,7 +214,7 @@ public class SwapService extends Service {
                     client.execute(host, request);
                 } catch (IOException e) {
                     notifyOfErrorOnUiThread();
-                    Log.e(TAG, "Error while asking server to swap with us: " + e.getMessage());
+                    Log.e(TAG, "Error while asking server to swap with us", e);
                 } finally {
                     client.close();
                 }

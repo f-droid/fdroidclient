@@ -58,7 +58,7 @@ public class BonjourFinder extends PeerFinder<BonjourPeer> implements ServiceLis
                     Log.d(TAG, "Searching for Bonjour (mDNS) clients...");
                     jmdns = JmDNS.create(InetAddress.getByName(FDroidApp.ipAddressString));
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, "", e);
                 }
                 return null;
             }

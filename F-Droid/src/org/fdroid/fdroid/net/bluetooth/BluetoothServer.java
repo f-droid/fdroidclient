@@ -68,7 +68,7 @@ public class BluetoothServer extends Thread {
         try {
             serverSocket = adapter.listenUsingInsecureRfcommWithServiceRecord("FDroid App Swap", BluetoothConstants.fdroidUuid());
         } catch (IOException e) {
-            Log.e(TAG, "Error starting Bluetooth server socket, will stop the server now: " + e.getMessage());
+            Log.e(TAG, "Error starting Bluetooth server socket, will stop the server now", e);
             swap.stop();
             isRunning = false;
             return;
@@ -92,7 +92,7 @@ public class BluetoothServer extends Thread {
                     clients.add(client);
                 }
             } catch (IOException e) {
-                Log.e(TAG, "Error receiving client connection over Bluetooth server socket, will continue listening for other clients: " + e.getMessage());
+                Log.e(TAG, "Error receiving client connection over Bluetooth server socket, will continue listening for other clients", e);
             }
         }
         isRunning = false;
@@ -118,7 +118,7 @@ public class BluetoothServer extends Thread {
                 connection = new BluetoothConnection(socket);
                 connection.open();
             } catch (IOException e) {
-                Log.e(TAG, "Error listening for incoming connections over bluetooth - " + e.getMessage());
+                Log.e(TAG, "Error listening for incoming connections over bluetooth", e);
                 return;
             }
 
@@ -129,7 +129,7 @@ public class BluetoothServer extends Thread {
                     Request incomingRequest = Request.listenForRequest(connection);
                     handleRequest(incomingRequest).send(connection);
                 } catch (IOException e) {
-                    Log.e(TAG, "Error receiving incoming connection over bluetooth - " + e.getMessage());
+                    Log.e(TAG, "Error receiving incoming connection over bluetooth", e);
                     break;
                 }
 

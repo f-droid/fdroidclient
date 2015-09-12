@@ -79,8 +79,7 @@ public class WifiSwap extends SwapType {
                     context.startService(new Intent(context, WifiStateChangeService.class));
                 } catch (IOException e) {
                     setConnected(false);
-                    Log.e(TAG, "Could not start local repo HTTP server: " + e);
-                    Log.e(TAG, Log.getStackTraceString(e));
+                    Log.e(TAG, "Could not start local repo HTTP server", e);
                 }
                 Looper.loop(); // start the message receiving loop
             }
