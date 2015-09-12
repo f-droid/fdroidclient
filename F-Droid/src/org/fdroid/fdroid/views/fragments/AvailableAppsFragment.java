@@ -156,7 +156,6 @@ public class AvailableAppsFragment extends AppListFragment implements
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 getListView().setSelection(0);
-                Utils.debugLog(TAG, "Selected category: " + categories.get(pos));
                 setCurrentCategory(categories.get(pos));
             }
             @Override
