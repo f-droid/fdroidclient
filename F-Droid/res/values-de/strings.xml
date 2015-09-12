@@ -12,7 +12,7 @@
   <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
   <string name="cache_downloaded">Anwendungszwischenspeicher</string>
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf der SD-Karte behalten</string>
-  <string name="updates">Aktualisierungen</string>
+  <string name="updates">Updates</string>
   <string name="other">Andere</string>
   <string name="last_update_check">Letzte Aktualisierung der Paketquellen: %s</string>
   <string name="never">niemals</string>
@@ -62,7 +62,7 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
   <string name="overwrite">Überschreiben</string>
   <string name="repo_update_title">Paketquellen aktualisieren</string>
   <string name="tab_noninstalled">Verfügbar</string>
-  <string name="tab_updates">Aktualisierungen</string>
+  <string name="tab_updates">Updates</string>
   <string name="one_update_available">Eine Aktualisierung ist verfügbar.</string>
   <string name="many_updates_available">%d Aktualisierungen sind verfügbar.</string>
   <string name="fdroid_updates_available">F-Droid: Aktualisierungen verfügbar</string>

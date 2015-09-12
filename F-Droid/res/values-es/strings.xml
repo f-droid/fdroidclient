@@ -12,7 +12,7 @@
   <string name="enable_nfc_send">Habilitar envío NFC…</string>
   <string name="cache_downloaded">Caché de aplicaciones descargadas</string>
   <string name="cache_downloaded_on">Mantener en la tarjeta SD los ficheros apk descargados</string>
-  <string name="updates">Actualizaciones</string>
+  <string name="updates">التحديثات</string>
   <string name="other">Otros</string>
   <string name="last_update_check">Último escaneo del repositorio: %s</string>
   <string name="never">nunca</string>

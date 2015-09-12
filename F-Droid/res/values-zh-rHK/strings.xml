@@ -30,6 +30,8 @@
   <string name="app_details">應用程式詳細資料</string>
   <string name="no_such_app">找不到這樣的應用程式</string>
   <string name="about_title">關於 F-Droid</string>
+  <string name="about_desc">原始碼源自 Aptoide，
+以 GNU GPL 第三版特許條款發行。</string>
   <string name="about_site">網站：</string>
   <string name="about_mail">電郵：</string>
   <string name="about_version">版本：</string>
@@ -63,6 +65,7 @@
   <string name="repo_add_url">軟件倉庫網址</string>
   <string name="repo_add_fingerprint">指模 (可選)</string>
   <string name="repo_exists">此倉庫已存在！</string>
+  <string name="repo_alrt">您所使用的軟件倉庫已更改，你要更新倉庫清單嗎？</string>
   <string name="menu_update_repo">更新倉庫</string>
   <string name="menu_manage">軟件倉庫</string>
   <string name="menu_send_apk_bt">藍牙傳送 FDroid.apk…</string>

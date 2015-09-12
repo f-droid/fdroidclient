@@ -68,7 +68,7 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="many_updates_available">%d 個の更新があります｡</string>
   <string name="fdroid_updates_available">F-Droidの更新があります</string>
   <string name="process_wait_title">しばらくお待ちください</string>
-  <string name="process_update_msg">ｱﾌﾟﾘｹｰｼｮﾝﾘｽﾄを更新中…</string>
+  <string name="process_update_msg">ｱﾌﾟﾘｹｰｼｮﾝﾘｽﾄを更新中</string>
   <string name="download_server">ｱﾌﾟﾘｹｰｼｮﾝを取得中</string>
   <string name="nfc_is_not_enabled">NFCが有効ではありません</string>
   <string name="go_to_nfc_settings">NFC設定に移動…</string>
@@ -87,7 +87,7 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
 更新しますか?</string>
   <string name="menu_update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
-  <string name="menu_send_apk_bt">Bluetooth送信 FDroid.apk…</string>
+  <string name="menu_send_apk_bt">BluetoothでFDroid.apkを送信する</string>
   <string name="menu_preferences">設定</string>
   <string name="menu_about">F-Droidについて</string>
   <string name="menu_search">検索</string>
@@ -102,7 +102,7 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="menu_website">Webｻｲﾄ</string>
   <string name="menu_issues">問題</string>
   <string name="menu_source">ｿｰｽｺｰﾄﾞ</string>
-  <string name="menu_upgrade">ｱｯﾌﾟｸﾞﾚｰﾄﾞ</string>
+  <string name="menu_upgrade">更新</string>
   <string name="menu_donate">寄付</string>
   <string name="details_installed">ﾊﾞｰｼﾞｮﾝ %s がｲﾝｽﾄｰﾙ済</string>
   <string name="details_notinstalled">ｲﾝｽﾄｰﾙされていません</string>
@@ -135,21 +135,21 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="touch_to_configure_local_repo">ﾀｯﾁすると詳細を表示し､ｱﾌﾟﾘの切り替えができるようになります｡</string>
   <string name="touch_to_turn_on_local_repo">ﾀｯﾁしてﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを有効にする</string>
   <string name="touch_to_turn_off_local_repo">ﾀｯﾁしてﾛｰｶﾙｱﾌﾟﾘを無効にする｡</string>
-  <string name="updating">更新中…</string>
+  <string name="updating">更新中</string>
   <string name="update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
-  <string name="deleting_repo">現在のﾘﾎﾟｼﾞﾄﾘを削除中…</string>
-  <string name="adding_apks_format">ﾘﾎﾟｼﾞﾄﾘに %s を追加中…</string>
-  <string name="writing_index_jar">署名された索引ﾌｧｲﾙを書き込み中(index.jar)…</string>
+  <string name="deleting_repo">現在のﾘﾎﾟｼﾞﾄﾘを削除中</string>
+  <string name="adding_apks_format">ﾘﾎﾟｼﾞﾄﾘに %s を追加中</string>
+  <string name="writing_index_jar">署名された索引ﾌｧｲﾙを書き込み中(index.jar)</string>
   <string name="failed_to_create_index">ﾘﾎﾟｼﾞﾄﾘの索引の作成に失敗しました</string>
-  <string name="linking_apks">ﾘﾎﾟｼﾞﾄﾘにAPKをﾘﾝｸ中…</string>
-  <string name="copying_icons">ﾘﾎﾟｼﾞﾄﾘにｱﾌﾟﾘｹｰｼｮﾝのｱｲｺﾝを複製中…</string>
+  <string name="linking_apks">ﾘﾎﾟｼﾞﾄﾘにAPKをﾘﾝｸ中</string>
+  <string name="copying_icons">ﾘﾎﾟｼﾞﾄﾘにｱﾌﾟﾘｹｰｼｮﾝのｱｲｺﾝを複製中</string>
   <string name="no_applications_found">ｱﾌﾟﾘｹｰｼｮﾝが見つかりません｡</string>
   <string name="icon">ｱｲｺﾝ</string>
   <string name="fingerprint">ﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ:</string>
   <string name="wifi_network">WiFiﾈｯﾄﾜｰｸ:</string>
   <string name="sharing_uri">共有URL:</string>
   <string name="enable_wifi">WiFiを有効にする</string>
-  <string name="enabling_wifi">WiFiを有効にしています…</string>
+  <string name="enabling_wifi">WiFiを有効にしています</string>
   <string name="same_wifi_instructions">他の端末に接続するには､対象の端末が同じﾈｯﾄﾜｰｸであることを確認してください｡その後､上記のURLをF-Droidに入力するか､QRｺｰﾄﾞを読み取ってください｡</string>
   <string name="qr_code">QRｺｰﾄﾞ</string>
   <string name="next">次へ</string>
@@ -157,7 +157,7 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="qr_content_description">ﾘﾎﾟｼﾞﾄﾘURLのQRｺｰﾄﾞ</string>
   <string name="qr_wizard_wifi_network_instructions">このQRｺｰﾄﾞを読み取り､この端末と同じWiFiﾈｯﾄﾜｰｸに接続してください｡</string>
   <string name="qr_wizard_download_instructions">QRｺｰﾄﾞを読み取って､始めましょうのｳｪﾌﾞｻｲﾄに接続してください｡</string>
-  <string name="send_fdroid_via_wifi">WiFi経由でFDroidを送信…</string>
+  <string name="send_fdroid_via_wifi">WiFi経由でFDroidを送信</string>
   <string name="proxy">ﾌﾟﾛｷｼｰ</string>
   <string name="enable_proxy_title">HTTPﾌﾟﾛｷｼｰを有効にする</string>
   <string name="enable_proxy_summary">全てのﾈｯﾄﾜｰｸﾘｸｴｽﾄに対して HTTPﾌﾟﾛｷｼｰを設定する</string>
@@ -170,7 +170,7 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
 %1$s</string>
   <string name="status_connecting_to_repo">接続中
 %1$s</string>
-  <string name="status_checking_compatibility">あなたの端末とｱﾌﾟﾘｹｰｼｮﾝの互換性を確認しています…</string>
+  <string name="status_checking_compatibility">あなたの端末とｱﾌﾟﾘｹｰｼｮﾝの互換性を確認しています</string>
   <string name="status_inserting">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存しています (%1$d%%)</string>
   <string name="repos_unchanged">ﾘﾎﾟｼﾞﾄﾘにﾊﾟｯｹｰｼﾞの更新はありません</string>
   <string name="all_other_repos_fine">全ての他のﾘﾎﾟｼﾞﾄﾘに異常はありません｡</string>
@@ -190,16 +190,16 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="repo_last_update">最終更新</string>
   <string name="repo_update">更新</string>
   <string name="repo_name">名前</string>
-  <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮンの一覧は検証されていません｡未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡</string>
+  <string name="unsigned_description">ｱﾌﾟﾘｹｰｼｮﾝの一覧は検証されていません｡未署名の索引からｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝﾛｰﾄﾞする時は注意してください｡</string>
   <string name="repo_not_yet_updated">このﾘﾎﾟｼﾞﾄﾘはまだ使用されていません｡
 ｱﾌﾟﾘｹｰｼｮﾝを表示するためには､ﾘﾎﾟｼﾞﾄﾘを更新する必要があります｡
 
 更新すると､説明やその他の詳細がここで有効になります｡</string>
   <string name="repo_delete_details">ﾘﾎﾟｼﾞﾄﾘ \"{0}\" を削除してよろしいですか?
-この中には {1} のｱﾌﾟﾘｹｰｼｮﾝがあります｡ｲﾝｽﾄｰﾙ済のｱﾌﾟﾘｹｰｼｮﾝは
+この中には {1} 個のｱﾌﾟﾘｹｰｼｮﾝがあります｡ｲﾝｽﾄｰﾙ済のｱﾌﾟﾘｹｰｼｮﾝは
 削除されませんが､F-Droidを通じて更新することができなくなります｡</string>
   <string name="unknown">不明</string>
-  <string name="repo_confirm_delete_title">ﾘﾎﾟｼﾞﾄﾘを削除しますか?</string>
+  <string name="repo_confirm_delete_title">ﾘﾎﾟｼﾞﾄﾘを削除しますか</string>
   <string name="repo_confirm_delete_body">ﾘﾎﾟｼﾞﾄﾘを削除するとｱﾌﾟﾘｹｰｼｮﾝはF-Droidからｲﾝｽﾄｰﾙできなくなります｡
 
 注:これまでにｲﾝｽﾄｰﾙしたｱﾌﾟﾘｹｰｼｮﾝは端末に残ります｡</string>
@@ -230,9 +230,9 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="Security">ｾｷｭﾘﾃｨ</string>
   <string name="System">ｼｽﾃﾑ</string>
   <string name="Wallpaper">壁紙･背景</string>
-  <string name="requesting_root_access_body">管理者権限の要求中…</string>
+  <string name="requesting_root_access_body">管理者権限の要求中</string>
   <string name="root_access_denied_title">管理者権限での接続が拒絶されました</string>
-  <string name="root_access_denied_body">お使いのAndroid端末はroot化されていないか､F-Droidの管理者権限要求が拒絶されされました.</string>
+  <string name="root_access_denied_body">この端末はroot化されていないか､F-Droidの管理者権限要求が拒絶されされました｡</string>
   <string name="update_all">全て更新</string>
   <string name="system_permission_denied_title">ｼｽﾃﾑｱｸｾｽ許可が拒絶されました</string>
   <string name="system_permission_denied_body">この設定は､F-Droidがｼｽﾃﾑｱﾌﾟﾘとしてｲﾝｽﾄｰﾙされているときのみ有効です｡</string>
@@ -248,5 +248,5 @@ GNU GPLv3 ﾗｲｾﾝｽに基づいてﾘﾘｰｽされました｡</string>
   <string name="swap_wifi_qr_not_working">動作していません</string>
   <string name="open_qr_code_scanner">QRｺｰﾄﾞｽｷｬﾅｰを開く</string>
   <string name="swap_welcome">F-Droidにようこそ!</string>
-  <string name="swap_confirm_connect">今すぐ %1$s からｱﾌﾟﾘを取得しますか?</string>
+  <string name="swap_confirm_connect">今すぐ %1$s からｱﾌﾟﾘを取得しますか</string>
 </resources>

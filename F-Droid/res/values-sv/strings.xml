@@ -195,6 +195,7 @@ Vill du uppdatera dem?</string>
   <string name="repo_confirm_delete_title">Ta bort förråd?</string>
   <string name="repo_confirm_delete_body">Då ett förråd tas bort kommer inte längre appar därifrån vara tillgängliga via F-Droid. Obs: Alla tidigare installerade appar kommer finnas kvar på din enhet.</string>
   <string name="repo_disabled_notification">Avaktiverade \"%1$s\". Du kommer behöva återaktivera detta förråd för att kunna installera appar från det.</string>
+  <string name="repo_searching_address">Söker F-Droid-förråd på %1$s</string>
   <string name="minsdk_or_later">%s eller senare</string>
   <string name="up_to_maxsdk">upp till %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s upp till %2$s</string>
