@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Encontramos %1$d aplicativos correspondentes a \'%2$s\':</string>
   <string name="searchres_oneapp">Encontramos um aplicativo correspondente a \'%s\':</string>
@@ -249,4 +249,28 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
   <string name="open_qr_code_scanner">Abrir o leitor de código QR</string>
   <string name="swap_welcome">Bem-vindo ao F-Droid!</string>
   <string name="swap_confirm_connect">Você quer obter aplicativos de %1$s agora?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="uninstall_system">Desinstalar F-droid privilegiado</string>
+	<string name="uninstall_system_summary">Desinstalar o app adicional do F-Droid privilegiado</string>
+	<string name="incompatible">Incompatível</string>
+	<string name="links">Links</string>
+	<string name="content_description_view_more">Ver mais</string>
+
+	<string name="back">Voltar</string>
+	<string name="update_notification_more">+%1$d mais…</string>
+	<string name="bad_fingerprint">IMPRESSÃO DIGITAL RUIM</string>
+	<string name="invalid_url">Ista não é uma URL válida.</string>
+	<string name="menu_changelog">Changelog</string>
+	<string name="update_notification_title">Atualizar repositórios</string>
+	<string name="status_processing_xml_percent">Processando %2$s / %3$s (%4$d%%) de %1$s</string>
+	<string name="pref_language">Idioma</string>
+    <string name="pref_language_default">Padrão do sistema</string>
+
+    <string name="wifi">WiFi</string>
+    <string name="wifi_ap">Ponto de acesso</string>
+
+    <string name="empty_installed_app_list">Nenhum aplicativo instalados.\n\nExistem aplicativos no seu dispositivo, mas eles não estão disponíveis pelo F-Droid. Isso pode ser porque você precisa atualizar seus repositórios, ou os repositórios realmente não têm os seus aplicativos disponíveis.</string>
+    <string name="empty_swap_app_list">Nenhum aplicativo disponível para permuta.\n\nOu o dispositivo com o qual você está permutando não ofereceu nenhum aplicativo para permuta, ou ocorreu um erro durante a comunicação com o mesmo.</string>
+    <string name="empty_available_app_list">Nenhum aplicativo nesta categoria.\n\nTente selecionar uma categoria diferente ou atualizar seus repositórios para obter uma nova lista de aplicativos.</string>
+    </resources>
