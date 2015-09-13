@@ -256,7 +256,6 @@
     <string name="swap_wifi_device_name">Apparaatnaam</string>
     <string name="swap_cant_find_peers">Kan je degene waar je naar zoekt niet vinden?</string>
     <string name="swap_send_fdroid">VERSTUUR F-DROID</string>
-    <string name="swap_scan_qr_code">SCAN QR CODE</string>
     <string name="swap_no_peers_nearby">Kon geen mensen in de buurt vinden om mee te swappen.</string>
     <string name="swap_connecting">Verbinden</string>
     <string name="swap_confirm">Bevestig swap</string>

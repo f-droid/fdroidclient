@@ -286,7 +286,6 @@
     <string name="swap_setting_up_wifi">כעת מעלה Wi-Fi…</string>
     <string name="swap_not_visible_wifi">לא נראה דרך Wi-Fi</string>
     <string name="swap_wifi_device_name">שם התקן</string>
-    <string name="swap_scan_qr_code">סרוק קוד QR</string>
     <string name="swap_connecting">כעת מתחבר</string>
     <string name="bluetooth_unavailable">‏Bluetooth לא זמין</string>
     <string name="loading">כעת טוען…</string>

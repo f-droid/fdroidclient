@@ -226,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_qr_grey"
                 android:drawableStart="@drawable/ic_qr_grey"
-                android:text="@string/swap_scan_qr_code"
+                android:text="@string/swap_scan_qr"
                 android:drawablePadding="10dp"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
