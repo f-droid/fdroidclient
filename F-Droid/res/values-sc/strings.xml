@@ -154,8 +154,8 @@ Intregadu cun sa litzèntzia
   <string name="status_checking_compatibility">Verificande sa cumpatibilidade cun su dispositivu tuo…</string>
   <string name="status_inserting">Sarbande minujas/detàllios aplicatziones (%1$d%%)</string>
   <string name="repos_unchanged">Perunu depòsitu tenet agiornamentos de pachetos</string>
-  <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creados errores.</string>
-  <string name="global_error_updating_repos">Faddina durante s\'agiornamentu</string>
+  <string name="all_other_repos_fine">Totu sos àteros depòsitos no ant creadu faddinas.</string>
+  <string name="global_error_updating_repos">Faddina durante s\'agiornamentu:</string>
   <string name="no_permissions">Perunu permissu impreadu.</string>
   <string name="permissions_for_long">Permissos pro sa versione %s</string>
   <string name="no_handler_app">Non tenes peruna aplicatzione disponìbile pro gestire %s</string>
@@ -240,4 +240,25 @@ Depes
 
 	<string name="back">In dae segus</string>
 	<string name="update_notification_more">+%1$d àteru(os)…</string>
-	</resources>
+	<string name="invalid_url">Custu no est unu ligòngiu vàlidu.</string>
+	<string name="menu_changelog">Lista modìficas</string>
+	<string name="update_notification_title">Agiornande sos depòsitos</string>
+	<string name="status_processing_xml_percent">Protzessande %2$s / %3$s (%4$d%%) dae %1$s</string>
+	<string name="pref_language">Limba</string>
+    <string name="pref_language_default">Predefinida de sistema</string>
+
+    <string name="wifi">WiFi</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="empty_installed_app_list">Peruna aplicatzione installada.\n\nBi sunt aplicatziones in su dispositivu tuo, ma non sunt disponìbiles dae F-Droid. Custu podet nàrrere chi tenes bisòngiu de agiornare sos depòsitos tuos, o chi a beru sas aplicatziones tuas non bi sunt intre sas disponìbiles.</string>
+    <string name="empty_available_app_list">Peruna aplicatzione in custa categoria.\n\nProa a ischertare una categoria diferente o a agiornare sos depòsitos tuos pro tènnere una lista noa de aplicationes.</string>
+    <string name="empty_can_update_app_list">Totu sas aplicatziones sunt agiornadas.\n\nBene meda! Totu sas aplicatziones tuas sunt agiornadas (o sos depòsitos tuos non lu sunt).</string>
+
+    <string name="install_error_title">Faddina de installatzione</string>
+    <string name="install_error_unknown">Installatzione faddida pro cajone de una faddina disconnota</string>
+    <string name="install_error_cannot_parse">B\'est istada una faddina durante s\'anàlisi de su pachete</string>
+    <string name="uninstall_error_title">Faddina de disinstallatzione</string>
+    <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>
+    <string name="swap_reciprocate_failed">B\'est istadu un’errore durante su tentativu de cumpartzidura cun un’àteru dispositivu. Amos galu a proare a retzire aplicatziones dae issos, ma cussu dispositivu diat pòdere non retzire aplicatziones dae nois.</string>
+    <string name="swap_connection_misc_error">B\'est istada una faddina durante sa cunnessione a su dispositivu, non resessimus a cumpartzire sas aplicatziones :(</string>
+    </resources>
