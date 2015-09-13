@@ -52,13 +52,11 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="enable">Permès</string>
   <string name="add_key">Afegeix clau</string>
   <string name="overwrite">Sobreescriu</string>
-  <string name="repo_update_title">Actualitza els dipòsits</string>
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Actualitzacions</string>
   <string name="one_update_available">Hi ha 1 actualització disponible.</string>
   <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
   <string name="fdroid_updates_available">Hi ha actualitzacions disponibles de l\'F-Droid</string>
-  <string name="download_server">S\'està obtenint l\'aplicació des de</string>
   <string name="bluetooth_activity_not_found">No s\'ha detectat cap activitat per Bluetooth, escolliu una!</string>
   <string name="send_via_bluetooth">Envia per Bluetooth</string>
   <string name="repo_add_url">Adreça del dipòsit</string>
@@ -92,7 +90,6 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="details_installed">Versió instal·lada %s</string>
   <string name="details_notinstalled">No està instal·lat</string>
   <string name="corrupt_download">El fitxer baixat ha arribat en mal estat</string>
-  <string name="download_cancelled">S\'ha cancel·lat la baixada</string>
   <string name="antiadslist">Aquesta aplicació conté publicitat</string>
   <string name="antitracklist">Aquesta aplicació segueix i informa sobre la vostra activitat</string>
   <string name="antinonfreeadlist">Aquesta aplicació promou complements no lliures</string>

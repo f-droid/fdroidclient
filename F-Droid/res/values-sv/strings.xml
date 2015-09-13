@@ -53,14 +53,11 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="enable">Aktivera</string>
   <string name="add_key">Lägg till nyckel</string>
   <string name="overwrite">Skriv över</string>
-  <string name="repo_update_title">Uppdatera förråd</string>
   <string name="tab_noninstalled">Tillgängliga</string>
   <string name="tab_updates">Uppdateringar</string>
   <string name="one_update_available">1 uppdatering finns tillgänglig.</string>
   <string name="many_updates_available">%d uppdateringar finns tillgängliga.</string>
   <string name="fdroid_updates_available">Uppdateringar för F-Droid tillgängliga</string>
-  <string name="download_server">Hämtar program från</string>
-  <string name="go_to_nfc_settings">Gå till NFC-inställningar…</string>
   <string name="bluetooth_activity_not_found">Ingen sändningsmetod för Bluetooth hittad, välj en!</string>
   <string name="choose_bt_send">Välj sändningsmetod för Bluetooth</string>
   <string name="send_via_bluetooth">Sänd via Bluetooth</string>
@@ -94,7 +91,6 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="details_installed">Version %s är installerad</string>
   <string name="details_notinstalled">Inte installerad</string>
   <string name="corrupt_download">Den nerladdade filen är skadad</string>
-  <string name="download_cancelled">Nerladdning avbruten</string>
   <string name="antiadslist">Denna app innehåller reklam</string>
   <string name="antitracklist">Denna app övervakar dina aktiviteter</string>
   <string name="antinonfreeadlist">Denna app främjar ofria tillägg</string>

@@ -23,10 +23,8 @@ Izdan z licenco GNU GPLv3.</string>
   <string name="repo_add_title">Dodaj novo skladišče</string>
   <string name="repo_add_add">Dodaj</string>
   <string name="cancel">Prekliči</string>
-  <string name="repo_update_title">Posodobi skladišča</string>
   <string name="tab_noninstalled">Na razpolago</string>
   <string name="tab_updates">Posodobitve</string>
-  <string name="download_server">Prejem aplikacije iz</string>
   <string name="repo_add_url">Naslov skladišča</string>
   <string name="menu_manage">Upravljanje s skladišči</string>
   <string name="menu_preferences">Možnosti</string>
@@ -43,7 +41,6 @@ Izdan z licenco GNU GPLv3.</string>
   <string name="details_installed">Nameščena različica %s</string>
   <string name="details_notinstalled">Ni nameščeno</string>
   <string name="corrupt_download">Prejeta datoteka je poškodovana</string>
-  <string name="download_cancelled">Prenos je preklican</string>
   <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="expert">Napredno</string>
   <string name="search_hint">Iskanje aplikacij</string>

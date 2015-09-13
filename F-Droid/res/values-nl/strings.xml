@@ -53,14 +53,11 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="enable">Activeer</string>
   <string name="add_key">Voeg sleutel toe</string>
   <string name="overwrite">Overschrijven</string>
-  <string name="repo_update_title">Vernieuw bronnen</string>
   <string name="tab_noninstalled">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
   <string name="one_update_available">1 update beschikbaar</string>
   <string name="many_updates_available">%d updates beschikbaar</string>
   <string name="fdroid_updates_available">F-Droid update beschikbaar</string>
-  <string name="download_server">downloaden applicatie van</string>
-  <string name="go_to_nfc_settings">Ga naar NFC instellingen…</string>
   <string name="bluetooth_activity_not_found">Geen Bluetooth verzendmethode gevonden, kies er een!</string>
   <string name="choose_bt_send">Kies Bluetooth verzendmethode</string>
   <string name="send_via_bluetooth">Verstuur via Bluetooth</string>
@@ -94,7 +91,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="details_installed">Versie %s geïnstalleerd</string>
   <string name="details_notinstalled">Niet geïnstalleerd</string>
   <string name="corrupt_download">Gedownloade bestand is corrupt</string>
-  <string name="download_cancelled">Download geannuleerd</string>
   <string name="antiadslist">Deze app bevat advertenties</string>
   <string name="antitracklist">Deze app houdt je activiteiten bij en rapporteert deze</string>
   <string name="antinonfreeadlist">Deze app promoot niet-vrije add-ons</string>

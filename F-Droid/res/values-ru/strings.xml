@@ -55,14 +55,11 @@
   <string name="enable">Включить</string>
   <string name="add_key">Добавить ключ</string>
   <string name="overwrite">Перезаписать</string>
-  <string name="repo_update_title">Обновить репозитории</string>
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Обновления</string>
   <string name="one_update_available">Доступно 1 обновление.</string>
   <string name="many_updates_available">Доступно %d обновлений.</string>
   <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
-  <string name="download_server">Загрузка приложения из</string>
-  <string name="go_to_nfc_settings">Перейти в настройки NFC…</string>
   <string name="bluetooth_activity_not_found">Ни один метод отправки по Bluetooth не найден, выберите один из них!</string>
   <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>
   <string name="send_via_bluetooth">Отправить через Bluetooth</string>
@@ -96,7 +93,6 @@
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
   <string name="corrupt_download">Загруженный файл повреждён</string>
-  <string name="download_cancelled">Загрузка остановлена</string>
   <string name="antiadslist">Это приложение содержит рекламу</string>
   <string name="antitracklist">Это приложение будет отслеживать ваши действия и сообщать о вашей деятельности</string>
   <string name="antinonfreeadlist">Это приложение предлагает использовать несвободные дополнения</string>

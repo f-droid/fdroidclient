@@ -64,15 +64,12 @@
     <string name="add_key">הוסף מפתח</string>
     <string name="overwrite">שכתב</string>
 
-    <string name="repo_update_title">עדכן מאגרים</string>
     <string name="tab_noninstalled">זמינים</string>
     <string name="tab_updates">עדכונים</string>
     <string name="one_update_available">עדכון 1 זמין.</string>
     <string name="many_updates_available">%d עדכונים זמינים.</string>
     <string name="fdroid_updates_available">עדכוני F-Droid זמינים</string>
     <string name="update_notification_more">+%1$d עוד…</string>
-    <string name="download_server">כעת משיג אפליקציה מתוך</string>
-    <string name="go_to_nfc_settings">עבור להגדרות NFC…</string>
     <string name="bluetooth_activity_not_found">לא נמצאה שיטת שליחה של Bluetooth, בחר אחת!</string>
     <string name="choose_bt_send">בחר שיטת שליחה של Bluetooth</string>
     <string name="send_via_bluetooth">שלח דרך Bluetooth</string>
@@ -109,8 +106,6 @@
     <string name="details_installed">גרסא %s מותקנת</string>
     <string name="details_notinstalled">לא מותקנת</string>
     <string name="corrupt_download">קובץ מורד הינו מושחת</string>
-    <string name="download_cancelled">הורדה בוטלה</string>
-
     <string name="antiadslist">אפליקציה זו מכילה פרסום</string>
     <string name="antitracklist">אפליקציה זו עוקבת ומדווחת על פעילותך</string>
     <string name="antinonfreeadlist">אפליקציה זו מקדמת תוספים לא-חופשיים</string>

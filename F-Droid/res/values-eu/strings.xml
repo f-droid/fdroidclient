@@ -39,14 +39,11 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="enable">Gaitu</string>
   <string name="add_key">Gehitu gakoa</string>
   <string name="overwrite">Gainidatzi</string>
-  <string name="repo_update_title">Eguneratu biltegiak</string>
   <string name="tab_noninstalled">Eskuragarri</string>
   <string name="tab_updates">Eguneraketak</string>
   <string name="one_update_available">Eguneraketa 1 eskuragarri.</string>
   <string name="many_updates_available">%d eguneraketa eskuragarri.</string>
   <string name="fdroid_updates_available">F-Droid eguneraketak eskuragarri</string>
-  <string name="download_server">Aplikazioa eskuratzen hemendik</string>
-  <string name="go_to_nfc_settings">Joan NFC ezarpenetara…</string>
   <string name="repo_add_url">Biltegiaren helbidea</string>
   <string name="repo_exists">Biltegi hau dagoeneko existitzen da!</string>
   <string name="menu_update_repo">Eguneratu biltegiak</string>
@@ -70,7 +67,6 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
   <string name="details_notinstalled">Instalatu gabe</string>
   <string name="corrupt_download">Deskargatutako fitxategia hondatuta dago</string>
-  <string name="download_cancelled">Deskarga bertan behera utzita</string>
   <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="display">Bistaratu</string>
   <string name="expert">Aditua</string>

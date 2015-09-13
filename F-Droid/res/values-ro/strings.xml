@@ -27,7 +27,6 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="repo_add_add">Adauga</string>
   <string name="cancel">Anuleaza</string>
   <string name="enable">Activează</string>
-  <string name="repo_update_title">Actualizare depozit aplicatii</string>
   <string name="tab_noninstalled">Disponibil</string>
   <string name="tab_updates">Actualizare</string>
   <string name="one_update_available">1 actualizare e disponibilă.</string>
@@ -43,7 +42,6 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="menu_donate">Donează</string>
   <string name="details_notinstalled">Nu e instalat</string>
   <string name="corrupt_download">Fişierul descărcat e corupt</string>
-  <string name="download_cancelled">Descărcare anulată</string>
   <string name="display">Afişează</string>
   <string name="expert">Expert</string>
   <string name="rooted">Root</string>

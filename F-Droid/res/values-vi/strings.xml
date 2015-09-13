@@ -51,14 +51,11 @@
   <string name="enable">Kích hoạt</string>
   <string name="add_key">Thêm mã khoá</string>
   <string name="overwrite">Ghi đè</string>
-  <string name="repo_update_title">Cập nhật các kho ứng dụng</string>
   <string name="tab_noninstalled">Hiện có</string>
   <string name="tab_updates">Cập nhật</string>
   <string name="one_update_available">Có 1 bản cập nhật.</string>
   <string name="many_updates_available">Có %d bản cập nhật.</string>
   <string name="fdroid_updates_available">Có cập nhật F-Droid</string>
-  <string name="download_server">Đang tải ứng dụng từ</string>
-  <string name="go_to_nfc_settings">Cài đặt NFC…</string>
   <string name="bluetooth_activity_not_found">Không tìm thấy cách gửi qua Bluetooth mặc định, hãy chọn một cách khác!</string>
   <string name="choose_bt_send">Chọn cách gửi qua Bluetooth</string>
   <string name="send_via_bluetooth">Gửi qua Bluetooth</string>
@@ -88,7 +85,6 @@
   <string name="details_installed">Đã cài đặt phiên bản %s</string>
   <string name="details_notinstalled">Chưa cài đặt</string>
   <string name="corrupt_download">Tập tin đã tải bị lỗi</string>
-  <string name="download_cancelled">Đã dừng tải xuống</string>
   <string name="antiadslist">Ứng dụng này có quảng cáo</string>
   <string name="antitracklist">Ứng dụng này theo dõi và báo cáo hoạt động của bạn</string>
   <string name="antinonfreeadlist">Ứng dụng này khuyến khích sử dụng phần mở rộng không tự do</string>

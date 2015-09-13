@@ -71,15 +71,12 @@
 	<string name="add_key">Add Key</string>
 	<string name="overwrite">Overwrite</string>
 
-	<string name="repo_update_title">Update repositories</string>
 	<string name="tab_noninstalled">Available</string>
 	<string name="tab_updates">Updates</string>
 	<string name="one_update_available">1 update is available.</string>
 	<string name="many_updates_available">%d updates are available.</string>
 	<string name="fdroid_updates_available">F-Droid Updates Available</string>
 	<string name="update_notification_more">+%1$d more…</string>
-	<string name="download_server">Getting application from</string>
-	<string name="go_to_nfc_settings">Go to NFC Settings…</string>
 	<string name="bluetooth_activity_not_found">No Bluetooth send method found, choose one!</string>
 	<string name="choose_bt_send">Choose Bluetooth send method</string>
 	<string name="send_via_bluetooth">Send via Bluetooth</string>
@@ -120,7 +117,6 @@
 	<string name="details_installed">Version %s installed</string>
 	<string name="details_notinstalled">Not installed</string>
 	<string name="corrupt_download">Downloaded file is corrupt.</string>
-	<string name="download_cancelled">Download cancelled</string>
 
 	<string name="antiadslist">This app contains advertising</string>
 	<string name="antitracklist">This app tracks and reports your activity</string>

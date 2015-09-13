@@ -45,13 +45,11 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="enable">Engedélyez</string>
   <string name="add_key">Kulcs hozzáadás</string>
   <string name="overwrite">Felülírás</string>
-  <string name="repo_update_title">Repo-k frissítése</string>
   <string name="tab_noninstalled">Elérhető</string>
   <string name="tab_updates">Frissítések</string>
   <string name="one_update_available">1 frissítés érhető el.</string>
   <string name="many_updates_available">%d frissítés érhető el.</string>
   <string name="fdroid_updates_available">F-Droid frissítés érhető el</string>
-  <string name="download_server">Alkalmazás beszerzése</string>
   <string name="repo_add_url">Repo cím</string>
   <string name="repo_add_fingerprint">ujjlenyomat (opcionális)</string>
   <string name="repo_exists">Ez a repo már létezik!</string>
@@ -80,7 +78,6 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="details_installed">%s verzió telepítve</string>
   <string name="details_notinstalled">Nincs telepítve</string>
   <string name="corrupt_download">A letöltött fájl hibás</string>
-  <string name="download_cancelled">Letöltés megszakítva</string>
   <string name="antiadslist">Az alkalmazás reklámot tartalmaz</string>
   <string name="antitracklist">Az alkalmazás nyomon követi és jelenti a tevékenységeit</string>
   <string name="antinonfreeadlist">Az alkalmazás nem ingyenes kiegészítőket támogat</string>

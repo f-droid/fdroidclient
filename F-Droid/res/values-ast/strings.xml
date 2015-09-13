@@ -53,14 +53,11 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="enable">Habilitar</string>
   <string name="add_key">Amestar clave</string>
   <string name="overwrite">Sobrescribir</string>
-  <string name="repo_update_title">Anovar repositorios</string>
   <string name="tab_noninstalled">Disponible</string>
   <string name="tab_updates">Anovamientos</string>
   <string name="one_update_available">Un anovamientu disponible.</string>
   <string name="many_updates_available">%d anovamientos disponibles.</string>
   <string name="fdroid_updates_available">Anovamientos de F-Droid disponibles</string>
-  <string name="download_server">Consiguiendo\'l formulariu d\'applicaciones</string>
-  <string name="go_to_nfc_settings">Dir a los axustes de NFC…</string>
   <string name="bluetooth_activity_not_found">¡Nun hai dengún métodu d\'unviu per Bluetooth, escueyi ún!</string>
   <string name="choose_bt_send">Escoyer métodu d\'unviu per Bluetooth</string>
   <string name="send_via_bluetooth">Unviar pente Bluetooth</string>
@@ -94,7 +91,6 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="details_installed">Versión %s instalada</string>
   <string name="details_notinstalled">Non instaláu</string>
   <string name="corrupt_download">Ta toyíu\'l ficheru baxáu</string>
-  <string name="download_cancelled">Descarga encaboxada</string>
   <string name="antiadslist">Esta aplicación contien publicidá</string>
   <string name="antitracklist">Esta aplicación rastrexa ya informa de la to actividá</string>
   <string name="antinonfreeadlist">Esta aplicación da puxu a amiestos non llibres</string>

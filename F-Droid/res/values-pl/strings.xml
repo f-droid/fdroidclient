@@ -36,13 +36,10 @@
   <string name="enable">Włącz</string>
   <string name="add_key">Dodaj klucz</string>
   <string name="overwrite">Nadpisz</string>
-  <string name="repo_update_title">Aktualizuj repozytoria</string>
   <string name="tab_noninstalled">Dostępne</string>
   <string name="tab_updates">Aktualizacje</string>
   <string name="one_update_available">Dostępne jest 1 uaktualnienie.</string>
   <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
-  <string name="download_server">Pobieranie aplikacji z</string>
-  <string name="go_to_nfc_settings">Przejdź do ustawień NFC…</string>
   <string name="send_via_bluetooth">Wyślij przez Bluetooth</string>
   <string name="repo_add_url">Adres repozytorium</string>
   <string name="repo_add_fingerprint">Odcisk palca (opcjonalnie)</string>
@@ -65,7 +62,6 @@
   <string name="details_installed">Wersja %s została zainstalowana</string>
   <string name="details_notinstalled">Nie zainstalowano</string>
   <string name="corrupt_download">Pobrany plik jest uszkodzony</string>
-  <string name="download_cancelled">Anulowano pobieranie</string>
   <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
   <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
   <string name="antinonfreenetlist">Ta aplikacja promuje niewolne usługi sieciowe</string>

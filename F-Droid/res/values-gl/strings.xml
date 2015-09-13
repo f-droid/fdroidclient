@@ -34,13 +34,11 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="repo_add_title">Engadir un novo repositorio</string>
   <string name="repo_add_add">Engadir</string>
   <string name="cancel">Cancelar</string>
-  <string name="repo_update_title">Actualizar repositorios</string>
   <string name="tab_noninstalled">Dispoñíbel</string>
   <string name="tab_updates">Actualizacións</string>
   <string name="one_update_available">1 Actualización dispoñíbel</string>
   <string name="many_updates_available">%d actualizacións dispoñíbeis</string>
   <string name="fdroid_updates_available">Actualizacións de F-Droid dispoñíbeis</string>
-  <string name="download_server">Obtención do aplicativo desde</string>
   <string name="repo_add_url">Enderezo do repositorio</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Xestionar repositorios</string>
@@ -63,7 +61,6 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="details_installed">Instalada a versión %s</string>
   <string name="details_notinstalled">Non instalada</string>
   <string name="corrupt_download">O ficheiro descargado está corrupto</string>
-  <string name="download_cancelled">Descarga cancelada</string>
   <string name="antiadslist">Esta ap contén publicidade</string>
   <string name="antitracklist">Esta ap rexistra e informa da súa actividade</string>
   <string name="antinonfreeadlist">Esta ap promociona engadidos que non son libres</string>

@@ -45,14 +45,11 @@
   <string name="enable">Ενεργοποίηση</string>
   <string name="add_key">Προσθήκη κλειδιού</string>
   <string name="overwrite">Αντικατάσταση</string>
-  <string name="repo_update_title">Ενημέρωση αποθετηρίων</string>
   <string name="tab_noninstalled">Διαθέσιμα</string>
   <string name="tab_updates">Ενημερώσεις</string>
   <string name="one_update_available">1 διαθέσιμη ενημερώση.</string>
   <string name="many_updates_available">%d διαθέσιμες ενημερώσεις.</string>
   <string name="fdroid_updates_available">Υπάρχουν ενημερώσεις του F-Droid</string>
-  <string name="download_server">Λήψη εφαρμογών από</string>
-  <string name="go_to_nfc_settings">Μετάβαση στις ρυθμίσεις NFC…</string>
   <string name="bluetooth_activity_not_found">Καμία μέθοδος αποστολής με Bluetooth δεν βρέθηκε, επιλέξετε μία!</string>
   <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>
   <string name="repo_add_url">Διεύθυνση αποθετηρίου</string>
@@ -85,7 +82,6 @@
   <string name="details_installed">Εγκατεστημένη Έκδοση: %s</string>
   <string name="details_notinstalled">Δεν είναι εγκατεστημένο</string>
   <string name="corrupt_download">Το αρχείο που λήφθηκε είναι κατεστραμμένο</string>
-  <string name="download_cancelled">Ακύρωθηκε η λήψη</string>
   <string name="antiadslist">Αυτή η εφαρμογή περιέχει διαφημίσεις</string>
   <string name="antitracklist">Αυτή η εφαρμογή παρακολουθεί και αναφέρει την δραστηριότητα σας</string>
   <string name="antinonfreeadlist">Αυτή η εφαρμογή προωθεί μη-ελεύθερα πρόσθετα</string>

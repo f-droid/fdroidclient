@@ -50,14 +50,11 @@
   <string name="repo_add_add">Добавяне</string>
   <string name="cancel">Отказ</string>
   <string name="add_key">Добавете ключ</string>
-  <string name="repo_update_title">Актуализиране на хранилищата</string>
   <string name="tab_noninstalled">Налични</string>
   <string name="tab_updates">Актуализации</string>
   <string name="one_update_available">1 налична актуализация.</string>
   <string name="many_updates_available">%d налични актуализации.</string>
   <string name="fdroid_updates_available">Налични актуализации от F-Droid</string>
-  <string name="download_server">Сваляне на приложение от</string>
-  <string name="go_to_nfc_settings">Към настройките на NFC…</string>
   <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане, изберете един!</string>
   <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
   <string name="send_via_bluetooth">Изпрати чрез Bluetooth</string>
@@ -86,7 +83,6 @@
   <string name="details_installed">Инсталирана е версия %s</string>
   <string name="details_notinstalled">Не е инсталирано</string>
   <string name="corrupt_download">Сваленият файл е повреден</string>
-  <string name="download_cancelled">Свалянето е отказано</string>
   <string name="antiadslist">Приложението съдържа реклами</string>
   <string name="antitracklist">Приложението следи и докладва активността ви</string>
   <string name="antinonfreeadlist">Приложението промотира не-безплатни добавки</string>

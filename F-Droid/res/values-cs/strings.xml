@@ -47,14 +47,11 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="enable">Povolit</string>
   <string name="add_key">Přidat klíč</string>
   <string name="overwrite">Přepsat</string>
-  <string name="repo_update_title">Aktualizovat repozitáře</string>
   <string name="tab_noninstalled">Dostupné</string>
   <string name="tab_updates">Aktualizace</string>
   <string name="one_update_available">1 aktualizace je dostupná.</string>
   <string name="many_updates_available">%d aktualizací je dostupných.</string>
   <string name="fdroid_updates_available">Dostupné aktualizace F-Droid</string>
-  <string name="download_server">Získávám aplikace z</string>
-  <string name="go_to_nfc_settings">Jít do nastavení NFC…</string>
   <string name="send_via_bluetooth">Poslat přes Bluetooth</string>
   <string name="repo_add_url">Adresa repositáře</string>
   <string name="repo_add_fingerprint">Fingerprint (volitelné)</string>
@@ -81,7 +78,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="details_installed">Verze %s nainstalována</string>
   <string name="details_notinstalled">Není nainstalováno</string>
   <string name="corrupt_download">Stažený soubor je poškozen</string>
-  <string name="download_cancelled">Stažení zrušeno</string>
   <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
   <string name="antitracklist">Tato aplikace zaznamenává a hlásí vaše aktivity</string>
   <string name="expert">Expert</string>

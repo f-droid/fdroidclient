@@ -53,14 +53,11 @@ käyttöehtojen mukaisesti.</string>
   <string name="enable">Ota käyttöön</string>
   <string name="add_key">Lisää avain</string>
   <string name="overwrite">Korvaa</string>
-  <string name="repo_update_title">Päivitä sovelluslähteet</string>
   <string name="tab_noninstalled">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
   <string name="one_update_available">1 päivitys saatavilla.</string>
   <string name="many_updates_available">%d päivitystä saatavilla.</string>
   <string name="fdroid_updates_available">F-Droid: Päivityksiä saatavilla</string>
-  <string name="download_server">Haetaan sovellusta lähteestä</string>
-  <string name="go_to_nfc_settings">NFC-asetukset…</string>
   <string name="bluetooth_activity_not_found">Bluetooth-läheystapaa ei löytynyt, valitse yksi!</string>
   <string name="choose_bt_send">Valitse Bluetooth-lähetystapa</string>
   <string name="send_via_bluetooth">Lähetä bluetoothilla</string>
@@ -88,7 +85,6 @@ käyttöehtojen mukaisesti.</string>
   <string name="details_installed">Versio %s asennettu</string>
   <string name="details_notinstalled">Ei asennettu</string>
   <string name="corrupt_download">Ladattu tiedosto on viallinen</string>
-  <string name="download_cancelled">Lataus peruutettu</string>
   <string name="antiadslist">Tämä sovellus sisältää mainoksia</string>
   <string name="antitracklist">Tämä sovellus tarkkailee ja raportoi toimintaasi</string>
   <string name="antinonfreeadlist">Tämä sovellus suosittelee ei-avoimia lisäosia</string>

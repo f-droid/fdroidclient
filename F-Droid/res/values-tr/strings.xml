@@ -53,14 +53,11 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="enable">Etkinleştir</string>
   <string name="add_key">Anahtar ekle</string>
   <string name="overwrite">Üzerine yaz</string>
-  <string name="repo_update_title">Depoları güncelle</string>
   <string name="tab_noninstalled">Mevcut</string>
   <string name="tab_updates">Güncellemeler</string>
   <string name="one_update_available">1 güncelleme bulunmaktadır.</string>
   <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
-  <string name="download_server">Uygulama buradan alınıyor:</string>
-  <string name="go_to_nfc_settings">NFC ayarlarına git…</string>
   <string name="bluetooth_activity_not_found">Hiçbir Bluetooth gönderme metodu bulunamadı, birisini seçin!</string>
   <string name="choose_bt_send">Bluetooth gönderme metodu seç</string>
   <string name="send_via_bluetooth">Bluetooth ile Gönder</string>
@@ -94,7 +91,6 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="details_installed">%s sürümü kurulu</string>
   <string name="details_notinstalled">Kurulu değil</string>
   <string name="corrupt_download">İndirilen dosya bozuk</string>
-  <string name="download_cancelled">İndirme iptal edildi</string>
   <string name="antiadslist">Bu uygulama reklam içerir</string>
   <string name="antitracklist">Bu uygulama etkinliklerinizi izleyip rapor eder</string>
   <string name="antinonfreeadlist">Bu uygulama özgür olmayan eklentiler tavsiye eder</string>

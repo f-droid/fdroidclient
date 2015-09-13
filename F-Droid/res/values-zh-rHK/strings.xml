@@ -49,7 +49,6 @@
   <string name="enable">啟用</string>
   <string name="add_key">添加鑰匙</string>
   <string name="overwrite">蓋寫</string>
-  <string name="repo_update_title">更新所有軟件倉庫</string>
   <string name="tab_noninstalled">可用</string>
   <string name="tab_updates">更新</string>
   <string name="one_update_available">有 1 個更新。</string>
@@ -83,7 +82,6 @@
   <string name="details_installed">已安裝版本%s</string>
   <string name="details_notinstalled">沒有安裝</string>
   <string name="corrupt_download">下載的檔案已損毀</string>
-  <string name="download_cancelled">已取消下載</string>
   <string name="antiadslist">此應用程式含有廣告</string>
   <string name="antitracklist">此應用程式會跟蹤及彙報您的行為</string>
   <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>

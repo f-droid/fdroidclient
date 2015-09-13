@@ -23,7 +23,6 @@
   <string name="cancel">إلغاء</string>
   <string name="enable">تمكين</string>
   <string name="add_key">إضافة مفتاح</string>
-  <string name="repo_update_title">تحديث المستودعات</string>
   <string name="tab_noninstalled">متواجد</string>
   <string name="tab_updates">التحديثات</string>
   <string name="choose_bt_send">إختيار البلوتوث كطريقة إرسال</string>

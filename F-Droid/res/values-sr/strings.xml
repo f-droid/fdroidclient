@@ -52,14 +52,11 @@
   <string name="enable">Омогући</string>
   <string name="add_key">Додај кључ</string>
   <string name="overwrite">Пребриши</string>
-  <string name="repo_update_title">Ажурирај ризнице</string>
   <string name="tab_noninstalled">Доступно</string>
   <string name="tab_updates">Надоградње</string>
   <string name="one_update_available">1 надоградња је доступна.</string>
   <string name="many_updates_available">%d нових надоградњи је доступно.</string>
   <string name="fdroid_updates_available">Доступне су надоградње на Ф-дроиду.</string>
-  <string name="download_server">Добављам апликацију са</string>
-  <string name="go_to_nfc_settings">Иди на НФЦ поставке…</string>
   <string name="bluetooth_activity_not_found">Није одређена метода слања блутутом, одредите једну!</string>
   <string name="choose_bt_send">Одредите методу слања блутутом</string>
   <string name="send_via_bluetooth">Пошаљи блутутом</string>
@@ -93,7 +90,6 @@
   <string name="details_installed">Инсталирано издање  %s</string>
   <string name="details_notinstalled">Није инсталирано</string>
   <string name="corrupt_download">Преузети фајл је покварен</string>
-  <string name="download_cancelled">Преузимање отказано</string>
   <string name="antiadslist">Ова апликација садржи огласе</string>
   <string name="antitracklist">Ова апликација прати и пријављује ваше активности</string>
   <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>

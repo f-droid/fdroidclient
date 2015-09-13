@@ -54,14 +54,11 @@ Intregadu cun sa litzèntzia
   <string name="enable">Abìlita</string>
   <string name="add_key">Annanghe crae</string>
   <string name="overwrite">Subraiscrie</string>
-  <string name="repo_update_title">Agiorna depòsitos</string>
   <string name="tab_noninstalled">Disponìbiles</string>
   <string name="tab_updates">Agiornamentos</string>
   <string name="one_update_available">1 agiornamentu est disponìbile.</string>
   <string name="many_updates_available">%d agiornamentos sunt disponìbiles.</string>
   <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
-  <string name="download_server">Iscarrigande s\'aplicatzione dae</string>
-  <string name="go_to_nfc_settings">Bae a sas impostaduras NFC…</string>
   <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
   <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>
   <string name="send_via_bluetooth">Imbia tramite Bluetooth</string>
@@ -95,7 +92,6 @@ Intregadu cun sa litzèntzia
   <string name="details_installed">Versione %s installada</string>
   <string name="details_notinstalled">Non installada</string>
   <string name="corrupt_download">Su documentu iscarrigadu est corrùmpidu</string>
-  <string name="download_cancelled">Iscarrigamentu annuddadu</string>
   <string name="antiadslist">Custa aplicatzione cuntènnidi publitzidade</string>
   <string name="antitracklist">Custa aplicatzione compidat e riferit a àteros de sas atividades tuas</string>
   <string name="antinonfreeadlist">Custa aplicatzione promovet estensiones (add-ons) non lìberas</string>

@@ -54,14 +54,11 @@ Vydaný pod licenciou
   <string name="enable">Zapnúť</string>
   <string name="add_key">Pridať kľúč</string>
   <string name="overwrite">Prepísať</string>
-  <string name="repo_update_title">Aktualizuj repozitáre</string>
   <string name="tab_noninstalled">Dostupné</string>
   <string name="tab_updates">Aktualizácie</string>
   <string name="one_update_available">Dostupná 1 aktualizácia.</string>
   <string name="many_updates_available">Dostupné aktualizácie: %d ks</string>
   <string name="fdroid_updates_available">Dostupné aktualizácie F-Droidu</string>
-  <string name="download_server">Aplikácie získavame z</string>
-  <string name="go_to_nfc_settings">Ísť do nastavení NFC…</string>
   <string name="send_via_bluetooth">Poslať cez Bluetooth</string>
   <string name="repo_add_url">Adresa repozitára</string>
   <string name="repo_add_fingerprint">Odtlačok (voliteľný)</string>
@@ -92,7 +89,6 @@ Vydaný pod licenciou
   <string name="details_installed">Verzia %s nainštalovaná</string>
   <string name="details_notinstalled">Nie je nainštalované</string>
   <string name="corrupt_download">Stiahnutý súbor je poškodený</string>
-  <string name="download_cancelled">Stiahnutie zrušené</string>
   <string name="antiadslist">Táto aplikácia obsahuje reklamy</string>
   <string name="antitracklist">Táto aplikácia zaznamenáva a hlási vaše aktivity</string>
   <string name="antinonfreeadlist">Táto aplikácia propaguje neslobodné doplnky</string>

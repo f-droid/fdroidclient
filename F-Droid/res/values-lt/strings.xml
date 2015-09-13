@@ -31,7 +31,6 @@
   <string name="enable">Įjungti</string>
   <string name="add_key">Pridėti raktą</string>
   <string name="overwrite">Perrašyti</string>
-  <string name="repo_update_title">Atnaujinti saugyklas</string>
   <string name="tab_noninstalled">Prieinamos programos</string>
   <string name="tab_updates">Atnaujinimai</string>
   <string name="one_update_available">Atsirado 1 atnaujinimas.</string>
@@ -58,7 +57,6 @@
   <string name="details_installed">Įdiegta %s versija</string>
   <string name="details_notinstalled">Neįdiegta</string>
   <string name="corrupt_download">Atsiųstas failas yra sugadintas</string>
-  <string name="download_cancelled">Siuntimas nutrauktas</string>
   <string name="display">Rodymas</string>
   <string name="show_incompat_versions">Nesuderintos versijos</string>
   <string name="show_incompat_versions_on">Rodyti programų laidas, netinkamas šiam įrenginiui</string>

@@ -53,14 +53,11 @@ Lisensiert GNU GPLv3.</string>
   <string name="enable">Skru på</string>
   <string name="add_key">Legg til nøkkel</string>
   <string name="overwrite">Overskriv</string>
-  <string name="repo_update_title">Oppdater registerne</string>
   <string name="tab_noninstalled">Tilgjengelig</string>
   <string name="tab_updates">Oppdateringer</string>
   <string name="one_update_available">1 oppdatering tilgjengelig.</string>
   <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
-  <string name="download_server">Henter program fra</string>
-  <string name="go_to_nfc_settings">Gå til NFC-innstillinger</string>
   <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for blåtann funnet, velg en!</string>
   <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>
   <string name="send_via_bluetooth">Send via Blåtann</string>
@@ -94,7 +91,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="details_installed">Versjon %s installert</string>
   <string name="details_notinstalled">Ikke installert</string>
   <string name="corrupt_download">Nedlastet fil er korrupt</string>
-  <string name="download_cancelled">Nedlasting avbrutt</string>
   <string name="antiadslist">Dette programmet inneholder reklame</string>
   <string name="antitracklist">Dette programmet sporer din aktivitet</string>
   <string name="antinonfreeadlist">Dette programmet promoterer ufrie utvidelser</string>

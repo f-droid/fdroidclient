@@ -53,14 +53,11 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="enable">Ativar</string>
   <string name="add_key">Adicionar chave</string>
   <string name="overwrite">Sobrescrever</string>
-  <string name="repo_update_title">Atualizar repositórios</string>
   <string name="tab_noninstalled">Disponível</string>
   <string name="tab_updates">Atualizações</string>
   <string name="one_update_available">1 atualização disponível.</string>
   <string name="many_updates_available">%d atualizações disponíveis.</string>
   <string name="fdroid_updates_available">Atualizações do F-Droid disponíveis</string>
-  <string name="download_server">Baixando aplicativo de</string>
-  <string name="go_to_nfc_settings">Ir para configurações de NFC…</string>
   <string name="bluetooth_activity_not_found">Nenhum método de envio Bluetooth foi encontrado, escolha um!</string>
   <string name="choose_bt_send">Escolher o método de envio Bluetooth</string>
   <string name="send_via_bluetooth">Enviar via bluetooth</string>
@@ -94,7 +91,6 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="details_installed">Versão %s instalada</string>
   <string name="details_notinstalled">Não instalado</string>
   <string name="corrupt_download">O arquivo baixado está corrompido</string>
-  <string name="download_cancelled">Download cancelado</string>
   <string name="antiadslist">Este aplicativo contém publicidade</string>
   <string name="antitracklist">Este aplicativo rastreia e relata sua atividade</string>
   <string name="antinonfreeadlist">Este aplicativo promove complementos não livres</string>

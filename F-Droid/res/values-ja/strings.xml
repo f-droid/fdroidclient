@@ -52,14 +52,11 @@
   <string name="enable">有効</string>
   <string name="add_key">ｷｰを追加</string>
   <string name="overwrite">上書き</string>
-  <string name="repo_update_title">ﾘﾎﾟｼﾞﾄﾘを更新</string>
   <string name="tab_noninstalled">入手可能</string>
   <string name="tab_updates">更新</string>
   <string name="one_update_available">1つの更新があります｡</string>
   <string name="many_updates_available">%d 個の更新があります｡</string>
   <string name="fdroid_updates_available">F-Droidの更新があります</string>
-  <string name="download_server">ｱﾌﾟﾘｹｰｼｮﾝを取得中</string>
-  <string name="go_to_nfc_settings">NFC設定に移動…</string>
   <string name="bluetooth_activity_not_found">Bluetoothの送信方法がありません､選択してください!</string>
   <string name="choose_bt_send">Bluetoothの送信方法を選択してください</string>
   <string name="send_via_bluetooth">Bluetooth経由で送信</string>
@@ -93,7 +90,6 @@
   <string name="details_installed">ﾊﾞｰｼﾞｮﾝ %s がｲﾝｽﾄｰﾙ済</string>
   <string name="details_notinstalled">ｲﾝｽﾄｰﾙされていません</string>
   <string name="corrupt_download">ﾀﾞｳﾝﾛｰﾄﾞしたﾌｧｲﾙが正しくありません</string>
-  <string name="download_cancelled">ﾀﾞｳﾝﾛｰﾄﾞが取り消されました</string>
   <string name="antiadslist">このｱﾌﾟﾘｹｰｼｮﾝは広告を含んでいます</string>
   <string name="antitracklist">このｱﾌﾟﾘｹｰｼｮﾝはあなたの操作を記録し報告します</string>
   <string name="antinonfreeadlist">このｱﾌﾟﾘｹｰｼｮﾝは有償ｱﾄﾞｵﾝを推奨します</string>

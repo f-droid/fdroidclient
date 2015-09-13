@@ -47,14 +47,11 @@
   <string name="enable">启用</string>
   <string name="add_key">添加密钥</string>
   <string name="overwrite">覆盖</string>
-  <string name="repo_update_title">更新软件源</string>
   <string name="tab_noninstalled">可安装</string>
   <string name="tab_updates">更新</string>
   <string name="one_update_available">有 1 个可用的更新。</string>
   <string name="many_updates_available">有 %d 个可用的更新。</string>
   <string name="fdroid_updates_available">有可用的 F-Droid 更新</string>
-  <string name="download_server">正在下载应用列表从</string>
-  <string name="go_to_nfc_settings">前往 NFC 设置…</string>
   <string name="bluetooth_activity_not_found">未找到蓝牙发送方式，请选择一个！</string>
   <string name="choose_bt_send">选择蓝牙发送方式</string>
   <string name="repo_add_url">软件源地址</string>
@@ -87,7 +84,6 @@
   <string name="details_installed">已安装版本 %s</string>
   <string name="details_notinstalled">未安装</string>
   <string name="corrupt_download">下载的文件已损坏</string>
-  <string name="download_cancelled">下载已取消</string>
   <string name="antiadslist">该应用程序包含广告</string>
   <string name="antitracklist">该应用程序会跟踪并报告您的活动</string>
   <string name="antinonfreeadlist">该应用程序会推广非自由免费的插件或扩展</string>

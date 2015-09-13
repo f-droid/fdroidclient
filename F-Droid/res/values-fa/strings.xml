@@ -32,11 +32,8 @@
   <string name="enable">توانا ساختن</string>
   <string name="add_key">فزودن کلید</string>
   <string name="overwrite">بازنویسی</string>
-  <string name="repo_update_title">به‌روزرسانی مخازن</string>
   <string name="tab_updates">به‌روزرسانی‌ها</string>
   <string name="fdroid_updates_available">به‌روزرسانی‌های F-Droid موجود هستند</string>
-  <string name="download_server">گرفتن برنامه از</string>
-  <string name="go_to_nfc_settings">برو به ساماندهی اِن‌اِف‌سی</string>
   <string name="bluetooth_activity_not_found">روش فرستادن دندان‌آبی پیدا نشد، یکی را برگزینید!</string>
   <string name="choose_bt_send">گزینش روش فرستادن دندان‌آبی</string>
   <string name="repo_add_url">نشانی مخزن</string>
@@ -55,7 +52,6 @@
   <string name="menu_donate">کمک مالی</string>
   <string name="details_notinstalled">نصب‌نشده</string>
   <string name="corrupt_download">پروندهٔ دریافتی خراب است</string>
-  <string name="download_cancelled">دریافت فسخ شد</string>
   <string name="antiadslist">این برنامه دارای تبلیغات است</string>
   <string name="antitracklist">این برنامه فعالیت‌های شما را ردیابی و گزارش می‌کند</string>
   <string name="antinonfreeadlist">این برنامه افزونه‌های غیر آزاد را تبلیغ می‌کند</string>

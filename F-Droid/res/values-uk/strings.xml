@@ -23,10 +23,8 @@
   <string name="repo_add_title">Новий репозиторій</string>
   <string name="repo_add_add">Додати</string>
   <string name="cancel">Назад</string>
-  <string name="repo_update_title">Оновити репозиторії?</string>
   <string name="tab_noninstalled">Наявне</string>
   <string name="tab_updates">Оновлення</string>
-  <string name="download_server">Звантажую програму</string>
   <string name="repo_add_url">Адреса репозиторію</string>
   <string name="menu_update_repo">Оновити</string>
   <string name="menu_manage">Репозиторії</string>
@@ -45,7 +43,6 @@
   <string name="details_installed">Встановлена версія %s</string>
   <string name="details_notinstalled">Не встановлено</string>
   <string name="corrupt_download">Отриманий файл пошкоджений</string>
-  <string name="download_cancelled">Звантаження скасовано</string>
   <string name="expert">Експерт</string>
   <string name="search_hint">Пошук програм</string>
   <string name="appcompatibility">Сумісність</string>
