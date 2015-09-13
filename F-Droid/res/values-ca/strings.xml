@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">S\'ha trobat %1$d aplicacions coincidents amb \'%2$s\':</string>
   <string name="searchres_oneapp">S\'ha trobat una aplicació coincident amb \'%s\':</string>
@@ -152,15 +152,11 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="repo_name">Nom</string>
   <string name="unsigned_description">Això vol dir que la llista d\'aplicacions podria no estar verificada.
 Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.</string>
-  <string name="repo_not_yet_updated">"Encara no heu utilitzat aquest dipòsit. Per veure les seves aplicacions heu d\'actualitzar-lo.\n\nDesprés, podreu consultar aquí la descripció i altres detalls. "</string>
+  <string name="repo_not_yet_updated">Encara no heu utilitzat aquest dipòsit. Per veure les seves aplicacions heu d\'actualitzar-lo.\n\nDesprés, podreu consultar aquí la descripció i altres detalls.</string>
   <string name="unknown">Desconegut</string>
   <string name="repo_confirm_delete_title">Esborrar dipòsit?</string>
-  <string name="repo_confirm_delete_body">Eliminar un dipòsit implica que les seves aplicacions ja no seran accessibles via F-Droid.
-
-Nota: No es perdran les aplicacions ja instal·lades.</string>
-  <string name="repo_disabled_notification">\"%1$s\" Inhabilitat.
-
-Heu de tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
+  <string name="repo_confirm_delete_body">Eliminar un dipòsit implica que les seves aplicacions ja no seran accessibles via F-Droid.\n\nNota: No es perdran les aplicacions ja instal·lades.</string>
+  <string name="repo_disabled_notification">\"%1$s\" Inhabilitat.\n\nHeu de tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</string>
   <string name="repo_added">S\'ha desat el dipòsit F-Droid %1$s.</string>
   <string name="repo_searching_address">S\'està cercant un dipòsit d\'F-Droid a %1$s</string>
   <string name="minsdk_or_later">%s o més recent</string>
@@ -194,4 +190,27 @@ Heu de tornar a habilitar el dipòsit per instal·lar aplicacions d\'aquest.</st
   <string name="open_qr_code_scanner">Obre l\'escàner de codis QR</string>
   <string name="swap_welcome">Benvingut a F-Droid!</string>
   <string name="swap_confirm_connect">Voleu baixar aplicacions des de %1$s ara?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="about_source">Codi font:</string>
+	<string name="incompatible">Incompatible</string>
+	<string name="links">Enllaços</string>
+	<string name="content_description_view_more">Veure més</string>
+
+	<string name="back">Torna</string>
+	<string name="update_notification_more">+%1$d més…</string>
+	<string name="pref_language">Idioma</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="Graphics">Gràfics</string>
+    <string name="Money">Diners</string>
+    <string name="Sports_Health">Esports i Salut</string>
+    <string name="Theming">Temes</string>
+    <string name="Connectivity">Connectivitat</string>
+    <string name="Time">Temps</string>
+    <string name="Writing">Per a escriure</string>
+
+    <string name="system_install_installing">Instal·lant…</string>
+    <string name="system_install_uninstalling">Desinstal·lant…</string>
+    <string name="system_uninstall_button">Desinstal·la</string>
+
+    </resources>
