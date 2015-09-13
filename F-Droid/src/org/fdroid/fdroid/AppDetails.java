@@ -943,7 +943,7 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 title = R.string.uninstall_error_title;
                 switch (errorCode) {
                 default: // ERROR_CODE_OTHER
-                    body = R.string.install_error_unknown;
+                    body = R.string.uninstall_error_unknown;
                     break;
                 }
             }
