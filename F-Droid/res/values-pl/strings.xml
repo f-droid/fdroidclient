@@ -10,7 +10,7 @@
   <string name="other">Inne</string>
   <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
   <string name="never">nigdy</string>
-  <string name="notify">Powiadom</string>
+  <string name="notify">Powiadomienia</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
   <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
@@ -288,4 +288,5 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="swap_success">Wymiana powiodła się!</string>
     <string name="swap_active_hotspot">%1$1 (Twój hostpot)</string>
     <string name="swap_switch_to_wifi">Dotknij by przejść do innej sieci WiFi</string>
+    <string name="swap_reciprocate_failed"/>
     </resources>
