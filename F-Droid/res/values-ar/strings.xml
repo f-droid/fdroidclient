@@ -3,7 +3,6 @@
   <string name="searchres_oneapp">عثر على تطبيق واحد يوافق \'%s\':</string>
   <string name="searchres_noapps">لم يعثر على أي تطبيق يوافق \'%s\'</string>
   <string name="version">الإصدار</string>
-  <string name="edit">تحرير</string>
   <string name="delete">حذف</string>
   <string name="updates">التحديثات</string>
   <string name="local_repo_name">إسم مستودعك المحلي</string>
@@ -27,7 +26,6 @@
   <string name="repo_update_title">تحديث المستودعات</string>
   <string name="tab_noninstalled">متواجد</string>
   <string name="tab_updates">التحديثات</string>
-  <string name="process_wait_title">من فضلك إنتظر</string>
   <string name="choose_bt_send">إختيار البلوتوث كطريقة إرسال</string>
   <string name="send_via_bluetooth">إرسال بواسطة البلوتوث</string>
   <string name="repo_add_url">عنوان المستودع</string>

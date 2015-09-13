@@ -25,11 +25,6 @@
   <string name="about_mail">تورخەت:</string>
   <string name="about_version">نەشرى:</string>
   <string name="about_website">تورتۇرا</string>
-  <string name="no_repo">سىز ھېچقانداق خەزىنە سەپلىمىدىڭىز!
-
-خەزىنە ئەپلەرنىڭ تارقىتىلىش مەنبەسى بولۇپ، مەنبە قوشۇشتا، تىزىملىك توپچىنى بېسىپ، ئاندىن URLنى كىرگۈزۈڭ.
-
-خەزىنە ئادرېسى بۇنىڭغا ئوخشاش بولىدۇ: https://f-droid.org/repo</string>
   <string name="inst">ئورنىتىلغان</string>
   <string name="not_inst">ئورنىتىلمىغان</string>
   <string name="added_on">%s دا قوشۇلغان</string>
@@ -45,8 +40,6 @@
   <string name="one_update_available">1 يېڭىلانما بار.</string>
   <string name="many_updates_available">%d يېڭىلانما بار.</string>
   <string name="fdroid_updates_available">F-Droid يېڭىلانمىلىرى بار</string>
-  <string name="process_wait_title">سەل كۈتۈڭ</string>
-  <string name="process_update_msg">ئەپ تىزىمىنى يېڭىلاۋاتىدۇ…</string>
   <string name="download_server">ئەپكە ئېرىشىش ئورنى</string>
   <string name="repo_add_url">خەزىنە ئادرېسى</string>
   <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.

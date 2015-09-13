@@ -7,7 +7,6 @@
   <string name="installIncompatible">このﾊﾟｯｹｰｼﾞはあなたの端末と互換性がないようです｡それでもｲﾝｽﾄｰﾙを続行しますか?</string>
   <string name="installDowngrade">このｱﾌﾟﾘｹｰｼｮﾝをﾀﾞｳﾝｸﾞﾚｰﾄﾞしようとしています｡これにより不具合を発生させたりﾃﾞｰﾀを失ったりする場合があります｡それでもﾀﾞｳﾝｸﾞﾚｰﾄﾞを続行しますか?</string>
   <string name="version">ﾊﾞｰｼﾞｮﾝ</string>
-  <string name="edit">編集</string>
   <string name="delete">削除</string>
   <string name="enable_nfc_send">NFC 送信を有効…</string>
   <string name="cache_downloaded">ｱﾌﾟﾘｹｰｼｮﾝの保存</string>
@@ -39,13 +38,6 @@
   <string name="about_mail">電子ﾒｰﾙ:</string>
   <string name="about_version">ﾊﾞｰｼﾞｮﾝ:</string>
   <string name="about_website">Webｻｲﾄ</string>
-  <string name="no_repo">設定済のﾘﾎﾟｼﾞﾄﾘがありません
-
-		ﾘﾎﾟｼﾞﾄﾘはｱﾌﾟﾘｹｰｼｮﾝの元になります｡追加するには､ﾒﾆｭｰ
-		ﾎﾞﾀﾝを押してURLを入力してください｡
-
-ﾘﾎﾟｼﾞﾄﾘのｱﾄﾞﾚｽは
-		次のような形式です: https://f-droid.org/repo</string>
   <string name="inst">入手済</string>
   <string name="not_inst">未ｲﾝｽﾄｰﾙ</string>
   <string name="inst_known_source">ｲﾝｽﾄｰﾙ済 (%s から)</string>
@@ -66,10 +58,7 @@
   <string name="one_update_available">1つの更新があります｡</string>
   <string name="many_updates_available">%d 個の更新があります｡</string>
   <string name="fdroid_updates_available">F-Droidの更新があります</string>
-  <string name="process_wait_title">しばらくお待ちください</string>
-  <string name="process_update_msg">ｱﾌﾟﾘｹｰｼｮﾝﾘｽﾄを更新中</string>
   <string name="download_server">ｱﾌﾟﾘｹｰｼｮﾝを取得中</string>
-  <string name="nfc_is_not_enabled">NFCが有効ではありません!</string>
   <string name="go_to_nfc_settings">NFC設定に移動…</string>
   <string name="bluetooth_activity_not_found">Bluetoothの送信方法がありません､選択してください!</string>
   <string name="choose_bt_send">Bluetoothの送信方法を選択してください</string>

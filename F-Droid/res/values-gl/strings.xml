@@ -25,15 +25,6 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="about_mail">Correo:</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Sitio web</string>
-  <string name="no_repo">Non ten ningún repositorio configurado!
-
-Un
-		repositorio é unha fonte de aplicativos. Para engadir un, prema o botón MENU
-		agora e introduza o URL.
-
-Un enderezo a un repositorio sería algo
-		como
-		isto: https://f-droid.org/repo</string>
   <string name="inst">Instalada</string>
   <string name="not_inst">Non instalada</string>
   <string name="added_on">Engadida a %s</string>
@@ -49,8 +40,6 @@ Un enderezo a un repositorio sería algo
   <string name="one_update_available">1 Actualización dispoñíbel</string>
   <string name="many_updates_available">%d actualizacións dispoñíbeis</string>
   <string name="fdroid_updates_available">Actualizacións de F-Droid dispoñíbeis</string>
-  <string name="process_wait_title">Agarde por favor</string>
-  <string name="process_update_msg">Actualizando a lista de aplicativos…</string>
   <string name="download_server">Obtención do aplicativo desde</string>
   <string name="repo_add_url">Enderezo do repositorio</string>
   <string name="repo_alrt">Cambiou a lista de repositorios usados.

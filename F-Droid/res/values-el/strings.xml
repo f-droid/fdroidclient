@@ -7,7 +7,6 @@
   <string name="installIncompatible">Φαίνεται ότι αυτό το πακέτο δεν είναι συμβατό με τη συσκευή σας. Θα θέλατε να δοκιμάσετε να το εγκαταστήσετε ούτως ή άλλως;</string>
   <string name="installDowngrade">Προσπαθείτε να υποβαθμίσετε αυτήν την εφαρμογή. Αν το κάνετε αυτό, μπορεί να προκληθούν προβλήματα στην εφαρμογή ή ακόμα και να χάσετε τα δεδομένα σας. Θέλετε να δοκιμάσετε να την υποβαθμίσετε ούτως ή άλλως;</string>
   <string name="version">Έκδοση</string>
-  <string name="edit">Επεξεργασία</string>
   <string name="delete">Διαγραφή</string>
   <string name="enable_nfc_send">Ενεργοποίηση Αποστολής NFC…</string>
   <string name="cache_downloaded">Αποθήκευση ληφθέντων εφαρμογών στην προσωρινή μνήμη</string>
@@ -34,11 +33,6 @@
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
   <string name="about_version">Έκδοση:</string>
   <string name="about_website">Ιστοσελίδα</string>
-  <string name="no_repo">Δεν έχει ρυθμιστεί κανένα αποθετήριο!
-
-Ένα αποθετήριο είναι μια πηγή εφαρμογών. Για να προσθέσετε κάποιο, πιέστε το πλήκτρο ΜΕΝΟΥ και εισάγετε το URL.
-
-Μια διεύθυνση αποθετηρίου μοιάζει κάπως έτσι: https://f-droid.org/repo</string>
   <string name="inst">Εγκατεστημένο</string>
   <string name="not_inst">Δεν είναι εγκατεστημένο</string>
   <string name="added_on">Προστέθηκε στις %s</string>
@@ -57,10 +51,7 @@
   <string name="one_update_available">1 διαθέσιμη ενημερώση.</string>
   <string name="many_updates_available">%d διαθέσιμες ενημερώσεις.</string>
   <string name="fdroid_updates_available">Υπάρχουν ενημερώσεις του F-Droid</string>
-  <string name="process_wait_title">Παρακαλώ περιμένετε</string>
-  <string name="process_update_msg">Ενημέρωση λίστας εφαρμογών…</string>
   <string name="download_server">Λήψη εφαρμογών από</string>
-  <string name="nfc_is_not_enabled">NFC δεν είναι ενεργοποιημένο!</string>
   <string name="go_to_nfc_settings">Μετάβαση στις ρυθμίσεις NFC…</string>
   <string name="bluetooth_activity_not_found">Καμία μέθοδος αποστολής με Bluetooth δεν βρέθηκε, επιλέξετε μία!</string>
   <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>

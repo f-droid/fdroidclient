@@ -7,7 +7,6 @@
   <string name="installIncompatible">Sembla que aquest paquet no és compatible amb el vostre dispositiu. Voleu provar a instaŀlar-lo de totes maneres?</string>
   <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?</string>
   <string name="version">Versió</string>
-  <string name="edit">Editar</string>
   <string name="delete">Esborrar</string>
   <string name="cache_downloaded">Memòria cau de les aplicacions baixades</string>
   <string name="cache_downloaded_on">Mantén els fitxers apk descarregats a la targeta SD</string>
@@ -39,11 +38,6 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="about_mail">Correu:</string>
   <string name="about_version">Versió:</string>
   <string name="about_website">Pàgina web</string>
-  <string name="no_repo">No heu configurat cap dipòsit!
-
-Un dipòsit és una font d\'aplicacions. Per afegir-ne un, premeu ara el botó MENÚ i entreu la seva URL.
-
-L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</string>
   <string name="inst">Instal·lat</string>
   <string name="not_inst">No està instal·lat</string>
   <string name="inst_known_source">Instal·lat (des de %s)</string>
@@ -64,8 +58,6 @@ L\'adreça d\'un dipòsit té un aspecte com ara: https://f-droid.org/repo</stri
   <string name="one_update_available">Hi ha 1 actualització disponible.</string>
   <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
   <string name="fdroid_updates_available">Hi ha actualitzacions disponibles de l\'F-Droid</string>
-  <string name="process_wait_title">Un moment si us plau</string>
-  <string name="process_update_msg">S\'està actualitzant la llista d\'aplicacions…</string>
   <string name="download_server">S\'està obtenint l\'aplicació des de</string>
   <string name="bluetooth_activity_not_found">No s\'ha detectat cap activitat per Bluetooth, escolliu una!</string>
   <string name="send_via_bluetooth">Envia per Bluetooth</string>

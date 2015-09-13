@@ -7,7 +7,6 @@
   <string name="installIncompatible">Ứng dụng này có khả năng không tương thích với thiết bị của bạn. Bạn vẫn muốn thử cài đặt?</string>
   <string name="installDowngrade">Bạn đang cài đè phiên bản cũ hơn của ứng dụng này. Làm như vậy có thể khiến cho ứng dụng không hoạt động được và thậm chí làm mất dữ liệu. Bạn vẫn muốn tiếp tục?</string>
   <string name="version">Phiên bản</string>
-  <string name="edit">Sửa</string>
   <string name="delete">Xoá</string>
   <string name="enable_nfc_send">Kích hoạt gửi qua NFC…</string>
   <string name="cache_downloaded">Lưu ứng dụng</string>
@@ -38,7 +37,6 @@
   <string name="about_mail">Email:</string>
   <string name="about_version">Phiên bản:</string>
   <string name="about_website">Trang web</string>
-  <string name="no_repo">Bạn chưa thiết lập kho nào! Kho là một nguồn ứng dụng. Để thêm một kho, ấn nút MENU để nhập địa chỉ kho. Địa chỉ kho có dạng: https://f-droid.org/repo</string>
   <string name="inst">Đã cài đặt</string>
   <string name="not_inst">Chưa cài đặt</string>
   <string name="inst_known_source">Đã cài đặt (từ %s)</string>
@@ -59,10 +57,7 @@
   <string name="one_update_available">Có 1 bản cập nhật.</string>
   <string name="many_updates_available">Có %d bản cập nhật.</string>
   <string name="fdroid_updates_available">Có cập nhật F-Droid</string>
-  <string name="process_wait_title">Vui lòng đợi</string>
-  <string name="process_update_msg">Đang cập nhật danh sách ứng dụng…</string>
   <string name="download_server">Đang tải ứng dụng từ</string>
-  <string name="nfc_is_not_enabled">NFC hiện đang tắt!</string>
   <string name="go_to_nfc_settings">Cài đặt NFC…</string>
   <string name="bluetooth_activity_not_found">Không tìm thấy cách gửi qua Bluetooth mặc định, hãy chọn một cách khác!</string>
   <string name="choose_bt_send">Chọn cách gửi qua Bluetooth</string>

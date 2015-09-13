@@ -4,7 +4,6 @@
   <string name="searchres_oneapp">Sa gasit o aplicatie potrivita cu \'%s\'</string>
   <string name="searchres_noapps">Nu exita aplicatii potrivite cu \'%s\':</string>
   <string name="version">Versiune</string>
-  <string name="edit">Editează</string>
   <string name="delete">Şterge</string>
   <string name="cache_downloaded">Istoric aplicatii descarcate</string>
   <string name="updates">Noutati</string>
@@ -33,8 +32,6 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="tab_updates">Actualizare</string>
   <string name="one_update_available">1 actualizare e disponibilă.</string>
   <string name="many_updates_available">%d actualizări sunt disponibile</string>
-  <string name="process_wait_title">Asteptati…</string>
-  <string name="process_update_msg">Se actualizeaza lista…</string>
   <string name="menu_preferences">Preferinţe</string>
   <string name="menu_about">Despre</string>
   <string name="menu_search">Caută</string>

@@ -7,7 +7,6 @@
   <string name="installIncompatible">Parece que este paquete no es compatible con tu dispositivo. ¿Quieres probar e instalarlo de todos modos?</string>
   <string name="installDowngrade">Estás intentando instalar una versión inferior de esta aplicación. Hacerlo puede derivar en mal funcionamiento o incluso pérdida de datos. ¿Quieres intentarlo de todos modos?</string>
   <string name="version">Versión</string>
-  <string name="edit">Editar</string>
   <string name="delete">Borrar</string>
   <string name="enable_nfc_send">Habilitar envío NFC…</string>
   <string name="cache_downloaded">Caché de aplicaciones descargadas</string>
@@ -40,11 +39,6 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="about_mail">Correo electrónico:</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Página web</string>
-  <string name="no_repo">¡No tienes ningún repositorio configurado!
-
-Un repositorio es una fuente de aplicaciones. Para añadir uno, pulsa el botón MENU ahora e introduce la URL.
-
-La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">No instalado</string>
   <string name="inst_known_source">Instalado (desde %s)</string>
@@ -65,10 +59,7 @@ La dirección de un repositorio es algo similar a esto: https://f-droid.org/repo
   <string name="one_update_available">1 actualización disponible.</string>
   <string name="many_updates_available">%d actualizaciones disponibles.</string>
   <string name="fdroid_updates_available">Actualizaciones de F-Droid disponibles</string>
-  <string name="process_wait_title">Por favor, espera</string>
-  <string name="process_update_msg">Actualizando la lista de aplicaciones…</string>
   <string name="download_server">Obteniendo la aplicación de</string>
-  <string name="nfc_is_not_enabled">¡No está habilitado NFC!</string>
   <string name="go_to_nfc_settings">Ir a los ajustes de NFC…</string>
   <string name="bluetooth_activity_not_found">No se encontró método de envío Bluetooth, ¡elige uno!</string>
   <string name="choose_bt_send">Elegir el método de envío Bluetooth</string>

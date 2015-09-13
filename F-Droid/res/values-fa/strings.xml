@@ -2,7 +2,6 @@
 <resources>
   <string name="installIncompatible">به‌نظر می‌رسد این بسته با دستگاه شما هماهنگ نیست. آیا می‌خواهید آن را به هر قیمتی آزمایش و نصب کنید؟</string>
   <string name="installDowngrade">شما در حال قدیمی‌کردن و کاهش درجهٔ این برنامه هستید. انجام چنین کاری ممکن منجر به خرابی یا از دست رفتن داده‌های شما شود. آیا می‌خواهید سعی کنید این برنامه را به هر قیمتی قدیمی کنید؟</string>
-  <string name="edit">ویرایش</string>
   <string name="delete">حذف</string>
   <string name="cache_downloaded">میانگیری برنامه‌های دریافت‌شده</string>
   <string name="cache_downloaded_on">نگه‌داشتن پرونده‌های ای‌پی‌کی بر روی کارت اس‌دی</string>
@@ -21,11 +20,6 @@
   <string name="about_title">دربارهٔ F-Droid</string>
   <string name="about_mail">رایانامه:</string>
   <string name="about_website">وب‌گاه</string>
-  <string name="no_repo">شما هیچ مخزنی را تنظیم نکرده‌اید!
-
-یک مخزن منبعی از برنامه‌ها است. برای اضافه‌کردن یکی. دکمهٔ منو را بزنید و نشانی اینترنتی وارد کنید.
-
-نشانی یک مخزن چیزی است شبیه این: https://f-droid.org/repo</string>
   <string name="inst">نصب‌شده</string>
   <string name="not_inst">نصب‌نشده</string>
   <string name="added_on">به %s افزوده شد</string>
@@ -41,9 +35,7 @@
   <string name="repo_update_title">به‌روزرسانی مخازن</string>
   <string name="tab_updates">به‌روزرسانی‌ها</string>
   <string name="fdroid_updates_available">به‌روزرسانی‌های F-Droid موجود هستند</string>
-  <string name="process_update_msg">به‌روزرسانی فهرست برنامه‌ها…</string>
   <string name="download_server">گرفتن برنامه از</string>
-  <string name="nfc_is_not_enabled">اِن‌اِف‌سی فعال نیست!</string>
   <string name="go_to_nfc_settings">برو به ساماندهی اِن‌اِف‌سی</string>
   <string name="bluetooth_activity_not_found">روش فرستادن دندان‌آبی پیدا نشد، یکی را برگزینید!</string>
   <string name="choose_bt_send">گزینش روش فرستادن دندان‌آبی</string>

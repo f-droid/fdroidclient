@@ -7,7 +7,6 @@
   <string name="installIncompatible">이 패키지가 기기와 호환되지 않는 것 같습니다. 계속 설치를 진행할까요?</string>
   <string name="installDowngrade">이 응용 프로그램의 다운그레이드 하려고 합니다. 이전 버전을 설치할 경우, 응용 프로그램에 데이터가 손상되거나 오작동이 발생할 수 있습니다. 정말로 다운그레이드하시겠습니까?</string>
   <string name="version">버전</string>
-  <string name="edit">편집</string>
   <string name="delete">삭제</string>
   <string name="enable_nfc_send">NFC 전송 사용…</string>
   <string name="cache_downloaded">다운로드된 설치파일 저장</string>
@@ -40,10 +39,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="about_mail">이메일:</string>
   <string name="about_version">버전:</string>
   <string name="about_website">웹사이트</string>
-  <string name="no_repo">저장소가 구성되지 않았습니다!
-저장소는 응용프로그램의 소스입니다.
-추가하려면, 메뉴에 \"새 저장소\" 버튼을 누르고 URL 입력해주세요.
-저장소 URL 예: https://f-droid.org/repo</string>
   <string name="inst">설치됨</string>
   <string name="not_inst">설치되지 않음</string>
   <string name="inst_known_source">설치됨 (%s (으)로부터)</string>
@@ -64,10 +59,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="one_update_available">1개의 업데이트를 사용할 수 있습니다.</string>
   <string name="many_updates_available">%d개의 업데이트를 사용할 수 있습니다.</string>
   <string name="fdroid_updates_available">F-Droid 업데이트를 사용할 수 있습니다.</string>
-  <string name="process_wait_title">잠시만 기다려주세요</string>
-  <string name="process_update_msg">응용 프로그램 목록 업데이트중…</string>
   <string name="download_server">다음으로부터 응용프로그램을 가져옵니다:</string>
-  <string name="nfc_is_not_enabled">NFC가 해제되어 있습니다!</string>
   <string name="go_to_nfc_settings">NFC 설정으로…</string>
   <string name="bluetooth_activity_not_found">블루투스 전송 방법을 찾을 수 없습니다. 선택하세요!</string>
   <string name="choose_bt_send">블루투스 전송 방법 선택</string>

@@ -7,7 +7,6 @@
   <string name="installIncompatible">Es sieht so aus, als sei dieses Paket mit Ihrem Gerät nicht kompatibel. Möchten Sie trotzdem versuchen es zu installieren?</string>
   <string name="installDowngrade">Sie versuchen eine vorherige Version einer bereits installierten Anwendung zu installieren. Dies kann zu Fehlverhalten der Anwendung und gegebenenfalls zu Datenverlust führen. Möchten Sie dennoch fortfahren?</string>
   <string name="version">Version</string>
-  <string name="edit">Bearbeiten</string>
   <string name="delete">Löschen</string>
   <string name="enable_nfc_send">NFC-Transfer aktivieren …</string>
   <string name="cache_downloaded">Anwendungszwischenspeicher</string>
@@ -40,12 +39,6 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Internetseite</string>
-  <string name="no_repo">Sie haben keine Paketquellen konfiguriert!
-
-Eine Paketquelle ist eine Sammlung von Anwendungen.
-Um eine Paketquelle hinzuzufügen drücken Sie jetzt den Menüknopf und geben Sie deren Adresse an.
-
-Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/repo</string>
   <string name="inst">Installiert</string>
   <string name="not_inst">Nicht installiert</string>
   <string name="inst_known_source">Installiert (aus %s)</string>
@@ -66,10 +59,7 @@ Die Adresse einer Paketquelle könnte wie folgt aussehen: https://f-droid.org/re
   <string name="one_update_available">Eine Aktualisierung ist verfügbar.</string>
   <string name="many_updates_available">%d Aktualisierungen sind verfügbar.</string>
   <string name="fdroid_updates_available">F-Droid: Aktualisierungen verfügbar</string>
-  <string name="process_wait_title">Bitte warten</string>
-  <string name="process_update_msg">Anwendungsliste wird aktualisiert …</string>
   <string name="download_server">Anwendung wird heruntergeladen von</string>
-  <string name="nfc_is_not_enabled">NFC ist deaktiviert!</string>
   <string name="go_to_nfc_settings">NFC-Einstellungen öffnen …</string>
   <string name="bluetooth_activity_not_found">Keine Bluetooth-Sendemethode gefunden. Bitte wählen Sie eine aus!</string>
   <string name="choose_bt_send">Bluetooth-Sendemethode auswählen</string>

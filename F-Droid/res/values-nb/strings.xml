@@ -7,7 +7,6 @@
   <string name="installIncompatible">Det ser ut til at denne pakken ikke er kompatibel med ditt utstyr. Vil du prøve å installere det likevel?</string>
   <string name="installDowngrade">Du prøver å nedgradere denne applikasjonen. Dette kan føre til at applikasjonen henger, og du kan til og med miste dine data. Vil du prøve å nedgradere likevel?</string>
   <string name="version">Versjon</string>
-  <string name="edit">Rediger</string>
   <string name="delete">Slett</string>
   <string name="enable_nfc_send">Skru på NFC-sending</string>
   <string name="cache_downloaded">Lagre nedlastede applikasjoner i buffer</string>
@@ -40,7 +39,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Versjon:</string>
   <string name="about_website">Nettside</string>
-  <string name="no_repo">Du har ikke angitt noen pakkebrønner! En pakkebrønn er en kilde til applikasjoner. For å legge til en pakkebrønn, trykk på MENY-knappen nå, og skriv inn adresse. En pakkebrønnsadresse ser slik ut: https://f-droid.org/repo</string>
   <string name="inst">Installert</string>
   <string name="not_inst">Ikke installert</string>
   <string name="inst_known_source">Installert (fra %s)</string>
@@ -61,10 +59,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="one_update_available">1 oppdatering tilgjengelig.</string>
   <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>
   <string name="fdroid_updates_available">F-Droid: Oppdateringer tilgjengelig</string>
-  <string name="process_wait_title">Vennligst vent</string>
-  <string name="process_update_msg">Oppdaterer applikasjonsliste…</string>
   <string name="download_server">Henter program fra</string>
-  <string name="nfc_is_not_enabled">NFC (nærfeltskommunikasjon) er ikke påskrudd!</string>
   <string name="go_to_nfc_settings">Gå til NFC-innstillinger</string>
   <string name="bluetooth_activity_not_found">Ingen forsendelsesmåte for blåtann funnet, velg en!</string>
   <string name="choose_bt_send">Velg forsendelsesmåte for Blåtann</string>

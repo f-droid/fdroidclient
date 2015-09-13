@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="version">Versio</string>
-  <string name="edit">Redakti</string>
   <string name="delete">Forigi</string>
   <string name="cache_downloaded_on">Konservi elŝutitajn apk dosierojn sur la SD-karto</string>
   <string name="updates">Ĝisdatigoj</string>
@@ -37,8 +36,6 @@
   <string name="one_update_available">1 ĝisdatigo estas disponebla.</string>
   <string name="many_updates_available">%d ĝisdatigoj estas disponeblaj.</string>
   <string name="fdroid_updates_available">F-Droid ĝisdatigoj disponeblaj</string>
-  <string name="process_wait_title">Bonvolu atendi</string>
-  <string name="nfc_is_not_enabled">NFC estas malŝaltita!</string>
   <string name="send_via_bluetooth">Sendi per Bluetooth</string>
   <string name="repo_add_url">Deponeja adreso</string>
   <string name="repo_exists">Tiu ĉi deponejo jam ekzistas!</string>

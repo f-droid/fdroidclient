@@ -7,7 +7,6 @@
   <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies intentar instalalu de toes toes?</string>
   <string name="installDowngrade">Tas intentando baxar de versión esta aplicación. Eso quiciabes faiga que l\'aplicación furrule mal o incluso, pierdas los tos datos. ¿Quies intentalo y baxala de versión de toes toes?</string>
   <string name="version">Versión</string>
-  <string name="edit">Editar</string>
   <string name="delete">Desaniciar</string>
   <string name="enable_nfc_send">Habilitar unviu per NFC…</string>
   <string name="cache_downloaded">Caché d\'aplicaciones</string>
@@ -40,11 +39,6 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="about_mail">Corréu:</string>
   <string name="about_version">Versión:</string>
   <string name="about_website">Sitiu web</string>
-  <string name="no_repo">¡Nun tienes configuráu dengún repositoriu!
-
-Un repositoriu ye una fonte d\'aplicaciones. P\'amestar ún, primi\'l botón MENÚ agora ya introduz la URL.
-
-La direición del repositoriu paezse como a esto: https://f-droid.org/repo</string>
   <string name="inst">Instaláu</string>
   <string name="not_inst">Non instaláu</string>
   <string name="inst_known_source">Instaláu (dende %s)</string>
@@ -65,10 +59,7 @@ La direición del repositoriu paezse como a esto: https://f-droid.org/repo</stri
   <string name="one_update_available">Un anovamientu disponible.</string>
   <string name="many_updates_available">%d anovamientos disponibles.</string>
   <string name="fdroid_updates_available">Anovamientos de F-Droid disponibles</string>
-  <string name="process_wait_title">Espera por favor</string>
-  <string name="process_update_msg">Anovando\'l llistáu d\'aplicaciones…</string>
   <string name="download_server">Consiguiendo\'l formulariu d\'applicaciones</string>
-  <string name="nfc_is_not_enabled">¡El NFC nun ta habilitáu!</string>
   <string name="go_to_nfc_settings">Dir a los axustes de NFC…</string>
   <string name="bluetooth_activity_not_found">¡Nun hai dengún métodu d\'unviu per Bluetooth, escueyi ún!</string>
   <string name="choose_bt_send">Escoyer métodu d\'unviu per Bluetooth</string>

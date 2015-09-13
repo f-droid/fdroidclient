@@ -2,7 +2,6 @@
 <resources>
   <string name="installIncompatible">Wygląda na to, że ta aplikacja nie jest kompatybilna z twoim urządzeniem. Zainstalować mimo to?</string>
   <string name="version">Wersja</string>
-  <string name="edit">Edytuj</string>
   <string name="delete">Usuń</string>
   <string name="enable_nfc_send">Włącz przesył NFC…</string>
   <string name="cache_downloaded">Buforuj pobrane aplikacje</string>
@@ -42,8 +41,6 @@
   <string name="tab_updates">Aktualizacje</string>
   <string name="one_update_available">Dostępne jest 1 uaktualnienie.</string>
   <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
-  <string name="process_wait_title">Proszę czekać</string>
-  <string name="process_update_msg">Aktualizowanie listy aplikacji…</string>
   <string name="download_server">Pobieranie aplikacji z</string>
   <string name="go_to_nfc_settings">Przejdź do ustawień NFC…</string>
   <string name="send_via_bluetooth">Wyślij przez Bluetooth</string>

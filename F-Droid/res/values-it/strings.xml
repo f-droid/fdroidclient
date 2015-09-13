@@ -7,7 +7,6 @@
   <string name="installIncompatible">Sembra che questo pacchetto non sia compatibile con il tuo dispositivo. Vuoi provare comunque ad installarlo?</string>
   <string name="installDowngrade">Stai provando a passare ad una versione precedente di questa applicazione. Potresti avere malfunzionamenti e perdita di dati. Vuoi installarla comunque?</string>
   <string name="version">Versione</string>
-  <string name="edit">Modifica</string>
   <string name="delete">Elimina</string>
   <string name="enable_nfc_send">Attiva Invio NFC…</string>
   <string name="cache_downloaded">Cache applicazioni</string>
@@ -40,11 +39,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versione:</string>
   <string name="about_website">Sito Web</string>
-  <string name="no_repo">Non hai configurato nessun repository!
-
-Un repository è una fonte di applicazioni. Per aggiungerne uno, premi MENU e inserisci un indirizzo URL.
-
-Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="inst">Installato</string>
   <string name="not_inst">Non installato</string>
   <string name="added_on">Aggiunto il %s</string>
@@ -63,10 +57,7 @@ Un indirizzo URL di esempio è: https://f-droid.org/repo</string>
   <string name="one_update_available">1 aggiornamento disponibile.</string>
   <string name="many_updates_available">%d aggiornamenti disponibili.</string>
   <string name="fdroid_updates_available">Aggiornamenti per F-Droid Disponibili</string>
-  <string name="process_wait_title">Attendere prego</string>
-  <string name="process_update_msg">Aggiornamento elenco applicazioni…</string>
   <string name="download_server">Scaricamento applicazione da</string>
-  <string name="nfc_is_not_enabled">NFC non attivato!</string>
   <string name="go_to_nfc_settings">Vai alle Impostazioni NFC…</string>
   <string name="bluetooth_activity_not_found">Nessun metodo d\'invio via Bluetooth trovato, selezionane uno!</string>
   <string name="choose_bt_send">Scegli il metodo di invio Bluetooth</string>

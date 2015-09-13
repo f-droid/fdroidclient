@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">%1$d applicaties gevonden die voldoen aan \'%2$s\':</string>
   <string name="searchres_oneapp">Eén applicatie gevonden die voldoet aan \'%s\':</string>
@@ -7,7 +7,6 @@
   <string name="installIncompatible">Dit pakket is niet verenigbaar met uw apparaat. Wilt u het alsnog proberen te installeren?</string>
   <string name="installDowngrade">U probeert deze applicatie te degraderen naar een oudere versie. Als u dit doet kan uw data corrupt of verloren raken. Wilt u dit alsnog uitvoeren?</string>
   <string name="version">Versie</string>
-  <string name="edit">Bewerken</string>
   <string name="delete">Verwijderen</string>
   <string name="enable_nfc_send">Versturen via NFC aanzetten…</string>
   <string name="cache_downloaded">buffer gedownloade apps</string>
@@ -40,14 +39,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Versie:</string>
   <string name="about_website">Website</string>
-  <string name="no_repo">U hebt geen bronnen geconfigureerd!
-
-Een
-		bron is een lijst met applicaties. Om er een toe te voegen, druk op de MENU-knop en voer de URL in.
-
-Een bron-adres ziet er ongeveer
-		uit
-		als: https://f-droid.org/repo</string>
   <string name="inst">Geïnstalleerd</string>
   <string name="not_inst">Niet geïnstalleerd</string>
   <string name="inst_known_source">Geïnstalleerd (van %s)</string>
@@ -68,10 +59,7 @@ Een bron-adres ziet er ongeveer
   <string name="one_update_available">1 update beschikbaar</string>
   <string name="many_updates_available">%d updates beschikbaar</string>
   <string name="fdroid_updates_available">F-Droid update beschikbaar</string>
-  <string name="process_wait_title">Even geduld aub</string>
-  <string name="process_update_msg">Applicatie-lijst vernieuwen…</string>
   <string name="download_server">downloaden applicatie van</string>
-  <string name="nfc_is_not_enabled">NFC is niet ingeschakeld!</string>
   <string name="go_to_nfc_settings">Ga naar NFC instellingen…</string>
   <string name="bluetooth_activity_not_found">Geen Bluetooth verzendmethode gevonden, kies er een!</string>
   <string name="choose_bt_send">Kies Bluetooth verzendmethode</string>

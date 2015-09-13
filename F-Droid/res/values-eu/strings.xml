@@ -5,7 +5,6 @@
   <string name="searchres_noapps">\'%s\'-rekin bat datorren aplikaziorik ez da aurkitu</string>
   <string name="SignatureMismatch">Bertsio berria zaharraren desberdina den gako batekin sinatuta dago. Bertsio berria instalatzeko, aurretik zaharra desinstalatu beharra dago.  Mesedez, egizu eta saiatu berriro. (Kontutan izan desinstalatzean aplikazioak gordetako barne datuak ezabatuko direla)</string>
   <string name="version">Bertsioa</string>
-  <string name="edit">Editatu</string>
   <string name="delete">Ezabatu</string>
   <string name="enable_nfc_send">Gaitu NFC bidez bidaltzea…</string>
   <string name="cache_downloaded">Gorde cache-an deskargatutako aplikazioak</string>
@@ -46,10 +45,7 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="one_update_available">Eguneraketa 1 eskuragarri.</string>
   <string name="many_updates_available">%d eguneraketa eskuragarri.</string>
   <string name="fdroid_updates_available">F-Droid eguneraketak eskuragarri</string>
-  <string name="process_wait_title">Mesedez itxaron</string>
-  <string name="process_update_msg">Aplikazio-zerrenda eguneratzen…</string>
   <string name="download_server">Aplikazioa eskuratzen hemendik</string>
-  <string name="nfc_is_not_enabled">NFC ez dago gaituta!</string>
   <string name="go_to_nfc_settings">Joan NFC ezarpenetara…</string>
   <string name="repo_add_url">Biltegiaren helbidea</string>
   <string name="repo_exists">Biltegi hau dagoeneko existitzen da!</string>

@@ -7,7 +7,6 @@
   <string name="installIncompatible">Aparentemente esse pacote não é compatível com o seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
   <string name="installDowngrade">Você está tentando desatualizar este aplicativo. Isso pode causar mal funcionamento e eventualmente perda de dados. Você quer tentar desatualizá-lo mesmo assim?</string>
   <string name="version">Versão</string>
-  <string name="edit">Editar</string>
   <string name="delete">Apagar</string>
   <string name="enable_nfc_send">Habilitar envio NFC…</string>
   <string name="cache_downloaded">Cache de aplicativos</string>
@@ -40,11 +39,6 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Versão:</string>
   <string name="about_website">Página web</string>
-  <string name="no_repo">Você não tem nenhum repositório configurado!
-
-Um repositório é uma fonte de aplicativos. Para adicionar um, pressione o botão MENU e digite a URL.
-
-Um endereço do repositório é algo similar a isto: https://f-droid.org/repo</string>
   <string name="inst">Instalado</string>
   <string name="not_inst">Não Instalado</string>
   <string name="inst_known_source">Instalado (a partir de %s)</string>
@@ -65,10 +59,7 @@ Um endereço do repositório é algo similar a isto: https://f-droid.org/repo</s
   <string name="one_update_available">1 atualização disponível.</string>
   <string name="many_updates_available">%d atualizações disponíveis.</string>
   <string name="fdroid_updates_available">Atualizações do F-Droid disponíveis</string>
-  <string name="process_wait_title">Por favor, aguarde</string>
-  <string name="process_update_msg">Atualizando a lista de aplicativos…</string>
   <string name="download_server">Baixando aplicativo de</string>
-  <string name="nfc_is_not_enabled">O NFC não está habilitado!</string>
   <string name="go_to_nfc_settings">Ir para configurações de NFC…</string>
   <string name="bluetooth_activity_not_found">Nenhum método de envio Bluetooth foi encontrado, escolha um!</string>
   <string name="choose_bt_send">Escolher o método de envio Bluetooth</string>

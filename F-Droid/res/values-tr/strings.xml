@@ -7,7 +7,6 @@
   <string name="installIncompatible">Bu paket cihazınızla uyumlu değil gibi görünüyor. Yine de kurmayı denemek istiyor musunuz?</string>
   <string name="installDowngrade">Bu uygulamanın eski bir sürümüne dönmek üzeresiniz. Bu, uygulamanın yanlış çalışmasına ve hatta veri kaybına neden olabilir. Devam etmek istiyor musunuz?</string>
   <string name="version">Sürüm</string>
-  <string name="edit">Düzenle</string>
   <string name="delete">Sil</string>
   <string name="enable_nfc_send">NFC göndermesini etkinleştir</string>
   <string name="cache_downloaded">İndirilen uygulamaları önbelleğe kaydet</string>
@@ -40,11 +39,6 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Sürüm:</string>
   <string name="about_website">Ağ sitesi</string>
-  <string name="no_repo">Kurulu hiçbir deponuz bulunmamaktadır!
-
-Depolar uygulama kaynaklarıdır. Bir depo eklemek için MENÜ düğmesine basıp adresi giriniz.
-
-Bir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="inst">Kurulu</string>
   <string name="not_inst">Kurulu değil</string>
   <string name="inst_known_source">Kuruldu (şuradan: %s)</string>
@@ -65,10 +59,7 @@ Bir depo adresi şuna benzer: https://f-droid.org/repo</string>
   <string name="one_update_available">1 güncelleme bulunmaktadır.</string>
   <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>
   <string name="fdroid_updates_available">F-Droid güncellemeleri bulunmaktadır</string>
-  <string name="process_wait_title">Bekleyiniz</string>
-  <string name="process_update_msg">Uygulama listesi güncelleniyor…</string>
   <string name="download_server">Uygulama buradan alınıyor:</string>
-  <string name="nfc_is_not_enabled">NFC etkinleştirilmemiştir!</string>
   <string name="go_to_nfc_settings">NFC ayarlarına git…</string>
   <string name="bluetooth_activity_not_found">Hiçbir Bluetooth gönderme metodu bulunamadı, birisini seçin!</string>
   <string name="choose_bt_send">Bluetooth gönderme metodu seç</string>

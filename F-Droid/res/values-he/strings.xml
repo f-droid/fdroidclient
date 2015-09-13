@@ -6,7 +6,6 @@
     <string name="installIncompatible">נראה כי חבילה זו אינה תואמת את מכשירך. האם ברצונך להתקין אותה בכל מקרה?</string>
     <string name="installDowngrade">הינך מנסה להנמיך את אפליקציה זו. פעולה שכזו עלולה לגרום לתפקוד לקוי ואף לאיבוד מידע. האם ברצונך לנסות להנמיך בכל מקרה?</string>
     <string name="version">גרסא</string>
-    <string name="edit">ערוך</string>
     <string name="delete">מחק</string>
     <string name="enable_nfc_send">אפשר NFC Send…</string>
     <string name="cache_downloaded">מטמון אפליקציות</string>
@@ -44,11 +43,6 @@
     <string name="about_version">גרסא: </string>
     <string name="about_website">אתר רשת</string>
 
-    <string name="no_repo">אין לך שום מאגרים מוגדרים!\n\n
-        מאגר הינו מקור של אפליקציות. כדי להוסיף אחד, לחץ על לחצן
-        תפריט כעת והזן URL.\n\nכתובת מאגר נראית כמו
-        זו: https://f-droid.org/repo</string>
-
     <string name="inst">מותקנת</string>
     <string name="not_inst">לא מותקנת</string>
     <string name="inst_known_source">מותקנת (מתוך %s)</string>
@@ -77,10 +71,7 @@
     <string name="many_updates_available">%d עדכונים זמינים.</string>
     <string name="fdroid_updates_available">עדכוני F-Droid זמינים</string>
     <string name="update_notification_more">+%1$d עוד…</string>
-    <string name="process_wait_title">אנא המתן</string>
-    <string name="process_update_msg">כעת מעדכן רשימת אפליקציה…</string>
     <string name="download_server">כעת משיג אפליקציה מתוך</string>
-    <string name="nfc_is_not_enabled">‏NFC אינו מאופשר!</string>
     <string name="go_to_nfc_settings">עבור להגדרות NFC…</string>
     <string name="bluetooth_activity_not_found">לא נמצאה שיטת שליחה של Bluetooth, בחר אחת!</string>
     <string name="choose_bt_send">בחר שיטת שליחה של Bluetooth</string>

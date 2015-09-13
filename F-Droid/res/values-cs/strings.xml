@@ -6,7 +6,6 @@
   <string name="installIncompatible">Zdá se, že tento balíček není kompatibilní s tímto zařízením. Chceš ho zkusit nainstalovat i tak?</string>
   <string name="installDowngrade">Pokoušíš se instalovat starší verzi než je nyní nainstalována. To nemusí fungovat a může to vést i ke ztrátě dat. Opravdu chceš starší verzi nainstalovat?</string>
   <string name="version">Verze</string>
-  <string name="edit">Upravit</string>
   <string name="delete">Smazat</string>
   <string name="enable_nfc_send">Povolit posílání po NFC…</string>
   <string name="cache_downloaded_on">Ponechat stažené apk soubory na SD kartě</string>
@@ -54,10 +53,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="one_update_available">1 aktualizace je dostupná.</string>
   <string name="many_updates_available">%d aktualizací je dostupných.</string>
   <string name="fdroid_updates_available">Dostupné aktualizace F-Droid</string>
-  <string name="process_wait_title">Chvilku strpení</string>
-  <string name="process_update_msg">Aktualizace seznamu aplikací…</string>
   <string name="download_server">Získávám aplikace z</string>
-  <string name="nfc_is_not_enabled">NFC není povoleno!</string>
   <string name="go_to_nfc_settings">Jít do nastavení NFC…</string>
   <string name="send_via_bluetooth">Poslat přes Bluetooth</string>
   <string name="repo_add_url">Adresa repositáře</string>

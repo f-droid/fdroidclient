@@ -26,8 +26,6 @@ Izdan z licenco GNU GPLv3.</string>
   <string name="repo_update_title">Posodobi skladišča</string>
   <string name="tab_noninstalled">Na razpolago</string>
   <string name="tab_updates">Posodobitve</string>
-  <string name="process_wait_title">Počakajte prosim</string>
-  <string name="process_update_msg">Poteka posodobitev spiska aplikacij…</string>
   <string name="download_server">Prejem aplikacije iz</string>
   <string name="repo_add_url">Naslov skladišča</string>
   <string name="repo_alrt">Spisek uporabljenih skladišč se je spremenil.

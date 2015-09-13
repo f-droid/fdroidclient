@@ -7,7 +7,6 @@
   <string name="installIncompatible">Det verkar som att detta program inte är kompatibelt med enheten. Vill du försöka installera det ändå?</string>
   <string name="installDowngrade">Du försöker nedgradera detta program. Detta kan få det att fungera felaktigt eller orsaka förlust av dina data. Vill du ändå försöka nedgradera?</string>
   <string name="version">Version</string>
-  <string name="edit">Redigera</string>
   <string name="delete">Ta bort</string>
   <string name="enable_nfc_send">Aktivera NFC-sändning…</string>
   <string name="cache_downloaded">Cacha nerladdade appar</string>
@@ -40,11 +39,6 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Version:</string>
   <string name="about_website">Webbplats</string>
-  <string name="no_repo">Du har inga förråd konfigurerade!
-
-Ett förråd är en källa för program. Tryck på meny-knappen och ange URL:en för att lägga till ett nu.
-
-En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="inst">Installerad</string>
   <string name="not_inst">Inte installerad</string>
   <string name="inst_known_source">Installerad (från %s)</string>
@@ -65,10 +59,7 @@ En förrådsadress ser ut så här: https://f-droid.org/repo</string>
   <string name="one_update_available">1 uppdatering finns tillgänglig.</string>
   <string name="many_updates_available">%d uppdateringar finns tillgängliga.</string>
   <string name="fdroid_updates_available">Uppdateringar för F-Droid tillgängliga</string>
-  <string name="process_wait_title">Var vänlig vänta</string>
-  <string name="process_update_msg">Uppdaterar programlistan…</string>
   <string name="download_server">Hämtar program från</string>
-  <string name="nfc_is_not_enabled">NFC är inte aktiverat!</string>
   <string name="go_to_nfc_settings">Gå till NFC-inställningar…</string>
   <string name="bluetooth_activity_not_found">Ingen sändningsmetod för Bluetooth hittad, välj en!</string>
   <string name="choose_bt_send">Välj sändningsmetod för Bluetooth</string>

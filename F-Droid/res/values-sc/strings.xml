@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">Agatadas %1$d aplicatziones currispondentes cun \'%2$s\':</string>
   <string name="searchres_oneapp">Agatada una aplicatzione currispondente cun \'%s\':</string>
@@ -7,7 +7,6 @@
   <string name="installIncompatible">Paret chi custu pachete non siat cumpatìbile cun su dispositivu tuo. Boles a proare a lu installare su matessi?</string>
   <string name="installDowngrade">Ses chircande de torrare a una versione prus bècia de custa aplicatzione. Dias pòdere tènnere problemas e fintzas pèrdere sos datos tuos. Seguru ses de bòlere proare a lu fàghere?</string>
   <string name="version">Versione</string>
-  <string name="edit">Modìfica</string>
   <string name="delete">Burra</string>
   <string name="enable_nfc_send">Abìlita imbiu NFC…</string>
   <string name="cache_downloaded">Cache aplicatzione</string>
@@ -41,15 +40,6 @@ Intregadu cun sa litzèntzia
   <string name="about_mail">E-lìtera:</string>
   <string name="about_version">Versione:</string>
   <string name="about_website">Giassu/situ web</string>
-  <string name="no_repo">Non tenes perunu depòsitu cunfiguradu!
-
-Unu
-		depòsitu est una mitza de aplicatziones. Pro nde annànghere unu, incarca como su butone MENÙ
-		e inserta s\'URL.
-
-S\'indiritzu de unu depòsitu paret una cosa 
-		tipu
-		custa: https://f-droid.org/repo</string>
   <string name="inst">Installada</string>
   <string name="not_inst">Non installada</string>
   <string name="inst_known_source">Installada (dae %s)</string>
@@ -70,10 +60,7 @@ S\'indiritzu de unu depòsitu paret una cosa
   <string name="one_update_available">1 agiornamentu est disponìbile.</string>
   <string name="many_updates_available">%d agiornamentos sunt disponìbiles.</string>
   <string name="fdroid_updates_available">Agiornamentos pro F-Droid disponìbiles</string>
-  <string name="process_wait_title">Iseta, pro piaghere</string>
-  <string name="process_update_msg">Agiornande sa lista de sas aplicatziones…</string>
   <string name="download_server">Iscarrigande s\'aplicatzione dae</string>
-  <string name="nfc_is_not_enabled">Su NFC no est abilitadu!</string>
   <string name="go_to_nfc_settings">Bae a sas impostaduras NFC…</string>
   <string name="bluetooth_activity_not_found">Perunu mètodu de imbiu Bluetooth agatadu, issèberane unu!</string>
   <string name="choose_bt_send">Issèbera su mètodu de imbiu Bluetooth</string>

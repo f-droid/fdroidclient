@@ -9,7 +9,6 @@
   <string name="installIncompatible">Похоже, что этот пакет несовместим с Вашим устройством. Всё равно установить?</string>
   <string name="installDowngrade">Вы пытаетесь установить более старую версию приложения. Это может привести к его некорректной работе и даже потере данных. Вы уверены, что хотите продолжить?</string>
   <string name="version">Версия</string>
-  <string name="edit">Редактировать</string>
   <string name="delete">Удалить</string>
   <string name="enable_nfc_send">Включить отправку по NFC…</string>
   <string name="cache_downloaded">Кэшировать загруженные приложения</string>
@@ -42,11 +41,6 @@
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Версия:</string>
   <string name="about_website">Сайт</string>
-  <string name="no_repo">В настройках не указано ни одного репозитория!
-
-Репозиторий является источником приложений. Чтобы его добавить, нажмите кнопку MENU и введите адрес.
-
-Пример адреса: https://f-droid.org/repo</string>
   <string name="inst">Установлено</string>
   <string name="not_inst">Не установлено</string>
   <string name="inst_known_source">Установлено (из %s)</string>
@@ -67,10 +61,7 @@
   <string name="one_update_available">Доступно 1 обновление.</string>
   <string name="many_updates_available">Доступно %d обновлений.</string>
   <string name="fdroid_updates_available">Доступны обновления для F-Droid</string>
-  <string name="process_wait_title">Подождите</string>
-  <string name="process_update_msg">Обновление списка приложений…</string>
   <string name="download_server">Загрузка приложения из</string>
-  <string name="nfc_is_not_enabled">NFC не включен!</string>
   <string name="go_to_nfc_settings">Перейти в настройки NFC…</string>
   <string name="bluetooth_activity_not_found">Ни один метод отправки по Bluetooth не найден, выберите один из них!</string>
   <string name="choose_bt_send">Выберите метод отправки по Bluetooth</string>

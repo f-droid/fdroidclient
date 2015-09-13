@@ -7,7 +7,6 @@
   <string name="installIncompatible">Изгледа да овај пакет није компатибилан са вашим уређајем. Желите ли свеједно да га инсталирате?</string>
   <string name="installDowngrade">Покушавате да инсталирате старије издање ове апликације. То може да доведе до кварова и губитка података. Желите ли заиста да инсталирате старије издање?</string>
   <string name="version">Издање</string>
-  <string name="edit">Уреди</string>
   <string name="delete">Обриши</string>
   <string name="enable_nfc_send">Омогући слање преко НФЦ…</string>
   <string name="cache_downloaded">Кеш апликација</string>
@@ -39,11 +38,6 @@
   <string name="about_mail">Е-адреса:</string>
   <string name="about_version">Издање:</string>
   <string name="about_website">Вебсајт</string>
-  <string name="no_repo">Немате постављену ни једну ризницу!
-
-Ризница је извор апликација. Да би сте додали једну, притисните дугме МЕНИ и унесите УРЛ.
-
-Адреса ризнице изгледа овако: https://f-droid.org/repo</string>
   <string name="inst">Инсталирано</string>
   <string name="not_inst">Није инсталирано</string>
   <string name="inst_known_source">Инсталирано (са %s)</string>
@@ -64,10 +58,7 @@
   <string name="one_update_available">1 надоградња је доступна.</string>
   <string name="many_updates_available">%d нових надоградњи је доступно.</string>
   <string name="fdroid_updates_available">Доступне су надоградње на Ф-дроиду.</string>
-  <string name="process_wait_title">Сачекајте</string>
-  <string name="process_update_msg">Ажурирам списак апликација…</string>
   <string name="download_server">Добављам апликацију са</string>
-  <string name="nfc_is_not_enabled">НФЦ није укључен!</string>
   <string name="go_to_nfc_settings">Иди на НФЦ поставке…</string>
   <string name="bluetooth_activity_not_found">Није одређена метода слања блутутом, одредите једну!</string>
   <string name="choose_bt_send">Одредите методу слања блутутом</string>

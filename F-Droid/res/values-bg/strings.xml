@@ -7,7 +7,6 @@
   <string name="installIncompatible">Изглежда пакетът не е съвместим с вашето устройство. Да бъде направен опит за инсталиране въпреки това?</string>
   <string name="installDowngrade">Опитвате се да инсталирате по-стара версия на приложението. Това действие може да предизвика нестабилност и дори загуба на данни. Наистина ли желаете да продължите?</string>
   <string name="version">Версия</string>
-  <string name="edit">Редактиране</string>
   <string name="delete">Изтриване</string>
   <string name="enable_nfc_send">Активирай NFC изпращане…</string>
   <string name="cache_downloaded">Кеширай приложения</string>
@@ -39,11 +38,6 @@
   <string name="about_mail">Имейл:</string>
   <string name="about_version">Версия:</string>
   <string name="about_website">Уебсайт</string>
-  <string name="no_repo">Няма нито едно настроено хранилище!
-
-Хранилището е източник на приложения. За добавяне натиснете бутона МЕНЮ и въведете URL адрес.
-
-Адресът трябва да наподобява: https://f-droid.org/repo</string>
   <string name="inst">Инсталирана</string>
   <string name="not_inst">Неинсталирана</string>
   <string name="inst_known_source">Инсталирана (от %s)</string>
@@ -62,10 +56,7 @@
   <string name="one_update_available">1 налична актуализация.</string>
   <string name="many_updates_available">%d налични актуализации.</string>
   <string name="fdroid_updates_available">Налични актуализации от F-Droid</string>
-  <string name="process_wait_title">Моля изчакайте</string>
-  <string name="process_update_msg">Актуализиране на списъка с приложения…</string>
   <string name="download_server">Сваляне на приложение от</string>
-  <string name="nfc_is_not_enabled">NFC не е активиран!</string>
   <string name="go_to_nfc_settings">Към настройките на NFC…</string>
   <string name="bluetooth_activity_not_found">Не е намерен Bluetooth метод за изпращане, изберете един!</string>
   <string name="choose_bt_send">Изберете Bluetooth метод за изпращане</string>
