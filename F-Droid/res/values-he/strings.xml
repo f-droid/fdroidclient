@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="searchres_napps">נמצאו %1$d אפליקציות תואמות \'%2$s\':</string>
     <string name="searchres_oneapp">נמצאה אפליקציה אחת תואמת \'%s\':</string>
@@ -16,8 +16,8 @@
     <string name="never">אף פעם</string>
 
     <string name="update_interval">תדירות עדכון אוטומטי</string>
-    <string name="automatic_scan_wifi">רק על גבי wifi</string>
-    <string name="automatic_scan_wifi_on">עדכן רשימות אפליקציה אוטומטית רק על גבי wifi</string>
+    <string name="automatic_scan_wifi">רק על גבי Wi-Fi</string>
+    <string name="automatic_scan_wifi_on">עדכן רשימות אפליקציה אוטומטית רק על גבי Wi-Fi</string>
     <string name="notify">התרע</string>
     <string name="notify_on">התרע כאשר עדכונים זמינים</string>
     <string name="update_history">היסטוריית עדכון</string>
@@ -33,7 +33,7 @@
 
     <string name="search_results">תוצאות חיפוש</string>
     <string name="app_details">פרטי אפליקציה</string>
-    <string name="no_such_app">לא נמצאה אפליקציה</string>
+    <string name="no_such_app">לא נמצאה אפליקציה.</string>
 
     <string name="about_title">אודות F-Droid</string>
     <string name="about_desc">מבוססת במקור על Aptoide.\nמשוחררת תחת הרשיון
@@ -101,7 +101,7 @@
 
     <string name="details_installed">גרסא %s מותקנת</string>
     <string name="details_notinstalled">לא מותקנת</string>
-    <string name="corrupt_download">קובץ מורד הינו מושחת</string>
+    <string name="corrupt_download">קובץ מורד הינו מושחת.</string>
     <string name="antiadslist">אפליקציה זו מכילה פרסום</string>
     <string name="antitracklist">אפליקציה זו עוקבת ומדווחת על פעילותך</string>
     <string name="antinonfreeadlist">אפליקציה זו מקדמת תוספים לא-חופשיים</string>
@@ -149,7 +149,7 @@
     <string name="proxy_port_summary">הגדר מספר פורט פרוקסי (דוגמא 8118)</string>
 
 
-    <string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
+    <string name="status_download">כעת מוריד\n%2$s / %3$s (%4$d%%) מתוך\n%1$s</string>
     <string name="update_notification_title">כעת מעדכן מאגרים</string>
     <string name="status_processing_xml_percent">כעת מעבד %2$s / %3$s (%4$d%%) מתוך %1$s</string>
     <string name="status_connecting_to_repo">כעת מתחבר אל\n%1$s</string>
@@ -157,10 +157,10 @@
     <string name="status_inserting">כעת שומר פרטי אפליקציה (%1$d%%)</string>
     <string name="repos_unchanged">כל המאגרים הינם מותקנים</string>
         <string name="all_other_repos_fine">כל שאר המאגרים לא יצרו שגיאות.</string>
-        <string name="global_error_updating_repos">שגיאה במהלך עדכון:</string>
+        <string name="global_error_updating_repos">שגיאה במהלך עדכון: %s</string>
     <string name="no_permissions">אין הרשאות בשימוש.</string>
     <string name="permissions_for_long">הרשאות עבור גרסא %s</string>
-    <string name="no_handler_app">אין לך שום אפליקציה זמינה אשר מסוגלת להתמודד עם %s</string>
+    <string name="no_handler_app">אין לך שום אפליקציה זמינה אשר מסוגלת להתמודד עם %s.</string>
     <string name="compactlayout">סידור קומפקטי</string>
     <string name="compactlayout_on">הצג סמלים בגודל קטן יותר</string>
     <string name="theme">מוטיב</string>
@@ -173,7 +173,7 @@
     <string name="repo_name">שם</string>
     <string name="unknown">לא ידוע</string>
     <string name="repo_confirm_delete_title">למחוק מאגר?</string>
-    <string name="repo_added">מאגר F-Droid שמור %1$s</string>
+    <string name="repo_added">מאגר F-Droid שמור %1$s.</string>
     <string name="minsdk_or_later">%s או מאוחר יותר</string>
     <string name="up_to_maxsdk">עד %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s עד %2$s</string>
@@ -219,7 +219,7 @@
     <string name="system_install_installing">כעת מתקין…</string>
     <string name="system_install_uninstalling">כעת מבטל התקנה…</string>
     <string name="system_install_question">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות מקום בו &lt;b&gt;שום ממשק משתמש&lt;/b&gt; לא מוצג.</string>
-    <string name="system_install_question_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות מקום בו &lt;b&gt;שום ממשק משתמש&lt;/b&gt; לא מוצג והמכשיר &lt;b&gt;יאותחל&lt;/b&gt; לאחר מכן.</string>
+    <string name="system_install_question_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות והמכשיר יאותחל לאחר מכן.<b>שום ממשק משתמש</b> לא מוצג והמכשיר יאותחל לאחר מכן.</string>
     <string name="system_install_first_time_message">נראה כי יש לך גישת שורש במכשירך. באפשרותך להתקין את F-Droid בתור אפליקציה מועדפת, מקושרת בחוזקה עם מערכת הפעלה Android. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.</string>
     <string name="system_uninstall">האם ברצונך לבטל את התקנת F-Droid?</string>
     <string name="system_uninstall_message">פעולה זו תסיר את F-Droid לגמרי.</string>
@@ -227,7 +227,7 @@
 
     <string name="app_description">‏F-Droid הינו קטלוג בר התקנה של אפליקציות FOSS (תוכניות קוד פתוח וחופשיות) עבור הפלטפורמה Android. הלקוח מקל על עיון, התקנה, וממשיך לעקוב אחר עדכונים במכשירך.</string>
     <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד בטלפונים שלכם.</string>
-    <string name="swap_join_same_wifi">הצטרף לאותו Wifi כמו חברך</string>
+    <string name="swap_join_same_wifi">הצטרף לאותו Wi-Fi כמו חברך</string>
     <string name="swap_join_this_hotspot">עזור לחברך להצטרף לנקודה חמה</string>
     <string name="menu_swap">החלף אפליקציה</string>
     <string name="swap">החלף אפליקציה</string>
@@ -235,7 +235,7 @@
     <string name="swap_no_wifi_network">עדיין אין רשת</string>
     <string name="swap_active_hotspot">נקודה החמה שלך הינה פעילה</string>
     <string name="swap_view_available_networks">(הקש כדי לפתוח רשתות זמינות)</string>
-    <string name="swap_switch_to_wifi">(הקש כדי להחליף לרשת WiFi)</string>
+    <string name="swap_switch_to_wifi">(הקש כדי להחליף לרשת Wi-Fi)</string>
     <string name="open_qr_code_scanner">פתח סורק קוד QR</string>
     <string name="swap_welcome">ברוכים הבאים לחנות F-Droid!</string>
     <string name="swap_confirm_connect">האם ברצונך לקבל אפליקציות מתוך %1$s כעת?</string>
@@ -258,4 +258,49 @@
     <string name="perms_new_perm_prefix">חדש: </string>
     <string name="perms_description_app">מסופקת על ידי %1$s.</string>
     <string name="downloading">כעת מוריד…</string>
+<string name="app_name">F-Droid</string>
+
+	<string name="incompatible">לא תואמת</string>
+	<string name="back">אחורה</string>
+	<string name="repo_searching_address">כעת מחפש מאגר F-Droid אצל\n%1$s</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">נקודה חמה</string>
+
+    <string name="Connectivity">קישוריות</string>
+    <string name="Graphics">גרפיקה</string>
+    <string name="Money">כספים</string>
+    <string name="Sports_Health">ספורט ובריאות</string>
+    <string name="Theming">עיצוב</string>
+    <string name="Time">זמן</string>
+    <string name="Writing">כתיבה</string>
+
+    <string name="install_error_cannot_parse">אירעה שגיאה במהלך פענוח החבילה</string>
+    <string name="swap_choose_apps">בחר אפליקציות</string>
+    <string name="swap_scan_qr">סרוק קוד QR</string>
+    <string name="swap_people_nearby">אנשים בקרבת מקום</string>
+    <string name="swap_scanning_for_peers">כעת מחפש אחר אנשים בקרבת מקום…</string>
+    <string name="swap_visible_bluetooth">נראה דרך Bluetooth</string>
+    <string name="swap_setting_up_bluetooth">כעת מעלה Bluetooth…</string>
+    <string name="swap_not_visible_bluetooth">לא נראה דרך Bluetooth</string>
+    <string name="swap_visible_wifi">נראה דרך Wi-Fi</string>
+    <string name="swap_setting_up_wifi">כעת מעלה Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">לא נראה דרך Wi-Fi</string>
+    <string name="swap_wifi_device_name">שם התקן</string>
+    <string name="swap_scan_qr_code">סרוק קוד QR</string>
+    <string name="swap_connecting">כעת מתחבר</string>
+    <string name="bluetooth_unavailable">‏Bluetooth לא זמין</string>
+    <string name="loading">כעת טוען…</string>
+    <string name="swap_attempt_install">נסה להתקין</string>
+    <string name="tap_to_install">הורדה הושלמה, הקש כדי להתקין</string>
+
+    <string name="interval_never">אף פעם</string>
+    <string name="interval_1h">מדי שעה</string>
+    <string name="interval_4h">כל 4 שעות</string>
+    <string name="interval_12h">כל 12 שעות</string>
+    <string name="interval_1d">מדי יום</string>
+    <string name="interval_1w">מדי שבוע</string>
+    <string name="interval_2w">כל שבועיים</string>
+
+    <string name="theme_light">בהיר</string>
+    <string name="theme_dark">אפל</string>
 </resources>
