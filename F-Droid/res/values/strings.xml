@@ -304,7 +304,7 @@
     <string name="swap_not_visible_wifi">Not visible via Wi-Fi</string>
     <string name="swap_wifi_device_name">Device Name</string>
     <string name="swap_cant_find_peers">Can\'t find who you\'re looking for?</string>
-    <string name="swap_send_fdroid">SEND F-DROID</string>
+    <string name="swap_send_fdroid">Send F-Droid</string>
     <string name="swap_no_peers_nearby">Could not find people nearby to swap with.</string>
     <string name="swap_connecting">Connecting</string>
     <string name="swap_confirm">Confirm swap</string>
@@ -312,7 +312,7 @@
     <string name="bluetooth_unavailable">Bluetooth unavailable</string>
     <string name="swap_cant_send_no_bluetooth">Cannot send F-Droid, because Bluetooth is unavailable on this device.</string>
     <string name="loading">Loading…</string>
-    <string name="swap_attempt_install">TRY TO INSTALL</string>
+    <string name="swap_attempt_install">Try to install</string>
     <string name="swap_connection_misc_error">An error occurred while connecting to device, we can\'t seem to swap with it :(</string>
     <string name="swap_not_enabled">Swapping not enabled</string>
     <string name="swap_not_enabled_description">Before swapping, your device must be made visible.</string>
