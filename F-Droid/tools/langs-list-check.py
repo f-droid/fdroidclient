@@ -4,6 +4,7 @@
 
 import glob
 import os
+import sys
 import re
 from xml.etree import ElementTree
 
@@ -29,6 +30,30 @@ for d in glob.glob(os.path.join('res', 'values-*')):
         continue
     trans.add(lang)
 
+print "In the settings array: %s" % ' '.join(prefs)
+print "Actually translated:   %s" % ' '.join(trans)
+
+missing = []
 for lang in trans:
     if lang not in prefs:
-        print lang
+        missing.append(lang)
+
+if missing:
+    print "Missing:"
+    for lang in missing:
+        print "  %s" % lang
+
+extra = []
+for lang in prefs:
+    if lang not in trans:
+        extra.append(lang)
+
+if extra:
+    print "Extra:"
+    for lang in extra:
+        print "  %s" % lang
+
+if not missing and not extra:
+    print "All good."
+else:
+    sys.exit(1)
