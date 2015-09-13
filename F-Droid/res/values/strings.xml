@@ -18,7 +18,7 @@
 	<string name="updates">Updates</string>
 	<string name="other">Other</string>
 	<string name="last_update_check">Last repo scan: %s</string>
-	<string name="never">never</string>
+	<string name="never">Never</string>
 
 	<string name="update_interval">Automatic update interval</string>
 	<string name="update_interval_zero">No automatic app list updates</string>
@@ -164,7 +164,7 @@
 
 	<string name="local_repo">Local Repo</string>
 	<string name="local_repo_running">F-Droid is ready to swap</string>
-	<string name="waiting_for_ipaddress">waiting for IP address…</string>
+	<string name="waiting_for_ipaddress">Waiting for IP address…</string>
 	<string name="setup_repo">Setup Local Repo</string>
 	<string name="touch_to_configure_local_repo">Touch to view details and allow others to swap your apps.</string>
 	<string name="touch_to_turn_on_local_repo">Touch to turn on your local repo.</string>
@@ -178,7 +178,7 @@
 	<string name="linking_apks">Linking APKs into the repo…</string>
 	<string name="copying_icons">Copying app icons into the repo…</string>
 	<string name="no_applications_found">No applications found</string>
-	<string name="icon">icon</string>
+	<string name="icon">Icon</string>
 	<string name="fingerprint">Fingerprint:</string>
 	<string name="wifi_network">Wi-Fi Network:</string>
 	<string name="sharing_uri">Sharing URL:</string>
@@ -257,7 +257,7 @@
     <string name="repo_added">Saved F-Droid repository %1$s.</string>
     <string name="repo_searching_address">Looking for F-Droid repository at\n%1$s</string>
     <string name="minsdk_or_later">%s or later</string>
-    <string name="up_to_maxsdk">up to %s</string>
+    <string name="up_to_maxsdk">Up to %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>
     <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the local repo you just added! Try joining this network: %s</string>
     <string name="requires_features">Requires: %1$s</string>
@@ -309,10 +309,10 @@
     <string name="system_install_post_fail">Installation of privileged F-Droid failed</string>
     <string name="system_install_post_success_message">Privileged F-Droid has been successfully installed. This allows F-Droid to install, upgrade and uninstall apps on its own.</string>
     <string name="system_install_post_fail_message">The installation of privileged F-Droid has failed. The installation method is not supported by all Android distributions, please consult the F-Droid bug tracker for more information.</string>
-    <string name="system_install_installing">installing…</string>
-    <string name="system_install_uninstalling">uninstalling…</string>
+    <string name="system_install_installing">Installing…</string>
+    <string name="system_install_uninstalling">Uninstalling…</string>
     <string name="system_install_question">Do you want to install privileged F-Droid?\nThis takes up to 10 seconds.</string>
-    <string name="system_install_question_lollipop">Do you want to install privileged F-Droid?\nThis takes up to 10 seconds and the device will be &lt;b>rebooted&lt;/b> afterwards.</string>
+    <string name="system_install_question_lollipop">Do you want to install privileged F-Droid?\nThis takes up to 10 seconds and the device will be rebooted afterwards.</string>
     <string name="system_install_first_time_message">Looks like you have root access on your device. You can now install privileged F-Droid, tightly coupled with the Android operating system. This allows F-Droid to install, upgrade and uninstall apps on its own.</string>
     <string name="system_uninstall">Do you want to uninstall privileged F-Droid?</string>
     <string name="system_uninstall_message">This will uninstall privileged F-Droid.</string>
@@ -389,7 +389,7 @@
     <string name="allPerms">All</string>
     <string name="privacyPerms">Privacy</string>
     <string name="devicePerms">Device Access</string>
-    <string name="perm_costs_money">this may cost you money</string>
+    <string name="perm_costs_money">This may cost you money</string>
     <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
     <string name="uninstall_confirm">Do you want to uninstall this app?</string>
     <string name="tap_to_install">Download completed, tap to install</string>
