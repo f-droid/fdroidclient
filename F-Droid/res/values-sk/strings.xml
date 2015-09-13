@@ -70,8 +70,6 @@ Vydaný pod licenciou
   <string name="repo_exists_enable">Toto repo je už nastavené, potvrďte jeho znovuzapnutie.</string>
   <string name="repo_delete_to_overwrite">Najprv musíte zmazať toto repo. Až potom ho môžete pridať s iným kľúčom!</string>
   <string name="malformed_repo_uri">Ignorujem chybné URI(adresu) repa: %s</string>
-  <string name="repo_alrt">Zoznam repozitárov sa zmenil.
-Chcete ich aktualizovať?</string>
   <string name="menu_update_repo">Aktualizovať repá</string>
   <string name="menu_manage">Repozitáre</string>
   <string name="menu_send_apk_bt">Poslať FDroid.apk cez bluetooth</string>
@@ -117,11 +115,7 @@ Chcete ich aktualizovať?</string>
   <string name="category_recentlyupdated">Nedávno aktualizované</string>
   <string name="local_repo">Miestne repo</string>
   <string name="local_repo_running">F-Droid je pripravený na výmenu</string>
-  <string name="waiting_for_ipaddress">čakanie na IP adresu</string>
-  <string name="setup_repo">Nastaviť miestne repo</string>
   <string name="touch_to_configure_local_repo">Ťuknite pre zobrazenie detailov a umožnite ostatným vymieňať vaše aplikácie.</string>
-  <string name="touch_to_turn_on_local_repo">Ťuknite na zapnutie miestneho repa.</string>
-  <string name="touch_to_turn_off_local_repo">Ťuknite na vypnutie miestneho repa.</string>
   <string name="updating">Aktualizujeme…</string>
   <string name="update_repo">Aktualizovať repo</string>
   <string name="deleting_repo">Mažeme súčasné repo</string>
@@ -132,9 +126,6 @@ Chcete ich aktualizovať?</string>
   <string name="copying_icons">Kopírujeme ikony do repa…</string>
   <string name="no_applications_found">Aplikácie sa nenašli</string>
   <string name="icon">ikona</string>
-  <string name="fingerprint">Odtlačok:</string>
-  <string name="wifi_network">WiFI sieť</string>
-  <string name="sharing_uri">Adresa zdieľania:</string>
   <string name="enable_wifi">Povoliť WiFi</string>
   <string name="enabling_wifi">Povoľujeme WiFi</string>
   <string name="same_wifi_instructions">Ak sa chcete pripojiť k zariadeniam iných ľudí, uistite sa, že obe zariadenia sú na rovnakej WiFi sieti. Potom buď zadajte adresu URL vyššie do F-Droidu, alebo skenujte tento QR kód:</string>

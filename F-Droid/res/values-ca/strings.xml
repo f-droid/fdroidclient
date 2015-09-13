@@ -69,8 +69,6 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="repo_exists_and_enabled">Aquesta adreça ja està en ús per un altre dipòsit del dispositiu</string>
   <string name="repo_delete_to_overwrite">Si voleu canviar la clau d\'aquest dipòsit, primer suprimiu el dipòsit.</string>
   <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
-  <string name="repo_alrt">La llista de dipòsits ha canviat.
-La voleu actualitzar?</string>
   <string name="menu_update_repo">Actualitza els dipòsits</string>
   <string name="menu_manage">Gestiona els dipòsits</string>
   <string name="menu_send_apk_bt">Envia FDroid.apk per
@@ -117,11 +115,7 @@ La voleu actualitzar?</string>
   <string name="category_recentlyupdated">S\'ha actualitzat fa poc</string>
   <string name="local_repo">Dipòsit local</string>
   <string name="local_repo_running">F-Droid és llest per a l\'intercanvi</string>
-  <string name="waiting_for_ipaddress">s\'està esperant una adreça IP…</string>
-  <string name="setup_repo">Crea un dipòsit local</string>
   <string name="touch_to_configure_local_repo">Toqueu per veure més detalls i permetre l\'intercanvi d\'aplicacions</string>
-  <string name="touch_to_turn_on_local_repo">Toqueu per activar el vostre dipòsit local.</string>
-  <string name="touch_to_turn_off_local_repo">Toqueu per desactivar el dipòsit local.</string>
   <string name="updating">S\'està actualitzant…</string>
   <string name="update_repo">Actualitza el dipòsit</string>
   <string name="deleting_repo">S\'està esborrant el dipòsit actual…</string>
@@ -132,8 +126,6 @@ La voleu actualitzar?</string>
   <string name="copying_icons">Copiant les icones de les aplicacions al dipòsit…</string>
   <string name="no_applications_found">No s\'ha trobat cap applicació</string>
   <string name="icon">icona</string>
-  <string name="fingerprint">Empremta digital:</string>
-  <string name="wifi_network">Xarxa WiFi:</string>
   <string name="enable_wifi">Habilita WiFi</string>
   <string name="enabling_wifi">S\'està habilitant la WiFi…</string>
   <string name="qr_code">Codi QR</string>

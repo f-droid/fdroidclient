@@ -42,8 +42,6 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="fdroid_updates_available">Actualizacións de F-Droid dispoñíbeis</string>
   <string name="download_server">Obtención do aplicativo desde</string>
   <string name="repo_add_url">Enderezo do repositorio</string>
-  <string name="repo_alrt">Cambiou a lista de repositorios usados.
-Quere actualizalos?</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Xestionar repositorios</string>
   <string name="menu_preferences">Preferencias</string>

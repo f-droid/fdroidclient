@@ -97,11 +97,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="category_recentlyupdated">Nedávno aktualizované</string>
   <string name="local_repo">Místní repozitář</string>
   <string name="local_repo_running">F-Droid je připraven k výměně</string>
-  <string name="waiting_for_ipaddress">čekám na IP adresu…</string>
-  <string name="setup_repo">Nastavit místní repozitář</string>
   <string name="touch_to_configure_local_repo">Dotykem zobraz detaily a umožni ostatním  si přetáhnout tvé aplikace.</string>
-  <string name="touch_to_turn_on_local_repo">Dotykem zapni místní repozitář.</string>
-  <string name="touch_to_turn_off_local_repo">Dotykem vypni místní repozitář.</string>
   <string name="updating">Aktualizuji…</string>
   <string name="update_repo">Aktualizovat repozitář</string>
   <string name="deleting_repo">Odstraňuji místní repozitář…</string>
@@ -112,9 +108,6 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="copying_icons">Kopíruji ikony aplikací do repozitáře…</string>
   <string name="no_applications_found">Žádné aplikace nenalezeny</string>
   <string name="icon">ikona</string>
-  <string name="fingerprint">Fingerprint:</string>
-  <string name="wifi_network">WiFi síť:</string>
-  <string name="sharing_uri">URL pro sdílení:</string>
   <string name="enable_wifi">Povolit WiFi</string>
   <string name="enabling_wifi">Povoluji WiFi…</string>
   <string name="qr_code">QR kód</string>

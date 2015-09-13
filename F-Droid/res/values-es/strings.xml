@@ -72,8 +72,6 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="repo_exists_and_enabled">¡El repositorio ya está configurado y habilitado!</string>
   <string name="repo_delete_to_overwrite">¡Debes borrar este repositorio antes de añadir uno con una clave diferente!</string>
   <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
-  <string name="repo_alrt">La lista de repositorios usada ha cambiado.
-¿Deseas actualizarlos?</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Gestionar Repositorios</string>
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
@@ -119,11 +117,7 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="category_recentlyupdated">Recientemente actualizados</string>
   <string name="local_repo">Repo Local</string>
   <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
-  <string name="waiting_for_ipaddress">Esperando la dirección IP…</string>
-  <string name="setup_repo">Configurar Repositorio Local</string>
   <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
-  <string name="touch_to_turn_on_local_repo">Pulsa para activar tu repo local</string>
-  <string name="touch_to_turn_off_local_repo">Toca para desactivar tu repo local</string>
   <string name="updating">Actualizando…</string>
   <string name="update_repo">Actualizar Repo</string>
   <string name="deleting_repo">Borrando repositorio actual</string>
@@ -134,9 +128,6 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio…</string>
   <string name="no_applications_found">No se ha encontrado la aplicasión</string>
   <string name="icon">icono</string>
-  <string name="fingerprint">Huella digital:</string>
-  <string name="wifi_network">Red Wi-Fi:</string>
-  <string name="sharing_uri">Compartir URL:</string>
   <string name="enable_wifi">Encender WiFi</string>
   <string name="enabling_wifi">Habilitando WIFI…</string>
   <string name="same_wifi_instructions">Para conectarse a dispositivos de otras personas, asegúrese de que ambos dispositivos están en la misma red WiFi. A continuación, escriba la dirección URL anterior en F-Droid, o escanear este código QR​​:</string>

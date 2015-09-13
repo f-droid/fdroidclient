@@ -72,8 +72,6 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé!</string>
   <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter avec une clé différente!</string>
   <string name="malformed_repo_uri">URI de dépôt malformé ignoré: %s</string>
-  <string name="repo_alrt">La liste des dépôts utilisés a changé.
-Voulez-vous les mettre à jour?</string>
   <string name="menu_update_repo">Mettre à jour les dépôts</string>
   <string name="menu_manage">Gestion de dépôts</string>
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
@@ -119,11 +117,7 @@ Voulez-vous les mettre à jour?</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
   <string name="local_repo">Dépôt local</string>
   <string name="local_repo_running">F-Droid est prêt à être échangé</string>
-  <string name="waiting_for_ipaddress">Attente de l\'adresse IP…</string>
-  <string name="setup_repo">Configurer le dépôt local</string>
   <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser les autres à échanger des apps</string>
-  <string name="touch_to_turn_on_local_repo">Appuyez pour activer votre dépôt local</string>
-  <string name="touch_to_turn_off_local_repo">Appuyez pour désactiver votre dépôt local</string>
   <string name="updating">Mise à jour…</string>
   <string name="update_repo">Mettre à jour le dépôt</string>
   <string name="deleting_repo">Supprimer le dépôt actuel</string>
@@ -134,9 +128,6 @@ Voulez-vous les mettre à jour?</string>
   <string name="copying_icons">Copie des icônes des apps dans le dépôt…</string>
   <string name="no_applications_found">Aucune application trouvée</string>
   <string name="icon">icône</string>
-  <string name="fingerprint">Empreinte:</string>
-  <string name="wifi_network">Réseau WiFi:</string>
-  <string name="sharing_uri">Partager l\'URL:</string>
   <string name="enable_wifi">Activer le WiFi</string>
   <string name="enabling_wifi">Activation du WiFi…</string>
   <string name="same_wifi_instructions">Pour se connecter aux appareils d\'autres personnes, assurez vous que vos appareils sont connectés sur le même réseau WiFi. Ensuite, soit tapez l\'URL ci-dessus dans F-Droid, soit scannez ce code QR:</string>

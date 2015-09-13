@@ -59,8 +59,6 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="repo_exists_enable">Ez a repo már be van állítva, erősítse meg az újraengedélyezését.</string>
   <string name="repo_exists_and_enabled">A fogadott repo már telepítve és engedélyezve van!</string>
   <string name="repo_delete_to_overwrite">Előbb törölnie kell ezt a repot, mielőtt hozzáad egyet eltérő kulccsal!</string>
-  <string name="repo_alrt">\"A használt repo-k listája megváltozott.
-Szeretné ezeket frissíteni?\"</string>
   <string name="menu_update_repo">Repo-k frissítése</string>
   <string name="menu_manage">Repo-k kezelése</string>
   <string name="menu_preferences">Lehetőségek</string>

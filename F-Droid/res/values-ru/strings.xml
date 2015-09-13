@@ -74,8 +74,6 @@
   <string name="repo_exists_and_enabled">Репозиторий уже настроен и включен!</string>
   <string name="repo_delete_to_overwrite">Вы должны удалить этот репозиторий, прежде чем вы можете добавить новый с другим ключом!</string>
   <string name="malformed_repo_uri">Игнорирование неверного URI репозитория: %s</string>
-  <string name="repo_alrt">Список репозиториев изменился.
-Обновить его?</string>
   <string name="menu_update_repo">Обновить репозитории</string>
   <string name="menu_manage">Репозитории</string>
   <string name="menu_send_apk_bt">Передать FDroid.apk по Bluetooth…</string>
@@ -121,10 +119,6 @@
   <string name="category_recentlyupdated">Недавно обновлённые</string>
   <string name="local_repo">Локальный репозиторий</string>
   <string name="local_repo_running">F-Droid готов для обмена</string>
-  <string name="waiting_for_ipaddress">ожидание IP-адреса…</string>
-  <string name="setup_repo">Настройка локального репозитория</string>
-  <string name="touch_to_turn_on_local_repo">Нажмите чтобы включить ваш локальный репозиторий.</string>
-  <string name="touch_to_turn_off_local_repo">Нажмите чтобы выключить ваш локальный репозиторий.</string>
   <string name="updating">Обновление…</string>
   <string name="update_repo">Обновить репозиторий</string>
   <string name="deleting_repo">Удаление текущего репозитория…</string>
@@ -135,9 +129,6 @@
   <string name="copying_icons">Копирование иконок приложений в репозиторий…</string>
   <string name="no_applications_found">Приложения не найдены</string>
   <string name="icon">иконка</string>
-  <string name="fingerprint">Отпечаток:</string>
-  <string name="wifi_network">WiFi-сеть:</string>
-  <string name="sharing_uri">Ссылка:</string>
   <string name="enable_wifi">Включить WiFi</string>
   <string name="enabling_wifi">Включение WiFi…</string>
   <string name="same_wifi_instructions">Чтобы подключиться к устройствам других людей, убедитесь что они все подключены к одной WiFi-сети. В этом случае либо введите приведённую выше ссылку в F-Droid, либо просканируйте данный QR-код:</string>

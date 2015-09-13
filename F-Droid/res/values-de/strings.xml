@@ -72,8 +72,6 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="repo_exists_and_enabled">Die eingehende Paketquelle ist bereits eingerichtet und aktiviert!</string>
   <string name="repo_delete_to_overwrite">Sie müssen diese Paketquelle zuerst löschen, bevor Sie eine mit einem anderen Schlüssel hinzuzufügen!</string>
   <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
-  <string name="repo_alrt">Die Liste der genutzten Paketquellen hat sich geändert.
-Sollen diese aktualisiert werden?</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
   <string name="menu_manage">Paketquellen verwalten</string>
   <string name="menu_send_apk_bt">Bluetooth-FDroid.apk …</string>
@@ -119,11 +117,7 @@ Sollen diese aktualisiert werden?</string>
   <string name="category_recentlyupdated">Kürzlich Aktualisiert</string>
   <string name="local_repo">Lokale Paketquelle</string>
   <string name="local_repo_running">F-Droid ist bereit zum Tauschen</string>
-  <string name="waiting_for_ipaddress">Auf IP-Adresse wird gewartet …</string>
-  <string name="setup_repo">Lokale Paketquelle einrichten</string>
   <string name="touch_to_configure_local_repo">Berühren, um Details zu sehen und es anderen erlauben Ihre Anwendungen zu tauschen.</string>
-  <string name="touch_to_turn_on_local_repo">Berühren, um lokale Paketquelle zu aktivieren.</string>
-  <string name="touch_to_turn_off_local_repo">Berühren, um lokale Paketquellen zu deaktivieren.</string>
   <string name="updating">Wird aktualisiert …</string>
   <string name="update_repo">Paketquelle aktualisieren</string>
   <string name="deleting_repo">Aktuelle Paketquelle wird gelöscht …</string>
@@ -134,9 +128,6 @@ Sollen diese aktualisiert werden?</string>
   <string name="copying_icons">Anwendungssymbole werden in die Paketquelle kopiert …</string>
   <string name="no_applications_found">Keine Anwendungen gefunden</string>
   <string name="icon">Symbol</string>
-  <string name="fingerprint">Fingerabdruck:</string>
-  <string name="wifi_network">WLAN-Netzwerk:</string>
-  <string name="sharing_uri">Freigabeadresse:</string>
   <string name="enable_wifi">WLAN aktivieren</string>
   <string name="enabling_wifi">WLAN wird aktiviert …</string>
   <string name="same_wifi_instructions">Um sich mit den Geräten anderer Personen zu verbinden, bitte sicher stellen, dass sich beide Geräte im selben WLAN-Netzwerk befinden. Dann entweder die Adresse eingeben oder diesen QR-Code einlesen:</string>

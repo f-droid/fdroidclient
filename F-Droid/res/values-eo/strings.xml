@@ -82,8 +82,6 @@
   <string name="category_whatsnew">Novaĵoj</string>
   <string name="category_recentlyupdated">Ĵus ĝisdatigitaj</string>
   <string name="local_repo">Loka deponejo</string>
-  <string name="touch_to_turn_on_local_repo">Tuŝu por ŝalti vian lokan deponejon.</string>
-  <string name="touch_to_turn_off_local_repo">Tuŝu por malŝalti vian lokan deponejon.</string>
   <string name="updating">Ĝisdatiganta…</string>
   <string name="update_repo">Ĝisdatigi deponejon</string>
   <string name="deleting_repo">Foriganta la nunan deponejon…</string>
@@ -92,7 +90,6 @@
   <string name="copying_icons">Kopianta aplikaĵemblemojn al la deponejo…</string>
   <string name="no_applications_found">Neniu aplikaĵo trovita</string>
   <string name="icon">emblemo</string>
-  <string name="wifi_network">WiFi-reto:</string>
   <string name="enable_wifi">Ŝalti WiFi</string>
   <string name="enabling_wifi">Ŝaltante WiFi</string>
   <string name="qr_code">QR-kodo</string>

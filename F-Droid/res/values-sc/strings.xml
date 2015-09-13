@@ -73,10 +73,6 @@ Intregadu cun sa litzèntzia
   <string name="repo_exists_and_enabled">Custu depòsitu est giai cunfiguradu e abilitadu!</string>
   <string name="repo_delete_to_overwrite">Depes burrare custu depòsitu in antis de nde pòdere annànghere unu cun un\'àtera crae!</string>
   <string name="malformed_repo_uri">Ignorande URI depòsitos malformados: %s</string>
-  <string name="repo_alrt">Sa lista de sos depòsitos impreados est
-		mudada.
-Los
-		boles agiornare?</string>
   <string name="menu_update_repo">Agiorna sos depòsitos</string>
   <string name="menu_manage">Depòsitos</string>
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
@@ -122,11 +118,7 @@ Los
   <string name="category_recentlyupdated">Agiornadas dae pagu</string>
   <string name="local_repo">Depòsitu locale</string>
   <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
-  <string name="waiting_for_ipaddress">isetande pro s\'indiritzu IP</string>
-  <string name="setup_repo">Ammània unu depòsitu locale</string>
   <string name="touch_to_configure_local_repo">Toca pro bìere sas minujas e permìtere a àteros de retzire sas aplicatziones tuas.</string>
-  <string name="touch_to_turn_on_local_repo">Toca pro allùere su depòsitu locale tuo.</string>
-  <string name="touch_to_turn_off_local_repo">Toca pro istudare su depòsitu locale tuo.</string>
   <string name="updating">Agiornande…</string>
   <string name="update_repo">Agiorna depòsitu</string>
   <string name="deleting_repo">Burrande su depòsitu atuale…</string>
@@ -137,9 +129,6 @@ Los
   <string name="copying_icons">Copiande sas iconas de sas aplicatziones in su depòsitu…</string>
   <string name="no_applications_found">Peruna aplicatzione agatada</string>
   <string name="icon">icona</string>
-  <string name="fingerprint">Arrastu/imprenta:</string>
-  <string name="wifi_network">Retza WiFi:</string>
-  <string name="sharing_uri">URL de cumpartzidura:</string>
   <string name="enable_wifi">Abìlita su Wifi</string>
   <string name="enabling_wifi">Abilitande su WiFi…</string>
   <string name="same_wifi_instructions">Pro ti cunnèttere a sos dispositivos de calicun\'àteru, assegura·di chi ambos sos dispositivos siant in sa matessi retza WiFi. A pustis, inserta su URL in supra in F-Droid, o iscansi custu còdighe QR:</string>

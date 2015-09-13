@@ -63,8 +63,6 @@
   <string name="repo_exists_and_enabled">Το εισερχόμενο αποθετήριο υπάρχει ήδη και είναι ενεργοποιημένο!</string>
   <string name="repo_delete_to_overwrite">Πρέπει πρώτα να διαγράψετε αυτό το αποθετήριο για να μπορέσετε να προσθέσετε ένα με διαφορετικό κλειδί!</string>
   <string name="malformed_repo_uri">Παράβλεψη αποθετηρίου με λανθασμένη διεύθυνση: %s</string>
-  <string name="repo_alrt">Η λίστα με τα χρησιμοποιούμενα αποθετήρια έχει αλλάξει. 
-Θέλετε να ενημερωθούν;</string>
   <string name="menu_update_repo">Ενημέρωση αποθετηρίων</string>
   <string name="menu_manage">Διαχείριση Αποθετηρίων</string>
   <string name="menu_send_apk_bt">Αποστολή του FDroid.apk με Bluetooth</string>

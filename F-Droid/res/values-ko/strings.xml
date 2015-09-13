@@ -72,8 +72,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="repo_exists_and_enabled">도착하는 저장소가 이미 설치되었으며 사용 가능합니다!</string>
   <string name="repo_delete_to_overwrite">다른 키가 할당된 저장소를 추가하기 전에 이 저장소를 먼저 삭제해야 합니다!</string>
   <string name="malformed_repo_uri">잘못된 형식의 저장소 URI를 무시하는 중: %s</string>
-  <string name="repo_alrt">사용된 저장소의 목록이 변경되었습니다.
-업데이트 하시겠습니까?</string>
   <string name="menu_update_repo">저장소 업데이트</string>
   <string name="menu_manage">저장소 관리</string>
   <string name="menu_send_apk_bt">FDroid.apk 파일을 블루투스로 전송…</string>
@@ -119,11 +117,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="category_recentlyupdated">최근 업데이트</string>
   <string name="local_repo">로컬 저장소</string>
   <string name="local_repo_running">F-Droid는 교환할 준비가 되었습니다</string>
-  <string name="waiting_for_ipaddress">IP 주소 기다리는 중…</string>
-  <string name="setup_repo">로컬 저장소 설정</string>
   <string name="touch_to_configure_local_repo">자세한 정보를 보고, 타인이 당신과 앱을 교환할 수 있도록 하려면 여기를 누르세요.</string>
-  <string name="touch_to_turn_on_local_repo">로컬 저장소를 켜기 위해 여기를 누르세요.</string>
-  <string name="touch_to_turn_off_local_repo">로컬 저장소를 끄기 위해 여기를 누르세요.</string>
   <string name="updating">업데이트 중…</string>
   <string name="update_repo">저장소 업데이트</string>
   <string name="deleting_repo">현재의 저장소 삭제중…</string>
@@ -134,9 +128,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="copying_icons">앱 아이콘을 저장소에 복사하는 중…</string>
   <string name="no_applications_found">앱이 발견되지 않음</string>
   <string name="icon">아이콘</string>
-  <string name="fingerprint">핑거프린트:</string>
-  <string name="wifi_network">WiFi 네트워크:</string>
-  <string name="sharing_uri">공유 URL:</string>
   <string name="enable_wifi">WiFi 사용</string>
   <string name="enabling_wifi">WiFi 활성화 중…</string>
   <string name="same_wifi_instructions">타인의 기기에 접속하려면 두 기기가 모두 같은 WiFi 네트워크에 연결되어 있는지를 확인하세요. 그리고 위의 URL 주소를 F-Droid에 입력하거나 이 QR코드를 스캔하세요.</string>

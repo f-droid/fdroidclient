@@ -28,8 +28,6 @@
   <string name="tab_updates">Оновлення</string>
   <string name="download_server">Звантажую програму</string>
   <string name="repo_add_url">Адреса репозиторію</string>
-  <string name="repo_alrt">Список репозиторіїв змінено.
-Оновити їх?</string>
   <string name="menu_update_repo">Оновити</string>
   <string name="menu_manage">Репозиторії</string>
   <string name="menu_preferences">Параметри</string>

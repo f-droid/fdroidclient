@@ -66,7 +66,6 @@
   <string name="repo_exists">Kho đã tồn tại!</string>
   <string name="repo_delete_to_overwrite">Bạn phải xoá kho này trước thì mới có thể thêm kho có mã khác!</string>
   <string name="malformed_repo_uri">Bỏ qua địa chỉ lỗi: %s</string>
-  <string name="repo_alrt">Danh sách kho được sử dụng đã thay đổi. Bạn có muốn cập nhật các kho không?</string>
   <string name="menu_update_repo">Cập nhật kho</string>
   <string name="menu_manage">Kho ứng dụng</string>
   <string name="menu_send_apk_bt">Gửi FDroid.apk qua Bluetooth…</string>
@@ -112,11 +111,7 @@
   <string name="category_recentlyupdated">Mới cập nhật</string>
   <string name="local_repo">Kho nội bộ</string>
   <string name="local_repo_running">F-Droid đã sẵn sàng để trao đổi</string>
-  <string name="waiting_for_ipaddress">đang đợi địa chỉ IP…</string>
-  <string name="setup_repo">Cài đặt kho nội bộ</string>
   <string name="touch_to_configure_local_repo">Chạm để xem danh sách và cho phép mọi người trao đổi ứng dụng với bạn.</string>
-  <string name="touch_to_turn_on_local_repo">Chạm để bật kho nội bộ của bạn.</string>
-  <string name="touch_to_turn_off_local_repo">Chạm để tắt kho nội bộ của bạn.</string>
   <string name="updating">Đang cập nhật…</string>
   <string name="update_repo">Cập nhật kho ứng dụng</string>
   <string name="deleting_repo">Đang xoá kho hiện tại…</string>
@@ -124,8 +119,6 @@
   <string name="copying_icons">Đang sao chép biểu tượng ứng dụng vào kho…</string>
   <string name="no_applications_found">Không tìm thấy ứng dụng nào</string>
   <string name="icon">biểu tượng</string>
-  <string name="wifi_network">Mạng WiFi:</string>
-  <string name="sharing_uri">URL chia sẻ:</string>
   <string name="enable_wifi">Bật WiFi</string>
   <string name="enabling_wifi">Đang bật WiFi…</string>
   <string name="same_wifi_instructions">Để kết nối với thiết bị khác, hãy đảm bảo cả hai thiết bị đang trong cùng một mạng WiFi. Sau đó gõ đường dẫn sau vào F-Droid, hoặc quét mã QR này:</string>

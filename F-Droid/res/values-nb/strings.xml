@@ -72,7 +72,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="repo_exists_and_enabled">Oppstrøms-registret er allerede oppsatt og skrudd på!</string>
   <string name="repo_delete_to_overwrite">Du må først slette dette registret før du kan legge til et med en en annen nøkkel!</string>
   <string name="malformed_repo_uri">Ignorerer ugyldig registernettadresse: %s</string>
-  <string name="repo_alrt">Listen over brukte register har endret seg. Vil du oppdatere dem?</string>
   <string name="menu_update_repo">Oppdater registrene</string>
   <string name="menu_manage">Endre registrene</string>
   <string name="menu_send_apk_bt">Blåtann FDroid.apk…</string>
@@ -118,11 +117,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="category_recentlyupdated">Nylig oppdatert</string>
   <string name="local_repo">Lokal pakkebrønn</string>
   <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
-  <string name="waiting_for_ipaddress">venter på IP-adresse:</string>
-  <string name="setup_repo">Sett opp lokal pakkebrønn</string>
   <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>
-  <string name="touch_to_turn_on_local_repo">Trykk for å skru på din lokale pakkebrønn.</string>
-  <string name="touch_to_turn_off_local_repo">Trykk for å skru av din lokale repo.</string>
   <string name="updating">Oppdaterer…</string>
   <string name="update_repo">Oppdater pakkebrønn</string>
   <string name="deleting_repo">Sletter gjeldende pakkebrønn…</string>
@@ -133,9 +128,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="copying_icons">Kopierer program-ikoner til pakkebrønnen…</string>
   <string name="no_applications_found">Ingen applikasjoner funnet</string>
   <string name="icon">ikon</string>
-  <string name="fingerprint">Fingeravtrykk:</string>
-  <string name="wifi_network">Wi-Fi-nettverk:</string>
-  <string name="sharing_uri">Delings-nettadresse:</string>
   <string name="enable_wifi">Skru på Wi-Fi</string>
   <string name="enabling_wifi">Skrur på WiFi…</string>
   <string name="same_wifi_instructions">Sørg for å være på samme Wi-Fi-nettverk som de enhetene du vil koble til. Skriv enten inn nettadressen ovenfor i F-droid, eller skann denne QR-koden:</string>

@@ -42,8 +42,6 @@
   <string name="fdroid_updates_available">F-Droid يېڭىلانمىلىرى بار</string>
   <string name="download_server">ئەپكە ئېرىشىش ئورنى</string>
   <string name="repo_add_url">خەزىنە ئادرېسى</string>
-  <string name="repo_alrt">ئىشلىتىۋاتقان خەزىنە تىزىمى ئۆزگەردى.
-ئۇلارنى يېڭىلامسىز؟</string>
   <string name="menu_update_repo">خەزىنە يېڭىلا</string>
   <string name="menu_manage">خەزىنە باشقۇر</string>
   <string name="menu_preferences">مايىللىقلار</string>

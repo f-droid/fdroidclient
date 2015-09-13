@@ -65,8 +65,6 @@
   <string name="repo_add_fingerprint">Отпечатък (незадължително)</string>
   <string name="repo_exists">Хранилището вече съществува!</string>
   <string name="malformed_repo_uri">Игнориране на неправилен URI адрес на хранилище: %s</string>
-  <string name="repo_alrt">Списъкът на хранилищата е променен.
-Желаете ли да бъде актуализиран?</string>
   <string name="menu_update_repo">Актуализиране на хранилищата</string>
   <string name="menu_manage">Хранилища</string>
   <string name="menu_send_apk_bt">Изпрати FDroid.apk чрез Bluetooth…</string>
@@ -110,16 +108,12 @@
   <string name="category_whatsnew">Какво ново</string>
   <string name="category_recentlyupdated">Обновени наскоро</string>
   <string name="local_repo">Локално хранилище</string>
-  <string name="waiting_for_ipaddress">изчакване за IP адрес…</string>
   <string name="updating">Обновяване…</string>
   <string name="update_repo">Актуализиране на хранилището</string>
   <string name="deleting_repo">Изтриване на хранилището…</string>
   <string name="adding_apks_format">Добавяне на %s към хранилището…</string>
   <string name="no_applications_found">Не са открити приложения</string>
   <string name="icon">икона</string>
-  <string name="fingerprint">Отпечатък:</string>
-  <string name="wifi_network">WiFi мрежа:</string>
-  <string name="sharing_uri">URL за споделяне:</string>
   <string name="enabling_wifi">Включване на WiFi…</string>
   <string name="qr_code">QR код</string>
   <string name="next">Напред</string>

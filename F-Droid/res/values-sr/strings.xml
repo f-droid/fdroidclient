@@ -71,8 +71,6 @@
   <string name="repo_exists_and_enabled">Ризница је већ постављена и омогућена!</string>
   <string name="repo_delete_to_overwrite">Најпре морате да обришете ову ризницу да бисте могли да додате ризницу са другачијим кључем!</string>
   <string name="malformed_repo_uri">Игноришем унакажен УРИ ризнице: %s</string>
-  <string name="repo_alrt">Списак ризница у употреби је измењен.
-Желите ли да их ажурирате?</string>
   <string name="menu_update_repo">Ажурирај ризнице</string>
   <string name="menu_manage">Ризнице</string>
   <string name="menu_send_apk_bt">Пошаљи FDroid.apk блутутом…</string>
@@ -118,11 +116,7 @@
   <string name="category_recentlyupdated">Недавно надограђено</string>
   <string name="local_repo">Локална ризница</string>
   <string name="local_repo_running">Ф-дроид је спреман за размену</string>
-  <string name="waiting_for_ipaddress">чекам ИП адресу…</string>
-  <string name="setup_repo">Постави локалну ризницу</string>
   <string name="touch_to_configure_local_repo">Тапните за приказ детаља и да дозволите другима да размењују ваше апликације.</string>
-  <string name="touch_to_turn_on_local_repo">Тапните да омогућите вашу локалну ризницу.</string>
-  <string name="touch_to_turn_off_local_repo">Тапните да онемогућите вашу локалну ризницу.</string>
   <string name="updating">Ажурирам…</string>
   <string name="update_repo">Ажурирај ризницу</string>
   <string name="deleting_repo">Бришем тренутну ризницу…</string>
@@ -133,9 +127,6 @@
   <string name="copying_icons">Копирам иконе апликација у ризницу…</string>
   <string name="no_applications_found">Нема апликација</string>
   <string name="icon">икона</string>
-  <string name="fingerprint">Отисак:</string>
-  <string name="wifi_network">Бежична мрежа:</string>
-  <string name="sharing_uri">УРЛ дељења:</string>
   <string name="enable_wifi">Омогући бежични</string>
   <string name="enabling_wifi">Омогућујем бежични…</string>
   <string name="same_wifi_instructions">Да бисте се могли повезати са уређајима других људи, уверите се да су сви уређаји на истој бежичној мрежи.  Затим, или укуцајте УРЛ изнад у Ф-дроид, или очитајте овај бар-кôд:</string>

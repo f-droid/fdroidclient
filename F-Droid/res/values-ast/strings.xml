@@ -72,8 +72,6 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="repo_exists_and_enabled">¡Yá ta configuráu y habilitáu\'l repositoriu d\'entrada!</string>
   <string name="repo_delete_to_overwrite">¡Primero tienes de desaniciar esti repositoriu enantes que pueas amestar otru con una clave diferente!</string>
   <string name="malformed_repo_uri">Inorando l\'URI del repositoriu mal formáu: %s</string>
-  <string name="repo_alrt">Camudó\'l llistáu de los repositorios usaos.
-¿Quies anovalos?</string>
   <string name="menu_update_repo">Anovar repositorios</string>
   <string name="menu_manage">Repositorios</string>
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
@@ -119,11 +117,7 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="category_recentlyupdated">Anovao apocayá</string>
   <string name="local_repo">Repositoriu llocal</string>
   <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
-  <string name="waiting_for_ipaddress">esperando pola direición IP…</string>
-  <string name="setup_repo">Configurar repositoriu llocal</string>
   <string name="touch_to_configure_local_repo">Toca pa ver los detalles y almitir a otros intercambiar les tos aplicaciones.</string>
-  <string name="touch_to_turn_on_local_repo">Toca p\'activar el to repositoriu llocal.</string>
-  <string name="touch_to_turn_off_local_repo">Toca pa desactivar el to repositoriu llocal.</string>
   <string name="updating">Anovando…</string>
   <string name="update_repo">Anovar reposotoriu</string>
   <string name="deleting_repo">Desaniciando\'l repositoriu llocal</string>
@@ -134,9 +128,6 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="copying_icons">Copiando iconos d\'aplicaciones al repositoriu…</string>
   <string name="no_applications_found">Nun s\'alcontraron aplicaciones</string>
   <string name="icon">iconu</string>
-  <string name="fingerprint">Buelga:</string>
-  <string name="wifi_network">Rede WiFi:</string>
-  <string name="sharing_uri">URL de compartición:</string>
   <string name="enable_wifi">Habilitar WiFi</string>
   <string name="enabling_wifi">Habilitando\'l WiFi…</string>
   <string name="same_wifi_instructions">Pa coneutar a los preseos d\'otra xente, asegúrate qu\'entrambos preseos tán na mesma rede WiFi. Dempués escribi la URL d\'enriba o escania esti códigu QR:</string>

@@ -67,8 +67,6 @@ käyttöehtojen mukaisesti.</string>
   <string name="repo_add_url">Sovelluslähteen osoite</string>
   <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
   <string name="repo_exists">Tämä sovelluslähde on jo olemassa.</string>
-  <string name="repo_alrt">Lista käytetyistä sovelluslähteistä on muuttumut.
-Tahdotko päivittää ne?</string>
   <string name="menu_update_repo">Päivitä sovelluslähteet</string>
   <string name="menu_manage">Hallitse sovelluslähteitä</string>
   <string name="menu_preferences">Asetukset</string>
@@ -108,11 +106,7 @@ Tahdotko päivittää ne?</string>
   <string name="category_recentlyupdated">Viimeaikoina päivitetty</string>
   <string name="local_repo">Paikallinen säilö</string>
   <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
-  <string name="waiting_for_ipaddress">odotetaan IP-osoitetta…</string>
-  <string name="setup_repo">Aseta paikallinen säilö</string>
   <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa sovelluksiasi.</string>
-  <string name="touch_to_turn_on_local_repo">Kosketa käynnistääksesi paikallisen säilösi.</string>
-  <string name="touch_to_turn_off_local_repo">Kosketa sammuttaaksesi paikallisen säilösi.</string>
   <string name="updating">Päivitetään…</string>
   <string name="update_repo">Päivitä säilö</string>
   <string name="deleting_repo">Poistetaan nykyistä säilöä…</string>
@@ -123,9 +117,6 @@ Tahdotko päivittää ne?</string>
   <string name="copying_icons">Kopioidaan sovelluskuvakkeita säilöön…</string>
   <string name="no_applications_found">Sovelluksia ei löytynyt</string>
   <string name="icon">kuvake</string>
-  <string name="fingerprint">Sormenjälki:</string>
-  <string name="wifi_network">WiFi-verkko</string>
-  <string name="sharing_uri">Jako-URL:</string>
   <string name="enable_wifi">Ota WiFi käyttöön</string>
   <string name="enabling_wifi">Otetaan WiFiä käyttöön…</string>
   <string name="same_wifi_instructions">Yhdistääksesi toisien ihmisten laitteisiin, varmista, että molemmat laitteet ovat samassa WiFi-verkossa. Tämän jälkeen joko kirjoita yllä oleva URL F-Droidiin tai skannaa tämä QR-koodi.</string>

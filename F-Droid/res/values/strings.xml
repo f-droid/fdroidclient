@@ -95,10 +95,6 @@
 	<string name="invalid_url">This is not a valid URL.</string>
 	<string name="malformed_repo_uri">Ignoring malformed repo URI: %s</string>
 
-	<string name="repo_alrt">The list of used repositories has
-		changed.\nDo you
-		want to update them?</string>
-
 	<string name="menu_update_repo">Update Repos</string>
 	<string name="menu_manage">Repositories</string>
 	<string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
@@ -150,11 +146,7 @@
 
 	<string name="local_repo">Local Repo</string>
 	<string name="local_repo_running">F-Droid is ready to swap</string>
-	<string name="waiting_for_ipaddress">Waiting for IP address…</string>
-	<string name="setup_repo">Setup Local Repo</string>
 	<string name="touch_to_configure_local_repo">Touch to view details and allow others to swap your apps.</string>
-	<string name="touch_to_turn_on_local_repo">Touch to turn on your local repo.</string>
-	<string name="touch_to_turn_off_local_repo">Touch to turn off your local repo.</string>
 	<string name="updating">Updating…</string>
 	<string name="update_repo">Update Repo</string>
 	<string name="deleting_repo">Deleting current repo…</string>
@@ -165,9 +157,6 @@
 	<string name="copying_icons">Copying app icons into the repo…</string>
 	<string name="no_applications_found">No applications found</string>
 	<string name="icon">Icon</string>
-	<string name="fingerprint">Fingerprint:</string>
-	<string name="wifi_network">Wi-Fi Network:</string>
-	<string name="sharing_uri">Sharing URL:</string>
 	<string name="enable_wifi">Enable Wi-Fi</string>
 	<string name="enabling_wifi">Enabling Wi-Fi…</string>
 	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same Wi-Fi network. Then either type the URL above into F-Droid, or scan this QR Code:</string>

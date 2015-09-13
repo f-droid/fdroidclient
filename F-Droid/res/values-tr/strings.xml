@@ -72,8 +72,6 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="repo_exists_and_enabled">Gelen depo zaten kuruludur ve etkinleştirilmiştir!</string>
   <string name="repo_delete_to_overwrite">Değişik anahtarla depo eklemeden evvel bu depoyu silmeniz gerekmektedir!</string>
   <string name="malformed_repo_uri">Yanlış yapılandırılmış depo URI\'si görmezden geliniyor: %s</string>
-  <string name="repo_alrt">Kullanılan depoların listesi değişti.
-Güncellemek ister misiniz?</string>
   <string name="menu_update_repo">Depoları güncelle</string>
   <string name="menu_manage">Depoları Yönet</string>
   <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
@@ -119,11 +117,7 @@ Güncellemek ister misiniz?</string>
   <string name="category_recentlyupdated">Yakın geçmişte güncellenen</string>
   <string name="local_repo">Yerel Depo</string>
   <string name="local_repo_running">F-Droid değiş-tokuşa hazır</string>
-  <string name="waiting_for_ipaddress">IP adres bekleniyor…</string>
-  <string name="setup_repo">Yerel Depo Kur</string>
   <string name="touch_to_configure_local_repo">Detayları görmek için ve başkalarının uygulamalarınızı takas edebilmesi için dokunun.</string>
-  <string name="touch_to_turn_on_local_repo">Yerel deponuzu etkinleştirmek için dokunun.</string>
-  <string name="touch_to_turn_off_local_repo">Yerel deponu kapatmak için dokunun.</string>
   <string name="updating">Güncelleniyor…</string>
   <string name="update_repo">Depoyu Güncelle</string>
   <string name="deleting_repo">Mevcut depo siliniyor…</string>
@@ -134,9 +128,6 @@ Güncellemek ister misiniz?</string>
   <string name="copying_icons">Uygulama ikonları depoya kopyalanıyor…</string>
   <string name="no_applications_found">Uygulama bulunamadı</string>
   <string name="icon">ikon</string>
-  <string name="fingerprint">Parmak izi:</string>
-  <string name="wifi_network">WiFi Ağı:</string>
-  <string name="sharing_uri">Paylaşma URL\'i:</string>
   <string name="enable_wifi">WiFi Etkinleştir</string>
   <string name="enabling_wifi">WiFi etkinleştiriliyor…</string>
   <string name="same_wifi_instructions">Diğer cihazları bağlanmak için, her cihazın aynı WiFi ağı üzerinde olduğundan emin olun. Sonra ya F-Droid\'e URL\'yi yazın veya bu QR Kodu taratın:</string>

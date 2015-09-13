@@ -42,8 +42,6 @@
   <string name="repo_add_url">نشانی مخزن</string>
   <string name="repo_add_fingerprint">انگشت‌نگاری (دلبخواهی)</string>
   <string name="repo_exists">این مخزن هم‌اکنون وجود ندارد!</string>
-  <string name="repo_alrt">فهرست مخزن‌ها تغییر یافته‌است.
-آیا می‌خواهید به‌روزرسانی‌شان کنید؟</string>
   <string name="menu_update_repo">به‌روزرسانی مخزن‌ها</string>
   <string name="menu_manage">مدیریت مخزن‌ها</string>
   <string name="menu_about">درباره</string>

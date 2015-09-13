@@ -72,8 +72,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="repo_exists_and_enabled">De binnenkomende softwarebron is al ingesteld en geactiveerd!</string>
   <string name="repo_delete_to_overwrite">U moet eerst deze softwarebron verwijderen voordat u er een kan toevoegen met een andere sleutel!</string>
   <string name="malformed_repo_uri">Misvormde bron-URI %s genegeerd</string>
-  <string name="repo_alrt">De lijst van gebruikte bronnen is veranderd.
-Wilt u ze vernieuwen?</string>
   <string name="menu_update_repo">Vernieuw Bronnen</string>
   <string name="menu_manage">Beheer bronnen</string>
   <string name="menu_send_apk_bt">Deel F-Droid via Bluetooth…</string>
@@ -119,11 +117,7 @@ Wilt u ze vernieuwen?</string>
   <string name="category_recentlyupdated">Recentelijk vernieuwd</string>
   <string name="local_repo">Collectie gedeelde apps</string>
   <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
-  <string name="waiting_for_ipaddress">wachten op IP adres…</string>
-  <string name="setup_repo">Collectie gedeelde apps instellen</string>
   <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>
-  <string name="touch_to_turn_on_local_repo">Raak aan om apps te delen.</string>
-  <string name="touch_to_turn_off_local_repo">Raak aan om apps niet langer te delen.</string>
   <string name="updating">Bezig met updaten…</string>
   <string name="update_repo">Vernieuw Bronnen</string>
   <string name="deleting_repo">Bron verwijderen…</string>
@@ -134,9 +128,6 @@ Wilt u ze vernieuwen?</string>
   <string name="copying_icons">App iconen aan collectie toevoegen…</string>
   <string name="no_applications_found">Geen apps gevonden</string>
   <string name="icon">icoon</string>
-  <string name="fingerprint">Vingerafdruk:</string>
-  <string name="wifi_network">WiFi Netwerk:</string>
-  <string name="sharing_uri">Deeladres:</string>
   <string name="enable_wifi">Schakel WiFi in</string>
   <string name="enabling_wifi">WiFi inschakelen…</string>
   <string name="same_wifi_instructions">Om apps te delen, zorg dat beide apparaten op hetzelfde WiFi netwerk zitten. Type dan het bovenstaande webadres in F-Droid, of scan deze QR code:</string>

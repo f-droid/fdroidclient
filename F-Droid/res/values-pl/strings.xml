@@ -49,8 +49,6 @@
   <string name="repo_exists">Repozytorium już istnieje!</string>
   <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym kluczem!</string>
   <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
-  <string name="repo_alrt">Lista wykorzystywanych repozytoriów uległa zmianie.
-Czy chcesz je zaktualizować?</string>
   <string name="menu_update_repo">Aktualizuj repozytoria</string>
   <string name="menu_preferences">Ustawienia</string>
   <string name="menu_about">Informacje</string>
@@ -88,11 +86,7 @@ Czy chcesz je zaktualizować?</string>
   <string name="category_recentlyupdated">Ostatnio zaktualizowane</string>
   <string name="local_repo">Repozytorium lokalne</string>
   <string name="local_repo_running">F-Droid gotowy do wymiany</string>
-  <string name="waiting_for_ipaddress">oczekiwanie na adres IP…</string>
-  <string name="setup_repo">Ustaw repozytorium lokalne</string>
   <string name="touch_to_configure_local_repo">Dotknij, aby sprawdzić szczegóły i umożliwić wymianę aplikacji.</string>
-  <string name="touch_to_turn_on_local_repo">Dotknij, aby włączyć repozytorium lokalne.</string>
-  <string name="touch_to_turn_off_local_repo">Dotknij, aby wyłączyć repozytorium lokalne.</string>
   <string name="updating">Aktualizacja…</string>
   <string name="update_repo">Uaktualnij repozytorium</string>
   <string name="deleting_repo">Usuwanie aktualnego repozytorium…</string>
@@ -103,9 +97,6 @@ Czy chcesz je zaktualizować?</string>
   <string name="copying_icons">Kopiowanie ikon aplikacji do repozytorium…</string>
   <string name="no_applications_found">Nie znaleziono aplikacji</string>
   <string name="icon">ikona</string>
-  <string name="fingerprint">Odcisk palca:</string>
-  <string name="wifi_network">Sieć Wi-Fi:</string>
-  <string name="sharing_uri">URL udostępniania:</string>
   <string name="enable_wifi">Włącz Wi-Fi</string>
   <string name="enabling_wifi">Włączanie Wi-Fi…</string>
   <string name="same_wifi_instructions">Aby połączyć się z drugim urządzeniem, upewnij się, że znajdujesz się we wspólnej sieci Wi-Fi. Następnie wprowadź powyższy adres do F-Droida lub zeskanuj kod QR:</string>

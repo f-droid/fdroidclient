@@ -61,7 +61,6 @@
   <string name="repo_add_url">軟件倉庫網址</string>
   <string name="repo_add_fingerprint">指模 (可選)</string>
   <string name="repo_exists">此倉庫已存在！</string>
-  <string name="repo_alrt">您所使用的軟件倉庫已更改，你要更新倉庫清單嗎？</string>
   <string name="menu_update_repo">更新倉庫</string>
   <string name="menu_manage">軟件倉庫</string>
   <string name="menu_send_apk_bt">藍牙傳送 FDroid.apk…</string>
@@ -106,11 +105,7 @@
   <string name="category_recentlyupdated">最近更新</string>
   <string name="local_repo">本地倉庫</string>
   <string name="local_repo_running">F-Droid 隨時可以進行交換</string>
-  <string name="waiting_for_ipaddress">正等待 IP 地址…</string>
-  <string name="setup_repo">設置本地倉庫</string>
   <string name="touch_to_configure_local_repo">觸碰以顯示詳細資料及允許其他人交換您的應用程式。</string>
-  <string name="touch_to_turn_on_local_repo">觸碰以啟用您的本地倉庫。</string>
-  <string name="touch_to_turn_off_local_repo">觸碰以停用您的本地倉庫。</string>
   <string name="updating">更新中…</string>
   <string name="update_repo">更新倉庫</string>
   <string name="deleting_repo">正在刪除此倉庫…</string>
@@ -118,9 +113,6 @@
   <string name="copying_icons">正在複製應用程式圖示至倉庫…</string>
   <string name="no_applications_found">找不到任何應用程式</string>
   <string name="icon">圖示</string>
-  <string name="fingerprint">指模：</string>
-  <string name="wifi_network">Wifi 網絡：</string>
-  <string name="sharing_uri">分享地址：</string>
   <string name="enable_wifi">啟用 Wifi</string>
   <string name="enabling_wifi">正在啟用 Wifi…</string>
   <string name="same_wifi_instructions">連接至其他人的裝置時，確保兩個裝置都連接在同一個 Wifi 網絡上。然後，在 F-Droid 輸入以上的網址或掃描這個 QR 碼：</string>

@@ -65,8 +65,6 @@
   <string name="repo_exists_and_enabled">此软件源已经设置好并已启用！</string>
   <string name="repo_delete_to_overwrite">在您添加不同密钥的软件源之前，您需要先删除该软件源！</string>
   <string name="malformed_repo_uri">忽略异常格式的软件源URI：%s</string>
-  <string name="repo_alrt">已使用的软件源列表有变动。
-您想要更新该列表吗？</string>
   <string name="menu_update_repo">更新软件源</string>
   <string name="menu_manage">管理软件源</string>
   <string name="menu_send_apk_bt">通过蓝牙发送 FDroid.apk…</string>
@@ -115,8 +113,6 @@
   <string name="update_repo">更新软件源</string>
   <string name="deleting_repo">正在删除当前软件源…</string>
   <string name="icon">图标</string>
-  <string name="wifi_network">WiFi网络:</string>
-  <string name="sharing_uri">共享URL:</string>
   <string name="proxy">代理</string>
   <string name="enable_proxy_title">使用http代理</string>
   <string name="enable_proxy_summary">为所有的网络链接配置http代理</string>

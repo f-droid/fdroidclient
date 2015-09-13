@@ -28,8 +28,6 @@ Izdan z licenco GNU GPLv3.</string>
   <string name="tab_updates">Posodobitve</string>
   <string name="download_server">Prejem aplikacije iz</string>
   <string name="repo_add_url">Naslov skladišča</string>
-  <string name="repo_alrt">Spisek uporabljenih skladišč se je spremenil.
-Ga želite posodobiti?</string>
   <string name="menu_manage">Upravljanje s skladišči</string>
   <string name="menu_preferences">Možnosti</string>
   <string name="menu_about">O programu</string>

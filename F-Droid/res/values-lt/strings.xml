@@ -39,10 +39,6 @@
   <string name="send_via_bluetooth">Siųsti per Bluetooth</string>
   <string name="repo_add_url">Saugyklos adresas</string>
   <string name="repo_exists">Ši saugykla jau pridėta!</string>
-  <string name="repo_alrt">Naudojamų saugyklų sąrašas buvo
-		pakeistas.
-Ar norite atnaujinti
-		saugyklų informaciją?</string>
   <string name="menu_update_repo">Atnaujinti saugyklas</string>
   <string name="menu_manage">Saugyklos</string>
   <string name="menu_send_apk_bt">Siųst FDroid.apk per Bluetooth…</string>
@@ -70,7 +66,6 @@ Ar norite atnaujinti
   <string name="category_all">Rodyti visas</string>
   <string name="category_whatsnew">Naujienos</string>
   <string name="category_recentlyupdated">Neseniai atnaujinta</string>
-  <string name="waiting_for_ipaddress">laukiama IP adreso…</string>
   <string name="updating">Atnaujinama…</string>
   <string name="update_repo">Naujinti saugyklą</string>
   <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>

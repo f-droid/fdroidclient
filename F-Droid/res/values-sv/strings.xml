@@ -72,8 +72,6 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="repo_exists_and_enabled">Inkommande förråd är redan installerat och aktiverat!</string>
   <string name="repo_delete_to_overwrite">Du måste först ta bort detta förråd innan du kan lägga till ett med en annan nyckel!</string>
   <string name="malformed_repo_uri">Ignorerar felaktig förråds-URI: %s</string>
-  <string name="repo_alrt">Listan över förråd har ändrats.
-Vill du uppdatera dem?</string>
   <string name="menu_update_repo">Uppdatera förråd</string>
   <string name="menu_manage">Hantera förråd</string>
   <string name="menu_send_apk_bt">Bluetooth-sänd FDroid.apk…</string>
@@ -119,11 +117,7 @@ Vill du uppdatera dem?</string>
   <string name="category_recentlyupdated">Nyss uppdaterade</string>
   <string name="local_repo">Lokalt förråd</string>
   <string name="local_repo_running">F-Droid är redo att byta</string>
-  <string name="waiting_for_ipaddress">väntar på IP-adress…</string>
-  <string name="setup_repo">Initiera lokalt förråd</string>
   <string name="touch_to_configure_local_repo">Rör för att se detaljer och tillåta andra att byta appar med dig.</string>
-  <string name="touch_to_turn_on_local_repo">Rör för att slå på ditt lokala förråd.</string>
-  <string name="touch_to_turn_off_local_repo">Rör för att slå av ditt lokala förråd.</string>
   <string name="updating">Uppdaterar…</string>
   <string name="update_repo">Uppdatera förråd</string>
   <string name="deleting_repo">Tar bort aktuellt förråd…</string>
@@ -134,9 +128,6 @@ Vill du uppdatera dem?</string>
   <string name="copying_icons">Kopierar appikoner till förrådet…</string>
   <string name="no_applications_found">Inga program hittades</string>
   <string name="icon">ikon</string>
-  <string name="fingerprint">Fingeravtryck:</string>
-  <string name="wifi_network">Wifi-nätverk:</string>
-  <string name="sharing_uri">Delnings-URL:</string>
   <string name="enable_wifi">Aktivera wifi</string>
   <string name="enabling_wifi">Aktiverar wifi…</string>
   <string name="same_wifi_instructions">För att ansluta till andras enheter, säkerställ att båda enheterna är på samma wifi-nätverk.  Skriv sedan in URL:en ovan i F-Droid, eller läs in denna QR-kod:</string>

@@ -63,7 +63,6 @@ Izlaists zem GNU GPLv3 licenzes</string>
   <string name="repo_exists_and_enabled">Ienākošais Repozitorijs jau iestatīts un ieslēgts!</string>
   <string name="repo_delete_to_overwrite">Vispirms jāizdzēš Repozitorijs, pirms pievienošanas ar citu atslēgu!</string>
   <string name="malformed_repo_uri">Ignorē nepareizu Repozitorija URI: %s</string>
-  <string name="repo_alrt">Izmantoto Repozitoriju saraksts izmainīts, vai atjaunot?</string>
   <string name="menu_update_repo">Atjauno Repozitorijus</string>
   <string name="menu_manage">Repozitoriji</string>
   <string name="menu_send_apk_bt">Bluesūta FDroid.apk…</string>

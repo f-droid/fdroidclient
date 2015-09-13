@@ -71,8 +71,6 @@
   <string name="repo_exists_and_enabled">入力中のﾘﾎﾟｼﾞﾄﾘはすでに設定されて有効にされています</string>
   <string name="repo_delete_to_overwrite">異なるｷｰでﾘﾎﾟｼﾞﾄﾘを追加する前に､このﾘﾎﾟｼﾞﾄﾘを削除する必要があります｡</string>
   <string name="malformed_repo_uri">正しくない形式のﾘﾎﾟｼﾞﾄﾘURIを無視します: %s</string>
-  <string name="repo_alrt">使用中のﾘﾎﾟｼﾞﾄﾘﾘｽﾄが変更されました｡
-更新しますか?</string>
   <string name="menu_update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
   <string name="menu_send_apk_bt">BluetoothでFDroid.apkを送信する</string>
@@ -118,11 +116,7 @@
   <string name="category_recentlyupdated">最近の更新</string>
   <string name="local_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘ</string>
   <string name="local_repo_running">F-Droidは切り替え準備ができました</string>
-  <string name="waiting_for_ipaddress">IPｱﾄﾞﾚｽを待機中…</string>
-  <string name="setup_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを設定</string>
   <string name="touch_to_configure_local_repo">ﾀｯﾁすると詳細を表示し､ｱﾌﾟﾘの切り替えができるようになります｡</string>
-  <string name="touch_to_turn_on_local_repo">ﾀｯﾁしてﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを有効にする</string>
-  <string name="touch_to_turn_off_local_repo">ﾀｯﾁしてﾛｰｶﾙｱﾌﾟﾘを無効にする｡</string>
   <string name="updating">更新中</string>
   <string name="update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="deleting_repo">現在のﾘﾎﾟｼﾞﾄﾘを削除中…</string>
@@ -133,9 +127,6 @@
   <string name="copying_icons">ﾘﾎﾟｼﾞﾄﾘにｱﾌﾟﾘｹｰｼｮﾝのｱｲｺﾝを複製中…</string>
   <string name="no_applications_found">ｱﾌﾟﾘｹｰｼｮﾝが見つかりません｡</string>
   <string name="icon">ｱｲｺﾝ</string>
-  <string name="fingerprint">ﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ:</string>
-  <string name="wifi_network">WiFiﾈｯﾄﾜｰｸ:</string>
-  <string name="sharing_uri">共有URL:</string>
   <string name="enable_wifi">WiFiを有効にする</string>
   <string name="enabling_wifi">WiFiを有効にしています…</string>
   <string name="same_wifi_instructions">他の端末に接続するには､対象の端末が同じﾈｯﾄﾜｰｸであることを確認してください｡その後､上記のURLをF-Droidに入力するか､QRｺｰﾄﾞを読み取ってください:</string>

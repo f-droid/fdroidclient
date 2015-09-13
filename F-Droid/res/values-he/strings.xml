@@ -85,10 +85,6 @@
     <string name="invalid_url">אין זה URL תקין.</string>
     <string name="malformed_repo_uri">מתעלם מן URI מאגר פגום: %s</string>
 
-    <string name="repo_alrt">הרשימה של מאגרים בשימוש
-        השתנתה.\nהאם
-        ברצונך לעדכן אותם?</string>
-
     <string name="menu_update_repo">עדכן מאגרים</string>
     <string name="menu_manage">מאגרים</string>
     <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
@@ -143,11 +139,7 @@
 
     <string name="local_repo">מאגר מקומי</string>
     <string name="local_repo_running">F-Droid הינו מוכן להחליף</string>
-    <string name="waiting_for_ipaddress">כעת ממתין לכתובת IP…</string>
-    <string name="setup_repo">הגדר מאגר מקומי</string>
     <string name="touch_to_configure_local_repo">גע כדי לצפות בפרטים ולהתיר לאחרים להחליף עם האפליקציות שלך.</string>
-    <string name="touch_to_turn_on_local_repo">גע כדי להפעיל את המאגר המקומי שלך.</string>
-    <string name="touch_to_turn_off_local_repo">גע כדי לכבות את המאגר המקומי שלך.</string>
     <string name="updating">כעת מעדכן…</string>
     <string name="update_repo">עדכן מאגר</string>
     <string name="deleting_repo">כעת מוחק מאגר נוכחי…</string>
@@ -158,9 +150,6 @@
     <string name="copying_icons">כעת מעתיק סמלי אפליקציה לתוך המאגר…</string>
     <string name="no_applications_found">לא נמצאו אפליקציות</string>
     <string name="icon">סמל</string>
-    <string name="fingerprint">טביעת אצבע:</string>
-    <string name="wifi_network">רשת WiFi:</string>
-    <string name="sharing_uri">קישור שיתוף:</string>
     <string name="enable_wifi">אפשר WiFi</string>
     <string name="enabling_wifi">כעת מאפשר WiFi…</string>
     <string name="same_wifi_instructions">כדי להתחבר למכשירים של אנשים אחרים, ודא כי שני המכשירים נמצאים על אותה רשת WiFi.  אחרי כן הקלד את הכתובת לעיל לתוך F-Droid, או סרוק את קוד QR זה:</string>
