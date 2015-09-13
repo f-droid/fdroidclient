@@ -80,9 +80,6 @@ public final class Utils {
     private static final String[] FRIENDLY_SIZE_FORMAT = {
             "%.0f B", "%.0f KiB", "%.1f MiB", "%.2f GiB" };
 
-    private static final SimpleDateFormat LOG_DATE_FORMAT =
-            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-
     public static final String FALLBACK_ICONS_DIR = "/icons/";
 
     /*
@@ -582,13 +579,6 @@ public final class Utils {
             return fallback;
         }
         return DATE_FORMAT.format(date);
-    }
-
-    public static String formatLogDate(Date date) {
-        if (date == null) {
-            return "(unknown)";
-        }
-        return LOG_DATE_FORMAT.format(date);
     }
 
     // Need this to add the unimplemented support for ordered and unordered
