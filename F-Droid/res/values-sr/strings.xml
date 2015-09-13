@@ -37,7 +37,6 @@
   <string name="about_site">Вебсајт:</string>
   <string name="about_mail">Е-адреса:</string>
   <string name="about_version">Издање:</string>
-  <string name="about_website">Вебсајт</string>
   <string name="inst">Инсталирано</string>
   <string name="not_inst">Није инсталирано</string>
   <string name="inst_known_source">Инсталирано (са %s)</string>

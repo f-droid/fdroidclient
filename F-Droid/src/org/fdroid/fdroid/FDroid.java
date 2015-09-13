@@ -286,24 +286,12 @@ public class FDroid extends ActionBarActivity {
             }
             ((TextView) view.findViewById(R.id.version)).setText(versionName);
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(view);
-            final AlertDialog alrt = builder.create();
+            AlertDialog alrt = new AlertDialog.Builder(this).setView(view).create();
             alrt.setTitle(R.string.about_title);
-            alrt.setButton(AlertDialog.BUTTON_NEUTRAL,
-                    getString(R.string.about_website),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
-                            Uri uri = Uri.parse("https://f-droid.org");
-                            startActivity(new Intent(Intent.ACTION_VIEW, uri));
-                        }
-                    });
             alrt.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.ok),
                     new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog,
-                                int whichButton) {
+                        public void onClick(DialogInterface dialog, int whichButton) {
                         }
                     });
             alrt.show();

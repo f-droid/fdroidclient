@@ -32,7 +32,6 @@
   <string name="about_site">Ιστοσελίδα:</string>
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
   <string name="about_version">Έκδοση:</string>
-  <string name="about_website">Ιστοσελίδα</string>
   <string name="inst">Εγκατεστημένο</string>
   <string name="not_inst">Δεν είναι εγκατεστημένο</string>
   <string name="added_on">Προστέθηκε στις %s</string>

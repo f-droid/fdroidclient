@@ -38,7 +38,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="about_site">Website:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Versie:</string>
-  <string name="about_website">Website</string>
   <string name="inst">Geïnstalleerd</string>
   <string name="not_inst">Niet geïnstalleerd</string>
   <string name="inst_known_source">Geïnstalleerd (van %s)</string>

@@ -38,7 +38,6 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="about_site">Internetseite:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
-  <string name="about_website">Internetseite</string>
   <string name="inst">Installiert</string>
   <string name="not_inst">Nicht installiert</string>
   <string name="inst_known_source">Installiert (aus %s)</string>

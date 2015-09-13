@@ -41,12 +41,12 @@
 	<string name="no_such_app">No such app found.</string>
 
 	<string name="about_title">About F-Droid</string>
+	<string name="about_version">Version:</string>
+	<string name="about_site">Website:</string>
+	<string name="about_source">Source:</string>
+	<string name="about_mail">E-Mail:</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
 		GNU GPLv3 license.</string>
-	<string name="about_site">Website: </string>
-	<string name="about_mail">Email: </string>
-	<string name="about_version">Version: </string>
-	<string name="about_website">Website</string>
 
 	<string name="incompatible">Incompatible</string>
 	<string name="inst">Installed</string>

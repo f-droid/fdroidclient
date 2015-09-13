@@ -37,7 +37,6 @@
   <string name="about_site">Уебсайт:</string>
   <string name="about_mail">Имейл:</string>
   <string name="about_version">Версия:</string>
-  <string name="about_website">Уебсайт</string>
   <string name="inst">Инсталирана</string>
   <string name="not_inst">Неинсталирана</string>
   <string name="inst_known_source">Инсталирана (от %s)</string>

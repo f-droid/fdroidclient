@@ -38,7 +38,6 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="about_site">Site web :</string>
   <string name="about_mail">Courriel :</string>
   <string name="about_version">Version :</string>
-  <string name="about_website">Site web</string>
   <string name="inst">Installée</string>
   <string name="not_inst">Non installée</string>
   <string name="inst_known_source">Installé (depuis %s)</string>

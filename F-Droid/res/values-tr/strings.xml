@@ -38,7 +38,6 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_site">Ağ sitesi:</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Sürüm:</string>
-  <string name="about_website">Ağ sitesi</string>
   <string name="inst">Kurulu</string>
   <string name="not_inst">Kurulu değil</string>
   <string name="inst_known_source">Kuruldu (şuradan: %s)</string>

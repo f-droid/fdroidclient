@@ -41,8 +41,6 @@
     <string name="about_site">אתר רשת: </string>
     <string name="about_mail">דוא״ל: </string>
     <string name="about_version">גרסא: </string>
-    <string name="about_website">אתר רשת</string>
-
     <string name="inst">מותקנת</string>
     <string name="not_inst">לא מותקנת</string>
     <string name="inst_known_source">מותקנת (מתוך %s)</string>

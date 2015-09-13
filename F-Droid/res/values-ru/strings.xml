@@ -40,7 +40,6 @@
   <string name="about_site">Сайт:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Версия:</string>
-  <string name="about_website">Сайт</string>
   <string name="inst">Установлено</string>
   <string name="not_inst">Не установлено</string>
   <string name="inst_known_source">Установлено (из %s)</string>

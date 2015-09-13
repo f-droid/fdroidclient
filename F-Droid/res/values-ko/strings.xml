@@ -38,7 +38,6 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="about_site">웹사이트:</string>
   <string name="about_mail">이메일:</string>
   <string name="about_version">버전:</string>
-  <string name="about_website">웹사이트</string>
   <string name="inst">설치됨</string>
   <string name="not_inst">설치되지 않음</string>
   <string name="inst_known_source">설치됨 (%s (으)로부터)</string>

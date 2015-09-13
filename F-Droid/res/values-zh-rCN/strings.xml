@@ -34,7 +34,6 @@
   <string name="about_site">网站：</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">版本：</string>
-  <string name="about_website">网站</string>
   <string name="inst">已安装</string>
   <string name="not_inst">未安装</string>
   <string name="added_on">添加于 %s</string>

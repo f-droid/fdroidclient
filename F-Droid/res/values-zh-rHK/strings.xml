@@ -34,7 +34,6 @@
   <string name="about_site">網站：</string>
   <string name="about_mail">電郵：</string>
   <string name="about_version">版本：</string>
-  <string name="about_website">網站</string>
   <string name="inst">已安裝</string>
   <string name="not_inst">沒有安裝</string>
   <string name="inst_known_source">已安裝 (來自 %s)</string>
