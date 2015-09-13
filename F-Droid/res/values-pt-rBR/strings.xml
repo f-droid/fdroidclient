@@ -18,8 +18,8 @@
   <string name="never">nunca</string>
   <string name="update_interval">Intervalo de atualização automática</string>
   <string name="update_interval_zero">Não atualizar a lista de aplicativos automaticamente</string>
-  <string name="automatic_scan_wifi">Apenas com wifi</string>
-  <string name="automatic_scan_wifi_on">Atualizar a lista de aplicativos automaticamente apenas com wifi</string>
+  <string name="automatic_scan_wifi">Apenas com Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Atualizar a lista de aplicativos automaticamente apenas com Wi-Fi</string>
   <string name="notify">Notificar</string>
   <string name="notify_on">Notificar quando houver atualizações disponíveis</string>
   <string name="update_history">Atualizar histórico</string>
@@ -144,18 +144,18 @@ Você quer atualizá-los?</string>
   <string name="no_applications_found">Nenhum aplicativo encontrado</string>
   <string name="icon">ícone</string>
   <string name="fingerprint">Impressão digital:</string>
-  <string name="wifi_network">Rede WiFi:</string>
+  <string name="wifi_network">Rede Wi-Fi:</string>
   <string name="sharing_uri">Compartilhar URL:</string>
-  <string name="enable_wifi">Ativar WiFi</string>
-  <string name="enabling_wifi">Ativando WiFi…</string>
-  <string name="same_wifi_instructions">Para conectar-se a dispositivos de outras pessoas, assegure-se de que ambos os dispositivos estão na mesma rede WiFi. Em seguida, digite a URL acima no F-Droid, ou escanei este código QR:</string>
+  <string name="enable_wifi">Ativar Wi-Fi</string>
+  <string name="enabling_wifi">Ativando Wi-Fi…</string>
+  <string name="same_wifi_instructions">Para conectar-se a dispositivos de outras pessoas, assegure-se de que ambos os dispositivos estão na mesma rede Wi-Fi. Em seguida, digite a URL acima no F-Droid, ou escanei este código QR:</string>
   <string name="qr_code">Código QR</string>
   <string name="next">Próximo</string>
   <string name="skip">Pular</string>
   <string name="qr_content_description">Código QR da URL do repositório</string>
-  <string name="qr_wizard_wifi_network_instructions">Escanear este código QR para conectar-se à mesma rede WiFi deste dispositivo.</string>
+  <string name="qr_wizard_wifi_network_instructions">Escanear este código QR para conectar-se à mesma rede Wi-Fi deste dispositivo.</string>
   <string name="qr_wizard_download_instructions">Escanear este código QR para conectar-se ao site web para começar.</string>
-  <string name="send_fdroid_via_wifi">Enviar F-Droid via WiFi…</string>
+  <string name="send_fdroid_via_wifi">Enviar F-Droid via Wi-Fi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Ativar proxy HTTP</string>
   <string name="enable_proxy_summary">Configurar proxy HTTP para todas as solicitaçõs de rede</string>
@@ -211,7 +211,7 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
   <string name="minsdk_or_later">%s ou posterior</string>
   <string name="up_to_maxsdk">até %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s até %2$s</string>
-  <string name="not_on_same_wifi">O seu dispositivo não está na mesma WiFi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
+  <string name="not_on_same_wifi">O seu dispositivo não está no mesmo Wi-Fi do repositório local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
   <string name="requires_features">Requer: %1$s</string>
   <string name="app_icon">Ícone do aplicativo</string>
   <string name="repo_icon">Ícone do repositório</string>
@@ -238,7 +238,7 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
   <string name="system_permission_denied_body">Esta opção só está disponível quando o F-Droid está instalado como um aplicativo de sistema.</string>
   <string name="app_description">F-Droid é um catálogo instalável de aplicativos FOSS (Software Livre e de Código Aberto) para a plataforma Android. O cliente faz com que seja fácil navegar, instalar e manter o controle das atualizações no seu dispositivo.</string>
   <string name="swap_nfc_description">Caso seu(sua) amigo(a) encoste o telefone dele(a) junto ao seu.</string>
-  <string name="swap_join_same_wifi">Juntar-se a mesma rede WiFi do(a) seu(sua) amigo(a)</string>
+  <string name="swap_join_same_wifi">Juntar-se a mesma rede Wi-Fi do(a) seu(sua) amigo(a)</string>
   <string name="swap_use_bluetooth">Usar bluetooth ao invés disso</string>
   <string name="swap_wifi_help">Saber mais sobre WiFi</string>
   <string name="menu_swap">Permutar aplicativos</string>
@@ -267,10 +267,35 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
 	<string name="pref_language">Idioma</string>
     <string name="pref_language_default">Padrão do sistema</string>
 
-    <string name="wifi">WiFi</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Ponto de acesso</string>
 
-    <string name="empty_installed_app_list">Nenhum aplicativo instalados.\n\nExistem aplicativos no seu dispositivo, mas eles não estão disponíveis pelo F-Droid. Isso pode ser porque você precisa atualizar seus repositórios, ou os repositórios realmente não têm os seus aplicativos disponíveis.</string>
+    <string name="empty_installed_app_list">Nenhum aplicativo instalado.\n\nExistem aplicativos no seu dispositivo, mas eles não estão disponíveis pelo F-Droid. Isso pode ser porque você precisa atualizar seus repositórios, ou os repositórios realmente não têm os seus aplicativos disponíveis.</string>
     <string name="empty_swap_app_list">Nenhum aplicativo disponível para permuta.\n\nOu o dispositivo com o qual você está permutando não ofereceu nenhum aplicativo para permuta, ou ocorreu um erro durante a comunicação com o mesmo.</string>
     <string name="empty_available_app_list">Nenhum aplicativo nesta categoria.\n\nTente selecionar uma categoria diferente ou atualizar seus repositórios para obter uma nova lista de aplicativos.</string>
+    <string name="empty_can_update_app_list">Todos aplicativos atualizados.\n\nParabéns! Todos os seus aplicativos estão atualizados (ou os seus repositórios estão desatualizados).</string>
+
+    <string name="install_error_title">Erro ao instalar</string>
+    <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
+    <string name="install_error_cannot_parse">Ocorreu um erro ao analisar o pacote</string>
+    <string name="uninstall_error_title">Error ao desinstalar</string>
+    <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
+    <string name="system_permission_install_via_root">Instalar F-Droid privilegiado</string>
+    <string name="system_install_first_time_notification">Instalar F-Droid privilegiado?</string>
+    <string name="system_install_first_time_notification_message_short">Toque para obter mais informações.</string>
+    <string name="system_install_first_time_notification_message">Toque para instalar o F-Droid privilegiado, intimamente ligado com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.\nVocê também pode fazer isso depois nas preferências do F-Droid.</string>
+    <string name="system_install_post_success">F-Droid privilegiado foi instalado com sucesso</string>
+    <string name="system_install_post_fail">Falha na instalação do F-Droid privilegiado</string>
+    <string name="system_install_post_success_message">O F-Droid privilegiado foi instalado com sucesso. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.</string>
+    <string name="system_install_post_fail_message">A instalação do F-Droid privilegiado falhou. O método de instalação não é suportado por todas as distribuições do Android, por favor consulte o rastreador de bugs do F-Droid para mais informações.</string>
+    <string name="system_install_installing">instalando…</string>
+    <string name="system_install_uninstalling">desinstalando…</string>
+    <string name="system_install_question">Você quer instalar o F-Droid privilegiado?\nIsto leva até 10 segundos.</string>
+    <string name="system_install_question_lollipop">Você quer instalar o F-Droid privilegiado?\nIsto leva até 10 segundos e o dispositivo será <b>reinicializado</b> depois.</string>
+    <string name="system_install_first_time_message">Parece que você tem acesso root no seu dispositivo. Agora você pode instalar o F-Droid privilegiado, intimamente integrado com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.</string>
+    <string name="system_uninstall">Você quer desinstalar o F-Droid privilegiado?</string>
+    <string name="system_uninstall_message">Isso irá desinstalar o F-Droid privilegiado.</string>
+    <string name="system_uninstall_button">Desinstalar</string>
+
+    <string name="swap_nfc_title">Toque para permutar</string>
     </resources>
