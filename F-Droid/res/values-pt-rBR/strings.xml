@@ -64,8 +64,8 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="repo_add_fingerprint">Impressão digital (opcional)</string>
   <string name="repo_exists_add_fingerprint">Este repositório já está configurado, isto adicionará nova informação sobre a chave.</string>
   <string name="repo_exists_enable">Este repositório já está configurado, confirma que quer reativá-lo.</string>
-  <string name="repo_exists_and_enabled">O repositório já está configurado e habilitado!</string>
-  <string name="repo_delete_to_overwrite">Você deve apagar este repositório antes para poder adicionar um com uma chave diferente!</string>
+  <string name="repo_exists_and_enabled">O repositório já está configurado e habilitado.</string>
+  <string name="repo_delete_to_overwrite">Você deve apagar este repositório antes para poder adicionar um com uma chave diferente.</string>
   <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
   <string name="menu_update_repo">Atualizar repositórios</string>
   <string name="menu_manage">Gerenciar Repositórios</string>
@@ -93,7 +93,7 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="antinonfreeadlist">Este aplicativo promove complementos não livres</string>
   <string name="antinonfreenetlist">Este aplicativo promove serviços de rede não livres</string>
   <string name="antinonfreedeplist">Este aplicativo depende de aplicativos não livres</string>
-  <string name="antiupstreamnonfreelist">O código fonte original não é totalmente livre.</string>
+  <string name="antiupstreamnonfreelist">O código fonte original não é totalmente livre</string>
   <string name="display">Mostrar</string>
   <string name="expert">Especialista</string>
   <string name="expert_on">Mostrar informações extras e habilitar os ajustes extras</string>
