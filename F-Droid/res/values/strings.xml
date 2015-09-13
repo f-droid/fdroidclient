@@ -209,22 +209,18 @@
     <string name="repo_not_yet_updated">This repository has not been used yet.
         In order to view the apps it provides, you will need to update
         it.\n\nOnce updated, the description and other details will
-        become available here.
-    </string>
+        become available here.</string>
     <string name="repo_delete_details">Do you want to delete the \"{0}\"
         repository, which has {1} apps in it? Any installed apps will NOT be
         removed, but you will not be able to update them through F-Droid any
-        more.
-    </string>
+        more.</string>
     <string name="unknown">Unknown</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
         apps from it will no longer be available from F-Droid.\n\nNote: All
-        previously installed apps will remain on your device.
-    </string>
+        previously installed apps will remain on your device.</string>
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
-        need to re-enable this repository to install apps from it.
-    </string>
+        need to re-enable this repository to install apps from it.</string>
     <string name="repo_added">Saved F-Droid repository %1$s.</string>
     <string name="repo_searching_address">Looking for F-Droid repository at\n%1$s</string>
     <string name="minsdk_or_later">%s or later</string>
