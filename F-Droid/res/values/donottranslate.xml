@@ -35,7 +35,6 @@
         <item>cs</item>
         <item>de</item>
         <item>el</item>
-        <item>en-rUS</item>
         <item>eo</item>
         <item>es</item>
         <item>eu</item>
@@ -66,7 +65,6 @@
         <item>ug</item>
         <item>uk</item>
         <item>vi</item>
-        <item>zh</item>
         <item>zh-rCN</item>
         <item>zh-rHK</item>
     </string-array>
