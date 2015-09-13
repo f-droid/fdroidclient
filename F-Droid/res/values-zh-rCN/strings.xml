@@ -56,7 +56,6 @@
   <string name="choose_bt_send">选择蓝牙发送方式</string>
   <string name="repo_add_url">软件源地址</string>
   <string name="repo_add_fingerprint">指纹（可选）</string>
-  <string name="repo_exists">该软件仓库已经存在！</string>
   <string name="repo_exists_add_fingerprint">此软件源已经设置，该操作将会添加新的密钥信息。</string>
   <string name="repo_exists_enable">此软件源已经设置，请确认您是否要重新启用它。</string>
   <string name="repo_exists_and_enabled">此软件源已经设置好并已启用！</string>
@@ -69,7 +68,6 @@
   <string name="menu_about">关于</string>
   <string name="menu_search">搜索</string>
   <string name="menu_add_repo">添加新软件源</string>
-  <string name="menu_rem_repo">移除软件源</string>
   <string name="menu_launch">运行</string>
   <string name="menu_share">分享</string>
   <string name="menu_install">安装</string>
@@ -105,8 +103,6 @@
   <string name="category_whatsnew">新鲜货</string>
   <string name="category_recentlyupdated">最近更新</string>
   <string name="local_repo">本地软件源</string>
-  <string name="updating">更新中…</string>
-  <string name="update_repo">更新软件源</string>
   <string name="deleting_repo">正在删除当前软件源…</string>
   <string name="icon">图标</string>
   <string name="proxy">代理</string>
@@ -131,7 +127,6 @@
   <string name="theme">主题</string>
   <string name="unsigned">未签名</string>
   <string name="unverified">未验证的</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">应用程序数量</string>
   <string name="repo_fingerprint">应用程序签名密钥指纹 (SHA-256)</string>
   <string name="repo_description">描述</string>
@@ -143,8 +138,6 @@
 要想查看该软件源提供的应用程序，您需要先更新它。
 
 更新之后，软件描述以及其它细节将会在这里显示。</string>
-  <string name="repo_delete_details">您想要删除软件源 \"{0}\" 吗？
-该软件源含有 {1} 个软件。任何已经安装的软件都不会被卸载，但是您以后将不能通过 F-Droid 来更新它们。</string>
   <string name="unknown">未知</string>
   <string name="repo_confirm_delete_title">删除应用程序仓库？</string>
   <string name="repo_confirm_delete_body">删除软件源意味着

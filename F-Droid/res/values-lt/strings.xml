@@ -37,7 +37,6 @@
   <string name="many_updates_available">Galite įdiegti %d atnaujinimus.</string>
   <string name="send_via_bluetooth">Siųsti per Bluetooth</string>
   <string name="repo_add_url">Saugyklos adresas</string>
-  <string name="repo_exists">Ši saugykla jau pridėta!</string>
   <string name="menu_update_repo">Atnaujinti saugyklas</string>
   <string name="menu_manage">Saugyklos</string>
   <string name="menu_send_apk_bt">Siųst FDroid.apk per Bluetooth…</string>
@@ -45,7 +44,6 @@
   <string name="menu_about">Apie</string>
   <string name="menu_search">Ieškoti</string>
   <string name="menu_add_repo">Nauja saugykla</string>
-  <string name="menu_rem_repo">Pašalinti saugyklą</string>
   <string name="menu_launch">Vykdyti</string>
   <string name="menu_share">Dalintis</string>
   <string name="menu_install">Įdiegti</string>
@@ -64,12 +62,8 @@
   <string name="category_all">Rodyti visas</string>
   <string name="category_whatsnew">Naujienos</string>
   <string name="category_recentlyupdated">Neseniai atnaujinta</string>
-  <string name="updating">Atnaujinama…</string>
-  <string name="update_repo">Naujinti saugyklą</string>
   <string name="deleting_repo">Šalinama pasirinkta saugykla…</string>
-  <string name="enable_wifi">Įjungti belaidį (WiFi)</string>
   <string name="next">Toliau</string>
-  <string name="send_fdroid_via_wifi">Nusiųsti FDroid programą per WiFi…</string>
   <string name="status_connecting_to_repo">Jungiamasi prie
 %1$s</string>
   <string name="repos_unchanged">Įjungtose saugyklose nėra nieko naujo</string>
@@ -81,7 +75,6 @@
   <string name="repo_update">Atnaujinti</string>
   <string name="repo_name">Pavadinimas</string>
   <string name="repo_not_yet_updated">Ši saugykla dar nebuvo naudota. Norėdami pamatyti čia esančias programas, turite saugyklą atnaujinti. Atnaujinus, programų aprašymai taps matomi.</string>
-  <string name="repo_delete_details">Ar norite pašalinti saugyklą \"{0}\", turinčią {1} programas? Jau įkeltos šios saugyklos programos pašalintos NEBUS, tačiau negalėsite jų automatiškai atnaujinti per F-Droid.</string>
   <string name="repo_confirm_delete_title">Pašalinti saugyklą?</string>
   <string name="repo_confirm_delete_body">Ištrynus saugyklą, jos programų katalogas nebebus pasiekiamas su F-Droid. Tačiau iki trynimo iš saugyklos įkeltos programos pašalintos nebus.</string>
   <string name="repo_disabled_notification">\"%1$s\" pažymėta kaip nenaudotina. Jei norite įkelti programas iš šios saugyklos, turite pirma leisti tai savo nustatymuose.</string>

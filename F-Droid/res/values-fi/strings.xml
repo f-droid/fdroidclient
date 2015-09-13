@@ -63,14 +63,12 @@ käyttöehtojen mukaisesti.</string>
   <string name="send_via_bluetooth">Lähetä bluetoothilla</string>
   <string name="repo_add_url">Sovelluslähteen osoite</string>
   <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
-  <string name="repo_exists">Tämä sovelluslähde on jo olemassa.</string>
   <string name="menu_update_repo">Päivitä sovelluslähteet</string>
   <string name="menu_manage">Hallitse sovelluslähteitä</string>
   <string name="menu_preferences">Asetukset</string>
   <string name="menu_about">Tietoja</string>
   <string name="menu_search">Etsi</string>
   <string name="menu_add_repo">Uusi sovelluslähde</string>
-  <string name="menu_rem_repo">Poista sovelluslähde</string>
   <string name="menu_launch">Suorita</string>
   <string name="menu_share">Jaa</string>
   <string name="menu_install">Asenna</string>
@@ -103,26 +101,15 @@ käyttöehtojen mukaisesti.</string>
   <string name="local_repo">Paikallinen säilö</string>
   <string name="local_repo_running">F-Droid on valmis vaihtamaan</string>
   <string name="touch_to_configure_local_repo">Kosketa nähdäksesi tiedot ja salliaksesi toisten vaihtaa sovelluksiasi.</string>
-  <string name="updating">Päivitetään…</string>
-  <string name="update_repo">Päivitä säilö</string>
   <string name="deleting_repo">Poistetaan nykyistä säilöä…</string>
   <string name="adding_apks_format">Lisätään kohdetta %s säilöön…</string>
   <string name="writing_index_jar">Kirjoitetan allekirjoitettua hakemistotiedostoa (index.jar)…</string>
   <string name="failed_to_create_index">Säilöhakemiston luonti epäonnistui!</string>
   <string name="linking_apks">Linkitetään AKP-tiedostoja säilöön…</string>
   <string name="copying_icons">Kopioidaan sovelluskuvakkeita säilöön…</string>
-  <string name="no_applications_found">Sovelluksia ei löytynyt</string>
   <string name="icon">kuvake</string>
-  <string name="enable_wifi">Ota WiFi käyttöön</string>
-  <string name="enabling_wifi">Otetaan WiFiä käyttöön…</string>
-  <string name="same_wifi_instructions">Yhdistääksesi toisien ihmisten laitteisiin, varmista, että molemmat laitteet ovat samassa WiFi-verkossa. Tämän jälkeen joko kirjoita yllä oleva URL F-Droidiin tai skannaa tämä QR-koodi.</string>
-  <string name="qr_code">QR-koodi</string>
   <string name="next">Seuraava</string>
   <string name="skip">Ohita</string>
-  <string name="qr_content_description">Säilön URL:n QR-koodi</string>
-  <string name="qr_wizard_wifi_network_instructions">Skannaa tämä QR-koodi yhdistääksesi samaan WiFi-verkkoon tämän laitteen kanssa.</string>
-  <string name="qr_wizard_download_instructions">Skannaa tämä QR-koodi yhdistääksesi verkkosivuun ja päästäksesi alkuun.</string>
-  <string name="send_fdroid_via_wifi">Lähetä F-Droid WiFin kautta…</string>
   <string name="proxy">Välityspalvelin</string>
   <string name="enable_proxy_title">Ota käyttöön HTTP-välityspalvelin</string>
   <string name="enable_proxy_summary">Määritä HTTP-välityspalvelin kaikille verkkopyynnöille</string>
@@ -141,9 +128,6 @@ käyttöehtojen mukaisesti.</string>
 
 Kun päivitys on tehty, kuvaus ja muut tiedot
         tulevat saatavillesi.</string>
-  <string name="repo_delete_details">Haluatko poistaa säilön \"{0}\",
-        jossa on {1} sovellusta? Kaikki asennetut sovellukset säilyvät
-        laitteellasi, mutta et voi enää päivittää niitä F-Droidin kautta.</string>
   <string name="repo_confirm_delete_body">Säilön poistaminen tarkoittaa,
         että sieltä olevat sovellukset eivät ole enää saatavissa F-Droidin kautta.
 
@@ -175,13 +159,10 @@ Sinun pitää
   <string name="app_description">F-Droid on asennettava FOSS-sovellusten hakemisto (Free and Open Source Software) Androidille. Asiakasohjelma helpottaa selailemista, asentamista ja laitteesi pitämistä päivitettynä.</string>
   <string name="swap_nfc_description">Jos ystävälläsi on  koskekaa puhelimianne yhtäaikaa.</string>
   <string name="swap_join_same_wifi">Liity ystäväsi kanssa samaan WiFi-verkkoon</string>
-  <string name="swap_use_bluetooth">Käytä sen sijaan bluetoothia</string>
-  <string name="swap_wifi_help">Lisää tietoa WiFistä</string>
   <string name="menu_swap">Vaihda sovelluksia</string>
   <string name="swap">Vaihda sovelluksia</string>
   <string name="swap_no_wifi_network">Ei vielä verkkoa</string>
   <string name="swap_view_available_networks">(Napauta avataksesi saatavissa olevat verkot)</string>
-  <string name="swap_wifi_qr_not_working">Se ei toimi</string>
   <string name="open_qr_code_scanner">Avaa QR-koodiskanneri</string>
   <string name="swap_welcome">Tervetuloa F-Droidiin!</string>
   <string name="swap_confirm_connect">Haluatko saada sovellukset kohteesta %1$s nyt?</string>

@@ -63,7 +63,6 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="send_via_bluetooth">Über Bluetooth senden</string>
   <string name="repo_add_url">Adresse der Paketquelle</string>
   <string name="repo_add_fingerprint">Fingerabdruck (optional)</string>
-  <string name="repo_exists">Diese Paketquelle existiert bereits!</string>
   <string name="repo_exists_add_fingerprint">Diese Paketquelle ist bereits eingerichtet, dieses wird neue Schlüsselinformationen hinzuzufügen.</string>
   <string name="repo_exists_enable">Diese Paketquelle ist bereits eingerichtet, bestätigen, dass Sie diese wieder aktivieren möchten.</string>
   <string name="repo_exists_and_enabled">Die eingehende Paketquelle ist bereits eingerichtet und aktiviert!</string>
@@ -76,7 +75,6 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="menu_about">Über</string>
   <string name="menu_search">Suchen</string>
   <string name="menu_add_repo">Paketquelle hinzufügen</string>
-  <string name="menu_rem_repo">Paketquelle entfernen</string>
   <string name="menu_launch">Starten</string>
   <string name="menu_share">Empfehlen</string>
   <string name="menu_install">Installieren</string>
@@ -114,26 +112,15 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="local_repo">Lokale Paketquelle</string>
   <string name="local_repo_running">F-Droid ist bereit zum Tauschen</string>
   <string name="touch_to_configure_local_repo">Berühren, um Details zu sehen und es anderen erlauben Ihre Anwendungen zu tauschen.</string>
-  <string name="updating">Wird aktualisiert …</string>
-  <string name="update_repo">Paketquelle aktualisieren</string>
   <string name="deleting_repo">Aktuelle Paketquelle wird gelöscht …</string>
   <string name="adding_apks_format">%s wird zur Paketquelle hinzugefügt …</string>
   <string name="writing_index_jar">Signierte Indexdatei (index.jar) wird geschrieben …</string>
   <string name="failed_to_create_index">Paketquellenverzeichnis konnte nicht erstellt werden!</string>
   <string name="linking_apks">APKs werden mit der Paketquelle verknüpft …</string>
   <string name="copying_icons">Anwendungssymbole werden in die Paketquelle kopiert …</string>
-  <string name="no_applications_found">Keine Anwendungen gefunden</string>
   <string name="icon">Symbol</string>
-  <string name="enable_wifi">WLAN aktivieren</string>
-  <string name="enabling_wifi">WLAN wird aktiviert …</string>
-  <string name="same_wifi_instructions">Um sich mit den Geräten anderer Personen zu verbinden, bitte sicher stellen, dass sich beide Geräte im selben WLAN-Netzwerk befinden. Dann entweder die Adresse eingeben oder diesen QR-Code einlesen:</string>
-  <string name="qr_code">QR-Code</string>
   <string name="next">Weiter</string>
   <string name="skip">Überspringen</string>
-  <string name="qr_content_description">QR-Code der Paketquellenadresse</string>
-  <string name="qr_wizard_wifi_network_instructions">Diesen QR-Code einlesen, um mit dem selben WLAN-Netzwerk zu verbinden, wie dieses Gerät.</string>
-  <string name="qr_wizard_download_instructions">Diesen QR-Code einlesen, um zur Internetseite zu gelangen und zu starten.</string>
-  <string name="send_fdroid_via_wifi">FDroid über WLAN senden …</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">HTTP-Proxy aktivieren</string>
   <string name="enable_proxy_summary">HTTP-Proxy für alle Netzwerkanfragen konfigurieren</string>
@@ -159,7 +146,6 @@ wird verbunden</string>
   <string name="theme">Thema</string>
   <string name="unsigned">Nicht signiert</string>
   <string name="unverified">Ungeprüft</string>
-  <string name="repo_url">Adresse</string>
   <string name="repo_num_apps">Anwendungsanzahl</string>
   <string name="repo_fingerprint">Fingerabdruck des Paketquellensignaturschlüssels (SHA-256)</string>
   <string name="repo_description">Beschreibung</string>
@@ -176,9 +162,6 @@ wird verbunden</string>
 
 Nach der Aktualisierung sind die Beschreibungen und andere Details 
         hier zu finden.</string>
-  <string name="repo_delete_details">Möchten Sie die »{0}«
-        Paketquelle löschen, die {1} Anwendungen beinhaltet? Alle installierten Apps werden
-        NICHT entfernt. Allerdings werden diese nicht mehr über F-Droid aktualisiert.</string>
   <string name="unknown">Unbekannt</string>
   <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
   <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet,
@@ -219,13 +202,10 @@ Sie müssen
   <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS (Freie und Quelloffene Software) Anwendungen für die Android-Plattform. Der Client macht es auf deinem Gerät einfach zu durchsuchen, zu installieren und Aktualisierungen zu verfolgen.</string>
   <string name="swap_nfc_description">Wenn Sie die Telefone mit Ihrem Freund aneinander halten.</string>
   <string name="swap_join_same_wifi">Treten Sie dem gleichen WLAN bei wie Ihr Freund</string>
-  <string name="swap_use_bluetooth">Stattdessen Bluetooth verwenden</string>
-  <string name="swap_wifi_help">Mehr über WLAN erfahren</string>
   <string name="menu_swap">Apps tauschen</string>
   <string name="swap">Apps tauschen</string>
   <string name="swap_no_wifi_network">Noch kein Netzwerk</string>
   <string name="swap_view_available_networks">(Antippen, um verfügbare Netzwerke zu öffnen)</string>
-  <string name="swap_wifi_qr_not_working">Es funktioniert nicht</string>
   <string name="open_qr_code_scanner">QR-Code-Scanner öffnen</string>
   <string name="swap_welcome">Willkommen bei F-Droid!</string>
   <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>

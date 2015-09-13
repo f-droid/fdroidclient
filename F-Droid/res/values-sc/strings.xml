@@ -64,7 +64,6 @@ Intregadu cun sa litzèntzia
   <string name="send_via_bluetooth">Imbia tramite Bluetooth</string>
   <string name="repo_add_url">Indiritzu depòsitu</string>
   <string name="repo_add_fingerprint">Arrastu/Imprenta (optzionale)</string>
-  <string name="repo_exists">Custu depòsitu esistit giai!</string>
   <string name="repo_exists_add_fingerprint">Custu depòsitu est giai cunfiguradu, custu at a annànghere un\'informatzione crae noa.</string>
   <string name="repo_exists_enable">Custu depòsitu est giai cunfiguradu, cunfirma de lu bòlere torrare a abilitare</string>
   <string name="repo_exists_and_enabled">Custu depòsitu est giai cunfiguradu e abilitadu!</string>
@@ -77,7 +76,6 @@ Intregadu cun sa litzèntzia
   <string name="menu_about">Informatziones</string>
   <string name="menu_search">Chirca</string>
   <string name="menu_add_repo">Depòsitu nou</string>
-  <string name="menu_rem_repo">Burra depòsitu</string>
   <string name="menu_launch">Inghitza/avia</string>
   <string name="menu_share">Cumpartzi</string>
   <string name="menu_install">Installa</string>
@@ -115,26 +113,15 @@ Intregadu cun sa litzèntzia
   <string name="local_repo">Depòsitu locale</string>
   <string name="local_repo_running">F-Droid est prontu pro imbiare cun swap</string>
   <string name="touch_to_configure_local_repo">Toca pro bìere sas minujas e permìtere a àteros de retzire sas aplicatziones tuas.</string>
-  <string name="updating">Agiornande…</string>
-  <string name="update_repo">Agiorna depòsitu</string>
   <string name="deleting_repo">Burrande su depòsitu atuale…</string>
   <string name="adding_apks_format">Annanghende %s a su depòsitu…</string>
   <string name="writing_index_jar">Iscriende su documentu de ìnditze firmadu (index.jar)…</string>
   <string name="failed_to_create_index">Sa creatzione de s\'inditze de sos depòsitos est faddida!</string>
   <string name="linking_apks">Cullegande sos APK in su depòsitu…</string>
   <string name="copying_icons">Copiande sas iconas de sas aplicatziones in su depòsitu…</string>
-  <string name="no_applications_found">Peruna aplicatzione agatada</string>
   <string name="icon">icona</string>
-  <string name="enable_wifi">Abìlita su Wifi</string>
-  <string name="enabling_wifi">Abilitande su WiFi…</string>
-  <string name="same_wifi_instructions">Pro ti cunnèttere a sos dispositivos de calicun\'àteru, assegura·di chi ambos sos dispositivos siant in sa matessi retza WiFi. A pustis, inserta su URL in supra in F-Droid, o iscansi custu còdighe QR:</string>
-  <string name="qr_code">Còdighe QR</string>
   <string name="next">Imbeniente</string>
   <string name="skip">Brinca</string>
-  <string name="qr_content_description">Còdighe QR de s\'URL de su depòsitu</string>
-  <string name="qr_wizard_wifi_network_instructions">Iscansi custu còdighe QR pro ti cunnèttere a sa matessi retza Wifi de custu dispositivu.</string>
-  <string name="qr_wizard_download_instructions">Iscansi custu còdighe QR pro ti cunnèttere a su giassu/situ ìnternet in ue podes incumentzare.</string>
-  <string name="send_fdroid_via_wifi">Imbia F-Droid tramite WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Abìlita proky HTTP</string>
   <string name="enable_proxy_summary">Cunfigura proxy HTTP pro totu sas rechestas de sa retza</string>
@@ -160,7 +147,6 @@ Intregadu cun sa litzèntzia
   <string name="theme">Tema</string>
   <string name="unsigned">Non firmadu</string>
   <string name="unverified">Non verificadu</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Nùmeru de aplicatziones</string>
   <string name="repo_fingerprint">Imprenta digitale de sa Crae de su Depòsitu (SHA-256)</string>
   <string name="repo_description">Descritzione</string>
@@ -175,9 +161,6 @@ Intregadu cun sa litzèntzia
 
 A pustis, sa descritzione e sos àteros detallios ant a 
         èssere disponìbiles inoghe.</string>
-  <string name="repo_delete_details">Boles burrare su depòsitu \"{0}\",
-        chi in intro tenet {1} aplicatziones? Sas aplicatziones installadas No ant a èssere
-        removidas, ma no as a tènnere prus sa possibilidade de las agiornare tràmite F-Droid.</string>
   <string name="unknown">Disconnotu</string>
   <string name="repo_confirm_delete_title">Burrare su depòsitu?</string>
   <string name="repo_confirm_delete_body">Burrare unu depòsitu bolet nàrrere
@@ -218,13 +201,10 @@ Depes
   <string name="app_description">F-Droid est unu catàlogu installàbile de FOSS (Free and Open Source Software - Aplicatziones lìberas e a mitza aberta) pro Android. S\'aplicatzione-client permitit de chircare, installare, e compidare sos agiornamentos in su dispositivu tuo.</string>
   <string name="swap_nfc_description">Si s\'amigu tuo tenet  pone a cuntatu sos duos dispositivos.</string>
   <string name="swap_join_same_wifi">Cunnete•ti a sa matessi Wifi de s\'amigu tuo</string>
-  <string name="swap_use_bluetooth">Imprea su Bluetooth imbetzes</string>
-  <string name="swap_wifi_help">Àteras informatziones pro su WiFi</string>
   <string name="menu_swap">Imbia aplicatziones</string>
   <string name="swap">Imbia aplicatziones</string>
   <string name="swap_no_wifi_network">Peruna retza disponìbile</string>
   <string name="swap_view_available_networks">(Toca pro ammustrare sas retzas disponìbiles)</string>
-  <string name="swap_wifi_qr_not_working">No est funtzionande</string>
   <string name="open_qr_code_scanner">Aberi s\'iscansidore de còdighes QR</string>
   <string name="swap_welcome">Benènnidu in F-Droid!</string>
   <string name="swap_confirm_connect">Boles retzire como sas aplicatziones dae %1$s?</string>
@@ -255,6 +235,5 @@ Depes
     <string name="install_error_cannot_parse">B\'est istada una faddina durante s\'anàlisi de su pachete</string>
     <string name="uninstall_error_title">Faddina de disinstallatzione</string>
     <string name="uninstall_error_unknown">Disinstallatzione faddida pro cajone de una faddina disconnota</string>
-    <string name="swap_reciprocate_failed">B\'est istadu un’errore durante su tentativu de cumpartzidura cun un’àteru dispositivu. Amos galu a proare a retzire aplicatziones dae issos, ma cussu dispositivu diat pòdere non retzire aplicatziones dae nois.</string>
     <string name="swap_connection_misc_error">B\'est istada una faddina durante sa cunnessione a su dispositivu, non resessimus a cumpartzire sas aplicatziones :(</string>
     </resources>

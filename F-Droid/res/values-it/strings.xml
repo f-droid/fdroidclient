@@ -61,7 +61,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="send_via_bluetooth">Invia via Bluetooth</string>
   <string name="repo_add_url">Indirizzo repository</string>
   <string name="repo_add_fingerprint">Impronta digitale (opzionale)</string>
-  <string name="repo_exists">Questo repository esiste già!</string>
   <string name="repo_exists_add_fingerprint">Questo repository è già configurato, una nuova informazione chiave verrà aggiunta.</string>
   <string name="repo_exists_enable">Questo repository è già configurato, conferma di volerlo abilitare nuovamente.</string>
   <string name="repo_exists_and_enabled">Il nuovo repository è già configurato e abilitato!</string>
@@ -74,7 +73,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="menu_about">Informazioni</string>
   <string name="menu_search">Cerca</string>
   <string name="menu_add_repo">Nuovo Repository</string>
-  <string name="menu_rem_repo">Rimuovi Repository</string>
   <string name="menu_launch">Avvia</string>
   <string name="menu_share">Condividi</string>
   <string name="menu_install">Installa</string>
@@ -112,26 +110,15 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="local_repo">Repo Locale</string>
   <string name="local_repo_running">F-Droid è pronto per inviare con swap</string>
   <string name="touch_to_configure_local_repo">Tocca per vedere i dettagli e permettere agli altri di ricevere le tue app.</string>
-  <string name="updating">Aggiorno…</string>
-  <string name="update_repo">Aggiorna Repo</string>
   <string name="deleting_repo">Cancello la repo corrente…</string>
   <string name="adding_apks_format">Aggiungo %s alla repo…</string>
   <string name="writing_index_jar">Scrivo il file di indice fimrato (index.jar)…</string>
   <string name="failed_to_create_index">Creazione dell\'indice della repo fallita!</string>
   <string name="linking_apks">Aggiungo gli APK nella repo…</string>
   <string name="copying_icons">Copio le icone delle app nella repo…</string>
-  <string name="no_applications_found">Nessuna applicazione trovata</string>
   <string name="icon">icona</string>
-  <string name="enable_wifi">Abilita WiFi</string>
-  <string name="enabling_wifi">Abilito il WiFi…</string>
-  <string name="same_wifi_instructions">Per connetterti a dispositivi di altre persone, assicurati che entrambi i dispositivi siano sulla stessa rete WiFi. Allora o digita l\'URL sopra in F-Droid, o scansiona il codice QR:</string>
-  <string name="qr_code">Codice QR</string>
   <string name="next">Prossimo</string>
   <string name="skip">Salta</string>
-  <string name="qr_content_description">Codice QR dell\' URL della repo</string>
-  <string name="qr_wizard_wifi_network_instructions">Scannerizza questo codice QR per connetterti alla stessa wifi di questo dispositivo.</string>
-  <string name="qr_wizard_download_instructions">Scansiona questo codice QR per connetterti al sito web dove cominciare.</string>
-  <string name="send_fdroid_via_wifi">Invio FDroid via WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Abilita Proxy HTTP</string>
   <string name="enable_proxy_summary">Configura il proxy HTTP per tutte le richieste di rete</string>
@@ -157,7 +144,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Non firmato</string>
   <string name="unverified">Non verificato</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Numero di applicazioni</string>
   <string name="repo_fingerprint">Impronta digitale della Chiave del Repo (SHA-256)</string>
   <string name="repo_description">Descrizione</string>
@@ -168,7 +154,6 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="repo_not_yet_updated">Questo repository non è ancora stato utilizzato.
 Per poter vedere le applicazioni contenute, è     necessario aggiornarlo.
 Una volta aggiornato, la descrizione e le altre informazioni saranno disponibili qui.</string>
-  <string name="repo_delete_details">Si desidera eliminare il \"{0}\" repository, che contiene {1} applicazioni? Le applicazioni installate NON saranno rimosse, ma non sarà più possibile aggiornarle attraverso F-Droid.</string>
   <string name="unknown">Sconosciuto</string>
   <string name="repo_confirm_delete_title">Eliminare il repository?</string>
   <string name="repo_confirm_delete_body">Eliminare un repository implica che le applicazioni contenute non saranno più disponibili attraverso F-Droid.
@@ -201,13 +186,10 @@ Prova a collegarti a questa rete: %s</string>
   <string name="system_permission_denied_body">Questa opzione è disponibile solo quando F-Droid è installato come app di sistema.</string>
   <string name="app_description">F-Droid è un catalogo installabile di applicazioni FOSS (Free and Open Source Software) per Android. Il client rende semplice cercare, installare e tenere traccia deglii aggiornamenti sul tuo dispositivo.</string>
   <string name="swap_join_same_wifi">Collegati alla stessa WiFi del tuo amico</string>
-  <string name="swap_use_bluetooth">Usa il Bluetooth invece</string>
-  <string name="swap_wifi_help">Maggiori informazioni sulla WiFi</string>
   <string name="menu_swap">Invia apps</string>
   <string name="swap">Invia apps</string>
   <string name="swap_no_wifi_network">Nessuna rete disponibile</string>
   <string name="swap_view_available_networks">(Tocca per mostrare le reti disponibili)</string>
-  <string name="swap_wifi_qr_not_working">Non funziona</string>
   <string name="open_qr_code_scanner">Apri lo scanner per codici QR</string>
   <string name="swap_welcome">Benvenuto in F-Droid!</string>
   <string name="swap_confirm_connect">Vuoi ricevere le app da %1$s?</string>

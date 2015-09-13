@@ -54,7 +54,6 @@ Izlaists zem GNU GPLv3 licenzes</string>
   <string name="send_via_bluetooth">Bluesūtīt</string>
   <string name="repo_add_url">Repozitorija adrese</string>
   <string name="repo_add_fingerprint">Nospiedums (opcionāli)</string>
-  <string name="repo_exists">Repozitorijs jau pastāv!</string>
   <string name="repo_exists_add_fingerprint">Repozitorijs jau iestatīts, šis pievienos jaunu atslēgad info</string>
   <string name="repo_exists_enable">Reozitroris jau iestatīts, apstiprini atkārtotu ieslēgšanu</string>
   <string name="repo_exists_and_enabled">Ienākošais Repozitorijs jau iestatīts un ieslēgts!</string>
@@ -67,7 +66,6 @@ Izlaists zem GNU GPLv3 licenzes</string>
   <string name="menu_about">Par</string>
   <string name="menu_search">Meklēt</string>
   <string name="menu_add_repo">Jauns Repozitorijs</string>
-  <string name="menu_rem_repo">Dzēst Repozitoriju</string>
   <string name="menu_launch">Palaist</string>
   <string name="menu_share">Dalīties</string>
   <string name="menu_install">Instalēt</string>

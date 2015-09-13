@@ -32,7 +32,6 @@
   <string name="menu_about">Про F-Droid</string>
   <string name="menu_search">Пошук</string>
   <string name="menu_add_repo">Додати</string>
-  <string name="menu_rem_repo">Видалити</string>
   <string name="menu_launch">Запуск</string>
   <string name="menu_install">Встановити</string>
   <string name="menu_uninstall">Стерти</string>

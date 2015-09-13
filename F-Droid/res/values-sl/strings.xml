@@ -31,7 +31,6 @@ Izdan z licenco GNU GPLv3.</string>
   <string name="menu_about">O programu</string>
   <string name="menu_search">Iskanje</string>
   <string name="menu_add_repo">Novo skladišče</string>
-  <string name="menu_rem_repo">Odstrani skladišče</string>
   <string name="menu_install">Namesti</string>
   <string name="menu_uninstall">Odstrani</string>
   <string name="menu_website">Spletišče</string>

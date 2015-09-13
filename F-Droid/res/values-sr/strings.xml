@@ -62,7 +62,6 @@
   <string name="send_via_bluetooth">Пошаљи блутутом</string>
   <string name="repo_add_url">Адреса ризнице</string>
   <string name="repo_add_fingerprint">Отисак (опционо)</string>
-  <string name="repo_exists">Ова ризница већ постоји!</string>
   <string name="repo_exists_add_fingerprint">Ова ризница је већ постављена, ово ће да дода нове податке о кључевима.</string>
   <string name="repo_exists_enable">Ова ризница је већ постављена, потврдите да желите поново да је омогућите.</string>
   <string name="repo_exists_and_enabled">Ризница је већ постављена и омогућена!</string>
@@ -75,7 +74,6 @@
   <string name="menu_about">О програму</string>
   <string name="menu_search">Тражи</string>
   <string name="menu_add_repo">Нова ризница</string>
-  <string name="menu_rem_repo">Уклони ризницу</string>
   <string name="menu_launch">Покрени</string>
   <string name="menu_share">Дели</string>
   <string name="menu_install">Инсталирај</string>
@@ -113,26 +111,15 @@
   <string name="local_repo">Локална ризница</string>
   <string name="local_repo_running">Ф-дроид је спреман за размену</string>
   <string name="touch_to_configure_local_repo">Тапните за приказ детаља и да дозволите другима да размењују ваше апликације.</string>
-  <string name="updating">Ажурирам…</string>
-  <string name="update_repo">Ажурирај ризницу</string>
   <string name="deleting_repo">Бришем тренутну ризницу…</string>
   <string name="adding_apks_format">Додајем %s у ризницу…</string>
   <string name="writing_index_jar">Уписујем потписани фајл индекса (index.jar)…</string>
   <string name="failed_to_create_index">Неуспех стварања индекса ризнице!</string>
   <string name="linking_apks">Повезујем АПК фајлове у ризницу…</string>
   <string name="copying_icons">Копирам иконе апликација у ризницу…</string>
-  <string name="no_applications_found">Нема апликација</string>
   <string name="icon">икона</string>
-  <string name="enable_wifi">Омогући бежични</string>
-  <string name="enabling_wifi">Омогућујем бежични…</string>
-  <string name="same_wifi_instructions">Да бисте се могли повезати са уређајима других људи, уверите се да су сви уређаји на истој бежичној мрежи.  Затим, или укуцајте УРЛ изнад у Ф-дроид, или очитајте овај бар-кôд:</string>
-  <string name="qr_code">Бар-кôд</string>
   <string name="next">Следеће</string>
   <string name="skip">Прескочи</string>
-  <string name="qr_content_description">Бар-кôд УРЛ-а ризнице</string>
-  <string name="qr_wizard_wifi_network_instructions">Очитајте овај бар-кôд да бисте се повезали на исту бежичну мрежу као и овај уређај.</string>
-  <string name="qr_wizard_download_instructions">Очитајте овај бар-кôд како бисте се повезали на вебсајт да бисте почели.</string>
-  <string name="send_fdroid_via_wifi">Пошаљи FDroid.apk бежичним…</string>
   <string name="proxy">Прокси</string>
   <string name="enable_proxy_title">Омогући ХТТП прокси</string>
   <string name="enable_proxy_summary">Поставите ХТТП прокси за све мрежне захтеве</string>
@@ -158,7 +145,6 @@
   <string name="theme">Теме</string>
   <string name="unsigned">Непотписана</string>
   <string name="unverified">Неоверена</string>
-  <string name="repo_url">УРЛ</string>
   <string name="repo_num_apps">Број апликација</string>
   <string name="repo_fingerprint">Отисак или кључ за потписивање ризнице (SHA-256)</string>
   <string name="repo_description">Опис</string>
@@ -172,9 +158,6 @@
 Да бисте видели апликације које садржи, најпре је ажурирајте.
 
 Након тога, описи и остали детаљи ће бити доступни овде.</string>
-  <string name="repo_delete_details">Желите ли да обришете ризницу \"{0}\",
-која има {1} апликација? Инсталиране апликације НЕЋЕ бити
-уклоњене, али више их нећете моћи надоградити преко Ф-дроида.</string>
   <string name="unknown">Непознато</string>
   <string name="repo_confirm_delete_title">Обрисати ризницу?</string>
   <string name="repo_confirm_delete_body">Брисање ризнице значи да њене апликације више неће бити доступне на Ф-дроиду.
@@ -212,13 +195,10 @@
   <string name="app_description">Ф-дроид је каталог ФОСС (слободан и софтвер отвореног кôда) апликација за Андроид платформу. Клијент олакшава претрагу, инсталацију и праћење надоградњи на вашем уређају.</string>
   <string name="swap_nfc_description">Ако ваш пријатељ има НФЦ, спојите телефоне.</string>
   <string name="swap_join_same_wifi">Повежите се на исту бежичну мрежу на којој је ваш пријатељ</string>
-  <string name="swap_use_bluetooth">Користи блутут</string>
-  <string name="swap_wifi_help">Сазнајте више о бежичном</string>
   <string name="menu_swap">Размена</string>
   <string name="swap">Размена</string>
   <string name="swap_no_wifi_network">Још нема мреже</string>
   <string name="swap_view_available_networks">(Тапните за доступне мреже)</string>
-  <string name="swap_wifi_qr_not_working">Не ради</string>
   <string name="open_qr_code_scanner">Отвори читач бар-кôда</string>
   <string name="swap_welcome">Добро дошли у Ф-дроид!</string>
   <string name="swap_confirm_connect">Желите ли да добавите апликације са %1$s одмах?</string>

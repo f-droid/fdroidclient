@@ -63,7 +63,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="send_via_bluetooth">Send via Blåtann</string>
   <string name="repo_add_url">Pakkebrønnsadresse</string>
   <string name="repo_add_fingerprint">Fingeravtrykk (valgfritt)</string>
-  <string name="repo_exists">Denne pakkebrønnen er allerede lagt til!</string>
   <string name="repo_exists_add_fingerprint">Dette registret er allerede satt opp, dette vil legge til ny informasjon om nøkler.</string>
   <string name="repo_exists_enable">Dette registret er allerede satt opp, bekreft at du vil skru det på igjen.</string>
   <string name="repo_exists_and_enabled">Oppstrøms-registret er allerede oppsatt og skrudd på!</string>
@@ -76,7 +75,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="menu_about">Om</string>
   <string name="menu_search">Søk</string>
   <string name="menu_add_repo">Nytt register</string>
-  <string name="menu_rem_repo">Fjern register</string>
   <string name="menu_launch">Kjør</string>
   <string name="menu_share">Del</string>
   <string name="menu_install">Installer</string>
@@ -114,26 +112,15 @@ Lisensiert GNU GPLv3.</string>
   <string name="local_repo">Lokal pakkebrønn</string>
   <string name="local_repo_running">Sirkulering av programmer kan begynne</string>
   <string name="touch_to_configure_local_repo">Trykk for å se detaljer og for å tillate andre å sirkulere de programmene du har.</string>
-  <string name="updating">Oppdaterer…</string>
-  <string name="update_repo">Oppdater pakkebrønn</string>
   <string name="deleting_repo">Sletter gjeldende pakkebrønn…</string>
   <string name="adding_apks_format">Legger til %s til pakkebrønn…</string>
   <string name="writing_index_jar">Skriver signert indekseringsfil (index.jar)…</string>
   <string name="failed_to_create_index">Klarte ikke å indeksere pakkebrønn!</string>
   <string name="linking_apks">Lenker APK-er inn i pakkebrønn…</string>
   <string name="copying_icons">Kopierer program-ikoner til pakkebrønnen…</string>
-  <string name="no_applications_found">Ingen applikasjoner funnet</string>
   <string name="icon">ikon</string>
-  <string name="enable_wifi">Skru på Wi-Fi</string>
-  <string name="enabling_wifi">Skrur på WiFi…</string>
-  <string name="same_wifi_instructions">Sørg for å være på samme Wi-Fi-nettverk som de enhetene du vil koble til. Skriv enten inn nettadressen ovenfor i F-droid, eller skann denne QR-koden:</string>
-  <string name="qr_code">QR Kode</string>
   <string name="next">Neste</string>
   <string name="skip">Hopp over</string>
-  <string name="qr_content_description">QR-kode for pakkebrønnens nettadresse</string>
-  <string name="qr_wizard_wifi_network_instructions">Skann denne QR-koden for å koble til samme Wi-Fi nettverk som denne enheten.</string>
-  <string name="qr_wizard_download_instructions">Skann denne QR-koden for å koble til nettsiden for å komme i gang.</string>
-  <string name="send_fdroid_via_wifi">Send F-Droid over Wi-Fi…</string>
   <string name="proxy">Mellomtjener</string>
   <string name="enable_proxy_title">Skru på HTTP-mellomtjener</string>
   <string name="enable_proxy_summary">Konfigurer HTTP-mellomtjener for alle nettverksforespørsler.</string>
@@ -159,7 +146,6 @@ Lisensiert GNU GPLv3.</string>
   <string name="theme">Utseende</string>
   <string name="unsigned">Usignert</string>
   <string name="unverified">Ubekreftet</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Antall app-er</string>
   <string name="repo_fingerprint">Fingeravtrykk for signeringsnøkkel til register (SHA-256)</string>
   <string name="repo_description">Beskrivelse</string>
@@ -171,9 +157,6 @@ Lisensiert GNU GPLv3.</string>
 For å se app-ene det har tilgjengelig, må du oppdatere det.
 
 Når så er gjort, vil beskrivelser og andre detaljer bli tilgjengelige her.</string>
-  <string name="repo_delete_details">Vil du slette \"{0}\"
-registret, som har {1} app-er i seg? Alle installerte app-er vil IKKE bli
-fjernet, men det kan ikke oppdatere dem med F-droid lengre.</string>
   <string name="unknown">Ukjent</string>
   <string name="repo_confirm_delete_title">Slett register?</string>
   <string name="repo_confirm_delete_body">Sletting av register betyr
@@ -213,13 +196,10 @@ Du må
   <string name="app_description">F-droid er en ansamling fri programvare som kan installeres på Android-plattformen. Klienten gjør det enkelt å sjekke ut, installere og holde øye med oppdateringer på din enhet.</string>
   <string name="swap_nfc_description">Hvis du og din venn holder telefonene deres sammen.</string>
   <string name="swap_join_same_wifi">Koble til samme Wi-Fi-nett som din venn</string>
-  <string name="swap_use_bluetooth">Bruk Bluetooth istedet</string>
-  <string name="swap_wifi_help">Lær mer om Wi-Fi</string>
   <string name="menu_swap">Sirkuler programvare</string>
   <string name="swap">Sirkuler programvare</string>
   <string name="swap_no_wifi_network">Mangler nettverk</string>
   <string name="swap_view_available_networks">(Trykk for å åpne tilgjengelige nettverk)</string>
-  <string name="swap_wifi_qr_not_working">Det fungerer ikke</string>
   <string name="open_qr_code_scanner">Åpne QR-kode-skanner</string>
   <string name="swap_welcome">Velkommen til F-Droid!</string>
   <string name="swap_confirm_connect">Ønsker du å hente pakker fra %1$s nå?</string>

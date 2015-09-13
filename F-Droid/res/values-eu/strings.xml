@@ -45,14 +45,12 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="many_updates_available">%d eguneraketa eskuragarri.</string>
   <string name="fdroid_updates_available">F-Droid eguneraketak eskuragarri</string>
   <string name="repo_add_url">Biltegiaren helbidea</string>
-  <string name="repo_exists">Biltegi hau dagoeneko existitzen da!</string>
   <string name="menu_update_repo">Eguneratu biltegiak</string>
   <string name="menu_manage">Kudeatu biltegiak</string>
   <string name="menu_preferences">Hobespenak</string>
   <string name="menu_about">Honi buruz</string>
   <string name="menu_search">Bilatu</string>
   <string name="menu_add_repo">Biltegi berria</string>
-  <string name="menu_rem_repo">Ezabatu biltegia</string>
   <string name="menu_launch">Exekutatu</string>
   <string name="menu_share">Partekatu</string>
   <string name="menu_install">Instalatu</string>
@@ -86,7 +84,6 @@ konektatzen</string>
   <string name="compactlayout">Diseinu trinkoa</string>
   <string name="theme">Gaia</string>
   <string name="unsigned">Sinatu gabea</string>
-  <string name="repo_url">URLa</string>
   <string name="repo_num_apps">Aplikazio kopurua</string>
   <string name="repo_description">Deskribapena</string>
   <string name="repo_last_update">Azken eguneraketa</string>

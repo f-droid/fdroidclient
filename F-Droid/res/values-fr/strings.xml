@@ -63,7 +63,6 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="send_via_bluetooth">Envoyer par Bluetooth</string>
   <string name="repo_add_url">Adresse du dépôt</string>
   <string name="repo_add_fingerprint">Empreinte digitale (optionnel)</string>
-  <string name="repo_exists">Ce dépôt existe déjà!</string>
   <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, cela va ajouter les informations des nouvelles clés.</string>
   <string name="repo_exists_enable">Ce dépôt est déjà configuré, confirmer que vous voulez le réactiver.</string>
   <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé!</string>
@@ -76,7 +75,6 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="menu_about">À propos</string>
   <string name="menu_search">Rechercher</string>
   <string name="menu_add_repo">Nouveau dépôt</string>
-  <string name="menu_rem_repo">Supprimer un dépôt</string>
   <string name="menu_launch">Lancer</string>
   <string name="menu_share">Partager</string>
   <string name="menu_install">Installer</string>
@@ -114,26 +112,15 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="local_repo">Dépôt local</string>
   <string name="local_repo_running">F-Droid est prêt à être échangé</string>
   <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser les autres à échanger des apps</string>
-  <string name="updating">Mise à jour…</string>
-  <string name="update_repo">Mettre à jour le dépôt</string>
   <string name="deleting_repo">Supprimer le dépôt actuel</string>
   <string name="adding_apks_format">Ajout de %s au dépôt…</string>
   <string name="writing_index_jar">Écriture d\'un fichier d\'index signé (index.jar)…</string>
   <string name="failed_to_create_index">Échec à la création d\'un index de dépôt!</string>
   <string name="linking_apks">Création de liens pour les APKs dans le dépôt…</string>
   <string name="copying_icons">Copie des icônes des apps dans le dépôt…</string>
-  <string name="no_applications_found">Aucune application trouvée</string>
   <string name="icon">icône</string>
-  <string name="enable_wifi">Activer le WiFi</string>
-  <string name="enabling_wifi">Activation du WiFi…</string>
-  <string name="same_wifi_instructions">Pour se connecter aux appareils d\'autres personnes, assurez vous que vos appareils sont connectés sur le même réseau WiFi. Ensuite, soit tapez l\'URL ci-dessus dans F-Droid, soit scannez ce code QR:</string>
-  <string name="qr_code">Code QR</string>
   <string name="next">Suivant</string>
   <string name="skip">Passer</string>
-  <string name="qr_content_description">Code QR de l\'URL du dépôt</string>
-  <string name="qr_wizard_wifi_network_instructions">Numérisez ce code QR pour vous connecter au même réseau WiFi que cet appareil.</string>
-  <string name="qr_wizard_download_instructions">Numérisez ce code QR pour vous connecter au site web pour la prise en main.</string>
-  <string name="send_fdroid_via_wifi">Envoyez F-Droid par Wi-Fi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Activer le proxy HTTP</string>
   <string name="enable_proxy_summary">Configurer le proxy HTTP pour toutes les requêtes réseaux</string>
@@ -159,7 +146,6 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="theme">Thème</string>
   <string name="unsigned">Non signé</string>
   <string name="unverified">Non vérifié</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Nombre d\'applications</string>
   <string name="repo_fingerprint">Empreinte numérique de la clef de signature pour le dépôt (SHA-256)</string>
   <string name="repo_description">Description</string>
@@ -176,7 +162,6 @@ Publiée sous licence GNU GPLv3.</string>
 
 Une fois la mise à jour effectuée, la description 
         et les autres détails seront affichés ici.</string>
-  <string name="repo_delete_details">Voulez vous supprimer le dépôt \"{0}\", qui a {1} apps ? Aucune application installée ne sera supprimée, mais vous ne serez plus en mesure de les mettre à jour via F-Droid.</string>
   <string name="unknown">Inconnu</string>
   <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
   <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses apps ne seront plus disponibles via F-Droid.
@@ -211,13 +196,10 @@ Vous devez
   <string name="system_permission_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
   <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>
   <string name="swap_join_same_wifi">Se connecter au même WiFi que votre ami</string>
-  <string name="swap_use_bluetooth">Utiliser plutôt le Bluetooth</string>
-  <string name="swap_wifi_help">En apprendre plus sur le réseau WiFi</string>
   <string name="menu_swap">Échanger des apps</string>
   <string name="swap">Échanger des apps</string>
   <string name="swap_no_wifi_network">Pas encore de réseau</string>
   <string name="swap_view_available_networks">(Appuyez pour ouvrir les réseaux disponibles)</string>
-  <string name="swap_wifi_qr_not_working">Ça ne marche pas</string>
   <string name="open_qr_code_scanner">Ouvrir le scanner QR Code</string>
   <string name="swap_welcome">Bienvenue sur F-Droid/u00A0!</string>
   <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenantu00A0?</string>

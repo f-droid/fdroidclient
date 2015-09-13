@@ -63,7 +63,6 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="send_via_bluetooth">Unviar pente Bluetooth</string>
   <string name="repo_add_url">Direición del repositoriu</string>
   <string name="repo_add_fingerprint">Buelga (opcional)</string>
-  <string name="repo_exists">¡Yá esiste esti repositoriu!</string>
   <string name="repo_exists_add_fingerprint">Yá ta configuráu esti repositoriu, esto amestará la información de la clave nueva.</string>
   <string name="repo_exists_enable">Yá ta configuráu esti respositoriu, confirma que quies rehabilitalu.</string>
   <string name="repo_exists_and_enabled">¡Yá ta configuráu y habilitáu\'l repositoriu d\'entrada!</string>
@@ -76,7 +75,6 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="menu_about">Tocante a</string>
   <string name="menu_search">Guetar</string>
   <string name="menu_add_repo">Repostoriu nuevu</string>
-  <string name="menu_rem_repo">Desaniciar repositoriu</string>
   <string name="menu_launch">Executar</string>
   <string name="menu_share">Compartir</string>
   <string name="menu_install">Instalar</string>
@@ -114,26 +112,15 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="local_repo">Repositoriu llocal</string>
   <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
   <string name="touch_to_configure_local_repo">Toca pa ver los detalles y almitir a otros intercambiar les tos aplicaciones.</string>
-  <string name="updating">Anovando…</string>
-  <string name="update_repo">Anovar reposotoriu</string>
   <string name="deleting_repo">Desaniciando\'l repositoriu llocal</string>
   <string name="adding_apks_format">Amestando %s al repositoriu…</string>
   <string name="writing_index_jar">Escribiendo\'l ficheru d\'índiz robláu (index.jar)…</string>
   <string name="failed_to_create_index">¡Fallu al crear l\'índiz del repositoriu!</string>
   <string name="linking_apks">Enllazando APKs nel repositoriu…</string>
   <string name="copying_icons">Copiando iconos d\'aplicaciones al repositoriu…</string>
-  <string name="no_applications_found">Nun s\'alcontraron aplicaciones</string>
   <string name="icon">iconu</string>
-  <string name="enable_wifi">Habilitar WiFi</string>
-  <string name="enabling_wifi">Habilitando\'l WiFi…</string>
-  <string name="same_wifi_instructions">Pa coneutar a los preseos d\'otra xente, asegúrate qu\'entrambos preseos tán na mesma rede WiFi. Dempués escribi la URL d\'enriba o escania esti códigu QR:</string>
-  <string name="qr_code">Códigu QR</string>
   <string name="next">Siguiente</string>
   <string name="skip">Saltar</string>
-  <string name="qr_content_description">Códigu QR de la URL del repositoriu</string>
-  <string name="qr_wizard_wifi_network_instructions">Escania esti códigu QR pa coneutar a la mesma rede WiFi d\'esti preséu.</string>
-  <string name="qr_wizard_download_instructions">Escania esti códigu QR pa coneutar al sitiu web p\'aniciase.</string>
-  <string name="send_fdroid_via_wifi">Unviar FDroid pente WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Habilitar proxy HTTP</string>
   <string name="enable_proxy_summary">Configurar el proxy HTTP pa toles peticiones de rede</string>
@@ -159,7 +146,6 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Non robáu</string>
   <string name="unverified">Non verificáu</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Númberu d\'aplicaciones</string>
   <string name="repo_fingerprint">Buelga de la clave de robláu del repositoriu (SHA-256)</string>
   <string name="repo_description">Descripción</string>
@@ -172,7 +158,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
 Pa ver les aplicaciones qu\'apurre, necesitarás anovalu.
 
 Una vegada anováu, la descripción y los otros detalles tarán disponibles equí.</string>
-  <string name="repo_delete_details">¿Quies desaniciar el repositoriu «{0}», que contién {1} aplicaciones n\'elli? NUN se desaniciará dal aplicación instalada pero tampoco podrás anovales pente F-Droid más.</string>
   <string name="unknown">Desconocíu</string>
   <string name="repo_confirm_delete_title">¿Desaniciar repositoriu?</string>
   <string name="repo_confirm_delete_body">Desaniciar un repositoriu quier dicir que les aplicaciones d\'elli nun tarán disponibles dende F-Droid.
@@ -211,13 +196,10 @@ d\'amestar! Intenta xunite a esta rede: %s</string>
   <string name="app_description">F-Droid ye un catálogu de software FOSS (software llibre y de baldre) instalable pa la plataforma Android. El veceru fai cenciello restolar, instalar y caltener el rastrexu d\'anovamientos nel to preséu.</string>
   <string name="swap_nfc_description">Si\'l to collaciu tocó los vuesos teléfonos xuntos.</string>
   <string name="swap_join_same_wifi">Xúnite a la mesma Wifi que\'l to collaciu</string>
-  <string name="swap_use_bluetooth">Usar Bluetooth nel so llugar</string>
-  <string name="swap_wifi_help">Deprendi más tocante al Wifi</string>
   <string name="menu_swap">Intercambiar aplicaciones</string>
   <string name="swap">Intercambéu d\'aplicaciones</string>
   <string name="swap_no_wifi_network">Entá nun hai rede</string>
   <string name="swap_view_available_networks">(Calca p\'abrir les redes disponibles)</string>
-  <string name="swap_wifi_qr_not_working">Nun ta furrulando</string>
   <string name="open_qr_code_scanner">Abrir l\'escáner de códigos QR</string>
   <string name="swap_welcome">¡Bienllegáu a F-Droid!</string>
   <string name="swap_confirm_connect">¿Quies consiguir aplicaciones de %1$s agora?</string>

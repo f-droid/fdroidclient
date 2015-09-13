@@ -76,7 +76,6 @@
 
     <string name="repo_add_url">כתובת מאגר</string>
     <string name="repo_add_fingerprint">טביעת אצבע (רשות)</string>
-    <string name="repo_exists">מאגר זה כבר קיים</string>
     <string name="repo_delete_to_overwrite">תחילה עליך למחוק את מאגר זה בטרם תעמוד לרשותך האפשרות להוסיף אחד עם מפתח אחר.</string>
     <string name="bad_fingerprint">טביעת אצבע רעה</string>
     <string name="invalid_url">אין זה URL תקין.</string>
@@ -89,7 +88,6 @@
     <string name="menu_about">אודות</string>
     <string name="menu_search">חפש</string>
     <string name="menu_add_repo">מאגר חדש</string>
-    <string name="menu_rem_repo">הסר מאגר</string>
     <string name="menu_launch">הרץ</string>
     <string name="menu_share">שתף</string>
     <string name="menu_install">התקן</string>
@@ -135,27 +133,15 @@
     <string name="local_repo">מאגר מקומי</string>
     <string name="local_repo_running">F-Droid הינו מוכן להחליף</string>
     <string name="touch_to_configure_local_repo">גע כדי לצפות בפרטים ולהתיר לאחרים להחליף עם האפליקציות שלך.</string>
-    <string name="updating">כעת מעדכן…</string>
-    <string name="update_repo">עדכן מאגר</string>
     <string name="deleting_repo">כעת מוחק מאגר נוכחי…</string>
     <string name="adding_apks_format">הוסף את %s למאגר…</string>
     <string name="writing_index_jar">כעת כותב קובץ אינדקס חתום (index.jar)…</string>
     <string name="failed_to_create_index">נכשל ליצור אינדקס מאגר!</string>
     <string name="linking_apks">כעת מקשר APK לתוך המאגר…</string>
     <string name="copying_icons">כעת מעתיק סמלי אפליקציה לתוך המאגר…</string>
-    <string name="no_applications_found">לא נמצאו אפליקציות</string>
     <string name="icon">סמל</string>
-    <string name="enable_wifi">אפשר WiFi</string>
-    <string name="enabling_wifi">כעת מאפשר WiFi…</string>
-    <string name="same_wifi_instructions">כדי להתחבר למכשירים של אנשים אחרים, ודא כי שני המכשירים נמצאים על אותה רשת WiFi.  אחרי כן הקלד את הכתובת לעיל לתוך F-Droid, או סרוק את קוד QR זה:</string>
-    <string name="qr_code">קוד QR</string>
     <string name="next">הלאה</string>
     <string name="skip">דלג</string>
-    <string name="qr_content_description">קוד QR של URL מאגר</string>
-    <string name="qr_wizard_wifi_network_instructions">סרוק את קוד QR כדי להתחבר לאותה רשת WiFi כמו מכשיר זה.</string>
-    <string name="qr_wizard_download_instructions">סרוק את קוד QR כדי להתחבר לאתר רשת לצורך התחלה.</string>
-    <string name="send_fdroid_via_wifi">שלח את F-Droid דרך WiFi…</string>
-
     <string name="proxy">פרוקסי</string>
     <string name="enable_proxy_title">אפשר פרוקסי HTTP</string>
     <string name="enable_proxy_summary">הגדר פרוקסי HTTP Proxy לכל בקשת רשת</string>
@@ -182,7 +168,6 @@
     <string name="theme">מוטיב</string>
     <string name="unsigned">לא חתום</string>
     <string name="unverified">לא בדוק</string>
-    <string name="repo_url">קישור</string>
     <string name="repo_num_apps">מספר של אפליקציות</string>
     <string name="repo_description">תיאור</string>
     <string name="repo_last_update">עדכון אחרון</string>
@@ -212,7 +197,6 @@
     <string name="Security">אבטחה</string>
     <string name="System">מערכת</string>
     <string name="empty_installed_app_list">אין אפליקציות מותקנות.\n\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן זמינות מתוך F-Droid. אפשרי כי זה כך מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.</string>
-    <string name="empty_swap_app_list">אין אפליקציות זמינות להחלפה.\n\nאו שהמכשיר עמו אתה מחליף לא הציע שום אפליקציות להחלפה, או ששגיאה אחרת אירעה במהלך תקשור עמו.</string>
     <string name="empty_available_app_list">אין אפליקציות בתוך קטגוריה זו.\n\nנסה לבחור קטגוריה אחרת או לעדכן את המאגרים שלך כדי להשיג רשימה רעננה של אפליקציות.</string>
     <string name="empty_can_update_app_list">כל האפליקציות מעודכנות.\n\nברכותינו! כל האפליקציות שלך הינן מעודכנות (או שהמאגרים שלך אינם מעודכנים).</string>
 
@@ -247,8 +231,6 @@
     <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד בטלפונים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרף לאותו Wifi כמו חברך</string>
     <string name="swap_join_this_hotspot">עזור לחברך להצטרף לנקודה חמה</string>
-    <string name="swap_use_bluetooth">השתמש בהתקשרות Bluetooth במקום</string>
-    <string name="swap_wifi_help">למדו עוד אודות Wifi</string>
     <string name="menu_swap">החלף אפליקציה</string>
     <string name="swap">החלף אפליקציה</string>
     <string name="swap_success">החלף צלח!</string>
@@ -256,11 +238,9 @@
     <string name="swap_active_hotspot">נקודה החמה שלך הינה פעילה</string>
     <string name="swap_view_available_networks">(הקש כדי לפתוח רשתות זמינות)</string>
     <string name="swap_switch_to_wifi">(הקש כדי להחליף לרשת WiFi)</string>
-    <string name="swap_wifi_qr_not_working">זה לא עובד</string>
     <string name="open_qr_code_scanner">פתח סורק קוד QR</string>
     <string name="swap_welcome">ברוכים הבאים לחנות F-Droid!</string>
     <string name="swap_confirm_connect">האם ברצונך לקבל אפליקציות מתוך %1$s כעת?</string>
-    <string name="swap_reciprocate_failed">אירעה שגיאה במהלך ניסיון החלף עם התקן אחר. אנחנו עדיין ננסה להשיג אפליקציות מהם, אך הם אולי לא יוכלו להשיג אפליקציות מאיתנו.</string>
     <string name="swap_tap_to_select_apps">הקש כדי לבחור את האפליקציות אשר ברצונך להחליף.</string>
     <string name="swap_dont_show_again">אל תציג זאת שוב</string>
     <string name="swap_scan_or_type_url">אדם אחד צריך לסרוק את הקוד, או להקליד URL של המחליף האחר לתוך דפדפן.</string>

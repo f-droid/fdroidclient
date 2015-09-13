@@ -63,7 +63,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="send_via_bluetooth">Verstuur via Bluetooth</string>
   <string name="repo_add_url">Bron-adres</string>
   <string name="repo_add_fingerprint">Vingerafdruk (optioneel)</string>
-  <string name="repo_exists">Deze softwarebron bestaat al!</string>
   <string name="repo_exists_add_fingerprint">De softwarebron is al ingesteld. Nieuwe sleutelinformatie zal worden toegevoegd.</string>
   <string name="repo_exists_enable">Deze softwarebron is al ingesteld. Bevestig dat u deze weer wilt inschakelen?</string>
   <string name="repo_exists_and_enabled">De binnenkomende softwarebron is al ingesteld en geactiveerd!</string>
@@ -76,7 +75,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="menu_about">Over</string>
   <string name="menu_search">Zoeken</string>
   <string name="menu_add_repo">Nieuwe bron</string>
-  <string name="menu_rem_repo">Verwijder bron</string>
   <string name="menu_launch">Start</string>
   <string name="menu_share">Delen</string>
   <string name="menu_install">Installeren</string>
@@ -114,26 +112,15 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="local_repo">Collectie gedeelde apps</string>
   <string name="local_repo_running">F-Droid is klaar om apps te delen</string>
   <string name="touch_to_configure_local_repo">Raak aan om details te bekijken en anderen gedeelde apps van jou te laten downloaden.</string>
-  <string name="updating">Bezig met updaten…</string>
-  <string name="update_repo">Vernieuw Bronnen</string>
   <string name="deleting_repo">Bron verwijderen…</string>
   <string name="adding_apks_format">%s aan gedeelde app collectie toevoegen…</string>
   <string name="writing_index_jar">Gesigneerd index bestand (index.jar) aan het schrijven…</string>
   <string name="failed_to_create_index">Kon indexbestand voor gedeelde apps niet aanmaken!</string>
   <string name="linking_apks">APKs aan collectie toevoegen…</string>
   <string name="copying_icons">App iconen aan collectie toevoegen…</string>
-  <string name="no_applications_found">Geen apps gevonden</string>
   <string name="icon">icoon</string>
-  <string name="enable_wifi">Schakel WiFi in</string>
-  <string name="enabling_wifi">WiFi inschakelen…</string>
-  <string name="same_wifi_instructions">Om apps te delen, zorg dat beide apparaten op hetzelfde WiFi netwerk zitten. Type dan het bovenstaande webadres in F-Droid, of scan deze QR code:</string>
-  <string name="qr_code">QR code</string>
   <string name="next">Volgende</string>
   <string name="skip">Overslaan</string>
-  <string name="qr_content_description">QR code of appcollectie webadres</string>
-  <string name="qr_wizard_wifi_network_instructions">Scan deze QR code om het hetzelfde WiFi netwerk als dit apparaat te verbinden.</string>
-  <string name="qr_wizard_download_instructions">Scan deze QR code om met de website met startinstructies te verbinden.</string>
-  <string name="send_fdroid_via_wifi">Verstuur F-Droid via WiFi…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">Schakel HTTP proxy in</string>
   <string name="enable_proxy_summary">Stel HTTP proxy voor alle netwerkverbindingen in</string>
@@ -158,7 +145,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="theme">Thema</string>
   <string name="unsigned">Ongetekend</string>
   <string name="unverified">Onbevestigd</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Aantal apps</string>
   <string name="repo_fingerprint">Vingerafdruk van bronondertekensleutel (SHA-256)</string>
   <string name="repo_description">Beschrijving</string>
@@ -169,7 +155,6 @@ Uitgegeven onder de GNU GPLv3 licentie</string>
   <string name="repo_not_yet_updated">Deze opslag is nog niet eerder gebruikt. Om de leverbare apps te zien moet u het updaten.
 
 Zodra de update gedaan is ziet u hier de beschrijving en andere details.</string>
-  <string name="repo_delete_details">Weet u zeker dat u de softwarebron \"{0}\" met daarin \"{1}\" apps wilt verwijderen? Reeds geïnstalleerde apps blijven behouden, maar kunnen niet meer worden geüpdate via F-Droid.</string>
   <string name="unknown">Onbekend</string>
   <string name="repo_confirm_delete_title">Verwijder softwarebron?</string>
   <string name="repo_confirm_delete_body">Het verwijderen van een opslag betekent dat apps hierop niet meer beschikbaar zijn voor F-Droid.
@@ -203,13 +188,10 @@ Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
   <string name="system_permission_denied_body">Deze optie is alleen beschikbaar als F-Droid als systeemapp geïnstalleerd is.</string>
   <string name="app_description">F-Droid is een installeerbare cataloges van FOSS (Vrije en Open Source Software) apps voor Android. Het programma maakt het gemakkelijk om door apps te bladeren, te installeren en up-to-date te houden.</string>
   <string name="swap_join_same_wifi">Verbind met hetzelfe WiFi netwerk als uw vriend</string>
-  <string name="swap_use_bluetooth">Gebruik Bluetooth</string>
-  <string name="swap_wifi_help">Leer meer over WiFi</string>
   <string name="menu_swap">Deel apps</string>
   <string name="swap">Deel apps</string>
   <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
   <string name="swap_view_available_networks">(Raak aan om een lijst van beschikbare netwerken te openen)</string>
-  <string name="swap_wifi_qr_not_working">Het werkt niet</string>
   <string name="open_qr_code_scanner">Open QR code scanner</string>
   <string name="swap_welcome">Welkom bij F-Droid!</string>
   <string name="swap_confirm_connect">Wilt u nu apps van %1$s ontvangen?</string>
@@ -231,7 +213,6 @@ Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
     <string name="wifi_ap">Hotspot</string>
 
     <string name="empty_installed_app_list">Geen apps geïnstalleerd.\n\nEr staan apps op dit apparaat, maar deze komen niet van F-Droid af. Het kan zijn dat je jouw bronnen moet updaten, of dat de bronnen geen van jouw apps beschikbaar stellen.</string>
-    <string name="empty_swap_app_list">Geen apps beschikbaar om te swappen.\n\nHet apparaat waarmee je wilt swappen heeft geen apps aangeboden, of er is een fout opgetreden tijdens het communiceren.</string>
     <string name="empty_available_app_list">Geen apps in deze categorie.\n\nProbeer een andere categorie of update je bronnen om de lijst van apps te verversen.</string>
     <string name="empty_can_update_app_list">Alle apps zijn up to date.\n\nGefeliciteerd! Al jouw apps zijn up to date (of je bronnen zijn verouderd).</string>
 
@@ -252,7 +233,6 @@ Noot: Eerder geïnstalleerde apps blijven op uw apparaat.</string>
     <string name="swap_success">Swap succesvol!</string>
     <string name="swap_active_hotspot">%1$s (jouw hotspot)</string>
     <string name="swap_switch_to_wifi">Raak aan om naar een WiFi netwerk over te schakelen</string>
-    <string name="swap_reciprocate_failed">Er ging iets fout tijdens het swappen met het andere apparaat. We zullen proberen apps te ontvangen, maar het kan zijn dat wij geen apps kunnen verzenden.</string>
     <string name="swap_tap_to_select_apps">Raak de apps aan die je wilt swappen.</string>
     <string name="swap_dont_show_again">Toon dit niet opnieuw</string>
     </resources>

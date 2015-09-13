@@ -60,7 +60,6 @@
   <string name="send_via_bluetooth">Изпрати чрез Bluetooth</string>
   <string name="repo_add_url">Адрес на хранилището</string>
   <string name="repo_add_fingerprint">Отпечатък (незадължително)</string>
-  <string name="repo_exists">Хранилището вече съществува!</string>
   <string name="malformed_repo_uri">Игнориране на неправилен URI адрес на хранилище: %s</string>
   <string name="menu_update_repo">Актуализиране на хранилищата</string>
   <string name="menu_manage">Хранилища</string>
@@ -69,7 +68,6 @@
   <string name="menu_about">Относно</string>
   <string name="menu_search">Търсене</string>
   <string name="menu_add_repo">Ново хранилище</string>
-  <string name="menu_rem_repo">Премахни хранилището</string>
   <string name="menu_launch">Стартирай</string>
   <string name="menu_share">Сподели</string>
   <string name="menu_install">Инсталирай</string>
@@ -104,19 +102,11 @@
   <string name="category_whatsnew">Какво ново</string>
   <string name="category_recentlyupdated">Обновени наскоро</string>
   <string name="local_repo">Локално хранилище</string>
-  <string name="updating">Обновяване…</string>
-  <string name="update_repo">Актуализиране на хранилището</string>
   <string name="deleting_repo">Изтриване на хранилището…</string>
   <string name="adding_apks_format">Добавяне на %s към хранилището…</string>
-  <string name="no_applications_found">Не са открити приложения</string>
   <string name="icon">икона</string>
-  <string name="enabling_wifi">Включване на WiFi…</string>
-  <string name="qr_code">QR код</string>
   <string name="next">Напред</string>
   <string name="skip">Пропускане</string>
-  <string name="qr_content_description">QR код за URL на хранилище</string>
-  <string name="qr_wizard_wifi_network_instructions">Сканирайте QR кода, за се свържете към същата WiFi мрежа, в която е и устройството.</string>
-  <string name="send_fdroid_via_wifi">Изпрати FDroid чрез WiFi…</string>
   <string name="proxy">Прокси</string>
   <string name="enable_proxy_title">Включване на HTTP прокси</string>
   <string name="enable_proxy_summary">Настройка на HTTP прокси за всички мрежови заявки.</string>
@@ -139,7 +129,6 @@
   <string name="compactlayout">Компактно оформление</string>
   <string name="compactlayout_on">Показва по-малки икони.</string>
   <string name="theme">Тема</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Брой приложения</string>
   <string name="repo_fingerprint">Отпечатък на ключа за подписване (SHA-256)</string>
   <string name="repo_description">Описание</string>
@@ -148,7 +137,6 @@
   <string name="repo_not_yet_updated">Хранилището не е било използвано все още. За да разгледате приложенията, които предлага, трябва да бъде актуализирате.
 
 След това ще имате достъп до описанието и други детайли..</string>
-  <string name="repo_delete_details">Желаете ли да изтриете хранилище \"{0}\", което има {1}, което съдържа {1} приложения? Инсталираните приложения НЯМА да бъдат изтрити, но ще загубите възможността за актуализиране през F-Droid.</string>
   <string name="repo_confirm_delete_title">Изтриване на хранилището?</string>
   <string name="repo_confirm_delete_body">Изтриването на хранилище значи, че приложенията от него няма да са налични в F-Droid.
 
@@ -178,11 +166,9 @@
   <string name="system_permission_denied_body">Опцията е налична само когато сте инсталирали F-Droid като системно приложение.</string>
   <string name="swap_nfc_description">Ако приятелят ви има &lt;b&gt;F-Droid и е включил NFC&lt;/b&gt; можете да докоснете телефоните си.</string>
   <string name="swap_join_same_wifi">Свържете се към една и съща WiFi мрежа с приятеля си.</string>
-  <string name="swap_wifi_help">Научете повече относно WiFi</string>
   <string name="menu_swap">Размяна на приложения</string>
   <string name="swap">РАЗМЯНА</string>
   <string name="swap_view_available_networks">(Докоснете за преглед на наличните мрежи)</string>
-  <string name="swap_wifi_qr_not_working">Не работи</string>
   <string name="open_qr_code_scanner">Отваряне на четец на QR кодове</string>
   <string name="swap_welcome">Добре дошли в F-Droid!</string>
 </resources>

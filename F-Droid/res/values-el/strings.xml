@@ -54,7 +54,6 @@
   <string name="choose_bt_send">Επιλέξτε τη μέθοδο αποστολής με Bluetooth</string>
   <string name="repo_add_url">Διεύθυνση αποθετηρίου</string>
   <string name="repo_add_fingerprint">Δακτυλικό αποτύπωμα (προαιρετικό)</string>
-  <string name="repo_exists">Αυτό το αποθετήριο υπάρχει ήδη!</string>
   <string name="repo_exists_add_fingerprint">Αυτό το αποθετήριο υπάρχει ήδη, αυτό θα προσθέσει νέο κλειδί.</string>
   <string name="repo_exists_enable">Αυτό το αποθετήριο υπάρχει ήδη, επιβεβαιώστε ότι θέλετε να το ενεργοποιήσετε ξανά.</string>
   <string name="repo_exists_and_enabled">Το εισερχόμενο αποθετήριο υπάρχει ήδη και είναι ενεργοποιημένο!</string>
@@ -67,7 +66,6 @@
   <string name="menu_about">Σχετικά</string>
   <string name="menu_search">Αναζήτηση</string>
   <string name="menu_add_repo">Νέο Αποθετήριο</string>
-  <string name="menu_rem_repo">Αφαίρεση Αποθετηρίου</string>
   <string name="menu_launch">Εκτέλεση</string>
   <string name="menu_share">Διαμοιρασμός</string>
   <string name="menu_install">Εγκατάσταση</string>
@@ -116,7 +114,6 @@
   <string name="compactlayout_on">Εμφάνιση εικονιδίων σε μικρότερο μέγεθος</string>
   <string name="theme">Θέμα</string>
   <string name="unsigned">Μη υπογεγραμμένη</string>
-  <string name="repo_url">Διεύθυνση URL</string>
   <string name="repo_num_apps">Αριθμός των εφαρμογών</string>
   <string name="repo_fingerprint">Υπογεγραμμένο κλειδί αποθετηρίου (SHA-256)</string>
   <string name="repo_description">Περιγραφή</string>

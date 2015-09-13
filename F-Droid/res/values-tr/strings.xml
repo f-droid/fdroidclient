@@ -63,7 +63,6 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="send_via_bluetooth">Bluetooth ile Gönder</string>
   <string name="repo_add_url">Depo adresi</string>
   <string name="repo_add_fingerprint">Parmak izi (seçime dayalı)</string>
-  <string name="repo_exists">Bu depo zaten mevcut!</string>
   <string name="repo_exists_add_fingerprint">Bu depo zaten ayarlanmıştır, bu yeni anahtar verisi ekleyecektir.</string>
   <string name="repo_exists_enable">Bu depo zaten ayarlanmıştır, tekrar etkinleştirmek istediğinizi teyit ediniz.</string>
   <string name="repo_exists_and_enabled">Gelen depo zaten kuruludur ve etkinleştirilmiştir!</string>
@@ -76,7 +75,6 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="menu_about">Hakkında</string>
   <string name="menu_search">Arama</string>
   <string name="menu_add_repo">Yeni Depo</string>
-  <string name="menu_rem_repo">Depoyu kaldır</string>
   <string name="menu_launch">Çalıştır</string>
   <string name="menu_share">Paylaş</string>
   <string name="menu_install">Kur</string>
@@ -114,26 +112,15 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="local_repo">Yerel Depo</string>
   <string name="local_repo_running">F-Droid değiş-tokuşa hazır</string>
   <string name="touch_to_configure_local_repo">Detayları görmek için ve başkalarının uygulamalarınızı takas edebilmesi için dokunun.</string>
-  <string name="updating">Güncelleniyor…</string>
-  <string name="update_repo">Depoyu Güncelle</string>
   <string name="deleting_repo">Mevcut depo siliniyor…</string>
   <string name="adding_apks_format">%s depoya ekleniyor…</string>
   <string name="writing_index_jar">İmzalanmış endeks dosyası yazılıyor (index.jar)</string>
   <string name="failed_to_create_index">Depo endeksinin oluşturulmasında hata meydana geldi!</string>
   <string name="linking_apks">APK\'ler depo içine bağlanıyor</string>
   <string name="copying_icons">Uygulama ikonları depoya kopyalanıyor…</string>
-  <string name="no_applications_found">Uygulama bulunamadı</string>
   <string name="icon">ikon</string>
-  <string name="enable_wifi">WiFi Etkinleştir</string>
-  <string name="enabling_wifi">WiFi etkinleştiriliyor…</string>
-  <string name="same_wifi_instructions">Diğer cihazları bağlanmak için, her cihazın aynı WiFi ağı üzerinde olduğundan emin olun. Sonra ya F-Droid\'e URL\'yi yazın veya bu QR Kodu taratın:</string>
-  <string name="qr_code">QR Kodu</string>
   <string name="next">İleri</string>
   <string name="skip">Geç</string>
-  <string name="qr_content_description">Depo URL\'nin QR Kodu</string>
-  <string name="qr_wizard_wifi_network_instructions">Bu cihazla aynı WiFi ağına bağlanmak için bu QR Kodunu tarayın.</string>
-  <string name="qr_wizard_download_instructions">Başlangıç yapmak amacıyla ağ sitesine bağlanmak için bu QR kodunu tarayın.</string>
-  <string name="send_fdroid_via_wifi">FDroid\'i WiFi ile gönder…</string>
   <string name="proxy">Proxy</string>
   <string name="enable_proxy_title">HTTP Proxy Etkinleştir</string>
   <string name="enable_proxy_summary">Tüm ağ istekleri için HTTP Proxy Yapılandır</string>
@@ -159,7 +146,6 @@ bağlanılıyor</string>
   <string name="theme">Tema</string>
   <string name="unsigned">İmzasız</string>
   <string name="unverified">Teyit edilmemiş</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Uygulama sayısı</string>
   <string name="repo_fingerprint">Depo imza anahtarının parmak izi (SHA-256)</string>
   <string name="repo_description">Betimleme</string>
@@ -174,7 +160,6 @@ bağlanılıyor</string>
         Sunduğu uygulamaları görmek için onu güncellemeniz gerekir.
 
 Güncelleme yapıldığında betimleler ve diğer ayrıntılar burada gösterilecektir.</string>
-  <string name="repo_delete_details">{1} uygulama içeren \"{0}\" deposunu silmek istiyor musunuz? Kurulu uygulamalar KALDIRILMAYACAKTIR, ancak bundan böyle onları F-Droid vasıtasıyla güncellemek mümkün olmayacaktır.</string>
   <string name="unknown">Bilinmiyor</string>
   <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
   <string name="repo_confirm_delete_body">Bir depoyu silmek, ondan indirilen uygulamaların
@@ -213,13 +198,10 @@ Ondan uygulama indirmek için bu depoyu tekrar etkinleştirmeniz gerekecektir.</
   <string name="app_description">F-Droid, Android platformu için kurulabilir Özgür ve Açık Kaynaklı Yazılım kataloğudur. İstemci cihazınızda uygulama taramayı, kurmayı ve güncellemeyi kolaylaştırır.</string>
   <string name="swap_nfc_description">Arkadaşınızda NFC varsa telefonlarınızı birbirine dokundurun.</string>
   <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağda bulunun</string>
-  <string name="swap_use_bluetooth">Yerine Bluetooth kullan</string>
-  <string name="swap_wifi_help">Wifi hakkında daha fazla öğren</string>
   <string name="menu_swap">Değiş-Tokuş uygulamalar</string>
   <string name="swap">Değiş-Tokuş uygulamalar</string>
   <string name="swap_no_wifi_network">Henüz ağ yok</string>
   <string name="swap_view_available_networks">(Kullanılabilir ağları açmak için dokunun)</string>
-  <string name="swap_wifi_qr_not_working">Çalışmıyor</string>
   <string name="open_qr_code_scanner">QR Kod Tarayıcısını Aç</string>
   <string name="swap_welcome">F-Droid\'e Hoşgeldin!</string>
   <string name="swap_confirm_connect">%1$s konumundan şimdi uygulama almak istiyor musunuz?</string>

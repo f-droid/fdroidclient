@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="searchres_napps">\'%2$s\' に適合する %1$d ｱﾌﾟﾘｹｰｼｮﾝが見つかりました:</string>
   <string name="searchres_oneapp">\'%s\' に適合する 1 ｱﾌﾟﾘｹｰｼｮﾝが見つかりました:</string>
@@ -62,7 +62,6 @@
   <string name="send_via_bluetooth">Bluetooth経由で送信</string>
   <string name="repo_add_url">ﾘﾎﾟｼﾞﾄﾘ･ｱﾄﾞﾚｽ</string>
   <string name="repo_add_fingerprint">ﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ(ｵﾌﾟｼｮﾝ)</string>
-  <string name="repo_exists">このﾘﾎﾟｼﾞﾄﾘはすでに存在します</string>
   <string name="repo_exists_add_fingerprint">このﾘﾎﾟｼﾞﾄﾘはすでに設定されています､新しいｷｰ情報を追加します｡</string>
   <string name="repo_exists_enable">このﾘﾎﾟｼﾞﾄﾘはすでに設定されています｡再度有効にするか確認してください｡</string>
   <string name="repo_exists_and_enabled">入力中のﾘﾎﾟｼﾞﾄﾘはすでに設定されて有効にされています</string>
@@ -75,7 +74,6 @@
   <string name="menu_about">F-Droidについて</string>
   <string name="menu_search">検索</string>
   <string name="menu_add_repo">新しいﾘﾎﾟｼﾞﾄﾘ</string>
-  <string name="menu_rem_repo">ﾘﾎﾟｼﾞﾄﾘを削除</string>
   <string name="menu_launch">実行</string>
   <string name="menu_share">共有</string>
   <string name="menu_install">ｲﾝｽﾄｰﾙ</string>
@@ -113,26 +111,15 @@
   <string name="local_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘ</string>
   <string name="local_repo_running">F-Droidは交換の準備ができました</string>
   <string name="touch_to_configure_local_repo">ﾀｯﾁすると詳細を表示し､ｱﾌﾟﾘの交換ができるようになります｡</string>
-  <string name="updating">更新中…</string>
-  <string name="update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="deleting_repo">現在のﾘﾎﾟｼﾞﾄﾘを削除中…</string>
   <string name="adding_apks_format">ﾘﾎﾟｼﾞﾄﾘに %s を追加中…</string>
   <string name="writing_index_jar">署名された索引ﾌｧｲﾙを書き込み中(index.jar)…</string>
   <string name="failed_to_create_index">ﾘﾎﾟｼﾞﾄﾘの索引の作成に失敗しました!</string>
   <string name="linking_apks">ﾘﾎﾟｼﾞﾄﾘにAPKをﾘﾝｸ中…</string>
   <string name="copying_icons">ﾘﾎﾟｼﾞﾄﾘにｱﾌﾟﾘｹｰｼｮﾝのｱｲｺﾝを複製中…</string>
-  <string name="no_applications_found">ｱﾌﾟﾘｹｰｼｮﾝが見つかりません｡</string>
   <string name="icon">ｱｲｺﾝ</string>
-  <string name="enable_wifi">Wi-Fiを有効にする</string>
-  <string name="enabling_wifi">Wi-Fiを有効にしています…</string>
-  <string name="same_wifi_instructions">他の端末に接続するには､対象の端末が同じWi-Fiﾈｯﾄﾜｰｸであることを確認してください｡その後､上記のURLをF-Droidに入力するか､QRｺｰﾄﾞを読み取ってください:</string>
-  <string name="qr_code">QRｺｰﾄﾞ</string>
   <string name="next">次へ</string>
   <string name="skip">飛ばす</string>
-  <string name="qr_content_description">ﾘﾎﾟｼﾞﾄﾘURLのQRｺｰﾄﾞ</string>
-  <string name="qr_wizard_wifi_network_instructions">このQRｺｰﾄﾞを読み取り､この端末と同じWi-Fiﾈｯﾄﾜｰｸに接続してください｡</string>
-  <string name="qr_wizard_download_instructions">QRｺｰﾄﾞを読み取って､始めましょうのｳｪﾌﾞｻｲﾄに接続してください｡</string>
-  <string name="send_fdroid_via_wifi">Wi-Fi経由でFDroidを送信…</string>
   <string name="proxy">ﾌﾟﾛｷｼｰ</string>
   <string name="enable_proxy_title">HTTPﾌﾟﾛｷｼｰを有効にする</string>
   <string name="enable_proxy_summary">全てのﾈｯﾄﾜｰｸﾘｸｴｽﾄに対して HTTPﾌﾟﾛｷｼｰを設定する</string>
@@ -158,7 +145,6 @@
   <string name="theme">ﾃｰﾏ</string>
   <string name="unsigned">未署名</string>
   <string name="unverified">未検証</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">ｱﾌﾟﾘｹｰｼｮﾝ数</string>
   <string name="repo_fingerprint">ﾘﾎﾟｼﾞﾄﾘ署名ｷｰのﾌｨﾝｶﾞｰﾌﾟﾘﾝﾄ(SHA-256)</string>
   <string name="repo_description">説明</string>
@@ -170,9 +156,6 @@
 ｱﾌﾟﾘｹｰｼｮﾝを表示するためには､ﾘﾎﾟｼﾞﾄﾘを更新する必要があります｡
 
 更新すると､説明やその他の詳細がここで有効になります｡</string>
-  <string name="repo_delete_details">ﾘﾎﾟｼﾞﾄﾘ \"{0}\" を削除してよろしいですか?
-この中には {1} 個のｱﾌﾟﾘｹｰｼｮﾝがあります｡ｲﾝｽﾄｰﾙ済のｱﾌﾟﾘｹｰｼｮﾝは
-削除されませんが､F-Droidを通じて更新することができなくなります｡</string>
   <string name="unknown">不明</string>
   <string name="repo_confirm_delete_title">ﾘﾎﾟｼﾞﾄﾘを削除しますか?</string>
   <string name="repo_confirm_delete_body">ﾘﾎﾟｼﾞﾄﾘを削除するとｱﾌﾟﾘｹｰｼｮﾝはF-Droidからｲﾝｽﾄｰﾙできなくなります｡
@@ -209,13 +192,10 @@
   <string name="app_description">F-DroidはAndroidﾌﾟﾗｯﾄﾌｫｰﾑ向けFOSS(ﾌﾘｰのｵｰﾌﾟﾝｿｰｽｿﾌﾄｳｪｱ) ｱﾌﾟﾘｹｰｼｮﾝのｲﾝｽﾄｰﾙ可能なｶﾀﾛｸﾞです｡このｸﾗｲｱﾝﾄで、お使いの端末で簡単に参照､ｲﾝｽﾄｰﾙ､および更新履歴を記録することができます｡</string>
   <string name="swap_nfc_description">友達がF-DroidとNFCを持っていれば､一緒に電話をﾀｯﾁしてください｡</string>
   <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
-  <string name="swap_use_bluetooth">代わりにBluetoothを使用する</string>
-  <string name="swap_wifi_help">Wi-Fiについての詳細</string>
   <string name="menu_swap">ｱﾌﾟﾘの交換</string>
   <string name="swap">ｱﾌﾟﾘの交換</string>
   <string name="swap_no_wifi_network">まだﾈｯﾄﾜｰｸがありません</string>
   <string name="swap_view_available_networks">ﾀｯﾌﾟして有効なﾈｯﾄﾜｰｸを開く</string>
-  <string name="swap_wifi_qr_not_working">動作していません</string>
   <string name="open_qr_code_scanner">QRｺｰﾄﾞｽｷｬﾅｰを開く</string>
   <string name="swap_welcome">F-Droidにようこそ!</string>
   <string name="swap_confirm_connect">今すぐ %1$s からｱﾌﾟﾘを取得しますか?</string>
@@ -239,7 +219,6 @@
     <string name="wifi_ap">ﾎｯﾄｽﾎﾟｯﾄ</string>
 
     <string name="empty_installed_app_list">ｱﾌﾟﾘがｲﾝｽﾄｰﾙされていません。\n\nお使いの端末にｱﾌﾟﾘはありますが、F-Droid からはご利用いただけません。ﾘﾎﾟｼﾞﾄﾘを更新する必要があるか、純粋にﾘﾎﾟｼﾞﾄﾘに利用可能なｱﾌﾟﾘがない可能性があります。</string>
-    <string name="empty_swap_app_list">交換できるｱﾌﾟﾘはありません。\n\n交換先の端末がｱﾌﾟﾘを提供していないか、通信中にｴﾗｰが発生しました。</string>
     <string name="swap_nfc_title">ﾀｯﾁして交換</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じﾈｯﾄﾜｰｸ上にいるを確認してください。同じﾈｯﾄﾜｰｸにｱｸｾｽしていない場合は、Wi-Fiﾎｯﾄｽﾎﾟｯﾄを作成できます。</string>
     <string name="swap_join_this_hotspot">友達がﾎｯﾄｽﾎﾟｯﾄに参加するのを助ける</string>
@@ -273,8 +252,7 @@
     <string name="swap_switch_to_wifi">ﾀｯﾌﾟすると、Wi-Fi ﾈｯﾄﾜｰｸに切り替えます</string>
     <string name="app_name">F-Droid</string>
 
-	<string name="swap_reciprocate_failed">別の端末と交換する際にｴﾗｰが発生しました。ｱﾌﾟﾘを取得しようとしても、まだｱﾌﾟﾘを取得できない場合があります。</string>
-    <string name="swap_tap_to_select_apps">ﾀｯﾌﾟして交換したいｱﾌﾟﾘを選択します。</string>
+	<string name="swap_tap_to_select_apps">ﾀｯﾌﾟして交換したいｱﾌﾟﾘを選択します。</string>
     <string name="swap_dont_show_again">今後、このﾒｯｾｰｼﾞを表示しない</string>
     <string name="swap_scan_or_type_url">一人は、ｺｰﾄﾞを読み取るか、他の URL をﾌﾞﾗｳｻﾞｰに入力する必要があります。</string>
     <string name="swap_choose_apps">ｱﾌﾟﾘを選択</string>

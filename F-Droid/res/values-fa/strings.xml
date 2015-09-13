@@ -38,12 +38,10 @@
   <string name="choose_bt_send">گزینش روش فرستادن دندان‌آبی</string>
   <string name="repo_add_url">نشانی مخزن</string>
   <string name="repo_add_fingerprint">انگشت‌نگاری (دلبخواهی)</string>
-  <string name="repo_exists">این مخزن هم‌اکنون وجود ندارد!</string>
   <string name="menu_update_repo">به‌روزرسانی مخزن‌ها</string>
   <string name="menu_manage">مدیریت مخزن‌ها</string>
   <string name="menu_about">درباره</string>
   <string name="menu_search">جستجو</string>
-  <string name="menu_rem_repo">حذف مخزن</string>
   <string name="menu_share">به اشتراک‌گذاری</string>
   <string name="menu_install">نصب</string>
   <string name="menu_uninstall">حذف نصب</string>
@@ -76,7 +74,6 @@
   <string name="compactlayout_on">نمایش شکلک‌ها در اندازه کوچکتر</string>
   <string name="theme">پوسته</string>
   <string name="unsigned">بدون امضا</string>
-  <string name="repo_url">URL</string>
   <string name="repo_description">توضیحات</string>
   <string name="repo_last_update">واپسین بروزرسانی</string>
   <string name="repo_update">بروزرسانی‌ها</string>

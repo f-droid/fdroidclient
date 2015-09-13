@@ -65,7 +65,6 @@
   <string name="send_via_bluetooth">Отправить через Bluetooth</string>
   <string name="repo_add_url">Адрес репозитория</string>
   <string name="repo_add_fingerprint">Отпечаток ключа (опционально)</string>
-  <string name="repo_exists">Этот репозиторий уже существует!</string>
   <string name="repo_exists_add_fingerprint">Этот репозиторий уже настроен, это действие обновит информацию о ключе.</string>
   <string name="repo_exists_enable">Этот репозиторий уже настроен, подтвердите, что вы хотите снова включить его.</string>
   <string name="repo_exists_and_enabled">Репозиторий уже настроен и включен!</string>
@@ -78,7 +77,6 @@
   <string name="menu_about">О программе</string>
   <string name="menu_search">Поиск</string>
   <string name="menu_add_repo">Новый репозиторий</string>
-  <string name="menu_rem_repo">Удалить репозиторий</string>
   <string name="menu_launch">Запустить</string>
   <string name="menu_share">Поделиться</string>
   <string name="menu_install">Установить</string>
@@ -115,26 +113,15 @@
   <string name="category_recentlyupdated">Недавно обновлённые</string>
   <string name="local_repo">Локальный репозиторий</string>
   <string name="local_repo_running">F-Droid готов для обмена</string>
-  <string name="updating">Обновление…</string>
-  <string name="update_repo">Обновить репозиторий</string>
   <string name="deleting_repo">Удаление текущего репозитория…</string>
   <string name="adding_apks_format">Добавление %s в репозиторий…</string>
   <string name="writing_index_jar">Запись подписанного файла индекса (index.jar)…</string>
   <string name="failed_to_create_index">Произошла ошибка во время формирования индекса репозитория!</string>
   <string name="linking_apks">Включение APK-файлов в репозиторий…</string>
   <string name="copying_icons">Копирование иконок приложений в репозиторий…</string>
-  <string name="no_applications_found">Приложения не найдены</string>
   <string name="icon">иконка</string>
-  <string name="enable_wifi">Включить WiFi</string>
-  <string name="enabling_wifi">Включение WiFi…</string>
-  <string name="same_wifi_instructions">Чтобы подключиться к устройствам других людей, убедитесь что они все подключены к одной WiFi-сети. В этом случае либо введите приведённую выше ссылку в F-Droid, либо просканируйте данный QR-код:</string>
-  <string name="qr_code">QR-код</string>
   <string name="next">Далее</string>
   <string name="skip">Пропустить</string>
-  <string name="qr_content_description">QR-код ссылки репозитория</string>
-  <string name="qr_wizard_wifi_network_instructions">Просканируйте данный QR-код чтобы подключиться к той же WiFi-сети, к которой подключено текущее устройство.</string>
-  <string name="qr_wizard_download_instructions">Просканируйте данный QR-код чтобы подключиться к веб-сайту чтобы начать.</string>
-  <string name="send_fdroid_via_wifi">Отправить FDroid через WiFi…</string>
   <string name="proxy">Прокси</string>
   <string name="enable_proxy_title">Включить HTTP прокси</string>
   <string name="enable_proxy_summary">Настроить HTTP прокси для всех запросов</string>
@@ -160,7 +147,6 @@
   <string name="theme">Тема</string>
   <string name="unsigned">Неподписанный</string>
   <string name="unverified">Неподтверждённый</string>
-  <string name="repo_url">URL</string>
   <string name="repo_num_apps">Количество приложений</string>
   <string name="repo_fingerprint">Отпечаток ключа подписи репозитория (SHA-256)</string>
   <string name="repo_description">Описание</string>
@@ -171,7 +157,6 @@
   <string name="repo_not_yet_updated">Этот репозиторий еще не использовался.
 
 Обновите репозиторий чтобы получить информацию о доступных приложениях.</string>
-  <string name="repo_delete_details">Вы действительно хотите удалить репозиторий \"{0}\" с {1} приложениями? Установленные приложения не будут удалены, но вы больше не сможете обновить их через F-Droid.</string>
   <string name="unknown">Неизвестный</string>
   <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
   <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.
@@ -203,13 +188,10 @@
   <string name="system_permission_denied_body">Данная опция доступна только если F-Droid установлен как системное приложение.</string>
   <string name="app_description">F-Droid — каталог FOSS (свободного и открытого программного обеспечения) для платформы Android. Клиент позволяет с лёгкостью просматривать, устанавливать и обновлять приложение на вашем устройстве.</string>
   <string name="swap_join_same_wifi">Подключиться к тому же Wifi что и ваш друг</string>
-  <string name="swap_use_bluetooth">Использовать Bluetooth</string>
-  <string name="swap_wifi_help">Узнать больше о Wifi</string>
   <string name="menu_swap">Обмен приложениями</string>
   <string name="swap">Обмен файлами</string>
   <string name="swap_no_wifi_network">Нет сети в данный момент</string>
   <string name="swap_view_available_networks">(Нажмите чтобы открыть список доступных сетей)</string>
-  <string name="swap_wifi_qr_not_working">Не работает</string>
   <string name="open_qr_code_scanner">Открыть сканер QR-кода</string>
   <string name="swap_welcome">Добро пожаловать в F-Droid!</string>
   <string name="swap_confirm_connect">Вы хотите получить приложения от %1$s сейчас?</string>

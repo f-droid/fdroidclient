@@ -46,7 +46,6 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="menu_about">Sobre</string>
   <string name="menu_search">Buscar</string>
   <string name="menu_add_repo">Novo repositorio</string>
-  <string name="menu_rem_repo">Retirar repositorio</string>
   <string name="menu_launch">Executar</string>
   <string name="menu_share">Compartir</string>
   <string name="menu_install">Instalar</string>

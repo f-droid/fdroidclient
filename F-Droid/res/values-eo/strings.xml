@@ -37,14 +37,12 @@
   <string name="fdroid_updates_available">F-Droid ĝisdatigoj disponeblaj</string>
   <string name="send_via_bluetooth">Sendi per Bluetooth</string>
   <string name="repo_add_url">Deponeja adreso</string>
-  <string name="repo_exists">Tiu ĉi deponejo jam ekzistas!</string>
   <string name="menu_update_repo">Ĝisdatigi deponejojn</string>
   <string name="menu_manage">Deponejojn</string>
   <string name="menu_preferences">Agordoj</string>
   <string name="menu_about">Pri</string>
   <string name="menu_search">Serĉi</string>
   <string name="menu_add_repo">Nova deponejo</string>
-  <string name="menu_rem_repo">Forigi deponejon</string>
   <string name="menu_launch">Lanĉi</string>
   <string name="menu_share">Kunhavi</string>
   <string name="menu_install">Instali</string>
@@ -80,20 +78,13 @@
   <string name="category_whatsnew">Novaĵoj</string>
   <string name="category_recentlyupdated">Ĵus ĝisdatigitaj</string>
   <string name="local_repo">Loka deponejo</string>
-  <string name="updating">Ĝisdatiganta…</string>
-  <string name="update_repo">Ĝisdatigi deponejon</string>
   <string name="deleting_repo">Foriganta la nunan deponejon…</string>
   <string name="adding_apks_format">Aldonanta %s al la deponejo…</string>
   <string name="linking_apks">Ligantaj APK-ojn al la deponejo…</string>
   <string name="copying_icons">Kopianta aplikaĵemblemojn al la deponejo…</string>
-  <string name="no_applications_found">Neniu aplikaĵo trovita</string>
   <string name="icon">emblemo</string>
-  <string name="enable_wifi">Ŝalti WiFi</string>
-  <string name="enabling_wifi">Ŝaltante WiFi</string>
-  <string name="qr_code">QR-kodo</string>
   <string name="next">Sekvi</string>
   <string name="skip">Preterpasi</string>
-  <string name="send_fdroid_via_wifi">Sendi F-Droid per WiFi…</string>
   <string name="no_permissions">Neniu permeso estas uzita.</string>
   <string name="permissions_for_long">Permesoj por versio %s</string>
   <string name="compactlayout">Kompakta aranĝo</string>
@@ -125,11 +116,8 @@
   <string name="Security">Sekureco</string>
   <string name="System">Sistemo</string>
   <string name="update_all">Ĝisdatigi ĉiujn</string>
-  <string name="swap_use_bluetooth">Uzi Bluetooth-on anstataŭe</string>
-  <string name="swap_wifi_help">Lerni pli pri WiFi</string>
   <string name="swap_no_wifi_network">Ankoraŭ neniu reto</string>
   <string name="swap_view_available_networks">(Tuŝu por montri disponeblajn retojn)</string>
-  <string name="swap_wifi_qr_not_working">Ne funkcias</string>
   <string name="open_qr_code_scanner">Malfermi QR-kodan skanilon</string>
   <string name="swap_welcome">Bonvenon al F-Droid!</string>
 </resources>

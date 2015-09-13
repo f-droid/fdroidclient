@@ -83,7 +83,6 @@
 
 	<string name="repo_add_url">Repository address</string>
 	<string name="repo_add_fingerprint">Fingerprint (optional)</string>
-	<string name="repo_exists">This repo already exists</string>
 	<string name="repo_exists_add_fingerprint">This repo is already setup, this will add new key information.</string>
 	<string name="repo_exists_enable">This repo is already setup, confirm that you want to re-enable it.</string>
 	<string name="repo_exists_and_enabled">The incoming repo is already setup and enabled.</string>
@@ -99,7 +98,6 @@
 	<string name="menu_about">About</string>
 	<string name="menu_search">Search</string>
 	<string name="menu_add_repo">New Repository</string>
-	<string name="menu_rem_repo">Remove Repository</string>
 
 	<string name="menu_launch">Run</string>
 	<string name="menu_share">Share</string>
@@ -143,26 +141,15 @@
 	<string name="local_repo">Local Repo</string>
 	<string name="local_repo_running">F-Droid is ready to swap</string>
 	<string name="touch_to_configure_local_repo">Touch to view details and allow others to swap your apps.</string>
-	<string name="updating">Updating…</string>
-	<string name="update_repo">Update Repo</string>
 	<string name="deleting_repo">Deleting current repo…</string>
 	<string name="adding_apks_format">Adding %s to repo…</string>
 	<string name="writing_index_jar">Writing signed index file (index.jar)…</string>
 	<string name="failed_to_create_index">Failed to create the repo index!</string>
 	<string name="linking_apks">Linking APKs into the repo…</string>
 	<string name="copying_icons">Copying app icons into the repo…</string>
-	<string name="no_applications_found">No applications found</string>
 	<string name="icon">Icon</string>
-	<string name="enable_wifi">Enable Wi-Fi</string>
-	<string name="enabling_wifi">Enabling Wi-Fi…</string>
-	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same Wi-Fi network. Then either type the URL above into F-Droid, or scan this QR Code:</string>
-	<string name="qr_code">QR Code</string>
 	<string name="next">Next</string>
 	<string name="skip">Skip</string>
-	<string name="qr_content_description">QR Code of repo URL</string>
-	<string name="qr_wizard_wifi_network_instructions">Scan this QR Code to connect to the same Wi-Fi network as this device.</string>
-	<string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
-	<string name="send_fdroid_via_wifi">Send F-Droid via Wi-Fi…</string>
 
 	<string name="proxy">Proxy</string>
 	<string name="enable_proxy_title">Enable HTTP Proxy</string>
@@ -196,7 +183,6 @@
     <string name="theme">Theme</string>
     <string name="unsigned">Unsigned</string>
     <string name="unverified">Unverified</string>
-    <string name="repo_url">URL</string>
     <string name="repo_num_apps">Number of apps</string>
     <string name="repo_fingerprint">Fingerprint of Repo Signing Key (SHA-256)</string>
     <string name="repo_description">Description</string>
@@ -210,10 +196,6 @@
         In order to view the apps it provides, you will need to update
         it.\n\nOnce updated, the description and other details will
         become available here.</string>
-    <string name="repo_delete_details">Do you want to delete the \"{0}\"
-        repository, which has {1} apps in it? Any installed apps will NOT be
-        removed, but you will not be able to update them through F-Droid any
-        more.</string>
     <string name="unknown">Unknown</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
@@ -258,7 +240,6 @@
     <string name="Writing">Writing</string>
 
     <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not available from F-Droid. This could be because you need to update your repositories, or the repositories genuinely don\'t have your apps available.</string>
-    <string name="empty_swap_app_list">No apps available to swap.\n\nEither the device you are swapping with didn\'t offer any apps to swap, or an error occurred while communicating with it.</string>
     <string name="empty_available_app_list">No apps in this category.\n\nTry selecting a different category or updating your repositories to get a fresh list of apps.</string>
     <string name="empty_can_update_app_list">All apps up to date.\n\nCongratulations! All of your apps are up to date (or your repositories are out of date).</string>
 
@@ -296,8 +277,6 @@
     <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
     <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
-    <string name="swap_use_bluetooth">Use Bluetooth instead</string>
-    <string name="swap_wifi_help">Learn more about Wi-Fi</string>
     <string name="menu_swap">Swap apps</string>
     <string name="swap">Swap apps</string>
     <string name="swap_success">Swap success!</string>
@@ -305,11 +284,9 @@
     <string name="swap_active_hotspot">%1$s (your hotspot)</string>
     <string name="swap_view_available_networks">Tap to open available networks</string>
     <string name="swap_switch_to_wifi">Tap to switch to a Wi-Fi network</string>
-    <string name="swap_wifi_qr_not_working">It\'s not working</string>
     <string name="open_qr_code_scanner">Open QR Scanner</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
     <string name="swap_confirm_connect">Do you want to get apps from %1$s now?</string>
-    <string name="swap_reciprocate_failed">An error occurred while attempting to swap with another device. We will still try to get apps from them, but they may not be able to get apps from us.</string>
     <string name="swap_tap_to_select_apps">Tap to select the apps you want to swap.</string>
     <string name="swap_dont_show_again">Don\'t show this again</string>
     <string name="swap_scan_or_type_url">One person needs to scan the code, or type the URL of the other in a browser.</string>
