@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">\'%2$s\' に適合する %1$d ｱﾌﾟﾘｹｰｼｮﾝが見つかりました:</string>
   <string name="searchres_oneapp">\'%s\' に適合する 1 ｱﾌﾟﾘｹｰｼｮﾝが見つかりました:</string>
@@ -10,7 +10,7 @@
   <string name="delete">削除</string>
   <string name="enable_nfc_send">NFC 送信を有効…</string>
   <string name="cache_downloaded">ｱﾌﾟﾘｹｰｼｮﾝの保存</string>
-  <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞした｢.apk｣ﾌｧｲﾙをSDｶｰﾄﾞに残します</string>
+  <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞした .apk ﾌｧｲﾙを端末に残します</string>
   <string name="updates">更新</string>
   <string name="other">その他</string>
   <string name="last_update_check">最新ﾘﾎﾟｼﾞﾄﾘ検索: %s</string>
@@ -238,7 +238,7 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">ﾎｯﾄｽﾎﾟｯﾄ</string>
 
-    <string name="empty_installed_app_list">ｱﾌﾟﾘがｲﾝｽﾄｰﾙされていません。\n\nお使いのﾃﾞﾊﾞｲｽにｱﾌﾟﾘはありますが、F-Droid からはご利用いただけません。ﾘﾎﾟｼﾞﾄﾘを更新する必要があるか、純粋にﾘﾎﾟｼﾞﾄﾘに利用可能なｱﾌﾟﾘがない可能性があります。</string>
+    <string name="empty_installed_app_list">ｱﾌﾟﾘがｲﾝｽﾄｰﾙされていません。\n\nお使いの端末にｱﾌﾟﾘはありますが、F-Droid からはご利用いただけません。ﾘﾎﾟｼﾞﾄﾘを更新する必要があるか、純粋にﾘﾎﾟｼﾞﾄﾘに利用可能なｱﾌﾟﾘがない可能性があります。</string>
     <string name="empty_swap_app_list">交換できるｱﾌﾟﾘはありません。\n\n交換先の端末がｱﾌﾟﾘを提供していないか、通信中にｴﾗｰが発生しました。</string>
     <string name="swap_nfc_title">ﾀｯﾁして交換</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じﾈｯﾄﾜｰｸ上にいるを確認してください。同じﾈｯﾄﾜｰｸにｱｸｾｽしていない場合は、Wi-Fiﾎｯﾄｽﾎﾟｯﾄを作成できます。</string>
@@ -262,7 +262,7 @@
     <string name="system_install_installing">ｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_question">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは 10 秒ほどかかります。</string>
-    <string name="system_install_question_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは、10 秒ほどかかり、その後デバイスを <b>再起動</b> します。</string>
+    <string name="system_install_question_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは、10 秒ほどかかり、その後デバイスを再起動します。<b>再起動</b> します。</string>
     <string name="system_install_first_time_message">お使いの端末に管理者権限でｱｸｾｽできるようです。Android のｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した特権 F-Droid をｲﾝｽﾄｰﾙすることができます。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
     <string name="system_uninstall">特権 F-Droid をｱﾝｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_uninstall_message">これは、特権 F-Droid がｱﾝｲﾝｽﾄｰﾙされます。</string>
