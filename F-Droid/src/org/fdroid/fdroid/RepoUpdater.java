@@ -72,11 +72,9 @@ public class RepoUpdater {
 
     private URL getIndexAddress() throws MalformedURLException {
         String urlString = repo.address + "/index.jar";
-        try {
-            String versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        String versionName = Utils.getVersionName(context);
+        if (versionName != null) {
             urlString += "?client_version=" + versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "Could not get client version name", e);
         }
         return new URL(urlString);
     }

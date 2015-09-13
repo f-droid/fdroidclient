@@ -279,15 +279,12 @@ public class FDroid extends ActionBarActivity {
 
         case R.id.action_about:
             View view = LayoutInflater.from(this).inflate(R.layout.about, null);
-            // Fill in the version...
-            try {
-                PackageInfo pi = getPackageManager()
-                        .getPackageInfo(getApplicationContext()
-                                .getPackageName(), 0);
-                ((TextView) view.findViewById(R.id.version))
-                        .setText(pi.versionName);
-            } catch (Exception ignored) {
+
+            String versionName = Utils.getVersionName(this);
+            if (versionName == null) {
+                versionName = getString(R.string.unknown);
             }
+            ((TextView) view.findViewById(R.id.version)).setText(versionName);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(view);
             final AlertDialog alrt = builder.create();

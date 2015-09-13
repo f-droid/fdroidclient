@@ -675,4 +675,16 @@ public final class Utils {
         }
     }
 
+    // Try to get the version name of the client. Return null on failure.
+    public static String getVersionName(Context context) {
+        String versionName = null;
+        try {
+            versionName = context.getPackageManager()
+                .getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Could not get client version name", e);
+        }
+        return versionName;
+    }
+
 }
