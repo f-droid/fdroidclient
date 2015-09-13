@@ -199,7 +199,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="update_notification_title">Aktualizowanie repozytoriów</string>
 	<string name="status_processing_xml_percent">"Przetwarzanie  %2$s / %3$s (%4$d%%) z %1$s"</string>
 	<string name="status_inserting">Zapisywanie szczegółów aplikacji (%1$d%%)</string>
-	<string name="no_permissions">Brak wymaganych pozwoleń.</string>
+	<string name="no_permissions">Brak wymaganych uprawnień.</string>
 	<string name="unsigned">Brak podpisu</string>
     <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Musisz uważać pobierając aplikacje z nieznanych źródeł.</string>
     <string name="repo_not_yet_updated">To repozytorium nie zostało jeszcze użyte. By zobaczyć jakie aplikacje posiada, musisz je zaktualizować.\n\nGdy je zaktualizujesz, tutaj zobaczysz jego opis i więcej informacji.</string>
