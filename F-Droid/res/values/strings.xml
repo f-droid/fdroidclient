@@ -22,8 +22,8 @@
 
 	<string name="update_interval">Automatic update interval</string>
 	<string name="update_interval_zero">No automatic app list updates</string>
-	<string name="automatic_scan_wifi">Only on wifi</string>
-	<string name="automatic_scan_wifi_on">Update app lists automatically only on wifi</string>
+	<string name="automatic_scan_wifi">Only on Wi-Fi</string>
+	<string name="automatic_scan_wifi_on">Update app lists automatically only on Wi-Fi</string>
 	<string name="notify">Notify</string>
 	<string name="notify_on">Notify when updates are available</string>
 	<string name="update_history">Update history</string>
@@ -180,18 +180,18 @@
 	<string name="no_applications_found">No applications found</string>
 	<string name="icon">icon</string>
 	<string name="fingerprint">Fingerprint:</string>
-	<string name="wifi_network">WiFi Network:</string>
+	<string name="wifi_network">Wi-Fi Network:</string>
 	<string name="sharing_uri">Sharing URL:</string>
-	<string name="enable_wifi">Enable WiFi</string>
-	<string name="enabling_wifi">Enabling WiFi…</string>
-	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same WiFi network. Then either type the URL above into F-Droid, or scan this QR Code:</string>
+	<string name="enable_wifi">Enable Wi-Fi</string>
+	<string name="enabling_wifi">Enabling Wi-Fi…</string>
+	<string name="same_wifi_instructions">To connect to other people\'s devices, make sure both devices are on the same Wi-Fi network. Then either type the URL above into F-Droid, or scan this QR Code:</string>
 	<string name="qr_code">QR Code</string>
 	<string name="next">Next</string>
 	<string name="skip">Skip</string>
 	<string name="qr_content_description">QR Code of repo URL</string>
-	<string name="qr_wizard_wifi_network_instructions">Scan this QR Code to connect to the same WiFi network as this device.</string>
+	<string name="qr_wizard_wifi_network_instructions">Scan this QR Code to connect to the same Wi-Fi network as this device.</string>
 	<string name="qr_wizard_download_instructions">Scan this QR Code to connect to the website for getting started.</string>
-	<string name="send_fdroid_via_wifi">Send F-Droid via WiFi…</string>
+	<string name="send_fdroid_via_wifi">Send F-Droid via Wi-Fi…</string>
 
 	<string name="proxy">Proxy</string>
 	<string name="enable_proxy_title">Enable HTTP Proxy</string>
@@ -259,14 +259,14 @@
     <string name="minsdk_or_later">%s or later</string>
     <string name="up_to_maxsdk">up to %s</string>
     <string name="minsdk_up_to_maxsdk">%1$s up to %2$s</string>
-    <string name="not_on_same_wifi">Your device is not on the same WiFi as the local repo you just added! Try joining this network: %s</string>
+    <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the local repo you just added! Try joining this network: %s</string>
     <string name="requires_features">Requires: %1$s</string>
     <string name="pref_language">Language</string>
     <string name="pref_language_default">System Default</string>
 
     <string name="app_icon">App icon</string>
     <string name="repo_icon">Repo icon</string>
-    <string name="wifi">WiFi</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
     <string name="Children">Children</string>
@@ -321,18 +321,18 @@
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>
     <string name="swap_nfc_title">Touch to swap</string>
     <string name="swap_nfc_description">If your friend has F-Droid and NFC turned on touch your phones together.</string>
-    <string name="swap_join_same_wifi">Join the same WiFi as your friend</string>
-    <string name="swap_join_same_wifi_desc">To swap using WiFi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a WiFi Hotspot.</string>
+    <string name="swap_join_same_wifi">Join the same Wi-Fi as your friend</string>
+    <string name="swap_join_same_wifi_desc">To swap using Wi-Fi, ensure you are on the same network. If you don\'t have access to the same network, one of you can create a Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Help your friend join your hotspot</string>
     <string name="swap_use_bluetooth">Use Bluetooth instead</string>
-    <string name="swap_wifi_help">Learn more about Wifi</string>
+    <string name="swap_wifi_help">Learn more about Wi-Fi</string>
     <string name="menu_swap">Swap apps</string>
     <string name="swap">Swap apps</string>
     <string name="swap_success">Swap success!</string>
     <string name="swap_no_wifi_network">No network yet</string>
     <string name="swap_active_hotspot">%1$s (your hotspot)</string>
     <string name="swap_view_available_networks">Tap to open available networks</string>
-    <string name="swap_switch_to_wifi">Tap to switch to a WiFi network</string>
+    <string name="swap_switch_to_wifi">Tap to switch to a Wi-Fi network</string>
     <string name="swap_wifi_qr_not_working">It\'s not working</string>
     <string name="open_qr_code_scanner">Open QR Scanner</string>
     <string name="swap_welcome">Welcome to F-Droid!</string>
@@ -350,9 +350,9 @@
     <string name="swap_visible_bluetooth">Visible via Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Setting up Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Not visible via Bluetooth</string>
-    <string name="swap_visible_wifi">Visible via WiFi</string>
-    <string name="swap_setting_up_wifi">Setting up WiFi…</string>
-    <string name="swap_not_visible_wifi">Not visible via WiFi</string>
+    <string name="swap_visible_wifi">Visible via Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Setting up Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Not visible via Wi-Fi</string>
     <string name="swap_wifi_device_name">Device Name</string>
     <string name="swap_cant_find_peers">Can\'t find who you\'re looking for?</string>
     <string name="swap_send_fdroid">SEND F-DROID</string>
