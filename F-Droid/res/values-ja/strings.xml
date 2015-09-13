@@ -214,7 +214,7 @@
   <string name="menu_swap">ｱﾌﾟﾘの交換</string>
   <string name="swap">ｱﾌﾟﾘの交換</string>
   <string name="swap_no_wifi_network">まだﾈｯﾄﾜｰｸがありません</string>
-  <string name="swap_view_available_networks">(ﾀｯﾌﾟして有効なﾈｯﾄﾜｰｸを開く)</string>
+  <string name="swap_view_available_networks">ﾀｯﾌﾟして有効なﾈｯﾄﾜｰｸを開く</string>
   <string name="swap_wifi_qr_not_working">動作していません</string>
   <string name="open_qr_code_scanner">QRｺｰﾄﾞｽｷｬﾅｰを開く</string>
   <string name="swap_welcome">F-Droidにようこそ!</string>
@@ -268,20 +268,20 @@
     <string name="system_uninstall_message">これは、特権 F-Droid がｱﾝｲﾝｽﾄｰﾙされます。</string>
     <string name="system_uninstall_button">ｱﾝｲﾝｽﾄｰﾙ</string>
 
-    <string name="swap_success">正常に切り替えました!</string>
+    <string name="swap_success">正常に交換しました!</string>
     <string name="swap_active_hotspot">%1$s (あなたのﾎｯﾄｽﾎﾟｯﾄ)</string>
     <string name="swap_switch_to_wifi">ﾀｯﾌﾟすると、Wi-Fi ﾈｯﾄﾜｰｸに切り替えます</string>
     <string name="app_name">F-Droid</string>
 
-	<string name="swap_reciprocate_failed">別のﾃﾞﾊﾞｲｽに切り替えようとしてｴﾗｰが発生しました。ｱﾌﾟﾘを取得しようとしても、まだｱﾌﾟﾘを取得できない場合があります。</string>
-    <string name="swap_tap_to_select_apps">ﾀｯﾌﾟして切り替えたいｱﾌﾟﾘを選択します。</string>
+	<string name="swap_reciprocate_failed">別の端末と交換する際にｴﾗｰが発生しました。ｱﾌﾟﾘを取得しようとしても、まだｱﾌﾟﾘを取得できない場合があります。</string>
+    <string name="swap_tap_to_select_apps">ﾀｯﾌﾟして交換したいｱﾌﾟﾘを選択します。</string>
     <string name="swap_dont_show_again">今後、このﾒｯｾｰｼﾞを表示しない</string>
-    <string name="swap_scan_or_type_url">一人は、ｺｰﾄﾞをｽｷｬﾝするか、他の URL をﾌﾞﾗｳｻﾞｰに入力する必要があります。</string>
+    <string name="swap_scan_or_type_url">一人は、ｺｰﾄﾞを読み取るか、他の URL をﾌﾞﾗｳｻﾞｰに入力する必要があります。</string>
     <string name="swap_choose_apps">ｱﾌﾟﾘを選択</string>
-    <string name="swap_scan_qr">QRｺｰﾄﾞをｽｷｬﾝ</string>
+    <string name="swap_scan_qr">QRｺｰﾄﾞを読み取る</string>
     <string name="swap_people_nearby">近くの人</string>
     <string name="swap_scanning_for_peers">近くの人を探しています…</string>
-    <string name="swap_nearby">近くに切り替え</string>
+    <string name="swap_nearby">近くと交換</string>
     <string name="swap_intro">近くにいる人と接続してｱﾌﾟﾘを交換します。</string>
     <string name="swap_visible_bluetooth">Bluetooth 経由で表示</string>
     <string name="swap_setting_up_bluetooth">Bluetooth の設定中…</string>
@@ -289,16 +289,16 @@
     <string name="swap_visible_wifi">Wi-Fi 経由で表示</string>
     <string name="swap_setting_up_wifi">Wi-Fi の設定中…</string>
     <string name="swap_not_visible_wifi">Wi-Fi 経由で表示できません</string>
-    <string name="swap_wifi_device_name">ﾃﾞﾊﾞｲｽ名</string>
+    <string name="swap_wifi_device_name">端末名</string>
     <string name="swap_cant_find_peers">探している人が見つかりませんか?</string>
     <string name="swap_send_fdroid">F-DROID を送信</string>
-    <string name="swap_scan_qr_code">QRｺｰﾄﾞをｽｷｬﾝ</string>
+    <string name="swap_scan_qr_code">QRｺｰﾄﾞを読み取る</string>
     <string name="swap_no_peers_nearby">交換する近くの人が見つかりませんでした。</string>
     <string name="swap_connecting">接続中</string>
     <string name="swap_confirm">交換の確認</string>
-    <string name="swap_qr_isnt_for_swap">ｽｷｬﾝした QR ｺｰﾄﾞは交換ｺｰﾄﾞではないようです。</string>
+    <string name="swap_qr_isnt_for_swap">読み取った QR ｺｰﾄﾞは交換ｺｰﾄﾞではないようです。</string>
     <string name="bluetooth_unavailable">Bluetooth が利用できません</string>
-    <string name="swap_cant_send_no_bluetooth">このﾃﾞﾊﾞｲｽで Bluetooth が利用できないため、F-Droid を送信できません。</string>
+    <string name="swap_cant_send_no_bluetooth">この端末で Bluetooth が利用できないため、F-Droid を送信できません。</string>
     <string name="loading">読み込み中…</string>
     <string name="tap_to_install">ﾀﾞｳﾝﾛｰﾄﾞが完了しました。ﾀｯﾌﾟするとｲﾝｽﾄｰﾙします</string>
 
