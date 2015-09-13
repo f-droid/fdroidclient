@@ -217,22 +217,16 @@
     <string name="app_icon">סמל אפליקציה</string>
     <string name="repo_icon">סמל מאגר</string>
 
-    <string name="Children">ילדים</string>
     <string name="Development">פיתוח</string>
     <string name="Games">משחקים</string>
     <string name="Internet">אינטרנט</string>
-    <string name="Mathematics">מתמטיקה</string>
     <string name="Multimedia">מולטימדיה</string>
     <string name="Navigation">ניווט</string>
-    <string name="News">חדשות</string>
-    <string name="Office">משדר</string>
     <string name="Phone_SMS">טלפון וגם SMS</string>
     <string name="Reading">קריאה</string>
     <string name="Science_Education">חינוך ומדע</string>
     <string name="Security">אבטחה</string>
     <string name="System">מערכת</string>
-    <string name="Wallpaper">טפט</string>
-
     <string name="empty_installed_app_list">אין אפליקציות מותקנות.\n\nאין אפליקציות מותקנות על מכשירך, אך אלו אינן זמינות מתוך F-Droid. אפשרי כי זה כך מפני שעליך לעדכן את המאגרים שלך, או שלמאגרים באמת אין את האפליקציות שלך זמינות.</string>
     <string name="empty_swap_app_list">אין אפליקציות זמינות להחלפה.\n\nאו שהמכשיר עמו אתה מחליף לא הציע שום אפליקציות להחלפה, או ששגיאה אחרת אירעה במהלך תקשור עמו.</string>
     <string name="empty_available_app_list">אין אפליקציות בתוך קטגוריה זו.\n\nנסה לבחור קטגוריה אחרת או לעדכן את המאגרים שלך כדי להשיג רשימה רעננה של אפליקציות.</string>

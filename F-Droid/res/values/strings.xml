@@ -148,10 +148,6 @@
 	<string name="ignoreTouch">Ignore Touchscreen</string>
 	<string name="ignoreTouch_on">Always include apps that require touchscreen</string>
 
-	<string name="category_all">All</string>
-	<string name="category_whatsnew">What\'s New</string>
-	<string name="category_recentlyupdated">Recently Updated</string>
-
 	<string name="local_repo">Local Repo</string>
 	<string name="local_repo_running">F-Droid is ready to swap</string>
 	<string name="waiting_for_ipaddress">Waiting for IP address…</string>
@@ -259,21 +255,26 @@
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string name="Children">Children</string>
+    <string name="category_all">All</string>
+    <string name="category_whatsnew">What\'s New</string>
+    <string name="category_recentlyupdated">Recently Updated</string>
+    <string name="Connectivity">Connectivity</string>
     <string name="Development">Development</string>
     <string name="Games">Games</string>
+    <string name="Graphics">Graphics</string>
     <string name="Internet">Internet</string>
-    <string name="Mathematics">Mathematics</string>
+    <string name="Money">Money</string>
     <string name="Multimedia">Multimedia</string>
     <string name="Navigation">Navigation</string>
-    <string name="News">News</string>
-    <string name="Office">Office</string>
     <string name="Phone_SMS">Phone &amp; SMS</string>
     <string name="Reading">Reading</string>
     <string name="Science_Education">Science &amp; Education</string>
     <string name="Security">Security</string>
+    <string name="Sports_Health">Sports &amp; Health</string>
     <string name="System">System</string>
-    <string name="Wallpaper">Wallpaper</string>
+    <string name="Theming">Theming</string>
+    <string name="Time">Time</string>
+    <string name="Writing">Writing</string>
 
     <string name="empty_installed_app_list">No apps installed.\n\nThere are apps on your device, but they are not available from F-Droid. This could be because you need to update your repositories, or the repositories genuinely don\'t have your apps available.</string>
     <string name="empty_swap_app_list">No apps available to swap.\n\nEither the device you are swapping with didn\'t offer any apps to swap, or an error occurred while communicating with it.</string>
