@@ -213,7 +213,7 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
   <string name="swap_nfc_description">Caso seu(sua) amigo(a) encoste o telefone dele(a) junto ao seu.</string>
   <string name="swap_join_same_wifi">Juntar-se a mesma rede Wi-Fi do(a) seu(sua) amigo(a)</string>
   <string name="swap_use_bluetooth">Usar bluetooth ao invés disso</string>
-  <string name="swap_wifi_help">Saber mais sobre WiFi</string>
+  <string name="swap_wifi_help">Saber mais sobre Wi-Fi</string>
   <string name="menu_swap">Permutar aplicativos</string>
   <string name="swap">Permutar aplicativos</string>
   <string name="swap_no_wifi_network">Nenhuma rede ainda</string>
@@ -271,4 +271,9 @@ Você precisará reativar este repositório para instalar aplicativos a partir d
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toque para permutar</string>
+    <string name="swap_join_same_wifi_desc">Para permutar usando Wi-Fi, certifique-se de que você está na mesma rede. Caso você não tenha acesso à mesma rede, um de vocês pode criar um ponto de acesso Wi-Fi.</string>
+    <string name="swap_join_this_hotspot">Ajude seu amigo a se juntar ao seu ponto de acesso</string>
+    <string name="swap_success">Permuta com sucesso!</string>
+    <string name="swap_active_hotspot">%1$s (seu ponto de acesso)</string>
+    <string name="swap_switch_to_wifi">Toque para mudar para uma rede Wi-Fi</string>
     </resources>
