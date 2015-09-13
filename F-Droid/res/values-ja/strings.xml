@@ -67,7 +67,7 @@
   <string name="many_updates_available">%d 個の更新があります｡</string>
   <string name="fdroid_updates_available">F-Droidの更新があります</string>
   <string name="process_wait_title">しばらくお待ちください</string>
-  <string name="process_update_msg">ｱﾌﾟﾘｹｰｼｮﾝﾘｽﾄを更新中</string>
+  <string name="process_update_msg">ｱﾌﾟﾘｹｰｼｮﾝﾘｽﾄを更新中…</string>
   <string name="download_server">ｱﾌﾟﾘｹｰｼｮﾝを取得中</string>
   <string name="nfc_is_not_enabled">NFCが有効ではありません!</string>
   <string name="go_to_nfc_settings">NFC設定に移動…</string>
@@ -86,7 +86,7 @@
 更新しますか?</string>
   <string name="menu_update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
-  <string name="menu_send_apk_bt">BluetoothでFDroid.apkを送信する</string>
+  <string name="menu_send_apk_bt">BluetoothでFDroid.apkを送信する…</string>
   <string name="menu_preferences">設定</string>
   <string name="menu_about">F-Droidについて</string>
   <string name="menu_search">検索</string>
@@ -128,13 +128,13 @@
   <string name="category_whatsnew">新着</string>
   <string name="category_recentlyupdated">最近の更新</string>
   <string name="local_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘ</string>
-  <string name="local_repo_running">F-Droidは切り替え準備ができました</string>
+  <string name="local_repo_running">F-Droidは交換の準備ができました</string>
   <string name="waiting_for_ipaddress">IPｱﾄﾞﾚｽを待機中…</string>
   <string name="setup_repo">ﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを設定</string>
-  <string name="touch_to_configure_local_repo">ﾀｯﾁすると詳細を表示し､ｱﾌﾟﾘの切り替えができるようになります｡</string>
+  <string name="touch_to_configure_local_repo">ﾀｯﾁすると詳細を表示し､ｱﾌﾟﾘの交換ができるようになります｡</string>
   <string name="touch_to_turn_on_local_repo">ﾀｯﾁしてﾛｰｶﾙﾘﾎﾟｼﾞﾄﾘを有効にする</string>
   <string name="touch_to_turn_off_local_repo">ﾀｯﾁしてﾛｰｶﾙｱﾌﾟﾘを無効にする｡</string>
-  <string name="updating">更新中</string>
+  <string name="updating">更新中…</string>
   <string name="update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="deleting_repo">現在のﾘﾎﾟｼﾞﾄﾘを削除中…</string>
   <string name="adding_apks_format">ﾘﾎﾟｼﾞﾄﾘに %s を追加中…</string>
@@ -169,7 +169,7 @@
 %1$s</string>
   <string name="status_connecting_to_repo">接続中
 %1$s</string>
-  <string name="status_checking_compatibility">あなたの端末とｱﾌﾟﾘｹｰｼｮﾝの互換性を確認しています</string>
+  <string name="status_checking_compatibility">あなたの端末とｱﾌﾟﾘｹｰｼｮﾝの互換性を確認しています…</string>
   <string name="status_inserting">ｱﾌﾟﾘｹｰｼｮﾝの詳細を保存しています (%1$d%%)</string>
   <string name="repos_unchanged">ﾘﾎﾟｼﾞﾄﾘにﾊﾟｯｹｰｼﾞの更新はありません</string>
   <string name="all_other_repos_fine">全ての他のﾘﾎﾟｼﾞﾄﾘに異常はありません｡</string>
@@ -198,7 +198,7 @@
 この中には {1} 個のｱﾌﾟﾘｹｰｼｮﾝがあります｡ｲﾝｽﾄｰﾙ済のｱﾌﾟﾘｹｰｼｮﾝは
 削除されませんが､F-Droidを通じて更新することができなくなります｡</string>
   <string name="unknown">不明</string>
-  <string name="repo_confirm_delete_title">ﾘﾎﾟｼﾞﾄﾘを削除しますか</string>
+  <string name="repo_confirm_delete_title">ﾘﾎﾟｼﾞﾄﾘを削除しますか?</string>
   <string name="repo_confirm_delete_body">ﾘﾎﾟｼﾞﾄﾘを削除するとｱﾌﾟﾘｹｰｼｮﾝはF-Droidからｲﾝｽﾄｰﾙできなくなります｡
 
 注:これまでにｲﾝｽﾄｰﾙしたｱﾌﾟﾘｹｰｼｮﾝは端末に残ります｡</string>
@@ -229,7 +229,7 @@
   <string name="Security">ｾｷｭﾘﾃｨ</string>
   <string name="System">ｼｽﾃﾑ</string>
   <string name="Wallpaper">壁紙･背景</string>
-  <string name="requesting_root_access_body">管理者権限の要求中</string>
+  <string name="requesting_root_access_body">管理者権限の要求中…</string>
   <string name="root_access_denied_title">管理者権限での接続が拒絶されました</string>
   <string name="root_access_denied_body">この端末はroot化されていないか､F-Droidの管理者権限要求が拒絶されされました｡</string>
   <string name="update_all">全て更新</string>
@@ -240,8 +240,8 @@
   <string name="swap_join_same_wifi">友達として同じWi-Fiに参加</string>
   <string name="swap_use_bluetooth">代わりにBluetoothを使用する</string>
   <string name="swap_wifi_help">Wi-Fiについての詳細</string>
-  <string name="menu_swap">ｱﾌﾟﾘの切り替え</string>
-  <string name="swap">ｱﾌﾟﾘの切り替え</string>
+  <string name="menu_swap">ｱﾌﾟﾘの交換</string>
+  <string name="swap">ｱﾌﾟﾘの交換</string>
   <string name="swap_no_wifi_network">まだﾈｯﾄﾜｰｸがありません</string>
   <string name="swap_view_available_networks">(ﾀｯﾌﾟして有効なﾈｯﾄﾜｰｸを開く)</string>
   <string name="swap_wifi_qr_not_working">動作していません</string>
@@ -268,8 +268,8 @@
     <string name="wifi_ap">ﾎｯﾄｽﾎﾟｯﾄ</string>
 
     <string name="empty_installed_app_list">ｱﾌﾟﾘがｲﾝｽﾄｰﾙされていません。\n\nお使いのﾃﾞﾊﾞｲｽにｱﾌﾟﾘはありますが、F-Droid からはご利用いただけません。ﾘﾎﾟｼﾞﾄﾘを更新する必要があるか、純粋にﾘﾎﾟｼﾞﾄﾘに利用可能なｱﾌﾟﾘがない可能性があります。</string>
-    <string name="empty_swap_app_list">切り替えられるアプリはありません。\n\nﾃﾞﾊﾞｲｽが切り替えるｱﾌﾟﾘを提供していないか、通信中にｴﾗｰが発生しました。</string>
-    <string name="swap_nfc_title">ﾀｯﾁして切り替え</string>
+    <string name="empty_swap_app_list">交換できるｱﾌﾟﾘはありません。\n\n交換先の端末がｱﾌﾟﾘを提供していないか、通信中にｴﾗｰが発生しました。</string>
+    <string name="swap_nfc_title">ﾀｯﾁして交換</string>
     <string name="swap_join_same_wifi_desc">Wi-Fiを使用して交換するには、同じﾈｯﾄﾜｰｸ上にいるを確認してください。同じﾈｯﾄﾜｰｸにｱｸｾｽしていない場合は、Wi-Fiﾎｯﾄｽﾎﾟｯﾄを作成できます。</string>
     <string name="swap_join_this_hotspot">友達がﾎｯﾄｽﾎﾟｯﾄに参加するのを助ける</string>
     <string name="empty_available_app_list">このｶﾃｺﾞﾘｰのｱﾌﾟﾘはありません。\n\n別のｶﾃｺﾞﾘｰを選択するか、ﾘﾎﾟｼﾞﾄﾘを更新して新しいｱﾌﾟﾘのﾘｽﾄを取得してみてください。</string>
@@ -292,7 +292,7 @@
     <string name="system_install_uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_question">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは 10 秒ほどかかります。</string>
     <string name="system_install_question_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは、10 秒ほどかかり、その後デバイスを <b>再起動</b> します。</string>
-    <string name="system_install_first_time_message">お使いのﾃﾞﾊﾞｲｽに root ｱｸｾｽできるようです。Android のｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した特権 F-Droid をｲﾝｽﾄｰﾙすることができます。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
+    <string name="system_install_first_time_message">お使いの端末に管理者権限でｱｸｾｽできるようです。Android のｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した特権 F-Droid をｲﾝｽﾄｰﾙすることができます。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
     <string name="system_uninstall">特権 F-Droid をｱﾝｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_uninstall_message">これは、特権 F-Droid がｱﾝｲﾝｽﾄｰﾙされます。</string>
     <string name="system_uninstall_button">ｱﾝｲﾝｽﾄｰﾙ</string>
