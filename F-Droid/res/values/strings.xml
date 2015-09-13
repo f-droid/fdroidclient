@@ -39,7 +39,7 @@
 
 	<string name="search_results">Search Results</string>
 	<string name="app_details">App Details</string>
-	<string name="no_such_app">No such app found</string>
+	<string name="no_such_app">No such app found.</string>
 
 	<string name="about_title">About F-Droid</string>
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
@@ -133,7 +133,7 @@
 
 	<string name="details_installed">Version %s installed</string>
 	<string name="details_notinstalled">Not installed</string>
-	<string name="corrupt_download">Downloaded file is corrupt</string>
+	<string name="corrupt_download">Downloaded file is corrupt.</string>
 	<string name="download_cancelled">Download cancelled</string>
 
 	<string name="antiadslist">This app contains advertising</string>
@@ -216,10 +216,10 @@
     <string name="status_inserting">Saving application details (%1$d%%)</string>
 	<string name="repos_unchanged">All repositories are up to date</string>
         <string name="all_other_repos_fine">All other repos didn\'t create errors.</string>
-        <string name="global_error_updating_repos">Error during update:</string>
+        <string name="global_error_updating_repos">Error during update: %s</string>
 	<string name="no_permissions">No permissions are used.</string>
 	<string name="permissions_for_long">Permissions for version %s</string>
-	<string name="no_handler_app">You don\'t have any available app that can handle %s</string>
+	<string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
 	<string name="compactlayout">Compact Layout</string>
 	<string name="compactlayout_on">Show icons at a smaller size</string>
     <string name="theme">Theme</string>
@@ -254,7 +254,7 @@
     <string name="repo_disabled_notification">Disabled "%1$s".\n\nYou will
         need to re-enable this repository to install apps from it.
     </string>
-    <string name="repo_added">Saved F-Droid repository %1$s</string>
+    <string name="repo_added">Saved F-Droid repository %1$s.</string>
     <string name="repo_searching_address">Looking for F-Droid repository at\n%1$s</string>
     <string name="minsdk_or_later">%s or later</string>
     <string name="up_to_maxsdk">up to %s</string>

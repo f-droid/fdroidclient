@@ -243,7 +243,7 @@ public class UpdateService extends IntentService implements ProgressListener {
                     notificationManager.notify(NOTIFY_ID_UPDATING, notificationBuilder.build());
                     break;
                 case STATUS_ERROR_GLOBAL:
-                    text = context.getString(R.string.global_error_updating_repos) + " " + message;
+                    text = context.getString(R.string.global_error_updating_repos, message);
                     notificationBuilder.setContentText(text)
                             .setCategory(NotificationCompat.CATEGORY_ERROR)
                             .setSmallIcon(android.R.drawable.ic_dialog_alert);
