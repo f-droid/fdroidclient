@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="installIncompatible">Wygląda na to, że ta aplikacja nie jest kompatybilna z twoim urządzeniem. Zainstalować mimo to?</string>
   <string name="version">Wersja</string>
@@ -8,7 +8,7 @@
   <string name="updates">Aktualizacje</string>
   <string name="other">Inne</string>
   <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
-  <string name="never">nigdy</string>
+  <string name="never">Nigdy</string>
   <string name="notify">Powiadomienia</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
@@ -20,7 +20,7 @@
   <string name="local_repo_https_on">Korzystaj z zabezpieczonego połączenia HTTPS</string>
   <string name="search_results">Wyniki wyszukiwania</string>
   <string name="app_details">Szczegóły aplikacji</string>
-  <string name="no_such_app">Nie znaleziono takiej aplikacji</string>
+  <string name="no_such_app">Nie znaleziono takiej aplikacji.</string>
   <string name="about_title">O F-Droid</string>
   <string name="about_site">Strona internetowa:</string>
   <string name="about_version">Wersja:</string>
@@ -58,7 +58,7 @@
   <string name="menu_upgrade">Uaktualnij</string>
   <string name="details_installed">Wersja %s została zainstalowana</string>
   <string name="details_notinstalled">Nie zainstalowano</string>
-  <string name="corrupt_download">Pobrany plik jest uszkodzony</string>
+  <string name="corrupt_download">Pobrany plik jest uszkodzony.</string>
   <string name="antiadslist">Ta aplikacja zawiera reklamy</string>
   <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
   <string name="antinonfreenetlist">Ta aplikacja promuje niewolne usługi sieciowe</string>
@@ -86,7 +86,7 @@
   <string name="failed_to_create_index">Błąd przy tworzeniu indeksu repozytorium!</string>
   <string name="linking_apks">Linkowanie APK do repozytorium…</string>
   <string name="copying_icons">Kopiowanie ikon aplikacji do repozytorium…</string>
-  <string name="icon">ikona</string>
+  <string name="icon">Ikona</string>
   <string name="next">Dalej</string>
   <string name="skip">Pomiń</string>
   <string name="proxy">Proxy</string>
@@ -101,9 +101,9 @@
   <string name="status_checking_compatibility">Sprawdzanie kompatybilności aplikacji z urządzeniem…</string>
   <string name="repos_unchanged">Brak aktualizacji w repozytoriach</string>
   <string name="all_other_repos_fine">Pozostałe repozytoria nie zgłosiły błędów.</string>
-  <string name="global_error_updating_repos">Błąd podczas aktualizacji:</string>
+  <string name="global_error_updating_repos">Błąd podczas aktualizacji: %s</string>
   <string name="permissions_for_long">Uprawnienia dla wersji %s</string>
-  <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s</string>
+  <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s.</string>
   <string name="compactlayout">Widok kompaktowy</string>
   <string name="compactlayout_on">Pokaż ikony w mniejszym rozmiarze</string>
   <string name="theme"> Motyw</string>
@@ -120,7 +120,7 @@
 
 Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
   <string name="minsdk_or_later">%s lub później</string>
-  <string name="up_to_maxsdk">aż do %s</string>
+  <string name="up_to_maxsdk">Wsparcie do %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s aż do %2$s</string>
   <string name="requires_features">Wymaga: %1$s</string>
   <string name="app_icon">Ikona aplikacji</string>
@@ -143,7 +143,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
   <string name="system_permission_denied_body">Opcja dostępna tylko wtedy, gdy F-Droid został zainstalowany jako aplikacja systemowa.</string>
   <string name="app_description">F-Droid jest katalogiem aplikacji FOSS (Wolne i Otwarte Oprogramowanie) dla platformy Android. Klient umożliwia łatwe przeglądanie, instalowanie i zarządzanie aktualizacjami na Twoim urządzeniu.</string>
   <string name="swap_nfc_description">Jeśli oba urządzenie mają F-Droida i NFC, możecie je zbliżyć do siebie.</string>
-  <string name="swap_join_same_wifi">Połącz się z tym samym Wi-Fi</string>
+  <string name="swap_join_same_wifi">Połącz się z tą samą siecią Wi-Fi</string>
   <string name="menu_swap">Wymień aplikacje</string>
   <string name="swap">Wymień aplikacje</string>
   <string name="swap_no_wifi_network">Brak sieci</string>
@@ -160,13 +160,13 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?</string>
 	<string name="cache_downloaded_on">Zachowaj pobrane apliki .apk</string>
 	<string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
-	<string name="automatic_scan_wifi">Aktualizuj tylko przez WiFi</string>
-	<string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez WiFi (oszczędza dane mobilne)</string>
+	<string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
+	<string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez Wi-Fi (oszczędza dane mobilne)</string>
 	<string name="notify_on">Powiadamiaj o dostępnych aktualizacjach</string>
 	<string name="uninstall_system">Odinstaluj uprzywilejowany tryb F-Droida</string>
 	<string name="uninstall_system_summary">Odinstaluj dodatkowe uprzywilejowane aplikacje F-Droida</string>
 	<string name="about_desc">Oryginalnie bazuje na Aptiode.\nWydano pod licencją GNU GPLv3.</string>
-	<string name="about_mail">"Email: "</string>
+	<string name="about_mail">Email:</string>
 	<string name="incompatible">Niekompatybilne</string>
 	<string name="inst">Zainstalowano</string>
 	<string name="inst_known_source">Zainstalowano (z %s)</string>
@@ -183,7 +183,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="repo_exists_add_fingerprint">To repozytorium jest już dodane. Klucz zostanie zaktualizowany.</string>
 	<string name="repo_exists_enable">To repozytorium jest już dodane, potwierdź czy chcesz je włączyć.</string>
 	<string name="repo_exists_and_enabled">To repozytorium jest już dodane i jest włączone.</string>
-	<string name="bad_fingerprint">NIEPOPRAWNY PODPIS CYFROWY</string>
+	<string name="bad_fingerprint">Niepoprawny podpis cyfrowy</string>
 	<string name="invalid_url">Niepoprawny URL.</string>
 	<string name="menu_manage">Repozytoria</string>
 	<string name="menu_send_apk_bt">Prześlij FDroid.apk przez Bluetooth…</string>
@@ -202,14 +202,14 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="no_permissions">Brak wymaganych pozwoleń.</string>
 	<string name="unsigned">Brak podpisu</string>
     <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Musisz uważać pobierając aplikacje z nieznanych źródeł.</string>
-    <string name="repo_not_yet_updated">"To repozytorium nie zostało jeszcze użyte. By zobaczyć jakie aplikacje posiada, musisz je zaktualizować.\n\nGdy je zaktualizujesz, tutaj zobaczysz jego opis i więcej informacji. "</string>
-    <string name="repo_disabled_notification">"Wyłączono %1$a.\n\nAby ponownie móc instalować z niego aplikacje musisz je włączyć ponownie. "</string>
-    <string name="repo_added">Dodano repozytorium %1$s</string>
-    <string name="repo_searching_address"/>
+    <string name="repo_not_yet_updated">To repozytorium nie zostało jeszcze użyte. By zobaczyć jakie aplikacje posiada, musisz je zaktualizować.\n\nGdy je zaktualizujesz, tutaj zobaczysz jego opis i więcej informacji.</string>
+    <string name="repo_disabled_notification">Wyłączono %1$a.\n\nAby ponownie móc instalować z niego aplikacje musisz je włączyć ponownie.</string>
+    <string name="repo_added">Dodano repozytorium %1$s.</string>
+    <string name="repo_searching_address">Szukam repozytorium F-Droida pod adresem:\n%1$s</string>
     <string name="pref_language">Język aplikacji</string>
     <string name="pref_language_default">Domyślny systemowy</string>
 
-    <string name="wifi">WiFi</string>
+    <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">HotSpot</string>
 
     <string name="empty_installed_app_list">Brak zainstalowanych aplikacji.\n\nMasz na swoim urządzeniu aplikacje, ale nie zostały one zainstalowane przez F-Droida. Być może musisz zaktualizować swoje repozytoria.</string>
@@ -229,19 +229,90 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="system_install_post_fail">Przejście w tryb uprzywilejowany nie powiodło się</string>
     <string name="system_install_post_success_message">Przejście w tryb uprzywilejowany zakończone sukcesem. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.</string>
     <string name="system_install_post_fail_message">Przejście w tryb uprzywilejowany nie powiodło się. Metoda instalacji może nie być wspierana przez Twój system. Proszę sprawdzić listę problemów F-Droida by dowiedzieć się więcej.</string>
-    <string name="system_install_installing">Intalowanie…</string>
+    <string name="system_install_installing">Instalowanie…</string>
     <string name="system_install_uninstalling">Odinstalowywanie…</string>
     <string name="system_install_question">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund.</string>
-    <string name="system_install_question_lollipop">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b>.</string>
+    <string name="system_install_question_lollipop">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund, następnie urządzenie zostanie zrestartowane.<b>zrestartowane</b>.</string>
     <string name="system_install_first_time_message">Wygląda na to, że masz dostęp do roota na swoim urządzeniu. Możesz zainstalować F-Droida w trybie uprzywilejowanym. Pozwala to na automatyczne instalowanie, aktualizowanie i odinstalowywanie aplikacji przez F-Droida.</string>
     <string name="system_uninstall">Czy chcesz przejść w tryb uprzywilejowany?</string>
     <string name="system_uninstall_message">Tryb uprzywilejowany zostanie wyłączony.</string>
     <string name="system_uninstall_button">Odinstaluj</string>
 
     <string name="swap_nfc_title">Dotknij by dokonać wymiany</string>
-    <string name="swap_join_same_wifi_desc">By dokonać wymiany przez WiFi musisz upewnić się, że oba urządzenia są w tej samej sieci. Jeśli nie macie dostępu do tej samej sieci, możesz utworzyć Hotspota.</string>
+    <string name="swap_join_same_wifi_desc">By dokonać wymiany przez Wi-Fi musisz upewnić się, że oba urządzenia są w tej samej sieci. Jeśli nie macie dostępu do tej samej sieci, możesz utworzyć hotspota.</string>
     <string name="swap_join_this_hotspot">Pomóż drugiemu urządzeniu dołączyć do tego samego hotspota</string>
     <string name="swap_success">Wymiana powiodła się!</string>
     <string name="swap_active_hotspot">%1$1 (Twój hostpot)</string>
-    <string name="swap_switch_to_wifi">Dotknij by przejść do innej sieci WiFi</string>
-    </resources>
+    <string name="swap_switch_to_wifi">Dotknij by połączyć się z tą inną siecią Wi-Fi</string>
+    <string name="update_interval_zero">Wyłącz automatyczne aktualizacje</string>
+	<string name="about_source">Kod źródłowy:</string>
+	<string name="not_on_same_wifi">Twoje urządzenie nie jest w tej samej sieci Wi-Fi co lokalne repozytorium które zostało dodane! Spróbuj połączyć się z siecią %s</string>
+    <string name="Connectivity">Łączność</string>
+    <string name="Graphics">Grafika</string>
+    <string name="Money">Finanse</string>
+    <string name="Sports_Health">Sport i zdrowie</string>
+    <string name="Theming">Motywy</string>
+    <string name="Time">Czas</string>
+    <string name="Writing">Edycja tekstu</string>
+
+    <string name="swap_tap_to_select_apps">Dotknij by wybrać aplikacje, które chcesz przesłać.</string>
+    <string name="swap_dont_show_again">Nie pokazuj więcej tego okna</string>
+    <string name="swap_scan_or_type_url">Jedno z urządzeń musi mieć zeskanowany kod lub wpisany do przeglądarki adres URL drugiego urządzenia.</string>
+    <string name="swap_choose_apps">Wybierz aplikacje</string>
+    <string name="swap_scan_qr">Skanuj kod QR</string>
+    <string name="swap_people_nearby">Ludzie w okolicy</string>
+    <string name="swap_scanning_for_peers">Wyszukiwanie ludzi w tej okolicy…</string>
+    <string name="swap_nearby">Wymiana z pobliskimi urządzeniami</string>
+    <string name="swap_intro">Połącz się i wymień się aplikacjami z pobliskimi urządzeniami.</string>
+    <string name="swap_visible_bluetooth">Widoczność przez Bluetooth</string>
+    <string name="swap_setting_up_bluetooth">Ustawiania Bluetooth…</string>
+    <string name="swap_not_visible_bluetooth">Brak widoczności przez Bluetooth</string>
+    <string name="swap_visible_wifi">Widoczność przez Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Ustawianie Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Brak widoczności przez Wi-Fi</string>
+    <string name="swap_wifi_device_name">Nazwa urządzenia</string>
+    <string name="swap_cant_find_peers">Nie możesz znaleźć kogo szukasz?</string>
+    <string name="swap_send_fdroid">Wyślij F-Droida</string>
+    <string name="swap_scan_qr_code">Skanuj kod QR</string>
+    <string name="swap_no_peers_nearby">Nie udało się znaleźć urządzeń, z którymi można by się wymienić.</string>
+    <string name="swap_connecting">Łączenie</string>
+    <string name="swap_confirm">Potwierdź wymianę</string>
+    <string name="swap_qr_isnt_for_swap">Kod QR który został zeskanowany nie wygląda na kod do wymiany aplikacji.</string>
+    <string name="bluetooth_unavailable">Bluetooth nie jest dostępny</string>
+    <string name="swap_cant_send_no_bluetooth">Nie udało się wysłać F-Droida ponieważ Bluetooth nie jest dostępny na Twoim urządzeniu.</string>
+    <string name="loading">Ładowanie…</string>
+    <string name="swap_attempt_install">Spróbuj zainstalować</string>
+    <string name="swap_connection_misc_error">Wystąpił błąd podczas łączenia się z urządzeniem. Wymiana nie powiodła się.</string>
+    <string name="swap_not_enabled">Wymiana nie jest włączona</string>
+    <string name="swap_not_enabled_description">Przed wymiana, musisz ustawić swoje urządzenie jako widoczne.</string>
+
+    <string name="install_confirm">Czy chcesz zainstalować tą aplikację? Uzyska ona dostęp do:</string>
+    <string name="install_confirm_no_perms">Czy chcesz zainstalować tą aplikację? Nie wymaga ona żadnych specjalnych uprawnień.</string>
+    <string name="install_confirm_update">Czy chcesz zaktualizować tą aplikację? Aktualizacja dostanie dostęp do:</string>
+    <string name="install_confirm_update_system">Czy chcesz zaktualizować tą systemową aplikację? Aktualizacja dostanie dostęp do:</string>
+    <string name="install_confirm_update_no_perms">Czy chcesz zaktualizować tą aplikację? Aktualizacja nie wymaga żadnych specjalnych uprawnień.</string>
+    <string name="install_confirm_update_system_no_perms">Czy chcesz zaktualizować tą systemową aplikację? Aktualizacja nie wymaga żadnych specjalnych uprawnień.</string>
+    <string name="newPerms">Nowe</string>
+    <string name="allPerms">Wszystkie</string>
+    <string name="privacyPerms">Prywatność</string>
+    <string name="devicePerms">Dostęp do urządzenia</string>
+    <string name="perm_costs_money">To może Cię kosztować</string>
+    <string name="uninstall_update_confirm">Czy chcesz zastąpić tą aplikację z pierwotną wersją?</string>
+    <string name="uninstall_confirm">Czy chcesz odinstalować tą aplikację?</string>
+    <string name="tap_to_install">Pobieranie skończone, kliknij by zainstalować</string>
+
+    <string name="perms_new_perm_prefix">"Nowe: "</string>
+    <string name="perms_description_app">Dostarczone przez %1$s.</string>
+    <string name="downloading">Pobieranie…</string>
+
+    <string name="interval_never">Nigdy</string>
+    <string name="interval_1h">Co godzinę</string>
+    <string name="interval_4h">Co 4 godziny</string>
+    <string name="interval_12h">Co 12 godzin</string>
+    <string name="interval_1d">Co dobę</string>
+    <string name="interval_1w">Co tydzień</string>
+    <string name="interval_2w">Co 2 tygodnie</string>
+
+    <string name="theme_light">Jasna</string>
+    <string name="theme_dark">Ciemna</string>
+</resources>
