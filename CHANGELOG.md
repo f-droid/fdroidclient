@@ -6,6 +6,8 @@
 * Fix crash when trying to install incompatible apps with the privileged
   installer
 
+* Add option to prompt for unstable updates globally
+
 * Add support for free Certificate Authorities: cert.startcom.org and
   letsencrypt.org
 

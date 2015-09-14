@@ -868,6 +868,8 @@ public class AppProvider extends FDroidProvider {
         final String apk = DBHelper.TABLE_APK;
         final String app = DBHelper.TABLE_APP;
 
+        final boolean unstableUpdates = Preferences.get().getUnstableUpdates();
+        String restrictToStable = unstableUpdates ? "" : ( apk + ".vercode <= " + app + ".upstreamVercode AND " );
         String updateSql =
             "UPDATE " + app +
             " SET suggestedVercode = ( " +
@@ -875,7 +877,7 @@ public class AppProvider extends FDroidProvider {
                 " FROM " + apk +
                 " WHERE " +
                     app + ".id = " + apk + ".id AND " +
-                    apk + ".vercode <= " + app + ".upstreamVercode AND " +
+                    restrictToStable +
                     " ( " + app + ".compatible = 0 OR " + apk + ".compatible = 1 ) ) " +
             " WHERE upstreamVercode > 0 ";
 
