@@ -4,12 +4,12 @@
   <string name="version">Wersja</string>
   <string name="delete">Usuń</string>
   <string name="enable_nfc_send">Włącz przesył NFC…</string>
-  <string name="cache_downloaded">Buforuj pobrane aplikacje</string>
+  <string name="cache_downloaded">Zapisuj pobrane pliki instalacyjne</string>
   <string name="updates">Aktualizacje</string>
   <string name="other">Inne</string>
   <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
   <string name="never">Nigdy</string>
-  <string name="notify">Powiadomienia</string>
+  <string name="notify">Powiadomienia o aktualizacjach</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
   <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
@@ -65,12 +65,12 @@
   <string name="antinonfreedeplist">Ta aplikacja wymaga innych, niewolnych aplikacji</string>
   <string name="antiupstreamnonfreelist">Upstreamowy kod źródłowy nie jest w pełni wolny</string>
   <string name="display">Wyświetl</string>
-  <string name="expert">Ekspert</string>
+  <string name="expert">Ustawienia zaawansowane</string>
   <string name="expert_on">Pokaż dodatkowe informacje i włącz dodatkowe ustawienia</string>
   <string name="search_hint">Wyszukaj aplikacje</string>
   <string name="appcompatibility">Kompatybilność aplikacji</string>
   <string name="show_incompat_versions">Niekompatybilne wersje</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ignoruj aplikacje wymagające roota</string>
   <string name="rooted_on">Nie przyciemniaj aplikacji wymagających uprawnień roota</string>
   <string name="ignoreTouch">Ignoruj ekran dotykowy</string>
   <string name="ignoreTouch_on">Zawsze uwzględniaj aplikacje, które wymagają ekranu dotykowego</string>
@@ -158,11 +158,11 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="searchres_noapps">Nie znaleziono żadnych wyników dla zapytania \'%s\'</string>
 	<string name="SignatureMismatch">Nowa wersja jest podpisana cyfrowo z innym kluczem niż obecna wersja. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (odinstalowanie aplikacji spowoduje usunięcie jej danych i ustawień)</string>
 	<string name="installDowngrade">Próbujesz zainstalować starszą wersję tej aplikacji. Wykonanie tej operacji może powodować błędy w jej działaniu lub utratę danych. Czy chcesz kontynuować?</string>
-	<string name="cache_downloaded_on">Zachowaj pobrane apliki .apk</string>
+	<string name="cache_downloaded_on">Zachowaj pobrane apliki .apk na urządzeniu by móc uch potem używać w trybie offline</string>
 	<string name="update_interval">Okres pomiędzy sprawdzaniem aktualizacji</string>
 	<string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
 	<string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez Wi-Fi (oszczędza dane mobilne)</string>
-	<string name="notify_on">Powiadamiaj o dostępnych aktualizacjach</string>
+	<string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
 	<string name="uninstall_system">Odinstaluj uprzywilejowany tryb F-Droida</string>
 	<string name="uninstall_system_summary">Odinstaluj dodatkowe uprzywilejowane aplikacje F-Droida</string>
 	<string name="about_desc">Oryginalnie bazuje na Aptiode.\nWydano pod licencją GNU GPLv3.</string>
@@ -186,7 +186,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="bad_fingerprint">Niepoprawny podpis cyfrowy</string>
 	<string name="invalid_url">Niepoprawny URL.</string>
 	<string name="menu_manage">Repozytoria</string>
-	<string name="menu_send_apk_bt">Prześlij FDroid.apk przez Bluetooth…</string>
+	<string name="menu_send_apk_bt">Prześlij FDroida przez Bluetooh</string>
 	<string name="menu_ignore_all">Ignoruj przyszłe aktualizacje</string>
 	<string name="menu_issues">Problemy</string>
 	<string name="menu_changelog">Lista zmian</string>
@@ -314,4 +314,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
     <string name="theme_light">Jasna</string>
     <string name="theme_dark">Ciemna</string>
-</resources>
+<string name="unstable_updates">Wersje niestabilne</string>
+	<string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
+	</resources>
