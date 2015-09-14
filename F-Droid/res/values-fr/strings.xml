@@ -202,4 +202,6 @@ Vous devez
   <string name="open_qr_code_scanner">Ouvrir le scanner QR Code</string>
   <string name="swap_welcome">Bienvenue sur F-Droid/u00A0!</string>
   <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenantu00A0?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	</resources>
