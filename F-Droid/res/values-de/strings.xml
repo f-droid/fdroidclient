@@ -38,10 +38,10 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="about_site">Internetseite:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
-  <string name="inst">Installiert</string>
-  <string name="not_inst">Nicht installiert</string>
-  <string name="inst_known_source">Installiert (aus %s)</string>
-  <string name="inst_unknown_source">Installiert (aus unbekannter Quelle)</string>
+  <string name="app_installed">Installiert</string>
+  <string name="app_not_installed">Nicht installiert</string>
+  <string name="app_inst_known_source">Installiert (aus %s)</string>
+  <string name="app_inst_unknown_source">Installiert (aus unbekannter Quelle)</string>
   <string name="added_on">Hinzugefügt am %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -52,7 +52,7 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="enable">Aktivieren</string>
   <string name="add_key">Schlüssel hinzufügen</string>
   <string name="overwrite">Überschreiben</string>
-  <string name="tab_noninstalled">Verfügbar</string>
+  <string name="tab_available_apps">Verfügbar</string>
   <string name="tab_updates">Updates</string>
   <string name="one_update_available">Eine Aktualisierung ist verfügbar.</string>
   <string name="many_updates_available">%d Aktualisierungen sind verfügbar.</string>
@@ -201,7 +201,7 @@ Bemerkung: Alle
   <string name="swap_welcome">Willkommen bei F-Droid!</string>
   <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>
 <string name="about_source">Quelle:</string>
-	<string name="incompatible">Inkompatibel</string>
+	<string name="app_incompatible">Inkompatibel</string>
 	<string name="links">Links</string>
 	<string name="back">Zurück</string>
 	<string name="update_notification_more">+%1$d mehr…</string>

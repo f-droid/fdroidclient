@@ -34,8 +34,8 @@
   <string name="about_site">网站：</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">版本：</string>
-  <string name="inst">已安装</string>
-  <string name="not_inst">未安装</string>
+  <string name="app_installed">已安装</string>
+  <string name="app_not_installed">未安装</string>
   <string name="added_on">添加于 %s</string>
   <string name="ok">OK</string>
   <string name="yes">确认</string>
@@ -46,7 +46,7 @@
   <string name="enable">启用</string>
   <string name="add_key">添加密钥</string>
   <string name="overwrite">覆盖</string>
-  <string name="tab_noninstalled">可安装</string>
+  <string name="tab_available_apps">可安装</string>
   <string name="tab_updates">更新</string>
   <string name="one_update_available">有 1 个可用的更新。</string>
   <string name="many_updates_available">有 %d 个可用的更新。</string>

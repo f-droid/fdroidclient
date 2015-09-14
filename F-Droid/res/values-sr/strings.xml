@@ -37,10 +37,10 @@
   <string name="about_site">Вебсајт:</string>
   <string name="about_mail">Е-адреса:</string>
   <string name="about_version">Издање:</string>
-  <string name="inst">Инсталирано</string>
-  <string name="not_inst">Није инсталирано</string>
-  <string name="inst_known_source">Инсталирано (са %s)</string>
-  <string name="inst_unknown_source">Инсталирано (са непознатог извора)</string>
+  <string name="app_installed">Инсталирано</string>
+  <string name="app_not_installed">Није инсталирано</string>
+  <string name="app_inst_known_source">Инсталирано (са %s)</string>
+  <string name="app_inst_unknown_source">Инсталирано (са непознатог извора)</string>
   <string name="added_on">Додата %s</string>
   <string name="ok">У реду</string>
   <string name="yes">Да</string>
@@ -51,7 +51,7 @@
   <string name="enable">Омогући</string>
   <string name="add_key">Додај кључ</string>
   <string name="overwrite">Пребриши</string>
-  <string name="tab_noninstalled">Доступно</string>
+  <string name="tab_available_apps">Доступно</string>
   <string name="tab_updates">Надоградње</string>
   <string name="one_update_available">1 надоградња је доступна.</string>
   <string name="many_updates_available">%d нових надоградњи је доступно.</string>

@@ -37,10 +37,10 @@
   <string name="about_site">Webｻｲﾄ:</string>
   <string name="about_mail">電子ﾒｰﾙ:</string>
   <string name="about_version">ﾊﾞｰｼﾞｮﾝ:</string>
-  <string name="inst">入手済</string>
-  <string name="not_inst">未ｲﾝｽﾄｰﾙ</string>
-  <string name="inst_known_source">ｲﾝｽﾄｰﾙ済 (%s から)</string>
-  <string name="inst_unknown_source">ｲﾝｽﾄｰﾙ済 (入手元不明)</string>
+  <string name="app_installed">入手済</string>
+  <string name="app_not_installed">未ｲﾝｽﾄｰﾙ</string>
+  <string name="app_inst_known_source">ｲﾝｽﾄｰﾙ済 (%s から)</string>
+  <string name="app_inst_unknown_source">ｲﾝｽﾄｰﾙ済 (入手元不明)</string>
   <string name="added_on">%s に追加しました</string>
   <string name="ok">OK</string>
   <string name="yes">はい</string>
@@ -51,7 +51,7 @@
   <string name="enable">有効</string>
   <string name="add_key">ｷｰを追加</string>
   <string name="overwrite">上書き</string>
-  <string name="tab_noninstalled">入手可能</string>
+  <string name="tab_available_apps">入手可能</string>
   <string name="tab_updates">更新</string>
   <string name="one_update_available">1つの更新があります｡</string>
   <string name="many_updates_available">%d 個の更新があります｡</string>
@@ -195,7 +195,7 @@
   <string name="swap_confirm_connect">今すぐ %1$s からｱﾌﾟﾘを取得しますか?</string>
 <string name="uninstall_system">特権 F-Droid をｱﾝｲﾝｽﾄｰﾙ</string>
 	<string name="uninstall_system_summary">追加の特権を持つ F-Droid ｱﾌﾟﾘをｱﾝｲﾝｽﾄｰﾙします</string>
-	<string name="incompatible">非互換</string>
+	<string name="app_incompatible">非互換</string>
 	<string name="links">ﾘﾝｸ</string>
 	<string name="content_description_view_more">もっと見る</string>
 

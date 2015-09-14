@@ -38,10 +38,10 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="about_site">Webbplats:</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Version:</string>
-  <string name="inst">Installerad</string>
-  <string name="not_inst">Inte installerad</string>
-  <string name="inst_known_source">Installerad (från %s)</string>
-  <string name="inst_unknown_source">Installerad (från okänd källa)</string>
+  <string name="app_installed">Installerad</string>
+  <string name="app_not_installed">Inte installerad</string>
+  <string name="app_inst_known_source">Installerad (från %s)</string>
+  <string name="app_inst_unknown_source">Installerad (från okänd källa)</string>
   <string name="added_on">Tillagd %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -52,7 +52,7 @@ Släppt under licensen GNU GPLv3.</string>
   <string name="enable">Aktivera</string>
   <string name="add_key">Lägg till nyckel</string>
   <string name="overwrite">Skriv över</string>
-  <string name="tab_noninstalled">Tillgängliga</string>
+  <string name="tab_available_apps">Tillgängliga</string>
   <string name="tab_updates">Uppdateringar</string>
   <string name="one_update_available">1 uppdatering finns tillgänglig.</string>
   <string name="many_updates_available">%d uppdateringar finns tillgängliga.</string>

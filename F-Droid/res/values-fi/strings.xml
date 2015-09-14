@@ -39,9 +39,9 @@ käyttöehtojen mukaisesti.</string>
   <string name="about_site">Verkkosivu:</string>
   <string name="about_mail">Sähköposti:</string>
   <string name="about_version">Versio:</string>
-  <string name="inst">Asennettu</string>
-  <string name="not_inst">Ei asennettu</string>
-  <string name="inst_unknown_source">Asennettu (tuntemattomasta lähteestä)</string>
+  <string name="app_installed">Asennettu</string>
+  <string name="app_not_installed">Ei asennettu</string>
+  <string name="app_inst_unknown_source">Asennettu (tuntemattomasta lähteestä)</string>
   <string name="added_on">Lisätty %s</string>
   <string name="ok">OK</string>
   <string name="yes">Kyllä</string>
@@ -52,7 +52,7 @@ käyttöehtojen mukaisesti.</string>
   <string name="enable">Ota käyttöön</string>
   <string name="add_key">Lisää avain</string>
   <string name="overwrite">Korvaa</string>
-  <string name="tab_noninstalled">Saatavilla</string>
+  <string name="tab_available_apps">Saatavilla</string>
   <string name="tab_updates">Päivityksiä</string>
   <string name="one_update_available">1 päivitys saatavilla.</string>
   <string name="many_updates_available">%d päivitystä saatavilla.</string>

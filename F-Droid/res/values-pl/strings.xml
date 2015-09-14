@@ -24,7 +24,7 @@
   <string name="about_title">O F-Droid</string>
   <string name="about_site">Strona internetowa:</string>
   <string name="about_version">Wersja:</string>
-  <string name="not_inst">Niezainstalowane</string>
+  <string name="app_not_installed">Niezainstalowane</string>
   <string name="added_on">Dodano %s</string>
   <string name="ok">OK</string>
   <string name="yes">Tak</string>
@@ -35,7 +35,7 @@
   <string name="enable">Włącz</string>
   <string name="add_key">Dodaj klucz</string>
   <string name="overwrite">Nadpisz</string>
-  <string name="tab_noninstalled">Dostępne</string>
+  <string name="tab_available_apps">Dostępne</string>
   <string name="tab_updates">Aktualizacje</string>
   <string name="one_update_available">Dostępne jest 1 uaktualnienie.</string>
   <string name="fdroid_updates_available">Uaktualnienie F-Droid jest dostępne</string>
@@ -167,10 +167,10 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="uninstall_system_summary">Odinstaluj dodatkowe uprzywilejowane aplikacje F-Droida</string>
 	<string name="about_desc">Oryginalnie bazuje na Aptiode.\nWydano pod licencją GNU GPLv3.</string>
 	<string name="about_mail">Email:</string>
-	<string name="incompatible">Niekompatybilne</string>
-	<string name="inst">Zainstalowano</string>
-	<string name="inst_known_source">Zainstalowano (z %s)</string>
-	<string name="inst_unknown_source">Zainstalowano (z nieznanego źródła)</string>
+	<string name="app_incompatible">Niekompatybilne</string>
+	<string name="app_installed">Zainstalowano</string>
+	<string name="app_inst_known_source">Zainstalowano (z %s)</string>
+	<string name="app_inst_unknown_source">Zainstalowano (z nieznanego źródła)</string>
 
 	<string name="links">Linki</string>
 	<string name="content_description_view_more">Zobacz więcej</string>

@@ -37,10 +37,10 @@
   <string name="about_site">Website:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Versie:</string>
-  <string name="inst">Geïnstalleerd</string>
-  <string name="not_inst">Niet geïnstalleerd</string>
-  <string name="inst_known_source">Geïnstalleerd (van %s)</string>
-  <string name="inst_unknown_source">Geïnstalleerd (van onbekende bron)</string>
+  <string name="app_installed">Geïnstalleerd</string>
+  <string name="app_not_installed">Niet geïnstalleerd</string>
+  <string name="app_inst_known_source">Geïnstalleerd (van %s)</string>
+  <string name="app_inst_unknown_source">Geïnstalleerd (van onbekende bron)</string>
   <string name="added_on">Toegevoegd op %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -51,7 +51,7 @@
   <string name="enable">Activeer</string>
   <string name="add_key">Voeg sleutel toe</string>
   <string name="overwrite">Overschrijven</string>
-  <string name="tab_noninstalled">Beschikbaar</string>
+  <string name="tab_available_apps">Beschikbaar</string>
   <string name="tab_updates">Updates</string>
   <string name="one_update_available">1 update beschikbaar.</string>
   <string name="many_updates_available">%d updates beschikbaar.</string>
@@ -189,7 +189,7 @@
   <string name="open_qr_code_scanner">Open QR code scanner</string>
   <string name="swap_welcome">Welkom bij F-Droid!</string>
   <string name="swap_confirm_connect">Wilt u nu apps van %1$s ontvangen?</string>
-<string name="incompatible">Incompatibel</string>
+<string name="app_incompatible">Incompatibel</string>
 	<string name="links">Links</string>
 	<string name="content_description_view_more">Bekijk meer</string>
 

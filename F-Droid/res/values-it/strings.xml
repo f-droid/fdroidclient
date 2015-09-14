@@ -38,8 +38,8 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="about_site">Sito Web:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Versione:</string>
-  <string name="inst">Installato</string>
-  <string name="not_inst">Non installato</string>
+  <string name="app_installed">Installato</string>
+  <string name="app_not_installed">Non installato</string>
   <string name="added_on">Aggiunto il %s</string>
   <string name="ok">OK</string>
   <string name="yes">Sì</string>
@@ -50,7 +50,7 @@ Rilasciato sotto licenza GNU GPLv3.</string>
   <string name="enable">Abilita</string>
   <string name="add_key">Aggiungi chiave</string>
   <string name="overwrite">Sovrascrivi</string>
-  <string name="tab_noninstalled">Disponibile</string>
+  <string name="tab_available_apps">Disponibile</string>
   <string name="tab_updates">Aggiornamenti</string>
   <string name="one_update_available">1 aggiornamento disponibile.</string>
   <string name="many_updates_available">%d aggiornamenti disponibili.</string>

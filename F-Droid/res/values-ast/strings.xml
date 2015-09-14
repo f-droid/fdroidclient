@@ -38,10 +38,10 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="about_site">Sitiu web:</string>
   <string name="about_mail">Corréu:</string>
   <string name="about_version">Versión:</string>
-  <string name="inst">Instaláu</string>
-  <string name="not_inst">Non instaláu</string>
-  <string name="inst_known_source">Instaláu (dende %s)</string>
-  <string name="inst_unknown_source">Instaláu (dende fonte desconocida)</string>
+  <string name="app_installed">Instaláu</string>
+  <string name="app_not_installed">Non instaláu</string>
+  <string name="app_inst_known_source">Instaláu (dende %s)</string>
+  <string name="app_inst_unknown_source">Instaláu (dende fonte desconocida)</string>
   <string name="added_on">Amestáu\'l %s</string>
   <string name="ok">Aceutar</string>
   <string name="yes">Sí</string>
@@ -52,7 +52,7 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="enable">Habilitar</string>
   <string name="add_key">Amestar clave</string>
   <string name="overwrite">Sobrescribir</string>
-  <string name="tab_noninstalled">Disponible</string>
+  <string name="tab_available_apps">Disponible</string>
   <string name="tab_updates">Anovamientos</string>
   <string name="one_update_available">Un anovamientu disponible.</string>
   <string name="many_updates_available">%d anovamientos disponibles.</string>

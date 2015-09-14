@@ -17,10 +17,10 @@
   <string name="about_site">Retejo:</string>
   <string name="about_mail">Retpoŝto:</string>
   <string name="about_version">Versio:</string>
-  <string name="inst">Instalita</string>
-  <string name="not_inst">Ne instalita</string>
-  <string name="inst_known_source">Instalita (de %s)</string>
-  <string name="inst_unknown_source">Instalita (de nekonata fonto)</string>
+  <string name="app_installed">Instalita</string>
+  <string name="app_not_installed">Ne instalita</string>
+  <string name="app_inst_known_source">Instalita (de %s)</string>
+  <string name="app_inst_unknown_source">Instalita (de nekonata fonto)</string>
   <string name="added_on">Aldonita je %s</string>
   <string name="ok">Bone</string>
   <string name="yes">Jes</string>
@@ -29,7 +29,7 @@
   <string name="repo_add_add">Aldoni</string>
   <string name="cancel">Nuligi</string>
   <string name="overwrite">Anstataŭigi</string>
-  <string name="tab_noninstalled">Disponeblaj</string>
+  <string name="tab_available_apps">Disponeblaj</string>
   <string name="tab_updates">Ĝisdatigoj</string>
   <string name="one_update_available">1 ĝisdatigo estas disponebla.</string>
   <string name="many_updates_available">%d ĝisdatigoj estas disponeblaj.</string>

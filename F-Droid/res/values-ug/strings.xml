@@ -24,8 +24,8 @@
   <string name="about_site">تور تۇرا:</string>
   <string name="about_mail">تورخەت:</string>
   <string name="about_version">نەشرى:</string>
-  <string name="inst">ئورنىتىلغان</string>
-  <string name="not_inst">ئورنىتىلمىغان</string>
+  <string name="app_installed">ئورنىتىلغان</string>
+  <string name="app_not_installed">ئورنىتىلمىغان</string>
   <string name="added_on">%s دا قوشۇلغان</string>
   <string name="ok">جەزملە</string>
   <string name="yes">ھەئە</string>
@@ -33,7 +33,7 @@
   <string name="repo_add_title">يېڭى خەزىنە قوش</string>
   <string name="repo_add_add">قوش</string>
   <string name="cancel">ۋاز كەچ</string>
-  <string name="tab_noninstalled">ئىشلىتىشچان</string>
+  <string name="tab_available_apps">ئىشلىتىشچان</string>
   <string name="tab_updates">يېڭىلانمىلار</string>
   <string name="one_update_available">1 يېڭىلانما بار.</string>
   <string name="many_updates_available">%d يېڭىلانما بار.</string>

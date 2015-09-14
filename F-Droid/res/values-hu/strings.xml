@@ -32,8 +32,8 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="about_site">Weboldal:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Verzió:</string>
-  <string name="inst">Telepítve</string>
-  <string name="not_inst">Nincs telepítve</string>
+  <string name="app_installed">Telepítve</string>
+  <string name="app_not_installed">Nincs telepítve</string>
   <string name="added_on">Hozzáadva %s</string>
   <string name="ok">Oké</string>
   <string name="yes">Igen</string>
@@ -44,7 +44,7 @@ Honosítás: gidano | sympda.info\"</string>
   <string name="enable">Engedélyez</string>
   <string name="add_key">Kulcs hozzáadás</string>
   <string name="overwrite">Felülírás</string>
-  <string name="tab_noninstalled">Elérhető</string>
+  <string name="tab_available_apps">Elérhető</string>
   <string name="tab_updates">Frissítések</string>
   <string name="one_update_available">1 frissítés érhető el.</string>
   <string name="many_updates_available">%d frissítés érhető el.</string>

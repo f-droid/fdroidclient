@@ -40,10 +40,10 @@
   <string name="about_site">Сайт:</string>
   <string name="about_mail">E-mail:</string>
   <string name="about_version">Версия:</string>
-  <string name="inst">Установлено</string>
-  <string name="not_inst">Не установлено</string>
-  <string name="inst_known_source">Установлено (из %s)</string>
-  <string name="inst_unknown_source">Установлено (из неизвестного источника)</string>
+  <string name="app_installed">Установлено</string>
+  <string name="app_not_installed">Не установлено</string>
+  <string name="app_inst_known_source">Установлено (из %s)</string>
+  <string name="app_inst_unknown_source">Установлено (из неизвестного источника)</string>
   <string name="added_on">Добавлено %s</string>
   <string name="ok">ОК</string>
   <string name="yes">Да</string>
@@ -54,7 +54,7 @@
   <string name="enable">Включить</string>
   <string name="add_key">Добавить ключ</string>
   <string name="overwrite">Перезаписать</string>
-  <string name="tab_noninstalled">Доступно</string>
+  <string name="tab_available_apps">Доступно</string>
   <string name="tab_updates">Обновления</string>
   <string name="one_update_available">Доступно 1 обновление.</string>
   <string name="many_updates_available">Доступно %d обновлений.</string>

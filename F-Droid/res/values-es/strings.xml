@@ -38,10 +38,10 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="about_site">Página web:</string>
   <string name="about_mail">Correo electrónico:</string>
   <string name="about_version">Versión:</string>
-  <string name="inst">Instalado</string>
-  <string name="not_inst">No instalado</string>
-  <string name="inst_known_source">Instalado (desde %s)</string>
-  <string name="inst_unknown_source">Instalado (desde origen desconocido)</string>
+  <string name="app_installed">Instalado</string>
+  <string name="app_not_installed">No instalado</string>
+  <string name="app_inst_known_source">Instalado (desde %s)</string>
+  <string name="app_inst_unknown_source">Instalado (desde origen desconocido)</string>
   <string name="added_on">Agregado el %s</string>
   <string name="ok">OK</string>
   <string name="yes">Sí</string>
@@ -52,7 +52,7 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="enable">Habilitar</string>
   <string name="add_key">Añadir clave</string>
   <string name="overwrite">Sobreescribir</string>
-  <string name="tab_noninstalled">Disponible</string>
+  <string name="tab_available_apps">Disponible</string>
   <string name="tab_updates">Actualizaciones</string>
   <string name="one_update_available">1 actualización disponible.</string>
   <string name="many_updates_available">%d actualizaciones disponibles.</string>
@@ -201,7 +201,7 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 <string name="app_name">F-Droid</string>
 
 	<string name="about_source">Código:</string>
-	<string name="incompatible">Incompatible</string>
+	<string name="app_incompatible">Incompatible</string>
 	<string name="links">Enlaces</string>
 	<string name="content_description_view_more">Ver más</string>
 

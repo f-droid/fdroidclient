@@ -24,8 +24,8 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="about_site">Sitio web:</string>
   <string name="about_mail">Correo:</string>
   <string name="about_version">Versión:</string>
-  <string name="inst">Instalada</string>
-  <string name="not_inst">Non instalada</string>
+  <string name="app_installed">Instalada</string>
+  <string name="app_not_installed">Non instalada</string>
   <string name="added_on">Engadida a %s</string>
   <string name="ok">Aceptar</string>
   <string name="yes">Si</string>
@@ -33,7 +33,7 @@ Publicado con licenza GNU GPLv3.</string>
   <string name="repo_add_title">Engadir un novo repositorio</string>
   <string name="repo_add_add">Engadir</string>
   <string name="cancel">Cancelar</string>
-  <string name="tab_noninstalled">Dispoñíbel</string>
+  <string name="tab_available_apps">Dispoñíbel</string>
   <string name="tab_updates">Actualizacións</string>
   <string name="one_update_available">1 Actualización dispoñíbel</string>
   <string name="many_updates_available">%d actualizacións dispoñíbeis</string>

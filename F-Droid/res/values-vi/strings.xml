@@ -36,10 +36,10 @@
   <string name="about_site">Trang web:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Phiên bản:</string>
-  <string name="inst">Đã cài đặt</string>
-  <string name="not_inst">Chưa cài đặt</string>
-  <string name="inst_known_source">Đã cài đặt (từ %s)</string>
-  <string name="inst_unknown_source">Đã cài đặt (không rõ nguồn gốc)</string>
+  <string name="app_installed">Đã cài đặt</string>
+  <string name="app_not_installed">Chưa cài đặt</string>
+  <string name="app_inst_known_source">Đã cài đặt (từ %s)</string>
+  <string name="app_inst_unknown_source">Đã cài đặt (không rõ nguồn gốc)</string>
   <string name="added_on">Đã thêm vào %s</string>
   <string name="ok">OK</string>
   <string name="yes">Có</string>
@@ -50,7 +50,7 @@
   <string name="enable">Kích hoạt</string>
   <string name="add_key">Thêm mã khoá</string>
   <string name="overwrite">Ghi đè</string>
-  <string name="tab_noninstalled">Hiện có</string>
+  <string name="tab_available_apps">Hiện có</string>
   <string name="tab_updates">Cập nhật</string>
   <string name="one_update_available">Có 1 bản cập nhật.</string>
   <string name="many_updates_available">Có %d bản cập nhật.</string>

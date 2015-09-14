@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="italic"
-            android:text="@string/inst" />
+            android:text="@string/app_installed" />
 
         <TextView
             android:id="@+id/status_incompatible"
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:textStyle="italic"
             android:textColor="@color/swap_incompatible"
-            android:text="@string/incompatible" />
+            android:text="@string/app_incompatible" />
 
         <TextView
             android:id="@+id/btn_attempt_install"

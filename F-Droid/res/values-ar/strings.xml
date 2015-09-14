@@ -11,10 +11,10 @@
   <string name="about_site">الموقع الإلكتروني:</string>
   <string name="about_mail">البريد الإلكتروني:</string>
   <string name="about_version">الإصدار:</string>
-  <string name="inst">مثبت</string>
-  <string name="not_inst">غير مثبت</string>
-  <string name="inst_known_source">مثبت (من s%)</string>
-  <string name="inst_unknown_source">مثبت ( من مصدر غير معروف)</string>
+  <string name="app_installed">مثبت</string>
+  <string name="app_not_installed">غير مثبت</string>
+  <string name="app_inst_known_source">مثبت (من s%)</string>
+  <string name="app_inst_unknown_source">مثبت ( من مصدر غير معروف)</string>
   <string name="ok">موافق</string>
   <string name="yes">نعم</string>
   <string name="no">لا</string>
@@ -23,7 +23,7 @@
   <string name="cancel">إلغاء</string>
   <string name="enable">تمكين</string>
   <string name="add_key">إضافة مفتاح</string>
-  <string name="tab_noninstalled">متواجد</string>
+  <string name="tab_available_apps">متواجد</string>
   <string name="tab_updates">التحديثات</string>
   <string name="choose_bt_send">إختيار البلوتوث كطريقة إرسال</string>
   <string name="send_via_bluetooth">إرسال بواسطة البلوتوث</string>

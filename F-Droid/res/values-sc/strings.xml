@@ -39,10 +39,10 @@ Intregadu cun sa litzèntzia
   <string name="about_site">Giassu/situ web:</string>
   <string name="about_mail">E-lìtera:</string>
   <string name="about_version">Versione:</string>
-  <string name="inst">Installada</string>
-  <string name="not_inst">Non installada</string>
-  <string name="inst_known_source">Installada (dae %s)</string>
-  <string name="inst_unknown_source">Installada (dae una mitza disconnota)</string>
+  <string name="app_installed">Installada</string>
+  <string name="app_not_installed">Non installada</string>
+  <string name="app_inst_known_source">Installada (dae %s)</string>
+  <string name="app_inst_unknown_source">Installada (dae una mitza disconnota)</string>
   <string name="added_on">Annanta su %s</string>
   <string name="ok">AB</string>
   <string name="yes">Eja</string>
@@ -53,7 +53,7 @@ Intregadu cun sa litzèntzia
   <string name="enable">Abìlita</string>
   <string name="add_key">Annanghe crae</string>
   <string name="overwrite">Subraiscrie</string>
-  <string name="tab_noninstalled">Disponìbiles</string>
+  <string name="tab_available_apps">Disponìbiles</string>
   <string name="tab_updates">Agiornamentos</string>
   <string name="one_update_available">1 agiornamentu est disponìbile.</string>
   <string name="many_updates_available">%d agiornamentos sunt disponìbiles.</string>
@@ -209,7 +209,7 @@ Depes
   <string name="swap_confirm_connect">Boles retzire como sas aplicatziones dae %1$s?</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="incompatible">Non cumpatìbile</string>
+	<string name="app_incompatible">Non cumpatìbile</string>
 	<string name="links">Ligòngios</string>
 	<string name="content_description_view_more">Ammustra àteru</string>
 

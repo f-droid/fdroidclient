@@ -17,8 +17,8 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="about_site">Website</string>
   <string name="about_mail">Email</string>
   <string name="about_version">Versiune</string>
-  <string name="inst">Instalat</string>
-  <string name="not_inst">Nu este instalat</string>
+  <string name="app_installed">Instalat</string>
+  <string name="app_not_installed">Nu este instalat</string>
   <string name="ok">Aplica</string>
   <string name="yes">Da</string>
   <string name="no">Nu</string>
@@ -26,7 +26,7 @@ Distribuit sub licenta GNU GPLv3.</string>
   <string name="repo_add_add">Adauga</string>
   <string name="cancel">Anuleaza</string>
   <string name="enable">Activează</string>
-  <string name="tab_noninstalled">Disponibil</string>
+  <string name="tab_available_apps">Disponibil</string>
   <string name="tab_updates">Actualizare</string>
   <string name="one_update_available">1 actualizare e disponibilă.</string>
   <string name="many_updates_available">%d actualizări sunt disponibile</string>

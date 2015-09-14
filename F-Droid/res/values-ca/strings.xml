@@ -37,10 +37,10 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="about_site">Pàgina web:</string>
   <string name="about_mail">Correu:</string>
   <string name="about_version">Versió:</string>
-  <string name="inst">Instal·lat</string>
-  <string name="not_inst">No està instal·lat</string>
-  <string name="inst_known_source">Instal·lat (des de %s)</string>
-  <string name="inst_unknown_source">Instal·lat (font desconeguda)</string>
+  <string name="app_installed">Instal·lat</string>
+  <string name="app_not_installed">No està instal·lat</string>
+  <string name="app_inst_known_source">Instal·lat (des de %s)</string>
+  <string name="app_inst_unknown_source">Instal·lat (font desconeguda)</string>
   <string name="added_on">S\'ha afegit a %s</string>
   <string name="ok">D\'acord</string>
   <string name="yes">Sí</string>
@@ -51,7 +51,7 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="enable">Permès</string>
   <string name="add_key">Afegeix clau</string>
   <string name="overwrite">Sobreescriu</string>
-  <string name="tab_noninstalled">Disponible</string>
+  <string name="tab_available_apps">Disponible</string>
   <string name="tab_updates">Actualitzacions</string>
   <string name="one_update_available">Hi ha 1 actualització disponible.</string>
   <string name="many_updates_available">Hi ha %d actualitzacions disponibles.</string>
@@ -192,7 +192,7 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
 <string name="app_name">F-Droid</string>
 
 	<string name="about_source">Codi font:</string>
-	<string name="incompatible">Incompatible</string>
+	<string name="app_incompatible">Incompatible</string>
 	<string name="links">Enllaços</string>
 	<string name="content_description_view_more">Veure més</string>
 

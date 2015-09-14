@@ -21,7 +21,7 @@ public class InstalledAppsFragment extends AppListFragment {
 
     @Override
     protected String getFromTitle() {
-        return getString(R.string.inst);
+        return getString(R.string.tab_installed_apps);
     }
 
     @Override

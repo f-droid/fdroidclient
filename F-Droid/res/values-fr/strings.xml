@@ -38,10 +38,10 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="about_site">Site web :</string>
   <string name="about_mail">Courriel :</string>
   <string name="about_version">Version :</string>
-  <string name="inst">Installée</string>
-  <string name="not_inst">Non installée</string>
-  <string name="inst_known_source">Installé (depuis %s)</string>
-  <string name="inst_unknown_source">Installé (depuis une source inconnue)</string>
+  <string name="app_installed">Installée</string>
+  <string name="app_not_installed">Non installée</string>
+  <string name="app_inst_known_source">Installé (depuis %s)</string>
+  <string name="app_inst_unknown_source">Installé (depuis une source inconnue)</string>
   <string name="added_on">Ajoutée le %s</string>
   <string name="ok">OK</string>
   <string name="yes">Oui</string>
@@ -52,7 +52,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="enable">Activer</string>
   <string name="add_key">Ajouter une clé</string>
   <string name="overwrite">Écraser</string>
-  <string name="tab_noninstalled">Disponibles</string>
+  <string name="tab_available_apps">Disponibles</string>
   <string name="tab_updates">Mises à jour</string>
   <string name="one_update_available">Une mise à jour est disponible.</string>
   <string name="many_updates_available">%d mises à jour sont disponibles.</string>

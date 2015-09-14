@@ -34,8 +34,8 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="about_site">Webová stránka:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Verze:</string>
-  <string name="inst">Je nainstalováno</string>
-  <string name="not_inst">Není nainstalováno</string>
+  <string name="app_installed">Je nainstalováno</string>
+  <string name="app_not_installed">Není nainstalováno</string>
   <string name="added_on">Přidáno %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ano</string>
@@ -46,7 +46,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="enable">Povolit</string>
   <string name="add_key">Přidat klíč</string>
   <string name="overwrite">Přepsat</string>
-  <string name="tab_noninstalled">Dostupné</string>
+  <string name="tab_available_apps">Dostupné</string>
   <string name="tab_updates">Aktualizace</string>
   <string name="one_update_available">1 aktualizace je dostupná.</string>
   <string name="many_updates_available">%d aktualizací je dostupných.</string>
@@ -160,9 +160,9 @@ Uvolněno pod GPLv3 licencí.</string>
 	<string name="uninstall_system">Odinstalovat verzi se systémovými oprávněními</string>
 	<string name="uninstall_system_summary">Odinstaluje dodatečnou aplikaci se systémovými oprávněními</string>
 	<string name="about_source">Zdroj:</string>
-	<string name="incompatible">Nekompatibilní</string>
-	<string name="inst_known_source">Nainstalováno (z %s)</string>
-	<string name="inst_unknown_source">Nainstalováno (z neznámého zdroje)</string>
+	<string name="app_incompatible">Nekompatibilní</string>
+	<string name="app_inst_known_source">Nainstalováno (z %s)</string>
+	<string name="app_inst_unknown_source">Nainstalováno (z neznámého zdroje)</string>
 
 	<string name="links">Odkazy</string>
 	<string name="content_description_view_more">Více</string>

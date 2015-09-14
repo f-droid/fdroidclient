@@ -38,10 +38,10 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="about_site">Ağ sitesi:</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Sürüm:</string>
-  <string name="inst">Kurulu</string>
-  <string name="not_inst">Kurulu değil</string>
-  <string name="inst_known_source">Kuruldu (şuradan: %s)</string>
-  <string name="inst_unknown_source">Kuruldu (bilinmeyen kaynaktan)</string>
+  <string name="app_installed">Kurulu</string>
+  <string name="app_not_installed">Kurulu değil</string>
+  <string name="app_inst_known_source">Kuruldu (şuradan: %s)</string>
+  <string name="app_inst_unknown_source">Kuruldu (bilinmeyen kaynaktan)</string>
   <string name="added_on">%s tarihinde eklenmiş</string>
   <string name="ok">Tamam</string>
   <string name="yes">Evet</string>
@@ -52,7 +52,7 @@ GNU GPLv3 lisansı kapsamında yayınlanmıştır.</string>
   <string name="enable">Etkinleştir</string>
   <string name="add_key">Anahtar ekle</string>
   <string name="overwrite">Üzerine yaz</string>
-  <string name="tab_noninstalled">Mevcut</string>
+  <string name="tab_available_apps">Mevcut</string>
   <string name="tab_updates">Güncellemeler</string>
   <string name="one_update_available">1 güncelleme bulunmaktadır.</string>
   <string name="many_updates_available">%d güncelleme bulunmaktadır.</string>

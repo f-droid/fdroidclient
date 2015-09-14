@@ -50,11 +50,11 @@
 	<string name="about_desc">Originally based on Aptoide.\nReleased under the
 		GNU GPLv3 license.</string>
 
-	<string name="incompatible">Incompatible</string>
-	<string name="inst">Installed</string>
-	<string name="not_inst">Not Installed</string>
-	<string name="inst_known_source">Installed (from %s)</string>
-	<string name="inst_unknown_source">Installed (from unknown source)</string>
+	<string name="app_incompatible">Incompatible</string>
+	<string name="app_installed">Installed</string>
+	<string name="app_not_installed">Not Installed</string>
+	<string name="app_inst_known_source">Installed (from %s)</string>
+	<string name="app_inst_unknown_source">Installed (from unknown source)</string>
 
 	<string name="added_on">Added on %s</string>
 
@@ -73,7 +73,8 @@
 	<string name="add_key">Add Key</string>
 	<string name="overwrite">Overwrite</string>
 
-	<string name="tab_noninstalled">Available</string>
+	<string name="tab_available_apps">Available</string>
+	<string name="tab_installed_apps">Installed</string>
 	<string name="tab_updates">Updates</string>
 	<string name="one_update_available">1 update is available.</string>
 	<string name="many_updates_available">%d updates are available.</string>

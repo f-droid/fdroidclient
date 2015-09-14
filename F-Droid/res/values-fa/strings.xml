@@ -19,8 +19,8 @@
   <string name="no_such_app">چنین برنامه‌ای یافت نشد</string>
   <string name="about_title">دربارهٔ F-Droid</string>
   <string name="about_mail">رایانامه:</string>
-  <string name="inst">نصب‌شده</string>
-  <string name="not_inst">نصب‌نشده</string>
+  <string name="app_installed">نصب‌شده</string>
+  <string name="app_not_installed">نصب‌نشده</string>
   <string name="added_on">به %s افزوده شد</string>
   <string name="ok">باشد</string>
   <string name="yes">بله</string>

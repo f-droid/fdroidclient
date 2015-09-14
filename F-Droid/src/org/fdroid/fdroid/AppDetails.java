@@ -183,12 +183,12 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
         private String getInstalledStatus(final Apk apk) {
             // Definitely not installed.
             if (apk.vercode != app.installedVersionCode) {
-                return getString(R.string.not_inst);
+                return getString(R.string.app_not_installed);
             }
             // Definitely installed this version.
             if (mInstalledSigID != null && apk.sig != null
                     && apk.sig.equals(mInstalledSigID)) {
-                return getString(R.string.inst);
+                return getString(R.string.app_installed);
             }
             // Installed the same version, but from someplace else.
             final String installerPkgName;
@@ -196,14 +196,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                 installerPkgName = mPm.getInstallerPackageName(app.id);
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Application " + app.id + " is not installed anymore");
-                return getString(R.string.not_inst);
+                return getString(R.string.app_not_installed);
             }
             if (TextUtils.isEmpty(installerPkgName)) {
-                return getString(R.string.inst_unknown_source);
+                return getString(R.string.app_inst_unknown_source);
             }
             final String installerLabel = InstalledAppProvider
                 .getApplicationLabel(mctx, installerPkgName);
-            return getString(R.string.inst_known_source, installerLabel);
+            return getString(R.string.app_inst_known_source, installerLabel);
         }
 
         @Override

@@ -41,10 +41,10 @@
     <string name="about_site">אתר רשת:</string>
     <string name="about_mail">דוא״ל:</string>
     <string name="about_version">גרסא:</string>
-    <string name="inst">מותקנת</string>
-    <string name="not_inst">לא מותקנת</string>
-    <string name="inst_known_source">מותקנת (מתוך %s)</string>
-    <string name="inst_unknown_source">מותקנת (מתוך מקור לא ידוע)</string>
+    <string name="app_installed">מותקנת</string>
+    <string name="app_not_installed">לא מותקנת</string>
+    <string name="app_inst_known_source">מותקנת (מתוך %s)</string>
+    <string name="app_inst_unknown_source">מותקנת (מתוך מקור לא ידוע)</string>
 
     <string name="added_on">התווסף %s</string>
 
@@ -62,7 +62,7 @@
     <string name="add_key">הוסף מפתח</string>
     <string name="overwrite">שכתב</string>
 
-    <string name="tab_noninstalled">זמינים</string>
+    <string name="tab_available_apps">זמינים</string>
     <string name="tab_updates">עדכונים</string>
     <string name="one_update_available">עדכון 1 זמין.</string>
     <string name="many_updates_available">%d עדכונים זמינים.</string>
@@ -260,7 +260,7 @@
     <string name="downloading">כעת מוריד…</string>
 <string name="app_name">F-Droid</string>
 
-	<string name="incompatible">לא תואמת</string>
+	<string name="app_incompatible">לא תואמת</string>
 	<string name="back">אחורה</string>
 	<string name="repo_searching_address">כעת מחפש מאגר F-Droid אצל\n%1$s</string>
     <string name="wifi">Wi-Fi</string>

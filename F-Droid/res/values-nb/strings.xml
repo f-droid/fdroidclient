@@ -38,10 +38,10 @@ Lisensiert GNU GPLv3.</string>
   <string name="about_site">Nettside:</string>
   <string name="about_mail">E-post:</string>
   <string name="about_version">Versjon:</string>
-  <string name="inst">Installert</string>
-  <string name="not_inst">Ikke installert</string>
-  <string name="inst_known_source">Installert (fra %s)</string>
-  <string name="inst_unknown_source">Installert (fra ukjent kilde)</string>
+  <string name="app_installed">Installert</string>
+  <string name="app_not_installed">Ikke installert</string>
+  <string name="app_inst_known_source">Installert (fra %s)</string>
+  <string name="app_inst_unknown_source">Installert (fra ukjent kilde)</string>
   <string name="added_on">Lagt til %s</string>
   <string name="ok">OK</string>
   <string name="yes">Ja</string>
@@ -52,7 +52,7 @@ Lisensiert GNU GPLv3.</string>
   <string name="enable">Skru på</string>
   <string name="add_key">Legg til nøkkel</string>
   <string name="overwrite">Overskriv</string>
-  <string name="tab_noninstalled">Tilgjengelig</string>
+  <string name="tab_available_apps">Tilgjengelig</string>
   <string name="tab_updates">Oppdateringer</string>
   <string name="one_update_available">1 oppdatering tilgjengelig.</string>
   <string name="many_updates_available">%d oppdateringer tilgjengelig.</string>

@@ -39,10 +39,10 @@ Vydaný pod licenciou
   <string name="about_site">Webstránka:</string>
   <string name="about_mail">Email:</string>
   <string name="about_version">Verzia:</string>
-  <string name="inst">Nainštalované</string>
-  <string name="not_inst">Nie je nainštalované</string>
-  <string name="inst_known_source">Nainštalované (z %s)</string>
-  <string name="inst_unknown_source">Nainštalované (z neznámeho zdroja)</string>
+  <string name="app_installed">Nainštalované</string>
+  <string name="app_not_installed">Nie je nainštalované</string>
+  <string name="app_inst_known_source">Nainštalované (z %s)</string>
+  <string name="app_inst_unknown_source">Nainštalované (z neznámeho zdroja)</string>
   <string name="added_on">Pridané %s</string>
   <string name="ok">OK</string>
   <string name="yes">Áno</string>
@@ -53,7 +53,7 @@ Vydaný pod licenciou
   <string name="enable">Zapnúť</string>
   <string name="add_key">Pridať kľúč</string>
   <string name="overwrite">Prepísať</string>
-  <string name="tab_noninstalled">Dostupné</string>
+  <string name="tab_available_apps">Dostupné</string>
   <string name="tab_updates">Aktualizácie</string>
   <string name="one_update_available">Dostupná 1 aktualizácia.</string>
   <string name="many_updates_available">Dostupné aktualizácie: %d ks</string>

@@ -32,8 +32,8 @@
   <string name="about_site">Ιστοσελίδα:</string>
   <string name="about_mail">Ηλ. ταχυδρομείο:</string>
   <string name="about_version">Έκδοση:</string>
-  <string name="inst">Εγκατεστημένο</string>
-  <string name="not_inst">Δεν είναι εγκατεστημένο</string>
+  <string name="app_installed">Εγκατεστημένο</string>
+  <string name="app_not_installed">Δεν είναι εγκατεστημένο</string>
   <string name="added_on">Προστέθηκε στις %s</string>
   <string name="ok">Εντάξει</string>
   <string name="yes">Ναι</string>
@@ -44,7 +44,7 @@
   <string name="enable">Ενεργοποίηση</string>
   <string name="add_key">Προσθήκη κλειδιού</string>
   <string name="overwrite">Αντικατάσταση</string>
-  <string name="tab_noninstalled">Διαθέσιμα</string>
+  <string name="tab_available_apps">Διαθέσιμα</string>
   <string name="tab_updates">Ενημερώσεις</string>
   <string name="one_update_available">1 διαθέσιμη ενημερώση.</string>
   <string name="many_updates_available">%d διαθέσιμες ενημερώσεις.</string>

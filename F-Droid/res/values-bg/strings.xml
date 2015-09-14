@@ -37,10 +37,10 @@
   <string name="about_site">Уебсайт:</string>
   <string name="about_mail">Имейл:</string>
   <string name="about_version">Версия:</string>
-  <string name="inst">Инсталирана</string>
-  <string name="not_inst">Неинсталирана</string>
-  <string name="inst_known_source">Инсталирана (от %s)</string>
-  <string name="inst_unknown_source">Инсталирана (от неизвестен източник)</string>
+  <string name="app_installed">Инсталирана</string>
+  <string name="app_not_installed">Неинсталирана</string>
+  <string name="app_inst_known_source">Инсталирана (от %s)</string>
+  <string name="app_inst_unknown_source">Инсталирана (от неизвестен източник)</string>
   <string name="added_on">Добавена на %s</string>
   <string name="ok">Добре</string>
   <string name="yes">Да</string>
@@ -49,7 +49,7 @@
   <string name="repo_add_add">Добавяне</string>
   <string name="cancel">Отказ</string>
   <string name="add_key">Добавете ключ</string>
-  <string name="tab_noninstalled">Налични</string>
+  <string name="tab_available_apps">Налични</string>
   <string name="tab_updates">Обновявания</string>
   <string name="one_update_available">1 налична актуализация.</string>
   <string name="many_updates_available">%d налични актуализации.</string>

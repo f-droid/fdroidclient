@@ -26,8 +26,8 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="about_site">Webgunea:</string>
   <string name="about_mail">E-posta:</string>
   <string name="about_version">Bertsioa:</string>
-  <string name="inst">Instalatuta</string>
-  <string name="not_inst">Instalatu gabea</string>
+  <string name="app_installed">Instalatuta</string>
+  <string name="app_not_installed">Instalatu gabea</string>
   <string name="added_on">%s(e)an gehitua</string>
   <string name="ok">Ados</string>
   <string name="yes">Bai</string>
@@ -38,7 +38,7 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="enable">Gaitu</string>
   <string name="add_key">Gehitu gakoa</string>
   <string name="overwrite">Gainidatzi</string>
-  <string name="tab_noninstalled">Eskuragarri</string>
+  <string name="tab_available_apps">Eskuragarri</string>
   <string name="tab_updates">Eguneraketak</string>
   <string name="one_update_available">Eguneraketa 1 eskuragarri.</string>
   <string name="many_updates_available">%d eguneraketa eskuragarri.</string>
@@ -107,9 +107,9 @@ konektatzen</string>
 	<string name="uninstall_system_summary">Desinstalatu pribilegiodun F-Droid aplikazio gehigarria</string>
 	<string name="local_repo_https">Erabili konexio pribatua</string>
 	<string name="about_source">Iturria:</string>
-	<string name="incompatible">Bateraezina</string>
-	<string name="inst_known_source">Instalatuta (%stik)</string>
-	<string name="inst_unknown_source">Instalatuta (Iturri ezezagunetik)</string>
+	<string name="app_incompatible">Bateraezina</string>
+	<string name="app_inst_known_source">Instalatuta (%stik)</string>
+	<string name="app_inst_unknown_source">Instalatuta (Iturri ezezagunetik)</string>
 
 	<string name="links">Loturak</string>
 	<string name="content_description_view_more">Ikusi gehiago</string>

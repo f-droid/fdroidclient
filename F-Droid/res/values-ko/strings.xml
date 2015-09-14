@@ -38,10 +38,10 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="about_site">웹사이트:</string>
   <string name="about_mail">이메일:</string>
   <string name="about_version">버전:</string>
-  <string name="inst">설치됨</string>
-  <string name="not_inst">설치되지 않음</string>
-  <string name="inst_known_source">설치됨 (%s (으)로부터)</string>
-  <string name="inst_unknown_source">설치됨 (알 수 없는 출처로부터)</string>
+  <string name="app_installed">설치됨</string>
+  <string name="app_not_installed">설치되지 않음</string>
+  <string name="app_inst_known_source">설치됨 (%s (으)로부터)</string>
+  <string name="app_inst_unknown_source">설치됨 (알 수 없는 출처로부터)</string>
   <string name="added_on">%s에 추가됨</string>
   <string name="ok">확인</string>
   <string name="yes">예</string>
@@ -52,7 +52,7 @@ GNU GPLv3 라이센스 하에 배포됩니다.</string>
   <string name="enable">사용</string>
   <string name="add_key">키 추가</string>
   <string name="overwrite">덮어쓰기</string>
-  <string name="tab_noninstalled">사용 가능</string>
+  <string name="tab_available_apps">사용 가능</string>
   <string name="tab_updates">업데이트</string>
   <string name="one_update_available">1개의 업데이트를 사용할 수 있습니다.</string>
   <string name="many_updates_available">%d개의 업데이트를 사용할 수 있습니다.</string>

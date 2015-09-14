@@ -38,10 +38,10 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="about_site">Página web:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Versão:</string>
-  <string name="inst">Instalado</string>
-  <string name="not_inst">Não Instalado</string>
-  <string name="inst_known_source">Instalado (a partir de %s)</string>
-  <string name="inst_unknown_source">Instalado (a partir de fonte desconhecida)</string>
+  <string name="app_installed">Instalado</string>
+  <string name="app_not_installed">Não Instalado</string>
+  <string name="app_inst_known_source">Instalado (a partir de %s)</string>
+  <string name="app_inst_unknown_source">Instalado (a partir de fonte desconhecida)</string>
   <string name="added_on">Adicionado em %s</string>
   <string name="ok">OK</string>
   <string name="yes">Sim</string>
@@ -52,7 +52,7 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="enable">Ativar</string>
   <string name="add_key">Adicionar chave</string>
   <string name="overwrite">Sobrescrever</string>
-  <string name="tab_noninstalled">Disponível</string>
+  <string name="tab_available_apps">Disponível</string>
   <string name="tab_updates">Atualizações</string>
   <string name="one_update_available">1 atualização disponível.</string>
   <string name="many_updates_available">%d atualizações disponíveis.</string>
@@ -199,7 +199,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
 
 	<string name="uninstall_system">Desinstalar F-droid privilegiado</string>
 	<string name="uninstall_system_summary">Desinstalar o app adicional do F-Droid privilegiado</string>
-	<string name="incompatible">Incompatível</string>
+	<string name="app_incompatible">Incompatível</string>
 	<string name="links">Links</string>
 	<string name="content_description_view_more">Ver mais</string>
 
