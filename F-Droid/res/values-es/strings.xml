@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Se encontraron %1$d aplicaciones con \'%2$s\':</string>
   <string name="searchres_oneapp">Se encontró una aplicación con \'%s\':</string>
@@ -9,18 +9,18 @@
   <string name="version">Versión</string>
   <string name="delete">Borrar</string>
   <string name="enable_nfc_send">Habilitar envío NFC…</string>
-  <string name="cache_downloaded">Caché de aplicaciones descargadas</string>
-  <string name="cache_downloaded_on">Mantener en la tarjeta SD los ficheros apk descargados</string>
+  <string name="cache_downloaded">Caché de paquetes</string>
+  <string name="cache_downloaded_on">Mantén los paquetes bajados en el dispositivo</string>
   <string name="updates">التحديثات</string>
   <string name="other">Otros</string>
   <string name="last_update_check">Último escaneo del repositorio: %s</string>
-  <string name="never">nunca</string>
+  <string name="never">Nunca</string>
   <string name="update_interval">Intervalo de actualización automática</string>
   <string name="update_interval_zero">No actualizar la lista de aplicaciones automáticamente</string>
-  <string name="automatic_scan_wifi">Sólo con wifi</string>
+  <string name="automatic_scan_wifi">Sólo con Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Actualizar la lista de aplicaciones automáticamente sólo con Wi-Fi</string>
-  <string name="notify">Notificar</string>
-  <string name="notify_on">Notificar cuando hay actualizaciones</string>
+  <string name="notify">Notificaciones de actualizaciones</string>
+  <string name="notify_on">Muestra una notificación cuando hay actualizaciones</string>
   <string name="update_history">Historial de actualizaciones</string>
   <string name="update_history_summ">Días para considerar las aplicaciones nuevas o recientes: %s</string>
   <string name="system_installer">Instalar usando permisos de sistema</string>
@@ -31,7 +31,7 @@
   <string name="local_repo_https_on">Utilizar conexión HTTPS:// cifrada para el repositorio local</string>
   <string name="search_results">Resultados de la búsqueda</string>
   <string name="app_details">Detalles de la aplicación</string>
-  <string name="no_such_app">No se encontró la aplicación</string>
+  <string name="no_such_app">No se encontró la aplicación.</string>
   <string name="about_title">Acerca de F-Droid</string>
   <string name="about_desc">Basado originalmente en Aptoide.
 Publicado bajo la licencia GNU GPLv3.</string>
@@ -64,12 +64,12 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="repo_add_fingerprint">Huella digital (opcional)</string>
   <string name="repo_exists_add_fingerprint">Este repositorio ya está configurado, esto agregará nueva información sobre la clave.</string>
   <string name="repo_exists_enable">Este repositorio ya está configurado, confirma que quieres volver a habilitarlo.</string>
-  <string name="repo_exists_and_enabled">¡El repositorio ya está configurado y habilitado!</string>
-  <string name="repo_delete_to_overwrite">¡Debes borrar este repositorio antes de añadir uno con una clave diferente!</string>
+  <string name="repo_exists_and_enabled">El repositorio ya está configurado y habilitado.</string>
+  <string name="repo_delete_to_overwrite">Debes borrar este repositorio antes de añadir uno con una clave diferente.</string>
   <string name="malformed_repo_uri">Ignorando URI de repo mal formada: %s</string>
   <string name="menu_update_repo">Actualizar repositorios</string>
   <string name="menu_manage">Gestionar Repositorios</string>
-  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Comparte F-Droid por Bluetooth</string>
   <string name="menu_preferences">Preferencias</string>
   <string name="menu_about">Acerca de</string>
   <string name="menu_search">Buscar</string>
@@ -111,10 +111,10 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="local_repo">Repo Local</string>
   <string name="local_repo_running">F-Droid está preparado para intercambiar</string>
   <string name="touch_to_configure_local_repo">Tocar para ver los detalles y permitir a otros intercambiar aplicaciones.</string>
-  <string name="deleting_repo">Borrando repositorio actual</string>
+  <string name="deleting_repo">Borrando repositorio actual…</string>
   <string name="adding_apks_format">Agregando %s al repositorio…</string>
   <string name="writing_index_jar">Escribiendo archivo firmado de índice (index.jar)…</string>
-  <string name="failed_to_create_index">Fallo al crear el indice de repositorios</string>
+  <string name="failed_to_create_index">Fallo al crear el indice de repositorios!</string>
   <string name="linking_apks">Enlazando APKs en el repositorio…</string>
   <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio…</string>
   <string name="icon">icono</string>
@@ -202,4 +202,13 @@ Necesitarás volver a habilitar este repositorio para instalar aplicaciones desd
   <string name="open_qr_code_scanner">Abrir el escáner de Códigos QR</string>
   <string name="swap_welcome">Bienvenido a F-Droid!</string>
   <string name="swap_confirm_connect">¿Quieres obtener aplicaciones desde %1$s ahora?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="about_source">Código:</string>
+	<string name="incompatible">Incompatible</string>
+	<string name="links">Enlaces</string>
+	<string name="content_description_view_more">Ver más</string>
+
+	<string name="back">Volver</string>
+	<string name="update_notification_more">+%1$d más…</string>
+	</resources>
