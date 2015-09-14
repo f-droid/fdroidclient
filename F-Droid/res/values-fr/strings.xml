@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">%1$d applications trouvées contenant \'%2$s\':</string>
   <string name="searchres_oneapp">Une application trouvée contenant \'%s\':</string>
   <string name="searchres_noapps">Aucune application contenant \'%s\' n\'a été trouvée</string>
-  <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller effacera les données enregistrées par l\'application).</string>
+  <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l\'ancienne. Pour installer la nouvelle version, l\'ancienne doit d\'abord être désinstallée. Essayez cela puis recommencez. (Veuillez noter que désinstaller effacera les données enregistrées par l\'application)</string>
   <string name="installIncompatible">Il semble que ce paquet ne soit pas compatible avec votre appareil. Voulez-vous quand même tenter de l\'installer?</string>
   <string name="installDowngrade">Vous essayez de revenir à une ancienne version de cette application. Cela peut causer des problèmes de fonctionnement ou des pertes de données. Voulez-vous tout de même revenir à une ancienne version?</string>
   <string name="version">Version</string>
@@ -64,8 +64,8 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="repo_add_fingerprint">Empreinte digitale (optionnel)</string>
   <string name="repo_exists_add_fingerprint">Ce dépôt est déjà configuré, cela va ajouter les informations des nouvelles clés.</string>
   <string name="repo_exists_enable">Ce dépôt est déjà configuré, confirmer que vous voulez le réactiver.</string>
-  <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé!</string>
-  <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter avec une clé différente!</string>
+  <string name="repo_exists_and_enabled">Le dépôt entrant est déjà configuré et activé.</string>
+  <string name="repo_delete_to_overwrite">Vous devez d\'abord supprimer ce dépôt avant d\'en ajouter avec une clé différente.</string>
   <string name="malformed_repo_uri">URI de dépôt malformé ignoré: %s</string>
   <string name="menu_update_repo">Mettre à jour les dépôts</string>
   <string name="menu_manage">Gestion de dépôts</string>
@@ -110,8 +110,8 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="category_recentlyupdated">Mis à jour récemment</string>
   <string name="local_repo">Dépôt local</string>
   <string name="local_repo_running">F-Droid est prêt à être échangé</string>
-  <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser les autres à échanger des apps</string>
-  <string name="deleting_repo">Supprimer le dépôt actuel</string>
+  <string name="touch_to_configure_local_repo">Appuyez pour voir les détails et autoriser les autres à échanger des apps.</string>
+  <string name="deleting_repo">Supprimer le dépôt actuel…</string>
   <string name="adding_apks_format">Ajout de %s au dépôt…</string>
   <string name="writing_index_jar">Écriture d\'un fichier d\'index signé (index.jar)…</string>
   <string name="failed_to_create_index">Échec à la création d\'un index de dépôt!</string>
