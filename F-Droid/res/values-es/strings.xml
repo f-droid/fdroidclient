@@ -190,13 +190,13 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
   <string name="system_permission_denied_body">Esta opción sólo está disponible cuando F-Droid se instala como una aplicación de sistema.</string>
   <string name="app_description">F-Droid es un catálogo instalable de aplicaciones FOSS (Software libre y de Código Abierto) para la plataforma Android. El cliente hace que sea fácil navegar, instalar y mantener un registro de cambios en el dispositivo.</string>
   <string name="swap_nfc_description">Si tu amigo tiene poned en contacto vuestros teléfonos.</string>
-  <string name="swap_join_same_wifi">Unirse a la misma Red Wifi que tu amigo</string>
+  <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que tu amigo</string>
   <string name="menu_swap">Intercambiar aplicaciones</string>
   <string name="swap">Intercambiar aplicaciones</string>
   <string name="swap_no_wifi_network">No hay red aún</string>
-  <string name="swap_view_available_networks">(Tocar para abrir las redes disponibles)</string>
-  <string name="open_qr_code_scanner">Abrir el escáner de Códigos QR</string>
-  <string name="swap_welcome">Bienvenido a F-Droid!</string>
+  <string name="swap_view_available_networks">(Toca para abrir las redes disponibles)</string>
+  <string name="open_qr_code_scanner">Abrir el escáner de códigos QR</string>
+  <string name="swap_welcome">¡Bienvenido a F-Droid!</string>
   <string name="swap_confirm_connect">¿Quieres obtener aplicaciones desde %1$s ahora?</string>
 <string name="app_name">F-Droid</string>
 
@@ -244,4 +244,73 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="system_install_post_success">Se ha instalado correctamente F-Droid con permisos de sistema</string>
     <string name="system_install_post_fail">Fallo en la instalación de F-Droid con permisos de sistema</string>
     <string name="system_install_post_success_message">Se ha instalado correctamente F-Droid con permisos de sistema. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.</string>
+    <string name="system_install_installing">Instalando…</string>
+    <string name="system_install_uninstalling">Desinstalando…</string>
+    <string name="system_install_question">¿Desea instalar F-Droid con privilegios?\nEsto puede tardar hasta 10 segundos.</string>
+    <string name="system_install_question_lollipop">¿Desea instalar F-Droid con privilegios?\nEsto puede tardar hasta 10 segundos y el dispositivo será reiniciado a continuación.</string>
+    <string name="system_uninstall">¿Desea desinstalar F-Droid con privilegios?</string>
+    <string name="system_uninstall_message">Esto desinstalará F-Droid con privilegios.</string>
+    <string name="system_uninstall_button">Desinstalar</string>
+
+    <string name="swap_nfc_title">Toque para cambiar</string>
+    <string name="swap_join_same_wifi_desc">Para cambiar usando Wi-Fi, asegúrese de que está en la misma red. Si no tiene acceso a la misma red, uno puede crear un punto de acceso Wi-Fi.</string>
+    <string name="swap_join_this_hotspot">Facilita que tu amigo se una a tu punto de acceso</string>
+    <string name="swap_success">¡Intercambio realizado con éxito!</string>
+    <string name="swap_active_hotspot">1%$s (tu punto de acceso)</string>
+    <string name="swap_switch_to_wifi">Toca para cambiar a una red Wi-Fi</string>
+    <string name="swap_tap_to_select_apps">Toca para seleccionar las apps que quieres intercambiar.</string>
+    <string name="swap_dont_show_again">No volver a mostrar esto</string>
+    <string name="swap_scan_or_type_url">Una persona tiene que escanear el código, o escribir la URL en el otro navegador.</string>
+    <string name="swap_choose_apps">Elija las apps</string>
+    <string name="swap_scan_qr">Escanea código QR</string>
+    <string name="swap_people_nearby">Personas cercanas</string>
+    <string name="swap_scanning_for_peers">Buscando personas cercanas…</string>
+    <string name="swap_nearby">Intercambio cercano</string>
+    <string name="swap_intro">Conectar e intercambiar aplicaciones con gente cercana a tu posición.</string>
+    <string name="swap_visible_bluetooth">Visible vía Bluetooth</string>
+    <string name="swap_setting_up_bluetooth">Preparando Bluetooth…</string>
+    <string name="swap_not_visible_bluetooth">No visible vía Bluetooth</string>
+    <string name="swap_visible_wifi">Visible vía Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Preparando Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">No visible vía Wi-Fi</string>
+    <string name="swap_wifi_device_name">Nombre del dispositivo</string>
+    <string name="swap_cant_find_peers">¿No encuentras a quien buscas?</string>
+    <string name="swap_send_fdroid">Envía F-Droid</string>
+    <string name="swap_no_peers_nearby">No se pudo encontrar gente cercana con la que intercambiar.</string>
+    <string name="swap_connecting">Conectando</string>
+    <string name="swap_confirm">Confirme intercambio</string>
+    <string name="swap_qr_isnt_for_swap">El código QR escaneado no parece un código de intercambio.</string>
+    <string name="bluetooth_unavailable">Bluetooth no disponible</string>
+    <string name="swap_cant_send_no_bluetooth">No se puede enviar F-Droid porque el Bluetooth no está disponible en este dispositivo.</string>
+    <string name="loading">Cargando…</string>
+    <string name="swap_attempt_install">Intentar instalar</string>
+    <string name="swap_connection_misc_error">Un error ocurrió mientras se conectaba al dispositivo. Parece que no podemos intercambiar con él :(</string>
+    <string name="swap_not_enabled">Intercambio no activado</string>
+    <string name="swap_not_enabled_description">Antes de intercambiar, su dispositivo debe ser visible.</string>
+
+    <string name="install_confirm">¿Quiere instalar esta aplicación? Tendrá acceso a:</string>
+    <string name="install_confirm_no_perms">¿Quiere instalar esta aplicación? No requiere ningún acceso especial.</string>
+    <string name="install_confirm_update">¿Quiere instalar una actualización de esta aplicación? Sus datos no se perderán. La aplicación actualizada tendrá acceso a:</string>
+    <string name="install_confirm_update_no_perms">¿Quiere instalar una actualización para esta aplicación? Sus datos no se perderán. No requiere ningún permiso especial.</string>
+    <string name="newPerms">Nuevo</string>
+    <string name="allPerms">Todo</string>
+    <string name="privacyPerms">Privacidad</string>
+    <string name="devicePerms">Acceso a dispositivo</string>
+    <string name="perm_costs_money">Esto podría costarle dinero</string>
+    <string name="uninstall_update_confirm">¿Desea reemplazar esta aplicación con la versión de fábrica?</string>
+    <string name="uninstall_confirm">¿Desea desinstalar esta aplicación?</string>
+    <string name="tap_to_install">Descarga completada. Toque para instalar</string>
+
+    <string name="perms_new_perm_prefix">"Nuevo: "</string>
+    <string name="perms_description_app">Proporcionado por %1$s.</string>
+    <string name="downloading">Descargando…</string>
+
+    <string name="interval_never">Nunca</string>
+    <string name="interval_1h">Cada hora</string>
+    <string name="interval_4h">Cada 4 horas</string>
+    <string name="interval_12h">Cada 12 horas</string>
+    <string name="interval_1d">Cada día</string>
+    <string name="interval_1w">Cada semana</string>
+    <string name="interval_2w">Cada 2 semanas</string>
+
     </resources>
