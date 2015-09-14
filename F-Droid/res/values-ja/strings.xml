@@ -9,8 +9,8 @@
   <string name="version">ﾊﾞｰｼﾞｮﾝ</string>
   <string name="delete">削除</string>
   <string name="enable_nfc_send">NFC 送信を有効…</string>
-  <string name="cache_downloaded">ｱﾌﾟﾘｹｰｼｮﾝの保存</string>
-  <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞした .apk ﾌｧｲﾙを端末に残します</string>
+  <string name="cache_downloaded">ﾊﾟｯｹｰｼﾞのｷｬｯｼｭ</string>
+  <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞしたﾊﾟｯｹｰｼﾞ ﾌｧｲﾙを端末に残します</string>
   <string name="updates">更新</string>
   <string name="other">その他</string>
   <string name="last_update_check">最新ﾘﾎﾟｼﾞﾄﾘ検索: %s</string>
@@ -19,8 +19,8 @@
   <string name="update_interval_zero">ｱﾌﾟﾘﾘｽﾄの自動更新を行いません</string>
   <string name="automatic_scan_wifi">Wi-Fi接続時のみ</string>
   <string name="automatic_scan_wifi_on">Wi-Fi接続時のみｱﾌﾟﾘﾘｽﾄの自動更新を行います</string>
-  <string name="notify">通知</string>
-  <string name="notify_on">更新があれば通知します</string>
+  <string name="notify">更新通知</string>
+  <string name="notify_on">更新があれば通知を表示します</string>
   <string name="update_history">更新履歴</string>
   <string name="update_history_summ">ｱﾌﾟﾘｹｰｼｮﾝが新しいものだと判断する日数:%s日</string>
   <string name="system_installer">ｼｽﾃﾑｱｸｾｽ許可を使用してｲﾝｽﾄｰﾙ</string>
@@ -68,7 +68,7 @@
   <string name="malformed_repo_uri">正しくない形式のﾘﾎﾟｼﾞﾄﾘURIを無視します: %s</string>
   <string name="menu_update_repo">ﾘﾎﾟｼﾞﾄﾘの更新</string>
   <string name="menu_manage">ﾘﾎﾟｼﾞﾄﾘ</string>
-  <string name="menu_send_apk_bt">BluetoothでFDroid.apkを送信する…</string>
+  <string name="menu_send_apk_bt">BluetoothでFDroidを共有する</string>
   <string name="menu_preferences">設定</string>
   <string name="menu_about">F-Droidについて</string>
   <string name="menu_search">検索</string>
@@ -94,13 +94,13 @@
   <string name="antinonfreedeplist">このｱﾌﾟﾘｹｰｼｮﾝは他の有償ｱﾌﾟﾘｹｰｼｮﾝに依存します</string>
   <string name="antiupstreamnonfreelist">提供されるｿｰｽｺｰﾄﾞは全てがﾌﾘｰではありません</string>
   <string name="display">表示</string>
-  <string name="expert">上級者向け設定</string>
+  <string name="expert">上級者向けﾓｰﾄﾞ</string>
   <string name="expert_on">拡張情報を表示し､拡張設定を有効にします</string>
   <string name="search_hint">ｱﾌﾟﾘｹｰｼｮﾝの検索</string>
   <string name="appcompatibility">ｱﾌﾟﾘｹｰｼｮﾝの互換性</string>
   <string name="show_incompat_versions">非互換ﾊﾞｰｼﾞｮﾝ</string>
   <string name="show_incompat_versions_on">端末と互換性の無いのﾊﾞｰｼﾞｮﾝのｱﾌﾟﾘｹｰｼｮﾝを表示します</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Rootを無視</string>
   <string name="rooted_on">管理者権限を要求するｱﾌﾟﾘｹｰｼｮﾝをｸﾞﾚｰｱｳﾄしません</string>
   <string name="ignoreTouch">ﾀｯﾁｽｸﾘｰﾝを無視</string>
   <string name="ignoreTouch_on">ﾀｯﾁｽｸﾘｰﾝを要求するｱﾌﾟﾘｹｰｼｮﾝを常に含めます</string>
@@ -263,7 +263,7 @@
     <string name="swap_not_visible_wifi">Wi-Fi 経由で表示できません</string>
     <string name="swap_wifi_device_name">端末名</string>
     <string name="swap_cant_find_peers">探している人が見つかりませんか?</string>
-    <string name="swap_send_fdroid">F-DROID を送信</string>
+    <string name="swap_send_fdroid">F-Droidを送信</string>
     <string name="swap_no_peers_nearby">交換する近くの人が見つかりませんでした。</string>
     <string name="swap_connecting">接続中</string>
     <string name="swap_confirm">交換の確認</string>
