@@ -9,8 +9,8 @@
   <string name="version">Versão</string>
   <string name="delete">Apagar</string>
   <string name="enable_nfc_send">Habilitar envio NFC…</string>
-  <string name="cache_downloaded">Cache de aplicativos</string>
-  <string name="cache_downloaded_on">Manter arquivos apk baixados no cartão SD</string>
+  <string name="cache_downloaded">Pacotes de cache</string>
+  <string name="cache_downloaded_on">Manter os arquivos de pacote baixados no dispositivo</string>
   <string name="updates">Atualizações</string>
   <string name="other">Outros</string>
   <string name="last_update_check">Última consulta ao repositório: %s</string>
@@ -19,8 +19,8 @@
   <string name="update_interval_zero">Não atualizar a lista de aplicativos automaticamente</string>
   <string name="automatic_scan_wifi">Apenas com Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Atualizar a lista de aplicativos automaticamente apenas com Wi-Fi</string>
-  <string name="notify">Notificar</string>
-  <string name="notify_on">Notificar quando houver atualizações disponíveis</string>
+  <string name="notify">Notificações de atualização</string>
+  <string name="notify_on">Mostrar uma notificação quando atualizações estiverem disponíveis</string>
   <string name="update_history">Atualizar histórico</string>
   <string name="update_history_summ">Dias para considerar os aplicativos novos ou recentes: %s</string>
   <string name="system_installer">Instalar usando permissões do sistema</string>
@@ -69,7 +69,7 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
   <string name="menu_update_repo">Atualizar repositórios</string>
   <string name="menu_manage">Gerenciar Repositórios</string>
-  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Compartilhar o F-Droid por Bluetooth</string>
   <string name="menu_preferences">Preferências</string>
   <string name="menu_about">Sobre</string>
   <string name="menu_search">Procurar</string>
@@ -95,13 +95,13 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="antinonfreedeplist">Este aplicativo depende de aplicativos não livres</string>
   <string name="antiupstreamnonfreelist">O código fonte original não é totalmente livre</string>
   <string name="display">Mostrar</string>
-  <string name="expert">Especialista</string>
+  <string name="expert">Modo avançado</string>
   <string name="expert_on">Mostrar informações extras e habilitar os ajustes extras</string>
   <string name="search_hint">Procurar aplicativos</string>
   <string name="appcompatibility">Compatibilidade de aplicativo</string>
   <string name="show_incompat_versions">Versões incompatíveis</string>
   <string name="show_incompat_versions_on">Mostrar as versões de aplicativos incompatíveis com o dispositivo</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ignorar o root</string>
   <string name="rooted_on">Não marcar em cinza os aplicativos que requerem privilégios de root</string>
   <string name="ignoreTouch">Ignorar tela sensível ao toque</string>
   <string name="ignoreTouch_on">Sempre incluir aplicativos que requerem tela sensível a toque</string>
