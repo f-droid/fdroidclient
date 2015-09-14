@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">\'%2$s\'-rekin bat datozen %1$d aplikazio aurkitu dira:</string>
   <string name="searchres_oneapp">\'%s\'-rekin bat datorren aplikazio bat aurkitu da:</string>
@@ -7,19 +7,19 @@
   <string name="version">Bertsioa</string>
   <string name="delete">Ezabatu</string>
   <string name="enable_nfc_send">Gaitu NFC bidez bidaltzea…</string>
-  <string name="cache_downloaded">Gorde cache-an deskargatutako aplikazioak</string>
-  <string name="cache_downloaded_on">Mantendu deskargatutako apk fitxategiak SD txartelean</string>
+  <string name="cache_downloaded">Gorde cache-an deskargatutako paketeak</string>
+  <string name="cache_downloaded_on">Mantendu deskargatutako pakete fitxategiak gailuan</string>
   <string name="updates">Eguneraketak</string>
   <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
-  <string name="never">inoiz ez</string>
-  <string name="automatic_scan_wifi">Wifian soilik</string>
-  <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki wifian soilik</string>
-  <string name="notify">Jakinarazi</string>
-  <string name="notify_on">Jakinarazi eguneraketak eskuragarri daudenean</string>
+  <string name="never">Inoiz ez</string>
+  <string name="automatic_scan_wifi">Wi-Fi bidez soilik</string>
+  <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki Wi-Fian soilik</string>
+  <string name="notify">Eguneratu jakinarazpenak</string>
+  <string name="notify_on">Bistarazi jakinarazpena eguneraketak eskuragarri daudenean</string>
   <string name="update_history">Eguneratu historia</string>
   <string name="search_results">Bilaketaren emaitzak</string>
   <string name="app_details">Aplikazioaren xehetasunak</string>
-  <string name="no_such_app">Ez da aplikaziorik aurkitu</string>
+  <string name="no_such_app">Ez da aplikazio hori aurkitu.</string>
   <string name="about_title">F-Droid-i buruz</string>
   <string name="about_desc">Jatorrian Aptoide-n oinarritua.
 GNU GPLv3 lizentziapean argitaratua.</string>
@@ -63,14 +63,14 @@ GNU GPLv3 lizentziapean argitaratua.</string>
   <string name="menu_donate">Egin dohaintza</string>
   <string name="details_installed">%s bertsioa instalatuta</string>
   <string name="details_notinstalled">Instalatu gabe</string>
-  <string name="corrupt_download">Deskargatutako fitxategia hondatuta dago</string>
+  <string name="corrupt_download">Deskargatutako fitxategia hondatuta dago.</string>
   <string name="antiadslist">Tämä ohjelma sisältää mainontaa</string>
   <string name="display">Bistaratu</string>
-  <string name="expert">Aditua</string>
+  <string name="expert">Modu aditua</string>
   <string name="search_hint">Bilatu aplikazioak</string>
   <string name="appcompatibility">Aplikazioen bateragarritasuna</string>
   <string name="show_incompat_versions">Bertsio bateraezinak</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ezikusi Root</string>
   <string name="ignoreTouch">Ezikusi egin ukipen-pantailari</string>
   <string name="category_all">Guztia</string>
   <string name="category_whatsnew">Zer da berria</string>
@@ -90,4 +90,44 @@ konektatzen</string>
   <string name="repo_name">Izena</string>
   <string name="unknown">Ezezaguna</string>
   <string name="repo_confirm_delete_title">Biltegia ezabatu?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="installIncompatible">Badirudi pakete hau ez dela zure gailuarekin bateragarria. Instalatzea saiatu nahi duzu hala ere?</string>
+	<string name="installDowngrade">Aplikazio hau bertsio-zahartzen saiatzen ari zara. Baliteke behar bezala ez ibiltzea eta zure datuak galtzea. Bertsio-zahartzea saiatu nahi duzu hala ere?</string>
+	<string name="unstable_updates">Eguneraketa ezegonkorrak</string>
+	<string name="unstable_updates_summary">Proposatu eguneraketak bertsio ezegonkorretara</string>
+	<string name="theme_dark">Iluna</string>
+<string name="theme_light">Argia</string>
+    <string name="other">Bestelakoak</string>
+	<string name="update_interval">Eguneraketa automatikoaren tartea</string>
+	<string name="update_history_summ">Aplikazioa berri eta oraintsukotzat hartzeko egunak: %s</string>
+	<string name="system_installer">Gaitu pribilegiodun F-Droid</string>
+	<string name="system_installer_on">Erabili pribilegiodun baimenak paketeak instalatu, eguneratu eta kentzeko</string>
+	<string name="uninstall_system">Desinstalatu pribilegiodun F-Droid</string>
+	<string name="uninstall_system_summary">Desinstalatu pribilegiodun F-Droid aplikazio gehigarria</string>
+	<string name="local_repo_https">Erabili konexio pribatua</string>
+	<string name="about_source">Iturria:</string>
+	<string name="incompatible">Bateraezina</string>
+	<string name="inst_known_source">Instalatuta (%stik)</string>
+	<string name="inst_unknown_source">Instalatuta (Iturri ezezagunetik)</string>
+
+	<string name="links">Loturak</string>
+	<string name="content_description_view_more">Ikusi gehiago</string>
+
+	<string name="back">Atzera</string>
+	<string name="update_notification_more">+%1$d gehiago…</string>
+	<string name="bluetooth_activity_not_found">Ez da aurkitu Bluetooth bidez bidaltzeko metodorik, aukeratu bat!</string>
+	<string name="choose_bt_send">Aukeratu Bluetooth bidez bidaltzeko metodoa</string>
+	<string name="send_via_bluetooth">Bidali Bluetooth bidez</string>
+
+	<string name="repo_add_fingerprint">Hatz-marka (aukerazkoa)</string>
+	<string name="bad_fingerprint">Hatz-marka okerra</string>
+	<string name="menu_send_apk_bt">Partekatu F-Droid Bluetooth bidez</string>
+	<string name="menu_changelog">Aldaketa egunkaria</string>
+	<string name="antitracklist">Aplikazio honek zure eginkizunen jarraipena egiten du eta berri ematen du</string>
+	<string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak bultzatzen ditu</string>
+	<string name="antinonfreenetlist">Aplikazio honek libreak ez diren sare zerbitzuak bultzatzen ditu</string>
+	<string name="antinonfreedeplist">Aplikazio honek libreak ez diren beste aplikazio batzuk behar ditu</string>
+	<string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
+
+	</resources>
