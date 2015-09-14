@@ -8,8 +8,8 @@
   <string name="installDowngrade">Aneu a desactualitzar aquesta aplicació. Això podria fer que l\'aplicació no funcionés o inclús es perdessin les vostres dades. Esteu segur que ho voleu fer?</string>
   <string name="version">Versió</string>
   <string name="delete">Esborrar</string>
-  <string name="cache_downloaded">Memòria cau de les aplicacions baixades</string>
-  <string name="cache_downloaded_on">Mantén els fitxers apk descarregats a la targeta SD</string>
+  <string name="cache_downloaded">Memòria cau de paquets</string>
+  <string name="cache_downloaded_on">Manté els paquets descarregats al dispositiu</string>
   <string name="updates">Actualitzacions</string>
   <string name="other">Altres</string>
   <string name="last_update_check">Darrera actualització dels dipòsits: %s</string>
@@ -18,8 +18,8 @@
   <string name="update_interval_zero">No actualitzis automàticament la llista d\'aplicacions</string>
   <string name="automatic_scan_wifi">Només en Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Actualitza la llista d\'aplicacions només en Wi-Fi</string>
-  <string name="notify">Notifica-ho</string>
-  <string name="notify_on">Notifica\'m quan hi hagi actualitzacions disponibles</string>
+  <string name="notify">Notificacions d\'actualitzacions</string>
+  <string name="notify_on">Ensenya una notificació quan hi hagi actualitzacions disponibles</string>
   <string name="update_history">Actualitzacions</string>
   <string name="update_history_summ">Les aplicacions es consideren noves o recents durant: %s dies</string>
   <string name="system_installer">Instal·la d\'acord amb els permisos del sistema</string>
@@ -67,8 +67,7 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="malformed_repo_uri">Ignorant el URI mal formatat del dipòsit: %s</string>
   <string name="menu_update_repo">Actualitza els dipòsits</string>
   <string name="menu_manage">Gestiona els dipòsits</string>
-  <string name="menu_send_apk_bt">Envia FDroid.apk per
-  Bluetooth…</string>
+  <string name="menu_send_apk_bt">Comparteix F-Droid per Bluetooth</string>
   <string name="menu_preferences">Preferències</string>
   <string name="menu_about">Quant a</string>
   <string name="menu_search">Cerca</string>
@@ -94,13 +93,13 @@ Publicat amb la llicència GNU GPL v3.</string>
   <string name="antinonfreedeplist">Aquesta aplicació depèn d\'altres aplicacions no lliures</string>
   <string name="antiupstreamnonfreelist">El codi font no és del tot lliure</string>
   <string name="display">Pantalla</string>
-  <string name="expert">Usuari expert</string>
+  <string name="expert">Mode expert</string>
   <string name="expert_on">Mostra informació extra i habilita paràmetres extra</string>
   <string name="search_hint">Cerca aplicacions</string>
   <string name="appcompatibility">Compatibilitat de les aplicacions</string>
   <string name="show_incompat_versions">Versions incompatibles</string>
   <string name="show_incompat_versions_on">Mostra també versions no compatibles de les aplicacions amb el dispositiu</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ignora root</string>
   <string name="rooted_on">No marquis en gris aplicacions que requereixen privilegis d\'administrador</string>
   <string name="ignoreTouch">Ignora la pantalla tàctil</string>
   <string name="ignoreTouch_on">Inclou sempre aplicacions que requereixin pantalla tàctil</string>
