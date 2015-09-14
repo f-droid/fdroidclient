@@ -315,4 +315,8 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
 
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
-</resources>
+<string name="unstable_updates">Actualizaciones inestables</string>
+	<string name="unstable_updates_summary">Sugerir actualizaciones a versiones inestables</string>
+	<string name="tab_installed_apps">Instalado</string>
+	<string name="system_install_post_fail_message">La instalación de F-Droid privilegiado ha fallado. Este método de instalación no es soportado en todas las distribuciones de Android, por favor consulte el bug tracker de F-Droid para mas información.</string>
+    </resources>
