@@ -83,7 +83,7 @@ Lançado sob a licença GNU GPLv3.</string>
   <string name="menu_website">Página web</string>
   <string name="menu_issues">Questões</string>
   <string name="menu_source">Código Fonte</string>
-  <string name="menu_upgrade">Atualização</string>
+  <string name="menu_upgrade">Atualizar</string>
   <string name="menu_donate">Fazer doação</string>
   <string name="details_installed">Versão %s instalada</string>
   <string name="details_notinstalled">Não instalado</string>
