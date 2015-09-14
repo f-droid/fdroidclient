@@ -79,6 +79,10 @@ command line:
 This will build and install F-Droid and the test apk, then execute the entire
 test suite on the device or emulator.
 
+Note that the CI already runs the tests on an emulator, so you don't
+necessarily have to do this yourself if you open a merge request as the tests
+will get run.
+
 See the [Android Gradle user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Testing)
 for more details, including how to use Android Studio to run tests (which
 provides more useful feedback than the command line).
