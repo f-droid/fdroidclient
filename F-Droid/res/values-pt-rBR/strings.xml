@@ -274,7 +274,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="swap_not_visible_wifi">Não visível pelo Wi-Fi</string>
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não consegue achar quem você está procurando?</string>
-    <string name="swap_send_fdroid">ENVIAR F-DROID</string>
+    <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="swap_no_peers_nearby">Não foi possível encontrar pessoas próximas para permutar.</string>
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar a permuta</string>
@@ -282,7 +282,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="bluetooth_unavailable">Bluetooth não está disponível</string>
     <string name="swap_cant_send_no_bluetooth">Não é possível enviar F-Droid, porque o Bluetooth não está disponível neste dispositivo.</string>
     <string name="loading">Carregando…</string>
-    <string name="swap_attempt_install">TENTE INSTALAR</string>
+    <string name="swap_attempt_install">Tente instalar</string>
     <string name="swap_connection_misc_error">Ocorreu um erro ao conectar o dispositivo, não conseguimos permutar com ele :(</string>
     <string name="swap_not_enabled">Permuta não habilitada</string>
     <string name="swap_not_enabled_description">Antes de permutar, seu dispositivo deve estar visível.</string>
