@@ -42,7 +42,7 @@
   <string name="send_via_bluetooth">Wyślij przez Bluetooth</string>
   <string name="repo_add_url">Adres repozytorium</string>
   <string name="repo_add_fingerprint">Odcisk palca (opcjonalnie)</string>
-  <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym kluczem!</string>
+  <string name="repo_delete_to_overwrite">Musisz najpierw usunąć to repozytorium zanim dodasz następne z innym kluczem.</string>
   <string name="malformed_repo_uri">Ignorowanie błędnego adresu (URI) repozytorium: %s</string>
   <string name="menu_update_repo">Aktualizuj repozytoria</string>
   <string name="menu_preferences">Ustawienia</string>
