@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Знайдено %1$d програм за запитом «%2$s»:</string>
   <string name="searchres_oneapp">Знайдено програму за запитом «%s»:</string>
@@ -8,7 +8,7 @@
   <string name="cache_downloaded">Зберігати звантажене</string>
   <string name="updates">Оновлення</string>
   <string name="last_update_check">Синхронізовано: %s</string>
-  <string name="never">ніколи</string>
+  <string name="never">Ніколи</string>
   <string name="notify">Сповіщення</string>
   <string name="about_title">Про F-Droid</string>
   <string name="about_site">Сайт:</string>
@@ -49,4 +49,22 @@
   <string name="category_all">Всі програми</string>
   <string name="category_whatsnew">Недавні додання</string>
   <string name="category_recentlyupdated">Недавні оновлення</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="installIncompatible">Схоже, ця програма не сумісна з вашим пристроєм. Спробувати встановити її все одно?</string>
+	<string name="installDowngrade">Ви збираєтесь встановити більш стару версію програми. Це можете призвести до некоректної робити і навіть втрати ваших даних. Встановити більш стару версію?</string>
+	<string name="delete">Видалити</string>
+	<string name="cache_downloaded_on">Зберігати завантажені пакети у пам\'яті пристрою</string>
+	<string name="other">Інше</string>
+	<string name="update_interval">Інтервал автооновлення</string>
+	<string name="update_interval_zero">Не оновлювати список програм автоматично</string>
+	<string name="automatic_scan_wifi">Тільки через Wi-Fi</string>
+	<string name="automatic_scan_wifi_on">Автоматично оновлювати списки програм тільки через Wi-Fi</string>
+	<string name="notify_on">Показувати сповіщення коли є доступні оновлення</string>
+	<string name="update_history">Історія оновлень</string>
+	<string name="update_history_summ">Скільки днів вважати програму новою чи нещодавньою: %s</string>
+	<string name="system_installer">Активувати привілеї F-Droid</string>
+	<string name="system_installer_on">Використовувати привілейовані права для встановлення, оновлення та видалення пакетів</string>
+	<string name="uninstall_system">Видалити привілеї F-Droid</string>
+	<string name="uninstall_system_summary">Видаляє додаткову програму привілейованого F-Droid</string>
+	</resources>
