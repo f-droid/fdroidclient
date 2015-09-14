@@ -21,8 +21,8 @@ Remember to include:
 Style
 -----
 
-We follow the [Google Java style](https://google-styleguide.googlecode.com/svn/trunk/javaguide.html).
-To summarize it:
+We follow the [Android Java style](https://source.android.com/source/code-style.html).
+Some key points:
 
 * Four space indentation
 * UTF-8 source files
