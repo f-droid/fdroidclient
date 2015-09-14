@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_oneapp">Nalezena jedna aplikace odpovídající \'%s\':</string>
   <string name="searchres_noapps">Nenalezeny žádné aplikace odpovídající \'%s\'</string>
-  <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem než ta stará. Před instalací nové verze je nutné starou odinstalovat. Poté instalaci zkus znovu. (Nezapomeň, že při odinstalování aplikace budou všechna její data v interním úložišti vymazána.)</string>
-  <string name="installIncompatible">Zdá se, že tento balíček není kompatibilní s tímto zařízením. Chceš ho zkusit nainstalovat i tak?</string>
-  <string name="installDowngrade">Pokoušíš se instalovat starší verzi než je nyní nainstalována. To nemusí fungovat a může to vést i ke ztrátě dat. Opravdu chceš starší verzi nainstalovat?</string>
+  <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem než ta stará. Před instalací nové verze je nutné starou odinstalovat. Poté instalaci zkuste znovu. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti vymazána.)</string>
+  <string name="installIncompatible">Zdá se, že tento balíček není kompatibilní s tímto zařízením. Chcete ho přesto zkusit nainstalovat?</string>
+  <string name="installDowngrade">Pokoušíte se instalovat starší verzi než je nyní nainstalována. To nemusí fungovat a může to vést i ke ztrátě dat. Opravdu chcete starší verzi nainstalovat?</string>
   <string name="version">Verze</string>
   <string name="delete">Smazat</string>
   <string name="enable_nfc_send">Povolit posílání po NFC…</string>
   <string name="cache_downloaded_on">Ponechat stažené apk soubory na SD kartě</string>
   <string name="updates">Aktualizace</string>
   <string name="other">Ostatní</string>
-  <string name="never">nikdy</string>
+  <string name="never">Nikdy</string>
   <string name="update_interval">Interval automatických aktualizací</string>
   <string name="automatic_scan_wifi">Pouze přes wifi</string>
-  <string name="automatic_scan_wifi_on">Aktualizovat seznam aplikací pouze přes wifi</string>
-  <string name="notify">Upozornit</string>
-  <string name="notify_on">Upozornit pokud jsou dostupné aktualizace</string>
+  <string name="automatic_scan_wifi_on">Aktualizovat seznam aplikací pouze přes Wi-Fi</string>
+  <string name="notify">Upozornění na aktualizace</string>
+  <string name="notify_on">Upozornit, pokud jsou dostupné aktualizace</string>
   <string name="update_history">Historie aktualizací</string>
-  <string name="update_history_summ">Počet dnů po které je aplikace vedena jako nová nebo nedávná: %s</string>
+  <string name="update_history_summ">Počet dnů, po které je aplikace vedena jako nová nebo nedávná: %s</string>
   <string name="system_installer">Instalovat s použitím systémových oprávnění</string>
   <string name="system_installer_on">Použít systémová oprávnění k instalování, aktualizaci a odebírání balíčků</string>
   <string name="local_repo_name">Název místního repozitáře</string>
@@ -27,13 +27,13 @@
   <string name="local_repo_https_on">Použít šifrované HTTPS spojení pro místní repozitář</string>
   <string name="search_results">Výsledky hledání</string>
   <string name="app_details">Detaily aplikace</string>
-  <string name="no_such_app">Žádná taková aplikace nebyla nalezena</string>
+  <string name="no_such_app">Žádná taková aplikace nebyla nalezena.</string>
   <string name="about_title">O aplikaci F-Droid</string>
   <string name="about_desc">Původně založeno na Aptoide.
 Uvolněno pod GPLv3 licencí.</string>
-  <string name="about_site">"Webová stránka: "</string>
-  <string name="about_mail">"Email: "</string>
-  <string name="about_version">"Verze: "</string>
+  <string name="about_site">Webová stránka:</string>
+  <string name="about_mail">E-Mail:</string>
+  <string name="about_version">Verze:</string>
   <string name="inst">Je nainstalováno</string>
   <string name="not_inst">Není nainstalováno</string>
   <string name="added_on">Přidáno %s</string>
@@ -56,7 +56,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="repo_add_fingerprint">Fingerprint (volitelné)</string>
   <string name="menu_update_repo">Aktualizovat repozitáře</string>
   <string name="menu_manage">Repozitáře</string>
-  <string name="menu_send_apk_bt">Poslat FDroid.apk přes bluetooth…</string>
+  <string name="menu_send_apk_bt">Poslat F-Droid přes Bluetooth</string>
   <string name="menu_preferences">Nastavení</string>
   <string name="menu_about">O aplikaci</string>
   <string name="menu_search">Hledat</string>
@@ -74,14 +74,14 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="menu_donate">Přispět</string>
   <string name="details_installed">Verze %s nainstalována</string>
   <string name="details_notinstalled">Není nainstalováno</string>
-  <string name="corrupt_download">Stažený soubor je poškozen</string>
+  <string name="corrupt_download">Stažený soubor je poškozen.</string>
   <string name="antiadslist">Tato aplikace obsahuje reklamu</string>
   <string name="antitracklist">Tato aplikace zaznamenává a hlásí vaše aktivity</string>
   <string name="expert">Expert</string>
   <string name="expert_on">Zobrazit dodatečné informace a povolit pokročilá nastavení</string>
   <string name="search_hint">Hledat aplikace</string>
   <string name="show_incompat_versions">Nekompatibilní verze</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ignorovat Root</string>
   <string name="rooted_on">Nezašedávat aplikace vyžadující root oprávnění</string>
   <string name="ignoreTouch">Ignorovat dotykovou obrazovku</string>
   <string name="ignoreTouch_on">Vždy zahrnovat aplikace vyžadující dotykovou obrazovku</string>
@@ -97,7 +97,7 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="failed_to_create_index">Nezdařilo se vytvořit index repozitáře!</string>
   <string name="linking_apks">Linkuji APK do repozitáře…</string>
   <string name="copying_icons">Kopíruji ikony aplikací do repozitáře…</string>
-  <string name="icon">ikona</string>
+  <string name="icon">Ikona</string>
   <string name="next">Další</string>
   <string name="skip">Přeskočit</string>
   <string name="proxy">Proxy</string>
@@ -156,4 +156,39 @@ Uvolněno pod GPLv3 licencí.</string>
   <string name="open_qr_code_scanner">Otevřít čtečku QR kódů</string>
   <string name="swap_welcome">Vítejte v aplikaci F-Droid!</string>
   <string name="swap_confirm_connect">Chceš nyní stáhnout aplikace z %1$s?</string>
-</resources>
+<string name="searchres_napps">Nalezeno %1$d aplikací odpovídajících \"%2$s\":</string>
+	<string name="uninstall_system">Odinstalovat verzi se systémovými oprávněními</string>
+	<string name="uninstall_system_summary">Odinstaluje dodatečnou aplikaci se systémovými oprávněními</string>
+	<string name="about_source">Zdroj:</string>
+	<string name="incompatible">Nekompatibilní</string>
+	<string name="inst_known_source">Nainstalováno (z %s)</string>
+	<string name="inst_unknown_source">Nainstalováno (z neznámého zdroje)</string>
+
+	<string name="links">Odkazy</string>
+	<string name="content_description_view_more">Více</string>
+
+	<string name="back">Zpět</string>
+	<string name="update_notification_more">A %1$d více…</string>
+	<string name="bluetooth_activity_not_found">Žádná metoda přenosu Bluetooth nenalezena, jednu vyberte!</string>
+	<string name="choose_bt_send">Vyberte metodu přenosu Bluetooth</string>
+	<string name="repo_exists_add_fingerprint">Tento repozitář je již nastaven, budou jen přidány nové klíče.</string>
+	<string name="repo_exists_enable">Tento repozitář je již nastaven, potvrďte jeho znovupovolení.</string>
+	<string name="repo_exists_and_enabled">Tento příchozí repozitář je již nastaven a povolen.</string>
+	<string name="repo_delete_to_overwrite">Před přidáním repozitáře s jiným klíčem musíte nejprve tento odebrat.</string>
+	<string name="invalid_url">Toto není validní URL.</string>
+	<string name="malformed_repo_uri">Ignoruji poškozené URI repozitáře: %s</string>
+
+	<string name="menu_changelog">Seznam změn</string>
+	<string name="antinonfreeadlist">Tato aplikace propaguje nesvobodné doplňky</string>
+	<string name="antinonfreenetlist">Tato aplikace propaguje nesvobodné síťové služby</string>
+	<string name="antinonfreedeplist">Tato aplikace závisí na ostatních nesvobodných aplikacích</string>
+	<string name="antiupstreamnonfreelist">Originální zdrojový kód je částečně nesvovodný</string>
+
+	<string name="appcompatibility">Kompatibilita aplikací</string>
+	<string name="display">Zobrazení</string>
+
+	<string name="show_incompat_versions_on">Zobrazit verze aplikací nekompatibilní s tímto zařízením</string>
+	<string name="proxy_port_summary">Nakonfigurovat číslo portu proxy</string>
+
+	<string name="status_download">Stahuji\n%2$s / %3$s (%4$d%%) z\n%1$s</string>
+	</resources>
