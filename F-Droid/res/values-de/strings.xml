@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">%1$d Anwendungen mit »%2$s« gefunden:</string>
   <string name="searchres_oneapp">Eine Anwendung mit »%s« gefunden:</string>
@@ -14,7 +14,7 @@
   <string name="updates">Updates</string>
   <string name="other">Andere</string>
   <string name="last_update_check">Letzte Aktualisierung der Paketquellen: %s</string>
-  <string name="never">niemals</string>
+  <string name="never">Niemals</string>
   <string name="update_interval">Automatischer Aktualisierungsintervall</string>
   <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>
@@ -69,7 +69,7 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="malformed_repo_uri">Fehlerhafte Paketquellenadresse wird übergangen: %s</string>
   <string name="menu_update_repo">Paketquellen aktualisieren</string>
   <string name="menu_manage">Paketquellen verwalten</string>
-  <string name="menu_send_apk_bt">Bluetooth-FDroid.apk …</string>
+  <string name="menu_send_apk_bt">F-Droid über Bluetooth teilen</string>
   <string name="menu_preferences">Einstellungen</string>
   <string name="menu_about">Über</string>
   <string name="menu_search">Suchen</string>
@@ -87,7 +87,7 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="menu_donate">Spenden</string>
   <string name="details_installed">Version %s installiert</string>
   <string name="details_notinstalled">Nicht Installiert</string>
-  <string name="corrupt_download">Heruntergeladene Datei ist fehlerhaft</string>
+  <string name="corrupt_download">Heruntergeladene Datei ist fehlerhaft.</string>
   <string name="antiadslist">Diese Anwendung enthält Werbung</string>
   <string name="antitracklist">Diese Anwendung verfolgt und versendet Ihre Aktivitäten</string>
   <string name="antinonfreeadlist">Diese Anwendung bewirbt nicht freie Erweiterungen</string>
@@ -95,13 +95,13 @@ Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
   <string name="antinonfreedeplist">Diese Anwendung hängt von nicht freien Anwendungen ab</string>
   <string name="antiupstreamnonfreelist">Der Originalcode ist nicht völlig frei</string>
   <string name="display">Anzeige</string>
-  <string name="expert">Experte</string>
+  <string name="expert">Experten-Modus</string>
   <string name="expert_on">Zusätzliche Informationen anzeigen und zusätzliche Einstellungen aktivieren</string>
   <string name="search_hint">Anwendungen suchen</string>
   <string name="appcompatibility">Kompatibilität der Anwendung</string>
   <string name="show_incompat_versions">Inkompatible Versionen</string>
   <string name="show_incompat_versions_on">Mit diesem Gerät inkompatible Anwendungsversionen anzeigen</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Root ignorieren</string>
   <string name="rooted_on">Anwendungen, die Root-Rechte verlangen, nicht ausgrauen</string>
   <string name="ignoreTouch">Touchscreen ignorieren</string>
   <string name="ignoreTouch_on">Anwendungen, die einen Touchscreen benötigen, anzeigen</string>
@@ -136,10 +136,10 @@ wird verbunden</string>
   <string name="status_inserting">App-Details werden gespeichert (%1$d%%)</string>
   <string name="repos_unchanged">Keine Paketquelle hat irgendwelche Paketaktualisierungen</string>
   <string name="all_other_repos_fine">Alle anderen Paketquellen erzeugen keine Fehler.</string>
-  <string name="global_error_updating_repos">Fehler während der Aktualisierung:</string>
+  <string name="global_error_updating_repos">Fehler während der Aktualisierung: %s</string>
   <string name="no_permissions">Es werden keine Berechtigungen verwendet.</string>
   <string name="permissions_for_long">Berechtigungen für Version %s</string>
-  <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann</string>
+  <string name="no_handler_app">Es ist keine Anwendung installiert, die mit %s umgehen kann.</string>
   <string name="compactlayout">Kompakte Ansicht</string>
   <string name="compactlayout_on">Symbole in einer kleineren Größe anzeigen</string>
   <string name="theme">Thema</string>
@@ -155,12 +155,7 @@ wird verbunden</string>
         Anwendungen nicht verifiziert werden konnte. 
         Sie sollten sorgsam mit Anwendungen, heruntergeladen 
         aus nicht nicht signierten Quellen, sein.</string>
-  <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt.
-        Um beinhaltende Anwendungen anzuzeigen, muss diese Paketquelle
-        zuvor aktualisiert werden.
-
-Nach der Aktualisierung sind die Beschreibungen und andere Details 
-        hier zu finden.</string>
+  <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt. Um beinhaltende Anwendungen anzuzeigen, muss diese Paketquelle zuvor aktualisiert werden.\nNach der Aktualisierung sind die Beschreibungen und andere Details hier zu finden.</string>
   <string name="unknown">Unbekannt</string>
   <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
   <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet,
@@ -168,17 +163,14 @@ Nach der Aktualisierung sind die Beschreibungen und andere Details
 
 Bemerkung: Alle
         zuvor installierten Anwendungen bleiben auf Ihrem Gerät.</string>
-  <string name="repo_disabled_notification">»%1$s« deaktiviert.
-
-Sie müssen
-        diese Paketquelle wieder aktivieren, um Anwendungen daraus installieren zu können.</string>
-  <string name="repo_added">F-Droid-Paketquelle %1$s gespeichert</string>
+  <string name="repo_disabled_notification">»%1$s« deaktiviert.\n\nSie müssen diese Paketquelle wieder aktivieren, um Anwendungen daraus installieren zu können.</string>
+  <string name="repo_added">F-Droid-Paketquelle %1$s gespeichert.</string>
   <string name="repo_searching_address">Nach F-Droid-Paketquelle wird unter
 %1$s gesucht</string>
   <string name="minsdk_or_later">%s oder später</string>
-  <string name="up_to_maxsdk">bis zu %s</string>
+  <string name="up_to_maxsdk">Bis zu %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s bis zu %2$s</string>
-  <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte Paketquelle. Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s</string>
+  <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte Paketquelle! Versuchen Sie sich mit dem folgenden Netzwerk zu verbinden: %s</string>
   <string name="requires_features">Erfordert: %1$s</string>
   <string name="app_icon">App-Symbol</string>
   <string name="repo_icon">Paketquellensymbol</string>
@@ -208,4 +200,24 @@ Sie müssen
   <string name="open_qr_code_scanner">QR-Code-Scanner öffnen</string>
   <string name="swap_welcome">Willkommen bei F-Droid!</string>
   <string name="swap_confirm_connect">Möchten Sie jetzt Apps von %1$s erhalten?</string>
-</resources>
+<string name="about_source">Quelle:</string>
+	<string name="incompatible">Inkompatibel</string>
+	<string name="links">Links</string>
+	<string name="back">Zurück</string>
+	<string name="update_notification_more">+%1$d mehr…</string>
+	<string name="bad_fingerprint">Falscher Fingerprint</string>
+	<string name="invalid_url">Dies ist keine gültige URL.</string>
+	<string name="update_notification_title">Aktualisiere Quellen</string>
+	<string name="pref_language">Sprache</string>
+    <string name="pref_language_default">System Standard</string>
+
+    <string name="wifi">WLAN</string>
+    <string name="Graphics">Grafik</string>
+    <string name="Money">Geld</string>
+    <string name="Time">Zeit</string>
+    <string name="install_error_title">Installations-Fehler</string>
+    <string name="install_error_unknown">Installation wegen unbekanntem Fehler fehlgeschlagen</string>
+    <string name="install_error_cannot_parse">Es ist ein Fehler beim Auslesen des Pakets aufgetreten</string>
+    <string name="uninstall_error_title">De-Installations-Fehler</string>
+    <string name="uninstall_error_unknown">De-Installation wegen unbekanntem Fehler fehlgeschlagen</string>
+    </resources>
