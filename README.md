@@ -61,6 +61,11 @@ The strings are translated using [Weblate](https://weblate.org/en/). Follow
 [these instructions](https://hosted.weblate.org/engage/f-droid/) if you would
 like to contribute.
 
+Please *do not* send merge requests or patches modifying the translations. Use
+Weblate instead - it applies a series of fixes and suggestions, plus it keeps
+track of modifications and fuzzy translations. Applying translations manually
+skips all of the fixes and checks, and overrides the fuzzy state of strings.
+
 
 Running the test suite
 ----------------------
