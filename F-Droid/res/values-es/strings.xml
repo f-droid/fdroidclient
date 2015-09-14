@@ -87,7 +87,7 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="menu_donate">Donar</string>
   <string name="details_installed">Versión %s instalada</string>
   <string name="details_notinstalled">No instalado</string>
-  <string name="corrupt_download">El fichero descargado está corrupto</string>
+  <string name="corrupt_download">El fichero descargado está corrupto.</string>
   <string name="antiadslist">Esta aplicación contiene publicidad</string>
   <string name="antitracklist">Esta aplicación rastrea e informa de tu actividad</string>
   <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
@@ -95,13 +95,13 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
   <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
   <string name="display">Mostrar</string>
-  <string name="expert">Experto</string>
+  <string name="expert">Modo experto</string>
   <string name="expert_on">Mostrar info extra y habilitar los ajustes extra</string>
   <string name="search_hint">Buscar aplicaciones</string>
   <string name="appcompatibility">Compatibilidad de aplicaciones</string>
   <string name="show_incompat_versions">Versiones incompatibles</string>
   <string name="show_incompat_versions_on">Mostrar las versiones de aplicaciones incompatibles con el dispositivo</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ingnorar «root»</string>
   <string name="rooted_on">No marcar en gris las aplicaciones que requieren privilegios de root</string>
   <string name="ignoreTouch">Ignorar pantalla táctil</string>
   <string name="ignoreTouch_on">Incluir aplicaciones que requieran pantalla táctil siempre</string>
@@ -117,7 +117,7 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="failed_to_create_index">Fallo al crear el indice de repositorios!</string>
   <string name="linking_apks">Enlazando APKs en el repositorio…</string>
   <string name="copying_icons">Copiando iconos de aplicaciones en el repositorio…</string>
-  <string name="icon">icono</string>
+  <string name="icon">Icono</string>
   <string name="next">Siguiente</string>
   <string name="skip">Saltar</string>
   <string name="proxy">Proxy</string>
@@ -136,10 +136,10 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="status_inserting">Guardando detalles de las aplicaciones (%1$d%%)</string>
   <string name="repos_unchanged">Ningún repositorio tiene actualizaciones de paquetes</string>
   <string name="all_other_repos_fine">El resto de las repos no crearon errores.</string>
-  <string name="global_error_updating_repos">Error en la Actualización:</string>
+  <string name="global_error_updating_repos">Error en la actualización: %s</string>
   <string name="no_permissions">No se usan permisos.</string>
   <string name="permissions_for_long">Permisos para la versión %s</string>
-  <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s</string>
+  <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda manejar %s.</string>
   <string name="compactlayout">Diseño compacto</string>
   <string name="compactlayout_on">Mostrar iconos en tamaño menor</string>
   <string name="theme">Tema</string>
@@ -154,25 +154,21 @@ Publicado bajo la licencia GNU GPLv3.</string>
   <string name="unsigned_description">Esto significa que la lista de
 aplicaciones no ha podido verificarse.
 Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.</string>
-  <string name="repo_not_yet_updated">Este repositorio aún no ha sido usado.
-Para ver las aplicaciones que ofrece, necesitarás actualizarlo.
-Una vez actualizado, la descripción y otros detalles estarán disponibles aquí.</string>
+  <string name="repo_not_yet_updated">Este repositorio aún no ha sido usado. Para ver las aplicaciones que ofrece, necesitarás actualizarlo.
+\n\nUna vez actualizado, la descripción y otros detalles estarán disponibles aquí.</string>
   <string name="unknown">Desconocido</string>
   <string name="repo_confirm_delete_title">¿Borrar repositorio?</string>
-  <string name="repo_confirm_delete_body">Borrar un repositorio significa
-que sus aplicaciones ya no estarán disponibles en F-Droid.
-
-Nota: todas las aplicaciones previamente instaladas se quedarán en tu dispositivo.</string>
+  <string name="repo_confirm_delete_body">Borrar un repositorio significa que sus aplicaciones ya no estarán disponibles en F-Droid.
+\n\nNota: todas las aplicaciones previamente instaladas se quedarán en tu dispositivo.</string>
   <string name="repo_disabled_notification">\"%1$s\" deshabilitado.
-
-Necesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
-  <string name="repo_added">Guardado el repositorio de F-Droid %1$s</string>
+\n\nNecesitarás volver a habilitar este repositorio para instalar aplicaciones desde él.</string>
+  <string name="repo_added">Guardado el repositorio de F-Droid %1$s.</string>
   <string name="repo_searching_address">BUscando repositorio de F-Droid en
 %1$s</string>
   <string name="minsdk_or_later">%s o posterior</string>
-  <string name="up_to_maxsdk">hasta %s</string>
+  <string name="up_to_maxsdk">Hasta %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s a %2$s</string>
-  <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma WiFi que el repo que acabas de añadir! Intenta unirte a esta red: %s</string>
+  <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma Wi-Fi que el repo que acabas de añadir! Intenta unirte a esta red: %s</string>
   <string name="requires_features">Requiere: %1$s</string>
   <string name="app_icon">Icono de la aplicación</string>
   <string name="repo_icon">Icono del repositorio</string>
@@ -211,4 +207,41 @@ Necesitarás volver a habilitar este repositorio para instalar aplicaciones desd
 
 	<string name="back">Volver</string>
 	<string name="update_notification_more">+%1$d más…</string>
-	</resources>
+	<string name="uninstall_system">Desinstalar F-Droid con permisos de sistema</string>
+	<string name="uninstall_system_summary">Desinstala la aplicación adicional «F-Droid con permisos de sistema»</string>
+	<string name="bad_fingerprint">Huella digital incorrecta</string>
+	<string name="invalid_url">No es una URL válida.</string>
+	<string name="menu_changelog">Historial de cambios</string>
+	<string name="update_notification_title">Actualizando repositorios</string>
+	<string name="status_processing_xml_percent">Procesando %2$s / %3$s (%4$d%%) desde %1$s</string>
+	<string name="pref_language">Idioma</string>
+    <string name="pref_language_default">Predeterminado del sistema</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Punto de acceso</string>
+
+    <string name="Connectivity">Conectividad</string>
+    <string name="Graphics">Gráficos</string>
+    <string name="Money">Dinero</string>
+    <string name="Sports_Health">Deportes y salud</string>
+    <string name="Theming">Personalización del tema</string>
+    <string name="Time">Hora</string>
+    <string name="Writing">Escritura</string>
+
+    <string name="empty_installed_app_list">No hay aplicaciones instaladas.\n\nHay aplicaciones en tu dispositivo, pero no están disponibles desde F-Droid. Esto podría ser porque necesitas actualizar los repositorios, o los repositorios no contienen las aplicaciones que tienes disponibles.</string>
+    <string name="empty_available_app_list">No hay aplicaciones en esta categoría.\n\nPrueba a seleciconar una categoría diferente o actualizar los repositorios para obtener una lista reciente de aplicaciones.</string>
+    <string name="empty_can_update_app_list">Todas las aplicaciones están actualizadas.\n\n¡Felicidades! Todas tus aplicaciones están actualizadas (o los repositorios están desactualizados).</string>
+
+    <string name="install_error_title">Error de instalación</string>
+    <string name="install_error_unknown">Fallo al instalar, debido a un error desconocido</string>
+    <string name="install_error_cannot_parse">Ha ocurrido un error al analizar el paquete</string>
+    <string name="uninstall_error_title">Error de desinstalación</string>
+    <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
+    <string name="system_permission_install_via_root">Instalar «F-Droid con permisos de sistema»</string>
+    <string name="system_install_first_time_notification">¿Instalar «F-Droid con permisos de sistema»?</string>
+    <string name="system_install_first_time_notification_message_short">Toque para más información.</string>
+    <string name="system_install_first_time_notification_message">Toque para instalar F-Droid con permisos de sistema, fuertemente acoplado con el sistema operativo Android. Esto permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.\nTambién puede realizar esto más tarde, desde las preferencias de F-Droid.</string>
+    <string name="system_install_post_success">Se ha instalado correctamente F-Droid con permisos de sistema</string>
+    <string name="system_install_post_fail">Fallo en la instalación de F-Droid con permisos de sistema</string>
+    <string name="system_install_post_success_message">Se ha instalado correctamente F-Droid con permisos de sistema. Esto le permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.</string>
+    </resources>
