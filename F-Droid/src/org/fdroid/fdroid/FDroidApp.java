@@ -208,6 +208,14 @@ public class FDroidApp extends Application {
             }
         });
 
+        final Context context = this;
+        Preferences.get().registerUnstableUpdatesChangeListener(new Preferences.ChangeListener() {
+            @Override
+            public void onPreferenceChange() {
+                AppProvider.Helper.calcDetailsFromIndex(context);
+            }
+        });
+
         // Clear cached apk files. We used to just remove them after they'd
         // been installed, but this causes problems for proprietary gapps
         // users since the introduction of verification (on pre-4.2 Android),

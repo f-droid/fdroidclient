@@ -15,6 +15,8 @@
 	<string name="cache_downloaded">Cache packages</string>
 	<string name="cache_downloaded_on">Keep downloaded package files on device</string>
 	<string name="updates">Updates</string>
+	<string name="unstable_updates">Unstable updates</string>
+	<string name="unstable_updates_summary">Suggest updates to unstable versions</string>
 	<string name="other">Other</string>
 	<string name="last_update_check">Last repo scan: %s</string>
 	<string name="never">Never</string>
