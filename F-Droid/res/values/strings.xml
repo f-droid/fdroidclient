@@ -12,8 +12,8 @@
 	<string name="version">Version</string>
 	<string name="delete">Delete</string>
 	<string name="enable_nfc_send">Enable NFC Send…</string>
-	<string name="cache_downloaded">App cache</string>
-	<string name="cache_downloaded_on">Keep downloaded .apk files on device</string>
+	<string name="cache_downloaded">Cache packages</string>
+	<string name="cache_downloaded_on">Keep downloaded package files on device</string>
 	<string name="updates">Updates</string>
 	<string name="other">Other</string>
 	<string name="last_update_check">Last repo scan: %s</string>
@@ -23,8 +23,8 @@
 	<string name="update_interval_zero">No automatic app list updates</string>
 	<string name="automatic_scan_wifi">Only on Wi-Fi</string>
 	<string name="automatic_scan_wifi_on">Update app lists automatically only on Wi-Fi</string>
-	<string name="notify">Notify</string>
-	<string name="notify_on">Notify when updates are available</string>
+	<string name="notify">Update notifications</string>
+	<string name="notify_on">Show a notification when updates are available</string>
 	<string name="update_history">Update history</string>
 	<string name="update_history_summ">Days to consider apps new or recent: %s</string>
 	<string name="system_installer">Enable privileged F-Droid</string>
@@ -93,7 +93,7 @@
 
 	<string name="menu_update_repo">Update Repos</string>
 	<string name="menu_manage">Repositories</string>
-	<string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+	<string name="menu_send_apk_bt">Share F-Droid by Bluetooth</string>
 	<string name="menu_preferences">Preferences</string>
 	<string name="menu_about">About</string>
 	<string name="menu_search">Search</string>
@@ -125,7 +125,7 @@
 
 	<string name="display">Display</string>
 
-	<string name="expert">Expert</string>
+	<string name="expert">Expert mode</string>
 	<string name="expert_on">Show extra info and enable extra settings</string>
 
 	<string name="search_hint">Search applications</string>
@@ -133,9 +133,9 @@
 	<string name="appcompatibility">Application compatibility</string>
 	<string name="show_incompat_versions">Incompatible versions</string>
 	<string name="show_incompat_versions_on">Show app versions incompatible with the device</string>
-	<string name="rooted">Root</string>
+	<string name="rooted">Ignore root</string>
 	<string name="rooted_on">Do not grey out apps requiring root privileges</string>
-	<string name="ignoreTouch">Ignore Touchscreen</string>
+	<string name="ignoreTouch">Ignore touchscreen</string>
 	<string name="ignoreTouch_on">Always include apps that require touchscreen</string>
 
 	<string name="local_repo">Local Repo</string>
