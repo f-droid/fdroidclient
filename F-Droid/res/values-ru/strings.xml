@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">По запросу \'%2$s\' найдено %1$d приложений:</string>
   <string name="searchres_oneapp">Найдено одно приложение по запросу \'%s\':</string>
@@ -11,18 +11,18 @@
   <string name="version">Версия</string>
   <string name="delete">Удалить</string>
   <string name="enable_nfc_send">Включить отправку по NFC…</string>
-  <string name="cache_downloaded">Кэшировать загруженные приложения</string>
-  <string name="cache_downloaded_on">Хранить загруженные файлы APK на SD-карте</string>
+  <string name="cache_downloaded">Кэшировать пакеты</string>
+  <string name="cache_downloaded_on">Хранить загруженные файлы пакетов на устройстве</string>
   <string name="updates">Обновления</string>
   <string name="other">Другой</string>
   <string name="last_update_check">Последнее обновление: %s</string>
-  <string name="never">никогда</string>
+  <string name="never">Никогда</string>
   <string name="update_interval">Интервал автоматического обновления</string>
   <string name="update_interval_zero">Не обновлять список приложений автоматически</string>
   <string name="automatic_scan_wifi">Только по Wi-Fi</string>
   <string name="automatic_scan_wifi_on">Обновлять списки приложений автоматически только по Wi-Fi</string>
-  <string name="notify">Уведомления</string>
-  <string name="notify_on">Сообщать о наличии обновлений</string>
+  <string name="notify">Уведомления об обновлениях</string>
+  <string name="notify_on">Отображать уведомление когда есть обновления</string>
   <string name="update_history">История обновлений</string>
   <string name="update_history_summ">Показывать новые приложения и обновления за последние %s дней</string>
   <string name="system_installer">Устанавливать используя системные привилегии</string>
@@ -33,7 +33,7 @@
   <string name="local_repo_https_on">Использовать защищённое HTTPS:// соединение для локального репозитория</string>
   <string name="search_results">Результаты поиска</string>
   <string name="app_details">Описание приложения</string>
-  <string name="no_such_app">Приложение не найдено</string>
+  <string name="no_such_app">Приложение не найдено.</string>
   <string name="about_title">О F-Droid</string>
   <string name="about_desc">Изначально основан на Aptoide.
 Выпущен под лицензией GNU GPLv3.</string>
@@ -66,12 +66,12 @@
   <string name="repo_add_fingerprint">Отпечаток ключа (опционально)</string>
   <string name="repo_exists_add_fingerprint">Этот репозиторий уже настроен, это действие обновит информацию о ключе.</string>
   <string name="repo_exists_enable">Этот репозиторий уже настроен, подтвердите, что вы хотите снова включить его.</string>
-  <string name="repo_exists_and_enabled">Репозиторий уже настроен и включен!</string>
-  <string name="repo_delete_to_overwrite">Вы должны удалить этот репозиторий, прежде чем вы можете добавить новый с другим ключом!</string>
+  <string name="repo_exists_and_enabled">Репозиторий уже настроен и включён.</string>
+  <string name="repo_delete_to_overwrite">Вы должны сначала удалить этот репозиторий, а потом добавить его с другим ключом.</string>
   <string name="malformed_repo_uri">Игнорирование неверного URI репозитория: %s</string>
   <string name="menu_update_repo">Обновить репозитории</string>
   <string name="menu_manage">Репозитории</string>
-  <string name="menu_send_apk_bt">Передать FDroid.apk по Bluetooth…</string>
+  <string name="menu_send_apk_bt">Передать F-Droid по Bluetooth</string>
   <string name="menu_preferences">Настройки</string>
   <string name="menu_about">О программе</string>
   <string name="menu_search">Поиск</string>
@@ -89,7 +89,7 @@
   <string name="menu_donate">Пожертвовать</string>
   <string name="details_installed">Версия %s установлена</string>
   <string name="details_notinstalled">Не установлено</string>
-  <string name="corrupt_download">Загруженный файл повреждён</string>
+  <string name="corrupt_download">Загруженный файл повреждён.</string>
   <string name="antiadslist">Это приложение содержит рекламу</string>
   <string name="antitracklist">Это приложение будет отслеживать ваши действия и сообщать о вашей деятельности</string>
   <string name="antinonfreeadlist">Это приложение предлагает использовать несвободные дополнения</string>
@@ -97,7 +97,7 @@
   <string name="antinonfreedeplist">Это приложение зависит от других несвободных приложений</string>
   <string name="antiupstreamnonfreelist">Оригинальный исходный код не является полностью свободным</string>
   <string name="display">Вид</string>
-  <string name="expert">Эксперт</string>
+  <string name="expert">Режим эксперта</string>
   <string name="expert_on">Показать дополнительную информацию и включить дополнительные настройки</string>
   <string name="search_hint">Найти приложения</string>
   <string name="appcompatibility">Совместимость приложений</string>
@@ -118,7 +118,7 @@
   <string name="failed_to_create_index">Произошла ошибка во время формирования индекса репозитория!</string>
   <string name="linking_apks">Включение APK-файлов в репозиторий…</string>
   <string name="copying_icons">Копирование иконок приложений в репозиторий…</string>
-  <string name="icon">иконка</string>
+  <string name="icon">Иконка</string>
   <string name="next">Далее</string>
   <string name="skip">Пропустить</string>
   <string name="proxy">Прокси</string>
@@ -137,10 +137,10 @@
   <string name="status_inserting">Сохранение данных приложений (%1$d%%)</string>
   <string name="repos_unchanged">Нет обновлений репозиториев</string>
   <string name="all_other_repos_fine">Все другие репозитории не привели к ошибкам.</string>
-  <string name="global_error_updating_repos">Ошибка во время обновления:</string>
+  <string name="global_error_updating_repos">Ошибка во время обновления: %s</string>
   <string name="no_permissions">Разрешений не требуется.</string>
   <string name="permissions_for_long">Разрешения для версии %s</string>
-  <string name="no_handler_app">У вас нет установленного приложения для обработки %s</string>
+  <string name="no_handler_app">У вас нет приложения для обработки %s.</string>
   <string name="compactlayout">Компактный вид</string>
   <string name="compactlayout_on">Показать иконки в меньшем размере</string>
   <string name="theme">Тема</string>
@@ -158,12 +158,10 @@
 Обновите репозиторий чтобы получить информацию о доступных приложениях.</string>
   <string name="unknown">Неизвестный</string>
   <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
-  <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.
-
-Примечание: Все ранее установленные приложения останутся на вашем устройстве.</string>
+  <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.\n\nПримечание: Все ранее установленные приложения останутся на вашем устройстве.</string>
   <string name="repo_disabled_notification">\"%1$s\" отключен. Для установки приложений из этого репозитория Вам необходимо повторно включить его.</string>
   <string name="minsdk_or_later">%s или позднее</string>
-  <string name="up_to_maxsdk">до %s</string>
+  <string name="up_to_maxsdk">До %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
   <string name="not_on_same_wifi">Данное устройство не находится в той же сети Wi-Fi, что и локальный репозиторий, который вы только что добавили! Попробуйте присоединиться к этой сети: %s</string>
   <string name="requires_features">Требуется: %1$s</string>
@@ -194,4 +192,24 @@
   <string name="open_qr_code_scanner">Открыть сканер QR-кода</string>
   <string name="swap_welcome">Добро пожаловать в F-Droid!</string>
   <string name="swap_confirm_connect">Вы хотите получить приложения от %1$s сейчас?</string>
-</resources>
+<string name="about_source">Исходный код:</string>
+	<string name="links">Ссылки</string>
+	<string name="interval_never">Никогда</string>
+    <string name="interval_1h">Каждый час</string>
+    <string name="interval_4h">Каждые 4 часа</string>
+    <string name="interval_12h">Каждые 12 часов</string>
+    <string name="interval_1d">Ежедневно</string>
+    <string name="interval_1w">Еженедельно</string>
+    <string name="interval_2w">Каждые 2 недели</string>
+
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+<string name="unstable_updates">Нестабильные обновления</string>
+	<string name="unstable_updates_summary">Предлагать обновления до нестабильных версий</string>
+	<string name="pref_language">Язык</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="Graphics">Графика</string>
+    <string name="Money">Деньги</string>
+    <string name="Sports_Health">Спорт и здоровье</string>
+    <string name="Time">Время</string>
+    </resources>
