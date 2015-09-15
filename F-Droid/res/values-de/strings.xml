@@ -19,7 +19,7 @@
   <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>
   <string name="automatic_scan_wifi_on">Anwendungsliste nur über WLAN automatisch aktualisieren</string>
-  <string name="notify">Benachrichtigen</string>
+  <string name="notify">Benachrichtigen über Updates</string>
   <string name="notify_on">Benachrichtigen, wenn Aktualisierungen verfügbar sind</string>
   <string name="update_history">Aktualisierungsverlauf</string>
   <string name="update_history_summ">Anzahl in Tagen, an denen neue oder kürzlich geänderte Anwendungen angezeigt werden: %s</string>
@@ -35,7 +35,7 @@
   <string name="about_title">Über F-Droid</string>
   <string name="about_desc">Ursprünglich basierend auf Aptoide.
 Veröffentlicht unter der GNU GPLv3 Lizenz.</string>
-  <string name="about_site">Internetseite:</string>
+  <string name="about_site">Webseite:</string>
   <string name="about_mail">E-Mail:</string>
   <string name="about_version">Version:</string>
   <string name="app_installed">Installiert</string>
@@ -158,11 +158,8 @@ wird verbunden</string>
   <string name="repo_not_yet_updated">Diese Paketquelle wurde noch nicht benutzt. Um beinhaltende Anwendungen anzuzeigen, muss diese Paketquelle zuvor aktualisiert werden.\nNach der Aktualisierung sind die Beschreibungen und andere Details hier zu finden.</string>
   <string name="unknown">Unbekannt</string>
   <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
-  <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet,
-        dass die Anwendungen daraus nicht mehr in F-Droid verfügbar sein werden.
-
-Bemerkung: Alle
-        zuvor installierten Anwendungen bleiben auf Ihrem Gerät.</string>
+  <string name="repo_confirm_delete_body">Das Löschen einer Paketquelle bedeutet, dass die Anwendungen daraus nicht mehr in F-Droid verfügbar sein werden.
+\nAlle zuvor installierten Anwendungen bleiben auf Ihrem Gerät.</string>
   <string name="repo_disabled_notification">»%1$s« deaktiviert.\n\nSie müssen diese Paketquelle wieder aktivieren, um Anwendungen daraus installieren zu können.</string>
   <string name="repo_added">F-Droid-Paketquelle %1$s gespeichert.</string>
   <string name="repo_searching_address">Nach F-Droid-Paketquelle wird unter
@@ -220,4 +217,17 @@ Bemerkung: Alle
     <string name="install_error_cannot_parse">Es ist ein Fehler beim Auslesen des Pakets aufgetreten</string>
     <string name="uninstall_error_title">De-Installations-Fehler</string>
     <string name="uninstall_error_unknown">De-Installation wegen unbekanntem Fehler fehlgeschlagen</string>
+    <string name="app_name">F-Droid\n</string>
+
+	<string name="unstable_updates">Instabile Updates</string>
+	<string name="unstable_updates_summary">Updates für instabile Version vorschlagen</string>
+	<string name="content_description_view_more">Mehr anzeigen</string>
+
+	<string name="tab_installed_apps">Installiert</string>
+	<string name="menu_changelog">Änderungen</string>
+	<string name="Connectivity">Verbindung</string>
+    <string name="Sports_Health">Sport &amp; Gesundheit</string>
+    <string name="Theming">Aussehen</string>
+    <string name="Writing">Schreiben</string>
+
     </resources>
