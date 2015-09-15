@@ -316,4 +316,7 @@ com aplicativos baixados a partir de índices não assinados.</string>
 
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
-</resources>
+<string name="unstable_updates">Atualizações instáveis</string>
+	<string name="unstable_updates_summary">Sugerir atualizações para versões instáveis</string>
+	<string name="tab_installed_apps">Instalado</string>
+	</resources>
