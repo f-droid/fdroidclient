@@ -19,13 +19,21 @@ public class Repo extends ValueObject {
     public String address;
     public String name;
     public String description;
-    public int version; // index version, i.e. what fdroidserver built it - 0 if not specified
+    /** index version, i.e. what fdroidserver built it - 0 if not specified */
+    public int version;
     public boolean inuse;
     public int priority;
-    public String pubkey; // null for an unsigned repo
-    public String fingerprint; // always null for an unsigned repo
-    public int maxage; // maximum age of index that will be accepted - 0 for any
-    public String lastetag; // last etag we updated from, null forces update
+    /** The signing certificate, {@code null} for a newly added repo */
+    public String pubkey;
+    /**
+     * The SHA1 fingerprint of {@link #pubkey}, set to {@code null} when a
+     * newly added repo did not include fingerprint. It should never be an
+     * empty {@link String}, i.e. {@code ""} */
+    public String fingerprint;
+    /** maximum age of index that will be accepted - 0 for any */
+    public int maxage;
+    /** last etag we updated from, null forces update */
+    public String lastetag;
     public Date lastUpdated;
     public boolean isSwap;
 

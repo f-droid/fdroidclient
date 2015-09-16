@@ -41,6 +41,9 @@ public class BonjourPeer extends WifiPeer {
         return serviceInfo.getRepoAddress();
     }
 
+    /**
+     * Return the fingerprint of the signing key, or {@code null} if it is not set.
+     */
     @Override
     public String getFingerprint() {
         return serviceInfo.getFingerprint();

@@ -7,6 +7,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.localrepo.type.BluetoothSwap;
 
 public class BluetoothPeer implements Peer {
+    private static final String TAG = "BluetoothPeer";
 
     private BluetoothDevice device;
 
@@ -40,13 +41,15 @@ public class BluetoothPeer implements Peer {
     }
 
     /**
-     * Bluetooth will exclusively be TOFU. Once a device is connected to a bluetooth socket,
-     * if we trust it enough to accept a fingerprint from it somehow, then we may as well trust it
-     * enough to receive an index from it that contains a fingerprint we can use.
+     * Return the fingerprint of the signing key, or {@code null} if it is not set.
+     * <p/>
+     * This is not yet stored for Bluetooth connections. Once a device is connected to a bluetooth
+     * socket, if we trust it enough to accept a fingerprint from it somehow, then we may as well
+     * trust it enough to receive an index from it that contains a fingerprint we can use.
      */
     @Override
     public String getFingerprint() {
-        return "";
+        return null;
     }
 
     @Override

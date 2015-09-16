@@ -345,11 +345,13 @@ public class LocalRepoManager {
             serializer = XmlPullParserFactory.newInstance().newSerializer();
         }
 
-        public void build(Writer output) throws IOException, LocalRepoKeyStore.InitException {
+        public void build(File file) throws IOException, LocalRepoKeyStore.InitException {
+            Writer output = new FileWriter(file);
             serializer.setOutput(output);
             serializer.startDocument(null, null);
             tagFdroid();
             serializer.endDocument();
+            output.close();
         }
 
         private void tagFdroid() throws IOException, LocalRepoKeyStore.InitException {
@@ -485,16 +487,12 @@ public class LocalRepoManager {
 
     public void writeIndexJar() throws IOException {
 
-        FileWriter writer = null;
         try {
-            writer = new FileWriter(xmlIndex);
-            new IndexXmlBuilder(context, apps).build(writer);
+            new IndexXmlBuilder(context, apps).build(xmlIndex);
         } catch (Exception e) {
             Log.e(TAG, "Could not write index jar", e);
             Toast.makeText(context, R.string.failed_to_create_index, Toast.LENGTH_LONG).show();
             return;
-        } finally {
-            Utils.closeQuietly(writer);
         }
 
         BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(xmlIndexJarUnsigned));
