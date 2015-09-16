@@ -184,7 +184,7 @@
   <string name="system_permission_denied_title">Запрос на системные привилегии отклонён</string>
   <string name="system_permission_denied_body">Данная опция доступна только если F-Droid установлен как системное приложение.</string>
   <string name="app_description">F-Droid — каталог FOSS (свободного и открытого программного обеспечения) для платформы Android. Клиент позволяет с лёгкостью просматривать, устанавливать и обновлять приложение на вашем устройстве.</string>
-  <string name="swap_join_same_wifi">Подключиться к тому же Wifi что и ваш друг</string>
+  <string name="swap_join_same_wifi">Подключиться к той же Wi-Fi сети, что и ваш друг</string>
   <string name="menu_swap">Обмен приложениями</string>
   <string name="swap">Обмен файлами</string>
   <string name="swap_no_wifi_network">Нет сети в данный момент</string>
@@ -212,4 +212,6 @@
     <string name="Money">Деньги</string>
     <string name="Sports_Health">Спорт и здоровье</string>
     <string name="Time">Время</string>
-    </resources>
+    <string name="app_name">F-Droid</string>
+
+	</resources>
