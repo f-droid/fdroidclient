@@ -1,26 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
-  <string name="searchres_napps">Alcontráronse %1$d aplicaciones que concasen con \'%2$s\':</string>
-  <string name="searchres_oneapp">Alcontróse una aplicación que concasa con \'%s\':</string>
-  <string name="searchres_noapps">Nun s\'alcontraron aplicaciones que concasen con \'%s\'</string>
+  <string name="searchres_napps">Alcontráronse %1$d aplicaciones que concasen con «%2$s»:</string>
+  <string name="searchres_oneapp">Alcontróse una aplicación que concasa con «%s»:</string>
+  <string name="searchres_noapps">Nun s\'alcontraron aplicaciones que concasen con «%s»</string>
   <string name="SignatureMismatch">La versión nueva ta roblada con una clave diferente. Pa instalar la versión nueva, tien de desinstalase primero la vieya. Por favor, failo ya inténtalo de nueves. (Decátate que la desinstalación desaniciará cualesquier datu internu atroxáu pola aplicación)</string>
   <string name="installIncompatible">Paez qu\'esti paquete nun ye compatible col to preséu. ¿Quies intentar instalalu de toes toes?</string>
   <string name="installDowngrade">Tas intentando baxar de versión esta aplicación. Eso quiciabes faiga que l\'aplicación furrule mal o incluso, pierdas los tos datos. ¿Quies intentalo y baxala de versión de toes toes?</string>
   <string name="version">Versión</string>
   <string name="delete">Desaniciar</string>
   <string name="enable_nfc_send">Habilitar unviu per NFC…</string>
-  <string name="cache_downloaded">Caché d\'aplicaciones</string>
-  <string name="cache_downloaded_on">Caltién na tarxeta SD les apk baxaes</string>
+  <string name="cache_downloaded">Caché de paquetes</string>
+  <string name="cache_downloaded_on">Caltién na tarxeta SD los paquetes baxaos</string>
   <string name="updates">Anovamientos</string>
   <string name="other">Otru</string>
   <string name="last_update_check">Escanéu caberu del repositoriu: %s</string>
-  <string name="never">enxamás</string>
+  <string name="never">Enxamás</string>
   <string name="update_interval">Intervalu automáticu d\'anovaminetu</string>
   <string name="update_interval_zero">Nun anovar automáticamente\'l llistáu d\'aplicaciones</string>
-  <string name="automatic_scan_wifi">Namái na wifi</string>
-  <string name="automatic_scan_wifi_on">Anueva automáticamente les llistes d\'aplicaciones namái na wifi</string>
-  <string name="notify">Notificar</string>
-  <string name="notify_on">Notifica cuando hai anovamientos disponibles</string>
+  <string name="automatic_scan_wifi">Namái na Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Anueva automáticamente les llistes d\'aplicaciones namái na Wi-Fi</string>
+  <string name="notify">Avisos d\'anovamientos</string>
+  <string name="notify_on">Amuesa un avisu cuando tán disponibles anovamientos</string>
   <string name="update_history">Anovar historia</string>
   <string name="update_history_summ">Díes pa considerar a les aplicaciones nueves o recientes: %s</string>
   <string name="system_installer">Instalación usando los permisos del sistema</string>
@@ -31,7 +31,7 @@
   <string name="local_repo_https_on">Usar conexón HTTPS:// cifrada pal to repositoriu llocal</string>
   <string name="search_results">Resultaos de gueta</string>
   <string name="app_details">Detalles d\'aplicación</string>
-  <string name="no_such_app">Nun s\'alcontraon aplicaciones</string>
+  <string name="no_such_app">Nun s\'alcontraron aplicaciones.</string>
   <string name="about_title">Tocante a F-Droid</string>
   <string name="about_desc">Basáu orixinalmente n\'Aptoide.
 Llanzáu baxo la llicencia GNU GPLv3.</string>
@@ -64,12 +64,12 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="repo_add_fingerprint">Buelga (opcional)</string>
   <string name="repo_exists_add_fingerprint">Yá ta configuráu esti repositoriu, esto amestará la información de la clave nueva.</string>
   <string name="repo_exists_enable">Yá ta configuráu esti respositoriu, confirma que quies rehabilitalu.</string>
-  <string name="repo_exists_and_enabled">¡Yá ta configuráu y habilitáu\'l repositoriu d\'entrada!</string>
-  <string name="repo_delete_to_overwrite">¡Primero tienes de desaniciar esti repositoriu enantes que pueas amestar otru con una clave diferente!</string>
+  <string name="repo_exists_and_enabled">Yá ta configuráu y habilitáu\'l repositoriu d\'entrada.</string>
+  <string name="repo_delete_to_overwrite">Primero tienes de desaniciar esti repositoriu enantes que pueas amestar otru con una clave diferente.</string>
   <string name="malformed_repo_uri">Inorando l\'URI del repositoriu mal formáu: %s</string>
   <string name="menu_update_repo">Anovar repositorios</string>
   <string name="menu_manage">Repositorios</string>
-  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Compartir F-Droid per Bluetooth</string>
   <string name="menu_preferences">Preferencies</string>
   <string name="menu_about">Tocante a</string>
   <string name="menu_search">Guetar</string>
@@ -87,7 +87,7 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="menu_donate">Donar</string>
   <string name="details_installed">Versión %s instalada</string>
   <string name="details_notinstalled">Non instaláu</string>
-  <string name="corrupt_download">Ta toyíu\'l ficheru baxáu</string>
+  <string name="corrupt_download">Ta toyíu\'l ficheru baxáu.</string>
   <string name="antiadslist">Esta aplicación contien publicidá</string>
   <string name="antitracklist">Esta aplicación rastrexa ya informa de la to actividá</string>
   <string name="antinonfreeadlist">Esta aplicación da puxu a amiestos non llibres</string>
@@ -95,14 +95,14 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="antinonfreedeplist">Esta aplicación ta arreyada a otres aplicaciones non llibres</string>
   <string name="antiupstreamnonfreelist">El códigu fonte principal nun ye llibre dafechu</string>
   <string name="display">Amosar</string>
-  <string name="expert">Espertu</string>
+  <string name="expert">Mou espertu</string>
   <string name="expert_on">Amosar información estra y habilitar axustes estra</string>
   <string name="search_hint">Guetar aplicaciones</string>
   <string name="appcompatibility">Compatibilidá d\'aplicación</string>
   <string name="show_incompat_versions">Versiones incompatibles</string>
   <string name="show_incompat_versions_on">Amosar versiones d\'aplicaciones incompatibles col preséu</string>
-  <string name="rooted">Root</string>
-  <string name="rooted_on">Nun escurecer les aplicaciones que rican privilexos root</string>
+  <string name="rooted">Inorar root</string>
+  <string name="rooted_on">Nun escurez les aplicaciones que rican privilexos root</string>
   <string name="ignoreTouch">Inorar pantalla táutil</string>
   <string name="ignoreTouch_on">Incluyir siempres aplicaciones que rican pantalla táutil</string>
   <string name="category_all">Too</string>
@@ -111,13 +111,13 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="local_repo">Repositoriu llocal</string>
   <string name="local_repo_running">F-Doid ta tresnáu pa intercambiar</string>
   <string name="touch_to_configure_local_repo">Toca pa ver los detalles y almitir a otros intercambiar les tos aplicaciones.</string>
-  <string name="deleting_repo">Desaniciando\'l repositoriu llocal</string>
+  <string name="deleting_repo">Desaniciando\'l repositoriu actual…</string>
   <string name="adding_apks_format">Amestando %s al repositoriu…</string>
   <string name="writing_index_jar">Escribiendo\'l ficheru d\'índiz robláu (index.jar)…</string>
   <string name="failed_to_create_index">¡Fallu al crear l\'índiz del repositoriu!</string>
   <string name="linking_apks">Enllazando APKs nel repositoriu…</string>
   <string name="copying_icons">Copiando iconos d\'aplicaciones al repositoriu…</string>
-  <string name="icon">iconu</string>
+  <string name="icon">Iconu</string>
   <string name="next">Siguiente</string>
   <string name="skip">Saltar</string>
   <string name="proxy">Proxy</string>
@@ -136,12 +136,12 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="status_inserting">Guardando los detalles de les aplicaciones (%1$d%%)</string>
   <string name="repos_unchanged">Dengún repositoriu tien anovamientos de paquetes</string>
   <string name="all_other_repos_fine">Tolos otros repositorios nun crearon fallos.</string>
-  <string name="global_error_updating_repos">Fallu nel anovamientu:</string>
+  <string name="global_error_updating_repos">Fallu nel anovamientu: %s</string>
   <string name="no_permissions">Nun s\'usaron permisos.</string>
   <string name="permissions_for_long">Permisos pa la versión %s</string>
-  <string name="no_handler_app">Nun tienes denguna aplicación disponible que puea remanar %s</string>
+  <string name="no_handler_app">Nun tienes dal aplicación disponible que puea remanar %s.</string>
   <string name="compactlayout">Distribución compauta</string>
-  <string name="compactlayout_on">Amosar iconos a un tamañu más pequeñu</string>
+  <string name="compactlayout_on">Amuesar los iconos nun tamañu más pequeñu</string>
   <string name="theme">Tema</string>
   <string name="unsigned">Non robáu</string>
   <string name="unverified">Non verificáu</string>
@@ -153,26 +153,19 @@ Llanzáu baxo la llicencia GNU GPLv3.</string>
   <string name="repo_name">Nome</string>
   <string name="unsigned_description">Esto quier dicir que nun pudo verificase\'l llistáu d\'aplicaciones.
 Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</string>
-  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu.
-Pa ver les aplicaciones qu\'apurre, necesitarás anovalu.
-
-Una vegada anováu, la descripción y los otros detalles tarán disponibles equí.</string>
+  <string name="repo_not_yet_updated">Entá nun s\'usó esti repositoriu. Pa ver les aplicaciones que forne, necesitarás anovalu.\n\nUna vegada anováu, la descripción y los otros detalles tarán disponibles equí.</string>
   <string name="unknown">Desconocíu</string>
   <string name="repo_confirm_delete_title">¿Desaniciar repositoriu?</string>
   <string name="repo_confirm_delete_body">Desaniciar un repositoriu quier dicir que les aplicaciones d\'elli nun tarán disponibles dende F-Droid.
-
-Nota: Toles aplicaciones instalaes d\'enantes quedaránse nel preséu.</string>
-  <string name="repo_disabled_notification">Deshabilitóse \"%1$s\".
-
-Necesitarás rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
-  <string name="repo_added">Guardóse\'l repositoriu F-Droid %1$s</string>
+\n\nNota: Toles aplicaciones instalaes d\'enantes quedaránse nel preséu.</string>
+  <string name="repo_disabled_notification">Deshabilitóse %1$s.\n\nNecesitarás rehabilitar esti repositoriu pa instalar aplicaciones dende elli.</string>
+  <string name="repo_added">Guardóse\'l repositoriu F-Droid %1$s.</string>
   <string name="repo_searching_address">Guetando repositorios F-Droid en
 %1$s</string>
   <string name="minsdk_or_later">%s o posterior</string>
-  <string name="up_to_maxsdk">fasta %s</string>
+  <string name="up_to_maxsdk">Fasta %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s fasta %2$s</string>
-  <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede WiFi que\'l repositoriu llocal que tas acabante
-d\'amestar! Intenta xunite a esta rede: %s</string>
+  <string name="not_on_same_wifi">¡El to preséu nun ta na mesma rede Wi-Fi que\'l repositoriu llocal que tas acabante d\'amestar! Intenta xunite a esta rede: %s</string>
   <string name="requires_features">Rique: %1$s</string>
   <string name="app_icon">Iconu d\'aplicación</string>
   <string name="repo_icon">Iconu de repositoriu</string>
@@ -194,7 +187,7 @@ d\'amestar! Intenta xunite a esta rede: %s</string>
   <string name="system_permission_denied_body">Esta opción ta namái disponible cuando s\'instale D-Droid como una aplicación del sistema.</string>
   <string name="app_description">F-Droid ye un catálogu de software FOSS (software llibre y de baldre) instalable pa la plataforma Android. El veceru fai cenciello restolar, instalar y caltener el rastrexu d\'anovamientos nel to preséu.</string>
   <string name="swap_nfc_description">Si\'l to collaciu tocó los vuesos teléfonos xuntos.</string>
-  <string name="swap_join_same_wifi">Xúnite a la mesma Wifi que\'l to collaciu</string>
+  <string name="swap_join_same_wifi">Xúnite a la mesma Wi-Fi que\'l to collaciu</string>
   <string name="menu_swap">Intercambiar aplicaciones</string>
   <string name="swap">Intercambéu d\'aplicaciones</string>
   <string name="swap_no_wifi_network">Entá nun hai rede</string>
@@ -202,4 +195,120 @@ d\'amestar! Intenta xunite a esta rede: %s</string>
   <string name="open_qr_code_scanner">Abrir l\'escáner de códigos QR</string>
   <string name="swap_welcome">¡Bienllegáu a F-Droid!</string>
   <string name="swap_confirm_connect">¿Quies consiguir aplicaciones de %1$s agora?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="interval_12h">Cada 12 hores</string>
+    <string name="interval_1d">Caldía</string>
+    <string name="interval_1w">Selmanalmente</string>
+    <string name="interval_2w">Cada 2 selmanes</string>
+
+    <string name="interval_4h">Cada 4 hores</string>
+    <string name="unstable_updates">Anovamientos inestables</string>
+	<string name="downloading">Baxando…</string>
+
+    <string name="interval_never">Enxamás</string>
+    <string name="uninstall_update_confirm">¿Quies trocar esta aplicación pola versión de fábrica?</string>
+    <string name="perm_costs_money">Quiciabes esto te cueste perres</string>
+    <string name="loading">Cargando…</string>
+    <string name="swap_cant_send_no_bluetooth">Nun pudo unviase F-droid porque\'l Bluetooth nun ta disponible nesti preséu.</string>
+    <string name="swap_connecting">Coneutando</string>
+    <string name="swap_cant_find_peers">¿Nun pues alcontrar a quien tas guetando?</string>
+    <string name="swap_send_fdroid">Unviar F-droid</string>
+    <string name="swap_qr_isnt_for_swap">El códigu QR qu\'escaniesti nun paez ser un códigu d\'intercambéu.</string>
+    <string name="swap_connection_misc_error">Asocedió un fallu entrín se coneutaba col preséu, paez que nun podemos facer l\'intercambéu con elli :(</string>
+    <string name="bluetooth_unavailable">Bluetooth non disponible</string>
+    <string name="swap_confirm">Confirmar intercambéu</string>
+    <string name="swap_wifi_device_name">Nome de preséu</string>
+    <string name="swap_visible_bluetooth">Visible per Bluetooth</string>
+    <string name="swap_setting_up_bluetooth">Configurando Bluetooth…</string>
+    <string name="swap_scanning_for_peers">Guetando xente averao…</string>
+    <string name="swap_dont_show_again">Nun amosar de nueves esto</string>
+    <string name="swap_tap_to_select_apps">Calca pa esbillar les aplicaciones que quieras intercambiar.</string>
+    <string name="swap_switch_to_wifi">Calca pa camudar a una rede WiFi</string>
+    <string name="swap_success">¡Intercambéu esitosu!</string>
+    <string name="theme_dark">Escuru</string>
+<string name="theme_light">Claru</string>
+    <string name="uninstall_system">Desinstalar F-Droid privilexáu</string>
+	<string name="uninstall_system_summary">Desinstala l\'aplicación adicional de F-droid privilexáu</string>
+	<string name="about_source">Fonte:</string>
+	<string name="app_incompatible">Incompatible</string>
+	<string name="links">Enllaces</string>
+	<string name="content_description_view_more">Ver más</string>
+
+	<string name="back">Atrás</string>
+	<string name="tab_installed_apps">Instaláu</string>
+	<string name="update_notification_more">+%1$d más…</string>
+	<string name="bad_fingerprint">Buelga incorreuta</string>
+	<string name="invalid_url">Esto nun ye una URL válida.</string>
+	<string name="menu_changelog">Rexistru de cambeos</string>
+	<string name="update_notification_title">Anovando repositorios</string>
+	<string name="pref_language">Llingua</string>
+    <string name="pref_language_default">Por defeutu del sistema</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="Connectivity">Coneutividá</string>
+    <string name="Graphics">Gráficos</string>
+    <string name="Money">Dineru</string>
+    <string name="Sports_Health">Deporte y salú</string>
+    <string name="Theming">Temes</string>
+    <string name="Time">Tiempu</string>
+    <string name="Writing">Escritura</string>
+
+    <string name="empty_installed_app_list">Ensin aplicaciones instalaes.\n\nHai aplicaciones nel to preséu pero nun tán disponibles dende F-Droid. Esto quiciabes sía porque necesites anovar los tos repositorios o porque los repositorios nun tengan daveres les tos aplicaciones disponibles.</string>
+    <string name="empty_available_app_list">Ensin aplicaciones nesta estaya.\n\nIntenta esbillar una estaya distinta o anovar los tos repositorios pa consiguir un llistáu frescu d\'aplicaciones.</string>
+    <string name="empty_can_update_app_list">Tán anovaes toles aplicaciones.\n\n¡Norabona! Toles tos aplicaciones tán anovaes (o los tos repositorios tán ensin anovar).</string>
+
+    <string name="install_error_title">Fallu d\'instalación</string>
+    <string name="install_error_unknown">Fallu al instalar pola mor d\'un fallu desconocíu</string>
+    <string name="install_error_cannot_parse">Asocedió un fallu entrín s\'analizaba\'l paquete</string>
+    <string name="uninstall_error_title">Fallu de desinstalación</string>
+    <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>
+    <string name="system_permission_install_via_root">Instalar F-Droid privilexáu</string>
+    <string name="system_install_first_time_notification">¿Instalar F-Droid privilexáu?</string>
+    <string name="system_install_first_time_notification_message_short">Toca pa más información.</string>
+    <string name="system_install_first_time_notification_message">Toca pa instalar F-Droid privilexáu, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.\nTamién pues facer esto sero nes preferencies de F-Droid.</string>
+    <string name="system_install_post_success">Instalóse con ésitu F-Droid privilexáu</string>
+    <string name="system_install_post_fail">Fallo la instalación de F-Droid privilexáu</string>
+    <string name="system_install_post_success_message">Instalóse con ésitu F-Droid privilexáu. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
+    <string name="system_install_installing">Instalando…</string>
+    <string name="system_install_uninstalling">Desinstalando…</string>
+    <string name="system_install_question">¿Quies instalar F-Droid privilexáu?\nEsto tardará 10 segundos.</string>
+    <string name="system_install_question_lollipop">¿Quies instalar F-Droid pivilexáu?\nEsto tardará 10 segundos y el preséu reaniciaráse darréu.</string>
+    <string name="system_install_first_time_message">Paez que tienes accesu root nel to preséu. Agora pues instalar F-Droid privilexáu, intégrase col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
+    <string name="system_uninstall">¿Quies desinstalar F-Droid privilexáu?</string>
+    <string name="system_uninstall_message">Esto desinstalará F-Droid privilexáu.</string>
+    <string name="system_uninstall_button">Desinstalar</string>
+
+    <string name="swap_nfc_title">Toca pa intercambiar</string>
+    <string name="swap_join_same_wifi_desc">Pa intercambiar usando W-FI asegúrate que tais na mesma rede. Si nun tienéis accesu a al mesma rede, ún de vós pues crear un puntu Wi-Fi.</string>
+    <string name="swap_join_this_hotspot">Ayuda al to collaciu a xunilu al to puntu Wi-Fi</string>
+    <string name="swap_scan_or_type_url">Una persona necesita escaniar el códigu o escribir la URL nel restolador d\'otru.</string>
+    <string name="swap_choose_apps">Escoyer aplicaciones</string>
+    <string name="swap_scan_qr">Escaniar códigu QR</string>
+    <string name="swap_people_nearby">Xente averao</string>
+    <string name="swap_nearby">Intercambéu cercanu</string>
+    <string name="swap_intro">Coneuta y negocia aplicaciones cola xente averao a tigo.</string>
+    <string name="swap_not_visible_bluetooth">Nun ye visible pente Bluetooth</string>
+    <string name="swap_visible_wifi">Visible pente Wi-Fi</string>
+    <string name="swap_setting_up_wifi">Configurando Wi-Fi…</string>
+    <string name="swap_not_visible_wifi">Nun ye visible pente Wi-Fi</string>
+    <string name="swap_no_peers_nearby">Nun pudo alcontrase xente averao cola qu\'intercambiar.</string>
+    <string name="swap_attempt_install"/>
+    <string name="swap_not_enabled_description">Enantes d\'intercambiar, el to preséu ha tar visible.</string>
+
+    <string name="install_confirm">¿Quies instalar esta aplicación? Tendrá accesu a:</string>
+    <string name="install_confirm_no_perms">¿Quies instalar esta aplicación? Nun rique dal permisu especial.</string>
+    <string name="install_confirm_update">¿Quies instalar un anovamientu pa esta aplicación? Nun va perdese dal datu esistente. L\'aplicación anovada tendrá accesu a:</string>
+    <string name="install_confirm_update_system">¿Quies instalar un anovamientu pa esta aplicación integrada? Nun va perdese dal datu esistente. L\'aplicación anovada tendrá accesu a:</string>
+    <string name="install_confirm_update_no_perms">¿Quies instalar un anovamientu pa esta aplicación? Nun va perdese dal datu esistente. L\'aplicación nun rique dal accesu especial.</string>
+    <string name="install_confirm_update_system_no_perms">¿Quies instalar un anovamientu pa esta aplicación integrada? Nun va perdese dal datu esistente. L\'aplicación nun rique dal accesu especial.</string>
+    <string name="newPerms">Nuevu</string>
+    <string name="allPerms">Too</string>
+    <string name="privacyPerms">Privacidá</string>
+    <string name="devicePerms">Accesu al preséu</string>
+    <string name="uninstall_confirm">¿Quies desinstalar esta aplicación?</string>
+    <string name="tap_to_install">Descarga completada, toca pa instalar</string>
+
+    <string name="perms_description_app">Forníu por %1$s.</string>
+    <string name="interval_1h">Cada hora</string>
+    </resources>
