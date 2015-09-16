@@ -84,7 +84,11 @@ public class AvailableAppsFragment extends AppListFragment implements
             // Wanted to just do this update here, but android tells
             // me that "Only the original thread that created a view
             // hierarchy can touch its views."
-            getActivity().runOnUiThread(new Runnable() {
+            final Activity activity = getActivity();
+            // this nullguard is temporary, this Fragment really needs to merged into the Activity
+            if (activity == null)
+                return;
+            activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     if (adapter == null) {
