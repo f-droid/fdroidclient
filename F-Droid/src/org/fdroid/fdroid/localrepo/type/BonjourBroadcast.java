@@ -20,7 +20,7 @@ import javax.jmdns.ServiceInfo;
  */
 public class BonjourBroadcast extends SwapType {
 
-    private static final String TAG = "BonjourSwapService";
+    private static final String TAG = "BonjourBroadcast";
 
     private JmDNS jmdns;
     private ServiceInfo pairService;

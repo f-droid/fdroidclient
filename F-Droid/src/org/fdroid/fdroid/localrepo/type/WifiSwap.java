@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class WifiSwap extends SwapType {
 
-    private static final String TAG = "WebServerType";
+    private static final String TAG = "WifiSwap";
 
     private Handler webServerThreadHandler = null;
     private LocalHTTPD localHttpd;
