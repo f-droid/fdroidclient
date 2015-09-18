@@ -153,13 +153,11 @@
   <string name="repo_update">Обновить</string>
   <string name="repo_name">Название</string>
   <string name="unsigned_description">Это означает, что список приложений не может быть проверен. Вы должны быть осторожны с приложениями, загруженными из неподписанных источников.</string>
-  <string name="repo_not_yet_updated">Этот репозиторий еще не использовался.
-
-Обновите репозиторий чтобы получить информацию о доступных приложениях.</string>
+  <string name="repo_not_yet_updated">Этот репозиторий еще не использовался. Обновите репозиторий чтобы просмотреть содержащиеся в нём приложения.\n\nПосле обновления здесь появится описание и прочие подробности.</string>
   <string name="unknown">Неизвестный</string>
   <string name="repo_confirm_delete_title">Удалить репозиторий?</string>
   <string name="repo_confirm_delete_body">Удаление репозитория означает что приложения из него больше не будут доступны в F-Droid.\n\nПримечание: Все ранее установленные приложения останутся на вашем устройстве.</string>
-  <string name="repo_disabled_notification">\"%1$s\" отключен. Для установки приложений из этого репозитория Вам необходимо повторно включить его.</string>
+  <string name="repo_disabled_notification">%1$s отключён.\n\nДля установки приложений из этого репозитория вам необходимо повторно включить его.</string>
   <string name="minsdk_or_later">%s или позднее</string>
   <string name="up_to_maxsdk">До %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s до %2$s</string>
@@ -214,4 +212,12 @@
     <string name="Time">Время</string>
     <string name="app_name">F-Droid</string>
 
-	</resources>
+	<string name="tab_installed_apps">Установлено</string>
+	<string name="update_notification_title">Обновление репозиториев</string>
+	<string name="status_processing_xml_percent">Обработка %2$s / %3$s (%4$d%%) из %1$s</string>
+	<string name="install_error_title">Ошибка установки</string>
+    <string name="install_error_unknown">Установка не удалась из-за неизвестной ошибки</string>
+    <string name="install_error_cannot_parse">При разборе пакета произошла ошибка</string>
+    <string name="uninstall_error_title">Ошибка удаления</string>
+    <string name="uninstall_error_unknown">Удаление не удалось из-за неизвестной ошибки</string>
+    </resources>

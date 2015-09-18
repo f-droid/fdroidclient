@@ -263,4 +263,6 @@
 	<string name="repo_exists_and_enabled">Входящото хранилище е настроено и включено.</string>
 	<string name="repo_delete_to_overwrite">Необходимо е първо да изтриете хранилището преди да добавите различен ключ.</string>
 	<string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
-	</resources>
+	<string name="app_incompatible">Несъвместимо</string>
+	<string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
+        </resources>

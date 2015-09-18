@@ -8,8 +8,8 @@
     <string name="version">גרסא</string>
     <string name="delete">מחק</string>
     <string name="enable_nfc_send">אפשר NFC Send…</string>
-    <string name="cache_downloaded">מטמון אפליקציות</string>
-    <string name="cache_downloaded_on">שמור קבצי .apk מורדים על גבי התקן</string>
+    <string name="cache_downloaded">הטמן חבילות</string>
+    <string name="cache_downloaded_on">שמור קבצי חבילה מורדים על גבי התקן</string>
     <string name="updates">עדכונים</string>
     <string name="other">אחר</string>
     <string name="last_update_check">סריקת מאגר אחרונה: %s</string>
@@ -18,8 +18,8 @@
     <string name="update_interval">תדירות עדכון אוטומטי</string>
     <string name="automatic_scan_wifi">רק על גבי Wi-Fi</string>
     <string name="automatic_scan_wifi_on">עדכן רשימות אפליקציה אוטומטית רק על גבי Wi-Fi</string>
-    <string name="notify">התרע</string>
-    <string name="notify_on">התרע כאשר עדכונים זמינים</string>
+    <string name="notify">התראות עדכון</string>
+    <string name="notify_on">הצג התראה כאשר עדכונים זמינים</string>
     <string name="update_history">היסטוריית עדכון</string>
     <string name="update_history_summ">ימים כדי להחשיב אפליקציות כחדשות או אחרונות: %s</string>
     <string name="system_installer">אפשר F-Droid מועדף</string>
@@ -81,7 +81,7 @@
 
     <string name="menu_update_repo">עדכן מאגרים</string>
     <string name="menu_manage">מאגרים</string>
-    <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+    <string name="menu_send_apk_bt">שתף את F-Droid בעזרת Bluetooth</string>
     <string name="menu_preferences">העדפות</string>
     <string name="menu_about">אודות</string>
     <string name="menu_search">חפש</string>
@@ -111,7 +111,7 @@
 
     <string name="display">תצוגה</string>
 
-    <string name="expert">מומחה</string>
+    <string name="expert">מצב מומחה</string>
     <string name="expert_on">הצג מידע נוסף ואפשר הגדרות נוספות</string>
 
     <string name="search_hint">חפש אפליקציות</string>
@@ -119,7 +119,7 @@
     <string name="appcompatibility">תאימות אפליקציה</string>
     <string name="show_incompat_versions">גרסאות לא תואמות</string>
     <string name="show_incompat_versions_on">הצג גרסאות אפליקציה אשר לא תואמות עם המכשיר שלך</string>
-    <string name="rooted">שורש</string>
+    <string name="rooted">התעלם מן שורש</string>
     <string name="rooted_on">אל תאפיר אפליקציות אשר דורשות הרשאות שורש</string>
     <string name="ignoreTouch">התעלם ממסך מגע</string>
     <string name="ignoreTouch_on">תמיד הכלל אפליקציות אשר מצריכות מסך מגע</string>
@@ -302,4 +302,21 @@
 
     <string name="theme_light">בהיר</string>
     <string name="theme_dark">אפל</string>
-</resources>
+<string name="unstable_updates">עדכונים לא יציבים</string>
+	<string name="unstable_updates_summary">הצע עדכונים לגרסאות לא יציבות</string>
+	<string name="about_source">מקור:</string>
+	<string name="tab_installed_apps">מותקנת</string>
+	<string name="swap_nfc_title">גע כדי להחליף</string>
+    <string name="swap_nearby">הֶחְלֵף בקרבת מקום</string>
+    <string name="swap_cant_find_peers">אינך יכול למצוא את מי שאתה מחפש?</string>
+    <string name="swap_send_fdroid">שלח F-Droid</string>
+    <string name="swap_confirm">אמת הֶחְלֵף</string>
+    <string name="swap_qr_isnt_for_swap">קוד QR שסרקת לא נראה כמו קוד swap.</string>
+    <string name="swap_cant_send_no_bluetooth">לא מסוגל לשלוח את F-Droid, בשל העובדה כי Bluetooth אינו זמין על מכשיר זה.</string>
+    <string name="swap_not_enabled">הֶחְלֵף לא מאופשר</string>
+    <string name="swap_not_enabled_description">בטרם ביצוע הֶחְלֵף, על מכשירך להיות נראה.</string>
+
+    <string name="swap_intro">חבר והחלף אפליקציות עם אנשים בקרבתך.</string>
+    <string name="swap_no_peers_nearby">לא היה ניתן למצוא אנשים בקרבת מקום כדי לבצע הֶחְלֵף עמם.</string>
+    <string name="swap_connection_misc_error">אירעה שגיאה במהלך התחברות להתקן, נראה כי אנחנו לא יכולים לבצע הֶחְלֵף עמו :(</string>
+    </resources>

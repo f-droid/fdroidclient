@@ -189,7 +189,7 @@ wird verbunden</string>
   <string name="system_permission_denied_body">Diese Option ist nur verfügbar, wenn F-Droid als System-App installiert wurde.</string>
   <string name="app_description">F-Droid ist ein installierbarer App-Store für FOSS (Freie und Quelloffene Software) Anwendungen für die Android-Plattform. Der Client macht es auf deinem Gerät einfach zu durchsuchen, zu installieren und Aktualisierungen zu verfolgen.</string>
   <string name="swap_nfc_description">Wenn Sie die Telefone mit Ihrem Freund aneinander halten.</string>
-  <string name="swap_join_same_wifi">Treten Sie dem gleichen WLAN bei wie Ihr Freund</string>
+  <string name="swap_join_same_wifi">Treten Sie dem gleichen WLAN-Netzwerk bei wie Ihr Freund</string>
   <string name="menu_swap">Apps tauschen</string>
   <string name="swap">Apps tauschen</string>
   <string name="swap_no_wifi_network">Noch kein Netzwerk</string>

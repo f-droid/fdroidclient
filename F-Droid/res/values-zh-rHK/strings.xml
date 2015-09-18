@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">找到%1$d個符合「%2$s」的應用程式：</string>
   <string name="searchres_oneapp">找到一個符合「%s」的應用程式：</string>
@@ -6,31 +6,30 @@
   <string name="version">版本</string>
   <string name="delete">刪除</string>
   <string name="enable_nfc_send">啟用 NFC 傳送…</string>
-  <string name="cache_downloaded">應用程式快取</string>
-  <string name="cache_downloaded_on">保留已下載的 apk 檔案在SD卡上</string>
+  <string name="cache_downloaded">軟件包快取</string>
+  <string name="cache_downloaded_on">保留已下載的軟件包檔案在裝置上</string>
   <string name="updates">更新</string>
   <string name="other">其他</string>
   <string name="last_update_check">最近的倉庫掃描：%s</string>
   <string name="never">永不</string>
   <string name="update_interval">自動更新頻率</string>
   <string name="update_interval_zero">不要自動更新應用程式清單</string>
-  <string name="automatic_scan_wifi">只透過 Wifi 更新</string>
-  <string name="automatic_scan_wifi_on">只透過 Wifi 自動更新應用程式清單</string>
-  <string name="notify">通知</string>
+  <string name="automatic_scan_wifi">只透過 Wi-Fi 更新</string>
+  <string name="automatic_scan_wifi_on">只透過 Wi-Fi 自動更新應用程式清單</string>
+  <string name="notify">更新通知</string>
   <string name="notify_on">應用程式發佈更新時通知我</string>
   <string name="update_history">更新記錄</string>
-  <string name="system_installer">使用系統權限安裝</string>
-  <string name="system_installer_on">安裝、更新，及移除軟件包時使用系統權限</string>
+  <string name="system_installer">啟用有系統權限的 F-Droid</string>
+  <string name="system_installer_on">使用系統權限以安裝、更新及移除軟件包</string>
   <string name="local_repo_name">您的本地倉庫名稱</string>
-  <string name="local_repo_name_summary">您本地倉庫對外公開的名稱：</string>
+  <string name="local_repo_name_summary">您本地倉庫對外公開的名稱：%s</string>
   <string name="local_repo_https">使用私人連線</string>
   <string name="local_repo_https_on">連接至本地倉庫時使用 HTTPS:// 加密連線</string>
   <string name="search_results">搜尋結果</string>
   <string name="app_details">應用程式詳細資料</string>
-  <string name="no_such_app">找不到這樣的應用程式</string>
+  <string name="no_such_app">找不到這樣的應用程式。</string>
   <string name="about_title">關於 F-Droid</string>
-  <string name="about_desc">原始碼源自 Aptoide，
-以 GNU GPL 第三版特許條款發行。</string>
+  <string name="about_desc">原始碼源自 Aptoide，\n以 GNU GPL 第三版特許條款發行。</string>
   <string name="about_site">網站：</string>
   <string name="about_mail">電郵：</string>
   <string name="about_version">版本：</string>
@@ -38,7 +37,7 @@
   <string name="app_not_installed">沒有安裝</string>
   <string name="app_inst_known_source">已安裝 (來自 %s)</string>
   <string name="app_inst_unknown_source">已安裝 (來源不明)</string>
-  <string name="added_on">在 %s 加入</string>
+  <string name="added_on">於 %s 添置</string>
   <string name="ok">OK</string>
   <string name="yes">是</string>
   <string name="no">否</string>
@@ -53,14 +52,14 @@
   <string name="one_update_available">有 1 個更新。</string>
   <string name="many_updates_available">有 %d 個更新。</string>
   <string name="fdroid_updates_available">您有 F-Droid 更新</string>
-  <string name="bluetooth_activity_not_found">找不到藍牙傳送方式，請選擇！</string>
+  <string name="bluetooth_activity_not_found">找不到任何藍牙傳送的方式，請選擇！</string>
   <string name="choose_bt_send">選擇藍牙傳送方式</string>
   <string name="send_via_bluetooth">透過藍牙傳送</string>
   <string name="repo_add_url">軟件倉庫網址</string>
   <string name="repo_add_fingerprint">指模 (可選)</string>
   <string name="menu_update_repo">更新倉庫</string>
   <string name="menu_manage">軟件倉庫</string>
-  <string name="menu_send_apk_bt">藍牙傳送 FDroid.apk…</string>
+  <string name="menu_send_apk_bt">透過藍牙傳送 F-Droid</string>
   <string name="menu_preferences">設定</string>
   <string name="menu_about">關於</string>
   <string name="menu_search">搜尋</string>
@@ -78,7 +77,7 @@
   <string name="menu_donate">捐款</string>
   <string name="details_installed">已安裝版本%s</string>
   <string name="details_notinstalled">沒有安裝</string>
-  <string name="corrupt_download">下載的檔案已損毀</string>
+  <string name="corrupt_download">下載的檔案已損毀。</string>
   <string name="antiadslist">此應用程式含有廣告</string>
   <string name="antitracklist">此應用程式會跟蹤及彙報您的行為</string>
   <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>
@@ -86,13 +85,13 @@
   <string name="antinonfreedeplist">此應用程式依賴其他非自由的應用程式</string>
   <string name="antiupstreamnonfreelist">上游原始碼並非完全自由</string>
   <string name="display">顯示</string>
-  <string name="expert">進階</string>
+  <string name="expert">進階模式</string>
   <string name="expert_on">顯示更多資訊及啟用更多設定</string>
   <string name="search_hint">搜尋應用程式</string>
   <string name="appcompatibility">應用程式相容性</string>
   <string name="show_incompat_versions">不相容的版本</string>
   <string name="show_incompat_versions_on">顯示與裝置不相容的應用程式版本</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">忽略 root</string>
   <string name="ignoreTouch">略過觸碰屏幕</string>
   <string name="ignoreTouch_on">永遠顯示需要觸碰屏幕的應用程式</string>
   <string name="category_all">所有</string>
@@ -106,12 +105,12 @@
   <string name="copying_icons">正在複製應用程式圖示至倉庫…</string>
   <string name="icon">圖示</string>
   <string name="skip">略過</string>
-  <string name="status_connecting_to_repo">正在連接至%1$s</string>
+  <string name="status_connecting_to_repo">正在連接至\n%1$s</string>
   <string name="status_checking_compatibility">正在檢查應用程式與裝置的相容性…</string>
   <string name="status_inserting">儲存應用程式詳情中 (%1$d%%)</string>
   <string name="repos_unchanged">所有倉庫都沒有任何可更新的軟件包</string>
   <string name="all_other_repos_fine">其他倉庫都沒有出現問題。</string>
-  <string name="global_error_updating_repos">更新時出現的問題：</string>
+  <string name="global_error_updating_repos">更新時出現問題：%s</string>
   <string name="no_permissions">沒有使用任何存取權。</string>
   <string name="permissions_for_long">版本 %s 的存取權</string>
   <string name="compactlayout">濃縮設計</string>
@@ -126,14 +125,12 @@
   <string name="repo_name">名稱</string>
   <string name="unknown">未知</string>
   <string name="repo_confirm_delete_title">刪除軟件倉庫？</string>
-  <string name="repo_disabled_notification">已停用「%1$s」。
-
-您需要重新啟用此軟件倉庫才能從中安裝應用程式。</string>
-  <string name="repo_added">已儲存 F-Droid 軟件倉庫 %1$s</string>
+  <string name="repo_disabled_notification">已停用 %1$s。\n\n您需重新啟用此軟件倉庫才能安裝其中的應用程式。</string>
+  <string name="repo_added">已儲存 F-Droid 軟件倉庫 %1$s。</string>
   <string name="repo_searching_address">在 %1$s 尋找 F-Droid 軟件倉庫</string>
   <string name="minsdk_or_later">%s 或以後</string>
   <string name="up_to_maxsdk">直至 %s</string>
-  <string name="not_on_same_wifi">您剛才添加的本地倉庫與您的裝置並不在同一個 Wifi 網絡上！請嘗試加入以下網絡：%s</string>
+  <string name="not_on_same_wifi">您剛才添加的本地倉庫與您的裝置並不在同一個 Wi-Fi 網絡上！請嘗試加入以下網絡：%s</string>
   <string name="requires_features">需要：%1$s</string>
   <string name="app_icon">應用程式圖示</string>
   <string name="repo_icon">倉庫圖示</string>
@@ -158,4 +155,91 @@
   <string name="open_qr_code_scanner">開啟 QR 碼掃描器</string>
   <string name="swap_welcome">歡迎使用 F-Droid！</string>
   <string name="swap_confirm_connect">你是否想從 %1$s 取得應用程式？</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="unstable_updates">不穩定的更新</string>
+	<string name="unstable_updates_summary">建議更新至不穩定的版本</string>
+	<string name="about_source">原始碼：</string>
+	<string name="app_incompatible">不相容</string>
+	<string name="links">連結</string>
+	<string name="content_description_view_more">顯示更多</string>
+
+	<string name="back">返回</string>
+	<string name="tab_installed_apps">已安裝</string>
+	<string name="invalid_url">這不是有效的網址。</string>
+	<string name="menu_changelog">更新日誌</string>
+	<string name="failed_to_create_index">建立軟件倉庫引首失敗！</string>
+	<string name="update_notification_title">正在更新軟件倉庫</string>
+	<string name="no_handler_app">您沒有任何應用程式可以開啟 %s。</string>
+	<string name="repo_confirm_delete_body">軟件倉庫被刪除後，倉庫中的應用程式將不會在 F-Droid 出現。\n\n註：之前所安裝的應用程式均會保留在您的裝置上。</string>
+    <string name="pref_language">語言</string>
+    <string name="pref_language_default">系統預設</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Wi-Fi 熱點</string>
+
+    <string name="Connectivity">網絡</string>
+    <string name="Graphics">繪圖</string>
+    <string name="Money">財經</string>
+    <string name="Sports_Health">體育與健康</string>
+    <string name="Theming">主題</string>
+    <string name="Time">時間</string>
+    <string name="Writing">文書</string>
+
+    <string name="empty_available_app_list">此分類沒有任何應用程式。\n\n請選擇另一個分類或嘗試更新您的軟件倉庫以取得最新的程式清單。</string>
+    <string name="empty_can_update_app_list">所有應用程式都是最新的。\n\n恭喜您！您所有的應用程式都是最新的版本 (或許您的軟件倉庫已過期)。</string>
+
+    <string name="install_error_title">安裝錯誤</string>
+    <string name="install_error_unknown">不明的錯誤導致安裝失敗</string>
+    <string name="uninstall_error_title">卸載錯誤</string>
+    <string name="uninstall_error_unknown">不明的錯誤導致卸載失敗</string>
+    <string name="system_install_first_time_notification_message_short">觸碰以得到更多資訊。</string>
+    <string name="system_install_installing">安裝中…</string>
+    <string name="system_install_uninstalling">卸載中…</string>
+    <string name="system_uninstall_button">卸載</string>
+
+    <string name="swap_nfc_title">觸碰來交換</string>
+    <string name="swap_nfc_description">若您的朋友有 F-Droid，並開啟了 NFC 功能，請觸碰您們的手機。</string>
+    <string name="theme_dark">暗色系</string>
+<string name="theme_light">明亮系</string>
+    <string name="interval_2w">每兩星期</string>
+
+    <string name="tap_to_install">下載完畢，觸碰以安裝</string>
+
+    <string name="perms_new_perm_prefix">"新的存取權： "</string>
+    <string name="downloading">下載中…</string>
+
+    <string name="interval_never">永不</string>
+    <string name="interval_1h">每小時</string>
+    <string name="interval_4h">每四小時</string>
+    <string name="interval_12h">每十二小時</string>
+    <string name="interval_1d">每天</string>
+    <string name="interval_1w">每星期</string>
+    <string name="perms_description_app">由 %1$s 提供。</string>
+    <string name="uninstall_confirm">您想卸載此應用程式嗎？</string>
+    <string name="privacyPerms">私隱權</string>
+    <string name="allPerms">所有</string>
+    <string name="newPerms">新權限</string>
+    <string name="swap_connecting">正在連線</string>
+    <string name="swap_send_fdroid">傳送 F-Droid</string>
+    <string name="swap_wifi_device_name">裝置名稱</string>
+    <string name="swap_scan_qr">掃描 QR 碼</string>
+    <string name="swap_people_nearby">附近的人</string>
+    <string name="swap_scanning_for_peers">正在尋找附近的人…</string>
+    <string name="swap_choose_apps">選擇程式</string>
+    <string name="swap_dont_show_again">不要再顯示</string>
+    <string name="installIncompatible">此軟件包與您的裝置不相容，您還要安裝它嗎？</string>
+	<string name="proxy">代理伺服器</string>
+	<string name="enable_proxy_title">啟用 HTTP 代理伺服器</string>
+	<string name="proxy_host">Proxy Host</string>
+	<string name="proxy_host_summary">設置您的代理伺服器 hostname (如 127.0.0.1)</string>
+	<string name="proxy_port">代理伺服器通訊埠</string>
+	<string name="proxy_port_summary">設置您的代理伺服器通訊埠號碼 (如 8118)</string>
+
+	<string name="status_download">正在從 %1$s\n下載\n%2$s / %3$s (%4$d%%)</string>
+	<string name="install_confirm_no_perms">您想安裝此應用程式嗎？它不需要任何特別的存取權。</string>
+    <string name="install_confirm">您想安裝此應用程式嗎？它需要以下的存取權：</string>
+    <string name="install_confirm_update">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
+    <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
+    <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式不需要任何特別的存取權。</string>
+    </resources>
