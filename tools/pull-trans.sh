@@ -13,7 +13,7 @@ REMOTE="weblate"
 REMOTE_URL="git://git.weblate.org/f-droid.git"
 REMOTE_BRANCH="master"
 
-AUTHOR="F-Droid Translatebot <admin@f-droid.org>"
+AUTHOR="F-Droid Translatebot <team@f-droid.org>"
 
 if ! git ls-remote --exit-code $REMOTE >/dev/null 2>/dev/null; then
 	echo "Remote doesn't exist! Try the following:"
@@ -34,7 +34,7 @@ git diff $diff | git apply
 
 git add $files
 
-git commit --author "$AUTHOR" -m "Pull translation updates from weblate
+git commit --author "$AUTHOR" -m "Pull translation updates from Weblate
 
 Translators:
 
