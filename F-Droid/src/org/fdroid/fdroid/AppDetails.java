@@ -1305,15 +1305,14 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             public void onClick(View v) {
                 final TextView description = (TextView) ll_view_more_description.findViewById(R.id.description);
                 final ImageView view_more_permissions = (ImageView) ll_view_more_description.findViewById(R.id.view_more_description);
-                if (!view_all_description) {
-                    view_all_description = true;
-                    description.setMaxLines(MAX_LINES);
-                    view_more_permissions.setImageResource(R.drawable.ic_expand_more_grey600);
-                } else {
-                    view_all_description = false;
+                if (view_all_description) {
                     description.setMaxLines(Integer.MAX_VALUE);
                     view_more_permissions.setImageResource(R.drawable.ic_expand_less_grey600);
+                } else {
+                    description.setMaxLines(MAX_LINES);
+                    view_more_permissions.setImageResource(R.drawable.ic_expand_more_grey600);
                 }
+                view_all_description ^= true;
             }
         };
 
