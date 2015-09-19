@@ -1283,42 +1283,38 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
+                String url = null;
                 switch (v.getId()) {
                     case R.id.website:
-                        ((AppDetails) getActivity()).tryOpenUri(getApp().webURL);
+                        url = getApp().webURL;
                         break;
-
                     case R.id.source:
-                        ((AppDetails) getActivity()).tryOpenUri(getApp().sourceURL);
+                        url = getApp().sourceURL;
                         break;
-
                     case R.id.issues:
-                        ((AppDetails) getActivity()).tryOpenUri(getApp().trackerURL);
+                        url = getApp().trackerURL;
                         break;
-
                     case R.id.changelog:
-                        ((AppDetails) getActivity()).tryOpenUri(getApp().changelogURL);
+                        url = getApp().changelogURL;
                         break;
-
                     case R.id.donate:
-                        ((AppDetails) getActivity()).tryOpenUri(getApp().donateURL);
+                        url = getApp().donateURL;
                         break;
-
                     case R.id.bitcoin:
-                        ((AppDetails) getActivity()).tryOpenUri("bitcoin:" + getApp().bitcoinAddr);
+                        url = "bitcoin:" + getApp().bitcoinAddr;
                         break;
-
                     case R.id.litecoin:
-                        ((AppDetails) getActivity()).tryOpenUri("litecoin:" + getApp().litecoinAddr);
+                        url = "litecoin:" + getApp().litecoinAddr;
                         break;
-
                     case R.id.dogecoin:
-                        ((AppDetails) getActivity()).tryOpenUri("dogecoin:" + getApp().dogecoinAddr);
+                        url = "dogecoin:" + getApp().dogecoinAddr;
                         break;
-
                     case R.id.flattr:
-                        ((AppDetails) getActivity()).tryOpenUri("https://flattr.com/thing/" + getApp().flattrID);
+                        url = "https://flattr.com/thing/" + getApp().flattrID;
                         break;
+                }
+                if (url != null) {
+                    ((AppDetails) getActivity()).tryOpenUri(url);
                 }
             }
         };
