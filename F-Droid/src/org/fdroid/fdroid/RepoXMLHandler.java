@@ -196,9 +196,6 @@ public class RepoXMLHandler extends DefaultHandler {
             case "litecoin":
                 curapp.litecoinAddr = str;
                 break;
-            case "dogecoin":
-                curapp.dogecoinAddr = str;
-                break;
             case "flattr":
                 curapp.flattrID = str;
                 break;

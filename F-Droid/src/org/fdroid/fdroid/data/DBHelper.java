@@ -79,7 +79,6 @@ public class DBHelper extends SQLiteOpenHelper {
             + "donateURL string,"
             + "bitcoinAddr string,"
             + "litecoinAddr string,"
-            + "dogecoinAddr string,"
             + "flattrID string,"
             + "requirements string,"
             + "categories string,"

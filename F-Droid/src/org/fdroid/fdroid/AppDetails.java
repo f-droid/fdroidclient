@@ -1209,13 +1209,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             else
                 tv.setVisibility(View.GONE);
 
-            // Dogecoin
-            tv = (TextView) view.findViewById(R.id.dogecoin);
-            if (!TextUtils.isEmpty(getApp().dogecoinAddr))
-                tv.setOnClickListener(mOnClickListener);
-            else
-                tv.setVisibility(View.GONE);
-
             // Flattr
             tv = (TextView) view.findViewById(R.id.flattr);
             if (!TextUtils.isEmpty(getApp().flattrID))
@@ -1305,9 +1298,6 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
                         break;
                     case R.id.litecoin:
                         url = "litecoin:" + getApp().litecoinAddr;
-                        break;
-                    case R.id.dogecoin:
-                        url = "dogecoin:" + getApp().dogecoinAddr;
                         break;
                     case R.id.flattr:
                         url = "https://flattr.com/thing/" + getApp().flattrID;

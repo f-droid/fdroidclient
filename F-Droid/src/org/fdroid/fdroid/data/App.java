@@ -54,8 +54,6 @@ public class App extends ValueObject implements Comparable<App> {
 
     public String litecoinAddr;
 
-    public String dogecoinAddr;
-
     public String flattrID;
 
     public String upstreamVersion;
@@ -162,9 +160,6 @@ public class App extends ValueObject implements Comparable<App> {
                 break;
             case AppProvider.DataColumns.LITECOIN_ADDR:
                 litecoinAddr = cursor.getString(i);
-                break;
-            case AppProvider.DataColumns.DOGECOIN_ADDR:
-                dogecoinAddr = cursor.getString(i);
                 break;
             case AppProvider.DataColumns.FLATTR_ID:
                 flattrID = cursor.getString(i);
@@ -384,7 +379,6 @@ public class App extends ValueObject implements Comparable<App> {
         values.put(AppProvider.DataColumns.DONATE_URL, donateURL);
         values.put(AppProvider.DataColumns.BITCOIN_ADDR, bitcoinAddr);
         values.put(AppProvider.DataColumns.LITECOIN_ADDR, litecoinAddr);
-        values.put(AppProvider.DataColumns.DOGECOIN_ADDR, dogecoinAddr);
         values.put(AppProvider.DataColumns.FLATTR_ID, flattrID);
         values.put(AppProvider.DataColumns.ADDED, Utils.formatDate(added, ""));
         values.put(AppProvider.DataColumns.LAST_UPDATED, Utils.formatDate(lastUpdated, ""));
