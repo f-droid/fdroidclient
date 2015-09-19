@@ -229,15 +229,15 @@
     <string name="swap_nfc_description">אם לחברך יש F-Droid וגם NFC פועלים געו יחד בטלפונים שלכם.</string>
     <string name="swap_join_same_wifi">הצטרף לאותו Wi-Fi כמו חברך</string>
     <string name="swap_join_this_hotspot">עזור לחברך להצטרף לנקודה חמה</string>
-    <string name="menu_swap">החלף אפליקציה</string>
-    <string name="swap">החלף אפליקציה</string>
-    <string name="swap_success">החלף צלח!</string>
-    <string name="swap_no_wifi_network">עדיין אין רשת</string>
-    <string name="swap_active_hotspot">נקודה החמה שלך הינה פעילה</string>
-    <string name="swap_view_available_networks">(הקש כדי לפתוח רשתות זמינות)</string>
-    <string name="swap_switch_to_wifi">(הקש כדי להחליף לרשת Wi-Fi)</string>
-    <string name="open_qr_code_scanner">פתח סורק קוד QR</string>
-    <string name="swap_welcome">ברוכים הבאים לחנות F-Droid!</string>
+    <string name="menu_swap">הֶחְלֵף אפליקציות</string>
+    <string name="swap">החלף אפליקציות</string>
+    <string name="swap_success">הֶחְלֵף הצליח!</string>
+    <string name="swap_no_wifi_network">אין רשת עדיין</string>
+    <string name="swap_active_hotspot">%1$s (נקודה חמה)</string>
+    <string name="swap_view_available_networks">הקש כדי לפתוח רשתות זמינות</string>
+    <string name="swap_switch_to_wifi">הקש כדי להחליף לרשת Wi-Fi</string>
+    <string name="open_qr_code_scanner">פתח סורק QR</string>
+    <string name="swap_welcome">ברוכים הבאים אל F-Droid!</string>
     <string name="swap_confirm_connect">האם ברצונך לקבל אפליקציות מתוך %1$s כעת?</string>
     <string name="swap_tap_to_select_apps">הקש כדי לבחור את האפליקציות אשר ברצונך להחליף.</string>
     <string name="swap_dont_show_again">אל תציג זאת שוב</string>
@@ -319,4 +319,20 @@
     <string name="swap_intro">חבר והחלף אפליקציות עם אנשים בקרבתך.</string>
     <string name="swap_no_peers_nearby">לא היה ניתן למצוא אנשים בקרבת מקום כדי לבצע הֶחְלֵף עמם.</string>
     <string name="swap_connection_misc_error">אירעה שגיאה במהלך התחברות להתקן, נראה כי אנחנו לא יכולים לבצע הֶחְלֵף עמו :(</string>
-    </resources>
+    <string name="SignatureMismatch">הגרסא החדשה הינה חתומה בעזרת מפתח אחר מזה הישן. כדי להתקין את הגרסא החדשה, על הישנה להיות מוסרת תחילה. אנא עשה זאת ונסה שוב. (לתשומת לבך ביטול התקנה יסיר כל מידע פנימי אשר מאוחסן על ידי האפליקציה)</string>
+	<string name="repo_exists_add_fingerprint">מאגר זה כבר מותקן, זה יוסיף מידע מפתח חדש.</string>
+	<string name="repo_exists_enable">מאגר זה כבר מותקן, אמת כי ברצונך לאפשרו שוב.</string>
+	<string name="repo_exists_and_enabled">המאגר הנכנס הינו מותקן ומאופשר כבר.</string>
+	<string name="repo_fingerprint">טביעת אצבע של מפתח חתימת מאגר (SHA-256)</string>
+    <string name="unsigned_description">משמעות הדבר היא שלא היתה אפשרות לאמת את הרשימה של האפליקציות. עליך להיזהר מן אפליקציות אשר מורדות מתוך אינדקסים לא חתומים.</string>
+    <string name="repo_not_yet_updated">מאגר זה לא נמצא בשימוש עדיין. על מנת לצפות באפליקציות אשר מאגר זה מספק, עליך לעדכן אותו.\n\nברגע שזה מעודכן, התיאור ופרטים אחרים יהפכו לזמינים כאן.</string>
+    <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי אפליקציות מתוכו לא יהיו זמינים עוד מתוך F-Droid.\n\nהערה: כל אפליקציות אשר הותקנו בעבר יישארו על המכשיר שלך.</string>
+    <string name="repo_disabled_notification">נוטרל %1$s.\n\nעליך לאפשר שוב את מאגר זה כדי להתקין אפליקציות מתוכו.</string>
+    <string name="not_on_same_wifi">המכשיר שלך אינו מצוי על גבי אותה רשת Wi-Fi כמו המאגר המקומי אשר הוספת עתה! נסה להצטרף לרשת זו: %s</string>
+    <string name="swap_join_same_wifi_desc">כדי לבצע הֶחְלֵף באמצעות Wi-Fi, וודא כי אתה נמצא על גבי אותה רשת. אם אין לך גישה לאותה הרשת, אחד מכם יכול ליצור Wi-Fi Hotspot.</string>
+    <string name="install_confirm_update">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:</string>
+    <string name="install_confirm_update_system">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. האפליקציה המעודכנת תקבל גישה אל:</string>
+    <string name="install_confirm_update_no_perms">האם ברצונך להתקין עדכון לאפליקציה קיימת זו? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
+    <string name="install_confirm_update_system_no_perms">האם ברצונך להתקין עדכון לאפליקציה מובנית (קרי, built-in)? המידע הקיים שלך לא יאבד. זו לא מצריכה שום גישה מיוחדת.</string>
+    <string name="update_interval_zero">אין עדכוני רשימת אפליקציה אוטומטיים</string>
+	</resources>

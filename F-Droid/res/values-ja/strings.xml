@@ -314,4 +314,7 @@
     <string name="Time">時間</string>
     <string name="Writing">文書</string>
 
-    </resources>
+    <string name="unstable_updates">非安定版の更新</string>
+	<string name="unstable_updates_summary">非安定版への更新を提案します</string>
+	<string name="tab_installed_apps">ｲﾝｽﾄｰﾙ済</string>
+	</resources>

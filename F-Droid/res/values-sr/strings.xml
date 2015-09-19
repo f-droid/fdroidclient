@@ -293,4 +293,11 @@
     <string name="system_install_question_lollipop">Желите ли да инсталирате повлашћени Ф-дроид?\nОво траје до 10 секунди и ваш уређај ће након тога поново да се покрене.</string>
     <string name="empty_can_update_app_list">Све апликације су ажурне.\n\nЧеститке! Све ваше апликације су ажурне (или ваше ризнице нису ажуриране).</string>
 
+    <string name="swap_people_nearby">Људи у близини</string>
+    <string name="swap_scanning_for_peers">Тражим људе у близини…</string>
+    <string name="empty_installed_app_list">Нема инсталираних апликација.\n\nНа вашем уређају има апликација, али нису доступне на Ф-дроиду. Ово је можда зато што требате да ажурирате ваше ризнице, или ваших апликација у ствари нема у ризницама.</string>
+    <string name="empty_available_app_list">Нема апликација у овој категорији.\n\nИзаберите другу категорију или ажурирајте ваше ризнице да бисте добили свеж списак апликација.</string>
+    <string name="swap_join_this_hotspot">Помозите пријатељу да се придружи вашем хотспоту</string>
+    <string name="swap_cant_find_peers">Не можете да нађете кога тражите?</string>
+    <string name="swap_attempt_install">Покушај да инсталираш</string>
     </resources>

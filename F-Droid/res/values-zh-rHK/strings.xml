@@ -242,4 +242,7 @@
     <string name="install_confirm_update">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system">您想更新此內置的應用程式嗎？您不會失去現有的數據。已更新的程式需要以下的存取權：</string>
     <string name="install_confirm_update_system_no_perms">您想更新此應用程式嗎？您不會失去現有的數據。已更新的程式不需要任何特別的存取權。</string>
+    <string name="update_notification_more">還有 +%1$d 個…</string>
+	<string name="next">下一步</string>
+	<string name="minsdk_up_to_maxsdk">%1$s 至 %2$s</string>
     </resources>
