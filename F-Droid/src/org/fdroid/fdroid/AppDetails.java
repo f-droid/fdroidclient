@@ -1089,12 +1089,34 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             updateViews(getView());
         }
 
+        // The HTML formatter adds "\n\n" at the end of every paragraph. This
+        // is desired between paragraphs, but not at the end of the whole
+        // string as it adds unwanted spacing at the end of the TextView.
+        // Remove all trailing newlines.
+        // Use this function instead of a trim() as that would require
+        // converting to String and thus losing formatting (e.g. bold).
+        private static CharSequence trimNewlines(CharSequence s) {
+            if (s == null || s.length() < 1) {
+                return s;
+            }
+            int i;
+            for (i = s.length()-1; i >= 0; i--) {
+                if (s.charAt(i) != '\n') {
+                    break;
+                }
+            }
+            if (i == s.length()-1) {
+                return s;
+            }
+            return s.subSequence(0, i);
+        }
+
         private void setupView(final View view) {
             // Expandable description
             final TextView description = (TextView) view.findViewById(R.id.description);
             final Spanned desc = Html.fromHtml(getApp().description, null, new Utils.HtmlTagHandler());
             description.setMovementMethod(SafeLinkMovementMethod.getInstance(getActivity()));
-            description.setText(desc.subSequence(0, desc.length() - 2));
+            description.setText(trimNewlines(desc));
             final ImageView view_more_description = (ImageView) view.findViewById(R.id.view_more_description);
             description.post(new Runnable() {
                 @Override
