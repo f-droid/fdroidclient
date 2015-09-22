@@ -7,12 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.compat.LayoutCompat;
-import org.fdroid.fdroid.compat.SwitchCompat;
 import org.fdroid.fdroid.data.Repo;
 
 public class RepoAdapter extends CursorAdapter {
@@ -20,8 +17,6 @@ public class RepoAdapter extends CursorAdapter {
     public interface EnabledListener {
         void onSetEnabled(Repo repo, boolean isEnabled);
     }
-
-    private static final int SWITCH_ID = 10000;
 
     private final LayoutInflater inflater;
 
@@ -54,14 +49,13 @@ public class RepoAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         View view = inflater.inflate(R.layout.repo_item, parent, false);
-        CompoundButton switchView = addSwitchToView(view, context);
-        setupView(cursor, view, switchView);
+        setupView(cursor, view, (CompoundButton) view.findViewById(R.id.repo_switch));
         return view;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        CompoundButton switchView = (CompoundButton)view.findViewById(SWITCH_ID);
+        CompoundButton switchView = (CompoundButton) view.findViewById(R.id.repo_switch);
 
         // Remove old listener (because we are reusing this view, we don't want
         // to invoke the listener for the last repo to use it - particularly
@@ -71,9 +65,7 @@ public class RepoAdapter extends CursorAdapter {
         setupView(cursor, view, switchView);
     }
 
-
     private void setupView(Cursor cursor, View view, CompoundButton switchView) {
-
         final Repo repo = new Repo(cursor);
 
         switchView.setChecked(repo.inuse);
@@ -91,9 +83,6 @@ public class RepoAdapter extends CursorAdapter {
 
         TextView nameView = (TextView)view.findViewById(R.id.repo_name);
         nameView.setText(repo.getName());
-        RelativeLayout.LayoutParams nameViewLayout =
-                (RelativeLayout.LayoutParams)nameView.getLayoutParams();
-        nameViewLayout.addRule(LayoutCompat.RelativeLayout.START_OF, switchView.getId());
 
         TextView signedView = (TextView) view.findViewById(R.id.repo_unsigned);
         if (repo.isSigned()) {
@@ -107,20 +96,5 @@ public class RepoAdapter extends CursorAdapter {
             signedView.setTextColor(view.getResources().getColor(R.color.unsigned));
             signedView.setVisibility(View.VISIBLE);
         }
-    }
-
-    private CompoundButton addSwitchToView(View parent, Context context) {
-        SwitchCompat switchBuilder = SwitchCompat.create(context);
-        CompoundButton switchView = switchBuilder.createSwitch();
-        switchView.setId(SWITCH_ID);
-        RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        layout.addRule(LayoutCompat.RelativeLayout.ALIGN_PARENT_END);
-        layout.addRule(RelativeLayout.CENTER_VERTICAL);
-        switchView.setLayoutParams(layout);
-        ((RelativeLayout)parent).addView(switchView);
-        return switchView;
     }
 }
