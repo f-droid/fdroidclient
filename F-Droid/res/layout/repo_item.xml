@@ -12,15 +12,6 @@
      http://syedasaraahmed.wordpress.com/2012/10/03/android-onitemclicklistener-not-responding-clickable-rowitem-of-custom-listview/
     -->
 
-	<ImageView
-		android:id="@+id/img"
-		android:contentDescription="@string/repo_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-		android:layout_alignParentStart="true"
-		/>
-
     <TextView android:id="@+id/repo_name"
         android:textSize="21sp"
         android:textStyle="bold"
@@ -28,8 +19,6 @@
         android:ellipsize="marquee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/img"
-        android:layout_toEndOf="@id/img"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
