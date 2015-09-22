@@ -53,7 +53,7 @@ public class RepoAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        View view = inflater.inflate(R.layout.repo_item, null);
+        View view = inflater.inflate(R.layout.repo_item, parent, false);
         CompoundButton switchView = addSwitchToView(view, context);
         setupView(cursor, view, switchView);
         return view;
@@ -95,11 +95,9 @@ public class RepoAdapter extends CursorAdapter {
                 (RelativeLayout.LayoutParams)nameView.getLayoutParams();
         nameViewLayout.addRule(LayoutCompat.RelativeLayout.START_OF, switchView.getId());
 
-        // If we set the signed view to GONE instead of INVISIBLE, then the
-        // height of each list item varies.
         TextView signedView = (TextView) view.findViewById(R.id.repo_unsigned);
         if (repo.isSigned()) {
-            signedView.setVisibility(View.INVISIBLE);
+            signedView.setVisibility(View.GONE);
         } else if (repo.isSignedButUnverified()) {
             signedView.setText(R.string.unverified);
             signedView.setTextColor(view.getResources().getColor(R.color.unverified));
