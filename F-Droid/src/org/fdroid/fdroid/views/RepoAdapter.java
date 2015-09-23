@@ -84,17 +84,17 @@ public class RepoAdapter extends CursorAdapter {
         TextView nameView = (TextView)view.findViewById(R.id.repo_name);
         nameView.setText(repo.getName());
 
-        TextView signedView = (TextView) view.findViewById(R.id.repo_unsigned);
+        View unsignedView = view.findViewById(R.id.repo_unsigned);
+        View unverifiedView = view.findViewById(R.id.repo_unverified);
         if (repo.isSigned()) {
-            signedView.setVisibility(View.GONE);
+            unsignedView.setVisibility(View.GONE);
+            unverifiedView.setVisibility(View.GONE);
         } else if (repo.isSignedButUnverified()) {
-            signedView.setText(R.string.unverified);
-            signedView.setTextColor(view.getResources().getColor(R.color.unverified));
-            signedView.setVisibility(View.VISIBLE);
+            unsignedView.setVisibility(View.GONE);
+            unverifiedView.setVisibility(View.VISIBLE);
         } else {
-            signedView.setText(R.string.unsigned);
-            signedView.setTextColor(view.getResources().getColor(R.color.unsigned));
-            signedView.setVisibility(View.VISIBLE);
+            unsignedView.setVisibility(View.VISIBLE);
+            unverifiedView.setVisibility(View.GONE);
         }
     }
 }

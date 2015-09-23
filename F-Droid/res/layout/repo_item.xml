@@ -31,6 +31,17 @@
             android:ellipsize="marquee"/>
 
         <TextView
+            android:id="@+id/repo_unverified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|start"
+            android:text="@string/unverified"
+            android:textSize="14sp"
+            android:textColor="@color/unverified"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+        <TextView
             android:id="@+id/repo_unsigned"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
