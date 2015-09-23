@@ -23,7 +23,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.net.Uri;
@@ -32,7 +31,6 @@ import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
@@ -45,7 +43,6 @@ import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -62,7 +59,6 @@ import org.apache.http.client.methods.HttpHead;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.fdroid.fdroid.FDroid;
 import org.fdroid.fdroid.FDroidApp;
-import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.UpdateService;
 import org.fdroid.fdroid.Utils;
@@ -76,7 +72,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Date;
 import java.util.Locale;
 
 public class ManageReposActivity extends ActionBarActivity {
@@ -647,6 +642,8 @@ public class ManageReposActivity extends ActionBarActivity {
     public static class RepoListFragment extends ListFragment
             implements LoaderManager.LoaderCallbacks<Cursor>, RepoAdapter.EnabledListener {
 
+        private RepoAdapter repoAdapter;
+
         @Override
         public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
             Uri uri = RepoProvider.allExceptSwapUri();
@@ -704,58 +701,16 @@ public class ManageReposActivity extends ActionBarActivity {
             }
         }
 
-        private RepoAdapter repoAdapter;
-
-        private View createHeaderView() {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            TextView textLastUpdate = new TextView(getActivity());
-            long lastUpdate = prefs.getLong(Preferences.PREF_UPD_LAST, 0);
-            String lastUpdateCheck;
-            if (lastUpdate == 0) {
-                lastUpdateCheck = getString(R.string.never);
-            } else {
-                Date d = new Date(lastUpdate);
-                lastUpdateCheck = DateFormat.getDateFormat(getActivity()).format(d) +
-                        " " + DateFormat.getTimeFormat(getActivity()).format(d);
-            }
-            textLastUpdate.setText(getString(R.string.last_update_check, lastUpdateCheck));
-
-            int sidePadding = (int) getResources().getDimension(R.dimen.padding_side);
-            int topPadding = (int) getResources().getDimension(R.dimen.padding_top);
-
-            textLastUpdate.setPadding(sidePadding, topPadding, sidePadding, topPadding);
-            return textLastUpdate;
-        }
-
-        @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-
-            if (getListAdapter() == null) {
-                /*
-                 * Can't do this in the onCreate view, because "onCreateView"
-                 * which returns the list view is "called between onCreate and
-                 * onActivityCreated" according to the docs.
-                 */
-                getListView().addHeaderView(createHeaderView(), null, false);
-
-                /*
-                 * This could go in onCreate (and used to) but it needs to be
-                 * called after addHeaderView, which can only be called after
-                 * onCreate...
-                 */
-                repoAdapter = new RepoAdapter(getActivity(), null);
-                repoAdapter.setEnabledListener(this);
-                setListAdapter(repoAdapter);
-            }
-        }
-
         @Override
         public void onCreate(Bundle savedInstanceState) {
-
             super.onCreate(savedInstanceState);
+
             setRetainInstance(true);
             setHasOptionsMenu(true);
+
+            repoAdapter = new RepoAdapter(getActivity(), null);
+            repoAdapter.setEnabledListener(this);
+            setListAdapter(repoAdapter);
         }
 
         @Override
