@@ -538,6 +538,9 @@ public class ManageReposActivity extends ActionBarActivity {
          * slashes in the path and replaces them with one. Finally, it removes trailing slashes.
          */
         private String normalizeUrl(String urlString) throws URISyntaxException {
+            if (urlString == null) {
+                return null;
+            }
             URI uri = new URI(urlString);
             if (!uri.isAbsolute()) {
                 throw new URISyntaxException(urlString, "Must provide an absolute URI for repositories");
