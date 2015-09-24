@@ -22,17 +22,15 @@ if ! git ls-remote --exit-code $REMOTE >/dev/null 2>/dev/null; then
 	exit 1
 fi
 
-files=$(find . -wholename '*/values-*/strings.xml')
-
 ref="${REMOTE}/${REMOTE_BRANCH}"
-diff="HEAD..$ref -- $files"
+diff="HEAD..$ref -- */values-*/strings.xml"
 
 authors=$(git log --format="%s %an" $diff | \
 	sed 's/Translated using Weblate (\(.*\)) \(.*\)/\2||\1/' | sort -f -u | column -s '||' -t)
 
 git diff $diff | git apply
 
-git add $files
+git add */values-*/strings.xml
 
 git commit --author "$AUTHOR" -m "Pull translation updates from Weblate
 
