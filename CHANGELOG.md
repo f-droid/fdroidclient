@@ -21,6 +21,10 @@
 
 * Translation updates
 
+### 0.96.1 (2015-09-24)
+
+* Fix crash when updating repos on Android 2.3.7 or older
+
 ### 0.96 (2015-09-03)
 
 * Move the repo index update to a notification
