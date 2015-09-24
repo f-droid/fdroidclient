@@ -32,7 +32,7 @@
         tools:src="@drawable/ic_launcher"
         tools:ignore="ContentDescription" />
 
-    <!-- Suppress InconsistentLayout because the lower API levels use a checkbox rather than this -->p
+    <!-- Suppress InconsistentLayout because the lower API levels use a checkbox rather than this -->
     <ImageView
         android:id="@+id/checked"
         android:layout_width="32dip"
