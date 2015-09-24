@@ -8,13 +8,11 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.annotation.StringRes;
 import android.support.v4.app.NotificationCompat;
 
 import org.fdroid.fdroid.AppDetails;
 import org.fdroid.fdroid.R;
-import org.fdroid.fdroid.net.AsyncDownloader;
 import org.fdroid.fdroid.net.AsyncDownloaderFromAndroid;
 
 /**
