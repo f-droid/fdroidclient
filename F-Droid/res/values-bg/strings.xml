@@ -265,4 +265,20 @@
 	<string name="copying_icons">Копиране иконите на приложенията в хранилището…</string>
 	<string name="app_incompatible">Несъвместимо</string>
 	<string name="all_other_repos_fine">Всички останали хранилища са наред.</string>
-        </resources>
+        <string name="system_permission_install_via_root">Инсталиране като привилегировано приложение</string>
+    <string name="system_install_first_time_notification_message">Натиснете за инсталиране на F-Droid като привилегировано приложение, тясно обвъзване с Android. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения автономно. Можете да направите инсталацията и по-късно от меню \"Предпочитания\".</string>
+    <string name="system_install_post_success">F-Droid е инсталиран като привилегировано приложение</string>
+    <string name="system_install_post_fail">Инсталирането като привилегировано приложение се провали</string>
+    <string name="system_install_question">Желаете ли F-Droid да бъде привилегировано приложение?\nИнсталцията отнема около 10 секунди.</string>
+    <string name="system_install_question_lollipop">Желаете ли F-Droid да бъде привилегировано приложение?\nИнсталцията отнема около 10 секунди след което устройството ще бъде рестартирано.</string>
+    <string name="system_uninstall">Желаете ли F-Droid да бъде деинсталиран като привилегировано приложение?</string>
+    <string name="system_uninstall_message">F-Droid ще бъде деинсталиран като привилегировано приложение.</string>
+    <string name="system_uninstall_button">Деинсталиране</string>
+
+    <string name="app_description">F-Droid предоставя каталог от FOSS (Free and Open Source Software - безплатен софтуер и с отворен код) приложения за Android. Клиентът позволява лесно преглеждане на наличните приложения, инсталиране и следене за актуализации.</string>
+    <string name="uninstall_system">Деинсталиране на привилегирован F-Droid</string>
+	<string name="uninstall_system_summary">Деинсталиране на допълното привилегировано F-Droid приложение</string>
+	<string name="root_access_denied_body">Или вашето устройство не е root-нато или на F-Droid е отказан root достъп.</string>
+    <string name="system_install_first_time_notification">Инсталиране като привилегировано приложение?</string>
+    <string name="system_install_post_success_message">F-Droid е инсталиран като привилегировано приложение. Това позволява на F-Droid да инсталира, актуализира и деинсталира приложения автономно.</string>
+    </resources>

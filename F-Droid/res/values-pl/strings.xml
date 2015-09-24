@@ -201,7 +201,7 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="status_inserting">Zapisywanie szczegółów aplikacji (%1$d%%)</string>
 	<string name="no_permissions">Brak wymaganych uprawnień.</string>
 	<string name="unsigned">Brak podpisu</string>
-    <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Musisz uważać pobierając aplikacje z nieznanych źródeł.</string>
+    <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Powinieneś być ostrożny podczas pobierania aplikacji z nieznanych źródeł.</string>
     <string name="repo_not_yet_updated">To repozytorium nie zostało jeszcze użyte. By zobaczyć jakie aplikacje posiada, musisz je zaktualizować.\n\nGdy je zaktualizujesz, tutaj zobaczysz jego opis i więcej informacji.</string>
     <string name="repo_disabled_notification">Wyłączono %1$a.\n\nAby ponownie móc instalować z niego aplikacje musisz je włączyć ponownie.</string>
     <string name="repo_added">Dodano repozytorium %1$s.</string>
@@ -316,4 +316,5 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="theme_dark">Ciemna</string>
 <string name="unstable_updates">Wersje niestabilne</string>
 	<string name="unstable_updates_summary">Sugeruj aktualizacje do niestabilnych wersji</string>
+	<string name="tab_installed_apps">Zainstalowana</string>
 	</resources>

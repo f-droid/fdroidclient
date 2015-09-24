@@ -130,4 +130,61 @@ konektatzen</string>
 	<string name="antinonfreedeplist">Aplikazio honek libreak ez diren beste aplikazio batzuk behar ditu</string>
 	<string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
 
+	<string name="local_repo_name">Izendatu zure tokiko biltegia</string>
+	<string name="local_repo_name_summary">Zure tokiko biltegiak iragarritako izenburua: %s</string>
+	<string name="local_repo_https_on">Erabili zifratu gabeko HTTPS:// konexioa tokiko biltegiarentzat</string>
+
+	<string name="tab_installed_apps">Instalatuta</string>
+	<string name="repo_exists_add_fingerprint">Biltegi hau ezarrita dago jada, honek gako informazio berria gehituko du.</string>
+	<string name="repo_exists_enable">Biltegi hau ezarrita dago jada, berretsi berrezarri nahi duzula.</string>
+	<string name="repo_exists_and_enabled">Sarrera biltegia ezarrita eta gaituta dago jada.</string>
+	<string name="repo_delete_to_overwrite">Biltegi hau ezabatu behar duzu gako ezberdin batekin sinatutako beste bat gehitu aurretik.</string>
+	<string name="invalid_url">URL hau baliogabea da.</string>
+	<string name="malformed_repo_uri">Ezikusi biltegi URI okerra: %s</string>
+
+	<string name="expert_on">Bistaratu informazio eta ezarpen gehigarriak</string>
+
+	<string name="show_incompat_versions_on">Bistaratu gailu honekin bateraezinak diren bertsioak</string>
+	<string name="ignoreTouch_on">Beti gehitu ukipen-pantaila behar duten aplikazioak</string>
+
+	<string name="local_repo">Tokiko biltegia</string>
+	<string name="deleting_repo">Uneko biltegia ezabatzen…</string>
+	<string name="adding_apks_format">%s biltegira gehitzen…</string>
+	<string name="icon">Ikonoa</string>
+	<string name="next">Hurrengoa</string>
+	<string name="skip">Saltatu</string>
+
+	<string name="proxy">Proxya</string>
+	<string name="enable_proxy_title">Gaitu HTTP Proxya</string>
+	<string name="interval_2w">Bi asterik behin</string>
+
+    <string name="interval_4h">4 ordurik behin</string>
+    <string name="downloading">Deskargatzen…</string>
+
+    <string name="interval_1w">Astero</string>
+    <string name="interval_1h">Orduro</string>
+    <string name="interval_never">Inoiz ez</string>
+    <string name="interval_12h">12 ordurik behin</string>
+    <string name="interval_1d">Egunero</string>
+    <string name="tap_to_install">Deskarga burutu da, ukitu instalatzeko</string>
+
+    <string name="newPerms">Berria</string>
+    <string name="allPerms">Guztiak</string>
+    <string name="privacyPerms">Pribatutasuna</string>
+    <string name="perms_new_perm_prefix">"Berria: "</string>
+    <string name="swap_attempt_install">Saiatu instalatzen</string>
+    <string name="loading">Kargatzen…</string>
+    <string name="swap_connecting">Konektatzen</string>
+    <string name="swap_wifi_device_name">Gailuaren izena</string>
+    <string name="writing_index_jar">Sinatutako aurkibide fitxategia idazten (index.jar)…</string>
+	<string name="failed_to_create_index">Ezin izan da aurkibide fitxategia sortu!</string>
+	<string name="linking_apks">APK fitxategiak biltegira lotzen…</string>
+	<string name="copying_icons">Aplikazioen ikonoak biltegira kopiatzen…</string>
+	<string name="proxy_host">Proxy ostalaria</string>
+	<string name="enable_proxy_summary">Konfiguratu HTTP Proxya sare eskari guztientzat</string>
+	<string name="update_notification_title">Biltegiak eguneratzen</string>
+	<string name="status_inserting">Aplikazioaren xehetasunak gordetzen (%1$d%%)</string>
+	<string name="repos_unchanged">Biltegi guztiak egunean daude</string>
+        <string name="all_other_repos_fine">Beste biltegi guztiek ez dute errorerik sortu.</string>
+        <string name="global_error_updating_repos">Errorea eguneratzean: %s</string>
 	</resources>

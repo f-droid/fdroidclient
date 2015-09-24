@@ -207,7 +207,7 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="uninstall_update_confirm">¿Quies trocar esta aplicación pola versión de fábrica?</string>
     <string name="perm_costs_money">Quiciabes esto te cueste perres</string>
     <string name="loading">Cargando…</string>
-    <string name="swap_cant_send_no_bluetooth">Nun pudo unviase F-droid porque\'l Bluetooth nun ta disponible nesti preséu.</string>
+    <string name="swap_cant_send_no_bluetooth">Nun pue unviase F-droid porque\'l Bluetooth nun ta disponible nesti preséu.</string>
     <string name="swap_connecting">Coneutando</string>
     <string name="swap_cant_find_peers">¿Nun pues alcontrar a quien tas guetando?</string>
     <string name="swap_send_fdroid">Unviar F-droid</string>
