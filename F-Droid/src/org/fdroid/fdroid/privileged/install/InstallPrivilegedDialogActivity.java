@@ -141,7 +141,7 @@ public class InstallPrivilegedDialogActivity extends FragmentActivity {
                                     .setSmallIcon(R.drawable.ic_stat_notify)
                                     .setContentTitle(context.getString(R.string.system_install_first_time_notification))
                                     .setContentText(context.getString(R.string.system_install_first_time_notification_message_short))
-                                    .setDefaults(Notification.DEFAULT_ALL)
+                                    .setDefaults(Notification.DEFAULT_LIGHTS)
                                     .setAutoCancel(true)
                                     /*
                                      * Sets the big view "big text" style and supplies the
