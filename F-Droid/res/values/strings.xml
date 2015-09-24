@@ -344,6 +344,7 @@
     <string name="uninstall_update_confirm">Do you want to replace this app with the factory version?</string>
     <string name="uninstall_confirm">Do you want to uninstall this app?</string>
     <string name="tap_to_install">Download completed, tap to install</string>
+    <string name="download_error">Download unsuccessful</string>
 
     <string name="perms_new_perm_prefix">New: </string>
     <string name="perms_description_app">Provided by %1$s.</string>
