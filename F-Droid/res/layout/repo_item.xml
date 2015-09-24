@@ -4,7 +4,8 @@
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="8dp"
+    android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+    android:paddingRight="?attr/listPreferredItemPaddingRight"
     android:descendantFocusability="blocksDescendants">
     <!--
      descendantFocusability is here because if you have a child that responds
@@ -25,8 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|start"
-            android:textSize="21sp"
-            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceListItem"
             android:singleLine="true"
             android:ellipsize="marquee"/>
 
