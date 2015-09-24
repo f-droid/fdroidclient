@@ -345,7 +345,7 @@ public class RepoDetailsActivity extends ActionBarActivity {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.repo_confirm_delete_title)
                 .setMessage(R.string.repo_confirm_delete_body)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         RepoProvider.Helper.remove(getApplicationContext(), repoId);
