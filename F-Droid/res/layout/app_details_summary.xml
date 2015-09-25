@@ -214,18 +214,6 @@ Changelog" />
                 tools:text="@string/menu_litecoin" />
 
             <TextView
-                android:id="@+id/dogecoin"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/ic_dogecoin"
-                android:drawablePadding="4dp"
-                android:drawableStart="@drawable/ic_dogecoin"
-                android:gravity="center_vertical"
-                android:paddingTop="4dp"
-                android:text="@string/menu_dogecoin"
-                tools:text="@string/menu_dogecoin" />
-
-            <TextView
                 android:id="@+id/flattr"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
