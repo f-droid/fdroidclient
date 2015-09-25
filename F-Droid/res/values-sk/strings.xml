@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
   <string name="searchres_napps">Nájdené aplikácie (%1$d ks) zodpovedajúce \'%2$s\':</string>
   <string name="searchres_oneapp">Nájdená jedna aplikácia zodpovedajúca \'%s\':</string>
@@ -10,16 +10,16 @@
   <string name="delete">Vymazať</string>
   <string name="enable_nfc_send">Zapnúť NFC odoslanie…</string>
   <string name="cache_downloaded">Vyr. pamäť aplikácií</string>
-  <string name="cache_downloaded_on">Nechať stiahnuté apk súbory na SD karte</string>
+  <string name="cache_downloaded_on">Ponechať stiahnuté apk súbory na v zariadení</string>
   <string name="updates">Aktualizácie</string>
   <string name="other">Iné</string>
   <string name="last_update_check">Posledný sken: %s</string>
-  <string name="never">nikdy</string>
+  <string name="never">Nikdy</string>
   <string name="update_interval">Interval automat. aktualizácií</string>
   <string name="update_interval_zero">Automaticky neobnovovať zoznam</string>
-  <string name="automatic_scan_wifi">Iba cez wifi</string>
-  <string name="automatic_scan_wifi_on">Automaticky obnoviť zoznam iba cez wifi</string>
-  <string name="notify">Oznámiť</string>
+  <string name="automatic_scan_wifi">Iba cez Wi-Fi</string>
+  <string name="automatic_scan_wifi_on">Automaticky obnoviť zoznam iba cez Wi-Fi</string>
+  <string name="notify">Oznamovanie aktualizácií</string>
   <string name="notify_on">Upozorniť na dostupnosť aktualizácií</string>
   <string name="update_history">História aktualizácií</string>
   <string name="update_history_summ">Počet dní, kedy sú aplikácie brané ako nové alebo nedávne: %s</string>
@@ -31,13 +31,13 @@
   <string name="local_repo_https_on">Použiť zašifrované HTTPS:// pripojenie pre miestne repo</string>
   <string name="search_results">Výsledky hľadania</string>
   <string name="app_details">Detaily aplikácie</string>
-  <string name="no_such_app">Taká aplikácia sa nenašla</string>
+  <string name="no_such_app">Aplikácia sa nenašla.</string>
   <string name="about_title">O F-Droide</string>
   <string name="about_desc">Pôvodne založený na Aptoide.
 Vydaný pod licenciou
 		GNU GPLv3.</string>
   <string name="about_site">Webstránka:</string>
-  <string name="about_mail">Email:</string>
+  <string name="about_mail">E-Mail:</string>
   <string name="about_version">Verzia:</string>
   <string name="app_installed">Nainštalované</string>
   <string name="app_not_installed">Nie je nainštalované</string>
@@ -67,7 +67,7 @@ Vydaný pod licenciou
   <string name="malformed_repo_uri">Ignorujem chybné URI(adresu) repa: %s</string>
   <string name="menu_update_repo">Aktualizovať repá</string>
   <string name="menu_manage">Repozitáre</string>
-  <string name="menu_send_apk_bt">Poslať FDroid.apk cez bluetooth</string>
+  <string name="menu_send_apk_bt">Poslať FDroid cez bluetooth</string>
   <string name="menu_preferences">Voľby</string>
   <string name="menu_about">O</string>
   <string name="menu_search">Hľadať</string>
@@ -85,7 +85,7 @@ Vydaný pod licenciou
   <string name="menu_donate">Darovať peniaze</string>
   <string name="details_installed">Verzia %s nainštalovaná</string>
   <string name="details_notinstalled">Nie je nainštalované</string>
-  <string name="corrupt_download">Stiahnutý súbor je poškodený</string>
+  <string name="corrupt_download">Stiahnutý súbor je poškodený.</string>
   <string name="antiadslist">Táto aplikácia obsahuje reklamy</string>
   <string name="antitracklist">Táto aplikácia zaznamenáva a hlási vaše aktivity</string>
   <string name="antinonfreeadlist">Táto aplikácia propaguje neslobodné doplnky</string>
@@ -93,13 +93,13 @@ Vydaný pod licenciou
   <string name="antinonfreedeplist">Táto aplikácia závisí na iných neslobodných aplikáciách</string>
   <string name="antiupstreamnonfreelist">Originálny zdrojový kód nie je úplne slobodný</string>
   <string name="display">Zobraziť</string>
-  <string name="expert">Expert</string>
+  <string name="expert">Expert mód</string>
   <string name="expert_on">Ukázať extra info a zapnúť extra nastavenia</string>
   <string name="search_hint">Hľadať aplikácie</string>
   <string name="appcompatibility">Kompatibilita aplikácií</string>
   <string name="show_incompat_versions">Nekompatibilné verzie</string>
   <string name="show_incompat_versions_on">Zobraziť verzie nekompatibilné so zariadením</string>
-  <string name="rooted">Root</string>
+  <string name="rooted">Ignorovať root</string>
   <string name="rooted_on">Nezašediť aplikácie vyžadujúce práva root.</string>
   <string name="ignoreTouch">Ignorovať dotykovú obrazovku</string>
   <string name="ignoreTouch_on">Vždy zahrnúť aplikácie vyžadujúce dotykovú obrazovku</string>
@@ -115,7 +115,7 @@ Vydaný pod licenciou
   <string name="failed_to_create_index">Nepodarilo sa vytvoriť index repa!</string>
   <string name="linking_apks">Odkazujeme súbory APK do repa…</string>
   <string name="copying_icons">Kopírujeme ikony do repa…</string>
-  <string name="icon">ikona</string>
+  <string name="icon">Ikona</string>
   <string name="next">Ďalej</string>
   <string name="skip">Preskočiť</string>
   <string name="proxy">Proxy</string>
@@ -133,10 +133,10 @@ Vydaný pod licenciou
   <string name="status_inserting">Ukladám detaily aplikácie (%1$d%%)</string>
   <string name="repos_unchanged">Repozitáre nemajú aktualizácie balíkov</string>
   <string name="all_other_repos_fine">Ostatné repá nevytvorili chyby.</string>
-  <string name="global_error_updating_repos">Chyba počas aktualizácie:</string>
+  <string name="global_error_updating_repos">Chyba počas aktualizácie: %s</string>
   <string name="no_permissions">Nepoužívajú sa žiadne povolenia.</string>
   <string name="permissions_for_long">Povolenia pre verziu %s</string>
-  <string name="no_handler_app">Nemáte žiadne dostupné aplikácie, ktoré môžu spracovať %s</string>
+  <string name="no_handler_app">Nemáte žiadne dostupné aplikácie, ktoré môžu spracovať %s.</string>
   <string name="compactlayout">Úsporné rozloženie</string>
   <string name="compactlayout_on">Zobraziť menšie ikony</string>
   <string name="theme">Téma</string>
@@ -149,27 +149,17 @@ Vydaný pod licenciou
   <string name="repo_update">Aktualizovať</string>
   <string name="repo_name">Názov</string>
   <string name="unsigned_description">To znamená, že zoznam aplikácií nemohol byť overený. Buďte opatrný s aplikáciami z nepodpísaných indexov.</string>
-  <string name="repo_not_yet_updated">Tento repozitár ste ešte nepoužili.
-        Aby ste videli aplikácie, ktoré poskytuje, musíte ho aktualizovať.
-
-Po aktualizácii budú popisy a iné detaily dostupné tu.</string>
+  <string name="repo_not_yet_updated">Tento repozitár ste ešte nepoužili. Aby ste videli aplikácie, ktoré poskytuje, musíte ho aktualizovať. Po aktualizácii budú popisy a iné detaily dostupné tu.</string>
   <string name="unknown">Neznáme</string>
   <string name="repo_confirm_delete_title">Zmazať repozitár?</string>
-  <string name="repo_confirm_delete_body">Odstránenie repozitára znamená,
-       že aplikácie z neho už nebudú z F-Droidu prístupné.
-
-Poznámka: Všetky
-       predtým nainštalované aplikácie ostávajú v zariadení.</string>
-  <string name="repo_disabled_notification">Vypnuté \"%1$s\".
-
-Budete
-        musieť znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
-  <string name="repo_added">Uložené repo F-Droidu %1$s</string>
+  <string name="repo_confirm_delete_body">Odstránenie repozitára znamená, že aplikácie z neho už nebudú z F-Droidu prístupné. Poznámka: Všetky predtým nainštalované aplikácie ostávajú v zariadení.</string>
+  <string name="repo_disabled_notification">Vypnuté \"%1$s\". Budete musieť znovu povoliť tento repozitár pre inštaláciu aplikácií z neho.</string>
+  <string name="repo_added">Uložený F-Droid repozitár %1$s.</string>
   <string name="repo_searching_address">Hľadá sa repo F-Droidu na %1$s</string>
   <string name="minsdk_or_later">%s alebo neskôr</string>
-  <string name="up_to_maxsdk">do %s</string>
+  <string name="up_to_maxsdk">Do %s</string>
   <string name="minsdk_up_to_maxsdk">%1$s do %2$s</string>
-  <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej WiFi ako miestne repo, čo ste práve pridali! Napojte sa na túto sieť: %s</string>
+  <string name="not_on_same_wifi">Vaše zariadenie nie je na rovnakej Wi-Fi ako miestny repozitár, čo ste práve pridali! Pripojte sa na túto sieť: %s</string>
   <string name="requires_features">Vyžaduje: %1$s</string>
   <string name="app_icon">Ikona aplikácie</string>
   <string name="repo_icon">Ikona repa</string>
@@ -199,4 +189,43 @@ Budete
   <string name="open_qr_code_scanner">Otvoriť skener QR kódov</string>
   <string name="swap_welcome">Víta vás F-Droid!</string>
   <string name="swap_confirm_connect">Chcete získať aplikácie z %1$s hneď?</string>
-</resources>
+<string name="app_name">F-Droid</string>
+
+	<string name="unstable_updates">Nestabilné aktualizácie</string>
+	<string name="unstable_updates_summary">Navrhnúť aktualizácie na nestabilné verzie</string>
+	<string name="uninstall_system">Odinštalovať privilegovaný F-Droid</string>
+	<string name="uninstall_system_summary">Odinštalovať ďalšiu privilegovanú F-Droid aplikáciu</string>
+	<string name="about_source">Zdrojáky:</string>
+	<string name="app_incompatible">Nekompatibilné</string>
+	<string name="links">Linky</string>
+	<string name="content_description_view_more">Zobraziť viac</string>
+
+	<string name="back">Späť</string>
+	<string name="tab_installed_apps">Nainštalované</string>
+	<string name="update_notification_more">+%1$d viac…</string>
+	<string name="bluetooth_activity_not_found">Vyberte spôsob posielania cez Bluetooth.</string>
+	<string name="choose_bt_send">Vyberte spôsob posielania cez Bluetooth</string>
+	<string name="repo_exists_and_enabled">Repozitár je už nastavený a povolený.</string>
+	<string name="bad_fingerprint">Zlý otlačok</string>
+	<string name="invalid_url">Nie je validná URL.</string>
+	<string name="menu_changelog">Changelog</string>
+	<string name="update_notification_title">Aktualizujem repozitáre</string>
+	<string name="status_processing_xml_percent">Spracuvávam %2$s / %3$s (%4$d%%) z %1$s</string>
+	<string name="pref_language">Jazyk</string>
+    <string name="pref_language_default">Prednastavené systémom</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Hotspot</string>
+
+    <string name="Connectivity">Pripojiteľnosť</string>
+    <string name="Graphics">Grafika</string>
+    <string name="Money">Financie</string>
+    <string name="Sports_Health">Šport &amp; Zdravie</string>
+    <string name="empty_can_update_app_list">Všetky aplikácie sú aktuálne.\n\nGratulujeme! Všetky vaše aplikácie sú aktuálne (alebo vaše repozitáre sú neaktuálne).</string>
+
+    <string name="install_error_title">Chyba pri inštalácií</string>
+    <string name="install_error_cannot_parse">Nastala chyba pri spracovávaní balíka</string>
+    <string name="uninstall_error_title">Chyba pri odinštalácií</string>
+    <string name="system_permission_install_via_root">Inštalovať privilegovanýý F-Droid</string>
+    <string name="system_install_first_time_notification">Inštalovať privilegovanýý F-Droid?</string>
+    </resources>

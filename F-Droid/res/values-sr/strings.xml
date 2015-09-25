@@ -13,12 +13,12 @@
   <string name="cache_downloaded_on">Чувај преузете пакете на СД картици</string>
   <string name="updates">Надоградње</string>
   <string name="other">Остало</string>
-  <string name="last_update_check">Ризница последњи пут скенирана: %s</string>
+  <string name="last_update_check">Последње ажурирање ризница: %s</string>
   <string name="never">никада</string>
   <string name="update_interval">Интервал аутоматског ажурирања</string>
   <string name="update_interval_zero">Без аутоматског ажурирања списка надоградњи</string>
   <string name="automatic_scan_wifi">Само на бежичној мрежи</string>
-  <string name="automatic_scan_wifi_on">Ажурирај списак апликација само на бежичној мрежи</string>
+  <string name="automatic_scan_wifi_on">Ажурирање списка апликација само на бежичној мрежи</string>
   <string name="notify">Обавештења</string>
   <string name="notify_on">Приказ обавештења о доступним надоградњама</string>
   <string name="update_history">Историјат надоградњи</string>
@@ -50,7 +50,7 @@
   <string name="enable">Омогући</string>
   <string name="add_key">Додај кључ</string>
   <string name="overwrite">Пребриши</string>
-  <string name="tab_available_apps">Доступно</string>
+  <string name="tab_available_apps">Доступне</string>
   <string name="tab_updates">Надоградње</string>
   <string name="one_update_available">1 надоградња је доступна.</string>
   <string name="many_updates_available">%d нових надоградњи је доступно.</string>
@@ -94,18 +94,18 @@
   <string name="antiupstreamnonfreelist">Изворни кôд није у потпуности слободан</string>
   <string name="display">Приказ</string>
   <string name="expert">Стручни режим</string>
-  <string name="expert_on">Прикажи додатне податке и омогући додатне поставке</string>
+  <string name="expert_on">Приказ додатних података и омогућење додатних поставки</string>
   <string name="search_hint">Претрага апликација</string>
   <string name="appcompatibility">Компатибилност апликација</string>
   <string name="show_incompat_versions">Некомпатибилна издања</string>
-  <string name="show_incompat_versions_on">Прикажи некомпатибилна издања апликације</string>
+  <string name="show_incompat_versions_on">Приказ некомпатибилних издања апликације</string>
   <string name="rooted">Игнориши корен</string>
-  <string name="rooted_on">Нормално прикажи апликације које захтевају корени приступ</string>
+  <string name="rooted_on">Нормалан приказ апликација које захтевају корени приступ</string>
   <string name="ignoreTouch">Игнориши додирни екран</string>
   <string name="ignoreTouch_on">Увек укључи апликације које захтевају додирни екран</string>
   <string name="category_all">Све</string>
-  <string name="category_whatsnew">Ново</string>
-  <string name="category_recentlyupdated">Недавно надограђено</string>
+  <string name="category_whatsnew">Нове</string>
+  <string name="category_recentlyupdated">Недавно надограђене</string>
   <string name="local_repo">Локална ризница</string>
   <string name="local_repo_running">Ф-дроид је спреман за размену</string>
   <string name="touch_to_configure_local_repo">Тапните за приказ детаља и да дозволите другима да размењују ваше апликације.</string>
@@ -120,11 +120,11 @@
   <string name="skip">Прескочи</string>
   <string name="proxy">Прокси</string>
   <string name="enable_proxy_title">Омогући ХТТП прокси</string>
-  <string name="enable_proxy_summary">Поставите ХТТП прокси за све мрежне захтеве</string>
+  <string name="enable_proxy_summary">ХТТП прокси за све мрежне захтеве</string>
   <string name="proxy_host">Домаћин проксија</string>
-  <string name="proxy_host_summary">Подесите домаћина вашег проксија (нпр. 127.0.0.1)</string>
+  <string name="proxy_host_summary">Домаћин вашег проксија (нпр. 127.0.0.1)</string>
   <string name="proxy_port">Порт проксија</string>
-  <string name="proxy_port_summary">Подесите порт вашег проксија (нпр. 8118)</string>
+  <string name="proxy_port_summary">Порт вашег проксија (нпр. 8118)</string>
   <string name="status_download">Преузимам\n%2$s / %3$s (%4$d%%) са\n%1$s</string>
   <string name="status_connecting_to_repo">Повезујем се са\n%1$s</string>
   <string name="status_checking_compatibility">Проверавам компатибилност апликација са вашим уређајем…</string>
@@ -132,11 +132,11 @@
   <string name="repos_unchanged">Ниједна ризница нема надоградњи пакета</string>
   <string name="all_other_repos_fine">Остале ризнице нису направиле грешку.</string>
   <string name="global_error_updating_repos">Грешка приликом ажурирања: %s</string>
-  <string name="no_permissions">Не захтевају се никакве дозволе.</string>
+  <string name="no_permissions">Не захтева никакве дозволе.</string>
   <string name="permissions_for_long">Дозволе за издање %s</string>
   <string name="no_handler_app">Немате инсталирану апликацију за %s.</string>
   <string name="compactlayout">Компактни распоред</string>
-  <string name="compactlayout_on">Прикажи иконе мање величине</string>
+  <string name="compactlayout_on">Приказ икона мање величине</string>
   <string name="theme">Тема</string>
   <string name="unsigned">Непотписана</string>
   <string name="unverified">Неоверена</string>
@@ -201,7 +201,7 @@
 	<string name="content_description_view_more">Прикажи више</string>
 
 	<string name="back">Назад</string>
-	<string name="tab_installed_apps">Инсталирана</string>
+	<string name="tab_installed_apps">Инсталиране</string>
 	<string name="update_notification_more">+још %1$d…</string>
 	<string name="bad_fingerprint">Лош отисак</string>
 	<string name="invalid_url">Ово није исправан УРЛ.</string>
@@ -216,7 +216,7 @@
 
     <string name="Connectivity">Повезивање</string>
     <string name="Graphics">Графика</string>
-    <string name="Money">Новац</string>
+    <string name="Money">Финансије</string>
     <string name="Sports_Health">Спорт и здравље</string>
     <string name="Theming">Теме</string>
     <string name="Time">Време</string>
@@ -300,4 +300,11 @@
     <string name="swap_join_this_hotspot">Помозите пријатељу да се придружи вашем хотспоту</string>
     <string name="swap_cant_find_peers">Не можете да нађете кога тражите?</string>
     <string name="swap_attempt_install">Покушај да инсталираш</string>
+    <string name="system_install_first_time_message">Чини се да имате корени приступ на вашем уређају. Сада можете да инсталирате повлашћени Ф-дроид, уско повезан са Андроид оперативним системом. Ово ће да омогући Ф-дроиду да сам инсталира, надограђује и уклања апликације.</string>
+    <string name="swap_nearby">Оближња размена</string>
+    <string name="swap_intro">Повежите се са људима у близини и размењујте апликације.</string>
+    <string name="swap_no_peers_nearby">Нисам нашао никога у близини за размену.</string>
+    <string name="download_error">Преузимање није успешно</string>
+
+    <string name="perms_description_app">Обезбеђује %1$s.</string>
     </resources>

@@ -317,4 +317,6 @@ Intregadu cun sa litzèntzia
 
     <string name="theme_light">Craru</string>
     <string name="theme_dark">Iscuru</string>
-</resources>
+<string name="download_error">Iscarrigamentu non resissidu</string>
+
+    </resources>

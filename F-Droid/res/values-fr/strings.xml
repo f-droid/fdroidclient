@@ -14,7 +14,7 @@
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
   <string name="last_update_check">Dernière analyse du dépôt: %s</string>
-  <string name="never">jamais</string>
+  <string name="never">Jamais</string>
   <string name="update_interval">Intervalle de mise à jour automatique</string>
   <string name="update_interval_zero">Pas de mise à jour automatique de la liste d\'applications</string>
   <string name="automatic_scan_wifi">Seulement par Wi-Fi</string>
@@ -31,7 +31,7 @@
   <string name="local_repo_https_on">Utiliser une connexion chiffrée HTTPS pour le dépôt local</string>
   <string name="search_results">Résultats de la recherche</string>
   <string name="app_details">Détails de l\'application</string>
-  <string name="no_such_app">Pas d\'application trouvée</string>
+  <string name="no_such_app">Pas d\'application trouvée.</string>
   <string name="about_title">À propos de F-Droid</string>
   <string name="about_desc">Initialement basée sur Aptoide.
 Publiée sous licence GNU GPLv3.</string>
@@ -69,7 +69,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="malformed_repo_uri">URI de dépôt malformé ignoré: %s</string>
   <string name="menu_update_repo">Mettre à jour les dépôts</string>
   <string name="menu_manage">Gestion de dépôts</string>
-  <string name="menu_send_apk_bt">Bluetooth FDroid.apk…</string>
+  <string name="menu_send_apk_bt">Partager F-Droid par Bluetooth</string>
   <string name="menu_preferences">Préférences</string>
   <string name="menu_about">À propos</string>
   <string name="menu_search">Rechercher</string>
@@ -87,7 +87,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="menu_donate">Faire un don</string>
   <string name="details_installed">Version %s installée</string>
   <string name="details_notinstalled">Non installée</string>
-  <string name="corrupt_download">Le fichier téléchargé est corrompu</string>
+  <string name="corrupt_download">Le fichier téléchargé est corrompu.</string>
   <string name="antiadslist">Cette application contient des publicités</string>
   <string name="antitracklist">Cette application épie et rapporte votre activité</string>
   <string name="antinonfreeadlist">Cette application promeut des extensions privatrices</string>
@@ -95,7 +95,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="antinonfreedeplist">Cette application dépend d\'autres applications non libres</string>
   <string name="antiupstreamnonfreelist">Le code source en amont n\'est pas entièrement libre</string>
   <string name="display">Affichage</string>
-  <string name="expert">Expert</string>
+  <string name="expert">Mode expert</string>
   <string name="expert_on">Afficher plus d\'infos et activer des paramètres supplémentaires</string>
   <string name="search_hint">Rechercher des applications</string>
   <string name="appcompatibility">Compatibilité des applications</string>
@@ -117,7 +117,7 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="failed_to_create_index">Échec à la création d\'un index de dépôt!</string>
   <string name="linking_apks">Création de liens pour les APKs dans le dépôt…</string>
   <string name="copying_icons">Copie des icônes des apps dans le dépôt…</string>
-  <string name="icon">icône</string>
+  <string name="icon">Icône</string>
   <string name="next">Suivant</string>
   <string name="skip">Passer</string>
   <string name="proxy">Proxy</string>
@@ -136,10 +136,10 @@ Publiée sous licence GNU GPLv3.</string>
   <string name="status_inserting">Sauvegarder les détails de l\'application (%1$d%%)</string>
   <string name="repos_unchanged">Aucun dépôt n\'a de mises à jour des paquets</string>
   <string name="all_other_repos_fine">Tous les autres dépôts n\'ont pas générés d\'erreurs.</string>
-  <string name="global_error_updating_repos">Erreur durant la mise à jour:</string>
+  <string name="global_error_updating_repos">Erreur durant la mise à jour : %s</string>
   <string name="no_permissions">Aucune autorisation n\'est utilisée.</string>
   <string name="permissions_for_long">Permissions pour la version %s</string>
-  <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s</string>
+  <string name="no_handler_app">Vous n\'avez aucune application installée pour gérer %s.</string>
   <string name="compactlayout">Affichage compact</string>
   <string name="compactlayout_on">Montrer les icônes à une taille plus petite</string>
   <string name="theme">Thème</string>
@@ -155,25 +155,18 @@ Publiée sous licence GNU GPLv3.</string>
         des applications n\'a pu être vérifiée. Vous
         devriez faire attention avec les
         applications téléchargées d\'indexes non signés.</string>
-  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé.
-        Pour voir la liste des applications qu\'il
-        offre, vous devez le mettre à jour.
-
-Une fois la mise à jour effectuée, la description 
-        et les autres détails seront affichés ici.</string>
+  <string name="repo_not_yet_updated">Ce dépôt n\'a pas encore été utilisé. Pour voir la liste des applications qu\'il offre, vous devez le mettre à jour. Une fois la mise à jour effectuée,
+\nla description et les autres détails seront affichés ici.</string>
   <string name="unknown">Inconnu</string>
   <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
-  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses apps ne seront plus disponibles via F-Droid.
-
-Note : toutes les apps précédemment installées vont rester sur votre système.</string>
+  <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications ne seront plus disponibles via F-Droid.
+\nNote : toutes les applications précédemment installées vont rester sur votre système.</string>
   <string name="repo_disabled_notification">« %1$s » a été désactivé.
-
-Vous devez
-        réactiver ce dépôt afin d\'installer ses applications.</string>
+\nVous devez réactiver ce dépôt afin d\'installer ses applications.</string>
   <string name="minsdk_or_later">%s ou plus récent</string>
-  <string name="up_to_maxsdk">jusqu\'à %s</string>
+  <string name="up_to_maxsdk">Jusqu\'à %s</string>
   <string name="minsdk_up_to_maxsdk">De %1$s à %2$s</string>
-  <string name="not_on_same_wifi">Votre appareil n\'est sur le même réseau Wi-Fi que le dépôt local que vous venez d\'ajouteru00A0! Essayez de rejoindre ce réseauu00A0: %s</string>
+  <string name="not_on_same_wifi">Votre appareil n\'est pas sur le même réseau Wi-Fi que le dépôt local que vous venez d\'ajouter ! Essayez de rejoindre ce réseau : %s</string>
   <string name="requires_features">Nécessiteu00A0: %1$s</string>
   <string name="app_icon">Icône de l\'application</string>
   <string name="repo_icon">Icône du dépôt</string>
@@ -194,7 +187,7 @@ Vous devez
   <string name="system_permission_denied_title">Permissions systèmes refusées</string>
   <string name="system_permission_denied_body">Cette option est seulement disponible quand F-Droid est installé comme application-système.</string>
   <string name="app_description">F-Droid est un catalogue installable de logiciels libres et open source pour le système Android. Le client permet une navigation facile, l\'installation, et garder une trace des mises à jour sur votre appareil.</string>
-  <string name="swap_join_same_wifi">Se connecter au même WiFi que votre ami</string>
+  <string name="swap_join_same_wifi">Se connecter au même Wi-Fi que votre ami</string>
   <string name="menu_swap">Échanger des apps</string>
   <string name="swap">Échanger des apps</string>
   <string name="swap_no_wifi_network">Pas encore de réseau</string>
@@ -204,4 +197,35 @@ Vous devez
   <string name="swap_confirm_connect">Voulez-vous recevoir des applications de %1$s maintenantu00A0?</string>
 <string name="app_name">F-Droid</string>
 
-	</resources>
+	<string name="unstable_updates">Mises à jour instables</string>
+	<string name="unstable_updates_summary">Suggérer les mises à jour instables</string>
+	<string name="uninstall_system">Désinstaller F-Droid privilégié</string>
+	<string name="about_source">Source :</string>
+	<string name="app_incompatible">Incompatible</string>
+	<string name="links">Liens</string>
+	<string name="content_description_view_more">Voir plus</string>
+
+	<string name="back">Retour</string>
+	<string name="tab_installed_apps">Installé</string>
+	<string name="bad_fingerprint">Mauvaise empreinte</string>
+	<string name="invalid_url">Ce n\'est pas une URL valide.</string>
+	<string name="menu_changelog">Journal des changements</string>
+	<string name="update_notification_title">Mise à jour des dépots</string>
+	<string name="pref_language">Langage</string>
+    <string name="pref_language_default">Langue du système</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_ap">Point d\'accès</string>
+
+    <string name="Connectivity">Connectivité</string>
+    <string name="Sports_Health">Sport et santé</string>
+    <string name="empty_available_app_list">Aucune applications dans cette catégorie.\n\nEssayer de sélectionner une autre catégorie ou mettez à jour vos dépots pour avoir une liste d\'applications récente.</string>
+    <string name="empty_can_update_app_list">Tout les applications sont à jour.\n\nFélicitation ! Toutes vos applications sont à jours (ou vos dépots ne le sont pas).</string>
+
+    <string name="install_error_title">Erreur d\'installation</string>
+    <string name="uninstall_error_title">Erreur de désinstallation</string>
+    <string name="system_install_first_time_notification_message_short">Touchez pour plus d\'informations.</string>
+    <string name="system_install_installing">Installation…</string>
+    <string name="system_install_uninstalling">Désinstallation…</string>
+    <string name="swap_nfc_description">Si votre ami a F-Droid et NFC d\'activés collez vos téléphones.</string>
+    </resources>
