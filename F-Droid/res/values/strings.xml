@@ -114,6 +114,10 @@
 	<string name="menu_source">Source Code</string>
 	<string name="menu_upgrade">Upgrade</string>
 	<string name="menu_donate">Donate</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
 
 	<string name="details_installed">Version %s installed</string>
 	<string name="details_notinstalled">Not installed</string>

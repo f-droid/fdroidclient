@@ -5,10 +5,6 @@
     <string name="source_link">https://gitlab.com/fdroid/fdroidclient</string>
     <string name="team_email">team@f-droid.org</string>
 
-    <string name="menu_bitcoin">Bitcoin</string>
-    <string name="menu_litecoin">Litecoin</string>
-    <string name="menu_flattr">Flattr</string>
-
     <string name="https">https://</string>
 
     <string-array name="updateIntervalValues">
