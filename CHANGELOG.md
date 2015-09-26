@@ -15,7 +15,10 @@
 
 * Add StrictMode to debug builds
 
-* Make the GitLab CI run the tests in an emulator as well as testing the build
+* Make the GitLab CI run the tests in an emulator
+
+* Use gradle-witness to ensure the reproducibility of the build with libraries
+  pulled from maven repositories
 
 * Switched to Weblate for translations
 
