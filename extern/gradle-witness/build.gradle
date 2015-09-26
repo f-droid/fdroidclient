@@ -1,0 +1,10 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
