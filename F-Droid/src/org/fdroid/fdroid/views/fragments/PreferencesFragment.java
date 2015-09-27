@@ -3,7 +3,6 @@ package org.fdroid.fdroid.views.fragments;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -21,7 +20,6 @@ import org.fdroid.fdroid.PreferencesActivity;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.installer.PrivilegedInstaller;
-import org.fdroid.fdroid.privileged.install.InstallPrivilegedDialogActivity;
 
 import java.util.Locale;
 
@@ -196,30 +194,25 @@ public class PreferencesFragment extends PreferenceFragment
                 final CheckBoxPreference pref = (CheckBoxPreference) preference;
 
                 if (pref.isChecked()) {
-                    if (PrivilegedInstaller.isAvailable(getActivity())) {
-                        // system-permission are granted, i.e. F-Droid is a system-app
+                    if (PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity())) {
+                        // privileged permission are granted, i.e. the extension is installed correctly
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, true);
                         editor.commit();
                         pref.setChecked(true);
                     } else {
-                        // system-permission not available
+                        // privileged permission not available
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, false);
                         editor.commit();
                         pref.setChecked(false);
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-                        alertBuilder.setTitle(R.string.system_permission_denied_title);
-                        String message = getActivity().getString(R.string.system_permission_denied_body) +
-                                "<br/><br/>";
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            message += getActivity().getString(R.string.system_install_question_lollipop);
-                        } else {
-                            message += getActivity().getString(R.string.system_install_question);
-                        }
+                        alertBuilder.setTitle(R.string.system_install_denied_title);
+                        String message = getActivity().getString(R.string.system_install_denied_body) +
+                                "<br/><br/>" + getActivity().getString(R.string.system_install_question);
                         alertBuilder.setMessage(Html.fromHtml(message));
-                        alertBuilder.setPositiveButton(R.string.system_permission_install_via_root, new DialogInterface.OnClickListener() {
+                        alertBuilder.setPositiveButton(R.string.system_install_button_open, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // Open details of F-Droid Privileged
@@ -244,7 +237,7 @@ public class PreferencesFragment extends PreferenceFragment
         });
     }
 
-    protected void initUninstallPrivilegedAppPreference() {
+    protected void initManagePrivilegedAppPreference() {
         Preference pref = findPreference(Preferences.PREF_UNINSTALL_PRIVILEGED_APP);
         pref.setPersistent(false);
 
@@ -252,9 +245,11 @@ public class PreferencesFragment extends PreferenceFragment
 
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Intent uninstallIntent = new Intent(getActivity(), InstallPrivilegedDialogActivity.class);
-                uninstallIntent.setAction(InstallPrivilegedDialogActivity.ACTION_UNINSTALL);
-                startActivity(uninstallIntent);
+                // Open details of F-Droid Privileged
+                Intent intent = new Intent(getActivity(), AppDetails.class);
+                intent.putExtra(AppDetails.EXTRA_APPID,
+                        PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+                startActivity(intent);
 
                 return true;
             }
@@ -284,7 +279,7 @@ public class PreferencesFragment extends PreferenceFragment
         }
 
         initPrivilegedInstallerPreference();
-        initUninstallPrivilegedAppPreference();
+        initManagePrivilegedAppPreference();
     }
 
     @Override

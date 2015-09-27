@@ -183,8 +183,8 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
   <string name="root_access_denied_title">Acceso «root» denegado</string>
   <string name="root_access_denied_body">El dispositivo Android no está «rooteado» o se ha denegado el acceso «root» para F-Droid.</string>
   <string name="update_all">Actualizar todo</string>
-  <string name="system_permission_denied_title">F-Droid con permisos de sistema no está disponible</string>
-  <string name="system_permission_denied_body">Esta opción sólo está disponible cuando F-Droid está instalado con permisos de sistema.</string>
+  <string name="system_install_denied_title">F-Droid con permisos de sistema no está disponible</string>
+  <string name="system_install_denied_body">Esta opción sólo está disponible cuando F-Droid está instalado con permisos de sistema.</string>
   <string name="app_description">F-Droid es un catálogo instalable de aplicaciones FOSS (Software libre y de Código Abierto) para la plataforma Android. El cliente hace que sea fácil navegar, instalar y mantener un registro de cambios en el dispositivo.</string>
   <string name="swap_nfc_description">Si tu amigo tiene F-Droid y NFC encendido, colocad los un teléfonos una contra el otro.</string>
   <string name="swap_join_same_wifi">Unirse a la misma Red Wi-Fi que tu amigo</string>

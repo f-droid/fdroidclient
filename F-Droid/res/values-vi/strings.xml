@@ -161,8 +161,8 @@
   <string name="root_access_denied_title">Bị từ chối quyền root</string>
   <string name="root_access_denied_body">Thiết bị của bạn chưa được root hoặc bạn đã từ chối quyền root của F-Droid.</string>
   <string name="update_all">Cập nhật tất cả</string>
-  <string name="system_permission_denied_title">Bị từ chối quyền hệ thống</string>
-  <string name="system_permission_denied_body">Chỉ có tuỳ chọn này khi F-Droid được cài làm ứng dụng hệ thống.</string>
+  <string name="system_install_denied_title">Bị từ chối quyền hệ thống</string>
+  <string name="system_install_denied_body">Chỉ có tuỳ chọn này khi F-Droid được cài làm ứng dụng hệ thống.</string>
   <string name="app_description">F-Droid là một kho ứng dụng FOSS (tự do và mã nguồn mở) cài đặt được trên nền tảng Android. Ứng dụng F-Droid giúp bạn tìm kiếm, cài đặt và theo dõi cập nhật dễ dàng hơn.</string>
   <string name="swap_nfc_description">Nếu bạn của bạn có NFC, hãy chạm hai điện thoại vào nhau.</string>
   <string name="swap_join_same_wifi">Vào cùng một mạng Wi-Fi với bạn của bạn</string>

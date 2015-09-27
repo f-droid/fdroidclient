@@ -25,7 +25,7 @@ import android.content.Intent;
 
 import org.fdroid.fdroid.Preferences;
 
-public class InstallPrivilegedBootReceiver extends BroadcastReceiver {
+public class InstallExtensionBootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -33,8 +33,8 @@ public class InstallPrivilegedBootReceiver extends BroadcastReceiver {
             if (Preferences.get().isPostPrivilegedInstall()) {
                 Preferences.get().setPostPrivilegedInstall(false);
 
-                Intent postInstall = new Intent(context.getApplicationContext(), InstallPrivilegedDialogActivity.class);
-                postInstall.setAction(InstallPrivilegedDialogActivity.ACTION_POST_INSTALL);
+                Intent postInstall = new Intent(context.getApplicationContext(), InstallExtensionDialogActivity.class);
+                postInstall.setAction(InstallExtensionDialogActivity.ACTION_POST_INSTALL);
                 postInstall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(postInstall);
             }

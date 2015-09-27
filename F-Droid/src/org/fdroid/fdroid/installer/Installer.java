@@ -27,7 +27,7 @@ import android.util.Log;
 
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.Utils;
-import org.fdroid.fdroid.privileged.install.InstallPrivilegedDialogActivity;
+import org.fdroid.fdroid.privileged.install.InstallExtensionDialogActivity;
 
 import java.io.File;
 import java.util.List;
@@ -109,7 +109,7 @@ abstract public class Installer {
         // system permissions and pref enabled -> SystemInstaller
         boolean isSystemInstallerEnabled = Preferences.get().isPrivilegedInstallerEnabled();
         if (isSystemInstallerEnabled) {
-            if (PrivilegedInstaller.isAvailable(activity)) {
+            if (PrivilegedInstaller.isExtensionInstalledCorrectly(activity)) {
                 Utils.debugLog(TAG, "system permissions -> SystemInstaller");
 
                 try {
@@ -164,9 +164,9 @@ abstract public class Installer {
                 return;
             }
 
-            Intent installIntent = new Intent(activity, InstallPrivilegedDialogActivity.class);
-            installIntent.setAction(InstallPrivilegedDialogActivity.ACTION_INSTALL);
-            installIntent.putExtra(InstallPrivilegedDialogActivity.EXTRA_INSTALL_APK, apkFile.getAbsolutePath());
+            Intent installIntent = new Intent(activity, InstallExtensionDialogActivity.class);
+            installIntent.setAction(InstallExtensionDialogActivity.ACTION_INSTALL);
+            installIntent.putExtra(InstallExtensionDialogActivity.EXTRA_INSTALL_APK, apkFile.getAbsolutePath());
             activity.startActivity(installIntent);
             return;
         }
@@ -192,6 +192,22 @@ abstract public class Installer {
             mPm.getPackageInfo(packageName, 0);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Couldn't find package " + packageName + " to delete.");
+            return;
+        }
+
+        // special case: Install F-Droid Privileged
+        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
+            Activity activity;
+            try {
+                activity = (Activity) mContext;
+            } catch (ClassCastException e) {
+                Log.d(TAG, "F-Droid Privileged can only be uninstalled using an activity!");
+                return;
+            }
+
+            Intent uninstallIntent = new Intent(activity, InstallExtensionDialogActivity.class);
+            uninstallIntent.setAction(InstallExtensionDialogActivity.ACTION_UNINSTALL);
+            activity.startActivity(uninstallIntent);
             return;
         }
 

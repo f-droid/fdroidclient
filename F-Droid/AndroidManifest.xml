@@ -386,10 +386,10 @@
         </activity>
         <!-- Note: Theme.NoDisplay, this activity shows dialogs only -->
         <activity
-            android:name=".privileged.install.InstallPrivilegedDialogActivity"
+            android:name=".privileged.install.InstallExtensionDialogActivity"
             android:theme="@android:style/Theme.NoDisplay" />
         <receiver
-            android:name=".privileged.install.InstallPrivilegedBootReceiver" >
+            android:name=".privileged.install.InstallExtensionBootReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

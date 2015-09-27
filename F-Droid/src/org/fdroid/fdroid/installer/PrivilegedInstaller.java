@@ -87,13 +87,20 @@ public class PrivilegedInstaller extends Installer {
         this.mActivity = activity;
     }
 
-    public static boolean isAvailable(Context context) {
-
-        // check if installed
+    public static boolean isExtensionInstalled(Context context) {
         PackageManager pm = context.getPackageManager();
         try {
             pm.getPackageInfo(PRIVILEGED_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
+            return true;
         } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    public static boolean isExtensionInstalledCorrectly(Context context) {
+
+        // check if installed
+        if (!isExtensionInstalled(context)) {
             return false;
         }
 
