@@ -81,6 +81,11 @@ public class PrivilegedInstaller extends Installer {
 
     public static final int REQUEST_CONFIRM_PERMS = 0;
 
+    public static final int EXTENSION_INSTALLED_NO = 0;
+    public static final int EXTENSION_INSTALLED_YES = 1;
+    public static final int EXTENSION_INSTALLED_SIGNATURE_PROBLEM = 2;
+    public static final int EXTENSION_INSTALLED_PERMISSIONS_PROBLEM = 3;
+
     public PrivilegedInstaller(Activity activity, PackageManager pm,
                                InstallerCallback callback) throws AndroidNotCompatibleException {
         super(activity, pm, callback);
@@ -97,11 +102,11 @@ public class PrivilegedInstaller extends Installer {
         }
     }
 
-    public static boolean isExtensionInstalledCorrectly(Context context) {
+    public static int isExtensionInstalledCorrectly(Context context) {
 
         // check if installed
         if (!isExtensionInstalled(context)) {
-            return false;
+            return EXTENSION_INSTALLED_NO;
         }
 
         // check if it has the privileged permissions granted
@@ -128,8 +133,13 @@ public class PrivilegedInstaller extends Installer {
         };
         Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
         serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
-        context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
-                Context.BIND_AUTO_CREATE);
+
+        try {
+            context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
+                    Context.BIND_AUTO_CREATE);
+        } catch (SecurityException e) {
+            return EXTENSION_INSTALLED_SIGNATURE_PROBLEM;
+        }
 
         synchronized (mutex) {
             try {
@@ -139,7 +149,12 @@ public class PrivilegedInstaller extends Installer {
             }
         }
 
-        return (returnBundle.getBoolean("has_permission", false));
+        boolean hasPermissions = returnBundle.getBoolean("has_permission", false);
+        if (hasPermissions) {
+            return EXTENSION_INSTALLED_YES;
+        } else {
+            return EXTENSION_INSTALLED_PERMISSIONS_PROBLEM;
+        }
     }
 
     @Override

@@ -194,7 +194,9 @@ public class PreferencesFragment extends PreferenceFragment
                 final CheckBoxPreference pref = (CheckBoxPreference) preference;
 
                 if (pref.isChecked()) {
-                    if (PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity())) {
+                    int isInstalledCorrectly =
+                            PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity());
+                    if (isInstalledCorrectly == PrivilegedInstaller.EXTENSION_INSTALLED_YES) {
                         // privileged permission are granted, i.e. the extension is installed correctly
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, true);
@@ -209,8 +211,22 @@ public class PreferencesFragment extends PreferenceFragment
 
                         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
                         alertBuilder.setTitle(R.string.system_install_denied_title);
-                        String message = getActivity().getString(R.string.system_install_denied_body) +
-                                "<br/><br/>" + getActivity().getString(R.string.system_install_question);
+
+                        String message = null;
+                        switch (isInstalledCorrectly) {
+                            case PrivilegedInstaller.EXTENSION_INSTALLED_NO:
+                                message = getActivity().getString(R.string.system_install_denied_body) +
+                                        "<br/><br/>" + getActivity().getString(R.string.system_install_question);
+                                break;
+                            case PrivilegedInstaller.EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+                                message = getActivity().getString(R.string.system_install_denied_signature);
+                                break;
+                            case PrivilegedInstaller.EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+                                message = getActivity().getString(R.string.system_install_denied_permissions);
+                                break;
+                            default:
+                                throw new RuntimeException("unhandled return");
+                        }
                         alertBuilder.setMessage(Html.fromHtml(message));
                         alertBuilder.setPositiveButton(R.string.system_install_button_open, new DialogInterface.OnClickListener() {
                             @Override

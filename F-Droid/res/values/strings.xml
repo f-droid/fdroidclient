@@ -259,6 +259,8 @@
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="system_install_denied_title">F-Droid Privileged Extension is not available</string>
     <string name="system_install_denied_body">This option is only available when F-Droid Privileged Extension is installed.</string>
+    <string name="system_install_denied_signature">The signature of the extension is wrong! Please create a bug report!</string>
+    <string name="system_install_denied_permissions">The privileged permissions have not been granted to the extension! Please create a bug report!</string>
     <string name="system_install_button_install">Install</string>
 	<string name="system_install_button_open">Open Extension</string>
     <string name="system_install_first_time_notification">Install F-Droid Privileged Extension?</string>
@@ -276,7 +278,6 @@
 	<string name="system_install_warning_lollipop">This takes up to 10 seconds and the device will be &lt;b>rebooted&lt;/b> afterwards.</string>
 	<string name="system_install_first_time_message">Looks like you have root access on your device. You can now install F-Droid Privileged Extension, tightly coupled with the Android operating system. This allows F-Droid to install, upgrade and uninstall apps on its own.</string>
     <string name="system_uninstall">Do you want to uninstall F-Droid Privileged Extension?</string>
-    <string name="system_uninstall_message">This will uninstall F-Droid Privileged Extension.</string>
     <string name="system_uninstall_button">Uninstall</string>
 
     <string name="app_description">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. The client makes it easy to browse, install, and keep track of updates on your device.</string>

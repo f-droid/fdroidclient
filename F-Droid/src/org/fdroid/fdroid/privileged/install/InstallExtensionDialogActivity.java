@@ -96,10 +96,20 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         if (Preferences.get().isFirstTime()) {
             Preferences.get().setFirstTime(false);
 
-            if (PrivilegedInstaller.isExtensionInstalledCorrectly(context)) {
-                Preferences.get().setPrivilegedInstallerEnabled(true);
-            } else {
-                runFirstTime(context);
+            int isInstalledCorrectly = PrivilegedInstaller.isExtensionInstalledCorrectly(context);
+            switch (isInstalledCorrectly) {
+                case PrivilegedInstaller.EXTENSION_INSTALLED_YES:
+                    Preferences.get().setPrivilegedInstallerEnabled(true);
+                    break;
+
+                case PrivilegedInstaller.EXTENSION_INSTALLED_NO:
+                    runFirstTime(context);
+                    break;
+
+                case PrivilegedInstaller.EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+                case PrivilegedInstaller.EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+                default:
+                    // do nothing
             }
         }
     }
@@ -322,18 +332,49 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
         ContextThemeWrapper theme = new ContextThemeWrapper(this, FDroidApp.getCurThemeResId());
 
-        final boolean success = PrivilegedInstaller.isExtensionInstalledCorrectly(this);
+        int isInstalledCorrectly =
+                PrivilegedInstaller.isExtensionInstalledCorrectly(this);
 
-        // enable system installer on installation success
-        Preferences.get().setPrivilegedInstallerEnabled(success);
+        String title;
+        String message;
+        final int result;
+        switch (isInstalledCorrectly) {
+            case PrivilegedInstaller.EXTENSION_INSTALLED_YES:
+                title = getString(R.string.system_install_post_success);
+                message = getString(R.string.system_install_post_success_message);
+                result = Activity.RESULT_OK;
+
+                // enable system installer on installation success
+                Preferences.get().setPrivilegedInstallerEnabled(true);
+                break;
+            case PrivilegedInstaller.EXTENSION_INSTALLED_NO:
+                title = getString(R.string.system_install_post_fail);
+                message = getString(R.string.system_install_post_fail_message);
+                result = Activity.RESULT_CANCELED;
+                break;
+            case PrivilegedInstaller.EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+                title = getString(R.string.system_install_post_fail);
+                message = getString(R.string.system_install_post_fail_message) +
+                        "\n\n" + getString(R.string.system_install_denied_signature);
+                result = Activity.RESULT_CANCELED;
+                break;
+            case PrivilegedInstaller.EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+                title = getString(R.string.system_install_post_fail);
+                message = getString(R.string.system_install_post_fail_message) +
+                        "\n\n" + getString(R.string.system_install_denied_permissions);
+                result = Activity.RESULT_CANCELED;
+                break;
+            default:
+                throw new RuntimeException("unhandled return");
+        }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(theme)
-                .setTitle(success ? R.string.system_install_post_success : R.string.system_install_post_fail)
-                .setMessage(success ? R.string.system_install_post_success_message : R.string.system_install_post_fail_message)
+                .setTitle(title)
+                .setMessage(message)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        InstallExtensionDialogActivity.this.setResult(success ? Activity.RESULT_OK : Activity.RESULT_CANCELED);
+                        InstallExtensionDialogActivity.this.setResult(result);
                         InstallExtensionDialogActivity.this.finish();
                         startActivity(new Intent(InstallExtensionDialogActivity.this, FDroid.class));
                     }
@@ -349,8 +390,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         final boolean isInstalled = PrivilegedInstaller.isExtensionInstalled(this);
 
         if (isInstalled) {
-            String message = getString(R.string.system_uninstall_message) + "<br/><br/>"
-                    + InstallExtension.create(getApplicationContext()).getWarningString();
+            String message = InstallExtension.create(getApplicationContext()).getWarningString();
 
             AlertDialog.Builder builder = new AlertDialog.Builder(theme)
                     .setTitle(R.string.system_uninstall)

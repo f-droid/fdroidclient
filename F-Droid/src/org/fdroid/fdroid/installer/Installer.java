@@ -109,7 +109,8 @@ abstract public class Installer {
         // system permissions and pref enabled -> SystemInstaller
         boolean isSystemInstallerEnabled = Preferences.get().isPrivilegedInstallerEnabled();
         if (isSystemInstallerEnabled) {
-            if (PrivilegedInstaller.isExtensionInstalledCorrectly(activity)) {
+            if (PrivilegedInstaller.isExtensionInstalledCorrectly(activity)
+                    == PrivilegedInstaller.EXTENSION_INSTALLED_YES) {
                 Utils.debugLog(TAG, "system permissions -> SystemInstaller");
 
                 try {
@@ -154,7 +155,7 @@ abstract public class Installer {
             return;
         }
 
-        // special case: Install F-Droid Privileged
+        // special case: F-Droid Privileged
         if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
             Activity activity;
             try {
@@ -195,7 +196,7 @@ abstract public class Installer {
             return;
         }
 
-        // special case: Install F-Droid Privileged
+        // special case: F-Droid Privileged
         if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
             Activity activity;
             try {
