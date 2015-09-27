@@ -2,7 +2,6 @@ package org.fdroid.fdroid.views;
 
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,7 +20,6 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,7 +64,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
      */
     private static final int[] HIDE_IF_EXISTS = {
             R.id.text_not_yet_updated,
-            R.id.btn_update
     };
     private Repo repo;
     private long repoId;
@@ -108,14 +105,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
 
         TextView inputUrl = (TextView) findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.address);
-
-        Button update = (Button) repoView.findViewById(R.id.btn_update);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                performUpdate();
-            }
-        });
 
         Uri uri = Uri.parse(repo.address);
         uri = uri.buildUpon().appendQueryParameter("fingerprint", repo.fingerprint).build();
@@ -206,9 +195,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
-                return true;
-            case R.id.menu_update:
-                performUpdate();
                 return true;
             case R.id.menu_delete:
                 promptForDelete();
@@ -326,19 +312,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
         String lastUpdate = repo.lastUpdated != null
                 ? repo.lastUpdated.toString() : getString(R.string.unknown);
         lastUpdated.setText(lastUpdate);
-    }
-
-    /**
-     * When an update is performed, notify the listener so that the repo
-     * list can be updated. We will perform the update ourselves though.
-     */
-    private void performUpdate() {
-        // Ensure repo is enabled before updating...
-        ContentValues values = new ContentValues(1);
-        values.put(RepoProvider.DataColumns.IN_USE, 1);
-        RepoProvider.Helper.update(this, repo, values);
-
-        UpdateService.updateRepoNow(repo.address, this);
     }
 
     private void promptForDelete() {

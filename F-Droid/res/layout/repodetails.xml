@@ -102,13 +102,6 @@
             android:textStyle="bold"
             android:paddingTop="@dimen/form_label_top"/>
 
-        <Button
-            android:id="@+id/btn_update"
-            android:layout_centerHorizontal="true"
-            android:text="@string/repo_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
         <ImageView
             android:id="@+id/qr_code"
             android:src="@drawable/swap_qr_example"
