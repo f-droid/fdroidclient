@@ -59,7 +59,6 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
     public static final String ACTION_POST_INSTALL = "post_install";
     public static final String ACTION_FIRST_TIME = "first_time";
 
-    String action;
     String apkFile;
 
     @Override
@@ -262,7 +261,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             if (rootGranted) {
                 // root access granted
 
-                switch (action) {
+                switch (getIntent().getAction()) {
                     case ACTION_UNINSTALL:
                         uninstallTask.execute();
                         break;
@@ -276,7 +275,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
             } else {
                 // root access denied
 
-                if (!ACTION_FIRST_TIME.equals(action)) {
+                if (!ACTION_FIRST_TIME.equals(getIntent().getAction())) {
                     // hack to get theme applied (which is not automatically applied due to activity's Theme.NoDisplay
                     ContextThemeWrapper theme = new ContextThemeWrapper(InstallExtensionDialogActivity.this,
                             FDroidApp.getCurThemeResId());
