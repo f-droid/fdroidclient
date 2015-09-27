@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">ﾀﾞｳﾝﾛｰﾄﾞしたﾊﾟｯｹｰｼﾞ ﾌｧｲﾙを端末に残します</string>
   <string name="updates">更新</string>
   <string name="other">その他</string>
-  <string name="last_update_check">最新ﾘﾎﾟｼﾞﾄﾘ検索: %s</string>
-  <string name="never">なし</string>
   <string name="update_interval">自動更新間隔</string>
   <string name="update_interval_zero">ｱﾌﾟﾘﾘｽﾄの自動更新を行いません</string>
   <string name="automatic_scan_wifi">Wi-Fi接続時のみ</string>

@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">다운로드한 APK 파일을 SD 카드에 계속 보관</string>
   <string name="updates">업데이트</string>
   <string name="other">기타</string>
-  <string name="last_update_check">마지막 저장소 검색: %s</string>
-  <string name="never">하지 않음</string>
   <string name="update_interval">자동 업데이트 간격</string>
   <string name="update_interval_zero">자동으로 앱 목록 업데이트 하지 않음</string>
   <string name="automatic_scan_wifi">Wi-Fi 연결 시에만</string>

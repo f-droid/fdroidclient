@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Behold nedlastede apk-filer på minnekortet</string>
   <string name="updates">Oppdateringer</string>
   <string name="other">Andre</string>
-  <string name="last_update_check">Forrige oppdatering av pakkebrønn: %s</string>
-  <string name="never">aldri</string>
   <string name="update_interval">Intervall for automatisk oppdatering</string>
   <string name="update_interval_zero">Ingen automatiske registerlisteoppdateringer</string>
   <string name="automatic_scan_wifi">Bare på trådløst</string>

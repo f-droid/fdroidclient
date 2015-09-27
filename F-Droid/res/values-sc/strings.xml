@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Mantene sos documentos de sos pachetos iscarrigados in s\'ischeda SD</string>
   <string name="updates">Agiornamentos</string>
   <string name="other">Àteru</string>
-  <string name="last_update_check">Ùrtima iscansidura depòsitos: %s</string>
-  <string name="never">Mai</string>
   <string name="update_interval">Intervallu agiornamentu automàticu</string>
   <string name="update_interval_zero">Non che agiornes automaticamente sa lista de sas aplicatziones</string>
   <string name="automatic_scan_wifi">Cun su Wi-Fi ebbia</string>

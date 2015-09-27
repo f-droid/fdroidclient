@@ -10,8 +10,6 @@
   <string name="cache_downloaded">Gorde cache-an deskargatutako paketeak</string>
   <string name="cache_downloaded_on">Mantendu deskargatutako pakete fitxategiak gailuan</string>
   <string name="updates">Eguneraketak</string>
-  <string name="last_update_check">Biltegiaren azken eskaneatzea: %s</string>
-  <string name="never">Inoiz ez</string>
   <string name="automatic_scan_wifi">Wi-Fi bidez soilik</string>
   <string name="automatic_scan_wifi_on">Eguneratu aplikazioen zerrendak automatikoki Wi-Fian soilik</string>
   <string name="notify">Eguneratu jakinarazpenak</string>

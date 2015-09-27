@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Caltién nel preséu los paquetes baxaos</string>
   <string name="updates">Anovamientos</string>
   <string name="other">Otru</string>
-  <string name="last_update_check">Escanéu caberu del repositoriu: %s</string>
-  <string name="never">Enxamás</string>
   <string name="update_interval">Intervalu automáticu d\'anovaminetu</string>
   <string name="update_interval_zero">Nun anovar automáticamente\'l llistáu d\'aplicaciones</string>
   <string name="automatic_scan_wifi">Namái na Wi-Fi</string>

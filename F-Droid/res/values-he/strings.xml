@@ -12,8 +12,6 @@
     <string name="cache_downloaded_on">שמור קבצי חבילה מורדים על גבי התקן</string>
     <string name="updates">עדכונים</string>
     <string name="other">אחר</string>
-    <string name="last_update_check">סריקת מאגר אחרונה: %s</string>
-    <string name="never">אף פעם</string>
 
     <string name="update_interval">תדירות עדכון אוטומטי</string>
     <string name="automatic_scan_wifi">רק על גבי Wi-Fi</string>

@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Säilytä ladatud aptk-tiedostot SD-kortilla</string>
   <string name="updates">Päivitykset</string>
   <string name="other">Muu</string>
-  <string name="last_update_check">Viimeisin sovelluslähteiden skannaus: %s</string>
-  <string name="never">ei koskaan</string>
   <string name="update_interval">Automaattisen päivityksen tiheys</string>
   <string name="update_interval_zero">Ei automaattisia sovellusluetteloiden päivityksiä</string>
   <string name="automatic_scan_wifi">Vain wifi-yhteydellä</string>

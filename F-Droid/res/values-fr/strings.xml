@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Garder les fichiers apk téléchargés sur la carte SD</string>
   <string name="updates">Mises à jour</string>
   <string name="other">Autres</string>
-  <string name="last_update_check">Dernière analyse du dépôt: %s</string>
-  <string name="never">Jamais</string>
   <string name="update_interval">Intervalle de mise à jour automatique</string>
   <string name="update_interval_zero">Pas de mise à jour automatique de la liste d\'applications</string>
   <string name="automatic_scan_wifi">Seulement par Wi-Fi</string>

@@ -5,7 +5,6 @@
   <string name="cache_downloaded_on">Konservi elŝutitajn apk dosierojn sur la SD-karto</string>
   <string name="updates">Ĝisdatigoj</string>
   <string name="other">Aliaj</string>
-  <string name="never">neniam</string>
   <string name="automatic_scan_wifi">Nur sur wifi</string>
   <string name="notify">Sciigi</string>
   <string name="notify_on">Sciigi kiam ĝisdatigoj estas disponebla</string>

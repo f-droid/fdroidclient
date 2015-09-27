@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">İndirilen apk dosyalarını SD kartında tut</string>
   <string name="updates">Güncellemeler</string>
   <string name="other">Diğer</string>
-  <string name="last_update_check">Son depo analizi: %s</string>
-  <string name="never">asla</string>
   <string name="update_interval">Otomatik güncelleme aralığı</string>
   <string name="update_interval_zero">Hiçbir otomatik uygulama listesi güncellemesi olmasın</string>
   <string name="automatic_scan_wifi">Sadece WiFi ile</string>

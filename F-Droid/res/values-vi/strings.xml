@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Lưu các tập tin apk đã tải trong thẻ nhớ</string>
   <string name="updates">Cập nhật</string>
   <string name="other">Khác</string>
-  <string name="last_update_check">Lần quét kho cuối: %s</string>
-  <string name="never">không bao giờ</string>
   <string name="update_interval">Tự động cạp nhật định kì</string>
   <string name="update_interval_zero">Không tự động cập nhật danh sách ứng dụng</string>
   <string name="automatic_scan_wifi">Chỉ khi dùng wifi</string>

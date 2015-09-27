@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Behåll hämtade apk-filer på SD-kort</string>
   <string name="updates">Uppdateringar</string>
   <string name="other">Andra</string>
-  <string name="last_update_check">Senaste förrådsavsökning: %s</string>
-  <string name="never">aldrig</string>
   <string name="update_interval">Automatiskt uppdateringsintervall</string>
   <string name="update_interval_zero">Inga automatiska uppdateringar av applistor</string>
   <string name="automatic_scan_wifi">Endast via WiFi</string>

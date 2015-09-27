@@ -10,8 +10,6 @@
   <string name="cache_downloaded_on">保留已下載的軟件包檔案在裝置上</string>
   <string name="updates">更新</string>
   <string name="other">其他</string>
-  <string name="last_update_check">最近的倉庫掃描：%s</string>
-  <string name="never">永不</string>
   <string name="update_interval">自動更新頻率</string>
   <string name="update_interval_zero">不要自動更新應用程式清單</string>
   <string name="automatic_scan_wifi">只透過 Wi-Fi 更新</string>

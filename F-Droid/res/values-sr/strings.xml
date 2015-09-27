@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Чувај преузете пакете на СД картици</string>
   <string name="updates">Надоградње</string>
   <string name="other">Остало</string>
-  <string name="last_update_check">Последње ажурирање ризница: %s</string>
-  <string name="never">никада</string>
   <string name="update_interval">Интервал аутоматског ажурирања</string>
   <string name="update_interval_zero">Без аутоматског ажурирања списка надоградњи</string>
   <string name="automatic_scan_wifi">Само на бежичној мрежи</string>

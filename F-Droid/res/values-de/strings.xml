@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Heruntergeladene Programmpakete auf der SD-Karte behalten</string>
   <string name="updates">Updates</string>
   <string name="other">Andere</string>
-  <string name="last_update_check">Letzte Aktualisierung der Paketquellen: %s</string>
-  <string name="never">Niemals</string>
   <string name="update_interval">Automatischer Aktualisierungsintervall</string>
   <string name="update_interval_zero">Keine automatischen Aktualisierungen der Anwendungsliste</string>
   <string name="automatic_scan_wifi">Nur über WLAN</string>

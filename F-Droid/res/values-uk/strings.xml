@@ -7,8 +7,6 @@
   <string name="version">Версія</string>
   <string name="cache_downloaded">Зберігати звантажене</string>
   <string name="updates">Оновлення</string>
-  <string name="last_update_check">Синхронізовано: %s</string>
-  <string name="never">Ніколи</string>
   <string name="notify">Сповіщення</string>
   <string name="about_title">Про F-Droid</string>
   <string name="about_site">Сайт:</string>

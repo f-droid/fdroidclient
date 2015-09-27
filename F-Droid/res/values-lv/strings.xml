@@ -7,8 +7,6 @@
   <string name="cache_downloaded_on">Saglabāt novilktos apk failus SD kartē</string>
   <string name="updates">Atjauninājumi</string>
   <string name="other">Cits</string>
-  <string name="last_update_check">Atjauninājumi pārbaudīti</string>
-  <string name="never">nekad</string>
   <string name="update_interval">Atjauninājumu intervāls</string>
   <string name="update_interval_zero">Neatjaunināt automātiski</string>
   <string name="automatic_scan_wifi">Tikai WiFi</string>

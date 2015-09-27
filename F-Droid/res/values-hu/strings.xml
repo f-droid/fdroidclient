@@ -11,8 +11,6 @@
   <string name="cache_downloaded_on">A letöltött apk fájlt megtartja az SD kártyán</string>
   <string name="updates">Frissítések</string>
   <string name="other">egyéb</string>
-  <string name="last_update_check">Utolsó vizsgálat: %s</string>
-  <string name="never">soha</string>
   <string name="update_interval">Auto. frissítés intervalluma</string>
   <string name="update_interval_zero">Ne frissítsen automatikusan</string>
   <string name="automatic_scan_wifi">Csak Wifin</string>

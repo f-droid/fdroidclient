@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Διατήρηση ληφθέντων αρχείων apk στην κάρτα SD</string>
   <string name="updates">Ενημερώσεις</string>
   <string name="other">Άλλα</string>
-  <string name="last_update_check">Τελευταίο σάρωμα αποθετηρίου: %s</string>
-  <string name="never">ποτέ</string>
   <string name="update_interval">Συχνότητα ενημέρωσης</string>
   <string name="update_interval_zero">Μη αυτόματη ενημέρωση της λίστας εφαρμογών</string>
   <string name="automatic_scan_wifi">Μόνο σε wifi</string>

@@ -18,8 +18,6 @@
 	<string name="unstable_updates">Unstable updates</string>
 	<string name="unstable_updates_summary">Suggest updates to unstable versions</string>
 	<string name="other">Other</string>
-	<string name="last_update_check">Last repo scan: %s</string>
-	<string name="never">Never</string>
 
 	<string name="update_interval">Automatic update interval</string>
 	<string name="update_interval_zero">No automatic app list updates</string>

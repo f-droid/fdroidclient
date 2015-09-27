@@ -15,8 +15,6 @@
   <string name="cache_downloaded_on">Хранить загруженные файлы пакетов на устройстве</string>
   <string name="updates">Обновления</string>
   <string name="other">Другой</string>
-  <string name="last_update_check">Последнее обновление: %s</string>
-  <string name="never">Никогда</string>
   <string name="update_interval">Интервал автоматического обновления</string>
   <string name="update_interval_zero">Не обновлять список приложений автоматически</string>
   <string name="automatic_scan_wifi">Только по Wi-Fi</string>

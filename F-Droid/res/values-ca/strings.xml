@@ -12,8 +12,6 @@
   <string name="cache_downloaded_on">Manté els paquets descarregats al dispositiu</string>
   <string name="updates">Actualitzacions</string>
   <string name="other">Altres</string>
-  <string name="last_update_check">Darrera actualització dels dipòsits: %s</string>
-  <string name="never">Mai</string>
   <string name="update_interval">Període d\'actualització automàtica</string>
   <string name="update_interval_zero">No actualitzis automàticament la llista d\'aplicacions</string>
   <string name="automatic_scan_wifi">Només en Wi-Fi</string>

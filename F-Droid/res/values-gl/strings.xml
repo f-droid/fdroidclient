@@ -10,8 +10,6 @@
   <string name="cache_downloaded">Memorizar as aps descargadas</string>
   <string name="updates">Actualizacións</string>
   <string name="other">Outro</string>
-  <string name="last_update_check">Último escaneado do repositorio: %s</string>
-  <string name="never">nunca</string>
   <string name="automatic_scan_wifi">Soamente no wifi</string>
   <string name="notify">Notificar</string>
   <string name="update_history">Histórico de actualizacións</string>

@@ -7,8 +7,6 @@
   <string name="cache_downloaded_on">نگه‌داشتن پرونده‌های ای‌پی‌کی بر روی کارت اس‌دی</string>
   <string name="updates">به‌روزرسانی‌ها</string>
   <string name="other">دیگر</string>
-  <string name="last_update_check">آخرین اسکن مخزن: %S</string>
-  <string name="never">هیچ‌گاه</string>
   <string name="update_interval">به‌روزرسانی دوره‌ای خودکار</string>
   <string name="update_interval_zero">به‌روزرسانی‌نکردن خودکار فهرست برنامه‌ها</string>
   <string name="automatic_scan_wifi">فقط هنگام اتصال وای‌فای</string>

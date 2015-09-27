@@ -7,8 +7,6 @@
   <string name="cache_downloaded">Zapisuj pobrane pliki instalacyjne</string>
   <string name="updates">Aktualizacje</string>
   <string name="other">Inne</string>
-  <string name="last_update_check">Ostatnie uaktualnienie listy aplikacji: %s</string>
-  <string name="never">Nigdy</string>
   <string name="notify">Powiadomienia o aktualizacjach</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>

@@ -10,8 +10,6 @@
   <string name="cache_downloaded">ئەپلەر غەملەككە چۈشۈرۈلدى</string>
   <string name="updates">يېڭىلانمىلار</string>
   <string name="other">باشقا</string>
-  <string name="last_update_check">ئاخىرقى repo تەكشۈرۈش: %s</string>
-  <string name="never">ھەرگىز</string>
   <string name="automatic_scan_wifi">wifi دىلا</string>
   <string name="notify">ئۇقتۇرۇش</string>
   <string name="update_history">يېڭىلاش تارىخى</string>

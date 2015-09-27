@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Записва свалените .apk файлове на устройствто</string>
   <string name="updates">Актуализации</string>
   <string name="other">Други</string>
-  <string name="last_update_check">Последно сканиране: %s</string>
-  <string name="never">Никога</string>
   <string name="update_interval">Проверка за актуализации</string>
   <string name="update_interval_zero">Без автоматично актуализиране на списъка с приложения</string>
   <string name="automatic_scan_wifi">Само през Wi-Fi</string>

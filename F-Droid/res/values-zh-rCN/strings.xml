@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">将已下载的apk文件保留在SD卡上</string>
   <string name="updates">升级</string>
   <string name="other">其它</string>
-  <string name="last_update_check">最近一次软件库扫描: %s</string>
-  <string name="never">从不</string>
   <string name="update_interval">自动更新周期</string>
   <string name="update_interval_zero">不自动升级应用程序列表</string>
   <string name="automatic_scan_wifi">仅在wifi可用时</string>

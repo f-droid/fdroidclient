@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Manter os arquivos de pacote baixados no dispositivo</string>
   <string name="updates">Atualizações</string>
   <string name="other">Outros</string>
-  <string name="last_update_check">Última consulta ao repositório: %s</string>
-  <string name="never">Nunca</string>
   <string name="update_interval">Intervalo de atualização automática</string>
   <string name="update_interval_zero">Não atualizar a lista de aplicativos automaticamente</string>
   <string name="automatic_scan_wifi">Apenas com Wi-Fi</string>

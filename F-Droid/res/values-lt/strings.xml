@@ -6,7 +6,6 @@
   <string name="cache_downloaded_on">Laikyti atsiųstus apk failus SD kortelėje</string>
   <string name="updates">Atnaujinimai</string>
   <string name="other">Kita</string>
-  <string name="never">Niekada</string>
   <string name="update_interval">Automatinis programų sąrašų naujinimas</string>
   <string name="automatic_scan_wifi">Tik prisijungus prie belaidžio (WiFi)</string>
   <string name="notify">Informuoti</string>

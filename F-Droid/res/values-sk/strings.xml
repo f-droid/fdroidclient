@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Ponechať stiahnuté apk súbory na v zariadení</string>
   <string name="updates">Aktualizácie</string>
   <string name="other">Iné</string>
-  <string name="last_update_check">Posledný sken: %s</string>
-  <string name="never">Nikdy</string>
   <string name="update_interval">Interval automat. aktualizácií</string>
   <string name="update_interval_zero">Automaticky neobnovovať zoznam</string>
   <string name="automatic_scan_wifi">Iba cez Wi-Fi</string>

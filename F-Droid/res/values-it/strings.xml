@@ -13,8 +13,6 @@
   <string name="cache_downloaded_on">Conserva i file apk scaricati sulla scheda SD</string>
   <string name="updates">Aggiornamenti</string>
   <string name="other">Altro</string>
-  <string name="last_update_check">Ultima scansione repository: %s</string>
-  <string name="never">mai</string>
   <string name="update_interval">Intervallo degli aggiornamenti automatici</string>
   <string name="update_interval_zero">Non aggiornare automaticamente l\'elenco delle applicazioni</string>
   <string name="automatic_scan_wifi">Solo su wifi</string>
