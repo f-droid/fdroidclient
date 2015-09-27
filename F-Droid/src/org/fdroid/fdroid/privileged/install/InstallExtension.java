@@ -229,8 +229,9 @@ abstract class InstallExtension {
 
         @Override
         protected List<String> getCleanUninstallCommands() {
-            final List<String> commands = new ArrayList<>(2);
+            final List<String> commands = new ArrayList<>(3);
             commands.add("rm -f " + getInstallPath());
+            commands.add("sleep 1");
             commands.add("rm -f " + getSystemFolder());
             return commands;
         }
