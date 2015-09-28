@@ -101,8 +101,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
         };
         repo = RepoProvider.Helper.findById(this, repoId, projection);
 
-        setTitle(repo.name);
-
         TextView inputUrl = (TextView) findViewById(R.id.input_repo_url);
         inputUrl.setText(repo.address);
 
