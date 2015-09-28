@@ -48,7 +48,6 @@ public class RepoDetailsActivity extends ActionBarActivity {
     private static final int[] SHOW_IF_EXISTS = {
             R.id.label_repo_name,
             R.id.text_repo_name,
-            R.id.label_description,
             R.id.text_description,
             R.id.label_num_apps,
             R.id.text_num_apps,

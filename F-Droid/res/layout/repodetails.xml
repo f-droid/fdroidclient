@@ -11,102 +11,101 @@
         android:paddingRight="?attr/listPreferredItemPaddingRight"
         android:orientation="vertical">
 
+        <!-- URL of this repo -->
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/repo_url"
+            style="@style/RepoDetailsCaption"/>
+        <TextView
             android:id="@+id/input_repo_url"
-            android:textStyle="bold"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RepoDetailsBody"/>
 
         <!-- Name of this repo -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/label_repo_name"
-            android:text="@string/repo_name"
-            android:paddingTop="@dimen/form_label_top"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
+            android:text="@string/repo_name"
+            style="@style/RepoDetailsCaption"/>
+        <TextView
             android:id="@+id/text_repo_name"
-            android:textStyle="bold"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RepoDetailsBody"/>
 
         <!-- Description - as pulled from the index file during last update... -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/label_description"
-            android:text="@string/repo_description"
-            android:paddingTop="@dimen/form_label_top"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:scrollHorizontally="false"
+            android:text="@string/repo_description"
+            style="@style/RepoDetailsCaption"/>
+        <TextView
             android:id="@+id/text_description"
-            android:textStyle="bold"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RepoDetailsBody"/>
 
         <!-- Number of apps belonging to this repo -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/label_num_apps"
-            android:text="@string/repo_num_apps"
-            android:paddingTop="@dimen/form_label_top" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/repo_num_apps"
+            style="@style/RepoDetailsCaption"/>
+        <TextView
             android:id="@+id/text_num_apps"
-            android:textStyle="bold"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RepoDetailsBody"/>
 
         <!-- The last time this repo was updated -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/label_last_update"
-            android:text="@string/repo_last_update"
-            android:paddingTop="@dimen/form_label_top" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/repo_last_update"
+            style="@style/RepoDetailsCaption"/>
+        <TextView
             android:id="@+id/text_last_update"
-            android:textStyle="bold"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RepoDetailsBody"/>
 
         <!-- Signature (or "unsigned" if none) -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/label_repo_fingerprint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/repo_fingerprint"
-            android:paddingTop="@dimen/form_label_top" />
+            style="@style/RepoDetailsCaption"/>
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:scrollHorizontally="false"
             android:id="@+id/text_repo_fingerprint"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:scrollHorizontally="false"
-            android:id="@+id/text_repo_fingerprint_description"/>
+            style="@style/RepoDetailsBody"/>
+        <TextView
+            android:id="@+id/text_repo_fingerprint_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/RepoDetailsBody"/>
 
-        <!-- The last time this repo was updated -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/text_not_yet_updated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/repo_not_yet_updated"
-            android:textStyle="bold"
-            android:paddingTop="@dimen/form_label_top"/>
+            style="@style/RepoDetailsBody"/>
 
         <ImageView
             android:id="@+id/qr_code"
             android:src="@drawable/swap_qr_example"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"/>
 
     </LinearLayout>
 

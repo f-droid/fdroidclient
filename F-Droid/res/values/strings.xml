@@ -189,6 +189,7 @@
     <string name="unsigned">Unsigned</string>
     <string name="unverified">Unverified</string>
     <string name="repo_details">Repository</string>
+    <string name="repo_url">Address</string>
     <string name="repo_num_apps">Number of apps</string>
     <string name="repo_fingerprint">Fingerprint of Repo Signing Key (SHA-256)</string>
     <string name="repo_description">Description</string>
