@@ -155,8 +155,8 @@ abstract public class Installer {
             return;
         }
 
-        // special case: F-Droid Privileged
-        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
+        // special case: F-Droid Privileged Extension
+        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
             Activity activity;
             try {
                 activity = (Activity) mContext;
@@ -196,8 +196,8 @@ abstract public class Installer {
             return;
         }
 
-        // special case: F-Droid Privileged
-        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME)) {
+        // special case: F-Droid Privileged Extension
+        if (packageName != null && packageName.equals(PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME)) {
             Activity activity;
             try {
                 activity = (Activity) mContext;

@@ -234,7 +234,7 @@ public class PreferencesFragment extends PreferenceFragment
                                 // Open details of F-Droid Privileged
                                 Intent intent = new Intent(getActivity(), AppDetails.class);
                                 intent.putExtra(AppDetails.EXTRA_APPID,
-                                        PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+                                        PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
                                 startActivity(intent);
                             }
                         });
@@ -264,7 +264,7 @@ public class PreferencesFragment extends PreferenceFragment
                 // Open details of F-Droid Privileged
                 Intent intent = new Intent(getActivity(), AppDetails.class);
                 intent.putExtra(AppDetails.EXTRA_APPID,
-                        PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+                        PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
                 startActivity(intent);
 
                 return true;

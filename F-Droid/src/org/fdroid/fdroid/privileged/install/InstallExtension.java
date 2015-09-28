@@ -87,12 +87,12 @@ abstract class InstallExtension {
         final List<String> commands = new ArrayList<>();
         commands.add("mount -o rw,remount /system");
         commands.addAll(getCopyToSystemCommands(apkPath));
-        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.add("mv " + getInstallPath() + ".tmp " + getInstallPath());
         commands.add("pm install -r " + getInstallPath());
         commands.add("sleep 5"); // wait until the app is really installed
         commands.add("mount -o ro,remount /system");
-        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.addAll(getPostInstallCommands());
         return commands;
     }
@@ -113,10 +113,10 @@ abstract class InstallExtension {
 
     private List<String> getUninstallCommands() {
         final List<String> commands = new ArrayList<>();
-        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
-        commands.add("pm clear " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+        commands.add("am force-stop " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
+        commands.add("pm clear " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.add("mount -o rw,remount /system");
-        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+        commands.add("pm uninstall " + PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
         commands.addAll(getCleanUninstallCommands());
         commands.add("sleep 5");
         commands.add("mount -o ro,remount /system");

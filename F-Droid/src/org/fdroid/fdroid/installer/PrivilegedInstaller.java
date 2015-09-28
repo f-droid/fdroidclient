@@ -74,8 +74,8 @@ public class PrivilegedInstaller extends Installer {
 
     private static final String TAG = "PrivilegedInstaller";
 
-    private static final String PRIVILEGED_SERVICE_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
-    public static final String PRIVILEGED_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
+    private static final String PRIVILEGED_EXTENSION_SERVICE_INTENT = "org.fdroid.fdroid.privileged.IPrivilegedService";
+    public static final String PRIVILEGED_EXTENSION_PACKAGE_NAME = "org.fdroid.fdroid.privileged";
 
     private Activity mActivity;
 
@@ -95,7 +95,7 @@ public class PrivilegedInstaller extends Installer {
     public static boolean isExtensionInstalled(Context context) {
         PackageManager pm = context.getPackageManager();
         try {
-            pm.getPackageInfo(PRIVILEGED_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
+            pm.getPackageInfo(PRIVILEGED_EXTENSION_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
@@ -131,8 +131,8 @@ public class PrivilegedInstaller extends Installer {
             public void onServiceDisconnected(ComponentName name) {
             }
         };
-        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
-        serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
+        Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
 
         try {
             context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
@@ -232,8 +232,8 @@ public class PrivilegedInstaller extends Installer {
             }
         };
 
-        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
-        serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
+        Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
         mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);
     }
@@ -338,8 +338,8 @@ public class PrivilegedInstaller extends Installer {
             }
         };
 
-        Intent serviceIntent = new Intent(PRIVILEGED_SERVICE_INTENT);
-        serviceIntent.setPackage(PRIVILEGED_PACKAGE_NAME);
+        Intent serviceIntent = new Intent(PRIVILEGED_EXTENSION_SERVICE_INTENT);
+        serviceIntent.setPackage(PRIVILEGED_EXTENSION_PACKAGE_NAME);
         mContext.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                 Context.BIND_AUTO_CREATE);
     }

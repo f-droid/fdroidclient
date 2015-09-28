@@ -188,7 +188,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                         // Open details of F-Droid Privileged
                         Intent intent = new Intent(InstallExtensionDialogActivity.this, AppDetails.class);
                         intent.putExtra(AppDetails.EXTRA_APPID,
-                                PrivilegedInstaller.PRIVILEGED_PACKAGE_NAME);
+                                PrivilegedInstaller.PRIVILEGED_EXTENSION_PACKAGE_NAME);
                         startActivity(intent);
                     }
                 })
