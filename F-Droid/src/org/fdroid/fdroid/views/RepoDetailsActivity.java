@@ -255,23 +255,20 @@ public class RepoDetailsActivity extends ActionBarActivity {
         TextView repoFingerprintDescView = (TextView) parent.findViewById(R.id.text_repo_fingerprint_description);
 
         String repoFingerprint;
-        int repoFingerprintColor;
 
         // TODO show the current state of the signature check, not just whether there is a key or not
         if (TextUtils.isEmpty(repo.fingerprint) && TextUtils.isEmpty(repo.pubkey)) {
             repoFingerprint = getResources().getString(R.string.unsigned);
-            repoFingerprintColor = getResources().getColor(R.color.unsigned);
+            repoFingerprintView.setTextColor(getResources().getColor(R.color.unsigned));
             repoFingerprintDescView.setVisibility(View.VISIBLE);
             repoFingerprintDescView.setText(getResources().getString(R.string.unsigned_description));
         } else {
             // this is based on repo.fingerprint always existing, which it should
             repoFingerprint = Utils.formatFingerprint(this, repo.fingerprint);
-            repoFingerprintColor = getResources().getColor(R.color.signed);
             repoFingerprintDescView.setVisibility(View.GONE);
         }
 
         repoFingerprintView.setText(repoFingerprint);
-        repoFingerprintView.setTextColor(repoFingerprintColor);
     }
 
     private void updateRepoView() {
