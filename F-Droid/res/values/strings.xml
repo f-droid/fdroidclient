@@ -198,9 +198,7 @@
         applications could not be verified. You should be careful
         with applications downloaded from unsigned indexes.</string>
     <string name="repo_not_yet_updated">This repository has not been used yet.
-        In order to view the apps it provides, you will need to update
-        it.\n\nOnce updated, the description and other details will
-        become available here.</string>
+        You need to enable it to view the apps it provides.</string>
     <string name="unknown">Unknown</string>
     <string name="repo_confirm_delete_title">Delete Repository?</string>
     <string name="repo_confirm_delete_body">Deleting a repository means
