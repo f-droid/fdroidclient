@@ -110,7 +110,7 @@ abstract public class Installer {
         boolean isSystemInstallerEnabled = Preferences.get().isPrivilegedInstallerEnabled();
         if (isSystemInstallerEnabled) {
             if (PrivilegedInstaller.isExtensionInstalledCorrectly(activity)
-                    == PrivilegedInstaller.EXTENSION_INSTALLED_YES) {
+                    == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
                 Utils.debugLog(TAG, "system permissions -> SystemInstaller");
 
                 try {

@@ -97,16 +97,16 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
 
             int isInstalledCorrectly = PrivilegedInstaller.isExtensionInstalledCorrectly(context);
             switch (isInstalledCorrectly) {
-                case PrivilegedInstaller.EXTENSION_INSTALLED_YES:
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES:
                     Preferences.get().setPrivilegedInstallerEnabled(true);
                     break;
 
-                case PrivilegedInstaller.EXTENSION_INSTALLED_NO:
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
                     runFirstTime(context);
                     break;
 
-                case PrivilegedInstaller.EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
-                case PrivilegedInstaller.EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+                case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
                 default:
                     // do nothing
             }
@@ -338,7 +338,7 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
         String message;
         final int result;
         switch (isInstalledCorrectly) {
-            case PrivilegedInstaller.EXTENSION_INSTALLED_YES:
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES:
                 title = getString(R.string.system_install_post_success);
                 message = getString(R.string.system_install_post_success_message);
                 result = Activity.RESULT_OK;
@@ -346,18 +346,18 @@ public class InstallExtensionDialogActivity extends FragmentActivity {
                 // enable system installer on installation success
                 Preferences.get().setPrivilegedInstallerEnabled(true);
                 break;
-            case PrivilegedInstaller.EXTENSION_INSTALLED_NO:
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
                 title = getString(R.string.system_install_post_fail);
                 message = getString(R.string.system_install_post_fail_message);
                 result = Activity.RESULT_CANCELED;
                 break;
-            case PrivilegedInstaller.EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
                 title = getString(R.string.system_install_post_fail);
                 message = getString(R.string.system_install_post_fail_message) +
                         "\n\n" + getString(R.string.system_install_denied_signature);
                 result = Activity.RESULT_CANCELED;
                 break;
-            case PrivilegedInstaller.EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
                 title = getString(R.string.system_install_post_fail);
                 message = getString(R.string.system_install_post_fail_message) +
                         "\n\n" + getString(R.string.system_install_denied_permissions);

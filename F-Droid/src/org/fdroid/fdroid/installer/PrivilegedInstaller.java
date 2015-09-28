@@ -81,10 +81,10 @@ public class PrivilegedInstaller extends Installer {
 
     public static final int REQUEST_CONFIRM_PERMS = 0;
 
-    public static final int EXTENSION_INSTALLED_NO = 0;
-    public static final int EXTENSION_INSTALLED_YES = 1;
-    public static final int EXTENSION_INSTALLED_SIGNATURE_PROBLEM = 2;
-    public static final int EXTENSION_INSTALLED_PERMISSIONS_PROBLEM = 3;
+    public static final int IS_EXTENSION_INSTALLED_NO = 0;
+    public static final int IS_EXTENSION_INSTALLED_YES = 1;
+    public static final int IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM = 2;
+    public static final int IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM = 3;
 
     public PrivilegedInstaller(Activity activity, PackageManager pm,
                                InstallerCallback callback) throws AndroidNotCompatibleException {
@@ -106,7 +106,7 @@ public class PrivilegedInstaller extends Installer {
 
         // check if installed
         if (!isExtensionInstalled(context)) {
-            return EXTENSION_INSTALLED_NO;
+            return IS_EXTENSION_INSTALLED_NO;
         }
 
         // check if it has the privileged permissions granted
@@ -138,7 +138,7 @@ public class PrivilegedInstaller extends Installer {
             context.getApplicationContext().bindService(serviceIntent, mServiceConnection,
                     Context.BIND_AUTO_CREATE);
         } catch (SecurityException e) {
-            return EXTENSION_INSTALLED_SIGNATURE_PROBLEM;
+            return IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM;
         }
 
         synchronized (mutex) {
@@ -151,9 +151,9 @@ public class PrivilegedInstaller extends Installer {
 
         boolean hasPermissions = returnBundle.getBoolean("has_permissions", false);
         if (hasPermissions) {
-            return EXTENSION_INSTALLED_YES;
+            return IS_EXTENSION_INSTALLED_YES;
         } else {
-            return EXTENSION_INSTALLED_PERMISSIONS_PROBLEM;
+            return IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM;
         }
     }
 

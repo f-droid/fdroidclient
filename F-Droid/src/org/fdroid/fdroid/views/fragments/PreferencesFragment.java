@@ -196,7 +196,7 @@ public class PreferencesFragment extends PreferenceFragment
                 if (pref.isChecked()) {
                     int isInstalledCorrectly =
                             PrivilegedInstaller.isExtensionInstalledCorrectly(getActivity());
-                    if (isInstalledCorrectly == PrivilegedInstaller.EXTENSION_INSTALLED_YES) {
+                    if (isInstalledCorrectly == PrivilegedInstaller.IS_EXTENSION_INSTALLED_YES) {
                         // privileged permission are granted, i.e. the extension is installed correctly
                         SharedPreferences.Editor editor = pref.getSharedPreferences().edit();
                         editor.putBoolean(Preferences.PREF_PRIVILEGED_INSTALLER, true);
@@ -214,14 +214,14 @@ public class PreferencesFragment extends PreferenceFragment
 
                         String message = null;
                         switch (isInstalledCorrectly) {
-                            case PrivilegedInstaller.EXTENSION_INSTALLED_NO:
+                            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_NO:
                                 message = getActivity().getString(R.string.system_install_denied_body) +
                                         "<br/><br/>" + getActivity().getString(R.string.system_install_question);
                                 break;
-                            case PrivilegedInstaller.EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
+                            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_SIGNATURE_PROBLEM:
                                 message = getActivity().getString(R.string.system_install_denied_signature);
                                 break;
-                            case PrivilegedInstaller.EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
+                            case PrivilegedInstaller.IS_EXTENSION_INSTALLED_PERMISSIONS_PROBLEM:
                                 message = getActivity().getString(R.string.system_install_denied_permissions);
                                 break;
                             default:
