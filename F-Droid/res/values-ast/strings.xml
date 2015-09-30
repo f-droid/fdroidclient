@@ -258,7 +258,6 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="install_error_cannot_parse">Asocedió un fallu entrín s\'analizaba\'l paquete</string>
     <string name="uninstall_error_title">Fallu de desinstalación</string>
     <string name="uninstall_error_unknown">Fallu al desinstalar pola mor d\'un fallu desconocíu</string>
-    <string name="system_permission_install_via_root">Instalar F-Droid privilexáu</string>
     <string name="system_install_first_time_notification">¿Instalar F-Droid privilexáu?</string>
     <string name="system_install_first_time_notification_message_short">Toca pa más información.</string>
     <string name="system_install_first_time_notification_message">Toca pa instalar F-Droid privilexáu, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.\nTamién pues facer esto sero nes preferencies de F-Droid.</string>
@@ -268,10 +267,9 @@ Deberíes tener procuru con aplicaciones baxaes dende índices ensin roblar.</st
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Quies instalar F-Droid privilexáu?\nEsto tardará 10 segundos.</string>
-    <string name="system_install_question_lollipop">¿Quies instalar F-Droid pivilexáu?\nEsto tardará 10 segundos y el preséu reaniciaráse darréu.</string>
+    <string name="system_install_warning_lollipop">¿Quies instalar F-Droid pivilexáu?\nEsto tardará 10 segundos y el preséu reaniciaráse darréu.</string>
     <string name="system_install_first_time_message">Paez que tienes accesu root nel to preséu. Agora pues instalar F-Droid privilexáu, integraráse col to sistema operativu Android. Esto permite a F-Droid instalar, anovar y desinstalar aplicaciones por sigo mesmu.</string>
     <string name="system_uninstall">¿Quies desinstalar F-Droid privilexáu?</string>
-    <string name="system_uninstall_message">Esto desinstalará F-Droid privilexáu.</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toca pa intercambiar</string>

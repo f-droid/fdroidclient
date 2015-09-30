@@ -229,7 +229,6 @@
     <string name="install_error_cannot_parse">Xảy ra lỗi khi phân tích gói</string>
     <string name="uninstall_error_title">Lỗi khi xoá bỏ</string>
     <string name="uninstall_error_unknown">Không thể xoá ứng dụng do có lỗi xảy ra</string>
-    <string name="system_permission_install_via_root">Cài F-Droid được cấp quyền</string>
     <string name="system_install_first_time_notification">Cài F-Droid được cấp quyền?</string>
     <string name="system_install_first_time_notification_message_short">Chạm để xem thêm thông tin.</string>
     <string name="system_install_first_time_notification_message">Chạm vào đây để cài đặt ứng dụng F-Droid được cấp quyền, tích hợp sâu vào hệ điều hành Android. Việc này cho phép F-Droid tự cài đặt, nâng cấp và gỡ bỏ ứng dụng.\nBạn cũng có thể vào phần cài đặt của F-Droid để làm việc này.</string>
@@ -240,10 +239,9 @@
     <string name="system_install_installing">Đang cài đặt…</string>
     <string name="system_install_uninstalling">Đang gỡ bỏ…</string>
     <string name="system_install_question">Bạn có muốn cài ứng dụng F-Droid được cấp quyền không?\nViệc cài đặt sẽ mất 10 giây.</string>
-    <string name="system_install_question_lollipop">Bạn có muốn cài ứng dụng F-Droid được cấp quyền không?\nViệc cài đặt sẽ mất 10 giây và sau đó máy bạn sẽ khởi động lại.</string>
+    <string name="system_install_warning_lollipop">Bạn có muốn cài ứng dụng F-Droid được cấp quyền không?\nViệc cài đặt sẽ mất 10 giây và sau đó máy bạn sẽ khởi động lại.</string>
     <string name="system_install_first_time_message">Có vẻ bạn không có quyền root. Bây giờ bạn có thể cài ứng dụng F-Droid được cấp quyền, tích hợp sâu vào hệ điều hành Android. Việc này cho phép F-Droid tự cài đặt, cập nhật và gỡ bỏ ứng dụng.</string>
     <string name="system_uninstall">Bạn có muốn gỡ bỏ ứng dụng F-Droid được cấp quyền không?</string>
-    <string name="system_uninstall_message">Việc này sẽ gỡ bỏ ứng dụng F-Droid được cấp quyền.</string>
     <string name="system_uninstall_button">Gỡ bỏ</string>
 
     <string name="swap_nfc_title">Chạm để trao đổi</string>

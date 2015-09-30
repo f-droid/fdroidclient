@@ -223,7 +223,6 @@
     <string name="install_error_title">Грешка инсталације</string>
     <string name="install_error_cannot_parse">Десила се грешка приликом рашчлањивања пакета</string>
     <string name="uninstall_error_title">Грешка уклањања</string>
-    <string name="system_permission_install_via_root">Инсталирај повлашћени Ф-дроид</string>
     <string name="system_install_first_time_notification">Да инсталирам повлашћени Ф-дроид?</string>
     <string name="system_install_first_time_notification_message_short">Тапните за више информација.</string>
     <string name="system_install_post_success">Успешно инсталиран повлашћени Ф-дроид</string>
@@ -269,7 +268,6 @@
     <string name="uninstall_error_unknown">Неуспех уклањања услед непознате грешке</string>
     <string name="system_install_question">Желите ли да инсталирате повлашћени Ф-дроид?\nОво траје до 10 секунди.</string>
     <string name="system_uninstall">Желите ли да уклоните повлашћени Ф-дроид?</string>
-    <string name="system_uninstall_message">Овиме ћете уклонити повлашћени Ф-дроид.</string>
     <string name="swap_qr_isnt_for_swap">Бар-кôд који сте очитали не изгледа као кôд размене.</string>
     <string name="install_confirm">Желите ли да инсталирате ову апликацију? Имаће приступ следећем:</string>
     <string name="install_confirm_no_perms">Желите ли да инсталирате ову апликацију? Не захтева посебан приступ.</string>
@@ -288,7 +286,7 @@
     <string name="swap_scan_or_type_url">Једна особа мора да очита кôд, или да укуца УРЛ друге особе у прегледачу.</string>
     <string name="swap_tap_to_select_apps">Тапните за одабир апликација за размену.</string>
     <string name="swap_switch_to_wifi">Тапните за пребацивање на бежичну мрежу</string>
-    <string name="system_install_question_lollipop">Желите ли да инсталирате повлашћени Ф-дроид?\nОво траје до 10 секунди и ваш уређај ће након тога поново да се покрене.</string>
+    <string name="system_install_warning_lollipop">Желите ли да инсталирате повлашћени Ф-дроид?\nОво траје до 10 секунди и ваш уређај ће након тога поново да се покрене.</string>
     <string name="empty_can_update_app_list">Све апликације су ажурне.\n\nЧеститке! Све ваше апликације су ажурне (или ваше ризнице нису ажуриране).</string>
 
     <string name="swap_people_nearby">Људи у близини</string>

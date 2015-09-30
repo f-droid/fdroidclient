@@ -223,7 +223,6 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="install_error_cannot_parse">Ocorreu um erro ao analisar o pacote</string>
     <string name="uninstall_error_title">Error ao desinstalar</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
-    <string name="system_permission_install_via_root">Instalar F-Droid privilegiado</string>
     <string name="system_install_first_time_notification">Instalar F-Droid privilegiado?</string>
     <string name="system_install_first_time_notification_message_short">Toque para obter mais informações.</string>
     <string name="system_install_first_time_notification_message">Toque para instalar o F-Droid privilegiado, intimamente ligado com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.\nVocê também pode fazer isso depois nas preferências do F-Droid.</string>
@@ -234,10 +233,9 @@ com aplicativos baixados a partir de índices não assinados.</string>
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">Você quer instalar o F-Droid privilegiado?\nIsto leva até 10 segundos.</string>
-    <string name="system_install_question_lollipop">Você quer instalar o F-Droid privilegiado?\nIsto leva até 10 segundos e o dispositivo será reinicializado depois.<b>reinicializado</b> depois.</string>
+    <string name="system_install_warning_lollipop">Você quer instalar o F-Droid privilegiado?\nIsto leva até 10 segundos e o dispositivo será reinicializado depois.<b>reinicializado</b> depois.</string>
     <string name="system_install_first_time_message">Parece que você tem acesso root no seu dispositivo. Agora você pode instalar o F-Droid privilegiado, intimamente integrado com o sistema operacional Android. Isso permite o F-Droid instalar, atualizar e desinstalar aplicativos por conta própria.</string>
     <string name="system_uninstall">Você quer desinstalar o F-Droid privilegiado?</string>
-    <string name="system_uninstall_message">Isso irá desinstalar o F-Droid privilegiado.</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toque para permutar</string>

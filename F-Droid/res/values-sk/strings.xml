@@ -224,7 +224,6 @@ Vydaný pod licenciou
     <string name="install_error_title">Chyba pri inštalácií</string>
     <string name="install_error_cannot_parse">Nastala chyba pri spracovávaní balíka</string>
     <string name="uninstall_error_title">Chyba pri odinštalácií</string>
-    <string name="system_permission_install_via_root">Inštalovať privilegovaný F-Droid</string>
     <string name="system_install_first_time_notification">Inštalovať privilegovaný F-Droid?</string>
     <string name="menu_bitcoin">Bitcoin</string>
 	<string name="menu_litecoin">Litecoin</string>
@@ -240,9 +239,8 @@ Vydaný pod licenciou
     <string name="system_install_installing">Inštalujem…</string>
     <string name="system_install_uninstalling">Odinštalovávam…</string>
     <string name="system_install_question">Chcete nainštalovať privilegovaný F-Droid?\nTrvá to do 10s.</string>
-    <string name="system_install_question_lollipop">Chcete nainštalovať privilegovaný F-Droid?\nTrvá to do 10s a zariadenie sa následne reštartuje.</string>
+    <string name="system_install_warning_lollipop">Chcete nainštalovať privilegovaný F-Droid?\nTrvá to do 10s a zariadenie sa následne reštartuje.</string>
     <string name="system_uninstall">Chcete odinštalovať privilegovaný F-Droid?</string>
-    <string name="system_uninstall_message">Odinštaluje privilegovaný F-Droid.</string>
     <string name="system_uninstall_button">Odinštalovať</string>
 
     <string name="swap_success">Výmena úspešná!</string>

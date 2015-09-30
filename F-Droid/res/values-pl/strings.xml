@@ -219,7 +219,6 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="install_error_cannot_parse">Wystąpił błąd podczas odczytywania paczki</string>
     <string name="uninstall_error_title">Błąd odinstalowywania</string>
     <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>
-    <string name="system_permission_install_via_root">Zainstaluj F-Droida w trybie uprzywilejowanym</string>
     <string name="system_install_first_time_notification">Zainstalować Uprzywilejowany dodatek?</string>
     <string name="system_install_first_time_notification_message_short">Dotknij czy dowiedzieć się więcej.</string>
     <string name="system_install_first_time_notification_message">Dotknij by zainstalować Uprzywilejowany dodatek F-Droida. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.\nMożesz ustawić to później w ustawieniach F-Droida.</string>
@@ -230,10 +229,8 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="system_install_installing">instalowanie…</string>
     <string name="system_install_uninstalling">odinstalowywanie…</string>
     <string name="system_install_question">Czy chcesz zainstalować Uprzywilejowany dodatek?</string>
-    <string name="system_install_question_lollipop">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund, następnie urządzenie zostanie zrestartowane.<b>zrestartowane</b>.</string>
     <string name="system_install_first_time_message">Wygląda na to, że masz dostęp do roota na swoim urządzeniu. Możesz zainstalować Uprzywilejowany dodatek. Pozwala to na automatyczne instalowanie, aktualizowanie i odinstalowywanie aplikacji przez F-Droida.</string>
     <string name="system_uninstall">Czy chcesz odinstalować Uprzywilejowany dodatek?</string>
-    <string name="system_uninstall_message">Tryb uprzywilejowany zostanie wyłączony.</string>
     <string name="system_uninstall_button">Odinstaluj</string>
 
     <string name="swap_nfc_title">Dotknij by dokonać wymiany</string>

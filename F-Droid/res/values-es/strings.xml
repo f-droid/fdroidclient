@@ -234,7 +234,6 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="install_error_cannot_parse">Ha ocurrido un error al analizar el paquete</string>
     <string name="uninstall_error_title">Error de desinstalación</string>
     <string name="uninstall_error_unknown">Fallo al desinstalar, debido a un error desconocido</string>
-    <string name="system_permission_install_via_root">Instalar F-Droid con permisos de sistema</string>
     <string name="system_install_first_time_notification">¿Instalar F-Droid con permisos de sistema?</string>
     <string name="system_install_first_time_notification_message_short">Toque para más información.</string>
     <string name="system_install_first_time_notification_message">Toque para instalar F-Droid con permisos de sistema, fuertemente acoplado con el sistema operativo Android. Esto permite a F-Droid instalar, actualizar y desinstalar aplicaciones por sí mismo.\nTambién puede realizar esto más tarde, desde las preferencias de F-Droid.</string>
@@ -244,9 +243,8 @@ Deberías tener cuidado con aplicaciones descargadas desde índices no firmados.
     <string name="system_install_installing">Instalando…</string>
     <string name="system_install_uninstalling">Desinstalando…</string>
     <string name="system_install_question">¿Desea instalar F-Droid con permisos de sistema?\nEsto puede tardar hasta 10 segundos.</string>
-    <string name="system_install_question_lollipop">¿Desea instalar F-Droid con permisos de sistema?\nEsto puede tardar hasta 10 segundos y el dispositivo será reiniciado a continuación.</string>
+    <string name="system_install_warning_lollipop">¿Desea instalar F-Droid con permisos de sistema?\nEsto puede tardar hasta 10 segundos y el dispositivo será reiniciado a continuación.</string>
     <string name="system_uninstall">¿Deseas desinstalar F-Droid con permisos de sistema?</string>
-    <string name="system_uninstall_message">Esto desinstalará F-Droid con permisos de sistema.</string>
     <string name="system_uninstall_button">Desinstalar</string>
 
     <string name="swap_nfc_title">Toque para intercambiar</string>

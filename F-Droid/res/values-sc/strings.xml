@@ -234,7 +234,6 @@ Intregadu cun sa litzèntzia
     <string name="Time">Tempus</string>
     <string name="Writing">Iscritura</string>
 
-    <string name="system_permission_install_via_root">Installa F-Droid cun permissos de sistema (privilegiadu)</string>
     <string name="system_install_first_time_notification">Installare F-Droid cun permissos de sistema?</string>
     <string name="system_install_first_time_notification_message_short">Toca pro àteras informatziones.</string>
     <string name="system_install_first_time_notification_message">Toca pro installare F-Droid cun permissos de sistema, ligadu a forte cun su sistema operativu Android. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicationes pro contu suo.\nL\'as a podes fàghere fintzas prus a tardu, dae sas preferèntzias de F-Droid.</string>
@@ -245,10 +244,9 @@ Intregadu cun sa litzèntzia
     <string name="system_install_installing">Installende…</string>
     <string name="system_install_uninstalling">Disinstallende…</string>
     <string name="system_install_question">Boles installare F-Droid cun permissos de sistema?\nCustu podet durare finas a 10 segundos.</string>
-    <string name="system_install_question_lollipop">Boles installare F-Droid cun permissos de sistema?\nCustu podet durare finas a 10 segundos e su dispositivu, a pustis, at a èssere torradu a allùere.</string>
+    <string name="system_install_warning_lollipop">Boles installare F-Droid cun permissos de sistema?\nCustu podet durare finas a 10 segundos e su dispositivu, a pustis, at a èssere torradu a allùere.</string>
     <string name="system_install_first_time_message">Paret chi tenes atzessu \"root\" in su dispositivu tuo. Como podes installare F-Droid cun permissos de sistema, ligadu a forte cun su sistema operativu Android. Custu at a permìtere a F-Droid de installare, agiornare e disinstallare aplicatziones pro contu suo.</string>
     <string name="system_uninstall">Boles disinstallare F-Droid cun permissos de sistema?</string>
-    <string name="system_uninstall_message">Custu at a disinstallare su F-Droid cun permissos de sistema.</string>
     <string name="system_uninstall_button">Disinstalla</string>
 
     <string name="swap_nfc_title">Toca pro cumpartzire</string>

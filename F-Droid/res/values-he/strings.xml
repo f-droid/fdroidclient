@@ -204,9 +204,8 @@
     <string name="install_error_unknown">נכשל להתקין בשל שגיאה לא מוכרת</string>
     <string name="uninstall_error_title">שגיאת ביטול התקנה</string>
     <string name="uninstall_error_unknown">נכשל לבטל התקנה בשל שגיאה לא מוכרת</string>
-    <string name="system_permission_denied_title">הרשאות מערכת נאסרו</string>
-    <string name="system_permission_denied_body">אפשרות זו הינה זמינה רק כאשר F-Droid הינה מותקנת בתור אפליקציה מועדפת.</string>
-    <string name="system_permission_install_via_root">התקן בתור אפליקציה מודפת</string>
+    <string name="system_install_denied_title">הרשאות מערכת נאסרו</string>
+    <string name="system_install_denied_body">אפשרות זו הינה זמינה רק כאשר F-Droid הינה מותקנת בתור אפליקציה מועדפת.</string>
     <string name="system_install_first_time_notification">להתקין F-Droid מועדף?</string>
     <string name="system_install_first_time_notification_message_short">גע למידע נוסף.</string>
     <string name="system_install_first_time_notification_message">גע כדי להתקין את F-Droid בתור אפליקציה מועדפת, מקושרת בחוזקה עם מערכת הפעלה Android. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.\nבאפשרותך לעשות זאת מאוחר יותר מתוך העדפות F-Droid.</string>
@@ -217,10 +216,9 @@
     <string name="system_install_installing">כעת מתקין…</string>
     <string name="system_install_uninstalling">כעת מבטל התקנה…</string>
     <string name="system_install_question">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות מקום בו &lt;b&gt;שום ממשק משתמש&lt;/b&gt; לא מוצג.</string>
-    <string name="system_install_question_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות והמכשיר יאותחל לאחר מכן.<b>שום ממשק משתמש</b> לא מוצג והמכשיר יאותחל לאחר מכן.</string>
+    <string name="system_install_warning_lollipop">האם ברצונך להתקין את F-Droid בתור אפליקציה מועדפת?\nפעולה זו לוקחת עד 10 שניות והמכשיר יאותחל לאחר מכן.<b>שום ממשק משתמש</b> לא מוצג והמכשיר יאותחל לאחר מכן.</string>
     <string name="system_install_first_time_message">נראה כי יש לך גישת שורש במכשירך. באפשרותך להתקין את F-Droid בתור אפליקציה מועדפת, מקושרת בחוזקה עם מערכת הפעלה Android. דבר זה מתיר לאפליקציה F-Droid להתקין, לשדרג ולהסיר התקנת אפליקציות בכוחות עצמה.</string>
     <string name="system_uninstall">האם ברצונך לבטל את התקנת F-Droid?</string>
-    <string name="system_uninstall_message">פעולה זו תסיר את F-Droid לגמרי.</string>
     <string name="system_uninstall_button">בטל התקנה</string>
 
     <string name="app_description">‏F-Droid הינו קטלוג בר התקנה של אפליקציות FOSS (תוכניות קוד פתוח וחופשיות) עבור הפלטפורמה Android. הלקוח מקל על עיון, התקנה, וממשיך לעקוב אחר עדכונים במכשירך.</string>

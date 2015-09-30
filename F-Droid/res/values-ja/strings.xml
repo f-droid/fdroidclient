@@ -222,7 +222,6 @@
     <string name="install_error_cannot_parse">ﾊﾟｯｹｰｼﾞの解析中にｴﾗｰが発生しました</string>
     <string name="uninstall_error_title">ｱﾝｲﾝｽﾄｰﾙｴﾗｰ</string>
     <string name="uninstall_error_unknown">不明なｴﾗｰのためｱﾝｲﾝｽﾄｰﾙに失敗しました</string>
-    <string name="system_permission_install_via_root">特権 F-Droid をｲﾝｽﾄｰﾙ</string>
     <string name="system_install_first_time_notification">特権 F-Droid をｲﾝｽﾄｰﾙしますか?</string>
     <string name="system_install_first_time_notification_message_short">詳細はﾀｯﾁしてください。</string>
     <string name="system_install_first_time_notification_message">ﾀｯﾁすると、Android ｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した特権 F-Droid をｲﾝｽﾄｰﾙします。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。\nまた、これは F-Droid の設定から後で実行することもできます。</string>
@@ -233,10 +232,9 @@
     <string name="system_install_installing">ｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_uninstalling">ｱﾝｲﾝｽﾄｰﾙ中…</string>
     <string name="system_install_question">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは 10 秒ほどかかります。</string>
-    <string name="system_install_question_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは、10 秒ほどかかり、その後デバイスを再起動します。<b>再起動</b> します。</string>
+    <string name="system_install_warning_lollipop">特権 F-Droid をｲﾝｽﾄｰﾙしますか?\nこれは、10 秒ほどかかり、その後デバイスを再起動します。<b>再起動</b> します。</string>
     <string name="system_install_first_time_message">お使いの端末に管理者権限でｱｸｾｽできるようです。Android のｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑと密接に関連した特権 F-Droid をｲﾝｽﾄｰﾙすることができます。これは F-Droid が独自にｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙ、ｱｯﾌﾟｸﾞﾚｰﾄﾞ、およびｱﾝｲﾝｽﾄｰﾙすることができます。</string>
     <string name="system_uninstall">特権 F-Droid をｱﾝｲﾝｽﾄｰﾙしますか?</string>
-    <string name="system_uninstall_message">これは、特権 F-Droid がｱﾝｲﾝｽﾄｰﾙされます。</string>
     <string name="system_uninstall_button">ｱﾝｲﾝｽﾄｰﾙ</string>
 
     <string name="swap_success">正常に交換しました!</string>
