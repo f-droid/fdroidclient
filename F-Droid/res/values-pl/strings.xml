@@ -10,8 +10,8 @@
   <string name="notify">Powiadomienia o aktualizacjach</string>
   <string name="update_history">Historia aktualizacji</string>
   <string name="update_history_summ">Liczba dni, aby uznać aplikację za nową lub niedawną: %s</string>
-  <string name="system_installer">Instaluj na uprawnieniach systemowych</string>
-  <string name="system_installer_on">Używaj uprawnień systemowych do instalacji, aktualizacji i usuwania pakietów</string>
+  <string name="system_installer">Uprzywilejowany dodatek</string>
+  <string name="system_installer_on">Używaj dodatku uprzywilejowanego FDroida by instalować, aktualizować i usuwać paczki</string>
   <string name="local_repo_name">Nazwa lokalnego repozytorium</string>
   <string name="local_repo_name_summary">Wyświetlana nazwa repozytorium lokalnego: %s</string>
   <string name="local_repo_https">Użyj zabezpieczonego połączenia</string>
@@ -161,8 +161,8 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 	<string name="automatic_scan_wifi">Aktualizuj tylko przez Wi-Fi</string>
 	<string name="automatic_scan_wifi_on">Aktualizuj listę aplikacji tylko przez Wi-Fi (oszczędza dane mobilne)</string>
 	<string name="notify_on">Wyświetlaj powiadomienie gdy znalezione zostaną nowe aktualizacje</string>
-	<string name="uninstall_system">Odinstaluj uprzywilejowany tryb F-Droida</string>
-	<string name="uninstall_system_summary">Odinstaluj dodatkowe uprzywilejowane aplikacje F-Droida</string>
+	<string name="uninstall_system">Aktualizuj/Odinstaluj Uprzywilejowany dodatek F-Droida</string>
+	<string name="uninstall_system_summary">Pokaż szczegóły Uprzywilejowanego dodatku</string>
 	<string name="about_desc">Oryginalnie bazuje na Aptiode.\nWydano pod licencją GNU GPLv3.</string>
 	<string name="about_mail">Email:</string>
 	<string name="app_incompatible">Niekompatybilne</string>
@@ -220,19 +220,19 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
     <string name="uninstall_error_title">Błąd odinstalowywania</string>
     <string name="uninstall_error_unknown">Odinstalowywanie nie powiodło się przez nieznany nam problem</string>
     <string name="system_permission_install_via_root">Zainstaluj F-Droida w trybie uprzywilejowanym</string>
-    <string name="system_install_first_time_notification">Przejść w tryb uprzywilejowany?</string>
+    <string name="system_install_first_time_notification">Zainstalować Uprzywilejowany dodatek?</string>
     <string name="system_install_first_time_notification_message_short">Dotknij czy dowiedzieć się więcej.</string>
-    <string name="system_install_first_time_notification_message">Dotknij by zainstalować F-Droida w trybie uprzywilejowanym. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.\nMożesz ustawić to później w ustawieniach F-Droida.</string>
-    <string name="system_install_post_success">Przejście w tryb uprzywilejowany zakończone sukcesem</string>
-    <string name="system_install_post_fail">Przejście w tryb uprzywilejowany nie powiodło się</string>
-    <string name="system_install_post_success_message">Przejście w tryb uprzywilejowany zakończone sukcesem. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.</string>
-    <string name="system_install_post_fail_message">Przejście w tryb uprzywilejowany nie powiodło się. Metoda instalacji może nie być wspierana przez Twój system. Proszę sprawdzić listę problemów F-Droida by dowiedzieć się więcej.</string>
-    <string name="system_install_installing">Instalowanie…</string>
-    <string name="system_install_uninstalling">Odinstalowywanie…</string>
-    <string name="system_install_question">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund.</string>
+    <string name="system_install_first_time_notification_message">Dotknij by zainstalować Uprzywilejowany dodatek F-Droida. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.\nMożesz ustawić to później w ustawieniach F-Droida.</string>
+    <string name="system_install_post_success">Instalacja Uprzywilejowanego dodatku powiodła się</string>
+    <string name="system_install_post_fail">Instalacja Uprzywilejowanego dodatku nie powiodła się</string>
+    <string name="system_install_post_success_message">Instalacja Uprzywilejowanego dodatku powiodła się. Pozwala to F-Droidowi automatycznie instalować, aktualizować i odinstalowywać aplikacje.</string>
+    <string name="system_install_post_fail_message">Instalacja Uprzywilejowanego dodatku nie powiodła się. Metoda instalacji może nie być wspierana przez Twój system. Proszę sprawdzić listę problemów F-Droida by dowiedzieć się więcej.</string>
+    <string name="system_install_installing">instalowanie…</string>
+    <string name="system_install_uninstalling">odinstalowywanie…</string>
+    <string name="system_install_question">Czy chcesz zainstalować Uprzywilejowany dodatek?</string>
     <string name="system_install_question_lollipop">Czy chcesz przejść w tryb uprzywilejowany?\nZajmie to około 10 sekund, następnie urządzenie zostanie zrestartowane.<b>zrestartowane</b>.</string>
-    <string name="system_install_first_time_message">Wygląda na to, że masz dostęp do roota na swoim urządzeniu. Możesz zainstalować F-Droida w trybie uprzywilejowanym. Pozwala to na automatyczne instalowanie, aktualizowanie i odinstalowywanie aplikacji przez F-Droida.</string>
-    <string name="system_uninstall">Czy chcesz przejść w tryb uprzywilejowany?</string>
+    <string name="system_install_first_time_message">Wygląda na to, że masz dostęp do roota na swoim urządzeniu. Możesz zainstalować Uprzywilejowany dodatek. Pozwala to na automatyczne instalowanie, aktualizowanie i odinstalowywanie aplikacji przez F-Droida.</string>
+    <string name="system_uninstall">Czy chcesz odinstalować Uprzywilejowany dodatek?</string>
     <string name="system_uninstall_message">Tryb uprzywilejowany zostanie wyłączony.</string>
     <string name="system_uninstall_button">Odinstaluj</string>
 
@@ -322,4 +322,11 @@ Uwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</st
 
 	<string name="download_error">Pobieranie nie powiodło się</string>
 
-    </resources>
+    <string name="system_install_denied_signature">Niepoprawny podpis dodatku! Prosimy o zgłoszenie błędu!</string>
+    <string name="system_install_denied_permissions">Uprzywilejowanemu dodatkowi nie zostały przyznane wymagane uprawnienia! Prosimy o zgłoszenie błędu!</string>
+    <string name="system_install_button_install">Instalacja</string>
+	<string name="system_install_button_open">Otwórz dodatek</string>
+    <string name="system_install_installing_rebooting">instalowanie i restartowanie…</string>
+    <string name="system_install_warning">Zajmuje to ok. 10 sekund</string>
+	<string name="system_install_warning_lollipop">Zajmuje to ok. 10 sekund, następnie urządzenie zostanie <b>zrestartowane</b></string>
+	</resources>

@@ -210,4 +210,12 @@ Tingueu compte amb aplicacions baixades des de dipòsits sense empremta digital.
     <string name="system_install_uninstalling">Desinstal·lant…</string>
     <string name="system_uninstall_button">Desinstal·la</string>
 
-    </resources>
+    <string name="unstable_updates">Actualitzacions inestables</string>
+	<string name="tab_installed_apps">Instal·lades</string>
+	<string name="menu_bitcoin">Bitcoin</string>
+	<string name="menu_litecoin">Litecoin</string>
+	<string name="menu_flattr">Flattr</string>
+
+
+	<string name="update_notification_title">Actualitzant els dipòsits</string>
+	</resources>
