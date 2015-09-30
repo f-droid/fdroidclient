@@ -1569,10 +1569,10 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             // Check count > 0 due to incompatible apps resulting in an empty list.
             // If App isn't installed
             } else if (!getApp().isInstalled() && getApp().suggestedVercode > 0 &&
-                    ((AppDetails)getActivity()).adapter.getCount() > 0) {
+                    activity.adapter.getCount() > 0) {
                 installed = false;
                 statusView.setText(R.string.details_notinstalled);
-                NfcHelper.disableAndroidBeam(getActivity());
+                NfcHelper.disableAndroidBeam(activity);
                 // Set Install button and hide second button
                 btMain.setText(R.string.menu_install);
                 btMain.setOnClickListener(mOnClickListener);
@@ -1581,13 +1581,13 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
             } else if (getApp().isInstalled()) {
                 installed = true;
                 statusView.setText(getString(R.string.details_installed, getApp().installedVersionName));
-                NfcHelper.setAndroidBeam(getActivity(), getApp().id);
+                NfcHelper.setAndroidBeam(activity, getApp().id);
                 if (getApp().canAndWantToUpdate()) {
                     updateWanted = true;
                     btMain.setText(R.string.menu_upgrade);
                 } else {
                     updateWanted = false;
-                    if (((AppDetails)getActivity()).mPm.getLaunchIntentForPackage(getApp().id) != null){
+                    if (activity.mPm.getLaunchIntentForPackage(getApp().id) != null){
                         btMain.setText(R.string.menu_launch);
                     } else {
                         btMain.setText(R.string.menu_uninstall);
@@ -1611,27 +1611,28 @@ public class AppDetails extends AppCompatActivity implements ProgressListener, A
 
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
+                AppDetails activity = (AppDetails) getActivity();
                 if (updateWanted) {
                     if (getApp().suggestedVercode > 0) {
-                        final Apk apkToInstall = ApkProvider.Helper.find(getActivity(), getApp().id, getApp().suggestedVercode);
-                        ((AppDetails)getActivity()).install(apkToInstall);
+                        final Apk apkToInstall = ApkProvider.Helper.find(activity, getApp().id, getApp().suggestedVercode);
+                        (activity).install(apkToInstall);
                         return;
                     }
                 }
                 // If installed
                 if (installed) {
                     // If "launchable", launch
-                    if (((AppDetails)getActivity()).mPm.getLaunchIntentForPackage(getApp().id) != null) {
-                        ((AppDetails)getActivity()).launchApk(getApp().id);
+                    if (activity.mPm.getLaunchIntentForPackage(getApp().id) != null) {
+                        activity.launchApk(getApp().id);
                     } else {
-                        ((AppDetails)getActivity()).removeApk(getApp().id);
+                        activity.removeApk(getApp().id);
                     }
                 // If not installed, install
                 } else if (getApp().suggestedVercode > 0) {
                     btMain.setEnabled(false);
                     btMain.setText(R.string.system_install_installing);
-                    final Apk apkToInstall = ApkProvider.Helper.find(getActivity(), getApp().id, getApp().suggestedVercode);
-                    ((AppDetails)getActivity()).install(apkToInstall);
+                    final Apk apkToInstall = ApkProvider.Helper.find(activity, getApp().id, getApp().suggestedVercode);
+                    activity.install(apkToInstall);
                 }
             }
         };
