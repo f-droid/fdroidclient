@@ -324,9 +324,8 @@ public class UpdateService extends IntentService implements ProgressListener {
                 && prefs.getBoolean(Preferences.PREF_UPD_WIFI_ONLY, false)) {
             Log.i(TAG, "Skipping update - wifi not available");
             return false;
-        } else {
-            return activeNetwork.isConnectedOrConnecting();
         }
+        return activeNetwork.isConnectedOrConnecting();
     }
 
     @Override
@@ -366,10 +365,12 @@ public class UpdateService extends IntentService implements ProgressListener {
                 if (!repo.inuse) {
                     disabledRepos.add(repo);
                     continue;
-                } else if (singleRepoUpdate && !repo.address.equals(address)) {
+                }
+                if (singleRepoUpdate && !repo.address.equals(address)) {
                     unchangedRepos.add(repo);
                     continue;
-                } else if (!singleRepoUpdate && repo.isSwap) {
+                }
+                if (!singleRepoUpdate && repo.isSwap) {
                     //swapRepos.add(repo);
                     continue;
                 }
